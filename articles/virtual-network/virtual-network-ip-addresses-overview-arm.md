@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0c86f9ad134e9b640d33d1a391c5387af9f9afd
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236351"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965669"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-adrestypen en toewijzingsmethoden in Azure
 
@@ -30,7 +30,7 @@ U kunt IP-adressen toewijzen aan Azure-resources om te communiceren met andere A
 U kunt ook een aaneengesloten reeks statische openbare IP-adressen maken via een openbaar IP-voorvoegsel. [Informatie over een openbaar IP-voorvoegsel.](public-ip-address-prefix.md)
 
 > [!NOTE]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources:  [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Dit artikel bevat informatie over het Resource Manager-implementatiemodel, dat door Microsoft wordt aanbevolen voor de meeste nieuwe implementaties in plaats van het [klassieke implementatiemodel](virtual-network-ip-addresses-overview-classic.md).
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  Dit artikel bevat informatie over het Resource Manager-implementatiemodel, dat door Microsoft wordt aanbevolen voor de meeste nieuwe implementaties in plaats van het [klassieke implementatiemodel](virtual-network-ip-addresses-overview-classic.md).
 > 
 
 Als u het klassieke implementatiemodel kent, kunt u [hier lezen wat de verschillen zijn in IP-adressering tussen het klassieke model en het Resource Manager-model](virtual-network-ip-addresses-overview-classic.md#differences-between-resource-manager-and-classic-deployments).
@@ -48,7 +48,7 @@ In Azure Resource Manager is een [openbaar IP](virtual-network-public-ip-address
 
 ### <a name="ip-address-version"></a>IP-adresversie
 
-Openbare IP-adressen worden gemaakt met een IPv4- of IPv6-adres. Openbare IPv6-adressen kunnen alleen worden toegewezen aan internetgerichte load balancers.
+Openbare IP-adressen worden gemaakt met een IPv4- of IPv6-adres. 
 
 ### <a name="sku"></a>SKU
 
@@ -81,7 +81,7 @@ Openbare IP-adressen van de standaard-SKU:
 > Inkomende communicatie met een resource uit de Standard-SKU mislukt totdat u een [netwerkbeveiligingsgroep](security-overview.md#network-security-groups) maakt en koppelt en het gewenste binnenkomende verkeer expliciet toestaat.
 
 > [!NOTE]
-> Alleen openbare IP-adressen met basis-SKU beschikbaar zijn als u [exemplaar metadata-service IMDS](../virtual-machines/windows/instance-metadata-service.md). Standaard-SKU wordt niet ondersteund.
+> Alleen open bare IP-adressen met de basis-SKU zijn beschikbaar wanneer IMDS wordt gebruikt voor het gebruiken van [meta gegevens service](../virtual-machines/windows/instance-metadata-service.md). De standaard-SKU wordt niet ondersteund.
 
 ### <a name="allocation-method"></a>Toewijzingsmethode
 
@@ -112,7 +112,7 @@ U kunt voor een openbare IP-resource een DNS-domeinnaamlabel opgeven, zodat *dom
 >
 
 ### <a name="dns-best-practices"></a>Aanbevolen procedures voor DNS
-Als u ooit migreren naar een andere regio wilt, kunt u de FQDN-naam van uw openbare IP-adres niet migreren. Als een best practice, kunt u de FQDN-naam te maken van een aangepast domein-CNAME-record die verwijst naar het openbare IP-adres in Azure. Als u verplaatsen naar een ander openbaar IP-adres wilt, wordt er een update van het CNAME-record in plaats van handmatig bijwerken van de FQDN-naam naar het nieuwe adres vereist. U kunt [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) of een externe DNS-provider voor uw DNS-Record. 
+Als u ooit naar een andere regio wilt migreren, kunt u de FQDN-namen van uw open bare IP-adres niet migreren. Als best practice kunt u de FQDN gebruiken om een aangepaste domein-CNAME-record te maken die verwijst naar het open bare IP-adres in Azure. Als u wilt overstappen op een ander openbaar IP-adres, moet u een update voor de CNAME-record gebruiken in plaats van de FQDN hand matig bij te werken naar de nieuwe adressen. U kunt [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) of een externe DNS-provider voor uw DNS-record gebruiken. 
 
 ### <a name="virtual-machines"></a>Virtuele machines
 
@@ -128,7 +128,7 @@ Een [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fa
 
 ### <a name="application-gateways"></a>Toepassingsgateways
 
-U kunt een openbaar IP-adres koppelen aan een Azure-[toepassingsgateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) door het toe te wijzen aan de **front-end**-configuratie van de gateway. Dit openbare IP-adres doet dienst als een VIP met taakverdeling. U kunt alleen een *dynamische* basic openbaar IP-adres aan een application gateway V1 front-end-configuratie, en alleen een *statische* standaard SKU-adres aan een front-end-configuratie voor V2.
+U kunt een openbaar IP-adres koppelen aan een Azure-[toepassingsgateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) door het toe te wijzen aan de **front-end**-configuratie van de gateway. Dit openbare IP-adres doet dienst als een VIP met taakverdeling. U kunt alleen een *dynamisch* openbaar IP-adres toewijzen aan een Application Gateway v1-front-end-configuratie en alleen een *statisch* standaard-SKU-adres voor een v2 front-end-configuratie.
 
 ### <a name="at-a-glance"></a>In een oogopslag
 De volgende tabel toont de specifieke eigenschap waarmee een openbaar IP-adres kan worden gekoppeld aan een resource op het hoogste niveau, evenals de mogelijke toewijzingsmethoden (dynamisch of statisch) die kunnen worden gebruikt.
@@ -149,10 +149,6 @@ In het Azure Resource Manager-implementatiemodel is een privé-IP-adres gekoppel
 * Interne load balancers (ILB's)
 * Toepassingsgateways
 
-### <a name="ip-address-version"></a>IP-adresversie
-
-Privé-IP-adressen worden gemaakt met een IPv4- of IPv6-adres. Privé-IPv6-adressen kunnen alleen worden toegewezen met de dynamische toewijzingsmethode. U kunt niet communiceren tussen privé-IPv6-adressen op een virtueel netwerk. U kunt inkomend communiceren met een privé-IPv6-adres van het internet via een internetgerichte load balancer. Zie [Een internetgerichte load balancer maken met IPv6](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie.
-
 ### <a name="allocation-method"></a>Toewijzingsmethode
 
 Een privé-IP-adres wordt in toegewezen in het adresbereik van het subnet van het virtuele netwerk waarin een resource wordt geïmplementeerd. Azure reserveert de eerste vier adressen in het adresbereik van elk subnet, zodat die adressen niet aan resources kunnen worden toegewezen. Als het adresbereik van het subnet bijvoorbeeld 10.0.0.0/16 is, kunnen de adressen van 10.0.0.0 tot en met-10.0.0.3 niet aan resources worden toegewezen. IP-adressen binnen het adresbereik van het subnet kunnen slechts aan één resource tegelijkertijd worden toegewezen. 
@@ -160,7 +156,7 @@ Een privé-IP-adres wordt in toegewezen in het adresbereik van het subnet van he
 Er zijn twee methoden voor het toewijzen van een privé-IP-adres:
 
 - **Dynamisch**: Azure wijst het volgende beschikbare niet-toegewezen of niet-gereserveerde IP-adres in het adresbereik van het subnet toe. Azure wijst 10.0.0.10 bijvoorbeeld toe aan een nieuwe resource als de adressen van 10.0.0.4 tot en met 10.0.0.9 al aan andere bronnen zijn toegewezen. Dynamisch is de standaardmethode voor toewijzing. Nadat dynamische IP-adressen zijn toegewezen, worden ze alleen vrijgegeven als een netwerkinterface wordt verwijderd of wordt toegewezen aan een ander subnet binnen hetzelfde virtuele netwerk of als de toewijzingsmethode wordt gewijzigd in statisch en een ander IP-adres wordt opgegeven. Standaard wijst Azure het vorige dynamisch toegewezen adres toe als het statische adres wanneer u de toewijzingsmethode van dynamisch wijzigt in statisch.
-- **Statisch**: u selecteert elk beschikbaar niet-toegewezen of niet-gereserveerd IP-adres in het adresbereik van het subnet en wijst dit toe. Als het adresbereik van een subnet bijvoorbeeld 10.0.0.0/16 is en de adressen van 10.0.0.4 tot en met 10.0.0.9 al zijn toegewezen aan andere resources, kunt u elk adres tussen 10.0.0.10 en 10.0.255.254 toewijzen. Statische adressen worden alleen vrijgegeven als een netwerkinterface wordt verwijderd. Als u de toewijzingsmethode wijzigt in dynamisch, wijst Azure het eerder toegewezen statische IP-adres toe als dynamisch adres, zelfs als dat adres niet het eerstvolgende beschikbare adres in het adresbereik van het subnet is. Het adres verandert ook als de netwerkinterface wordt toegewezen aan een ander subnet binnen hetzelfde virtuele netwerk, maar als u de netwerkinterface wilt toewijzen aan een ander subnet, moet u eerst de toewijzingsmethode wijzigen van statisch in dynamisch. Nadat u de netwerkinterface hebt toegewezen aan een ander subnet, kunt u de toewijzingsmethode weer wijzigen in statisch en een IP-adres uit het adresbereik van het nieuwe subnet toewijzen.
+- **Statisch**: u selecteert elk beschikbaar niet-toegewezen of niet-gereserveerde IP-adres in het adresbereik van het subnet en wijst dit toe. Als het adresbereik van een subnet bijvoorbeeld 10.0.0.0/16 is en de adressen van 10.0.0.4 tot en met 10.0.0.9 al zijn toegewezen aan andere resources, kunt u elk adres tussen 10.0.0.10 en 10.0.255.254 toewijzen. Statische adressen worden alleen vrijgegeven als een netwerkinterface wordt verwijderd. Als u de toewijzingsmethode wijzigt in dynamisch, wijst Azure het eerder toegewezen statische IP-adres toe als dynamisch adres, zelfs als dat adres niet het eerstvolgende beschikbare adres in het adresbereik van het subnet is. Het adres verandert ook als de netwerkinterface wordt toegewezen aan een ander subnet binnen hetzelfde virtuele netwerk, maar als u de netwerkinterface wilt toewijzen aan een ander subnet, moet u eerst de toewijzingsmethode wijzigen van statisch in dynamisch. Nadat u de netwerkinterface hebt toegewezen aan een ander subnet, kunt u de toewijzingsmethode weer wijzigen in statisch en een IP-adres uit het adresbereik van het nieuwe subnet toewijzen.
 
 ### <a name="virtual-machines"></a>Virtuele machines
 
@@ -184,10 +180,10 @@ De volgende tabel toont de specifieke eigenschap waarmee een privé-IP-adres kan
 | Resource op het hoogste niveau | IP-adreskoppeling | Dynamisch | Statisch |
 | --- | --- | --- | --- |
 | Virtuele machine |Netwerkinterface |Ja |Ja |
-| Load balancer |Front-end-configuratie |Ja |Ja |
+| Load Balancer |Front-end-configuratie |Ja |Ja |
 | Toepassingsgateway |Front-end-configuratie |Ja |Ja |
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>Beperkingen
 De limieten die zijn opgelegd voor IP-adressen, vindt u in de volledige set [limieten voor netwerken](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. De limieten gelden per regio en per abonnement. U kunt [contact opnemen met ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u op basis van uw bedrijfsbehoeften de standaardlimieten wilt verhogen tot de maximumlimieten.
 
 ## <a name="pricing"></a>Prijzen

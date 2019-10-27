@@ -1,100 +1,106 @@
 ---
-title: Het herstellen van een Server in Azure Database voor MariaDB
-description: In dit artikel wordt beschreven hoe u het herstellen van een server in Azure Database voor MariaDB met behulp van de Azure portal.
+title: Een server herstellen in Azure Database for MariaDB
+description: In dit artikel wordt beschreven hoe u een server in Azure Database for MariaDB kunt herstellen met behulp van de Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 23d683fea494ad0509af359d6e49519f2bc6aa99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/25/2019
+ms.openlocfilehash: d70afd6b2720a9e351cbc2926462a217cb89c056
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746564"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965147"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Het back-up en herstellen van een server in Azure Database voor MariaDB met behulp van de Azure portal
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Een back-up maken en herstellen van een server in Azure Database for MariaDB met behulp van de Azure Portal
 
-## <a name="backup-happens-automatically"></a>Back-up wordt automatisch uitgevoerd
-Azure Database voor MariaDB-servers zijn back-ups regelmatig op Restore-functies inschakelen. Met deze functie kan u de server en alle bijbehorende databases herstellen naar een eerder punt-in-time, op een nieuwe server.
+## <a name="backup-happens-automatically"></a>Er wordt automatisch een back-up gemaakt
+Er wordt regel matig een back-up van Azure Database for MariaDB servers gemaakt om herstel functies in te scha kelen. Met deze functie kunt u de server en alle bijbehorende data bases naar een eerder tijdstip herstellen op een nieuwe server.
 
 ## <a name="prerequisites"></a>Vereisten
-Voor deze handleiding, hebt u het volgende nodig:
-- Een [Azure Database voor MariaDB-server en database](quickstart-create-mariadb-server-database-using-azure-portal.md)
+U hebt het volgende nodig om deze hand leiding te volt ooien:
+- Een [Azure database for MariaDB-server en-data base](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="set-backup-configuration"></a>Configuratie van de back-up
+## <a name="set-backup-configuration"></a>Back-upconfiguratie instellen
 
-Maken van de keuze tussen het configureren van uw server voor back-ups van lokaal redundante of geografisch redundante back-ups op de server is gemaakt, in de **prijscategorie** venster.
+U maakt de keuze tussen het configureren van uw server voor lokaal redundante back-ups of geografisch redundante back-ups bij het maken van een server, in het venster **prijs categorie** .
 
 > [!NOTE]
-> Nadat een server is gemaakt, het soort redundantie dat zo is, kan geografisch redundant en lokaal redundant, kan niet worden overgeschakeld.
+> Nadat een server is gemaakt, is het soort redundantie die het heeft, geografisch redundant versus lokaal redundant, niet overgeschakeld.
 >
 
-Tijdens het maken van een server via de Azure-portal, de **prijscategorie** venster is waar u een selecteren **lokaal redundante** of **geografisch Redundant** back-ups voor uw server. In dit venster is ook hier selecteert u de **bewaarperiode voor back-up** : hoe lang (in dagen) u wilt dat de server back-ups die zijn opgeslagen voor.
+Wanneer u een server maakt via de Azure Portal, selecteert u in het venster **prijs categorie** de optie **lokaal redundante** of **geografisch redundante** back-ups voor uw server. Dit venster is ook de plek waar u de **retentie periode voor back-ups** selecteert-hoe lang (in aantal dagen) u de back-ups van de server wilt opslaan.
 
-   ![Prijscategorie - back-Upredundantie kiezen](./media/howto-restore-server-portal/pricing-tier.png)
+   ![Prijs categorie: Kies back-upredundantie](./media/howto-restore-server-portal/pricing-tier.png)
 
-Zie voor meer informatie over het instellen van deze waarden tijdens het maken, de [Azure Database voor MariaDB server Quick Start](quickstart-create-mariadb-server-database-using-azure-portal.md).
+Zie de [Snelstartgids van Azure database for MariaDB server](quickstart-create-mariadb-server-database-using-azure-portal.md)voor meer informatie over het instellen van deze waarden tijdens het maken.
 
-De bewaarperiode voor back-up kan worden gewijzigd op een server via de volgende stappen uit:
+De Bewaar periode voor back-ups kan worden gewijzigd op een server met behulp van de volgende stappen:
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-2. Selecteer uw Azure Database voor MariaDB-server. Deze actie opent u de **overzicht** pagina.
+2. Selecteer uw Azure Database for MariaDB-server. Met deze actie wordt de pagina **overzicht** geopend.
 
-3. Selecteer **prijscategorie** in het menu onder **instellingen**. Met behulp van de schuifregelaar kunt u de **bewaarperiode voor back-up** aan uw voorkeur tussen 7 en 35 dagen.
-In de onderstaande schermafbeelding is het verhoogd tot 35 dagen.
-![Back-up bewaarperiode verhoogd](./media/howto-restore-server-portal/3-increase-backup-days.png)
+3. Selecteer **prijs categorie** in het menu onder **instellingen**. Met de schuif regelaar kunt u de **Bewaar periode voor back-ups** wijzigen van 7 tot 35 dagen.
+In de onderstaande scherm afbeelding is meer dan 35 dagen verg root.
+![Bewaar periode voor back-ups verhoogd](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
-4. Klik op **OK** de wijziging te bevestigen.
+4. Klik op **OK** om de wijziging te bevestigen.
 
-De bewaarperiode voor back-up bepaalt hoe ver terug in de tijd die een point-in-time-restore kan worden opgehaald, omdat deze gebaseerd op de back-ups beschikbaar. Point-in-time-restore is beschreven in de volgende sectie. 
+De Bewaar periode voor back-ups bepaalt hoe ver terug in de tijd een herstel naar een bepaald tijdstip kan worden opgehaald, omdat het is gebaseerd op back-ups die beschikbaar zijn. Herstel naar een bepaald tijdstip wordt verder beschreven in de volgende sectie. 
 
-## <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
-Azure Database voor MariaDB kunt u de server te herstellen naar een punt-in-time en in een nieuwe kopie van de server. U kunt deze nieuwe server gebruiken om uw gegevens te herstellen of hebben uw clienttoepassingen die verwijzen naar deze nieuwe server.
+## <a name="point-in-time-restore"></a>Herstel naar een bepaald tijdstip
+Met Azure Database for MariaDB kunt u de server weer herstellen naar een bepaald tijdstip en naar een nieuwe kopie van de server. U kunt deze nieuwe server gebruiken om uw gegevens te herstellen of uw client toepassingen te laten verwijzen naar deze nieuwe server.
 
-Bijvoorbeeld als een tabel per ongeluk is kunt verwijderd op twaalf uur 's middags vandaag, u herstellen tot het moment waarop net vóór twaalf uur 's middags en ophalen van de ontbrekende tabel en de gegevens van die nieuwe kopie van de server. Point-in-time-restore is op de server niveau, niet op het databaseniveau van de.
+Als een tabel bijvoorbeeld per ongeluk is verwijderd om 12 uur 's middags, kunt u de tijd vóór de middag herstellen en de ontbrekende tabel en gegevens ophalen van de nieuwe kopie van de server. Herstel naar een bepaald tijdstip bevindt zich op server niveau en niet op database niveau.
 
-De volgende stappen wordt de voorbeeldserver hersteld naar een punt-in-time:
-1. Selecteer uw Azure Database voor MariaDB-server in de Azure-portal. 
+Met de volgende stappen wordt de voorbeeld server hersteld naar een bepaald tijdstip:
+1. Selecteer uw Azure Database for MariaDB server in het Azure Portal. 
 
-2. Op de werkbalk van de server **overzicht** weergeeft, schakelt **herstellen**.
+2. Selecteer in de werk balk van de pagina **overzicht** van de server **herstellen**.
 
-   ![Azure Database voor MariaDB - overzicht - Restore-knop](./media/howto-restore-server-portal/2-server.png)
+   ![Azure Database for MariaDB-overzicht-knop herstellen](./media/howto-restore-server-portal/2-server.png)
 
-3. Vul het formulier herstellen met de vereiste gegevens in:
+3. Vul het formulier Restore in met de vereiste gegevens:
 
-   ![Azure Database voor MariaDB - gegevens herstellen](./media/howto-restore-server-portal/3-restore.png)
-   - **Herstelpunt**: Selecteer de point-in-time-u wilt herstellen.
-   - **Doelserver**: Geef een naam voor de nieuwe server.
-   - **Locatie**: U kunt de regio niet selecteren. Het is standaard hetzelfde als de bronserver.
-   - **Prijscategorie**: U kunt deze parameters niet wijzigen bij het uitvoeren van een point-in-time-restore. Deze is hetzelfde als de bronserver. 
+   ![Azure Database for MariaDB-herstel informatie](./media/howto-restore-server-portal/3-restore.png)
+   - **Herstel punt**: Selecteer het tijdstip waarop u wilt herstellen.
+   - **Doel server**: Geef een naam op voor de nieuwe server.
+   - **Locatie**: u kunt de regio niet selecteren. Het is standaard hetzelfde als de bron server.
+   - **Prijs categorie**: u kunt deze para meters niet wijzigen wanneer u een herstel bewerking op een bepaald tijdstip uitvoert. Deze is hetzelfde als de bronserver. 
 
-4. Klik op **OK** om de server om te herstellen naar een punt-in-time te herstellen. 
+4. Klik op **OK** om de server te herstellen om naar een bepaald tijdstip te herstellen. 
 
-5. Nadat het herstel is voltooid, Ga naar de nieuwe server die is gemaakt om te controleren of dat de gegevens zijn hersteld zoals verwacht.
+5. Zodra de herstel bewerking is voltooid, gaat u naar de nieuwe server die is gemaakt om te controleren of de gegevens naar verwachting zijn teruggezet.
 
->[!Note]
->De nieuwe server die zijn gemaakt door een punt-in-time restore heeft de dezelfde serverbeheerder en het wachtwoord dat geldig voor de bestaande server op het punt-in-time is hebt gekozen. U kunt het wachtwoord wijzigen van de nieuwe server **overzicht** pagina.
+
+De nieuwe server die door een herstel punt is gemaakt, heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als de bestaande server op het tijdstip van de tijd. U kunt het wacht woord wijzigen op de pagina **overzicht** van de nieuwe server.
+
+De nieuwe server die tijdens een herstel bewerking is gemaakt, heeft geen firewall regels of VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
 
 ## <a name="geo-restore"></a>Geo-herstel
-Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt van de back-up van de bestaande server. Deze nieuwe server kan worden gemaakt in andere regio's dat Azure Database voor MariaDB beschikbaar is.  
 
-1. Selecteer **Databases** > **Azure Database voor MariaDB**. U kunt ook typen **MariaDB** in het zoekvak om de service te vinden.
+Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt op basis van de back-up van die bestaande server. Deze nieuwe server kan worden gemaakt in elke regio die Azure Database for MariaDB beschikbaar is.  
 
-   ![De optie "Azure Database voor MariaDB"](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
+1. Selecteer **data bases** > **Azure database for MariaDB**. U kunt ook **MariaDB** in het zoekvak typen om de service te vinden.
 
-2. In het formulier **bron selecteren** vervolgkeuzelijst kiezen **back-up**. Met deze actie wordt een lijst met servers die geografisch redundante back-ups ingeschakeld hebt. Selecteer een van deze back-ups om te worden van de bron van de nieuwe server.
-   ![Bron selecteren: Lijst van geografisch redundante back-ups en back-up](./media/howto-restore-server-portal/2-georestore.png)
+   ![De optie Azure Database for MariaDB](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
+
+2. Kies in de vervolg keuzelijst **bron selecteren** de optie **back-up**. Met deze actie wordt een lijst met servers geladen waarvoor geo redundante back-ups zijn ingeschakeld. Selecteer een van deze back-ups om de bron van de nieuwe server te zijn.
+   ![bron selecteren: back-up en lijst met geo redundante back-ups](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
-   > Als u een server maakt eerst kan het niet onmiddellijk beschikbaar voor geo-herstel zijn. Het duurt een paar uur voor de metagegevens die nodig zijn om te worden ingevuld.
+   > Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
    >
 
-3. Vul de rest van het formulier in met uw voorkeuren. U kunt een selecteren **locatie**. Na het selecteren van de locatie, kunt u **prijscategorie**. Standaard worden de parameters voor de bestaande server die vanwaar u herstelt weergegeven. U kunt klikken op **OK** zonder dat u wijzigingen aanbrengt die instellingen wilt overnemen. U kunt ook wijzigen **bewerking voor Compute** (indien beschikbaar in de regio u hebt gekozen), aantal **vCores**, **bewaarperiode voor back-up**, en **back-up Optie voor redundantie**. Wijzigen van **prijscategorie** (Basic, algemeen gebruik of geoptimaliseerd voor geheugen) of **opslag** grootte tijdens het terugzetten wordt niet ondersteund.
+3. Vul de rest van het formulier in met uw voor keuren. U kunt een wille keurige **locatie**selecteren. Nadat u de locatie hebt geselecteerd, kunt u **prijs categorie**selecteren. Standaard worden de para meters weer gegeven voor de bestaande server waarvan u wilt herstellen. U kunt op **OK** klikken zonder dat u wijzigingen hoeft aan te brengen. Of u kunt de **generatie** van de berekening wijzigen (indien beschikbaar in de regio die u hebt gekozen), het aantal **vCores**, de **Bewaar periode voor back-ups**en de optie voor de **redundantie van back-ups**. Het wijzigen van de **prijs categorie** (Basic, algemeen of Optimized memory) of **opslag** grootte tijdens het terugzetten wordt niet ondersteund.
 
->[!Note]
->De nieuwe server die is gemaakt door geo-herstel heeft de dezelfde aanmeldnamen van serverbeheerder en het wachtwoord dat is geldig voor de bestaande server op het moment dat het herstel is gestart. Het wachtwoord kan worden gewijzigd van de nieuwe server **overzicht** pagina.
+De nieuwe server die is gemaakt met geo Restore heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als voor de bestaande server op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+
+De nieuwe server die tijdens een herstel bewerking is gemaakt, heeft geen firewall regels of VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
+
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over van de service [back-ups](concepts-backup.md).
-- Meer informatie over [bedrijfscontinuïteit](concepts-business-continuity.md) opties.
+- Meer informatie over de [back-ups](concepts-backup.md) van de service
+- Meer informatie over [replica's](concepts-read-replicas.md)
+- Meer informatie over opties voor [bedrijfs continuïteit](concepts-business-continuity.md)

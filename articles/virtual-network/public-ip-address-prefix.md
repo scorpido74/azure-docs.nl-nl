@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: d33ad5782b78fc7f9ba4803c85f1b17be60e8561
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 964bc915347d11e087da0b34a8d4160d807a4158
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194888"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965404"
 ---
-# <a name="public-ip-address-prefix"></a>Voor voegsel openbaar IP-adres
+# <a name="public-ip-address-prefix"></a>Voorvoegsel van openbaar IP-adres
 
 Een voor voegsel van een openbaar IP-adres is een gereserveerd bereik van IP-adressen voor uw open bare eind punten in Azure. Azure wijst een aaneengesloten adres bereik toe aan uw abonnement op basis van het aantal dat u opgeeft. Zie [open bare IP-adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) als u niet bekend bent met open bare adressen.
 
@@ -39,16 +39,16 @@ Wanneer u resources met een openbaar IP-adres maakt, wijst Azure een beschikbaar
 - U kunt open bare IP-adres bronnen maken op basis van een bekend bereik.
 - U of uw zakelijke partners kunnen Firewall regels maken met bereiken die de open bare IP-adressen bevatten die u momenteel hebt toegewezen, evenals de adressen die u nog niet hebt toegewezen. Dit elimineert de nood zaak om firewall regels te wijzigen wanneer u IP-adressen aan nieuwe resources toewijst.
 - De standaard grootte van een bereik dat u kunt maken, is/28 of 16 IP-adressen.
-- Er zijn geen beperkingen voor het aantal bereiken dat u kunt maken, maar er zijn limieten voor het maximum aantal statische open bare IP-adressen dat u kunt hebben in een Azure-abonnement. Als gevolg hiervan kan het aantal bereiken dat u maakt niet meer statische open bare IP-adressen bevatten dan in uw abonnement. Zie [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)-limieten voor meer informatie.
+- Er zijn geen beperkingen voor het aantal bereiken dat u kunt maken, maar er zijn limieten voor het maximum aantal statische open bare IP-adressen dat u kunt hebben in een Azure-abonnement. Als gevolg hiervan kan het aantal bereiken dat u maakt niet meer statische open bare IP-adressen bevatten dan in uw abonnement. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.
 - De adressen die u maakt met behulp van adressen uit het voor voegsel, kunnen worden toegewezen aan elke Azure-resource waaraan u een openbaar IP-adres kunt toewijzen.
 - U kunt eenvoudig zien welke IP-adressen er zijn toegewezen en nog niet zijn toegewezen binnen het bereik.
 
 ## <a name="scenarios"></a>Scenario's
 U kunt de volgende resources koppelen aan een statisch openbaar IP-adres van een voor voegsel:
 
-|Resource|Scenario|Stappen|
+|Bron|Scenario|Stappen|
 |---|---|---|
-|Virtuele machines| Het koppelen van open bare Ip's van een voor voegsel aan uw virtuele machines in azure reduceert de beheer overhead wanneer het gaat om white list Ip's in een firewall. U kunt eenvoudig een volledig voor voegsel white list met één firewall regel. Wanneer u schaalt met virtuele machines in azure, kunt u IP-adressen koppelen aan hetzelfde voor voegsel kosten, tijd en beheer overhead besparen.| IP-adressen van een voor voegsel aan uw virtuele machine koppelen: 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. [Koppel het IP-adres aan de netwerk interface van de virtuele machine.](virtual-network-network-interface-addresses.md#add-ip-addresses)
+|Virtual Machines| Het koppelen van open bare Ip's van een voor voegsel aan uw virtuele machines in azure reduceert de beheer overhead wanneer het gaat om white list Ip's in een firewall. U kunt eenvoudig een volledig voor voegsel white list met één firewall regel. Wanneer u schaalt met virtuele machines in azure, kunt u IP-adressen koppelen aan hetzelfde voor voegsel kosten, tijd en beheer overhead besparen.| IP-adressen van een voor voegsel aan uw virtuele machine koppelen: 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. [Koppel het IP-adres aan de netwerk interface van de virtuele machine.](virtual-network-network-interface-addresses.md#add-ip-addresses)
 | Standaard load balancers | Het koppelen van open bare Ip's van een voor voegsel aan uw frontend-IP-configuratie of de regel voor uitgaande verbindingen van een Load Balancer zorgt voor vereenvoudiging van uw open bare IP-adres ruimte van Azure. U kunt uw scenario vereenvoudigen door het opschonen van uitgaande verbindingen van een bereik van aaneengesloten IP-adressen die zijn gedefinieerd door het open bare IP-voor voegsel. | IP-adressen van een voor voegsel aan uw Load Balancer koppelen: 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. Wanneer u de Load Balancer maakt, selecteert of werkt u het IP-adres dat u in stap 2 hierboven hebt gemaakt, in als het frontend-IP-adres van uw Load Balancer. |
 | Azure Firewall | U kunt een openbaar IP-adres gebruiken uit een voor voegsel voor uitgaande SNAT. Dit betekent dat al het uitgaande virtuele netwerk verkeer wordt omgezet naar het [Azure firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) open bare IP-adres. Aangezien dit IP-adres afkomstig is van een vooraf bepaald voor voegsel, is het heel eenvoudig om te weten te komen hoe uw open bare IP-Opper vlak in azure eruitziet. | 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. Wanneer u [de Azure-firewall implementeert](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), moet u ervoor zorgen dat u het IP-adres selecteert dat u eerder van het voor voegsel hebt toegewezen.|
 | Application Gateway v2 | U kunt een openbaar IP-adres gebruiken uit een voor voegsel voor uw automatisch schalen en een zone-redundante toepassings gateway v2. Aangezien dit IP-adres afkomstig is van een vooraf bepaald voor voegsel, is het heel eenvoudig om te weten te komen hoe uw open bare IP-Opper vlak in azure eruitziet. | 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. Wanneer u [de Application Gateway implementeert](../application-gateway/quick-create-portal.md#create-an-application-gateway), moet u ervoor zorgen dat u het IP-adres selecteert dat u eerder van het voor voegsel hebt toegewezen.|
@@ -56,9 +56,8 @@ U kunt de volgende resources koppelen aan een statisch openbaar IP-adres van een
 ## <a name="constraints"></a>Beperkingen
 
 - U kunt de IP-adressen voor het voor voegsel niet opgeven. Azure wijst de IP-adressen voor het voor voegsel toe op basis van de grootte die u opgeeft.
-- U kunt een voor voegsel van Maxi maal 16 IP-adressen of een/28 maken. Zie [Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)-limieten voor meer informatie.
+- U kunt een voor voegsel van Maxi maal 16 IP-adressen of een/28 maken. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.
 - U kunt het bereik niet meer wijzigen als u het voor voegsel hebt gemaakt.
-- Het bereik is alleen voor IPv4-adressen. Het bereik bevat geen IPv6-adressen.
 - Alleen statische open bare IP-adressen die zijn gemaakt met de standaard-SKU kunnen worden toegewezen vanuit het bereik van het voor voegsel. Zie [openbaar IP-adres](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)voor meer informatie over open bare IP-adres-sku's.
 - Adressen van het bereik kunnen alleen worden toegewezen aan Azure Resource Manager resources. Adressen kunnen niet worden toegewezen aan resources in het klassieke implementatie model.
 - Alle open bare IP-adressen die zijn gemaakt op basis van het voor voegsel, moeten zich in dezelfde Azure-regio en hetzelfde abonnement bevinden als het voor voegsel en moeten worden toegewezen aan resources in dezelfde regio en hetzelfde abonnement.

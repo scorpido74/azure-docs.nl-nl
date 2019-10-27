@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 89c4bce33b80e988a9da363a89854e921bee30b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 82e07edc615fd8c1ef0ebc84cf57035727bbcdf6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973661"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965264"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Firewall regels van Azure Database for MariaDB server
 Firewalls verhinderen alle toegang tot uw database server totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
@@ -43,15 +43,18 @@ Azure-verbindingen moeten zijn ingeschakeld om toepassingen van Azure toe te sta
 
 ![Toegang tot Azure-Services in de portal toestaan configureren](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Verbinding maken vanaf een VNet
+Als u een beveiligde verbinding wilt maken met uw Azure Database for MariaDB-server vanuit een VNet, kunt u gebruikmaken van [vnet-service-eind punten](./concepts-data-access-security-vnet.md). 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Firewallregels programmatisch beheren
 Naast de Azure Portal kunnen Firewall regels programmatisch worden beheerd met behulp van de Azure CLI. 
 
-<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+Zie ook [Azure database for MariaDB firewall regels maken en beheren met behulp van Azure cli](./howto-manage-firewall-cli.md).
 
 ## <a name="troubleshooting-firewall-issues"></a>Problemen met de firewall oplossen
 Houd rekening met de volgende punten wanneer toegang tot de Microsoft Azure data base for MariaDB-Server service niet werkt zoals verwacht:
 
-* **Wijzigingen in de acceptatie lijst zijn nog niet doorgevoerd:** Het kan vijf minuten duren voordat wijzigingen in de Azure Database for MariaDB Server-firewallconfiguratie van kracht zijn.
+* **Wijzigingen in de acceptatie lijst zijn nog niet doorgevoerd:** Het kan een vertraging van vijf minuten duren voordat wijzigingen in de configuratie van de Azure Database for MariaDB Server-firewall van kracht worden.
 
 * **De aanmelding is niet geautoriseerd of er is een onjuist wacht woord gebruikt:** Als een aanmelding geen machtigingen heeft op de Azure Database for MariaDB server of het gebruikte wacht woord onjuist is, wordt de verbinding met de Azure Database for MariaDB-server geweigerd. Door een firewallinstellingen te maken, krijgen clients alleen de mogelijkheid om te proberen verbinding te maken met de server. Elke client moet alsnog de benodigde beveiligingsreferenties opgeven.
 
@@ -65,6 +68,5 @@ Houd rekening met de volgende punten wanneer toegang tot de Microsoft Azure data
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Azure Database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-portal.md)
-
-<!--
-- [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md) -->
+- [Azure Database for MariaDB firewall regels maken en beheren met Azure CLI](./howto-manage-firewall-cli.md)
+- [VNet-service-eind punten in Azure Database for MariaDB](./concepts-data-access-security-vnet.md)

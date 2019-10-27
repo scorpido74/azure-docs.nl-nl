@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: e1120abb06ec2c777114703cfe3fc7334477aecc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 10/26/2019
+ms.openlocfilehash: 327e4d46ba2bb6cfbf8b7e4a151cc246df2e03c2
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592946"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965314"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een beheerde instantie van Azure SQL Database migreren met behulp van DMS
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 > * Maak een instantie van Azure Database Migration Service.
 > * Maak een migratie project en start online migratie met behulp van Azure Database Migration Service.
 > * De migratie controleren.
-> * Cutover uitvoeren voor de migratie als u klaar bent.
+> * Voer de migratie cutover uit wanneer u klaar bent.
 
 > [!IMPORTANT]
 > Voor online migraties van SQL Server naar een SQL Database beheerd exemplaar met behulp van Azure Database Migration Service, moet u de volledige back-up van de data base en volgende logboek back-ups in de SMB-netwerk share opgeven die door de service kan worden gebruikt om uw data bases te migreren. Azure Database Migration Service initieert geen back-ups, maar gebruikt in plaats daarvan bestaande back-ups, die u mogelijk al hebt als onderdeel van het nood herstel plan voor de migratie.
@@ -44,7 +44,7 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-In dit artikel wordt een online migratie van SQL Server naar een SQL Database beheerd exemplaar beschreven. Zie SQL Server voor een offline migratie [naar een Azure SQL database Managed instance offline migreren met behulp van DMS](tutorial-sql-server-to-managed-instance.md).
+In dit artikel wordt een online migratie van SQL Server naar een SQL Database beheerd exemplaar beschreven. Zie SQL Server voor een offline migratie [naar een SQL database Managed instance offline migreren met behulp van DMS](tutorial-sql-server-to-managed-instance.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -79,7 +79,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Maak een Azure Active Directory-toepassings-ID die de toepassings-ID-sleutel genereert die Azure Database Migration Service kan gebruiken om verbinding te maken met het doel-Azure data base Managed instance en Azure Storage container. Zie het artikel [Portal gebruiken voor het maken van een Azure Active Directory-toepassing en een -service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) voor meer informatie.
 
   > [!NOTE]
-  > Voor Azure Database Migration Service is de machtiging Inzender vereist voor het abonnement voor de opgegeven toepassings-ID. We werken actief om deze machtigings vereisten te verlagen.
+  > Voor Azure Database Migration Service is de machtiging Inzender vereist voor het abonnement voor de opgegeven toepassings-ID. U kunt ook aangepaste rollen maken die de specifieke machtigingen verlenen die Azure Database Migration Service vereist. Zie voor stapsgewijze instructies over het gebruik van aangepaste rollen het artikel [aangepaste rollen voor SQL Server voor het SQL database van online migraties van beheerde exemplaren](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance).
 
 * Maak of noteer een Azure Storage-account in de **Standard-prestatielaag** waarmee de DMS-service de back-upbestanden van de database kan uploaden en gebruiken voor het migreren van databases.  Zorg ervoor dat u het Azure Storage-account maakt in dezelfde regio als de Azure Database Migration Service instantie is gemaakt.
 

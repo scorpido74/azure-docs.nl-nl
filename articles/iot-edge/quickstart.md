@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0c397ca630dffb7671f84919c1e86cbcef645572
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8264030593a1e44b2a50d9f95dce925136eb4d26
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873615"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965994"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quickstart: Uw eerste IoT Edge-module implementeren op een virtueel Windows-apparaat
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quick Start: uw eerste IoT Edge-module implementeren op een virtueel Windows-apparaat
 
 Test Azure IoT Edge in deze Snelstartgids door container code te implementeren op een virtueel IoT Edge-apparaat. Met IoT Edge kunt u code op uw apparaten op afstand beheren zodat u meer van uw workloads naar de rand kunt verzenden. Voor deze Quick Start raden we u aan om een virtuele machine van Azure te gebruiken voor uw IoT Edge-apparaat, zodat u snel een test machine kunt maken, de vereisten installeert en deze vervolgens verwijderen wanneer u klaar bent. 
 
@@ -29,7 +29,7 @@ In deze snelstart leert u de volgende zaken:
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart/install-edge-full.png)
 
-In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert om te worden IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze snelstart implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies bouwen voort op het werk dat u hier doet door modules te implementeren waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
+In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert om te worden IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze zelfstudie implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies zijn een uitbreiding op het werk dat u hier doet. Hierin worden modules geïmplementeerd waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
 
 Als u nog geen actief abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free) aan voordat u begint.
 
@@ -67,7 +67,7 @@ IoT Edge-apparaat:
   1. Selecteer **Verbinden**.
   1. Op het tabblad **RDP** selecteert u **RDP-bestand downloaden**.
 
-  Open dit bestand met verbinding met extern bureaublad om verbinding te maken met uw virtuele Windows-machine met behulp van de naam en `az vm create` het wacht woord van de beheerder die u hebt opgegeven met de opdracht.
+  Open dit bestand met Verbinding met extern bureaublad om verbinding te maken met uw virtuele Windows-machine met behulp van de naam en het wacht woord van de beheerder die u hebt opgegeven met de `az vm create` opdracht.
 
 
 > [!NOTE]
@@ -91,7 +91,7 @@ Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **I
 
    Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
 
-## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren
+## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren.
 
 Registreer een IoT Edge-apparaat bij uw net gemaakte IoT Hub.
 ![Diagram - Een apparaat registreren met een IoT Hub-entiteit](./media/quickstart/register-device.png)
@@ -137,7 +137,7 @@ De stappen in deze sectie worden allemaal op uw IoT Edge apparaat uitgevoerd, du
 
 Gebruik PowerShell om de IoT Edge-runtime te downloaden en te installeren. Gebruik de apparaatverbindingsreeks die u hebt opgehaald via IoT Hub om uw apparaat te configureren.
 
-1. Als u dat nog niet hebt gedaan, volgt u de stappen in [een nieuw Azure IOT edge apparaat registreren](how-to-register-device-portal.md) om uw apparaat te registreren en de Connection String van het apparaat op te halen. 
+1. Als u dat nog niet hebt gedaan, volgt u de stappen in [een nieuw Azure IOT edge apparaat registreren](how-to-register-device.md) om uw apparaat te registreren en de Connection String van het apparaat op te halen.
 
 2. Voer Power shell uit als beheerder.
 

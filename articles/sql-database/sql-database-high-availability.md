@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390702"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965978"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hoge Beschik baarheid en Azure SQL Database
 
-Het doel van de architectuur met hoge Beschik baarheid in Azure SQL Database is om te garanderen dat uw data base 99,99% van de tijd actief is, zonder dat u zich zorgen hoeft te maken over de gevolgen van onderhouds bewerkingen en storingen. Azure beheert automatisch essentiële onderhouds taken, zoals patches, back-ups, Windows-en SQL-upgrades, en niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk storingen.  Wanneer er een patch wordt uitgevoerd voor het onderliggende SQL-exemplaar of een failover wordt uitgevoerd, is de downtime niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Azure SQL Database kan snel worden hersteld, zelfs in de meest kritieke omstandigheden, zodat uw gegevens altijd beschikbaar zijn.
+Het doel van de architectuur met hoge Beschik baarheid in Azure SQL Database is om te garanderen dat uw data base 99,99% van de tijd actief is, zonder dat u zich zorgen hoeft te maken over de gevolgen van onderhouds bewerkingen en storingen. Azure beheert automatisch essentiële onderhouds taken, zoals patches, back-ups, Windows-en SQL-upgrades, en niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten.  Wanneer er een patch wordt uitgevoerd voor het onderliggende SQL-exemplaar of een failover wordt uitgevoerd, is de downtime niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Azure SQL Database kan snel worden hersteld, zelfs in de meest kritieke omstandigheden, zodat uw gegevens altijd beschikbaar zijn.
 
 De oplossing voor hoge Beschik baarheid is zodanig ontworpen dat doorgevoerde gegevens nooit verloren gaan als gevolg van fouten, dat de onderhouds bewerkingen geen invloed hebben op uw werk belasting en dat de data base geen Single Point of Failure is in uw software architectuur. Er zijn geen onderhouds Vensters of downtime die vereisen dat u de werk belasting stopt wanneer de data base wordt bijgewerkt of onderhouden. 
 
@@ -89,12 +89,14 @@ De zone redundante versie van de architectuur met hoge Beschik baarheid wordt ge
 
 [Versneld database herstel (ADR)](sql-database-accelerated-database-recovery.md) is een nieuwe functie van SQL database engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name in de aanwezigheid van langlopende trans acties. ADR is momenteel beschikbaar voor afzonderlijke data bases, elastische Pools en Azure SQL Data Warehouse.
 
-## <a name="testing-database-fault-resiliency"></a>Database fout tolerantie testen
+## <a name="testing-application-fault-resiliency"></a>Toepassings fout tolerantie testen
 
-Hoge Beschik baarheid is een fundamenental onderdeel van Azure SQL Database platform en werkt transparant voor uw database toepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failover-bewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen, van invloed zijn op de toepassing voordat u deze implementeert voor productie. U kunt een speciale API aanroepen om de data base of de elastische pool opnieuw te starten, waardoor de failover wordt geactiveerd. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat de client verbindingen met de nieuwe primaire in een andere AZ worden omgeleid. Naast het testen van de werking van de failover van de bestaande database sessies, kunt u ook controleren of deze van invloed is op de end-to-end-prestaties. Omdat de computer opnieuw moet worden opgestart, is het mogelijk dat er voor elke Data Base of elastische pool slechts één failover-aanroep elke 30 minuten wordt toegestaan. Zie [Data Base-failover](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) en een [elastische pool failover](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)voor meer informatie.       
+Hoge Beschik baarheid is een fundamenteel onderdeel van Azure SQL Database platform dat transparant werkt voor uw database toepassing. We erkennen echter dat u wellicht wilt testen hoe de automatische failover-bewerkingen die worden geïnitieerd tijdens geplande of niet-geplande gebeurtenissen, van invloed zijn op de toepassing voordat u deze implementeert voor productie. U kunt een speciale API aanroepen om een Data Base of een elastische pool opnieuw op te starten, waardoor een failover wordt geactiveerd. In het geval van een zone redundante data base of elastische pool zou de API-aanroep ertoe leiden dat client verbindingen worden omgeleid naar de nieuwe primaire in een beschikbaarheids zone die afwijkt van de beschikbaarheids zone van de oude primaire. Naast het testen van de manier waarop failover van invloed is op bestaande database sessies, kunt u ook controleren of de end-to-end-prestaties worden gewijzigd vanwege wijzigingen in de netwerk latentie. Omdat de computer opnieuw moet worden opgestart, is er voor elke Data Base of elastische pool slechts één failover-aanroep elke 30 minuten toegestaan. 
+
+Een failover kan worden gestart met behulp van REST API of Power shell. Zie failover van een [Data Base](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) en een [elastische pool](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)voor rest API. Zie [invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) en [invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)voor Power shell. De REST API-aanroepen kunnen ook vanuit Azure CLI worden gemaakt met behulp van [AZ rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) Command.
 
 > [!IMPORTANT]
-> De opdracht failover is momenteel niet beschikbaar voor Hypescale-data bases en beheerde instancses.  
+> De opdracht failover is momenteel niet beschikbaar in de grootschalige en voor het beheerde exemplaar.
 
 ## <a name="conclusion"></a>Conclusie
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 455058b8831f6cfaaa0bbc0dd4258633e2b98562
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a8f8b91e2990b85f5bcbd5aef5d70d3b6fb800e1
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957620"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965545"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Bouw energie oplossingen met IoT Central 
 Slimme meters en zonne panelen spelen een belang rijke rol in de trans formatie van de energie-industrie. De slimme meters geven meer besturings elementen en real-time inzichten over het energie verbruik en de groei van het zonne deel van de schermen door braak in Hernieuw bare energie generatie. Het slimme meter-en zonne deel venster voor monitor-apps zijn voorbeeld sjablonen waarmee de verschillende mogelijkheden worden weer gegeven. Partners kunnen gebruikmaken van deze sjablonen om energie oplossingen te bouwen met IoT Central voor hun specifieke behoeften. Geen nieuwe code ring en er zijn geen extra kosten vereist voor het implementeren en gebruiken van deze toepassingen. Meer informatie over energie toepassings sjablonen en hun mogelijkheden.
@@ -62,6 +62,7 @@ Nadat u de app hebt geïmplementeerd, ziet u de gesimuleerde zonne deel venster 
 
 ## <a name="next-steps"></a>Volgende stappen
 Om aan de slag te gaan met het bouwen van een energie oplossing:
-* Implementeer de toepassings sjablonen gratis: [slimme meter app](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [zonne deel venster](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) -app
-* Meer informatie over IoT Central: [overzicht van IOT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central)
-
+* Maak toepassings sjablonen gratis: [slimme meter app](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [zonne deel venster](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) -app
+* Meer informatie over de concepten van de [app monitoring voor slimme meters](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
+* Meer informatie over [app-concepten voor het bewaken van zonneën paneel](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
+* Meer informatie over [IOT Central platform](https://docs.microsoft.com/azure/iot-central/)

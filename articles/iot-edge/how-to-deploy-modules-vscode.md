@@ -1,6 +1,6 @@
 ---
-title: Implementeren van modules in Visual Studio Code - Azure IoT Edge | Microsoft Docs
-description: Visual Studio Code gebruiken om te implementeren van modules voor een IoT Edge-apparaat
+title: Modules implementeren vanuit Visual Studio code-Azure IoT Edge | Microsoft Docs
+description: Visual Studio code gebruiken om modules op een IoT Edge apparaat te implementeren
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,33 +10,33 @@ ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 61ea7eb0b81c5489ad2bf20e8148d2481bb4fb13
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c3d721427075736138ba73fda51a4fd515125f1c
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840178"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964862"
 ---
-# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modules van Visual Studio Code implementeren
+# <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Azure IoT Edge-modules implementeren vanuit Visual Studio code
 
-Als u IoT Edge modules met uw zakelijke logica maken, wilt u deze implementeren op uw apparaten te werken aan de rand. Als u meerdere modules die samenwerken om te verzamelen en verwerken van gegevens hebt, kunt u ze in één keer implementeren en declareert de routeringsregels waarmee ze zijn verbonden.
+Wanneer u IoT Edge modules met uw bedrijfs logica hebt gemaakt, wilt u deze implementeren op uw apparaten zodat ze aan de rand kunnen worden uitgevoerd. Als u meerdere modules hebt die samen werken om gegevens te verzamelen en te verwerken, kunt u ze allemaal tegelijk implementeren en de routerings regels declareren waarmee ze verbinding maken.
 
-In dit artikel laat zien hoe een manifest van de implementatie JSON maken en vervolgens pusht u de implementatie naar een IoT Edge-apparaat met dat bestand. Zie voor meer informatie over het maken van een implementatie die gericht is op meerdere apparaten op basis van hun gedeelde labels [implementeren en controleren van IoT Edge-modules op schaal](how-to-deploy-monitor.md)
+In dit artikel wordt beschreven hoe u een JSON-implementatie manifest maakt en dat bestand gebruikt om de implementatie naar een IoT Edge apparaat te pushen. Voor informatie over het maken van een implementatie die is gericht op meerdere apparaten op basis van hun gedeelde labels, Zie [IOT Edge modules implementeren en bewaken op schaal](how-to-deploy-monitor.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [IoT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
-* Een [IoT Edge-apparaat](how-to-register-device-portal.md) met IoT Edge-runtime geïnstalleerd.
+* Een [IOT-hub](../iot-hub/iot-hub-create-through-portal.md) in uw Azure-abonnement.
+* Een [IOT edge apparaat](how-to-register-device.md#register-with-visual-studio-code) waarop de IOT Edge-runtime is geïnstalleerd.
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Azure IoT-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) voor Visual Studio Code.
 
-## <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
+## <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren
 
-Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. Zie voor meer informatie over hoe implementatie werk manifesten en hoe ze worden gemaakt, [te begrijpen hoe IoT Edge-modules kunnen worden gebruikt, geconfigureerd en opnieuw gebruikt](module-composition.md).
+Een implementatie manifest is een JSON-document waarin wordt beschreven welke modules moeten worden geïmplementeerd, hoe gegevens stromen tussen de modules en gewenste eigenschappen van de module apparaatdubbels. Zie [begrijpen hoe IOT Edge modules kunnen worden gebruikt, geconfigureerd en opnieuw worden gebruikt](module-composition.md)voor meer informatie over hoe implementatie manifesten werken en hoe u ze kunt maken.
 
-Voor het implementeren van modules met behulp van Visual Studio Code, sla het manifest implementatie lokaal als een. JSON-bestand. Wanneer u de opdracht uit om de configuratie van toepassing op het apparaat uitvoert, wordt u het pad in de volgende sectie.
+Als u modules wilt implementeren met Visual Studio code, slaat u het implementatie manifest lokaal op als een. JSON-bestand. Wanneer u de opdracht uitvoert om de configuratie toe te passen op uw apparaat, gebruikt u het bestandspad in de volgende sectie.
 
-Hier volgt een manifest eenvoudige implementatie met één module als een voorbeeld:
+Hier volgt een basis implementatie manifest met een module als voor beeld:
 
    ```json
    {
@@ -104,19 +104,19 @@ Hier volgt een manifest eenvoudige implementatie met één module als een voorbe
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Meld u aan voor toegang tot uw IoT-hub
 
-De Azure IoT-uitbreidingen voor Visual Studio Code kunt u bewerkingen uitvoeren met uw IoT-hub. Voor deze bewerkingen om te werken, moet u zich aanmelden bij uw Azure-account en selecteer de IoT-hub die u bezig bent.
+U kunt de Azure IoT-uitbrei dingen voor Visual Studio code gebruiken om bewerkingen uit te voeren met uw IoT-hub. Als u deze bewerkingen wilt gebruiken, moet u zich aanmelden bij uw Azure-account en de IoT-hub selecteren waaraan u werkt.
 
-1. Open in Visual Studio Code, de **Explorer** weergeven.
+1. Open in Visual Studio code de weer gave **Explorer** .
 
-1. Vouw aan de onderkant van de Verkenner van de **Azure IoT Hub-apparaten** sectie.
+1. Vouw de sectie **Azure IOT Hub-apparaten** aan de onderkant van de Explorer uit.
 
-   ![Vouw de sectie Azure IoT Hub-apparaten](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Sectie Azure IoT Hub-apparaten uitvouwen](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
-1. Klik op de **...**  in de **Azure IoT Hub-apparaten** sectiekop. Als u het beletselteken niet ziet, Beweeg de muisaanwijzer over de header.
+1. Klik op de sectie **..** . in de koptekst van de **Azure IOT Hub-apparaten** . Als u het weglatings teken niet ziet, beweegt u de muis aanwijzer over de koptekst.
 
-1. Kies **IoT-Hub selecteren**.
+1. Kies **IOT hub selecteren**.
 
-1. Als u niet bent aangemeld bij uw Azure-account, volg de aanwijzingen om dit te doen.
+1. Als u niet bent aangemeld bij uw Azure-account, volgt u de aanwijzingen om dit te doen.
 
 1. Selecteer uw Azure-abonnement.
 
@@ -124,31 +124,31 @@ De Azure IoT-uitbreidingen voor Visual Studio Code kunt u bewerkingen uitvoeren 
 
 ## <a name="deploy-to-your-device"></a>Uw apparaat implementeren
 
-U implementeren modules naar uw apparaat door het toepassen van het manifest implementatie die u hebt geconfigureerd met de modulegegevens.
+U implementeert modules op uw apparaat door het implementatie manifest toe te passen dat u met de module gegevens hebt geconfigureerd.
 
-1. Vouw in de weergave van Visual Studio Code explorer de **Azure IoT Hub-apparaten** sectie.
+1. Vouw in de weer gave Visual Studio code Explorer het gedeelte **Azure IOT Hub-apparaten** uit.
 
 1. Klik met de rechter muisknop op het IoT Edge apparaat dat u wilt configureren met het implementatie manifest.
 
     > [!TIP]
     > Als u wilt controleren of het apparaat dat u hebt gekozen een IoT Edge apparaat is, selecteert u dit om de lijst met modules uit te vouwen en de aanwezigheid van **$edgeHub** en **$edgeAgent**te controleren. Elk IoT Edge apparaat bevat deze twee modules.
 
-1. Selecteer **implementatie voor één apparaat maken**.
+1. Selecteer **implementatie maken voor één apparaat**.
 
-1. Navigeer naar de implementatie van JSON-manifestbestand die u wilt gebruiken en klikt u op **Selecteer Edge-implementatie Manifest**.
+1. Navigeer naar het JSON-bestand van het implementatie manifest dat u wilt gebruiken en klik op **Edge-implementatie manifest selecteren**.
 
-   ![Manifest van de Edge-implementatie selecteren](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
+   ![Een Edge-implementatie manifest selecteren](./media/how-to-deploy-modules-vscode/select-deployment-manifest.png)
 
-De resultaten van uw implementatie zijn vermeld in de VS Code-uitvoer. Geslaagde implementaties worden toegepast binnen een paar minuten als het doelapparaat wordt uitgevoerd en die zijn verbonden met internet.
+De resultaten van uw implementatie worden afgedrukt in de VS code-uitvoer. Geslaagde implementaties worden binnen enkele minuten toegepast als het doel apparaat actief is en is verbonden met internet.
 
-## <a name="view-modules-on-your-device"></a>Modules weergeven op uw apparaat
+## <a name="view-modules-on-your-device"></a>Modules op uw apparaat weer geven
 
-Nadat u hebt modules geïmplementeerd op uw apparaat, vindt u alle mappen in de **Azure IoT Hub-apparaten** sectie. Selecteer de pijl naast uw IoT Edge-apparaat uit te vouwen. De huidige actieve modules worden weergegeven.
+Zodra u modules hebt geïmplementeerd op uw apparaat, kunt u deze bekijken in de sectie **Azure IOT Hub-apparaten** . Selecteer de pijl naast uw IoT Edge apparaat om het uit te vouwen. Alle modules die momenteel worden uitgevoerd, worden weer gegeven.
 
-Als u onlangs nieuwe modules geïmplementeerd op een apparaat, Beweeg de muisaanwijzer over de **Azure IoT Hub-apparaten** sectie header en selecteer het vernieuwingspictogram op de weergave bijwerken.
+Als u onlangs nieuwe modules op een apparaat hebt geïmplementeerd, houdt u de muis aanwijzer over de sectie **Azure IOT Hub-apparaten** en selecteert u het pictogram Vernieuwen om de weer gave bij te werken.
 
-Met de rechtermuisknop op de naam van een module bekijken en bewerken van de moduledubbel.
+Klik met de rechter muisknop op de naam van een module om de module te bekijken en te bewerken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [implementeren en controleren van IoT Edge-modules op schaal](how-to-deploy-monitor.md)
+Meer informatie over het [implementeren en bewaken van IOT Edge modules op schaal](how-to-deploy-monitor.md)

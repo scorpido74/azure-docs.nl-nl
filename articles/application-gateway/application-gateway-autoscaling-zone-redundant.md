@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3b552d37ce176e76bc0a4230a24a910543e5ea0d
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177451"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965127"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatisch schalen en zone-redundantie in Application Gateway v2 
 
@@ -41,8 +41,8 @@ De SKU Standard_v2 en WAF_v2 is beschikbaar in de volgende regio's: Noord-Centra
 
 Met de v2-SKU wordt het prijs model aangestuurd door verbruik en niet meer gekoppeld aan het aantal exemplaren of de grootte van het exemplaar. De v2-SKU-prijzen hebben twee onderdelen:
 
-- **Vaste prijs** : dit is elk uur (of een gedeeltelijke uur) prijs om een Standard_v2-of WAF_v2-gateway in te richten.
-- **Eenheids prijs van capaciteit** : Dit zijn kosten op basis van verbruik, die naast de vaste kosten worden berekend. Kosten voor capaciteitseenheden worden ook per uur of per deel van een uur berekend. Er zijn drie dimensies voor capaciteitseenheden: rekeneenheid, permanente verbinding en doorvoer. Rekeneenheid is een maateenheid voor de verbruikte processorcapaciteit. Factoren die invloed hebben op Compute-eenheid zijn TLS-verbindingen per seconde, berekeningen voor het herschrijven van URL'S en de verwerking van WAF-regels. Permanente verbinding is een meting van de tot stand gebrachte TCP-verbindingen met de toepassings gateway in een bepaald facturerings interval. De door Voer is het gemiddelde aantal megabits per seconde dat door het systeem wordt verwerkt in een opgegeven facturerings interval.
+- **Vaste prijs** : dit is elk uur (of een gedeeltelijke uur) prijs om een Standard_v2-of WAF_v2-gateway in te richten. 0 extra minimum aantal exemplaren garandeert nog steeds een hoge Beschik baarheid van de service, die altijd is opgenomen in een vaste prijs.
+- **Eenheids prijs van capaciteit** : dit is een kosten op basis van verbruik die naast de vaste kosten worden berekend. Kosten voor capaciteitseenheden worden ook per uur of per deel van een uur berekend. Er zijn drie dimensies voor capaciteitseenheden: rekeneenheid, permanente verbinding en doorvoer. Rekeneenheid is een maateenheid voor de verbruikte processorcapaciteit. Factoren die invloed hebben op Compute-eenheid zijn TLS-verbindingen per seconde, berekeningen voor het herschrijven van URL'S en de verwerking van WAF-regels. Permanente verbinding is een meting van de tot stand gebrachte TCP-verbindingen met de toepassings gateway in een bepaald facturerings interval. De door Voer is het gemiddelde aantal megabits per seconde dat door het systeem wordt verwerkt in een opgegeven facturerings interval.  De facturering vindt plaats op het niveau van de capaciteits eenheid voor alle boven het gereserveerde exemplaar aantal.
 
 Elke capaciteits eenheid bestaat uit Maxi maal 1 Compute-eenheid of 2500 permanente verbindingen, of door Voer van 2,22-Mbps.
 
@@ -77,7 +77,7 @@ Totale prijs = $148,8 + $297,6 = $446,4
 
 **Voor beeld 2**
 
-Een Application Gateway standard_v2 is ingericht voor een maand en gedurende deze tijd worden er 25 nieuwe SSL-verbindingen per seconde ontvangen, gemiddeld 8,88 Mbps gegevens overdracht. Als er verbinding is met de korte levens duur, is uw prijs:
+Een Application Gateway standard_v2 wordt ingericht voor een maand, met een minimum van 0 instanties en gedurende deze periode worden er 25 nieuwe SSL-verbindingen per seconde ontvangen, gemiddeld 8,88-Mbps gegevens overdracht. Als er verbinding is met de korte levens duur, is uw prijs:
 
 Vaste prijs = 744 (uren) * $0,20 = $148,8
 
@@ -85,10 +85,37 @@ Eenheids prijs van capaciteit = 744 (uur) * Max (25/50 reken eenheid voor verbin
 
 Totale prijs = $148.8 + 23.81 = $172,61
 
+Zoals u kunt zien, wordt u alleen gefactureerd voor vier capaciteits eenheden, niet voor het hele exemplaar. 
+
 > [!NOTE]
 > De functie Max retourneert de grootste waarde in een paar waarden.
 
+
 **Voor beeld 3**
+
+Een Application Gateway standard_v2 is ingericht voor een maand, met een minimum van vijf exemplaren. Ervan uitgaande dat er geen verkeer is en er geen verbinding is, is uw prijs:
+
+Vaste prijs = 744 (uren) * $0,20 = $148,8
+
+Eenheids prijs van capaciteit = 744 (uur) * Max (0/50 reken eenheid voor verbindingen per seconde, 0/2.22 capaciteits eenheid voor door Voer) * $0,008 = 744 * 50 * 0,008 = $297,60
+
+Totale prijs = $148.80 + 297.60 = $446,4
+
+In dit geval wordt u gefactureerd voor het geheel van de vijf instanties, zelfs als er geen verkeer is.
+
+**Voor beeld 4**
+
+Een Application Gateway standard_v2 is ingericht voor een maand, met een minimum van vijf instanties, maar deze keer is een gemiddelde van 125-Mbps-gegevens overdracht en 25 SSL-verbindingen per seconde. Ervan uitgaande dat er geen verkeer is en er geen verbinding is, is uw prijs:
+
+Vaste prijs = 744 (uren) * $0,20 = $148,8
+
+Eenheids prijs van capaciteit = 744 (uur) * Max (25/50 reken eenheid voor verbindingen per seconde, 125/2.22-capaciteits eenheid voor door Voer) * $0,008 = 744 * 57 * 0,008 = $339,26
+
+Totale prijs = $148.80 + 339.26 = $488,06
+
+In dit geval wordt u gefactureerd voor de volledige 5 instanties, plus 7 capaciteits eenheden (7/10 van een exemplaar).  
+
+**Voor beeld 5**
 
 Een Application Gateway WAF_v2 is ingericht voor een maand. Gedurende deze periode ontvangt het 25 nieuwe SSL-verbindingen per seconde, gemiddelde van 8,88-Mbps-gegevens overdracht en heeft 80 aanvragen per seconde. Als er een korte levens duur is en de berekening van de reken eenheid voor de toepassing 10 RPS per reken eenheid ondersteunt, is uw prijs:
 
@@ -105,7 +132,7 @@ Totale prijs = $267,84 + $85,71 = $353,55
 
 Application Gateway en WAF kunnen worden geconfigureerd om in twee modi te schalen:
 
-- Automatisch **schalen** : als automatische schaling is ingeschakeld, worden de Application Gateway-en WAF v2-sku's omhoog of omlaag geschaald op basis van de vereisten voor toepassings verkeer. Deze modus biedt een betere elasticiteit voor uw toepassing en elimineert de nood zaak om de grootte van de toepassings gateway of het aantal instanties te raden. Met deze modus kunt u ook kosten besparen door te voor komen dat de gateway op piek ingerichte capaciteit wordt uitgevoerd voor de verwachte maximale belasting van het verkeer. U moet een minimum en optioneel maximum aantal exemplaren opgeven. De minimale capaciteit zorgt ervoor dat Application Gateway en WAF v2 niet onder het opgegeven minimum aantal instanties vallen, zelfs als er geen verkeer is. Elk exemplaar telt als 10 extra gereserveerde capaciteits eenheden. 0 betekent geen gereserveerde capaciteit en is uitsluitend automatisch geschaald. 0 extra minimum aantal exemplaren garandeert nog steeds een hoge Beschik baarheid van de service, die altijd is opgenomen in een vaste prijs. U kunt eventueel ook een maximum aantal exemplaren opgeven, waardoor het Application Gateway niet groter wordt dan het opgegeven aantal exemplaren. U wordt gefactureerd voor de hoeveelheid verkeer die door de gateway wordt geleverd. Het aantal exemplaren kan variëren van 0 tot en met 125. De standaard waarde voor het maximum aantal exemplaren is 20 als deze niet is opgegeven. 
+- Automatisch **schalen** : als automatische schaling is ingeschakeld, worden de Application Gateway-en WAF v2-sku's omhoog of omlaag geschaald op basis van de vereisten voor toepassings verkeer. Deze modus biedt een betere elasticiteit voor uw toepassing en elimineert de nood zaak om de grootte van de toepassings gateway of het aantal instanties te raden. Met deze modus kunt u ook kosten besparen door te voor komen dat de gateway op piek ingerichte capaciteit wordt uitgevoerd voor de verwachte maximale belasting van het verkeer. U moet een minimum en optioneel maximum aantal exemplaren opgeven. De minimale capaciteit zorgt ervoor dat Application Gateway en WAF v2 niet onder het opgegeven minimum aantal instanties vallen, zelfs als er geen verkeer is. Elk exemplaar telt als 10 extra gereserveerde capaciteits eenheden. 0 betekent geen gereserveerde capaciteit en is uitsluitend automatisch geschaald. 0 extra minimum aantal exemplaren garandeert nog steeds een hoge Beschik baarheid van de service, die altijd is opgenomen in een vaste prijs. U kunt eventueel ook een maximum aantal exemplaren opgeven, waardoor het Application Gateway niet groter wordt dan het opgegeven aantal exemplaren. U wordt gefactureerd voor de hoeveelheid verkeer die door de gateway wordt geleverd. Het aantal exemplaren kan variëren van 0 tot en met 125. De standaard waarde voor het maximum aantal exemplaren is 20 als deze niet is opgegeven.
 - **Hand matig** : u kunt ook hand matige modus kiezen waarbij de gateway niet automatisch wordt geschaald. Als er in deze modus meer verkeer is dan wat Application Gateway of WAF kan verwerken, kan dit leiden tot verlies van verkeer. Bij hand matige modus wordt het aantal exemplaren opgegeven dat verplicht is. Aantal exemplaren kan variëren van 1 tot 125 exemplaren.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Vergelijking van functies tussen v1 SKU en v2 SKU

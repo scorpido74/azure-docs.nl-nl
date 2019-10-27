@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 979fa8bed99a8244e9ebae9de4b615bfac4bd773
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949713"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72966461"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -33,7 +33,7 @@ Beheerde schijven zijn geïntegreerd met beschikbaarheids sets om ervoor te zorg
 
 ### <a name="integration-with-availability-zones"></a>Integratie met Beschikbaarheidszones
 
-Managed disks biedt ondersteuning voor [Beschikbaarheidszones](../articles/availability-zones/az-overview.md). Dit is een aanbieding met hoge Beschik baarheid die uw toepassingen beschermt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%.
+Managed disks biedt ondersteuning voor [Beschikbaarheidszones](../articles/availability-zones/az-overview.md). Dit is een aanbieding met hoge Beschik baarheid die uw toepassingen beschermt tegen Data Center-fouten. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. Met beschikbaarheidszones biedt Azure de beste uptime SLA voor VM’s van de branche, van 99,99%.
 
 ### <a name="azure-backup-support"></a>Ondersteuning voor Azure Backup
 
@@ -51,11 +51,11 @@ U kunt op [rollen gebaseerd toegangs beheer (RBAC) van Azure](../articles/role-b
 
 ## <a name="encryption"></a>Versleuteling
 
-Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is Storage Service Encryption (SSE), die wordt uitgevoerd door de opslag service. De tweede is Azure Disk Encryption (ADE), die u kunt inschakelen op het besturings systeem en de gegevens schijven voor uw virtuele machines.
+Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is SSE (server side Encryption), die door de opslag service wordt uitgevoerd. De tweede is Azure Disk Encryption (ADE), die u kunt inschakelen op het besturings systeem en de gegevens schijven voor uw virtuele machines.
 
-### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+### <a name="server-side-encryption"></a>Versleuteling aan de serverzijde
 
-[Azure Storage-service versleuteling](../articles/storage/common/storage-service-encryption.md) biedt versleuteling-at-rest en beschermt uw gegevens om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. SSE is standaard ingeschakeld voor alle beheerde schijven, moment opnamen en installatie kopieën in alle regio's waar Managed disks beschikbaar zijn. Ga naar de [pagina met Managed disks Veelgestelde vragen](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
+[Azure server-side Encryption](../articles/storage/common/storage-service-encryption.md) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. Versleuteling aan de server zijde is standaard ingeschakeld voor alle beheerde schijven, moment opnamen en installatie kopieën in alle regio's waar beheerde schijven beschikbaar zijn. Ga naar de [pagina met Managed disks Veelgestelde vragen](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 

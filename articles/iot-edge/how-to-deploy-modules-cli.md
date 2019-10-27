@@ -1,6 +1,6 @@
 ---
-title: Implementeren van modules uit vanaf de opdrachtregel - Azure IoT Edge | Microsoft Docs
-description: De IoT-extensie voor Azure CLI gebruiken om te implementeren van modules voor een IoT Edge-apparaat
+title: Modules implementeren vanaf de opdracht regel-Azure IoT Edge | Microsoft Docs
+description: De IoT-extensie voor Azure CLI gebruiken om modules op een IoT Edge apparaat te implementeren
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,35 +10,35 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aa5c4747238b2f2427be3e57c3e84e03c81fd609
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c8cd6e2d13e252f9a7560b55eca58341e791db5a
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541760"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964928"
 ---
-# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure IoT Edge-modules met Azure CLI implementeren
+# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure IoT Edge-modules implementeren met Azure CLI
 
-Als u IoT Edge modules met uw zakelijke logica maken, wilt u deze implementeren op uw apparaten te werken aan de rand. Als u meerdere modules die samenwerken om te verzamelen en verwerken van gegevens hebt, kunt u ze in één keer implementeren en declareert de routeringsregels waarmee ze zijn verbonden.
+Wanneer u IoT Edge modules met uw bedrijfs logica hebt gemaakt, wilt u deze implementeren op uw apparaten zodat ze aan de rand kunnen worden uitgevoerd. Als u meerdere modules hebt die samen werken om gegevens te verzamelen en te verwerken, kunt u ze allemaal tegelijk implementeren en de routerings regels declareren waarmee ze verbinding maken.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open-source, cross-platform opdrachtregelprogramma voor het beheren van Azure-resources, zoals IoT Edge. Hiermee kunt u voor het beheren van Azure IoT Hub-resources, device provisioning service-exemplaren en gekoppelde hubs buiten het vak. Azure CLI verrijkt de nieuwe IoT-extensie met functies zoals Apparaatbeheer en de volledige functionaliteit van IoT Edge.
+[Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open source-opdracht regel programma voor meerdere platformen voor het beheer van Azure-resources, zoals IOT Edge. U kunt hiermee Azure IoT Hub-resources, Device Provisioning Service-instanties en gekoppelde-hubs uit het vak beheren. De nieuwe IoT-extensie verrijkt Azure CLI met functies als Apparaatbeheer en volledige IoT Edge mogelijkheid.
 
-In dit artikel laat zien hoe een manifest van de implementatie JSON maken en vervolgens pusht u de implementatie naar een IoT Edge-apparaat met dat bestand. Zie voor meer informatie over het maken van een implementatie die gericht is op meerdere apparaten op basis van hun gedeelde labels [implementeren en controleren van IoT Edge-modules op schaal](how-to-deploy-monitor-cli.md)
+In dit artikel wordt beschreven hoe u een JSON-implementatie manifest maakt en dat bestand gebruikt om de implementatie naar een IoT Edge apparaat te pushen. Voor informatie over het maken van een implementatie die is gericht op meerdere apparaten op basis van hun gedeelde labels, Zie [IOT Edge modules implementeren en bewaken op schaal](how-to-deploy-monitor-cli.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een [IoT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement.
-* Een [IoT Edge-apparaat](how-to-register-device-cli.md) met IoT Edge-runtime geïnstalleerd.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet ten minste 2.0.24 of hoger. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
-* De [IoT-extensie voor Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
+* Een [IOT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement.
+* Een [IOT edge apparaat](how-to-register-device.md#register-with-the-azure-cli) waarop de IOT Edge-runtime is geïnstalleerd.
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet mini maal 2.0.24 of hoger zijn. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
+* De [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension).
 
-## <a name="configure-a-deployment-manifest"></a>Een manifest van de implementatie configureren
+## <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren
 
-Het manifest voor een implementatie is een JSON-document waarin wordt beschreven welke modules te implementeren, hoe gegevens stromen tussen de modules, en de gewenste eigenschappen van de moduledubbels. Zie voor meer informatie over hoe implementatie werk manifesten en hoe ze worden gemaakt, [te begrijpen hoe IoT Edge-modules kunnen worden gebruikt, geconfigureerd en opnieuw gebruikt](module-composition.md).
+Een implementatie manifest is een JSON-document waarin wordt beschreven welke modules moeten worden geïmplementeerd, hoe gegevens stromen tussen de modules en gewenste eigenschappen van de module apparaatdubbels. Zie [begrijpen hoe IOT Edge modules kunnen worden gebruikt, geconfigureerd en opnieuw worden gebruikt](module-composition.md)voor meer informatie over hoe implementatie manifesten werken en hoe u ze kunt maken.
 
-Sla het manifest van implementatie lokaal als een .json-bestand voor het implementeren van modules met behulp van de Azure CLI. Wanneer u de opdracht uit om de configuratie van toepassing op het apparaat uitvoert, wordt u het pad in de volgende sectie.
+Als u modules wilt implementeren met behulp van de Azure CLI, moet u het implementatie manifest lokaal opslaan als een. JSON-bestand. Wanneer u de opdracht uitvoert om de configuratie toe te passen op uw apparaat, gebruikt u het bestandspad in de volgende sectie.
 
-Hier volgt een manifest eenvoudige implementatie met één module als een voorbeeld:
+Hier volgt een basis implementatie manifest met een module als voor beeld:
 
    ```json
    {
@@ -106,23 +106,23 @@ Hier volgt een manifest eenvoudige implementatie met één module als een voorbe
 
 ## <a name="deploy-to-your-device"></a>Uw apparaat implementeren
 
-U implementeren modules naar uw apparaat door het toepassen van het manifest implementatie die u hebt geconfigureerd met de modulegegevens.
+U implementeert modules op uw apparaat door het implementatie manifest toe te passen dat u met de module gegevens hebt geconfigureerd.
 
-Wijzig de mappen in de map waarin de implementatie van het manifest is opgeslagen. Als u een van de VS code IOT Edge sjablonen hebt gebruikt, gebruikt `deployment.json` u het bestand in de map **config** van uw map met oplossingen `deployment.template.json` en niet in het bestand.
+Wijzig de mappen in de map waarin uw implementatie manifest is opgeslagen. Als u een van de VS code IoT Edge sjablonen hebt gebruikt, gebruikt u het `deployment.json`-bestand in de map **config** van de map met oplossingen en niet het `deployment.template.json`-bestand.
 
-Gebruik de volgende opdracht toe te passen van de configuratie op een IoT Edge-apparaat:
+Gebruik de volgende opdracht om de configuratie toe te passen op een IoT Edge apparaat:
 
    ```cli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-De apparaat-id-parameter is hoofdlettergevoelig. De inhoud parameter verwijst naar de implementatie van het manifest-bestand dat u hebt opgeslagen.
+De para meter voor de apparaat-ID is hoofdletter gevoelig. De inhouds parameter verwijst naar het manifest bestand van de implementatie dat u hebt opgeslagen.
 
-   ![AZ iot edge set-modules uitvoer](./media/how-to-deploy-cli/set-modules.png)
+   ![AZ IOT Edge set-modules output](./media/how-to-deploy-cli/set-modules.png)
 
-## <a name="view-modules-on-your-device"></a>Modules weergeven op uw apparaat
+## <a name="view-modules-on-your-device"></a>Modules op uw apparaat weer geven
 
-Nadat u hebt modules geïmplementeerd op uw apparaat, vindt u alle mappen met de volgende opdracht:
+Zodra u modules hebt geïmplementeerd op uw apparaat, kunt u ze weer geven met de volgende opdracht:
 
 De modules op uw IoT Edge-apparaat bekijken:
 
@@ -130,10 +130,10 @@ De modules op uw IoT Edge-apparaat bekijken:
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-De apparaat-id-parameter is hoofdlettergevoelig.
+De para meter voor de apparaat-ID is hoofdletter gevoelig.
 
-   ![AZ iot hub-module-identity-lijstuitvoer](./media/how-to-deploy-cli/list-modules.png)
+   ![AZ IOT hub module-uitvoer van de lijst met identiteiten](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het [implementeren en controleren van IoT Edge-modules op schaal](how-to-deploy-monitor.md)
+Meer informatie over het [implementeren en bewaken van IOT Edge modules op schaal](how-to-deploy-monitor.md)

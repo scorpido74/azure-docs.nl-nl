@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 908e44ef17dcfcf7042eab32cfd6d1fc3a565ac7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927121"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965514"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage firewalls en virtuele netwerken configureren
 
@@ -358,11 +358,11 @@ U kunt IP-netwerk regels voor opslag accounts beheren via de Azure Portal, Power
 
 ## <a name="exceptions"></a>Uitzonderingen
 
-Met netwerk regels kunt u een beveiligde omgeving maken voor toegang tussen uw toepassingen en uw gegevens voor de meeste scenario's. Sommige toepassingen gebruiken echter services die niet uniek kunnen worden geïsoleerd via de regels voor het virtuele netwerk of IP-adres. Maar dergelijke services moeten worden verleend aan het opslag account om de volledige functionaliteit van de toepassing in te scha kelen. U kunt de uitzonde ring ***vertrouwde micro soft-Services...*** gebruiken om sommige toegangs scenario's voor uw gegevens, Logboeken of analyses in te scha kelen.
+Met netwerk regels kunt u een beveiligde omgeving maken voor verbindingen tussen uw toepassingen en uw gegevens voor de meeste scenario's. Sommige toepassingen gebruiken echter services die niet uniek kunnen worden geïsoleerd via de regels voor het virtuele netwerk of IP-adres. Maar dergelijke services moeten aan de opslag worden verleend om de functionaliteit van de volledige toepassing mogelijk te maken. In dergelijke situaties kunt u de instelling ***vertrouwde micro soft-Services toestaan...*** gebruiken om toegang tot uw gegevens, Logboeken of analyses mogelijk te maken.
 
 ### <a name="trusted-microsoft-services"></a>Vertrouwde micro soft-Services
 
-Sommige micro soft-services die vanuit netwerken werken, kunnen niet via bestaande netwerk regels toegang worden verleend. U kunt een subset van dergelijke vertrouwde micro soft-Services toegang geven tot het opslag account, terwijl netwerk regels voor andere apps worden onderhouden. Deze services kunnen vervolgens sterke verificatie gebruiken om verbinding te maken met een opslag account. We bieden twee typen vertrouwde toegang voor micro soft-Services.
+Sommige micro soft-services werken vanuit netwerken die niet in uw netwerk regels kunnen worden opgenomen. U kunt een subset van dergelijke vertrouwde micro soft-Services toegang geven tot het opslag account, terwijl netwerk regels voor andere apps worden onderhouden. Deze services kunnen vervolgens sterke verificatie gebruiken om veilig verbinding te maken met uw opslag account. We bieden twee typen vertrouwde toegang voor micro soft-Services.
 
 - Resources van sommige services kunnen toegang krijgen voor Select-bewerkingen, zoals het schrijven van Logboeken of voor het maken van back-ups.
 - Aan een bepaald exemplaar van sommige services kan toegang worden verleend door [een RBAC-rol](storage-auth-aad.md#assign-rbac-roles-for-access-rights) toe te wijzen aan het bron exemplaar.
@@ -384,7 +384,7 @@ Wanneer u de optie **vertrouwde micro soft-Services toestaan...** uitzonde ring 
 | Azure-netwerken         | Microsoft.Network          | Sla logboeken voor netwerk verkeer op en Analyseer deze. [Meer informatie](/azure/network-watcher/network-watcher-packet-capture-overview). |
 | Azure Site Recovery      | Micro soft. SiteRecovery     | Schakel replicatie in voor herstel na nood gevallen van virtuele Azure IaaS-machines wanneer u gebruikmaakt van cache-, bron-of doel opslag accounts die gebruikmaken van een firewall.  [Meer informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
-Met de uitzonde ring ' **vertrouwde micro soft-Services toestaan...** ' kunnen specifieke instanties van deze services toegang krijgen tot het opslag account als aan de [aan het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het exemplaar een RBAC-rol is toegewezen.
+Met de uitzonde ring **vertrouwde micro soft-Services toestaan...** kunnen bepaalde instanties van deze services toegang krijgen tot het opslag account als aan de [aan het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het exemplaar een RBAC-rol is toegewezen.
 
 | Service                  | Naam van resource provider          | Doel                            |
 | :----------------------- | :------------------------------ | :--------------------------------- |
@@ -396,7 +396,7 @@ Met de uitzonde ring ' **vertrouwde micro soft-Services toestaan...** ' kunnen s
 
 ### <a name="storage-analytics-data-access"></a>Opslag Analytics-gegevens toegang
 
-In sommige gevallen is toegang voor het lezen van Diagnostische logboeken en metrische gegevens vereist van buiten de grens van het netwerk. Wanneer u vertrouwde services toegang tot het opslag account configureert, kunt u lees toegang toestaan voor de logboek bestanden, metrische tabellen of beide. [Meer informatie over het werken met Storage Analytics.](/azure/storage/storage-analytics)
+In sommige gevallen is toegang tot het lezen van Diagnostische logboeken en metrische gegevens vereist van buiten de grens van het netwerk. Wanneer u vertrouwde services toegang tot het opslag account configureert, kunt u lees toegang toestaan voor de logboek bestanden, metrische tabellen of beide. [Meer informatie over het werken met Storage Analytics.](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>Uitzonde ringen beheren
 

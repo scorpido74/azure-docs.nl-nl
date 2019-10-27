@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: cc796733c9b0b1effd8043c49540f9b489610067
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 10/25/2019
+ms.openlocfilehash: 9e8b1d08e950849773c9d8413c3ba4188d257d5b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331304"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965934"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Meldt zich aan Azure Database for PostgreSQL-één server
 Met Azure Database for PostgreSQL kunt u de standaard logboeken van post gres configureren en gebruiken. De logboeken kunnen worden gebruikt om configuratie fouten en suboptimale prestaties te identificeren, op te lossen en te herstellen. Logboek registratie-informatie die u kunt configureren en toegang bevat fouten, query gegevens, autovacuüm records, verbindingen en controle punten. (Toegang tot transactie Logboeken is niet beschikbaar).
@@ -20,7 +20,7 @@ Controle logboek registratie wordt beschikbaar gesteld via een post gres-extensi
 
 
 ## <a name="configure-logging"></a>Logboek registratie configureren 
-U kunt post gres Standard-logboek registratie op uw server configureren met de server parameters voor registratie. @No__t-0 en `log_connections` zijn standaard ingeschakeld voor elke Azure Database for PostgreSQL-server. Er zijn aanvullende para meters die u kunt aanpassen aan uw logboek registratie vereisten: 
+U kunt post gres Standard-logboek registratie op uw server configureren met de server parameters voor registratie. `log_checkpoints` en `log_connections` zijn standaard ingeschakeld voor elke Azure Database for PostgreSQL-server. Er zijn aanvullende para meters die u kunt aanpassen aan uw logboek registratie vereisten: 
 
 ![Azure Database for PostgreSQL-registratie parameters](./media/concepts-server-logs/log-parameters.png)
 
@@ -82,12 +82,13 @@ AzureDiagnostics
 | where TimeGenerated > ago(1d) 
 ```
 
-Zoeken naar alle fouten voor alle post gres-servers in deze werk ruimte in de afgelopen 6 uur
+Zoeken naar alle niet-localhost Verbindings pogingen
 ```
 AzureDiagnostics
-| where errorLevel_s == "error" and category == "PostgreSQLogs"
-| where TimeGenerated > ago(6h)
+| where Message contains "connection received" and Message !contains "host=127.0.0.1"
+| where Category == "PostgreSQLLogs" and TimeGenerated > ago(6h)
 ```
+In de bovenstaande query worden de resultaten weer gegeven in de afgelopen 6 uur voor alle logboek registratie van post gres-servers in deze werk ruimte.
 
 ### <a name="log-format"></a>Logboek indeling
 

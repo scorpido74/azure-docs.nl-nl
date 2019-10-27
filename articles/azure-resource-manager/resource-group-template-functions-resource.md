@@ -4,14 +4,14 @@ description: Hierin worden de functies beschreven die u kunt gebruiken in een Az
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 10/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf791bd262849cd93a155a19ade8f8fc377f8da6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dc39c727526f55039a5e18a8fd2aeeb4f25234a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894202"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965636"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Resource functies voor Azure Resource Manager sjablonen
 
@@ -749,6 +749,12 @@ De resource-ID wordt geretourneerd in de volgende indeling:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+Bij gebruik in een [implementatie op abonnements niveau](deploy-to-subscription.md)wordt de resource-id in de volgende indeling geretourneerd:
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Als u de ID in andere indelingen wilt ophalen, raadpleegt u:

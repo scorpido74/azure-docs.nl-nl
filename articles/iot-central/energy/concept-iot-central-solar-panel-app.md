@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: afb6b0a5dc2204686872abb65666e6cdaab081a8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 61a2b00bee7b16e3cc62a010ca454466cb0292a0
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958054"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965588"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Architectuur van Azure IoT Central-zonne paneel-app
 
@@ -26,7 +26,7 @@ Deze architectuur bestaat uit de volgende onderdelen. Voor sommige toepassingen 
 
 ## <a name="solar-panels-and-connectivity"></a>Zonne panelen en connectiviteit 
 
-Zonne panelen zijn een van de aanzienlijke bronnen van Hernieuw bare energie. Afhankelijk van het type zonne paneel en instellen, kunt u het verbinden via gateways of via andere tussenliggende apparaten en eigen systemen. Mogelijk moet u IoT Central apparaats brug bouwen om apparaten te verbinden die niet rechtstreeks kunnen worden aangesloten. De IoT Central Device Bridge is een open-source oplossing en u vindt [hier](https://docs.microsoft.com/azure/iot-central/howto-build-iotc-device-bridge)de volledige informatie. 
+Zonne panelen zijn een van de aanzienlijke bronnen van Hernieuw bare energie. Afhankelijk van het type zonne paneel en instellen, kunt u het verbinden via gateways of via andere tussenliggende apparaten en eigen systemen. Mogelijk moet u IoT Central apparaats brug bouwen om apparaten te verbinden die niet rechtstreeks kunnen worden aangesloten. De IoT Central Device Bridge is een open-source oplossing en u vindt [hier](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)de volledige informatie. 
 
 
 
@@ -40,4 +40,4 @@ Het IoT Central-platform biedt twee uitbreidings opties: voortdurende gegevens e
 ## <a name="next-steps"></a>Volgende stappen
 
 * Nu u over de architectuur hebt geleerd, kunt u de [app voor een zonne-panel gratis maken](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* Zie [IOT Central Overview](https://docs.microsoft.com/azure/iot-central/overview-iot-central) (Engelstalig) voor meer informatie over IOT Central
+* Zie [IOT Central Overview](https://docs.microsoft.com/azure/iot-central/) (Engelstalig) voor meer informatie over IOT Central

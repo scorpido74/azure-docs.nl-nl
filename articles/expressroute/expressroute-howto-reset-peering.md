@@ -1,27 +1,27 @@
 ---
-title: 'Opnieuw instellen van circuitpeering - ExpressRoute:  Azure | Microsoft Docs'
-description: Het ExpressRoute-circuitpeerings in- en uitschakelen.
+title: 'Circuit peering opnieuw instellen-ExpressRoute: Azure | Microsoft Docs'
+description: ExpressRoute-circuit peerings uitschakelen en inschakelen.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 10/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 8541362a16c7d12a0e3a4cf009ed9cd5faf9f1cd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 841c68b43e7f31693863268c3a7b2bd544c5e7ae
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366297"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965338"
 ---
-# <a name="reset-expressroute-circuit-peerings"></a>Opnieuw instellen van ExpressRoute-circuitpeerings
+# <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute-circuit-peerings opnieuw instellen
 
-In dit artikel wordt beschreven hoe u uitschakelen en inschakelen van peerings van een ExpressRoute-circuit met behulp van PowerShell. Wanneer u een peering de uitschakelt, wordt de BGP-sessie op de primaire verbinding en de secundaire verbinding van uw ExpressRoute-circuit worden afgesloten. U verliest connectiviteit via deze peering naar Microsoft. Wanneer u een peering hebt ingeschakeld, wordt de BGP-sessie op de primaire verbinding en de secundaire verbinding van uw ExpressRoute-circuit van worden gebracht. U wordt opnieuw verbonden is via deze peering naar Microsoft. U kunt in- en Microsoft-Peering en Privépeering van Azure onafhankelijk van een ExpressRoute-circuit uitschakelen. Wanneer u eerst de peerings op uw ExpressRoute-circuit configureert, wordt de peerings zijn standaard ingeschakeld.
+In dit artikel wordt beschreven hoe u peerings van een ExpressRoute-circuit kunt uitschakelen en inschakelen met behulp van Power shell. Wanneer u een peering uitschakelt, wordt de BGP-sessie op de primaire verbinding en de secundaire verbinding van het ExpressRoute-circuit afgesloten. De connectiviteit met deze peering naar micro soft gaat verloren. Wanneer u een peering inschakelt, wordt de BGP-sessie op zowel de primaire verbinding als de secundaire verbinding van het ExpressRoute-circuit actief. U kunt de verbinding met deze peering met micro soft herstellen. U kunt micro soft-peering en persoonlijke Azure-peering op een ExpressRoute-circuit onafhankelijk van elkaar in-en uitschakelen. Wanneer u de peerings op uw ExpressRoute-circuit voor het eerst configureert, worden de peerings standaard ingeschakeld.
 
-Er zijn een aantal scenario's waarin u mogelijk nuttig opnieuw instellen van uw ExpressRoute-peerings.
-* Test uw disaster recovery ontwerpen en implementeren. Bijvoorbeeld, hebt u twee ExpressRoute-circuits. U kunt de peerings van één aansluiting uitschakelen en afdwingen van uw verkeer failover naar het andere circuit.
-* Schakel in twee richtingen doorsturen van detectie (BFD) op Azure Privépeering van uw ExpressRoute-circuit. BFD is standaard ingeschakeld als uw ExpressRoute-circuit is gemaakt na 1 augustus 2018. Als uw circuit voordat die is gemaakt, is niet BFD ingeschakeld. U kunt BFD inschakelen door het uitschakelen van de peering en deze opnieuw inschakelen. Er moet worden opgemerkt dat BFD alleen op persoonlijke Azure-Peering wordt ondersteund.
+Er zijn een paar scenario's waarin het handig is om uw ExpressRoute-peerings te herstellen.
+* Het ontwerp en de implementatie van herstel na nood gevallen testen. U hebt bijvoorbeeld twee ExpressRoute-circuits. U kunt de peerings van één circuit uitschakelen en uw netwerk verkeer afdwingen naar het andere circuit.
+* Schakel de detectie van bidirectionele door sturing (BFD) in op persoonlijke Azure-peering of micro soft-peering van uw ExpressRoute-circuit. BFD is standaard ingeschakeld voor persoonlijke Azure-peering als uw ExpressRoute-circuit wordt gemaakt na 1 2018 augustus en op micro soft-peering als uw ExpressRoute-circuit na oktober 1 2019 is gemaakt. Als uw circuit eerder is gemaakt, is BFD niet ingeschakeld. U kunt BFD inschakelen door de peering uit te scha kelen en opnieuw in te scha kelen. 
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 
@@ -29,9 +29,9 @@ Er zijn een aantal scenario's waarin u mogelijk nuttig opnieuw instellen van uw 
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="reset-a-peering"></a>Opnieuw instellen van een peering
+## <a name="reset-a-peering"></a>Een peering opnieuw instellen
 
-1. Als u PowerShell lokaal uitvoert, opent u de PowerShell-console met verhoogde bevoegdheden en verbinding maken met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
+1. Als u Power shell lokaal uitvoert, opent u de Power shell-console met verhoogde bevoegdheden en maakt u verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 
    ```azurepowershell
    Connect-AzAccount
@@ -46,12 +46,12 @@ Er zijn een aantal scenario's waarin u mogelijk nuttig opnieuw instellen van uw 
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-4. Voer de volgende opdrachten om op te halen van uw ExpressRoute-circuit.
+4. Voer de volgende opdrachten uit om uw ExpressRoute-circuit op te halen.
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. Identificeer de peering die u wilt in- of uitschakelen. *Peerings* is een matrix. In het volgende voorbeeld is Peerings [0] persoonlijke Azure-Peering en Microsoft-Peering Peerings [1].
+5. Identificeer de peering die u wilt in-of uitschakelen. *Peerings* is een matrix. In het volgende voor beeld is peerings [0] persoonlijke Azure-peering en peerings [1] micro soft-peering.
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit
@@ -134,15 +134,15 @@ Er zijn een aantal scenario's waarin u mogelijk nuttig opnieuw instellen van uw 
    AllowClassicOperations           : False
    GatewayManagerEtag               :
    ```
-6. Voer de volgende opdrachten de status van de peering wijzigen.
+6. Voer de volgende opdrachten uit om de status van de peering te wijzigen.
 
    ```azurepowershell-interactive
    $ckt.Peerings[0].State = "Disabled"
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
-   De peering moet zich in een status die u instelt. 
+   De peering moet een status hebben die u hebt ingesteld. 
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u help voor een ExpressRoute-probleem op te lossen, Raadpleeg de volgende artikelen:
+Als u hulp nodig hebt bij het oplossen van een probleem met ExpressRoute, raadpleegt u de volgende artikelen:
 * [ExpressRoute-connectiviteit controleren](expressroute-troubleshooting-expressroute-overview.md)
-* [Oplossen van problemen met prestaties van het netwerk](expressroute-troubleshooting-network-performance.md)
+* [Problemen met netwerkprestaties oplossen](expressroute-troubleshooting-network-performance.md)

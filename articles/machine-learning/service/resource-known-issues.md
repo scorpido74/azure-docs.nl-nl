@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a3ba28960327f1e0a56b1ac838b2cb90ab6ac72a
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 0dd0b8cf39da8039b3a59bf243284e0d5062bd78
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675632"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965600"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -43,7 +43,7 @@ Mogelijk wilt u een experiment uitvoeren met alleen gegevensset voor het visuali
  
 Vóór de oplossing kunt u de gegevensset koppelen aan een module voor gegevens transformatie (Selecteer kolommen in gegevensset, bewerk de meta gegevens, splits gegevens, enzovoort) en voer het experiment uit. Vervolgens kunt u de gegevensset visualiseren. 
 
-Onder afbeelding ziet u hoe: ![visulize data ](./media/resource-known-issues/aml-visualize-data.png)
+Onder afbeelding ziet u hoe: ![data](./media/resource-known-issues/aml-visualize-data.png) visulize
 
 ## <a name="sdk-installation-issues"></a>Problemen met de SDK-installatie
 
@@ -73,7 +73,7 @@ Fout bij het maken van de installatie kopie bij het implementeren van de webserv
 
 ## <a name="deployment-failure"></a>Implementatie fout
 
-Als u `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>` ziet, wijzigt u de SKU voor virtuele machines die in uw implementatie worden gebruikt naar een met meer geheugen.
+Als u `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`ziet, wijzigt u de SKU voor virtuele machines die in uw implementatie worden gebruikt naar een met meer geheugen.
 
 ## <a name="fpgas"></a>FPGAs
 
@@ -86,6 +86,16 @@ Automatische machine learning flow tensor biedt momenteel geen ondersteuning voo
 ### <a name="experiment-charts"></a>Grafieken experimenteren
 
 Binaire classificatie grafieken (Precision-intrekken, ROC, winst curve enz.) die worden weer gegeven in automatische ML-experimenten, worden sinds 4/12 niet correct gerenderd in de gebruikers interface. In grafiek grafieken worden momenteel inverse resultaten weer gegeven, waarbij betere modellen worden weer gegeven met lagere resultaten. Een oplossing wordt onderzocht.
+
+## <a name="datasets-and-data-preparation"></a>Data sets en gegevens voorbereiding
+
+### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Kan het Parquet-bestand niet lezen uit HTTP of ADLS gen 2
+
+Er is een bekend probleem in de DataPrep SDK-versie 1.1.25 die een fout veroorzaakt bij het maken van een gegevensset door Parquet-bestanden te lezen uit HTTP of ADLS gen 2. Als u dit probleem wilt verhelpen, voert u een upgrade uit naar een versie die hoger is dan 1.1.26 of downgradet u naar een lagere versie dan 1.1.24.
+
+```python
+pip install --upgrade azureml-dataprep
+```
 
 ## <a name="databricks"></a>Databricks
 
@@ -224,7 +234,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes slaat de geheimen op in de indeling basis-64-code ring. U moet base-64 decoderen van de `cert.pem` en `key.pem` onderdelen van de geheimen voordat u ze aan de `attach_config.enable_ssl` verschaft. 
+>Kubernetes slaat de geheimen op in de indeling basis-64-code ring. U moet base-64 decoderen van de `cert.pem` en `key.pem` onderdelen van de geheimen voordat u ze aan de `attach_config.enable_ssl`verschaft. 
 
 ## <a name="recommendations-for-error-fix"></a>Aanbevelingen voor probleem oplossing
 Op basis van algemene waarneming zijn dit de aanbevelingen van Azure ML voor het oplossen van enkele veelvoorkomende fouten in azure ML.
@@ -232,7 +242,7 @@ Op basis van algemene waarneming zijn dit de aanbevelingen van Azure ML voor het
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (geen module met de naam)
 Als u in ModuleErrors uitvoert terwijl experimenten in azure ML worden ingediend, betekent dit dat het trainings script verwacht dat er een pakket wordt geïnstalleerd, maar dit wordt niet toegevoegd. Wanneer u de naam van het pakket opgeeft, installeert Azure ML het pakket in de omgeving die wordt gebruikt voor uw training. 
 
-Als u [schattingen](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) gebruikt om experimenten in te dienen, kunt u een pakket naam opgeven via `pip_packages` of `conda_packages` para meter in de Estimator op basis van de bron van waaruit u het pakket wilt installeren. U kunt ook een yml-bestand met al uw afhankelijkheden opgeven met `conda_dependencies_file`or alle PIP-vereisten in een txt-bestand met behulp van `pip_requirements_file`-para meter.
+Als u [schattingen](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) gebruikt om experimenten in te dienen, kunt u een pakket naam opgeven via `pip_packages` of `conda_packages` para meter in de Estimator op basis van de bron van waaruit u het pakket wilt installeren. U kunt ook een yml-bestand met al uw afhankelijkheden opgeven met `conda_dependencies_file`of al uw PIP-vereisten in een txt-bestand weer geven met behulp van `pip_requirements_file`-para meter.
 
 Azure ML biedt ook Framework-specifieke schattingen voor tensor flow, PyTorch, Chainer en SKLearn. Door deze ramingen te gebruiken, moet u ervoor zorgen dat de Framework afhankelijkheden namens u zijn geïnstalleerd in de omgeving die wordt gebruikt voor de training. U hebt de optie om extra afhankelijkheden op te geven zoals hierboven wordt beschreven. 
  

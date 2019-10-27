@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2d00ccdeb89ba5d983e4a3e089e78a8d748e4092
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597961"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965177"
 ---
 # <a name="reserved-public-ipv6-address-prefix-preview"></a>Voor voegsel van gereserveerd openbaar IPv6-adres (preview-versie)
 
@@ -46,7 +46,7 @@ De voorvoegsel grootte is opgegeven als een CIDR-masker grootte (Classless Inter
 Zie de [prijzen voor open bare IP-](https://azure.microsoft.com/pricing/details/ip-addresses/)adressen voor kosten die zijn gekoppeld aan het gebruik van open bare Azure-ip's, zowel afzonderlijke IP-adressen als IP-bereiken.
 
 ## <a name="limitations"></a>Beperkingen
-IPv6 wordt alleen ondersteund voor algemene open bare Ip's met ' dynamische ' toewijzing. Dit betekent dat het IPv6-adres wordt gewijzigd als u uw toepassing (VM of load balancers) in azure verwijdert en opnieuw implementeert. Alleen de standaard IPv6-ondersteuning voor open bare IP-adressen en statische (gereserveerde) toewijzingen worden ondersteund.
+IPv6 wordt alleen ondersteund voor algemene open bare Ip's met ' dynamische ' toewijzing. Dit betekent dat het IPv6-adres wordt gewijzigd als u uw toepassing (VM of load balancers) in azure verwijdert en opnieuw implementeert. Standaard-IPv6-ondersteuning voor het open bare IP-adres alleen statische (gereserveerde) toewijzing, hoewel standaard interne load balancers ook dynamische toewijzing kunnen ondersteunen vanuit het subnet waaraan ze zijn toegewezen.  
 
 Als best practice wordt u aangeraden standaard open bare Ip's en standaard load balancers te gebruiken voor uw IPv6-toepassingen.
 

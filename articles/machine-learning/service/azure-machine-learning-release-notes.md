@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: afad2648ec73b02d4e06ad55f850a518d2488f68
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c8ec05db9bf372f31b6c3cfadf1eda75ba8f7d2b
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756059"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965192"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -131,7 +131,7 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](http://ml.azure.com) is 
     + Er is een guardrail toegevoegd om te controleren of een gegevensset niet is gebalanceerd of niet. Als dat het geval is, wordt er een guardrail-bericht naar de-console geschreven.
   + **azureml-core**
     + De mogelijkheid om SAS-URL op te halen in het model-object wordt toegevoegd aan de opslag. Bijvoorbeeld: model. Get _sas_url ()
-    + @No__t_0 introduceren voor het ophalen van gegevens sets die zijn gekoppeld aan de ingediende uitvoering
+    + `run.get_details()['datasets']` introduceren voor het ophalen van gegevens sets die zijn gekoppeld aan de ingediende uitvoering
     + Voeg API-`Dataset.Tabular.from_json_lines_files` toe om een TabularDataset te maken op basis van JSON-lijn bestanden. Ga voor meer informatie over deze tabellaire gegevens in JSON-regel bestanden op TabularDataset naar https://aka.ms/azureml-data voor documentatie.
     + Er zijn extra VM-grootte velden (besturingssysteem schijf, aantal Gpu's) toegevoegd aan de functie supported_vmsizes ()
     + Er zijn extra velden toegevoegd aan de functie list_nodes () om de uitvoering, het persoonlijke en het open bare IP-adres, de poort, enzovoort weer te geven.
@@ -171,7 +171,7 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](http://ml.azure.com) is 
     + Gestart de verwerking van uitzonde ringen in de ADB-code op en breng wijzigingen aan op basis van de nieuwe fout afhandeling
     + Automatische MSI-verificatie is toegevoegd voor VM-Vm's.
     + Hiermee wordt een bug opgelost waarbij beschadigde of lege modellen kunnen worden geüpload vanwege mislukte pogingen.
-    + Er is een fout opgelost waarbij `DataReference` naam verandert wanneer de `DataReference` modus verandert (bijvoorbeeld bij het aanroepen van `as_upload`, `as_download` of `as_mount`).
+    + Er is een fout opgelost waarbij `DataReference` naam verandert wanneer de `DataReference` modus verandert (bijvoorbeeld bij het aanroepen van `as_upload`, `as_download`of `as_mount`).
     + Maak `mount_point` en `target_path` optioneel voor `FileDataset.mount` en `FileDataset.download`.
     + Uitzonde ring dat de time stamp-kolom niet kan worden gevonden, wordt gegenereerd als de gerelateerde time-out van de API wordt aangeroepen zonder dat de toegewezen time stamp-kolommen worden verwijderd.
     + Tijdgebonden kolommen moeten worden toegewezen aan een kolom waarvan het type datum is, anders wordt er een uitzonde ring verwacht
@@ -253,7 +253,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     mydata = all_datasets['my-data'] 
     ```
     
-    + @No__t_0 als argument voor `Dataset.Tabular.from_delimited_files` en `Dataset.Tabular.from_parquet.files` introduceren. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {COLUMN_NAME} maakt een teken reeks kolom en ' {COLUMN_NAME: JJJJ/MM/DD/uu/mm/SS} ' maakt de kolom datetime, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het ophalen van jaar, maand, dag, uur, minuut en seconde voor het type datum/tijd. De partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' maakt teken reeks kolom ' land ' met de waarde ' USA ' en datetime column ' PartitionDate ' met de waarde ' 2019-01-01 '.
+    + `parition_format` als argument voor `Dataset.Tabular.from_delimited_files` en `Dataset.Tabular.from_parquet.files`introduceren. De partitie gegevens van elk gegevenspad worden geëxtraheerd in kolommen op basis van de opgegeven indeling. {COLUMN_NAME} maakt een teken reeks kolom en ' {COLUMN_NAME: JJJJ/MM/DD/uu/mm/SS} ' maakt de kolom datetime, waarbij ' jjjj ', ' MM ', ' DD ', ' HH ', ' mm ' en ' ss ' worden gebruikt voor het ophalen van jaar, maand, dag, uur, minuut en seconde voor het type datum/tijd. De partition_format moet beginnen met de positie van de eerste partitie sleutel tot het einde van het bestandspad. Bijvoorbeeld, op basis van het pad '.. /USA/2019/01/01/data.csv ' waarbij de partitie op land en tijd staat, partition_format = '/{Country}/{PartitionDate: JJJJ/MM/DD}/data. csv ' maakt teken reeks kolom ' land ' met de waarde ' USA ' en datetime column ' PartitionDate ' met de waarde ' 2019-01-01 '.
     + `to_csv_files`-en `to_parquet_files`-methoden zijn toegevoegd aan `TabularDataset`. Met deze methoden wordt de conversie tussen een `TabularDataset` en een `FileDataset` ingeschakeld door de gegevens te converteren naar bestanden met de opgegeven indeling.
     + Automatisch aanmelden bij het REGI ster van de basis installatie kopie bij het opslaan van een Dockerfile die is gegenereerd door model. pakket ().
     + ' gpu_support ' is niet langer nodig; Nu wordt de NVIDIA docker-extensie automatisch gedetecteerd en gebruikt wanneer deze beschikbaar is. Deze wordt in een toekomstige release verwijderd.
@@ -287,7 +287,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
 
 ### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK voor python v-1.0.57
 + **Nieuwe functies**
-  + @No__t_0 ingeschakeld om te worden gebruikt door AutomatedML. Ga voor meer informatie over `TabularDataset` naar https://aka.ms/azureml/howto/createdatasets.
+  + `TabularDataset` ingeschakeld om te worden gebruikt door AutomatedML. Ga voor meer informatie over `TabularDataset` naar https://aka.ms/azureml/howto/createdatasets.
   
 + **Oplossingen en verbeteringen voor oplossingen**
   + **automl-client-core-nativeclient**
@@ -329,7 +329,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + U kunt nu het SSL-certificaat voor het Score-eind punt dat is geïmplementeerd op het AKS-cluster bijwerken voor zowel het micro soft-certificaat dat is gegenereerd door een klant.
   + **azureml-uitleg-model**
     + Para meter toegevoegd om een model-ID toe te voegen aan uitleg bij het uploaden.
-    + @No__t_0 Tags toevoegen aan uitleg in het geheugen en uploads.
+    + `is_raw` Tags toevoegen aan uitleg in het geheugen en uploads.
     + Er zijn pytorch-ondersteuning en tests toegevoegd voor het pakket voor de azureml-uitleg-model.
   + **azureml-opengegevenssets**
     + Ondersteuning voor het detecteren en registreren van automatische test omgevingen.
@@ -447,7 +447,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Oude uitzonderings klassen verwijderen.
     + In prognose taken accepteert de para meter `target_lags` nu één geheel getal of een lijst met gehele getallen. Als het gehele getal is gegeven, wordt er slechts één vertraging gemaakt. Als er een lijst wordt weer gegeven, worden de unieke waarden van lags genomen. target_lags = [1, 2, 2, 4] maakt lags van één, 2 en 4 Peri Oden.
     + Los de fout op over het verliezen van kolom typen na de trans formatie (bug gekoppeld);
-    + In `model.forecast(X, y_query)` kunt u y_query toestaan om een object type te maken dat geen (s) bevat aan het begin (#459519).
+    + In `model.forecast(X, y_query)`kunt u y_query toestaan om een object type te maken dat geen (s) bevat aan het begin (#459519).
     + Verwachte waarden toevoegen aan automl-uitvoer
   + **azureml-contrib-datadrift**
     +  Verbeteringen in het voor beeld van een notebook, inclusief de overstap naar azureml-open datasets in plaats van contrib-open datasets en prestatie verbeteringen bij het verrijken van gegevens
@@ -556,7 +556,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Batch_size is toegevoegd aan de uitleg bij include_local = False voor het streamen van globale toelichtingen in batches om de uitvoerings tijd van DecisionTreeExplainableModel voor de bibliotheek van de model verklaring te verbeteren.
   + **azureml-core**
     + De mogelijkheid om DBFS-gegevens opslag in de AzureML-CLI te koppelen, is toegevoegd.
-    + Het probleem met de Data Store upload is opgelost, waarbij een lege map wordt gemaakt als `target_path` met `/` is gestart.
+    + Het probleem met de Data Store upload is opgelost, waarbij een lege map wordt gemaakt als `target_path` met `/`is gestart.
     + Vergelijking van twee gegevens sets is ingeschakeld.
     + Voor het verwijderen van modellen en installatie kopieën wordt nu meer informatie geboden over het ophalen van upstream-objecten die afhankelijk zijn van de methode voor het verwijderen als gevolg van een upstream-afhankelijkheid.
     + De niet-gebruikte RunConfiguration-instelling is afgeschaft in auto_prepare_environment.
@@ -580,13 +580,13 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
 ### <a name="azure-machine-learning-data-prep-sdk-v118"></a>Azure Machine Learning data prep SDK v 1.1.8
 
 + **Nieuwe functies**
- + Gegevensstroom objecten kunnen nu worden herhaald, waardoor er een reeks records wordt geproduceerd. Raadpleeg de documentatie voor `Dataflow.to_record_iterator`.
+  + Gegevensstroom objecten kunnen nu worden herhaald, waardoor er een reeks records wordt geproduceerd. Raadpleeg de documentatie voor `Dataflow.to_record_iterator`.
 
 + **Oplossingen en verbeteringen voor oplossingen**
- + Verbeterde DataPrep-SDK.
- + Verbeterde verwerking van Panda-DataFrames met niet-teken reeks kolom indexen.
- + Verbeterde prestaties van `to_pandas_dataframe` in gegevens sets.
- + Er is een fout opgelost waarbij Spark-uitvoering van gegevens sets niet kan worden uitgevoerd in een omgeving met meerdere knoop punten.
+  + Verbeterde DataPrep-SDK.
+  + Verbeterde verwerking van Panda-DataFrames met niet-teken reeks kolom indexen.
+  + Verbeterde prestaties van `to_pandas_dataframe` in gegevens sets.
+  + Er is een fout opgelost waarbij Spark-uitvoering van gegevens sets niet kan worden uitgevoerd in een omgeving met meerdere knoop punten.
 
 ## <a name="2019-07-01"></a>2019-07-01
 
@@ -630,10 +630,10 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
   + Er zijn samenvattings functies toegevoegd voor de hoogste waarden (`SummaryFunction.TOPVALUES`) en de laagste waarden (`SummaryFunction.BOTTOMVALUES`).
 
 + **Oplossingen en verbeteringen voor oplossingen**
-  + De prestaties van `read_pandas_dataframe` aanzienlijk verbeteren.
+  + De prestaties van `read_pandas_dataframe`aanzienlijk verbeteren.
   + Er is een fout opgelost die ertoe leidt dat `get_profile()` op een gegevensstroom die naar binaire bestanden verwijst, mislukt.
   + Beschik bare `set_diagnostics_collection()` om de telemetrie-verzameling in-of uit te scha kelen.
-  + Het gedrag van `get_profile()` is gewijzigd. De NaN-waarden worden nu genegeerd voor min, gemiddelde, STDEV en Sum, die worden uitgelijnd met het gedrag van Pandas.
+  + Het gedrag van `get_profile()`is gewijzigd. De NaN-waarden worden nu genegeerd voor min, gemiddelde, STDEV en Sum, die worden uitgelijnd met het gedrag van Pandas.
 
 
 ## <a name="2019-06-10"></a>2019-06-10
@@ -688,9 +688,9 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
   + U kunt nu de volgende expressie taal functies gebruiken om datetime-waarden te extra heren en parseren in nieuwe kolommen.
     + `RegEx.extract_record()` haalt datetime-elementen op in een nieuwe kolom.
     + `create_datetime()` maakt datetime-objecten van afzonderlijke datetime-elementen.
-  + Wanneer u `get_profile()` aanroept, kunt u zien dat quantile-kolommen worden aangeduid als (EST.) om duidelijk aan te geven dat de waarden benaderingen zijn.
+  + Wanneer u `get_profile()`aanroept, kunt u zien dat quantile-kolommen worden aangeduid als (EST.) om duidelijk aan te geven dat de waarden benaderingen zijn.
   + U kunt nu * * globbing gebruiken bij het lezen van Azure Blob Storage.
-    + zoals.  `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
+    + bijvoorbeeld `dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
 
 + **Oplossingen voor oplossingen**
   + Er is een fout met betrekking tot het lezen van een Parquet-bestand van een externe bron (Azure-Blob) opgelost.
@@ -826,14 +826,14 @@ Opmerking: voor de python-SDK voor gegevens voorbereiding wordt niet meer `numpy
     + Voorbeelden:
       + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
       + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
-  + U kunt nu `to_upper`  and `to_lower`  functions in de expressie taal gebruiken.
+  + U kunt nu `to_upper` en `to_lower` -functies gebruiken in de expressie taal.
   + U kunt nu het aantal unieke waarden van elke kolom in een gegevens profiel zien.
   + Voor een aantal veelgebruikte Reader-stappen kunt u nu het argument `infer_column_types` door geven. Als de instelling is ingesteld op `True`, wordt met gegevens voorbereiding geprobeerd kolom typen te detecteren en automatisch te converteren.
     + `inference_arguments` is nu afgeschaft.
   + U kunt nu `Dataflow.shape` aanroepen.
 
 + **Oplossingen en verbeteringen voor oplossingen**
-  + `keep_columns`  now een extra optioneel argument `validate_column_exists` accepteert, waarmee wordt gecontroleerd of het resultaat van `keep_columns` kolommen bevat.
+  + `keep_columns` accepteert nu een extra optioneel argument `validate_column_exists`, waarmee wordt gecontroleerd of het resultaat van `keep_columns` kolommen bevat.
   + Alle stappen van de lezer (die uit een bestand worden gelezen) accepteren nu een extra optioneel argument `verify_exists`.
   + Verbeterde prestaties van lezen van Panda data frame en het ophalen van gegevens profielen.
   + Er is een fout opgelost waarbij het segmenteren van één stap van een gegevens stroom is mislukt met een enkele index.
@@ -852,7 +852,7 @@ Opmerking: voor de python-SDK voor gegevens voorbereiding wordt niet meer `numpy
 
 + **Nieuwe functies**
   + De SDK van Azure Machine Learning ondersteunt nu python 3,7.
-  + Azure Machine Learning DNN-schattingen bieden nu ingebouwde ondersteuning voor meerdere versies. @No__t_0  estimator nu bijvoorbeeld een `framework_version`-para meter accepteert, en gebruikers kunnen versie ' 1,10 ' of ' 1,12 ' opgeven. Voor een lijst met de versies die worden ondersteund door uw huidige SDK-versie, roept u `get_supported_versions()` aan op de gewenste Framework-klasse (bijvoorbeeld `TensorFlow.get_supported_versions()`).
+  + Azure Machine Learning DNN-schattingen bieden nu ingebouwde ondersteuning voor meerdere versies. `TensorFlow` Estimator nu bijvoorbeeld een `framework_version`-para meter accepteren en gebruikers kunnen versie ' 1,10 ' of ' 1,12 ' opgeven. Voor een lijst met de versies die worden ondersteund door uw huidige SDK-versie, roept u `get_supported_versions()` aan op de gewenste Framework-klasse (bijvoorbeeld `TensorFlow.get_supported_versions()`).
   Zie de [DNN Estimator-documentatie](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)voor een lijst met de versies die worden ondersteund door de nieuwste SDK-versie.
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure Machine Learning data prep SDK v 1.1.1
@@ -1036,7 +1036,7 @@ Opmerking: voor de python-SDK voor gegevens voorbereiding wordt niet meer `numpy
 
 + **Nieuwe functies**
   + de functie `to_bool` maakt nu het mogelijk dat niet-overeenkomende waarden worden geconverteerd naar fout waarden. Dit is het nieuwe standaard gedrag voor het vergelijken van `to_bool` en `set_column_types`, terwijl het vorige standaard gedrag de niet-overeenkomende waarden converteerde naar onwaar.
-  + Bij het aanroepen van `to_pandas_dataframe` is er een nieuwe optie voor het interpreteren van Null/ontbrekende waarden in numerieke kolommen als NaN.
+  + Bij het aanroepen van `to_pandas_dataframe`is er een nieuwe optie voor het interpreteren van Null/ontbrekende waarden in numerieke kolommen als NaN.
   + De mogelijkheid is toegevoegd om het retour type van sommige expressies te controleren om ervoor te zorgen dat de type consistentie en het vroegst mislukken.
   + U kunt nu `parse_json` aanroepen om waarden in een kolom te parseren als JSON-objecten en deze in meerdere kolommen uit te breiden.
 

@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: a8b380355d7eee6b79bff01d29160fdd3b42800d
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40e556b5d0fe22629eeca9a088d10ea5fc9b95ac
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285814"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965489"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Geavanceerde gegevens beveiliging voor Azure SQL Database
 
@@ -26,7 +26,7 @@ Geavanceerde gegevens beveiliging is een uniform pakket voor geavanceerde SQL-be
 
 Advanced Data Security (ADS) biedt een aantal geavanceerde SQL-beveiligings mogelijkheden, waaronder gegevens detectie & classificatie, evaluatie van beveiligings problemen en geavanceerde beveiliging tegen bedreigingen.
 
-- [Gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md) (momenteel in Preview) biedt mogelijkheden die zijn ingebouwd in Azure SQL database voor het detecteren, classificeren, labelen & beveiligen van de gevoelige gegevens in uw data bases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database.
+- [Gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md) biedt mogelijkheden die zijn ingebouwd in Azure SQL database voor het detecteren, classificeren, labelen & beveiligen van de gevoelige gegevens in uw data bases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database.
 - [Evaluatie van beveiligings problemen](sql-vulnerability-assessment.md) is een eenvoudig te configureren service waarmee u mogelijke beveiligings problemen met een Data Base kunt detecteren, bijhouden en helpen oplossen. Deze service biedt u inzicht in de status van de beveiliging en bruikbare stappen om beveiligingsproblemen op te lossen en de beveiliging van uw database te verbeteren.
 - [Geavanceerde bedreigingen beveiliging](sql-database-threat-detection-overview.md) detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot uw data base of deze te exploiteren. Hiermee wordt uw database continu gecontroleerd op verdachte activiteiten en wordt u onmiddellijk gewaarschuwd bij mogelijke beveiligingsproblemen, SQL-injectieaanvallen en afwijkende databasetoegangspatronen. Geavanceerde beveiligings waarschuwingen bieden Details over de verdachte activiteit en aanbevolen actie voor het onderzoeken en oplossen van de dreiging.
 

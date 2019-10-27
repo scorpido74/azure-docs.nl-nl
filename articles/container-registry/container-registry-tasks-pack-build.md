@@ -3,16 +3,17 @@ title: Een Azure Container Registry-installatie kopie bouwen vanuit een app
 description: Gebruik de opdracht AZ ACR Pack build om een container installatie kopie te bouwen vanuit een app en naar Azure Container Registry te pushen, zonder een Dockerfile te gebruiken.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/24/2019
 ms.author: danlep
-ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 34ef0fe4be00cfa7ce3e73c23eec636784071e56
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293901"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965896"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Een installatie kopie bouwen en pushen vanuit een app met behulp van een native Buildpack in de Cloud
 
@@ -32,25 +33,23 @@ Geef ten minste het volgende op wanneer u `az acr pack build` uitvoert:
 * Een Azure container Registry waarin u de opdracht uitvoert
 * Een afbeeldings naam en-label voor de resulterende afbeelding
 * Een van de [ondersteunde context locaties](container-registry-tasks-overview.md#context-locations) voor ACR-taken, zoals een lokale map, een github opslag plaats of een externe tarball
-* De naam van een Buildpack Builder-installatie kopie, bijvoorbeeld `cloudfoundry/cnb:0.0.12-bionic`.  
+* De naam van een Buildpack Builder-installatie kopie die geschikt is voor uw toepassing. Met Azure Container Registry worden installatie kopieën van de opbouw functie in de cache opgeslagen, zoals `cloudfoundry/cnb:0.0.34-cflinuxfs3` voor snellere builds.  
 
 `az acr pack build` ondersteunt andere functies van ACR-taken, zoals het [uitvoeren van variabelen](container-registry-tasks-reference-yaml.md#run-variables) en [taak uitvoer logboeken](container-registry-tasks-overview.md#view-task-logs) die zijn gestreamd en ook worden opgeslagen voor later ophalen.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Voor beeld: node. js-installatie kopie bouwen met Cloud Foundry Builder
 
-In het volgende voor beeld wordt een container installatie kopie samengesteld uit de node. js-app in de [Azure-samples/nodejs-docs-Hello-World-](https://github.com/Azure-Samples/nodejs-docs-hello-world) opslag plaats met behulp van de `cloudfoundry/cnb:0.0.12-bionic`-Builder:
+In het volgende voor beeld wordt een container installatie kopie samengesteld uit een node. js-app in de [Azure-samples/nodejs-docs-Hello-World-](https://github.com/Azure-Samples/nodejs-docs-hello-world) opslag plaats met behulp van de `cloudfoundry/cnb:0.0.34-cflinuxfs3` Builder. Deze opbouw functie wordt opgeslagen in de cache van Azure Container Registry. Daarom is een `--pull`-para meter niet vereist:
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
+    --builder cloudfoundry/cnb:0.0.34-cflinuxfs3 \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-In dit voor beeld wordt de `node-app`-installatie kopie gebouwd met de code `1.0` en gepusht naar het container register *myregistry* . Hier wordt de naam van het doel register expliciet voor de naam van de installatie kopie geplaatst. Als u niets opgeeft, wordt de register-URL automatisch voor de naam van de installatie kopie geplaatst.
-
-De para meter `--pull` geeft aan dat de opdracht de meest recente installatie kopie van de opbouw functie haalt.
+In dit voor beeld wordt de `node-app`-installatie kopie gebouwd met de code `1.0` en gepusht naar het container register *myregistry* . In dit voor beeld wordt de naam van het doel register expliciet voor de naam van de installatie kopie geplaatst. Als u niets opgeeft, wordt de naam van de aanmeldings server van het REGI ster automatisch voor de naam van de installatie kopie geplaatst.
 
 De opdracht uitvoer toont de voortgang van het bouwen en pushen van de installatie kopie. 
 
@@ -70,7 +69,7 @@ Blader naar `localhost:1337` in uw favoriete browser om de voor beeld-web-app te
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>Voor beeld: een Java-installatie kopie bouwen met heroku Builder
 
-In het volgende voor beeld wordt een container installatie kopie samengesteld uit de Java-app in de [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) opslag plaats met behulp van de `heroku/buildpacks:18`-Builder:
+In het volgende voor beeld wordt een container installatie kopie samengesteld uit de Java-app in de [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) opslag plaats met behulp van de `heroku/buildpacks:18` Builder. De para meter `--pull` geeft aan dat de opdracht de nieuwste installatie kopie van de opbouw functie moet ophalen. 
 
 ```azurecli
 az acr pack build \
@@ -81,8 +80,6 @@ az acr pack build \
 ```
 
 In dit voor beeld wordt de afbeelding van de `java-app` gebouwd met de run-ID van de opdracht en wordt deze gepusht naar het container register *myregistry* .
-
-De para meter `--pull` geeft aan dat de opdracht de meest recente installatie kopie van de opbouw functie haalt.
 
 De opdracht uitvoer toont de voortgang van het bouwen en pushen van de installatie kopie. 
 

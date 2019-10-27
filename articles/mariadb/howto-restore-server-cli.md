@@ -1,130 +1,132 @@
 ---
-title: Back-up maken en herstellen van een server in Azure Database voor MariaDB
-description: Leer hoe u back-up en herstellen van een server in Azure Database voor MariaDB met behulp van de Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+title: Een back-up maken en herstellen van een server in Azure Database for MariaDB
+description: Meer informatie over het maken van een back-up en het herstellen van een server in Azure Database for MariaDB met behulp van de Azure CLI.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: 409fe7b76306036cad19980459ca718c87118d8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/25/2019
+ms.openlocfilehash: ae2e8049c58be312eed380fe2197985e61d28a26
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171388"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965231"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Het back-up en herstellen van een server in Azure Database voor MariaDB met de Azure CLI
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Een back-up maken en herstellen van een server in Azure Database for MariaDB met behulp van de Azure CLI
 
-## <a name="backup-happens-automatically"></a>Back-up wordt automatisch uitgevoerd
-
-Azure Database voor MariaDB-servers zijn back-ups regelmatig op Restore-functies inschakelen. Met deze functie kan u de server en alle bijbehorende databases herstellen naar een eerder punt-in-time, op een nieuwe server.
+Er wordt regel matig een back-up van Azure Database for MariaDB servers gemaakt om herstel functies in te scha kelen. Met deze functie kunt u de server en alle bijbehorende data bases naar een eerder tijdstip herstellen op een nieuwe server.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor deze handleiding, hebt u het volgende nodig:
+U hebt het volgende nodig om deze hand leiding te volt ooien:
 
-- Een [Azure Database voor MariaDB-server en database](quickstart-create-mariadb-server-database-using-azure-cli.md)
+- Een [Azure database for MariaDB-server en-data base](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> In deze gebruiksaanwijzing vereist het gebruik van Azure CLI versie 2.0 of hoger. Als u wilt controleren welke versie, bij de Azure CLI-opdrachtprompt, voer `az --version`. Als u wilt installeren of upgraden, Zie [Azure CLI installeren]( /cli/azure/install-azure-cli).
+> Voor deze hand leiding moet u Azure CLI versie 2,0 of hoger gebruiken. Als u de versie wilt bevestigen, voert u bij de opdracht prompt van Azure CLI `az --version`in. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren]( /cli/azure/install-azure-cli).
 
-## <a name="set-backup-configuration"></a>Configuratie van de back-up
+## <a name="set-backup-configuration"></a>Back-upconfiguratie instellen
 
-U de keuze tussen het configureren van uw server voor back-ups van lokaal redundante of geografisch redundante back-ups op de server is gemaakt.
+U kunt kiezen tussen het configureren van uw server voor lokaal redundante back-ups of geografisch redundante back-ups bij het maken van een server.
 
 > [!NOTE]
-> Nadat een server is gemaakt, het soort redundantie dat zo is, kan geografisch redundant en lokaal redundant, kan niet worden overgeschakeld.
+> Nadat een server is gemaakt, is het soort redundantie die het heeft, geografisch redundant versus lokaal redundant, niet overgeschakeld.
 >
 
-Tijdens het maken van een server via de `az mariadb server create` opdracht, de `--geo-redundant-backup` parameter besluit uw back-up-optie voor redundantie. Als `Enabled`, geografisch redundante back-ups worden gemaakt. Of als `Disabled` lokaal redundante back-ups worden gemaakt.
+Tijdens het maken van een server via de `az mariadb server create` opdracht, bepaalt de para meter `--geo-redundant-backup` de optie voor de redundantie van back-ups. Als `Enabled`, worden er geo redundante back-ups gemaakt. Of als `Disabled` lokaal redundante back-ups worden gemaakt.
 
-De bewaarperiode voor back-up is ingesteld door de parameter `--backup-retention`.
+De Bewaar periode voor back-ups is ingesteld met de para meter `--backup-retention`.
 
-Zie voor meer informatie over het instellen van deze waarden tijdens het maken, de [Azure Database voor MariaDB server snelstartgids CLI](quickstart-create-mariadb-server-database-using-azure-cli.md).
+Zie de [Snelstartgids voor Azure database for MariaDB server cli](quickstart-create-mariadb-server-database-using-azure-cli.md)voor meer informatie over het instellen van deze waarden tijdens het maken.
 
-De bewaarperiode voor back-up van een server kan als volgt worden gewijzigd:
+De Bewaar periode van een back-up van een server kan als volgt worden gewijzigd:
 
 ```azurecli-interactive
 az mariadb server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
-Het vorige voorbeeld wijzigt de bewaarperiode voor back-up van mydemoserver en 10 dagen.
+In het vorige voor beeld wordt de Bewaar periode voor back-ups van mydemoserver gewijzigd in 10 dagen.
 
-De bewaarperiode voor back-up bepaalt hoe ver terug in de tijd die een point-in-time-restore kan worden opgehaald, omdat deze gebaseerd op de back-ups beschikbaar. Point-in-time-restore is beschreven in de volgende sectie.
+De Bewaar periode voor back-ups bepaalt hoe ver terug in de tijd een herstel naar een bepaald tijdstip kan worden opgehaald, omdat het is gebaseerd op back-ups die beschikbaar zijn. Herstel naar een bepaald tijdstip wordt verderop in de volgende sectie beschreven.
 
-## <a name="server-point-in-time-restore"></a>Herstellen van de server point-in-time
+## <a name="server-point-in-time-restore"></a>Server herstel naar een bepaald tijdstip
 
-De server kunt u herstellen naar een eerder tijdstip. De herstelde gegevens worden gekopieerd naar een nieuwe server en de bestaande server is, blijven ongewijzigd. Bijvoorbeeld, als een tabel per ongeluk is verwijderd op twaalf uur 's middags vandaag, kunt u herstellen tot het moment waarop net vóór twaalf uur 's middags. U kunt vervolgens de ontbrekende tabel en de gegevens ophalen uit de herstelde kopie van de server.
+U kunt de server herstellen naar een eerder tijdstip. De herstelde gegevens worden gekopieerd naar een nieuwe server en de bestaande server blijft in de huidige staat. Als een tabel bijvoorbeeld per ongeluk is verwijderd om 12:00 uur, kunt u de tijd herstellen naar een periode van meer dan 12 uur 's middags. Vervolgens kunt u de ontbrekende tabel en gegevens ophalen van de herstelde kopie van de server.
 
-De Azure CLI gebruiken voor het herstellen van de server, [az mariadb server terugzetten](/cli/azure/mariadb/server#az-mariadb-server-restore) opdracht.
+Als u de server wilt herstellen, gebruikt u de opdracht Azure CLI [AZ mariadb server Restore](/cli/azure/mariadb/server#az-mariadb-server-restore) .
 
-### <a name="run-the-restore-command"></a>Voer de opdracht herstellen
+### <a name="run-the-restore-command"></a>Voer de opdracht herstellen uit
 
-Voer de volgende opdracht voor het herstellen van de server, op de Azure CLI-opdrachtprompt:
+Als u de server wilt herstellen, voert u bij de opdracht prompt van Azure CLI de volgende opdracht in:
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-De `az mariadb server restore` opdracht moet de volgende parameters:
+De opdracht `az mariadb server restore` vereist de volgende para meters:
 
-| Instelling | Voorgestelde waarde | Description  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  De resourcegroep waarin de bronserver bestaat.  |
+| resource-group |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
 | name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Selecteer een punt in tijd om naar te herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum en tijd-indeling. Bijvoorbeeld, kunt u uw eigen lokale tijdzone, zoals `2018-03-13T05:59:00-08:00`. U kunt ook de UTC Zulu-notatie, bijvoorbeeld gebruiken `2018-03-13T13:59:00Z`. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Selecteer een punt in de tijd waarnaar u wilt herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, bijvoorbeeld `2018-03-13T05:59:00-08:00`. U kunt ook de notatie UTC-Zulu gebruiken, bijvoorbeeld `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
 
-Wanneer u een server naar een eerder tijdstip herstelt, wordt een nieuwe server gemaakt. De oorspronkelijke server en de bijbehorende databases uit het opgegeven tijdstip worden gekopieerd naar de nieuwe server.
+WWhen u een server herstelt naar een eerder tijdstip, wordt er een nieuwe server gemaakt. De oorspronkelijke server en de bijbehorende data bases vanaf het opgegeven tijdstip worden gekopieerd naar de nieuwe server.
 
-De locatie en prijscategorie van de herstelde server blijven gelijk zijn aan de oorspronkelijke server.
+De waarden voor de locatie en de prijs categorie voor de herstelde server blijven hetzelfde als de oorspronkelijke server. 
 
-Nadat het herstelproces is voltooid, Ga naar de nieuwe server en controleer of dat de gegevens is hersteld zoals verwacht.
+Nadat het herstel proces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als die van de bestaande server op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+
+De nieuwe server die tijdens een herstel bewerking is gemaakt, heeft geen firewall regels of VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
 
 ## <a name="geo-restore"></a>Geo-herstel
 
-Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt van de back-up van de bestaande server. Deze nieuwe server kan worden gemaakt in andere regio's dat Azure Database voor MariaDB beschikbaar is.  
+Als u uw server voor geografisch redundante back-ups hebt geconfigureerd, kan een nieuwe server worden gemaakt op basis van de back-up van die bestaande server. Deze nieuwe server kan worden gemaakt in elke regio die Azure Database for MariaDB beschikbaar is.  
 
-De Azure CLI gebruiken voor het maken van een server met behulp van een redundante back-up voor geografische `az mariadb server georestore` opdracht.
+Als u een server wilt maken met behulp van een geo-redundante back-up, gebruikt u de Azure CLI-`az mariadb server georestore` opdracht.
 
 > [!NOTE]
-> Als u een server maakt eerst kan het niet onmiddellijk beschikbaar voor geo-herstel zijn. Het duurt een paar uur voor de metagegevens die nodig zijn om te worden ingevuld.
+> Wanneer een server voor het eerst wordt gemaakt, is deze mogelijk niet onmiddellijk beschikbaar voor geo Restore. Het kan enkele uren duren voordat de benodigde meta gegevens zijn gevuld.
 >
 
-Voer de volgende opdracht voor geo-herstel de-server, op de Azure CLI-opdrachtprompt:
+Als u de server wilt herstellen, voert u bij de opdracht prompt van Azure CLI de volgende opdracht in:
 
 ```azurecli-interactive
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-Deze opdracht maakt u een nieuwe server met de naam *mydemoserver georestored* in VS-Oost die tot behoren *myresourcegroup*. Het is een algemeen gebruik, Gen 5-server met 8 vCores. De server is gemaakt op basis van de geografisch redundante back-up van *mydemoserver*, die ook in de resourcegroep is *myresourcegroup*
+Met deze opdracht maakt u een nieuwe server met de naam *mydemoserver-restored* in VS-Oost, die deel uitmaakt van *myresourcegroup*. Het is een Algemeen, Gen 5-server met 8 vCores. De server wordt gemaakt op basis van de geo-redundante back-up van *mydemoserver*, die ook in de resource groep *myresourcegroup*
 
-Als u maken van de nieuwe server in een andere resourcegroep van de bestaande server, klikt u vervolgens wilt de `--source-server` parameter zou u in aanmerking komt de servernaam zoals in het volgende voorbeeld:
+Als u de nieuwe server in een andere resource groep van de bestaande server wilt maken, moet u in de para meter `--source-server` de naam van de server in het volgende voor beeld kwalificeren:
 
 ```azurecli-interactive
 az mariadb server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMariaDB/servers/mydemoserver" --location eastus --sku-name GP_Gen5_8
 
 ```
 
-De `az mariadb server georestore` opdracht moet de volgende parameters:
+De opdracht `az mariadb server georestore` vereist de volgende para meters:
 
-| Instelling | Voorgestelde waarde | Description  |
+| Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
-|resource-group| myResourceGroup | De naam van de resourcegroep waarin de nieuwe server deel van uitmaakt.|
-|name | mydemoserver-georestored | De naam van de nieuwe server. |
-|source-server | mydemoserver | De naam van de bestaande server waarvan back-ups redundante geo worden gebruikt. |
+|resource-group| myResourceGroup | De naam van de resource groep waar de nieuwe server deel van uitmaakt.|
+|name | mydemoserver-geoterugzet bewerking | De naam van de nieuwe server. |
+|source-server | mydemoserver | De naam van de bestaande server waarvoor geo redundante back-ups worden gebruikt. |
 |location | eastus | De locatie van de nieuwe server. |
-|sku-name| GP_Gen5_8 | Deze parameter stelt de prijzen laag, bewerking voor compute en het aantal vCores van de nieuwe server. GP_Gen5_8 toegewezen aan een algemeen gebruik, Gen 5-server met 8 vCores.|
+|sku-name| GP_Gen5_8 | Met deze para meter worden de prijs categorie, generatie van Compute en het aantal vCores van de nieuwe server ingesteld. GP_Gen5_8 wordt toegewezen aan een Algemeen, Gen 5-server met 8 vCores.|
 
->[!Important]
->Wanneer het maken van een nieuwe server door een geo-herstel, neemt de dezelfde opslaggrootte en de prijscategorie als de bronserver. Deze waarden kunnen niet worden gewijzigd tijdens het maken van. Nadat de nieuwe server is gemaakt, kan de opslaggrootte worden opgeschaald.
+Wanneer u een nieuwe server maakt door een geo-terugzet bewerking, neemt deze dezelfde opslag grootte en prijs categorie over als de bron server. Deze waarden kunnen niet worden gewijzigd tijdens het maken. Nadat de nieuwe server is gemaakt, kan de opslag grootte worden uitgebreid.
 
-Nadat het herstelproces is voltooid, Ga naar de nieuwe server en controleer of dat de gegevens is hersteld zoals verwacht.
+Nadat het herstel proces is voltooid, zoekt u de nieuwe server en controleert u of de gegevens correct zijn hersteld. De nieuwe server heeft dezelfde aanmeldings naam en hetzelfde wacht woord voor de server beheerder als die van de bestaande server op het moment dat de herstel bewerking werd gestart. Het wacht woord kan worden gewijzigd op de pagina **overzicht** van de nieuwe server.
+
+De nieuwe server die tijdens een herstel bewerking is gemaakt, heeft geen firewall regels of VNet-service-eind punten die bestonden op de oorspronkelijke server. Deze regels moeten afzonderlijk worden ingesteld voor deze nieuwe server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over van de service [back-ups](concepts-backup.md).
-- Meer informatie over [bedrijfscontinuïteit](concepts-business-continuity.md) opties.
+- Meer informatie over de [back-ups](concepts-backup.md) van de service
+- Meer informatie over [replica's](concepts-read-replicas.md)
+- Meer informatie over opties voor [bedrijfs continuïteit](concepts-business-continuity.md)
