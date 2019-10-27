@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10911e5100add2dca84475857a6909fb20d452c4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: d1b4d33ca5f195d7b4aabc1bc905bd8db1406e8f
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891547"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964100"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Snelstart: Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app
+# <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Quickstart: Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -35,33 +35,33 @@ In deze snelstart leert u hoe een ASP.NET-web-app persoonlijke accounts (hotmail
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties voor het starten van de snelstarttoepassing:
-> * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens de voorbeeldcode](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
 > * [Handmatig] [Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
 >
 > 1. Ga naar het deel venster nieuwe [Azure Portal-app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs) .
 > 1. Voer een naam in voor de toepassing en klik op **Registreren**.
 > 1. Volg de instructies om de nieuwe toepassing met slechts één klik te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 > Volg deze stappen om de toepassing te registreren en de registratiegegevens van de app handmatig toe te voegen aan uw oplossing:
 >
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-> 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+> 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >      - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `ASPNET-Quickstart`.
->      - Voeg `http://localhost:44368/` de omleidings- **URI**toe en klik op **registreren**.
+>      - Voeg `http://localhost:44368/` toe aan de **omleidings-URI**en klik op **registreren**.
 >      - Selecteer in het navigatie deel venster links onder de sectie beheren de optie **verificatie**
 >          - Selecteer in de Subsectie **impliciete toekenning** **id-tokens**.
 >          - En selecteer vervolgens **Opslaan**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: uw toepassing configureren in Azure Portal
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Stap 1: Uw toepassing configureren in Azure Portal
 > Voor een juiste werking van het codevoorbeeld uit deze snelstart, moet u een antwoord-URL als `https://localhost:44368/` toevoegen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Deze wijziging voor mij maken]()
@@ -69,16 +69,16 @@ In deze snelstart leert u hoe een ASP.NET-web-app persoonlijke accounts (hotmail
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-aspnet-webapp/green-check.png) Uw toepassing is al geconfigureerd met dit kenmerk
 
-#### <a name="step-2-download-your-project"></a>Stap 2: uw project downloaden
+#### <a name="step-2-download-your-project"></a>Stap 2: Uw project downloaden
 
 [Down load de Visual Studio 2019-oplossing](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: uw Visual Studio-project configureren
+#### <a name="step-3-configure-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project configureren
 
 1. Pak het zip-bestand uit in een lokale map dichter bij de hoofdmap (bijvoorbeeld **C:\Azure-Samples**)
 1. Open de oplossing in Visual Studio (AppModelv2-Web-App-OpenIDConnect-DotNet.sln)
-1. Afhankelijk van de versie van Visual Studio moet u mogelijk met de rechter muisknop op het project `AppModelv2-WebApp-OpenIDConnect-DotNet` klikken en **NuGet-pakketten herstellen**
-1. Open de Package Manager-console (weer gave-> andere Windows-> Package Manager-console) en voer`Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
+1. Afhankelijk van de versie van Visual Studio, moet u mogelijk met de rechter muisknop op het project `AppModelv2-WebApp-OpenIDConnect-DotNet` klikken en **NuGet-pakketten herstellen**
+1. Open de Package Manager-console (weer gave-> andere Windows-> Package Manager-console) en voer `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r`
 1. Bewerk **Web.config** en vervang de parameters `ClientId` en `Tenant` door:
 
     ```xml
@@ -99,7 +99,7 @@ In deze snelstart leert u hoe een ASP.NET-web-app persoonlijke accounts (hotmail
 >
 > > [!TIP]
 > > - Als u de waarden van *Toepassings-id*, *Map-id (tenant)* en *Ondersteunde accounttypen* wilt weten, gaat u naar de **Overzichtspagina**
-> > - Zorg ervoor dat de `redirectUri` waarde voor in **Web. config** overeenkomt met de omleidings- **URI** die is gedefinieerd voor de app-registratie in azure AD (als dat niet het geval is, gaat u naar het menu **verificatie** voor de app-registratie en werkt u de omleidings- **URI** om te zoeken)
+> > - Controleer of de waarde voor `redirectUri` in **Web. config** overeenkomt met de **omleidings-URI** die is gedefinieerd voor de app-registratie in azure AD (als dat niet het geval is, gaat u naar het menu **verificatie** voor de app-registratie en werkt u de **omleidings-URI** bij om te zoeken)
 
 ## <a name="more-information"></a>Meer informatie
 
@@ -167,7 +167,7 @@ public void Configuration(IAppBuilder app)
 
 
 > [!NOTE]
-> De `ValidateIssuer = false` instelling is een vereenvoudiging voor deze Quick Start. In echte toepassingen moet u de uitgever valideren.
+> Het instellen van `ValidateIssuer = false` is een vereenvoudiging voor deze Quick Start. In echte toepassingen moet u de uitgever valideren.
 > Bekijk de voor beelden om te begrijpen hoe u dit doet.
 
 ### <a name="initiate-an-authentication-challenge"></a>Verificatievraag initiëren

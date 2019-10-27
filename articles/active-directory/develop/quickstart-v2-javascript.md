@@ -8,7 +8,7 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 51ef62d84d2744b595cfb946b7720f8b2a5dcd77
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827119"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964058"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Quickstart: Gebruikers aanmelden en een toegangs token verkrijgen van een Java script-toepassing met één pagina
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen van een Java script-toepassing met één pagina
 
 In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java script-toepassing met één pagina (SPA) gebruikers van persoonlijke accounts, werk accounts en school accounts kan aanmelden. Een Java script-SPA kan ook een toegangs token verkrijgen om de Microsoft Graph-API of een web-API aan te roepen. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 
@@ -37,7 +37,7 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 > ## <a name="register-and-download-your-quickstart-application"></a>De quickstart-toepassing registreren en downloaden
 > Gebruik een van de volgende opties om uw Quick Start-toepassing te starten.
 >
-> ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1 (Express): registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld
+> ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1 (Express): uw app registreren en automatisch configureren en vervolgens uw voorbeeld code downloaden
 >
 > 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
 > 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u het account in de rechter bovenhoek en stelt u vervolgens uw portal-sessie in op de Azure Active Directory (Azure AD)-Tenant die u wilt gebruiken.
@@ -45,7 +45,7 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 > 1. Voer een naam in voor uw toepassing en selecteer **registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2 (hand matig): registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
+> ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2 (hand matig): uw toepassings-en code voorbeeld registreren en hand matig configureren
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 >
@@ -56,15 +56,15 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** wordt weergegeven, voert u een naam in voor de toepassing.
 > 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
-> 1. Selecteer onder de sectie omleidings- **URI** in de vervolg keuzelijst het **webplatform en** stel vervolgens de waarde in op `http://localhost:30662/`.
+> 1. Selecteer onder de sectie **omleidings-URI** in de vervolg keuzelijst het **webplatform en** stel vervolgens de waarde in op `http://localhost:30662/`.
 > 1. Selecteer **Registreren**. Noteer de waarde van de **toepassing (client)** op de pagina app- **overzicht** voor later gebruik.
 > 1. Voor deze quickstart moet de [Impliciete toekenningsstroom](v2-oauth2-implicit-grant-flow.md) zijn ingeschakeld. Selecteer in het linkerdeel venster van de geregistreerde toepassing **verificatie**.
 > 1. Selecteer in de sectie **Geavanceerde instellingen** onder **impliciete toekenning**de selectie vakjes **id-tokens** en **toegangs tokens** . ID-tokens en toegangs tokens zijn vereist omdat deze app gebruikers moet aanmelden en een API kan aanroepen.
 > 1. Selecteer boven in het deel venster **Opslaan**.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in Azure Portal
-> Het code voorbeeld voor deze Quick Start werkt alleen als `http://localhost:30662/` u een omleidings-URI toevoegt en impliciete **toekenning**inschakelt.
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in de Azure-portal
+> Het code voorbeeld voor deze Quick Start werkt alleen als u een omleidings-URI als `http://localhost:30662/` toevoegt en **impliciete toekenning**inschakelt.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Breng deze wijzigingen voor mij aan]()
 >
@@ -79,13 +79,13 @@ Selecteer de optie die geschikt is voor uw ontwikkel omgeving:
 
 * Beschrijving Als u het project wilt uitvoeren met de IIS-server, [downloadt u het Visual Studio-project](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Pak het zip-bestand uit naar een lokale map (bijvoorbeeld *C:\Azure-samples*).
 
-#### <a name="step-3-configure-your-javascript-app"></a>Stap 3: Configureer de JavaScript-app
+#### <a name="step-3-configure-your-javascript-app"></a>Stap 3: uw Java script-app configureren
 
 > [!div renderon="docs"]
-> Bewerk in de map *JavaScriptSPA* *index. html*en stel de `clientID` waarden en `authority` in op `msalConfig`.
+> Bewerk in de map *JavaScriptSPA* *index. html*en stel de waarden `clientID` en `authority` onder `msalConfig`in.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Bewerk in de map *JavaScriptSPA* *index. html*en vervang `msalConfig` deze door de volgende code:
+> Bewerk in de map *JavaScriptSPA* *index. html*en vervang `msalConfig` door de volgende code:
 
 ```javascript
 var msalConfig = {
@@ -109,7 +109,7 @@ var msalConfig = {
 > [!div renderon="docs"]
 >
 > Waar:
-> - *\<Enter_the_Application_Id_here >* is de **toepassings-id** van de toepassing die u hebt geregistreerd.
+> - *\<Enter_the_Application_Id_here >* de **client-id** is voor de toepassing die u hebt geregistreerd.
 > - *\<Enter_the_Tenant_info_here >* is ingesteld op een van de volgende opties:
 >    - Als uw toepassing *accounts in deze organisatie Directory*ondersteunt, vervangt u deze waarde door de **Tenant-id** of **Tenant naam** (bijvoorbeeld *contoso.Microsoft.com*).
 >    - Als uw toepassing *accounts in een organisatorische Directory*ondersteunt, vervangt u deze waarde door **organisaties**.
@@ -119,7 +119,7 @@ var msalConfig = {
 > > Om de waarden van **Toepassings-id (client-id)** , **Map-id (tenant-id)** en **Ondersteunde accounttypen** te achterhalen, gaat u naar de **Overzichtspagina** van de app in de Azure-portal.
 >
 
-#### <a name="step-4-run-the-project"></a>Stap 4: Het project uitvoeren
+#### <a name="step-4-run-the-project"></a>Stap 4: het project uitvoeren
 
 * Als u [node. js](https://nodejs.org/en/download/)gebruikt:
 
@@ -130,7 +130,7 @@ var msalConfig = {
         node server.js
         ```
 
-    1. Open een webbrowser en ga `http://localhost:30662/`naar.
+    1. Open een webbrowser en ga naar `http://localhost:30662/`.
     1. Selecteer **Aanmelden** om de aanmelding te starten en roep vervolgens de Microsoft Graph-API aan.
 
 
@@ -144,7 +144,7 @@ Nadat de toepassing door de browser is geladen, selecteert u **Aanmelden**. De e
 
 ![Hoe de voor beeld-app in deze Snelstartgids werkt](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
-### <a name="msaljs"></a>msal.js
+### <a name="msaljs"></a>msal. js
 
 De MSAL-bibliotheek ondertekent gebruikers en vraagt de tokens aan die worden gebruikt voor toegang tot een API die wordt beveiligd door micro soft Identity platform. Het bestand Quick Start *index. html* bevat een verwijzing naar de bibliotheek:
 
@@ -216,7 +216,7 @@ myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
 
 ### <a name="request-tokens"></a>Tokens aanvragen
 
-MSAL maakt gebruik van drie methoden om tokens `acquireTokenRedirect`te `acquireTokenPopup`verkrijgen:, en`acquireTokenSilent`
+MSAL maakt gebruik van drie methoden om tokens te verkrijgen: `acquireTokenRedirect`, `acquireTokenPopup`en `acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Een gebruikerstoken op de achtergrond ophalen
 
@@ -246,9 +246,9 @@ Er zijn situaties waarin u gebruikers moet dwingen te communiceren met het micro
 * Uw toepassing vraagt toegang tot extra resource scopes aan die de gebruiker nodig heeft om toestemming te geven.
 * Verificatie met twee factoren is vereist.
 
-Het gebruikelijke aanbevolen patroon voor de meeste toepassingen is om `acquireTokenSilent` eerst aan te roepen, vervolgens de uitzonde ring `acquireTokenPopup` op te `acquireTokenRedirect`vangen en vervolgens (of) te bellen om een interactieve aanvraag te starten.
+Het gebruikelijke aanbevolen patroon voor de meeste toepassingen is om `acquireTokenSilent` eerst aan te roepen, vervolgens de uitzonde ring op te vangen en vervolgens `acquireTokenPopup` (of `acquireTokenRedirect`) aan te roepen om een interactieve aanvraag te starten.
 
-Het oproepen `acquireTokenPopup` van de resultaten in een pop-upvenster voor het aanmelden. (Of `acquireTokenRedirect` resulteert in het omleiden van gebruikers naar het micro soft Identity platform-eind punt.) In dat venster moeten gebruikers communiceren door hun referenties te bevestigen, toestemming te geven voor de vereiste resource of de twee ledige verificatie uit te voeren.
+Het aanroepen van de `acquireTokenPopup` resultaten in een pop-upvenster voor het aanmelden. (Of `acquireTokenRedirect` resulteert in het omleiden van gebruikers naar het micro soft Identity platform-eind punt.) In dat venster moeten gebruikers communiceren door hun referenties te bevestigen, toestemming te geven voor de vereiste resource of de twee ledige verificatie uit te voeren.
 
 ```javascript
 var requestObj = {
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
 ```
 
 > [!NOTE]
-> Deze Snelstartgids maakt gebruik `loginRedirect` van `acquireTokenRedirect` de methoden en van micro soft Internet Explorer, vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) met betrekking tot het verwerken van pop-upvensters door Internet Explorer.
+> In deze Quick Start worden de methoden `loginRedirect` en `acquireTokenRedirect` van micro soft Internet Explorer gebruikt, vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) met betrekking tot het verwerken van pop-upvensters in Internet Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -276,7 +276,7 @@ Zie voor een gedetailleerde stapsgewijze hand leiding voor het bouwen van de toe
 Als u wilt zoeken in de MSAL-opslag plaats op documentatie, veelgestelde vragen, problemen en meer, raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL. js GitHub opslag plaats](https://github.com/AzureAD/microsoft-authentication-library-for-js)
 
 Help ons het micro soft Identity-platform te verbeteren. Vertel ons wat u denkt door een korte enquête met twee vragen te volt ooien.
 

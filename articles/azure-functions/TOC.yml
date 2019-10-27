@@ -245,8 +245,12 @@
         - name: Een functie uitschakelen
           href: disable-function.md
     - name: Controleren
-      href: functions-monitoring.md
-      displayName: 'App Insights, Application Insights, logs, logging'
+      items:
+        - name: Functies controleren
+          href: functions-monitoring.md
+          displayName: 'App Insights, Application Insights, logs, logging'
+        - name: Logboeken analyseren
+          href: functions-monitor-log-analytics.md
     - name: Beveiligen
       items:
         - name: Een SSL-certificaat kopen

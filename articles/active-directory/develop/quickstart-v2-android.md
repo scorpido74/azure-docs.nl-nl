@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: twhitney
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e11e47952f70ce0cd212ca93eff1c38f2b3993a8
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2704a6e1af2f06b49b1d3817ad7a30bf53419ffe
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678055"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72963993"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Android-app
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Snelstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Android-app
 
 In deze Snelstartgids wordt gebruikgemaakt van een code voorbeeld om te laten zien hoe een Android-toepassing zich kan aanmelden bij persoonlijke, werk-of school accounts, en vervolgens een toegangs token kan ophalen en de Microsoft Graph-API aanroept.
 
@@ -34,19 +34,19 @@ In deze Snelstartgids wordt gebruikgemaakt van een code voorbeeld om te laten zi
 > * Android Studio 
 > * Android 16 + is vereist
 
-## <a name="step-1-get-the-sample-app"></a>Stap 1: De voorbeeld-app downloaden
+## <a name="step-1-get-the-sample-app"></a>Stap 1: de voor beeld-app ophalen
 
 [Kloon de code](https://github.com/Azure-Samples/ms-identity-android-java.git).
 
-## <a name="step-2-register-your-application"></a>Stap 2: Uw toepassing registreren
+## <a name="step-2-register-your-application"></a>Stap 2: uw toepassing registreren
 
 Voer de volgende stappen uit om een toepassings object te registreren en de registratie gegevens van dat toepassings object hand matig toe te voegen aan het voorbeeld project:
 
 1. Ga naar de [Azure Portal](https://aka.ms/MobileAppReg).
 1. Open de [blade app-registraties](https://portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) en klik op **+ nieuwe registratie**.
 1. Voer een **naam** in voor de registratie van uw app en klik vervolgens, zonder een omleidings-URI in te stellen, op **registreren**.
-1. Selecteer in de sectie **beheren** de optie **verificatie** >  **+ een platform toevoegen** > **Android**. (Mogelijk moet u **de nieuwe ervaring** boven aan de Blade proberen om dit scherm te bekijken)
-1. Voer de **pakket naam**van uw project in, die `com.azuresamples.msalandroidapp` is.
+1. Selecteer in de sectie **beheren** de optie **verificatie** > + een platform > **Android**toe te **voegen** . (Mogelijk moet u **de nieuwe ervaring** boven aan de Blade proberen om dit scherm te bekijken)
+1. Voer de **pakket naam**van uw project in, die `com.azuresamples.msalandroidapp`is.
 1. Klik in de sectie **hash van hand tekening** van de pagina **uw Android-app configureren** op **een hash voor ontwikkel handtekeningen genereren**en kopieer de opdracht voor het hulp programma voor het platform dat u gebruikt voor het ontwikkelen van uw Android-app.
 
    > [!Note]
@@ -56,7 +56,7 @@ Voer de volgende stappen uit om een toepassings object te registreren en de regi
 1. Voer de gegenereerde hash van de hand tekening in de portal onder **Signature hash**in.
 1. Klik op `Configure` en maak een kopie van de **MSAL-configuratie**. In de volgende stap kopieert en plakt u deze in een configuratie bestand. Klik op **Gereed**.
 
-## <a name="step-3-add-your-app-registration"></a>Stap 3: Uw app-registratie toevoegen
+## <a name="step-3-add-your-app-registration"></a>Stap 3: uw app-registratie toevoegen
 
 1. Open het voorbeeld project in Android Studio.
 1. Open **auth_config_multiple_account. json**in **app** > **Res** > **RAW**.  Plak de inhoud van de MSAL-configuratie. Hiermee voegt u de client-ID, Tenant-ID en redirect_uri toe vanuit de portal. Dit ziet er ongeveer als volgt uit, maar met de waarden die zijn ingevuld voor de client-ID, Tenant-ID en redirect_uri:
@@ -81,7 +81,7 @@ Voer de volgende stappen uit om een toepassings object te registreren en de regi
     ```
 
 1. Open **app** > **Res** > **RAW**, open **auth_config_single_account. json**en plak de inhoud van de MSAL-configuratie. Deze ziet eruit als het bovenstaande bestand **auth_config_multiple_account. json** .
-1. In **app** > -**manifesten** > **AndroidManifest. XML**vindt u de `BrowserTabActivity`-activiteit. Met deze vermelding kan micro soft terugbellen naar uw toepassing nadat de verificatie is voltooid:
+1. Ga in **app** > **manifests** > **AndroidManifest. XML**naar de `BrowserTabActivity` activiteit. Met deze vermelding kan micro soft terugbellen naar uw toepassing nadat de verificatie is voltooid:
 
     ```xml
     ...
@@ -110,14 +110,14 @@ Voer de volgende stappen uit om een toepassings object te registreren en de regi
             </activity>
     ```
     
-1. Vervang de naam van het pakket met wat u hebt geregistreerd in het Azure Portal voor de waarde `android:host=`.  In dit geval is de waarde: `com.azuresamples.msalandroidapp`.
+1. Vervang de naam van het pakket met wat u hebt geregistreerd in het Azure Portal voor de `android:host=` waarde.  In dit geval is het volgende: `com.azuresamples.msalandroidapp`.
 
     > [!IMPORTANT]
     > De waarde voor **Android: pad** **moet** het teken '/' bevatten, of u krijgt een rode lijn onder de waarde en de voor beeld-app wordt niet uitgevoerd.
      
-1. Vervang de sleutel-hash die u hebt ontvangen door het toetsen programma eerder uit te voeren en voer de waarde voor `android:path=` in het Azure Portal in. De hash van de hand tekening mag geen URL-code ring zijn.
+1. Vervang de sleutel-hash die u hebt ontvangen door het toetsen programma eerder uit te voeren en voer deze in de Azure Portal in voor de waarde `android:path=`. De hash van de hand tekening mag geen URL-code ring zijn.
 
-## <a name="step-4-run-the-sample-app"></a>Stap 4: De voorbeeld-app uitvoeren
+## <a name="step-4-run-the-sample-app"></a>Stap 4: de voor beeld-app uitvoeren
 
 Selecteer uw emulator of apparaat in de vervolg keuzelijst **beschik bare apparaten** van Android Studio en voer de app uit.
 
@@ -138,7 +138,7 @@ In de modus voor meerdere accounts kunt u dezelfde stappen herhalen.  Daarnaast 
 
 De code is ingedeeld in fragmenten die laten zien hoe u een MSAL-app met één en meerdere accounts schrijft. De code bestanden zijn als volgt ingedeeld:
 
-| File  | Laat zien  |
+| Bestand  | Laat zien  |
 |---------|---------|
 | MainActivity | Beheert de gebruikers interface |
 | MSGraphRequestWrapper  | Roept de Microsoft Graph-API aan met behulp van het token dat is verschaft door MSAL |
@@ -172,7 +172,7 @@ Hiermee wordt Gradle om MSAL van Maven Central te downloaden en te bouwen.
 
 ### <a name="msal-imports"></a>MSAL-import bewerkingen
 
-De Imports die relevant zijn voor de MSAL-bibliotheek, zijn `com.microsoft.identity.client.*`.  U ziet bijvoorbeeld `import com.microsoft.identity.client.PublicClientApplication;`. Dit is de naam ruimte voor de klasse `PublicClientApplication`, die uw open bare client toepassing vertegenwoordigt.
+De Imports die relevant zijn voor de MSAL-bibliotheek, worden `com.microsoft.identity.client.*`.  U ziet bijvoorbeeld `import com.microsoft.identity.client.PublicClientApplication;`. Dit is de naam ruimte voor de klasse `PublicClientApplication` die uw open bare client toepassing vertegenwoordigt.
 
 ### <a name="singleaccountmodefragmentjava"></a>SingleAccountModeFragment. java
 
@@ -182,7 +182,7 @@ Apps met één account worden alleen gebruikt door één gebruiker.  Zo hebt u m
 
 #### <a name="single-account-msal-initialization"></a>MSAL-initialisatie met één account
 
-In `onCreateView()` wordt één account `PublicClientApplication` gemaakt met behulp van de configuratie-informatie die is opgeslagen in het bestand `auth_config_single_account.json`.  Zo initialiseert u de MSAL-bibliotheek voor gebruik in een MSAL-app met één account:
+In `onCreateView()`wordt één account `PublicClientApplication` gemaakt met behulp van de configuratie-informatie die in het `auth_config_single_account.json` bestand is opgeslagen.  Zo initialiseert u de MSAL-bibliotheek voor gebruik in een MSAL-app met één account:
 
 ```java
 ...
@@ -209,7 +209,7 @@ PublicClientApplication.createSingleAccountPublicClientApplication(getContext(),
 
 #### <a name="sign-in-a-user"></a>Een gebruiker aanmelden
 
-De code voor het aanmelden van een gebruiker bevindt zich in `initializeUI()` in de handler voor `signInButton`.
+De code voor het aanmelden van een gebruiker bevindt zich in `initializeUI()`, in de `signInButton` op handler.
 
 Roep `signIn()` aan voordat u probeert tokens te verkrijgen. `signIn()` gedraagt zich alsof `acquireToken()` wordt aangeroepen, wat resulteert in een interactieve prompt waarmee de gebruiker zich kan aanmelden.
 
@@ -221,7 +221,7 @@ mSingleAccountApp.signIn(getActivity(), null, getScopes(), getAuthInteractiveCal
 
 #### <a name="sign-out-a-user"></a>Een gebruiker afmelden
 
-De code voor het afmelden van een gebruiker bevindt zich in `initializeUI()` in de handler voor `signOutButton`.  Het ondertekenen van een gebruiker is een asynchrone bewerking. Als u het ondertekenen van de gebruiker uitschakelt, wordt ook de token cache voor dat account gewist. Er wordt een call back gemaakt om de gebruikers interface bij te werken nadat het gebruikers account is afgemeld:
+De code voor het afmelden van een gebruiker bevindt zich in `initializeUI()`, in de `signOutButton` op handler.  Het ondertekenen van een gebruiker is een asynchrone bewerking. Als u het ondertekenen van de gebruiker uitschakelt, wordt ook de token cache voor dat account gewist. Er wordt een call back gemaakt om de gebruikers interface bij te werken nadat het gebruikers account is afgemeld:
 
 ```java
 mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
@@ -240,7 +240,7 @@ mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallb
 
 #### <a name="get-a-token-interactively-or-silently"></a>Een token interactief of op de achtergrond ophalen
 
-Als u het minste aantal prompts voor de gebruiker wilt presen teren, ontvangt u normaal gesp roken een token op de achtergrond. Als er een fout optreedt, probeert u vervolgens interactief een token te verkrijgen. De eerste keer dat de app `signIn()` aanroept, fungeert deze als een aanroep van `acquireToken()`, waarmee de gebruiker wordt gevraagd om referenties.
+Als u het minste aantal prompts voor de gebruiker wilt presen teren, ontvangt u normaal gesp roken een token op de achtergrond. Als er een fout optreedt, probeert u vervolgens interactief een token te verkrijgen. De eerste keer dat de app `signIn()`aanroept, fungeert het effectief als een aanroep van `acquireToken()`, waarmee de gebruiker wordt gevraagd om referenties.
 
 Sommige situaties waarbij de gebruiker kan worden gevraagd om hun account te selecteren, hun referenties in te voeren of toestemming te geven voor de machtigingen die uw app heeft aangevraagd:
 
@@ -251,7 +251,7 @@ Sommige situaties waarbij de gebruiker kan worden gevraagd om hun account te sel
 * Wanneer uw toepassing voor de eerste keer toegang tot een resource vraagt
 * Wanneer MFA of een ander beleid voor voorwaardelijke toegang is vereist
 
-De code voor het interactief ophalen van een token, dat wil zeggen met de gebruikers interface van de gebruiker, bevindt zich in `initializeUI()` in de handler voor `callGraphApiInteractiveButton`.
+De code voor het interactief ophalen van een token, dat wil zeggen met de gebruikers interface die de gebruiker gaat betrekken, bevindt zich in `initializeUI()`, in de `callGraphApiInteractiveButton` op handler:
 
 ```java
 /**
@@ -266,7 +266,7 @@ De code voor het interactief ophalen van een token, dat wil zeggen met de gebrui
 mSingleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Als de gebruiker al is aangemeld, kan met `acquireTokenSilentAsync()`-apps tokens op de achtergrond aanvragen, zoals wordt weer gegeven in `initializeUI()`, in de handler `callGraphApiSilentButton` klikken:
+Als de gebruiker zich al heeft aangemeld, kunt u met `acquireTokenSilentAsync()` toestaan dat apps tokens op de achtergrond aanvragen, zoals wordt weer gegeven in `initializeUI()`, in de `callGraphApiSilentButton` op handler:
 
 ```java
 /**
@@ -278,7 +278,7 @@ Als de gebruiker al is aangemeld, kan met `acquireTokenSilentAsync()`-apps token
 
 #### <a name="load-an-account"></a>Een account laden
 
-De code voor het laden van een account bevindt zich in `loadAccount()`.  Het laden van het gebruikers account is een asynchrone bewerking, dus retour aanroepen om te kunnen afhandelen wanneer het account wordt geladen, gewijzigd of een fout optreedt, worden door gegeven aan MSAL.  De volgende code verwerkt ook `onAccountChanged()`, die zich voordoet wanneer een account wordt verwijderd, de gebruiker verandert in een ander account, enzovoort.
+De code voor het laden van een account bevindt zich in `loadAccount()`.  Het laden van het gebruikers account is een asynchrone bewerking, dus retour aanroepen om te kunnen afhandelen wanneer het account wordt geladen, gewijzigd of een fout optreedt, worden door gegeven aan MSAL.  De volgende code verwerkt ook `onAccountChanged()`, die plaatsvindt wanneer een account wordt verwijderd, de gebruiker wordt gewijzigd in een ander account, enzovoort.
 
 ```java
 private void loadAccount() {
@@ -367,7 +367,7 @@ Een voor beeld van een app met meerdere accounts is een e-mail-app waarmee u kun
 
 #### <a name="multiple-account-msal-initialization"></a>Initialisatie van meerdere account MSAL
 
-In `onCreateView()` wordt een app-object voor meerdere accounts (`IMultipleAccountPublicClientApplication`) gemaakt met behulp van de configuratie-informatie die is opgeslagen in de `auth_config_multiple_account.json file`:
+In `onCreateView()`wordt een app-object (`IMultipleAccountPublicClientApplication`) voor meerdere accounts gemaakt met behulp van de configuratie-informatie die is opgeslagen in de `auth_config_multiple_account.json file`:
 
 ```java
 // Creates a PublicClientApplication object with res/raw/auth_config_single_account.json
@@ -387,11 +387,11 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(getContext(
         });
 ```
 
-Het gemaakte `MultipleAccountPublicClientApplication`-object wordt opgeslagen in een klasse-lidvariabele, zodat het kan worden gebruikt om te communiceren met de MSAL-bibliotheek om tokens te verkrijgen en te laden en het gebruikers account te verwijderen.
+Het gemaakte `MultipleAccountPublicClientApplication`-object wordt opgeslagen in een klassen lidvariabele, zodat het kan worden gebruikt om te communiceren met de MSAL-bibliotheek om tokens te verkrijgen en te laden en het gebruikers account te verwijderen.
 
 #### <a name="load-an-account"></a>Een account laden
 
-Apps met meerdere accounts roepen meestal `GetAccounts()` om het account te selecteren dat moet worden gebruikt voor MSAL-bewerkingen. De code voor het laden van een account bevindt zich in `loadAccount()`.  Het laden van het gebruikers account is een asynchrone bewerking. Een call back verwerkt dus de situaties waarin het account wordt geladen, gewijzigd of een fout optreedt.
+Meerdere account-Apps bellen `GetAccounts()` meestal om het account te selecteren dat moet worden gebruikt voor MSAL-bewerkingen. De code voor het laden van een account bevindt zich in `loadAccount()`.  Het laden van het gebruikers account is een asynchrone bewerking. Een call back verwerkt dus de situaties waarin het account wordt geladen, gewijzigd of een fout optreedt.
 
 ```java
 /**
@@ -427,7 +427,7 @@ Sommige situaties waarbij de gebruiker kan worden gevraagd om hun account te sel
 * Wanneer uw toepassing voor de eerste keer toegang tot een resource vraagt
 * Wanneer MFA of een ander beleid voor voorwaardelijke toegang is vereist
 
-Meerdere account-apps moeten doorgaans tokens interactief verkrijgen, dat wil zeggen met de gebruikers interface van de gebruiker, met een aanroep van `acquireToken()`.  De code voor het interactief ophalen van een token bevindt zich in `initializeUI()` in de handler voor `callGraphApiInteractiveButton`-klikken:
+Meerdere account-apps moeten doorgaans tokens interactief verkrijgen, dat wil zeggen met de gebruikers interface van de gebruiker, met een aanroep van `acquireToken()`.  De code voor het interactief ophalen van een token bevindt zich in `initializeUI()`, in de `callGraphApiInteractiveButton` op handler:
 
 ```java
 /**
@@ -444,7 +444,7 @@ Meerdere account-apps moeten doorgaans tokens interactief verkrijgen, dat wil ze
 mMultipleAccountApp.acquireToken(getActivity(), getScopes(), getAuthInteractiveCallback());
 ```
 
-Voor apps moet de gebruiker zich niet elke keer aanmelden wanneer ze een token aanvragen. Als de gebruiker al is aangemeld, kunnen apps met `acquireTokenSilentAsync()` tokens aanvragen zonder dat de gebruiker om toestemming wordt gevraagd, zoals wordt weer gegeven in `initializeUI()` in de handler `callGraphApiSilentButton` klikken:
+Voor apps moet de gebruiker zich niet elke keer aanmelden wanneer ze een token aanvragen. Als de gebruiker al is aangemeld, kunnen apps met `acquireTokenSilentAsync()` tokens aanvragen zonder dat de gebruiker om toestemming wordt gevraagd, zoals wordt weer gegeven in `initializeUI()` in de `callGraphApiSilentButton` op handler:
 
 ```java
 /**
@@ -461,7 +461,7 @@ getAuthSilentCallback());
 
 #### <a name="remove-an-account"></a>Een account verwijderen
 
-De code voor het verwijderen van een account en eventuele tokens in de cache voor het account bevindt zich in `initializeUI()` in de handler voor de knop account verwijderen. Voordat u een account kunt verwijderen, hebt u een account object nodig, dat u hebt verkregen van MSAL-functies, zoals `getAccounts()` en `acquireToken()`. Omdat het verwijderen van een account een asynchrone bewerking is, wordt de `onRemoved`-call back opgegeven om de gebruikers interface bij te werken.
+De code voor het verwijderen van een account en eventuele tokens in de cache voor het account bevindt zich in `initializeUI()` in de handler voor de knop account verwijderen. Voordat u een account kunt verwijderen, hebt u een account object nodig, dat u ophaalt van MSAL-functies, zoals `getAccounts()` en `acquireToken()`. Omdat het verwijderen van een account een asynchrone bewerking is, wordt de `onRemoved` terugbellen opgegeven om de gebruikers interface bij te werken.
 
 ```java
 /**
@@ -512,7 +512,7 @@ In tegens telling tot het configuratie bestand [auth_config_single_account. json
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>De stappen voor het maken van de toepassing die wordt gebruikt in deze snelstart
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Leer wat de stappen zijn voor het maken van de toepassing die wordt gebruikt in deze snelstart
 
 Volg de Android-zelfstudie voor een volledige stapsgewijze handleiding voor het bouwen van toepassingen en nieuwe functies, met inbegrip van een volledige uitleg van deze snelstart.
 

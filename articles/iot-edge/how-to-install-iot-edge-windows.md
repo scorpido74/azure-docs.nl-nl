@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: c1b507398a2edd839b610a7c52892e23a88481a0
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ae3f866ff5e4266983117e93f2aab5982065947e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516607"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964387"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installeer de Azure IoT Edge runtime op Windows
 
@@ -76,9 +76,9 @@ In dit voor beeld ziet u een hand matige installatie met Windows-containers:
 
 1. Als u dit nog niet hebt gedaan, registreert u een nieuw IoT Edge apparaat en haalt u het **apparaat Connection String**op. Kopieer de connection string voor gebruik verderop in deze sectie. U kunt deze stap volt ooien met behulp van de volgende hulpprogram ma's:
 
-   * [Azure-portal](how-to-register-device-portal.md)
-   * [Azure CLI](how-to-register-device-cli.md)
-   * [Visual Studio Code](how-to-register-device-vscode.md)
+   * [Azure-portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. Voer Power shell uit als beheerder.
 
@@ -123,7 +123,7 @@ Meer informatie over deze installatie opties kunt u overs Laan om meer te weten 
 
 In deze tweede optie richt u het apparaat in met behulp van de IoT Hub Device Provisioning Service. Geef de **bereik-id** van een Device Provisioning service-exemplaar op, samen met alle andere informatie die specifiek is voor uw voorkeurs [Attestation-mechanisme](../iot-dps/concepts-security.md#attestation-mechanism):
 
-* [Een gesimuleerd TPM-apparaat in Windows maken en inrichten](how-to-auto-provision-simulated-device-windows.md)
+* [Een gesimuleerd IoT Edge-apparaat maken en inrichten met een virtuele TPM in Windows](how-to-auto-provision-simulated-device-windows.md)
 * [Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest](how-to-auto-provision-symmetric-keys.md)
 
 Wanneer u een apparaat automatisch installeert en inricht, kunt u extra para meters gebruiken voor het wijzigen van de installatie, waaronder:

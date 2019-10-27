@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dce3fea1427632f37d826b79016e3aa3e22dad5f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: a96aab3fc5dfa62039732f7860f1e96e3f60e445
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264175"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964037"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snelstartgids: gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-of macOS-app
 
@@ -62,7 +62,7 @@ Deze Quick start is van toepassing op iOS-en macOS-apps. Sommige stappen zijn al
 >      - Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app wanneer deze zich aanmelden of toestemming voor uw app geven.
 >      - Andere configuraties op deze pagina overs Laan.
 >      - Selecteer `Register`.
-> 1. Selecteer in de sectie **beheren** de optie `Authentication` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5.
+> 1. Selecteer in de sectie **beheren** de optie `Authentication` > `Add Platform` > `iOS`.
 >      - Voer de ***bundel-id*** in voor uw toepassing. De bundel-id is een unieke teken reeks die uw toepassing uniek identificeert, bijvoorbeeld `com.<yourname>.identitysample.MSALMacOS`. Noteer de waarde die u gebruikt.
 >      - Houd er rekening mee dat de iOS-configuratie ook van toepassing is op macOS-toepassingen.
 > 1. Selecteer `Configure` en sla de details van de ***MSAL-configuratie*** op verderop in deze Quick Start.

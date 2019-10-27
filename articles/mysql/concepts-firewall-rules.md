@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 1d75b9e7d997b0c62c7e235187907f0556318efe
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 434ecbcf5158009b8e74ae392aeea95b5ea8b281
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970406"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72963444"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Firewall regels van Azure Database for MySQL server
 Firewalls verhinderen alle toegang tot uw database server totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
@@ -43,13 +43,16 @@ Azure-verbindingen moeten zijn ingeschakeld om toepassingen van Azure toe te sta
 
 ![Toegang tot Azure-Services in de portal toestaan configureren](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>Verbinding maken vanaf een VNet
+Als u een beveiligde verbinding wilt maken met uw Azure Database for MySQL-server vanuit een VNet, kunt u gebruikmaken van [vnet-service-eind punten](./concepts-data-access-and-security-vnet.md). 
+
 ## <a name="programmatically-managing-firewall-rules"></a>Firewallregels programmatisch beheren
 Naast de Azure Portal kunnen Firewall regels programmatisch worden beheerd met behulp van de Azure CLI. Zie ook [Azure database for MySQL firewall regels maken en beheren met behulp van Azure cli](./howto-manage-firewall-using-cli.md)
 
 ## <a name="troubleshooting-firewall-issues"></a>Problemen met de firewall oplossen
 Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-Data Base voor MySQL-Server service niet naar behoren werkt:
 
-* **Wijzigingen in de acceptatie lijst zijn nog niet doorgevoerd:** Het kan vijf minuten duren voordat wijzigingen in de Azure Database for MySQL Server-firewallconfiguratie van kracht zijn.
+* **Wijzigingen in de acceptatie lijst zijn nog niet doorgevoerd:** Het kan een vertraging van vijf minuten duren voordat wijzigingen in de configuratie van de Azure Database for MySQL Server-firewall van kracht worden.
 
 * **De aanmelding is niet geautoriseerd of er is een onjuist wacht woord gebruikt:** Als een aanmelding geen machtigingen heeft op de Azure Database for MySQL server of het gebruikte wacht woord onjuist is, wordt de verbinding met de Azure Database for MySQL-server geweigerd. Door een firewallinstellingen te maken, krijgen clients alleen de mogelijkheid om te proberen verbinding te maken met de server. Elke client moet alsnog de benodigde beveiligingsreferenties opgeven.
 
@@ -65,3 +68,4 @@ Houd rekening met de volgende punten wanneer de toegang tot de Microsoft Azure-D
 
 * [Azure Database for MySQL firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-using-portal.md)
 * [Azure Database for MySQL firewall regels maken en beheren met Azure CLI](./howto-manage-firewall-using-cli.md)
+- [VNet-service-eind punten in Azure Database for MySQL](./concepts-data-access-and-security-vnet.md)

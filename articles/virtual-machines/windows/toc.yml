@@ -216,6 +216,8 @@
           href: managed-disks-overview.md
         - name: Een schijftype selecteren voor IaaS-VM's
           href: disks-types.md
+        - name: Versleuteling
+          href: disk-encryption.md
         - name: Ontwerpen voor hoge prestaties
           href: premium-storage-performance.md
         - name: Schaalbaarheidsdoelen voor schijven
