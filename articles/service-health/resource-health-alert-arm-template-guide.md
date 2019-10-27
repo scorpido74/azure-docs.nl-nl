@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0948edec05b97dd604393218e3eeb3302548af82
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099014"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933560"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Health-waarschuwingen configureren met behulp van Resource Manager-sjablonen
 
@@ -37,13 +37,13 @@ Als u de instructies op deze pagina wilt volgen, moet u enkele dingen vooraf ins
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > U kunt gebruiken `Get-AzSubscription` om de abonnementen weer te geven waartoe u toegang hebt.
+    > U kunt `Get-AzSubscription` gebruiken om de abonnementen weer te geven waartoe u toegang hebt.
 
 2. De volledige Azure Resource Manager-ID voor uw actie groep zoeken en opslaan
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Een resource manager-sjabloon maken en opslaan voor resource Health waarschuwingen `resourcehealthalert.json` als ([Zie de details hieronder](#resource-manager-template-options-for-resource-health-alerts))
+3. Een resource manager-sjabloon voor Resource Health waarschuwingen maken en opslaan als `resourcehealthalert.json` ([Zie de details hieronder](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Een nieuwe Azure Resource Manager-implementatie met behulp van deze sjabloon maken
 
@@ -147,7 +147,7 @@ Resource Health waarschuwingen kunnen worden geconfigureerd voor het bewaken van
  * Niveau van de resource groep
  * Resource niveau
 
-De waarschuwings sjabloon is geconfigureerd op het abonnements niveau, maar als u uw waarschuwing zo wilt configureren dat u alleen over bepaalde resources of resources in een bepaalde resource groep hoeft te worden gewaarschuwd, hoeft u alleen `scopes` maar de sectie in het bovenstaande te wijzigen sjabloon.
+De waarschuwings sjabloon is geconfigureerd op het abonnements niveau, maar als u uw waarschuwing zo wilt configureren dat u alleen over bepaalde resources of resources in een bepaalde resource groep wilt worden gewaarschuwd, hoeft u alleen de `scopes` sectie in de bovenstaande sjabloon te wijzigen.
 
 Voor een bereik van een resource groeps niveau moet de sectie bereiken er als volgt uitzien:
 ```json
@@ -170,7 +170,7 @@ Bijvoorbeeld: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegrou
 
 ### <a name="adjusting-the-resource-types-which-alert-you"></a>De resource typen aanpassen die u waarschuwen
 
-Waarschuwingen op het niveau van het abonnement of de resource groep kunnen verschillende soorten resources hebben. Als u wilt beperken dat waarschuwingen alleen afkomstig zijn uit een bepaalde subset van resource typen, kunt u die in de `condition` sectie van de sjabloon als volgt definiëren:
+Waarschuwingen op het niveau van het abonnement of de resource groep kunnen verschillende soorten resources hebben. Als u wilt beperken dat waarschuwingen alleen afkomstig zijn uit een bepaalde subset van resource typen, kunt u dat als volgt definiëren in de sectie `condition` van de sjabloon:
 
 ```json
 "condition": {
@@ -195,12 +195,12 @@ Waarschuwingen op het niveau van het abonnement of de resource groep kunnen vers
 },
 ```
 
-Hier gebruiken we de `anyOf` wrapper om de resource status waarschuwing te laten overeenkomen met een van de voor waarden die we opgeven, waardoor er waarschuwingen kunnen worden gegeven die gericht zijn op specifieke resource typen.
+Hier gebruiken we de `anyOf` wrapper om de resource status waarschuwing te laten overeenkomen met een van de voor waarden die we opgeven, waardoor er waarschuwingen worden gegeven die gericht zijn op specifieke resource typen.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>De Resource Health gebeurtenissen aanpassen waarmee u wordt gewaarschuwd
-Wanneer resources een status gebeurtenis ondergaan, kunnen ze een reeks fasen door lopen die de status `Active`van de status gebeurtenis:, `InProgress`, `Updated` `Resolved`en.
+Wanneer resources een status gebeurtenis ondergaan, kunnen ze door een reeks fasen gaan die de status van de status gebeurtenis vertegenwoordigen: `Active`, `In Progress`, `Updated`en `Resolved`.
 
-U wilt mogelijk alleen een melding ontvangen wanneer een resource een slechte status krijgt, in welk geval u de waarschuwing zo wilt configureren dat er alleen een melding `status` wordt `Active`weer gegeven wanneer het is. Als u echter ook wilt worden gewaarschuwd voor de andere fasen, kunt u deze gegevens als volgt toevoegen:
+U wilt mogelijk alleen een melding ontvangen wanneer een resource een slechte status krijgt, in welk geval u uw waarschuwing wilt configureren zodat alleen wordt gewaarschuwd wanneer de `status` is `Active`. Als u echter ook wilt worden gewaarschuwd voor de andere fasen, kunt u deze gegevens als volgt toevoegen:
 
 ```json
 "condition": {
@@ -214,7 +214,7 @@ U wilt mogelijk alleen een melding ontvangen wanneer een resource een slechte st
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -230,11 +230,11 @@ U wilt mogelijk alleen een melding ontvangen wanneer een resource een slechte st
 }
 ```
 
-Als u wilt worden gewaarschuwd voor alle vier stadia van de status gebeurtenissen, kunt u deze voor waarde allemaal tegelijk verwijderen en ontvangt u een melding van `status` de eigenschap.
+Als u wilt worden gewaarschuwd voor alle vier stadia van de status gebeurtenissen, kunt u deze voor waarde allemaal tegelijk verwijderen en ontvangt u een melding van de eigenschap `status`.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>De Resource Health-waarschuwingen aanpassen om "onbekende" gebeurtenissen te voor komen
 
-Azure Resource Health kunt u de meest recente status van uw resources rapporteren door deze voortdurend te controleren met behulp van test lopers. De relevante statussen van de gerapporteerde integriteit zijn: ' Beschikbaar ', ' niet beschikbaar ' en ' gedegradeerd '. In situaties waarin de loper en de Azure-resource niet kunnen communiceren, wordt de status ' onbekend ' gerapporteerd voor de resource en die als een status gebeurtenis ' actief ' wordt beschouwd.
+Azure Resource Health kunt u de meest recente status van uw resources rapporteren door deze voortdurend te controleren met behulp van test lopers. De relevante statussen van de gerapporteerde integriteit zijn: ' beschikbaar ', ' niet beschikbaar ' en ' gedegradeerd '. In situaties waarin de loper en de Azure-resource niet kunnen communiceren, wordt de status ' onbekend ' gerapporteerd voor de resource en die als een status gebeurtenis ' actief ' wordt beschouwd.
 
 Wanneer een resource echter "onbekend" rapporteert, is het waarschijnlijk dat de status ervan niet is gewijzigd sinds het laatste nauw keurig rapport. Als u waarschuwingen voor onbekende gebeurtenissen wilt uitschakelen, kunt u die logica opgeven in de sjabloon:
 
@@ -409,7 +409,7 @@ Op basis van de verschillende aanpassingen die in de vorige sectie zijn beschrev
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {

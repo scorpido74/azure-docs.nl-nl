@@ -1,24 +1,18 @@
 ---
 title: Aangepaste logboeken verzamelen in Azure Monitor | Microsoft Docs
 description: Azure Monitor kunt gebeurtenissen verzamelen uit tekst bestanden op zowel Windows-als Linux-computers.  In dit artikel wordt beschreven hoe u een nieuw aangepast logboek en Details definieert van de records die ze in Azure Monitor maken.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: aca7f6bb-6f53-4fd4-a45c-93f12ead4ae1
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/26/2019
+ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177621"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932501"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Aangepaste Logboeken in Azure Monitor
 
@@ -83,7 +77,7 @@ De volgende tabel bevat voor beelden van geldige patronen om andere logboek best
 
 | Beschrijving | Pad |
 |:--- |:--- |
-| Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs @ no__t-0\*.txt |
+| Alle bestanden in *C:\Logs* met de extensie. txt op de Windows-agent |C:\Logs\\\*. txt |
 | Alle bestanden in *C:\Logs* met een naam die begint met log en een. txt-extensie in Windows-agent |C:\Logs\ log\*.txt |
 | Alle bestanden in */var/log/audit* met de extensie. txt in de Linux-agent |/var/log/audit/*. txt |
 | Alle bestanden in */var/log/audit* met een naam die begint met log en een. txt-extensie in de Linux-agent |/var/log/audit/log\*.txt |
@@ -95,7 +89,7 @@ De volgende tabel bevat voor beelden van geldige patronen om andere logboek best
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Stap 4. Geef een naam en beschrijving voor het logboek op
 De naam die u opgeeft, wordt gebruikt voor het logboek type zoals hierboven is beschreven.  Deze wordt altijd beëindigd met _CL om het te onderscheiden als een aangepast logboek.
 
-1. Typ een naam voor het logboek.  Het achtervoegsel **@no__t 1CL** wordt automatisch ingevuld.
+1. Typ een naam voor het logboek.  Het achtervoegsel **\_cl** wordt automatisch gegeven.
 2. Voeg een optionele **Beschrijving**toe.
 3. Klik op **volgende** om de aangepaste definitie van het logboek op te slaan.
 
@@ -129,7 +123,7 @@ Aangepaste logboek records hebben een type met de naam van het logboek dat u opg
 | TimeGenerated |De datum en tijd waarop de record is verzameld door Azure Monitor.  Als in het logboek een scheidings teken op basis van tijd wordt gebruikt, is dit de tijd die van de vermelding is verzameld. |
 | SourceSystem |Type agent waaruit het record is verzameld. <br> OpsManager: Windows-agent, Direct Connect of System Center Operations Manager <br> Linux: alle Linux-agents |
 | RawData |Volledige tekst van het verzamelde item. Waarschijnlijk wilt u [deze gegevens in afzonderlijke eigenschappen parseren](../log-query/parse-text.md). |
-| ManagementGroupName |Naam van de beheer groep voor System Center Operations-agents.  Voor andere agents is dit AOI-\<workspace-ID @ no__t-1 |
+| ManagementGroupName |Naam van de beheer groep voor System Center Operations-agents.  Voor andere agents is dit AOI-\<werk ruimte-ID\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Voorbeeld scenario voor het toevoegen van een aangepast logboek
@@ -147,7 +141,7 @@ We bieden een van de logboek bestanden en kunnen de gebeurtenissen zien die word
 ![Een voorbeeld logboek uploaden en parseren](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Paden voor logboek verzameling toevoegen
-De logboek bestanden worden opgeslagen in *C:\MyApp\Logs*.  Er wordt elke dag een nieuw bestand gemaakt met een naam die de datum bevat in het patroon *appYYYYMMDD. log*.  Een voldoende patroon voor dit logboek is *C:\MyApp\Logs @ no__t-1\*.log*.
+De logboek bestanden worden opgeslagen in *C:\MyApp\Logs*.  Er wordt elke dag een nieuw bestand gemaakt met een naam die de datum bevat in het patroon *appYYYYMMDD. log*.  Een voldoende patroon voor dit logboek is *C:\MyApp\Logs\\\*. log*.
 
 ![Pad naar logboek verzameling](media/data-sources-custom-logs/collection-path.png)
 

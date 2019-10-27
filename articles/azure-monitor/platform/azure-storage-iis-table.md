@@ -1,92 +1,86 @@
 ---
-title: Blob storage gebruiken voor IIS en table storage voor gebeurtenissen in Azure Monitor | Microsoft Docs
-description: Azure Monitor kunt u de logboeken voor Azure-services die schrijft diagnostische gegevens naar table storage of IIS-logboeken geschreven naar de blobopslag lezen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Gebruik Blob Storage voor IIS en tabel opslag voor gebeurtenissen in Azure Monitor | Microsoft Docs
+description: Azure Monitor kunt de logboeken lezen voor Azure-Services die diagnostische gegevens schrijven naar Table-opslag of IIS-logboeken die zijn geschreven naar Blob Storage.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 04/12/2017
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 901544886e0a0c90c29e83fc71f7a7a25ffc6862
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/12/2017
+ms.openlocfilehash: 8f70ecc96269783c29c566fb89bd617f034316b1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244886"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932672"
 ---
-# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Verzamelen van diagnostische logboeken in Azure uit Azure Storage
+# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Diagnostische Azure-logboeken van Azure Storage verzamelen
 
-Azure Monitor kunt u de logboeken voor de volgende services die schrijft diagnostische gegevens naar table storage of IIS-logboeken geschreven naar de blobopslag lezen:
+Azure Monitor kunt de logboeken lezen voor de volgende services die diagnostische gegevens schrijven naar Table-opslag of IIS-logboeken die zijn geschreven naar Blob Storage:
 
-* Service Fabric-clusters (Preview)
-* Virtuele machines
-* Web-/ werkrollen
+* Service Fabric clusters (preview-versie)
+* Virtual Machines
+* Web/werk rollen
 
-Voordat u Azure Monitor kunt u gegevens verzamelen in Log Analytics-werkruimte voor deze resources, moet Azure diagnostics zijn ingeschakeld.
+Voordat Azure Monitor gegevens in een Log Analytics werkruimte voor deze resources kunt verzamelen, moet Azure Diagnostics zijn ingeschakeld.
 
-Als diagnostische gegevens zijn ingeschakeld, kunt u de Azure-portal of PowerShell configureren van de werkruimte om de logboeken te verzamelen.
+Zodra de diagnostische gegevens zijn ingeschakeld, kunt u de werk ruimte Azure Portal of Power shell gebruiken om de logboeken te verzamelen.
 
-Azure Diagnostics is een Azure-extensie waarmee u diagnostische gegevens verzamelen uit een werkrol, Webrol of virtuele machine in Azure. De gegevens worden opgeslagen in Azure storage-account en vervolgens kan worden verzameld door Azure Monitor.
+Azure Diagnostics is een Azure-extensie waarmee u Diagnostische gegevens kunt verzamelen van een werk rollen, webrol of virtuele machine die wordt uitgevoerd in Azure. De gegevens worden opgeslagen in een Azure-opslag account en kunnen vervolgens worden verzameld door Azure Monitor.
 
-Voor Azure Monitor om deze Azure Diagnostics-logboeken te verzamelen, moet de logboeken op de volgende locaties:
+Als Azure Monitor deze Azure Diagnostics-logboeken wilt verzamelen, moeten de logboeken zich op de volgende locaties bevinden:
 
-| Logboektype | Resourcetype | Locatie |
+| Logboek type | Resourcetype | Locatie |
 | --- | --- | --- |
-| IIS-logboeken |Virtuele machines <br> Webrollen <br> Werkrollen |wad-iis-logboekbestanden (Blob Storage) |
-| Syslog |Virtuele machines |LinuxsyslogVer2v0 (Table Storage) |
-| Operationele gebeurtenissen van de service Fabric |Service Fabric-knooppunten |WADServiceFabricSystemEventTable |
-| Service Fabric Reliable Actor-gebeurtenissen |Service Fabric-knooppunten |WADServiceFabricReliableActorEventTable |
-| Service Fabric Reliable Services-gebeurtenissen |Service Fabric-knooppunten |WADServiceFabricReliableServiceEventTable |
-| Windows-gebeurtenislogboeken |Service Fabric-knooppunten <br> Virtuele machines <br> Webrollen <br> Werkrollen |WADWindowsEventLogsTable (Table Storage) |
-| Windows ETW-Logboeken |Service Fabric-knooppunten <br> Virtuele machines <br> Webrollen <br> Werkrollen |WADETWEventTable (Table Storage) |
+| IIS-logboeken |Virtual Machines <br> Webrollen <br> Werk rollen |wad-IIS-logboek bestanden (Blob Storage) |
+| Syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |
+| Operationele gebeurtenissen Service Fabric |Service Fabric knooppunten |WADServiceFabricSystemEventTable |
+| Service Fabric betrouw bare actor gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableActorEventTable |
+| Service Fabric betrouw bare service gebeurtenissen |Service Fabric knooppunten |WADServiceFabricReliableServiceEventTable |
+| Windows-gebeurtenis logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADWindowsEventLogsTable (Table Storage) |
+| Windows ETW-logboeken |Service Fabric knooppunten <br> Virtual Machines <br> Webrollen <br> Werk rollen |WADETWEventTable (Table Storage) |
 
 > [!NOTE]
-> IIS-logboeken van Azure Websites worden momenteel niet ondersteund.
+> IIS-logboeken van Azure websites worden momenteel niet ondersteund.
 >
 >
 
-Voor virtuele machines, die u hebt de mogelijkheid van het installeren van de [Log Analytics-agent](../../azure-monitor/learn/quick-collect-azurevm.md) met uw virtuele machine om in te schakelen als u meer inzicht te krijgen. Naast het IIS-logboeken en gebeurtenislogboeken analyseren, kunt u aanvullende analyse, waaronder configuratie bijhouden, SQL-evaluatie en update-evaluatie uitvoeren.
+Voor virtuele machines hebt u de mogelijkheid om de Log Analytics- [agent](../../azure-monitor/learn/quick-collect-azurevm.md) in uw virtuele machine te installeren om extra inzichten mogelijk te maken. Naast het analyseren van IIS-logboeken en-gebeurtenis logboeken, kunt u extra analyses uitvoeren, waaronder configuratie wijzigingen bijhouden, SQL-evaluatie en update-evaluatie.
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Azure diagnostics in een virtuele machine inschakelen voor het logboek voor systeemgebeurtenissen en IIS het foutenlogboek van verzameling
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Diagnostische gegevens van Azure inschakelen op een virtuele machine voor gebeurtenis logboeken en IIS-logboek verzameling
 
-Gebruik de volgende procedure om in te schakelen van Azure diagnostics in een virtuele machine voor de gebeurtenis- en IIS logboekverzameling met behulp van de Microsoft Azure-portal.
+Gebruik de volgende procedure om Azure Diagnostics in te scha kelen in een virtuele machine voor gebeurtenis logboeken en IIS-logboek verzameling met behulp van de Microsoft Azure-portal.
 
-### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Om in te schakelen van Azure diagnostics in een virtuele machine met de Azure-portal
+### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Diagnostische gegevens van Azure inschakelen op een virtuele machine met de Azure Portal
 
-1. Installeer de VM-Agent bij het maken van een virtuele machine. Als de virtuele machine al bestaat, moet u controleren of de VM-Agent al is geïnstalleerd.
+1. Installeer de VM-agent tijdens het maken van een virtuele machine. Als de virtuele machine al bestaat, controleert u of de VM-agent al is geïnstalleerd.
 
-   * In Azure portal, gaat u naar de virtuele machine, selecteer **optionele configuratie**, klikt u vervolgens **Diagnostics** en stel **Status** naar **op** .
+   * Ga in het Azure Portal naar de virtuele machine, selecteer **optionele configuratie**, vervolgens **diagnoses** en stel **status** in **op aan**.
 
-     De virtuele machine heeft na voltooiing, de Azure Diagnostics-extensie geïnstalleerd en wordt uitgevoerd. Deze uitbreiding is verantwoordelijk voor het verzamelen van diagnostische gegevens.
-2. Schakel de bewaking en logboekregistratie in een bestaande virtuele machine configureren. U kunt diagnostische gegevens op het niveau van de virtuele machine inschakelen. Diagnostische gegevens inschakelen en vervolgens logboekregistratie configureren, moet u de volgende stappen uitvoeren:
+     Wanneer de virtuele machine is voltooid, is de Azure Diagnostics-uitbrei ding geïnstalleerd en wordt deze uitgevoerd. Deze uitbrei ding is verantwoordelijk voor het verzamelen van uw diagnostische gegevens.
+2. Schakel bewaking in en configureer gebeurtenis logboek registratie op een bestaande VM. U kunt Diagnostische gegevens inschakelen op het niveau van de virtuele machine. Voer de volgende stappen uit om diagnostische gegevens in te scha kelen en vervolgens gebeurtenis logboek registratie te configureren:
 
    1. Selecteer de VM.
    2. Klik op **bewaking**.
-   3. Klik op **Diagnostics**.
-   4. Stel de **Status** naar **ON**.
-   5. Selecteer elke logboekbestanden met diagnostische gegevens die u wenst te verzamelen.
+   3. Klik op **Diagnostische gegevens**.
+   4. Stel de **status** **in op on**.
+   5. Selecteer elk diagnostische logboek dat u wilt verzamelen.
    6. Klik op **OK**.
 
-## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Azure diagnostics in een Webrol voor IIS-logboek- en gebeurtenisgegevens verzameling inschakelen
+## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Diagnostische gegevens van Azure inschakelen in een webrole voor IIS-logboek en gebeurtenis verzameling
 
-Raadpleeg [hoe om te schakelen diagnostische gegevens in een Cloudservice](../../cloud-services/cloud-services-dotnet-diagnostics.md) voor algemene stappen voor het inschakelen van Azure diagnostics. De onderstaande instructies deze informatie gebruiken en aanpassen voor gebruik met Log Analytics.
+Zie [Diagnostische gegevens inschakelen in een Cloud service](../../cloud-services/cloud-services-dotnet-diagnostics.md) voor algemene stappen voor het inschakelen van Azure Diagnostics. De onderstaande instructies gebruiken deze informatie en aanpassen deze voor gebruik met Log Analytics.
 
-Met Azure diagnostics is ingeschakeld:
+Met diagnostische gegevens van Azure ingeschakeld:
 
-* IIS-logboeken worden standaard opgeslagen met logboekgegevens die zijn overgedragen op basis van de overdracht scheduledTransferPeriod interval.
-* Windows-gebeurtenislogboeken worden standaard niet overgedragen.
+* IIS-logboeken worden standaard opgeslagen en logboek gegevens worden overgebracht naar het scheduledTransferPeriod-overdrachts interval.
+* Windows-gebeurtenis logboeken worden niet standaard overgedragen.
 
 ### <a name="to-enable-diagnostics"></a>Diagnostische gegevens inschakelen
 
-Om in te schakelen van Windows-gebeurtenislogboeken, of te wijzigen van de scheduledTransferPeriod, Azure Diagnostics configureren met de XML-configuratiebestand (diagnostics.wadcfg), zoals wordt weergegeven in [stap 4: Maken van het configuratiebestand van de diagnostische gegevens en de extensie installeren](../../cloud-services/cloud-services-dotnet-diagnostics.md)
+Als u Windows-gebeurtenis logboeken wilt inschakelen, of als u de scheduledTransferPeriod wilt wijzigen, configureert u Azure Diagnostics met behulp van het XML-configuratie bestand (Diagnostics. wadcfg), zoals wordt weer gegeven in [stap 4: uw diagnostische configuratie bestand maken en de uitbrei ding installeren](../../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-Het volgende voorbeeld-configuratiebestand worden IIS-logboeken en alle gebeurtenissen van de toepassings- en systeemlogboeken verzameld:
+In het volgende voor beeld van een configuratie bestand worden IIS-logboeken en alle gebeurtenissen uit de toepassings-en systeem logboeken verzameld:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -110,7 +104,7 @@ Het volgende voorbeeld-configuratiebestand worden IIS-logboeken en alle gebeurte
     </DiagnosticMonitorConfiguration>
 ```
 
-Zorg ervoor dat uw ConfigurationSettings Hiermee geeft u een opslagaccount, zoals in het volgende voorbeeld:
+Zorg ervoor dat uw ConfigurationSettings een opslag account opgeeft, zoals in het volgende voor beeld:
 
 ```xml
     <ConfigurationSettings>
@@ -118,53 +112,53 @@ Zorg ervoor dat uw ConfigurationSettings Hiermee geeft u een opslagaccount, zoal
     </ConfigurationSettings>
 ```
 
-De **AccountName** en **AccountKey** waarden worden gevonden in de Azure portal in het dashboard van de storage-account onder toegangssleutels beheren. Het protocol voor de verbindingsreeks moet **https**.
+De waarden **AccountName** en **AccountKey** vindt u in de Azure Portal in het dash board van het opslag account onder toegangs sleutels beheren. Het protocol voor de connection string moet **https**zijn.
 
-Als de bijgewerkte diagnostische configuratie is toegepast in uw cloud-service en diagnostische gegevens naar Azure Storage schrijven, klikt u vervolgens bent u klaar om te configureren van de Log Analytics-werkruimte.
+Zodra de bijgewerkte diagnostische configuratie is toegepast op uw Cloud service en er diagnostische gegevens naar Azure Storage worden geschreven, kunt u de Log Analytics-werk ruimte nu configureren.
 
-## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>De Azure portal gebruiken voor het verzamelen van Logboeken van Azure Storage
+## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>De Azure Portal gebruiken voor het verzamelen van logboeken van Azure Storage
 
-De Azure-portal kunt u een Log Analytics-werkruimte configureren in Azure Monitor om de logboeken voor de volgende Azure-services te verzamelen:
+U kunt de Azure Portal gebruiken om een Log Analytics-werk ruimte te configureren in Azure Monitor om de logboeken te verzamelen voor de volgende Azure-Services:
 
-* Service Fabric-clusters
-* Virtuele machines
-* Web-/ werkrollen
+* Service Fabric clusters
+* Virtual Machines
+* Web/werk rollen
 
-In de Azure-portal, gaat u naar uw Log Analytics-werkruimte en de volgende taken uitvoeren:
+Ga in het Azure Portal naar uw Log Analytics-werk ruimte en voer de volgende taken uit:
 
-1. Klik op *logboeken voor opslagaccounts*
-2. Klik op de *toevoegen* taak
-3. Selecteer het opslagaccount waarin de logboeken met diagnostische gegevens
-   * Dit account mag een klassieke storage-account of een Azure Resource Manager-opslagaccount
-4. Selecteer het gegevenstype dat u wenst te verzamelen van Logboeken voor
-   * De opties zijn IIS-logboeken; Gebeurtenissen. Syslog (Linux); ETW-Logboeken; Service Fabric-gebeurtenissen
-5. De waarde voor de bron wordt automatisch ingevuld op basis van het gegevenstype en kan niet worden gewijzigd
+1. Klik op *Logboeken voor opslag accounts*
+2. Klik op de taak *toevoegen*
+3. Selecteer het opslag account dat de diagnostische Logboeken bevat
+   * Dit account kan een klassiek opslag account of een Azure Resource Manager Storage-account zijn
+4. Selecteer het gegevens type waarvoor u logboeken wilt verzamelen
+   * De opties zijn IIS-logboeken. Evenementen Syslog (Linux); ETW-logboeken; Service Fabric gebeurtenissen
+5. De waarde voor de bron wordt automatisch ingevuld op basis van het gegevens type en kan niet worden gewijzigd
 6. Klik op OK om de configuratie op te slaan
 
-Herhaal stappen 2 tot en met 6 voor extra opslagaccounts en gegevenstypen die u wilt verzamelen en onderbrengen in de werkruimte.
+Herhaal stap 2-6 voor extra opslag accounts en gegevens typen die u in de werk ruimte wilt verzamelen.
 
-In ongeveer 30 minuten bent u gegevens uit het opslagaccount in de Log Analytics-werkruimte. U ziet alleen de gegevens die worden geschreven naar opslag nadat de configuratie is toegepast. De werkruimte heeft de vooraf bestaande gegevens niet lezen uit het opslagaccount.
+In ongeveer 30 minuten kunt u de gegevens van het opslag account in de werk ruimte Log Analytics bekijken. Er worden alleen gegevens weer gegeven die naar opslag zijn geschreven nadat de configuratie is toegepast. De bestaande gegevens van het opslag account worden niet door de werk ruimte gelezen.
 
 > [!NOTE]
-> De portal wordt niet gevalideerd of de bron in het opslagaccount bestaat of als nieuwe gegevens worden geschreven.
+> De portal valideert niet dat de bron bestaat in het opslag account of dat er nieuwe gegevens worden geschreven.
 >
 >
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Azure diagnostics in een virtuele machine inschakelen voor het logboek voor systeemgebeurtenissen en IIS het foutenlogboek van verzameling met behulp van PowerShell
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Diagnostische gegevens van Azure inschakelen op een virtuele machine voor gebeurtenis logboeken en IIS-logboek verzameling met behulp van Power shell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Gebruik de stappen in [Azure Monitor configureren om te indexeren van Azure diagnostics](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) PowerShell gebruiken om te lezen van Azure diagnostics die zijn geschreven naar table storage.
+Gebruik de stappen in [configure Azure monitor voor het indexeren van Azure Diagnostics](powershell-workspace-configuration.md#configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage) voor het gebruik van Power shell om te lezen van Azure Diagnostics die zijn geschreven naar Table Storage.
 
-U kunt meer precies een de gebeurtenissen die worden geschreven naar Azure Storage opgeven met behulp van Azure PowerShell.
-Zie voor meer informatie, [inschakelen van diagnostische gegevens in Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
+Met Azure PowerShell kunt u de gebeurtenissen die naar Azure Storage worden geschreven nauw keuriger opgeven.
+Zie voor meer informatie [Diagnostische gegevens inschakelen in Azure virtual machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-U kunt inschakelen en Azure diagnostics met behulp van de volgende PowerShell-script bijwerken.
-U kunt dit script ook gebruiken met een aangepaste configuratie voor logboekregistratie.
-Het script voor het instellen van de storage-account, de servicenaam en de naam van virtuele machine wijzigen.
+U kunt Azure Diagnostics inschakelen en bijwerken met behulp van het volgende Power shell-script.
+U kunt dit script ook gebruiken met een aangepaste configuratie voor logboek registratie.
+Wijzig het script om het opslag account, de service naam en de naam van de virtuele machine in te stellen.
 Het script maakt gebruik van cmdlets voor klassieke virtuele machines.
 
-Controleer het volgende voorbeeldscript, kopieert u het zo nodig wijzigen, het voorbeeld opslaan als een PowerShell-scriptbestand en voer het script.
+Bekijk het volgende voorbeeld script, kopieer het, wijzig het indien nodig, sla het voor beeld op als Power shell-script bestand en voer het script uit.
 
 ```powershell
     #Connect to Azure
@@ -200,6 +194,6 @@ Controleer het volgende voorbeeldscript, kopieert u het zo nodig wijzigen, het v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verzamelen van Logboeken en metrische gegevens voor Azure-services](collect-azure-metrics-logs.md) voor ondersteunde Azure-services.
-* [Oplossingen inschakelen](../../azure-monitor/insights/solutions.md) om inzicht in de gegevens te bieden.
-* [Gebruik van zoekquery's](../../azure-monitor/log-query/log-query-overview.md) om de gegevens te analyseren.
+* [Verzamel logboeken en metrische gegevens voor Azure-Services](collect-azure-metrics-logs.md) voor ondersteunde Azure-Services.
+* [Schakel oplossingen](../../azure-monitor/insights/solutions.md) in om inzicht te krijgen in de gegevens.
+* [Gebruik Zoek query's](../../azure-monitor/log-query/log-query-overview.md) om de gegevens te analyseren.

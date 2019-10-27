@@ -1,24 +1,18 @@
 ---
 title: Windows-computers verbinden met Azure Monitor | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Windows-computers Azure Monitor die worden gehost in andere Clouds of on-premises verbindt met de Log Analytics-agent voor Windows.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/07/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/07/2019
+ms.openlocfilehash: abe114a989c4ec672d391a7fd7d83341d4c52638
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033948"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932776"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-computers verbinden met Azure Monitor
 
@@ -29,7 +23,7 @@ Op een bewaakte Windows-computer wordt de agent vermeld als de micro soft Monito
 De agent kan worden geïnstalleerd met behulp van een van de volgende methoden. De meeste installaties gebruiken een combi natie van deze methoden om verschillende sets computers te installeren, indien van toepassing.  Verderop in dit artikel vindt u meer informatie over het gebruik van elke methode.
 
 * Hand matige installatie. Setup wordt hand matig uitgevoerd op de computer met behulp van de installatie wizard, vanaf de opdracht regel of wordt geïmplementeerd met een bestaand hulp programma voor software distributie.
-* Azure Automation Desired State Configuration (DSC). DSC gebruiken in Azure Automation met een script voor Windows-computers die al in uw omgeving zijn geïmplementeerd.  
+* Azure Automation desired state Configuration (DSC). DSC gebruiken in Azure Automation met een script voor Windows-computers die al in uw omgeving zijn geïmplementeerd.  
 * Power shell-script.
 * Resource Manager-sjabloon voor virtuele machines waarop Windows on-premises wordt uitgevoerd in Azure Stack. 
 
@@ -57,7 +51,7 @@ Als u het [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-r
 >Als u een virtuele machine met Windows Server 2008 SP2 x64 wilt configureren voor het gebruik van TLS 1,2, moet u eerst de volgende [SHA-2-ondersteunings update voor ondertekening van code](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) installeren voordat u de onderstaande stappen uitvoert. 
 >
 
-1. Zoek de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
+1. Zoek de volgende register sleutel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Een subsleutel maken onder **protocollen** voor TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
 3. Maak een subsleutel van de **client** onder de subsleutel TLS 1,2-Protocol versie die u eerder hebt gemaakt. Bijvoorbeeld **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client**.
 4. Maak de volgende DWORD-waarden onder **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ client**:
@@ -67,9 +61,9 @@ Als u het [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-r
 
 Configureer .NET Framework 4,6 of hoger voor de ondersteuning van beveiligde crypto grafie, omdat deze standaard is uitgeschakeld. De [sterke crypto grafie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) maakt gebruik van veiliger netwerk protocollen zoals TLS 1,2 en blokkeert protocollen die niet beveiligd zijn. 
 
-1. Zoek de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
+1. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319**.  
 2. Maak de DWORD-waarde **schusestrongcrypto toe** onder deze subsleutel met de waarde **1**.  
-3. Zoek de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
+3. Ga naar de volgende registersubsleutel: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
 4. Maak de DWORD-waarde **schusestrongcrypto toe** onder deze subsleutel met de waarde **1**. 
 5. Start het systeem opnieuw op om de instellingen van kracht te laten worden. 
 
@@ -101,7 +95,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 
 |MMA-specifieke opties                   |Opmerkingen         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Optionele para meter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
+| NOAPM = 1                               | Optionele para meter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = de agent configureren om te rapporteren aan een werk ruimte                |
 |OPINSIGHTS_WORKSPACE_ID                | Werk ruimte-ID (GUID) voor de toe te voegen werk ruimte                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Werkruimte sleutel die in eerste instantie wordt gebruikt voor verificatie met de werk ruimte |
@@ -110,7 +104,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 |OPINSIGHTS_PROXY_USERNAME               | Gebruikers naam voor toegang tot een geverifieerde proxy |
 |OPINSIGHTS_PROXY_PASSWORD               | Wacht woord voor toegang tot een geverifieerde proxy |
 
-1. Als u de installatie bestanden van de agent wilt extra heren, voert u een opdracht prompt met verhoogde bevoegdheid uit `MMASetup-<platform>.exe /c` en wordt u gevraagd om het pad naar het bestand te extra heren.  U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>` door te geven.  
+1. Als u de installatie bestanden van de agent wilt extra heren, voert u een opdracht prompt met verhoogde bevoegdheid uit `MMASetup-<platform>.exe /c` en wordt u gevraagd om het pad naar het bestand te extra heren.  U kunt ook het pad opgeven door de argumenten `MMASetup-<platform>.exe /c /t:<Full Path>`door te geven.  
 2. Als u de agent op de achtergrond wilt installeren en configureren om te rapporteren aan een werk ruimte in de commerciële cloud van Azure, vanuit de map die u de installatie bestanden hebt uitgepakt, typt u: 
    
      ```dos
@@ -129,7 +123,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 
 U kunt het volgende script voorbeeld gebruiken om de agent te installeren met behulp van Azure Automation DSC.   Als u geen Automation-account hebt, raadpleegt u aan de [slag met Azure Automation](/azure/automation/) om inzicht te krijgen in de vereisten en stappen voor het maken van een Automation-account dat is vereist voor het gebruik van Automation DSC.  Als u niet bekend bent met Automation DSC, raadpleegt u [aan de slag met Automation DSC](../../automation/automation-dsc-getting-started.md).
 
-In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, geïdentificeerd door de waarde `URI`. U kunt ook de 32-bits versie gebruiken door de URI-waarde te vervangen. De Uri's voor beide versies zijn:
+In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, geïdentificeerd door de waarde van `URI`. U kunt ook de 32-bits versie gebruiken door de URI-waarde te vervangen. De Uri's voor beide versies zijn:
 
 - Windows 64-bits agent- https://go.microsoft.com/fwlink/?LinkId=828603
 - Windows 32-bits agent- https://go.microsoft.com/fwlink/?LinkId=828604
@@ -138,11 +132,11 @@ In het volgende voor beeld wordt de 64-bits agent geïnstalleerd, geïdentificee
 >[!NOTE]
 >Deze procedure en het script voorbeeld bieden geen ondersteuning voor de upgrade van de agent die al is geïmplementeerd op een Windows-computer.
 
-De 32-bits en 64-bits versies van het agent pakket hebben verschillende product codes en nieuwe versies die zijn uitgebracht, hebben ook een unieke waarde.  De product code is een GUID die de principal-identificatie vormt van een toepassing of product en wordt vertegenwoordigd door de **eigenschap van** de Windows Installer.  De `ProductId`-waarde in het script **MMAgent. ps1** moet overeenkomen met de product code van het 32-bits-of 64-bits agent-installatie pakket.
+De 32-bits en 64-bits versies van het agent pakket hebben verschillende product codes en nieuwe versies die zijn uitgebracht, hebben ook een unieke waarde.  De product code is een GUID die de principal-identificatie vormt van een toepassing of product en wordt vertegenwoordigd door de **eigenschap van** de Windows Installer.  De `ProductId` waarde in het script **MMAgent. ps1** moet overeenkomen met de product code van het 32-bits-of 64-bits agent-installatie pakket.
 
 Als u de product code rechtstreeks van het agent-installatie pakket wilt ophalen, kunt u Orca. exe gebruiken uit de [Windows SDK-onderdelen voor Windows Installer ontwikkel aars](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) die een onderdeel zijn van de Windows Software Development Kit of met behulp van Power shell na een [ voorbeeld script](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) geschreven door een micro soft Valuable Professional (MVP).  Voor beide benaderingen moet u eerst het **MOMagent. msi** -bestand extra heren uit het MMASetup-installatie pakket.  Dit wordt eerder weer gegeven in de eerste stap onder de sectie de [agent installeren met de opdracht regel](#install-the-agent-using-the-command-line).  
 
-1. Importeer de xPSDesiredStateConfiguration DSC-module van [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) in azure Automation.  
+1. Importeer de xPSDesiredStateConfiguration DSC-module van [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) naar Azure Automation.  
 2.  Maak Azure Automation variabele assets voor *OPSINSIGHTS_WS_ID* en *OPSINSIGHTS_WS_KEY*. Stel *OPSINSIGHTS_WS_ID* in op uw log Analytics werk ruimte-id en stel *OPSINSIGHTS_WS_KEY* in op de primaire sleutel van uw werk ruimte.
 3.  Kopieer het script en sla het op als MMAgent. ps1.
 
@@ -182,7 +176,7 @@ Als u de product code rechtstreeks van het agent-installatie pakket wilt ophalen
 
     ```
 
-4. Werk de `ProductId`-waarde in het script bij met de product code die is geëxtraheerd uit de nieuwste versie van het installatie pakket van de agent met behulp van de hierboven aanbevolen methoden. 
+4. Werk de `ProductId` waarde in het script bij met de product code die is geëxtraheerd uit de nieuwste versie van het installatie pakket van de agent met behulp van de methoden die eerder worden aanbevolen. 
 5. [Importeer het configuratie script MMAgent. ps1](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) in uw Automation-account. 
 5. [Wijs een Windows-computer of-knoop punt](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) toe aan de configuratie. Binnen 15 minuten controleert het knoop punt de configuratie en wordt de agent naar het knoop punt gepusht.
 
@@ -190,7 +184,7 @@ Als u de product code rechtstreeks van het agent-installatie pakket wilt ophalen
 
 Nadat de installatie van de agent is voltooid, controleert u of deze is verbonden en de rapportage kan op twee manieren worden uitgevoerd.  
 
-Ga in de computer naar **Configuratiescherm** en zoek het item **Microsoft Monitoring Agent**.  Selecteer deze en als het goed is, geeft de agent op het tabblad **Azure Log Analytics** een bericht weer met de tekst: **De micro soft monitoring agent heeft verbinding gemaakt met de Microsoft Operations Management Suite-Service.**<br><br> ![Verbindingsstatus van MMA met Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+Ga in de computer naar **Configuratiescherm** en zoek het item **Microsoft Monitoring Agent**.  Selecteer de agent en op het tabblad **Azure log Analytics** een bericht met de melding: **micro soft monitoring agent is verbonden met de Microsoft Operations Management Suite-Service.**<br><br> ![Verbindingsstatus van MMA met Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 U kunt ook een eenvoudige logboek query uitvoeren in de Azure Portal.  
 

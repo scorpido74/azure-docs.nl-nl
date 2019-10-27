@@ -1,24 +1,18 @@
 ---
 title: Richt lijnen voor persoons gegevens die zijn opgeslagen in azure Log Analytics | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u persoons gegevens beheert die zijn opgeslagen in azure Log Analytics en hoe u deze kunt herkennen en verwijderen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 05/18/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 05/18/2018
+ms.openlocfilehash: 7733b27bb5af01e55cd732c16f6c9cb1e9301819
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617311"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932132"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Richt lijnen voor persoons gegevens die zijn opgeslagen in Log Analytics en Application Insights
 
@@ -33,7 +27,7 @@ Log Analytics is een gegevens archief waar persoons gegevens waarschijnlijk word
 
 Hoewel het aan u is en uw bedrijf uiteindelijk de strategie wil bepalen waarmee u uw privé gegevens gaat verwerken (in alle), zijn de volgende mogelijke benaderingen van toepassing. Deze worden weer gegeven in volg orde van voor keur van een technisch oogpunt van het grootste voor deel:
 
-* Indien mogelijk, stopt u het verzamelen van, het afschermen, anoniem maken of anderszins aanpassen van de gegevens die worden verzameld om deze uit te sluiten van als ' privé '. Dit is de aanbevolen benadering en bespaart u de nood zaak om een zeer kost bare strategie voor gegevens verwerking te maken.
+* Indien mogelijk, stopt u het verzamelen van, het afschermen, anoniem maken of anderszins aanpassen van de gegevens die worden verzameld om deze uit te sluiten van als ' privé '. Dit is de aanbevolen benadering en bespaart _u de nood_ zaak om een zeer kost bare strategie voor gegevens verwerking te maken.
 * Als dat niet mogelijk is, probeert u de gegevens te normaliseren om de impact op het gegevens platform en de prestaties te verminderen. In plaats van een expliciete gebruikers-ID te registreren, maakt u bijvoorbeeld een opzoek gegevens waarmee de gebruikers naam en de details ervan worden gecorreleerd aan een interne ID die vervolgens ergens anders kan worden geregistreerd. Op die manier is het mogelijk dat als een van uw gebruikers u vraagt om zijn of haar persoonlijke gegevens te verwijderen, de rij in de opzoek tabel die overeenkomt met de gebruiker, voldoende wordt verwijderd. 
 * Ten slotte, als er persoonlijke gegevens moeten worden verzameld, moet u een proces maken rond het pad van de API voor opschonen en het bestaande query-API-pad om te voldoen aan eventuele verplichtingen die u mogelijk hebt voor het exporteren en verwijderen van persoonlijke gegevens die aan een gebruiker zijn gekoppeld. 
 
@@ -43,39 +37,39 @@ Log Analytics is een flexibele Store, waarmee u een schema voor uw gegevens voor
 
 ### <a name="log-data"></a>Logboekgegevens
 
-* *IP-adressen*: Log Analytics verzamelt diverse IP-gegevens over diverse tabellen. Met de volgende query worden bijvoorbeeld alle tabellen weer gegeven waarin IPv4-adressen zijn verzameld in de afgelopen 24 uur:
+* *IP-adressen*: log Analytics verzamelt diverse IP-gegevens over diverse tabellen. Met de volgende query worden bijvoorbeeld alle tabellen weer gegeven waarin IPv4-adressen zijn verzameld in de afgelopen 24 uur:
     ```
     search * 
     | where * matches regex @'\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b' //RegEx originally provided on https://stackoverflow.com/questions/5284147/validating-ipv4-addresses-with-regexp
     | summarize count() by $table
     ```
-* *Gebruikers-id's*: Gebruikers-Id's vindt u in een groot aantal verschillende oplossingen en tabellen. U kunt met behulp van de zoek opdracht zoeken naar een bepaalde gebruikers naam in uw hele gegevensset:
+* *Gebruikers-id's*: gebruikers-id's zijn te vinden in een groot aantal verschillende oplossingen en tabellen. U kunt met behulp van de zoek opdracht zoeken naar een bepaalde gebruikers naam in uw hele gegevensset:
     ```
     search "[username goes here]"
     ```
   Zoek niet alleen naar gebruikers namen met een lees bare naam, maar ook GUID'S die rechtstreeks naar een bepaalde gebruiker kunnen worden getraceerd.
-* *Apparaat-id's*: Net als gebruikers-Id's worden apparaat-Id's soms als ' privé ' beschouwd. Gebruik dezelfde methode als hierboven hierboven voor gebruikers-Id's om tabellen te identificeren waarin dit probleem kan optreden. 
-* *Aangepaste gegevens*: Met Log Analytics kunt u de verzameling op diverse manieren toestaan: aangepaste logboeken en aangepaste velden, de [http-gegevens verzamelaar-API](../../azure-monitor/platform/data-collector-api.md) en aangepaste gegevens die zijn verzameld als onderdeel van systeem gebeurtenis Logboeken. Al deze zijn gevoelig voor persoonlijke gegevens en moeten worden onderzocht om te controleren of dergelijke gegevens bestaan.
-* Door *oplossingen vastgelegde gegevens*: Omdat het oplossings mechanisme een open-end is, raden wij aan alle tabellen die door oplossingen zijn gegenereerd, te controleren om ervoor te zorgen dat deze compatibel zijn.
+* *Apparaat-id's*: zoals gebruikers-id's, worden apparaat-id's soms als ' privé ' beschouwd. Gebruik dezelfde methode als hierboven hierboven voor gebruikers-Id's om tabellen te identificeren waarin dit probleem kan optreden. 
+* *Aangepaste gegevens*: met log Analytics kunt u de verzameling op diverse manieren toestaan: aangepaste logboeken en aangepaste velden, de [http-gegevens verzamelaar-API](../../azure-monitor/platform/data-collector-api.md) en aangepaste gegevens die zijn verzameld als onderdeel van systeem gebeurtenis Logboeken. Al deze zijn gevoelig voor persoonlijke gegevens en moeten worden onderzocht om te controleren of dergelijke gegevens bestaan.
+* Door oplossingen *vastgelegde gegevens*: omdat het oplossings mechanisme een open-end is, raden we u aan alle tabellen te controleren die zijn gegenereerd door een oplossing om te voldoen aan de vereisten.
 
 ### <a name="application-data"></a>Toepassingsgegevens
 
-* *IP-adressen*: Hoewel Application Insights standaard alle IP-adres velden maakt op ' 0.0.0.0 ', is dit een redelijk gebruikelijk patroon om deze waarde te overschrijven met de werkelijke gebruikers-IP om sessie gegevens te onderhouden. De onderstaande Analytics-query kan worden gebruikt om een tabel te vinden die waarden bevat in de kolom IP-adres in plaats van ' 0.0.0.0 ' in de afgelopen 24 uur:
+* *IP-adressen*: Hoewel Application Insights alle IP-adres velden standaard van elkaar maakt op ' 0.0.0.0 ', is dit een redelijk gebruikelijk patroon om deze waarde te overschrijven met de werkelijke gebruikers-IP om sessie gegevens te onderhouden. De onderstaande Analytics-query kan worden gebruikt om een tabel te vinden die waarden bevat in de kolom IP-adres in plaats van ' 0.0.0.0 ' in de afgelopen 24 uur:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *Gebruikers-id's*: Standaard worden door Application Insights wille keurig gegenereerde Id's gebruikt voor het bijhouden van gebruikers en sessies. Het is echter gebruikelijk dat deze velden worden overschreven voor het opslaan van een ID die relevant is voor de toepassing. Bijvoorbeeld: gebruikers namen, AAD-GUID'S, enzovoort. Deze Id's worden vaak beschouwd als persoonlijke gegevens en moeten daarom op de juiste wijze worden afgehandeld. Onze aanbeveling is altijd om deze Id's te veranoniem makenen. Velden waarin deze waarden vaak worden gevonden, zijn session_Id, user_Id, user_AuthenticatedId, user_AccountId en customDimensions.
-* *Aangepaste gegevens*: Met Application Insights kunt u een set aangepaste dimensies toevoegen aan elk gegevens type. Deze dimensies kunnen *alle* gegevens zijn. Gebruik de volgende query om alle aangepaste dimensies te identificeren die in de afgelopen 24 uur zijn verzameld:
+* *Gebruikers-id's*: standaard worden door Application Insights wille keurig gegenereerde id's gebruikt voor het bijhouden van gebruikers en sessies. Het is echter gebruikelijk dat deze velden worden overschreven voor het opslaan van een ID die relevant is voor de toepassing. Bijvoorbeeld: gebruikers namen, AAD-GUID'S, enzovoort. Deze Id's worden vaak beschouwd als persoonlijke gegevens en moeten daarom op de juiste wijze worden afgehandeld. Onze aanbeveling is altijd om deze Id's te veranoniem makenen. Velden waarin deze waarden vaak worden gevonden, zijn session_Id, user_Id, user_AuthenticatedId, user_AccountId en customDimensions.
+* *Aangepaste gegevens*: met Application Insights kunt u een set aangepaste dimensies toevoegen aan elk gegevens type. Deze dimensies kunnen *alle* gegevens zijn. Gebruik de volgende query om alle aangepaste dimensies te identificeren die in de afgelopen 24 uur zijn verzameld:
     ```
     search * 
     | where isnotempty(customDimensions)
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *In-Memory en in-transit gegevens*: Application Insights worden uitzonde ringen, aanvragen, afhankelijkheids aanroepen en traceringen bijgehouden. Persoonlijke gegevens kunnen vaak worden verzameld op het niveau van code en HTTP-aanroepen. Bekijk de tabellen met uitzonde ringen, aanvragen, afhankelijkheden en traceringen om dergelijke gegevens te identificeren. Gebruik de [initialisatie functies](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) voor telemetrie waar mogelijk deze gegevens kunnen worden verborgen.
-* *Snapshot debugger opnamen*: Met de functie [Snapshot debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) in Application Insights kunt u moment opnamen van fout opsporing verzamelen wanneer er een uitzonde ring wordt gedetecteerd op het productie-exemplaar van uw toepassing. Met moment opnamen wordt de volledige Stack tracering voor de uitzonde ringen en de waarden voor lokale variabelen bij elke stap in de stack beschikbaar gemaakt. Helaas is deze functie niet toegestaan voor selectieve verwijdering van magnetische punten of programmatische toegang tot gegevens in de moment opname. Als de standaard retentie tijd van de moment opname niet voldoet aan uw nalevings vereisten, is de aanbeveling daarom de functie uit te scha kelen.
+* *In-Memory en in-transit gegevens*: Application Insights worden uitzonde ringen, aanvragen, afhankelijkheids aanroepen en traceringen bijgehouden. Persoonlijke gegevens kunnen vaak worden verzameld op het niveau van code en HTTP-aanroepen. Bekijk de tabellen met uitzonde ringen, aanvragen, afhankelijkheden en traceringen om dergelijke gegevens te identificeren. Gebruik de [initialisatie functies voor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) waar mogelijk deze gegevens kunnen worden verborgen.
+* *Snapshot debugger Capture*: met de functie [Snapshot debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) in Application Insights kunt u moment opnamen van fout opsporing verzamelen wanneer er een uitzonde ring wordt gedetecteerd op het productie-exemplaar van uw toepassing. Met moment opnamen wordt de volledige Stack tracering voor de uitzonde ringen en de waarden voor lokale variabelen bij elke stap in de stack beschikbaar gemaakt. Helaas is deze functie niet toegestaan voor selectieve verwijdering van magnetische punten of programmatische toegang tot gegevens in de moment opname. Als de standaard retentie tijd van de moment opname niet voldoet aan uw nalevings vereisten, is de aanbeveling daarom de functie uit te scha kelen.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Privé gegevens exporteren en verwijderen
 
@@ -95,7 +89,7 @@ Voor beide gegevens aanvragen weer geven en exporteren moet de [log Analytics qu
 > [!WARNING]
 > Verwijderingen in Log Analytics zijn destructief en niet-omkeerbaar. Wees uiterst voorzichtig bij de uitvoering ervan.
 
-We zijn beschikbaar gesteld als onderdeel van een privacy-verwerkings-API-pad. Dit pad moet spaarzaam worden gebruikt vanwege het risico dat eraan is gekoppeld, de potentiële invloed op de prestaties en de kans om alle aggregaties, metingen en andere aspecten van uw Log Analytics gegevens te scheef trekken. Zie de sectie [strategie voor het verwerken van persoonlijke gegevens](#strategy-for-personal-data-handling) voor alternatieve benaderingen voor het afhandelen van persoonlijke gegevens.
+We zijn beschikbaar gesteld als onderdeel van een privacy-verwerkings *-API-* pad. Dit pad moet spaarzaam worden gebruikt vanwege het risico dat eraan is gekoppeld, de potentiële invloed op de prestaties en de kans om alle aggregaties, metingen en andere aspecten van uw Log Analytics gegevens te scheef trekken. Zie de sectie [strategie voor het verwerken van persoonlijke gegevens](#strategy-for-personal-data-handling) voor alternatieve benaderingen voor het afhandelen van persoonlijke gegevens.
 
 Opschonen is een zeer beschermde bewerking die geen enkele app of gebruiker in azure (inclusief zelfs de resource-eigenaar) toestemming heeft om uit te voeren zonder expliciet een rol in Azure Resource Manager te krijgen. Deze rol is _gegevens verzamelaar_ en moet voorzichtig worden gedelegeerd vanwege het mogelijke verlies van gegevens. 
 
@@ -108,7 +102,7 @@ Zodra de Azure Resource Manager rol is toegewezen, zijn er twee nieuwe API-paden
 
 #### <a name="log-data"></a>Logboekgegevens
 
-* [Bericht](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) opschonen: Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd 
+* [Bericht opschonen](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd 
 * Status van leegmaken ophalen: de aanroep ' x-MS-status-location ' wordt door het aanroepen van de POST geretourneerd en bevat een URL die u kunt aanroepen om de status van uw opschoon API te bepalen. Bijvoorbeeld:
 
     ```
@@ -120,7 +114,7 @@ Zodra de Azure Resource Manager rol is toegewezen, zijn er twee nieuwe API-paden
 
 #### <a name="application-data"></a>Toepassingsgegevens
 
-* [Bericht](https://docs.microsoft.com/rest/api/application-insights/components/purge) opschonen: Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd
+* [Bericht opschonen](https://docs.microsoft.com/rest/api/application-insights/components/purge) : Hiermee wordt een object opgegeven met de para meters voor het verwijderen van de gegevens en wordt een verwijzings-GUID geretourneerd
 * Status van leegmaken ophalen: de aanroep ' x-MS-status-location ' wordt door het aanroepen van de POST geretourneerd en bevat een URL die u kunt aanroepen om de status van uw opschoon API te bepalen. Bijvoorbeeld:
 
    ```

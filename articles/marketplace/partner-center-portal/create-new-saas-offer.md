@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: a757ee03b8d8c7c93b191054182d077408c162db
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819821"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934106"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -196,7 +196,7 @@ Het standaard contract vindt u hier: https://go.microsoft.com/fwlink/?linkid=204
 
 #### <a name="terms-of-use"></a>Gebruiksvoorwaarden
 
-Als uw licentie voorwaarden verschillen van het standaard contract, kunt u hier uw eigen juridische voor waarden opgeven. U kunt in dit veld ook Maxi maal 10.000 tekens tekst invoeren. Als uw gebruiksrecht overeenkomst een langere beschrijving vereist, voert u in dit veld een koppeling naar een enkele URL in waarin u de aanvullende licentie voorwaarden kunt vinden. Het wordt weer gegeven voor klanten als een actieve koppeling.
+Als uw licentie voorwaarden verschillen van het standaard contract, kunt u hier uw eigen juridische voor waarden opgeven. Deze kunnen worden ingevoerd als tekst zonder opmaak of als één URL-koppeling naar uw licentie voorwaarden.
 
 Klanten moeten deze voor waarden accepteren voordat ze uw app kunnen proberen. 
 

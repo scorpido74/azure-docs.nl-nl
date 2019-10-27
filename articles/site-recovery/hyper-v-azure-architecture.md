@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 20f325ff64581396f5f7ab2ce05a2479cdb45118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147074"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933546"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architectuur van Hyper-V naar Azure voor herstel na nood gevallen
 
@@ -39,6 +39,8 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 ![Architectuur](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
+> [!WARNING]
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>Architectuur onderdelen-Hyper-V met VMM
 
@@ -70,7 +72,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 1. Nadat u de beveiliging voor een Hyper-V-VM in Azure Portal of on-premises hebt ingeschakeld, start **Beveiliging inschakelen**.
 2. Met deze taak wordt gecontroleerd of de machine voldoet aan de vereisten. Hierna wordt [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) aangeroepen om replicatie in te stellen op basis van de instellingen die u hebt geconfigureerd.
 3. De taak start initiële replicatie door de methode [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) aan te roepen om een volledige VM-replicatie te initialiseren en de virtuele schijven van de virtuele machine naar Azure te versturen.
-4. U kunt de voortgang van de taak controleren op het tabblad **Taken**.      ![Takenlijst](media/hyper-v-azure-architecture/image1.png) ![Inzoomen op beveiliging inschakelen](media/hyper-v-azure-architecture/image2.png)
+4. U kunt de taak controleren op het tabblad **taken** .      ![taken lijst](media/hyper-v-azure-architecture/image1.png) ![inzoomen op de beveiliging in te scha kelen](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Initiële gegevens replicatie
@@ -131,9 +133,9 @@ Als er een replicatiefout optreedt, wordt de replicatie automatisch opnieuw gepr
 Als uw on-premises infra structuur weer actief is, kunt u een failback uitvoeren. Failback vindt plaats in drie fasen:
 
 1. Een geplande failover van Azure naar de on-premises site starten:
-    - **Downtime minimaliseren**: Als u deze optie gebruikt Site Recovery worden gegevens gesynchroniseerd vóór de failover. Er wordt gecontroleerd op gewijzigde gegevens blokken en deze worden gedownload naar de on-premises site, terwijl de virtuele machine van Azure actief blijft, waardoor de uitval tijd wordt geminimaliseerd. Wanneer u hand matig opgeeft dat de failover moet worden voltooid, wordt de Azure-VM afgesloten, worden eventuele laatste Delta wijzigingen gekopieerd en wordt de failover gestart.
-    - **Volledige down load**: Bij deze optie worden de gegevens tijdens de failover gesynchroniseerd. Met deze optie wordt de volledige schijf gedownload. Het is sneller omdat er geen controle sommen worden berekend, maar er is meer uitval tijd. Gebruik deze optie als u de replica-Azure-Vm's enige tijd hebt uitgevoerd of als de on-premises VM is verwijderd.
-    - **VM maken**: U kunt een failback uitvoeren naar dezelfde virtuele machine of naar een andere virtuele machine. U kunt opgeven dat Site Recovery de virtuele machine moet maken als deze nog niet bestaat.
+    - **Downtime minimaliseren**: als u deze optie gebruikt site Recovery worden gegevens gesynchroniseerd voor failover. Er wordt gecontroleerd op gewijzigde gegevens blokken en deze worden gedownload naar de on-premises site, terwijl de virtuele machine van Azure actief blijft, waardoor de uitval tijd wordt geminimaliseerd. Wanneer u hand matig opgeeft dat de failover moet worden voltooid, wordt de Azure-VM afgesloten, worden eventuele laatste Delta wijzigingen gekopieerd en wordt de failover gestart.
+    - **Volledige down load**: met deze optie gegevens worden tijdens de failover gesynchroniseerd. Met deze optie wordt de volledige schijf gedownload. Het is sneller omdat er geen controle sommen worden berekend, maar er is meer uitval tijd. Gebruik deze optie als u de replica-Azure-Vm's enige tijd hebt uitgevoerd of als de on-premises VM is verwijderd.
+    - **VM maken**: u kunt een failback uitvoeren naar dezelfde virtuele machine of naar een andere virtuele machine. U kunt opgeven dat Site Recovery de virtuele machine moet maken als deze nog niet bestaat.
 
 2. Wanneer de initiële synchronisatie is voltooid, selecteert u om de failover te volt ooien. Nadat deze is voltooid, kunt u zich aanmelden bij de on-premises VM om te controleren of alles werkt zoals verwacht. In de Azure Portal ziet u dat de virtuele machines van Azure zijn gestopt.
 3.  Vervolgens voert u de failover door en opent u de werk belasting opnieuw vanaf de on-premises VM.

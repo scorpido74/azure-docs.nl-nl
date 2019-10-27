@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 07/15/2019
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330734"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72929367"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
 
@@ -47,9 +47,12 @@ De uitvoer wordt opgeslagen in een Azure-Blob. Omdat de gegevens worden toegevoe
 Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> In versies van de SDK vóór het `0.1.0a16` het argument `designation` de naam `identifier`heeft. Als uw code is ontwikkeld met een eerdere versie, moet u de update dienovereenkomstig bijwerken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -80,8 +83,8 @@ Als u deze wilt inschakelen, moet u het volgende doen:
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     *CorrelationId* is een optionele para meter. u hoeft deze niet in te stellen als u deze niet nodig hebt voor uw model. Als u een correlationId op locatie hebt, helpt u de toewijzing met andere gegevens te vereenvoudigen. (Voor beelden zijn: LoanNumber, CustomerId, etc.)
@@ -122,7 +125,7 @@ Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw 
 
 1. Schakel in **Geavanceerde instellingen**de optie **model gegevens verzamelen inschakelen**uit. 
 
-    [Gegevens verzameling @no__t 1check](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [Gegevens verzameling![controleren](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    In dit venster kunt u er ook voor kiezen om Appinsights Diagnostics in te scha kelen om de status van uw service bij te houden.  
 
@@ -139,11 +142,11 @@ U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik de pyt
 
   1. Ga naar **implementaties** -> **Selecteer Service** -> **bewerken**.
 
-     [![Edit optie](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [optie voor![bewerken](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. Schakel in **Geavanceerde instellingen**de optie **model gegevens verzamelen inschakelen**uit. 
 
-     [Gegevens verzameling @no__t 1Uncheck](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [Gegevens verzameling![uitschakelen](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. Selecteer **bijwerken** om de wijziging toe te passen.
 
@@ -165,12 +168,12 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
 1. Open uw werk ruimte.
 1. Klik op **opslag**.
 
-    [![Storage](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [Opslag![](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Volg het pad naar de uitvoer gegevens in de blob met de volgende syntaxis:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -181,22 +184,22 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
 
 1. Selecteer **gegevens ophalen** en klik op [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
-    [![PBI-BLOB instellen](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [Setup van aan pbi-BLOB![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Voeg de naam van uw opslag account toe en voer uw opslag sleutel in. U kunt deze informatie vinden in de **instellingen** van uw blob > > toegangs sleutels. 
 
 1. Selecteer de container **modeldata** en klik op **bewerken**. 
 
-    [![PBI-Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
+    [![aan pbi-Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. Klik in de query-editor onder naam kolom en voeg uw opslag account 1 toe. Het pad naar het filter model. Opmerking: als u alleen bestanden van een bepaald jaar of een bepaalde maand wilt bekijken, vouwt u het pad naar het filter uit. Bekijk bijvoorbeeld alleen maart-gegevens:/modeldata/subscriptionid >/resourcegroupname >/WorkspaceName >/webservicename >/modelname >/modelversion >/Identifier >/Year >/3
+1. Klik in de query-editor onder naam kolom en voeg uw opslag account 1 toe. Het pad naar het filter model. Opmerking: als u alleen bestanden van een bepaald jaar of een bepaalde maand wilt bekijken, vouwt u het pad naar het filter uit. Bekijk bijvoorbeeld alleen maart-gegevens:/modeldata/subscriptionid >/resourcegroupname >/WorkspaceName >/webservicename >/modelname >/modelversion >/designation >/Year >/3
 
 1. Filter de gegevens die relevant zijn voor u op basis van de **naam**. Als u voor **spellingen** en **invoer**hebt opgeslagen, moet u een query maken voor elke.
 
 1. Klik op de dubbele pijl afgezien van de kolom **inhoud** om de bestanden te combi neren. 
 
-    [![PBI inhoud](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [AAN pbi-inhoud![](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
 1. Klik op OK om de gegevens vooraf te laden.
 
@@ -217,7 +220,7 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
 
 1. Selecteer **gegevens uploaden**in uw databricks-werk ruimte.
 
-    [![DB uploaden](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
+    [![DB-upload](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
 1. Maak een nieuwe tabel en selecteer **andere gegevens bronnen** -> Azure Blob Storage-> tabel maken in notitie blok.
 
@@ -230,7 +233,7 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
     file_type = "csv"
     ```
  
-    [![DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
+    [![met dbsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. Volg de stappen in de sjabloon om uw gegevens te bekijken en te analyseren. 
 

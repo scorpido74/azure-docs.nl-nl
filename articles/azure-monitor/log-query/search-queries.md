@@ -1,24 +1,18 @@
 ---
 title: Zoek query's in Azure Monitor logs | Microsoft Docs
 description: Dit artikel bevat een zelf studie om aan de slag te gaan met zoeken in Azure Monitor-logboek query's.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: a0ceb5aa82b0d38ab5d2567689e3e131ba781ce9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.date: 08/06/2018
+ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255003"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932999"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Zoek query's in Azure Monitor-logboeken
 Azure Monitor-logboek query's kunnen beginnen met een tabel naam of een zoek opdracht. In deze zelf studie worden Zoek query's behandeld. Er zijn voor delen van elke methode.

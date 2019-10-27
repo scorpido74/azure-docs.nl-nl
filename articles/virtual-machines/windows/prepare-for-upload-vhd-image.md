@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 555b250f211cf22e766e64960b3359692f73c843
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d184201c21c31336e31dcba9884d84f6cc224ff8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285714"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924839"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een VHD of VHDX van Windows voorbereiden om te uploaden naar Azure
 
@@ -446,7 +446,7 @@ De volgende instellingen zijn niet van invloed op het uploaden van de VHD. We ra
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force
    ```
   Als een gegevens schijf aan de virtuele machine is gekoppeld, is de stationsletter van het tijdelijke station meestal *D*. Deze aanwijzing kan verschillen, afhankelijk van de instellingen en het aantal beschik bare stations.
-  * Het is raadzaam om script blokken uit te scha kelen die mogelijk worden verschaft door antivirus software. Ze kunnen de Windows-inrichtings Agent-scripts die worden uitgevoerd wanneer u een nieuwe virtuele machine vanuit uw installatie kopie implementeert, belemmeren en blok keren.
+  * Het is raadzaam om script blokken uit te scha kelen die mogelijk worden verschaft door antivirus software. Ze kunnen de Windows-inrichtings Agent-scripts die worden uitgevoerd wanneer u een nieuwe virtuele machine vanuit uw installatie kopie implementeert, interfereren en blok keren.
   
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Windows VM-installatie kopie uploaden naar Azure voor implementaties van Resource Manager](upload-generalized-managed.md)

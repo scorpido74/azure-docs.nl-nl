@@ -1,6 +1,6 @@
 ---
-title: Logboeken van Azure Service Fabric - prestaties controleren met Azure Monitor | Microsoft Docs
-description: Meer informatie over het instellen van de Log Analytics-Agent voor het bewaken van containers en prestatiemeteritems voor uw Azure Service Fabric-clusters.
+title: Azure Service Fabric prestatie bewaking met Azure Monitor-logboeken | Microsoft Docs
+description: Meer informatie over het instellen van de Log Analytics-agent voor het bewaken van containers en prestatie meter items voor uw Azure Service Fabric-clusters.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 819f6ee4ab079361279a567bceeb74c33fe14186
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ec68712c898eefc37a8f7b2fe2dbfdb119592de
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952358"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933994"
 ---
-# <a name="performance-monitoring-with-azure-monitor-logs"></a>Prestaties controleren met Azure Monitor-Logboeken
+# <a name="performance-monitoring-with-azure-monitor-logs"></a>Prestatie bewaking met Azure Monitor-logboeken
 
-In dit artikel bevat informatie over de stappen voor het toevoegen van de Log Analytics-agent als een virtuele-machineschaalset extensie met uw cluster instellen en deze verbinden met uw bestaande Azure Log Analytics-werkruimte. Hierdoor kunnen verzamelen van diagnostische gegevens over containers, toepassingen en bewaking van toepassingsprestaties. Door deze toe te voegen als een uitbreiding op de virtuele machine scale set-resource, Azure Resource Manager zorgt ervoor dat deze wordt geïnstalleerd op elk knooppunt, zelfs wanneer schalen van het cluster.
+In dit artikel worden de stappen beschreven voor het toevoegen van de Log Analytics agent als een extensie voor virtuele-machine schaal sets aan uw cluster en om deze te verbinden met uw bestaande Azure Log Analytics-werk ruimte. Hierdoor kunt u Diagnostische gegevens over containers, toepassingen en prestatie bewaking verzamelen. Door het toe te voegen als een uitbrei ding van de bron van de schaalset voor virtuele machines, zorgt Azure Resource Manager ervoor dat deze wordt geïnstalleerd op elk knoop punt, zelfs wanneer het cluster wordt geschaald.
 
 > [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat u een Azure Log Analytics-werkruimte al ingesteld hebt. Als u dit niet doet, Ga naar [instellen van Azure Monitor-Logboeken](service-fabric-diagnostics-oms-setup.md)
+> In dit artikel wordt ervan uitgegaan dat u al een Azure Log Analytics-werk ruimte hebt ingesteld. Als u dit niet doet, moet u [Azure monitor-logboeken instellen](service-fabric-diagnostics-oms-setup.md)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="add-the-agent-extension-via-azure-cli"></a>Toevoegen van de agent-extensie via Azure CLI
+## <a name="add-the-agent-extension-via-azure-cli"></a>De agent extensie toevoegen via Azure CLI
 
-De beste manier om de Log Analytics-agent toevoegen aan uw cluster is via de virtuele-machineschaalset API's die beschikbaar zijn met de Azure CLI ingesteld. Als u Azure CLI instellen van nog niet hebt, Ga naar Azure portal en maak een [Cloud Shell](../cloud-shell/overview.md) -exemplaar of [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+De beste manier om de Log Analytics agent toe te voegen aan uw cluster is via de virtuele-machine Scale set Api's die beschikbaar zijn in de Azure CLI. Als u nog geen Azure CLI hebt ingesteld, gaat u naar Azure Portal en opent u een [Cloud shell](../cloud-shell/overview.md) instantie of [installeert u de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-1. Zodra uw Cloud Shell is aangevraagd, zorg er dan voor dat u werkt in hetzelfde abonnement als uw resource. Schakel deze optie met `az account show` en zorg ervoor dat de waarde "naam" komt overeen met die van het abonnement van uw cluster.
+1. Als uw Cloud Shell is aangevraagd, moet u ervoor zorgen dat u werkt in hetzelfde abonnement als uw resource. Controleer dit met `az account show` en controleer of de naam waarde overeenkomt met die van het abonnement van uw cluster.
 
-2. Navigeer naar de resourcegroep waar uw Log Analytics-werkruimte zich bevindt in de Portal. Klik in de log analytics-resource (het type van de resource zijn Log Analytics-werkruimte). Als u zich op de overzichtspagina van resource, klikt u op **geavanceerde instellingen** in het gedeelte instellingen in het menu links.
+2. Navigeer in de portal naar de resource groep waar uw Log Analytics werk ruimte zich bevindt. Klik in de log Analytics-resource (het type van de resource wordt Log Analytics werk ruimte). Klik op de pagina overzicht van resources op **Geavanceerde instellingen** onder de sectie instellingen in het menu links.
 
-    ![Eigenschappenpagina van log analytics](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
+    ![Eigenschappen pagina voor logboek analyse](media/service-fabric-diagnostics-oms-agent/oms-advanced-settings.png)
 
-3. Klik op **Windows Servers** als u een Windows-cluster zijn permanent en **Linux-Servers** als u een Linux-cluster maakt. Deze pagina ziet u uw `workspace ID` en `workspace key` (weergegeven als primaire sleutel in de portal). U moet zowel voor de volgende stap.
+3. Klik op **Windows-servers** als u een Windows-cluster wilt maken en **Linux-servers** als u een Linux-cluster maakt. Op deze pagina ziet u uw `workspace ID` en `workspace key` (vermeld als primaire sleutel in de portal). U hebt beide nodig voor de volgende stap.
 
-4. Voer de opdracht voor het installeren van de Log Analytics-agent op uw cluster met behulp van de `vmss extension set` API in uw Cloud-Shell:
+4. Voer de opdracht uit om de Log Analytics agent te installeren op uw cluster met behulp van de `vmss extension set`-API in uw Cloud Shell:
 
     Voor een Windows-cluster:
 
@@ -56,50 +56,50 @@ De beste manier om de Log Analytics-agent toevoegen aan uw cluster is via de vir
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
-    Hier volgt een voorbeeld van de Log Analytics-agent wordt toegevoegd aan een Windows-cluster.
+    Hier volgt een voor beeld van de Log Analytics agent wordt toegevoegd aan een Windows-cluster.
 
-    ![Meld u Analytics-agent cli-opdracht](media/service-fabric-diagnostics-oms-agent/cli-command.png)
+    ![Opdracht Agent CLI Log Analytics](media/service-fabric-diagnostics-oms-agent/cli-command.png)
 
-5. Dit duurt minder dan 15 minuten is de agent toevoegen aan uw knooppunten. U kunt controleren dat de agents zijn toegevoegd met behulp van de `az vmss extension list` API:
+5. Dit duurt minder dan 15 minuten om de agent aan uw knoop punten toe te voegen. U kunt controleren of de agents zijn toegevoegd met behulp van de `az vmss extension list`-API:
 
     ```sh
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
     ```
 
-## <a name="add-the-agent-via-the-resource-manager-template"></a>De agent via het Resource Manager-sjabloon toevoegen
+## <a name="add-the-agent-via-the-resource-manager-template"></a>De agent toevoegen via de Resource Manager-sjabloon
 
-Voorbeeld van Resource Manager-sjablonen die bij het implementeren van een Azure Log Analytics-werkruimte en een agent toevoegen aan elk van de knooppunten is beschikbaar voor [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) of [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+Voor beelden van Resource Manager-sjablonen voor het implementeren van een Azure Log Analytics-werk ruimte en het toevoegen van een agent aan elk van uw knoop punten is beschikbaar voor [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) of [Linux](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS).
 
-U kunt downloaden en wijzigen van deze sjabloon voor het implementeren van een cluster die het beste bij uw behoeften.
+U kunt deze sjabloon downloaden en aanpassen om een cluster te implementeren dat het beste bij uw behoeften past.
 
-## <a name="view-performance-counters"></a>Prestatiemeteritems weergeven
+## <a name="view-performance-counters"></a>Prestatie meter items weer geven
 
-Nu dat u hebt de Log Analytics-agent, head toegevoegd op wilt naar de Log Analytics-portal om te kiezen welke prestatiemeteritems die u verzamelen.
+Nu u de Log Analytics-agent hebt toegevoegd, gaat u naar de Log Analytics Portal om te kiezen welke prestatie meter items u wilt verzamelen.
 
-1. In de Azure-portal, gaat u naar de resourcegroep waarin u de Service Fabric-analyse-oplossing hebt gemaakt. Selecteer **ServiceFabric\<nameOfLog AnalyticsWorkspace\>** .
+1. Ga in het Azure Portal naar de resource groep waarin u de Service Fabric-analyse oplossing hebt gemaakt. Selecteer **ServiceFabric\<NameOfLog AnalyticsWorkspace\>** .
 
 2. Klik op **Log Analytics**.
 
-3. Klik op **geavanceerde instellingen**.
+3. Klik op **Geavanceerde instellingen**.
 
-4. Klik op **gegevens**, klikt u vervolgens op **Windows of Linux-prestatiemeteritems**. Er is een lijst van standaard-prestatiemeteritems waarop die u kiezen kunt om in te schakelen en u kunt het interval voor de verzameling te instellen. U kunt ook toevoegen [aanvullende prestatiemeteritems](service-fabric-diagnostics-event-generation-perf.md) te verzamelen. De juiste indeling wordt verwezen in dit [artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+4. Klik op **gegevens**en vervolgens op **Windows-of Linux-prestatie meter items**. Er is een lijst met standaard tellers die u kunt inschakelen en u kunt het interval voor de verzameling ook instellen. U kunt ook [aanvullende prestatie meter items](service-fabric-diagnostics-event-generation-perf.md) toevoegen om te verzamelen. In dit [artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)wordt verwezen naar de juiste indeling.
 
-5. Klik op **opslaan**, klikt u vervolgens op **OK**.
+5. Klik op **Opslaan**en vervolgens op **OK**.
 
-6. Sluit de blade geavanceerde instellingen.
+6. Sluit de Blade geavanceerde instellingen.
 
-7. Klik onder de kop algemene **werkruimte overzicht**.
+7. Klik onder de kop algemeen op **werkruimte samenvatting**.
 
-8. Tegels in de vorm van een grafiek ziet u voor elk van de oplossingen ingeschakeld, met inbegrip van een Service Fabric. Klik op de **Service Fabric** graph om door te gaan naar de Service Fabric-analyse-oplossing.
+8. U ziet tegels in de vorm van een grafiek voor elk van de ingeschakelde oplossingen, met inbegrip van een voor Service Fabric. Klik op de **service Fabric** grafiek om door te gaan naar de service Fabric-analyse oplossing.
 
-9. U ziet een aantal tegels met grafieken op operationele kanaal en betrouwbare services-gebeurtenissen. De grafische weergave van de gegevens die voor de items die u hebt geselecteerd, worden weergegeven onder knooppunt metrische gegevens.
+9. Er worden enkele tegels weer geven met grafieken op operationele kanaal en betrouw bare Services-gebeurtenissen. De grafische weer gave van de gegevens die in voor de items die u hebt geselecteerd, wordt onder metrische gegevens van knoop punten weer gegeven.
 
-10. Klik op een grafiek Container metrische gegevens om meer details te bekijken. U kunt ook een query op gegevens van prestatiemeteritems op soortgelijke wijze aan Clustergebeurtenissen en filtert u op de knooppunten, naam van het prestatiemeteritem voor prestaties en waarden met behulp van de Kusto-query-taal.
+10. Klik op de metrische grafiek van een container om meer details weer te geven. U kunt ook een query uitvoeren op gegevens van prestatie meter items op dezelfde manier als cluster gebeurtenissen en filteren op de knoop punten, de naam van het prestatie meter item en waarden met behulp van de Kusto-query taal.
 
-![Log Analytics voor prestaties teller-query](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
+![Log Analytics prestatie meter query](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Collect relevante [prestatiemeteritems](service-fabric-diagnostics-event-generation-perf.md). Voor het configureren van de Log Analytics-agent voor het verzamelen van specifieke prestatiemeteritems, Bekijk [gegevensbronnen configureren](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Logboeken voor het instellen van Azure Monitor configureren [automatische waarschuwingen](../log-analytics/log-analytics-alerts.md) bij detectie en diagnostiek
-* Als alternatief kunt u verzamelen van prestatiemeteritems via [Azure Diagnostics-extensie en ze verzenden naar Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)
+* Relevante [prestatie meter items](service-fabric-diagnostics-event-generation-perf.md)verzamelen. Als u de Log Analytics-agent wilt configureren voor het verzamelen van specifieke prestatie meter items, raadpleegt u [gegevens bronnen configureren](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
+* Azure Monitor logboeken configureren om [automatische waarschuwingen](../log-analytics/log-analytics-alerts.md) in te stellen voor detectie en diagnostische gegevens
+* Als alternatief kunt u prestatie meter items verzamelen via [Azure Diagnostics extensie en deze naar Application Insights verzenden](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

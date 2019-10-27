@@ -1,34 +1,27 @@
 ---
-title: PowerShell-voorbeelden voor Azure Monitor | Microsoft Docs
-description: Azure Monitor PowerShell-voorbeelden
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-tags: ''
-ms.assetid: ''
-ms.service: log-analytics
+title: Azure Monitor Power shell-voor beelden | Microsoft Docs
+description: Azure Monitor Power shell-voor beelden
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/14/2017
+author: MGoedtel
 ms.author: magoedte
+ms.date: 09/14/2017
 ms.custom: mvc
-ms.openlocfilehash: 5aac1f7e1ded700b9bec38c358ea0049df93fd3e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e971b0181c4dedc3b1415451c3ba4e360fcae717
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454554"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932105"
 ---
-# <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell-voorbeelden
+# <a name="azure-monitor-powershell-samples"></a>Azure Monitor Power shell-voor beelden
 
-De volgende tabel bevat koppelingen naar voorbeelden van PowerShell-scripts voor het uitvoeren van verschillende functies in Azure Monitor.
+De volgende tabel bevat koppelingen naar voor beelden van Power shell-scripts voor het uitvoeren van verschillende functies in Azure Monitor.
 
 | | |
 |---|---|
-|**Werkruimte maken**||
-| [Een Log Analytics-werkruimte maken](../scripts/powershell-sample-create-workspace.md) | Hiermee maakt u een Log Analytics-werkruimte in Azure Monitor.|
+|**Werk ruimte maken**||
+| [Een Log Analytics-werk ruimte maken](../scripts/powershell-sample-create-workspace.md) | Hiermee maakt u een Log Analytics-werk ruimte in Azure Monitor.|
 | | |
 

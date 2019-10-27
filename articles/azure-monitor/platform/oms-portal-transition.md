@@ -1,23 +1,18 @@
 ---
 title: OMS-Portal naar Azure verplaatsen | Microsoft Docs
 description: De OMS-portal wordt sunsetted met alle functionaliteit die wordt verplaatst naar de Azure Portal. In dit artikel vindt u meer informatie over deze overgang.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 08/22/2019
+ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915867"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932152"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-Portal, verplaatsen naar Azure
 
@@ -93,7 +88,7 @@ De OMS-app voor mobiele apps wordt samen met de OMS-Portal sunsetted. In plaats 
 
 Daarom is Application Insights-connector afgeschaft en uit Azure Marketplace verwijderd, samen met de OMS-Portal op 30 maart 2019. Bestaande verbindingen blijven werken tot en met 30 juni 2019. In de OMS-Portal is het niet mogelijk om bestaande verbindingen te configureren en te verwijderen vanuit de portal. Dit wordt ondersteund met behulp van de REST API die beschikbaar worden gesteld in januari, 2019 en er wordt een melding verzonden naar de [updates van Azure](https://azure.microsoft.com/updates/). 
 
-## <a name="azure-network-security-group-analytics"></a>Analyse van Azure-netwerkbeveiligingsgroep
+## <a name="azure-network-security-group-analytics"></a>Azure Analyse van netwerkbeveiligingsgroep
 De [Azure analyse van netwerkbeveiligingsgroep oplossing](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) wordt vervangen door de onlangs geopende [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) die inzicht heeft in de activiteit van gebruikers en toepassingen in Cloud netwerken. Traffic Analytics helpt u bij het controleren van de netwerk activiteit van uw organisatie, het beveiligen van toepassingen en gegevens, het optimaliseren van de prestaties van de werk belasting en blijven voldoen. 
 
 Deze oplossing analyseert NSG-stroom logboeken en biedt inzicht in het volgende.

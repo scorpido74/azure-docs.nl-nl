@@ -1,124 +1,118 @@
 ---
-title: Analytics-gegevensbeveiliging Meld | Microsoft Docs
-description: Meer informatie over hoe de Log Analytics beschermt uw privacy en uw gegevens worden beveiligd.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Log Analytics gegevens beveiliging | Microsoft Docs
+description: Meer informatie over hoe Log Analytics uw privacy beschermt en uw gegevens beveiligt.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/04/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 407aaf15808d1d1420fd1a3804651d29a407d4b3
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 03/04/2019
+ms.openlocfilehash: 3ff69928f4d6aa1692cdb1d4fd7e846b3a6b7a5c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68606668"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932540"
 ---
-# <a name="log-analytics-data-security"></a>Meld u Analytics-gegevensbeveiliging
-Dit document is bedoeld voor specifieke informatie voor Log Analytics, dat een functie van Azure Monitor om te voorzien in de gegevens is op [Azure Trust Center](../../security/fundamentals/trust-center.md).  
+# <a name="log-analytics-data-security"></a>Log Analytics gegevens beveiliging
+Dit document is bedoeld om informatie te verschaffen die specifiek is voor Log Analytics, een functie van Azure Monitor, om de informatie over [Vertrouwenscentrum van Azure](../../security/fundamentals/trust-center.md)aan te vullen.  
 
-In dit artikel wordt uitgelegd hoe data wordt verzameld, verwerkt en beveiligd door Log Analytics. Agents kunt u verbinding maken met de webservice, System Center Operations Manager gebruiken voor het verzamelen van operationele gegevens of gegevens ophalen uit Azure diagnostics voor gebruik door Log Analytics. 
+In dit artikel wordt uitgelegd hoe data door Log Analytics wordt verzameld, verwerkt en beveiligd. U kunt agents gebruiken om verbinding te maken met de webservice, System Center Operations Manager te gebruiken om operationele gegevens te verzamelen of gegevens op te halen uit Azure Diagnostics voor gebruik door Log Analytics. 
 
-De service Log Analytics beheert uw cloud-gebaseerde gegevens veilig met behulp van de volgende methoden:
+De Log Analytics-service beheert uw gegevens op basis van de Cloud veilig door de volgende methoden te gebruiken:
 
-* scheiding van gegevens
-* Bewaartijd van gegevens
+* Gegevens scheiding
+* Gegevens bewaren
 * Fysieke beveiliging
-* incidentbeheer
+* Incident beheer
 * Naleving
-* standaardcertificeringen van beveiliging
+* Certificeringen voor beveiligings standaarden
 
-Neem contact met ons vragen, suggesties, of problemen met betrekking tot een van de volgende informatie, met inbegrip van onze beveiligingsbeleid op [ondersteuningsopties voor Azure](https://azure.microsoft.com/support/options/).
+Neem contact met ons op met eventuele vragen, suggesties of problemen met betrekking tot een van de volgende informatie, waaronder ons beveiligings beleid voor [ondersteunings opties voor Azure](https://azure.microsoft.com/support/options/).
 
-## <a name="sending-data-securely-using-tls-12"></a>Verzenden van gegevens veilig gebruik TLS 1.2 
+## <a name="sending-data-securely-using-tls-12"></a>Veilig gegevens verzenden met behulp van TLS 1,2 
 
-Als u wilt controleren of de beveiliging van gegevens die onderweg zijn naar Log Analytics, we raden u aan de agent configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1.2. Oudere versies van TLS/Secure Sockets Layer (SSL) kwetsbaar zijn gevonden en hoewel ze op dit moment nog steeds werken om toe te staan achterwaartse compatibiliteit, zijn ze onderling **niet aanbevolen**, en de branche is snel veranderende te breken ondersteuning voor deze oudere protocollen. 
+Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn naar Log Analytics, raden we u ten zeerste aan de agent te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2. Oudere versies van TLS/Secure Sockets Layer (SSL) zijn kwetsbaar voor aanvallen en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**en wordt de branche snel verplaatst naar ondersteuning voor deze oudere protocollen. 
 
-De [PCI Security Standards Council heeft onlangs](https://www.pcisecuritystandards.org/) heeft een [deadline van 30 juni 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) om uit te schakelen van oudere versies van TLS/SSL en upgrade voor de protocollen beter kunt beveiligen. Nadat Azure ondersteuning voor oudere, komt als uw agents niet kunnen via ten minste communiceren TLS 1.2 u niet mogelijk zou zijn om gegevens te verzenden naar Log Analytics. 
+De [PCI Security Standards Council](https://www.pcisecuritystandards.org/) heeft een [deadline ingesteld van 30 juni 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) om oudere versies van TLS/SSL uit te scha kelen en te upgraden naar meer beveiligde protocollen. Als de ondersteuning voor Azure wordt verouderd als uw agents niet via ten minste TLS 1,2 kunnen communiceren, kunt u geen gegevens verzenden naar Log Analytics. 
 
-We raden niet expliciet instelling uw agent alleen gebruik van TLS 1.2, tenzij dit absoluut noodzakelijk is, omdat deze functies waarmee u kunt automatisch detecteren en te profiteren van de nieuwere veiliger protocollen zodra deze beschikbaar is, bijvoorbeeld van beveiliging op het platform kunt verbreken Als TLS 1.3. 
+Het wordt afgeraden om uw agent expliciet in te stellen op alleen TLS 1,2, tenzij dit absoluut nood zakelijk is, omdat de beveiligings functies op platform niveau kunnen worden vermeden, zodat u nieuwe beveiligde protocollen automatisch kunt detecteren en gebruiken wanneer deze beschikbaar zijn, zoals Als TLS 1,3. 
 
-### <a name="platform-specific-guidance"></a>Platform-specifieke richtlijnen
+### <a name="platform-specific-guidance"></a>Platformspecifieke richt lijnen
 
 |Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
-|Linux | Linux-distributies meestal afhankelijk zijn van [OpenSSL](https://www.openssl.org) voor ondersteuning van TLS 1.2.  | Controleer de [OpenSSL Changelog](https://www.openssl.org/news/changelog.html) om te bevestigen van uw versie van OpenSSL wordt ondersteund.|
-| Windows 8.0-10 | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds gebruikt de [standaardinstellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| WindowsServer 2012-2016 | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds gebruikt de [standaardinstellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar niet standaard ingeschakeld. | Zie de [registerinstellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) pagina voor meer informatie over het inschakelen.  |
+|Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
+| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
+| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
+| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
 
-## <a name="data-segregation"></a>scheiding van gegevens
-Nadat uw gegevens worden opgenomen door de Log Analytics-service, worden de gegevens bewaard logische manier apart op elk onderdeel van de service. Alle gegevens worden gemarkeerd per werkruimte. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service. Uw gegevens worden opgeslagen in een specifieke database in het opslagcluster in de regio die u hebt geselecteerd.
+## <a name="data-segregation"></a>Gegevens scheiding
+Nadat uw gegevens door de Log Analytics-service zijn opgenomen, worden de gegevens in de gehele service logisch gescheiden gehouden van elk onderdeel. Alle gegevens worden gelabeld per werk ruimte. Deze markering blijft aanwezig gedurende de levenscyclus van de gegevens en deze wordt afgedwongen op elke laag van de service. Uw gegevens worden opgeslagen in een specifieke data base in het opslag cluster in de regio die u hebt geselecteerd.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
-Geïndexeerde log search gegevens worden opgeslagen en behouden op basis van uw prijsplan. Zie voor meer informatie, [prijzen voor Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+## <a name="data-retention"></a>Gegevens bewaren
+Zoek gegevens voor geïndexeerde logboeken worden opgeslagen en bewaard volgens uw prijs plan. Zie [log Analytics prijzen](https://azure.microsoft.com/pricing/details/log-analytics/)voor meer informatie.
 
-Als onderdeel van uw [abonnementsovereenkomst](https://azure.microsoft.com/support/legal/subscription-agreement/), behoudt Microsoft uw gegevens conform de bepalingen van de overeenkomst.  Wanneer gegevens van de klant wordt verwijderd, worden er zijn geen fysieke stations vernietigd.  
+Als onderdeel van uw [abonnements overeenkomst](https://azure.microsoft.com/support/legal/subscription-agreement/)houdt micro soft uw gegevens volgens de voor waarden van de overeenkomst.  Wanneer klant gegevens worden verwijderd, worden er geen fysieke stations vernietigd.  
 
-De volgende tabel vindt u enkele van de beschikbare oplossingen en bevat voorbeelden van het type van de gegevens die zij verzamelen.
+De volgende tabel bevat een aantal van de beschik bare oplossingen en biedt voor beelden van het type gegevens dat ze verzamelen.
 
 | **Oplossing** | **Gegevenstypen** |
 | --- | --- |
-| Capaciteit en prestaties |Prestatiegegevens en metagegevens |
-| Updatebeheer |Metagegevens en statusinformatie gegevens |
-| Logboekbeheer |Gebruiker gedefinieerde gebeurtenislogboeken, Windows-gebeurtenislogboeken en/of IIS-logboeken |
-| Tracering wijzigen |Software-inventaris, service voor Windows en Linux-daemon metagegevens en metagegevens van het bestand Windows/Linux |
-| SQL- en Active Directory-evaluatie |WMI-gegevens, registergegevens, prestatiegegevens en dynamische Beheerweergave van SQL Server-resultaten weergeven |
+| Capaciteit en prestaties |Prestatie gegevens en meta gegevens |
+| Updatebeheer |Meta gegevens en status gegevens |
+| Logboekbeheer |Door de gebruiker gedefinieerde gebeurtenis logboeken, Windows-gebeurtenis logboeken en/of IIS-logboeken |
+| Tracering wijzigen |Meta gegevens van software-inventaris, Windows-service en Linux-daemon en Windows/Linux-bestanden |
+| SQL en Active Directory-evaluatie |WMI-gegevens, register gegevens, prestatie gegevens en SQL Server dynamische beheer resultaten weer geven |
 
-De volgende tabel ziet u voorbeelden van gegevenstypen:
+De volgende tabel bevat voor beelden van gegevens typen:
 
-| **Gegevenstype** | **Velden** |
+| **Gegevenstype** | **Fields** |
 | --- | --- |
-| Waarschuwing |Ontvang een waarschuwing naam, beschrijving van de waarschuwing, BaseManagedEntityId, probleem-ID, IsMonitorAlert, RuleId, ResolutionState, prioriteit, ernst, categorie, de eigenaar, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
-| Configuratie |Klant-id, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Gebeurtenis |Gebeurtenis-id, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, getal, categorie, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Opmerking:** Wanneer u gebeurtenissen met aangepaste velden in het Windows-gebeurtenis logboek schrijft, worden deze door Log Analytics verzameld. |
-| Metagegevens |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IP-adres, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Adres NetbiosDomainName, LogicalProcessors, DNS-naam, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
-| Prestaties |Objectnaam, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Status |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
+| Waarschuwing |Naam van waarschuwing, beschrijving van waarschuwing, BaseManagedEntityId, probleem-ID, IsMonitorAlert, RuleId, ResolutionState, prioriteit, Ernst, categorie, eigenaar, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
+| Configuratie |KlantId, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, Change date |
+| Gebeurtenis |Gebeurtenis-instantie, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, Uitgevernaam, FullNumber, Number, Category, ChannelLevel, LoggingComputer, Event Data, EventParameters, TimeGenerated, TimeAdded <br>**Opmerking:** Wanneer u gebeurtenissen met aangepaste velden in het Windows-gebeurtenis logboek schrijft, worden deze door Log Analytics verzameld. |
+| Metagegevens |BaseManagedEntityId, object status, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, netwerkwerknaam, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Address, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, principal name, OffsetInMinuteFromGreenwichTime |
+| Prestaties |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
+| Staat |StateChangeEventId, StateId, NewHealthState, OldHealthState, context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fysieke beveiliging
-De Log Analytics-service wordt beheerd door Microsoft-personeel en alle activiteiten worden vastgelegd en kunnen worden gecontroleerd. Log Analytics wordt gebruikt als een Azure-Service en voldoet aan alle vereisten voor Azure-naleving en beveiliging. U vindt meer informatie over de fysieke beveiliging van Azure-assets op 18 pagina van de [beveiligingsoverzicht van Microsoft Azure](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fysieke toegangsrechten voor het beveiligen van gebieden worden gewijzigd binnen één werkdag voor iedereen die heeft niet langer verantwoordelijk is voor de Log Analytics-service, inclusief overdracht en beëindiging. U kunt meer informatie over de algemene fysieke infrastructuur, gebruiken we op [Microsoft-Datacenters](https://azure.microsoft.com/global-infrastructure/).
+De Log Analytics-service wordt beheerd door personeel van micro soft en alle activiteiten worden vastgelegd en kunnen worden gecontroleerd. Log Analytics wordt gebruikt als een Azure-service en voldoet aan alle vereisten voor naleving en beveiliging van Azure. U kunt details weer geven over de fysieke beveiliging van Azure-assets op pagina 18 van het [overzicht van Microsoft Azure beveiliging](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fysieke toegangs rechten voor beveiligde gebieden worden binnen één werkdag gewijzigd voor iedereen die niet meer verantwoordelijk is voor de Log Analytics service, met inbegrip van overdracht en beëindiging. Meer informatie over de wereld wijde fysieke infra structuur die [wordt gebruikt voor micro soft-data centers](https://azure.microsoft.com/global-infrastructure/).
 
-## <a name="incident-management"></a>incidentbeheer
-Log Analytics heeft een incidentbeheerproces die voor alle Microsoft-services worden aangehouden. Om samen te vatten, we:
+## <a name="incident-management"></a>Incident beheer
+Log Analytics een incident beheer proces heeft dat alle micro soft-Services naleven. Als u wilt samenvatten, doet u het volgende:
 
-* Gebruikt een model met gedeelde verantwoordelijkheid waar een deel van de verantwoordelijkheid van de beveiliging is van Microsoft en een gedeelte behoort tot de klant
-* Azure beveiligingsincidenten beheren:
-  * Een onderzoek tijdens de detectie van een incident starten
-  * Evalueer de impact en urgentie van een incident met een teamlid in aanroep reageren op incidenten. Op basis van gegevens, de evaluatie kan of niet meer escalatie naar het security response team kan leiden.
-  * Diagnose van een incident met beveiligingsexperts voor het antwoord aan de technische of forensisch onderzoek uitvoeren, het identificeren van strategieën voor insluiting, voor risicobeperking en tijdelijke oplossing. Als het beveiligingsteam ervan overtuigd is dat gegevens van de klant kan hebben worden blootgesteld aan een onwettig is of niet-gemachtigde persoon, begint de parallelle uitvoering van het proces van de klant Incident melding parallel.  
-  * Stabiliseren en herstellen van het incident. Het incident response team maakt u een herstelplan om het probleem te verhelpen. Crisis containment stappen zoals het betrokken systemen in quarantaine plaatsen kunnen zich voordoen onmiddellijk en parallel met diagnose. Mogelijk langere termijn oplossingen worden gepland die zich voordoen nadat de onmiddellijke risico is verstreken.  
-  * Het incident sluit en een daarmee uitvoeren. Het incident response team maakt een daarmee die geeft een overzicht van de details van het incident, met de intentie te herzien beleidsregels, procedures en processen om te voorkomen dat een terugkeerpatroon van de gebeurtenis.
-* Informeer klanten over beveiligingsincidenten:
-  * Het bereik van de betrokken klanten en voor iedereen die is van invloed als een kennisgeving mogelijk gedetailleerde bepalen
-  * Maak een aankondiging voor klanten met gedetailleerde voldoende informatie zodat ze kunnen een onderzoek op hun einde uitvoeren en voldoen aan eventuele verplichtingen die zijn aangebracht in hun eindgebruikers tijdens niet ten onrechte meldingen vertragen.
-  * Controleer en declareren van het incident, indien nodig.
-  * Informeer klanten met een incident melding onredelijk onmiddellijk en in overeenstemming met de juridische of contractuele toezegging. Meldingen van beveiligingsincidenten wordt geleverd aan een of meer van de beheerders van de klant door middel van die Microsoft selecteert, onder andere via e-mail.
-* Gedragscode team gereedheid en training:
-  * Medewerkers van Microsoft zijn vereist voor het voltooien van de beveiligings- en awareness training, waarmee ze om te bepalen en mogelijke beveiligingsproblemen rapporteren.  
-  * Operators werken op de Microsoft Azure-service hebben toevoeging training verplichtingen rond de toegang tot systemen met gevoelige informatie die als host fungeert voor klantgegevens.
-  * Medewerkers van Microsoft security response ontvangen speciale training voor hun rollen
+* Een gedeeld verantwoordelijkheids model gebruiken waarbij een deel van de beveiligings verantwoordelijkheid deel uitmaakt van micro soft en een deel van de klant is
+* Azure-beveiligings incidenten beheren:
+  * Een onderzoek starten bij het detecteren van een incident
+  * Beoordeling van de impact en ernst van een incident door een lid van een incident response-teamlid. Op basis van bewijs materiaal kan de evaluatie niet meer leiden tot verdere escalatie naar het beveiligings antwoord team.
+  * Diagnose een incident door experts voor beveiligings reacties om het technisch of forensische onderzoek uit te voeren, de strategieën voor het inperken, beperken en het oplossen van oplossingen te identificeren. Als het beveiligings team meent dat klant gegevens kunnen worden blootgesteld aan een onrecht matige of niet-geautoriseerde persoon, wordt parallelle uitvoering van het proces voor het melden van het incident parallel gestart.  
+  * Het incident te stabiliseren en te herstellen. Het incident response team maakt een herstel plan om het probleem te verhelpen. De stappen voor het opnemen van de crisis, zoals in quarantaine-getroffen systemen, kunnen onmiddellijk en parallel met de diagnose worden uitgevoerd. Er kunnen oplossingen voor langere termijn worden gepland die optreden nadat het directe risico is verstreken.  
+  * Sluit het incident en voer een postmortemkeuring uit. Het incident response team maakt een post met de details van het incident, met de bedoeling om het beleid, de procedures en de processen te herzien om een terugkeer patroon van de gebeurtenis te voor komen.
+* Klanten informeren over beveiligings incidenten:
+  * Bepaal het bereik van de betrokken klanten en om iedereen te voorzien van een mede deling, indien mogelijk
+  * Maak een kennisgeving om klanten te voorzien van voldoende informatie, zodat ze een onderzoek kunnen uitvoeren op hun einde en voldoen aan de verplichtingen die ze aan hun eind gebruikers hebben gegeven, terwijl het meldings proces niet onnodig wordt vertraagd.
+  * Bevestig en Declareer het incident, indien nodig.
+  * Informeer klanten met een melding over incidenten zonder onredelijke vertraging en in overeenstemming met juridische of contractuele verplichtingen. Meldingen van beveiligings incidenten worden aan een of meer van de beheerders van een klant bezorgd, op welke manier micro soft selecteert, bijvoorbeeld via e-mail.
+* Team voorbereiding en-training uitvoeren:
+  * Micro soft-personeel is verplicht om beveiligings-en bewustmakings training te volt ooien, waarmee ze mogelijk verdachte beveiligings problemen kunnen identificeren en rapporteren.  
+  * Opera tors die aan de Microsoft Azure-service werken, hebben aanvullende opleidings verplichtingen rond hun toegang tot gevoelige systemen die klant gegevens hosten.
+  * Mede werkers van micro soft-beveiligings reacties ontvangen gespecialiseerde training voor hun rollen
 
-Als er verlies van gegevens van de klant optreedt, melden we elke klant binnen een dag. Verlies van gegevens van de klant heeft echter nooit is opgetreden met de service. 
+Als er klant gegevens verloren gaan, sturen we elke klant binnen één dag op de hoogte. Het verlies van klant gegevens heeft echter nooit plaatsgevonden bij de service. 
 
-Zie voor meer informatie over hoe Microsoft op beveiligingsincidenten reageert, [Microsoft Azure Security Response in de Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
+Zie [Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf)(Engelstalig) voor meer informatie over hoe micro soft reageert op beveiligings incidenten.
 
 ## <a name="compliance"></a>Naleving
-Log Analytics-software ontwikkel- en service van het team informatie beveiliging en governance-programma biedt ondersteuning voor de zakelijke vereisten en voldoet aan de wetten en voorschriften, zoals beschreven op [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) en [ Vertrouwenscentrum van Microsoft-naleving](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Hoe Log Analytics wordt tot stand gebracht voor beveiliging, identificeert beveiligingsmechanismen, beheert en bewaakt de risico's worden er ook beschreven. Jaarlijks, we revisie beleidsregels, standaarden en procedures en richtlijnen.
+De informatie beveiliging en het beheer programma voor de Log Analytics software ontwikkeling en het service team ondersteunt zijn bedrijfs vereisten en voldoet aan de wetten en voor schriften zoals beschreven in [Microsoft Azure vertrouwens centrum](https://azure.microsoft.com/support/trust-center/) en het [vertrouwens centrum van micro soft Naleving](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Hoe Log Analytics beveiligings vereisten aanbrengt, de beveiligings maatregelen identificeert, beheert en bewaakt, worden ook de Risico's beschreven. Jaarlijks bekijken we beleids regels, standaarden, procedures en richt lijnen.
 
-Elk teamlid ontwikkeling ontvangt beveiligingstraining formele aanvraag. Intern, gebruiken we een versiebeheersysteem voor softwareontwikkeling. Elk softwareproject is beveiligd door het systeem voor versiebeheer.
+Elk lid van het ontwikkelings team ontvangt formeel toepassings beveiligings training. Intern gebruiken we een versie beheersysteem voor het ontwikkelen van software. Elk software project wordt beveiligd door het versie beheersysteem.
 
-Microsoft heeft een beveiliging en naleving team dat verantwoordelijk is voor en alle services in Microsoft beoordeelt. Information security officers maken van het team en ze niet zijn gekoppeld aan het engineering-teams die Log Analytics ontwikkelt. De security officers hebben hun eigen Managementketen en uitvoering van een onafhankelijke evaluaties van producten en services om ervoor te zorgen voor beveiliging en naleving.
+Micro soft heeft een team voor beveiliging en naleving dat alle services in micro soft overziet en evalueert. Informatie beveiligings managers maken het team samen en ze zijn niet gekoppeld aan de technische teams die Log Analytics ontwikkelen. De beveiligings ambtenaren hebben hun eigen beheer keten en voeren onafhankelijke evaluaties van producten en services uit om te zorgen voor beveiliging en naleving.
 
-Raad van bestuur van Microsoft is op de hoogte met in een jaarrapport over alle informatie beveiligingsprogramma's bij Microsoft.
+De Raad van bestuur van micro soft wordt gewaarschuwd door een jaarlijks rapport over alle informatie beveiligings Programma's van micro soft.
 
-De ontwikkeling van Log Analytics-software en service-team werkt actief met de teams Microsoft Legal en naleving en andere IT-partners aan te schaffen verschillende certificeringen.
+Het Log Analytics Software Development and service-team werkt actief samen met de juridische en nalevings teams van micro soft en andere partners van de branche om diverse certificeringen te verkrijgen.
 
 ## <a name="certifications-and-attestations"></a>Certificeringen en verklaringen
 Azure Log Analytics voldoet aan de volgende vereisten:
@@ -126,60 +120,60 @@ Azure Log Analytics voldoet aan de volgende vereisten:
 * [ISO/IEC 27001](https://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
 * [ISO/IEC 27018:2014](https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
-* [Betaling kaart Industry (PCI-compatibel) Data Security Standard (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) door de PCI Security Standards Council.
-* [Service Organization Controls (SOC) 1 Type 1 en SOC 2 Type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) compatibel
-* [De HIPAA en HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) voor bedrijven die een HIPAA Business koppelen overeenkomst hebt
-* Windows gemeenschappelijke Engineering Criteria
+* [Betaal kaart (PCI-compatibel) Data Security Standard (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) door de PCI Security Standards-Raad.
+* [Service organization Controls (SOC) 1 type 1 en SOC 2 type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) voldoen aan het beleid
+* [HIPAA en Hitech](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) voor bedrijven die een HIPAA-overeenkomst voor bedrijven hebben
+* Algemene technische criteria van Windows
 * Microsoft Trustworthy Computing
-* Als een Azure-service voldoen de onderdelen die gebruikmaakt van Log Analytics aan vereisten voor naleving van Azure. U vindt meer informatie in [Microsoft Trust Center naleving](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
+* Als Azure-service worden de onderdelen die Log Analytics gebruikt, voldoen aan de vereisten voor naleving van Azure. Meer informatie vindt u op de naleving van het [vertrouwens centrum van micro soft](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
-> In sommige certificeringen/verklaringen, Log Analytics wordt vermeld onder de oude naam van *Operational Insights*.
+> In sommige certificeringen/verklaringen wordt Log Analytics vermeld onder de voormalige naam van *Operational Insights*.
 >
 >
 
-## <a name="cloud-computing-security-data-flow"></a>Cloud computing security-gegevensstroom
-Het volgende diagram toont een cloud-beveiligingsarchitectuur als de stroom van gegevens van uw bedrijf en hoe deze is beveiligd, is verplaatst naar de service Log Analytics, uiteindelijk worden gezien door u in Azure portal. Meer informatie over elke stap volgt het diagram.
+## <a name="cloud-computing-security-data-flow"></a>Cloud Computing Security data flow
+In het volgende diagram ziet u een Cloud beveiligings architectuur als de stroom van gegevens van uw bedrijf en hoe deze wordt beveiligd zoals deze wordt verplaatst naar de Log Analytics-service, die uiteindelijk door u in de Azure Portal wordt weer gegeven. Meer informatie over elke stap volgt het diagram.
 
-![Afbeelding van Log Analytics-gegevensverzameling en -beveiliging](./media/data-security/log-analytics-data-security-diagram.png)
+![Afbeelding van het verzamelen en beveiligen van Log Analytics gegevens](./media/data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Registreren voor Log Analytics en gegevens te verzamelen
-Bij uw organisatie gegevens verzenden naar Log Analytics, configureert u een Windows- of Linux agent wordt uitgevoerd op virtuele machines van Azure of op virtuele of fysieke computers in uw omgeving of andere cloudprovider.  Als u Operations Manager gebruikt, uit de beheergroep configureert u de Operations Manager-agent. Gebruikers (die mogelijk worden u, andere individuele gebruikers of een groep personen) een of meer Log Analytics-werkruimten maken en registreren van agents met behulp van een van de volgende accounts:
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Registreer u voor Log Analytics en gegevens verzamelen
+Als u wilt dat uw organisatie gegevens naar Log Analytics verzendt, configureert u een Windows-of Linux-agent die wordt uitgevoerd op virtuele machines van Azure of op virtuele of fysieke computers in uw omgeving of een andere Cloud provider.  Als u Operations Manager gebruikt, configureert u de Operations Manager agent in de beheer groep. Gebruikers (dit kunnen u, andere afzonderlijke gebruikers of een groep personen) een of meer Log Analytics werk ruimten maken en agents registreren met behulp van een van de volgende accounts:
 
 * [Organisatie-ID](../../active-directory/fundamentals/sign-up-organization.md)
-* [Microsoft-Account - Outlook, Office Live, MSN](https://account.microsoft.com/account)
+* [Micro soft-account: Outlook, Office Live, MSN](https://account.microsoft.com/account)
 
-Een Log Analytics-werkruimte is waaruit gegevens worden verzameld, samengevoegd, geanalyseerd en gepresenteerd. Een werkruimte wordt voornamelijk gebruikt als een manier om gegevens te partitioneren en elke werkruimte is uniek. Bijvoorbeeld, als u wilt uw productiegegevens met één werkruimte worden beheerd en uw testgegevens die worden beheerd met een andere werkruimte. Werkruimten helpen ook een beheerder gebruikerstoegang tot de gegevens. Elke werkruimte kunnen meerdere gebruikersaccounts die zijn gekoppeld aan deze, en elk gebruikersaccount dat toegang tot meerdere Log Analytics-werkruimten. U maken werkruimten op basis van datacentrumregio.
+Een Log Analytics werk ruimte is waar gegevens worden verzameld, geaggregeerd, geanalyseerd en gepresenteerd. Een werk ruimte wordt hoofd zakelijk gebruikt als een manier om gegevens te partitioneren en elke werk ruimte is uniek. Stel dat u uw productie gegevens wilt beheren met één werk ruimte en dat uw test gegevens worden beheerd met een andere werk ruimte. Met werk ruimten kunnen beheerders ook gebruikers toegang tot de gegevens beheren. Aan elke werk ruimte kunnen meerdere gebruikers accounts worden gekoppeld en elk gebruikers account heeft toegang tot meerdere Log Analytics-werk ruimten. U kunt werk ruimten maken op basis van de regio Data Center.
 
-Voor Operations Manager maakt de Operations Manager-beheergroep verbinding met een Log Analytics-service. U configureert welke agent beheerde systemen in de beheergroep zijn toegestaan voor het verzamelen en verzenden van gegevens naar de service. Gegevens van deze oplossingen zijn, afhankelijk van de oplossing die u hebt ingeschakeld, hetzij rechtstreeks vanuit een Operations Manager-beheerserver wordt verzonden naar de Log Analytics-service, of vanwege de hoeveelheid gegevens die zijn verzameld door het systeem door agents beheerde rechtstreeks vanuit worden verzonden de agent met de service. Voor systemen die niet worden bewaakt door Operations Manager, verbindt elk veilig met de service Log Analytics rechtstreeks.
+Voor Operations Manager brengt de Operations Manager beheer groep een verbinding tot stand met de Log Analytics service. Vervolgens configureert u welke door agents beheerde systemen in de beheer groep mogen gegevens verzamelen en verzenden naar de service. Afhankelijk van de oplossing die u hebt ingeschakeld, worden gegevens van deze oplossingen rechtstreeks van een Operations Manager-beheer server naar de Log Analytics-service verzonden, of vanwege het volume van de gegevens die worden verzameld door het door de agent beheerde systeem, worden deze rechtstreeks vanuit verzonden de agent naar de service. Voor systemen die niet worden bewaakt door Operations Manager, maakt elk een beveiligde verbinding met de Log Analytics-service.
 
-Alle communicatie tussen verbonden systemen en de Log Analytics-service is versleuteld. Het TLS (HTTPS)-protocol wordt gebruikt voor versleuteling.  Het Microsoft SDL-proces wordt gevolgd om ervoor te zorgen dat log Analytics is bijgewerkt met de meest recente ontwikkelingen in de cryptografische protocollen.
+Alle communicatie tussen verbonden systemen en de Log Analytics-service is versleuteld. Het TLS-protocol (HTTPS) wordt gebruikt voor versleuteling.  Het micro soft SDL-proces wordt gevolgd om te garanderen dat Log Analytics is bijgewerkt met de meest recente voor uitgang in cryptografische protocollen.
 
-Elk type van de agent verzamelt gegevens voor Log Analytics. Het type van de gegevens die worden verzameld, is afhankelijk van de soorten oplossingen die worden gebruikt. U ziet een overzicht van het verzamelen van gegevens op [toevoegen Log Analytics-oplossingen uit de galerie van oplossingen](../../azure-monitor/insights/solutions.md). Meer gedetailleerde informatie van de verzameling is daarnaast beschikbaar voor de meeste oplossingen. Een oplossing is een bundel van vooraf gedefinieerde weergaven, log zoekquery's, regels voor het verzamelen van gegevens en Verwerkingslogica voor. Alleen beheerders kunnen Log Analytics gebruiken voor het importeren van een oplossing. Nadat de oplossing is geïmporteerd, wordt deze verplaatst naar de Operations Manager-beheerservers (indien gebruikt), en vervolgens naar alle agents die u hebt gekozen. Daarna wordt verzamelen de agents de gegevens.
+Elk type agent verzamelt gegevens voor Log Analytics. Welk type gegevens er wordt verzameld, is afhankelijk van de gebruikte oplossingen. U kunt een samen vatting van gegevens verzameling weer geven op [log Analytics oplossingen toevoegen vanuit de Oplossingengalerie](../../azure-monitor/insights/solutions.md). Daarnaast is er meer gedetailleerde verzamelings gegevens beschikbaar voor de meeste oplossingen. Een oplossing is een bundel van vooraf gedefinieerde weer gaven, logboek zoekopdracht query's, regels voor het verzamelen van gegevens en de verwerking van logica. Alleen beheerders kunnen Log Analytics gebruiken om een oplossing te importeren. Nadat de oplossing is geïmporteerd, wordt deze verplaatst naar de Operations Manager beheerser vers (indien gebruikt) en vervolgens naar de agents die u hebt gekozen. Daarna verzamelen de agents de gegevens.
 
-## <a name="2-send-data-from-agents"></a>2. Verzenden van gegevens van agents
-U alle typen van de agent zich bij een registratie-sleutel en een beveiligde verbinding tot stand is gebracht tussen de agent en de Log Analytics-service met behulp van verificatie op basis van certificaten en SSL met poort 443. Log Analytics maakt gebruik van een geheime store te genereren en beheren van sleutels. Persoonlijke sleutels om de 90 dagen worden gedraaid en worden opgeslagen in Azure en worden beheerd door de Azure-bewerkingen die strikt van wetten en voorschriften procedures volgen.
+## <a name="2-send-data-from-agents"></a>2. gegevens verzenden van agents
+U registreert alle agent typen met een registratie sleutel en er wordt een beveiligde verbinding tot stand gebracht tussen de agent en de Log Analytics service met verificatie op basis van certificaten en SSL met poort 443. Log Analytics gebruikt een geheim archief om sleutels te genereren en te onderhouden. Persoonlijke sleutels worden elke 90 dagen gedraaid en worden opgeslagen in Azure en worden beheerd door de Azure-bewerkingen die voldoen aan de strikte regelgeving en nalevings procedures.
 
-De beheergroep geregistreerd bij een Log Analytics-werkruimte maakt met Operations Manager, een beveiligde HTTPS-verbinding met een Operations Manager-beheerserver.
+Met Operations Manager is de beheer groep die is geregistreerd met een Log Analytics-werk ruimte, een beveiligde HTTPS-verbinding met een Operations Manager-beheer server tot stand gebracht.
 
-Voor Windows of Linux-agents worden uitgevoerd op Azure virtual machines, wordt een alleen-lezen opslagsleutel gebruikt om te lezen van diagnostische gebeurtenissen in Azure-tabellen.  
+Voor Windows-of Linux-agents die worden uitgevoerd op virtuele machines van Azure, wordt een alleen-lezen opslag sleutel gebruikt voor het lezen van diagnostische gebeurtenissen in azure-tabellen.  
 
-Met elke agent die rapporteert aan een beheergroep van Operations Manager die is geïntegreerd met Log Analytics, als de beheerserver kan niet communiceren met de service voor een bepaalde reden, de verzamelde gegevens lokaal opgeslagen in een tijdelijke cache op de management de server.   Ze proberen te verzenden van de gegevens om de acht minuten gedurende twee uur.  Voor gegevens die de beheerserver omzeilt en rechtstreeks naar Log Analytics wordt verzonden, is het gedrag consistent met de Windows-agent.  
+Als een agent rapporteert aan een Operations Manager-beheer groep die is geïntegreerd met Log Analytics en de beheer server om welke reden dan ook niet kan communiceren met de service, worden de verzamelde gegevens lokaal opgeslagen in een tijdelijke cache op het beheer naam.   Ze proberen de gegevens om de acht minuten voor twee uur opnieuw te verzenden.  Voor gegevens die de beheer server omzeilt en rechtstreeks naar Log Analytics worden verzonden, is het gedrag consistent met de Windows-agent.  
 
-De Windows- of management server-agent in de cache opgeslagen gegevens wordt beveiligd door de referentie-archief van het besturingssysteem. Als de service niet kan van de gegevens na twee uur verwerken, wordt de gegevens in de agents een wachtrij. Als de wachtrij vol is, start de agent verwijderen van gegevenstypen, beginnend met de prestatiegegevens. De agent de wachtrijlimiet is een registersleutel, zodat u wijzigen kunt, indien nodig. Verzamelde gegevens worden gecomprimeerd en verzonden naar de service, overslaan van de databases van Operations Manager management groep, zodat deze geen een elke belasting door toegevoegd aan deze. Nadat de verzamelde gegevens wordt verzonden, wordt deze verwijderd uit de cache.
+De in de cache opgeslagen gegevens van de Windows-of beheer Server Agent worden beveiligd door het referentie archief van het besturings systeem. Als de service de gegevens na twee uur niet kan verwerken, worden de gegevens in de agents in de wachtrij geplaatst. Als de wachtrij vol raakt, begint de agent gegevens typen te verwijderen, beginnend met de prestatie gegevens. De limiet voor de agent wachtrij is een register sleutel, zodat u deze zo nodig kunt wijzigen. Verzamelde gegevens worden gecomprimeerd en naar de service verzonden, waarbij de Operations Manager-beheer groep-data bases worden overgeslagen, zodat er geen belasting aan de toepassingen kan worden toegevoegd. Nadat de verzamelde gegevens zijn verzonden, worden ze uit de cache verwijderd.
 
-Zoals hierboven beschreven, wordt de gegevens van de beheerserver of rechtstreeks verbonden agents via SSL verzonden naar Microsoft Azure-datacenters. U kunt eventueel ExpressRoute gebruiken voor extra beveiliging voor de gegevens. ExpressRoute is een manier om rechtstreeks verbinding maken met Azure vanuit uw bestaande WAN-netwerk, zoals een multiprotocol label switching (MPLS) VPN dat wordt geleverd door een netwerkserviceprovider. Zie voor meer informatie, [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+Zoals hierboven beschreven, worden gegevens van de beheer server of direct verbonden agents via SSL verzonden naar Microsoft Azure data centers. U kunt ExpressRoute ook gebruiken om extra beveiliging te bieden voor de gegevens. ExpressRoute is een manier om rechtstreeks verbinding te maken met Azure vanuit uw bestaande WAN-netwerk, zoals een MPLS-VPN (multi-protocol label switching), dat wordt verschaft door een netwerk serviceprovider. Zie [ExpressRoute](https://azure.microsoft.com/services/expressroute/)voor meer informatie.
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. De Log Analytics-service ontvangt en verwerkt gegevens
-De Log Analytics-service zorgt ervoor dat binnenkomende gegevens van een vertrouwde bron is door het valideren van certificaten en de integriteit van gegevens met Azure-verificatie. De niet-verwerkte onbewerkte gegevens wordt vervolgens opgeslagen in een Azure Event Hub in de regio die de gegevens uiteindelijk worden opgeslagen in rust. Het type van de gegevens die zijn opgeslagen, is afhankelijk van de soorten oplossingen die zijn geïmporteerd en gebruikt om gegevens te verzamelen. Vervolgens wordt de met Log Analytics service processen de onbewerkte gegevens en neemt deze in de database.
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. de Log Analytics-service ontvangt en verwerkt gegevens
+De Log Analytics-service zorgt ervoor dat inkomende gegevens afkomstig zijn van een vertrouwde bron door certificaten en de integriteit van gegevens te valideren met Azure-verificatie. De onverwerkte onbewerkte gegevens worden vervolgens opgeslagen in een Azure Event hub in de regio waarin de gegevens uiteindelijk worden opgeslagen in rust. Het type gegevens dat wordt opgeslagen, is afhankelijk van de typen oplossingen die zijn geïmporteerd en gebruikt voor het verzamelen van gegevens. Vervolgens worden de onbewerkte gegevens door de Log Analytics-Service verwerkt en opgenomen in de-data base.
 
-De bewaarperiode van de verzamelde gegevens opgeslagen in de database, is afhankelijk van de geselecteerde prijsstelling. Voor de *gratis* laag, verzamelde gegevens zijn beschikbaar voor de zeven dagen. Voor de *betaald* laag, verzamelde gegevens gedurende 31 dagen standaard beschikbaar is, maar kan worden uitgebreid tot 730 dagen. Gegevens worden opgeslagen versleuteld in rust in Azure storage om te controleren of de vertrouwelijkheid van gegevens, en de gegevens worden gerepliceerd binnen de regio met lokaal redundante opslag (LRS). De laatste twee weken van gegevens worden ook opgeslagen in de cache op SSD-basis en deze cache is versleuteld.
+De Bewaar periode van verzamelde gegevens die zijn opgeslagen in de data base is afhankelijk van het geselecteerde prijs plan. Voor de *gratis* laag zijn verzamelde gegevens zeven dagen beschikbaar. Verzamelde gegevens voor de laag *betaald* zijn standaard 31 dagen beschikbaar, maar kunnen worden verlengd tot 730 dagen. Gegevens worden in de rest van Azure Storage versleuteld opgeslagen om gegevens geheim te controleren en de gegevens worden gerepliceerd binnen de lokale regio met behulp van lokaal redundante opslag (LRS). De laatste twee weken van gegevens worden ook opgeslagen in de cache op SSD-basis en deze cache is versleuteld.
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4. Log Analytics gebruiken voor toegang tot de gegevens
-Voor toegang tot uw Log Analytics-werkruimte moet u zich aanmeldt bij de Azure-portal met behulp van de organisatie-account of een Microsoft-account dat u eerder hebt ingesteld. Al het verkeer tussen de portal en de Log Analytics-service worden verzonden via een beveiligde HTTPS-kanaal. Wanneer u de portal, een sessie-ID is gegenereerd op de gebruiker-client (webbrowser) en gegevens worden opgeslagen in een lokale cache totdat de sessie wordt beëindigd. Wanneer is afgesloten, wordt de cache verwijderd. Client-side-cookies niet persoonlijk identificeerbare informatie bevatten, worden niet automatisch verwijderd. Sessiecookies HTTPOnly zijn gemarkeerd en worden beveiligd. Na een vooraf bepaald niet-actieve periode, is de Azure portal-sessie beëindigd.
+## <a name="4-use-log-analytics-to-access-the-data"></a>4. gebruik Log Analytics om toegang te krijgen tot de gegevens
+Als u toegang wilt krijgen tot uw Log Analytics-werk ruimte, meldt u zich aan bij de Azure Portal met behulp van het organisatie account of Microsoft-account dat u eerder hebt ingesteld. Al het verkeer tussen de portal en de Log Analytics-service wordt verzonden via een beveiligd HTTPS-kanaal. Wanneer u de portal gebruikt, wordt er een sessie-ID gegenereerd op de gebruikers-client (webbrowser) en worden gegevens opgeslagen in een lokale cache totdat de sessie wordt beëindigd. Wanneer het is beëindigd, wordt de cache verwijderd. Cookies aan de client zijde, die geen persoons gegevens bevatten, worden niet automatisch verwijderd. Sessie cookies zijn gemarkeerd als HTTPOnly en zijn beveiligd. Na een vooraf vastgestelde niet-actieve periode wordt de Azure Portal-sessie beëindigd.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het verzamelen van gegevens met Log Analytics voor uw Azure-VM's na de [virtuele machine van Azure-snelstartgids](../../azure-monitor/learn/quick-collect-azurevm.md).  
+* Meer informatie over het verzamelen van gegevens met Log Analytics voor uw virtuele Azure-machines na de [Snelstartgids van Azure VM](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-*  Als u verzamelen van gegevens van fysieke of virtuele Windows- of Linux-computers in uw omgeving wilt, raadpleegt u de [Quick Start voor Linux-computers](../../azure-monitor/learn/quick-collect-linux-computer.md) of [Quick Start voor Windows-computers](../../azure-monitor/learn/quick-collect-windows-computer.md)
+*  Als u gegevens wilt verzamelen van fysieke of virtuele Windows-of Linux-computers in uw omgeving, raadpleegt u de [Quick start voor Linux-computers](../../azure-monitor/learn/quick-collect-linux-computer.md) of [Quick start voor Windows-computers](../../azure-monitor/learn/quick-collect-windows-computer.md)
 

@@ -7,32 +7,32 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 7ff164b378ac6981fcb9686d6264b0bcf50cfafb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a01c95cbe9281c915e89572c07fcbc203193b962
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814809"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935502"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-indeling in Azure Data Factory
 
 Volg dit artikel als u **de json-bestanden wilt parseren of de gegevens naar de JSON-indeling wilt schrijven**. 
 
-De JSON-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [azure BLOB](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)en [SFTP](connector-sftp.md).
+JSON-indeling wordt ondersteund voor de volgende connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)en [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die door de JSON-gegevensset worden ondersteund.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door de JSON-gegevensset worden ondersteund.
 
-| Eigenschap         | Description                                                  | Vereist |
+| Eigenschap         | Beschrijving                                                  | Verplicht |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| Type             | De eigenschap type van de gegevensset moet worden ingesteld op **JSON**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen `location`onder. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
-| encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' US-ASCII ', ' UTF-7 ', ' BIG5 "," EUC-JP "," EUC-KR "," GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737 "," IBM775 "," IBM850 "," IBM852 "," IBM855 "," IBM857 "," IBM860 "," IBM861 ', ' IBM863 ', ' IBM864 ', ' IBM865 ', ' IBM869 ', ' IBM870 ', ' IBM01140 ', ' IBM01141 ', ' IBM01142 ', ' IBM01143 ', ' IBM01144 ', ' ', ' ', ' ', ' IBM01145 ', ' IBM01146 ', ' IBM01147 ', ' IBM01148 ', ' IBM01149 ', ' ISO-2022-2022 "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 "," ISO-8859-15 "," WINDOWS-874 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," WINDOWS-1254 ', ' WINDOWS-1255 ', ' WINDOWS-1256 ', ' WINDOWS-1257 ', ' WINDOWS-1258 '.| Nee       |
+| type             | De eigenschap type van de gegevensset moet worden ingesteld op **JSON**. | Ja      |
+| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location`. **Zie de sectie Details in connector artikel-> Eigenschappen van gegevensset**. | Ja      |
+| encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' US-ASCII "," UTF-7 "," BIG5 "," EUC-JP "," EUC-KR "," GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252 ', ' WINDOWS-1253 ', ' WINDOWS-1254 ', ' WINDOWS-1255 ', ' WINDOWS-1256 ', ' WINDOWS-1257 ', ' WINDOWS-1258 '.| Nee       |
 | compressionCodec | De compressie-codec die wordt gebruikt om tekst bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **Snappy**of **LZ4**. te gebruiken bij het opslaan van het bestand. <br>Houd er rekening mee dat de activiteit die momenteel wordt gekopieerd, geen ondersteuning biedt voor "Snappy" & "LZ4". | Nee       |
-| compressionLevel | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **Snelste** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: De compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie voor meer informatie, [compressieniveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) onderwerp. | Nee       |
+| compressionLevel | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **snelst:** de compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder ziet u een voor beeld van JSON-gegevensset op Azure Blob Storage:
 
@@ -61,32 +61,32 @@ Hieronder ziet u een voor beeld van JSON-gegevensset op Azure Blob Storage:
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de JSON-bron en Sink.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de JSON-bron en Sink.
 
 ### <a name="json-as-source"></a>JSON als bron
 
-De volgende eigenschappen worden ondersteund in de sectie ***\*bron\**** van de Kopieer activiteit.
+De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*bron\**** .
 
-| Eigenschap      | Description                                                  | Vereist |
+| Eigenschap      | Beschrijving                                                  | Verplicht |
 | ------------- | ------------------------------------------------------------ | -------- |
-| Type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **JSONSource**. | Ja      |
-| storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees `storeSettings`instellingen onder. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
+| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **JSONSource**. | Ja      |
+| storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
 
 ### <a name="json-as-sink"></a>JSON als Sink
 
-De volgende eigenschappen worden ondersteund in het gedeelte ***\*Sink\**** van de Kopieer activiteit.
+De volgende eigenschappen worden ondersteund in de sectie Kopieer activiteit ***\*sink\**** .
 
-| Eigenschap      | Description                                                  | Vereist |
+| Eigenschap      | Beschrijving                                                  | Verplicht |
 | ------------- | ------------------------------------------------------------ | -------- |
-| Type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **JSONSink**. | Ja      |
+| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **JSONSink**. | Ja      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **JSON-schrijf instellingen** . | Nee       |
 | storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> Eigenschappen van de Kopieer activiteit**. | Nee       |
 
 Ondersteunde **instellingen voor json-schrijf bewerkingen** onder `formatSettings`:
 
-| Eigenschap      | Description                                                  | Vereist                                              |
+| Eigenschap      | Beschrijving                                                  | Verplicht                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| Type          | Het type formatSettings moet zijn ingesteld op **JsonWriteSetting**. | Ja                                                   |
+| type          | Het type formatSettings moet zijn ingesteld op **JsonWriteSetting**. | Ja                                                   |
 | filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
 
 ### <a name="json-file-patterns"></a>JSON-bestandpatronen
@@ -181,8 +181,13 @@ Met de Kopieer activiteit kan de volgende patronen van JSON-bestanden automatisc
     ]
     ```
 
+## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
+
+Meer informatie over de [bron transformatie](data-flow-source.md) en [sink-trans formatie](data-flow-sink.md) in de toewijzing van gegevens stroom.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht kopieeractiviteit](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Gegevens stroom toewijzen](concepts-data-flow-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)

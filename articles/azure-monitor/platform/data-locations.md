@@ -1,22 +1,18 @@
 ---
 title: Gegevens locaties bewaken in Azure Monitor | Microsoft Docs
 description: Hierin worden de verschillende locaties beschreven waar bewakings gegevens worden opgeslagen in azure, met inbegrip van het Azure Monitor-gegevens platform.
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/21/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6f6071bc1d3d7514d22658a07810690ec8a8056b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 05/21/2019
+ms.openlocfilehash: 2ec1f0161713c7014f71fb3eaee31b0abdf52902
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972747"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932562"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Gegevens locaties bewaken in Azure Monitor
 
@@ -26,7 +22,7 @@ Azure Monitor is gebaseerd op een [gegevens platform](data-platform.md) van [Log
 
 De volgende tabel bevat de verschillende locaties waar de bewakings gegevens in Azure worden verzonden en de verschillende methoden om deze te openen.
 
-| Location | Description | Toegangs methoden |
+| Locatie | Beschrijving | Toegangs methoden |
 |:---|:---|:---|:--|
 | Azure Monitor metrische gegevens | Time-Series-Data Base die is geoptimaliseerd voor het analyseren van gegevens met tijds tempel. | [Metrics Explorer](metrics-getting-started.md)<br>[API voor Azure Monitor metrieken](/rest/api/monitor/metrics) |
 | Azure Monitor-logboeken    | Log Analytics werk ruimte op basis van Azure Data Explorer die een krachtige analyse-engine en een uitgebreide query taal biedt. | [Log Analytics](../log-query/portals.md)<br>[Log Analytics-API](https://dev.loganalytics.io/)<br>[Application Insights-API](https://dev.applicationinsights.io/reference/get-query) |

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/25/2019
 ms.locfileid: "71261310"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET
@@ -25,10 +25,10 @@ Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloo
 
 Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd rekening met de volgende opties:
 
-## <a name="networking"></a>Netwerken
+## <a name="networking"></a>Networking
 <a id="direct-connection"></a>
 
-1. **Verbindings beleid: Modus directe verbinding gebruiken**
+1. **Verbindings beleid: modus directe verbinding gebruiken**
 
     Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name in de waargenomen latentie aan de client zijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van het beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*.  De twee beschik bare modi zijn:
 
@@ -46,8 +46,8 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
      |Verbindings modus  |Ondersteund protocol  |Ondersteunde Sdk's  |API/service poort  |
      |---------|---------|---------|---------|
-     |Gateway  |   HTTPS    |  Alle SDK'S    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
-     |Rechtstreeks    |     TCP    |  .NET SDK    | Poorten binnen 10000-20000-bereik |
+     |Gateway  |   HTTPS    |  Alle SDK'S    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
+     |Direct    |     TCP    |  .NET SDK    | Poorten binnen 10000-20000-bereik |
 
      Azure Cosmos DB biedt een eenvoudig en open REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. Zowel directe TCP als HTTPS gebruiken SSL voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
 
@@ -94,7 +94,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen, in dezelfde regio als de Azure Cosmos-data base. Voor een benadering van een vergelijking worden de aanroepen naar Azure Cosmos DB binnen dezelfde regio binnen 1-2 MS uitgevoerd, maar de latentie tussen de West-en Oost kust van de VS is > 50 MS. Deze latentie kan waarschijnlijk variëren van aanvraag om aan te vragen, afhankelijk van de route die door de aanvraag wordt door gegeven aan de limiet van de client naar de grens van het Azure-Data Center. De laagst mogelijke latentie wordt bereikt door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
-    ![Afbeelding van het verbindings beleid voor Azure Cosmos DB](./media/performance-tips/same-region.png)
+    ![afbeelding van het Azure Cosmos DB verbindings beleid](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
 4. **Aantal threads/taken verhogen**
 
@@ -128,11 +128,11 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
      De SQL .NET SDK-versie 1.9.0 en hoger ondersteunen parallelle query's, waarmee u een gepartitioneerde verzameling parallel kunt doorzoeken. Zie [code voorbeelden](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) met betrekking tot het werken met de sdk's voor meer informatie. Parallelle query's zijn ontworpen om de latentie en door Voer van query's te verbeteren ten opzichte van hun serieel equivalent. Parallelle query's bieden twee para meters die gebruikers kunnen afstemmen op hun vereisten, (a) MaxDegreeOfParallelism: om het maximum aantal partities te beheren, kan een query parallel worden uitgevoerd en (b) MaxBufferedItemCount: om het aantal vooraf opgehaalde resultaten.
 
-    (a) ***afstemmings graad\:***  parallelle parallelle query werkt door meerdere partities parallel te doorzoeken. Gegevens uit een afzonderlijke partitie worden echter serieel opgehaald ten opzichte van de query. Het instellen `MaxDegreeOfParallelism` van de in [SDK v2](sql-api-sdk-dotnet.md) of `MaxConcurrency` in [SDK v3](sql-api-sdk-dotnet-standard.md) op het aantal partities heeft de maximale kans om de meest uitvoerende query te bereiken, op voor waarde dat alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u de mate van parallelle uitvoering instellen op een hoog nummer, en het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de mate van parallelle uitvoering.
+    (a) ***afstemmings graad van parallelle uitvoering\:*** parallelle query werkt door meerdere partities parallel te doorzoeken. Gegevens uit een afzonderlijke partitie worden echter serieel opgehaald ten opzichte van de query. Als u de `MaxDegreeOfParallelism` in [SDK v2](sql-api-sdk-dotnet.md) of `MaxConcurrency` in [SDK v3](sql-api-sdk-dotnet-standard.md) instelt op het aantal partities, is de maximale kans op het bereiken van de meest uitvoerende query, op voor waarde dat alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u de mate van parallelle uitvoering instellen op een hoog nummer, en het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de mate van parallelle uitvoering.
 
     Het is belang rijk te weten dat parallelle query's de beste voor delen opleveren als de gegevens gelijkmatig worden verdeeld over alle partities met betrekking tot de query. Als de gepartitioneerde verzameling zodanig is gepartitioneerd dat alle of een meerderheid van de gegevens die door een query zijn geretourneerd, in een paar partities is geconcentreerd (één partitie in het ergste geval), wordt de prestaties van de query door deze partities beïnvloed.
 
-    (b) de parallelle query ***tuning MaxBufferedItemCount\:***  is ontworpen om de resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Het vooraf ophalen helpt bij de algehele latentie verbetering van een query. MaxBufferedItemCount is de para meter om het aantal vooraf opgehaalde resultaten te beperken. Als u MaxBufferedItemCount instelt op het verwachte aantal geretourneerde resultaten (of een hoger getal), kan de query het maximale voor deel ontvangen van vooraf ophalen.
+    (b) ***tuning MaxBufferedItemCount\:*** parallel query is ontworpen om de resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Het vooraf ophalen helpt bij de algehele latentie verbetering van een query. MaxBufferedItemCount is de para meter om het aantal vooraf opgehaalde resultaten te beperken. Als u MaxBufferedItemCount instelt op het verwachte aantal geretourneerde resultaten (of een hoger getal), kan de query het maximale voor deel ontvangen van vooraf ophalen.
 
     Het vooraf ophalen van werkt op dezelfde manier, ongeacht de mate van parallellisme, en er is één buffer voor de gegevens van alle partities.  
 6. **GC aan server zijde inschakelen**
@@ -165,13 +165,13 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
    > [!NOTE] 
    > De eigenschap maxItemCount mag niet alleen worden gebruikt voor het pagineren. Het is de belangrijkste manier om de prestaties van query's te verbeteren door het maximum aantal geretourneerde items op één pagina te verminderen.  
 
-   U kunt ook de pagina grootte instellen met behulp van de beschik bare Azure Cosmos DB Sdk's. Met de eigenschap [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) in FeedOptions kunt u het maximum aantal items instellen dat in de opsommings bewerking moet worden geretourneerd. Wanneer `maxItemCount` is ingesteld op-1, zoekt de SDK automatisch de meest optimale waarde, afhankelijk van de grootte van het document. Bijvoorbeeld:
+   U kunt ook de pagina grootte instellen met behulp van de beschik bare Azure Cosmos DB Sdk's. Met de eigenschap [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) in FeedOptions kunt u het maximum aantal items instellen dat in de opsommings bewerking moet worden geretourneerd. Als `maxItemCount` is ingesteld op-1, zoekt de SDK automatisch de meest optimale waarde, afhankelijk van de grootte van het document. Bijvoorbeeld:
     
    ```csharp
     IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
    ```
     
-   Wanneer een query wordt uitgevoerd, worden de resulterende gegevens verzonden binnen een TCP-pakket. Als u een te lage waarde opgeeft `maxItemCount`voor, is het aantal benodigde reizen voor het verzenden van de gegevens in het TCP-pakket hoog, wat van invloed is op de prestaties. Als u niet zeker weet welke waarde voor `maxItemCount` eigenschap moet worden ingesteld, kunt u deze het beste instellen op-1 en de SDK de standaard waarde laten kiezen. 
+   Wanneer een query wordt uitgevoerd, worden de resulterende gegevens verzonden binnen een TCP-pakket. Als u een te lage waarde voor `maxItemCount`opgeeft, is het aantal trips dat nodig is voor het verzenden van de gegevens in het TCP-pakket hoog. Dit is van invloed op de prestaties. Als u niet zeker weet welke waarde voor `maxItemCount` eigenschap moet worden ingesteld, kunt u deze het beste instellen op-1 en de SDK de standaard waarde laten kiezen. 
 
 11. **Aantal threads/taken verhogen**
 
@@ -183,9 +183,9 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     - Voor uitvoer bare toepassingen kunt u dit doen door de optie **32-bit** te selecteren in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
-    - Voor op VSTest gebaseerde test projecten **kunt u dit**->doen door test**instellingen**->testen**standaard processor architectuur als x64**te selecteren in de menu optie van **Visual Studio test** .
+    - Voor test projecten op basis van VSTest kunt u dit doen door **test** instellingen te selecteren->**tests**->**standaard processor architectuur als x64**uit te voeren in de menu optie van **Visual Studio test** .
 
-    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren onder **extra**->**Opties**->**projecten en oplossingen** Webprojecten. ->
+    - Voor lokaal geïmplementeerde ASP.NET-webtoepassingen kunt u dit doen door de **64-bits versie van IIS Express voor websites en projecten**te controleren, onder **extra**->**opties**->**projecten en oplossingen**-> **Webprojecten**.
 
     - Voor ASP.NET-webtoepassingen die zijn geïmplementeerd op Azure, kunt u dit doen door het **platform als 64-bit** te kiezen in de **Toepassings instellingen** op de Azure Portal.
 
@@ -215,7 +215,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     De complexiteit van een query is van invloed op het aantal aanvraag eenheden dat voor een bewerking wordt verbruikt. Het aantal predikaten, de aard van de predikaten, het aantal Udf's en de grootte van de bron gegevens sets beïnvloeden de kosten van de query bewerkingen.
 
-    Als u de overhead van een bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) factuurkop (of de equivalente eigenschap\<RequestCharge in ResourceResponse t\<> of FeedResponse T > in de .NET SDK) om het aantal aanvraag eenheden meten dat door deze bewerkingen wordt verbruikt.
+    Als u de overhead van een bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (of de equivalente eigenschap RequestCharge in ResourceResponse\<t > of FeedResponse\<t > in de .NET SDK) om de het aantal aanvraag eenheden dat door deze bewerkingen wordt gebruikt.
 
     ```csharp
     // Measure the performance (request units) of writes

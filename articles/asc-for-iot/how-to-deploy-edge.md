@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 009ae89327272ae4b9acd82eb415aad724d14988
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176667"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934365"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Een beveiligings module op uw IoT Edge-apparaat implementeren
 
@@ -107,7 +107,7 @@ Er zijn drie stappen voor het maken van een IoT Edge implementatie voor Azure Se
 1. Klik op **Opslaan**.
 1. Ga naar de onderkant van het tabblad en selecteer **Geavanceerde instellingen voor Edge-runtime configureren**. 
    
-1. Wijzig de **afbeelding** onder **Edge hub** in **MCR.Microsoft.com/azureiotedge-hub:1.0.9-rc2**.
+1. Wijzig de **afbeelding** onder **Edge hub** in **MCR.Microsoft.com/azureiotedge-hub:1.0.8.3**.
 
 1. Controleer of de **Create-opties** zijn ingesteld op: 
          
@@ -169,7 +169,7 @@ Als er een probleem optreedt, zijn container Logboeken de beste manier om meer t
    | Naam | BITMAPAFBEELDING |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Als de mini maal vereiste containers niet aanwezig zijn, controleert u of uw IoT Edge-implementatie manifest is afgestemd op de aanbevolen instellingen. Zie [IOT Edge module implementeren](#deployment-using-azure-portal)voor meer informatie.

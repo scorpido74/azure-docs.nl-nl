@@ -1,76 +1,70 @@
 ---
-title: Een pijplijn maken met de API van Azure Monitor Data Collector | Microsoft Docs
-description: U kunt de API van Azure Monitor HTTP Data Collector POST-JSON-gegevens toevoegen aan de Log Analytics-werkruimte van een willekeurige client die de REST-API kunt aanroepen. Dit artikel wordt beschreven hoe u het uploaden van gegevens in bestanden opgeslagen in een automatische manier.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Een gegevens pijplijn maken met de Azure Monitor Data Collector-API | Microsoft Docs
+description: U kunt de Azure Monitor HTTP data collector API gebruiken om POST JSON-gegevens toe te voegen aan de Log Analytics-werk ruimte vanaf elke client die de REST API kan aanroepen. In dit artikel wordt beschreven hoe u gegevens die zijn opgeslagen in bestanden op een geautomatiseerde manier uploadt.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/09/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 53457a044f5c69af7bf68561f24732e8f02219d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/09/2018
+ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65603246"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932619"
 ---
-# <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Een pijplijn maken met de Collector-API
+# <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Een gegevens pijplijn maken met de Data Collector-API
 
-De [API van Azure Monitor Data Collector](data-collector-api.md) kunt u een aangepast logboekgegevens importeren in een Log Analytics-werkruimte in Azure Monitor. De enige vereisten zijn dat de gegevens JSON-indeling en splitsen in 30 MB of minder segmenten zijn. Dit is een volledig flexibele mechanisme dat kan worden aangesloten op tal van manieren: van gegevens rechtstreeks vanuit uw toepassing worden verzonden naar eenmalige ad-hoc uploadt. In dit artikel wordt een overzicht sommige beginpunten voor een veelvoorkomend scenario: de noodzaak om gegevens die zijn opgeslagen in bestanden op basis van reguliere, geautomatiseerde te uploaden. Terwijl de pijplijn die hier niet de meeste goed presterende of anders geoptimaliseerd, is dit bedoeld om te fungeren als een beginpunt voor het bouwen van een productie-pipeline van uw eigen.
+Met de [Azure Monitor Data Collector-API](data-collector-api.md) kunt u aangepaste logboek gegevens importeren in een log Analytics werkruimte in azure monitor. De enige vereisten zijn dat de gegevens in JSON-indeling zijn ingedeeld en worden gesplitst in 30 MB of minder segmenten. Dit is een volledig flexibel mechanisme dat op verschillende manieren kan worden aangesloten: van gegevens die rechtstreeks vanuit uw toepassing worden verzonden naar eenmalige adhoc-uploads. In dit artikel vindt u een overzicht van enkele begin punten voor een veelvoorkomend scenario: de nood zaak om gegevens die zijn opgeslagen in bestanden, regel matig en automatisch te uploaden. Hoewel de pijp lijn die hier wordt weer gegeven niet het meest presteert of anderszins geoptimaliseerd is, is het bedoeld om als uitgangs punt te fungeren voor het bouwen van een productie pijplijn van uw eigen product.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="example-problem"></a>Voorbeeld van probleem
-Voor de rest van dit artikel bespreken we paginaweergavegegevens in Application Insights. In ons scenario hypothetische willen we geografische gegevens verzameld standaard door de Application Insights-SDK met aangepaste gegevens met de populatie van elk land/regio in de hele wereld, met het doel om te identificeren waar we moeten worden uitgaven correleren de meeste marketing bedragen. 
+## <a name="example-problem"></a>Voorbeeld probleem
+In de rest van dit artikel gaan we pagina weergave gegevens bekijken in Application Insights. In het hypothetische scenario willen we geografische gegevens die standaard door de Application Insights SDK worden verzameld, correleren aan aangepaste gegevens die de populatie van elk land/regio in de wereld bevatten, met het doel om te bepalen waar wij moeten worden gespendeerd de meeste marketing dollars. 
 
-We gebruiken een openbare gegevensbron, zoals de [ongedaan maken ter wereld populatie Prospects](https://esa.un.org/unpd/wpp/) voor dit doel. De gegevens hebben de volgende eenvoudige schema:
+We gebruiken een open bare gegevens bron, zoals de [kandidaten voor Onwerelde populaties](https://esa.un.org/unpd/wpp/) voor dit doel. De gegevens hebben het volgende eenvoudige schema:
 
-![Voorbeeld van eenvoudige schema](./media/create-pipeline-datacollector-api/example-simple-schema-01.png)
+![Voor beeld eenvoudig schema](./media/create-pipeline-datacollector-api/example-simple-schema-01.png)
 
-In ons voorbeeld veronderstellen we dat we een nieuw bestand met de meest recente jaar gegevens uploaden zodra deze beschikbaar.
+In ons voor beeld gaan we ervan uit dat we een nieuw bestand uploaden met de gegevens van het laatste jaar zodra deze beschikbaar zijn.
 
 ## <a name="general-design"></a>Algemeen ontwerp
-We gebruiken een klassieke ETL-type-logica te ontwerpen van onze pijplijn. De architectuur ziet er als volgt uit:
+We gebruiken een klassieke ETL-type logica om onze pijp lijn te ontwerpen. De architectuur ziet er als volgt uit:
 
-![Data collection pijplijn-architectuur](./media/create-pipeline-datacollector-api/data-pipeline-dataflow-architecture.png)
+![Pijplijn architectuur voor gegevens verzameling](./media/create-pipeline-datacollector-api/data-pipeline-dataflow-architecture.png)
 
-In dit artikel wordt niet uitgelegd hoe u gegevens maakt of [uploaden naar een Azure Blob Storage-account](../../storage/blobs/storage-upload-process-images.md). In plaats daarvan kiezen we de stroom van zodra een nieuw bestand wordt geüpload naar de blob. Vanaf hier:
+In dit artikel wordt niet beschreven hoe u gegevens maakt of [uploadt naar een Azure Blob Storage-account](../../storage/blobs/storage-upload-process-images.md). In plaats daarvan kiezen we de stroom zodra een nieuw bestand wordt geüpload naar de blob. Vanaf hier:
 
-1. Een proces wordt gedetecteerd dat nieuwe gegevens zijn geüpload.  Ons voorbeeld wordt een [Azure Logic App](../../logic-apps/logic-apps-overview.md), die beschikbaar is voor een trigger voor het detecteren van nieuwe gegevens naar een blob geüpload.
+1. Er wordt door een proces gedetecteerd dat er nieuwe gegevens zijn geüpload.  In ons voor beeld wordt een [Azure Logic-app](../../logic-apps/logic-apps-overview.md)gebruikt, die een trigger beschikbaar heeft voor het detecteren van nieuwe gegevens die worden geüpload naar een blob.
 
-2. Een processor van deze nieuwe gegevens leest en converteert deze naar JSON, de indeling die vereist zijn voor Azure Monitor In dit voorbeeld, gebruiken we een [Azure Function](../../azure-functions/functions-overview.md) als een lichtgewicht, betaalbare manier voor het uitvoeren van onze verwerkingscode. De functie wordt gestart door de dezelfde logische App die we hebben gebruikt voor het detecteren van een van de nieuwe gegevens.
+2. Een processor leest deze nieuwe gegevens en converteert deze naar JSON. de indeling die in dit voor beeld is vereist voor Azure Monitor, gebruiken we een [Azure-functie](../../azure-functions/functions-overview.md) als een licht gewicht, rendabele manier om onze verwerkings code uit te voeren. De functie wordt gestart door de logische app die we hebben gebruikt voor het detecteren van de nieuwe gegevens.
 
-3. Ten slotte, als het JSON-object beschikbaar is, wordt het verzonden naar Azure Monitor. Dezelfde logische App verzendt die gegevens naar Azure Monitor met behulp van de ingebouwde in Log Analytics-gegevensverzamelaar-activiteit.
+3. Ten slotte, zodra het JSON-object beschikbaar is, wordt het naar Azure Monitor verzonden. De logische app verzendt de gegevens naar Azure Monitor met behulp van de ingebouwde Log Analytics Data Collector-activiteit.
 
-Terwijl de gedetailleerde instellingen van de blob-opslag, logische App of Azure-functie niet in dit artikel beschreven wordt, vindt gedetailleerde instructies u op de specifieke producten pagina's.
+Hoewel de gedetailleerde installatie van de Blob-opslag, de logische app of de Azure-functie niet in dit artikel wordt beschreven, zijn gedetailleerde instructies beschikbaar op de pagina's van de specifieke producten.
 
-Voor het bewaken van deze pijplijn, gebruiken we Application Insights voor het bewaken van onze Azure-functie [hier details](../../azure-functions/functions-monitoring.md), en Azure Monitor voor het bewaken van de logische App [hier details](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md). 
+Om deze pijp lijn te bewaken, gebruiken we Application Insights om onze Azure Function- [gegevens hier](../../azure-functions/functions-monitoring.md)te bewaken en Azure monitor om de details van de Logic-app [hier](../../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)te bewaken. 
 
-## <a name="setting-up-the-pipeline"></a>Instellen van de pijplijn
-Zorg ervoor dat u hebt uw blob-container gemaakt en geconfigureerd om in te stellen de pijplijn. Evenzo, zorg ervoor dat de Log Analytics-werkruimte waar u wilt verzenden van de gegevens is gemaakt.
+## <a name="setting-up-the-pipeline"></a>De pijp lijn instellen
+Als u de pijp lijn wilt instellen, moet u eerst controleren of u de BLOB-container hebt gemaakt en geconfigureerd. Zorg er ook voor dat de Log Analytics werk ruimte waar u de gegevens naartoe wilt verzenden, is gemaakt.
 
 ## <a name="ingesting-json-data"></a>JSON-gegevens opnemen
-Ophalen van JSON-gegevens is heel eenvoudig met Logic Apps en omdat er geen transformatie plaatsvinden moet, kunnen we de hele pijplijn in één logische App encase. Als zowel de blob-container en de Log Analytics-werkruimte hebt geconfigureerd, een nieuwe logische App maken en deze als volgt configureren:
+Het opnemen van JSON-gegevens is lastig met Logic Apps en omdat er geen trans formatie hoeft te worden uitgevoerd, kunnen we de volledige pijp lijn in één logische app omsluiten. Zodra de BLOB-container en de Log Analytics-werk ruimte zijn geconfigureerd, maakt u een nieuwe logische app en configureert u deze als volgt:
 
-![Voorbeeld van logische apps-werkstroom](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-01.png)
+![Werk stroom voor logische apps-voor beeld](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-01.png)
 
-Uw logische App opslaan en doorgaan om dit te testen.
+Sla de logische app op en ga door met testen.
 
-## <a name="ingesting-xml-csv-or-other-formats-of-data"></a>XML, CSV of andere indelingen van de gegevens opnemen
-Logic Apps vandaag heeft geen ingebouwde mogelijkheden voor het eenvoudig XML, CSV of andere typen transformeren naar JSON-indeling. Daarom moet een andere manier gebruiken om te voltooien van deze transformatie. In dit artikel gebruiken we de serverless Computing-mogelijkheden van Azure Functions als een zeer lichte en kosten-vriendelijk manier hiervan. 
+## <a name="ingesting-xml-csv-or-other-formats-of-data"></a>XML, CSV of andere gegevens indelingen opnemen
+Logic Apps vandaag heeft geen ingebouwde mogelijkheden voor het eenvoudig transformeren van XML-, CSV-of andere typen in JSON-indeling. Daarom moeten we een andere manier gebruiken om deze trans formatie te volt ooien. Voor dit artikel gebruiken we de serverloze reken mogelijkheden van Azure Functions als een zeer lichte en rendabele manier om dit te doen. 
 
-In dit voorbeeld wordt een CSV-bestand parseren, maar alle andere bestandstypen op dezelfde manier kan worden verwerkt. Het deserialiseren gedeelte van de Azure-functie in overeenstemming met de juiste logica voor uw specifieke gegevens van het type wijzigen.
+In dit voor beeld parseren we een CSV-bestand, maar elk ander bestands type kunnen op dezelfde manier worden verwerkt. Wijzig het deserialisatie gedeelte van de Azure-functie om de juiste logica voor uw specifieke gegevens type weer te geven.
 
-1.  Maak een nieuwe Azure-functie, met behulp van de functie runtime v1- en op basis van gebruik wanneer u hierom wordt gevraagd.  Selecteer de **HTTP-trigger** sjabloon gericht op C# als uitgangspunt dat Hiermee configureert u de bindingen die we nodig hebt. 
-2.  Uit de **bestanden weergeven** tabblad in het rechterdeelvenster, maak een nieuw bestand met de naam **project.json** en plak de volgende code uit de NuGet-pakketten die we gebruiken:
+1.  Maak een nieuwe Azure-functie met behulp van de functie runtime v1 en het verbruik, wanneer u hierom wordt gevraagd.  Selecteer de sjabloon voor **http-triggers** gericht op C# als uitgangs punt waarmee uw bindingen zo nodig worden geconfigureerd. 
+2.  Maak vanuit het tabblad **bestanden weer geven** in het rechterdeel venster een nieuw bestand met de naam **project. json** en plak de volgende code in NuGet-pakketten die worden gebruikt:
 
-    ![Azure Functions-voorbeeld-project](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
+    ![Azure Functions voorbeeld project](./media/create-pipeline-datacollector-api/functions-example-project-01.png)
     
     ``` JSON
     {
@@ -85,10 +79,10 @@ In dit voorbeeld wordt een CSV-bestand parseren, maar alle andere bestandstypen 
      }  
     ```
 
-3. Schakel over naar **run.csx** in het rechter deelvenster en vervang de standaard-code met de volgende stappen. 
+3. Schakel over naar **Run. CSX** in het rechterdeel venster en vervang de standaard code door het volgende. 
 
     >[!NOTE]
-    >Voor uw project moet u de record model (de klasse 'PopulationRecord') vervangen door uw eigen gegevensschema.
+    >Voor uw project moet u het record model (de klasse ' PopulationRecord ') vervangen door uw eigen gegevens schema.
     >
 
     ```   
@@ -128,24 +122,24 @@ In dit voorbeeld wordt een CSV-bestand parseren, maar alle andere bestandstypen 
      }  
     ```
 
-4. Sla uw functie.
-5. Test de functie om ervoor te zorgen dat de code correct werkt. Schakel over naar de **testen** tabblad in het rechterdeelvenster de test als volgt configureren. Plaats een koppeling naar een blob met voorbeeldgegevens in de **aanvraagtekst** tekstvak. Nadat u hebt geklikt **uitvoeren**, moet u ziet JSON-uitvoer in de **uitvoer** vak:
+4. Sla de functie op.
+5. Test de functie om te controleren of de code goed werkt. Ga naar het tabblad **testen** in het rechterdeel venster en configureer de test als volgt. Plaats een koppeling naar een blob met voorbeeld gegevens in het tekstvak **hoofd tekst van aanvraag** . Nadat u op **uitvoeren**hebt geklikt, ziet u JSON-uitvoer in het vak **uitvoer** :
 
-    ![Functie-Apps testen van code](./media/create-pipeline-datacollector-api/functions-test-01.png)
+    ![Test code functie-apps](./media/create-pipeline-datacollector-api/functions-test-01.png)
 
-Nu moeten we teruggaan en de logische App die we begonnen met het bouwen van eerder zodanig dat de gegevens die zijn opgenomen en geconverteerd naar JSON-indeling wijzigen.  Met behulp van ontwerper, configureren als volgt te werk en sla vervolgens uw logische App:
+Nu moet u teruggaan en de logische app wijzigen die u eerder hebt gemaakt om de gegevens op te nemen die zijn opgenomen en geconverteerd naar de JSON-indeling.  Met behulp van View Designer configureert u als volgt en slaat u vervolgens uw logische app op:
 
-![Compleet voorbeeld van Logic Apps-werkstroom](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
+![Voor beeld van Logic Apps werk stroom voltooid](./media/create-pipeline-datacollector-api/logic-apps-workflow-example-02.png)
 
-## <a name="testing-the-pipeline"></a>De pijplijn testen
-U kunt nu een nieuw bestand uploaden naar de blob die eerder hebt geconfigureerd en deze door uw logische App bewaakt. U moet snel, ziet een nieuw exemplaar van de logische App beluisteren, naar uw Azure-functie aanroepen en de gegevens kunnen naar Azure Monitor te verzenden. 
+## <a name="testing-the-pipeline"></a>De pijp lijn testen
+U kunt nu een nieuw bestand uploaden naar de blob die u eerder hebt geconfigureerd en deze laten controleren door uw logische app. Binnenkort ziet u een nieuw exemplaar van de logische app-start, neemt u contact op met uw Azure-functie en verzendt u de gegevens naar Azure Monitor. 
 
 >[!NOTE]
->Het kan duren voordat de gegevens worden weergegeven in Azure Monitor de eerste keer dat u een nieuw gegevenstype verzendt tot 30 minuten.
+>Het kan tot 30 minuten duren voordat de gegevens worden weer gegeven in Azure Monitor de eerste keer dat u een nieuw gegevens type verzendt.
 
 
 ## <a name="correlating-with-other-data-in-log-analytics-and-application-insights"></a>Correleren met andere gegevens in Log Analytics en Application Insights
-Om te voltooien ons doel voor het correleren van gegevens van Application Insights pagina weergeven met de vullen met gegevens die we afkomstig zijn van onze aangepaste gegevensbron, voert u de volgende query uit uw Application Insights Analytics venster of Log Analytics-werkruimte:
+Als u het doel van het correleren van Application Insights pagina weergave gegevens wilt volt ooien met de populatie gegevens uit onze aangepaste gegevens bron, voert u de volgende query uit vanuit uw Application Insights Analytics-venster of Log Analytics-werk ruimte:
 
 ``` KQL
 app("fabrikamprod").pageViews
@@ -156,21 +150,21 @@ app("fabrikamprod").pageViews
 | project client_CountryOrRegion, numUsers, Population_d
 ```
 
-De twee gegevens moet worden weergegeven in de uitvoer nu lid geworden van bronnen.  
+In de uitvoer ziet u dat de twee gegevens bronnen nu zijn gekoppeld.  
 
-![Correleren geen lid meer gegevens in het voorbeeld van een zoekopdracht-resultaat](./media/create-pipeline-datacollector-api/correlating-disjoined-data-example-01.png)
+![Een voor beeld van het samen voegen van gegevens in een Zoek resultaat](./media/create-pipeline-datacollector-api/correlating-disjoined-data-example-01.png)
 
-## <a name="suggested-improvements-for-a-production-pipeline"></a>Voorgestelde verbeteringen voor een productie-pijplijn
-In dit artikel weergegeven een prototype werken, de logica achter die kan worden gebruikt voor een echte oplossing voor productiekwaliteit. Voor een dergelijke kwaliteit van de productie oplossing, worden de volgende verbeteringen aanbevolen:
+## <a name="suggested-improvements-for-a-production-pipeline"></a>Voorgestelde verbeteringen voor een productie pijplijn
+In dit artikel wordt een werkend model gepresenteerd, de logica die kan worden toegepast op een echte oplossing voor productie kwaliteit. Voor een dergelijke oplossing van productie kwaliteit worden de volgende verbeteringen aanbevolen:
 
-* Foutafhandeling toevoegen en logica in uw logische App en de functie voor opnieuw proberen.
-* Voeg logica om ervoor te zorgen dat de limiet van 30MB/één Log Analytics-gegevensopname API-aanroep niet is overschreden. De gegevens splitsen in kleinere segmenten, indien nodig.
-* Instellen van een beleid voor opschonen van de blob-opslag. Nadat is verzonden naar de Log Analytics-werkruimte, tenzij u wilt de onbewerkte gegevens beschikbaar houden voor archiveringsdoeleinden, is er geen reden om door te gaan op te slaan. 
-* Controleer of de controle is ingeschakeld voor de volledige pijplijn, trace-punten toe te voegen en een waarschuwing indien van toepassing.
-* Maak gebruik van broncodebeheer voor het beheren van de code voor uw functie en de logische App.
-* Zorg ervoor dat een juiste wijziging management-beleid wordt gevolgd, zodat als het schema wordt gewijzigd, de functie en Logic Apps dienovereenkomstig worden aangepast.
-* Als u meerdere verschillende gegevenstypen uploaden wilt, ze te scheiden in afzonderlijke mappen in uw blobcontainer en logica voor de logica uit op basis van het gegevenstype ventilator maken. 
+* Voeg fout afhandeling toe en voer de logica opnieuw uit in uw logische app en functie.
+* Voeg logica toe om ervoor te zorgen dat de aanroep limiet van de 30MB/single Log Analytics opname-API niet wordt overschreden. Splits de gegevens zo nodig op in kleinere segmenten.
+* Stel een opschoon beleid in voor de Blob-opslag. Als het verzenden naar de Log Analytics-werk ruimte is voltooid, tenzij u de onbewerkte gegevens beschikbaar wilt houden voor archiverings doeleinden, is er geen reden om deze te blijven opslaan. 
+* Controleer of de controle is ingeschakeld in de volledige pijp lijn en voeg indien nodig tracerings punten en waarschuwingen toe.
+* Gebruik broncode beheer voor het beheren van de code voor uw functie en logische app.
+* Zorg ervoor dat het juiste beleid voor wijzigings beheer wordt gevolgd, zodat de functie en de Logic Apps dienovereenkomstig worden gewijzigd als het schema wordt gewijzigd.
+* Als u meerdere verschillende gegevens typen uploadt, kunt u ze scheiden in afzonderlijke mappen binnen de BLOB-container en logica maken om de logica uit te waaieren op basis van het gegevens type. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de [Data Collector API](data-collector-api.md) gegevens schrijven naar Log Analytics-werkruimte van een REST-API-client.
+Meer informatie over de [Data Collector-API](data-collector-api.md) voor het schrijven van gegevens naar log Analytics werk ruimte vanuit een wille keurige rest API-client.

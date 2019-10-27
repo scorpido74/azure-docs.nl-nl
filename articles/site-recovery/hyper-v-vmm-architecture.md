@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 98cc20ee8a6308350ffc142a13413bd26567a3e1
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813743"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933507"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architectuur-Hyper-V-replicatie naar een secundaire site
 
 In dit artikel worden de onderdelen en processen beschreven die zijn betrokken bij het repliceren van on-premises Hyper-V-VM's (virtuele machines) in System Center VMM-clouds (Virtual Machine Manager) naar een secundaire VMM-site met behulp van de [Azure Site Recovery](site-recovery-overview.md)-service in Azure Portal.
 
+> [!WARNING]
+> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](scvmm-site-recovery-deprecation.md) te lezen voordat u doorgaat.
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
 

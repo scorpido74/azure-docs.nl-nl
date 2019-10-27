@@ -1,24 +1,18 @@
 ---
-title: Azure Application Insights-app-gegevens weergeven | Microsoft Docs
-description: Prestatieproblemen analyseren en inzicht krijgen wat gebruikers doen met uw app bij bewaakt met Application Insights kunt u de oplossing Application Insights-Connector.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Azure-toepassing Insights-app-gegevens weer geven | Microsoft Docs
+description: U kunt de Application Insights-connector-oplossing gebruiken om prestatie problemen vast te stellen en inzicht te krijgen in wat gebruikers met uw app doen wanneer ze met Application Insights worden bewaakt.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/13/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 05f2f52da90f499f7ac16de179d9967b97579997
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 02/13/2019
+ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849192"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932750"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-connector-beheer oplossing (afgeschaft)
 
@@ -33,244 +27,244 @@ ms.locfileid: "68849192"
 >
 > 
 
-De Applications Insights-Connector-oplossing helpt u bij het vaststellen van prestatieproblemen en inzicht krijgen wat gebruikers doen met uw app wanneer deze wordt bewaakt met [Application Insights](../../azure-monitor/app/app-insights-overview.md). Weergaven van dezelfde toepassingstelemetrie die ontwikkelaars wordt weergegeven in Application Insights zijn beschikbaar in Log Analytics. Wanneer u uw Application Insights-apps met Log Analytics integreert, is echter zichtbaarheid van uw toepassingen met operationele gegevens en uw toepassing op één plek met verhoogd. Met de dezelfde weergaven, kunt u samenwerken met uw app-ontwikkelaars. De algemene weergaven kunt de tijd om te detecteren en oplossen van toepassings- en platformproblemen te beperken.
+De oplossing van de Application Insights-connector helpt u bij het diagnosticeren van prestatie problemen en inzicht te krijgen in wat gebruikers met uw app doen wanneer deze worden bewaakt met [Application Insights](../../azure-monitor/app/app-insights-overview.md). Weer gaven van dezelfde telemetrie van de toepassing die ontwikkel aars in Application Insights zien, zijn beschikbaar in Log Analytics. Wanneer u echter uw Application Insights-apps integreert met Log Analytics, wordt de zicht baarheid van uw toepassingen verhoogd door de bewerkings-en toepassings gegevens op één plek te hebben. Met dezelfde weer gaven kunt u samen werken met uw app-ontwikkel aars. De algemene weer gaven kunnen helpen de tijd te verminderen voor het detecteren en oplossen van problemen met toepassingen en platforms.
 
 Wanneer u de oplossing gebruikt, kunt u het volgende doen:
 
-- Al uw Application Insights-apps op één plek, weergeven, zelfs als ze zich in verschillende Azure-abonnementen
-- Correleren van gegevens van de infrastructuur met toepassingsgegevens
-- Toepassingsgegevens visualiseren met perspectieven in zoeken in Logboeken
-- Schakel over naar uw Application Insights-app in Azure portal van Log Analytics-gegevens
+- Bekijk al uw Application Insights-apps op één locatie, zelfs als ze zich in verschillende Azure-abonnementen bevinden
+- Infrastructuur gegevens correleren met toepassings gegevens
+- Toepassings gegevens visualiseren met perspectieven in zoeken in Logboeken
+- Draai de gegevens van Log Analytics naar uw Application Insights-app in de Azure Portal
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>Verbonden bronnen
 
-Gegevens niet in tegenstelling tot de meeste andere Log Analytics-oplossingen, door agents verzameld voor de Application Insights-Connector. Alle gegevens die worden gebruikt door de oplossing wordt geleverd rechtstreeks vanuit Azure.
+In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen gegevens verzameld voor de Application Insights-connector door agents. Alle gegevens die door de oplossing worden gebruikt, zijn rechtstreeks afkomstig van Azure.
 
-| Verbonden bron | Ondersteund | Description |
+| Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
-| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Nee | De oplossing verzamelt geen informatie van Windows-agents. |
-| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee | De oplossing worden geen gegevens verzameld van Linux-agents. |
-| [SCOM-beheergroep](../../azure-monitor/platform/om-agents.md) | Nee | De oplossing worden geen gegevens verzameld van agents in een verbonden SCOM-beheergroep. |
-| [Azure Storage-account](collect-azure-metrics-logs.md) | Nee | De oplossing doet niet Verzamelingsgegevens van Azure storage. |
+| [Windows-agents](../../azure-monitor/platform/agent-windows.md) | Nee | De oplossing verzamelt geen gegevens van Windows-agents. |
+| [Linux-agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nee | De oplossing verzamelt geen gegevens van Linux-agents. |
+| [SCOM-beheer groep](../../azure-monitor/platform/om-agents.md) | Nee | De oplossing verzamelt geen gegevens van agents in een verbonden SCOM-beheer groep. |
+| [Azure Storage-account](collect-azure-metrics-logs.md) | Nee | De oplossing verzamelt geen gegevens uit Azure Storage. |
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voor toegang tot gegevens van Application Insights-Connector, moet u een Azure-abonnement hebt
-- U moet ten minste één geconfigureerde Application Insights-resource hebben.
-- U moet de eigenaar of bijdrager van de Application Insights-resource.
+- U hebt een Azure-abonnement nodig om toegang te krijgen tot Application Insights-connector gegevens
+- U moet ten minste één geconfigureerde Application Insights Resource hebben.
+- U moet de eigenaar of bijdrager zijn van de Application Insights resource.
 
 ## <a name="configuration"></a>Configuratie
 
-1. Inschakelen van de oplossing Azure Web Apps-analyse van de [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) of met behulp van de procedure beschreven in [toevoegen Log Analytics-oplossingen uit de galerie van oplossingen](../../azure-monitor/insights/solutions.md).
-2. Blader naar de [Azure-portal](https://portal.azure.com). Selecteer **alle services** Application Insights openen. Zoek vervolgens naar Application Insights. 
-3. Onder **abonnementen**, selecteert u een abonnement met Application Insights-resources en klik vervolgens onder **naam**, selecteer een of meer toepassingen.
+1. Schakel de Azure Web Apps-analyse-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) of via het proces dat wordt beschreven in [log Analytics oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md).
+2. Blader naar [Azure Portal](https://portal.azure.com). Selecteer **alle services** om Application Insights te openen. Zoek vervolgens naar Application Insights. 
+3. Onder **abonnementen**selecteert u een abonnement met Application Insights resources en selecteert u vervolgens een of meer toepassingen onder **naam**.
 4. Klik op **Opslaan**.
 
-Gegevens beschikbaar in ongeveer 30 minuten, en de Application Insights-tegel wordt bijgewerkt met gegevens, zoals de volgende afbeelding:
+In ongeveer 30 minuten wordt gegevens beschikbaar en wordt de Application Insights tegel bijgewerkt met gegevens, zoals de volgende afbeelding:
 
-![Application Insights-tegel](./media/app-insights-connector/app-insights-tile.png)
+![Application Insights tegel](./media/app-insights-connector/app-insights-tile.png)
 
-Andere punten moet rekening houden met:
+Andere punten waarop u moet letten:
 
-- U kunt alleen Application Insights-apps koppelen aan een Log Analytics-werkruimte.
-- U kunt alleen een koppeling [Basic of Enterprise Application Insights-resources](https://azure.microsoft.com/pricing/details/application-insights) naar Log Analytics. U kunt echter de gratis laag van Log Analytics gebruiken.
+- U kunt Application Insights-apps alleen koppelen aan een Log Analytics-werk ruimte.
+- U kunt alleen [basis-of ondernemings Application Insights resources](https://azure.microsoft.com/pricing/details/application-insights) koppelen aan log Analytics. U kunt echter de gratis laag van Log Analytics gebruiken.
 
 ## <a name="management-packs"></a>Management packs
 
-Deze oplossing kan niet alle management packs geïnstalleerd in de verbonden beheergroepen.
+Met deze oplossing worden geen Management Packs in verbonden beheer groepen geïnstalleerd.
 
 ## <a name="use-the-solution"></a>De oplossing gebruiken
 
-De volgende secties wordt beschreven hoe u de blades wordt weergegeven in de Application Insights-dashboard kunnen zien en gebruiken met gegevens van uw apps kunt gebruiken.
+In de volgende secties wordt beschreven hoe u de Blades kunt gebruiken die worden weer gegeven in het dash board van Application Insights om gegevens uit uw apps te bekijken en ermee te werken.
 
-### <a name="view-application-insights-connector-information"></a>Application Insights-Connector-informatie weergeven
+### <a name="view-application-insights-connector-information"></a>Application Insights-connector gegevens weer geven
 
-Klik op de **Application Insights** tegel om te openen de **Application Insights** dashboard om te zien van de volgende blades.
+Klik op de tegel **Application Insights** om het **Application Insights** dash board te openen om de volgende Blades weer te geven.
 
-![Application Insights-dashboard](./media/app-insights-connector/app-insights-dash01.png)
+![Application Insights dash board](./media/app-insights-connector/app-insights-dash01.png)
 
-![Application Insights-dashboard](./media/app-insights-connector/app-insights-dash02.png)
+![Application Insights dash board](./media/app-insights-connector/app-insights-dash02.png)
 
-Het dashboard bevat de blades weergegeven in de tabel. Elke blade bevat maximaal tien items die overeenkomen met de criteria voor het opgegeven bereik en de duur van die blade. U kunt een logboekzoekopdracht die alle records retourneert wanneer u klikt op uitvoeren **alle** aan de onderkant van de blade of wanneer u klikt op de blade-header.
+Het dash board bevat de Blades die in de tabel worden weer gegeven. Elke blade bevat maximaal tien items die overeenkomen met de criteria voor het opgegeven bereik en de duur van die blade. U kunt een zoek opdracht in Logboeken uitvoeren die alle records retourneert wanneer u op **alles weer geven** onder aan de Blade klikt of wanneer u op de Blade-kop klikt.
 
 
-| **Kolom** | **Beschrijving** |
+| **Kolominvoercel** | **Beschrijving** |
 | --- | --- |
-| Toepassingen - aantal toepassingen | Geeft het aantal toepassingen in Application-resources. Ook een lijst met toepassingsnamen en voor elk, het aantal toepassingsrecords. Klik op het aantal voor het uitvoeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klik op de toepassingsnaam van een om uit te voeren een zoeken in Logboeken voor de toepassing die toepassingsrecords per host, de records op telemetrietype en alle gegevens op type wordt (op basis van de laatste dag). |
-| Gegevensvolume – als host fungeert voor verzenden van gegevens | Geeft het aantal computer fungeert als host die gegevens worden verzonden. Bevat ook computer fungeert als host en het aantal records voor elke host. Klik op het aantal voor het uitvoeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klik op de naam van een computer om uit te voeren een zoeken in Logboeken voor de host waarin toepassingsrecords per host, de records op telemetrietype en alle gegevens op type (op basis van de laatste dag). |
-| Beschikbaarheid – webtestresultaten | Geeft een ringdiagram voor de testresultaten web, waarmee wordt aangegeven geslaagd of mislukt. Klik op de grafiek voor het uitvoeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Resultaten staat dat het aantal fasen en fouten voor alle tests. Hierin staan alle Web-Apps met verkeer voor de laatste minuut. Klik op de toepassingsnaam van een om een van de details van mislukte webtests zoeken in logboeken weer te geven. |
-| Serveraanvragen – aanvragen per uur | Geeft een lijndiagram van de serveraanvragen per uur voor verschillende toepassingen. Beweeg de muisaanwijzer over een regel in de grafiek voor het ontvangen van aanvragen voor een punt in tijd top 3-toepassingen. Ook wordt een lijst van de toepassingen die zijn ontvangen van aanvragen en het aantal aanvragen voor de geselecteerde periode weergegeven. <br><br>Klik op de grafiek voor het uitvoeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> die ziet u een meer gedetailleerde lijndiagram van de serveraanvragen per uur voor verschillende toepassingen. <br><br> Klik op een toepassing in de lijst om uit te voeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> die toont een lijst met aanvragen, grafieken voor aanvragen gedurende de duur van de tijd en de aanvraag en een lijst met aanvraag-responscodes.   |
-| Fouten: mislukte aanvragen per uur | Geeft een lijndiagram van mislukte aanvragen per uur. Beweeg de muisaanwijzer over de grafiek om te zien van de eerste 3 toepassingen met mislukte aanvragen voor een punt in tijd. Ook ziet u een lijst met toepassingen met het aantal mislukte aanvragen voor elk. Klik op de grafiek voor het uitvoeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> die ziet u een meer gedetailleerde lijndiagram van mislukte aanvragen. <br><br>Klik op een item in de lijst om uit te voeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> dat geeft mislukte aanvragen, grafieken voor mislukte aanvragen via de duur van de tijd en de aanvraag en een lijst van mislukte aanvragen responscodes. |
-| Uitzonderingen: uitzonderingen per uur | Geeft een lijndiagram van uitzonderingen per uur. Beweeg de muisaanwijzer over de grafiek om te zien van de eerste 3 toepassingen met uitzonderingen voor een punt in tijd. Ook ziet u een lijst met toepassingen met het aantal uitzonderingen voor elk. Klik op de grafiek voor het uitvoeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> die een meer gedetailleerde koppeling grafiek van uitzonderingen weergeeft. <br><br>Klik op een item in de lijst om uit te voeren van een logboekzoekopdracht voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> die toont een lijst met uitzonderingen, grafieken voor uitzonderingen ten opzichte van tijd en mislukte aanvragen en een lijst met uitzonderingstypen.  |
+| Toepassingen-aantal toepassingen | Toont het aantal toepassingen in toepassings bronnen. Hierin worden ook de toepassings namen en voor elk het aantal toepassings records weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klik op de naam van een toepassing om een logboek zoekopdracht uit te voeren voor de toepassing waarin toepassings records per host worden weer gegeven, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
+| Gegevens volume – hosts die gegevens verzenden | Toont het aantal computers waarop de gegevens worden verzonden. Hierin worden ook de hosts en het aantal records van de computer voor elke host weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klik op de naam van een computer om een logboek zoekopdracht uit te voeren voor de host die toepassings records per host weergeeft, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
+| Beschik baarheid – webtest-resultaten | Toont een ring diagram voor de resultaten van webtests en geeft aan of het mislukt. Klik op de grafiek om een logboek zoekopdracht voor <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> uit te voeren <br><br> Met resultaten wordt het aantal gangen en fouten voor alle tests weer gegeven. Alle Web Apps met verkeer voor de laatste minuut worden weer gegeven. Klik op de naam van een toepassing om een zoek opdracht in logboeken weer te geven met details van mislukte webtests. |
+| Server aanvragen-aanvragen per uur | Geeft een lijn diagram weer van de server aanvragen per uur voor verschillende toepassingen. Beweeg de muis aanwijzer over een regel in de grafiek om de bovenste 3 toepassingen te zien die aanvragen voor een bepaald tijdstip ontvangen. Toont ook een lijst met de toepassingen die aanvragen ontvangen en het aantal aanvragen voor de geselecteerde periode. <br><br>Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> waarin een gedetailleerd lijn diagram wordt weer gegeven van de server aanvragen per uur voor verschillende toepassingen. <br><br> Klik op een toepassing in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> waarin een lijst met aanvragen wordt weer gegeven, grafieken voor aanvragen in de loop van de tijd en de duur van aanvragen en een lijst met antwoord codes voor aanvragen.   |
+| Fouten: mislukte aanvragen per uur | Geeft een lijn diagram weer van mislukte toepassings aanvragen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met mislukte aanvragen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal mislukte aanvragen voor elke toepassing. Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> waarin een gedetailleerd lijn diagram van mislukte toepassings aanvragen wordt weer gegeven. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> waarin mislukte aanvragen worden weer gegeven, grafieken voor mislukte aanvragen in de loop van de tijd en de duur van aanvragen en een lijst met mislukte antwoord codes voor aanvragen. |
+| Uitzonde ringen: uitzonde ringen per uur | Toont een lijn diagram met uitzonde ringen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met uitzonde ringen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal uitzonde ringen voor elk. Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> waarin een gedetailleerdere koppelings grafiek met uitzonde ringen wordt weer gegeven. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> waarin een lijst met uitzonde ringen, grafieken voor uitzonde ringen in de loop van de tijd en mislukte aanvragen en een lijst met uitzonderings typen wordt weer gegeven.  |
 
-### <a name="view-the-application-insights-perspective-with-log-search"></a>Het perspectief van de Application Insights met zoeken in Logboeken weergeven
+### <a name="view-the-application-insights-perspective-with-log-search"></a>Het Application Insights perspectief weer geven met zoeken in Logboeken
 
-Wanneer u een item in het dashboard klikt, ziet u een Application Insights-perspectief wordt weergegeven in het zoekvak. Het perspectief biedt een uitgebreide visualisatie, op basis van het telemetrietype die geselecteerd. Dit het geval is, visualisatie inhoudswijzigingen voor verschillende telemetrietypen.
+Wanneer u op een item in het dash board klikt, ziet u een Application Insights perspectief dat wordt weer gegeven in de zoek opdracht. Het perspectief bevat een uitgebreide visualisatie, gebaseerd op het type telemetrie dat is geselecteerd. Visualisatie-inhoud verandert dus voor verschillende typen telemetrie.
 
-Wanneer u een willekeurige plaats in de blade toepassingen klikt, ziet u de standaard **toepassingen** perspectief.
+Wanneer u op een wille keurige plaats in de Blade toepassingen klikt, wordt het perspectief standaard **toepassingen** weer geven.
 
-![Application Insights toepassingen perspectief](./media/app-insights-connector/applications-blade-drill-search.png)
+![Perspectief van Application Insights toepassingen](./media/app-insights-connector/applications-blade-drill-search.png)
 
-Het perspectief bevat een overzicht van de toepassing die u hebt geselecteerd.
+In het perspectief ziet u een overzicht van de toepassing die u hebt geselecteerd.
 
-De **beschikbaarheid** blade ziet u een ander perspectief-overzicht waarin u de resultaten van web- en verwante mislukte aanvragen kunt bekijken.
+Op de Blade voor de **Beschik baarheid** ziet u een andere perspectief weergave waarin de resultaten van webtesten en gerelateerde mislukte aanvragen worden weer gegeven.
 
-![Application Insights-beschikbaarheid perspectief](./media/app-insights-connector/availability-blade-drill-search.png)
+![Perspectief Application Insights beschikbaarheid](./media/app-insights-connector/availability-blade-drill-search.png)
 
-Wanneer u klikt op een willekeurige plaats de **serveraanvragen** of **fouten** blades, de onderdelen perspectief wijzigen zodat u een visualisatie die betrekking op aanvragen hebben.
+Wanneer u op een wille keurige plaats in de Blade **server aanvragen** of **fouten** klikt, worden de perspectief onderdelen gewijzigd om u een visualisatie te geven die betrekking heeft op aanvragen.
 
-![Blade voor Application Insights-fouten](./media/app-insights-connector/server-requests-failures-drill-search.png)
+![Blade met Application Insights fouten](./media/app-insights-connector/server-requests-failures-drill-search.png)
 
-Wanneer u klikt op een willekeurige plaats de **uitzonderingen** blade ziet u een visualisatie die afgestemd op uitzonderingen.
+Wanneer u op een wille keurige plaats in de Blade **uitzonde ringen** klikt, ziet u een visualisatie die is afgestemd op uitzonde ringen.
 
-![Blade voor Application Insights-uitzonderingen](./media/app-insights-connector/exceptions-blade-drill-search.png)
+![Blade Application Insights uitzonde ringen](./media/app-insights-connector/exceptions-blade-drill-search.png)
 
-Ongeacht of u klikken op iets een de **Application Insights-Connector** dashboard in de **zoeken** pagina zelf, query's retourneren van Application Insights-gegevens wordt de toepassing weergegeven. Insights-perspectief. Bijvoorbeeld, als u Application Insights-gegevens bekijkt een **&#42;** query geeft ook het tabblad perspectief, zoals de volgende afbeelding:
+Ongeacht of u op een van de **Application Insights-connector** dash board klikt, binnen de **Zoek** pagina zelf, wordt met elke query die Application Insights gegevens retourneert, het Application Insights perspectief weer gegeven. Als u bijvoorbeeld Application Insights gegevens bekijkt, wordt in een **&#42;** query ook het tabblad perspectief weer gegeven, zoals in de volgende afbeelding:
 
 ![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
-Perspectief onderdelen zijn bijgewerkt, afhankelijk van de zoekquery. Dit betekent dat u kunt de resultaten filteren met behulp van een zoekveld waarmee u beschikt over de mogelijkheid om te zien van de gegevens uit:
+Perspectief onderdelen worden bijgewerkt op basis van de zoek query. Dit betekent dat u de resultaten kunt filteren met behulp van een zoek veld dat u de mogelijkheid biedt om de gegevens te bekijken:
 
 - Al uw toepassingen
-- Een enkele geselecteerde toepassing
-- Een groep van toepassingen
+- Eén geselecteerde toepassing
+- Een groep toepassingen
 
-### <a name="pivot-to-an-app-in-the-azure-portal"></a>Schakel over naar een app in Azure portal
+### <a name="pivot-to-an-app-in-the-azure-portal"></a>Naar een app in de Azure Portal draaien
 
-Application Insights-Connector blades zijn ontworpen om te kunnen Schakel over naar de geselecteerde Application Insights-app *bij het gebruik van de Azure-portal*. U kunt de oplossing gebruiken als een platform voor het controleren van hoog niveau waarmee u een app op te lossen. Als u een potentieel probleem in een van uw verbonden toepassingen ziet, kunt u een van beide Zoom in op deze in Log Analytics search of u kunt draaien rechtstreeks naar de Application Insights-app.
+Application Insights-connector Blades zijn ontworpen om u in staat te stellen om naar de geselecteerde Application Insights-app te draaien *Wanneer u de Azure Portal gebruikt*. U kunt de oplossing gebruiken als een bewakings platform op hoog niveau waarmee u een app kunt oplossen. Wanneer u een mogelijk probleem ziet in een van de verbonden toepassingen, kunt u deze inzoomen in Log Analytics zoeken of u kunt rechtstreeks naar de Application Insights-app draaien.
 
-Draaitabel, klikt u op de weglatingstekens ( **...** ) die aan het einde van elke regel wordt weergegeven, en selecteer **openen in Application Insights**.
+Als u wilt draaien, klikt u op de weglatings tekens ( **...** ) die aan het einde van elke regel worden weer gegeven en selecteert u **openen in Application Insights**.
 
 >[!NOTE]
->**Openen in Application Insights** is niet beschikbaar in de Azure-portal.
+>**Openen in Application Insights** is niet beschikbaar in de Azure Portal.
 
 ![Openen in Application Insights](./media/app-insights-connector/open-in-app-insights.png)
 
-### <a name="sample-corrected-data"></a>Voorbeeld gecorrigeerde gegevens
+### <a name="sample-corrected-data"></a>Voor beeld: gecorrigeerde gegevens
 
-Application Insights biedt *[steekproeven correctie](../../azure-monitor/app/sampling.md)* om te helpen Telemetrisch verkeer te verminderen. Als u sampling voor uw app in Application Insights inschakelt, krijgt u een kleiner aantal vermeldingen die zijn opgeslagen in Application Insights en Log Analytics. Terwijl de consistentie van gegevens wordt behouden in de **Application Insights-Connector** pagina's en perspectieven, u moet handmatig Corrigeer sample-gegevens voor uw aangepaste query's.
+Application Insights biedt een *[steekproef correctie](../../azure-monitor/app/sampling.md)* om het telemetrische verkeer te verminderen. Wanneer u steek proeven inschakelt voor uw Application Insights-app, krijgt u een beperkt aantal vermeldingen dat zowel in Application Insights als in Log Analytics is opgeslagen. Hoewel gegevens consistentie wordt bewaard op de **Application Insights-connector** pagina en perspectieven, moet u de voorbeeld gegevens voor uw aangepaste query's hand matig corrigeren.
 
-Hier volgt een voorbeeld van de correctie van steekproeven in een logboek zoekquery:
+Hier volgt een voor beeld van een voorbeeld correctie in een zoek opdracht in Logboeken:
 
 ```
 ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by TelemetryType
 ```
 
-De **steekproef aantal** veld aanwezig is in alle vermeldingen en toont het aantal gegevenspunten dat het item vertegenwoordigt. Als u densitysampling voor uw app in Application Insights inschakelen, **steekproef aantal** groter is dan 1. Som te tellen van het werkelijke aantal vermeldingen dat uw toepassing genereert, de **steekproef aantal** velden.
+Het veld aantal in de **steek proef** is aanwezig in alle vermeldingen en toont het aantal gegevens punten dat de vermelding vertegenwoordigt. Als u steek proeven voor uw Application Insights-app inschakelt, is het **aantal samples** groter dan 1. Als u het werkelijke aantal vermeldingen wilt tellen dat door de toepassing wordt gegenereerd, moet u de velden voor het **aantal samples** optellen.
 
-Steekproeven is van invloed op het totale aantal vermeldingen dat uw toepassing genereert. U hoeft niet te corrigeren sampling voor metrische velden als **RequestDuration** of **AvailabilityDuration** omdat het gemiddelde voor weergegeven vermeldingen in de velden weergegeven.
+Steek proeven zijn alleen van invloed op het totale aantal vermeldingen dat door uw toepassing wordt gegenereerd. U hoeft geen steek proeven te corrigeren voor metrische velden, zoals **RequestDuration** of **AvailabilityDuration** , omdat deze velden het gemiddelde voor weer gegeven vermeldingen tonen.
 
 ## <a name="input-data"></a>Invoergegevens
 
-De oplossing ontvangt de volgende telemetrietypen van de gegevens van uw verbonden apps met Application Insights:
+De oplossing ontvangt de volgende telemetriegegevens van gegevens van uw verbonden Application Insights-apps:
 
 - Beschikbaarheid
 - Uitzonderingen
 - Aanvragen
-- Paginaweergaven – voor uw werkruimte voor het ontvangen van paginaweergaven, moet u uw apps voor het verzamelen van gegevens configureren. Zie voor meer informatie, [PageViews](../../azure-monitor/app/api-custom-events-metrics.md#page-views).
-- Aangepaste gebeurtenissen – voor uw werkruimte voor het ontvangen van aangepaste gebeurtenissen, moet u uw apps voor het verzamelen van gegevens configureren. Zie voor meer informatie, [TrackEvent](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
+- Pagina weergaven: voor uw werk ruimte om pagina weergaven te ontvangen, moet u uw apps configureren om die informatie te verzamelen. Zie [page views](../../azure-monitor/app/api-custom-events-metrics.md#page-views)voor meer informatie.
+- Aangepaste gebeurtenissen: voor uw werk ruimte om aangepaste gebeurtenissen te ontvangen, moet u uw apps configureren om die informatie te verzamelen. Zie [track Event](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)voor meer informatie.
 
-Gegevens worden ontvangen door Log Analytics van Application Insights zodra deze beschikbaar is.
+Gegevens worden ontvangen door Log Analytics van Application Insights zodra deze beschikbaar wordt.
 
 ## <a name="output-data"></a>Uitvoergegevens
 
-Een record met een *type* van *ApplicationInsights* is gemaakt voor elk type invoergegevens. Application Insights-records hebben eigenschappen die worden weergegeven in de volgende secties:
+Er wordt een record met een *type* *ApplicationInsights* gemaakt voor elk type invoer gegevens. ApplicationInsights-records hebben eigenschappen die in de volgende secties worden weer gegeven:
 
 ### <a name="generic-fields"></a>Algemene velden
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
 | Type | ApplicationInsights |
-| ClientIP |   |
+| Client |   |
 | TimeGenerated | Tijd van de record |
-| ApplicationId | De instrumentatiesleutel van de Application Insights-app |
-| ApplicationName | Naam van de Application Insights app |
-| RoleInstance | ID van server-host |
-| Apparaattype | Client-apparaat |
+| applicationId | Instrumentatie sleutel van de Application Insights-app |
+| applicationName | De naam van de Application Insights-app |
+| RoleInstance | ID van de server host |
+| deviceType | Client apparaat |
 | ScreenResolution |   |
-| Continent | Continent waarvan de aanvraag afkomstig is |
-| Country | Land/regio waar de aanvraag vandaan komt |
-| Provincie | Provincie, provincie of land waar de aanvraag afkomstig is |
-| Plaats | Stad of plaats waar de aanvraag afkomstig is |
-| isSynthetic | Geeft aan of de aanvraag is gemaakt door een gebruiker of door de geautomatiseerde methode. True = geautomatiseerde methode of onwaar = door de gebruiker gegenereerd |
-| SamplingRate | Percentage van de telemetrie die is gegenereerd door de SDK die wordt verzonden naar de portal. Het bereik 0,0 100,0. |
-| SampledCount | 100/(SamplingRate). Bijvoorbeeld, 4 =&gt; 25% |
-| IsAuthenticated | Waar of onwaar |
-| Bewerkings-id | Items die dezelfde bewerking ID als betrokken Items worden weergegeven in de portal. Meestal de aanvraag-ID |
+| Continent | Continent waar de aanvraag vandaan komt |
+| Land/regio | Land/regio waar de aanvraag vandaan komt |
+| Staat | Provincie, provincie of land/regio waar de aanvraag vandaan komt |
+| Plaats | Plaats of stad waar de aanvraag vandaan komt |
+| isSynthetic | Geeft aan of de aanvraag is gemaakt door een gebruiker of door een automatische methode. True = geautomatiseerde methode of onwaar = door de gebruiker gegenereerd |
+| SamplingRate | Het percentage van de telemetrie dat is gegenereerd door de SDK en dat naar de portal wordt verzonden. Bereik 0.0-100,0. |
+| SampledCount | 100/(SamplingRate). Bijvoorbeeld 4 =&gt; 25% |
+| IsAuthenticated | waar of onwaar |
+| OperationID | Items met dezelfde bewerkings-ID worden weer gegeven als gerelateerde items in de portal. Doorgaans de aanvraag-ID |
 | ParentOperationID | ID van de bovenliggende bewerking |
 | OperationName |   |
-| sessie-id | GUID voor het aanduiden van de sessie waarin de aanvraag is gemaakt |
+| sessionId | GUID voor een unieke identificatie van de sessie waarin de aanvraag is gemaakt |
 | SourceSystem | ApplicationInsights |
 
-### <a name="availability-specific-fields"></a>Beschikbaarheid-specifieke velden
+### <a name="availability-specific-fields"></a>Beschik bare velden
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
 | TelemetryType | Beschikbaarheid |
-| AvailabilityTestName | Naam van de WebTest |
-| AvailabilityRunLocation | Geografische bron van http-aanvraag |
-| AvailabilityResult | Geeft aan dat het resultaat van het succes van de WebTest |
-| AvailabilityMessage | Het bericht dat is gekoppeld aan de WebTest |
-| AvailabilityCount | 100 /(Sampling Rate). Bijvoorbeeld, 4 =&gt; 25% |
-| DataSizeMetricValue | 1.0 of 0,0 |
-| DataSizeMetricCount | 100 /(Sampling Rate). Bijvoorbeeld, 4 =&gt; 25% |
-| AvailabilityDuration | Tijd in milliseconden, van de duur van de website |
-| AvailabilityDurationCount | 100 /(Sampling Rate). Bijvoorbeeld, 4 =&gt; 25% |
+| AvailabilityTestName | De naam van de webtest |
+| AvailabilityRunLocation | Geografische bron van de HTTP-aanvraag |
+| AvailabilityResult | Hiermee wordt het succes resultaat van de webtest aangegeven |
+| AvailabilityMessage | Het bericht dat is gekoppeld aan de webtest |
+| AvailabilityCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| DataSizeMetricValue | 1,0 of 0,0 |
+| DataSizeMetricCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| AvailabilityDuration | Tijd, in milliseconden, van de duur van de webtest |
+| AvailabilityDurationCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
 | AvailabilityValue |   |
 | AvailabilityMetricCount |   |
-| AvailabilityTestId | De unieke GUID voor de WebTest |
-| AvailabilityTimestamp | Exacte tijdstempel van de beschikbaarheidstest |
-| AvailabilityDurationMin | Dit veld geeft voor sample records weer van de minimale web testduur (in milliseconden) voor de gegevenspunten weergegeven |
-| AvailabilityDurationMax | Voor sample records bevat dit veld maximale duur van de (in milliseconden) voor de gegevenspunten weergegeven |
-| AvailabilityDurationStdDev | Voor sample records wordt in dit veld de standaarddeviatie tussen alle web test duur (in milliseconden) voor de gegevenspunten weergegeven |
+| AvailabilityTestId | Unieke GUID voor de webtest |
+| AvailabilityTimestamp | Nauw keurige tijds tempel van de beschikbaarheids test |
+| AvailabilityDurationMin | Voor de voorbeeld records bevat dit veld de minimale duur van de webtest (milliseconden) voor de weer gegeven gegevens punten |
+| AvailabilityDurationMax | Voor de voorbeeld records bevat dit veld de maximum duur voor de webtest (milliseconden) voor de weer gegeven gegevens punten |
+| AvailabilityDurationStdDev | Voor de voorbeeld records bevat dit veld de standaard afwijking tussen alle web-test duren (in milliseconden) voor de weer gegeven gegevens punten |
 | AvailabilityMin |   |
 | AvailabilityMax |   |
 | AvailabilityStdDev | &nbsp;  |
 
-### <a name="exception-specific-fields"></a>Uitzondering-specifieke velden
+### <a name="exception-specific-fields"></a>Uitzonderings velden
 
 | Type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Uitzondering |
-| ExceptionType | Type van de uitzondering |
-| ExceptionMethod | De methode die wordt gemaakt van de uitzondering |
-| ExceptionAssembly | Assembly bevat het framework en versie, evenals het openbare-sleuteltoken |
-| ExceptionGroup | Type van de uitzondering |
-| ExceptionHandledAt | Geeft het niveau aan dat de uitzondering wordt verwerkt |
-| ExceptionCount | 100 /(Sampling Rate). Bijvoorbeeld, 4 =&gt; 25% |
-| ExceptionMessage | Bericht van uitzondering |
-| ExceptionStack | Volledige stack van uitzondering |
-| ExceptionHasStack | Waar, als uitzondering een stack heeft |
+| ExceptionType | Type uitzonde ring |
+| ExceptionMethod | De methode die de uitzonde ring maakt |
+| ExceptionAssembly | Assembly bevat het Framework en de versie, evenals het open bare-sleutel token |
+| ExceptionGroup | Type uitzonde ring |
+| ExceptionHandledAt | Hiermee wordt het niveau aangegeven dat de uitzonde ring heeft afgehandeld |
+| ExceptionCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| ExceptionMessage | Bericht van de uitzonde ring |
+| ExceptionStack | Volledige stack van de uitzonde ring |
+| ExceptionHasStack | Waar, als uitzonde ring een stack heeft |
 
 
 
-### <a name="request-specific-fields"></a>Aanvraag-specifieke velden
+### <a name="request-specific-fields"></a>Aanvraag afhankelijke velden
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 | --- | --- |
 | Type | ApplicationInsights |
 | TelemetryType | Aanvraag |
 | ResponseCode | HTTP-antwoord verzonden naar client |
-| RequestSuccess | Geeft aan of geslaagd of mislukt. Waar of ONWAAR. |
-| Aanvraag-id | ID voor het aanduiden van de aanvraag |
-| RequestName | GET/POST + URL-basis |
-| RequestDuration | Tijd in seconden van de duur van de aanvraag |
-| URL | URL van de aanvraag niet met inbegrip van host |
-| Host | Web server-host |
+| RequestSuccess | Geeft aan of de bewerking is geslaagd of mislukt. Waar of onwaar. |
+| RequestID | ID voor een unieke identificatie van de aanvraag |
+| Aanvraagnaam | GET/POST + URL-basis |
+| RequestDuration | De tijd, in seconden, van de aanvraag duur |
+| URL | De URL van de aanvraag bevat geen host |
+| Host | Webserver host |
 | URLBase | Volledige URL van de aanvraag |
-| ApplicationProtocol | Het type protocol dat wordt gebruikt door de toepassing |
-| RequestCount | 100 /(Sampling Rate). Bijvoorbeeld, 4 =&gt; 25% |
-| RequestDurationCount | 100 /(Sampling Rate). Bijvoorbeeld, 4 =&gt; 25% |
-| RequestDurationMin | Dit veld geeft de duur van de minimale aanvraag (in milliseconden) voor sample records weer voor de gegevenspunten weergegeven. |
-| RequestDurationMax | Dit veld geeft voor sample records, de duur van de maximale aanvraag (in milliseconden) weer voor de gegevenspunten weergegeven |
-| RequestDurationStdDev | Dit veld geeft voor sample records, de standaardafwijking tussen alle aanvraag de duur (in milliseconden) weer voor de gegevenspunten weergegeven |
+| ApplicationProtocol | Type protocol dat door de toepassing wordt gebruikt |
+| requestCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| RequestDurationCount | 100/(sampling frequentie). Bijvoorbeeld 4 =&gt; 25% |
+| RequestDurationMin | Voor de voorbeeld records bevat dit veld de minimale aanvraag duur (milliseconden) voor de weer gegeven gegevens punten. |
+| RequestDurationMax | Voor de voorbeeld records bevat dit veld de maximale aanvraag duur (in milliseconden) voor de weer gegeven gegevens punten |
+| RequestDurationStdDev | Voor de voorbeeld records bevat dit veld de standaard afwijking tussen alle aanvraag duur (milliseconden) voor de weer gegeven gegevens punten |
 
 ## <a name="sample-log-searches"></a>Voorbeeldzoekopdrachten in logboeken
 
-Deze oplossing beschikt niet over een aantal voorbeelden van zoekopdrachten op het dashboard weergegeven. Echter, voorbeeld log zoekquery's met beschrijvingen worden weergegeven in de [weergave Application Insights-Connector informatie](#view-application-insights-connector-information) sectie.
+Voor deze oplossing is geen aantal Zoek opdrachten in logboeken weer gegeven op het dash board. Voor beelden van zoek opdrachten in Logboeken met beschrijvingen worden echter weer gegeven in de sectie [Application Insights-connector gegevens weer geven](#view-application-insights-connector-information) .
 
 ## <a name="removing-the-connector-with-powershell"></a>De connector verwijderen met Power shell
 In de OMS-Portal is het niet mogelijk om bestaande verbindingen te configureren en te verwijderen vanuit de portal. U kunt bestaande verbindingen met het volgende Power shell-script verwijderen. U moet de eigenaar of bijdrager zijn van de werk ruimte en de lezer van Application Insights resource om deze bewerking uit te voeren.
@@ -325,4 +319,4 @@ ApplicationInsights | summarize by ApplicationName
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Gebruik [zoeken in logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde informatie voor uw Application Insights-apps weer te geven.
+- Gebruik [Zoeken in Logboeken](../../azure-monitor/log-query/log-query-overview.md) om gedetailleerde informatie weer te geven voor uw Application Insights-apps.

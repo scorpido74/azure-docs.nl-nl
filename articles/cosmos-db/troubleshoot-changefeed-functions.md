@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 2f9d2cea7adaf2e46feb0417ea9631ce02478f80
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772903"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934140"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
 
@@ -44,8 +44,8 @@ De Azure-functie is mislukt met het fout bericht: de verzamelings naam van de br
 Dit betekent dat een of beide Azure Cosmos-containers die vereist zijn voor de trigger voor werk, niet bestaan of niet bereikbaar zijn voor de Azure-functie. **De fout zelf vertelt u welke Azure Cosmos-data base en-containers de trigger is die** op basis van uw configuratie moet worden gezocht.
 
 1. Controleer het `ConnectionStringSetting` kenmerk en of dit **verwijst naar een instelling die voor komt in uw Azure functie-app**. De waarde van dit kenmerk mag niet de verbindings reeks zelf zijn, maar de naam van de configuratie-instelling.
-2. Controleer of de `databaseName` en `collectionName` aanwezig zijn in uw Azure Cosmos-account. Als u automatische vervanging van waarden (met `%settingName%` patronen) gebruikt, moet u ervoor zorgen dat de naam van de instelling bestaat in uw Azure functie-app.
-3. Als u geen opgeeft `LeaseCollectionName/leaseCollectionName`, wordt de standaard waarde leases. Controleer of deze container bestaat. U kunt desgewenst het `CreateLeaseCollectionIfNotExists` kenmerk in de trigger instellen om `true` het automatisch te maken.
+2. Controleer of de `databaseName` en `collectionName` bestaan in uw Azure Cosmos-account. Als u automatische vervanging van waarden gebruikt (met behulp van `%settingName%` patronen), controleer dan of de naam van de instelling bestaat in uw Azure functie-app.
+3. Als u geen `LeaseCollectionName/leaseCollectionName`opgeeft, wordt de standaard waarde leases. Controleer of deze container bestaat. U kunt desgewenst het `CreateLeaseCollectionIfNotExists` kenmerk in de trigger instellen op `true` om het automatisch te maken.
 4. Controleer de [firewall configuratie van uw Azure Cosmos-account](how-to-configure-firewall.md) om te zien of deze niet de Azure-functie blokkeert.
 
 ### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>De Azure-functie kan niet worden gestart met de verzameling gedeelde door voer moet een partitie sleutel hebben.
@@ -54,21 +54,21 @@ De vorige versies van de Azure Cosmos DB-extensie bieden geen ondersteuning voor
 
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>De Azure-functie kan niet worden gestart met ' de lease-verzameling, indien gepartitioneerd, moet een partitie sleutel hebben die gelijk is aan id. '
 
-Deze fout houdt in dat uw huidige leases-container is gepartitioneerd, maar het pad naar `/id`de partitie sleutel niet. Om dit probleem op te lossen, moet u de leases-container `/id` opnieuw maken met als de partitie sleutel.
+Deze fout betekent dat uw huidige leases-container is gepartitioneerd, maar het pad van de partitie sleutel niet `/id`is. Om dit probleem op te lossen, moet u de leases-container opnieuw maken met `/id` als de partitie sleutel.
 
 ### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>U ziet een ' waarde kan niet null zijn. Parameter naam: o "in uw Azure Functions-Logboeken wanneer u probeert de trigger uit te voeren
 
 Dit probleem wordt weer gegeven als u de Azure Portal gebruikt en u probeert de knop **uitvoeren** op het scherm te selecteren bij het inspecteren van een Azure-functie die gebruikmaakt van de trigger. Het is niet nodig om uitvoeren te selecteren om te starten. de trigger wordt automatisch gestart wanneer de Azure-functie wordt geïmplementeerd. Als u de logboek stroom van de Azure function wilt controleren op het Azure Portal, gaat u naar de bewaakte container en voegt u enkele nieuwe items in, dan wordt de trigger die wordt uitgevoerd automatisch weer geven.
 
-### <a name="my-changes-take-too-long-be-received"></a>Het duurt te lang om mijn wijzigingen te ontvangen
+### <a name="my-changes-take-too-long-to-be-received"></a>Het duurt te lang om mijn wijzigingen te ontvangen
 
 Dit scenario kan meerdere oorzaken hebben en moeten allemaal worden gecontroleerd:
 
-1. Is uw Azure-functie geïmplementeerd in dezelfde regio als uw Azure Cosmos-account? Voor een optimale netwerk latentie moeten zowel de Azure-functie als uw Azure Cosmos-account zich in dezelfde Azure-regio bevinden.
-2. Zijn de wijzigingen in uw Azure Cosmos-container doorlopend of sporadisch?
-Als dit het geval is, kan er een vertraging optreden tussen de wijzigingen die worden opgeslagen en de Azure-functie die ze ophaalt. Dit komt doordat tijdens het uitvoeren van de trigger wordt gecontroleerd op wijzigingen in uw Azure Cosmos-container en er geen in behandeling is om te lezen, de slaap stand gedurende een Configureer bare hoeveelheid tijd (standaard 5 seconden) voordat er wordt gecontroleerd op nieuwe wijzigingen (om te voor komen dat het gebruik van hoge RU wordt uitgevoerd). U kunt deze vertraging configureren via de `FeedPollDelay/feedPollDelay` instelling in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) van de trigger (de waarde wordt verwacht in milliseconden).
+1. Wordt de Azure-functie geïmplementeerd in dezelfde regio als het Azure Cosmos-account? Voor een optimale netwerklatentie moeten de Azure-functie en het Azure Cosmos-account zich in dezelfde Azure-regio bevinden.
+2. Vinden de wijzigingen in uw Azure Cosmos-container continu of sporadisch plaats?
+In het laatste geval kan er enige vertraging optreden tussen het moment dat de wijzigingen worden opgeslagen en het moment dat de Azure-functie deze ophaalt. Dit komt doordat wanneer tijdens het intern controleren op wijzigingen in de Azure Cosmos-container geen wijzigingen worden aangetroffen die in behandeling zijn om te worden gelezen, de Azure-container gedurende een configureerbare periode (standaard vijf seconden) in de slaapstand geraakt voordat er op nieuwe wijzigingen wordt gecontroleerd (om een hoog RU-verbruik te voorkomen). U kunt deze periode in de slaapstand configureren via de `FeedPollDelay/feedPollDelay`-instelling in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) van de trigger (de waarde bedraagt naar verwachting enkele milliseconden).
 3. Uw Azure Cosmos-container kan een [beperkt aantal](./request-units.md)zijn.
-4. U kunt het `PreferredLocations` kenmerk in de trigger gebruiken om een door komma's gescheiden lijst van Azure-regio's op te geven voor het definiëren van een aangepaste voorkeurs volgorde voor verbinding.
+4. U kunt het kenmerk `PreferredLocations` in uw trigger gebruiken om een door komma's gescheiden lijst van Azure-regio's op te geven voor het definiëren van een aangepaste voorkeurs volgorde voor verbinding.
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Er ontbreken enkele wijzigingen in de trigger
 
@@ -78,16 +78,16 @@ Als uw Azure-functie de wijzigingen ontvangt, worden deze vaak verwerkt en kunne
 
 Als sommige wijzigingen op de bestemming ontbreken, kan dit betekenen dat er een fout optreedt tijdens de uitvoering van de Azure-functie nadat de wijzigingen zijn ontvangen.
 
-In dit scenario is het mogelijk om een actie toe te voegen `try/catch blocks` in uw code en in de lussen die de wijzigingen kunnen verwerken, om eventuele fouten voor een bepaalde subset van items te detecteren en deze dienovereenkomstig te verwerken (naar een andere opslag locatie sturen). analyse of nieuwe poging). 
+In dit scenario is het de beste actie om `try/catch` blokken toe te voegen aan uw code en in de lussen die de wijzigingen kunnen verwerken, om eventuele fouten voor een bepaalde subset van items te detecteren en ze dienovereenkomstig te verwerken (naar een andere opslag locatie sturen). analyse of nieuwe poging). 
 
 > [!NOTE]
 > Als er een onverwerkte uitzonde ring is opgetreden tijdens het uitvoeren van de code, wordt de Azure Functions trigger voor Cosmos DB standaard niet opnieuw geprobeerd een batch wijzigingen uit te voeren. Dit betekent dat de wijzigingen niet zijn doorgevoerd op de bestemming omdat u deze niet kunt verwerken.
 
 Als u merkt dat er helemaal geen wijzigingen zijn ontvangen door de trigger, is het meest voorkomende scenario dat er **een andere Azure-functie wordt uitgevoerd**. Het kan een andere Azure-functie zijn die is geïmplementeerd in azure of een Azure-functie die lokaal wordt uitgevoerd op de computer van een ontwikkelaar en die **exact dezelfde configuratie** heeft (dezelfde bewaakte en lease-containers). deze Azure-functie stelen een subset van de wijzigingen die u verwacht dat uw Azure-functie wordt verwerkt.
 
-Daarnaast kunt u het scenario valideren als u weet hoeveel exemplaren van Azure functie-app u uitvoert. Als u uw leases-container inspecteert en het aantal lease-items binnen hebt geteld, moeten de `Owner` afzonderlijke waarden van de eigenschap in deze worden ingesteld op het aantal exemplaren van uw functie-app. Als er meer eigen aren zijn dan de bekende exemplaren van Azure functie-app, betekent dit dat de andere eigen aren de wijzigingen ' stelen ' hebben.
+Daarnaast kunt u het scenario valideren als u weet hoeveel exemplaren van Azure functie-app u uitvoert. Als u uw leases-container inspecteert en het aantal lease-items binnen hebt geteld, moeten de afzonderlijke waarden van de `Owner` eigenschap in de containers gelijk zijn aan het aantal exemplaren van uw functie-app. Als er meer eigenaren zijn dan bekende instanties van de Azure-functie-app, betekent dit dat de andere eigenaren de wijzigingen aan het 'stelen' zijn.
 
-Een eenvoudige manier om deze situatie op te lossen, is `LeaseCollectionPrefix/leaseCollectionPrefix` om een toe te passen op uw functie met een nieuwe/andere waarde of door te testen met een nieuwe lease-container.
+Een eenvoudige manier om deze situatie op te lossen is door een `LeaseCollectionPrefix/leaseCollectionPrefix` toe te passen op uw functie met een nieuwe/andere waarde of door te testen met een nieuwe leases-container.
 
 ### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>De items in mijn container moeten opnieuw worden opgestart en opnieuw worden verwerkt vanaf het begin 
 Alle items in een container opnieuw verwerken vanaf het begin:
@@ -98,7 +98,7 @@ Alle items in een container opnieuw verwerken vanaf het begin:
 
 Als u [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) instelt op True, wordt de Azure-functie gestart met het lezen van wijzigingen aan het begin van de geschiedenis van de verzameling in plaats van de huidige tijd. Dit werkt alleen als er geen leases zijn (bijvoorbeeld documenten in de lease-verzameling). Als u deze eigenschap instelt op waar wanneer er al leases zijn gemaakt, heeft dit geen effect. Wanneer een functie wordt gestopt en opnieuw wordt gestart, wordt in dit scenario begonnen met het lezen van het laatste controle punt, zoals gedefinieerd in de verzameling leases. Volg de bovenstaande stappen 1-4 om vanaf het begin opnieuw te verwerken.  
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>U kunt de binding alleen doen met\<IReadOnlyList document > of JArray
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Binding kan alleen worden uitgevoerd met IReadOnlyList\<document > of JArray
 
 Deze fout treedt op als uw Azure Functions project (of een project waarnaar wordt verwezen) een hand matige NuGet-verwijzing naar de Azure Cosmos DB SDK bevat met een andere versie dan die van de [uitbrei ding Azure Functions Cosmos DB](./troubleshoot-changefeed-functions.md#dependencies).
 

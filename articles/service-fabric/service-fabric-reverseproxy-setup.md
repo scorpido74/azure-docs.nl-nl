@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 3fd1716fa7b9c32bb5b5e49598139b6a5e728692
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166584"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933901"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Een omgekeerde proxy instellen en configureren in azure Service Fabric
 Omgekeerde proxy is een optionele Azure Service Fabric-service die micro services die worden uitgevoerd in een Service Fabric cluster kan detecteren en communiceren met andere services met http-eind punten. Zie [reverse proxy in Azure service Fabric](service-fabric-reverseproxy.md)voor meer informatie. In dit artikel wordt beschreven hoe u een omgekeerde proxy in uw cluster instelt en configureert. 
@@ -44,7 +44,7 @@ Voor clusters op Azure kunt u de sjabloon Azure Resource Manager gebruiken om de
 
 Voor een nieuw cluster kunt u [een aangepaste Resource Manager-sjabloon maken](service-fabric-cluster-creation-via-arm.md) , maar u kunt ook een voorbeeld sjabloon gebruiken. 
 
-U kunt voor beelden van Resource Manager-sjablonen vinden die u kunnen helpen bij het configureren van een beveiligde omgekeerde proxy voor een Azure-cluster in de voor [beelden van beveiligde reverse proxy-voorbeeld sjablonen](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) op github. Raadpleeg [https reverse proxy configureren in een beveiligd cluster](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) in het Leesmij-bestand voor instructies en de sjablonen die moeten worden gebruikt voor het configureren van een beveiligde reverse proxy met een certificaat en voor het afhandelen van certificaat overschakeling.
+U kunt voor beelden van Resource Manager-sjablonen vinden die u kunnen helpen bij het configureren van een beveiligde omgekeerde proxy voor een Azure-cluster in de voor [beelden van beveiligde reverse proxy-voorbeeld sjablonen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) op github. Raadpleeg [https reverse proxy configureren in een beveiligd cluster](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) in het Leesmij-bestand voor instructies en de sjablonen die moeten worden gebruikt voor het configureren van een beveiligde reverse proxy met een certificaat en voor het afhandelen van certificaat overschakeling.
 
 Voor een bestaand cluster kunt u de Resource Manager-sjabloon voor de resource groep van het cluster exporteren met behulp van de [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [Power shell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)of de [Azure cli](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
 

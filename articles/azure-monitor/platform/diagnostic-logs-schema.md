@@ -1,26 +1,29 @@
 ---
-title: Door Azure Diagnostische logboeken ondersteunde services en schema's
+title: Ondersteunde services en schema's voor Azure resource logs
 description: Meer informatie over de ondersteunde services en het gebeurtenis schema voor Azure Diagnostic-Logboeken.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
+ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.date: 10/11/2018
-ms.openlocfilehash: f2d71972fa8acc930800a70193f688246ee7415c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 22521a3619482361c8f556b05436bb3b78c7dc9b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555573"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932328"
 ---
-# <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Ondersteunde services, schema's en categorieën voor Azure Diagnostische logboeken
+# <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure-resource logboeken
 
-[Azure monitor Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle Diagnostische logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
+> [!NOTE]
+> Bron logboeken zijn voorheen bekend als Diagnostische logboeken.
 
-Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`) en de `category` unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor Diagnostische logboeken en koppelingen naar de schema's voor elke service beschreven.
+[Azure monitor bron logboeken](../../azure-monitor/platform/resource-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle bron logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
 
-## <a name="top-level-diagnostic-logs-schema"></a>Schema voor Diagnostische logboeken op het hoogste niveau
+Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`) en de `category` unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor resource logboeken en koppelingen naar de schema's voor elke service beschreven.
+
+## <a name="top-level-resource-logs-schema"></a>Schema voor resource logboeken op het hoogste niveau
 
 | Naam | Vereist/optioneel | Beschrijving |
 |---|---|---|
@@ -41,27 +44,27 @@ Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`
 | location | Optioneel | De regio van de resource waarmee de gebeurtenis wordt verzonden, bijvoorbeeld. "VS-Oost" of "Frankrijk-zuid" |
 | properties | Optioneel | Alle uitgebreide eigenschappen die betrekking hebben op deze specifieke gebeurtenis categorie. Alle aangepaste/unieke eigenschappen moeten in dit deel B van het schema worden geplaatst. |
 
-## <a name="service-specific-schemas-for-resource-diagnostic-logs"></a>Servicespecifieke schema's voor Diagnostische logboeken voor bronnen
-Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van de categorie resource en logboek. Deze lijst bevat alle services die beschik bare Diagnostische logboeken en koppelingen naar het service-en categorie-specifieke schema maken, indien beschikbaar.
+## <a name="service-specific-schemas-for-resource-logs"></a>Servicespecifieke schema's voor resource logboeken
+Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van de categorie resource en logboek. Deze lijst bevat alle services die beschik bare resource logboeken en koppelingen naar de service en het specifieke schema voor de categorie maken, indien beschikbaar.
 
 | Service | & Documenten voor schema |
 | --- | --- |
 | Azure Active Directory | [Overzicht](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), schema voor [audit logboeken](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) en [aanmeldingen](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
-| API Management | [Diagnostische logboeken API Management](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
-| Toepassingsgateways |[Diagnostische logboek registratie voor Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
+| API Management | [API Management bron logboeken](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
+| Toepassingsgateways |[Logboek registratie voor Application Gateway](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Log Analytics voor Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
-| Azure Batch |[Diagnostische logboek registratie Azure Batch](../../batch/batch-diagnostics.md) |
+| Azure Batch |[Azure Batch logboek registratie](../../batch/batch-diagnostics.md) |
 | Azure Database voor MySQL | [Diagnostische logboeken Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database voor PostgreSQL | [Diagnostische logboeken Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Data Explorer | [Diagnostische logboeken van Azure Data Explorer](../../data-explorer/using-diagnostic-logs.md) |
-| Cognitive Services | [Diagnostische logboek registratie voor Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
-| CDN (Content Delivery Network) | [Diagnostische logboeken van Azure voor CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
+| Azure Database voor PostgreSQL | [Azure Database for PostgreSQL logboeken](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Data Explorer | [Azure Data Explorer-logboeken](../../data-explorer/using-diagnostic-logs.md) |
+| Cognitive Services | [Logboek registratie voor Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
+| CDN (Content Delivery Network) | [Azure-logboeken voor CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB logboek registratie](../../cosmos-db/logging.md) |
 | Data Factory | [Gegevens fabrieken bewaken met behulp van Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
-| Data Lake Analytics |[Diagnostische logboeken openen voor Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
-| Data Lake Store |[Diagnostische logboeken openen voor Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Event Hubs |[Diagnostische logboeken van Azure Event Hubs](../../event-hubs/event-hubs-diagnostic-logs.md) |
+| Data Lake Analytics |[Toegang tot logboeken voor Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| Data Lake Store |[Toegang tot logboeken voor Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Event Hubs |[Azure Event Hubs-logboeken](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Het schema is niet beschikbaar. |
 | Azure Firewall | Het schema is niet beschikbaar. |
 | IoT Hub | [IoT Hub bewerkingen](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
@@ -71,12 +74,12 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | Logische apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netwerkbeveiligingsgroepen |[Logboekanalyses voor netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS Protection | [Azure DDoS Protection Standard beheren](../../virtual-network/manage-ddos-protection.md) |
-| Power BI Dedicated | [Diagnostische logboek registratie voor Power BI Embedded in azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Power BI Dedicated | [Logboek registratie voor Power BI Embedded in azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Gegevens model voor Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Search |[Zoek Traffic Analytics inschakelen en gebruiken](../../search/search-traffic-analytics.md) |
-| Service Bus |[Diagnostische logboeken Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Diagnostische logboek registratie Azure SQL Database](../../sql-database/sql-database-metrics-diag-logging.md) |
-| Stream Analytics |[Diagnostische logboeken voor taken](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Service Bus |[Azure Service Bus logboeken](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
+| SQL Database | [Azure SQL Database logboek registratie](../../sql-database/sql-database-metrics-diag-logging.md) |
+| Stream Analytics |[Taak logboeken](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager-logboek schema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuele netwerken | Het schema is niet beschikbaar. |
 | Virtuele-netwerkgateways | Het schema is niet beschikbaar. |
@@ -84,23 +87,51 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 ## <a name="supported-log-categories-per-resource-type"></a>Ondersteunde logboek categorieën per resource type
 |Resourcetype|Category|Weergave naam categorie|
 |---|---|---|
+|Micro soft. AAD/domainServices|SystemSecurity|SystemSecurity|
+|Micro soft. AAD/domainServices|AccountManagement|AccountManagement|
+|Micro soft. AAD/domainServices|LogonLogoff|LogonLogoff|
+|Micro soft. AAD/domainServices|ObjectAccess|ObjectAccess|
+|Micro soft. AAD/domainServices|PolicyChange|PolicyChange|
+|Micro soft. AAD/domainServices|PrivilegeUse|PrivilegeUse|
+|Micro soft. AAD/domainServices|DetailTracking|DetailTracking|
+|Micro soft. AAD/domainServices|DirectoryServiceAccess|DirectoryServiceAccess|
+|Micro soft. AAD/domainServices|AccountLogon|AccountLogon|
+|micro soft. aadiam/tenants|Aanmelding|Aanmelding|
 |Micro soft. AnalysisServices/servers|Mechanisme|Mechanisme|
 |Micro soft. AnalysisServices/servers|Service|Service|
 |Microsoft.ApiManagement/service|Gateway logs|Logboeken gerelateerd aan de ApiManagement-gateway|
+|Micro soft. AppPlatform/lente|ApplicationConsole|Toepassings console|
 |Micro soft. Automation/automationAccounts|JobLogs|Taak logboeken|
 |Micro soft. Automation/automationAccounts|JobStreams|Taak stromen|
 |Micro soft. Automation/automationAccounts|DscNodeStatus|DSC-knooppunt status|
 |Micro soft. batch/batchAccounts|ServiceLog|Service logboeken|
+|Micro soft. BatchAI/werk ruimten|BaiClusterEvent|BaiClusterEvent|
+|Micro soft. BatchAI/werk ruimten|BaiClusterNodeEvent|BaiClusterNodeEvent|
+|Micro soft. BatchAI/werk ruimten|BaiJobEvent|BaiJobEvent|
+|Micro soft. Block Chain/blockchainMembers|BlockchainApplication|Block Chain-toepassing|
+|Micro soft. Block Chain/blockchainMembers|Proxy|Proxy|
 |Micro soft. CDN/profielen/eind punten|CoreAnalytics|Hiermee worden de metrische gegevens van het eind punt opgehaald, bijvoorbeeld band breedte, uitgaand verkeer enzovoort.|
 |Micro soft. ClassicNetwork/networksecuritygroups|Stroom gebeurtenis van regel voor netwerk beveiligings groep|Stroom gebeurtenis van regel voor netwerk beveiligings groep|
 |Micro soft. CognitiveServices/accounts|Controleren|Auditlogboeken|
 |Micro soft. CognitiveServices/accounts|RequestResponse|Aanvraag-en antwoord logboeken|
+|Micro soft. ContainerRegistry/registers|ContainerRegistryRepositoryEvents|RepositoryEvent-logboeken|
+|Micro soft. ContainerRegistry/registers|ContainerRegistryLoginEvents|Aanmeldings gebeurtenissen|
 |Micro soft. container service/managedClusters|uitvoeren-apiserver|Kubernetes-API-server|
 |Micro soft. container service/managedClusters|uitvoeren-Controller-Manager|Kubernetes-controller beheer|
-|Micro soft. container service/managedClusters|cluster-automatisch schalen|Kubernetes-cluster automatisch schalen|
 |Micro soft. container service/managedClusters|uitvoeren-scheduler|Kubernetes scheduler|
-|Micro soft. container service/managedClusters|komen|Verificatie-webhook|
-|Micro soft. CustomerInsights/hubs|AuditEvents|AuditEvents|
+|Micro soft. container service/managedClusters|uitvoeren-audit|Kubernetes-controle|
+|Micro soft. container service/managedClusters|cluster-automatisch schalen|Kubernetes-cluster automatisch schalen|
+|Micro soft. Databricks/werk ruimten|dbfs|Databricks-bestandssysteem|
+|Micro soft. Databricks/werk ruimten|clusters|Databricks-clusters|
+|Micro soft. Databricks/werk ruimten|accounts|Databricks-accounts|
+|Micro soft. Databricks/werk ruimten|Functies|Databricks-taken|
+|Micro soft. Databricks/werk ruimten|notitieblok|Databricks Notebook|
+|Micro soft. Databricks/werk ruimten|SSH|Databricks SSH|
+|Micro soft. Databricks/werk ruimten|Werk ruimte|Databricks-werkruimte|
+|Micro soft. Databricks/werk ruimten|geheimen|Databricks geheimen|
+|Micro soft. Databricks/werk ruimten|sqlPermissions|Databricks SQLPermissions|
+|Micro soft. Databricks/werk ruimten|instancePools|Instantiegroepen|
+|Micro soft. DataCatalog/datacatalogs|ScanStatusLogEvent|ScanStatus|
 |Micro soft. DataFactory/fabrieken|ActivityRuns|Logboek voor uitvoering van pijplijn activiteit|
 |Micro soft. DataFactory/fabrieken|PipelineRuns|Logboek voor uitvoering van pijp lijn|
 |Micro soft. DataFactory/fabrieken|TriggerRuns|Trigger uitvoeringen logboek|
@@ -108,8 +139,30 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. DataLakeAnalytics/accounts|Aanvragen|Logboeken aanvragen|
 |Micro soft. data Lake Store/accounts|Controleren|Auditlogboeken|
 |Micro soft. data Lake Store/accounts|Aanvragen|Logboeken aanvragen|
+|Micro soft. DataShare/accounts|Shares|Shares|
+|Micro soft. DataShare/accounts|ShareSubscriptions|Abonnementen delen|
+|Micro soft. DataShare/accounts|SentShareSnapshots|Verzonden moment opnamen van shares|
+|Micro soft. DataShare/accounts|ReceivedShareSnapshots|Ontvangen moment opnamen van shares|
 |Micro soft. DBforMySQL/servers|MySqlSlowLogs|MySQL-server logboeken|
+|Micro soft. DBforMySQL/servers|MySqlAuditLogs|MySQL-controle logboeken|
 |Micro soft. DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-server logboeken|
+|Micro soft. DBforPostgreSQL/servers|QueryStoreRuntimeStatistics|Runtime statistieken voor PostgreSQL query Store|
+|Micro soft. DBforPostgreSQL/servers|QueryStoreWaitStatistics|Wacht statistieken voor PostgreSQL query Store|
+|Micro soft. DBforPostgreSQL/serversv2|PostgreSQLLogs|PostgreSQL-server logboeken|
+|Micro soft. DBforPostgreSQL/serversv2|QueryStoreRuntimeStatistics|Runtime statistieken voor PostgreSQL query Store|
+|Micro soft. DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|Wacht statistieken voor PostgreSQL query Store|
+|Micro soft. DesktopVirtualization/werk ruimten|Check Point|Check Point|
+|Micro soft. DesktopVirtualization/werk ruimten|Fout|Fout|
+|Micro soft. DesktopVirtualization/werk ruimten|Beheer|Beheer|
+|Micro soft. DesktopVirtualization/werk ruimten|Feed|Feed|
+|Micro soft. DesktopVirtualization/applicationGroups|Check Point|Check Point|
+|Micro soft. DesktopVirtualization/applicationGroups|Fout|Fout|
+|Micro soft. DesktopVirtualization/applicationGroups|Beheer|Beheer|
+|Micro soft. DesktopVirtualization/hostPools|Check Point|Check Point|
+|Micro soft. DesktopVirtualization/hostPools|Fout|Fout|
+|Micro soft. DesktopVirtualization/hostPools|Beheer|Beheer|
+|Micro soft. DesktopVirtualization/hostPools|Verbinding|Verbinding|
+|Micro soft. DesktopVirtualization/hostPools|HostRegistration|HostRegistration|
 |Micro soft. devices/IotHubs|Verbindingen|Verbindingen|
 |Micro soft. devices/IotHubs|DeviceTelemetry|Apparaattelemetrie|
 |Micro soft. devices/IotHubs|C2DCommands|C2D-opdrachten|
@@ -121,16 +174,27 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. devices/IotHubs|TwinQueries|Dubbele Query's|
 |Micro soft. devices/IotHubs|JobsOperations|Taak bewerkingen|
 |Micro soft. devices/IotHubs|DirectMethods|Directe methoden|
-|Micro soft. devices/IotHubs|E2EDiagnostics|E2E diagnostische gegevens (preview-versie)|
+|Micro soft. devices/IotHubs|DistributedTracing|Gedistribueerde tracering (preview-versie)|
 |Micro soft. devices/IotHubs|Configuraties|Configuraties|
+|Micro soft. devices/IotHubs|DeviceStreams|Apparaatversleuteling (preview-versie)|
 |Micro soft. devices/provisioningServices|DeviceOperations|Bewerkingen voor apparaten|
 |Micro soft. devices/provisioningServices|ServiceOperations|Service bewerkingen|
 |Micro soft. DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Micro soft. DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Micro soft. DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
+|Micro soft. DocumentDB/databaseAccounts|PartitionKeyStatistics|PartitionKeyStatistics|
+|Micro soft. DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
+|Micro soft. EnterpriseKnowledgeGraph/Services|Audit event|Audit event-logboek|
+|Micro soft. EnterpriseKnowledgeGraph/Services|DataIssue|DataIssue-logboek|
+|Micro soft. EnterpriseKnowledgeGraph/Services|Aanvragen|Configuratie logboek|
 |Micro soft. EventHub/naam ruimten|ArchiveLogs|Archief logboeken|
 |Micro soft. EventHub/naam ruimten|OperationalLogs|Operationele logboeken|
 |Micro soft. EventHub/naam ruimten|AutoScaleLogs|Logboeken automatisch schalen|
+|Micro soft. EventHub/naam ruimten|KafkaCoordinatorLogs|Kafka Coordinator-logboeken|
+|Micro soft. EventHub/naam ruimten|KafkaUserErrorLogs|Fout logboeken van Kafka-gebruikers|
+|Micro soft. EventHub/naam ruimten|EventHubVNetConnectionEvent|Logboeken voor VNet/IP-filtering verbindingen|
+|Micro soft. EventHub/naam ruimten|CustomerManagedKeyUserLogs|Door de klant beheerde sleutel logboeken|
+|Micro soft. HealthcareApis/Services|Audit logs bevat|Auditlogboeken|
 |Micro soft. Insights/AutoscaleSettings|AutoscaleEvaluations|Evaluaties automatisch schalen|
 |Micro soft. Insights/AutoscaleSettings|AutoscaleScaleActions|Schaal acties automatisch schalen|
 |Micro soft. IoTSpaces/Graph|Tracering|Tracering|
@@ -140,12 +204,17 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. IoTSpaces/Graph|Binnenkomend|Binnenkomend|
 |Micro soft. IoTSpaces/Graph|Uitgaand verkeer|Uitgaand verkeer|
 |Micro soft.-sleutel kluis/-kluizen|Audit event|Auditlogboeken|
+|Micro soft. Kusto/clusters|SucceededIngestion|Geslaagde opname bewerkingen|
+|Micro soft. Kusto/clusters|FailedIngestion|Mislukte opname bewerkingen|
 |Micro soft. Logic/werk stromen|WorkflowRuntime|Diagnostische gebeurtenissen voor workflowruntime|
 |Micro soft. Logic/integrationAccounts|IntegrationAccountTrackingEvents|Spoor gebeurtenissen voor integratie account|
+|Micro soft. MachineLearningServices/werk ruimten|AmlComputeClusterEvent|AmlComputeClusterEvent|
+|Micro soft. MachineLearningServices/werk ruimten|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
+|Micro soft. MachineLearningServices/werk ruimten|AmlComputeJobEvent|AmlComputeJobEvent|
+|Micro soft. Media/Media Services|KeyDeliveryRequests|Aanvragen voor sleutel levering|
 |Micro soft. Network/networksecuritygroups|NetworkSecurityGroupEvent|Gebeurtenis netwerk beveiligings groep|
 |Micro soft. Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Teller van regel voor netwerk beveiligings groep|
-|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer waarschuwings gebeurtenissen|
-|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Load Balancer test status|
+|Micro soft. Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Stroom gebeurtenis van regel voor netwerk beveiligings groep|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS-beveiligings meldingen|
 |Microsoft.Network/publicIPAddresses|DDoSMitigationFlowLogs|Stroom logboeken van DDoS-oplossings beslissingen|
 |Microsoft.Network/publicIPAddresses|DDoSMitigationReports|Rapporten met DDoS-oplossingen|
@@ -164,10 +233,26 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. Network/virtualNetworkGateways|P2SDiagnosticLog|Diagnostische logboeken van P2S|
 |Micro soft. Network/trafficManagerProfiles|ProbeHealthStatusEvents|Gebeurtenis met resultaten van Traffic Manager test status|
 |Micro soft. Network/expressRouteCircuits|PeeringRouteLog|Logboeken voor peering route tabel|
+|Micro soft. Network/vpnGateways|GatewayDiagnosticLog|Diagnostische logboeken van de gateway|
+|Micro soft. Network/vpnGateways|TunnelDiagnosticLog|Diagnostische logboeken voor tunnel|
+|Micro soft. Network/vpnGateways|RouteDiagnosticLog|Diagnostische logboeken voor route ring|
+|Micro soft. Network/vpnGateways|IKEDiagnosticLog|Diagnostische logboeken voor IKE|
 |Micro soft. Network/frontdoors|FrontdoorAccessLog|-Ingang-toegangs logboek|
 |Micro soft. Network/frontdoors|FrontdoorWebApplicationFirewallLog|-Ingang Web Application firewall-logboek|
+|Micro soft. Network/p2sVpnGateways|GatewayDiagnosticLog|Diagnostische logboeken van de gateway|
+|Micro soft. Network/p2sVpnGateways|IKEDiagnosticLog|Diagnostische logboeken voor IKE|
+|Micro soft. Network/p2sVpnGateways|P2SDiagnosticLog|Diagnostische logboeken van P2S|
+|Micro soft. Network/bastionHosts|BastionAuditLogs|Controle logboeken voor Bastion|
+|Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer waarschuwings gebeurtenissen|
+|Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Load Balancer test status|
 |Micro soft. PowerBIDedicated/capaciteiten|Mechanisme|Mechanisme|
 |Micro soft. Recovery Services/kluizen|AzureBackupReport|Azure Backup rapportage gegevens|
+|Micro soft. Recovery Services/kluizen|CoreAzureBackup|Kern Azure Backup gegevens|
+|Micro soft. Recovery Services/kluizen|AddonAzureBackupJobs|Taak gegevens van invoeg toepassing Azure Backup|
+|Micro soft. Recovery Services/kluizen|AddonAzureBackupAlerts|Azure Backup waarschuwings gegevens van invoeg toepassing|
+|Micro soft. Recovery Services/kluizen|AddonAzureBackupPolicy|Azure Backup beleids gegevens van invoeg toepassing|
+|Micro soft. Recovery Services/kluizen|AddonAzureBackupStorage|Invoeg Azure Backup opslag gegevens|
+|Micro soft. Recovery Services/kluizen|AddonAzureBackupProtectedInstance|Invoeg toepassing Azure Backup beveiligde instantie gegevens|
 |Micro soft. Recovery Services/kluizen|AzureSiteRecoveryJobs|Azure Site Recovery taken|
 |Micro soft. Recovery Services/kluizen|AzureSiteRecoveryEvents|Azure Site Recovery gebeurtenissen|
 |Micro soft. Recovery Services/kluizen|AzureSiteRecoveryReplicatedItems|Gerepliceerde items Azure Site Recovery|
@@ -199,14 +284,37 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. SQL/managedInstances/data bases|QueryStoreRuntimeStatistics|Runtime statistieken voor query Store|
 |Micro soft. SQL/managedInstances/data bases|QueryStoreWaitStatistics|Wacht statistieken voor query Store|
 |Micro soft. SQL/managedInstances/data bases|Fouten|Fouten|
+|Micro soft. Storage/Storage accounts/tableServices|StorageRead|StorageRead|
+|Micro soft. Storage/Storage accounts/tableServices|StorageWrite|StorageWrite|
+|Micro soft. Storage/Storage accounts/tableServices|StorageDelete|StorageDelete|
+|Micro soft. Storage/Storage accounts/blobServices|StorageRead|StorageRead|
+|Micro soft. Storage/Storage accounts/blobServices|StorageWrite|StorageWrite|
+|Micro soft. Storage/Storage accounts/blobServices|StorageDelete|StorageDelete|
+|Micro soft. Storage/Storage accounts/fileServices|StorageRead|StorageRead|
+|Micro soft. Storage/Storage accounts/fileServices|StorageWrite|StorageWrite|
+|Micro soft. Storage/Storage accounts/fileServices|StorageDelete|StorageDelete|
+|Micro soft. Storage/Storage accounts/queueServices|StorageRead|StorageRead|
+|Micro soft. Storage/Storage accounts/queueServices|StorageWrite|StorageWrite|
+|Micro soft. Storage/Storage accounts/queueServices|StorageDelete|StorageDelete|
 |Micro soft. StreamAnalytics/streamingjobs|Uitvoering|Uitvoering|
 |Micro soft. StreamAnalytics/streamingjobs|Ontwerpen|Ontwerpen|
-|micro soft. web/sites|FunctionExecutionLogs|Uitvoer logboeken voor functies|
-|micro soft. web/sites/sleuven|FunctionExecutionLogs|Uitvoer logboeken voor functies|
+|micro soft. Web/hostingenvironments|AppServiceEnvironmentPlatformLogs|App Service Environment-platform logboeken|
+|micro soft. web/sites|FunctionAppLogs|Toepassings logboeken van functie|
+|micro soft. web/sites|AppServiceHTTPLogs|HTTP-logboeken|
+|micro soft. web/sites|AppServiceConsoleLogs|App Service-console logboeken|
+|micro soft. web/sites|AppServiceAppLogs|Toepassings logboeken App Service|
+|micro soft. web/sites|AppServiceFileAuditLogs|Controle logboeken voor het wijzigen van de site-inhoud|
+|micro soft. web/sites|AppServiceAuditLogs|Access-controle logboeken|
+|micro soft. web/sites/sleuven|FunctionAppLogs|Toepassings logboeken van functie|
+|micro soft. web/sites/sleuven|AppServiceHTTPLogs|HTTP-logboeken|
+|micro soft. web/sites/sleuven|AppServiceConsoleLogs|Console logboeken|
+|micro soft. web/sites/sleuven|AppServiceAppLogs|Toepassingslogboeken|
+|micro soft. web/sites/sleuven|AppServiceFileAuditLogs|Controle logboeken voor het wijzigen van de site-inhoud|
+|micro soft. web/sites/sleuven|AppServiceAuditLogs|Access-controle logboeken|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md)
-* [Diagnostische logboeken voor bronnen streamen naar **Event hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Diagnostische instellingen voor bronnen wijzigen met behulp van de Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
+* [Meer informatie over bron logboeken](../../azure-monitor/platform/resource-logs-overview.md)
+* [Resource bron logboeken streamen naar **Event hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [Diagnostische instellingen voor bron logboek wijzigen met behulp van de Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Logboeken analyseren vanuit Azure Storage met Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

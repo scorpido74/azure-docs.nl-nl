@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 49567ae52b8ea706ebf7e093880e919cc8bbdbad
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901646"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933156"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Het Azure Blob-bestandssysteem stuur programma (ABFS): een speciaal Azure Storage stuur programma voor Hadoop
 
@@ -49,6 +49,9 @@ Het ABFS-stuur programma ondersteunt twee vormen van verificatie, zodat de Hadoo
 - **Gedeelde sleutel:** Hierdoor kunnen gebruikers toegang krijgen tot alle resources in het account. De sleutel is versleuteld en opgeslagen in Hadoop-configuratie.
 
 - **Azure Active Directory OAuth Bearer-token:** Azure AD Bearer-tokens worden verkregen en vernieuwd door het stuur programma met behulp van de identiteit van de eind gebruiker of een geconfigureerde service-principal. Met behulp van dit verificatie model wordt alle toegang per oproep geautoriseerd met behulp van de identiteit die is gekoppeld aan het opgegeven token en wordt geëvalueerd op basis van de toegewezen POSIX-Access Control lijst (ACL).
+
+   > [!NOTE] 
+   > Azure Data Lake Storage Gen2 ondersteunt alleen Azure AD v 1.0-eind punten.
 
 ### <a name="configuration"></a>Configuratie
 

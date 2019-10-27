@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 99f8c2b40445fe282800d096353bee1c7a934ebe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: b644d293afd429bdc68fba66c119eb7146d0daf0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918128"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935470"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Apache Oozie in HDInsight Hadoop-clusters uitvoeren met Enterprise Security Package
 
@@ -25,7 +25,7 @@ Apache Oozie is een werk stroom-en coördinatie systeem waarmee Apache Hadoop ta
 
 U kunt Oozie ook gebruiken om taken te plannen die specifiek zijn voor een systeem, zoals Java-Program ma's of shell scripts.
 
-## <a name="prerequisite"></a>Vereiste
+## <a name="prerequisite"></a>Vereisten
 
 - Een Azure HDInsight Hadoop cluster met Enterprise Security Package (ESP). Zie [HDInsight-clusters configureren met ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -41,7 +41,7 @@ Zie [verbinding maken met HDInsight (Hadoop) via SSH](../hdinsight-hadoop-linux-
    ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
    ```
 
-2. Gebruik de opdracht om de `klist` geslaagde Kerberos-verificatie te controleren. Als dat niet het `kinit` geval is, gebruikt u om Kerberos-verificatie te starten.
+2. Gebruik de opdracht `klist` om de geslaagde Kerberos-verificatie te controleren. Als dat niet het geval is, gebruikt u `kinit` om Kerberos-verificatie te starten.
 
 3. Meld u aan bij de HDInsight-gateway om het OAuth-token te registreren dat vereist is voor toegang tot Azure Data Lake Storage:   
      ```bash
@@ -61,9 +61,9 @@ Oozie-werk stroom definities worden geschreven in Apache Hadoop process Definiti
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
-   Vervang `DomainUser` door de gebruikers naam van het domein. 
-   Vervang `DomainUserPath` door het pad naar de basismap voor de domein gebruiker. 
-   Vervang `ClusterVersion` door de HDP-versie (cluster Hortonworks data platform).
+   Vervang `DomainUser` door de domein gebruikers naam.
+   Vervang `DomainUserPath` door het pad naar de basismap voor de domein gebruiker.
+   Vervang `ClusterVersion` door de versie van het cluster data platform.
 
 2. Gebruik de volgende instructie voor het maken en bewerken van een nieuw bestand:
    ```bash
@@ -184,9 +184,9 @@ Oozie-werk stroom definities worden geschreven in Apache Hadoop process Definiti
 
      - Met de acties Hive Server 2 en Hive server 1 wordt een query uitgevoerd op een voor beeld van een Hive-tabel die wordt meegeleverd met HDInsight.
 
-     De Hive-acties maken gebruik van de referenties die zijn gedefinieerd in de sectie referenties voor `cred` verificatie met behulp van het sleutel woord in het actie-element.
+     De Hive-acties gebruiken de referenties die zijn gedefinieerd in de sectie referenties voor verificatie met behulp van het sleutel woord `cred` in het actie-element.
 
-6. Gebruik de volgende opdracht om het `workflow.xml` bestand te kopiëren naar: `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`
+6. Gebruik de volgende opdracht om het `workflow.xml` bestand te kopiëren naar `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
      ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
      ```
@@ -219,11 +219,11 @@ Oozie-werk stroom definities worden geschreven in Apache Hadoop process Definiti
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   * Gebruik de `adl://home` URI voor de `nameNode` eigenschap als u Azure data Lake Storage gen1 hebt als uw primaire cluster opslag. Als u Azure Blob Storage gebruikt, wijzigt u dit in `wasb://home`. Als u Azure Data Lake Storage Gen2 gebruikt, wijzigt u dit in `abfs://home`.
+   * Gebruik de `adl://home`-URI voor de eigenschap `nameNode` als u Azure Data Lake Storage Gen1 als uw primaire cluster opslag. Als u Azure Blob Storage gebruikt, wijzigt u dit in `wasb://home`. Als u Azure Data Lake Storage Gen2 gebruikt, wijzigt u dit in `abfs://home`.
    * Vervang `domainuser` door de gebruikers naam voor het domein.  
-   * Vervang `ClusterShortName` door de korte naam voor het cluster. Als de cluster naam bijvoorbeeld https:// *[voor beeld koppeling]* sechadoopcontoso.azurehdisnight.net is, zijn de `clustershortname` eerste zes tekens van het cluster: **sechad**.  
+   * Vervang `ClusterShortName` door de korte naam voor het cluster. Als de cluster naam bijvoorbeeld https:// *[voor beeld koppeling]* sechadoopcontoso.azurehdisnight.net is, is de `clustershortname` de eerste zes tekens van het cluster: **sechad**.  
    * Vervang `jdbcurlvalue` door de JDBC-URL uit de Hive-configuratie. Een voor beeld is JDBC: hive2://headnodehost: 10001/; transportMode = http.      
-   * Als u het bestand wilt opslaan, selecteert u CTRL + `Y`X, voert u in en selecteert u vervolgens **Enter**.
+   * Als u het bestand wilt opslaan, selecteert u CTRL + X, voert u `Y`in en selecteert u vervolgens **Enter**.
 
    Dit eigenschappen bestand moet lokaal aanwezig zijn bij het uitvoeren van Oozie-taken.
 
@@ -315,7 +315,7 @@ In de controle logboeken van zwerver voor Hive Server 2 acties wordt weer gegeve
 
 ## <a name="configure-user-authorization-in-oozie"></a>Gebruikers autorisatie in Oozie configureren
 
-Oozie heeft zelf een configuratie voor gebruikers autorisatie waarmee gebruikers de taken van andere gebruikers kunnen stoppen of verwijderen. Als u deze configuratie wilt inschakelen, `oozie.service.AuthorizationService.security.enabled` stelt `true`u de in op. 
+Oozie heeft zelf een configuratie voor gebruikers autorisatie waarmee gebruikers de taken van andere gebruikers kunnen stoppen of verwijderen. Als u deze configuratie wilt inschakelen, stelt u de `oozie.service.AuthorizationService.security.enabled` in op `true`. 
 
 Zie voor meer informatie [Apache Oozie-installatie en-configuratie](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 

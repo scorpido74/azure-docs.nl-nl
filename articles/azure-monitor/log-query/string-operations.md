@@ -1,24 +1,18 @@
 ---
 title: Werken met teken reeksen in Azure Monitor-logboek query's | Microsoft Docs
 description: Hierin wordt beschreven hoe u een aantal andere bewerkingen voor teken reeksen in Azure Monitor-logboek query's bewerkt, vergelijkt, doorzoekt en uitvoert.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 08/16/2018
+ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741468"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932939"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Werken met teken reeksen in Azure Monitor-logboek query's
 
@@ -34,7 +28,7 @@ Elk teken in een teken reeks heeft een index nummer, afhankelijk van de locatie.
 
 
 ## <a name="strings-and-escaping-them"></a>Teken reeksen en Escapes
-Teken reeks waarden worden verpakt met één of dubbele aanhalings tekens. Back slash\\() wordt gebruikt om tekens naar het volgende teken te escapen, zoals \t voor Tab, \n voor nieuwe regel \" en het aanhalings teken zelf.
+Teken reeks waarden worden verpakt met één of dubbele aanhalings tekens. Back slash (\\) wordt gebruikt om tekens naar het volgende teken te escapen, zoals \t voor Tab, \n voor nieuwe regel en \" het aanhalings teken zelf.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -44,7 +38,7 @@ print "this is a 'string' literal in double \" quotes"
 print 'this is a "string" literal in single \' quotes'
 ```
 
-Als u wilt\\voor komen dat "" als escape teken fungeert,\@voegt u "" toe als voor voegsel voor de teken reeks:
+Als u wilt voor komen dat '\\' als escape teken fungeert, voegt u '\@' toe als voor voegsel voor de teken reeks:
 
 ```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
@@ -53,7 +47,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Teken reeks vergelijkingen
 
-Operator       |Description                         |Hoofdletter gevoelig|Voor beeld (opbrengst `true`)
+Operator       |Beschrijving                         |Hoofdletter gevoelig|Voor beeld (levert `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Is gelijk aan                              |Ja           |`"aBc" == "aBc"`
 `!=`           |Niet gelijk aan                          |Ja           |`"abc" != "ABC"`
@@ -97,10 +91,10 @@ Telt het aantal exemplaren van een subtekenreeks in een teken reeks. Kan teken r
 countof(text, search [, kind])
 ```
 
-### <a name="arguments"></a>Argumenten:
-- `text`-De invoer teken reeks 
-- `search`-Teken reeks of reguliere expressie die in tekst moet worden gezocht.
-- `kind` - normale | _regex_ (standaard: normaal).
+### <a name="arguments"></a>Opmerkingen
+- `text`-de invoer teken reeks 
+- `search` teken reeks of reguliere expressie die binnen de tekst moet komen.
+- `kind` - _normale_ | _regex_ (standaard: normaal).
 
 ### <a name="returns"></a>Retourneert
 
@@ -139,10 +133,10 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumenten
 
-- `regex`-Een reguliere expressie.
-- `captureGroup`-Een positieve gehele getallen constante die aangeeft welke opname groep moet worden geëxtraheerd. 0 voor de volledige overeenkomst, 1 voor de waarde die overeenkomt met het eerste ' (' haakje ') ' in de reguliere expressie, 2 of meer voor de volgende haakjes.
-- `text`-Een teken reeks die moet worden gezocht.
-- `typeLiteral`-Een optioneel type letterlijke waarde (bijvoorbeeld typeof (Long)). Als deze wordt vermeld, wordt de geëxtraheerde subtekenreeks geconverteerd naar dit type.
+- `regex`-een reguliere expressie.
+- `captureGroup`-een positieve integer-constante die aangeeft welke opname groep moet worden geëxtraheerd. 0 voor de volledige overeenkomst, 1 voor de waarde die overeenkomt met het eerste ' (' haakje ') ' in de reguliere expressie, 2 of meer voor de volgende haakjes.
+- `text`: een teken reeks die moet worden gezocht.
+- `typeLiteral`-een optioneel type letterlijke waarde (bijvoorbeeld typeof (Long)). Als deze wordt vermeld, wordt de geëxtraheerde subtekenreeks geconverteerd naar dit type.
 
 ### <a name="returns"></a>Retourneert
 De subtekenreeks die overeenkomt met de aangegeven captureGroup van de opname groep, optioneel geconverteerd naar typeLiteral.
@@ -168,7 +162,7 @@ Heartbeat
 | project ComputerIP, last_octet, next_ip
 ```
 
-In het onderstaande voor beeld zoekt de teken reeks tracering naar een definitie van ' duration '. De overeenkomst wordt in *werkelijkheid* geconverteerd en vermenigvuldigd met een tijd constante (1 s) *die de duur van het type time*-out overgeeft.
+In het onderstaande voor beeld zoekt de teken reeks *tracering* naar een definitie van ' duration '. De overeenkomst wordt in *werkelijkheid* geconverteerd en vermenigvuldigd met een tijd constante (1 s) *die de duur van het type time-out overgeeft*.
 ```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
@@ -234,7 +228,7 @@ De uitkomst is:
 ```
 
 
-## <a name="replace"></a>replace
+## <a name="replace"></a>vervangen
 
 Vervangt alle regex-overeenkomsten met een andere teken reeks. 
 
@@ -246,9 +240,9 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumenten
 
-- `regex`-De reguliere expressie die moet worden vergeleken met. Het kan opname groepen bevatten in ' (' haakjes ') '.
-- `rewrite`-De vervangende regex voor een overeenkomst die is gemaakt door de overeenkomende regex. Gebruik \ 0 om te verwijzen naar de volledige overeenkomst, \ 1 voor de eerste vastleg groep, \ 2, enzovoort voor volgende opname groepen.
-- `input_text`-De invoer teken reeks waarnaar moet worden gezocht.
+- `regex`: de reguliere expressie die moet worden vergeleken met. Het kan opname groepen bevatten in ' (' haakjes ') '.
+- `rewrite`-de vervangende regex voor een overeenkomst die is gemaakt met een overeenkomende regex. Gebruik \ 0 om te verwijzen naar de volledige overeenkomst, \ 1 voor de eerste vastleg groep, \ 2, enzovoort voor volgende opname groepen.
+- `input_text`: de invoer teken reeks waarnaar moet worden gezocht.
 
 ### <a name="returns"></a>Retourneert
 De tekst na het vervangen van alle treffers van regex met evaluaties van herschrijven. Overeenkomsten overlappen elkaar niet.
@@ -266,7 +260,7 @@ Kan de volgende resultaten hebben:
 
 Activiteit                                        |Geplaatst
 ------------------------------------------------|----------------------------------------------------------
-4663-er is geprobeerd om toegang te krijgen tot een object  |Activiteits-ID 4663: Er is geprobeerd om toegang te krijgen tot een object.
+4663-er is geprobeerd om toegang te krijgen tot een object  |Activiteits-ID 4663: er is geprobeerd om toegang te krijgen tot een object.
 
 
 ## <a name="split"></a>split
@@ -278,11 +272,11 @@ Splitst een opgegeven teken reeks volgens een opgegeven scheidings teken en reto
 split(source, delimiter [, requestedIndex])
 ```
 
-### <a name="arguments"></a>Argumenten:
+### <a name="arguments"></a>Opmerkingen
 
-- `source`-De teken reeks die moet worden gesplitst op basis van het opgegeven scheidings teken.
-- `delimiter`-Het scheidings teken dat wordt gebruikt om de bron teken reeks te splitsen.
-- `requestedIndex`-Een optionele op nul gebaseerde index. Indien opgegeven, bevat de geretourneerde teken reeks matrix alleen dat item (indien aanwezig).
+- `source`-de teken reeks die moet worden gesplitst op basis van het opgegeven scheidings teken.
+- `delimiter`-het scheidings teken dat wordt gebruikt om de bron teken reeks te splitsen.
+- `requestedIndex`-een optionele index op basis van nul. Indien opgegeven, bevat de geretourneerde teken reeks matrix alleen dat item (indien aanwezig).
 
 
 ### <a name="examples"></a>Voorbeelden
@@ -335,11 +329,11 @@ Hiermee wordt een subtekenreeks geëxtraheerd uit een bepaalde bron teken reeks,
 substring(source, startingIndex [, length])
 ```
 
-### <a name="arguments"></a>Argumenten:
+### <a name="arguments"></a>Opmerkingen
 
-- `source`-De bron teken reeks waaruit de subtekenreeks wordt opgehaald.
-- `startingIndex`-De begin positie op basis van nul van de aangevraagde subtekenreeks.
-- `length`-Een optionele para meter die kan worden gebruikt om de aangevraagde lengte van de geretourneerde subtekenreeks op te geven.
+- `source`-de bron teken reeks waaruit de subtekenreeks wordt opgehaald.
+- `startingIndex`-de begin positie op basis van nul van de aangevraagde subtekenreeks.
+- `length`: een optionele para meter die kan worden gebruikt om de aangevraagde lengte van de geretourneerde subtekenreeks op te geven.
 
 ### <a name="examples"></a>Voorbeelden
 ```Kusto

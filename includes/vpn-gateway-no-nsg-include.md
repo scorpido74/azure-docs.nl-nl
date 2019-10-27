@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8ac976e8c186add7a4f0901047fa5d36b51781dd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bbd443c13ac0b79c434d294ecd69a64941ab0d36
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67175862"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935533"
 ---
 > [!IMPORTANT]
-> Als u met gatewaysubnetten werkt, vermijd dan om een netwerkbeveiligingsgroep (NSG) te koppelen aan het gatewaysubnet. Een koppeling van een netwerkbeveiligingsgroep naar dit subnet zorgt er mogelijk voor dat uw VPN-gateway niet meer werkt zoals verwacht. Raadpleeg voor meer informatie over netwerkbeveiligingsgroepen [Wat is een netwerkbeveiligingsgroep?](../articles/virtual-network/security-overview.md)
+> Als u met gatewaysubnetten werkt, vermijd dan om een netwerkbeveiligingsgroep (NSG) te koppelen aan het gatewaysubnet. Het koppelen van een netwerk beveiligings groep aan dit subnet kan ertoe leiden dat uw Virtual Network gateway (VPN, Express route gateway) niet meer werkt zoals verwacht. Raadpleeg voor meer informatie over netwerkbeveiligingsgroepen [Wat is een netwerkbeveiligingsgroep?](../articles/virtual-network/security-overview.md)
 > 
 > 

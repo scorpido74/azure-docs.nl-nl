@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1b270663a83461ecd777599fead9d717e93482c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091454"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930891"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive-workloads migreren naar HDInsight 4,0
 
@@ -30,14 +30,14 @@ In dit artikel komen de volgende onderwerpen aan bod:
 Een voor deel van het onderdeel is de mogelijkheid om meta gegevens te exporteren naar een externe data base (waarnaar wordt verwezen als het Hive-archief). De **Hive-meta Store** is verantwoordelijk voor het opslaan van tabel statistieken, met inbegrip van de tabel opslag locatie, kolom namen en tabel index informatie. Het schema van de meta store-data base wijkt af van de Hive-versies. Voer de volgende stappen uit om een HDInsight 3,6-Hive-meta Store bij te werken, zodat deze compatibel is met HDInsight 4,0.
 
 1. Maak een nieuwe kopie van uw externe meta Store. Voor HDInsight 3,6 en HDInsight 4,0 zijn verschillende meta Store-schema's vereist en er kan geen enkele meta Store worden gedeeld. Zie [externe meta gegevensopslag plaatsen in azure HDInsight gebruiken](../hdinsight-use-external-metadata-stores.md) voor meer informatie over het koppelen van een externe metadata voor een HDInsight-cluster. 
-2. Start een script actie op basis van uw HDI 3,6-cluster, met ' hoofd knooppunten ' als knooppunt type voor uitvoering. Plak de volgende URI in het tekstvak ' bash-script-URI ' https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh:. Voer in het tekstvak ' argumenten ' de servername, de data base, de gebruikers naam en het wacht woord in voor de gekopieerde Hive-metastore, gescheiden door spaties. Neem '. database.windows.net ' niet op wanneer u servername opgeeft.
+2. Start een script actie op basis van uw HDI 3,6-cluster, met ' hoofd knooppunten ' als knooppunt type voor uitvoering. Plak de volgende URI in het tekstvak ' bash-script-URI ': https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh. Voer in het tekstvak ' argumenten ' de servername, de data base, de gebruikers naam en het wacht woord in voor de **gekopieerde** Hive-metastore, gescheiden door spaties. Neem '. database.windows.net ' niet op wanneer u servername opgeeft.
 
 > [!Warning]
 > De upgrade waarmee het meta gegevens schema van HDInsight 3,6 wordt geconverteerd naar het HDInsight 4,0-schema, kan niet worden omgekeerd.
 
 ## <a name="migrate-hive-tables-to-hdinsight-40"></a>Hive-tabellen migreren naar HDInsight 4,0
 
-Na het volt ooien van de vorige set stappen voor het migreren van de Hive-meta Store naar HDInsight 4,0, zijn de tabellen en data bases die zijn vastgelegd in de meta Store, zichtbaar `show tables` vanuit `show databases` het HDInsight 4,0-cluster door uit te voeren of vanuit het cluster. . Zie [query's](#query-execution-across-hdinsight-versions) uitvoeren in hdinsight-versies voor meer informatie over het uitvoeren van Query's in hdinsight 4,0-clusters.
+Na het volt ooien van de vorige set stappen voor het migreren van de Hive-meta Store naar HDInsight 4,0, zijn de tabellen en data bases die zijn vastgelegd in de meta Store, zichtbaar vanuit het HDInsight 4,0-cluster door `show tables` of `show databases` vanuit het cluster uit te voeren. Zie [query's](#query-execution-across-hdinsight-versions) uitvoeren in hdinsight-versies voor meer informatie over het uitvoeren van Query's in hdinsight 4,0-clusters.
 
 De werkelijke gegevens uit de tabellen zijn echter niet toegankelijk totdat het cluster toegang heeft tot de benodigde opslag accounts. Voer de volgende stappen uit om ervoor te zorgen dat uw HDInsight 4,0-cluster toegang heeft tot dezelfde gegevens als uw oude HDInsight 3,6-cluster:
 
@@ -66,8 +66,8 @@ Mogelijk moet u de eigenschappen van uw magazijn aanpassen voordat u de migratie
 Zodra de tabel eigenschappen correct zijn ingesteld, voert u het hulp programma voor het migratie hulpprogramma voor het Hive-magazijn uit vanuit een van de cluster-hoofd knooppunten met behulp van de SSH-Shell:
 
 1. Maak via SSH verbinding met uw cluster-hoofd knooppunt. Zie [verbinding maken met HDInsight via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) voor instructies.
-1. Een aanmeldings shell openen als de Hive-gebruiker door uit te voeren`sudo su - hive`
-1. Bepaal de versie van de Hortonworks-gegevens platform stack `ls /usr/hdp`door uit te voeren. Hiermee wordt een versie teken reeks weer gegeven die u moet gebruiken in de volgende opdracht.
+1. Open een aanmeldings shell als de Hive-gebruiker door uit te voeren `sudo su - hive`
+1. Bepaal de versie van de gegevens platform stack door `ls /usr/hdp`uit te voeren. Hiermee wordt een versie teken reeks weer gegeven die u moet gebruiken in de volgende opdracht.
 1. Voer de volgende opdracht uit vanuit de shell. Vervang `${{STACK_VERSION}}` door de versie teken reeks uit de vorige stap:
 
 ```bash
@@ -99,7 +99,7 @@ In HDInsight 3,6 is de GUI-client voor interactie met hive-server de Hive-weer g
 
 Start een script actie op basis van uw cluster, met ' hoofd knooppunten ' als knooppunt type voor uitvoering. Plak de volgende URI in het tekstvak ' bash-script-URI ': https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh
 
-Wacht 5 tot 10 minuten en start vervolgens Data Analytics Studio met behulp van deze URL\<: https://clustername >. azurehdinsight. net/das/
+Wacht 5 tot 10 minuten en start vervolgens Data Analytics Studio met behulp van deze URL: https://\<clustername >. azurehdinsight. net/das/
 
 Als DAS is geïnstalleerd en u de query's die u hebt uitgevoerd, niet in de query viewer ziet, voert u de volgende stappen uit:
 

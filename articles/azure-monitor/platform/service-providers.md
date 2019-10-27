@@ -1,94 +1,88 @@
 ---
 title: Azure Monitor voor service providers | Microsoft Docs
 description: Met Azure Monitor kunt u Msp's (Managed Service Providers), grote ondernemingen, Isv's (Independent Software Vendors) en hosting service providers servers beheren en bewaken in de on-premises of Cloud infrastructuur van de klant.
-services: log-analytics
-documentationcenter: ''
-author: MeirMen
-manager: jochan
-editor: ''
-ms.assetid: c07f0b9f-ec37-480d-91ec-d9bcf6786464
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/06/2019
+author: MeirMen
 ms.author: meirm
-ms.openlocfilehash: 971757a4778dd50be486bead0c50fd6b3a25002e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 08/06/2019
+ms.openlocfilehash: b0f25d01421edd329b03d8f2b7e1aafaa2ba67d5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839274"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932065"
 ---
 # <a name="azure-monitor-for-service-providers"></a>Azure Monitor voor service providers
 Log Analytics-werk ruimten in Azure Monitor kunnen Msp's (Managed Service Providers), grote ondernemingen, onafhankelijke software leveranciers (Isv's) en hosting serviceproviders servers in de on-premises of Cloud infrastructuur van de klant beheren en bewaken. 
 
-Grote ondernemingen delen veel overeenkomsten met serviceproviders, met name wanneer er een centrale IT-team dat verantwoordelijk is is voor het beheer van IT voor veel verschillende bedrijfseenheden. Voor het gemak in dit document wordt de term gebruikt *serviceprovider* maar dezelfde functionaliteit is ook beschikbaar voor ondernemingen en andere klanten.
+Grote bedrijven delen veel overeenkomsten met service providers, met name wanneer er sprake is van een gecentraliseerd IT-team dat verantwoordelijk is voor het beheer van een groot aantal verschillende bedrijfs eenheden. Voor het gemak gebruikt dit document de term *service provider* , maar dezelfde functionaliteit is ook beschikbaar voor ondernemingen en andere klanten.
 
 Voor partners en service providers die deel uitmaken van het programma [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) , is Log Analytics in azure monitor een van de Azure-Services die beschikbaar zijn in [Azure CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
 
-## <a name="architectures-for-service-providers"></a>Architecturen voor serviceproviders
+## <a name="architectures-for-service-providers"></a>Architecturen voor service providers
 
-Log Analytics-werk ruimten bieden een methode voor de beheerder om de stroom en isolatie van [logboek](data-platform-logs.md) gegevens te beheren en een architectuur te maken voor de specifieke zakelijke behoeften. In [dit artikel](design-logs-deployment.md) worden de aandachtspunten voor het ontwerp, de implementatie en de migratie van een werk ruimte beschreven en het artikel [toegangs beheer](manage-access.md) bevat informatie over het Toep assen en beheren van machtigingen voor logboek gegevens. Serviceproviders zijn aanvullende overwegingen.
+Log Analytics-werk ruimten bieden een methode voor de beheerder om de stroom en isolatie van [logboek](data-platform-logs.md) gegevens te beheren en een architectuur te maken voor de specifieke zakelijke behoeften. In [dit artikel](design-logs-deployment.md) worden de aandachtspunten voor het ontwerp, de implementatie en de migratie van een werk ruimte beschreven en het artikel [toegangs beheer](manage-access.md) bevat informatie over het Toep assen en beheren van machtigingen voor logboek gegevens. Service providers hebben extra overwegingen.
 
-Er zijn drie mogelijke architecturen voor serviceproviders met betrekking tot de Log Analytics-werkruimten:
+Er zijn drie mogelijke architecturen voor service providers die betrekking hebben op Log Analytics-werk ruimten:
 
-### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Gedistribueerd - worden logboeken opgeslagen in werkruimten die zich in de tenant van de klant 
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. gedistribueerde logboeken worden opgeslagen in werk ruimten die zich bevinden in de Tenant van de klant 
 
-Een werkruimte wordt in deze architectuur wordt geïmplementeerd in de tenant van de klant die wordt gebruikt voor de logboeken van de betreffende klant. De serviceprovider-beheerders krijgen toegangsrechten voor het gebruik van deze werkruimte [gastgebruikers van Azure Active Directory (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). De serviceprovider-beheerders hebben om over te schakelen naar de map van de klant in Azure portal om toegang tot deze werkruimten te kunnen.
+In deze architectuur wordt een werk ruimte geïmplementeerd in de Tenant van de klant die wordt gebruikt voor alle logboeken van die klant. De beheerders van de service provider krijgen toegang tot deze werk ruimte via [Azure Active Directory gast gebruikers (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). De beheerder van de service provider moet overschakelen naar de map van de klant in de Azure Portal om toegang te kunnen krijgen tot deze werk ruimten.
 
-De voordelen van deze architectuur zijn:
-* De klant kunt beheren de toegang tot de logboeken met behulp van hun eigen [op basis van de rol](https://docs.microsoft.com/azure/role-based-access-control/overview).
-* Elke klant kan hebben verschillende instellingen voor hun werkruimte zoals bewaren en gegevens beperking.
-* Isolatie tussen klanten voor regelgeving en nalevingsbeleid.
-* De kosten in rekening gebracht voor elke werkruimte worden doorgevoerd in het abonnement van de klant.
-* Logboeken kunnen worden verzameld vanuit allerlei typen resources, niet alleen-agent op basis van. Bijvoorbeeld: auditlogboeken van Azure.
-
-De nadelen van deze architectuur zijn:
-* Het is moeilijker om de service-provider voor het beheren van een groot aantal klanten tenants in één keer.
-* Serviceprovider-beheerders hebben om te worden ingericht in de map van de klant.
-* De service-provider kan geen gegevens analyseren in zijn klanten.
-
-### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. Centraal - logboeken worden opgeslagen in een werkruimte zich bevindt in de tenant van serviceprovider
-
-In deze architectuur, worden de logboeken worden niet opgeslagen in de tenants van de klant, maar alleen op een centrale locatie binnen een van de serviceprovider-abonnementen. De agents die zijn geïnstalleerd op virtuele machines van de klant worden geconfigureerd voor het verzenden van hun logboeken voor deze werkruimte met behulp van de werkruimte-ID en de geheime sleutel.
-
-De voordelen van deze architectuur zijn:
-* Het is eenvoudig voor het beheren van een groot aantal klanten en ze naar verschillende back-endsystemen integreren.
-
-* De serviceprovider volledig eigenaar is van de logboeken en de verschillende artefacten, zoals functies en opgeslagen query's.
-
-* De serviceprovider kan analyses uitvoeren voor alle klanten.
+De voor delen van deze architectuur zijn:
+* De klant kan de toegang tot de logboeken beheren met behulp van hun eigen [op rollen gebaseerde toegang](https://docs.microsoft.com/azure/role-based-access-control/overview).
+* Elke klant kan verschillende instellingen voor hun werk ruimte hebben, zoals retentie en het afgetopten van gegevens.
+* Isolatie tussen klanten voor regelgevings-en nalevings.
+* De kosten voor elke werk ruimte worden meegenomen in het abonnement van de klant.
+* Logboeken kunnen worden verzameld van alle typen resources, niet alleen op basis van een agent. Bijvoorbeeld Azure audit logs.
 
 De nadelen van deze architectuur zijn:
-* Deze architectuur is alleen van toepassing op de VM-gegevens op basis van een agent, er wordt geen betrekking op gegevensbronnen PaaS, SaaS en Azure-infrastructuur.
+* Het is moeilijker voor de service provider om een groot aantal klant tenants tegelijk te beheren.
+* Beheerders van de service provider moeten worden ingericht in de klanten Directory.
+* De service provider kan geen gegevens over de klanten analyseren.
 
-* Het is mogelijk moeilijk te scheiden van de gegevens tussen de klanten wanneer ze worden samengevoegd in één werkruimte. De enige methode om dit te doen is voor het gebruik van de computer volledig gekwalificeerde domeinnaam (FQDN) of via het Azure-abonnement-id. 
+### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. centrale logboeken worden opgeslagen in een werk ruimte die zich bevindt in de Tenant van de service provider
 
-* Alle gegevens van alle klanten worden, opgeslagen in dezelfde regio met één factuur en dezelfde bewaartermijn en configuratie-instellingen.
+In deze architectuur worden de logboeken niet opgeslagen in de tenants van de klant, maar alleen op een centrale locatie binnen een van de abonnementen van de service provider. De agents die zijn geïnstalleerd op de virtuele machines van de klant, zijn geconfigureerd voor het verzenden van hun logboeken naar deze werk ruimte met behulp van de werk ruimte-ID en de geheime sleutel.
 
-* Azure-infrastructuur- en PaaS-services zoals Azure Diagnostics- en auditlogboeken van Azure moet de werkruimte zich in dezelfde tenant als de resource, dus kunnen ze de logboeken verzenden naar de centrale werkruimte.
+De voor delen van deze architectuur zijn:
+* Het is eenvoudig om een groot aantal klanten te beheren en ze te integreren op verschillende back-end-systemen.
 
-* Alle VM-agents van alle klanten worden met dezelfde werk ruimte-ID en-sleutel geauthenticeerd naar de centrale werk ruimte. Er is geen methode voor het blokkeren van Logboeken van een specifieke klant zonder te onderbreken van andere klanten.
+* De service provider heeft volledig eigendom van de logboeken en de verschillende artefacten, zoals functies en opgeslagen query's.
 
-### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hybride - logboeken worden opgeslagen in de werkruimte zich in de tenant van de klant en sommige hiervan naar een centrale locatie worden opgehaald.
+* De service provider kan analyses uitvoeren voor alle klanten.
 
-De derde architectuur combineren tussen de twee opties. Deze is gebaseerd op de eerste gedistribueerde architectuur waar de logboeken lokaal op elke klant worden, maar sommige mechanisme gebruiken voor het maken van een centrale opslagplaats voor Logboeken. Een gedeelte van de logboeken worden opgehaald in een centrale locatie voor rapportage en analyse. Dit gedeelte wordt mogelijk beperkt aantal gegevenstypen of een samenvatting van de activiteit zoals dagelijks statistieken.
+De nadelen van deze architectuur zijn:
+* Deze architectuur is alleen van toepassing op VM-gegevens op basis van een agent, die geen PaaS, SaaS en Azure Fabric-gegevens bronnen bevat.
+
+* Het kan lastig zijn om de gegevens tussen de klanten te scheiden wanneer ze in één werk ruimte worden samengevoegd. De enige manier om dit te doen is door de Fully Qualified Domain Name van de computer (FQDN) of via de ID van het Azure-abonnement te gebruiken. 
+
+* Alle gegevens van alle klanten worden opgeslagen in dezelfde regio met één factuur en dezelfde Bewaar periode en configuratie-instellingen.
+
+* Voor Azure Fabric-en PaaS-services zoals Azure Diagnostics en Azure-audit logboeken moet de werk ruimte zich in dezelfde Tenant bevinden als de resource, waardoor de logboeken niet kunnen worden verzonden naar de centrale werk ruimte.
+
+* Alle VM-agents van alle klanten worden met dezelfde werk ruimte-ID en-sleutel geauthenticeerd naar de centrale werk ruimte. Er is geen methode om logboeken van een specifieke klant te blok keren zonder andere klanten te onderbreken.
+
+### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. hybride logboeken worden opgeslagen in de werk ruimte die zich bevindt in de Tenant van de klant en sommige daarvan worden naar een centrale locatie verplaatst.
+
+De derde architectuur mix tussen de twee opties. Het is gebaseerd op de eerste gedistribueerde architectuur waarbij de logboeken lokaal zijn voor elke klant, maar een bepaald mechanisme gebruiken om een centrale opslag plaats van logboeken te maken. Een gedeelte van de logboeken wordt binnengebracht in een centrale locatie voor rapportage en analyse. Dit gedeelte kan klein aantal gegevens typen zijn of een samen vatting van de activiteit, zoals dagelijkse statistieken.
 
 Er zijn twee opties voor het implementeren van Logboeken op een centrale locatie:
 
-1. Centrale werk ruimte: De service provider kan een werk ruimte maken in de Tenant en een script gebruiken dat gebruikmaakt van de [query-API](https://dev.loganalytics.io/) met de API voor [gegevens verzameling](../../azure-monitor/platform/data-collector-api.md) om de gegevens van de verschillende werk ruimten naar deze centrale locatie te brengen. Een andere optie, dan een script, is het gebruik [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+1. Centrale werk ruimte: de service provider kan een werk ruimte maken in de Tenant en een script gebruiken dat gebruikmaakt van de [query-API](https://dev.loganalytics.io/) met de [API voor gegevens verzameling](../../azure-monitor/platform/data-collector-api.md) om de gegevens van de verschillende werk ruimten naar deze centrale locatie te brengen. Een andere optie, behalve een script, is het gebruik van [Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Power BI als centrale locatie: Power BI kan fungeren als de centrale locatie wanneer de verschillende werk ruimten gegevens exporteren met behulp van de integratie tussen de Log Analytics-werk ruimte en [Power bi](../../azure-monitor/platform/powerbi.md). 
+2. Power BI als centrale locatie: Power BI kunnen fungeren als centrale locatie wanneer de verschillende werk ruimten gegevens exporteren met behulp van de integratie tussen de Log Analytics-werk ruimte en [Power bi](../../azure-monitor/platform/powerbi.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Automatiseer het maken en de configuratie van werkruimten met behulp van [Resource Manager-sjablonen](template-workspace-configuration.md)
+* Het maken en configureren van werk ruimten automatiseren met behulp van [Resource Manager-sjablonen](template-workspace-configuration.md)
 
-* Maken van werkruimten met behulp van automatiseren [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) 
+* Het maken van werk ruimten automatiseren met [Power shell](../../azure-monitor/platform/powershell-workspace-configuration.md) 
 
-* Gebruik [waarschuwingen](../../azure-monitor/platform/alerts-overview.md) om te integreren met bestaande systemen
+* [Waarschuwingen](../../azure-monitor/platform/alerts-overview.md) gebruiken om te integreren met bestaande systemen
 
-* Samenvatting rapporten genereren met [Power BI](../../azure-monitor/platform/powerbi.md)
+* Samenvattings rapporten genereren met behulp van [Power bi](../../azure-monitor/platform/powerbi.md)
 
-* Bekijk het proces van [configureren van Log Analytics en Power BI voor het bewaken van meerdere CSP-klanten](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)
+* Controleer het proces van het [configureren van log Analytics en Power bi om meerdere CSP-klanten te bewaken](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

@@ -1,70 +1,64 @@
 ---
-title: Problemen met Azure Log Analytics VM-extensie in Azure Monitor oplossen | Microsoft Docs
-description: Beschrijf de symptomen, de oorzaken en de oplossing voor de meest voorkomende problemen met de Log Analytics VM-extensie voor Windows en Linux Azure-VM's.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
-ms.service: log-analytics
+title: Problemen met de extensie Azure Log Analytics VM oplossen in Azure Monitor | Microsoft Docs
+description: Beschrijf de symptomen, oorzaken en oplossingen voor de meest voorkomende problemen met de Log Analytics VM-extensie voor virtuele Windows-en Linux Azure-machines.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/06/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: dd5e0749116ef335887ea634b9d2790c63bf171d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/06/2019
+ms.openlocfilehash: 9ec0d5036632c575415a7de19b9ea35eb2a28118
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751922"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931933"
 ---
-# <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Het oplossen van de Log Analytics VM-extensie in Azure Monitor
-Dit artikel bevat informatie over het oplossen van fouten die u mogelijk ondervindt met de Log Analytics VM-extensie voor Windows en Linux virtuele machines die worden uitgevoerd op Microsoft Azure en duidt op mogelijke oplossingen om op te lossen.
+# <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Problemen met de Log Analytics VM-extensie in Azure Monitor oplossen
+Dit artikel biedt hulp bij het oplossen van problemen die u mogelijk ondervindt met de Log Analytics VM-extensie voor virtuele Windows-en Linux-machines die worden uitgevoerd op Microsoft Azure, en stelt mogelijke oplossingen voor om deze op te lossen.
 
-Als u wilt controleren of de status van de extensie, moet u de volgende stappen uitvoeren vanuit de Azure-portal.
+Als u de status van de uitbrei ding wilt controleren, voert u de volgende stappen uit vanaf de Azure Portal.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-2. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **virtuele machines**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **virtuele machines**.
-3. In de lijst met virtuele machines, zoek en selecteer deze.
-3. Klik op de virtuele machine, **extensies**.
-4. Controleer of de extensie van Log Analytics is ingeschakeld of niet in de lijst.  Voor Linux, de agent wordt vermeld als **OMSAgentforLinux** en voor Windows, de agent wordt vermeld als **MicrosoftMonitoringAgent**.
+2. Klik in Azure Portal op **Alle services**. Typ **virtuele machines**in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **virtuele machines**.
+3. Zoek en selecteer deze in de lijst met virtuele machines.
+3. Klik op de virtuele machine op **uitbrei dingen**.
+4. Controleer in de lijst of de uitbrei ding van de Log Analytics is ingeschakeld.  Voor Linux wordt de agent vermeld als **OMSAgentforLinux** en voor Windows, de agent wordt vermeld als **MicrosoftMonitoringAgent**.
 
-   ![Weergave van VM-extensie](./media/vmext-troubleshoot/log-analytics-vmview-extensions.png)
+   ![VM-extensie weergave](./media/vmext-troubleshoot/log-analytics-vmview-extensions.png)
 
-4. Klik op de extensie voor meer informatie. 
+4. Klik op de uitbrei ding om details weer te geven. 
 
-   ![Details van de VM-extensie](./media/vmext-troubleshoot/log-analytics-vmview-extensiondetails.png)
+   ![Details VM-extensie](./media/vmext-troubleshoot/log-analytics-vmview-extensiondetails.png)
 
-## <a name="troubleshooting-azure-windows-vm-extension"></a>Oplossen van problemen met Azure Windows VM-extensie
+## <a name="troubleshooting-azure-windows-vm-extension"></a>Problemen met Azure Windows VM extension oplossen
 
-Als de *Microsoft Monitoring Agent* VM-extensie is niet geïnstalleerd of rapportage, kunt u de volgende stappen uit om het probleem oplossen uitvoeren.
+Als de VM-extensie van *micro soft Monitoring Agent* niet wordt geïnstalleerd of gerapporteerd, kunt u de volgende stappen uitvoeren om het probleem op te lossen.
 
-1. Controleer of de Azure VM-agent is geïnstalleerd en werkt goed met behulp van de stappen in [KB 2965986](https://support.microsoft.com/kb/2965986#mt1).
-   * U kunt ook het logboekbestand van de VM-agent bekijken `C:\WindowsAzure\logs\WaAppAgent.log`
-   * Als het logboek niet bestaat, wordt de VM-agent is niet geïnstalleerd.
-   * [De Azure VM-Agent installeren](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Bekijk de logboekbestanden van de Microsoft Monitoring Agent-VM-extensie in `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
-3. Zorg ervoor dat de virtuele machine kunt u PowerShell-scripts uitvoeren
-4. Controleer of de machtigingen op C:\Windows\temp nog niet is gewijzigd
-5. De status van de Microsoft Monitoring Agent weergeven door het volgende te typen in een verhoogde PowerShell-venster op de virtuele machine `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-6. Bekijk de logboekbestanden voor setup van Microsoft Monitoring Agent in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+1. Controleer of de Azure VM-agent is geïnstalleerd en correct werkt door de stappen in [KB 2965986](https://support.microsoft.com/kb/2965986#mt1)te gebruiken.
+   * U kunt ook het logboek bestand van de VM-agent bekijken `C:\WindowsAzure\logs\WaAppAgent.log`
+   * Als het logboek niet bestaat, is de VM-agent niet geïnstalleerd.
+   * [De Azure VM-agent installeren](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+2. Bekijk de logboek bestanden van de VM-extensie van micro soft monitoring agent in `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+3. Zorg ervoor dat de virtuele machine Power shell-scripts kan uitvoeren
+4. Controleren of de machtigingen voor C:\Windows\temp niet zijn gewijzigd
+5. Bekijk de status van de micro soft monitoring agent door het volgende te typen in een Power shell-venster met verhoogde bevoegdheden op de virtuele machine `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+6. Bekijk de logboek bestanden voor de installatie van micro soft monitoring agent in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
-Zie voor meer informatie, [Windows-extensies oplossen](../../virtual-machines/extensions/oms-windows.md).
+Zie [Troubleshooting Windows Extensions](../../virtual-machines/extensions/oms-windows.md)(Engelstalig) voor meer informatie.
 
-## <a name="troubleshooting-linux-vm-extension"></a>Linux VM-extensie oplossen
+## <a name="troubleshooting-linux-vm-extension"></a>Problemen met Linux VM extension oplossen
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
-Als de *Log Analytics-agent voor Linux* VM-extensie is niet geïnstalleerd of rapportage, kunt u de volgende stappen uit om het probleem oplossen uitvoeren.
+Als de *log Analytics agent voor Linux* VM-extensie niet wordt geïnstalleerd of gerapporteerd, kunt u de volgende stappen uitvoeren om het probleem op te lossen.
 
-1. Als de status van de extensie *onbekende* Controleer of de Azure VM-agent is geïnstalleerd en correct werkt aan de hand van het logboekbestand van de VM-agent `/var/log/waagent.log`
-   * Als het logboek niet bestaat, wordt de VM-agent is niet geïnstalleerd.
-   * [De Azure VM-Agent installeren op virtuele Linux-machines](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Raadpleeg voor andere slechte status, de Log Analytics-agent voor Linux VM-extensie de logboekbestanden worden opgeslagen `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` en `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
-3. Als de status van de extensie in orde is, maar gegevens is niet geüpload. Controleer de Log Analytics-agent voor Linux-logboekbestanden in `/var/opt/microsoft/omsagent/log/omsagent.log`
+1. Als de extensie status *onbekend* is, controleert u of de Azure VM-agent is geïnstalleerd en goed werkt door het logboek bestand van de VM-agent te controleren `/var/log/waagent.log`
+   * Als het logboek niet bestaat, is de VM-agent niet geïnstalleerd.
+   * [De Azure VM-agent installeren op virtuele Linux-machines](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+2. Raadpleeg voor andere slechte statussen de Log Analytics agent voor Linux VM extension-logboek bestanden in `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` en `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
+3. Als de status van de extensie in orde is, maar de gegevens niet worden geüpload, controleert u de Log Analytics agent voor Linux-logboek bestanden in `/var/opt/microsoft/omsagent/log/omsagent.log`
 
-Zie voor meer informatie, [Linux-extensies oplossen](../../virtual-machines/extensions/oms-linux.md).
+Zie [Troubleshooting Linux Extensions](../../virtual-machines/extensions/oms-linux.md)(Engelstalig) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Aanvullende richtlijnen voor probleemoplossing met betrekking tot de Log Analytics-agent voor Linux die op computers buiten Azure worden gehost, Zie [oplossen Azure Log Analytics Linux Agent](agent-linux-troubleshoot.md).  
+Zie [problemen met azure log Analytics Linux-agent oplossen](agent-linux-troubleshoot.md)voor aanvullende richt lijnen voor probleem oplossing met betrekking tot de log Analytics-agent voor Linux gehost op computers buiten Azure.  

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Face client-bibliotheek voor .NET | Microsoft Docs'
+title: 'Snelstartgids: Face client library voor .NET | Microsoft Docs'
 description: Ga aan de slag met de face-client bibliotheek voor .NET.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 09f46b3d938e57f996a18f1558b587dcf9e410a8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4f06e423c6dcc561ef8e51c33f24cd9f88a681b5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166479"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935894"
 ---
-# <a name="quickstart-face-client-library-for-net"></a>Quickstart: Face client-bibliotheek voor .NET
+# <a name="quickstart-face-client-library-for-net"></a>Snelstartgids: Face client library voor .NET
 
 Ga aan de slag met de face-client bibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. De Face-API-service biedt u toegang tot geavanceerde algoritmen voor het detecteren en herkennen van menselijke gezichten in afbeeldingen.
 
@@ -29,7 +29,7 @@ Gebruik de face-client bibliotheek voor .NET voor het volgende:
 * [Een gezicht identificeren](#identify-a-face)
 * [Een moment opname maken voor gegevens migratie](#take-a-snapshot-for-data-migration)
 
-[](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | NuGet-voor[beelden](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0) ([Source code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [package)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | voor referentie documentatie
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  | -[bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)  | -voor[beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,13 +45,13 @@ Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u z
 * Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
 
-Wanneer u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het `FACE_SUBSCRIPTION_KEY` eind punt-URL, respectievelijk met de naam en. `FACE_ENDPOINT`
+Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en eind punt-URL, respectievelijk met de naam `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT`.
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C# toepassing maken
 
 Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE. 
 
-In een console venster (zoals cmd, Power shell of bash) gebruikt u de `dotnet new` opdracht om een nieuwe console-app met de naam `face-quickstart`te maken. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: *Program.cs*. 
+Gebruik in een console venster (zoals cmd, Power shell of bash) de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `face-quickstart`. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: *Program.cs*. 
 
 ```console
 dotnet new console -n face-quickstart
@@ -73,11 +73,11 @@ Build succeeded.
 ...
 ```
 
-Open het *Program.cs* -bestand in de map van het project in uw voorkeurs editor of IDE. Voeg de volgende `using` instructies toe:
+Open het *Program.cs* -bestand in de map van het project in uw voorkeurs editor of IDE. Voeg de volgende `using`-instructies toe:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_using)]
 
-Maak in de methode `Main` van de toepassing variabelen voor het Azure-eind punt en de sleutel van uw resource.
+Maak in de `Main` methode van de toepassing variabelen voor het Azure-eind punt en de sleutel van uw resource.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_mainvars)]
 
@@ -95,13 +95,13 @@ Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als ee
 
 De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de face .NET SDK:
 
-|Name|Description|
+|Naam|Beschrijving|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) | Deze klasse vertegenwoordigt uw autorisatie voor het gebruik van de face-service en u hebt deze nodig voor alle gezichts functionaliteit. U maakt de app met uw abonnements gegevens en gebruikt deze om instanties van andere klassen te maken. |
 |[FaceOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperations?view=azure-dotnet)|Deze klasse verwerkt de basis taken voor detectie en herkenning die u met menselijke gezichten kunt uitvoeren. |
 |[DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)|Deze klasse vertegenwoordigt alle gegevens die zijn gedetecteerd van één gezicht in een afbeelding. U kunt deze gebruiken om gedetailleerde informatie over het gezicht op te halen.|
 |[FaceListOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)|Deze klasse beheert de in de cloud opgeslagen **FaceList** -constructies, waarin een geassorteerde set gezichten wordt opgeslagen. |
-|[PersonGroupPersonExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| Deze klasse beheert de door de Cloud opgeslagen persoons constructies, waarin een set gezichten wordt opgeslagen die deel uitmaakt van één persoon.|
+|[PersonGroupPersonExtensions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongrouppersonextensions?view=azure-dotnet)| Deze klasse beheert de door de cloud opgeslagen **persoons** constructies, waarin een set gezichten wordt opgeslagen die deel uitmaakt van één persoon.|
 |[PersonGroupOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)| Deze klasse beheert de in de cloud opgeslagen **PersonGroup** -constructies, die een set geassorteerde **persoons** objecten opslaan. |
 |[ShapshotOperations](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)|Deze klasse beheert de functionaliteit van de moment opname. U kunt deze gebruiken om al uw op de cloud gebaseerde gezichts gegevens tijdelijk op te slaan en deze gegevens te migreren naar een nieuw Azure-abonnement. |
 
@@ -120,13 +120,13 @@ In de onderstaande code fragmenten ziet u hoe u de volgende taken kunt uitvoeren
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw `FACE_SUBSCRIPTION_KEY` gezichts sleutel en eind punt, met de naam en. `FACE_ENDPOINT`
+> In deze Quick Start wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw gezichts sleutel en eind punt, met de naam `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT`.
 
 In een nieuwe methode maakt u een exemplaar van een client met uw eind punt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) -object met uw sleutel en gebruik het met uw eind punt om een [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -object te maken.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
 
-Waarschijnlijk wilt u deze methode in de `Main` -methode aanroepen.
+Waarschijnlijk wilt u deze methode aanroepen in de `Main` methode.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
@@ -144,7 +144,7 @@ Bij de laatste detectie bewerking worden een [FaceClient](https://docs.microsoft
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
-In dit geval detecteert `DetectFaceExtract` de-methode gezichten in drie van de afbeeldingen bij de opgegeven URL en maakt een lijst met [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten in het programma geheugen. De lijst met [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden geeft aan welke functies moeten worden geëxtraheerd. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) voor meer informatie over de code die deze gegevens op een intuïtieve manier kan afdrukken.
+In dit geval detecteert de `DetectFaceExtract`-methode gezichten in drie van de afbeeldingen bij de opgegeven URL en maakt een lijst met [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten in het programma geheugen. De lijst met [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden geeft aan welke functies moeten worden geëxtraheerd. Zie de voorbeeld code op [github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) voor meer informatie over de code die deze gegevens op een intuïtieve manier kan afdrukken.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
 
@@ -192,7 +192,7 @@ Voeg de volgende code toe aan een nieuwe methode. Deze code koppelt de namen van
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
 
-Voeg vervolgens de volgende code toe om een **persoons** object te maken voor elke persoon in de woorden lijst en voeg de gezichts gegevens toe van de juiste installatie kopieën. Elk **persoons** object is gekoppeld aan dezelfde **PersonGroup** via de unieke id-reeks. Vergeet niet de variabelen `client`, `url`en `RECOGNITION_MODEL1` in deze methode door te geven.
+Voeg vervolgens de volgende code toe om een **persoons** object te maken voor elke persoon in de woorden lijst en voeg de gezichts gegevens toe van de juiste installatie kopieën. Elk **persoons** object is gekoppeld aan dezelfde **PersonGroup** via de unieke id-reeks. Vergeet niet om de variabelen `client`, `url`en `RECOGNITION_MODEL1` door te geven aan deze methode.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
 
@@ -202,18 +202,18 @@ Zodra u de gezichts gegevens van uw afbeeldingen hebt geëxtraheerd en deze in v
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
 
-Deze **persoons** groep en de bijbehorende persoons objecten zijn nu klaar om te worden gebruikt in de bewerkingen controleren, identificeren of groeperen.
+Deze **persoons** groep en de bijbehorende **persoons** objecten zijn nu klaar om te worden gebruikt in de bewerkingen controleren, identificeren of groeperen.
 
 ## <a name="identify-a-face"></a>Een gezicht identificeren
 
 Bij de identificerende bewerking wordt een afbeelding van een persoon (of meerdere personen) gebruikt en wordt gezocht naar de identiteit van elk gezicht in de installatie kopie. Elk gedetecteerd gezicht wordt vergeleken met een **PersonGroup**, een Data Base van verschillende **personen** -objecten waarvan de gezichts kenmerken bekend zijn.
 
 > [!IMPORTANT]
-> Als u dit voor beeld wilt uitvoeren, moet u eerst de code uitvoeren in [een persoons groep maken en trainen](#create-and-train-a-person-group). De variabelen die in die sectie&mdash;`client`worden `url`gebruikt, `RECOGNITION_MODEL1`en &mdash;moeten hier ook beschikbaar zijn.
+> Als u dit voor beeld wilt uitvoeren, moet u eerst de code uitvoeren in [een persoons groep maken en trainen](#create-and-train-a-person-group). De variabelen die in deze sectie worden gebruikt&mdash;`client`, `url`en `RECOGNITION_MODEL1`&mdash;moeten hier ook beschikbaar zijn.
 
 ### <a name="get-a-test-image"></a>Een test installatie kopie ophalen
 
-U ziet dat de code voor het [maken en trainen van een persoons groep](#create-and-train-a-person-group) een variabele `sourceImageFileName`definieert. Deze variabele komt overeen met de bron&mdash;afbeelding van de afbeelding die de personen bevat die moeten worden geïdentificeerd.
+U ziet dat de code voor het [maken en trainen van een persoons groep](#create-and-train-a-person-group) een variabele `sourceImageFileName`definieert. Deze variabele komt overeen met de bron afbeelding&mdash;de afbeelding die de personen bevat die moeten worden geïdentificeerd.
 
 ### <a name="identify-faces"></a>Gezichten identificeren
 
@@ -239,7 +239,7 @@ Definieer vervolgens de volgende variabelen in de `Main` methode van uw programm
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
 
-Voor dit voor beeld declareert u een variabele voor de id van het doel **PersonGroup**&mdash;het object dat bij het nieuwe abonnement hoort, waarnaar u uw gegevens gaat kopiëren.
+Voor dit voor beeld declareert u een variabele voor de ID van de doel- **PersonGroup**&mdash;het object dat bij het nieuwe abonnement hoort, waarnaar u uw gegevens gaat kopiëren.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
 
@@ -277,7 +277,7 @@ Op dit moment moeten uw nieuwe **PersonGroup** -object dezelfde gegevens hebben 
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit vanuit de map van uw `dotnet run` toepassing met de opdracht.
+Voer de toepassing uit vanuit de toepassingsmap met de opdracht `dotnet run`.
 
 ```dotnet
 dotnet run
@@ -288,7 +288,7 @@ dotnet run
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Als u in deze Quick Start een **PersonGroup** hebt gemaakt en u deze wilt verwijderen, voert u de volgende code uit in het programma:
 
@@ -310,4 +310,4 @@ In deze Quick Start hebt u geleerd hoe u de face-bibliotheek voor .NET kunt gebr
 > [Face-API referentie (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
 * [Wat is de Face-API?](../overview.md)
-* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs).
+* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs).

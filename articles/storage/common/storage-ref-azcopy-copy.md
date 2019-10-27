@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 78482b5d7013ffa3bbb0a34dd04c8c48626dc77a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514771"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926652"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -150,7 +150,7 @@ Raadpleeg https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.h
 
 Kopieer alle buckets naar Blob Storage vanuit Amazon Web Services (AWS) met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor AWS S3-bron.
 
-- azcopy CP "https://s3.amazonaws.com/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+- azcopy CP "https://s3.amazonaws.com/ " "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
 
 Kopieer alle buckets naar Blob Storage vanuit een Amazon Web Services (AWS) regio met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor AWS S3-bron.
 
@@ -172,7 +172,7 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--Check-length**                         Controleer de lengte van een bestand op de bestemming na de overdracht. Als de bron en bestemming niet overeenkomen, wordt de overdracht als mislukt gemarkeerd. (standaard instelling waar)
 
-**--Check-MD5** teken reeks geeft aan hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden. Alleen beschikbaar bij het downloaden. Beschik bare opties: geen controle, aanmelden, FailIfDifferent, FailIfDifferentOrMissing. (standaard ' FailIfDifferent ') (standaard "FailIfDifferent")
+**--Check-MD5** teken reeks geeft aan hoe strikt MD5-hashes moeten worden gevalideerd bij het downloaden. Alleen beschikbaar bij het downloaden. Beschik bare opties: geen controle, aanmelden, FailIfDifferent, FailIfDifferentOrMissing. (standaard "FailIfDifferent")
 
 **--** de teken reeks voor de positie van de inhoud is ingesteld op de content-disposition-header. Geretourneerd bij het downloaden.
 
@@ -204,15 +204,15 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--include-patroon** teken reeks bevatten alleen deze bestanden bij het kopiëren. Deze optie biedt ondersteuning voor joker tekens (*). Scheid bestanden met behulp van een '; '.
 
-**--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: info (alle aanvragen/antwoorden), waarschuwing (trage antwoorden), fout (alleen mislukte aanvragen) en geen (geen uitvoer Logboeken). (standaard INFO). (standaard INFO)
+**--** teken reeks op logboek niveau definiëren de logboek uitgebreidheids voor het logboek bestand, beschik bare niveaus: info (alle aanvragen/antwoorden), waarschuwing (trage antwoorden), fout (alleen mislukte aanvragen) en geen (geen uitvoer Logboeken). (standaard INFO)
 
 **--** de teken reeks voor het uploaden van meta gegevens Azure Storage met deze sleutel-waardeparen als meta gegevens.
 
 **--no-schatting-MIME-type**                   Hiermee voor komt u dat AzCopy het inhouds type detecteert op basis van de extensie of inhoud van het bestand.
 
-**--** de teken reeks overschrijven de conflicterende bestanden en blobs op de bestemming overschrijven als deze vlag is ingesteld op True. (standaard ' True ') Mogelijke waarden zijn ' True ', ' false ' en ' prompt '. (standaard ingesteld op ' True ')
+**--** de teken reeks overschrijven de conflicterende bestanden en blobs op de bestemming overschrijven als deze vlag is ingesteld op True. Mogelijke waarden zijn ' True ', ' false ' en ' prompt '. (standaard ingesteld op ' True ')
 
-**--pagina-BLOB-** teken reeks voor het uploaden van de pagina-blob naar Azure Storage met behulp van deze BLOB-laag. (standaard ' geen '). (standaard ' geen ')
+**--pagina-BLOB-** teken reeks voor het uploaden van de pagina-blob naar Azure Storage met behulp van deze BLOB-laag. (standaard ' geen ')
 
 **--behoud-laatste-gewijzigd-tijd**          Alleen beschikbaar wanneer het doel bestands systeem is.
 
@@ -222,9 +222,9 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--S2S-detecteren-bron-gewijzigd**           Controleer of de bron is gewijzigd na het inventariseren.
 
-**--S2S-handle-ongeldig-meta gegevens** teken reeks geeft aan hoe ongeldige sleutels voor meta gegevens worden verwerkt. Beschik bare opties: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (standaard ' ExcludeIfInvalid '). (standaard "ExcludeIfInvalid")
+**--S2S-handle-ongeldig-meta gegevens** teken reeks geeft aan hoe ongeldige sleutels voor meta gegevens worden verwerkt. Beschik bare opties: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (standaard "ExcludeIfInvalid")
 
-**--S2S-pres Erve-Access-tier**             De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard instelling waar).  (standaard instelling waar)
+**--S2S-pres Erve-Access-tier**             De Access-laag behouden tijdens service to service copy. Raadpleeg [Azure Blob-opslag: dynamische, koude en archief toegangs lagen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) om ervoor te zorgen dat het opslag account van de bestemming ondersteuning biedt voor het instellen van de toegangs laag. In het geval dat het instellen van de toegangs laag niet wordt ondersteund, gebruikt u s2sPreserveAccessTier = False om het kopiëren van de toegangs lagen over te slaan. (standaard instelling waar)
 
 **--pres Erve-eigenschappen**              Volledige eigenschappen behouden tijdens service to service copy. Voor AWS S3 en Azure file-bron niet-enkelvoudige bestands bronnen retourneert de lijst bewerking geen volledige eigenschappen van objecten en bestanden. Voor het behouden van de volledige eigenschappen moet AzCopy één extra aanvraag per object of bestand verzenden. (standaard instelling waar)
 

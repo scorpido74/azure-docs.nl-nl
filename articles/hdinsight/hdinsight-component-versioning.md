@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop onderdelen en versies-Azure HDInsight
-description: Meer informatie over de Apache Hadoop onderdelen en versies in HDInsight en de service niveaus die beschikbaar zijn in deze Cloud distributie van Hortonworks-gegevens platform.
+description: Meer informatie over de Apache Hadoop onderdelen en versies in azure HDInsight.
 keywords: Hadoop-versies, Hadoop ecosysteem-onderdelen, Hadoop-onderdelen, Hadoop-versie controleren
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e6c9bd18a6ea5975269b96653e47eaf1da462676
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984458"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935451"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?
 
@@ -29,24 +29,24 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies wo
 > [!NOTE]  
 > De standaard versie voor de HDInsight-service kan zonder kennisgeving worden gewijzigd. Als u een versie afhankelijkheid hebt, geeft u de HDInsight-versie op wanneer u uw clusters maakt met behulp van de .NET SDK met Azure PowerShell en klassieke CLI van Azure.
 
-| Onderdeel | HDInsight 4.0 | HDInsight 3,6 (standaard) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 |
+| Component | HDInsight 4.0 | HDInsight 3,6 (standaard) | HDInsight 3,5 | HDInsight 3,4 | HDInsight 3,3 | HDInsight 3,2 |
 |---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Apache Hadoop en garen | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
+| Apache Hadoop en garen | punt | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
 | Apache TEZ | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
 | Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
 | Apache Hive | 3.1.0 | 2.1.0, 1.2.1 | - | - | - | - |
 | Apache TEZ Hive2 | - | 0.8.4 | - | - | - | - |
 | Apache Ranger | 1.1.0 | 0.7.0 | 0.6.0 | - | - | - |
-| Apache HBase | 2.0.1 | 1.1.2 | 1.1.2 | 1.1.2 | 1.1.1 | 0.98.4 |
+| Apache HBase | wel | 1.1.2 | 1.1.2 | 1.1.2 | 1.1.1 | 0.98.4 |
 | Apache Sqoop | 1.4.7 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.5 |
 | Apache Oozie | 4.3.1 | 4.2.0 | 4.2.0 | 4.2.0 | 4.2.0 | 4.1.0 |
 | Apache Zookeeper | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 |
 | Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
-| Apache mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
+| Apache mahout | - | 0.9.0 + | 0.9.0 + | 0.9.0 + | 0.9.0 + | 0.9.0 |
 | Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.1, 2.4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (alleen Windows) |
-| Apache livy | 0.5 | 0,4, 0,4, 0,3 | 0,3 | 0,3 | 0.2 | - |
-| Apache Kafka | 1.1.1, 2.1 | 1,1, 1,0 * (zie opmerking hieronder) | 0.10.0 | 0.9.0 | - | - |
+| Apache Spark | 2.3.1, 2,4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2,0 | 1.6.0 | 1.5.2 | 1.3.1 (alleen Windows) |
+| Apache livy | 0,5 | 0,4, 0,4, 0,3 | 0,3 | 0,3 | 0,2 | - |
+| Apache Kafka | 1.1.1, 2,1 | 1,1, 1,0 * (zie opmerking hieronder) | 0.10.0 | 0.9.0 | - | - |
 | Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
 | Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
 | Mono | 4.2.1 | 4.2.1 | 4.2.1 | 3.2.8 | - | - |
@@ -70,31 +70,31 @@ De volgende tabellen geven een lijst van de versies van HDInsight. De HDP-versie
 
 De volgende tabel geeft een lijst van de versies van HDInsight die beschikbaar zijn in de Azure Portal, evenals andere implementatie methoden, zoals Power shell en .NET SDK.
 
-| HDInsight-versie | HDP-versie | VM OS | Uitgebracht op | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid op het Azure Portal | 
+| HDInsight-versie | HDP-versie | VM-BESTURINGS SYSTEEM | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid op het Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 september 2018 | | |Ja |Ja |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 april 2017 | 30 juni 2020 |31 december 2020 |Ja |Ja |
+| HDInsight 4.0 |HDP 3,0 |Ubuntu 16.0.4 LTS |24 september 2018 | | |Ja |Ja |
+| HDInsight 3,6 |HDP 2,6 |Ubuntu 16.0.4 LTS |4 april 2017 | 30 juni 2020 |31 december 2020 |Ja |Ja |
 
 
 > [!NOTE]  
-> Nadat de ondersteuning voor een versie is verlopen, is deze mogelijk niet meer beschikbaar via de Microsoft Azure-portal. Cluster versies blijven echter beschikbaar met behulp van de `Version` para meter in de Windows Power shell [-opdracht New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) en de .NET SDK tot de datum van beëindiging van de versie.
+> Nadat de ondersteuning voor een versie is verlopen, is deze mogelijk niet meer beschikbaar via de Microsoft Azure-portal. Cluster versies blijven echter beschikbaar met behulp van de para meter `Version` in de Windows Power shell [-opdracht New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) en de .NET SDK tot de datum van beëindiging van de versie.
 >
 
 ### <a name="retired-versions"></a>Buiten gebruik gestelde versies
 
 De volgende tabel geeft een lijst van de versies van HDInsight die **niet** beschikbaar zijn in de Azure Portal.
 
-| HDInsight-versie | HDP-versie | VM OS | Uitgebracht op | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid op het Azure Portal | 
+| HDInsight-versie | HDP-versie | VM-BESTURINGS SYSTEEM | Releasedatum | Verval datum ondersteuning | Buitengebruikstellings datum | Hoge beschikbaarheid |  Beschik baarheid op het Azure Portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30 september 2016 |5 september 2017 |28 juni 2018 |Ja |Nee |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29 maart 2016 |29 december 2016 |9 januari 2018 |Ja |Nee |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2 december 2015 |27 juni 2016 |31 juli 2018 |Ja |Nee |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 december 2015 |27 juni 2016 |31 juli 2017 |Ja |Nee |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12,04 LTS of Windows Server 2012 R2 |18 februari 2015 |1 maart 2016 |1 april 2017 |Ja |Nee |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 juni 2014 |18 mei 2015 |Tot 30 juni 2016 |Ja |Nee |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 februari 2014 |17 september 2014 |30 juni 2015 |Ja |Nee |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 oktober 2013 |12 mei 2014 |31 mei 2015 |Ja |Nee |
-| HDInsight 1,6 |HDP 1.1 | |28 oktober 2013 |26 april 2014 |31 mei 2015 |Nee |Nee |
+| HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |30 september 2016 |5 september 2017 |28 juni 2018 |Ja |Nee |
+| HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |29 maart 2016 |29 december 2016 |9 januari 2018 |Ja |Nee |
+| HDInsight 3,3 |HDP 2,3 |Windows Server 2012 R2 |2 december 2015 |27 juni 2016 |31 juli 2018 |Ja |Nee |
+| HDInsight 3,3 |HDP 2,3 |Ubuntu 14.0.4 LTS |2 december 2015 |27 juni 2016 |31 juli 2017 |Ja |Nee |
+| HDInsight 3,2 |HDP 2,2 |Ubuntu 12,04 LTS of Windows Server 2012 R2 |18 februari 2015 |1 maart 2016 |1 april 2017 |Ja |Nee |
+| HDInsight 3,1 |HDP 2,1 |Windows Server 2012 R2 |24 juni 2014 |18 mei 2015 |30 juni 2016 |Ja |Nee |
+| HDInsight 3,0 |HDP 2,0 |Windows Server 2012 R2 |11 februari 2014 |17 september 2014 |30 juni 2015 |Ja |Nee |
+| HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |28 oktober 2013 |12 mei 2014 |31 mei 2015 |Ja |Nee |
+| HDInsight 1,6 |HDP 1,1 | |28 oktober 2013 |26 april 2014 |31 mei 2015 |Nee |Nee |
 
 > [!NOTE]  
 > Maxi maal beschik bare clusters met twee hoofd knooppunten worden standaard geïmplementeerd voor HDInsight-versie 2,1 en hoger. Ze zijn niet beschikbaar voor HDInsight-versie 1,6-clusters.
@@ -131,7 +131,7 @@ Momenteel ondersteunen alleen de volgende cluster typen de Enterprise Security P
 
 - Hadoop (alleen HDInsight 3,6)
 - Spark
-- Interactive Query
+- Interactieve query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Ondersteuning voor Azure Data Lake Storage
 
@@ -146,8 +146,8 @@ Zie [prijzen voor HDInsight](https://azure.microsoft.com/pricing/details/hdinsig
 
 De service level agreement (SLA) wordt gedefinieerd in termen van een _ondersteunings venster_. Het ondersteunings venster is de periode dat een HDInsight-cluster versie wordt ondersteund door de klanten service en ondersteuning van micro soft. Als de versie een _ondersteunings vervaldatum_ heeft die is door gegeven, bevindt het HDInsight-cluster zich buiten het ondersteunings venster. De verval datum van de ondersteuning voor een opgegeven HDInsight-versie X (na een nieuwere X + 1-versie is beschikbaar) wordt berekend als de volgende:  
 
-* Formule 1: 180 dagen toevoegen aan de datum waarop de versie X van het HDInsight-cluster is uitgebracht.
-* Formule 2: Voeg 90 dagen toe aan de datum waarop de versie van het HDInsight-cluster (X + 1) beschikbaar wordt gemaakt in Azure Portal.
+* Formule 1: Voeg 180 dagen toe aan de datum waarop het HDInsight-cluster versie X is uitgebracht.
+* Formule 2: Voeg 90 dagen toe aan de datum waarop de versie van het HDInsight-cluster, X + 1, beschikbaar wordt gemaakt in Azure Portal.
 
 De _datum van beëindiging_ is de datum waarna de Cluster versie niet kan worden gemaakt op HDInsight. Vanaf 31 juli 2017 kunt u de grootte van een HDInsight-cluster niet aanpassen na de aftredings datum. 
 
@@ -167,7 +167,7 @@ De sectie bevat koppelingen naar release opmerkingen voor de Hortonworks-gegeven
   * [Apache Hive release opmerkingen](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) zijn beschikbaar op de Apache-website.
 * HDInsight-cluster versie 3,2 maakt gebruik van een Hadoop-distributie die is gebaseerd op [Hortonworks data Platform 2,2][hdp-2-2].
 
-  * Release opmerkingen voor specifieke Apache-onderdelen zijn als volgt beschikbaar: [Hive 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [varkens 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [garen 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [TEZ 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)en [Oozie 4.1.0 ](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
+  * Release opmerkingen voor specifieke Apache-onderdelen zijn als volgt beschikbaar: [component 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0,14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [garen 2,6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [TEZ 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2,0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)en [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * HDInsight-cluster versie 3,1 maakt gebruik van een Hadoop-distributie die is gebaseerd op [Hortonworks data platform 2.1.7][hdp-2-1-7]. HDInsight 3,1-clusters die zijn gemaakt vóór november, 7, 2014, zijn gebaseerd op [Hortonworks data platform 2.1.1][hdp-2-1-1].
 * HDInsight-cluster versie 3,0 maakt gebruik van een Hadoop-distributie die is gebaseerd op [Hortonworks data Platform 2,0][hdp-2-0-8].
 * HDInsight-cluster versie 2,1 maakt gebruik van een Hadoop-distributie die is gebaseerd op [Hortonworks data Platform 1,3][hdp-1-3-0].

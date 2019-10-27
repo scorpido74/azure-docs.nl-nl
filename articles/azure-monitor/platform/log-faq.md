@@ -1,212 +1,206 @@
 ---
-title: Log Analytics-Veelgestelde vragen over | Microsoft Docs
+title: Log Analytics Veelgestelde vragen | Microsoft Docs
 description: Antwoorden op veelgestelde vragen over de Azure Log Analytics-service.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/13/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 08e915354df4f4aa1d9a183e78cbad47460b8d37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/13/2018
+ms.openlocfilehash: e3ebb87a7a5f6200d860c1c79591719c32313e11
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356210"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932218"
 ---
 # <a name="log-analytics-faq"></a>Veelgestelde vragen over Log Analytics
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Dit Microsoft-FAQ is een lijst met veelgestelde vragen over Log Analytics in Microsoft Azure. Als u aanvullende vragen over Log Analytics hebt, gaat u naar de [discussieforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) en plaats uw vraag. Wanneer u een vraag is vaak wordt gevraagd, toevoegen we deze aan dit artikel zodat snel en eenvoudig kunnen worden gevonden.
+Deze veelgestelde vragen over micro soft vindt u in Microsoft Azure een lijst met veelgestelde vraag over Log Analytics. Als u nog meer vragen hebt over Log Analytics, gaat u naar het [discussie forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
 
 
-## <a name="new-logs-experience"></a>Nieuwe ervaring voor logboeken
+## <a name="new-logs-experience"></a>Nieuwe logboeken
 
-### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>V: Wat is het verschil tussen de nieuwe ervaring voor logboeken en Log Analytics?
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>V: wat is het verschil tussen de nieuwe logboeken en Log Analytics?
 
-A: Ze zijn hetzelfde. [Log Analytics wordt als een functie in Azure Monitor geïntegreerd](../../azure-monitor/azure-monitor-rebrand.md) voor een meer geïntegreerde bewaking. De nieuwe logboeken-ervaring in Azure Monitor is precies hetzelfde als de Log Analytics-query's die veel klanten hebben al gebruikt.
+A: ze zijn hetzelfde. [Log Analytics wordt geïntegreerd als een functie in azure monitor](../../azure-monitor/azure-monitor-rebrand.md) om een meer Unified monitoring-ervaring te bieden. De nieuwe logboeken in Azure Monitor zijn precies hetzelfde als de Log Analytics query's die al door veel klanten zijn gebruikt.
 
-### <a name="q-can-i-still-use-log-search"></a>V: Kan ik nog steeds zoeken in Logboeken gebruiken? 
+### <a name="q-can-i-still-use-log-search"></a>V: kan ik de zoek functie voor logboeken nog steeds gebruiken? 
 
-A: Zoeken in Logboeken is momenteel nog steeds beschikbaar in de OMS-portal en in de Azure-portal onder de naam van de **Logboeken (klassiek)** . De OMS-portal wordt op 15 januari 2019 officieel stopgezet. De klassieke logboeken-ervaring in Azure portal worden geleidelijk stopgezet en vervangen door de nieuwe ervaring voor Logboeken. 
+A: zoeken in Logboeken is momenteel nog steeds beschikbaar in de OMS-Portal en in de Azure Portal onder de naam **Logboeken (klassiek)** . De OMS-portal wordt op 15 januari 2019 officieel buiten gebruik gesteld. De klassieke Logboeken in Azure Portal worden geleidelijk buiten gebruik gesteld en de nieuwe logboek ervaring vervangen. 
 
-### <a name="q-can-i-still-use-advanced-analytics-portal"></a>V. Kan ik nog steeds Advanced Analytics-Portal gebruiken? 
-De nieuwe ervaring van de logboeken in Azure portal is gebaseerd op de Portal Advanced Analytics, maar deze nog steeds toegankelijk buiten de Azure-portal. Het overzicht voor het buiten gebruik stellen van deze externe portal wordt binnenkort aangekondigd.
+### <a name="q-can-i-still-use-advanced-analytics-portal"></a>V. Kan ik nog steeds een geavanceerde analyse Portal gebruiken? 
+De nieuwe logboeken in de Azure Portal zijn gebaseerd op de geavanceerde analyse Portal, maar u hebt nog steeds toegang tot buiten de Azure Portal. De route kaart voor het buiten gebruik stellen van deze externe portal wordt binnenkort aangekondigd.
 
-### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>V. Waarom kan niet ik Zie Query Explorer en knoppen in de nieuwe ervaring voor Logboeken opslaan?
+### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>V. Waarom kan ik query Explorer niet zien en knoppen Opslaan in de nieuwe logboeken?
 
-**Query Explorer**, **opslaan** en **waarschuwing instellen** knoppen zijn niet beschikbaar wanneer logboeken verkennen in de context van een specifieke resource. Als u waarschuwingen maken, opslaan of een query laden, logboeken moeten binnen het bereik aan een werkruimte. Als u Logboeken in de context van de werkruimte, selecteert u **alle services** > **Monitor** > **logboeken**. De laatst gebruikte werkruimte is geselecteerd, maar u kunt een andere werkruimte selecteren. Zie [bekijken en analyseren van gegevens in Log Analytics](../log-query/portals.md) voor meer informatie.
+**Query Verkenner**, waarschuwings knoppen **Opslaan** en **instellen** zijn niet beschikbaar bij het verkennen van Logboeken in de context van een specifieke resource. Als u waarschuwingen wilt maken, een query wilt opslaan of laden, moeten Logboeken een bereik hebben van een werk ruimte. Als u logboeken wilt openen in de werkruimte context, selecteert u **alle services** >  > **Logboeken**te **controleren** . De laatst gebruikte werk ruimte is geselecteerd, maar u kunt een andere werk ruimte selecteren. Zie [gegevens in log Analytics weer geven en analyseren](../log-query/portals.md) voor meer informatie.
 
-### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>V. Hoe haal ik aangepaste velden in de nieuwe ervaring voor logboeken? 
+### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>V. Hoe kan ik aangepaste velden in de nieuwe logboeken-ervaring extra heren? 
 
-A: Aangepaste velden extractie worden momenteel ondersteund in de klassieke ervaring voor Logboeken. 
+A: extractie van aangepaste velden wordt momenteel ondersteund in de klassieke Logboeken. 
 
-### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>V. Waar vind ik lijstweergave in de nieuwe logboeken? 
+### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>V. Waar vind ik een lijst weergave in de nieuwe logboeken? 
 
-A: Lijstweergave is niet beschikbaar in de nieuwe logboeken. Er is een pijl naar links van elke record in de tabel met resultaten. Klik op deze pijl om de details voor een bepaalde record openen. 
+A: de lijst weergave is niet beschikbaar in de nieuwe logboeken. Er bevindt zich een pijl links van elke record in de tabel met resultaten. Klik op deze pijl om de Details voor een specifieke record te openen. 
 
-### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>V. Na het uitvoeren van een query, een lijst met voorgestelde filters beschikbaar zijn. Hoe kan ik filters bekijken? 
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>V. Na het uitvoeren van een query is er een lijst met voorgestelde filters beschikbaar. Hoe kan ik filters zien? 
 
-A: Klik op 'Filters' in het linkerdeelvenster om te zien van een Preview-versie van de nieuwe Filters-implementatie. Dit is nu gebaseerd op uw volledige resultatenset in plaats van wordt beperkt door de recordlimiet van 10.000 van de gebruikersinterface. Dit is momenteel een lijst van de meest populaire filters en de 10 meest voorkomende waarden voor elk filter. 
+A: Klik in het linkerdeel venster op filters om een voor beeld van de implementatie van nieuwe filters weer te geven. Dit is nu gebaseerd op uw volledige resultatenset in plaats van beperkt door de record limiet van 10.000 van de gebruikers interface. Dit is momenteel een lijst met de meest populaire filters en de tien meest voorkomende waarden voor elk filter. 
 
-### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>V. Waarom krijg ik de fout: "De resourceprovider registreren 'Microsoft.Insights' voor dit abonnement om in te schakelen van deze query' in Logboeken na analyseren in VM? 
+### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>V. Waarom krijg ik de fout: ' micro soft. Insights van resource provider registreren voor dit abonnement om deze query in te scha kelen ' in Logboeken, na inzoomen vanuit de VM? 
 
-A: Standaard veel providers van resources automatisch worden geregistreerd, u moet echter handmatig registreren door enkele resourceproviders. Hiermee configureert u uw abonnement om te werken met de resourceprovider. Het bereik voor de registratie is altijd het abonnement. Zie [Resourceproviders en -typen](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) voor meer informatie.
+A: standaard worden veel resource providers automatisch geregistreerd, maar u moet mogelijk bepaalde resource providers hand matig registreren. Hiermee configureert u uw abonnement om te werken met de resource provider. Het bereik voor registratie is altijd het abonnement. Zie [Resourceproviders en -typen](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) voor meer informatie.
 
-### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>V. Waarom kan ik krijg geen toegang tot foutbericht bij het openen van Logboeken op de pagina van een virtuele machine? 
+### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>V. Waarom krijg ik geen Access-fout bericht bij het openen van Logboeken vanaf een VM-pagina? 
 
-A: Als u logboeken van de virtuele machine, moet u ook worden toegekend aan een leesmachtiging voor de werkruimten waarin de VM-Logboeken. In dergelijke gevallen moet de beheerder u verlenen machtigingen in Azure.
+A: als u de VM-logboeken wilt weer geven, moet u beschikken over de machtiging lezen voor de werk ruimten waarin de VM-logboeken worden opgeslagen. In deze gevallen moet uw beheerder u de machtigingen verlenen in Azure.
 
-### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>V. Waarom ik hebben toegang mijn werkruimte in de OMS-portal tot kan, maar ik krijg de fout 'u hebt geen toegang' in de Azure-portal?  
+### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>V. Waarom kan ik toegang krijgen tot mijn werk ruimte in de OMS-Portal, maar krijg ik de fout ' u hebt geen toegang ' in de Azure Portal?  
 
-A: Voor toegang tot een werkruimte in Azure, moet u toegewezen Azure-machtigingen hebben. Er zijn enkele gevallen waarbij u bent mogelijk niet gemachtigd juiste toegang. In dergelijke gevallen de beheerder moet verlenen u met de machtigingen in Azure.See [OMS-portal naar Azure verplaatst,](oms-portal-transition.md) voor meer informatie.
+A: om toegang te krijgen tot een werk ruimte in azure, moet u de Azure-machtigingen hebben toegewezen. Er zijn enkele gevallen waarin u mogelijk niet de juiste toegangs machtigingen hebt. In deze gevallen moet uw beheerder u machtigingen verlenen in Azure. Zie OMS- [Portal naar Azure verplaatsen](oms-portal-transition.md) voor meer informatie.
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>V. Waarom zie ik niet kan geen Weergaveontwerper vermelding in Logboeken? 
-A: Weergaveontwerper is alleen beschikbaar in Logboeken voor gebruikers die zijn toegewezen met machtigingen van de inzender of hoger.
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>V. Waarom kan ik het weer geven van de ontwerp weergave niet zien in Logboeken? 
+A: View Designer is alleen beschikbaar in Logboeken voor gebruikers die zijn toegewezen met Inzender machtigingen of hoger.
 
-### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>V. Kan ik nog steeds de Analytics-portal buiten Azure gebruiken?
-A. Ja, de pagina Logboeken in Azure en de portal Advanced Analytics zijn gebaseerd op de dezelfde code. Log Analytics wordt als een functie in Azure Monitor een meer uniform bewakingservaring geïntegreerd. U kunt nog steeds toegang tot Analytics-portal met behulp van de URL: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>V. Kan ik nog steeds de analyse Portal buiten Azure gebruiken?
+A. Ja, de pagina Logboeken in Azure en de portal Advanced Analytics zijn gebaseerd op dezelfde code. Log Analytics wordt geïntegreerd als een functie in Azure Monitor om een meer Unified monitoring-ervaring te bieden. U kunt nog steeds toegang krijgen tot de analyse Portal met behulp van de URL: https:\/\/Portal. loganalytics. io/abonnementen/{subscriptionId}/ResourceGroups/{resourceGroupName}/werk ruimten/{workspacenaam}.
 
 
 
 ## <a name="general"></a>Algemeen
 
-### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>V. Hoe kan ik mijn weergaven en oplossingen in Azure portal bekijken? 
+### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>V. Hoe kan ik mijn weer gaven en oplossingen zien in Azure Portal? 
 
-A: De lijst met geïnstalleerde oplossingen en weergaven zijn beschikbaar in Azure portal. Klik op **Alle services**. Selecteer in de lijst met resources **Monitor**, klikt u vervolgens op **... Meer**. De laatst gebruikte werkruimte is geselecteerd, maar u kunt een andere werkruimte selecteren. 
+A: de lijst met weer gaven en geïnstalleerde oplossingen is beschikbaar in Azure Portal. Klik op **Alle services**. Selecteer in de lijst met resources de optie **monitor**en klik vervolgens op **... Meer**. De laatst gebruikte werk ruimte is geselecteerd, maar u kunt een andere werk ruimte selecteren. 
 
-### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>V. Waarom kan ik werkruimten maken in de regio West-Centraal VS? 
+### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>V. Waarom kan ik geen werk ruimten maken in de regio West-Centraal VS? 
 
-A: Deze regio heeft tijdelijk de capaciteitslimiet bereikt. Deze limiet is gepland om te worden verholpen door de einde van September 2019.
+A: deze regio heeft een tijdelijke capaciteits limiet. Deze limiet is gepland voor eind september 2019.
 
 
-### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>V. Log Analytics maakt gebruik dezelfde agent als Azure Security Center?
+### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>V. Gebruikt Log Analytics dezelfde agent als Azure Security Center?
 
-A: Begin juni 2017, is Azure Security Center begonnen met behulp van de Microsoft Monitoring Agent voor het verzamelen en opslaan van gegevens. Zie voor meer informatie, [Azure Security Center-Platform migratie Veelgestelde vragen over](../../security-center/security-center-enable-data-collection.md).
+A: in de eerste juni 2017 begon Azure Security Center met het gebruik van micro soft Monitoring Agent voor het verzamelen en opslaan van gegevens. Zie [Azure Security Center Veelgestelde vragen over platform migratie](../../security-center/security-center-enable-data-collection.md)voor meer informatie.
 
-### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>V. Welke controles zijn uitgevoerd door de AD en SQL-evaluatie-oplossingen?
+### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>V. Welke controles worden uitgevoerd door de AD-en SQL-evaluatie-oplossingen?
 
-A: De volgende query ziet u een beschrijving van alle controles die momenteel worden uitgevoerd:
+A: met de volgende query wordt een beschrijving weer gegeven van alle controles die op dit moment worden uitgevoerd:
 
 ```
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
 ```
 
-De resultaten kunnen vervolgens worden geëxporteerd naar Excel voor verder onderzoek.
+De resultaten kunnen vervolgens naar Excel worden geëxporteerd voor verdere controle.
 
-### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>V. Waarom zie ik iets anders dan OMS in de System Center Operations Manager-console?
+### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>V. Waarom wordt er iets anders dan OMS in de System Center Operations Manager-console weer geven?
 
-A: Afhankelijk van welke Update Rollup van Operations Manager op, ziet u een knooppunt voor *System Center Advisor*, *Operational Insights*, of *Log Analytics*.
+A: afhankelijk van het update pakket van Operations Manager u zich bevindt, ziet u mogelijk een knoop punt voor *System Center Advisor*, *Operational Insights*of *log Analytics*.
 
-Het bijwerken van de verbindingsreeks tekst naar *OMS* is opgenomen in een managementpack, dat moet handmatig worden geïmporteerd. Als u de huidige tekst en de functionaliteit, volg de instructies op het meest recente System Center Operations Manager Update Rollup KB-artikel en vernieuw de console.
+De teken reeks die is bijgewerkt naar *OMS* is opgenomen in een Management Pack. deze moet hand matig worden geïmporteerd. Als u de huidige tekst en functionaliteit wilt bekijken, volgt u de instructies in het meest recente artikel System Center Operations Manager Update pakket KB en de console vernieuwen.
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>V: Is er een on-premises versie van Log Analytics?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>V: is er een on-premises versie van Log Analytics?
 
-A: Nee. Log Analytics is een schaalbare cloudservice die worden verwerkt en kunnen grote hoeveelheden gegevens worden opgeslagen. 
+A: Nee. Log Analytics is een schaal bare Cloud service die grote hoeveel heden gegevens verwerkt en opslaat. 
 
-### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>V. Hoe kan ik als Log Analytics niet meer van gegevens verzamelen is oplossen?
+### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>V. Hoe kan ik problemen oplossen als Log Analytics niet langer gegevens verzamelt?
 
-A: Voor een abonnement en de werkruimte die zijn gemaakt vóór 2 April 2018 dat zich op de *gratis* prijscategorie, als meer dan 500 MB aan gegevens op een dag wordt verzonden, het verzamelen van gegevens gestopt voor de rest van de dag. De dagelijkse limiet wordt bereikt, is een veelvoorkomende reden die Log Analytics stopt het verzamelen van gegevens of gegevens lijkt te ontbreken.  
+A: voor een abonnement en een werk ruimte die is gemaakt vóór 2 april 2018 en die zich in de *gratis* prijs categorie bevindt, wordt het verzamelen van gegevens voor de rest van de dag gestopt als er meer dan 500 MB aan gegevens worden verzonden. Het bereiken van de dagelijkse limiet is een gemeen schappelijke reden dat Log Analytics het verzamelen van gegevens niet meer of gegevens lijkt te missen.  
 
-Log Analytics maakt een gebeurtenis van het type *Heartbeat* en kan worden gebruikt om te bepalen als het verzamelen van gegevens gestopt. 
+Log Analytics maakt een gebeurtenis van het type *heartbeat* en kan worden gebruikt om te bepalen of het verzamelen van gegevens is gestopt. 
 
-Voer de volgende query in het zoekvak om te controleren als u de dagelijkse limiet is bereikt en er gegevens ontbreken: `Heartbeat | summarize max(TimeGenerated)`
+Voer de volgende query uit in de zoek opdracht om te controleren of u de dagelijkse limiet bereikt en ontbrekende gegevens: `Heartbeat | summarize max(TimeGenerated)`
 
-Om te controleren of een specifieke computer, moet u de volgende query uitvoeren: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
+Voer de volgende query uit om een specifieke computer te controleren: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
 
-Wanneer het verzamelen van gegevens wordt gestopt, afhankelijk van het tijdsbereik dat is geselecteerd, ziet u niet alle records geretourneerd.   
+Wanneer het verzamelen van gegevens stopt, worden er, afhankelijk van het geselecteerde tijds bereik, geen gevonden records weer gegeven.   
 
-De volgende tabel beschrijft de redenen die het verzamelen van gegevens gestopt en een voorgestelde actie voor het verzamelen van gegevens hervatten:
+De volgende tabel beschrijft de redenen waarom het verzamelen van gegevens wordt gestopt en een aanbevolen actie om het verzamelen van gegevens te hervatten:
 
-| Reden het verzamelen van gegevens stopt                       | Het verzamelen van gegevens hervatten |
+| Gegevens verzameling voor de reden stopt                       | Gegevens verzameling hervatten |
 | -------------------------------------------------- | ----------------  |
-| Limiet voor gratis gegevens bereikt<sup>1</sup>       | Wacht tot de volgende maand voor de verzameling automatisch opnieuw wordt gestart, of<br> Wijzigen in een betaalde prijscategorie |
-| Azure-abonnement is de status onderbroken vanwege: <br> Gratis proefversie is beëindigd <br> Azure geslaagd is verlopen <br> Maandelijkse bestedingslimiet bereikt (bijvoorbeeld op een MSDN of Visual Studio-abonnement)                          | Converteren naar een betaald abonnement <br> Converteren naar een betaald abonnement <br> Limiet verwijderen of wacht u totdat de limiet wordt opnieuw ingesteld |
+| De limiet voor gratis gegevens is bereikt<sup>1</sup>       | Wacht tot de volgende maand voor het automatisch opnieuw opstarten van de verzameling is of<br> Overschakelen naar een betaalde prijs categorie |
+| Het Azure-abonnement bevindt zich in een onderbroken staat vanwege: <br> De gratis proef versie is beëindigd <br> Azure Pass is verlopen <br> De maandelijkse bestedings limiet is bereikt (bijvoorbeeld op een MSDN-of Visual Studio-abonnement)                          | Converteren naar een betaald abonnement <br> Converteren naar een betaald abonnement <br> Limiet verwijderen of wachten tot de limiet is ingesteld |
 
-<sup>1</sup> als uw werkruimte is op de *gratis* prijscategorie, kunt u maximaal 500 MB aan gegevens per dag verzenden naar de service. Wanneer u de dagelijkse limiet bereikt, stopt het verzamelen van gegevens tot de volgende dag. Gegevens die worden verzonden tijdens het verzamelen van gegevens is gestopt, is niet geïndexeerd en is niet beschikbaar voor het zoeken. Wanneer het verzamelen van gegevens wordt hervat, verwerking vindt alleen plaats voor nieuwe gegevens die worden verzonden. 
+<sup>1</sup> als uw werk ruimte zich in de *gratis* prijs categorie bevindt, bent u beperkt tot het verzenden van 500 MB aan gegevens per dag naar de service. Wanneer u de dagelijkse limiet bereikt, stopt het verzamelen van gegevens tot de volgende dag. Gegevens die worden verzonden terwijl het verzamelen van gegevens is gestopt, worden niet geïndexeerd en kunnen niet worden doorzocht. Wanneer het verzamelen van gegevens wordt hervat, vindt verwerking alleen plaats voor nieuwe gegevens die worden verzonden. 
 
-Log Analytics maakt gebruik van UTC-tijd en elke dag om middernacht UTC begint. Als de werkruimte de dagelijkse limiet bereikt, wordt tijdens het eerste uur van de volgende dag in de UTC verwerking hervat.
+Log Analytics gebruikt UTC-tijd en elke dag begint om middernacht UTC. Als de werk ruimte de dagelijkse limiet bereikt, worden er tijdens het eerste uur van de volgende UTC-dag de verwerking hervat.
 
-### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>V. Hoe kan ik de hoogte gesteld wanneer het verzamelen van gegevens wordt gestopt?
+### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>V. Hoe kan ik een melding ontvangen wanneer het verzamelen van gegevens wordt gestopt?
 
-A: Gebruik de stappen [maken van een nieuwe waarschuwing](../../azure-monitor/platform/alerts-metric.md) om te worden geïnformeerd wanneer het verzamelen van gegevens wordt gestopt.
+A: gebruik de stappen in [een nieuwe logboek waarschuwing maken om een](../../azure-monitor/platform/alerts-metric.md) melding te ontvangen wanneer het verzamelen van gegevens wordt gestopt.
 
-Bij het maken van de waarschuwing voor wanneer het verzamelen van gegevens stopt, stel de:
+Wanneer u de waarschuwing maakt wanneer het verzamelen van gegevens wordt gestopt, stelt u het volgende in:
 
 - **Waarschuwingsvoorwaarde definiëren** - geef uw Log Analytics-werkruimte op als het resourcedoel.
 - **Waarschuwingscriteria** - geef het volgende op:
-   - **Signaalnaam** Selecteer **zoeken in Logboeken aangepaste**.
+   - **Signaal naam** Selecteer **aangepaste logboek zoekopdracht**.
    - **Zoekquery** op `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Waarschuwingslogica** is **Gebaseerd op** het *aantal resultaten*, en **Voorwaarde** is *Groter dan* een **Drempelwaarde** van *0*
-   - **Periode** van *30* minuten en **Waarschuwingsfrequentie** voor elke *10* minuten
+   - **Tijds duur** van *30* minuten en **waarschuwings frequentie** tot elke *10* minuten
 - **Waarschuwingsdetails definiëren** - geef het volgende op:
-   - **Naam** naar *gegevensverzameling gestopt*
+   - De **naam** voor het *verzamelen van gegevens is gestopt*
    - **Ernst** op *Waarschuwing*
 
-Geef een bestaande of maak een nieuwe [actiegroep](../../azure-monitor/platform/action-groups.md) zodat wanneer de waarschuwing voldoet aan criteria, u wordt gewaarschuwd als er een heartbeat ontbreekt voor meer dan 15 minuten.
+Geef een bestaande of maak een nieuwe [actie groep](../../azure-monitor/platform/action-groups.md) op, zodat wanneer de logboek waarschuwing overeenkomt met de criteria, u een melding ontvangt als er al meer dan 15 minuten een heartbeat ontbreekt.
 
 ## <a name="configuration"></a>Configuratie
-### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>V. Kan ik de naam van de tabel/blob-container gebruikt om te lezen van Azure Diagnostics (WAD) wijzigen?
+### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>V. Kan ik de naam wijzigen van de tabel/BLOB-container die wordt gebruikt voor het lezen van Azure Diagnostics (WAD)?
 
-A. Nee, is het niet mogelijk om te lezen uit verschillende tabellen of containers in Azure storage.
+A. Nee, het is momenteel niet mogelijk om te lezen uit een wille keurige tabel of container in azure Storage.
 
-### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>V. Welke IP-adressen wordt het gebruik van de service Log Analytics? Hoe kan ik ervoor zorgen dat mijn firewall alleen toestaat dat verkeer naar de Log Analytics-service?
+### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>V. Welke IP-adressen worden gebruikt door de Log Analytics-Service? Hoe kan ik ervoor te zorgen dat mijn firewall alleen verkeer naar de Log Analytics-service toestaat?
 
-A. De service Log Analytics is gebaseerd op Azure. Log Analytics-IP-adressen zijn de [Microsoft Azure Datacenter IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653).
+A. De Log Analytics-service is gebaseerd op Azure. Log Analytics IP-adressen bevinden zich in de [Microsoft Azure Data Center IP-adresbereiken](https://www.microsoft.com/download/details.aspx?id=41653).
 
-Als de service-implementaties worden gemaakt, wordt de werkelijke IP-adressen van de service Log Analytics wijzigen. De DNS-namen om toe te staan via de firewall zijn gedocumenteerd in [vereisten voor de](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
+Wanneer service-implementaties worden uitgevoerd, worden de daad werkelijke IP-adressen van de Log Analytics service gewijzigd. De DNS-namen die u via uw firewall wilt toestaan, worden beschreven in de [netwerk vereisten](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
 
-### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>V. Ik ExpressRoute gebruiken voor verbinding met Azure. Mijn verkeer Log Analytics maakt gebruik van mijn ExpressRoute-verbinding?
+### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>V. Ik gebruik ExpressRoute om verbinding te maken met Azure. Maakt mijn Log Analytics verkeer gebruik van mijn ExpressRoute-verbinding?
 
-A. De verschillende soorten verkeer van ExpressRoute worden beschreven in de [documentatie voor ExpressRoute](../../expressroute/expressroute-faqs.md#supported-services).
+A. De verschillende soorten ExpressRoute-verkeer worden beschreven in de [ExpressRoute-documentatie](../../expressroute/expressroute-faqs.md#supported-services).
 
-Verkeer naar Log Analytics maakt gebruik van het ExpressRoute-circuit voor openbaar peering.
+Verkeer naar Log Analytics maakt gebruik van het ExpressRoute-circuit met open bare peering.
 
-### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>V. Is er een eenvoudige en eenvoudige manier om een bestaande Log Analytics-werkruimte verplaatsen naar een andere Log Analytics-werkruimte/Azure-abonnement?
+### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>V. Is er een eenvoudige en eenvoudige manier om een bestaande Log Analytics-werk ruimte te verplaatsen naar een ander Log Analytics werk ruimte/Azure-abonnement?
 
-A. De `Move-AzResource` cmdlet kunt u een Log Analytics-werkruimte en een Automation-account van één Azure-abonnement verplaatsen naar een andere. Zie voor meer informatie, [verplaatsen AzResource](https://msdn.microsoft.com/library/mt652516.aspx).
+A. Met de cmdlet `Move-AzResource` kunt u een Log Analytics-werk ruimte en een Automation-account van het ene Azure-abonnement naar het andere verplaatsen. Zie [Move-AzResource](https://msdn.microsoft.com/library/mt652516.aspx)voor meer informatie.
 
-Deze wijziging kan ook worden gemaakt in Azure portal.
+Deze wijziging kan ook worden aangebracht in de Azure Portal.
 
-U kunt gegevens naar de andere verplaatsen van een Log Analytics-werkruimte of wijzigen van de regio die Log Analytics-gegevens zijn opgeslagen in.
+U kunt geen gegevens van de ene Log Analytics werk ruimte naar de andere verplaatsen of de regio wijzigen waarin Log Analytics gegevens zijn opgeslagen.
 
-### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>V: Hoe voeg ik Log Analytics naar System Center Operations Manager?
+### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>V: Hoe kan ik Log Analytics toevoegen aan System Center Operations Manager?
 
-A:  Bijwerken naar de meest recente updatepakket installeren en importeren van management packs kunt u Operations Manager verbinden met Log Analytics.
+A: als u het meest recente update pakket bijwerkt en Management Packs importeert, kunt u Operations Manager verbinding maken met Log Analytics.
 
 >[!NOTE]
->De Operations Manager-verbinding met Log Analytics is alleen beschikbaar voor System Center Operations Manager 2012 SP1 en hoger.
+>De Operations Manager verbinding met Log Analytics is alleen beschikbaar voor System Center Operations Manager 2012 SP1 en hoger.
 
-### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>V: Hoe kan ik controleren of een agent kan communiceren met Log Analytics is?
+### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>V: hoe kan ik controleren of een agent kan communiceren met Log Analytics?
 
-A: Om ervoor te zorgen dat de agent met OMS communiceren kan, gaat u naar: Control Panel, Security & Settings, **Microsoft Monitoring Agent**.
+A: om ervoor te zorgen dat de agent kan communiceren met OMS, gaat u naar: configuratie scherm, beveiligings & instellingen, **micro soft Monitoring Agent**.
 
-Onder de **Azure Log Analytics (OMS)** tabblad, gaat u naar een groen vinkje. Een groen vinkje wordt bevestigd dat de agent kan communiceren met de Azure-service is.
+Ga naar het tabblad **Azure log Analytics (OMS)** en zoek naar een groen vinkje. Een groen vinkje geeft aan dat de agent kan communiceren met de Azure-service.
 
-Een geel waarschuwingspictogram betekent dat de agent heeft problemen communicatie met Log Analytics. Een veelvoorkomende reden waarom is dat de Microsoft Monitoring Agent-service is gestopt. Servicebesturingsbeheer gebruiken de service opnieuw te starten.
+Een geel waarschuwings pictogram geeft aan dat de agent communicatie problemen ondervindt met Log Analytics. Een veelvoorkomende reden is dat de service micro soft monitoring agent is gestopt. Gebruik service besturings beheer om de service opnieuw te starten.
 
-### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>V: Hoe stop ik een agent niet communiceren met Log Analytics?
+### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>V: Hoe kan ik stopt een agent met communiceren met Log Analytics?
 
-A: In System Center Operations Manager, de computer te verwijderen uit de lijst met OMS beheerde computers. Operations Manager werkt u de configuratie van de agent niet langer een rapport naar Log Analytics. Voor agents die rechtstreeks verbonden met Log Analytics, kunt u ze stopt vanaf communiceren via: Control Panel, Security & Settings, **Microsoft Monitoring Agent**.
-Onder **Azure Log Analytics (OMS)** , verwijder alle werkruimten die worden vermeld.
+A: Verwijder in System Center Operations Manager de computer uit de lijst met OMS beheerde computers. Operations Manager werkt de configuratie van de agent bij naar Log Analytics niet meer. Voor agents die rechtstreeks zijn verbonden met Log Analytics, kunt u voor komen dat ze communiceren via: configuratie scherm, beveiligings & instellingen, **micro soft Monitoring Agent**.
+Verwijder onder **Azure log Analytics (OMS)** alle weer gegeven werk ruimten.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>V: Waarom krijg ik een foutbericht wanneer ik wil mijn werkruimte van één Azure-abonnement verplaatsen naar een andere?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>V: Waarom krijg ik een fout melding wanneer ik mijn werk ruimte probeer te verplaatsen van het ene Azure-abonnement naar het andere?
 
-A: Om een werkruimte naar een ander abonnement of resourcegroep verplaatsen, moet u eerst het Automation-account in de werkruimte ontkoppelen. Voor het ontkoppelen van een Automation-account moeten de volgende oplossingen worden verwijderd, als deze in de werkruimte zijn geïnstalleerd: Updatebeheer, wijzigingen bijhouden of VM's starten/stoppen buiten kantooruren worden verwijderd. Nadat deze oplossingen zijn verwijderd, het Automation-account loskoppelen door te selecteren **gekoppeld werkruimten** resource in het linkerdeelvenster in de Automation-account in en klikt u op **werkruimte ontkoppelen** op het lint.
- > Oplossingen hoeft te worden geïnstalleerd in de werkruimte verwijderd en het Automation-koppeling naar de werkruimte moet na de verplaatsing worden aangepast.
+A: als u een werk ruimte wilt verplaatsen naar een ander abonnement of een andere resource groep, moet u eerst de koppeling van het Automation-account in de werk ruimte opheffen. Als u een Automation-account wilt ontkoppelen, moet u deze oplossingen verwijderen als ze in de werk ruimte zijn geïnstalleerd: Updatebeheer, Wijzigingen bijhouden of VM's buiten bedrijfsuren starten/stoppen worden verwijderd. Nadat deze oplossingen zijn verwijderd, ontkoppelt u het Automation-account door **gekoppelde werk ruimten** te selecteren in het linkerdeel venster van de Automation-account resource en klikt u op **werk ruimte ontkoppelen** op het lint.
+ > Verwijderde oplossingen moeten opnieuw worden geïnstalleerd in de werk ruimte en de Automation-koppeling naar de werk ruimte moet worden aangepast na de verplaatsing.
 
-Zorg ervoor dat u gemachtigd in zowel Azure-abonnementen.
+Zorg ervoor dat u over de juiste machtigingen beschikt in azure-abonnementen.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>V: Waarom krijg ik een foutbericht wanneer ik wil een SavedSearch bijwerken?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>V: Waarom krijg ik een fout melding wanneer ik een SavedSearch probeer bij te werken?
 
-A: U moet 'etag' in de hoofdtekst van de API of de sjablooneigenschappen van de Azure Resource Manager-toevoegen:
+A: u moet ETAG toevoegen in de hoofd tekst van de API of de eigenschappen van de Azure Resource Manager-sjabloon:
 ```
 "properties": {
    "etag": "*",
@@ -216,33 +210,33 @@ A: U moet 'etag' in de hoofdtekst van de API of de sjablooneigenschappen van de 
 }
 ```
 
-## <a name="agent-data"></a>Gegevens van de gebruikersagent
-### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>V. Hoeveel gegevens kan ik verzenden via de agent naar Log Analytics? Is er een maximale hoeveelheid gegevens per klant?
-A. Het gratis abonnement Hiermee stelt u een dagelijkse limiet van 500 MB per werkruimte. De standard en premium-abonnementen hebben geen limiet voor de hoeveelheid gegevens die is geüpload. Als een cloudservice, Log Analytics is ontworpen om automatisch omhoog schalen naar het volume verwerken die afkomstig zijn van een klant, zelfs als deze terabytes per dag.
+## <a name="agent-data"></a>Agent gegevens
+### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>V. Hoeveel gegevens kan ik via de agent verzenden naar Log Analytics? Is er een maximum hoeveelheid gegevens per klant?
+A. Met het gratis abonnement wordt een dagelijks limiet van 500 MB per werk ruimte ingesteld. De Standard-en Premium-abonnementen hebben geen limiet voor de hoeveelheid gegevens die worden geüpload. Als Cloud service is Log Analytics ontworpen om automatisch te schalen om het volume van een klant te verwerken, zelfs als het per dag terabytes is.
 
-De Log Analytics-agent is ontworpen om te controleren of er een kleine footprint. Het gegevensvolume is afhankelijk van de oplossingen die u inschakelt. U kunt gedetailleerde informatie over het gegevensvolume en zien de uitsplitsing van de oplossing in de [gebruik](../../azure-monitor/platform/data-usage.md) pagina.
+De Log Analytics-agent is ontworpen om ervoor te zorgen dat deze een geringe footprint heeft. Het gegevens volume is afhankelijk van de oplossingen die u inschakelt. U kunt gedetailleerde informatie vinden op het gegevens volume en de uitsplitsing per oplossing bekijken op de pagina [gebruik](../../azure-monitor/platform/data-usage.md) .
 
-Voor meer informatie vindt u een [klant blog](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) met hun resultaten na het evalueren van het Resourcegebruik (voetafdruk) van de OMS-agent.
+Voor meer informatie kunt u een blog van een [klant](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) lezen waarin de resultaten worden weer gegeven nadat u het resource gebruik (footprint) van de OMS-agent hebt geëvalueerd.
 
-### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>V. Hoeveel bandbreedte van het netwerk wordt door de Microsoft Management Agent (MMA) gebruikt bij het verzenden van gegevens naar Log Analytics?
+### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>V. Hoeveel netwerk bandbreedte wordt gebruikt door de micro soft Management Agent (MMA) bij het verzenden van gegevens naar Log Analytics?
 
-A. Bandbreedte is een functie voor de hoeveelheid gegevens die worden verzonden. Gegevens worden gecomprimeerd wanneer deze worden verzonden via het netwerk.
+A. Band breedte is een functie voor de hoeveelheid gegevens die wordt verzonden. Gegevens worden gecomprimeerd wanneer ze via het netwerk worden verzonden.
 
-### <a name="q-how-much-data-is-sent-per-agent"></a>V. Hoeveel gegevens worden verzonden per agent?
+### <a name="q-how-much-data-is-sent-per-agent"></a>V. Hoeveel gegevens worden per agent verzonden?
 
-A. Afhankelijk van de hoeveelheid gegevens die per agent worden verzonden:
+A. De hoeveelheid gegevens die per agent wordt verzonden, is afhankelijk van:
 
 * De oplossingen die u hebt ingeschakeld
-* Het aantal logboeken en prestatiemeteritems worden verzameld
-* De hoeveelheid gegevens in de logboeken
+* Het aantal logboeken en prestatie meter items dat wordt verzameld
+* Het gegevens volume in de logboeken
 
-De gratis prijscategorie is een goede manier om de onboarding verschillende servers en het typische gegevensvolume meter. Algemeen gebruik wordt weergegeven op de [gebruik](../../azure-monitor/platform/data-usage.md) pagina.
+De prijs categorie gratis is een goede manier om meerdere servers uit te scha kelen en het typische gegevens volume te meten. Het algehele gebruik wordt op de [gebruiks](../../azure-monitor/platform/data-usage.md) pagina weer gegeven.
 
-Voor computers die kunnen worden uitgevoerd van de agent WireData, gebruikt u de volgende query uit om te zien hoeveel gegevens er worden verzonden:
+Voor computers waarop de WireData-agent kan worden uitgevoerd, gebruikt u de volgende query om te zien hoeveel gegevens er worden verzonden:
 
 ```
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Aan de slag met Log Analytics](../../azure-monitor/overview.md) voor meer informatie over Log Analytics en enkele minuten aan de slag.
+* Aan de [slag met log Analytics](../../azure-monitor/overview.md) om meer te weten te komen over log Analytics en binnen enkele minuten aan de slag te gaan.

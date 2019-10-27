@@ -9,22 +9,22 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169825"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924991"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Gebruik Terraform om infrastructuur in te richten met Azure-implementatiesites
 
 U kunt [Azure-implementatiesites](/azure/app-service/deploy-staging-slots) gebruiken om te wisselen tussen verschillende versies van uw app. Deze mogelijkheid helpt u om de impact van afgebroken implementaties te minimaliseren. 
 
-In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarbij stapsgewijs twee apps worden geïmplementeerd via GitHub en Azure. Eén app wordt gehost op een productiesite. De tweede app wordt gehost op een staging-site. (De namen 'productie' en 'staging' zijn willekeurig en mogen alles zijn wat bij uw scenario past.) Nadat u uw implementatiesites hebt geconfigureerd, kunt u indien nodig via Terraform wisselen tussen de twee sites.
+In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarbij stapsgewijs twee apps worden geïmplementeerd via GitHub en Azure. Eén app wordt gehost op een productiesite. De tweede app wordt gehost op een staging-site. (De namen ' productie ' en ' staging ' zijn wille keurig en kunnen alles wat u wilt dat uw scenario vertegenwoordigt.) Nadat u uw implementatie sleuven hebt geconfigureerd, kunt u terraform gebruiken om de twee sleuven naar behoefte te wisselen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+- **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
 - **GitHub-account**: u hebt een [GitHub](https://www.github.com)-account nodig om te splitsen en de GitHub-testopslagplaats te gebruiken.
 
@@ -42,13 +42,13 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
     cd clouddrive
     ```
 
-1. Maak een map met de naam `deploy`.
+1. Maak een directory met de naam `deploy`.
 
     ```bash
     mkdir deploy
     ```
 
-1. Maak een map met de naam `swap`.
+1. Maak een directory met de naam `swap`.
 
     ```bash
     mkdir swap
@@ -85,8 +85,8 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
 
     resource "azurerm_app_service_plan" "slotDemo" {
         name                = "slotAppServicePlan"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
         sku {
             tier = "Standard"
             size = "S1"
@@ -95,17 +95,17 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
 
     resource "azurerm_app_service" "slotDemo" {
         name                = "slotAppService"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
     }
 
     resource "azurerm_app_service_slot" "slotDemo" {
         name                = "slotAppServiceSlotOne"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
-        app_service_name    = "${azurerm_app_service.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
+        app_service_name    = azurerm_app_service.slotDemo.name
     }
     ```
 

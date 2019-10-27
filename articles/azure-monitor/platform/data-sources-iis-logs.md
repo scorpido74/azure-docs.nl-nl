@@ -1,24 +1,18 @@
 ---
 title: IIS-logboeken in Azure Monitor | Microsoft Docs
 description: Internet Information Services (IIS) slaat gebruikers activiteiten op in logboek bestanden die door Azure Monitor kunnen worden verzameld.  In dit artikel wordt beschreven hoe u een verzameling IIS-logboeken en-Details configureert van de records die ze in Azure Monitor maken.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc0fcbb2005ce2aaa70c9e1d2a9993d341169209
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 11/28/2018
+ms.openlocfilehash: a865f43585ccbb31569e2ca0987aae62a89a9281
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814221"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932492"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>IIS-logboeken in Azure Monitor verzamelen
 Internet Information Services (IIS) slaat gebruikers activiteiten op in logboek bestanden die kunnen worden verzameld door Azure Monitor en worden opgeslagen als [logboek gegevens](data-platform.md).
@@ -40,7 +34,7 @@ Azure Monitor worden IIS-logboek vermeldingen van elke agent verzameld telkens w
 ## <a name="iis-log-record-properties"></a>Eigenschappen van IIS-logboek record
 IIS-logboek records hebben een type **W3CIISLog** en hebben de eigenschappen in de volgende tabel:
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--- |:--- |
 | Computer |De naam van de computer waarop de gebeurtenis is verzameld. |
 | cIP |Het IP-adres van de client. |
@@ -50,7 +44,7 @@ IIS-logboek records hebben een type **W3CIISLog** en hebben de eigenschappen in 
 | csUserName |Naam van de geverifieerde gebruiker die toegang heeft tot de server. Anonieme gebruikers worden aangeduid met een koppel teken. |
 | csUriStem |Doel van de aanvraag, zoals een webpagina. |
 | csUriQuery |Indien van toepassing, query die de client probeerde uit te voeren. |
-| ManagementGroupName |De naam van de beheer groep voor Operations Manager agents.  Voor andere agents is dit AOI -\<werkruimte-ID\> |
+| ManagementGroupName |De naam van de beheer groep voor Operations Manager agents.  Voor andere agents is dit AOI-\<werk ruimte-ID\> |
 | RemoteIPCountry |Het land/de regio van het IP-adres van de client. |
 | RemoteIPLatitude |De breedte graad van het client-IP-adres. |
 | RemoteIPLongitude |De lengte graad van het client-IP-adres. |
@@ -62,19 +56,19 @@ IIS-logboek records hebben een type **W3CIISLog** en hebben de eigenschappen in 
 | Manifestatie |Poort op de server waarmee de client is verbonden. |
 | sSiteName |De naam van de IIS-site. |
 | TimeGenerated |De datum en tijd waarop de vermelding is geregistreerd. |
-| TimeTaken |De tijds duur voor het verwerken van de aanvraag in milliseconden. |
+| timeTaken |De tijds duur voor het verwerken van de aanvraag in milliseconden. |
 
 ## <a name="log-queries-with-iis-logs"></a>Query's vastleggen in Logboeken met IIS-logboeken
 De volgende tabel bevat verschillende voor beelden van logboek query's waarmee IIS-logboek records worden opgehaald.
 
-| Query’s uitvoeren | Description |
+| Query | Beschrijving |
 |:--- |:--- |
 | W3CIISLog |Alle IIS-logboek records. |
-| W3CIISLog &#124; where scStatus==500 |Alle IIS-logboek records met de retour status 500. |
+| W3CIISLog &#124; waarbij scStatus = = 500 |Alle IIS-logboek records met de retour status 500. |
 | Aantal &#124; samen vattingen van W3CIISLog () door overschrijving |Aantal IIS-logboek vermeldingen op client-IP-adres. |
-| W3CIISLog &#124; waarbij csHost = = "www\.contoso.com" &#124; Count () door csUriStem |Aantal IIS-logboek vermeldingen op URL voor de www\.-contoso.com van de host. |
+| W3CIISLog &#124; waarbij csHost = = "www\.contoso.com" &#124; aantal overzichten () door csUriStem |Aantal IIS-logboek vermeldingen op URL voor de host-www\.contoso.com. |
 | W3CIISLog &#124; Total Sum (csBytes) door Computer &#124; nemen 500000 |Het totale aantal bytes dat door elke IIS-computer is ontvangen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 * Configureer Azure Monitor voor het verzamelen van andere [gegevens bronnen](agent-data-sources.md) voor analyse.
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.

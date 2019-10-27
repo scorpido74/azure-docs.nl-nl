@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599953"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934025"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Certificaten voor een Service Fabric cluster in azure toevoegen of verwijderen
 Het is raadzaam om vertrouwd te raken met de manier waarop Service Fabric X. 509-certificaten gebruikt en dat u vertrouwd bent met de [beveiligings scenario's](service-fabric-cluster-security.md)voor het cluster. Voordat u verder gaat, moet u weten wat een cluster certificaat is en wat wordt gebruikt voor.
@@ -53,13 +53,13 @@ Als u het certificaat dat is gemarkeerd als primair wilt verwijderen, moet u een
 Bij deze stappen wordt ervan uitgegaan dat u bekend bent met het gebruik van Resource Manager en ten minste één Service Fabric cluster met een resource manager-sjabloon hebt geïmplementeerd. u hebt de sjabloon die u hebt gebruikt voor het instellen van het cluster. Ook wordt ervan uitgegaan dat u bent vertrouwd met JSON.
 
 > [!NOTE]
-> Als u op zoek bent naar een voorbeeld sjabloon en para meters die u kunt gebruiken om samen te volgen of als uitgangs punt, downloadt u deze vanaf deze [Git-opslag plaats](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
+> Als u op zoek bent naar een voorbeeld sjabloon en para meters die u kunt gebruiken om samen te volgen of als uitgangs punt, downloadt u deze vanaf deze [Git-opslag plaats](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample). 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Uw Resource Manager-sjabloon bewerken
 
-Voor het gemak van de volgende stap, voor beeld 5-VM-1-NodeTypes-Secure_Step2. JSON bevat alle wijzigingen die we zullen door voeren. het voor beeld is beschikbaar op [Git-opslag plaats](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+Voor het gemak van de volgende stap, voor beeld 5-VM-1-NodeTypes-Secure_Step2. JSON bevat alle wijzigingen die we zullen door voeren. het voor beeld is beschikbaar op [Git-opslag plaats](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Zorg ervoor dat u alle stappen hebt gevolgd**
 
@@ -117,7 +117,7 @@ Voor het gemak van de volgende stap, voor beeld 5-VM-1-NodeTypes-Secure_Step2. J
          }
     ``` 
 
-4. Breng wijzigingen aan in alle **micro soft. Compute/virtualMachineScaleSets** resource definities-Zoek de resource definitie micro soft. Compute/virtualMachineScaleSets. Ga naar ' Publisher ': ' Micro soft. Azure. ServiceFabric ', onder ' virtualMachineProfile '.
+4. Breng wijzigingen aan in alle **micro soft. Compute/virtualMachineScaleSets** resource definities-Zoek de resource definitie micro soft. Compute/virtualMachineScaleSets. Ga naar ' Publisher ': ' micro soft. Azure. ServiceFabric ', onder ' virtualMachineProfile '.
 
     In de instellingen voor de Service Fabric uitgever ziet u iets als in.
     
@@ -178,7 +178,7 @@ Voor het gemak van de volgende stap, voor beeld 5-VM-1-NodeTypes-Secure_Step2. J
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Bewerk uw sjabloon bestand om de nieuwe para meters weer te geven die u hierboven hebt toegevoegd
-Als u het voor beeld van het [Git-opslag plaats](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) gebruikt om samen te volgen, kunt u beginnen met het maken van wijzigingen in het voor beeld 5-VM-1-NodeTypes-Secure. PARAMETERS_STEP2. json 
+Als u het voor beeld van het [Git-opslag plaats](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) gebruikt om samen te volgen, kunt u beginnen met het maken van wijzigingen in het voor beeld 5-VM-1-NodeTypes-Secure. PARAMETERS_STEP2. json 
 
 Bewerk het parameter bestand voor de Resource Manager-sjabloon, voeg de twee nieuwe para meters voor secCertificateThumbprint en secCertificateUrlValue toe. 
 

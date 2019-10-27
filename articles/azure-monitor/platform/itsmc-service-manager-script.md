@@ -1,48 +1,42 @@
 ---
-title: Geautomatiseerd script voor het maken van Service Manager-Web-app om te verbinden met de IT Service Management-Connector in Azure | Microsoft Docs
-description: Een Service Manager-Web-app met behulp van een geautomatiseerd script verbinding maken met de IT Service Management-Connector in Azure, en centraal bewaken en beheren van de ITSM-werkitems maken.
-services: log-analytics
-documentationcenter: ''
-author: jyothirmaisuri
-manager: riyazp
-editor: ''
-ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Geautomatiseerd script om Service Manager web-app te maken om te verbinden met IT Service Management-connector in azure | Microsoft Docs
+description: Een Service Manager web-app maken met behulp van een geautomatiseerd script om verbinding te maken met IT Service Management-connector in azure, en de ITSM-werk items centraal te controleren en te beheren.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/23/2018
+author: JYOTHIRMAISURI
 ms.author: v-jysur
-ms.openlocfilehash: 42adbf7a6f0e7bb462e6bc9b690c61d4ade0cae2
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.date: 01/23/2018
+ms.openlocfilehash: 443fe6aa7e97e666075a2fbb985a9b8b00baf81a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479706"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932257"
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager-Web-app met behulp van de geautomatiseerde scripts maken
+# <a name="create-service-manager-web-app-using-the-automated-script"></a>Service Manager web-app maken met behulp van het geautomatiseerde script
 
-Het volgende script gebruiken om te maken van de Web-app voor uw exemplaar van Service Manager. Meer informatie over Service Manager-verbinding is hier: [Service Manager-Web-app](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Gebruik het volgende script om de web-app voor uw Service Manager-exemplaar te maken. Meer informatie over Service Manager verbinding vindt u hier: [Service Manager web-app](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Voer het script door te geven van de volgende vereiste gegevens:
+Voer het script uit door de volgende vereiste gegevens op te geven:
 
-- Details van de Azure-abonnement
+- Details van Azure-abonnement
 - Naam van de resourcegroep
-- Location
-- Service Manager-server-gegevens (naam, domein, gebruikersnaam en wachtwoord)
-- Voorvoegsel van de site de naam voor uw Web-app
-- Service Bus-Namespace.
+- Locatie
+- Service Manager server Details (Server naam, domein, gebruikers naam en wacht woord)
+- Het voor voegsel van de site naam voor uw web-app
+- Naam ruimte ServiceBus.
 
-Het script maakt de Web-app met behulp van de naam die u hebt opgegeven (samen met enkele extra tekenreeksen uniek te maken). Het genereert de **Web-app-URL**, **client-ID**, en **clientgeheim**.
+Met het script wordt de web-app gemaakt met de naam die u hebt opgegeven (samen met enkele extra teken reeksen om deze uniek te maken). De web- **app-URL**, de **client-id**en het **client geheim**worden gegenereerd.
 
-Sla deze waarden moet u deze waarden wanneer u een verbinding met de IT Service Management-Connector maakt.
+Sla deze waarden op. u hebt deze waarden nodig wanneer u een verbinding maakt met IT Service Management-connector.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
- Windows Management Framework 5.0 of hoger.
-Windows 10 heeft 5.1 standaard. U kunt downloaden via [hier](https://www.microsoft.com/download/details.aspx?id=50395):
+ Windows Management Framework 5,0 of hoger.
+Windows 10 heeft standaard 5,1. U kunt het Framework [downloaden van de volgende:](https://www.microsoft.com/download/details.aspx?id=50395)
 
 Gebruik het volgende script:
 

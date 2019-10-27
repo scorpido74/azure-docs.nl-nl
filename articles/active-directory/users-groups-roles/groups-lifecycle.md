@@ -10,41 +10,51 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cef2bd16907de6e60db2678516f70346a20285
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5dd8858786d59563542c95d43d4e480ab1c11383
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803606"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933787"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Het verloop beleid voor Office 365-groepen configureren
 
-In dit artikel leest u hoe u de levens cyclus van Office 365-groepen kunt beheren door een verloop beleid in te stellen. U kunt verloop beleid instellen voor alleen Office 365-groepen in Azure Active Directory (Azure AD).
+In dit artikel leest u hoe u de levens cyclus van Office 365-groepen kunt beheren door een verloop beleid in te stellen. U kunt het verloop beleid alleen instellen voor Office 365-groepen in Azure Active Directory (Azure AD).
 
 Zodra u een groep hebt ingesteld op verlopen:
 
-- Groepen met gebruikers activiteiten worden automatisch vernieuwd als de verlopen bijna
+- Groepen met gebruikers activiteiten worden automatisch vernieuwd als verlopen bijna (preview-versie)
 - Eigen aren van de groep worden gewaarschuwd om de groep te vernieuwen als de groep niet automatisch wordt vernieuwd
 - Een groep die niet wordt vernieuwd, wordt verwijderd
 - Elke Office 365-groep die wordt verwijderd, kan binnen 30 dagen worden hersteld door de groeps eigenaren of de beheerder
 
-De folloing-acties kunnen leiden tot het automatisch verlengen van een groep:
-
-- Share point: bestanden weer geven, bewerken, downloaden, verplaatsen, delen en uploaden
-- Outlook: een groeps bericht voor een lees-of schrijf bewerking en een bericht toevoegen
-- Teams: Ga naar een teams-kanaal
-
-Momenteel kan slechts één verloopbeleid worden geconfigureerd voor Office 365-groepen in een tenant.
+Op dit moment kan slechts één verloop beleid worden geconfigureerd voor alle Office 365-groepen in een Azure AD-organisatie.
 
 > [!NOTE]
 > Voor het configureren en gebruiken van het verloop beleid voor Office 365-groepen moet u echter wel beschikken over Azure AD Premium licenties voor de leden van alle groepen waarop het verloop beleid wordt toegepast.
 
 Zie [Azure Active Directory Power shell for graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)voor meer informatie over het downloaden en installeren van de Azure AD Power shell-cmdlets.
+
+## <a name="activity-based-automatic-renewal-preview"></a>Automatische vernieuwing op basis van een activiteit (preview-versie)
+
+Met Azure AD Intelligence worden groepen nu automatisch vernieuwd op basis van het feit of ze recent zijn gebruikt. Deze functie elimineert de nood zaak voor hand matige actie door groeps eigenaren, omdat deze is gebaseerd op gebruikers activiteit in groepen tussen Office 365-services zoals Outlook, share point, teams of Yammer. Als een eigenaar of een groepslid bijvoorbeeld een document uploadt in share point, gaat u naar een teams-kanaal of stuurt u een e-mail naar de groep in Outlook, wordt de groep automatisch vernieuwd en worden er geen meldingen over verlenging ontvangen.
+
+### <a name="activities-that-automatically-renew-group-expiration"></a>Activiteiten die het verlopen van groepen automatisch vernieuwen
+
+De volgende gebruikers acties veroorzaken automatische groeps verlenging:
+
+- Share point: bestanden weer geven, bewerken, downloaden, verplaatsen, delen of uploaden
+- Outlook: lid worden van groep, bericht van groep lezen/schrijven van groeps ruimte, zoals een bericht (in Outlook Web Access)
+- Teams: een teams-kanaal bezoeken
+
+### <a name="auditing-and-reporting"></a>Controle en rapportage
+
+Beheerders kunnen een lijst met automatisch hernieuwde groepen ophalen uit de audit logboeken voor activiteiten in azure AD.
 
 ## <a name="roles-and-permissions"></a>Rollen en machtigingen
 
@@ -67,16 +77,16 @@ Zie [een verwijderde Office 365-groep herstellen in azure Active Directory](grou
 
 3. Op de pagina **verloop** kunt u het volgende doen:
 
-  - Stel de levens duur van de groep in op dagen. U kunt een van de vooraf ingestelde waarden selecteren, of een aangepaste waarde (moet 31 dagen of langer zijn).
-  - Geef een e-mail adres op waarnaar meldingen over verlenging en verloop moeten worden verzonden wanneer een groep geen eigenaar heeft.
-  - Selecteer welke Office 365-groepen verlopen. U kunt de verval datum instellen voor:
-    - **Alle** Office 365-groepen
-    - Een lijst met **geselecteerde** Office 365-groepen
-    - **Geen** om de verval datum voor alle groepen te beperken
-  - Sla de instellingen op wanneer u klaar bent door **Opslaan**te selecteren.
+    - Stel de levens duur van de groep in op dagen. U kunt een van de vooraf ingestelde waarden selecteren, of een aangepaste waarde (moet 31 dagen of langer zijn).
+    - Geef een e-mail adres op waarnaar meldingen over verlenging en verloop moeten worden verzonden wanneer een groep geen eigenaar heeft.
+    - Selecteer welke Office 365-groepen verlopen. U kunt de verval datum instellen voor:
+      - **Alle** Office 365-groepen
+      - Een lijst met **geselecteerde** Office 365-groepen
+      - **Geen** om de verval datum voor alle groepen te beperken
+    - Sla de instellingen op wanneer u klaar bent door **Opslaan**te selecteren.
 
 > [!NOTE]
-> Wanneer u de verval datum voor het eerst instelt, worden de groepen die ouder zijn dan het verloop interval ingesteld op 35 dagen tot de verval datum, tenzij de groep automatisch wordt vernieuwd of de eigenaar deze vernieuwt. 
+> Wanneer u de verval datum voor het eerst instelt, worden de groepen die ouder zijn dan het verloop interval ingesteld op 35 dagen tot de verval datum, tenzij de groep automatisch wordt vernieuwd of de eigenaar deze vernieuwt.
 >
 > Wanneer een dynamische groep wordt verwijderd en teruggezet, wordt deze weer gegeven als een nieuwe groep en op basis van de regel opnieuw ingevuld. Dit proces kan Maxi maal 24 uur duren.
 >
@@ -99,18 +109,22 @@ De groep kan binnen 30 dagen na verwijdering worden hersteld door **groep herste
 Als de groep die u wilt herstellen, documenten, share point-sites of andere permanente objecten bevat, kan het tot 24 uur duren om de groep en de inhoud ervan volledig te herstellen.
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>De verval datum van een Office 365-groep ophalen
+
 Naast het toegangs venster waarin gebruikers groeps gegevens kunnen bekijken, zoals de verval datum en de datum van laatste vernieuwing, kan de verval datum van een Office 365-groep worden opgehaald uit Microsoft Graph REST API bèta. expirationDateTime als een groeps eigenschap is ingeschakeld in Microsoft Graph bèta. Het kan worden opgehaald met een GET-aanvraag. Raadpleeg [dit voor beeld](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)voor meer informatie.
 
 > [!NOTE]
 > Als u groepslid maatschappen in het toegangs venster wilt beheren, moet u ' toegang tot groepen in het toegangs venster beperken ' op ' nee ' instellen in Azure Active Directory algemene instelling voor groepen.
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Hoe verloopt de groep van Office 365 met een postvak in juridische bewaring
-Wanneer een groep verloopt en wordt verwijderd, wordt 30 dagen na het verwijderen van de gegevens van de groep uit apps zoals planner, sites of teams permanent verwijderd, maar wordt het groeps postvak dat zich in de juridische bewaring bevindt, bewaard en wordt het niet definitief verwijderd. De beheerder kan Exchange-cmdlets gebruiken om het postvak te herstellen om de gegevens op te halen. 
+
+Wanneer een groep verloopt en wordt verwijderd, wordt 30 dagen na het verwijderen van de gegevens van de groep uit apps zoals planner, sites of teams permanent verwijderd, maar wordt het groeps postvak dat zich in de juridische bewaring bevindt, bewaard en wordt het niet definitief verwijderd. De beheerder kan Exchange-cmdlets gebruiken om het postvak te herstellen om de gegevens op te halen.
 
 ## <a name="how-office-365-group-expiration-works-with-retention-policy"></a>Hoe verloopt de groep Office 365 met het Bewaar beleid
+
 Het Bewaar beleid wordt geconfigureerd door middel van het beveiligings-en nalevings centrum. Als u een Bewaar beleid voor Office 365-groepen hebt ingesteld, wanneer een groep verloopt en wordt verwijderd, worden de groeps gesprekken in het postvak van de groep en de bestanden in de groeps site bewaard in de Bewaar container voor het specifieke aantal dagen dat is gedefinieerd in de retentie verslaggev. Gebruikers zien de groep of de inhoud niet na het verlopen, maar kunnen de site-en Postvak gegevens via e-discovery herstellen.
 
 ## <a name="powershell-examples"></a>Power shell-voor beelden
+
 Hier volgen enkele voor beelden van hoe u Power shell-cmdlets kunt gebruiken voor het configureren van de verloop instellingen voor Office 365-groepen in uw Azure AD-organisatie:
 
 1. Installeer de Power shell v 2.0-module en meld u aan bij de Power shell-prompt:
@@ -152,7 +166,7 @@ Hier volgen enkele voor beelden van hoe u Power shell-cmdlets kunt gebruiken voo
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-1. Verwijder het bestaande beleid Remove-AzureADMSGroupLifecyclePolicy: met deze cmdlet worden de instellingen van de groep voor Office 365-groepen verwijderd, maar is de beleids-ID vereist. Hiermee wordt de verval datum voor Office 365-groepen uitgeschakeld.
+1. Verwijder het bestaande beleid Remove-AzureADMSGroupLifecyclePolicy: met deze cmdlet worden de instellingen van de groep voor Office 365-groepen verwijderd, maar is de beleids-ID vereist. Met deze cmdlet wordt de verval datum voor Office 365-groepen uitgeschakeld.
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"

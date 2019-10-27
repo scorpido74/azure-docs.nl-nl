@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: db3581616b369345ad654593192048e8573c6fa4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249303"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935216"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
 
@@ -117,7 +117,7 @@ Een ontwikkelaar van een apparaat maakt gebruik van een [mogelijkheidsprofiel](#
 
 ## <a name="device-provisioning-service"></a>Device Provisioning Service
 
-[Azure IOT Central](#azure-iot-central) maakt gebruik van de Device Provisioning Service voor het beheer van alle apparaatregistratie en de verbinding. Zie [connectiviteit van apparaten in Azure IOT Central](../iot-central/concepts-connectivity-pnp.md)voor meer informatie. U kunt ook de Device Provisioning Service gebruiken voor het beheren van apparaatregistratie en verbinding met uw op IoT Hub gebaseerde IoT-oplossing. Zie [apparaten inrichten met Azure IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
+[Azure IOT Central](#azure-iot-central) maakt gebruik van de Device Provisioning Service voor het beheer van alle apparaatregistratie en de verbinding. Zie [connectiviteit van apparaten in Azure IOT Central](../iot-central/core/concepts-connectivity-pnp.md)voor meer informatie. U kunt ook de Device Provisioning Service gebruiken voor het beheren van apparaatregistratie en verbinding met uw op IoT Hub gebaseerde IoT-oplossing. Zie [apparaten inrichten met Azure IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
 
 ## <a name="device-registration"></a>Apparaatregistratie
 

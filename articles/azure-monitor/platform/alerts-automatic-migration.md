@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: fbc024b6ae6e3ebfed6f64067158352e8201aef5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e0ac349554fa580c4ac88b26e76d0bea1ecf738b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642563"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932716"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Meer informatie over het automatische migratie proces voor uw klassieke waarschuwings regels
 
 Zoals [eerder aangekondigd](monitoring-classic-retirement.md), worden klassieke waarschuwingen in azure monitor buiten gebruik gesteld in september 2019 (oorspronkelijk juli 2019). Als onderdeel van het pensioen proces is [er een hulp programma voor migratie](alerts-using-migration-tool.md) beschikbaar in de Azure portal voor klanten om de migratie zelf te activeren. Als u het hulp programma voor migratie niet op 31 augustus 2019 hebt gebruikt Azure Monitor, wordt het proces van automatische migratie van uw klassieke waarschuwingen vanaf 1 september 2019 gestart.
-Dit artikel begeleidt u bij het proces van automatische migratie en helpt u bij het oplossen van problemen die u kunt uitvoeren in.
+Dit artikel begeleidt u bij het automatische migratie proces en helpt u bij het oplossen van eventuele problemen.
 
   > [!NOTE]
   > Dit artikel is alleen van toepassing op de open bare Azure-Cloud. Het pensioen proces voor Azure Monitor klassieke waarschuwingen in Azure Government Cloud en Azure China 21Vianet wordt op de toekomst aangekondigd.

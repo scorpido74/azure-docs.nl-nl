@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: 3d6a28c8cdcf13dc805d70832ed65732911138cd
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 89709edf085e1c424156fb68bd86fbc66b6ae8a7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263348"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934318"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host. json-verwijzing voor Azure Functions 1. x
 
@@ -168,7 +168,7 @@ Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat a
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Hiermee wordt de duur van de time-out voor alle functies aangegeven. In een serverloze verbruiks abonnement is het geldige bereik van 1 seconde tot 10 minuten en de standaard waarde is 5 minuten. In een App Service plan geldt geen algemene limiet en de standaard waarde is afhankelijk van de runtime versie.
+Hiermee wordt de duur van de time-out voor alle functies aangegeven. In een serverloze verbruiks abonnement is het geldige bereik van 1 seconde tot 10 minuten en de standaard waarde is 5 minuten. In een App Service plan is er geen algemene limiet en de standaard waarde is _Null_, wat geen time-out aangeeft.
 
 ```json
 {
@@ -254,7 +254,7 @@ Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger-objec
 |---------|---------|---------| 
 |categoryFilter|n.v.t.|Hiermee wordt gefilterd op categorie opgegeven| 
 |defaultLevel|Informatie|Voor alle categorieën die niet zijn opgegeven in de matrix `categoryLevels`, verzendt u logboeken op dit niveau en hierboven naar Application Insights.| 
-|categoryLevels|n.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld van een *host. json* -bestand worden alle categorieën die beginnen met ' host. aggregator ' geregistreerd op `Information`-niveau. Alle andere categorieën die beginnen met ' host ', zoals ' host. uitvoerder ', melden zich op het niveau @no__t 0.| 
+|categoryLevels|n.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld van een *host. json* -bestand worden alle categorieën die beginnen met ' host. aggregator ' geregistreerd op `Information`-niveau. Alle andere categorieën die beginnen met ' host ', zoals ' host. uitvoerder ', melden zich op `Error` niveau.| 
 
 ## <a name="queues"></a>Bestel
 

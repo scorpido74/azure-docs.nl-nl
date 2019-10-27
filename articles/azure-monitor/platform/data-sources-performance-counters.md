@@ -1,73 +1,67 @@
 ---
-title: Verzamelen en analyseren van prestatiemeteritems in Azure Monitor | Microsoft Docs
-description: Prestatiemeteritems worden verzameld door Azure Monitor voor het analyseren van prestaties van Windows en Linux-agents.  In dit artikel wordt beschreven hoe u het configureren van verzamelen van prestatiemeteritems voor zowel Windows en Linux-agents, details van deze zijn opgeslagen in de werkruimte, en over het analyseren van deze in Azure portal.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
-ms.service: log-analytics
+title: Prestatie meter items verzamelen en analyseren in Azure Monitor | Microsoft Docs
+description: Prestatie meter items worden verzameld door Azure Monitor om de prestaties van Windows-en Linux-agents te analyseren.  In dit artikel wordt beschreven hoe u een verzameling prestatie meter items configureert voor Windows-en Linux-agents, hoe deze worden opgeslagen in de werk ruimte en hoe u deze kunt analyseren in de Azure Portal.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2018
+ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205756"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932446"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows en Linux-gegevensbronnen van de prestaties die u in Azure Monitor
-In Windows en Linux-prestatiemeteritems geven inzicht in de prestaties van de hardware-onderdelen, besturingssystemen en toepassingen.  Azure Monitor kunt verzamelen van prestatiemeteritems op regelmatige intervallen voor analyse in de buurt van real-time (NRT) naast het verzamelen van prestatiegegevens voor langere termijn analyse en rapportage.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-en Linux-prestatie gegevens bronnen in Azure Monitor
+Prestatie meter items in Windows en Linux bieden inzicht in de prestaties van hardwareonderdelen, besturings systemen en toepassingen.  Azure Monitor kunt prestatie meter items op regel matige intervallen verzamelen voor analyse van bijna realtime (NRT), naast het samen voegen van prestatie gegevens voor langere termijn analyse en rapportage.
 
 ![Prestatiemeteritems](media/data-sources-performance-counters/overview.png)
 
-## <a name="configuring-performance-counters"></a>Prestatiemeteritems configureren
-Configureren van prestatiemeteritems van de [menu van de gegevens in de geavanceerde instellingen](agent-data-sources.md#configuring-data-sources).
+## <a name="configuring-performance-counters"></a>Prestatie meter items configureren
+Configureer prestatie meter items [in het menu Data van geavanceerde instellingen](agent-data-sources.md#configuring-data-sources).
 
-Wanneer u prestatiemeteritems van Windows of Linux-prestaties voor een nieuwe werkruimte voor het eerst configureert, krijgt u de optie voor het snel verschillende algemene prestatiemeteritems te maken.  Ze worden weergegeven met een selectievakje ernaast.  Zorg ervoor dat alle items die u wilt maken in eerste instantie zijn ingeschakeld en klik vervolgens op **de geselecteerde prestatiemeteritems toevoegen**.
+Wanneer u voor het eerst Windows-of Linux-prestatie meter items voor een nieuwe werk ruimte configureert, krijgt u de optie om snel verschillende algemene prestatie meter items te maken.  Ze worden weergegeven met een selectievakje ernaast.  Zorg ervoor dat alle items die u in eerste instantie wilt maken, worden gecontroleerd en klik vervolgens op **de geselecteerde prestatie meter items toevoegen**.
 
-Voor Windows-prestatiemeteritems, kunt u een specifiek exemplaar voor elk prestatiemeteritem. Voor Linux-prestatiemeteritems, het exemplaar van elk item dat u kiest is van toepassing op alle onderliggende items van het bovenliggende item. De volgende tabel toont de algemene instanties beschikbaar voor zowel Windows als Linux-prestatiemeteritems.
+Voor Windows-prestatie meter items kunt u een specifiek exemplaar voor elk prestatie meter item kiezen. Voor Linux-prestatie meter items geldt het exemplaar van elk item dat u kiest, van toepassing op alle onderliggende items van het bovenliggende item. In de volgende tabel ziet u de algemene instanties die beschikbaar zijn voor de prestatie meter items Linux en Windows.
 
-| Exemplaarnaam | Description |
+| Exemplaarnaam | Beschrijving |
 | --- | --- |
-| \_Totaal |Totaal van alle instanties |
+| \_totaal |Totaal van alle exemplaren |
 | \* |Alle instanties |
-| (/&#124;/var) |Komt overeen met instanties met de naam: / of /var |
+| (/&#124;/var) |Komt overeen met instanties met de naam:/of/var |
 
 ### <a name="windows-performance-counters"></a>Windows-prestatiemeteritems
 
-![Configureren van Windows-prestatiemeteritems](media/data-sources-performance-counters/configure-windows.png)
+![Windows-prestatie meter items configureren](media/data-sources-performance-counters/configure-windows.png)
 
-Volg deze procedure om toe te voegen een nieuwe Windows-prestatiemeteritem verzamelen.
+Volg deze procedure om een nieuw Windows-prestatie meter item toe te voegen om te verzamelen.
 
-1. Typ de naam van het item in het tekstvak in de indeling *object (exemplaar) \counter*.  Wanneer u te typen begint, krijgt u een overeenkomende lijst met algemene prestatiemeteritems.  U kunt een item uit de lijst of typ in een van uw eigen selecteren.  U kunt ook voor alle exemplaren van een bepaald meteritem terugkeren door op te geven *object item*.  
+1. Typ de naam van de teller in het tekstvak in de indeling *object (instantie) \counter*.  Wanneer u begint te typen, wordt er een overeenkomende lijst met algemene prestatie meter items weer gegeven.  U kunt een item in de lijst selecteren of een van uw eigen items typen.  U kunt ook alle instanties voor een bepaald prestatie meter item retour neren door *object\counter*op te geven.  
 
-    Wanneer SQL Server-prestatiemeteritems verzamelen van genoemde instanties, alle met de naam exemplaar prestatiemeteritems starten met *MSSQL$* en gevolgd door de naam van het exemplaar.  Geef bijvoorbeeld voor het verzamelen van de teller Log Cache Hit Ratio voor alle databases van de Database prestatie-object voor benoemde SQL INST2, `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
+    Bij het verzamelen van SQL Server prestatie meter items van benoemde instanties beginnen alle benoemde exemplaar items met *MSSQL $* en gevolgd door de naam van het exemplaar.  Als u bijvoorbeeld het item cache treffers van de logboeken voor alle data bases wilt verzamelen uit het database prestatie object voor benoemde SQL-instantie INST2, geeft u `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`op.
 
-2. Klik op **+** of druk op **Enter** het item toevoegen aan de lijst.
-3. Wanneer u een item toevoegen, gebruikt de standaardwaarde van 10 seconden voor de **controle-Interval**.  U kunt dit wijzigen naar een hogere waarde van maximaal 1800 seconden (30 minuten) als u wilt beperken van de vereisten van de verzamelde gegevens.
-4. Wanneer u klaar bent met het tellers toe te voegen, klikt u op de **opslaan** knop aan de bovenkant van het scherm om de configuratie op te slaan.
+2. Klik op **+** of druk op **Enter** om de teller toe te voegen aan de lijst.
+3. Wanneer u een teller toevoegt, wordt de standaard waarde van 10 seconden gebruikt voor het **steekproef interval**.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
+4. Wanneer u klaar bent met het toevoegen van items, klikt u op de knop **Opslaan** boven aan het scherm om de configuratie op te slaan.
 
-### <a name="linux-performance-counters"></a>Linux-prestatiemeteritems
+### <a name="linux-performance-counters"></a>Linux-prestatie meter items
 
-![Configureren van Linux-prestatiemeteritems](media/data-sources-performance-counters/configure-linux.png)
+![Linux-prestatie meter items configureren](media/data-sources-performance-counters/configure-linux.png)
 
-Volg deze procedure om toe te voegen een nieuwe Linux-prestatiemeteritem verzamelen.
+Volg deze procedure om een nieuw Linux-prestatie meter item toe te voegen om te verzamelen.
 
-1. Standaard worden alle wijzigingen in de configuratie automatisch doorgegeven naar alle agents.  Voor Linux-agents, wordt een configuratiebestand verzonden naar de gegevensverzamelaar Fluentd.  Als u dit bestand handmatig op elke Linux-agent wijzigen wilt, klikt u vervolgens het selectievakje *toepassen op de onderstaande configuratie op mijn Linux-machines* en volg de onderstaande instructies.
-2. Typ de naam van het item in het tekstvak in de indeling *object (exemplaar) \counter*.  Wanneer u te typen begint, krijgt u een overeenkomende lijst met algemene prestatiemeteritems.  U kunt een item uit de lijst of typ in een van uw eigen selecteren.  
-3. Klik op **+** of druk op **Enter** het item toevoegen aan de lijst met andere tellers voor het object.
-4. Alle items voor een object gebruiken hetzelfde **controle-Interval**.  De standaardwaarde is 10 seconden.  U wijzigen dit naar een hogere waarde van maximaal 1800 seconden (30 minuten) als u wilt beperken van de vereisten van de verzamelde gegevens.
-5. Wanneer u klaar bent met het tellers toe te voegen, klikt u op de **opslaan** knop aan de bovenkant van het scherm om de configuratie op te slaan.
+1. Standaard worden alle configuratie wijzigingen automatisch naar alle agents gepusht.  Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.  Als u dit bestand hand matig op elke Linux-agent wilt wijzigen, schakelt u het selectie vakje de *onderstaande configuratie Toep assen op mijn Linux-machines* uit en volgt u de onderstaande instructies.
+2. Typ de naam van de teller in het tekstvak in de indeling *object (instantie) \counter*.  Wanneer u begint te typen, wordt er een overeenkomende lijst met algemene prestatie meter items weer gegeven.  U kunt een item in de lijst selecteren of een van uw eigen items typen.  
+3. Klik op **+** of druk op **Enter** om de teller toe te voegen aan de lijst met andere tellers voor het object.
+4. Alle tellers voor een object gebruiken hetzelfde **steekproef interval**.  De standaard waarde is 10 seconden.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
+5. Wanneer u klaar bent met het toevoegen van items, klikt u op de knop **Opslaan** boven aan het scherm om de configuratie op te slaan.
 
-#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-prestatiemeteritems in configuratiebestand configureren
-In plaats van het configureren van Linux-prestatiemeteritems met behulp van de Azure portal, hebt u de mogelijkheid van het bewerken van configuratiebestanden op de Linux-agent.  Voor het verzamelen van metrische gegevens voor prestaties worden beheerd door de configuratie in **/etc/opt/microsoft/omsagent/\<werkruimte-id\>/conf/omsagent.conf**.
+#### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-prestatie meter items configureren in het configuratie bestand
+In plaats van Linux-prestatie meter items te configureren met behulp van de Azure Portal, hebt u de mogelijkheid om configuratie bestanden te bewerken in de Linux-agent.  De prestatie gegevens die moeten worden verzameld, worden bepaald door de configuratie in **/etc/opt/microsoft/omsagent/\<werk ruimte-id\>/conf/omsagent.conf**.
 
-Elk object of de categorie van metrische gegevens voor prestaties voor het verzamelen van moet worden gedefinieerd in het configuratiebestand als een enkel `<source>` element. De syntaxis van patroon het hieronder.
+Elk object, of elke categorie, van prestatie gegevens die moeten worden verzameld, moet in het configuratie bestand als één `<source>` element worden gedefinieerd. De syntaxis is gebaseerd op het onderstaande patroon.
 
     <source>
       type oms_omi  
@@ -78,76 +72,76 @@ Elk object of de categorie van metrische gegevens voor prestaties voor het verza
     </source>
 
 
-De parameters in dit element worden in de volgende tabel beschreven.
+De para meters in dit element worden in de volgende tabel beschreven.
 
-| Parameters | Description |
+| Parameters | Beschrijving |
 |:--|:--|
-| object\_naam | Objectnaam voor de verzameling. |
-| instance\_regex |  Een *reguliere expressie* definiëren welke instanties te verzamelen. De waarde: `.*` Hiermee geeft u alle instanties. Voor het verzamelen van metrische gegevens van processor voor alleen de \_totale instantie die u kunt opgeven `_Total`. U kunt opgeven voor het verzamelen van metrische gegevens verwerken voor alleen de exemplaren crond of sshd: `(crond\|sshd)`. |
-| teller\_naam\_reguliere expressie | Een *reguliere expressie* definiëren welke items (voor het object) te verzamelen. Geef voor het verzamelen van alle tellers voor het object: `.*`. Voor het verzamelen van alleen wisselen ruimte tellers voor het geheugenobject, bijvoorbeeld, kunt u opgeven: `.+Swap.+` |
-| interval | De frequentie waarmee de prestatiemeteritems van het object die worden verzameld. |
+| naam van object\_ | Object naam voor de verzameling. |
+| \_regex van exemplaar |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` alle exemplaren. Als u metrische gegevens voor de processor wilt verzamelen voor alleen het \_totale exemplaar, kunt u `_Total`opgeven. Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, kunt u het volgende opgeven: `(crond\|sshd)`. |
+| \_naam van het item\_regex | Een *reguliere expressie* waarmee wordt gedefinieerd welke items (voor het object) moeten worden verzameld. Als u alle tellers voor het object wilt verzamelen, geeft u het volgende op: `.*`. Als u alleen tellers voor wissel ruimte voor het object memory wilt verzamelen, kunt u bijvoorbeeld het volgende opgeven: `.+Swap.+` |
+| interval | De frequentie waarmee de tellers van het object worden verzameld. |
 
 
-De volgende tabel bevat de objecten en de items die u in het configuratiebestand opgeven kunt.  Er zijn extra items beschikbaar voor bepaalde toepassingen zoals beschreven in [verzamelen van prestatiemeteritems voor Linux-toepassingen in Azure Monitor](data-sources-linux-applications.md).
+De volgende tabel bevat de objecten en prestatie meter items die u in het configuratie bestand kunt opgeven.  Er zijn extra tellers beschikbaar voor bepaalde toepassingen, zoals wordt beschreven in [prestatie meter items verzamelen voor Linux-toepassingen in azure monitor](data-sources-linux-applications.md).
 
-| Objectnaam | Naam van het prestatiemeteritem |
+| Object naam | Tellernaam |
 |:--|:--|
-| Logische schijf | Percentage vrije Inodes |
-| Logische schijf | Percentage vrije ruimte |
-| Logische schijf | Percentage gebruikte Inodes |
+| Logische schijf | % Vrije inodes |
+| Logische schijf | Percentage beschik bare ruimte |
+| Logische schijf | % Gebruikte inodes |
 | Logische schijf | Percentage gebruikte ruimte |
-| Logische schijf | Bytes gelezen op schijf/sec |
-| Logische schijf | Schijf lezen per seconde |
-| Logische schijf | Schijfoverdrachten per seconde |
-| Logische schijf | Bytes geschreven naar schijf/sec |
-| Logische schijf | Schijf schrijven per seconde |
-| Logische schijf | Beschikbare Megabytes |
-| Logische schijf | Logische schijf Bytes per seconde |
+| Logische schijf | Gelezen bytes per seconde |
+| Logische schijf | Lees bewerkingen per seconde |
+| Logische schijf | Schijf overdrachten per seconde |
+| Logische schijf | Geschreven bytes per seconde |
+| Logische schijf | Schrijf bewerkingen per seconde |
+| Logische schijf | Beschik bare mega bytes |
+| Logische schijf | Bytes van logische schijf per seconde |
 | Geheugen | Percentage beschikbaar geheugen |
-| Geheugen | Percentage beschikbare wisselruimte |
+| Geheugen | Percentage beschik bare wissel ruimte |
 | Geheugen | Percentage gebruikt geheugen |
-| Geheugen | Percentage gebruikte wisselruimte |
-| Geheugen | Beschikbaar geheugen in megabytes |
-| Geheugen | Beschikbare megabytes voor wisselen |
-| Geheugen | Paginaleesbewerkingen per seconde |
-| Geheugen | Paginaschrijfbewerkingen per seconde |
+| Geheugen | Percentage gebruikte wissel ruimte |
+| Geheugen | Beschikbaar geheugen in mega bytes |
+| Geheugen | Beschik bare mega bytes wisselen |
+| Geheugen | Gelezen pagina's per seconde |
+| Geheugen | Geschreven pagina's per seconde |
 | Geheugen | Pagina's per seconde |
-| Geheugen | Gebruikte wisselruimte in megabytes |
-| Geheugen | Gebruikt geheugen in megabytes |
-| Netwerk | Totaal aantal verzonden Bytes |
-| Netwerk | Totaal aantal ontvangen Bytes |
-| Netwerk | Totaal aantal Bytes |
+| Geheugen | Gebruikte MB wissel ruimte |
+| Geheugen | Gebruikt geheugen Mbytes |
+| Netwerk | Totaal aantal verzonden bytes |
+| Netwerk | Totaal aantal ontvangen bytes |
+| Netwerk | Totaal aantal bytes |
 | Netwerk | Totaal aantal verzonden pakketten |
 | Netwerk | Totaal aantal ontvangen pakketten |
-| Netwerk | Totaal aantal Rx-fouten |
-| Netwerk | Totaal aantal Tx-fouten |
+| Netwerk | Totaal aantal RX-fouten |
+| Netwerk | Totaal aantal TX-fouten |
 | Netwerk | Totaal aantal conflicten |
-| Fysieke schijf | Gem. Schijf sec/lezen |
-| Fysieke schijf | Gem. Schijfoverdrachten per seconde |
-| Fysieke schijf | Gem. Schijf sec/schrijven |
-| Fysieke schijf | Fysieke schijf Bytes per seconde |
-| Process | PCT gemachtigde tijd |
-| Process | PCT in gebruikersmodus |
-| Process | Gebruikt geheugen kB |
-| Process | Virtuele gedeeld geheugen |
+| Fysieke schijf | Gemiddelde Lees tijd schijf |
+| Fysieke schijf | Gemiddelde tijd schijf overdracht |
+| Fysieke schijf | Gemiddelde schrijf tijd schijf |
+| Fysieke schijf | Bytes van fysieke schijf per seconde |
+| Proces | Pct-geprivilegieerde tijd |
+| Proces | Pct-gebruikers tijd |
+| Proces | Gebruikte geheugen-kBytes |
+| Proces | Virtueel gedeeld geheugen |
 | Processor | Percentage DPC-tijd |
-| Processor | % Niet-actieve tijd |
-| Processor | % Interrupt Time |
-| Processor | Percentage wachttijd I/O |
-| Processor | Percentage tijd in nice |
-| Processor | % Gemachtigde tijd |
-| Processor | % Processortijd |
-| Processor | Percentage tijd in gebruikersmodus |
+| Processor | Percentage niet-actieve tijd |
+| Processor | Percentage interrupt-tijd |
+| Processor | % I/o-wacht tijd |
+| Processor | Percentage tijd in Nice |
+| Processor | Percentage tijd in beschermde modus |
+| Processor | Percentage processor tijd |
+| Processor | Percentage gebruikers tijd |
 | Systeem | Vrij fysiek geheugen |
-| Systeem | Vrije ruimte in Wisselgeheugenbestanden |
+| Systeem | Vrije ruimte in wissel geheugen bestanden |
 | Systeem | Vrij virtueel geheugen |
 | Systeem | Processen |
-| Systeem | Grootte opgeslagen In Pagineringbestanden |
-| Systeem | Actieve tijdsduur |
+| Systeem | Grootte opgeslagen in Wissel bestanden |
+| Systeem | Systeem |
 | Systeem | Gebruikers |
 
 
-Hieronder volgt de standaardconfiguratie voor metrische gegevens voor prestaties.
+Hieronder volgt de standaard configuratie voor metrische gegevens over prestaties.
 
     <source>
       type oms_omi
@@ -182,48 +176,48 @@ Hieronder volgt de standaardconfiguratie voor metrische gegevens voor prestaties
     </source>
 
 ## <a name="data-collection"></a>Gegevensverzameling
-Azure Monitor verzamelt alle opgegeven prestatiemeteritems op de opgegeven controle-interval op alle agents die die meteritem geïnstalleerd hebben.  De gegevens worden niet samengevoegd en de onbewerkte gegevens is beschikbaar in alle log queryweergaven voor de duur die is opgegeven door uw abonnement.
+Azure Monitor verzamelt alle opgegeven prestatie meter items op het opgegeven steekproef interval voor alle agents waarop dat item is geïnstalleerd.  De gegevens worden niet geaggregeerd en de onbewerkte gegevens zijn beschikbaar in alle logboek query weergaven voor de duur die is opgegeven door uw abonnement.
 
-## <a name="performance-record-properties"></a>Eigenschappen van de record Performance
-Prestatierecords zijn een type **Perf** en hebben de eigenschappen in de volgende tabel.
+## <a name="performance-record-properties"></a>Eigenschappen van prestatie record
+Prestatie records hebben het type **perf** en hebben de eigenschappen in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Computer |De computer waarop de gebeurtenis is verzameld. |
-| CounterName |Naam van het prestatiemeteritem |
-| CounterPath |Volledig pad van het item in de vorm \\ \\ \<Computer >\\object(exemplaar)\\teller. |
-| CounterValue |Numerieke waarde van de teller. |
-| InstanceName |De naam van de event-instantie.  Leeg zijn als er is geen exemplaar. |
-| ObjectName |Naam van de prestatie-object |
-| SourceSystem |Het type van de agent die de gegevens zijn verzameld uit. <br><br>OpsManager – Windows-agent, rechtstreeks verbinding maken of SCOM <br> Linux: alle Linux-agents  <br> AzureStorage – Azure Diagnostics |
-| TimeGenerated |Datum en tijd dat voorbeelden worden de gegevens is gemaakt. |
+| Computer |Computer waarop de gebeurtenis is verzameld. |
+| CounterName |Naam van het prestatie meter item |
+| CounterPath |Volledig pad van het prestatie meter item in het formulier \\\\\<computer >\\object (instantie)\\teller. |
+| CounterValue |Numerieke waarde van het prestatie meter item. |
+| InstanceName |De naam van het gebeurtenis exemplaar.  Leeg als er geen exemplaar is. |
+| ObjectName |Naam van het prestatie object |
+| SourceSystem |Type agent waaruit de gegevens zijn verzameld. <br><br>OpsManager: Windows-agent, hetzij direct Connect of SCOM <br> Linux: alle Linux-agents  <br> Opslag – Azure Diagnostics |
+| TimeGenerated |De datum en tijd waarop de gegevens worden voor bereid. |
 
-## <a name="sizing-estimates"></a>Maakt een schatting van grootte
- Een ruwe schatting voor de verzameling van een bepaald meteritem intervallen van 10 seconden is ongeveer 1 MB per dag per exemplaar.  U kunt een schatting maken van de vereisten van een bepaald prestatiemeteritem met de volgende formule.
+## <a name="sizing-estimates"></a>Grootte schattingen
+ Een ruwe schatting voor het verzamelen van een bepaalde teller met een interval van 10 seconden is ongeveer 1 MB per dag per exemplaar.  U kunt de opslag vereisten van een bepaald item schatten met de volgende formule.
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-queries-with-performance-records"></a>Logboeken-query's met prestatiegegevens
-De volgende tabel bevat voorbeelden van Logboeken-query's die prestatierecords ophalen.
+## <a name="log-queries-with-performance-records"></a>Query's vastleggen met prestatie records
+De volgende tabel bevat verschillende voor beelden van logboek query's waarmee prestatie records worden opgehaald.
 
-| Query’s uitvoeren | Description |
+| Query | Beschrijving |
 |:--- |:--- |
-| Prestaties |Alle prestatiegegevens |
-| Perf &#124; where Computer == "MyComputer" |Alle prestatiegegevens van een bepaalde computer |
-| Perf &#124; waar CounterName == "Huidige wachtrijlengte" |Alle prestatiegegevens voor een bepaald meteritem |
-| Perf &#124; waarbij ObjectName == 'Processor' en CounterName == "% processortijd" en InstanceName == "_Totaal" &#124; AVGCPU samenvatten = avg(CounterValue) door Computer |Gemiddeld CPU-gebruik op alle computers |
-| Perf &#124; waar CounterName == "% processortijd" &#124; summarize AggregatedValue = max(CounterValue) door Computer |Maximale CPU-gebruik op alle computers |
-| Perf &#124; waarbij ObjectName == "Logische" en CounterName == 'Huidige wachtrijlengte' en Computer == "MijnComputernaam" &#124; summarize AggregatedValue avg(CounterValue) door InstanceName = |Gemiddelde van huidige wachtrijlengte voor schijf over alle exemplaren van een bepaalde computer |
-| Perf &#124; waar CounterName == "Schijfoverdrachten per seconde" &#124; summarize AggregatedValue = percentiel (CounterValue, 95) per Computer |95e percentiel van Schijfoverdrachten per seconde op alle computers |
-| Perf &#124; waar CounterName == "% processortijd" en InstanceName == "_Totaal" &#124; summarize AggregatedValue = avg(CounterValue) door bin (TimeGenerated, 1 uur), Computer |Per uur gemiddelde CPU-gebruik op alle computers |
-| Perf &#124; waarbij Computer == 'Computer' en CounterName startswith_cs '%' en InstanceName == "_Totaal" &#124; summarize AggregatedValue = percentiel (CounterValue, 70) door bin (TimeGenerated, 1 uur), CounterName | Per uur 70 percentiel van elke % percentage item voor een bepaalde computer |
-| Perf &#124; waar CounterName == "% processortijd" en InstanceName == '_Totaal' en de Computer == 'Computer' &#124; samenvatten ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] percentiel (CounterValue, 75), = ["max(CounterValue)"] = max(CounterValue) door bin (TimeGenerated, 1 uur), Computer |Per uur gemiddelde, minimum, maximum en 75 percentiel CPU-gebruik voor een specifieke computer |
-| Perf &#124; waarbij ObjectName == "MSSQL$ INST2: Databases ' en InstanceName == 'master' | Alle prestatiegegevens van de Database prestatie-object voor de hoofddatabase van het benoemde exemplaar van SQL Server INST2.  
+| Prestatie |Alle prestatie gegevens |
+| Perf &#124; waarbij computer = "bemijnen" |Alle prestatie gegevens van een bepaalde computer |
+| Perf &#124; waarbij CounterName = = "huidige wachtrij lengte voor schijf" |Alle prestatie gegevens voor een bepaald prestatie meter item |
+| Perf &#124; waarbij ObjectName = = "processor" en CounterName = = "% processor tijd" en INSTANCENAME = = "_Totaal" &#124; samenvat AVGCPU = AVG (CounterValue) by computer |Gemiddeld CPU-gebruik op alle computers |
+| Perf &#124; waarbij CounterName = = "% processor tijd" &#124; een samen vatting van AggregatedValue = Max (CounterValue) door computer |Maxi maal CPU-gebruik op alle computers |
+| Perf &#124; waarbij ObjectName = = "logische schijf" en CounterName = = "huidige wachtrij lengte voor de computer" and computers = = "MyComputerName &#124; " samenvatte AggregatedValue = AVG (CounterValue) door INSTANCENAME |De gemiddelde wachtrij lengte van de huidige schijf voor alle exemplaren van een bepaalde computer |
+| Perf &#124; waarbij CounterName = = "schijf overdrachten per seconde" &#124; samenvatten AggregatedValue = percentiel (CounterValue, 95) per computer |95e percentiel van schijf overdrachten per seconde op alle computers |
+| Perf &#124; waarbij CounterName = = "% processor tijd" en INSTANCENAME = = "_Totaal" &#124; samenvatten AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), computer |Gemiddeld uur CPU-gebruik op alle computers |
+| Perf &#124; waarbij computer = "startswith_cs" en CounterName '% "en INSTANCENAME = =" _Totaal " &#124; samenvatten AggregatedValue = percentiel (CounterValue, 70) by bin (TimeGenerated, 1U), CounterName | 70 percentiel van elk% procent item voor een bepaalde computer |
+| Perf &#124; waarbij CounterName = = "% processor tijd" en INSTANCENAME = = "_Totaal" and computer = "mijn werk" &#124; samen vatting ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = percentiel (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) per bak (TimeGenerated, 1U), computer |Gemiddeld uur, minimum, maximum en 75-percentiel CPU-gebruik voor een specifieke computer |
+| Perf &#124; waarbij ObjectName = = "MSSQL $ INST2: data bases" en INSTANCENAME = = "Master" | Alle prestatie gegevens van het prestatie object Data Base voor de hoofd database van de benoemde SQL Server instantie INST2.  
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Verzamelen van prestatiemeteritems van Linux-toepassingen](data-sources-linux-applications.md) met inbegrip van MySQL en Apache HTTP-Server.
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.  
-* Verzamelde gegevens te exporteren [Power BI](powerbi.md) voor extra visualisaties en analyse.
+* [Verzamelen van prestatie meter items van Linux-toepassingen](data-sources-linux-applications.md) , waaronder de MySQL-en Apache HTTP-server.
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.  
+* Verzamelde gegevens exporteren naar [Power bi](powerbi.md) voor extra visualisaties en analyse.

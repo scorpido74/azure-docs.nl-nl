@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273946"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931802"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Back-up maken van een SAP HANA Data Base naar Azure
 
@@ -53,6 +53,9 @@ Zorg ervoor dat u het volgende doet voordat u back-ups configureert:
     sudo zypper update
     sudo zypper install unixODBC
     ```
+
+    > [!NOTE]
+    > Als u de opslag plaatsen niet bijwerkt, moet u ervoor zorgen dat de versie van unixODBC min 2.3.4 is. Als u wilt weten wat de versie van uniXODBC is, voert u ```odbcinst -j``` als root uit
 
 2. Connectiviteit van de virtuele machine met Internet toestaan, zodat deze Azure kan bereiken, zoals beschreven in de [onderstaande](#set-up-network-connectivity)procedure.
 

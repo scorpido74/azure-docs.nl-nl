@@ -1,24 +1,18 @@
 ---
 title: Splunk om de logboek query te Azure Monitor | Microsoft Docs
 description: Help voor gebruikers die bekend zijn met Splunk in learning Azure Monitor-logboek query's.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 03a0d755cf6d099f07a7c6d853e1d747908eec05
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 08/21/2018
+ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177638"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932954"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk naar Azure Monitor-logboek query
 
@@ -60,7 +54,7 @@ De volgende tabel bevat functies in Azure Monitor die gelijk zijn aan Splunk-fun
 | searchmatch | == | In Splunk, `searchmatch` kan zoeken naar de exacte teken reeks.
 | wille keurige | ASELECT ()<br>ASELECT (n) | De functie Splunk retourneert een getal tussen nul en 2<sup>31</sup>-1. Azure Monitor ' retourneert een getal tussen 0,0 en 1,0, of als een para meter is gegeven, tussen 0 en n-1.
 | nu | now() | i
-| relative_time | totimespan() | i<br>In Azure Monitor is Splunk equivalent van relative_time (datetimeVal, offsetVal) datetimeVal + totimespan (offsetVal).<br>@No__t-0 wordt bijvoorbeeld <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
+| relative_time | totimespan() | i<br>In Azure Monitor is Splunk equivalent van relative_time (datetimeVal, offsetVal) datetimeVal + totimespan (offsetVal).<br><code>search &#124; eval n=relative_time(now(), "-1d@d")</code> wordt bijvoorbeeld <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
 (1) in Splunk wordt de functie aangeroepen met de operator `eval`. In Azure Monitor wordt het gebruikt als onderdeel van `extend` of `project`.<br>(2) in Splunk wordt de functie aangeroepen met de operator `eval`. In Azure Monitor kan het worden gebruikt met de operator `where`.
 

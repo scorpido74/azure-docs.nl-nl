@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure nieuwe ondersteunings aanvraag bestand hulp programma voor het uploaden van bestanden | Microsoft Docs
-description: Hierin worden de richt lijnen beschreven bij het gebruik van Microsoft Azure nieuw hulp programma bestand voor het uploaden van ondersteunende aanvragen
+title: Azure-ondersteunings aanvraag-richt lijnen voor het uploaden van bestanden
+description: Hierin worden de richt lijnen beschreven bij het gebruik van Microsoft Azure ondersteunings aanvraag bestand uploaden optie
 author: genlin
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -8,22 +8,22 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f01c70a2a077e28e8de5118332b780f27dc9ec93
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248695"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936076"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure nieuwe ondersteunings aanvraag hulp programma voor het uploaden van bestanden
-Wanneer u [een ondersteunings aanvraag maakt](https://portal.azure.com/#create/Microsoft.Support), kunt u met het hulp programma voor het uploaden van bestanden eenvoudig diagnostische bestanden of andere bestanden uploaden die relevant zijn voor het incident.  
+Wanneer u [een ondersteunings aanvraag maakt](https://portal.azure.com/#create/Microsoft.Support), kan de optie voor het uploaden van bestanden u helpen om eenvoudig diagnostische bestanden of andere bestanden te uploaden die relevant zijn voor het incident.  
 
 > [!NOTE]
 > Ter bescherming van uw privacy neemt u geen persoonlijke gegevens op in uw Upload.
 >
 >
 
-Volg deze richt lijnen wanneer u het hulp programma voor het uploaden van bestanden gebruikt:
+Volg deze richt lijnen wanneer u de optie voor het uploaden van bestanden gebruikt:
 
 * Alle bestanden moeten een bestandsnaam extensie hebben, zoals. DOCX of. xlsx. Zie de tabel voor de lijst met toegestane bestandsnaam extensies.
 * De bestands naam mag niet langer zijn dan 110 tekens.

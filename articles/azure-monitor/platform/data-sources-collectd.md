@@ -1,24 +1,18 @@
 ---
 title: Gegevens verzamelen van verzamelde in Azure Monitor | Microsoft Docs
 description: Verzamelde is een open-source Linux-daemon waarmee periodiek gegevens worden verzameld van toepassingen en systeem niveau gegevens.  Dit artikel bevat informatie over het verzamelen van gegevens uit verzamelde in Azure Monitor.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/27/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 11/27/2018
+ms.openlocfilehash: 4bf58a7e446cb13366a230a35c83e6bf0acaa09a
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812555"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932523"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Gegevens verzamelen van verzamelde op Linux-agents in Azure Monitor
 [Verzamelde](https://collectd.org/) is een open-source Linux-daemon waarmee periodiek prestatie gegevens worden verzameld van toepassingen en systeem niveau gegevens. Voor beelden van toepassingen zijn de Java Virtual Machine (JVM), MySQL-server en nginx. Dit artikel bevat informatie over het verzamelen van prestatie gegevens van verzamelde in Azure Monitor.
@@ -52,7 +46,7 @@ Als u een versie van verzamelde vóór 5,5 gebruikt, moet u ook de volgende conf
        </URL>
     </Plugin>
 
-De verzamelde-configuratie maakt gebruik van de standaard @ no__t-0-invoeg toepassing voor het verzenden van metrische gegevens over de prestaties via poort 26000 naar Log Analytics-agent voor Linux. 
+De verzamelde-configuratie maakt gebruik van de standaard`write_http`-invoeg toepassing voor het verzenden van metrische gegevens over de prestaties via poort 26000 naar Log Analytics agent voor Linux. 
 
 > [!NOTE]
 > Deze poort kan zo nodig worden geconfigureerd voor een aangepaste poort.
@@ -86,7 +80,7 @@ Hieronder volgen de basis stappen voor het configureren van het verzamelen van v
 
 ### <a name="configure-collectd-to-forward-data"></a>Verzamelde configureren voor het door sturen van gegevens 
 
-1. Als u verzamelde-gegevens naar de Log Analytics-agent voor Linux wilt routeren, moet u `oms.conf` toevoegen aan de configuratiemap van verzamelde. Het doel van dit bestand is afhankelijk van de Linux-distributie van uw computer.
+1. Als u verzamelde-gegevens wilt routeren naar de Log Analytics-agent voor Linux, moet `oms.conf` worden toegevoegd aan de configuratiemap van verzamelde. Het doel van dit bestand is afhankelijk van de Linux-distributie van uw computer.
 
     Als uw map verzamelde config zich in/etc/collectd.d/bevindt:
 
@@ -116,7 +110,7 @@ Voor het onderhouden van een bekend model tussen infrastructuur gegevens die al 
 |:--|:--|
 | `host` | Computer |
 | `plugin` | Geen |
-| `plugin_instance` | Instantienaam<br>Als **plugin_instance** is *Null* , then INSTANCENAME = " *_Totaal*" |
+| `plugin_instance` | Exemplaar naam<br>Als **plugin_instance** is *Null* , then INSTANCENAME = " *_Totaal*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>Als **type_instance** is *Null* , then CounterName =**blank** |
 | `dsnames[]` | CounterName |
@@ -124,5 +118,5 @@ Voor het onderhouden van een bekend model tussen infrastructuur gegevens die al 
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren. 
-* Gebruik [aangepaste velden](custom-fields.md) parseren van gegevens van syslog-records in afzonderlijke velden.
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen. 
+* Gebruik [aangepaste velden](custom-fields.md) voor het parseren van gegevens van syslog-records in afzonderlijke velden.

@@ -3,16 +3,16 @@ title: Inventarisatie van bewakings oplossingen in azure | Microsoft Docs
 description: Bewakings oplossingen in Azure Monitor zijn een verzameling regels voor logica, visualisatie en gegevens aanschaf die gegevens over een bepaald probleem gebied hebben gedraaid.  Dit artikel bevat een lijst met beschik bare bewakings oplossingen van micro soft en informatie over de methode en frequentie van gegevens verzameling.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: article
+ms.topic: conceptual
 author: MGoedtel
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 1f93ada1a6fb6b87c79a3713e80ebfefae9fe56f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 6012a74c00b64c818434ea1744d86c6cf67dd463
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900641"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931336"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Details van inventarisatie en gegevens verzameling voor het controleren van oplossingen in azure
 [Bewakings oplossingen](solutions.md) maken gebruik van services in azure om meer inzicht te krijgen in de werking van een bepaalde toepassing of service. Bewakings oplossingen verzamelen doorgaans logboek gegevens en bieden query's en weer gaven om verzamelde gegevens te analyseren. U kunt bewakings oplossingen toevoegen aan Azure Monitor voor alle toepassingen en services die u gebruikt. Ze zijn doorgaans gratis beschikbaar, maar verzamelen gegevens die gebruiks kosten kunnen aanroepen.

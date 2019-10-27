@@ -3,16 +3,16 @@ title: Aan de slag met Azure Monitor Log Analytics | Microsoft Docs
 description: In dit artikel vindt u een zelf studie over het gebruik van Log Analytics in de Azure Portal om query's te schrijven.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: conceptual
+ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
-ms.openlocfilehash: 1babd0828e21f0125dba55199d808a579a10f049
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900354"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933053"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Aan de slag met Log Analytics in Azure Monitor
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6276f347f0cc0ecc03acc95282e83c243679957a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8503b3c8a630575b917e3710ce4d7c5d6fbe70cb
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802425"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934041"
 ---
 # <a name="application-upgrade-parameters"></a>Parameters toepassingsupgrade
 In dit artikel worden de verschillende para meters beschreven die van toepassing zijn tijdens de upgrade van een Azure Service Fabric-toepassing. De para meters voor toepassings upgrades bepalen de time-outs en status controles die tijdens de upgrade worden toegepast en geven de beleids regels op die moeten worden toegepast wanneer een upgrade mislukt. Toepassings parameters zijn van toepassing op upgrades met:
@@ -57,10 +57,6 @@ UnmonitoredManual | PS | Geeft aan dat de upgrade modus niet-bewaakt hand matig 
 ### <a name="optional-parameters"></a>Optionele parameters
 
 De para meters voor de status evaluatie zijn optioneel. Als de criteria voor de status evaluatie niet zijn opgegeven wanneer een upgrade wordt gestart, gebruikt Service Fabric het toepassings status beleid dat is opgegeven in ApplicationManifest. XML van het toepassings exemplaar.
-
-Gebruik de horizontale schuif balk aan de onderkant van de tabel om het veld volledige beschrijving weer te geven.
-
-(PS = Power shell, VS = Visual Studio)
 
 > [!div class="mx-tdBreakAll"]
 > | Parameter | Van toepassing op | Beschrijving |

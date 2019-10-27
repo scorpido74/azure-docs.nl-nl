@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ee8a711a867f8abdc831b0d1d9d0b504b1104955
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 72e94b864b15d5c4872ebf6ba9f0d1a00a0e92b0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310115"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924854"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Een incrementele moment opname (preview) maken voor beheerde schijven
 
@@ -23,11 +23,11 @@ Er zijn enkele verschillen tussen een incrementele moment opname en een regulier
 
 Incrementele moment opnamen bieden ook een andere mogelijkheid, die uniek is voor beheerde schijven. Hiermee kunt u de wijzigingen ophalen tussen twee incrementele moment opnamen van dezelfde beheerde schijven, tot aan het blok niveau. U kunt deze mogelijkheid gebruiken om uw gegevensfootprint te verminderen bij het kopiëren van moment opnamen tussen regio's.
 
-Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen AzureDisks@microsoft.com , kunt u een e-mail sturen naar om toegang te krijgen tot de open bare preview.
+Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen, kunt u ons een e-mail sturen naar AzureDisks@microsoft.com om toegang te krijgen tot de open bare preview.
 
 ## <a name="restrictions"></a>Beperkingen
 
-- Incrementele moment opnamen zijn momenteel alleen beschikbaar in West-Centraal vs.
+- Incrementele moment opnamen zijn momenteel alleen beschikbaar in West-Centraal VS en Europa-noord.
 - Incrementele moment opnamen kunnen momenteel niet worden gemaakt nadat u de grootte van een schijf hebt gewijzigd.
 - Incrementele moment opnamen kunnen momenteel niet worden verplaatst tussen abonnementen.
 - U kunt momenteel alleen SAS-Uri's van Maxi maal vijf moment opnamen van een bepaalde momentopname familie genereren op een bepaald moment.
@@ -43,11 +43,11 @@ U kunt Azure PowerShell gebruiken om een incrementele moment opname te maken. U 
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Als dat is gebeurd, meldt u zich aan bij `az login`uw Power shell-sessie met.
+Als dat is gebeurd, meldt u zich aan bij uw Power shell-sessie met `az login`.
 
-Als u een incrementele moment opname met Azure PowerShell wilt maken, stelt u de configuratie met [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) met de `-Incremental` para meter in en geeft u die als een variabele `-Snapshot` door aan [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) door de para meter.
+Als u een incrementele moment opname met Azure PowerShell wilt maken, stelt u de configuratie met [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) met de para meter `-Incremental` in en geeft u die als variabele door aan [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) via de `-Snapshot` para meter.
 
-Vervang `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`, en`<yourDesiredSnapShotNameHere>` met uw waarden, vervolgens kunt u het volgende script gebruiken om een incrementele moment opname te maken:
+Vervang `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`en `<yourDesiredSnapShotNameHere>` met uw waarden. vervolgens kunt u het volgende script gebruiken om een incrementele moment opname te maken:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -58,9 +58,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId`is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId`is de waarde die wordt overgenomen `UniqueId` van de eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, verandert de waarde van de `UniqueId` eigenschap.
+U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId` is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId` is de waarde die wordt overgenomen van de eigenschap `UniqueId` van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, wordt de waarde van de eigenschap `UniqueId` gewijzigd.
 
-U kunt en `SourceResourceId` `SourceUniqueId` gebruiken om een lijst te maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. Vervang `<yourResourceGroupNameHere>` door uw waarde en u kunt het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven:
+Met `SourceResourceId` en `SourceUniqueId` kunt u een lijst maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. Vervang `<yourResourceGroupNameHere>` door uw waarde en u kunt het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -86,9 +86,9 @@ U kunt een incrementele moment opname maken met de Azure CLI. u hebt de nieuwste
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
 
-Als u een incrementele moment opname wilt maken, gebruikt u [AZ snap shot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) met de `--incremental` para meter.
+Gebruik [AZ snap shot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) met de para meter `--incremental` om een incrementele moment opname te maken.
 
-In het volgende voor beeld wordt een incrementele moment `<yourDesiredSnapShotNameHere>`opname `<yourResourceGroupNameHere>`gemaakt, vervangen `<exampleLocation>` ,,`<exampleDiskName>`, en met uw eigen waarden, waarna u het voor beeld uitvoert:
+In het volgende voor beeld wordt een incrementele moment opname gemaakt, `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`en `<exampleLocation>` met uw eigen waarden, en vervolgens het voor beeld uitvoeren:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -100,13 +100,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId`is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId`is de waarde die wordt overgenomen `UniqueId` van de eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, verandert de waarde van de `UniqueId` eigenschap.
+U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId` is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId` is de waarde die wordt overgenomen van de eigenschap `UniqueId` van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, wordt de waarde van de eigenschap `UniqueId` gewijzigd.
 
-U kunt en `SourceResourceId` `SourceUniqueId` gebruiken om een lijst te maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. In het volgende voor beeld worden alle incrementele moment opnamen vermeld die zijn gekoppeld aan een bepaalde schijf, maar er is een installatie vereist.
+Met `SourceResourceId` en `SourceUniqueId` kunt u een lijst maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. In het volgende voor beeld worden alle incrementele moment opnamen vermeld die zijn gekoppeld aan een bepaalde schijf, maar er is een installatie vereist.
 
 In dit voor beeld wordt JQ gebruikt voor het uitvoeren van query's op de gegevens. Als u het voor beeld wilt uitvoeren, moet u [JQ installeren](https://stedolan.github.io/jq/download/).
 
-Vervang `<yourResourceGroupNameHere>` en`<exampleDiskName>` door uw waarden. vervolgens kunt u het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven, op voor waarde dat u ook JQ hebt geïnstalleerd:
+Vervang `<yourResourceGroupNameHere>` en `<exampleDiskName>` met uw waarden. vervolgens kunt u het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven, op voor waarde dat u ook JQ hebt geïnstalleerd:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -156,4 +156,4 @@ U kunt ook Azure Resource Manager sjablonen gebruiken om een incrementele moment
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen AzureDisks@microsoft.com , kunt u een e-mail sturen naar om toegang te krijgen tot de open bare preview.
+Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen, kunt u ons een e-mail sturen naar AzureDisks@microsoft.com om toegang te krijgen tot de open bare preview.

@@ -10,23 +10,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ba08bbdca059b3e14281a3c26827d07f7b196d1c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232345"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930950"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Gids voor de prestaties en schaal baarheid van de Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-copy-activity-performance.md)
+> * [Versie 1](v1/data-factory-copy-activity-performance.md)
 > * [Huidige versie](copy-activity-performance.md)
 
 Of u nu een grootschalige gegevens migratie wilt uitvoeren van data Lake of ENTER prise Data Warehouse (EDW) naar Azure, of dat u gegevens wilt opnemen op schaal uit verschillende bronnen in azure voor big data Analytics, het is essentieel om optimale prestaties te verwezenlijken en schaal baarheid.  Azure Data Factory biedt een krachtige, robuuste en kosteneffectieve methode voor het opnemen van gegevens op schaal, waardoor het handig is voor gegevens technici die zeer krachtige en schaal bare gegevens opname pijplijnen willen bouwen.
 
-Na het lezen van dit artikel, kunt u zich de volgende vragen beantwoorden:
+Na het lezen van dit artikel kunt u de volgende vragen beantwoorden:
 
 - Welk prestatie-en schaal niveau kan ik gebruiken voor het gebruik van ADF Copy-activiteiten voor gegevens migratie en gegevens opname scenario's?
 
@@ -41,7 +41,7 @@ Na het lezen van dit artikel, kunt u zich de volgende vragen beantwoorden:
 
 ADF biedt een serverloze architectuur die parallellisme op verschillende niveaus mogelijk maakt, zodat ontwikkel aars pijp lijnen kunnen bouwen om uw netwerk bandbreedte en opslag-IOPS en band breedte optimaal te benutten voor de door Voer van gegevens verplaatsing voor uw omgeving.  Dit betekent dat de door u gewenste door Voer kan worden geschat door de minimale door voer te meten die wordt aangeboden door de brongegevens opslag, het doel gegevens archief en de netwerk bandbreedte tussen de bron en de bestemming.  In de volgende tabel wordt de duur van de kopie berekend op basis van de gegevens grootte en de bandbreedte limiet voor uw omgeving. 
 
-| Gegevens grootte/ <br/> bandbreedte | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
+| Gegevens grootte/ <br/> BAP | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
 | **1 GB**                    | 2,7 minuten    | 1,4 minuten   | 0,3 minuten   | 0,1 minuten  | 0,03 minuten | 0,01 minuten | 0,0 minuten   |
 | **10 GB**                   | 27,3 minuten   | 13,7 minuten  | 2,7 minuten   | 1,3 minuten  | 0,3 minuten  | 0,1 minuten  | 0,03 minuten  |
@@ -60,7 +60,7 @@ ADF-kopie is schaalbaar op verschillende niveaus:
 - Eén Kopieer activiteit kan profiteren van schaal bare reken bronnen: wanneer u Azure Integration Runtime gebruikt, kunt u [Maxi maal 256 DIUs](#data-integration-units) voor elke Kopieer activiteit op serverloze wijze opgeven. Wanneer u zelf-hostende Integration Runtime gebruikt, kunt u de machine hand matig opschalen of uitschalen naar meerdere machines ([Maxi maal 4 knoop punten](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), en met één Kopieer activiteit wordt de bestands set gepartitioneerd op alle knoop punten.
 - Eén Kopieer activiteit leest van en schrijft naar het gegevens archief met behulp van meerdere threads [parallel](#parallel-copy).
 
-## <a name="performance-tuning-steps"></a>Prestaties afstemmen stappen
+## <a name="performance-tuning-steps"></a>Stappen voor het afstemmen van prestaties
 
 Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service af te stemmen met de Kopieer activiteit.
 
@@ -106,7 +106,7 @@ Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service 
 
    De regels voor het afstemmen van de prestaties worden ook geleidelijk verrijkt.
 
-   **Voorbeeld: Naar Azure SQL Database kopiëren met tips voor het afstemmen van prestaties**
+   **Voor beeld: kopiëren naar Azure SQL Database met tips voor het afstemmen van prestaties**
 
    In dit voor beeld, tijdens het uitvoeren van een kopie, Azure Data Factory wordt de Sink Azure SQL Database het hoge DTU-gebruik te bereiken, waardoor de schrijf bewerkingen worden vertraagd. Het voor stel is om de Azure SQL Database-laag te verg Roten met meer Dtu's. 
 
@@ -114,9 +114,9 @@ Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service 
 
    Daarnaast moet u rekening houden met de volgende functies van prestatie optimalisatie:
 
-   - [Parallelle kopiëren](#parallel-copy)
+   - [Parallelle kopie](#parallel-copy)
    - [Eenheden voor gegevensintegratie](#data-integration-units)
-   - [Gefaseerd kopiëren](#staged-copy)
+   - [Gefaseerde kopie](#staged-copy)
    - [Schaal baarheid van zelf-hostende Integration runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **Breid de configuratie uit naar uw volledige gegevensset.** Wanneer u tevreden bent met de resultaten en prestaties van de uitvoering, kunt u de definitie en pijp lijn uitvouwen om uw hele gegevensset te bedekken.
@@ -125,30 +125,30 @@ Voer de volgende stappen uit om de prestaties van uw Azure Data Factory-service 
 
 Azure Data Factory biedt de volgende functies voor prestatie optimalisatie:
 
-- [Parallelle kopiëren](#parallel-copy)
+- [Parallelle kopie](#parallel-copy)
 - [Eenheden voor gegevensintegratie](#data-integration-units)
-- [Gefaseerd kopiëren](#staged-copy)
+- [Gefaseerde kopie](#staged-copy)
 
 ### <a name="data-integration-units"></a>Gegevens integratie-eenheden
 
 Een gegevens integratie-eenheid is een meting die de kracht vertegenwoordigt (een combi natie van CPU, geheugen en netwerk bron toewijzing) van één eenheid in Azure Data Factory. De gegevens integratie-eenheid is alleen van toepassing op [Azure Integration runtime](concepts-integration-runtime.md#azure-integration-runtime), maar niet [zelf-hostende Integration runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-Er wordt een bedrag in rekening gebracht **met \* de gebruikte \* DIUs kopie duur eenheids prijs/DIU-uur**. Bekijk [hier](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)de huidige prijzen. Lokale valuta en afzonderlijke korting kunnen per abonnements type worden toegepast.
+U wordt gefactureerd voor het **aantal gebruikte DIUs \* Kopieer duur \* eenheids prijs/DIU-uur**. Bekijk [hier](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)de huidige prijzen. Lokale valuta en afzonderlijke korting kunnen per abonnements type worden toegepast.
 
 De toegestane DIUs om de uitvoering van een Kopieer activiteit te stimuleren, ligt **tussen 2 en 256**. Als u dit niet opgeeft of als u ' automatisch ' kiest in de gebruikers interface, Data Factory de optimale DIU-instelling dynamisch Toep assen op basis van uw combi natie van bron-Sink en gegevens patroon. De volgende tabel bevat de standaard DIUs die worden gebruikt in verschillende Kopieer scenario's:
 
-| Scenario kopiëren | Standaard DIUs bepaald door de service |
+| Scenario kopiëren | Standaard DIUs bepaald door service |
 |:--- |:--- |
-| Gegevens kopiëren tussen winkels op basis van bestanden | Tussen 4 en 32, afhankelijk van het aantal en de grootte van de bestanden |
+| Gegevens kopiëren tussen archieven op basis van bestanden | Tussen 4 en 32, afhankelijk van het aantal en de grootte van de bestanden |
 | Gegevens kopiëren naar Azure SQL Database of Azure Cosmos DB |Tussen 4 en 16, afhankelijk van de Azure SQL Database van de sink of de Cosmos DB laag (aantal Dtu's/RUs) |
 | Alle andere scenario's voor kopiëren | 4 |
 
-Als u wilt deze standaardwaarde onderdrukken, Geef een waarde op voor de **dataIntegrationUnits** eigenschap als volgt te werk. De *werkelijke aantal DIUs* dat gebruikmaakt van de kopieerbewerking tijdens de uitvoering is gelijk aan of kleiner is dan de geconfigureerde waarde, afhankelijk van het patroon van uw gegevens.
+Als u deze standaard instelling wilt overschrijven, geeft u als volgt een waarde op voor de eigenschap **dataIntegrationUnits** . Het *werkelijke aantal DIUs* dat de Kopieer bewerking tijdens runtime gebruikt, is gelijk aan of kleiner dan de geconfigureerde waarde, afhankelijk van het gegevens patroon.
 
 U kunt de DIUs die wordt gebruikt voor elke Kopieer bewerking zien in de uitvoer van de Kopieer activiteit wanneer u een uitvoering van een activiteit bewaakt. Zie voor meer informatie [controle activiteit kopiëren](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> De instelling van DIUs die groter is dan vier, is momenteel alleen van toepassing als u meerdere bestanden kopieert van Azure Storage, Azure Data Lake Storage, Amazon S3, Google Cloud Storage, Cloud FTP of Cloud SFTP naar andere gegevens archieven in de Cloud.
+> De instelling van DIUs die groter is dan vier, is momenteel alleen van toepassing wanneer u meerdere bestanden kopieert vanuit Azure Blob/ADLS Gen1/ADLS Gen2/Amazon S3/Google Cloud Storage/Cloud FTP/Cloud SFTP of van een partitie-optie met ingeschakeld Cloud relationele gegevens opslag (inclusief [Oracle ](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/e [Teradata](connector-teradata.md#teradata-as-source)) naar andere gegevens archieven in de Cloud.
 
 **Voorbeeld:**
 
@@ -178,23 +178,23 @@ U kunt de eigenschap **parallelCopies** gebruiken om aan te geven in welke paral
 
 Voor elke uitvoering van de Kopieer activiteit bepaalt Azure Data Factory het aantal parallelle kopieën dat moet worden gebruikt voor het kopiëren van gegevens uit de brongegevens opslag en naar het doel gegevens archief. Het standaard aantal parallelle kopieën dat wordt gebruikt, is afhankelijk van het type bron en Sink dat u gebruikt.
 
-| Scenario kopiëren | Standaard parallelle kopie aantal bepaald door de service |
+| Scenario kopiëren | Standaard aantal parallelle kopieën bepaald door service |
 | --- | --- |
-| Gegevens kopiëren tussen winkels op basis van bestanden |Is afhankelijk van de grootte van de bestanden en het aantal DIUs dat wordt gebruikt voor het kopiëren van gegevens tussen twee gegevens archieven in de Cloud of de fysieke configuratie van de zelf-hostende Integration runtime-computer. |
+| Gegevens kopiëren tussen archieven op basis van bestanden |Is afhankelijk van de grootte van de bestanden en het aantal DIUs dat wordt gebruikt voor het kopiëren van gegevens tussen twee gegevens archieven in de Cloud of de fysieke configuratie van de zelf-hostende Integration runtime-computer. |
 | Kopiëren van relationeel gegevens archief met ingeschakelde partitie optie (inclusief [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Gegevens uit een bron archief kopiëren naar Azure-tabel opslag |4 |
-| Alle andere kopieerscenario 's |1 |
+| Alle andere Kopieer scenario's |1 |
 
 > [!TIP]
 > Wanneer u gegevens kopieert tussen archieven op basis van bestanden, biedt het standaard gedrag doorgaans de beste door voer. Het standaard gedrag wordt automatisch bepaald op basis van het patroon van het bron bestand.
 
-Als u de belasting wilt beheren op machines die uw gegevens archieven hosten, of als u de Kopieer prestaties wilt afstemmen, kunt u de standaard waarde overschrijven en een waarde opgeven voor de eigenschap **parallelCopies** . De waarde moet een geheel getal groter dan of gelijk aan 1 zijn. Tijdens runtime gebruikt de Kopieer activiteit een waarde die kleiner is dan of gelijk is aan de waarde die u hebt ingesteld.
+Als u de belasting wilt beheren op machines die uw gegevens archieven hosten, of als u de Kopieer prestaties wilt afstemmen, kunt u de standaard waarde overschrijven en een waarde opgeven voor de eigenschap **parallelCopies** . De waarde moet een geheel getal zijn dat groter is dan of gelijk is aan 1. Tijdens runtime gebruikt de Kopieer activiteit een waarde die kleiner is dan of gelijk is aan de waarde die u hebt ingesteld.
 
 **Punten om te noteren:**
 
-- Wanneer u gegevens kopieert tussen archieven op basis van bestanden, bepaalt **parallelCopies** de parallelle factor op bestands niveau. De Chunking binnen één bestand vindt onder automatisch en transparant plaats. Het is ontworpen om de beste geschikte segment grootte te gebruiken voor een bepaald type brongegevens opslag om gegevens parallel en rechthoekig naar **parallelCopies**te laden. Het werkelijke aantal parallelle exemplaren data movement service wordt gebruikt voor de kopieerbewerking tijdens runtime is niet meer dan het aantal bestanden dat u hebt. Als het Kopieer gedrag **mergeFile**is, kan de Kopieer activiteit niet profiteren van parallellisme op bestands niveau.
-- Wanneer u gegevens kopieert uit winkels die niet op bestanden zijn gebaseerd (met uitzonde ring van [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) -connector als bron waarvoor partitionering van gegevens is ingeschakeld) voor archieven die zijn gebaseerd op bestand, de gegevens de eigenschap **parallelCopies** wordt genegeerd door de verplaatsings service. Zelfs als parallelle uitvoering is opgegeven, wordt deze niet toegepast in dit geval.
-- De eigenschap **parallelCopies** is rechthoekig naar **dataIntegrationUnits**. De eerste wordt in de eenheden voor de integratie van gegevens geteld.
+- Wanneer u gegevens kopieert tussen archieven op basis van bestanden, bepaalt **parallelCopies** de parallelle factor op bestands niveau. De Chunking binnen één bestand vindt onder automatisch en transparant plaats. Het is ontworpen om de beste geschikte segment grootte te gebruiken voor een bepaald type brongegevens opslag om gegevens parallel en rechthoekig naar **parallelCopies**te laden. Het werkelijke aantal parallelle kopieën dat de gegevens verplaatsings service gebruikt voor de Kopieer bewerking tijdens runtime is niet groter dan het aantal bestanden dat u hebt. Als het Kopieer gedrag **mergeFile**is, kan de Kopieer activiteit niet profiteren van parallellisme op bestands niveau.
+- Wanneer u gegevens kopieert uit winkels die niet op bestanden zijn gebaseerd (met uitzonde ring van [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP-tabel](connector-sap-table.md#sap-table-as-source)en [SAP open hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) -connector als bron waarvoor partitionering van gegevens is ingeschakeld) voor archieven die zijn gebaseerd op bestand, de gegevens de eigenschap **parallelCopies** wordt genegeerd door de verplaatsings service. Zelfs als parallelisme is opgegeven, wordt dit in dit geval niet toegepast.
+- De eigenschap **parallelCopies** is rechthoekig naar **dataIntegrationUnits**. De eerste wordt geteld in alle gegevens integratie-eenheden.
 - Wanneer u een waarde voor de eigenschap **parallelCopies** opgeeft, moet u rekening houden met de toename van de belasting van uw bron-en Sink-gegevens opslag. Houd ook rekening met de toename van de belasting voor de zelf-hostende Integration runtime als de Kopieer activiteit hiervoor is gemachtigd, bijvoorbeeld voor hybride kopieën. Deze belasting toename treedt vooral op wanneer u meerdere activiteiten of gelijktijdige uitvoeringen hebt van dezelfde activiteiten die worden uitgevoerd op hetzelfde gegevens archief. Als u merkt dat het gegevens archief of de zelf-hostende Integration runtime wordt overspoeld met de belasting, verlaagt u de **parallelCopies** -waarde om de belasting te ontlasten.
 
 **Voorbeeld:**
@@ -219,19 +219,19 @@ Als u de belasting wilt beheren op machines die uw gegevens archieven hosten, of
 ]
 ```
 
-### <a name="staged-copy"></a>Gefaseerd kopiëren
+### <a name="staged-copy"></a>Gefaseerde kopie
 
-Wanneer u gegevens van een brongegevensarchief naar een sink-gegevensarchief kopieert, kunt u Blob-opslag gebruiken als een tussentijdse faseringsopslag. Fasering is vooral nuttig in de volgende gevallen:
+Wanneer u gegevens uit een brongegevens archief naar een Sink-gegevens archief kopieert, kunt u ervoor kiezen om Blob-opslag te gebruiken als een tijdelijke faserings opslag. Fase ring is met name handig in de volgende gevallen:
 
-- **U wilt gegevens uit verschillende gegevens archieven opnemen in SQL Data Warehouse via Poly base.** SQL Data Warehouse gebruikmaakt van een grote hoeveelheid gegevens laden in SQL Data Warehouse PolyBase als een mechanisme voor hoge doorvoer. De bron gegevens moeten zich in Blob Storage of Azure Data Lake Store bekomen en moeten aan aanvullende criteria voldoen. Bij het laden van gegevens vanuit een ander gegevensarchief dan Blob storage of Azure Data Lake Store, kunt u gegevens kopiëren via tussentijdse staging Blob-opslag kunt activeren. In dat geval voert Azure Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens maakt PolyBase om gegevens te laden in SQL Data Warehouse efficiënt gebruik. Zie voor meer informatie, [gebruik PolyBase om gegevens te laden in Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **U wilt gegevens uit verschillende gegevens archieven opnemen in SQL Data Warehouse via Poly base.** SQL Data Warehouse gebruikt poly Base als mechanisme voor hoge door Voer om een grote hoeveelheid gegevens in SQL Data Warehouse te laden. De bron gegevens moeten zich in Blob Storage of Azure Data Lake Store bekomen en moeten aan aanvullende criteria voldoen. Wanneer u gegevens laadt vanuit een ander gegevens archief dan Blob Storage of Azure Data Lake Store, kunt u het kopiëren van gegevens met behulp van tussenliggende staging-Blobopslag activeren. In dat geval voert Azure Data Factory de vereiste gegevens transformaties uit om ervoor te zorgen dat het voldoet aan de vereisten van poly base. Vervolgens wordt poly base gebruikt voor het efficiënt laden van gegevens naar SQL Data Warehouse. Zie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)voor meer informatie.
 - **Soms duurt het even om een hybride gegevens verplaatsing (dat wil zeggen, kopiëren van een on-premises gegevens archief naar een gegevens archief in de Cloud) uit te voeren via een trage netwerk verbinding.** Om de prestaties te verbeteren, kunt u gefaseerde kopie gebruiken om de gegevens on-premises te comprimeren, zodat het minder tijd kost om gegevens te verplaatsen naar de faserings gegevens opslag in de Cloud. Vervolgens kunt u de gegevens in het faserings archief decomprimeren voordat u ze laadt in de doel gegevens opslag.
-- **U wilt geen andere poorten dan poort 80 en poort 443 openen in uw firewall vanwege het IT-beleid van het bedrijf.** Wanneer u gegevens van een on-premises gegevensarchief naar een Azure SQL Database-sink of een Azure SQL Data Warehouse-sink kopiëren, moet u bijvoorbeeld uitgaande TCP-communicatie op poort 1433 voor zowel de Windows firewall en firewall van uw bedrijf te activeren. In dit scenario kan een gefaseerde kopie gebruikmaken van de zelf-hostende Integration runtime om eerst gegevens te kopiëren naar een staging-opslag instantie van een BLOB via HTTP of HTTPS op poort 443. Vervolgens kunnen de gegevens worden geladen in SQL Database of SQL Data Warehouse vanuit de fase van het maken van Blob-opslag. In deze stroom moet u geen poort 1433 in te schakelen.
+- **U wilt geen andere poorten dan poort 80 en poort 443 openen in uw firewall vanwege het IT-beleid van het bedrijf.** Wanneer u bijvoorbeeld gegevens kopieert van een on-premises gegevens archief naar een Azure SQL Database sink of een Azure SQL Data Warehouse-sink, moet u uitgaande TCP-communicatie activeren op poort 1433 voor zowel Windows Firewall als uw bedrijfs firewall. In dit scenario kan een gefaseerde kopie gebruikmaken van de zelf-hostende Integration runtime om eerst gegevens te kopiëren naar een staging-opslag instantie van een BLOB via HTTP of HTTPS op poort 443. Vervolgens kunnen de gegevens worden geladen in SQL Database of SQL Data Warehouse vanuit de fase van het maken van Blob-opslag. In deze stroom hoeft u poort 1433 niet in te scha kelen.
 
 #### <a name="how-staged-copy-works"></a>Hoe gefaseerd kopiëren werkt
 
-Wanneer u de functie voor gefaseerde installatie activeert, eerst de gegevens worden gekopieerd uit de brongegevensopslag naar de Blob-opslag staging (Voeg uw eigen). Vervolgens is de gegevens van de faseringsgegevensopslag gekopieerd naar de sinkgegevensopslag. Azure Data Factory beheert automatisch de twee fase stroom voor u. Azure Data Factory verwijdert ook tijdelijke gegevens uit de staging-opslag nadat de gegevens verplaatsing is voltooid.
+Wanneer u de faserings functie activeert, worden de gegevens eerst uit de brongegevens opslag gekopieerd naar de staging Blob-opslag (neem uw eigen op). Vervolgens worden de gegevens uit de staging-gegevens opslag naar de Sink-gegevens opslag gekopieerd. Azure Data Factory beheert automatisch de twee fase stroom voor u. Azure Data Factory verwijdert ook tijdelijke gegevens uit de staging-opslag nadat de gegevens verplaatsing is voltooid.
 
-![Gefaseerd kopiëren](media/copy-activity-performance/staged-copy.png)
+![Gefaseerde kopie](media/copy-activity-performance/staged-copy.png)
 
 Wanneer u gegevens verplaatsing activeert met behulp van een faserings opslag, kunt u opgeven of u wilt dat de gegevens worden gecomprimeerd voordat u gegevens verplaatst van de brongegevens opslag naar een tussentijds-of faserings gegevens archief en vervolgens wordt gedecomprimeerd voordat u gegevens verplaatst van een tussentijds of fasering dat een archief naar de Sink-gegevens opslag.
 
@@ -241,12 +241,12 @@ Op dit moment kunt u geen gegevens kopiëren tussen twee gegevens archieven die 
 
 Configureer de instelling **enableStaging** in de Kopieer activiteit om op te geven of u wilt dat de gegevens in Blob Storage worden klaargezet voordat u deze in een doel gegevens archief laadt. Wanneer u **enableStaging** instelt op `TRUE`, geeft u de aanvullende eigenschappen op die in de volgende tabel worden weer gegeven. U moet ook een gekoppelde service voor het maken van een hand tekening voor gedeelde toegang met een opslag locatie voor Azure Storage of Storage gebruiken als u er geen hebt.
 
-| Eigenschap | Description | Standaardwaarde | Vereist |
+| Eigenschap | Beschrijving | Standaardwaarde | Verplicht |
 | --- | --- | --- | --- |
-| enableStaging |Geef op of u wilt het kopiëren van gegevens via een tussentijdse opslag staging. |False |Nee |
-| linkedServiceName |Geef de naam van een [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) gekoppelde service, die verwijst naar het exemplaar van de opslag die u als een tussentijdse faseringsopslag. <br/><br/> U kunt opslag niet gebruiken met een Shared Access Signature om gegevens te laden in SQL Data Warehouse via Poly base. U kunt deze gebruiken in alle andere scenario's. |N/A |Ja, wanneer **enableStaging** is ingesteld op TRUE |
-| path |Geef het pad op Blob-opslag die u wilt de voorbereide gegevens bevatten. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef een pad alleen als u Storage met een shared access signature gebruiken of u tijdelijke gegevens op een specifieke locatie te vereisen. |N/A |Nee |
-| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling beperkt de hoeveelheid gegevens die worden overgebracht. |False |Nee |
+| enableStaging |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |Onwaar |Nee |
+| linkedServiceName |Geef de naam op van een gekoppelde [opslag](connector-azure-blob-storage.md#linked-service-properties) -service die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt opslag niet gebruiken met een Shared Access Signature om gegevens te laden in SQL Data Warehouse via Poly base. U kunt deze gebruiken in alle andere scenario's. |N/A |Ja, wanneer **enableStaging** is ingesteld op True |
+| programmapad |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N/A |Nee |
+| enableCompression |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |Onwaar |Nee |
 
 >[!NOTE]
 > Als u een gefaseerde kopie gebruikt terwijl compressie is ingeschakeld, wordt de service-principal of MSI-verificatie voor de gekoppelde BLOB-hostservice niet ondersteund.
@@ -281,27 +281,27 @@ Hier volgt een voor beeld van een Kopieer activiteit met de eigenschappen die in
 ]
 ```
 
-#### <a name="staged-copy-billing-impact"></a>Gefaseerd kopiëren facturering impact
+#### <a name="staged-copy-billing-impact"></a>Facturerings impact voor gefaseerde kopie
 
 Er worden kosten in rekening gebracht op basis van twee stappen: de duur en het Kopieer type kopiëren.
 
 * Wanneer u fase ring gebruikt tijdens een Cloud kopie, die gegevens uit een gegevens archief in de cloud kopieert naar een ander gegevens archief in de Cloud, wordt de [som van de Kopieer duur voor stap 1 en stap 2] x [eenheids prijs voor de Cloud kopie] in rekening gebracht.
 * Wanneer u fase ring gebruikt tijdens een hybride kopie, waarmee gegevens worden gekopieerd van een on-premises gegevens opslag naar een gegevens archief in de Cloud, wordt één fase van een zelf-hostende Integration runtime in rekening gebracht voor [Hybrid Copy duration] x [hybride kopie van eenheids prijs] + [duur van de Cloud kopiëren] x [prijs per eenheid voor Cloud Copy].
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 
 Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal ondersteunde gegevens archieven:
 
-* Azure Storage, met Blob Storage en Table Storage: [Azure Storage schaalbaarheids doelen](../storage/common/storage-scalability-targets.md) en [Azure Storage controle lijst voor prestaties en schaal baarheid](../storage/common/storage-performance-checklist.md).
-* Azure SQL Database: U kunt [de prestaties bewaken](../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (data base Trans Action Unit) controleren.
-* Azure SQL Data Warehouse: De functionaliteit wordt gemeten in data warehouse units (Dwu's). Zie [reken kracht beheren in Azure SQL Data Warehouse (overzicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
-* Azure Cosmos DB: [Prestatie niveaus in azure Cosmos DB](../cosmos-db/performance-levels.md).
-* On-premises SQL Server: [Prestaties bewaken en afstemmen](https://msdn.microsoft.com/library/ms189081.aspx).
-* On-premises Bestands server: [Prestaties afstemmen voor bestands servers](https://msdn.microsoft.com/library/dn567661.aspx).
+* Azure Storage, waaronder Blob Storage en Table Storage: [Azure Storage schaalbaarheids doelen](../storage/common/storage-scalability-targets.md) en [Azure Storage controle lijst voor prestaties en schaal baarheid](../storage/common/storage-performance-checklist.md).
+* Azure SQL Database: u kunt [de prestaties bewaken](../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (data base Trans Action Unit) controleren.
+* Azure SQL Data Warehouse: de mogelijkheid ervan wordt gemeten in data warehouse units (Dwu's). Zie [reken kracht beheren in Azure SQL Data Warehouse (overzicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure Cosmos DB: [prestatie niveaus in azure Cosmos DB](../cosmos-db/performance-levels.md).
+* On-premises SQL Server: [prestaties bewaken en afstemmen](https://msdn.microsoft.com/library/ms189081.aspx).
+* On-premises Bestands server: [prestaties afstemmen voor bestands servers](https://msdn.microsoft.com/library/dn567661.aspx).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht kopieeractiviteit](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
 - [Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure](data-migration-guidance-overview.md)
 - [Gegevens migreren van Amazon S3 naar Azure Storage](data-migration-guidance-s3-azure-storage.md)

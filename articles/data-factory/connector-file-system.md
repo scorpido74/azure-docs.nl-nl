@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b1e1dfec69d73b7fe2648a1eb9ead2ae4622bc5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.openlocfilehash: 39e1099f1700e9ade412bb4cb81bc38e814ecfae
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897753"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935647"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar een bestands systeem met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -100,21 +100,15 @@ De volgende eigenschappen worden ondersteund voor aan het bestands systeem gekop
 
 Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. 
 
-- Raadpleeg voor **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, de sectie [Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset](#format-based-dataset) .
-- Raadpleeg de sectie [andere indelings gegevensset](#other-format-dataset) voor andere indelingen, zoals **Orc-indeling**.
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a>Parquet, gescheiden tekst, JSON, AVRO en binaire indeling gegevensset
-
-Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire-indelings](format-binary.md) artikel op op indeling gebaseerde gegevensset en ondersteunde instellingen . De volgende eigenschappen worden ondersteund voor bestands systeem onder `location` instellingen in gegevensset op basis van indeling:
+De volgende eigenschappen worden ondersteund voor bestands systeem onder `location` instellingen in gegevensset op basis van indeling:
 
 | Eigenschap   | Beschrijving                                                  | Verplicht |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | De eigenschap type onder `location` in DataSet moet worden ingesteld op **FileServerLocation**. | Ja      |
 | folderPath | Het pad naar de map. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u de instellingen voor de activiteit bron op. | Nee       |
 | fileName   | De bestands naam onder de opgegeven folderPath. Als u Joker tekens wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u de instellingen van de activiteit bron op. | Nee       |
-
-> [!NOTE]
-> **File share** type-gegevensset met Parquet/Text-indeling die in de volgende sectie wordt vermeld, wordt nog steeds ondersteund als-is voor de activiteit Copy/lookup/GetMetadata voor achterwaartse compatibiliteit, maar werkt niet met toewijzings gegevens stroom. U wordt aangeraden dit nieuwe model verder te gebruiken en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van deze nieuwe typen.
 
 **Voorbeeld:**
 
@@ -142,9 +136,10 @@ Als u gegevens wilt kopiëren naar en van **Parquet, tekst met scheidings tekens
 }
 ```
 
-### <a name="other-format-dataset"></a>Gegevensset voor andere indeling
+### <a name="legacy-dataset-model"></a>Verouderd gegevensset-model
 
-De volgende eigenschappen worden ondersteund om gegevens te kopiëren van en naar een bestands systeem in de **Orc-indeling**:
+>[!NOTE]
+>Het volgende gegevensset model wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt genoemd en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
 
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
@@ -198,12 +193,9 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 ### <a name="file-system-as-source"></a>Bestands systeem als bron
 
-- Als u wilt kopiëren van **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u de sectie [Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron](#format-based-source) .
-- Als u wilt kopiëren van andere indelingen, zoals de **indeling Orc**, raadpleegt u de sectie [andere indelings bron](#other-format-source) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a>Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings bron
-
-Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Kopieer activiteit bron en ondersteund Instellingen. De volgende eigenschappen worden ondersteund voor bestands systeem onder `storeSettings` instellingen in op indeling gebaseerde Kopieer Bron:
+De volgende eigenschappen worden ondersteund voor bestands systeem onder `storeSettings` instellingen in op indeling gebaseerde Kopieer Bron:
 
 | Eigenschap                 | Beschrijving                                                  | Verplicht                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -214,9 +206,6 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, 
 | modifiedDatetimeStart    | Bestanden filteren op basis van het kenmerk: laatst gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd`. De tijd wordt toegepast op UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Als `modifiedDatetimeStart` een datetime-waarde heeft, maar `modifiedDatetimeEnd` NULL is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter is dan of gelijk is aan de datum/tijd-waarde wordt geselecteerd.  Als `modifiedDatetimeEnd` een datetime-waarde heeft, maar `modifiedDatetimeStart` NULL is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de datum/tijd-waarde wordt geselecteerd. | Nee                                            |
 | modifiedDatetimeEnd      | Hetzelfde als hierboven.                                               | Nee                                            |
 | maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met opslag archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee                                            |
-
-> [!NOTE]
-> Voor een Parquet/gescheiden tekst indeling wordt de bron van de Kopieer activiteit van het type **FileSystemSource** die in de volgende sectie wordt vermeld, nog steeds ondersteund als-is voor achterwaartse compatibiliteit. U wordt aangeraden dit nieuwe model verder te gebruiken en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van deze nieuwe typen.
 
 **Voorbeeld:**
 
@@ -259,9 +248,10 @@ Als u gegevens wilt kopiëren uit **Parquet, tekst met scheidings tekens, JSON, 
 ]
 ```
 
-#### <a name="other-format-source"></a>Andere indelings bron
+#### <a name="legacy-source-model"></a>Verouderd bron model
 
-Als u gegevens wilt kopiëren uit het bestands systeem in de **Orc-indeling**, worden de volgende eigenschappen ondersteund in het gedeelte **bron** van de Kopieer activiteit:
+>[!NOTE]
+>Het volgende Kopieer bron model wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt beschreven en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
 
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
@@ -303,21 +293,15 @@ Als u gegevens wilt kopiëren uit het bestands systeem in de **Orc-indeling**, w
 
 ### <a name="file-system-as-sink"></a>Bestands systeem als Sink
 
-- Als u wilt kopiëren naar **Parquet, tekst met scheidings tekens, JSON, AVRO en binary**, verwijzen wij u naar [Parquet, gescheiden tekst, JSON, AVRO en de sectie Sink voor binaire indeling](#format-based-sink) .
-- Als u wilt kopiëren naar andere indelingen, zoals de **Orc-indeling**, raadpleegt u de sectie [andere indelings Sink](#other-format-sink) .
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-sink"></a>Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indelings Sink
-
-Als u gegevens wilt kopiëren in **Parquet, tekst met scheidings tekens, JSON, AVRO en binaire indeling**, raadpleegt u [Parquet-indeling](format-parquet.md), [tekst indeling met scheidings tekens](format-delimited-text.md), [Avro-indeling](format-avro.md) en [binaire indeling](format-binary.md) artikel op op indeling gebaseerde Sink voor kopieer activiteiten en ondersteund Instellingen. De volgende eigenschappen worden ondersteund voor bestands systeem onder `storeSettings` instellingen in op indeling gebaseerde kopie-Sink:
+De volgende eigenschappen worden ondersteund voor bestands systeem onder `storeSettings` instellingen in op indeling gebaseerde kopie-Sink:
 
 | Eigenschap                 | Beschrijving                                                  | Verplicht |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **FileServerWriteSetting**. | Ja      |
 | copyBehavior             | Hiermee wordt het Kopieer gedrag gedefinieerd wanneer de bron bestanden van een gegevens archief op basis van een bestand zijn.<br/><br/>Toegestane waarden zijn:<br/><b>-PreserveHierarchy (standaard instelling)</b>: behoudt de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><b>-FlattenHierarchy</b>: alle bestanden in de bronmap bevinden zich in het eerste niveau van de doelmap. De doel bestanden hebben automatisch gegenereerde namen. <br/><b>-MergeFiles</b>: alle bestanden van de bronmap worden samengevoegd met één bestand. Als de bestands naam is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. Anders is het een automatisch gegenereerde bestands naam. | Nee       |
 | maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met het gegevens archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee       |
-
-> [!NOTE]
-> Voor een Parquet/gescheiden tekst indeling wordt de **geFileSystemSink** type Kopieer activiteit die in de volgende sectie wordt vermeld, nog steeds ondersteund als-is voor achterwaartse compatibiliteit. U wordt aangeraden dit nieuwe model verder te gebruiken en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van deze nieuwe typen.
 
 **Voorbeeld:**
 
@@ -354,9 +338,10 @@ Als u gegevens wilt kopiëren in **Parquet, tekst met scheidings tekens, JSON, A
 ]
 ```
 
-#### <a name="other-format-sink"></a>Andere opmaak Sink
+#### <a name="legacy-sink-model"></a>Verouderd Sink-model
 
-Als u gegevens wilt kopiëren naar een bestands systeem in de **Orc-indeling**, worden de volgende eigenschappen ondersteund in de sectie **sink** :
+>[!NOTE]
+>Het volgende model voor het kopiëren van sinks wordt nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt beschreven en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
 
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |

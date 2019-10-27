@@ -1,51 +1,46 @@
 ---
-title: Azure-activiteitenlogboeken verzamelen in een werkruimte voor logboekanalyse voor Azure tenants | Microsoft Docs
-description: Event Hubs en Logic Apps gebruiken voor het verzamelen van gegevens uit de Azure-activiteitenlogboek en verzenden naar Log Analytics-werkruimte in Azure Monitor in een andere tenant.
-services: log-analytics, logic-apps, event-hubs
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Azure-activiteiten logboeken verzamelen in een Log Analytics werk ruimte in azure-tenants | Microsoft Docs
+description: Gebruik Event Hubs en Logic Apps voor het verzamelen van gegevens uit het Azure-activiteiten logboek en verzend het naar een Log Analytics-werk ruimte in Azure Monitor in een andere Tenant.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/06/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: d8cea59cd0bbeff410f585693cb7ffed82fd9327
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/06/2019
+ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248157"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932897"
 ---
-# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Azure-activiteitenlogboeken verzamelen in Azure Monitor voor Azure Active Directory-tenants
+# <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Azure-activiteiten logboeken verzamelen in Azure Monitor over Azure Active Directory tenants
 
-In dit onderwerp wordt beschreven hoe via een methode voor het Azure-activiteitenlogboeken verzamelen in Log Analytics-werkruimte in Azure Monitor met behulp van de connector voor Azure Log Analytics-gegevensverzamelaar voor Logic Apps. Gebruik het proces in dit artikel als u nodig hebt om Logboeken te verzenden naar een werkruimte in een andere Azure Active Directory-tenant. Als u bijvoorbeeld een aanbieder van beheerde services bent, wilt u mogelijk activiteitenlogboeken verzamelen uit een abonnement van een klant en opslaan in een Log Analytics-werkruimte in uw eigen abonnement.
+In dit artikel wordt stapsgewijs beschreven hoe u Azure-activiteiten Logboeken kunt verzamelen in een Log Analytics-werk ruimte in Azure Monitor met behulp van de Azure Log Analytics Data Collector-connector voor Logic Apps. Gebruik het proces in dit artikel wanneer u logboeken naar een werk ruimte in een andere Azure Active Directory Tenant wilt verzenden. Als u bijvoorbeeld een aanbieder van beheerde services bent, wilt u mogelijk activiteitenlogboeken verzamelen uit een abonnement van een klant en opslaan in een Log Analytics-werkruimte in uw eigen abonnement.
 
-Als de Log Analytics-werkruimte zich in hetzelfde Azure-abonnement, of in een ander abonnement maar in dezelfde Azure Active Directory, gebruikt u de stappen in de [verzamelen en analyseren van Azure-activiteitenlogboeken in Log Analytics-werkruimte in Azure Monitor](activity-log-collect.md)logboeken voor het verzamelen van Azure-activiteit.
+Als de Log Analytics werk ruimte zich in hetzelfde Azure-abonnement of in een ander abonnement bevindt, maar in dezelfde Azure Active Directory, gebruikt u de stappen in de [Azure-activiteiten Logboeken in log Analytics-werk ruimte verzamelen en analyseren in azure monitor](activity-log-collect.md) om Azure te verzamelen Activiteiten Logboeken.
 
 ## <a name="overview"></a>Overzicht
 
 De strategie die in dit scenario wordt gebruikt, is het laten verzenden van gebeurtenissen door Azure Activity Log naar een [Event Hub](../../event-hubs/event-hubs-about.md), waar een [logische app](../../logic-apps/logic-apps-overview.md) deze naar uw Log Analytics-werkruimte verzendt. 
 
-![afbeelding van gegevensstroom met het activiteitenlogboek naar Log Analytics-werkruimte](media/collect-activity-logs-subscriptions/data-flow-overview.png)
+![afbeelding van de gegevens stroom van het activiteiten logboek naar Log Analytics werk ruimte](media/collect-activity-logs-subscriptions/data-flow-overview.png)
 
 Voordelen van deze methode zijn:
-- Lage latentie omdat het Azure-activiteitenlogboek wordt gestreamd naar Event Hub.  De logische App wordt vervolgens geactiveerd en verzendt de gegevens naar de werkruimte. 
+- Lage latentie omdat het Azure-activiteitenlogboek wordt gestreamd naar Event Hub.  De logische app wordt vervolgens geactiveerd en de gegevens worden naar de werk ruimte gepost. 
 - Er is minimale code vereist en er hoeft geen serverinfrastructuur te worden geïmplementeerd.
 
 In dit artikel doorloopt u de volgende stappen:
 1. Een Event Hub maken. 
 2. Activiteitenlogboeken exporteren naar een Event Hub met het exportprofiel van het Azure-activiteitenlogboek.
-3. Een logische App om te lezen uit de Event Hub en gebeurtenissen verzenden naar Log Analytics-werkruimte maken.
+3. Maak een logische app voor het lezen van de Event hub en het verzenden van gebeurtenissen naar Log Analytics werk ruimte.
 
 ## <a name="requirements"></a>Vereisten
 Hieronder volgen de vereisten voor de Azure-resources die in dit scenario worden gebruikt.
 
 - De Event Hub-naamruimte hoeft zich niet in hetzelfde abonnement te bevinden als het abonnement dat logboeken verzendt. De gebruiker die de instelling configureert, moet de juiste toegangsrechten voor beide abonnementen hebben. Als u meerdere abonnementen in dezelfde Azure Active Directory hebt, kunt u de activiteitenlogboeken voor alle abonnementen verzenden naar een enkele event hub.
 - De logische app kan zich in een ander abonnement bevinden dan de event hub en hoeft niet in hetzelfde Azure Active Directory te zijn. De logische app leest uit de Event Hub met behulp van de gedeelde toegangssleutel van de Event Hub.
-- De Log Analytics-werkruimte kan zich in een ander abonnement en Azure Active Directory bevinden dan de logische app, maar voor het gemak raden we aan dat deze zich in hetzelfde abonnement bevinden. De logische App verzendt naar de werkruimte met behulp van de Log Analytics-werkruimte-ID en de sleutel.
+- De Log Analytics-werkruimte kan zich in een ander abonnement en Azure Active Directory bevinden dan de logische app, maar voor het gemak raden we aan dat deze zich in hetzelfde abonnement bevinden. De logische app verzendt naar de werk ruimte met behulp van de Log Analytics werk ruimte-ID en-sleutel.
 
 
 
@@ -96,13 +91,13 @@ U kunt een event hub-naamruimte gebruiken die zich niet in hetzelfde abonnement 
 
 ## <a name="step-3---create-logic-app"></a>Stap 3: een logische app maken
 
-Zodra de activiteitenlogboeken worden geschreven naar de event hub, kunt u een logische App voor het verzamelen van de logboeken van de event hub en schrijft u deze naar de Log Analytics-werkruimte maken.
+Zodra de activiteiten logboeken naar de Event Hub schrijven, maakt u een logische app voor het verzamelen van de logboeken van de Event Hub en schrijft u deze naar de Log Analytics-werk ruimte.
 
 De logische app omvat het volgende:
 - Een trigger voor een [Event Hub connector](https://docs.microsoft.com/connectors/eventhubs/) om te lezen vanuit de Event Hub.
 - Een [actie JSON parseren](../../logic-apps/logic-apps-content-type.md) om de JSON-gebeurtenissen te extraheren.
 - Een [actie Opstellen](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) om de JSON te converteren naar een object.
-- Een [Log Analytics verzenden gegevensconnector](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) om de gegevens naar de Log Analytics-werkruimte.
+- Een [log Analytics gegevens connector verzenden](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) om de gegevens naar de log Analytics-werk ruimte te posten.
 
    ![afbeelding van het toevoegen van een event hub-trigger in logische apps](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
@@ -126,13 +121,13 @@ Voor het ophalen van de naam en verbindingsreeks van de event hub volgt u de sta
 
     ![Logische app maken](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
-   |Instelling | Description  |
+   |Instelling | Beschrijving  |
    |:---|:---|
-   | Name           | Unieke naam voor de logische app. |
+   | Naam           | Unieke naam voor de logische app. |
    | Abonnement   | Selecteer het Azure-abonnement dat de logische app gaat bevatten. |
    | Resourcegroep | Selecteer een bestaande Azure-resourcegroep of maak een nieuwe voor de logische app. |
    | Locatie       | Selecteer de regio van het datacenter voor het implementeren van uw logische app. |
-   | Log Analytics  | Als u de status van elke uitvoering van uw logische app zich in een Log Analytics-werkruimte wilt selecteren.  |
+   | Log Analytics  | Selecteer deze optie als u de status van elke uitvoering van de logische app wilt vastleggen in een Log Analytics-werk ruimte.  |
 
     
 3. Selecteer **Maken**. Wanneer de melding **Implementatie is voltooid** wordt weergegeven, klikt u op **Naar de resource gaan** om uw logische app te openen.
@@ -163,7 +158,7 @@ In de ontwerper van logische apps worden beschikbare connectors en de bijbehoren
 
 ### <a name="add-parse-json-action"></a>De actie JSON parseren toevoegen
 
-De uitvoer van de Event Hub bevat een JSON-payload met een matrix van records. De [JSON parseren](../../logic-apps/logic-apps-content-type.md) actie wordt gebruikt om op te halen van de matrix van records voor het verzenden naar Log Analytics-werkruimte.
+De uitvoer van de Event Hub bevat een JSON-payload met een matrix van records. De actie [JSON parseren](../../logic-apps/logic-apps-content-type.md) wordt gebruikt om alleen de matrix met records te extra heren voor verzen ding naar log Analytics werk ruimte.
 
 1. Klik op **Nieuwe stap** > **Een actie toevoegen**
 2. Typ in het zoekvak *JSON parseren* voor uw filter. Selecteer de actie **Gegevensbewerkingen - JSON parseren**.
@@ -286,14 +281,14 @@ De actie [Opstellen](../../logic-apps/logic-apps-workflow-actions-triggers.md#co
 
 
 ### <a name="add-log-analytics-send-data-action"></a>De actie Gegevens verzenden van Log Analytics toevoegen
-De [Azure Log Analytics-gegevensverzamelaar](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) actie neemt het object van de actie opstellen en verzendt dit naar een Log Analytics-werkruimte.
+De [Azure log Analytics Data Collector](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/) -actie neemt het object van de actie opstellen op en verzendt het naar een log Analytics-werk ruimte.
 
 1. Klik op **Nieuwe stap** > **Een actie toevoegen**
 2. Typ *log analytics* voor uw filter en selecteer vervolgens de actie **Azure Log Analytics-gegevensverzamelaar - Gegevens verzenden**.
 
    ![De actie Gegevens verzenden van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Create**.
+3. Voer een naam in voor uw verbinding en plak deze in de **Werkruimte-id** en **Werkruimtesleutel** voor uw Log Analytics-werkruimte.  Klik op **Maken**.
 
    ![De actie Verbinding van Log Analytics toevoegen aan logische apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 
@@ -301,11 +296,11 @@ De [Azure Log Analytics-gegevensverzamelaar](https://docs.microsoft.com/connecto
 
     ![De actie Gegevens verzenden configureren](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |Instelling        | Waarde           | Description  |
+   |Instelling        | Waarde           | Beschrijving  |
    |---------------|---------------------------|--------------|
    |JSON-aanvraagtekst  | **Uitvoer** van de actie **Opstellen** | Haalt de records van de hoofdtekst van de actie Opstellen op. |
-   | Aangepaste logboeknaam | AzureActivity | De naam van de aangepaste logboektabel maken in de werkruimte voor logboekanalyse voor het opslaan van de geïmporteerde gegevens. |
-   | Het veld Gegenereerde tijd | time | Selecteer het JSON-veld niet voor **time** - typ alleen het woord 'time'. Als u het JSON-veld selecteert, plaatst de ontwerpfunctie de actie **Gegevens verzenden** in een *Voor elk*-lus, en dat is niet iets dat u wilt. |
+   | Aangepaste logboeknaam | AzureActivity | De naam van de aangepaste logboek tabel die moet worden gemaakt in Log Analytics werk ruimte voor het opslaan van de geïmporteerde gegevens. |
+   | Het veld Gegenereerde tijd | tijd | Selecteer het JSON-veld niet voor **time** - typ alleen het woord 'time'. Als u het JSON-veld selecteert, plaatst de ontwerpfunctie de actie **Gegevens verzenden** in een *Voor elk*-lus, en dat is niet iets dat u wilt. |
 
 
 
@@ -329,7 +324,7 @@ De laatste stap bestaat uit het controleren van de Log Analytics-werkruimte om e
 3.  Klik op de tegel **Zoeken in logboeken**. In het deelvenster Zoeken in logboeken typt u `AzureActivity_CL` in het queryveld en drukt u op Enter of klikt u op de zoekknop rechts van het queryveld. Als u uw aangepaste logboek niet *AzureActivity* hebt genoemd, typt u de naam die u hebt gekozen en voegt u `_CL` toe.
 
 >[!NOTE]
-> De eerste keer die een nieuw aangepast logboek wordt verzonden naar de Log Analytics-werkruimte het kan een uur duren voor het aangepaste logboek doorzoekbaar.
+> De eerste keer dat een nieuw aangepast logboek wordt verzonden naar de Log Analytics werk ruimte, kan het een uur duren voordat het aangepaste logboek kan worden doorzocht.
 
 >[!NOTE]
 > De activiteitenlogboeken worden geschreven naar een aangepaste tabel en worden niet weergegeven in de [oplossing voor activiteitenlogboeken](./activity-log-collect.md).
@@ -339,7 +334,7 @@ De laatste stap bestaat uit het controleren van de Log Analytics-werkruimte om e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u een logische app voor Azure-activiteitenlogboeken lezen van een Event Hub en verzend dit naar de Log Analytics-werkruimte voor analyse. Voor meer informatie over het visualiseren van gegevens in een werkruimte, waaronder het maken van dashboards, bekijk de zelfstudie voor het visualiseren gegevens.
+In dit artikel hebt u een logische app gemaakt om Azure-activiteiten logboeken van een event hub te lezen en deze naar de Log Analytics-werk ruimte te verzenden voor analyse. Raadpleeg de zelf studie voor het visualiseren van gegevens voor meer informatie over het visualiseren van gegevens in een werk ruimte, inclusief het maken van Dash boards.
 
 > [!div class="nextstepaction"]
 > [Zelfstudie over het visualiseren van gegevens uit Zoeken in logboeken](./../../azure-monitor/learn/tutorial-logs-dashboards.md)

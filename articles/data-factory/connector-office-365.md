@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren van Office 365 met Azure Data Factory | Microsoft Docs
-description: Leer hoe u gegevens van Office 365 kopiëren naar een ondersteunde sink-gegevensopslag met behulp van de kopieeractiviteit in een Azure Data Factory-pijplijn.
+title: Gegevens kopiëren van Office 365 met behulp van Azure Data Factory | Microsoft Docs
+description: Informatie over het kopiëren van gegevens uit Office 365 naar ondersteunde Sink-gegevens archieven met behulp van Kopieer activiteit in een Azure Data Factory pijp lijn.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,86 +10,86 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 1a8d622aa280794d9a4d6fe7320ddcc21ac044f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7290a7a2f0bf6e12234ff3c09f5c5211dcaeba2d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475667"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931052"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Gegevens uit Office 365 kopiëren naar Azure met behulp van Azure Data Factory
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Gegevens kopiëren van Office 365 naar Azure met behulp van Azure Data Factory
 
-Azure Data Factory kan worden geïntegreerd met [Microsoft Graph-gegevens verbinden](https://docs.microsoft.com/graph/data-connect-concept-overview), zodat u kunt doen om de uitgebreide gegevens van de organisatie in uw Office 365-tenant in Azure op een schaalbare manier om te bouwen van toepassingen voor gegevensanalyse en inzichten op basis van Deze waardevolle gegevensassets. Integratie met Privileged Access Management biedt beveiligd toegangsbeheer voor de waardevolle gegevens in Office 365.  Raadpleeg [deze koppeling](https://docs.microsoft.com/graph/data-connect-concept-overview) voor een overzicht van Microsoft Graph-gegevens verbinden en verwijzen naar [deze koppeling](https://docs.microsoft.com/graph/data-connect-policies#licensing) voor licentie-informatie.
+Azure Data Factory kan worden geïntegreerd met [Microsoft Graph data Connect](https://docs.microsoft.com/graph/data-connect-concept-overview), zodat u de uitgebreide organisatie gegevens in uw Office 365-Tenant op schaal bare wijze naar Azure kunt brengen en Analytics-toepassingen kunt bouwen op basis van deze waardevolle gegevens publicatie. Integratie met Privileged Access Management biedt beveiligd toegangs beheer voor de waardevolle gecuratore gegevens in Office 365.  Raadpleeg [deze koppeling](https://docs.microsoft.com/graph/data-connect-concept-overview) voor een overzicht van Microsoft Graph data Connect en Raadpleeg [deze koppeling](https://docs.microsoft.com/graph/data-connect-policies#licensing) voor informatie over licenties.
 
-In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te kopiëren van Office 365. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit Office 365 te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
-ADF Office 365-connector en Microsoft Graph-gegevens kunnen op schaal opname van verschillende typen gegevenssets verbinding uit de postvakken van Exchange waarvoor E-mail is ingeschakeld, met inbegrip van contactpersonen, agenda-gebeurtenissen, e-mailberichten, gebruikersgegevens, postvakinstellingen, van en enzovoort.  Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-datasets) om te zien van de volledige lijst met beschikbare gegevenssets.
+Met de ADF Office 365-connector en Microsoft Graph data Connect kunt u op grote schaal opname van verschillende typen gegevens sets van post vakken van Exchange-e-mail berichten maken, zoals contact personen in het adres boek, agenda-items, e-mail berichten, gebruikers gegevens, Postvak instellingen en dus.  [Hier](https://docs.microsoft.com/graph/data-connect-datasets) vindt u een overzicht van de volledige lijst met beschik bare gegevens sets.
 
-Op dit moment binnen een enkel kopieeractiviteit kunt u alleen **gegevens kopiëren van Office 365 in [Azure Blob Storage](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), en [Azure Data Lake Storage Gen2 ](connector-azure-data-lake-storage.md) in JSON-indeling** (type setOfObjects). Als u laden van Office 365 in andere typen van gegevensarchieven of in andere indelingen wilt, u kunt koppelen aan de eerste kopieeractiviteit met een latere copy activity in meer gegevens laden in een van de [ondersteund ADF doelarchieven](copy-activity-overview.md#supported-data-stores-and-formats) (Zie" ondersteund als een sink"kolom in de tabel 'Ondersteunde gegevensarchieven en indelingen').
+U kunt nu binnen één Kopieer activiteit **gegevens alleen kopiëren van Office 365 naar [Azure Blob Storage](connector-azure-blob-storage.md), [Azure data Lake Storage GEN1](connector-azure-data-lake-store.md)en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md) in JSON-indeling** (type setOfObjects). Als u Office 365 wilt laden in andere typen gegevens opslag of in andere indelingen, kunt u de eerste Kopieer activiteit koppelen aan een volgende Kopieer activiteit om gegevens naar een van de [ondersteunde ADF-doel archieven](copy-activity-overview.md#supported-data-stores-and-formats) te laden (Zie de kolom wordt ondersteund als een Sink) in de tabel ondersteunde gegevens archieven en-indelingen.
 
 >[!IMPORTANT]
->- Het Azure-abonnement met de data factory en de sink-gegevensopslag moet zich in dezelfde Azure Active Directory (Azure AD)-tenant als Office 365-tenant.
->- Zorg ervoor dat de Integration Runtime van Azure-regio die wordt gebruikt voor de kopieeractiviteit, evenals de bestemming zich in dezelfde regio waar de Office 365-tenantgebruikers postvak dat zich bevindt. Raadpleeg [hier](concepts-integration-runtime.md#integration-runtime-location) om te begrijpen hoe de locatie van de Azure IR wordt bepaald. Raadpleeg [tabel hier](https://docs.microsoft.com/graph/data-connect-datasets#regions) voor een lijst van ondersteunde Office-regio's en bijbehorende Azure-regio's.
->- Service-Principal-verificatie is het enige verificatiemechanisme ondersteund voor Azure Blob Storage, Azure Data Lake Storage Gen1 en Gen2 Azure Data Lake-opslag als doelarchieven.
+>- Het Azure-abonnement met de data factory en het sink-gegevens archief moeten zich onder dezelfde Azure Active Directory (Azure AD) Tenant benemen als Office 365-Tenant.
+>- Zorg ervoor dat de regio Azure Integration Runtime gebruikt voor kopieer activiteiten en dat de bestemming zich in dezelfde regio bevindt als de Office 365-postbus van de Tenant gebruikers. [Hier](concepts-integration-runtime.md#integration-runtime-location) vindt u informatie over de wijze waarop de Azure IR locatie wordt bepaald. Raadpleeg [hier de tabel](https://docs.microsoft.com/graph/data-connect-datasets#regions) voor de lijst met ondersteunde Office-regio's en de bijbehorende Azure-regio's.
+>- Service-Principal-verificatie is het enige verificatie mechanisme dat wordt ondersteund voor Azure Blob Storage, Azure Data Lake Storage Gen1 en Azure Data Lake Storage Gen2 als doel archief.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt gegevens uit Office 365 kopiëren naar Azure, moet u de volgende vereiste stappen uit:
+Als u gegevens wilt kopiëren van Office 365 naar Azure, moet u de volgende vereiste stappen uitvoeren:
 
-- Uw Office 365-tenantbeheerder bepalen acties moet uitvoeren, zoals wordt beschreven [hier](https://docs.microsoft.com/graph/data-connect-get-started).
-- Maken en configureren van een Azure AD-webtoepassing in Azure Active Directory.  Zie voor instructies [maken van een Azure AD-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
-- Noteer de volgende waarden, die u gebruiken wilt voor het definiëren van de gekoppelde service voor Office 365:
-    - Tenant-ID. Zie voor instructies [tenant-ID ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-    - Toepassings-ID en de toepassing de sleutel.  Zie voor instructies [Get-ID en -verificatie Toepassingssleutel](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-- De identiteit van de gebruiker die de aanvraag voor de toegang tot gegevens als eigenaar van de Azure AD-webtoepassing brengen zullen toevoegen (van de Azure AD-webtoepassing > Instellingen > eigenaren > eigenaar toevoegen). 
-    - De identiteit van de gebruiker moet zich in de Office 365-organisatie u ophalen van gegevens uit zijn en mag geen een gastgebruiker.
+- Uw Office 365-Tenant beheerder moet on-board acties volt ooien, zoals [hier](https://docs.microsoft.com/graph/data-connect-get-started)wordt beschreven.
+- Een Azure AD-webtoepassing maken en configureren in Azure Active Directory.  Zie [een Azure AD-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)voor instructies.
+- Noteer de volgende waarden, die u moet gebruiken om de gekoppelde service voor Office 365 te definiëren:
+    - Tenant-ID. Zie [Tenant-id ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)voor instructies.
+    - Toepassings-ID en toepassings sleutel.  Zie [toepassings-id en verificatie sleutel ophalen](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)voor instructies.
+- Voeg de gebruikers-id toe die de gegevens toegangs aanvraag maakt als de eigenaar van de Azure AD-webtoepassing (van de Azure AD Web Application > Instellingen > eigen aren > een eigenaar toevoegen). 
+    - De gebruikers-id moet zich bevinden in de Office 365-organisatie waarvan u de gegevens ophaalt en mag geen gast gebruiker zijn.
 
-## <a name="approving-new-data-access-requests"></a>Toegang aanvragen goedkeuren van nieuwe gegevens
+## <a name="approving-new-data-access-requests"></a>Nieuwe aanvragen voor gegevens toegang goed keuren
 
-Als dit de eerste keer dat u gegevens voor deze context aanvraagt (een combinatie van welke gegevens worden tabel toegang, welke bestemming-account is de gegevens worden geladen in en welke gebruikers-id is, zodat de gegevens toegangsaanvraag), ziet u de copy-activiteit status als 'Wordt uitgevoerd' en alleen wanneer u klikt op in ['Details' koppeling onder acties](copy-activity-overview.md#monitoring) wordt de status weergegeven als 'RequestingConsent'.  Een lid van de groep data access goedkeurder nodig voor het goedkeuren van de aanvraag in het Privileged Access Management voordat de gegevensextractie verder kunt gaan.
+Als dit de eerste keer is dat u gegevens aanvraagt voor deze context (een combi natie van welke gegevens tabel wordt geopend, met welk doel account de gegevens worden geladen en welke gebruikers-id de aanvraag voor gegevens toegang maakt), ziet u de Kopieer activiteit Als de status wordt uitgevoerd en alleen als u op de [koppeling Details onder acties](copy-activity-overview.md#monitoring) klikt, ziet u de status als ' RequestingConsent '.  Een lid van de groep voor het goed keuren van gegevens toegang moet de aanvraag goed keuren in de Privileged Access Management voordat de gegevens extractie kan worden voortgezet.
 
-Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) op hoe de fiatteur kan goedkeuren de gegevens toegang tot aanvraag en Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-pam) voor een uitleg over de algehele integratie met Privileged Access Management, waaronder over het instellen van de gegevens groep voor toegang tot goedkeurder.
+[Hier](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) vindt u informatie over de manier waarop de fiatteur de aanvraag voor gegevens toegang kan goed keuren, en [hier](https://docs.microsoft.com/graph/data-connect-pam) vindt u een uitleg over de algehele integratie met privileged Access Management, met inbegrip van hoe u de groep voor het instellen van gegevens toegang instelt.
 
-## <a name="policy-validation"></a>Validatie van het gebruikersbeleid
+## <a name="policy-validation"></a>Beleidsvalidatie
 
-Als ADF is gemaakt als onderdeel van een beheerde app en Azure-beleid-toewijzingen worden aangebracht in resources binnen de resourcegroep voor beheer, wordt klikt u vervolgens voor elke activiteit kopiëren die wordt uitgevoerd, ADF gecontroleerd om ervoor te zorgen dat de toewijzingen van beleid worden afgedwongen. Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-policies#policies) voor een lijst van ondersteunde beleidsregels.
+Als ADF is gemaakt als onderdeel van een beheerde app en Azure-beleids toewijzingen worden uitgevoerd op resources binnen de beheer resource groep, wordt voor elke uitvoering van de Kopieer activiteit gecontroleerd of de beleids toewijzingen worden afgedwongen. [Hier](https://docs.microsoft.com/graph/data-connect-policies#policies) vindt u een lijst met ondersteunde beleids regels.
 
 ## <a name="getting-started"></a>Aan de slag
 
 >[!TIP]
->Zie voor een overzicht van het gebruik van Office 365-connector, [laden van gegevens uit Office 365](load-office-365-data.md) artikel.
+>Zie voor een overzicht van het gebruik van Office 365 connector [gegevens laden uit het Office 365](load-office-365-data.md) -artikel.
 
-U kunt een pijplijn maken met de kopieeractiviteit met behulp van een van de volgende hulpprogramma's of de SDK's. Selecteer een koppeling naar een zelfstudie met stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. 
+U kunt met behulp van een van de volgende hulpprogram ma's of Sdk's een pijp lijn maken met de Kopieer activiteit. Selecteer een koppeling om naar een zelf studie te gaan met stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
 
-- [Azure Portal](quickstart-create-data-factory-portal.md)
-- [.NET SDK](quickstart-create-data-factory-dot-net.md)
+- [Azure-portal](quickstart-create-data-factory-portal.md)
+- [.NET-SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST API](quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager-sjabloon](quickstart-create-data-factory-resource-manager-template.md). 
+- [Azure Resource Manager sjabloon](quickstart-create-data-factory-resource-manager-template.md). 
 
-De volgende secties bevatten meer informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek voor Office 365-connector.
+De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Office 365 connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor Office 365 gekoppelde service:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Office365** | Ja |
-| office365TenantId | Azure-tenant-ID waartoe de Office 365-account behoort. | Ja |
-| servicePrincipalTenantId | Geef informatie over de tenant die uw Azure AD-webtoepassing zich bevindt. | Ja |
-| servicePrincipalId | Opgeven van de toepassing client-ID. | Ja |
-| servicePrincipalKey | Geef de sleutel van de toepassing. Dit veld markeert als een SecureString Bewaar deze zorgvuldig in Data Factory. | Ja |
-| connectVia | De Integratieruntime moet worden gebruikt verbinding maken met het gegevensarchief.  Als niet is opgegeven, wordt de standaard Azure Integration Runtime. | Nee |
+| office365TenantId | De Azure-Tenant-ID waartoe het Office 365-account behoort. | Ja |
+| servicePrincipalTenantId | Geef de Tenant gegevens op waaronder uw Azure AD-webtoepassing zich bevindt. | Ja |
+| servicePrincipalId | Geef de client-ID van de toepassing op. | Ja |
+| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. | Ja |
+| connectVia | Het Integration Runtime dat moet worden gebruikt om verbinding te maken met het gegevens archief.  Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee |
 
 >[!NOTE]
-> Het verschil tussen **office365TenantId** en **servicePrincipalTenantId** en de bijbehorende waarde om te bieden:
->- Als u een enterprise-ontwikkelaar bent ontwikkelen van een toepassing op basis van Office 365-gegevens voor eigen gebruik van uw organisatie, en vervolgens u dezelfde tenant moet opgeven-ID voor beide eigenschappen die van uw organisatie AAD-tenant-id.
->- Als u een ISV-ontwikkelaar ontwikkelen van een toepassing voor uw klanten wordt office365TenantId van uw klant (het installatieprogramma van toepassing) AAD-tenant-ID en servicePrincipalTenantId worden van uw bedrijf AAD-tenant-ID.
+> Het verschil tussen **office365TenantId** en **servicePrincipalTenantId** en de bijbehorende waarde om het volgende te bieden:
+>- Als u een bedrijfs ontwikkelaar bent die een toepassing ontwikkelt op basis van Office 365-gegevens voor het gebruik van uw eigen organisatie, moet u dezelfde Tenant-ID voor beide eigenschappen opgeven. Dit is de AAD-Tenant-ID van uw organisatie.
+>- Als u een ISV-ontwikkelaar bent die een toepassing ontwikkelt voor uw klanten, zijn office365TenantId van uw klant (Application Installer) de AAD-Tenant-ID van uw bedrijf en servicePrincipalTenantId wordt de AAD-Tenant-ID van uw organisatie.
 
 **Voorbeeld:**
 
@@ -113,19 +113,16 @@ De volgende eigenschappen worden ondersteund voor Office 365 gekoppelde service:
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets](concepts-datasets-linked-services.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door Office 365-gegevensset.
+Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Deze sectie bevat een lijst met eigenschappen die door Office 365 DataSet worden ondersteund.
 
-Als u wilt kopiëren van gegevens van Office 365, zijn de volgende eigenschappen worden ondersteund:
+Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **Office365Table** | Ja |
-| tableName | Naam van de gegevensset om op te halen van Office 365. Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) voor een lijst van beschikbare voor het ophalen van Office 365-gegevenssets. | Ja |
-| allowedGroups | Groep selectie predikaat.  Gebruik deze eigenschap te selecteren van groepen van maximaal 10 gebruikers voor wie de gegevens worden opgehaald.  Er zijn geen groepen zijn opgegeven, worden gegevens worden geretourneerd voor de hele organisatie. | Nee |
-| userScopeFilterUri | Wanneer `allowedGroups` eigenschap niet is opgegeven, kunt u een predicaat-expressie die wordt toegepast op de gehele tenant voor het filteren van de specifieke rijen om uit te pakken uit Office 365. Het predicaat indeling moet de queryindeling van Microsoft Graph-API's, bijvoorbeeld overeen `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nee |
-| dateFilterColumn | De naam van de datum/tijd-filterkolom. Deze eigenschap gebruiken om te beperken van het tijdsbereik voor welke Office 365-gegevens worden geëxtraheerd. | Ja als gegevensset een of meer datum/tijd-kolommen heeft. Raadpleeg [hier](https://docs.microsoft.com/graph/data-connect-filtering#filtering) voor een lijst met gegevenssets waarvoor deze datum/tijd-filter. |
-| startTime | Datum/tijd-waarde om te filteren op starten. | Ja als `dateFilterColumn` is opgegeven |
-| endTime | Datum/tijd-waarde om te filteren op beëindigen. | Ja als `dateFilterColumn` is opgegeven |
+| tableName | De naam van de gegevensset die moet worden geëxtraheerd uit Office 365. [Hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) vindt u een lijst met Office 365-gegevens sets die beschikbaar zijn voor uitpakken. | Ja |
+
+Als u `dateFilterColumn`, `startTime`, `endTime`en `userScopeFilterUri` in de gegevensset hebt ingesteld, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd het nieuwe model in activiteit bron te gebruiken.
 
 **Voorbeeld**
 
@@ -138,189 +135,9 @@ Als u wilt kopiëren van gegevens van Office 365, zijn de volgende eigenschappen
             "referenceName": "<Office 365 linked service name>",
             "type": "LinkedServiceReference"
         },
-        "structure": [
-            {
-                "name": "Id",
-                "type": "String",
-                "description": "The unique identifier of the event."
-            },
-            {
-                "name": "CreatedDateTime",
-                "type": "DateTime",
-                "description": "The date and time that the event was created."
-            },
-            {
-                "name": "LastModifiedDateTime",
-                "type": "DateTime",
-                "description": "The date and time that the event was last modified."
-            },
-            {
-                "name": "ChangeKey",
-                "type": "String",
-                "description": "Identifies the version of the event object. Every time the event is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object."
-            },
-            {
-                "name": "Categories",
-                "type": "String",
-                "description": "The categories associated with the event. Format: ARRAY<STRING>"
-            },
-            {
-                "name": "OriginalStartTimeZone",
-                "type": "String",
-                "description": "The start time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
-            },
-            {
-                "name": "OriginalEndTimeZone",
-                "type": "String",
-                "description": "The end time zone that was set when the event was created. See DateTimeTimeZone for a list of valid time zones."
-            },
-            {
-                "name": "ResponseStatus",
-                "type": "String",
-                "description": "Indicates the type of response sent in response to an event message. Format: STRUCT<Response: STRING, Time: STRING>"
-            },
-            {
-                "name": "iCalUId",
-                "type": "String",
-                "description": "A unique identifier that is shared by all instances of an event across different calendars."
-            },
-            {
-                "name": "ReminderMinutesBeforeStart",
-                "type": "Int32",
-                "description": "The number of minutes before the event start time that the reminder alert occurs."
-            },
-            {
-                "name": "IsReminderOn",
-                "type": "Boolean",
-                "description": "Set to true if an alert is set to remind the user of the event."
-            },
-            {
-                "name": "HasAttachments",
-                "type": "Boolean",
-                "description": "Set to true if the event has attachments."
-            },
-            {
-                "name": "Subject",
-                "type": "String",
-                "description": "The text of the event's subject line."
-            },
-            {
-                "name": "Body",
-                "type": "String",
-                "description": "The body of the message associated with the event.Format: STRUCT<ContentType: STRING, Content: STRING>"
-            },
-            {
-                "name": "Importance",
-                "type": "String",
-                "description": "The importance of the event: Low, Normal, High."
-            },
-            {
-                "name": "Sensitivity",
-                "type": "String",
-                "description": "Indicates the level of privacy for the event: Normal, Personal, Private, Confidential."
-            },
-            {
-                "name": "Start",
-                "type": "String",
-                "description": "The start time of the event. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
-            },
-            {
-                "name": "End",
-                "type": "String",
-                "description": "The date and time that the event ends. Format: STRUCT<DateTime: STRING, TimeZone: STRING>"
-            },
-            {
-                "name": "Location",
-                "type": "String",
-                "description": "Location information of the event. Format: STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>>"
-            },
-            {
-                "name": "IsAllDay",
-                "type": "Boolean",
-                "description": "Set to true if the event lasts all day. Adjusting this property requires adjusting the Start and End properties of the event as well."
-            },
-            {
-                "name": "IsCancelled",
-                "type": "Boolean",
-                "description": "Set to true if the event has been canceled."
-            },
-            {
-                "name": "IsOrganizer",
-                "type": "Boolean",
-                "description": "Set to true if the message sender is also the organizer."
-            },
-            {
-                "name": "Recurrence",
-                "type": "String",
-                "description": "The recurrence pattern for the event. Format: STRUCT<Pattern: STRUCT<Type: STRING, `Interval`: INT, Month: INT, DayOfMonth: INT, DaysOfWeek: ARRAY<STRING>, FirstDayOfWeek: STRING, Index: STRING>, `Range`: STRUCT<Type: STRING, StartDate: STRING, EndDate: STRING, RecurrenceTimeZone: STRING, NumberOfOccurrences: INT>>"
-            },
-            {
-                "name": "ResponseRequested",
-                "type": "Boolean",
-                "description": "Set to true if the sender would like a response when the event is accepted or declined."
-            },
-            {
-                "name": "ShowAs",
-                "type": "String",
-                "description": "The status to show: Free, Tentative, Busy, Oof, WorkingElsewhere, Unknown."
-            },
-            {
-                "name": "Type",
-                "type": "String",
-                "description": "The event type: SingleInstance, Occurrence, Exception, SeriesMaster."
-            },
-            {
-                "name": "Attendees",
-                "type": "String",
-                "description": "The collection of attendees for the event. Format: ARRAY<STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>, Status: STRUCT<Response: STRING, Time: STRING>, Type: STRING>>"
-            },
-            {
-                "name": "Organizer",
-                "type": "String",
-                "description": "The organizer of the event. Format: STRUCT<EmailAddress: STRUCT<Name: STRING, Address: STRING>>"
-            },
-            {
-                "name": "WebLink",
-                "type": "String",
-                "description": "The URL to open the event in Outlook Web App."
-            },
-            {
-                "name": "Attachments",
-                "type": "String",
-                "description": "The FileAttachment and ItemAttachment attachments for the message. Navigation property. Format: ARRAY<STRUCT<LastModifiedDateTime: STRING, Name: STRING, ContentType: STRING, Size: INT, IsInline: BOOLEAN, Id: STRING>>"
-            },
-            {
-                "name": "BodyPreview",
-                "type": "String",
-                "description": "The preview of the message associated with the event. It is in text format."
-            },
-            {
-                "name": "Locations",
-                "type": "String",
-                "description": "The locations where the event is held or attended from. The location and locations properties always correspond with each other. Format:  ARRAY<STRUCT<DisplayName: STRING, Address: STRUCT<Street: STRING, City: STRING, State: STRING, CountryOrRegion: STRING, PostalCode: STRING>, Coordinates: STRUCT<Altitude: DOUBLE, Latitude: DOUBLE, Longitude: DOUBLE, Accuracy: DOUBLE, AltitudeAccuracy: DOUBLE>, LocationEmailAddress: STRING, LocationUri: STRING, LocationType: STRING, UniqueId: STRING, UniqueIdType: STRING>>"
-            },
-            {
-                "name": "OnlineMeetingUrl",
-                "type": "String",
-                "description": "A URL for an online meeting. The property is set only when an organizer specifies an event as an online meeting such as a Skype meeting"
-            },
-            {
-                "name": "OriginalStart",
-                "type": "DateTime",
-                "description": "The start time that was set when the event was created in UTC time."
-            },
-            {
-                "name": "SeriesMasterId",
-                "type": "String",
-                "description": "The ID for the recurring series master item, if this event is part of a recurring series."
-            }
-        ],
+        "schema": [],
         "typeProperties": {
-            "tableName": "BasicDataSet_v0.Event_v1",
-            "dateFilterColumn": "CreatedDateTime",
-            "startTime": "2019-04-28T16:00:00.000Z",
-            "endTime": "2019-05-05T16:00:00.000Z",
-            "userScopeFilterUri": "https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'"
+            "tableName": "BasicDataSet_v0.Event_v1"
         }
     }
 }
@@ -328,11 +145,21 @@ Als u wilt kopiëren van gegevens van Office 365, zijn de volgende eigenschappen
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie voor een volledige lijst van de secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen](concepts-pipelines-activities.md) artikel. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door Office 365-bron.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door Office 365-bron.
 
 ### <a name="office-365-as-source"></a>Office 365 als bron
 
-Om gegevens te kopiëren van Office 365, stelt u het brontype in de kopieeractiviteit naar **Office365Source**. Er zijn geen extra eigenschappen worden ondersteund in de kopieeractiviteit **bron** sectie.
+Als u gegevens wilt kopiëren uit Office 365, worden de volgende eigenschappen ondersteund in de sectie **bron** van de Kopieer activiteit:
+
+| Eigenschap | Beschrijving | Verplicht |
+|:--- |:--- |:--- |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **Office365Source** | Ja |
+| allowedGroups | Predikaat groep selecteren.  Gebruik deze eigenschap om Maxi maal 10 gebruikers groepen te selecteren voor wie de gegevens worden opgehaald.  Als er geen groepen zijn opgegeven, worden de gegevens voor de hele organisatie geretourneerd. | Nee |
+| userScopeFilterUri | Als `allowedGroups` eigenschap niet is opgegeven, kunt u een predicaat expressie gebruiken die wordt toegepast op de hele Tenant om de specifieke rijen te filteren die moeten worden geëxtraheerd uit Office 365. De predicaat indeling moet overeenkomen met de query-indeling van Microsoft Graph Api's, bijvoorbeeld `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Nee |
+| dateFilterColumn | De naam van de datum filter kolom. Gebruik deze eigenschap om het tijds bereik te beperken waarvoor Office 365-gegevens worden geëxtraheerd. | Ja als DataSet een of meer DateTime-kolommen bevat. [Hier](https://docs.microsoft.com/graph/data-connect-filtering#filtering) vindt u een lijst met gegevens sets waarvoor dit datetime-filter nodig is. |
+| startTime | Start datum-waarde voor filteren op. | Ja als `dateFilterColumn` is opgegeven |
+| endTime | Eind datum/-waarde waarop moet worden gefilterd. | Ja als `dateFilterColumn` is opgegeven |
+| outputColumns | Matrix van de kolommen die naar Sink moeten worden gekopieerd. | Nee |
 
 **Voorbeeld:**
 
@@ -355,7 +182,118 @@ Om gegevens te kopiëren van Office 365, stelt u het brontype in de kopieeractiv
         ],
         "typeProperties": {
             "source": {
-                "type": "Office365Source"
+                "type": "Office365Source",
+                "dateFilterColumn": "CreatedDateTime",
+                "startTime": "2019-04-28T16:00:00.000Z",
+                "endTime": "2019-05-05T16:00:00.000Z",
+                "userScopeFilterUri": "https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'",
+                "outputColumns": [
+                    {
+                        "name": "Id"
+                    },
+                    {
+                        "name": "CreatedDateTime"
+                    },
+                    {
+                        "name": "LastModifiedDateTime"
+                    },
+                    {
+                        "name": "ChangeKey"
+                    },
+                    {
+                        "name": "Categories"
+                    },
+                    {
+                        "name": "OriginalStartTimeZone"
+                    },
+                    {
+                        "name": "OriginalEndTimeZone"
+                    },
+                    {
+                        "name": "ResponseStatus"
+                    },
+                    {
+                        "name": "iCalUId"
+                    },
+                    {
+                        "name": "ReminderMinutesBeforeStart"
+                    },
+                    {
+                        "name": "IsReminderOn"
+                    },
+                    {
+                        "name": "HasAttachments"
+                    },
+                    {
+                        "name": "Subject"
+                    },
+                    {
+                        "name": "Body"
+                    },
+                    {
+                        "name": "Importance"
+                    },
+                    {
+                        "name": "Sensitivity"
+                    },
+                    {
+                        "name": "Start"
+                    },
+                    {
+                        "name": "End"
+                    },
+                    {
+                        "name": "Location"
+                    },
+                    {
+                        "name": "IsAllDay"
+                    },
+                    {
+                        "name": "IsCancelled"
+                    },
+                    {
+                        "name": "IsOrganizer"
+                    },
+                    {
+                        "name": "Recurrence"
+                    },
+                    {
+                        "name": "ResponseRequested"
+                    },
+                    {
+                        "name": "ShowAs"
+                    },
+                    {
+                        "name": "Type"
+                    },
+                    {
+                        "name": "Attendees"
+                    },
+                    {
+                        "name": "Organizer"
+                    },
+                    {
+                        "name": "WebLink"
+                    },
+                    {
+                        "name": "Attachments"
+                    },
+                    {
+                        "name": "BodyPreview"
+                    },
+                    {
+                        "name": "Locations"
+                    },
+                    {
+                        "name": "OnlineMeetingUrl"
+                    },
+                    {
+                        "name": "OriginalStart"
+                    },
+                    {
+                        "name": "SeriesMasterId"
+                    }
+                ]
             },
             "sink": {
                 "type": "BlobSink"
@@ -366,4 +304,4 @@ Om gegevens te kopiëren van Office 365, stelt u het brontype in de kopieeractiv
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.

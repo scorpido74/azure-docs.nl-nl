@@ -5,14 +5,14 @@ author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
 ms.date: 09/25/2019
-ms.author: de
+ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 05c9558479e0ad0bf9e05c8f5cae25d7fce6be42
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023845"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931507"
 ---
 # <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Een notitie blok maken in Azure Cosmos DB voor het analyseren en visualiseren van de gegevens
 
@@ -121,7 +121,7 @@ Voordat u query's uitvoert om de gegevens te analyseren, kunt u de gegevens uit 
 {Query text}
 ```
 
-Zie voor meer informatie de [ingebouwde opdrachten en functies voor notebooks in azure Cosmos DB](use-notebook-features-and-commands.md) artikel. U voert de query-`SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c` uit. De resultaten worden opgeslagen in een Panda data frame met de naam df_cosmos. Plak de volgende opdracht in een nieuwe notebook-cel en voer deze uit:
+Zie voor meer informatie de [ingebouwde opdrachten en functies voor notebooks in azure Cosmos DB](use-notebook-features-and-commands.md) artikel. U voert de query-`SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`uit. De resultaten worden opgeslagen in een Panda data frame met de naam df_cosmos. Plak de volgende opdracht in een nieuwe notebook-cel en voer deze uit:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 In deze sectie voert u enkele query's uit op de gegevens die worden opgehaald.
 
-* **Query1** Voer een Group by-query uit op de data frame om de som van de totale verkoop opbrengst voor elk land op te halen en vijf items van de resultaten weer te geven. Voer de volgende code uit in een nieuwe notebook-cel:
+* **Query1:** Voer een Group by-query uit op de data frame om de som van de totale verkoop opbrengst voor elk land op te halen en vijf items van de resultaten weer te geven. Voer de volgende code uit in een nieuwe notebook-cel:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()

@@ -1,24 +1,18 @@
 ---
 title: De implementatie van uw Azure Monitor-logboeken ontwerpen | Microsoft Docs
 description: In dit artikel worden de overwegingen en aanbevelingen beschreven voor klanten die de implementatie van een werk ruimte in Azure Monitor voorbereiden.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 09/20/2019
+ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177597"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932354"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -63,7 +57,7 @@ Als u System Center Operations Manager 2012 R2 of hoger gebruikt:
 * Linux-computers die rapporteren aan een beheer groep moeten worden geconfigureerd om rechtstreeks te rapporteren aan een Log Analytics-werk ruimte. Als uw Linux-computers al rechtstreeks aan een werk ruimte rapporteren en u deze wilt controleren met Operations Manager, voert u de volgende stappen uit om [aan een Operations Manager beheer groep te rapporteren](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group). 
 * U kunt de Log Analytics Windows-agent op de Windows-computer installeren en deze rapporteren aan zowel Operations Manager geïntegreerd met een werk ruimte als een andere werk ruimte.
 
-## <a name="access-control-overview"></a>Overzicht van toegangs beheer
+## <a name="access-control-overview"></a>Overzicht van toegangsbeheer
 
 Met op rollen gebaseerd toegangs beheer (RBAC) kunt u gebruikers en groepen alleen de hoeveelheid toegang verlenen die nodig zijn om te werken met bewakings gegevens in een werk ruimte. Op die manier kunt u met uw IT-bedrijfs model uitlijnen met één werk ruimte om verzamelde gegevens op te slaan die zijn ingeschakeld voor al uw resources. U kunt bijvoorbeeld toegang verlenen aan uw team dat verantwoordelijk is voor infrastructuur services die worden gehost op Azure virtual machines (Vm's), en als gevolg hiervan hebben ze alleen toegang tot de logboeken die door de Vm's worden gegenereerd. Dit is het nieuwe bron-context logboek model. De basis voor dit model geldt voor elke logboek record die wordt gegenereerd door een Azure-resource en wordt automatisch aan deze resource gekoppeld. Logboeken worden doorgestuurd naar een centrale werk ruimte die op de bronnen bereik en RBAC respecteert.
 

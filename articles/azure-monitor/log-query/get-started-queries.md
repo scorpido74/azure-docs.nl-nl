@@ -3,26 +3,21 @@ title: Aan de slag met logboek query's in Azure Monitor | Microsoft Docs
 description: In dit artikel vindt u een zelf studie voor het schrijven van logboek query's in Azure Monitor.
 ms.service: azure-monitor
 ms.subservice: logs
-ms.topic: conceptual
+ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: d9116ba1b43959402223e0cbd1e4f729e053b9b6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: HT
+ms.date: 10/24/2019
+ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894306"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933025"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Aan de slag met logboek query's in Azure Monitor
 
-
-> [!NOTE]
-> U moet aan de [slag met Azure Monitor Log Analytics](get-started-portal.md) volt ooien voordat u deze zelf studie voltooit.
-
 > [!NOTE]
 > U kunt deze oefening in uw eigen omgeving door lopen als u gegevens verzamelt van ten minste één virtuele machine. Als dat niet het geval is, gebruikt u onze [demo omgeving](https://portal.loganalytics.io/demo), die veel voorbeeld gegevens bevat.
-
 
 In deze zelf studie leert u hoe u logboek query's schrijft in Azure Monitor. U leert het volgende:
 
@@ -36,6 +31,10 @@ In deze zelf studie leert u hoe u logboek query's schrijft in Azure Monitor. U l
 
 Zie [aan de slag met Azure Monitor Log Analytics](get-started-portal.md)voor een zelf studie over het gebruik van log Analytics in het Azure Portal.<br>
 Zie [overzicht van logboek query's in azure monitor](log-query-overview.md)voor meer informatie over logboek query's in azure monitor.
+
+Volg een video versie van deze zelf studie:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE42pGX]
 
 ## <a name="writing-a-new-query"></a>Een nieuwe query schrijven
 Query's kunnen beginnen met een tabel naam of met de *Zoek* opdracht. U moet beginnen met een tabel naam omdat hiermee een duidelijk bereik voor de query wordt gedefinieerd en de query prestaties en relevantie van de resultaten worden verbeterd.

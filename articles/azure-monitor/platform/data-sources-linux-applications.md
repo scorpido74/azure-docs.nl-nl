@@ -1,171 +1,165 @@
 ---
-title: Verzamelen van prestaties van de Linux-toepassingen in Azure Monitor | Microsoft Docs
-description: Dit artikel bevat informatie voor het configureren van de Log Analytics-agent voor Linux voor het verzamelen van prestatiemeteritems voor MySQL en Apache HTTP-Server.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
-ms.service: log-analytics
+title: Prestaties van Linux-toepassingen verzamelen in Azure Monitor | Microsoft Docs
+description: In dit artikel vindt u informatie over het configureren van de Log Analytics-agent voor Linux voor het verzamelen van prestatie meter items voor MySQL-en Apache HTTP-server.
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/04/2017
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: ea74440a5c8a9a2584e742ec72ccf888b6bb5ad9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 05/04/2017
+ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628911"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932457"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Verzamelen van prestatiemeteritems voor Linux-toepassingen in Azure Monitor 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Verzamelen van prestatie meter items voor Linux-toepassingen in Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Dit artikel bevat informatie voor het configureren van de [Log Analytics-agent voor Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) voor het verzamelen van prestatiemeteritems voor specifieke toepassingen in Azure Monitor.  De toepassingen die zijn opgenomen in dit artikel zijn:  
+In dit artikel vindt u informatie over het configureren van de [log Analytics-agent voor Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) voor het verzamelen van prestatie meter items voor specifieke toepassingen in azure monitor.  De toepassingen die in dit artikel zijn opgenomen, zijn:  
 
 - [MySQL](#mysql)
-- [Apache HTTP Server](#apache-http-server)
+- [Apache HTTP-server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-Als de MySQL-Server of MariaDB-Server wordt gedetecteerd op de computer wanneer de Log Analytics-agent is geïnstalleerd, wordt een provider voor MySQL-Server voor prestatiebewaking automatisch geïnstalleerd. Deze provider maakt verbinding met de lokale MySQL/MariaDB-server om beschikbaar te stellen van statistieken over de prestaties. De referenties van de MySQL-gebruiker moeten worden geconfigureerd zodat de provider toegang heeft tot de MySQL-Server.
+Als de MySQL-server of de MariaDB-server wordt gedetecteerd op de computer wanneer de Log Analytics-agent is geïnstalleerd, wordt automatisch een provider voor prestatie bewaking voor MySQL-server geïnstalleerd. Deze provider maakt verbinding met de lokale MySQL/MariaDB-server om prestatie statistieken beschikbaar te maken. MySQL-gebruikers referenties moeten zo worden geconfigureerd dat de provider toegang kan krijgen tot de MySQL-server.
 
 ### <a name="configure-mysql-credentials"></a>MySQL-referenties configureren
-De MySQL OMI-provider vereist dat een vooraf geconfigureerde MySQL-gebruiker en MySQL-clientbibliotheken geïnstalleerd om een query uitvoeren op de prestaties en statusgegevens van de MySQL-exemplaar.  Deze referenties worden opgeslagen in een verificatiebestand dat opgeslagen op de Linux-agent.  Het verificatiebestand geeft aan welke bind-adres en poort van de MySQL-exemplaar luistert op en welke referenties te gebruiken voor het verzamelen van metrische gegevens.  
+De MySQL OMI-provider vereist een vooraf geconfigureerde MySQL-gebruiker en geïnstalleerde MySQL-client bibliotheken om de prestatie-en status informatie van het MySQL-exemplaar te kunnen opvragen.  Deze referenties worden opgeslagen in een verificatie bestand dat is opgeslagen in de Linux-agent.  Het verificatie bestand geeft aan op welk adres en welke poort het MySQL-exemplaar luistert en welke referenties moeten worden gebruikt voor het verzamelen van metrische gegevens.  
 
-Tijdens de installatie van de Log Analytics-agent voor Linux de OMI MySQL provider scant MySQL my.cnf-configuratiebestanden (standaardlocaties) voor binding-adres en poort en het verificatiebestand MySQL OMI gedeeltelijk instellen.
+Tijdens de installatie van de Log Analytics-agent voor Linux scant de MySQL OMI-provider MySQL mijn. cnf-configuratie bestanden (standaard locaties) voor een bind adres en poort, en het MySQL OMI-verificatie bestand gedeeltelijk instellen.
 
-De MySQL-verificatie-bestand is opgeslagen op `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
+Het MySQL-verificatie bestand wordt opgeslagen op `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
 
 
-### <a name="authentication-file-format"></a>Verificatie-bestandsindeling
-Hieronder volgt de indeling voor het verificatiebestand MySQL OMI
+### <a name="authentication-file-format"></a>Bestands indeling voor verificatie
+Dit is de indeling voor het MySQL OMI-verificatie bestand
 
     [Port]=[Bind-Address], [username], [Base64 encoded Password]
     (Port)=(Bind-Address), (username), (Base64 encoded Password)
     (Port)=(Bind-Address), (username), (Base64 encoded Password)
     AutoUpdate=[true|false]
 
-De vermeldingen in het verificatiebestand worden beschreven in de volgende tabel.
+De vermeldingen in het verificatie bestand worden beschreven in de volgende tabel.
 
-| Eigenschap | Description |
+| Eigenschap | Beschrijving |
 |:--|:--|
-| Poort | Hiermee geeft u de huidige poort op de MySQL-exemplaar luistert. Poort 0 geeft aan dat de volgende eigenschappen worden gebruikt voor het standaardexemplaar. |
-| Bind-Address| Huidige MySQL-bind-adres. |
-| username| De MySQL-gebruiker is gebruikt om te gebruiken voor het bewaken van de MySQL-server-exemplaar. |
-| Base64-gecodeerd wachtwoord| Het wachtwoord van de MySQL-gebruiker bewaking gecodeerd in Base64. |
-| AutoUpdate| Hiermee geeft u op of u wilt opnieuw scannen op wijzigingen in het bestand my.cnf en het verificatiebestand van MySQL OMI overschreven wanneer de MySQL-OMI-Provider is bijgewerkt. |
+| Port | Hiermee wordt de huidige poort van het MySQL-exemplaar geluisterd. Poort 0 geeft aan dat de volgende eigenschappen worden gebruikt voor het standaard exemplaar. |
+| Binding-adres| Huidig MySQL-bindings adres. |
+| gebruikersnaam| MySQL-gebruiker die wordt gebruikt om het MySQL-Server exemplaar te bewaken. |
+| Base64-gecodeerd wacht woord| Wacht woord van de MySQL-bewakings gebruiker die is gecodeerd in base64. |
+| Auto update| Hiermee geeft u op of wijzigingen in het bestand My. cnf opnieuw moeten worden gescand en het MySQL OMI-verificatie bestand moet worden overschreven wanneer de MySQL OMI-provider wordt bijgewerkt. |
 
-### <a name="default-instance"></a>Standaardexemplaar
-Het verificatiebestand MySQL OMI kunt een standaard exemplaar en het poortnummer dat voor het beheer van meerdere exemplaren van MySQL op een Linux-host eenvoudiger definiëren.  Het standaardexemplaar wordt aangeduid met een exemplaar met poort 0. Alle extra exemplaren wordt nemen de eigenschappen instellen vanuit het standaardexemplaar, tenzij ze verschillende waarden opgeven. Bijvoorbeeld, als MySQL-exemplaar luistert op poort '3308' wordt toegevoegd, wordt het standaardexemplaar bind-adres, gebruikersnaam en wachtwoord van de met Base64 gecodeerde worden gebruikt om te controleren van het exemplaar 3308 luisteren. Als het exemplaar op 3308 is gebonden aan een ander adres en dezelfde MySQL gebruikersnaam en wachtwoord twee gebruikt alleen de binding-adres is vereist en de andere eigenschappen, worden overgenomen.
+### <a name="default-instance"></a>Standaard exemplaar
+Het MySQL OMI-verificatie bestand kan een standaard exemplaar en poort nummer definiëren om het beheer van meerdere MySQL-instanties op één Linux-host eenvoudiger te maken.  Het standaard exemplaar wordt aangeduid met een instantie met poort 0. Alle extra instanties nemen eigenschappen over van het standaard exemplaar, tenzij ze verschillende waarden opgeven. Als bijvoorbeeld het MySQL-exemplaar dat luistert op poort 3308 is toegevoegd, worden het standaard exemplaar van het binding-adres, de gebruikers naam en het met base64 gecodeerde wacht woord gebruikt om het exemplaar te controleren op 3308. Als het exemplaar op 3308 is gebonden aan een ander adres en dezelfde MySQL-gebruikers naam en-wacht woord gebruikt, zijn alleen het binding-adres nodig en worden de andere eigenschappen overgenomen.
 
-De volgende tabel bevat instellingen voor voorbeeld-exemplaar 
+De volgende tabel bevat voor beelden van exemplaar-instellingen 
 
-| Description | File |
+| Beschrijving | Bestand |
 |:--|:--|
-| Standaardexemplaar en -exemplaar met poort 3308. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
-| Standaardexemplaar en -exemplaar met poort 3308 en andere gebruikersnaam en wachtwoord. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
+| Standaard exemplaar en-exemplaar met poort 3308. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
+| Standaard exemplaar en-exemplaar met poort 3308 en andere gebruikers naam en wacht woord. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
 
 
-### <a name="mysql-omi-authentication-file-program"></a>Programma voor MySQL OMI verificatie-bestand
-Inbegrepen bij de installatie van de MySQL OMI-provider is een MySQL OMI verificatie bestand-programma dat kan worden gebruikt voor het bewerken van het verificatiebestand van MySQL OMI. Het programma voor verificatie-bestand kan worden gevonden op de volgende locatie.
+### <a name="mysql-omi-authentication-file-program"></a>Programma voor MySQL OMI-verificatie bestand
+Inbegrepen bij de installatie van de MySQL OMI-provider is een MySQL OMI-verificatie bestand dat kan worden gebruikt voor het bewerken van het MySQL OMI-verificatie bestand. Het verificatie bestand programma bevindt zich op de volgende locatie.
 
     /opt/microsoft/mysql-cimprov/bin/mycimprovauth
 
 > [!NOTE]
-> Het bestand moet worden gelezen door de omsagent-account. Met de opdracht mycimprovauth als omsgent wordt aanbevolen.
+> Het referentie bestand moet leesbaar zijn voor het omsagent-account. U wordt aangeraden de opdracht mycimprovauth uit te voeren als omsgent.
 
-De volgende tabel bevat details over de syntaxis voor het gebruik van mycimprovauth.
+De volgende tabel bevat informatie over de syntaxis voor het gebruik van mycimprovauth.
 
-| Bewerking | Voorbeeld | Description
+| Bewerking | Voorbeeld | Beschrijving
 |:--|:--|:--|
-| AutoUpdate *false of true* | mycimprovauth autoupdate false | Stelt het verificatiebestand wel of niet automatisch bijgewerkt op opnieuw starten of bijwerken. |
-| standaard *bind-address gebruikersnaam wachtwoord* | mycimprovauth standaard 127.0.0.1 hoofdmap pwd | Hiermee stelt u het standaardexemplaar plaatst in het OMI MySQL verificatiebestand.<br>Het wachtwoordveld moet worden ingevoerd als tekst zonder opmaak: het wachtwoord in het verificatiebestand MySQL OMI is Base-64 gecodeerd. |
-| Verwijder *standaard of port_num* | mycimprovauth 3308 | Hiermee verwijdert het opgegeven exemplaar van een standaard of door poortnummer. |
-| Help | mycimprov help | Een lijst met opdrachten voor het gebruik van afdrukken. |
-| Afdrukken | mycimprov afdrukken | Afdrukken van een gemakkelijk leesbare MySQL OMI verificatiebestand. |
-| bijwerken van port_num *bind-address gebruikersnaam wachtwoord* | mycimprov update 3307 127.0.0.1 hoofdmap pwd | Het opgegeven exemplaar van updates of het exemplaar wordt toegevoegd als deze niet bestaat. |
+| Auto update *False of True* | mycimprovauth auto update False | Hiermee stelt u in of het verificatie bestand automatisch wordt bijgewerkt bij opnieuw opstarten of bijwerken. |
+| standaard *wachtwoord voor bind adres gebruikers naam* | mycimprovauth standaard 127.0.0.1 hoofd-pwd | Hiermee stelt u het standaard exemplaar in het MySQL OMI-verificatie bestand.<br>Het veld wacht woord moet worden ingevoerd in tekst zonder opmaak: het wacht woord in het MySQL OMI-verificatie bestand is base 64 gecodeerd. |
+| *standaard-of port_num* verwijderen | mycimprovauth 3308 | Hiermee verwijdert u het opgegeven exemplaar standaard of op poort nummer. |
+| Help | Help bij mycimprov | Een lijst met te gebruiken opdrachten afdrukken. |
+| Afdruk | mycimprov afdrukken | Hiermee drukt u een eenvoudig te lezen MySQL OMI-verificatie bestand. |
+| *het wacht woord voor de gebruikers naam van het port_num-binding* bijwerken | mycimprov update 3307 127.0.0.1 root pwd | Hiermee wordt het opgegeven exemplaar bijgewerkt of wordt het exemplaar toegevoegd als het niet bestaat. |
 
-De volgende voorbeeldopdrachten wordt een standaard-gebruikersaccount voor de MySQL-server op localhost definiëren.  Het wachtwoordveld moet worden ingevoerd als tekst zonder opmaak: het wachtwoord in het verificatiebestand MySQL OMI is Base-64 gecodeerd
+Met de volgende voorbeeld opdrachten wordt een standaard gebruikers account gedefinieerd voor de MySQL-server op localhost.  Het veld wacht woord moet worden ingevoerd in tekst zonder opmaak: het wacht woord in het MySQL OMI-verificatie bestand is base 64 gecodeerd
 
     sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
     sudo /opt/omi/bin/service_control restart
 
-### <a name="database-permissions-required-for-mysql-performance-counters"></a>Databasemachtigingen die vereist zijn voor MySQL-prestatiemeteritems
-De MySQL-gebruiker is vereist voor toegang tot de volgende query's voor het verzamelen van prestatiegegevens van de MySQL-Server. 
+### <a name="database-permissions-required-for-mysql-performance-counters"></a>Database machtigingen die zijn vereist voor MySQL-prestatie meter items
+De MySQL-gebruiker heeft toegang nodig tot de volgende query's voor het verzamelen van prestatie gegevens van de MySQL-server. 
 
     SHOW GLOBAL STATUS;
     SHOW GLOBAL VARIABLES:
 
 
-De MySQL-gebruiker moet ook SELECT-toegang tot de volgende standaardtabellen.
+De MySQL-gebruiker moet ook toegang tot de volgende standaard tabellen selecteren.
 
 - information_schema
 - mysql. 
 
-Deze rechten kunnen worden verleend door het uitvoeren van de volgende opdrachten voor verlenen.
+Deze bevoegdheden kunnen worden verleend door de volgende Grant-opdrachten uit te voeren.
 
     GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
     GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
 
 
 > [!NOTE]
-> Om machtigingen te verlenen aan een MySQL moet bewaking gebruiker de verlenen gebruiker de bevoegdheid 'Verlenen optie', evenals de bevoegdheid wordt verleend.
+> Voor het verlenen van machtigingen aan een MySQL-bewakings gebruiker moet de gebruiker die de Grant heeft verleend de bevoegdheid ' optie verlenen ' hebben, evenals de bevoegdheid die wordt toegekend.
 
-### <a name="define-performance-counters"></a>Prestatiemeteritems definiëren
+### <a name="define-performance-counters"></a>Prestatie meter items definiëren
 
-Nadat u de Log Analytics-agent voor Linux om gegevens te verzenden naar Azure Monitor configureren, moet u de prestatiemeteritems voor het verzamelen van configureren.  Gebruik de procedure in [Windows en Linux-gegevensbronnen van de prestaties die u in Azure Monitor](data-sources-performance-counters.md) met de items in de volgende tabel.
+Zodra u de Log Analytics-agent voor Linux hebt geconfigureerd om gegevens te verzenden naar Azure Monitor, moet u de prestatie meter items configureren die moeten worden verzameld.  Gebruik de procedure in [Windows-en Linux-prestatie gegevens bronnen in azure monitor](data-sources-performance-counters.md) met de tellers in de volgende tabel.
 
-| Objectnaam | Naam van het prestatiemeteritem |
+| Object naam | Tellernaam |
 |:--|:--|
-| MySQL-database | Schijfruimte in Bytes |
+| MySQL-database | Schijf ruimte in bytes |
 | MySQL-database | Tabellen |
-| MySQL Server | Afgebroken verbinding Pct |
-| MySQL Server | Pct voor verbinding gebruiken |
-| MySQL Server | Gebruik van de schijf in Bytes |
-| MySQL Server | Volledige tabel Scan Pct |
-| MySQL Server | InnoDB buffergroep bereikt Pct |
-| MySQL Server | InnoDB Pool gebruik bufferpercentage |
-| MySQL Server | InnoDB Pool gebruik bufferpercentage |
-| MySQL Server | Belangrijkste cachetreffers Pct |
-| MySQL Server | Belangrijkste Cache gebruik Pct |
-| MySQL Server | Cache voor Write Pct |
-| MySQL Server | Query Cache treffers Pct |
-| MySQL Server | Query Cache Prunes Pct |
-| MySQL Server | Query-Cache gebruiken Pct |
-| MySQL Server | Tabel cachetreffers Pct |
-| MySQL Server | Tabel Cache gebruik Pct |
-| MySQL Server | Tabel vergrendelen conflicten Pct |
+| MySQL-server | Gebroken verbindings percentage |
+| MySQL-server | Verbinding gebruiken pct |
+| MySQL-server | Schijfruimte gebruik in bytes |
+| MySQL-server | Volledige tabel scan pct |
+| MySQL-server | Percentage treffers in InnoDB buffer pool |
+| MySQL-server | InnoDB buffer pool gebruiken pct |
+| MySQL-server | InnoDB buffer pool gebruiken pct |
+| MySQL-server | Percentage treffers in sleutel cache |
+| MySQL-server | Pct gebruiken in sleutel cache |
+| MySQL-server | Key cache-schrijf-pct |
+| MySQL-server | Percentage treffers in query cache |
+| MySQL-server | De query cache haalt pct op |
+| MySQL-server | Pct gebruiken in query cache |
+| MySQL-server | Percentage treffers in tabel cache |
+| MySQL-server | Percentage van tabel cache gebruiken |
+| MySQL-server | Pct-inhouds vergrendeling tabel |
 
-## <a name="apache-http-server"></a>Apache HTTP-Server 
-Als Apache HTTP-Server op de computer wordt gedetecteerd wanneer de omsagent-bundel is geïnstalleerd, wordt een provider voor de Apache HTTP Server voor prestatiebewaking automatisch geïnstalleerd. Deze provider, is afhankelijk van een Apache-module die moet worden geladen in de Apache HTTP-Server voor toegang tot prestatiegegevens. De module kan worden geladen met de volgende opdracht:
+## <a name="apache-http-server"></a>Apache HTTP-server 
+Als de Apache HTTP-server op de computer wordt gedetecteerd wanneer de omsagent-bundel is geïnstalleerd, wordt automatisch een provider voor prestatie bewaking voor de Apache HTTP-server geïnstalleerd. Deze provider is afhankelijk van een Apache-module die moet worden geladen in de Apache HTTP-server om toegang te krijgen tot prestatie gegevens. De module kan worden geladen met de volgende opdracht:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
-Als u wilt verwijderen van de Apache-bewakingsmodule, voer de volgende opdracht:
+Als u de Apache-bewakings module wilt verwijderen, voert u de volgende opdracht uit:
 ```
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 
-### <a name="define-performance-counters"></a>Prestatiemeteritems definiëren
+### <a name="define-performance-counters"></a>Prestatie meter items definiëren
 
-Nadat u de Log Analytics-agent voor Linux om gegevens te verzenden naar Azure Monitor configureren, moet u de prestatiemeteritems voor het verzamelen van configureren.  Gebruik de procedure in [Windows en Linux-gegevensbronnen van de prestaties die u in Azure Monitor](data-sources-performance-counters.md) met de items in de volgende tabel.
+Zodra u de Log Analytics-agent voor Linux hebt geconfigureerd om gegevens te verzenden naar Azure Monitor, moet u de prestatie meter items configureren die moeten worden verzameld.  Gebruik de procedure in [Windows-en Linux-prestatie gegevens bronnen in azure monitor](data-sources-performance-counters.md) met de tellers in de volgende tabel.
 
-| Objectnaam | Naam van het prestatiemeteritem |
+| Object naam | Tellernaam |
 |:--|:--|
-| Apache HTTP-Server | Werknemers bezet |
-| Apache HTTP-Server | Niet-actieve werknemers |
-| Apache HTTP-Server | Pct Busy Workers |
-| Apache HTTP-Server | Totaal aantal Pct CPU |
-| Virtuele Host van Apache | Fouten per minuut - Client |
-| Virtuele Host van Apache | Fouten per minuut - Server |
-| Virtuele Host van Apache | KB per aanvraag |
-| Virtuele Host van Apache | Aanvragen KB per seconde |
-| Virtuele Host van Apache | Aanvragen per seconde |
+| Apache HTTP-server | Drukke werk nemers |
+| Apache HTTP-server | Niet-actieve werk nemers |
+| Apache HTTP-server | Werk nemers met pct-druk |
+| Apache HTTP-server | Totale pct-CPU |
+| Apache virtuele host | Fouten per minuut-client |
+| Apache virtuele host | Fouten per minuut-server |
+| Apache virtuele host | KB per aanvraag |
+| Apache virtuele host | Aantal aanvragen KB per seconde |
+| Apache virtuele host | Aanvragen per seconde |
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Verzamelen van prestatiemeteritems](data-sources-performance-counters.md) van Linux-agents.
-* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren. 
+* [Verzamelen van prestatie meter items](data-sources-performance-counters.md) van Linux-agents.
+* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen. 
