@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: ca5322aa78a4fd3018d961a5d31c618cf10bf156
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7130ed43183d64b00f8f5ef1697b9a3b456ad396
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757152"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931679"
 ---
 # <a name="create-video-reviews-using-net"></a>Video beoordelingen maken met .NET
 
@@ -92,23 +92,21 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Private-eigenschappen toevoegen
 
-Voeg de volgende persoonlijke eigenschappen toe aan naam ruimte VideoReviews, class Program.
+Voeg de volgende persoonlijke eigenschappen toe aan naam ruimte **VideoReviews**, Class **Program**. Werk de velden `AzureEndpoint` en `CMSubscriptionKey` bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
-Als u dit hebt aangegeven, vervangt u de voorbeeld waarden voor deze eigenschappen.
 
 ```csharp
 namespace VideoReviews
 {
     class Program
     {
-        // NOTE: Replace this example location with the location for your Content Moderator account.
+        // NOTE: Enter a valid endpoint URL
         /// <summary>
-        /// The region/location for your Content Moderator account, 
-        /// for example, westus.
+        /// The endpoint URL of your subscription
         /// </summary>
-        private static readonly string AzureRegion = "YOUR CONTENT MODERATOR REGION";
+        private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
-        // NOTE: Replace this example key with a valid subscription key.
+        // NOTE: Enter a valid subscription key.
         /// <summary>
         /// Your Content Moderator subscription key.
         /// </summary>
@@ -125,12 +123,6 @@ namespace VideoReviews
         private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
         /// <summary>
-        /// The base URL fragment for Content Moderator calls.
-        /// </summary>
-        private static readonly string AzureBaseURL =
-            $"{AzureRegion}.api.cognitive.microsoft.com";
-
-        /// <summary>
         /// The minimum amount of time, in milliseconds, to wait between calls
         /// to the Content Moderator APIs.
         /// </summary>
@@ -139,7 +131,7 @@ namespace VideoReviews
 
 ### <a name="create-content-moderator-client-object"></a>Content Moderator-client object maken
 
-Voeg de volgende methode definitie toe aan de naam ruimte VideoReviews, het programma class.
+Voeg de volgende methode definitie toe aan de naam ruimte **VideoReviews**, het **programma**class.
 
 ```csharp
 /// <summary>
@@ -153,7 +145,7 @@ public static ContentModeratorClient NewClient()
 {
     return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
     {
-        Endpoint = AzureBaseURL
+        Endpoint = AzureEndpoint
     };
 }
 ```

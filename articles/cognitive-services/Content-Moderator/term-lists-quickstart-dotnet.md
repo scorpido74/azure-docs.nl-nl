@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 272063c3fcc77c76536dbd007b1ab0132a565e61
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757255"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935945"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>Tekst controleren aan de hand van een aangepaste termenlijst in C#
 
@@ -69,10 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>De Content Moderator-client maken
 
-Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken.
-
-> [!IMPORTANT]
-> Werk de velden **AzureRegion** en **CMSubscriptionKey** bij met de waarden van uw regio-id en de abonnementssleutel.
+Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te maken. Werk de velden `AzureEndpoint` en `CMSubscriptionKey` bij met de waarden van uw eind punt-URL en abonnements sleutel. U vindt deze in het Azure Portal op het tabblad **Quick Start** van uw resource.
 
 ```csharp
 /// <summary>
@@ -84,16 +81,9 @@ Voeg de volgende code toe om een Content Moderator-client voor uw abonnement te 
 public static class Clients
 {
     /// <summary>
-    /// The region/location for your Content Moderator account, 
-    /// for example, westus.
-    /// </summary>
-    private static readonly string AzureRegion = "YOUR API REGION";
-
-    /// <summary>
     /// The base URL fragment for Content Moderator calls.
     /// </summary>
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
+    private static readonly string AzureEndpoint = "YOUR ENDPOINT URL";
 
     /// <summary>
     /// Your Content Moderator subscription key.
@@ -112,7 +102,7 @@ public static class Clients
         // Create and initialize an instance of the Content Moderator API wrapper.
         ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-        client.Endpoint = AzureBaseURL;
+        client.Endpoint = AzureEndpoint;
         return client;
     }
 }
