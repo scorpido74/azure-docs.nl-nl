@@ -3,20 +3,19 @@ title: Bewaar termijn configureren in uw Azure Time Series Insights omgeving | M
 description: In dit artikel wordt beschreven hoe u de Bewaar periode in uw Azure Time Series Insights omgeving kunt configureren.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ff4d326af691ae27894dc94d7581ba68951f090e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330890"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990062"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Bewaar periode in Time Series Insights configureren
 
@@ -41,7 +40,7 @@ Lees de informatie [over retentie in time series Insights](time-series-insights-
 
 1. Selecteer **configureren**onder de kop **instellingen** .
 
-    [![Select-instellingen en configureer vervolgens](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![instellingen selecteren en configureer vervolgens](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 1. Selecteer de **Bewaar tijd voor gegevens (in dagen)** om de retentie te configureren met behulp van de schuif regelaar of typ een getal in het tekstvak.
 
@@ -49,7 +48,7 @@ Lees de informatie [over retentie in time series Insights](time-series-insights-
 
 1. De instelling voor het gedrag van de **opslag limiet is overschreden** . Selecteer **oude gegevens leegmaken** of **ingangs gedrag onderbreken** .
 
-    [@no__t-retentie van 1Data-accepteren en opslaan.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![bewaren van gegevens-accepteren en opslaan.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. Accepteer het selectie vakje om aan te geven dat u de documentatie hebt gecontroleerd en inzicht hebt in de mogelijke Risico's van gegevens verlies. Selecteer **Opslaan** om de wijzigingen te configureren.
 

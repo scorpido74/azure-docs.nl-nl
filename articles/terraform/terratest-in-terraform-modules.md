@@ -1,22 +1,19 @@
 ---
-title: Terraform-modules testen in Azure met behulp van Terratest
+title: Zelf studie-terraform-modules in azure testen met behulp van Terratest
 description: Informatie over het gebruik van Terratest voor het testen van uw Terraform-modules.
-services: terraform
-ms.service: azure
-keywords: terraform, devops, opslagaccount, azure, terratest, eenheidstest, integratie testen
+ms.service: terraform
 author: tomarchermsft
-manager: gwallace
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/23/2019
-ms.openlocfilehash: e4965ba47a99e3cd189763d994bef6381badd9ba
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.date: 10/26/2019
+ms.openlocfilehash: bdb76fe2f87806c02a861ea84361b61a3e94b554
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881779"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969219"
 ---
-# <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terraform-modules testen in Azure met behulp van Terratest
+# <a name="tutorial-test-terraform-modules-in-azure-using-terratest"></a>Zelf studie: terraform-modules testen in azure met behulp van Terratest
 
 > [!NOTE]
 > De voorbeeld code in dit artikel werkt niet met versie 0,12 (en hoger).
@@ -40,7 +37,7 @@ Voordat u begint, dient u de volgende software te installeren:
 
 - **Go-programmeertaal**: Terraform-testcases worden geschreven in [Go](https://golang.org/dl/).
 - **dep**: [dep](https://github.com/golang/dep#installation) is een tool voor afhankelijkheidsbeheer voor Go.
-- **Azure CLI**: de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) is een opdrachtregelprogramma dat u kunt gebruiken voor het beheren van Azure-resources. (Terraform biedt ondersteuning voor verificatie bij Azure via een service-principal of [via de Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html).)
+- **Azure CLI**: de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) is een opdrachtregelprogramma dat u kunt gebruiken voor het beheren van Azure-resources. (Terraform biedt ondersteuning voor verificatie bij Azure via een service-principal of [via de Azure CLI](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html).)
 - **mage**: het [uitvoerbare bestand mage](https://github.com/magefile/mage/releases) wordt gebruikt om te laten zien hoe het uitvoeren van Terratest-cases kan worden vereenvoudigd. 
 
 ## <a name="create-a-static-webpage-module"></a>Een statische webpaginamodule maken
@@ -91,7 +88,7 @@ Zoals hierboven al vermeld, wordt door deze module een URL geretourneerd die in 
 
 ```hcl
 output "homepage_url" {
-  value = "${azurerm_storage_blob.homepage.url}"
+  value = azurerm_storage_blob.homepage.url
 }
 ```
 
@@ -106,30 +103,30 @@ De modulelogica van de statische webpagina wordt geïmplementeerd in `./main.tf`
 ```hcl
 resource "azurerm_resource_group" "main" {
   name     = "${var.website_name}-staging-rg"
-  location = "${var.location}"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "main" {
   name                     = "${lower(replace(var.website_name, "/[[:^alnum:]]/", ""))}data001"
-  resource_group_name      = "${azurerm_resource_group.main.name}"
-  location                 = "${azurerm_resource_group.main.location}"
+  resource_group_name      = azurerm_resource_group.main.name
+  location                 = azurerm_resource_group.main.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
 resource "azurerm_storage_container" "main" {
   name                  = "wwwroot"
-  resource_group_name   = "${azurerm_resource_group.main.name}"
-  storage_account_name  = "${azurerm_storage_account.main.name}"
+  resource_group_name   = azurerm_resource_group.main.name
+  storage_account_name  = azurerm_storage_account.main.name
   container_access_type = "blob"
 }
 
 resource "azurerm_storage_blob" "homepage" {
   name                   = "index.html"
-  resource_group_name    = "${azurerm_resource_group.main.name}"
-  storage_account_name   = "${azurerm_storage_account.main.name}"
-  storage_container_name = "${azurerm_storage_container.main.name}"
-  source                 = "${var.html_path}"
+  resource_group_name    = azurerm_resource_group.main.name
+  storage_account_name   = azurerm_storage_account.main.name
+  storage_container_name = azurerm_storage_container.main.name
+  source                 = var.html_path
   type                   = "block"
   content_type           = "text/html"
 }
@@ -173,7 +170,7 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
   html_path    = "empty.html"
 }
 ```
@@ -317,11 +314,11 @@ variable "website_name" {
 module "staticwebpage" {
   source       = "../../"
   location     = "West US"
-  website_name = "${var.website_name}"
+  website_name = var.website_name
 }
 
 output "homepage" {
-  value = "${module.staticwebpage.homepage_url}"
+  value = module.staticwebpage.homepage_url
 }
 ```
 
@@ -521,5 +518,5 @@ In plaats van `az login` uit te voeren voordat u tests uitvoert, kunt u Azure-ve
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over Terratest kunt u vinden op de bijbehorende (Engelstalige) [Terratest GitHub-pagina](https://github.com/gruntwork-io/terratest).
-* Zie de [GitHub-pagina over mage](https://github.com/magefile/mage) en de [mage-website](https://magefile.org/) (beide Engelstalig) voor meer informatie over mage.
+> [!div class="nextstepaction"] 
+> [Terratest github-pagina](https://github.com/gruntwork-io/terratest).

@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8038f7c909cfeaf15039afa7335dd6b0460a2622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293464"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968871"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Netwerkconfiguraties van de beoogde Azure-VM aanpassen
 
@@ -31,15 +31,12 @@ U kunt de volgende belang rijke bron configuraties voor de failover-VM opgeven t
 - [Openbare IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) zowel voor het subnet als voor de NIC
 
- > [!IMPORTANT]
-  > Deze instellingen worden op dit moment alleen ondersteund in de failover-bewerking en niet voor de testfailover.
-
 ## <a name="prerequisites"></a>Vereisten
 
 - Zorg ervoor dat u de configuraties van de herstel kant van tevoren plant.
 - Maak vooraf de netwerk resources. Geef het op als invoer zodat Azure Site Recovery service deze instellingen kan naleven en ervoor moet zorgen dat de failover-VM aan deze instellingen voldoet.
 
-## <a name="customize-failover-networking-configurations"></a>Failover-netwerk configuraties aanpassen
+## <a name="customize-failover-and-test-failover-networking-configurations"></a>Failover-en test failover-netwerk configuraties aanpassen
 
 1. Ga naar **gerepliceerde items**. 
 2. Selecteer de gewenste Azure-VM.
@@ -47,13 +44,16 @@ U kunt de volgende belang rijke bron configuraties voor de failover-VM opgeven t
 
      ![De failover-netwerk configuraties aanpassen](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Selecteer **bewerken** in de buurt van de NIC die u wilt configureren. Selecteer op de volgende Blade die wordt geopend de bijbehorende vooraf gemaakte resources in het doel.
+4. Selecteer een virtueel netwerk voor testfailover. U kunt ervoor kiezen om het leeg te laten en één te selecteren op het moment van de testfailover.
+5. Failover-netwerk Selecteer **bewerken** in de buurt van de NIC die u wilt configureren. Selecteer op de volgende Blade die wordt geopend de bijbehorende vooraf gemaakte resources in de testfailover en de failover-locatie.
 
     ![De NIC-configuratie bewerken](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-5. Selecteer **OK**.
+6. Selecteer **OK**.
 
 Site Recovery gaat nu door met deze instellingen en zorg ervoor dat de virtuele machine op failover is verbonden met de geselecteerde resource via de bijbehorende NIC.
+
+Wanneer u de testfailover via het herstel plan triggert, wordt het virtuele Azure-netwerk altijd gevraagd. Dit virtuele netwerk wordt gebruikt voor een testfailover voor de computers waarvoor de instellingen voor de testfailover niet vooraf zijn geconfigureerd.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -72,9 +72,8 @@ Interne load balancer validaties:
 - Als de doel-VM is geconfigureerd om in een beschikbaarheids zone te worden geplaatst, controleert u of de load balancer zone redundant is of deel uitmaakt van een beschikbaarheids zone. (Basic SKU load balancers bieden geen ondersteuning voor zones en worden in dit geval niet weer gegeven in de vervolg keuzelijst.)
 - Zorg ervoor dat de interne load balancer een vooraf gemaakte back-end-pool en front-end-configuratie heeft.
 
-
 Openbaar IP-adres:
-    
+
 - Het abonnement en de regio van het open bare IP-adres en de doel-VM moeten hetzelfde zijn.
 - De open bare IP-SKU van de doel-VM en de SKU van de interne load balancer moeten hetzelfde zijn.
 

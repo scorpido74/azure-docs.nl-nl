@@ -1,33 +1,32 @@
 ---
-title: Een VM-cluster maken met Terraform en HCL
-description: Gebruik Terraform en HashiCorp Configuration Language (HCL) om een cluster virtuele Linux-machines met een load balancer te maken in Azure
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuele machine, netwerk, modules
+title: 'Zelf studie: een Azure VM-cluster maken met terraform en HCL'
+description: Gebruik terraform en HCL voor het maken van een virtuele Linux-machine cluster met een load balancer in azure
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 7adf3afe993a01357abcae846f19f602a49862bc
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173458"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969476"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Een VM-cluster maken met Terraform en HCL
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Zelf studie: een Azure VM-cluster maken met terraform en HCL
 
-In deze zelfstudie wordt gedemonstreerd hoe u een klein rekencluster maakt met behulp van de [HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL). Met deze configuratie maakt u een load balancer, twee Linux-VM's in een [beschikbaarheidsset](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) en alle vereiste netwerkresources.
+In deze zelf studie ziet u hoe u een klein berekenings cluster maakt met behulp van [HCL](https://www.terraform.io/docs/configuration/syntax.html). 
 
-In deze zelfstudie hebt u:
+U leert hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Azure-verificatie instellen
-> * Een Terraform-configuratiebestand maken
-> * Terraform initialiseren
-> * Een Terraform-uitvoeringsplan maken
-> * Een Terraform-uitvoeringsplan toepassen
+> * Stel Azure-verificatie in.
+> * Een terraform-configuratie bestand maken.
+> * Gebruik een terraform-configuratie bestand om een load balancer te maken.
+> * Gebruik een terraform-configuratie bestand voor het implementeren van twee virtuele Linux-machines in een beschikbaarheidsset.
+> * Initialiseer Terraform.
+> * Maak een terraform-uitvoerings plan.
+> * Pas het uitvoerings plan terraform toe om de Azure-resources te maken.
 
 ## <a name="1-set-up-azure-authentication"></a>1. Azure-verificatie instellen
 
@@ -53,16 +52,16 @@ In deze sectie genereert u een Azure service-principal en twee Terraform-configu
    variable client_secret {}
   
    provider "azurerm" {
-      subscription_id = "${var.subscription_id}"
-      tenant_id = "${var.tenant_id}"
-      client_id = "${var.client_id}"
-      client_secret = "${var.client_secret}"
+      subscription_id = var.subscription_id
+      tenant_id = var.tenant_id
+      client_id = var.client_id
+      client_secret = var.client_secret
    }
    ```
 
-6. Maak een nieuw bestand voor de waarden voor uw Terraform-variabelen. Het is gebruikelijk om uw bestand met Terraform-variabelen de naam `terraform.tfvars` te geven, omdat in Terraform automatisch elk bestand met de naam `terraform.tfvars` (of met het patroon `*.auto.tfvars`) wordt geladen, indien aanwezig in de huidige map. 
+6. Maak een nieuw bestand voor de waarden voor uw Terraform-variabelen. Het is gebruikelijk om uw terraform-variabele bestand een naam te geven `terraform.tfvars` als terraform automatisch een bestand met de naam `terraform.tfvars` (of een patroon van `*.auto.tfvars`) laadt indien aanwezig in de huidige map. 
 
-7. Kopieer de volgende code in uw variabelenbestand. Zorg dat u de plaatsaanduidingen als volgt vervangt: Voor `subscription_id` gebruikt u de Azure-abonnements-id die u hebt opgegeven bij het uitvoeren van `az account set`. Voor `tenant_id` gebruikt u de waarde `tenant` die is geretourneerd vanuit `az ad sp create-for-rbac`. Voor `client_id` gebruikt u de waarde `appId` die is geretourneerd vanuit `az ad sp create-for-rbac`. Voor `client_secret` gebruikt u de waarde `password` die is geretourneerd vanuit `az ad sp create-for-rbac`.
+7. Kopieer de volgende code in uw variabelenbestand. Vervang de tijdelijke aanduidingen als volgt: voor `subscription_id` gebruikt u de Azure-abonnements-id die u hebt opgegeven bij het uitvoeren van `az account set`. Voor `tenant_id` gebruikt u de waarde `tenant` die is geretourneerd vanuit `az ad sp create-for-rbac`. Voor `client_id` gebruikt u de waarde `appId` die is geretourneerd vanuit `az ad sp create-for-rbac`. Voor `client_secret` gebruikt u de waarde `password` die is geretourneerd vanuit `az ad sp create-for-rbac`.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"
@@ -71,7 +70,7 @@ In deze sectie genereert u een Azure service-principal en twee Terraform-configu
    client_secret = "<password-returned-from-creating-a-service-principal>"
    ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. Een Terraform-configuratiebestand maken
+## <a name="2-create-a-terraform-configuration-file"></a>2. een terraform-configuratie bestand maken
 
 In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastructuur bevat.
 
@@ -88,60 +87,60 @@ In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastruct
    resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
    }
 
    resource "azurerm_subnet" "test" {
     name                 = "acctsub"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
-    virtual_network_name = "${azurerm_virtual_network.test.name}"
+    resource_group_name  = azurerm_resource_group.test.name
+    virtual_network_name = azurerm_virtual_network.test.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
     name                = "loadBalancer"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     frontend_ip_configuration {
       name                 = "publicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.test.id}"
+      public_ip_address_id = azurerm_public_ip.test.id
     }
    }
 
    resource "azurerm_lb_backend_address_pool" "test" {
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    loadbalancer_id     = "${azurerm_lb.test.id}"
+    resource_group_name = azurerm_resource_group.test.name
+    loadbalancer_id     = azurerm_lb.test.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     ip_configuration {
       name                          = "testConfiguration"
-      subnet_id                     = "${azurerm_subnet.test.id}"
+      subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
+      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 
    resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
-    location             = "${azurerm_resource_group.test.location}"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
+    location             = azurerm_resource_group.test.location
+    resource_group_name  = azurerm_resource_group.test.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
@@ -149,8 +148,8 @@ In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastruct
 
    resource "azurerm_availability_set" "avset" {
     name                         = "avset"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
@@ -159,10 +158,10 @@ In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastruct
    resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
-    location              = "${azurerm_resource_group.test.location}"
-    availability_set_id   = "${azurerm_availability_set.avset.id}"
-    resource_group_name   = "${azurerm_resource_group.test.name}"
-    network_interface_ids = ["${element(azurerm_network_interface.test.*.id, count.index)}"]
+    location              = azurerm_resource_group.test.location
+    availability_set_id   = azurerm_availability_set.avset.id
+    resource_group_name   = azurerm_resource_group.test.name
+    network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
     vm_size               = "Standard_DS1_v2"
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -195,11 +194,11 @@ In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastruct
     }
 
     storage_data_disk {
-      name            = "${element(azurerm_managed_disk.test.*.name, count.index)}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
+      name            = element(azurerm_managed_disk.test.*.name, count.index)
+      managed_disk_id = element(azurerm_managed_disk.test.*.id, count.index)
       create_option   = "Attach"
       lun             = 1
-      disk_size_gb    = "${element(azurerm_managed_disk.test.*.disk_size_gb, count.index)}"
+      disk_size_gb    = element(azurerm_managed_disk.test.*.disk_size_gb, count.index)
     }
 
     os_profile {
@@ -218,9 +217,9 @@ In deze sectie maakt u een bestand dat de resourcedefinities voor uw infrastruct
    }
    ```
 
-## <a name="3-initialize-terraform"></a>3. Terraform initialiseren 
+## <a name="3-initialize-terraform"></a>3. Initialiseer terraform 
 
-De opdracht [terraform init](https://www.terraform.io/docs/commands/init.html) wordt gebruikt om een map voor de Terraform-configuratiebestanden te initialiseren. Dit zijn de bestanden die u in de vorige secties hebt gemaakt. Het is raadzaam de opdracht `terraform init` altijd uit te voeren nadat u een nieuwe Terraform-configuratie hebt gemaakt. 
+De opdracht [terraform init](https://www.terraform.io/docs/commands/init.html) wordt gebruikt om een map voor de Terraform-configuratiebestanden te initialiseren. Dit zijn de bestanden die u in de vorige secties hebt gemaakt. Het is een goed idee om altijd de `terraform init` opdracht uit te voeren nadat u een nieuwe terraform-configuratie hebt geschreven. 
 
 > [!TIP]
 > De opdracht `terraform init` is idempotent. Dit betekent dat deze herhaaldelijk kan worden aangeroepen met hetzelfde resultaat. Als u in een samenwerkingsomgeving werkt en u denkt dat de configuratiebestanden kunnen zijn gewijzigd, is het daarom altijd verstandig om de opdracht `terraform init` aan te roepen voordat u een plan uitvoert of toepast.
@@ -233,31 +232,48 @@ Voer de volgende opdracht uit om Terraform te initialiseren:
 
   ![Terraform initialiseren](media/terraform-create-vm-cluster-with-infrastructure/terraform-init.png)
 
-## <a name="4-create-a-terraform-execution-plan"></a>4. Een Terraform-uitvoeringsplan maken
+## <a name="4-create-a-terraform-execution-plan"></a>4. Maak een terraform-uitvoerings plan
 
 De opdracht [terraform plan](https://www.terraform.io/docs/commands/plan.html) wordt gebruikt om een uitvoeringsplan te maken. Voor het genereren van een uitvoeringsplan worden in Terraform alle bestanden `.tf` in de huidige map geaggregeerd. 
 
-Als u in een samenwerkingsomgeving werkt waarin de configuratie kan worden gewijzigd tussen het tijdstip waarop u het uitvoeringsplan maakt en het tijdstip waarop u het uitvoert, moet u de [parameter -out bij de opdracht 'terraform plan'](https://www.terraform.io/docs/commands/plan.html#out-path) gebruiken om het uitvoeringsplan op te slaan in een bestand. Als u daarentegen in een omgeving met één persoon werkt, kunt u de parameter `-out` weglaten.
+De [-out-para meter](https://www.terraform.io/docs/commands/plan.html#out-path) slaat het uitvoerings plan op in een uitvoer bestand. Deze functie behandelt de gelijktijdig voorkomende problemen in omgevingen met meerdere ontwikkel aars. Een dergelijk probleem dat door het uitvoer bestand wordt opgelost, is het volgende scenario:
 
-Als de naam van uw Terraform-variabelenbestand niet `terraform.tfvars` is en niet het patroon `*.auto.tfvars` volgt, moet u de bestandsnaam opgeven met de [parameter -var-file bij de opdracht 'terraform plan'](https://www.terraform.io/docs/commands/plan.html#var-file-foo) als u de opdracht `terraform plan` uitvoert.
+1. Dev 1 maakt het configuratie bestand.
+1. Dev 2 wijzigt het configuratie bestand.
+1. Dev 1 is van toepassing (voert) het configuratie bestand uit.
+1. Dev 1 haalt onverwachte resultaten op die niet weten dat dev 2 de configuratie heeft gewijzigd.
 
-Bij het verwerken van de opdracht `terraform plan` wordt Terraform vernieuwd en wordt bepaald welke acties nodig zijn om de gewenste status te bereiken die is opgegeven in uw configuratiebestanden.
+Dev 1 waarmee een uitvoer bestand wordt voor komen dat dev 2 invloed heeft op dev 1. 
 
-Als u uw uitvoeringsplan niet wilt opslaan, voert u de volgende opdracht uit:
+Als u het uitvoerings plan niet hoeft op te slaan, voert u de volgende opdracht uit:
 
   ```bash
   terraform plan
   ```
 
-Als u uw uitvoeringsplan wel wilt opslaan, voert u de volgende opdracht uit (vervang de tijdelijke aanduiding &lt;path> door het gewenste uitvoerpad):
+Als u het uitvoerings plan wilt opslaan, voert u de volgende opdracht uit. Vervang de tijdelijke aanduidingen door de juiste waarden voor uw omgeving.
 
   ```bash
   terraform plan -out=<path>
   ```
 
+Een andere nuttige para meter is [-var-file](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
+
+Terraform heeft het bestand met variabelen standaard als volgt gevonden:
+- Bestand met de naam `terraform.tfvars`
+- Bestand met de naam met het volgende patroon: `*.auto.tfvars`
+
+Het variabelen bestand hoeft echter niet te voldoen aan een van de twee voor gaande conventies. In dat geval geeft u de bestands naam van de variabele op met de para meter `-var-file`. In het volgende voor beeld ziet u dit punt:
+
+```hcl
+terraform plan -var-file <my-variables-file.tf>
+```
+
+Terraform bepaalt de acties die nodig zijn om de status te krijgen die is opgegeven in het configuratie bestand.
+
 ![Een Terraform-uitvoeringsplan maken](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
-## <a name="5-apply-the-terraform-execution-plan"></a>5. Een Terraform-uitvoeringsplan toepassen
+## <a name="5-apply-the-terraform-execution-plan"></a>5. het uitvoerings plan terraform Toep assen
 
 De laatste stap van deze zelfstudie bestaat uit het gebruiken van de opdracht [terraform apply](https://www.terraform.io/docs/commands/apply.html) om de set acties toe te passen die zijn gegenereerd door de opdracht `terraform plan`.
 
@@ -267,7 +283,7 @@ Als u het meest recente uitvoeringsplan wilt toepassen, voert u de volgende opdr
   terraform apply
   ```
 
-Als u een eerder opgeslagen uitvoeringsplan wilt uitvoeren, voert u de volgende opdracht uit (vervang de tijdelijke aanduiding &lt;path> door het pad naar het opgeslagen uitvoeringsplan):
+Als u een eerder opgeslagen uitvoerings plan wilt Toep assen, voert u de volgende opdracht uit. Vervang de tijdelijke aanduidingen door de juiste waarden voor uw omgeving:
 
   ```bash
   terraform apply <path>
@@ -277,5 +293,5 @@ Als u een eerder opgeslagen uitvoeringsplan wilt uitvoeren, voert u de volgende 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Door de lijst met [Azure Terraform-modules](https://registry.terraform.io/modules/Azure) bladeren
-- [Een virtuele-machineschaalset maken met Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [!div class="nextstepaction"] 
+> [Een schaalset voor virtuele Azure-machines maken met behulp van terraform](terraform-create-vm-scaleset-network-disks-hcl.md)

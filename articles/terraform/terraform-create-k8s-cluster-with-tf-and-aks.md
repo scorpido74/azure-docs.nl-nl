@@ -1,25 +1,23 @@
 ---
-title: Een Kubernetes-cluster maken met Azure Kubernetes Service (AKS) en Terraform
+title: 'Zelf studie: een Kubernetes-cluster maken met Azure Kubernetes service (AKS) met behulp van terraform'
 description: Zelfstudie voor het maken van een Kubernetes-cluster met Azure Kubernetes Service en Terraform
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuele machine, azure, kubernetes
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/23/2019
-ms.openlocfilehash: 9661bfe9c3b10a31a962767debbe3d7e58bf4fa3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.date: 10/26/2019
+ms.openlocfilehash: 1c87c34e6024916052b03e4868139fba30c23190
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882534"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969555"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Een Kubernetes-cluster maken met Azure Kubernetes Service en Terraform
-[Azure Kubernetes Service (AKS)](/azure/aks/) beheert uw gehoste Kubernetes-omgeving en zorgt dat de implementatie en het beheer van toepassingen in containers snel en eenvoudig zijn en geen kennis over het beheer van containers vereisen. Het verlicht ook de last van actieve bewerkingen en onderhoud door inrichten, upgraden en bronnen op aanvraag schalen mogelijk te maken, zonder uw toepassingen offline te brengen.
+# <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Zelf studie: een Kubernetes-cluster maken met de Azure Kubernetes-service met behulp van terraform
 
-In deze zelfstudie leert u hoe u de volgende taken uitvoert bij het maken van een [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes)-cluster met behulp van [Terraform](https://terraform.io) en AKS:
+[Azure Kubernetes Service (AKS)](/azure/aks/) beheert uw gehoste Kubernetes-omgeving. Met AKS kunt u toepassingen in containers implementeren en beheren zonder de container Orchestration-expertise. AKS biedt u ook de mogelijkheid om veel veelvoorkomende onderhouds bewerkingen uit te voeren zonder uw app offline te halen. Deze bewerkingen omvatten het inrichten, upgraden en schalen van resources op aanvraag.
+
+In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
 > * HCL (HashiCorp Configuration Language) gebruiken om een Kubernetes-cluster te definiëren
@@ -35,6 +33,7 @@ In deze zelfstudie leert u hoe u de volgende taken uitvoert bij het maken van ee
 - **Azure service-principal**: volg de aanwijzingen in de sectie **Create the service principal** (de service-principal maken) in het artikel [Create an Azure service principal with Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) (een Azure-service-principal maken met Azure CLI). Noteer de waarden voor appId, displayName, password en tenant.
 
 ## <a name="create-the-directory-structure"></a>De directorystructuur maken
+
 De eerste stap is het maken van een map voor de Terraform-configuratiebestanden voor de oefening.
 
 1. Blader naar [Azure Portal](https://portal.azure.com).
@@ -62,15 +61,14 @@ De eerste stap is het maken van een map voor de Terraform-configuratiebestanden 
     ```
 
 ## <a name="declare-the-azure-provider"></a>De Azure-provider declareren
+
 Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclareerd.
 
 1. Maak in Cloud Shell een bestand met de naam `main.tf`.
 
     ```bash
-    vi main.tf
+    code main.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
@@ -84,31 +82,24 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
     }
     ```
 
-1. Verlaat de invoegmodus door op **Esc** te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 ## <a name="define-a-kubernetes-cluster"></a>Een Kubernetes-cluster definiëren
+
 Maak het Terraform-configuratiebestand waarin de resources voor het Kubernetes-cluster worden gedeclareerd.
 
 1. Maak in Cloud Shell een bestand met de naam `k8s.tf`.
 
     ```bash
-    vi k8s.tf
+    code k8s.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
     ```hcl
     resource "azurerm_resource_group" "k8s" {
-        name     = "${var.resource_group_name}"
-        location = "${var.location}"
+        name     = var.resource_group_name
+        location = var.location
     }
     
     resource "random_id" "log_analytics_workspace_name_suffix" {
@@ -118,17 +109,17 @@ Maak het Terraform-configuratiebestand waarin de resources voor het Kubernetes-c
     resource "azurerm_log_analytics_workspace" "test" {
         # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
         name                = "${var.log_analytics_workspace_name}-${random_id.log_analytics_workspace_name_suffix.dec}"
-        location            = "${var.log_analytics_workspace_location}"
-        resource_group_name = "${azurerm_resource_group.k8s.name}"
-        sku                 = "${var.log_analytics_workspace_sku}"
+        location            = var.log_analytics_workspace_location
+        resource_group_name = azurerm_resource_group.k8s.name
+        sku                 = var.log_analytics_workspace_sku
     }
 
     resource "azurerm_log_analytics_solution" "test" {
         solution_name         = "ContainerInsights"
-        location              = "${azurerm_log_analytics_workspace.test.location}"
-        resource_group_name   = "${azurerm_resource_group.k8s.name}"
-        workspace_resource_id = "${azurerm_log_analytics_workspace.test.id}"
-        workspace_name        = "${azurerm_log_analytics_workspace.test.name}"
+        location              = azurerm_log_analytics_workspace.test.location
+        resource_group_name   = azurerm_resource_group.k8s.name
+        workspace_resource_id = azurerm_log_analytics_workspace.test.id
+        workspace_name        = azurerm_log_analytics_workspace.test.name
 
         plan {
             publisher = "Microsoft"
@@ -137,36 +128,36 @@ Maak het Terraform-configuratiebestand waarin de resources voor het Kubernetes-c
     }
 
     resource "azurerm_kubernetes_cluster" "k8s" {
-        name                = "${var.cluster_name}"
-        location            = "${azurerm_resource_group.k8s.location}"
-        resource_group_name = "${azurerm_resource_group.k8s.name}"
-        dns_prefix          = "${var.dns_prefix}"
+        name                = var.cluster_name
+        location            = azurerm_resource_group.k8s.location
+        resource_group_name = azurerm_resource_group.k8s.name
+        dns_prefix          = var.dns_prefix
 
         linux_profile {
             admin_username = "ubuntu"
 
             ssh_key {
-                key_data = "${file("${var.ssh_public_key}")}"
+                key_data = file(var.ssh_public_key)
             }
         }
 
         agent_pool_profile {
             name            = "agentpool"
-            count           = "${var.agent_count}"
+            count           = var.agent_count
             vm_size         = "Standard_DS1_v2"
             os_type         = "Linux"
             os_disk_size_gb = 30
         }
 
         service_principal {
-            client_id     = "${var.client_id}"
-            client_secret = "${var.client_secret}"
+            client_id     = var.client_id
+            client_secret = var.client_secret
         }
 
         addon_profile {
             oms_agent {
             enabled                    = true
-            log_analytics_workspace_id = "${azurerm_log_analytics_workspace.test.id}"
+            log_analytics_workspace_id = azurerm_log_analytics_workspace.test.id
             }
         }
 
@@ -176,29 +167,21 @@ Maak het Terraform-configuratiebestand waarin de resources voor het Kubernetes-c
     }
     ```
 
-    Met de bovenstaande code worden de naam van het cluster, de locatie en de resource_group_name ingesteld. Daarnaast wordt de waarde ingesteld van dns_prefix (die deel uitmaakt van de Fully Qualified Domain Name (FQDN) waarmee toegang wordt verkregen tot het cluster).
+    Met de voor gaande code worden de naam van het cluster, de locatie en de naam van de resource groep ingesteld. Het voor voegsel voor de Fully Qualified Domain Name (FQDN) is ook ingesteld. De FQDN-naam wordt gebruikt voor toegang tot het cluster.
 
-    Met het **linux_profile**-record kunt u de instellingen configureren waarmee aanmelding bij de werkknooppunten via SSH mogelijk is.
+    Met de `linux_profile` record kunt u de instellingen configureren waarmee het aanmelden bij de worker-knoop punten wordt ingeschakeld via SSH.
 
-    Met AKS betaalt u alleen voor de werkknooppunten. Met het **agent_pool_profile**-record configureert u de details voor deze werkknooppunten. Het **agent_pool_profile**-record bevat het aantal te maken werkknooppunten en het type werkknooppunten. Als u het cluster in de toekomst omhoog of omlaag wilt schalen, wijzigt u de waarde **aantal** in dit record.
+    Met AKS betaalt u alleen voor de werkknooppunten. Met de `agent_pool_profile` record configureert u de Details voor deze worker-knoop punten. Het `agent_pool_profile record` bevat het aantal worker-knoop punten dat moet worden gemaakt en het type worker-knoop punten. Als u het cluster in de toekomst omhoog of omlaag wilt schalen, wijzigt u de `count` waarde in deze record.
 
-1. Verlaat de invoegmodus door op **Esc** te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 ## <a name="declare-the-variables"></a>De variabelen declareren
 
 1. Maak in Cloud Shell een bestand met de naam `variables.tf`.
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
@@ -245,73 +228,65 @@ Maak het Terraform-configuratiebestand waarin de resources voor het Kubernetes-c
    }
     ```
 
-1. Verlaat de invoegmodus door op **Esc** te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 ## <a name="create-a-terraform-output-file"></a>Een Terraform-uitvoerbestand maken
+
 Met [Terraform-uitvoer](https://www.terraform.io/docs/configuration/outputs.html) kunt u waarden definiëren die voor de gebruiker worden gemarkeerd wanneer in Terraform een plan wordt toegepast. Deze uitvoer kan worden opgevraagd met de opdracht `terraform output`. In deze sectie maakt u een uitvoerbestand waarmee via [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) toegang wordt verkregen tot het cluster.
 
 1. Maak in Cloud Shell een bestand met de naam `output.tf`.
 
     ```bash
-    vi output.tf
+    code output.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
     ```hcl
     output "client_key" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_key
     }
 
     output "client_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate
     }
 
     output "cluster_ca_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate
     }
 
     output "cluster_username" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.username}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.username
     }
 
     output "cluster_password" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.password}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.password
     }
 
     output "kube_config" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config_raw}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config_raw
     }
 
     output "host" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.host
     }
     ```
 
-1. Verlaat de invoegmodus door op **Esc** te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Azure Storage instellen voor opslag van de Terraform-status
-In Terraform wordt de status lokaal bijgehouden via het bestand `terraform.tfstate`. Dit patroon werkt goed in een omgeving met één persoon. In een praktischere omgeving met meerdere personen moet u echter via [Azure Storage](/azure/storage/) de status bijhouden op de server. In deze sectie haalt u de benodigde opslagaccountgegevens (accountnaam en accountsleutel) op en maakt u een opslagcontainer om de Terraform-statusgegevens in op te slaan.
+
+In Terraform wordt de status lokaal bijgehouden via het bestand `terraform.tfstate`. Dit patroon werkt goed in een omgeving met één persoon. In een omgeving met meerdere personen wordt [Azure Storage](/azure/storage/) gebruikt om de status bij te houden.
+
+In deze sectie ziet u hoe u de volgende taken kunt uitvoeren:
+- Gegevens van het opslag account ophalen (account naam en account sleutel)
+- Maak een opslag container waarin informatie over de terraform-status wordt opgeslagen.
 
 1. Selecteer in Azure Portal de optie **Alle services** in het linkermenu.
 
 1. Selecteer **Opslagaccounts**.
 
-1. Selecteer op het tabblad **Opslagaccounts** de naam van het opslagaccount waarin de Terraform-status moet worden opgeslagen. U kunt bijvoorbeeld het opslagaccount gebruiken dat u hebt gemaakt toen u Cloud Shell de eerste keer opende.  De opslagaccountnaam die door Cloud Shell wordt gemaakt, begint gewoonlijk met `cs`, gevolgd door een willekeurige tekenreeks met cijfers en letters. **Onthoud de naam van het opslagaccount dat u selecteert, omdat u deze later nog nodig hebt.**
+1. Selecteer op het tabblad **Opslagaccounts** de naam van het opslagaccount waarin de Terraform-status moet worden opgeslagen. U kunt bijvoorbeeld het opslagaccount gebruiken dat u hebt gemaakt toen u Cloud Shell de eerste keer opende.  De opslagaccountnaam die door Cloud Shell wordt gemaakt, begint gewoonlijk met `cs`, gevolgd door een willekeurige tekenreeks met cijfers en letters. Noteer het opslag account dat u selecteert. Deze waarde is later vereist.
 
 1. Selecteer op het opslagaccounttabblad **Toegangssleutels**.
 
@@ -321,16 +296,17 @@ In Terraform wordt de status lokaal bijgehouden via het bestand `terraform.tfsta
 
     ![Toegangssleutels voor opslagaccount](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
-1. Maak in Cloud Shell een container in uw Azure-opslagaccount (vervang de tijdelijke aanduidingen &lt;YourAzureStorageAccountName> en &lt;YourAzureStorageAccountAccessKey> door de juiste waarden voor uw Azure-opslagaccount).
+1. In Cloud Shell maakt u een container in uw Azure Storage-account. Vervang de tijdelijke aanduidingen door de juiste waarden voor uw omgeving.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
 ## <a name="create-the-kubernetes-cluster"></a>Het Kubernetes-cluster maken
+
 In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resources te maken die zijn gedefinieerd in de configuratiebestanden die u in de vorige secties hebt gemaakt.
 
-1. Initialiseer Terraform in Cloud Shell (vervang de tijdelijke aanduidingen &lt;YourAzureStorageAccountName> en &lt;YourAzureStorageAccountAccessKey> door de juiste waarden voor uw Azure-opslagaccount).
+1. Initialiseer terraform in Cloud Shell. Vervang de tijdelijke aanduidingen door de juiste waarden voor uw omgeving.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
@@ -340,11 +316,11 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
 
     ![Voorbeeld van de resultaten van de opdracht 'terraform init'](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. Exporteer uw service-principal-referenties. Vervang de tijdelijke aanduidingen &lt;your-client-id> en &lt;your-client-secret> door de **appId**- en **wachtwoord**-waarden die aan uw service-principal zijn gekoppeld.
+1. Exporteer uw service-principal-referenties. Vervang de tijdelijke aanduidingen door de juiste waarden van de Service-Principal.
 
     ```bash
-    export TF_VAR_client_id=<your-client-id>
-    export TF_VAR_client_secret=<your-client-secret>
+    export TF_VAR_client_id=<service-principal-appid>
+    export TF_VAR_client_secret=<service-principal-password>
     ```
 
 1. Voer de opdracht `terraform plan` uit om het Terraform-plan te maken waarmee de infrastructuurelementen worden gedefinieerd. 
@@ -372,7 +348,8 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
     ![Cloud Shell-prompt](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Herstellen na een time-out van Cloud Shell
-Als er een time-out is opgetreden voor de Cloud Shell-sessie, kunt u de volgende herstelstappen uitvoeren:
+
+Als er een time-out optreedt voor de Cloud Shell-sessie, kunt u de volgende stappen uitvoeren om te herstellen:
 
 1. Start een Cloud Shell-sessie.
 
@@ -389,6 +366,7 @@ Als er een time-out is opgetreden voor de Cloud Shell-sessie, kunt u de volgende
     ```
     
 ## <a name="test-the-kubernetes-cluster"></a>Het Kubernetes-cluster testen
+
 U kunt het gemaakte cluster controleren met de Kubernetes-hulpprogramma's.
 
 1. Haal de Kubernetes-configuratie op uit de Terraform-status en sla deze op in een bestand dat door kubectl kan worden gelezen.
@@ -414,12 +392,10 @@ U kunt het gemaakte cluster controleren met de Kubernetes-hulpprogramma's.
     ![Met het hulpprogramma kubectl kunt u de status van uw Kubernetes-cluster controleren](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 
 ## <a name="monitor-health-and-logs"></a>Status en logboeken controleren
-Toen het AKS-cluster werd gemaakt, werd controleren ingeschakeld om metrische gegevens over de status van de clusterknooppunten en -pods vast te leggen. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar. Zie [Status van Azure Kubernetes Service controleren](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) voor meer informatie over het controleren van de status van de container.
+
+Toen het AKS-cluster werd gemaakt, werd controleren ingeschakeld om metrische gegevens over de status van de clusterknooppunten en -pods vast te leggen. Deze metrische gegevens over de status zijn in de Azure-portal beschikbaar. Zie [Status van Azure Kubernetes Service controleren](/azure/azure-monitor/insights/container-insights-overview) voor meer informatie over het controleren van de status van de container.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd hoe u Terraform en AKS gebruikt om een Kubernetes-cluster te maken. Hier volgen een aantal aanvullende resources voor meer informatie over Terraform in Azure: 
 
- [Terraform Hub in Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Documentatie Terraform Azure-provider](https://aka.ms/terraform)  
- [Bron Terraform Azure-provider](https://aka.ms/tfgit)  
- [Terraform Azure-modules](https://aka.ms/tfmodules)
+> [!div class="nextstepaction"] 
+> [Terraform op Azure](/azure/ansible/)

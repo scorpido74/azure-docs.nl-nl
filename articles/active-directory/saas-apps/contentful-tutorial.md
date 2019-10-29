@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ffad0656169c49268eac6aa4a107f3445cba614
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72600355"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met inhoud
 
@@ -48,7 +48,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 * Biedt ondersteuning **voor Just-in-time** -gebruikers inrichting
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste teken reeks waarde. Er kan slechts één exemplaar worden geconfigureerd in één Tenant.
 
 ## <a name="adding-contentful-from-the-gallery"></a>Inhoud vanuit de galerie toevoegen
 
@@ -59,7 +59,7 @@ Als u de integratie van inhoud in azure AD wilt configureren, moet u inhoud vanu
 1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
 1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
 1. In de sectie **toevoegen vanuit de galerie** typt u **inhoud** in het zoekvak.
-1. Selecteer **inhoud** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Selecteer **inhoud** in de resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Eenmalige aanmelding voor Azure AD voor inhoud configureren en testen
 
@@ -86,22 +86,22 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
 
-    In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://be.contentful.com/sso/<organization_id>/consume`
+    - In het tekstvak **antwoord-URL** kopieert u de ACS-URL (assertion Consumer Service) van de pagina SSO Setup in een inhouds bestand. Dit ziet er als volgt uit: `https://be.contentful.com/sso/<organization_id>/consume`
 
-1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
+1. Klik op **aanvullende Url's instellen** en voer de volgende stap uit als u de toepassing in de modus door **SP** gestart wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://be.contentful.com/sso/<organization_id>/login`
+    - Kopieer in het tekstvak **URL voor aanmelding** dezelfde ACS-URL (assertion Consumer Service). Dit ziet er als volgt uit: `https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Neem contact op met het [ondersteunings team voor client ondersteuning](mailto:support@contentful.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de daad werkelijke antwoord-URL en aanmeldings-URL door de ACS-URL (assertion Consumer Service) te kopiëren van de pagina SSO Setup in de richting van de installatie.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , **certificaat (RAW)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De link om het certificaat te downloaden](common/certificateraw.png)
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de sectie **inhoud instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Kopieer in de sectie **inhoud instellen** de AANMELDINGS-URL voor het configureren van contental SSO.
 
-    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+    ![Configuratie-URL's kopiëren](media/contentful-tutorial/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -121,7 +121,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
 1. Selecteer in de lijst toepassingen de optie **contented**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Zoek op de pagina overzicht van de app de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -129,13 +129,22 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan de pagina.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan de pagina.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
 ## <a name="configure-contentful-sso"></a>Content-SSO configureren
 
-Als u eenmalige aanmelding wilt configureren voor een **bepaalde zijde,** moet u het gedownloade **certificaat (RAW)** en de juiste gekopieerde url's verzenden van Azure Portal naar een [inhouds ondersteunings team](mailto:support@contentful.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Volg deze stappen om eenmalige aanmelding te configureren aan de zijde van de **inhoud** .
+
+1. Navigeer [in de](https://app.contentful.com) **organisatie-instellingen**naar de pagina SSO Setup.
+1. Klik op **SSO instellen**.
+1. Kopieer en plak de aanmeldings-URL uit de sectie inhoud in azure AD **instellen** .
+1. Kopieer en plak het certificaat vanuit het Base64-certificaat bestand dat u hebt gedownload van Azure AD.
+1. Stel een SSO-naam in voor door SP geïnitieerde aanmelding.
+1. Klik op **SSO inschakelen**.
+
+Als dat niet werkt, kunt u contact met het [ondersteunings team voor inhoud](mailto:support@contentful.com)bereiken.
 
 ### <a name="create-contentful-test-user"></a>Inhouds gebruiker voor test doeleinden maken
 
@@ -149,9 +158,9 @@ Wanneer u op de tegel inhoud in het toegangs venster klikt, moet u automatisch w
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

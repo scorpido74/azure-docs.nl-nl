@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1db69cfbf86cf9f33b84273b9e4da6696897467d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376460"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Dynatrace
 
@@ -48,7 +48,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 * Dynatrace ondersteunt **just-in-time** -gebruikers inrichting
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste teken reeks waarde. Er kan slechts één exemplaar worden geconfigureerd in één Tenant.
 
 ## <a name="adding-dynatrace-from-the-gallery"></a>Dynatrace toevoegen uit de galerie
 
@@ -56,7 +56,7 @@ Als u de integratie van Dynatrace in azure AD wilt configureren, moet u Dynatrac
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
 1. Typ in de sectie **toevoegen vanuit de galerie** **Dynatrace** in het zoekvak.
 1. Selecteer **Dynatrace** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
@@ -68,10 +68,10 @@ Azure AD SSO met Dynatrace configureren en testen met behulp van een test gebrui
 Als u Azure AD SSO wilt configureren en testen met Dynatrace, voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[DYNATRACE SSO configureren](#configure-dynatrace-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een Dynatrace-test gebruiker](#create-dynatrace-test-user)** -om een equivalent van B. Simon in Dynatrace te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    * **[Maak een Dynatrace-test gebruiker](#create-dynatrace-test-user)** -om een equivalent van B. Simon in Dynatrace te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
@@ -84,17 +84,27 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **basis configuratie**@no__t voor SAML-1section de toepassing vooraf is geconfigureerd in de **IDP**-modus  Initiated en de benodigde url's al vooraf zijn ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de @no__t **Opslaan**-1button.
+1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd in de gestarte modus **IDP** en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
 
-1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
+1. Klik op **aanvullende Url's instellen** en voer de volgende stap uit om de toepassing te configureren in de modus door **SP** gestart:
 
     In het tekstvak **Aanmeldings-URL** typt u een URL: `https://sso.dynatrace.com/`
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML**. Selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Op de sectie **Dynatrace instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. Selecteer in de sectie **SAML-handtekening certificaat** de knop **bewerken** om het dialoog venster **SAML-handtekening certificaat** te openen. Voltooi de volgende stappen:
+
+    ![SAML-handtekeningcertificaat bewerken](common/edit-certificate.png)
+
+    a. De instelling voor de **handtekening optie** is vooraf ingevuld. Controleer de instellingen volgens uw organisatie.
+
+    b. Klik op **Opslaan**.
+
+    ![Communifire-optie voor ondertekenen](./media/dynatrace-tutorial/tutorial-dynatrace-signing-option.png)
+
+1. Kopieer in de sectie **Dynatrace instellen** de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -120,23 +130,23 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
 
 ## <a name="configure-dynatrace-sso"></a>Dynatrace SSO configureren
 
-Als u eenmalige aanmelding wilt configureren op **Dynatrace** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Dynatrace ondersteunings team](https://www.dynatrace.com/services-support/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de **Dynatrace** zijde, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van de Azure Portal naar het [ondersteunings team van Dynatrace](https://www.dynatrace.com/services-support/). Het team configureert deze instelling dusdanig dat de SAML SSO-verbinding goed is ingesteld aan beide zijden.
 
 ### <a name="create-dynatrace-test-user"></a>Dynatrace-test gebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Dynatrace. Dynatrace biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Dynatrace, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Dynatrace. Dynatrace biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Dynatrace, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
@@ -144,11 +154,10 @@ Wanneer u op de tegel Dynatrace in het toegangs venster klikt, moet u automatisc
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
+- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Dynatrace met Azure AD](https://aad.portal.azure.com/)
-

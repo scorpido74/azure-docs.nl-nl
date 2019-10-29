@@ -3,21 +3,20 @@ title: Referentie gegevens in Azure Time Series Insights omgeving beheren met C#
 description: In dit artikel wordt beschreven hoe u referentie gegevens voor een Azure Time Series Insights omgeving beheert door een aangepaste toepassing te maken C# die is geschreven in de .net-taal (c-sharp).
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958045"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990050"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>GA referentie gegevens beheren voor een Azure Time Series Insights omgeving met behulp vanC#
 
@@ -29,7 +28,7 @@ Voer de volgende stappen uit voordat u de voorbeeld code compileert en uitvoert:
 
 1. [Een set met referentie gegevens maken](time-series-insights-add-reference-data-set.md).
 
-1. Configureer het toegangs token voor verificatie voor de toepassing. Zorg ervoor dat het token wordt verkregen via de Azure Active Directory-API. U moet dit token door geven in de header `Authorization` van elke query-API-aanvraag.
+1. Configureer het toegangs token voor verificatie voor de toepassing. Zorg ervoor dat het token wordt verkregen via de Azure Active Directory-API. U moet dit token door geven in de `Authorization`-header van elke query-API-aanvraag.
 
    Zie [verificatie en autorisatie](time-series-insights-authentication-and-authorization.md)voor meer informatie over het instellen van niet-interactieve toepassingen.
 

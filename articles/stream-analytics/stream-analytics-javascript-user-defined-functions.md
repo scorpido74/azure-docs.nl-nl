@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 8a26e369783da8b59837e669dcd45a338ce82722
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935005"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990227"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Zelfstudie: Door gebruiker gedefinieerde JavaScript-functies in Azure Stream Analytics
  
@@ -71,6 +71,9 @@ Voer de volgende stappen uit om een door de gebruiker gedefinieerde Java script-
 6.  Selecteer **Opslaan**. Uw functie wordt weergegeven in de lijst met functies.
 7.  Selecteer de nieuwe **hex2Int**-functie en controleer de functiedefinitie. Alle functies hebben een functiealias waaraan het voorvoegsel **UDF** is toegevoegd. U moet *het voorvoegsel opnemen* wanneer u de functie aanroept in de Stream Analytics-query. In dat geval roept u **UDF.hex2Int** aan.
 
+## <a name="testing-javascript-udfs"></a>Java script-Udf's testen 
+U kunt uw Java script UDF-logica testen en fouten opsporen in een browser. Fout opsporing en testen van de logica van deze door de gebruiker gedefinieerde functies wordt momenteel niet ondersteund in de Stream Analytics Portal. Zodra de functie werkt zoals verwacht, kunt u deze toevoegen aan de Stream Analytics-taak zoals hierboven wordt vermeld en vervolgens rechtstreeks vanuit uw query aanroepen.
+
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Een door de gebruiker gedefinieerde JavaScript-functie in een query aanroepen
 
 1. Selecteer in de query-editor onder de kop **taak topologie** de optie **query**.
@@ -125,7 +128,6 @@ Java script-taal is hoofdletter gevoelig en behuizing van de object velden in Ja
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 JavaScript-runtime-fouten worden beschouwd als onherstelbaar en worden weergegeven via het activiteitenlogboek. U haalt het logboek op door in Azure Portal naar uw project te gaan en **Activiteitenlogboek** te selecteren.
-
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>Andere door de gebruiker gedefinieerde JavaScript-functiepatronen
 

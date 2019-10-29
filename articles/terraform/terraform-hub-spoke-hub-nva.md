@@ -1,22 +1,19 @@
 ---
-title: Een hub virtueel netwerk apparaat maken met terraform in azure
+title: 'Zelf studie: een hub virtueel netwerk apparaat maken in azure met behulp van terraform'
 description: Zelf studie implementeert het maken van een hub-VNet dat fungeert als een algemeen verbindings punt tussen alle andere netwerken
-services: terraform
-ms.service: azure
-keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, VNet-peering, hub-spoke, hub.
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 5696ee20f6f306d45c5d7ba04552b9206f2a5429
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173414"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969373"
 ---
-# <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>Zelfstudie: Een hub virtueel netwerk apparaat maken met terraform in azure
+# <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Zelf studie: een hub virtueel netwerk apparaat maken in azure met behulp van terraform
 
 Een **VPN-apparaat** is een apparaat dat externe verbinding met een on-premises netwerk biedt. Het VPN-apparaat kan een hardwareapparaat of een software oplossing zijn. Een voor beeld van een software oplossing is route ring en Remote Access service (RRAS) in Windows Server 2012. Zie [over VPN-apparaten voor site-naar-site-VPN gateway verbindingen](/azure/vpn-gateway/vpn-gateway-about-vpn-devices)voor meer informatie over VPN-apparatuur.
 
@@ -38,7 +35,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 ## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -50,7 +47,7 @@ Deze zelfstudie bestaat uit de volgende taken:
     cd clouddrive
     ```
 
-1. Ga naar de nieuwe map:
+1. Maak de nieuwe directory de actieve directory:
 
     ```bash
     cd hub-spoke
@@ -58,9 +55,9 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 ## <a name="declare-the-hub-network-appliance"></a>Het hub-netwerk apparaat declareren
 
-Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk declareert.
+Maak het terraform-configuratie bestand dat een on-premises virtueel netwerk declareert.
 
-1. Maak in Cloud Shell een nieuw bestand met de `hub-nva.tf`naam.
+1. Maak in Cloud Shell een nieuw bestand met de naam `hub-nva.tf`.
 
     ```bash
     code hub-nva.tf
@@ -77,37 +74,37 @@ Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk dec
 
     resource "azurerm_resource_group" "hub-nva-rg" {
       name     = "${local.prefix-hub-nva}-rg"
-      location = "${local.hub-nva-location}"
+      location = local.hub-nva-location
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_network_interface" "hub-nva-nic" {
       name                 = "${local.prefix-hub-nva}-nic"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
       enable_ip_forwarding = true
 
       ip_configuration {
-        name                          = "${local.prefix-hub-nva}"
-        subnet_id                     = "${azurerm_subnet.hub-dmz.id}"
+        name                          = local.prefix-hub-nva
+        subnet_id                     = azurerm_subnet.hub-dmz.id
         private_ip_address_allocation = "Static"
         private_ip_address            = "10.0.0.36"
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine" "hub-nva-vm" {
       name                  = "${local.prefix-hub-nva}-vm"
-      location              = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name   = "${azurerm_resource_group.hub-nva-rg.name}"
-      network_interface_ids = ["${azurerm_network_interface.hub-nva-nic.id}"]
-      vm_size               = "${var.vmsize}"
+      location              = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name   = azurerm_resource_group.hub-nva-rg.name
+      network_interface_ids = [azurerm_network_interface.hub-nva-nic.id]
+      vm_size               = var.vmsize
 
       storage_image_reference {
         publisher = "Canonical"
@@ -125,8 +122,8 @@ Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk dec
 
       os_profile {
         computer_name  = "${local.prefix-hub-nva}-vm"
-        admin_username = "${var.username}"
-        admin_password = "${var.password}"
+        admin_username = var.username
+        admin_password = var.password
       }
 
       os_profile_linux_config {
@@ -134,15 +131,15 @@ Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk dec
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_virtual_machine_extension" "enable-routes" {
       name                 = "enable-iptables-routes"
-      location             = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name  = "${azurerm_resource_group.hub-nva-rg.name}"
-      virtual_machine_name = "${azurerm_virtual_machine.hub-nva-vm.name}"
+      location             = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name  = azurerm_resource_group.hub-nva-rg.name
+      virtual_machine_name = azurerm_virtual_machine.hub-nva-vm.name
       publisher            = "Microsoft.Azure.Extensions"
       type                 = "CustomScript"
       type_handler_version = "2.0"
@@ -157,14 +154,14 @@ Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk dec
     SETTINGS
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_route_table" "hub-gateway-rt" {
       name                          = "hub-gateway-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -188,20 +185,20 @@ Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk dec
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "hub-gateway-rt-hub-vnet-gateway-subnet" {
-      subnet_id      = "${azurerm_subnet.hub-gateway-subnet.id}"
-      route_table_id = "${azurerm_route_table.hub-gateway-rt.id}"
+      subnet_id      = azurerm_subnet.hub-gateway-subnet.id
+      route_table_id = azurerm_route_table.hub-gateway-rt.id
       depends_on = ["azurerm_subnet.hub-gateway-subnet"]
     }
 
     resource "azurerm_route_table" "spoke1-rt" {
       name                          = "spoke1-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -218,26 +215,26 @@ Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk dec
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke1-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-mgmt.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke1-rt-spoke1-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke1-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke1-rt.id}"
+      subnet_id      = azurerm_subnet.spoke1-workload.id
+      route_table_id = azurerm_route_table.spoke1-rt.id
       depends_on = ["azurerm_subnet.spoke1-workload"]
     }
 
     resource "azurerm_route_table" "spoke2-rt" {
       name                          = "spoke2-rt"
-      location                      = "${azurerm_resource_group.hub-nva-rg.location}"
-      resource_group_name           = "${azurerm_resource_group.hub-nva-rg.name}"
+      location                      = azurerm_resource_group.hub-nva-rg.location
+      resource_group_name           = azurerm_resource_group.hub-nva-rg.name
       disable_bgp_route_propagation = false
 
       route {
@@ -254,19 +251,19 @@ Maak het terraform-configuratie bestand dat het on-premises virtuele netwerk dec
       }
 
       tags {
-        environment = "${local.prefix-hub-nva}"
+        environment = local.prefix-hub-nva
       }
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-mgmt" {
-      subnet_id      = "${azurerm_subnet.spoke2-mgmt.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-mgmt.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-mgmt"]
     }
 
     resource "azurerm_subnet_route_table_association" "spoke2-rt-spoke2-vnet-workload" {
-      subnet_id      = "${azurerm_subnet.spoke2-workload.id}"
-      route_table_id = "${azurerm_route_table.spoke2-rt.id}"
+      subnet_id      = azurerm_subnet.spoke2-workload.id
+      route_table_id = azurerm_route_table.spoke2-rt.id
       depends_on = ["azurerm_subnet.spoke2-workload"]
     }
 

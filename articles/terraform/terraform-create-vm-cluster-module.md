@@ -1,22 +1,19 @@
 ---
-title: Terraform-modules gebruiken om een ​​VM-cluster op Azure te maken
+title: 'Zelf studie: een Azure VM-cluster met terraform maken met behulp van het module register'
 description: Leer hoe u Terraform-modules kunt gebruiken om een cluster met ​​virtuele Windows-machines in Azure te maken
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuele machine, netwerk, modules
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 325a029a9ea1c0102dad0e970f177e7ba7db6d52
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: ba99f9cdc20448398b339041aeab41fb75495e5d
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934194"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969480"
 ---
-# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Een VM-cluster maken met Terraform met behulp van het moduleregister
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Zelf studie: een Azure VM-cluster met terraform maken met behulp van het module register
 
 Dit artikel begeleidt u bij het maken van een klein VM-cluster met de [Azure compute module](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2) van Terraform. In deze zelfstudie leert u het volgende: 
 
@@ -104,5 +101,5 @@ Voer `terraform apply` uit om de virtuele machines in te richten in Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Door de lijst met [Azure Terraform-modules](https://registry.terraform.io/modules/Azure) bladeren
-- [Een virtuele-machineschaalset maken met Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+> [!div class="nextstepaction"] 
+> [Blader door de lijst met Azure terraform-modules](https://registry.terraform.io/modules/Azure)

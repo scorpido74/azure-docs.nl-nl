@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: cc12579a4932894b730b04cdc77acc0151168bdb
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d5214b6a6ffcb7c78fc00fe0305a1d1846b328f8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010214"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990260"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
@@ -74,35 +74,36 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
 1. Ga naar de [Azure Portal](https://portal.azure.com).
 2. Navigeer naar **controle** onder de kop beveiliging in het deel venster SQL database/server.
 
-    <a id="auditing-screenshot"></a>![Navigatie deel venster][1]
+    <a id="auditing-screenshot"></a>![navigatie deel venster][1]
 
 3. Als u liever een server controle beleid instelt, kunt u de koppeling **Server instellingen weer geven** op de pagina database controle selecteren. U kunt vervolgens de instellingen voor de controle van de server weer geven of wijzigen. Het controle beleid voor servers is van toepassing op alle bestaande en nieuw gemaakte data bases op deze server.
 
-    ![Navigatiedeelvenster][2]
+    ![Navigatievenster][2]
 
 4. Als u de controle wilt inschakelen op het niveau van de data base, schakelt u **controle** in **op**aan.
 
     Als server controle is ingeschakeld, is de door de data base geconfigureerde controle naast de server controle aanwezig.
 
-    ![Navigatiedeelvenster][3]
+    ![Navigatievenster][3]
 
 5. **Nieuw** : u hebt nu meerdere opties voor het configureren van de locatie waar audit logboeken worden geschreven. U kunt Logboeken schrijven naar een Azure-opslag account, naar een Log Analytics-werk ruimte voor het gebruik van Azure Monitor-Logboeken of Event Hub voor gebruik met Event Hub. U kunt een wille keurige combi natie van deze opties configureren en er worden controle logboeken naar elke optie geschreven.
 
    > [!WARNING]
    > Als u controle inschakelt op Log Analytics, worden er kosten in rekening gebracht op basis van opname tarieven. Houd rekening met de gekoppelde kosten met behulp van deze [optie](https://azure.microsoft.com/pricing/details/monitor/)of overweeg de audit logboeken op te slaan in een Azure-opslag account.
 
-    ![Opslag opties](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+    ![opslag opties](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
 6. Als u het schrijven van audit logboeken naar een opslag account wilt configureren, selecteert u **opslag** en opent u **opslag Details**. Selecteer het Azure-opslag account waarin de logboeken worden opgeslagen en selecteer vervolgens de Bewaar periode. De oude logboeken worden verwijderd. Klik vervolgens op **OK**.
 
    > [!IMPORTANT]
-   > De standaard waarde voor de Bewaar periode is 0 (onbeperkte retentie). U kunt deze waarde wijzigen door de schuif regelaar voor **bewaren (dagen)** in **opslag instellingen** te verplaatsen bij het configureren van het opslag account voor controle.
+   > - De standaard waarde voor de Bewaar periode is 0 (onbeperkte retentie). U kunt deze waarde wijzigen door de schuif regelaar voor **bewaren (dagen)** in **opslag instellingen** te verplaatsen bij het configureren van het opslag account voor controle.
+   > - Als u de retentie periode van 0 (onbeperkte retentie) wijzigt naar een andere waarde, moet u er rekening mee houden dat bewaren alleen van toepassing is op de logboeken die zijn geschreven nadat de Bewaar waarde is gewijzigd (tijdens de periode waarin retentie is ingesteld op onbeperkt, blijven behouden, zelfs nadat bewaren is ingeschakeld)
 
     ![opslagaccount](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
 7. Als u het schrijven van audit logboeken naar een Log Analytics-werk ruimte wilt configureren, selecteert u **log Analytics (preview)** en opent u **log Analytics Details**. Selecteer of maak de Log Analytics-werk ruimte waar de logboeken worden geschreven en klik vervolgens op **OK**.
 
-    ![Log Analytics-werkruimte](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics werk ruimte](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Als u het schrijven van audit logboeken naar een Event Hub wilt configureren, selecteert u **Event hub (preview)** en opent u **Details van Event hub**. Selecteer de Event Hub waar de logboeken worden geschreven en klik vervolgens op **OK**. Zorg ervoor dat de Event Hub zich in dezelfde regio bevindt als de-data base en-server.
 
@@ -134,7 +135,7 @@ Als u ervoor hebt gekozen om audit logboeken naar Azure Monitor-logboeken te sch
 
     Als u op het **dash board weer geven** boven aan de pagina **controle records** klikt, wordt er een dash board geopend met informatie over de audit logboeken, waar u kunt inzoomen op beveiligings inzichten, toegang tot gevoelige gegevens en meer. Dit dash board is ontworpen om u te helpen bij het verkrijgen van beveiligings inzichten voor uw gegevens.
     U kunt ook het tijds bereik en de zoek query aanpassen. 
-    ![Log Analytics dash board weer geven](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
+    Log Analytics dashboard](media/sql-database-auditing-get-started/auditing-view-dashboard.png) ![weer geven
 
     ![Log Analytics dash board](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
 
@@ -155,7 +156,7 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
 
 - Gebruik de [Azure Portal](https://portal.azure.com).  Open de relevante data base. Klik boven aan de **controle** pagina van de Data Base op **audit logboeken weer geven**.
 
-    ![Navigatiedeelvenster][7]
+    ![Navigatievenster][7]
 
     **Controle records** worden geopend, waaruit u de logboeken kunt weer geven.
 
@@ -163,14 +164,14 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
   - U kunt scha kelen tussen controle records die zijn gemaakt door het *Server controlebeleid* en het *database controlebeleid* door te scha kelen op **controle bron**.
   - U kunt alleen controle records met betrekking tot SQL-injectie weer geven door **alleen controle records voor SQL-injecties weer geven** in te scha kelen.
 
-       ![Navigatiedeelvenster][8]
+       ![Navigatievenster][8]
 
 - Gebruik de systeem functie **sys. fn_get_audit_file** (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie [sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
 - **Samenvoeg controle bestanden** in SQL Server Management Studio gebruiken (vanaf SSMS 17):
-    1. Selecteer in het menu SSMS **File** > **Open** > **Merge audit files**.
+    1. Selecteer in het menu SSMS **File** > **Open** > **audit bestanden samen voegen**.
 
-        ![Navigatiedeelvenster][9]
+        ![Navigatievenster][9]
     2. Het dialoog venster **controle bestanden toevoegen** wordt geopend. Selecteer een van de opties voor **toevoegen** om te kiezen of u de audit bestanden van een lokale schijf wilt samen voegen of uit Azure Storage wilt importeren. U moet uw Azure Storage Details en de account sleutel opgeven.
 
     3. Nadat alle bestanden die u wilt samen voegen, zijn toegevoegd, klikt u op **OK** om de samenvoeg bewerking te volt ooien.
@@ -197,8 +198,8 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
 
 Bij geo-gerepliceerde data bases, wanneer u controle inschakelt voor de hoofd database, heeft de secundaire Data Base een identiek controle beleid. Het is ook mogelijk om controle in te stellen voor de secundaire data base door controle in te scha kelen op de **secundaire server**, onafhankelijk van de primaire data base.
 
-- Server niveau (**Aanbevolen**): Schakel controle in op zowel de **primaire server** als de **secundaire server** , de primaire en secundaire data bases die elk afzonderlijk worden gecontroleerd op basis van het bijbehorende beleid op server niveau.
-- Database niveau: Controle op database niveau voor secundaire data bases kan alleen worden geconfigureerd vanuit de instellingen voor de controle van primaire data bases.
+- Server niveau (**Aanbevolen**): Schakel de controle op zowel de **primaire server** als de **secundaire server** in. de primaire en secundaire data bases worden elk onafhankelijk gecontroleerd op basis van hun respectieve beleid op server niveau.
+- Database niveau: controle op database niveau voor secundaire data bases kan alleen worden geconfigureerd vanuit de instellingen voor de controle van primaire data bases.
   - De controle moet worden ingeschakeld op de *primaire data base zelf*, niet op de server.
   - Nadat de controle is ingeschakeld op de primaire data base, wordt deze ook ingeschakeld op de secundaire data base.
 
@@ -211,14 +212,14 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
 1. **Opslag Details**openen. Selecteer in het vak **toegangs sleutel voor opslag** de optie **secundair**en klik op **OK**. Klik vervolgens boven aan de pagina controle configuratie op **Opslaan** .
 
-    ![Navigatiedeelvenster][5]
+    ![Navigatievenster][5]
 2. Ga naar de pagina opslag configuratie en Genereer de primaire toegangs sleutel opnieuw.
 
-    ![Navigatiedeelvenster][6]
+    ![Navigatievenster][6]
 3. Ga terug naar de pagina controle configuratie, schakel de toegangs sleutel voor opslag van secundair naar primair in en klik vervolgens op **OK**. Klik vervolgens boven aan de pagina controle configuratie op **Opslaan** .
 4. Ga terug naar de pagina opslag configuratie en Genereer de secundaire toegangs sleutel opnieuw (in voor bereiding voor de vernieuwings cyclus van de volgende sleutel).
 
-## <a name="additional-information"></a>Aanvullende gegevens
+## <a name="additional-information"></a>Aanvullende informatie
 
 - Zie de naslag informatie over de [indeling van BLOB-controle logboeken](https://go.microsoft.com/fwlink/?linkid=829599)voor meer informatie over de logboek indeling, de hiërarchie van de opslag map en naam conventies.
 

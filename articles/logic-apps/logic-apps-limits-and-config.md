@@ -1,6 +1,6 @@
 ---
 title: Limieten en configuratie-Azure Logic Apps
-description: Service limieten en configuratie waarden voor Azure Logic Apps
+description: Service limieten, zoals de duur, de door Voer en de capaciteit, plus configuratie waarden, zoals IP-adressen die kunnen worden toegestaan, voor Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 5399ebaa9526bd2c92a8d12eaa5cd8e5f53b1037
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 52e1594f40917519d80f042a4ace77532186758b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799358"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968606"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -146,7 +146,7 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 | Naam | Limiet voor meerdere tenants | Limiet voor de integratie service omgeving | Opmerkingen |
 |------|--------------------|---------------------------------------|-------|
 | Berichtgrootte | 100 MB | 200 MB | Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)om deze limiet te omzeilen. Sommige connectors en Api's ondersteunen echter mogelijk geen Chunking of zelfs de standaard limiet. |
-| Bericht grootte met Chunking | 1 GB | 5 GB | Deze limiet geldt voor acties die systeem eigen ondersteuning bieden voor Chunking of waarmee u Chunking in de runtime configuratie kunt inschakelen. <p>Voor de integratie service omgeving ondersteunt de Logic Apps-Engine deze limiet, maar connectors hebben hun eigen segment limieten tot de limiet van de engine. Zie bijvoorbeeld [Azure Blob Storage-connector](/connectors/azureblob/). Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)voor meer informatie over chunks. |
+| Bericht grootte met Chunking | 1 GB | 5 GB | Deze limiet geldt voor acties die systeem eigen ondersteuning bieden voor Chunking of waarmee u Chunking in de runtime configuratie kunt inschakelen. <p>Voor de integratie service omgeving ondersteunt de Logic Apps-Engine deze limiet, maar connectors hebben hun eigen segment limieten tot de limiet van de engine. Zie de [API-naslag informatie voor de Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblob/). Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)voor meer informatie over chunks. |
 | Limiet voor expressie-evaluatie | 131.072 tekens | 131.072 tekens | De `@concat()`, `@base64()`, `@string()`-expressies mogen niet langer zijn dan deze limiet. |
 |||||
 

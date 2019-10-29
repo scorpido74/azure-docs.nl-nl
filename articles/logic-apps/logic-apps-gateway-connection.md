@@ -1,6 +1,6 @@
 ---
-title: Toegang tot gegevens bronnen on-premises vanaf Azure Logic Apps
-description: Verbinding maken met on-premises gegevens bronnen vanuit Logic apps met behulp van een on-premises gegevens gateway
+title: Toegang tot gegevens bronnen on-premises-Azure Logic Apps
+description: Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps door een Azure on-premises gegevens gateway resource te maken
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b333df740fbd4c2243ea3f166593ca0a6f4bbad
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675681"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988727"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps
 
@@ -77,7 +77,7 @@ Nadat u de gateway op een lokale computer hebt geïnstalleerd, maakt u de Azure-
 
 1. Selecteer **toevoegen**onder **on-premises gegevens gateways**.
 
-   ![Gegevens gateway toevoegen](./media/logic-apps-gateway-connection/add-gateway.png)
+   ![Nieuwe Azure-resource toevoegen voor gegevens gateway](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
 1. Geef onder **verbindings gateway maken**deze informatie voor uw gateway bron op. Als u gereed bent, selecteert u **Maken**.
 
@@ -92,7 +92,7 @@ Nadat u de gateway op een lokale computer hebt geïnstalleerd, maakt u de Azure-
 
    Hier volgt een voor beeld waarin een gateway-installatie wordt weer gegeven die zich in dezelfde regio bevindt als de gateway bron en is gekoppeld aan hetzelfde Azure-account:
 
-   ![Details opgeven voor het maken van een gegevens gateway resource](./media/logic-apps-gateway-connection/gateway-details.png)
+   ![Details opgeven voor het maken van een gegevens gateway resource](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -155,7 +155,7 @@ Als u een andere gateway bron wilt maken, koppelt u de gateway-installatie aan e
 
    Bijvoorbeeld:
 
-   ![Gateway verwijderen](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![Gateway resource verwijderen in azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
 <a name="faq"></a>
 

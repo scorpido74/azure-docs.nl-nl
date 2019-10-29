@@ -3,7 +3,7 @@ title: Het controleren en verminderen van de beperking in Azure Time Series Insi
 description: In dit artikel wordt beschreven hoe u prestatie problemen bewaken, diagnosticeert en verhelpt die latentie en beperking in Azure Time Series Insights veroorzaken.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332994"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990147"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
 
@@ -44,15 +44,15 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 1. Selecteer in de Azure Portal **waarschuwingen**.
 
-   [![Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![waarschuwingen](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Het deel venster **regel maken** wordt weer gegeven. Selecteer **toevoegen** onder **voor waarde**.
 
-   [![Add-waarschuwing](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [waarschuwing![toevoegen](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Vervolgens configureert u de exacte voor waarden voor de signaal logica.
 
-   [![Configure-signaal logica](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [signaal logica![configureren](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Hier kunt u waarschuwingen configureren aan de hand van een van de volgende voor waarden:
 
@@ -63,14 +63,14 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
    |**Ontvangen berichten met ingang**   | Aantal berichten dat is gelezen uit alle gebeurtenis bronnen van Event Hubs of IoT hubs.        |
    |**In ingangs opgeslagen bytes**     | De totale grootte van de opgeslagen en beschik bare gebeurtenissen voor de query. Grootte wordt alleen berekend op de waarde van de eigenschap.        |
    |**Opgeslagen gebeurtenissen**     |   Aantal samengevoegde gebeurtenissen dat is opgeslagen en beschikbaar is voor query's.      |
-   |@No__t van **ontvangen berichten tijds vertragings tijd** -1|  Verschil in seconden tussen het tijdstip waarop het bericht in de bron van de gebeurtenis in de wachtrij is geplaatst en de tijd die wordt verwerkt in binnenkomend verkeer.      |
-   |@No__t van **ontvangen berichten telling van aantal binnengekomen items** -1|  Het verschil tussen het Volg nummer van de laatste bericht in de bron partitie en het Volg nummer van het bericht dat wordt verwerkt in ingress.      |
+   |    van **ontvangen berichten tijds vertraging bericht**|  Verschil in seconden tussen het tijdstip waarop het bericht in de bron van de gebeurtenis in de wachtrij is geplaatst en de tijd die wordt verwerkt in binnenkomend verkeer.      |
+   |    **aantal ontvangen inkomende berichten**|  Het verschil tussen het Volg nummer van de laatste bericht in de bron partitie en het Volg nummer van het bericht dat wordt verwerkt in ingress.      |
 
    Selecteer **Done**.
 
 1. Nadat u de gewenste signaal logica hebt geconfigureerd, controleert u de gekozen waarschuwings regel visueel.
 
-   [![Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![ingang](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Beperkings-en ingangs beheer
 

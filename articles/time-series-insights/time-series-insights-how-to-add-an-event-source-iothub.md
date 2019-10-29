@@ -3,7 +3,7 @@ title: Een IoT hub-gebeurtenis bron toevoegen aan Azure Time Series Insights | M
 description: In dit artikel wordt beschreven hoe u een gebeurtenis bron die is verbonden met een IoT-hub kunt toevoegen aan uw Time Series Insights-omgeving.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaac2e3e2fc489b364729711da151c28cde86d6c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f9dd79bacf2d21e0c7e7681e5217d5e874b2b30e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274684"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991199"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Een IoT hub-gebeurtenis bron toevoegen aan uw Time Series Insights omgeving
 
@@ -42,7 +42,7 @@ Een nieuwe consumenten groep toevoegen aan uw IoT-hub:
 
 1. Selecteer onder **instellingen**de optie **ingebouwde eind punten**en selecteer vervolgens het eind punt **gebeurtenissen** .
 
-   [![On de pagina eind punten van de build, selecteert u de knop gebeurtenissen](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
+   [Selecteer de knop gebeurtenissen![op de pagina eind punten van de build](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/1-iot-hub.png#lightbox)
 
 1. Voer onder **consumenten groepen**een unieke naam in voor de consumenten groep. Gebruik dezelfde naam in uw Time Series Insights omgeving wanneer u een nieuwe gebeurtenis bron maakt.
 
@@ -56,7 +56,7 @@ Een nieuwe consumenten groep toevoegen aan uw IoT-hub:
 
 1. Onder **omgevings topologie**selecteert u **gebeurtenis bronnen**en selecteert u vervolgens **toevoegen**.
 
-   [![Select gebeurtenis bronnen en selecteer vervolgens de knop toevoegen](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
+   [![gebeurtenis bronnen selecteren en selecteer vervolgens de knop toevoegen](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/2-add-event-source.png#lightbox)
 
 1. Voer in het deel venster **nieuwe bron van gebeurtenis** de naam van de **gebeurtenis bron**een unieke naam in voor deze time series Insights omgeving. Voer bijvoorbeeld **gebeurtenis-stream**in.
 
@@ -66,11 +66,11 @@ Een nieuwe consumenten groep toevoegen aan uw IoT-hub:
 
    * Als u al een IoT-hub in een van uw abonnementen hebt, selecteert u **IOT hub gebruiken uit beschik bare abonnementen**. Deze optie is de eenvoudigste benadering.
    
-     [![Select opties in het deel venster nieuwe bron van gebeurtenis](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
+     [![opties selecteren in het deel venster nieuwe gebeurtenis bron](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/3-select-an-import-option.png#lightbox)
 
     * In de volgende tabel worden de eigenschappen beschreven die vereist zijn voor de optie **IOT hub van beschik bare abonnementen gebruiken** :
 
-       [![New-deel venster gebeurtenis bron-eigenschappen die moeten worden ingesteld in de optie IoT Hub van beschik bare abonnementen gebruiken](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
+       [![nieuw deel venster gebeurtenis Bron: eigenschappen die moeten worden ingesteld in de optie IoT Hub van beschik bare abonnementen gebruiken](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png#lightbox)
 
        | Eigenschap | Beschrijving |
        | --- | --- |

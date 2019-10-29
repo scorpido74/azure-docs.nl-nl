@@ -3,21 +3,20 @@ title: Gegevens opvragen uit een Azure Time Series Insights preview-omgeving C# 
 description: In dit artikel wordt beschreven hoe u gegevens uit een Azure Time Series Insights omgeving kunt opvragen door een aangepaste app te C# coderen die is geschreven in de .net-taal (C-Sharp).
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f1a10996749a113fec1f29d2150ebaacfeffbeba
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 46ade3ed6e8712a074974c81e51b2dd6c834db26
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168886"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989671"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Gegevens opvragen uit de Azure Time Series Insights voorbeeld omgeving met behulp vanC#
 

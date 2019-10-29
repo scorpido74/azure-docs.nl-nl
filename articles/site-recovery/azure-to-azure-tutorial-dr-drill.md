@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 10/21/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a4f2b2ff1c42d18626fb2be27438b2f499ee9368
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: f85dd3abae8f6e4b3ccc10654e6da8363e80b3d3
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782633"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968282"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Een DR-herstelanalyse uitvoeren van Azure-VM’s naar een secundaire Azure-regio
 
@@ -33,6 +33,7 @@ Deze tutorial laat zien hoe u een DR-herstelanalyse kunt uitvoeren voor een Azur
 
 - Voordat u een failovertest uitvoert, wordt u aangeraden de VM-eigenschappen te controleren of alles is zoals verwacht.  Ga naar de VM-eigenschappen in **Gerepliceerde items**. In de **Essentials**-blade ziet u informatie over de instellingen en status van machines.
 - **Wij raden u aan om een apart VM-netwerk te gebruiken voor de failover** en niet het standaardnetwerk dat is ingesteld toen u replicatie inschakelde.
+- Afhankelijk van de configuratie van de bron netwerken voor elke NIC, kunt u optioneel **subnet, IP-adres, openbaar IP, netwerk beveiligings groep of interne Load Balancer** opgeven om aan elke NIC te koppelen onder de instellingen voor de Testfailover in compute &-netwerk vóór voor het uitvoeren van DR-oefeningen.
 
 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren
@@ -41,14 +42,17 @@ Deze tutorial laat zien hoe u een DR-herstelanalyse kunt uitvoeren voor een Azur
 
 2. Selecteer in **Failover testen** een herstelpunt om voor de failover te gebruiken:
 
-   - **Laatst verwerkt**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is
-   - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM's naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
+   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is
+   - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM’s naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
    - **Aangepast**: selecteer een herstelpunt.
 
 3. Selecteer het virtuele Azure-doelnetwerk waarop Azure VM's in de secundaire regio na de failover worden aangesloten.
 
+    > [!NOTE]
+    > De vervolg keuzelijst voor het selecteren van een virtueel Azure-netwerk is niet zichtbaar als de failovertest voor het gerepliceerde item vooraf zijn geconfigureerd.
+
 4. Klik op **OK** om de failover te starten. Klik op de VM om de eigenschappen ervan te openen als u de voortgang wilt volgen. U kunt ook op de taak **Failover testen** klikken in kluisnaam > **Instellingen** > **Taken** > **Site Recovery-taken**.
-5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in de Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
+5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
 6. Verwijder VM's die tijdens de testfailover zijn gemaakt door op het gerepliceerde item of het herstelplan op **Failovertest opschonen** te klikken. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
 
 ## <a name="next-steps"></a>Volgende stappen

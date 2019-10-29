@@ -1,5 +1,5 @@
 ---
-title: SQL Server-data bases op een virtuele Azure-machine beheren en bewaken met Azure Backup
+title: SQL Server Db's beheren en bewaken op een virtuele machine van Azure-Azure Backup
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases die worden uitgevoerd op een virtuele machine van Azure kunt beheren en controleren.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7440859748a613f7d6af751974e07289175ed7ac
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934764"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968369"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Back-ups van SQL Server-data bases beheren en bewaken
 
@@ -32,7 +32,6 @@ Azure Backup worden alle hand matig geactiveerde taken weer gegeven in de portal
 
 Ga voor meer informatie over bewakings scenario's naar [bewaking in het Azure Portal](backup-azure-monitoring-built-in-monitor.md) en [bewaking met behulp van Azure monitor](backup-azure-monitoring-use-azuremonitor.md).  
 
-
 ## <a name="view-backup-alerts"></a>Waarschuwingen voor back-ups weergeven
 
 Omdat logboek back-ups om de 15 minuten worden uitgevoerd, kan het lastig zijn om back-uptaken te controleren. Azure Backup vereenvoudigt de bewaking door e-mail waarschuwingen te verzenden. E-mail waarschuwingen zijn:
@@ -43,7 +42,7 @@ Omdat logboek back-ups om de 15 minuten worden uitgevoerd, kan het lastig zijn o
 
 Database back-upwaarschuwingen bewaken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **waarschuwingen en gebeurtenissen**op het kluis dashboard.
 
@@ -57,14 +56,14 @@ Database back-upwaarschuwingen bewaken:
 
 U kunt op verschillende manieren stoppen met het maken van een back-up van een SQL Server Data Base:
 
-* Stop alle toekomstige back-uptaken en verwijder alle herstel punten.
-* Alle toekomstige back-uptaken stoppen en de herstel punten intact laten.
+- Stop alle toekomstige back-uptaken en verwijder alle herstel punten.
+- Alle toekomstige back-uptaken stoppen en de herstel punten intact laten.
 
 Als u ervoor kiest herstel punten te verlaten, houdt u deze details in acht:
 
-* Alle herstel punten blijven intact, alle weghalen stoppen bij het stoppen van de beveiliging bij het bewaren van gegevens.
-* Er worden kosten in rekening gebracht voor het beveiligde exemplaar en de verbruikte opslag. Zie [Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie.
-* Als u een gegevens bron verwijdert zonder back-ups te stoppen, zullen nieuwe back-ups mislukken.
+- Alle herstel punten blijven intact, alle weghalen stoppen bij het stoppen van de beveiliging bij het bewaren van gegevens.
+- Er worden kosten in rekening gebracht voor het beveiligde exemplaar en de verbruikte opslag. Zie [Azure backup prijzen](https://azure.microsoft.com/pricing/details/backup/)voor meer informatie.
+- Als u een gegevens bron verwijdert zonder back-ups te stoppen, zullen nieuwe back-ups mislukken.
 
 Ga als volgt te werk om de beveiliging van een database te stoppen:
 
@@ -82,22 +81,20 @@ Ga als volgt te werk om de beveiliging van een database te stoppen:
 
     ![Back-up stoppen selecteren](./media/backup-azure-sql-database/stop-db-button.png)
 
-
 5. Selecteer in het menu **back-up stoppen** of u gegevens wilt behouden of verwijderen. Als u wilt, kunt u een reden en opmerking opgeven.
 
     ![Gegevens behouden of verwijderen in het menu back-up stoppen](./media/backup-azure-sql-database/stop-backup-button.png)
 
 6. Selecteer **back-up stoppen**.
 
-
 > [!NOTE]
 >
 >Zie de veelgestelde vragen hieronder voor meer informatie over de optie gegevens verwijderen:
->* [Wat gebeurt er met de back-ups als ik een Data Base uit een automatisch beveiligde exemplaar Verwijder?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->* [Als ik de back-upbewerking van een automatisch beveiligde data base stop, wat is dan het gedrag?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>- [Wat gebeurt er met de back-ups als ik een Data Base uit een automatisch beveiligde exemplaar Verwijder?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [Als ik de back-upbewerking van een automatisch beveiligde data base stop, wat is dan het gedrag?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
-
 
 ## <a name="resume-protection-for-a-sql-database"></a>Beveiliging voor een SQL-database hervatten
 
@@ -115,12 +112,13 @@ Als u de beveiliging voor een SQL database wilt hervatten:
 
 U kunt verschillende typen back-ups op aanvraag uitvoeren:
 
-* Volledige back-up
-* Alleen te kopiëren volledige back-up
-* Differentiële back-up
-* Logboekback-up
+- Volledige back-up
+- Alleen te kopiëren volledige back-up
+- Differentiële back-up
+- Logboekback-up
 
-Wanneer u de Bewaar periode voor een volledige back-up wilt opgeven, wordt de Bewaar termijn voor de volledige back-up van ad-hoc automatisch ingesteld op 45 dagen vanaf de huidige tijd. <br/>
+Wanneer u de Bewaar periode voor een volledige back-up wilt opgeven, wordt de Bewaar termijn voor de volledige back-up van ad-hoc automatisch ingesteld op 45 dagen vanaf de huidige tijd.
+
 Zie [SQL Server back-uptypen](backup-architecture.md#sql-server-backup-types)voor meer informatie.
 
 ## <a name="unregister-a-sql-server-instance"></a>Registratie van een SQL Server-exemplaar ongedaan maken
@@ -141,35 +139,34 @@ Hef de registratie van een SQL Server-exemplaar op nadat u de beveiliging hebt u
 
    ![Verwijderen selecteren](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
-
 ## <a name="modify-policy"></a>Beleid wijzigen
+
 Wijzig het beleid om de back-upfrequentie of het Bewaar bereik te wijzigen.
 
 > [!NOTE]
 > Elke wijziging in de retentie periode wordt retro actief toegepast op alle oudere herstel punten, naast de nieuwe.
 
-Ga in het kluis dashboard naar beleid voor het **beheren** > van**back-ups** en kies het beleid dat u wilt bewerken.
+Ga in het kluis dashboard naar **beheer** > **back-upbeleid** en kies het beleid dat u wilt bewerken.
 
   ![Back-upbeleid beheren](./media/backup-azure-sql-database/modify-backup-policy.png)
 
   ![Back-upbeleid wijzigen](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-Beleids wijzigingen zijn van invloed op alle gekoppelde back-upitems en triggers die overeenkomen met het **configureren van beveiligings** taken. 
+Beleids wijzigingen zijn van invloed op alle gekoppelde back-upitems en triggers die overeenkomen met het **configureren van beveiligings** taken.
 
-#### <a name="inconsistent-policy"></a>Inconsistent beleid 
+### <a name="inconsistent-policy"></a>Inconsistent beleid
 
 Soms kan een bewerking voor het wijzigen van een beleid leiden tot een **inconsistente** beleids versie voor sommige back-upitems. Dit gebeurt wanneer de bijbehorende taak **Beveiliging configureren** mislukt voor het back-upitem nadat een bewerking voor het wijzigen van beleid is geactiveerd. Dit ziet er als volgt uit in de weer gave back-upitem:
- 
+
   ![Inconsistent beleid](./media/backup-azure-sql-database/inconsistent-policy.png)
 
 U kunt de beleids versie voor alle betrokken items met één klik oplossen:
 
   ![Inconsistent beleid corrigeren](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
- 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>De extensie opnieuw registreren op de SQL Server-VM
 
-Soms kan de uitbrei ding van de werk belasting op de VM een of meer redenen hebben. In dergelijke gevallen zullen alle bewerkingen die op de virtuele machine worden geactiveerd, mislukken. Mogelijk moet u de extensie opnieuw registreren op de VM. Met de bewerking **opnieuw registreren** wordt de back-upextensie van de werk belasting op de VM opnieuw geïnstalleerd zodat bewerkingen kunnen worden voortgezet.  <br>
+Soms kan de uitbrei ding van de werk belasting op de VM een of meer redenen hebben. In dergelijke gevallen zullen alle bewerkingen die op de virtuele machine worden geactiveerd, mislukken. Mogelijk moet u de extensie opnieuw registreren op de VM. Met de bewerking **opnieuw registreren** wordt de back-upextensie van de werk belasting op de VM opnieuw geïnstalleerd zodat bewerkingen kunnen worden voortgezet.
 
 Gebruik deze optie om voorzichtig te zijn. Wanneer een virtuele machine wordt geactiveerd met een uitbrei ding die al in orde is, wordt de extensie door deze bewerking opnieuw gestart. Dit kan ertoe leiden dat alle taken mislukken. Controleer op een of meer van de [symptomen](backup-sql-server-azure-troubleshoot.md#re-registration-failures) voordat u de bewerking opnieuw registreren start.
 

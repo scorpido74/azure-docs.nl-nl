@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679044"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968921"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en Microsoft Flow
 
@@ -252,7 +252,7 @@ Zie de [Alfabetische lijst](../logic-apps/workflow-definition-language-functions
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | De hoofd tekst van een specifiek deel in de uitvoer van een actie met meerdere delen retour neren. |
 | [uitvoer](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | De uitvoer van een actie tijdens runtime retour neren. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Retourneert de waarde voor een para meter die wordt beschreven in uw werk stroom definitie. |
-| [Daardoor](../logic-apps/workflow-definition-language-functions-reference.md#result) | De invoer en uitvoer retour neren van alle acties binnen de opgegeven actie met een bereik, zoals `For_each`, `Until` en `Scope`. |
+| [Daardoor](../logic-apps/workflow-definition-language-functions-reference.md#result) | De invoer en uitvoer retour neren van alle acties binnen de opgegeven actie met een bereik, zoals `For_each`, `Until`en `Scope`. |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | De uitvoer van een trigger retour neren tijdens runtime of vanuit andere JSON-naam-en-waardeparen. Zie ook [triggerOutputs](#triggerOutputs) en [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Retour neer de `body` uitvoer van een trigger tijdens runtime. Zie [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Een enkele waarde Retour neren die overeenkomt met een sleutel naam in trigger uitvoer van *formulier gegevens* of *formulier codering* . |
@@ -491,7 +491,7 @@ add(<summand_1>, <summand_2>)
 
 | Parameter | Verplicht | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2* > | Ja | Geheel getal, vlotter of gemengd | De toe te voegen getallen |
+| <*summand_1*>, <*summand_2*> | Ja | Geheel getal, vlotter of gemengd | De toe te voegen getallen |
 |||||
 
 | Retour waarde | Type | Beschrijving |
@@ -1237,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Parameter | Verplicht | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
 | <*tijds tempel* > | Ja | Tekenreeks | De teken reeks die de tijds tempel bevat |
-| <*destinationTimeZone* > | Ja | Tekenreeks | De naam voor de tijd zone van het doel. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor meer informatie over tijd zone namen. |
+| <*destinationTimeZone* > | Ja | Tekenreeks | De naam voor de tijd zone van het doel. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor tijdzone namen, maar u moet mogelijk alle Lees tekens uit de naam van de tijd zone verwijderen. |
 | <*indeling* > | Nee | Tekenreeks | Een [enkele indelings aanduiding](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of een [aangepast opmaak patroon](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De standaard notatie voor de tijds tempel is ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (jjjj-mm-ddTuu: mm: SS: fffffffK), die voldoet aan [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) en tijd zone gegevens behoudt. |
 |||||
 
@@ -1279,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Parameter | Verplicht | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
 | <*tijds tempel* > | Ja | Tekenreeks | De teken reeks die de tijds tempel bevat |
-| <*sourceTimeZone* > | Ja | Tekenreeks | De naam voor de bron tijdzone. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor meer informatie over tijd zone namen. |
-| <*destinationTimeZone* > | Ja | Tekenreeks | De naam voor de tijd zone van het doel. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor meer informatie over tijd zone namen. |
+| <*sourceTimeZone* > | Ja | Tekenreeks | De naam voor de bron tijdzone. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor tijdzone namen, maar u moet mogelijk alle Lees tekens uit de naam van de tijd zone verwijderen. |
+| <*destinationTimeZone* > | Ja | Tekenreeks | De naam voor de tijd zone van het doel. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor tijdzone namen, maar u moet mogelijk alle Lees tekens uit de naam van de tijd zone verwijderen. |
 | <*indeling* > | Nee | Tekenreeks | Een [enkele indelings aanduiding](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of een [aangepast opmaak patroon](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De standaard notatie voor de tijds tempel is ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (jjjj-mm-ddTuu: mm: SS: fffffffK), die voldoet aan [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) en tijd zone gegevens behoudt. |
 |||||
 
@@ -1322,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Parameter | Verplicht | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
 | <*tijds tempel* > | Ja | Tekenreeks | De teken reeks die de tijds tempel bevat |
-| <*sourceTimeZone* > | Ja | Tekenreeks | De naam voor de bron tijdzone. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor meer informatie over tijd zone namen. |
+| <*sourceTimeZone* > | Ja | Tekenreeks | De naam voor de bron tijdzone. Zie de [micro soft time zone-index waarden](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)voor tijdzone namen, maar u moet mogelijk alle Lees tekens uit de naam van de tijd zone verwijderen. |
 | <*indeling* > | Nee | Tekenreeks | Een [enkele indelings aanduiding](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of een [aangepast opmaak patroon](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De standaard notatie voor de tijds tempel is ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (jjjj-mm-ddTuu: mm: SS: fffffffK), die voldoet aan [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) en tijd zone gegevens behoudt. |
 |||||
 
@@ -3318,7 +3318,7 @@ Hier is het bijgewerkte JSON-object:
 
 ### <a name="result"></a>Daardoor
 
-De invoer en uitvoer van alle acties die binnen de opgegeven actie met een bereik vallen, retour neren, zoals een `For_each`, `Until` of `Scope` actie. Deze functie is handig om de resultaten van een mislukte actie te retour neren, zodat u uitzonde ringen kunt vaststellen en verwerken. Zie [context en resultaten ophalen voor fouten](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)voor meer informatie.
+De invoer en uitvoer van alle acties die binnen de opgegeven actie met een bereik vallen, retour neren, zoals een `For_each`, `Until`of `Scope` actie. Deze functie is handig om de resultaten van een mislukte actie te retour neren, zodat u uitzonde ringen kunt vaststellen en verwerken. Zie [context en resultaten ophalen voor fouten](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)voor meer informatie.
 
 ```
 result('<scopedActionName>')

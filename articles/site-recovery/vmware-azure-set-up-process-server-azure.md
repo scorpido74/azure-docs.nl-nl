@@ -1,49 +1,49 @@
 ---
-title: Een processerver in Azure instellen voor VMware-VM en fysieke server failbacks met Azure Site Recovery | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een processerver in Azure, naar Azure-VM's naar VMware-failback instellen.
+title: Een proces server in azure instellen voor VMware VM en fysieke server failback met Azure Site Recovery | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u een proces server in azure instelt om failback van virtuele Azure-machines in VMware te maken.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 037f0ff64b114ce9341702564147825099695aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 080edfc86848bb6c6579c177c72d3fbd3214a06a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110027"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968843"
 ---
-# <a name="set-up-a-process-server-in-azure-for-failback"></a>Een processerver in Azure voor failback instellen
+# <a name="set-up-a-process-server-in-azure-for-failback"></a>Een proces server in azure instellen voor failback
 
-Nadat u een failover VMware-machines of fysieke servers naar Azure met [siteherstel](site-recovery-overview.md), kunt u een failover ze terug naar de on-premises site wanneer deze opnieuw te starten. Als u wilt uitvoeren van een failback, moet u het instellen van een tijdelijke processerver in Azure, voor het afhandelen van replicatie van Azure naar on-premises. Nadat de failback is voltooid, kunt u deze virtuele machine verwijderen.
+Nadat u een failover hebt uitgevoerd voor VMware-Vm's of fysieke servers naar Azure met [site Recovery](site-recovery-overview.md), kunt u een failback uitvoeren naar de on-premises site wanneer deze weer actief is. Als u een failback wilt uitvoeren, moet u een tijdelijke proces server in azure instellen om replicatie van Azure naar on-premises af te handelen. U kunt deze virtuele machine verwijderen nadat de failback is voltooid.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-Meer informatie over de [opnieuw beveiligen](vmware-azure-reprotect.md) en [failback](vmware-azure-failback.md) proces.
+Meer informatie over het proces voor opnieuw [beveiligen](vmware-azure-reprotect.md) en [failback](vmware-azure-failback.md) .
 
 [!INCLUDE [site-recovery-vmware-process-server-prerequ](../../includes/site-recovery-vmware-azure-process-server-prereq.md)]
 
 
-## <a name="deploy-a-process-server-in-azure"></a>Een processerver in Azure implementeren
+## <a name="deploy-a-process-server-in-azure"></a>Een proces server in azure implementeren
 
-1. In de kluis > **Site Recovery-infrastructuur**> **beheren** > **configuratieservers**, selecteer de configuratieserver.
-2. Klik in de pagina op **+ processerver**
-3. In **toevoegen processerver** pagina en selecteer de processerver in Azure implementeren.
-4. Geef de instellingen voor Azure, met inbegrip van het abonnement dat is gebruikt voor failover, een resourcegroep, de Azure-regio die wordt gebruikt voor failover en het virtuele netwerk waarin de Azure VM's zich bevinden. Als u meerdere Azure-netwerken gebruikt, moet u een processerver in elk.
+1. Selecteer de configuratie server in de kluis > **site Recovery-infra structuur**>  > **configuratie servers**te **beheren** .
+2. Klik op de pagina Server op **+ proces server**
+3. Op de pagina **proces server toevoegen** en selecteer om de proces server in azure te implementeren.
+4. Geef de Azure-instellingen op, waaronder het abonnement dat wordt gebruikt voor failover, een resource groep, de Azure-regio die wordt gebruikt voor failover en het virtuele netwerk waarin de Azure-Vm's zich bevinden. Als u meerdere Azure-netwerken hebt gebruikt, hebt u een proces server in elk bestand nodig.
 
-   ![Proces het galerie-item toevoegen](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
+   ![Galerie-item proces server toevoegen](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
-4. In **servernaam**, **gebruikersnaam**, en **wachtwoord**, Geef een naam voor de processerver en de referenties die beheerdersmachtigingen heeft op de server worden toegewezen.
-5. Geef een opslagaccount moet worden gebruikt voor de server-VM-schijven, het subnet waarin de virtuele machine van de processerver geplaatst worden en de IP-adres dat wordt toegewezen wanneer de virtuele machine wordt gestart.
-6. Klik op **OK** knop om te beginnen met het implementeren van de virtuele machine van de processerver.
+4. In **Server naam**, **gebruikers naam**en **wacht woord**, geeft u een naam op voor de proces server en referenties waaraan beheerders machtigingen op de server worden toegewezen.
+5. Geef een opslag account op dat moet worden gebruikt voor de VM-schijven van de server, het subnet waarin de virtuele machine van de proces server zich bevindt en het IP-adres van de server dat wordt toegewezen wanneer de virtuele machine wordt gestart.
+6. Klik op de knop **OK** om te beginnen met de implementatie van de proces Server-VM. De proces server wordt geïmplementeerd op de Standard_A8_v2-SKU. Zorg ervoor dat deze VM-SKU beschikbaar is voor uw abonnement.
 
 >
 
-## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>De processerver (die wordt uitgevoerd in Azure) registreren bij een configuratieserver (on-premises uitgevoerd)
+## <a name="registering-the-process-server-running-in-azure-to-a-configuration-server-running-on-premises"></a>De proces server registreren (die in azure wordt uitgevoerd) naar een configuratie server (die on-premises wordt uitgevoerd)
 
-Nadat de virtuele machine van de processerver actief is, moet u registreren bij de on-premises configuratieserver, als volgt:
+Nadat de virtuele machine van de proces server actief is, moet u deze als volgt registreren bij de on-premises configuratie server:
 
 [!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
 

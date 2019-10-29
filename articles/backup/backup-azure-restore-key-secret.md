@@ -1,5 +1,5 @@
 ---
-title: Key Vault sleutel en geheim voor versleutelde Vm's herstellen met Azure Backup
+title: Key Vault sleutel & geheim voor versleutelde virtuele machine herstellen met Azure Backup
 description: Meer informatie over het herstellen van Key Vault sleutel en geheim in Azure Backup met behulp van Power shell
 ms.reviewer: geg
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: dacurwin
-ms.openlocfilehash: cca8cf3a222b71954e6727e184ff5d16839a6a68
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 289042f70c44ab3b818a5350cc2e3db19e4d8a26
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954558"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969120"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Key Vault sleutel en geheim voor versleutelde Vm's herstellen met Azure Backup
 
@@ -31,6 +31,7 @@ In dit artikel vindt u informatie over het gebruik van Azure VM backup voor het 
 
 > [!NOTE]
 > Nadat de schijf is hersteld voor de versleutelde VM, moet u het volgende doen:
+>
 > * $details is gevuld met herstel schijf taak Details, zoals vermeld in [Power shell-stappen in de sectie schijven herstellen](backup-azure-vms-automation.md#restore-an-azure-vm)
 > * De virtuele machine moet worden gemaakt van de herstelde schijven pas **nadat de sleutel en het geheim zijn hersteld in de sleutel kluis**.
 
@@ -95,7 +96,8 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
   ```
 
 > [!NOTE]
-> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl en door gebruik te maken van tekst na geheimen/ https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 bijv. de URL voor uitvoer geheim is en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+>
+> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $encryptionObject. OsDiskKeyAndSecretDetails. SecretUrl en door gebruik te maken van tekst na geheimen/bijv. de URL voor uitvoer geheim is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 en de naam van het geheim is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * De waarde van de tag DiskEncryptionKeyFileName is hetzelfde als de geheime naam.
 >
 >
@@ -130,7 +132,8 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 ```
 
 > [!NOTE]
-> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $rp 1. KeyAndSecretDetails. SecretUrl en het gebruik van tekst na geheimen/bijv. de URL https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 voor uitvoer geheim is en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+>
+> * De waarde voor $secretname kan worden verkregen door te verwijzen naar de uitvoer van $rp 1. KeyAndSecretDetails. SecretUrl en het gebruik van tekst na geheimen/bijv. de URL voor uitvoer geheim is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 en de geheime naam is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
 > * De waarde van de tag DiskEncryptionKeyFileName is hetzelfde als de geheime naam.
 > * De waarde voor DiskEncryptionKeyEncryptionKeyURL kan worden verkregen uit de sleutel kluis nadat de sleutels terug zijn hersteld en de cmdlet [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) wordt gebruikt
 >

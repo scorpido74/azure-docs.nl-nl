@@ -1,5 +1,5 @@
 ---
-title: Back-ups van SQL-data bases in azure Vm's maken en herstellen met Power shell-Azure Backup
+title: SQL-data base in azure VM Backup & herstellen via Power shell-Azure Backup
 description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen met Azure Backup en Power shell.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 229d960f7851b5fab8504b6c2a109bece6c7b31f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249054"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969099"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
 In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om een back-up te maken van een SQL-data base en deze te herstellen in een Azure VM met behulp van [Azure Backup](backup-overview.md) Recovery Services
 
@@ -471,7 +471,7 @@ Als de uitvoer verloren is gegaan of als u de relevante taak-ID wilt ophalen, [h
 
 ### <a name="change-policy-for-backup-items"></a>Beleid voor back-upitems wijzigen
 
-De gebruiker kan een bestaand beleid wijzigen of het beleid van het back-upitem wijzigen van Policy1 in Policy2. Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) met back-upitem als de para meter.
+De gebruiker kan een bestaand beleid wijzigen of het beleid van het back-upitem wijzigen van Policy1 in Policy2. Als u wilt scha kelen tussen beleids regels voor een back-upitem, haalt u het relevante beleid op en maakt u een back-up van het item. Gebruik de opdracht [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) met back-upitem als para meter.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

@@ -1,22 +1,19 @@
 ---
-title: Een hub-en spoke-netwerk valideren met terraform in azure
+title: Zelf studie-een hub-en spoke-netwerk in azure valideren met behulp van terraform
 description: Zelf studie voor het valideren van hub-en spoke-netwerk topologie met alle virtuele netwerken die met elkaar zijn verbonden.
-services: terraform
-ms.service: azure
-keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, vnet-peering,
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169707"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969343"
 ---
-# <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>Zelfstudie: Een hub-en spoke-netwerk valideren met terraform in azure
+# <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Zelf studie: een hub-en spoke-netwerk in azure valideren met behulp van terraform
 
 In dit artikel voert u de terraform-bestanden uit die zijn gemaakt in het vorige artikel in deze serie. Het resultaat is een validatie van de connectiviteit tussen de virtuele demo netwerken.
 
@@ -41,7 +38,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Controleer na het volt ooien van de [vereisten](#prerequisites)of de juiste configuratie bestanden aanwezig zijn.
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -53,13 +50,13 @@ Controleer na het volt ooien van de [vereisten](#prerequisites)of de juiste conf
     cd clouddrive
     ```
 
-1. Ga naar de nieuwe map:
+1. Maak de nieuwe directory de actieve directory:
 
     ```bash
     cd hub-spoke
     ```
 
-1. Voer de `ls` opdracht uit om te controleren `.tf` of de configuratie bestanden die zijn gemaakt in de vorige zelf studies, worden weer gegeven:
+1. Voer de `ls` opdracht uit om te controleren of de `.tf` config-bestanden die zijn gemaakt in de vorige zelf studies, worden weer gegeven:
 
     ![Terraform-demo configuratie bestanden](./media/terraform-hub-and-spoke-tutorial-series/hub-spoke-config-files.png)
 
@@ -103,22 +100,22 @@ In deze sectie wordt uitgelegd hoe u de connectiviteit van de gesimuleerde on-pr
 
 1. Kopieer de **SSH** -opdracht naar het klem bord naast de tekst **aanmelding met een lokaal VM-account**.
 
-1. Uitvoeren vanaf een Linux-prompt `ssh` verbinding maken met de gesimuleerde on-premises omgeving. Gebruik het wacht woord dat is `on-prem.tf` opgegeven in het parameter bestand.
+1. Voer `ssh` uit vanaf een Linux-prompt om verbinding te maken met de gesimuleerde on-premises omgeving. Gebruik het wacht woord dat is opgegeven in het `on-prem.tf` parameter bestand.
 
-1. Voer de `ping` opdracht uit om de verbinding met de JumpBox-vm in het hub-VNet te testen:
+1. Voer de `ping` opdracht uit om de verbinding met de JumpBox-VM in het hub-VNet te testen:
 
    ```bash
    ping 10.0.0.68
    ```
 
-1. Voer de `ping` opdracht uit om de verbinding met de JumpBox vm's in elke spoke te testen:
+1. Voer de `ping` opdracht uit om de verbinding met de JumpBox Vm's in elke spoke te testen:
 
    ```bash
    ping 10.1.0.68
    ping 10.2.0.68
    ```
 
-1. Als u de SSH-sessie op de virtuele machine met **premises-VM** wilt afsluiten &lt;, voert `exit` u in en drukt u op ENTER >.
+1. Als u de SSH-sessie op de virtuele machine met **premises-VM** wilt afsluiten, voert u `exit` in en klikt u op &lt;> invoeren.
 
 ## <a name="troubleshoot-vpn-issues"></a>VPN-problemen oplossen
 
@@ -142,7 +139,7 @@ Als u deze niet meer nodig hebt, verwijdert u de resources die zijn gemaakt in d
     cd ..
     ```
 
-1. Verwijder de `hub-scope` map (inclusief alle bestanden):
+1. Verwijder de `hub-scope` Directory (inclusief alle bestanden):
 
     ```bash
     rm -r hub-spoke

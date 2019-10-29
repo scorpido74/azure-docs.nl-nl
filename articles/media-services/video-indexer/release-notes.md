@@ -10,23 +10,29 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672661"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968717"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
-Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u informatie over:
+Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
 
-* De meest recente versies
+* De nieuwste releases
 * Bekende problemen
 * Opgeloste fouten
-* Afgeschafte functies
+* Afgeschafte functionaliteit
+
+## <a name="october-2019"></a>Oktober 2019
+ 
+* Zoeken naar tekst met animatie in de galerie
+
+    Wanneer u animatie tekens indexeert, kunt u deze nu zoeken in de video-drukproef weergave van het account. Zie [herkenning van animatie tekens](animated-characters-recognition.md)voor meer informatie.
 
 ## <a name="september-2019"></a>September 2019
  
@@ -48,7 +54,7 @@ Meerdere verbeteringen aangekondigd op IBC 2019:
     
     Het model voor het defragmenteren van het onderwerp ondersteunt nu een diepere granulatie van de IPTC-taxonomie. Lees de volledige details op [Azure Media Services nieuwe, AI-innovaties](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/).
 
-## <a name="august-2019"></a>2019 augustus
+## <a name="august-2019"></a>Augustus 2019
  
 ### <a name="video-indexer-deployed-in-uk-south"></a>Video Indexer geïmplementeerd in UK-zuid
 
@@ -85,7 +91,7 @@ Ondersteuning voor URL-query teken reeks van 4096 (in plaats van 2048) bij het i
 
 Projecten kunnen nu worden gemaakt op basis van Video's die in verschillende talen zijn geïndexeerd (alleen API).
 
-## <a name="july-2019"></a>2019 juli
+## <a name="july-2019"></a>Juli 2019
 
 ### <a name="editor-as-a-widget"></a>Editor als een widget
 

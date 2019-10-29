@@ -1,37 +1,34 @@
 ---
-title: De Azure Terraform Visual Studio Code-extensie installeren en gebruiken
+title: Zelf studie-de Azure terraform Visual Studio code extension configureren
 description: Lees hoe u de Azure Terraform-extensie in Visual Studio Code installeert en gebruikt.
-services: terraform
-ms.service: azure
-keywords: terraform, azure, devops, visual studio code, extensie
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 7dd87f38ca5dfb1c2fdd38b56b314e0cbbe3ce12
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 93ec85a2e37350ef56ff8c2e1a0ea16bb3be355e
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169930"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969310"
 ---
-# <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>De Azure Terraform Visual Studio Code-extensie installeren en gebruiken
+# <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Zelf studie: de Azure terraform Visual Studio code extension configureren
 
-De Microsoft Azure Terraform Visual Studio Code-extensie is ontworpen om de productiviteit van ontwikkelaars te verhogen wanneer zij Terraform met Azure schrijven, testen en gebruiken. De extensie biedt opdrachtondersteuning voor Terraform, visualisatie van resourcegrafieken en CloudShell-integratie in Visual Studio Code.
+Met de code-extensie van Azure terraform Visual Studio kunt u met terraform werken vanuit de editor. Met deze extensie kunt u terraform-configuraties ontwerpen, testen en uitvoeren. De uitbrei ding biedt ook ondersteuning voor de visualisatie van resource grafieken.
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
-> * Terraform gebruiken om de inrichting van Azure-services te automatiseren en te vereenvoudigen.
-> * De Microsoft Terraform Visual Studio Code-extensie voor Azure-services installeren en gebruiken.
-> * Visual Studio Code gebruiken om Terraform-plannen te schrijven, te plannen en uit te voeren.
+> * Het inrichten van Azure-Services automatiseren met terraform
+> * Installeer en gebruik de terraform Visual Studio code-extensie voor Azure-Services.
+> * Gebruik Visual Studio code om terraform-abonnementen te schrijven, te plannen en uit te voeren.
 
 ## <a name="prerequisites"></a>Vereisten
-- **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+- **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-- **Terraform**: [Terraform installeren en configureren](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [installeer en configureer Terraform](/azure/virtual-machines/linux/terraform-install-configure).
 
-- **Visual Studio Code**: Installeer de versie van [Visual Studio Code](https://code.visualstudio.com/download) die bij uw omgeving past.
+- **Visual Studio Code**: installeer de versie van [Visual Studio Code](https://code.visualstudio.com/download) die bij uw omgeving past.
 
 ## <a name="prepare-your-dev-environment"></a>Uw ontwikkelaarsomgeving voorbereiden
 
@@ -95,7 +92,7 @@ De Azure Terraform-extensie wordt in de lijst met geïnstalleerde extensies weer
 
 U kunt nu alle ondersteunde Terraform-opdrachten in uw Cloud Shell-omgeving uitvoeren vanuit Visual Studio Code.
 
-## <a name="exercise-1-basic-terraform-commands-walk-through"></a>Oefening 1: Overzicht van Terraform-basisopdrachten
+## <a name="exercise-1-basic-terraform-commands-walk-through"></a>Oefening 1: overzicht van Terraform-basisopdrachten
 
 In deze oefening gaat u een basisconfiguratiebestand van Terraform maken en uitvoeren waarmee een nieuwe Azure-resourcegroep wordt ingericht.
 
@@ -138,13 +135,13 @@ In deze oefening gaat u een basisconfiguratiebestand van Terraform maken en uitv
 
     ![Het bestand main.tf](media/terraform-vscode-extension/tf-main-tf.png)
 
-1. Selecteer **Weergeven > Opdrachtenpalet... > Azure Terraform: Init** in de menubalk.
+1. Selecteer **Weergeven > Opdrachtenpalet... > Azure Terraform: init** in de menubalk.
 
 1. Zodra de bevestiging wordt weergegeven, selecteert u **OK**.
 
     ![Wilt u Cloud Shell openen?](media/terraform-vscode-extension/tf-do-you-want-to-open-cloud-shell.png)
 
-1. Wanneer u Cloud Shell voor de eerste keer start vanuit een nieuwe map, wordt u gevraagd de webtoepassing in te stellen. Selecteer **Openen**.
+1. De eerste keer dat u Cloud Shell vanuit een nieuwe map Start, wordt u gevraagd een webtoepassing te maken. Selecteer **Openen**.
 
     ![Eerste start van Cloud Shell](media/terraform-vscode-extension/tf-first-launch-of-cloud-shell.png)
 
@@ -235,7 +232,7 @@ U kunt als volgt bevestigen dat Terraform uw nieuwe resourcegroep heeft vernieti
 
     ![Controleren of uw resourcegroep is vernietigd](media/terraform-vscode-extension/tf-refresh-resource-groups-button.png)
 
-## <a name="exercise-2-terraform-compute-module"></a>Oefening 2: De Terraform-module *compute*
+## <a name="exercise-2-terraform-compute-module"></a>Oefening 2: de Terraform-module *compute*
 
 In deze oefening leert u hoe u de Terraform-module *compute* in de Visual Studio Code-omgeving laadt.
 
@@ -287,7 +284,7 @@ Na enkele ogenblikken ziet u een lijst in het Terminal-deelvenster dat vergelijk
 
 ![Resulaten van lint-test](media/terraform-vscode-extension/tf-lint-test-results.png)
 
-### <a name="module-test-end-to-end"></a>Moduletest: *end-to-end*
+### <a name="test-the-module"></a>De module testen
 
 1. Selecteer **Weergeven > Opdrachtenpalet > Azure Terraform: Execute Test** in de menubalk.
 
@@ -304,7 +301,7 @@ Na enkele ogenblikken ziet u een lijst in het Terminal-deelvenster dat vergelijk
 
 Na enkele ogenblikken ziet u een lijst in het Terminal-deelvenster dat vergelijkbaar is met het volgende voorbeeld:
 
-![Resultaten van end-to-end-test](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
+![Testresultaten](media/terraform-vscode-extension/tf-end-to-end-test-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

@@ -1,5 +1,5 @@
 ---
-title: Back-ups van Azure-VM'S beheren en bewaken met behulp van de Azure Backup-Service
+title: Back-ups van Azure-VM'S beheren en bewaken met de Azure Backup-Service
 description: Meer informatie over het beheren en bewaken van back-ups van Azure-VM'S met behulp van de Azure Backup-service.
 ms.reviewer: sogup
 author: dcurwin
@@ -8,17 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029253"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969235"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Back-ups van Azure-VM'S beheren met Azure Backup-Service
 
 In dit artikel wordt beschreven hoe u virtuele Azure-machines (Vm's) beheert waarvan een back-up is gemaakt met behulp van de [Azure backup-service](backup-overview.md). Het artikel bevat ook een overzicht van de back-upgegevens die u op het kluis dashboard kunt vinden.
-
 
 In de Azure Portal biedt het Recovery Services kluis-dash board toegang tot kluis gegevens, waaronder:
 
@@ -35,7 +34,7 @@ U kunt back-ups beheren met behulp van het dash board en door in te zoomen op af
 
 Vm's op het kluis dashboard weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik in het menu hub op **Bladeren**. Typ in de lijst met resources **Recovery Services**. Terwijl u typt, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Recovery Services kluizen**.
 
     ![Een Recovery Services-kluis maken](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
@@ -61,7 +60,7 @@ Vm's op het kluis dashboard weer geven:
 
 Een back-upbeleid beheren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Open het kluis dashboard.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/). Open het kluis dashboard.
 2. Selecteer **Azure virtual machines**op de tegel **Back-upitems** .
 
     ![De tegel back-upitems openen](./media/backup-azure-manage-vms/contoso-vault-1606.png)
@@ -77,11 +76,12 @@ Een back-upbeleid beheren:
      ![Een back-upbeleid kiezen](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
 ## <a name="run-an-on-demand-backup"></a>Een back-up op aanvraag uitvoeren
+
 U kunt een back-up op aanvraag uitvoeren van een virtuele machine nadat u de beveiliging hebt ingesteld. Houd deze details in acht:
 
-- Als de eerste back-up in behandeling is, maakt back-ups op aanvraag een volledige kopie van de virtuele machine in de Recovery Services kluis.
-- Als de eerste back-up is voltooid, worden met een back-up op aanvraag alleen wijzigingen van de vorige moment opname naar de Recovery Services kluis verzonden. Dat wil zeggen dat latere back-ups altijd incrementeel zijn.
-- De Bewaar termijn voor een back-up op aanvraag is de Bewaar waarde die u opgeeft wanneer u de back-up triggert.
+* Als de eerste back-up in behandeling is, maakt back-ups op aanvraag een volledige kopie van de virtuele machine in de Recovery Services kluis.
+* Als de eerste back-up is voltooid, worden met een back-up op aanvraag alleen wijzigingen van de vorige moment opname naar de Recovery Services kluis verzonden. Dat wil zeggen dat latere back-ups altijd incrementeel zijn.
+* De Bewaar termijn voor een back-up op aanvraag is de Bewaar waarde die u opgeeft wanneer u de back-up triggert.
 
 Een back-up op aanvraag activeren:
 
@@ -147,32 +147,32 @@ De beveiliging van een virtuele machine hervatten:
 
 Er zijn twee manieren om de back-upgegevens van een VM te verwijderen:
 
-- Selecteer in het dash board van het kluis-item back-up stoppen en volg de instructies voor het stoppen van de [beveiliging en de optie back-upgegevens verwijderen](#stop-protection-and-delete-backup-data) .
+* Selecteer in het dash board van het kluis-item back-up stoppen en volg de instructies voor het stoppen van de [beveiliging en de optie back-upgegevens verwijderen](#stop-protection-and-delete-backup-data) .
 
   ![Back-up stoppen selecteren](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
-- Selecteer back-upgegevens verwijderen uit het kluis-item dashboard. Deze optie is ingeschakeld als u hebt gekozen voor het stoppen van de [beveiliging en de optie back-upgegevens behouden](#stop-protection-and-retain-backup-data) tijdens het stoppen van de VM-beveiliging
+* Selecteer back-upgegevens verwijderen uit het kluis-item dashboard. Deze optie is ingeschakeld als u hebt gekozen voor het stoppen van de [beveiliging en de optie back-upgegevens behouden](#stop-protection-and-retain-backup-data) tijdens het stoppen van de VM-beveiliging
 
   ![Selecteer back-up verwijderen](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-  - Selecteer **back-upgegevens verwijderen**op het [kluis-item dashboard](#view-vms-on-the-dashboard).
-  - Typ de naam van het back-upitem om te bevestigen dat u de herstel punten wilt verwijderen.
+  * Selecteer **back-upgegevens verwijderen**op het [kluis-item dashboard](#view-vms-on-the-dashboard).
+  * Typ de naam van het back-upitem om te bevestigen dat u de herstel punten wilt verwijderen.
 
     ![Back-upgegevens verwijderen](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-  - Selecteer **verwijderen**als u de back-upgegevens voor het item wilt verwijderen. Een meldings bericht laat u weten dat de back-upgegevens zijn verwijderd.
+  * Selecteer **verwijderen**als u de back-upgegevens voor het item wilt verwijderen. Een meldings bericht laat u weten dat de back-upgegevens zijn verwijderd.
 
   > [!NOTE]
   > Wanneer u back-upgegevens verwijdert, verwijdert u alle gekoppelde herstel punten. U kunt geen specifieke herstel punten kiezen die u wilt verwijderen.
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Back-upitem waarbij primaire gegevens bron niet meer bestaat
 
-- Als Azure-Vm's die zijn geconfigureerd voor Azure backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, mislukken de back-uptaken van geplande back-uptaken en op aanvraag (ad-hoc) met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte ad-hoc back-uptaken (mislukte geplande taken worden niet weer gegeven). 
-- Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het laatste herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
-- Gebruikers wordt aangeraden de back-upitems te verwijderen waarin de primaire gegevens bron niet meer bestaat om extra kosten te voor komen, als het back-upbestand/de gegevens voor de verwijderings resources niet langer vereist zijn omdat het laatste herstel punt permanent wordt behouden en de gebruiker wordt gefactureerd als volgens de prijzen voor back-ups die van toepassing zijn.
-
+* Als Azure-Vm's die zijn geconfigureerd voor Azure backup, worden verwijderd of verplaatst zonder de beveiliging te stoppen, mislukken de back-uptaken van geplande back-uptaken en op aanvraag (ad-hoc) met de fout UserErrorVmNotFoundV2. De pre-controle van de back-up wordt alleen als kritiek weer gegeven voor mislukte ad-hoc back-uptaken (mislukte geplande taken worden niet weer gegeven).
+* Deze back-upitems blijven actief in het systeem dat voldoet aan het back-up-en bewaar beleid dat door de gebruiker is ingesteld. De back-upgegevens voor deze Azure-Vm's worden bewaard volgens het Bewaar beleid. De verlopen herstel punten (met uitzonde ring van het laatste herstel punt) worden gereinigd op basis van de Bewaar termijn die in het back-upbeleid is ingesteld.
+* Gebruikers wordt aangeraden de back-upitems te verwijderen waarin de primaire gegevens bron niet meer bestaat om extra kosten te voor komen, als het back-upbestand/de gegevens voor de verwijderings resources niet langer vereist zijn omdat het laatste herstel punt permanent wordt behouden en de gebruiker wordt gefactureerd als volgens de prijzen voor back-ups die van toepassing zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [het maken van een back-up van Azure-vm's vanuit de instellingen van de virtuele machine](backup-azure-vms-first-look-arm.md).
-- Meer informatie over het [herstellen van vm's](backup-azure-arm-restore-vms.md).
-- Meer informatie over het [bewaken van back-ups van Azure-vm's](backup-azure-monitor-vms.md).
+
+* Meer informatie over [het maken van een back-up van Azure-vm's vanuit de instellingen van de virtuele machine](backup-azure-vms-first-look-arm.md).
+* Meer informatie over het [herstellen van vm's](backup-azure-arm-restore-vms.md).
+* Meer informatie over het [bewaken van back-ups van Azure-vm's](backup-azure-monitor-vms.md).

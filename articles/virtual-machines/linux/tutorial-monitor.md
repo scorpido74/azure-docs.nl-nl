@@ -16,13 +16,13 @@ ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
+ms.lasthandoff: 10/28/2019
 ms.locfileid: "71680076"
 ---
-# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelfstudie: Een virtuele Linux-machine in azure bewaken
+# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Zelf studie: een virtuele Linux-machine bewaken in azure
 
 Azure monitoring gebruikt agenten voor het verzamelen van opstart-en prestatie gegevens van Azure-Vm's, het opslaan van deze gegevens in azure Storage en het toegankelijk maken via de portal, de Azure PowerShell module en Azure CLI. Geavanceerde bewaking wordt geleverd met Azure Monitor voor VM's door metrische gegevens over prestaties te verzamelen, toepassings onderdelen te detecteren die op de virtuele machine zijn geïnstalleerd en die prestatie grafieken en afhankelijkheids kaarten bevatten.
 
@@ -30,7 +30,7 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Diagnostische gegevens over opstarten op een VM inschakelen
-> * Diagnostische gegevens over opstarten weergeven
+> * Diagnostische gegevens over opstarten bekijken
 > * Metrische gegevens over de VM-host weergeven
 > * Azure Monitor voor VM's inschakelen
 > * Metrische gegevens over de prestaties van de virtuele machine weer geven
@@ -94,7 +94,7 @@ az vm boot-diagnostics enable \
   --storage $bloburi
 ```
 
-## <a name="view-boot-diagnostics"></a>Diagnostische gegevens over opstarten weergeven
+## <a name="view-boot-diagnostics"></a>Diagnostische gegevens over opstarten bekijken
 
 Wanneer diagnostische gegevens over opstarten zijn ingeschakeld, wordt telkens wanneer u de virtuele machine stopt en start informatie over het opstartproces naar een logboekbestand geschreven. In dit voorbeeld moet u eerst de toewijzing van de virtuele machine als volgt ongedaan maken met de opdracht [az vm deallocate](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate):
 
@@ -129,13 +129,13 @@ Als u de bewaking van uw Azure-VM met Azure Monitor voor VM's wilt inschakelen:
 
 1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
+2. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
 
-3. Op de **inzichten (preview)** weergeeft, schakelt **Probeer nu**.
+3. Selecteer **nu proberen**op de pagina **inzichten (preview)** .
 
-    ![Azure Monitor voor virtuele machines voor een virtuele machine inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Azure Monitor voor VM's inschakelen voor een VM](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-4. Op de **Azure Monitor Insights voorbereiden** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement, selecteert u deze in de vervolgkeuzelijst.  
+4. Als u een bestaande Log Analytics-werk ruimte in hetzelfde abonnement hebt, selecteert u op de pagina **Azure monitor Insights voorbereiden** .  
 
     De lijst preselecteert de standaard werkruimte en de locatie waar de virtuele machine in het abonnement is geïmplementeerd. 
 
@@ -144,7 +144,7 @@ Als u de bewaking van uw Azure-VM met Azure Monitor voor VM's wilt inschakelen:
 
 Nadat u bewaking hebt ingeschakeld, moet u mogelijk enkele minuten wachten voordat u de metrische gegevens voor prestaties voor de virtuele machine kunt weer geven.
 
-![Azure Monitor inschakelen voor virtuele machines verwerking van de implementatie controleren](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Verwerking van de implementatie van Azure Monitor voor VM's-bewaking inschakelen](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>Metrische gegevens over de prestaties van de virtuele machine weer geven
 
@@ -152,7 +152,7 @@ Azure Monitor voor VM's bevat een reeks prestatie diagrammen die gericht zijn op
 
 1. Klik in Azure Portal op **Resourcegroepen**, selecteer **myResourceGroupMonitor** en selecteer vervolgens **myVM** in de lijst met resources.
 
-2. Op de pagina virtuele machine in de **bewaking** sectie, selecteer **inzichten (preview)** .
+2. Selecteer op de pagina VM, in de sectie **bewaking** , de optie **inzichten (preview)** .
 
 3. Selecteer het tabblad **prestaties** .
 
@@ -183,7 +183,7 @@ In deze zelf studie hebt u de prestaties van uw VM geconfigureerd en bekeken. U 
 > [!div class="checklist"]
 > * Een resourcegroep en VM maken
 > * Diagnostische gegevens over opstarten op de virtuele machine inschakelen
-> * Diagnostische gegevens over opstarten weergeven
+> * Diagnostische gegevens over opstarten bekijken
 > * Metrische gegevens over de host weergeven
 > * Azure Monitor voor VM's inschakelen
 > * Metrische gegevens over de VM weergeven

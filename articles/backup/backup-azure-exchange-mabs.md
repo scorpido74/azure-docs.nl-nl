@@ -1,5 +1,5 @@
 ---
-title: Een back-up maken van een Exchange-Server naar Azure Backup met Azure Backup Server
+title: Back-up maken van Exchange Server naar Azure Backup met Azure Backup Server
 description: Meer informatie over het maken van een back-up van een Exchange-Server naar Azure Backup met Azure Backup Server
 ms.reviewer: kasinh
 author: dcurwin
@@ -8,26 +8,30 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 89ad5cac462384e8c688ae9ca68c5ae309249a71
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ed88f069c110795c2c5561196c41d3d75640bd53
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689286"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968466"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Een back-up maken van een Exchange-Server naar Azure met Azure Backup Server
+
 In dit artikel wordt beschreven hoe u Microsoft Azure Backup Server (MABS) configureert om een back-up te maken van een micro soft Exchange-Server naar Azure.  
 
 ## <a name="prerequisites"></a>Vereisten
+
 Voordat u doorgaat, moet u ervoor zorgen dat Azure Backup Server is [geïnstalleerd en voor bereid](backup-azure-microsoft-azure-backup.md).
 
 ## <a name="mabs-protection-agent"></a>MABS-beveiligings agent
+
 Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de Exchange-Server:
 
 1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents > geïnstalleerd** in de MABS-beheerders console. Zie [de MABS-beveiligings agent installeren](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
+
 1. Klik in de MABS Administrator-console op **beveiliging**en klik vervolgens op **Nieuw** op het lint met hulp middelen om de wizard **nieuwe beveiligings groep maken** te openen.
 2. Klik in het **welkomst** scherm van de wizard op **volgende**.
 3. Selecteer op het scherm **type beveiligings groep selecteren** de optie **servers** en klik op **volgende**.
@@ -89,6 +93,7 @@ Voer de volgende stappen uit om de MABS-beveiligings agent te installeren op de 
 19. Klik op **Sluiten**.
 
 ## <a name="recover-the-exchange-database"></a>De Exchange-data base herstellen
+
 1. Als u een Exchange-Data Base wilt herstellen, klikt u in de MABS Administrator-console op **herstellen** .
 2. Zoek de Exchange-data base die u wilt herstellen.
 3. Selecteer een online herstel punt in de vervolg keuzelijst *herstel tijd* .
@@ -99,10 +104,11 @@ Voor online herstel punten zijn er vijf herstel typen:
 * **Herstellen naar de oorspronkelijke Exchange Server-locatie:** De gegevens worden hersteld op de oorspronkelijke Exchange-Server.
 * **Herstellen naar een andere Data Base op een Exchange-Server:** De gegevens worden hersteld naar een andere Data Base op een andere Exchange-Server.
 * **Herstellen naar een herstel database:** De gegevens worden hersteld naar een Exchange Recovery-Data Base (RDB).
-* **Kopiëren naar een netwerkmap:** De gegevens worden hersteld naar een netwerkmap.
+* **Kopiëren naar een** netwerkmap: De gegevens worden hersteld naar een netwerkmap.
 * **Kopiëren naar tape:** Als u een tape wisselaar of een zelfstandig tape station hebt aangesloten en geconfigureerd op MABS, wordt het herstel punt naar een vrije tape gekopieerd.
 
     ![Kies online replicatie](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [Veelgestelde vragen over Azure Backup](backup-azure-backup-faq.md)

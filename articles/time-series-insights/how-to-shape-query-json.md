@@ -2,19 +2,19 @@
 title: Aanbevolen procedures voor het vorm geven van JSON in Azure Time Series Insights query's | Microsoft Docs
 description: Meer informatie over het verbeteren van de efficiëntie van Azure Time Series Insights query's.
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
-ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 09090354012d2cd3ba050ff9c94593947f27b006
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274399"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990287"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>JSON van shape om query prestaties te maximaliseren 
 
@@ -35,6 +35,9 @@ Denk na over hoe u gebeurtenissen naar Time Series Insights verzendt. Dat wil ze
 1. Zorg ervoor dat u de Time Series Insights maximum eigenschaps limieten van hebt bereikt:
    - 600-eigenschappen (kolommen) voor S1-omgevingen.
    - 800-eigenschappen (kolommen) voor S2-omgevingen.
+
+> [!TIP]
+> Bekijk de [limieten en planning](time-series-insights-update-plan.md) in azure time series Insights preview.
 
 De volgende richt lijnen helpen de best mogelijke query prestaties te garanderen:
 
@@ -58,7 +61,7 @@ De voor beelden zijn gebaseerd op een scenario waarbij meerdere apparaten meting
 
 In het volgende voor beeld is er één Azure IoT Hub-bericht waarbij de buitenste matrix een gedeeld gedeelte van algemene dimensie waarden bevat. De buitenste matrix gebruikt referentie gegevens om de efficiëntie van het bericht te verg Roten. Referentie gegevens bevatten meta gegevens van apparaten die niet worden gewijzigd bij elke gebeurtenis, maar biedt nuttige eigenschappen voor gegevens analyse. Het batchiseren van algemene dimensie waarden en het gebruiken van referentie gegevens bespaart u op bytes die via de kabel worden verzonden, waardoor het bericht efficiënter wordt.
 
-Houd rekening met de volgende JSON-nettolading die naar uw Time Series Insights GA-omgeving wordt verzonden met behulp van een [IOT-apparaat bericht object](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) dat wordt GESERIALISEERD in JSON wanneer het naar de Azure-Cloud wordt verzonden:
+Houd rekening met de volgende JSON-nettolading die wordt verzonden naar uw Time Series Insights GA-omgeving met behulp van een [IOT-apparaat bericht object](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet) dat in JSON wordt geserialiseerd wanneer het naar de Azure-Cloud wordt verzonden:
 
 
 ```JSON
@@ -94,16 +97,16 @@ Houd rekening met de volgende JSON-nettolading die naar uw Time Series Insights 
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
-   | FXXX | REGEL @ no__t-0DATA | EU |
-   | FYYY | REGEL @ no__t-0DATA | VS |
+   | FXXX | LIJN\_gegevens | EU |
+   | FYYY | LIJN\_gegevens | VS |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
    | deviceId | messageId | deviceLocation | tijdstempel | reeks. Stroom verhouding FT3/s | reeks. Snelheid van de motor olie druk psi |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | REGEL @ no__t-0DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
-   | FXXX | REGEL @ no__t-0DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
-   | FYYY | REGEL @ no__t-0DATA | VS | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
+   | FXXX | LIJN\_gegevens | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
+   | FXXX | LIJN\_gegevens | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
+   | FYYY | LIJN\_gegevens | VS | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22,2 |
 
 > [!NOTE]
 > - De kolom **deviceId** fungeert als de kolomkop voor de verschillende apparaten in een vloot. Als u voor de **deviceId** -waarde een eigen eigenschaps naam instelt, wordt het totale aantal apparaten beperkt tot 595 (voor S1-omgevingen) of 795 (voor S2-omgevingen) met de andere vijf kolommen.
@@ -164,21 +167,21 @@ Voor beeld van JSON-nettolading:
 
    | deviceId | reeks. tagId | messageId | deviceLocation | type | teleenheid |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | REGEL @ no__t-0DATA | EU | Stroom verhouding | FT3/s |
-   | FXXX | oilPressure | REGEL @ no__t-0DATA | EU | Olie druk van de motor | psi |
-   | FYYY | pumpRate | REGEL @ no__t-0DATA | VS | Stroom verhouding | FT3/s |
-   | FYYY | oilPressure | REGEL @ no__t-0DATA | VS | Olie druk van de motor | psi |
+   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s |
+   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi |
+   | FYYY | pumpRate | LIJN\_gegevens | VS | Stroom verhouding | FT3/s |
+   | FYYY | oilPressure | LIJN\_gegevens | VS | Olie druk van de motor | psi |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
    | deviceId | reeks. tagId | messageId | deviceLocation | type | teleenheid | tijdstempel | reeks. waarde |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | REGEL @ no__t-0DATA | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | oilPressure | REGEL @ no__t-0DATA | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
-   | FXXX | pumpRate | REGEL @ no__t-0DATA | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | oilPressure | REGEL @ no__t-0DATA | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
-   | FYYY | pumpRate | REGEL @ no__t-0DATA | VS | Stroom verhouding | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | oilPressure | REGEL @ no__t-0DATA | VS | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22,2 |
+   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |
+   | FXXX | pumpRate | LIJN\_gegevens | EU | Stroom verhouding | FT3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | oilPressure | LIJN\_gegevens | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 49,2 |
+   | FYYY | pumpRate | LIJN\_gegevens | VS | Stroom verhouding | FT3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | oilPressure | LIJN\_gegevens | VS | Olie druk van de motor | psi | 2018-01-17T01:18:00Z | 22,2 |
 
 > [!NOTE]
 > - De kolommen **deviceId** en **Series. tagId** fungeren als de kolom koppen voor de verschillende apparaten en tags in een vloot. Als een eigen kenmerk wordt gebruikt, wordt de query beperkt tot 594 (voor S1-omgevingen) of 794 (voor S2-omgevingen) met het totale aantal apparaten met de andere zes kolommen.
@@ -195,7 +198,7 @@ Voor een eigenschap met een groot aantal mogelijke waarden kunt u het beste als 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees meer informatie over [het verzenden van IOT Hub-apparaten naar de Cloud](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+- Lees meer informatie over [het verzenden van IOT Hub-apparaten naar de Cloud](../iot-hub/iot-hub-devguide-messages-construct.md).
 
 - Lees [Azure time series Insights query syntaxis](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax) voor meer informatie over de query syntaxis voor de rest API time series Insights Data Access.
 

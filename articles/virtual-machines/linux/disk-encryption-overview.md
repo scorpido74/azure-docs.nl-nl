@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a3d48d53c2d4d0c859b58a94b12ffa94590b18a5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174709"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989636"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption voor Linux-Vm's 
 
@@ -96,7 +96,7 @@ Een voor beeld van opdrachten die kunnen worden gebruikt om de gegevens schijven
 ## <a name="networking-requirements"></a>Netwerk vereisten
 
 Als u de functie Azure Disk Encryption wilt inschakelen, moeten de virtuele Linux-machines voldoen aan de volgende vereisten voor netwerk eindpunt configuratie:
-  - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de virtuele Linux-machine verbinding kunnen maken met een Azure Active Directory-eind punt @no__t -0login. microsoftonline. com @ no__t-1.
+  - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de virtuele Linux-machine verbinding kunnen maken met een Azure Active Directory-eind punt \[login.microsoftonline.com\].
   - Als u de versleutelings sleutels naar uw sleutel kluis wilt schrijven, moet de virtuele Linux-machine verbinding kunnen maken met het eind punt van de sleutel kluis.
   - De virtuele Linux-machine moet verbinding kunnen maken met een Azure Storage-eind punt dat als host fungeert voor de Azure extension-opslag plaats en een Azure Storage-account dat de VHD-bestanden host.
   -  Als uw beveiligings beleid de toegang tot het Internet beperkt met Azure-Vm's, kunt u de voor gaande URI omzetten en een specifieke regel configureren om uitgaande connectiviteit met de IP-adressen toe te staan. Zie [Azure Key Vault achter een firewall](../../key-vault/key-vault-access-behind-firewall.md)voor meer informatie.  

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: bestanden en mappen herstellen vanuit een back-up van een Azure-VM'
+title: 'Azure Backup: bestanden en mappen herstellen vanuit een back-up van Azure VM'
 description: Bestanden herstellen vanaf een herstel punt van een virtuele machine in azure
 ms.reviewer: pullabhk
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1c0d470f12cf54c900fec3c453b7e5f07d0b2325
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900316"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968489"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -74,10 +74,9 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
     - uitgaande poort 3260
 
 > [!Note]
-> 
-> * De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor beeld: de naam van het gedownloade script begint met \'VMname\'\_\'Geoname\'_\'GUID\', zoals ContosoVM_wcus_12345678....<br><br>
-> * De URL zou ' https:\//pod01-rec2.wcus.backup.windowsazure.com ' zijn
-
+>
+> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor beeld: de naam van het gedownloade script begint met \'VMname\'\_\'Geoname\'_\'GUID\', zoals ContosoVM_wcus_12345678....<br><br>
+> - De URL zou ' https:\//pod01-rec2.wcus.backup.windowsazure.com ' zijn
 
    Voor Linux is voor het script de onderdelen open-iscsi en lshw vereist om verbinding te maken met het herstel punt. Als de onderdelen niet bestaan op de computer waarop het script wordt uitgevoerd, vraagt het script om toestemming om de onderdelen te installeren. Geef toestemming om de benodigde onderdelen te installeren.
 
@@ -223,7 +222,7 @@ Het script vereist ook python-en bash-onderdelen om het herstel punt veilig uit 
 
 In deze sectie wordt uitgelegd hoe u bestands herstel kunt uitvoeren vanuit back-ups van virtuele Azure-machines waarvan het aantal schijven > 16 is en elke schijf grootte > 4 TB.
 
-Omdat bestands herstel proces alle schijven van de back-up koppelt, worden de volgende actie punten aanbevolen in het geval van een groot aantal schijven (> 16) of grote schijven (> 4 TB).
+Omdat bestands herstel proces alle schijven van de back-up koppelt, in het geval van een groot aantal schijven (> 16) of grote schijven (> 4 TB elk), worden de volgende actie punten aanbevolen.
 
 - Bewaar een afzonderlijke herstel server (virtuele machines van Azure VM D2v3) voor bestands herstel. U kunt dat alleen bestands herstel gebruiken en vervolgens uitschakelen wanneer dat niet vereist is. Het terugzetten op de oorspronkelijke machine wordt niet aanbevolen, omdat het aanzienlijke gevolgen heeft voor de VM zelf.
 - Voer vervolgens het script opnieuw uit om te controleren of de bestands herstel bewerking is gelukt.

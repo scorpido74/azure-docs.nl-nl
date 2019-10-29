@@ -1,5 +1,5 @@
 ---
-title: Een Recovery Services kluis verplaatsen over Azure-abonnementen of resource groepen
+title: Azure Backup Recovery Services kluizen verplaatsen
 description: Instructies voor het verplaatsen van de Recovery Services-kluis in azure-abonnementen en resource groepen.
 ms.reviewer: sogup
 author: dcurwin
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6e95c012aed9fdcfda2b64c310458425df2b9f9e
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: fb98ba8c393d28e7cdfb0b53cdd9ba11c171726f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337891"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969142"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
 In dit artikel wordt uitgelegd hoe u een Recovery Services kluis kunt verplaatsen die is geconfigureerd voor Azure Backup over Azure-abonnementen of naar een andere resource groep in hetzelfde abonnement. U kunt de Azure Portal of Power shell gebruiken om een Recovery Services kluis te verplaatsen.
 
-## <a name="supported-region"></a>Ondersteunde regio
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 Resource verplaatsing voor Recovery Services kluis wordt ondersteund in Australië-oost, Australië-Zuid-Oost, Canada-centraal, Canada-oost, Zuid-Azië-oost, Azië-oost, centraal VS, Noord-Centraal VS, VS-Oost, Oost-VS2, Zuid-Centraal VS, West-Centraal VS, West-Centraal VS2, VS-West, Centraal-India, India-zuid, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Europa-noord, Europa-west, Zuid-Afrika-noord, Zuid-Afrika-west, UK-zuid en UK-west.
 
@@ -38,18 +38,17 @@ Resource verplaatsing voor Recovery Services kluis wordt ondersteund in Australi
 - De opties voor het verplaatsen van resources die via het klassieke model zijn geïmplementeerd, zijn afhankelijk van het feit of u de resources in een abonnement verplaatst of naar een nieuw abonnement. Zie [dit artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) voor meer informatie.
 - Het back-upbeleid dat voor de kluis is gedefinieerd, blijft behouden nadat de kluis over alle abonnementen of naar een nieuwe resource groep is verplaatst.
 - Het verplaatsen van de kluis met de Azure Files, Azure File Sync of SQL in IaaS Vm's tussen abonnementen en resource groepen wordt niet ondersteund.
-- Als u een kluis met back-upgegevens voor de VM verplaatst, moet u de virtuele machines verplaatsen naar hetzelfde abonnement en dezelfde doel-VM-resource groepsnaam gebruiken (zoals in het oude abonnement) om door te gaan met back-ups.<br>
+- Als u een kluis met back-upgegevens voor de VM verplaatst, moet u de virtuele machines verplaatsen naar hetzelfde abonnement en dezelfde doel-VM-resource groepsnaam gebruiken (zoals in het oude abonnement) om door te gaan met back-ups.
 
 > [!NOTE]
 >
 > Recovery Services kluizen die zijn geconfigureerd voor gebruik met **Azure site Recovery** kunnen nog niet worden verplaatst. Als u virtuele machines (Azure IaaS, Hyper-V, VMware) of fysieke computers hebt geconfigureerd voor herstel na nood gevallen met behulp van de **Azure site Recovery**, wordt de verplaatsings bewerking geblokkeerd. De functie voor het verplaatsen van resources voor Site Recovery service is nog niet beschikbaar.
 
-
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Azure Portal gebruiken om Recovery Services kluis te verplaatsen naar een andere resource groep
 
 Een Recovery Services-kluis en de bijbehorende resources verplaatsen naar een andere resource groep
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met **Recovery Services kluizen** en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
    ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -68,18 +67,17 @@ Een Recovery Services-kluis en de bijbehorende resources verplaatsen naar een an
 
 5. Als u de doel resource groep wilt toevoegen, selecteert u in de vervolg keuzelijst **resource groep** een bestaande resource groep of klikt u op **een nieuwe groep maken** optie.
 
-   ![Bron maken](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![Resource maken](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. Nadat u de resource groep hebt toegevoegd, **moet u weten dat de hulpprogram ma's en scripts die zijn gekoppeld aan verplaatste resources, niet werken totdat ze zijn bijgewerkt** met de optie nieuwe resource-id's en klik vervolgens op **OK** om het verplaatsen van de kluis te volt ooien.
 
    ![Bevestigings bericht](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
-
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>Azure Portal gebruiken om Recovery Services kluis te verplaatsen naar een ander abonnement
 
 U kunt een Recovery Services kluis en de bijbehorende resources naar een ander abonnement verplaatsen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met Recovery Services kluizen en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
     ![Service kluis herstellen openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -110,7 +108,7 @@ U kunt een Recovery Services kluis en de bijbehorende resources naar een ander a
 
 ## <a name="use-powershell-to-move-recovery-services-vault"></a>Power shell gebruiken om Recovery Services kluis te verplaatsen
 
-Als u een Recovery Services kluis wilt verplaatsen naar een andere resource groep `Move-AzureRMResource` , gebruikt u de cmdlet. `Move-AzureRMResource`vereist de resource naam en het resource type. U kunt beide van de `Get-AzureRmRecoveryServicesVault` cmdlet ophalen.
+Als u een Recovery Services kluis wilt verplaatsen naar een andere resource groep, gebruikt u de `Move-AzureRMResource`-cmdlet. `Move-AzureRMResource` vereist de resource naam en het resource type. U kunt beide van de `Get-AzureRmRecoveryServicesVault` cmdlet ophalen.
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"
@@ -118,7 +116,7 @@ $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Als u de resources naar een ander abonnement wilt verplaatsen `-DestinationSubscriptionId` , neemt u de para meter op.
+Als u de resources naar een ander abonnement wilt verplaatsen, neemt u de para meter `-DestinationSubscriptionId` op.
 
 ```powershell
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
@@ -134,14 +132,12 @@ Als u een Recovery Services kluis wilt verplaatsen naar een andere resource groe
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Als u wilt verplaatsen naar een nieuw abonnement, bieden de `--destination-subscription-id` parameter.
+Als u wilt overstappen op een nieuw abonnement, geeft u de para meter `--destination-subscription-id` op.
 
 ## <a name="post-migration"></a>Na de migratie
 
-1. U moet de toegangs controles voor de resource groepen instellen/controleren.  
+1. De toegangs controle voor de resource groepen instellen/controleren.  
 2. De functie voor het maken van een back-up en controle moet opnieuw worden geconfigureerd voor de kluis die de verplaatsing heeft voltooid. De vorige configuratie gaat verloren tijdens de verplaatsings bewerking.
-
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

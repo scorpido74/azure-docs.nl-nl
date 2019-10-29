@@ -13,17 +13,17 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6a2d67c38a6e61cb6610b861c03544fae42406b1
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 4668a9a012b2e379d532091deec832d5f99dd1fc
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910150"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990632"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Quickstart: Een Azure data factory en pijplijn maken door de REST-API te gebruiken
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Snelstartgids: een Azure data factory en pijp lijn maken met behulp van de REST API
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-rest-api.md)
 
 Azure Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee u gegevensgestuurde werkstromen kunt maken in de cloud. Op deze manier kunt u de verplaatsing en transformatie van gegevens indelen en automatiseren. Met Azure Data Factory kunt u gegevensgestuurde werkstromen (ook wel pijplijnen) maken en plannen die gegevens uit verschillende gegevensarchieven kunnen opnemen en de gegevens kunnen verwerken/transformeren met behulp van rekenservices zoals Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics en Azure Machine Learning. Daarnaast kunt u de uitvoergegevens publiceren naar gegevensarchieven zoals Azure SQL Data Warehouse, zodat BI-toepassingen (business intelligence) ze kunnen gebruiken.
@@ -88,7 +88,7 @@ $authHeader = @{
 }
 ```
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 Voer de volgende opdrachten uit om een data factory te maken:
 
@@ -115,7 +115,7 @@ Houd rekening met de volgende punten:
     ```
     Data factory name "ADFv2QuickStartDataFactory" is not available.
     ```
-* Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+* Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
 Dit is het voorbeeldantwoord:
 
@@ -304,7 +304,7 @@ Hier volgt een voorbeeld van uitvoer:
 In dit voorbeeld bevat deze pijplijn één activiteit en heeft deze twee parameters: het pad van de invoerblob en het pad van de uitvoerblob. De waarden voor deze parameters worden ingesteld wanneer de pijplijn wordt geactiveerd of uitgevoerd. De kopieeractiviteit verwijst naar dezelfde blobgegevensset die u in de vorige stap heb gemaakt als invoer en uitvoer. Wanneer de dataset wordt gebruikt als invoergegevensset, wordt het invoerpad opgegeven. En wanneer de dataset wordt gebruikt als uitvoergegevensset, wordt het uitvoerpad opgegeven.
 
 ```powershell
-$request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
+$request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
 $body = @"
 {
     "name": "Adfv2QuickStartPipeline",

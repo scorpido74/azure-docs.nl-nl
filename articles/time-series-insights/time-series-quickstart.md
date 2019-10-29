@@ -1,24 +1,23 @@
 ---
-title: 'Quickstart: Azure Time Series Insights-verkenner | Microsoft Docs'
+title: 'Snelstartgids: Azure Time Series Insights Explorer | Microsoft Docs'
 description: In deze Snelstartgids ziet u hoe u aan de slag kunt gaan met de Azure Time Series Insights Explorer in uw webbrowser om grote hoeveel heden IoT-gegevens te visualiseren. In dit artikel worden de belangrijkste functies van de verkenner van Azure Time Series Insights behandeld via een rondleiding in een demo-omgeving.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 83446facc734c0bfa24b7e78916d652467d01415
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978683"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990910"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>Snelstartgids: Azure Time Series Insights verkennen
+# <a name="quickstart-explore-azure-time-series-insights"></a>Quickstart: Azure Time Series Insights verkennen
 
 Met de Snelstartgids van Azure Time Series Insights Explorer kunt u aan de slag met Time Series Insights in een gratis demonstratie omgeving. In deze Quick Start leert u hoe u uw webbrowser kunt gebruiken om grote hoeveel heden IoT-gegevens en-Tour functies te visualiseren die nu algemeen beschikbaar zijn.
 
@@ -39,45 +38,45 @@ Deze Quick Start van Time Series Insights Explorer biedt een rond leiding door d
 
 1. De pagina met Time Series Insights snelle rond leiding wordt weer gegeven. Selecteer **volgende** om de rond leiding te starten.
 
-   [![Select volgende](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [![volgende selecteren](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>De demo omgeving verkennen
 
 1. Het **deel venster tijd selecteren** wordt weer gegeven. Gebruik dit venster om het tijdsbestek te selecteren dat u wilt visualiseren.
 
-   [@no__t-selectie venster 1Time](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [deel venster![tijd selecteren](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
 
 1. Selecteer een tijds bestek en sleep dit in de regio. Selecteer vervolgens **zoeken**.
 
-   [![Select een tijds bestek](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [een tijds bestek![selecteren](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
 
    U ziet in Time Series Insights een grafiek met een visualisatie voor het opgegeven tijdsbestek. U kunt verschillende acties uitvoeren in het lijn diagram. U kunt bijvoorbeeld filteren, vastmaken, sorteren en stapelen.
 
    Als u wilt terugkeren naar het **deel venster tijd**selecteren, selecteert u de pijl-omlaag zoals weer gegeven:
 
-   [![Chart](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [Grafiek![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
 
 1. Selecteer **toevoegen** in het **deel venster voor waarden** om een nieuwe zoek term toe te voegen.
 
-   [![Add-item](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [item![toevoegen](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
 
 1. In de grafiek kunt u een regio selecteren, hier met de rechtermuisknop op klikken en vervolgens **Explore Events** selecteren.
 
-   [![Explore gebeurtenissen](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [Gebeurtenissen![verkennen](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
 
    Een raster van uw onbewerkte gegevens wordt weer gegeven in de regio die u wilt verkennen.
 
-   [@no__t-weer gave 1Grid](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [Raster weergave![](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Gegevens selecteren en filteren
 
 1. Bewerk uw voor waarden om de waarden in de grafiek te wijzigen. Voeg een andere term toe om verschillende soorten waarden kruislings te correleren.
 
-   [![Add een term](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![een term toevoegen](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
 
 1. Geef een filter term op in het vak **filter reeksen** voor filteren op Improvised-serie. Voor deze quickstart voeren we **Station5** in om de temperatuur- en drukwaarden voor dat station kruislings te correleren.
 
-   [![Filter-serie](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [![-filter reeksen](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
 
 Als u klaar bent met de quickstart, kunt u experimenteren met de set voorbeeldgegevens om verschillende visualisaties te maken.
 

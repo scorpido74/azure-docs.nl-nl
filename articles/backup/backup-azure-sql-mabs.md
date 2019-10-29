@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f36560dbaea5b3efe29d38ca750fc732b9281360
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954481"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969126"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Back-ups maken van SQL Server naar Azure met Azure Backup Server
+
 Dit artikel leidt u door de configuratie stappen voor het maken van back-ups van SQL Server-data bases met behulp van Microsoft Azure Backup-Server (MABS).
 
 Het beheer van SQL Server database back-up naar Azure en het herstel van Azure bestaat uit drie stappen:
@@ -25,9 +26,11 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 3. De data base herstellen vanuit Azure.
 
 ## <a name="before-you-start"></a>Voordat u begint
+
 Voordat u begint, moet u ervoor zorgen dat u [de Azure backup server hebt geïnstalleerd en voor bereid](backup-azure-microsoft-azure-backup.md).
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Een back-upbeleid maken om SQL Server data bases te beveiligen in azure
+
 1. Klik in de Azure Backup Server gebruikers interface op de werk ruimte **beveiliging** .
 2. Klik op het lint met hulp middelen op **Nieuw** om een nieuwe beveiligings groep te maken.
 
@@ -36,7 +39,7 @@ Voordat u begint, moet u ervoor zorgen dat u [de Azure backup server hebt geïns
 4. Selecteer **servers**.
 
     ![Type beveiligings groep selecteren-' servers '](./media/backup-azure-backup-sql/pg-servers.png)
-5. Vouw de SQL Server machine uit waarvan de data bases waarvan een back-up moet worden gemaakt, aanwezig zijn. MABS toont diverse gegevens bronnen waarvan een back-up van die server kan worden gemaakt. Vouw de **alle SQL** -shares uit en selecteer de data bases (in dit geval hebben we Report Server $ MSDPM2012 en Report Server $ MSDPM2012TempDB) geselecteerd waarvan een back-up moet worden gemaakt. Klik op **Volgende**.
+5. Vouw de SQL Server machine uit waarvan de data bases waarvan een back-up moet worden gemaakt, aanwezig zijn. MABS toont diverse gegevens bronnen waarvan een back-up van die server kan worden gemaakt. Vouw de **alle SQL-shares** uit en selecteer de data bases (in dit geval hebben we Report Server $ MSDPM2012 en Report Server $ MSDPM2012TempDB) geselecteerd waarvan een back-up moet worden gemaakt. Klik op **Volgende**.
 
     ![SQL-data base selecteren](./media/backup-azure-backup-sql/pg-databases.png)
 6. Geef een naam op voor de beveiligings groep en schakel het selectie vakje **Ik wil online beveiliging** in.
@@ -66,7 +69,7 @@ Voordat u begint, moet u ervoor zorgen dat u [de Azure backup server hebt geïns
 
     ![Methode van initiële replicatie](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Voor de eerste back-up is overdracht van de volledige gegevens bron (SQL Server-Data Base) van de productie server (SQL Server machine) naar MABS vereist. Deze gegevens zijn mogelijk erg groot en het overdragen van de gegevens via het netwerk kan de band breedte overschrijden. Daarom kunnen beheerders ervoor kiezen om de eerste back-up over te dragen: **Hand matig** (met behulp van Verwissel bare media) om te voor komen dat de band breedte overbelast of **automatisch via het netwerk** (op een bepaald moment).
+    Voor de eerste back-up is overdracht van de volledige gegevens bron (SQL Server-Data Base) van de productie server (SQL Server machine) naar MABS vereist. Deze gegevens zijn mogelijk erg groot en het overdragen van de gegevens via het netwerk kan de band breedte overschrijden. Daarom kunnen beheerders ervoor kiezen om de eerste back-up te verplaatsen: **hand matig** (met behulp van Verwissel bare media) om te voor komen dat er band breedte overbelast is of **automatisch via het netwerk** (op een bepaald moment).
 
     Zodra de eerste back-up is voltooid, zijn de rest van de back-ups incrementele back-ups op de eerste back-upkopie. Incrementele back-ups zijn vaak klein en kunnen eenvoudig via het netwerk worden overgedragen.
 10. Kies wanneer u wilt dat de consistentie controle wordt uitgevoerd en klik op **volgende**.
@@ -88,13 +91,13 @@ Voordat u begint, moet u ervoor zorgen dat u [de Azure backup server hebt geïns
     >
     >
 
-    **Aanbevolen procedure**: Zorg ervoor dat de Azure-back-ups zijn gepland na het volt ooien van de back-ups van de lokale schijf met behulp van DPM. Hiermee wordt de meest recente schijf back-up naar Azure gekopieerd.
+    **Best Practice**: Zorg ervoor dat de Azure-back-ups zijn gepland na het volt ooien van de back-ups van de lokale schijf met behulp van DPM. Hiermee wordt de meest recente schijf back-up naar Azure gekopieerd.
 
 13. Kies het schema voor het Bewaar beleid. De details over de manier waarop het Bewaar beleid werkt, vindt u in [gebruik Azure backup om uw tape-infrastructuur artikel te vervangen](backup-azure-backup-cloud-as-tape.md).
 
     ![Bewaarbeleid](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voorbeeld:
+    In dit voor beeld:
 
     * Back-ups worden eenmaal per dag om 12:00 uur en 8 uur (onderste deel van het scherm) gemaakt en blijven 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt 104 weken bewaard
@@ -111,6 +114,7 @@ Voordat u begint, moet u ervoor zorgen dat u [de Azure backup server hebt geïns
     ![Bezig met het maken van een beveiligings groep](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Back-ups op aanvraag van een SQL Server Data Base
+
 Terwijl de vorige stappen een back-upbeleid hebben gemaakt, wordt er alleen een ' herstel punt ' gemaakt wanneer de eerste back-up wordt uitgevoerd. In plaats van te wachten tot de scheduler wordt gestart, activeren de volgende stappen om hand matig een herstel punt te maken.
 
 1. Wacht totdat de status van de beveiligings groep op **OK** staat voor de Data Base voordat u het herstel punt maakt.
@@ -127,6 +131,7 @@ Terwijl de vorige stappen een back-upbeleid hebben gemaakt, wordt er alleen een 
     ![Bewakings console](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Een SQL Server-Data Base herstellen vanuit Azure
+
 De volgende stappen zijn vereist om een beveiligde entiteit (SQL Server-Data Base) te herstellen vanuit Azure.
 
 1. Open de beheer console van DPM-server. Ga naar de **herstel** werkruimte, waar u de servers kunt zien waarvan een back-up is gemaakt door DPM. Blader door de vereiste data base (in dit geval Report Server $ MSDPM2012). Selecteer een **herstel** tijd die eindigt op **online**.
@@ -150,4 +155,5 @@ De volgende stappen zijn vereist om een beveiligde entiteit (SQL Server-Data Bas
     Wanneer het herstel is voltooid, is de herstelde data base toepassings consistent.
 
 ### <a name="next-steps"></a>Volgende stappen
+
 • [Azure backup Veelgestelde vragen](backup-azure-backup-faq.md)

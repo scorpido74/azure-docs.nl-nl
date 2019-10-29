@@ -1,25 +1,23 @@
 ---
-title: Terraform gebruiken om een virtuele-machineschaalset te maken in Azure
-description: Zelfstudie over het gebruiken van Terraform voor het configureren en versioneren van een virtuele-machineschaalset in Azure, compleet met een virtueel netwerk en beheerde gekoppelde schijven
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuele machines, Azure, schaalset, netwerk, opslag, modules
+title: Zelf studie-een schaalset voor virtuele Azure-machines maken met behulp van terraform
+description: Meer informatie over het gebruik van terraform voor het configureren en instellen van een schaalset voor virtuele Azure-machines.
+ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 205cf7610bd9f86bf36fc738ced71fc8175ccdc9
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169871"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969460"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform gebruiken om een virtuele-machineschaalset te maken in Azure
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken met behulp van terraform
 
-Met [virtuele-machineschaalsets in Azure](/azure/virtual-machine-scale-sets) kunt u een groep identieke, load-balanced virtuele machines maken en beheren, waarbij het aantal exemplaren van virtuele machines automatisch kan toenemen of afnemen afhankelijk van de vraag of volgens een gedefinieerd schema.
+Met [schaal sets voor virtuele Azure-machines](/azure/virtual-machine-scale-sets) kunt u identieke vm's configureren. Het aantal VM-exemplaren kan worden aangepast op basis van de vraag of een schema. Zie voor meer informatie [automatisch schalen van een schaalset voor virtuele machines in de Azure Portal](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal).
 
-In deze zelfstudie leert u hoe u [Azure Cloud Shell](/azure/cloud-shell/overview) kunt gebruiken om de volgende taken uit te voeren:
+In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overview) kunt gebruiken om de volgende taken uit te voeren:
 
 > [!div class="checklist"]
 > * Een Terraform-implementatie instellen
@@ -33,15 +31,15 @@ In deze zelfstudie leert u hoe u [Azure Cloud Shell](/azure/cloud-shell/overview
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
+- **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aan voordat u begint.
 
-- **Terraform installeren**: Volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform installeren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Een SSH-sleutelpaar maken**: Als u nog geen SSH-sleutelpaar hebt, volgt u de instructies in het artikel [Een sleutelpaar met een openbare en persoonlijke SSH-sleutel voor virtuele Linux-machines maken en gebruiken](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Een SSH-sleutel paar maken**: Zie [een openbaar en persoonlijk SSH-sleutel paar maken en gebruiken voor Linux-vm's in azure](/azure/virtual-machines/linux/mac-create-ssh-keys)voor meer informatie.
 
 ## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -68,15 +66,13 @@ In deze zelfstudie leert u hoe u [Azure Cloud Shell](/azure/cloud-shell/overview
 ## <a name="create-the-variables-definitions-file"></a>Het definitiebestand voor variabelen maken
 In deze sectie definieert u de variabelen waarmee de met Terraform gemaakte resources worden aangepast.
 
-Voer in Azure Cloud Shell de volgende stappen uit:
+Voer de volgende stappen uit in de Azure Cloud Shell:
 
 1. Maak een bestand met de naam `variables.tf`.
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
@@ -100,43 +96,29 @@ Voer in Azure Cloud Shell de volgende stappen uit:
    }
    ```
 
-1. Verlaat de invoegmodus door op Esc te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 ## <a name="create-the-output-definitions-file"></a>Het bestand met uitvoerdefinities maken
 In deze sectie maakt u het bestand dat de uitvoer na de implementatie beschrijft.
 
-Voer in Azure Cloud Shell de volgende stappen uit:
+Voer de volgende stappen uit in de Azure Cloud Shell:
 
 1. Maak een bestand met de naam `output.tf`.
 
     ```bash
-    vi output.tf
+    code output.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor om de volledig gekwalificeerde domeinnaam (FQDN) voor de virtuele machines beschikbaar te maken.
    :
 
    ```hcl
     output "vmss_public_ip" {
-        value = "${azurerm_public_ip.vmss.fqdn}"
+        value = azurerm_public_ip.vmss.fqdn
     }
    ```
 
-1. Verlaat de invoegmodus door op Esc te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>De netwerkinfrastructuur definiëren in een sjabloon
 In deze sectie maakt u de volgende netwerkinfrastructuur in een nieuwe Azure-resourcegroep:
@@ -145,23 +127,21 @@ In deze sectie maakt u de volgende netwerkinfrastructuur in een nieuwe Azure-res
   - Eén subnet met de adresruimte 10.0.2.0/24
   - Twee openbare IP-adressen. Eén hiervan wordt gebruikt door de load balancer van de virtuele-machineschaalset, en het andere wordt gebruikt om verbinding te maken met de SSH-jumpbox.
 
-Voer in Azure Cloud Shell de volgende stappen uit:
+Voer de volgende stappen uit in de Azure Cloud Shell:
 
 1. Maak een bestand met de naam `vmss.tf` om de infrastructuur van de virtuele-machineschaalset te beschrijven.
 
     ```bash
-    vi vmss.tf
+    code vmss.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code aan het einde van het bestand om de volledig gekwalificeerde domeinnaam (FQDN) voor de virtuele machines beschikbaar te maken.
 
    ```hcl
    resource "azurerm_resource_group" "vmss" {
-    name     = "${var.resource_group_name}"
-    location = "${var.location}"
-    tags     = "${var.tags}"
+    name     = var.resource_group_name
+    location = var.location
+    tags     = var.tags
    }
 
    resource "random_string" "fqdn" {
@@ -174,38 +154,32 @@ Voer in Azure Cloud Shell de volgende stappen uit:
    resource "azurerm_virtual_network" "vmss" {
     name                = "vmss-vnet"
     address_space       = ["10.0.0.0/16"]
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    tags                = "${var.tags}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
+    tags                = var.tags
    }
 
    resource "azurerm_subnet" "vmss" {
     name                 = "vmss-subnet"
-    resource_group_name  = "${azurerm_resource_group.vmss.name}"
-    virtual_network_name = "${azurerm_virtual_network.vmss.name}"
+    resource_group_name  = azurerm_resource_group.vmss.name
+    virtual_network_name = azurerm_virtual_network.vmss.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "vmss" {
     name                         = "vmss-public-ip"
-    location                     = "${var.location}"
-    resource_group_name          = "${azurerm_resource_group.vmss.name}"
+    location                     = var.location
+    resource_group_name          = azurerm_resource_group.vmss.name
     allocation_method = "Static"
-    domain_name_label            = "${random_string.fqdn.result}"
-    tags                         = "${var.tags}"
+    domain_name_label            = random_string.fqdn.result
+    tags                         = var.tags
    }
    ```
 
-1. Verlaat de invoegmodus door op Esc te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-   ```bash
-   :wq
-   ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 ## <a name="provision-the-network-infrastructure"></a>De netwerkinfrastructuur inrichten
-Gebruik de Azure Cloud Shell vanuit de directory waar u de configuratiebestanden (.tf) hebt gemaakt om de volgende stappen uit te voeren:
+Voer de volgende stappen uit met behulp van de Azure Cloud Shell uit de map waarin u de configuratie bestanden hebt gemaakt (. tf):
 
 1. Initialiseer Terraform.
 
@@ -219,11 +193,11 @@ Gebruik de Azure Cloud Shell vanuit de directory waar u de configuratiebestanden
    terraform apply
    ```
 
-   Terraform vraagt ​​u om een '​​locatie' -waarde omdat de variabele **locatie** wordt gedefinieerd in `variables.tf`, maar deze wordt nooit ingesteld. U kunt elke geldige locatie, bijvoorbeeld 'US - west', invoeren, gevolgd door Enter. (Plaats waarden die spaties bevatten tussen haakjes.)
+   Terraform vraagt u om een `location` waarde wanneer de `location` variabele in `variables.tf`is gedefinieerd, maar is nooit ingesteld. U kunt elke geldige locatie, bijvoorbeeld 'US - west', invoeren, gevolgd door Enter. (Plaats waarden die spaties bevatten tussen haakjes.)
 
-1. Terraform drukt de uitvoer af zoals gedefinieerd in het bestand `output.tf`. Zoals te zien is in de volgende schermafbeelding, heeft de FQDN de vorm &lt;id>.&lt;locatie>.cloudapp.azure.com. De id-waarde is een berekende waarde, en de locatie is de waarde die u opgeeft bij het uitvoeren van Terraform.
+1. Terraform drukt de uitvoer af zoals gedefinieerd in het bestand `output.tf`. Zoals in de volgende scherm afbeelding wordt weer gegeven, heeft de FQDN de volgende vorm: `<ID>.<location>.cloudapp.azure.com`. De ID is een berekende waarde en locatie is de waarde die u opgeeft wanneer u terraform uitvoert.
 
-   ![Volledig gekwalificeerde domeinnaam van virtuele-machineschaalset voor openbaar IP-adres](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+   ![Virtuele-machine schaalset Fully Qualified Domain Name voor openbaar IP-adres](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
 1. Selecteer in Azure Portal **Resourcegroepen** in het hoofdmenu.
 
@@ -245,7 +219,7 @@ Voer in Cloud Shell de volgende stappen uit:
 1. Open het configuratiebestand `vmss.tf`.
 
    ```bash
-   vi vmss.tf
+   code vmss.tf
    ```
 
 1. Ga naar het einde van het bestand en ga naar de toevoegmodus door de A-toets te selecteren.
@@ -255,46 +229,46 @@ Voer in Cloud Shell de volgende stappen uit:
    ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
 
     frontend_ip_configuration {
       name                 = "PublicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.vmss.id}"
+      public_ip_address_id = azurerm_public_ip.vmss.id
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
 
    resource "azurerm_lb_backend_address_pool" "bpepool" {
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    loadbalancer_id     = "${azurerm_lb.vmss.id}"
+    resource_group_name = azurerm_resource_group.vmss.name
+    loadbalancer_id     = azurerm_lb.vmss.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_lb_probe" "vmss" {
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    loadbalancer_id     = "${azurerm_lb.vmss.id}"
+    resource_group_name = azurerm_resource_group.vmss.name
+    loadbalancer_id     = azurerm_lb.vmss.id
     name                = "ssh-running-probe"
-    port                = "${var.application_port}"
+    port                = var.application_port
    }
 
    resource "azurerm_lb_rule" "lbnatrule" {
-      resource_group_name            = "${azurerm_resource_group.vmss.name}"
-      loadbalancer_id                = "${azurerm_lb.vmss.id}"
+      resource_group_name            = azurerm_resource_group.vmss.name
+      loadbalancer_id                = azurerm_lb.vmss.id
       name                           = "http"
       protocol                       = "Tcp"
-      frontend_port                  = "${var.application_port}"
-      backend_port                   = "${var.application_port}"
-      backend_address_pool_id        = "${azurerm_lb_backend_address_pool.bpepool.id}"
+      frontend_port                  = var.application_port
+      backend_port                   = var.application_port
+      backend_address_pool_id        = azurerm_lb_backend_address_pool.bpepool.id
       frontend_ip_configuration_name = "PublicIPAddress"
-      probe_id                       = "${azurerm_lb_probe.vmss.id}"
+      probe_id                       = azurerm_lb_probe.vmss.id
    }
 
    resource "azurerm_virtual_machine_scale_set" "vmss" {
     name                = "vmscaleset"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
     upgrade_policy_mode = "Manual"
 
     sku {
@@ -326,9 +300,9 @@ Voer in Cloud Shell de volgende stappen uit:
 
     os_profile {
       computer_name_prefix = "vmlab"
-      admin_username       = "${var.admin_user}"
-      admin_password       = "${var.admin_password}"
-      custom_data          = "${file("web.conf")}"
+      admin_username       = var.admin_user
+      admin_password       = var.admin_password
+      custom_data          = file("web.conf")
     }
 
     os_profile_linux_config {
@@ -341,17 +315,15 @@ Voer in Cloud Shell de volgende stappen uit:
 
       ip_configuration {
         name                                   = "IPConfiguration"
-        subnet_id                              = "${azurerm_subnet.vmss.id}"
-        load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+        subnet_id                              = azurerm_subnet.vmss.id
+        load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
         primary = true
       }
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
    ```
-
-1. Verlaat de invoegmodus door op Esc te drukken.
 
 1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
 
@@ -362,10 +334,8 @@ Voer in Cloud Shell de volgende stappen uit:
 1. Maak een bestand met de naam `web.conf` om te dienen als de cloud-init-configuratie voor de virtuele machines die deel uitmaken van de schaalset.
 
     ```bash
-    vi web.conf
+    code web.conf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
@@ -374,8 +344,6 @@ Voer in Cloud Shell de volgende stappen uit:
    packages:
     - nginx
    ```
-
-1. Verlaat de invoegmodus door op Esc te drukken.
 
 1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
 
@@ -386,7 +354,7 @@ Voer in Cloud Shell de volgende stappen uit:
 1. Open het configuratiebestand `variables.tf`.
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
 
 1. Ga naar het einde van het bestand en ga naar de toevoegmodus door de A-toets te selecteren.
@@ -409,13 +377,7 @@ Voer in Cloud Shell de volgende stappen uit:
     }
     ```
 
-1. Verlaat de invoegmodus door op Esc te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-     ```bash
-     :wq
-     ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 1. Maak een Terraform-plan om de implementatie van de virtuele-machineschaalset te visualiseren. (U moet een wachtwoord van uw keuze opgeven, evenals de locatie voor uw resources.)
 
@@ -442,7 +404,7 @@ Voer in Cloud Shell de volgende stappen uit:
     ![Resultaten van bladeren naar de FQDN](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
 ## <a name="add-an-ssh-jumpbox"></a>Een SSH-jumpbox toevoegen
-Een SSH-*jumpbox* is één server waar u 'doorheen springt' om toegang te krijgen tot andere servers op het netwerk. In deze stap configureert u de volgende resources:
+Een SSH- *JumpBox* is een enkele server waarop u ' Jump ' kunt gebruiken om toegang te krijgen tot andere servers in het netwerk. In deze stap configureert u de volgende resources:
 
 - Een netwerkinterface (of jumpbox) verbonden met hetzelfde subnet als de virtuele-machineschaalset.
 
@@ -451,7 +413,7 @@ Een SSH-*jumpbox* is één server waar u 'doorheen springt' om toegang te krijge
 1. Open het configuratiebestand `vmss.tf`.
 
    ```bash
-   vi vmss.tf
+   code vmss.tf
    ```
 
 1. Ga naar het einde van het bestand en ga naar de toevoegmodus door de A-toets te selecteren.
@@ -461,33 +423,33 @@ Een SSH-*jumpbox* is één server waar u 'doorheen springt' om toegang te krijge
    ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
-    location                     = "${var.location}"
-    resource_group_name          = "${azurerm_resource_group.vmss.name}"
+    location                     = var.location
+    resource_group_name          = azurerm_resource_group.vmss.name
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}-ssh"
-    tags                         = "${var.tags}"
+    tags                         = var.tags}
    }
 
    resource "azurerm_network_interface" "jumpbox" {
     name                = "jumpbox-nic"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
 
     ip_configuration {
       name                          = "IPConfiguration"
-      subnet_id                     = "${azurerm_subnet.vmss.id}"
+      subnet_id                     = azurerm_subnet.vmss.id
       private_ip_address_allocation = "dynamic"
-      public_ip_address_id          = "${azurerm_public_ip.jumpbox.id}"
+      public_ip_address_id          = azurerm_public_ip.jumpbox.id
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
 
    resource "azurerm_virtual_machine" "jumpbox" {
     name                  = "jumpbox"
-    location              = "${var.location}"
-    resource_group_name   = "${azurerm_resource_group.vmss.name}"
-    network_interface_ids = ["${azurerm_network_interface.jumpbox.id}"]
+    location              = var.location
+    resource_group_name   = azurerm_resource_group.vmss.name
+    network_interface_ids = [azurerm_network_interface.jumpbox.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_image_reference {
@@ -506,22 +468,22 @@ Een SSH-*jumpbox* is één server waar u 'doorheen springt' om toegang te krijge
 
     os_profile {
       computer_name  = "jumpbox"
-      admin_username = "${var.admin_user}"
-      admin_password = "${var.admin_password}"
+      admin_username = var.admin_user
+      admin_password = var.admin_password
     }
 
     os_profile_linux_config {
       disable_password_authentication = false
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
    ```
 
 1. Open het configuratiebestand `output.tf`.
 
    ```bash
-   vi output.tf
+   code output.tf
    ```
 
 1. Ga naar het einde van het bestand en ga naar de toevoegmodus door de A-toets te selecteren.
@@ -530,17 +492,11 @@ Een SSH-*jumpbox* is één server waar u 'doorheen springt' om toegang te krijge
 
    ```hcl
    output "jumpbox_public_ip" {
-      value = "${azurerm_public_ip.jumpbox.fqdn}"
+      value = azurerm_public_ip.jumpbox.fqdn
    }
    ```
 
-1. Verlaat de invoegmodus door op Esc te drukken.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 1. Implementeer de jumpbox.
 
@@ -566,9 +522,6 @@ terraform destroy
 Het vernietigingsproces kan enkele minuten in beslag nemen.
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u geleerd Terraform te gebruiken om een virtuele-machineschaalset te maken in Azure. Hier volgen een aantal aanvullende resources voor meer informatie over Terraform in Azure:
 
-[Terraform-Hub in Microsoft.com](https://docs.microsoft.com/azure/terraform/)
-[Providerdocumentatie van Terraform](https://aka.ms/terraform)
-[Providerbron Terraform Azure](https://aka.ms/tfgit)
-[Terraform Azure-modules](https://aka.ms/tfmodules)
+> [!div class="nextstepaction"] 
+> [Terraform op Azure](/azure/ansible/)

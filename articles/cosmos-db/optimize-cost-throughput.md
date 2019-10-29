@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 24812b8d97080d59fd50f4dc528117b3020fd8dc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: fd385e820ea205c3acfc0ee3ccec4e07c62bb50e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753270"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989591"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Ingerichte doorvoer kosten optimaliseren in Azure Cosmos DB
 
@@ -77,7 +77,7 @@ HTTP Status 429,
 
 De systeem eigen Sdk's (.NET/.NET core, Java, node. js en python) ondervangen dit antwoord impliciet, respecteert de door de server opgegeven nieuwe poging na de header en voert de aanvraag opnieuw uit. Tenzij uw account gelijktijdig wordt geopend door meerdere clients, zal de volgende poging slagen.
 
-Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen dat momenteel is ingesteld op 9 mogelijk niet voldoende. In dat geval genereert de client een `DocumentClientException` met status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen voor het Connection Policy-exemplaar. Standaard wordt de `DocumentClientException` met de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
+Als u meer dan één client cumulatief op dezelfde manier hebt uitgevoerd, is het standaard aantal nieuwe pogingen, dat momenteel is ingesteld op 9, niet voldoende. In dergelijke gevallen genereert de client een `DocumentClientException` met status code 429 naar de toepassing. Het standaard aantal nieuwe pogingen kan worden gewijzigd door de `RetryOptions` in te stellen voor het Connection Policy-exemplaar. Standaard wordt de `DocumentClientException` met de status code 429 geretourneerd na een cumulatieve wacht tijd van 30 seconden als de aanvraag boven het aanvraag aantal blijft. Dit gebeurt zelfs wanneer het huidige aantal nieuwe pogingen kleiner is dan het maximum aantal nieuwe pogingen. Dit is de standaard waarde van 9 of een door de gebruiker gedefinieerd getal. 
 
 [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) is ingesteld op 3. in dit geval, als een aanvraag is beperkt door de gereserveerde door Voer voor de container te overschrijden, wordt de aanvraag bewerking drie keer opnieuw geprobeerd voordat de uitzonde ring voor de toepassing wordt gegenereerd. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) is ingesteld op 60. in dit geval geldt dat als de cumulatieve wacht tijd voor opnieuw proberen in seconden sinds de eerste aanvraag 60 seconden overschrijdt, de uitzonde ring wordt gegenereerd.
 

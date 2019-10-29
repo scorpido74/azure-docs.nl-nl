@@ -10,22 +10,21 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8a0b0dde50de1806762076025e4f74f19388f81b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203785"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989603"
 ---
 # <a name="what-is-personalizer"></a>Wat is Personalizer?
 
-Azure Personalizer is een op de cloud gebaseerde API-service waarmee u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun real-time gedrag.
+Azure Personaler is een API-service in de Cloud waarmee u de beste ervaring kunt kiezen die wordt weer gegeven aan uw gebruikers.
 
 * Geef informatie op over uw gebruikers en inhoud en ontvang de meest voorkomende actie om uw gebruikers weer te geven. 
 * U hoeft geen gegevens op te schonen en labelen voordat u Personaler gebruikt.
 * Geef feedback over persoonlijker wanneer het handig is voor u. 
 * Real-time analyse weer geven. 
-* Gebruik Personaler als onderdeel van een grotere gegevens wetenschap om bestaande experimenten te valideren.
 
 ## <a name="how-does-personalizer-work"></a>Hoe werkt Personaler?
 
@@ -37,9 +36,9 @@ Personaler gebruikt machine learning modellen om te ontdekken welke actie het ho
 
 1. Kies een ervaring in uw app om deze aan te passen.
 1. Maak en configureer een exemplaar van de personalisatie service in de Azure Portal. Elk exemplaar is een aangepaste lus.
-1. Gebruik SDK om uw persoonlijke voor keur aan te roepen met informatie over uw gebruikers en de inhoud (_acties_ _)._ U hoeft geen schone, gelabelde gegevens op te geven voordat u personaliseren gebruikt. 
+1. Gebruik de [rangorde API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) om persoonlijker met informatie (_functies_) over uw gebruikers en de inhoud (_acties_) aan te roepen. U hoeft geen schone, gelabelde gegevens op te geven voordat u personaliseren gebruikt. Api's kunnen rechtstreeks worden aangeroepen of met behulp van Sdk's die beschikbaar zijn voor verschillende programmeer talen.
 1. Geef in de client toepassing de gebruiker de actie weer die door Personaler is geselecteerd.
-1. Gebruik de SDK om persoonlijk aan te geven of de gebruiker de actie heeft gekozen voor het personaliseren van persoonlijke instellingen. Dit is een _[belonings Score](concept-rewards.md)_ .
+1. Gebruik de [belonings-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) om aan persoonlijke voor keuren feedback te geven die aangeeft of de gebruiker de actie heeft gekozen voor persoonlijke instellingen. Dit is een _[belonings Score](concept-rewards.md)_ .
 1. Bekijk de analyse in de Azure Portal om te evalueren hoe het systeem werkt en hoe uw gegevens personalisatie helpen.
 
 ## <a name="where-can-i-use-personalizer"></a>Waar kan ik Personaler gebruiken?

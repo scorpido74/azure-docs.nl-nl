@@ -3,21 +3,20 @@ title: Gebeurtenissen verzenden naar een Azure Time Series Insights omgeving | M
 description: Meer informatie over het configureren van een Event Hub en het uitvoeren van een voorbeeld toepassing voor het pushen van gebeurtenissen die u kunt weer geven in Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: accf3adea08e713a7a2f06bb175c759ae66a72c0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2878a77918fdd1c1cd298ae536bcdd3bec065e91
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274508"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991128"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Gebeurtenissen verzenden naar een Time Series Insights omgeving met behulp van een Event Hub
 
@@ -30,14 +29,14 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 1. Selecteer uw Event Hub.
 1. Wanneer u een Event Hub maakt, maakt u een Event Hub naam ruimte. Als u nog geen Event Hub in de naam ruimte hebt gemaakt, maakt u in het menu onder **entiteiten**een event hub.  
 
-    [![List van Event hubs](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
+    [![lijst met Event hubs](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
 1. Nadat u een Event Hub hebt gemaakt, selecteert u deze in de lijst met Event hubs.
 1. Selecteer in het menu onder **entiteiten**de optie **Event hubs**.
 1. Selecteer de naam van de Event Hub om deze te configureren.
 1. Selecteer onder **overzicht**de optie **consumenten groepen**en selecteer vervolgens **consumenten groep**.
 
-    [![Create een consumenten groep](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
+    [![een consument groep maken](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
 1. Zorg ervoor dat u een Consumer groep maakt die uitsluitend wordt gebruikt door de bron van de Time Series Insights gebeurtenis.
 
@@ -46,11 +45,11 @@ In dit artikel wordt uitgelegd hoe u een Event Hub in azure Event Hubs maakt en 
 
 1. Selecteer in het menu onder **instellingen**de optie **beleid voor gedeelde toegang**en selecteer vervolgens **toevoegen**.
 
-    [![Select beleid voor gedeelde toegang en selecteer vervolgens de knop toevoegen](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
+    [![Selecteer beleid voor gedeelde toegang en selecteer vervolgens de knop toevoegen](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox)
 
 1. Maak in het deel venster **nieuw gedeeld toegangs beleid toevoegen** een gedeelde toegang met de naam **MySendPolicy**. U kunt dit beleid voor gedeelde toegang gebruiken voor het verzenden C# van gebeurtenissen in de voor beelden verderop in dit artikel.
 
-    [![In het vak beleids naam typt u MySendPolicy](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
+    [Voer![in het vak beleids naam MySendPolicy in](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox)
 
 1. Schakel onder **claim**het selectie vakje **verzenden** in.
 
@@ -72,18 +71,18 @@ De Time Series Insights Update gebruikt exemplaren om contextuele gegevens toe t
 
 1. Ga naar het **beleid voor gedeelde toegang** > **MySendPolicy**. Kopieer de waarde voor **verbindings reeks-primaire sleutel**.
 
-    [![Copy de waarde voor de primaire sleutel connection string](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
+    [![de waarde voor de primaire sleutel niet kopiëren connection string](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
 1. Ga naar https://tsiclientsample.azurewebsites.net/windFarmGen.html. De URL voert gesimuleerde Windmill-apparaten uit.
 1. Plak in het vak **Event hub-verbindings reeks** op de webpagina de Connection String die u hebt gekopieerd in het [invoer veld Windmill](#push-events-to-windmills-sample).
   
-    [![Paste de primaire sleutel connection string in het vak Event hub-verbindings reeks](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
+    [![plak de primaire-sleutel connection string in het vak Verbindings reeks van de Event hub](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
 1. Selecteer **klikken om te starten**. De Simulator genereert een JSON van het exemplaar dat u rechtstreeks kunt gebruiken.
 
 1. Ga terug naar uw Event Hub in de Azure Portal. Op de pagina **overzicht** ziet u de nieuwe gebeurtenissen die worden ontvangen door de Event hub.
 
-    [![An Event Hub overzicht pagina waarop de metrische gegevens voor de Event Hub worden weer gegeven](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
+    [![een Event Hub overzichts pagina waarop de metrische gegevens voor de Event Hub worden weer gegeven](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
 ## <a name="supported-json-shapes"></a>Ondersteunde JSON-vormen
 

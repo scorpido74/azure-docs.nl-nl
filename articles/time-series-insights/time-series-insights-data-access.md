@@ -3,7 +3,7 @@ title: Beveiliging configureren voor toegang tot en beheer van Azure Time Series
 description: In dit artikel wordt beschreven hoe u beveiliging en machtigingen configureert als beheer toegangs beleid en beleid voor gegevens toegang om Azure Time Series Insights preview te beveiligen.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 670615980b7fd78441a08ba987073dc139b3792a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 3d835916ab1a9d99149800a50690876080a8c5fd
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274432"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990153"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gegevens toegang verlenen tot een omgeving
 
@@ -38,7 +38,7 @@ Volg deze stappen om toegang tot gegevens toe te kennen voor een gebruikers-prin
 
 1. Kies **gebruiker selecteren**. Zoek naar de gebruikers naam of het e-mail adres om de gebruiker te zoeken die u wilt toevoegen. Selecteer **selecteren** om de selectie te bevestigen.
 
-    [![Data-Access-Two](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
+    [Data-Access![-twee](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
 1. Kies **rol selecteren**. Kies de juiste Access-rol voor de gebruiker:
 
@@ -48,15 +48,15 @@ Volg deze stappen om toegang tot gegevens toe te kennen voor een gebruikers-prin
 
    Selecteer **OK** om de gewenste rol te bevestigen.
 
-    [![Data-Access-Three](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
+    [![gegevens-toegang-drie](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
 
 1. Selecteer **OK** op de pagina **gebruikersrol selecteren** .
 
-    [![Data-Access-vier](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
+    [![gegevens-Access-vier](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
 
 1. Controleer of de pagina **Data Access policies** de gebruikers en de rollen voor elke gebruiker bevat.
 
-    [![Data-Access-vijf](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
+    [![gegevens toegang-vijf](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-aad-tenant"></a>Gast toegang bieden vanuit een andere AAD-Tenant
 
@@ -66,11 +66,11 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
 1. Selecteer **beleid voor gegevens toegang**en selecteer **+ uitnodigen**.
 
-    [![Data-Access-zes](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
+    [![gegevens toegang-zes](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
 1. Voer het e-mail adres in voor de gebruiker die u wilt uitnodigen. Dit e-mail adres moet worden gekoppeld aan Azure AD. U kunt desgewenst een persoonlijk bericht toevoegen aan de uitnodiging.
 
-    [![Data-zeven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
+    [![gegevens toegang-zeven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
 
 1. Zoek naar de bevestigings ballon die op het scherm wordt weer gegeven.
 
@@ -78,7 +78,7 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
 1. Kies **gebruiker selecteren**. Zoek het e-mail adres van de gast gebruiker die u hebt uitgenodigd voor het zoeken van de gebruiker die u wilt toevoegen. **Selecteer** vervolgens de optie om de selectie te bevestigen.
 
-    [![Data-Access-9](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
+    [![gegevens toegang-negen](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
 1. Kies **rol selecteren**. Kies de juiste Access-rol voor de gast gebruiker:
 
@@ -88,7 +88,7 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
    Selecteer **OK** om de gewenste rol te bevestigen.
 
-    [![Data-Access-tien](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
+    [![gegevens toegang-tien](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
 1. Selecteer **OK** op de pagina **gebruikersrol selecteren** .
 
@@ -106,11 +106,11 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
 1. Nadat de gast gebruiker is aangemeld bij het e-mail adres dat u hebt gebruikt om ze te uitnodigen, en ze de uitnodiging accepteren, gaat u naar insights.azure.com. Daarna selecteren ze de avatar naast hun e-mail adres in de rechter bovenhoek van het scherm.
 
-    [![Data-Access-14](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
+    [![gegevens toegang-14](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
 
 1. Vervolgens selecteert de gast gebruiker uw Azure-Tenant in het vervolg keuzemenu van de map. Deze Tenant is het account waarmee u ze hebt uitgenodigd.
 
-    [![Data-Access-15](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
+    [![gegevens toegang-15](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
 
 Nadat de gast gebruiker uw Tenant heeft geselecteerd, zien ze de Time Series Insights omgeving waartoe u deze toegang hebt gegeven. Ze hebben nu alle mogelijkheden die zijn gekoppeld aan de rol die u hebt gegeven in **stap 5**.
 

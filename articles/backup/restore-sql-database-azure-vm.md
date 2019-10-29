@@ -1,5 +1,5 @@
 ---
-title: Azure Backup gebruiken om back-ups van SQL Server data bases te herstellen op een Azure-VM | Microsoft Docs
+title: Azure Backup gebruiken om SQL Server-data bases op een virtuele machine van Azure te herstellen
 description: In dit artikel wordt beschreven hoe u SQL Server-data bases herstelt die worden uitgevoerd op een virtuele Azure-machine en waarvan een back-up is gemaakt met Azure Backup.
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71867e520d9c98b4af4d4f18f3d08c9e8cc4a8c4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8bdc77ba81c5a9ec47a02ef5a1ede82365314941
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639546"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968861"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server data bases herstellen op virtuele Azure-machines
 
@@ -27,7 +27,6 @@ Azure Backup kunt SQL Server-data bases die worden uitgevoerd op virtuele Azure-
 - Herstel naar een specifieke datum of tijd (naar de seconde) met behulp van back-ups van transactie Logboeken. Azure Backup bepaalt automatisch de juiste volledige differentiële back-up en de keten van logboek back-ups die moeten worden hersteld op basis van de geselecteerde tijd.
 - Herstel een specifieke volledige of differentiële back-up om te herstellen naar een specifiek herstel punt.
 
-
 ## <a name="prerequisites"></a>Vereisten
 
 Let op het volgende voordat u een Data Base herstelt:
@@ -36,8 +35,8 @@ Let op het volgende voordat u een Data Base herstelt:
 - De doel server moet zijn geregistreerd bij dezelfde kluis als de bron.
 - Als u een met TDE versleutelde data base wilt herstellen naar een andere SQL Server, moet u [het certificaat eerst herstellen naar de doel server](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server?view=sql-server-2017).
 - Voordat u de data base ' Master ' herstelt, start u het SQL Server-exemplaar in de modus voor één gebruiker met behulp van de opstart optie **-m AzureWorkloadBackup**.
-    - De waarde voor **-m** is de naam van de client.
-    - Alleen de opgegeven client naam kan de verbinding openen.
+  - De waarde voor **-m** is de naam van de client.
+  - Alleen de opgegeven client naam kan de verbinding openen.
 - Voor alle systeem databases (model, Master, msdb) stopt u de SQL Server Agent-service voordat u de herstel bewerking start.
 - Sluit alle toepassingen die mogelijk proberen verbinding te maken met een van deze data bases.
 - Als er meerdere exemplaren worden uitgevoerd op een server, moeten alle instanties anders worden uitgevoerd en wordt de server niet meer weer gegeven in de lijst met doel servers voor u om de data base te herstellen.
@@ -46,16 +45,17 @@ Let op het volgende voordat u een Data Base herstelt:
 
 Als u wilt herstellen, hebt u de volgende machtigingen nodig:
 
-* Machtigingen voor **back-** upoperators in de kluis waar u de herstel bewerking uitvoert.
-* **Inzender (write)** toegang tot de bron-VM waarvan een back-up is gemaakt.
-* **Inzender (write)** toegang tot de doel-VM:
-    - Als u naar dezelfde VM wilt herstellen, is dit de bron-VM.
-    - Als u naar een alternatieve locatie wilt herstellen, is dit de nieuwe doel-VM.
+- Machtigingen voor **Back-upoperators** in de kluis waar u de herstel bewerking uitvoert.
+- **Inzender (write)** toegang tot de bron-VM waarvan een back-up is gemaakt.
+- **Inzender (write)** toegang tot de doel-VM:
+  - Als u naar dezelfde VM wilt herstellen, is dit de bron-VM.
+  - Als u naar een alternatieve locatie wilt herstellen, is dit de nieuwe doel-VM.
 
 Herstel als volgt:
+
 1. Open de kluis waarin de SQL Server VM is geregistreerd.
-2. Selecteer op het kluis dashboard onder **gebruik** **back-** upitems.
-3. In **back-** upitems, onder **type back-upbeheer**, selecteert u **SQL in azure VM**.
+2. Selecteer op het kluis dashboard onder **gebruik** **Back-upitems**.
+3. In **Back-upitems**, onder **type back-upbeheer**, selecteert u **SQL in azure VM**.
 
     ![SQL in Azure VM selecteren](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -65,16 +65,16 @@ Herstel als volgt:
 
 5. Bekijk het database menu. Het bevat informatie over de back-up van de data base, waaronder:
 
-    * De oudste en meest recente herstelpunten.
-    * De back-upstatus van het logboek voor de afgelopen 24 uur voor data bases die zich in de herstel modus volledig en bulksgewijs logboeken bevinden en die zijn geconfigureerd voor transactionele logboek back-ups.
+    - De oudste en meest recente herstelpunten.
+    - De back-upstatus van het logboek voor de afgelopen 24 uur voor data bases die zich in de herstel modus volledig en bulksgewijs logboeken bevinden en die zijn geconfigureerd voor transactionele logboek back-ups.
 
 6. Selecteer **Data Base herstellen**.
 
     ![DB herstellen selecteren](./media/backup-azure-sql-database/restore-db-button.png)
 
 7. Geef in **configuratie herstellen**op waar de gegevens moeten worden teruggezet:
-   - **Alternatieve locatie**: Zet de data base terug op een andere locatie en behoud de oorspronkelijke bron database.
-   - **DB overschrijven**: De gegevens herstellen naar hetzelfde exemplaar van SQL Server als de oorspronkelijke bron. Met deze optie wordt de oorspronkelijke data base overschreven.
+   - **Alternatieve locatie**: herstel de Data Base op een andere locatie en behoud de oorspronkelijke bron database.
+   - **Db overschrijven**: herstel de gegevens naar hetzelfde SQL Server exemplaar als de oorspronkelijke bron. Met deze optie wordt de oorspronkelijke data base overschreven.
 
      > [!Important]
      > Als de geselecteerde data base deel uitmaakt van een always on-beschikbaarheids groep, kan SQL Server de data base niet overschrijven. Er is alleen een **alternatieve locatie** beschikbaar.
@@ -92,14 +92,14 @@ Herstel als volgt:
 
     ![Waarden opgeven voor het menu Configuratie herstellen](./media/backup-azure-sql-database/restore-configuration-menu.png)
 
-2. Selecteer in **herstel punt selecteren**of u [wilt herstellen naar een bepaald tijdstip](#restore-to-a-specific-point-in-time) of dat u wilt [herstellen naar een specifiek herstel punt](#restore-to-a-specific-restore-point).
+6. Selecteer in **herstel punt selecteren**of u [wilt herstellen naar een bepaald tijdstip](#restore-to-a-specific-point-in-time) of dat u wilt [herstellen naar een specifiek herstel punt](#restore-to-a-specific-restore-point).
 
     > [!NOTE]
     > Het herstel naar een bepaald tijdstip is alleen beschikbaar voor logboek back-ups voor data bases in de modus volledig en in bulk logboek registratie.
 
 ### <a name="restore-and-overwrite"></a>Herstellen en overschrijven
 
-1. Selecteer in het menu **configuratie herstellen** onder **herstel van herstellen**de optie **Data Base** > overschrijven**OK**.
+1. Selecteer in het menu **configuratie herstellen** onder **waar u wilt herstellen**de optie **Data Base overschrijven** > **OK**.
 
     ![DB overschrijven selecteren](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
@@ -110,9 +110,9 @@ Herstel als volgt:
 
 ### <a name="restore-to-a-specific-point-in-time"></a>Herstellen naar een bepaald punt in de tijd
 
-Ga als volgt te werk als u Logboeken hebt geselecteerd **(tijdstip)** als herstel type:
+Ga als volgt te werk als u **Logboeken** hebt geselecteerd (tijdstip) als herstel type:
 
-1.  Open de agenda onder **datum en tijd herstellen**. In de agenda worden de datums met herstel punten weer gegeven in vetgedrukte tekst en wordt de huidige datum gemarkeerd.
+1. Open de agenda onder **datum en tijd herstellen**. In de agenda worden de datums met herstel punten weer gegeven in vetgedrukte tekst en wordt de huidige datum gemarkeerd.
 1. Selecteer een datum met herstel punten. U kunt geen datums selecteren die geen herstel punten hebben.
 
     ![De agenda openen](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
@@ -121,7 +121,6 @@ Ga als volgt te werk als u Logboeken hebt geselecteerd **(tijdstip)** als herste
 1. Geef een tijd op voor het herstel in de tijdlijn grafiek of selecteer een tijd. Selecteer vervolgens **OK**.
 
     ![Een herstel tijd selecteren](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
-
 
 1. Als u de data base na het herstellen niet meer wilt gebruiken in het menu **Geavanceerde configuratie** , schakelt u **herstellen met norecovery**in.
 1. Als u de herstel locatie op de doel server wilt wijzigen, voert u een nieuw doelpad in.
@@ -158,7 +157,6 @@ Ga als volgt te werk als u **volledige & differentieel** hebt geselecteerd als h
 Als de totale grootte van de teken reeks van bestanden in een Data Base groter is dan een [bepaalde limiet](backup-sql-server-azure-troubleshoot.md#size-limit-for-files), Azure backup slaat de lijst met database bestanden op in een ander onderdeel van de pit, zodat u het pad voor het terugzetten van de doel groep niet kunt instellen tijdens de herstel bewerking. De bestanden worden in plaats daarvan teruggezet naar het standaardpad voor SQL.
 
   ![Data base herstellen met een groot bestand](./media/backup-azure-sql-database/restore-large-files.jpg)
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

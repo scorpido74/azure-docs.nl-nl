@@ -1,5 +1,5 @@
 ---
-title: Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
+title: Een back-up maken van een Exchange-Server naar Azure Backup via System Center DPM
 description: Meer informatie over het maken van een back-up van een Exchange-Server naar Azure Backup met behulp van System Center 2012 R2 DPM
 ms.reviewer: kasinh
 author: dcurwin
@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0c8975aed79e78b4bb66ce1516b85ceeb78628e8
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689425"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968509"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
+
 In dit artikel wordt beschreven hoe u een System Center 2012 R2 Data Protection Manager (DPM)-server configureert om een back-up te maken van een micro soft Exchange-Server naar Azure Backup.  
 
 ## <a name="updates"></a>Updates
+
 Als u de DPM-server met Azure Backup wilt registreren, moet u het meest recente update pakket voor System Center 2012 R2 DPM en de nieuwste versie van de Azure Backup-Agent installeren. Down load het meest recente update pakket van de [micro soft Catalog](https://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
 > [!NOTE]
@@ -27,6 +29,7 @@ Als u de DPM-server met Azure Backup wilt registreren, moet u het meest recente 
 >
 
 ## <a name="prerequisites"></a>Vereisten
+
 Voordat u doorgaat, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-dpm-introduction.md#prerequisites-and-limitations) voor het gebruik van Microsoft Azure backup voor het beveiligen van werk belastingen is voldaan. Dit zijn onder andere de volgende vereisten:
 
 * Er is een back-upkluis gemaakt op de Azure-site.
@@ -36,12 +39,14 @@ Voordat u doorgaat, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-d
 * Als u Exchange 2016 beveiligt, moet u een upgrade uitvoeren naar DPM 2012 R2 UR9 of hoger
 
 ## <a name="dpm-protection-agent"></a>DPM-beveiligings agent
+
 Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de Exchange-Server:
 
 1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](https://technet.microsoft.com/library/Hh758204.aspx).
 2. Installeer de agent op de Exchange-Server door te klikken op **beheer > agents >** in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
+
 1. Klik in de DPM Administrator-console op **beveiliging**en klik vervolgens op **Nieuw** op het lint met hulp middelen om de wizard **nieuwe beveiligings groep maken** te openen.
 2. Klik in het **welkomst** scherm van de wizard op **volgende**.
 3. Selecteer op het scherm **type beveiligings groep selecteren** de optie **servers** en klik op **volgende**.
@@ -103,6 +108,7 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
 19. Klik op **Sluiten**.
 
 ## <a name="recover-the-exchange-database"></a>De Exchange-data base herstellen
+
 1. Als u een Exchange-Data Base wilt herstellen, klikt u in het DPM Administrator-console op **herstel** .
 2. Zoek de Exchange-data base die u wilt herstellen.
 3. Selecteer een online herstel punt in de vervolg keuzelijst *herstel tijd* .
@@ -113,10 +119,11 @@ Voor online herstel punten zijn er vijf herstel typen:
 * **Herstellen naar de oorspronkelijke Exchange Server-locatie:** De gegevens worden hersteld op de oorspronkelijke Exchange-Server.
 * **Herstellen naar een andere Data Base op een Exchange-Server:** De gegevens worden hersteld naar een andere Data Base op een andere Exchange-Server.
 * **Herstellen naar een herstel database:** De gegevens worden hersteld naar een Exchange Recovery-Data Base (RDB).
-* **Kopiëren naar een netwerkmap:** De gegevens worden hersteld naar een netwerkmap.
+* **Kopiëren naar een** netwerkmap: De gegevens worden hersteld naar een netwerkmap.
 * **Kopiëren naar tape:** Als u een tape wisselaar of een zelfstandig tape station hebt aangesloten en geconfigureerd op de DPM-server, wordt het herstel punt naar een vrije tape gekopieerd.
 
     ![Kies online replicatie](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [Veelgestelde vragen over Azure Backup](backup-azure-backup-faq.md)

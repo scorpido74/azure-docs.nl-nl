@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9178b8007d707af2df150102b2d344a44106a9ca
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: f241f243860635db443b732f94d12956bbe0f9d8
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755187"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990625"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Compromissen tussen consistentie, beschikbaarheid en prestaties 
 
@@ -62,6 +62,10 @@ In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens 
 *K* = het aantal *"K"* versies (bijvoorbeeld updates) van een item.
 
 *T* = het tijds interval *' t '* sinds de laatste update.
+
+## <a name="strong-consistency-and-multi-master"></a>Sterke consistentie en multi-master
+
+Cosmos-accounts die zijn geconfigureerd voor multi-master, kunnen niet worden geconfigureerd voor sterke consistentie omdat het niet mogelijk is dat een gedistribueerd systeem een RPO van nul en een RTO van nul levert. Daarnaast zijn er geen schrijf latentie voordelen voor het gebruik van sterke consistentie met multi-master, omdat elke schrijf bewerking in een regio moet worden gerepliceerd en doorgevoerd voor alle geconfigureerde regio's binnen het account. Dit resulteert in dezelfde schrijf latentie als één hoofd account.
 
 ## <a name="next-steps"></a>Volgende stappen
 

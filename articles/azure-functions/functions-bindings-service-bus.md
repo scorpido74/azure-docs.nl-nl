@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: c39a2e8daf9ca46902cf1a1fac89c59918a6854d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b261594076857b841ba288dfaba8b5b8e9250065
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934334"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987930"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus bindingen voor Azure Functions
 
@@ -61,7 +61,7 @@ In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-libra
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
 public static void Run(
-    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] 
+    [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] 
     string myQueueItem,
     Int32 deliveryCount,
     DateTime enqueuedTimeUtc,
@@ -74,12 +74,6 @@ public static void Run(
     log.LogInformation($"MessageId={messageId}");
 }
 ```
-
-Dit voor beeld is voor Azure Functions versie 1. x. Als u wilt dat deze code werkt voor 2. x:
-
-- [de para meter voor toegangs rechten weglaten](#trigger---configuration)
-- Wijzig het type van de logboek parameter van `TraceWriter` naar `ILogger`
-- `log.Info` wijzigen in `log.LogInformation`
 
 ### <a name="trigger---c-script-example"></a>Voor beeld C# van trigger-script
 

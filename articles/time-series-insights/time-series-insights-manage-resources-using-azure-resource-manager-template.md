@@ -3,7 +3,7 @@ title: Uw Azure Time Series Insights-omgeving beheren met Azure Resource Manager
 description: In dit artikel wordt beschreven hoe u uw Azure Time Series Insights omgeving programmatisch beheert met behulp van Azure Resource Manager.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.devlang: csharp
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f7a88dafb9662e404cedf10334b22af149a3cd16
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274797"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991219"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -64,8 +64,8 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
      | eventHubNamespaceName | De naam ruimte van de bron Event Hub. |
      | eventHubName | De naam van de bron Event Hub. |
      | consumerGroupName | De naam van de Consumer groep die door de Time Series Insights-service wordt gebruikt om de gegevens van de Event Hub te lezen. **Opmerking:** Om bron conflicten te voor komen, moet deze Consumer groep worden toegewezen aan de Time Series Insights-service en niet worden gedeeld met andere lezers. |
-     | environmentName | De naam van de omgeving. De naam mag niet de volgende tekens bevatten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` en alle Stuur codes. Alle andere tekens zijn toegestaan.|
-     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de volgende tekens bevatten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` en alle Stuur codes. Alle andere tekens zijn toegestaan. |
+     | environmentName | De naam van de omgeving. De naam mag niet de volgende tekens bevatten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`en alle Stuur codes. Alle andere tekens zijn toegestaan.|
+     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de volgende tekens bevatten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/`en alle Stuur codes. Alle andere tekens zijn toegestaan. |
 
     <div id="optional-parameters"></div>
 

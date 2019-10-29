@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: raynew
-ms.openlocfilehash: f0b66806138311508725d377b59b83c1b1365674
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d689d25b9c9c7704047ccd3cfc98aa2ea583d20b
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553544"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968805"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Ondersteuningsmatrix voor het repliceren van Azure-VM's van de ene naar de andere regio
 
@@ -47,7 +47,7 @@ U kunt virtuele machines repliceren en herstellen tussen twee regio's binnen het
 **Geografisch cluster** | **Azure-regio's**
 -- | --
 Lopende | Canada-oost, Canada-centraal, Zuid-Centraal VS, West-Centraal VS, VS-Oost, VS-Oost 2, VS-West, VS-West 2, VS-midden, Noord-Centraal VS
-Europa | UK-west, UK-zuid, Europa-noord, Europa-west, Frankrijk-centraal, Frankrijk-zuid, Zuid-Afrika-west, Zuid-Afrika-noord
+Europa | UK-west, UK-zuid, Europa-noord, Europa-west, Frankrijk-centraal, Frankrijk-zuid, Zuid-Afrika-west, Zuid-Afrika-noord, Noor wegen Oost, Noor wegen West
 Azië | India-zuid, Centraal-India, West-India, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, UAE-centraal, UAE-noord
 Australië   | Australië-oost, Australië-zuidoost, Australië-centraal, Australië-centraal 2
 Azure Government    | Amerikaanse GOVe Virginia, VS GOV Iowa, US GOV Arizona, VS GOV Texas, US DOD Oost, US DOD-centraal 
@@ -162,7 +162,7 @@ Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Cont
 Beschikbaarheidssets | Ondersteund | Als u replicatie inschakelt voor een virtuele machine van Azure met de standaard opties, wordt er automatisch een beschikbaarheidsset gemaakt, op basis van de instellingen van de bron regio. U kunt deze instellingen wijzigen.
 Beschikbaarheidszones | Ondersteund |
 Voor deel voor hybride gebruik (HUB) | Ondersteund | Als op de bron-VM een HUB-licentie is ingeschakeld, gebruikt een testfailover of een failover van de VM ook de HUB-licentie.
-Schaalsets van virtuele machines | Niet ondersteund |
+Virtuele-machineschaalsets | Niet ondersteund |
 Installatie kopieën van Azure galerie-micro soft gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Azure Gallery-installatie kopieën-derde partij gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Aangepaste installatie kopieën-externe partij gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.

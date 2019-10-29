@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/18/2018
-ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 10/25/2019
+ms.openlocfilehash: 1bcb433230af856e92c7e418fc81b35bea549ddf
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122671"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987985"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Apache Kafka op HDInsight configureren om automatisch onderwerpen te maken
 
@@ -23,35 +23,33 @@ Standaard wordt het automatisch maken van een onderwerp niet ingeschakeld door [
 
 Gebruik de volgende stappen om het automatisch maken van een onderwerp in een bestaand cluster via de Ambari-webgebruikersinterface in te scha kelen:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com)het Kafka-cluster.
+1. Selecteer uw Kafka-cluster uit het [Azure Portal](https://portal.azure.com).
 
-2. Selecteer __cluster dashboard__in het __cluster overzicht__.
+1. Selecteer **Ambari Home**van **cluster dashboards**.
 
-    ![Afbeelding van de portal waarop het cluster dashboard is geselecteerd](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
+    ![Afbeelding van de portal waarop het cluster dashboard is geselecteerd](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-3. Selecteer vervolgens het __HDInsight-cluster dashboard__. Verifieer, wanneer u hierom wordt gevraagd, met behulp van de aanmeldings referenties (admin) voor het cluster.
+    Verifieer, wanneer u hierom wordt gevraagd, met behulp van de aanmeldings referenties (admin) voor het cluster. U kunt ook rechtstreeks verbinding maken met Amabri vanuit `https://CLUSTERNAME.azurehdinsight.net/` waarbij `CLUSTERNAME` de naam is van uw Kafka-cluster.
 
-    ![Afbeelding van het dashboard item van het HDInsight-cluster](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
-
-3. Selecteer de Kafka-service in de lijst aan de linkerkant van de pagina.
+1. Selecteer de Kafka-service in de lijst aan de linkerkant van de pagina.
 
     ![Tabblad Apache Ambari service List](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
-4. Selecteer configuraties in het midden van de pagina.
+1. Selecteer configuraties in het midden van de pagina.
 
     ![Tabblad Apache Ambari service-configuratie](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. Voer in het veld Filter een waarde van `auto.create`in.
+1. Voer in het veld Filter de waarde `auto.create`in.
 
     ![Veld Apache Ambari search filter](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
-    Hiermee wordt de lijst met eigenschappen gefilterd `auto.create.topics.enable` en wordt de instelling weer gegeven.
+    Hiermee wordt de lijst met eigenschappen gefilterd en wordt de `auto.create.topics.enable` instelling weer gegeven.
 
-6. Wijzig de waarde van `auto.create.topics.enable` in `true`en selecteer vervolgens opslaan. Voeg een notitie toe en selecteer vervolgens opslaan opnieuw.
+1. Wijzig de waarde van `auto.create.topics.enable` in `true`en selecteer vervolgens **Opslaan**. Voeg een notitie toe en selecteer vervolgens **Opslaan** opnieuw.
 
     ![Afbeelding van het bestand auto. Create. topics. enable entry](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Selecteer de Kafka-service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
+1. Selecteer de Kafka-service, selecteer __opnieuw opstarten__en selecteer vervolgens __alle betrokkenen opnieuw opstarten__. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
 
     ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
@@ -60,7 +58,7 @@ Gebruik de volgende stappen om het automatisch maken van een onderwerp in een be
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
-Wanneer u een Kafka-cluster maakt met behulp van een Azure Resource Manager- `auto.create.topics.enable` sjabloon, kunt u dit `kafka-broker`rechtstreeks instellen door het te voegen in een. In het volgende JSON-code fragment ziet u hoe u deze `true`waarde instelt op:
+Wanneer u een Kafka-cluster maakt met behulp van een Azure Resource Manager-sjabloon, kunt u `auto.create.topics.enable` rechtstreeks instellen door dit aan een `kafka-broker`toe te voegen. In het volgende JSON-code fragment ziet u hoe u deze waarde instelt op `true`:
 
 ```json
 "clusterDefinition": {

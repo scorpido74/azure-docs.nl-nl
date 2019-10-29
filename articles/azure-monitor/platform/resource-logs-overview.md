@@ -7,12 +7,12 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 10/22/2019
-ms.openlocfilehash: e1bf6a55568671ddb8f6999356cc9be43ce6a728
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b953f9b5e5fd8c853746caad3047986786bd1317
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804021"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989612"
 ---
 # <a name="azure-resource-logs-overview"></a>Overzicht van Azure-resource logboeken
 Azure-resource logboeken zijn [platform logboeken](platform-logs-overview.md) die worden verzonden door Azure-resources die hun interne bewerking beschrijven. Alle bron logboeken delen een gemeen schappelijk schema op het hoogste niveau met de flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
@@ -25,8 +25,8 @@ Resource logboeken worden automatisch gegenereerd door ondersteunde Azure-resour
 
 | Bestemming | Scenario |
 |:---|:---|:---|
-| [Log Analytics-werkruimte](resource-logs-collect-storage.md) | Analyseer de logboeken met andere bewakings gegevens en gebruik Azure Monitor functies, zoals logboek query's en logboek waarschuwingen. |
-| [Azure Storage](archive-diagnostic-logs.md) | Archiveer de logboeken voor controle of back-up. |
+| [Log Analytics-werkruimte](resource-logs-collect-workspace.md) | Analyseer de logboeken met andere bewakings gegevens en gebruik Azure Monitor functies, zoals logboek query's en logboek waarschuwingen. |
+| [Azure Storage](resource-logs-collect-storage.md) | Archiveer de logboeken voor controle of back-up. |
 | [Event hub](resource-logs-stream-event-hubs.md) | De logboeken streamen naar logboek registraties en telemetrie-systemen van derden.  |
 
 ## <a name="compute-resources"></a>Reken resources

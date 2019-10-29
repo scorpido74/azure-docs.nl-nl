@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen bij het maken van back-ups van SAP HANA-data bases met behulp van Azure Backup | Microsoft Docs
+title: Back-upfouten van SAP HANA data bases oplossen-Azure Backup
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954459"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968459"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -32,13 +32,13 @@ Wat is het voor registratie script:
     - CATALOGUS gelezen: voor het lezen van de back-catalogus.
     - SAP_INTERNAL_HANA_SUPPORT: voor toegang tot een paar persoonlijke tabellen.
 2. Voegt een sleutel toe aan Hdbuserstore voor de HANA-invoeg toepassing voor het afhandelen van alle bewerkingen (database query's, herstel bewerkingen, het configureren en uitvoeren van back-ups).
-   
+
    U kunt controleren of de sleutel is gemaakt door de opdracht HDBSQL uit te voeren op de HANA-computer met SIDADM-referenties:
 
     ``` hdbsql
     hdbuserstore list
     ```
-    
+
     De uitvoer van de opdracht moet de sleutel {SID} {DBNAME} bevatten, waarbij de gebruiker als AZUREWLBACKUPHANAUSER wordt weer gegeven.
 
 > [!NOTE]
@@ -50,9 +50,9 @@ Nadat een Data Base is gekozen voor back-up, configureert de Azure Backup-Servic
 
 - [catalog_backup_using_backint: True]
 - [enable_accumulated_catalog_backup: False]
-- [parallel_data_backup_backint_channels:1]
-- [log_backup_timeout_s:900)]
-- [backint_response_timeout:7200]
+- [parallel_data_backup_backint_channels: 1]
+- [log_backup_timeout_s: 900)]
+- [backint_response_timeout: 7200]
 
 > [!NOTE]
 > Zorg ervoor dat deze para meters *niet* aanwezig zijn op het niveau van de host. Met para meters op hostniveau worden deze para meters overschreven en kan dit leiden tot onverwacht gedrag.
@@ -67,7 +67,8 @@ Stel dat er een back-up wordt gemaakt van een dit SDC HANA-exemplaar ' h21 '. Op
 
 ![Dit SDC herstellen](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
-Let op het volgende
+Houd rekening met de volgende punten:
+
 - De naam van de herstelde DB wordt standaard gevuld met de naam van het back-upitem, bijvoorbeeld h21 (dit SDC)
 - Als u het doel als H11 selecteert, wordt de herstelde database naam niet automatisch gewijzigd. **Deze moet worden bewerkt in H11 (dit SDC)** . In het geval van dit SDC is de herstelde database naam de doel exemplaar-ID met kleine letters en ' dit SDC ' toegevoegd tussen haakjes.
 - Aangezien dit SDC slechts één data base kan hebben, moet u ook op het selectie vakje klikken om de bestaande database gegevens met de herstel punt gegevens te overschrijven.
@@ -81,7 +82,7 @@ In meerdere container databases voor HANA is de standaard configuratie SYSTEMDB 
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-data| Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
+gegevens| Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
 | Kan geen verbinding maken met het HANA-systeem. Controleer of uw systeem actief is.| De Azure Backup-service kan geen verbinding maken met HANA omdat de HANA-data base niet beschikbaar is. Of HANA wordt uitgevoerd, maar staat niet toe dat de Azure Backup-service verbinding maakt. | Controleer of de HANA-data base of service niet beschikbaar is. Als de HANA-data base of-service actief is, controleert u of [alle machtigingen zijn ingesteld](#setting-up-permissions). Als de sleutel ontbreekt, voert u het script voor de voorafgaande registratie opnieuw uit om een nieuwe sleutel te maken. |
 

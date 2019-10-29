@@ -3,7 +3,7 @@ title: Een Event Hubs gebeurtenis bron toevoegen aan Azure Time Series Insights 
 description: In dit artikel wordt beschreven hoe u een gebeurtenis bron die is verbonden met Azure-Event Hubs kunt toevoegen aan uw Time Series Insights omgeving.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: aaddfb19889e31bb8e0d52d1df2d6b034b6e7f6b
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 3adf8b71d264b01f13f5aac7002b7ec455a31d60
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274362"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990071"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Een Event Hub gebeurtenis bron toevoegen aan uw Time Series Insights omgeving
 
@@ -40,11 +40,11 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
 1. Zoek en open uw Event Hub in de Event Hub naam ruimte in de [Azure Portal](https://portal.azure.com).
 
-    [@no__t uw Event Hub-naam ruimte 1Open](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
+    [![uw Event Hub-naam ruimte openen](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
 
 1. Onder **entiteiten**selecteert u **consumenten groepen**en selecteert u vervolgens **consumenten groep**.
 
-   [![Event-hub: een Consumer groep toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
+   [Event hub![-een Consumer groep toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
 
 1. Voer op de pagina **consumenten groepen** een nieuwe unieke waarde in voor **naam**.  Gebruik dezelfde naam wanneer u een nieuwe gebeurtenis bron maakt in de Time Series Insights omgeving.
 
@@ -58,7 +58,7 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
 1. Onder **omgevings topologie**selecteert u **gebeurtenis bronnen**en selecteert u vervolgens **toevoegen**.
 
-   [![Under gebeurtenis bronnen selecteert u de knop toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+   [Selecteer![onder gebeurtenis bronnen de knop toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
 1. Voer een waarde in voor de **gebeurtenis bron naam** die uniek is voor deze time series Insights omgeving, zoals **gebeurtenis-stream**.
 
@@ -68,11 +68,11 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
    * Als u een bestaande Event Hub hebt in een van uw abonnementen, selecteert u **Event hub gebruiken uit beschik bare abonnementen**. Deze optie is de eenvoudigste benadering.
 
-     [![Select een import optie voor gebeurtenis bronnen](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
+     [Selecteer een optie voor het importeren van de gebeurtenis bron![](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
 
     *  In de volgende tabel worden de vereiste eigenschappen voor de optie **Event hub gebruiken van beschik bare abonnementen** beschreven:
 
-       [![Subscription en Event Hub Details](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
+       [![abonnement en Event Hub Details](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
 
        | Eigenschap | Beschrijving |
        | --- | --- |

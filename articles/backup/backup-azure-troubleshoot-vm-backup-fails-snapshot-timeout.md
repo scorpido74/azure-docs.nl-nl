@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup probleem oplossen: de status van de gast agent is niet beschikbaar'
+title: 'Problemen met Azure Backup oplossen: problemen met agents en uitbrei dingen'
 description: Symptomen, oorzaken en oplossingen voor Azure Backup fouten met betrekking tot agent, uitbrei ding en schijven.
 ms.reviewer: saurse
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b344af71eac04cc355ba157e18d9de9d84a9cc63
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533720"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969088"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -58,7 +58,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 Aanbevolen actie:<br>
 U kunt dit probleem oplossen door de vergren deling van de resource groep van de virtuele machine te verwijderen en de bewerking opnieuw uit te voeren om het opschonen te activeren.
 > [!NOTE]
-> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_ `<Geo>`_ `<number>` voor beeld: AzureBackupRG_northeurope_1
+> Backup-service maakt een afzonderlijke resource groep dan de resource groep van de virtuele machine om de herstel punt verzameling op te slaan. Klanten wordt aangeraden de resource groep die is gemaakt voor gebruik door de back-upservice niet te vergren delen. De naamgevings indeling van de resource groep die is gemaakt door de back-upservice is: AzureBackupRG_`<Geo>`_`<number>` voor beeld: AzureBackupRG_northeurope_1
 
 **Stap 1: [de vergren deling van de resource groep voor het herstel punt verwijderen](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Stap 2: [herstel punt verzameling opschonen](#clean_up_restore_point_collection)**<br>
@@ -225,7 +225,7 @@ Bij het uitvoeren van deze stappen wordt de extensie opnieuw geïnstalleerd tijd
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Vergren deling van de resource groep herstel punt verwijderen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende indeling AzureBackupRG_ `<Geo>`_ `<number>`.
+2. Ga naar de **optie alle resources**en selecteer de resource groep voor de verzameling van herstel punten in de volgende notatie AzureBackupRG_`<Geo>`_`<number>`.
 3. Selecteer in de sectie **instellingen** de optie **vergren** delen om de vergren delingen weer te geven.
 4. Als u de vergren deling wilt verwijderen, selecteert u het weglatings teken en klikt u op **verwijderen**.
 
@@ -254,12 +254,12 @@ Nadat u de vergren deling hebt verwijderd, activeert u een ad-hoc/hand matige ba
 Voer de volgende stappen uit om de verzameling met herstel punten hand matig te wissen, die niet is gewist vanwege de vergren deling van de resource groep:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Klik in het menu **hub** op **alle resources**en selecteer de resource groep met de volgende indeling AzureBackupRG_ `<Geo>`_ `<number>` waar de virtuele machine zich bevindt.
+2. Klik in het menu **hub** op **alle resources**, selecteer de resource groep met de volgende indeling AzureBackupRG_`<Geo>`_`<number>` waar de virtuele machine zich bevindt.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Klik op resource groep, de Blade **overzicht** wordt weer gegeven.
-4. Selecteer de optie **verborgen typen weer geven** om alle verborgen resources weer te geven. Selecteer de herstel punt verzamelingen met de volgende indeling AzureBackupRG_ `<VMName>`_ `<number>`.
+4. Selecteer de optie **verborgen typen weer geven** om alle verborgen resources weer te geven. Selecteer de herstel punt verzamelingen met de volgende indeling AzureBackupRG_`<VMName>`_`<number>`.
 
     ![Vergren deling verwijderen](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 

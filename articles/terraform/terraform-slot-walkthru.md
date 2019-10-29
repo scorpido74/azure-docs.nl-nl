@@ -1,26 +1,23 @@
 ---
-title: Terraform met Azure-implementatiesites voor providers
+title: Zelf studie-een infra structuur inrichten met Azure-implementatie sites met behulp van terraform
 description: Zelfstudie over het gebruik van Terraform met Azure-implementatiesites voor providers
-services: terraform
-ms.service: azure
-keywords: terraform, devops, virtuele machine, azure, implementatiesites
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: fbc6d30f8bc161ecf1a4e4093d0b69e99eec527b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/26/2019
+ms.openlocfilehash: 209bc23c6f8e96734506e3017ed2b16e51c77a00
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924991"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969280"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Gebruik Terraform om infrastructuur in te richten met Azure-implementatiesites
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>Zelf studie: infra structuur inrichten met Azure-implementatie sites met behulp van terraform
 
 U kunt [Azure-implementatiesites](/azure/app-service/deploy-staging-slots) gebruiken om te wisselen tussen verschillende versies van uw app. Deze mogelijkheid helpt u om de impact van afgebroken implementaties te minimaliseren. 
 
-In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarbij stapsgewijs twee apps worden geïmplementeerd via GitHub en Azure. Eén app wordt gehost op een productiesite. De tweede app wordt gehost op een staging-site. (De namen ' productie ' en ' staging ' zijn wille keurig en kunnen alles wat u wilt dat uw scenario vertegenwoordigt.) Nadat u uw implementatie sleuven hebt geconfigureerd, kunt u terraform gebruiken om de twee sleuven naar behoefte te wisselen.
+In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarbij stapsgewijs twee apps worden geïmplementeerd via GitHub en Azure. Eén app wordt gehost op een productiesite. De tweede app wordt gehost op een staging-site. (De namen ' productie ' en ' staging ' zijn wille keurig. Ze zijn ook geschikt voor uw scenario.) Nadat u uw implementatie sleuven hebt geconfigureerd, gebruikt u terraform om naar behoefte te scha kelen tussen de twee sleuven.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -64,13 +61,11 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
     cd deploy
     ```
 
-1. Maak met de [vi Editor](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) een bestand met de naam `deploy.tf`. In dit bestand wordt de [Terraform-configuratie](https://www.terraform.io/docs/configuration/index.html) ondergebracht.
+1. Maak in Cloud Shell een bestand met de naam `deploy.tf`.
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
@@ -109,13 +104,7 @@ In dit artikel ziet u een voorbeeld van het gebruik van implementatiesites waarb
     }
     ```
 
-1. Selecteer de Esc-toets om de invoegmodus af te sluiten.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 1. Nu u het bestand hebt gemaakt, controleert u de inhoud ervan.
 
@@ -207,7 +196,7 @@ Nadat u uw testprojectopslagplaats hebt gesplitst, configureert u de implementat
 
 1. Op het tabblad **Implementatieoptie** selecteert u **OK**.
 
-Nu hebt u de productiesite geïmplementeerd. Als u de staging-site wilt implementeren, voert u alle vorige stappen in deze sectie uit met slechts de volgende wijzigingen:
+U hebt op dit moment de productie site geïmplementeerd. Voer de volgende stappen uit om de faserings sleuf te implementeren:
 
 - Selecteer in stap 3 de resource **slotAppServiceSlotOne**.
 
@@ -219,8 +208,6 @@ Nu hebt u de productiesite geïmplementeerd. Als u de staging-site wilt implemen
 
 In de vorige secties hebt u twee sites ingesteld, **slotAppService** en **slotAppServiceSlotOne** voor implementatie vanuit verschillende branches in GitHub. Laten we een voorbeeld van de web-apps weergeven om te controleren of deze zijn geïmplementeerd.
 
-Voer de volgende stappen tweemaal uit. In stap 3 selecteert u de eerste keer **slotAppService** en de tweede keer **slotAppServiceSlotOne**.
-
 1. In het hoofdmenu van Azure Portal selecteert u **Resourcegroepen**.
 
 1. Selecteer **slotDemoResourceGroup**.
@@ -231,18 +218,15 @@ Voer de volgende stappen tweemaal uit. In stap 3 selecteert u de eerste keer **s
 
     ![De URL op het tabblad Overzicht selecteren om de app weer te geven](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Het kan enkele minuten duren voordat de site vanuit GitHub is gebouwd en geïmplementeerd.
->
->
+1. Afhankelijk van de geselecteerde app ziet u de volgende resultaten:
+    - **slotAppService** web-app-blauwe pagina met een pagina titel van de **sleuf demo-app 1**. 
+    - **slotAppServiceSlotOne** web-app-groene pagina met een pagina titel van de **sleuf demo-app 2**.
 
-Voor de web-app **slotAppService** ziet u een blauwe pagina met de paginatitel **site Demo-App 1**. Voor de web-app **slotAppServiceSlotOne** ziet u een groene pagina met de paginatitel **site Demo-App 2**.
-
-![Een voorbeeld van de apps weergeven om te testen of deze correct zijn geïmplementeerd](./media/terraform-slot-walkthru/app-preview.png)
+    ![Een voorbeeld van de apps weergeven om te testen of deze correct zijn geïmplementeerd](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>Wisselen tussen de twee implementatiesites
 
-Als u het wisselen tussen de twee implementatiesites wilt testen, voert u de volgende stappen uit:
+Voer de volgende stappen uit om de twee implementatie sleuven te testen:
  
 1. Schakel naar het browsertabblad waarop **slotAppService** (de app met de blauwe pagina) wordt uitgevoerd. 
 
@@ -256,13 +240,11 @@ Als u het wisselen tussen de twee implementatiesites wilt testen, voert u de vol
     cd clouddrive/swap
     ```
 
-1. Maak met de vi Editor een bestand met de naam `swap.tf`.
+1. Maak in Cloud Shell een bestand met de naam `swap.tf`.
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. Activeer de invoegmodus door op de toets I te drukken.
 
 1. Plak de volgende code in de editor:
 
@@ -278,13 +260,7 @@ Als u het wisselen tussen de twee implementatiesites wilt testen, voert u de vol
     }
     ```
 
-1. Selecteer de Esc-toets om de invoegmodus af te sluiten.
-
-1. Sla het bestand op en sluit vi Editor af met de volgende opdracht:
-
-    ```bash
-    :wq
-    ```
+1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
 
 1. Initialiseer Terraform.
 
@@ -304,7 +280,7 @@ Als u het wisselen tussen de twee implementatiesites wilt testen, voert u de vol
     terraform apply
     ```
 
-1. Als de sitewisseling door Terraform is voltooid, gaat u terug naar de browser waarin de web-app **slotAppService** wordt weergegeven en vernieuwt u de pagina. 
+1. Nadat terraform de sleuven heeft gewisseld, keert u terug naar de browser. Vernieuw de pagina. 
 
 De web-app op uw staging-site **slotAppServiceSlotOne** is verwisseld met de productiesite en wordt nu groen weergegeven. 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 Na de app-wisseling ziet u de oorspronkelijke configuratie.
+
+## <a name="next-steps"></a>Volgende stappen
+
+> [!div class="nextstepaction"] 
+> [Terraform op Azure](/azure/ansible/)

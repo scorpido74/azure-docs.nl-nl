@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/14/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 7075e127192635c08aa2da2b4798dea6d6abb13b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 5f027926a7b90ac99b04456ad3635466a6e27655
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639408"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968798"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Een back-up maken van een virtuele machine in azure met Resource Manager-sjabloon
 
@@ -58,7 +58,7 @@ Zie [de back-uptaak bewaken](./quick-backup-vm-powershell.md#monitor-the-backup-
 
 Als u een back-up van de virtuele machine niet meer nodig hebt, kunt u deze opschonen.
 
-- Als u de virtuele machine wilt herstellen, kunt u de opschoon bewerking overs Laan.
+- Als u de virtuele machine opnieuw wilt proberen te herstellen, slaat u de opschoon bewerking over.
 - Als u een bestaande virtuele machine hebt gebruikt, kunt u de laatste [Remove-AzResourceGroup-](/powershell/module/az.resources/remove-azresourcegroup) cmdlet overs Laan om de resource groep en de VM op locatie te laten staan.
 
 Schakel de beveiliging uit, verwijder de herstel punten en de kluis. Verwijder vervolgens de resource groep en de bijbehorende VM-resources als volgt:

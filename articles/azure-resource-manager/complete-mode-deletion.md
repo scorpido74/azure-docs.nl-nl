@@ -4,14 +4,14 @@ description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azu
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: de1b5080e72f79626ca0c749efe4122721f14922
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 03e91e4be967e822d17144af848f51e73851b1e6
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528588"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969185"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -61,7 +61,6 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. ContainerInstance](#microsoftcontainerinstance)
 > - [Micro soft. ContainerRegistry](#microsoftcontainerregistry)
 > - [Micro soft. container service](#microsoftcontainerservice)
-> - [Micro soft. ContentModerator](#microsoftcontentmoderator)
 > - [Micro soft. CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Micro soft. CostManagement](#microsoftcostmanagement)
 > - [Micro soft. CustomerLockbox](#microsoftcustomerlockbox)
@@ -277,6 +276,7 @@ Ga naar de naam ruimte van een resource provider:
 > | dataAliases | Nee |
 > | denyAssignments | Nee |
 > | elevateAccess | Nee |
+> | findOrphanRoleAssignments | Nee |
 > | vergren delingen | Nee |
 > | Bevoegdheden | Nee |
 > | policyAssignments | Nee |
@@ -394,6 +394,7 @@ Ga naar de naam ruimte van een resource provider:
 > | billingAccounts/createBillingRoleAssignment | Nee |
 > | billingAccounts/createInvoiceSectionOperations | Nee |
 > | billingAccounts/klanten | Nee |
+> | billingAccounts/klanten/billingPermissions | Nee |
 > | billingAccounts/klanten/billingSubscriptions | Nee |
 > | billingAccounts/klanten/initiateTransfer | Nee |
 > | billingAccounts/klanten/beleids regels | Nee |
@@ -451,6 +452,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | blockchainMembers | Ja |
+> | cordaMembers | Ja |
 > | kijkers | Ja |
 
 ## <a name="microsoftblueprint"></a>Micro soft. blauw druk
@@ -641,6 +643,8 @@ Ga naar de naam ruimte van een resource provider:
 > | proximityPlacementGroups | Ja |
 > | restorePointCollections | Ja |
 > | restorePointCollections/restorePoints | Nee |
+> | sharedVMExtensions | Ja |
+> | sharedVMExtensions/versies | Nee |
 > | sharedVMImages | Ja |
 > | sharedVMImages/versies | Nee |
 > | momentopnamen | Ja |
@@ -700,6 +704,7 @@ Ga naar de naam ruimte van een resource provider:
 > | registers/buildTasks | Ja |
 > | registers/buildTasks/stappen | Nee |
 > | registers/eventGridFilters | Nee |
+> | registers/generateCredentials | Nee |
 > | registers/getBuildSourceUploadUrl | Nee |
 > | registers/GetCredentials | Nee |
 > | registers/importImage | Nee |
@@ -710,7 +715,9 @@ Ga naar de naam ruimte van een resource provider:
 > | registers/uitvoeringen | Nee |
 > | registers/uitvoeringen/annuleren | Nee |
 > | registers/scheduleRun | Nee |
+> | registers/scopeMaps | Nee |
 > | registers/taken | Ja |
+> | registers/tokens | Nee |
 > | registers/updatePolicies | Nee |
 > | registers/webhooks | Ja |
 > | registers/webhooks/getCallbackConfig | Nee |
@@ -724,14 +731,6 @@ Ga naar de naam ruimte van een resource provider:
 > | containerServices | Ja |
 > | managedClusters | Ja |
 > | openShiftManagedClusters | Ja |
-
-## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-
-> [!div class="mx-tableFixed"]
-> | Resourcetype | Modus voor volledige verwijdering |
-> | ------------- | ----------- |
-> | toepassingen | Ja |
-> | updateCommunicationPreference | Nee |
 
 ## <a name="microsoftcortanaanalytics"></a>Micro soft. CortanaAnalytics
 
@@ -750,9 +749,9 @@ Ga naar de naam ruimte van een resource provider:
 > | Budgetten | Nee |
 > | CloudConnectors | Nee |
 > | Connectors | Ja |
-> | Afdeling | Nee |
+> | afdeling | Nee |
 > | Dimensies | Nee |
-> | EnrollmentAccounts | Nee |
+> | enrollmentAccounts | Nee |
 > | Dump | Nee |
 > | ExternalBillingAccounts | Nee |
 > | ExternalBillingAccounts/waarschuwingen | Nee |
@@ -821,8 +820,6 @@ Ga naar de naam ruimte van een resource provider:
 > | datacatalogs/gegevens bronnen/scans | Nee |
 > | datacatalogs/gegevens bronnen/scans/gegevens sets | Nee |
 > | datacatalogs/gegevens bronnen/scans/triggers | Nee |
-> | datacatalogs/scantargets | Nee |
-> | datacatalogs/scantargets/gegevens sets | Nee |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -887,6 +884,9 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | servers | Ja |
 > | servers/adviseurs | Nee |
+> | servers/privateEndpointConnectionProxies | Nee |
+> | servers/privateEndpointConnections | Nee |
+> | servers/privateLinkResources | Nee |
 > | servers/queryTexts | Nee |
 > | servers/recoverableServers | Nee |
 > | servers/topQueryStatistics | Nee |
@@ -900,6 +900,9 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | servers | Ja |
 > | servers/adviseurs | Nee |
+> | servers/privateEndpointConnectionProxies | Nee |
+> | servers/privateEndpointConnections | Nee |
+> | servers/privateLinkResources | Nee |
 > | servers/queryTexts | Nee |
 > | servers/recoverableServers | Nee |
 > | servers/topQueryStatistics | Nee |
@@ -914,6 +917,7 @@ Ga naar de naam ruimte van een resource provider:
 > | serverGroups | Ja |
 > | servers | Ja |
 > | servers/adviseurs | Nee |
+> | servers/sleutels | Nee |
 > | servers/privateEndpointConnectionProxies | Nee |
 > | servers/privateEndpointConnections | Nee |
 > | servers/privateLinkResources | Nee |
@@ -943,6 +947,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | applicationgroups | Ja |
 > | applicationgroups/toepassingen | Nee |
+> | applicationgroups/Bureau bladen | Nee |
 > | applicationgroups/startmenuitems | Nee |
 > | hostpools | Ja |
 > | hostpools/sessionhosts | Nee |
@@ -1088,6 +1093,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | autoManagedVmConfigurationProfiles | Ja |
+> | configurationProfileAssignments | Nee |
 > | guestConfigurationAssignments | Nee |
 > | software | Nee |
 > | softwareUpdateProfile | Nee |
@@ -1129,6 +1135,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | apparaten | Ja |
+> | computers/uitbrei dingen | Ja |
 
 ## <a name="microsofthybriddata"></a>Micro soft. HybridData
 
@@ -1235,6 +1242,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | werk ruimten | Ja |
 > | werk ruimten/reken bewerkingen | Nee |
+> | werk ruimten/eventGridFilters | Nee |
 
 ## <a name="microsoftmanagedidentity"></a>Micro soft. ManagedIdentity
 
@@ -1322,6 +1330,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Media Services/liveEvents | Ja |
 > | Media Services/liveEvents/liveOutputs | Nee |
 > | Media Services/liveOutputOperations | Nee |
+> | Media Services/mediaGraphs | Nee |
 > | Media Services/streamingEndpointOperations | Nee |
 > | Media Services/streamingEndpoints | Ja |
 > | Media Services/streamingLocators | Nee |
@@ -1520,6 +1529,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | policyEvents | Nee |
+> | policyMetadata | Nee |
 > | policyStates | Nee |
 > | policyTrackedResources | Nee |
 > | herstel | Nee |
@@ -1610,6 +1620,8 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- |
 > | Implementaties | Nee |
 > | implementaties/bewerkingen | Nee |
+> | deploymentScripts | Ja |
+> | deploymentScripts/logboeken | Nee |
 > | koppelen | Nee |
 > | notifyResourceJobs | Nee |
 > | hardwareproviders | Nee |
@@ -1659,6 +1671,7 @@ Ga naar de naam ruimte van een resource provider:
 > | applicationWhitelistings | Nee |
 > | assessmentMetadata | Nee |
 > | evaluaties | Nee |
+> | automatisering | Ja |
 > | AutoProvisioningSettings | Nee |
 > | Ingebouwde strengste | Nee |
 > | dataCollectionAgents | Nee |

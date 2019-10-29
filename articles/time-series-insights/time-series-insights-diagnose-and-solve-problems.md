@@ -3,7 +3,7 @@ title: Problemen opsporen, problemen oplossen en oplossen in Azure Time Series I
 description: In dit artikel wordt beschreven hoe u veelvoorkomende problemen die zich kunnen voordoen in uw Azure Time Series Insights omgeving kunt vaststellen, oplossen en verhelpen.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330852"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991260"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Problemen in uw Time Series Insights omgeving diagnosticeren en oplossen
 
@@ -40,11 +40,11 @@ Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie [ondersteunde J
 
 * Voor een IoT-hub in azure IoT Hub moet u de sleutel opgeven die **service Connect** -machtigingen heeft. Een van de **iothubowner** -of **service** beleidsregels werkt, omdat beide machtigingen voor **service verbinding** hebben.
 
-   [verbindings machtigingen voor ![IoT hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [verbindings machtigingen voor![IoT Hub-service](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * Voor een Event Hub in azure Event Hubs moet u de sleutel met de machtiging **Luis teren** opgeven. Een van de beleids regels voor **lezen** of **beheren** werkt, omdat deze beide over **Luister** machtigingen beschikken.
 
-   [1Event-Luister machtigingen voor de hub @no__t](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [Luister machtigingen voor de Event hub![](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Oorzaak C: de verleende consumenten groep is niet exclusief Time Series Insights
 
@@ -69,7 +69,7 @@ De beperkings limiet wordt afgedwongen op basis van het SKU-type en de capacitei
 
 In de volgende afbeelding ziet u een Time Series Insights omgeving met een SKU van S1 en een capaciteit van 3. Het kan 3.000.000 gebeurtenissen per dag inkomen.
 
-[![Environment SKU huidige capaciteit](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[huidige capaciteit van de SKU van![-omgeving](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Als voor beeld wordt ervan uitgegaan dat een omgeving berichten van een Event Hub opneemt. Het dagelijkse ingangs tempo is ~ 67.000 berichten. Dit aantal wordt elke minuut op ongeveer 46 berichten omgezet. 
 

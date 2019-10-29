@@ -1,21 +1,21 @@
 ---
 title: Vorm gebeurtenissen met Azure Time Series Insights preview | Microsoft Docs
 description: Meer informatie over het vorm geven van gebeurtenissen met Azure Time Series Insights preview.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed0594373c8702ab01b50facaf0ef5ece2d6c7e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: f8a50e062d2dac1f30f8b745f351570262daac53
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274270"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990896"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Vorm gebeurtenissen met Azure Time Series Insights preview
 
@@ -28,10 +28,10 @@ Denk na over hoe u gebeurtenissen naar Time Series Insights preview verzendt. Da
 * Verzend zo efficiënt mogelijk gegevens via het netwerk.
 * Sla uw gegevens op een manier op waarmee u deze beter kunt samen voegen voor uw scenario.
 
-Ga als volgt te werk voor de best mogelijke query prestaties:
+Ga als volgt te werk voor de beste prestaties van query's:
 
 * Geen onnodige eigenschappen verzenden. Time Series Insights u een voor beeld van uw facturen hebt in uw gebruik. U kunt de gegevens die u wilt doorzoeken, het beste opslaan en verwerken.
-* Exemplaar velden gebruiken voor statische gegevens. Met deze procedure kunt u voor komen dat statische gegevens via het netwerk worden verzonden. Exemplaar velden, een onderdeel van het time series-model, werken als referentie gegevens in de Time Series Insights algemeen beschik bare service. Zie [Time Series-modellen](./time-series-insights-update-tsm.md)voor meer informatie over exemplaar velden.
+* Exemplaar velden gebruiken voor statische gegevens. Met deze procedure kunt u voor komen dat statische gegevens via het netwerk worden verzonden. Exemplaar velden, een onderdeel van het time series-model, werken als referentie gegevens in de Time Series Insights-service die algemeen beschikbaar is. Zie [Time Series model](./time-series-insights-update-tsm.md)voor meer informatie over exemplaar velden.
 * Dimensie-eigenschappen delen tussen twee of meer gebeurtenissen. Met deze procedure kunt u gegevens efficiënter verzenden via het netwerk.
 * Gebruik geen geneste diepe matrix. Time Series Insights preview ondersteunt Maxi maal twee niveaus van geneste matrices die objecten bevatten. Met Time Series Insights preview worden matrices in berichten samengevoegd in meerdere gebeurtenissen met eigenschaps waarde-paren.
 * Als er slechts enkele maat regelen bestaan voor alle of de meeste gebeurtenissen, is het beter om deze metingen als afzonderlijke eigenschappen binnen hetzelfde object te verzenden. Als u ze afzonderlijk verzendt, vermindert het aantal gebeurtenissen en kunnen query's sneller worden uitgevoerd omdat er minder gebeurtenissen moeten worden verwerkt.
@@ -40,7 +40,9 @@ Ga als volgt te werk voor de best mogelijke query prestaties:
 
 Het volgende voor beeld is gebaseerd op een scenario waarbij twee of meer apparaten metingen of signalen verzenden. De metingen of signalen kunnen een *stroom snelheid*, *olie belasting*, *Tempe ratuur*en *vochtigheid*zijn.
 
-In het volgende voor beeld is er één Azure IoT Hub-bericht waarbij de buitenste matrix een gedeeld gedeelte van algemene dimensie waarden bevat. De buitenste matrix gebruikt gegevens van een tijd reeks-instantie om de efficiëntie van het bericht te verg Roten. De time series-instantie bevat meta gegevens van apparaten die niet worden gewijzigd bij elke gebeurtenis, maar biedt wel nuttige eigenschappen voor gegevens analyse. Als u wilt besparen op bytes die via de kabel worden verzonden en het bericht efficiënter wilt maken, kunt u de gemeen schappelijke dimensie waarden batchiseren en de meta gegevens van het time series-exemplaar gebruiken.
+In het voor beeld is er één Azure IoT Hub-bericht waarbij de buitenste matrix een gedeeld gedeelte van algemene dimensie waarden bevat. De buitenste matrix gebruikt gegevens van een tijd reeks-instantie om de efficiëntie van het bericht te verg Roten. 
+
+Het exemplaar van de tijd reeks bevat meta gegevens van het apparaat. Deze meta gegevens worden niet met elke gebeurtenis gewijzigd, maar het biedt wel nuttige eigenschappen voor gegevens analyse. Als u wilt besparen op bytes die via de kabel worden verzonden en het bericht efficiënter wilt maken, kunt u gebruikmaken van algemene dimensie waarden en de meta gegevens van Time Series-exemplaren.
 
 ### <a name="example-json-payload"></a>Voor beeld van JSON-nettolading
 
@@ -119,15 +121,15 @@ Time Series Insights preview voegt een tabel toe (na afvlakking) tijdens de quer
 In het vorige voor beeld ziet u de volgende punten:
 
 * Statische eigenschappen worden opgeslagen in Time Series Insights Preview voor het optimaliseren van gegevens die via het netwerk worden verzonden.
-* Time Series Insights preview-gegevens worden samen met de query tijd gekoppeld met behulp van de tijd reeks-ID die in het exemplaar is gedefinieerd.
-* Er worden twee geneste lagen gebruikt, die het meest worden ondersteund door Time Series Insights preview. Het is essentieel om diep geneste matrices te voor komen.
+* Time Series Insights preview-gegevens worden samen met de tijd reeks-ID die in het exemplaar is gedefinieerd, gekoppeld aan de query tijd.
+* Er worden twee geneste lagen gebruikt. Dit nummer is het meest dat Time Series Insights preview ondersteunt. Het is essentieel om diep geneste matrices te voor komen.
 * Omdat er enkele metingen zijn, worden ze verzonden als afzonderlijke eigenschappen binnen hetzelfde object. In het voor beeld is **reeks. Flow rate psi**, **serie. Olie druk psi**, en **serie. De stroom verhouding FT3/s** zijn unieke kolommen.
 
 >[!IMPORTANT]
-> Exemplaar velden worden niet opgeslagen met telemetrie. Ze worden opgeslagen met meta gegevens in het **Time Series-model**.
+> Exemplaar velden worden niet opgeslagen met telemetrie. Ze worden opgeslagen met meta gegevens in het time series-model.
 > De voor gaande tabel vertegenwoordigt de query weergave.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure time series Insights syntaxis van de voorbeeld query](./time-series-insights-query-data-csharp.md)als u deze richt lijnen in de praktijk wilt plaatsen. Meer informatie over de query syntaxis voor de Time Series Insights preview Data Access REST API.
+- Zie [Azure time series Insights syntaxis van de voorbeeld query](./time-series-insights-query-data-csharp.md)als u deze richt lijnen in de praktijk wilt plaatsen. Meer informatie over de query syntaxis voor de Time Series Insights preview-REST API voor gegevens toegang.
 - Zie [ondersteunde JSON-shapes](./time-series-insights-send-events.md#supported-json-shapes)voor meer informatie over ondersteunde JSON-vormen.

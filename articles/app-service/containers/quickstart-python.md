@@ -16,18 +16,18 @@ ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 101a8e11d57ef8cb1bdce7804b33a8151797264f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8c3015f78df1427af760f14bd948057643ef2a98
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933748"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990829"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
 
 In deze Quick Start implementeert u een Python-web-app voor [app service op Linux](app-service-linux-intro.md), de uiterst schaal bare webhostingservice met self-patch functie. U gebruikt de lokale [Azure-opdracht regel interface (CLI)](/cli/azure/install-azure-cli) op een Mac-, Linux-of Windows-computer. De web-app die u configureert, maakt gebruik van een gratis App Service laag, zodat u geen kosten in de loop van dit artikel opdoet.
 
-Als u liever apps implementeert via een IDE, raadpleegt u [python-Apps implementeren in app service van Visual Studio code](/python/tutorial-deploy-app-service-on-linux-01).
+Als u liever apps implementeert via een IDE, raadpleegt u [python-Apps implementeren in app service van Visual Studio code](/azure/python/tutorial-deploy-app-service-on-linux-01).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -176,7 +176,7 @@ Zodra de implementatie is voltooid, gaat u terug naar het browser venster open n
 ![Een bijgewerkte voor beeld-app voor python uitvoeren in azure](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
 > [!TIP]
-> Visual Studio code biedt krachtige extensies voor python en Azure App Service, waarmee het proces van het implementeren van Python-web-apps naar App Service wordt vereenvoudigd. Zie voor meer informatie [python-Apps implementeren in app service van Visual Studio code](/python/tutorial-deploy-app-service-on-linux-01).
+> Visual Studio code biedt krachtige extensies voor python en Azure App Service, waarmee het proces van het implementeren van Python-web-apps naar App Service wordt vereenvoudigd. Zie voor meer informatie [python-Apps implementeren in app service van Visual Studio code](/azure/python/tutorial-deploy-app-service-on-linux-01).
 
 ## <a name="stream-logs"></a>Logboeken streamen
 

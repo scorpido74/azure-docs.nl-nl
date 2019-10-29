@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/18/2019
+ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488988"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990710"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer (preview-versie)
 
@@ -36,7 +36,7 @@ Met het beheer van rechten van Azure AD kunt u beleid configureren om goed keuri
 
 De eerste stap voor het goed keuren of weigeren van toegangs aanvragen is het zoeken en openen van de goedkeurings aanvraag in behandeling. Er zijn twee manieren om de toegangs aanvraag te openen.
 
-**Vereiste rol:** Goedkeurder
+**Vereiste rol:** Fiatteur
 
 1. Zoek naar een e-mail bericht van Microsoft Azure waarin u wordt gevraagd of u een aanvraag wilt goed keuren of weigeren. Hier volgt een voor beeld van een e-mail bericht:
 
@@ -48,7 +48,7 @@ De eerste stap voor het goed keuren of weigeren van toegangs aanvragen is het zo
 
 Als u het e-mail bericht niet hebt, kunt u de toegangs aanvragen vinden die in behandeling zijn door de volgende stappen uit te voeren.
 
-1. Meld u aan bij de portal van mijn [https://myaccess.microsoft.com](https://myaccess.microsoft.com)toegang op.
+1. Meld u aan bij de portal van mijn toegang op [https://myaccess.microsoft.com](https://myaccess.microsoft.com).
 
 1. Klik in het linkermenu op **goed keuringen** om een lijst weer te geven met toegangs aanvragen die in behandeling zijn.
 
@@ -58,7 +58,7 @@ Als u het e-mail bericht niet hebt, kunt u de toegangs aanvragen vinden die in b
 
 Nadat u een goedkeurings aanvraag in behandeling hebt geopend, ziet u details die u helpen bij het maken van een goed keuring of het weigeren van een beslissing.
 
-**Vereiste rol:** Goedkeurder
+**Vereiste rol:** Fiatteur
 
 1. Klik op de koppeling **weer geven** om het deel venster toegangs aanvraag te openen.
 
@@ -70,7 +70,7 @@ Nadat u een goedkeurings aanvraag in behandeling hebt geopend, ziet u details di
 
 1. Voer, indien nodig, een reden in.
 
-    ![Mijn toegangs Portal-toegangs aanvraag](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![Mijn toegangs Portal-toegangs aanvraag](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. Klik op **verzenden** om uw beslissing in te dienen.
 

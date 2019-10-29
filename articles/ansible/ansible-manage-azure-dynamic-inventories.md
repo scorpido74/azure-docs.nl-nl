@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 38be15cf5771f7eb09bce1154baa3bc6e559d49b
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 6d520518e7180f69ee7293523dd40c8158dcfb99
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881509"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990679"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Zelf studie: dynamische voor raden van uw Azure-resources configureren met behulp van Ansible
 
@@ -155,7 +155,7 @@ Vanaf Ansible 2,8 biedt Ansible een [Azure Dynamic-Inventory-invoeg toepassing](
     Failed to connect to the host via ssh: Host key verification failed.
     ```
     
-    Als de fout melding voor de host-sleutel verificatie wordt weer gegeven, voegt u de volgende regel toe aan het Ansible-configuratie bestand. Het Ansible-configuratie bestand bevindt zich op `/etc/ansible/ansible.cfg`.
+    Als de fout melding voor de host-sleutel verificatie wordt weer gegeven, voegt u de volgende regel toe aan het Ansible-configuratie bestand. Het Ansible-configuratie bestand bevindt zich op `/etc/ansible/ansible.cfg` of `~/.ansible.cfg`.
 
     ```bash
     host_key_checking = False

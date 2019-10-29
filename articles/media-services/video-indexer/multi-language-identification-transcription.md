@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70862042"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968744"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Meerdere talen inhoud automatisch identificeren en transcriberen (preview-versie)
 
@@ -39,7 +39,7 @@ U kunt de **meertalige detectie** kiezen bij het uploaden en indexeren van uw vi
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-api"></a>Meertalige identificatie voor indexering met API kiezen
 
-Wanneer u een video indexeert of opnieuw [indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) met behulp van `multi-language detection` de API, `sourceLanguage` kiest u de optie in de para meter.
+Wanneer u een video indexeert of opnieuw [indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) met behulp van de API, kiest u de optie `multi-language detection` in de para meter `sourceLanguage`.
 
 ### <a name="model-output"></a>Model uitvoer
 
@@ -86,9 +86,8 @@ Daarnaast bevat elke instantie in de sectie transcriptie de taal waarin deze is 
 * Het maken en bewerken van het project is momenteel niet beschikbaar voor Video's met meerdere talen.
 * Aangepaste taal modellen zijn niet beschikbaar wanneer u meerdere talen detectie gebruikt.
 * Het toevoegen van tref woorden wordt niet ondersteund.
-* de API ' update transcript ' wordt niet ondersteund.
 * Wanneer u ondertitelings bestanden exporteert, wordt de taal aanduiding niet weer gegeven.
-
+* De update transcript-API biedt geen ondersteuning voor meerdere taal bestanden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,22 +1,19 @@
 ---
-title: Een virtuele Azure-machineschaalset maken van een aangepaste Packer-installatiekopie met behulp van Terraform
+title: 'Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een pakket met behulp van terraform'
 description: Met behulp van Terraform een virtuele Azure-machineschaalset maken van een aangepaste installatiekopie die is gegenereerd met Packer (compleet met een virtueel netwerk en beheerde gekoppelde schijven).
-services: terraform
-ms.service: azure
-keywords: terraform, devops, schaalset, virtuele machine, netwerk, opslag, modules, aangepaste installatiekopieën, packer
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/23/2019
-ms.openlocfilehash: de68d5217fb455c8d2b3e11163287e00abcf8481
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.date: 10/26/2019
+ms.openlocfilehash: ac89930d55901e20759dc582d9835e99d26aac7c
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882512"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969435"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Een virtuele Azure-machineschaalset maken van een aangepaste Packer-installatiekopie met behulp van Terraform
+# <a name="tutorial-create-azure-virtual-machine-scale-set-from-a-packer-custom-image-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een pakket met terraform
 
 In deze zelfstudie gebruikt u [Terraform](https://www.terraform.io/) voor het maken en implementeren van een [virtuele Azure-machineschaalset](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) die is gemaakt met een aangepaste installatiekopie die is geproduceerd met [Packer](https://www.packer.io/intro/index.html) met beheerde schijven met behulp van de [HashiCorp-configuratietaal](https://www.terraform.io/docs/configuration/syntax.html) (HCL).  
 
@@ -32,11 +29,11 @@ In deze zelfstudie leert u het volgende:
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="before-you-begin"></a>Voordat u begint
-> * [Terraform installeren en toegang tot Azure configureren](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure)
-> * [Een SSH-sleutelpaar maken](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) als u er nog geen hebt
-> * [Packer installeren](https://www.packer.io/docs/install/index.html) als u Packer nog niet hebt geïnstalleerd op uw lokale machine
+## <a name="prerequisites"></a>Vereisten
 
+- **Terraform**: [terraform installeren en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
+- **SSH-sleutel paar**: [Maak een SSH-sleutel paar](/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Verpakker**: [Installeer Packer](https://www.packer.io/docs/install/index.html).
 
 ## <a name="create-the-file-structure"></a>De bestandsstructuur maken
 
@@ -76,7 +73,7 @@ Bewerk het bestand `output.tf` en kopieer de volgende code om de volledig gekwal
 
 ```hcl 
 output "vmss_public_ip" {
-    value = "${azurerm_public_ip.vmss.fqdn}"
+    value = azurerm_public_ip.vmss.fqdn
 }
 ```
 
@@ -94,8 +91,8 @@ Bewerk en kopieer de volgende code naar het bestand `vmss.tf`:
 ```hcl
 
 resource "azurerm_resource_group" "vmss" {
-  name     = "${var.resource_group_name}"
-  location = "${var.location}"
+  name     = var.resource_group_name
+  location = var.location
 
   tags {
     environment = "codelab"
@@ -105,8 +102,8 @@ resource "azurerm_resource_group" "vmss" {
 resource "azurerm_virtual_network" "vmss" {
   name                = "vmss-vnet"
   address_space       = ["10.0.0.0/16"]
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
 
   tags {
     environment = "codelab"
@@ -115,17 +112,17 @@ resource "azurerm_virtual_network" "vmss" {
 
 resource "azurerm_subnet" "vmss" {
   name                 = "vmss-subnet"
-  resource_group_name  = "${azurerm_resource_group.vmss.name}"
-  virtual_network_name = "${azurerm_virtual_network.vmss.name}"
+  resource_group_name  = azurerm_resource_group.vmss.name
+  virtual_network_name = azurerm_virtual_network.vmss.name
   address_prefix       = "10.0.2.0/24"
 }
 
 resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
-  location                     = "${var.location}"
-  resource_group_name          = "${azurerm_resource_group.vmss.name}"
+  location                     = var.location
+  resource_group_name          = azurerm_resource_group.vmss.name
   allocation_method            = "static"
-  domain_name_label            = "${azurerm_resource_group.vmss.name}"
+  domain_name_label            = azurerm_resource_group.vmss.name
 
   tags {
     environment = "codelab"
@@ -163,7 +160,7 @@ De resourcegroep bevat de volgende resources:
 
 
 ## <a name="create-an-azure-image-using-packer"></a>Een Azure-installatiekopie maken met behulp van Packer
-Maak een aangepaste Linux-installatiekopie met behulp van de stappen die worden beschreven in de zelfstudie [Installatiekopieën voor virtuele Linux-machines maken in Azure met Packer](https://docs.microsoft.com/azure/virtual-machines/linux/build-image-with-packer).
+Maak een aangepaste Linux-installatiekopie met behulp van de stappen die worden beschreven in de zelfstudie [Installatiekopieën voor virtuele Linux-machines maken in Azure met Packer](/azure/virtual-machines/linux/build-image-with-packer).
  
 Volg de zelfstudie voor het maken van een Ubuntu-installatiekopie met NGINX geïnstalleerd waarvan de inrichting ongedaan is gemaakt.
 
@@ -189,12 +186,12 @@ Voeg de volgende code aan het einde van het bestand `vmss.tf` toe.
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
-    public_ip_address_id = "${azurerm_public_ip.vmss.id}"
+    public_ip_address_id = azurerm_public_ip.vmss.id
   }
 
   tags {
@@ -203,28 +200,28 @@ resource "azurerm_lb" "vmss" {
 }
 
 resource "azurerm_lb_backend_address_pool" "bpepool" {
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
-  loadbalancer_id     = "${azurerm_lb.vmss.id}"
+  resource_group_name = azurerm_resource_group.vmss.name
+  loadbalancer_id     = azurerm_lb.vmss.id
   name                = "BackEndAddressPool"
 }
 
 resource "azurerm_lb_probe" "vmss" {
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
-  loadbalancer_id     = "${azurerm_lb.vmss.id}"
+  resource_group_name = azurerm_resource_group.vmss.name
+  loadbalancer_id     = azurerm_lb.vmss.id
   name                = "ssh-running-probe"
-  port                = "${var.application_port}"
+  port                = var.application_port
 }
 
 resource "azurerm_lb_rule" "lbnatrule" {
-  resource_group_name            = "${azurerm_resource_group.vmss.name}"
-  loadbalancer_id                = "${azurerm_lb.vmss.id}"
+  resource_group_name            = azurerm_resource_group.vmss.name
+  loadbalancer_id                = azurerm_lb.vmss.id
   name                           = "http"
   protocol                       = "Tcp"
-  frontend_port                  = "${var.application_port}"
-  backend_port                   = "${var.application_port}"
-  backend_address_pool_id        = "${azurerm_lb_backend_address_pool.bpepool.id}"
+  frontend_port                  = var.application_port
+  backend_port                   = var.application_port
+  backend_address_pool_id        = azurerm_lb_backend_address_pool.bpepool.id
   frontend_ip_configuration_name = "PublicIPAddress"
-  probe_id                       = "${azurerm_lb_probe.vmss.id}"
+  probe_id                       = azurerm_lb_probe.vmss.id
 }
 
 data "azurerm_resource_group" "image" {
@@ -233,13 +230,13 @@ data "azurerm_resource_group" "image" {
 
 data "azurerm_image" "image" {
   name                = "myPackerImage"
-  resource_group_name = "${data.azurerm_resource_group.image.name}"
+  resource_group_name = data.azurerm_resource_group.image.name
 }
 
 resource "azurerm_virtual_machine_scale_set" "vmss" {
   name                = "vmscaleset"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
   upgrade_policy_mode = "Manual"
 
   sku {
@@ -249,7 +246,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
   }
 
   storage_profile_image_reference {
-    id="${data.azurerm_image.image.id}"
+    id=data.azurerm_image.image.id
   }
 
   storage_profile_os_disk {
@@ -277,7 +274,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
     ssh_keys {
       path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = "${file("~/.ssh/id_rsa.pub")}"
+      key_data = file("~/.ssh/id_rsa.pub")
     }
   }
 
@@ -287,8 +284,8 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
     ip_configuration {
       name                                   = "IPConfiguration"
-      subnet_id                              = "${azurerm_subnet.vmss.id}"
-      load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      subnet_id                              = azurerm_subnet.vmss.id
+      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
       primary = true
     }
   }
@@ -353,8 +350,8 @@ Voeg de volgende code aan het einde van het bestand `vmss.tf` toe:
 ```hcl 
 resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
-  location                     = "${var.location}"
-  resource_group_name          = "${azurerm_resource_group.vmss.name}"
+  location                     = var.location
+  resource_group_name          = azurerm_resource_group.vmss.name
   allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
@@ -365,14 +362,14 @@ resource "azurerm_public_ip" "jumpbox" {
 
 resource "azurerm_network_interface" "jumpbox" {
   name                = "jumpbox-nic"
-  location            = "${var.location}"
-  resource_group_name = "${azurerm_resource_group.vmss.name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.vmss.name
 
   ip_configuration {
     name                          = "IPConfiguration"
-    subnet_id                     = "${azurerm_subnet.vmss.id}"
+    subnet_id                     = azurerm_subnet.vmss.id
     private_ip_address_allocation = "dynamic"
-    public_ip_address_id          = "${azurerm_public_ip.jumpbox.id}"
+    public_ip_address_id          = azurerm_public_ip.jumpbox.id
   }
 
   tags {
@@ -382,9 +379,9 @@ resource "azurerm_network_interface" "jumpbox" {
 
 resource "azurerm_virtual_machine" "jumpbox" {
   name                  = "jumpbox"
-  location              = "${var.location}"
-  resource_group_name   = "${azurerm_resource_group.vmss.name}"
-  network_interface_ids = ["${azurerm_network_interface.jumpbox.id}"]
+  location              = var.location
+  resource_group_name   = azurerm_resource_group.vmss.name
+  network_interface_ids = [azurerm_network_interface.jumpbox.id]
   vm_size               = "Standard_DS1_v2"
 
   storage_image_reference {
@@ -412,7 +409,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 
     ssh_keys {
       path     = "/home/azureuser/.ssh/authorized_keys"
-      key_data = "${file("~/.ssh/id_rsa.pub")}"
+      key_data = file("~/.ssh/id_rsa.pub")
     }
   }
 
@@ -426,7 +423,7 @@ Bewerk `outputs.tf` om de volgende code toe te voegen die de hostnaam van de jum
 
 ```
 output "jumpbox_public_ip" {
-    value = "${azurerm_public_ip.jumpbox.fqdn}"
+    value = azurerm_public_ip.jumpbox.fqdn
 }
 ```
 
@@ -457,12 +454,5 @@ Typ `yes` als u wordt gevraagd om het verwijderen van de resources te bevestigen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een virtuele-machineschaalset en jumpbox geïmplementeerd in Azure met behulp van Terraform. U hebt geleerd hoe u:
-
-> [!div class="checklist"]
-> * Een Terraform-implementatie initialiseren
-> * Variabelen en uitvoer voor Terraform-implementatie gebruiken 
-> * Een netwerkinfrastructuur maken en implementeren
-> * Een aangepaste installatiekopie van een virtuele machine maken met behulp van Packer
-> * Een virtuele-machineschaalset maken met behulp van de aangepaste installatiekopie
-> * Een jumpbox maken en implementeren 
+> [!div class="nextstepaction"] 
+> [Terraform op Azure](/azure/ansible/)

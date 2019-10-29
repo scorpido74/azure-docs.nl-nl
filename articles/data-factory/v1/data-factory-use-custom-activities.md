@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 2174e359f739cfdf3791c8ec64d1a95be2873555
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930915"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990656"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -556,7 +556,7 @@ In deze stap maakt u gegevens sets om invoer-en uitvoer gegevens weer te geven.
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16 -04. txt |
 
-    Houd er rekening mee dat alle bestanden in een invoer map deel uitmaken van een segment met de hierboven vermelde begin tijden. Wanneer dit segment wordt verwerkt, wordt door elk bestand door de aangepaste activiteit gescand en wordt er een regel in het uitvoer bestand gemaakt met het aantal exemplaren van de zoek term (' micro soft '). Als er drie bestanden in de inputfolder zijn, zijn er drie regels in het uitvoer bestand voor elk uur segment: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt, enzovoort.
+    Houd er rekening mee dat alle bestanden in een invoer map deel uitmaken van een segment met de hierboven vermelde begin tijden. Wanneer dit segment wordt verwerkt, wordt door elk bestand door de aangepaste activiteit gescand en wordt er een regel in het uitvoer bestand gemaakt met het aantal exemplaren van de zoek term (' micro soft '). Als er drie bestanden in de map voor invoer zijn, zijn er drie regels in het uitvoer bestand voor elk uur segment: 2016-11-16 -00. txt, 2016-11-16:01:00:00. txt, enzovoort.
 3. Klik op **implementeren** op de opdracht balk om de **output dataset**te implementeren.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Een pijp lijn maken en uitvoeren die gebruikmaakt van de aangepaste activiteit

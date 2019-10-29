@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: f1aa2c4b6fbe554304bfff239c6220d245fe7467
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219447"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969061"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -28,9 +28,9 @@ In dit artikel leert u het volgende:
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- [Meer informatie](backup-azure-recovery-services-vault-overview.md) over Recovery Services-kluizen.
-- [Bekijk](backup-architecture.md#architecture-direct-backup-of-azure-vms) de architectuur voor Azure VM-back-ups, [Lees meer over](backup-azure-vms-introduction.md) het back-upproces en [Bekijk](backup-support-matrix-iaas.md) de ondersteuning, beperkingen en vereisten.
-- Controleer de Power shell-object hiërarchie voor Recovery Services.
+* [Meer informatie](backup-azure-recovery-services-vault-overview.md) over Recovery Services-kluizen.
+* [Bekijk](backup-architecture.md#architecture-direct-backup-of-azure-vms) de architectuur voor Azure VM-back-ups, [Lees meer over](backup-azure-vms-introduction.md) het back-upproces en [Bekijk](backup-support-matrix-iaas.md) de ondersteuning, beperkingen en vereisten.
+* Controleer de Power shell-object hiërarchie voor Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Object hiërarchie Recovery Services
 
@@ -61,7 +61,7 @@ Beginnen:
 3. Meld u aan bij uw Azure-account met **Connect-AzAccount**. Met deze cmdlet wordt een webpagina gevraagd om uw account referenties:
 
     * U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** toevoegen met behulp van de para meter **-Credential** .
-    * Als u een CSP-partner werkt namens een Tenant, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Bijvoorbeeld: **Connect-AzAccount -Tenant "fabrikam.com"**
+    * Als u een CSP-partner werkt namens een Tenant, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Bijvoorbeeld: **Connect-AzAccount-Tenant "fabrikam.com"**
 
 4. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account meerdere abonnementen kan hebben:
 
@@ -83,7 +83,6 @@ Beginnen:
 
     In de uitvoer van de opdracht moet de **RegistrationState** worden gewijzigd in **geregistreerd**. Als dat niet het geval is, voert u de cmdlet **[REGI ster-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** opnieuw uit.
 
-
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
 De volgende stappen leiden u door het maken van een Recovery Services kluis. Een Recovery Services kluis wijkt af van een back-upkluis.
@@ -93,11 +92,13 @@ De volgende stappen leiden u door het maken van een Recovery Services kluis. Een
     ```powershell
     New-AzResourceGroup -Name "test-rg" -Location "West US"
     ```
+
 2. Gebruik de cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault?view=azps-1.4.0) om de Recovery Services kluis te maken. Zorg ervoor dat u dezelfde locatie opgeeft als voor de kluis die voor de resource groep is gebruikt.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
+
 3. Geef het type opslag redundantie op dat moet worden gebruikt. u kunt [lokaal redundante opslag (LRS)](../storage/common/storage-redundancy-lrs.md) of [geo redundante opslag (GRS)](../storage/common/storage-redundancy-grs.md)gebruiken. In het volgende voor beeld ziet u de optie-BackupStorageRedundancy voor testvault is ingesteld op georedundant.
 
     ```powershell
@@ -130,8 +131,7 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
-## <a name="back-up-azure-vms"></a>Back-ups maken van Azure-VM's
+## <a name="back-up-azure-vms"></a>Back-up maken van Azure-VM's
 
 Gebruik een Recovery Services kluis om uw virtuele machines te beveiligen. Voordat u de beveiliging toepast, stelt u de kluis context (het type gegevens dat in de kluis wordt beveiligd) in en controleert u het beveiligings beleid. Het beveiligings beleid is het schema wanneer de back-uptaken worden uitgevoerd en hoe lang elke moment opname van de back-up wordt bewaard.
 
@@ -151,7 +151,8 @@ We zijn van plan de kluis context instelling af te nemen volgens Azure PowerShel
 $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault"
 $targetVault.ID
 ```
-of
+
+Of
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -193,10 +194,10 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 
 Een beleid voor back-upbeveiliging is gekoppeld aan ten minste één Bewaar beleid. Een Bewaar beleid bepaalt hoe lang een herstel punt wordt bewaard voordat het wordt verwijderd.
 
-- Gebruik [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) om het standaard Bewaar beleid weer te geven.
-- Op dezelfde manier kunt u [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) gebruiken om het standaard plannings beleid te verkrijgen.
-- Met de cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) maakt u een Power shell-object dat informatie over het back-upbeleid bevat.
-- De beleids objecten planning en bewaren worden gebruikt als invoer voor de cmdlet New-AzRecoveryServicesBackupProtectionPolicy.
+* Gebruik [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) om het standaard Bewaar beleid weer te geven.
+* Op dezelfde manier kunt u [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) gebruiken om het standaard plannings beleid te verkrijgen.
+* Met de cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) maakt u een Power shell-object dat informatie over het back-upbeleid bevat.
+* De beleids objecten planning en bewaren worden gebruikt als invoer voor de cmdlet New-AzRecoveryServicesBackupProtectionPolicy.
 
 Standaard wordt een begin tijd gedefinieerd in het object plannings beleid. Gebruik het volgende voor beeld om de begin tijd te wijzigen in de gewenste start tijd. De gewenste start tijd moet ook in UTC zijn. In het onderstaande voor beeld wordt ervan uitgegaan dat de gewenste start tijd 01:00 uur UTC is voor dagelijkse back-ups.
 
@@ -419,7 +420,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Een herstelpunt kiezen
+### <a name="choose-a-recovery-point"></a>Een herstel punt kiezen
 
 Gebruik de cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) om alle herstel punten voor het back-upitem weer te geven. Kies vervolgens het herstel punt dat u wilt herstellen. Als u niet zeker weet welk herstel punt u moet gebruiken, is het een goed idee om het meest recente RecoveryPointType = AppConsistent-punt in de lijst te kiezen.
 
@@ -473,7 +474,6 @@ Geef een extra para meter **TargetResourceGroupName** op om de RG op te geven wa
 >
 >
 
-
 ```powershell
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
@@ -507,10 +507,9 @@ Wanneer u de schijven herstelt, gaat u naar de volgende sectie om de virtuele ma
 
 Voer de onderstaande stappen uit om de schijven en configuratie-informatie te vervangen:
 
-- Stap 1: [Schijven herstellen](backup-azure-vms-automation.md#restore-the-disks)
-- Stap 2: [Gegevens schijf loskoppelen met Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
-- Stap 3: [Een gegevens schijf koppelen aan een virtuele Windows-machine met Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
-
+* Stap 1: [de schijven herstellen](backup-azure-vms-automation.md#restore-the-disks)
+* Stap 2: [gegevens schijf loskoppelen met Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+* Stap 3: [gegevens schijf koppelen aan een virtuele Windows-machine met Power shell](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
 
 ## <a name="create-a-vm-from-restored-disks"></a>Een virtuele machine maken op basis van herstelde schijven
 
@@ -647,6 +646,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
       $osBlob.ICloudBlob.Metadata["DiskEncryptionSettings"] = $encSetting
       $osBlob.ICloudBlob.SetMetadata()
       ```
+
    Nadat de **sleutel/geheimen beschikbaar zijn** en de versleutelings Details zijn ingesteld op de OS-blob, koppelt u de schijven met behulp van het hieronder opgegeven script.
 
     Als de source-kluis/sleutel/geheimen beschikbaar zijn, hoeft het bovenstaande script niet te worden uitgevoerd.
@@ -747,9 +747,9 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
       ```powershell  
       Set-AzVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -SkipVmBackup -VolumeType "All"
       ```
+
 > [!NOTE]
 > Zorg ervoor dat u de JASON-bestanden die zijn gemaakt als onderdeel van het herstel schijf proces van de versleutelde VM hand matig verwijdert.
-
 
 ## <a name="restore-files-from-an-azure-vm-backup"></a>Bestanden herstellen vanuit een back-up van een Azure-VM
 
@@ -758,7 +758,7 @@ Naast het herstellen van schijven, kunt u ook afzonderlijke bestanden herstellen
 De basis stappen voor het herstellen van een bestand vanuit een Azure VM-back-up zijn:
 
 * De VM selecteren
-* Een herstelpunt kiezen
+* Een herstel punt kiezen
 * De schijven van het herstel punt koppelen
 * De vereiste bestanden kopiëren
 * De schijf ontkoppelen
@@ -772,7 +772,7 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Een herstelpunt kiezen
+### <a name="choose-a-recovery-point"></a>Een herstel punt kiezen
 
 Gebruik de cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) om alle herstel punten voor het back-upitem weer te geven. Kies vervolgens het herstel punt dat u wilt herstellen. Als u niet zeker weet welk herstel punt u moet gebruiken, is het een goed idee om het meest recente RecoveryPointType = AppConsistent-punt in de lijst te kiezen.
 

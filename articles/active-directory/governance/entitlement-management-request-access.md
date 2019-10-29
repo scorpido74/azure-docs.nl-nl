@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389091"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990760"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Toegang aanvragen tot een toegangs pakket in azure AD-rechts beheer (preview-versie)
 
@@ -58,12 +58,13 @@ Zodra u het toegangs pakket hebt gevonden in de portal van mijn toegang, kunt u 
 
 1. Zoek het toegangs pakket in de lijst.  Als dat nodig is, kunt u zoeken door een zoek reeks te typen en vervolgens het filter **naam**, **catalogus**of **resources** te selecteren.
 
-    ![Mijn Access-Portal-zoeken naar resources](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
+    ![Mijn Access-Portal-zoeken naar resources](./media/entitlement-management-request-access/my-access-resource-search.png)
+
 1. Klik op het vinkje om het toegangs pakket te selecteren.
 
-    ![Mijn Access-Portal-toegangs pakketten](./media/entitlement-management-shared/my-access-access-packages.png)
-
 1. Klik op **toegang aanvragen** om het deel venster toegang aanvragen te openen.
+
+    ![Mijn Access-Portal-toegangs pakketten](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. Als het vak **zakelijke rechtvaardiging** wordt weer gegeven, typt u een motivering voor toegang nodig.
 
@@ -78,6 +79,12 @@ Zodra u het toegangs pakket hebt gevonden in de portal van mijn toegang, kunt u 
 1. Klik op **aanvraag geschiedenis** om een lijst met uw aanvragen en de status weer te geven.
 
     Als het toegangs pakket goed keuring vereist, heeft de aanvraag nu een goedkeurings status in behandeling.
+
+### <a name="select-a-policy"></a>Beleid selecteren
+
+Als u toegang tot een toegangs pakket aanvraagt dat meerdere beleids regels van toepassing heeft, wordt u mogelijk gevraagd om een beleid te selecteren. Een Access package manager kan bijvoorbeeld een toegangs pakket configureren met twee beleids regels voor twee groepen interne werk nemers. Het eerste beleid kan toegang tot 60 dagen toestaan en moet goed keuring vereisen. Met het tweede beleid is het mogelijk dat u twee dagen toegang hebt en geen goed keuring vereist. Als u dit scenario ondervindt, moet u het beleid selecteren dat u wilt gebruiken.
+
+![Mijn Access-portal-toegang aanvragen-meerdere beleids regels](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
 ## <a name="cancel-a-request"></a>Een aanvraag annuleren
 
@@ -94,12 +101,6 @@ Als u een toegangs aanvraag verzendt en de aanvraag nog steeds de **goedkeurings
     ![Mijn toegangs Portal-aanvraag annuleren](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. Klik op **aanvraag geschiedenis** om te bevestigen dat de aanvraag is geannuleerd.
-
-## <a name="select-a-policy"></a>Beleid selecteren
-
-Als u toegang tot een toegangs pakket aanvraagt dat meerdere beleids regels bevat, wordt u mogelijk gevraagd om een beleid te selecteren. Een Access package manager kan bijvoorbeeld een toegangs pakket configureren met twee beleids regels voor twee groepen interne werk nemers. Het eerste beleid kan toegang tot 60 dagen toestaan en moet goed keuring vereisen. Met het tweede beleid is het mogelijk dat u twee dagen toegang hebt en geen goed keuring vereist. Als u dit scenario ondervindt, moet u het beleid selecteren dat u wilt gebruiken.
-
-**Vereiste rol:** Aanvrager
 
 ## <a name="next-steps"></a>Volgende stappen
 

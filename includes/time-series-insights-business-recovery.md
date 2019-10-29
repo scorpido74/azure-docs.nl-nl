@@ -1,15 +1,16 @@
 ---
 ms.topic: include
 ms.service: time-series-insights
-author: kingdomofends
-ms.author: adgera
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
 ms.date: 10/09/2019
-ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 038d25a01c02799f48b8430fb6ac3facc1cd3bd6
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72259095"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990839"
 ---
 ## <a name="business-disaster-recovery"></a>Bedrijfs nood herstel
 
@@ -23,8 +24,8 @@ Meer functies voor hoge Beschik baarheid die worden geleverd via Azure (en ook b
 
 - **Failover**: Azure biedt [geo-replicatie en taak verdeling](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
 - Herstel van **gegevens** en **opslag herstel**: Azure biedt [verschillende opties om gegevens te bewaren en te herstellen](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
-- **Site Recovery**: Azure biedt functies voor site herstel via [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/).
-- **Azure backup**: [Azure backup](https://docs.microsoft.com/azure/backup/backup-architecture) ondersteunt zowel on-premises als in-Cloud back-ups van virtuele machines van Azure.
+- **Azure site Recovery**: Azure biedt functies voor site herstel via [Azure site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Azure backup**: [Azure backup](https://docs.microsoft.com/azure/backup/backup-architecture) ondersteunt zowel on-premises als in-Cloud back-ups van virtuele Azure-machines.
 
 Zorg ervoor dat u de relevante Azure-functies inschakelt om wereld wijd een hoge Beschik baarheid te bieden voor uw apparaten en gebruikers.
 
@@ -35,8 +36,8 @@ Zorg ervoor dat u de relevante Azure-functies inschakelt om wereld wijd een hoge
 
 Sommige Azure IoT-services bevatten ook ingebouwde functies voor nood herstel van het bedrijf:
 
-- [IOT hub nood herstel met hoge Beschik baarheid](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), met inbegrip van de redundantie binnen de regio
-- [Event Hubs beleid](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Azure IOT hub herstel na nood geval met hoge Beschik baarheid](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), met inbegrip van de redundantie binnen de regio
+- [Azure Event Hubs-beleid](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
 - [Azure Storage redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 Het integreren van Time Series Insights met de andere services biedt extra mogelijkheden voor herstel na nood gevallen. Bijvoorbeeld, telemetrie die naar uw Event Hub is verzonden, kan worden opgeslagen in een back-up van de Azure Blob Storage-Data Base.
@@ -50,13 +51,13 @@ U kunt echter wel bepalen dat een volledige back-up van uw Azure time series-omg
 - Als een *failover-exemplaar* specifiek voor time series Insights om gegevens en verkeer om te leiden naar
 - Gegevens en controle gegevens behouden
 
-Over het algemeen is het een goed idee om een Time Series Insights omgeving te dupliceren, het maken van een tweede Time Series Insights omgeving in een Azure-regio voor back-ups. Gebeurtenissen worden ook naar deze secundaire omgeving verzonden vanuit de bron van uw primaire gebeurtenis. Zorg ervoor dat u een tweede, toegewezen consument groep gebruikt. Volg de richt lijnen voor bedrijfs nood herstel van de bron, zoals eerder beschreven.
+Over het algemeen is het een goed idee om een Time Series Insights omgeving te dupliceren, het maken van een tweede Time Series Insights omgeving in een Azure-regio voor back-ups. Gebeurtenissen worden ook naar deze secundaire omgeving verzonden vanuit de bron van uw primaire gebeurtenis. Zorg ervoor dat u een tweede toegewezen consumenten groep gebruikt. Volg de richt lijnen voor bedrijfs nood herstel van de bron, zoals eerder beschreven.
 
 Een dubbele omgeving maken:
 
 1. Maak een omgeving in een tweede regio. Zie [een nieuwe time series Insights omgeving maken in de Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)voor meer informatie.
 1. Maak een tweede toegewezen consumenten groep voor uw gebeurtenis bron.
-1. Verbind de bron van de gebeurtenis met de nieuwe omgeving. Zorg ervoor dat u de tweede, toegewezen consument groep opgeeft.
+1. Verbind de bron van de gebeurtenis met de nieuwe omgeving. Zorg ervoor dat u de tweede toegewijde Consumer groep opgeeft.
 1. Bekijk de Time Series Insights- [IOT hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) en [Event hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) documentatie.
 
 Als er zich een gebeurtenis voordoet:

@@ -1,21 +1,21 @@
 ---
 title: Azure Time Series Insights preview-gegevens query's weer geven | Microsoft Docs
 description: Azure Time Series Insights voorbeeld gegevens opvragen.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b2f89a846747eaf78c60077372b48802506731e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 97265a83a73d45f45a4bd1183df61521f4ca29bf
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553381"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989688"
 ---
 # <a name="data-querying"></a>Query's uitvoeren op gegevens
 
@@ -23,19 +23,17 @@ Met Azure Time Series Insights Preview kunnen gegevens query's worden doorzocht 
 
 Er zijn drie primaire API-categorieën beschikbaar in Time Series Insights:
 
-* **Omgevings-api's**: Hiermee worden query's van de time series Insights omgeving zelf ingeschakeld. Voor beelden van query's zijn de lijst met omgevingen waarin de aanroeper toegang heeft tot de meta gegevens van de omgeving.
-
+* **Omgevings-api's**: met deze api's worden query's op de time series Insights omgeving zelf ingeschakeld. Voor beelden van query's zijn de lijst met omgevingen waarin de aanroeper toegang heeft tot de meta gegevens van de omgeving.
 * **Time Series model-query (TSM-Q) api's**: maakt maken, lezen, bijwerken en verwijderen van meta gegevens die zijn opgeslagen in het omgevings deel van het time series-model. Voor beelden zijn instanties, typen en hiërarchieën.
+* **TSQ-api's (Time Series query)** : Hiermee wordt het ophalen van telemetriegegevens of gebeurtenis gegevens mogelijk gemaakt wanneer deze worden vastgelegd van de bron provider of door het verminderen van de gegevens met behulp van scalaire en statistische functies die deel uitmaken van variabelen. Deze Api's kunnen bewerkingen uitvoeren om berekeningen voor tijdreeks gegevens te transformeren, te combi neren en toe te passen.
 
-* **Api's voor time series query (TSQ)** : Hiermee wordt het ophalen van gebeurtenis gegevens mogelijk gemaakt, terwijl deze worden vastgelegd van de bron provider. Deze Api's kunnen bewerkingen uitvoeren voor het transformeren, combi neren en uitvoeren van berekeningen voor tijdreeks gegevens.
-
-De [tijd reeks expressie (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx) is een krachtige vierde categorie. Het maakt gebruik van Time Series-modellen om samen stelling van geavanceerde berekeningen mogelijk te maken.
+Time Series Insights maakt gebruik van een uitgebreide op teken reeks gebaseerde expressie taal, [Time Series-expressie (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx), voor het uitdrukken van berekeningen.
 
 ## <a name="azure-time-series-insights-preview-core-apis"></a>Preview-kern-Api's Azure Time Series Insights
 
 De volgende kern-Api's worden ondersteund.
 
-[overzicht van de query ![Time serie](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
+[overzicht van![time series-query](media/v2-update-tsq/tsq.png)](media/v2-update-tsq/tsq.png#lightbox)
 
 ## <a name="environment-apis"></a>Omgevings-Api's
 
@@ -47,36 +45,34 @@ De volgende omgevings-Api's zijn beschikbaar:
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series model-query (TSM-Q)-Api's
 
-De volgende time series-model-query-Api's zijn beschikbaar:
+De volgende time series-model-query-Api's zijn beschikbaar. De meeste van deze Api's ondersteunen de batch-uitvoerings bewerking om batch-ruwe bewerkingen in te scha kelen op meerdere time series-model entiteiten:
 
-* [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): maakt Get en patch mogelijk voor het standaard type en de model naam van de omgeving.
+* [API voor model instellingen](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api): maakt *Get* en *patch* mogelijk voor het standaard type en de model naam van de omgeving.
 * [Type-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api): Hiermee worden ruwe serie typen en de bijbehorende variabelen ingeschakeld.
 * [Hiërarchieën API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api): maakt ruwe op de tijdreeks hiërarchieën en de bijbehorende veld paden.
-* [Instances-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): maakt ruwe op de tijd reeks instanties en de bijbehorende exemplaar velden.
+* [Instances-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api): maakt ruwe op de tijd reeks instanties en de bijbehorende exemplaar velden. Daarnaast ondersteunt de instances-API de volgende bewerkingen:
+  * [Search](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/search): haalt een gedeeltelijke lijst met treffers op bij het zoeken naar Time Series-exemplaren op basis van instantie kenmerken.
+  * [Suggereren](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/suggest): zoekt naar een gedeeltelijke lijst met treffers op basis van instantie kenmerken en stelt suggesties op voor het zoeken naar Time Series-exemplaren.
 
 ## <a name="time-series-query-tsq-apis"></a>TSQ-Api's (Time Series query)
 
-De volgende time series query-Api's zijn beschikbaar:
+De volgende time series query-Api's zijn beschikbaar. Deze Api's zijn beschikbaar op alle ondersteunde meerdere lagen opslag in Time Series Insights. Query-URL-para meters worden gebruikt om het [Store-type](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters) op te geven waarop de query moet worden uitgevoerd:
 
-* [Get Events API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit gebeurtenissen die zijn vastgelegd in time series Insights van de bron provider.
+* [Get Events API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit gebeurtenissen die zijn vastgelegd in time series Insights van de bron provider. Met deze API kunt u onbewerkte gebeurtenissen ophalen voor een bepaalde tijd reeks-ID en zoek reeks. Deze API ondersteunt paginering om de volledige gegevensset voor de geselecteerde invoer op te halen. 
 
-* [Get Series API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen met behulp van gegevens die zijn vastgelegd op de kabel. De geretourneerde waarden zijn gebaseerd op de variabelen die zijn gedefinieerd in het model of die inline zijn opgegeven.
+* [Get Series API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen met behulp van gegevens die zijn vastgelegd op de kabel. De geretourneerde waarden zijn gebaseerd op de variabelen die zijn gedefinieerd in het model of die inline zijn opgegeven. Deze API ondersteunt paginering om de volledige gegevensset voor de geselecteerde invoer op te halen. Deze API helpt bij het definiëren van berekende eigenschappen of kolommen.
 
     >[!NOTE]
     > De component Aggregation wordt genegeerd, zelfs als deze is opgegeven in een model of inline.
 
   De Get-reeks-API retourneert een time series-waarde voor elke variabele voor elk interval. Een time series-waarde is een indeling die Time Series Insights gebruikt voor het uitvoeren van JSON van een query. De geretourneerde waarden zijn gebaseerd op de tijd reeks-ID en de set variabelen die zijn opgegeven.
 
-* [Aggregatie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen door steek proeven te nemen en opgenomen gegevens samen te voegen.
+* [Aggregatie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): maakt het mogelijk om gegevens op te vragen en op te time series Insights halen uit vastgelegde gebeurtenissen door steek proeven te nemen en opgenomen gegevens samen te voegen. Deze API ondersteunt continue uitvoering met behulp van [vervolg tokens](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage).
 
   De verzamelings-API voor samen voegen retourneert een time series-waarde voor elke variabele voor elk interval. De waarden zijn gebaseerd op de tijd reeks-ID en de set variabelen die zijn opgegeven. De verzamelings-API voor samen voegen behaalt de reductie met behulp van variabelen die zijn opgeslagen in het time series-model of die inline zijn voor aggregatie of voorbeeld gegevens.
 
-  Ondersteunde statistische typen: `Min`, `Max`, `Sum`, `Count`, `Average`
-
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [opslag en](./time-series-insights-update-storage-ingress.md) inkomend verkeer vindt u in de preview-versie van Azure time series Insights.
-
+- Meer informatie over [opslag en](./time-series-insights-update-storage-ingress.md) inkomend verkeer in azure time series Insights preview.
 - Lees het artikel Time Series Insights preview [Data Modeler](./time-series-insights-update-tsm.md) .
-
-- [Aanbevolen procedures detecteren bij het kiezen van een tijd reeks-id](./time-series-insights-update-how-to-id.md).
+- [Aanbevolen procedures voor het kiezen van een tijd reeks-id](./time-series-insights-update-how-to-id.md)ontdekken.

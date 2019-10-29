@@ -1,5 +1,5 @@
 ---
-title: Maak een back-up van een Azure-VM op basis van de VM-instellingen met de Azure Backup-Service
+title: Maak een back-up van een virtuele Azure-machine vanuit de VM-instellingen met Azure Backup
 description: Meer informatie over het maken van een back-up van een virtuele machine in azure met de Azure Backup-Service
 author: dcurwin
 manager: carmonm
@@ -7,21 +7,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cfbec94a2922995eed546d526c1f469e2ea54118
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639767"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969048"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Een back-up van een Azure VM maken op basis van de VM-instellingen
 
 In dit artikel wordt uitgelegd hoe u een back-up van virtuele Azure-machines maakt met de [Azure backup](backup-overview.md) -service. U kunt een back-up van virtuele Azure-machines maken met behulp van een aantal methoden:
 
-- Eén Azure VM: In de instructies in dit artikel wordt beschreven hoe u rechtstreeks vanuit de VM-instellingen een back-up maakt van een Azure-VM.
-- Meerdere Azure-Vm's: U kunt een Recovery Services kluis instellen en een back-up configureren voor meerdere virtuele Azure-machines. Volg de instructies in [dit artikel](backup-azure-arm-vms-prepare.md) voor dit scenario.
-
-
+- Eén Azure VM: in dit artikel wordt beschreven hoe u rechtstreeks vanuit de VM-instellingen een back-up maakt van een Azure-VM.
+- Meerdere virtuele machines van Azure: u kunt een Recovery Services kluis instellen en een back-up configureren voor meerdere virtuele Azure-machines. Volg de instructies in [dit artikel](backup-azure-arm-vms-prepare.md) voor dit scenario.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -37,8 +35,7 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
 
 ## <a name="back-up-from-azure-vm-settings"></a>Back-ups maken van Azure VM-instellingen
 
-
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Klik op **alle services** en typ **virtuele machines**in het filter en klik vervolgens op **virtuele machines**.
 3. Selecteer in de lijst met Vm's de virtuele machine waarvan u een back-up wilt maken.
 4. Klik in het menu VM op **back-up**.
@@ -69,15 +66,13 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
     - Totdat de eerste back-up is voltooid, wordt de **laatste back-upstatus** weer gegeven als **waarschuwing (eerste back-up in behandeling)** .
     - Klik op de naam van het back-upbeleid om te zien wanneer de volgende geplande back-up wordt uitgevoerd.
 
-
 > [!NOTE]
 > Azure Backup service maakt een afzonderlijke resource groep (met uitzonde ring van de resource groep van de VM) voor het opslaan van de moment opname, met de naamgevings indeling **AzureBackupRG_geography_number** (voor beeld: AzureBackupRG_northeurope_1). De gegevens in deze resource groep worden bewaard voor de duur in dagen zoals opgegeven in de sectie ' moment opname van onmiddellijke herstel bewerking bewaren ' van het back-upbeleid van Azure virtual machine. Het Toep assen van een vergren deling op deze resource groep kan leiden tot back-upfouten.<br>
 Deze resource groep moet ook worden uitgesloten van de beperkingen van namen/Tags als een beperkings beleid het maken van resource punt verzamelingen in dat geval voor back-upfouten blokkeert.
 
-
 ## <a name="run-a-backup-immediately"></a>Direct een back-up uitvoeren
 
-1. Als u direct een back-up wilt uitvoeren, klikt u in het menu VM op **back** > -**up maken nu**.
+1. Als u direct een back-up wilt uitvoeren, klikt u in het menu VM op **back** -up > **back-up nu maken**.
 
     ![Back-up uitvoeren](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
@@ -86,9 +81,6 @@ Deze resource groep moet ook worden uitgesloten van de beperkingen van namen/Tag
     ![Dag voor back-up bewaren](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
 3. Met portal meldingen kunt u weten dat de back-uptaak is geactiveerd. Klik op **alle taken weer geven om de**voortgang van de back-up te bewaken.
-
-
-
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Back-ups maken van Recovery Services kluis
 

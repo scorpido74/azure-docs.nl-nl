@@ -3,7 +3,7 @@ title: Een Azure Time Series Insights-omgeving maken | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de Azure Portal gebruikt om een nieuwe Time Series Insights omgeving te maken.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1956fd9eaaa537d7ffa992070fc5cffd567954ce
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1b51931385eb7e2e0bf2a1baf5cc4c3379eab2df
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274814"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991235"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Een nieuwe Time Series Insights-omgeving maken in Azure Portal
 
@@ -34,13 +34,13 @@ Volg deze stappen om een omgeving te maken:
 
 1. Selecteer de categorie **Internet of Things** en selecteer **Time Series Insights**.
 
-   [![Create de time series Insights omgeving](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
+   [![de time series Insights omgeving maken](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
 
 1. Selecteer op de pagina **Time Series Insights** **maken**.
 
 1. Vul de vereiste para meters in. De volgende tabel bevat uitleg over elke para meter:
    
-   [![Create de Time Series Insights resource groep](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
+   [![de Time Series Insights resource groep maken](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
    
    Instelling|Voorgestelde waarde|Beschrijving
    ---|---|---
@@ -55,13 +55,13 @@ Volg deze stappen om een omgeving te maken:
 
 1. Als u het implementatie proces wilt bewaken, selecteert u het **meldings** symbool (pictogram Bell).
 
-   [![Watch de meldingen](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [de meldingen![bekijken](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
 
     Wanneer de implementatie is voltooid, kunt u **Go to resource** selecteren om andere eigenschappen te configureren, beveiliging in te stellen met beleid voor gegevens toegang, gebeurtenis bronnen toevoegen en andere acties uit te voeren.
 
 1. Selecteer in het resource **overzicht**het **speld pictogram** in de rechter bovenhoek om in de toekomst eenvoudig toegang te krijgen tot uw time series Insights omgeving.
 
-   [![Create de Time Series Insights vastmaken aan dash board](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+   [de Time Series Insights pincode![maken op dash board](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

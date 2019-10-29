@@ -1,22 +1,19 @@
 ---
-title: Een hub-en-spoke hybride netwerk topologie maken met terraform in azure
+title: 'Zelf studie: een hybride netwerk topologie voor hub en spoke maken in azure met behulp van terraform'
 description: Zelf studie waarin wordt uitgelegd hoe u een volledige referentie architectuur van een hybride netwerk maakt in azure met behulp van terraform
-services: terraform
-ms.service: azure
-keywords: terraform, hub en spoke, netwerken, hybride netwerken, devops, virtuele machine, azure, vnet-peering, virtueel netwerk apparaat
-author: VaijanathB
-manager: jeconnoc
-ms.author: vaangadi
+ms.service: terraform
+author: tomarchermsft
+ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173452"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969395"
 ---
-# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Zelfstudie: Een hub-en-spoke hybride netwerk topologie maken met terraform in azure
+# <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Zelf studie: een hybride netwerk topologie voor hub en spoke maken in azure met behulp van terraform
 
 In deze reeks zelf studies ziet u hoe u terraform kunt gebruiken om in azure een [hub-en spoke-netwerk topologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)te implementeren. 
 
@@ -34,9 +31,9 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Azure-abonnement**: Als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
+- **Azure-abonnement**: als u nog geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
 
-- **Terraform installeren en configureren**: Voor het inrichten van Vm's en andere infra structuur in azure, [installeert en configureert u terraform](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform installeren en configureren**: voor het inrichten van virtuele machines en andere infra structuur in azure, het [installeren en configureren van terraform](/azure/virtual-machines/linux/terraform-install-configure)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Architectuur hub en spoke-topologie
 
@@ -81,7 +78,7 @@ Tijdens het uitvoeren van elke zelf studie in deze reeks worden verschillende on
 
 Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
 
-1. Blader naar de [Azure-portal](https://portal.azure.com).
+1. Blader naar [Azure Portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -99,7 +96,7 @@ Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
     mkdir hub-spoke
     ```
 
-1. Ga naar de nieuwe map:
+1. Maak de nieuwe directory de actieve directory:
 
     ```bash
     cd hub-spoke
@@ -109,7 +106,7 @@ Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
 
 Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclareerd.
 
-1. Open in Cloud Shell een nieuw bestand met de `main.tf`naam.
+1. Open in Cloud Shell een nieuw bestand met de naam `main.tf`.
 
     ```bash
     code main.tf
@@ -129,7 +126,7 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
 
 Maak het terraform-configuratie bestand voor algemene variabelen die worden gebruikt in verschillende scripts.
 
-1. Open in Cloud Shell een nieuw bestand met de `variables.tf`naam.
+1. Open in Cloud Shell een nieuw bestand met de naam `variables.tf`.
 
     ```bash
     code variables.tf
