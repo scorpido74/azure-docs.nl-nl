@@ -10,13 +10,19 @@
     - name: Terraform installeren en configureren
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
-    - name: Een toepassing met meerdere services maken
-      href: terrafom-quickstart.md
+    - name: Een Terraform-configuratie maken
+      href: terraform-create-configuration.md
     - name: Een Linux-VM maken
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
 - name: Zelfstudies
   items:
+    - name: Installatie en configuratie
+      items:
+        - name: Terraform-status opslaan in Azure Storage
+          href: terraform-backend.md
+        - name: Azure Cloud Shell configureren voor Terraform
+          href: terraform-cloud-shell.md
     - name: App Service
       items:
         - name: Terraform- en Azure-implementatiesites voor providers
@@ -29,8 +35,8 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastructuur
       items:
-        - name: Een virtuele Terraform-machine met ingeschakelde MSI maken
-          href: terraform-vm-msi.md
+        - name: Een Terraform-VM maken met beheerde identiteiten voor Azure-resources
+          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Een VM-cluster maken met Terraform-modules
           href: terraform-create-vm-cluster-module.md
         - name: Een VM-cluster maken met Terraform en HCL
@@ -67,10 +73,6 @@
   items:
     - name: Configuratiesjablonen
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Handleidingen
-  items:
-    - name: Status opslaan in Azure Storage
-      href: terraform-backend.md
 - name: Naslaginformatie
   items:
     - name: Azure-moduleregister

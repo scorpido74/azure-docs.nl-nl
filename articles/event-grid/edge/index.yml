@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Documentatie voor Event Grid in IoT Edge
+summary: Meer informatie over hoe u Event Grid in IoT Edge gebruikt om te reageren op relevante gebeurtenissen die bijna realtime zijn gegenereerd in Edge-apparaten.
+metadata:
+  title: Documentatie voor Event Grid in IoT Edge
+  description: Meer informatie over hoe u Event Grid in IoT Edge gebruikt om te reageren op relevante gebeurtenissen die bijna realtime zijn gegenereerd in Edge-apparaten.
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 10/12/2019
+  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
+  ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/28/2019
+  ms.locfileid: "72991610"
+landingContent:
+- title: Over Event Grid in IoT Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Event Grid in IoT Edge?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Concepten binnen Event Grid
+      url: concepts.md
+    - text: Gebeurtenisschema's
+      url: event-schemas.md
+    - text: Batchverwerking van uitvoer
+      url: delivery-output-batching.md
+    - text: Geavanceerd filteren
+      url: advanced-filtering.md
+    - text: Leveren en opnieuw proberen
+      url: delivery-retry.md
+- title: Scenario's
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Gebeurtenissen lokaal publiceren en daar op abonneren
+      url: pub-sub-events-webhook-local.md
+    - text: Gebeurtenissen in de cloud publiceren en daar op abonneren
+      url: pub-sub-events-webhook-cloud.md
+    - text: Gebeurtenissen doorsturen naar Azure Event Grid
+      url: forward-events-event-grid-cloud.md
+    - text: Gebeurtenissen doorsturen naar Azure IoT Hub
+      url: forward-events-event-grid-cloud.md
+    - text: Lokaal reageren op gebeurtenissen in Azure Blob-opslag
+      url: react-blob-storage-events-locally.md
+- title: Beveiliging
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verificatie en beveiliging
+      url: security-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Clientverificatie configureren
+      url: configure-client-auth.md
+    - text: Verificatie van webhook-abonnee configureren
+      url: configure-webhook-subscriber-auth.md
+    - text: Clientidentiteit configureren
+      url: configure-identity-auth.md

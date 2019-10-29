@@ -27,8 +27,10 @@
       href: stream-analytics-javascript-user-defined-functions.md
     - name: 4 - Implementeren met CI/CD in Azure-pijplijnen
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '5 - Een C#-UDF uitvoeren in IoT Edge'
+    - name: '5 - Een C#-UDF uitvoeren'
       href: stream-analytics-edge-csharp-udf.md
+    - name: 6 - Aangepaste .NET-deserialisatie maken
+      href: custom-deserializer.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
@@ -47,6 +49,8 @@
           href: stream-analytics-define-inputs.md
         - name: Verwijzen naar gegevensinvoer
           href: stream-analytics-use-reference-data.md
+        - name: Aangepaste .NET-deserialisatie schrijven
+          href: custom-deserializer-examples.md
     - name: Uitvoertypen voor een taak
       items:
         - name: Overzicht van uitvoer
@@ -173,7 +177,7 @@
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Een CI/CD-pijplijn instellen
           href: stream-analytics-tools-for-visual-studio-cicd.md
-        - name: .NET-UDF schrijven voor Edge
+        - name: .NET-UDF schrijven
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
