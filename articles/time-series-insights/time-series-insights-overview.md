@@ -3,26 +3,25 @@ title: 'Overzicht: wat is Azure Time Series Insights? | Microsoft Docs'
 description: Inleiding tot Azure Time Series Insights, een nieuwe service voor de analyse van tijdreeksgegevens en IoT-oplossingen.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 62a4b08eae1b21536b6dfb47c3d9d3470e59ef0b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 15674d995036d11e1b4ec0ceda5aa4bbf4952906
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298902"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990031"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Wat is Azure Time Series Insights?
 
 Azure Time Series Insights is ontworpen om grote hoeveel heden tijdreeks gegevens op te slaan, te visualiseren en op te vragen, zoals die zijn gegenereerd door IoT-apparaten. Als u tijdreeksgegevens wilt opslaan, beheren, opvragen of visualiseren in de cloud, is Time Series Insights waarschijnlijk de juiste keuze voor u. 
 
-[@no__t-stroom diagram van 1Time-Series](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
+[Time Series Insights stroom diagram![](media/overview/time-series-insights-flowchart.png)](media/overview/time-series-insights-flowchart.png#lightbox)
 
 Time Series Insights heeft vier belangrijke taken:
 
@@ -42,7 +41,7 @@ Azure Time Series Insights legt een nieuwe gebeurtenis vast en slaat deze op in 
 
 ### <a name="learn-more-about-azure-time-series-insights-the-cloud-based-iot-analytics-platformbr"></a>Meer informatie over Azure Time Series Insights, het op de cloud gebaseerde IoT Analytics-platform.</br>
 
-[![VIDEO](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
+[VIDEO![](https://img.youtube.com/vi/GaARrFfjoss/0.jpg)](https://www.youtube.com/watch?v=GaARrFfjoss)
 
 ## <a name="primary-scenarios"></a>Primaire scenario's
 
