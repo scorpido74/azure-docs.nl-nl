@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Documentatie over Azure IoT Central
+summary: Azure IoT Central is een volledig beheerde SaaS-oplossing (Software as a Service), waarmee u uw IoT-assets eenvoudig op schaal kunt verbinden, controleren en beheren. Azure IoT Central vereenvoudigt de eerste installatie van uw IoT-oplossing en vermindert de beheerlast, de operationele kosten en overheadkosten van een typisch IoT-project. Leer aan de hand van onze snelstarts en zelfstudies hoe u een Azure IoT Central-toepassing maakt, aanpast, beheert en gebruikt.
+metadata:
+  title: Documentatie over Azure IoT Central
+  description: Azure IoT Central is een volledig beheerde SaaS-oplossing (Software as a Service), waarmee u uw IoT-assets eenvoudig op schaal kunt verbinden, controleren en beheren. Azure IoT Central vereenvoudigt de eerste installatie van uw IoT-oplossing en vermindert de beheerlast, de operationele kosten en overheadkosten van een typisch IoT-project. Leer aan de hand van onze snelstarts en zelfstudies hoe u een Azure IoT Central-toepassing maakt, aanpast, beheert en gebruikt.
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: 8b4b32e17929396c3edc8bbac5566763556ca3dc
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72937777"
+landingContent:
+- title: Over Azure IoT Central
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure IoT Central?
+      url: overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Opties voor IoT-oplossing
+      url: overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Rondleiding door de gebruikersinterface
+      url: overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: architecture
+    links:
+    - text: Azure IoT Central-architectuur
+      url: concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: quickstart
+    links:
+    - text: Een nieuwe toepassing maken
+      url: quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Verbinding maken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een sjabloon van het apparaat instellen
+      url: howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Een IoT Plug en Play-apparaat verbinden
+      url: tutorial-add-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Een MX Chip IoT DevKit voorbereiden en aansluiten
+      url: howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Verbinding maken met andere IoT-clouds
+      url: howto-build-iotc-device-bridge.md
+- title: Blijf verbonden
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Apparaatgroepen gebruiken
+      url: howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Uw apparaten beheren
+      url: howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Een taak uitvoeren
+      url: howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Uw apparaatgegevens analyseren
+      url: howto-create-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Transformeren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een regel maken
+      url: quick-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Telemetrieregels maken
+      url: tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Exporteren naar Blob Storage
+      url: howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepaste regels maken
+      url: howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Aangepaste analyses maken
+      url: howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Beheer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uw toepassing beheren
+      url: howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Gebruikers en rollen beheren
+      url: howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Uw factuur weergeven
+      url: howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: De gebruikersinterface van de toepassing aanpassen
+      url: howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Persoonlijke dashboards configureren
+      url: howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Dashboardtegels gebruiken
+      url: howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Toepassingssjablonen gebruiken
+      url: howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json

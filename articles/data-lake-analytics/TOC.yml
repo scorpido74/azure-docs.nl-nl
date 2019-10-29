@@ -40,8 +40,8 @@
               href: data-lake-analytics-manage-use-nodejs.md
         - name: Gebruikers toevoegen
           href: data-lake-analytics-add-users.md
-        - name: Beleidsregels
-          href: data-lake-analytics-policies.md
+        - name: Accountbeleid
+          href: data-lake-analytics-account-policies.md
         - name: Taakmappen beveiligen
           href: data-lake-analytics-secure.md
         - name: Toegang tot diagnostische logboeken
@@ -118,6 +118,14 @@
           href: data-lake-analytics-cicd-test.md
         - name: U-SQL-SDK
           href: data-lake-analytics-u-sql-sdk.md
+    - name: Inzicht in Apache Spark voor U-SQL-ontwikkelaars
+      items:
+        - name: Inzicht in Apache Spark voor U-SQL-ontwikkelaars
+          href: data-lake-analytics-understand-spark-for-usql-developers.md
+        - name: Inzicht in gegevensindelingen van Apache Spark
+          href: data-lake-analytics-understand-spark-data-formats.md
+        - name: Inzicht in codeconcepten van Apache Spark
+          href: data-lake-analytics-understand-spark-code-concepts.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

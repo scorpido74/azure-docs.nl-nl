@@ -304,10 +304,14 @@
           href: resource-group-template-functions-resource.md
         - name: Tekenreeksfuncties
           href: resource-group-template-functions-string.md
-    - name: Modus voor volledige verwijdering
-      href: complete-mode-deletion.md
-    - name: Limiet van resource-exemplaar
-      href: resources-without-rg-limit.md
+    - name: Resourcemogelijkheden
+      items:
+        - name: Modus voor volledige verwijdering
+          href: complete-mode-deletion.md
+        - name: Resourcetypen van extensies
+          href: extension-resource-types.md
+        - name: Limiet van resource-exemplaar
+          href: resources-without-rg-limit.md
     - name: Resourceproviders per service
       href: azure-services-resource-providers.md
     - name: REST - Resource Manager

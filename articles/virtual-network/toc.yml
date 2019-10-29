@@ -103,8 +103,12 @@
                   href: virtual-network-ipv4-ipv6-dual-stack-cli.md
                 - name: Resource Manager-sjabloon
                   href: ipv6-configure-template-json.md
-            - name: In-place upgrade
-              href: ipv6-add-to-existing-vnet-powershell.md
+            - name: IPv6 toevoegen aan IPv4-toepassing
+              items:
+                - name: Azure PowerShell
+                  href: ipv6-add-to-existing-vnet-powershell.md
+                - name: Azure-CLI
+                  href: ipv6-add-to-existing-vnet-cli.md
             - name: Openbare load balancer van het type Standard
               items:
                 - name: Azure PowerShell

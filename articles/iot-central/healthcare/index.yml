@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Documentatie voor Azure IoT Central for Healthcare
+summary: Informatie over hoe u IoT-oplossingen voor de gezondheidszorg maakt, aanpast en beheert met IoT Central-toepassingssjablonen.
+metadata:
+  title: Documentatie voor Azure IoT Central for Healthcare
+  description: Informatie over hoe u IoT-oplossingen voor de gezondheidszorg maakt, aanpast en beheert met IoT Central-toepassingssjablonen.
+  services: iot-central
+  ms.service: iot-central
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: c2626e459411570ba54b322e5f1bbc22f69b6a62
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72937624"
+landingContent:
+- title: Oplossingen voor de gezondheidszorg bouwen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Overzicht van continue patiëntbewaking
+      url: overview-iot-central-healthcare.md
+  - linkListType: tutorial
+    links:
+    - text: Een bewakingsoplossing voor continue patiëntbewaking bouwen
+      url: tutorial-continuous-patient-monitoring.md
+- title: Verbinding maken
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een sjabloon van het apparaat instellen
+      url: ../core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Een IoT Plug en Play-apparaat verbinden
+      url: ../core/tutorial-add-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Een MX Chip IoT DevKit voorbereiden en aansluiten
+      url: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Verbinding maken met andere IoT-clouds
+      url: ../core/howto-build-iotc-device-bridge.md
+- title: Blijf verbonden
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Apparaatgroepen gebruiken
+      url: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Uw apparaten beheren
+      url: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Een taak uitvoeren
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Uw apparaatgegevens analyseren
+      url: ../core/howto-create-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Transformeren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een regel maken
+      url: ../core/quick-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Telemetrieregels maken
+      url: ../core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Exporteren naar Blob Storage
+      url: ../core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepaste regels maken
+      url: ../core/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Aangepaste analyses maken
+      url: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+- title: Beheer
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Uw toepassing beheren
+      url: ../core/howto-administer-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Gebruikers en rollen beheren
+      url: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Uw factuur weergeven
+      url: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: De gebruikersinterface van de toepassing aanpassen
+      url: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Persoonlijke dashboards configureren
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Dashboardtegels gebruiken
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Toepassingssjablonen gebruiken
+      url: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json

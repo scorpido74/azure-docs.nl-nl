@@ -62,22 +62,31 @@
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Azure PowerShell gebruiken
           href: virtual-machines-windows-ps-sql-create.md
-    - name: Registreren bij de resourceprovider
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Licentiemodel wijzigen
-      href: virtual-machines-windows-sql-ahb.md
-    - name: Editie wijzigen
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: Registreren met SQL-VM RP
+      displayName: 'resource provider, registration'
+      items:
+        - name: Eén VM
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: Meerdere VM's bulksgewijs registreren
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: Beheren
+      items:
+        - name: Licentiemodel
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: Editie
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: Azure Storage voor back-up en herstel
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: Migreren
       items:
-        - name: Een SQL Server-database migreren
+        - name: SQL Server-database naar VM
           href: virtual-machines-windows-migrate-sql.md
         - name: VM naar een nieuwe regio
           href: virtual-machines-windows-sql-move-different-region.md
     - name: Hoge beschikbaarheid configureren
       items:
-        - name: Azure Storage gebruiken voor back-up en herstel
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: AlwaysOn-beschikbaarheidsgroep
           items:
             - name: CLI voor Azure SQL-VM

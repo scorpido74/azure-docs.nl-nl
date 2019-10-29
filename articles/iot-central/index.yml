@@ -1,36 +1,132 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie over Azure IoT Central
+### YamlMime:Hub
+title: Documentatie voor IoT Central-oplossingen
+summary: Verken de documentatie voor Azure IoT Central-service en oplossingen.
+brand: azure
 metadata:
-  title: 'Documentatie over Azure IoT Central - zelfstudies, API-verwijzing | Microsoft Docs'
-  description: 'Azure IoT Central is een volledig beheerde SaaS-oplossing (Software as a Service), waarmee u uw IoT-assets eenvoudig op schaal kunt verbinden, controleren en beheren. Azure IoT Central vereenvoudigt de eerste installatie van uw IoT-oplossing en vermindert de beheerlast, de operationele kosten en overheadkosten van een typisch IoT-project. Leer aan de hand van onze snelstarts en zelfstudies hoe u een Azure IoT Central-toepassing maakt, aanpast, beheert en gebruikt.'
-  author: dominicbetts
-  ms.topic: landing-page
-  ms.date: 11/08/2017
-  ms.author: dobett
+  title: Documentatiehub voor Azure IoT Central
+  description: Verken de documentatie voor Azure IoT Central-service en oplossingen.
   ms.service: iot-central
-  services: iot-central
-  manager: timlt
-abstract:
-  description: 'Azure IoT Central is een volledig beheerde SaaS-oplossing (Software as a Service), waarmee u uw IoT-assets eenvoudig op schaal kunt verbinden, controleren en beheren. Azure IoT Central vereenvoudigt de eerste installatie van uw IoT-oplossing en vermindert de beheerlast, de operationele kosten en overheadkosten van een typisch IoT-project. Leer aan de hand van onze snelstarts en zelfstudies hoe u een Azure IoT Central-toepassing maakt, aanpast, beheert en gebruikt.'
-sections:
-  - title: Functie-waarschuwing
-    items:
-      - type: paragraph
-        text: 'Azure IoT Central maakt nu gebruik van Azure IoT Hub Device Provisioning Service (DPS) voor alle apparaatverbindingen. U moet DPS SDK gebruiken om apparaten te registreren en te verbinden met uw Azure IoT Central-toepassing. <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">Meer informatie over apparaatconnectiviteit in Azure IoT Central.</a> Alle toepassingen die de functie voor continue gegevensexport en/of het Power BI-oplossingssjabloon gebruiken, moeten de doelcontainer voor opslag wijzigen en een nieuw oplossingssjabloon maken.'
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Informatie over hoe u <a href="quick-deploy-iot-central">een nieuwe Azure IoT Central-toepassing maakt</a>.
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Informatie over hoe u uw Azure IoT Central-toepassing aanpast en gebruikt.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-define-device-type">Een nieuw apparaattype definiëren</a>
-          - html: <a href="tutorial-configure-rules">Regels configureren</a>
-          - html: <a href="tutorial-customize-operator">De weergave van de operator aanpassen</a>
-          - html: <a href="tutorial-monitor-devices">Uw apparaten controleren</a>
-          - html: <a href="tutorial-add-device">Een echt apparaat toevoegen</a>
+  ms.topic: hub-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 10/25/2019
+  ms.openlocfilehash: e60c4da08d92cce1cd5964f78e8198f6c04069ef
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965893"
+highlightedContent:
+  items:
+  - title: Wat is IoT Central?
+    itemType: overview
+    url: ./core/overview-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Wat zijn toepassingssjablonen?
+    itemType: concept
+    url: ./core/howto-use-app-templates-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Azure IoT Central-architectuur
+    itemType: architecture
+    url: ./core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Een nieuwe toepassing maken
+    itemType: quickstart
+    url: ./core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Een apparaattype definiëren en een apparaat toevoegen
+    itemType: tutorial
+    url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+  - title: Uw apparaten bewaken
+    itemType: tutorial
+    url: ./core/tutorial-create-telemetry-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+conceptualContent:
+  items:
+  - title: Verbinding maken (preview-functies)
+    links:
+    - url: ./core/howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Een sjabloon van het apparaat instellen
+    - url: ./core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: tutorial
+      text: Een IoT Plug en Play-apparaat verbinden
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Meer informatie
+  - title: Verbinding houden (preview-functies)
+    links:
+    - url: ./core/howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Apparaatgroepen gebruiken
+    - url: ./core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Uw apparaten beheren
+    - url: ./core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: concept
+      text: Een taak uitvoeren
+    - url: ./core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Uw apparaatgegevens analyseren
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Meer informatie
+  - title: Transformeren (preview-functies)
+    links:
+    - url: ./core/howto-create-telemetry-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Een telemetrieregel maken
+    - url: ./core/howto-export-data-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      itemType: how-to-guide
+      text: Continue gegevensexport configureren
+    footerLink:
+      url: ./core/index.yml?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      text: Meer informatie
+productDirectory:
+  title: Beginnen met toepassingssjablonen voor de industrie te bouwen
+  summary: Klaar om te bouwen? Bekijk onze relevante toepassingssjablonen voor de industrie die zijn gemaakt voor oplossingenontwikkelaars.
+  items:
+  - title: Bouwen voor de detailhandel
+    imageSrc: ./retail/media/index/iot-central-retail.svg
+    links:
+    - text: Oplossingen voor de detailhandel bouwen met Azure IoT Central
+      url: ./retail/overview-iot-central-retail-pnp.md
+    - text: Een retailtoepassing maken
+      url: ./retail/tutorial-in-store-analytics-create-app-pnp.md
+    - text: Een toepassing voor slim voorraadbeheer maken
+      url: ./retail/tutorial-iot-central-smart-inventory-management-pnp.md
+    - text: Een verbonden logistieke app maken
+      url: ./retail/tutorial-iot-central-connected-logistics-pnp.md
+    - text: Een toepassing voor een digitaal distributiecentrum maken
+      url: ./retail/tutorial-iot-central-digital-distribution-center-pnp.md
+  - title: Bouwen voor de gezondheidszorg
+    imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
+    links:
+    - url: ./healthcare/overview-iot-central-healthcare.md
+      text: Oplossingen voor de gezondheidszorg bouwen met IoT Central
+    - url: ./healthcare/tutorial-continuous-patient-monitoring.md
+      text: Een app voor continue patiëntbewaking maken
+  - title: Bouwen voor de energiesector
+    imageSrc: ./energy/media/index/iot-central-energy.svg
+    links:
+    - url: ./energy/overview-iot-central-energy.md
+      text: Oplossingen voor de energiesector bouwen met IoT Central
+    - url: ./energy/tutorial-smart-meter-app.md
+      text: Een app maken om slimme meters te bewaken
+    - url: ./energy/tutorial-solar-panel-app.md
+      text: Een app maken om zonnepanelen te bewaken
+  - title: Bouwen voor overheden
+    imageSrc: ./government/media/index/iot-central-government.svg
+    links:
+    - url: ./government/overview-iot-central-government.md
+      text: Oplossingen voor de overheid bouwen met IoT Central
+    - url: ./government/tutorial-water-quality-monitoring.md
+      text: Een app voor bewaking van de waterkwaliteit maken
+    - url: ./government/tutorial-water-consumption-monitoring.md
+      text: Een app voor bewaking van waterverbruik maken
+    - url: ./government/tutorial-connected-waste-management.md
+      text: Een verbonden app voor afvalbeheer maken
+additionalContent:
+  sections:
+  - items:
+    - title: IoT Central-API's
+      summary: Verken de IoT Central-API's.
+      url: https://docs.microsoft.com/rest/api/azure/
+    - title: IoT Central in Microsoft Learn
+      summary: Verken IoT Central in een gratis sandbox-omgeving
+      url: https://aka.ms/iotcentralapimslearnjourney

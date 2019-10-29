@@ -1,134 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Monitor
+summary: Bewaking van on-premises en Azure-services. Metrische gegevens, logboeken en traceringen verzamelen en analyseren. Stuur waarschuwingen en meldingen of roep geautomatiseerde oplossingen aan.
 metadata:
-  title: Documentatie voor Azure Monitor | Microsoft Docs
-  description: 'Azure Monitor, nu inclusief Log Analytics en Application Insights, biedt geavanceerde hulpmiddelen voor het verzamelen en analyseren van telemetriegegevens. Hiermee kunt u de prestaties en beschikbaarheid van uw cloud en on-premises bronnen en toepassingen maximaliseren.'
+  title: Documentatie voor Azure Monitor
+  description: Azure Monitor, nu inclusief Log Analytics en Application Insights, biedt geavanceerde hulpmiddelen voor het verzamelen en analyseren van telemetriegegevens. Hiermee kunt u de prestaties en beschikbaarheid van uw cloud en on-premises bronnen en toepassingen maximaliseren.
   services: azure-monitor
-  author: bwren
-  manager: carmonm
   ms.service: azure-monitor
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 01/25/2019
-  ms.author: bwren
-abstract:
-  description: 'Azure Monitor, nu inclusief Log Analytics en Application Insights, biedt geavanceerde hulpmiddelen voor het verzamelen en analyseren van telemetriegegevens. Hiermee kunt u de prestaties en beschikbaarheid van uw cloud en on-premises bronnen en toepassingen maximaliseren. Het helpt u begrijpen hoe uw toepassingen presteren en stelt proactief problemen vast die betrekking hebben op de toepassingen en de resources waarvan ze afhankelijk zijn.'
-sections:
-  - title: Aanbevolen inhoud
-    items:
-      - type: paragraph
-        text: Raadpleeg de volgende links voor een lijst met aanbevolen inhoud voor Log Analytics en Application Insights.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-monitor/azure-monitor-log-hub">Log Analytics</a>
-          - html: <a href="/azure/azure-monitor/azure-monitor-app-hub">Application Insights</a>
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Uitleg over het verzamelen en analyseren van metrische gegevens en logboeken die van Azure-resources worden verzameld.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/Chart.svg'
-            text: Metrische gegevens bewaken
-            href: /azure/monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal
-          - image:
-              src: /azure/azure-monitor/media/index/log-analytics.svg
-            text: Logboeken analyseren
-            href: /azure/log-analytics/query-language/get-started-analytics-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/virtualmachine.svg'
-            text: Azure-VM's
-            href: /azure/log-analytics/log-analytics-quick-collect-azurevm
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-            text: Linux-computer
-            href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Windows.svg'
-            text: Windows-computer
-            href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_alert.svg'
-            text: Controle en waarschuwingen voor abonnementen
-            href: /azure/monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription
-      - type: paragraph
-        text: Meer informatie over het bewaken van uw toepassing met Azure Monitor Application Insights.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/dotnet.svg'
-            text: .NET
-            href: /azure/application-insights/quick-monitor-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            text: .NET Core
-            href: /azure/application-insights/app-insights-dotnetcore-quick-start
-          - image:
-              src: 'https://docs.microsoft.com/media/common/nodejs.svg'
-            text: Node.js
-            href: /azure/application-insights/app-insights-nodejs-quick-start
-          - image:
-              src: /azure/application-insights/media/index/mobile-center.png
-            text: Mobiele telefoon
-            href: /azure/application-insights/app-insights-mobile-center-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_web-color.svg'
-            text: Website
-            href: /azure/application-insights/app-insights-website-monitoring
-  - title: Stapsgewijze zelfstudies
-    items:
-      - type: paragraph
-        text: 'Meer informatie over het analyseren en visualiseren van verzamelde gegevens, en hoe u acties kunt uitvoeren op deze gegevens.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">Verzamelde gegevens weergeven of analyseren</a>
-          - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Dashboards maken en delen</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule">Automatisch schalen op basis van planning of prestatie van de toepassing</a>
-          - html: <a href="/azure/monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data">Bewakingsgegevens archiveren</a>
-      - type: paragraph
-        text: Kom erachter hoe u de prestaties en het gebruik van uw webtoepassingen continu kunt verbeteren.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-insights/app-insights-tutorial-runtime-exceptions">Runtime-uitzonderingen zoeken en diagnoses uitvoeren</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-performance">Prestatieproblemen zoeken en diagnoses uitvoeren</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-alert">Controle en waarschuwingen bij toepassingsstatus</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-users">Klantgebruik en informatie analyseren</a>
-          - html: <a href="/azure/application-insights/app-insights-tutorial-dashboards">Aangepaste KPI-dashboards maken</a>
-  - title: Gratis Pluralsight-videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure-beheerder
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-  - title: Voorbeelden
-    items:
-      - type: paragraph
-        text: Gebruik de volgende voorbeelden om Log Analytics te configureren en te beheren.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/log-analytics/powershell-samples">Azure PowerShell</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/powershell/module/az.operationalinsights">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/loganalytics">Naslaginformatie over REST-API</a></p>
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 5ea61f712898c13864e28a4f091521d36f52884c
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72965856"
+landingContent:
+- title: Over Azure Monitor
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Monitor?
+      url: overview.md
+    - text: Wat zijn Azure Monitor-logboeken/Log Analytics?
+      url: overview.md
+    - text: Azure Monitor-logboeken/Log Analytics-inhoudspagina
+      url: azure-monitor-log-hub.md
+    - text: Wat is Application Insights?
+      url: app/app-insights-overview.md
+    - text: Inhoudspagina voor Application Insights
+      url: azure-monitor-app-hub.md
+- title: Over bewakingsgegevens
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Overzicht van gegevensbronnen
+      url: platform/data-sources.md
+    - text: Overzicht van gegevensplatform
+      url: platform/data-platform.md
+- title: Quickstarts van tien minuten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Metrische gegevens bewaken en daarover waarschuwen
+      url: platform/alerts-metric.md
+    - text: Logboeken analyseren
+      url: log-query/get-started-portal.md
+    - text: Azure-VM's in Log Analytics
+      url: learn/quick-collect-azurevm.md
+    - text: Linux-VM's in Log Analytics
+      url: learn/quick-collect-linux-computer.md
+    - text: Windows-VM's in Log Analytics
+      url: learn/quick-collect-windows-computer.md
+    - text: Waarschuwing bij abonnementsactiviteit
+      url: platform/alerts-activity-log.md
+- title: Toepassingen bewaken
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: .NET
+      url: learn/quick-monitor-portal.md
+    - text: .NET Core
+      url: learn/dotnetcore-quick-start.md
+    - text: Node.js
+      url: learn/nodejs-quick-start.md
+    - text: Mobiele telefoon
+      url: azure-monitor-app-hub.md
+    - text: Website
+      url: app/website-monitoring.md
+- title: Training
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Gratis Pluralsite-training - Azure-beheerder
+      url: https://go.microsoft.com/fwlink/?linkid=2012827
+- title: Referentie - CLI
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Metrische gegevens, automatisch schalen, diagnostische instellingen, waarschuwingen
+      url: /cli/azure/monitor?view=azure-cli-latest
+    - text: Log Analytics
+      url: /cli/azure/ext/log-analytics/monitor?view=azure-cli-latest
+    - text: Application Insights
+      url: /cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest
+- title: Referentie - PowerShell
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Metrische gegevens, automatisch schalen, diagnostische instellingen, waarschuwingen
+      url: /powershell/module/az.monitor/?view=azps-2.6.0
+    - text: Log Analytics
+      url: /powershell/module/az.operationalinsights
+    - text: Application Insights
+      url: /powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.7.0&viewFallbackFrom=azps-2.5.0
+- title: Referentie - REST API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Metrische gegevens, automatisch schalen, diagnostische instellingen, waarschuwingen
+      url: /rest/api/monitor
+    - text: Log Analytics
+      url: /rest/api/loganalytics
+    - text: Application Insights
+      url: /rest/api/application-insights/
+    - text: REST API-sandbox voor Application Insights
+      url: https://dev.applicationinsights.io

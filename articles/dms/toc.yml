@@ -53,8 +53,10 @@
       href: resource-scenario-status.md
     - name: Overzicht van vereisten
       href: pre-reqs.md
-    - name: Netwerktopologieën voor migraties van met Azure SQL-database beheerde exemplaren
+    - name: Netwerktopologieën voor Azure SQL DB MI-migraties
       href: resource-network-topologies.md
+    - name: Aangepaste rollen voor online migratie van SQL Server naar een Azure SQL DB MI
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: Probleemoplossing en bekende problemen
       items:
         - name: Verbindingsproblemen met de brondatabase oplossen

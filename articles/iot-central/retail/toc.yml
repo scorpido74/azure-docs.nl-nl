@@ -1,0 +1,138 @@
+- name: Documentatie voor Azure IoT Central for Retail
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Oplossingen voor de detailhandel bouwen met Azure IoT Central
+      href: overview-iot-central-retail-pnp.md
+- name: Zelfstudies
+  items:
+    - name: In-Store Analytics-betaling
+      items:
+        - name: 1 - Een retailtoepassing maken
+          href: tutorial-in-store-analytics-create-app-pnp.md
+        - name: 2 - Het dashboard van de operator aanpassen
+          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+        - name: 3 - Gegevens exporteren en inzichten virtualiseren
+          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+    - name: Slim voorraadbeheer
+      items:
+        - name: Een toepassing voor slim voorraadbeheer maken
+          href: tutorial-iot-central-smart-inventory-management-pnp.md
+    - name: Verbonden logistiek
+      items:
+        - name: Een verbonden logistieke app maken
+          href: tutorial-iot-central-connected-logistics-pnp.md
+    - name: Digitaal distributiecentrum
+      items:
+        - name: Een toepassing voor een digitaal distributiecentrum maken
+          href: tutorial-iot-central-digital-distribution-center-pnp.md
+- name: Concepten
+  items:
+    - name: Sjabloonarchitectuur voor verbonden logistieke apps
+      href: architecture-connected-logistics-pnp.md
+    - name: Sjabloonarchitectuur voor apps als digitaal distributiecentrum
+      href: architecture-digital-distribution-center-pnp.md
+    - name: Sjabloonarchitectuur voor apps voor slim inventarisbeheer
+      href: architecture-smart-inventory-management-pnp.md
+    - name: Analytics-architectuur voor de Store
+      href: store-analytics-architecture.md
+    - name: Connectiviteit
+      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Wat zijn toepassingssjablonen?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+- name: Handleidingen
+  items:
+    - name: Apparaten verbinden
+      items:
+        - name: Een MXChip IoT DevKit voorbereiden en aansluiten
+          href: ../core/howto-connect-devkit-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Een Rigado Cascade 500 voorbereiden en verbinden
+          href: ../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Een RuuviTag-apparaat voorbereiden en verbinden
+          href: ../core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Apparaatconnectiviteit bewaken met Azure CLI
+          href: ../core/howto-monitor-devices-azure-cli-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Apparaten beheren
+      items:
+        - name: Uw apparaten beheren
+          href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Een taak uitvoeren
+          href: ../core/howto-run-a-job.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Apparaatgroepen gebruiken
+          href: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Versie van de sjabloon van het apparaat
+          href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Bewaking en analytische gegevens
+      items:
+        - name: Uw apparaatgegevens analyseren
+          href: ../core/howto-create-analytics-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Webhooks voor regels maken
+          href: ../core/howto-create-webhooks-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Acties en uitbreidingsmogelijkheden
+      items:
+        - name: Continue gegevensexport configureren
+          href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Aangepaste regels maken
+          href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Aangepaste analyses maken met Databricks
+          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Beheer
+      items:
+        - name: Toepassingsinstellingen wijzigen
+          href: ../core/howto-administer-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Uw toepassing exporteren
+          href: ../core/howto-use-app-templates-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Gebruikers en rollen beheren
+          href: ../core/howto-manage-users-roles-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Uw factuur beheren
+          href: ../core/howto-view-bill-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: De gebruikersinterface van de toepassing aanpassen
+          href: ../core/howto-customize-ui-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Tegels toevoegen aan uw dashboard
+          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Beheren vanuit de Azure-portal
+          href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Beheren vanuit Azure CLI
+          href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Beheren vanuit Azure PowerShell
+          href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Beheren vanuit CSP-portal
+          href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Personalisatie
+      items:
+        - name: Persoonlijke Azure IoT Central-dashboards maken
+          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Uw persoonlijke voorkeuren beheren
+          href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+        - name: Live chat in-/uitschakelen
+          href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+- name: Verwant
+  items:
+    - name: Platformservices
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug en Play
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Service-SDK's
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT Device-SDK's
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Resources
+  items:
+    - name: API-referentiedocumentatie
+      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
+    - name: Aanvragen van klantgegevens
+      href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Ondersteunde browsers
+      href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json

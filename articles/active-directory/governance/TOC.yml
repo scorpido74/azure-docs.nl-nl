@@ -42,6 +42,8 @@
           items:
             - name: Delegeren aan catalogusmakers
               href: entitlement-management-delegate-catalog.md
+            - name: Een verbonden organisatie toevoegen
+              href: entitlement-management-organization.md
             - name: Toegang voor externe gebruikers beheren
               href: entitlement-management-external-users.md
             - name: Rapporten en logboeken weergeven

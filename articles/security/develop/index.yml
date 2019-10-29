@@ -1,60 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie over het ontwikkelen van beveiligde toepassingen
+summary: Leer aan de hand van onze voorbeeld-apps, best practices en richtlijnen hoe u in Azure beveiligde toepassingen ontwikkelt en implementeert.
 metadata:
-  document_id: null
   title: Documentatie over het ontwikkelen van beveiligde toepassingen in Microsoft Azure
-  meta.description: Learn how to develop secure apps on Azure.
+  description: Informatie over hoe u beveiligde apps ontwikkelt in Azure.
   services: security
-  author: TerryLanfear
-  manager: rkarlin
   ms.service: security
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/30/2019
+  author: TerryLanfear
   ms.author: terrylan
-abstract:
-  description: 'Leer aan de hand van onze voorbeeld-apps, best practices en richtlijnen hoe u in Azure beveiligde toepassingen ontwikkelt en implementeert.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/security/develop/secure-dev-overview
-            html: <p>Een beveiligde webtoepassing ontwikkelen in Azure</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
-            title: Aan de slag
-          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
-            html: <p>De vijf belangrijkste beveiligingsaspecten voor web-apps</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
-            title: Uw vaardigheden ontwikkelen met Microsoft Learn
-  - title: Voorbeeld-apps beveiligen
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-web-app">Web-app in een Linux-container</a>
-          - html: <a href="/azure/security/develop/secure-aad-app">Web-app met Azure Active Directory</a>
-          - html: <a href="/azure/security/develop/secure-pci-web-app">Betaalkaartenbranche</a>
-  - title: Concepten
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-dev-overview">Best practices voor het ontwikkelen van beveiligde toepassingen</a>
-  - title: Resources
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/security-code-analysis-overview">Analyse van Microsoft-beveiligingscode</a>
-          - html: <a href="/azure/security/develop/threat-modeling-tool">Threat Modeling Tool</a>
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72934067"
+landingContent:
+- title: Beveiligde voorbeeld-apps ontwikkelen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Web-app in een Linux-container
+      url: secure-web-app.md
+    - text: Web-app met Azure Active Directory
+      url: secure-aad-app.md
+    - text: Betaalkaartenbranche
+      url: secure-pci-web-app.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Best practices voor het ontwikkelen van beveiligde toepassingen
+      url: secure-dev-overview.md
+    - text: Ontwerpfase
+      url: secure-design.md
+    - text: Ontwikkelingsfase
+      url: secure-develop.md
+    - text: Implementatiefase
+      url: secure-deploy.md
+- title: Analysehulpprogramma toevoegen aan uw beveiligde ontwikkeling
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Analyse van beveiligingscode
+      url: security-code-analysis-overview.md
+    - text: Bedreigingsmodellen
+      url: threat-modeling-tool.md
+- title: Uw vaardigheden ontwikkelen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Top 5 beveiligde items
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: Uw cloudtoepassingen beveiligen in Azure
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: Logboekquery's
           href: log-query/get-started-queries.md
-        - name: Logboekgegevens visualiseren
+        - name: Dashboard met logboekgegevens
           href: learn/tutorial-logs-dashboards.md
         - name: Waarschuwing bij logboekgegevens
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: Toepassingsgebruikers begrijpen
           href: learn/tutorial-users.md
-        - name: Aangepaste dashboards maken
+        - name: Dashboard met toepassingsgegevens
           href: learn/tutorial-app-dashboards.md
     - name: Metrische gegevens en logboekgegevens van het platform archiveren
       href: learn/tutorial-archive-data.md
@@ -889,7 +889,11 @@
         - name: Werkmappen
           href: app/usage-workbooks.md
         - name: Dashboards
-          href: app/app-insights-dashboards.md
+          items:
+            - name: Dashboard gebruiken met logboekgegevens
+              href: learn/tutorial-logs-dashboards.md
+            - name: Dashboard gebruiken met toepassingsgegevens
+              href: learn/tutorial-app-dashboards.md
         - name: Gegevens naar Grafana verzenden
           href: platform/grafana-plugin.md
     - name: Waarschuwingen
@@ -1098,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: Ondersteunde metrische gegevens voor nieuwere waarschuwingen
           href: platform/alerts-metric-near-real-time.md
-    - name: Diagnostische logboeken
-      items:
-        - name: 'Services, categorieën en schema''s voor diagnostische logboeken'
-          href: platform/diagnostic-logs-schema.md
+    - name: 'Resources maken van logboekservices, categorieën en schema''s'
+      href: platform/diagnostic-logs-schema.md
     - name: Azure-CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (preview)
@@ -1110,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: 'Waarschuwingen, metrische gegevens, activiteitenlogboek, automatisch schalen'
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: Logboeken
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: REST-API
       items:

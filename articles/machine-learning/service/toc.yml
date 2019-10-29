@@ -138,6 +138,9 @@
         - name: Trainen met gegevenssets
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: Versiebeheer van gegevenssets en gegevenssets bijhouden
+          displayName: 'data, data set'
+          href: how-to-version-track-datasets.md
     - name: Modellen trainen
       items:
         - name: Visuele interface gebruiken

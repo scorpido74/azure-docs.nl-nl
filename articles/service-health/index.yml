@@ -1,0 +1,43 @@
+### YamlMime:Landing
+title: Documentatie over Azure Service Health
+summary: Azure Service Health is een suite met functies die persoonlijke begeleiding en ondersteuning bieden bij (toekomstige) problemen met Azure-services. Azure Service Health bestaat uit de Azure-status, de servicestatus en de resourcestatus.
+metadata:
+  title: Documentatie over Azure Service Health
+  description: Azure Service Health is een suite met functies die persoonlijke begeleiding en ondersteuning bieden bij problemen met Azure-services. Via Azure Service Health kunt u meldingen ontvangen, inzicht krijgen in de impact van een probleem en tijdens het oplossen van problemen op de hoogte worden gehouden. Ook kan Azure Service Health u helpen bij het voorbereiden van gepland onderhoud en van wijzigingen die de beschikbaarheid van uw resources mogelijk kunnen beïnvloeden.
+  services: service-health
+  ms.service: service-health
+  ms.topic: landing-page
+  author: rboucher
+  ms.author: robb
+  ms.date: 10/08/2019
+  ms.openlocfilehash: 83380e57a5d67431fccf1d808b8c8f69eddc5962
+  ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/27/2019
+  ms.locfileid: "72966002"
+landingContent:
+- title: Over Azure Service Health
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Service Health
+      url: overview.md
+    - text: Azure Status
+      url: azure-status-overview.md
+    - text: Servicestatus
+      url: service-health-overview.md
+    - text: Status van resources
+      url: resource-health-overview.md
+  - linkListType: video
+    links:
+    - text: Inleidende video over Azure Service Health
+      url: https://www.microsoft.com/videoplayer/embed/RE2OgX6
+- title: Meldingen ontvangen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ontvang een melding wanneer er een probleem is met een Azure-service
+      url: alerts-activity-log-service-notifications.md
+    - text: Ontvang een melding wanneer uw Azure-resource niet meer beschikbaar is
+      url: resource-health-alert-arm-template-guide.md
