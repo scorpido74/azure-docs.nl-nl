@@ -8,14 +8,18 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a8f8b91e2990b85f5bcbd5aef5d70d3b6fb800e1
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: aaf591bcc75521cb83d8c74f5220d37f77f1f349
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965545"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027660"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Bouw energie oplossingen met IoT Central 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Slimme meters en zonne panelen spelen een belang rijke rol in de trans formatie van de energie-industrie. De slimme meters geven meer besturings elementen en real-time inzichten over het energie verbruik en de groei van het zonne deel van de schermen door braak in Hernieuw bare energie generatie. Het slimme meter-en zonne deel venster voor monitor-apps zijn voorbeeld sjablonen waarmee de verschillende mogelijkheden worden weer gegeven. Partners kunnen gebruikmaken van deze sjablonen om energie oplossingen te bouwen met IoT Central voor hun specifieke behoeften. Geen nieuwe code ring en er zijn geen extra kosten vereist voor het implementeren en gebruiken van deze toepassingen. Meer informatie over energie toepassings sjablonen en hun mogelijkheden.
 
 
@@ -36,8 +40,8 @@ U kunt de [app voor het bewaken van slimme meters gratis](https://apps.azureiotc
 
 Nadat u de app hebt geïmplementeerd, ziet u de gesimuleerde meter gegevens op het dash board, zoals wordt weer gegeven in de afbeelding hieronder. Deze sjabloon is een voor beeld-app die u eenvoudig kunt uitbreiden en aanpassen voor uw specifieke gebruiks voorbeelden.
 
-> [!div class="mx-imgBorder"]
-> App-dash board voor ![slimme meter](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
+[!div class="mx-imgBorder"]
+App-dash board voor ![slimme meter](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
 
 
 ## <a name="what-is-the-solar-panel-monitoring-application"></a>Wat is de toepassing voor het bewaken van het zonne deel venster?

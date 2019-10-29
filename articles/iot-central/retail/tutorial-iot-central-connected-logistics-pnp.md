@@ -6,14 +6,16 @@ ms.author: nandab
 ms.service: iot-central
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: fda81e6b41232dfaa11343a28643138d5a3760c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0fc9291fcb17d6200b32bb04a0a3ffeed5dea713
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957340"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027333"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Zelf studie: een verbonden sjabloon voor een logistiek-toepassing implementeren en door lopen
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 In deze zelf studie leert u hoe u aan de slag gaat door een IoT Central verbonden sjabloon van een **logistiek** -toepassing te implementeren. U leert hoe u de sjabloon implementeert, wat is opgenomen in het vak en wat u mogelijk op de volgende manier wilt doen.
 

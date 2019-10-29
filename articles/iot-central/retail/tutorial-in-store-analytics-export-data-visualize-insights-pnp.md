@@ -10,12 +10,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: b982956af276eaba31be52ba426562f9fc5137dd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956493"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026377"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Zelf studie: gegevens exporteren uit Azure IoT Central en inzichten in Power BI visualiseren
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Voor het volt ooien van de vorige twee zelf studies [maakt u een in-Store Analytics-toepassing in azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) en [past u het operator dashboard aan en beheert u apparaten in azure IOT Central](./tutorial-in-store-analytics-customize-dashboard-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+* Voor het volt ooien van de vorige twee zelf studies [maakt u een in-Store Analytics-toepassing in azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md) en [past u het operator dashboard aan en beheert u apparaten in azure IOT Central](./tutorial-in-store-analytics-customize-dashboard-pnp.md).
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 * Een Power BI-account. Als u geen Power BI account hebt, meldt u zich aan voor een [gratis proef versie van Power bi Pro](https://app.powerbi.com/signupredirect?pbi_source=web) voordat u begint.
 
@@ -149,7 +149,7 @@ U hebt nu een derde streaming-gegevensset die waarden van de gesimuleerde bezett
 
 In deze oplossing leest de logische app telemetrie van de Event Hub, parseert de gegevens en verzendt deze vervolgens naar de Power BI streaming-gegevens sets die u hebt gemaakt.
 
-Voordat u de logische app maakt, moet u de apparaat-Id's van de twee RuuviTag-Sens oren die u hebt verbonden met uw IoT Central-toepassing hebben in de zelf studie [een in-Store Analytics-toepassing maken in Azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json) :
+Voordat u de logische app maakt, moet u de apparaat-Id's van de twee RuuviTag-Sens oren die u hebt verbonden met uw IoT Central-toepassing hebben in de zelf studie [een in-Store Analytics-toepassing maken in Azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md) :
 
 1. Meld u aan bij uw **in-Store Analytics-kassa IOT Central-** toepassing.
 1. Selecteer **apparaten** in het linkerdeel venster. Selecteer vervolgens **RuuviTag**.

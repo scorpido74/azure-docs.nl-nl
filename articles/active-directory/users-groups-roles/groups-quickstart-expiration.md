@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aabfe803a6ee40491dd95fe7def9a31838c80e65
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7d98dd0f4f9cdc506b8807932a255d14d3022d49
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928981"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024613"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Snelstart: Office 365-groepen voor verloop instellen in Azure Active Directory
 
@@ -27,13 +27,13 @@ In deze snelstart stelt u het verloopbeleid in voor uw Office 365-groepen. Wanne
 
 Verloopbeleid maken is eenvoudig:
 
-- Groepen met gebruikers activiteiten worden automatisch vernieuwd als verlopen bijna (preview-versie)
+- Groepen met gebruikers activiteiten worden automatisch vernieuwd als de verlopen bijna
 - Groepseigenaren worden op de hoogte gesteld als een groep moet worden vernieuwd die op het punt staat te verlopen
 - Een groep die niet wordt vernieuwd, wordt verwijderd
 - Een verwijderde Office 365-groep kan binnen dertig dagen door een groepseigenaar of een Azure AD-beheerder worden hersteld
 
 > [!NOTE]
-> Groepen maken nu gebruik van Azure AD Intelligence om automatisch te worden vernieuwd op basis van het feit of ze recent zijn gebruikt (momenteel in de open bare preview-versie, dus er is geen aanmelding vereist). Deze functie is gebaseerd op gebruikers activiteit in groepen in Office 365-services zoals Outlook, share point, teams, Yammer en anderen.
+> Groepen gebruiken nu Azure AD Intelligence om automatisch te worden vernieuwd op basis van het feit of ze al recent zijn gebruikt. Deze vernieuwings beslissing is gebaseerd op gebruikers activiteit in groepen in Office 365-services zoals Outlook, share point, teams, Yammer en anderen.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

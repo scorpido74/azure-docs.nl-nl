@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: fd6062250b288f9c1f04b7e7853e7fdd84d612c0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 06b4fe3b716f2252f064a5b36fcde7dd7198db2d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965828"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026740"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Zelf studie: de sjabloon voor het bewakings programma voor slimme meters maken en door lopen 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 In deze zelf studie wordt u begeleid bij het maken van de toepassing voor het controleren van slimme meters, die een voorbeeld model bevat met gesimuleerde gegevens. In deze zelfstudie leert u:
 
@@ -39,8 +41,8 @@ U kunt deze toepassing in drie eenvoudige stappen maken:
 
 2. Selecteer tabblad **energie** en klik op **app maken** onder toepassing tegel voor **slimme meter bewaking** .
 
-    > [!div class="mx-imgBorder"]
-    > ![build-app](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    [!div class="mx-imgBorder"]
+    ![build-app](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
 3. Bij het maken van de **app** wordt het **nieuwe toepassings** formulier geopend. Vul de gevraagde gegevens in, zoals wordt weer gegeven in de afbeelding hieronder:
@@ -70,31 +72,31 @@ Adatum is een fictief energie bedrijf dat slimme meters bewaakt en beheert. Op h
 * Het totale energie verbruik bijhouden voor planning en facturerings doeleinden
 * Opdracht-en controle bewerkingen, zoals reconnect meter en firmware versie bijwerken. In de sjabloon worden met de opdracht knoppen de mogelijke functionaliteiten weer gegeven en worden geen echte opdrachten verzonden. 
 
-> [!div class="mx-imgBorder"]
-> ![dash board voor slimme meter bewaking](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+[!div class="mx-imgBorder"]
+![dash board voor slimme meter bewaking](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Apparaten
 De app bevat een voor beeld van een Smart meter apparaat. U kunt de details van het apparaat bekijken door te klikken op het tabblad **apparaten** .
 
-> [!div class="mx-imgBorder"]
-> apparaten met ![slimme meter](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+[!div class="mx-imgBorder"]
+apparaten met ![slimme meter](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
 Klik op de koppeling voor beeld van apparaat **SM0123456789** om de details van het apparaat weer te geven. U kunt de Beschrijf bare eigenschappen van het apparaat bijwerken op de pagina **Eigenschappen bijwerken** en de bijgewerkte waarden in het dash board visualiseren.
 
-> [!div class="mx-imgBorder"]
-> eigenschappen van slimme meter ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+[!div class="mx-imgBorder"]
+eigenschappen van slimme meter ![](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
 
 ### <a name="device-template"></a>Apparaatprofiel
 Klik op het tabblad **device templates** om het apparaat model voor slimme meters weer te geven. Het model heeft een vooraf gedefinieerde interface voor gegevens, eigenschappen, opdrachten en weer gaven.
 
-> [!div class="mx-imgBorder"]
-> Device-sjablonen voor ![Smart meter](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+[!div class="mx-imgBorder"]
+Device-sjablonen voor ![Smart meter](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 Als u besluit deze toepassing niet te blijven gebruiken, verwijdert u uw toepassing met de volgende stappen:
 
-1. Open het tabblad beheer vanuit het menu aan de linkerkant.
+1. Open het tabblad beheer vanuit het linkerdeel venster.
 2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen. 
 
     > [!div class="mx-imgBorder"]

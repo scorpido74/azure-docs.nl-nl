@@ -8,14 +8,17 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 2a03d47dc2b50cd9410cb3efa94012bd18680953
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cf8cfc5fe75ff5364f812af034d772c7aadd891c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957536"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027476"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Bewakings architectuur voortdurende patiënten
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Continue patiënten-bewakings oplossingen kunnen worden gebouwd door gebruik te maken van de app-sjabloon die is verschaft en de architectuur hieronder als richt lijn te gebruiken.
 
 >[!div class="mx-imgBorder"] 

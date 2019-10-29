@@ -1,5 +1,5 @@
 ---
-title: Een retail-toepassing maken in azure IoT Central | Microsoft Docs
+title: Een in-Store-Analytics-toepassing maken in azure IoT Central | Microsoft Docs
 description: In deze zelf studie ziet u hoe u een retail-toepassing in-Store Analytics maakt in IoT Central. U maakt deze en past deze toe en voegt sensor apparaten toe.
 services: iot-central
 ms.service: iot-central
@@ -10,12 +10,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: 528658b85542580df5eeb62f0c146aadef44f517
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 571c172054e52960c3dba8d41469ba304f3493eb
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956409"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026421"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Zelf studie: een in-Store Analytics-toepassing maken in azure IoT Central
 
@@ -284,4 +284,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 Nu u een Azure IoT Central condition-bewakings toepassing hebt gemaakt, is dit de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Het operator dashboard aanpassen](./tutorial-in-store-analytics-customize-dashboard-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)
+> [Het operator dashboard aanpassen](./tutorial-in-store-analytics-customize-dashboard-pnp.md)

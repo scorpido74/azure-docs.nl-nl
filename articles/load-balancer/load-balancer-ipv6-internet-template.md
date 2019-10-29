@@ -5,7 +5,7 @@ description: IPv6-ondersteuning implementeren voor Azure Load Balancer en virtue
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6-, azure-load balancer, dual-stack, openbaar IP-adres, systeemeigen IPv6-, mobiele, iot
+keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6, mobiel, IOT
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: bfecb2a57cf5f086b6c9f99c50b857c8c1183e3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274998"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025590"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Een Internet gerichte Load Balancer-oplossing met IPv6 implementeren met behulp van een sjabloon
 
@@ -29,10 +29,12 @@ ms.locfileid: "68274998"
 > * [Sjabloon](load-balancer-ipv6-internet-template.md)
 
 
+>[! Opmerking: wijziging in Aanbevolen procedures voor IPv6] in dit artikel wordt een inleidende IPv6-functie beschreven waarmee Basic load balancers zowel IPv4-als IPv6-connectiviteit kan bieden.  Uitgebreide IPv6-connectiviteit is nu beschikbaar met [IPv6 voor Azure VNETs](../virtual-network/ipv6-overview.md) , die IPv6-connectiviteit integreert met uw virtuele netwerken en die belang rijke functies bevat, zoals regels voor IPv6-netwerk beveiligings groepen, door IPv6 door de gebruiker gedefinieerde route ring, IPv6 Basic en Standaard taak verdeling en meer.  IPv6 voor Azure VNETs is de aanbevolen best practice voor IPv6-toepassingen in Azure. 
+>Zie [IPv6 voor Azure VNET-sjabloon implementatie](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)
 
 Azure Load Balancer is een Layer-4 (TCP, UDP) load balancer. De load balancer biedt hoge beschikbaarheid bij het verdelen van inkomend verkeer over gezonde service-exemplaren in cloudservices of virtuele machines in een load balancer-set. Azure Load Balancer kan deze services ook toepassen op meerdere poorten, meerdere IP-adressen of allebei.
 
-## <a name="example-deployment-scenario"></a>Voorbeeldscenario voor implementatie
+## <a name="example-deployment-scenario"></a>Voor beeld van implementatie scenario
 
 In het volgende diagram ziet u de taakverdelings oplossing die wordt geïmplementeerd met behulp van de voorbeeld sjabloon die in dit artikel wordt beschreven.
 
@@ -40,11 +42,11 @@ In het volgende diagram ziet u de taakverdelings oplossing die wordt geïmplemen
 
 In dit scenario maakt u de volgende Azure-resources:
 
-* Een virtuele netwerk interface voor elke virtuele machine waaraan IPv4-en IPv6-adressen zijn toegewezen
+* een virtuele netwerk interface voor elke virtuele machine waaraan IPv4-en IPv6-adressen zijn toegewezen
 * een Internet gerichte Load Balancer met een IPv4-en een openbaar IP-adres voor IPv6
-* Twee taakverdelings regels om de open bare Vip's toe te wijzen aan de privé-eind punten
+* twee taakverdelings regels om de open bare Vip's toe te wijzen aan de privé-eind punten
 * een Beschikbaarheidsset die de twee virtuele machines bevat
-* Twee virtuele machines (Vm's)
+* twee virtuele machines (Vm's)
 
 ## <a name="deploying-the-template-using-the-azure-portal"></a>De sjabloon implementeren met behulp van de Azure Portal
 
@@ -113,8 +115,8 @@ De voorbeeld sjabloon die in dit artikel wordt gebruikt, bevat de volgende varia
 | --- | --- |
 | adminUsername |Geef de naam op van het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |
 | adminPassword |Geef het wacht woord op voor het beheerders account dat wordt gebruikt om u aan te melden bij de virtuele machines met. |
-| dnsNameforIPv4LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv4-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0{1,61}-9-] [a-z0-9] $. |
-| dnsNameforIPv6LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv6-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0{1,61}-9-] [a-z0-9] $. Dit kan dezelfde naam zijn als het IPv4-adres. Wanneer een client een DNS-query voor deze naam verzendt, retourneert Azure zowel de A-als AAAA-records wanneer de naam wordt gedeeld. |
+| dnsNameforIPv4LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv4-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0-9-]{1,61}[a-z0-9] $. |
+| dnsNameforIPv6LbIP |Geef de naam op van de DNS-host die u wilt toewijzen als de open bare naam van de load balancer. Deze naam wordt omgezet in het open bare IPv6-adres van de load balancer. De naam moet een kleine letter zijn en overeenkomen met de regex: ^ [a-z] [a-z0-9-]{1,61}[a-z0-9] $. Dit kan dezelfde naam zijn als het IPv4-adres. Wanneer een client een DNS-query voor deze naam verzendt, retourneert Azure zowel de A-als AAAA-records wanneer de naam wordt gedeeld. |
 | vmNamePrefix |Geef het voor voegsel van de VM-naam op. De sjabloon voegt een getal (0, 1 enz.) toe aan de naam wanneer de virtuele machines worden gemaakt. |
 | nicNamePrefix |Geef het voor voegsel van de netwerk interface naam op. De sjabloon voegt een getal (0, 1 enz.) toe aan de naam wanneer de netwerk interfaces worden gemaakt. |
 | storageAccountName |Voer de naam van een bestaand opslag account in of geef de naam op van een nieuwe die moet worden gemaakt door de sjabloon. |

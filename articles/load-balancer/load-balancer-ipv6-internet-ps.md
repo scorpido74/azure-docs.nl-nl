@@ -5,7 +5,7 @@ description: Meer informatie over het maken van een Internet gerichte load balan
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6-, azure-load balancer, dual-stack, openbaar IP-adres, systeemeigen IPv6-, mobiele, iot
+keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6, mobiel, IOT
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 9f2bd24955cc378deed5dbc0423488645632a958
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274985"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025794"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Aan de slag met het maken van een Internet gerichte load balancer met IPv6 met behulp van Power shell voor Resource Manager
 
@@ -28,12 +28,14 @@ ms.locfileid: "68274985"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Sjabloon](load-balancer-ipv6-internet-template.md)
 
+>[! Opmerking: wijziging in Aanbevolen procedures voor IPv6] in dit artikel wordt een inleidende IPv6-functie beschreven waarmee Basic load balancers zowel IPv4-als IPv6-connectiviteit kan bieden.  Uitgebreide IPv6-connectiviteit is nu beschikbaar met [IPv6 voor Azure VNETs](../virtual-network/ipv6-overview.md) , die IPv6-connectiviteit integreert met uw virtuele netwerken en die belang rijke functies bevat, zoals regels voor IPv6-netwerk beveiligings groepen, door IPv6 door de gebruiker gedefinieerde route ring, IPv6 Basic en Standaard taak verdeling en meer.  IPv6 voor Azure VNETs is de aanbevolen best practice voor IPv6-toepassingen in Azure. 
+>Zie [IPv6 voor Azure VNET Power shell-implementatie](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure Load Balancer is een Layer-4 (TCP, UDP) load balancer. De load balancer biedt hoge beschikbaarheid bij het verdelen van inkomend verkeer over gezonde service-exemplaren in cloudservices of virtuele machines in een load balancer-set. Azure Load Balancer kan deze services ook toepassen op meerdere poorten, meerdere IP-adressen of allebei.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="example-deployment-scenario"></a>Voorbeeldscenario voor implementatie
+## <a name="example-deployment-scenario"></a>Voor beeld van implementatie scenario
 
 In het volgende diagram ziet u de oplossing voor taak verdeling die in dit artikel wordt geïmplementeerd.
 
@@ -42,10 +44,10 @@ In het volgende diagram ziet u de oplossing voor taak verdeling die in dit artik
 In dit scenario maakt u de volgende Azure-resources:
 
 * een Internet gerichte Load Balancer met een IPv4-en een openbaar IP-adres voor IPv6
-* Twee taakverdelings regels om de open bare Vip's toe te wijzen aan de privé-eind punten
+* twee taakverdelings regels om de open bare Vip's toe te wijzen aan de privé-eind punten
 * een Beschikbaarheidsset met de twee virtuele machines
-* Twee virtuele machines (Vm's)
-* Een virtuele netwerk interface voor elke virtuele machine waaraan IPv4-en IPv6-adressen zijn toegewezen
+* twee virtuele machines (Vm's)
+* een virtuele netwerk interface voor elke virtuele machine waaraan IPv4-en IPv6-adressen zijn toegewezen
 
 ## <a name="deploying-the-solution-using-the-azure-powershell"></a>De oplossing implementeren met behulp van de Azure PowerShell
 
@@ -230,10 +232,4 @@ Zie [een virtuele Windows-machine maken en vooraf configureren met Resource Mana
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>Volgende stappen
 
-[Aan de slag met het configureren van een interne load balancer](load-balancer-get-started-ilb-arm-ps.md)
-
-[Een distributiemodus voor de load balancer configureren](load-balancer-distribution-mode.md)
-
-[TCP-time-outinstellingen voor inactiviteit voor de load balancer configureren](load-balancer-tcp-idle-timeout.md)

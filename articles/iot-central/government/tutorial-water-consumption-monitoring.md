@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 543d019628e0f3c8423a71a4aa8d5b24a60e82e3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59dae65d32f1b816e59ee883cb4529c6f1fd212c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956717"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026568"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Zelf studie: een toepassing voor het controleren van water verbruik maken in IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 In deze zelf studie wordt u begeleid bij het maken van een Azure IoT Central-bewakings toepassing voor water gebruik vanuit de sjabloon voor de bewaking van IoT Central water verbruik. 
 
@@ -47,7 +49,7 @@ Voor het maken van een nieuwe Azure IoT Central-bewakings toepassing voor water 
 
     ![Voer uw organisatieaccount in](media/tutorial-waterconsumptionmonitoring/sign-in.png)
 
-2. Klik op **Build** in het navigatie menu links en selecteer het tabblad **Government** . Op de pagina Government worden verschillende Government-toepassings sjablonen weer gegeven.
+2. Klik op **Build** in het linkerdeel venster en selecteer het tabblad **Government** . Op de pagina Government worden verschillende Government-toepassings sjablonen weer gegeven.
 
    ![Sjablonen voor Government-apps bouwen](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
 
@@ -241,7 +243,7 @@ Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervari
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u uw toepassing met de volgende stappen:
 
-1. Open het tabblad beheer vanuit het navigatie menu aan de linkerkant van uw IoT Central-toepassing. 
+1. Open het tabblad beheer in het linkerdeel venster van uw IoT Central-toepassing. 
 2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen. 
 
 

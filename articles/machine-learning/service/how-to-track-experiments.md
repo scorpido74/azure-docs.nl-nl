@@ -3,8 +3,8 @@ title: Log ML experimenten & metrische gegevens
 titleSuffix: Azure Machine Learning
 description: Bewaak uw Azure ML experimenten en bewaak metrische uitvoerings gegevens om het proces voor het maken van het model te verbeteren. Voeg logboek registratie toe aan uw trainings script en Bekijk de geregistreerde resultaten van een uitvoering.  Gebruik run. log, run. start_logging of ScriptRunConfig.
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002711"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045211"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
 
@@ -28,31 +28,31 @@ Verbeter het proces voor het maken van het model door de metrische gegevens voor
 
 ## <a name="available-metrics-to-track"></a>Beschik bare metrische gegevens om bij te houden
 
-De volgende metrische gegevens kunnen worden toegevoegd aan een run tijdens het trainen van een experiment. Voor een meer gedetailleerd overzicht van wat er op een uitvoering kunnen worden bijgehouden, raadpleegt u de [uitvoeren van de klasse referentiedocumentatie voor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
+De volgende metrische gegevens kunnen worden toegevoegd aan een run tijdens het trainen van een experiment. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)voor het uitvoeren van klassen voor een gedetailleerde lijst met wat er kan worden gevolgd bij een uitvoering.
 
-|Type| Funkce Pythonu | Opmerkingen|
+|Type| Python-functie | Opmerkingen|
 |----|:----|:----|
-|Scalaire waarden |Functie:<br>`run.log(name, value, description='')`<br><br>Voorbeeld:<br>Run.log ("nauwkeurigheid", 0.95) |Meld u een numerieke of tekenreekswaarde voor de uitvoering met de opgegeven naam. Logboekregistratie van een metrische waarde aan een run zorgt ervoor dat deze metrische gegevens worden opgeslagen in de record uitvoeren in het experiment.  U kunt de dezelfde metrische gegevens meerdere keren binnen een uitvoering, het resultaat wordt beschouwd als een vector van deze metrische gegevens vastleggen.|
-|Lijsten|Functie:<br>`run.log_list(name, value, description='')`<br><br>Voorbeeld:<br>Run.log_list ("nauwkeurigheden," [0,6, 0,7, 0.87]) | Meld u een lijst met waarden voor de uitvoering met de opgegeven naam.|
-|Rij|Functie:<br>`run.log_row(name, description=None, **kwargs)`<br>Voorbeeld:<br>Run.log_row ("Y via X", x = 1, y = 0.4) | Met behulp van *log_row* maakt u een metrische waarde met meerdere kolommen zoals beschreven in kwargs. Elke benoemde parameter genereert een kolom met de opgegeven waarde.  *log_row* kan eenmaal worden aangeroepen voor het melden van een willekeurige tuple of meerdere keren in een lus voor het genereren van een volledige tabel.|
-|Tabel|Functie:<br>`run.log_table(name, value, description='')`<br><br>Voorbeeld:<br>Run.log_table ("Y via X", {"x": [1, 2, 3], "y": [0,6, 0,7, 0,89]}) | Meld u aan een dictionary-object de uitvoeren met de opgegeven naam. |
-|Installatiekopieën|Functie:<br>`run.log_image(name, path=None, plot=None)`<br><br>Voorbeeld:<br>`run.log_image("ROC", plt)` | Meld u aan een installatiekopie van de record uitvoeren. Log_image gebruiken om aan te melden voor een afbeelding of een matplotlib getekend met het uitvoeren.  Deze installatiekopieën worden zichtbaar en vergelijkbare in de record uitvoeren.|
-|Een uitvoering taggen|Functie:<br>`run.tag(key, value=None)`<br><br>Voorbeeld:<br>Run.Tag ("ingeschakeld", "Ja") | Tag de uitvoering met een tekenreekssleutel en een optionele tekenreeks-waarde.|
-|Bestand of map uploaden|Functie:<br>`run.upload_file(name, path_or_stream)`<br> <br> Voorbeeld:<br>Run.upload_file ("best_model.pkl", ". / model.pkl") | Upload een bestand naar de record uitvoeren. Wordt uitgevoerd automatisch vastleggen bestand in de map met de opgegeven uitvoer, die standaard ". / levert ' voor de meeste typen die worden uitgevoerd.  Gebruik upload_file alleen als aanvullende bestanden moeten worden geüpload of een map met de uitvoer is niet opgegeven. Het is raadzaam toe te voegen `outputs` op de naam, zodat deze wordt het geüpload naar de map voor uitvoer. U kunt alle bestanden die gekoppeld zijn een lijst met deze record door te voeren met de naam `run.get_file_names()`|
+|Scalaire waarden |Functieassembly<br>`run.log(name, value, description='')`<br><br>Voorbeeld:<br>run. log ("nauw keurig", 0,95) |Registreer een numerieke of teken reeks waarde voor de uitvoering met de opgegeven naam. Als u een metriek registreert voor een run, wordt de metrische waarde opgeslagen in het rapport uitvoeren in het experiment.  U kunt dezelfde metrische gegevens meerdere keren in een uitvoering registreren. het resultaat wordt gezien als een vector van die metriek.|
+|Certificaatintrekkingslijst|Functieassembly<br>`run.log_list(name, value, description='')`<br><br>Voorbeeld:<br>run. log _list ("keurigheden", [0,6, 0,7, 0,87]) | Een lijst met waarden vastleggen voor de uitvoering met de opgegeven naam.|
+|rijkoppen|Functieassembly<br>`run.log_row(name, description=None, **kwargs)`<br>Voorbeeld:<br>run. log _row ("Y over X", X = 1, Y = 0,4) | Met *log_row* maakt u een metriek met meerdere kolommen zoals beschreven in kwargs. Elke benoemde para meter genereert een kolom met de opgegeven waarde.  *log_row* kan eenmaal worden aangeroepen om een wille keurige tupel of meerdere keren in een lus te registreren om een volledige tabel te genereren.|
+|Tabel|Functieassembly<br>`run.log_table(name, value, description='')`<br><br>Voorbeeld:<br>run. log _table ("Y over X", {"X": [1, 2, 3], "Y": [0,6, 0,7, 0,89]}) | Een Dictionary-object in een logboek vastleggen voor de uitvoering met de opgegeven naam. |
+|Installatiekopieën|Functieassembly<br>`run.log_image(name, path=None, plot=None)`<br><br>Voorbeeld:<br>`run.log_image("ROC", plt)` | Een installatie kopie vastleggen in het rapport uitvoeren. Gebruik log_image om een afbeeldings bestand of een matplotlib-plot te registreren bij de uitvoering.  Deze installatie kopieën worden weer gegeven en vergeleken in de run-record.|
+|Een uitvoering labelen|Functieassembly<br>`run.tag(key, value=None)`<br><br>Voorbeeld:<br>run. tag ("geselecteerd", "ja") | Label de run met een teken reeks sleutel en een optionele teken reeks waarde.|
+|Bestand of map uploaden|Functieassembly<br>`run.upload_file(name, path_or_stream)`<br> <br> Voorbeeld:<br>run. upload_file ("best_model. PKL", "./model.PKL") | Upload een bestand naar het run-record. Voert automatisch een capture-bestand uit in de opgegeven uitvoermap, die standaard wordt ingesteld op './outputs ' voor de meeste typen uitvoering.  Gebruik upload_file alleen als er extra bestanden moeten worden geüpload of als er geen uitvoer Directory is opgegeven. We raden aan om `outputs` toe te voegen aan de naam, zodat deze wordt geüpload naar de uitvoer Directory. U kunt alle bestanden weer geven die zijn gekoppeld aan deze record voor uitvoeren door de naam `run.get_file_names()`|
 
 > [!NOTE]
-> Metrische gegevens voor hoeken, een lijst met rijen en tabellen kunt type hebben: float, geheel getal of tekenreeks.
+> Metrische gegevens voor scalaire waarden, lijsten, rijen en tabellen kunnen type: float, integer of string hebben.
 
 ## <a name="choose-a-logging-option"></a>Kies een optie voor logboek registratie
 
-Als u wilt bijhouden of bewaken van uw experiment, moet u code om te starten wanneer u de uitvoering verzendt logboekregistratie toevoegen. De volgende zijn manieren voor het activeren van het verzenden van de uitvoering:
-* __Run.start_logging__ - logboekregistratiefuncties toevoegen aan uw trainingsscript en een interactieve sessie te starten in de opgegeven experiment. **start_logging** maakt u een interactieve uitvoeren voor gebruik in scenario's zoals laptops. Alle metrische gegevens die zijn vastgelegd tijdens de sessie worden toegevoegd aan de uitvoerregistratie in het experiment.
-* __ScriptRunConfig__ - logboekregistratiefuncties toevoegen aan uw trainingsscript en laden van de gehele script-map met de uitvoering.  **ScriptRunConfig** is een klasse voor het instellen van configuraties voor het script wordt uitgevoerd. Met deze optie kunt u de code voor bewaking om te worden geïnformeerd over voltooiing of het opvragen van een visual widget voor het bewaken van toevoegen.
+Als u uw experiment wilt bijhouden of controleren, moet u code toevoegen om logboek registratie te starten wanneer u de uitvoering verzendt. Hier volgen enkele manieren om het indienen van de uitvoering te activeren:
+* __Run. start_logging__ : Voeg logboek functies toe aan uw trainings script en start een interactieve logboek registratie sessie in het opgegeven experiment. **start_logging** maakt een interactieve uitvoering voor gebruik in scenario's zoals notebooks. Alle metrische gegevens die tijdens de sessie zijn geregistreerd, worden toegevoegd aan de run-record in het experiment.
+* __ScriptRunConfig__ : Voeg logboek registratie functies toe aan uw trainings script en laad de volledige map met de uitvoering.  **ScriptRunConfig** is een klasse voor het instellen van configuraties voor script uitvoeringen. Met deze optie kunt u een bewakings code toevoegen om op de hoogte te worden gesteld, of om een visuele widget te laten bewaken.
 
-## <a name="set-up-the-workspace"></a>Instellen van de werkruimte
-Voordat u logboekregistratie en het verzenden van een experiment toevoegt, moet u de werkruimte instellen.
+## <a name="set-up-the-workspace"></a>De werk ruimte instellen
+Voordat u logboek registratie toevoegt en een experiment verzendt, moet u de werk ruimte instellen.
 
-1. Laden van de werkruimte. Zie [werkruimte configuratie bestand](how-to-configure-environment.md#workspace)voor meer informatie over het instellen van de configuratie van de werk ruimte.
+1. Laad de werk ruimte. Zie [werkruimte configuratie bestand](how-to-configure-environment.md#workspace)voor meer informatie over het instellen van de configuratie van de werk ruimte.
 
    ```python
    from azureml.core import Experiment, Run, Workspace
@@ -61,13 +61,13 @@ Voordat u logboekregistratie en het verzenden van een experiment toevoegt, moet 
    ws = Workspace.from_config()
    ```
   
-## <a name="option-1-use-start_logging"></a>Optie 1: Start_logging gebruiken
+## <a name="option-1-use-start_logging"></a>Optie 1: gebruik start_logging
 
-**start_logging** maakt u een interactieve uitvoeren voor gebruik in scenario's zoals laptops. Alle metrische gegevens die zijn vastgelegd tijdens de sessie worden toegevoegd aan de uitvoerregistratie in het experiment.
+**start_logging** maakt een interactieve uitvoering voor gebruik in scenario's zoals notebooks. Alle metrische gegevens die tijdens de sessie zijn geregistreerd, worden toegevoegd aan de run-record in het experiment.
 
-Het volgende voorbeeld traint een eenvoudig model sklearn Ridge lokaal in een lokaal Jupyter-notitieblok. Zie [Compute-doelen voor model training instellen met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)voor meer informatie over het verzenden van experimenten voor verschillende omgevingen.
+In het volgende voor beeld wordt een eenvoudig gesklearne Ploois model lokaal in een lokale Jupyter-notebook getraind. Zie [Compute-doelen voor model training instellen met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)voor meer informatie over het verzenden van experimenten voor verschillende omgevingen.
 
-1. Maak een trainingsscript in een lokaal Jupyter-notitieblok. 
+1. Een trainings script maken in een lokale Jupyter-notebook. 
 
    ```python
    # load diabetes dataset, a well-known small dataset that comes with scikit-learn
@@ -91,7 +91,7 @@ Het volgende voorbeeld traint een eenvoudig model sklearn Ridge lokaal in een lo
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Voeg experiment tracking toe met behulp van de Azure Machine Learning SDK en upload een persistent model in de record experiment run. De volgende code wordt toegevoegd tags, Logboeken, en wordt een modelbestand geüpload naar het experiment uitvoeren.
+2. Voeg experiment tracking toe met behulp van de Azure Machine Learning SDK en upload een persistent model in de record experiment run. Met de volgende code worden tags, logboeken en uploads van een model bestand naar de uitvoering van het experiment toegevoegd.
 
    ```python
     # Get an experiment object from Azure Machine Learning
@@ -123,15 +123,15 @@ Het volgende voorbeeld traint een eenvoudig model sklearn Ridge lokaal in een lo
     run.complete()
    ```
 
-    Het script wordt beëindigd met ```run.complete()```, die de uitvoering wordt gemarkeerd als voltooid.  Deze functie wordt meestal gebruikt in interactieve scenario's.
+    Het script eindigt op ```run.complete()```, wat aangeeft dat de uitvoering is voltooid.  Deze functie wordt doorgaans gebruikt in scenario's met interactieve laptops.
 
-## <a name="option-2-use-scriptrunconfig"></a>Optie 2: ScriptRunConfig gebruiken
+## <a name="option-2-use-scriptrunconfig"></a>Optie 2: gebruik ScriptRunConfig
 
-[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) is een klasse voor het instellen van configuraties voor script uitvoeringen. Met deze optie kunt u de code voor bewaking om te worden geïnformeerd over voltooiing of het opvragen van een visual widget voor het bewaken van toevoegen.
+[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) is een klasse voor het instellen van configuraties voor script uitvoeringen. Met deze optie kunt u een bewakings code toevoegen om op de hoogte te worden gesteld, of om een visuele widget te laten bewaken.
 
-In dit voorbeeld is een vervolg op het basismodel sklearn Ridge van boven. Hiervoor wordt een eenvoudige parameter vegen te vegen via alpha-waarden van het model om vast te leggen metrische gegevens en getrainde modellen in wordt uitgevoerd onder het experimentcanvas. Het voorbeeld lokaal wordt uitgevoerd op basis van een gebruiker beheerde omgeving. 
+In dit voor beeld wordt het sklearn-model van de bovenstaande basis uitgebreid. Het biedt een eenvoudige parameter opruiming voor het opruimen van de alfa waarden van het model voor het vastleggen van metrische gegevens en getrainde modellen in uitvoeringen onder het experiment. Het voor beeld wordt lokaal uitgevoerd op een door de gebruiker beheerde omgeving. 
 
-1. Een trainings script `train.py`maken.
+1. Een trainings script maken `train.py`.
 
    ```python
    # train.py
@@ -185,7 +185,7 @@ In dit voorbeeld is een vervolg op het basismodel sklearn Ridge van boven. Hierv
   
    ```
 
-2. De `train.py` script verwijzingen `mylib.py` waarmee u de lijst met alfa waarden kunt ophalen voor gebruik in het ploois model.
+2. Het `train.py` script verwijst naar `mylib.py` waarmee u de lijst met alfa waarden kunt ophalen die in het ploois model kunnen worden gebruikt.
 
    ```python
    # mylib.py
@@ -197,7 +197,7 @@ In dit voorbeeld is een vervolg op het basismodel sklearn Ridge van boven. Hierv
       return np.arange(0.0, 1.0, 0.05)
    ```
 
-3. Configureer een beheerde gebruiker lokale omgeving.
+3. Configureer een door de gebruiker beheerde lokale omgeving.
 
    ```python
    from azureml.core import Environment
@@ -211,7 +211,7 @@ In dit voorbeeld is een vervolg op het basismodel sklearn Ridge van boven. Hierv
    #user_managed_env.python.interpreter_path = '/home/johndoe/miniconda3/envs/myenv/bin/python'
    ```
 
-4. Dien de ```train.py``` script uit te voeren in de gebruiker beheerde omgeving. Deze scriptmap gehele wordt ingediend voor de training, met inbegrip van de ```mylib.py``` bestand.
+4. Dien het ```train.py```-script in om uit te voeren in de door de gebruiker beheerde omgeving. Deze hele script-map wordt verzonden voor training, inclusief het ```mylib.py```-bestand.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -226,19 +226,19 @@ In dit voorbeeld is een vervolg op het basismodel sklearn Ridge van boven. Hierv
 
 In het [Start-, controle-en annulerings artikel over training worden](how-to-manage-runs.md) specifieke Azure machine learning werk stromen gemarkeerd voor het beheren van uw experimenten.
 
-## <a name="view-run-details"></a>Details van de uitvoering weergeven
+## <a name="view-run-details"></a>Details van uitvoering weer geven
 
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>Bewaking uitvoeren met Jupyter notebook-widget
 Wanneer u de methode **ScriptRunConfig** gebruikt om uitvoeringen te verzenden, kunt u de voortgang van de uitvoering met een [Jupyter-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)bekijken. Net als het indienen van de run, is de widget asynchroon en biedt deze elke 10-15 seconden live updates totdat de taak is voltooid.
 
-1. Bekijk de Jupyter-widget tijdens het wachten op voor het uitvoeren om te voltooien.
+1. Bekijk de widget Jupyter tijdens het wachten tot de uitvoering is voltooid.
 
    ```python
    from azureml.widgets import RunDetails
    RunDetails(run).show()
    ```
 
-   ![Schermafbeelding van de Jupyter-notebook widget](./media/how-to-track-experiments/run-details-widget.png)
+   ![Scherm opname van Jupyter notebook-widget](./media/how-to-track-experiments/run-details-widget.png)
 
 U kunt ook een koppeling naar dezelfde weer gave in uw werk ruimte ophalen.
 
@@ -246,7 +246,7 @@ U kunt ook een koppeling naar dezelfde weer gave in uw werk ruimte ophalen.
 print(run.get_portal_url())
 ```
 
-2. **[Voor geautomatiseerde machine learning-uitvoeringen]**  Voor toegang tot de grafieken van een vorige uitvoering. Vervang `<<experiment_name>>` door de juiste naam van het experiment:
+2. **[Voor automatische machine learning uitvoeringen]** Om toegang te krijgen tot de grafieken van een vorige uitvoering. Vervang `<<experiment_name>>` door de juiste naam van het experiment:
 
    ``` 
    from azureml.widgets import RunDetails
@@ -258,58 +258,58 @@ print(run.get_portal_url())
    RunDetails(run).show()
    ```
 
-   ![Jupyter notebook widget voor geautomatiseerde Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![Jupyter notebook-widget voor automatische Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-Om verdere details van een pijplijn-Klik op de pijplijn weer te geven u graag zou willen verkennen in de tabel en de grafieken worden weergegeven in een pop-upvenster vanuit Azure portal.
+Als u meer details van een pijp lijn wilt weer geven, klikt u op de pijp lijn die u wilt verkennen in de tabel. de grafieken worden weer gegeven in een pop-up van de Azure Portal.
 
 ### <a name="get-log-results-upon-completion"></a>Resultaten van logboeken weergeven bij voltooiing
 
-Model trainen en bewaking optreden op de achtergrond, zodat u andere taken uitvoeren kunt terwijl u wacht. U kunt ook wachten totdat het model opleiding vóór het uitvoeren van meer code is voltooid. Bij het gebruik **ScriptRunConfig**, kunt u ```run.wait_for_completion(show_output = True)``` om weer te geven wanneer het trainen van het model is voltooid. De ```show_output``` vlag biedt uitgebreide uitvoer. 
+Model training en-bewaking vindt plaats op de achtergrond, zodat u andere taken kunt uitvoeren terwijl u wacht. U kunt ook wachten tot het model training heeft voltooid voordat u meer code uitvoert. Wanneer u **ScriptRunConfig**gebruikt, kunt u ```run.wait_for_completion(show_output = True)``` gebruiken om te laten zien wanneer de model training is voltooid. De vlag ```show_output``` biedt uitgebreide uitvoer. 
 
 
-### <a name="query-run-metrics"></a>Uitvoering van metrische gegevens van de query
+### <a name="query-run-metrics"></a>Metrische gegevens van query uitvoeren
 
-U kunt de metrische gegevens van het gebruik van een getraind model weergeven ```run.get_metrics()```. U kunt nu alle van de metrische gegevens die zijn geregistreerd in het voorbeeld hierboven om te bepalen van het beste model krijgen.
+U kunt de metrische gegevens van een getraind model weer geven met behulp van ```run.get_metrics()```. U kunt nu alle metrische gegevens ophalen die zijn vastgelegd in bovenstaand voor beeld om het beste model te bepalen.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Bekijk het experiment in de Azure Portal of de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com)
 
-Wanneer een experiment is voltooid, kunt u bladeren naar de vastgelegde experiment record worden uitgevoerd. U kunt de geschiedenis op twee manieren openen:
+Wanneer een experiment is uitgevoerd, kunt u bladeren naar de record voor het uitvoeren van opgenomen experimenten. U kunt de geschiedenis op twee manieren openen:
 
-* Ophalen van de URL van de uitvoering rechtstreeks ```print(run.get_portal_url())```
-* Details van de uitvoering weergeven door in te dienen de naam van de uitvoering (in dit geval ```run```). Op deze manier verwijst u naar de naam van het experiment, -ID, type, status, de pagina met details, een koppeling naar de Azure-portal en een koppeling naar de documentatie.
+* De URL naar de uitvoering rechtstreeks ophalen ```print(run.get_portal_url())```
+* Bekijk de details van de uitvoering door de naam van de uitvoeringsrun (in dit geval ```run```) in te dienen. Op deze manier wijst u naar de naam van het experiment, de ID, het type, de status, de detail pagina, een koppeling naar de Azure Portal en een koppeling naar de documentatie.
 
-De koppeling voor de uitvoering biedt u rechtstreeks naar de pagina de details van uitvoering in Azure portal. Hier ziet u alle eigenschappen, bijgehouden metrische gegevens, afbeeldingen en grafieken die zijn vastgelegd in het experiment. In dit geval geregistreerd we MSE en het alpha-waarden.
+Met de koppeling voor de uitvoering brengt u rechtstreeks naar de pagina Details uitvoeren in de Azure Portal. Hier ziet u alle eigenschappen, bijgehouden metrische gegevens, afbeeldingen en grafieken die zijn geregistreerd in het experiment. In dit geval hebben we de MSE en de alpha-waarden geregistreerd.
 
-  ![Details van de uitvoering in Azure portal](./media/how-to-track-experiments/run-details-page.png)
+  ![Details uitvoeren in de Azure Portal](./media/how-to-track-experiments/run-details-page.png)
 
-U kunt ook eventuele uitvoer of de logboeken voor de uitvoering weergeven of downloaden van de momentopname van het experiment dat u hebt verzonden, zodat u de map experiment met anderen kunt delen.
+U kunt ook uitvoer of logboeken bekijken voor de uitvoering, of de moment opname van het experiment downloaden dat u hebt verzonden, zodat u de map experiment met anderen kunt delen.
 
-### <a name="viewing-charts-in-run-details"></a>Grafieken weergeven in de details van uitvoering
+### <a name="viewing-charts-in-run-details"></a>Grafieken weer geven in details van uitvoering
 
-Er zijn verschillende manieren voor het gebruik van de logboekregistratie van API's gebruiken voor andere recordtypen van metrische gegevens tijdens een uitvoering en deze weergeven als grafieken in Azure portal. 
+Er zijn verschillende manieren om de logboek registratie-Api's te gebruiken voor het vastleggen van verschillende soorten metrische gegevens tijdens een uitvoering en om ze weer te geven als grafieken in de Azure Portal. 
 
-|Geregistreerde waarde|Voorbeeldcode| Weergeven in portal|
+|Geregistreerde waarde|Voorbeeld code| Weer geven in de portal|
 |----|----|----|
-|Meld u een matrix met numerieke waarden| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|één variabele lijndiagram weer te geven|
-|Meld u één numerieke waarde met dezelfde metrische naam herhaaldelijk gebruikt (zoals vanuit een for-lus)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| één variabele lijndiagram weer te geven|
-|Meld u een rij met 2 numerieke kolommen herhaaldelijk|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Twee variabelen lijndiagram weer te geven|
-|Logboektabel met 2 numerieke kolommen|`run.log_table(name='Sine Wave', value=sines)`|Twee variabelen lijndiagram weer te geven|
+|Een matrix met numerieke waarden vastleggen in een logboek| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|lijn diagram met één variabele|
+|Een enkele numerieke waarde met dezelfde metrische naam in het logboek vastleggen, herhaaldelijk gebruikt (bijvoorbeeld van binnen een for-lus)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Lijn diagram met één variabele|
+|Een rij met 2 numerieke kolommen herhaaldelijk vastleggen|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Lijn diagram met twee variabelen|
+|Logboek tabel met 2 numerieke kolommen|`run.log_table(name='Sine Wave', value=sines)`|Lijn diagram met twee variabelen|
 
 
-## <a name="example-notebooks"></a>Voorbeeld-laptops
-De volgende notebooks illustratie van concepten in dit artikel:
-* [How-to-use-azureml/training/Train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [How-to-use-azureml/training/Train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
-* [How-to-use-azureml/training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
+## <a name="example-notebooks"></a>Voorbeeld notitieblokken
+In de volgende notitie blokken worden concepten in dit artikel gedemonstreerd:
+* [instructies-to-use-azureml/training/training-binnen-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
+* [instructies-to-use-azureml/training/trein-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-azureml/training/logging-API/logging-API. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de volgende stappen voor informatie over het gebruik van de Azure Machine Learning-SDK voor Python:
+Voer de volgende stappen uit om te leren hoe u de Azure Machine Learning SDK voor python kunt gebruiken:
 
-* Bekijk een voorbeeld van hoe u het beste model registreren en deze implementeren in de zelfstudie [een model van de installatiekopie classificatie met Azure Machine Learning te trainen](tutorial-train-models-with-aml.md).
+* Bekijk een voor beeld van hoe u het beste model registreert en implementeert in de zelf studie, [een classificatie model voor installatie kopieën traint met Azure machine learning](tutorial-train-models-with-aml.md).
 
-* Meer informatie over het [PyTorch-modellen met Azure Machine Learning te trainen](how-to-train-pytorch.md).
+* Meer informatie over het [trainen van PyTorch-modellen met Azure machine learning](how-to-train-pytorch.md).

@@ -8,19 +8,21 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: f87e1a7893fa8c2ea22711f90696a5d2836eb3ac
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 8272764e967fccfbfa88d54e688f9d7aaf4e0917
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965613"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027688"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central-app-architectuur voor slimme meter
 
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 Dit artikel bevat een overzicht van de app-sjabloon architectuur voor het bewaken van slimme meters. In het onderstaande diagram ziet u een veelgebruikte architectuur voor slimme meter-app op Azure met behulp van IoT Central-platform.
 
-> [!div class="mx-imgBorder"]
-> architectuur van de ![slimme meter](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
+[!div class="mx-imgBorder"]
+architectuur van de ![slimme meter](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
 
 Deze architectuur bestaat uit de volgende onderdelen. Voor sommige oplossingen is het niet vereist dat elk onderdeel hier wordt vermeld.
 

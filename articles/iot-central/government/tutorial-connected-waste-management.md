@@ -7,14 +7,17 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9af8a94953d7893c71cfc413f9259ec8582a8899
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a0bf3b555334b67659975c150711eab02b957c6e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955149"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026604"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelf studie: een verbonden afval beheer toepassing maken in IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 In deze zelf studie wordt u begeleid bij het maken van een met Azure IoT Central verbonden afval beheer toepassing vanuit de sjabloon IoT Central **verbonden afval beheer** toepassing. 
 
 In deze zelf studie leert u het volgende: 
@@ -45,7 +48,7 @@ Een nieuwe Azure IoT Central-toepassing voor het beheer van verbonden afval make
 
     ![Voer uw organisatieaccount in](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-2. Klik op **Build** in het navigatie menu links en selecteer het tabblad **Government** . Op de pagina Government worden verschillende Government-toepassings sjablonen weer gegeven.
+2. Klik op **Build** in het linkerdeel venster en selecteer het tabblad **Government** . Op de pagina Government worden verschillende Government-toepassings sjablonen weer gegeven.
 
     ![Sjablonen voor Government-apps bouwen](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
@@ -255,8 +258,8 @@ Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervari
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u uw toepassing met de volgende stappen:
 
-1. Open het tabblad beheer vanuit het navigatie menu aan de linkerkant van uw IoT Central-toepassing. 
-2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen. 
+1. Open het tabblad beheer in het linkerdeel venster van uw IoT Central-toepassing.
+2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen.
 
   
 

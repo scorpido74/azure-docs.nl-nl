@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 66a972e66c35cdd5b8dedceefbe3dbd008380da9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b48384b8333a5affc76d8af8e057bd911f14068b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327143"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043494"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
@@ -140,7 +140,7 @@ Azure Cosmos DB ondersteunt de volgende databaseopdrachten op Cassandra-API-acco
 * BATCH - alleen niet-geregistreerde opdrachten worden ondersteund 
 * DELETE
 
-Alle ruwe bewerkingen die worden uitgevoerd via een met CQLV4 compatibele SDK, retour neren extra informatie over de fout, verbruikte aanvraag eenheden. Verwijder-en update-opdrachten moeten worden afgehandeld met resource governance om te voor komen dat de ingerichte door Voer wordt gebruikt. 
+Alle ruwe bewerkingen die worden uitgevoerd via een met CQLV4 compatibele SDK, retour neren extra informatie over de fout, verbruikte aanvraag eenheden. Verwijder-en update-opdrachten moeten worden afgehandeld met resource governance, om ervoor te zorgen dat het juiste gebruik van ingerichte door Voer wordt gewaarborgd. 
 * Let wel: de waarde gc_grace_seconds moet nul zijn als deze is opgegeven.
 
 ```csharp

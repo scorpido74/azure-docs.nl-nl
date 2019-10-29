@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: e3a8a537ae8c971119cfd08fbf80dc169df1d384
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f1759bd2cc82073378c5668682f4cecf8482c2d3
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619304"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042262"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Zelf-beheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken
 
@@ -94,9 +94,9 @@ Op een met Azure AD toegevoegde of geregistreerde apparaten gebeurt de verificat
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Apparaat beheerd door            | Azure AD                                            | Beheerd domein door Azure AD DS                                                |
 | Vertegenwoordiging in de Directory | Apparaatgroepen in de Azure AD-adres lijst            | Computer objecten in het door Azure AD DS beheerde domein                        |
-| Authentication                  | Op OAuth/OpenID Connect Connect gebaseerde protocollen              | Kerberos-en NTLM-protocollen                                               |
-| Beheer                      | MDM-software (Mobile Device Management), zoals intune | Groepsbeleid                                                              |
-| Netwerken                      | Werkt via Internet                             | Computers moeten zich in hetzelfde virtuele netwerk behoeven als het beheerde domein |
+| Verificatie                  | Op OAuth/OpenID Connect Connect gebaseerde protocollen              | Kerberos-en NTLM-protocollen                                               |
+| Beheer                      | MDM-software (Mobile Device Management), zoals intune | groepsbeleid                                                              |
+| Networking                      | Werkt via Internet                             | Moet zijn verbonden met of moeten worden gekoppeld aan het virtuele netwerk waarop het beheerde domein is geïmplementeerd |
 | Geweldig voor...                    | Mobiele of desktop apparaten voor eind gebruikers                  | Server-Vm's die zijn geïmplementeerd in azure                                              |
 
 ## <a name="next-steps"></a>Volgende stappen

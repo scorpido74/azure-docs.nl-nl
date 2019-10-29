@@ -8,19 +8,22 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 61a2b00bee7b16e3cc62a010ca454466cb0292a0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: bf109d91582bc08a3922d8c84e9ffab904dbb94c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965588"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026781"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Architectuur van Azure IoT Central-zonne paneel-app
 
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
+
 Dit artikel bevat een overzicht van de architectuur van de sjabloon voor het bewaken van het zonne deel venster. In het onderstaande diagram ziet u een veelgebruikte architectuur voor een zonne-panel toepassing op Azure met behulp van IoT Central-platform.
 
-> [!div class="mx-imgBorder"]
-> architectuur van de ![slimme meter](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
+[!div class="mx-imgBorder"]
+architectuur van de ![slimme meter](media/concept-iot-central-solar-panel/solar-panel-app-architecture.png)
 
 Deze architectuur bestaat uit de volgende onderdelen. Voor sommige toepassingen zijn mogelijk niet alle hier vermelde onderdelen nodig.
 

@@ -11,14 +11,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: fb92e882607575e99ae800bd9c6d7c36b5d89d8e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034512"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025602"
 ---
-# <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Zelfstudie: Geautomatiseerde werk stromen op basis van goed keuring maken met behulp van Azure Logic Apps
+# <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Zelf studie: geautomatiseerde werk stromen op basis van goed keuring maken met behulp van Azure Logic Apps
 
 Deze zelf studie laat zien hoe u een [logische app](../logic-apps/logic-apps-overview.md) bouwt die een werk stroom op basis van goed keuring automatiseert. Met name worden met deze logische app abonnements aanvragen verwerkt voor een adressen lijst die wordt beheerd door de [MailChimp](https://mailchimp.com/) -service. Deze logische app bewaakt een e-mailaccount voor deze aanvragen, verzendt deze aanvragen voor goedkeuring en voegt goedgekeurde leden toe aan de adressenlijst.
 
@@ -61,14 +61,14 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **Name** | LA-MailingList | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) mag bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-MailingList '. |
+   | **Naam** | LA-MailingList | De naam van uw logische app, die alleen letters, cijfers, afbreek streepjes (`-`), onderstrepings tekens (`_`), haakjes (`(`, `)`) en punten (`.`) kan bevatten. In dit voor beeld wordt gebruikgemaakt van ' LA-MailingList '. |
    | **Abonnement** | <*your-Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | LA-MailingList-RG | De naam voor de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md), die wordt gebruikt om verwante resources te organiseren. In dit voor beeld wordt ' LA-MailingList-RG ' gebruikt. |
-   | **Location** | US - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
+   | **Locatie** | VS - west | De tKan-regio waar de logische app-gegevens moeten worden opgeslagen. In dit voor beeld wordt ' West US ' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
-1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen** > **gaat u naar de resource** voor uw geïmplementeerde logische app.
+1. Nadat Azure uw app heeft geïmplementeerd, selecteert u op de Azure-werk balk **meldingen**  > **gaat u naar de resource** voor uw geïmplementeerde logische app.
 
    ![Ga naar de nieuwe logische app-resource](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
@@ -82,7 +82,7 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
 
 ## <a name="add-trigger-to-monitor-emails"></a>Trigger voor het bewaken van e-mailberichten toevoegen
 
-1. Typ `when email arrives` als filter in het zoekvak van de Logic app-ontwerp functie. Selecteer in de lijst **Triggers** de trigger **wanneer er een nieuwe e-mail binnenkomt** voor uw e-mail provider.
+1. Voer in de ontwerp functie voor logische apps in het zoekvak `when email arrives` in als uw filter. Selecteer in de lijst **Triggers** de trigger **wanneer er een nieuwe e-mail binnenkomt** voor uw e-mail provider.
 
    In dit voor beeld wordt de Office 365 Outlook-trigger gebruikt:
 
@@ -99,7 +99,7 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
 
       ![Geef map, interval en frequentie voor het controleren van e-mails op](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Eigenschap | Waarde | Description |
+      | Eigenschap | Waarde | Beschrijving |
       |----------|-------|-------------|
       | **Map** | `Inbox` | De te bewaken e-mailmap |
       | **Interval** | `1` | Het aantal intervallen dat tussen controles moet worden gewacht |
@@ -112,7 +112,7 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
 
       Meer informatie over de eigenschappen van deze trigger vindt u in de naslag gids voor [Office 365 Outlook-Connector](https://docs.microsoft.com/connectors/office365/) of de [Outlook.com-connector](https://docs.microsoft.com/connectors/outlook/).
 
-   1. Nadat de eigenschap in de trigger wordt weer gegeven, voert u de volgende tekst in: `subscribe-test-members-ML`
+   1. Nadat de eigenschap in de trigger wordt weer gegeven, voert u deze tekst in: `subscribe-test-members-ML`
 
       ![Voer tekst in voor de eigenschap "subject filter"](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
@@ -140,10 +140,10 @@ Nu u een trigger hebt, kunt u een [actie](../logic-apps/logic-apps-overview.md#l
 
    ![E-mail eigenschappen voor goed keuring verzenden](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | Eigenschap | Waarde | Description |
+   | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
-   | **To** | <*uw-e-mailadres*> | Het e-mailadres van de fiatteur. Voor testdoeleinden kunt u uw eigen adres gebruiken. In dit voor beeld wordt het fictieve e-mail adres ' sophia.owen@fabrikam.com ' gebruikt. |
-   | **Subject** | `Approve member request for test-members-ML` | Een beschrijvend e-mailonderwerp |
+   | **Aan** | <*uw-e-mailadres*> | Het e-mailadres van de fiatteur. Voor testdoeleinden kunt u uw eigen adres gebruiken. In dit voor beeld wordt het fictieve e-mail adres 'sophia.owen@fabrikam.com' gebruikt. |
+   | **Onderwerp** | `Approve member request for test-members-ML` | Een beschrijvend e-mailonderwerp |
    | **Gebruikersopties** | `Approve, Reject` | De antwoord opties die de goed keurder kan selecteren. Standaard kan de goed keurder ofwel ' goed keuren ' of ' afwijzen ' selecteren als antwoord. |
    ||||
 
@@ -207,11 +207,11 @@ Voeg nu een actie toe waarmee het goedgekeurde lid wordt toegevoegd aan uw adres
 
    ![Informatie opgeven voor 'Add member to list'](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | **List Id (Lijst-id)** | Ja | `test-members-ML` | De naam voor uw MailChimp-adressen lijst. In dit voor beeld wordt gebruikgemaakt van ' test-members-ML '. |
    | **Status** | Ja | `subscribed` | Selecteer de abonnements status voor het nieuwe lid. In dit voor beeld wordt gebruikgemaakt van ' geabonneerd '. <p>Zie voor meer informatie [Manage subscribers with the MailChimp API (Abonnees beheren met de MailChimp-API)](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
-   | **Email Address (E-mailadres)** | Ja | <*new-member-email-address*> | Selecteer in de lijst met dynamische inhoud **van** onder **wanneer er een nieuwe e-mail binnenkomt**, die het e-mail adres voor het nieuwe lid doorgeeft. |
+   | **Email Address (E-mailadres)** | Ja | <*e-mailadres-nieuw-lid*> | Selecteer in de lijst met dynamische inhoud **van** onder **wanneer er een nieuwe e-mail binnenkomt**, die het e-mail adres voor het nieuwe lid doorgeeft. |
    ||||
 
    Meer informatie over de eigenschappen van deze actie vindt u in de [MailChimp-connector verwijzing](https://docs.microsoft.com/connectors/mailchimp/).
@@ -262,11 +262,11 @@ Stel vervolgens de e-mailberichten in die moeten worden verzonden als het goedge
 
    ![Informatie opgeven voor e-mail bij succes](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **To** | Ja | <*uw-e-mailadres*> | Het e-mailadres waarnaar het bericht bij succes moet worden verzonden. Voor testdoeleinden kunt u uw eigen e-mailadres gebruiken. |
-   | **Subject** | Ja | <*subject-for-success-email*> | Het onderwerp voor het e-mailbericht bij succes. Voer voor deze zelfstudie deze tekst in: <p>`Success! Member added to "test-members-ML": ` <p>Selecteer in de lijst dynamische inhoud onder **lid toevoegen aan lijst**de eigenschap **e-mail adres** . |
-   | **Hoofdtekst** | Ja | <*hoofdtekst-voor-succes-e-mail*> | De hoofdtekst voor het e-mailbericht bij succes. Voer voor deze zelfstudie deze tekst in: <p>`New member has joined "test-members-ML":` <p>Selecteer in de lijst met dynamische inhoud de eigenschap **e-mail adres** . <p>Voer in de volgende rij deze tekst in: `Member opt-in status: ` <p> Selecteer de eigenschap **status** in de lijst met dynamische inhoud onder **lid toevoegen aan lijst**. |
+   | **Aan** | Ja | <*uw-e-mailadres*> | Het e-mailadres waarnaar het bericht bij succes moet worden verzonden. Voor testdoeleinden kunt u uw eigen e-mailadres gebruiken. |
+   | **Onderwerp** | Ja | <*onderwerp-voor-succes-e-mail*> | Het onderwerp voor het e-mailbericht bij succes. Voer voor deze zelfstudie deze tekst in: <p>`Success! Member added to "test-members-ML": ` <p>Selecteer in de lijst dynamische inhoud onder **lid toevoegen aan lijst**de eigenschap **e-mail adres** . |
+   | **Hoofdtekst** | Ja | <*hoofdtekst-voor-succes-e-mail*> | De hoofdtekst voor het e-mailbericht bij succes. Voer voor deze zelfstudie deze tekst in: <p>`New member has joined "test-members-ML":` <p>Selecteer in de lijst met dynamische inhoud de eigenschap **e-mail adres** . <p>Voer deze tekst in op de volgende rij: `Member opt-in status: ` <p> Selecteer de eigenschap **status** in de lijst met dynamische inhoud onder **lid toevoegen aan lijst**. |
    |||||
 
 1. Sla uw logische app op.
@@ -287,10 +287,10 @@ Stel vervolgens de e-mailberichten in die moeten worden verzonden als het goedge
 
    ![Informatie opgeven voor e-mail bij mislukken](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Verplicht | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **To** | Ja | <*uw-e-mailadres*> | Het e-mailadres waarnaar het bericht bij mislukken moet worden verzonden. Voor testdoeleinden kunt u uw eigen e-mailadres gebruiken. |
-   | **Subject** | Ja | <*subject-for-failure-email*> | Het onderwerp voor het e-mailbericht bij mislukken. Voer voor deze zelfstudie deze tekst in: <p>`Failed, member not added to "test-members-ML": ` <p>Selecteer in de lijst dynamische inhoud onder **lid toevoegen aan lijst**de eigenschap **e-mail adres** . |
+   | **Aan** | Ja | <*uw-e-mailadres*> | Het e-mailadres waarnaar het bericht bij mislukken moet worden verzonden. Voor testdoeleinden kunt u uw eigen e-mailadres gebruiken. |
+   | **Onderwerp** | Ja | <*onderwerp-voor-e-mail-bij-mislukken*> | Het onderwerp voor het e-mailbericht bij mislukken. Voer voor deze zelfstudie deze tekst in: <p>`Failed, member not added to "test-members-ML": ` <p>Selecteer in de lijst dynamische inhoud onder **lid toevoegen aan lijst**de eigenschap **e-mail adres** . |
    | **Hoofdtekst** | Ja | <*hoofdtekst-voor-e-mail-bij-mislukken*> | De hoofdtekst voor het e-mailbericht bij mislukken. Voer voor deze zelfstudie deze tekst in: <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 

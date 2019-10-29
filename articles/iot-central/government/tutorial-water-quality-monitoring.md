@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: c2e68e83999ace4094d060a21e91b87347b03e9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 94e8695e01ca5e5c456ce230c4cc84b41685fd9c
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955107"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73026532"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-iot-central"></a>Zelf studie: een toepassing voor het controleren van water kwaliteit maken in IoT Central
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 In deze zelf studie wordt u begeleid bij het maken van een toepassing voor het controleren van Azure IoT Central water kwaliteit vanuit de sjabloon voor het controleren van de IoT Central water kwaliteit. 
 
@@ -50,7 +52,7 @@ Een nieuwe toepassing voor het controleren van de IoT Central water kwaliteit va
 
     ![Voer uw organisatieaccount in](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-2. Klik op **Build** in het navigatie menu links en selecteer het tabblad **Government** . Op de pagina Government worden verschillende Government-toepassings sjablonen weer gegeven.
+2. Klik op **Build** in het linkerdeel venster en selecteer het tabblad **Government** . Op de pagina Government worden verschillende Government-toepassings sjablonen weer gegeven.
 
     ![Sjablonen voor Government-apps bouwen](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
@@ -254,8 +256,8 @@ Als ontwerper kunt u verschillende instellingen wijzigen om de gebruikers ervari
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u uw toepassing met de volgende stappen:
 
-1. Open het tabblad beheer vanuit het navigatie menu aan de linkerkant van uw IoT Central-toepassing. 
-2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen. 
+1. Open het tabblad beheer in het linkerdeel venster van uw IoT Central-toepassing.
+2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen.
 
     ![Toepassing verwijderen](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)        
 

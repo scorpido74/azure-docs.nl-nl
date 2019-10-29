@@ -9,16 +9,16 @@ ms.author: karler
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: fc6ccaae698043db631c7724c6aabbca16f4328f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: de21791e1ae11554f7a57c17c3935c0993bea1f9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172845"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025366"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Quickstart: Het uploaden, vermelden en verwijderen van blobs met behulp van Azure Storage V10 toevoegen SDK voor Java script/HTML in de browser
+# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Quick Start: blobs uploaden, vermelden en verwijderen met behulp van Azure Storage V10 toevoegen SDK voor Java script/HTML in de browser
 
 In deze Quick Start leert u de [Azure Storage SDK V10 toevoegen voor Java script-BLOB](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) Library te gebruiken voor het beheren van blobs van Java script-code die volledig in de browser wordt uitgevoerd. De hier gebruikte aanpak toont hoe u de vereiste beveiligingsmaatregelen dient te gebruiken om verzekerd te zijn van beveiligde toegang tot uw blobopslagaccount.
 
@@ -40,9 +40,9 @@ Ga terug naar Azure Portal en selecteer uw opslagaccount. Als u een nieuwe CORS-
 
 In de volgende tabel worden alle CORS-instellingen beschreven en de waarden voor het definiëren van de regel uitgelegd.
 
-|Instelling  |Value  | Description |
+|Instelling  |Waarde  | Beschrijving |
 |---------|---------|---------|
-| Toegestane oorsprong | * | Accepteert een door komma's gescheiden lijst met domeinen die als acceptabele oorsprongen zijn ingesteld. Als de waarde wordt ingesteld op `*`, hebben alle domeinen toegang tot het opslagaccount. |
+| Toegestane oorsprongen | * | Accepteert een door komma's gescheiden lijst met domeinen die als acceptabele oorsprongen zijn ingesteld. Als de waarde wordt ingesteld op `*`, hebben alle domeinen toegang tot het opslagaccount. |
 | Toegestane bewerkingen     | delete, get, head, merge, post, options en put | Vermeldt de HTTP-bewerkingen die zijn toegestaan om voor het opslagaccount te worden uitgevoerd. Voor deze snelstart selecteert u alle beschikbare opties. |
 | Toegestane headers | * | Definieert een lijst met aanvraagheaders (inclusief headers met een voorvoegsel) die door het opslagaccount zijn toegestaan. Als de waarde wordt ingesteld op `*`, hebben alle headers toegang. |
 | Weergegeven headers | * | Vermeldt de door het account toegestane antwoordheaders. Als de waarde wordt ingesteld op `*`, kan het account elke header verzenden.  |
@@ -61,7 +61,7 @@ Shared Access Signature (handtekening voor gedeelde toegang, SAS) wordt gebruikt
 
 U kunt een SAS maken met behulp van de Azure CLI via de Azure Cloud shell of met de Azure Portal of Azure Storage Explorer. In de volgende tabel worden de para meters beschreven die u moet opgeven om een SAS te genereren met de CLI.
 
-| Parameter      |Description  | Tijdelijke aanduiding |
+| Parameter      |Beschrijving  | Tijdelijke aanduiding |
 |----------------|-------------|-------------|
 | *expiry*       | De vervaldatum van het toegangstoken in de notatie JJJJ-MM-DD. Voer voor deze snelstart de datum van morgen in. | *FUTURE_DATE* |
 | *account-name* | De naam van het opslagaccount. Gebruik de naam die in een vorige stap is bewaard. | *YOUR_STORAGE_ACCOUNT_NAME* |
@@ -81,9 +81,9 @@ az storage account generate-sas \
 
 Mogelijk vindt u de reeks waarden na elke parameter wat cryptisch. Deze parameterwaarden zijn afkomstig van de eerste letter van hun respectieve machtiging. In de volgende tabel wordt uitgelegd waar de waarden vandaan komen:
 
-| Parameter        | Value   | Description  |
+| Parameter        | Waarde   | Beschrijving  |
 |------------------|---------|---------|
-| *machtigingen*    | racwdl  | Deze SAS staat de mogelijkheden *read*, *append*, *create*, *write*, *delete* en *list* toe. |
+| *permissions*    | racwdl  | Deze SAS staat de mogelijkheden *read*, *append*, *create*, *write*, *delete* en *list* toe. |
 | *resource-types* | sco     | De resources die waar de SAS invloed op heeft, zijn *service*, *container* en *object*. |
 | *services*       | b       | De service waar de SAS invloed op heeft is de *blob*-service. |
 
@@ -126,7 +126,7 @@ Maak eerst een nieuwe map met de naam *Azure-blobs-java script* en open deze in 
 
 Als u de uitbrei ding van de fout opsporing in VS code wilt instellen, selecteert u **fout opsporing > configuratie toevoegen...** en selecteert u vervolgens **Chrome** of **Edge**, afhankelijk van de extensie die u eerder hebt geïnstalleerd in de sectie vereisten. Met deze actie wordt een bestand *Launch. json* gemaakt en geopend in de editor.
 
-Wijzig vervolgens het bestand *Launch. json* zodat de `url` waarde `/index.html` er als volgt uitziet:
+Wijzig vervolgens het bestand *Launch. json* zodat de `url` waarde `/index.html` bevat zoals wordt weer gegeven:
 
 ```json
 {
@@ -168,27 +168,27 @@ Wanneer u wijzigingen aanbrengt in *index. html*, moet u de pagina opnieuw laden
 
 ### <a name="add-the-blob-storage-client-library"></a>De client bibliotheek voor de Blob-opslag toevoegen
 
-Als u aanroepen naar de Blob Storage API wilt inschakelen, downloadt u eerst [de Azure Storage SDK voor Java script-BLOB-client bibliotheek](https://aka.ms/downloadazurestoragejsblob), extraheert u de inhoud van de zip en plaatst u het bestand *Azure-Storage. blob. js* in de map *Azure-blobs-java script* .
+Als u aanroepen naar de Blob Storage API wilt inschakelen, downloadt u eerst [de Azure Storage SDK voor Java script-BLOB-client bibliotheek](https://aka.ms/downloadazurestoragejsblob), extraheert u de inhoud van de zip en plaatst u het bestand *Azure-Storage-blob. js* in de map *Azure-blobs-java script* .
 
-Plak vervolgens de volgende HTML-code in *index. html* na `</body>` het afsluitende label en vervang de tijdelijke aanduiding voor de opmerking.
+Plak vervolgens de volgende HTML in *index. html* na de afsluit code van `</body>`, waarbij u de tijdelijke Opmerking vervangt.
 
 ```html
-<script src="azure-storage.blob.js" charset="utf-8"></script>
+<script src="azure-storage-blob.js" charset="utf-8"></script>
 
 <script>
 // You'll add code here in the following sections.
 </script>
 ```
 
-Deze code voegt een verwijzing toe naar het script bestand en biedt een plaats voor uw eigen Java script-code. Voor deze Snelstartgids gebruiken we het script bestand *Azure-Storage. blob. js* , zodat u het kunt openen in VS code, de inhoud ervan leest en onderbrekings punten instelt. In productie moet u het bestand compact *Azure-Storage. blob. min. js* gebruiken dat ook in het zip-bestand is opgenomen.
+Deze code voegt een verwijzing toe naar het script bestand en biedt een plaats voor uw eigen Java script-code. Voor de toepassing van deze Snelstartgids gebruiken we het script bestand *Azure-Storage-blob. js* , zodat u het kunt openen in VS code, de inhoud ervan leest en onderbrekings punten instelt. In productie moet u het bestand compact *Azure-Storage. blob. min. js* gebruiken dat ook in het zip-bestand is opgenomen.
 
 U vindt meer informatie over elke Blob Storage-functie in de [referentie documentatie](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index). Sommige van de functies in de SDK zijn alleen beschikbaar in node. js of alleen beschikbaar in de browser.
 
-De code in *Azure-Storage. blob. js* exporteert een globale variabele met `azblob`de naam, die u in uw Java script-code gebruikt om toegang te krijgen tot de Blob Storage-api's.
+De code in *Azure-Storage-blob. js* exporteert een globale variabele met de naam `azblob`, die u in uw Java script-code gebruikt om toegang te krijgen tot de Blob Storage-api's.
 
 ### <a name="add-the-initial-javascript-code"></a>De eerste Java script-code toevoegen
 
-Plak vervolgens de volgende code in het `<script>` element dat in het vorige code blok wordt weer gegeven en vervang de tijdelijke aanduiding voor de opmerking.
+Plak vervolgens de volgende code in het `<script>`-element dat in het vorige code blok wordt weer gegeven en vervang de tijdelijke aanduiding voor de opmerking.
 
 ```javascript
 const createContainerButton = document.getElementById("create-container-button");
@@ -206,7 +206,7 @@ const reportStatus = message => {
 }
 ```
 
-Deze code maakt velden voor elk HTML-element dat door de volgende code wordt gebruikt en implementeert `reportStatus` een functie voor het weer geven van uitvoer.
+Deze code maakt velden voor elk HTML-element dat door de volgende code wordt gebruikt en implementeert een `reportStatus`-functie om uitvoer weer te geven.
 
 Voeg in de volgende secties elk nieuw blok van Java script-code toe na het vorige blok.
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Deze code roept de ContainerURL [maken](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) en [verwijderen](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) aan zonder een Afbrekings exemplaar te gebruiken. [](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) Voor deze Quick Start wordt ervan uitgegaan dat uw opslag account is gemaakt en is ingeschakeld. Gebruik in productie code een Afbrekings instantie om een time-outfunctie toe te voegen.
+Deze code roept de ContainerURL [maken](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) en [verwijderen](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) aan zonder een [Afbrekings](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) exemplaar te gebruiken. Voor deze Quick Start wordt ervan uitgegaan dat uw opslag account is gemaakt en is ingeschakeld. Gebruik in productie code een Afbrekings instantie om een time-outfunctie toe te voegen.
 
 ### <a name="list-blobs"></a>Blobs vermelden
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Met deze code wordt de knop **bestanden selecteren en uploaden** verbonden met `file-input` het verborgen element. Op deze manier wordt de gebeurtenis `click` bestands invoer `click` geactiveerd door de knop gebeurtenis en wordt de bestands kiezer weer gegeven. Nadat u bestanden hebt geselecteerd en het dialoog venster hebt gesloten `input` , treedt de gebeurtenis `uploadFiles` op en wordt de functie aangeroepen. Deze functie roept de alleen- [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) functie voor elk bestand dat u hebt geselecteerd. Elke aanroep retourneert een Promise, die wordt toegevoegd aan een lijst, zodat ze allemaal tegelijk kunnen worden gewacht, waardoor de bestanden parallel worden geüpload.
+Met deze code wordt de knop **bestanden selecteren en uploaden** verbonden met het verborgen `file-input` element. Op deze manier wordt met de gebeurtenis knop `click` de gebeurtenis file input `click` geactiveerd en wordt de bestands kiezer weer gegeven. Nadat u bestanden hebt geselecteerd en het dialoog venster hebt gesloten, treedt de gebeurtenis `input` op en wordt de functie `uploadFiles` aangeroepen. Deze functie roept de alleen- [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) functie voor elk bestand dat u hebt geselecteerd. Elke aanroep retourneert een Promise, die wordt toegevoegd aan een lijst, zodat ze allemaal tegelijk kunnen worden gewacht, waardoor de bestanden parallel worden geüpload.
 
 ### <a name="delete-blobs"></a>Blobs verwijderen
 
@@ -346,7 +346,7 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-Met deze code wordt de functie [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) aangeroepen om elk bestand te verwijderen dat in de lijst is geselecteerd. Vervolgens wordt de `listFiles` functie aangeroepen die eerder wordt weer gegeven om de inhoud van de **bestanden** lijst te vernieuwen.
+Met deze code wordt de functie [BlobURL. Delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) aangeroepen om elk bestand te verwijderen dat in de lijst is geselecteerd. Vervolgens wordt de functie `listFiles` aangeroepen die eerder is weer gegeven om de inhoud van de **bestanden** lijst te vernieuwen.
 
 ### <a name="run-and-test-the-web-application"></a>De webtoepassing uitvoeren en testen
 
