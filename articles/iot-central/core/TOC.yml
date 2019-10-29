@@ -8,8 +8,6 @@
       href: overview-iot-options.md
     - name: Rondleiding door de gebruikersinterface
       href: overview-iot-central-tour.md
-    - name: Blijf verbonden
-      href: concepts-stay-connected.md
 - name: Snelstartgidsen
   expanded: true
   items:
