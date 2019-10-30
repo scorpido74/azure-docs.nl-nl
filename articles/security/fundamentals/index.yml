@@ -1,0 +1,103 @@
+### YamlMime:Landing
+title: Documentatie voor Azure-beveiligingsbasisprincipes
+summary: Meer informatie over hoe u onze best practices en begeleiding kunt gebruiken om uw cloudoplossingen in Azure te beveiligen.
+metadata:
+  title: Documentatie voor Azure-beveiligingsbasisprincipes
+  description: Meer informatie over het beveiligen van uw cloudoplossingen in Azure.
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 10/28/2019
+  ms.openlocfilehash: 4744c6668de55b28725f1e1662f93030b5f61007
+  ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 10/29/2019
+  ms.locfileid: "73055908"
+landingContent:
+- title: Over Azure-beveiliging
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Inleiding tot Azure-beveiliging
+      url: overview.md
+    - text: Technische mogelijkheden voor beveiliging
+      url: technical-capabilities.md
+  - linkListType: concept
+    links:
+    - text: Hoe beveiligt Microsoft de Azure-infrastructuur?
+      url: infrastructure.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Gedeelde verantwoordelijkheid in de cloud
+      url: shared-responsibility.md
+    - text: Beveiligingsservices en -technologieën
+      url: services-technologies.md
+    - text: Ingebouwde beveiligingsmaatregelen
+      url: security-controls.md
+- title: Bedreigingen beperken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Security Center
+      url: ../../security-center/security-center-intro.md
+  - linkListType: concept
+    links:
+    - text: Beheer en controle
+      url: management-monitoring-overview.md
+    - text: Geavanceerde detectie van bedreigingen
+      url: threat-detection.md
+- title: Best practices voor het beveiligen van uw cloudoplossingen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Netwerkbeveiliging
+      url: network-best-practices.md
+    - text: IaaS-workloads
+      url: iaas.md
+    - text: Identiteits- en toegangsbeheer
+      url: identity-management-best-practices.md
+    - text: Databasebeveiliging
+      url: database-best-practices.md
+    - text: PaaS-implementaties
+      url: paas-deployments.md
+    - text: Gegevensbeveiliging en -versleuteling
+      url: data-encryption-best-practices.md
+    - text: Operationele beveiliging
+      url: operational-best-practices.md
+- title: Uw Azure-resources beveiligen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Versleuteling 'at rest'
+      url: encryption-atrest.md
+    - text: Gegevensbeveiliging
+      url: database-security-overview.md
+    - text: Netwerkbeveiliging
+      url: network-overview.md
+    - text: Beveiliging van virtuele machines
+      url: virtual-machines-overview.md
+    - text: Beveiliging van identiteitsbeheer
+      url: identity-management-overview.md
+  - linkListType: learn
+    links:
+    - text: Uw cloudtoepassingen beveiligen
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps/
+- title: Uw beveiligingsvaardigheden opbouwen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Netwerkbeveiliging implementeren
+      url: https://docs.microsoft.com/learn/paths/implement-network-security
+    - text: Identiteit en toegang beheren
+      url: https://docs.microsoft.com/learn/paths/manage-identity-and-access
+    - text: Beveiliging voor resourcebeheer implementeren
+      url: https://docs.microsoft.com/learn/paths/implement-resource-mgmt-security
+    - text: Beveiliging voor hosts van virtuele machines implementeren
+      url: https://docs.microsoft.com/learn/paths/implement-host-security

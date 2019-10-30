@@ -18,6 +18,8 @@
       href: advisor-performance-recommendations.md
     - name: Verlaag servicekosten
       href: advisor-cost-recommendations.md
+    - name: Operationele topprestaties realiseren
+      href: advisor-operational-excellence-recommendations.md
     - name: Aanbevelingen configureren
       href: view-recommendations.md
     - name: Machtigingen en geblokkeerde acties

@@ -6,14 +6,12 @@
       href: overview-iot-central-government.md
 - name: Zelfstudies
   items:
-    - name: In-Store Analytics-betaling
-      items:
-        - name: Een verbonden app voor afvalbeheer maken
-          href: tutorial-connected-waste-management.md
-        - name: Een app voor bewaking van waterverbruik maken
-          href: tutorial-water-consumption-monitoring.md
-        - name: Een app voor bewaking van de waterkwaliteit maken
-          href: tutorial-water-quality-monitoring.md
+    - name: Een verbonden app voor afvalbeheer maken
+      href: tutorial-connected-waste-management.md
+    - name: Een app voor bewaking van waterverbruik maken
+      href: tutorial-water-consumption-monitoring.md
+    - name: Een app voor bewaking van de waterkwaliteit maken
+      href: tutorial-water-quality-monitoring.md
 - name: Concepten
   items:
     - name: Referentiearchitectuur voor verbonden afvalverwerking
@@ -22,10 +20,10 @@
       href: concepts-waterconsumptionmonitoring-architecture.md
     - name: Referentiearchitectuur voor de bewaking van waterkwaliteit
       href: concepts-waterqualitymonitoring-architecture.md
-    - name: Connectiviteit
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
 - name: Handleidingen
   items:
+    - name: Uw app verbinden met Dynamics 365 Field Services
+      href: how-to-configure-connected-field-services.md
     - name: Apparaten verbinden
       items:
         - name: Een MXChip IoT DevKit voorbereiden en aansluiten
@@ -56,8 +54,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Aangepaste regels maken
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
-        - name: Aangepaste analyses maken met Databricks
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
         - name: Aangepaste analyses maken met Databricks
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Beheer
@@ -114,8 +110,6 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Resources
   items:
-    - name: API-referentiedocumentatie
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: Aanvragen van klantgegevens
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/government/toc.json&bc=/azure/iot-central/government/breadcrumb/toc.json
     - name: Ondersteunde browsers

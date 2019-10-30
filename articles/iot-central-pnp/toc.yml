@@ -8,8 +8,12 @@
       href: ../iot-central/core/overview-iot-options.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Rondleiding door de gebruikersinterface
       href: ../iot-central/core/overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Verbinding maken
+      href: ../iot-central/core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Blijf verbonden
+      href: ../iot-central/core/overview-iot-central-stay-connected-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Transformeren
-      href: ../iot-central/core/overview-iot-central-transform.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      href: ../iot-central/core/overview-iot-central-transform-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -23,14 +27,16 @@
       href: ../iot-central/core/quick-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
 - name: Zelfstudies
   items:
-    - name: Een IoT-apparaatsjabloon bouwen en beheren
-      href: ../iot-central/core/tutorial-define-iot-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Een apparaat verbinden
-      href: ../iot-central/core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Een IoT Edge-apparaatsjabloon bouwen en beheren
-      href: ../iot-central/core/tutorial-define-edge-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Een Edge-apparaat verbinden
-      href: ../iot-central/core/tutorial-add-edge-as-leaf-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Verbinding maken
+      items:
+        - name: Een IoT-apparaatsjabloon bouwen en beheren
+          href: ../iot-central/core/tutorial-define-iot-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Een apparaat verbinden
+          href: ../iot-central/core/tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Een IoT Edge-apparaatsjabloon bouwen en beheren
+          href: ../iot-central/core/tutorial-define-edge-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Een IoT Edge-apparaat verbinden
+          href: ../iot-central/core/tutorial-add-edge-as-leaf-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Transformeren
       items:
         - name: Een regel maken
@@ -41,8 +47,8 @@
   items:
     - name: Architectuur
       href: ../iot-central/core/concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Connectiviteit
-      href: ../iot-central/core/concepts-connectivity-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Wat zijn toepassingssjablonen?
+      href: ../iot-central/core/concepts-app-templates.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
 - name: Handleidingen
   items:
     - name: Apparaten verbinden

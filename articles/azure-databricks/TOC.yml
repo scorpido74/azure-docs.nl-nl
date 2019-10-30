@@ -37,6 +37,9 @@
         - name: Aan de slag met Azure Databricks
           href: /azure/databricks/getting-started/quick-start
           maintainContext: true
+        - name: Gegevensoverzicht
+          href: /azure/databricks/getting-started/data
+          maintainContext: true
         - name: Azure Databricks-concepten
           href: /azure/databricks/getting-started/concepts
           maintainContext: true
@@ -72,6 +75,425 @@
         - name: Ondersteunde browsers
           href: /azure/databricks/getting-started/supported-browsers
           maintainContext: true
+    - name: Runtimes van Databricks
+      items:
+        - name: Overzicht van Runtime
+          href: /azure/databricks/runtime/index
+          maintainContext: true
+        - name: Databricks Runtime
+          href: /azure/databricks/runtime/dbr
+          maintainContext: true
+        - name: Databricks Runtime met Conda
+          href: /azure/databricks/runtime/conda
+          maintainContext: true
+        - name: Databricks Runtime voor machine learning
+          href: /azure/databricks/runtime/mlruntime
+          maintainContext: true
+        - name: Databricks Runtime voor Genomics
+          href: /azure/databricks/runtime/genomicsruntime
+          maintainContext: true
+        - name: Databricks Light
+          href: /azure/databricks/runtime/light
+          maintainContext: true
+    - name: Werkruimte
+      items:
+        - name: Verken de Databricks-werkruimte
+          href: /azure/databricks/workspace/index
+          maintainContext: true
+        - name: Werkruimte-assets
+          href: /azure/databricks/workspace/workspace-assets
+          maintainContext: true
+        - name: Werken met werkruimteobjecten
+          href: /azure/databricks/workspace/workspace-objects
+          maintainContext: true
+        - name: 'Krijg id''s voor werkruimtes, clusters, notebooks en taken'
+          href: /azure/databricks/workspace/workspace-details
+          maintainContext: true
+    - name: Clusters
+      items:
+        - name: Overzicht van clusters
+          href: /azure/databricks/clusters/index
+          maintainContext: true
+        - name: Een cluster maken
+          href: /azure/databricks/clusters/create
+          maintainContext: true
+        - name: Clusters beheren
+          href: /azure/databricks/clusters/clusters-manage
+          maintainContext: true
+        - name: Clusters configureren
+          href: /azure/databricks/clusters/configure
+          maintainContext: true
+        - name: Clusterknooppunten initialiseren
+          href: /azure/databricks/clusters/init-scripts
+          maintainContext: true
+        - name: Aangepaste containers
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
+        - name: Clusters met GPU
+          href: /azure/databricks/clusters/gpu
+          maintainContext: true
+        - name: Pools
+          items:
+            - name: Groepsoverzicht
+              href: /azure/databricks/clusters/instance-pools/index
+              maintainContext: true
+            - name: Groepen weergeven
+              href: /azure/databricks/clusters/instance-pools/display
+              maintainContext: true
+            - name: Een groep maken
+              href: /azure/databricks/clusters/instance-pools/create
+              maintainContext: true
+            - name: Een groep configureren
+              href: /azure/databricks/clusters/instance-pools/configure
+              maintainContext: true
+            - name: Een groep bewerken
+              href: /azure/databricks/clusters/instance-pools/edit
+              maintainContext: true
+            - name: Een groep verwijderen
+              href: /azure/databricks/clusters/instance-pools/delete
+              maintainContext: true
+            - name: Een groep gebruiken
+              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
+              maintainContext: true
+    - name: Notebooks
+      items:
+        - name: Overzicht van notebooks
+          href: /azure/databricks/notebooks/index
+          maintainContext: true
+        - name: Notebooks beheren
+          href: /azure/databricks/notebooks/notebooks-manage
+          maintainContext: true
+        - name: Notebooks gebruiken
+          href: /azure/databricks/notebooks/notebooks-use
+          maintainContext: true
+        - name: Versiebeheer
+          items:
+            - name: Versiebeheer met Azure DevOps
+              href: /azure/databricks/notebooks/azure-devops-services-version-control
+              maintainContext: true
+            - name: Versiebeheer met Bitbucket Cloud
+              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
+              maintainContext: true
+            - name: Versiebeheer met GitHub
+              href: /azure/databricks/notebooks/github-version-control
+              maintainContext: true
+        - name: Visualisaties
+          items:
+            - name: Gegevens visualiseren
+              href: /azure/databricks/notebooks/visualizations/index
+              maintainContext: true
+            - name: Afgeschafte lijndiagrammen migreren
+              href: /azure/databricks/notebooks/visualizations/migrate-charts
+              maintainContext: true
+            - name: Visualisatie van de gedetailleerde informatie over Python
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
+              maintainContext: true
+            - name: Visualisatie van de gedetailleerde informatie over Scala
+              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
+              maintainContext: true
+            - name: 'HTML, D3 en SVG in notebooks'
+              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
+              maintainContext: true
+            - name: Bokeh in Python-notebooks
+              href: /azure/databricks/notebooks/visualizations/bokeh
+              maintainContext: true
+            - name: Matplotlib en ggplot in Python-notebooks
+              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
+              maintainContext: true
+            - name: htmlwidgets in R-notebooks
+              href: /azure/databricks/notebooks/visualizations/htmlwidgets
+              maintainContext: true
+            - name: Plotly in Python- en R-notebooks
+              href: /azure/databricks/notebooks/visualizations/plotly
+              maintainContext: true
+        - name: Dashboards
+          href: /azure/databricks/notebooks/dashboards
+          maintainContext: true
+        - name: Widgets
+          href: /azure/databricks/notebooks/widgets
+          maintainContext: true
+        - name: Notebookworkflows
+          href: /azure/databricks/notebooks/notebook-workflows
+          maintainContext: true
+        - name: Pakketcellen
+          href: /azure/databricks/notebooks/package-cells
+          maintainContext: true
+    - name: Taken
+      href: /azure/databricks/jobs
+      maintainContext: true
+    - name: Bibliotheken
+      href: /azure/databricks/libraries
+      maintainContext: true
+    - name: Gegevens
+      items:
+        - name: Databricks-bestandssysteem
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
+        - name: Databases en tabellen
+          href: /azure/databricks/data/tables
+          maintainContext: true
+        - name: Metastores
+          items:
+            - name: Externe Hive-metastore
+              href: /azure/databricks/data/metastores/external-hive-metastore
+              maintainContext: true
+        - name: Gegevensbronnen
+          items:
+            - name: SQL-databases met behulp van JDBC
+              href: /azure/databricks/data/data-sources/sql-databases
+              maintainContext: true
+            - name: Azure SQL Database met behulp van de Apache Spark-connector
+              href: /azure/databricks/data/data-sources/sql-databases-azure
+              maintainContext: true
+            - name: Azure Blob Storage
+              href: /azure/databricks/data/data-sources/azure/azure-storage
+              maintainContext: true
+            - name: Azure Data Lake Storage Gen2
+              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
+              maintainContext: true
+            - name: Azure Data Lake Storage
+              href: /azure/databricks/data/data-sources/azure/azure-datalake
+              maintainContext: true
+            - name: Azure Data Lake Storage-passthrough
+              href: /azure/databricks/data/data-sources/azure/adls-passthrough
+              maintainContext: true
+            - name: Cosmos DB
+              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
+              maintainContext: true
+            - name: SQL Data Warehouse
+              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
+              maintainContext: true
+            - name: Binaire bestanden
+              href: /azure/databricks/data/data-sources/binary-file
+              maintainContext: true
+            - name: Cassandra
+              href: /azure/databricks/data/data-sources/cassandra
+              maintainContext: true
+            - name: Couchbase
+              href: /azure/databricks/data/data-sources/couchbase
+              maintainContext: true
+            - name: Elastisch zoeken
+              href: /azure/databricks/data/data-sources/elasticsearch
+              maintainContext: true
+            - name: Installatiekopieën
+              href: /azure/databricks/data/data-sources/image
+              maintainContext: true
+            - name: Hive-tabellen
+              href: /azure/databricks/data/data-sources/hive-tables
+              maintainContext: true
+            - name: MLflow-experiment
+              href: /azure/databricks/data/data-sources/mlflow-experiment
+              maintainContext: true
+            - name: MongoDb
+              href: /azure/databricks/data/data-sources/mongodb
+              maintainContext: true
+            - name: Neo4j
+              href: /azure/databricks/data/data-sources/neo4j
+              maintainContext: true
+            - name: Avro-bestanden
+              href: /azure/databricks/data/data-sources/read-avro
+              maintainContext: true
+            - name: CSV-bestanden
+              href: /azure/databricks/data/data-sources/read-csv
+              maintainContext: true
+            - name: JSON-bestanden
+              href: /azure/databricks/data/data-sources/read-json
+              maintainContext: true
+            - name: Gecomprimeerde LZO-bestanden
+              href: /azure/databricks/data/data-sources/read-lzo
+              maintainContext: true
+            - name: Parquet-bestanden
+              href: /azure/databricks/data/data-sources/read-parquet
+              maintainContext: true
+            - name: Redis
+              href: /azure/databricks/data/data-sources/redis
+              maintainContext: true
+            - name: Riak-tijdreeks
+              href: /azure/databricks/data/data-sources/riak-ts
+              maintainContext: true
+            - name: Snowflake
+              href: /azure/databricks/data/data-sources/snowflake
+              maintainContext: true
+            - name: Zipbestanden
+              href: /azure/databricks/data/data-sources/zip-files
+              maintainContext: true
+        - name: FileStore
+          href: /azure/databricks/data/filestore
+          maintainContext: true
+    - name: Hulpprogramma's voor business intelligence
+      items:
+        - name: BI-hulpprogramma's koppelen
+          href: /azure/databricks/bi/jdbc-odbc-bi
+          maintainContext: true
+        - name: Tableau
+          href: /azure/databricks/bi/tableau
+          maintainContext: true
+        - name: Power BI
+          href: /azure/databricks/bi/power-bi
+          maintainContext: true
+        - name: Alteryx
+          href: /azure/databricks/bi/alteryx
+          maintainContext: true
+        - name: Looker
+          href: /azure/databricks/bi/looker
+          maintainContext: true
+        - name: SQL Workbench/J
+          href: /azure/databricks/bi/workbenchj
+          maintainContext: true
+    - name: Delta Lake
+      items:
+        - name: Inleiding tot Delta Lake
+          href: /azure/databricks/delta/delta-intro
+          maintainContext: true
+        - name: Aan de slag met Delta Lake
+          href: /azure/databricks/delta/quick-start
+          maintainContext: true
+        - name: Inleidende notebooks
+          href: /azure/databricks/delta/intro-notebooks
+          maintainContext: true
+        - name: Lees- en schrijfbewerkingen voor tabelbatches
+          href: /azure/databricks/delta/delta-batch
+          maintainContext: true
+        - name: Lees- en schrijfbewerkingen voor tabelstreaming
+          href: /azure/databricks/delta/delta-streaming
+          maintainContext: true
+        - name: 'Tabellen verwijderen, bijwerken en samenvoegen'
+          href: /azure/databricks/delta/delta-update
+          maintainContext: true
+        - name: Opdrachten voor het hulpprogramma voor tabellen
+          href: /azure/databricks/delta/delta-utility
+          maintainContext: true
+        - name: API-referentie voor Delta Lake
+          href: /azure/databricks/delta/delta-apidoc
+          maintainContext: true
+        - name: Gelijktijdigheid beheren
+          href: /azure/databricks/delta/concurrency-control
+          maintainContext: true
+        - name: Optimalisaties
+          items:
+            - name: Optimalisatieoverzicht
+              href: /azure/databricks/delta/optimizations/index
+              maintainContext: true
+            - name: Prestaties optimaliseren met bestandsbeheer
+              href: /azure/databricks/delta/optimizations/file-mgmt
+              maintainContext: true
+            - name: Automatisch optimaliseren
+              href: /azure/databricks/delta/optimizations/auto-optimize
+              maintainContext: true
+            - name: Prestaties optimaliseren met caching
+              href: /azure/databricks/delta/optimizations/delta-cache
+              maintainContext: true
+            - name: Isolatieniveaus
+              href: /azure/databricks/delta/optimizations/isolation-level
+              maintainContext: true
+            - name: MySQL-tabellen repliceren naar Delta Lake-tabellen
+              href: /azure/databricks/delta/optimizations/mysql-delta
+              maintainContext: true
+            - name: Joinprestaties optimaliseren
+              items:
+                - name: Overzicht van het optimaliseren van joinprestaties
+                  href: /azure/databricks/delta/join-performance/index
+                  maintainContext: true
+                - name: Optimalisatie van bereikjoins
+                  href: /azure/databricks/delta/join-performance/range-join
+                  maintainContext: true
+                - name: Optimalisatie van scheve joins
+                  href: /azure/databricks/delta/join-performance/skew-join
+                  maintainContext: true
+            - name: Geoptimaliseerde gegevenstransformatie
+              items:
+                - name: Overzicht van geoptimaliseerde gegevenstransformaties
+                  href: /azure/databricks/delta/data-transformation/index
+                  maintainContext: true
+                - name: Functies van een hogere orde
+                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
+                  maintainContext: true
+                - name: Complexe gegevenstypen transformeren
+                  href: /azure/databricks/delta/data-transformation/complex-types
+                  maintainContext: true
+            - name: Aanbevolen procedures
+              href: /azure/databricks/delta/best-practices
+              maintainContext: true
+            - name: Tabelversiebeheer
+              href: /azure/databricks/delta/optimizations/versioning
+              maintainContext: true
+            - name: Voorbeelden van optimalisatie
+              href: /azure/databricks/delta/optimizations/optimization-examples
+              maintainContext: true
+        - name: Veelgestelde vragen
+          href: /azure/databricks/delta/delta-faq
+          maintainContext: true
+        - name: Aanvullende Delta-resources
+          href: /azure/databricks/delta/delta-resources
+          maintainContext: true
+    - name: DataFrames en gegevenssets
+      items:
+        - name: Overzicht van DataFrames en gegevenssets
+          href: /azure/databricks/spark/latest/dataframes-datasets/index
+          maintainContext: true
+        - name: Inleiding tot Python DataFrames
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
+          maintainContext: true
+        - name: Inleiding tot Scala DataFrames
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
+          maintainContext: true
+        - name: Inleiding tot gegevenssets
+          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
+          maintainContext: true
+        - name: Complexe en geneste gegevens
+          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
+          maintainContext: true
+        - name: Aggregators
+          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
+          maintainContext: true
+    - name: Gestructureerd streamen
+      items:
+        - name: Overzicht van gestructureerd streamen
+          href: /azure/databricks/spark/latest/structured-streaming/index
+          maintainContext: true
+        - name: Inleidende notebooks
+          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
+          maintainContext: true
+        - name: Gegevensbronnen en sinks streamen
+          items:
+            - name: Overzicht van bronnen en sinks
+              href: /azure/databricks/spark/latest/structured-streaming/data-sources
+              maintainContext: true
+            - name: Apache Kafka
+              href: /azure/databricks/spark/latest/structured-streaming/kafka
+              maintainContext: true
+            - name: Azure Event Hubs
+              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
+              maintainContext: true
+            - name: Delta Lake-tabellen
+              href: /azure/databricks/spark/latest/structured-streaming/delta
+              maintainContext: true
+            - name: Lees- en schrijfbewerkingen voor het streamen van Avro-gegevens met DataFrames
+              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
+              maintainContext: true
+            - name: Schrijven naar willekeurige gegevens-sinks
+              href: /azure/databricks/spark/latest/structured-streaming/foreach
+              maintainContext: true
+            - name: Geoptimaliseerde Azure Blob Storage met Azure Queue Storage
+              href: /azure/databricks/spark/latest/structured-streaming/aqs
+              maintainContext: true
+        - name: Gestructureerd streamen in productie
+          href: /azure/databricks/spark/latest/structured-streaming/production
+          maintainContext: true
+        - name: Streamingvoorbeelden
+          href: /azure/databricks/spark/latest/structured-streaming/examples
+          maintainContext: true
+        - name: Spark Streaming (verouderd)
+          items:
+            - name: Overzicht van Spark Streaming (verouderd)
+              href: /azure/databricks/spark/latest/rdd-streaming/index
+              maintainContext: true
+            - name: Fouten opsporen in Spark Streaming-apps
+              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
+              maintainContext: true
+            - name: Best practices voor het ontwikkelen van streamingapps
+              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
+              maintainContext: true
     - name: SQL
       items:
         - name: Overzicht van SQL
@@ -273,422 +695,6 @@
         - name: RStudio in Azure Databricks
           href: /azure/databricks/spark/latest/sparkr/rstudio
           maintainContext: true
-    - name: Runtimes van Databricks
-      items:
-        - name: Overzicht van Runtime
-          href: /azure/databricks/runtime/index
-          maintainContext: true
-        - name: Databricks Runtime
-          href: /azure/databricks/runtime/dbr
-          maintainContext: true
-        - name: Databricks Runtime met Conda
-          href: /azure/databricks/runtime/conda
-          maintainContext: true
-        - name: Databricks Runtime voor machine learning
-          href: /azure/databricks/runtime/mlruntime
-          maintainContext: true
-        - name: Databricks Runtime voor gezondheidszorg en biowetenschappen
-          href: /azure/databricks/runtime/hlsruntime
-          maintainContext: true
-        - name: Databricks Light
-          href: /azure/databricks/runtime/light
-          maintainContext: true
-    - name: Werkruimte
-      items:
-        - name: Verken de Databricks-werkruimte
-          href: /azure/databricks/workspace/index
-          maintainContext: true
-        - name: 'Krijg id''s voor werkruimtes, clusters, notebooks en taken'
-          href: /azure/databricks/workspace/workspace-details
-          maintainContext: true
-        - name: Werken met werkruimteobjecten
-          href: /azure/databricks/workspace/workspace-objects
-          maintainContext: true
-    - name: Clusters
-      items:
-        - name: Overzicht van clusters
-          href: /azure/databricks/clusters/index
-          maintainContext: true
-        - name: Clusters beheren
-          href: /azure/databricks/clusters/clusters-manage
-          maintainContext: true
-        - name: Een cluster maken
-          href: /azure/databricks/clusters/create
-          maintainContext: true
-        - name: Clusters configureren
-          href: /azure/databricks/clusters/configure
-          maintainContext: true
-        - name: Clusterknooppunten initialiseren
-          href: /azure/databricks/clusters/init-scripts
-          maintainContext: true
-        - name: Aangepaste containers
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
-        - name: Clusters met GPU
-          href: /azure/databricks/clusters/gpu
-          maintainContext: true
-        - name: Pools
-          items:
-            - name: Groepsoverzicht
-              href: /azure/databricks/clusters/instance-pools/index
-              maintainContext: true
-            - name: Groepen weergeven
-              href: /azure/databricks/clusters/instance-pools/display
-              maintainContext: true
-            - name: Een groep maken
-              href: /azure/databricks/clusters/instance-pools/create
-              maintainContext: true
-            - name: Een groep configureren
-              href: /azure/databricks/clusters/instance-pools/configure
-              maintainContext: true
-            - name: Een groep bewerken
-              href: /azure/databricks/clusters/instance-pools/edit
-              maintainContext: true
-            - name: Een groep verwijderen
-              href: /azure/databricks/clusters/instance-pools/delete
-              maintainContext: true
-            - name: Een groep gebruiken
-              href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
-              maintainContext: true
-    - name: Notebooks
-      items:
-        - name: Overzicht van notebooks
-          href: /azure/databricks/notebooks/index
-          maintainContext: true
-        - name: Notebooks gebruiken
-          href: /azure/databricks/notebooks/notebooks-use
-          maintainContext: true
-        - name: Notebooks beheren
-          href: /azure/databricks/notebooks/notebooks-manage
-          maintainContext: true
-        - name: Versiebeheer
-          items:
-            - name: Versiebeheer met Azure DevOps
-              href: /azure/databricks/notebooks/azure-devops-services-version-control
-              maintainContext: true
-            - name: Versiebeheer met Bitbucket Cloud
-              href: /azure/databricks/notebooks/bitbucket-cloud-version-control
-              maintainContext: true
-            - name: Versiebeheer met GitHub
-              href: /azure/databricks/notebooks/github-version-control
-              maintainContext: true
-        - name: Visualisaties
-          items:
-            - name: Gegevens visualiseren
-              href: /azure/databricks/notebooks/visualizations/index
-              maintainContext: true
-            - name: Afgeschafte lijndiagrammen migreren
-              href: /azure/databricks/notebooks/visualizations/migrate-charts
-              maintainContext: true
-            - name: Visualisatie van de gedetailleerde informatie over Python
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-python
-              maintainContext: true
-            - name: Visualisatie van de gedetailleerde informatie over Scala
-              href: /azure/databricks/notebooks/visualizations/charts-and-graphs-scala
-              maintainContext: true
-            - name: 'HTML, D3 en SVG in notebooks'
-              href: /azure/databricks/notebooks/visualizations/html-d3-and-svg
-              maintainContext: true
-            - name: Bokeh in Python-notebooks
-              href: /azure/databricks/notebooks/visualizations/bokeh
-              maintainContext: true
-            - name: Matplotlib en ggplot in Python-notebooks
-              href: /azure/databricks/notebooks/visualizations/matplotlib-and-ggplot
-              maintainContext: true
-            - name: htmlwidgets in R-notebooks
-              href: /azure/databricks/notebooks/visualizations/htmlwidgets
-              maintainContext: true
-            - name: Plotly in Python- en R-notebooks
-              href: /azure/databricks/notebooks/visualizations/plotly
-              maintainContext: true
-        - name: Dashboards
-          href: /azure/databricks/notebooks/dashboards
-          maintainContext: true
-        - name: Invoerwidgets
-          href: /azure/databricks/notebooks/widgets
-          maintainContext: true
-        - name: Notebookworkflows implementeren
-          href: /azure/databricks/notebooks/notebook-workflows
-          maintainContext: true
-        - name: Pakketcellen
-          href: /azure/databricks/notebooks/package-cells
-          maintainContext: true
-    - name: Azure Databricks-taken gebruiken
-      href: /azure/databricks/jobs
-      maintainContext: true
-    - name: Azure Databricks-bibliotheken gebruiken
-      href: /azure/databricks/libraries
-      maintainContext: true
-    - name: Gegevens
-      items:
-        - name: Databricks-bestandssysteem
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
-        - name: Toegang tot gegevens
-          href: /azure/databricks/data/access-data
-          maintainContext: true
-        - name: Databases en tabellen gebruiken
-          href: /azure/databricks/data/tables
-          maintainContext: true
-        - name: FileStore
-          href: /azure/databricks/data/filestore
-          maintainContext: true
-        - name: Gegevensbronnen
-          items:
-            - name: Binaire bestanden
-              href: /azure/databricks/data/data-sources/binary-file
-              maintainContext: true
-            - name: Cassandra
-              href: /azure/databricks/data/data-sources/cassandra
-              maintainContext: true
-            - name: Couchbase
-              href: /azure/databricks/data/data-sources/couchbase
-              maintainContext: true
-            - name: Elastisch zoeken
-              href: /azure/databricks/data/data-sources/elasticsearch
-              maintainContext: true
-            - name: Installatiekopieën
-              href: /azure/databricks/data/data-sources/image
-              maintainContext: true
-            - name: Hive-tabellen importeren
-              href: /azure/databricks/data/data-sources/importing-hive-tables
-              maintainContext: true
-            - name: MLflow-experiment
-              href: /azure/databricks/data/data-sources/mlflow-experiment
-              maintainContext: true
-            - name: MongoDb
-              href: /azure/databricks/data/data-sources/mongodb
-              maintainContext: true
-            - name: Neo4j
-              href: /azure/databricks/data/data-sources/neo4j
-              maintainContext: true
-            - name: Avro-bestanden
-              href: /azure/databricks/data/data-sources/read-avro
-              maintainContext: true
-            - name: CSV-bestanden
-              href: /azure/databricks/data/data-sources/read-csv
-              maintainContext: true
-            - name: JSON-bestanden
-              href: /azure/databricks/data/data-sources/read-json
-              maintainContext: true
-            - name: Gecomprimeerde LZO-bestanden
-              href: /azure/databricks/data/data-sources/read-lzo
-              maintainContext: true
-            - name: Parquet-bestanden
-              href: /azure/databricks/data/data-sources/read-parquet
-              maintainContext: true
-            - name: Redis
-              href: /azure/databricks/data/data-sources/redis
-              maintainContext: true
-            - name: Riak-tijdreeks
-              href: /azure/databricks/data/data-sources/riak-ts
-              maintainContext: true
-            - name: Snowflake
-              href: /azure/databricks/data/data-sources/snowflake
-              maintainContext: true
-            - name: Azure SQL Database
-              href: /azure/databricks/data/data-sources/sql-databases-azure
-              maintainContext: true
-            - name: SQL-databases
-              href: /azure/databricks/data/data-sources/sql-databases
-              maintainContext: true
-            - name: Zipbestanden
-              href: /azure/databricks/data/data-sources/zip-files
-              maintainContext: true
-            - name: Azure Data Lake Storage-passthrough
-              href: /azure/databricks/data/data-sources/azure/adls-passthrough
-              maintainContext: true
-            - name: Azure Data Lake Storage Gen2
-              href: /azure/databricks/data/data-sources/azure/azure-datalake-gen2
-              maintainContext: true
-            - name: Azure Data Lake Storage
-              href: /azure/databricks/data/data-sources/azure/azure-datalake
-              maintainContext: true
-            - name: Azure Storage
-              href: /azure/databricks/data/data-sources/azure/azure-storage
-              maintainContext: true
-            - name: Cosmos DB-connector
-              href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
-              maintainContext: true
-            - name: SQL Data Warehouse
-              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
-              maintainContext: true
-        - name: Metastores
-          items:
-            - name: Externe Hive-metastore
-              href: /azure/databricks/data/metastores/external-hive-metastore
-              maintainContext: true
-    - name: Hulpprogramma's voor business intelligence
-      items:
-        - name: BI-hulpprogramma's koppelen
-          href: /azure/databricks/bi/jdbc-odbc-bi
-          maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
-    - name: Delta Lake
-      items:
-        - name: Inleiding tot Delta Lake
-          href: /azure/databricks/delta/delta-intro
-          maintainContext: true
-        - name: Aan de slag met Delta Lake
-          href: /azure/databricks/delta/quick-start
-          maintainContext: true
-        - name: Inleidende notebooks
-          href: /azure/databricks/delta/intro-notebooks
-          maintainContext: true
-        - name: Lees- en schrijfbewerkingen voor tabelbatches
-          href: /azure/databricks/delta/delta-batch
-          maintainContext: true
-        - name: Lees- en schrijfbewerkingen voor tabelstreaming
-          href: /azure/databricks/delta/delta-streaming
-          maintainContext: true
-        - name: 'Tabellen verwijderen, bijwerken en samenvoegen'
-          href: /azure/databricks/delta/delta-update
-          maintainContext: true
-        - name: Opdrachten voor het hulpprogramma voor tabellen
-          href: /azure/databricks/delta/delta-utility
-          maintainContext: true
-        - name: API-referentie voor Delta Lake
-          href: /azure/databricks/delta/delta-apidoc
-          maintainContext: true
-        - name: Gelijktijdigheid beheren
-          href: /azure/databricks/delta/concurrency-control
-          maintainContext: true
-        - name: Optimalisaties
-          items:
-            - name: Optimalisatieoverzicht
-              href: /azure/databricks/delta/optimizations/index
-              maintainContext: true
-            - name: Prestaties optimaliseren met bestandsbeheer
-              href: /azure/databricks/delta/optimizations/file-mgmt
-              maintainContext: true
-            - name: Automatisch optimaliseren
-              href: /azure/databricks/delta/optimizations/auto-optimize
-              maintainContext: true
-            - name: Prestaties optimaliseren met caching
-              href: /azure/databricks/delta/optimizations/delta-cache
-              maintainContext: true
-            - name: Isolatieniveaus
-              href: /azure/databricks/delta/optimizations/isolation-level
-              maintainContext: true
-            - name: MySQL-tabellen repliceren naar Delta Lake-tabellen
-              href: /azure/databricks/delta/optimizations/mysql-delta
-              maintainContext: true
-            - name: Joinprestaties optimaliseren
-              items:
-                - name: Overzicht van het optimaliseren van joinprestaties
-                  href: /azure/databricks/delta/join-performance/index
-                  maintainContext: true
-                - name: Optimalisatie van bereikjoins
-                  href: /azure/databricks/delta/join-performance/range-join
-                  maintainContext: true
-                - name: Optimalisatie van scheve joins
-                  href: /azure/databricks/delta/join-performance/skew-join
-                  maintainContext: true
-            - name: Geoptimaliseerde gegevenstransformatie
-              items:
-                - name: Overzicht van geoptimaliseerde gegevenstransformaties
-                  href: /azure/databricks/delta/data-transformation/index
-                  maintainContext: true
-                - name: Functies van een hogere orde
-                  href: /azure/databricks/delta/data-transformation/higher-order-lambda-functions
-                  maintainContext: true
-                - name: Complexe gegevenstypen transformeren
-                  href: /azure/databricks/delta/data-transformation/complex-types
-                  maintainContext: true
-            - name: Tabelversiebeheer
-              href: /azure/databricks/delta/optimizations/versioning
-              maintainContext: true
-            - name: Voorbeelden van optimalisatie
-              href: /azure/databricks/delta/optimizations/optimization-examples
-              maintainContext: true
-        - name: Veelgestelde vragen
-          href: /azure/databricks/delta/delta-faq
-          maintainContext: true
-        - name: Aanvullende Delta-resources
-          href: /azure/databricks/delta/delta-resources
-          maintainContext: true
-    - name: DataFrames en gegevenssets
-      items:
-        - name: Overzicht van DataFrames en gegevenssets
-          href: /azure/databricks/spark/latest/dataframes-datasets/index
-          maintainContext: true
-        - name: Inleiding tot Python DataFrames
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-python
-          maintainContext: true
-        - name: Inleiding tot Scala DataFrames
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-dataframes-scala
-          maintainContext: true
-        - name: Inleiding tot gegevenssets
-          href: /azure/databricks/spark/latest/dataframes-datasets/introduction-to-datasets
-          maintainContext: true
-        - name: Complexe en geneste gegevens
-          href: /azure/databricks/spark/latest/dataframes-datasets/complex-nested-data
-          maintainContext: true
-        - name: Aggregators
-          href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
-          maintainContext: true
-    - name: Gestructureerd streamen
-      items:
-        - name: Overzicht van gestructureerd streamen
-          href: /azure/databricks/spark/latest/structured-streaming/index
-          maintainContext: true
-        - name: Inleidende notebooks
-          href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
-          maintainContext: true
-        - name: Gegevensbronnen en sinks streamen
-          items:
-            - name: Overzicht van bronnen en sinks
-              href: /azure/databricks/spark/latest/structured-streaming/data-sources
-              maintainContext: true
-            - name: Apache Kafka
-              href: /azure/databricks/spark/latest/structured-streaming/kafka
-              maintainContext: true
-            - name: Azure Event Hubs
-              href: /azure/databricks/spark/latest/structured-streaming/streaming-event-hubs
-              maintainContext: true
-            - name: Delta Lake-tabellen
-              href: /azure/databricks/spark/latest/structured-streaming/delta
-              maintainContext: true
-            - name: Lees- en schrijfbewerkingen voor het streamen van Avro-gegevens met DataFrames
-              href: /azure/databricks/spark/latest/structured-streaming/avro-dataframe
-              maintainContext: true
-            - name: Schrijven naar willekeurige gegevens-sinks
-              href: /azure/databricks/spark/latest/structured-streaming/foreach
-              maintainContext: true
-            - name: Geoptimaliseerde Azure Blob Storage met Azure Queue Storage
-              href: /azure/databricks/spark/latest/structured-streaming/aqs
-              maintainContext: true
-        - name: Gestructureerd streamen in productie
-          href: /azure/databricks/spark/latest/structured-streaming/production
-          maintainContext: true
-        - name: Streamingvoorbeelden
-          href: /azure/databricks/spark/latest/structured-streaming/examples
-          maintainContext: true
-        - name: Spark Streaming (verouderd)
-          items:
-            - name: Overzicht van Spark Streaming (verouderd)
-              href: /azure/databricks/spark/latest/rdd-streaming/index
-              maintainContext: true
-            - name: Fouten opsporen in Spark Streaming-apps
-              href: /azure/databricks/spark/latest/rdd-streaming/debugging-streaming-applications
-              maintainContext: true
-            - name: Best practices voor het ontwikkelen van streamingapps
-              href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
-              maintainContext: true
     - name: Machine learning
       items:
         - name: Overzicht van machine learning
@@ -708,7 +714,7 @@
             - name: Voorbeeld van een geavanceerde MLib
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: AutoML
+        - name: Geautomatiseerde ML
           items:
             - name: Hyperopt
               items:
@@ -823,21 +829,6 @@
         - name: Aan de slag met MLflow
           href: /azure/databricks/applications/mlflow/quick-start
           maintainContext: true
-        - name: Trainingsrondes voor machine learning bijhouden
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: Externe toegang tot tracering
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
-        - name: 'Modellen opslaan, laden en implementeren'
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: Uitvoeringen reproduceren met MLflow-projecten
-          href: /azure/databricks/applications/mlflow/projects
-          maintainContext: true
-        - name: Voorbeelden van MLflow-modellen
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
         - name: Aan de slag met MLflow Java en Scala
           href: /azure/databricks/applications/mlflow/quick-start-java-scala
           maintainContext: true
@@ -847,8 +838,23 @@
         - name: Aan de slag met MLflow R
           href: /azure/databricks/applications/mlflow/quick-start-r
           maintainContext: true
+        - name: Trainingsrondes voor machine learning bijhouden
+          href: /azure/databricks/applications/mlflow/tracking
+          maintainContext: true
         - name: Voorbeelden van MLflow-tracering
           href: /azure/databricks/applications/mlflow/tracking-examples
+          maintainContext: true
+        - name: Externe toegang tot tracering
+          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
+          maintainContext: true
+        - name: 'Modellen opslaan, laden en implementeren'
+          href: /azure/databricks/applications/mlflow/models
+          maintainContext: true
+        - name: Voorbeelden van MLflow-modellen
+          href: /azure/databricks/applications/mlflow/model-examples
+          maintainContext: true
+        - name: Uitvoeringen reproduceren met MLflow-projecten
+          href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
     - name: Grafiekanalyse
       items:
@@ -937,10 +943,13 @@
             - name: Bibliotheken met Python-statistieken
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
               maintainContext: true
+            - name: SAIGE
+              href: /azure/databricks/applications/genomics/tertiary/saige
+              maintainContext: true
             - name: Hail 0.2
               href: /azure/databricks/applications/genomics/tertiary/hail
               maintainContext: true
-    - name: Migratiehandleidingen
+    - name: Migratie
       items:
         - name: Productieworkloads migreren
           href: /azure/databricks/migration/production
@@ -951,7 +960,7 @@
         - name: Workloads naar Delta Lake migreren
           href: /azure/databricks/delta/porting
           maintainContext: true
-    - name: Beveiliging
+    - name: Beveiliging en privacy
       items:
         - name: Beveiligingsoverzicht
           href: /azure/databricks/security/index
@@ -976,9 +985,6 @@
             - name: Voorbeeld van een geheime werkstroom
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
-    - name: Verificatie naar externe services delegeren
-      href: /azure/databricks/delegated-auth
-      maintainContext: true
     - name: Beheer
       items:
         - name: Beheeroverzicht
@@ -1136,6 +1142,9 @@
             - name: Onverwachte clusterbeëindiging
               href: /azure/databricks/kb/clusters/termination-reasons
               maintainContext: true
+            - name: De gebruikersinterface van Apache Spark toont minder dan het totale geheugen van het knooppunt
+              href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
         - name: Gegevensbeheer
           items:
             - name: Aan een DataFrame toevoegen
@@ -1227,6 +1236,9 @@
               maintainContext: true
             - name: Een beheerde Delta Lake-tabel neerzetten
               href: /azure/databricks/kb/delta/drop-delta-table
+              maintainContext: true
+            - name: UPDATE-query mislukt met de foutmelding IllegalStateException
+              href: /azure/databricks/kb/delta/update-query-fails
               maintainContext: true
         - name: Hulpprogramma's voor ontwikkelaars
           items:
@@ -1358,6 +1370,14 @@
             - name: Kan notebook niet uitvoeren na het annuleren van streamingcel
               href: /azure/databricks/kb/notebooks/streaming-notebook-stuck
               maintainContext: true
+            - name: Problemen met de opdracht annuleren oplossen
+              href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
+              maintainContext: true
+        - name: Beveiliging en machtigingen
+          items:
+            - name: Tabel maken mislukt met beveiligingsuitzondering
+              href: /azure/databricks/kb/security/table-create-security-exception
+              maintainContext: true
         - name: Python
           items:
             - name: Een cluster maken met Anaconda
@@ -1420,8 +1440,8 @@
             - name: Tabel of weergave niet gevonden
               href: /azure/databricks/kb/sql/global-temp-view-not-found
               maintainContext: true
-            - name: Streaming
-              items: null
+        - name: Streaming
+          items:
             - name: Herstel na wijziging van controlepunt of uitvoermap
               href: /azure/databricks/kb/streaming/file-sink-streaming
               maintainContext: true
@@ -1436,7 +1456,7 @@
     - name: Hulpprogramma's voor ontwikkelaars
       items:
         - name: Databricks Connect
-          href: /azure/databricks/dev-tools/db-connect
+          href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
         - name: Afhankelijkheden beheren in gegevenspijplijnen
           href: /azure/databricks/dev-tools/data-pipelines
@@ -1486,14 +1506,14 @@
             - name: Werkruimte
               href: /azure/databricks/dev-tools/api/latest/workspace
               maintainContext: true
-        - name: Runtimeversiestring voor REST API-aanroepen
-          href: /azure/databricks/dev-tools/api/latest/runtime-version-string
-          maintainContext: true
+            - name: Runtimeversiestring voor REST API-aanroepen
+              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
+              maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
           maintainContext: true
     - name: Databricks-hulpprogramma's
-      href: /azure/databricks/dev-tools/dbutils
+      href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: Databricks-CLI
       href: /azure/databricks/dev-tools/databricks-cli
@@ -1503,10 +1523,8 @@
       maintainContext: true
     - name: REST API van Azure Databricks
       href: /azure/databricks//rest/api/databricks
-      maintainContext: true
     - name: Resource Manager-sjabloon
       href: /azure/databricks//azure/templates/microsoft.databricks/workspaces
-      maintainContext: true
 - name: Resources
   items:
     - name: Releaseopmerkingen
@@ -1515,6 +1533,9 @@
           items:
             - name: Opmerkingen bij de release van het platform
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Oktober 2019
+              href: /azure/databricks/release-notes/product/2019/october
               maintainContext: true
             - name: September 2019
               href: /azure/databricks/release-notes/product/2019/september
@@ -1683,7 +1704,6 @@
           maintainContext: true
     - name: Gids voor R-ontwikkelaars
       href: /azure/machine-learning/r-developers-guide
-      maintainContext: true
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=analytics'
     - name: Prijzen

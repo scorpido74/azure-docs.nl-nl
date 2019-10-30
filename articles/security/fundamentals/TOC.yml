@@ -1,5 +1,5 @@
 - name: Documentatie over basisprincipes
-  href: index.md
+  href: index.yml
 - name: Architectuur en ontwerp
   href: overview.md
   expanded: false
@@ -40,7 +40,8 @@
           href: data-encryption-best-practices.md
         - name: Gegevensversleuteling in rust
           href: encryption-atrest.md
-        - name: Azure Disk Encryption voor VM's en VM-schaalsets
+        - name: Azure Disk Encryption voor virtuele machines
+          displayName: virtual machines and virtual machine scale sets
           href: azure-disk-encryption-vms-vmss.md
     - name: Gids voor opslagbeveiliging
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'

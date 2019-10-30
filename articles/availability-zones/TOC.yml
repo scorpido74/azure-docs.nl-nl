@@ -61,7 +61,7 @@
           items:
             - name: Beschikbaarheidszones met SQL Database
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
-        - name: Opslag
+        - name: Storage
           items:
             - name: Zone-redundante opslag
               href: ../storage/common/storage-redundancy-zrs.md
@@ -81,6 +81,10 @@
           items:
             - name: Een zone-redundante virtuele netwerkgateway maken
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Identiteit
+          items:
+            - name: Een Azure Active Directory Domain Services-instantie maken
+              href: ../active-directory-domain-services/tutorial-create-instance.md
 - name: Herstel na noodgevallen
   items:
     - name: Azure Site Recovery gebruiken
