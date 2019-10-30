@@ -10,12 +10,12 @@ ms.topic: overview
 description: Inleiding tot Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: c96115f2eba6f8c8a028251d146ca3f766eba044
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: e166cb9368a14590cbeaabda05d05696032dd94f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305454"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061308"
 ---
 # <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
@@ -43,7 +43,7 @@ Zie [hoe Azure dev Spaces werkt en is geconfigureerd][how-dev-spaces-works]voor 
 
 ## <a name="supported-regions-and-configurations"></a>Ondersteunde regio's en configuraties
 
-Azure dev Spaces wordt alleen ondersteund door AKS-clusters in het **VS-Oost**, VS- **Oost 2**, VS- **Midden**, **Zuid-Centraal vs**, VS- **West 2**, **Europa-Noord**, **Europa-West**, **UK-Zuid**, **Zuidoost-Azië**,  **Australië-oost**, **Canada-centraal**en **Canada-Oost** regio's. Azure Dev Spaces ondersteunt het gebruik van [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Visual Studio Code](https://code.visualstudio.com/download) met een [Azure Dev Spaces-extensie](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) die is geïnstalleerd in Linux, MacOS of Windows 8 of hoger, om uw toepassingen te ontwikkelen en in AKS uit te voeren. Het biedt ook ondersteuning voor het gebruik van [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) geïnstalleerd op Windows 8 of hoger. Voor Visual Studio 2019 hebt u de werk belasting Azure Development nodig. Voor Visual Studio 2017 hebt u de werk belasting voor Web Development en [Visual Studio Tools voor Kubernetes](https://aka.ms/get-vsk8stools)nodig.
+Azure dev Spaces wordt alleen ondersteund door AKS-clusters in het **VS-Oost**, VS- **Oost 2**, VS- **Midden**, **Zuid-Centraal vs**, VS- **West 2**, **Europa-Noord**, **Europa-West**, **UK-Zuid**, **Azië-Oost**,  **Zuidoost-Azië**, **Australië-oost**, **Canada-centraal**en **Canada-Oost** regio's. Azure Dev Spaces ondersteunt het gebruik van [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Visual Studio Code](https://code.visualstudio.com/download) met een [Azure Dev Spaces-extensie](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) die is geïnstalleerd in Linux, MacOS of Windows 8 of hoger, om uw toepassingen te ontwikkelen en in AKS uit te voeren. Het biedt ook ondersteuning voor het gebruik van [Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) geïnstalleerd op Windows 8 of hoger. Voor Visual Studio 2019 hebt u de werk belasting Azure Development nodig. Voor Visual Studio 2017 hebt u de werk belasting voor Web Development en [Visual Studio Tools voor Kubernetes](https://aka.ms/get-vsk8stools)nodig.
 
 ## <a name="next-steps"></a>Volgende stappen
 
