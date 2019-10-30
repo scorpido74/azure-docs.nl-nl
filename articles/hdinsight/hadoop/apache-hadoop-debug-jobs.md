@@ -1,5 +1,5 @@
 ---
-title: 'Debug Apache Hadoop: logboeken weer geven en fout berichten interpreteren-Azure HDInsight'
+title: 'Debug Apache Hadoop: Logboeken en fout berichten in azure HDInsight'
 description: Meer informatie over de fout berichten die u kunt ontvangen bij het beheren van HDInsight met behulp van Power shell en stappen die u moet uitvoeren om te herstellen.
 ms.reviewer: jasonh
 author: ashishthaps
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 847b36c2aab761383a4a25bd4da5c626c4744ce1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2e5cb1676670642121caec71a973374063fe4320
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935479"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044844"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Apache Hadoop-Logboeken in azure HDInsight analyseren
 
