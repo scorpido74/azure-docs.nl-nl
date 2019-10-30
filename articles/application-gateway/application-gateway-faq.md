@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858542"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025004"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -186,7 +187,7 @@ Zie [volg orde van verwerkings regels](https://docs.microsoft.com/azure/applicat
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>Wat is het veld host voor aangepaste tests?
 
-In het veld host geeft u de naam op voor het verzenden van de test wanneer u meerdere locaties op Application Gateway hebt geconfigureerd. Gebruik anders ' 127.0.0.1 '. Deze waarde wijkt af van de hostnaam van de virtuele machine. De indeling is \<protocol\>://\<host\>:\<poort\>pad.\>\<
+In het veld host geeft u de naam op voor het verzenden van de test wanneer u meerdere locaties op Application Gateway hebt geconfigureerd. Gebruik anders ' 127.0.0.1 '. Deze waarde wijkt af van de hostnaam van de virtuele machine. De indeling is \<protocol\>://\<host\>:\<poort\>\<pad\>.
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>Kan ik Application Gateway toegang tot slechts enkele bron-IP-adressen toestaan?
 
@@ -269,7 +270,7 @@ Application Gateway ondersteunt Maxi maal 100 SSL-certificaten.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Hoeveel authenticatie certificaten voor back-end versleuteling Application Gateway ondersteuning?
 
-Application Gateway ondersteunt Maxi maal 10 verificatie certificaten. De standaard waarde is 5.
+Application Gateway ondersteunt Maxi maal 100 verificatie certificaten.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Biedt Application Gateway systeem eigen integratie met Azure Key Vault?
 
@@ -333,19 +334,19 @@ Ja. Voor meer informatie raadpleegt u [Azure-toepassing gateway en Web Applicati
 
 Application Gateway biedt drie logboeken: 
 
-* **ApplicationGatewayAccessLog**: Het toegangs logboek bevat elke aanvraag die wordt verzonden naar het front-end van de toepassings gateway. De gegevens omvatten het IP-adres van de beller, de aangevraagde URL, reactie latentie, retour code en bytes in en uit. Het toegangs logboek wordt elke 300 seconden verzameld. Het bevat één record per toepassings gateway.
-* **ApplicationGatewayPerformanceLog**: In het prestatie logboek worden prestatie gegevens voor elke toepassings gateway vastgelegd. De informatie omvat de door Voer in bytes, totaal aantal geleverde aanvragen, aantal mislukte aanvragen en een gezonde en slechte back-end van een backend-exemplaar.
-* **ApplicationGatewayFirewallLog**: Voor toepassings gateways die u configureert met WAF, bevat het logboek van de firewall aanvragen die zijn geregistreerd via de detectie modus of de preventie modus.
+* **ApplicationGatewayAccessLog**: het toegangs logboek bevat elke aanvraag die is verzonden naar het front Application Gateway-front-end. De gegevens omvatten het IP-adres van de beller, de aangevraagde URL, reactie latentie, retour code en bytes in en uit. Het toegangs logboek wordt elke 300 seconden verzameld. Het bevat één record per toepassings gateway.
+* **ApplicationGatewayPerformanceLog**: in het prestatie logboek worden prestatie gegevens voor elke toepassings gateway vastgelegd. De informatie omvat de door Voer in bytes, totaal aantal geleverde aanvragen, aantal mislukte aanvragen en een gezonde en slechte back-end van een backend-exemplaar.
+* **ApplicationGatewayFirewallLog**: voor toepassings gateways die u CONFIGUREERT met WAF, bevat het logboek van de firewall aanvragen die zijn geregistreerd via de detectie modus of de modus voor preventie.
 
 Zie voor meer informatie [back-end status, Diagnostische logboeken en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Hoe kan ik weet of de leden van de back-endadresgroep in orde zijn?
 
-Controleer de status met behulp van `Get-AzApplicationGatewayBackendHealth` de Power shell-cmdlet of de portal. Zie [Application Gateway Diagnostics](application-gateway-diagnostics.md)(diagnostische gegevens) voor meer informatie.
+Controleer de status met behulp van de Power shell-cmdlet `Get-AzApplicationGatewayBackendHealth` of de portal. Zie [Application Gateway Diagnostics (diagnostische](application-gateway-diagnostics.md)gegevens) voor meer informatie.
 
 ### <a name="whats-the-retention-policy-for-the-diagnostic-logs"></a>Wat is het Bewaar beleid voor de diagnostische logboeken?
 
-Diagnostische logboeken stroomt naar het opslag account van de klant. Klanten kunnen het Bewaar beleid instellen op basis van hun voor keur. Diagnostische logboeken kunnen ook worden verzonden naar een Event Hub-of Azure Monitor-Logboeken. Zie [Application Gateway Diagnostics](application-gateway-diagnostics.md)(diagnostische gegevens) voor meer informatie.
+Diagnostische logboeken stroomt naar het opslag account van de klant. Klanten kunnen het Bewaar beleid instellen op basis van hun voor keur. Diagnostische logboeken kunnen ook worden verzonden naar een Event Hub-of Azure Monitor-Logboeken. Zie [Application Gateway Diagnostics (diagnostische](application-gateway-diagnostics.md)gegevens) voor meer informatie.
 
 ### <a name="how-do-i-get-audit-logs-for-application-gateway"></a>Hoe kan ik audit logboeken voor Application Gateway ophalen?
 

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 7a7085eccf05fb65bf7b9036c738a1d17e91a433
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 467bf7fe26df2f826d6d44d42a9e30b98795232f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935900"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043931"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Tekst met gemiddelde van de API-console
 
@@ -173,4 +173,4 @@ Raadpleeg de conceptuele hand leiding voor [tekst toezicht](text-moderation-api.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de REST API in uw code of begin met de [tekst toezicht .net Quick](text-moderation-quickstart-dotnet.md) start om te integreren met uw toepassing.
+Gebruik de REST API in uw code of volg de [.NET SDK Quick](dotnet-sdk-quickstart.md) start om te integreren met uw toepassing.

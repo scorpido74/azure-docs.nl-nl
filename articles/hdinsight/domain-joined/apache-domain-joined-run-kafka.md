@@ -1,18 +1,18 @@
 ---
-title: Zelf studie-Apache Kafka met Enterprise Security Package in azure HDInsight
+title: Zelf studie-Apache Kafka & Enter prise Security-Azure HDInsight
 description: 'Zelf studie: informatie over het configureren van Apache zwerver-beleids regels voor Kafka in azure HDInsight met Enterprise Security Package.'
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037172"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044635"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Zelfstudie: Apache Kafka-beleidsregels configureren in HDInsight met Enterprise Security Package (preview)
 
@@ -26,7 +26,7 @@ In deze zelfstudie leert u het volgende:
 > * Onderwerpen in een Kafka-cluster maken
 > * Ranger-beleidsregels testen
 
-## <a name="prerequisite"></a>Vereiste
+## <a name="prerequisite"></a>Vereisten
 
 Een [HDInsight Kafka-cluster met Enterprise Security Package](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -48,13 +48,13 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
 
 1. Open de **beheerinterface van Ranger**.
 
-2. **Selecteer\<clustername > _kafka** onder **Kafka**. Er kan één vooraf geconfigureerd beleid worden weergegeven.
+2. Selecteer **\<cluster naam > _kafka** onder **Kafka**. Er kan één vooraf geconfigureerd beleid worden weergegeven.
 
 3. Selecteer **Nieuw beleid toevoegen** en voer de volgende waarden in:
 
    |Instelling  |Voorgestelde waarde  |
    |---------|---------|
-   |Beleidsnaam  |  hdi sales* policy   |
+   |Policy Name  |  hdi sales* policy   |
    |Onderwerp   |  sales* |
    |Select User  |  sales_user1 |
    |Machtigingen  | Publish, Consume, Create |
@@ -74,7 +74,7 @@ Maak een Ranger-beleid voor **sales_user** en **marketing_user**.
 
    |Instelling  |Voorgestelde waarde  |
    |---------|---------|
-   |Beleidsnaam  |  hdi marketing policy   |
+   |Policy Name  |  hdi marketing policy   |
    |Onderwerp   |  marketingspend |
    |Select User  |  marketing_user1 |
    |Machtigingen  | Publish, Consume, Create |
@@ -112,7 +112,7 @@ Twee onderwerpen, `salesevents` en `marketingspend`, maken:
 
 1. Download de [voorbeelden voor aan een domein gekoppelde Apache Kafka voor producer/consumer](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Volg stap 2 en 3 onder **Het voorbeeld bouwen en implementeren** in [Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)
+1. Volg stap 2 en 3 onder **Het voorbeeld compileren en implementeren** in [Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example)
 
 1. Voer de volgende opdrachten uit:
 
@@ -145,7 +145,7 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
    Voorbeeld: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. Volg stap 3 onder **Het voorbeeld bouwen en implementeren** in [Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) om ervoor te zorgen dat de `kafka-producer-consumer.jar` ook beschikbaar is voor **sales_user**.
+4. Volg stap 3 onder **Build en implementeer het voor beeld** in [zelf studie: gebruik de Apache Kafka producer-en Consumer-api's](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) om ervoor te zorgen dat de `kafka-producer-consumer.jar` ook beschikbaar is voor **sales_user**.
 
 5. Controleer of **sales_user1** het onderwerp `salesevents` kan produceren. Voer hiervoor de volgende opdracht uit:
 
@@ -189,7 +189,7 @@ Op basis van de geconfigureerde Ranger-beleidsregels kan **sales_user** het onde
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het Kafka-cluster dat u hebt gemaakt met de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 1. Selecteer onder **Services** de optie **HDInsight-clusters**.
 1. Klik in de lijst met HDInsight-clusters die wordt weergegeven, op de **...** naast het cluster dat u voor deze zelfstudie hebt gemaakt. 

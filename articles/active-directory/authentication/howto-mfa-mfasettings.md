@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62ceff25b022866e47e6fdd488b01dd647cf550f
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: dfca7ef1dabb8c6021c9df2e3174d3e208a839b5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808204"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042099"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -114,6 +114,8 @@ Hier kunt u e-mail adressen configureren voor gebruikers die e-mails met fraude 
 
 >[!NOTE]
 >Wanneer Multi-Factor Authentication aanroepen via het open bare telefoonnet werk worden geplaatst, worden ze soms doorgestuurd via een transporteur die geen beller-ID ondersteunt. Als gevolg hiervan is de beller-ID niet gegarandeerd, zelfs al wordt deze door het Multi-Factor Authentication-systeem altijd verzonden.
+
+In de Verenigde Staten, als u de MFA-beller-ID nog niet hebt geconfigureerd, zijn Voice-aanroepen van micro soft afkomstig van de volgende nummers: + 1 (866) 539 4191, + 1 (855) 330 8653 en + 1 (877) 668 6536. Als u spam filters gebruikt, moet u deze nummers uitsluiten.
 
 ### <a name="custom-voice-messages"></a>Aangepaste spraak berichten
 
@@ -387,7 +389,7 @@ Meer informatie over het gebruik van verificatie methoden vindt u in het artikel
 De functie _multi-factor Authentication onthouden_ voor apparaten en browsers die worden vertrouwd door de gebruiker is een gratis functie voor alle multi-factor Authentication-gebruikers. Gebruikers kunnen volgende controles over een bepaald aantal dagen overs Laan nadat ze zijn aangemeld bij een apparaat met behulp van Multi-Factor Authentication. De functie verbetert de bruikbaarheid door het aantal keren dat een gebruiker verificatie in twee stappen moet uitvoeren op hetzelfde apparaat te minimaliseren.
 
 >[!IMPORTANT]
->Als een account of apparaat is aangetast, kan de beveiliging worden beïnvloed door Multi-Factor Authentication voor vertrouwde apparaten. Als er een bedrijfs account wordt aangetast of een vertrouwd apparaat verloren is gegaan of wordt gestolen, moet u [multi-factor Authentication op alle apparaten herstellen](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
+>Als een account of apparaat is aangetast, kan de beveiliging worden beïnvloed door Multi-Factor Authentication voor vertrouwde apparaten. Als er een bedrijfs account wordt aangetast of een vertrouwd apparaat verloren is gegaan of wordt gestolen, moet u [MFA-sessies intrekken](howto-mfa-userdevicesettings.md).
 >
 >Met de herstel actie wordt de vertrouwde status van alle apparaten ingetrokken en de gebruiker moet de verificatie in twee stappen opnieuw uitvoeren. U kunt uw gebruikers ook de opdracht geven om Multi-Factor Authentication op hun eigen apparaten te herstellen met de instructies in [uw instellingen beheren voor verificatie in twee stappen](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
 

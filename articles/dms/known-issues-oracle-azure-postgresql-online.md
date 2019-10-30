@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/03/2019
-ms.openlocfilehash: bc37c7cb11b973f89695b5631ec9569ff6b94608
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71801786"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053655"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van Oracle naar Azure DB voor PostgreSQL-één server
 
@@ -39,7 +39,7 @@ Azure Database Migration Service ondersteunt migraties naar Azure Database for P
 
 De volgende gegevens typen worden **niet** gemigreerd:
 
-- BFILE
+- MENU
 - ROWID
 - VERWIJZING
 - UROWID
@@ -63,7 +63,7 @@ Ook lege BLOB-CLOB-kolommen worden toegewezen aan NULL op het doel.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 
-- Klanten moeten SYSDB gebruiken om verbinding te maken met Oracle.
+- Klanten moeten SYSDBA gebruiken om verbinding te maken met Oracle.
 - Gegevens wijzigingen die voortkomen uit partitie-sub-partitie bewerkingen (toevoegen, NEERZETten, EXCHANGE en TRUNCATe) worden niet gemigreerd en kunnen de volgende fouten veroorzaken:
   - Voor het toevoegen van bewerkingen, kunnen updates en verwijderingen op de toegevoegde gegevens een waarschuwing ' 0 rijen die worden beïnvloed ' retour neren.
   - Voor DROP-en TRUNCATe-bewerkingen kunnen nieuwe toevoegingen leiden tot fouten met ' duplicaten '.

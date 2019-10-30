@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c8be547790452774992b9226ca8010532263aaff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814513"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053822"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Een Azure-VM tussen Azure-regio's herstellen
 
@@ -46,9 +46,9 @@ Nadat de Vm's opnieuw zijn beveiligd, kunt u indien nodig een failback uitvoeren
 
 2. Selecteer de virtuele machine in **gerepliceerde items**en selecteer vervolgens **failover**.
 3. Selecteer in **failover**een herstel punt waarvoor failover moet worden uitgevoerd:
-    - **Nieuwste (standaard)** : Verwerkt alle gegevens in de Site Recovery-service en biedt de laagste Recovery Point Objective (RPO).
-    - **Laatst verwerkt**: Hiermee wordt de virtuele machine teruggezet naar het laatste herstel punt dat is verwerkt door Site Recovery.
-    - **Aangepast**: Failover naar een bepaald herstel punt. Deze optie is handig voor het uitvoeren van een testfailover.
+    - **Nieuwste (standaard)** : verwerkt alle gegevens in de site Recovery-service en biedt de laagste Recovery Point OBJECTIVE (RPO).
+    - **Laatst verwerkte**: Hiermee wordt de VM teruggezet naar het laatste herstel punt dat is verwerkt door site Recovery.
+    - **Aangepast**: er wordt een failover uitgevoerd naar een bepaald herstel punt. Deze optie is handig voor het uitvoeren van een testfailover.
 4. Selecteer **computer afsluiten voordat u de failover uitvoert** als u wilt dat site Recovery probeert de vm's in de Dr-regio te afsluiten voordat de failover wordt geactiveerd. De failover wordt voortgezet, zelfs als het afsluiten mislukt. 
 5. Volg de voortgang van de failover op de pagina **Taken**.
 6. Nadat de failover is voltooid, valideert u de virtuele machine door zich aan te melden. U kunt het herstel punt zo nodig wijzigen.
@@ -56,6 +56,9 @@ Nadat de Vm's opnieuw zijn beveiligd, kunt u indien nodig een failback uitvoeren
 8. De VM moet als failover en failback worden weer gegeven.
 
     ![VM op primaire en secundaire regio's](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+
+> [!NOTE]
+> Voor computers waarop de Site Recovery extensie versie 9.28. x. x wordt uitgevoerd, [Update pakket 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery computers in de secundaire nood herstel regio opschoont, wordt nafter failback voltooid en worden de vm's opnieuw beveiligd. Het is niet nodig om Vm's en Nic's hand matig te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

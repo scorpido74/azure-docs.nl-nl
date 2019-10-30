@@ -7,14 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ac81854b5d4ad15f058693a972cf7b79acd01c96
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5927d27a23e5609079ac2380d8fed13e62d1c592
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956766"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027562"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Referentie architectuur voor het controleren van water kwaliteit 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 De oplossing voor het controleren van water kwaliteit kan worden gebouwd met de **Azure IOT Central app-sjabloon** als een toepassing voor het maken van een starter IOT. In dit artikel vindt u richt lijnen voor referentie architectuur op hoog niveau voor het bouwen van een end-to-end-oplossing. 
 

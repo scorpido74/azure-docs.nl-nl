@@ -8,19 +8,19 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637749"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023892"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed processor SDK: Down load en release-opmerkingen
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed processor SDK: down load en release-opmerkingen
 
 > [!div class="op_single_selector"]
 >
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-Wijzigingenfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -37,11 +37,20 @@ ms.locfileid: "68637749"
 |**SDK downloaden**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API-documentatie**|[Documentatie voor de feed processor library API-verwijzing](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
 |**Aan de slag**|[Aan de slag met de wijziging van de .NET SDK voor de feed-processor](change-feed.md)|
-|**Huidige ondersteunde framework**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
+|**Huidig ondersteund Framework**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET kern](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
 ### <a name="v2-builds"></a>v2-builds
+
+### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+* Verbeteringen in stabiliteit en diagnose:
+  * Er is ondersteuning toegevoegd om het lezen van de Lees wijziging te detecteren lange tijd. Wanneer het langer duurt dan de waarde die is opgegeven door de eigenschap `ChangeFeedProcessorOptions.ChangeFeedTimeout`, worden de volgende stappen uitgevoerd:
+    * De bewerking voor het lezen van de wijzigings feed op de problematische partitie is afgebroken.
+    * Het wijzigings proces van de feed-processor valt buiten het eigendom van de problematische lease. De verwijderde lease wordt opgehaald tijdens de volgende stap voor het verkrijgen van de lease, die wordt uitgevoerd door dezelfde of een ander exemplaar van de feed voor wijzigings instanties. Op deze manier wordt de Lees wijzigings feed opnieuw gestart.
+    * Er wordt een probleem gerapporteerd aan de health monitor. Met de standaard health monitor worden alle gerapporteerde problemen naar het tracerings logboek verzonden.
+  * Er is een nieuwe open bare eigenschap toegevoegd: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. De standaard waarde van deze eigenschap is 10 minuten.
+  * Er is een nieuwe open bare Enum-waarde toegevoegd: `Monitoring.MonitoredOperation.ReadChangeFeed`. Wanneer de waarde van `HealthMonitoringRecord.Operation` is ingesteld op `Monitoring.MonitoredOperation.ReadChangeFeed`, wordt hiermee aangegeven dat het status probleem betrekking heeft op het lezen van wijzigings invoer.
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
 * De strategie voor taak verdeling is verbeterd wanneer het ophalen van alle leases langer duurt dan het verloop interval van de lease, bijvoorbeeld door netwerk problemen:
@@ -80,8 +89,8 @@ ms.locfileid: "68637749"
 * Lagere verbeteringen voor diagnostische gegevens.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
-* Er is een nieuwe API&lt;(&lt;taak&gt; IReadOnlyList RemainingPartitionWork&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync) toegevoegd. Dit kan worden gebruikt om de geschatte hoeveelheid werk voor elke partitie te verkrijgen.
-* Supports Microsoft.Azure.DocumentDB SDK 2.0. Vereist micro soft. Azure. DocumentDB 2,0 of hoger.
+* Er is een nieuwe API (taak&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync () toegevoegd. Dit kan worden gebruikt om de geschatte hoeveelheid werk voor elke partitie te verkrijgen.
+* Biedt ondersteuning voor micro soft. Azure. DocumentDB SDK 2,0. Vereist micro soft. Azure. DocumentDB 2,0 of hoger.
 
 ### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
 * De open bare eigenschap ChangeFeedEventHost. HostName is toegevoegd voor compatibiliteit met v1.
@@ -90,7 +99,7 @@ ms.locfileid: "68637749"
 * Er is een race voorwaarde opgelost die plaatsvindt tijdens het splitsen van de partitie. De race voorwaarde kan leiden tot het verkrijgen van een lease en deze onmiddellijk verliezen tijdens het splitsen van partities en leidt tot conflicten. Het probleem met de race voorwaarde is opgelost met deze release.
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
-* GA-SDK
+* GA SDK
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-Prerelease
 * De volgende problemen zijn verholpen:
@@ -98,10 +107,10 @@ ms.locfileid: "68637749"
   * De GetEstimatedRemainingWork-API heeft 0 geretourneerd wanneer er geen leases in de lease verzameling aanwezig waren.
 
 * De volgende uitzonde ringen worden openbaar gemaakt. Uitbrei dingen die IPartitionProcessor implementeren, kunnen deze uitzonde ringen genereren.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.LeaseLostException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionException. 
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
-  * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
+  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. LeaseLostException. 
+  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. PartitionException. 
+  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. PartitionNotFoundException.
+  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. PartitionSplitException. 
 
 ### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-Prerelease
 * Kleine wijzigingen in de API:
@@ -142,7 +151,7 @@ ms.locfileid: "68637749"
 * Compatibel met [SQL .NET SDK](sql-api-sdk-dotnet.md) versie 1,21 en hoger.
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Voegt ondersteuning toe voor .NET Standard 2,0. Het pakket ondersteunt `netstandard2.0` nu en `net451` Framework-monikers.
+* Voegt ondersteuning toe voor .NET Standard 2,0. Het pakket ondersteunt nu `netstandard2.0` en `net451` Framework-monikers.
 * Compatibel met de 1.17.0 en de bovenstaande versie van [SQL .NET SDK](sql-api-sdk-dotnet.md) .
 * Compatibel met [SQL .net core SDK](sql-api-sdk-dotnet-core.md) versies 1.5.1 en hoger.
 
@@ -155,28 +164,29 @@ ms.locfileid: "68637749"
 * Compatibel met de 1.13.2 en de bovenstaande versie van [SQL .NET SDK](sql-api-sdk-dotnet.md) .
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA-SDK
+* GA SDK
 * Compatibel met de 1.14.1 en onderstaande versies van [SQL .NET SDK](sql-api-sdk-dotnet.md) .
 
 ## <a name="release--retirement-dates"></a>Uittredings datums &
 
-Microsoft biedt melding ten minste **12 maanden** voorafgaand aan buiten gebruik stellen van een SDK soepel te verwerken de overgang naar een nieuwere/ondersteunde versie.
+Micro soft zal ten minste **twaalf maanden** vóór het buiten gebruik stellen van een SDK een melding ontvangen om de overgang naar een nieuwere/ondersteunde versie te versoepelen.
 
 Nieuwe functies en functionaliteiten en Optima Lise ringen worden alleen toegevoegd aan de huidige SDK. het wordt daarom aangeraden dat u zo snel mogelijk een upgrade naar de nieuwste SDK-versie uitvoert. 
 
-Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
+Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK worden geweigerd door de service.
 
 <br/>
 
-| Versie | Releasedatum | Vervaldatum |
+| Version | Release datum | Buitengebruikstellings datum |
 | --- | --- | --- |
+| [2.2.8](#2.2.8) |28 oktober 2019 |--- |
 | [2.2.7](#2.2.7) |14 mei 2019 |--- |
 | [2.2.6](#2.2.6) |29 januari 2019 |--- |
 | [2.2.5](#2.2.5) |13 december 2018 |--- |
 | [2.2.4](#2.2.4) |29 november 2018 |--- |
 | [2.2.3](#2.2.3) |19 november 2018 |--- |
 | [2.2.2](#2.2.2) |31 oktober 2018 |--- |
-| [2.2.1](#2.2.1) |24 oktober 2018 |--- |
+| [punten](#2.2.1) |24 oktober 2018 |--- |
 | [1.3.3](#1.3.3) |08 mei 2018 |--- |
 | [1.3.2](#1.3.2) |18 april 2018 |--- |
 | [1.3.1](#1.3.1) |13 maart 2018 |--- |
@@ -191,4 +201,4 @@ Een aanvraag voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK w
 
 ## <a name="see-also"></a>Zie ook
 
-Zie voor meer informatie over Cosmos DB, [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) servicepagina.
+Zie [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service-pagina voor meer informatie over Cosmos db.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 961b54a4d7c9caee98497e5d2b8db86284084d15
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842712"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023882"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Azure Active Directory Domain Services inschakelen met behulp van Power shell
 
@@ -64,7 +64,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Wanneer de groep *Aad DC-Administrators* is gemaakt, voegt u een gebruiker aan de groep toe met behulp van de cmdlet [add-AzureADGroupMember][Add-AzureADGroupMember] . U krijgt eerst de groeps object-ID voor *Aad DC-Administrators* met behulp van de cmdlet [Get-AzureADGroup][Get-AzureADGroup] en vervolgens de object-id van de gewenste gebruiker met de cmdlet [Get-AzureADUser][Get-AzureADUser] .
 
-In het volgende voor beeld is dit de gebruikers object-ID voor het account met `admin@contoso.onmicrosoft.com`een UPN van. Vervang dit gebruikers account door de UPN van de gebruiker die u wilt toevoegen aan de groep *Aad DC-Administrators* :
+In het volgende voor beeld wordt de gebruikers object-ID voor het account met een UPN van `admin@contoso.onmicrosoft.com`. Vervang dit gebruikers account door de UPN van de gebruiker die u wilt toevoegen aan de groep *Aad DC-Administrators* :
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -130,6 +130,12 @@ $Vnet= New-AzVirtualNetwork `
 
 Nu gaan we een beheerd domein van Azure AD DS maken. Stel de ID van uw Azure-abonnement in en geef een naam op voor het beheerde domein, zoals *contoso.com*. U kunt uw abonnements-ID ophalen met behulp van de cmdlet [Get-AzSubscription][Get-AzSubscription] .
 
+Als u een regio kiest die Beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources verdeeld over zones voor extra redundantie.
+
+Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's.
+
+Er is niets waarmee u kunt configureren voor Azure AD DS worden gedistribueerd over meerdere zones. Het Azure-platform verwerkt automatisch de zone distributie van resources. Zie [Wat zijn Beschikbaarheidszones in azure?][availability-zones]voor meer informatie en om de beschik baarheid van regio's te bekijken.
+
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
 $ManagedDomainName = "contoso.com"
@@ -148,11 +154,13 @@ Wanneer de Azure Portal laat zien dat de inrichting van het beheerde Azure AD DS
 
 * Werk de DNS-instellingen voor het virtuele netwerk bij, zodat de virtuele machines het beheerde domein kunnen vinden voor het lid worden van het domein of de verificatie.
     * Als u DNS wilt configureren, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd deze DNS-instellingen automatisch te configureren.
+* Als u een beheerd domein van Azure AD DS hebt gemaakt in een regio die Beschikbaarheidszones ondersteunt, maakt u een netwerk beveiligings groep om het verkeer in het virtuele netwerk voor het door Azure AD DS beheerde domein te beperken. Er wordt een Azure Standard-load balancer gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerk beveiligings groep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
+    * Als u de netwerk beveiligings groep en de vereiste regels wilt maken, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd om de netwerk beveiligings groep automatisch te maken en te configureren.
 * [Wachtwoord synchronisatie inschakelen voor Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eind gebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfs referenties.
 
 ## <a name="complete-powershell-script"></a>Power shell-script volt ooien
 
-In het volgende volledige Power shell-script worden alle taken gecombineerd die in dit artikel worden weer gegeven. Kopieer het script en sla het op in een bestand met `.ps1` een extensie. Voer het script uit in een lokale Power shell-console of in de [Azure Cloud shell][cloud-shell].
+In het volgende volledige Power shell-script worden alle taken gecombineerd die in dit artikel worden weer gegeven. Kopieer het script en sla het op in een bestand met de extensie `.ps1`. Voer het script uit in een lokale Power shell-console of in de [Azure Cloud shell][cloud-shell].
 
 > [!NOTE]
 > Als u Azure AD DS wilt inschakelen, moet u een globale beheerder zijn voor de Azure AD-Tenant. U hebt ook ten minste *Inzender* bevoegdheden nodig in het Azure-abonnement.
@@ -233,6 +241,8 @@ Wanneer de Azure Portal laat zien dat de inrichting van het beheerde Azure AD DS
 
 * Werk de DNS-instellingen voor het virtuele netwerk bij, zodat de virtuele machines het beheerde domein kunnen vinden voor het lid worden van het domein of de verificatie.
     * Als u DNS wilt configureren, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd deze DNS-instellingen automatisch te configureren.
+* Als u een beheerd domein van Azure AD DS hebt gemaakt in een regio die Beschikbaarheidszones ondersteunt, maakt u een netwerk beveiligings groep om het verkeer in het virtuele netwerk voor het door Azure AD DS beheerde domein te beperken. Er wordt een Azure Standard-load balancer gemaakt waarvoor deze regels moeten worden uitgevoerd. Deze netwerk beveiligings groep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
+    * Als u de netwerk beveiligings groep en de vereiste regels wilt maken, selecteert u uw door Azure AD DS beheerde domein in de portal. In het **overzichts** venster wordt u gevraagd om de netwerk beveiligings groep automatisch te maken en te configureren.
 * [Wachtwoord synchronisatie inschakelen voor Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) zodat eind gebruikers zich kunnen aanmelden bij het beheerde domein met hun bedrijfs referenties.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -258,3 +268,4 @@ Als u de Azure AD DS beheerde domein in actie wilt zien, kunt u [een domein toev
 [New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[availability-zones]: ../availability-zones/az-overview.md

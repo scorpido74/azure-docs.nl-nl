@@ -1,6 +1,6 @@
 ---
-title: Blob storage gegevens verplaatsen met Azure Storage Explorer - Team Data Science Process
-description: Gegevens met Azure Storage Explorer verplaatsen van en naar Azure Blob-opslag
+title: Blob Storage-gegevens verplaatsen met Azure Storage Explorer-team data Science process
+description: Meer informatie over het gebruik van Azure Storage Explorer voor het uploaden en downloaden van gegevens uit Azure Blob-opslag.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,45 +11,45 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 880b81c07aeed7359dfe35e1361a20ecb11e27dd
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61430752"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053960"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Gegevens verplaatsen naar en van Azure Blob Storage met behulp van Azure Storage Explorer
-Azure Storage Explorer is een gratis hulpprogramma van Microsoft waarmee u werkt met Azure Storage-gegevens op Windows, macOS en Linux. In dit onderwerp wordt beschreven hoe u kunt gebruiken om te uploaden en downloaden van gegevens uit Azure blob-opslag. Het hulpprogramma kan worden gedownload vanaf [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
+# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Gegevens verplaatsen van en naar Azure Blob Storage met behulp van Azure Storage Explorer
+Azure Storage Explorer is een gratis hulp programma van micro soft waarmee u met Azure Storage gegevens kunt werken in Windows, macOS en Linux. In dit onderwerp wordt beschreven hoe u dit kunt gebruiken om gegevens uit Azure Blob-opslag te uploaden en te downloaden. Het hulp programma kan worden gedownload van [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 > [!NOTE]
-> Als u virtuele machine die is ingesteld met behulp van de scripts die is geleverd door [Data Science Virtual machines in Azure](virtual-machines.md), en vervolgens Azure Storage Explorer al is geïnstalleerd op de virtuele machine.
+> Als u een VM gebruikt die is ingesteld met de scripts van [Data Science virtual machines in azure](virtual-machines.md), is Azure Storage Explorer al geïnstalleerd op de VM.
 > 
 > [!NOTE]
-> Raadpleeg voor een volledige Inleiding tot Azure blob-opslag, [grondbeginselen van Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) en [Azure Blob-Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).   
+> Raadpleeg Azure [BLOB-basis beginselen](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) en [Azure Blob-service](https://msdn.microsoft.com/library/azure/dd179376.aspx)voor een volledige inleiding tot Azure Blob-opslag.   
 > 
 > 
 
 ## <a name="prerequisites"></a>Vereisten
-Dit document wordt ervan uitgegaan dat u een Azure-abonnement, een storage-account en de bijbehorende opslagsleutel voor dat account hebt. Voordat u gegevens uploadt/downloadt, moet u uw Azure-opslag account naam en de accountsleutel weten. 
+In dit document wordt ervan uitgegaan dat u een Azure-abonnement, een opslag account en de bijbehorende opslag sleutel voor dat account hebt. Voordat u gegevens kunt uploaden/downloaden, moet u de naam en de account sleutel van uw Azure Storage-account kennen. 
 
-* Als u een Azure-abonnement instelt, Zie [gratis proefversie van één maand](https://azure.microsoft.com/pricing/free-trial/).
-* Zie voor instructies over het maken van een storage-account en voor het ophalen van account en sleutelgegevens [over Azure storage-accounts](../../storage/common/storage-create-storage-account.md). Noteer de toegangssleutel voor uw storage-account, moet u deze sleutel verbinding maken met het account met het hulpprogramma Azure Storage Explorer.
-* Het Azure Storage Explorer-hulpprogramma kan worden gedownload vanaf [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Accepteer de standaardwaarden tijdens de installatie.
+* Zie [een gratis proef versie van één maand](https://azure.microsoft.com/pricing/free-trial/)voor meer informatie over het instellen van een Azure-abonnement.
+* Zie [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md)voor instructies over het maken van een opslag account en voor het ophalen van account-en sleutel gegevens. Maak een notitie van de toegangs sleutel voor uw opslag account, omdat u deze sleutel nodig hebt om verbinding te maken met het account met het Azure Storage Explorer hulp programma.
+* Het hulp programma Azure Storage Explorer kan worden gedownload van [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Accepteer de standaard instellingen tijdens de installatie.
 
 <a id="explorer"></a>
 
 ## <a name="use-azure-storage-explorer"></a>Azure Storage Explorer gebruiken
-De volgende stappen uit het document over het uploaden/downloaden van gegevens met behulp van Azure Storage Explorer. 
+In de volgende stappen wordt beschreven hoe u gegevens kunt uploaden/downloaden met behulp van Azure Storage Explorer. 
 
 1. Start Microsoft Azure Storage Explorer.
-2. Om de **aanmelden bij uw account...**  wizard de optie **Azure-Accountinstellingen** pictogram, klikt u vervolgens **een account toevoegen** en geef de referenties. ![Een Azure storage-account toevoegen](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. Om de **verbinding maken met Azure Storage** wizard selecteert u de **verbinding maken met Azure storage** pictogram. ![Klik op "Verbinding maken met Azure storage"](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. Voer de toegangssleutel van uw Azure storage-account op de **verbinding maken met Azure Storage** wizard en vervolgens **volgende**. ![Toegangssleutel voor het invoeren van Azure storage-account](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
-5. Voer de naam van opslagaccount in de **accountnaam** vak en selecteer vervolgens **volgende**. ![Externe opslag koppelen](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
-6. Het opslagaccount toegevoegd moet nu worden weergegeven. Voor het maken van een blob-container in een opslagaccount, met de rechtermuisknop op de **Blobcontainers** knooppunt in het account, selecteer **Blob-Container maken**, en voer een naam.
-7. Als u wilt gegevens uploaden naar een container, selecteert u de doelcontainer en klik op de **uploaden** knop.![ Storage-accounts](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. Klik op de **...**  aan de rechterkant van de **bestanden** Selecteer een of meerdere bestanden voor het uploaden van het bestandssysteem en klikt u op **uploaden** om te beginnen met uploaden van de bestanden.![ Bestanden uploaden](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
-9. Voor het downloaden van gegevens, het selecteren van de blob in de bijbehorende container om te downloaden en klikt u op **downloaden**. ![Bestanden downloaden](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
+2. Als u de wizard **Aanmelden bij uw account...** wilt openen, selecteert u het pictogram **Azure-account instellingen** , **voegt u een account toe** en voert u de referenties in. ![een Azure Storage-account toevoegen](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
+3. Als u de wizard **verbinding maken met Azure Storage** wilt openen, selecteert u het pictogram **verbinding maken met Azure-opslag** . ![op ' verbinding maken met Azure Storage '](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. Voer de toegangs sleutel van uw Azure-opslag account in op de wizard **verbinding maken met Azure Storage** en vervolgens op **volgende**. ![Voer de toegangs sleutel in vanuit het Azure Storage-account](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+5. Voer de naam van het opslag account in het vak **account naam** in en selecteer **volgende**. externe opslag ![koppelen](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
+6. Het toegevoegde opslag account moet nu worden weer gegeven. Als u een BLOB-container in een opslag account wilt maken, klikt u met de rechter muisknop op het knoop punt **BLOB containers** in dat account, selecteert u **BLOB-container maken**en voert u een naam in.
+7. Als u gegevens wilt uploaden naar een container, selecteert u de doel container en klikt u op de knop **uploaden** .![Storage-accounts](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+8. Klik op de **...** rechts van het vak **bestanden** , selecteer een of meer bestanden die u wilt uploaden uit het bestands systeem en klik op **uploaden** om te beginnen met het uploaden van de bestanden.![bestanden uploaden](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+9. Als u gegevens wilt downloaden, selecteert u de BLOB in de bijbehorende container om te downloaden en klikt u op **downloaden**. bestanden ![downloaden](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

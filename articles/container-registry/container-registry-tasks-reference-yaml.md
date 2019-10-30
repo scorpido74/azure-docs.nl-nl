@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/12/2019
+ms.date: 10/23/2019
 ms.author: danlep
-ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6e55b65d58fe6545d8212b4233f2f45261d18ee5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638916"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043889"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Naslag informatie over ACR-taken: YAML
 
@@ -23,9 +23,9 @@ Dit artikel bevat informatie over het maken van YAML-bestanden met meerdere stap
 
 ## <a name="acr-taskyaml-file-format"></a>ACR-taak. yaml-bestands indeling
 
-ACR-taken bieden ondersteuning voor een taak declaratie met meerdere stappen in de standaard YAML-syntaxis. U definieert de stappen van een taak in een YAML-bestand. U kunt de taak vervolgens hand matig uitvoeren door het bestand door te geven aan de opdracht [AZ ACR run][az-acr-run] . U kunt ook het bestand gebruiken om een taak te maken met [AZ ACR Task Create][az-acr-task-create] die automatisch wordt geactiveerd door een update van Git of basis installatie kopie. Hoewel in dit artikel wordt `acr-task.yaml` verwezen naar het bestand dat de stappen bevat, ondersteunt ACR-taken een geldige bestands naam met een [ondersteunde extensie](#supported-task-filename-extensions).
+ACR-taken bieden ondersteuning voor een taak declaratie met meerdere stappen in de standaard YAML-syntaxis. U definieert de stappen van een taak in een YAML-bestand. U kunt de taak vervolgens hand matig uitvoeren door het bestand door te geven aan de opdracht [AZ ACR run][az-acr-run] . U kunt ook het bestand gebruiken om een taak te maken met [AZ ACR Task Create][az-acr-task-create] die automatisch wordt geactiveerd door een update van Git of basis installatie kopie. Hoewel in dit artikel wordt verwezen naar `acr-task.yaml` als het bestand dat de stappen bevat, ondersteunt ACR-taken een geldige bestands naam met een [ondersteunde extensie](#supported-task-filename-extensions).
 
-Primitieven op het `acr-task.yaml` hoogste niveau zijn **taak eigenschappen**, **typen stappen**en **stap-eigenschappen**:
+De op het hoogste niveau `acr-task.yaml` primitieven zijn **taak eigenschappen**, **typen stappen**en **stap-eigenschappen**:
 
 * [Taak eigenschappen](#task-properties) zijn van toepassing op alle stappen in de taak uitvoering. Er zijn verschillende algemene taak eigenschappen, waaronder:
   * `version`
@@ -41,7 +41,7 @@ Primitieven op het `acr-task.yaml` hoogste niveau zijn **taak eigenschappen**, *
   * `when`
   * ... en nog veel meer.
 
-De basis indeling van een `acr-task.yaml` bestand, met inbegrip van enkele algemene stap eigenschappen, volgt. Hoewel een volledig overzicht van alle beschik bare stap-eigenschappen of het gebruik van het stap type niet wordt weer gegeven, biedt het een beknopt beeld van de Basic-bestands indeling.
+De basis indeling van een `acr-task.yaml`-bestand, met inbegrip van enkele algemene stap eigenschappen, volgt. Hoewel een volledig overzicht van alle beschik bare stap-eigenschappen of het gebruik van het stap type niet wordt weer gegeven, biedt het een beknopt beeld van de Basic-bestands indeling.
 
 ```yml
 version: # acr-task.yaml format version.
@@ -56,7 +56,7 @@ steps: # A collection of image or container actions.
 
 ### <a name="supported-task-filename-extensions"></a>Ondersteunde bestandsnaam extensies van de taak
 
-ACR-taken hebben verschillende bestandsnaam extensies gereserveerd, `.yaml`waaronder, dat deze worden verwerkt als een taak bestand. Elke uitbrei ding die *niet* in de volgende lijst voor komt, wordt beschouwd door ACR-taken als een Dockerfile:. yaml,. yml,. toml,. json,. sh,. bash,. zsh,. ps1,. ps,. cmd,. bat,.
+ACR-taken hebben diverse bestandsnaam extensies gereserveerd, waaronder `.yaml`, die worden verwerkt als een taak bestand. Elke uitbrei ding die *niet* in de volgende lijst voor komt, wordt beschouwd door ACR-taken als een Dockerfile:. yaml,. yml,. toml,. json,. sh,. bash,. zsh,. ps1,. ps,. cmd,. bat,.
 
 YAML is de enige bestands indeling die momenteel door ACR-taken wordt ondersteund. De andere bestandsnaam extensies zijn gereserveerd voor mogelijke toekomstige ondersteuning.
 
@@ -68,7 +68,7 @@ In de volgende secties van dit artikel vindt u enkele voor beelden van taak best
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-De opmaak van de voorbeeld opdrachten veronderstelt dat u een standaard register hebt geconfigureerd in de Azure CLI, zodat de `--registry` para meter wordt wegge laten. Als u een standaard register wilt configureren, gebruikt u de opdracht [AZ configure][az-configure] met de `--defaults` para `acr=REGISTRY_NAME` meter, waarmee een waarde wordt geaccepteerd.
+In de opmaak van de voorbeeld opdrachten wordt ervan uitgegaan dat u een standaard register hebt geconfigureerd in de Azure CLI, zodat de para meter `--registry` weglaat. Als u een standaard register wilt configureren, gebruikt u de opdracht [AZ configure][az-configure] met de para meter `--defaults`, waarmee een `acr=REGISTRY_NAME` waarde wordt geaccepteerd.
 
 Als u bijvoorbeeld de Azure CLI wilt configureren met een standaard register met de naam ' myregistry ':
 
@@ -78,32 +78,32 @@ az configure --defaults acr=myregistry
 
 ## <a name="task-properties"></a>Taak eigenschappen
 
-Taak eigenschappen worden meestal boven aan een `acr-task.yaml` bestand weer gegeven en zijn algemene eigenschappen die van toepassing zijn tijdens de volledige uitvoering van de taak stappen. Sommige van deze algemene eigenschappen kunnen in een afzonderlijke stap worden overschreven.
+Taak eigenschappen worden meestal boven aan een `acr-task.yaml`-bestand weer gegeven en zijn algemene eigenschappen die van toepassing zijn tijdens de volledige uitvoering van de taak stappen. Sommige van deze algemene eigenschappen kunnen in een afzonderlijke stap worden overschreven.
 
-| Eigenschap | type | Optioneel | Description | Overschrijven ondersteund | Standaardwaarde |
+| Eigenschap | Type | Optioneel | Beschrijving | Overschrijven ondersteund | Standaardwaarde |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | Ja | De versie van het `acr-task.yaml` bestand zoals geparseerd door de service ACR tasks. Hoewel ACR-taken streven om achterwaartse compatibiliteit te behouden, kunnen met deze waarde ACR-taken de compatibiliteit binnen een gedefinieerde versie behouden blijven. Als u geen waarde opgeeft, wordt de meest recente versie gebruikt. | Nee | Geen |
-| `stepTimeout` | int (seconden) | Ja | Het maximum aantal seconden dat een stap kan worden uitgevoerd. Als de eigenschap is opgegeven voor een taak, wordt de eigenschap Default `timeout` van alle stappen ingesteld. Als de `timeout` eigenschap in een stap is opgegeven, wordt de eigenschap die door de taak is opgegeven, overschreven. | Ja | 600 (10 minuten) |
-| `workingDirectory` | string | Ja | De werkmap van de container tijdens runtime. Als de eigenschap is opgegeven voor een taak, wordt de eigenschap Default `workingDirectory` van alle stappen ingesteld. Als u een stap opgeeft, wordt de eigenschap die door de taak is opgegeven, overschreven. | Ja | `$HOME` |
-| `env` | [teken reeks, teken reeks,...] | Ja |  Matrix van teken reeksen `key=value` in een indeling die de omgevings variabelen voor de taak definieert. Als de eigenschap is opgegeven voor een taak, wordt de eigenschap Default `env` van alle stappen ingesteld. Als u een stap opgeeft, worden de omgevings variabelen die zijn overgenomen van de taak, overschreven. | Geen |
+| `version` | string | Ja | De versie van het `acr-task.yaml`-bestand zoals geparseerd door de service ACR tasks. Hoewel ACR-taken streven om achterwaartse compatibiliteit te behouden, kunnen met deze waarde ACR-taken de compatibiliteit binnen een gedefinieerde versie behouden blijven. Als u geen waarde opgeeft, wordt de meest recente versie gebruikt. | Nee | Geen |
+| `stepTimeout` | int (seconden) | Ja | Het maximum aantal seconden dat een stap kan worden uitgevoerd. Als de eigenschap is opgegeven voor een taak, wordt de standaard eigenschap `timeout` van alle stappen. Als de eigenschap `timeout` is opgegeven in een stap, wordt de eigenschap die door de taak wordt opgegeven, overschreven. | Ja | 600 (10 minuten) |
+| `workingDirectory` | string | Ja | De werkmap van de container tijdens runtime. Als de eigenschap is opgegeven voor een taak, wordt de standaard eigenschap `workingDirectory` van alle stappen. Als u een stap opgeeft, wordt de eigenschap die door de taak is opgegeven, overschreven. | Ja | `$HOME` |
+| `env` | [teken reeks, teken reeks,...] | Ja |  Matrix van teken reeksen in `key=value` indeling waarmee de omgevings variabelen voor de taak worden gedefinieerd. Als de eigenschap is opgegeven voor een taak, wordt de standaard eigenschap `env` van alle stappen. Als u een stap opgeeft, worden de omgevings variabelen die zijn overgenomen van de taak, overschreven. | Geen |
 | `secrets` | [geheim, geheim,...] | Ja | Matrix van [geheime](#secret) objecten. | Geen |
 | `networks` | [netwerk, netwerk,...] | Ja | Matrix van [netwerk](#network) objecten. | Geen |
 
-### <a name="secret"></a>secret
+### <a name="secret"></a>geheim
 
 Het geheim object heeft de volgende eigenschappen.
 
-| Eigenschap | type | Optioneel | Description | Standaardwaarde |
+| Eigenschap | Type | Optioneel | Beschrijving | Standaardwaarde |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | string | Nee | De id van het geheim. | Geen |
 | `keyvault` | string | Ja | De Azure Key Vault geheime URL. | Geen |
 | `clientID` | string | Ja | De client-ID van de door de [gebruiker toegewezen beheerde identiteit](container-registry-tasks-authentication-managed-identity.md) voor Azure-resources. | Geen |
 
-### <a name="network"></a>netwerk
+### <a name="network"></a>Netwerk
 
 Het netwerk object heeft de volgende eigenschappen.
 
-| Eigenschap | type | Optioneel | Description | Standaardwaarde |
+| Eigenschap | Type | Optioneel | Beschrijving | Standaardwaarde |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | string | Nee | De naam van het netwerk. | Geen |
 | `driver` | string | Ja | Het stuur programma voor het beheren van het netwerk. | Geen |
@@ -115,36 +115,36 @@ Het netwerk object heeft de volgende eigenschappen.
 
 ACR-taken ondersteunen drie stap typen. Elk type stap ondersteunt verschillende eigenschappen, die in de sectie voor elk type stap worden beschreven.
 
-| Type stap | Description |
+| Type stap | Beschrijving |
 | --------- | ----------- |
-| [`build`](#build) | Hiermee maakt u een container installatie `docker build` kopie met vertrouwde syntaxis. |
-| [`push`](#push) | Hiermee voert u `docker push` een van de zojuist gemaakte of gelabelde installatie kopieën uit in een container register. Azure Container Registry, andere persoonlijke registers en de open bare docker-hub worden ondersteund. |
-| [`cmd`](#cmd) | Voert een container als een opdracht uit, met de para meters die `[ENTRYPOINT]`zijn door gegeven aan de container. Het `cmd` stap type biedt ondersteuning voor `env`para `detach`meters zoals, `docker run` en andere bekende opdracht Opties, het inschakelen van eenheids-en functionele tests met gelijktijdige container uitvoering. |
+| [`build`](#build) | Hiermee maakt u een container installatie kopie met vertrouwde `docker build`-syntaxis. |
+| [`push`](#push) | Hiermee voert u een `docker push` van de zojuist gemaakte of gelabelde installatie kopieën naar een container register. Azure Container Registry, andere persoonlijke registers en de open bare docker-hub worden ondersteund. |
+| [`cmd`](#cmd) | Voert een container als een opdracht uit met de para meters die zijn door gegeven aan de `[ENTRYPOINT]`van de container. Het stap type `cmd` biedt ondersteuning voor para meters zoals `env`, `detach`en andere bekende `docker run` opdracht Opties, het inschakelen van een eenheid en functionele test met gelijktijdige container uitvoering. |
 
 ## <a name="build"></a>PE
 
-Een container installatie kopie bouwen. Het `build` stap type vertegenwoordigt een multi tenant, veilige manier om in de `docker build` Cloud te worden uitgevoerd als een primitieve van de eerste klasse.
+Een container installatie kopie bouwen. Het stap type `build` vertegenwoordigt een multi tenant, beveiligde methode voor het uitvoeren van `docker build` in de Cloud als een eerste klasse primitief.
 
 ### <a name="syntax-build"></a>Syntaxis: Build
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [build]: -t [imageName]:[tag] -f [Dockerfile] [context]
     [property]: [value]
 ```
 
-Het `build` stap type ondersteunt de para meters in de volgende tabel. Het `build` stap type biedt ook ondersteuning voor alle opbouw opties [](https://docs.docker.com/engine/reference/commandline/build/) van de `--build-arg` opdracht docker build, zoals het instellen van opbouw tijd variabelen.
+Het stap type `build` ondersteunt de para meters in de volgende tabel. Het stap type `build` biedt ook ondersteuning voor alle opbouw opties van de opdracht [docker build](https://docs.docker.com/engine/reference/commandline/build/) , zoals `--build-arg` om opbouw tijd variabelen in te stellen.
 
-| Parameter | Description | Optioneel |
+| Parameter | Beschrijving | Optioneel |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | Hiermee wordt het volledig `image:tag` gekwalificeerde van de ingebouwde installatie kopie gedefinieerd.<br /><br />Als installatie kopieën kunnen worden gebruikt voor interne taak validaties, zoals functionele tests, maar niet voor alle `push` installatie kopieën is een REGI ster vereist. Als u echter een installatie kopie van een taak wilt laten uitvoeren, moet de installatie kopie een naam hebben waarnaar kan worden verwezen.<br /><br />In tegens telling tot `az acr build`, het uitvoeren van ACR-taken biedt geen standaard push gedrag. Met ACR-taken wordt in het standaard scenario aangenomen dat u een installatie kopie kunt bouwen, valideren en vervolgens kunt pushen. Zie [Push](#push) voor instructies voor het pushen van ingebouwde installatie kopieën. | Ja |
-| `-f` &#124; `--file` | Hiermee geeft u de Dockerfile `docker build`door gegeven aan. Als u niets opgeeft, wordt de standaard-Dockerfile in de hoofdmap van de context gebruikt. Als u een Dockerfile wilt opgeven, geeft u de bestands naam aan ten opzichte van de hoofdmap van de context. | Ja |
-| `context` | De hoofdmap is door gegeven `docker build`aan. De hoofdmap van elke taak is ingesteld op een gedeelde [variabele workingdirectory](#task-step-properties)en bevat de hoofdmap van de gekoppelde Git-gekloonde map. | Nee |
+| `-t` &#124;`--image` | Hiermee wordt de volledig gekwalificeerde `image:tag` van de ingebouwde installatie kopie gedefinieerd.<br /><br />Als installatie kopieën kunnen worden gebruikt voor interne taak validaties, zoals functionele tests, moeten niet alle installatie kopieën `push` een REGI ster. Als u echter een installatie kopie van een taak wilt laten uitvoeren, moet de installatie kopie een naam hebben waarnaar kan worden verwezen.<br /><br />In tegens telling tot `az acr build`biedt het uitvoeren van ACR-taken geen standaard push gedrag. Met ACR-taken wordt in het standaard scenario aangenomen dat u een installatie kopie kunt bouwen, valideren en vervolgens kunt pushen. Zie [Push](#push) voor instructies voor het pushen van ingebouwde installatie kopieën. | Ja |
+| `-f` &#124;`--file` | Hiermee geeft u de Dockerfile door gegeven aan `docker build`. Als u niets opgeeft, wordt de standaard-Dockerfile in de hoofdmap van de context gebruikt. Als u een Dockerfile wilt opgeven, geeft u de bestands naam aan ten opzichte van de hoofdmap van de context. | Ja |
+| `context` | De hoofdmap is door gegeven aan `docker build`. De hoofdmap van elke taak is ingesteld op een gedeelde [variabele workingdirectory](#task-step-properties)en bevat de hoofdmap van de gekoppelde Git-gekloonde map. | Nee |
 
 ### <a name="properties-build"></a>Eigenschappen: Build
 
-Het `build` stap type ondersteunt de volgende eigenschappen. Meer informatie over deze eigenschappen vindt u in de sectie [taak stap eigenschappen](#task-step-properties) van dit artikel.
+Het stap type `build` ondersteunt de volgende eigenschappen. Meer informatie over deze eigenschappen vindt u in de sectie [taak stap eigenschappen](#task-step-properties) van dit artikel.
 
 | | | |
 | -------- | ---- | -------- |
@@ -183,9 +183,9 @@ az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample
 #### <a name="build-image---context-in-subdirectory"></a>Installatie kopie maken-context in submap
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world -f hello-world.dockerfile ./subDirectory
+  - build: -t $Registry/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
 ## <a name="push"></a>Push
@@ -194,29 +194,29 @@ Push een of meer ingebouwde of gelabelde installatie kopieën naar een container
 
 ### <a name="syntax-push"></a>Syntaxis: push
 
-Het `push` stap type ondersteunt een verzameling installatie kopieën. De syntaxis van de YAML-verzameling ondersteunt inline-en geneste notaties. Het pushen van één installatie kopie wordt gewoonlijk weer gegeven met inline-syntaxis:
+Het `push`-stap type ondersteunt een verzameling installatie kopieën. De syntaxis van de YAML-verzameling ondersteunt inline-en geneste notaties. Het pushen van één installatie kopie wordt gewoonlijk weer gegeven met inline-syntaxis:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Inline YAML collection syntax
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Gebruik geneste syntaxis bij het pushen van meerdere installatie kopieën voor meer Lees baarheid:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Nested YAML collection syntax
   - push:
-    - {{.Run.Registry}}/hello-world:{{.Run.ID}}
-    - {{.Run.Registry}}/hello-world:latest
+    - $Registry/hello-world:$ID
+    - $Registry/hello-world:latest
 ```
 
 ### <a name="properties-push"></a>Eigenschappen: push
 
-Het `push` stap type ondersteunt de volgende eigenschappen. Meer informatie over deze eigenschappen vindt u in de sectie [taak stap eigenschappen](#task-step-properties) van dit artikel.
+Het stap type `push` ondersteunt de volgende eigenschappen. Meer informatie over deze eigenschappen vindt u in de sectie [taak stap eigenschappen](#task-step-properties) van dit artikel.
 
 | | | |
 | -------- | ---- | -------- |
@@ -249,19 +249,19 @@ az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-ta
 
 ## <a name="cmd"></a>cmd
 
-Het `cmd` stap type voert een container uit.
+Met het `cmd` stap type wordt een container uitgevoerd.
 
 ### <a name="syntax-cmd"></a>Syntaxis: cmd
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [cmd]: [containerImage]:[tag (optional)] [cmdParameters to the image]
 ```
 
 ### <a name="properties-cmd"></a>Eigenschappen: cmd
 
-Het `cmd` stap type ondersteunt de volgende eigenschappen:
+Het stap type `cmd` ondersteunt de volgende eigenschappen:
 
 | | | |
 | -------- | ---- | -------- |
@@ -314,7 +314,7 @@ az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
 
 #### <a name="run-specific-bash-image-tag"></a>Specifieke bash-afbeeldings code uitvoeren
 
-Als u een specifieke installatie kopie versie wilt uitvoeren, geeft u `cmd`de tag op in de.
+Als u een specifieke installatie kopie versie wilt uitvoeren, geeft u de tag op in het `cmd`.
 
 Met deze opdracht wordt het `bash-echo-3.yaml` taak bestand uitgevoerd, dat verwijst naar de [bash: 3.0](https://hub.docker.com/_/bash/) -installatie kopie op docker hub.
 
@@ -327,50 +327,48 @@ az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
 
 #### <a name="run-custom-images"></a>Aangepaste installatie kopieën uitvoeren
 
-Het `cmd` stap type verwijst naar afbeeldingen met de `docker run` standaard indeling. Voor installatie kopieën die niet zijn voorzien van een REGI ster, wordt ervan uitgegaan dat deze afkomstig zijn van docker.io. Het vorige voor beeld kan ook als volgt worden weer gegeven:
+Het `cmd`-stap type verwijst naar afbeeldingen met de standaard `docker run` indeling. Voor installatie kopieën die niet zijn voorzien van een REGI ster, wordt ervan uitgegaan dat deze afkomstig zijn van docker.io. Het vorige voor beeld kan ook als volgt worden weer gegeven:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
-Met behulp van `docker run` de standaard installatie kopie `cmd` verwijzing Conventie kan installatie kopieën uit een persoonlijk REGI ster of de open bare docker-hub worden uitgevoerd. Als u verwijst naar afbeeldingen in hetzelfde REGI ster waarin de ACR-taak wordt uitgevoerd, hoeft u geen register referenties op te geven.
+Met behulp van de standaard `docker run`-referentie Conventie voor installatie kopieën kan `cmd` installatie kopie uit een persoonlijk REGI ster of de open bare docker-hub worden uitgevoerd. Als u verwijst naar afbeeldingen in hetzelfde REGI ster waarin de ACR-taak wordt uitgevoerd, hoeft u geen register referenties op te geven.
 
-* Een installatie kopie uitvoeren vanuit een Azure container Registry
-
-    Vervang `[myregistry]` door de naam van het REGI ster:
+* Voer een installatie kopie uit vanuit een Azure container Registry. In het volgende voor beeld wordt ervan uitgegaan dat u een REGI ster met de naam `myregistry`en een aangepaste installatie kopie `myimage:mytag`.
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-        - cmd: [myregistry].azurecr.io/bash:3.0 echo hello world
+        - cmd: myregistry.azurecr.io/myimage:mytag
     ```
 
-* De register referentie met een uitvoer variabele generaliseren
+* De register referentie met een uitvoer variabele of-alias generaliseren
 
-    In plaats van de naam van uw REGI ster in `acr-task.yaml` een bestand vast te maken, kunt u deze met behulp van een [Run-variabele verloopt](#run-variables). De `Run.Registry` variabele wordt tijdens runtime uitgebreid naar de naam van het REGI ster waarin de taak wordt uitgevoerd.
+    In plaats van de naam van uw REGI ster in een `acr-task.yaml`-bestand vast te maken, kunt u het apparaat versleutelen met behulp van een [Run-variabele](#run-variables) of- [alias](#aliases). De `Run.Registry` variabele of `$Registry` alias wordt tijdens runtime uitgebreid naar de naam van het REGI ster waarin de taak wordt uitgevoerd.
 
-    Als u de voor gaande taak wilt generaliseren zodat deze werkt in een Azure container Registry, verwijst u naar de [Run. Registry](#runregistry) -variabele in de naam van de installatie kopie:
+    Als u bijvoorbeeld de voor gaande taak wilt generaliseren zodat deze werkt in een Azure container Registry, verwijst u naar de $Registry variabele in de naam van de installatie kopie:
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-      - cmd: {{.Run.Registry}}/bash:3.0 echo hello world
+      - cmd: $Registry/myimage:mytag
     ```
 
 ## <a name="task-step-properties"></a>Eigenschappen van taak stap
 
 Elk stap type ondersteunt verschillende eigenschappen die geschikt zijn voor het type. In de volgende tabel worden alle beschik bare stap eigenschappen gedefinieerd. Niet alle stap typen ondersteunen alle eigenschappen. Als u wilt zien welke van deze eigenschappen beschikbaar zijn voor elk stap type, raadpleegt u de sectie met Naslag informatie voor het type [cmd](#cmd), [Build](#build)en [Push](#push) .
 
-| Eigenschap | type | Optioneel | Description | Standaardwaarde |
+| Eigenschap | Type | Optioneel | Beschrijving | Standaardwaarde |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | Ja | Hiermee wordt aangegeven of de container moet worden losgekoppeld wanneer deze wordt uitgevoerd. | `false` |
-| `disableWorkingDirectoryOverride` | bool | Ja | Hiermee wordt aangegeven `workingDirectory` of onderdrukkings functionaliteit moet worden uitgeschakeld. Gebruik dit in combi natie `workingDirectory` met om volledige controle te hebben over de werkmap van de container. | `false` |
-| `entryPoint` | string | Ja | Overschrijft de `[ENTRYPOINT]` container van een stap. | Geen |
-| `env` | [teken reeks, teken reeks,...] | Ja | Matrix van teken reeksen `key=value` in een indeling die de omgevings variabelen voor de stap definieert. | Geen |
+| `disableWorkingDirectoryOverride` | bool | Ja | Hiermee wordt aangegeven of `workingDirectory` onderdrukkings functionaliteit moet worden uitgeschakeld. Gebruik dit in combi natie met `workingDirectory` voor volledige controle over de werkmap van de container. | `false` |
+| `entryPoint` | string | Ja | Onderdrukt de `[ENTRYPOINT]` van de container van een stap. | Geen |
+| `env` | [teken reeks, teken reeks,...] | Ja | Matrix van teken reeksen in `key=value` indeling waarmee de omgevings variabelen voor de stap worden gedefinieerd. | Geen |
 | `expose` | [teken reeks, teken reeks,...] | Ja | Matrix van poorten die vanuit de container worden weer gegeven. |  Geen |
-| [`id`](#example-id) | string | Ja | Identificeert de stap in de taak uniek. Andere stappen in de taak kunnen verwijzen naar een stap `id`, zoals bij afhankelijkheids controle met. `when`<br /><br />De `id` is ook de naam van de container die wordt uitgevoerd. Processen die worden uitgevoerd in andere containers in de taak, kunnen `id` verwijzen naar de naam van de DNS-host, of om deze te openen met docker-Logboeken [id], bijvoorbeeld. | `acb_step_%d`, waarbij `%d` de op 0 gebaseerde index van de stap top-down in het yaml-bestand |
+| [`id`](#example-id) | string | Ja | Identificeert de stap in de taak uniek. Andere stappen in de taak kunnen verwijzen naar de `id`van een stap, zoals het controleren op afhankelijkheden met `when`.<br /><br />De `id` is ook de naam van de actieve container. Processen die worden uitgevoerd in andere containers in de taak, kunnen verwijzen naar de `id` als de DNS-hostnaam of om deze te openen met docker-Logboeken [id]. | `acb_step_%d`, waarbij `%d` de op 0 gebaseerde index van de stap top-down in het YAML-bestand is |
 | `ignoreErrors` | bool | Ja | Hiermee wordt aangegeven of de stap moet worden gemarkeerd als geslaagd, ongeacht of er een fout is opgetreden tijdens het uitvoeren van de container. | `false` |
 | `isolation` | string | Ja | Het isolatie niveau van de container. | `default` |
 | `keep` | bool | Ja | Hiermee wordt aangegeven of de container van de stap na uitvoering moet worden bewaard. | `false` |
@@ -388,11 +386,11 @@ Elk stap type ondersteunt verschillende eigenschappen die geschikt zijn voor het
 | `user` | string | Ja | De gebruikers naam of UID van een container | Geen |
 | `workingDirectory` | string | Ja | Hiermee stelt u de werkmap voor een stap in. ACR-taken maken standaard een hoofdmap als werkmap. Als uw build echter verschillende stappen heeft, kunnen eerdere stappen artefacten delen met latere stappen door dezelfde werkmap op te geven. | `$HOME` |
 
-### <a name="examples-task-step-properties"></a>Voorbeelden: Eigenschappen van taak stap
+### <a name="examples-task-step-properties"></a>Voor beelden: taak stap eigenschappen
 
 #### <a name="example-id"></a>Voor beeld: id
 
-Maak twee installatie kopieën en pas een functionele test installatie kopie toe. Elke stap wordt aangeduid met een unieke `id` naam die andere stappen in de taak verwijzing in `when` hun eigenschap.
+Maak twee installatie kopieën en pas een functionele test installatie kopie toe. Elke stap wordt geïdentificeerd door een unieke `id` die andere stappen in de taak verwijzing in hun `when` eigenschap.
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -403,14 +401,14 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 #### <a name="example-when"></a>Voor beeld: wanneer
 
-De `when` eigenschap geeft een afhankelijkheid van de stap aan van andere stappen in de taak. Het ondersteunt twee parameter waarden:
+De eigenschap `when` specificeert de afhankelijkheid van een stap op andere stappen in de taak. Het ondersteunt twee parameter waarden:
 
-* `when: ["-"]`-Geeft geen afhankelijk van andere stappen. Een stap die `when: ["-"]` aangeeft dat de uitvoering onmiddellijk wordt gestart en de uitvoering van gelijktijdige stappen wordt ingeschakeld.
-* `when: ["id1", "id2"]`-Geeft aan dat de stap afhankelijk is van `id` de stappen met ' `id` id1 ' en ' id2 '. Deze stap wordt pas uitgevoerd als de stappen ' id1 ' en ' id2 ' zijn voltooid.
+* `when: ["-"]`: geeft geen afhankelijkheid van andere stappen aan. Een stap waarin wordt aangegeven dat `when: ["-"]` onmiddellijk wordt uitgevoerd, en de uitvoering van gelijktijdige stappen mogelijk maakt.
+* `when: ["id1", "id2"]`-geeft aan dat de stap afhankelijk is van de stappen met `id` ' id1 ' en `id` ' id2 '. Deze stap wordt pas uitgevoerd als de stappen ' id1 ' en ' id2 ' zijn voltooid.
 
-Als `when` niet in een stap is opgegeven, is die stap afhankelijk van de voltooiing van de vorige stap `acr-task.yaml` in het bestand.
+Als `when` niet in een stap is opgegeven, is die stap afhankelijk van de voltooiing van de vorige stap in het `acr-task.yaml` bestand.
 
-Uitvoering van de sequentiële `when`stap zonder:
+Uitvoering van de sequentiële stap zonder `when`:
 
 ```azurecli
 az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -419,7 +417,7 @@ az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-default.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-default.yaml)]
 
-Uitvoering van de sequentiële `when`stap met:
+Uitvoering van de sequentiële stap met `when`:
 
 ```azurecli
 az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -448,34 +446,53 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 ## <a name="run-variables"></a>Variabelen uitvoeren
 
-ACR-taken bevatten een standaardset variabelen die beschikbaar zijn voor taak stappen wanneer ze worden uitgevoerd. U kunt toegang krijgen tot deze variabelen met behulp van `VariableName` de notatie `{{.Run.VariableName}}`, waarbij een van de volgende opties is:
+ACR-taken bevatten een standaardset variabelen die beschikbaar zijn voor taak stappen wanneer ze worden uitgevoerd. U kunt deze variabelen openen met behulp van de notatie `{{.Run.VariableName}}`, waarbij `VariableName` een van de volgende is:
 
 * `Run.ID`
+* `Run.SharedVolume`
 * `Run.Registry`
+* `Run.RegistryName`
 * `Run.Date`
+* `Run.OS`
+* `Run.Architecture`
 * `Run.Commit`
 * `Run.Branch`
+* `Run.TaskName`
+
+De namen van variabelen zijn doorgaans zelf uitleg. Hier volgt een overzicht van de meest gebruikte variabelen. Vanaf YAML-versie `v1.1.0`, kunt u een verkorte, vooraf gedefinieerde [taak alias](#aliases) gebruiken in plaats van de meeste run-variabelen. Gebruik bijvoorbeeld in plaats van `{{.Run.Registry}}`de alias `$Registry`.
 
 ### <a name="runid"></a>Run.ID
 
-Elke uitvoering, tot `az acr run`of trigger die is gebaseerd op taken die zijn `az acr task create` gemaakt via hebben een unieke id. De ID vertegenwoordigt de uitvoering die momenteel wordt uitgevoerd.
+Elke uitvoering, via `az acr run`of trigger op basis van de uitvoering van taken die via `az acr task create`zijn gemaakt, heeft een unieke ID. De ID vertegenwoordigt de uitvoering die momenteel wordt uitgevoerd.
 
 Wordt meestal gebruikt voor een unieke code ring van een afbeelding:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-    - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    - build: -t $Registry/hello-world:$ID .
 ```
 
-### <a name="runregistry"></a>Run.Registry
+### <a name="runregistry"></a>Run. Registry
 
 De volledig gekwalificeerde server naam van het REGI ster. Wordt doorgaans gebruikt om algemeen te verwijzen naar het REGI ster waarin de taak wordt uitgevoerd.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+  - build: -t $Registry/hello-world:$ID .
+```
+
+### <a name="runregistryname"></a>Run. Registrynaam
+
+De naam van het container register. Wordt doorgaans gebruikt in taak stappen waarvoor geen volledig gekwalificeerde server naam is vereist, bijvoorbeeld `cmd` stappen die Azure CLI-opdrachten uitvoeren op registers.
+
+```yml
+version 1.1.0
+steps:
+# List repositories in registry
+- cmd: az login --identity
+- cmd: az acr repository list --name $RegistryName
 ```
 
 ### <a name="rundate"></a>Run. date
@@ -490,11 +507,88 @@ Voor een taak die wordt geactiveerd door een door Voer voor een GitHub-opslag pl
 
 Voor een taak die wordt geactiveerd door een door Voer voor een GitHub-opslag plaats, de naam van de vertakking.
 
+## <a name="aliases"></a>Aliassen
+
+Vanaf `v1.1.0`ondersteunt ACR-taken aliassen die beschikbaar zijn voor taak stappen wanneer ze worden uitgevoerd. Aliassen zijn vergelijkbaar in het concept voor aliassen (opdracht snelkoppelingen) die worden ondersteund in bash en andere opdracht shells. 
+
+Met een alias kunt u elke opdracht of groep opdrachten (inclusief opties en bestands namen) starten door één woord in te voeren.
+
+ACR-taken bieden ondersteuning voor verschillende vooraf gedefinieerde aliassen en aangepaste aliassen die u maakt.
+
+### <a name="predefined-aliases"></a>Vooraf gedefinieerde aliassen
+
+De volgende taak aliassen zijn beschikbaar voor gebruik in plaats van [uitvoerings variabelen](#run-variables):
+
+| Alias | Variabele uitvoeren |
+| ----- | ------------ |
+| `ID` | `Run.ID` |
+| `SharedVolume` | `Run.SharedVolume` |
+| `Registry` | `Run.Registry` |
+| `RegistryName` | `Run.RegistryName` |
+| `Date` | `Run.Date` |
+| `OS` | `Run.OS` |
+| `Architecture` | `Run.Architecture` |
+| `Commit` | `Run.Commit` |
+| `Branch` | `Run.Branch` |
+
+Plaats in taak stappen een alias met de `$`-instructie, zoals in dit voor beeld:
+
+```yaml
+version: v1.1.0
+steps:
+  - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
+```
+
+### <a name="image-aliases"></a>Afbeeldings aliassen
+
+Elk van de volgende aliassen wijst naar een stabiele afbeelding in micro soft Container Registry (MCR). U kunt deze in de sectie `cmd` van een taak bestand raadplegen zonder een instructie te gebruiken.
+
+| Alias | Installatiekopie |
+| ----- | ----- |
+| `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
+| `az` | `mcr.microsoft.com/acr/azure-cli:d0725bc` |
+| `bash` | `mcr.microsoft.com/acr/bash:d0725bc` |
+| `curl` | `mcr.microsoft.com/acr/curl:d0725bc` |
+
+In het volgende voor beeld wordt een aantal aliassen gebruikt om afbeeldings Tags te [verwijderen](container-registry-auto-purge.md) die ouder zijn dan 7 dagen in de opslag plaats-`samples/hello-world` in het uitvoerings register:
+
+```yaml
+version: v1.1.0
+steps:
+  - cmd: acr tag list --registry $RegistryName --repository samples/hello-world
+  - cmd: acr purge --registry $RegistryName --filter samples/hello-world:.* --ago 7d
+```
+
+### <a name="custom-alias"></a>Aangepaste alias
+
+Definieer een aangepaste alias in uw YAML-bestand en gebruik deze zoals wordt weer gegeven in het volgende voor beeld. Een alias mag alleen alfanumerieke tekens bevatten. De standaard instructie voor het uitbreiden van een alias is het `$` teken.
+
+```yml
+version: v1.1.0
+alias:
+  values:
+    repo: myrepo
+steps:
+  - build: -t $Registry/$repo/hello-world:$ID -f Dockerfile .
+```
+
+U kunt een koppeling maken naar een extern of lokaal YAML-bestand voor aangepaste alias definities. In het volgende voor beeld wordt een koppeling naar een YAML-bestand in Azure Blob Storage:
+
+```yml
+version: v1.1.0
+alias:
+  src:  # link to local or remote custom alias files
+    - 'https://link/to/blob/remoteAliases.yml?readSasToken'
+[...]
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Voor een overzicht van taken met meerdere stappen raadpleegt u de [taken voor het maken, testen en bijwerken van meerdere stappen in ACR-taken](container-registry-tasks-multi-step.md).
 
 Zie het [overzicht van ACR-taken](container-registry-tasks-overview.md)voor builds met één stap.
+
+
 
 <!-- IMAGES -->
 

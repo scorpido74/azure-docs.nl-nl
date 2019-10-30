@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675691"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042234"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
@@ -89,15 +89,15 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 1. Wanneer het installatie programma wordt geopend, selecteert u **volgende**.
 
-   ![Introductie van het installatie programma](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Introductie scherm voor Gateway-installatie programma](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
 1. Selecteer **on-premises gegevens gateway (aanbevolen)** , de standaard modus, en selecteer vervolgens **volgende**.
 
-   ![Gateway modus selecteren](./media/logic-apps-gateway-install/select-gateway-mode.png)
+   ![De uitvoerings modus voor de gegevens gateway selecteren](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. Bekijk de minimale vereisten, behoud de standaard installatie, accepteer de gebruiksrecht overeenkomst en selecteer vervolgens **installeren**.
 
-   ![Bekijk de vereisten en accepteer de gebruiks voorwaarden](./media/logic-apps-gateway-install/accept-terms.png)
+   ![Bekijk de vereisten en accepteer de gebruiks voorwaarden](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
 1. Nadat de gateway is geïnstalleerd, geeft u het e-mail adres voor uw Azure-account op en selecteert u **Aanmelden**, bijvoorbeeld:
 
@@ -107,7 +107,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 1. Selecteer **een nieuwe gateway op deze computer registreren** > **volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
 
-   ![Gateway registreren](./media/logic-apps-gateway-install/register-gateway.png)
+   ![Gateway op lokale computer registreren](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
 1. Geef deze informatie op voor de gateway-installatie:
 
@@ -115,7 +115,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
    * De herstel sleutel, die ten minste acht tekens moet bevatten die u wilt gebruiken
    * Bevestiging van uw herstel sleutel
 
-   ![Gateway instellen](./media/logic-apps-gateway-install/set-up-gateway.png)
+   ![Informatie over de installatie van de gateway opgeven](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
    > Bewaar uw herstel sleutel op een veilige plaats. U hebt deze sleutel nodig als u ooit de locatie wilt wijzigen, verplaatsen, herstellen of overnemen van een gateway-installatie.
@@ -124,7 +124,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
 1. Controleer de regio voor de gateway-Cloud service en [Azure service bus](https://azure.microsoft.com/services/service-bus/) die wordt gebruikt door de installatie van de gateway. Standaard is deze regio dezelfde locatie als de Azure AD-Tenant voor uw Azure-account.
 
-   ![Controle regio](./media/logic-apps-gateway-install/check-region.png)
+   ![Regio bevestigen voor de Gateway Service en service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
 1. Selecteer **configureren**om de standaard regio te accepteren. Als de standaard regio echter niet het meest overeenkomt met u, kunt u de regio wijzigen.
 
@@ -134,15 +134,15 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
    1. Selecteer **regio wijzigen**naast de huidige regio.
 
-      ![Regio wijzigen](./media/logic-apps-gateway-install/change-region.png)
+      ![De huidige gateway regio wijzigen](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
    1. Open de lijst **regio selecteren** op de volgende pagina, selecteer de gewenste regio en selecteer **gereed**.
 
-      ![Selecteer een andere regio](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Selecteer een andere regio voor de Gateway Service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
 1. Bekijk de informatie in het laatste bevestigings venster. In dit voor beeld wordt hetzelfde account gebruikt voor Logic Apps, Power BI, PowerApps en Microsoft Flow, zodat de gateway beschikbaar is voor al deze services. Wanneer u klaar bent, selecteert u **sluiten**.
 
-   ![Voltooide gateway](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Gegevens gateway gegevens bevestigen](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
 1. [Maak nu de Azure-resource voor de gateway-installatie](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -185,7 +185,7 @@ Als u de locatie van de gateway moet wijzigen, de installatie van de gateway naa
 
 1. Selecteer een van de beschik bare clusters en gateways en voer de herstel sleutel voor de geselecteerde gateway in, bijvoorbeeld:
 
-   ![Gateway selecteren](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Gateway selecteren en herstel sleutel opgeven](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
 1. Als u de regio wilt wijzigen, selecteert u **regio wijzigen**en selecteert u de nieuwe regio.
 
@@ -270,9 +270,9 @@ Hier vindt u een aantal manieren waarop u uw on-premises Active Directory accoun
 
 Zie de volgende onderwerpen voor meer informatie:
 
-* [FAQ voor on-premises gegevensgateway](/data-integration/gateway/service-gateway-onprem-faq)
-* [Problemen met de on-premises gegevens gateway oplossen](/data-integration/gateway/service-gateway-tshoot)
-* [Gateway prestaties bewaken en optimaliseren](/data-integration/gateway/service-gateway-performance)
+* [FAQ voor on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Problemen met de on-premises gegevens gateway oplossen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Gateway prestaties bewaken en optimaliseren](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Volgende stappen
 

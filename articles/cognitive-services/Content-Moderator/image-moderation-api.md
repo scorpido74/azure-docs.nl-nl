@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 3bc5bc99984367b44b38a65266d2915c47ca6fd0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 6d419135a1da68d23689f66d3134a638d71a3eab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757340"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044100"
 ---
 # <a name="learn-image-moderation-concepts"></a>Concepten van afbeeldings toezicht leren
 
@@ -147,4 +147,4 @@ Gebruik het [hulp programma content moderator beoordeling](Review-Tool-User-Guid
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test de [API-console voor Image toezicht](try-image-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de [afbeeldings toezicht .net Quick](image-moderation-quickstart-dotnet.md) start als u bekend bent met Visual Studio en C#.
+Test de [API-console voor Image toezicht](try-image-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de sectie afbeeldings toezicht van de [.NET SDK Quick](dotnet-sdk-quickstart.md) start als u bekend bent met Visual Studio en C#.

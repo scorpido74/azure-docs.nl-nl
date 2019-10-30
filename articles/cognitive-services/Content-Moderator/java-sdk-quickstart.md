@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 61149392368fc34fe388709dd5867250f3542fbc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935989"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044080"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Snelstartgids: Content Moderator-client bibliotheek voor Java
 
@@ -125,14 +125,14 @@ Maak in de `main` methode van de toepassing een [ContentModeratorClient](https:/
 
 ### <a name="get-images"></a>Installatie kopieën ophalen
 
-Maak in de **src/main/** map van het project een map **resources** en navigeer ernaar. Maak vervolgens een nieuw tekst bestand, *ImageFiles. txt*. In dit bestand voegt u de Url's van installatie kopieën toe om&mdash;één URL op elke regel te analyseren. U kunt de volgende voorbeeld inhoud gebruiken:
+Maak in de **src/main/** map van het project een map **resources** en navigeer ernaar. Maak vervolgens een nieuw tekst bestand, *ImageFiles. txt*. In dit bestand voegt u de Url's van installatie kopieën toe om&mdash;één URL op elke regel te analyseren. U kunt de volgende voorbeeld afbeeldingen gebruiken:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 ```
 
-### <a name="use-helper-class"></a>Helper-klasse gebruiken
+### <a name="define-helper-class"></a>Helper-klasse definiëren
 
 Voeg vervolgens in uw *ContentModeratorQuickstart. java* -bestand de volgende klassen definitie toe binnen de klasse **ContentModeratorQuickstart** . Deze binnenste klasse wordt later gebruikt in het proces voor afbeeldings toezicht.
 

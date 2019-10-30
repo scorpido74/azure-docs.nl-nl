@@ -1,20 +1,20 @@
 ---
-title: De beschik baarheid van clusters bewaken met Ambari-en Azure Monitor-logboeken
+title: 'Bewaking: Apache Ambari & Azure Monitor-logboeken-Azure HDInsight'
 description: Informatie over het gebruik van Ambari-en Azure Monitor-logboeken voor het bewaken van de cluster status en beschik baarheid.
 keywords: bewaking, ambari, monitor, log Analytics, waarschuwing, Beschik baarheid, status
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: tyfox
-ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: eeaef8851035bbb8d2f39bcf9f366118545fcf0f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076556"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044481"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>De beschik baarheid van clusters bewaken met Ambari-en Azure Monitor-logboeken
 
@@ -58,7 +58,7 @@ Als u een lijst met waarschuwings definities en hun statussen wilt weer geven, k
 
 Ambari biedt veel vooraf gedefinieerde waarschuwingen met betrekking tot Beschik baarheid, waaronder:
 
-| Naam van de waarschuwing                        | Description                                                                                                                                                                           |
+| Naam van waarschuwing                        | Beschrijving                                                                                                                                                                           |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DataNode status overzicht           | Deze waarschuwing op service niveau wordt geactiveerd als er sprake is van een slechte DataNodes                                                                                                                |
 | Status van hoge Beschik baarheid van NameNode | Deze waarschuwing op service niveau wordt geactiveerd als de actieve NameNode of stand-NameNode niet actief zijn.                                                                              |
@@ -77,13 +77,13 @@ Hier kunt u de beschrijving bewerken en, belang rijker, het controle-interval en
 
 In dit voor beeld zou u 2 een slechte DataNodes activeren en een kritieke waarschuwing geven en 1 slecht DataNode alleen een waarschuwing activeren. Klik op **Opslaan** wanneer u klaar bent met het bewerken van.
 
-### <a name="email-notifications"></a>E-mailwaarschuwingen
+### <a name="email-notifications"></a>E-mailmeldingen
 
 U kunt desgewenst ook e-mail meldingen configureren voor Ambari-waarschuwingen. Als u dit wilt doen, klikt u op het tabblad **waarschuwingen** op de knop **acties** in de linkerbovenhoek en vervolgens op **meldingen beheren.**
 
 ![Actie Ambari beheren](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Er wordt een dialoog venster geopend voor het beheren van waarschuwings meldingen. Klik op **+** de onderkant van het dialoog venster en vul de vereiste velden in om Ambari te bieden met de details van de e-mail server waaruit e-mails worden verzonden.
+Er wordt een dialoog venster geopend voor het beheren van waarschuwings meldingen. Klik op de **+** aan de onderkant van het dialoog venster en vul de vereiste velden in om Ambari te bieden met de details van de e-mail server waaruit e-mail berichten worden verzonden.
 
 > [!TIP]
 > Het instellen van Ambari-e-mail meldingen kan een goede manier zijn om waarschuwingen op één plek te ontvangen bij het beheren van veel HDInsight-clusters.
@@ -108,7 +108,7 @@ Als de integratie van Azure Monitor logboek is ingeschakeld (dit kan enkele minu
 
 De Blade **logs** bevat een aantal voorbeeld query's, zoals:
 
-| Query naam                      | Description                                                               |
+| Query naam                      | Beschrijving                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | Computers Beschik baarheid vandaag    | Grafiek het aantal computers dat Logboeken verzendt, elk uur                     |
 | Heartbeats weer geven                 | Alle Heartbeats van de computer in het afgelopen uur weer geven                           |
@@ -147,7 +147,7 @@ Hiermee opent u de Blade **signaal logica configureren** .
 
 Stel de sectie **waarschuwings logica** als volgt in:
 
-*Op basis van: Aantal resultaten, voor waarde: Groter dan, drempel waarde: 0,3.*
+*Op basis van: aantal resultaten, voor waarde: groter dan, drempel waarde: 0.*
 
 Omdat deze query alleen niet-beschik bare knoop punten retourneert als resultaat als het aantal resultaten ooit groter is dan 0, moet de waarschuwing worden geactiveerd.
 

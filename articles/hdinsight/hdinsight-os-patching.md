@@ -1,5 +1,5 @@
 ---
-title: Het patch schema voor het besturings systeem configureren voor HDInsight-clusters op basis van Linux-Azure
+title: Het patch schema voor het besturings systeem voor Azure HDInsight-clusters configureren
 description: Meer informatie over het configureren van het patch schema voor het besturings systeem voor HDInsight-clusters op basis van Linux.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: 06111ec35a127cf17fdcc77ff717de7a4bc7299f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d0a490fd3b23c96923af10db3c1f9ee9ea0dfad5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076858"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044888"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Het patch schema voor het besturings systeem configureren voor HDInsight-clusters op basis van Linux 
 
@@ -35,11 +35,11 @@ Met behulp van de script acties die in dit artikel worden beschreven, kunt u de 
 
 Voor het gebruik van een script is de volgende informatie vereist:
 
-- Met de installatie-updates-Schedule-de locatie van het https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh script opnieuw opstarten:.
+- Met de installatie-updates-Schedule-de locatie van het script opnieuw opstarten: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
     
    HDInsight gebruikt deze URI om het script te zoeken en uit te voeren op alle virtuele machines in het cluster. Dit script bevat opties voor het installeren van updates en het opnieuw opstarten van de virtuele machine.
   
-- Schedule-de locatie van het script opnieuw https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh opstarten:.
+- De planning-de locatie van het script wordt opnieuw opgestart: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
     
    HDInsight gebruikt deze URI om het script te zoeken en uit te voeren op alle virtuele machines in het cluster. Met dit script wordt de VM opnieuw opgestart.
   

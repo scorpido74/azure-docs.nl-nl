@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/18/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5d221664669e9af647cca4e242d7763ed74cd3c9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786985"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023965"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren
 
@@ -87,7 +87,11 @@ De volgende DNS-naam beperkingen zijn ook van toepassing:
 Vul de velden in het venster *basis beginselen* van het Azure Portal in om een Azure AD DS-exemplaar te maken:
 
 1. Voer een **DNS-domein naam** in voor uw beheerde domein, waarbij rekening wordt gehouden met de vorige punten.
-1. Kies de Azure- **locatie** waar het beheerde domein moet worden gemaakt.
+1. Kies de Azure- **locatie** waar het beheerde domein moet worden gemaakt. Als u een regio kiest die Beschikbaarheidszones ondersteunt, worden de Azure AD DS-resources verdeeld over zones voor extra redundantie.
+
+    Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's.
+
+    Er is niets waarmee u kunt configureren voor Azure AD DS worden gedistribueerd over meerdere zones. Het Azure-platform verwerkt automatisch de zone distributie van resources. Zie [Wat zijn Beschikbaarheidszones in azure?][availability-zones] voor meer informatie en om de beschik baarheid van regio's te bekijken.
 
     ![Basis instellingen voor een Azure AD Domain Services-exemplaar configureren](./media/tutorial-create-instance/basics-window.png)
 
@@ -117,7 +121,7 @@ Controleer op de pagina **samen vatting** van de wizard de configuratie-instelli
 
     ![Domain Services-status nadat deze is ingericht](./media/tutorial-create-instance/successfully-provisioned.png)
 
-We richten Azure AD Domain Services op de Azure Active Directory-Tenant en de Azure AD Domain Services resource voor de service worden gemaakt binnen het bijbehorende Azure-abonnement. Tijdens het inrichtings proces maakt Azure AD DS twee zakelijke toepassingen met de naam *Domain Controller Services* en *AzureActiveDirectoryDomainControllerServices* in uw Azure Active Directory-exemplaar waarin u Azure hebt ingeschakeld AD Domain Services. Deze zakelijke toepassingen zijn nodig voor de service van uw beheerde domein.  Het is essentieel dat deze toepassingen op elk gewenst moment niet worden verwijderd.
+Het beheerde domein is gekoppeld aan uw Azure AD-Tenant. Tijdens het inrichtings proces maakt Azure AD DS twee zakelijke toepassingen met de naam *Domain Controller Services* en *AzureActiveDirectoryDomainControllerServices* in de Azure AD-Tenant. Deze zakelijke toepassingen zijn nodig voor de service van uw beheerde domein. Verwijder deze toepassingen niet.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>DNS-instellingen bijwerken voor het virtuele Azure-netwerk
 
@@ -188,6 +192,7 @@ Voordat u een domein toevoegt aan Vm's en toepassingen implementeert die gebruik
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

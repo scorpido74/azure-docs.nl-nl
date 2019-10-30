@@ -1,5 +1,5 @@
 ---
-title: Door de gebruiker gedefinieerde Java-functie (UDF) met Apache Hive in HDInsight-Azure
+title: Door de gebruiker gedefinieerde Java-functie (UDF) met Apache Hive Azure HDInsight
 description: Meer informatie over het maken van een op Java gebaseerde, door de gebruiker gedefinieerde functie (UDF) die samenwerkt met Apache Hive. In dit voor beeld wordt een tabel met tekst teken reeksen omgezet in kleine letters.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 43208636fb275c38573f820ef8245d7652b4aa86
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181176"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044786"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Een Java UDF gebruiken met Apache Hive in HDInsight
 
@@ -24,7 +24,7 @@ Meer informatie over het maken van een op Java gebaseerde, door de gebruiker ged
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * [JDK-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
-* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is wasb://voor Azure Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://`.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
+* Het [URI-schema](../hdinsight-hadoop-linux-information.md#URI-and-scheme) voor de primaire opslag van uw clusters. Dit is wasb://voor Azure Storage, abfs://voor Azure Data Lake Storage Gen2 of adl://voor Azure Data Lake Storage Gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, wordt de URI `wasbs://`.  Zie ook [beveiligde overdracht](../../storage/common/storage-require-secure-transfer.md).
 
 * Een tekst editor of Java IDE
 
@@ -49,9 +49,9 @@ cd C:\HDI
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    Met deze opdracht maakt u een `exampleudf`map met de naam, die het Maven-project bevat.
+    Met deze opdracht maakt u een map met de naam `exampleudf`, die het project maven bevat.
 
-2. Zodra het project is gemaakt, verwijdert `exampleudf/src/test` u de map die is gemaakt als onderdeel van het project door de volgende opdracht in te voeren:
+2. Wanneer het project is gemaakt, verwijdert u de `exampleudf/src/test` Directory die is gemaakt als onderdeel van het project door de volgende opdracht in te voeren:
 
     ```cmd
     cd ExampleUDF
@@ -85,7 +85,7 @@ cd C:\HDI
 
     Deze vermeldingen geven de versie van Hadoop en Hive op die is opgenomen in HDInsight 3,6. Informatie over de versies van Hadoop en Hive in HDInsight vindt u in het document [versie van hdinsight-onderdelen](../hdinsight-component-versioning.md) .
 
-    Een `<build>` sectie toevoegen vóór de `</project>` regel aan het einde van het bestand. Deze sectie moet de volgende XML bevatten:
+    Voeg een `<build>` sectie toe vóór de `</project>` lijn aan het einde van het bestand. Deze sectie moet de volgende XML bevatten:
 
     ```xml
     <build>
@@ -143,7 +143,7 @@ cd C:\HDI
 
     Sla het bestand op nadat de wijzigingen zijn aangebracht.
 
-4. Voer de onderstaande opdracht in om een nieuw bestand `ExampleUDF.java`te maken en te openen:
+4. Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `ExampleUDF.java`:
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
@@ -180,7 +180,7 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>De UDF maken en installeren
 
-Vervang `sshuser` in de onderstaande opdrachten door de daad werkelijke gebruikers naam als deze niet overeenkomt. Vervang `mycluster` door de daad werkelijke cluster naam.
+Vervang in de onderstaande opdrachten `sshuser` door de daad werkelijke gebruikers naam als deze anders is. Vervang `mycluster` door de daad werkelijke cluster naam.
 
 1. Compileer de UDF en verpak deze door de volgende opdracht in te voeren:
 
@@ -188,7 +188,7 @@ Vervang `sshuser` in de onderstaande opdrachten door de daad werkelijke gebruike
     mvn compile package
     ```
 
-    Met deze opdracht bouwt en verpakt de UDF in `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` het bestand.
+    Met deze opdracht bouwt en verpakt de UDF in het `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar`-bestand.
 
 2. Gebruik de `scp` opdracht om het bestand te kopiëren naar het HDInsight-cluster door de volgende opdracht in te voeren:
 

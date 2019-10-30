@@ -1,6 +1,6 @@
 ---
-title: Team Data Science Process manager groepstaken
-description: Een gedetailleerd overzicht van de taken voor een groeps beheerder in een Data Science-Team project.
+title: Taken voor groeps beheer voor team data Science process
+description: Volg deze gedetailleerde stapsgewijze instructies voor de taken die een groeps Manager uitvoert op een Data Science-Team project.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326795"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053312"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process manager groepstaken
+# <a name="team-data-science-process-group-manager-tasks"></a>Taken voor groeps beheer voor team data Science process
 
 In dit artikel worden de taken beschreven die een *groeps Manager* voor een Data Science-organisatie heeft voltooid. De groeps beheerder beheert de gehele data Science-eenheid in een onderneming. Een Data Science-eenheid kan verschillende teams hebben, die allemaal aan een groot aantal data Science-projecten werken in afzonderlijke zakelijke verticales. Het doel van de groeps beheerder is om een groeps omgeving samen te stellen die wordt gestandaardiseerd op het [team data Science process](overview.md) (TDSP). Voor een overzicht van alle personeels rollen en bijbehorende taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
 
@@ -57,7 +57,7 @@ In de volgende zelf studie worden de stappen in detail besproken.
    
    ![Project maken](./media/group-manager-tasks/create-project.png)
 
-De pagina **samen vatting** van **GroupCommon** -project wordt geopend. De URL van de pagina is *https: \/ @ no__t-2 @ no__t-3servername >/\<organization-name >/GroupCommon*.
+De pagina **samen vatting** van **GroupCommon** -project wordt geopend. De URL van de pagina is *https:\//\<servername >/\<organisatie naam >/GroupCommon*.
 
 ![Pagina project overzicht](./media/group-manager-tasks/project-summary.png)
 
@@ -65,9 +65,9 @@ De pagina **samen vatting** van **GroupCommon** -project wordt geopend. De URL v
 
 Azure opslag plaatsen fungeert als host voor de volgende typen opslag plaatsen voor uw groep:
 
-- **Algemene opslag plaatsen groeperen**: Opslag plaatsen voor algemene doel einden die meerdere teams binnen een Data Science-eenheid kunnen aannemen voor veel data Science-projecten. 
-- **Team opslagplaatsen**:  Opslag plaatsen voor specifieke teams binnen een Data Science-eenheid. Deze opslag plaatsen zijn specifiek voor de behoeften van een team en kunnen worden gebruikt voor meerdere projecten binnen dat team, maar zijn niet algemeen genoeg om te worden gebruikt in meerdere teams binnen een Data Science-eenheid.
-- **Project opslagplaatsen**: Opslag plaatsen voor specifieke projecten. Dergelijke opslag plaatsen zijn mogelijk niet algemeen genoeg voor meerdere projecten binnen een team of voor andere teams in een Data Science-eenheid.
+- **Algemene opslag**plaatsen: opslag plaatsen voor algemeen gebruik die meerdere teams binnen een Data Science-eenheid kunnen aannemen voor veel data Science-projecten. 
+- **Team opslagplaatsen**: opslag plaatsen voor specifieke teams binnen een Data Science-eenheid. Deze opslag plaatsen zijn specifiek voor de behoeften van een team en kunnen worden gebruikt voor meerdere projecten binnen dat team, maar zijn niet algemeen genoeg om te worden gebruikt in meerdere teams binnen een Data Science-eenheid.
+- **Project opslagplaatsen**: opslag plaatsen voor specifieke projecten. Dergelijke opslag plaatsen zijn mogelijk niet algemeen genoeg voor meerdere projecten binnen een team of voor andere teams in een Data Science-eenheid.
 
 Als u de algemene opslag plaatsen voor groepen in uw project wilt instellen, kunt u het volgende doen: 
 - Wijzig de naam van de standaard **GroupCommon** -opslag plaats in **GroupProjectTemplate**
@@ -105,7 +105,7 @@ De **GroupUtilities** -opslag plaats maken:
    
    ![GroupUtilities-opslag plaats maken](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
-1. Selecteer op de pagina **project instellingen** **opslag** plaatsen onder **opslag plaatsen** in de linkernavigatiebalk om de twee groeps opslagplaatsen te bekijken: **GroupProjectTemplate** en **GroupUtilities**.
+1. Selecteer op de pagina **project instellingen** de optie **opslag** plaatsen onder **opslag plaatsen** in de linkernavigatiebalk om de twee groeps opslagplaatsen te zien: **GroupProjectTemplate** en **GroupUtilities**.
    
    ![Twee groeps opslagplaatsen](./media/group-manager-tasks/two-repositories.png)
 
@@ -121,13 +121,13 @@ De TDSP-team opslagplaatsen importeren:
    
    ![Import selecteren](./media/group-manager-tasks/import-repo.png)
    
-1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u *https: \//github. com/azure/Azure-TDSP-ProjectTemplate. git* in voor de **kloon-URL**. Selecteer vervolgens **importeren**. De inhoud van de ProjectTemplate-opslag plaats van micro soft TDSP team wordt geïmporteerd in uw GroupProjectTemplate-opslag plaats. 
+1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u *https:\/-github.com/azure/Azure-TDSP-ProjectTemplate.git* in voor de **kloon-URL**. Selecteer vervolgens **importeren**. De inhoud van de ProjectTemplate-opslag plaats van micro soft TDSP team wordt geïmporteerd in uw GroupProjectTemplate-opslag plaats. 
    
    ![Micro soft TDSP-team opslagplaats importeren](./media/group-manager-tasks/import-repo-2.png)
    
 1. Klik boven aan de pagina **opslag plaatsen** op de **GroupUtilities** -opslag plaats.
    
-1. Herhaal het import proces om de inhoud van de opslag plaats van micro soft TDSP-team, *https: \//github. com/azure/Azure-TDSP-Utilities. git*, te importeren in uw **GroupUtilities** - **opslag plaats.** 
+1. Herhaal het import proces om de inhoud van de opslag plaats van micro soft TDSP-team, *https:\//github.com/azure/Azure-TDSP-Utilities.git*, te importeren in uw **GroupUtilities** - **opslag plaats.** 
    
 Elk van de twee groeps opslagplaatsen bevat nu alle bestanden, behalve die in de map *. git* , van de bijbehorende opslag plaats van het micro soft TDSP-team. 
 
@@ -166,7 +166,7 @@ De inhoud van de opslag plaats aanpassen:
 Als u wijzigingen wilt aanbrengen met behulp van uw lokale machine of DSVM en de wijzigingen naar de groeps opslagplaatsen wilt pushen, moet u ervoor zorgen dat u beschikt over de vereisten voor het werken met Git en Dsvm:
 
 - Een Azure-abonnement als u een DSVM wilt maken.
-- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
+- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
 - Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
@@ -215,7 +215,7 @@ git push
 ```
 
 > [!NOTE]
-> Als dit de eerste keer is dat u een Git-opslag plaats doorvoert, moet u mogelijk de algemene para meters *User.name* en *User. email* configureren voordat u de `git commit` opdracht uitvoert. Voer de volgende twee opdrachten uit:
+> Als dit de eerste keer is dat u een Git-opslag plaats doorvoert, moet u mogelijk algemene para meters *User.name* en *User. email* configureren voordat u de `git commit` opdracht uitvoert. Voer de volgende twee opdrachten uit:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -258,6 +258,6 @@ Machtigingen voor leden configureren:
 
 Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken in het team data Science process:
 
-- [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
-- [Project Lead taken voor een team van gegevenswetenschappers](project-lead-tasks.md)
+- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
+- [Project Lead taken voor een Data Science-Team](project-lead-tasks.md)
 - [Individuele Inzender taken projecteren voor een Data Science-Team](project-ic-tasks.md)

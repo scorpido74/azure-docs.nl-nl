@@ -1,5 +1,5 @@
 ---
-title: Hadoop-cluster maken met opslagaccounts voor veilige overdracht in Azure HDInsight
+title: Apache Hadoop & Secure Transfer Storage-Azure HDInsight
 description: Informatie over het maken van HDInsight-clusters met Azure-opslag-accounts voor veilige overdracht.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: d182ca9f74f86922a4d8c94c9b3557f6111b7d53
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b8a5d48e977009cf592f271760232a3b0138c8c5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098749"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044951"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop cluster maken met opslag accounts voor veilige overdracht in azure HDInsight
 
@@ -23,7 +23,7 @@ De functie [Veilige overdracht vereist](../storage/common/storage-require-secure
 
 Voordat u aan dit artikel begint, hebt u het volgende nodig:
 
-* **Azure-abonnement**: Als u een gratis proef account voor één maand wilt maken, gaat u naar [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
+* **Azure-abonnement**: voor het maken van een gratis proefaccount van één maand, bezoekt u [azure.microsoft.com/free](https://azure.microsoft.com/free).
 * **Een Azure-opslagaccount met veilige overdracht**. Zie [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) en [Veilige overdracht vereisen](../storage/common/storage-require-secure-transfer.md) voor instructies.
 * **Een Blob-container in het opslagaccount**.
 

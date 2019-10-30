@@ -10,24 +10,24 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 321f12fef44cae43caf53d78b2908e68f9edd0a8
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429049"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043893"
 ---
 # <a name="active-and-inactive-events"></a>Actieve en inactieve gebeurtenissen
 
 Wanneer uw toepassing de Rank API aanroept, ontvangt u een actie die door de toepassing moet worden weer gegeven in het veld rewardActionId.  Vanaf dat moment zal Personaler een belonings oproep verwachten met dezelfde gebeurtenis-code. De belonings score wordt gebruikt voor het trainen van het model dat wordt gebruikt voor toekomstige positie oproepen. Als er geen belonings oproep wordt ontvangen voor de gebeurtenis-defaul, wordt er een berekenings beloning toegepast. Standaard beloningen worden vastgesteld in azure Portal.
 
-In sommige gevallen moet de toepassing classificatie boorgat aanroepen, zelfs als het resultaat wordt gebruikt of weer gegeven voor de gebruiker. Dit kan gebeuren in situaties waarin bijvoorbeeld de pagina weergave van gepromoveerde inhoud wordt overschreven met een marketing campagne. Als het resultaat van de rang nummer nooit is gebruikt en de gebruiker deze niet meer zou zien, zou het niet kunnen worden getraind met een vergoeding in alle, nul of anderszins.
+In sommige gevallen moet de toepassing een positie aanroepen voordat deze zelfs weet of het resultaat wordt gebruikt of weer gegeven voor de gebruiker. Dit kan gebeuren in situaties waarin bijvoorbeeld de pagina weergave van gepromoveerde inhoud wordt overschreven met een marketing campagne. Als het resultaat van de rang nummer nooit is gebruikt en de gebruiker deze niet meer zou zien, zou het niet kunnen worden getraind met een vergoeding in alle, nul of anderszins.
 Dit gebeurt meestal wanneer:
 
 * U kunt een bepaalde gebruikers interface vooraf renderen die de gebruiker al dan niet kan zien. 
 * Uw toepassing maakt mogelijk gebruik van een voorspellende personalisatie waarbij rang gesprekken worden gedaan met minder realtime-context en de uitvoer ervan kan of mogen niet worden gebruikt door de toepassing. 
 
-In dergelijke gevallen is de juiste manier om persoonlijker te gebruiken, het aanroepen van de gebeurtenis om _inactief_te maken. Personaler verwacht geen beloning voor deze gebeurtenis en er wordt geen standaard beloning toegepast. Als de toepassing gebruikmaakt van de informatie van de classificatie oproep, hoeft u zich alleen maar te doen _met de gebeurtenis_ in uw bedrijfs logica. Vanaf het moment dat de gebeurtenis actief is, zal Personaler een beloning voor het evenement verwachten of een standaard beloning Toep assen als er geen expliciete oproep wordt gedaan voor de belonings-API.
+In dergelijke gevallen is de juiste manier om persoonlijker te gebruiken, het aanroepen van de gebeurtenis om _inactief_te maken. Personaler verwacht geen beloning voor deze gebeurtenis en er wordt geen standaard beloning toegepast. Als de toepassing de informatie van de classificatie oproep gebruikt, moet u de gebeurtenis later in uw bedrijfs logica _activeren_ . Vanaf het moment dat de gebeurtenis actief is, zal Personaler een beloning voor het evenement verwachten of een standaard beloning Toep assen als er geen expliciete oproep wordt gedaan voor de belonings-API.
 
 ## <a name="get-inactive-events"></a>Inactieve gebeurtenissen ophalen
 

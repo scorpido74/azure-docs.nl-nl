@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: c5127d0f16a12840cda735d1682cb578266441fe
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1d147dcee31fa4b84b28ab62e8cd41aebc134a9b
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757238"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043951"
 ---
 # <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
 
@@ -184,4 +184,4 @@ De Content Moderator biedt een [term List-API](https://westus.dev.cognitive.micr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Test de [API-console tekst toezicht](try-text-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de [tekst toezicht .net Quick](text-moderation-quickstart-dotnet.md) start als u bekend bent met Visual Studio en C#.
+Test de [API-console tekst toezicht](try-text-api.md) en gebruik de rest API code voorbeelden. Bekijk ook de sectie tekst toezicht van de [.NET SDK Quick](dotnet-sdk-quickstart.md) start als u bekend bent met Visual Studio en C#.

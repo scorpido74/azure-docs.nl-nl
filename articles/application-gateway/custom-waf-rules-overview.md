@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8ae5c9b6b52ea13e3d0981664e8c920cc5b47a01
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 2e96a2a2dd5504c906b5fb84b643467a83518f21
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263563"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027571"
 ---
 # <a name="overview-custom-rules-for-web-application-firewall-v2"></a>Overzicht: aangepaste regels voor Web Application Firewall v2
 
@@ -32,6 +32,9 @@ Als u *of* voor twee verschillende voor waarden wilt gebruiken, moeten de twee v
 > Het maximum aantal aangepaste WAF-regels is 100. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md#application-gateway-limits)voor meer informatie over Application Gateway limieten.
 
 Reguliere expressies worden ook ondersteund in aangepaste regels, net zoals ze in de kern regel sets staan. Zie voor voor beelden van deze regels "voor beeld 3" en "voor beeld 5" in [aangepaste Web Application firewall regels maken en gebruiken](create-custom-waf-rules.md).
+
+> [!NOTE]
+> Aangepaste regels zijn niet beschikbaar in de V1 SKU WAF.
 
 ## <a name="allowing-or-blocking-traffic"></a>Verkeer toestaan of blok keren
 

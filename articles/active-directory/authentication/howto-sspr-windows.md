@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab46bd29aef2fab26c744e1e4c199f6c9a9fff1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304200"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73042065"
 ---
-# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: Wachtwoord herstel inschakelen vanuit het Windows-aanmeldings scherm
+# <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: wacht woord opnieuw instellen inschakelen vanuit het Windows-aanmeldings scherm
 
 Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hun wacht woord opnieuw in te stellen in het Windows-aanmeldings scherm. Gebruikers hoeven niet langer een apparaat met een webbrowser te vinden om toegang te krijgen tot de [SSPR-Portal](https://aka.ms/sspr).
 
@@ -30,15 +30,14 @@ Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hu
 - **Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken**
 - Vereisten voor netwerk proxy
    - Windows 10-apparaten 
-       - Poort 443 tot `passwordreset.microsoftonline.com` en`ajax.aspnetcdn.com`
+       - Poort 443 tot `passwordreset.microsoftonline.com` en `ajax.aspnetcdn.com`
        - Windows 10-apparaten ondersteunen alleen proxy configuratie op computer niveau
    - Windows 7-, 8-en 8,1-apparaten
-       - Poort 443 tot`passwordreset.microsoftonline.com`
+       - Poort 443 tot `passwordreset.microsoftonline.com`
 
 ## <a name="general-limitations"></a>Algemene beperkingen
 
 - Het opnieuw instellen van het wacht woord wordt momenteel niet ondersteund vanuit een Extern bureaublad of via Hyper-V-uitgebreide sessies.
-- Account ontgrendelen, meldingen over mobiele apps en mobiele app-code worden niet ondersteund.
 - Deze functie werkt niet voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd en de optie Onmiddellijk uitvoeren voor gebruiker zich aanmeldt. Voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd, wordt het aanbevolen computerverificatie te gebruiken om deze functie in te schakelen.
 
 ## <a name="windows-10-password-reset"></a>Windows 10-wacht woord opnieuw instellen
@@ -59,7 +58,7 @@ Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hu
     - EnableLostMode, indien ingesteld op het apparaat
     - Explorer.exe is vervangen door een aangepaste shell
 - De combi natie van de volgende drie instellingen kan ervoor zorgen dat deze functie niet werkt.
-    - Interactieve aanmelding: CTRL + ALT + DEL = uitgeschakeld vereisen
+    - Interactieve aanmelding: CTRL + ALT + DEL = disabled is uitgeschakeld
     - DisableLockScreenAppNotifications = 1 of ingeschakeld
     - IsContentDeliveryPolicyEnforced = 1 of waar 
 
@@ -84,7 +83,7 @@ Intune gebruiken om de configuratie te wijzigen zodat gebruikers het wachtwoord 
       - **Waarde** ingesteld op **1**
       - Klik op **OK**
    - Klik op **OK**
-1. Klik op **Maken**
+1. Klik op **Maken**.
 1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie vindt u in het artikel [gebruikers-en apparaatprofielen toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign).
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>Inschakelen voor Windows 10 met behulp van het REGI ster
@@ -102,7 +101,7 @@ Het auditlogboek van Azure AD bevat informatie over het IP-adres en het ClientTy
 
 ![Voor beeld van een Windows 7-wacht woord opnieuw instellen in het Azure AD-controle logboek](media/howto-sspr-windows/windows-7-sspr-azure-ad-audit-log.png)
 
-Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings scherm van een Windows 10-apparaat, `defaultuser1` wordt een tijdelijke account met beperkte bevoegdheden gemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf kent een willekeurig gegenereerd wachtwoord, wordt niet getoond bij het aanmelden op een apparaat en wordt automatisch verwijderd nadat de gebruiker het wachtwoord opnieuw heeft ingesteld. Er `defaultuser` kunnen meerdere profielen bestaan, maar deze kunnen veilig worden genegeerd.
+Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings scherm van een Windows 10-apparaat, wordt er een tijdelijk account met beperkte bevoegdheden met de naam `defaultuser1` gemaakt. Dit account wordt gebruikt om het proces voor het opnieuw instellen van het wachtwoord te beveiligen. Het account zelf kent een willekeurig gegenereerd wachtwoord, wordt niet getoond bij het aanmelden op een apparaat en wordt automatisch verwijderd nadat de gebruiker het wachtwoord opnieuw heeft ingesteld. Er kunnen meerdere `defaultuser` profielen bestaan, maar deze kunnen wel veilig worden genegeerd.
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 en 8,1 wacht woord opnieuw instellen
 
@@ -115,10 +114,10 @@ Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings sche
 > [!WARNING]
 > TLS 1,2 moet zijn ingeschakeld, niet alleen ingesteld op automatisch onderhandelen
 
-### <a name="install"></a>Installeren
+### <a name="install"></a>Installatie
 
 1. Down load het juiste installatie programma voor de versie van Windows die u wilt inschakelen.
-   - Software is beschikbaar in het micro soft Download centrum op[https://aka.ms/sspraddin](https://aka.ms/sspraddin)
+   - Software is beschikbaar in het micro soft Download centrum op [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
 1. Meld u aan bij de computer waarop u wilt installeren en voer het installatie programma uit.
 1. Na de installatie wordt u ten zeerste aangeraden opnieuw op te starten.
 1. Nadat het systeem opnieuw is opgestart, kiest u in het aanmeldings scherm een gebruiker en klikt u op wacht woord verg eten? om de werk stroom voor het opnieuw instellen van wacht woorden te initiëren.
@@ -141,8 +140,8 @@ Als aanvullende logboek registratie vereist is, kan een register sleutel op de c
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Als u uitgebreide logboek registratie wilt inschakelen, `REG_DWORD: “EnableLogging”`maakt u een en stelt u deze in op 1.
-- Als u uitgebreide logboek registratie wilt uitschakelen, `REG_DWORD: “EnableLogging”` wijzigt u in 0.
+- Als u uitgebreide logboek registratie wilt inschakelen, maakt u een `REG_DWORD: “EnableLogging”`en stelt u deze in op 1.
+- Als u uitgebreide logboek registratie wilt uitschakelen, wijzigt u de `REG_DWORD: “EnableLogging”` in 0.
 
 ## <a name="what-do-users-see"></a>Wat gebruikers zien
 

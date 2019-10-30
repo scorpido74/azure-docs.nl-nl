@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 79a11a58f11486f3eda0205e62e7a4a92ff070b2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a8f47e0eea8908fcf6aa11c694e09efef14bbf1
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933937"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053537"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische update van de Mobility-service in azure-naar-Azure-replicatie
 
@@ -31,7 +31,7 @@ Wanneer u Site Recovery gebruikt voor het beheren van updates, implementeert het
 Het standaardrunbook-schema wordt dagelijks opnieuw ingesteld om 12:00 uur in de tijd zone van de geo van de gerepliceerde VM. U kunt het runbook-schema ook wijzigen via het Automation-account.
 
 > [!NOTE]
-> Vanaf update pakket 35 kunt u een bestaand Automation-account kiezen dat u wilt gebruiken voor updates. Voordat deze update werd bijgewerkt, Site Recovery dit account standaard gemaakt. Deze optie is beschikbaar wanneer u replicatie voor een virtuele machine inschakelt. Als u de instelling wijzigt, wordt deze toegepast op alle virtuele Azure-machines die in dezelfde kluis worden beveiligd.
+> Vanaf update pakket 35 kunt u een bestaand Automation-account kiezen dat u wilt gebruiken voor updates. Voordat deze update werd bijgewerkt, Site Recovery dit account standaard gemaakt. Houd er rekening mee dat u deze optie alleen kunt selecteren wanneer u replicatie voor een virtuele machine inschakelt. Het is niet beschikbaar voor een replicerende VM. De instelling die u selecteert, is van toepassing op alle virtuele Azure-machines die in dezelfde kluis worden beveiligd.
  
 > Bij het inschakelen van automatische updates is het niet nodig om uw virtuele Azure-machines opnieuw op te starten of de actieve replicatie te beïnvloeden.
 

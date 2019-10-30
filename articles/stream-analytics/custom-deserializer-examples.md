@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 6c7d94761e4c5d5087dc8ac4e10854989a18f0fc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: HT
+ms.openlocfilehash: f1452e56054948edffc6e9b3c98fa48d2589cb2a
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992104"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024941"
 ---
 # <a name="use-net-deserializers-for-azure-stream-analytics-jobs"></a>.Net-deserialisatie gebruiken voor Azure stream Analytics-taken
 
@@ -40,7 +40,7 @@ Skippable-fouten moeten worden gegenereerd met `IStreamingDiagnostics` door gege
 
 1. T is een klasse of een struct.
 1. Alle open bare velden in T zijn
-    1. Een van [Long, DateTime, String, Double] of hun null-equivalenten.
+    1. Een van [sbyte, byte, short, USHORT, int, uint, Long, DateTime, String, float, Double] of hun null-equivalenten.
     1. Een andere struct of klasse volgens dezelfde regels.
     1. Matrix van het type `T2` die dezelfde regels volgen.
     1. IList`T2` waarbij T2 dezelfde regels volgt.
@@ -226,12 +226,12 @@ De volgende Java script-code is een voor beeld van de serialisatie-indeling voor
 
 Deze functie is beschikbaar in de volgende regio's:
 
-* Europa - west
-* VS - oost
-* Europa - noord
-* VS - west
-* VS - oost 2
-* VS - west-centraal
+* VS-West-Centraal (beschikbaar)
+* Europa-noord (beschikbaar)
+* VS-Oost (beschikbaar)
+* VS-West (binnenkort implementeren)
+* VS-Oost 2 (binnenkort implementeren)
+* Europa-west (binnenkort uit te vouwen)
 
 U kunt [ondersteuning aanvragen](https://aka.ms/ccodereqregion) voor extra regio's.
 
@@ -244,10 +244,6 @@ Deze functie is beschikbaar in 6 regio's (#region-ondersteuning). Als u deze fun
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Kan ik toegang krijgen tot MetadataPropertyValue van mijn invoer vergelijkbaar met de functie GetMetadataPropertyValue?
 
 Deze functionaliteit wordt niet ondersteund. Als u deze mogelijkheid nodig hebt, kunt u voor deze aanvraag stemmen op [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese).
-
-### <a name="streamdeserializer-deserializes-a-stream-into-object-of-type-t-can-the-public-fields-in-t-be-any-supported-type-in-net"></a>StreamDeserializer deserialeert een stream naar een object van het type T. Kunnen de open bare velden in al het type worden ondersteund in .NET?
-
-Ondersteuning voor alle ondersteunde typen in .NET vindt u op het schema.
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Kan ik mijn implementatie voor deserialisatie delen met de community zodat anderen kunnen profiteren?
 

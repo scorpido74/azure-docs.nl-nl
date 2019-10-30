@@ -1,167 +1,179 @@
 ---
-title: Bronnen van Azure Event Grid-gebeurtenissen
-description: Beschrijving van ondersteunde gebeurtenisbronnen voor Azure Event Grid
+title: Azure Event Grid gebeurtenis bronnen
+description: Hierin worden de ondersteunde gebeurtenis bronnen voor Azure Event Grid beschreven
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: ad9bb5c135684c4573195298fb8e55a08208f6b6
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 5e8dc6629cfbbc3e42aeeb4dc94f33d13867ca9f
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785828"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024801"
 ---
-# <a name="event-sources-in-azure-event-grid"></a>Bronnen van gebeurtenissen in Azure Event Grid
+# <a name="event-sources-in-azure-event-grid"></a>Gebeurtenis bronnen in Azure Event Grid
 
-Een gebeurtenisbron is waar de gebeurtenis plaatsvindt. Meerdere Azure-services worden automatisch geconfigureerd voor het verzenden van gebeurtenissen. U kunt ook aangepaste toepassingen die gebeurtenissen verzenden maken. Aangepaste toepassingen hoeft te worden gehost in Azure Event Grid gebruiken om gebeurtenissen te worden gedistribueerd.
+Een gebeurtenis bron is de plaats waar de gebeurtenis plaatsvindt. Verschillende Azure-Services worden automatisch geconfigureerd voor het verzenden van gebeurtenissen. U kunt ook aangepaste toepassingen maken die gebeurtenissen verzenden. Aangepaste toepassingen hoeven niet te worden gehost in azure om Event Grid te gebruiken voor gebeurtenis distributie.
 
-In dit artikel bevat koppelingen naar inhoud voor de bron van elke gebeurtenis.
+Dit artikel bevat koppelingen naar inhoud voor elke bron van de gebeurtenis.
 
 ## <a name="azure-subscriptions"></a>Azure-abonnementen
 
-Abonneren op gebeurtenissen van de Azure-abonnementen om te reageren op wijzigingen in de resources in een Azure-abonnement.
+Abonneer u op Azure-abonnementen om te reageren op wijzigingen in resources in een Azure-abonnement.
 
-|Titel |Description  |
+|Titel |Beschrijving  |
 |---------|---------|
-| [Zelfstudie: Azure Automation met Event Grid en Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Maak een virtuele machine, waarmee een gebeurtenis wordt verzonden. De gebeurtenis activeert een Automation-runbook dat labels van de virtuele machine en een bericht dat wordt verzonden naar een Microsoft Teams-kanaal wordt geactiveerd. |
-| [Hoe: abonneren op gebeurtenissen tot en met portal](subscribe-through-portal.md) | De portal gebruiken om u te abonneren op gebeurtenissen voor een Azure-abonnement. |
-| [Azure CLI: abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-cli-azure-subscription.md) |Voorbeeld van een script maakt u een Event Grid-abonnement naar een Azure-abonnement en verzendt gebeurtenissen naar een WebHook. |
-| [PowerShell: abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Voorbeeld van een script maakt u een Event Grid-abonnement naar een Azure-abonnement en verzendt gebeurtenissen naar een WebHook. |
-| [Gebeurtenisschema](event-schema-subscriptions.md) | Velden weergegeven van gebeurtenissen voor Azure-abonnement. |
+| [Zelf studie: Azure Automation met Event Grid en micro soft teams](ensure-tags-exists-on-new-virtual-machines.md) |Maak een virtuele machine die een gebeurtenis verzendt. De gebeurtenis activeert een Automation-runbook waarmee de virtuele machine wordt gecodeerd en een bericht wordt geactiveerd dat naar een micro soft teams-kanaal wordt verzonden. |
+| [Procedure: abonneren op gebeurtenissen via de portal](subscribe-through-portal.md) | Gebruik de portal om u te abonneren op gebeurtenissen voor een Azure-abonnement. |
+| [Azure CLI: abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-cli-azure-subscription.md) |Voorbeeld script voor het maken van een Event Grid-abonnement op een Azure-abonnement en het verzenden van gebeurtenissen naar een webhook. |
+| [Power shell: abonneren op gebeurtenissen voor een Azure-abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Voorbeeld script voor het maken van een Event Grid-abonnement op een Azure-abonnement en het verzenden van gebeurtenissen naar een webhook. |
+| [Gebeurtenis schema](event-schema-subscriptions.md) | Hiermee worden velden in azure-abonnements gebeurtenissen weer gegeven. |
 
 ## <a name="container-registry"></a>Container Registry
 
-Abonneren op gebeurtenissen van de Container Registry om te reageren op wijzigingen in afbeeldingen.
+Abonneer u op Container Registry gebeurtenissen om te reageren op wijzigingen in installatie kopieën.
 
-|Titel |Description  |
+|Titel |Beschrijving  |
 |---------|---------|
-| [Snelstartgids: container registry gebeurtenissen verzenden](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u Azure CLI gebruiken voor het verzenden van gebeurtenissen voor Container Registry. |
-| [Gebeurtenisschema](event-schema-container-registry.md) | Velden worden weergegeven in de Container Registry-gebeurtenissen. |
+| [Snelstartgids: container register gebeurtenissen verzenden](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u met Azure CLI Container Registry-gebeurtenissen kunt verzenden. |
+| [Gebeurtenis schema](event-schema-container-registry.md) | Hiermee worden velden in Container Registry gebeurtenissen weer gegeven. |
 
 ## <a name="custom-topics"></a>Aangepaste onderwerpen
 
-Abonneren op aangepaste onderwerpen om te reageren op toepassingsgebeurtenissen.
+Abonneer u op aangepaste onderwerpen om te reageren op toepassings gebeurtenissen.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [QuickStart: maken en routeren van aangepaste gebeurtenissen met Azure CLI](custom-event-quickstart.md) | Laat zien hoe u Azure CLI gebruiken voor het verzenden van aangepaste gebeurtenissen. |
-| [QuickStart: maken en routeren van aangepaste gebeurtenissen met Azure PowerShell](custom-event-quickstart-powershell.md) | Laat zien hoe u Azure PowerShell gebruiken voor het verzenden van aangepaste gebeurtenissen. |
-| [QuickStart: maken en routeren van aangepaste gebeurtenissen met de Azure-portal](custom-event-quickstart-portal.md) | Laat zien hoe het gebruik van de portal voor het verzenden van aangepaste gebeurtenissen. |
-| [Snelstartgids: aangepaste gebeurtenissen routeren naar Azure Queue storage](custom-event-to-queue-storage.md) | Beschrijft hoe u aangepaste gebeurtenissen verzenden naar een Queue storage. |
-| [Hoe: plaatsen op aangepast onderwerp](post-to-custom-topic.md) | Laat zien hoe u een gebeurtenis om een aangepast onderwerp te plaatsen. |
-| [Azure CLI: aangepast Event Grid-onderwerp maken](./scripts/event-grid-cli-create-custom-topic.md)|Voorbeeld van een script dat wordt gemaakt van een aangepast onderwerp. Het script wordt het eindpunt en een sleutel opgehaald.|
-| [Azure CLI: abonneren op gebeurtenissen voor een aangepast onderwerp](./scripts/event-grid-cli-subscribe-custom-topic.md)|Voorbeeld van een script dat wordt gemaakt van een abonnement voor een aangepast onderwerp. Verzendt gebeurtenissen naar een WebHook.|
-| [PowerShell: aangepast Event Grid-onderwerp maken](./scripts/event-grid-powershell-create-custom-topic.md)|Voorbeeld van een script dat wordt gemaakt van een aangepast onderwerp. Het script wordt het eindpunt en een sleutel opgehaald.|
-| [PowerShell: abonneren op gebeurtenissen voor een aangepast onderwerp](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Voorbeeld van een script dat wordt gemaakt van een abonnement voor een aangepast onderwerp. Verzendt gebeurtenissen naar een WebHook.|
-| [Resource Manager-sjabloon: aangepast onderwerp en WebHook-eindpunt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Een Resource Manager-sjabloon waarmee u een aangepast onderwerp en abonnement op dat aangepaste onderwerp maakt. Verzendt gebeurtenissen naar een WebHook. |
+| [Snelstartgids: aangepaste gebeurtenissen maken en routeren met Azure CLI](custom-event-quickstart.md) | Laat zien hoe u Azure CLI gebruikt om aangepaste gebeurtenissen te verzenden. |
+| [Snelstartgids: aangepaste gebeurtenissen maken en routeren met Azure PowerShell](custom-event-quickstart-powershell.md) | Laat zien hoe u Azure PowerShell kunt gebruiken om aangepaste gebeurtenissen te verzenden. |
+| [Snelstartgids: aangepaste gebeurtenissen maken en routeren met de Azure Portal](custom-event-quickstart-portal.md) | Laat zien hoe u de portal kunt gebruiken om aangepaste gebeurtenissen te verzenden. |
+| [Snelstartgids: aangepaste gebeurtenissen naar Azure Queue-opslag routeren](custom-event-to-queue-storage.md) | Hierin wordt beschreven hoe u aangepaste gebeurtenissen naar een wachtrij opslag verzendt. |
+| [Procedure: posten naar een aangepast onderwerp](post-to-custom-topic.md) | Laat zien hoe u een gebeurtenis op een aangepast onderwerp plaatst. |
+| [Azure CLI: Event Grid aangepast onderwerp maken](./scripts/event-grid-cli-create-custom-topic.md)|Voorbeeld script voor het maken van een aangepast onderwerp. Het script haalt het eind punt en een sleutel op.|
+| [Azure CLI: abonneren op gebeurtenissen voor een aangepast onderwerp](./scripts/event-grid-cli-subscribe-custom-topic.md)|Voorbeeld script voor het maken van een abonnement voor een aangepast onderwerp. Er worden gebeurtenissen naar een webhook verzonden.|
+| [Power shell: Event Grid aangepast onderwerp maken](./scripts/event-grid-powershell-create-custom-topic.md)|Voorbeeld script voor het maken van een aangepast onderwerp. Het script haalt het eind punt en een sleutel op.|
+| [Power shell: abonneren op gebeurtenissen voor een aangepast onderwerp](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Voorbeeld script voor het maken van een abonnement voor een aangepast onderwerp. Er worden gebeurtenissen naar een webhook verzonden.|
+| [Resource Manager-sjabloon: aangepast onderwerp en webhook-eind punt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Een resource manager-sjabloon voor het maken van een aangepast onderwerp en abonnement voor dat aangepaste onderwerp. Er worden gebeurtenissen naar een webhook verzonden. |
 |
-| [Resource Manager-sjabloon: aangepast onderwerp en het eindpunt van de Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Een Resource Manager-sjabloon maakt u een abonnement voor een aangepast onderwerp. Verzendt gebeurtenissen naar een Azure Event Hubs. |
-| [Gebeurtenisschema](event-schema.md) | Velden weergegeven in aangepaste gebeurtenissen. |
+| [Resource Manager-sjabloon: aangepast onderwerp en Event Hubs eind punt](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Een resource manager-sjabloon voor het maken van een abonnement voor een aangepast onderwerp. Er worden gebeurtenissen naar een Azure-Event Hubs verzonden. |
+| [Gebeurtenis schema](event-schema.md) | Toont velden in aangepaste gebeurtenissen. |
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Abonneren op gebeurtenissen van Event Hubs voor het vastleggen van bestand gebeurtenissen reageren. Eventhubs kunnen fungeren als een bron van gebeurtenis- of gebeurtenis-handler. De volgende artikelen laten zien hoe u Event Hubs gebruikt als een bron.
+Abonneer u op Event Hubs gebeurtenissen om te reageren op gebeurtenissen van het gebeurtenis bestand. Event Hubs kan fungeren als een gebeurtenis bron of gebeurtenis-handler. In de volgende artikelen ziet u hoe u Event Hubs als een bron gebruikt.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [Zelfstudie: big data streamen naar een datawarehouse](event-grid-event-hubs-integration.md) | Wanneer Event Hubs een bestand vastleggen maakt, verzendt Event Grid een gebeurtenis aan een functie-app. De app haalt de Capture-bestand en migreert gegevens naar een datawarehouse. |
-| [Gebeurtenisschema](event-schema-event-hubs.md) | Velden weergegeven van gebeurtenissen van Event Hubs. |
+| [Zelf studie: stream big data naar een Data Warehouse](event-grid-event-hubs-integration.md) | Wanneer Event Hubs een opname bestand maakt, wordt Event Grid een gebeurtenis naar een functie-app verzonden. De app haalt het opname bestand op en migreert gegevens naar een Data Warehouse. |
+| [Gebeurtenis schema](event-schema-event-hubs.md) | Hiermee worden velden in Event Hubs gebeurtenissen weer gegeven. |
 
-Zie voor meer voorbeelden van Event Hubs als een handler [Event Hubs-handler](event-handlers.md#event-hubs).
+Zie [Event hubs handler](event-handlers.md#event-hubs)voor voor beelden van Event hubs als handler.
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Abonneren op gebeurtenissen om te reageren op het apparaat is gemaakt, verwijderd, verbonden, niet-verbonden IoT-Hub en telemetrie.
+Abonneer u op IoT Hub-gebeurtenissen om te reageren op apparaten die zijn gemaakt, verwijderd, verbonden, niet-verbonden en telemetrie-gebeurtenissen.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [Verzenden van e-mailmeldingen over Azure IoT Hub-gebeurtenissen met Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Een logische app verzendt een e-mailmelding telkens wanneer een apparaat wordt toegevoegd aan uw IoT-Hub. |
-| [Reageren op gebeurtenissen van IoT-Hub met behulp van Event Grid om acties starten](../iot-hub/iot-hub-event-grid.md) | Overzicht van de integratie van IoT-Hub met Event Grid. |
-| [Gebeurtenisschema](event-schema-iot-hub.md) | Velden weergegeven van IoT-Hub gebeurtenissen. |
-| [Apparaat is verbonden en het apparaat verbroken gebeurtenissen](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Laat zien hoe apparaatverbinding statusgebeurtenissen rangschikken. |
+| [E-mail meldingen over Azure IoT Hub-gebeurtenissen verzenden met Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Een logische app verzendt een e-mail melding wanneer een apparaat wordt toegevoegd aan uw IoT Hub. |
+| [Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren](../iot-hub/iot-hub-event-grid.md) | Overzicht van het integreren van IoT Hub met Event Grid. |
+| [Gebeurtenis schema](event-schema-iot-hub.md) | Hiermee worden velden in IoT Hub gebeurtenissen weer gegeven. |
+| [De verbinding met het apparaat is verbonden en de verbroken gebeurtenissen van het apparaat](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Laat zien hoe u gebeurtenissen van de verbindings status van apparaten kunt ordenen. |
+
+## <a name="key-vault-preview"></a>Key Vault (preview-versie)
+
+Key Vault integratie met Event Grid is momenteel beschikbaar als preview-versie. 
+
+Abonneer u op Key Vault gebeurtenissen als u een melding wilt ontvangen wanneer een geheim verloopt, een geheim verloopt of een geheim een nieuwe versie beschikbaar heeft. 
+
+|Titel  |Beschrijving  |
+|---------|---------|
+| [Key Vault gebeurtenissen bewaken met Azure Event Grid](../key-vault/event-grid-overview.md) | Overzicht van het integreren van Key Vault met Event Grid. |
+| [Zelf studie: Key Vault gebeurtenissen maken en bewaken met Event Grid](../key-vault/event-grid-tutorial.md) | Meer informatie over het instellen van Event Grid meldingen voor Key Vault. |
+| [Gebeurtenis schema](event-schema-key-vault.md) | Hiermee worden velden in Key Vault gebeurtenissen weer gegeven. |
 
 ## <a name="media-services"></a>Media Services
 
-Abonneren op gebeurtenissen van Media Services om te reageren op gebeurtenissen die taak staat.
+Abonneer u op Media Services gebeurtenissen om te reageren op taak status gebeurtenissen.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [Overzicht: reageren op gebeurtenissen van de Media Services](../media-services/latest/reacting-to-media-services-events.md) | Overzicht van Media Services integreren met Event Grid. |
-| [Zelfstudie: Azure Media Services-gebeurtenissen routeren naar een aangepaste web-eindpunt met behulp van CLI](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe voor het verzenden van gebeurtenissen van Media Services. |
-| [Gebeurtenisschema](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Velden bevat in Media Services-gebeurtenissen. |
+| [Overzicht: reageren op Media Services gebeurtenissen](../media-services/latest/reacting-to-media-services-events.md) | Overzicht van het integreren van Media Services met Event Grid. |
+| [Zelf studie: Azure Media Services gebeurtenissen naar een aangepast eind punt routeren met behulp van CLI](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Toont hoe gebeurtenissen van Media Services worden verzonden. |
+| [Gebeurtenis schema](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Hiermee worden velden in Media Services gebeurtenissen weer gegeven. |
 
 ## <a name="resource-groups"></a>Resourcegroepen
 
-Abonneren op gebeurtenissen van de resource-groep om te reageren op wijzigingen in de resources in een resourcegroep.
+Abonneer u op de gebeurtenissen van de resource groep om te reageren op wijzigingen in resources in een resource groep.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [Zelfstudie: wijzigingen van de virtuele machine met Azure Event Grid en Logic Apps bewaken](monitor-virtual-machine-changes-event-grid-logic-app.md) | Een logische app bewaakt van wijzigingen aan een virtuele machine en e-mailberichten over deze wijzigingen verzendt. |
-| [Azure CLI: abonneren op gebeurtenissen voor een resourcegroep](./scripts/event-grid-cli-resource-group.md)| Voorbeeld van een script dat ze zich op gebeurtenissen voor een resourcegroep abonneren. Verzendt gebeurtenissen naar een WebHook. |
-| [Azure CLI: abonneren op gebeurtenissen voor een resourcegroep en -filter voor een resource](./scripts/event-grid-cli-resource-group-filter.md) | Voorbeeld van een script dat ze zich abonneren op gebeurtenissen voor een resourcegroep en gebeurtenissen voor één resource gefilterd. |
-| [PowerShell: abonneren op gebeurtenissen voor een resourcegroep](./scripts/event-grid-powershell-resource-group.md) | Voorbeeld van een script dat ze zich op gebeurtenissen voor een resourcegroep abonneren. Verzendt gebeurtenissen naar een WebHook. |
-| [PowerShell: abonneren op gebeurtenissen voor een resourcegroep en -filter voor een resource](./scripts/event-grid-powershell-resource-group-filter.md) | Voorbeeld van een script dat ze zich abonneren op gebeurtenissen voor een resourcegroep en gebeurtenissen voor één resource gefilterd. |
-| [Resource Manager-sjabloon: resourceabonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Hiermee abonneert u zich op gebeurtenissen voor een Azure-abonnement of resource-groep. Verzendt gebeurtenissen naar een WebHook. |
-| [Gebeurtenisschema](event-schema-resource-groups.md) | Velden weergegeven van de resource group-gebeurtenissen. |
+| [Zelf studie: wijzigingen van virtuele machines bewaken met Azure Event Grid en Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Een logische app controleert wijzigingen aan een virtuele machine en stuurt e-mails over die wijzigingen. |
+| [Azure CLI: abonneren op gebeurtenissen voor een resource groep](./scripts/event-grid-cli-resource-group.md)| Voorbeeld script dat zich abonneert op gebeurtenissen voor een resource groep. Er worden gebeurtenissen naar een webhook verzonden. |
+| [Azure CLI: abonneren op gebeurtenissen voor een resource groep en filteren op een resource](./scripts/event-grid-cli-resource-group-filter.md) | Voorbeeld script voor het abonneren op gebeurtenissen voor een resource groep en het filteren van gebeurtenissen voor één resource. |
+| [Power shell: abonneren op gebeurtenissen voor een resource groep](./scripts/event-grid-powershell-resource-group.md) | Voorbeeld script dat zich abonneert op gebeurtenissen voor een resource groep. Er worden gebeurtenissen naar een webhook verzonden. |
+| [Power shell: abonneren op gebeurtenissen voor een resource groep en filteren op een resource](./scripts/event-grid-powershell-resource-group-filter.md) | Voorbeeld script voor het abonneren op gebeurtenissen voor een resource groep en het filteren van gebeurtenissen voor één resource. |
+| [Resource Manager-sjabloon: resource-abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Abonneren op gebeurtenissen voor een Azure-abonnement of resource groep. Er worden gebeurtenissen naar een webhook verzonden. |
+| [Gebeurtenisschema](event-schema-resource-groups.md) | Hiermee worden velden in de gebeurtenissen van de resource groep weer gegeven. |
 
 ## <a name="service-bus"></a>Service Bus
 
-Abonneren op Service Bus-gebeurtenissen om te reageren op berichten zonder een actieve listener.
+Abonneer u op Service Bus gebeurtenissen om te reageren op berichten zonder actieve listener.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [Zelfstudie: Azure Service Bus met voorbeelden van de Azure Event Grid-integratie](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid verzendt berichten van Service Bus-onderwerp functioneren app en de logische app. |
-| [Overzicht: Azure Service Bus met Event Grid-integratie](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Overzicht van de integratie van Service Bus met Event Grid. |
-| [Gebeurtenisschema](event-schema-service-bus.md) | Velden weergeven in Service Bus-gebeurtenissen |
+| [Zelf studie: Azure Service Bus voor voor beelden van Azure Event Grid-integratie](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid verzendt berichten van Service Bus onderwerp naar de functie app en de logische app. |
+| [Overzicht: Azure Service Bus Event Grid-integratie](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Overzicht van het integreren van Service Bus met Event Grid. |
+| [Gebeurtenis schema](event-schema-service-bus.md) | Hiermee worden velden in Service Bus gebeurtenissen weer gegeven. |
 
 ## <a name="storage"></a>Storage
 
-Abonneren op gebeurtenissen van Blob-opslag om te reageren op blob-gebeurtenissen gemaakt en verwijderd.
+Abonneer u op Blob Storage-gebeurtenissen om te reageren op gemaakte blobs en verwijderde gebeurtenissen.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [Snelstartgids: Blob-opslaggebeurtenissen doorsturen naar een aangepaste web-eindpunt met Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u Azure CLI gebruiken voor het verzenden van gebeurtenissen van blob storage naar een WebHook. |
-| [Snelstartgids: Blob-opslaggebeurtenissen doorsturen naar een aangepaste web-eindpunt met PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u Azure PowerShell gebruikt voor het verzenden van gebeurtenissen van blob storage naar een WebHook. |
-| [QuickStart: maken en routeren van gebeurtenissen van Blob storage met Azure portal](blob-event-quickstart-portal.md) | Laat zien hoe het gebruik van de portal voor het verzenden van gebeurtenissen van blob storage naar een WebHook. |
-| [Azure CLI: abonneren op gebeurtenissen voor een Blob storage-account](./scripts/event-grid-cli-blob.md) | Voorbeeld van een script dat ze zich op gebeurtenissen voor een Blob storage-account abonneren. Wordt de gebeurtenis verzonden naar een WebHook. |
-| [PowerShell: abonneren op gebeurtenissen voor een Blob storage-account](./scripts/event-grid-powershell-blob.md) | Voorbeeld van een script dat ze zich op gebeurtenissen voor een Blob storage-account abonneren. Wordt de gebeurtenis verzonden naar een WebHook. |
-| [Resource Manager-sjabloon: Blob-opslag en een abonnement maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Hiermee implementeert u een Azure Blob-opslagaccount en abonneert u zich op gebeurtenissen van die opslagaccount. Verzendt gebeurtenissen naar een WebHook. |
-| [Overzicht: reageren op gebeurtenissen van Blob storage](../storage/blobs/storage-blob-event-overview.md) | Overzicht van de integratie van Blob-opslag met Event Grid. |
-| [Gebeurtenisschema](event-schema-blob-storage.md) | Velden weergegeven van gebeurtenissen van Blob Storage. |
+| [Quick Start: Blob Storage-gebeurtenissen naar een aangepast webeindpunt door sturen met Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u met Azure CLI Blob Storage-gebeurtenissen naar een webhook verzendt. |
+| [Snelstartgids: Blob Storage-gebeurtenissen door sturen naar een aangepast webeindpunt met Power shell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u Azure PowerShell kunt gebruiken voor het verzenden van Blob Storage-gebeurtenissen naar een webhook. |
+| [Snelstartgids: Blob Storage-gebeurtenissen maken en routeren met de Azure Portal](blob-event-quickstart-portal.md) | Laat zien hoe u de portal kunt gebruiken voor het verzenden van Blob Storage-gebeurtenissen naar een webhook. |
+| [Azure CLI: abonneren op gebeurtenissen voor een Blob Storage-account](./scripts/event-grid-cli-blob.md) | Voorbeeld script dat zich abonneert op een gebeurtenis voor een Blob Storage-account. Hiermee wordt de gebeurtenis naar een webhook verzonden. |
+| [Power shell: abonneren op gebeurtenissen voor een Blob Storage-account](./scripts/event-grid-powershell-blob.md) | Voorbeeld script dat zich abonneert op een gebeurtenis voor een Blob Storage-account. Hiermee wordt de gebeurtenis naar een webhook verzonden. |
+| [Resource Manager-sjabloon: Blob-opslag en-abonnement maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Hiermee implementeert u een Azure Blob-opslagaccount en abonneert u zich op gebeurtenissen van die opslagaccount. Er worden gebeurtenissen naar een webhook verzonden. |
+| [Overzicht: reageren op Blob Storage-gebeurtenissen](../storage/blobs/storage-blob-event-overview.md) | Overzicht van het integreren van Blob Storage met Event Grid. |
+| [Gebeurtenis schema](event-schema-blob-storage.md) | Hiermee worden velden in Blob Storage gebeurtenissen weer gegeven. |
 
 ## <a name="maps"></a>Kaarten
-Abonneren op gebeurtenissen van de Azure-kaarten om te reageren op gebeurtenissen van de geofence bevindt. Een toepassing kan bijvoorbeeld een e-mailmelding leveren telkens wanneer een apparaat binnengaat of een geofence bevindt verlaat.
+Abonneer u op Azure Maps gebeurtenissen om te reageren op geofence-gebeurtenissen. Een toepassing kan bijvoorbeeld een e-mail melding verzenden wanneer een apparaat binnenkomt of een geofence verlaat.
 
-|Titel  |Description  |
+|Titel  |Beschrijving  |
 |---------|---------|
-| [Reageren op gebeurtenissen van Azure Maps met behulp van Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Overzicht van Azure Maps integreren met Event Grid. |
-| [Zelfstudie: Instellen van een geofence](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | In deze zelfstudie doorloopt u de basisstappen voor het instellen van geofence met behulp van Azure Maps. Met Azure Event Grid kunt u de resultaten van de geofence streamen en het instellen van een melding op basis van de resultaten van de geofence bevindt. |
-| [Gebeurtenisschema](event-schema-azure-maps.md) | Velden worden weergegeven in Azure Maps-gebeurtenissen. |
+| [Reageren op Azure Maps gebeurtenissen met behulp van Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Overzicht van het integreren van Azure Maps met Event Grid. |
+| [Zelf studie: een geofence instellen](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | In deze zelfstudie doorloopt u de basisstappen voor het instellen van geofence met behulp van Azure Maps. U gebruikt Azure Event Grid om de geofence-resultaten te streamen en een melding in te stellen op basis van de resultaten van de geofence. |
+| [Gebeurtenis schema](event-schema-azure-maps.md) | Hiermee worden velden in Azure Maps gebeurtenissen weer gegeven. |
 
 ## <a name="app-configuration"></a>App Configuration
-Abonneren op gebeurtenissen van Azure App-configuratie om te reageren op gebeurtenissen van sleutel / waarde-aanpassing.
+Abonneer u op Azure-app configuratie gebeurtenissen om te reageren op belang rijke wijzigings gebeurtenissen.
 
-|Titel | Description |
+|Titel | Beschrijving |
 |---------|---------|
-| [Reageren op gebeurtenissen van Azure App-configuratie met behulp van Event Grid](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Overzicht van de integratie van Azure App-configuratie met Event Grid. |
-| [Snelstartgids: Azure App-configuratie gebeurtenissen routeren naar een aangepaste web-eindpunt met Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u Azure CLI gebruiken voor het verzenden van gebeurtenissen van Azure App-configuratie naar een WebHook. |
-| [Gebeurtenisschema](event-schema-app-configuration.md) | Velden weergegeven in Azure App-Configuratiegebeurtenissen. |
+| [Reageren op Azure-app configuratie gebeurtenissen met behulp van Event Grid](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Overzicht van het integreren van Azure-app configuratie met Event Grid. |
+| [Snelstartgids: route Azure-app configuratie gebeurtenissen naar een aangepast webeindpunt met Azure CLI](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Laat zien hoe u met Azure CLI Azure-app configuratie gebeurtenissen naar een webhook verzendt. |
+| [Gebeurtenis schema](event-schema-app-configuration.md) | Hiermee worden velden in Azure-app configuratie gebeurtenissen weer gegeven. |
 
 ## <a name="azure-signalr"></a>Azure SignalR
-Abonneren op gebeurtenissen voor Azure SignalR Service om te reageren op gebeurtenissen voor client-verbinding.
+Abonneer u op gebeurtenissen van de Azure signalerings service om te reageren op gebeurtenissen van client verbindingen.
 
-|Titel | Description |
+|Titel | Beschrijving |
 |---------|---------|
-| [Reageren op gebeurtenissen voor Azure SignalR Service met behulp van Event Grid](../azure-signalr/signalr-concept-event-grid-integration.md) | Overzicht van Azure SignalR Service integreren met Event Grid. |
-| [Azure SignalR Service gebeurtenissen verzenden naar Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Laat zien hoe Azure SignalR Service gebeurtenissen verzenden naar een toepassing via Event Grid. |
-| [Gebeurtenisschema](event-schema-azure-signalr.md) | Velden worden weergegeven in Azure SignalR Service-gebeurtenissen. |
+| [Reageren op gebeurtenissen van de Azure signalerings service met behulp van Event Grid](../azure-signalr/signalr-concept-event-grid-integration.md) | Overzicht van het integreren van de Azure signalerings service met Event Grid. |
+| [Service gebeurtenissen van Azure signalering verzenden naar Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Laat zien hoe u Azure signalerings service-gebeurtenissen verzendt naar een toepassing via Event Grid. |
+| [Gebeurtenis schema](event-schema-azure-signalr.md) | Geeft velden weer in gebeurtenissen van de Azure signalerings service. |
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Als u wilt snel aan de slag met Event Grid, Zie [aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md).
+* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.

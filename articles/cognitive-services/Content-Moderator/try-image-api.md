@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: aa3b6ce886b06c32e9e4515469099a5b31ff49e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ce8ea76cfc1f3f30418b66cd21de43d244da6764
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757210"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043962"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Gematige installatie kopieën van de API-console
 
@@ -102,4 +102,4 @@ U kunt de Content Moderator OCR-mogelijkheid gebruiken om tekst in afbeeldingen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de REST API in uw code of start met behulp van de knop voor het beheer van de [installatie kopie van .net](image-moderation-quickstart-dotnet.md) om te integreren met uw toepassing.
+Gebruik de REST API in uw code of volg de [.NET SDK Quick](dotnet-sdk-quickstart.md) start om afbeeldings toezicht toe te voegen aan uw toepassing.

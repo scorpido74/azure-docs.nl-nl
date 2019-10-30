@@ -1,5 +1,5 @@
 ---
-title: Hive-beleid in HDInsight configureren met Enterprise Security Package-Azure
+title: Apache Hive beleid in Apache zwerver-Azure HDInsight
 description: Meer informatie over het configureren van Apache zwerver-beleids regels voor Hive in een Azure HDInsight-service met Enterprise Security Package.
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b0213fc1a96b38b615cbd8b7b6374a6716b9f840
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e49e2d103fd9c91824c8e8a1603cddddf16366e1
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918187"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044876"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
 Meer informatie over het configureren van Apache zwerver-beleids regels voor Apache Hive. In dit artikel maakt u twee Ranger-beleidsregels om toegang tot de hivesampletable te beperken. De hivesampletable wordt geleverd met HDInsight-clusters. Nadat u de beleidsregels hebt geconfigureerd, gebruikt u Excel en het ODBC-stuurprogramma om verbinding te maken met Hive-tabellen in HDInsight.
@@ -74,7 +74,7 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-gegevensbron maken
 De instructies vindt u in [Hive ODBC-gegevensbron maken](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).  
 
- | Eigenschap  |Description |
+ | Eigenschap  |Beschrijving |
  | --- | --- |
  | Naam van de gegevensbron | Geef uw gegevensbron een naam |
  | Host | Voer &lt;HDInsightClusterName>.azurehdinsight.net in. Bijvoorbeeld: myHDICluster.azurehdinsight.net |
@@ -83,7 +83,7 @@ De instructies vindt u in [Hive ODBC-gegevensbron maken](../hadoop/apache-hadoop
  | Type Hive-server | Selecteer **Hive Server 2** |
  | Mechanisme | Selecteer **Azure HDInsight Service** |
  | HTTP-pad | Laat dit leeg. |
- | Naam van gebruiker | Voer hiveuser1@contoso158.onmicrosoft.com in. Werk de domein naam bij als deze niet overeenkomt. |
+ | Gebruikersnaam | Voer hiveuser1@contoso158.onmicrosoft.com in. Werk de domein naam bij als deze niet overeenkomt. |
  | Wachtwoord | Voer het wachtwoord van hiveuser1 in. |
 
 Zorg ervoor dat u op **Test** klikt voordat u de gegevensbron opslaat.
@@ -101,7 +101,7 @@ In de laatste sectie hebt u twee beleidsregels geconfigureerd.  hiveuser1 heeft 
 6. Selecteer **hivesampletable** en klik op **Volgende**.
 7. Klik op **Voltooien**.
 8. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, klikt u op **Eigenschappen**. Dit kan een paar seconden duren.
-9. Klik op het tabblad **Definitie**. De opdrachttekst is:
+9. Klik op het tabblad **definitie** . De opdracht tekst is:
 
        SELECT * FROM "HIVE"."default"."hivesampletable"
 

@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Maak uw eerste ML-experiment: Instellen'
+title: 'Zelf studie: uw eerste ML-experiment maken: instellen'
 titleSuffix: Azure Machine Learning
-description: In deze zelfstudie reeks voltooit u de end-to-end-stappen om aan de slag te gaan met de Azure Machine Learning python SDK die wordt uitgevoerd in Jupyter-notebooks.  Deel één voor het maken van een Cloud notebook server-omgeving en het maken van een werk ruimte voor het beheren van uw experimenten en machine learning modellen.
+description: In deze zelf studie gaat u aan de slag met de Azure Machine Learning python SDK die wordt uitgevoerd in Jupyter-notebooks.  In deel 1 maakt u een werk ruimte waarin u experimenten en ML-modellen gaat beheren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: fc26b224a2af6ab4f1f6bf5551381d4739831351
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828040"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053875"
 ---
-# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelfstudie: Aan de slag met het maken van uw eerste ML-experiment met de python-SDK
+# <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 
 In deze zelf studie voltooit u de end-to-end-stappen om aan de slag te gaan met de Azure Machine Learning python SDK die wordt uitgevoerd in Jupyter-notebooks. Deze zelf studie maakt **deel uit van een tweedelige zelf studie reeks**, en omvat het instellen en configureren van python-omgevingen, en het maken van een werk ruimte voor het beheren van uw experimenten en machine learning modellen. [**Deel twee**](tutorial-1st-experiment-sdk-train.md) bouwt hier mee om meerdere machine learning modellen te trainen en het model beheer proces uit te voeren met behulp van zowel de Azure portal als de SDK.
 
@@ -62,7 +62,7 @@ U voert de volgende proef versie uit en voert de stappen uit op de pagina voor h
 
 1. Er wordt een map weer gegeven voor elke gebruiker die toegang heeft tot de werk ruimte.  Selecteer de map waarin u de map **zelf studie** wilt klonen.
 
-## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">Select een virtuele machine voor het uitvoeren van het notitie blok
+## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">een VM selecteren om het notitie blok uit te voeren
 
 1. Open de map onder **gebruikers bestanden** en open vervolgens de map gekloonde **zelf studies** .
 
@@ -77,7 +77,7 @@ U voert de volgende proef versie uit en voert de stappen uit op de pagina voor h
 
 1. Als er geen Vm's worden gevonden, selecteert u **+ nieuwe virtuele machine** om de virtuele machine te maken.
 
-    ![Een virtuele machine maken](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+    ![Een VM maken](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
 
     1. Wanneer u een virtuele machine maakt, moet u een naam opgeven.  De naam moet tussen 2 en 16 tekens lang zijn. Geldige tekens zijn letters, cijfers en het-teken, en moeten ook uniek zijn binnen uw Azure-abonnement.
 
@@ -93,10 +93,10 @@ In deze zelf studie hebt u de volgende taken uitgevoerd:
 * Er is een Azure Machine Learning-werk ruimte gemaakt.
 * Een Cloud notebook server in uw werk ruimte gemaakt en geconfigureerd.
 
-In **deel twee** van de zelf studie voert u de code `tutorial-1st-experiment-sdk-train.ipynb` in om een machine learning model te trainen. 
+In **deel twee** van de zelf studie voert u de code in `tutorial-1st-experiment-sdk-train.ipynb` om een machine learning model te trainen. 
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Uw eerste model trainen](tutorial-1st-experiment-sdk-train.md)
+> [Zelf studie: uw eerste model trainen](tutorial-1st-experiment-sdk-train.md)
 
 > [!IMPORTANT]
 > Als u niet van plan bent om deel 2 van deze zelf studie of andere zelf studies te plannen, moet u [de VM van de Cloud notebook server stoppen](tutorial-1st-experiment-sdk-train.md#clean-up-resources) wanneer u deze niet gebruikt om de kosten te verlagen.

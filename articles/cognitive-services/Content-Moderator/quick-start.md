@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 1053541e192668a7b572d97c141c2fe8fc16ac5c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bb4fc076d01c1108278cea0cebba958b4ea94660
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757369"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044059"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Snelstartgids: Probeer Content Moderator op Internet
 
@@ -68,6 +68,6 @@ Of ga door met de volgende stappen om aan de slag te gaan met behulp van de toez
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het gebruik van de toezicht-Api's zelf in uw app.
-- De afbeeldings toezicht wordt geïmplementeerd. Gebruik de [API-console](try-image-api.md) of de [ C# Quick](image-moderation-quickstart-dotnet.md) start om afbeeldingen te scannen en potentiële inhoud van de volwassene en ongepaste te detecteren met behulp van tags, betrouwbaarheids scores en andere geëxtraheerde informatie.
-- Implementeer tekst toezicht. Gebruik de [API-console](try-text-api.md) of gebruik de [ C# Quick](text-moderation-quickstart-dotnet.md) start om de tekst inhoud te scannen op mogelijke woorden, door de machine ondersteunde, ongepaste tekst classificatie (preview) en persoonlijke gegevens.
+- De afbeeldings toezicht wordt geïmplementeerd. Gebruik de [API-console](try-image-api.md) of volg de [Snelstartgids van de .NET SDK](dotnet-sdk-quickstart.md) om afbeeldingen te scannen en potentiële inhoud voor volwassenen en ongepaste te detecteren met behulp van tags, betrouwbaarheids scores en andere geëxtraheerde informatie.
+- Implementeer tekst toezicht. Gebruik de [API-console](try-text-api.md) of gebruik de [SNELSTARTGIDS van .NET SDK](dotnet-sdk-quickstart.md) voor het scannen van tekst inhoud voor mogelijk scheld woorden, ongewenste tekst classificatie (preview) en persoonlijke gegevens.
 - Implementeer de video toezicht. Volg de [instructies in de video-toezicht handleiding voor C# ](video-moderation-api.md) het scannen van Video's en het detecteren van potentiële inhoud voor volwassenen en ongepaste. 

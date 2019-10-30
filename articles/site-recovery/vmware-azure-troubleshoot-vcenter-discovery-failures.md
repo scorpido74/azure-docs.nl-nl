@@ -1,18 +1,18 @@
 ---
-title: Problemen met failback naar on-premises oplossen tijdens het herstel na een nood geval van een VMware-VM naar Azure met Azure Site Recovery | Microsoft Docs
+title: Problemen met failback naar on-premises oplossen tijdens een nood herstel van de VMware-VM naar Azure met Azure Site Recovery
 description: In dit artikel worden manieren beschreven voor het oplossen van problemen met failback en opnieuw beveiligen tijdens de nood herstel van een VMware-VM naar Azure met Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970854"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053854"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>vCenter-detectiefouten oplossen
 
@@ -20,7 +20,7 @@ Dit artikel helpt u bij het oplossen van problemen die zich voordoen als gevolg 
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Niet-numerieke waarden in de eigenschap maxSnapShots
 
-Op eerdere versies dan 9,20 wordt de verbinding met vCenter verbroken wanneer het een niet-numerieke waarde voor de eigenschap `snapshot.maxSnapShots` op een virtuele machine ophaalt.
+Op eerdere versies dan 9,20 wordt de verbinding met vCenter verbroken wanneer een niet-numerieke waarde voor de eigenschap `snapshot.maxSnapShots` eigenschap op een virtuele machine wordt opgehaald.
 
 Dit probleem wordt geïdentificeerd aan de hand van fout-ID 95126.
 
@@ -34,7 +34,7 @@ Om het probleem op te lossen:
 
 - Identificeer de virtuele machine en stel de waarde in op een numerieke waarde (VM-instellingen bewerken in vCenter).
 
-of
+Of
 
 - Voer een upgrade uit van uw configuratie server naar versie 9,20 of hoger.
 
@@ -46,8 +46,8 @@ In het algemeen wordt de proxy gebruikt om te communiceren met open bare netwerk
 
 De volgende situaties treden op wanneer dit probleem zich voordoet:
 
-- De vCenter-Server \<vCenter > is niet bereikbaar vanwege de volgende fout: De externe server heeft een fout geretourneerd: (503) server niet beschikbaar
-- De vCenter-Server \<vCenter > is niet bereikbaar vanwege de volgende fout: De externe server heeft een fout geretourneerd: Kan geen verbinding maken met de externe server.
+- De vCenter-Server \<vCenter-> is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: (503) server niet beschikbaar
+- De vCenter-Server \<vCenter-> is niet bereikbaar vanwege de volgende fout: de externe server heeft een fout geretourneerd: kan geen verbinding maken met de externe server.
 - Kan geen verbinding maken met de vCenter/ESXi-server.
 
 Om het probleem op te lossen:

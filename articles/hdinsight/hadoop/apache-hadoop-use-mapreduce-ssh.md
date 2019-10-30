@@ -1,6 +1,6 @@
 ---
-title: MapReduce en SSH-verbinding met Apache Hadoop in HDInsight - Azure
-description: Informatie over het gebruik van SSH met behulp van Apache Hadoop op HDInsight MapReduce-taken uit te voeren.
+title: MapReduce-en SSH-verbinding met Apache Hadoop-Azure HDInsight
+description: Meer informatie over het gebruik van SSH voor het uitvoeren van MapReduce-taken met Apache Hadoop op HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,84 +8,84 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5eac6cd60b9e58dea8901fad076bb481d5f2eb06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4075de1a184896d598c11d09ae2b2bda5e257ed
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078301"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044510"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>MapReduce gebruiken met Apache Hadoop op HDInsight met SSH
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Leer hoe u MapReduce-taken verzenden via een Secure Shell (SSH)-verbinding naar HDInsight.
+Meer informatie over het verzenden van MapReduce-taken van een SSH-verbinding (Secure Shell) naar HDInsight.
 
 > [!NOTE]
-> Als u al bekend bent met behulp van Apache Hadoop op basis van Linux-servers, maar u niet bekend bent met HDInsight, raadpleegt u [HDInsight op basis van Linux tips](../hdinsight-hadoop-linux-information.md).
+> Zie [op Linux gebaseerde hdinsight-tips](../hdinsight-hadoop-linux-information.md)als u al bekend bent met het gebruik van Apache Hadoop servers die zijn gebaseerd op Linux, maar geen ervaring hebt met hdinsight.
 
 ## <a id="prereq"></a>Vereisten
 
-* Een cluster op basis van Linux HDInsight (Hadoop op HDInsight)
+* Een op Linux gebaseerd HDInsight-cluster (Hadoop in HDInsight)
 
-* Een SSH-client. Zie voor meer informatie, [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Een SSH-client. Zie [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor meer informatie.
 
 ## <a id="ssh"></a>Verbinding maken met SSH
 
-Verbinding maken met het cluster via SSH. Bijvoorbeeld, de volgende opdracht maakt verbinding met een cluster met de naam **myhdinsight** als de **sshuser** account:
+Maak verbinding met het cluster via SSH. Met de volgende opdracht maakt u bijvoorbeeld verbinding met een cluster met de naam **myhdinsight** als het **sshuser** -account:
 
 ```bash
 ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Als u een certificaatsleutel voor SSH-verificatie**, moet u mogelijk de locatie van de persoonlijke sleutel bijvoorbeeld op het clientsysteem opgeven:
+**Als u een certificaat sleutel voor SSH-verificatie gebruikt**, moet u mogelijk de locatie van de persoonlijke sleutel opgeven op het client systeem, bijvoorbeeld:
 
 ```bash
 ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
-**Als u een wachtwoord voor SSH-verificatie**, moet u het wachtwoord wanneer hierom wordt gevraagd.
+**Als u een wacht woord voor SSH-verificatie gebruikt**, moet u het wacht woord opgeven wanneer u hierom wordt gevraagd.
 
-Zie voor meer informatie over het gebruik van SSH met HDInsight [SSH gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Zie [SSH gebruiken met hdinsight](../hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie over het gebruik van SSH met hdinsight.
 
 ## <a id="hadoop"></a>Hadoop-opdrachten gebruiken
 
-1. Nadat u met het HDInsight-cluster verbonden bent, gebruikt u de volgende opdracht uit om een MapReduce-taak te starten:
+1. Nadat u verbinding hebt gemaakt met het HDInsight-cluster, gebruikt u de volgende opdracht om een MapReduce-taak te starten:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/WordCountOutput
     ```
 
-    Met deze opdracht start de `wordcount` klasse, die is opgenomen in de `hadoop-mapreduce-examples.jar` bestand. Hierbij de `/example/data/gutenberg/davinci.txt` document als invoer en uitvoer wordt opgeslagen op de `/example/data/WordCountOutput`.
+    Met deze opdracht wordt de `wordcount`-klasse gestart, die deel uitmaakt van het `hadoop-mapreduce-examples.jar` bestand. Het `/example/data/gutenberg/davinci.txt` document als invoer wordt gebruikt en de uitvoer wordt opgeslagen op `/example/data/WordCountOutput`.
 
     > [!NOTE]
-    > Zie voor meer informatie over deze MapReduce-taak en de voorbeeldgegevens [MapReduce gebruiken in een Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md).
+    > Zie [MapReduce gebruiken in Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)voor meer informatie over deze MapReduce-taak en de voorbeeld gegevens.
 
-2. De taak verzendt de gegevens worden verwerkt, en gegevens worden geretourneerd die vergelijkbaar is met de volgende tekst wanneer de taak is voltooid:
+2. De taak verzendt details tijdens het proces en retourneert informatie die lijkt op de volgende tekst wanneer de taak is voltooid:
 
         File Input Format Counters
         Bytes Read=1395666
         File Output Format Counters
         Bytes Written=337623
 
-3. Wanneer de taak is voltooid, gebruikt u de volgende opdracht uit om de uitvoerbestanden weer te geven:
+3. Wanneer de taak is voltooid, gebruikt u de volgende opdracht om de uitvoer bestanden weer te geven:
 
     ```bash
     hdfs dfs -ls /example/data/WordCountOutput
     ```
 
-    Met deze opdracht u twee bestanden, `_SUCCESS` en `part-r-00000`. De `part-r-00000` -bestand bevat de uitvoer voor deze taak.
+    Met deze opdracht worden twee bestanden `_SUCCESS` en `part-r-00000`weer gegeven. Het `part-r-00000` bestand bevat de uitvoer voor deze taak.
 
     > [!NOTE]  
-    > Bepaalde MapReduce-taken kunnen de resultaten splitsen over meerdere **onderdeel-r-###** bestanden. Als dit het geval is, gebruikt u de ### achtervoegsel om aan te geven van de volgorde van de bestanden.
+    > Sommige MapReduce-taken kunnen de resultaten splitsen over meerdere **deel-r-# # # #** -bestanden. Als dit het geval is, gebruikt u het achtervoegsel # # # # # om de volg orde van de bestanden aan te geven.
 
-4. Als u de uitvoer, gebruik de volgende opdracht:
+4. Als u de uitvoer wilt weer geven, gebruikt u de volgende opdracht:
 
     ```bash
     hdfs dfs -cat /example/data/WordCountOutput/part-r-00000
     ```
 
-    Met deze opdracht geeft een lijst van de woorden die zijn opgenomen in de **wasb://example/data/gutenberg/davinci.txt** bestands- en het aantal malen dat elk woord heeft plaatsgevonden. De volgende tekst is een voorbeeld van de gegevens die zijn opgenomen in het bestand:
+    Met deze opdracht wordt een lijst weer gegeven met de woorden die zijn opgenomen in het **wasb://example/data/Gutenberg/DaVinci.txt** -bestand en het aantal keer dat elk woord is opgetreden. De volgende tekst is een voor beeld van de gegevens die in het bestand zijn opgenomen:
 
         wreathed        3
         wreathing       1
@@ -97,15 +97,15 @@ Zie voor meer informatie over het gebruik van SSH met HDInsight [SSH gebruiken m
 
 ## <a id="summary"></a>Samenvatting
 
-U kunt zien, bieden Hadoop-opdrachten een eenvoudige manier MapReduce-taken uitvoeren in een HDInsight-cluster en bekijk vervolgens de taakuitvoer.
+Zoals u ziet, bieden Hadoop-opdrachten een eenvoudige manier om MapReduce-taken uit te voeren in een HDInsight-cluster en vervolgens de taak uitvoer weer te geven.
 
 ## <a id="nextsteps"></a>Volgende stappen
 
 Voor algemene informatie over MapReduce-taken in HDInsight:
 
-* [MapReduce gebruiken met HDInsight Hadoop](hdinsight-use-mapreduce.md)
+* [MapReduce gebruiken in HDInsight Hadoop](hdinsight-use-mapreduce.md)
 
-Voor meer informatie over andere manieren kunt u werken met Hadoop op HDInsight:
+Voor informatie over andere manieren om met Hadoop in HDInsight te werken:
 
 * [Apache Hive gebruiken met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
 * [Apache Pig gebruiken met Apache Hadoop op HDInsight](hdinsight-use-pig.md)

@@ -1,7 +1,7 @@
 ---
 title: Modellen implementeren met een aangepaste docker-basis installatie kopie
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van uw Azure Machine Learning modellen. Bij het implementeren van een getraind model wordt een basis container installatie kopie geïmplementeerd om uw model uit te voeren. Hoewel Azure Machine Learning een standaard basis installatie kopie voor u biedt, kunt u ook uw eigen basis installatie kopie gebruiken.
+description: Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van uw Azure Machine Learning modellen. Hoewel Azure Machine Learning een standaard basis installatie kopie voor u biedt, kunt u ook uw eigen basis installatie kopie gebruiken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 47387108de09c9b24471c4afc06a25fa0cbeca00
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326502"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053389"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 
@@ -37,14 +37,14 @@ Normaal gesp roken maakt u een aangepaste basis installatie kopie wanneer u dock
 
 Dit document is onderverdeeld in twee secties:
 
-* Een aangepaste basis installatie kopie maken: Biedt informatie aan beheerders en DevOps over het maken van een aangepaste installatie kopie en het configureren van verificatie voor een Azure Container Registry met behulp van de Azure CLI en Machine Learning CLI.
-* Een model implementeren met behulp van een aangepaste basis installatie kopie: Bevat informatie over gegevens wetenschappers en DevOps/ML-ingenieurs over het gebruik van aangepaste installatie kopieën bij het implementeren van een getraind model vanuit de python-SDK of ML CLI.
+* Een aangepaste basis installatie kopie maken: bevat informatie over beheerders en DevOps over het maken van een aangepaste installatie kopie en het configureren van verificatie voor een Azure Container Registry met behulp van de Azure CLI en Machine Learning CLI.
+* Een model implementeren met behulp van een aangepaste basis installatie kopie: hierin vindt u informatie over gegevens wetenschappers en DevOps/ML-technici voor het gebruik van aangepaste installatie kopieën bij het implementeren van een getraind model vanuit de python-SDK of ML CLI.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning werk groep. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). 
-* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster dat toegankelijk is op internet.
 * Bij de stappen in dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van een inkomend __configuratie__ object als onderdeel van de implementatie van het model. Zie voor meer informatie de sectie ' voor bereiding implementeren ' van [waar u wilt implementeren en hoe](how-to-deploy-and-where.md#prepare-to-deploy).
@@ -68,7 +68,7 @@ In de informatie in deze sectie wordt ervan uitgegaan dat u een Azure Container 
 
     Zie voor meer informatie over het gebruik van service-principals met Azure Container Registry [Azure container Registry verificatie met Service-principals](/azure/container-registry/container-registry-auth-service-principal).
 
-* Azure Container Registry en installatie kopie-informatie: Geef de naam van de installatie kopie op die moet worden gebruikt door iedereen. Bijvoorbeeld, er wordt verwezen naar `myimage`een installatie kopie met de naam `myregistry`, opgeslagen in een REGI `myregistry.azurecr.io/myimage` ster met de naam, wanneer de installatie kopie wordt gebruikt voor model implementatie
+* Azure Container Registry en installatie kopie-informatie: Geef de naam van de installatie kopie op die moet worden gebruikt door iedereen. Bijvoorbeeld, een installatie kopie met de naam `myimage`, opgeslagen in een REGI ster met de naam `myregistry`, wordt verwezen als `myregistry.azurecr.io/myimage` wanneer de installatie kopie wordt gebruikt voor model implementatie
 
 * Vereisten voor installatie kopie: Azure Machine Learning ondersteunt alleen docker-installatie kopieën die de volgende software bieden:
 
@@ -95,7 +95,7 @@ Als u al uw modellen hebt getraind of geïmplementeerd met behulp van Azure Mach
 
     Volg de aanwijzingen om u te verifiëren bij het abonnement.
 
-2. Gebruik de volgende opdracht om het container register voor de werk ruimte weer te geven. Vervang `<myworkspace>` door de naam van uw Azure machine learning-werk ruimte. Vervang `<resourcegroup>` door de Azure-resource groep die uw werk ruimte bevat:
+2. Gebruik de volgende opdracht om het container register voor de werk ruimte weer te geven. Vervang `<myworkspace>` door de naam van uw Azure Machine Learning werk ruimte. Vervang `<resourcegroup>` door de Azure-resource groep die uw werk ruimte bevat:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
@@ -109,13 +109,13 @@ Als u al uw modellen hebt getraind of geïmplementeerd met behulp van Azure Mach
     /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.ContainerRegistry/registries/<registry_name>
     ```
 
-    De `<registry_name>` waarde is de naam van de Azure container Registry voor uw werk ruimte.
+    De `<registry_name>` waarde is de naam van de Azure Container Registry voor uw werk ruimte.
 
 ### <a name="build-a-custom-base-image"></a>Een aangepaste basis installatie kopie bouwen
 
 Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-installatie kopie maakt in uw Azure Container Registry.
 
-1. Maak een nieuw tekst bestand met `Dockerfile`de naam en gebruik de volgende tekst als de inhoud:
+1. Maak een nieuw tekst bestand met de naam `Dockerfile`en gebruik de volgende tekst als de inhoud:
 
     ```text
     FROM ubuntu:16.04
@@ -142,7 +142,7 @@ Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-instal
         find / -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
-2. Gebruik bij een shell of opdracht prompt het volgende om te verifiëren bij de Azure Container Registry. Vervang de `<registry_name>` door de naam van het container register waarin u de installatie kopie wilt opslaan:
+2. Gebruik bij een shell of opdracht prompt het volgende om te verifiëren bij de Azure Container Registry. Vervang de `<registry_name>` door de naam van het container register waarvan u de installatie kopie wilt opslaan:
 
     ```azurecli-interactive
     az acr login --name <registry_name>
@@ -168,7 +168,7 @@ Zie [uw eerste installatie kopie naar een privé-docker-container register pushe
 
 Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende informatie nodig:
 
-* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` Is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
+* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
 * Als de installatie kopie zich in een __privé opslagplaats__bevindt, hebt u de volgende informatie nodig:
 
     * Het register __adres__. Bijvoorbeeld `myregistry.azureecr.io`.
@@ -180,7 +180,7 @@ Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende inform
 
 Micro soft biedt verschillende docker-installatie kopieën op een openbaar toegankelijke opslag plaats die kan worden gebruikt met de stappen in deze sectie:
 
-| Image | Description |
+| Installatiekopie | Beschrijving |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basis installatie kopie voor Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX runtime voor CPU-inferecning |
@@ -197,7 +197,7 @@ Zie de [sectie ONNX runtime dockerfile](https://github.com/microsoft/onnxruntime
 Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Containers)voor meer informatie.
 
 > [!TIP]
->__Als uw model is getraind op Azure machine learning Compute__met __versie 1.0.22 of hoger__ van de Azure machine learning SDK, wordt er tijdens de training een installatie kopie gemaakt. Als u de naam van deze installatie kopie wilt `run.properties["AzureML.DerivedImageName"]`detecteren, gebruikt u. In het volgende voor beeld ziet u hoe u deze installatie kopie gebruikt:
+>__Als uw model is getraind op Azure machine learning Compute__met __versie 1.0.22 of hoger__ van de Azure machine learning SDK, wordt er tijdens de training een installatie kopie gemaakt. Als u de naam van deze installatie kopie wilt detecteren, gebruikt u `run.properties["AzureML.DerivedImageName"]`. In het volgende voor beeld ziet u hoe u deze installatie kopie gebruikt:
 >
 > ```python
 > # Use an image built during training with SDK 1.0.22 or greater
@@ -209,7 +209,7 @@ Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Contain
 Als u een installatie kopie wilt gebruiken die is opgeslagen in de **Azure container Registry voor uw werk ruimte**of een **container register dat openbaar toegankelijk is**, stelt u de volgende [omgevings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) kenmerken in:
 
 + `docker.enabled=True`
-+ `docker.base_image`: Stel in op het REGI ster en het pad naar de installatie kopie.
++ `docker.base_image`: ingesteld op het REGI ster en pad naar de installatie kopie.
 
 ```python
 from azureml.core import Environment
@@ -220,7 +220,7 @@ myenv.docker.enabled = True
 myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-Als u een installatie kopie wilt gebruiken uit een __persoonlijk container register__ dat zich niet in uw werk ruimte `docker.base_image_registry` bevindt, moet u gebruiken om het adres van de opslag plaats en een gebruikers naam en wacht woord op te geven:
+Als u een installatie kopie wilt gebruiken uit een __persoonlijk container register__ dat zich niet in uw werk ruimte bevindt, moet u `docker.base_image_registry` gebruiken om het adres van de opslag plaats en een gebruikers naam en wacht woord op te geven:
 
 ```python
 # Set the container registry information
@@ -271,7 +271,7 @@ Wanneer u een model implementeert met behulp van de Machine Learning CLI, geeft 
 }
 ```
 
-Dit bestand wordt gebruikt met de `az ml model deploy` opdracht. De `--ic` para meter wordt gebruikt om het Afleidings configuratie bestand op te geven.
+Dit bestand wordt gebruikt met de opdracht `az ml model deploy`. De para meter `--ic` wordt gebruikt om het configuratie bestand voor de afleiding in te stellen.
 
 ```azurecli
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget

@@ -8,18 +8,28 @@ manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835eeaa0036d824a65918102ab7a00c3cf236931
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0bc59ac3e55466f8ac06a3a8fa9cf08fecbb5ce3
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988395"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024953"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Door de gebruiker gedefinieerde .NET Standard-functies ontwikkelen voor Azure Stream Analytics-taken (preview-versie)
 
 Azure Stream Analytics biedt een SQL-achtige query taal voor het uitvoeren van trans formaties en berekeningen op basis van gegevens stromen van gebeurtenissen. Er zijn veel ingebouwde functies, maar voor sommige complexe scenario's is extra flexibiliteit vereist. Met .NET Standard door de gebruiker gedefinieerde functies (UDF) kunt u uw eigen functies aanroepen die zijn geschreven in een .netC#Standard F#-taal (, enzovoort) om de stream Analytics query taal uit te breiden. Met UDFs kunt u complexe wiskundige berekeningen uitvoeren, aangepaste ML-modellen importeren met behulp van ML.NET en aangepaste toerekenings logica voor ontbrekende gegevens gebruiken. De UDF-functie voor Stream Analytics-taken is momenteel beschikbaar als preview-versie en mag niet worden gebruikt in werk belastingen voor de productie.
+
+Door de gebruiker gedefinieerde .NET-functie voor Cloud taken is beschikbaar in:
+* VS-West-Centraal (beschikbaar)
+* Europa-noord (beschikbaar)
+* VS-Oost (beschikbaar)
+* VS-West (binnenkort implementeren)
+* VS-Oost 2 (binnenkort implementeren)
+* Europa-west (binnenkort uit te vouwen)
+
+Als u geïnteresseerd bent in het gebruik van deze functie in een andere regio, kunt u [toegang aanvragen](https://aka.ms/ccodereqregion).
 
 ## <a name="overview"></a>Overzicht
 Met de Visual Studio-hulpprogram ma's voor Azure Stream Analytics kunt u gemakkelijker Udf's schrijven, uw taken lokaal testen (zelfs offline) en uw Stream Analytics-taak publiceren naar Azure. Na publicatie naar Azure kunt u uw taak implementeren op IoT-apparaten met behulp van IoT Hub.

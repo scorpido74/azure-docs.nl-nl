@@ -1,19 +1,19 @@
 ---
-title: On-premises machines migreren naar Azure met Azure Site Recovery | Microsoft Docs
+title: On-premises machines migreren naar Azure met Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u on-premises VM en fysieke machines naar Azure migreert met behulp van Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 10/29/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873360"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053054"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>On-premises machines migreren naar Azure
 
@@ -32,8 +32,7 @@ Deze zelfstudie laat u zien hoe u on-premises VM's en fysieke servers naar Azure
 
 
 > [!TIP]
-> De Azure Migrate-service biedt nu een preview voor een nieuwe, zonder agents ervaring voor het migreren van virtuele VMware-machines naar Azure. [Meer informatie](https://aka.ms/migrateVMs-signup).
-
+> U kunt nu on-premises servers migreren naar Azure met behulp van de Azure Migrate-service. [Meer informatie](../migrate/migrate-services-overview.md)
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -52,7 +51,7 @@ Selecteer wat u wilt repliceren en waarnaar u wilt repliceren.
 1. Klik op **Recovery Services-kluizen** > kluis.
 2. Klik in het resourcemenu op **Site Recovery** > **Infra structuur voorbereiden** > **Beveiligingsdoel**.
 3. Selecteer bij **Beveiligingsdoel** wat u wilt migreren.
-    - **VMware**: selecteer **Naar Azure** > **Ja, met VMWare vSphere Hypervisor**.
+    - **VMware**: selecteer **naar Azure** > **Ja, met VMWare vSphere Hypervisor**.
     - **Fysieke machine**: selecteer **Naar Azure** > **Niet gevirtualiseerde/overige**.
     - **Hyper-V**: selecteer **Naar Azure** > **Ja, met Hyper-V**. Als Hyper-V-machines worden beheerd door VMM, selecteert u **Ja**.
 
@@ -116,7 +115,7 @@ Een failover uitvoeren voor de machines die u wilt migreren.
 
 
 > [!WARNING]
-> **Annuleer nooit een failover die in uitvoering is**: De VM-replicatie wordt gestopt voordat de failover start. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar de VM wordt niet meer gerepliceerd.
+> **Annuleer een failover die in voortgang is niet**: voordat de failover wordt gestart, wordt de VM-replicatie gestopt. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar de VM wordt niet meer gerepliceerd.
 
 In sommige scenario's vereist de failover extra verwerking die circa acht tot tien minuten duurt. U zou langere failover-tijden kunnen waarnemen voor fysieke servers, VMware Linux-machines, VMware-Vm's waarop de DHCP-service niet is ingeschakeld, en VMware-Vm's die niet de volgende opstart Stuur Programma's hebben: storvsc, vmbus, storflt, Intelide, ATAPI.
 
@@ -159,7 +158,7 @@ Enkele stappen kunnen worden geautomatiseerd als onderdeel van het migratieproce
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u on-premises virtuele machines naar virtuele Azure-machines gemigreerd. Nu
+In deze zelfstudie hebt u on-premises virtuele machines naar virtuele Azure-machines gemigreerd. hierna
 
 > [!div class="nextstepaction"]
 > [Stel herstel na nood](azure-to-azure-replicate-after-migration.md) geval in voor een secundaire Azure-regio voor de Azure-vm's.

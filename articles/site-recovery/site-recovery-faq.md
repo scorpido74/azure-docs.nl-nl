@@ -1,143 +1,143 @@
 ---
-title: 'Azure Site Recovery: Veelgestelde vragen | Microsoft Docs'
-description: Dit artikel worden besproken populaire vragen over Azure Site Recovery.
+title: Veelgestelde vragen over Azure Site Recovery
+description: In dit artikel worden populaire vragen over Azure Site Recovery beschreven.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 10/29/2019
 ms.author: raynew
-ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 9ab2466a201662cfde4655aedd12f9fd1b21c964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491755"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053711"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: veelgestelde vragen (FAQ)
-In dit artikel bevat een overzicht van de veelgestelde vragen over Azure Site Recovery.</br>
-Voor bepaalde query's op verschillende ASR scenario verwijzen we u scenario Veelgestelde vragen over de specifieke.<br>
+In dit artikel vindt u een overzicht van veelgestelde vragen over Azure Site Recovery.</br>
+Voor specifieke query's over verschillende ASR-scenario's verwijzen we naar scenario-specifieke veelgestelde vragen.<br>
 
-- [Herstel van virtuele Azure-machine na noodgevallen naar Azure](azure-to-azure-common-questions.md)
-- [Herstel van virtuele VMware-machine na noodgevallen naar Azure](vmware-azure-common-questions.md)
-- [Noodherstel voor Hyper-V-VM naar Azure](hyper-v-azure-common-questions.md)
+- [Herstel na nood gevallen voor Azure VM naar Azure](azure-to-azure-common-questions.md)
+- [Herstel na nood geval voor VMware VM naar Azure](vmware-azure-common-questions.md)
+- [Herstel na nood geval voor Hyper-V-VM naar Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Algemeen
 
 ### <a name="what-does-site-recovery-do"></a>Wat doet Site Recovery?
-Site Recovery draagt bij aan uw zakelijke continuïteit en noodherstelplan (BCDR), door indelen en automatiseren van de replicatie van Azure-VM's tussen regio's, on-premises virtuele machines en fysieke servers naar Azure, en on-premises machines naar een secundair datacenter. [Meer informatie](site-recovery-overview.md).
+Site Recovery draagt bij aan uw strategie voor bedrijfs continuïteit en nood herstel (BCDR) door de replicatie van Azure-Vm's tussen regio's, on-premises virtuele machines en fysieke servers naar Azure en on-premises machines te organiseren en te automatiseren naar een secundair Data Center. [Meer informatie](site-recovery-overview.md).
 
-### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Kan ik een virtuele machine waarvoor een Docker-schijf beveiligen?
+### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Kan ik een virtuele machine beveiligen die een docker-schijf heeft?
 
 Nee, dit is een niet-ondersteund scenario.
 
 ## <a name="service-providers"></a>Serviceproviders
 
-### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>Ik ben een serviceprovider. Werkt Site Recovery voor toegewezen als gedeelde infrastructuurmodellen?
+### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>Ik ben een service provider. Werkt Site Recovery voor specifieke en gedeelde infrastructuur modellen?
 Ja, Site Recovery werkt voor zowel toegewezen als gedeelde infrastructuurmodellen.
 
-### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>Voor een serviceprovider, is de identiteit van mijn tenants gedeeld met de Site Recovery-service?
-Nee. Tenant-identiteit blijft anonieme. Uw tenants hebben geen toegang nodig tot de Site Recovery-portal. Alleen de beheerder van de serviceprovider communiceert met de portal.
+### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>Voor een service provider is de identiteit van mijn Tenant gedeeld met de Site Recovery-service?
+Nee. De Tenant-id blijft anoniem. Uw tenants hebben geen toegang nodig tot de Site Recovery-portal. Alleen de beheerder van de serviceprovider communiceert met de portal.
 
-### <a name="will-tenant-application-data-ever-go-to-azure"></a>Gaat de gegevens van de tenant ooit naar Azure?
-Bij replicatie tussen sites van serviceproviders worden er nooit toepassingsgegevens naar Azure overgezet. Gegevens worden versleuteld in-transit en rechtstreeks gerepliceerd tussen sites van de serviceprovider.
+### <a name="will-tenant-application-data-ever-go-to-azure"></a>Gaat de gegevens van de Tenant toepassing ooit naar Azure?
+Bij replicatie tussen sites van serviceproviders worden er nooit toepassingsgegevens naar Azure overgezet. Gegevens worden in transit versleuteld en direct gerepliceerd tussen de sites van de service provider.
 
-Als u naar Azure repliceert, worden er toepassingsgegevens verzonden naar Azure-opslag, maar niet naar de Site Recovery-service. Gegevens in transit versleuteld en blijven versleuteld in Azure.
+Als u naar Azure repliceert, worden er toepassingsgegevens verzonden naar Azure-opslag, maar niet naar de Site Recovery-service. Gegevens worden in transit versleuteld en blijven versleuteld in Azure.
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>Ontvangen mijn tenants een factuur voor Azure-services?
 Nee. Azure-services worden rechtstreeks aan de serviceprovider gefactureerd. Serviceproviders zijn zelf verantwoordelijk voor het genereren van facturen voor hun tenants.
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Als ik naar Azure repliceer, moet ik dan altijd een virtuele machine in Azure uitvoeren?
-Nee, de gegevens worden gerepliceerd naar Azure-opslag in uw abonnement. Wanneer u een failovertest (details voor DR) of een werkelijke failover uitvoert, maakt Site Recovery automatisch virtuele machines in uw abonnement.
+Nee, gegevens worden gerepliceerd naar Azure Storage in uw abonnement. Wanneer u een failovertest (details voor DR) of een werkelijke failover uitvoert, maakt Site Recovery automatisch virtuele machines in uw abonnement.
 
 ### <a name="do-you-ensure-tenant-level-isolation-when-i-replicate-to-azure"></a>Wordt er gezorgd voor isolatie op tenantniveau wanneer ik naar Azure repliceer?
 Ja.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Welke platforms worden er momenteel ondersteund?
-We bieden ondersteuning voor Azure Pack, Cloud Platform System en System Center op basis van implementaties met (2012 en hoger). [Meer informatie](https://technet.microsoft.com/library/dn850370.aspx) over de integratie van Azure Pack en Site Recovery.
+We ondersteunen implementaties van Azure Pack, Cloud platform System en System Center op basis van (2012 en hoger). Meer [informatie](https://technet.microsoft.com/library/dn850370.aspx) over Azure Pack en integratie van site Recovery.
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Worden implementaties van één Azure Pack en één VMM-server ondersteund?
-Ja, kunt u Hyper-V-machines repliceren naar Azure, of tussen sites van serviceproviders.  Houd er rekening mee dat als u tussen sites van serviceproviders repliceert, Azure-runbookintegratie niet beschikbaar is.
+Ja, u kunt virtuele Hyper-V-machines repliceren naar Azure of tussen sites van service providers.  Houd er rekening mee dat als u tussen sites van service providers repliceert Azure runbook-integratie niet beschikbaar is.
 
 ## <a name="pricing"></a>Prijzen
 
-### <a name="where-can-i-find-pricing-information"></a>Waar vind ik informatie over prijzen?
-Beoordeling [prijzen voor Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) details.
+### <a name="where-can-i-find-pricing-information"></a>Waar vind ik prijs informatie?
+Bekijk de [site Recovery prijs](https://azure.microsoft.com/pricing/details/site-recovery/) gegevens.
 
 
-### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Hoe kan ik de geschatte kosten in rekening gebracht tijdens het gebruik van Site Recovery berekenen?
+### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Hoe kan ik geschatte kosten berekenen tijdens het gebruik van Site Recovery?
 
-U kunt de [prijscalculator](https://aka.ms/asr_pricing_calculator) kosten wilt ramen tijdens het gebruik van Site Recovery.
+U kunt de [prijs calculator](https://aka.ms/asr_pricing_calculator) gebruiken om de kosten te ramen tijdens het gebruik van site Recovery.
 
-Voor gedetailleerde raming van kosten, voer de tool voor implementatieplanning voor [VMware](https://aka.ms/siterecovery_deployment_planner) of [Hyper-V](https://aka.ms/asr-deployment-planner), en gebruik de [kosten van het rapport met kostenramingen](https://aka.ms/asr_DP_costreport).
+Voor een gedetailleerde schatting van de kosten voert u het hulp programma Deployment planner voor [VMware](https://aka.ms/siterecovery_deployment_planner) of [Hyper-V](https://aka.ms/asr-deployment-planner)uit en gebruikt u het [rapport kosten raming](https://aka.ms/asr_DP_costreport).
 
 
-### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>Beheerde schijven zijn nu gebruikt voor het repliceren van virtuele VMware-machines en fysieke servers. Moet ik rekenen extra kosten in rekening gebracht voor de cache-opslagaccount met beheerde schijven?
+### <a name="managed-disks-are-now-used-to-replicate-vmware-vms-and-physical-servers-do-i-incur-additional-charges-for-the-cache-storage-account-with-managed-disks"></a>Beheerde schijven worden nu gebruikt voor het repliceren van virtuele VMware-machines en fysieke servers. Worden er extra kosten in rekening gebracht voor het cache-opslag account met Managed disks?
 
-Nee, er zijn geen extra kosten berekend voor de cache. Als u naar standard storage-account repliceert, is deze cacheopslag deel uitmaken van hetzelfde doel-opslagaccount.
+Nee, er zijn geen extra kosten voor de cache. Wanneer u naar een standaard-opslag account repliceert, maakt deze cache-opslag deel uit van hetzelfde doel-opslag account.
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Ik ben al meer dan een maand gebruiker van Azure Site Recovery. Krijg ik nog steeds de eerste 31 dagen gratis voor elke beschermde instantie?
 
-Ja. Voor elk beschermd exemplaar worden geen Azure Site Recovery-kosten in rekening gebracht tijdens de eerste 31 dagen. Bijvoorbeeld, als u hebt 10 exemplaren voor de laatste zes maanden en u een exemplaar van 11 verbinden met Azure Site Recovery, zijn er geen kosten in rekening gebracht voor het 11e exemplaar voor de eerste 31 dagen. De eerste 10 exemplaren steeds Azure Site Recovery kosten in rekening gebracht omdat ze hebt beschermd gedurende meer dan 31 dagen.
+Ja. Voor elk beschermd exemplaar worden geen Azure Site Recovery-kosten in rekening gebracht tijdens de eerste 31 dagen. Als u bijvoorbeeld 10 instanties voor de afgelopen zes maanden hebt beveiligd en u een elfde exemplaar verbindt met Azure Site Recovery, zijn er gedurende de eerste 31 dagen geen kosten in rekening gebracht voor het elfde exemplaar. Voor de eerste tien exemplaren blijven Azure Site Recovery kosten in rekening gebracht omdat ze al meer dan 31 dagen zijn beveiligd.
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Worden er gedurende de eerste 31 dagen andere Azure-kosten in rekening gebracht?
 
-Ja, hoewel de Site Recovery gratis is gedurende de eerste 31 dagen van een beschermd exemplaar, worden er mogelijk kosten in rekening gebracht voor Azure Storage, opslagtransacties en gegevensoverdracht. Voor een herstelde virtuele machine worden mogelijk ook Azure-rekenkosten in rekening gebracht.
+Ja, hoewel Site Recovery gratis is gedurende de eerste 31 dagen van een beschermd exemplaar, worden er mogelijk kosten in rekening gebracht voor Azure Storage, opslag transacties en gegevens overdracht. Voor een herstelde virtuele machine worden mogelijk ook Azure-rekenkosten in rekening gebracht.
 
 
-### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>Is er een kosten die gepaard gaan om uit te voeren disaster recovery oefeningen/test-failover?
+### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>Zijn er kosten verbonden aan het uitvoeren van nood herstel oefeningen/testfailover?
 
-Er is geen afzonderlijke kosten voor noodherstelanalyse. Er zijn rekenkosten in rekening gebracht nadat de virtuele machine is gemaakt na de testfailover.
+Er zijn geen afzonderlijke kosten voor DR-oefeningen. Er worden kosten berekend nadat de virtuele machine is gemaakt na de testfailover.
 
 
 
 ## <a name="security"></a>Beveiliging
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Worden er replicatiegegevens verzonden naar de Site Recovery-service?
-Nee, Site Recovery geen gerepliceerde gegevens worden onderschept en heeft geen informatie over wat wordt uitgevoerd op uw virtuele machines of fysieke servers.
+Nee, Site Recovery worden geen gerepliceerde gegevens onderschept en bevatten geen informatie over wat er op uw virtuele machines of fysieke servers wordt uitgevoerd.
 Er worden alleen replicatiegegevens uitgewisseld tussen uw on-premises Hyper-V-hosts, VMware-hypervisors of fysieke servers en de Azure-opslag of uw secundaire site. Met Site Recovery kunnen deze gegevens niet worden onderschept. Alleen de metagegevens die nodig zijn om replicatie en failover te organiseren, worden naar de Site Recovery-service verzonden.  
 
-Site Recovery is ISO 27001: 2013, 27018, HIPAA, DPA gecertificeerd en wordt momenteel SOC2 en FedRAMP JAB-beoordelingen.
+Site Recovery is ISO 27001:2013, 27018, HIPAA, DPA gecertificeerd en is het proces van SOC2-en FedRAMP JAB-evaluaties.
 
-### <a name="for-compliance-reasons-even-our-on-premises-metadata-must-remain-within-the-same-geographic-region-can-site-recovery-help-us"></a>Verband met nalevingsvereisten moet ook de metagegevens van onze on-premises binnen dezelfde geografische regio blijven. Site Recovery kan helpen ons?
-Ja. Wanneer u een Site Recovery-kluis in een regio maken, we ervoor zorgen dat alle metagegevens die we moet inschakelen en replicatie en failover blijft binnen deze regio's geografische grens.
+### <a name="for-compliance-reasons-even-our-on-premises-metadata-must-remain-within-the-same-geographic-region-can-site-recovery-help-us"></a>Voor nalevings redenen moeten zelfs onze on-premises meta gegevens binnen dezelfde geografische regio blijven. Kan Site Recovery ons helpen?
+Ja. Wanneer u een Site Recovery kluis maakt in een regio, zorgen we ervoor dat alle meta gegevens die we nodig hebben om de replicatie en failover in te scha kelen en te organiseren, binnen de geografische grens van die regio blijven.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Wordt replicatie met Site Recovery versleuteld?
-Voor virtuele machines en fysieke servers wordt repliceren tussen on-premises sites versleuteling-in-transit ondersteund. Voor virtuele machines en fysieke servers repliceren naar Azure, zowel versleuteling-in-transit en [versleuteling-at-rest (in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) worden ondersteund.
+Voor virtuele machines en fysieke servers moet replicatie tussen on-premises sites worden gerepliceerd-in-transit wordt ondersteund. Voor virtuele machines en fysieke servers die worden gerepliceerd naar Azure, wordt zowel versleuteling als door Voer [(in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) ondersteund.
 
 
 
 
 ## <a name="disaster-recovery"></a>Herstel na noodgeval
 
-### <a name="what-can-site-recovery-protect"></a>Wat kunt u met Site Recovery beveiligen?
-* **Azure-VM's**: Site Recovery kan elke workload die worden uitgevoerd op een ondersteunde Azure-machine gerepliceerd
-* **Hyper-V virtuele machines**: Site Recovery kan elke werkbelasting die wordt uitgevoerd op een Hyper-V-virtuele machine te beschermen.
-* **Fysieke servers**: Site Recovery kan fysieke servers met Windows of Linux beschermen.
-* **Virtuele VMware-machines**: Site Recovery kan elke workload die worden uitgevoerd in een VMware-VM te beveiligen.
+### <a name="what-can-site-recovery-protect"></a>Wat kan Site Recovery beschermen?
+* **Azure vm's**: site Recovery kunt elke workload repliceren die wordt uitgevoerd op een ondersteunde Azure VM
+* **Virtuele Hyper-v-machines**: site Recovery kunnen elke werk belasting die wordt uitgevoerd op een hyper-v-VM, beveiligen.
+* **Fysieke servers**: site Recovery kunt fysieke servers met Windows of Linux beveiligen.
+* **Virtuele VMware-machines**: site Recovery kunt elke werk belasting die wordt uitgevoerd in een VMware-VM, beveiligen.
 
 ### <a name="what-workloads-can-i-protect-with-site-recovery"></a>Welke workloads kan ik met Site Recovery beveiligen?
-U kunt Site Recovery gebruiken om de meeste workloads die worden uitgevoerd op een ondersteunde virtuele machine of fysieke server te beschermen. Site Recovery biedt ondersteuning voor toepassingsgevoelige replicatie, zodat apps kunnen worden hersteld naar een intelligente status. Het kan worden geïntegreerd met Microsoft-toepassingen zoals SharePoint, Exchange, Dynamics, SQL Server en Active Directory en werkt nauw samen met toonaangevende leveranciers zoals Oracle, SAP, IBM en Red Hat. Lees [hier](site-recovery-workload.md) meer informatie over workloadbeveiliging.
+U kunt Site Recovery gebruiken om de meeste werk belastingen te beveiligen die worden uitgevoerd op een ondersteunde virtuele machine of op een fysieke server. Site Recovery biedt ondersteuning voor toepassings bewuste replicatie, zodat apps kunnen worden hersteld naar een intelligente status. Het wordt geïntegreerd met micro soft-toepassingen, zoals share point, Exchange, Dynamics, SQL Server en Active Directory, en werkt nauw samen met toonaangevende leveranciers, waaronder Oracle, SAP, IBM en Red Hat. Lees [hier](site-recovery-workload.md) meer informatie over workloadbeveiliging.
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Kan ik met Site Recovery herstel na noodgeval voor mijn filialen beheren?
-Ja. Wanneer u Site Recovery gebruiken voor het indelen van replicatie en failover in uw filialen, krijgt u een uniforme indeling en de weergave van alle werkbelastingen van uw vertakking office op een centrale locatie. Vanuit het hoofdkantoor kunt u eenvoudig failovers uitvoeren en herstel na noodgeval beheren voor alle filialen. Het is niet nodig de afzonderlijke filialen te bezoeken.
+Ja. Wanneer u Site Recovery gebruikt om replicatie en failover in uw filialen te organiseren, krijgt u een uniforme indeling en weer gave van al uw filialen op een centrale locatie. Vanuit het hoofdkantoor kunt u eenvoudig failovers uitvoeren en herstel na noodgeval beheren voor alle filialen. Het is niet nodig de afzonderlijke filialen te bezoeken.
 
 
-### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Wordt herstel na noodgevallen voor Azure VM's ondersteund?
+### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Wordt nood herstel ondersteund voor virtuele Azure-machines?
 
-Ja, ondersteunt Site Recovery na noodgevallen voor Azure-VM's tussen Azure-regio's. [Lees de veelgestelde vragen over](azure-to-azure-common-questions.md) over noodherstel van de virtuele machine van Azure.
+Ja, Site Recovery ondersteunt nood gevallen voor Azure-Vm's tussen Azure-regio's. [Bekijk veelgestelde vragen](azure-to-azure-common-questions.md) over nood herstel voor Azure VM.
 
-### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>Wordt herstel na noodgevallen voor VMware-VM's ondersteund?
+### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>Wordt nood herstel ondersteund voor virtuele VMware-machines?
 
-Ja, Site Recovery biedt ondersteuning voor herstel na noodgevallen van on-premises VMware-VM's. [Lees de veelgestelde vragen over](vmware-azure-common-questions.md) voor herstel na noodgevallen van virtuele VMware-machines.
+Ja, Site Recovery ondersteunt herstel na nood gevallen van on-premises VMware-Vm's. [Bekijk veelgestelde vragen](vmware-azure-common-questions.md) over nood herstel van virtuele VMware-machines.
 
-### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Wordt herstel na noodgevallen voor Hyper-V virtuele machines ondersteund?
-Ja, Site Recovery biedt ondersteuning voor herstel na noodgevallen van on-premises Hyper-V-machines. [Lees de veelgestelde vragen over](hyper-v-azure-common-questions.md) voor herstel na noodgevallen van Hyper-V-machines.
+### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Wordt herstel na nood gevallen ondersteund voor virtuele Hyper-V-machines?
+Ja, Site Recovery ondersteunt herstel na nood gevallen van on-premises Hyper-V-Vm's. [Bekijk veelgestelde vragen](hyper-v-azure-common-questions.md) voor herstel na nood gevallen voor virtuele Hyper-V-machines.
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>Wordt herstel na noodgevallen voor fysieke servers ondersteund?
-Ja, Site Recovery biedt ondersteuning voor herstel na noodgevallen van on-premises fysieke servers met Windows en Linux naar Azure of naar een secundaire site. Meer informatie over vereisten voor herstel na noodgevallen naar [Azure](vmware-physical-azure-support-matrix.md#replicated-machines), en zo de[een secundaire site](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
-Houd er rekening mee dat fysieke servers wordt uitgevoerd als virtuele machines in Azure na een failover. Failback van Azure naar een on-premises fysieke server wordt momenteel niet ondersteund. U kunt alleen een failover naar een virtuele machine van VMware.
+## <a name="is-disaster-recovery-supported-for-physical-servers"></a>Wordt nood herstel ondersteund voor fysieke servers?
+Ja, Site Recovery ondersteunt herstel na nood gevallen van on-premises fysieke servers met Windows en Linux naar Azure of naar een secundaire site. Meer informatie over vereisten voor herstel na nood gevallen naar [Azure](vmware-physical-azure-support-matrix.md#replicated-machines)en naar[een secundaire site](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
+Houd er rekening mee dat fysieke servers na een failover worden uitgevoerd als virtuele machines in Azure. Failback van Azure naar een on-premises fysieke server wordt momenteel niet ondersteund. U kunt alleen een failback uitvoeren naar een virtuele VMware-machine.
 
 
 
@@ -145,97 +145,97 @@ Houd er rekening mee dat fysieke servers wordt uitgevoerd als virtuele machines 
 
 ## <a name="replication"></a>Replicatie
 
-### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>Kan ik repliceren via een VPN-site-naar-site naar Azure?
-Azure Site Recovery repliceert gegevens naar Azure storage-account of beheerde schijven, via een openbaar eindpunt. Replicatie is niet via een site-naar-site-VPN. 
+### <a name="can-i-replicate-over-a-site-to-site-vpn-to-azure"></a>Kan ik een site-naar-site-VPN-verbinding naar Azure repliceren?
+Azure Site Recovery gegevens repliceren naar een Azure-opslag account of beheerde schijven, via een openbaar eind punt. Replicatie is niet meer dan een site-naar-site-VPN. 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Waarom kan ik niet repliceren via VPN?
 
-Wanneer u naar Azure repliceren, bereikt replicatieverkeer in de openbare eindpunten van een Azure Storage. Zo kunt u alleen repliceren via het openbare internet met ExpressRoute (Microsoft-peering of een bestaande openbare peering) en VPN werkt niet.
+Wanneer u naar Azure repliceert, bereikt het replicatie verkeer de open bare eind punten van een Azure Storage. Daarom kunt u alleen repliceren via het open bare Internet met ExpressRoute (micro soft-peering of een bestaande open bare peering), en VPN werkt niet.
 
-### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Kan ik Riverbed SteelHeads voor replicatie gebruiken?
+### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Kan ik Riverbed SteelHeads gebruiken voor replicatie?
 
-Onze partner, Riverbed, bevat gedetailleerde richtlijnen over het werken met Azure Site Recovery. Lees hun [handleiding](https://community.riverbed.com/s/article/DOC-4627).
+Onze partner, Riverbed, biedt gedetailleerde richt lijnen voor het werken met Azure Site Recovery. Bekijk de [hand leiding](https://community.riverbed.com/s/article/DOC-4627)voor de oplossing.
 
-### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kan ik ExpressRoute gebruiken voor het repliceren van virtuele machines naar Azure?
-Ja, [ExpressRoute kan worden gebruikt](concepts-expressroute-with-site-recovery.md) voor het repliceren van on-premises virtuele machines naar Azure.
+### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kan ik ExpressRoute gebruiken om virtuele machines te repliceren naar Azure?
+Ja, [ExpressRoute kan worden gebruikt](concepts-expressroute-with-site-recovery.md) om on-premises virtuele machines te repliceren naar Azure.
 
-- Azure Site Recovery repliceert gegevens naar een Azure Storage via een openbaar eindpunt. U moet instellen [Microsoft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) of gebruik een bestaande [openbare peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (afgeschaft voor nieuwe circuits) met ExpressRoute voor Site Recovery-replicatie.
-- Microsoft-peering is de aanbevolen routeringsdomein voor replicatie.
-- Replicatie wordt niet ondersteund via persoonlijke peering.
-- Als u VMware-machines of fysieke machines beveiligt, zorg ervoor dat de [vereisten voor netwerken](vmware-azure-configuration-server-requirements.md#network-requirements) voor de configuratieserver is voldaan. Verbinding met specifieke URL's is vereist voor de configuratieserver voor het indelen van Site Recovery-replicatie. ExpressRoute kan niet worden gebruikt voor deze connectiviteit.
-- Nadat de virtuele machines een failover zijn naar een Azure virtual network kunt u ze openen met behulp van de [privépeering](../expressroute/expressroute-circuit-peerings.md#privatepeering) installatie met behulp van Azure virtual network.
+- Azure Site Recovery repliceert gegevens naar een Azure Storage over een openbaar eind punt. U moet [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) instellen of een bestaande [open bare peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (afgeschaft voor nieuwe circuits) gebruiken om ExpressRoute te gebruiken voor de replicatie van site Recovery.
+- Micro soft-peering is het aanbevolen routerings domein voor replicatie.
+- Replicatie wordt niet ondersteund voor persoonlijke peering.
+- Als u VMware-machines of fysieke machines beveiligt, moet u ervoor zorgen dat ook aan de [netwerk vereisten](vmware-azure-configuration-server-requirements.md#network-requirements) voor de configuratie server wordt voldaan. De configuratie server voor de indeling van Site Recovery replicatie vereist dat er verbinding wordt met specifieke Url's. ExpressRoute kan niet worden gebruikt voor deze verbinding.
+- Nadat de failover van de virtuele machines naar een virtueel Azure-netwerk is uitgevoerd, kunt u deze openen met behulp van de instelling voor [persoonlijke peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) met het virtuele netwerk van Azure.
 
 
-### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Als ik naar Azure repliceer, wat voor soort storage-account of een beheerde schijf heb ik nodig?
+### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Als ik naar Azure repliceer, wat voor soort opslag account of Managed Disk heb ik nodig?
 
-U moet een LRS of GRS-opslag. GRS wordt aanbevolen, omdat de gegevens dan flexibel zijn te gebruiken als er sprake is van regionale uitval of als de primaire regio niet kan worden hersteld. Het account moet zich in dezelfde regio bevinden als de Recovery Services-kluis. Premium storage wordt ondersteund voor VMware-VM, Hyper-V-VM en fysieke servers repliceren, bij het implementeren van Site Recovery in Azure portal. Beheerde schijven alleen ondersteunen LRS.
+U hebt een LRS-of GRS-opslag nodig. GRS wordt aanbevolen, omdat de gegevens dan flexibel zijn te gebruiken als er sprake is van regionale uitval of als de primaire regio niet kan worden hersteld. Het account moet zich in dezelfde regio bevinden als de Recovery Services-kluis. Premium-opslag wordt ondersteund voor virtuele VMware-machines, Hyper-V-machines en fysieke server replicatie wanneer u Site Recovery implementeert in de Azure Portal. Beheerde schijven bieden alleen ondersteuning voor LRS.
 
 ### <a name="how-often-can-i-replicate-data"></a>Hoe vaak kan ik gegevens repliceren?
-* **Hyper-V:** Hyper-V-machines kunnen worden gerepliceerd om de vijf minuten, o 30 seconden (met uitzondering van premium storage)
-* **Azure VM's, VMware-VM's, fysieke servers:** Een replicatiefrequentie is hier niet relevant. Replicatie is continue.
+* **Hyper-V:** Virtuele Hyper-V-machines kunnen elke 30 seconden worden gerepliceerd (met uitzonde ring van Premium-opslag), vijf minuten of 15 minuten.
+* **Azure-vm's, virtuele VMware-machines, fysieke servers:** Een replicatie frequentie is hier niet relevant. Replicatie is doorlopend.
 
-### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kan ik replicatie van bestaande herstelsite naar een andere tertiaire site verlengen?
-Uitgebreide of gekoppelde replicatie wordt niet ondersteund. Deze functie in aanvragen [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kan ik replicatie van de bestaande herstel site naar een andere tertiaire site uitbreiden?
+Uitgebreide of gekoppelde replicatie wordt niet ondersteund. Deze functie aanvragen in het [Feedback forum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-replication-the-first-time-i-replicate-to-azure"></a>Kan ik de eerste keer dat ik naar Azure repliceer, offline replicatie uitvoeren?
-Nee, dit wordt niet ondersteund. Aanvragen van deze functie in de [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Nee, dit wordt niet ondersteund. Vraag deze functie aan in het [Feedback forum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>Kan ik bepaalde schijven uitsluiten van replicatie?
-Dit wordt ondersteund als u repliceert virtuele VMware-machines en Hyper-V-machines naar Azure met behulp van de Azure-portal.
+Dit wordt ondersteund bij het repliceren van virtuele VMware-machines en virtuele Hyper-V-machines naar Azure, met behulp van de Azure Portal.
 
 ### <a name="can-i-replicate-virtual-machines-with-dynamic-disks"></a>Kan ik virtuele machines met dynamische schijven repliceren?
-Dynamische schijven worden ondersteund bij het repliceren van Hyper-V virtuele machines, en bij het repliceren van virtuele VMware-machines en fysieke machines naar Azure. De besturingssysteemschijf moet een standaardschijf.
+Dynamische schijven worden ondersteund bij het repliceren van virtuele Hyper-V-machines en bij het repliceren van VMware-Vm's en fysieke machines naar Azure. De schijf met het besturings systeem moet een standaard schijf zijn.
 
 
-### <a name="can-i-throttle-bandwidth-allotted-for-replication-traffic"></a>Kan ik de bandbreedte die is toegewezen voor replicatieverkeer beperken?
-Ja. U kunt meer lezen over het beperken van de bandbreedte in deze artikelen:
+### <a name="can-i-throttle-bandwidth-allotted-for-replication-traffic"></a>Kan ik de band breedte beperken die is toegewezen aan replicatie verkeer?
+Ja. Meer informatie over het beperken van de band breedte vindt u in deze artikelen:
 
-* [Capaciteitsplanning voor het repliceren van virtuele VMware-machines en fysieke servers](site-recovery-plan-capacity-vmware.md)
-* [Capaciteitsplanning voor Hyper-V-machines repliceren naar Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [Capaciteits planning voor het repliceren van virtuele VMware-machines en fysieke servers](site-recovery-plan-capacity-vmware.md)
+* [Capaciteits planning voor het repliceren van virtuele Hyper-V-machines naar Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
 
 
 ## <a name="failover"></a>Failover
-### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Als ik ben Failover-overschakeling uitvoeren naar Azure, hoe krijg ik toegang tot de Azure VM's na een failover?
+### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Als ik een failover naar Azure krijg, krijg ik dan na een failover toegang tot de Azure-Vm's?
 
-U kunt de virtuele Azure-machines benaderen via een beveiligde internetverbinding, via een VPN tussen sites of via Azure ExpressRoute. U moet een aantal dingen om verbinding te kunnen voorbereiden. [Meer informatie](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+U kunt de virtuele Azure-machines benaderen via een beveiligde internetverbinding, via een VPN tussen sites of via Azure ExpressRoute. U moet een aantal dingen voorbereiden om verbinding te kunnen maken. [Meer informatie](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 
 
-### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Als ik een failover naar Azure, hoe Azure ervoor zorgen dat is mijn gegevens tegen?
-Azure is ontworpen voor herstelbaarheid. Site Recovery is al voert automatisch een failover naar een secundaire Azure-datacenter, in overeenstemming met de Azure SLA. Als dit gebeurt, zorgen wij ervoor dat uw metagegevens en kluizen binnen dezelfde geografische regio die u hebt gekozen voor uw kluis blijven.  
+### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Als ik een failover naar Azure krijg, moet Azure ervoor zorgen dat mijn gegevens flexibel zijn?
+Azure is ontworpen voor herstelbaarheid. Site Recovery is al ontworpen voor failover naar een secundair Azure-Data Center, conform de SLA van Azure. Als dit het geval is, zorgen we ervoor dat uw meta gegevens en kluizen binnen dezelfde geografische regio blijven die u voor uw kluis hebt gekozen.  
 
-### <a name="if-im-replicating-between-two-datacenters-what-happens-if-my-primary-datacenter-experiences-an-unexpected-outage"></a>Als ik repliceer tussen twee datacenters wat gebeurt er als mijn primaire datacenter een stroomstoring optreedt?
+### <a name="if-im-replicating-between-two-datacenters-what-happens-if-my-primary-datacenter-experiences-an-unexpected-outage"></a>Als ik een replicatie tussen twee data centers vind? wat gebeurt er als mijn primaire Data Center een onverwachte onderbreking ondervindt?
 U kunt een ongeplande failover vanuit de secundaire site activeren. Site Recovery heeft geen connectiviteit vanuit de primaire site nodig om de failover uit te voeren.
 
 ### <a name="is-failover-automatic"></a>Vindt failover automatisch plaats?
-Failover wordt niet automatisch uitgevoerd. Initiëren van failover met één klik in de portal of kunt u [Site Recovery PowerShell](/powershell/module/az.recoveryservices) dat een failover wordt geactiveerd. Failback is een eenvoudige actie in de Site Recovery-portal.
+Failover wordt niet automatisch uitgevoerd. U initieert failovers met één klik in de portal of u kunt [site Recovery Power shell](/powershell/module/az.recoveryservices) gebruiken om een failover te activeren. Failback is een eenvoudige actie in de Site Recovery Portal.
 
-Voor het automatiseren van u kunnen on-premises Orchestrator of Operations Manager gebruiken voor het detecteren van een storing van de virtuele machine en vervolgens de failover activeren met de SDK.
+Als u wilt automatiseren, kunt u de on-premises Orchestrator of Operations Manager gebruiken om een fout in de virtuele machine op te sporen en vervolgens de failover activeren met behulp van de SDK.
 
-* [Lees meer](site-recovery-create-recovery-plans.md) over plannen voor herstel.
+* [Meer](site-recovery-create-recovery-plans.md) informatie over herstel plannen.
 * [Lees meer](site-recovery-failover.md) over failover.
-* [Lees meer](site-recovery-failback-azure-to-vmware.md) over mislukte back-VMware-machines en fysieke servers
+* [Meer](site-recovery-failback-azure-to-vmware.md) informatie over het mislukken van back-ups van virtuele VMware-machines en fysieke servers
 
-### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Als mijn on-premises-host niet reageert of is vastgelopen, ik een failback naar een andere host uitvoeren kan?
-Ja, kunt u de alternatieve locatie herstellen naar een andere host failback van Azure.
+### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Als mijn on-premises host niet reageert of vastloopt, kan ik dan een failback uitvoeren naar een andere host?
+Ja, u kunt het herstel van de alternatieve locatie gebruiken om naar een andere host van Azure te failback.
 
 * [Voor virtuele VMware-machines](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Voor Hyper-V virtuele machines](hyper-v-azure-failback.md#perform-failback)
+* [Voor virtuele Hyper-V-machines](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="automation"></a>Automation
 
-### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Kan ik Site Recovery-scenario's met een SDK automatiseren?
-Ja. U kunt Site Recovery-werkstromen automatiseren met de Rest API-, PowerShell- of Azure-SDK. Momenteel ondersteunde scenario's voor het implementeren van Site Recovery met behulp van PowerShell:
+### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Kan ik Site Recovery scenario's automatiseren met een SDK?
+Ja. U kunt Site Recovery-werkstromen automatiseren met de Rest API-, PowerShell- of Azure-SDK. Momenteel ondersteunde scenario's voor de implementatie van Site Recovery met behulp van Power shell:
 
-* [Hyper-V-machines in VMMs-clouds repliceren naar Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
+* [Virtuele Hyper-V-machines in VMMs-Clouds repliceren naar Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
 * [Virtuele Hyper-V-machines zonder VMM repliceren naar Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)
-* [Het repliceren van VMware naar Azure met PowerShell Resource Manager](vmware-azure-disaster-recovery-powershell.md)
+* [VMware naar Azure repliceren met Power shell Resource Manager](vmware-azure-disaster-recovery-powershell.md)
 
-## <a name="componentprovider-upgrade"></a>Component/provider upgrade
+## <a name="componentprovider-upgrade"></a>Upgrade van onderdeel/provider
 
-### <a name="where-can-i-find-the-release-notesupdate-rollups-of-site-recovery-upgrades"></a>Waar vind ik de release-opmerkingen/updatepakketten van Site Recovery-upgrades
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-site-recovery-upgrades"></a>Waar vind ik de release opmerkingen/update pakketten van Site Recovery upgrades
 
-[Informatie over](site-recovery-whats-new.md) over nieuwe updates en [rollup-informatie ophalen](service-updates-how-to.md).
+[Meer](site-recovery-whats-new.md) informatie over nieuwe updates en het [ophalen van Rollup-informatie](service-updates-how-to.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 * Lees het [Site Recovery-overzicht](site-recovery-overview.md)

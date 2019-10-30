@@ -1,19 +1,19 @@
 ---
-title: Veelgestelde vragen over VMware naar Azure voor herstel na nood gevallen met Azure Site Recovery | Microsoft Docs
+title: Veelgestelde vragen over VMware naar Azure nood herstel met Azure Site Recovery
 description: Krijg antwoorden op veelgestelde vragen over herstel na nood gevallen van on-premises virtuele VMware-machines naar Azure met behulp van Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 06/27/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f09acb0110f436e7af936d79da9db1bab4ea23a9
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002281"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053685"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Veelgestelde vragen over VMware naar Azure-replicatie
 
@@ -189,7 +189,7 @@ Nee, Site Recovery biedt geen ondersteuning voor replicatie naar Azure Storage o
 
 ## <a name="component-upgrade"></a>Upgrade van onderdelen
 
-### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat moet ik doen?
+### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Mijn versie van de Mobility Services-agent of configuratie server is verouderd en mijn upgrade is mislukt. Wat kan ik doen?
 
 Site Recovery volgt het ondersteunings model N-4. Meer [informatie](https://aka.ms/asr_support_statement) over het uitvoeren van een upgrade van zeer oudere versies.
 
@@ -287,7 +287,7 @@ Ja, maar houd er rekening mee dat de fysieke machine alleen kan worden teruggeze
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Waar kan ik een kluis registratie sleutel downloaden?
 
-Selecteer in de Recovery Services kluis **configuratie servers** in **site Recovery-infra structuur** > **beheren**. Selecteer vervolgens bij **servers**de optie **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
+Selecteer in de Recovery Services kluis **configuratie servers** in **site Recovery infrastructuur** > **beheren**. Selecteer vervolgens bij **servers**de optie **registratie sleutel downloaden** om het bestand met kluis referenties te downloaden.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Kan één configuratie server worden gebruikt voor het beveiligen van meerdere vCenter-instanties?
 
@@ -297,7 +297,7 @@ Ja, een enkele configuratie server kan Vm's beveiligen over meerdere vCenter.  E
 
 Ja, Azure Site Recovery kunnen Vm's in verschillende clusters beveiligen.
 
-## <a name="process-server"></a>Processerver
+## <a name="process-server"></a>Proces server
 
 ### <a name="why-am-i-unable-to-select-the-process-server-when-i-enable-replication"></a>Waarom kan ik de proces server niet selecteren wanneer ik replicatie inschakel?
 

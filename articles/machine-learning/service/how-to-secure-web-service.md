@@ -1,7 +1,7 @@
 ---
 title: Webservices beveiligen met SSL
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het beveiligen van een webservice die wordt geïmplementeerd via Azure Machine Learning door HTTPS in te scha kelen. HTTPS beveiligt gegevens van clients door middel van TLS (trans port Layer Security), een vervanging van SSL (Secure Socket Layers). Clients gebruiken ook HTTPS om de identiteit van de webservice te verifiëren.
+description: Meer informatie over het inschakelen van HTTPS in de juiste volg orde voor het beveiligen van een webservice die is geïmplementeerd via Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 39b79e5729945a346e9cf022fb93e23da9fa7824
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034380"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053550"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL gebruiken om een webservice te beveiligen via Azure Machine Learning
 
@@ -36,20 +36,20 @@ TLS en SSL zijn beide afhankelijk van *digitale certificaten*, die u helpen bij 
 
 Dit is het algemene proces voor het beveiligen van een webservice:
 
-1. Een domeinnaam krijgen.
+1. Haal een domein naam op.
 
 2. Een digitaal certificaat ophalen.
 
 3. De webservice implementeren of bijwerken met SSL ingeschakeld.
 
-4. Werkt u uw DNS om te verwijzen naar de webservice.
+4. Werk uw DNS bij om naar de webservice te verwijzen.
 
 > [!IMPORTANT]
 > Als u implementeert in azure Kubernetes service (AKS), kunt u uw eigen certificaat kopen of een certificaat gebruiken dat door micro soft wordt verschaft. Als u een certificaat van micro soft gebruikt, hoeft u geen domein naam of SSL-certificaat op te halen. Zie de sectie [SSL inschakelen en implementeren](#enable) in dit artikel voor meer informatie.
 
 Er zijn kleine verschillen bij het beveiligen van webservices over [implementatie doelen](how-to-deploy-and-where.md).
 
-## <a name="get-a-domain-name"></a>Een domeinnaam krijgen
+## <a name="get-a-domain-name"></a>Een domein naam ophalen
 
 Als u nog geen domein naam hebt, kunt u er een aanschaffen bij een *domein naam registratie*. Het proces en de prijs verschillen per registratie. De registratie service voorziet in hulpprogram ma's voor het beheren van de domein naam. U kunt deze hulpprogram ma's gebruiken om een Fully Qualified Domain Name (FQDN) (zoals www\.contoso.com) toe te wijzen aan het IP-adres dat als host fungeert voor uw webservice.
 
@@ -60,13 +60,13 @@ Er zijn veel manieren om een SSL-certificaat (digitaal certificaat) te verkrijge
 * Een **certificaat**. Het certificaat moet de volledige certificaat keten bevatten en moet ' PEM-encoded ' zijn.
 * Een **sleutel**. De sleutel moet ook worden PEM-gecodeerd.
 
-Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres dat u wilt gebruiken voor de webservice (bijvoorbeeld www\.-contoso.com). Het adres dat is gestempeld in het certificaat en het adres dat de clients gebruiken, worden vergeleken om de identiteit van de webservice te controleren. Als deze adressen niet overeenkomen, wordt er een fout bericht weer gegeven.
+Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres dat u wilt gebruiken voor de webservice (bijvoorbeeld www\.contoso.com). Het adres dat is gestempeld in het certificaat en het adres dat de clients gebruiken, worden vergeleken om de identiteit van de webservice te controleren. Als deze adressen niet overeenkomen, wordt er een fout bericht weer gegeven.
 
 > [!TIP]
 > Als de certificerings instantie het certificaat en de sleutel niet kan leveren als met PEM gecodeerde bestanden, kunt u een hulp programma zoals [openssl](https://www.openssl.org/) gebruiken om de indeling te wijzigen.
 
 > [!WARNING]
-> Gebruik *zelfondertekende* certificaten alleen voor ontwikkeling. Gebruik deze niet in productie omgevingen. Zelfondertekende certificaten kunnen leiden tot problemen in uw client toepassingen. Zie de documentatie voor de netwerk bibliotheken die uw client toepassing gebruikt voor meer informatie.
+> Gebruik *zelfondertekende* certificaten alleen voor ontwikkeling. Gebruik deze niet in productie omgevingen. Zelfondertekende certificaten kunnen problemen veroorzaken in uw client toepassingen. Zie de documentatie voor de netwerk bibliotheken die uw client toepassing gebruikt voor meer informatie.
 
 ## <a id="enable"></a>SSL inschakelen en implementeren
 
@@ -84,7 +84,7 @@ Wanneer u implementeert in AKS, kunt u een nieuw AKS-cluster maken of een bestaa
 
 De methode **enable_ssl** kan gebruikmaken van een certificaat dat door micro soft wordt verschaft of een certificaat dat u koopt.
 
-  * Wanneer u een certificaat van micro soft gebruikt, moet u de para meter *leaf_domain_label* gebruiken. Met deze para meter wordt de DNS-naam voor de service gegenereerd. De waarde ' myservice ' maakt bijvoorbeeld een domein naam van myservice\<zes wille keurige tekens >.\< azureregio >. cloudapp. Azure. com ', waarbij \<azureregio > de regio is waarin de service is opgenomen. U kunt desgewenst de para meter *overwrite_existing_domain* gebruiken om de bestaande *leaf_domain_label*te overschrijven.
+  * Wanneer u een certificaat van micro soft gebruikt, moet u de para meter *leaf_domain_label* gebruiken. Met deze para meter wordt de DNS-naam voor de service gegenereerd. Met de waarde ' myservice ' wordt bijvoorbeeld de domein naam ' myservice\<zes wille keurige tekens >.\<azureregio >. cloudapp. Azure. com ', waarbij \<azureregio > de regio is waarin de service is opgenomen. U kunt desgewenst de para meter *overwrite_existing_domain* gebruiken om de bestaande *leaf_domain_label*te overschrijven.
 
     Als u de service wilt implementeren (of opnieuw wilt implementeren) met SSL ingeschakeld, stelt u de para meter *ssl_enabled* in op ' True ', waar dit van toepassing is. Stel de para meter *ssl_certificate* in op de waarde van het *certificaat* bestand. Stel de *ssl_key* in op de waarde van het *sleutel* bestand.
 
@@ -134,9 +134,9 @@ aci_config = AciWebservice.deploy_configuration(
 
 Zie [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)voor meer informatie.
 
-## <a name="update-your-dns"></a>Werkt u uw DNS
+## <a name="update-your-dns"></a>Uw DNS bijwerken
 
-Vervolgens moet u uw DNS om te verwijzen naar de webservice bijwerken.
+Vervolgens moet u uw DNS bijwerken zodat deze naar de webservice verwijst.
 
 + **Voor Container Instances:**
 
@@ -151,7 +151,7 @@ Vervolgens moet u uw DNS om te verwijzen naar de webservice bijwerken.
 
   Werk de DNS van het open bare IP-adres van de AKS-cluster op het tabblad **configuratie** onder **instellingen** in het linkerdeel venster. (Zie de volgende afbeelding.) Het open bare IP-adres is een resource type dat wordt gemaakt onder de resource groep die de AKS-agent knooppunten en andere netwerk bronnen bevat.
 
-  [![Azure Machine Learning: Webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: webservices beveiligen met SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Het SSL-certificaat bijwerken
 
@@ -230,7 +230,7 @@ Zie voor meer informatie de volgende naslag documenten:
 
 ## <a name="disable-ssl"></a>SSL uitschakelen
 
-Als u SSL wilt uitschakelen voor een model dat is geïmplementeerd in azure Kubernetes `SslConfiguration` service `status="Disabled"`, maakt u een met en voert u een update uit:
+Als u SSL wilt uitschakelen voor een model dat is geïmplementeerd in azure Kubernetes service, maakt u een `SslConfiguration` met `status="Disabled"`en voert u een update uit:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -247,6 +247,6 @@ aks_target.update(update_config)
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Leer hoe u het volgende doet:
+Procedures voor:
 + [Een machine learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 + [Veilig experimenten en demijnen uitvoeren in een virtueel Azure-netwerk](how-to-enable-virtual-network.md)

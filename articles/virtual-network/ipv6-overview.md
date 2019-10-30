@@ -12,14 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 001a6d5ef742874698cd7a67014179a2f8528fc6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543821"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053466"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Wat is IPv6 voor Azure Virtual Network? (Preview-versie)
+# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Wat is IPv6 voor Azure Virtual Network? (Preview)
 
 Met IPv6 voor Azure Virtual Network (VNet) kunt u toepassingen in azure hosten met IPv6-en IPv4-connectiviteit, zowel binnen een virtueel netwerk als vanaf het internet. Als gevolg van de uitputting van open bare IPv4-adressen, zijn nieuwe netwerken voor Mobility en Internet of Things (IoT) vaak gebaseerd op IPv6. Zelfs lange en mobiele netwerken worden naar IPv6 getransformeerd. Alleen IPv4-Services kunnen zichzelf tegen een echt nadeel vinden in zowel de bestaande als opkomende markten. Dankzij de dual-stack IPv4/IPv6-connectiviteit kunnen door Azure gehoste services dit technologie-hiaat door lopen met wereld wijd beschik bare, dubbele gestapelde services waarmee u eenvoudig verbinding kunt maken met zowel de bestaande IPv4-als deze nieuwe IPv6-apparaten en-netwerken.
 
@@ -35,7 +35,7 @@ In het volgende diagram ziet u een eenvoudige implementatie van een dubbele stac
 
 ## <a name="benefits"></a>Voordelen
 
-Voor delen van Azure Virtual Network IPv6:
+Voor delen van IPv6 voor Azure VNET:
 
 - Het bereik van uw door Azure gehoste toepassingen kan worden uitgebreid naar de groeiende mobiele en Internet of Things markten.
 - Dubbele, gestapelde IPv4/IPv6-Vm's bieden maximale flexibiliteit voor service-implementatie. Eén service-exemplaar kan verbinding maken met IPv4-en IPv6-compatibele internetclients.
@@ -44,34 +44,39 @@ Voor delen van Azure Virtual Network IPv6:
 
 ## <a name="capabilities"></a>Mogelijkheden
 
-IPv6 voor VNet bevat de volgende mogelijkheden:
+IPv6 voor Azure VNet bevat de volgende mogelijkheden:
 
 - Azure-klanten kunnen hun eigen IPv6-adres ruimte voor het virtuele netwerk definiëren om te voldoen aan de behoeften van hun toepassingen, klanten of naadloos integreren in hun on-premises IP-ruimte.
 - Met dual stack (IPv4 en IPv6) virtuele netwerken met dual stack-subnetten kunnen toepassingen verbinding maken met zowel IPv4-als IPv6-resources in hun virtuele netwerk of Internet.
     > [!IMPORTANT]
-    > De subnetten voor IPv6 moeten exact/64 groot zijn.  Dit zorgt voor compatibiliteit als u ervoor kiest om route ring van het subnet naar een on-premises netwerk mogelijk te maken, omdat sommige routers alleen IPv6-routes kunnen accepteren/64.  
+    > De subnetten voor IPv6 moeten exact/64 groot zijn.  Dit zorgt voor toekomstige compatibiliteit. hiervoor moet u ervoor kiezen om de route ring van het subnet naar een on-premises netwerk mogelijk te maken, omdat sommige routers alleen IPv6-routes kunnen accepteren/64.  
 - Beveilig uw resources met IPv6-regels voor netwerk beveiligings groepen.
+    - En de DDoS-beveiliging (Distributed Denial of service) van het Azure-platform worden uitgebreid naar Internet gerichte open bare IP-adressen
 - Pas de route ring van IPv6-verkeer in het virtuele netwerk aan met door de gebruiker gedefinieerde routes, met name bij het gebruik van virtuele netwerk apparaten om uw toepassing uit te breiden.
-- Laat Internet-clients naadloos toegang krijgen tot uw dual stack-toepassing met behulp van het Protocol van de keuze met Azure DNS ondersteuning voor IPv6-records (AAAA). 
-- Standard IPv6 Public Load Balancer voor het maken van tolerante en schaalbare toepassingen, die het volgende bevat:
-    - Optionele IPv6-status test om te bepalen welke back-end-pool instanties status zijn en dus nieuwe stromen kunnen ontvangen. .  
+- Linux en Windows Virtual Machines kunnen allemaal gebruikmaken van IPv6 voor Azure VNET
+- [Open bare standaard IPv6-Load Balancer](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) ondersteuning voor het maken van robuuste, schaal bare toepassingen, waaronder:
+    - Optionele IPv6-status test om te bepalen welke back-end-pool instanties status zijn en dus nieuwe stromen kunnen ontvangen.
     - Optionele regels voor uitgaande verbindingen die volledige declaratieve controle over uitgaande connectiviteit bieden om deze mogelijkheid te schalen en af te stemmen op uw specifieke behoeften.
     - Optionele meerdere front-end configuraties waarmee één load balancer meerdere open bare IPv6-IP-adressen kan gebruiken. hetzelfde frontend-protocol en dezelfde poort kunnen worden gebruikt voor alle frontend-adressen.
-- Openbaar IP-adres op exemplaar niveau biedt rechtstreeks IPv6-Internet connectiviteit voor afzonderlijke Vm's.
-- Voeg eenvoudig IPv6-connectiviteit toe aan bestaande IPv4-implementaties met upgrade-in-place.
-- Maak dual stack-toepassingen die automatisch worden geschaald naar uw belasting met schaal sets voor virtuele machines.
-- Portal ondersteuning voor de preview omvat interactieve maken/bewerken/verwijderen van dual stack (IPv4 + IPv6) virtuele netwerken en subnetten, IPv6-netwerk beveiligings groeps regels, door IPv6 door de gebruiker gedefinieerde routes en open bare IPv6-Ip's.  
+    - Optionele IPv6-poorten kunnen opnieuw worden gebruikt voor back-end-instanties met behulp van de *zwevende IP* -functie van regels voor taak verdeling 
+- [Standaard-IPv6-ondersteuning voor interne Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) voor het maken van robuuste toepassingen met meerdere lagen in azure VNETs.  
+- Standaard IPv6-ondersteuning voor open bare Load Balancer voor compatibiliteit met oudere implementaties
+- [Gereserveerde IPv6-adressen en](ipv6-public-ip-address-prefix.md) adresbereiken bieden stabiele, voorspel bare IPv6-adressen waarmee u uw door Azure gehoste toepassingen voor uw bedrijf en uw klanten eenvoudig kunt white list.
+- Openbaar IP op exemplaarniveau biedt IPv6-Internet connectiviteit rechtstreeks aan afzonderlijke Vm's.
+- [IPv6 toevoegen aan bestaande alleen-IPv4-implementaties](ipv6-add-to-existing-vnet-powershell.md): met deze functie kunt u eenvoudig IPv6-connectiviteit toevoegen aan bestaande IPv4-implementaties zonder dat u opnieuw implementaties hoeft te maken.  Het IPv4-netwerk verkeer wordt niet beïnvloed tijdens dit proces, zodat u, afhankelijk van uw toepassing en besturings systeem, mogelijk IPv6 kunt toevoegen, zelfs bij Live Services.    
+- Laat Internet-clients naadloos toegang krijgen tot uw dual stack-toepassing met behulp van het Protocol van de keuze met Azure DNS ondersteuning voor IPv6-records (AAAA). 
+- Maak dual stack-toepassingen die automatisch worden geschaald naar uw belasting met schaal sets voor virtuele machines met IPv6.
+- [Virtual Network (VNET) peering](virtual-network-peering-overview.md) -zowel binnen-regionaal als wereld wijde peering: Hiermee kunt u naadloos verbinding maken met dual stack VNETs. de IPv4-en IPv6-eind punten op vm's in de peered netwerken kunnen met elkaar communiceren. U kunt zelfs een dubbele stack met alleen IPv4-VNETs als u uw implementaties naar een dubbele stack overstapt. 
+- Probleem oplossing en diagnostische gegevens over IPv6 zijn beschikbaar met load balancer metrische gegevens, waarschuwingen en Network Watcher functies, zoals pakket opname, NSG, verbindings problemen oplossen en verbindings bewaking.   
+
+## <a name="scope"></a>Scope
+IPv6 voor Azure VNET is een basis functieset waarmee klanten dual stack-toepassingen (IPv4 + IPv6) in azure kunnen hosten.  We zijn van plan om IPv6-ondersteuning toe te voegen aan meer Azure-netwerk functies gedurende een bepaalde periode en uiteindelijk om twee stack versies van Azure PaaS services aan te bieden, maar ondertussen moeten alle Azure PaaS-services toegankelijk zijn via de IPv4-eind punten op dual stack Virtual Machines.   
 
 ## <a name="limitations"></a>Beperkingen
-De preview-versie van IPv6 voor het virtuele netwerk van Azure heeft de volgende beperkingen:
-- IPv6 voor het virtuele netwerk van Azure (preview) is beschikbaar in alle wereld wijde Azure-regio's, maar alleen in wereld wijde Azure-niet de overheids Clouds.
-- Portal ondersteuning voor Standard Load Balancer onderdelen is alleen-lezen.  Volledige ondersteuning en documentatie (met voor beelden) is echter beschikbaar voor Standard Load Balancer implementaties met behulp van Azure Power shell en de opdracht regel interface (CLI).   
-- Network Watcher ondersteuning voor de preview is beperkt tot NSG-stroom logboeken en netwerk pakket opnames.
-- Peering van virtuele netwerken (regionaal of wereld wijd) wordt niet ondersteund in de preview-versie.
-- Bij gebruik van standaard-IPv6-externe Load Balancer gelden de volgende limieten: 
-  - Uitgaande regels kunnen verwijzen naar meerdere front-end open bare Ip's, maar kunnen **niet** verwijzen naar een openbaar IPv6-voor voegsel. Het open bare IP-voor voegsel ondersteunt alleen IPv4-voor voegsels.
-  - De IPv6-taakverdelings regels kunnen de *zwevende IP* -functie **niet** gebruiken. Het opnieuw gebruiken van een poort op back-end-exemplaren wordt alleen ondersteund met IPv4.
-- Het reserveren van een blok met Internet gerichte IPv6-adressen wordt niet ondersteund door de functie voor voegsel van het open bare IP-adres van Azure.
+De huidige virtuele netwerk versie van IPv6 voor Azure heeft de volgende beperkingen:
+- IPv6 voor het virtuele netwerk van Azure (preview) is beschikbaar in alle wereld wijde Azure-regio's, maar alleen in het wereld wijde Azure-nog niet in overheids Clouds.
+- Express route-en VPN-gateways kunnen niet worden gebruikt in een VNET waarbij IPv6 is ingeschakeld, hetzij rechtstreeks of gelijkwaardig met ' UseRemoteGateway '. 
+- Het Azure-platform (AKS, enzovoort) biedt geen ondersteuning voor IPv6-communicatie voor containers.  
 
 ## <a name="pricing"></a>Prijzen
 
@@ -79,5 +84,6 @@ IPv6 Azure-resources en-band breedte worden in rekening gebracht tegen dezelfde 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [implementeren van een IPv6-toepassing met dubbele stack met Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-powershell.md).
-- Meer informatie over het [implementeren van een IPv6-toepassing met dubbele stacks met behulp van Azure cli](virtual-network-ipv4-ipv6-dual-stack-cli.md).
+- Meer informatie over het [implementeren van een IPv6-toepassing met dubbele stack met Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
+- Meer informatie over het [implementeren van een IPv6-toepassing met dubbele stacks met behulp van Azure cli](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
+- Meer informatie over het [implementeren van een IPv6-toepassing met dubbele stacks met behulp van Resource Manager-sjablonen (JSON)](ipv6-configure-standard-load-balancer-template-json.md)

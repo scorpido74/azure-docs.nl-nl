@@ -1,5 +1,5 @@
 ---
-title: Apache Ambari-weer gaven gebruiken om te werken met hive op HDInsight (Apache Hadoop)-Azure
+title: Apache Ambari-Hive-weer gave gebruiken met Apache Hadoop in azure HDInsight
 description: Meer informatie over het gebruik van de Hive-weer gave in uw webbrowser om Hive-query's in te dienen. De Hive-weer gave maakt deel uit van de Ambari-webinterface die is meegeleverd met het HDInsight-cluster op basis van Linux.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077017"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044811"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari-Hive-weer gave gebruiken met Apache Hadoop in HDInsight
 
@@ -30,7 +30,7 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
 
 1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/).  Zie een [lijst en clusters weer geven](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. Het cluster wordt geopend in een nieuwe portal-Blade.
 
-2. Selecteer **Ambari-weer gaven**in **cluster dashboards**. Wanneer u wordt gevraagd om te verifiëren, gebruikt u de `admin`account naam en het wacht woord voor de cluster aanmelding (standaard) die u hebt opgegeven tijdens het maken van het cluster.
+2. Selecteer **Ambari-weer gaven**in **cluster dashboards**. Wanneer u wordt gevraagd om te verifiëren, gebruikt u de account naam en het wacht woord voor de cluster aanmelding (standaard `admin`) die u hebt opgegeven tijdens het maken van het cluster.
 
 3. Selecteer in de lijst met weer gaven de __Hive-weer gave__.
 
@@ -61,16 +61,16 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
 
     Met deze instructies worden de volgende acties uitgevoerd:
 
-   * `DROP TABLE`: Hiermee verwijdert u de tabel en het gegevens bestand, voor het geval de tabel al bestaat.
+   * `DROP TABLE`: verwijdert de tabel en het gegevens bestand, voor het geval de tabel al bestaat.
 
-   * `CREATE EXTERNAL TABLE`: Hiermee maakt u een nieuwe tabel ' External ' in de component.
+   * `CREATE EXTERNAL TABLE`: maakt een nieuwe tabel ' External ' in Hive.
      Externe tabellen slaan alleen de tabel definitie in Hive op. De gegevens blijven op de oorspronkelijke locatie.
 
-   * `ROW FORMAT`: Laat zien hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
+   * `ROW FORMAT`: laat zien hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
 
-   * `STORED AS TEXTFILE LOCATION`: Hier wordt weer gegeven waar de gegevens worden opgeslagen en dat deze worden opgeslagen als tekst.
+   * `STORED AS TEXTFILE LOCATION`: geeft aan waar de gegevens zijn opgeslagen en worden opgeslagen als tekst.
 
-   * `SELECT`: Hiermee wordt het aantal rijen geselecteerd waarin de kolom T4 de waarde [ERROR] bevat.
+   * `SELECT`: selecteert een telling van alle rijen waarin de kolom T4 de waarde [ERROR] bevat.
 
    > [!IMPORTANT]  
    > De __database__ selectie __standaard__behouden. De voor beelden in dit document gebruiken de standaard database die is opgenomen in HDInsight.
@@ -119,7 +119,7 @@ Op het tabblad **query** kunt u desgewenst query's opslaan. Nadat u een query he
 ![Tabblad opgeslagen query's Apache Hive weer geven](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
-> Opgeslagen query's worden opgeslagen in de standaard cluster opslag. U kunt de opgeslagen query's vinden in het pad `/user/<username>/hive/scripts`. Deze worden opgeslagen als bestanden met tekst `.hql` zonder opmaak.
+> Opgeslagen query's worden opgeslagen in de standaard cluster opslag. U kunt de opgeslagen query's vinden in het pad `/user/<username>/hive/scripts`. Deze worden opgeslagen als onbewerkte tekst `.hql` bestanden.
 >
 > Als u het cluster verwijdert, maar de opslag gebruikt, kunt u een hulp programma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) of Data Lake Storage Verkenner (vanuit de [Azure-Portal](https://portal.azure.com)) gebruiken om de query's op te halen.
 

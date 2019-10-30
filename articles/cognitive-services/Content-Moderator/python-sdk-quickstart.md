@@ -1,5 +1,6 @@
 ---
 title: 'Snelstartgids: Content Moderator-client bibliotheek voor python | Microsoft Docs'
+titleSuffix: Azure Cognitive Services
 description: Ga aan de slag met de Content Moderator-client bibliotheek voor python.
 services: cognitive-services
 author: PatrickFarley
@@ -7,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755258"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044036"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Snelstartgids: Content Moderator-client bibliotheek voor python
 
@@ -295,7 +296,7 @@ Gebruik de volgende code om een gegeven lijst met installatie kopieën te verwij
 
 ## <a name="create-a-review"></a>Een beoordeling maken
 
-U kunt de Content Moderator python SDK gebruiken om inhoud in te voeren in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com) , zodat menselijke moderators deze kunnen beoordelen. Zie de [conceptuele hand leiding](./review-tool-user-guide/human-in-the-loop.md)voor meer informatie over het beoordelings programma.
+U kunt de Content Moderator python SDK gebruiken om inhoud in te voeren in het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com) , zodat menselijke moderators deze kunnen beoordelen. Zie de [conceptuele hand leiding voor het beoordelings programma](./review-tool-user-guide/human-in-the-loop.md)voor meer informatie over het hulp programma.
 
 De volgende code maakt gebruik van de [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python) -klasse om een beoordeling te maken, de id op te halen en de details te controleren nadat hij de menselijke invoer heeft ontvangen via de webportal van het controle programma.
 
@@ -312,7 +313,7 @@ Voeg de volgende code toe om een beoordeling te maken en te plaatsen voor de opg
 
 ### <a name="get-review-details"></a>Details van controle ophalen
 
-Gebruik de volgende code om de details van een bepaalde beoordeling te controleren. Nadat u de beoordeling hebt gemaakt, kunt u zelf naar het hulp programma controleren gaan en de inhoud gebruiken. Wanneer u klaar bent, kunt u deze code opnieuw uitvoeren en worden de resultaten van het controle proces opgehaald.
+Gebruik de volgende code om de details van een bepaalde beoordeling te controleren. Nadat u de beoordeling hebt gemaakt, kunt u zelf naar het hulp programma controleren gaan en de inhoud gebruiken. Voor informatie over hoe u dit doet, raadpleegt u de [hand leiding voor recensies](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Wanneer u klaar bent, kunt u deze code opnieuw uitvoeren en worden de resultaten van het controle proces opgehaald.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

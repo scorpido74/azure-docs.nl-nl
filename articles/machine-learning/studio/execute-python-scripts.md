@@ -1,7 +1,7 @@
 ---
 title: Python-machine learning scripts uitvoeren
 titleSuffix: Azure Machine Learning Studio
-description: Meer informatie over het gebruik van python in Azure Machine Learning Studio.
+description: Meer informatie over het gebruik van de script module python uitvoeren voor het gebruik van python-code in Machine Learning Studio (klassiek) experimenten en webservices.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bfc2efca0786838d528b3019a3aff405f46ef645
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308867"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053794"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Python-scripts voor Machine Learning uitvoeren in Azure Machine Learning Studio
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u de script module voor het uitvoeren van py
 
 ## <a name="using-the-execute-python-script-module"></a>De script module python uitvoeren gebruiken
 
-De primaire interface naar python in Studio is via de [script module python uitvoeren][execute-python-script] . Het accepteert Maxi maal drie invoer en produceert Maxi maal twee uitvoer, vergelijkbaar met de script module voor het [uitvoeren van R][execute-r-script] . Python-code wordt in het vak para meter ingevoerd via een speciaal benoemde ingangs punt `azureml_main`functie, genaamd.
+De primaire interface naar python in Studio is via de [script module python uitvoeren][execute-python-script] . Het accepteert Maxi maal drie invoer en produceert Maxi maal twee uitvoer, vergelijkbaar met de script module voor het [uitvoeren van R][execute-r-script] . Python-code wordt ingevoerd in het vak para meter via een benoemde ingangs punt functie met de naam `azureml_main`.
 
 ![Python-script module uitvoeren](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -33,7 +33,7 @@ De primaire interface naar python in Studio is via de [script module python uitv
 
 ### <a name="input-parameters"></a>Invoer parameters
 
-Invoer voor de python-module worden weer gegeven als Panda DataFrames. De `azureml_main` functie accepteert Maxi maal twee optionele Panda DataFrames als para meters.
+Invoer voor de python-module worden weer gegeven als Panda DataFrames. De functie `azureml_main` accepteert Maxi maal twee optionele Panda DataFrames als para meters.
 
 De toewijzing tussen invoer poorten en functie parameters is positioneel:
 
@@ -41,13 +41,13 @@ De toewijzing tussen invoer poorten en functie parameters is positioneel:
 - De tweede invoer (indien verbonden) wordt toegewezen aan de tweede para meter van de functie.
 - De derde invoer wordt gebruikt voor het [importeren van aanvullende python-modules](#import-modules).
 
-Meer gedetailleerde semantiek van de manier waarop de invoer poorten worden toegewezen aan para meters van de `azureml_main` functie, worden hieronder weer gegeven.
+Meer gedetailleerde semantiek van de manier waarop de invoer poorten worden toegewezen aan para meters van de functie `azureml_main`, worden hieronder weer gegeven.
 
 ![Tabel met invoer poort configuraties en resulterende python-hand tekening](./media/execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
 ### <a name="output-return-values"></a>Uitvoer retour waarden
 
-De `azureml_main` functie moet een enkele Panda-data frame retour neren die is verpakt in een python- [reeks](https://docs.python.org/2/c-api/sequence.html) , zoals een tuple-, lijst-of numpy-matrix. Het eerste element van deze reeks wordt geretourneerd naar de eerste uitvoer poort van de module. De tweede uitvoer poort van de module wordt gebruikt voor [Visualisaties](#visualizations) en vereist geen retour waarde. Dit schema wordt hieronder weer gegeven.
+De functie `azureml_main` moet een enkele Panda-data frame retour neren die is verpakt in een python- [reeks](https://docs.python.org/2/c-api/sequence.html) , zoals een tuple-, lijst-of numpy-matrix. Het eerste element van deze reeks wordt geretourneerd naar de eerste uitvoer poort van de module. De tweede uitvoer poort van de module wordt gebruikt voor [Visualisaties](#visualizations) en vereist geen retour waarde. Dit schema wordt hieronder weer gegeven.
 
 ![Invoer poorten toewijzen aan para meters en retour waarde naar uitvoer poort](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
@@ -60,16 +60,16 @@ Studio-gegevens sets zijn niet hetzelfde als Panda DataFrames. Als gevolg hierva
 | Teken reeksen en cijfers| Vertaald als is |
 | Panda ' N.V.T. ' | Vertaald als ontbrekende waarde |
 | Index vectoren | Niet-ondersteunde |
-| Niet-teken reeks kolom namen | Aanroepen `str` van kolom namen |
-| Dubbele kolom namen | Numeriek achtervoegsel toevoegen: (1), (2), (3), enzovoort.
+| Niet-teken reeks kolom namen | `str` aanroepen voor kolom namen |
+| Dubbele kolom namen | Voeg een numeriek achtervoegsel toe: (1), (2), (3), enzovoort.
 
-**Alle invoer gegevens frames in de python-functie hebben altijd een 64-bits numerieke index van 0 tot het aantal rijen min 1*
+**alle invoer gegevens frames in de python-functie hebben altijd een 64-bits numerieke index van 0 tot het aantal rijen min 1*
 
 ## <a id="import-modules"></a>Bestaande python-script modules importeren
 
 De back-end die wordt gebruikt om python uit te voeren, is gebaseerd op [Anaconda](https://www.anaconda.com/distribution/), een veelgebruikte weten schappelijke python-distributie. Het wordt geleverd met dicht bij 200 van de meest voorkomende Python-pakketten die worden gebruikt in gegevens gerichte werk belastingen. Studio biedt momenteel geen ondersteuning voor het gebruik van pakket beheer systemen zoals PIP of Conda voor het installeren en beheren van externe bibliotheken.  Als u meer bibliotheken nodig hebt, moet u het volgende scenario gebruiken als richt lijn.
 
-Een veelvoorkomend gebruik: case is het opnemen van bestaande python-scripts in Studio experimenten. De [script module python uitvoeren][execute-python-script] accepteert een zip-bestand met python-modules op de derde invoer poort. Het bestand wordt tijdens runtime uitgepakt door het uitvoerings raamwerk en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-interpreter. Met `azureml_main` de functie toegangs punt kunnen deze modules vervolgens rechtstreeks worden geïmporteerd. 
+Een veelvoorkomend gebruik: case is het opnemen van bestaande python-scripts in Studio experimenten. De [script module python uitvoeren][execute-python-script] accepteert een zip-bestand met python-modules op de derde invoer poort. Het bestand wordt tijdens runtime uitgepakt door het uitvoerings raamwerk en de inhoud wordt toegevoegd aan het bibliotheekpad van de Python-interpreter. Met de functie voor het `azureml_main`-toegangs punt kunnen deze modules vervolgens rechtstreeks worden geïmporteerd. 
 
 Bekijk een voor beeld van het bestand Hello.py dat een eenvoudige ' Hello, World '-functie bevat.
 
@@ -85,7 +85,7 @@ Upload het zip-bestand als een gegevensset in Studio. Maak en voer vervolgens ee
 
 ![Door de gebruiker gedefinieerde python-code die is geüpload als een zip-bestand](./media/execute-python-scripts/figure6b.png)
 
-In de module-uitvoer ziet u dat het zip-bestand is uitgepakt en dat `print_hello` de functie is uitgevoerd.
+In de module-uitvoer ziet u dat het zip-bestand is uitgepakt en dat de functie `print_hello` is uitgevoerd.
 
 ![Module-uitvoer met door de gebruiker gedefinieerde functie](./media/execute-python-scripts/figure7.png)
 
@@ -95,7 +95,7 @@ Met de volgende stappen kunt u toegang krijgen tot gegevens die zijn opgeslagen 
 
 1. Down load het [Azure Blob Storage-pakket voor python](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) lokaal.
 1. Upload het zip-bestand naar uw studio-werk ruimte als een gegevensset.
-1. Uw BlobService-object maken met`protocol='http'`
+1. Uw BlobService-object maken met `protocol='http'`
 
 ```
 from azure.storage.blob import BlockBlobService

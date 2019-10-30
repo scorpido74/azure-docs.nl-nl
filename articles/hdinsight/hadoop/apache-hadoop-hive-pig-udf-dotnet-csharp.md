@@ -1,5 +1,5 @@
 ---
-title: Gebruiken C# met Apache Hive en Apache varken op Apache Hadoop in HDInsight-Azure
+title: C#, Apache Hive & Apache-varken op Apache Hadoop-Azure HDInsight
 description: Meer informatie over het C# gebruik van door de gebruiker gedefinieerde functies (UDF) met Apache Hive en Apache Pig-streaming in azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 222b91b2efefa81186d32fee7229aa0cc4f13a63
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066920"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044597"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Door C# de gebruiker gedefinieerde functies gebruiken met Apache Hive en Apache varken op Apache Hadoop in HDInsight
 
@@ -22,7 +22,7 @@ Meer informatie over het C# gebruik van door de gebruiker gedefinieerde functies
 > [!IMPORTANT]
 > De stappen in dit document werken met HDInsight-clusters op basis van Linux en Windows. Linux is het enige besturingssysteem dat wordt gebruikt in HDInsight-versie 3.4 of hoger. Zie [versie beheer van HDInsight-onderdelen](../hdinsight-component-versioning.md)voor meer informatie.
 
-Zowel Hive als Pig kunnen gegevens door geven aan externe toepassingen voor verwerking. Dit proces wordt ook wel _streaming_genoemd. Wanneer u een .NET-toepassing gebruikt, worden de gegevens door gegeven aan de toepassing op STDIN en de toepassing retourneert de resultaten op STDOUT. Voor het lezen en schrijven van stdin en stdout kunt u en `Console.ReadLine()` `Console.WriteLine()` vanuit een console toepassing gebruiken.
+Zowel Hive als Pig kunnen gegevens door geven aan externe toepassingen voor verwerking. Dit proces wordt ook wel _streaming_genoemd. Wanneer u een .NET-toepassing gebruikt, worden de gegevens door gegeven aan de toepassing op STDIN en de toepassing retourneert de resultaten op STDOUT. Als u wilt lezen en schrijven vanuit STDIN en STDOUT, kunt u `Console.ReadLine()` en `Console.WriteLine()` van een console toepassing gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,7 +42,7 @@ Zowel Hive als Pig kunnen gegevens door geven aan externe toepassingen voor verw
 
 ## <a name="net-on-hdinsight"></a>.NET in HDInsight
 
-* __Op Linux gebaseerde HDInsight-__ clusters met [mono https://mono-project.com) (](https://mono-project.com) om .NET-toepassingen uit te voeren. Mono versie 4.2.1 is opgenomen in HDInsight-versie 3,6.
+* __Op Linux gebaseerde HDInsight-__ clusters met [mono (https://mono-project.com)](https://mono-project.com) om .NET-toepassingen uit te voeren. Mono versie 4.2.1 is opgenomen in HDInsight-versie 3,6.
 
     Zie [mono-compatibiliteit](https://www.mono-project.com/docs/about-mono/compatibility/)voor meer informatie over de compatibiliteit van mono met .NET Framework versies.
 
@@ -50,7 +50,7 @@ Zowel Hive als Pig kunnen gegevens door geven aan externe toepassingen voor verw
 
 Zie [hdinsight-onderdeel versies](../hdinsight-component-versioning.md)voor meer informatie over de versie van .NET Framework en mono, opgenomen in hdinsight-versies.
 
-## <a name="create-the-c-projects"></a>De C\# -projecten maken
+## <a name="create-the-c-projects"></a>De C\#-projecten maken
 
 ### <a name="apache-hive-udf"></a>Apache Hive UDF
 
@@ -147,7 +147,7 @@ Zie [hdinsight-onderdeel versies](../hdinsight-component-versioning.md)voor meer
     }
     ```
 
-    Met deze code worden de regels geparseerd die zijn verzonden van Pig en worden de `java.lang.Exception`regels die beginnen met.
+    Met deze code worden de regels geparseerd die zijn verzonden van Pig en worden de regels die beginnen met `java.lang.Exception`opnieuw ingedeeld.
 
 3. Sla **Program.cs**op en bouw het project.
 
@@ -203,9 +203,9 @@ Zie [hdinsight-onderdeel versies](../hdinsight-component-versioning.md)voor meer
     ```
 
     > [!IMPORTANT]
-    > Verwijder de opmerking `add file` bij de instructie die overeenkomt met het type standaard opslag dat voor uw cluster wordt gebruikt.
+    > Verwijder de opmerking bij de `add file`-instructie die overeenkomt met het type standaard opslag dat voor uw cluster wordt gebruikt.
 
-    Met deze query selecteert `clientid`u `devicemake`de velden `devicemodel` `hivesampletable`,, en en geeft u de velden door aan de toepassing HiveCSharp. exe. De query verwacht dat de toepassing drie velden retourneert, die zijn opgeslagen als `clientid`, `phoneLabel`, en `phoneHash`. De query verwacht ook HiveCSharp. exe te vinden in de hoofdmap van de standaard-opslag container.
+    Met deze query worden de velden `clientid`, `devicemake`en `devicemodel` geselecteerd van `hivesampletable`en worden de velden door gegeven aan de toepassing HiveCSharp. exe. De query verwacht dat de toepassing drie velden retourneert, die worden opgeslagen als `clientid`, `phoneLabel`en `phoneHash`. De query verwacht ook HiveCSharp. exe te vinden in de hoofdmap van de standaard-opslag container.
 
 5. Klik op **verzenden** om de taak naar het HDInsight-cluster te verzenden. Het venster **samen vatting van Hive-taak** wordt geopend.
 
@@ -226,7 +226,7 @@ Zie [hdinsight-onderdeel versies](../hdinsight-component-versioning.md)voor meer
     > bin\pig
     > ```
 
-    Er `grunt>` wordt een prompt weer gegeven.
+    Er wordt een `grunt>` prompt weer gegeven.
 
 3. Voer het volgende in om een Pig-taak uit te voeren die gebruikmaakt van de .NET Framework-toepassing:
 
@@ -236,10 +236,10 @@ Zie [hdinsight-onderdeel versies](../hdinsight-component-versioning.md)voor meer
         DETAILS = STREAM LOG through streamer as (col1, col2, col3, col4, col5);
         DUMP DETAILS;
 
-    De `DEFINE` instructie maakt een alias van `streamer` voor de pigudf. exe-toepassingen en `CACHE` laadt deze vanuit de standaard opslag voor het cluster. Later wordt met de `STREAM` operator gebruikt om de enkele regels in het logboek te verwerken en de gegevens als een reeks kolommen te retour neren. `streamer`
+    De instructie `DEFINE` maakt een alias van `streamer` voor de toepassingen pigudf. exe en `CACHE` laadt deze vanuit de standaard opslag voor het cluster. Later wordt `streamer` met de operator `STREAM` gebruikt voor het verwerken van de enkelvoudige regels in het logboek en het retour neren van de gegevens als een reeks kolommen.
 
     > [!NOTE]
-    > De naam van de toepassing die wordt gebruikt voor streaming moet tussen het \` (apostroffen)-teken worden geplaatst wanneer de alias en ' (enkele aanhalings tekens `SHIP`) worden gebruikt in combi natie met.
+    > De naam van de toepassing die wordt gebruikt voor streaming moet tussen het \`-teken (apostroffen) staan wanneer de alias en ' (enkele aanhalings tekens) worden gebruikt in combi natie met `SHIP`.
 
 4. Nadat de laatste regel is ingevoerd, wordt de taak gestart. Het resultaat van de uitvoer is vergelijkbaar met de volgende tekst:
 

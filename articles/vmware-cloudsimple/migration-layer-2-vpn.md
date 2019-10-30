@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 37f337f158c3ca53170d963f1304801a12b732da
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72376296"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053892"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Workloads migreren met behulp van uitgerekte netwerken van Laag 2
 
@@ -137,7 +137,7 @@ De volgende stappen laten zien hoe u de logische router-ID van de Tier0 DR-route
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>De ID van de logische switch ophalen die nodig is voor L2VPN
 
 1. Meld u aan bij [NSX-T-beheer](https://nsx-t-manager-ip-address).
-2. Selecteer **network**  >  switching  > **switches** > * * < \Logical switch \> * * > **Overview**.
+2. Selecteer **netwerk** > **Schakel** > **switches** >  **< \Logical-switch\>**  > **overzicht**.
 3. Noteer de UUID van de logische switch Stretch, die vereist is voor het configureren van de L2VPN.
 
     ![logische-router uitvoer ophalen](media/l2vpn-fetch-switch01.png)
@@ -165,7 +165,7 @@ Voor het tot stand brengen van een VPN-route op basis van IPsec tussen de NSX-T 
 
 4. Meld u aan bij NSX-T-beheer en selecteer **netwerk** > **routerings** > **routers** > **Provider-LR** > **Routing** > **BGP**1**Neighbors**. Selecteer de eerste neighbor. Klik op  > -**adres families** **bewerken**. Voor de IPv4-serie bewerkt u de kolom **out filter** en selecteert u de lijst met IP-voor voegsels die u hebt gemaakt. Klik op **Opslaan**. Herhaal deze stap voor de tweede neighbor.
 
-    ![Attach IP-voorvoegsel lijst 1 ](media/l2vpn-routing-security03.png) ![Attach IP-voorvoegsel lijst 2 ](media/l2vpn-routing-security04.png)
+    ![de IP-voorvoegsel lijst 1](media/l2vpn-routing-security03.png) ![gekoppelde IP-voorvoegsel lijst 2](media/l2vpn-routing-security04.png)
 
 5. Distribueer de statische null-route naar BGP. Als u de loop back-interface route wilt adverteren naar de aan, moet u de statische null-route opnieuw distribueren naar BGP. Meld u aan bij NSX-T-beheer en selecteer **netwerk** > **routerings** > **routers** > **provider-LR** > -**route ring** > **route herdistributie**1**Neighbors**. Selecteer **provider-LR-Route_Redistribution** en klik op **bewerken**. Schakel het selectie vakje **statisch** in en klik op **Opslaan**.
 
@@ -430,7 +430,7 @@ Voordat u implementeert, controleert u of uw on-premises firewall regels binnenk
 
 2. Ga naar de map met alle uitgepakte bestanden. Selecteer alle vmdk's (NSX-l2t-client-large. MF en NSX-l2t-client-large. OVF voor grote toestel grootte of NSX-l2t-client-xlarge. MF en NSX-l2t-client-Xlarge. OVF voor extra groot formaat van het apparaat). Klik op **Volgende**.
 
-    ![Select sjabloon ](media/l2vpn-deploy-client02.png) ![Select sjabloon ](media/l2vpn-deploy-client03.png)
+    ![sjabloon selecteren](media/l2vpn-deploy-client02.png) ![sjabloon selecteren](media/l2vpn-deploy-client03.png)
 
 3. Voer een naam in voor de zelfstandige NSX-T-client en klik op **volgende**.
 
@@ -460,8 +460,8 @@ Voordat u implementeert, controleert u of uw on-premises firewall regels binnenk
     * **Lengte van voor voegsel**. Voer de lengte van het voor voegsel van het uplink-VLAN/subnet in.
     * **Cli-beheerder/inschakelen/hoofd gebruikers wachtwoord**. Stel het wacht woord voor admin/Enable/root-account in.
 
-      ![Customize sjabloon ](media/l2vpn-deploy-client08.png)
-       ![Customize sjabloon-meer ](media/l2vpn-deploy-client09.png)
+      ![sjabloon aanpassen](media/l2vpn-deploy-client08.png)
+      ![sjabloon aanpassen-meer](media/l2vpn-deploy-client09.png)
 
 7. Controleer de instellingen en klik op **volt ooien**.
 

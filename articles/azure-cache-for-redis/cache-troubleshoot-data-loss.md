@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yegu
-ms.openlocfilehash: 523f4a302eb1f4679eb34bc959efc895fa5408ec
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4fee7c84b394e84369b28d2a4191d0e581f3beba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821036"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044366"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-data-loss"></a>Problemen met Azure cache oplossen voor redis gegevens verlies
 
@@ -101,7 +101,7 @@ Als u merkt dat de meeste sleutels zijn verdwenen uit uw cache, kunt u het volge
 |---|---|
 | [Leegmaken van sleutel](#key-flushing) | Sleutels zijn hand matig opgeschoond |
 | [Onjuiste database selectie](#incorrect-database-selection) | Redis is ingesteld op het gebruik van een niet-standaard database |
-| [Redis-instantie fout](#redis-instance-failure) | Sleutels worden verwijderd door expliciete Verwijder opdrachten |
+| [Redis-instantie fout](#redis-instance-failure) | De redis-server is niet beschikbaar |
 
 ### <a name="key-flushing"></a>Leegmaken van sleutel
 

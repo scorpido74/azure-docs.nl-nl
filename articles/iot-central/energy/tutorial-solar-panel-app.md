@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: dd7e3ed767539f8de46e5f77a39b1e7bac0cb3b0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b408d2cc0754cc1f2dd8671d037d4f9d348e883b
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965811"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027638"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Zelf studie: de sjabloon voor het bewaken van het zonne deel venster maken en door lopen 
+
+[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Deze zelf studie leidt u door het proces van het maken van de toepassing voor het bewaken van het zonne deel venster, dat een voorbeeld model bevat met gesimuleerde gegevens. In deze zelfstudie leert u:
 
@@ -41,8 +43,8 @@ U kunt deze toepassing in drie eenvoudige stappen maken:
 
 2. Selecteer het tabblad **energie** en klik op **app maken** onder **Zons paneel bewaking** toepassings tegel. 
 
-    > [!div class="mx-imgBorder"]
-    > ![build-app](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
+    [!div class="mx-imgBorder"]
+    ![build-app](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
 3. Bij het maken van de **app** wordt het **nieuwe toepassings** formulier geopend. Vul de gevraagde gegevens in, zoals wordt weer gegeven in de afbeelding hieronder:
     * **Toepassings naam**: Kies een naam voor uw IOT Central-toepassing. 
@@ -70,37 +72,37 @@ Adatum is een fictief energie bedrijf dat zonne panelen bewaakt en beheert. Op h
 * De totale energie generatie voor planningen en facturerings doeleinden volgen
 * Opdracht-en besturings bewerkingen, zoals het paneel activeren en de firmware versie bijwerken. In de sjabloon worden met de opdracht knoppen de mogelijke functionaliteiten weer gegeven en worden geen echte opdrachten verzonden.
 
-> [!div class="mx-imgBorder"]
-> bewakings dashboard ![zonne deel venster](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+[!div class="mx-imgBorder"]
+bewakings dashboard ![zonne deel venster](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Apparaten
 In de app wordt een voor beeld van een zonne-panel apparaat geleverd. U kunt de details van het apparaat bekijken door te klikken op het tabblad **apparaten** .
 
-> [!div class="mx-imgBorder"]
-> ![zonne-paneel apparaten](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+[!div class="mx-imgBorder"]
+![zonne-paneel apparaten](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
 
 Klik op de koppeling voor beeld van apparaat **SP0123456789** om de details van het apparaat weer te geven. Op de pagina **Eigenschappen bijwerken** kunt u de Beschrijf bare eigenschappen van het apparaat bijwerken en de bijgewerkte waarden in het dash board visualiseren. 
 
-> [!div class="mx-imgBorder"]
-> eigenschappen van ![zonne deel venster](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+[!div class="mx-imgBorder"]
+eigenschappen van ![zonne deel venster](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Apparaatprofiel
 Klik op het tabblad **Apparaatinstellingen** om het model met zonne-panel apparaten weer te geven. Het model heeft een vooraf gedefinieerde interface voor gegevens, eigenschappen, opdrachten en weer gaven.
 
-> [!div class="mx-imgBorder"]
-> ![sjabloon voor zonne panel apparaten](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+[!div class="mx-imgBorder"]
+![sjabloon voor zonne panel apparaten](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 Als u besluit deze toepassing niet te blijven gebruiken, verwijdert u uw toepassing met de volgende stappen:
 
-1. Open het tabblad beheer vanuit het menu aan de linkerkant.
+1. Open het tabblad beheer vanuit het linkerdeel venster.
 2. Selecteer toepassings instellingen en klik onder aan de pagina op de knop verwijderen. 
 
-    > [!div class="mx-imgBorder"]
-    > toepassings](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png) ![verwijderen
+    [!div class="mx-imgBorder"]
+    toepassings](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png) ![verwijderen
 
 
 ## <a name="next-steps"></a>Volgende stappen

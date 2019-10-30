@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: f9b23e00c954e8babb1fe920bca1aa2ea5f9298e
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799486"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045023"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -266,11 +266,11 @@ Veel triggers en acties hebben instellingen voor het verbergen van invoer, uitvo
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-   ![Voorbeeld logische app openen](./media/logic-apps-securing-a-logic-app/sample-logic-app.png)
+   ![Logische app openen in de ontwerp functie voor logische apps](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
 1. Op de trigger of actie waar u gegevens wilt beveiligen, selecteert u de knop met weglatings tekens ( **...** ) en selecteert u vervolgens **instellingen**.
 
-   ![Instellingen openen](./media/logic-apps-securing-a-logic-app/open-settings.png)
+   ![Trigger-of actie-instellingen openen](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. Schakel **beveiligde invoer**, **beveiligde uitvoer**of beide in. Wanneer u klaar bent, selecteert u **Gereed**.
 
@@ -278,11 +278,11 @@ Veel triggers en acties hebben instellingen voor het verbergen van invoer, uitvo
 
    In de actie of de trigger wordt nu een vergrendelings pictogram weer gegeven in de titel balk.
 
-   ![Vergrendelings pictogram op de titel balk](./media/logic-apps-securing-a-logic-app/title-bar-lock-icon.png)
+   ![De titel balk van de actie of de trigger toont het vergrendelings pictogram](./media/logic-apps-securing-a-logic-app/lock-icon-action-trigger-title-bar.png)
 
    Tokens die beveiligde uitvoer van vorige acties vertegenwoordigen, worden ook vergrendelings pictogrammen weer gegeven. Wanneer u bijvoorbeeld een dergelijke uitvoer van de lijst met dynamische inhoud selecteert die u wilt gebruiken in een actie, toont dat token een vergrendelings pictogram.
 
-   ![Uitvoer selecteren](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
+   ![Token selecteren voor beveiligde uitvoer](./media/logic-apps-securing-a-logic-app/select-secured-token.png)
 
 1. Wanneer de logische app wordt uitgevoerd, kunt u de geschiedenis voor die uitvoering weer geven.
 
@@ -292,7 +292,7 @@ Veel triggers en acties hebben instellingen voor het verbergen van invoer, uitvo
 
       Als u ervoor kiest om zowel invoer als uitvoer te beveiligen, worden deze waarden nu verborgen weer gegeven.
 
-      ![Verborgen gegevens in de uitvoerings geschiedenis](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
+      ![Verborgen invoer en uitvoer in uitvoerings geschiedenis](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
@@ -349,7 +349,7 @@ Hier volgen enkele [aandachtspunten om te controleren](#obfuscation-consideratio
 
   Wanneer u **beveiligde invoer** in een trigger of actie hand matig inschakelt, Logic apps deze invoer in de uitvoerings geschiedenis beveiligen. Als een stroomafwaartse actie expliciet gebruikmaakt van de zicht bare uitvoer van die trigger of actie als invoer, Logic Apps de invoer van deze stroomafwaartse actie verbergen in de uitvoerings geschiedenis, maar worden *geen* **beveiligde invoer waarden** in deze actie ingeschakeld en wordt deze actie niet verborgen uitvoer.
 
-  ![Beveiligde invoer en downstream van invloed op de meeste acties](./media/logic-apps-securing-a-logic-app/secure-inputs-flow.png)
+  ![Beveiligde invoer en downstream van invloed op de meeste acties](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
   Als de acties opstellen, JSON en respons maken expliciet gebruikmaken van de zicht bare uitvoer van de trigger of actie die de beveiligde invoer heeft, Logic Apps de invoer en uitvoer van deze acties verbergen, maar worden de **beveiligde invoer** van deze actie *niet ingeschakeld* stelt. Als een stroomafwaartse actie expliciet gebruikmaakt van de verborgen uitvoer van de acties opstellen, parseren van JSON of respons als invoer, Logic Apps *de invoer of uitvoer van deze stroomafwaartse actie niet verbergen*.
 

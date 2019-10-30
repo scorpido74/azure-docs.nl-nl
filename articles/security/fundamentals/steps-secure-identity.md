@@ -8,16 +8,16 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129321"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053072"
 ---
-# <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen om uw identiteitsinfrastructuur te beveiligen
+# <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
 Als u dit document leest, bent u op de hoogte van de significantie van de beveiliging. Waarschijnlijk hebt u de verantwoordelijkheid voor het beveiligen van uw organisatie. Als u anderen van het belang van beveiliging wilt overzien, kunt u ze verzenden om het meest recente [micro soft Security Intelligence-rapport](https://go.microsoft.com/fwlink/p/?linkid=2073747)te lezen.
 
@@ -31,18 +31,23 @@ Deze controle lijst helpt u bij het snel implementeren van kritieke aanbevolen a
 * Verg root de controle en controle.
 * Schakel meer voorspel bare en volledige beveiliging van eind gebruikers met zelf ondersteuning in.
 
+Zorg ervoor dat u bijhoudt welke functies en stappen zijn voltooid tijdens het lezen van deze controle lijst.
+
 > [!NOTE]
 > Veel van de aanbevelingen in dit document gelden alleen voor toepassingen die zijn geconfigureerd om Azure Active Directory als id-provider te gebruiken. Door apps voor eenmalige aanmelding te configureren, kunt u de voor delen van referentie beleid, detectie van bedreigingen, controle, logboek registratie en andere functies toevoegen aan deze toepassingen. [Eenmalige aanmelding via Azure Active Directory](../../active-directory/manage-apps/configure-single-sign-on-portal.md) is de basis, waarop al deze aanbevelingen zijn gebaseerd.
 
-De aanbevelingen in dit document zijn afgestemd op de [identiteits veilige Score](../../active-directory/fundamentals/identity-secure-score.md), een geautomatiseerde evaluatie van de identiteits beveiligings configuratie van uw Azure AD-Tenant. Organisaties kunnen de pagina identiteits beveiliging in de Azure AD-Portal gebruiken om hiaten in hun huidige beveiligings configuratie te vinden om te controleren of ze de huidige aanbevolen procedures van micro soft voor beveiliging volgen. Wanneer u elke aanbeveling op de pagina beveiligde Score implementeert, wordt uw score verhoogd en kunt u uw voortgang volgen, plus de hulp bij het vergelijken van uw implementatie met andere vergelijk bare organisaties of uw branche.
+De aanbevelingen in dit document zijn afgestemd op de [identiteits veilige Score](../../active-directory/fundamentals/identity-secure-score.md), een geautomatiseerde evaluatie van de identiteits beveiligings configuratie van uw Azure AD-Tenant. Organisaties kunnen de pagina identiteits beveiliging in de Azure AD-Portal gebruiken om hiaten in hun huidige beveiligings configuratie te vinden om te controleren of ze de huidige [Aanbevolen procedures](identity-management-best-practices.md) van micro soft voor beveiliging volgen. Wanneer u elke aanbeveling op de pagina beveiligde Score implementeert, wordt uw score verhoogd en kunt u uw voortgang volgen, plus de hulp bij het vergelijken van uw implementatie met andere vergelijk bare organisaties of uw branche.
 
-![Identity Secure Score](./media/steps-secure-identity/azure-ad-sec-steps0.png)
+![Identiteits veilige Score](./media/steps-secure-identity/azure-ad-sec-steps0.png)
 
-## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Voordat u begint: Geprivilegieerde accounts beveiligen met MFA
+> [!NOTE]
+> Voor veel van de functies die hier worden beschreven, is een Azure AD Premium-abonnement vereist, terwijl sommige gratis zijn. Raadpleeg onze [Azure Active Directory-prijzen](https://azure.microsoft.com/pricing/details/active-directory/) en de [controle lijst voor Azure AD-implementatie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2) voor meer informatie.
+
+## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Voordat u begint: beschermde accounts beveiligen met MFA
 
 Voordat u aan deze controle lijst begint, moet u ervoor zorgen dat u niet meer in het gedrang komt wanneer u deze controle lijst leest. U moet eerst uw bevoorrechte accounts beveiligen.
 
-Aanvallers die het beheer van geprivilegieerde accounts krijgen, kunnen grote schade toebrengen, dus het is essentieel om deze accounts eerst te beveiligen. [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) inschakelen en vereisen voor alle beheerders in uw organisatie met [basis beveiliging](../../active-directory/conditional-access/baseline-protection.md). Als u MFA nog niet hebt geïmplementeerd, doet u dat nu. Dat is belang rijk.
+Aanvallers die het beheer van geprivilegieerde accounts krijgen, kunnen grote schade toebrengen, dus het is essentieel om deze accounts eerst te beveiligen. [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) inschakelen en vereisen voor alle beheerders in uw organisatie met behulp van [Azure AD-beveiligings instellingen](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) of [voorwaardelijke toegang](../../active-directory/conditional-access/plan-conditional-access.md). Als u MFA nog niet hebt geïmplementeerd, doet u dat nu. Dat is belang rijk.
 
 Alle sets? Laten we aan de slag met de controle lijst.
 
@@ -51,9 +56,11 @@ Alle sets? Laten we aan de slag met de controle lijst.
 De meeste beveiligings schendingen van een onderneming zijn afkomstig van een account met een van de verschillende methoden, zoals wachtwoord spray, het opnieuw afspelen of het afwijzen van een aanval. Meer informatie over deze aanvallen vindt u in deze video (45 min):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
 
-### <a name="make-sure-your-organization-use-strong-authentication"></a>Zorg ervoor dat uw organisatie sterke authenticatie gebruikt
+### <a name="make-sure-your-organization-uses-strong-authentication"></a>Zorg ervoor dat uw organisatie gebruikmaakt van sterke verificatie
 
 Gezien de frequentie van wacht woorden die worden geschat, vergoedd, gestolen met malware of hergebruikt, is het belang rijk om het wacht woord te herstellen met een vorm van sterke referentie – meer informatie over [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
+
+Als u het basis niveau van identiteits beveiliging eenvoudig wilt inschakelen, kunt u de activering met één klik gebruiken met de [standaard instellingen van Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md). Met de standaard instellingen voor beveiliging wordt Azure MFA afgedwongen voor alle gebruikers in een Tenant en worden aanmeldingen van verouderde protocollen Tenant-breed geblokkeerd.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Start verbieden doorgaans aangevallen wacht woorden en schakel de traditionele complexiteit en de verval regels uit.
 
@@ -73,8 +80,8 @@ U kunt [Power shell gebruiken om te voor komen dat wacht woorden verlopen](../..
 
 Als uw organisatie gebruikmaakt van een hybride identiteits oplossing met Pass-Through-verificatie of Federatie, moet u de wachtwoord hash-synchronisatie inschakelen om de volgende twee redenen:
 
-* Het rapport [gebruikers met gelekte referenties](../../active-directory/reports-monitoring/concept-risk-events.md) in het Azure AD-beheer waarschuwt u voor gebruikers naam-en wachtwoord paren, die zijn weer gegeven op het ' donkere Web '. Een ongelooflijke hoeveelheid wacht woorden wordt gelekt via phishing, malware en het opnieuw gebruiken van wacht woorden op sites van derden die later zijn geschonden. Micro soft vindt veel van deze gelekte referenties en vertelt u, in dit rapport, als ze overeenkomen met referenties in uw organisatie, maar alleen als u de [synchronisatie van wacht woord](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)-hashes inschakelt.
-* In het geval van een on-premises storing (bijvoorbeeld bij een Ransomware-aanval) kunt u overstappen naar het gebruik van [Cloud verificatie met behulp van wacht woord-hash-synchronisatie](choose-ad-authn.md). Met deze methode voor back-upauthenticatie kunt u de toegang tot apps die zijn geconfigureerd voor verificatie met Azure Active Directory, waaronder Office 365, blijven gebruiken. In dit geval hoeven IT-mede werkers geen persoonlijke e-mail accounts te gebruiken om gegevens te delen totdat de on-premises storing is opgelost.
+* Het rapport [gebruikers met gelekte referenties](../../active-directory/reports-monitoring/concept-risk-events.md) in het Azure AD-beheer waarschuwt u voor gebruikers naam-en wachtwoord paren, die zijn weer gegeven op het ' donkere Web '. Een ongelooflijke hoeveelheid wacht woorden wordt gelekt via phishing, malware en het opnieuw gebruiken van wacht woorden op sites van derden die later zijn geschonden. Micro soft vindt veel van deze gelekte referenties en vertelt u, in dit rapport, als ze overeenkomen met referenties in uw organisatie, maar alleen als u de [synchronisatie van wacht woord-hashes inschakelt](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
+* In het geval van een on-premises storing (bijvoorbeeld bij een Ransomware-aanval) kunt u overschakelen naar het gebruik van [Cloud verificatie met behulp van wachtwoord-hash-synchronisatie](choose-ad-authn.md). Met deze methode voor back-upauthenticatie kunt u de toegang tot apps die zijn geconfigureerd voor verificatie met Azure Active Directory, waaronder Office 365, blijven gebruiken. In dit geval hoeven IT-mede werkers geen persoonlijke e-mail accounts te gebruiken om gegevens te delen totdat de on-premises storing is opgelost.
 
 Meer informatie over hoe [wachtwoord-hash-synchronisatie](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) werkt.
 
@@ -97,9 +104,9 @@ Gezien de begrootings situatie van het wacht woord, is het minimaliseren van het
 
 Apps die gebruikmaken van hun eigen verouderde methoden om te verifiëren met Azure AD en toegang hebben tot Bedrijfs gegevens, vormt een ander risico voor organisaties. Voor beelden van apps die gebruikmaken van verouderde verificatie zijn POP3-, IMAP4-en SMTP-clients. Verouderde verificatie-apps verifiëren namens de gebruiker en voor komt dat Azure AD geavanceerde beveiligings evaluaties uitvoert. De alternatieve, moderne verificatie vermindert het beveiligings risico, omdat het multi-factor Authentication en voorwaardelijke toegang ondersteunt. We raden u aan om de volgende drie acties uit te voeren:
 
-1. Verouderde verificatie blok keren [Als u AD FS gebruikt](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
+1. [Verouderde verificatie blok keren als u AD FS gebruikt](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Stel [share point online en Exchange Online in voor gebruik van moderne verificatie](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Gebruik [beleids regels voor voorwaardelijke toegang om verouderde verificatie te blok keren](../../active-directory/conditional-access/conditions.md).
+3. Als u Azure AD Premium hebt, gebruikt u [beleid voor voorwaardelijke toegang](../../active-directory/conditional-access/conditions.md) om verouderde verificatie te blok keren, anders de [standaard instellingen voor Azure AD-beveiliging](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)te gebruiken.
 
 ### <a name="block-invalid-authentication-entry-points"></a>Ongeldige invoer punten voor verificatie blok keren
 
@@ -107,7 +114,7 @@ Als u de mentale schending wilt gebruiken, moet u de invloed van de gebruikers r
 
 ### <a name="block-end-user-consent"></a>Toestemming van de eind gebruiker blok keren
 
-Standaard kunnen alle gebruikers in azure AD toepassingen verlenen die gebruikmaken van OAuth 2,0 en de micro soft Identity [instemming Framework](../../active-directory/develop/consent-framework.md) -machtigingen voor toegang tot Bedrijfs gegevens. Met de functie voor het door sturen kunnen gebruikers eenvoudig nuttige toepassingen verwerven die met Microsoft 365 en Azure worden geïntegreerd. Dit kan een risico vormen wanneer het niet wordt gebruikt en zorgvuldig wordt gecontroleerd. Het [uitschakelen van alle toekomstige acties van gebruikers toestemming](../../active-directory/manage-apps/methods-for-removing-user-access.md) kan helpen om uw Surface Area te verminderen en dit risico te beperken. Als toestemming van de eind gebruiker is uitgeschakeld, worden de voorafgaande toestemming toekenningen nog steeds uitgevoerd, maar alle toekomstige toestemming bewerkingen moeten door een beheerder worden door gegeven. Voordat u deze functie uitschakelt, wordt aanbevolen om ervoor te zorgen dat gebruikers begrijpen hoe beheerders goed keuring voor nieuwe toepassingen kan aanvragen. Dit moet u helpen de wrijving van de gebruiker te verminderen, het ondersteunings volume te minimaliseren en ervoor te zorgen dat gebruikers zich niet aanmelden voor toepassingen met niet-Azure AD-referenties.
+Standaard kunnen alle gebruikers in azure AD toepassingen verlenen die gebruikmaken van OAuth 2,0 en de micro soft Identity [instemming Framework](../../active-directory/develop/consent-framework.md) -machtigingen voor toegang tot Bedrijfs gegevens. Met de functie voor het door sturen kunnen gebruikers eenvoudig nuttige toepassingen verwerven die met Microsoft 365 en Azure worden geïntegreerd. Dit kan een risico vormen wanneer het niet wordt gebruikt en zorgvuldig wordt gecontroleerd. Het [uitschakelen van alle toekomstige acties van gebruikers toestemming](../../active-directory/manage-apps/methods-for-removing-user-access.md) kan helpen om uw Surface Area te verminderen en dit risico te beperken. Als toestemming van de eind gebruiker is uitgeschakeld, worden de voorafgaande toestemming toekenningen nog steeds uitgevoerd, maar alle toekomstige toestemming bewerkingen moeten door een beheerder worden door gegeven. Voordat u deze functie uitschakelt, is het raadzaam om ervoor te zorgen dat gebruikers weten hoe ze goed keuring van de beheerder aanvragen voor nieuwe toepassingen. Dit moet u helpen de wrijving van de gebruiker te verminderen, het ondersteunings volume te minimaliseren en ervoor te zorgen dat gebruikers zich niet hoeven aan te melden voor toepassingen met niet-Azure AD-referenties.
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management implementeren
 
@@ -166,7 +173,7 @@ Azure AD Identity Protection biedt twee belang rijke rapporten die u dagelijks m
 
 ### <a name="audit-apps-and-consented-permissions"></a>Apps en toegestuurde machtigingen controleren
 
-Gebruikers kunnen naar een gemanipuleerde website of apps gaan om toegang te krijgen tot hun profiel gegevens en gebruikers gegevens, zoals hun e-mail adres. Een kwaadwillende actor kan gebruikmaken van de toegestuurde machtigingen die zijn ontvangen om de inhoud van hun postvak te versleutelen en een Ransom te vragen om uw postvak gegevens opnieuw te verkrijgen. [Beheerders moeten de machtigingen controleren en controleren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) die door gebruikers worden verstrekt.
+Gebruikers kunnen zich leiden tot het navigeren naar een gemanipuleerde website of apps die toegang krijgen tot hun profiel gegevens en gebruikers gegevens, zoals hun e-mail adres. Een kwaadwillende actor kan gebruikmaken van de toegestuurde machtigingen die zijn ontvangen om de inhoud van hun postvak te versleutelen en een Ransom te vragen om uw postvak gegevens opnieuw te verkrijgen. [Beheerders moeten de machtigingen controleren en controleren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) die door gebruikers worden verstrekt.
 
 ## <a name="step-5---enable-end-user-self-help"></a>Stap 5: zelf ondersteuning voor eind gebruikers inschakelen
 
@@ -178,11 +185,11 @@ De [self-service voor wachtwoord herstel (SSPR)](../../active-directory/authenti
 
 ### <a name="implement-self-service-group-management"></a>Self-service groeps beheer implementeren
 
-Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Office 365-groepen. Deze groepen kunnen worden beheerd door groeps eigenaren in plaats van IT-beheerders. Met deze functie, ook wel [selfservice groeps beheer](../../active-directory/users-groups-roles/groups-self-service-management.md)genoemd, kunnen groeps eigenaren die geen administratieve rol zijn toegewezen om groepen te maken en beheren zonder dat ze afhankelijk zijn van beheerders om hun aanvragen af te handelen.
+Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Office 365-groepen. Deze groepen kunnen worden beheerd door groeps eigenaren in plaats van IT-beheerders. Met deze functie, ook wel [selfservice groeps beheer](../../active-directory/users-groups-roles/groups-self-service-management.md)genoemd, kunnen groeps eigenaren die geen administratieve rol hebben toegewezen aan het maken en beheren van groepen zonder dat ze afhankelijk zijn van beheerders om hun aanvragen af te handelen.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD-toegangs beoordelingen implementeren
 
-Met [Azure AD-toegangs beoordelingen](../../active-directory/governance/access-reviews-overview.md)kunt u groepslid maatschappen, toegang tot bedrijfs toepassingen en geprivilegieerde roltoewijzingen beheren om ervoor te zorgen dat u een beveiligings standaard behoudt die geen gebruikers toegang geeft gedurende lange tijd wanneer ze niet deze nodig hebt.
+Met [Azure AD-toegangs beoordelingen](../../active-directory/governance/access-reviews-overview.md)kunt u groepslid maatschappen, toegang tot bedrijfs toepassingen en geprivilegieerde roltoewijzingen beheren om ervoor te zorgen dat u een beveiligings standaard behoudt waarmee gebruikers geen toegang meer hebben gedurende lange tijd wanneer ze niet deze nodig hebt.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -197,4 +204,7 @@ Er zijn veel aspecten van een veilige identiteits infrastructuur, maar deze cont
 We stellen het op prijs dat u de identiteits beveiliging maakt en hopelijk dit document een handig overzicht is van een veiligere postuur voor uw organisatie.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Als u hulp nodig hebt bij het plannen en implementeren van de aanbevelingen, raadpleegt u de [Azure AD-project implementatie plannen](https://aka.ms/deploymentplans) voor hulp.
+
+Als u zeker weet dat u al deze stappen hebt voltooid, gebruikt u de [beveiligde Score](../../active-directory/fundamentals/identity-secure-score.md)van micro soft, waarmee u op de hoogte blijft van de [nieuwste aanbevolen procedures](identity-management-best-practices.md) en beveiligings Risico's.

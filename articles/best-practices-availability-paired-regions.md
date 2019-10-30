@@ -1,102 +1,102 @@
 ---
-title: "Zakelijke continuïteit en herstel na noodgevallen (BCDR): Gekoppelde Azure-regio's | Microsoft Docs"
-description: Meer informatie over het Azure regioparen, om ervoor te zorgen dat toepassingen veerkrachtig tijdens het datacenterfouten zijn.
+title: Bedrijfs continuïteit & herstel na nood geval-Azure gekoppelde regio's
+description: Meer informatie over de regionale koppeling van Azure, om ervoor te zorgen dat toepassingen flexibeler zijn tijdens fouten in het Data Center.
 author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67514474"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044145"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Zakelijke continuïteit en herstel na noodgevallen (BCDR): Gekoppelde Azure-regio 's
+# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's
 
 ## <a name="what-are-paired-regions"></a>Wat zijn gekoppelde regio's?
 
-Azure is beschikbaar in meerdere regio's over de hele wereld. Een Azure-Geografie is een bepaald gebied van de hele wereld met ten minste één Azure-regio. Een Azure-regio is een gebied in een geografisch gebied, met een of meer datacenters.
+Azure werkt in meerdere geographs over de hele wereld. Een Azure-geografie is een gedefinieerd gebied van de wereld dat ten minste één Azure-regio bevat. Een Azure-regio is een gebied binnen een geografie met een of meer data centers.
 
-Elke Azure-regio is gekoppeld aan een andere regio binnen hetzelfde geografische gebied, een regionaal paar samen te maken. De uitzondering is Brazilië-Zuid, die is gekoppeld aan een regio buiten de geografische locatie. In de gekoppelde regio's Azure serialiseert platform updates (gepland onderhoud), zodat slechts één gekoppelde regio tegelijk wordt bijgewerkt. Na een storing die betrekking hebben op meerdere regio's, ten minste één regio's in elk paar prioriteit moeten krijgen voor herstel.
+Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografie, waarbij een regionale koppeling wordt gemaakt. De uitzonde ring is Brazilië-zuid, die is gekoppeld aan een regio buiten de geografische wereld. In de regio paren worden de platform updates van Azure geserialiseerd (gepland onderhoud), zodat er slechts één gekoppelde regio tegelijk wordt bijgewerkt. In het geval van een storing die betrekking heeft op meerdere regio's, wordt voor het herstel ten minste één regio in elk paar een prioriteit gegeven.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Afbeelding 1: Azure regioparen
+Afbeelding 1: Azure-regionale paren
 
 | Geografie | Gekoppelde regio's |  |
 |:--- |:--- |:--- |
 | Azië |Azië - oost |Azië - zuidoost |
-| Australië |Australië - oost |Australië - zuidoost |
+| Australië |Australië Oost |Australië Zuidoost |
 | Australië |Australië - centraal |Australië - centraal 2 |
-| Brazilië |Brazilië - zuid |US - zuid-centraal |
-| Canada |Canada - centraal |Canada - oost |
-| China |China - noord |China East|
+| Brazilië |Brazilië - Zuid |VS - zuid-centraal |
+| Canada |Canada-Midden |Canada-Oost |
+| China |China - noord |China - oost|
 | China |China - noord 2 |China - oost 2|
 | Europa |Europa - noord (Ierland) |Europa - west (Nederland) |
 | Frankrijk |Frankrijk - centraal|Frankrijk - zuid|
 | Duitsland |Duitsland - centraal |Duitsland - noordoost |
 | India |India - centraal |India - zuid |
 | India |India - west |India - zuid |
-| Japan |Japan - oost |Japan - west |
-| Korea |Korea - centraal |Korea - zuid |
-| Noord-Amerika |East US |US - west |
-| Noord-Amerika |US - oost 2 |US - centraal |
-| Noord-Amerika |US - noord-centraal |US - zuid-centraal |
-| Noord-Amerika |US - west 2 |US - west-centraal 
-| Zuid-Afrika | Zuid-Afrika (noord) | Zuid-Afrika (west)
-| VK |Verenigd Koninkrijk West |Verenigd Koninkrijk Zuid |
+| Japan |Japan - Oost |Japan - West |
+| Korea |Korea - centraal |Korea (Zuid) |
+| Noord-Amerika |VS - oost |VS - west |
+| Noord-Amerika |VS - oost 2 |VS - centraal |
+| Noord-Amerika |VS - noord-centraal |VS - zuid-centraal |
+| Noord-Amerika |VS - west 2 |VS - west-centraal 
+| Zuid-Afrika | Zuid-Afrika - noord | Zuid-Afrika - west
+| VK |VK - west |VK - zuid |
 | Verenigde Arabische Emiraten | VAE - noord | VAE - centraal
-| het Ministerie van Defensie in de VS |US DoD - oost |US DoD - centraal |
-| Amerikaanse overheid |VS (overheid) - Arizona |VS (overheid) - Texas |
-| Amerikaanse overheid |US Gov - Iowa |VS (overheid) - Virginia |
-| Amerikaanse overheid |VS (overheid) - Virginia |VS (overheid) - Texas |
+| Amerikaans Ministerie van defensie |US DoD - oost |US DoD - centraal |
+| Amerikaanse overheid |US Gov - Arizona |US Gov - Texas |
+| Amerikaanse overheid |US Gov - Iowa |US Gov - Virginia |
+| Amerikaanse overheid |US Gov - Virginia |US Gov - Texas |
 
-Tabel 1 - toewijzing van Azure regioparen
+Tabel 1-toewijzing van Azure regionale paren
 
-- West-India is gekoppeld in één richting. De secundaire regio West-India van Zuid-India is, maar de secundaire regio Zuid-India centraal-India.
-- Brazilië-Zuid is uniek omdat deze is gekoppeld aan een regio buiten de eigen Geografie. De secundaire regio Brazilië-Zuid van is Zuid-centraal VS. Zuid-centraal VS van secundaire regio is niet Brazilië-Zuid.
-- De secundaire regio VS (overheid)-Iowa is VS (overheid) Virginia.
-- VS (overheid) Virginia secundaire regio is VS (overheid)-Texas.
-- VS (overheid)-Texas secundaire regio is VS (overheid)-Arizona.
+- West-India is in één richting gekoppeld. De secundaire regio van West-India is India-zuid, maar India-zuid secundaire regio is centraal India.
+- Brazilië-zuid is uniek omdat het is gekoppeld aan een regio buiten de eigen geografie. De secundaire regio van Brazilië-zuid is Zuid-Centraal vs. De secundaire regio van Zuid-Centraal (VS) is niet Brazilië-zuid.
+- De secundaire regio van US Gov-Iowa is US Gov-Virginia.
+- De secundaire regio van US Gov-Virginia is US Gov-Texas.
+- De secundaire regio van US Gov-Texas is US Gov-Arizona.
 
 
-Wordt aangeraden dat u business continuity noodherstel (BCDR configureert) over regioparen profiteren van de beleidsregels isolatie en beschikbaarheid van Azure. Voor toepassingen die ondersteuning bieden voor meerdere actieve regio's, wordt u aangeraden beide regio's in een paar van de regio waar mogelijk. Dit zorgt ervoor dat optimale beschikbaarheid voor toepassingen en geminimaliseerd hersteltijd in het geval van een noodgeval. 
+We raden u aan om bedrijfs continuïteit nood herstel (BCDR) over regionale paren te configureren om te profiteren van het isolatie-en beschikbaarheids beleid van Azure. Voor toepassingen die ondersteuning bieden voor meerdere actieve regio's, wordt u aangeraden beide regio's in een regio paar waar mogelijk te gebruiken. Dit zorgt voor optimale Beschik baarheid van toepassingen en een geminimaliseerd herstel tijdstip bij een nood geval. 
 
-## <a name="an-example-of-paired-regions"></a>Een voorbeeld van gekoppelde regio 's
-Afbeelding 2 hieronder ziet u een hypothetische toepassing die gebruikmaakt van de regionaal paar voor herstel na noodgevallen. De groene getallen Markeer de regio-overschrijdende activiteiten van drie Azure-services (Azure compute, opslag en database) en hoe ze zijn geconfigureerd om te repliceren tussen regio's. De unieke voordelen van de implementatie van gekoppelde regio's zijn gemarkeerd door de oranje getallen.
+## <a name="an-example-of-paired-regions"></a>Een voor beeld van gekoppelde regio's
+In afbeelding 2 hieronder ziet u een hypothetische toepassing die gebruikmaakt van het regionale paar voor nood herstel. De groene aantallen markeren de activiteiten in meerdere regio's van drie Azure-Services (Azure compute, Storage en data base) en hoe ze zijn geconfigureerd voor replicatie in verschillende regio's. De unieke voor delen van de implementatie in gekoppelde regio's worden gemarkeerd met de Oranje cijfers.
 
-![Overzicht van de voordelen van gekoppelde regio](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
+![Overzicht van de voor delen van gekoppelde regio's](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
 
-Afbeelding 2: hypothetische Azure regionaal paar
+Afbeelding 2: hypothetisch Azure regionaal paar
 
-## <a name="cross-region-activities"></a>Regio-overschrijdende activiteiten
-Zoals in afbeelding 2 genoemd.
+## <a name="cross-region-activities"></a>Activiteiten tussen regio's
+Zoals bedoeld in afbeelding 2.
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – moet u extra rekenresources van tevoren om ervoor te zorgen resources zijn beschikbaar in een andere regio tijdens een noodgeval inrichten. Zie voor meer informatie, [technische richtlijnen voor Azure flexibiliteit](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** : u moet extra reken resources vooraf inrichten om ervoor te zorgen dat resources beschikbaar zijn in een andere regio tijdens een nood geval. Zie voor meer informatie [Azure tolerante technische richt lijnen](resiliency/resiliency-technical-guidance.md).
 
-![Opslag](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** : als u beheerde schijven, meer informatie over [regio-overschrijdende back-ups](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) met Azure Backup, en [repliceren van virtuele machines](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) van de ene regio naar de andere met Azure Site Recovery. Als u van storage-accounts gebruikmaakt, is klikt u vervolgens geografisch redundante opslag (GRS) standaard geconfigureerd als een Azure Storage-account is gemaakt. Met GRS worden uw gegevens automatisch driemaal gerepliceerd binnen de primaire regio en driemaal in de gekoppelde regio. Zie voor meer informatie, [opslagopties van Azure voor redundantie](storage/common/storage-redundancy.md).
+![Storage-](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** : als u beheerde schijven gebruikt, kunt u meer informatie vinden over [Cross-Region back-ups](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) met Azure backup en hoe u virtuele machines van de ene naar de andere regio [repliceert](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) met Azure site Recovery. Als u opslag accounts gebruikt, wordt de geo-redundante opslag (GRS) standaard geconfigureerd wanneer een Azure Storage-account wordt gemaakt. Met GRS worden uw gegevens automatisch drie keer binnen de primaire regio gerepliceerd, en drie keer in de gekoppelde regio. Zie [Azure Storage redundantie opties](storage/common/storage-redundancy.md)voor meer informatie.
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – met Azure SQL Database Geo-replicatie, kunt u asynchrone replicatie van transacties in elke regio ter wereld; we raden u echter aan implementeren van deze resources in een gekoppelde regio voor de meeste herstel na noodgevallen. Zie voor meer informatie, [Geo-replicatie in Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
+![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL database** – met Azure SQL database geo-replicatie kunt u asynchrone replicatie van trans acties naar elke regio in de wereld configureren. We raden u echter aan deze bronnen in een gekoppelde regio te implementeren voor de meeste scenario's voor herstel na nood gevallen. Zie [geo-replicatie in Azure SQL database](sql-database/sql-database-geo-replication-overview.md)voor meer informatie.
 
-![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** -Resource Manager biedt inherent logische isolatie van onderdelen in regio's. Dit betekent dat logische fouten in één regio waarschijnlijk minder invloed op een andere.
+![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager** -Resource Manager is inherent aan de logische isolatie van onderdelen in verschillende regio's. Dit betekent dat logische fouten in één regio minder waarschijnlijk van invloed zijn op de andere.
 
-## <a name="benefits-of-paired-regions"></a>Voordelen van gekoppelde regio 's
-Zoals in afbeelding 2 genoemd.  
+## <a name="benefits-of-paired-regions"></a>Voor delen van gekoppelde regio's
+Zoals bedoeld in afbeelding 2.  
 
-![Isolatie](./media/best-practices-availability-paired-regions/5Orange.png)
-**fysieke isolatie** – wanneer mogelijk, Azure geeft de voorkeur aan ten minste 300 mijl van scheiding tussen datacenters in een regionaal paar, hoewel dit niet praktisch of mogelijk in alle regio's. Scheiding van fysieke datacenter vermindert de kans natuurrampen, civiele onrusten, stroomstoringen of fysieke netwerkstoringen dat beide regio's in één keer. Isolatie is onderworpen aan de beperkingen die binnen het geografische gebied (Geografie grootte, de beschikbaarheid van de power/network-infrastructuur, voorschriften, enzovoort).  
+![isolatie](./media/best-practices-availability-paired-regions/5Orange.png)
+**fysieke isolatie** : als dat mogelijk is, geeft Azure de voor keur aan een schei ding van ten minste 300 mijl tussen data centers in een regionale combi natie, hoewel dit niet praktisch of mogelijk is in alle geografische gebieden. Fysieke datacenter schei ding vermindert de kans op natuur rampen, burgerlijke, stroom storingen of fysieke netwerk storingen die beide regio's tegelijkertijd beïnvloeden. Voor isolatie gelden de beperkingen binnen de Geografie (geografische grootte, Beschik baarheid van de infra structuur, voeding, netwerk infrastructuur, enz.).  
 
-![Replicatie](./media/best-practices-availability-paired-regions/6Orange.png)
-**Platform geleverde replicatie** -sommige services, zoals geografisch redundante opslag bieden automatische replicatie naar de gekoppelde regio.
+![replicatie](./media/best-practices-availability-paired-regions/6Orange.png)
+door het **platform geleverde replicatie** -sommige services, zoals geografisch redundante opslag, bieden automatische replicatie naar de gekoppelde regio.
 
-![Herstel](./media/best-practices-availability-paired-regions/7Orange.png)
-**regio recovery volgorde** : In het geval van een grootschalige storing wordt één regio is de twee prioriteit gegeven. Toepassingen die worden geïmplementeerd op verschillende gekoppelde regio's worden gegarandeerd beschikken over een van de regio's met prioriteit wordt hersteld. Als een toepassing wordt geïmplementeerd in regio's die niet zijn gekoppeld, kan herstel zijn vertraagd: in het ergste geval dat de gekozen regio's mogelijk de laatste twee moeten worden hersteld.
+herstel volgorde van ![herstel](./media/best-practices-availability-paired-regions/7Orange.png)
+**regio** : in het geval van een grote storing wordt het herstellen van één regio voor elk paar voor rang gegeven. Toepassingen die zijn geïmplementeerd in gekoppelde regio's, hebben gegarandeerd dat een van de regio's met prioriteit wordt hersteld. Als een toepassing wordt geïmplementeerd in meerdere niet-gekoppelde regio's, kan het herstel worden vertraagd: in het ergste geval kunnen de gekozen regio's de laatste twee zijn om te worden hersteld.
 
-![Updates](./media/best-practices-availability-paired-regions/8Orange.png)
-**opeenvolgende updates** : geplande Azure-systeemupdates worden uitgerold voor gekoppelde regio's sequentieel worden verwerkt (niet op hetzelfde moment) om te minimaliseren van downtime, het effect van bugs en logische fouten in het zeldzame geval van een onjuiste Update.
+![updates](./media/best-practices-availability-paired-regions/8Orange.png)
+**opeenvolgende updates** : geplande Azure-systeem updates worden na elkaar uitgerold naar gekoppelde regio's (niet op hetzelfde moment) om de downtime te minimaliseren, het effect van fouten en logische fouten in zeldzame gevallen van een ongeldige update.
 
-![Gegevens](./media/best-practices-availability-paired-regions/9Orange.png)
-**gegevensresidentie** – een regio bevindt zich binnen hetzelfde geografische gebied als het paar (met uitzondering van Brazilië-Zuid) om te voldoen aan gegevenslocatievereisten voor juridische en belastingdoeleinden.
+![data](./media/best-practices-availability-paired-regions/9Orange.png)
+**Data locatie** : een regio bevindt zich in dezelfde geografie als het bijbehorende paar (met uitzonde ring van Brazilië-Zuid) om te voldoen aan de vereisten voor gegevens locatie voor de jurisdictie van belasting en rechts afdwing.

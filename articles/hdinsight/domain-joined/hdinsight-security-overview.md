@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240405"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053741"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Overzicht van ENTER prise Security in azure HDInsight
 
@@ -32,13 +32,13 @@ De beveiliging van een perimeter netwerk in HDInsight wordt bereikt via [virtuel
 
 Alle clusters die zijn geïmplementeerd in een VNET, hebben ook een persoonlijk eind punt dat wordt omgezet in een privé-IP-adres in het VNET voor privé-HTTP-toegang tot de cluster gateways.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 De [Enterprise Security Package](apache-domain-joined-architecture.md) van HDInsight biedt op Active Directory gebaseerde verificatie, ondersteuning voor meerdere gebruikers en toegangs beheer op basis van rollen. De Active Directory integratie wordt bereikt door het gebruik van [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). Met deze mogelijkheden kunt u een HDInsight-cluster maken dat is gekoppeld aan een beheerd Active Directory domein. U kunt vervolgens een lijst met werk nemers configureren van de onderneming die zich kan verifiëren en aanmelden bij het cluster.
 
 Met deze instelling kunnen werk nemers van een onderneming zich met hun domein referenties aanmelden bij de cluster knooppunten. Ze kunnen ook hun domein referenties gebruiken om te verifiëren met andere goedgekeurde eind punten, zoals Apache Ambari views, ODBC, JDBC, Power shell en REST Api's om met het cluster te communiceren. 
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Autorisatie
 
 Een best practice dat de meeste ondernemingen volgen, zorgt ervoor dat niet elke werk nemer toegang heeft tot alle bedrijfs resources. De beheerder kan ook op rollen gebaseerd toegangs beheer beleid definiëren voor de cluster resources. Dit is alleen beschikbaar in de ESP-clusters.
 
@@ -46,7 +46,7 @@ De Hadoop-beheerder kan op rollen gebaseerd toegangs beheer (RBAC) configureren 
 
 De beheerder kan bijvoorbeeld [Apache Ranger](https://ranger.apache.org/) configureren om toegangscontrolebeleid in te stellen voor Hive. Deze functionaliteit zorgt ervoor dat filtering op rijniveau en op kolom niveau (gegevens maskering) wordt toegepast en de gevoelige gegevens van niet-geautoriseerde gebruikers worden gefilterd.
 
-### <a name="auditing"></a>Controleren
+### <a name="auditing"></a>Controle
 
 Controle van alle toegang tot de cluster bronnen en de gegevens is nodig voor het bijhouden van ongeoorloofde of onbedoelde toegang tot de resources. Het is net zo belang rijk als het beveiligen van de HDInsight-cluster resources van niet-geautoriseerde gebruikers en het beveiligen van de gegevens.
 
@@ -60,6 +60,10 @@ Het beveiligen van gegevens is belang rijk voor het voldoen aan de beveiligings-
 
 Zowel gegevens archieven voor HDInsight-clusters, Azure Blob-opslag als Azure Data Lake Storage Gen1-Gen2, ondersteunen transparante server-side [versleuteling van gegevens](../../storage/common/storage-service-encryption.md) in rust. Beveiligde HDInsight-clusters werken probleemloos met deze mogelijkheid voor het versleutelen van gegevens in de rest van de server.
 
+### <a name="compliance"></a>Naleving
+
+Nalevings aanbiedingen voor Azure zijn gebaseerd op verschillende soorten garanties, waaronder formele certificeringen, attesten, validaties, autorisaties en beoordelingen die worden geproduceerd door onafhankelijke controle bedrijven van derden, evenals contractuele wijzigingen; zelf beoordelingen en documentatie voor klant richtlijnen die door micro soft zijn gemaakt. Zie het [vertrouwens centrum van micro soft](https://www.microsoft.com/trust-center) en het [overzicht van Microsoft Azure naleving](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)voor informatie over HDInsight-compatibiliteit.
+
 ## <a name="shared-responsibility-model"></a>Model van gedeelde verantwoordelijkheid
 
 De volgende afbeelding bevat een overzicht van de belangrijkste systeem beveiligings gebieden en de beveiligings oplossingen die voor u beschikbaar zijn. Er wordt ook uitgelegd welke beveiligings gebieden uw verantwoordelijkheid zijn als klant en welke gebieden de verantwoordelijkheid zijn van HDInsight als de service provider.
@@ -70,20 +74,20 @@ De volgende tabel bevat koppelingen naar bronnen voor elk type beveiligings oplo
 
 | Beveiligings gebied | Beschik bare oplossingen | Verantwoordelijke partij |
 |---|---|---|
-| Beveiliging van gegevens toegang | [Toegangs beheer lijsten configureren acl's](../../storage/blobs/data-lake-storage-access-control.md) voor Azure data Lake Storage gen1 en Gen2  | De klant |
-|  | Schakel de eigenschap [beveiligde overdracht vereist](../../storage/common/storage-require-secure-transfer.md) in voor opslag accounts. | De klant |
-|  | [Azure Storage firewalls](../../storage/common/storage-network-security.md) en virtuele netwerken configureren | De klant |
-|  | [Azure Virtual Network-Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) configureren voor Cosmos DB en [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | De klant |
-|  | Zorg ervoor dat [TLS-versleuteling](../../storage/common/storage-security-tls.md) is ingeschakeld voor gegevens die onderweg zijn. | De klant |
-|  | Door de [klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md) voor Azure Storage versleuteling configureren | De klant |
-| Beveiliging van toepassingen en middleware | Integreren met AAD-DS en [verificatie configureren](apache-domain-joined-configure-using-azure-adds.md) | De klant |
-|  | Een [Apache zwerver-autorisatie](apache-domain-joined-run-hive.md) beleid configureren | De klant |
-|  | [Azure monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) gebruiken | De klant |
-| Beveiliging van het besturings systeem | Clusters met de meest recente beveiligde basis installatie kopie maken | De klant |
-|  | [Patching van het besturings systeem](../hdinsight-os-patching.md) controleren op regel matige intervallen | De klant |
+| Beveiliging van gegevens toegang | [Toegangs beheer lijsten configureren acl's](../../storage/blobs/data-lake-storage-access-control.md) voor Azure data Lake Storage gen1 en Gen2  | Klant |
+|  | Schakel de eigenschap [beveiligde overdracht vereist](../../storage/common/storage-require-secure-transfer.md) in voor opslag accounts. | Klant |
+|  | [Azure Storage firewalls](../../storage/common/storage-network-security.md) en virtuele netwerken configureren | Klant |
+|  | [Azure Virtual Network-Service-eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) configureren voor Cosmos DB en [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Klant |
+|  | Zorg ervoor dat [TLS-versleuteling](../../storage/common/storage-security-tls.md) is ingeschakeld voor gegevens die onderweg zijn. | Klant |
+|  | Door de [klant beheerde sleutels](../../storage/common/storage-encryption-keys-portal.md) voor Azure Storage versleuteling configureren | Klant |
+| Beveiliging van toepassingen en middleware | Integreren met AAD-DS en [verificatie configureren](apache-domain-joined-configure-using-azure-adds.md) | Klant |
+|  | Een [Apache zwerver-autorisatie](apache-domain-joined-run-hive.md) beleid configureren | Klant |
+|  | [Azure monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) gebruiken | Klant |
+| Beveiliging van het besturings systeem | Clusters met de meest recente beveiligde basis installatie kopie maken | Klant |
+|  | [Patching van het besturings systeem](../hdinsight-os-patching.md) controleren op regel matige intervallen | Klant |
 | Netwerkbeveiliging | Een [virtueel netwerk](../hdinsight-plan-virtual-network-deployment.md) configureren |
-|  | [Regels voor binnenkomende netwerk beveiligings groepen (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) configureren | De klant |
-|  | [Beperking van uitgaand verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met Firewall (preview-versie) | De klant |
+|  | [Regels voor binnenkomende netwerk beveiligings groepen (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) configureren | Klant |
+|  | [Beperking van uitgaand verkeer](../hdinsight-restrict-outbound-traffic.md) configureren met Firewall (preview-versie) | Klant |
 | Gevirtualiseerde infra structuur | N/A | HDInsight (Cloud provider) |
 | Fysieke infrastructuur beveiliging | N/A | HDInsight (Cloud provider) |
 

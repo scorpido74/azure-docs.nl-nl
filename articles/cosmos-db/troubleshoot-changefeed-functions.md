@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 2f9d2cea7adaf2e46feb0417ea9631ce02478f80
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934140"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053288"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Functions trigger voor Cosmos DB
 
@@ -103,6 +103,9 @@ Als u [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#
 Deze fout treedt op als uw Azure Functions project (of een project waarnaar wordt verwezen) een hand matige NuGet-verwijzing naar de Azure Cosmos DB SDK bevat met een andere versie dan die van de [uitbrei ding Azure Functions Cosmos DB](./troubleshoot-changefeed-functions.md#dependencies).
 
 U kunt dit probleem omzeilen door de hand matige NuGet verwijzing die is toegevoegd te verwijderen en de Azure Cosmos DB SDK-referentie op te lossen via het Azure Functions Cosmos DB-uitbreidings pakket.
+
+### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Het polling-interval van Azure function wijzigen voor de detectie van wijzigingen
+Zoals eerder is uitgelegd, [duurt het te lang voordat mijn wijzigingen worden ontvangen](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received). in de Azure-functie wordt gedurende een Configureer bare hoeveelheid tijd (standaard 5 seconden) geslapend voordat wordt gecontroleerd op nieuwe wijzigingen (om te voor komen dat het gebruik van hoge ru wordt gebruikt). U kunt deze periode in de slaapstand configureren via de `FeedPollDelay/feedPollDelay`-instelling in de [configuratie](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) van de trigger (de waarde bedraagt naar verwachting enkele milliseconden).
 
 ## <a name="next-steps"></a>Volgende stappen
 

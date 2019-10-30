@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 50617eda56c2eaec9fac315013114f173e85edbc
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990798"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73027790"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen over ExpressRoute
 
@@ -312,7 +312,7 @@ Ja. ExpressRoute Premium-kosten zijn van toepassing op ExpressRoute-circuit kost
 
 ## <a name="expressroute-local"></a>Lokale ExpressRoute
 ### <a name="what-is-expressroute-local"></a>Wat is ExpressRoute lokaal?
-ExpressRoute local is een SKU van ExpressRoute-circuit dat beschikbaar is op [ExpressRoute direct](expressroute-erdirect-about.md). Een belang rijke functie van Local is dat een lokaal circuit op een ExpressRoute-peering-locatie u alleen toegang biedt tot een of twee Azure-regio's in of in de buurt van dezelfde metro. Met een standaard circuit hebt u daarentegen toegang tot alle Azure-regio's in een geopolitieke regio en een Premium-circuit naar alle Azure-regio's. 
+ExpressRoute local is een SKU van ExpressRoute-circuit, naast de standaard-SKU en de Premium-SKU. Een belang rijke functie van Local is dat een lokaal circuit op een ExpressRoute-peering-locatie u alleen toegang biedt tot een of twee Azure-regio's in of in de buurt van dezelfde metro. Met een standaard circuit hebt u daarentegen toegang tot alle Azure-regio's in een geopolitieke regio en een Premium-circuit naar alle Azure-regio's. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Wat zijn de voor delen van ExpressRoute lokale?
 Wanneer u een uitgangs gegevens overdracht moet betalen voor uw Standard-of Premium ExpressRoute-circuit, betaalt u geen uitgaande gegevens overdracht afzonderlijk voor uw lokale circuit van ExpressRoute. Met andere woorden, de prijs van de lokale ExpressRoute omvat ook kosten voor gegevens overdracht. ExpressRoute local is een rendabelere oplossing als u grote hoeveel heden gegevens wilt overdragen en u uw gegevens via een particuliere verbinding met een ExpressRoute-peering-locatie in de buurt van uw gewenste Azure-regio's kunt brengen. 
@@ -323,9 +323,6 @@ Vergeleken met een standaard ExpressRoute-circuit heeft een lokaal circuit dezel
 * ExpressRoute Global Reach is niet beschikbaar op de lokale locatie
 
 ExpressRoute Local heeft ook dezelfde limieten voor bronnen (bijvoorbeeld het aantal VNets per circuit) als standaard. 
-
-### <a name="how-to-configure-expressroute-local"></a>ExpressRoute lokaal configureren? 
-ExpressRoute local is alleen beschikbaar op ExpressRoute direct. Daarom moet u eerst uw ExpressRoute direct-poort configureren. Nadat u uw directe poort hebt gemaakt, kunt u een lokaal circuit maken volgens de instructies [hier](expressroute-howto-erdirect.md).
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Waar is ExpressRoute lokaal beschikbaar en welke Azure-regio's wordt elke peering-locatie toegewezen aan?
 ExpressRoute local is beschikbaar op de peering locaties waar een of twee Azure-regio's sluitend zijn. Het is niet beschikbaar op een peering-locatie waar zich geen Azure-regio in die staat of provincie bevindt. Zie de exacte toewijzingen op [de pagina locaties](expressroute-locations-providers.md).  

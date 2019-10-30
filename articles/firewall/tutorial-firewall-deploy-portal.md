@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0892bde09891d2edbd7f8cc8715ccc0d2f047ed4
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 9eda37f80b6ba537b4b8f9ef87cb8b03bb4129e0
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113480"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024817"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren met de Azure-portal
 
@@ -48,7 +48,7 @@ U kunt deze zelfstudie desgewenst volgen met behulp van [Azure PowerShell](deplo
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="set-up-the-network"></a>Het netwerk instellen
+## <a name="set-up-the-network"></a>Netwerk instellen
 
 Maak eerst een resourcegroep met de resources die nodig zijn om de firewall te implementeren. Maak vervolgens een VNet, subnetten en testservers.
 
@@ -104,7 +104,7 @@ Maak nu de virtuele jump- en workloadmachines en plaats ze in de toepasselijke s
 
    |Instelling  |Waarde  |
    |---------|---------|
-   |Resource group     |**Test-FW-RG**|
+   |Resourcegroep     |**Test-FW-RG**|
    |Naam van de virtuele machine     |**SRV-Jump**|
    |Regio     |Hetzelfde als vorige|
    |Gebruikers naam van beheerder     |**azureuser**|
@@ -113,20 +113,20 @@ Maak nu de virtuele jump- en workloadmachines en plaats ze in de toepasselijke s
 4. Onder **Binnenkomende poort regels**, voor **open bare binnenkomende poorten**, selecteert u **geselecteerde poorten toestaan**.
 5. Selecteer **RDP (3389)** voor **Binnenkomende poorten selecteren**.
 
-6. Accepteer de andere standaard waarden en **Selecteer volgende: Schijven**.
-7. Accepteer de standaard waarden voor de **schijf en selecteer volgende: Netwerken**.
+6. Accepteer de andere standaard waarden en selecteer **volgende: schijven**.
+7. Accepteer de standaard waarden voor de schijf en selecteer **volgende: netwerken**.
 8. Zorg ervoor dat **Test-FW-VN** is geselecteerd voor het virtuele netwerk en dat het subnet **Jump-SN** is.
 9. Accepteer voor **openbaar IP**de standaard naam van het nieuwe open bare IP-adres (SRV-Jump-IP).
-11. Accepteer de andere standaard waarden en **Selecteer volgende: Beheer**.
+11. Accepteer de andere standaard waarden en selecteer **volgende: beheer**.
 12. Selecteer **uitschakelen** om diagnostische gegevens over opstarten uit te scha kelen. Accepteer de andere standaard waarden en selecteer **controleren + maken**.
 13. Controleer de instellingen op de pagina samen vatting en selecteer vervolgens **maken**.
 
 Gebruik de informatie in de volgende tabel om een andere virtuele machine met de naam **SRV-work**te configureren. De rest van de configuratie is hetzelfde als voor de virtuele machine Srv-Jump.
 
-|Instelling  |Value  |
+|Instelling  |Waarde  |
 |---------|---------|
 |Subnet|**Workload-SN**|
-|Openbaar IP|**Geen**|
+|Openbare IP|**Geen**|
 |Openbare poorten voor inkomend verkeer|**Geen**|
 
 ## <a name="deploy-the-firewall"></a>De firewall implementeren
@@ -138,13 +138,13 @@ Implementeer de firewall in het VNet.
 3. Selecteer **firewall** en selecteer vervolgens **maken**.
 4. Gebruik op de pagina **Firewall maken** de volgende tabel om de firewall te configureren:
 
-   |Instelling  |Value  |
+   |Instelling  |Waarde  |
    |---------|---------|
-   |Subscription     |\<uw abonnement\>|
-   |Resource group     |**Test-FW-RG** |
-   |Name     |**Test-FW01**|
-   |Location     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
-   |Een virtueel netwerk kiezen     |**Bestaande gebruiken**: **Test-FW-VN**|
+   |Abonnement     |\<uw abonnement\>|
+   |Resourcegroep     |**Test-FW-RG** |
+   |Naam     |**Test-FW01**|
+   |Locatie     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
+   |Een virtueel netwerk kiezen     |**Bestaande gebruiken**: **test-FW-VN**|
    |Openbaar IP-adres     |**Nieuwe maken**. Het openbare IP-adres moet van het type Standaard-SKU zijn.|
 
 5. Selecteer **Controleren + maken**.
@@ -168,7 +168,7 @@ Voor het subnet **Workload-SN** configureert u de standaardroute voor uitgaand v
 8. Selecteer **Maken**.
 9. Selecteer **vernieuwen**en selecteer vervolgens de route tabel **firewall-route** .
 10. Selecteer **subnetten** en selecteer vervolgens **koppelen**.
-11. Selecteer **virtuele netwerk** > **testen-FW-VN**.
+11. Selecteer **virtual network** > **test-FW-VN**.
 12. Selecteer voor **subnet**de optie **workload-SN**. Zorg ervoor dat u alleen het **workload-SN-** subnet voor deze route selecteert, anders werkt uw firewall niet correct.
 
 13. Selecteer **OK**.
@@ -210,12 +210,14 @@ Dit is de netwerkregel waarmee uitgaande toegang tot twee IP-adressen op poort 5
 4. Bij **Prioriteit** typt u **200**.
 5. Bij **Actie** selecteert u **Toestaan**.
 
-6. Onder **regels**, type **Allow-DNS**.
+6. Onder **regels** **, type** **Allow-DNS**.
 7. Bij **Protocol** selecteert u **UDP**.
 8. Bij **Bronadressen** typt u **10.0.2.0/24**.
 9. Bij doeladres typt u **209.244.0.3,209.244.0.4**.
-10. Bij **Doelpoorten** typt u **53**.
-11. Selecteer **Toevoegen**.
+
+   Dit zijn open bare DNS-servers die worden beheerd door CenturyLink.
+1. Bij **Doelpoorten** typt u **53**.
+2. Selecteer **Toevoegen**.
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Het primaire en secundaire DNS-adres voor de netwerkinterface **Srv-Work** wijzigen
 

@@ -1,5 +1,5 @@
 ---
-title: Gegevens Apache Spark van Apache Kafka naar Azure Cosmos DB-Azure HDInsight
+title: Apache Spark & Apache Kafka met Cosmos DB-Azure HDInsight
 description: Leer hoe u Apache Spark Structured streaming kunt gebruiken om gegevens uit Apache Kafka te lezen en vervolgens op te slaan in Azure Cosmos DB. In dit voorbeeld gaat u met behulp van een Jupyter Notebook gegevens streamen van Spark naar HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: faae65c6664123bd673711674a36edc928c74278
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037292"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044897"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Spark Structured streaming gebruiken met Apache Kafka en Azure Cosmos DB
 
@@ -47,7 +47,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
 
-    De Azure Resource Manager sjabloon bevindt zich in de GitHub-opslag plaats[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)voor dit project ().
+    De Azure Resource Manager sjabloon bevindt zich in de GitHub-opslag plaats voor dit project ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).
 
     Met deze sjabloon maakt u de volgende bronnen:
 
@@ -69,28 +69,28 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
     ![Aangepaste waarden voor HDInsight-implementatie](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
-    * **Abonnement**: Selecteer uw Azure-abonnement.
+    * **Abonnement**: selecteer uw Azure-abonnement.
 
-    * **Resourcegroep**: Een groep maken of een bestaande selecteren. Deze groep bevat het HDInsight-cluster.
+    * **Resource groep**: Maak een groep of selecteer een bestaande. Deze groep bevat het HDInsight-cluster.
 
     * **Locatie**: Selecteer een locatie die geografisch dicht bij u ligt.
 
-    * **Cosmos DB account naam**: Deze waarde wordt gebruikt als de naam voor het Cosmos DB-account.
+    * **Cosmos DB accountnaam**: deze waarde wordt gebruikt als de naam voor het Cosmos DB-account.
 
-    * **Basis cluster naam**: Deze waarde wordt gebruikt als de basis naam voor de Spark-en Kafka-clusters. Als u bijvoorbeeld **myhdi** invoert, wordt een Spark-cluster met de naam __Spark-Myhdi__ en een Kafka-cluster met de naam **Kafka-myhdi**gemaakt.
+    * **Basis cluster naam**: deze waarde wordt gebruikt als de basis naam voor de Kafka-clusters. Als u bijvoorbeeld **myhdi** invoert, wordt een Spark-cluster met de naam __Spark-Myhdi__ en een Kafka-cluster met de naam **Kafka-myhdi**gemaakt.
 
-    * **Cluster versie**: De versie van het HDInsight-cluster.
+    * **Cluster versie**: de versie van het HDInsight-cluster.
 
         > [!IMPORTANT]  
         > Dit voor beeld is getest met HDInsight 3,6 en werkt mogelijk niet met andere cluster typen.
 
-    * **Gebruikers naam**voor het aanmelden bij een cluster: De gebruikers naam van de beheerder voor de Spark-en Kafka-clusters.
+    * **Gebruikers naam**voor het aanmelden bij een cluster: de gebruikers naam van de beheerder voor de Spark-en Kafka-clusters.
 
-    * **Wacht woord voor cluster aanmelding**: Het gebruikers wachtwoord van de beheerder voor de Spark-en Kafka-clusters.
+    * **Wacht woord**voor het aanmelden bij het cluster: het gebruikers wachtwoord van de beheerder voor de Spark-en Kafka-clusters.
 
-    * **SSH-gebruikers naam**: De SSH-gebruiker die moet worden gemaakt voor de Spark-en Kafka-clusters.
+    * **SSH-gebruikers naam**: de SSH-gebruiker die moet worden gemaakt voor de Spark-en Kafka-clusters.
 
-    * **SSH-wacht woord**: Het wacht woord voor de SSH-gebruiker voor de Spark-en Kafka-clusters.
+    * **SSH-wacht woord**: het wacht woord voor de SSH-gebruiker voor de Spark-en Kafka-clusters.
 
 3. Lees de **voorwaarden** en schakel vervolgens het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
 
@@ -103,7 +103,7 @@ Hoewel u hand matig een Azure Virtual Network-, Kafka-en Spark-cluster kunt make
 
 Het project dat in dit document wordt gebruikt, slaat gegevens op in Cosmos DB. Voordat u de code uitvoert, moet u eerst een _Data Base_ en _verzameling_ maken in uw Cosmos DB-exemplaar. U moet ook het document eindpunt en de _sleutel_ ophalen die wordt gebruikt voor het verifiëren van aanvragen voor Cosmos db. 
 
-Een manier om dit te doen is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). `kafkadata` Met het volgende script wordt een Data Base gemaakt met de naam `kafkacollection`en een verzameling met de naam. Vervolgens wordt de primaire sleutel geretourneerd.
+Een manier om dit te doen is met behulp van de [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Met het volgende script wordt een Data Base met de naam `kafkadata` en een verzameling met de naam `kafkacollection`gemaakt. Vervolgens wordt de primaire sleutel geretourneerd.
 
 ```azurecli
 #!/bin/bash
@@ -158,7 +158,7 @@ $brokerHosts = $respObj.host_components.HostRoles.host_name[0..1]
 ```
 
 > [!NOTE]  
-> Het bash-voor `$CLUSTERNAME` beeld verwacht de naam van het Kafka-cluster te bevatten.
+> Het bash-voor beeld verwacht dat `$CLUSTERNAME` de naam van het Kafka-cluster moet bevatten.
 >
 > In dit voor beeld wordt het [JQ](https://stedolan.github.io/jq/) -hulp programma gebruikt voor het parseren van gegevens uit het JSON-document.
 

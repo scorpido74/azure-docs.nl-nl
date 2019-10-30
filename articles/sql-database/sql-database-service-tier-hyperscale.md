@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: df6926a8f50d7ffb2765557cdf75ed6d09b3810b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 40a2443419fab5d0a89d704312d880e344597b8b
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428040"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053902"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -38,7 +38,7 @@ De grootschalige van de service tier in Azure SQL Database biedt de volgende aan
 
 - Ondersteuning voor Maxi maal 100 TB aan database grootte
 - Bijna momentane database back-ups (op basis van moment opnamen van bestanden die zijn opgeslagen in Azure Blob Storage), ongeacht de grootte zonder IO-impact op reken bronnen  
-- Snel terugzetten van de data base (op basis van moment opnamen van bestanden) in minuten in plaats van uren of dagen (geen grootte van de gegevens bewerking)
+- Snel herstel van data base Point-in-time (op basis van moment opnamen van bestanden) in minuten in plaats van uren of dagen (geen grootte van gegevens bewerking)
 - Betere prestaties als gevolg van een betere logboek doorvoer en snellere doorvoer tijden voor trans acties, ongeacht gegevens volumes
 - Snel uitschalen: u kunt een of meer alleen-lezen knoop punten inrichten voor het offloaden van uw Lees werk belasting en voor gebruik als hot stand-by
 - Snel omhoog schalen: u kunt in een constant tijdstip uw reken resources zo schalen dat er zware werk belastingen worden uitgevoerd als en wanneer dat nodig is, en vervolgens de reken bronnen weer lager instellen wanneer ze niet nodig zijn.
@@ -137,7 +137,7 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Verbinding maken met een lees bare replica van een grootschalige-data base
 
-In grootschalige-data bases wordt het argument `ApplicationIntent` in de connection string dat door de client is bepaald, bepaald of de verbinding wordt doorgestuurd naar de schrijf replica of naar een secundaire alleen-lezen replica. Als de @no__t 0 is ingesteld op `READONLY` en de data base heeft geen secundaire replica, wordt de verbinding doorgestuurd naar de primaire replica en wordt het standaard `ReadWrite`-gedrag.
+In grootschalige-data bases wordt het argument `ApplicationIntent` in de connection string dat door de client is bepaald, bepaald of de verbinding wordt doorgestuurd naar de schrijf replica of naar een secundaire alleen-lezen replica. Als de `ApplicationIntent` ingesteld op `READONLY` en de data base heeft geen secundaire replica, wordt de verbinding doorgestuurd naar de primaire replica en wordt de standaard instelling `ReadWrite` gedrag.
 
 ```cmd
 -- Connection string with application intent

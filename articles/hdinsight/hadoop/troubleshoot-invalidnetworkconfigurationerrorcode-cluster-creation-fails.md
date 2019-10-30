@@ -1,5 +1,5 @@
 ---
-title: InvalidNetworkConfigurationErrorCode uit het maken van een cluster in azure HDInsight
+title: InvalidNetworkConfigurationErrorCode-fout-Azure HDInsight
 description: Verschillende redenen voor mislukte cluster creaties met InvalidNetworkConfigurationErrorCode in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: a6b207086325018deb63383a0775af8dfe195ac4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5b8d031af9dbe6019d71e2a1caa3d3f25d4024ea
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091711"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044456"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Het maken van een cluster mislukt met InvalidNetworkConfigurationErrorCode in azure HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
-Als fout code `InvalidNetworkConfigurationErrorCode` met de beschrijving ' Virtual Network configuratie is niet compatibel met HDInsight-vereiste ' wordt weer gegeven, duidt dit meestal op een probleem met de configuratie van het [virtuele netwerk](../hdinsight-plan-virtual-network-deployment.md) voor uw cluster. Op basis van de rest van de fout beschrijving, volgt u de onderstaande secties om het probleem op te lossen.
+Als fout code `InvalidNetworkConfigurationErrorCode` wordt weer gegeven met de beschrijving ' Virtual Network configuratie is niet compatibel met HDInsight-vereiste ', duidt dit meestal op een probleem met de configuratie van het [virtuele netwerk](../hdinsight-plan-virtual-network-deployment.md) voor uw cluster. Op basis van de rest van de fout beschrijving, volgt u de onderstaande secties om het probleem op te lossen.
 
 ## <a name="hostname-resolution-failed"></a>' Omzetting van HostNamen mislukt '
 
@@ -30,13 +30,13 @@ Fout beschrijving bevat ' omzetting van hostnaam is mislukt '.
 
 Deze fout wijst op een probleem met de aangepaste DNS-configuratie. DNS-servers binnen een virtueel netwerk kunnen DNS-query's door sturen naar recursieve resolvers van Azure om hostnamen in dat virtuele netwerk op te lossen (Zie [naam omzetting in virtuele netwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) voor meer informatie). Toegang tot recursieve resolvers van Azure wordt geboden via de 168.63.129.16 van het virtuele IP-adres. Dit IP-adres is alleen toegankelijk vanaf de Azure-Vm's. Het werkt dus niet als u een premises DNS-server gebruikt of als uw DNS-server een Azure-VM is, die geen deel uitmaakt van het vNet van het cluster.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
-1. SSH naar de virtuele machine die deel uitmaakt van het cluster en voer de `hostname -f`opdracht uit. Hiermee wordt de Fully Qualified Domain name van de host geretourneerd (zoals `<host_fqdn>` beschreven in de onderstaande instructies).
+1. SSH naar de virtuele machine die deel uitmaakt van het cluster en voer de opdracht uit `hostname -f`. Hiermee wordt de Fully Qualified Domain Name van de host geretourneerd (aangeduid als `<host_fqdn>` in de onderstaande instructies).
 
-1. Voer vervolgens de opdracht `nslookup <host_fqdn>` uit ( `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`bijvoorbeeld). Als met deze opdracht de naam wordt omgezet in een IP-adres, betekent dit dat uw DNS-server goed werkt. In dit geval moet u een ondersteunings aanvraag met HDInsight genereren en uw probleem onderzoeken. Neem in uw ondersteunings aanvraag de stappen voor het oplossen van problemen op die u hebt uitgevoerd. Dit helpt ons het probleem sneller op te lossen.
+1. Voer vervolgens de opdracht `nslookup <host_fqdn>` uit (bijvoorbeeld `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Als met deze opdracht de naam wordt omgezet in een IP-adres, betekent dit dat uw DNS-server goed werkt. In dit geval moet u een ondersteunings aanvraag met HDInsight genereren en uw probleem onderzoeken. Neem in uw ondersteunings aanvraag de stappen voor het oplossen van problemen op die u hebt uitgevoerd. Dit helpt ons het probleem sneller op te lossen.
 
-1. Als met de bovenstaande opdracht geen IP-adres wordt geretourneerd, voert `nslookup <host_fqdn> 168.63.129.16` u uit ( `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`bijvoorbeeld). Als met deze opdracht het IP-adres kan worden omgezet, betekent dit dat de DNS-server de query niet doorstuurt naar de DNS van Azure, of geen VM is die deel uitmaakt van hetzelfde vNet als het cluster.
+1. Als met de bovenstaande opdracht geen IP-adres wordt geretourneerd, voert u `nslookup <host_fqdn> 168.63.129.16` uit (bijvoorbeeld `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Als met deze opdracht het IP-adres kan worden omgezet, betekent dit dat de DNS-server de query niet doorstuurt naar de DNS van Azure, of geen VM is die deel uitmaakt van hetzelfde vNet als het cluster.
 
 1. Als u geen Azure-VM hebt die kan fungeren als aangepaste DNS-server in het vNet van het cluster, moet u dit eerst toevoegen. Maak een virtuele machine in het vNet, die wordt geconfigureerd als DNS-doorstuur server.
 
@@ -56,7 +56,7 @@ Fout beschrijving bevat ' kan geen verbinding maken met Azure Storage account ' 
 
 Azure Storage en SQL hebben geen vaste IP-adressen, dus moeten uitgaande verbindingen met alle Ip's toestaan om toegang te krijgen tot deze services. De exacte stappen zijn afhankelijk van het feit of u een netwerk beveiligings groep (NSG) of door de gebruiker gedefinieerde regels (UDR) hebt ingesteld. Raadpleeg de sectie over het [beheren van netwerk verkeer met HDInsight met netwerk beveiligings groepen en door de gebruiker gedefinieerde routes](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip) voor meer informatie over deze configuraties.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 * Als uw cluster gebruikmaakt van een [netwerk beveiligings groep (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -76,6 +76,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

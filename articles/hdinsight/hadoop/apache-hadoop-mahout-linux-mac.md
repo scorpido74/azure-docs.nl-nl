@@ -1,5 +1,5 @@
 ---
-title: Aanbevelingen genereren met Apache mahout en HDInsight (SSH)-Azure
+title: Aanbevelingen genereren met Apache mahout in azure HDInsight
 description: Meer informatie over het gebruik van de Apache mahout machine learning-bibliotheek om film aanbevelingen te genereren met HDInsight (Hadoop).
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: a3919cf84714b69776222fa35d3163e0915869f7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881973"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044568"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Tips voor het genereren van films met Apache mahout met Apache Hadoop in HDInsight (SSH)
 
@@ -39,19 +39,19 @@ Een van de functies die door mahout wordt gegeven, is een aanbevelings engine. D
 
 De volgende werk stroom is een vereenvoudigd voor beeld waarin film gegevens worden gebruikt:
 
-* **Co-exemplaar**: Joe, Alice en Bob zijn allemaal leukste *ster-oorlogen*, *het Empire keert terug*en *retourneert de Jedi*. Mahout bepaalt dat gebruikers die graag een van deze films ook als de andere hebben.
+* **Co-voorval**: Joe, Alice en Bob alle bevonden *ster-oorlogen*, *de Empire terughalen*en *retour neren van de Jedi*. Mahout bepaalt dat gebruikers die graag een van deze films ook als de andere hebben.
 
-* **Co-exemplaar**: Bob en Alice vinden ook *het fantoom Menace*, de *aanval van de klonen en het terugvallen* *van de Sith*. Mahout bepaalt dat gebruikers die de vorige drie films leuk vinden, ook als deze drie films.
+* **Co-voorval**: Bob en Alice vinden ook *het fantoom Menace*, de *aanval van de klonen*en *de Sith*. Mahout bepaalt dat gebruikers die de vorige drie films leuk vinden, ook als deze drie films.
 
-* **Aanbeveling voor gelijkenis**: Omdat Joe de eerste drie films leuk vindt, kijkt mahout naar films die andere voor keuren leuk vinden, maar is Jan niet gekeken (leuk/geclassificeerd). In dit geval raadt mahout aan *het fantoom Menace*, de *aanval van de klonen*en *het re van de Sith*.
+* **Aanbeveling voor soort gelijke**voor delen: omdat Joe de eerste drie films leuk vindt, kijkt mahout naar films die anderen met vergelijk bare voor keuren leuk vinden, maar heeft Joe niet bekeken (leuk/beoordeeld). In dit geval raadt mahout aan *het fantoom Menace*, de *aanval van de klonen*en *het re van de Sith*.
 
 ### <a name="understanding-the-data"></a>Informatie over de gegevens
 
-[GroupLens Research](https://grouplens.org/datasets/movielens/) biedt classificatie gegevens voor films in een indeling die compatibel is met mahout. Deze gegevens zijn beschikbaar op de standaard opslag van uw cluster `/HdiSamples/HdiSamples/MahoutMovieData`op.
+[GroupLens Research](https://grouplens.org/datasets/movielens/) biedt classificatie gegevens voor films in een indeling die compatibel is met mahout. Deze gegevens zijn beschikbaar op de standaard opslag van uw cluster op `/HdiSamples/HdiSamples/MahoutMovieData`.
 
-Er zijn twee bestanden `moviedb.txt` en. `user-ratings.txt` Het `user-ratings.txt` bestand wordt gebruikt tijdens de analyse. De `moviedb.txt` wordt gebruikt om gebruikers vriendelijke tekst informatie te bieden bij het weer geven van de resultaten.
+Er zijn twee bestanden: `moviedb.txt` en `user-ratings.txt`. Het `user-ratings.txt` bestand wordt gebruikt tijdens de analyse. De `moviedb.txt` wordt gebruikt om gebruikers vriendelijke tekst informatie te bieden bij het weer geven van de resultaten.
 
-De gegevens in User-ratings. txt hebben de `userID`structuur, `movieID`, `userRating`en `timestamp`, waarmee wordt aangegeven hoe hoog elke gebruiker een film heeft geclassificeerd. Hier volgt een voor beeld van de gegevens:
+De gegevens in User-ratings. txt hebben een structuur van `userID`, `movieID`, `userRating`en `timestamp`, waarmee wordt aangegeven hoe hoog elke gebruiker een film heeft geclassificeerd. Hier volgt een voor beeld van de gegevens:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -85,7 +85,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
         3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
         4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-    De eerste kolom is de `userID`. De waarden die zijn opgenomen in ' [' en '] `movieId`'`recommendationScore`zijn:.
+    De eerste kolom is de `userID`. De waarden in [en] zijn `movieId`:`recommendationScore`.
 
 2. U kunt de uitvoer, samen met de moviedb. txt, gebruiken om meer informatie te geven over de aanbevelingen. Kopieer eerst de bestanden lokaal met behulp van de volgende opdrachten:
 
@@ -178,7 +178,7 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
 ## <a name="delete-temporary-data"></a>Tijdelijke gegevens verwijderen
 
-Mahout-taken verwijderen geen tijdelijke gegevens die tijdens het verwerken van de taak worden gemaakt. De `--tempDir` para meter wordt opgegeven in de voorbeeld taak om de tijdelijke bestanden in een specifiek pad te isoleren, zodat u ze eenvoudig kunt verwijderen. Als u de tijdelijke bestanden wilt verwijderen, gebruikt u de volgende opdracht:
+Mahout-taken verwijderen geen tijdelijke gegevens die tijdens het verwerken van de taak worden gemaakt. De para meter `--tempDir` is opgegeven in de voorbeeld taak om de tijdelijke bestanden in een specifiek pad te isoleren, zodat u ze eenvoudig kunt verwijderen. Als u de tijdelijke bestanden wilt verwijderen, gebruikt u de volgende opdracht:
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp

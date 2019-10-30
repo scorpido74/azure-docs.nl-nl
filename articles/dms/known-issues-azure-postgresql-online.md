@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.date: 10/27/2019
+ms.openlocfilehash: e25e31a9ed656d625d2025d8d0086d23ecf10682
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802593"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043208"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van PostgreSQL naar Azure DB voor PostgreSQL-één server
 
@@ -81,33 +81,33 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Pos
 
 ## <a name="datatype-limitations"></a>Beperkingen van gegevens typen
 
-- **Beperking**: Als er een ENUM-gegevens type in de bron-PostgreSQL-data base is, mislukt de migratie tijdens doorlopende synchronisatie.
+- **Beperking**: als er een Enum-gegevens type in de bron-postgresql-data base is, mislukt de migratie tijdens doorlopende synchronisatie.
 
-    **Tijdelijke oplossing**: Het ENUM-gegevens type wijzigen in teken variërend in Azure Database for PostgreSQL.
+    **Tijdelijke oplossing**: Wijzig het data type Enum in teken variërend in azure database for PostgreSQL.
 
-- **Beperking**: Als er geen primaire sleutel voor tabellen is, mislukt de continue synchronisatie.
+- **Beperking**: als er geen primaire sleutel voor tabellen is, mislukt de continue synchronisatie.
 
-    **Tijdelijke oplossing**: Stel tijdelijk een primaire sleutel voor de tabel in voor de migratie om door te gaan. U kunt de primaire sleutel verwijderen nadat de gegevens migratie is voltooid.
+    **Tijdelijke oplossing**: Stel tijdelijk een primaire sleutel in voor de tabel voor migratie om door te gaan. U kunt de primaire sleutel verwijderen nadat de gegevens migratie is voltooid.
 
-- **Beperking**: Het gegevens type JSONB wordt niet ondersteund voor migratie.
+- **Beperking**: JSONB gegevens type wordt niet ondersteund voor migratie.
 
 ## <a name="lob-limitations"></a>LOB-beperkingen
 
 Large Object LOB-kolommen zijn kolommen die groot kunnen groeien. Voor PostgreSQL zijn voor beelden van LOB-gegevens typen XML, JSON, afbeelding, tekst, enzovoort.
 
-- **Beperking**: Als er LOB-gegevens typen worden gebruikt als primaire sleutel, mislukt de migratie.
+- **Beperking**: als LOB-gegevens typen worden gebruikt als primaire sleutel, zal de migratie mislukken.
 
     **Tijdelijke oplossing**: Vervang de primaire sleutel door andere gegevens typen of kolommen die niet LOB zijn.
 
-- **Beperking**: Als de LOB-kolom (lengte van Large Object) groter is dan 32 KB, kunnen gegevens op het doel worden afgekapt. U kunt de lengte van de LOB-kolom controleren met behulp van deze query:
+- **Beperking**: als de LOB-kolom (lengte van large object) groter is dan 32 KB, kunnen gegevens worden afgekapt bij het doel. U kunt de lengte van de LOB-kolom controleren met behulp van deze query:
 
     ```
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Tijdelijke oplossing**: Als u een LOB-object hebt dat groter is dan 32 KB, neemt u contact op met het technische team om [Azure data base-migraties te vragen](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Tijdelijke oplossing**: als u een LOB-object hebt dat groter is dan 32 KB, neemt u contact op met het technische team om [Azure data base-migraties te vragen](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
-- **Beperking**: Als er sprake is van LOB-kolommen in de tabel en er geen primaire sleutel is ingesteld voor de tabel, kunnen de gegevens niet worden gemigreerd voor deze tabel.
+- **Beperking**: als er sprake is van LOB-kolommen in de tabel en er geen primaire sleutel is ingesteld voor de tabel, kunnen de gegevens niet worden gemigreerd voor deze tabel.
 
     **Tijdelijke oplossing**: Stel tijdelijk een primaire sleutel in voor de tabel voor migratie om door te gaan. U kunt de primaire sleutel verwijderen nadat de gegevens migratie is voltooid.
 
@@ -153,28 +153,31 @@ ALTER USER PG_User SET search_path = fnRenames, pg_catalog, "$user", public;
 COMMIT;
 ```
 
+  > [!NOTE]
+  > In het voor gaande script verwijst ' PG_User ' naar de gebruikers naam die wordt gebruikt om verbinding te maken met de migratie bron.
+
 ## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Beperkingen bij het online migreren van AWS RDS PostgreSQL
 
 Wanneer u probeert een online migratie uit te voeren vanaf AWS RDS PostgreSQL naar Azure Database for PostgreSQL, kunnen de volgende fouten optreden.
 
-- **Fout**: De standaardwaarde van de kolom {kolom} in tabel {tabel} in database {database} is verschillend op bron- en doelservers. De waarde {waarde op bron} in de bron en {waarde op doel} op het doel.
+- **Fout**: de standaard waarde van de kolom {column} in de tabel {table} in de data base {data base} wijkt af van de bron-en doel server. De waarde {waarde op bron} in de bron en {waarde op doel} op het doel.
 
-  **Beperking**: Deze fout treedt op wanneer de standaard waarde op een kolom schema afwijkt van de bron-en doel database.
+  **Beperking**: deze fout treedt op wanneer de standaard waarde op een kolom schema afwijkt van de bron-en doel database.
   **Tijdelijke oplossing**: Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg de [documentatie over Azure postgresql Online Migration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)voor meer informatie over het migreren van het schema.
 
-- **Fout**: Doeldatabase {database} heeft {aantal tabellen} tabellen terwijl brondatabase {database} {aantal tabellen} tabellen heeft. Het aantal tabellen op de bron- en doeldatabase moet overeenkomen.
+- **Fout**: de doel database {Data Base} heeft {aantal Tables}-tabellen, waarbij de bron database {Data Base} de tabellen {aantal tabellen} heeft. Het aantal tabellen op de bron- en doeldatabase moet overeenkomen.
 
-  **Beperking**: Deze fout treedt op wanneer het aantal tabellen verschilt tussen de bron-en doel database.
+  **Beperking**: deze fout treedt op wanneer het aantal tabellen verschilt van de bron-en doel database.
   **Tijdelijke oplossing**: Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg de [documentatie over Azure postgresql Online Migration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)voor meer informatie over het migreren van het schema.
 
 - **Fout:** De bron database {Data Base} is leeg.
 
-  **Beperking**: Deze fout treedt op wanneer de bron database leeg is. Dit komt waarschijnlijk omdat u de verkeerde database als bron hebt geselecteerd.
-  **Tijdelijke oplossing**: Controleer de bron database die u hebt geselecteerd voor migratie en probeer het opnieuw.
+  **Beperking**: deze fout treedt op wanneer de bron database leeg is. Dit komt waarschijnlijk omdat u de verkeerde database als bron hebt geselecteerd.
+  **Tijdelijke oplossing**: dubbel Controleer de bron database die u hebt geselecteerd voor migratie en probeer het opnieuw.
 
 - **Fout:** De doel database {Data Base} is leeg. Migreer het schema.
 
-  **Beperking**: Deze fout treedt op wanneer er geen schema is voor de doel database. Zorg ervoor dat schema op het doel overeenkomt met het schema op de bron.
+  **Beperking**: deze fout treedt op wanneer er geen schema is voor de doel database. Zorg ervoor dat schema op het doel overeenkomt met het schema op de bron.
   **Tijdelijke oplossing**: Zorg ervoor dat het schema op het doel overeenkomt met het schema op de bron. Raadpleeg de [documentatie over Azure postgresql Online Migration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema)voor meer informatie over het migreren van het schema.
 
 ## <a name="other-limitations"></a>Andere beperkingen

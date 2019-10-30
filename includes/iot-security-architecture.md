@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789105"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73034543"
 ---
 Bij het ontwerpen van een systeem is het belang rijk om inzicht te krijgen in de mogelijke dreigingen van dat systeem en de juiste verdedigingen dienovereenkomstig, aangezien het systeem is ontworpen en gearchitectd. Het is belang rijk dat u het product ontwerpt van het begin met beveiliging in het gedrang, omdat u kunt zien hoe een aanvaller een systeem kan misbruiken om ervoor te zorgen dat de juiste oplossingen van het begin worden uitgevoerd.
 
@@ -116,7 +116,7 @@ Een veld Gateway wijkt af van een louter Traffic-router in dat het een actieve r
 
 ### <a name="the-cloud-gateway-zone"></a>De zone van de Cloud gateway
 
-Cloud gateway is een systeem dat externe communicatie mogelijk maakt vanuit en naar apparaten of veld gateways van verschillende verschillende locaties in de open bare netwerk ruimte, in het algemeen naar een systeem op basis van de Cloud en een gegevens analysesysteem, een Federatie van deze systemen. In sommige gevallen kan een Cloud gateway direct de toegang tot apparaten met speciale doel einden van terminals, zoals tablets of telefoons, vergemakkelijken. In de hier besproken context is ' Cloud ' bedoeld om te verwijzen naar een speciaal systeem voor gegevens verwerking dat niet is gebonden aan dezelfde site als de gekoppelde apparaten of veld gateways. In een Cloud zone kunnen operationele maat regelen geen gerichte fysieke toegang voor komen en niet noodzakelijkerwijs worden blootgesteld aan een ' open bare Cloud '-infra structuur.  
+Een Cloud gateway is een systeem dat externe communicatie mogelijk maakt vanuit en naar apparaten of veld gateways van verschillende verschillende locaties via open bare netwerk ruimte, in het algemeen naar een systeem op basis van de Cloud en een gegevens analysesysteem, een Federatie van deze systemen. In sommige gevallen kan een Cloud gateway direct de toegang tot apparaten met speciale doel einden van terminals, zoals tablets of telefoons, vergemakkelijken. In de hier besproken context is ' Cloud ' bedoeld om te verwijzen naar een speciaal systeem voor gegevens verwerking dat niet is gebonden aan dezelfde site als de gekoppelde apparaten of veld gateways. In een Cloud zone kunnen operationele maat regelen geen gerichte fysieke toegang voor komen en niet noodzakelijkerwijs worden blootgesteld aan een ' open bare Cloud '-infra structuur.  
 
 Een Cloud gateway kan mogelijk worden toegewezen aan een netwerk-virtualisatie-overlay om de Cloud gateway en alle bijbehorende apparaten of veld gateways van elk ander netwerk verkeer te isoleren. De Cloud gateway zelf is geen Apparaatbeheer systeem of een opslag ruimte voor apparaatgegevens. deze faciliteiten interface met de Cloud gateway. De zone Cloud gateway bevat de Cloud gateway zelf, samen met alle veld gateways en apparaten die rechtstreeks of indirect zijn gekoppeld. De rand van de zone is een unieke surface area waarbij alle externe partijen communiceren via.
 

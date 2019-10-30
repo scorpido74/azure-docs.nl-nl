@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 62d8de4f36ab110f7bd871c9de0e5d843516970c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f248fe125873b4ed1e930e56865e4e403bcceea6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529012"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053844"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>De definitie van een beheerde toepassing maken en publiceren
 
@@ -87,7 +87,7 @@ Sla het bestand mainTemplate.json op.
 
 ## <a name="defining-your-create-experience-using-createuidefinitionjson"></a>Uw Maak ervaring definiëren met behulp van CreateUiDefinition. json
 
-Als uitgever definieert u uw Maak ervaring met behulp van het bestand **createUiDefinition. json** , waarmee de interface wordt gegenereerd voor gebruikers die beheerde toepassingen maken. U definieert hoe gebruikers invoer opgeven voor elke para meter met behulp van [Control Elements] (create-uidefinition-elements.md), met inbegrip van vervolg keuzelijsten, tekst vakken en wachtwoord vakken.
+Als uitgever definieert u uw Maak ervaring met behulp van het bestand **createUiDefinition. json** , waarmee de interface wordt gegenereerd voor gebruikers die beheerde toepassingen maken. U definieert hoe gebruikers invoer opgeven voor elke para meter met behulp van [besturings elementen](create-uidefinition-elements.md) , waaronder vervolg keuzelijsten, tekst vakken en wachtwoord vakken.
 
 Maak een bestand met de naam **createUiDefinition. json** (deze naam is hoofdletter gevoelig)
 

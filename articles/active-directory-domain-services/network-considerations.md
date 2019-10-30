@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/23/2019
 ms.author: iainfou
-ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 325b9e8edc997e41e48e11b3ee752bc38d7dc4a1
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314991"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024014"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure AD Domain Services
 
@@ -59,10 +59,10 @@ Zoals u in de vorige sectie hebt genoteerd, kunt u alleen een door Azure AD Doma
 
 U kunt met behulp van een van de volgende methoden toepassings werkbelastingen die worden gehost in andere virtuele netwerken van Azure verbinden:
 
-* Peering op virtueel netwerk
+* Virtual Network-peering
 * Virtueel particulier netwerk (VPN)
 
-### <a name="virtual-network-peering"></a>Peering voor het virtuele netwerk
+### <a name="virtual-network-peering"></a>Virtual Network peering
 
 Peering op virtueel netwerk is een mechanisme dat twee virtuele netwerken in dezelfde regio verbindt via het Azure-backbone-netwerk. Wereld wijde virtuele netwerk peering kan virtueel netwerk verbinden tussen Azure-regio's. Als de twee virtuele netwerken zijn gekoppeld, kunnen resources, zoals virtuele machines, rechtstreeks communiceren met behulp van privé-IP-adressen. Met Virtual Network-peering kunt u een door Azure AD DS beheerd domein implementeren met uw toepassings werkbelastingen die in andere virtuele netwerken zijn geïmplementeerd.
 
@@ -88,11 +88,11 @@ U kunt naam omzetting inschakelen met behulp van voorwaardelijke DNS-doorstuur s
 
 Een door Azure AD DS beheerd domein maakt sommige netwerk bronnen tijdens de implementatie. Deze resources zijn nodig voor een geslaagde bewerking en beheer van het beheerde Azure AD DS-domein, en mogen niet hand matig worden geconfigureerd.
 
-| Azure-resource                          | Description |
+| Azure-resource                          | Beschrijving |
 |:----------------------------------------|:---|
 | Netwerk interface kaart                  | Azure AD DS fungeert als host voor het beheerde domein op twee domein controllers (Dc's) die worden uitgevoerd op Windows Server als Azure-Vm's. Elke VM heeft een virtuele netwerk interface die verbinding maakt met het subnet van het virtuele netwerk. |
-| Dynamisch standaard openbaar IP-adres         | Azure AD DS communiceert met de synchronisatie-en beheer service met een openbaar IP-adres voor de basis-SKU. Zie [IP-adres typen en toewijzings methoden in azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare IP-adressen. |
-| Azure Basic-load balancer               | Azure AD DS maakt gebruik van een basis-SKU load balancer voor Network Address Translation (NAT) en taak verdeling (bij gebruik met beveiligde LDAP). Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) voor meer informatie over Azure load balancers. |
+| Dynamisch standaard openbaar IP-adres         | Azure AD DS communiceert met de synchronisatie-en beheer service met een standaard-SKU openbaar IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare IP-adressen. |
+| Azure Standard load balancer               | Azure AD DS maakt gebruik van een standaard-SKU load balancer voor Network Address Translation (NAT) en taak verdeling (bij gebruik met beveiligde LDAP). Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) voor meer informatie over Azure load balancers. |
 | NAT-regels (Network Address Translation) | Azure AD DS maakt en gebruikt drie NAT-regels voor de load balancer-één regel voor beveiligd HTTP-verkeer en twee regels voor beveiligde communicatie met Power shell. |
 | Load Balancer-regels                     | Wanneer een beheerd domein van Azure AD DS is geconfigureerd voor beveiligde LDAP op TCP-poort 636, worden er drie regels gemaakt en gebruikt in een load balancer om het verkeer te distribueren. |
 
@@ -105,12 +105,12 @@ Een [netwerk beveiligings groep (NSG)](https://docs.microsoft.com/azure/virtual-
 
 De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD DS om verificatie-en beheer services te bieden. Wijzig of verwijder deze regels voor netwerk beveiligings groepen niet voor het subnet van het virtuele netwerk waarop uw Azure AD DS beheerde domein is geïmplementeerd.
 
-| Poortnummer | Protocol | Bron                             | Destination | Action | Vereist | Doel |
+| Poortnummer | Protocol | Bron                             | Bestemming | Bewerking | Verplicht | Doel |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Synchronisatie met uw Azure AD-Tenant. |
-| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | Ja      | Beheer van uw domein. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Ja      | Beheer van uw domein. |
-| 636         | TCP      | Any                                | Any         | Allow  | Nee       | Alleen ingeschakeld wanneer u Secure LDAP (LDAPS) configureert. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Ja      | Synchronisatie met uw Azure AD-Tenant. |
+| 3389        | TCP      | CorpNetSaw                         | Alle         | Toestaan  | Ja      | Beheer van uw domein. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Alle         | Toestaan  | Ja      | Beheer van uw domein. |
+| 636         | TCP      | Alle                                | Alle         | Toestaan  | Nee       | Alleen ingeschakeld wanneer u Secure LDAP (LDAPS) configureert. |
 
 > [!WARNING]
 > Bewerk deze netwerk bronnen en configuraties niet hand matig. Wanneer u een onjuist geconfigureerde netwerk beveiligings groep of een door de gebruiker gedefinieerde route tabel koppelt aan het subnet waarin Azure AD DS is geïmplementeerd, kunt u de mogelijkheid van micro soft om het domein te onderhouden en te beheren, verstoren. De synchronisatie tussen uw Azure AD-Tenant en uw Azure AD DS beheerde domein wordt ook verstoord.
@@ -142,7 +142,7 @@ De volgende regels voor de netwerk beveiligings groep zijn vereist voor Azure AD
 * Wordt gebruikt voor het uitvoeren van beheer taken met externe communicatie van Power shell in uw Azure AD DS beheerde domein.
 * Als u geen toegang hebt tot deze poort, kan uw door Azure AD DS beheerde domein niet worden bijgewerkt, geconfigureerd, ondersteund of gecontroleerd.
 * Voor Azure AD DS beheerde domeinen die gebruikmaken van een virtueel netwerk op basis van Resource Manager, kunt u de inkomende toegang tot deze poort beperken tot het *AzureActiveDirectoryDomainServices* -service label.
-    * Voor verouderde Azure AD DS beheerde domeinen die gebruikmaken van een klassiek virtueel netwerk, kunt u de inkomende toegang tot deze poort beperken tot de volgende bron-IP-adressen: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*en *104.40.87.209*.
+    * Voor verouderde Azure AD DS beheerde domeinen die gebruikmaken van een klassiek virtueel netwerk, kunt u de inkomende toegang tot deze poort beperken tot de volgende IP-bron adressen: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223* , *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*en *104.40.87.209*.
 
 ## <a name="user-defined-routes"></a>Door de gebruiker gedefinieerde routes
 

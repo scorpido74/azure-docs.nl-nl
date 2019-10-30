@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 9cded164b63bbb72e4a353e9a542c9e054c14d93
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b1ec40485e775b7e50b5f7d82014aef77f14fb3e
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821139"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73025277"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-fulfillment-Api's, versie 2 
 
@@ -87,7 +87,7 @@ De volgende tabel bevat de definities voor algemene para meters en entiteiten di
 | `offerId`                | Een unieke teken reeks-id voor elke aanbieding (bijvoorbeeld: "Offer1").  |
 | `planId`                 | Een unieke teken reeks-id voor elk abonnement/SKU (bijvoorbeeld: ' zilver '). |
 | `operationId`            | De GUID-id voor een bepaalde bewerking.  |
-|  `action`                | De actie die wordt uitgevoerd op een resource, `unsubscribe`, `suspend`, `reinstate` of `changePlan`, `changeQuantity`, `transfer`.  |
+|  `action`                | De actie die wordt uitgevoerd op een resource, `Unsubscribe`, `Suspend`, `Reinstate`of `ChangePlan`, `ChangeQuantity`, `Transfer`. |
 |   |   |
 
 [Guid's](https://en.wikipedia.org/wiki/Universally_unique_identifier)(Globally Unique Identifiers) zijn 128-bits (32-hexadecimale) getallen die doorgaans automatisch worden gegenereerd. 
@@ -707,7 +707,7 @@ Interne server fout.
 
 #### <a name="get-operation-status"></a>Bewerkings status ophalen
 
-Hiermee kan de uitgever de status van de opgegeven geactiveerde async-bewerking (zoals `subscribe`, `unsubscribe`, `changePlan` of `changeQuantity`) volgen.
+Hiermee kan de uitgever de status van de opgegeven geactiveerde async-bewerking (zoals `Subscribe`, `Unsubscribe`, `ChangePlan`of `ChangeQuantity`) volgen.
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Ontvang<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,11 +850,11 @@ De uitgever moet een webhook in deze SaaS-service implementeren om gebruikers pr
 }
 ```
 Waarbij de actie een van de volgende acties kan zijn: 
-- `unsubscribe` (wanneer de resource is verwijderd)
-- `changePlan` (wanneer de bewerking voor het wijzigings plan is voltooid)
-- `changeQuantity` (wanneer de bewerking hoeveelheid wijzigen is voltooid)
-- `suspend` (wanneer de resource is onderbroken)
-- `reinstate` (wanneer de bron na de onderbreking opnieuw is ingesteld)
+- `Unsubscribe` (wanneer de resource is verwijderd)
+- `ChangePlan` (wanneer de bewerking voor het wijzigings plan is voltooid)
+- `ChangeQuantity` (wanneer de bewerking hoeveelheid wijzigen is voltooid)
+- `Suspend` (wanneer de resource is onderbroken)
+- `Reinstate` (wanneer de bron na de onderbreking opnieuw is ingesteld)
 
 Waar de status kan een van de volgende zijn: 
 - **NotStarted** <br>

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 317a8ba48851ebf65fe52e79f6cf9d9c45786f6f
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147052"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053411"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Schijven uitsluiten van de Power shell-replicatie van virtuele Azure-machines
 
@@ -29,6 +29,7 @@ Voordat u begint:
 - Raadpleeg de [ondersteuningsvereisten](azure-to-azure-support-matrix.md) voor alle onderdelen.
 - Zorg ervoor dat u de AzureRm-module AZ van Power shell hebt. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om Power shell te installeren of bij te werken.
 - Zorg ervoor dat u ten minste één keer een Recovery Services-kluis en beveiligde virtuele machines hebt gemaakt. Als u deze dingen nog niet hebt gedaan, volgt u het proces [voor het instellen van herstel na nood geval voor virtuele Azure-machines met behulp van Azure PowerShell](azure-to-azure-powershell.md).
+- [Lees dit artikel](azure-to-azure-enable-replication-added-disk.md)als u informatie zoekt over het toevoegen van schijven aan een Azure VM die is ingeschakeld voor replicatie.
 
 ## <a name="why-exclude-disks-from-replication"></a>Waarom schijven uitsluiten van replicatie
 Mogelijk moet u schijven uitsluiten van replicatie omdat:
@@ -79,7 +80,7 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 In het volgende voor beeld wordt ervan uitgegaan dat u al beschikt over een cache-opslag account, een replicatie beleid en toewijzingen. Als u deze dingen niet hebt, volgt u het proces bij het [instellen van herstel na nood geval voor virtuele Azure-machines met behulp van Azure PowerShell](azure-to-azure-powershell.md).
 
-Een virtuele machine van Azure replicerenmet Managed disks.
+Een virtuele machine van Azure repliceren met *Managed disks*.
 
 ```azurepowershell
 

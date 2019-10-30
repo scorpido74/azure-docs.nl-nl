@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f85dd3abae8f6e4b3ccc10654e6da8363e80b3d3
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cb234f9fa2fc5df68fb2bf4dde3a377ea15532eb
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968282"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053384"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Een DR-herstelanalyse uitvoeren van Azure-VM’s naar een secundaire Azure-regio
 
@@ -27,7 +27,7 @@ Deze tutorial laat zien hoe u een DR-herstelanalyse kunt uitvoeren voor een Azur
 > * Een testfailover uitvoeren voor één VM
 
 > [!NOTE]
-> Deze zelfstudie is bedoeld om de gebruiker stapsgewijs te begeleiden bij het uitvoeren van een DR Drill met minimale stappen. Raadpleeg de documenten onder ‘Instructies’ voor Azure-VM’s als u meer informatie wilt over de verschillende aspecten van het uitvoeren van een DR Drill, inclusief netwerkoverwegingen, automatisering of het oplossen van problemen.
+> Deze zelf studie helpt u bij het uitvoeren van een DR-analyse met minimale stappen. Als u meer wilt weten over de verschillende aspecten van het uitvoeren van een DR-analyse, inclusief netwerk overwegingen, automatisering of probleem oplossing, raadpleegt u de documenten onder ' How to ' voor Azure Vm's.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -42,9 +42,10 @@ Deze tutorial laat zien hoe u een DR-herstelanalyse kunt uitvoeren voor een Azur
 
 2. Selecteer in **Failover testen** een herstelpunt om voor de failover te gebruiken:
 
-   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door de Site Recovery-service. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is
+    - **Nieuwste**: verwerkt alle gegevens in site Recovery en biedt de laagste RTO (Recovery Time doelstelling).
+    - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door Site Recovery. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is
    - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM’s naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
-   - **Aangepast**: selecteer een herstelpunt.
+   - **Aangepast**: failover naar een bepaald herstel punt. Aangepast is alleen beschikbaar wanneer u een failover hebt uitgevoerd voor één virtuele machine en niet voor failover met een herstel plan.
 
 3. Selecteer het virtuele Azure-doelnetwerk waarop Azure VM's in de secundaire regio na de failover worden aangesloten.
 

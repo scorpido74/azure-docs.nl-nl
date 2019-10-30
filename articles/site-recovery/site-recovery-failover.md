@@ -1,19 +1,19 @@
 ---
-title: Failover tijdens nood herstel met Azure Site Recovery | Microsoft Docs
+title: Failover tijdens nood herstel met Azure Site Recovery
 description: Meer informatie over het mislukken van Vm's en fysieke servers tijdens herstel na nood gevallen met de Azure Site Recovery-service.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/30/2019
+ms.date: 10/29/2019
 ms.author: raynew
-ms.openlocfilehash: da55d83665792f6ea2f4c78aa2a6c3ca26c39233
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1585c5dbdecf11bbc6ef3dad63bf4f982c70f73e
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383192"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053773"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Failover van Vm's en fysieke servers 
 
@@ -27,8 +27,8 @@ Gebruik de volgende tabel om te weten te zijn over de failover-opties van Azure 
 
 | Scenario | Toepassings herstel vereiste | Werk stroom voor Hyper-V | Werk stroom voor VMware
 |---|--|--|--|
-|Geplande failover vanwege een aanstaande downtime van het Data Center| Geen gegevens verlies voor de toepassing wanneer een geplande activiteit wordt uitgevoerd| Voor Hyper-V repliceert ASR gegevens met een Kopieer frequentie die is opgegeven door de gebruiker. Geplande failover wordt gebruikt om de frequentie te overschrijven en de laatste wijzigingen te repliceren voordat een failover wordt gestart. <br/> <br/> 1. Plan een onderhouds venster conform het wijzigings beheer proces van uw bedrijf. <br/><br/> 2. Gebruikers op de hoogte stellen van aanstaande downtime. <br/><br/> 3. De gebruiker gerichte toepassing offline halen.<br/><br/>4. Geplande failover initiëren met behulp van de ASR-Portal. De on-premises virtuele machine wordt automatisch afgesloten.<br/><br/>Effectief verlies van toepassings gegevens = 0 <br/><br/>Een logboek met herstel punten is ook opgenomen in een Bewaar periode voor een gebruiker die een ouder herstel punt wil gebruiken. (24 uur bewaren voor Hyper-V). Als replicatie voorbij het tijds bestek van het retentie venster is gestopt, kunnen klanten nog steeds failover gebruiken met de meest recente beschik bare herstel punten. | Voor VMware repliceert ASR gegevens voortdurend via CDP. Failover geeft de gebruiker de mogelijkheid om failover uit te scha kelen naar de meest recente gegevens (waaronder het afsluiten van post toepassingen)<br/><br/> 1. Een onderhouds venster plannen volgens het wijzigings beheerproces <br/><br/>2. gebruikers op de hoogte stellen van aanstaande downtime <br/><br/>3. De gebruiker gerichte toepassing offline halen.<br/><br/>4. Start een geplande failover via de ASR-Portal naar het laatste punt nadat de toepassing offline is. Gebruik de optie ' geplande failover ' op de portal en selecteer het laatste punt voor failover. De on-premises virtuele machine wordt automatisch afgesloten.<br/><br/>Effectief verlies van toepassings gegevens = 0 <br/><br/>Een logboek met herstel punten in een Bewaar venster is voorzien van een klant die een ouder herstel punt wil gebruiken. (72 uur van bewaren voor VMware). Als replicatie voorbij het tijds bestek van het retentie venster is gestopt, kunnen klanten nog steeds failover gebruiken met de meest recente beschik bare herstel punten.
-|Failover vanwege een ongeplande downtime van het Data Center (natuurlijke of nood ramp) | Mini maal verlies van gegevens voor de toepassing | 1. Het BCP-abonnement van de organisatie initiëren <br/><br/>2. Start de niet-geplande failover via de ASR-Portal naar het meest recente of een punt vanuit het retentie venster (logboek).| 1. Start het BCP-abonnement van de organisatie. <br/><br/>2. Start de niet-geplande failover via de ASR-Portal naar het meest recente of een punt vanuit het retentie venster (logboek).
+|Geplande failover vanwege een aanstaande downtime van het Data Center| Geen gegevens verlies voor de toepassing wanneer een geplande activiteit wordt uitgevoerd| Voor Hyper-V repliceert ASR gegevens met een Kopieer frequentie die is opgegeven door de gebruiker. Geplande failover wordt gebruikt om de frequentie te overschrijven en de laatste wijzigingen te repliceren voordat een failover wordt gestart. <br/> <br/> 1. plan een onderhouds venster conform het wijzigings beheer proces van uw bedrijf. <br/><br/> 2. gebruikers op de hoogte stellen van aanstaande downtime. <br/><br/> 3. Neem de toepassing die op de gebruiker is gericht offline.<br/><br/>4. geplande failover initiëren met behulp van de ASR-Portal. De on-premises virtuele machine wordt automatisch afgesloten.<br/><br/>Effectief verlies van toepassings gegevens = 0 <br/><br/>Een logboek met herstel punten is ook opgenomen in een Bewaar periode voor een gebruiker die een ouder herstel punt wil gebruiken. (24 uur bewaren voor Hyper-V). Als replicatie voorbij het tijds bestek van het retentie venster is gestopt, kunnen klanten nog steeds failover gebruiken met de meest recente beschik bare herstel punten. | Voor VMware repliceert ASR gegevens voortdurend via CDP. Failover geeft de gebruiker de mogelijkheid om failover uit te scha kelen naar de meest recente gegevens (waaronder het afsluiten van post toepassingen)<br/><br/> 1. het onderhouds venster plannen volgens het wijzigings beheerproces <br/><br/>2. gebruikers op de hoogte stellen van aanstaande downtime <br/><br/>3. Neem de toepassing die op de gebruiker is gericht offline.<br/><br/>4. initieer een geplande failover met behulp van de ASR-Portal naar het laatste punt nadat de toepassing offline is. Gebruik de optie ' geplande failover ' op de portal en selecteer het laatste punt voor failover. De on-premises virtuele machine wordt automatisch afgesloten.<br/><br/>Effectief verlies van toepassings gegevens = 0 <br/><br/>Een logboek met herstel punten in een Bewaar venster is voorzien van een klant die een ouder herstel punt wil gebruiken. (72 uur van bewaren voor VMware). Als replicatie voorbij het tijds bestek van het retentie venster is gestopt, kunnen klanten nog steeds failover gebruiken met de meest recente beschik bare herstel punten.
+|Failover vanwege een ongeplande downtime van het Data Center (natuurlijke of nood ramp) | Mini maal verlies van gegevens voor de toepassing | 1. het BCP-abonnement van de organisatie initiëren <br/><br/>2. Start de niet-geplande failover via de ASR-Portal naar het laatste of een punt in het retentie venster (logboek).| 1. Start het BCP-abonnement van de organisatie. <br/><br/>2. Start de niet-geplande failover via de ASR-Portal naar het laatste of een punt in het retentie venster (logboek).
 
 
 ## <a name="run-a-failover"></a>Een failover uitvoeren
@@ -39,12 +39,12 @@ In deze procedure wordt beschreven hoe u een failover uitvoert voor een [herstel
 
 1. Selecteer **herstel plannen** > *recoveryplan_name*. Klik op **failover**
 2. Selecteer op het scherm **failover** een **herstel punt** voor failover naar. U kunt een van de volgende opties gebruiken:
-   1. **Laatste**: Met deze optie wordt de taak gestart door eerst alle gegevens te verwerken die naar Site Recovery service zijn verzonden. Het verwerken van de gegevens maakt een herstel punt voor elke virtuele machine. Dit herstel punt wordt gebruikt door de virtuele machine tijdens een failover. Deze optie biedt de laagste RPO (beoogd herstel punt) als de virtuele machine die is gemaakt na een failover, alle gegevens die zijn gerepliceerd naar Site Recovery service wanneer de failover werd geactiveerd.
-   1. **Laatst verwerkt**: Met deze optie wordt een failover uitgevoerd van alle virtuele machines van het herstel plan naar het laatste herstel punt dat al door Site Recovery service is verwerkt. Wanneer u een testfailover uitvoert voor een virtuele machine, wordt er ook een tijds tempel van het meest recente verwerkte herstel punt weer gegeven. Als u een failover uitvoert van een herstel plan, gaat u naar de afzonderlijke virtuele machine en bekijkt u de **meest recente tegel herstel punten** om deze informatie op te halen. Als er geen tijd wordt besteed aan het verwerken van de niet-verwerkte gegevens, biedt deze optie een lage RTO (Recovery Time objectief)-failover.
-   1. **Laatste toepassingsconsistente punt**: Met deze optie wordt een failover uitgevoerd van alle virtuele machines van het herstel plan naar het laatste toepassings consistente herstel punt dat al door Site Recovery service is verwerkt. Wanneer u een testfailover uitvoert voor een virtuele machine, wordt er ook een tijds tempel van het meest recente toepassings consistente herstel punt weer gegeven. Als u een failover uitvoert van een herstel plan, gaat u naar de afzonderlijke virtuele machine en bekijkt u de **meest recente tegel herstel punten** om deze informatie op te halen.
-   1. **Laatste verwerkte multi-VM**: Deze optie is alleen beschikbaar voor herstel plannen waarvoor ten minste één virtuele machine met consistentie van meerdere VM'S is ingeschakeld. Virtuele machines die deel uitmaken van een failover van een replicatie groep naar het meest recente, veelvoorkomende herstel punt met meerdere VM'S. Andere failover van virtuele machines naar het meest recente verwerkte herstel punt.  
-   1. **Nieuwste multi-VM-app-consistent**: Deze optie is alleen beschikbaar voor herstel plannen waarvoor ten minste één virtuele machine met consistentie van meerdere VM'S is ingeschakeld. Virtuele machines die deel uitmaken van een failover van een replicatie groep naar het meest recente, algemene multi-VM-toepassings consistente herstel punt. Andere failover van virtuele machines naar het meest recente toepassings consistente herstel punt.
-   1. **Aangepast**: Als u een testfailover uitvoert voor een virtuele machine, kunt u deze optie gebruiken om een failover uit te voeren naar een bepaald herstel punt.
+   1. **Nieuwste**: met deze optie wordt de taak gestart door eerst alle gegevens te verwerken die zijn verzonden naar site Recovery service. Het verwerken van de gegevens maakt een herstel punt voor elke virtuele machine. Dit herstel punt wordt gebruikt door de virtuele machine tijdens een failover. Deze optie biedt de laagste RPO (beoogd herstel punt) als de virtuele machine die is gemaakt na een failover, alle gegevens die zijn gerepliceerd naar Site Recovery service wanneer de failover werd geactiveerd.
+   1. **Laatst verwerkte**: met deze optie wordt een failover uitgevoerd van alle virtuele machines van het herstel plan naar het laatste herstel punt dat al is verwerkt door site Recovery service. Wanneer u een testfailover uitvoert voor een virtuele machine, wordt er ook een tijds tempel van het meest recente verwerkte herstel punt weer gegeven. Als u een failover uitvoert van een herstel plan, gaat u naar de afzonderlijke virtuele machine en bekijkt u de **meest recente tegel herstel punten** om deze informatie op te halen. Als er geen tijd wordt besteed aan het verwerken van de niet-verwerkte gegevens, biedt deze optie een lage RTO (Recovery Time objectief)-failover.
+   1. **Nieuwste app-consistent**: deze optie is van toepassing op alle virtuele machines van het herstel plan naar het laatste toepassings consistente herstel punt dat al door site Recovery service is verwerkt. Wanneer u een testfailover uitvoert voor een virtuele machine, wordt er ook een tijds tempel van het meest recente toepassings consistente herstel punt weer gegeven. Als u een failover uitvoert van een herstel plan, gaat u naar de afzonderlijke virtuele machine en bekijkt u de **meest recente tegel herstel punten** om deze informatie op te halen.
+   1. **Laatste verwerkte multi-VM**: deze optie is alleen beschikbaar voor herstel plannen waarvoor ten minste één virtuele machine met een multi-VM-consistentie is ingeschakeld. Virtuele machines die deel uitmaken van een failover van een replicatie groep naar het meest recente, veelvoorkomende herstel punt met meerdere VM'S. Andere failover van virtuele machines naar het meest recente verwerkte herstel punt.  
+   1. **Nieuwste multi-VM-app-consistent**: deze optie is alleen beschikbaar voor herstel plannen waarvoor ten minste één virtuele machine met een multi-VM-consistentie is ingeschakeld. Virtuele machines die deel uitmaken van een failover van een replicatie groep naar het meest recente, algemene multi-VM-toepassings consistente herstel punt. Andere failover van virtuele machines naar het meest recente toepassings consistente herstel punt.
+   1. **Aangepast**: als u een testfailover uitvoert voor een virtuele machine, kunt u deze optie gebruiken om een failover uit te voeren naar een bepaald herstel punt.
 
       > [!NOTE]
       > De optie voor het kiezen van een herstel punt is alleen beschikbaar wanneer u een failover naar Azure voordoet.
@@ -78,12 +78,12 @@ Virtuele machines/fysieke servers die zijn beveiligd met Site Recovery ondersteu
 
 Wanneer een failover wordt geactiveerd, moet u de volgende stappen uitvoeren:
 
-1. Controle op vereisten: Deze stap zorgt ervoor dat aan alle voor waarden die zijn vereist voor de failover wordt voldaan
-1. Cluster Met deze stap worden de gegevens verwerkt en zo gereed dat een virtuele machine van Azure kan worden gemaakt. Als u het **meest recente** herstel punt hebt gekozen, wordt met deze stap een herstel punt gemaakt op basis van de gegevens die naar de service zijn verzonden.
-1. Starten: Met deze stap maakt u een virtuele Azure-machine met behulp van de gegevens die in de vorige stap zijn verwerkt.
+1. Controle op vereisten: deze stap zorgt ervoor dat er wordt voldaan aan alle voor waarden die nodig zijn voor de failover
+1. Failover: met deze stap worden de gegevens verwerkt en zo gereed dat een virtuele machine van Azure kan worden gemaakt. Als u het **meest recente** herstel punt hebt gekozen, wordt met deze stap een herstel punt gemaakt op basis van de gegevens die naar de service zijn verzonden.
+1. Begin: met deze stap maakt u een virtuele Azure-machine met behulp van de gegevens die in de vorige stap zijn verwerkt.
 
 > [!WARNING]
-> **Failover van een in voortgang niet annuleren**: Voordat de failover wordt gestart, wordt de replicatie voor de virtuele machine gestopt. Als u een taak die wordt uitgevoerd **annuleert** , wordt de failover gestopt, maar de virtuele machine begint niet te repliceren. De replicatie kan niet opnieuw worden gestart.
+> **Failover van een in voortgang niet annuleren**: voordat de failover wordt gestart, wordt de replicatie voor de virtuele machine gestopt. Als u een taak die wordt uitgevoerd **annuleert** , wordt de failover gestopt, maar de virtuele machine begint niet te repliceren. De replicatie kan niet opnieuw worden gestart.
 >
 >
 
@@ -115,7 +115,7 @@ Azure Site Recovery wordt het bewaren van stationsletters afhandelen. [Meer](vmw
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Voorbereiden op het verbinden met virtuele Azure-machines na een failover
 
-Als u na een failover verbinding wilt maken met virtuele Azure-machines met behulp van RDP/SSH, volgt u de procedure die [hier](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) wordt beschreven.
+Als u verbinding wilt maken met virtuele Azure-machines met behulp van RDP/SSH na een failover, volgt u de procedure die [hier](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) wordt beschreven.
 
 Volg de stappen die [hier](site-recovery-failover-to-azure-troubleshoot.md) worden beschreven om eventuele verbindingsproblemen na een failover op te lossen.
 

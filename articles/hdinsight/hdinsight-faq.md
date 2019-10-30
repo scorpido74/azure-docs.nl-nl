@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827608"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052514"
 ---
-# <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Veelgestelde vragen
+# <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
 In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over het uitvoeren van [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
@@ -44,7 +44,7 @@ Zie [capaciteits planning voor HDInsight-clusters](https://docs.microsoft.com/az
 
 In deze sectie worden veelvoorkomende problemen met de capaciteit en de oplossings technieken beschreven.
 
-#### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>Fout: De implementatie overschrijdt het quotum van ' 800 '
+#### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>Fout: de implementatie zou het quotum van ' 800 ' overschrijden
 
 Azure heeft een quotumlimiet van 800 implementaties per resourcegroep. Verschillende quota's worden toegepast per resource groep, abonnement, account of andere scopes. Uw abonnement mag bijvoorbeeld worden geconfigureerd om het aantal kerngeheugens voor een regio te beperken. Als u probeert een virtuele machine te implementeren met meer kern geheugens dan de toegestane hoeveelheid, wordt een fout bericht weer gegeven dat aangeeft dat het quotum is overschreden.
 
@@ -52,7 +52,7 @@ U kunt dit probleem oplossen door de implementaties te verwijderen die niet lang
 
 Zie voor meer informatie [Solve errors for resource quotas](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) (Fouten voor resourcequota oplossen).
 
-#### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Fout: Het maximale knoop punt heeft de beschik bare kernen in deze regio overschreden
+#### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Fout: het maximale knoop punt heeft de beschik bare kernen in deze regio overschreden
 
 Uw abonnement mag worden geconfigureerd om het aantal kerngeheugens voor een regio te beperken. Als u probeert een bron te implementeren met meer kern geheugens dan de toegestane hoeveelheid, wordt een fout bericht weer gegeven dat aangeeft dat het quotum is overschreden.
 
@@ -84,7 +84,7 @@ Ja. Als u extra onderdelen wilt installeren of cluster configuratie wilt aanpass
 
 - Scripts tijdens of na het maken. Scripts worden aangeroepen via [script actie](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), een configuratie optie die u kunt gebruiken vanuit de Azure Portal, Hdinsight Windows Power shell-cmdlets of de HDINSIGHT .NET SDK. Deze configuratie optie kan worden gebruikt vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK.
 
-- `sudo`of andere methoden nadat u het cluster hebt ingericht.
+- `sudo` of andere methoden nadat u het cluster hebt ingericht.
   
 - [HDInsight-toepassings platform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) voor het installeren van ecosysteem toepassingen.
 
@@ -114,7 +114,7 @@ Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetze
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Hoe kan ik tijd zone wijzigen in Ambari?
 
-1. Open de Ambari-webgebruikersinterface https://CLUSTERNAME.azurehdinsight.net op, waarbij clustername de naam van uw cluster is.
+1. Open de Ambari-webgebruikersinterface op https://CLUSTERNAME.azurehdinsight.net, waarbij CLUSTERNAME de naam van uw cluster is.
 2. Selecteer in de rechter bovenhoek de optie beheer | Instellingen. 
 
    ![Ambari-instellingen](media/hdinsight-faq/ambari-settings.png)
@@ -127,15 +127,15 @@ Nee, het is niet mogelijk om Apache Kafka en Apache Spark uit te voeren op hetze
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Hoe kan ik migreren van de bestaande meta Store naar Azure SQL Server? 
 
-Zie zelf studie voor informatie [over het migreren van SQL Server naar Azure SQL Server: SQL Server naar een enkele data base of gegroepeerde Data base in Azure SQL Database offline](../dms/tutorial-sql-server-to-azure-sql.md)migreren met behulp van DMS.
+Zie [zelf studie: SQL Server migreren naar een enkele data base of gegroepeerde Data base in Azure SQL database offline met behulp van DMS](../dms/tutorial-sql-server-to-azure-sql.md)als u wilt migreren van SQL Server naar Azure SQL Server.
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Wordt het Hive-metastore verwijderd wanneer het cluster wordt verwijderd?
 
 Dit is afhankelijk van het type meta Store dat uw cluster heeft geconfigureerd voor gebruik.
 
-Voor een standaard-META Store: De standaard-META Store maakt deel uit van de cluster levenscyclus. Wanneer u een cluster verwijdert, worden ook de corresponderende meta Store-gegevens verwijderd.
+Voor een standaard-META Store: de standaard-META Store maakt deel uit van de cluster levenscyclus. Wanneer u een cluster verwijdert, worden ook de corresponderende meta Store-gegevens verwijderd.
 
-Voor een aangepaste meta Store: De levens cyclus van de meta Store is niet gebonden aan de levens cyclus van een cluster. Daarom kunt u clusters maken en verwijderen zonder dat meta gegevens verloren gaan. Meta gegevens zoals uw Hive-schema's blijven behouden, zelfs nadat u het HDInsight-cluster hebt verwijderd en opnieuw hebt gemaakt.
+Voor een aangepaste meta Store: de levens cyclus van de meta Store is niet gebonden aan de levens cyclus van een cluster. Daarom kunt u clusters maken en verwijderen zonder dat meta gegevens verloren gaan. Meta gegevens zoals uw Hive-schema's blijven behouden, zelfs nadat u het HDInsight-cluster hebt verwijderd en opnieuw hebt gemaakt.
 
 Zie [externe meta gegevens archieven gebruiken in azure HDInsight](hdinsight-use-external-metadata-stores.md)voor meer informatie.
 
@@ -177,9 +177,9 @@ Raadpleeg de volgende documenten voor meer informatie:
 
 Ja, u kunt een extra virtuele machine implementeren binnen hetzelfde subnet als een HDInsight-cluster. De volgende configuraties zijn mogelijk:
 
-- Edge-knoop punten: U kunt nog een Edge-knoop punt toevoegen aan het cluster, zoals beschreven in [lege Edge-knoop punten gebruiken op Apache Hadoop clusters in HDInsight](hdinsight-apps-use-edge-node.md).
+- Edge-knoop punten: u kunt een ander Edge-knoop punt toevoegen aan het cluster, zoals wordt beschreven in [lege Edge-knoop punten gebruiken op Apache Hadoop clusters in HDInsight](hdinsight-apps-use-edge-node.md).
 
-- Zelfstandige knoop punten:  U kunt een zelfstandige virtuele machine toevoegen aan hetzelfde subnet en het cluster vanaf die virtuele machine openen met behulp van het persoonlijke eind `https://<CLUSTERNAME>-int.azurehdinsight.net`punt. Zie [netwerk verkeer beheren](hdinsight-plan-virtual-network-deployment.md#networktraffic)voor meer informatie.
+- Zelfstandige knoop punten: u kunt een zelfstandige virtuele machine toevoegen aan hetzelfde subnet en vanaf die virtuele machine toegang krijgen tot het cluster met behulp van het persoonlijke eind punt `https://<CLUSTERNAME>-int.azurehdinsight.net`. Zie [netwerk verkeer beheren](hdinsight-plan-virtual-network-deployment.md#networktraffic)voor meer informatie.
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Kan ik een bestaand HDInsight-cluster toevoegen aan een ander virtueel netwerk?
 
@@ -215,7 +215,7 @@ Het gebruik van een certificaat dat is uitgegeven door een certificerings instan
 
 - [Azure Active Directory Domain Services inschakelen](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-- [Zelfstudie: Een beveiligd LDAP configureren voor een Azure Active Directory Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md)
+- [Zelf studie: secure LDAP configureren voor een Azure Active Directory Domain Services beheerd domein](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Hoe kan ik de aanmeldings activiteiten in zwerver weer geven?
 
@@ -238,6 +238,13 @@ In scenario's waarin u het schema moet beheren, kunt u de volgende stappen uitvo
    `/usr/local/bin/azsecd manual -s clamav`
 
 Zie [Hoe kan ik een cron instellen](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)voor meer informatie over het instellen en uitvoeren van een cron-taak?
+
+### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Waarom is LLAP beschikbaar in Spark ESP-clusters?
+Op ESP Spark-clusters is LLAP ingeschakeld om beveiligings redenen (dat wil zeggen Apache zwerver), niet voor prestaties. U moet grotere Vm's voor knoop punten gebruiken voor het resource gebruik van LLAP (bijvoorbeeld minimale D13V2). 
+
+### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Hoe kan ik aanvullende AAD-groepen toevoegen nadat ik een ESP-cluster heb gemaakt?
+Er zijn twee manieren om dit te doen: 1. u kunt het cluster opnieuw maken en de extra groep toevoegen op het moment dat het cluster wordt gemaakt. Als u scoped Synchronization in AAD-DS gebruikt, moet u ervoor zorgen dat groep B is opgenomen in de synchronisatie met het bereik.
+2: Voeg de groep toe als een geneste subgroep van de vorige groep die is gebruikt voor het maken van het ESP-cluster. Als u bijvoorbeeld een ESP-cluster met groeps `A`hebt gemaakt, kunt u later op groep toevoegen `B` als een geneste subgroep van `A` en na ongeveer één uur dat deze automatisch wordt gesynchroniseerd en beschikbaar is in het cluster. 
 
 ## <a name="storage"></a>Storage
 
@@ -290,7 +297,7 @@ U kunt beleid voor gegevens toegang toewijzen aan de beveiligings groepen van uw
 
 Nee, u kunt de schijf grootte van een worker-knoop punt niet verhogen. de enige manier om de schijf grootte te verg Roten, is het verwijderen van het cluster en het opnieuw maken met grotere werk-Vm's. Gebruik geen HDFS om uw HDInsight-gegevens op te slaan, omdat de gegevens worden verwijderd als u het cluster verwijdert. In plaats daarvan slaat u uw gegevens op in Azure. Door het cluster omhoog te schalen, kunt u ook extra capaciteit toevoegen aan uw HDInsight-cluster.
 
-## <a name="edge-nodes"></a>Edge-knooppunten
+## <a name="edge-nodes"></a>Edge-knoop punten
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Kan ik een Edge-knoop punt toevoegen nadat het cluster is gemaakt?
 
@@ -310,14 +317,14 @@ U gebruikt persistente scripts om nieuwe worker-knoop punten die aan het cluster
 
 U kunt de volgende REST-eind punten gebruiken om de benodigde gegevens in JSON-indeling te halen. Basis verificatie headers gebruiken om de aanvragen uit te voeren.
 
-- TEZ-query weergave: *https: \/ @ no__t-2 @ no__t-3cluster name >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
-- TEZ dag weer gave: *https: \/ @ no__t-2 @ no__t-3cluster name >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
+- TEZ-query weergave: *https:\//\<cluster name >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- TEZ dag weer gave: *https:\//\<cluster name >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Hoe kan ik de configuratie gegevens uit het HDI-cluster op te halen met behulp van een Azure Active Directory gebruiker?
 
 Als u de juiste verificatie tokens met uw AAD-gebruiker wilt onderhandelen, gaat u door de gateway via de volgende indeling:
 
-* https://`<cluster dnsname>`.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Hoe kan ik Ambari rest API gebruiken om de prestaties van een garen te controleren?
 
@@ -380,3 +387,7 @@ Voor informatie over de integratie mogelijkheden van stroom verwerking in azure 
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Is er een manier om het hoofd knooppunt van het cluster dynamisch te beëindigen wanneer het cluster gedurende een bepaalde periode niet actief is?
 
 U kunt dit niet doen met HDInsight-clusters. U kunt Azure Data Factory voor deze scenario's gebruiken.
+
+### <a name="what-compliance-offerings-does-hdinsight-offer"></a>Welke compliance-aanbiedingen biedt HDInsight-aanbieding?
+
+Zie het [vertrouwens centrum van micro soft](https://www.microsoft.com/trust-center) en het [overzicht van Microsoft Azure naleving](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)voor nalevings informatie.

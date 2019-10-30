@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 90c9d9be6f5a255a4ddd4f7fae7cf410e5b1f80d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3a8cfeb237b0e5e662f8fbaef4347f4346db1787
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934951"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73045124"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Virtuele SQL-machines in azure bulksgewijs registreren met de resource provider van de SQL-VM
 
@@ -219,17 +219,12 @@ Fouten worden vastgelegd in het logboek bestand met de naam `VMsNotRegisteredDue
 
 ## <a name="remarks"></a>Opmerkingen
 
-Houd rekening met het volgende bij het registreren van SQL Server Vm's met de resource provider met behulp van het meegeleverde script:
+Wanneer u SQL Server Vm's registreert bij de resource provider met behulp van het meegeleverde script, moet u rekening houden met het volgende:
 
 - Registratie bij de resource provider vereist een gast agent die wordt uitgevoerd op de SQL Server VM. Installatie kopieën van Windows Server 2008 hebben geen gast agent, zodat deze virtuele machines mislukken en hand matig moeten worden geregistreerd met de [beheer modus](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)voor niet-agents.
 - Er is een nieuwe logica ingebouwd om transparante fouten te verholpen. Als de virtuele machine is geregistreerd, is het een snelle bewerking. Als de registratie echter mislukt, wordt elke virtuele machine opnieuw geprobeerd.  Als zodanig is het belang rijk dat u veel tijd hebt om het registratie proces te volt ooien, maar de vereiste voor de werkelijke hoeveelheid tijd is afhankelijk van het type en het aantal fouten. 
 
 ## <a name="full-script"></a>Volledige script
-
-Kopieer het volledige script en sla het op als `RegisterSqLVMs.psm1`.
-
-[!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
-
 Zie [bulk registratie van SQL-vm's met AZ Power shell](https://github.com/Azure/azure-docs-powershell-samples/blob/master/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1)voor het volledige script op github. 
 
 
