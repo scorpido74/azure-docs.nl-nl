@@ -10,12 +10,12 @@ ms.date: 10/28/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254fa924ea2104e76a475c106f16f4672dd1eec1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.openlocfilehash: 9c8f4250d2df7703ad2960c2d68cd015cb6ec2bc
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033314"
+ms.locfileid: "73052876"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Cloud authenticatie: gefaseerde implementatie (open bare preview)
 
@@ -80,6 +80,8 @@ Deze scenario's worden niet ondersteund voor gefaseerde implementatie:
 ## <a name="get-started-with-staged-rollout"></a>Aan de slag met gefaseerde implementatie
 
 Als u aanmelding met een wacht woord-hash Sync (PHS) wilt testen met behulp van gefaseerde implementatie, voert u de onderstaande stappen uit om de gefaseerde implementatie van wacht woord-hash-synchronisatie in te scha kelen.
+
+Zie [AzureAD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout) (Engelstalig) voor meer informatie over de gebruikte Power shell-cmdlets.
 
 ## <a name="pre-work-for-password-hash-sync"></a>Vooraf werken voor wachtwoord-hash-synchronisatie
 
@@ -239,3 +241,6 @@ Hier vindt u informatie over het bijhouden van gebruikers aanmeldingen die zich 
 -   **V: kunnen we Power shell gebruiken voor het uitvoeren van een gefaseerde implementatie?**
 
 -   A: Ja, ga naar de documentatie om Power shell te gebruiken voor het uitvoeren van de gefaseerde implementatie.
+
+## <a name="next-steps"></a>Volgende stappen
+- [AzureAD 2,0 Preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
