@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: abc6f8a7a2fda3578bbcf2947188752f8f3373cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98d24b4f497f09e982101917296b572a5c381f42
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566820"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053597"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Database resources dynamisch schalen met minimale downtime
 
@@ -45,9 +45,9 @@ U kunt uw eerste app bouwen op een kleine, afzonderlijke Data Base met een lage 
 Eén Azure SQL Database ondersteunt handmatige dynamische schaalbaarheid, maar niet automatisch schalen. Voor een meer *automatische* ervaring zou u elastische pools kunnen gebruiken. Hiermee kunnen databases resources in een pool delen op basis van afzonderlijke databasebehoeften.
 Er zijn echter scripts waarmee de schaal baarheid voor één Azure SQL Database kan worden geautomatiseerd. Zie [PowerShell gebruiken voor het controleren en schalen van één Azure SQL-database](scripts/sql-database-monitor-and-scale-database-powershell.md) voor een voorbeeld.
 
-U kunt de [DTU-service lagen](sql-database-service-tiers-dtu.md) of [vCore kenmerken](sql-database-vcore-resource-limits-single-databases.md) op elk gewenst moment wijzigen met minimale uitval tijd voor uw toepassing (doorgaans het gemiddelde van een periode van vier seconden). Voor veel bedrijven en apps is het kunnen maken van databases en het naar wens omhoog of omlaag schalen van de prestaties al voldoende, vooral als de gebruikspatronen redelijk voorspelbaar zijn. Bij onvoorspelbare gebruikspatronen kan het echter lastig zijn uw kosten en bedrijfsmodel effectief te beheren. Voor dit scenario gebruikt u een elastische pool met een bepaald aantal Edtu's die worden gedeeld door meerdere data bases in de groep.
+U kunt steeds de [DTU-servicelagen](sql-database-service-tiers-dtu.md) of [vCore-kenmerken](sql-database-vcore-resource-limits-single-databases.md) wijzigen met minimale downtime voor de toepassing (meestal minder dan vier seconden). Voor veel bedrijven en apps is het kunnen maken van databases en het naar wens omhoog of omlaag schalen van de prestaties al voldoende, vooral als de gebruikspatronen redelijk voorspelbaar zijn. Bij onvoorspelbare gebruikspatronen kan het echter lastig zijn uw kosten en bedrijfsmodel effectief te beheren. Voor dit scenario gebruikt u een elastische pool met een bepaald aantal Edtu's die worden gedeeld door meerdere data bases in de groep.
 
-![Inleiding tot SQL Database: Eén data base-Dtu's per laag en niveau](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+![Inleiding tot SQL Database: DTU's van individuele database per laag en niveau](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 De drie soorten Azure SQL Database bieden de mogelijkheid om uw data bases dynamisch te schalen:
 
@@ -55,8 +55,10 @@ De drie soorten Azure SQL Database bieden de mogelijkheid om uw data bases dynam
 - Een [beheerd exemplaar](sql-database-managed-instance.md) gebruikt de modus [vCores](sql-database-managed-instance.md#vcore-based-purchasing-model) en stelt u in staat om Maxi maal CPU-kernen en het maximum aan opslag ruimte te definiëren die aan uw exemplaar zijn toegewezen. Alle data bases in het exemplaar delen de resources die aan het exemplaar zijn toegewezen.
 - Met [elastische Pools](sql-database-elastic-pool-scale.md) kunt u de maximale resource limiet per groep data bases in de groep definiëren.
 
+Het starten van een actie omhoog of omlaag schalen in een van de versies zou het data base-engine proces opnieuw starten en naar een andere virtuele machine verplaatsen, indien nodig. Het proces voor het verplaatsen van de data base-engine naar een nieuwe virtuele machine is **online proces** waar u uw bestaande Azure SQL database-service kunt blijven gebruiken terwijl het proces wordt uitgevoerd. Zodra de engine van de doel database volledig is geïnitialiseerd en gereed is voor het verwerken van de query's, worden de verbindingen [van de bron-naar de doel database-engine overgeschakeld](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size).
+
 > [!NOTE]
-> U kunt een korte verbinding verwachten wanneer het omhoog/omlaag schalen proces is voltooid. Als u pogings [logica hebt geïmplementeerd voor standaard tijdelijke fouten](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), zult u de failover niet zien.
+> U kunt een korte verbinding verwachten wanneer het omhoog/omlaag schalen proces is voltooid. Als u [pogings logica hebt geïmplementeerd voor standaard tijdelijke fouten](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), zult u de failover niet zien.
 
 ## <a name="alternative-scale-methods"></a>Alternatieve schaal methoden
 

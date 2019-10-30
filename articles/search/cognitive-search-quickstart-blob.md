@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: e542d4685829886084bbc8adf6831647b9a1256a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 28d813e2f137ecf721165e9ea5af2e36efee872a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809668"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053488"
 ---
 # <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Quick Start: een AI-verrijkings pijplijn maken met behulp van cognitieve vaardig heden in Azure Search
 
-Azure Search kan worden geïntegreerd met [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), het toevoegen van inhoud, het door voeren van een natuurlijke taal (NLP) en de vaardig heden van installatie kopieën aan een Azure Search Indexing-pijp lijn, waardoor er geen Doorzoek bare of ongestructureerde inhoud meer kan worden doorzocht. 
+Azure Search kan worden geïntegreerd met [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), het toevoegen van inhoud, het opsporen van natuurlijke taal (NLP) en afbeeldings verwerking (afbeeldings code ring, object detectie, OCR) aan een Azure Search Indexing-pijp lijn, waardoor deze niet kan worden doorzocht of ongestructureerde inhoud kan niet worden doorzocht. 
 
-Veel Cognitive Services resources, zoals [OCR](cognitive-search-skill-ocr.md), [taal detectie](cognitive-search-skill-language-detection.md), het [herkennen van entiteiten](cognitive-search-skill-entity-recognition.md) om een aantal te noemen, kunnen worden gekoppeld aan een indexerings proces. De AI-algoritmen van Cognitive Services worden gebruikt om patronen, functies en kenmerken in brongegevens te vinden en structuren en tekstuele inhoud te retourneren voor gebruik in oplossingen voor zoekopdrachten in volledige tekst op basis van Azure Search.
+Veel Cognitive Services resources, zoals [afbeeldings codes](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-tagging-images), [object detectie](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-object-detection), [OCR](cognitive-search-skill-ocr.md), [taal detectie](cognitive-search-skill-language-detection.md)en [entiteits herkenning](cognitive-search-skill-entity-recognition.md) voor een aantal, kunnen worden gekoppeld aan een indexerings proces. De AI-algoritmen van Cognitive Services worden gebruikt om patronen, functies en kenmerken in brongegevens te vinden en structuren en tekstuele inhoud te retourneren voor gebruik in oplossingen voor zoekopdrachten in volledige tekst op basis van Azure Search.
 
 Maak in deze snelstart uw eerste verrijkingspijplijn in [Azure Portal](https://portal.azure.com) voordat u ook maar één regel code schrijft:
 

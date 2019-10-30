@@ -9,7 +9,7 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 2e5eaed40c954df5e7c731bb3fbd5d9424ea9b97
 ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/29/2019
 ms.locfileid: "73053288"
