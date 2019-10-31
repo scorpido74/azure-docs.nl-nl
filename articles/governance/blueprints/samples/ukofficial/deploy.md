@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: ea58ef49aa4d901339bf87343f0eea8eb517011d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1898820276d1906a49a95bc513a6689fce177f7d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299029"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162934"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>De NHS blauw drukken-voor beelden van het Verenigd Konink rijk en UK gebruiken
 
@@ -98,8 +98,8 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
 |De blauw druk-initiatief voor de officiële of UK NHS|Beleidstoewijzing |Bron typen voor het controleren van Diagnostische logboeken (beleid: blauw druk voor UK-officiële of UK NHS) |Lijst met resource typen om te controleren of de instelling voor Diagnostische logboeken is ingeschakeld.  Zie [ondersteunde services, schema's en categorieën voor Azure Diagnostic-logboeken](../../../../azure-monitor/platform/diagnostic-logs-schema.md)voor acceptabele waarden. |
-|\[Preview @ no__t-1: Log Analytics agent voor Linux-Vm's implementeren |Beleidstoewijzing |Optioneel: een lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent implementeren voor Linux Vm's) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
-|\[Preview @ no__t-1: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[Preview @ no__t-1: Log Analytics-agent implementeren voor Windows-Vm's) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Linux-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[preview\]: Log Analytics-agent implementeren voor Linux Vm's) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik (beleid: \[preview\]: Log Analytics-agent implementeren voor Windows-Vm's) |Beschrijving De standaard waarde is _geen_. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -109,7 +109,7 @@ Nu u de stappen voor het implementeren van de voor beelden van de UK-officiële 
 > [UK-officiële en UK NHS blauw drukken-overzicht](./index.md)
 > [UK-officiële en UK NHS blauw drukken-controle toewijzing](./control-mapping.md)
 
-Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
+Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

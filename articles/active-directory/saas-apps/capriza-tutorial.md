@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Capriza Platform | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Capriza-platform | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Capriza Platform.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: aaaaaaaaaaaaaaaaaaaaa
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80cf7706e5ecb7c4bb1f18462a9476226d5d2f0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c5f0a6e2a6aa07be1ae008648656fb704acee98
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105807"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157558"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>Zelfstudie: Azure Active Directory-integratie met Capriza Platform
+# <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>Zelf studie: integratie met Capriza-platform Azure Active Directory
 
 In deze zelfstudie leert u hoe u Capriza Platform integreert met Azure Active Directory (Azure AD).
 De integratie van Capriza Platform met Azure AD biedt de volgende voordelen:
@@ -54,7 +55,7 @@ Om de integratie van Capriza Platform te configureren in Azure AD, moet u Capriz
 
 **Voer de volgende stappen uit om Capriza Platform toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -147,12 +148,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -166,7 +167,7 @@ In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding met Azure ka
 
     ![De koppeling Capriza Platform in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -182,17 +183,17 @@ In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding met Azure ka
 
 ### <a name="create-capriza-platform-test-user"></a>Capriza Platform-testgebruiker maken
 
-Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon in Capriza. Capriza Platform biedt ondersteuning voor Just-In-Time-inrichting; dit is standaard ingeschakeld. **Zorg ervoor dat uw domeinnaam is geconfigureerd met Capriza Platform voor het inrichten van gebruikers. Hierna werkt de Just-In-Time-inrichting.**
+Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon in Capriza. Capriza Platform biedt ondersteuning voor Just-In-Time-inrichting; dit is standaard ingeschakeld. **Zorg ervoor dat uw domein naam is geconfigureerd met Capriza voor het inrichten van gebruikers. Daarna werkt alleen de just-in-time-gebruikers inrichting.**
 
 Er is geen actie-item voor u in deze sectie. Als tijdens een poging om toegang te krijgen tot Capriza blijkt dat er nog geen gebruiker bestaat, wordt er een nieuwe gebruiker gemaakt.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Capriza Platform klikt in het toegangsvenster, wordt u automatisch aangemeld bij de instantie van Capriza Platform waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

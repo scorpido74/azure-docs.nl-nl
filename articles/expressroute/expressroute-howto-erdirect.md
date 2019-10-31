@@ -1,6 +1,6 @@
 ---
-title: Configureren van ExpressRoute Direct - Azure | Microsoft Docs
-description: Deze pagina kunt u ExpressRoute Direct configureren.
+title: ExpressRoute direct-Azure configureren | Microsoft Docs
+description: Op deze pagina kunt u ExpressRoute direct configureren.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,33 +8,33 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0fec7234d18659051c61fda593b1ba0fb846c220
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9dcefb2d47b6862466b64b3568e1a530a2fdb8cb
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964257"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161592"
 ---
-# <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct configureren
+# <a name="how-to-configure-expressroute-direct"></a>ExpressRoute direct configureren
 
-ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde netwerk van Microsoft op peeringlocaties strategisch verdeeld over de hele wereld verbinding te maken. Zie voor meer informatie, [over ExpressRoute rechtstreeks verbinding maken met](expressroute-erdirect-about.md).
+ExpressRoute direct biedt u de mogelijkheid om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft op locatie van peering strategisch gedistribueerd over de hele wereld. Zie [about ExpressRoute Direct Connect](expressroute-erdirect-about.md)(Engelstalig) voor meer informatie.
 
-## <a name="resources"></a>Maken van de resource
+## <a name="resources"></a>De resource maken
 
-1. Aanmelden bij Azure en selecteer het abonnement. De resource Direct van ExpressRoute en ExpressRoute-circuits moeten zich in hetzelfde abonnement.
+1. Meld u aan bij Azure en selecteer het abonnement. De ExpressRoute direct resource-en ExpressRoute-circuits moeten zich in hetzelfde abonnement benemen.
 
    ```powershell
    Connect-AzAccount 
 
-   Select-AzSubscription -Subscription “<SubscriptionID or SubscriptionName>”
+   Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
    ```
-2. Lijst met alle locaties waar ExpressRoute Direct wordt ondersteund.
+2. Alle locaties weer geven waar ExpressRoute direct wordt ondersteund.
   
    ```powershell
    Get-AzExpressRoutePortsLocation
    ```
 
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
   
    ```powershell
    Name                : Equinix-Ashburn-DC2
@@ -61,13 +61,13 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    Contact             : support@equinix.com
    AvailableBandwidths : []
    ```
-3. Bepalen of een locatie die hierboven vermeld beschikbare bandbreedte heeft
+3. Bepalen of een locatie die hierboven wordt vermeld, beschik bare band breedte heeft
 
    ```powershell
    Get-AzExpressRoutePortsLocation -LocationName "Equinix-San-Jose-SV1"
    ```
 
-   **Voorbeeld van uitvoer**
+   **Voorbeeld uitvoer**
 
    ```powershell
    Name                : Equinix-San-Jose-SV1
@@ -83,14 +83,14 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
                           }
                         ]
    ```
-4. Maak een ExpressRoute-Direct-resource op basis van de hierboven gekozen locatie
+4. Een ExpressRoute-directe resource maken op basis van de hierboven gekozen locatie
 
-   ExpressRoute Direct biedt ondersteuning voor zowel QinQ en Dot1Q inkapseling. Als QinQ is ingeschakeld, wordt elk ExpressRoute-circuit wordt dynamisch toegewezen een S-Tag en is uniek in de resource ExpressRoute Direct. Elke C-code op het circuit moet uniek zijn voor het circuit, maar ook niet voor de ExpressRoute-Direct.  
+   ExpressRoute direct ondersteunt zowel QinQ-als Dot1Q-inkapseling. Als QinQ is geselecteerd, wordt elk ExpressRoute-circuit dynamisch toegewezen aan een S-tag en is deze uniek in de directe resource van ExpressRoute. Elk C-tag op het circuit moet uniek zijn op het circuit, maar niet via de ExpressRoute direct.  
 
-   Als Dot1Q inkapseling is ingeschakeld, moet u uniekheid van de C-code (VLAN) in de hele ExpressRoute Direct resourcegroepen beheren.  
+   Als Dot1Q-inkapseling is geselecteerd, moet u de uniekheid van de C-tag (VLAN) beheren voor de volledige ExpressRoute direct-resource.  
 
    > [!IMPORTANT]
-   > ExpressRoute Direct mag alleen bestaan uit één encapsulation-type. Inkapseling kan niet worden gewijzigd nadat de ExpressRoute Direct is gemaakt.
+   > ExpressRoute direct kan slechts één encapsulation-type zijn. Inkapseling kan niet worden gewijzigd nadat ExpressRoute direct is gemaakt.
    > 
  
    ```powershell 
@@ -98,10 +98,10 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    ```
 
    > [!NOTE]
-   > Het kenmerk inkapseling kan ook worden ingesteld op Dot1Q. 
+   > Het kenmerk encapsulation kan ook worden ingesteld op Dot1Q. 
    >
 
-   **Voorbeeld van uitvoer:**
+   **Voorbeeld uitvoer:**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -150,26 +150,26 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    Circuits                   : []
    ```
 
-## <a name="state"></a>Status van beheerder wijzigen van koppelingen
+## <a name="state"></a>De beheer status van koppelingen wijzigen
 
-  Dit proces moet worden gebruikt voor het uitvoeren van een laag 1-test, ervoor zorgen dat elke cross-verbinding juist patches naar elke router voor primaire en secundaire.
-1. ExpressRoute Direct details ophalen.
+  Dit proces moet worden gebruikt om een laag 1-test uit te voeren, zodat elke Kruis verbinding op de juiste wijze wordt gerepareerd in elke router voor primair en secundair.
+1. ExpressRoute direct-Details ophalen.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
    ```
-2. Koppeling naar ingeschakelde instellen. Herhaal deze stap voor het instellen van elke koppeling ingeschakeld.
+2. Stel de koppeling in op ingeschakeld. Herhaal deze stap om elke koppeling in te stellen op ingeschakeld.
 
-   Koppelingen [0] is de primaire-poort en koppelingen [1] is de secundaire-poort.
+   Koppelingen [0] is de primaire poort en koppelingen [1] is de secundaire poort.
 
    ```powershell
-   $ERDirect.Links[0].AdminState = “Enabled”
+   $ERDirect.Links[0].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
-   $ERDirect.Links[1].AdminState = “Enabled”
+   $ERDirect.Links[1].AdminState = "Enabled"
    Set-AzExpressRoutePort -ExpressRoutePort $ERDirect
    ```
-   **Voorbeeld van uitvoer:**
+   **Voorbeeld uitvoer:**
 
    ```powershell
    Name                       : Contoso-Direct
@@ -218,27 +218,27 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
    Circuits                   : []
    ```
 
-   Gebruik dezelfde procedure met `AdminState = “Disabled”` om in te schakelen de poorten.
+   Gebruik dezelfde procedure met `AdminState = "Disabled"` om de poorten in te scha kelen.
 
 ## <a name="circuit"></a>Een circuit maken
 
-U kunt standaard 10 circuits maken in het abonnement waarin de resource ExpressRoute Direct is. Dit kan worden verhoogd met ondersteuning. U bent verantwoordelijk voor het bijhouden van zowel ingericht en bandbreedte gebruikt. Ingerichte bandbreedte is de som van de bandbreedte van alle op de resource ExpressRoute Direct-circuits en gebruikte bandbreedte is het fysieke gebruik van de onderliggende fysieke interfaces.
+Standaard kunt u 10 circuits maken in het abonnement waarin de ExpressRoute direct-resource zich bevindt. Dit kan worden verhoogd met ondersteuning. U bent zelf verantwoordelijk voor het bijhouden van zowel ingerichte als gebruikte band breedte. Ingerichte band breedte is de som van de band breedte van alle circuits op de ExpressRoute direct-resource en gebruikte band breedte is het fysieke gebruik van de onderliggende fysieke interfaces.
 
-Er zijn aanvullende circuit bandbreedten die kunnen worden gebruikt op ExpressRoute Direct alleen ter ondersteuning van de scenario's die hierboven worden beschreven. Dit zijn: 40Gbps en 100Gbps.
+Er zijn extra circuit bandbreedten die alleen op ExpressRoute direct kunnen worden gebruikt om de hierboven beschreven scenario's te ondersteunen. Dit zijn: 40Gbps en 100Gbps.
 
-**SkuTier** mag lokaal, Standard of Premium.
+**SkuTier** kan lokaal, standaard of Premium zijn.
 
-**SkuFamily** moet MeteredData als onbeperkte wordt niet ondersteund voor ExpressRoute Direct.
+**SkuFamily** moet MeteredData alleen als onbeperkt worden niet ondersteund op ExpressRoute direct.
 
-Een circuit maken op de resource ExpressRoute Direct.
+Maak een circuit op de ExpressRoute direct-resource.
 
   ```powershell
   New-AzExpressRouteCircuit -Name $Name -ResourceGroupName $ResourceGroupName -ExpressRoutePort $ERDirect -BandwidthinGbps 100.0  -Location $AzureRegion -SkuTier Premium -SkuFamily MeteredData 
   ```
 
-  Andere bandbreedten zijn onder andere: 5.0, 10.0 en 40,0
+  Andere band breedten zijn onder andere: 5,0, 10,0 en 40,0
 
-  **Voorbeeld van uitvoer:**
+  **Voorbeeld uitvoer:**
 
   ```powershell
   Name                             : ExpressRoute-Direct-ckt
@@ -272,4 +272,4 @@ Een circuit maken op de resource ExpressRoute Direct.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over ExpressRoute Direct de [overzicht](expressroute-erdirect-about.md).
+Zie het [overzicht](expressroute-erdirect-about.md)voor meer informatie over ExpressRoute direct.

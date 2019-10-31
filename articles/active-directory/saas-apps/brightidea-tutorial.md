@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Brightidea | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Brightidea | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Brightidea.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3adae3e0-f43b-492f-b373-6a512d2d6046
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa15a91a6b82a8858bf46a08e8a9dbe11a51d8d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff89f7323ba4cdf14ed1c052b2dd4e4e06356e00
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105942"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157615"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Zelfstudie: Azure Active Directory-integratie met Brightidea
+# <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Zelf studie: integratie Azure Active Directory met Brightidea
 
 In deze zelfstudie leert u hoe u Brightidea kunt integreren met Azure Active Directory (Azure AD).
 Als u Brightidea integreert met Azure AD krijgt u de volgende voordelen:
@@ -56,7 +57,7 @@ Als u de integratie van Brightidea in Azure AD wilt configureren, moet u Brighti
 
 **Voer de volgende stappen uit als u Brightidea vanuit de galerie wilt toevoegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -145,11 +146,11 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Brighti
 
 1. Meld u in een ander browservenster met de administratorreferenties aan bij Brightidea.
 
-2. Ga naar **Enterprise Setup** -> **Authentication Tab** als u de functie Eenmalige aanmelding voor uw Brightidea-systeem wilt ophalen. U ziet hier twee subtabbladen: Auth Selection en SAML Profiles.
+2. Als u de SSO-functie in uw Brightidea-systeem wilt ophalen, gaat u naar **Enter prise Setup** -> **Authentication tab**. Er worden twee subtabbladen weer geven: verificatie selectie & SAML-profielen.
 
     ![Configuratie van Brightidea](./media/brightidea-tutorial/configure1.png)
 
-3. Selecteer **Auth Selection**. Er worden standaard slechts twee standaardmethoden weergegeven: Brightidea: Login en Registration. Als er een methode voor eenmalige aanmelding wordt toegevoegd, wordt deze in de lijst weergegeven.
+3. Selecteer **Auth Selection**. Standaard worden er slechts twee standaard methoden weer gegeven: Brightidea aanmelden & registratie. Als er een methode voor eenmalige aanmelding wordt toegevoegd, wordt deze in de lijst weergegeven.
 
     ![Configuratie van Brightidea](./media/brightidea-tutorial/configure2.png)
 
@@ -194,12 +195,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon** in.
   
-    b. In de **gebruikersnaam** veld, typt u **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -213,7 +214,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Brightidea in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -233,11 +234,11 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Brightide
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Brightidea klikt, wordt u automatisch aangemeld bij de instantie van Brightidea waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

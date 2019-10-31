@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Central Desktop | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met centraal bureau blad | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Central Desktop.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58fcd21c7e6e3f2336d3e809584451dc38f6276b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fda8e928b530001faeae34c364dfed91d7620f0a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105739"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157508"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Zelfstudie: Azure Active Directory-integratie met Central Desktop
+# <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Zelf studie: integratie met centraal bureau blad Azure Active Directory
 
 In deze zelfstudie leert u hoe u Central Desktop kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Central Desktop met Azure AD biedt de volgende voordelen:
@@ -53,7 +54,7 @@ Voor het configureren van de integratie van Central Desktop met Azure AD moet u 
 
 **Als u Central Desktop vanuit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -140,11 +141,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Central Desktop moet
 
 2. Ga naar **Settings**. Selecteer **Advanced** en vervolgens **Single Sign On**.
 
-    ![Setup - Advanced](./media/central-desktop-tutorial/ic769563.png "Setup - Advanced")
+    ![Instellen-Geavanceerd](./media/central-desktop-tutorial/ic769563.png "Instellen-Geavanceerd")
 
 3. Voer de volgende stappen uit op de pagina **Single Sign On Settings**:
 
-    ![Single sign-on settings](./media/central-desktop-tutorial/ic769564.png "Single Sign On Settings")
+    ![Instellingen voor eenmalige aanmelding](./media/central-desktop-tutorial/ic769564.png "Instellingen voor eenmalige aanmelding")
 
     a. Selecteer **Enable SAML v2 Single Sign On**.
 
@@ -156,7 +157,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Central Desktop moet
 
 4. Voer de volgende stappen uit in de sectie **Message Signature Verification Method**:
 
-    ![Message signature verification method](./media/central-desktop-tutorial/ic769565.png "Message Signature Verification Method")
+    ![Verificatie methode voor bericht handtekeningen](./media/central-desktop-tutorial/ic769565.png "Verificatie methode voor bericht handtekeningen")
     
     a. Selecteer **Certificaat**.
 
@@ -186,12 +187,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -205,7 +206,7 @@ In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige 
 
     ![De Central Desktop-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -232,26 +233,26 @@ Voordat Azure AD-gebruikers zich kunnen aanmelden, moeten ze worden ingericht vo
 
 2. Selecteer **People** en selecteer vervolgens **Add Internal Members**.
 
-    ![People](./media/central-desktop-tutorial/ic781051.png "People")
+    ![Iedereen](./media/central-desktop-tutorial/ic781051.png "Personen")
 
 3. Typ in het vak **Email Address of New Members** een Azure AD-account dat u wilt inrichten, en selecteer vervolgens **Next**.
 
-    ![Email addresses of new members](./media/central-desktop-tutorial/ic781052.png "Email addresses of new members")
+    ![E-mail adressen van nieuwe leden](./media/central-desktop-tutorial/ic781052.png "E-mail adressen van nieuwe leden")
 
 4. Selecteer **Add Internal member(s)** .
 
-    ![Add internal member](./media/central-desktop-tutorial/ic781053.png "Add internal member")
+    ![Intern lid toevoegen](./media/central-desktop-tutorial/ic781053.png "Intern lid toevoegen")
   
    > [!NOTE]
    > De gebruikers die u toevoegt ontvangen een e-mail met een bevestigingskoppeling voor het activeren van hun account.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Central Desktop klikt, wordt u als het goed is automatisch aangemeld bij de instantie van Central Desktop waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

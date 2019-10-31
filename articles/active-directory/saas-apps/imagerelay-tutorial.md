@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Image Relay | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met afbeeldings relay | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Image Relay.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 65bb5990-07ef-4244-9f41-cd28fc2cb5a2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37b7fe05f306f08d83de0832c5b1dd814f5560ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4fd0637a632b277eae019ac4aebfbc7cdb87e8e2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100552"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158967"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Zelfstudie: Azure Active Directory-integratie met Image Relay
+# <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Zelf studie: integratie Azure Active Directory met afbeeldings relay
 
 In deze zelfstudie leert u hoe u Image Relay kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Image Relay met Azure AD biedt de volgende voordelen:
@@ -53,7 +54,7 @@ Om de integratie van Image Relay in Azure AD te configureren, moet u Image Relay
 
 **Voer de volgende stappen uit om Image Relay toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -198,12 +199,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -217,7 +218,7 @@ In deze sectie zorgt u ervoor dat Britta Simon gebruik kan maken van eenmalige a
 
     ![De koppeling Image Relay in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -247,15 +248,15 @@ Het doel van deze sectie is om in Image Relay een gebruiker te maken met de naam
 
     ![Eenmalige aanmelding configureren](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Image Relay klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van Image Relay waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

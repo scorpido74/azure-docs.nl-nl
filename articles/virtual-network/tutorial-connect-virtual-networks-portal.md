@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515710"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164066"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Zelfstudie: virtuele netwerken verbinden met virtueel-netwerkpeering met behulp van Azure Portal
 
@@ -54,7 +54,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
     |Resourcegroep| Selecteer **Nieuwe maken** en voer *myResourceGroup* in.|
     |Regio| Selecteer **US - oost**.|
     |Naam|myVirtualNetwork1|
-    ! [Eenvoudige instellingen van het virtuele netwerk configureren] (
+   
 4. Voer op de pagina **IP-adressen** 10.0.0.0/16 in voor het veld **adres ruimte** . Klik hieronder op de knop **subnet toevoegen** en voer Subnet1 in voor het **subnet naam** en 10.0.0.0/24 voor het **adres bereik**van het subnet.
    
 5. Volg de stappen 1-3 nogmaals, met de volgende wijzigingen:
@@ -147,7 +147,7 @@ Het maken van de VM's duurt enkele minuten. Ga niet verder met de overige stappe
 6. In een latere stap wordt ping gebruikt om te communiceren met *myVm2* vanaf *myVm1*. Ping maakt gebruik van ICMP (Internet Control Message Protocol), wat standaard door Windows Firewall wordt geweigerd. Schakel op *myVm1* ICMP via Windows Firewall in, zodat u deze VM in een latere stap kunt pingen vanaf *myVm2* met behulp van PowerShell:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     Hoewel ping wordt gebruikt voor communicatie tussen VM's in deze zelfstudie, wordt niet aanbevolen ICMP via Windows Firewall toe te staan voor productie-implementaties.

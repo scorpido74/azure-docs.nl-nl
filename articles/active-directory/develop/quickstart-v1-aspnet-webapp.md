@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2019
+ms.date: 10/25/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddf2b310a4faa3b13b7402fb67aeb3d1312ac4ac
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 240b64bcaa242e39140f39faff31418f96b34193
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324538"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149913"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Quickstart: Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app
 
@@ -30,4 +30,6 @@ ms.locfileid: "68324538"
 
 Met [micro soft Authentication Library (MSAL)](msal-overview.md) kunnen ontwikkel aars tokens verkrijgen van het micro soft Identity platform-eind punt om toegang te krijgen tot beveiligde web-api's. Active Directory Authentication Library (ADAL) wordt geïntegreerd met het eind punt van Azure AD voor ontwikkel aars (v 1.0), waarbij MSAL integreert met het micro soft Identity platform (v 2.0)-eind punt.
 
-Voor nieuwe webtoepassingen raden we u aan micro soft Identity platform (v 2.0) en MSAL te gebruiken om tokens te verkrijgen en toegang te krijgen tot beveiligde web-Api's: [Snelstart: Voeg aanmelden met micro soft toe aan een ASP.NET-web](quickstart-v2-aspnet-webapp.md)-app.
+## <a name="next-steps"></a>Volgende stappen
+
+Voor nieuwe webtoepassingen raden we u aan micro soft Identity platform (v 2.0) en MSAL te gebruiken om tokens te verkrijgen en toegang te krijgen tot beveiligde web-Api's. Zie [Snelstartgids: aanmelden toevoegen met micro soft aan een ASP.net-Web-app](quickstart-v2-aspnet-webapp.md) om aan de slag te gaan.

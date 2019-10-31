@@ -8,14 +8,14 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0fe05131268b8a6a6c61323289d3017231e49706
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 224afe19e50e52c56c223ff1a52f9989943ce712
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299807"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163103"
 ---
-# <a name="tutorial-send-data-via-transparent-gateway"></a>Zelfstudie: Gegevens verzenden via een transparante gateway
+# <a name="tutorial-send-data-via-transparent-gateway"></a>Zelf studie: gegevens verzenden via een transparante gateway
 
 > [!NOTE]
 > Dit artikel maakt deel uit van een reeks voor een zelf studie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel hebt gearriveerd, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
@@ -37,7 +37,7 @@ Bekijk de code om te zien hoe deze twee items worden geïmplementeerd.
 
 1. Open Visual Studio code op uw ontwikkel machine.
 
-2. \\\\\\ **Bestand** > **openen map...** om C: Source IoTEdgeAndMlSample DeviceHarness te openen.
+2. Gebruik **bestand** > **map openen...** om C:\\source\\IoTEdgeAndMlSample\\DeviceHarness te openen.
 
 3. Bekijk de methode InstallCertificate () in Program.cs.
 
@@ -53,11 +53,11 @@ Bekijk de code om te zien hoe deze twee items worden geïmplementeerd.
 
 ## <a name="build-and-run-leaf-device"></a>Een Leaf-apparaat bouwen en uitvoeren
 
-1. Als het DeviceHarness-project nog is geopend in Visual Studio code, bouwt u het project (CTRL + SHIFT + B of **Terminal** > **Run-taak maken...** ) en selecteert u **Build** in het dialoog venster.
+1. Als het DeviceHarness-project nog is geopend in Visual Studio code, bouwt u het project (CTRL + SHIFT + B of **Terminal** > **bouw taak uitvoeren...** ) en selecteert u op basis van het dialoog venster **Build** .
 
 2. Zoek de Fully Qualified Domain Name (FQDN) voor uw Edge-gateway door te navigeren naar de virtuele machine van uw IoT Edge apparaat in de portal en de waarde voor **DNS-naam** te kopiëren in het overzicht.
 
-3. Open de Visual Studio code-Terminal (**Terminal** > **New Terminal**) en voer de volgende opdracht uit `<edge_device_fqdn>` , waarbij u vervangt door de DNS-naam die u hebt gekopieerd van de virtuele machine:
+3. Open de Visual Studio code-Terminal (**terminal** > **New Terminal**) en voer de volgende opdracht uit. Vervang `<edge_device_fqdn>` door de DNS-naam die u hebt gekopieerd van de virtuele machine:
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
@@ -103,7 +103,7 @@ De uitvoer van de avroFileWriter-module kan gemakkelijk worden waargenomen door 
 
    Het kan zijn dat er meer dan één bestand is afhankelijk van de timing van de uitvoering.
 
-4. Let op de tijds tempels. De avroFileWriter-module uploadt de bestanden naar de Cloud zodra het tijdstip van de laatste wijziging in het verleden meer dan 10 minuten is (\_Zie\_gewijzigde bestand time-out in Uploader.py in de avroFileWriter-module).
+4. Let op de tijds tempels. De avroFileWriter-module uploadt de bestanden naar de Cloud wanneer het laatste wijzigings tijdstip in het verleden meer dan 10 minuten is (Zie gewijzigde\_bestand\_time-out in uploader.py in de avroFileWriter-module).
 
 5. Zodra de 10 minuten zijn verstreken, moeten de bestanden worden geüpload met de module. Als het uploaden is gelukt, worden de bestanden van de schijf verwijderd.
 
@@ -119,7 +119,7 @@ We kunnen de resultaten van het Leaf-apparaat dat gegevens verzenden, bekijken d
 
 4. Vanuit het werk dat we in het vorige gedeelte van de zelf studie hebben gedaan, verwachten we dat de **ruldata** -container berichten moet bevatten met resterende levens duur. Vouw het knoop punt **ruldata** uit.
 
-5. U ziet een of meer BLOB-bestanden met de naam `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`zoals:.
+5. U ziet een of meer BLOB-bestanden met de naam zoals: `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`.
 
 6. Klik met de rechter muisknop op een van de bestanden en kies **BLOB downloaden** om het bestand op te slaan op uw ontwikkel computer.
 
@@ -131,7 +131,7 @@ We kunnen de resultaten van het Leaf-apparaat dat gegevens verzenden, bekijken d
 
 We hebben een eenvoudig opdracht regel hulpprogramma opgenomen voor het lezen van een AVRO-bestand en het retour neren van een JSON-teken reeks van de berichten in het bestand. In deze sectie wordt het geïnstalleerd en uitgevoerd.
 
-1. Open een terminal in Visual Studio code (**Terminal** > **New Terminal**).
+1. Open een terminal in Visual Studio code (**terminal** > **New Terminal**).
 
 2. Hubavroreader installeren:
 
@@ -213,7 +213,7 @@ We hebben een eenvoudig opdracht regel hulpprogramma opgenomen voor het lezen va
            "ConnectionDeviceId": "Client_001",
            "CorrelationId": "70df0c98-0958-4c8f-a422-77c2a599594f",
            "CreationTimeUtc": "0001-01-01T00:00:00+00:00",
-           "EnqueuedTimeUtc": “<time>”
+           "EnqueuedTimeUtc": "<time>"
    }
    ```
 
@@ -227,7 +227,7 @@ Als u van plan bent om de resources die worden gebruikt door deze end-to-end zel
 
 3. Als u de opslag plaats lokaal hebt gekloond, sluit u alle Power shell-of VS-code Vensters die verwijzen naar de lokale opslag plaats en verwijdert u vervolgens de map opslag plaats.
 
-4. Als u lokaal certificaten hebt gemaakt, verwijdert u de map\\c: edgeCertificates.
+4. Als u lokaal certificaten hebt gemaakt, verwijdert u de map c:\\edgeCertificates.
 
 ## <a name="next-steps"></a>Volgende stappen
 

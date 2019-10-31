@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.openlocfilehash: 3767ea10d777a0ea7ad88a2ffa4793e866ffbe6c
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 10/28/2019
+ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091474"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162892"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architectuur in HDInsight
 
@@ -24,20 +24,20 @@ ms.locfileid: "71091474"
 
 In dit artikel worden GARENs geïntroduceerd en hoe het de uitvoering van toepassingen op HDInsight coördineert.
 
-## <a name="apache-hadoop-yarn-basics"></a>Basis beginselen van Apache Hadoop garen 
+## <a name="apache-hadoop-yarn-basics"></a>Basis beginselen van Apache Hadoop garen
 
-GARENs regelen en organiseren gegevens verwerking in Hadoop. GARENs hebben twee kern services die als processen worden uitgevoerd op knoop punten in het cluster: 
+GARENs regelen en organiseren gegevens verwerking in Hadoop. GARENs hebben twee kern services die als processen worden uitgevoerd op knoop punten in het cluster:
 
-* ResourceManager 
+* Resource
 * NodeManager
 
-De Resource Manager verleent cluster Compute-resources aan toepassingen als MapReduce-taken. De Resource Manager geeft deze bronnen als containers, waarbij elke container bestaat uit een toewijzing van CPU-kernen en RAM-geheugen. Als u alle beschik bare resources in een cluster hebt gecombineerd en vervolgens de kernen en het geheugen in blokken hebt gedistribueerd, is elk bronnen blok een container. Elk knoop punt in het cluster heeft een capaciteit voor een bepaald aantal containers. Daarom heeft het cluster een vaste limiet voor het aantal beschik bare containers. De service-eenheid van resources in een container kan worden geconfigureerd. 
+De Resource Manager verleent cluster Compute-resources aan toepassingen als MapReduce-taken. De Resource Manager geeft deze bronnen als containers, waarbij elke container bestaat uit een toewijzing van CPU-kernen en RAM-geheugen. Als u alle beschik bare resources in een cluster hebt gecombineerd en vervolgens de kernen en het geheugen in blokken hebt gedistribueerd, is elk bronnen blok een container. Elk knoop punt in het cluster heeft een capaciteit voor een bepaald aantal containers. Daarom heeft het cluster een vaste limiet voor het aantal beschik bare containers. De service-eenheid van resources in een container kan worden geconfigureerd.
 
-Wanneer een MapReduce-toepassing wordt uitgevoerd op een cluster, biedt de Resource Manager de toepassing de containers waarin moet worden uitgevoerd. De resource manager houdt de status van het uitvoeren van toepassingen, de beschik bare cluster capaciteit en houdt bij het bijhouden van de toepassingen op de markt. 
+Wanneer een MapReduce-toepassing wordt uitgevoerd op een cluster, biedt de Resource Manager de toepassing de containers waarin moet worden uitgevoerd. De resource manager houdt de status van het uitvoeren van toepassingen, de beschik bare cluster capaciteit en houdt bij het bijhouden van de toepassingen op de markt.
 
 De Resource Manager voert ook een webserver proces uit dat een webgebruikersinterface biedt om de status van toepassingen te controleren.
 
-Wanneer een gebruiker een MapReduce-toepassing indient om uit te voeren op het cluster, wordt de toepassing verzonden naar de Resource Manager. De resource manager wijst op zijn beurt een container toe op beschik bare NodeManager-knoop punten. De NodeManager-knoop punten zijn waar de toepassing daad werkelijk wordt uitgevoerd. De eerste toegewezen container voert een speciale toepassing uit met de naam ApplicationMaster. Deze ApplicationMaster is verantwoordelijk voor het verkrijgen van resources, in de vorm van volgende containers, die nodig zijn om de ingediende toepassing uit te voeren. De ApplicationMaster onderzoekt de fasen van de toepassing, zoals de kaart fase en de fase verminderen, en factoren in hoeveel gegevens er moeten worden verwerkt. De ApplicationMaster vervolgens aanvragen (*onderhandelt*) de bronnen uit de resource manager namens de toepassing. De Resource Manager geeft resources van de NodeManagers in het cluster door aan de ApplicationMaster om deze te gebruiken voor het uitvoeren van de toepassing. 
+Wanneer een gebruiker een MapReduce-toepassing indient om uit te voeren op het cluster, wordt de toepassing verzonden naar de Resource Manager. De resource manager wijst op zijn beurt een container toe op beschik bare NodeManager-knoop punten. De NodeManager-knoop punten zijn waar de toepassing daad werkelijk wordt uitgevoerd. De eerste toegewezen container voert een speciale toepassing uit met de naam ApplicationMaster. Deze ApplicationMaster is verantwoordelijk voor het verkrijgen van resources, in de vorm van volgende containers, die nodig zijn om de ingediende toepassing uit te voeren. De ApplicationMaster onderzoekt de fasen van de toepassing, zoals de kaart fase en de fase verminderen, en factoren in hoeveel gegevens er moeten worden verwerkt. De ApplicationMaster vervolgens aanvragen (*onderhandelt*) de bronnen uit de resource manager namens de toepassing. De Resource Manager geeft resources van de NodeManagers in het cluster door aan de ApplicationMaster om deze te gebruiken voor het uitvoeren van de toepassing.
 
 De NodeManagers voert de taken uit waaruit de toepassing is opgebouwd en rapporteert de voortgang en de status terug naar de ApplicationMaster. Met de ApplicationMaster in wordt de status van de toepassing weer gegeven in de Resource Manager. De Resource Manager retourneert alle resultaten naar de client.
 

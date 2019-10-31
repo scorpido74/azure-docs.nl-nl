@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbac4f364dedc28f7d5f3e100481a56bde70b4d3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382925"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160743"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>Beveiligings gegevens instellen (preview) voor het gebruik van telefoon gesprekken
 
@@ -41,7 +41,7 @@ Afhankelijk van de instellingen van uw organisatie kunt u telefoon gesprekken mo
 
 ### <a name="to-set-up-phone-calls"></a>Telefoon gesprekken instellen
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myprofile.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
 
     ![Mijn profiel pagina, met gemarkeerde koppelingen voor beveiligings gegevens](media/security-info/securityinfo-myprofile-page.png)
 
@@ -115,6 +115,6 @@ U hebt extra opties voor het controleren van uw identiteit door uw organisatie, 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](user-help-reset-password.md).
+- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md).
 
 - Krijg tips voor het oplossen van problemen en hulp met problemen met aanmelden in het artikel [U kunt niet aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

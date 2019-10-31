@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een Azure Database for MySQL-server inrichten met behulp van een Azure Resource Manager-sjabloon'
+title: 'Zelf studie: een Azure Database for MySQL-server inrichten met Azure Resource Manager sjabloon'
 description: In deze zelfstudie wordt uitgelegd hoe u Azure Database for MySQL-serverimplementaties inricht en automatiseert met behulp van een Azure Resource Manager-sjabloon.
 author: savjani
 ms.author: pariks
@@ -8,14 +8,14 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 6e4bb7622fe51c0cab4fc45e945e5bb07b1d32f1
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 69025dd70ffe88c1592cf656e956b3e78a97a5e7
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925845"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163899"
 ---
-# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Zelfstudie: Een Azure Database for MySQL-server inrichten met behulp van een Azure Resource Manager-sjabloon
+# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Zelf studie: een Azure Database for MySQL-server inrichten met Azure Resource Manager sjabloon
 
 Met de [Azure Database for MySQL REST API](https://docs.microsoft.com/rest/api/mysql/) kunnen DevOps-technici de inrichting, configuratie en bewerkingen van beheerde MySQL-servers en -databases in Azure automatiseren en integreren.  Met de API kunnen MySQL-servers en -databases in de Azure Database for MySQL-service worden gemaakt, opgesomd, beheerd en verwijderd.
 
@@ -87,7 +87,7 @@ In deze aanvraag moeten de volgende waarden worden aangepast:
 +   `storageProfile/geoRedundantBackup` -Geef Ingeschakeld/uitgeschakeld op, afhankelijk van Geo-DR-vereisten.
 +   `sku/tier` - Geef de laag Basic, GeneralPurpose of MemoryOptimized voor de implementatie op.
 +   `sku/capacity` - Geef de vCore-capaciteit op. Mogelijke waarden zijn 2, 4, 8, 16, 32 of 64.
-+   `sku/family` -Geef Gen5 om te kiezen hardware genereren voor server-implementatie.
++   `sku/family`: Geef GEN5 op om de hardware-generatie voor de server implementatie te kiezen.
 +   `sku/name` -Geef TierPrefix_family_capacity op. Bijvoorbeeld B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Raadpleeg de documentatie over [prijscategorieën](./concepts-pricing-tiers.md) om de geldige waarden per regio en per laag te begrijpen.
 +   `resources/properties/virtualNetworkSubnetId` -Geef de Azure-id van het subnet in VNet op waar de Azure MySQL-server moet worden geplaatst. 
 +   `tags(optional)` -Geef optioneel tags op. Dit zijn sleutel-waardeparen zijn die u zou gebruiken om de resources voor facturering en dergelijke te categoriseren.
@@ -105,7 +105,7 @@ U kunt de Azure Cloud Shell gebruiken in de browser of Azure CLI installeren op 
 
 ```azurecli-interactive
 az login
-az group create -n ExampleResourceGroup  -l “West US2”
+az group create -n ExampleResourceGroup  -l "West US2"
 az group deployment create -g $ ExampleResourceGroup   --template-file $ {templateloc} --parameters $ {parametersloc}
 ```
 
@@ -200,7 +200,7 @@ SELECT * FROM inventory;
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 > [!div class="checklist"]
 > * Een Azure Database for MySQL-server met VNet-service-eindpunt maken met behulp van een Azure Resource Manager-sjabloon
 > * Het [opdrachtregelprogramma mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) gebruiken om een database te maken

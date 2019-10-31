@@ -13,21 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 10/25/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20c62d379006382d4208e4b111202581bc75454f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c239b88a67e1be19e3a95130839ab6fd4598fe77
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68380767"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150046"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Quickstart: Een AngularJS-app met één pagina compileren voor aanmelden en afmelden met Azure Active Directory
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Snelstart: een AngularJS-app met één pagina compileren voor aanmelden en afmelden met Azure Active Directory
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
+
+> [!IMPORTANT]
+> [Micro soft Identity platform](v2-overview.md) is een evolutie van het ontwikkel platform van de Azure Active Directory (Azure AD). Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft-API's, zoals Microsoft Graph, of API's die door ontwikkelaars zijn gemaakt.
+> Als u aanmelding voor persoonlijke accounts naast werk-en school accounts wilt inschakelen, kunt u het *[micro soft Identity platform-eind punt](azure-ad-endpoint-comparison.md)* gebruiken.
+> Deze Quick start is voor het oudere Azure AD v 1.0-eind punt. Het is raadzaam om het v 2.0-eind punt voor nieuwe projecten te gebruiken. Raadpleeg voor meer informatie [deze Java script Spa-zelf studie](tutorial-v2-javascript-spa.md) en in [dit artikel](active-directory-v2-limitations.md) wordt het *micro soft Identity platform-eind punt*uitgelegd.
 
 Azure Active Directory (Azure AD) maakt het toevoegen, aanmelden en afmelden van OAuth-API-aanroepen naar uw app met één pagina simpel en duidelijk. Uw apps kunnen hiermee gebruikers verifiëren met hun Windows Server Active Directory-accounts en een web-API gebruiken dat Azure AD helpt beveiligen, zoals de Office 365 API's of de API van Azure.
 
@@ -46,9 +51,6 @@ Om de volledige, werkende toepassing te compileren, moet u het volgende doen:
 2. ADAL installeren en van de app met één pagina configureren.
 3. Gebruik ADAL voor beveiligde pagina's in de app met één pagina.
 
-> [!NOTE]
-> Als u aanmeldingen voor persoonlijke accounts naast werk-en school accounts wilt inschakelen, kunt u het *[micro soft Identity platform-eind punt](azure-ad-endpoint-comparison.md)* gebruiken. Raadpleeg voor meer informatie [deze Java script Spa-zelf studie](tutorial-v2-javascript-spa.md) en in [dit artikel](active-directory-v2-limitations.md) wordt het *micro soft Identity platform-eind punt*uitgelegd. 
-
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u begint, zorgt u dat u aan deze vereisten voldoet:
@@ -56,17 +58,17 @@ Voordat u begint, zorgt u dat u aan deze vereisten voldoet:
 * [Download het raamwerk van de app](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) of [download het voltooide voorbeeld](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 * Zorg voor een Azure AD-tenant waarin u gebruikers kunt maken en een toepassing kunt registreren. [Lees hier hoe u een tenant kunt verkrijgen](quickstart-create-new-tenant.md) als u er nog geen hebt.
 
-## <a name="step-1-register-the-directorysearcher-application"></a>Stap 1: De toepassing DirectorySearcher registreren
+## <a name="step-1-register-the-directorysearcher-application"></a>Stap 1: de toepassing DirectorySearcher registreren
 
 Als u wilt inschakelen voor de app om gebruikers te verifiëren en tokens te verkrijgen, moet u deze eerst registreren in uw Azure AD-tenant:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Als u bent aangemeld bij meerdere mappen, moet u mogelijk controleren of dat u de juiste map bekijkt. Klik op uw account op de bovenste balk om dit te doen. Kies de Azure AD-tenant waar u uw toepassing wilt registreren onder de lijst **Directory**.
 1. Selecteer **Alle services** in het linkerdeelvenster en selecteer vervolgens **Azure Active Directory**.
 1. Klik op **app-registraties**en selecteer vervolgens **nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** wordt weergegeven, voert u een naam in voor de toepassing.
 1. Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
-1. Selecteer het **webplatform onder** de sectie omleidings- **URI** en stel `https://localhost:44326/` de waarde in op (de locatie waarnaar Azure AD tokens retourneert).
+1. Selecteer het **webplatform onder de sectie** **omleidings-URI** en stel de waarde in op `https://localhost:44326/` (de locatie waarnaar Azure AD tokens retourneert).
 1. Selecteer **Registreren** wanneer u klaar bent. Noteer de waarde **Toepassings-id (client)** op de app-pagina **Overzicht**.
 1. Adal.js gebruikt de impliciete flow OAuth om te communiceren met Azure AD. U moet de impliciete stroom voor uw toepassing inschakelen. Selecteer in het deelvenster aan de linkerkant van de geregistreerde toepassing de optie **Verificatie**.
 1. Schakel in **Geavanceerde instellingen**, onder **Impliciete toekenning**, de selectievakjes **Id-tokens** en **toegangstoken** in. Id-tokens en toegangstokens zijn vereist, omdat via de app gebruikers moeten worden aangemeld en een API moet worden aangeroepen.
@@ -100,7 +102,7 @@ De back-end heeft configuratie-informatie nodig over de app-registratie zodat de
    * `ida:Tenant` is het domein van uw Azure AD-tenant, bijvoorbeeld contoso.onmicrosoft.com.
    * `ida:Audience` is de client-id van uw toepassing die u hebt gekopieerd uit de portal.
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Stap 3: ADAL gebruiken voor het beveiligen van pagina's in de app met één pagina
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Stap 3: ADAL gebruiken om pagina's in de app met één pagina te helpen beveiligen
 
 Adal.js integreert met de AngularJS route en HTTP-providers, zodat u afzonderlijke weergaven in uw app met één pagina kunt helpen beveiligen.
 

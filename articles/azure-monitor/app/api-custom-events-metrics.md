@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: ca77cf6b838d2e10eab422f37ff55fbb43a2dba0
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 515d1da5333bb29237baa4bd941275f32ba754d3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677849"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161574"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API voor aangepaste gebeurtenissen en metrische gegevens
 
@@ -614,7 +614,7 @@ Als er [steek proeven](../../azure-monitor/app/sampling.md) worden uitgevoerd, w
 
 ## <a name="trackdependency"></a>TrackDependency
 
-Gebruik de aanroep TrackDependency om de reactie tijden en succes percentages van aanroepen naar een externe code te volgen. De resultaten worden weer gegeven in de afhankelijkheids grafieken in de portal.
+Gebruik de aanroep TrackDependency om de reactie tijden en succes percentages van aanroepen naar een externe code te volgen. De resultaten worden weer gegeven in de afhankelijkheids grafieken in de portal. Het onderstaande code fragment moet worden toegevoegd wanneer een afhankelijkheids aanroep wordt gedaan.
 
 *C#*
 

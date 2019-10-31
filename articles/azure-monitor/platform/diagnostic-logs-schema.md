@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 22521a3619482361c8f556b05436bb3b78c7dc9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0031a0c96ecadbb3c7d3a479384bee92ba4d102c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932328"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161985"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure-resource logboeken
 
@@ -222,8 +222,6 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway Access-logboek|
 |Micro soft. Network/applicationGateways|ApplicationGatewayPerformanceLog|Prestatie logboek Application Gateway|
 |Micro soft. Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway firewall-logboek|
-|Micro soft. Network/securegateways|AzureFirewallApplicationRule|Toepassings regel Azure Firewall|
-|Micro soft. Network/securegateways|AzureFirewallNetworkRule|Azure Firewall netwerk regel|
 |Micro soft. Network/azurefirewalls|AzureFirewallApplicationRule|Toepassings regel Azure Firewall|
 |Micro soft. Network/azurefirewalls|AzureFirewallNetworkRule|Azure Firewall netwerk regel|
 |Micro soft. Network/virtualNetworkGateways|GatewayDiagnosticLog|Diagnostische logboeken van de gateway|

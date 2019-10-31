@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: eaf4ba303caa405a170322828add944487908365
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 6b64eb955476a8ab5307b7d508484c290fd7660a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968581"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162172"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](resource-group-using-tags.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport.
@@ -749,7 +749,7 @@ Ga naar de naam ruimte van een resource provider:
 > | afdeling | Nee | Nee |
 > | Dimensies | Nee | Nee |
 > | enrollmentAccounts | Nee | Nee |
-> | Dump | Nee | Nee |
+> | Exports | Nee | Nee |
 > | ExternalBillingAccounts | Nee | Nee |
 > | ExternalBillingAccounts/waarschuwingen | Nee | Nee |
 > | ExternalBillingAccounts/dimensies | Nee | Nee |
@@ -1445,7 +1445,6 @@ Ga naar de naam ruimte van een resource provider:
 > | publicIPPrefixes | Ja | Ja |
 > | routeFilters | Ja | Ja |
 > | routeTables | Ja | Ja |
-> | secureGateways | Ja | Ja |
 > | serviceEndpointPolicies | Ja | Ja |
 > | trafficManagerGeographicHierarchies | Nee | Nee |
 > | trafficmanagerprofiles | Ja | Ja |

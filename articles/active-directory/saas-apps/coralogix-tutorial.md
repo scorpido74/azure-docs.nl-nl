@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Coralogix | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Coralogix | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Coralogix.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba79bfc1-992e-4924-b76a-8eb0dfb97724
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,45 +16,45 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 721e0c40ec2e02dabee0681e01fea4182b906183
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8589c366c029ab51c7cd740a1b63cff7c0481a51
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104646"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158469"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Zelfstudie: Azure Active Directory-integratie met Coralogix
+# <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>Zelf studie: integratie Azure Active Directory met Coralogix
 
 In deze zelfstudie leert u hoe u Coralogix kunt integreren met Azure AD (Azure Active Azure).
 Integratie van Coralogix met Azure AD biedt u de volgende voordelen:
 
 * U kunt in Azure AD beheren wie toegang heeft tot Coralogix.
-* U kunt uw gebruikers kunnen automatisch worden aangemeld bij Coralogix (eenmalige aanmelding) met hun Azure AD-accounts inschakelen.
-* U kunt uw accounts in één centrale locatie kunt beheren: de Azure-portal.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Coralogix (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt uw accounts op één centrale locatie beheren: de Azure Portal.
 
-Zie voor meer informatie over de integratie met Azure AD SaaS [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt de volgende items nodig om Azure AD-integratie met Coralogix te configureren:
 
-- Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [proefversie van één maand](https://azure.microsoft.com/pricing/free-trial/).
-- Een Coralogix single-sign-on abonnement ingeschakeld. 
+- Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [proef versie van één maand](https://azure.microsoft.com/pricing/free-trial/)ontvangen.
+- Een Coralogix-abonnement waarvoor eenmalige aanmelding is ingeschakeld. 
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Coralogix biedt ondersteuning voor Serviceprovider geïnitieerde eenmalige aanmelding.
+* Coralogix ondersteunt door SP geïnitieerde SSO.
 
-## <a name="add-coralogix-from-the-gallery"></a>Coralogix uit de galerie toevoegen
+## <a name="add-coralogix-from-the-gallery"></a>Coralogix toevoegen vanuit de galerie
 
-Het configureren van de integratie van Coralogix in Azure AD, eerst Coralogix uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Coralogix in azure AD wilt configureren, voegt u eerst Coralogix uit de galerie toe aan uw lijst met beheerde SaaS-apps.
 
-Als u wilt toevoegen Coralogix uit de galerie, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om Coralogix toe te voegen uit de galerie:
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer in het linkerdeelvenster de **Azure Active Directory** pictogram.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)in het linkerdeel venster het **Azure Active Directory** pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -61,39 +62,39 @@ Als u wilt toevoegen Coralogix uit de galerie, moet u de volgende stappen uitvoe
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u wilt een nieuwe toepassing toevoegen, selecteert u de **nieuwe toepassing** knop aan de bovenkant van het dialoogvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het dialoog venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak **Coralogix**. Selecteer **Coralogix** vanuit het deelvenster met resultaten en selecteer vervolgens de **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Coralogix**in het zoekvak. Selecteer **Coralogix** in het resultaten venster en selecteer vervolgens de knop **toevoegen** om de toepassing toe te voegen.
 
      ![Coralogix in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie maakt u configureert en test Azure AD eenmalige aanmelding met Coralogix op basis van een testgebruiker Britta Simon genoemd.
-Voor eenmalige aanmelding om te werken, moet u een koppeling tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Coralogix vast te stellen.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Coralogix op basis van een test gebruiker met de naam Julia Simon.
+Als u eenmalige aanmelding wilt gebruiken, moet u een koppeling tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Coralogix.
 
-Als u wilt configureren en Azure AD eenmalige aanmelding met Coralogix testen, voert u eerst de volgende bouwstenen:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Coralogix, voltooit u eerst de volgende bouw stenen:
 
 1. [Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-single-sign-on) zodat uw gebruikers deze functie kunnen gebruiken.
-2. [Configureren van eenmalige aanmelding Coralogix](#configure-coralogix-single-sign-on) de instellingen voor eenmalige aanmelding configureren aan de toepassing.
+2. [Coralogix eenmalige aanmelding configureren](#configure-coralogix-single-sign-on) om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
 3. [Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user) voor het testen van eenmalige aanmelding van Azure AD met Britta Simon.
 4. [De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user) zodat Britta Simon gebruik kan maken van eenmalige aanmelding van Azure AD.
-5. [Maak een testgebruiker Coralogix](#create-a-coralogix-test-user) hebben een equivalent van Britta Simon in Coralogix die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. [Maak een Coralogix-test gebruiker](#create-a-coralogix-test-user) om een tegen hanger van Julia Simon in Coralogix te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. [Eenmalige aanmelding testen](#test-single-sign-on) om te controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Coralogix, voert u de volgende stappen uit:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Coralogix:
 
 1. Selecteer in de [Azure-portal](https://portal.azure.com/) op de pagina voor integratie van toepassingen met **Coralogix** de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
-2. In de **selecteert u een methode voor eenmalige aanmelding** in het dialoogvenster, selecteer **SAML** eenmalige aanmelding inschakelen.
+2. Selecteer in het dialoog venster **eenmalige aanmelding selecteren** de optie **SAML** om eenmalige aanmelding in te scha kelen.
 
     ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
 
@@ -101,13 +102,13 @@ Voor het configureren van Azure AD eenmalige aanmelding met Coralogix, voert u d
 
     ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-4. In de **SAML-basisconfiguratie** dialoogvenster vak, voer de volgende stappen uit:
+4. Voer in het dialoog venster **basis configuratie van SAML** de volgende stappen uit:
 
     ![Informatie over eenmalige aanmelding bij Coralogix-domeinen en -URL's](common/sp-identifier.png)
 
-    a. In de **aanmeldings-URL** voert u een URL met het volgende patroon: `https://<SUBDOMAIN>.coralogix.com`
+    a. Voer in het vak **AANMELDINGS URL** een URL in met het volgende patroon: `https://<SUBDOMAIN>.coralogix.com`
 
-    b. In de **id (entiteits-ID)** tekst vak, voer een URL, zoals:
+    b. Voer in het tekstvak **id (Entiteits-ID)** een URL in, bijvoorbeeld:
     
     `https://api.coralogix.com/saml/metadata.xml`
 
@@ -116,17 +117,17 @@ Voor het configureren van Azure AD eenmalige aanmelding met Coralogix, voert u d
     `https://aws-client-prod.coralogix.com/saml/metadata.xml` 
 
     > [!NOTE]
-    > De aanmeldings-URL-waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met de [Coralogix Client ondersteuningsteam](mailto:info@coralogix.com) om de waarde. U kunt ook verwijzen naar de patronen in de **SAML-basisconfiguratie** sectie in Azure portal.
+    > De waarde voor de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Coralogix-clients](mailto:info@coralogix.com) om de waarde op te halen. U kunt ook verwijzen naar de patronen in het gedeelte **basis configuratie van SAML** in de Azure Portal.
 
-5. De toepassing Coralogix wordt verwacht dat de SAML-asserties ondertekend in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Op de **instellen van eenmalige aanmelding met SAML** weergeeft, schakelt de **bewerken** te openen de **gebruikerskenmerken** in het dialoogvenster.
+5. De Coralogix-toepassing verwacht de SAML-beweringen in een specifieke indeling. Configureer de volgende claims voor deze toepassing. U kunt de waarden van deze kenmerken vanuit de sectie **Gebruikerskenmerken** op de integratiepagina van de toepassing-beheren. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** de knop **bewerken** om het dialoog venster **gebruikers kenmerken** te openen.
 
     ![image](common/edit-attribute.png)
 
-6. In de **gebruikersclaims** sectie de **gebruikerskenmerken** dialoogvenster vak, het bewerken van de claims met behulp van de **bewerken** pictogram. U kunt ook de claims toevoegen met behulp van **toevoegen nieuwe claim** het SAML-token kenmerk configureren zoals wordt weergegeven in de vorige afbeelding. Voer dan de volgende stappen uit:
+6. Bewerk de claims in het gedeelte **gebruikers claims** in het dialoog venster **gebruikers kenmerken** met behulp van het **bewerkings** pictogram. U kunt de claims ook toevoegen met behulp van **nieuwe claim toevoegen** om het SAML-token kenmerk te configureren, zoals wordt weer gegeven in de vorige afbeelding. Voer dan de volgende stappen uit:
     
-    a. Selecteer de **bewerkingspictogram** openen de **gebruikersclaims beheren** in het dialoogvenster.
+    a. Selecteer het **bewerkings pictogram** om het dialoog venster **gebruikers claims beheren** te openen.
 
-    ![afbeelding](./media/coralogix-tutorial/tutorial_usermail.png) ![installatiekopie](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![installatie kopie](./media/coralogix-tutorial/tutorial_usermail.png) ![installatie kopie](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. Selecteer in de lijst **Kies een indeling voor de naam-id** de optie **E-mailadres**.
 
@@ -134,11 +135,11 @@ Voor het configureren van Azure AD eenmalige aanmelding met Coralogix, voert u d
 
     d. Selecteer **Opslaan**.
 
-7. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, selecteer **downloaden** voor het downloaden van de **federatieve metagegevens-XML**  uit de opgegeven opties volgens uw vereisten. Sla deze op uw computer.
+7. Selecteer op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** de optie **downloaden** om de **federatieve meta gegevens-XML** te downloaden uit de opgegeven opties volgens uw vereisten. Sla het vervolgens op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-8. In de **Coralogix instellen** sectie, kopieert u de juiste URL's.
+8. Kopieer in de sectie **Coralogix instellen** de gewenste URL ('s).
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -148,9 +149,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Coralogix, voert u d
 
     c. Afmeldings-URL
 
-### <a name="configure-coralogix-single-sign-on"></a>Coralogix eenmalige aanmelding configureren
+### <a name="configure-coralogix-single-sign-on"></a>Eenmalige aanmelding voor Coralogix configureren
 
-Het configureren van eenmalige aanmelding op de **Coralogix** zijde, verzendt de gedownloade **federatieve metagegevens-XML** en URL's gekopieerd vanuit Azure portal naar de [Coralogix ondersteuningsteam](mailto:info@coralogix.com). Ze zorgen ervoor dat de SAML SSO-verbinding aan beide zijden correct is ingesteld.
+Als u eenmalige aanmelding wilt configureren aan de **Coralogix** zijde, verzendt u de gedownloade **federatieve meta gegevens-XML** en gekopieerde url's van de Azure Portal naar het [ondersteunings team van Coralogix](mailto:info@coralogix.com). Ze zorgen ervoor dat de SAML SSO-verbinding aan beide kanten juist is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -160,19 +161,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Aan de bovenkant van het scherm, selecteer **nieuwe gebruiker**.
+2. Selecteer aan de bovenkant van het scherm de optie **nieuwe gebruiker**.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
-3. In de **gebruiker** dialoogvenster vak, voer de volgende stappen uit.
+3. Voer in het dialoog venster **gebruiker** de volgende stappen uit.
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
     a. Voer in het veld **Naam** **Britta Simon** in.
   
-    b. In de **gebruikersnaam** Voer 'brittasimon@yourcompanydomain.extension. " Bijvoorbeeld: in dit geval, u kunt invoeren 'brittasimon@contoso.com. "
+    b. Voer in het veld **gebruikers naam** 'brittasimon@yourcompanydomain.extension' in. In dit geval kunt u bijvoorbeeld 'brittasimon@contoso.com' invoeren.
 
-    c. Selecteer de **Show wachtwoord** selectievakje en noteer de waarde die wordt weergegeven in de **wachtwoord** vak.
+    c. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
 
     d. Selecteer **Maken**.
 
@@ -180,7 +181,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 In deze sectie geeft u Britta Simon toestemming voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Coralogix.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**, en selecteer vervolgens **Coralogix**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Coralogix**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -188,33 +189,33 @@ In deze sectie geeft u Britta Simon toestemming voor gebruik van eenmalige aanme
 
     ![De Coralogix-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-4. Selecteer de **gebruiker toevoegen** knop. Selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** in het dialoogvenster.
+4. Selecteer de knop **gebruiker toevoegen** . Selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. In de **gebruikers en groepen** in het dialoogvenster, selecteer **Britta Simon** in de gebruikerslijst. Klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+5. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst gebruikers. Klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+6. Als u een rolwaarde verwacht in de SAML-assertie, selecteert u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst. Klik vervolgens op de knop **selecteren** onder aan het scherm.
 
-7. In de **toevoegen toewijzing** in het dialoogvenster, selecteer de **toewijzen** knop.
+7. Selecteer de knop **toewijzen** in het dialoog venster **toewijzing toevoegen** .
 
-### <a name="create-a-coralogix-test-user"></a>Maak een testgebruiker Coralogix
+### <a name="create-a-coralogix-test-user"></a>Een Coralogix-test gebruiker maken
 
-In deze sectie maakt u een gebruiker in Coralogix met de naam Britta Simon. Werken met de [Coralogix ondersteuningsteam](mailto:info@coralogix.com) om toe te voegen de gebruikers in het Coralogix-platform. U moet maken en gebruikers te activeren voordat u eenmalige aanmelding.
+In deze sectie maakt u een gebruiker in Coralogix met de naam Britta Simon. Werk samen met het [Coralogix-ondersteunings team](mailto:info@coralogix.com) om de gebruikers toe te voegen aan het Coralogix-platform. U moet gebruikers maken en activeren voordat u eenmalige aanmelding gebruikt.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie kunt u uw configuratie Azure AD eenmalige aanmelding testen met behulp van de MyApps-portal.
+In deze sectie test u de configuratie van eenmalige aanmelding voor Azure AD met behulp van de MyApps-Portal.
 
-Wanneer u de tegel Coralogix in de MyApps-portal selecteert, moet u worden automatisch aangemeld bij Coralogix. Zie voor meer informatie over de MyApps-portal, [wat is de MyApps-portal?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wanneer u de tegel Coralogix in de MyApps-Portal selecteert, moet u automatisch worden aangemeld bij Coralogix. Zie [Wat is de MyApps-Portal?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)voor meer informatie over de MyApps-Portal.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 

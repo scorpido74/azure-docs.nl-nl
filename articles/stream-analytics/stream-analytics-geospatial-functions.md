@@ -1,6 +1,6 @@
 ---
 title: Inleiding tot Azure Stream Analytics georuimtelijke functies
-description: Dit artikel wordt beschreven georuimtelijke functies die worden gebruikt in Azure Stream Analytics-taken.
+description: In dit artikel worden georuimtelijke functies beschreven die worden gebruikt in Azure Stream Analytics taken.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,32 +8,32 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dfbe7e607395006f9bd7da0be0d5673353e2801f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620936"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162590"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Inleiding tot Stream Analytics georuimtelijke functies
 
-Georuimtelijke functies in Azure Stream Analytics kunnen realtime analyses over het streamen van georuimtelijke gegevens. Met slechts een paar regels code, kunt u een oplossing voor productie geschikt voor complexe scenario's te ontwikkelen. 
+Georuimtelijke functies in Azure Stream Analytics realtime analyse mogelijk maken van georuimtelijke gegevens in stream. Met slechts een paar regels code kunt u een oplossing voor productie kwaliteit ontwikkelen voor complexe scenario's. 
 
-Voorbeelden van scenario's die van georuimtelijke functies profiteren kunnen zijn:
+Voor beelden van scenario's die kunnen profiteren van georuimtelijke functies zijn:
 
-* Rijpositie delen
-* Apparatenpark
+* Negeren: delen
+* Wagenparkbeheer
 * Bijhouden van assets
-* Geofencing
-* Telefoon bijhouden op cel sites
+* Geoomheining
+* Telefonisch volgen over sites
 
-Stream Analytics Query Language heeft zeven ingebouwde georuimtelijke functies: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_ SNIJDT**, en **ST_WITHIN**.
+Stream Analytics query taal heeft zeven ingebouwde georuimtelijke functies: **CreateLineString**, **CreatePoint**, **CreatePolygon**, **ST_DISTANCE**, **ST_OVERLAPS**, **ST_INTERSECTS**en **ST_WITHIN**.
 
 ## <a name="createlinestring"></a>CreateLineString
 
-De `CreateLineString` functie punten accepteert en retourneert een LineString van GeoJSON, die kunnen worden weergegeven als een regel op een kaart. U moet ten minste twee punten om te maken van een LineString hebben. De punten LineString worden, in volgorde verbonden.
+De functie `CreateLineString` accepteert punten en retourneert een geojson-Lines Tring, die als een lijn op een kaart kan worden getekend. U moet ten minste twee punten hebben om een Lines Tring te maken. De Lines Tring punten worden in de aangegeven volg orde verbonden.
 
-De volgende query gebruikt `CreateLineString` te maken van een LineString met behulp van de drie punten. Het eerste punt wordt gemaakt van streaming-gegevens, terwijl de andere twee handmatig worden gemaakt.
+De volgende query maakt gebruik van `CreateLineString` om een Lines Tring te maken met behulp van drie punten. Het eerste punt wordt gemaakt op basis van streaming-invoer gegevens, terwijl de andere twee hand matig worden gemaakt.
 
 ```SQL 
 SELECT  
@@ -41,26 +41,26 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>Voorbeeld van invoer  
+### <a name="input-example"></a>Invoer voorbeeld  
   
-|Breedtegraad|Lengtegraad|  
+|breedte graad|lengte graad|  
 |--------------|---------------|  
-|3.0|-10.2|  
-|-87.33|20.2321|  
+|3.0|-10,2|  
+|-87,33|20,2321|  
   
-### <a name="output-example"></a>Voorbeeld van uitvoer  
+### <a name="output-example"></a>Uitvoer voorbeeld  
 
- {"type": "LineString", "coordinates" : [ [-10.2, 3.0], [10.0, 10.0], [10.5, 10.5] ]}
+ {"type": "Lines Tring", "coördinaten": [[-10,2, 3,0], [10,0, 10,0], [10,5, 10,5]]}
 
- {"type": "LineString", "coördinaten": [[20.2321,-87.33], [10.0, 10.0], [10,5, 10,5]]}
+ {"type": "Lines Tring", "coördinaten": [[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5]]}
 
-Voor meer informatie gaat u naar de [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) verwijzing.
+Ga voor meer informatie naar de [CreateLineString](https://docs.microsoft.com/stream-analytics-query/createlinestring) -referentie.
 
 ## <a name="createpoint"></a>CreatePoint
 
-De `CreatePoint` functie accepteert een breedtegraad en lengtegraad en retourneert een GeoJSON-punt op een kaart kan worden getekend. Uw Latitude en lengten moet een **float** gegevenstype.
+De functie `CreatePoint` accepteert een breedte graad en een lengte graad en retourneert een geojson-punt, dat op een kaart kan worden getekend. Uw breedte graad en lengte graad moeten een **float** -gegevens type zijn.
 
-Maakt gebruik van de volgende voorbeeldquery `CreatePoint` om een te maken met behulp van Latitude en lengten van streaming-gegevens.
+De volgende voorbeeld query maakt gebruik van `CreatePoint` om een punt te maken met behulp van de breedte graad en lengte graad van streaming-invoer gegevens.
 
 ```SQL 
 SELECT  
@@ -68,26 +68,26 @@ SELECT
 FROM input 
 ```  
 
-### <a name="input-example"></a>Voorbeeld van invoer  
+### <a name="input-example"></a>Invoer voorbeeld  
   
-|Breedtegraad|Lengtegraad|  
+|breedte graad|lengte graad|  
 |--------------|---------------|  
-|3.0|-10.2|  
-|-87.33|20.2321|  
+|3.0|-10,2|  
+|-87,33|20,2321|  
   
-### <a name="output-example"></a>Voorbeeld van uitvoer
+### <a name="output-example"></a>Uitvoer voorbeeld
   
- {"type": 'Point', "coördinaten": [-10.2, 3.0]}  
+ {"type": "punt", "coördinaten": [-10,2, 3,0]}  
   
- {"type": 'Point', "coördinaten": [20.2321,-87.33]}  
+ {"type": "punt", "coördinaten": [20,2321,-87,33]}  
 
-Voor meer informatie gaat u naar de [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) verwijzing.
+Ga voor meer informatie naar de [CreatePoint](https://docs.microsoft.com/stream-analytics-query/createpoint) -referentie.
 
 ## <a name="createpolygon"></a>CreatePolygon
 
-De `CreatePolygon` functie punten accepteert en retourneert een record GeoJSON-veelhoek. De volgorde van punten in de rechter ring afdrukstand moet volgen of linksom draaien. Stel lopen van één plaats naar de andere in de volgorde waarin die ze zijn gedeclareerd. Het midden van de polygoon zou worden aan de linkerkant van de gehele tijd.
+De functie `CreatePolygon` accepteert punten en retourneert een geojson-veelhoek record. De volg orde van de punten moet volgen op de juiste ring richting of linksom. Stel dat u vanaf het ene punt naar het andere wilt lopen in de volg orde waarin ze zijn gedeclareerd. Het midden van de veelhoek is de gehele tijd aan uw linkerkant.
 
-Maakt gebruik van de volgende voorbeeldquery `CreatePolygon` te maken van een polygoon van de drie punten. De eerste twee punten handmatig worden gemaakt, en het laatste punt is gemaakt op basis van invoergegevens.
+De volgende voorbeeld query maakt gebruik van `CreatePolygon` om een veelhoek van drie punten te maken. De eerste twee punten worden hand matig gemaakt en het laatste punt wordt gemaakt op basis van de invoer gegevens.
 
 ```SQL 
 SELECT  
@@ -95,26 +95,26 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>Voorbeeld van invoer  
+### <a name="input-example"></a>Invoer voorbeeld  
   
-|Breedtegraad|Lengtegraad|  
+|breedte graad|lengte graad|  
 |--------------|---------------|  
-|3.0|-10.2|  
-|-87.33|20.2321|  
+|3.0|-10,2|  
+|-87,33|20,2321|  
   
-### <a name="output-example"></a>Voorbeeld van uitvoer  
+### <a name="output-example"></a>Uitvoer voorbeeld  
 
- {"type": "Veelhoek", "coördinaten": [[[-10.2, 3.0], [10.0, 10.0], [10,5, 10,5], [-10.2, 3.0]]]}
+ {"type": "veelhoek", "coördinaten": [[[-10,2, 3,0], [10,0, 10,0], [10,5, 10,5], [-10,2, 3,0]]]}
  
- {"type": "Veelhoek", "coördinaten": [[[20.2321,-87.33], [10.0, 10.0], [10,5, 10,5], [20.2321,-87.33]]]}
+ {"type": "veelhoek", "coördinaten": [[[20,2321,-87,33], [10,0, 10,0], [10,5, 10,5], [20,2321,-87,33]]]}
 
-Voor meer informatie gaat u naar de [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) verwijzing.
+Ga voor meer informatie naar de [CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) -referentie.
 
 
-## <a name="stdistance"></a>ST_DISTANCE
-De `ST_DISTANCE` functie retourneert de afstand tussen de twee punten in meters. 
+## <a name="st_distance"></a>ST_DISTANCE
+De functie `ST_DISTANCE` retourneert de afstand tussen twee punten in meters. 
 
-De volgende query gebruik `ST_DISTANCE` voor het genereren van een gebeurtenis wanneer een Tankstation minder dan 10 km vanuit de auto is.
+De volgende query maakt gebruik van `ST_DISTANCE` om een gebeurtenis te genereren wanneer een station van een gas kleiner is dan 10 km van de auto.
 
 ```SQL
 SELECT Cars.Location, Station.Location 
@@ -122,12 +122,12 @@ FROM Cars c
 JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 ```
 
-Voor meer informatie gaat u naar de [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) verwijzing.
+Ga voor meer informatie naar de [ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) -referentie.
 
-## <a name="stoverlaps"></a>ST_OVERLAPS
-De `ST_OVERLAPS` functie vergelijkt twee veelhoeken. Als de veelhoeken elkaar overlappen, retourneert de functie een 1. De functie retourneert 0 als de veelhoeken niet overlappen. 
+## <a name="st_overlaps"></a>ST_OVERLAPS
+De functie `ST_OVERLAPS` vergelijkt twee veelhoeken. Als de veelhoeken elkaar overlappen, retourneert de functie een 1. De functie retourneert 0 als de veelhoeken elkaar niet overlappen. 
 
-De volgende query gebruik `ST_OVERLAPS` voor het genereren van een gebeurtenis wanneer een gebouw zich binnen een zone vollopen mogelijk.
+De volgende query maakt gebruik van `ST_OVERLAPS` om een gebeurtenis te genereren wanneer een gebouw zich binnen een mogelijke Flooding-zone bevindt.
 
 ```SQL
 SELECT Building.Polygon, Building.Polygon 
@@ -135,7 +135,7 @@ FROM Building b
 JOIN Flooding f ON ST_OVERLAPS(b.Polygon, b.Polygon) 
 ```
 
-De volgende voorbeeldquery genereert een gebeurtenis wanneer een storm gaat naar een auto heen.
+Met de volgende voorbeeld query wordt een gebeurtenis gegenereerd wanneer een storm is gericht op een auto.
 
 ```SQL
 SELECT Cars.Location, Storm.Course
@@ -143,12 +143,12 @@ FROM Cars c, Storm s
 JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 ```
 
-Voor meer informatie gaat u naar de [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) verwijzing.
+Ga voor meer informatie naar de [ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) -referentie.
 
-## <a name="stintersects"></a>ST_INTERSECTS
-De `ST_INTERSECTS` functie vergelijkt twee LineString. Als de LineString elkaar overlappen, retourneert de functie 1. De functie retourneert 0 als de LineString elkaar niet overlappen.
+## <a name="st_intersects"></a>ST_INTERSECTS
+De functie `ST_INTERSECTS` vergelijkt twee Lines Tring. Als de Lines Tring Intersect, retourneert de functie 1. De functie retourneert 0 als de Lines Tring niet INTERSECT.
 
-Maakt gebruik van de volgende voorbeeldquery `ST_INTERSECTS` om te bepalen als een geplaveide weg samen met een vuil weg.
+De volgende voorbeeld query maakt gebruik van `ST_INTERSECTS` om te bepalen of een paved-weg een wegsnij punt kruist.
 
 ```SQL 
 SELECT  
@@ -156,25 +156,25 @@ SELECT
 FROM input  
 ```  
 
-### <a name="input-example"></a>Voorbeeld van invoer  
+### <a name="input-example"></a>Invoer voorbeeld  
   
 |datacenterArea|stormArea|  
 |--------------------|---------------|  
-|{"type": "LineString", "coördinaten": [[-10.0, 0.0], [0.0, 0.0], [10.0, 0.0]]}|{"type": "LineString", "coördinaten": [[0.0, 10.0], [0.0, 0.0], [0.0,-10.0]]}|  
-|{"type": "LineString", "coördinaten": [[-10.0, 0.0], [0.0, 0.0], [10.0, 0.0]]}|{"type": "LineString", "coördinaten": [[-10.0, 10.0], [0.0, 10.0], [10.0, 10.0]]}|  
+|{"type": "Lines Tring", "coördinaten": [[-10,0, 0,0], [0,0, 0,0], [10,0, 0,0]]}|{"type": "Lines Tring", "coördinaten": [[0,0, 10,0], [0,0, 0,0], [0,0,-10,0]]}|  
+|{"type": "Lines Tring", "coördinaten": [[-10,0, 0,0], [0,0, 0,0], [10,0, 0,0]]}|{"type": "Lines Tring", "coördinaten": [[-10,0, 10,0], [0,0, 10,0], [10,0, 10,0]]}|  
   
-### <a name="output-example"></a>Voorbeeld van uitvoer  
+### <a name="output-example"></a>Uitvoer voorbeeld  
 
  1  
   
  0  
 
-Voor meer informatie gaat u naar de [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) verwijzing.
+Ga voor meer informatie naar de [ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) -referentie.
 
-## <a name="stwithin"></a>ST_WITHIN
-De `ST_WITHIN` functie bepaalt of een punt of veelhoek binnen een veelhoek is. Als de veelhoek het punt of de veelhoek bevat, de functie geeft als resultaat 1. De functie retourneert 0 als het punt of de veelhoek niet binnen de gedeclareerde polygoon bevindt.
+## <a name="st_within"></a>ST_WITHIN
+De functie `ST_WITHIN` bepaalt of een punt of veelhoek zich binnen een veelhoek bevindt. Als de veelhoek het punt of de veelhoek bevat, wordt de functie 1 geretourneerd. De functie retourneert 0 als het punt of de veelhoek zich niet in de gedeclareerde veelhoek bevindt.
 
-Maakt gebruik van de volgende voorbeeldquery `ST_WITHIN` om te bepalen of de levering van bestemmingspunt binnen de opgegeven datawarehouse-veelhoek.
+De volgende voorbeeld query maakt gebruik van `ST_WITHIN` om te bepalen of het bezorgings doel punt zich in de opgegeven Warehouse-veelhoek bevindt.
 
 ```SQL 
 SELECT  
@@ -182,20 +182,20 @@ SELECT
 FROM input 
 ```  
 
-### <a name="input-example"></a>Voorbeeld van invoer  
+### <a name="input-example"></a>Invoer voorbeeld  
   
-|deliveryDestination|datawarehouse|  
+|deliveryDestination|uitslag|  
 |-------------------------|---------------|  
-|{"type": "Punt", "coördinaten": [76,6, 10.1]}|{"type": "Veelhoek", "coördinaten": [[0.0, 0.0], [10.0, 0.0], [10.0, 10.0], [0.0, 10.0], [0.0, 0.0]]}|  
-|{"type": "Punt", "coördinaten": [15.0, 15.0]}|{"type": "Veelhoek", "coördinaten": [[10.0, 10.0], [20,0, 10.0], [20.0, 20.0], [10.0, 20,0], [10.0, 10.0]]}|  
+|{"type": "punt", "coördinaten": [76,6, 10,1]}|{"type": "veelhoek", "coördinaten": [[0,0, 0,0], [10,0, 0,0], [10,0, 10,0], [0,0, 10,0], [0,0, 0,0]]}|  
+|{"type": "punt", "coördinaten": [15,0, 15,0]}|{"type": "veelhoek", "coördinaten": [[10,0, 10,0], [20,0, 10,0], [20,0, 20,0], [10,0, 20,0], [10,0, 10,0]]}|  
   
-### <a name="output-example"></a>Voorbeeld van uitvoer  
+### <a name="output-example"></a>Uitvoer voorbeeld  
 
  0  
   
  1  
 
-Voor meer informatie gaat u naar de [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) verwijzing.
+Ga voor meer informatie naar de [ST_WITHIN](https://docs.microsoft.com/stream-analytics-query/st-within) -referentie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

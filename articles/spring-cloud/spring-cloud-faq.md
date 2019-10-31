@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592314"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163769"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -66,13 +66,13 @@ Dit zijn de bekende beperkingen van Azure lente Cloud terwijl de service in de p
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hoe kan ik feedback geven en problemen melden?
 
-Als u uw veer service-exemplaren in azure lente Cloud hebt gemaakt, kunt u een [Azure-ondersteunings aanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)maken. Als u nog niet hebt gevolgd voor Azure lente-Cloud, kunt u naar [Azure feedback](https://feedback.azure.com/) gaan om functies aan te vragen of feedback te geven.
+Als u problemen ondervindt met Azure lente Cloud, moet u een [Azure-ondersteunings aanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)maken. Voor functie aanvragen gaat u naar [Azure feedback](https://feedback.azure.com/forums/34192--general-feedback) om functies aan te vragen of om feedback te geven.
 
 ## <a name="development"></a>Ontwikkeling
 
 ### <a name="i-am-a-spring-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-aazure-spring-cloud-application"></a>Ik ben een lente ontwikkelaar, maar nieuw voor Azure, wat is de snelste manier om te leren hoe ik gereserveerde lente-Cloud toepassing kan ontwikkelen?
 
-De snelste manier om aan de slag te gaan met Azure lente Cloud is door [deze Quick Start](spring-cloud-quickstart-launch-app-portal.md)uit te voeren.
+De snelste manier om aan de slag te gaan met Azure lente Cloud is door [deze Snelstartgids](spring-cloud-quickstart-launch-app-portal.md)te volgen.
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Wat Java runtime ondersteunt Azure lente-Cloud ondersteuning?
 

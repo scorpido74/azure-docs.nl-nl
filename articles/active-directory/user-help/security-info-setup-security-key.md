@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac894db42b2b5ee2612e2e3b2906bc2bffcc4c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717386"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160702"
 ---
 # <a name="set-up-security-info-to-use-a-security-key-preview"></a>Beveiligings gegevens voor het gebruik van een beveiligings sleutel instellen (preview-versie)
 
@@ -47,7 +47,7 @@ Voordat u uw beveiligings sleutel kunt registreren, moet aan de volgende voor wa
 
 - U hebt een fysieke beveiligings sleutel die is goedgekeurd door uw beheerder of uw organisatie. Uw beveiligings sleutel moet zowel FIDO2 als micro soft-compatibel zijn. Als u vragen hebt over uw beveiligings sleutel en of deze compatibel zijn, neemt u contact op met de Help Desk van uw organisatie.
 
-## <a name="register-your-security-key"></a>Uw beveiligingssleutel registreren
+## <a name="register-your-security-key"></a>Uw beveiligings sleutel registreren
 
 U moet uw beveiligings sleutel maken en deze een unieke pincode geven voordat u zich kunt aanmelden bij uw werk-of school account met behulp van de-sleutel. U kunt Maxi maal 10 sleutels registreren die bij uw account zijn geregistreerd. 
 
@@ -80,7 +80,7 @@ U moet uw beveiligings sleutel maken en deze een unieke pincode geven voordat u 
 
     U keert terug naar het vak **uw nieuwe aanmeldings methode instellen** .
 
-7. Selecteer **Volgende**.
+7. Selecteer **Next**.
 
 8. Ga terug naar de pagina **beveiligings gegevens** , typ een naam die u later voor uw nieuwe beveiligings sleutel gaat herkennen en selecteer **volgende**.
 
@@ -154,6 +154,6 @@ Als u een beveiligings sleutel wilt registreren, moet u ten minste één aanvull
 
 - Voor meer informatie over [beveiligings sleutels die compatibel zijn met micro soft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
-- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](user-help-reset-password.md).
+- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md).
 
 - Krijg tips voor het oplossen van problemen en hulp met problemen met aanmelden in het artikel [U kunt niet aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

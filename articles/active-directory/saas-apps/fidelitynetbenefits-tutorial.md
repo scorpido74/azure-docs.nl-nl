@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Fidelity NetBenefits | Microsoft Docs'
+title: 'Zelf studie: integratie met betrouw bare netvoor delen Azure Active Directory | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Fidelity NetBenefits.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 77dc8a98-c0e7-4129-ab88-28e7643e432a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ce37aea9e700907ebfda9aa181b7f0eb638af35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40c1e9d493b0fb7bbf1e484799d56e91da1d0833
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102735"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73156322"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Zelfstudie: Azure Active Directory-integratie met Fidelity NetBenefits
+# <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Zelf studie: integratie met betrouw bare netvoor delen Azure Active Directory
 
 In deze zelfstudie leert u hoe u Fidelity NetBenefits kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Fidelity NetBenefits met Azure Active Directory biedt de volgende voordelen:
@@ -55,7 +56,7 @@ Voor het configureren van de integratie van Fidelity NetBenefits in Azure Active
 
 **Als u Fidelity NetBenefits wilt toevoegen uit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -120,9 +121,9 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
     ![image](common/edit-attribute.png)
 
     >[!Note]
-    >Fidelity NetBenefits-ondersteuning voor statische en dynamische federatie. Statisch betekent dat SAML geen Just-in-Time-gebruikersinrichting gebruikt en dynamisc betekent dat SAML ondersteuning biedt voor Just-in-Time gebruikersinrichting. Voor het gebruik van inrichten op basis van JIT moeten klanten meer claims toevoegen in Azure Active Directory, zoals de geboortedatum van de gebruiker, enzovoort. Deze gegevens worden geleverd door uw toegewezen **Fidelity Client-Service Manager** en ze moeten deze dynamische federatie voor uw exemplaar inschakelen.
+    >Fidelity NetBenefits-ondersteuning voor statische en dynamische federatie. Statisch betekent dat SAML geen Just-in-Time-gebruikersinrichting gebruikt en dynamisc betekent dat SAML ondersteuning biedt voor Just-in-Time gebruikersinrichting. Voor het gebruik van op JIT gebaseerde inrichtings klanten moet u nog enkele claims toevoegen in azure AD, zoals de geboorte datum van de gebruiker, enzovoort. Deze details worden verschaft door de toegewezen **client voor beeld betrouw Service Manager** en ze moeten deze dynamische Federatie inschakelen voor uw exemplaar.
 
-6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+6. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -158,12 +159,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -177,7 +178,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De Fidelity NetBenefits-link in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -195,15 +196,15 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 In deze sectie maakt u een gebruiker met de naam Britta Simon in Fidelity NetBenefits. Als u statische federatie maakt, neemt u contact op met uw toegewezen **Fidelity Client-Service Manager** om gebruikers aan te maken in het Fidelity NetBenefits-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-Gebruikers worden gemaakt met behulp van Just-In-Time-inrichten voor dynamische Federatie. Voor het gebruik van inrichten op basis van JIT moeten klanten meer claims toevoegen in Azure Active Directory, zoals de geboortedatum van de gebruiker, enzovoort. Deze gegevens worden geleverd door uw toegewezen **Fidelity Client-Service Manager** en ze moeten deze dynamische federatie voor uw exemplaar inschakelen.
+Gebruikers worden gemaakt met behulp van Just-In-Time-inrichten voor dynamische Federatie. Voor het gebruik van op JIT gebaseerde inrichtings klanten moet u nog enkele claims toevoegen in azure AD, zoals de geboorte datum van de gebruiker, enzovoort. Deze details worden verschaft door de toegewezen **client voor beeld betrouw Service Manager** en ze moeten deze dynamische Federatie inschakelen voor uw exemplaar.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Fidelity NetBenefits in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Fidelity NetBenefits waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

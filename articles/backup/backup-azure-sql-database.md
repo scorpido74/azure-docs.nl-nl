@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437832"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162201"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Over SQL Server-back-ups in virtuele Azure-machines
 
@@ -45,20 +45,10 @@ Voordat u begint, controleert u het onderstaande:
 **Ondersteuning** | **Details**
 --- | ---
 **Ondersteunde implementaties** | SQL Marketplace Azure-VM's en niet-Marketplace-VM's (SQL Server handmatig geïnstalleerd) worden ondersteund.
-**Ondersteunde geografische gebieden** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br> Zwitserland-noord, Zwitserland-west
-**Ondersteunde besturingssystemen** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux wordt momenteel niet ondersteund.
-**Ondersteunde SQL Server-versies** | SQL Server 2017, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)wordt beschreven, SQL Server 2016 en SPS, zoals [hier](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)wordt beschreven, SQL Server 2014, SQL Server 2012.<br/><br/> Enterprise, Standard, Web, Developer, Express.
-**Ondersteunde .NET-versies** | .NET Framework 4.5.2 en hoger geïnstalleerd op de VM
-
-### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2
-
-Azure Backup heeft onlangs ondersteuning aangekondigd voor [EOS SQL-servers](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-2008-eos-extend-support) -SQL Server 2008 en SQL Server 2008 R2. De oplossing is momenteel als preview-versie beschikbaar voor EOS SQL Server en ondersteunt de volgende configuratie:
-
-1. SQL Server 2008 en SQL Server 2008 R2 uitgevoerd op Windows 2008 R2 SP1
-2. .NET Framework 4.5.2 en hierboven moeten worden geïnstalleerd op de VM
-3. Back-ups voor FCI en gespiegelde data bases worden niet ondersteund
-
-Gebruikers worden niet in rekening gebracht voor deze functie tot de tijd die het algemeen beschikbaar is. Alle andere [functie overwegingen en beperkingen](#feature-consideration-and-limitations) zijn ook van toepassing op deze versies. Raadpleeg de [vereisten](backup-sql-server-database-azure-vms.md#prerequisites) voor het configureren van beveiliging op SQL-servers 2008 en 2008 R2.
+**Ondersteunde geografische gebieden** | Australië-Zuid-Oost (ASE), Oost-Australië (AE), Australië-centraal (AC), Australië-centraal 2 (AC) <br> Brazilië - zuid (BRS)<br> Canada-centraal (CNC), Canada-oost (CE)<br> Zuid-Azië-oost (zee), Azië-oost (EA) <br> VS-Oost (EUS), VS-Oost 2 (EUS2), VS-West-Centraal (WCUS), VS-West (WUS); VS-West 2 (WUS 2) Noord-Centraal VS (NCUS) centraal VS (CUS) Zuid-Centraal (SCUS) <br> India-centraal (INC), India-Zuid (INS), India-West <br> Japan-Oost (JPE), Japan-West (JPW) <br> Korea-centraal (KRC), Korea-zuid (KRS) <br> Europa-noord (NE), Europa-west <br> UK-zuid (UKS), UK-west (UKW) <br> US Gov-Arizona, US Gov-Virginia, US Gov-Texas, US DoD-centraal, US DoD-oost <br> Duitsland-noord, Duitsland-west-centraal <br> Zwitserland-noord, Zwitserland-west <br> Frankrijk - centraal <br> China-oost, China-oost 2, China-noord, China-noord 2
+**Ondersteunde besturingssystemen** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux wordt momenteel niet ondersteund.
+**Ondersteunde SQL Server-versies** | SQL Server 2019, SQL Server 2017 zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017), SQL Server 2016 en SPS zoals beschreven op de [pagina product levenscyclus zoeken](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack), SQL Server 2014, SQL Server 2012, SQL Server 2008 R2 SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.
+**Ondersteunde .NET-versies** | .NET Framework 4.5.2 of later geïnstalleerd op de VM
 
 ## <a name="feature-consideration-and-limitations"></a>Overwegingen voor functies en beperkingen
 

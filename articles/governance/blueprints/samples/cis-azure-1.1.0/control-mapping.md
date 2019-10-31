@@ -6,19 +6,19 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: fa683206ec1ff4d02298fd2689791601ff11f85c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297789"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163872"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Aanbevelings toewijzing van het CIS-voor beeld van het DIS Microsoft Azure fundament-benchmarks
 
 Het volgende artikel bevat informatie over de manier waarop de Azure-blauw drukken CIS Microsoft Azure Stichtings-blauw voor beeld wordt toegewezen aan de aanbevelingen voor de CIS-Microsoft Azure Stichting. Zie voor meer informatie over de aanbevelingen [CIS Microsoft Azure Stichting-benchmarks](https://www.cisecurity.org/benchmark/azure/).
 
 De volgende toewijzingen zijn de aanbevelingen van het **CIS-Microsoft Azure basis benchmark v-1.1.0** . Gebruik de navigatie aan de rechter kant om rechtstreeks naar een specifieke aanbevelings toewijzing te gaan.
-Veel van de toegewezen aanbevelingen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de **\[Preview @ no__t-2-controle CIS-Microsoft Azure basis benchmark v 1.1.0 aanbevelingen en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
+Veel van de toegewezen aanbevelingen worden geïmplementeerd met een [Azure Policy](../../../policy/overview.md) -initiatief. Als u het complete initiatief wilt bekijken, opent u **beleid** in het Azure Portal en selecteert u de pagina **definities** . Zoek en selecteer vervolgens de **\[Preview\] controle CIS Microsoft Azure fundering Bench Mark v 1.1.0 en implementeer specifieke VM-extensies ter ondersteuning** van de ingebouwde beleids initiatieven voor controle vereisten.
 
 > [!IMPORTANT]
 > Elk besturings element hieronder is gekoppeld aan een of meer [Azure Policy](../../../policy/overview.md) definities. Met deze beleids regels kunt u de naleving van het besturings element [beoordelen](../../../policy/how-to/get-compliance-data.md) . Er is echter vaak geen 1:1-of volledige overeenkomst tussen een besturings element en een of meer beleids regels. Als zodanig is de **naleving** in azure Policy alleen bedoeld voor het beleid zelf. Dit garandeert niet dat u volledig compatibel bent met alle vereisten van een besturings element. Daarnaast bevat de nalevings standaard besturings elementen die niet worden behandeld door Azure Policy definities op dit moment. Daarom is naleving in Azure Policy slechts een gedeeltelijke weer gave van uw algemene nalevings status. De koppelingen tussen de besturings elementen en Azure Policy definities voor dit voor beeld van deze naleving blauw druk kunnen na verloop van tijd veranderen. Als u de wijzigings geschiedenis wilt weer geven, raadpleegt u de [github commit-geschiedenis](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
@@ -346,7 +346,7 @@ Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie 
 
 Deze blauw druk wijst een [Azure Policy](../../../policy/overview.md) definitie toe waarmee u ervoor kunt zorgen dat op rollen gebaseerd toegangs beheer wordt gebruikt voor beheerde machtigingen in Kubernetes-Service clusters
 
-- \[Preview @ no__t-1: op rollen gebaseerde Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services
+- \[preview\]: op rollen gebaseerde Access Control (RBAC) moet worden gebruikt voor Kubernetes-Services
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Zorg ervoor dat web-apps alle HTTP-verkeer omleidt naar HTTPS in Azure App Service
 
@@ -362,7 +362,7 @@ Nu u de toewijzing van het besturings element van CIS Microsoft Azure Stichtings
 > [CIS Microsoft Azure Stichting-benchmark blauw druk-overzicht](./index.md)
 > [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
-Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
+Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

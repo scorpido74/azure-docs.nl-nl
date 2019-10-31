@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154725"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161763"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: Veelgestelde vragen (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Configuratie-en beheer problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
 In dit artikel vindt u veelgestelde vragen over configuratie-en beheer problemen voor [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). U kunt ook de [pagina Cloud Services VM-grootte](cloud-services-sizes-specs.md) raadplegen voor informatie over de grootte.
 
@@ -52,7 +52,7 @@ In dit artikel vindt u veelgestelde vragen over configuratie-en beheer problemen
 **Machtigingen**
 
 - [Kunnen interne technici van micro soft extern bureau blad naar Cloud service-instanties zonder toestemming?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [Ik kan geen extern bureau blad naar Cloud service-VM maken met behulp van het RDP-bestand. Ik krijg de volgende fout: Er is een verificatie fout opgetreden (code: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [Ik kan geen extern bureau blad naar Cloud service-VM maken met behulp van het RDP-bestand. Er wordt een fout melding weer geven: er is een verificatie fout opgetreden (code: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Schalen**
 
@@ -100,7 +100,7 @@ U kunt de volgende Power shell-opdrachten gebruiken om uw beheer certificaten te
     Select-AzureSubscription -Current -SubscriptionName <your subscription name>
     Get-AzurePublishSettingsFile
 
-De **Get-AzurePublishSettingsFile** maakt een nieuw beheer certificaat in **abonnements** > **beheer certificaten** in de Azure Portal. De naam van het nieuwe certificaat ziet eruit als ' YourSubscriptionNam]-[CurrentDate]-referenties '.
+De **Get-AzurePublishSettingsFile** maakt een nieuw beheer certificaat in **abonnement** > **beheer certificaten** in de Azure Portal. De naam van het nieuwe certificaat ziet eruit als ' YourSubscriptionNam]-[CurrentDate]-referenties '.
 
 ### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Hoe kan ik de installatie van het belangrijkste SSL-certificaat (. pfx) en het tussenliggende certificaat (. p7b) automatiseren?
 
@@ -114,7 +114,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 - [Opstart taken voor een Cloud service configureren en uitvoeren](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Veelvoorkomende opstart taken voor de Cloud service](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
-## <a name="monitoring-and-logging"></a>Bewaking en registratie
+## <a name="monitoring-and-logging"></a>Bewaking en logboekregistratie
 
 ### <a name="what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications"></a>Wat zijn de toekomstige Cloud Services in de Azure Portal die u kunnen helpen bij het beheren en bewaken van toepassingen?
 
@@ -169,7 +169,7 @@ U kunt de time-out in het bestand met de service definitie (csdef) als volgt opg
     </Endpoints>
   </WorkerRole>
 ```
-Zie [nieuw: Configureer bare time-out voor](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) inactiviteit voor Azure Load Balancer voor meer informatie.
+Zie [Nieuw: Configureer bare time-out voor inactiviteit voor Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) voor meer informatie.
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hoe kan ik een statisch IP-adres koppelen aan mijn Cloud service?
 Als u een statisch IP-adres wilt instellen, moet u een gereserveerde IP maken. Dit gereserveerde IP-adres kan worden gekoppeld aan een nieuwe Cloud service of aan een bestaande implementatie. Raadpleeg de volgende documenten voor meer informatie:
@@ -198,7 +198,7 @@ Windows 10 en Windows Server 2016 worden geleverd met ondersteuning voor HTTP/2 
 Zie voor meer informatie:
 
 - [HTTP/2 op IIS](https://blogs.iis.net/davidso/http2)
-- [Video: HTTP/2 in Windows 10: Browser, apps en webserver](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Video: HTTP/2 in Windows 10: browser, apps en webserver](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
 Deze stappen kunnen worden geautomatiseerd via een opstart taak, zodat wanneer een nieuw PaaS-exemplaar wordt gemaakt, de bovenstaande wijzigingen in het systeem register kunnen worden uitgevoerd. Zie [opstart taken voor een Cloud service configureren en uitvoeren](cloud-services-startup-tasks.md)voor meer informatie.
@@ -218,12 +218,12 @@ Cloud Services biedt geen ondersteuning voor het RBAC-model (op rollen gebaseerd
 
 Zie [inzicht krijgen in de verschillende rollen in azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="remote-desktop"></a>Extern bureaublad
+## <a name="remote-desktop"></a>Extern bureau blad
 
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Kunnen interne technici van micro soft extern bureau blad naar Cloud service-instanties zonder toestemming?
 Micro soft volgt een strikt proces dat interne technici niet in staat stelt om extern bureau blad in uw Cloud service te plaatsen zonder schrijf machtiging (e-mail adres of andere schriftelijke communicatie) van de eigenaar of de gebruiker.
 
-### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Ik kan geen extern bureau blad naar Cloud service-VM maken met behulp van het RDP-bestand. Ik krijg de volgende fout: Er is een verificatie fout opgetreden (code: 0x80004005)
+### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Ik kan geen extern bureau blad naar Cloud service-VM maken met behulp van het RDP-bestand. Er wordt een fout melding weer geven: er is een verificatie fout opgetreden (code: 0x80004005)
 
 Deze fout kan optreden als u het RDP-bestand gebruikt van een computer die is toegevoegd aan Azure Active Directory. Volg deze stappen om dit probleem op te lossen:
 
@@ -281,7 +281,7 @@ Zie [servicespecifieke limieten](../azure-subscription-service-limits.md#subscri
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Waarom geeft het station op mijn Cloud service-VM weinig vrije schijf ruimte weer?
 Dit is normaal gedrag en er mag geen problemen met uw toepassing optreden. Logboeken is ingeschakeld voor het% AppRoot%-station in azure PaaS-Vm's, wat in feite de hoeveelheid ruimte in beslag neemt die normaal gesp roken wordt geconsumeerd. Er zijn echter verschillende zaken waarmee u rekening moet houden, waardoor dit een niet-probleem is.
 
-De grootte van het station% AppRoot% wordt \<berekend als grootte van. cspkg + maximum grootte van het logboek + een marge vrije ruimte >, of 1,5 GB, afhankelijk van wat groter is. De grootte van uw virtuele machine heeft geen invloed op deze berekening. (De grootte van de virtuele machine is alleen van invloed op de grootte van het tijdelijke station C:.) 
+De grootte van het station% AppRoot% wordt berekend als \<grootte van. cspkg + maximum grootte van het logboek en een marge vrije ruimte >, of 1,5 GB, afhankelijk van wat groter is. De grootte van uw virtuele machine heeft geen invloed op deze berekening. (De grootte van de virtuele machine is alleen van invloed op de grootte van het tijdelijke station C:.) 
 
 Kan niet schrijven naar het station% AppRoot%. Als u naar de Azure-VM schrijft, moet u dit doen in een tijdelijke LocalStorage-resource (of een andere optie, zoals Blob Storage, Azure Files, enzovoort). De hoeveelheid vrije ruimte voor de map% AppRoot% is dus niet zinvol. Als u niet zeker weet of uw toepassing naar het% AppRoot%-station schrijft, kunt u de service in een paar dagen altijd laten uitvoeren en vervolgens de grootten ' voor ' en ' na ' vergelijkt. 
 
@@ -296,7 +296,7 @@ U kunt de antimalware-uitbrei ding inschakelen met behulp van Power shell-script
 - [Een Power shell-opstart taak maken](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Zie antimalware- [implementatie scenario's](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)voor meer informatie over antimalware-implementatie scenario's en hoe u deze kunt inschakelen vanuit de portal.
+Zie [antimalware-implementatie scenario's](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)voor meer informatie over antimalware-implementatie scenario's en hoe u deze kunt inschakelen vanuit de portal.
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Servernaamindicatie (SNI) inschakelen voor Cloud Services?
 
@@ -310,14 +310,14 @@ De SNI-binding kan worden geconfigureerd met behulp van de Power shell-cmdlet **
     
 Zoals [hier](https://technet.microsoft.com/library/ee790567.aspx)wordt beschreven, kan de $sslFlags een van de volgende waarden zijn:
 
-|Value|Betekenis|
+|Waarde|Betekenis|
 ------|------
 |0|Geen SNI|
-|1|SNI ingeschakeld |
-|2 |Niet-SNI binding die gebruikmaakt van een centraal certificaat archief|
-|3|SNI-binding die gebruikmaakt van een centraal certificaat archief |
+|1|SNI ingeschakeld|
+|2|Niet-SNI binding die gebruikmaakt van een centraal certificaat archief|
+|3|SNI-binding die gebruikmaakt van een centraal certificaat archief|
  
-**Methode 2: Code gebruiken**
+**Methode 2: code gebruiken**
 
 De SNI-binding kan ook worden geconfigureerd via code in het opstart proces van de functie zoals beschreven in dit [blog bericht](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 
@@ -325,8 +325,8 @@ De SNI-binding kan ook worden geconfigureerd via code in het opstart proces van 
     //<code snip> 
                     var serverManager = new ServerManager(); 
                     var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
                     serverManager.CommitChanges(); 
     //</code snip> 
     

@@ -6,21 +6,20 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d79ad88cf87e0ac8a08245558233eb92008f11e2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166537"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163666"
 ---
-# <a name="what-is-azure-spring-cloud"></a>Wat is Azure lente-Cloud?
+# <a name="what-is-azure-spring-cloud"></a>Wat is Azure Spring Cloud?
 
 Met Azure lente-Cloud kunt u eenvoudig micro service-toepassingen op basis van een Spring boot implementeren naar Azure met wijzigingen in de code.  Met Azure lente Cloud kunnen ontwikkel aars zich richten op hun code door de levens cyclus van Lente-Cloud toepassingen te beheren.  Lente-Cloud biedt levenscyclus beheer met uitgebreide bewaking en diagnose, configuratie beheer, service detectie, CI/CD-integratie, Blue-groen implementaties en meer.
 
 Als onderdeel van het Azure-ecosysteem kan Azure lente-Cloud eenvoudig worden gebonden aan andere Azure-Services, waaronder opslag, data bases, bewaking en meer.
 
-Er is momenteel een preview-versie van Azure lente Cloud beschikbaar.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-)in om toegang te krijgen tot deze service terwijl deze in preview is.
+Er is momenteel een preview-versie van Azure lente Cloud beschikbaar.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)in om toegang te krijgen tot deze service terwijl deze in preview is.  Hoewel Azure lente-Cloud in preview is, biedt micro soft beperkte ondersteuning zonder een SLA.  Raadpleeg deze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/)over ondersteuning voor meer informatie over ondersteuning tijdens previews.
 
 Om aan de slag te gaan, voltooit u de lente-Cloud Snelstartgids met behulp van de [Azure cli](spring-cloud-quickstart-launch-app-cli.md), het [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)of [maven](spring-cloud-quickstart-launch-app-maven.md).
 

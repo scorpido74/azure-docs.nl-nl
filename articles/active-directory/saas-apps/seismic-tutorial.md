@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Seismic | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met seismische | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Seismic.
 services: active-directory
 documentationCenter: na
@@ -8,20 +8,21 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 56014c05-e37f-4f85-bcfa-5115dda2d678
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f4fb9cf4986d7cc0e4083add586cde585adab80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5d33cd6af4be544faef02cbcc1f0dea6862df568
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091091"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160054"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Zelfstudie: Azure Active Directory-integratie met Seismic
+# <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Zelf studie: integratie met seismische Azure Active Directory
 
 In deze zelfstudie leert u hoe u Seismic integreert met Azure Active Directory (Azure AD).
 De integratie van Seismic met Azure AD biedt de volgende voordelen:
@@ -52,7 +53,7 @@ Om de integratie van Seismic te configureren in Azure AD, moet u Seismic vanuit 
 
 **Voer de volgende stappen uit om Seismic toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -147,12 +148,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -166,7 +167,7 @@ In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding met Azure ka
 
     ![De Seismic-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -186,11 +187,11 @@ In deze sectie maakt u een gebruiker met de naam Britta Simon in Seismic. Neem c
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Seismic in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Seismic waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

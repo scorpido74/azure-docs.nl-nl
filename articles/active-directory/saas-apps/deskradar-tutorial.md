@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Deskradar | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Deskradar | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Deskradar.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 5ff3e014-b79f-4a6c-bb0b-38462bea5d10
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,65 +16,65 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95451bff6074c0beb220bf3c6edb5570a5258b1a
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: dd5e3d6f8763af8c14d189321c6129876f48ab85
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158323"
 ---
-# <a name="tutorial-integrate-deskradar-with-azure-active-directory"></a>Zelfstudie: Deskradar integreren met Azure Active Directory
+# <a name="tutorial-integrate-deskradar-with-azure-active-directory"></a>Zelf studie: Deskradar integreren met Azure Active Directory
 
-In deze zelfstudie leert u hoe u Deskradar integreert met Azure Active Directory (Azure AD). Wanneer u Deskradar met Azure AD integreert, kunt u het volgende doen:
+In deze zelf studie leert u hoe u Deskradar integreert met Azure Active Directory (Azure AD). Wanneer u Deskradar integreert met Azure AD, kunt u het volgende doen:
 
-* Beheren in Azure AD die toegang tot Deskradar heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld Deskradar met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Controle in azure AD die toegang heeft tot Deskradar.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Deskradar met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u de gratis proefversie van één maand [hier](https://azure.microsoft.com/pricing/free-trial/).
-* Ingeschakeld abonnement Deskradar eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proef versie van één maand ontvangen.
+* Deskradar-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. Biedt ondersteuning voor Deskradar **SP en IDP** gestart door SSO.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Deskradar ondersteunt door **SP en IDP** geïnitieerde SSO.
 
-## <a name="adding-deskradar-from-the-gallery"></a>Deskradar uit de galerie toe te voegen
+## <a name="adding-deskradar-from-the-gallery"></a>Deskradar toevoegen uit de galerie
 
 Voor het configureren van de integratie van Deskradar in Azure AD, moet u Deskradar vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **Deskradar** in het zoekvak in.
-1. Selecteer **Deskradar** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Deskradar** in het zoekvak.
+1. Selecteer **Deskradar** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met Deskradar met behulp van een testgebruiker met de naam **B.Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Deskradar vast te stellen.
+Azure AD SSO met Deskradar configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Deskradar.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met Deskradar, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met Deskradar, voltooit u de volgende bouw stenen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[Configureren van SSO Deskradar](#configure-deskradar-sso)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+2. **[DESKRADAR SSO configureren](#configure-deskradar-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
 5. **[Een testgebruiker maken voor Deskradar](#create-deskradar-test-user)** : als u in Deskradar een equivalent van Britta Simon wilt die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-sso)**  : als u wilt controleren of de configuratie werkt.
+6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Deskradar** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **Deskradar** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
@@ -81,7 +82,7 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://YOURDOMAIN.deskradar.cloud`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/consume`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://YOURDOMAIN.deskradar.cloud/auth/sso/saml/consume`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -96,11 +97,11 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
 1. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** configureert u het kenmerk van het SAML-token zoals wordt weergegeven in de bovenstaande afbeelding en voert u de volgende stappen uit:
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ---------------| --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.userprincipalname |
+    | E-mail | user.userprincipalname |
     | | |
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
@@ -117,25 +118,25 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
     g. Klik op **Opslaan**.
 
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, zoeken **certificaat (Base64)** en selecteer **downloaden** voor het downloaden van het certificaat en sla deze op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de **Deskradar instellen** sectie, kopieert u de juiste URL's op basis van uw behoeften.
+1. Op de sectie **Deskradar instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-deskradar-sso"></a>Deskradar eenmalige aanmelding configureren
+### <a name="configure-deskradar-sso"></a>Deskradar SSO configureren
 
-1. Voor het automatiseren van de configuratie in Deskradar, die u wilt installeren **mijn Apps beveiligde aanmelding browserextensie** door te klikken op **de extensie installeren**.
+1. Als u de configuratie wilt automatiseren in Deskradar, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Mijn apps-extensie](common/install-myappssecure-extension.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-1. Na het toevoegen van uitbreiding naar de browser, klikt u op **Setup Deskradar** wordt u doorgeleid naar de toepassing Deskradar. Geef de referenties van de beheerder zich aanmelden bij Deskradar daar. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-7 geautomatiseerd.
+1. Nadat u de extensie aan de browser hebt toegevoegd, klikt u op **Setup Deskradar** gaat u naar de Deskradar-toepassing. Geef de beheerders referenties op om u aan te melden bij Deskradar. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-7 geautomatiseerd.
 
-    ![Configuratie voor de installatie](common/setup-sso.png)
+    ![Configuratie van Setup](common/setup-sso.png)
 
-1. Als u Deskradar handmatig instellen wilt, opent u een nieuw browservenster en meld u in uw site van het bedrijf Deskradar als beheerder en voer de volgende stappen uit:
+1. Als u Deskradar hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw Deskradar-bedrijfs site als beheerder en voert u de volgende stappen uit:
 
 1. Open het deelvenster **Team** door te klikken op het pictogram in de zijbalk.
 
@@ -157,43 +158,43 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in Azure portal B.Simon genoemd.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B.Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Deskradar.
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Deskradar.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
 1. Selecteer **Deskradar** in de lijst met toepassingen.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **B.Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="create-deskradar-test-user"></a>Een Deskradar-testgebruiker maken
 
 In deze sectie maakt u een gebruiker met de naam Britta Simon in Deskradar. Neem contact op met het  [Deskradar-clientondersteuningsteam](mailto:support@deskradar.com)  als u gebruikers wilt toevoegen in het Deskradar-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-### <a name="test-sso"></a>Test eenmalige aanmelding
+### <a name="test-sso"></a>SSO testen
 
-Wanneer u de tegel Deskradar in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de Deskradar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Deskradar in het toegangs venster selecteert, wordt u automatisch aangemeld bij de Deskradar waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100669"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159741"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Een always on-beschikbaarheids groep configureren op virtuele machines van Azure in verschillende regio's
 
@@ -130,7 +130,7 @@ Voer het Power shell-script uit met de netwerk naam van het cluster, het IP-adre
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
    $IPResourceName = "<IPResourceName>" # The cluster name for the new IP Address resource.
-   $ILBIP = “<n.n.n.n>” # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
+   $ILBIP = "<n.n.n.n>" # The IP Address of the Internal Load Balancer (ILB) in the new region. This is the static IP address for the load balancer you configured in the Azure portal.
    [int]$ProbePort = <nnnnn> # The probe port you set on the ILB.
 
    Import-Module FailoverClusters
@@ -142,7 +142,7 @@ Voer het Power shell-script uit met de netwerk naam van het cluster, het IP-adre
 
 De replica in het externe Data Center maakt deel uit van de beschikbaarheids groep, maar bevindt zich in een ander subnet. Als deze replica de primaire replica wordt, kunnen er time-outs voor toepassings verbindingen optreden. Dit gedrag is hetzelfde als een on-premises beschikbaarheids groep in een implementatie met meerdere subnetten. Als u verbindingen van client toepassingen wilt toestaan, werkt u de client verbinding bij of configureert u de cache voor naam omzetting in het cluster netwerk naam bron.
 
-Werk bij voor keur de client verbindings reeksen bij `MultiSubnetFailover=Yes`om in te stellen. Zie [verbinding maken met MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
+Werk bij voor keur de client verbindings reeksen bij om `MultiSubnetFailover=Yes`in te stellen. Zie [verbinding maken met MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
 Als u de verbindings reeksen niet kunt wijzigen, kunt u de cache voor naam omzetting configureren. Zie [time-outfout en u kunt geen verbinding maken met een SQL Server 2012 AlwaysOn-beschikbaarheids groep-listener in een omgeving met meerdere subnetten](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
@@ -164,7 +164,7 @@ Als u de verbinding van de listener met de externe regio wilt testen, kunt u een
 
 Nadat de verbinding is getest, verplaatst u de primaire replica terug naar uw primaire data centrum en stelt u de beschikbaarheids modus weer in op de normale instellingen van het besturings systeem. De volgende tabel bevat de normale operationele instellingen voor de architectuur die in dit document wordt beschreven:
 
-| Location | Server exemplaar | Role | Beschikbaarheids modus | Failover-modus
+| Locatie | Server exemplaar | Rol | Beschikbaarheids modus | Failover-modus
 | ----- | ----- | ----- | ----- | -----
 | Primair data centrum | SQL-1 | Primair | Verwerkt | Automatisch
 | Primair data centrum | SQL-2 | Secundair | Verwerkt | Automatisch

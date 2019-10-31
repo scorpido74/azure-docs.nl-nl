@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: c659db91b8ca1ad65b00124bed347b8046328d2e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 6dd3172dd9098db0cb7ec09e812eec65f717340a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044997"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163185"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Prestaties afstemmen met de cache van resultaten sets  
 Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, slaat Azure SQL Data Warehouse query resultaten in de gebruikers database automatisch op voor herhaaldelijk gebruik.  Op deze manier kunnen volgende query's worden uitgevoerd om resultaten rechtstreeks uit de persistente cache te halen, zodat herberekening niet nodig is.   Caching van resultaten sets verbetert de query prestaties en vermindert het gebruik van reken resources.  Daarnaast gebruiken query's die in de cache opgeslagen resultaten zijn ingesteld geen gelijktijdigheids sleuven en worden dus niet met bestaande gelijktijdigheids limieten geteld. Voor de beveiliging hebben gebruikers alleen toegang tot de resultaten in de cache als ze dezelfde machtigingen voor gegevens toegang hebben als de gebruikers die de in de cache opgeslagen resultaten maken.  
@@ -37,7 +37,24 @@ Zodra de caching van de resultatenset voor een Data Base is ingeschakeld, worden
 - Query's die gebruikmaken van tabellen met beveiliging op rijniveau of beveiliging op kolom niveau ingeschakeld
 - Query's die gegevens retour neren met een Rijgrootte groter dan 64 KB
 
-Query's met grote resultaten sets (bijvoorbeeld > 1.000.000 rijen) kunnen de prestaties vertragen tijdens de eerste uitvoering wanneer de resultaten cache wordt gemaakt.
+> [!IMPORTANT]
+> De bewerkingen voor het maken van een cache met resultaten en het ophalen van gegevens uit de cache vindt plaats op het knoop punt van het besturings element van een Data Warehouse-exemplaar. Wanneer het in cache plaatsen van de resultatenset is ingeschakeld, kan het uitvoeren van query's die een grote resultatenset retour neren (bijvoorbeeld > 1 miljoen rijen), een hoog CPU-gebruik op het beheer knooppunt veroorzaken en de algehele query respons op het exemplaar vertragen.  Deze query's worden vaak gebruikt tijdens het verkennen van gegevens of ETL-bewerkingen. Om te voor komen dat het controle knooppunt stressert en het prestatie probleem veroorzaakt, moeten gebruikers de resultatenset cache uitschakelen in de Data Base voordat deze typen query's worden uitgevoerd.  
+
+Voer deze query uit voor de tijd die nodig is voor de cache bewerkingen van de resultatenset voor een query:
+
+```sql
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
+FROM sys.dm_pdw_request_steps 
+WHERE request_id  = <'request_id'>; 
+```
+
+Hier volgt een voorbeeld uitvoer voor een query die wordt uitgevoerd met de cache voor de resultatenset uitgeschakeld.
+
+![Query-stappen-met-RSC-uitgeschakeld](media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+
+Hier volgt een voorbeeld uitvoer voor een query die wordt uitgevoerd met de cache voor de resultatenset ingeschakeld.
+
+![Query-stappen-met-RSC-ingeschakeld](media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>Wanneer de resultaten in de cache worden gebruikt
 

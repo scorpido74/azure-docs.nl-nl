@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/24/2019
-ms.openlocfilehash: ba0ee29b48be259bddd898c3d1119b77f6ee5228
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/30/2019
+ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932307"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162010"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Computers zonder Internet toegang verbinden met behulp van de Log Analytics-gateway in Azure Monitor
 
@@ -22,7 +22,7 @@ ms.locfileid: "72932307"
 
 In dit artikel wordt beschreven hoe u communicatie met Azure Automation en Azure Monitor kunt configureren met behulp van de Log Analytics gateway wanneer computers die rechtstreeks zijn verbonden of die worden bewaakt door Operations Manager geen Internet toegang hebben. 
 
-De Log Analytics-gateway is een HTTP-doorstuur proxy die ondersteuning biedt voor HTTP-tunnels met behulp van de HTTP-opdracht verbinding. Deze Gateway verzendt gegevens naar Azure Automation en een Log Analytics-werk ruimte in Azure Monitor namens de computers die niet rechtstreeks verbinding kunnen maken met internet. Er worden geen gegevens van de agents in de cache opgeslagen. de agent verwerkt gegevens in deze situatie in de cache totdat de communicatie is hersteld.
+De Log Analytics-gateway is een HTTP-doorstuur proxy die ondersteuning biedt voor HTTP-tunnels met behulp van de HTTP-opdracht verbinding. Deze Gateway verzendt gegevens naar Azure Automation en een Log Analytics-werk ruimte in Azure Monitor namens de computers die niet rechtstreeks verbinding kunnen maken met internet. 
 
 De Log Analytics gateway ondersteunt:
 
@@ -33,7 +33,7 @@ De Log Analytics gateway ondersteunt:
 
 In sommige IT-beveiligings beleidsregels is Internet verbinding voor netwerk computers niet toegestaan. Deze niet-verbonden computers kunnen bijvoorbeeld POS-apparaten (Point of Sale) zijn of servers die IT-Services ondersteunen. Als u deze apparaten wilt verbinden met Azure Automation of een Log Analytics werk ruimte, zodat u ze kunt beheren en controleren, moet u ze configureren om rechtstreeks te communiceren met de Log Analytics gateway. De Log Analytics-gateway kan configuratie-informatie ontvangen en gegevens namens u door sturen. Als de computers zijn geconfigureerd met de Log Analytics-agent om rechtstreeks verbinding te maken met een Log Analytics-werk ruimte, communiceren de computers in plaats daarvan met de Log Analytics gateway.  
 
-De Log Analytics-gateway brengt gegevens rechtstreeks over van de agents naar de service. De gegevens die onderweg zijn, worden niet geanalyseerd.
+De Log Analytics-gateway brengt gegevens rechtstreeks over van de agents naar de service. De gegevens in de overdracht worden niet geanalyseerd en de gateway slaat geen gegevens op in de cache wanneer de verbinding met de service wordt verbroken. Wanneer de gateway niet kan communiceren met de service, blijft de agent actief en worden de verzamelde gegevens op de schijf van de bewaakte computer bewaard. Wanneer de verbinding wordt hersteld, verzendt de agent de gegevens in de cache die worden verzameld naar Azure Monitor.
 
 Wanneer een Operations Manager-beheer groep is geïntegreerd met Log Analytics, kunnen de beheerser vers worden geconfigureerd om verbinding te maken met de gateway van Log Analytics om configuratie-informatie te ontvangen en verzamelde gegevens te verzenden, afhankelijk van de oplossing die u hebt ingeschakeld .  Operations Manager-agents verzenden enkele gegevens naar de-beheer server. Agents kunnen bijvoorbeeld Operations Manager-waarschuwingen, gegevens over de configuratie-evaluatie, gegevens over de exemplaar ruimte en capaciteits gegevens verzenden. Andere gegevens met een hoog volume, zoals Internet Information Services (IIS)-logboeken, prestatie gegevens en beveiligings gebeurtenissen, worden rechtstreeks naar de Log Analytics gateway verzonden. 
 
@@ -167,7 +167,7 @@ De volgende tabel geeft een overzicht van de para meters die door Setup worden o
 Als u de gateway op de achtergrond wilt installeren en configureren met een specifiek proxy adres, poort nummer, typt u het volgende:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 Met de opdracht regel optie/qn wordt Setup verborgen,/QB geeft de installatie weer tijdens de installatie op de achtergrond.  
@@ -175,7 +175,7 @@ Met de opdracht regel optie/qn wordt Setup verborgen,/QB geeft de installatie we
 Als u referenties moet opgeven voor verificatie bij de proxy, typt u het volgende:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 Na de installatie kunt u controleren of de instellingen zijn geaccepteerd (exlcuding de gebruikers naam en het wacht woord) met behulp van de volgende Power shell-cmdlets:

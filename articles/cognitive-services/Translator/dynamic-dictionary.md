@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f586702350b38c6d546767f64a8e2f6115b59817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c268616c015c1c8735b2bdddc057f235d02cdc2a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595288"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161741"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Een dynamische woorden lijst gebruiken
 
@@ -27,14 +27,14 @@ Als u al weet wat de vertaling is die u wilt Toep assen op een woord of een woor
 
 **Vereiste**
 
-* De `From` talen `To` en moeten verschillend zijn. 
-* U moet de `From` para meter in uw API-Vertaal aanvraag toevoegen in plaats van de functie voor automatische detectie te gebruiken. 
+* De `From` en `To` talen moeten verschillend zijn. 
+* U moet de para meter `From` in uw API-omzettings aanvraag toevoegen in plaats van de functie voor automatische detectie te gebruiken. 
 
 **Voor beeld: nl-de:**
 
-Bron invoer: Het woord < msTrans: woorden lijst vertaling\"=\"wordomatic > woord of zin </msTrans: Dictionary > een vermelding van een woorden lijst is.
+Bron invoer: het woord < msTrans: woorden lijst vertaling =\"wordomatic\"> woord of zin </msTrans: Dictionary > een vermelding van een woorden lijst is.
 
-Doel uitvoer: Das Wort "wordomatic" ist Wörterbucheintrag.
+Doel uitvoer: das Wort "wordomatic" ist ein Wörterbucheintrag.
 
 Deze functie werkt op dezelfde manier met en zonder HTML-modus.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.author: estfan
 ms.custom: include file
 ms.date: 05/15/2018
-ms.openlocfilehash: aa1001661d8fe03855e1a28b882f674bee3606b2
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: d60d7727e0674298fa6da7e7330221318da23efd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311986"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161661"
 ---
 * Als u Azure SQL Database gebruikt, volgt u de stappen onder [verbinding maken met Azure SQL database](#connect-azure-sql-db).
 
@@ -34,7 +34,7 @@ Wanneer de SQL-trigger of actie u vraagt om verbindings gegevens, voert u de vol
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![Azure SQL Database verbinding maken](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   ![Verbinding maken met Azure SQL Database](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
 1. Als u gereed bent, selecteert u **Maken**.
 
@@ -59,7 +59,7 @@ Wanneer de SQL-trigger of actie u vraagt om verbindings gegevens, voert u de vol
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![SQL Server verbinding maken](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   ![Verbinding maken met SQL Server](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
 
 1. Als uw SQL server gebruikmaakt van Windows of basis verificatie, selecteert u het **verificatie type**.
 

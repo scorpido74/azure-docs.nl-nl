@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: ed13735b4da4818e969c4dddff68b55af6e71a15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855424"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159859"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Richt lijnen voor het afstemmen van de prestaties voor Storm op HDInsight en Azure Data Lake Storage Gen2
 
@@ -22,10 +22,10 @@ Begrijp de factoren die u moet overwegen wanneer u de prestaties van een Azure S
 ## <a name="prerequisites"></a>Vereisten
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Een Azure data Lake Storage Gen2-account**. Zie [voor instructies voor het maken van een Snelstartgids: Maak een opslag account voor analyse](data-lake-storage-quickstart-create-account.md).
+* **Een Azure data Lake Storage Gen2-account**. Zie [Snelstartgids: een opslag account maken voor analyse](data-lake-storage-quickstart-create-account.md)voor instructies over het maken van een.
 * **Azure HDInsight-cluster** met toegang tot een Data Lake Storage Gen2-account. Zie [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Zorg ervoor dat Extern bureaublad voor het cluster is ingeschakeld.
 * **Een storm-cluster wordt uitgevoerd op Data Lake Storage Gen2**. Zie [Storm op HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)voor meer informatie.
-* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage Gen2**.  Zie [Data Lake Storage Gen2 richt lijnen](data-lake-storage-performance-tuning-guidance.md)voor het afstemmen van prestaties voor algemene concepten.   
+* **Richt lijnen voor het afstemmen van de prestaties van data Lake Storage Gen2**.  Zie [Data Lake Storage Gen2 richt lijnen voor het afstemmen van prestaties](data-lake-storage-performance-tuning-guidance.md)voor algemene concepten.   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>De parallellisme van de topologie afstemmen
 
@@ -110,8 +110,8 @@ Als u de limieten bereikt van de band breedte van Data Lake Storage Gen2, worden
 
 Als u wilt controleren of u een beperking krijgt, schakelt u de logboek registratie voor fout opsporing in aan de client zijde:
 
-1.  > Wijzig **in Ambari** **Storm** > configAdvanced > **Storm-worker-log4j**, **root level = "info&gt; " naar root level = &lt;**  **&lt; ' debug '&gt;** . Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
-2. Bewaak de Storm-topologie logboeken op worker&lt;-knoop&gt;punten&gt;(onder/var/log/Storm/worker-Artifacts/-/&lt;topologie poort/Worker.log) voor data Lake Storage Gen2 beperkings uitzonderingen.
+1. Wijzig **&lt;root level = "info"&gt;** op **&lt;root level = "debug"&gt;** in **Ambari** > **Storm** > **configuratie** > **Advanced Storm-worker-log4j**. Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
+2. Bewaak de Storm-topologie logboeken op worker-knoop punten (onder/var/log/Storm/worker-Artifacts/&lt;Topologienaam&gt;/&lt;poort&gt;/Worker.log) voor Data Lake Storage Gen2 beperkings uitzonderingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 In [deze blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)kunt u naar aanvullende prestaties afstemmen voor Storm.

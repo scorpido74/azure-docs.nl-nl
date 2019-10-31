@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Integratie van Azure Active Directory met AuditBoard | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met AuditBoard | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en AuditBoard.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 072724b9-d1c8-4c22-9571-d1d0d7eb5ea2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b91c0e55ba3400d4d601556d214bb2c9d6ff170
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be16f4b51435016d948b23d4313214f399140b39
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106575"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157815"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Zelfstudie: Integratie van Azure Active Directory met AuditBoard
+# <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Zelf studie: integratie Azure Active Directory met AuditBoard
 
 In deze zelfstudie leert u hoe u AuditBoard kunt integreren met Azure Active Directory (Azure AD).
 De integratie van AuditBoard met Azure Active Directory heeft de volgende voordelen:
@@ -38,7 +39,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u Azure AD-integratie met AuditBoard wilt configureren, hebt u het volgende nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
 * Een abonnement op AuditBoard waarop eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
@@ -53,7 +54,7 @@ Als u de integratie van AuditBoard in Azure AD wilt configureren, dient u AuditB
 
 **Voer de volgende stappen uit als u AuditBoard vanuit de galerie wilt toevoegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -107,7 +108,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met AuditBo
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
     c. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP geïnitieerde** modus wilt configureren:
 
@@ -144,11 +145,11 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon\@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon\@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -162,7 +163,7 @@ In dit gedeelte hebt u Britta Simon in staat gesteld gebruik te maken van eenmal
 
     ![De koppeling AuditBoard in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -182,11 +183,11 @@ In dit gedeelte maakt u een gebruiker met de naam Britta Simon in AuditBoard. We
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel AuditBoard in het toegangsvenster klikt, moet u automatisch worden aangemeld bij de instantie van AuditBoard waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6996b6163c1d5a2a4747093743a937dfd9eb7d4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5aab9d8c2b7993598c602ae6b730baff06d807e1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933120"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151626"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Een authenticatie-implementatie met een wacht woord volt ooien
 
@@ -104,18 +104,27 @@ Met beveiligings sleutels kunt u toegang tot uw resources geven en moet u het be
 
 Voor het inschakelen van Windows 10 sign in met behulp van FIDO2-beveiligings sleutels moet de functionaliteit van de referentie provider in Windows 10 worden ingeschakeld. Schakel deze op een van de volgende twee manieren in:
 
-- [Referentie provider inschakelen via de beoogde intune-implementatie](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - InTune-implementatie is de aanbevolen optie voor Azure Active Directory gekoppelde computers.
-- [Referentie provider inschakelen via inrichtings pakket](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [Referentie provider inschakelen met intune](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - InTune-implementatie is de aanbevolen optie.
+- [Referentie provider met een inrichtings pakket inschakelen](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Als de intune-implementatie niet mogelijk is, moeten beheerders een pakket op elke computer implementeren om de functionaliteit van de referentie provider in te scha kelen. De installatie van het pakket kan worden uitgevoerd met een van de volgende opties:
       - Groepsbeleid of System Center Configuration Manager (SCCM)
       - Lokale installatie op een Windows 10-computer
+- [Referentie provider inschakelen met groepsbeleid](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Alleen ondersteund voor hybride apparaten die zijn toegevoegd aan Azure AD.
+
+#### <a name="enable-on-premises-integration"></a>On-premises integratie inschakelen
+
+Volg de stappen in het artikel [wacht woordloze beveiligings sleutel inschakelen aanmelden bij on-premises resources (preview)](howto-authentication-passwordless-security-key-on-premises.md) om toegang tot on-premises resources mogelijk te maken.
+
+> [!IMPORTANT]
+> Deze stappen moeten ook worden uitgevoerd voor alle hybride Azure AD-apparaten die zijn toegevoegd aan het gebruik van FIDO2-beveiligings sleutels voor Windows 10-aanmelding.
 
 ### <a name="register-security-keys"></a>Beveiligings sleutels registreren
 
 Gebruikers moeten hun beveiligings sleutel registreren op elk van hun Azure Active Directory gekoppelde Windows 10-computers.
 
-Zie [gebruikers registratie en het beheer van FIDO2-beveiligings sleutels](howto-authentication-passwordless-security-key.md)voor meer informatie.
+Zie [gebruikers registratie en het beheer van FIDO2-beveiligings sleutels](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys)voor meer informatie.
 
 ### <a name="licensing-for-passwordless-authentication"></a>Licenties voor verificatie met een wacht woord
 
@@ -257,7 +266,7 @@ Volg de stappen in het artikel, [Schakel aanmelden zonder wacht woord in met de 
 ### <a name="deploy-fido2-security-key-sign-in"></a>Aanmelden met FIDO2-beveiligings sleutel implementeren
 
 Volg de stappen in het artikel, [Schakel wacht woordloze beveiligings sleutel aanmelden in voor Azure AD](howto-authentication-passwordless-security-key.md) om FIDO2-beveiligings sleutels in te scha kelen als verificatie methoden met een wacht woord in uw organisatie.
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>Problemen met aanmelden via telefoon oplossen
 
 | Scenario | Oplossing |

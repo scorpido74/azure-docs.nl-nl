@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Innoverse | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Innoverse | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Innoverse.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d72e4da0-0123-409b-96c2-e613f3f83fb1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32eab48cbcdf4a8197e612e3efb24957c4d964
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e20bba9357c01107fafe13d1e8b0ba921588c140
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100301"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157925"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>Zelfstudie: Azure Active Directory-integratie met Innoverse
+# <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>Zelf studie: integratie Azure Active Directory met Innoverse
 
 In deze zelfstudie leert u hoe u Innoverse integreert met Azure Active Directory (Azure AD).
 De integratie van Innoverse met Azure AD heeft de volgende voordelen:
@@ -54,7 +55,7 @@ Als u de integratie van Innoverse in Azure AD wilt configureren, moet u Innovers
 
 **Voer de volgende stappen uit om Innoverse toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select_azuread.png)
 
@@ -108,13 +109,13 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met Innoverse
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<domainname>.innover.se`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<domainname>.innover.se/auth/saml2/login`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<domainname>.innover.se/auth/saml2/login`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     ![Informatie over Innoverse-domein en URL's voor eenmalige aanmelding](common/metadata_upload_additional_signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<domainname>.innover.se/auth/saml2/login`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<domainname>.innover.se/auth/saml2/login`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met [Innoverse-clientondersteuningsteam](mailto:support@readify.net) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -125,7 +126,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met Innoverse
 
 7. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** configureert u het kenmerk van het SAML-token zoals wordt weergegeven in de bovenstaande afbeelding en voert u de volgende stappen uit:
 
-    | Name | Bronkenmerk| Naamruimte |
+    | Naam | Bronkenmerk| Naamruimte |
     | ---------------| --------- | ----------------|
     | displayname | `user.userprincipalname` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -173,12 +174,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon** in.
 
-    b. In de **gebruikersnaam** veld, typt u **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -192,7 +193,7 @@ In dit gedeelte stelt u Britta Simon in staat om gebruik te maken van eenmalige 
 
     ![De koppeling naar Innoverse in de lijst met toepassingen](common/all_applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users_groups_blade.png)
 
@@ -212,11 +213,11 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in Innovers
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Innoverse in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Innoverse waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

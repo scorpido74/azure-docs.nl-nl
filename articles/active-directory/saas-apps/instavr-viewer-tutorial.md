@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met InstaVR Viewer | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met InstaVR-viewer | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en InstaVR Viewer.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e005d794fa3c6c70edf3d3466b0f076e2007352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8de94f83c260a86f313a2dd04cdd5a7ae8fc1cda
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67099973"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73155307"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Zelfstudie: Azure Active Directory-integratie met InstaVR Viewer
+# <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Zelf studie: integratie Azure Active Directory met InstaVR viewer
 
 In deze zelfstudie leert u hoe u InstaVR Viewer integreert met Azure Active Directory (Azure AD).
 De integratie van InstaVR Viewer met Azure AD biedt u de volgende voordelen:
@@ -54,7 +55,7 @@ Voor het configureren van de integratie van InstaVR Viewer in Azure AD, moet u I
 
 **Voer de volgende stappen uit om InstaVR Viewer vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -172,12 +173,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -191,7 +192,7 @@ In deze sectie maakt u het mogelijk voor Britta Simon om eenmalige aanmelding vo
 
     ![De koppeling InstaVR Viewer in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -227,7 +228,7 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in InstaVR V
 
 5. Voer uw Azure AD-referenties in om u aan te melden bij Azure AD via eenmalige aanmelding.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

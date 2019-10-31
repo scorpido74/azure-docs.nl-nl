@@ -1,6 +1,6 @@
 ---
-title: SQL Server migreren naar Azure SQL Database Managed Instance met de Database migratieservice- en PowerShell | Microsoft Docs
-description: Meer informatie over het migreren van on-premises SQL Server naar Azure SQL database Managed Instance met Azure PowerShell.
+title: SQL Server migreren naar Azure SQL Database beheerde instantie met Database Migration Service en Power shell | Microsoft Docs
+description: Meer informatie over het migreren van on-premises SQL Server naar een beheerd exemplaar van Azure SQL data base met behulp van Azure PowerShell.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -11,79 +11,79 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/29/2019
-ms.openlocfilehash: d83410efd26f8c2078d3abdb01d061db0b83d33d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 426285340a9401aa6c84a7ee07f172eee6791d9e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233727"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163963"
 ---
-# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>On-premises SQL Server migreren naar een beheerd exemplaar voor Azure SQL Database met behulp van Azure PowerShell
-In dit artikel, migreert u de **Adventureworks2016** database hersteld naar een on-premises exemplaar van SQL Server 2005 of hoger met een Azure SQL-Database beheerd exemplaar met behulp van Microsoft Azure PowerShell. U databases kunt migreren vanaf een on-premises SQL Server-exemplaar naar een beheerd exemplaar voor Azure SQL Database met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
+# <a name="migrate-sql-server-on-premises-to-an-azure-sql-database-managed-instance-using-azure-powershell"></a>SQL Server on-premises migreren naar een Azure SQL Database beheerd exemplaar met behulp van Azure PowerShell
+In dit artikel migreert u de **Adventureworks2016** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2005 of hoger naar een Azure SQL database beheerd exemplaar met behulp van Microsoft Azure PowerShell. U kunt data bases van een on-premises SQL Server-exemplaar migreren naar een Azure SQL Database beheerd exemplaar met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]
 >
 > * Maak een resourcegroep.
 > * Maak een instantie van Azure Database Migration Service.
-> * Een migratieproject maken in een exemplaar van Azure Database Migration Service.
+> * Een migratie project maken in een exemplaar van Azure Database Migration Service.
 > * De migratie uitvoeren.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Dit artikel bevat informatie over hoe u zowel online als offline migratie uitvoert.
+Dit artikel bevat gedetailleerde informatie over het uitvoeren van online-en offline migraties.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt deze stappen hebt voltooid, hebt u het volgende nodig:
+Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
 * [SQL Server 2016 of hoger](https://www.microsoft.com/sql-server/sql-server-downloads) (alle edities).
-* Een lokale kopie van de **AdventureWorks2016** -database, die gedownload is [hier](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017).
-* Om in te schakelen het TCP/IP-protocol, dat standaard met SQL Server Express-installatie is uitgeschakeld. Het TCP/IP-protocol inschakelen door het artikel te volgen [in- of uitschakelen van een Server Network Protocol](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
-* Het configureren van uw [Windows Firewall voor toegang tot de database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Een beheerd exemplaar voor Azure SQL Database. U kunt een beheerd exemplaar voor Azure SQL Database maken met de details in het artikel te volgen [maken van een beheerd exemplaar voor Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
-* Downloaden en installeren [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 of hoger.
-* Een Azure-netwerk (VNet) gemaakt met behulp van de Azure Resource Manager-implementatiemodel, dat de Azure Database Migration Service met site-naar-site-verbinding met uw on-premises bronservers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Een voltooide evaluatie van uw on-premises database en het schema een migratie met behulp van Data Migration Assistant, zoals beschreven in het artikel [uitvoeren van een SQL Server-migratie-evaluatie](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
-* Downloaden en installeren de `Az.DataMigration` module (versie 0.7.2 of hoger) vanuit de PowerShell Gallery met behulp van [Install-Module PowerShell-cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
-* Om ervoor te zorgen dat de referenties waarmee verbinding maken met SQL Server-bronexemplaar de [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) machtiging.
-* Om ervoor te zorgen dat de referenties waarmee verbinding maken met de doel-Azure SQL Database heeft beheerd exemplaar de machtiging beheer DATABASE op de doeldatabase voor Azure SQL-Database beheerd exemplaar.
+* Een lokale kopie van de **AdventureWorks2016** -data base, die [hier](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)kan worden gedownload.
+* Om het TCP/IP-protocol in te scha kelen, dat standaard is uitgeschakeld bij SQL Server Express installatie. Schakel het TCP/IP-protocol in door het artikel [een server netwerk protocol in of uit](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)te scha kelen.
+* Als u uw [Windows Firewall wilt configureren voor toegang tot de data base-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Een Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* Een door Azure SQL Database beheerd exemplaar. U kunt een beheerde instantie van Azure SQL Database maken door de details in het artikel [een Azure SQL database beheerd exemplaar maken](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)te volgen.
+* Om [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 of nieuwer te downloaden en te installeren.
+* Een Azure Virtual Network (VNet) dat is gemaakt met behulp van het Azure Resource Manager-implementatie model, dat de Azure Database Migration Service met site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Een voltooide evaluatie van uw on-premises data base en schema migratie met behulp van Data Migration Assistant, zoals beschreven in het artikel [een SQL Server migratie-evaluatie uitvoeren](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
+* Als u de `Az.DataMigration`-module (versie 0.7.2 of hoger) wilt downloaden en installeren via de PowerShell Gallery met behulp van de [Power shell-cmdlet voor installatie-module](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
+* Om ervoor te zorgen dat de referenties die worden gebruikt om verbinding te maken met de bron SQL Server, de [controle server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) machtiging hebben.
+* Om ervoor te zorgen dat de referenties die worden gebruikt om verbinding te maken met het beheerde exemplaar van Azure SQL Database, beschikken over de machtiging beheer DATABASE voor de doel-Azure SQL Database beheerde exemplaar databases.
 
     > [!IMPORTANT]
-    > Online migratie, moet u al uw Azure Active Directory-referenties hebt ingesteld. Zie voor meer informatie het artikel [gebruikt de portal voor het maken van een Azure AD-toepassing en service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+    > Voor online migraties moet u uw Azure Active Directory referenties hebben ingesteld. Zie voor meer informatie het artikel [de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
-## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Meld u aan met uw Microsoft Azure-abonnement
+## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Meld u aan bij uw Microsoft Azure-abonnement
 
-Meld u aan uw Azure-abonnement met behulp van PowerShell. Zie voor meer informatie het artikel [Meld u aan met Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Meld u aan bij uw Azure-abonnement met behulp van Power shell. Zie het artikel [Aanmelden met Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)voor meer informatie.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een Azure-resourcegroep is een logische container waarin Azure resources worden geïmplementeerd en beheerd.
+Een Azure-resource groep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-Maak een resourcegroep met behulp van de [ `New-AzResourceGroup` ](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) opdracht.
+Maak een resource groep met behulp van de opdracht [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) .
 
-Het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* in de *VS-Oost* regio.
+In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *VS Oost* .
 
 ```powershell
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Maak een instantie van Azure Database Migration Service
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Een instantie van Azure Database Migration Service maken
 
-U kunt een nieuw exemplaar van Azure Database Migration Service maken met behulp van de `New-AzDataMigrationService` cmdlet.
-Deze cmdlet wordt verwacht dat de volgende vereiste parameters:
+U kunt een nieuw exemplaar van Azure Database Migration Service maken met behulp van de `New-AzDataMigrationService`-cmdlet.
+Voor deze cmdlet worden de volgende vereiste para meters verwacht:
 
-* *De naam van de Azure-resourcegroep*. U kunt [ `New-AzResourceGroup` ](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) opdracht voor het maken van een Azure-resourcegroep als eerder weergegeven en geeft de naam op als een parameter.
-* *Servicenaam*. De tekenreeks die overeenkomt met de naam van de gewenste unieke service voor Azure Database Migration Service.
-* *Locatie*. Hiermee geeft u de locatie van de service. Geef een locatie van een Azure data center, zoals VS-West of Zuidoost-Azië.
-* *Sku*. Deze parameter komt overeen met de naam van de DMS-Sku. Namen van de momenteel ondersteunde Sku zijn *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
-* *Virtual Subnet Identifier*. U kunt de cmdlet [ `New-AzVirtualNetworkSubnetConfig` ](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) om een subnet te maken.
+* *Naam van de Azure-resource groep*. U kunt [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) opdracht gebruiken om een Azure-resource groep te maken zoals eerder wordt weer gegeven en de naam opgeven als een para meter.
+* *Service naam*. Teken reeks die overeenkomt met de gewenste unieke service naam voor Azure Database Migration Service.
+* *Locatie*. Hiermee geeft u de locatie van de service. Geef een Azure Data Center-locatie op, zoals vs-West of Zuidoost-Azië.
+* *SKU*. Deze para meter komt overeen met de naam van een DMS-SKU. Momenteel ondersteunde SKU-namen zijn *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
+* *Id van het virtuele subnet*. U kunt de cmdlet- [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) gebruiken om een subnet te maken.
 
-Het volgende voorbeeld wordt een service met de naam *MyDMS* in de resourcegroep *MyDMSResourceGroup* zich in de *VS-Oost* regio met behulp van een virtueel netwerk met de naam  *MyVNET* en een subnet met de naam *MySubnet*.
+In het volgende voor beeld wordt een service gemaakt met de naam *MyDMS* in de resource groep *MyDMSResourceGroup* die zich bevindt in de regio *VS Oost* met behulp van een virtueel netwerk met de naam *MyVNET* en een subnet met de naam *MySubnet*.
 
 > [!IMPORTANT]
-> Het onderstaande codefragment wordt een offline migratie, die niet nodig heeft een exemplaar van Azure Database Migration Service op basis van een Premium-SKU. Voor een online migratie, moet de waarde van de parameter - Sku bevatten een Premium-SKU.
+> Het onderstaande code fragment is voor een offline migratie waarvoor geen instantie van Azure Database Migration Service op basis van een Premium-SKU is vereist. Voor een online migratie moet de waarde van de para meter-SKU een Premium-SKU bevatten.
 
 ```powershell
 $vNet = Get-AzVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
@@ -99,18 +99,18 @@ $service = New-AzDms -ResourceGroupName myResourceGroup `
 
 ## <a name="create-a-migration-project"></a>Maak een migratieproject
 
-Na het maken van een Azure Database Migration Service-exemplaar, kunt u een migratieproject maken. Een Azure Database Migration Service-project vereist verbindingsgegevens voor zowel de bron en doel-instanties, evenals een lijst met databases die u wilt migreren als onderdeel van het project.
+Nadat u een Azure Database Migration Service-exemplaar hebt gemaakt, moet u een migratie project maken. Een Azure Database Migration Service project vereist verbindings gegevens voor zowel de bron-als doel instantie, evenals een lijst met data bases die u wilt migreren als onderdeel van het project.
 
-### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Een Database Connection-Info-object voor de bron en doel-verbindingen maken
+### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Een database verbindings info-object maken voor de bron-en doel verbindingen
 
-U kunt een Database Connection-Info-object maken met behulp van de `New-AzDmsConnInfo` cmdlet, die wordt verwacht de volgende parameters dat:
+U kunt een object data base-verbindings gegevens maken met behulp van de cmdlet `New-AzDmsConnInfo`, die de volgende para meters verwacht:
 
-* *ServerType*. Het type van de verbinding met database aangevraagd, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
-* *DataSource*. De naam of IP-adres van een SQL Server-exemplaar of een Azure SQL Database-exemplaar.
-* *AuthType*. Het verificatietype voor verbinding, die SqlAuthentication of WindowsAuthentication kan zijn.
-* *TrustServerCertificate*. Deze parameter stelt een waarde die aangeeft of het kanaal worden versleuteld terwijl het overslaan van de certificaatketen voor het valideren van vertrouwensrelatie lopen. De waarde kan zijn `$true` of `$false`.
+* *Server type*. Het type aangevraagde database verbinding, bijvoorbeeld SQL, Oracle of MySQL. Gebruik SQL voor SQL Server en Azure SQL.
+* *Gegevens bron*. De naam of het IP-adres van een SQL Server exemplaar of Azure SQL Database exemplaar.
+* *AuthType*. Het verificatie type voor de verbinding. Dit kan SqlAuthentication of WindowsAuthentication zijn.
+* *TrustServerCertificate*. Met deze para meter wordt een waarde ingesteld die aangeeft of het kanaal is versleuteld tijdens het passeren van het door lopen van de certificaat keten om de vertrouwens relatie te valideren. De waarde kan `$true` of `$false`zijn.
 
-Het volgende voorbeeld wordt een object met verbindingsgegevens voor een bron SQL Server met de naam *MySourceSQLServer* met behulp van sql-verificatie:
+In het volgende voor beeld wordt een verbindings info-object gemaakt voor een bron SQL Server met de naam *MySourceSQLServer* met behulp van SQL-verificatie:
 
 ```powershell
 $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -119,7 +119,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-Het volgende voorbeeld toont het maken van de verbindingsgegevens voor een Azure SQL Database-beheerd exemplaar-server met de naam targetmanagedinstance.database.windows.net met behulp van sql-verificatie:
+In het volgende voor beeld ziet u het maken van verbindings gegevens voor een Azure SQL Database Managed instance server met de naam ' targetmanagedinstance.database.windows.net ' met behulp van SQL-verificatie:
 
 ```powershell
 $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -128,11 +128,11 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$false
 ```
 
-### <a name="provide-databases-for-the-migration-project"></a>Databases bieden voor het migratieproject
+### <a name="provide-databases-for-the-migration-project"></a>Data bases voor het migratie project opgeven
 
-Maak een lijst van `AzDataMigrationDatabaseInfo` objecten die Hiermee geeft u de databases als onderdeel van het project Azure Database Migration Service, die kan worden opgegeven als parameter voor het maken van het project. U kunt de cmdlet `New-AzDataMigrationDatabaseInfo` maken `AzDataMigrationDatabaseInfo`.
+Een lijst met `AzDataMigrationDatabaseInfo`-objecten maken waarmee data bases worden opgegeven als onderdeel van het Azure Database Migration Service project, dat kan worden opgegeven als para meter voor het maken van het project. U kunt de cmdlet `New-AzDataMigrationDatabaseInfo` gebruiken om `AzDataMigrationDatabaseInfo`te maken.
 
-Het volgende voorbeeld wordt de `AzDataMigrationDatabaseInfo` -project voor de **AdventureWorks2016** database en toegevoegd aan de lijst om te worden opgegeven als parameter voor het maken van het project.
+In het volgende voor beeld wordt het `AzDataMigrationDatabaseInfo` project gemaakt voor de **AdventureWorks2016** -data base en wordt dit toegevoegd aan de lijst die als para meter voor het maken van het project moet worden gegeven.
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks
@@ -141,7 +141,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>Een project-object maken
 
-Ten slotte kunt u een Azure Database Migration Service-project met de naam *MyDMSProject* zich in *VS-Oost* met behulp van `New-AzDataMigrationProject` en de eerder gemaakte bron en doel-verbindingen toevoegen en de lijst met databases om te migreren.
+Ten slotte kunt u een Azure Database Migration Service-project maken met de naam *MyDMSProject* die zich in *VS Oost* bevindt met behulp van `New-AzDataMigrationProject` en de eerder gemaakte bron-en doel verbindingen en de lijst met te migreren data bases toe te voegen.
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
@@ -155,15 +155,15 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
   -DatabaseInfo $dbList
 ```
 
-## <a name="create-and-start-a-migration-task"></a>Maak en start u een migratietaak
+## <a name="create-and-start-a-migration-task"></a>Een migratie taak maken en starten
 
-Vervolgens maken en een Azure Database Migration Service-taak te starten. Deze taak is vereist voor verbinding referentie-informatie voor zowel de bron en doel, evenals de lijst met database-tabellen moeten worden gemigreerd en de informatie die al voorzien van het project gemaakt als een vereiste.
+Maak vervolgens een Azure Database Migration Service taak en start deze. Voor deze taak zijn verbindings referentie gegevens vereist voor zowel de bron als het doel, evenals de lijst met database tabellen die moeten worden gemigreerd en de informatie die al aan het project is toegevoegd als een vereiste.
 
-### <a name="create-credential-parameters-for-source-and-target"></a>Referentie-parameters voor de bron en doel maken
+### <a name="create-credential-parameters-for-source-and-target"></a>Referentie parameters maken voor bron en doel
 
-Verbinding maken van de beveiligingsreferenties als een [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) object.
+Maak beveiligings referenties voor de verbinding als een [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) -object.
 
-Het volgende voorbeeld toont het maken van *PSCredential* objecten voor zowel de bron- en -verbindingen bieden wachtwoorden als tekenreeksvariabelen *$sourcePassword* en *$ doelwachtwoord*.
+In het volgende voor beeld wordt het maken van *PSCredential* -objecten voor zowel de bron-als de doel verbinding weer gegeven, waarbij wacht woorden worden opgegeven als teken reeks variabelen *$sourcePassword* en *$targetPassword*.
 
 ```powershell
 $secpasswd = ConvertTo-SecureString -String $sourcePassword -AsPlainText -Force
@@ -172,9 +172,9 @@ $secpasswd = ConvertTo-SecureString -String $targetPassword -AsPlainText -Force
 $targetCred = New-Object System.Management.Automation.PSCredential ($targetUserName, $secpasswd)
 ```
 
-### <a name="create-a-backup-fileshare-object"></a>Een back-up bestandsshare-object maken
+### <a name="create-a-backup-fileshare-object"></a>Een backup file share-object maken
 
-Maak nu een bestandsshare-object voor de lokale SMB-netwerkshare waarop Azure Database Migration Service kan duren voordat de bron databaseback-ups met behulp van de `New-AzDmsFileShare` cmdlet.
+Maak nu een file share-object dat de lokale SMB-netwerk share vertegenwoordigt waarmee Azure Database Migration Service de back-ups van de bron database kunt maken met behulp van de `New-AzDmsFileShare`-cmdlet.
 
 ```powershell
 $backupPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
@@ -184,11 +184,11 @@ $backupFileSharePath="\\10.0.0.76\SharedBackup"
 $backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $backupCred
 ```
 
-### <a name="create-selected-database-object"></a>Geselecteerde database-object maken
+### <a name="create-selected-database-object"></a>Geselecteerd database object maken
 
-De volgende stap is het selecteren van de bron- en -databases met behulp van de `New-AzDmsSelectedDB` cmdlet.
+De volgende stap is het selecteren van de bron-en doel database met behulp van de cmdlet `New-AzDmsSelectedDB`.
 
-Het volgende voorbeeld is voor het migreren van een individuele database van SQL Server naar een beheerd exemplaar voor Azure SQL Database:
+Het volgende voor beeld is het migreren van één data base van SQL Server naar een Azure SQL Database beheerde instantie:
 
 ```powershell
 $selectedDbs = @()
@@ -198,7 +198,7 @@ $selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -BackupFileShare $backupFileShare `
 ```
 
-Als een volledige SQL Server-exemplaar moet een lift-and-shift naar een Azure SQL-Database beheerd exemplaar, wordt een lus te nemen van alle databases van de bron is hieronder. In het volgende voorbeeld voor $Server $SourceUserName en $SourcePassword, geeft u de bron-SQL Server-gegevens.
+Als voor een hele SQL Server-instantie een lift-en-verschuiving in een Azure SQL Database beheerd exemplaar nodig is, wordt een lus voor het uitvoeren van alle data bases uit de bron weer gegeven. Geef in het volgende voor beeld voor $Server, $SourceUserName en $SourcePassword uw bron SQL Server Details op.
 
 ```powershell
 $Query = "(select name as Database_Name from master.sys.databases where Database_id>4)";
@@ -217,45 +217,45 @@ $selectedDbs += New-AzureRmDmsSelectedDB -MigrateSqlServerSqlDbMi `
       }
 ```
 
-### <a name="sas-uri-for-azure-storage-container"></a>SAS-URI voor Azure-Opslagcontainer
+### <a name="sas-uri-for-azure-storage-container"></a>SAS-URI voor Azure Storage-container
 
-Maak de variabele met de SAS-URI die de Azure Database Migration Service toegang biedt tot de container van het opslagaccount waarnaar de service de back-upbestanden uploadt.
+Maak een variabele met de SAS-URI die de Azure Database Migration Service biedt met toegang tot de container van het opslag account waarnaar de back-upbestanden worden geüpload.
 
 ```powershell
 $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%3A33Z&se=2019-07-14T18%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=qKlSA512EVtest3xYjvUg139tYSDrasbftY%3D"
 ```
 
-### <a name="additional-configuration-requirements"></a>Aanvullende configuratievereisten te voldoen
+### <a name="additional-configuration-requirements"></a>Aanvullende configuratie vereisten
 
-Er zijn enkele aanvullende vereisten die u afhandelen moet, maar van elkaar verschillen, afhankelijk van of het uitvoeren van een offline- of -migratie.
+Er zijn enkele aanvullende vereisten die u moet aanpakken, maar deze verschillen, afhankelijk van of u een offline-of online migratie uitvoert.
 
-#### <a name="offline-migrations"></a>Offline migratie
+#### <a name="offline-migrations"></a>Offline migraties
 
-Voor alleen offline migratie, moet u de volgende aanvullende configuratie-taken uitvoeren.
+Voer de volgende aanvullende configuratie taken uit voor offline migraties.
 
-* **Selecteer aanmeldingen**. Maak een lijst van aanmeldingen moeten worden gemigreerd, zoals wordt weergegeven in het volgende voorbeeld:
+* **Selecteer aanmeldingen**. Maak een lijst met aanmeldingen die moeten worden gemigreerd, zoals wordt weer gegeven in het volgende voor beeld:
 
     ```powershell
-    $selectedLogins = @(“user1”, “user2”)
+    $selectedLogins = @("user1", "user2")
     ```
 
     > [!IMPORTANT]
-    > Azure Database Migration Service ondersteunt momenteel alleen migreren SQL-aanmeldingen.
+    > Momenteel biedt Azure Database Migration Service alleen ondersteuning voor het migreren van SQL-aanmeldingen.
 
-* **Selecteer agent-taken**. Lijst van taken moeten worden gemigreerd, zoals wordt weergegeven in het volgende voorbeeld maken:
+* **Selecteer Agent taken**. Maak een lijst met Agent taken die moeten worden gemigreerd, zoals wordt weer gegeven in het volgende voor beeld:
 
     ```powershell
     $selectedAgentJobs = @("agentJob1", "agentJob2")
     ```
 
     > [!IMPORTANT]
-    > Azure Database Migration Service ondersteunt momenteel alleen taken met T-SQL-subsysteem taakstappen.
+    > Op dit moment ondersteunt Azure Database Migration Service alleen taken met de taak stappen van het subsysteem T-SQL.
 
-#### <a name="online-migrations"></a>Online migratie
+#### <a name="online-migrations"></a>Online migraties
 
-Voor alleen online migraties, moet u de volgende aanvullende configuratie-taken uitvoeren.
+Voer de volgende aanvullende configuratie taken uit voor alleen online migraties.
 
-* **Azure Active Directory-App configureren**
+* **Azure Active Directory-app configureren**
 
     ```powershell
     $pwd = "Azure App Key"
@@ -264,54 +264,54 @@ Voor alleen online migraties, moet u de volgende aanvullende configuratie-taken 
     $app = New-AzDmsAdApp -ApplicationId $appId -AppKey $AppPasswd
     ```
 
-* **Resource voor opslag configureren**
+* **Opslag Resource configureren**
 
     ```powershell
     $storageResourceId = "Storage Resource Id"
     ```
 
-### <a name="create-and-start-the-migration-task"></a>Maak en start de migratietaak
+### <a name="create-and-start-the-migration-task"></a>De migratie taak maken en starten
 
-Gebruik de `New-AzDataMigrationTask` cmdlet voor het maken en starten van een migratietaak.
+Gebruik de cmdlet `New-AzDataMigrationTask` om een migratie taak te maken en te starten.
 
-#### <a name="specify-parameters"></a>Parameters opgeven
+#### <a name="specify-parameters"></a>Para meters opgeven
 
-##### <a name="common-parameters"></a>Algemene Parameters
+##### <a name="common-parameters"></a>Algemene para meters
 
-Ongeacht of het uitvoeren van een offline- of -migratie, de `New-AzDataMigrationTask` cmdlet wordt verwacht dat de volgende parameters:
+Ongeacht of u een offline-of online migratie uitvoert, verwacht de `New-AzDataMigrationTask` cmdlet de volgende para meters:
 
-* *TaskType*. Type migratietaak maken voor SQL Server naar Azure SQL Database Managed Instance Migratietype *MigrateSqlServerSqlDbMi* wordt verwacht. 
-* *Naam resourcegroep*. De naam van de Azure-resourcegroep waarin de taak te maken.
-* *ServiceName*. Azure Database Migration Service-instantie in voor het maken van de taak.
-* *ProjectName*. Naam van Azure Database Migration Service-project waarin de taak te maken. 
-* *TaskName*. De naam van de taak moet worden gemaakt. 
-* *SourceConnection*. AzDmsConnInfo-object voor bron SQL Server-verbinding.
-* *TargetConnection*. AzDmsConnInfo-object van doel-Azure SQL Database Managed Instance-verbinding.
-* *SourceCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) object voor het verbinden met de bronserver.
-* *TargetCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) object voor het verbinden met de doelserver.
-* *SelectedDatabase*. AzDataMigrationSelectedDB-object voor de bron- en database-toewijzing.
-* *BackupFileShare*. FileShare-object dat het lokale netwerk vertegenwoordigt delen dat de Azure Database Migration Service kan duren voordat de bron databaseback-ups op.
-* *BackupBlobSasUri*. De SAS-URI die de Azure Database Migration Service toegang biedt tot de container van het opslagaccount waarnaar de service de back-upbestanden uploadt. Informatie over het verkrijgen van de SAS-URI voor de blob-container.
-* *SelectedLogins*. Lijst met geselecteerde aanmeldingen te migreren.
-* *SelectedAgentJobs*. Lijst met geselecteerde agent-taken te migreren.
+* *TaskType*. Het type migratie taak dat moet worden gemaakt voor de SQL Server Azure SQL Database het migratie type van het beheerde exemplaar *MigrateSqlServerSqlDbMi* wordt verwacht. 
+* *Naam van de resource groep*. De naam van de Azure-resource groep waarin de taak moet worden gemaakt.
+* *ServiceName*. Azure Database Migration Service exemplaar waarin de taak moet worden gemaakt.
+* *ProjectName*. De naam van het Azure Database Migration Service project waarin de taak moet worden gemaakt. 
+* *Taaknaam*. De naam van de taak die moet worden gemaakt. 
+* *SourceConnection*. AzDmsConnInfo-object dat de verbinding van de bron SQL Server vertegenwoordigt.
+* *TargetConnection*. AzDmsConnInfo-object dat het doel Azure SQL Database beheerde exemplaar verbinding vertegenwoordigt.
+* *SourceCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) -object voor het maken van verbinding met de bron server.
+* *TargetCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) -object om verbinding te maken met de doel server.
+* *SelectedDatabase*. AzDataMigrationSelectedDB-object dat de toewijzing van de bron-en doel database vertegenwoordigt.
+* *BackupFileShare*. File share-object dat de lokale netwerk share vertegenwoordigt waarnaar de Azure Database Migration Service de back-ups van de bron database kan maken.
+* *BackupBlobSasUri*. De SAS-URI die de Azure Database Migration Service biedt met toegang tot de container van het opslag account waarnaar de back-upbestanden worden geüpload door de service. Meer informatie over het ophalen van de SAS-URI voor de BLOB-container.
+* *SelectedLogins*. Een lijst met geselecteerde aanmeldingen die moeten worden gemigreerd.
+* *SelectedAgentJobs*. Lijst met geselecteerde Agent taken die moeten worden gemigreerd.
 
-##### <a name="additional-parameters"></a>Extra parameters
+##### <a name="additional-parameters"></a>Aanvullende para meters
 
-De `New-AzDataMigrationTask` cmdlet verwacht ook parameters die uniek zijn voor het type van de migratie, offline of online, die u uitvoert.
+De cmdlet `New-AzDataMigrationTask` verwacht ook para meters die uniek zijn voor het type migratie, offline of online, dat u uitvoert.
 
-* **Offline migratie**. Voor offline migratie, de `New-AzDataMigrationTask` cmdlet verwacht ook de volgende parameters:
+* **Offline migraties**. Voor offline migraties verwacht de cmdlet `New-AzDataMigrationTask` ook de volgende para meters:
 
-  * *SelectedLogins*. Lijst met geselecteerde aanmeldingen te migreren.
-  * *SelectedAgentJobs*. Lijst met geselecteerde agent-taken te migreren.
+  * *SelectedLogins*. Een lijst met geselecteerde aanmeldingen die moeten worden gemigreerd.
+  * *SelectedAgentJobs*. Lijst met geselecteerde Agent taken die moeten worden gemigreerd.
 
-* **Online migratie**. Voor online migratie, de `New-AzDataMigrationTask` cmdlet worden ook de volgende parameters verwacht.
+* **Online migraties**. Voor online migraties verwacht de cmdlet `New-AzDataMigrationTask` ook de volgende para meters.
 
 * *AzureActiveDirectoryApp*. Active Directory-toepassing.
-* *StorageResourceID*. Resource-ID van de Storage-Account.
+* *StorageResourceID*. De resource-ID van het opslag account.
 
-#### <a name="create-and-start-an-offline-migration-task"></a>Maak en start een taak offline migratie
+#### <a name="create-and-start-an-offline-migration-task"></a>Een taak voor een offline migratie maken en starten
 
-Het volgende voorbeeld maakt en start u een offlinemigratie-taak met de naam **myDMSTask**:
+In het volgende voor beeld wordt een offline migratie taak gemaakt en gestart met de naam **myDMSTask**:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
@@ -330,9 +330,9 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
   -SelectedAgentJobs $selectedJobs `
 ```
 
-#### <a name="create-and-start-an-online-migration-task"></a>Maak en start een taak online migratie
+#### <a name="create-and-start-an-online-migration-task"></a>Een online migratie taak maken en starten
 
-Het volgende voorbeeld maakt en start de taak van een online migratie met de naam **myDMSTask**:
+In het volgende voor beeld wordt een online migratie taak gemaakt en gestart met de naam **myDMSTask**:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
@@ -353,11 +353,11 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
 
 ## <a name="monitor-the-migration"></a>Bewaak de migratie
 
-Voor het controleren van de migratie, moet u de volgende taken uitvoeren.
+Voer de volgende taken uit om de migratie te controleren.
 
-1. Alle migratiedetails in een variabele met de naam $CheckTask consolideren.
+1. Consolideer alle migratie Details in een variabele met de naam $CheckTask.
 
-    Als u wilt combineren migratiedetails zoals eigenschappen, status en database-informatie die is gekoppeld aan de migratie, gebruikt u het volgende codefragment:
+    Gebruik het volgende code fragment om migratie gegevens te combi neren, zoals eigenschappen, status en database gegevens die zijn gekoppeld aan de migratie:
 
     ```powershell
     $CheckTask= Get-AzDataMigrationTask     -ResourceGroupName myResourceGroup `
@@ -369,32 +369,32 @@ Voor het controleren van de migratie, moet u de volgende taken uitvoeren.
     Write-Host ‘$CheckTask.ProjectTask.Properties.Output’
     ```
 
-2. Gebruik de `$CheckTask` variabele om op te halen van de huidige status van de migratietaak.
+2. Gebruik de variabele `$CheckTask` om de huidige status van de migratie taak op te halen.
 
-    Gebruik de `$CheckTask` variabele om op te halen van de huidige status van de migratietaak, kunt u de migratietaak uitgevoerd door het opvragen van de eigenschap state van de taak, zoals wordt weergegeven in het volgende voorbeeld bewaken:
+    Als u de `$CheckTask` variabele wilt gebruiken om de huidige status van de migratie taak op te halen, kunt u de migratie taak bewaken die wordt uitgevoerd door een query uit te voeren op de eigenschap State van de taak, zoals wordt weer gegeven in het volgende voor beeld:
 
     ```powershell
     if (($CheckTask.ProjectTask.Properties.State -eq "Running") -or ($CheckTask.ProjectTask.Properties.State -eq "Queued"))
     {
-      write-host "migration task running"
+      Write-Host "migration task running"
     }
-    Else if($CheckTask.ProjectTask.Properties.State -eq "Succeeded")
+    else if($CheckTask.ProjectTask.Properties.State -eq "Succeeded")
     { 
-      write-host "Migration task is completed Successfully"
+      Write-Host "Migration task is completed Successfully"
     }
-    Else if($CheckTask.ProjectTask.Properties.State -eq "Failed" -or $CheckTask.ProjectTask.Properties.State -eq "FailedInputValidation"  -or $CheckTask.ProjectTask.Properties.State -eq "Faulted")
+    else if($CheckTask.ProjectTask.Properties.State -eq "Failed" -or $CheckTask.ProjectTask.Properties.State -eq "FailedInputValidation" -or $CheckTask.ProjectTask.Properties.State -eq "Faulted")
     { 
-      write-host “Migration Task Failed”
+      Write-Host "Migration Task Failed"
     }
     ```
 
-## <a name="performing-the-cutover-online-migrations-only"></a>Uitvoeren van de cutover (online migratie alleen)
+## <a name="performing-the-cutover-online-migrations-only"></a>De cutover uitvoeren (alleen online migraties)
 
-Met een online migratie een volledige back-up en herstel van databases wordt uitgevoerd en vervolgens werken op het herstellen van de transactielogboeken die zijn opgeslagen in de BackupFileShare wordt voortgezet.
+Bij een online migratie wordt een volledige back-up en herstel van data bases uitgevoerd en vervolgens wordt de werk tijd van de transactie logboeken hersteld die zijn opgeslagen in de BackupFileShare.
 
-Wanneer de database in een beheerd exemplaar voor Azure SQL Database is bijgewerkt met de meest recente gegevens en gesynchroniseerd met de bron-database is, kunt u een cutover uitvoeren.
+Wanneer de data base in een Azure SQL Database beheerd exemplaar wordt bijgewerkt met de meest recente gegevens en is gesynchroniseerd met de bron database, kunt u een cutover uitvoeren.
 
-Het volgende voorbeeld wordt de cutover\migration voltooid. Gebruikers met deze opdracht om naar eigen goeddunken worden aangeroepen.
+In het volgende voor beeld wordt de cutover\migration. voltooid Gebruikers roepen deze opdracht op hun eigen keuze op.
 
 ```powershell
 $command = Invoke-AzDmsCommand -CommandType CompleteSqlMiSync `
@@ -405,18 +405,18 @@ $command = Invoke-AzDmsCommand -CommandType CompleteSqlMiSync `
                                -DatabaseName "Source DB Name"
 ```
 
-## <a name="deleting-the-instance-of-azure-database-migration-service"></a>Verwijderen van het exemplaar van Azure Database Migration Service
+## <a name="deleting-the-instance-of-azure-database-migration-service"></a>Het exemplaar van Azure Database Migration Service verwijderen
 
-Nadat de migratie voltooid is, kunt u de Azure Database Migration Service-exemplaar verwijderen:
+Nadat de migratie is voltooid, kunt u de Azure Database Migration Service-instantie verwijderen:
 
 ```powershell
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-Zie voor informatie over aanvullende migreren scenario's (bron-/ doelparen), de Microsoft [handleiding voor databasemigratie](https://datamigration.microsoft.com/).
+Zie de micro soft [Data Base Migration Guide (Engelstalig](https://datamigration.microsoft.com/)) voor meer informatie over aanvullende migratie scenario's (bron/doel paren).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over Azure Database Migration Service in het artikel [wat is de Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
+Meer informatie over Azure Database Migration Service vindt u in het artikel [Wat is de Azure database Migration service?](https://docs.microsoft.com/azure/dms/dms-overview).

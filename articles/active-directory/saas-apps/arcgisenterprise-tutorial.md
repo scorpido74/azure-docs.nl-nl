@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met ArcGIS Enterprise | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met ArcGIS Enter prise | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en ArcGIS Enterprise configureert.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9642dc67a3707862009efa59d99f0cef54b9b878
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e21b1c72f191f3644975afd511a900667a04ce9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106690"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157895"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Zelfstudie: Azure Active Directory-integratie met ArcGIS Enterprise
+# <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Zelf studie: integratie Azure Active Directory met ArcGIS Enter prise
 
 In deze zelfstudie leert u hoe u ArcGIS Enterprise integreert met Azure Active Directory (Azure AD).
 De integratie van ArcGIS Enterprise met Azure AD heeft de volgende voordelen:
@@ -57,7 +58,7 @@ Als u de integratie van ArcGIS Enterprise in Azure AD wilt configureren, moet u 
 
 **Voer de volgende stappen uit om ArcGIS Enterprise toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -111,7 +112,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `<EXTERNAL_DNS_NAME>.portal`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
     c. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -174,12 +175,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -193,7 +194,7 @@ In dit gedeelte stelt u Britta Simon in staat om gebruik te maken van eenmalige 
 
     ![De koppeling naar ArcGIS Enterprise in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -216,11 +217,11 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in ArcGIS E
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel ArcGIS Enterprise klikt, wordt u automatisch aangemeld bij de instantie van ArcGIS Enterprise waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -1,33 +1,33 @@
 ---
-title: Implementeren in Azure Analysis Services met behulp van Visual Studio (SSDT) | Microsoft Docs
-description: Leer hoe u een tabellair model met behulp van SSDT implementeert op een Azure Analysis Services-server.
+title: Implementeren in Azure Analysis Services met behulp van Visual Studio | Microsoft Docs
+description: Meer informatie over het implementeren van een tabellair model op een Azure Analysis Services-server met behulp van Visual Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 759d85db26ac7370c0b884d2e4839d3045384673
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 60681739854515078a521a4ff795e52aa7d74183
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301128"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146961"
 ---
 # <a name="deploy-a-model-from-visual-studio"></a>Een model implementeren vanuit Visual Studio
 
-Wanneer u een server in uw Azure-abonnement hebt gemaakt, kunt u een tabellaire modeldatabase op de server implementeren. U kunt SQL Server Data Tools (SSDT) gebruiken om een project voor een tabellair model te bouwen en implementeren waaraan u werkt. 
+Wanneer u een server in uw Azure-abonnement hebt gemaakt, kunt u een tabellaire modeldatabase op de server implementeren. U kunt met behulp van Visual Studio met Analysis Services projecten een tabellair model project maken en implementeren waarmee u aan de slag gaat. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 Om aan de slag te gaan, hebt u het volgende nodig:
 
 * **Analysis Services-server** in Azure. Zie [Create an Azure Analysis Services server in Azure portal](analysis-services-create-server.md) (Een Azure Analysis Services-server maken in Azure Portal) voor meer informatie.
-* **Project voor tabellair model** in SSDT of een bestaand tabellair model op het compatibiliteitsniveau 1200 of hoger. Nog nooit zo'n project gemaakt? Raadpleeg de [Adventure Works Internet sales tabular modeling tutorial](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) (Zelfstudie voor tabellaire modellen bij Adventure Works-internetverkoop).
+* **Project tabellair model** in Visual Studio of een bestaand tabellair model op het compatibiliteits niveau 1200 of hoger. Nog nooit zo'n project gemaakt? Raadpleeg de [Adventure Works Internet sales tabular modeling tutorial](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial) (Zelfstudie voor tabellaire modellen bij Adventure Works-internetverkoop).
 * **On-premises gateway**: als een of meer gegevensbronnen on-premises zijn opgeslagen in het netwerk van uw organisatie, moet u een [on-premises gegevensgateway](analysis-services-gateway.md) installeren. De gateway is nodig om uw server in de cloud verbinding te laten maken met uw on-premises gegevensbronnen om gegevens in het model te verwerken en te vernieuwen.
 
 > [!TIP]
-> Voer de implementatie pas uit als u weet dat u de gegevens in de tabellen kunt verwerken. Klik in SSDT op **Model** > **Process** > **Process All**. Als de verwerking mislukt, kunt u niet implementeren.
+> Voer de implementatie pas uit als u weet dat u de gegevens in de tabellen kunt verwerken. Klik in Visual Studio op **Model** > **proces** > **Alles verwerken**. Als de verwerking mislukt, kunt u niet implementeren.
 > 
 > 
 
@@ -37,9 +37,9 @@ In **Azure Portal** > server > **Overview** > **Servernaam**,kopieer de serverna
    
 ![Servernaam bepalen in Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
-## <a name="to-deploy-from-ssdt"></a>Implementeren vanuit SSDT
+## <a name="to-deploy-from-visual-studio"></a>Implementeren vanuit Visual Studio
 
-1. In SSDT > **Solution Explorer**, klik met de rechtermuisknop op het project > **Properties**. Plak vervolgens in **Deployment** > **Server** de naam van de server.   
+1. Klik in Visual Studio > **Solution Explorer**met de rechter muisknop op de > **Eigenschappen**van het project. Plak vervolgens in **Deployment** > **Server** de naam van de server.   
    
     ![Servernaam plakken in de eigenschap Deployment Server](./media/analysis-services-deploy/aas-deploy-deployment-server-property.png)
 2. Klik in **Solution Explorer** met de rechtermuisknop op **Properties** en klik vervolgens op **Deploy**. U wordt mogelijk gevraagd u aan te melden bij Azure.
@@ -55,11 +55,11 @@ Dat is alles!
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als de implementatie mislukt tijdens het implementeren van metagegevens, is de kans groot dat SSDT geen verbinding kan maken met de server. Zorg ervoor dat u verbinding kunt maken met de server met behulp van SSMS. Controleer vervolgens of de eigenschap Deployment Server voor het project juist is ingesteld.
+Als de implementatie mislukt bij het implementeren van meta gegevens, is het waarschijnlijk dat Visual Studio geen verbinding kan maken met uw server. Zorg ervoor dat u verbinding kunt maken met de server met behulp van SSMS. Controleer vervolgens of de eigenschap Deployment Server voor het project juist is ingesteld.
 
 Als de implementatie mislukt bij een tabel, komt dat waarschijnlijk omdat de server geen verbinding kan maken met een gegevensbron. Als uw gegevensbron on-premises in het netwerk van uw organisatie is opgeslagen, moet u een [on-premises gegevensgateway](analysis-services-gateway.md) installeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw tabellaire model is nu geïmplementeerd op de server en dus kunt u verbinding gaan maken met het model. Maak [verbinding via SSMS](analysis-services-manage.md) om het model te beheren. [Maak verbinding met een clienthulpprogramma](analysis-services-connect.md) zoals Power BI, Power BI Desktop of Excel om rapporten te gaan maken.
+Uw tabellaire model is nu geïmplementeerd op de server en dus kunt u verbinding gaan maken met het model. U kunt er [verbinding mee maken met SQL Server Management Studio (SSMS)](analysis-services-manage.md) om deze te beheren. [Maak verbinding met een clienthulpprogramma](analysis-services-connect.md) zoals Power BI, Power BI Desktop of Excel om rapporten te gaan maken.
 

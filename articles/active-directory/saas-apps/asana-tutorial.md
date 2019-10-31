@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Asana | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met asana | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Asana.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf1b583189810b61ea349a29698ff6f12c39699
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106732"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157866"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Zelfstudie: Azure Active Directory-integratie met Asana
+# <a name="tutorial-azure-active-directory-integration-with-asana"></a>Zelf studie: integratie Azure Active Directory met asana
 
 In deze zelfstudie leert u hoe u Asana kunt integreren met Azure Active Directory (Azure AD).
 Asana integreren met Azure AD biedt u de volgende voordelen:
@@ -55,7 +56,7 @@ Voor het configureren van de integratie van Asana in Azure AD moet u Asana uit d
 
 **Als u Asana uit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -159,12 +160,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -178,7 +179,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De Asana-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -202,19 +203,19 @@ In deze sectie maakt u in Asana een gebruiker met de naam Britta Simon.
 
 1. Ga in **Asana** naar de sectie **Teams** in het linkerdeelvenster. Klik op de knop met het plusteken (+).
 
-    ![Het maken van een Azure AD-testgebruiker](./media/asana-tutorial/tutorial_asana_12.png)
+    ![Een Azure AD-testgebruiker maken](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Typ de e-mailadres van de gebruiker, zoals **britta.simon\@contoso.com** in het tekstvak in en selecteer vervolgens **uitnodigen**.
+2. Typ het e-mail adres van de gebruiker, zoals **Julia. simon\@contoso.com** in het tekstvak en selecteer vervolgens **uitnodigen**.
 
 3. Klik op **Uitnodiging verzenden**. De nieuwe gebruiker ontvangt een e-mailbericht in zijn of haar e-mailaccount. gebruiker moet het account maken en valideren.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Asana in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Asana waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

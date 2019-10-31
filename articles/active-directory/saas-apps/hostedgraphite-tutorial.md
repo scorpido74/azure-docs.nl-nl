@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Hosted Graphite | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met gehoste grafie | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Hosted Graphite.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a1ac4d7f-d079-4f3c-b6da-0f520d427ceb
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79a83ec34d8e9d577e6bde8421a11b4c7bf6b241
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6c5b689d00bd1adad820043840c43f49666655c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67100911"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158080"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Zelfstudie: Azure Active Directory-integratie met Hosted Graphite
+# <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Zelf studie: integratie Azure Active Directory met gehoste grafie
 
 In deze zelfstudie leert u hoe u Hosted Graphite kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Hosted Graphite met Azure Active Directory biedt de volgende voordelen:
@@ -54,7 +55,7 @@ Voor het configureren van de integratie van Hosted Graphite met Microsoft Azure 
 
 **Als u Hosted Graphite wilt toevoegen uit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -108,7 +109,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.hostedgraphite.com/metadata/<user id>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://www.hostedgraphite.com/complete/saml/<user id>`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://www.hostedgraphite.com/complete/saml/<user id>`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -157,7 +158,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding met Azure Active Directo
 
     ![Eenmalige aanmelding in de app configureren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
-7. Klik op **opslaan** knop.
+7. Klik op de knop **Save**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -177,12 +178,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -196,7 +197,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De link van Hosted Graphite in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -219,11 +220,11 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in Hosted G
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Hosted Graphite in het toegangsvenster klikt, wordt u automatisch aangemeld bij het Hosted Graphite-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

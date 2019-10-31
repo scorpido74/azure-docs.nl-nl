@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: e2c061b69771214a770b3b42626d28672bd9fe77
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 22806f497283c1885446eadd5f444dacf3769c12
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297810"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163319"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>De voor beelden van de Canada Federal PBMM-blauw druk implementeren
 
@@ -97,14 +97,14 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview @ no__t-1: Log Analytics agent voor Linux-Vm's implementeren |Beleidstoewijzing |Log Analytics-werk ruimte voor Linux Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
-|\[Preview @ no__t-1: Log Analytics agent voor Linux-Vm's implementeren |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
-|\[Preview @ no__t-1: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
-|\[Preview @ no__t-1: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Log Analytics-werk ruimte voor Windows-Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
-|\[Preview @ no__t-1: audit Canada Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Werk ruimte-ID Log Analytics waarvoor Vm's moeten worden geconfigureerd |Dit is de ID (GUID) van de Log Analytics-werk ruimte waarvoor de Vm's moeten worden geconfigureerd. |
-|\[Preview @ no__t-1: audit Canada Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld |Lijst met resource typen om te controleren of de diagnostische logboek instelling niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
-|\[Preview @ no__t-1: audit Canada Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Groep Administrators |Gegroepeerd. Voorbeeld: `Administrator; myUser1; myUser2` |
-|\[Preview @ no__t-1: audit Canada Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep |Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Voorbeeld: `Administrator; myUser1; myUser2` |
+|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Log Analytics-werk ruimte voor Linux Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[preview\]: Log Analytics agent voor virtuele Linux-machines implementeren |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
+|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik |Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden: `[]` |
+|\[preview\]: Log Analytics-agent implementeren voor Windows-Vm's |Beleidstoewijzing |Log Analytics-werk ruimte voor Windows-Vm's |Zie [een log Analytics-werk ruimte maken in de Azure Portal](../../../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie. |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Werk ruimte-ID Log Analytics waarvoor Vm's moeten worden geconfigureerd |Dit is de ID (GUID) van de Log Analytics-werk ruimte waarvoor de Vm's moeten worden geconfigureerd. |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld |Lijst met resource typen om te controleren of de diagnostische logboek instelling niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type). |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Groep Administrators |Gegroepeerd. Voorbeeld: `Administrator; myUser1; myUser2` |
+|\[preview\]: controle van de Federal PBMM Controls en implementeer specifieke VM-extensies ter ondersteuning van de controle vereisten |Beleidstoewijzing |Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep |Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Voorbeeld: `Administrator; myUser1; myUser2` |
 |Geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts |Beleidstoewijzing |Effect |Informatie over beleids effecten vindt u in [inzicht Azure Policy effecten](../../../policy/concepts/effects.md). |
 |Controle op SQL-servers implementeren |Beleidstoewijzing |De waarde in dagen van de Bewaar periode (0 geeft een onbeperkte retentie aan) |Bewaar dagen (optioneel, _180_ dagen als niet opgegeven) |
 |Controle op SQL-servers implementeren |Beleidstoewijzing |Naam van de resource groep voor het opslag account voor SQL Server-controle |Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio). Belang rijk: voor een juiste werking van de controle worden de resource groep of de opslag accounts niet verwijderd of de naam ervan niet gewijzigd. |
@@ -119,7 +119,7 @@ Nu u de stappen voor het implementeren van het voor beeld van Canada Federal PBM
 > [Canada Federal PBMM blauw drukken-overzicht](./index.md)
 > [Canada Federal PBMM blauw drukken-controle toewijzing](./control-mapping.md)
 
-Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
+Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

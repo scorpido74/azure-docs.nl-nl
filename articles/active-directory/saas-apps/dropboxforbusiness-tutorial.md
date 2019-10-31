@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Dropbox voor Bedrijven | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Dropbox voor bedrijven | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding kunt configureren tussen Azure Active Directory en Dropbox voor Bedrijven.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,33 +16,33 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 591d8d28be5fc9322de8cf4886dc5924f53b1deb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 615c10357e099b547008b128ca5f5a773ff1aa14
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103787"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158320"
 ---
-# <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Zelfstudie: Dropbox voor bedrijven integreren met Azure Active Directory
+# <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Zelf studie: Dropbox voor bedrijven integreren met Azure Active Directory
 
-In deze zelfstudie leert u hoe u Dropbox voor bedrijven integreren met Azure Active Directory (Azure AD). Wanneer u Dropbox voor bedrijven met Azure AD integreren, kunt u het volgende doen:
+In deze zelf studie leert u hoe u Dropbox voor bedrijven integreert met Azure Active Directory (Azure AD). Wanneer u Dropbox voor bedrijven integreert met Azure AD, kunt u het volgende doen:
 
-* Beheren in Azure AD die toegang tot Dropbox voor bedrijven heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld met Dropbox voor bedrijven met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Controle in azure AD die toegang heeft tot Dropbox voor bedrijven.
+* Uw gebruikers in staat stellen om automatisch te worden aangemeld bij Dropbox voor bedrijven met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u de gratis proefversie van één maand [hier](https://azure.microsoft.com/pricing/free-trial/).
-* Dropbox voor bedrijven eenmalige aanmelding (SSO) ingeschakeld abonnement.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proef versie van één maand ontvangen.
+* Dropbox voor Business SSO (single sign-on) ingeschakeld abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-* In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. Dropbox voor Bedrijven ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Dropbox voor Bedrijven ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
 * Dropbox voor Bedrijven ondersteunt het **Just In Time** inrichten van gebruikers
 
@@ -50,36 +51,36 @@ Om te beginnen, hebt u de volgende items nodig:
 Voor het configureren van de integratie van Dropbox voor Bedrijven in Azure AD moet u Dropbox voor Bedrijven uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **Dropbox voor bedrijven** in het zoekvak in.
-1. Selecteer **Dropbox voor bedrijven** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Dropbox voor bedrijven** in het zoekvak.
+1. Selecteer **Dropbox voor bedrijven** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met Dropbox voor bedrijven met behulp van een testgebruiker met de naam **Britta Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Dropbox voor bedrijven vast te stellen.
+Azure AD SSO met Dropbox voor bedrijven configureren en testen met behulp van een test gebruiker met de naam **Julia Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Dropbox voor bedrijven.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met Dropbox voor bedrijven, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met Dropbox voor bedrijven, voltooit u de volgende bouw stenen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[Dropbox configureren voor eenmalige aanmelding voor zakelijke](#configure-dropbox-for-business-sso)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+2. **[Dropbox voor Business SSO configureren](#configure-dropbox-for-business-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
 5. **[Een testgebruiker maken in Dropbox voor Bedrijven](#create-dropbox-for-business-test-user)** : om in Dropbox voor Bedrijven een tegenhanger van Britta Simon te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-sso)**  : als u wilt controleren of de configuratie werkt.
+6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Dropbox voor bedrijven** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **Dropbox voor Business** Application Integration en selecteer de sectie voor het **beheren** van **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **SAML-basisconfiguratie** pagina, voert u de waarden voor de volgende velden:
+1. Voer op de pagina **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.dropbox.com/sso/<id>`
 
@@ -102,17 +103,17 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
     c. Afmeldings-URL
 
-### <a name="configure-dropbox-for-business-sso"></a>Dropbox voor bedrijven eenmalige aanmelding configureren
+### <a name="configure-dropbox-for-business-sso"></a>Dropbox voor Business SSO configureren
 
-1. Voor het automatiseren van de configuratie in Dropbox voor bedrijven, moet u installeren **mijn Apps beveiligde aanmelding browserextensie** door te klikken op **de extensie installeren**.
+1. Als u de configuratie wilt automatiseren in Dropbox voor bedrijven, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Mijn apps-extensie](common/install-myappssecure-extension.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-2. Na het toevoegen van uitbreiding naar de browser, klikt u op **Setup Dropbox voor bedrijven** wordt u doorgeleid naar Dropbox voor het Business-toepassing. Van daaruit, geef de referenties van de beheerder zich aanmelden bij Dropbox voor bedrijven. De browserextensie wordt automatisch configureren van de toepassing voor u en automatiseren van stap 3-8.
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op de map voor het **instellen van Dropbox voor** bedrijven, wordt u doorgestuurd naar de Dropbox voor zakelijke toepassing. Geef de beheerders referenties op om u aan te melden bij Dropbox voor bedrijven. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-8 geautomatiseerd.
 
-    ![Configuratie voor de installatie](common/setup-sso.png)
+    ![Configuratie van Setup](common/setup-sso.png)
 
-3. Als u Dropbox voor bedrijven handmatig instellen wilt, opent u een nieuw browservenster en gaat u in uw Dropbox voor bedrijven-tenant en meld u aan bij in uw Dropbox voor bedrijven-tenant. en voer de volgende stappen uit:
+3. Als u Dropbox voor bedrijven hand matig wilt instellen, opent u een nieuw webbrowser venster en gaat u naar uw Dropbox voor zakelijke Tenant en meldt u zich aan bij uw Dropbox voor bedrijven-Tenant. en voer de volgende stappen uit:
 
     ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/ic769509.png "Eenmalige aanmelding configureren")
 
@@ -136,7 +137,7 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
     ![Eenmalige aanmelding configureren](./media/dropboxforbusiness-tutorial/configure5.png "Eenmalige aanmelding configureren")
 
-    a. Selecteer **vereist** als een optie in de vervolgkeuzelijst voor de **eenmalige aanmelding**.
+    a. Selecteer **vereist** als een optie in de vervolg keuzelijst voor de **eenmalige aanmelding**.
 
     b. Klik op **Aanmeldings-URL toevoegen**, plak in het tekstvak **Aanmeldings-URL identiteitsprovider** de **Aanmeldings-URL** die u hebt gekopieerd van de Azure-portal en selecteer **Gereed**.
 
@@ -150,32 +151,32 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in Azure portal Britta Simon genoemd.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `Britta Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `BrittaSimon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Dropbox voor bedrijven.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Dropbox voor bedrijven.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst met toepassingen, **Dropbox voor bedrijven**.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Dropbox voor bedrijven**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **Britta Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="create-dropbox-for-business-test-user"></a>Een testgebruiker maken in Dropbox voor Bedrijven
@@ -185,11 +186,11 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in Dropbox 
 >[!Note]
 >Als u handmatig een gebruiker moet maken, neemt u contact op met [het ondersteuningsteam van Dropbox voor Bedrijven](https://www.dropbox.com/business/contact)
 
-### <a name="test-sso"></a>Test eenmalige aanmelding
+### <a name="test-sso"></a>SSO testen
 
-Wanneer u de Dropbox voor bedrijven-tegel in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de Dropbox voor bedrijven waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel Dropbox voor bedrijven selecteert in het toegangs venster, moet u automatisch worden aangemeld bij de Dropbox voor bedrijven waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 502fb8b49770b4933c44aa1eb447abb746943c0d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554826"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151220"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -113,6 +113,7 @@ Hier vindt u stapsgewijze hand leidingen over hoe u voorwaardelijke toegang kunt
 - [MFA vereisen voor beheerders](howto-conditional-access-policy-admin-mfa.md)
 - [MFA vereisen voor Azure-beheer](howto-conditional-access-policy-azure-management.md)
 - [Verouderde verificatie blok keren](howto-conditional-access-policy-block-legacy.md)
+- [MFA vereisen voor alle gebruikers](howto-conditional-access-policy-all-users-mfa.md)
 
 ## <a name="enabling-security-defaults"></a>Standaard instellingen voor beveiliging inschakelen
 

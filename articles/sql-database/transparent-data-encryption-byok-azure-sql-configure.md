@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: f191a9f589f54bdd657c017060f501b176a8647d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: beeb5fa4f979ac457db8a779dd8f8f2e94ef87f5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596718"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163850"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Power shell en CLI: Transparent Data Encryption met door de klant beheerde sleutel inschakelen vanuit Azure Key Vault
 
@@ -40,9 +40,9 @@ In dit artikel wordt beschreven hoe u een sleutel gebruikt uit Azure Key Vault v
 - De sleutel moet de volgende kenmerken hebben om te kunnen worden gebruikt voor TDE:
    - Geen verval datum
    - Niet uitgeschakeld
-   - Kan de *Get*-, *Terugloop*-, *sleutel* bewerking uitpakken
+   - Kan de *Get*-, *Terugloop*-, *sleutel bewerking uitpakken*
 
-## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>Stap 1. Een Azure AD-identiteit aan uw server toewijzen 
+## <a name="step-1-assign-an-azure-ad-identity-to-your-server"></a>Step 1. Een Azure AD-identiteit aan uw server toewijzen 
 
 Als u een bestaande server hebt, gebruikt u het volgende om een Azure AD-identiteit toe te voegen aan uw server:
 
@@ -153,7 +153,7 @@ Gebruik [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/g
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -DatabaseName <DatabaseName> `
-   -State "Disabled”
+   -State "Disabled"
    ```
  
 - Gebruik de cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) om de lijst met Key Vault sleutels te retour neren die zijn toegevoegd aan de server.
@@ -187,12 +187,12 @@ Controleer het volgende als er een probleem optreedt:
 
 - Als de nieuwe sleutel niet kan worden toegevoegd aan de server, of als de nieuwe sleutel niet kan worden bijgewerkt als de TDE-Protector, controleert u het volgende:
    - De sleutel mag geen verval datum hebben
-   - Voor de sleutel moet de bewerking *Get*, *wrap*en uitpakken van *sleutel* bewerkingen zijn ingeschakeld.
+   - Voor de sleutel moet de bewerking *Get*, *wrap*en *uitpakken van sleutel* bewerkingen zijn ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het draaien van de TDE-Protector van een server om te voldoen aan de beveiligings vereisten: [De transparent Data Encryption-Protector draaien met behulp van Power shell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
-- In het geval van een beveiligings risico leert u hoe u een mogelijk aangetast TDE-Protector kunt verwijderen: [Verwijder een mogelijk beschadigde sleutel](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
+- Meer informatie over het draaien van de TDE-Protector van een server om te voldoen aan de beveiligings vereisten: [Roteer de transparent Data Encryption-Protector met Power shell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
+- In het geval van een beveiligings risico leert u hoe u een mogelijk aangetast TDE-Protector kunt verwijderen: [Verwijder een mogelijk versleutelde code](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md). 
 
 ## <a name="prerequisites-for-cli"></a>Vereisten voor CLI
 
@@ -203,14 +203,14 @@ Controleer het volgende als er een probleem optreedt:
   - [Key Vault beheren met CLI 2,0](../key-vault/key-vault-manage-with-cli2.md)
   - [Instructies voor het gebruik van een Hardware Security module (HSM) en Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
     - De sleutel kluis moet de volgende eigenschap hebben die moet worden gebruikt voor TDE:
-  - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+  - [voorlopig verwijderen](../key-vault/key-vault-ovw-soft-delete.md)
   - [De Key Vault-functie voor voorlopig verwijderen gebruiken met CLI](../key-vault/key-vault-soft-delete-cli.md) 
 - De sleutel moet de volgende kenmerken hebben om te kunnen worden gebruikt voor TDE:
    - Geen verval datum
    - Niet uitgeschakeld
-   - Kan de *Get*-, *Terugloop*-, *sleutel* bewerking uitpakken
+   - Kan de *Get*-, *Terugloop*-, *sleutel bewerking uitpakken*
    
-## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>Stap 1. Een server maken met een Azure AD-identiteit
+## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>Step 1. Een server maken met een Azure AD-identiteit
       cli
       # create server (with identity) and database
       az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity

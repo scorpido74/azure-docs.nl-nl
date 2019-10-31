@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met MyWorkDrive | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en MyWorkDrive.
+title: 'Zelf studie: integratie Azure Active Directory met MyWorkDrive | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en MyWorkDrive.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,75 +8,76 @@ manager: mtillman
 ms.reviewer: celested
 ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c3eb72abc90347c8e18a2f56a5d4756ecd80f3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096339"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160389"
 ---
-# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Zelfstudie: MyWorkDrive integreren met Azure Active Directory
+# <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Zelf studie: MyWorkDrive integreren met Azure Active Directory
 
-In deze zelfstudie leert u over het integreren van MyWorkDrive met Azure Active Directory (Azure AD). Wanneer u MyWorkDrive met Azure AD integreert, kunt u het volgende doen:
+In deze zelf studie leert u hoe u MyWorkDrive integreert met Azure Active Directory (Azure AD). Wanneer u MyWorkDrive integreert met Azure AD, kunt u het volgende doen:
 
-* Beheren in Azure AD die toegang tot MyWorkDrive heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld MyWorkDrive met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Controle in azure AD die toegang heeft tot MyWorkDrive.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij MyWorkDrive met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u de gratis proefversie van één maand [hier](https://azure.microsoft.com/pricing/free-trial/).
-* Ingeschakeld abonnement MyWorkDrive eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proef versie van één maand ontvangen.
+* MyWorkDrive-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. MyWorkDrive biedt ondersteuning voor **SP** en **IDP** gestart door SSO
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. MyWorkDrive ondersteunt SSO die door **SP** en **IDP** is geïnitieerd
 
-## <a name="adding-myworkdrive-from-the-gallery"></a>MyWorkDrive uit de galerie toe te voegen
+## <a name="adding-myworkdrive-from-the-gallery"></a>MyWorkDrive toevoegen uit de galerie
 
-Voor het configureren van de integratie van MyWorkDrive met Azure AD, moet u MyWorkDrive uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van MyWorkDrive in azure AD wilt configureren, moet u MyWorkDrive uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **MyWorkDrive** in het zoekvak in.
-1. Selecteer **MyWorkDrive** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **MyWorkDrive** in het zoekvak.
+1. Selecteer **MyWorkDrive** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met MyWorkDrive met behulp van een testgebruiker met de naam **Britta Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in MyWorkDrive vast te stellen.
+Configureer en test Azure AD SSO met MyWorkDrive met behulp van een test gebruiker met de naam **Julia Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in MyWorkDrive.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met MyWorkDrive, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met MyWorkDrive, voltooit u de volgende bouw stenen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[Configureren van MyWorkDrive SSO](#configure-myworkdrive-sso)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+2. **[MYWORKDRIVE SSO configureren](#configure-myworkdrive-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[MyWorkDrive testgebruiker maken](#create-myworkdrive-test-user)**  : als u wilt een equivalent van Britta Simon in MyWorkDrive die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
-6. **[Eenmalige aanmelding testen](#test-sso)**  : als u wilt controleren of de configuratie werkt.
+5. **[Maak een MyWorkDrive-test gebruiker](#create-myworkdrive-test-user)** -om een equivalent van Julia Simon in MyWorkDrive te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **MyWorkDrive** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **MyWorkDrive** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **SAML-basisconfiguratie** pagina als u wilt configureren van de toepassing in **IDP** gestart modus, voer de waarden in voor het volgende veld:
+1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u op de pagina **basis configuratie van SAML** de waarden voor het volgende veld in:
 
     In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<SERVER.DOMAIN.COM>/SAML/AssertionConsumerService.aspx`
 
@@ -85,76 +86,76 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SERVER.DOMAIN.COM>/Account/Login-saml`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Voer uw eigen bedrijf MyWorkDrive Server host name:e.g.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de echte antwoord-URL en aanmeldings-URL. Voer de hostnaam van de MyWorkDrive-server van uw bedrijf in: bijvoorbeeld
     > 
     > Antwoord-URL: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
     > 
     > Aanmeldings-URL:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Neem contact op met [MyWorkDrive ondersteuningsteam](mailto:support@myworkdrive.com) als u twijfelt over het instellen van uw eigen hostnaam en SSL-certificaat voor deze waarden.
+    > Neem contact op met het [ondersteunings team van MyWorkDrive](mailto:support@myworkdrive.com) als u niet zeker weet hoe u uw eigen HOSTNAAM en SSL-certificaat voor deze waarden kunt instellen.
 
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, klikt u op de knop kopiëren om te kopiëren **App-Url voor federatieve metagegevens** naar het Klembord.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL voor de **federatieve meta gegevens** van de app naar het klem bord te kopiëren.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="configure-myworkdrive-sso"></a>Configure MyWorkDrive SSO
+### <a name="configure-myworkdrive-sso"></a>MyWorkDrive SSO configureren
 
-1. In een ander browservenster aanmelden bij MyWorkDrive als een beveiligingsbeheerder.
+1. Meld u in een ander browser venster aan bij MyWorkDrive als een beveiligings beheerder.
 
-2. Klik op de MyWorkDrive Server in het deelvenster Beheer op **ENTERPRISE** en voer de volgende stappen uit:
+2. Op de MyWorkDrive-server in het deel venster beheer klikt u op **Enter prise** en voert u de volgende stappen uit:
 
-    ![De beheerder](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
+    ![De Beheerder](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
-    a. Schakel **SAML/ADFS SSO**.
+    a. Schakel **SAML/ADFS SSO**in.
 
-    b. Selecteer **SAML - Azure AD**
+    b. **SAML-Azure AD** selecteren
 
-    c. In de **Url voor federatieve metagegevens van Azure App** tekstvak, plak de waarde van **App-Url voor federatieve metagegevens** die u hebt gekopieerd vanuit Azure portal.
+    c. Plak in het tekstvak **Azure-app URL voor federatieve meta gegevens** de waarde van de URL voor de **app federatieve meta gegevens** die u hebt gekopieerd uit de Azure Portal.
 
-    d. Klik op **Opslaan**
+    d. Klik op **Opslaan**.
 
     > [!NOTE]
-    > Voor meer informatie raadpleegt de [MyWorkDrive Azure AD-ondersteuningsartikel](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/).
+    > Raadpleeg het [artikel MyWorkDrive Azure AD-ondersteuning](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)voor meer informatie.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in Azure portal Britta Simon genoemd.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `Britta Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `BrittaSimon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon Azure eenmalige aanmelding door toegang te verlenen aan MyWorkDrive gebruiken.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan MyWorkDrive.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst met toepassingen, **MyWorkDrive**.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **MyWorkDrive**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **Britta Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-myworkdrive-test-user"></a>MyWorkDrive testgebruiker maken
+### <a name="create-myworkdrive-test-user"></a>MyWorkDrive-test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in MyWorkDrive. Werken met [MyWorkDrive ondersteuningsteam](mailto:support@myworkdrive.com) om toe te voegen de gebruikers in het MyWorkDrive-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in MyWorkDrive. Werk samen met [MyWorkDrive-ondersteunings team](mailto:support@myworkdrive.com) om de gebruikers toe te voegen in het MyWorkDrive-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-### <a name="test-sso"></a>Test eenmalige aanmelding
+### <a name="test-sso"></a>SSO testen
 
-Wanneer u de tegel MyWorkDrive in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de MyWorkDrive waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de tegel MyWorkDrive in het toegangs venster selecteert, wordt u automatisch aangemeld bij de MyWorkDrive waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

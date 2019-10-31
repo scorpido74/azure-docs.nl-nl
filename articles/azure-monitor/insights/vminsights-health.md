@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: c9dfd3bfcacc1f50bb9be04c927bf3cbb4895f6d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555256"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162290"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Inzicht in de status van uw virtuele machines in azure
 
@@ -339,7 +339,7 @@ Het volgende voor beeld laat zien hoe u een query kunt uitvoeren op die waarde v
 2. Voer de volgende opdracht in om alle status criteria op te halen die actief zijn op een specifieke virtuele machine en de waarde voor de eigenschap *monitorId* te identificeren:
 
     ```
-    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview"
     ```
 
     In het volgende voor beeld ziet u de uitvoer van de opdracht *ARMCLIENT Get* . Noteer de waarde van *MonitorId*. Deze waarde is vereist voor de volgende stap, waarbij we de ID van de status criteria moeten opgeven en de bijbehorende eigenschap moeten wijzigen om een waarschuwing te maken.
