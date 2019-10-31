@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529029"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73096963"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
 
@@ -102,6 +102,8 @@ Als u beperkte apparaten implementeert waarvoor beperkt geheugen beschikbaar is,
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Niet optimaliseren voor prestaties op beperkte apparaten
 
 De IoT Edge hub is standaard geoptimaliseerd voor prestaties, zodat er grote delen van het geheugen worden toegewezen. Deze configuratie kan stabiliteits problemen veroorzaken op kleinere apparaten, zoals de Raspberry pi. Als u apparaten met beperkte resources implementeert, kunt u de omgevings variabele **OptimizeForPerformance** instellen op **false** in de IOT Edge hub. 
+
+Wanneer **OptimizeForPerformance** is ingesteld op **True**, gebruikt de MQTT-protocol kop de PooledByteBufferAllocator met betere prestaties, maar wordt er meer geheugen toegewezen. De allocator werkt niet goed op 32-bits besturings systemen of op apparaten met weinig geheugen. Daarnaast wijst RocksDb, wanneer deze is geoptimaliseerd voor prestaties, meer geheugen toe voor de rol van de lokale opslag provider. 
 
 Zie [stabiliteits problemen op apparaten met beperkte bronnen](troubleshoot.md#stability-issues-on-resource-constrained-devices)voor meer informatie.
 

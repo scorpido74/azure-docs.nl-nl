@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fab9a8a8c28f2f75e7e5af69b70229c1de74c684
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992286"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098678"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge-module implementeren
 
@@ -24,7 +24,7 @@ Er zijn verschillende manieren om modules op een IoT Edge apparaat te implemente
 
 >[!IMPORTANT]
 > In deze zelf studie wordt Event Grid module geïmplementeerd met de client verificatie uitgeschakeld en worden HTTP-abonnees toegestaan. Voor werk belastingen wordt u aangeraden alleen HTTPS-aanvragen en abonnees in te scha kelen met client verificatie ingeschakeld. Zie [beveiliging en verificatie](../articles/event-grid/edge/security-authentication.md)voor meer informatie over het veilig configureren van Event grid module.
-
+ 
 ### <a name="select-your-iot-edge-device"></a>Uw IoT Edge-apparaat selecteren
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
@@ -67,6 +67,10 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 
  1. Klik op **Opslaan**.
  1. Klik op **volgende** om door te gaan naar de sectie routes
+
+    > [!NOTE]
+    > Als u een virtuele machine van Azure als een edge-apparaat gebruikt, voegt u een regel voor binnenkomende poort toe om binnenkomend verkeer op poort 4438 toe te staan. Zie [poorten openen voor een virtuele machine](../articles/virtual-machines/windows/nsg-quickstart-portal.md)voor instructies over het toevoegen van de regel.
+
 
 ### <a name="setup-routes"></a>Installatie routes
 

@@ -1,6 +1,6 @@
 ---
-title: Verificatie op basis van een koptekst met PingAccess voor Azure AD-toepassingsproxy | Microsoft Docs
-description: Publiceren van toepassingen met PingAccess en App-Proxy voor de ondersteuning van verificatie op basis van een koptekst.
+title: Verificatie op basis van een header met PingAccess voor Azure AD-toepassingsproxy | Microsoft Docs
+description: Publiceer toepassingen met PingAccess en app-proxy om verificatie op basis van een header te ondersteunen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,49 +11,49 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 10/24/2019
 ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0544ed0ff217b6e37cca22a1fc1e0048b30da462
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ec115e0fa76e695809ba140202d5f13a319d33dd
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694224"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062715"
 ---
-# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Koptekst gebaseerde verificatie voor eenmalige aanmelding met de toepassingsproxy en PingAccess
+# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Verificatie op basis van een header voor eenmalige aanmelding met toepassings proxy en PingAccess
 
-Azure Active Directory-toepassings proxy (Azure AD) is gekoppeld aan PingAccess, zodat uw Azure AD-klanten meer toegang hebben tot uw toepassingen. PingAccess breidt de [bestaande Application Proxy-aanbiedingen](application-proxy.md) om op te nemen van eenmalige aanmelding toegang tot toepassingen die headers voor verificatie gebruiken.
+Azure Active Directory-toepassings proxy (Azure AD) is gekoppeld aan PingAccess, zodat uw Azure AD-klanten meer toegang hebben tot uw toepassingen. PingAccess breidt de [bestaande aanbiedingen van de toepassings proxy](application-proxy.md) uit om toegang te bieden tot eenmalige aanmelding voor toepassingen die headers gebruiken voor verificatie.
 
 ## <a name="whats-pingaccess-for-azure-ad"></a>Wat is PingAccess voor Azure AD?
 
-Met PingAccess voor Azure AD kunt u gebruikers toegang en eenmalige aanmelding (SSO) geven aan toepassingen die headers gebruiken voor verificatie. Application Proxy behandelt deze toepassingen, zoals een andere, met behulp van Azure AD verifiëren van toegang en vervolgens verkeer via de connector-service. PingAccess bevindt zich voor de toepassingen en vertaalt het toegangs token van Azure AD in een header. De toepassing ontvangt vervolgens de verificatie in de indeling die kan worden gelezen.
+Met PingAccess voor Azure AD kunt u gebruikers toegang en eenmalige aanmelding (SSO) geven aan toepassingen die headers gebruiken voor verificatie. Toepassings proxy behandelt deze toepassingen, zoals andere, met behulp van Azure AD om toegang te verifiëren en vervolgens verkeer door te geven via de connector service. PingAccess bevindt zich voor de toepassingen en vertaalt het toegangs token van Azure AD in een header. De toepassing ontvangt vervolgens de verificatie in de indeling die kan worden gelezen.
 
-Uw gebruikers wordt niet ziet u iets anders wanneer ze zich aanmelden bij het gebruik van uw zakelijke toepassingen. Ze kunnen nog steeds overal werken vanaf op elk apparaat. De connectors van de toepassings proxy sturen extern verkeer naar alle apps, zonder rekening te houden met het verificatie type, zodat ze nog steeds automatisch worden geladen.
+Uw gebruikers zien niets anders wanneer ze zich aanmelden om uw bedrijfs toepassingen te gebruiken. Ze kunnen nog steeds vanaf elke locatie op elk apparaat werken. De connectors van de toepassings proxy sturen extern verkeer naar alle apps, zonder rekening te houden met het verificatie type, zodat ze nog steeds automatisch worden geladen.
 
-## <a name="how-do-i-get-access"></a>Hoe krijg ik toegang?
+## <a name="how-do-i-get-access"></a>Hoe kan ik toegang krijgen?
 
-Aangezien dit scenario afkomstig is van een partnership tussen Azure Active Directory en PingAccess, hebt u licenties nodig voor beide services. Azure Active Directory Premium-abonnementen hebben echter een basic PingAccess-licentie die betrekking heeft op maximaal 20 toepassingen. Als u meer dan 20 headers gebaseerde toepassingen publiceert wilt, kunt u een extra licentie van PingAccess kopen.
+Aangezien dit scenario afkomstig is van een partnership tussen Azure Active Directory en PingAccess, hebt u licenties nodig voor beide services. Azure Active Directory Premium-abonnementen omvatten echter een eenvoudige PingAccess-licentie die betrekking heeft op Maxi maal 20 toepassingen. Als u meer dan 20 toepassingen op basis van headers wilt publiceren, kunt u een extra licentie aanschaffen bij PingAccess.
 
 Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md) voor meer informatie.
 
-## <a name="publish-your-application-in-azure"></a>Uw toepassing publiceren in Azure
+## <a name="publish-your-application-in-azure"></a>Uw toepassing publiceren in azure
 
 Dit artikel is een voor de eerste keer publiceren van een toepassing met dit scenario. Naast de publicatie stappen wordt u begeleid bij het aan de slag met zowel de toepassings proxy als de PingAccess. Als u beide services al hebt geconfigureerd, maar een nieuwe vernieuwing wilt uitvoeren voor de publicatie stappen, gaat u naar de sectie [uw toepassing toevoegen aan Azure AD met toepassings proxy](#add-your-application-to-azure-ad-with-application-proxy) .
 
 > [!NOTE]
-> Omdat dit scenario een partnerschap tussen Azure AD is en PingAccess, enkele van de instructies aanwezig zijn op de Ping Identity-site.
+> Aangezien dit scenario een partnerschap is tussen Azure AD en PingAccess, bestaan enkele van de instructies op de ping-identiteits site.
 
-### <a name="install-an-application-proxy-connector"></a>Een Application Proxy-connector installeren
+### <a name="install-an-application-proxy-connector"></a>Een toepassings proxy connector installeren
 
 Als u de toepassings proxy hebt ingeschakeld en al een connector hebt geïnstalleerd, kunt u deze sectie overs Laan en [uw toepassing toevoegen aan Azure AD met toepassings proxy](#add-your-application-to-azure-ad-with-application-proxy).
 
-De connector van de toepassings proxy is een Windows Server-service die het verkeer van uw externe werk nemers doorstuurt naar uw gepubliceerde toepassingen. Zie [zelf studie voor meer gedetailleerde installatie-instructies: Voeg een lokale toepassing toe voor externe toegang via toepassings proxy in Azure Active Directory](application-proxy-add-on-premises-application.md).
+De connector van de toepassings proxy is een Windows Server-service die het verkeer van uw externe werk nemers doorstuurt naar uw gepubliceerde toepassingen. Zie [zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in azure Active Directory](application-proxy-add-on-premises-application.md)voor meer gedetailleerde installatie-instructies.
 
 1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com/) als een toepassings beheerder. De pagina **Azure Active Directory beheer centrum** wordt weer gegeven.
-1. Selecteer **Azure Active Directory** > **Application proxy** > **down load connector service**. De download pagina voor de **toepassings proxy connector** wordt weer gegeven.
+1. Selecteer **Azure Active Directory** > **toepassings proxy** > de **Connector service te downloaden**. De download pagina voor de **toepassings proxy connector** wordt weer gegeven.
 
    ![Application proxy-connector downloaden](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
@@ -63,7 +63,7 @@ Als u de connector downloadt, wordt de toepassings proxy automatisch ingeschakel
 
 ### <a name="add-your-application-to-azure-ad-with-application-proxy"></a>Uw toepassing toevoegen aan Azure AD met toepassings proxy
 
-Er zijn twee acties die u moet uitvoeren in Azure portal. Eerst moet u uw toepassing met Application Proxy publiceren. Vervolgens moet u informatie verzamelen over de toepassing die u tijdens de PingAccess-stappen kunt gebruiken.
+Er zijn twee acties die u moet uitvoeren in de Azure Portal. Eerst moet u uw toepassing publiceren met toepassings proxy. Vervolgens moet u informatie verzamelen over de toepassing die u tijdens de PingAccess-stappen kunt gebruiken.
 
 #### <a name="publish-your-application"></a>Uw toepassing publiceren
 
@@ -77,7 +77,7 @@ U moet eerst uw toepassing publiceren. Deze actie omvat:
 Uw eigen on-premises toepassing publiceren:
 
 1. Als u zich niet in de laatste sectie bevindt, meldt u zich aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com/) als een toepassings beheerder.
-1. Selecteer **bedrijfs toepassingen** > **nieuwe toepassing** > **on-premises toepassing**. De pagina **uw eigen on-premises toepassing toevoegen** wordt weer gegeven.
+1. Selecteer **bedrijfs toepassingen** > **nieuwe toepassing** > **een on-premises toepassing toe te voegen**. De pagina **uw eigen on-premises toepassing toevoegen** wordt weer gegeven.
 
    ![Uw eigen on-premises toepassing toevoegen](./media/application-proxy-configure-single-sign-on-with-ping-access/add-your-own-on-premises-application.png)
 1. Vul de vereiste velden in met informatie over de nieuwe toepassing. Gebruik de onderstaande instructies voor de instellingen.
@@ -85,31 +85,31 @@ Uw eigen on-premises toepassing publiceren:
    > [!NOTE]
    > Zie [een on-premises app toevoegen aan Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)voor een meer gedetailleerd overzicht van deze stap.
 
-   1. **Interne URL**: Normaal gesp roken geeft u de URL op waarmee u naar de aanmeldings pagina van de app gaat wanneer u zich in het bedrijfs netwerk bevindt. Voor dit scenario moet de connector de PingAccess-proxy beschouwen als de front page van de toepassing. Gebruik de volgende notatie: `https://<host name of your PingAccess server>:<port>`. De poort is 3000 standaard, maar u kunt deze configureren in PingAccess.
+   1. **Interne URL**: normaal gesp roken geeft u de URL op waarmee u naar de aanmeldings pagina van de app gaat wanneer u zich in het bedrijfs netwerk bevindt. Voor dit scenario moet de connector de PingAccess-proxy beschouwen als de front page van de toepassing. Gebruik deze indeling: `https://<host name of your PingAccess server>:<port>`. De poort is standaard 3000, maar u kunt deze configureren in PingAccess.
 
       > [!WARNING]
-      > Voor dit type eenmalige aanmelding moet de interne URL worden gebruikt `https` en kan niet worden gebruikt. `http`
+      > Voor dit type eenmalige aanmelding moet de interne URL `https` gebruiken en kan `http`niet worden gebruikt.
 
-   1. **Methode voor verificatie vooraf**: Kies **Azure Active Directory**.
-   1. **URL vertalen in kopteksten**: Kies **Nee**.
+   1. **Methode vóór verificatie**: Kies **Azure Active Directory**.
+   1. **URL in kopteksten vertalen**: Kies **Nee**.
 
    > [!NOTE]
-   > Als dit uw eerste toepassing, moet u poort 3000 gebruiken om te starten en keert u terug naar het bijwerken van deze instelling als u de configuratie van uw PingAccess wijzigt. Voor volgende toepassingen moet de poort overeenkomen met de listener die u hebt geconfigureerd in PingAccess. Meer informatie over [listeners in PingAccess](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
+   > Als dit uw eerste toepassing is, gebruikt u poort 3000 om te starten en gaat u terug om deze instelling bij te werken als u de PingAccess-configuratie wijzigt. Voor volgende toepassingen moet de poort overeenkomen met de listener die u hebt geconfigureerd in PingAccess. Meer informatie over [listeners in PingAccess](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
 
 1. Selecteer **Toevoegen**. De overzichts pagina voor de nieuwe toepassing wordt weer gegeven.
 
 Wijs nu een gebruiker toe voor het testen van toepassingen en kies op headers gebaseerde eenmalige aanmelding:
 
-1. Selecteer in de zijbalk van de toepassing **gebruikers en groepen** > **toevoegen** > gebruikers**en groepen (\<aantal > geselecteerd)** . Er wordt een lijst met gebruikers en groepen weer gegeven waaruit u kunt kiezen.
+1. Selecteer in de zijbalk van de toepassing **gebruikers en groepen** > gebruikers **toevoegen** > **gebruikers en groepen (\<nummer > geselecteerd)** . Er wordt een lijst met gebruikers en groepen weer gegeven waaruit u kunt kiezen.
 
    ![Hiermee wordt de lijst met gebruikers en groepen weer gegeven](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
-1. Selecteer een gebruiker voor het testen van de toepassing en selecteer **selecteren**. Zorg ervoor dat deze testaccount toegang heeft tot de on-premises toepassing.
+1. Selecteer een gebruiker voor het testen van de toepassing en selecteer **selecteren**. Zorg ervoor dat dit test account toegang heeft tot de on-premises toepassing.
 1. Selecteer **Toewijzen**.
-1. Selecteer in de zijbalk van de toepassing **eenmalige aanmelding op** > basis van de**header**.
+1. Selecteer in de zijbalk van de toepassing **eenmalige aanmelding** > **op basis van een header**.
 
    > [!TIP]
-   > Als dit de eerste keer is met behulp van headers gebaseerde eenmalige aanmelding, moet u PingAccess installeren. Als u wilt controleren of dat uw Azure-abonnement wordt automatisch gekoppeld aan uw PingAccess-installatie, gebruikt u de koppeling op deze pagina voor eenmalige aanmelding voor het downloaden van PingAccess. U kunt nu openen van de site voor het downloaden of keert u terug naar deze pagina later opnieuw.
+   > Als dit de eerste keer is dat u gebruikmaakt van eenmalige aanmelding op basis van een header, moet u PingAccess installeren. Als u er zeker van wilt zijn dat uw Azure-abonnement automatisch wordt gekoppeld aan uw PingAccess-installatie, gebruikt u de koppeling op deze pagina voor eenmalige aanmelding om PingAccess te downloaden. U kunt de site nu downloaden of later terugkeren naar deze pagina.
 
    ![Hiermee wordt het op de koptekst gebaseerde aanmeldings scherm en PingAccess weer gegeven](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
@@ -119,28 +119,28 @@ Controleer vervolgens of de omleidings-URL is ingesteld op uw externe URL:
 
 1. Selecteer in de Azure Active Directory-zijbalk van het **beheer centrum** **Azure Active Directory** > **app-registraties**. Er wordt een lijst met toepassingen weer gegeven.
 1. Selecteer uw toepassing.
-1. Selecteer de koppeling naast omleidings- **uri's**, met het aantal omleidings-uri's dat is ingesteld voor web-en open bare clients. De pagina toepassings  **naam>-verificatiewordtweergegeven\<** .
-1. Controleer of de externe URL die u eerder hebt toegewezen aan uw toepassing, voor komt in de lijst met omleidings- **uri's** . Als dat niet het geval is, voegt u de externe URL nu toe met behulp van het omleidings-URI-type **Web**en selecteert u **Opslaan**.
+1. Selecteer de koppeling naast **omleidings-uri's**, met het aantal omleidings-uri's dat is ingesteld voor web-en open bare clients. De pagina **\<toepassings naam >-verificatie** wordt weer gegeven.
+1. Controleer of de externe URL die u eerder hebt toegewezen aan uw toepassing, voor komt in de lijst met **omleidings-uri's** . Als dat niet het geval is, voegt u de externe URL nu toe met behulp van het omleidings-URI-type **Web**en selecteert u **Opslaan**.
 
 Stel tot slot uw on-premises toepassing in zodat gebruikers lees-en schrijf toegang hebben en andere toepassingen lees-/schrijftoegang hebben:
 
-1. Selecteer op de **app-registraties** zijbalk voor uw toepassing **API-machtigingen** > **een machtiging** > toevoegen**micro soft api's** > **Microsoft Graph**. De pagina **API-machtigingen voor aanvragen** voor **Microsoft Graph** wordt weer gegeven, die de api's voor Windows Azure Active Directory bevat.
+1. Selecteer op de **app-registraties** zijbalk voor uw toepassing **API-machtigingen** > een machtiging > **micro soft-Api's** > **Microsoft Graph** **toe te voegen** . De pagina **API-machtigingen voor aanvragen** voor **Microsoft Graph** wordt weer gegeven, die de api's voor Windows Azure Active Directory bevat.
 
    ![Hiermee wordt de pagina API-machtigingen voor aanvragen weer gegeven](./media/application-proxy-configure-single-sign-on-with-ping-access/required-permissions.png)
 
 1. Selecteer **gedelegeerde machtigingen** > **gebruiker** > **gebruiker. lezen**.
-1. Selecteer toepassings **machtigingen** > toepassings > **toepassing. readwrite. all**.
+1. Selecteer **toepassings machtigingen** > **toepassing** > **Application. readwrite. all**.
 1. Selecteer **machtigingen toevoegen**.
-1. Selecteer op de pagina **API-machtigingen** de optie **beheerder toestemming \<geven voor uw mapnaam >** .
+1. Selecteer op de pagina **API-machtigingen** de optie **beheerder toestemming geven voor \<uw mapnaam >** .
 
-#### <a name="collect-information-for-the-pingaccess-steps"></a>Voor de stappen PingAccess informatie verzamelen
+#### <a name="collect-information-for-the-pingaccess-steps"></a>Gegevens verzamelen voor de PingAccess-stappen
 
 U moet deze drie stukjes informatie (alle GUID'S) verzamelen om uw toepassing in te stellen met PingAccess:
 
 | Naam van het Azure AD-veld | De naam van het veld PingAccess | Gegevensindeling |
 | --- | --- | --- |
-| **Toepassings-ID (client)** | **Client ID** | GUID |
-| **Directory-ID (Tenant)** | **Verlener** | GUID |
+| **Toepassings-ID (client)** | **Client ID** | GPT |
+| **Directory-ID (Tenant)** | **Verlener** | GPT |
 | `PingAccess key` | **Client Secret** | Wille keurige teken reeks |
 
 Deze gegevens verzamelen:
@@ -156,14 +156,14 @@ Deze gegevens verzamelen:
 
    ![Toont de geheime pagina voor het toevoegen van een client](./media/application-proxy-configure-single-sign-on-with-ping-access/add-a-client-secret.png)
 
-1. Typ`PingAccess key`in **Beschrijving**.
-1. Kies onder **verval datum**hoe u de PingAccess-sleutel wilt instellen: **Over één jaar**, **in twee jaar**of **nooit**.
+1. Typ `PingAccess key`in **Beschrijving**.
+1. Kies onder **Expires**hoe u de PingAccess-sleutel instelt: **in één jaar**, **in twee jaar**of **nooit**.
 1. Selecteer **Toevoegen**. De PingAccess-sleutel wordt weer gegeven in de tabel met client geheimen, met een wille keurige teken reeks die wordt ingevuld in het veld **waarde** .
 1. Klik naast het veld **waarde** van de PingAccess-sleutel op het pictogram **kopiëren naar klem bord** en kopieer dit vervolgens en sla het op. U geeft deze waarde later op als het client geheim van PingAccess.
 
 ### <a name="update-graphapi-to-send-custom-fields-optional"></a>GraphAPI bijwerken voor het verzenden van aangepaste velden (optioneel)
 
-Als u een aangepaste claim nodig hebt die andere tokens verzendt binnen de access_token die wordt gebruikt door PingAccess, `acceptMappedClaims` stelt u het `True`toepassings veld in op. U kunt Graph Explorer of het toepassings manifest van de Azure AD-Portal gebruiken om deze wijziging door te voeren.
+Als u een aangepaste claim nodig hebt die andere tokens verzendt binnen de access_token die wordt gebruikt door PingAccess, stelt u het veld `acceptMappedClaims` toepassing in op `True`. U kunt Graph Explorer of het toepassings manifest van de Azure AD-Portal gebruiken om deze wijziging door te voeren.
 
 **In dit voor beeld wordt Graph Explorer gebruikt:**
 
@@ -175,13 +175,13 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 
-**In dit voor beeld wordt de [Azure Active Directory Portal](https://aad.portal.azure.com/) gebruikt `acceptMappedClaims` om het veld bij te werken:**
+**In dit voor beeld wordt de [Azure Active Directory Portal](https://aad.portal.azure.com/) gebruikt om het `acceptMappedClaims` veld bij te werken:**
 
 1. Meld u aan bij de [Azure Active Directory-Portal](https://aad.portal.azure.com/) als een toepassings beheerder.
-1. Selecteer **Azure Active Directory** > **App-registraties**. Er wordt een lijst met toepassingen weer gegeven.
+1. Selecteer **Azure Active Directory** > **app-registraties**. Er wordt een lijst met toepassingen weer gegeven.
 1. Selecteer uw toepassing.
 1. Selecteer in de zijbalk van de pagina **app-registraties** voor uw toepassing **manifest**. De manifest-JSON-code voor de registratie van uw toepassing wordt weer gegeven.
-1. Zoek het `acceptMappedClaims` veld en wijzig de waarde in `True`.
+1. Zoek het veld `acceptMappedClaims` en wijzig de waarde in `True`.
 1. Selecteer **Opslaan**.
 
 ### <a name="use-of-optional-claims-optional"></a>Gebruik van optionele claims (optioneel)
@@ -211,9 +211,9 @@ Voor beeld om e-mail adres op te nemen in de access_token die PingAccess verbrui
 Om ervoor te zorgen dat uw toepassing een aangepaste claim gebruikt en aanvullende velden bevat, moet u ook [een aangepast claim toewijzings beleid hebben gemaakt en aan de toepassing toegewezen](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 > [!NOTE]
-> Voor het gebruik van een aangepaste claim, moet u ook een aangepast beleid gedefinieerd en toegewezen aan de toepassing hebben. Dit beleid moet alle vereiste aangepaste kenmerken bevatten.
+> Als u een aangepaste claim wilt gebruiken, moet u ook een aangepast beleid hebben gedefinieerd en toegewezen aan de toepassing. Dit beleid moet alle vereiste aangepaste kenmerken bevatten.
 >
-> U kunt beleids definities en-toewijzingen uitvoeren via Power shell, Azure AD Graph Explorer of Microsoft Graph. Als u ze in Power shell gebruikt, moet u het mogelijk eerst gebruiken `New-AzureADPolicy` en vervolgens toewijzen aan de toepassing met. `Add-AzureADServicePrincipalPolicy` Zie [toewijzing van claim toewijzings beleid](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)voor meer informatie.
+> U kunt beleids definities en-toewijzingen uitvoeren via Power shell, Azure AD Graph Explorer of Microsoft Graph. Als u ze in Power shell gebruikt, moet u mogelijk eerst `New-AzureADPolicy` gebruiken en deze vervolgens toewijzen aan de toepassing met `Add-AzureADServicePrincipalPolicy`. Zie [toewijzing van claim toewijzings beleid](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)voor meer informatie.
 
 Voorbeeld:
 ```powershell
@@ -230,11 +230,11 @@ Wanneer u PingAccess in de volgende stap configureert, moet u voor de websessie 
 
 ## <a name="download-pingaccess-and-configure-your-application"></a>PingAccess downloaden en uw toepassing configureren
 
-Nu dat u alle stappen van de Azure Active Directory-instelling hebt voltooid, kunt u met het configureren van PingAccess op verplaatsen.
+Nu u alle stappen voor de installatie van Azure Active Directory hebt voltooid, kunt u door gaan met het configureren van PingAccess.
 
 De gedetailleerde stappen voor het deel PingAccess van dit scenario worden door lopen in de documentatie over ping-identiteit. Volg de instructies in [Configure PingAccess for Azure AD om toepassingen te beveiligen die zijn gepubliceerd met Microsoft Azure AD toepassings proxy](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html) op de ping Identity-website.
 
-Deze stappen helpen u PingAccess te installeren en een PingAccess-account in te stellen (als u er nog geen hebt). Als u vervolgens een Azure AD OpenID Connect Connect (OIDC)-verbinding wilt maken, stelt u een token provider in met de ID-waarde van de **Directory (Tenant)** die u hebt gekopieerd uit de Azure AD-Portal. Vervolgens gebruikt u de **toepassings-id** en `PingAccess key` -waarden om een websessie te maken op PingAccess. U kunt hierna Identiteitstoewijzing instellen en maken van een virtuele host, de site en de toepassing.
+Deze stappen helpen u PingAccess te installeren en een PingAccess-account in te stellen (als u er nog geen hebt). Als u vervolgens een Azure AD OpenID Connect Connect (OIDC)-verbinding wilt maken, stelt u een token provider in met de ID-waarde van de **Directory (Tenant)** die u hebt gekopieerd uit de Azure AD-Portal. Voor het maken van een websessie op PingAccess, gebruikt u de **toepassings-id** en `PingAccess key` waarden. Daarna kunt u identiteits toewijzing instellen en een virtuele host, site en toepassing maken.
 
 ### <a name="test-your-application"></a>Uw toepassing testen
 
@@ -244,4 +244,4 @@ Wanneer u al deze stappen hebt uitgevoerd, moet uw toepassing actief zijn. Als u
 
 - [PingAccess voor Azure AD configureren voor het beveiligen van toepassingen die zijn gepubliceerd met Microsoft Azure AD toepassings proxy](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)
 - [Eenmalige aanmelding bij toepassingen in Azure Active Directory](what-is-single-sign-on.md)
-- [Oplossen van problemen met Application Proxy- en foutberichten](application-proxy-troubleshoot.md)
+- [Problemen met toepassings proxy en fout berichten oplossen](application-proxy-troubleshoot.md)

@@ -2,18 +2,18 @@
 title: Apache Ambari-Hive-weer gave gebruiken met Apache Hadoop in azure HDInsight
 description: Meer informatie over het gebruik van de Hive-weer gave in uw webbrowser om Hive-query's in te dienen. De Hive-weer gave maakt deel uit van de Ambari-webinterface die is meegeleverd met het HDInsight-cluster op basis van Linux.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5063be247b2ad51dc8888f8512f523ccf2b0174c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044811"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097106"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari-Hive-weer gave gebruiken met Apache Hadoop in HDInsight
 
@@ -30,9 +30,9 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
 
 1. Selecteer uw cluster in de [Azure Portal](https://portal.azure.com/).  Zie een [lijst en clusters weer geven](../hdinsight-administer-use-portal-linux.md#showClusters) voor instructies. Het cluster wordt geopend in een nieuwe portal-Blade.
 
-2. Selecteer **Ambari-weer gaven**in **cluster dashboards**. Wanneer u wordt gevraagd om te verifiëren, gebruikt u de account naam en het wacht woord voor de cluster aanmelding (standaard `admin`) die u hebt opgegeven tijdens het maken van het cluster.
+1. Selecteer **Ambari-weer gaven**in **cluster dashboards**. Wanneer u wordt gevraagd om te verifiëren, gebruikt u de account naam en het wacht woord voor de cluster aanmelding (standaard `admin`) die u hebt opgegeven tijdens het maken van het cluster. U kunt ook naar `https://CLUSTERNAME.azurehdinsight.net/#/main/views` in uw browser navigeren, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
-3. Selecteer in de lijst met weer gaven de __Hive-weer gave__.
+1. Selecteer in de lijst met weer gaven de __Hive-weer gave__.
 
     ![Apache Ambari Select Apache Hive View](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
 
     ![Afbeelding van het query werkblad voor de Hive-weer gave](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. Plak op het tabblad __query__ de volgende HiveQL-instructies in het werk blad:
+1. Plak op het tabblad __query__ de volgende HiveQL-instructies in het werk blad:
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ Meer informatie over het uitvoeren van Hive-query's met behulp van de Apache Amb
    > [!IMPORTANT]  
    > De __database__ selectie __standaard__behouden. De voor beelden in dit document gebruiken de standaard database die is opgenomen in HDInsight.
 
-5. Als u de query wilt starten, selecteert u onder het werk blad **uitvoeren** . De knop wordt oranje en de tekst verandert in **stoppen**.
+1. Als u de query wilt starten, selecteert u onder het werk blad **uitvoeren** . De knop wordt oranje en de tekst verandert in **stoppen**.
 
-6. Nadat de query is voltooid, worden de resultaten van de bewerking weer gegeven op het tabblad **resultaten** . De volgende tekst is het resultaat van de query:
+1. Nadat de query is voltooid, worden de resultaten van de bewerking weer gegeven op het tabblad **resultaten** . De volgende tekst is het resultaat van de query:
 
         loglevel       count
         [ERROR]        3

@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 851b5607ad5413cd1a594f788cb294ee7790e8eb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a074abf494e155e0dc088d0db6af7eba0b3cf3c2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043170"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100239"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Zelf studie: reageren op Blob Storage gebeurtenissen in IoT Edge (preview-versie)
 Dit artikel laat u zien hoe u de Azure Blob Storage kunt implementeren in IoT-module, die als Event Grid Publisher kan fungeren voor het verzenden van gebeurtenissen bij het maken van een BLOB en het verwijderen van een BLOB naar Event Grid.  
@@ -167,7 +167,10 @@ In deze sectie wordt beschreven hoe u de Azure Blob Storage-module implementeert
 5. Klik op **Opslaan**.
 6. Klik op **volgende** om door te gaan naar de sectie routes
 
- ### <a name="setup-routes"></a>Installatie routes
+    > [!NOTE]
+    > Als u een Azure VM als edge-apparaat gebruikt, voegt u een regel voor binnenkomende poort toe om binnenkomend verkeer toe te staan op de host poorten die in deze zelf studie worden gebruikt: 4438, 5888, 8080 en 11002. Zie [poorten openen voor een virtuele machine](../../virtual-machines/windows/nsg-quickstart-portal.md)voor instructies over het toevoegen van de regel.
+
+### <a name="setup-routes"></a>Installatie routes
 
 Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sectie beoordeling
 
@@ -184,7 +187,7 @@ Behoud de standaard routes en selecteer **volgende** om door te gaan naar de sec
 
    Het kan even duren voordat de module op het apparaat is gestart en vervolgens weer aan IoT Hub is gemeld. Vernieuw de pagina om de bijgewerkte status weer te geven.
 
-## <a name="publish-created-and-deleted-events"></a>Gemaakte en verwijderde gebeurtenissen publiceren
+## <a name="publish-blobcreated-and-blobdeleted-events"></a>BlobCreated-en BlobDeleted-gebeurtenissen publiceren
 
 1. Deze module maakt automatisch onderwerp **MicrosoftStorage**. Controleer of deze bestaat
     ```sh

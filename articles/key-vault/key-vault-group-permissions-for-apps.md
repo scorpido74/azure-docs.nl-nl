@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b472d36f17853549f2bfc773bdcb65faf0421b3f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718993"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102368"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault verificatie met een toegangscontrole beleid bieden
 
@@ -22,9 +22,9 @@ ms.locfileid: "71718993"
 
 De eenvoudigste manier om een Cloud toepassing te verifiëren voor Key Vault is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](managed-identity.md) voor meer informatie.  Als u een on-premises toepassing maakt, lokale ontwikkeling doet of op een andere manier geen beheerde identiteit kan gebruiken, kunt u in plaats daarvan een Service-Principal hand matig registreren en toegang verlenen tot uw sleutel kluis met behulp van een toegangs beheer beleid.  
 
-Sleutel kluis ondersteunt Maxi maal 1024 toegangs beleidsregels, waarbij elke vermelding een afzonderlijke set machtigingen verleent aan een principal:   Dit is bijvoorbeeld hoe de console-app in de [Azure Key Vault-client bibliotheek voor .net Quick](quick-create-net.md) start toegang heeft tot de sleutel kluis.
+Sleutel kluis ondersteunt Maxi maal 1024 toegangs beleidsregels, waarbij elke vermelding een afzonderlijke set machtigingen verleent aan een principal: dit is bijvoorbeeld hoe de console-app in de [Azure Key Vault-client bibliotheek voor .net Quick](quick-create-net.md) start toegang heeft tot de sleutel kluis.
 
-Zie voor volledige informatie over Key Vault Access Control [Azure Key Vault Security: Identiteits-en toegangs beheer @ no__t-0. Zie voor volledige informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md) voor toegangs beheer: 
+Zie [Azure Key Vault Security: identiteits-en toegangs beheer](overview-security.md#identity-and-access-management)voor volledige informatie over Key Vault toegangs beheer. Zie voor volledige informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md) voor toegangs beheer: 
 
 - [Toegangs beheer voor sleutels](about-keys-secrets-and-certificates.md#key-access-control)
 - [Toegangs beheer voor geheimen](about-keys-secrets-and-certificates.md#secret-access-control)
@@ -46,14 +46,14 @@ Elk sleutel kluis toegangs beleid wordt een afzonderlijke set machtigingen verle
 
 - **Een toepassing** Als de toepassing is gebaseerd op de Cloud, moet u in plaats daarvan [een beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault](managed-identity.md), indien mogelijk
 - **Een Azure AD-groep** Hoewel sleutel kluis alleen 1024-toegangs beleidsitems ondersteunt, kunt u meerdere toepassingen en gebruikers toevoegen aan één Azure AD-groep en deze groep vervolgens als één vermelding toevoegen aan uw toegangscontrole beleid.
-- **Een gebruiker** Gebruikers direct toegang verlenen tot een sleutel kluis wordt **afgeraden**. In het ideale geval moeten gebruikers worden toegevoegd aan een Azure AD-groep, die op zijn beurt toegang krijgt tot de sleutel kluis. Zie [Azure Key Vault Security: Identiteits-en toegangs beheer @ no__t-0.
+- **Een gebruiker** Gebruikers direct toegang verlenen tot een sleutel kluis wordt **afgeraden**. In het ideale geval moeten gebruikers worden toegevoegd aan een Azure AD-groep, die op zijn beurt toegang krijgt tot de sleutel kluis. Zie [Azure Key Vault beveiliging: identiteits-en toegangs beheer](overview-security.md#identity-and-access-management).
 
 
 ### <a name="get-the-objectid"></a>De objectID ophalen
 
 Als u een toepassing, een Azure AD-groep of een gebruiker toegang wilt geven tot uw sleutel kluis, moet u eerst de objectId ophalen.
 
-#### <a name="applications"></a>Toepassingen
+#### <a name="applications"></a>Applicaties
 
 De objectId voor een toepassing komt overeen met de bijbehorende service-principal. Voor volledige informatie over service-principals. Zie [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
 
@@ -83,7 +83,7 @@ U kunt meerdere toepassingen en gebruikers toevoegen aan een Azure AD-groep en v
 Als u wilt zoeken naar de objectId van een Azure AD-groep met de Azure CLI, gebruikt u de opdracht [AZ Ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) . Vanwege het grote aantal groepen dat zich in uw organisatie kan bevinden, moet u ook een zoek reeks opgeven voor de para meter `--display-name`.
 
 ```azurecli-interactive
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 De objectId wordt geretourneerd in de JSON:
 
@@ -93,7 +93,7 @@ De objectId wordt geretourneerd in de JSON:
     "odata.type": "Microsoft.DirectoryServices.Group",
 ```
 
-Als u de objectId van een Azure AD-groep met Azure PowerShell wilt zoeken, gebruikt u de cmdlet [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) . Vanwege het grote aantal groepen dat zich in uw organisatie kan bevinden, wilt u waarschijnlijk ook een zoek reeks opgeven aan de para meter `-SearchString`.
+Als u de objectId van een Azure AD-groep met Azure PowerShell wilt zoeken, gebruikt u de cmdlet [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) . Vanwege het grote aantal groepen dat zich in uw organisatie kan bevinden, wilt u waarschijnlijk ook een zoek reeks opgeven voor de para meter `-SearchString`.
 
 ```azurepowershell-interactive
 Get-AzADGroup -SearchString <search-string>
@@ -223,7 +223,7 @@ Geef tot slot de AD-groep machtigingen voor uw sleutel kluis met behulp van de A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Key Vault beveiliging: Identiteits-en toegangs beheer @ no__t-0
+- [Azure Key Vault beveiliging: identiteits-en toegangs beheer](overview-security.md#identity-and-access-management)
 - [Key Vault-verificatie bieden met een App Service beheerde identiteit](managed-identity.md)
 - [Informatie over sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
 - [Beveilig uw sleutel kluis](key-vault-secure-your-key-vault.md).

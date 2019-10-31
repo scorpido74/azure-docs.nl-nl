@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 4c25e8b93fe9bcce17189bd7b787eaf4c3885716
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: dcdc9c6a22f5d291b3773da02a79cc5ceebc3db1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752476"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101464"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Doorvoer voor containers en databases inrichten
 
@@ -28,7 +28,7 @@ De door Voer die is ingericht voor een Azure Cosmos-container is exclusief geres
 
 Het instellen van een ingerichte door Voer voor een container is de meest gebruikte optie. U kunt de door Voer voor een container elastisch schalen door een wille keurige hoeveelheid door Voer in te stellen met behulp van [aanvraag eenheden (RUs)](request-units.md). 
 
-De door Voer die is ingericht voor een Azure Cosmos-container wordt uniform gedistribueerd over alle logische partities van de container. U kunt de door Voer voor logische partities niet selectief opgeven. Omdat een of meer logische partities van een container worden gehost door een fysieke partitie, behoren de fysieke partities uitsluitend tot de container en ondersteunen ze de door Voer ingericht op de container. 
+Uitgaande van een goede partitie sleutel die de logische partities gelijkmatig verspreidt tussen de fysieke partities, wordt de door Voer ook gelijkmatig verdeeld over alle logische partities van de container. U kunt de door Voer voor logische partities niet selectief opgeven. Omdat een of meer logische partities van een container worden gehost door een fysieke partitie, behoren de fysieke partities uitsluitend tot de container en ondersteunen ze de door Voer ingericht op de container. 
 
 Als de werk belasting die wordt uitgevoerd op een logische partitie, groter is dan de door Voer die is toegewezen aan de logische partitie, worden de verwerkings frequenties beperkt. Wanneer de snelheids beperking optreedt, kunt u de ingerichte door Voer voor de gehele container verhogen of de bewerking opnieuw uitvoeren. Zie [logische partities](partition-data.md)voor meer informatie over partitioneren.
 

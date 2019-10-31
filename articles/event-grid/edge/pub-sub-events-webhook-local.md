@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: b484306504af8f83a393feb0469fff5b524948ab
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992208"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098624"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Zelf studie: publiceren, lokaal abonneren op gebeurtenissen
 
@@ -81,6 +81,8 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 
     >[!IMPORTANT]
     > In deze zelf studie implementeert u de module Event Grid met client verificatie uitgeschakeld en kunt u HTTP-abonnees toestaan. Voor werk belastingen wordt u aangeraden de client verificatie in te scha kelen en alleen HTTPs-abonnees toe te staan. Zie [beveiliging en verificatie](security-authentication.md)voor meer informatie over het veilig configureren van Event grid module.
+    > 
+    > Als u een virtuele machine van Azure als een edge-apparaat gebruikt, voegt u een regel voor binnenkomende poort toe om binnenkomend verkeer op poort 4438 toe te staan. Zie [poorten openen voor een virtuele machine](../../virtual-machines/windows/nsg-quickstart-portal.md)voor instructies over het toevoegen van de regel.
     
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Azure function IoT Edge-module implementeren
@@ -257,7 +259,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
     Voer de volgende opdracht uit in Windows:
 
     ```sh
-    iotedge logs subscriber -f
+    docker -H npipe:////./pipe/iotedge_moby_engine container logs subscriber
     ```
 
    Voer de volgende opdracht uit op Linux:
@@ -299,6 +301,7 @@ Abonnees kunnen zich registreren voor gebeurtenissen die naar een onderwerp word
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelf studie hebt u een event grid-onderwerp,-abonnement en-gepubliceerde gebeurtenissen gemaakt. Nu u de basis stappen kent, raadpleegt u de volgende artikelen: 
 
+- Zie [probleemoplossings gids voor informatie](troubleshoot.md)over het oplossen van problemen met het gebruik van Azure Event Grid op IOT Edge.
 - Een abonnement met [filters](advanced-filtering.md)maken/bijwerken.
 - Persistentie van Event Grid-module op [Linux](persist-state-linux.md) of [Windows](persist-state-windows.md) inschakelen
 - Volg de [documentatie](configure-client-auth.md) voor het configureren van client verificatie

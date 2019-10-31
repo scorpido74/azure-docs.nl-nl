@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391610"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083731"
 ---
 De volgende tabel bevat de limieten die zijn gekoppeld aan de verschillende service lagen S1, S2, S3 en F1. Zie [prijzen van Azure IOT hub](https://azure.microsoft.com/pricing/details/iot-hub/)voor meer informatie over de kosten van elke *eenheid* in elke laag.
 
@@ -27,7 +27,7 @@ De volgende tabel bevat de limieten die van toepassing zijn op IoT Hub resources
 
 | Bron | Limiet |
 | --- | --- |
-| Maximum aantal betaalde IoT-hubs per Azure-abonnement |50 |
+| Maximum aantal betaalde IoT-hubs per Azure-abonnement |100 |
 | Maximum aantal gratis IoT-hubs per Azure-abonnement |1 |
 | Maximum aantal tekens in een apparaat-ID | 128 |
 | Maximumaantal apparaat-id's<br/> dat in één aanroep wordt geretourneerd |1000 |
@@ -53,7 +53,7 @@ De volgende tabel bevat de limieten die van toepassing zijn op IoT Hub resources
 | Maximale gegevens overdracht van de apparaat stroom | 300 MB per dag (alleen voor S1, S2, S3 en F1) |
 
 > [!NOTE]
-> Als u meer dan 50 betaalde IoT-hubs in een Azure-abonnement nodig hebt, neemt u contact op met Microsoft Ondersteuning.
+> Als u meer dan 100 betaalde IoT-hubs in een Azure-abonnement nodig hebt, neemt u contact op met Microsoft Ondersteuning.
 
 > [!NOTE]
 > Op dit moment wordt het totale aantal apparaten plus modules dat kan worden geregistreerd voor één IoT-hub, beperkt op 1.000.000. Als u deze limiet wilt verhogen, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).

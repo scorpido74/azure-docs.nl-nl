@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 772fccc96f757c6165238e4041ce98c17c647880
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992299"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73098688"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Zelf studie: gebeurtenissen door sturen naar IoTHub
 
@@ -160,7 +160,9 @@ Werk de route van de Edge hub bij om de gebeurtenissen van het gebeurtenis abonn
 
 ## <a name="setup-iot-hub-route"></a>IoT Hub route instellen
 
-Raadpleeg de [zelf studie over IOT hub route ring](../../iot-hub/tutorial-routing.md) voor het instellen van een route van de IOT-hub, zodat u kunt zien welke gebeurtenissen vanuit de module Event grid worden doorgestuurd.
+Raadpleeg de [zelf studie over IOT hub route ring](../../iot-hub/tutorial-routing.md) voor het instellen van een route van de IOT-hub, zodat u gebeurtenissen kunt weer geven die zijn doorgestuurd vanuit de module Event grid. Gebruik `true` voor de query om de zelf studie eenvoudig te laten blijven.  
+
+
 
 ## <a name="publish-an-event"></a>Een gebeurtenis publiceren
 
@@ -205,6 +207,7 @@ Raadpleeg de [zelf studie over IOT hub route ring](../../iot-hub/tutorial-routin
 
 In deze zelf studie hebt u een event grid-onderwerp, Edge hub-abonnement en gepubliceerde gebeurtenissen gemaakt. Nu u weet wat de basis stappen zijn om door te sturen naar een Edge hub, raadpleegt u de volgende artikelen:
 
+* Zie [probleemoplossings gids voor informatie](troubleshoot.md)over het oplossen van problemen met het gebruik van Azure Event Grid op IOT Edge.
 * [Edge hub](../../iot-edge/module-composition.md) -route filters gebruiken om gebeurtenissen te partitioneren
 * Persistentie van Event Grid module instellen in [Linux](persist-state-linux.md) of [Windows](persist-state-windows.md)
 * Volg de [documentatie](configure-client-auth.md) voor het configureren van client verificatie

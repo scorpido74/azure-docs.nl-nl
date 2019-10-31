@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596314"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062679"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Vereisten voor Azure AD Connect
 In dit onderwerp worden de vereisten en hardwarevereisten voor Azure AD Connect beschreven.
@@ -85,7 +85,7 @@ Voor meer informatie zie:
 * Azure AD Connect vereist een SQL Server-database voor het opslaan van identiteitsgegevens. Er is standaard een SQL Server 2012 Express LocalDB (een lichte versie van SQL Server Express) geïnstalleerd. SQL Server Express heeft een maximale grootte van 10 GB waarmee u ongeveer 100.000 objecten kunt beheren. Als u een groter volume aan Directory objecten wilt beheren, moet u de installatie wizard naar een andere installatie van SQL Server wijzen. Het type SQL Server installatie kan invloed hebben [op de prestaties van Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
 * Als u een andere installatie van SQL Server gebruikt, zijn de volgende vereisten van toepassing:
   * Azure AD Connect ondersteunt alle versies van Microsoft SQL Server van 2008 R2 (met het nieuwste Service Pack) tot SQL Server 2019. Microsoft Azure SQL Database wordt **niet ondersteund** als data base.
-  * U moet een niet-hoofdletter gevoelige SQL-sortering gebruiken. Deze sorteringen worden aangeduid met een \_CI_ in hun naam. Het gebruik van een hoofdletter gevoelige sortering wordt **niet ondersteund** , aangeduid door \_CS_ in hun naam.
+  * U moet een niet-hoofdletter gevoelige SQL-sortering gebruiken. Deze sorteringen worden aangeduid met een \_CI_ in hun naam. Het is **niet mogelijk** om een hoofdletter gevoelige collatie te gebruiken, geïdentificeerd door \_CS_ in hun naam.
   * U kunt slechts één synchronisatie-engine per SQL-exemplaar hebben. Het is **niet mogelijk** om een SQL-exemplaar te delen met FIM/MIM Sync, DirSync of Azure AD Sync.
 
 ### <a name="accounts"></a>Accounts
@@ -221,7 +221,7 @@ In de volgende tabel ziet u de minimale vereisten voor de Azure AD Connect Sync-
 | 300000 – 600.000 |1,6 GHz |32 GB |450 GB |
 | Meer dan 600.000 |1,6 GHz |32 GB |500 GB |
 
-De minimale vereisten voor computers met AD FS of Web Application servers is als volgt:
+De minimale vereisten voor computers waarop AD FS of Web Application proxy-servers worden uitgevoerd, is als volgt:
 
 * CPU: Dual Core 1,6 GHz of hoger
 * GEHEUGEN: 2 GB of hoger

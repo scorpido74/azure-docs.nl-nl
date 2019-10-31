@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/25/2019
+ms.date: 10/29/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 639b73c95d5a2cceef24044a5247a401f50da860
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e20f90a510795080f4f2e1f9dbd6961e700baab0
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934930"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061459"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -120,6 +120,7 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingenlogboek
+- 10/29/2019: release van de [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](high-availability-guide-standard-load-balancer-outbound-connections.md)
 - 10/25/2019: wijzigingen in [SAP Hana opslag configuraties voor virtuele machines van Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) en [SAP Hana uitschalen met behulp van het knoop punt stand-by op virtuele machines van Azure met Azure NetApp files op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) om het NFS-protocol voor/Hana/Shared-volume te verduidelijken
 - 10/22/2019: wijziging in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse), [hoge Beschik baarheid voor SAP NetWeaver op azure vm's op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), [Hoge beschik BAARHEID voor NFS op Azure-vm's op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs), het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker), [hoge Beschik baarheid van IBM Db2 LUW op Azure-vm's in Suse Linux Enterprise Server met pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm), en [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) voor de detectie beveiliging van Azure Load Balancer
 - De sectie en koptekst van de sectie ANF wijzigen in [SAP Hana opslag configuraties voor virtuele Azure-machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)

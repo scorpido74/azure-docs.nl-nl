@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8d8d6df16c5df7e29d8bb870c5d5eda6d8a2d3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477262"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062763"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Een niet-gevermeldde (niet-Gallery) toepassing toevoegen aan uw Azure AD-organisatie
 
@@ -33,21 +33,36 @@ In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen
 ## <a name="add-a-non-gallery-application"></a>Een niet-galerie toepassing toevoegen
 
 1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com/) met behulp van uw micro soft Identity platform Administrator-account.
-1. Selecteer**nieuwe toepassing** **bedrijfs toepassingen** > .
-2. (Optioneel, maar aanbevolen) Voer in het zoekvak **van de galerie toevoegen** de weergave naam van de toepassing in. Als de toepassing wordt weer gegeven in de zoek resultaten, selecteert u deze en slaat u de rest van deze procedure over.
-3. Selecteer de **toepassing niet-galerie**. De pagina **uw eigen toepassing toevoegen** wordt weer gegeven.
 
-   ![Toepassing toevoegen](./media/configure-single-sign-on-non-gallery-applications/add-your-own-application.png)
-5. Voer de weergave naam voor de nieuwe toepassing in.
-6. Selecteer **Toevoegen**. De **overzichts** pagina van de toepassing wordt geopend.
+2. Selecteer **bedrijfs toepassingen** > **nieuwe toepassing**.
+
+3. (Optioneel, maar aanbevolen) Voer in het zoekvak **Bladeren in azure AD galerie** de weergave naam van de toepassing in. 
+
+4. Selecteer **uw eigen toepassing maken**. De pagina **uw eigen toepassing maken** wordt weer gegeven.
+
+   ![Toepassing toevoegen](media/add-non-gallery-app/create-your-own-application.png)
+
+5. Begin met het typen van de weergave naam voor de nieuwe toepassing. Als er galerie toepassingen met vergelijk bare namen zijn, worden ze weer gegeven in een lijst met zoek resultaten.
+
+   > [!NOTE]
+   > U wordt aangeraden de galerie versie van uw toepassing waar mogelijk te gebruiken. Als de toepassing die u wilt toevoegen, wordt weer gegeven in de zoek resultaten, selecteert u de toepassing en slaat u de rest van deze procedure over.
+
+6. Onder **Wat wilt u doen met uw toepassing?** Kies **een andere toepassing integreren die u niet in de galerie vindt**. Deze optie wordt doorgaans gebruikt voor SAML-en WS-inschakel toepassingen.
+
+   > [!NOTE]
+   > De andere twee opties worden gebruikt in de volgende scenario's:
+   >* **Toepassings proxy configureren voor beveiligde externe toegang tot een on-premises toepassing** Hiermee opent u de pagina configuratie voor Azure AD-toepassingsproxy en connectors.
+   >* **Registreer een toepassing waaraan u werkt om te integreren met Azure AD** de **app-registraties** -pagina wordt geopend. Deze optie wordt doorgaans gebruikt voor OpenID Connect Connect-toepassingen.
+
+7. Selecteer **Maken**. De **overzichts** pagina van de toepassing wordt geopend.
 
 ## <a name="configure-user-sign-in-properties"></a>Eigenschappen voor gebruikersaanmelding configureren
 
 1. Selecteer **Eigenschappen** om het deel venster Eigenschappen te openen om het te bewerken.
 
-    ![Eigenschappen venster bewerken](media/add-application-portal/edit-properties.png)
+    ![Eigenschappen venster bewerken](media/add-non-gallery-app/edit-properties.png)
 
-1. Stel de volgende opties in om te bepalen hoe gebruikers die zijn toegewezen aan of niet zijn toegewezen aan de toepassing, zich kunnen aanmelden bij de toepassing en of een gebruiker de toepassing kan zien in het toegangs venster.
+2. Stel de volgende opties in om te bepalen hoe gebruikers die zijn toegewezen aan of niet zijn toegewezen aan de toepassing, zich kunnen aanmelden bij de toepassing en of een gebruiker de toepassing kan zien in het toegangs venster.
 
     - Met **Ingeschakeld voor gebruikers voor aanmelden** wordt bepaald of gebruikers die zijn toegewezen aan de toepassing, zich kunnen aanmelden.
     - **Gebruikers toewijzing vereist** bepaalt of gebruikers die niet zijn toegewezen aan de toepassing zich kunnen aanmelden.
@@ -83,15 +98,15 @@ In dit artikel wordt beschreven hoe u een niet-galerie toepassing kunt toevoegen
 
      *Kan de gebruiker de toepassing zien in het toegangsvenster en het startprogramma voor Office 365-apps?
 
-1. Als u een aangepast logo wilt gebruiken, maakt u een logo van 215 x 215 pixels en slaat u het op in PNG-indeling. Blader vervolgens naar uw logo en upload het.
+3. Als u een aangepast logo wilt gebruiken, maakt u een logo van 215 x 215 pixels en slaat u het op in PNG-indeling. Blader vervolgens naar uw logo en upload het.
 
-    ![Het logo wijzigen](media/add-application-portal/change-logo.png)
+    ![Het logo wijzigen](media/add-non-gallery-app/change-logo.png)
 
-1. Wanneer u klaar bent, selecteert u **Opslaan**.
+4. Wanneer u klaar bent, selecteert u **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de toepassing aan uw Azure AD-organisatie hebt toegevoegd, [kiest](what-is-single-sign-on.md#choosing-a-single-sign-on-method) u de methode voor eenmalige aanmelding die u wilt gebruiken en raadpleegt u het juiste artikel hieronder:
+Nu u de toepassing aan uw Azure AD-organisatie hebt toegevoegd, [kiest u de methode voor eenmalige aanmelding](what-is-single-sign-on.md#choosing-a-single-sign-on-method) die u wilt gebruiken en raadpleegt u het juiste artikel hieronder:
 
 - [Eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md)
 - [Eenmalige aanmelding met een wacht woord configureren](configure-password-single-sign-on-non-gallery-applications.md)

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756529"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062535"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
 
@@ -77,38 +77,40 @@ Zie [uw aangepaste domein naam toevoegen met behulp van de Azure Active Director
 
 Uw app publiceren via een toepassings proxy met een aangepast domein:
 
-1. Selecteer voor een nieuwe app in Azure Active Directory **Enter prise-toepassingen** in het linkernavigatievenster, selecteer **nieuwe toepassing**en selecteer vervolgens **on-premises toepassing**. 
+1. Selecteer voor een nieuwe app in Azure Active Directory **Enter prise-toepassingen** in het linkernavigatievenster. Selecteer **Nieuwe toepassing**. Selecteer in de sectie **on-premises toepassingen** de optie **een on-premises toepassing toevoegen**. 
    
    Voor een app die al in **bedrijfs toepassingen**is, selecteert u deze in de lijst en selecteert u vervolgens **toepassings proxy** in de linkernavigatiebalk. 
 
-1. Voer op de pagina **toepassings proxy** in het veld **interne URL** de interne URL voor uw app in. 
+2. Voer op de pagina instellingen van toepassings proxy een **naam** in als u uw eigen on-premises toepassing wilt toevoegen.
+
+3.  Voer in het veld **interne URL** de interne URL voor uw app in.
    
-1. In het veld **externe URL** gaat u naar de lijst en selecteert u het aangepaste domein dat u wilt gebruiken.
+4. In het veld **externe URL** gaat u naar de lijst en selecteert u het aangepaste domein dat u wilt gebruiken.
    
-1. Selecteer **Opslaan**.
+5. Selecteer **Toevoegen**.
    
    ![Aangepast domein selecteren](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. Als het domein al een certificaat heeft, wordt in het veld **certificaat** de gegevens van het certificaat weer gegeven. Als dat niet het geval is, selecteert u het veld **certificaat** . 
+6. Als het domein al een certificaat heeft, wordt in het veld **certificaat** de gegevens van het certificaat weer gegeven. Als dat niet het geval is, selecteert u het veld **certificaat** . 
    
    ![Klik om een certificaat te uploaden](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. Blader op de pagina **SSL-certificaat** naar het pfx-certificaat bestand en selecteer dit. Voer het wacht woord voor het certificaat in en selecteer **certificaat uploaden**. Zie de sectie [certificaten voor aangepaste domeinen](#certificates-for-custom-domains) voor meer informatie over certificaten.
+7. Blader op de pagina **SSL-certificaat** naar het pfx-certificaat bestand en selecteer dit. Voer het wacht woord voor het certificaat in en selecteer **certificaat uploaden**. Zie de sectie [certificaten voor aangepaste domeinen](#certificates-for-custom-domains) voor meer informatie over certificaten.
    
    ![Certificaat uploaden](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > Een aangepast domein heeft het certificaat alleen eenmaal geüpload. Daarna wordt het geüploade certificaat automatisch toegepast wanneer u het aangepaste domein gebruikt voor andere apps.
    
-1. Als u een certificaat hebt toegevoegd, selecteert u op de pagina **toepassings proxy** **Opslaan**. 
+8. Als u een certificaat hebt toegevoegd, selecteert u op de pagina **toepassings proxy** **Opslaan**. 
    
-1. In de informatie balk op de pagina **toepassings proxy** noteert u de CNAME-vermelding die u moet toevoegen aan uw DNS-zone. 
+9. In de informatie balk op de pagina **toepassings proxy** noteert u de CNAME-vermelding die u moet toevoegen aan uw DNS-zone. 
    
    ![CNAME DNS-vermelding toevoegen](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. Volg de instructies in [DNS-records en-record sets beheren met behulp van de Azure Portal](../../dns/dns-operations-recordsets-portal.md) om een DNS-record toe te voegen waarmee de nieuwe externe URL wordt omgeleid naar het domein *msappproxy.net* .
+10. Volg de instructies in [DNS-records en-record sets beheren met behulp van de Azure Portal](../../dns/dns-operations-recordsets-portal.md) om een DNS-record toe te voegen waarmee de nieuwe externe URL wordt omgeleid naar het domein *msappproxy.net* .
    
-1. Als u wilt controleren of de DNS-record correct is geconfigureerd, gebruikt u de [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) opdracht om te bevestigen dat uw externe URL bereikbaar is en het domein *msapproxy.net* wordt weer gegeven als een alias.
+11. Als u wilt controleren of de DNS-record correct is geconfigureerd, gebruikt u de [nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) opdracht om te bevestigen dat uw externe URL bereikbaar is en het domein *msapproxy.net* wordt weer gegeven als een alias.
 
 Uw toepassing is nu ingesteld voor het gebruik van het aangepaste domein. Zorg ervoor dat u gebruikers toewijst aan uw toepassing voordat u deze test of uitgeeft. 
 

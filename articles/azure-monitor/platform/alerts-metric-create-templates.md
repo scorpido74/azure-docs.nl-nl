@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f341a3599607e527556f90626dd866418910f61e
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052330"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099758"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -27,8 +27,9 @@ In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../.
 De basis stappen zijn als volgt:
 
 1. Gebruik een van de volgende sjablonen als een JSON-bestand met een beschrijving van het maken van de waarschuwing.
-2. Het bijbehorende parameter bestand bewerken en gebruiken als JSON om de waarschuwing aan te passen
-3. Implementeer de sjabloon met [een implementatie methode](../../azure-resource-manager/resource-group-template-deploy.md).
+2. Bewerk en gebruik het bijbehorende parameter bestand als een JSON om de waarschuwing aan te passen.
+3. Zie de beschik bare metrische gegevens in [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)voor de para meter `metricName`.
+4. Implementeer de sjabloon met [een implementatie methode](../../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Sjabloon voor een eenvoudige waarschuwing voor een statische drempel waarde voor waarschuwingen
 

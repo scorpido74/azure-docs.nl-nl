@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: cc0539462fad0a73d5fc7eb75d2078e513df4e5d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926537"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097369"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Problemen met Azure Files oplossen in Linux
 
@@ -126,7 +126,7 @@ Sommige Linux-distributies bieden nog geen ondersteuning voor versleutelingsfunc
 
 ### <a name="solution"></a>Oplossing
 
-De versleutelingsfunctie voor SMB 3.0 voor Linux is geïntroduceerd in de kernel 4.11. Deze functie maakt het koppelen van een Azure-bestandsshare mogelijk, on-premises of vanuit een andere Azure-regio. Deze functionaliteit is opgenomen in de Linux-distributies die worden vermeld in [Minimum aanbevolen versies met bijbehorende mogelijkheden voor koppelen (SMB-versie 2.1 versus SMB-versie 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30). Voor andere distributies zijn kernel 4.11 en hogere versies vereist.
+De versleutelingsfunctie voor SMB 3.0 voor Linux is geïntroduceerd in de kernel 4.11. Deze functie maakt het koppelen van een Azure-bestandsshare mogelijk, on-premises of vanuit een andere Azure-regio. Sommige Linux-distributies hebben mogelijk Backported wijzigingen van de 4,11-kernel naar oudere versies van de Linux-kernel die ze onderhouden. Raadpleeg het [Azure files gebruiken met Linux](storage-how-to-use-files-linux.md)als u hulp nodig hebt bij het bepalen of uw versie van Linux SMB 3,0 ondersteunt met versleuteling. 
 
 Als uw Linux SMB-client geen ondersteuning biedt voor versleutelen, koppelt u Azure Files met behulp van SMB 2.1 vanaf een Azure Linux-VM die zich in hetzelfde datacenter bevindt als de bestandsshare. Controleer of de instelling [Veilige overdracht vereist]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is uitgeschakeld in het opslagaccount. 
 
@@ -281,7 +281,7 @@ Dit probleem met opnieuw verbinden in de Linux-kernel is nu opgelost als onderde
 - [CIFS: een mogelijke geheugen beschadiging corrigeren tijdens opnieuw verbinding maken](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: een mogelijke dubbele vergren deling van mutex herstellen tijdens opnieuw verbinding maken (voor kernel v 4.9 en hoger)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Deze wijzigingen zijn mogelijk nog niet doorgevoerd in alle Linux-distributies. Deze oplossing en andere oplossingen voor opnieuw verbinden vindt u in de sectie [Minimum aanbevolen versies met bijbehorende mogelijkheden voor koppelen (SMB-versie 2.1 versus SMB-versie 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) van het artikel [Azure Files gebruiken met Linux](storage-how-to-use-files-linux.md). U kunt deze oplossing verkrijgen door een upgrade uit te voeren naar een van de aanbevolen kernelversies.
+Deze wijzigingen zijn mogelijk nog niet doorgevoerd in alle Linux-distributies. Als u een populaire Linux-distributie gebruikt, kunt u de [Azure files met Linux](storage-how-to-use-files-linux.md) controleren om te zien welke versie van uw distributie de nood zakelijke wijzigingen in de kernel heeft.
 
 ### <a name="workaround"></a>Tijdelijke oplossing
 

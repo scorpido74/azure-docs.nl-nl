@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 095c7c4bf2a0fb08c0a7fe7e0a8118e76732c9c7
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb6c484e234b4641a521bd876acdfeb4df562260
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961607"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063123"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-client configuratie bestanden maken en installeren voor systeem eigen Azure-certificaat verificatie P2S-configuraties
 
@@ -27,7 +27,7 @@ Client configuratie bestanden zijn specifiek voor de VPN-configuratie voor het V
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="generate"></a>Configuratiebestanden voor VPN-clients genereren
+## <a name="generate"></a>Configuratie bestanden voor VPN-clients genereren
 
 Voordat u begint, moet u ervoor zorgen dat alle gebruikers met een verbinding een geldig certificaat hebben geïnstalleerd op het apparaat van de gebruiker. Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)voor meer informatie over het installeren van een client certificaat.
 
@@ -94,7 +94,7 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
 
    De **Interface** waarde is ' VPN ' en de waarde van het **VPN-type** is ' IKEv2 '. Geef een naam op voor het profiel in het veld **service naam** en klik vervolgens op **maken** om het VPN-client verbindings profiel te maken.
 
-   ![netwerk](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![Netwerk](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. Kopieer in de map **Algemeen** , in het bestand **VpnSettings. XML** , de waarde van de **VpnServer** -tag. Plak deze waarde in de velden **server adres** en **externe ID** van het profiel.
 
    ![Server gegevens](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,10 +106,10 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
    ![certificaat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Kies een identiteit** om een lijst met certificaten weer te geven waaruit u kunt kiezen. Selecteer het juiste certificaat en klik vervolgens op **door gaan**.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identiteit](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Geef in het veld **lokale id** de naam van het certificaat op (uit stap 6). In dit voor beeld is het ' ikev2Client.com '. Klik vervolgens op de knop **Toep assen** om de wijzigingen op te slaan.
 
-   ![toepassen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![Toep assen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. Klik in het dialoog venster **netwerk** op **Toep assen** om alle wijzigingen op te slaan. Klik vervolgens op **verbinding maken** om de P2S-verbinding met Azure VNet te starten.
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)
@@ -136,7 +136,7 @@ De volgende instructies zijn gemaakt op Ubuntu 18.0.4. Ubuntu 16.0.10 biedt geen
 2. Selecteer **instellingen** en selecteer vervolgens **netwerk**.
 
    ![verbindingen bewerken](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
-3. Klik op **+** de knop om een nieuwe verbinding te maken.
+3. Klik op de knop **+** om een nieuwe verbinding te maken.
 
    ![Een verbinding toevoegen](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
 4. Selecteer **IPSec/IKEv2 (strongswan)** in het menu en dubbel klik op. In deze stap kunt u de naam van uw verbinding wijzigen.
@@ -146,7 +146,7 @@ De volgende instructies zijn gemaakt op Ubuntu 18.0.4. Ubuntu 16.0.10 biedt geen
 
    ![naam kopiëren](./media/point-to-site-vpn-client-configuration-azure-cert/vpnserver.png)
 6. Plak deze naam in het **adres** veld van uw nieuwe VPN-verbinding in de sectie **Gateway** . Selecteer vervolgens het mappictogram aan het einde van het veld **certificaat** , blader naar de **algemene** map en selecteer het **VpnServerRoot** -bestand.
-7. Selecteer in het gedeelte **client** van de verbinding voor **verificatie**de optie **certificaat/persoonlijke sleutel**. Voor het **certificaat** en de **persoonlijke sleutel**kiest u het certificaat en de persoonlijke sleutel die u eerder hebt gemaakt. Selecteer bij **Opties** **een intern IP-adres aanvragen**. Klik vervolgens op **toevoegen**.
+7. Selecteer in het gedeelte **client** van de verbinding voor **verificatie**de optie **certificaat/persoonlijke sleutel**. Voor het **certificaat** en de **persoonlijke sleutel**kiest u het certificaat en de persoonlijke sleutel die u eerder hebt gemaakt. Selecteer bij **Opties** **een intern IP-adres aanvragen**. Klik vervolgens op **Toevoegen**.
 
    ![een intern IP-adres aanvragen](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
 8. Zet de verbinding **aan**.
@@ -169,22 +169,22 @@ Als u nog geen certificaten hebt gegenereerd, gebruikt u de volgende stappen:
 2. Pak het bestand uit.
 3. Kopieer of verplaats de VpnServerRoot. CER uit de **algemene** map naar/etc/IPSec.d/cacerts.
 4. Kopieer of verplaats CP-client. p12 naar/etc/IPSec.d/private/. Dit bestand is een client certificaat voor Azure VPN Gateway.
-5. Open het bestand VpnSettings. XML en kopieer `<VpnServer>` de waarde. In de volgende stap gaat u deze waarde gebruiken.
+5. Open het bestand VpnSettings. XML en kopieer de `<VpnServer>` waarde. In de volgende stap gaat u deze waarde gebruiken.
 6. Wijzig de waarden in het onderstaande voor beeld en voeg het voor beeld toe aan de/etc/IPSec.conf-configuratie.
   
    ```
    conn azure
-   keyexchange=ikev2
-   type=tunnel
-   leftfirewall=yes
-   left=%any
-   leftauth=eap-tls
-   leftid=%client # use the DNS alternative name prefixed with the %
-   right= Enter the VPN Server value here# Azure VPN gateway address
-   rightid=% # Enter the VPN Server value here# Azure VPN gateway FQDN with %
-   rightsubnet=0.0.0.0/0
-   leftsourceip=%config
-   auto=add
+         keyexchange=ikev2
+         type=tunnel
+         leftfirewall=yes
+         left=%any
+         leftauth=eap-tls
+         leftid=%client # use the DNS alternative name prefixed with the %
+         right= Enter the VPN Server value here# Azure VPN gateway address
+         rightid=% # Enter the VPN Server value here# Azure VPN gateway FQDN with %
+         rightsubnet=0.0.0.0/0
+         leftsourceip=%config
+         auto=add
    ```
 6. Voeg het volgende toe aan */etc/IPSec.Secrets*.
 

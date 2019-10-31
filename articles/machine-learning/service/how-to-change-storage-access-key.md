@@ -1,7 +1,7 @@
 ---
 title: Toegangs sleutels voor opslag accounts wijzigen
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het wijzigen van de toegangs sleutels voor het Azure Storage-account dat wordt gebruikt door uw werk ruimte. Azure Machine Learning gebruikt een Azure Storage-account om gegevens en modellen op te slaan. Wanneer u de toegangs sleutel voor het opslag account opnieuw genereert, moet u Azure Machine Learning bijwerken om de nieuwe sleutels te gebruiken.
+description: Meer informatie over het wijzigen van de toegangs sleutels voor het Azure Storage-account dat wordt gebruikt door uw werk ruimte. Azure Machine Learning gebruikt een Azure Storage-account om gegevens en modellen op te slaan.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 77cafceee35f00a81b2e07b59f0f4a13146fd906
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034956"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063326"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 
@@ -64,9 +64,9 @@ for name, ds in datastores.items():
 
 Met deze code wordt gezocht naar geregistreerde gegevens opslag die Azure Storage gebruikt en wordt de volgende informatie weer gegeven:
 
-* Naam gegevens opslag: De naam van het gegevens archief waarvoor het opslag account is geregistreerd.
-* Naam van opslagaccount: De naam van het Azure Storage-account.
-* Verpakking De container in het opslag account dat wordt gebruikt door deze registratie.
+* Data Store-naam: de naam van de gegevens opslag waarvoor het opslag account is geregistreerd.
+* Naam van het opslag account: de naam van het Azure Storage-account.
+* Container: de container in het opslag account dat wordt gebruikt door deze registratie.
 
 Ook wordt aangegeven of de gegevens opslag voor een Azure-Blob of een Azure-bestands share is, omdat er verschillende methoden zijn om elk type gegevens opslag opnieuw te registreren.
 
@@ -89,7 +89,7 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
         az login
         ```
 
-    1. Als u de werk ruimte voor het gebruik van de nieuwe sleutel wilt bijwerken, gebruikt u de volgende opdracht. Vervang `myworkspace` door de naam van uw Azure machine learning werkruimte en `myresourcegroup` Vervang door de naam van de Azure-resource groep die de werk ruimte bevat.
+    1. Als u de werk ruimte voor het gebruik van de nieuwe sleutel wilt bijwerken, gebruikt u de volgende opdracht. Vervang `myworkspace` door de naam van uw Azure Machine Learning werk ruimte en vervang `myresourcegroup` door de naam van de Azure-resource groep die de werk ruimte bevat.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -119,8 +119,8 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
     
     ```
 
-    Sinds `overwrite=True` is opgegeven, overschrijft deze code de bestaande registratie en werkt deze bij om de nieuwe sleutel te gebruiken.
+    Omdat `overwrite=True` is opgegeven, wordt met deze code de bestaande registratie overschreven en bijgewerkt voor gebruik van de nieuwe sleutel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de verwijzing naar een klasse voor meer informatie over [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) het registreren van gegevens opslag.
+Zie de referentie voor de [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) -klasse voor meer informatie over het registreren van gegevens opslag.

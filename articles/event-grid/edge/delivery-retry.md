@@ -5,20 +5,20 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 0a678023b1097c4bdec70d866632da6ae4ad57bb
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992390"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100712"
 ---
 # <a name="delivery-and-retry"></a>Leveren en opnieuw proberen
 
-Event Grid biedt een duurzame levering. Er wordt een poging gedaan om elk bericht ten minste één keer te leveren voor elk overeenkomend abonnement. Als het eind punt van een abonnee de ontvangst van een gebeurtenis niet bevestigt of als er een fout is opgetreden, Event Grid nieuwe pogingen op basis van een vast **schema voor opnieuw proberen** en **beleid voor opnieuw proberen**.  De module die momenteel Event Grid, levert een gebeurtenis tegelijk naar de abonnee. De payload is echter een matrix met één gebeurtenis.
+Event Grid biedt een duurzame levering. Er wordt een poging gedaan om elk bericht ten minste één keer te leveren voor elk overeenkomend abonnement. Als het eind punt van een abonnee de ontvangst van een gebeurtenis niet bevestigt of als er een fout is opgetreden, Event Grid nieuwe pogingen op basis van een vast **schema voor opnieuw proberen** en **beleid voor opnieuw proberen**.  Standaard levert de module Event Grid één gebeurtenis tegelijk naar de abonnee. De payload is echter een matrix met één gebeurtenis. U kunt de module meer dan één gebeurtenis tegelijk leveren door de functie output batching in te scha kelen. Zie [output batching](delivery-output-batching.md)voor meer informatie over deze functie.  
 
 > [!IMPORTANT]
 >Er is geen ondersteuning voor persistentie voor gebeurtenis gegevens. Dit betekent dat het opnieuw implementeren of opnieuw opstarten van de module Event Grid ertoe leidt dat u gebeurtenissen kwijtraakt die nog niet zijn geleverd.

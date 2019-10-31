@@ -14,18 +14,18 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12b6cd17fac77361fa20d3b3e048e64228a2ed3d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 2aa58c354198e648227b9b0b43d1f60546f87d32
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809026"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063069"
 ---
 # <a name="multi-factor-authentication-and-privileged-identity-management"></a>Multi-factor Authentication en Privileged Identity Management
 
 U wordt aangeraden multi-factor Authentication (MFA) te vereisen voor al uw beheerders. Dit vermindert het risico van een aanval vanwege een wacht woord dat is aangetast.
 
-U kunt vereisen dat gebruikers een multi = factor Authentication-vraag volt ooien wanneer ze zich aanmelden. U kunt ook vereisen dat gebruikers een multi-factor Authentication-Challenge volt ooien wanneer ze een functie activeren in Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Op deze manier wordt, als de gebruiker een multi-factor Authentication-Challenge niet heeft voltooid wanneer deze zich aanmeldt, gevraagd om dit te doen door Privileged Identity Management.
+U kunt vereisen dat gebruikers een multi-factor Authentication-Challenge uitvoeren wanneer ze zich aanmelden. U kunt ook vereisen dat gebruikers een multi-factor Authentication-Challenge uitvoeren wanneer ze een functie activeren in Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Op deze manier wordt, als de gebruiker een verificatie op basis van multi-factor Authentication niet heeft voltooid, deze door Privileged Identity Management gevraagd.
 
 > [!IMPORTANT]
 > Nu werkt Azure Multi-Factor Authentication alleen met werk-of school accounts, niet van micro soft-persoonlijke accounts (meestal een persoonlijk account dat wordt gebruikt om u aan te melden bij micro soft-services zoals Skype, Xbox of Outlook.com). Als gevolg hiervan kan iedereen met een persoonlijk account geen geschikte beheerder zijn, omdat ze geen multi-factor Authentication kunnen gebruiken om hun rollen te activeren. Als deze gebruikers de werk belasting met behulp van een Microsoft-account blijven beheren, moet u deze nu voor permanente beheerders verhogen.

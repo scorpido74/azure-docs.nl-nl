@@ -5,16 +5,16 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: d73f64463d3e56d7bd2e59fcb719c6320cbc6321
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992351"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73100660"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Zelf studie: gebeurtenissen door sturen naar Event Grid Cloud
 
@@ -102,7 +102,7 @@ Als u bijvoorbeeld een onderwerp met de naam `testegcloudtopic` hebt gemaakt in 
    ```
 
    >[!NOTE]
-   > De **endpointUrl** geeft aan dat de URL van het event grid onderwerp in de Cloud. De **sasKey** verwijst naar Event grid de sleutel van het Cloud onderwerp. De waarde in **topic** wordt gebruikt om alle uitgaande gebeurtenissen te stempelen Event grid. Dit kan handig zijn wanneer u naar een onderwerp van een Event Grid domein boekt. Zie voor meer informatie over het onderwerp van Event Grid domein [Event domains]] (.. /event-domains.md)
+   > De **endpointUrl** geeft aan dat de URL van het event grid onderwerp in de Cloud. De **sasKey** verwijst naar Event grid de sleutel van het Cloud onderwerp. De waarde in **topic** wordt gebruikt om alle uitgaande gebeurtenissen te stempelen Event grid. Dit kan handig zijn wanneer u naar een onderwerp van een Event Grid domein boekt. Zie [gebeurtenis domeinen](../event-domains.md) voor meer informatie over het onderwerp van Event grid domein
 
     Bijvoorbeeld:
   
@@ -198,5 +198,6 @@ Raadpleeg de [zelf studie](../custom-event-quickstart-portal.md)voor meer inform
 
 In deze zelf studie hebt u een gebeurtenis op de rand gepubliceerd en doorgestuurd naar Event Grid in de Azure-Cloud. Nu u weet welke basis stappen u kunt door sturen naar Event Grid in de Cloud:
 
+* Zie [probleemoplossings gids voor informatie](troubleshoot.md)over het oplossen van problemen met het gebruik van Azure Event Grid op IOT Edge.
 * Door sturen van gebeurtenissen naar IoTHub door deze [zelf studie](forward-events-iothub.md) te volgen
 * Door sturen van gebeurtenissen naar webhook in de Cloud door deze [zelf studie](pub-sub-events-webhook-cloud.md) te volgen

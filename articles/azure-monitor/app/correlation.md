@@ -8,16 +8,16 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: df93405940c02affa224fba2d2e6f07ce5278b15
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755355"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063959"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
-In de wereld van micro Services moet voor elke logische bewerking werk worden uitgevoerd in verschillende onderdelen van de service. Elk van deze onderdelen kan afzonderlijk worden bewaakt door [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md). Het onderdeel van de web-app communiceert met het onderdeel van de verificatie provider om gebruikers referenties te valideren en met het API-onderdeel om gegevens op te halen voor visualisatie. Het API-onderdeel kan gegevens uit andere services opvragen en cache provider onderdelen gebruiken om het facturerings onderdeel op de hoogte te stellen van deze aanroep. Application Insights ondersteunt gedistribueerde telemetrie-correlatie, die u gebruikt om te detecteren welk onderdeel verantwoordelijk is voor storingen of verminderde prestaties.
+In de wereld van micro Services moet voor elke logische bewerking werk worden uitgevoerd in verschillende onderdelen van de service. Elk van deze onderdelen kan afzonderlijk worden bewaakt door [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md). Application Insights ondersteunt gedistribueerde telemetrie-correlatie, die u gebruikt om te detecteren welk onderdeel verantwoordelijk is voor storingen of verminderde prestaties.
 
 In dit artikel wordt het gegevens model uitgelegd dat door Application Insights wordt gebruikt voor het correleren van telemetrie die door meerdere onderdelen worden verzonden. Hierin worden technieken en protocollen voor context doorgifte beschreven. Het behandelt ook de implementatie van correlatie concepten op verschillende talen en platformen.
 
@@ -29,7 +29,7 @@ Een gedistribueerde logische bewerking bestaat meestal uit een set kleinere bewe
 
 Elke uitgaande bewerking, zoals een HTTP-aanroep naar een ander onderdeel, wordt weer gegeven door middel van [afhankelijkheids-telemetrie](../../azure-monitor/app/data-model-dependency-telemetry.md). Met de telemetrie van een afhankelijkheid wordt ook een eigen `id` gedefinieerd die wereld wijd uniek is. Telemetrie aanvragen, geïnitieerd door deze afhankelijkheids aanroep, gebruikt deze `id` als `operation_parentId`.
 
-U kunt een weer gave van de gedistribueerde logische bewerking maken met behulp van `operation_Id`, `operation_parentId` en `request.id` met `dependency.id`. Deze velden definiëren ook de causality volgorde van telemetrie-aanroepen.
+U kunt een weer gave van de gedistribueerde logische bewerking maken met behulp van `operation_Id`, `operation_parentId`en `request.id` met `dependency.id`. Deze velden definiëren ook de causality volgorde van telemetrie-aanroepen.
 
 In een micro Services-omgeving kunnen traceringen van onderdelen naar verschillende opslag items gaan. Elk onderdeel kan een eigen instrumentatie sleutel hebben in Application Insights. Als u telemetrie wilt ophalen voor de logische bewerking, vraagt de Application Insights UX gegevens van elk opslag item op. Wanneer het aantal opslag items enorm is, hebt u een hint nodig over waar u de volgende moet zien. Het Application Insights gegevens model definieert twee velden om dit probleem op te lossen: `request.source` en `dependency.target`. Het eerste veld identificeert het onderdeel dat de afhankelijkheids aanvraag heeft gestart, en de tweede identificeert welk onderdeel het antwoord van de afhankelijkheids aanroep retourneert.
 
@@ -45,7 +45,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-Houd er rekening mee dat alle telemetrie-items de hoofd `operation_Id` delen. Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID (`qJSXU`) toegewezen aan de telemetrie van de afhankelijkheid en wordt de ID van de pagina weergave gebruikt als `operation_ParentId`. De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId`.
+Houd er rekening mee dat alle telemetrie-items de hoofd `operation_Id`delen. Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID (`qJSXU`) toegewezen aan de telemetrie van de afhankelijkheid en wordt de ID van de pagina weergave gebruikt als `operation_ParentId`. De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId`.
 
 | Item type   | name                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
@@ -92,7 +92,7 @@ Het is standaard uitgeschakeld. Als u deze wilt inschakelen, wijzigt u `Applicat
 
 - Voeg onder `RequestTrackingTelemetryModule` het element `EnableW3CHeadersExtraction` toe met de waarde ingesteld op `true`.
 - Voeg onder `DependencyTrackingTelemetryModule` het element `EnableW3CHeadersInjection` toe met de waarde ingesteld op `true`.
-- @No__t_0 toevoegen onder de `TelemetryInitializers` vergelijkbaar met 
+- `W3COperationCorrelationTelemetryInitializer` toevoegen onder de `TelemetryInitializers` vergelijkbaar met 
 
 ```xml
 <TelemetryInitializers>
@@ -221,7 +221,7 @@ De opentellingen python volgt de `OpenTracing` hierboven beschreven gegevens mod
 
 ### <a name="incoming-request-correlation"></a>Correlatie van binnenkomende aanvragen
 
-Met opentellingen python worden de kopteksten van de W3C-tracerings context van binnenkomende aanvragen gecorreleerd naar de reeksen die worden gegenereerd op basis van de aanvragen. Met opentellingen wordt dit automatisch gedaan met integraties voor populaire Web Application Frameworks, zoals `flask`, `django` en `pyramid`. De kopteksten van de W3C-traceer context moeten eenvoudigweg worden gevuld met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)en met de aanvraag worden verzonden. Hieronder ziet u een voor beeld `flask` toepassing die dit demonstreert.
+Met opentellingen python worden de kopteksten van de W3C-tracerings context van binnenkomende aanvragen gecorreleerd naar de reeksen die worden gegenereerd op basis van de aanvragen. Bij opentellingen wordt dit automatisch gedaan met integraties voor de volgende populaire Web Application Frameworks: `flask`, `django` en `pyramid`. De kopteksten van de W3C-traceer context moeten eenvoudigweg worden gevuld met de [juiste indeling](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) en met de aanvraag worden verzonden. Hieronder ziet u een voor beeld `flask` toepassing die dit demonstreert.
 
 ```python
 from flask import Flask
@@ -253,7 +253,7 @@ Als u de indeling van de koptekst van de [tracerings context](https://www.w3.org
  `parent-id/span-id`: `00f067aa0ba902b7` 
  0: 1
 
-Als we kijken naar de aanvraag vermelding die naar Azure Monitor is verzonden, kunnen we de velden zien die zijn ingevuld met de traceer header-informatie.
+Als we kijken naar de aanvraag vermelding die naar Azure Monitor is verzonden, kunnen we de velden zien die zijn ingevuld met de traceer header-informatie. U kunt deze gegevens vinden onder Logboeken (Analytics) in Azure Monitor Application Insights resource.
 
 ![Scherm afbeelding van aanvraag-telemetrie in Logboeken (analyse) met traceer kopregel velden gemarkeerd in het rood vak](./media/opencensus-python/0011-correlation.png)
 
@@ -291,6 +291,8 @@ Wanneer deze code wordt uitgevoerd, worden de volgende opties weer geven in de-c
 ```
 Houd er rekening mee dat er een spanId aanwezig is voor het logboek bericht dat zich binnen het bereik bevindt. Dit is de spanId die hoort bij de reeks met de naam `hello`.
 
+U kunt de logboek gegevens exporteren met behulp van de `AzureLogHandler`. Meer informatie vindt u [hier](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)
+
 ## <a name="telemetry-correlation-in-net"></a>Telemetrie-correlatie in .NET
 
 In de loop van de tijd zijn er verschillende manieren gedefinieerd voor het correleren van telemetrie-en Diagnostische logboeken:
@@ -315,7 +317,7 @@ De Application Insights SDK, te beginnen met versie 2.4.0-beta1, gebruikt `Diagn
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-the-java-sdk"></a>Telemetrie-correlatie in de Java SDK
 
-De [Application INSIGHTS SDK voor Java](../../azure-monitor/app/java-get-started.md) ondersteunt automatische correlatie van telemetrie, te beginnen met versie 2.0.0. @No__t_0 wordt automatisch gevuld voor alle telemetrie (zoals traceringen, uitzonde ringen en aangepaste gebeurtenissen) die binnen het bereik van een aanvraag zijn uitgegeven. Het zorgt er ook voor dat de correlatie headers worden door gegeven (eerder beschreven) voor service-naar-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
+De [Application INSIGHTS SDK voor Java](../../azure-monitor/app/java-get-started.md) ondersteunt automatische correlatie van telemetrie, te beginnen met versie 2.0.0. `operation_id` wordt automatisch gevuld voor alle telemetrie (zoals traceringen, uitzonde ringen en aangepaste gebeurtenissen) die binnen het bereik van een aanvraag zijn uitgegeven. Het zorgt er ook voor dat de correlatie headers worden door gegeven (eerder beschreven) voor service-naar-service-aanroepen via HTTP, als de [Java SDK-agent](../../azure-monitor/app/java-agent.md) is geconfigureerd.
 
 > [!NOTE]
 > Alleen aanroepen via Apache httpclient maakt worden ondersteund voor de correlatie functie. Als u veer RestTemplate of Feign gebruikt, kunnen beide worden gebruikt met Apache httpclient maakt onder de schermen.

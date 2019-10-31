@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244991"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064009"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption scenario's op Windows-Vm's
 
@@ -26,15 +26,12 @@ U kunt alleen schijf versleuteling Toep assen op virtuele machines met [onderste
 - [groepsbeleid vereisten](disk-encryption-overview.md#group-policy-requirements)
 - [Opslag vereisten voor de versleutelings sleutel](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - Als u eerder Azure Disk Encryption met Azure AD hebt gebruikt om een virtuele machine te versleutelen, moet u deze optie blijven gebruiken om uw virtuele machine te versleutelen. Zie [Azure Disk Encryption met Azure AD (vorige versie)](disk-encryption-overview-aad.md) voor meer informatie. 
 >
 > - U moet [een moment opname nemen](snapshot-copy-managed-disk.md) en/of een back-up maken voordat schijven worden versleuteld. Back-ups zorgen ervoor dat een herstel optie mogelijk is als er een onverwachte fout optreedt tijdens het versleutelen. Voor Vm's met Managed disks is een back-up vereist voordat versleuteling wordt uitgevoerd. Als er een back-up is gemaakt, kunt u de [cmdlet Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) gebruiken om beheerde schijven te versleutelen door de para meter-skipVmBackup op te geven. Zie [back-up en herstel van versleutelde virtuele Azure](../../backup/backup-azure-vms-encryption.md)-machines voor meer informatie over het maken van back-ups en het herstellen van versleutelde vm's. 
 >
 > - Het versleutelen of uitschakelen van versleuteling kan ertoe leiden dat een virtuele machine opnieuw wordt opgestart.
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>Hulpprogram ma's installeren en verbinding maken met Azure
 
@@ -139,7 +136,7 @@ De volgende tabel bevat de para meters voor de Resource Manager-sjabloon voor be
 | vmName | De naam van de virtuele machine om de versleutelings bewerking uit te voeren. |
 | keyVaultName | De naam van de sleutel kluis waarnaar de BitLocker-sleutel moet worden geüpload. U kunt deze ophalen met behulp van de cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` of de Azure CLI-opdracht `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | De naam van de resource groep die de sleutel kluis bevat|
-|  keyEncryptionKeyURL | De URL van de Key Encryption Key, in de notatie https://@no__t -0keyvault-name&gt;.vault.azure.net/key/&lt;key-name @ no__t-3. Als u geen KEK wilt gebruiken, laat u dit veld leeg. |
+|  keyEncryptionKeyURL | De URL van de Key Encryption Key, in de indeling https://&lt;&gt;naam van de vault.azure.net/key/.&lt;sleutel naam&gt;. Als u geen KEK wilt gebruiken, laat u dit veld leeg. |
 | volumeType | Type volume waarop de versleutelings bewerking wordt uitgevoerd. Geldige waarden zijn _besturings systeem_, _gegevens_en _alle_. 
 | Updatetag | Geef een unieke waarde op als een GUID elke keer dat de bewerking geforceerd moet worden uitgevoerd. |
 | resizeOSDisk | Moet de grootte van het besturings systeem worden gewijzigd om een volledige besturingssysteem-VHD te maken voordat het systeem volume wordt gesplitst. |
@@ -244,7 +241,8 @@ U kunt versleuteling uitschakelen met behulp van Azure PowerShell, de Azure CLI 
 Azure Disk Encryption werkt niet voor de volgende scenario's, functies en technologie:
 
 - Het versleutelen van de virtuele machine van de Basic-laag of de virtuele machines die zijn gemaakt met de methode klassieke VM
-- Versleutelen van virtuele Windows-machines die zijn geconfigureerd met RAID-systemen op basis van software.
+- Het versleutelen van Vm's die zijn geconfigureerd met RAID-systemen op basis van software.
+- Het versleutelen van Vm's die zijn geconfigureerd met Opslagruimten Direct (S2D) of Windows Server-versies vóór 2016, geconfigureerd met Windows-opslag ruimten.
 - Integratie met een on-premises sleutel beheersysteem.
 - Azure Files (gedeeld bestands systeem).
 - NFS (Network File System).

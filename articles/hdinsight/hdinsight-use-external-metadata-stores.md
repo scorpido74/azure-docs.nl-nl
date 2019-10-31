@@ -7,15 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: a876269b2746a1065cee2639cfc5804aff0b3446
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: HT
+ms.date: 10/29/2019
+ms.openlocfilehash: 33302f3760cc750bfc41386aaf17368abc15ba5d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027707"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063292"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Externe meta gegevensopslag plaatsen gebruiken in azure HDInsight
+
+Met HDInsight kunt u uw gegevens en meta gegevens beheren door essentiële oplossingen voor meta gegevens en beheer databases te implementeren in externe gegevens opslag. Deze functie is momenteel beschikbaar voor [Apache Hive meta Store](#custom-metastore), [Apache Oozie meta Store](#apache-oozie-metastore) en [Apache Ambari data base](#custom-ambari-db).
 
 De Apache Hive-meta Store in HDInsight is een essentieel onderdeel van de Apache Hadoop architectuur. Een meta Store is de centrale schema opslagplaats die kan worden gebruikt door andere big data Access-hulpprogram ma's, zoals Apache Spark, interactieve query (LLAP), Presto of Apache varken. HDInsight gebruikt een Azure SQL Database als de Hive-metastore.
 
@@ -92,6 +94,10 @@ Hier volgen enkele algemene HDInsight-Hive-metastore aanbevolen procedures:
 Apache Oozie is een coördinatie systeem voor werk stromen waarmee Hadoop-taken worden beheerd.  Oozie ondersteunt Hadoop-taken voor Apache MapReduce, Pig, Hive en anderen.  Oozie maakt gebruik van een meta Store voor het opslaan van gegevens over huidige en voltooide werk stromen. Als u de prestaties wilt verbeteren wanneer u Oozie gebruikt, kunt u Azure SQL Database als een aangepaste meta Store gebruiken. De meta Store kan ook toegang bieden tot Oozie-taak gegevens nadat u uw cluster hebt verwijderd.
 
 Zie [Apache Oozie gebruiken voor werk stromen](hdinsight-use-oozie-linux-mac.md)voor instructies over het maken van een Oozie-meta store met Azure SQL database.
+
+## <a name="custom-ambari-db"></a>Aangepaste Ambari-data base
+
+Als u uw eigen externe data base wilt gebruiken met Apache Ambari in HDInsight, raadpleegt u [Custom Apache Ambari data base](hdinsight-custom-ambari-db.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f50ace6d707db35dfd7cf9f14026d755093a038c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802443"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062263"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -59,10 +59,10 @@ Als u de rol van Apparaatbeheer wilt wijzigen, configureert u **aanvullende loka
 >[!NOTE]
 > Voor deze optie is een Azure AD Premium-Tenant vereist. 
 
-Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten. U kunt geen apparaat beheerders bereiken aan een specifieke set apparaten. Het bijwerken van de rol van de beheerderrol heeft geen directe gevolgen voor de betrokken gebruikers. Voor de apparaten is er al een gebruiker aangemeld, de bevoegdheden van de update vindt plaats:
+Apparaat beheerders worden toegewezen aan alle aan Azure AD gekoppelde apparaten. U kunt geen apparaat beheerders bereiken aan een specifieke set apparaten. Het bijwerken van de rol van de beheerderrol heeft geen directe gevolgen voor de betrokken gebruikers. Op apparaten waarop al een gebruiker is aangemeld, vindt de bevoegdheids update plaats wanneer *beide* onderstaande acties optreden:
 
-- Wanneer een gebruiker zich afmeldt.
-- Na 4 uur, wanneer er een nieuw primair vernieuwings token is uitgegeven. 
+- Er zijn vier uur door gegeven voor Azure AD om een nieuw primair vernieuwings token met de juiste bevoegdheden uit te geven. 
+- Gebruiker meldt zich af en meldt zich weer aan, niet vergren delen/ontgrendelen, om het profiel te vernieuwen.
 
 ## <a name="manage-regular-users"></a>Reguliere gebruikers beheren
 

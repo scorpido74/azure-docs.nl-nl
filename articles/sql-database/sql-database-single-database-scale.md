@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e03c68854d9150c25019fe198fe855a011750844
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b7015b3e861aea3a33ea26d6a8c1a31f7f17b8c4
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566559"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063076"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Enkele database resources in Azure SQL Database schalen
 
-In dit artikel wordt beschreven hoe u de berekenings-en opslag resources schaalt die beschikbaar zijn voor één data base in de ingerichte Compute-laag. Het is ook mogelijk dat de COMPUTE- [laag zonder server (preview)](sql-database-serverless.md) automatische schaal aanpassing en facturen per seconde biedt voor gebruikte reken kracht.
+In dit artikel wordt beschreven hoe u de berekenings-en opslag resources schaalt die beschikbaar zijn voor een Azure SQL Database in de ingerichte Compute-laag. Het is ook mogelijk dat de [Compute-laag zonder server (preview)](sql-database-serverless.md) automatische schaal aanpassing en facturen per seconde biedt voor gebruikte reken kracht.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -36,35 +36,35 @@ De volgende video toont het dynamisch wijzigen van de servicelaag en de berekeni
 >
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Gevolgen van het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
 
-Het wijzigen van de servicelaag of de reken grootte van een enkele data base omvat voornamelijk de service die de volgende stappen uitvoert:
+Het wijzigen van de servicelaag of reken grootte van voornamelijk omvat de service die de volgende stappen uitvoert:
 
 1. Een nieuw reken exemplaar maken voor de data base  
 
-    Er wordt een nieuw reken exemplaar voor de data base gemaakt met de aangevraagde servicelaag en de berekenings grootte. Voor sommige combi Naties van de service tier en de grootte van de berekening moet er een replica van de Data Base worden gemaakt in het nieuwe reken exemplaar, waarbij het kopiëren van gegevens is vereist en de algehele latentie kan beïnvloeden. De data base blijft tijdens deze stap online en er worden verbindingen met de data base in het oorspronkelijke Compute-exemplaar in rekening gebracht.
+    Er wordt een nieuw reken exemplaar gemaakt met de aangevraagde servicelaag en de berekenings grootte. Voor sommige combi Naties van de service tier en de grootte van de berekening moet er een replica van de Data Base worden gemaakt in het nieuwe reken exemplaar, waarbij het kopiëren van gegevens is vereist en de algehele latentie kan beïnvloeden. De data base blijft tijdens deze stap online en er worden verbindingen met de data base in het oorspronkelijke Compute-exemplaar in rekening gebracht.
 
 2. Route ring van verbindingen naar een nieuw reken exemplaar overschakelen
 
     Bestaande verbindingen met de data base in het oorspronkelijke Compute-exemplaar worden verwijderd. Nieuwe verbindingen worden tot stand gebracht in de data base in het nieuwe reken exemplaar. Voor sommige combi Naties van service tier-en Compute-wijzigingen worden database bestanden losgekoppeld en opnieuw gekoppeld tijdens de switch.  De switch kan echter een korte onderbreking van de service tot gevolg hebben wanneer de data base minder dan 30 seconden lang niet beschikbaar is, en vaak slechts enkele seconden. Als er langlopende trans acties worden uitgevoerd wanneer de verbindingen worden verbroken, kan de duur van deze stap langer duren om afgebroken trans acties te herstellen. [Versneld database herstel](sql-database-accelerated-database-recovery.md) kan het effect verminderen van het afbreken van langlopende trans acties.
 
 > [!IMPORTANT]
-> Er gaan geen gegevens verloren tijdens elke stap in de werk stroom.
+> Er gaan geen gegevens verloren tijdens elke stap in de werk stroom. Zorg ervoor dat u enkele [pogings logica](sql-database-connectivity-issues.md) hebt geïmplementeerd in de toepassingen en onderdelen die Azure SQL database gebruiken terwijl de servicelaag wordt gewijzigd.
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Latentie van het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte
 
 De geschatte latentie voor het wijzigen van de servicelaag of het opnieuw schalen van de reken grootte van één data base of elastische pool is als volgt:
 
-|Servicelaag|Basis, afzonderlijke Data Base,</br>Standaard (S0-S1)|Algemene elastische pool,</br>Standard (S2-S12), </br>Grootschalige </br>Algemeen afzonderlijke data base of elastische pool|Premium of Bedrijfskritiek afzonderlijke data base of elastische pool|
+|Serviceniveau|Basis, afzonderlijke Data Base,</br>Standaard (S0-S1)|Algemene elastische pool,</br>Standard (S2-S12), </br>Grootschalige </br>Algemeen afzonderlijke data base of elastische pool|Premium of Bedrijfskritiek afzonderlijke data base of elastische pool|
 |:---|:---|:---|:---|
-|**Basis enkele data base</br> , standaard (S0-S1)**|&bull;&nbsp;Constante tijd latentie, onafhankelijk van gebruikte ruimte</br>&bull;&nbsp;Normaal gesp roken minder dan 5 minuten|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
-|**Basic elastische pool </br>, standaard (S2-S12) </br>, grootschalige </br>, algemeen afzonderlijke data base of elastische pool**|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Constante tijd latentie, onafhankelijk van gebruikte ruimte</br>&bull;&nbsp;Normaal gesp roken minder dan 5 minuten|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
-|**Premium of Bedrijfskritiek afzonderlijke data base of elastische pool**|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
+|**Basis enkele data base,</br> Standard (S0-S1)**|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
+|**Basic elastische pool, </br>Standard (S2-S12), </br>grootschalige, </br>Algemeen afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;constante tijd latentie onafhankelijk van gebruikte ruimte</br>&bull; &nbsp;doorgaans, minder dan 5 minuten|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
+|**Premium of Bedrijfskritiek afzonderlijke data base of elastische pool**|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|&bull; &nbsp;latentie evenredig met de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull; &nbsp;doorgaans, minder dan 1 minuut per GB gebruikte ruimte|
 
 > [!TIP]
-> Zie voor het bewaken van bewerkingen in uitvoering: [Beheer bewerkingen met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [beheer bewerkingen met CLI](/cli/azure/sql/db/op), Bewaak [bewerkingen met behulp van T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Zie voor het controleren van bewerkingen in uitvoering: [bewerkingen beheren met behulp van de SQL rest API](https://docs.microsoft.com/rest/api/sql/operations/list), [bewerkingen beheren met CLI](/cli/azure/sql/db/op), [bewerkingen bewaken met T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) en deze twee Power shell-opdrachten: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) en [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Wijzigingen in de servicelaag of het opnieuw schalen van berekeningen annuleren
 
@@ -82,7 +82,7 @@ Klik vervolgens op de knop met het label **annulering van deze bewerking**.
 
 #### <a name="powershell"></a>PowerShell
 
-Stel vanuit een Power shell-opdracht prompt `$ResourceGroupName`de `$ServerName`, en `$DatabaseName`in en voer vervolgens de volgende opdracht uit:
+Stel in een Power shell-opdracht prompt de `$ResourceGroupName`, `$ServerName`en `$DatabaseName`in en voer de volgende opdracht uit:
 
 ```PowerShell
 $OperationName = (az sql db op list --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --query "[?state=='InProgress'].name" --out tsv)
@@ -121,25 +121,25 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 - De prijs van opslag voor één data base is de som van de hoeveelheid gegevens opslag en de opslag van Logboeken, vermenigvuldigd met de prijs van de opslag eenheid van de servicelaag. De kosten voor TempDB zijn opgenomen in de prijs van de vCore. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ### <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
-- De DTU-prijs voor één Data Base bevat een bepaalde hoeveelheid opslag zonder extra kosten. Extra opslag buiten de inbegrepen hoeveelheid kan worden ingericht voor extra kosten tot de maximale grootte in stappen van 250 GB tot 1 TB en vervolgens in stappen van 256 GB tot meer dan 1 TB. Zie [Single Data Base voor inbegrepen opslag bedragen en maximale grootte limieten: Opslag grootten en berekenings grootten](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- De DTU-prijs voor één Data Base bevat een bepaalde hoeveelheid opslag zonder extra kosten. Extra opslag buiten de inbegrepen hoeveelheid kan worden ingericht voor extra kosten tot de maximale grootte in stappen van 250 GB tot 1 TB en vervolgens in stappen van 256 GB tot meer dan 1 TB. Zie [Single Data Base: opslag grootten en reken grootten](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)voor inbegrepen opslag bedragen en maximale grootte limieten.
 - Extra opslag ruimte voor één data base kan worden ingericht door de maximale grootte te verhogen met behulp van de Azure Portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/update).
 - De prijs van extra opslag voor één data base is de extra opslag hoeveelheid vermenigvuldigd met de extra eenheids prijs voor opslag van de servicelaag. Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11-en P15-beperkingen bij een maximale grootte van meer dan 1 TB
 
-Voor de Premium-laag is er meer dan 1 TB aan opslagruimte beschikbaar in alle regio's, met uitzondering van: China - oost, China - noord, Duitsland - centraal, Duitsland - noordoost, US - west-centraal, US - DoD-regio's en US Government - centraal. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB. De volgende overwegingen en beperkingen zijn van toepassing op P11-en P15-data bases met een maximale grootte van meer dan 1 TB:
+Meer dan 1 TB aan opslag ruimte in de Premium-laag is momenteel beschikbaar in alle regio's behalve: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, VS-West-Centraal, US DoD regio's en Amerikaanse overheid centraal. In deze regio’s is de maximale opslagruimte in de Premium-laag beperkt tot 1 TB. De volgende overwegingen en beperkingen zijn van toepassing op P11-en P15-data bases met een maximale grootte van meer dan 1 TB:
 
 - Als de maximale grootte voor een P11-of P15-data base ooit is ingesteld op een waarde die groter is dan 1 TB, dan kan deze alleen worden teruggezet of gekopieerd naar een P11-of P15-data base.  Vervolgens kan de data base opnieuw worden geschaald naar een andere reken grootte, op voor waarde dat de hoeveelheid toegewezen ruimte op het moment van de bewerking voor opnieuw schalen niet groter is dan de maximale grootte limieten van de nieuwe reken grootte.
 - Voor scenario's met actieve geo-replicatie:
-  - Een geo-replicatie relatie instellen: Als de primaire data base P11 of P15 is, moeten de secundaire (s) ook P11 of P15 zijn. de lagere Compute-grootte wordt afgewezen als secundaire, omdat deze niet meer dan 1 TB kunnen ondersteunen.
-  - De primaire data base bijwerken in een geo-replicatie relatie: Als de maximale grootte wordt gewijzigd in meer dan 1 TB voor een primaire data base, wordt dezelfde wijziging geactiveerd voor de secundaire data base. Beide upgrades moeten worden uitgevoerd om de wijziging van kracht te laten worden. Er gelden beperkingen voor regio's voor de optie meer dan 1 TB. Als het secundaire deel uitmaakt van een regio die niet meer dan 1 TB ondersteunt, wordt de primaire niet geüpgraded.
+  - Instellen van een geo-replicatie relatie: als de primaire data base P11 of P15 is, moeten de secundaire (s) ook P11 of P15 zijn. de lagere Compute-grootte wordt afgewezen als secundaire, omdat deze niet meer dan 1 TB kunnen ondersteunen.
+  - Een upgrade uitvoeren van de primaire data base in een geo-replicatie relatie: als u de maximum grootte wijzigt in meer dan 1 TB op een primaire data base, wordt dezelfde wijziging geactiveerd voor de secundaire data base. Beide upgrades moeten worden uitgevoerd om de wijziging van kracht te laten worden. Er gelden beperkingen voor regio's voor de optie meer dan 1 TB. Als het secundaire deel uitmaakt van een regio die niet meer dan 1 TB ondersteunt, wordt de primaire niet geüpgraded.
 - Het is niet mogelijk om de import/export-service te gebruiken voor het laden van P11/P15-data bases met meer dan 1 TB. Gebruik SqlPackage. exe om gegevens te [importeren](sql-database-import.md) en te [exporteren](sql-database-export.md) .
 
 ## <a name="next-steps"></a>Volgende stappen

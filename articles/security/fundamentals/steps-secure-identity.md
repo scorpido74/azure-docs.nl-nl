@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: 02a1c12957570f0e798c5abfd88562128ea1cf76
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 9ea9bea83de0a177fa37d9a186f8962bac1394a4
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053072"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101411"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -175,21 +175,21 @@ Azure AD Identity Protection biedt twee belang rijke rapporten die u dagelijks m
 
 Gebruikers kunnen zich leiden tot het navigeren naar een gemanipuleerde website of apps die toegang krijgen tot hun profiel gegevens en gebruikers gegevens, zoals hun e-mail adres. Een kwaadwillende actor kan gebruikmaken van de toegestuurde machtigingen die zijn ontvangen om de inhoud van hun postvak te versleutelen en een Ransom te vragen om uw postvak gegevens opnieuw te verkrijgen. [Beheerders moeten de machtigingen controleren en controleren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) die door gebruikers worden verstrekt.
 
-## <a name="step-5---enable-end-user-self-help"></a>Stap 5: zelf ondersteuning voor eind gebruikers inschakelen
+## <a name="step-5---enable-end-user-self-service"></a>Stap 5-selfservice voor eind gebruikers inschakelen
 
-Zo veel mogelijk wilt u de beveiliging met productiviteit balanceren. Op dezelfde manier om uw traject te benaderen met de uitgangspunt die u in de lange periode een basis voor beveiliging instelt, kunt u de wrijving van uw organisatie verwijderen door uw gebruikers te voorzien van de resterende Vigilant. 
+Zo veel mogelijk wilt u de beveiliging met productiviteit balanceren. Op dezelfde manier om uw traject te benaderen met de uitgangspunt die u in de lange periode een basis voor beveiliging instelt, kunt u de wrijving van uw organisatie verwijderen door uw gebruikers te voorzien van de resterende Vigilant.
 
 ### <a name="implement-self-service-password-reset"></a>Self-service voor wachtwoord herstel implementeren
 
-De [self-service voor wachtwoord herstel (SSPR)](../../active-directory/authentication/quickstart-sspr.md) van Azure biedt een eenvoudige manier voor IT-beheerders om gebruikers toe te staan hun wacht woorden of accounts te herstellen of te ontgrendelen zonder tussen komst van de beheerder. Het systeem biedt gedetailleerde rapporten zodat u kunt volgen wanneer gebruikers het systeem openen. U ontvangt ook meldingen om u te waarschuwen over misbruik. 
+De selfservice voor [wachtwoord herstel (SSPR)](../../active-directory/authentication/quickstart-sspr.md) van Azure AD biedt een eenvoudige manier om gebruikers in staat te stellen hun wacht woorden of accounts opnieuw in te stellen of te ontgrendelen zonder tussen komst van de Help Desk of beheerder. Het systeem bevat gedetailleerde rapporten die bijhouden wanneer gebruikers hun wacht woord opnieuw hebben ingesteld, evenals meldingen om u te waarschuwen voor misbruik of misbruik.
 
-### <a name="implement-self-service-group-management"></a>Self-service groeps beheer implementeren
+### <a name="implement-self-service-group-and-application-access"></a>Selfservice groep en toegang tot toepassingen implementeren
 
-Azure AD biedt de mogelijkheid om toegang tot resources te beheren met behulp van beveiligings groepen en Office 365-groepen. Deze groepen kunnen worden beheerd door groeps eigenaren in plaats van IT-beheerders. Met deze functie, ook wel [selfservice groeps beheer](../../active-directory/users-groups-roles/groups-self-service-management.md)genoemd, kunnen groeps eigenaren die geen administratieve rol hebben toegewezen aan het maken en beheren van groepen zonder dat ze afhankelijk zijn van beheerders om hun aanvragen af te handelen.
+Azure AD biedt u de mogelijkheid om niet-beheerders toegang tot resources te beheren, met behulp van beveiligings groepen, Office 365-groepen, toepassings rollen en pakket catalogi.  Met [groeps beheer met self-service](../../active-directory/users-groups-roles/groups-self-service-management.md) kunnen groeps eigenaren hun eigen groepen beheren, zonder dat er een administratieve rol moet worden toegewezen. Gebruikers kunnen ook Office 365-groepen maken en beheren zonder dat ze vertrouwen op beheerders om hun aanvragen af te handelen, en ongebruikte groepen worden automatisch verlopen.  Het [beheer van rechten van Azure AD](../../active-directory/governance/entitlement-management-overview.md) maakt verdere overdracht en zicht baarheid mogelijk, met uitgebreide werk stromen voor toegangs aanvragen en automatische verval datum.  U kunt delegeren aan niet-beheerders de mogelijkheid om hun eigen toegangs pakketten te configureren voor groepen, teams, toepassingen en share point online-sites waarvan ze eigenaar zijn, met aangepast beleid voor wie de toegang moet goed keuren, waaronder de configuratie van werk nemers managers en sponsors van zaken partners als goed keurders.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD-toegangs beoordelingen implementeren
 
-Met [Azure AD-toegangs beoordelingen](../../active-directory/governance/access-reviews-overview.md)kunt u groepslid maatschappen, toegang tot bedrijfs toepassingen en geprivilegieerde roltoewijzingen beheren om ervoor te zorgen dat u een beveiligings standaard behoudt waarmee gebruikers geen toegang meer hebben gedurende lange tijd wanneer ze niet deze nodig hebt.
+Met [Azure AD-toegangs beoordelingen](../../active-directory/governance/access-reviews-overview.md)kunt u toegangs pakket-en groepslid maatschappen, toegang tot bedrijfs toepassingen en geprivilegieerde roltoewijzingen beheren om ervoor te zorgen dat u een beveiligings norm houdt.  Een regel matige toezicht door de gebruikers zelf, resource-eigen aren en andere revisoren zorgen ervoor dat gebruikers geen toegang behouden voor langere Peri Oden wanneer ze deze niet meer nodig hebben.
 
 ## <a name="summary"></a>Samenvatting
 

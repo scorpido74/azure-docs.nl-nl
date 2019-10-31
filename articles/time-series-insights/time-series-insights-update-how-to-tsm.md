@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: a77cdcf332d450b2d3d9219ebfbaed2f799e7e6d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991173"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063985"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Gegevens modellering in Azure Time Series Insights preview
 
@@ -56,7 +56,7 @@ Lees [Azure time series Insights preview Explorer](./time-series-insights-update
 1. Selecteer het type en selecteer **verwijderen**.
 1. Als er geen exemplaren zijn gekoppeld aan de typen, wordt deze verwijderd.
 
-    [knop verwijderen![](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
+    [knop verwijderen ![](media/v2-update-how-to-tsm/portal-five.png)](media/v2-update-how-to-tsm/portal-five.png#lightbox)
 
 ## <a name="hierarchies"></a>Hiërarchieën
 
@@ -64,15 +64,15 @@ Lees [Azure time series Insights preview Explorer](./time-series-insights-update
 
 1. Ga naar het deel venster voor het selecteren van de tijdreeks model en selecteer **hiërarchieën** in het menu. Vouw het deel venster uit om de focus te richten op de time series model-hiërarchieën.
 
-    [deel venster hiërarchieën![](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
+    [deel venster hiërarchieën ![](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
 
 1. Selecteer **+ Toevoegen**.
 
-    [knop toevoegen![](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
+    [knop toevoegen ![](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
 
 1. Selecteer **+ niveau toevoegen** in het rechterdeel venster.
 
-    [knop ' niveau toevoegen '![](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
+    [knop ' niveau toevoegen ' ![](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
 
 1. Voer de hiërarchie Details in en selecteer **maken**.
 
@@ -98,7 +98,7 @@ Lees [Azure time series Insights preview Explorer](./time-series-insights-update
 1. Selecteer de hiërarchie en selecteer **verwijderen**. 
 1. Als er geen exemplaren zijn gekoppeld aan de hiërarchie, wordt deze verwijderd.
 
-    [knop verwijderen![](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
+    [knop verwijderen ![](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
 ## <a name="instances"></a>Exemplaren
 

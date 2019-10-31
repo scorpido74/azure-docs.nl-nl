@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 003cc54a07455118969a2dd497e9b963c03f68f2
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231169"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099493"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Migratie richtlijnen voor het overstappen van Media Services versie 2 naar v3
 
@@ -45,7 +45,7 @@ Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Serv
 
 * Voor taak verwerking op basis van een bestand kunt u een HTTP/S-URL gebruiken als invoer.<br/>U hoeft inhoud niet al in azure te hebben opgeslagen en u hoeft geen assets te maken.
 * Introduceert het concept van [trans formaties](transforms-jobs-concept.md) voor taak verwerking op basis van bestanden. Een trans formatie kan worden gebruikt om herbruikbare configuraties te bouwen, Azure Resource Manager-sjablonen te maken en verwerkings instellingen te isoleren tussen meerdere klanten of tenants.
-* Een Asset kan meerdere [Stream](streaming-locators-concept.md) -Locators hebben elk met verschillende [dynamische pakketten](dynamic-packaging-overview.md) en dynamische versleutelings instellingen.
+* Een Asset kan meerdere [Stream-Locators](streaming-locators-concept.md) hebben elk met verschillende [dynamische pakketten](dynamic-packaging-overview.md) en dynamische versleutelings instellingen.
 * [Content Protection](content-key-policy-concept.md) ondersteunt functies met meerdere sleutels.
 * U kunt live-gebeurtenissen die Maxi maal 24 uur duren, streamen wanneer u Media Services gebruikt voor het omzetten van een single bitrate-bijdrage-feed in een uitvoer stroom met meerdere bitrates.
 * Nieuwe ondersteuning voor live streaming met lage latentie voor Live-gebeurtenissen. Zie [latentie](live-event-latency.md)voor meer informatie.
@@ -73,10 +73,11 @@ Als u op dit moment een video service hebt ontwikkeld voor de [oudere Media Serv
     * Live gebeurtenis vervangt kanaal.<br/>Facturering van Live-gebeurtenissen is gebaseerd op Live Channel meters. Zie [facturering](live-event-states-billing.md) en [prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
     * Live uitvoer vervangt programma.
 * Live-uitvoer starten zodra ze zijn gemaakt en stoppen wanneer ze worden verwijderd. Program ma's hebben in de v2-Api's anders gewerkt, maar ze moesten worden gestart na het maken.
-*  Als u informatie over een taak wilt ontvangen, moet u de naam van de trans formatie weten waaronder de taak is gemaakt. 
+* Als u informatie over een taak wilt ontvangen, moet u de naam van de trans formatie weten waaronder de taak is gemaakt. 
+* In v2 worden XML- [invoer](../previous/media-services-input-metadata-schema.md) -en [uitvoer](../previous/media-services-output-metadata-schema.md) -meta gegevensbestanden gegenereerd als resultaat van een coderings taak. In v3 wordt de meta gegevens indeling gewijzigd van XML naar JSON. 
 
 > [!NOTE]
-> Bekijk de naamgevings regels die worden toegepast op [Media Services v3-resources](media-services-apis-overview.md#naming-conventions). Bekijk ook [naamgevings](assets-concept.md#naming-blobs)-blobs.
+> Bekijk de naamgevings regels die worden toegepast op [Media Services v3-resources](media-services-apis-overview.md#naming-conventions). Bekijk ook [naamgevings-blobs](assets-concept.md#naming-blobs).
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Hiaten in functies met betrekking tot v2-Api's
 
@@ -100,11 +101,11 @@ De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluit
 
 In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene scenario's.
 
-|Scenario|V2 API|V3 API|
+|Scenario|V2-API|V3-API|
 |---|---|---|
 |Een Asset maken en een bestand uploaden |[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Een taak indienen|[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Laat zien hoe u eerst een trans formatie maakt en vervolgens een taak verzendt.|
-|Een Asset met AES-versleuteling publiceren |1. ContentKeyAuthorizationPolicyOption maken<br/>2. ContentKeyAuthorizationPolicy maken<br/>3. Create AssetDeliveryPolicy<br/>4. Activa maken en inhoud uploaden of taak verzenden en uitvoer activa gebruiken<br/>5. AssetDeliveryPolicy koppelen aan Asset<br/>6. ContentKey maken<br/>7. ContentKey koppelen aan activa<br/>8. AccessPolicy maken<br/>9. Locator maken<br/><br/>[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Beleid voor inhouds sleutels maken<br/>2. Asset maken<br/>3. Inhoud uploaden of activa gebruiken als JobOutput<br/>4. Streaming-Locator maken<br/><br/>[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Een Asset met AES-versleuteling publiceren |1. ContentKeyAuthorizationPolicyOption maken<br/>2. ContentKeyAuthorizationPolicy maken<br/>3. AssetDeliveryPolicy maken<br/>4. activa maken en inhoud uploaden of taak verzenden en uitvoer activa gebruiken<br/>5. AssetDeliveryPolicy koppelen aan Asset<br/>6. ContentKey maken<br/>7. Koppel ContentKey aan Asset<br/>8. AccessPolicy maken<br/>9. Locator maken<br/><br/>[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. inhouds sleutel beleid maken<br/>2. Asset maken<br/>3. inhoud uploaden of activa gebruiken als JobOutput<br/>4. streaming-Locator maken<br/><br/>[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 |Taak Details ophalen en taken beheren |[Taken beheren met v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Taken beheren met v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Bekende problemen

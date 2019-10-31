@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ac483a338b7d71142b89b13e41fc048346ac037f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: e0d746f1b01784bc383c12543936f06dae66ca09
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802650"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063263"
 ---
 # <a name="azure-block-blob-storage-performance-tiers"></a>Prestatie lagen van Azure Block Blob Storage
 
@@ -28,7 +28,7 @@ De volgende overwegingen zijn van toepassing op de verschillende prestatie lagen
 
 - Standaard prestaties zijn beschikbaar in alle [Azure-regio's](https://azure.microsoft.com/global-infrastructure/services/?products=storage). Premium-prestaties zijn beschikbaar in [regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 - Premium performance biedt geoptimaliseerde prijzen voor toepassingen met een hoge transactie snelheid om de [totale opslag kosten](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/) voor deze werk belastingen te verlagen.
-- Premium-prestaties vereisen het gebruik van blok-Blob Storage-accounts, die ondersteuning bieden voor blok-blobs en toevoeg-blobs.
+- Als u Premium-prestaties voor blok-blobs wilt ophalen, moet u het BlockBlobStorage-account type gebruiken.
 - Standaard prestaties zijn beschikbaar met Algemeen v1-, Algemeen v2-en Blob Storage-accounts.
 - Premium en standaard prestaties ondersteunen [blok-blobs met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/). Blok-blobs met hoge door Voer zijn beschikbaar voor Premium-prestaties van meer dan 256 KiB. Blok-blobs met hoge door Voer zijn beschikbaar voor standaard prestaties in meer dan 4 MiB-put-blok of put-grootte van de blob.
 - Premium-prestaties zijn momenteel alleen beschikbaar met lokaal redundante opslag (LRS).

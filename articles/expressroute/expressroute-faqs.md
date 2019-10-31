@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 920419bf10634e8be15e05a89d547a5a9d1430b7
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027790"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063106"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen over ExpressRoute
 
@@ -43,7 +43,7 @@ Nee. U kunt een VPN-verbinding kopen van elke snelheid van uw service provider. 
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Als ik voor een ExpressRoute-circuit van een bepaalde band breedte betaal, heb ik dan de mogelijkheid om zo nodig een hogere snelheid te bieden?
 
-Ja. ExpressRoute-circuits worden zo geconfigureerd dat u Maxi maal twee keer de benodigde bandbreedte limiet kunt gebruiken voor extra kosten. Neem contact op met uw service provider om na te gaan of deze mogelijkheid wordt ondersteund. Dit is niet gedurende een langere periode en is niet gegarandeerd. 
+Ja. ExpressRoute-circuits worden zo geconfigureerd dat u Maxi maal twee keer de benodigde bandbreedte limiet kunt gebruiken voor extra kosten. Neem contact op met uw service provider om na te gaan of deze mogelijkheid wordt ondersteund. Dit is niet gedurende een langere periode en is niet gegarandeerd.  Als verkeer via een ExpressRoute-gateway loopt, is de band breedte voor de SKU vast en niet bursteel.
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Kan ik dezelfde particuliere netwerk verbinding gebruiken met het virtuele netwerk en andere Azure-Services tegelijk?
 

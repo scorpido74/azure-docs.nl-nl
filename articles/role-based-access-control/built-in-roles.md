@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/22/2019
+ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 31e19034f6a2c6f5ab52cbc34d8b3f6e0a1051bc
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803588"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101282"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -114,6 +114,7 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 | [Lezer voor beheerde toepassingen](#managed-applications-reader) | Hiermee kunt u bronnen in een beheerde app lezen en JIT-toegang aanvragen. |
 | [Inzender beheerde identiteit](#managed-identity-contributor) | Aan de gebruiker toegewezen identiteit maken, lezen, bijwerken en verwijderen |
 | [Beheerde identiteits operator](#managed-identity-operator) | Door gebruiker toegewezen identiteit lezen en toewijzen |
+| [Rol voor registratie toewijzing beheerde services verwijderen](#managed-services-registration-assignment-delete-role) | Met de functie voor registratie toewijzing van beheerde services verwijderen kan de Tenant gebruikers beheren de registratie toewijzing verwijderen die aan de Tenant is toegewezen. |
 | [Inzender beheer groep](#management-group-contributor) | Rol Inzender beheer groep |
 | [Lezer beheer groep](#management-group-reader) | Rol van lezer van beheer groep |
 | [Inzender bewaken](#monitoring-contributor) | Kan alle bewakings gegevens lezen en controle-instellingen bewerken. Zie ook aan de [slag met rollen, machtigingen en beveiliging met Azure monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
@@ -1963,6 +1964,23 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 > | Micro soft. resources/abonnementen/resourceGroups/lezen | Hiermee worden resource groepen opgehaald of weer gegeven. |
 > | Micro soft. resources/implementaties/* | Implementaties van resource groepen maken en beheren |
 > | Micro soft. support/* | Ondersteunings tickets maken en beheren |
+> | **Intact** |  |
+> | *geen* |  |
+> | **DataActions** |  |
+> | *geen* |  |
+> | **NotDataActions** |  |
+> | *geen* |  |
+
+## <a name="managed-services-registration-assignment-delete-role"></a>Rol voor registratie toewijzing beheerde services verwijderen
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Beschrijving** | Met de functie voor registratie toewijzing van beheerde services verwijderen kan de Tenant gebruikers beheren de registratie toewijzing verwijderen die aan de Tenant is toegewezen. |
+> | **Id** | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | **Acties** |  |
+> | Micro soft. ManagedServices/registrationAssignments/lezen | Hiermee wordt een lijst met beheerde services registratie toewijzingen opgehaald. |
+> | Micro soft. ManagedServices/registrationAssignments/verwijderen | Hiermee wordt de registratie toewijzing van beheerde services verwijderd. |
+> | Micro soft. ManagedServices/operationStatuses/lezen | Hiermee wordt de bewerkings status van de resource gelezen. |
 > | **Intact** |  |
 > | *geen* |  |
 > | **DataActions** |  |

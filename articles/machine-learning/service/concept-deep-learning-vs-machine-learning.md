@@ -1,7 +1,7 @@
 ---
 title: Diep gaande informatie versus machine learning
 titleSuffix: Azure Machine Learning
-description: Meer informatie over uitgebreide kennis versus machine learning en hoe beide concepten verband houden met kunst matige intelligentie. Grondige kennis kan worden toegepast in scenario's zoals fraude detectie, spraak-en gezichts herkenning, sentiment Analytics en time series-prognoses.
+description: Meer informatie over hoe diep leren is gekoppeld aan machine learning en kunst matige intelligentie. Grondige kennis wordt gebruikt in scenario's zoals fraude detectie, stem & gezichts herkenning, sentiment Analytics en time series-prognose.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123145"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063128"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
 
@@ -24,7 +24,7 @@ In dit artikel vindt u meer informatie over het vergelijken van diep gaande en m
 
 ![Relatie diagram: AI versus machine learning versus diep gaande lessen](./media/concept-deep-learning-vs-machine-learning/ai-vs-machine-learning-vs-deep-learning.png)
 
-Houd rekening met de volgende definities voor een beter begrip van diep leren tegenover machine learning vs. AI
+Houd rekening met de volgende definities voor een beter begrip van diep leren en machine learning versus AI:
 
 - **Diep leren** is een subset van machine learning die is gebaseerd op kunst matige Neural netwerken. Het _leer proces_ is _dieper_ omdat de structuur van kunst matige Neural netwerken uit meerdere invoer-, uitvoer-en verborgen lagen bestaat. Elke laag bevat eenheden die de invoer gegevens transformeren naar informatie die de volgende laag voor een bepaalde voorspellende taak kan gebruiken. Dankzij deze structuur kan een machine een eigen gegevens verwerking leren.
 
