@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 371ba46b477b5dba245a116d2ea9d21d2b732a97
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41cb27096782f525a531f38efda539c065fa4c72
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337664"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163599"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Kernels voor Jupyter notebook in Apache Spark-clusters in azure HDInsight
 
@@ -53,13 +53,13 @@ Een Apache Spark cluster in HDInsight. Zie [Apache Spark-clusters maken in Azure
 
 Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter notebook in Spark HDInsight-clusters.
 
-- **Vooraf ingestelde contexten**. Met **PySpark**, **PySpark3**of **Spark** -kernels hoeft u de Spark-of Hive-contexten niet expliciet in te stellen voordat u met uw toepassingen begint te werken. Deze zijn standaard beschikbaar. Deze context zijn:
+- **Vooraf ingestelde contexten**. Met **PySpark**, **PySpark3**of **Spark** -kernels hoeft u de Spark-of Hive-contexten niet expliciet in te stellen voordat u met uw toepassingen begint te werken. Deze zijn standaard beschikbaar. Deze contexten zijn:
 
-  * **sc** -voor Spark-context
-  * **sqlContext** -voor Hive-context
-   
+  - **sc** -voor Spark-context
+  - **sqlContext** -voor Hive-context
+
     U hoeft dus geen instructies uit te voeren zoals de volgende om de contexten in te stellen:
-   
+
          sc = SparkContext('yarn-client')
          sqlContext = HiveContext(sc)
 
@@ -69,19 +69,19 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
 
     De volgende tabel geeft een lijst van de verschillende magics die beschikbaar zijn via de kernels.
 
-   | magische | Voorbeeld | Description |
+   | Magische | Voorbeeld | Beschrijving |
    | --- | --- | --- |
    | Help |`%%help` |Hiermee wordt een tabel met alle beschik bare magics gegenereerd met voor beeld en beschrijving |
-   | info |`%%info` |Hiermee worden sessie gegevens voor het huidige livy-eind punt uitgevoerd |
-   | configureren |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De geforceerde vlag (-f) is verplicht als er al een sessie is gemaakt. Hiermee zorgt u ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
-   | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query op de sqlContext. Als de para meter `-o` wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een [Panda](https://pandas.pydata.org/) data frame. |
-   | lokaal |`%%local`<br>`a=1` |Alle code in de volgende regels wordt lokaal uitgevoerd. De code moet een geldige Python2-code zijn, zelfs als de kernel die u gebruikt. , Zelfs als u **PySpark3** of **Spark** -kernels hebt geselecteerd tijdens het maken van het notitie blok en u de `%%local` Magic in een cel gebruikt, mag die cel alleen een geldige Python2-code hebben. |
-   | logs |`%%logs` |Hiermee worden de logboeken voor de huidige livy-sessie uitgevoerd. |
+   | valuta |`%%info` |Hiermee worden sessie gegevens voor het huidige livy-eind punt uitgevoerd |
+   | Geconfigureerd |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |Hiermee configureert u de para meters voor het maken van een sessie. De geforceerde vlag (-f) is verplicht als er al een sessie is gemaakt. Hiermee zorgt u ervoor dat de sessie wordt verwijderd en opnieuw wordt gemaakt. Bekijk [de hoofd tekst van de LIVY post/Sessions](https://github.com/cloudera/livy#request-body) voor een lijst met geldige para meters. Para meters moeten worden door gegeven als een JSON-teken reeks en moeten zich op de volgende regel na de Magic bevallen, zoals wordt weer gegeven in de kolom voor beeld. |
+   | SQL |`%%sql -o <variable name>`<br> `SHOW TABLES` |Voert een Hive-query uit op basis van de sqlContext. Als de para meter `-o` wordt door gegeven, wordt het resultaat van de query persistent gemaakt in de lokale python-context%% als een [Panda](https://pandas.pydata.org/) data frame. |
+   | lokale |`%%local`<br>`a=1` |Alle code in de volgende regels wordt lokaal uitgevoerd. De code moet een geldige Python2-code zijn, zelfs als de kernel die u gebruikt. , Zelfs als u **PySpark3** of **Spark** -kernels hebt geselecteerd tijdens het maken van het notitie blok en u de `%%local` Magic in een cel gebruikt, mag die cel alleen een geldige Python2-code hebben. |
+   | logboeken |`%%logs` |Hiermee worden de logboeken voor de huidige livy-sessie uitgevoerd. |
    | delete |`%%delete -f -s <session number>` |Hiermee verwijdert u een specifieke sessie van het huidige livy-eind punt. U kunt de sessie die voor de kernel zelf wordt gestart, niet verwijderen. |
    | opruimen |`%%cleanup -f` |Hiermee verwijdert u alle sessies voor het huidige livy-eind punt, inclusief de sessie van dit notitie blok. De Force Flag-f is verplicht. |
 
    > [!NOTE]  
-   > Naast de magics die door de PySpark-kernel worden toegevoegd, kunt u ook de [ingebouwde IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)gebruiken, met inbegrip van `%%sh`. U kunt de `%%sh` Magic gebruiken voor het uitvoeren van scripts en code blok op het cluster hoofd knooppunt.
+   > Naast de magics die door de PySpark-kernel worden toegevoegd, kunt u ook de [ingebouwde IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)gebruiken, met inbegrip van `%%sh`. U kunt de `%%sh` Magic gebruiken om scripts en blok code uit te voeren op het cluster hoofd knooppunt.
 
 - **Automatische visualisatie**. De Pyspark-kernel visualiseert automatisch de uitvoer van Hive-en SQL-query's. U kunt kiezen uit verschillende soorten visualisaties, waaronder tabel, cirkel, lijn, vlak, staaf.
 
@@ -89,12 +89,12 @@ Hier volgen enkele voor delen van het gebruik van de nieuwe kernels met Jupyter 
 
 De `%%sql` Magic ondersteunt verschillende para meters die u kunt gebruiken om het soort uitvoer te bepalen dat u ontvangt wanneer u query's uitvoert. De volgende tabel bevat de uitvoer.
 
-| Parameter | Voorbeeld | Description |
+| Parameter | Voorbeeld | Beschrijving |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Gebruik deze para meter om het resultaat van de query op te slaan in de context%% Local python als een [Panda](https://pandas.pydata.org/) data frame. De naam van de variabele data frame is de naam van de variabele die u opgeeft. |
-| -q |`-q` |Gebruik deze optie om visualisaties voor de cel uit te scha kelen. Als u de inhoud van een cel niet wilt visualiseren en deze alleen wilt vastleggen als een data frame, gebruikt u `-q -o <VARIABLE>`. Als u visualisaties wilt uitschakelen zonder de resultaten vast te leggen (bijvoorbeeld voor het uitvoeren van een SQL-query, zoals een instructie `CREATE TABLE`), gebruikt u `-q` zonder het argument `-o` op te geven. |
-| -m |`-m <METHOD>` |Waarbij de **methode** ofwel **nemen** of voor **beeld** is (de standaard instelling **is).** Als de methode wordt **toegepast**, worden de elementen van de top van de resultatenset OPGEHAALD door MaxRows (verderop in deze tabel beschreven). Als de methode een voor **beeld**is, wordt de kernel wille keurig voor beelden van elementen van de gegevensset volgens de para meter `-r`, die wordt beschreven in de volgende tabel. |
-| -r |`-r <FRACTION>` |Hier is een **fractie** een getal met drijvende komma tussen 0,0 en 1,0. Als de voorbeeld methode voor de SQL-query `sample` is, wordt in wille keurige steek proef de opgegeven Fractie van de elementen van de resultatenset voor u weer gegeven. Als u bijvoorbeeld een SQL-query uitvoert met de argumenten `-m sample -r 0.01`, worden 1% van de resultaat rijen wille keurig weer steek proef. |
+| -q |`-q` |Gebruik deze optie om visualisaties voor de cel uit te scha kelen. Als u de inhoud van een cel niet wilt visualiseren en deze alleen wilt vastleggen als een data frame, gebruikt u `-q -o <VARIABLE>`. Als u visualisaties wilt uitschakelen zonder de resultaten vast te leggen (bijvoorbeeld voor het uitvoeren van een SQL-query, zoals een `CREATE TABLE`-instructie), gebruikt u `-q` zonder een `-o` argument op te geven. |
+| -m |`-m <METHOD>` |Waarbij de **methode** ofwel **nemen** of voor **beeld** is (de standaard instelling **is).** Als de methode wordt **toegepast**, worden de elementen van de top van de resultatenset OPGEHAALD door MaxRows (verderop in deze tabel beschreven). Als de methode voor **beeld**is, wordt de kernel wille keurig voor beelden van elementen van de gegevensset op basis van `-r` para meter, zoals wordt beschreven in de volgende tabel. |
+| -r |`-r <FRACTION>` |Hier is een **fractie** een getal met drijvende komma tussen 0,0 en 1,0. Als de voorbeeld methode voor de SQL-query `sample`is, wordt in de kernel wille keurig de opgegeven Fractie van de onderdelen van de resultatenset voor u weer gegeven. Als u bijvoorbeeld een SQL-query uitvoert met de argumenten `-m sample -r 0.01`, worden 1% van de resultaat rijen wille keurig van een steek proef genomen. |
 | -n |`-n <MAXROWS>` |**MaxRows** is een geheel getal. De kernel beperkt het aantal uitvoer rijen tot **MaxRows**. Als **MaxRows** een negatief getal is, zoals **-1**, is het aantal rijen in de resultatenset niet beperkt. |
 
 **Voorbeeld:**
@@ -104,14 +104,14 @@ De `%%sql` Magic ondersteunt verschillende para meters die u kunt gebruiken om h
 
 De bovenstaande instructie doet het volgende:
 
-* Hiermee worden alle records uit **hivesampletable**geselecteerd.
-* Omdat we-q gebruiken, wordt de functie voor autovisualisatie uitgeschakeld.
-* Omdat we `-m sample -r 0.1 -n 500` gebruiken, wille keurig 10% van de rijen in de hivesampletable en wordt de grootte van het resultaat ingesteld op 500 rijen.
-* Ten slotte, omdat we `-o query2` hebben gebruikt, wordt de uitvoer ook opgeslagen in een data frame met de naam **query2**.
+- Hiermee worden alle records uit **hivesampletable**geselecteerd.
+- Omdat we-q gebruiken, wordt de functie voor autovisualisatie uitgeschakeld.
+- Omdat we `-m sample -r 0.1 -n 500` wille keurig 10% van de rijen in het hivesampletable gebruiken en de grootte van de resultatenset beperkt tot 500 rijen.
+- Ten slotte, omdat we `-o query2`, wordt de uitvoer ook opgeslagen in een data frame met de naam **query2**.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Overwegingen bij het gebruik van de nieuwe kernels
 
-Welke kernel u gebruikt, waardoor de notitie blokken die worden uitgevoerd, verbruikt de cluster resources.  Met deze kernels, omdat de contexten vooraf worden ingesteld, wordt de context niet door de notitie blokken afgesloten, waardoor de cluster bronnen nog steeds in gebruik zijn. Het is een goed idee om de optie **sluiten en stoppen** te gebruiken in het menu **bestand** van het notitie blok wanneer u klaar bent met het notitie blok, waardoor de context wordt beëindigd en vervolgens het notitie blok wordt gesloten.
+Welke kernel u gebruikt, waardoor de notitie blokken die worden uitgevoerd, verbruikt de cluster resources.  Met deze kernels, omdat de contexten vooraf worden ingesteld, wordt door het afsluiten van de notitie blokken de context niet afgebroken en worden de cluster bronnen in gebruik genomen. Het is een goed idee om de optie **sluiten en stoppen** te gebruiken in het menu **bestand** van het notitie blok wanneer u klaar bent met het notitie blok, waardoor de context wordt beëindigd en vervolgens het notitie blok wordt gesloten.
 
 ## <a name="where-are-the-notebooks-stored"></a>Waar worden de notitie blokken opgeslagen?
 
@@ -138,29 +138,29 @@ De nieuwe kernels bevinden zich in de ontwikkelings fase en zullen gedurende een
 
 ## <a name="seealso"></a>Zie ook
 
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+- [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
-* [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
+- [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+- [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
+- [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
+- [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Toepassingen maken en uitvoeren
 
-* [Een zelfstandige toepassing maken met behulp van Scala](apache-spark-create-standalone-application.md)
-* [Apache Livy gebruiken om taken op afstand uit te voeren in een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
+- [Een zelfstandige toepassing maken met behulp van Scala](apache-spark-create-standalone-application.md)
+- [Apache Livy gebruiken om taken op afstand uit te voeren in een Apache Spark-cluster](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Tools en uitbreidingen
 
-* [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om Spark Scala-toepassingen te maken en in te dienen](apache-spark-intellij-tool-plugin.md)
-* [De invoeg toepassing HDInsight tools for IntelliJ-idee gebruiken om op afstand fouten in Apache Spark toepassingen op te sporen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](apache-spark-zeppelin-notebook.md)
-* [Externe pakketten gebruiken met Jupyter-notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
+- [De invoegtoepassing HDInsight Tools for IntelliJ IDEA gebruiken om Spark Scala-toepassingen te maken en in te dienen](apache-spark-intellij-tool-plugin.md)
+- [De invoeg toepassing HDInsight tools for IntelliJ-idee gebruiken om op afstand fouten in Apache Spark toepassingen op te sporen](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+- [Apache Zeppelin-notebooks gebruiken met een Apache Spark-cluster in HDInsight](apache-spark-zeppelin-notebook.md)
+- [Externe pakketten gebruiken met Jupyter-notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
+- [Jupyter op uw computer installeren en verbinding maken met een HDInsight Spark-cluster](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Resources beheren
 
-* [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
-* [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)
+- [Resources beheren voor het Apache Spark-cluster in Azure HDInsight](apache-spark-resource-manager.md)
+- [Taken die worden uitgevoerd in een Apache Spark-cluster in HDInsight, traceren en er fouten in oplossen](apache-spark-job-debugging.md)

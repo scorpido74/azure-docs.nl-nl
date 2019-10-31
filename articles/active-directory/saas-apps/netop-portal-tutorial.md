@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Netop Portal | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met NetOp Portal | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Netop Portal.
 services: active-directory
 documentationCenter: na
@@ -8,20 +8,21 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 63f7eab5-412a-4a5c-84bc-7473087abb49
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 751de509d17b05c2515261eeb7c036ae345986fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 955acdfb31bcdaa85f81eac39487992c75f71788
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096297"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160322"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Zelfstudie: Azure Active Directory-integratie met Netop Portal
+# <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Zelf studie: integratie Azure Active Directory met NetOp Portal
 
 In deze zelfstudie leert u hoe u Netop Portal integreert met Azure Active Directory (Azure AD).
 De integratie van Netop Portal met Azure Active Directory heeft de volgende voordelen:
@@ -52,7 +53,7 @@ Als u de integratie van Netop Portal met Azure Active Directory wilt configurere
 
 **Voer de volgende stappen uit om Netop Portal vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -110,7 +111,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure Active Directory 
 
 6. Bovendien verwacht de Netop Portal-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
-    | Name |  Bronkenmerk|
+    | Naam |  Bronkenmerk|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | "adfs-demo" |
     | NRC-EMAIL | user.userprincipalname |
@@ -128,7 +129,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure Active Directory 
 
     b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
 
-    c. In de **Namespace** tekstvak, type https:\//secure.netop.com.
+    c. Typ https:\//secure.netop.com in het tekstvak **naam ruimte** .
 
     d. Selecteer Bron bij **Kenmerk**.
 
@@ -138,7 +139,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure Active Directory 
 
     g. Klik op **Opslaan**.
 
-7. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+7. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -154,7 +155,7 @@ Voer de volgende stappen uit om eenmalige aanmelding met Azure Active Directory 
 
 ### <a name="configure-netop-portal-single-sign-on"></a>Eenmalige aanmelding bij Apex Portal configureren
 
-Het configureren van eenmalige aanmelding op **Netop Portal** zijde, moet u de gedownloade **federatieve metagegevens-XML** en de aanmeldings-URL vanuit Azure portal. Volg de aanwijzingen in stap 3 van de documentatie [hier](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) NetOp Portal configureren voor Azure AD-verificatie.
+Als u eenmalige aanmelding wilt configureren op de **NetOp-Portal** , moet u de gedownloade **federatieve meta gegevens-XML** en de aanmeldings-URL van Azure Portal. Volg de instructies in stap 3 van [de documentatie om](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) de NetOp-portal voor Azure AD-verificatie te configureren.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -174,12 +175,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon** in.
   
-    b. In de **gebruikersnaam** veld, typt u **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -193,7 +194,7 @@ In dit gedeelte geeft u Britta Simon toestemming voor het gebruik van eenmalige 
 
     ![De link naar Netop Portal in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -213,11 +214,11 @@ In deze sectie maakt u een gebruiker met de naam Britta Simon in Netop Portal. W
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Netop Portal klikt, wordt u automatisch aangemeld bij het exemplaar van Netop Portal waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

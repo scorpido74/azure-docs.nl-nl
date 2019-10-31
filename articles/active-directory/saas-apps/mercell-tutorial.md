@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Mercell | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Mercell.
+title: 'Zelf studie: integratie Azure Active Directory met Mercell | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Mercell.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,26 +8,27 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: bb94c288-2ed4-4683-acde-62474292df29
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: b37e35eb0314de25dad2ce07175a774f921fe4cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af51d76b3a500d7cc5edb0c21b893473e581acd6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67097463"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160699"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Zelfstudie: Azure Active Directory-integratie met Mercell
+# <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Zelf studie: integratie Azure Active Directory met Mercell
 
-In deze zelfstudie leert u hoe u Mercell integreren met Azure Active Directory (Azure AD).
-Mercell integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Mercell integreert met Azure Active Directory (Azure AD).
+Het integreren van Mercell met Azure AD biedt de volgende voor delen:
 
-* U kunt beheren in Azure AD die toegang tot Mercell heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Mercell (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U kunt beheren in azure AD die toegang heeft tot Mercell.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Mercell (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -35,26 +36,26 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Mercell, moet u de volgende items:
+Als u Azure AD-integratie met Mercell wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding Mercell ingeschakeld abonnement
+* Abonnement voor eenmalige aanmelding Mercell ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Mercell **IDP** gestart door SSO
+* Mercell ondersteunt door **IDP** GEÏNITIEERDe SSO
 
-* Biedt ondersteuning voor Mercell **Just In Time** inrichten van gebruikers
+* Mercell ondersteunt **just-in-time** -gebruikers inrichting
 
-## <a name="adding-mercell-from-the-gallery"></a>Mercell uit de galerie toe te voegen
+## <a name="adding-mercell-from-the-gallery"></a>Mercell toevoegen uit de galerie
 
-Voor het configureren van de integratie van Mercell in Azure AD, moet u Mercell uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Mercell in azure AD wilt configureren, moet u Mercell uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Mercell uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om Mercell toe te voegen uit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -66,31 +67,31 @@ Voor het configureren van de integratie van Mercell in Azure AD, moet u Mercell 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Mercell**, selecteer **Mercell** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Mercell**in het zoekvak, selecteer **Mercell** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
      ![Mercell in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Mercell op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Mercell tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Mercell op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Mercell tot stand worden gebracht.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Mercell, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Mercell, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Mercell](#configure-mercell-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Mercell eenmalige aanmelding configureren](#configure-mercell-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Mercell](#create-mercell-test-user)**  : als u wilt een equivalent van Britta Simon in Mercell die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Maak een Mercell-test gebruiker](#create-mercell-test-user)** -om een equivalent van Julia Simon in Mercell te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Mercell, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Mercell:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Mercell** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Mercell** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,7 +105,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Mercell, moet u de v
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Mercell domein en URL's, eenmalige aanmelding informatie](common/idp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor Mercell domein en Url's](common/idp-identifier.png)
 
     In het tekstvak **Id** typt u een URL: `https://my.mercell.com/`
 
@@ -112,9 +113,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Mercell, moet u de v
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="configure-mercell-single-sign-on"></a>Mercell voor eenmalige aanmelding configureren
+### <a name="configure-mercell-single-sign-on"></a>Eenmalige aanmelding voor Mercell configureren
 
-Het configureren van eenmalige aanmelding op **Mercell** zijde, moet u voor het verzenden van de **App-Url voor federatieve metagegevens** naar [Mercell ondersteuningsteam](mailto:webmaster@mercell.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **Mercell** , moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [Mercell ondersteunings team](mailto:webmaster@mercell.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -134,26 +135,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Mercell.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Mercell.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Mercell**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Mercell**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Mercell**.
+2. Selecteer in de lijst toepassingen de optie **Mercell**.
 
     ![De koppeling Mercell in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -167,20 +168,20 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-mercell-test-user"></a>Mercell testgebruiker maken
+### <a name="create-mercell-test-user"></a>Mercell-test gebruiker maken
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Mercell. Mercell biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Mercell bestaat, wordt een nieuw gemaakt nadat verificatie.
+In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Mercell. Mercell biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Mercell, wordt er een nieuwe gemaakt na verificatie.
 
 >[!Note]
->Als u maken van een gebruiker handmatig wilt, neem dan contact op met [Mercell ondersteuningsteam](mailto:webmaster@mercell.com).
+>Als u hand matig een gebruiker moet maken, neemt u contact op met het [ondersteunings team van Mercell](mailto:webmaster@mercell.com).
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Mercell in het toegangsvenster, moet u worden automatisch aangemeld bij de Mercell waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Mercell in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Mercell waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

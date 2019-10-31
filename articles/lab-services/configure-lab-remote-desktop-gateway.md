@@ -1,6 +1,6 @@
 ---
-title: Configureren van een lab voor het gebruik van extern bureaublad-Gateway in Azure DevTest Labs | Microsoft Docs
-description: Informatie over het configureren van een lab in Azure DevTest Labs met een extern bureaublad-gateway om te controleren of beveiligde toegang tot het lab-virtuele machines zonder te hoeven de RDP-poort.
+title: Een lab configureren voor het gebruik van Extern bureaublad-gateway in Azure DevTest Labs | Microsoft Docs
+description: Informatie over het configureren van een lab in Azure DevTest Labs met een extern bureau blad-gateway om beveiligde toegang tot de Lab-Vm's te garanderen zonder dat de RDP-poort moet worden weer gegeven.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,105 +12,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 430734878c01d10a4e7dd385dc75d8d502a2d82c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67079000"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162632"
 ---
-# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw lab in Azure DevTest Labs te gebruiken van een extern bureaublad-gateway configureren
-U kunt een extern bureaublad-gateway voor uw lab voor beveiligde toegang tot de lab-virtuele machines (VM's) zonder dat om beschikbaar te stellen de RDP-poort configureren in Azure DevTest Labs. De testomgeving biedt een centrale locatie voor uw labgebruikers kunnen zien en verbinding maken met alle virtuele machines die ze toegang hebben. De **Connect** knop op de **virtuele Machine** pagina maakt een machine-specifieke RDP-bestand dat u openen kunt om verbinding maken met de machine. U kunt verder aanpassen en de RDP-verbinding beveiligen door verbinding te maken van uw testomgeving met een extern bureaublad-gateway. 
+# <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw Lab in Azure DevTest Labs configureren voor het gebruik van een extern bureau blad-gateway
+In Azure DevTest Labs kunt u een extern bureau blad-gateway voor uw lab configureren om te zorgen voor veilige toegang tot de virtuele lab-machines (Vm's) zonder dat de RDP-poort moet worden weer gegeven. Het Lab biedt een centrale locatie voor uw Lab-gebruikers om te zien en verbinding te maken met alle virtuele machines waartoe ze toegang hebben. De knop **verbinding maken** op de pagina **virtuele machine** maakt een apparaat-specifiek RDP-bestand dat u kunt openen om verbinding te maken met de computer. U kunt de RDP-verbinding verder aanpassen en beveiligen door uw Lab te koppelen aan een extern bureau blad-gateway. 
 
-Deze methode is veiliger omdat de lab-gebruiker rechtstreeks geverifieerd op de gatewaycomputer of bedrijfsreferenties op een domein gatewaycomputer verbinding maken met hun machines kunt gebruiken. De testomgeving ondersteunt ook het gebruik van token verificatie bij de gatewaycomputer waarmee gebruikers verbinding maken met hun virtuele machines zonder de RDP-poort blootgesteld aan internet. In dit artikel leidt u door een voorbeeld over het instellen van een testomgeving die gebruikmaakt van tokenverificatie verbinding maken met lab-machines.
+Deze methode is veiliger omdat de test gebruiker zich rechtstreeks verifieert bij de gateway computer of bedrijfs referenties kan gebruiken op een gateway computer die lid is van een domein om verbinding te maken met hun computers. Het Lab biedt ook ondersteuning voor het gebruik van token verificatie voor de gateway computer waarmee gebruikers verbinding kunnen maken met hun Lab-virtuele machines zonder dat de RDP-poort aan Internet kan worden blootgesteld. In dit artikel vindt u een voor beeld van het instellen van een lab dat gebruikmaakt van token verificatie om verbinding te maken met Lab-machines.
 
 ## <a name="architecture-of-the-solution"></a>Architectuur van de oplossing
 
 ![Architectuur van de oplossing](./media/configure-lab-remote-desktop-gateway/architecture.png)
 
-1. De [bestandsinhoud ophalen RDP](/rest/api/dtl/virtualmachines/getrdpfilecontents) actie wordt aangeroepen wanneer u selecteert de **Connect** button.1. 
-1. De actie ophalen RDP-bestand inhoud roept `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` om aan te vragen een verificatietoken.
-    1. `{gateway-hostname}` de gateway-hostnaam die is opgegeven op de **Lab instellingen** pagina voor uw lab in Azure portal. 
-    1. `{lab-machine-name}` is de naam van de computer waarop u verbinding wilt maken.
-    1. `{port-number}` is de poort waarop de verbinding moet worden gemaakt. Meestal is deze poort 3389. Als het lab VM maakt gebruik van de [gedeelde IP](devtest-lab-shared-ip.md) functie in DevTest Labs, de poort zijn verschillend.
-1. De extern bureaublad-gateway wordt uitgesteld de aanroep van `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` naar een Azure-functie om de verificatietoken te genereren. De DevTest Labs-service omvat automatisch de functie-sleutel in de aanvraagheader. De functie-sleutel is om te worden opgeslagen in de sleutelkluis van het lab. De naam van die geheim moeten worden weergegeven als **Gateway-tokengeheim** op de **Lab instellingen** pagina voor de testomgeving.
-1. De Azure-functie wordt verwacht om terug te keren een token voor token verificatie op basis van certificaten bij de gatewaycomputer.  
-1. Het ophalen van RDP-bestand actie-inhoud en geeft vervolgens het volledige RDP-bestand, met inbegrip van de verificatie-informatie.
-1. U opent het RDP-bestand met behulp van uw voorkeur programma voor de RDP-verbinding. Houd er rekening mee dat niet alle programma's voor RDP-verbinding tokenverificatie ondersteunen. Het verificatietoken beschikt over een vervaldatum, ingesteld door de functie-app. Controleer de verbinding met de virtuele machine van de testomgeving voordat het token is verlopen.
-1. Zodra de computer extern bureaublad-gateway het token in het RDP-bestand verifieert, wordt de verbinding wordt doorgestuurd naar uw lab-machine.
+1. De actie [RDP-bestands inhoud ophalen](/rest/api/dtl/virtualmachines/getrdpfilecontents) wordt aangeroepen wanneer u de knop **verbinding maken** selecteert. 1. 
+1. Met de actie RDP-bestands inhoud ophalen worden `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` aangeroepen om een verificatie token aan te vragen.
+    1. `{gateway-hostname}` is de hostnaam van de gateway die is opgegeven op de pagina **Lab-instellingen** voor uw Lab in de Azure Portal. 
+    1. `{lab-machine-name}` is de naam van de computer waarmee u verbinding wilt maken.
+    1. `{port-number}` is de poort waarop de verbinding moet worden gemaakt. Meestal is deze poort 3389. Als de VM van het lab de [gedeelde IP-](devtest-lab-shared-ip.md) functie in DevTest Labs gebruikt, is de poort verschillend.
+1. De extern bureau blad-gateway Defert de aanroep van `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` naar een Azure-functie om het verificatie token te genereren. De DevTest Labs-service bevat automatisch de functie code in de aanvraag header. De functie sleutel moet worden opgeslagen in de sleutel kluis van het lab. De naam van het geheim dat moet worden weer gegeven als het geheim van de **Gateway token** op de pagina **Lab-instellingen** voor het lab.
+1. De Azure-functie wordt verwacht een token te retour neren voor certificaat authenticatie op basis van certificaten op de gateway computer.  
+1. De actie RDP-bestands inhoud ophalen retourneert vervolgens het volledige RDP-bestand, met inbegrip van de verificatie gegevens.
+1. U opent het RDP-bestand met behulp van het RDP-verbindings programma van uw voor keur. Houd er rekening mee dat niet alle RDP-verbindings Programma's de verificatie van tokens ondersteunen. Het verificatie token heeft een verval datum, ingesteld door de functie-app. Maak verbinding met de VM van het lab voordat het token verloopt.
+1. Zodra de extern bureau blad-gateway computer het token verifieert in het RDP-bestand, wordt de verbinding doorgestuurd naar uw test machine.
 
-### <a name="solution-requirements"></a>Oplossingsvereisten
-Als u wilt werken met de functie voor DevTest Labs-tokenverificatie, zijn er een paar configuratievereisten voor de gatewaymachines, functies en domeinnaamservices (DNS).
+### <a name="solution-requirements"></a>Oplossings vereisten
+Als u wilt werken met de DevTest Labs-token verificatie, zijn er enkele configuratie vereisten voor de gateway-computers, Domain Name Services (DNS) en functions.
 
-### <a name="requirements-for-remote-desktop-gateway-machines"></a>Vereisten voor extern bureaublad-gateway-machines
-- SSL-certificaat moet worden geïnstalleerd op de gatewaycomputer om af te handelen HTTPS-verkeer. Het certificaat moet overeenkomen met de volledig gekwalificeerde domeinnaam (FQDN) van de load balancer voor de gateway-farm of de FQDN-naam van de machine zelf als er slechts één machine. Jokerteken SSL-certificaten werken niet.  
-- Een handtekeningcertificaat op gateway computer (s) is geïnstalleerd. Een ondertekend certificaat maken met behulp van [maken SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) script.
-- Installeer de [Pluggable verificatie](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) module die ondersteuning biedt voor tokenverificatie voor extern bureaublad-gateway. Een voorbeeld van een dergelijke module is `RDGatewayFedAuth.msi` die wordt geleverd met [System Center Virtual Machine Manager (VMM)-installatiekopieën](/system-center/vmm/install-console?view=sc-vmm-1807). Zie voor meer informatie over System Center, [documentatie voor System Center](https://docs.microsoft.com/system-center/) en [prijsinformatie](https://www.microsoft.com/cloud-platform/system-center-pricing).  
-- De gateway-server kan verwerken aanvragen voor `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`.
+### <a name="requirements-for-remote-desktop-gateway-machines"></a>Vereisten voor extern bureau blad-gateway computers
+- Er moet een SSL-certificaat op de gateway computer zijn geïnstalleerd om HTTPS-verkeer te kunnen verwerken. Het certificaat moet overeenkomen met de Fully Qualified Domain Name (FQDN) van de load balancer voor de gateway Farm of de FQDN van de computer zelf als er slechts één computer is. Joker tekens voor SSL-certificaten werken niet.  
+- Een handtekening certificaat dat is geïnstalleerd op de gateway computer (s). Een handtekening certificaat maken met behulp van het script [Create-SigningCertificate. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) .
+- Installeer de module voor [Plug en authenticatie](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) die token verificatie ondersteunt voor de extern bureau blad-gateway. Een voor beeld van een dergelijke module is `RDGatewayFedAuth.msi` die wordt geleverd met [installatie kopieën van System Center Virtual Machine Manager (VMM)](/system-center/vmm/install-console?view=sc-vmm-1807). Zie [System Center-documentatie](https://docs.microsoft.com/system-center/) en [prijs informatie](https://www.microsoft.com/cloud-platform/system-center-pricing)voor meer informatie over System Center.  
+- De gateway server kan aanvragen afhandelen die zijn ingediend bij `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`.
 
-    De hostnaam van de gateway is de FQDN-naam van de load balancer van de gateway-farm of de FQDN-naam van de computer zelf als er slechts één machine. De `{lab-machine-name}` is de naam van het lab-machine die u probeert om verbinding te maken en de `{port-number}` is poort waarop de verbinding wordt gemaakt.  Standaard is deze poort 3389.  Echter, als de virtuele machine wordt met behulp van de [gedeelde IP](devtest-lab-shared-ip.md) onderdeel in DevTest Labs, de poort kan worden verschillende.
-- De [routering toepassingsaanvraag](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) module voor Internet Information Server (IIS) kan worden gebruikt om te leiden `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` aanvragen naar de azure-functie, waar de aanvraag voor het ophalen van een token voor verificatie.
+    De gateway-hostnaam is de FQDN-naam van de load balancer van de gateway Farm of de FQDN van de computer zelf als er slechts één computer is. De `{lab-machine-name}` is de naam van de test machine waarmee u verbinding wilt maken en de `{port-number}` is de poort waarop de verbinding wordt gemaakt.  Deze poort is standaard 3389.  Als de virtuele machine echter de [gedeelde IP-](devtest-lab-shared-ip.md) functie in DevTest Labs gebruikt, is de poort anders.
+- De module [toepassings routering aanvragen](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) voor IIS (Internet Information Server) kan worden gebruikt om `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` aanvragen om te leiden naar de Azure-functie, die de aanvraag afhandelt om een token voor verificatie op te halen.
 
 
-## <a name="requirements-for-azure-function"></a>Vereisten voor Azure-functie
-Azure-functie verwerkt de aanvraag met de indeling van `https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}` en retourneert het verificatietoken op basis van hetzelfde certificaat geïnstalleerd op de gatewaymachines. De `{function-app-uri}` is de uri die wordt gebruikt voor toegang tot de functie. De functie-sleutel wordt automatisch in de koptekst van de aanvraag worden doorgegeven. Zie voor een voorbeeld van de functie, [ https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs). 
+## <a name="requirements-for-azure-function"></a>Vereisten voor Azure function
+De Azure-functie verwerkt de aanvraag met de indeling van `https://{function-app-uri}/app/host/{lab-machine-name}/port/{port-number}` en retourneert het verificatie token op basis van hetzelfde handtekening certificaat dat is geïnstalleerd op de gateway machines. De `{function-app-uri}` is de URI die wordt gebruikt om toegang te krijgen tot de functie. De functie sleutel wordt automatisch door gegeven in de koptekst van de aanvraag. Zie [https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/src/RDGatewayAPI/Functions/CreateToken.cs)voor een voorbeeld functie. 
 
 
 ## <a name="requirements-for-network"></a>Vereisten voor netwerk
 
-- DNS voor de FQDN-naam die is gekoppeld aan het SSL-certificaat geïnstalleerd op de gatewaymachines moet verkeer naar het gateway-apparaat of de load balancer van de gateway-machine-farm te regelen.
-- Als de machine lab maakt gebruik van privé-IP's, moet er een netwerkpad van het gateway-apparaat naar de machine lab, hetzij door middel van delen van hetzelfde virtuele netwerk of met behulp van gekoppelde virtuele netwerken.
+- DNS voor de FQDN die is gekoppeld aan het SSL-certificaat dat op de gateway-computers is geïnstalleerd, moet verkeer naar de gateway computer of de load balancer van de gateway computer Farm omleiden.
+- Als de test machine gebruikmaakt van privé IP-adressen, moet er een netwerkpad van de gateway computer naar de test machine zijn, hetzij via het delen van hetzelfde virtuele netwerk, hetzij met behulp van peered virtuele netwerken.
 
-## <a name="configure-the-lab-to-use-token-authentication"></a>De testomgeving voor het gebruik van tokenverificatie configureren 
-Deze sectie wordt beschreven hoe u een lab voor het gebruik van een extern bureaublad-gateway-machine die ondersteuning biedt voor token-verificatie configureren. In deze sectie wordt niet uitgelegd hoe u voor het instellen van een farm met extern bureaublad-gateway zelf. Voor die informatie, Zie de [voorbeeld om te maken van een extern bureaublad-gateway](#sample-to-create-a-remote-desktop-gateway) sectie aan het einde van dit artikel. 
+## <a name="configure-the-lab-to-use-token-authentication"></a>Het lab configureren voor het gebruik van token verificatie 
+In deze sectie wordt beschreven hoe u een Lab configureert voor het gebruik van een extern bureau blad-gateway computer die token verificatie ondersteunt. Deze sectie heeft geen betrekking op het instellen van een extern bureau blad-gateway-Farm zelf. Zie de sectie voor beeld voor het [maken van een extern bureau blad-gateway](#sample-to-create-a-remote-desktop-gateway) aan het einde van dit artikel voor meer informatie. 
 
-Voordat u de instellingen voor lab bijwerkt, slaat u de sleutel die nodig zijn voor de functie als u wilt een verificatietoken in de sleutelkluis van de testomgeving is uitgevoerd. U kunt de waarde van de functie sleutel krijgen in de **beheren** pagina voor de functie in Azure portal. Zie voor meer informatie over hoe u een geheim opslaan in een key vault [een geheim toevoegen aan Key Vault](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault). De naam van de geheime sleutel voor later gebruik opslaan.
+Voordat u de Lab-instellingen bijwerkt, moet u de sleutel opslaan die nodig is om de functie uit te voeren om een verificatie token te retour neren in de sleutel kluis van het lab. U kunt de functie sleutel waarde ophalen op de pagina **beheren** voor de functie in de Azure Portal. Zie [een geheim toevoegen aan Key Vault](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault)voor meer informatie over het opslaan van een geheim in een sleutel kluis. Sla de naam van het geheim op voor later gebruik.
 
-Voer de volgende Azure CLI-opdracht om de ID van de sleutelkluis van het lab te: 
+Voer de volgende Azure CLI-opdracht uit om de ID van de sleutel kluis van het lab te vinden: 
 
 ```azurecli
 az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' --resource-group {lab-resource-group-name} --query properties.vaultName
 ```
 
-Configureer de testomgeving voor het gebruik van de token verificatie met behulp van deze stappen:
+Configureer het lab voor het gebruik van de token verificatie met behulp van de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **alle Services**, en selecteer vervolgens **DevTest Labs** in de lijst.
-1. Selecteer in de lijst met labs, uw **lab**.
-1. Selecteer op de pagina van het lab **configuratie en het beleid**.
-1. In het menu links in de **instellingen** sectie, selecteer **Lab instellingen**.
-1. In de **extern bureaublad** sectie voert u de volledig gekwalificeerde domeinnaam (FQDN) of IP-adres van de gatewaycomputer extern bureaublad-services of farm voor de **Gateway hostnaam** veld. Deze waarde moet overeenkomen met de FQDN-naam van het SSL-certificaat op de gatewaymachines gebruikt.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
+1. Selecteer in de lijst met Labs uw **Lab**.
+1. Selecteer op de pagina Lab de optie **configuratie en beleid**.
+1. Selecteer in het menu links in het gedeelte **instellingen** de optie **Lab-instellingen**.
+1. Voer in de sectie **extern bureau blad** de Fully QUALIFIED domain name (FQDN) of het IP-adres van de extern bureau blad-Services Gateway computer of farm in voor het veld **hostnaam van Gateway** . Deze waarde moet overeenkomen met de FQDN van het SSL-certificaat dat op Gateway computers wordt gebruikt.
 
-    ![Extern bureaublad-opties in het lab-instellingen](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
-1. In de **extern bureaublad** sectie voor **gatewaytoken** geheim, voer de naam van het geheim dat eerder hebt gemaakt. Deze waarde is niet de functie sleutel zelf, maar de naam van het geheim van de testomgeving sleutelkluis waarin de functie-sleutel.
+    ![Opties voor extern bureau blad in Lab-instellingen](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
+1. In de sectie **extern bureau blad** , voor het geheim van **Gateway-tokens** , voert u de naam in van het geheim dat u eerder hebt gemaakt. Deze waarde is niet de functie toets zelf, maar de naam van het geheim in de sleutel kluis van het lab die de functie sleutel bevat.
 
-    ![Gateway-tokengeheim in lab-instellingen](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
-1. **Sla** wijzigingen.
+    ![Geheim van het gateway token in de Lab-instellingen](./media/configure-lab-remote-desktop-gateway/gateway-token-secret.png)
+1. **Opslaan** Gewijzigde.
 
     > [!NOTE] 
-    > Door te klikken op **opslaan**, gaat u akkoord met [licentievoorwaarden van extern bureaublad-Gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over externe gateway [Welkom bij de extern bureaublad-Services](https://aka.ms/rds) en [uw extern bureaublad-omgeving implementeren](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+    > Als u op **Opslaan**klikt, gaat u akkoord met [de licentie voorwaarden van extern bureaublad-gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over de externe gateway [Welkom bij extern bureaublad-services](https://aka.ms/rds) en [Implementeer uw extern bureau blad-omgeving](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 
-Als het configureren van het lab via automation heeft de voorkeur, Zie [Set DevTestLabGateway.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) voor een PowerShell-voorbeeldscript om in te stellen **gateway hostnaam** en **gateway-tokengeheim**instellingen. De [Azure DevTest Labs GitHub-opslagplaats](https://github.com/Azure/azure-devtestlab) biedt ook een Azure Resource Manager-sjabloon maakt of updatet een testomgeving met de **gateway hostnaam** en **gateway-tokengeheim**instellingen.
+Als u de test omgeving via Automation wilt configureren, raadpleegt u [set-DevTestLabGateway. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Set-DevTestLabGateway.ps1) voor een Power shell-voorbeeld script voor het instellen van de **Gateway-hostnaam** en de geheime instellingen van het **Gateway token** . De [github-opslag plaats van Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) biedt ook een Azure Resource Manager sjabloon waarmee een lab wordt gemaakt of bijgewerkt met de instellingen van de **Gateway-hostnaam** en het **Gateway token geheim** .
 
-## <a name="configure-network-security-group"></a>Configureren van netwerkbeveiligingsgroep
-Als u wilt beveiligen verder in het lab, kan een netwerkbeveiligingsgroep (NSG) worden toegevoegd aan het virtuele netwerk die worden gebruikt door de virtuele machines. Voor instructies over het instellen van een NSG, Zie [maken, wijzigen of verwijderen van een netwerkbeveiligingsgroep](../virtual-network/manage-network-security-group.md).
+## <a name="configure-network-security-group"></a>Netwerk beveiligings groep configureren
+Om het lab verder te beveiligen, kan een netwerk beveiligings groep (NSG) worden toegevoegd aan het virtuele netwerk dat wordt gebruikt door de virtuele machines van het lab. Zie [een netwerk beveiligings groep maken, wijzigen of verwijderen](../virtual-network/manage-network-security-group.md)voor instructies voor het instellen van een NSG.
 
-Hier volgt een voorbeeld NSG waarmee alleen verkeer dat eerst wordt verstuurd via de gateway te bereiken testcomputers. De bron in deze regel is het IP-adres van de machine één gateway, of het IP-adres van de load balancer voor de gatewaymachines.
+Hier volgt een voor beeld van een NSG die verkeer alleen toestaat die de gateway voor de eerste keer doorloopt. De bron in deze regel is het IP-adres van de afzonderlijke gateway computer of het IP-adres van de load balancer vóór de gateway-computers.
 
-![Netwerkbeveiligingsgroep - regels](./media/configure-lab-remote-desktop-gateway/network-security-group-rules.png)
+![Netwerk beveiligings groep-regels](./media/configure-lab-remote-desktop-gateway/network-security-group-rules.png)
 
-## <a name="sample-to-create-a-remote-desktop-gateway"></a>Voorbeeld van een extern bureaublad-gateway maken
+## <a name="sample-to-create-a-remote-desktop-gateway"></a>Voor beeld voor het maken van een extern bureau blad-gateway
 
 > [!NOTE] 
-> Met behulp van de voorbeeldsjablonen, gaat u akkoord met [licentievoorwaarden van extern bureaublad-Gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over externe gateway [Welkom bij de extern bureaublad-Services](https://aka.ms/rds) en [uw extern bureaublad-omgeving implementeren](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+> Met behulp van de voorbeeld sjablonen gaat u akkoord met de [licentie voorwaarden van extern bureaublad-gateway](https://www.microsoft.com/licensing/product-licensing/products). Zie voor meer informatie over de externe gateway [Welkom bij extern bureaublad-services](https://aka.ms/rds) en [Implementeer uw extern bureau blad-omgeving](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
-De [Azure DevTest Labs GitHub-opslagplaats](https://github.com/Azure/azure-devtestlab) bevat enkele voorbeelden om te zorgen ervoor dat setup de resources die nodig zijn voor gebruik van tokenverificatie en extern bureaublad-gateway met DevTest Labs. Deze voorbeelden bevatten Azure Resource Manager-sjablonen voor gatewaymachines, lab-instellingen en functie-app.
+De [github-opslag plaats van Azure DevTest Labs](https://github.com/Azure/azure-devtestlab) biedt enkele voor beelden voor het instellen van de bronnen die nodig zijn voor het gebruik van token verificatie en extern bureau blad-gateway met DevTest Labs. Deze voor beelden bevatten Azure Resource Manager sjablonen voor gateway machines, Lab-instellingen en functie-apps.
 
-Volg deze stappen voor het instellen van een oplossing voor de extern bureaublad-gateway-farm.
+Volg deze stappen om een voor beeld van een oplossing voor de extern bureau blad-gateway Farm in te stellen.
 
-1. Maak een certificaat voor ondertekening.  Voer [maken SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1). Sla de vingerafdruk, wachtwoord en Base64-codering van het gemaakte certificaat.
-2. Een SSL-certificaat ophalen. FQDN-naam die is gekoppeld aan het SSL-certificaat moet voor het domein dat u beheert. Sla de vingerafdruk, wachtwoord en Base64-codering voor dit certificaat. Als u de vingerafdruk met behulp van PowerShell, gebruikt u de volgende opdrachten.
+1. Een handtekening certificaat maken.  Voer [Create-SigningCertificate. ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)uit. Sla de vinger afdruk, het wacht woord en de base64-code ring van het gemaakte certificaat op.
+2. Een SSL-certificaat ophalen. De FQDN die is gekoppeld aan het SSL-certificaat moet voor het domein dat u wilt beheren. Sla de vinger afdruk, het wacht woord en de base64-code ring op voor dit certificaat. Gebruik de volgende opdrachten om de vinger afdruk op te halen met behulp van Power shell.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -118,55 +118,55 @@ Volg deze stappen voor het instellen van een oplossing voor de extern bureaublad
     $hash = $cer.GetCertHashString()
     ```
 
-    Als u de Base64-codering met behulp van PowerShell, gebruikt u de volgende opdracht uit.
+    Gebruik de volgende opdracht om de base64-code ring op te halen met behulp van Power shell.
 
     ```powershell
     [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
     ```
-3. Bestanden downloaden [ https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway).
+3. Bestanden downloaden van [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway).
 
-    De sjabloon vereist toegang tot een paar andere Resource Manager-sjablonen en gerelateerde bronnen op de dezelfde basis-URI. Kopieer alle bestanden uit de [ https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway) en RDGatewayFedAuth.msi naar een blobcontainer in een storage-account.  
-4. Implementeer **azuredeploy.json** van [ https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway). De sjabloon bevat de volgende parameters:
-    - adminUsername – vereist.  Gebruikersnaam van beheerder voor de gatewaymachines.
-    - adminPassword – vereist. Wachtwoord voor het beheerdersaccount voor de gatewaymachines.
-    - instanceCount: aantal gatewaymachines te maken.  
-    - alwaysOn: geeft aan of u wilt voorkomen dat u de gemaakte Azure Functions-app in een warme staat of niet. De Azure Functions-app houden voorkomen vertragingen wanneer gebruikers eerst proberen verbinding maken met hun lab-VM, maar deze kosten gevolgen heeft.  
-    - tokenLifetime – de hoeveelheid tijd die het gemaakte token ongeldig is. Notatie is UU: mm:.
-    - sslCertificate – de met Base64-codering van het SSL-certificaat voor de gatewaycomputer.
-    - sslCertificatePassword: het wachtwoord van het SSL-certificaat voor de gatewaycomputer.
-    - sslCertificateThumbprint - de vingerafdruk van het certificaat voor de identificatie in het lokale certificaatarchief van de SSL-certificaat.
-    - signCertificate – de met Base64 coderen voor het ondertekenen van certificaat voor de gatewaycomputer.
-    - signCertificatePassword: het wachtwoord voor het ondertekenen van certificaat voor de gatewaycomputer.
-    - signCertificateThumbprint - de vingerafdruk van het certificaat voor de identificatie in het lokale certificaatarchief van het certificaat voor ondertekening.
-    - _artifactsLocation-URI-locatie waar alle ondersteunende resources kunnen worden gevonden. Deze waarde moet een volledig gekwalificeerde UIR, niet een relatief pad zijn.
-    - _artifactsLocationSasToken – de Shared Access Signature (SAS)-token gebruikt voor toegang tot ondersteunende resources, als de locatie een Azure storage-account is.
+    Voor de sjabloon is toegang tot een paar andere Resource Manager-sjablonen en gerelateerde resources met dezelfde basis-URI vereist. Kopieer alle bestanden van [https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/arm/gateway) en RDGatewayFedAuth. msi naar een BLOB-container in een opslag account.  
+4. Implementeer **azuredeploy. json** vanaf [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway). De sjabloon heeft de volgende para meters:
+    - adminUsername: vereist.  De gebruikers naam van de beheerder voor de gateway-computers.
+    - adminPassword – vereist. Wacht woord voor het beheerders account voor de gateway-computers.
+    - instanceCount: het aantal gateway machines dat moet worden gemaakt.  
+    - AlwaysOn: Hiermee wordt aangegeven of de gemaakte Azure Functions-app in een warme staat moet blijven of niet. Door de Azure Functions-app te blijven vertragen wanneer gebruikers eerst proberen verbinding te maken met hun Lab-VM, maar ze hebben wel kosten gevolgen.  
+    - tokenLifetime: de periode waarin het gemaakte token geldig is. De notatie is uu: MM: SS.
+    - sslCertificate: de base64-code ring van het SSL-certificaat voor de gateway computer.
+    - sslCertificatePassword: het wacht woord van het SSL-certificaat voor de gateway computer.
+    - sslCertificateThumbprint: de vinger afdruk van het certificaat voor identificatie in het lokale certificaat archief van het SSL-certificaat.
+    - signCertificate: de base64-code ring voor het ondertekenen van certificaten voor de gateway computer.
+    - signCertificatePassword: het wacht woord voor het handtekening certificaat voor de gateway computer.
+    - signCertificateThumbprint: de vinger afdruk van het certificaat voor identificatie in het lokale certificaat archief van het handtekening certificaat.
+    - _artifactsLocation: de URI-locatie waar alle ondersteunende bronnen kunnen worden gevonden. Deze waarde moet een volledig gekwalificeerd UIR zijn, geen relatief pad.
+    - _artifactsLocationSasToken: het Shared Access Signature SAS-token dat wordt gebruikt voor toegang tot ondersteunende bronnen als de locatie een Azure-opslag account is.
 
-    De sjabloon kan worden geïmplementeerd met behulp van de Azure CLI met behulp van de volgende opdracht uit:
+    De sjabloon kan worden geïmplementeerd met behulp van de Azure CLI met behulp van de volgende opdracht:
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation=”{storage-account-endpoint}/{container-name}” -–parameters _artifactsLocationSasToken = “?{sas-token}”
+    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
-    Hier volgen de beschrijvingen van de parameters:
+    Hier volgen de beschrijvingen van de para meters:
 
-    - Het {storage-account-eindpunt} kan worden verkregen door het uitvoeren van `az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`.  De {opslag-acct-name} is de naam van het opslagaccount waarin de bestanden die u hebt geüpload.  
-    - De {container-name} is de naam van de container in de {opslag-acct-naam} met bestanden die u hebt geüpload.  
-    - De {sas-token} kan worden verkregen door het uitvoeren van `az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`. 
-        - De {opslag-acct-name} is de naam van het opslagaccount waarin de bestanden die u hebt geüpload.  
-        - De {container-name} is de naam van de container in de {opslag-acct-naam} met bestanden die u hebt geüpload.  
-        - De {utc--vervaldatum} is de datum, in UTC, waarmee het SAS-token verloopt en de SAS-token kan niet meer worden gebruikt voor toegang tot het opslagaccount.
+    - U kunt het {Storage-account-endpoint} verkrijgen door `az storage account show --name {storage-acct-name} --query primaryEndpoints.blob`uit te voeren.  De {Storage-acct-name} is de naam van het opslag account dat bestanden bevat die u hebt geüpload.  
+    - De {container-name} is de naam van de container in de {Storage-acct-name} die bestanden bevat die u hebt geüpload.  
+    - U kunt het {SAS-token} verkrijgen door `az storage container generate-sas --name {container-name} --account-name {storage-acct-name} --https-only –permissions drlw –expiry {utc-expiration-date}`uit te voeren. 
+        - De {Storage-acct-name} is de naam van het opslag account dat bestanden bevat die u hebt geüpload.  
+        - De {container-name} is de naam van de container in de {Storage-acct-name} die bestanden bevat die u hebt geüpload.  
+        - De {UTC-verval datum} is de datum, in UTC, waarop het SAS-token verloopt en de SAS-token kan niet meer worden gebruikt voor toegang tot het opslag account.
 
-    Noteer de waarden voor gatewayFQDN en gatewayIP uit de uitvoer van de implementatie van de sjabloon. U moet ook om op te slaan de waarde van de functie-sleutel voor de zojuist gemaakte functie, kunt u vinden in de [functie app-instellingen](../azure-functions/functions-how-to-use-azure-function-app-settings.md) tabblad.
-5. DNS configureren zodat deze FQDN-naam van een SSL-certificaat naar de IP-adres van gatewayIP uit de vorige stap verwijst.
+    Noteer de waarden voor gatewayFQDN en gatewayIP van de sjabloon implementatie-uitvoer. U moet ook de waarde van de functie sleutel voor de zojuist gemaakte functie opslaan, die u kunt vinden op het tabblad [functie-app-instellingen](../azure-functions/functions-how-to-use-azure-function-app-settings.md) .
+5. Configureer DNS zodanig dat de FQDN van het SSL-certificaat wordt omgeleid naar het IP-adres van gatewayIP uit de vorige stap.
 
-    Nadat de extern bureaublad-Gateway-farm is gemaakt en de juiste DNS-updates zijn aangebracht, is het klaar om te worden gebruikt door een lab in DevTest Labs. De **gateway hostnaam** en **gateway-tokengeheim** instellingen moeten worden geconfigureerd voor het gebruik van de gateway computer (s) u hebt geïmplementeerd. 
+    Nadat de Extern bureaublad-gateway Farm is gemaakt en de juiste DNS-updates zijn gemaakt, is het klaar om te worden gebruikt door een lab in DevTest Labs. De instellingen voor de **Gateway-hostnaam** en het **Gateway token geheim** moeten worden geconfigureerd voor het gebruik van de door u geïmplementeerde gateway computer (s). 
 
     > [!NOTE]
-    > Als de machine lab maakt gebruik van privé-IP's, moet er een netwerkpad van het gateway-apparaat naar de machine lab, hetzij door middel van delen van hetzelfde virtuele netwerk of met behulp van een gekoppeld virtueel netwerk.
+    > Als de test machine gebruikmaakt van privé IP-adressen, moet er een netwerkpad van de gateway computer naar de test machine zijn, hetzij via het delen van hetzelfde virtuele netwerk of met behulp van een gekoppeld virtueel netwerk.
 
-    Wanneer zowel de gateway en de lab zijn geconfigureerd, het verbindingsbestand gemaakt wanneer de gebruiker van de testomgeving op de **Connect** bevatten informatie die nodig is om te verbinden via tokenverificatie automatisch.     
+    Als zowel de gateway als het lab zijn geconfigureerd, wordt het verbindings bestand dat wordt gemaakt wanneer de gebruiker op de test omgeving klikt automatisch informatie bevatten die **nodig is om** verbinding te maken met behulp van token authenticatie.     
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor meer informatie over extern bureaublad-Services: [Documentatie voor extern bureaublad-Services](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
+Raadpleeg het volgende artikel voor meer informatie over Extern bureaublad-services: [extern bureaublad-services documentatie](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
 
 

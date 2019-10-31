@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: v-fehase
-ms.openlocfilehash: 87df7824a182e68d849fdf967f96b2974b7e0c16
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148170"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159849"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Een beveiligde App ontwikkelen voor een Azure AD-app
 ## <a name="overview"></a>Overzicht
@@ -148,7 +148,7 @@ Een basis certificaat is opgenomen in de container. De stappen voor het verkrijg
    ```
 Met dit script maakt u een toegewezen identiteit voor het App Service-exemplaar dat kan worden gebruikt met MSI om te communiceren met Azure Key Vault zonder geheimen voor vaste code ring in code of configuratie.
 
-Ga naar het Azure Key Vault-exemplaar in de portal om de toegewezen identiteit op het tabblad toegangs beleid te autoriseren. Selecteer **nieuw toegangs beleid toevoegen**. Zoek onder **Principal selecteren**naar de toepassings naam die lijkt op de naam van het app service exemplaar dat is gemaakt.
+Ga naar het Azure Key Vault-exemplaar in de portal om de toegewezen identiteit te autoriseren op het tabblad toegangs beleid. Selecteer **nieuw toegangs beleid toevoegen**. Zoek onder **Principal selecteren**naar de toepassings naam die lijkt op de naam van het app service exemplaar dat is gemaakt.
 Een service-principal die aan de toepassing is gekoppeld, moet zichtbaar zijn. Selecteer de pagina en sla het toegangs beleid op, zoals wordt weer gegeven in de volgende scherm afbeelding.
 
 Omdat de toepassing alleen sleutels hoeft op te halen, selecteert u de machtiging **Get** in de geheimen opties, waardoor toegang is toegestaan terwijl de verleende bevoegdheden worden verminderd.
@@ -235,7 +235,7 @@ $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1
 
 #Configure the HTTP settings for the application gateway back end
 
-$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name "setting01" -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
 
 #Create a load-balancer routing rule that configures the load balancer
 
@@ -265,7 +265,7 @@ Met Azure App Service kunt u web-apps bouwen en hosten met behulp van de talen C
     Write-Host "Configure a CNAME record that maps $fqdn to $webappname.azurewebsites.net"
     Read-Host "Press [Enter] key when ready ..."
 
-#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Voordat u doorgaat, gaat u naar de gebruikers interface van Azure Domain Name System-configuratie voor uw aangepaste domein https://aka.ms/appservicecustomdns en volgt u de instructies in om een CNAME-record voor de hostnaam ' www ' te configureren en de standaard domein naam van de web-app te laten wijzen
+#### <a name="before-continuing-go-to-your-azure-domain-name-system-configuration-ui-for-your-custom-domain-and-follow-the-instructions-at-httpsakamsappservicecustomdns-to-configure-a-cname-record-for-the-hostname-www-and-point-it-your-web-apps-default-domain-name"></a>Voordat u doorgaat, gaat u naar de gebruikers interface van Azure Domain Name System-configuratie voor uw aangepaste domein en volgt u de instructies op https://aka.ms/appservicecustomdns om een CNAME-record voor de hostnaam ' www ' te configureren en de standaard domein naam van de web-app te laten wijzen
 
 #### <a name="upgrade-app-service-plan-to-shared-tier-minimum-required-by-custom-domains"></a>Upgrade App Service plan naar gedeelde laag (mini maal vereist voor aangepaste domeinen)
     Set-AzAppServicePlan -Name $webappname -ResourceGroupName $webappname -Tier Shared
@@ -293,7 +293,7 @@ App Service-exemplaren kunnen worden geïntegreerd met virtuele netwerken. Met d
     *Nieuwe integratie van virtuele netwerken voor App Service*
 1. Selecteer op de volgende pagina **VNET toevoegen (preview)** .
 
-1. Selecteer in het volgende menu het virtuele netwerk dat u hebt gemaakt in de implementatie die `aad-vnet`begint met. U kunt een nieuw subnet maken of een bestaande selecteren.
+1. Selecteer in het volgende menu het virtuele netwerk dat u hebt gemaakt in de implementatie die begint met `aad-vnet`. U kunt een nieuw subnet maken of een bestaande selecteren.
    In dit geval maakt u een nieuw subnet. Stel het **adres bereik** in op **10.0.3.0/24** en noem het subnet **app-subnet**.
 
    ![Configuratie van virtuele netwerk App Service](./media/secure-web-app/app-vnet-config.png)
@@ -320,7 +320,7 @@ Nu u de integratie van het virtuele netwerk hebt ingeschakeld, kunt u netwerk be
 
    *De NSG configureren*
 
-4. Voeg in de uitgaande regels voor de gateway NSG een regel toe waarmee uitgaande verbindingen met het App Service-exemplaar worden toegestaan door een regel te maken die de servicetag van de service bedoelt`AppService`
+4. Voeg in de uitgaande regels voor de gateway NSG een regel toe waarmee uitgaande verbindingen met het App Service-exemplaar worden toegestaan door een regel te maken die de servicetag van de service bedoelt `AppService`
 
    ![Uitgaande regels voor de NSG toevoegen](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -343,14 +343,14 @@ Nu u de integratie van het virtuele netwerk hebt ingeschakeld, kunt u netwerk be
     *Regels voor Azure Service Health tests toevoegen (alleen App Service Environment)*
 
 Als u de kwets baarheid wilt beperken, wijzigt u de App Service netwerk instellingen zodanig dat alleen de toepassings gateway toegang heeft tot de toepassing.
-Als u de instellingen wilt Toep assen, gaat u naar App Service tabblad netwerk, selecteert u het tabblad **IP-beperkingen** en maakt u een regel voor toestaan waarmee alleen het IP-adres van de toepassings gateway rechtstreeks toegang heeft tot de service. U kunt het IP-adres van de gateway ophalen van de pagina overzicht. Geef op het tabblad **IP-adres CIDR** het IP-adres op in de `<GATEWAY_IP_ADDRESS>/32`volgende indeling:.
+Als u de instellingen wilt Toep assen, gaat u naar App Service tabblad netwerk, selecteert u het tabblad **IP-beperkingen** en maakt u een regel voor toestaan waarmee alleen het IP-adres van de toepassings gateway rechtstreeks toegang heeft tot de service. U kunt het IP-adres van de gateway ophalen van de pagina overzicht. Voer op het tabblad **IP-adres CIDR** het IP-adres in deze indeling in: `<GATEWAY_IP_ADDRESS>/32`.
 
 ![Alleen de gateway toestaan](./media/secure-web-app/app-allow-gw-only.png)
 
 *Alleen het gateway-IP-adres toegang geven tot de App Service*
 
 ### <a name="azure-domain-name-system"></a>Azure Domain Name System 
-De Azure Domain Name System, of Azure Domain Name System, is verantwoordelijk voor het vertalen van een website-of service naam naar het IP-adres. Azure Domain Name System (https://docs.microsoft.com/azure/dns/dns-overview) is een hosting service voor Domain Name System domeinen die naam omzetting met behulp van Azure-infra structuur bieden. Door domeinen in azure te hosten, kunnen gebruikers Domain Name System records beheren met dezelfde referenties, Api's, hulpprogram ma's en facturering als andere Azure-Services. Azure Domain Name System biedt ook ondersteuning voor persoonlijke Domain Name System domeinen.
+De Azure Domain Name System, of Azure Domain Name System, is verantwoordelijk voor het vertalen van een website-of service naam naar het IP-adres. Azure Domain Name System (https://docs.microsoft.com/azure/dns/dns-overview) is een hosting service voor Domain Name System domeinen die naam omzetting biedt met behulp van Azure-infra structuur. Door domeinen in azure te hosten, kunnen gebruikers Domain Name System records beheren met dezelfde referenties, Api's, hulpprogram ma's en facturering als andere Azure-Services. Azure Domain Name System biedt ook ondersteuning voor persoonlijke Domain Name System domeinen.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 Azure Disk Encryption maakt gebruik van de BitLocker-functie van Windows om volume versleuteling voor gegevens schijven te bieden. De oplossing kan worden geïntegreerd met Azure Key Vault om de versleutelings sleutels voor de schijf te controleren en te beheren.
@@ -372,7 +372,7 @@ De oplossing maakt gebruik van Azure Key Vault voor het beheer van sleutels en g
    - Gebruik Key Vault om uw TLS-certificaten te beheren met autoverlengen. 
    - Diagnostische logboeken voor Key Vault zijn ingeschakeld met een Bewaar periode van ten minste 365 dagen.
    - Toegestane cryptografische bewerkingen voor sleutels zijn beperkt tot de vereisten die nodig zijn.
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="azure-security-center"></a>Azure Beveiligingscentrum
 Met Azure Security Center kunnen klanten centraal beveiligings beleid Toep assen en beheren voor werk belastingen, bloot stelling aan bedreigingen beperken en aanvallen detecteren en erop reageren. Let 
    - Azure Security Center opent bestaande configuraties van Azure-Services om aanbevelingen voor de configuratie en service te bieden voor het verbeteren van de beveiliging postuur en het beschermen van gegevens.
    - Azure Security Center maakt gebruik van diverse detectie mogelijkheden om klanten te waarschuwen over mogelijke aanvallen die zijn gericht op hun omgeving. Deze waarschuwingen bevatten waardevolle informatie over de trigger van de waarschuwing, de betrokken resources en de bron van de aanval. Azure Security Center heeft een reeks vooraf gedefinieerde beveiligings waarschuwingen, die worden geactiveerd wanneer een bedreiging of verdachte activiteit plaatsvindt. Met aangepaste waarschuwings regels in Azure Security Center kunnen klanten nieuwe beveiligings waarschuwingen definiëren op basis van gegevens die al zijn verzameld uit hun omgeving.
@@ -389,16 +389,16 @@ Met Azure Security Center kunnen klanten centraal beveiligings beleid Toep assen
    - Azure Security Center en een Azure Advisor bieden extra beveiliging en meldingen. Azure Security Center biedt ook een reputatie systeem.
 ### <a name="logging-and-auditing"></a>Logboekregistratie en bewaking
 Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals systeem status:
-   - Activiteiten logboeken: [Activiteiten logboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement. Activiteiten logboeken kunnen helpen bij het bepalen van de initiator, het tijdstip van de gebeurtenis en de status van een bewerking.
-   - Diagnostische logboeken: [Diagnostische logboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) bevatten alle logboeken die elke resource heeft verzonden. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
+   - Activiteiten logboeken: [activiteiten logboeken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement. Activiteiten logboeken kunnen helpen bij het bepalen van de initiator, het tijdstip van de gebeurtenis en de status van een bewerking.
+   - Diagnostische logboeken: [Diagnostische](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) logboeken bevatten alle logboeken die worden verzonden door elke resource. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
 ### <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
    Deze logboeken worden samengevoegd in [Azure monitor logboeken](https://azure.microsoft.com/services/log-analytics/) voor verwerking, opslag en dashboard rapportage. Zodra de gegevens zijn verzameld, worden deze in verschillende tabellen ingedeeld voor elk gegevens type binnen Log Analytics werk ruimten, waardoor alle gegevens kunnen worden geanalyseerd, ongeacht de oorspronkelijke bron. Bovendien kan Azure Security Center worden geïntegreerd met Azure Monitor-logboeken, zodat klanten Kusto-query's kunnen gebruiken om toegang te krijgen tot de gegevens van de beveiligings gebeurtenis en deze te combi neren met gegevens uit andere services.
 
    De volgende Azure- [bewakings oplossingen](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) zijn opgenomen als onderdeel van deze architectuur
 
-   - [Active Directory-evaluatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): De Active Directory Health Check-oplossing evalueert het risico en de status van de server omgevingen volgens een regel matig interval en biedt een lijst met aanbevelingen die specifiek zijn voor de geïmplementeerde server infrastructuur.
-   - [Status van agent](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): De Status van agent oplossing meldt hoeveel agents zijn geïmplementeerd en wat hun geografische distributie zijn, evenals hoeveel agents niet reageren en het aantal agents dat operationele gegevens verzendt.
-   - [Analyse van activiteitenlogboek](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): De Analyse van activiteitenlogboek oplossing helpt bij het analyseren van de activiteiten logboeken van Azure in alle Azure-abonnementen voor een klant.
+   - [Active Directory-evaluatie](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): de Active Directory Health Check-oplossing evalueert het risico en de status van de server omgevingen volgens een regel matig interval en biedt een lijst met aanbevelingen die specifiek zijn voor de geïmplementeerde server infrastructuur.
+   - [Status van agent](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): de status van agent oplossing rapporteert hoeveel agents zijn geïmplementeerd en wat hun geografische distributie zijn, evenals hoeveel agents niet reageren en het aantal agents dat operationele gegevens verzendt.
+   - [Analyse van activiteitenlogboek](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): de analyse van activiteitenlogboek oplossing helpt bij het analyseren van de activiteiten logboeken van Azure in alle Azure-abonnementen voor een klant.
 ### <a name="azure-monitor"></a>Azure Monitor
    [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/)helpt gebruikers bij het volgen van prestaties, het onderhouden van de beveiliging en het identificeren van trends door organisaties in te scha kelen, waarschuwingen te maken en gegevens te archiveren, met inbegrip van tracking-API-aanroepen in hun Azure-resources.
 ### <a name="application-insights"></a>Application Insights 
@@ -412,7 +412,7 @@ Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals
    - Toegangs sleutel voor gegevens opslag
    - Verbindingsreeks
    - Naam gegevens tabel
-   - Gebruikersreferenties
+   - Gebruikers referenties
    - Geavanceerd toegangs beleid wordt op basis van behoefte geconfigureerd
    - Key Vault toegangs beleid is gedefinieerd met mini maal vereiste machtigingen voor sleutels en geheimen
    - Alle sleutels en geheimen in Key Vault verloop datums hebben
@@ -443,14 +443,14 @@ Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals
 1.  Ga terug naar de Azure Portal. Selecteer in het navigatie deel venster aan de linkerkant de Azure Active Directory-service en selecteer vervolgens App-registraties.
 2.  In het scherm resultd, selecteert u de toepassing WebApp-OpenIDConnect-DotNet-code-v2.
 3.  Selecteer in het tabblad Verificatie van de sectie omleidings-Uri's de optie Web in de keuze lijst met invoervak en voeg de volgende omleidings-Uri's toe.
-    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.nethttps://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o in de sectie Geavanceerde instellingen stel de URL voor afmelden in op https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
-4.  Werk op het tabblad branding de URL van de start pagina bij, bijvoorbeeld https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net op het adres van uw app service.
+    https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signin-oidc o in het gedeelte Geavanceerde instellingen de afmeldings-URL instellen op https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net/signout-oidc
+4.  Werk op het tabblad branding de URL van de start pagina bij naar het adres van uw app service, bijvoorbeeld https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net.
         o de configuratie opslaan.
 5.  Als uw toepassing een web-API aanroept, moet u ervoor zorgen dat u de benodigde wijzigingen toepast op het project appSettings. json, zodat het de URL van de gepubliceerde API aanroept in plaats van localhost.
 Het voor beeld publiceren
     1.  Op het tabblad Overzicht van de App Service downloadt u het publicatie profiel door te klikken op de koppeling publicatie profiel ophalen en op te slaan. Andere implementatie mechanismen, zoals van broncode beheer, kunnen ook worden gebruikt.
     2.  Schakel over naar Visual Studio en ga naar het WebApp-OpenIDConnect-DotNet-code-v2-project. Klik met de rechter muisknop op het project in de Solution Explorer en selecteer publiceren. Klik op profiel importeren op de onderste balk en importeer het publicatie profiel dat u eerder hebt gedownload.
-    3.  Klik op configureren en werk op het tabblad verbinding de doel-URL bij, zodat deze een HTTPS is in de URL van de start pagina https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net , bijvoorbeeld. Klik op Volgende.
+    3.  Klik op configureren en werk op het tabblad verbinding de doel-URL bij, zodat deze een HTTPS is in de URL van de start pagina, bijvoorbeeld https://WebApp-OpenIDConnect-DotNet-code-v2-contoso.azurewebsites.net. Klik op 'Next' (Volgende).
     4.  Controleer op het tabblad instellingen of organisatie verificatie inschakelen niet is geselecteerd. Klik op Opslaan. Klik op het hoofd scherm op publiceren.
     5.  Visual Studio publiceert het project en opent automatisch een browser naar de URL van het project. Als u de standaard webpagina van het project ziet, is de publicatie geslaagd.
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Multi-Factor Authentication implementeren voor Azure Active Directory
@@ -512,9 +512,9 @@ Deze werk ruimte maken
    *Zoeken naar Log Analytics-werk ruimten*
 
    2. Selecteer op de volgende pagina **toevoegen** en geef vervolgens een naam, resource groep en locatie op voor de werk ruimte.
-   ![Een Log Analytics-werkruimte maken](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![een Log Analytics werkruimte maken](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
-   *Een Log Analytics-werkruimte maken*
+   *Een Log Analytics-werk ruimte maken*
 
    3. Gebruik het zoekvak om te zoeken naar **Azure Sentinel**.
 
@@ -537,7 +537,7 @@ Deze werk ruimte maken
    Als u bijvoorbeeld verbinding wilt maken met de toepassings gateway, voert u de volgende stappen uit:
 
    1. Open de Blade Azure-toepassing gateway-exemplaar.
-   2. Onder **bewaking**, selecteer **diagnostische instellingen**.
+   2. Onder **bewaking**selecteert u **Diagnostische instellingen**.
    3. Selecteer **Diagnostische instelling toevoegen**.
 
    ![Application Gateway diagnostische gegevens toevoegen](./media/secure-aad-app/sentinel-gateway-connector.png)

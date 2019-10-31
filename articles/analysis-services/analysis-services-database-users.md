@@ -4,15 +4,15 @@ description: Meer informatie over het beheren van database rollen en-gebruikers 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301149"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147006"
 ---
 # <a name="manage-database-roles-and-users"></a>Database rollen en-gebruikers beheren
 
@@ -25,14 +25,14 @@ Rolmachtigingen zijn onder andere:
 *  **Proces** : gebruikers kunnen verbinding maken met en proces bewerkingen uitvoeren op de data base en model database gegevens analyseren.
 *  **Lezen** -gebruikers kunnen een client toepassing gebruiken om verbinding te maken met de model database gegevens en deze te analyseren.
 
-Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Role Manager in SQL Server Data Tools (SSDT). Wanneer u hebt geïmplementeerd op een server, gebruikt u SQL Server Management Studio (SSMS), [Analysis Services Power shell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [Tabellaire model scripting language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) om rollen en gebruikers leden toe te voegen of te verwijderen.
+Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Role Manager in Visual Studio met Analysis Services-projecten. Wanneer u hebt geïmplementeerd op een server, gebruikt u SQL Server Management Studio (SSMS), [Analysis Services Power shell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [Tabellaire model scripting language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) om rollen en gebruikers leden toe te voegen of te verwijderen.
 
 **Beveiligings groepen** moeten [e-mail hebben ingeschakeld](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) waarbij de eigenschap `MailEnabled` is ingesteld op `True`. Wanneer u een Group by-e-mail adres opgeeft, wordt `obj:groupid@tenantid` gebruikt.
 
 
-## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Rollen en gebruikers in SSDT toevoegen of beheren  
+## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Rollen en gebruikers toevoegen aan of beheren in Visual Studio  
   
-1.  Klik in SSDT > **Tabellaire model Verkenner**met de rechter muisknop op **rollen**.  
+1.  Klik in **Tabellaire model Verkenner**met de rechter muisknop op **rollen**.  
   
 2.  Klik in **Rolbeheer** op **Nieuw**.  
   

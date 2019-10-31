@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c782c8bb2807017053375b45560685acf78161e7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 64b7add9ddb1734d763c46e93d6788ce21a2c321
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169974"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150887"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang blok keren per locatie
 
@@ -44,12 +44,12 @@ Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **insluiten**selecteert u **alle gebruikers**.
    1. Selecteer **Done**.
-1. Onder **Cloud-apps of acties**@no__t-**1,** selecteert u **alle Cloud-apps**en selecteert u **gereed**.
+1. Selecteer onder **Cloud-apps of acties** > **bevatten** **alle Cloud-apps**en selecteer **gereed**.
 1. Onder **voor waarden** > **locatie**.
    1. Stel **configureren** op **Ja** in
    1. Selecteer **geselecteerde locaties** **toevoegen**
    1. Selecteer de geblokkeerde locatie die u hebt gemaakt voor uw organisatie.
-   1. Klik op @no__t **selecteren**-**1 @no__t-** 3**gereed**.
+   1. Klik **op** > **gereed** > **gereed**.
 1. Onder **Access controls** > **blok**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.

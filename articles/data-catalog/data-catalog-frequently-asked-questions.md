@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 3877648723a8866ec7d9c5f1987ae3a276114d5e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898720"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152055"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Veelgestelde vragen over Azure Data Catalog
 In dit artikel vindt u antwoorden op veelgestelde vragen met betrekking tot de Azure Data Catalog-service.
@@ -25,19 +25,19 @@ Data Catalog verhelpt de uitdagingen van de detectie van gegevens bronnen en ' d
 ## <a name="what-are-its-target-audiences"></a>Wat zijn de doel groepen?
 Data Catalog is ontworpen voor technische en niet-technische gebruikers, waaronder:
 
-* Ontwikkel aars van gegevens en BI-en analyse professionals: Personen die verantwoordelijk zijn voor het produceren van gegevens en analyse-inhoud zodat anderen deze kunnen gebruiken.
-* Data-webbronnen: Personen die kennis hebben van de gegevens, wat het betekent, en hoe deze moeten worden gebruikt.
-* Gegevens verbruikers: Personen die de gegevens die ze nodig hebben om hun werk te doen, gemakkelijk kunnen detecteren, begrijpen en er verbinding mee moeten maken, met behulp van het programma van hun keuze.
-* Centraal IT: Personen die kunnen beschikken over honderden gegevens bronnen die kunnen worden gedetecteerd door zakelijke gebruikers en die toezicht moeten houden op de manier waarop gegevens worden gebruikt en door wie.
+* Ontwikkel aars van gegevens en BI-en analyse professionals: mensen die verantwoordelijk zijn voor het produceren van gegevens en analyse-inhoud die anderen kunnen gebruiken.
+* Data-procedures: mensen die kennis hebben van de gegevens, wat het betekent en hoe deze moeten worden gebruikt.
+* Data consumers: mensen die de gegevens die ze nodig hebben om hun werk te doen, gemakkelijk kunnen detecteren, begrijpen en er verbinding mee moeten maken, door gebruik te maken van het hulp programma van hun keuze.
+* IT: mensen die honderden gegevens bronnen kunnen detecteren door zakelijke gebruikers, en die het toezicht moeten behouden over de manier waarop gegevens worden gebruikt en door wie.
 
 ## <a name="what-is-its-availability-by-region"></a>Wat is de beschik baarheid per regio?
 Data Catalog Services zijn momenteel beschikbaar in de volgende data centers:
 
-* US - west
-* East US
-* Europa -west
+* VS - west
+* VS - oost
+* Europa - west
 * Europa - noord
-* Australië - oost
+* Australië Oost
 * Azië - zuidoost
 
 ## <a name="what-are-its-limits-on-the-number-of-data-assets"></a>Wat zijn de limieten voor het aantal gegevensassets?
@@ -75,7 +75,7 @@ Uw gegevens registreren in Data Catalog:
 De specifieke eigenschappen verschillen van de gegevens bron tot de gegevens bron, maar in het algemeen haalt de Data Catalog Publishing-service de volgende informatie op:
 
 * Activa naam
-* Activatype
+* Activa type
 * Beschrijving van activum
 * Kenmerk/kolom namen
 * Gegevens typen voor kenmerken/kolommen
@@ -87,7 +87,7 @@ De specifieke eigenschappen verschillen van de gegevens bron tot de gegevens bro
 >
 
 > [!NOTE]
-> Voor gegevens bronnen, zoals SQL Server Analysis Services die een eigenschap van de klasse **Description** hebben, haalt het hulp programma voor het registreren van Data Catalog gegevens die eigenschaps waarde uit. Voor SQL Server relationele data bases, die geen eigenschap **Description** van de eerste klasse hebben, haalt het Data Catalog hulp programma gegevens bron registratie de waarde uit de uitgebreide eigenschap **ms_description** voor objecten en kolommen. Zie voor meer informatie [uitgebreide eigenschappen gebruiken voor database objecten](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
+> Voor gegevens bronnen, zoals SQL Server Analysis Services die een eigenschap van de klasse **Description** hebben, haalt het hulp programma voor het registreren van Data Catalog gegevens die eigenschaps waarde uit. Voor *on-premises* SQL Server relationele data bases die geen eigenschap topklasse **Description** hebben, haalt het Data Catalog hulp programma voor gegevens bron registratie de waarde uit de uitgebreide eigenschap **ms_description** voor objecten en kolommen. Zie voor meer informatie [uitgebreide eigenschappen gebruiken voor database objecten](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx).
 >
 >
 

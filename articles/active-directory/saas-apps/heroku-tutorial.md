@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Zelfstudie: Azure Active Directory-integratie met Heroku | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met heroku | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Heroku configureert.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d7d72ec6-4a60-4524-8634-26d8fbbcc833
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a78252a48ba8e3d69c6931da688f6ad692d96f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a9cb7738a8983ca2f76866fa40d49cd6cc06f99
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101141"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159080"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-heroku"></a>Zelfstudie: Zelfstudie: Azure Active Directory-integratie met Heroku
+# <a name="tutorial-azure-active-directory-integration-with-heroku"></a>Zelf studie: integratie Azure Active Directory met heroku
 
 In deze zelfstudie leert u hoe u Heroku integreert met Azure Active Directory (Azure AD).
 De integratie van Heroku met Azure Active Directory biedt de volgende voordelen:
@@ -54,7 +55,7 @@ Als u de integratie van Heroku met Azure Active Directory wilt configureren, moe
 
 **Als u Heroku uit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -113,7 +114,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en id. U kunt deze waarden aanvragen bij het Heroku-team. Dit wordt in latere gedeelten van dit artikel beschreven.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -143,7 +144,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
     ![Eenmalige aanmelding configureren](./media/heroku-tutorial/tutorial_heroku_52.png)
 
-7. Klik op **volgende**.
+7. Klik op **Volgende**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -163,12 +164,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -182,7 +183,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De Heroku-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -207,11 +208,11 @@ Er is geen actie-item voor u in deze sectie. Er wordt een nieuwe gebruiker gemaa
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Heroku in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Heroku waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Palo Alto Networks Captive Portal | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Palo Alto Networks-Portal | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Palo Alto Networks Captive Portal configureert.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c3651e81cd3916bccc859bc3bc010511b2a114a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095262"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160161"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Zelfstudie: Azure Active Directory-integratie met Palo Alto Networks Captive Portal
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Zelf studie: integratie Azure Active Directory met Palo Alto Networks-Portal
 
 In deze zelfstudie leert u hoe u Palo Alto Networks Captive Portal integreert met Azure Active Directory (Azure AD).
 
@@ -78,11 +79,11 @@ U configureert en test eenmalige aanmelding van Azure AD met Palo Alto Networks 
 
 Om eenmalige aanmelding van Azure AD met Palo Alto Networks Captive Portal te configureren en testen, moet u de volgende taken uitvoeren:
 
-1. **[Azure AD configureren voor eenmalige aanmelding](#configure-azure-ad-single-sign-on)** : Stel de gebruiker in staat deze functie te gebruiken.
-2. **[Eenmalige aanmelding configureren voor Palo Alto Networks Captive Portal](#configure-palo-alto-networks-captive-portal-single-sign-on)** : Configureer de instellingen voor eenmalige aanmelding in de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : Test Azure AD-eenmalige aanmelding met de gebruiker *Britta Simon*.
-4. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : Stel Britta Simon in om gebruik te maken van Azure AD-eenmalige aanmelding.
-5. **Een testgebruiker maken voor Palo Alto Networks Captive Portal**: Maak een tegenhanger van de gebruiker *Britta Simon* in Palo Alto Networks Captive Portal die gekoppeld is aan de Azure AD-gebruiker.
+1. **[Eenmalige aanmelding voor Azure AD configureren](#configure-azure-ad-single-sign-on)** : Hiermee stelt u de gebruiker in staat om deze functie te gebruiken.
+2. **[Palo Alto Networks-eenmalige aanmelding voor de portal configureren](#configure-palo-alto-networks-captive-portal-single-sign-on)** : Configureer de instellingen voor eenmalige aanmelding in de toepassing.
+3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : de eenmalige aanmelding van Azure AD testen met de gebruiker *Julia Simon*.
+4. **[De Azure AD-test gebruiker toewijzen](#assign-the-azure-ad-test-user)** : Stel Julia Simon in op het gebruik van eenmalige aanmelding voor Azure AD.
+5. **Een Palo Alto Networks-gebruiker**voor de gebruikers van de portal testen: Maak een vergelijk gebruiker *Julia Simon* in Palo Alto Networks portal die is gekoppeld aan de Azure AD-gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : Controleer of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
@@ -158,7 +159,7 @@ Maak vervolgens een testgebruiker met de naam *Britta Simon* in de Azure-portal:
 
     1. Voer **BrittaSimon** in bij **Naam**.
   
-    2. Voor **gebruikersnaam**, voer **BrittaSimon\@\<your_company_domain\>** . Bijvoorbeeld, **BrittaSimon\@contoso.com**.
+    2. Voer voor **gebruikers naam** **BrittaSimon\@\<your_company_domain\>** . Bijvoorbeeld **BrittaSimon\@contoso.com**.
 
     3. Voer bij **Wachtwoord** een wachtwoord in. Wij raden u aan het wachtwoord dat u invoert te noteren. U kunt het selectievakje **Wachtwoord weergeven** inschakelen om het wachtwoord weer te geven.
 
@@ -201,7 +202,7 @@ Maak vervolgens een gebruiker met de naam *Britta Simon* in Palo Alto Networks C
 
 Palo Alto Networks Captive Portal wordt achter de firewall op een Windows-VM geïnstalleerd. Als u eenmalige aanmelding in Palo Alto Networks Captive Portal wilt testen, meldt u zich bij de Windows-VM aan met behulp van Remote Desktop Protocol (RDP). Open in de RDP-sessie een browser en ga naar een willekeurige website. De URL voor eenmalige aanmelding wordt geopend en u wordt gevraagd om u te verifiëren. Wanneer de verificatie is voltooid, kunt u websites bezoeken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 Zie voor meer informatie de volgende artikelen:
 

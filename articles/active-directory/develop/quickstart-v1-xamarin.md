@@ -18,18 +18,19 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36e354894700ec92a444f288b3e09f5d7af88329
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f93816168a95fa10639da91d72a070660157a96f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321038"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149534"
 ---
-# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Quickstart: Bouw een Xamarin-app die Microsoft-aanmelding integreert
+# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Quick Start: een Xamarin-app bouwen die micro soft-aanmelding integreert
 
 [Micro soft Identity platform](v2-overview.md) is een evolutie van het ontwikkel platform van de Azure Active Directory (Azure AD). Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft-API's, zoals Microsoft Graph, of API's die door ontwikkelaars zijn gemaakt.
 
 Met [micro soft Authentication Library (MSAL)](msal-overview.md) kunnen ontwikkel aars tokens verkrijgen van het micro soft Identity platform-eind punt om toegang te krijgen tot beveiligde web-api's. Active Directory Authentication Library (ADAL) wordt geïntegreerd met het eind punt van Azure AD voor ontwikkel aars (v 1.0), waarbij MSAL integreert met het micro soft Identity platform (v 2.0)-eind punt.
 
-Voor nieuwe toepassingen van Xamarin-toepassingen raden we u aan micro soft Identity platform (v 2.0) en MSAL te gebruiken om tokens te verkrijgen en beveiligde web-Api's te openen: [Micro soft Identity en de Microsoft Graph integreren in een Xamarin Forms-app met behulp van MSAL](https://github.com/azure-samples/active-directory-xamarin-native-v2#integrate-microsoft-identity-and-the-microsoft-graph-into-a-xamarin-forms-app-using-msal) (zonder de optionele stappen).
+## <a name="next-steps"></a>Volgende stappen
 
+Voor nieuwe Xamarin-toepassingen raden we u aan micro soft Identity platform (v 2.0) en MSAL te gebruiken voor het verkrijgen van tokens en toegang tot beveiligde web-Api's. Zie [micro soft Identity integreren en de Microsoft Graph in een Xamarin Forms-app met behulp van MSAL](https://github.com/azure-samples/active-directory-xamarin-native-v2#integrate-microsoft-identity-and-the-microsoft-graph-into-a-xamarin-forms-app-using-msal) (zonder de optionele stappen) om aan de slag te gaan.

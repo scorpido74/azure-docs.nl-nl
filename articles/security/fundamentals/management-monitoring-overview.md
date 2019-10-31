@@ -13,29 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9ed2d00d6f229d958e0df024c70381051840548c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727008"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162743"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Overzicht van Azure-beveiligings beheer en-bewaking
 Dit artikel bevat een overzicht van de beveiligings functies en-services die Azure biedt om u te helpen bij het beheer en de bewaking van Azure-Cloud Services en virtuele machines.
-
-## <a name="shared-responsibility"></a>Gedeelde verantwoordelijkheid
-
-De beveiliging van uw micro soft-Cloud Services is een partnerschap en een gedeelde verantwoordelijkheid tussen u en micro soft. Micro soft is verantwoordelijk voor het Azure-platform en de fysieke beveiliging van de Data Centers (door gebruik te maken van beveiligings beveiligingen zoals vergrendelde badges, omheiningen en bewaken). Azure biedt een hoog niveau van Cloud beveiliging op de software-laag die voldoet aan de vereisten voor beveiliging, privacy en naleving van zijn klanten.
-
-U bent eigenaar van uw gegevens en identiteiten, de verantwoordelijkheid voor het beveiligen ervan, de beveiliging van uw on-premises resources en de beveiliging van Cloud onderdelen waarover u beschikt. Micro soft biedt u beveiligings maatregelen en mogelijkheden om u te helpen uw gegevens en toepassingen te beveiligen. Uw mate van verantwoordelijkheid voor beveiliging is gebaseerd op het type Cloud service.
-
-In het volgende diagram vindt u een overzicht van de verantwoordelijkheid van micro soft en de klant.
-
-![Gedeelde verantwoordelijkheid](./media/management-monitoring-overview/shared-responsibility.png)
-
-Zie voor meer informatie over beveiligings beheer [beveiligings beheer in azure](management.md).
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
@@ -64,17 +52,17 @@ Meer informatie:
 * [Symantec-Endpoint Protection installeren en configureren op een Windows-VM](/azure/virtual-machines/windows/classic/install-symantec)
 * [Nieuwe antimalware-opties voor het beveiligen van Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Meervoudige verificatie
 
-Azure multi-factor Authentication is een verificatie methode waarvoor het gebruik van meer dan één verificatie methode is vereist. Er wordt een kritieke tweede beveiligingslaag toegevoegd aan gebruikers aanmeldingen en trans acties.
+Azure Multi-Factor Authentication is een verificatie methode die het gebruik van meer dan één verificatie methode vereist. Er wordt een kritieke tweede beveiligingslaag toegevoegd aan gebruikers aanmeldingen en trans acties.
 
-Multi-factor Authentication helpt de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke authenticatie via een reeks verificatie opties (telefoon oproep, tekst bericht of mobiele app-melding of verificatie code) en OATH-tokens van derden.
+Multi-Factor Authentication helpt de toegang tot gegevens en toepassingen te beschermen terwijl de vraag naar gebruikers wordt gevergaderd voor een eenvoudig aanmeldings proces. Het biedt sterke authenticatie via een reeks verificatie opties (telefoon oproep, tekst bericht of mobiele app-melding of verificatie code) en OATH-tokens van derden.
 
 Meer informatie:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Wat is Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
-* [Hoe Azure multi-factor Authentication werkt](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Hoe Azure Multi-Factor Authentication werkt](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 
@@ -112,7 +100,7 @@ Meer informatie:
 * [Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Aan de slag met Azure AD Privileged Identity Management](../../active-directory/privileged-identity-management/pim-getting-started.md)
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>Identiteitsbeveiliging
 
 Azure AD Identity Protection biedt een geconsolideerde weer gave van verdachte aanmeldings activiteiten en mogelijke beveiligings problemen om uw bedrijf te helpen beveiligen. Identiteits beveiliging detecteert verdachte activiteiten voor gebruikers en geprivilegieerde identiteiten (beheerders), op basis van signalen zoals:
 
@@ -125,7 +113,7 @@ Door meldingen en aanbevolen herstel te bieden, helpt identiteits beveiliging de
 Meer informatie:
 
 * [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
-* [Channel 9: Azure AD en identiteits weergave: Preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Beveiligingscentrum
 
@@ -150,3 +138,7 @@ Intelligent Security Graph biedt real-time bedreigings beveiliging in micro soft
 
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
+## <a name="next-steps"></a>Volgende stappen
+Meer informatie over het [gedeelde verantwoordelijkheids model](shared-responsibility.md) en de beveiligings taken die door micro soft worden verwerkt en welke taken door u worden uitgevoerd.
+
+Zie voor meer informatie over beveiligings beheer [beveiligings beheer in azure](management.md).

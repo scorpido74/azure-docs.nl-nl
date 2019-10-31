@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 63ddb329e37ea3da589e7d2eeaebabb42aa2b467
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555518"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161967"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure Diagnostics probleem oplossing
 In dit artikel vindt u informatie over het oplossen van problemen die relevant zijn voor het gebruik van Azure Diagnostics. Zie [Azure Diagnostics Overview](diagnostics-extension-overview.md)voor meer informatie over Azure Diagnostics.
@@ -30,13 +30,13 @@ Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 | Artefact | Pad |
 | --- | --- |
-| **Azure Diagnostics-configuratie bestand** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \Config.txt |
+| **Azure Diagnostics-configuratie bestand** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<-versie > \Config.txt |
 | **Logboek bestanden** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
 | **Lokaal archief voor diagnostische gegevens** | Map c:\resources\directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Tables |
 | **Configuratie bestand van bewakings agent** | Map c:\resources\directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
-| **Azure Diagnostics extensie pakket** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > |
+| **Azure Diagnostics extensie pakket** | \<versie van%SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics > |
 | **Pad naar het hulp programma voor logboek verzameling** | %SystemDrive%\Packages\GuestAgent\ |
-| **MonAgentHost-logboek bestand** | Map c:\resources\directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **MonAgentHost-logboek bestand** | Map c:\resources\directory\<CloudServiceDeploymentID >.\<rolnaam >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ### <a name="virtual-machines"></a>Virtuele machines
 | Artefact | Pad |
@@ -48,7 +48,7 @@ Hieronder vindt u de paden naar enkele belang rijke logboeken en artefacten. We 
 | **Status bestand** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \Status |
 | **Azure Diagnostics extensie pakket** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
 | **Pad naar het hulp programma voor logboek verzameling** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **MonAgentHost-logboek bestand** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
+| **MonAgentHost-logboek bestand** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrische gegevens worden niet weer gegeven in de Azure Portal
 Azure Diagnostics geeft metrische gegevens die kunnen worden weer gegeven in de Azure Portal. Als u problemen ondervindt bij het bekijken van de gegevens in de portal, controleert u de WADMetrics-\* in de tabel in het Azure Diagnostics Storage-account om te zien of de bijbehorende metrische records daar aanwezig zijn.
@@ -64,14 +64,14 @@ Als er geen gegevens zijn voor de specifieke metriek, controleert u de **Diagnos
 - \ ASP.NET toepassingen (__totaal__) \Errors totaal per seconde
 - \ASP.NET\Requests in wachtrij
 - \ASP.NET\Requests afgewezen
-- \Processor (w3wp) \% processor tijd
+- \Processor (w3wp)\% processor tijd
 - \Process (w3wp) \private bytes
-- \Process (WaIISHost) \% processor tijd
+- \Process (WaIISHost)\% processor tijd
 - \Process (WaIISHost) \private bytes
-- \Process (WaWorkerHost) \% processor tijd
+- \Process (WaWorkerHost)\% processor tijd
 - \Process (WaWorkerHost) \private bytes
 - \Memory\Page fouten per seconde
-- \.NET CLR-geheugen (_globaal_) \% tijd in GC
+- \.NET CLR-geheugen (_globaal_)\% tijd in GC
 - \LogicalDisk (C:) \Gelezen geschreven bytes per seconde
 - \LogicalDisk (C:) \Gelezen Lees bewerkingen in bytes per seconde
 - \LogicalDisk (D:) \Gelezen geschreven bytes per seconde
@@ -134,7 +134,7 @@ Als u geen traceer logboeken ziet die worden gegenereerd, raadpleegt u meer info
 Controleer vervolgens of de gegevens lokaal worden vastgelegd.
 De gegevens worden lokaal opgeslagen in `*.tsf`-bestanden in het lokale archief voor diagnostische gegevens. Verschillende soorten logboeken worden verzameld in verschillende `.tsf`-bestanden. De namen zijn vergelijkbaar met de tabel namen in Azure Storage.
 
-@No__t_0 worden bijvoorbeeld verzameld in `PerformanceCountersTable.tsf`. Gebeurtenis logboeken worden verzameld in `WindowsEventLogsTable.tsf`. Volg de instructies in de sectie [lokaal logboek extractie](#local-log-extraction) om de lokale verzamelings bestanden te openen en te controleren of ze worden verzameld op schijf.
+`Performance Counters` worden bijvoorbeeld verzameld in `PerformanceCountersTable.tsf`. Gebeurtenis logboeken worden verzameld in `WindowsEventLogsTable.tsf`. Volg de instructies in de sectie [lokaal logboek extractie](#local-log-extraction) om de lokale verzamelings bestanden te openen en te controleren of ze worden verzameld op schijf.
 
 Als u geen logboeken ziet die lokaal worden verzameld en u al hebt gecontroleerd of de host gegevens genereert, hebt u waarschijnlijk een configuratie probleem. Controleer uw configuratie zorgvuldig.
 
@@ -208,8 +208,8 @@ Deze code genereert vier tabellen:
 
 | Gebeurtenis | Tabelnaam |
 | --- | --- |
-| provider = "PROv1" &lt;Event id = "1"/&gt; |WADEvent + MD5 ("PROv1") + "1" |
-| provider = "PROv1" &lt;Event id = "2" eventDestination = "dest1"/&gt; |WADdest1 |
+| provider = "PROv1" &lt;gebeurtenis-id = "1"/&gt; |WADEvent + MD5 ("PROv1") + "1" |
+| provider = "PROv1" &lt;gebeurtenis-id = "2" eventDestination = "dest1"/&gt; |WADdest1 |
 | provider = "PROv1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("PROv1") |
 | provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
@@ -260,7 +260,7 @@ De bewakings agent verzamelt logboeken en artefacten als `.tsf`-bestanden. Het `
 Er wordt een nieuw bestand met de naam `<relevantLogFile>.csv` gemaakt in hetzelfde pad als het overeenkomstige `.tsf` bestand.
 
 >[!NOTE]
-> U hoeft dit hulp programma alleen uit te voeren op het Main. TSF-bestand (bijvoorbeeld PerformanceCountersTable. TSF). De bijbehorende bestanden (bijvoorbeeld PerformanceCountersTables_ \* \*001. TSF, PerformanceCountersTables_ \* \*002. TSF, enzovoort) worden automatisch verwerkt.
+> U hoeft dit hulp programma alleen uit te voeren op het Main. TSF-bestand (bijvoorbeeld PerformanceCountersTable. TSF). De bijbehorende bestanden (bijvoorbeeld PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF, enzovoort) worden automatisch verwerkt.
 
 ### <a name="more-about-missing-trace-logs"></a>Meer informatie over ontbrekende traceer logboeken
 

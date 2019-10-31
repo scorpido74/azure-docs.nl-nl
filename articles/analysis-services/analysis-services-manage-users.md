@@ -4,15 +4,15 @@ description: Meer informatie over verificatie en gebruikers machtigingen in Azur
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc66b34492b34a6e0f239d19ee10fbd79b683a14
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294925"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146868"
 ---
 # <a name="authentication-and-user-permissions"></a>Verificatie en gebruikersmachtigingen
 
@@ -28,11 +28,11 @@ Alle client toepassingen en hulpprogram ma's gebruiken een of meer van de Analys
 
 Alle drie client bibliotheken ondersteunen zowel interactieve als Azure AD-stroom en niet-interactieve verificatie methoden. De twee niet-interactieve methoden, Active Directory wacht woord en Active Directory geïntegreerde verificatie methoden kunnen worden gebruikt in toepassingen die gebruikmaken van AMOMD en MSOLAP. Deze twee methoden resulteren nooit in pop-updialoogvensters.
 
-Client toepassingen zoals Excel en Power BI Desktop, en hulpprogram ma's zoals SSMS en SSDT installeren de nieuwste versies van de bibliotheken wanneer ze zijn bijgewerkt naar de nieuwste versie. Power BI Desktop, SSMS en SSDT worden maandelijks bijgewerkt. Excel is [bijgewerkt met Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Office 365-updates zijn minder frequent en sommige organisaties gebruiken het uitgestelde kanaal, wat betekent dat updates tot drie maanden worden uitgesteld.
+Client toepassingen zoals Excel en Power BI Desktop, en hulpprogram ma's zoals SSMS en Analysis Services project extension for Visual Studio installeren de nieuwste versies van de bibliotheken wanneer deze worden bijgewerkt naar de nieuwste versie. De uitbrei ding Power BI Desktop, SSMS en Analysis Services Projects wordt maandelijks bijgewerkt. Excel is [bijgewerkt met Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Office 365-updates zijn minder frequent en sommige organisaties gebruiken het uitgestelde kanaal, wat betekent dat updates tot drie maanden worden uitgesteld.
 
 Afhankelijk van de client toepassing of het hulp programma dat u gebruikt, kan het type verificatie en de manier waarop u zich aanmeldt anders zijn. Elke toepassing kan verschillende functies ondersteunen voor het maken van verbinding met Cloud Services, zoals Azure Analysis Services.
 
-Power BI Desktop, SSDT en SSMS ondersteunen Active Directory universele verificatie, een interactieve methode die ook Azure Multi-Factor Authentication (MFA) ondersteunt. Azure MFA helpt bij het beveiligen van de toegang tot gegevens en toepassingen tijdens een eenvoudig aanmeldings proces. Het biedt krachtige verificatie met verschillende verificatie opties (telefoon oproep, tekst bericht, Smart Cards met pincode of melding van een mobiele app). Interactieve MFA met Azure AD kan resulteren in een pop-upvenster voor validatie. **Universele verificatie wordt aanbevolen**.
+Power BI Desktop, Visual Studio en SSMS ondersteunen Active Directory universele verificatie, een interactieve methode die ook Azure Multi-Factor Authentication (MFA) ondersteunt. Azure MFA helpt bij het beveiligen van de toegang tot gegevens en toepassingen tijdens een eenvoudig aanmeldings proces. Het biedt krachtige verificatie met verschillende verificatie opties (telefoon oproep, tekst bericht, Smart Cards met pincode of melding van een mobiele app). Interactieve MFA met Azure AD kan resulteren in een pop-upvenster voor validatie. **Universele verificatie wordt aanbevolen**.
 
 Als u zich aanmeldt bij Azure met behulp van een Windows-account en universele verificatie niet is geselecteerd of beschikbaar (Excel), is [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) vereist. Met Federatie worden Azure AD-en Office 365-gebruikers geverifieerd met on-premises referenties en kunnen ze toegang krijgen tot Azure-resources.
 
@@ -46,9 +46,9 @@ Azure Analysis Services-servers ondersteunen verbindingen van [SSMS v-17.1](http
 
 *  Ondersteunt Multi-Factor Authentication (MFA). Azure MFA helpt de toegang tot gegevens en toepassingen te beschermen met een reeks verificatie opties: telefoon oproep, SMS-bericht, Smart Cards met pincode of mobiele app-melding. Interactieve MFA met Azure AD kan resulteren in een pop-upvenster voor validatie.
 
-### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
+### <a name="visual-studio"></a>Visual Studio
 
-SSDT maakt verbinding met Azure Analysis Services door gebruik te maken van Active Directory universele verificatie met MFA-ondersteuning. Gebruikers wordt gevraagd zich aan te melden bij Azure bij de eerste implementatie. Gebruikers moeten zich aanmelden bij Azure met een account met beheerders machtigingen voor de server op de server waarop ze zijn geïmplementeerd. Bij de eerste keer dat u zich bij Azure aanmeldt, wordt er een token toegewezen. SSDT cacheert het token in het geheugen voor toekomstige reconnecties.
+Visual Studio maakt verbinding met Azure Analysis Services met behulp van Active Directory universele verificatie met MFA-ondersteuning. Gebruikers wordt gevraagd zich aan te melden bij Azure bij de eerste implementatie. Gebruikers moeten zich aanmelden bij Azure met een account met beheerders machtigingen voor de server op de server waarop ze zijn geïmplementeerd. Bij de eerste keer dat u zich bij Azure aanmeldt, wordt er een token toegewezen. Het token wordt in het geheugen opgeslagen in de cache voor toekomstige reconnecties.
 
 ### <a name="power-bi-desktop"></a>Power BI Desktop
 
@@ -60,7 +60,7 @@ Excel-gebruikers kunnen verbinding maken met een server met behulp van een Windo
 
 ## <a name="user-permissions"></a>Gebruikersmachtigingen
 
-**Server beheerders** zijn specifiek voor een Azure Analysis Services Server-exemplaar. Ze maken verbinding met hulp middelen als Azure Portal, SSMS en SSDT voor het uitvoeren van taken zoals het toevoegen van data bases en het beheren van gebruikers rollen. De gebruiker die de server maakt, wordt standaard automatisch toegevoegd als Analysis Services server beheerder. Andere beheerders kunnen worden toegevoegd met behulp van Azure Portal of SSMS. Server beheerders moeten een account hebben in de Azure AD-Tenant in hetzelfde abonnement. Zie [Server beheerders beheren](analysis-services-server-admins.md)voor meer informatie. 
+**Server beheerders** zijn specifiek voor een Azure Analysis Services Server-exemplaar. Ze maken verbinding met hulp middelen als Azure Portal, SSMS en Visual Studio voor het uitvoeren van taken zoals het toevoegen van data bases en het beheren van gebruikers rollen. De gebruiker die de server maakt, wordt standaard automatisch toegevoegd als Analysis Services server beheerder. Andere beheerders kunnen worden toegevoegd met behulp van Azure Portal of SSMS. Server beheerders moeten een account hebben in de Azure AD-Tenant in hetzelfde abonnement. Zie [Server beheerders beheren](analysis-services-server-admins.md)voor meer informatie. 
 
 **Database gebruikers** maken verbinding met model databases met behulp van client toepassingen zoals Excel of Power bi. Gebruikers moeten worden toegevoegd aan database rollen. Database rollen definiëren beheerders-, proces-of lees machtigingen voor een Data Base. Het is belang rijk om te begrijpen dat database gebruikers in een rol met beheerders bevoegdheden een andere zijn dan Server beheerders. Server beheerders zijn echter standaard ook database beheerders. Zie [Data Base-rollen en-gebruikers beheren](analysis-services-database-users.md)voor meer informatie.
 
@@ -74,7 +74,7 @@ Rollen op dit niveau zijn van toepassing op gebruikers of accounts die taken moe
 
  Rollen die zijn gedefinieerd voor een tabellair model zijn database rollen. Dat wil zeggen dat de rollen leden bevatten die bestaan uit Azure AD-gebruikers en-beveiligings groepen die specifieke machtigingen hebben die de actie definiëren die leden kunnen uitvoeren op een model database. Een databaserol wordt gemaakt als een afzonderlijk object in de database en is alleen van toepassing op de database waarin die rol is gemaakt.   
   
- Wanneer u een nieuw tabellaire model project maakt, heeft het model project standaard geen rollen. Rollen kunnen worden gedefinieerd met behulp van het dialoog venster rollen beheer in SSDT. Wanneer rollen worden gedefinieerd tijdens het ontwerp van een model project, worden ze alleen toegepast op de model werkruimte database. Wanneer het model wordt geïmplementeerd, worden dezelfde rollen toegepast op het geïmplementeerde model. Nadat een model is geïmplementeerd, kunnen server-en database beheerders rollen en leden beheren met behulp van SSMS. Zie [Data Base-rollen en-gebruikers beheren](analysis-services-database-users.md)voor meer informatie.
+ Wanneer u een nieuw tabellaire model project maakt, heeft het model project standaard geen rollen. Rollen kunnen worden gedefinieerd met behulp van het dialoog venster rollen beheer in Visual Studio. Wanneer rollen worden gedefinieerd tijdens het ontwerp van een model project, worden ze alleen toegepast op de model werkruimte database. Wanneer het model wordt geïmplementeerd, worden dezelfde rollen toegepast op het geïmplementeerde model. Nadat een model is geïmplementeerd, kunnen server-en database beheerders rollen en leden beheren met behulp van SSMS. Zie [Data Base-rollen en-gebruikers beheren](analysis-services-database-users.md)voor meer informatie.
   
 ## <a name="next-steps"></a>Volgende stappen
 

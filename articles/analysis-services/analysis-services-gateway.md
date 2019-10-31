@@ -4,15 +4,15 @@ description: Een on-premises gateway is nodig als uw Analysis Services-server in
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 35ffc7f3c97ca7ab14f94c3607560ffb6ea0b399
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294932"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146848"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway
 
@@ -50,7 +50,7 @@ Wanneer u voor een Azure Analysis Services omgeving installeert, is het belang r
 
 De gateway maakt een uitgaande verbinding met Azure Service Bus. Deze communiceert via uitgaande poorten: TCP 443 (standaard), 5671, 5672, 9350 tot en met 9354.  De gateway vereist geen inkomende poorten.
 
-Mogelijk moet u IP-adressen voor uw gegevens regio white list in uw firewall. U kunt de [IP-lijst van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden. Deze lijst wordt wekelijks bijgewerkt. De IP-adressen die worden weer gegeven in de IP-lijst van het Azure-Data Center zijn in CIDR-notatie. Zie [Klasseloze route ring tussen domeinen](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
+Mogelijk moet u IP-adressen voor uw gegevens regio in uw firewall toevoegen. U kunt de [IP-lijst van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden. Deze lijst wordt wekelijks bijgewerkt. De IP-adressen die worden weer gegeven in de IP-lijst van het Azure-Data Center zijn in CIDR-notatie. Zie [Klasseloze route ring tussen domeinen](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
 
 Hieronder vindt u een volledig gekwalificeerde domein naam die wordt gebruikt door de gateway.
 

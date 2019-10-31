@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met FM:Systems | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en FM:Systems.
+title: 'Zelf studie: integratie Azure Active Directory met FM: systemen | Microsoft Docs'
+description: 'Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en FM: systemen.'
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,26 +8,27 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f78c58c5-6e98-458b-8991-78624a245665
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 62e800a5ac1e1e001e5d4ef328a80c554d007182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e7f5e003a058cd94e6e4a4440c512217c387fda3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102351"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158167"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Zelfstudie: Azure Active Directory-integratie met FM:Systems
+# <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Zelf studie: integratie Azure Active Directory met FM: systemen
 
-In deze zelfstudie leert u hoe u FM:Systems integreren met Azure Active Directory (Azure AD).
-FM:Systems integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u FM kunt integreren: systemen met Azure Active Directory (Azure AD).
+FM integreren: systemen met Azure AD bieden de volgende voor delen:
 
-* U kunt beheren in Azure AD die toegang tot FM:Systems heeft.
-* U kunt uw gebruikers worden automatisch aangemeld FM:Systems (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U kunt beheren in azure AD die toegang heeft tot FM: Systems.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij FM: systemen (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -35,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met FM:Systems, moet u de volgende items:
+Als u Azure AD-integratie met FM: systemen wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding FM:Systems ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* FM: abonnement voor eenmalige aanmelding voor systemen
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor FM:Systems **IDP** gestart door SSO
+* FM: systemen bieden ondersteuning voor door **IDP** GEÏNITIEERDe SSO
 
-## <a name="adding-fmsystems-from-the-gallery"></a>FM:Systems uit de galerie toe te voegen
+## <a name="adding-fmsystems-from-the-gallery"></a>Toevoegen FM: systemen uit de galerie
 
-Voor het configureren van de integratie van FM:Systems in Azure AD, moet u FM:Systems uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van FM:-systemen wilt configureren in azure AD, moet u FM: systemen uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen FM:Systems uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u FM: systemen uit de galerie wilt toevoegen, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -64,31 +65,31 @@ Voor het configureren van de integratie van FM:Systems in Azure AD, moet u FM:Sy
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **FM:Systems**, selecteer **FM:Systems** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. In het zoekvak typt u **FM: Systems**, **FM: systemen** uit het paneel result en klikt u vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-     ![FM:Systems in de lijst met resultaten](common/search-new-app.png)
+     ![FM: systemen in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met FM:Systems op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in FM:Systems tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met FM: systemen op basis van een test gebruiker met de naam **Julia Simon**.
+Voor eenmalige aanmelding, een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in FM: systemen moeten tot stand worden gebracht.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met FM:Systems, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met FM: systemen, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding FM:Systems](#configure-fmsystems-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[FM configureren: eenmalige aanmelding van systemen](#configure-fmsystems-single-sign-on)** -voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker FM:Systems](#create-fmsystems-test-user)**  : als u wilt een equivalent van Britta Simon in FM:Systems die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[FM: systeem test gebruiker maken](#create-fmsystems-test-user)** -een tegen hanger van Julia Simon in FM: systemen die zijn gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met FM:Systems, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD met FM:-systemen te configureren:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **FM:Systems** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **FM: systeem** toepassings integratie de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -102,18 +103,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met FM:Systems, moet u d
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![FM:Systems domein en URL's, eenmalige aanmelding informatie](common/both-replyurl.png)
+    ![FM: systeem domein en Url's eenmalige aanmelding gegevens](common/both-replyurl.png)
 
     In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
     
     > [!NOTE]
-    > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke antwoord-URL. Neem contact op met [FM:Systems Client ondersteuningsteam](https://fmsystems.com/support-services/) om de waarde. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Deze waarde is niet echt. Werk deze waarde bij met de werkelijke antwoord-URL. Contact opnemen met [FM: ondersteunings team voor Systems-clients](https://fmsystems.com/support-services/) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **FM:Systems instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer op de sectie **FM: Systems instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -123,9 +124,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met FM:Systems, moet u d
 
     c. Afmeldings-URL
 
-### <a name="configure-fmsystems-single-sign-on"></a>Configureer FM:Systems Single Sign-On
+### <a name="configure-fmsystems-single-sign-on"></a>FM configureren: eenmalige aanmelding voor systemen
 
-Het configureren van eenmalige aanmelding op **FM:Systems** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [FM:Systems ondersteuningsteam](https://fmsystems.com/support-services/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Voor het configureren van eenmalige aanmelding op **FM: systeem** zijde moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [FM: systemen ondersteunings team](https://fmsystems.com/support-services/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -145,25 +146,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension` in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon Azure eenmalige aanmelding gebruiken door het verlenen van toegang tot FM:Systems.
+In deze sectie schakelt u Julia Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen aan FM: Systems.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **FM:Systems**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **FM: Systems**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **FM:Systems**.
+2. Selecteer in de lijst toepassingen **FM: Systems**.
 
-    ![De koppeling FM:Systems in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling FM: Systems in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -177,33 +178,33 @@ In deze sectie maakt inschakelen u Britta Simon Azure eenmalige aanmelding gebru
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-fmsystems-test-user"></a>FM:Systems testgebruiker maken
+### <a name="create-fmsystems-test-user"></a>FM maken: systeem test gebruiker
 
-1. In een browservenster, meld u aan bij uw bedrijf FM:Systems site als beheerder.
+1. Meld u in een webbrowser venster aan bij uw FM: Systems-bedrijfs site als beheerder.
 
-2. Ga naar **Systeembeheer \> beveiliging beheren \> gebruikers \> gebruikerslijst**.
+2. Ga naar **systeem beheer \> beveiliging \> gebruikers \> gebruikers lijst beheren**.
    
-    ![Systeembeheer](./media/fm-systems-tutorial/ic795905.png "Systeembeheer")
+    ![Systeem beheer](./media/fm-systems-tutorial/ic795905.png "Systeem beheer")
 
 3. Klik op **nieuwe gebruiker maken**.
    
-    ![Nieuwe gebruiker maken](./media/fm-systems-tutorial/ic795906.png "nieuwe gebruiker maken")
+    ![Nieuwe gebruiker maken](./media/fm-systems-tutorial/ic795906.png "Nieuwe gebruiker maken")
 
 4. Voer in de sectie **Create User** de volgende stappen uit:
    
-    ![Create User](./media/fm-systems-tutorial/ic795907.png "Create User")
+    ![Gebruiker maken](./media/fm-systems-tutorial/ic795907.png "Gebruiker maken")
    
-    a. Type de **gebruikersnaam**, wordt de **wachtwoord**, **wachtwoord bevestigen**, **e** en de **werknemer-ID** van een geldige Azure Active Directory-account die u inrichten in de bijbehorende tekstvakken wilt.
+    a. Typ de **gebruikers naam**, het **wacht woord**, de bevestiging van het wacht **woord**, de **E-mail** en de **werk nemer-id** van een geldig Azure Active Directory account dat u wilt inrichten in de bijbehorende tekst vakken.
    
-    b. Klik op **volgende**.
+    b. Klik op **Volgende**.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel FM:Systems in het toegangsvenster, moet u worden automatisch aangemeld bij de FM:Systems waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel FM: systemen in het toegangs venster klikt, moet u automatisch worden aangemeld bij de FM: systemen waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

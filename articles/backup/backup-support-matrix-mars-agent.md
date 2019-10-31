@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 6f7bb1cfdb36bcaa8545fba8767b20d974c8e073
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968384"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162115"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -25,6 +25,9 @@ Azure Backup maakt gebruik van de MARS-agent om back-ups te maken van gegevens v
 - Voer uit op on-premises Windows-computers, zodat ze rechtstreeks een back-up kunnen maken naar een back-upRecovery Services kluis in Azure.
 - Voer uit op Windows-Vm's zodat ze rechtstreeks een back-up kunnen maken naar een kluis.
 - Voer uit op Microsoft Azure Backup Server (MABS) of een System Center Data Protection Manager (DPM)-server. In dit scenario maken machines en workloads een back-up naar MABS of naar de DPM-server. De MARS-agent maakt vervolgens een back-up van deze server naar een kluis in Azure.
+
+> [!NOTE]
+>Azure Backup biedt geen ondersteuning voor automatische aanpassing van de klok voor zomer tijd (DST). Wijzig het beleid om er zeker van te zijn dat rekening wordt gehouden met zomer tijd om te voor komen dat er verschil is tussen de werkelijke tijd en de geplande back-up.
 
 Uw back-upopties zijn afhankelijk van waar de agent is geïnstalleerd. Zie voor meer informatie [Azure backup architectuur met behulp van de Mars-agent](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Zie [back-up naar DPM of MABS](backup-architecture.md#architecture-back-up-to-dpmmabs)voor meer informatie over de MABS-en DPM-back-uparchitectuur. Zie ook de [vereisten](backup-support-matrix-mabs-dpm.md) voor de back-uparchitectuur.
 

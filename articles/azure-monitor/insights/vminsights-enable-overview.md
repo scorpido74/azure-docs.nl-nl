@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/24/2019
-ms.openlocfilehash: 83c2264cd3aa3025e911db5079747930d1ae096b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.date: 10/29/2019
+ms.openlocfilehash: 7e3dad5405289ee2d1f4ec8f7a586da70db9d56f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809453"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162256"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen (preview)
 
@@ -37,14 +37,20 @@ Voordat u begint, moet u ervoor zorgen dat u de informatie in de volgende sectie
 Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende regio's:
 
 - VS - west-centraal
+- VS-West<sup>1</sup>
 - VS-West 2<sup>1</sup>
+- VS Zuid-Centraal<sup>1</sup>
 - VS - oost
 - Oost-VS2<sup>1</sup>
+- VS-centraal<sup>1</sup>
+- VS Noord-Centraal<sup>1</sup>
 - Canada-Midden
 - VK - zuid
 - Europa-noord<sup>1</sup>
 - Europa - west
+- Azië-oost<sup>1</sup>
 - Azië - zuidoost
+- Centraal-India<sup>1</sup>
 - Japan-Oost<sup>1</sup>
 - Australië-oost<sup>1</sup>
 - Australië-zuidoost<sup>1</sup>
@@ -199,6 +205,9 @@ Schakel Azure Monitor voor VM's in met een van de methoden die in deze tabel wor
 ## <a name="performance-counters-enabled"></a>Prestatie meter items ingeschakeld 
 
 Azure Monitor voor VM's configureert een Log Analytics werk ruimte voor het verzamelen van de prestatie meter items die worden gebruikt. De volgende tabellen geven een lijst van de objecten en tellers die elke 60 seconden worden verzameld.
+
+>[!NOTE]
+>De volgende lijst met prestatie meter items die worden ingeschakeld door Azure Monitor voor VM's, beperkt u niet tot het inschakelen van aanvullende prestatie meter items die u moet verzamelen van Vm's die rapporteren aan de werk ruimte. Als u deze items uitschakelt, voor komt u dat de reeks prestatie grafieken die deel uitmaken van de prestatie functie, het resource gebruik van uw Vm's niet kan weer geven.
 
 ### <a name="windows-performance-counters"></a>Windows-prestatiemeteritems
 

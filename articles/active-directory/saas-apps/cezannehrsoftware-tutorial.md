@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Cezanne HR Software | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Cezanne HR-software | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Cezanne HR Software.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78d259c0354a1519fa57633a68a1dcfa5a183890
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa689e6138f8d965e59f7cfa7a85e0835301086c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105696"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158698"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Zelfstudie: Azure Active Directory-integratie met Cezanne HR Software
+# <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Zelf studie: integratie Azure Active Directory met Cezanne HR-software
 
 In deze zelfstudie leert u hoe u Cezanne HR Software kunt integreren met Azure Active Directory (AD).
 De integratie van Cezanne HR Software met Azure Active Directory biedt de volgende voordelen:
@@ -53,7 +54,7 @@ Voor het configureren van de integratie van Cezanne HR Software met Azure Active
 
 **Als u Cezanne HR Software wilt toevoegen uit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -162,7 +163,7 @@ Voor het configureren van eenmalige aanmelding voor Azure Active Directory met C
 
     g. Klik op de knop **OK**.
 
-6. Klik op **opslaan** knop.
+6. Klik op de knop **Save**.
 
     ![Eenmalige aanmelding in de app configureren](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
@@ -184,12 +185,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -203,7 +204,7 @@ In deze sectie gaat u Britta Simon toestemming geven voor gebruik van eenmalige 
 
     ![De Cezanne HR Software-link in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -227,11 +228,11 @@ Om het mogelijk te maken dat Azure Active Directory-gebruikers zich aanmelden bi
 
 2. Klik in het linkernavigatiedeelvenster op **Systeeminstellingen**. Ga naar **Gebruikers beheren**. Navigeer vervolgens naar **Nieuwe gebruiker toevoegen**.
 
-    ![New User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "New User")
+    ![Nieuwe gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Nieuwe gebruiker")
 
 3. In de sectie **PERSOONLIJKE DETAILS** volgt u onderstaande stappen:
 
-    ![New User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "New User")
+    ![Nieuwe gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Nieuwe gebruiker")
 
     a. Stel **Interne gebruiker** in op UIT.
 
@@ -243,7 +244,7 @@ Om het mogelijk te maken dat Azure Active Directory-gebruikers zich aanmelden bi
 
 4. Voer in het gedeelte **Accountinformatie** onderstaande stappen uit:
 
-    ![New User](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "New User")
+    ![Nieuwe gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Nieuwe gebruiker")
 
     a. In het tekstvak **Gebruikersnaam** typt u het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
 
@@ -261,17 +262,17 @@ Om het mogelijk te maken dat Azure Active Directory-gebruikers zich aanmelden bi
 
     ![Gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Gebruiker")
 
-7. Klik op **opslaan** knop.
+7. Klik op de knop **Save**.
 
     ![Gebruiker](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Gebruiker")
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Cezanne HR Software klikt, wordt u als het goed is automatisch aangemeld bij de instantie van Cezanne HR Software waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

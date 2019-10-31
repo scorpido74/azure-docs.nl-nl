@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met FreshDesk | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met FreshDesk | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en FreshDesk configureert.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ed903e71a019d0bdb1b62503913bd696e9d8a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102043"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73155756"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Zelfstudie: Azure Active Directory-integratie met FreshDesk
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Zelf studie: integratie Azure Active Directory met FreshDesk
 
 In deze zelfstudie leert u hoe u FreshDesk kunt integreren met Azure Active Directory (Azure AD).
 De integratie van FreshDesk met Azure AD biedt de volgende voordelen:
@@ -53,7 +54,7 @@ Om de integratie van FreshDesk te configureren in Azure AD, moet u FreshDesk van
 
 **Voer de volgende stappen uit om FreshDesk vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -118,7 +119,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 6. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit:
     
-    | Name | Bronkenmerk |
+    | Naam | Bronkenmerk |
     | ---------------| --------------- |
     | Unieke gebruikers-id | user.mail |
 
@@ -169,7 +170,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 2. Selecteer het pictogram **Settings** en voer in de sectie **Security** de volgende stappen uit:
 
-    ![Single Sign On](./media/freshdesk-tutorial/IC776770.png "Single Sign On")
+    ![Eenmalige aanmelding](./media/freshdesk-tutorial/IC776770.png "Eenmalige aanmelding")
   
     a. Zet **Single Sign On (SSO)** op **On** (vinkje).
 
@@ -201,12 +202,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -220,7 +221,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling naar FreshDesk in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -245,19 +246,19 @@ In het geval van FreshDesk is dat een handmatige taak.
 
 2. Klik in het menu bovenaan op **Admin**.
 
-    ![Admin](./media/freshdesk-tutorial/IC776772.png "Admin")
+    ![Beheerder](./media/freshdesk-tutorial/IC776772.png "Beheerder")
 
 3. Klik op het tabblad **General Settings** op **Agents**.
   
-    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
+    ![Middelen](./media/freshdesk-tutorial/IC776773.png "Agents")
 
 4. Klik op **New Agent**.
 
-    ![New Agent](./media/freshdesk-tutorial/IC776774.png "New Agent")
+    ![Nieuwe agent](./media/freshdesk-tutorial/IC776774.png "Nieuwe agent")
 
 5. Voer de volgende stappen uit in het dialoogvenster Agent Information:
 
-    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
+    ![Agent gegevens](./media/freshdesk-tutorial/IC776775.png "Agent gegevens")
 
     a. Typ in het tekstvak **Email** het e-mailadres van het Azure AD-account dat u wilt inrichten.
 
@@ -275,11 +276,11 @@ In het geval van FreshDesk is dat een handmatige taak.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel FreshDesk klikt, wordt u automatisch aangemeld bij de instantie van FreshDesk waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

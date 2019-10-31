@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Integratie van Microsoft Azure Active Directory met 15Five | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met 15Five | Microsoft Docs'
 description: Lees hoe u eenmalige aanmelding configureert tussen Microsoft Azure Active Directory en 15Five.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2fb301c2-7d7a-4046-8ee1-7dc9e7684806
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219af24aceea9291e34a9854d230b5dc6bd85fdb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c0753a061b698adb3c79ccde6856799c8928cd9f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107580"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154889"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-15five"></a>Zelfstudie: Integratie van Microsoft Azure Active Directory met 15Five
+# <a name="tutorial-azure-active-directory-integration-with-15five"></a>Zelf studie: integratie Azure Active Directory met 15Five
 
 In deze zelfstudie leert u hoe u 15Five kunt integreren met Microsoft Azure Active Directory (Azure AD).
 Het integreren van 15Five met Microsoft Azure Active Directory biedt u de volgende voordelen:
@@ -53,7 +54,7 @@ Voor het configureren van de integratie van 15Five in Microsoft Azure Active Dir
 
 **Als u 15Five vanuit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -112,7 +113,7 @@ Om eenmalige aanmelding van Microsoft Azure AD met 15Five te configureren, moet 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [klantenondersteuningsteam van 15Five](https://www.15five.com/contact/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -148,12 +149,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -167,7 +168,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De 15Five-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -191,15 +192,15 @@ Als u wilt dat Microsoft Azure Active Directory-gebruikers zich kunnen aanmelden
 
 2. Ga naar **Manage Company**.
 
-    ![Manage Company](./media/15five-tutorial/ic784675.png "Manage Company")
+    ![Bedrijf beheren](./media/15five-tutorial/ic784675.png "Bedrijf beheren")
 
 3. Ga naar **People \> Add PEOPLE**.
 
-    ![People](./media/15five-tutorial/ic784676.png "People")
+    ![Iedereen](./media/15five-tutorial/ic784676.png "Personen")
 
 4. Voer in de sectie **Add New Person** de volgende stappen uit:
 
-    ![Add New Person](./media/15five-tutorial/ic784677.png "Add New Person")
+    ![Nieuwe persoon toevoegen](./media/15five-tutorial/ic784677.png "Nieuwe persoon toevoegen")
 
     a. Typ de **voornaam**, **achternaam**, **titel**, en het **e-mailadres** van een geldig Azure Active Directory-account dat u wilt inrichten in de desbetreffende tekstvakken.
 
@@ -210,11 +211,11 @@ Als u wilt dat Microsoft Azure Active Directory-gebruikers zich kunnen aanmelden
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel 15Five in het toegangsvenster klikt, wordt u automatisch aangemeld bij het 15Five-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

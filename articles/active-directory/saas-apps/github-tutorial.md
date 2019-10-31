@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met GitHub | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met GitHub | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en GitHub.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0730dd89a61b046f73e7e39c8226e66700b3494
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af5021d3a8bed48003f38f01c3d61eac4bdd96b0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101631"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159216"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-github"></a>Zelfstudie: Azure Active Directory-integratie met GitHub
+# <a name="tutorial-azure-active-directory-integration-with-github"></a>Zelf studie: integratie Azure Active Directory met GitHub
 
 In deze zelfstudie leert u hoe u GitHub kunt integreren met Azure Active Directory (Azure AD).
 Als u GitHub integreert met Azure Active Directory biedt dit de volgende voordelen:
@@ -55,7 +56,7 @@ Voor het configureren van de integratie van GitHub in Azure AD, moet u GitHub va
 
 **Als u GitHub wilt toevoegen vanuit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -67,7 +68,7 @@ Voor het configureren van de integratie van GitHub in Azure AD, moet u GitHub va
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **GitHub**, selecteer **GitHub.com** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **github**in het zoekvak, selecteer **github.com** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
      ![GitHub in de lijst met resultaten](common/search-new-app.png)
 
@@ -162,7 +163,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met GitHub 
 
     ![Instellingen](./media/github-tutorial/tutorial_github_config_github_06.png)
 
-6. Klik op **Opslaan**
+6. Klik op **Opslaan**.
 
 > [!NOTE]
 > Eenmalige aanmelding in GitHub wordt geverifieerd met een specifieke organisatie in GitHub en is geen vervanging voor de verificatie van GitHub zelf. Dus als de gebruikerssessie op github.com is verlopen, kunt u worden gevraagd om u te verifiëren met de GitHub-id en het GitHub-wachtwoord tijdens het proces voor eenmalige aanmelding.
@@ -185,12 +186,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -204,7 +205,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De GitHub-koppeling in de lijst Toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -228,32 +229,32 @@ Het doel van deze sectie is om in GitHub een gebruiker te maken met de naam Brit
 
 2. Klik op **People**.
 
-    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "People")
+    ![Iedereen](./media/github-tutorial/tutorial_github_config_github_08.png "Personen")
 
 3. Klik op **Invite member**.
 
-    ![Invite Users](./media/github-tutorial/tutorial_github_config_github_09.png "Invite Users")
+    ![Gebruikers uitnodigen](./media/github-tutorial/tutorial_github_config_github_09.png "Gebruikers uitnodigen")
 
 4. Voer in het dialoogvenster **Invite member** de volgende stappen uit:
 
     a. Typ in het tekstvak **Email** het e-mailadres van het account van Britta Simon.
 
-    ![Invite People](./media/github-tutorial/tutorial_github_config_github_10.png "Invite People")
+    ![Personen uitnodigen](./media/github-tutorial/tutorial_github_config_github_10.png "Personen uitnodigen")
 
     b. Klik op **Send Invitation**.
 
-    ![Invite People](./media/github-tutorial/tutorial_github_config_github_11.png "Invite People")
+    ![Personen uitnodigen](./media/github-tutorial/tutorial_github_config_github_11.png "Personen uitnodigen")
 
     > [!NOTE]
     > De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om zijn account te bevestigen voordat het actief wordt.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel GitHub in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van GitHub waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

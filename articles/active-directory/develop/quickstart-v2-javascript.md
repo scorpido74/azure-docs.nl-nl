@@ -1,5 +1,6 @@
 ---
-title: Micro soft Identity platform java script Quick Start-Azure
+title: Gebruikers aanmelden en een toegangs token verkrijgen in een Java script-SPA | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over hoe Java script-toepassingen een API kunnen aanroepen die toegangs tokens vereist met behulp van micro soft Identity platform.
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +17,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51ef62d84d2744b595cfb946b7720f8b2a5dcd77
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ad79ee0fd1d421c7e869424ccb8daa595e51a970
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964058"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149405"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen van een Java script-toepassing met één pagina
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen in een Java script-beveiligd-wachtwoord verificatie
 
 In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java script-toepassing met één pagina (SPA) gebruikers van persoonlijke accounts, werk accounts en school accounts kan aanmelden. Een Java script-SPA kan ook een toegangs token verkrijgen om de Microsoft Graph-API of een web-API aan te roepen. (Zie [hoe het voor beeld werkt](#how-the-sample-works) voor een illustratie.)
 

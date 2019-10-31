@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b765782adfa5fd63bc270ad28b74cf3bd1ca1d4a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299042"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163046"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Het voor beeld van een PCI-DSS v 3.2.1-blauw versie implementeren
 
@@ -97,7 +97,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 |Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|\[Preview @ no__t-1 audit PCI v 3.2.1:2018 bepaalt en implementeert specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen | Diagnostische instelling voor geselecteerde bron typen controleren. Standaard waarde is alle resources zijn geselecteerd| 
+|\[preview-\] controle PCI v 3.2.1:2018 bepaalt en implementeert specifieke VM-extensies ter ondersteuning van de controle vereisten|Beleidstoewijzing|Lijst met resource typen | Diagnostische instelling voor geselecteerde bron typen controleren. Standaard waarde is alle resources zijn geselecteerd| 
 |Toegestane locaties|Beleidstoewijzing|Lijst met toegestane locaties|Lijst met locaties van data centers die zijn toegestaan voor het implementeren van een resource in. Deze lijst kan worden aangepast aan de gewenste Azure-locaties wereld wijd. Selecteer de locaties die u wilt toestaan.| 
 |Toegestane locaties voor resource groepen|Beleidstoewijzing |Toegestane locatie |Met dit beleid kunt u de locaties beperken waarop uw organisatie resource groepen kan maken in. Dit beleid wordt gebruikt om uw geografische nalevingsvereisten af te dwingen.| 
 |Controle op SQL-servers implementeren|Beleidstoewijzing|Bewaar dagen|Bewaren van gegevens in aantal dagen. De standaard waarde is 180, maar PCI vereist 365.| 
@@ -111,7 +111,7 @@ Nu u de stappen voor het implementeren van het voor beeld van het PCI-DSS v 3.2.
 > [PCI-DSS v 3.2.1 blauw druk-overzicht](./index.md)
 > [PCI-DSS v 3.2.1 blauw druk-besturings element toewijzing](./control-mapping.md)
 
-Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
+Aanvullende artikelen over blauw drukken en hoe u deze kunt gebruiken:
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

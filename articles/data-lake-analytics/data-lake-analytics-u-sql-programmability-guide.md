@@ -1,6 +1,6 @@
 ---
-title: Handleiding voor programmeren voor Azure Data Lake U-SQL
-description: Meer informatie over de set met services in Azure Data Lake Analytics waarmee u kunt maken van een cloud-gebaseerde big data-platform.
+title: Programmeer handleiding voor U-SQL voor Azure Data Lake
+description: Meer informatie over de set met Services in Azure Data Lake Analytics waarmee u een big data platform in de cloud kunt maken.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc55615d7a5c6ae9a393ed4fd5f49cd92aedc0f9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811610"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162575"
 ---
-# <a name="u-sql-programmability-guide"></a>Handleiding voor het programmeren van U-SQL
+# <a name="u-sql-programmability-guide"></a>Programmeer handleiding voor U-SQL
 
-U-SQL is een querytaal die ontworpen voor big data-type van werkbelastingen. Een van de unieke eigenschappen van U-SQL is de combinatie van de SQL-achtige declaratieve taal met de uitbreidbaarheid en programmeerbaarheid die wordt geleverd door C#. In deze handleiding richten we over de uitbreidbaarheid en programmeermogelijkheden van de U-SQL-taal die wordt ingeschakeld door de C#.
+U-SQL is een query taal die is ontworpen voor big data type werk belastingen. Een van de unieke functies van U-SQL is de combi natie van de SQL-achtige declaratieve taal met de uitbreid baarheid en programmeer baarheid die C#wordt verschaft door. In deze hand leiding wordt gestreefd naar de uitbreid baarheid en programmeer baarheid van de U-SQL-taal C#die is ingeschakeld door.
 
 ## <a name="requirements"></a>Vereisten
 
-Download en installeer [Azure Data Lake Tools voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
+Down load en Installeer [Azure data Lake-Hulpprogram ma's voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
 
 ## <a name="get-started-with-u-sql"></a>Aan de slag met U-SQL  
 
@@ -44,11 +44,11 @@ Bekijk het volgende U-SQL-script:
   FROM @a;    
 ```
 
-Dit script definieert twee rijensets: `@a` en `@results`. De rijenset `@results` is gedefinieerd in `@a`.
+Dit script definieert twee rijen sets: `@a` en `@results`. De rijenset `@results` is gedefinieerd vanuit `@a`.
 
-## <a name="c-types-and-expressions-in-u-sql-script"></a>C#-typen en expressies in U-SQL-script
+## <a name="c-types-and-expressions-in-u-sql-script"></a>C#typen en expressies in U-SQL-script
 
-Een U-SQL-expressie wordt een C#-expressie in combinatie met logische U-SQL-bewerkingen zoals `AND`, `OR`, en `NOT`. U-SQL-expressies kunnen worden gebruikt met selecteren, uitpakken, waarbij, ONDERVINDT, GEGROEPEERD en DECLAREREN. Het volgende script wordt een tekenreeks geparseerd als een datum / tijdwaarde.
+Een U-SQL-expressie is C# een expressie die is gecombineerd met logische U-SQL-bewerkingen, zoals `AND`, `OR`en `NOT`. U-SQL-expressies kunnen worden gebruikt in combi natie met selecteren, uitpakken, waar, groeperen op en DECLAReren. Met het volgende script wordt bijvoorbeeld een teken reeks geparseerd als een DateTime-waarde.
 
 ```
 @results =
@@ -59,15 +59,15 @@ Een U-SQL-expressie wordt een C#-expressie in combinatie met logische U-SQL-bewe
   FROM @a;    
 ```
 
-Een tekenreeks door het volgende codefragment wordt geparseerd als datum/tijd-waarde in een instructie DECLARE.
+In het volgende fragment wordt een teken reeks geparseerd als DateTime-waarde in een DECLARe-instructie.
 
 ```
 DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
-### <a name="use-c-expressions-for-data-type-conversions"></a>C#-expressies gebruiken voor de conversie van het gegevenstype
+### <a name="use-c-expressions-for-data-type-conversions"></a>Expressies C# gebruiken voor gegevens type conversies
 
-Het volgende voorbeeld ziet u hoe u de conversie van een datum/tijd-gegevens kunt doen met behulp van C#-expressies. In dit specifieke scenario wordt tekenreeksgegevens datum/tijd geconverteerd naar standard datum/tijd met de notatie van de tijd 00:00:00 middernacht.
+In het volgende voor beeld ziet u hoe u een datum/tijd-gegevens C# conversie kunt uitvoeren met behulp van expressies. In dit specifieke scenario worden datetime-gegevens met een teken reeks geconverteerd naar een standaard-datetime met een datum notatie van middernacht 00:00:00.
 
 ```
 DECLARE @dt = "2016-07-06 10:23:15";
@@ -83,11 +83,11 @@ OUTPUT @rs1
   USING Outputters.Text();
 ```
 
-### <a name="use-c-expressions-for-todays-date"></a>C#-expressies gebruiken voor de datum van vandaag
+### <a name="use-c-expressions-for-todays-date"></a>Expressies C# gebruiken voor de datum van vandaag
 
-Als u wilt ophalen van de datum van vandaag, gebruiken we de volgende C#-expressie: `DateTime.Now.ToString("M/d/yyyy")`
+We kunnen de volgende C# expressie gebruiken om de datum van vandaag te halen: `DateTime.Now.ToString("M/d/yyyy")`
 
-Hier volgt een voorbeeld van hoe u deze expressie in een script gebruiken:
+Hier volgt een voor beeld van het gebruik van deze expressie in een script:
 
 ```
 @rs1 =
@@ -102,43 +102,43 @@ Hier volgt een voorbeeld van hoe u deze expressie in een script gebruiken:
   FROM @rs0
   GROUP BY user, des;
 ```
-## <a name="using-net-assemblies"></a>Met behulp van .NET-assembly 's
+## <a name="using-net-assemblies"></a>.NET-assembly's gebruiken
 
-U-SQL-uitbreidingsmodel is sterk afhankelijk van de mogelijkheid om toe te voegen van aangepaste code van .NET-assembly's. 
+Het uitbreidings model van U-SQL is sterk afhankelijk van de mogelijkheid om aangepaste code uit .NET-assembly's toe te voegen. 
 
-### <a name="register-a-net-assembly"></a>Registreren van een .NET-assembly
+### <a name="register-a-net-assembly"></a>Een .NET-assembly registreren
 
-Gebruik de `CREATE ASSEMBLY` instructie voor het plaatsen van een .NET-assembly in een U-SQL-Database. Daarna wordt U-SQL-scripts gebruiken die assembly's met behulp van de `REFERENCE ASSEMBLY` instructie. 
+Gebruik de instructie `CREATE ASSEMBLY` om een .NET-assembly in een U-SQL Database te plaatsen. Daarna kunnen U-SQL-scripts deze assembly's gebruiken met behulp van de `REFERENCE ASSEMBLY`-instructie. 
 
-De volgende code toont informatie over het registreren van een assembly:
+De volgende code laat zien hoe u een assembly registreert:
 
 ```
 CREATE ASSEMBLY MyDB.[MyAssembly]
    FROM "/myassembly.dll";
 ```
 
-De volgende code laat zien hoe om te verwijzen naar een assembly:
+De volgende code laat zien hoe u naar een assembly verwijst:
 
 ```
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Raadpleeg de [assembly-registratie-instructies](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) die bevat informatie over dit onderwerp in meer detail.
+Raadpleeg de [instructies van de assembly-registratie](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) voor meer informatie over dit onderwerp.
 
 
-### <a name="use-assembly-versioning"></a>Assembly-versiebeheer gebruiken
-Op dit moment gebruikt U-SQL .NET Framework versie 4.5. Dus zorg ervoor dat uw eigen assembly's compatibel met deze versie van de runtime zijn.
+### <a name="use-assembly-versioning"></a>Assembly versie beheer gebruiken
+Op dit moment gebruikt U-SQL de .NET Framework versie 4,5. Zorg ervoor dat uw eigen assembly's compatibel zijn met deze versie van de runtime.
 
-Zoals eerder aangegeven, code van U-SQL-wordt uitgevoerd in een 64-bits (x 64)-indeling. Dus zorg ervoor dat uw code wordt gecompileerd om uit te voeren op x64. Anders krijgt u de onjuiste indelingsfout eerder weergegeven.
+Zoals eerder vermeld, voert U-SQL-code uit in een 64-bits (x64)-indeling. Zorg er dus voor dat uw code wordt gecompileerd om te worden uitgevoerd op x64. Anders krijgt u de onjuiste indelings fout die eerder is weer gegeven.
 
-Elke assembly DLL-bestand geüpload en resource-bestand, zoals een andere runtime, een systeemeigen assembly of een config-bestand mag maximaal 400 MB. De totale grootte van geïmplementeerde resources, via de RESOURCE implementeren of via de verwijzingen naar assembly's en de bijbehorende extra bestanden niet langer zijn dan 3 GB.
+Elke geüploade assembly-DLL en resource bestand, zoals een andere runtime, een systeem eigen assembly of een configuratie bestand, kunnen Maxi maal 400 MB groot zijn. De totale grootte van geïmplementeerde resources, hetzij via DEPLOY RESOURCE, hetzij via verwijzingen naar assembly's en hun extra bestanden, kan niet groter zijn dan 3 GB.
 
-Ten slotte Opmerking elke U-SQL-database mag slechts één versie van een bepaalde assembly. Als u zowel versie 7 en 8-versie van de bibliotheek NewtonSoft Json.NET nodig hebt, moet u bijvoorbeeld deze registreren in twee verschillende databases. Bovendien kan elk script alleen verwijzen naar een versie van een bepaalde assembly DLL-bestand. In dit opzicht volgt U-SQL de C#-assembly beheer- en versiebeheer semantiek.
+Houd er rekening mee dat elke U-SQL database slechts één versie van een bepaalde assembly mag bevatten. Als u bijvoorbeeld versie 7 en versie 8 van de Json.NET-bibliotheek van Newton Soft nodig hebt, moet u deze registreren in twee verschillende data bases. Bovendien kan elk script slechts verwijzen naar één versie van een bepaalde assembly-DLL. In dit opzicht volgt U-SQL de semantiek C# voor het beheer en de versie van de assembly.
 
-## <a name="use-user-defined-functions-udf"></a>De gebruiker gedefinieerde functies gebruiken: UDF
-U-SQL-gebruiker gedefinieerde functies of UDF, programmeert routines die parameters accepteren, het uitvoeren van een actie (zoals een complexe berekening) en het resultaat van de actie als een waarde. De geretourneerde waarde van UDF mag alleen één scalair. U-SQL-UDF kan worden aangeroepen in U-SQL-Standaardscript net als elke andere C# scalaire functie.
+## <a name="use-user-defined-functions-udf"></a>Door de gebruiker gedefinieerde functies gebruiken: UDF
+Door de gebruiker gedefinieerde U-SQL-functies of UDF zijn programmeer routines die para meters accepteren, een actie uitvoeren (zoals een complexe berekening) en het resultaat van die actie als een waarde Retour neren. De geretourneerde waarde van UDF kan alleen één scalair zijn. U-SQL UDF kan worden aangeroepen in U-SQL-basis script, zoals C# elke andere scalaire functie.
 
-Het is raadzaam dat u de gebruiker gedefinieerde U-SQL-functies als initialiseren **openbare** en **statische**.
+U wordt aangeraden de door de gebruiker gedefinieerde U-SQL-functies als **Public** en **static**te initialiseren.
 
 ```
 public static string MyFunction(string param1)
@@ -147,11 +147,11 @@ public static string MyFunction(string param1)
 }
 ```
 
-Eerste we kijken naar het eenvoudige voorbeeld van het maken van een UDF.
+Eerst kijken we naar het eenvoudige voor beeld van het maken van een UDF.
 
-In deze gebruiksscenario's moeten we de fiscale periode, met inbegrip van het kwartaal en fiscale maand van de eerste aanmelding voor de specifieke gebruiker te bepalen. De eerste fiscale maand van het jaar in ons scenario is juni.
+In dit geval moet u de fiscale periode bepalen, inclusief het fiscale kwar taal en de boek maand van de eerste aanmelding voor de specifieke gebruiker. De eerste boek maand van het jaar in ons scenario is juni.
 
-Voor het berekenen van periode, stellen we de volgende C#-functie:
+Als u de boek periode wilt berekenen, worden C# de volgende functies geïntroduceerd:
 
 ```
 public static string GetFiscalPeriod(DateTime dt)
@@ -188,11 +188,11 @@ public static string GetFiscalPeriod(DateTime dt)
 }
 ```
 
-Het gewoon berekent fiscale maand en het kwartaal en retourneert een string-waarde. Voor juni, de eerste maand van het eerste kwartaal, gebruiken we 'Q1:P1'. Voor juli, we gebruiken 'Q1:P2', enzovoort.
+De fiscale maand en het kwar taal worden alleen berekend en er wordt een teken reeks waarde geretourneerd. Voor juni, de eerste maand van het eerste boek kwartaal, gebruiken we "Q1: P1". Voor juli gebruiken we "Q1: P2", enzovoort.
 
-Dit is een reguliere C#-functie die we gaan gebruiken in de U-SQL-project.
+Dit is een reguliere C# functie die we gaan gebruiken in het U-SQL-project.
 
-Hier ziet u hoe de code-behind-sectie eruit ziet in dit scenario:
+Hier ziet u hoe de code-behind sectie in dit scenario wordt weer gegeven:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -242,13 +242,13 @@ namespace USQL_Programmability
 }
 ```
 
-Nu gaan we deze functie aanroepen vanuit het standaardscript van U-SQL. Om dit te doen, hebben we een volledig gekwalificeerde naam voor de functie, met inbegrip van de naamruimte die in dit geval NameSpace.Class.Function(parameter) is op te geven.
+Nu gaan we deze functie aanroepen vanuit het basis-U-SQL-script. Hiervoor moeten we een volledig gekwalificeerde naam voor de functie opgeven, met inbegrip van de naam ruimte, in dit geval naam ruimte. class. function (para meter).
 
 ```
 USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
-Hieronder vindt u de werkelijke basis U-SQL-script:
+Hieronder vindt U het feitelijke U-SQL-basis script:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -280,7 +280,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-Hieronder vindt u het bestand voor uitvoer van de uitvoering van het script:
+Hieronder volgt het uitvoer bestand van de uitvoering van het script:
 
 ```
 0d8b9630-d5ca-11e5-8329-251efa3a2941,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User1",""
@@ -290,22 +290,22 @@ Hieronder vindt u het bestand voor uitvoer van de uitvoering van het script:
 301f23d2-d690-11e5-9a98-4b4f60a1836f,2016-02-11T09:01:33.9720000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User3",""
 ```
 
-In dit voorbeeld ziet u een eenvoudige gebruik van inline UDF in U-SQL.
+In dit voor beeld wordt een eenvoudig gebruik van inline UDF in U-SQL gedemonstreerd.
 
-### <a name="keep-state-between-udf-invocations"></a>Status tussen UDF aanroepen bijhouden
-U-SQL C# programmeerbaarheid objecten kunnen worden meer geavanceerde, met behulp van interactiviteit via de code-behind globale variabelen. Bekijk de volgende zakelijke gebruiksscenario's.
+### <a name="keep-state-between-udf-invocations"></a>Status tussen UDF-aanroepen blijven
+U-SQL C# -Programmeer bare objecten kunnen geavanceerder zijn en interactiviteit gebruiken via de globale variabelen van de code-behind. Laten we eens kijken naar het volgende scenario voor zakelijk gebruik.
 
-In grote organisaties kunnen gebruikers schakelen tussen varianten van interne toepassingen. Hierbij kan Microsoft Dynamics CRM, Power BI, enzovoort. Klanten zou willen toepassen van een analyse van de telemetrie van hoe gebruikers tussen verschillende toepassingen schakelen, wat de trends in gebruik zijn, enzovoort. Het doel van het bedrijf is het Optimaliseer gebruik van de toepassing. Ze mogelijk willen ook verschillende toepassingen of specifieke aanmelding routines te combineren.
+In grote organisaties kunnen gebruikers scha kelen tussen varieteiten van interne toepassingen. Dit kan micro soft Dynamics CRM, PowerBI, enzovoort zijn. Klanten willen mogelijk een telemetrie-analyse Toep assen op de manier waarop gebruikers scha kelen tussen verschillende toepassingen, de gebruiks trends, enzovoort. Het doel van het bedrijf is het optimaliseren van het toepassings gebruik. Het kan ook zijn dat er verschillende toepassingen of specifieke aanmeldings routines moeten worden gecombineerd.
 
-Als u wilt dit doel te bereiken, hebben we om te bepalen van de sessie-id's en vertraging tussen de laatste sessie die is opgetreden.
+Om dit doel te verzorgen, moeten we de sessie-Id's en vertragings tijd tussen de laatste sessie bepalen die zijn opgetreden.
 
-Er moet een vorige aanmelding bij zoeken en wijs deze aanmelding voor alle sessies die worden gegenereerd voor dezelfde toepassing. De eerste uitdaging is dat U-SQL-Standaardscript niet kan we berekeningen via al berekende kolommen met de functie LAG van toepassing. De tweede uitdaging is dat we beschikken over de specifieke sessie voor alle sessies binnen de dezelfde periode houden.
+U moet een eerdere aanmelding vinden en deze aanmelding vervolgens toewijzen aan alle sessies die worden gegenereerd voor dezelfde toepassing. De eerste uitdaging is dat U-SQL-basis script geen berekeningen kan Toep assen op reeds berekende kolommen met de functie LAG. De tweede uitdaging is dat de specifieke sessie binnen dezelfde periode voor alle sessies moet worden bewaard.
 
-U lost dit probleem, gebruiken we een globale variabele in een sectie code-behind: `static public string globalSession;`.
+Om dit probleem op te lossen, gebruiken we een globale variabele in een code-behind-sectie: `static public string globalSession;`.
 
-Deze globale variabele wordt toegepast op de hele rijenset tijdens de uitvoering van het script.
+Deze globale variabele wordt tijdens de uitvoering van het script toegepast op de hele rijenset.
 
-Dit is de code-behind-sectie van het U-SQL-programma:
+Dit is de code-behind sectie van het U-SQL-programma:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -343,9 +343,9 @@ namespace USQLApplication21
 }
 ```
 
-In dit voorbeeld ziet u de globale variabele `static public string globalSession;` gebruikt binnen de `getStampUserSession` functie en het ophalen van opnieuw initialiseren telkens wanneer de sessie-parameter is gewijzigd.
+In dit voor beeld ziet u de globale variabele `static public string globalSession;` die in de functie `getStampUserSession` wordt gebruikt en telkens opnieuw wordt geïnitialiseerd wanneer de sessie parameter wordt gewijzigd.
 
-De U-SQL-Standaardscript is als volgt:
+Het U-SQL base-script ziet er als volgt uit:
 
 ```
 DECLARE @in string = @"\UserSession\test1.tsv";
@@ -395,9 +395,9 @@ OUTPUT @rs2
     USING Outputters.Csv();
 ```
 
-Functie `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` hier tijdens de berekening van de tweede geheugen rijenset wordt genoemd. Dit wordt doorgegeven de `UserSessionTimestamp` kolom en retourneert de waarde pas `UserSessionTimestamp` is gewijzigd.
+De functie `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` wordt hier genoemd tijdens de tweede berekening van de geheugen rijenset. De `UserSessionTimestamp` kolom wordt door gegeven en de waarde wordt geretourneerd totdat `UserSessionTimestamp` is gewijzigd.
 
-Het uitvoerbestand is als volgt:
+Het uitvoer bestand is als volgt:
 
 ```
 "2016-02-19T07:32:36.8420000-08:00","User1",,True,"72a0660e-22df-428e-b672-e0977007177f"
@@ -424,17 +424,17 @@ Het uitvoerbestand is als volgt:
 "2016-02-19T01:20:31.4800000-08:00","User4","2016-02-18T14:37:27.6560000-08:00",False,"2136f4cf-7c7d-43c1-8ae2-08f4ad6a6e08"
 ```
 
-In dit voorbeeld ziet u een meer complexe gebruiksscenario's waarop we een globale variabele gebruiken in een code-behind-sectie die wordt toegepast op de hele geheugen-rijenset.
+In dit voor beeld ziet u een complexere gebruiks scenario waarbij we een globale variabele in een code-behind-sectie gebruiken die wordt toegepast op de hele geheugen rijenset.
 
-## <a name="use-user-defined-types-udt"></a>Gebruik de gebruiker gedefinieerde typen: UDT
-Gebruiker gedefinieerde typen of UDT, is een andere programmeerbaarheidsfunctie van U-SQL. U-SQL-UDT fungeert als een reguliere C# gebruiker gedefinieerd type. C# is een sterk getypeerde taal waarin het gebruik van ingebouwde en aangepaste gebruiker gedefinieerde typen.
+## <a name="use-user-defined-types-udt"></a>Door de gebruiker gedefinieerde typen gebruiken: UDT
+Door de gebruiker gedefinieerde typen of UDT is een andere programmeer baarheids functie van U-SQL. U-SQL UDT fungeert als een standaard C# , door de gebruiker gedefinieerd type. C#is een sterk getypeerde taal waarmee ingebouwde en aangepaste door de gebruiker gedefinieerde typen kunnen worden gebruikt.
 
-U-SQL kan niet impliciet serialiseren of deserialiseren willekeurige UDT's wanneer de UDT tussen hoekpunten in rijensets wordt doorgegeven. Dit betekent dat de gebruiker heeft te bieden van een expliciete indelingsfunctie met behulp van de IFormatter-interface. Dit biedt U-SQL met het serialiseren en deserialiseren methoden voor het UDT.
+U-SQL kan wille keurige UDTs niet impliciet serialiseren of deserialiseren wanneer de UDT tussen hoek punten in rijen sets wordt door gegeven. Dit betekent dat de gebruiker een expliciete formatter moet opgeven met behulp van de IFormatter-interface. Dit biedt U-SQL met de methoden serialiseren en deserialiseren voor de UDT.
 
 > [!NOTE]
-> Serialiseren U-SQL ingebouwde extractors en outputters op dit moment kunnen niet of deserialiseren UDT gegevens naar of van bestanden, zelfs met de set IFormatter. Wanneer u UDT gegevens schrijven naar een bestand met de uitvoer-instructie, of met een extractor lezen, hebt u dus geven deze als een tekenreeks of matrix van bytes. Vervolgens aanroepen van de serialisatie en deserialisatie van code (dat wil zeggen, van de UDT ToString() methode) expliciet. Aangepaste extractors en outputters, aan de andere kant kunnen lezen en schrijven UDT's.
+> De ingebouwde extracten en outputters van U-SQL kunnen momenteel geen UDT-gegevens serialiseren of deserialiseren naar of van bestanden, zelfs als de IFormatter is ingesteld. Als u UDT-gegevens naar een bestand met de uitvoer instructie schrijft of als u een extractie uitvoert met een Extractor, moet u deze door geven als een teken reeks of byte matrix. Vervolgens roept u de code voor serialisatie en deserialisatie aan (dat wil zeggen, de methode ToString () van UDT). Door de gebruiker gedefinieerde uittreksels en outputters kunnen ook UDTs lezen en schrijven.
 
-Als we gebruiken UDT in EXTRACTOR of OUTPUTTER (van vorige selecteren), willen zoals hier wordt weergegeven:
+Als we UDT proberen te gebruiken in EXTRACTOR of outputter (van eerdere selectie), zoals hier wordt weer gegeven:
 
 ```
 @rs1 =
@@ -447,7 +447,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-De volgende fout ontvangen:
+De volgende fout wordt weer gegeven:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
@@ -464,9 +464,9 @@ the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\
 USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
-Als u wilt werken met UDT in outputter, hebben we het serialiseren van deze tekenreeks met de methode ToString() of maak een aangepaste outputter.
+Als u wilt werken met UDT in outputter, moet u deze serialiseren naar een teken reeks met de methode ToString () of een aangepaste outputter maken.
 
-UDT's worden momenteel niet gebruikt in GROUP BY. Als UDT wordt gebruikt in GROUP BY, wordt de volgende fout gegenereerd:
+UDTs kan momenteel niet worden gebruikt in GROUP BY. Als UDT in GROUP BY wordt gebruikt, wordt de volgende fout gegenereerd:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
@@ -483,28 +483,28 @@ C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQ
 62  5   USQL-Programmability
 ```
 
-Voor het definiëren van een UDT, hebben we naar:
+We moeten het volgende doen om een UDT te definiëren:
 
-* Voeg de volgende naamruimten:
+* Voeg de volgende naam ruimten toe:
 
 ```
 using Microsoft.Analytics.Interfaces
 using System.IO;
 ```
 
-* Voeg `Microsoft.Analytics.Interfaces`, die is vereist voor de UDT-interfaces. Bovendien `System.IO` nodig zijn voor het definiëren van de IFormatter-interface.
+* Voeg `Microsoft.Analytics.Interfaces`toe, wat vereist is voor de UDT-interfaces. Daarnaast moet `System.IO` mogelijk nodig zijn om de IFormatter-interface te definiëren.
 
-* Een type gebruikt gedefinieerde met SqlUserDefinedType kenmerk definiëren.
+* Definieer een gebruikt gedefinieerd type met het kenmerk SqlUserDefinedType.
 
-**SqlUserDefinedType** wordt gebruikt voor het markeren van de definitie van een type in een assembly als een door gebruiker gedefinieerde typen (UDT) in U-SQL. De eigenschappen van het kenmerk weerspiegelen de fysieke kenmerken van de UDT. Deze klasse kan niet worden overgenomen.
+**SqlUserDefinedType** wordt gebruikt om een type definitie in een assembly te markeren als een door de gebruiker gedefinieerd type (UDT) in U-SQL. De eigenschappen van het kenmerk reflecteren de fysieke kenmerken van de UDT. Deze klasse kan niet worden overgenomen.
 
-SqlUserDefinedType is een vereist kenmerk voor de definitie van UDT.
+SqlUserDefinedType is een vereist kenmerk voor de UDT-definitie.
 
 De constructor van de klasse:  
 
-* SqlUserDefinedTypeAttribute (type-indeling)
+* SqlUserDefinedTypeAttribute (type formatter)
 
-* Type-indeling: Vereiste parameter voor het definiëren van een indelingsfunctie UDT--name, het type van de `IFormatter` interface hier moet worden doorgegeven.
+* Type formatter: vereiste para meter voor het definiëren van een UDT-formatter--met name het type van de `IFormatter`-interface moet hier worden door gegeven.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -512,7 +512,7 @@ public class MyType
 { … }
 ```
 
-* Typische UDT vereist ook definitie van de interface IFormatter, zoals wordt weergegeven in het volgende voorbeeld:
+* Voor de standaard-UDT is ook definitie van de IFormatter-interface vereist, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```
 public class MyTypeFormatter : IFormatter<MyType>
@@ -525,27 +525,27 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-De `IFormatter` interface serialiseert en gedeserialiseerd een objectgrafiek met het type van de hoofdmap van \<typeparamref name = "T" >.
+De `IFormatter`-interface wordt geserialiseerd en de serialisatie van een object grafiek met het hoofd type \<typeparamref name = "T" >.
 
-\<typeparam name = "T" > het root-type voor de objectgrafiek voor het serialiseren en deserialiseren.
+\<typeparam name = "T" > het hoofd type voor de object grafiek die moet worden geserialiseerd en gedeserialiseerd.
 
-* **Deserialiseren**: Gedeserialiseerd op de gegevens op de opgegeven stroom en reconstitutes van de graph-objecten.
+* **Deserialiseren**: de gegevens op de verschafte stroom deserialiseren en het grafiek object opnieuw indelen.
 
-* **Serialiseren**: Serialiseert een object, of een grafiek van objecten met de opgegeven hoofdmap van de opgegeven stroom.
+* **Serialiseren**: een object of grafiek met objecten met de opgegeven basis naar de opgegeven stroom serialiseren.
 
-`MyType` Exemplaar: Het exemplaar van het type.  
-`IColumnWriter` schrijver / `IColumnReader` lezer: De stroom van de onderliggende kolommen.  
-`ISerializationContext` Context: Enum die definieert een set van vlaggen waarmee de bron- of -context voor de stroom tijdens de serialisatie.
+`MyType` exemplaar: het exemplaar van het type.  
+`IColumnWriter` schrijver/`IColumnReader` lezer: de onderliggende kolom stroom.  
+`ISerializationContext` context: Enum die een set vlaggen definieert waarmee de bron-of doel context voor de stream wordt opgegeven tijdens de serialisatie.
 
-* **Tussenliggende**: Hiermee geeft u de bron- of -context is een persistente archief.
+* **Tussenliggend**: Hiermee geeft u op dat de bron-of doel context geen persistente archief is.
 
-* **Persistentie**: Hiermee geeft u op dat de bron- of -context een persistente archief is.
+* **Persistentie**: Hiermee geeft u op dat de bron-of doel context een persistente opslag is.
 
-Als een reguliere C#-type, de definitie van een U-SQL-UDT kunt opnemen onderdrukkingen voor operators zoals +/ == /! =. Het kan ook betekenen statische methoden. Bijvoorbeeld, als we gaan deze UDT gebruiken als een parameter voor een statistische functie MIN U-SQL, we hebben voor het definiëren van < operator overschrijven.
+Als een standaard C# type kan een U-SQL UDT-definitie onderdrukkingen bevatten voor Opera tors zoals +/= =/! =. Het kan ook statische methoden bevatten. Als we deze UDT bijvoorbeeld gaan gebruiken als een para meter voor een statistische functie met U-SQL MIN, moeten we < operator override definiëren.
 
-Eerder in deze handleiding wordt een voorbeeld van fiscale periode-id van de specifieke datum in de notatie aangetoond `Qn:Pn (Q1:P10)`. Het volgende voorbeeld ziet hoe u een aangepast type voor fiscale waarden definieert.
+Eerder in deze hand leiding is een voor beeld van de identificatie van de fiscale periode van de specifieke datum in de notatie `Qn:Pn (Q1:P10)`gedemonstreerd. In het volgende voor beeld ziet u hoe u een aangepast type definieert voor fiscale periode waarden.
 
-Hieronder volgt een voorbeeld van een code-behind-sectie met aangepaste UDT en IFormatter interface:
+Hieronder volgt een voor beeld van een code-behind sectie met de aangepaste UDT-en IFormatter-Interface:
 
 ```
 [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
@@ -646,11 +646,11 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-Het gedefinieerde type bevat twee getallen: kwartaal en maand. Operators `==/!=/>/<` en statische methode `ToString()` hier zijn gedefinieerd.
+Het gedefinieerde type bevat twee getallen: kwar taal en maand. De `ToString()` Opera tors `==/!=/>/<` en static-methode worden hier gedefinieerd.
 
-Zoals eerder vermeld, UDT kan worden gebruikt in expressies voor selecteert, maar kan niet worden gebruikt in OUTPUTTER/EXTRACTOR zonder aangepaste serialisatie. Het bevat worden geserialiseerd als een tekenreeks met `ToString()` of gebruikt in combinatie met een aangepaste OUTPUTTER/EXTRACTOR.
+Zoals eerder vermeld, kan UDT worden gebruikt in SELECT-expressies, maar kan niet worden gebruikt in outputter/EXTRACTOR zonder aangepaste serialisatie. De waarde moet worden geserialiseerd als een teken reeks met `ToString()` of worden gebruikt met een aangepaste outputter/EXTRACTOR.
 
-Nu gaan we bespreken gebruik van UDT. In een sectie code-behind we onze GetFiscalPeriod functie gewijzigd in het volgende:
+Nu gaan we het gebruik van UDT bespreken. In de sectie code-behind is de functie GetFiscalPeriod gewijzigd in het volgende:
 
 ```
 public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
@@ -687,9 +687,9 @@ public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 }
 ```
 
-Zoals u ziet, wordt de waarde van onze FiscalPeriod type geretourneerd.
+Zoals u kunt zien, wordt de waarde van het type FiscalPeriod geretourneerd.
 
-We bieden hier een voorbeeld van hoe u verder in U-SQL-Standaardscript. In dit voorbeeld ziet u verschillende vormen van UDT aanroep van U-SQL-script.
+Hier bieden we een voor beeld van hoe u dit verder in het U-SQL-basis script kunt gebruiken. In dit voor beeld worden verschillende soorten UDT-aanroep van het U-SQL-script gedemonstreerd.
 
 ```
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
@@ -735,7 +735,7 @@ OUTPUT @rs2
     USING Outputters.Text();
 ```
 
-Hier volgt een voorbeeld van een volledige code-behind-sectie:
+Hier volgt een voor beeld van een volledige code-behind:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -895,10 +895,10 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-## <a name="use-user-defined-aggregates-udagg"></a>Gebruik de gebruiker gedefinieerde aggregaties: UDAGG
-De gebruiker gedefinieerde verzamelingen zijn een aggregatie-functies die zijn verzonden niet out-of-the-box met U-SQL. Het voorbeeld is een statistische functie uit te voeren aangepaste wiskundige berekeningen, samenvoegingen van tekenreeksen, bewerkingen met tekenreeksen, enzovoort.
+## <a name="use-user-defined-aggregates-udagg"></a>Door de gebruiker gedefinieerde statistische functies gebruiken: UDAGG
+Door de gebruiker gedefinieerde aggregaties zijn alle functies voor aggregatie die niet aan U zijn gekoppeld met U-SQL. Het voor beeld kan een statistische functie zijn voor het uitvoeren van aangepaste wiskundige berekeningen, het samen voegen van teken reeksen, bewerkingen met teken reeksen, enzovoort.
 
-De definitie van de gebruiker gedefinieerde cumulatieve basisklasse is als volgt:
+De door de gebruiker gedefinieerde definitie van de basis klasse is als volgt:
 
 ```csharp
     [SqlUserDefinedAggregate]
@@ -912,12 +912,12 @@ De definitie van de gebruiker gedefinieerde cumulatieve basisklasse is als volgt
     }
 ```
 
-**SqlUserDefinedAggregate** geeft aan dat het type moet worden geregistreerd als een gebruiker gedefinieerde aggregatie. Deze klasse kan niet worden overgenomen.
+**SqlUserDefinedAggregate** geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerde statistische functie. Deze klasse kan niet worden overgenomen.
 
-SqlUserDefinedType kenmerk is **optionele** voor UDAGG definitie.
+Het kenmerk SqlUserDefinedType is **optioneel** voor de definitie van de UDAGG.
 
 
-De basisklasse kunt u drie abstracte parameters doorgeven: twee invoerparameters en als het resultaat. De gegevenstypen zijn variabel en moeten worden gedefinieerd tijdens de klassenovername van de.
+Met de basis klasse kunt u drie abstracte para meters door geven: twee als invoer parameters en een als resultaat. De gegevens typen zijn variabele en moeten tijdens de overname van de klasse worden gedefinieerd.
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -935,19 +935,19 @@ public class GuidAggregate : IAggregate<string, string, string>
 }
 ```
 
-* **Init** roept één keer voor elke groep tijdens de berekening. Het biedt een initialisatieroutine voor elke aggregatie-groep.  
-* **Verzamelt** één keer voor elke waarde wordt uitgevoerd. Het biedt de belangrijkste functionaliteit voor het algoritme voor aggregatie. Het kan worden gebruikt voor samengevoegde waarden met verschillende soorten gegevens die tijdens de klassenovername van zijn gedefinieerd. Twee parameters van de variabele gegevenstypen kunnen worden geaccepteerd.
-* **Beëindigen** eenmaal per groep van de aggregatie aan het einde van de verwerking van voor de uitvoer van het resultaat voor elke groep wordt uitgevoerd.
+* **Init** roept één keer op voor elke groep tijdens de berekening. Het bevat een initialisatie routine voor elke samenvoegings groep.  
+* De **accumulatie** wordt één keer uitgevoerd voor elke waarde. Het biedt de belangrijkste functionaliteit voor het aggregatie algoritme. Het kan worden gebruikt om waarden samen te voegen met verschillende gegevens typen die tijdens de overname van de klasse worden gedefinieerd. Er kunnen twee para meters van variabele gegevens typen worden geaccepteerd.
+* Er wordt één keer per samenvoegings groep een **afsluiting** uitgevoerd om het resultaat voor elke groep te kunnen uitvoeren.
 
-Om te declareren juiste invoer en uitvoer gegevenstypen, gebruikt u de klassendefinitie van de als volgt:
+Als u de juiste invoer-en uitvoer gegevens typen wilt declareren, gebruikt u de klassedefinitie als volgt:
 
 ```
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
-* T1: De eerste parameter voor het verzamelen
-* T2: Tweede parameter verzamelen
-* TResult: Retourtype van beëindigen
+* T1: eerste para meter die moet worden verzameld
+* T2: tweede para meter die moet worden verzameld
+* TResult: retour type van Terminate
 
 Bijvoorbeeld:
 
@@ -961,8 +961,8 @@ of
 public class GuidAggregate : IAggregate<string, string, string>
 ```
 
-### <a name="use-udagg-in-u-sql"></a>UDAGG in U-SQL gebruiken
-Voor het gebruik van UDAGG eerst definiëren in de code-behind of verwijzen naar van de bestaande programmeerbaarheid DLL zoals eerder is besproken.
+### <a name="use-udagg-in-u-sql"></a>UDAGG gebruiken in U-SQL
+Als u UDAGG wilt gebruiken, moet u deze eerst definiëren in de code-behind of ernaar verwijzen vanuit de bestaande programmeer baarheids-DLL, zoals eerder besproken.
 
 Gebruik vervolgens de volgende syntaxis:
 
@@ -970,7 +970,7 @@ Gebruik vervolgens de volgende syntaxis:
 AGG<UDAGG_functionname>(param1,param2)
 ```
 
-Hier volgt een voorbeeld van UDAGG:
+Hier volgt een voor beeld van UDAGG:
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -998,7 +998,7 @@ public class GuidAggregate : IAggregate<string, string, string>
 }
 ```
 
-En U-SQL-script:
+En base U-SQL-script:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1023,63 +1023,63 @@ DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-In dit scenario use-casescenario samenvoegen we klasse GUID's voor de specifieke gebruikers.
+In dit scenario voor gebruik worden klasse-GUID'S voor de specifieke gebruikers samengevoegd.
 
-## <a name="use-user-defined-objects-udo"></a>Gebruik de gebruiker gedefinieerde objecten: UDO
-U-SQL kunt u aangepaste programmeerbaarheid objecten, die worden aangeroepen gebruiker gedefinieerde objecten of UDO definiëren.
+## <a name="use-user-defined-objects-udo"></a>Door gebruiker gedefinieerde objecten gebruiken: UDO
+U kunt met u-SQL aangepaste programmeer baarheids objecten definiëren, die door de gebruiker gedefinieerde objecten of UDO worden genoemd.
 
 Hier volgt een lijst met UDO in U-SQL:
 
-* Aangepaste extractors
-    * Extract per rij
-    * Gebruikt voor het ophalen van gegevens uit bestanden met aangepaste gestructureerde implementeren
+* Door de gebruiker gedefinieerde extra heren
+    * Rij per rij extra heren
+    * Wordt gebruikt voor het implementeren van gegevens extractie vanuit aangepaste gestructureerde bestanden
 
-* Gebruiker gedefinieerde outputters
-    * Uitvoer per rij
-    * Gebruikt voor het uitvoertypen voor aangepaste gegevens of aangepaste indelingen
+* Door de gebruiker gedefinieerde outputters
+    * Uitvoer rij per rij
+    * Wordt gebruikt om aangepaste gegevens typen of aangepaste bestands indelingen uit te voeren
 
-* Gebruiker gedefinieerde-processors
-    * Één rij en één rij produceert
-    * Gebruikt voor het verminderen van het aantal kolommen of produceren van nieuwe kolommen met waarden die zijn afgeleid van een bestaande set kolommen
+* Door de gebruiker gedefinieerde processors
+    * Eén rij maken en een rij genereren
+    * Hiermee wordt het aantal kolommen verminderd of worden nieuwe kolommen gegenereerd met waarden die zijn afgeleid van een bestaande kolomset
 
-* Gebruiker gedefinieerde appliers
-    * Één rij en produceert van 0 tot en met n rijen
-    * Gebruikt met buitenste/CROSS toepassen
+* Door de gebruiker gedefinieerde appliers
+    * Eén rij maken en 0 tot n rijen opleveren
+    * Wordt gebruikt met OUTER/CROSS APPLY
 
-* Gebruiker gedefinieerde combiners
-    * Combineert rijensets--gebruiker gedefinieerde JOINs
+* Door de gebruiker gedefinieerde combi Naties
+    * Combineert rijen sets--door de gebruiker gedefinieerde samen voegingen
 
-* Gebruiker gedefinieerde reducers tegelijkertijd
-    * N rijen en produceert één rij
-    * Gebruikt voor het verminderen van het aantal rijen
+* Door de gebruiker gedefinieerde verlaagers
+    * N rijen nemen en één rij genereren
+    * Hiermee wordt het aantal rijen verminderd
 
 UDO wordt doorgaans expliciet genoemd in U-SQL-script als onderdeel van de volgende U-SQL-instructies:
 
 * EXTRACT
 * UITVOER
 * PROCES
-* COMBINEREN
-* BEPERKEN
+* VERPLAATSEN
+* BESPAREN
 
 > [!NOTE]  
-> De UDO zijn beperkt tot 0,5 Gb geheugen in beslag nemen.  Deze beperking geheugen is niet van toepassing op lokale uitvoeringen.
+> UDO zijn beperkt tot 0,5 GB geheugen.  Deze beperking van het geheugen geldt niet voor lokale uitvoeringen.
 
-## <a name="use-user-defined-extractors"></a>Gebruik van de gebruiker gedefinieerde extractors
-U-SQL kunt u externe gegevens importeren met behulp van een instructie EXTRAHEREN. Een instructie EXTRACT kunt ingebouwde UDO extractors gebruiken:  
+## <a name="use-user-defined-extractors"></a>Door de gebruiker gedefinieerde extra heren gebruiken
+U kunt met behulp van een extractie-instructie externe gegevens importeren met u-SQL. Een instructie EXTRACT kan ingebouwde UDO-extracten gebruiken:  
 
-* *Extractors.Text()* : Extractie van tekstbestanden met scheidingstekens van verschillende coderingen biedt.
+* *Extracters. Text ()* : levert extra heren uit tekst bestanden met scheidings tekens van verschillende code ringen.
 
-* *Extractors.Csv()* : Extractie uit met door komma's gescheiden waarden biedt (CSV)-bestanden van verschillende coderingen.
+* *Extracters. CSV ()* : biedt extra heren van bestanden met door komma's gescheiden waarden (CSV) van verschillende code ringen.
 
-* *Extractors.Tsv()* : Extractie van tabblad gescheiden waarden biedt (TSV)-bestanden van verschillende coderingen.
+* *Extracters. TSV ()* : biedt extractie van bestanden met door tabs gescheiden waarden (TSV) van verschillende code ringen.
 
-Kan het nuttig zijn voor het ontwikkelen van een aangepaste extractor. Dit kan nuttig zijn tijdens het importeren van gegevens als we willen een van de volgende taken:
+Het kan handig zijn om een aangepaste Extractor te ontwikkelen. Dit kan handig zijn bij het importeren van gegevens als u een van de volgende taken wilt uitvoeren:
 
-* Invoergegevens wijzigen door het splitsen van kolommen en afzonderlijke waarden te wijzigen. De PROCESSOR-functionaliteit is het beter om kolommen te combineren.
-* Niet-gestructureerde gegevens, zoals webpagina's en e-mailberichten of niet semi-gestructureerde gegevens, zoals XML/JSON parseren.
-* Gegevens in niet-ondersteunde codering parseren.
+* Wijzig de invoer gegevens door kolommen te splitsen en afzonderlijke waarden te wijzigen. De PROCESSOR functionaliteit is beter voor het combi neren van kolommen.
+* Niet-gestructureerde gegevens, zoals webpagina's en e-mail berichten of semi-gestructureerde gegevens, zoals XML/JSON parseren.
+* Gegevens parseren in niet-ondersteunde code ring.
 
-Voor het definiëren van een gebruiker gedefinieerde extractor of opnemen, moeten we maken een `IExtractor` interface. Alle parameters voor de extractor, zoals rij/scheidingstekens, invoer- en codering, moeten worden gedefinieerd in de constructor van de klasse. De `IExtractor` interface mag ook een definitie voor de `IEnumerable<IRow>` overschrijven als volgt:
+Als u een door de gebruiker gedefinieerde Extractor of USIEF wilt definiëren, moet u een `IExtractor`-interface maken. Alle invoer parameters voor het Extractor, zoals kolom/rij scheidings tekens en code ring, moeten worden gedefinieerd in de constructor van de-klasse. De `IExtractor`-interface moet ook een definitie bevatten voor het overschrijven van de `IEnumerable<IRow>` als volgt:
 
 ```
 [SqlUserDefinedExtractor]
@@ -1093,20 +1093,20 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-De **SqlUserDefinedExtractor** kenmerk geeft aan dat het type moet worden geregistreerd als een gebruiker gedefinieerde extractor. Deze klasse kan niet worden overgenomen.
+Het kenmerk **SqlUserDefinedExtractor** geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerd extractor. Deze klasse kan niet worden overgenomen.
 
-SqlUserDefinedExtractor is een optioneel kenmerk voor de definitie van opnemen. Het wordt gebruikt voor het definiëren van AtomicFileProcessing-eigenschap voor het object uit.
+SqlUserDefinedExtractor is een optioneel kenmerk voor de definitie van USIEF. Hiermee wordt de eigenschap AtomicFileProcessing voor het object USIEF gedefinieerd.
 
-* bool     AtomicFileProcessing   
+* BOOL AtomicFileProcessing   
 
-* **de waarde True** = geeft aan dat voor deze extractor atomic invoerbestanden (JSON, XML,...) is vereist
-* **de waarde False** = geeft aan dat deze extractor kunt omgaan met splitsen / gedistribueerde bestanden (CSV, SEQ,...)
+* **True** = geeft aan dat voor deze extractie atomische invoer bestanden (JSON, XML,...) zijn vereist
+* **False** = geeft aan dat deze extractie kan omgaan met gesplitste/gedistribueerde bestanden (CSV, seq,...)
 
-De belangrijkste USIEF programmeerbaarheid objecten zijn **invoer** en **uitvoer**. Het invoerobject wordt gebruikt om op te sommen invoergegevens als `IUnstructuredReader`. De uitvoerobject wordt gebruikt om in te stellen uitvoergegevens als gevolg van de activiteit extractor.
+De belangrijkste USIEF-Programmeer bare objecten zijn **invoer** en **uitvoer**. Het invoer object wordt gebruikt voor het opsommen van invoer gegevens als `IUnstructuredReader`. Het uitvoer object wordt gebruikt om uitvoer gegevens als resultaat van de extractor-activiteit in te stellen.
 
-De ingevoerde gegevens toegankelijk is via `System.IO.Stream` en `System.IO.StreamReader`.
+De invoer gegevens worden geopend via `System.IO.Stream` en `System.IO.StreamReader`.
 
-Voor invoerkolommen opsomming splitsen we eerst de invoerstroom met behulp van een rijscheidingsteken.
+Voor de inventarisatie van invoer kolommen wordt de invoer stroom eerst gesplitst met behulp van een scheidings teken in een rij.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1115,7 +1115,7 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Vervolgens verder invoer rij in kolom delen splitsen.
+Daarna kunt u de invoer rij verder splitsen in kolom onderdelen.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1127,17 +1127,17 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Om in te stellen uitvoergegevens, gebruiken we de `output.Set` methode.
+Voor het instellen van uitvoer gegevens gebruiken we de `output.Set` methode.
 
-Het is belangrijk om te begrijpen dat de aangepaste extractor alleen levert kolommen en waarden die zijn gedefinieerd met de uitvoer. Methodeaanroep instellen.
+Het is belang rijk om te begrijpen dat de aangepaste Extractor alleen kolommen en waarden uitvoert die met de uitvoer zijn gedefinieerd. Methode aanroep instellen.
 
 ```
 output.Set<string>(count, part);
 ```
 
-De uitvoer van de werkelijke extractor wordt geactiveerd door het aanroepen van `yield return output.AsReadOnly();`.
+De werkelijke extractie-uitvoer wordt geactiveerd door het aanroepen van `yield return output.AsReadOnly();`.
 
-Hieronder volgt de extractor-voorbeeld:
+Hieronder vindt u het extractor-voor beeld:
 
 ```
 [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
@@ -1196,9 +1196,9 @@ public class FullDescriptionExtractor : IExtractor
 }
 ```
 
-In dit scenario use-casescenario de extractor worden opnieuw gegenereerd door de GUID voor kolom 'guid' en 'gebruiker' kolomwaarden omgezet in hoofdletters. Aangepaste extractors kunnen meer gecompliceerde resultaten opleveren met invoergegevens parseren en manipuleren van deze.
+In dit scenario gebruikt de extractor opnieuw de GUID voor de kolom GUID en worden de waarden van de kolom gebruiker geconverteerd naar hoofd letters. Aangepaste extracten kunnen complexere resultaten opleveren door invoer gegevens te parseren en te bewerken.
 
-Hieronder vindt u base U-SQL-script dat gebruikmaakt van een aangepaste extractor:
+Hieronder volgt een basis-U-SQL-script dat gebruikmaakt van een aangepaste extractor:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1216,22 +1216,22 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-outputters"></a>Gebruik van de gebruiker gedefinieerde outputters
-Gebruiker gedefinieerde outputter is nog een U-SQL-UDO waarmee u de ingebouwde U-SQL-functionaliteit uitbreiden. Net als bij de extractor, er zijn verschillende ingebouwde outputters.
+## <a name="use-user-defined-outputters"></a>Door de gebruiker gedefinieerde outputters gebruiken
+De door de gebruiker gedefinieerde outputter is een andere U-SQL-UDO waarmee u ingebouwde U-SQL-functionaliteit kunt uitbreiden. Net als bij het Extractor zijn er verschillende ingebouwde outputten.
 
-* *Outputters.Text()* : Schrijft gegevens naar tekstbestanden met scheidingstekens van verschillende coderingen.
-* *Outputters.Csv()* : Schrijft gegevens naar een door komma's gescheiden waarden (CSV)-bestanden van verschillende coderingen.
-* *Outputters.Tsv()* : Schrijft gegevens naar het tabblad gescheiden waarden (TSV)-bestanden van verschillende coderingen.
+* *Outputters. Text ()* : schrijft gegevens naar tekst bestanden met scheidings tekens van verschillende code ringen.
+* *Outputters. CSV ()* : schrijft gegevens naar bestanden met door komma's gescheiden waarden (CSV) van verschillende code ringen.
+* *Outputters. TSV ()* : schrijft gegevens naar bestanden met door tabs gescheiden waarden (TSV) van verschillende code ringen.
 
-Aangepaste outputter kunt u gegevens in een aangepaste gedefinieerde indeling wilt schrijven. Dit kan nuttig zijn voor de volgende taken zijn:
+Met aangepaste outputter kunt u gegevens in een aangepaste, gedefinieerde indeling schrijven. Dit kan handig zijn voor de volgende taken:
 
-* Gegevens schrijven naar een semi-gestructureerde of ongestructureerde-bestanden.
-* Coderingen schrijven van gegevens niet worden ondersteund.
-* Wijzigen van uitvoergegevens of aangepaste kenmerken toe te voegen.
+* Het schrijven van gegevens naar semi-gestructureerde of ongestructureerde bestanden.
+* Het schrijven van gegevens wordt niet ondersteund door code ring.
+* Het wijzigen van uitvoer gegevens of het toevoegen van aangepaste kenmerken.
 
-Voor het definiëren van de gebruiker gedefinieerde outputter moeten we maken de `IOutputter` interface.
+Voor het definiëren van een door de gebruiker gedefinieerde outputter moeten we de `IOutputter`-interface maken.
 
-Hieronder volgt de base `IOutputter` implementatie van klasse:
+Hieronder vindt u de basis `IOutputter` implementatie van de klasse:
 
 ```
 public abstract class IOutputter : IUserDefinedOperator
@@ -1243,7 +1243,7 @@ public abstract class IOutputter : IUserDefinedOperator
 }
 ```
 
-Alle invoerparameters die zijn opgegeven voor de outputter, zoals rij/scheidingstekens, codering, enzovoort, moeten worden gedefinieerd in de constructor van de klasse. De `IOutputter` interface moet ook een definitie voor bevatten `void Output` overschrijven. Het kenmerk `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` kan eventueel worden ingesteld voor atomic bestandsverwerking. Zie de volgende details voor meer informatie.
+Alle invoer parameters voor de outputter, zoals kolom/rij-scheidings tekens, code ring, enzovoort, moeten worden gedefinieerd in de constructor van de-klasse. De `IOutputter` interface moet ook een definitie bevatten voor `void Output` negeren. Het kenmerk `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` kan eventueel worden ingesteld voor de verwerking van atomische bestanden. Zie de volgende Details voor meer informatie.
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1267,30 +1267,30 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output` voor elke rij met invoer wordt genoemd. Retourneert de `IUnstructuredWriter output` rijenset.
-* De Constructor-klasse wordt gebruikt om de parameters doorgeven aan de gebruiker gedefinieerde outputter.
-* `Close` wordt gebruikt om eventueel negeren als u wilt vrijgeven duur status of te bepalen wanneer de laatste rij is geschreven.
+* `Output` wordt voor elke invoercel aangeroepen. Hiermee wordt de `IUnstructuredWriter output` rijenset geretourneerd.
+* De constructor-klasse wordt gebruikt om para meters door te geven aan de door de gebruiker gedefinieerde outputter.
+* `Close` wordt gebruikt om de dure status vrij te geven of te bepalen wanneer de laatste rij is geschreven.
 
-**SqlUserDefinedOutputter** kenmerk geeft aan dat het type moet worden geregistreerd als een gebruiker gedefinieerde outputter. Deze klasse kan niet worden overgenomen.
+**SqlUserDefinedOutputter** kenmerk geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerde outputter. Deze klasse kan niet worden overgenomen.
 
-SqlUserDefinedOutputter is een optioneel kenmerk voor de definitie van een gebruiker gedefinieerde outputter. Wordt gebruikt om de eigenschap AtomicFileProcessing te definiëren.
+SqlUserDefinedOutputter is een optioneel kenmerk voor een definitie van een door de gebruiker gedefinieerde outputter. Deze wordt gebruikt om de eigenschap AtomicFileProcessing te definiëren.
 
-* bool     AtomicFileProcessing   
+* BOOL AtomicFileProcessing   
 
-* **de waarde True** = geeft aan dat voor deze outputter atomic uitvoerbestanden (JSON, XML,...) is vereist
-* **de waarde False** = geeft aan dat deze outputter kunt omgaan met splitsen / gedistribueerde bestanden (CSV, SEQ,...)
+* **True** = geeft aan dat deze outputter atomische uitvoer bestanden vereist (JSON, XML,...)
+* **False** = geeft aan dat deze outputter kan omgaan met gesplitste/gedistribueerde bestanden (CSV, seq,...)
 
-De belangrijkste programmeerbaarheid objecten zijn **rij** en **uitvoer**. De **rij** object wordt gebruikt om inventariseren uitvoergegevens als `IRow` interface. **Uitvoer** wordt gebruikt voor het instellen van uitvoergegevens naar het doelbestand.
+De belangrijkste Programmeer bare objecten zijn **rij** en **uitvoer**. Het object **Row** wordt gebruikt voor het opsommen van uitvoer gegevens als `IRow`-interface. **Uitvoer** wordt gebruikt om uitvoer gegevens naar het doel bestand in te stellen.
 
-De uitvoergegevens toegankelijk is via de `IRow` interface. Uitvoergegevens wordt een rij op een tijdstip doorgegeven.
+De uitvoer gegevens worden geopend via de `IRow`-interface. Er wordt een rij per keer door gegeven aan de uitvoer gegevens.
 
-De afzonderlijke waarden worden geïnventariseerd door het aanroepen van de Get-methode van de interface IRow:
+De afzonderlijke waarden worden opgesomd door de Get-methode van de IRow-interface aan te roepen:
 
 ```
 row.Get<string>("column_name")
 ```
 
-Afzonderlijke kolomnamen kunnen worden bepaald door het aanroepen van `row.Schema`:
+U kunt afzonderlijke kolom namen bepalen door `row.Schema`aan te roepen:
 
 ```
 ISchema schema = row.Schema;
@@ -1298,11 +1298,11 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Deze aanpak kunt u een flexibele outputter voor elke metagegevensschema bouwen.
+Met deze aanpak kunt u een flexibele outputter voor elk meta gegevens schema maken.
 
-De uitvoergegevens worden geschreven naar het bestand met behulp van `System.IO.StreamWriter`. De stream-parameter is ingesteld op `output.BaseStream` als onderdeel van `IUnstructuredWriter output`.
+De uitvoer gegevens worden naar het bestand geschreven met behulp van `System.IO.StreamWriter`. De stream-para meter is ingesteld op `output.BaseStream` als onderdeel van `IUnstructuredWriter output`.
 
-Houd er rekening mee dat het is belangrijk om de gegevensbuffer voor het bestand leegmaken na elke iteratie rij. Bovendien de `StreamWriter` object moet worden gebruikt met de beschikbare kenmerk ingeschakeld (standaard) en de **met behulp van** sleutelwoord:
+Houd er rekening mee dat het belang rijk is om de gegevens buffer te leegmaken naar het bestand na elke rij herhaling. Daarnaast moet het `StreamWriter`-object worden gebruikt met het kenmerk wegwerp ingeschakeld (standaard) en met het sleutel woord **using** :
 
 ```
 using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
@@ -1311,10 +1311,10 @@ using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._enc
 }
 ```
 
-Anders Flush() methode aanroepen expliciet na elke iteratie. We zien in het volgende voorbeeld.
+Als dat niet het geval is, roept u de methode Flush () expliciet na elke iteratie. Dit wordt in het volgende voor beeld weer gegeven.
 
-### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Kopteksten en voetteksten ingesteld voor de gebruiker gedefinieerde outputter
-Om in te stellen een koptekst, één iteratie tot uitvoering van flow te gebruiken.
+### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Kop-en voet teksten instellen voor door de gebruiker gedefinieerde outputter
+Als u een koptekst wilt instellen, gebruikt u de stroom voor het uitvoeren van één iteratie.
 
 ```
 public override void Output(IRow row, IUnstructuredWriter output)
@@ -1335,11 +1335,11 @@ if (isHeaderRow)
 }
 ```
 
-De code in de eerste `if (isHeaderRow)` blok wordt slechts één keer uitgevoerd.
+De code in het eerste `if (isHeaderRow)` blok wordt slechts één keer uitgevoerd.
 
-Voor de voettekst, gebruikt u de verwijzing naar het exemplaar van `System.IO.Stream` object (`output.BaseStream`). Schrijven van de voettekst in de methode Close() van de `IOutputter` interface.  (Zie het volgende voorbeeld voor meer informatie.)
+Gebruik de verwijzing naar het exemplaar van `System.IO.Stream` object (`output.BaseStream`) voor de voet tekst. Schrijf de voet tekst in de methode Close () van de `IOutputter`-interface.  (Zie het volgende voor beeld voor meer informatie.)
 
-Hieronder volgt een voorbeeld van een gebruiker gedefinieerde outputter:
+Hier volgt een voor beeld van een door de gebruiker gedefinieerde outputter:
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1446,7 +1446,7 @@ public static class Factory
 }
 ```
 
-En U-SQL-Standaardscript:
+En U-SQL base-script:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1466,16 +1466,16 @@ OUTPUT @rs0
     USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Dit is een HTML-outputter, die zorgt voor een HTML-bestand met gegevens in een tabel.
+Dit is een HTML-outputter waarmee een HTML-bestand met tabel gegevens wordt gemaakt.
 
-### <a name="call-outputter-from-u-sql-base-script"></a>Outputter aanroepen vanuit de Standaardscript U-SQL
-Als u een aangepaste outputter vanuit het standaardscript van U-SQL, heeft het nieuwe exemplaar van het object outputter moet worden gemaakt.
+### <a name="call-outputter-from-u-sql-base-script"></a>Outputter aanroepen vanuit het U-SQL-basis script
+Als u een aangepaste outputter wilt aanroepen vanuit het basis-U-SQL-script, moet u het nieuwe exemplaar van het outputter-object maken.
 
 ```sql
 OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Om te voorkomen maakt u een instantie van het object in Standaardscript, kunnen we een functie-wrapper maken zoals wordt weergegeven in het eerdere voorbeeld:
+Om te voor komen dat u een exemplaar van het object maakt in het basis script, kunt u een functie-wrapper maken, zoals wordt weer gegeven in het vorige voor beeld:
 
 ```csharp
         // Define the factory classes
@@ -1488,7 +1488,7 @@ Om te voorkomen maakt u een instantie van het object in Standaardscript, kunnen 
         }
 ```
 
-In dit geval de oorspronkelijke aanroep ziet er als volgt uit:
+In dit geval ziet de oorspronkelijke aanroep er als volgt uit:
 
 ```
 OUTPUT @rs0 
@@ -1496,12 +1496,12 @@ TO @output_file
 USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
-## <a name="use-user-defined-processors"></a>Gebruiker gedefinieerde processors gebruiken
-Gebruiker gedefinieerde processor- of UDP, is een U-SQL-UDO waarmee u de binnenkomende om rijen te verwerken door toe te passen programmeerfuncties. UDP kunt u kolommen samenvoegen, waarden wijzigen en nieuwe kolommen toevoegen, indien nodig. In principe kunt zo u het verwerken van een rijenset vereiste gegevenselementen produceren.
+## <a name="use-user-defined-processors"></a>Door de gebruiker gedefinieerde processors gebruiken
+Een door de gebruiker gedefinieerde processor of UDP is een type U-SQL-UDO waarmee u de binnenkomende rijen kunt verwerken door programmeer functies toe te passen. Met UDP kunt u kolommen combi neren, waarden wijzigen en nieuwe kolommen toevoegen, indien nodig. In principe kunt u een rijenset verwerken om vereiste gegevens elementen te maken.
 
-Voor het definiëren van een UDP, moeten we maken een `IProcessor` interface met de `SqlUserDefinedProcessor` kenmerk, die optioneel voor UDP is.
+Als u een UDP wilt definiëren, moet u een `IProcessor`-interface maken met het kenmerk `SqlUserDefinedProcessor`, dat optioneel is voor UDP.
 
-Deze interface mag de definitie voor de `IRow` interface rijenset overschrijven, zoals wordt weergegeven in het volgende voorbeeld:
+Deze interface moet de definitie bevatten voor de onderdrukking van de `IRow`-interface rijen, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1514,31 +1514,31 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** geeft aan dat het type moet worden geregistreerd als een gebruiker gedefinieerde processor. Deze klasse kan niet worden overgenomen.
+**SqlUserDefinedProcessor** geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerde processor. Deze klasse kan niet worden overgenomen.
 
-Het kenmerk SqlUserDefinedProcessor **optionele** voor UDP-definitie.
+Het kenmerk SqlUserDefinedProcessor is **optioneel** voor de UDP-definitie.
 
-De belangrijkste programmeerbaarheid objecten zijn **invoer** en **uitvoer**. Het invoerobject wordt gebruikt om te inventariseren kolommen voor invoer en uitvoer, en om in te stellen uitvoergegevens als gevolg van de processoractiviteit.
+De belangrijkste Programmeer bare objecten zijn **invoer** en **uitvoer**. Het invoer object wordt gebruikt voor het opsommen van invoer kolommen en uitvoer en voor het instellen van uitvoer gegevens als resultaat van de processor activiteit.
 
-Voor invoerkolommen opsomming, gebruiken we de `input.Get` methode.
+Voor de opsomming van invoer kolommen wordt gebruikgemaakt van de `input.Get` methode.
 
 ```
 string column_name = input.Get<string>("column_name");
 ```
 
-De parameter voor `input.Get` methode is een kolom die wordt doorgegeven als onderdeel van de `PRODUCE` -component van de `PROCESS` -instructie van de U-SQL-Standaardscript. We moeten het juiste gegevenstype hier gebruiken.
+De para meter voor de `input.Get` methode is een kolom die wordt door gegeven als onderdeel van de `PRODUCE`-component van de `PROCESS`-instructie van het U-SQL-basis script. Het juiste gegevens type moet hier worden gebruikt.
 
-Gebruik voor de uitvoer van de `output.Set` methode.
+Gebruik de methode `output.Set` voor uitvoer.
 
-Het is belangrijk te weten dat aangepaste producent voert alleen kolommen en waarden die zijn gedefinieerd met de `output.Set` aanroep van methode.
+Het is belang rijk te weten dat de aangepaste producent alleen kolommen en waarden uitvoer die zijn gedefinieerd met de aanroep van de `output.Set` methode.
 
 ```
 output.Set<string>("mycolumn", mycolumn);
 ```
 
-De uitvoer van de werkelijke processor wordt geactiveerd door het aanroepen van `return output.AsReadOnly();`.
+De werkelijke processor uitvoer wordt geactiveerd door het aanroepen van `return output.AsReadOnly();`.
 
-Hieronder volgt een voorbeeld van de processor:
+Hier volgt een voor beeld van een processor:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1558,11 +1558,11 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-In dit scenario use case is de processor genereren van een nieuwe kolom met de naam 'full_description' door een combinatie van de bestaande kolommen--in dit geval 'gebruiker' in hoofdletters, en 'des'. Ook worden opnieuw gegenereerd door een GUID en de oorspronkelijke en nieuwe GUID-waarden worden geretourneerd.
+In dit scenario wordt een nieuwe kolom met de naam ' full_description ' gegenereerd door de bestaande kolommen te combi neren, in dit geval ' gebruiker ' in hoofd letters en ' des '. Er wordt ook een GUID opnieuw gegenereerd en de oorspronkelijke en nieuwe GUID-waarden worden geretourneerd.
 
-Zoals u in het vorige voorbeeld zien kunt, kunt u C# methoden tijdens aanroepen `output.Set` aanroep van methode.
+Zoals u kunt zien in het vorige voor beeld, kunt u C# methoden aanroepen tijdens het aanroepen van de `output.Set` methode.
 
-Hieronder volgt een voorbeeld van base U-SQL-script dat gebruikmaakt van een aangepaste processor:
+Hieronder volgt een voor beeld van een base U-SQL-script dat gebruikmaakt van een aangepaste processor:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1587,12 +1587,12 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-appliers"></a>Gebruik van de gebruiker gedefinieerde appliers
-Een gebruiker gedefinieerde applier van U-SQL kunt u een aangepaste C#-functie voor elke rij die wordt geretourneerd door de buitenste tabelexpressie van een query aanroepen. De juiste invoer wordt geëvalueerd voor elke rij van de linkerinvoer en de rijen die worden geproduceerd worden gecombineerd voor de uiteindelijke uitvoer. De lijst met kolommen die worden geproduceerd door de operator APPLY is de combinatie van de set kolommen in de linker- en de juiste invoer.
+## <a name="use-user-defined-appliers"></a>Door de gebruiker gedefinieerde appliers gebruiken
+Met een door de gebruiker gedefinieerde U-SQL-Applier kunt u een C# aangepaste functie aanroepen voor elke rij die wordt geretourneerd door de buitenste tabel expressie van een query. De juiste invoer wordt geëvalueerd voor elke rij van de linkerkant invoer en de rijen die worden geproduceerd, worden gecombineerd voor de uiteindelijke uitvoer. De lijst met kolommen die worden geproduceerd door de operator APPLY, is de combi natie van de set kolommen aan de linkerkant en de juiste invoer.
 
-Gebruiker gedefinieerde applier wordt aangeroepen als onderdeel van de expressie USQL selecteren.
+Door de gebruiker gedefinieerde Applier wordt aangeroepen als onderdeel van de USQL SELECT-expressie.
 
-De typische aanroep van de gebruiker gedefinieerde applier ziet er als volgt uit:
+De standaard aanroep van de door de gebruiker gedefinieerde Applier ziet er als volgt uit:
 
 ```
 SELECT …
@@ -1601,9 +1601,9 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-Zie voor meer informatie over het gebruik van appliers in een SELECT-expressie [U-SQL Selecteer selecteren in de CROSS APPLY en OUTER APPLY](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply).
+Zie voor meer informatie over het gebruik van appliers in een SELECT [-expressie u-SQL selecteert u selecteren uit cross Apply en outer apply](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply).
 
-De gebruiker gedefinieerde applier basisklasse-definitie is als volgt:
+De definitie van de door de gebruiker gedefinieerde Applier-basis klasse is als volgt:
 
 ```
 public abstract class IApplier : IUserDefinedOperator
@@ -1614,7 +1614,7 @@ public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
 }
 ```
 
-Voor het definiëren van een gebruiker gedefinieerde applier, moeten we maken de `IApplier` interface met de [`SqlUserDefinedApplier`] kenmerk, die optioneel voor een gebruiker gedefinieerde applier definitie is.
+Om een door de gebruiker gedefinieerde Applier te definiëren, moeten we de `IApplier`-interface maken met het kenmerk [`SqlUserDefinedApplier`], dat optioneel is voor een door de gebruiker gedefinieerde Applier-definitie.
 
 ```
 [SqlUserDefinedApplier]
@@ -1632,23 +1632,23 @@ public class ParserApplier : IApplier
 }
 ```
 
-* Van toepassing voor elke rij van de buitenste tabel wordt genoemd. Retourneert de `IUpdatableRow` uitvoer van de rijenset.
-* De Constructor-klasse wordt gebruikt om de parameters doorgeven aan de gebruiker gedefinieerde applier.
+* Apply wordt aangeroepen voor elke rij van de buitenste tabel. Hiermee wordt de `IUpdatableRow` uitvoer rijenset geretourneerd.
+* De constructor-klasse wordt gebruikt om para meters door te geven aan de door de gebruiker gedefinieerde Applier.
 
-**SqlUserDefinedApplier** geeft aan dat het type moet worden geregistreerd als een gebruiker gedefinieerde applier. Deze klasse kan niet worden overgenomen.
+**SqlUserDefinedApplier** geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerd Applier. Deze klasse kan niet worden overgenomen.
 
-**SqlUserDefinedApplier** is **optionele** voor een gebruiker gedefinieerde applier definitie.
+**SqlUserDefinedApplier** is **optioneel** voor een door de gebruiker gedefinieerde Applier-definitie.
 
 
-De belangrijkste programmeerbaarheid objecten zijn als volgt:
+De belangrijkste Programmeer bare objecten zijn als volgt:
 
 ```
 public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
-Invoer rijensets worden doorgegeven als `IRow` invoer. De uitvoer-rijen worden gegenereerd als `IUpdatableRow` interface voor resultaatuitvoer.
+Invoer rijen worden door gegeven als `IRow` invoer. De uitvoer rijen worden gegenereerd als `IUpdatableRow` uitvoer interface.
 
-Afzonderlijke kolomnamen kunnen worden bepaald door het aanroepen van de `IRow` Schema-methode.
+U kunt afzonderlijke kolom namen bepalen door de `IRow` schema methode aan te roepen.
 
 ```
 ISchema schema = row.Schema;
@@ -1656,35 +1656,35 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-De werkelijke waarden ophalen uit de binnenkomende `IRow`, gebruiken we de methode voor Get() `IRow` interface.
+We gebruiken de methode Get () van `IRow` interface om de werkelijke gegevens waarden van de binnenkomende `IRow`op te halen.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Of we de naam van de schema-kolom gebruiken:
+Of we gebruiken de schema kolom naam:
 
 ```
 row.Get<int>(row.Schema[0].Name)
 ```
 
-De uitvoerwaarden moeten worden ingesteld met `IUpdatableRow` uitvoer:
+De uitvoer waarden moeten worden ingesteld met `IUpdatableRow` uitvoer:
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Het is belangrijk om te begrijpen dat aangepaste appliers alleen kolommen en waarden die zijn gedefinieerd met uitvoer `output.Set` aanroep van methode.
+Het is belang rijk om te begrijpen dat aangepaste appliers alleen uitvoer kolommen en waarden die zijn gedefinieerd met `output.Set` methode aanroep.
 
-De werkelijke uitvoer wordt geactiveerd door het aanroepen van `yield return output.AsReadOnly();`.
+De daad werkelijke uitvoer wordt geactiveerd door `yield return output.AsReadOnly();`aan te roepen.
 
-De gebruiker gedefinieerde applier parameters kunnen worden doorgegeven aan de constructor. Applier kunt een variabele aantal kolommen die moeten worden gedefinieerd tijdens het aanroepen van applier in U-SQL-Standaardscript retourneren.
+De door de gebruiker gedefinieerde Applier-para meters kunnen worden door gegeven aan de constructor. Applier kan een variabel aantal kolommen retour neren dat moet worden gedefinieerd tijdens de aanroep van de Applier in base U-SQL-script.
 
 ```
 new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
-Hier volgt de gebruiker gedefinieerde applier voorbeeld:
+Hier volgt het door de gebruiker gedefinieerde Applier-voor beeld:
 
 ```
 [SqlUserDefinedApplier]
@@ -1742,7 +1742,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 }
 ```
 
-Hieronder vindt u het standaardscript U-SQL voor deze gebruiker gedefinieerde applier:
+Hieronder vindt U het basis U-SQL-script voor deze door de gebruiker gedefinieerde Applier:
 
 ```
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
@@ -1771,7 +1771,7 @@ DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-In deze use-casescenario fungeert applier zelfgedefinieerde als een door komma's gescheiden waarden parser voor de vloot auto-eigenschappen. De rijen invoerbestand er uitzien als volgt uit:
+In dit scenario voor gebruik fungeert door de gebruiker gedefinieerde Applier als een door komma's gescheiden waarde parser voor de eigenschappen van de auto vloot. De rijen van het invoer bestand zien er als volgt uit:
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
@@ -1779,30 +1779,30 @@ In deze use-casescenario fungeert applier zelfgedefinieerde als een door komma's
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 
-Het is een typische door tabs gescheiden TSV-bestand met een kolom met eigenschappen van die auto-eigenschappen zoals het merk en model bevat. Deze eigenschappen moeten worden geparseerd naar kolommen in de tabel. De applier die wordt geleverd kunt u ook voor het genereren van een dynamische aantal eigenschappen in de rijenset resultaat, op basis van de parameter die wordt doorgegeven. U kunt alle eigenschappen of een specifieke set alleen eigenschappen genereren.
+Het is een standaard, tabgescheiden TSV-bestand met een eigenschappen kolom die auto-eigenschappen bevat, zoals merk en model. Deze eigenschappen moeten worden geparseerd naar de tabel kolommen. Met de Applier die wordt geleverd, kunt u ook een dynamisch aantal eigenschappen in de rijenset met resultaten genereren, op basis van de para meter die wordt door gegeven. U kunt alle eigenschappen of een specifieke set eigenschappen genereren.
 
     …USQL_Programmability.ParserApplier ("all")
     …USQL_Programmability.ParserApplier ("make")
     …USQL_Programmability.ParserApplier ("make&model")
 
-De gebruiker gedefinieerde applier kan worden aangeroepen als een nieuw exemplaar van applier object:
+De door de gebruiker gedefinieerde Applier kan worden aangeroepen als een nieuw exemplaar van het Applier-object:
 
 ```
-CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
+CROSS APPLY new MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
-Of met het aanroepen van een wrapper factory methode:
+Of met het aanroepen van een wrapper-fabrieks methode:
 
 ```csharp
-    CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
+    CROSS APPLY MyNameSpace.MyApplier (parameter: "value") AS alias([columns types]…);
 ```
 
-## <a name="use-user-defined-combiners"></a>Gebruik van de gebruiker gedefinieerde combiners
-Gebruiker gedefinieerde combiner of UDC, kunt u rijen uit de linker- en rijensets, op basis van aangepaste logica combineren. Gebruiker gedefinieerde combiner wordt gebruikt met de expressie COMBINEREN.
+## <a name="use-user-defined-combiners"></a>Door de gebruiker gedefinieerde combi Naties gebruiken
+Met de door de gebruiker gedefinieerde combi natie of UDC kunt u rijen uit de rijen sets links en rechts combi neren op basis van aangepaste logica. Door de gebruiker gedefinieerde combi natie wordt gebruikt met de combi natie-expressie.
 
-Een combiner wordt aangeroepen met de expressie COMBINEREN, waarmee de nodige informatie over zowel de invoer rijensets, de groeperende kolommen, de verwachte resultaat schema en aanvullende informatie.
+Er wordt een combi natie aangeroepen met de combi natie-expressie die de benodigde informatie bevat over de invoer rijen sets, de groeperings kolommen, het verwachte resultaten schema en aanvullende informatie.
 
-Om aan te roepen een combiner in een Standaardscript van U-SQL, we gebruiken de volgende syntaxis:
+Als u een combi natie wilt aanroepen in een base U-SQL-script, gebruikt u de volgende syntaxis:
 
 ```
 Combine_Expression :=
@@ -1815,11 +1815,11 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-Zie voor meer informatie, [expressie COMBINEREN (U-SQL)](/u-sql/statements-and-expressions/combine-expression).
+Zie [expressie combi neren (U-SQL)](/u-sql/statements-and-expressions/combine-expression)voor meer informatie.
 
-Voor het definiëren van een gebruiker gedefinieerde combiner, moeten we maken de `ICombiner` interface met de [`SqlUserDefinedCombiner`] kenmerk, die optioneel voor de definitie van een gebruiker gedefinieerde Combiner is.
+Als u een door de gebruiker gedefinieerde combi natie wilt definiëren, moet u de `ICombiner`-interface maken met het kenmerk [`SqlUserDefinedCombiner`], dat optioneel is voor een door de gebruiker gedefinieerde combi Naties definitie.
 
-Base `ICombiner` klassedefinitie:
+Basis `ICombiner` klassedefinitie:
 
 ```
 public abstract class ICombiner : IUserDefinedOperator
@@ -1832,7 +1832,7 @@ public abstract IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-De aangepaste implementatie van een `ICombiner` interface mag de definitie voor een `IEnumerable<IRow>` onderdrukking combineren.
+De aangepaste implementatie van een `ICombiner`-interface moet de definitie bevatten voor het opheffen van een `IEnumerable<IRow>` combi neren.
 
 ```
 [SqlUserDefinedCombiner]
@@ -1847,45 +1847,45 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-De **SqlUserDefinedCombiner** kenmerk geeft aan dat het type moet worden geregistreerd als een gebruiker gedefinieerde combiner. Deze klasse kan niet worden overgenomen.
+Het kenmerk **SqlUserDefinedCombiner** geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerde combi natie. Deze klasse kan niet worden overgenomen.
 
-**SqlUserDefinedCombiner** wordt gebruikt voor het definiëren van de eigenschap Combiner mode. Het is een optioneel kenmerk voor de definitie van een gebruiker gedefinieerde combiner.
+**SqlUserDefinedCombiner** wordt gebruikt om de eigenschap van de combine modus te definiëren. Het is een optioneel kenmerk voor een door de gebruiker gedefinieerde combi Naties definitie.
 
-CombinerMode modus
+CombinerMode-modus
 
-CombinerMode enum kan duren voordat de volgende waarden:
+CombinerMode Enum kan de volgende waarden hebben:
 
-* Volledig (0) elke rij van de uitvoer is mogelijk afhankelijk van alle invoer rijen van links en rechts met dezelfde sleutelwaarde is.
+* Volledig (0) elke uitvoer rij is mogelijk afhankelijk van alle invoer rijen van links en rechts met dezelfde sleutel waarde.
 
-* Left (1) is die elke rij van de uitvoer is afhankelijk van de invoer één rij uit de links (en mogelijk alle rijen vanaf de rechterkant met dezelfde sleutelwaarde).
+* Links (1) elke uitvoermap is afhankelijk van één rij met invoer van links (en mogelijk alle rijen van rechts met dezelfde sleutel waarde).
 
-* Recht (2) voor die elke rij van de uitvoer is afhankelijk van één invoer rij van het recht (en mogelijk alle rijen vanaf de linkerkant met dezelfde sleutelwaarde).
+* Rechts (2) elke uitvoermap is afhankelijk van één invoer rij van rechts (en mogelijk alle rijen vanaf de linkerkant met dezelfde sleutel waarde).
 
-* Inner (3) elke rij van de uitvoer is afhankelijk van één invoer rij van links en rechts met dezelfde waarde.
+* Binnenste (3) elke uitvoermap is afhankelijk van één invoer rij van links naar rechts en met dezelfde waarde.
 
-Voorbeeld: [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
+Voor beeld: [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
 
 
-De belangrijkste programmeerbaarheid objecten zijn:
+De belangrijkste Programmeer bare objecten zijn:
 
 ```csharp
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```
 
-Invoer rijensets worden doorgegeven als **links** en **rechts** `IRowset` type interface. Beide rijensets moet worden geïnventariseerd voor verwerking. U kunt elke interface slechts één keer opsommen, zodat we hoeven te inventariseren en opslaan in cache deze indien nodig.
+Invoer rijen worden door gegeven als **linker** -en **rechter** `IRowset` type interface. Beide rijen sets moeten worden geïnventariseerd voor verwerking. U kunt elke interface één keer opsommen. Daarom moet u deze indien nodig opsommen en opslaan in de cache.
 
-Voor cachedoeleinden, maken we een lijst met\<T\> soort geheugenstructuur als gevolg hiervan van een LINQ uitvoering van de query, specifiek lijst <`IRow`>. Het type anonieme gegevens kan worden gebruikt tijdens de opsomming ook.
+Voor cache doeleinden kunnen we een lijst\<T\> Type geheugen structuur maken als gevolg van de uitvoering van een LINQ-query, met name <`IRow`>. Het anonieme gegevens type kan ook worden gebruikt tijdens de inventarisatie.
 
-Zie [Inleiding tot LINQ-query's (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) voor meer informatie over het LINQ-query's, en [IEnumerable\<T\> Interface](/dotnet/api/system.collections.generic.ienumerable-1) voor meer informatie over IEnumerable\<T\> interface.
+Zie [Inleiding tot LINQ-query'sC#()](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) voor meer informatie over LINQ-query's en de [Interface IEnumerable\<t\>](/dotnet/api/system.collections.generic.ienumerable-1) voor meer informatie over de interface van IEnumerable\<t\>.
 
-De werkelijke waarden ophalen uit de binnenkomende `IRowset`, gebruiken we de methode voor Get() `IRow` interface.
+We gebruiken de methode Get () van `IRow` interface om de werkelijke gegevens waarden van de binnenkomende `IRowset`op te halen.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Afzonderlijke kolomnamen kunnen worden bepaald door het aanroepen van de `IRow` Schema-methode.
+U kunt afzonderlijke kolom namen bepalen door de `IRow` schema methode aan te roepen.
 
 ```
 ISchema schema = row.Schema;
@@ -1893,7 +1893,7 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Of met behulp van de naam van de schema-kolom:
+Of gebruik de naam van de schema kolom:
 
 ```
 c# row.Get<int>(row.Schema[0].Name)
@@ -1910,17 +1910,17 @@ var myRowset =
                           }).ToList();
 ```
 
-Nadat de beide rijensets inventariseren, gaan we alle rijen doorlopen. Voor elke rij in de linker rijenset gaan we alle rijen die voldoen aan de voorwaarde van onze combiner zoeken.
+Na het opsommen van beide rijen sets gaan we alle rijen door lopen. Voor elke rij in de rijenset links gaan we alle rijen vinden die voldoen aan de voor waarde van onze combi natie.
 
-De uitvoerwaarden moeten worden ingesteld met `IUpdatableRow` uitvoer.
+De uitvoer waarden moeten worden ingesteld met `IUpdatableRow` uitvoer.
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-De werkelijke uitvoer wordt geactiveerd door aanroepen aan `yield return output.AsReadOnly();`.
+De daad werkelijke uitvoer wordt geactiveerd door aan `yield return output.AsReadOnly();`aan te roepen.
 
-Hieronder volgt een voorbeeld van een combiner:
+Hieronder volgt een combi natie van voor beeld:
 
 ```
 [SqlUserDefinedCombiner]
@@ -1974,9 +1974,9 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-In dit scenario use-casescenario bouwen we een analytics-rapport voor de leverancier. Het doel is om te zoeken naar alle producten die meer dan $20.000 kosten en die verkopen via de website sneller dan via de gewone detailhandelaar binnen een bepaald tijdsbestek.
+In dit scenario voor gebruik maken we een analyse rapport voor de detail handelaar. Het doel is om alle producten te vinden die meer dan $20.000 kosten en die de website sneller verkopen dan via de normale leverancier binnen een bepaald tijds bestek.
 
-Dit is de basis U-SQL-script. U kunt de logica tussen een OUTER-JOIN en een combiner vergelijken:
+Dit is het basis U-SQL-script. U kunt de logica vergelijken tussen een gewone samen voeging en een combi natie:
 
 ```sql
 DECLARE @LocalURI string = @"\usql-programmability\";
@@ -2071,28 +2071,28 @@ OUTPUT @rs1 TO @output_file1 USING Outputters.Tsv();
 OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
 ```
 
-Een door de gebruiker gedefinieerde combiner kan worden aangeroepen als een nieuw exemplaar van het applier object:
+Een door de gebruiker gedefinieerde combi natie kan worden aangeroepen als een nieuw exemplaar van het Applier-object:
 
 ```
 USING new MyNameSpace.MyCombiner();
 ```
 
 
-Of met het aanroepen van een wrapper factory methode:
+Of met het aanroepen van een wrapper-fabrieks methode:
 
 ```
 USING MyNameSpace.MyCombiner();
 ```
 
-## <a name="use-user-defined-reducers"></a>Gebruik van de gebruiker gedefinieerde reducers tegelijkertijd
+## <a name="use-user-defined-reducers"></a>Door de gebruiker gedefinieerde reducties gebruiken
 
-U-SQL kunt u aangepaste rijenset reducers tegelijkertijd schrijven in C# met behulp van het uitbreidingsframework van de gebruiker gedefinieerde operator en een IReducer-interface implementeert.
+U kunt met behulp van de C# door de gebruiker gedefinieerde verwerkings structuur van u-SQL een aangepaste Rijset-verkleining schrijven en een IReducer-interface implementeren.
 
-Gebruiker gedefinieerde reducer of UDR, kan worden gebruikt om te verwijderen van onnodige rijen tijdens het ophalen van gegevens (importeren). Deze kan ook worden gebruikt om te bewerken en evalueren van rijen en kolommen. Op basis van programmeerbaarheid logica, kan het ook definiëren welke rijen moeten worden geëxtraheerd.
+Een door de gebruiker gedefinieerde versmaller of UDR kan worden gebruikt om onnodige rijen te elimineren tijdens het ophalen van gegevens (importeren). Het kan ook worden gebruikt voor het bewerken en evalueren van rijen en kolommen. Op basis van de programmeer baarheids logica kan deze ook bepalen welke rijen moeten worden geëxtraheerd.
 
-Voor het definiëren van een klasse UDR, moeten we maken een `IReducer` interface met een optionele `SqlUserDefinedReducer` kenmerk.
+Als u een UDR-klasse wilt definiëren, moet u een `IReducer`-interface met een optioneel `SqlUserDefinedReducer` kenmerk maken.
 
-Deze klasseninterface mogen geen definitie voor de `IEnumerable` interface rijenset overschrijven.
+Deze klasse-interface moet een definitie bevatten voor de onderdrukking van de `IEnumerable`-interface rijen.
 
 ```
 [SqlUserDefinedReducer]
@@ -2107,15 +2107,15 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-De **SqlUserDefinedReducer** kenmerk geeft aan dat het type moet worden geregistreerd als een gebruiker gedefinieerde reducer. Deze klasse kan niet worden overgenomen.
-**SqlUserDefinedReducer** is een optioneel kenmerk voor de definitie van een gebruiker gedefinieerde reducer. Wordt gebruikt om de eigenschap IsRecursive te definiëren.
+Het kenmerk **SqlUserDefinedReducer** geeft aan dat het type moet worden geregistreerd als een door de gebruiker gedefinieerde verminderr. Deze klasse kan niet worden overgenomen.
+**SqlUserDefinedReducer** is een optioneel kenmerk voor een door de gebruiker gedefinieerde beperkings definitie. Deze wordt gebruikt voor het definiëren van de eigenschap IsRecursive.
 
 * BOOL IsRecursive    
-* **de waarde True** = geeft aan of deze Reducer associatieve en commutatieve
+* **waar** = geeft aan of deze versmaller een associatief en Commutative is
 
-De belangrijkste programmeerbaarheid objecten zijn **invoer** en **uitvoer**. Het invoerobject wordt gebruikt om inventariseren invoer rijen. Uitvoer wordt gebruikt om in te stellen uitvoer rijen als gevolg van activiteit beperken.
+De belangrijkste Programmeer bare objecten zijn **invoer** en **uitvoer**. Het invoer object wordt gebruikt voor het opsommen van invoer rijen. Uitvoer wordt gebruikt om uitvoer rijen in te stellen als gevolg van het verminderen van de activiteit.
 
-Voor invoerrijen opsomming, gebruiken we de `Row.Get` methode.
+Voor de opsomming van invoer rijen gebruiken we de `Row.Get` methode.
 
 ```
 foreach (IRow row in input.Rows)
@@ -2124,19 +2124,19 @@ foreach (IRow row in input.Rows)
 }
 ```
 
-De parameter voor de `Row.Get` methode is een kolom die wordt doorgegeven als onderdeel van de `PRODUCE` klasse van de `REDUCE` -instructie van de U-SQL-Standaardscript. We moeten het juiste gegevenstype hier ook gebruiken.
+De para meter voor de `Row.Get` methode is een kolom die wordt door gegeven als onderdeel van de `PRODUCE` klasse van de `REDUCE`-instructie van het U-SQL-basis script. Het juiste gegevens type moet hier ook worden gebruikt.
 
-Gebruik voor de uitvoer van de `output.Set` methode.
+Gebruik de methode `output.Set` voor uitvoer.
 
-Het is belangrijk om te begrijpen die aangepaste reducer voert alleen de waarden uit die zijn gedefinieerd met de `output.Set` aanroep van methode.
+Het is belang rijk om te begrijpen dat aangepaste reduceerere waarden alleen worden uitgevoerd die zijn gedefinieerd met de aanroep van de `output.Set` methode.
 
 ```
 output.Set<string>("mycolumn", guid);
 ```
 
-De uitvoer van de werkelijke reducer wordt geactiveerd door het aanroepen van `yield return output.AsReadOnly();`.
+De werkelijke verminderings uitvoer wordt geactiveerd door het aanroepen van `yield return output.AsReadOnly();`.
 
-Hieronder volgt een voorbeeld van een reducer:
+Hier volgt een voor beeld van een reducer:
 
 ```
 [SqlUserDefinedReducer]
@@ -2172,9 +2172,9 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-In dit scenario use case is de reducer wordt overgeslagen rijen met een lege gebruikersnaam. Voor elke rij in de rijenset elke vereiste kolom leest, vervolgens wordt geëvalueerd als de lengte van de naam van de gebruiker. Het voert de daadwerkelijke rij alleen als de lengte van de gebruiker de naam van waarde is groter dan 0.
+In dit scenario voor gebruik worden rijen met een lege gebruikers naam overs Laan. Voor elke rij in de rijenset wordt elke vereiste kolom gelezen en wordt vervolgens de lengte van de gebruikers naam geëvalueerd. De werkelijke rij wordt alleen uitgevoerd als de waarde van de gebruikers naam meer dan 0 is.
 
-Hieronder vindt u base U-SQL-script dat gebruikmaakt van een aangepaste reducer:
+Hieronder volgt een basis-U-SQL-script dat gebruikmaakt van een aangepaste verminderr:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file_reducer.tsv";

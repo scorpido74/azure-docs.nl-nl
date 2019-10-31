@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met BambooHR | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met BambooHR | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en BambooHR.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f826b5d2-9c64-47df-bbbf-0adf9eb0fa71
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bc3de858102c02d49a7cefeef15de7e1c82220e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfa7934472b512e2c884ab3f9a06728a8fb18b12
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106475"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157744"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Zelfstudie: Azure Active Directory-integratie met BambooHR
+# <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Zelf studie: integratie Azure Active Directory met BambooHR
 
 In deze zelfstudie leert u hoe u BambooHR integreert met Azure Active Directory (Azure AD).
 De integratie van BambooHR met Azure AD heeft de volgende voordelen:
@@ -53,7 +54,7 @@ Als u de integratie van BambooHR in Azure AD wilt configureren, moet u BambooHR 
 
 **Als u BambooHR uit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -107,7 +108,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met BambooHR t
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<company>.bamboohr.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `BambooHR-SAML`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `BambooHR-SAML`
 
     > [!NOTE]
     > De waarde voor **Aanmeldings-URL** is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteuningsteam van BambooHR](https://www.bamboohr.com/contact.php) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -132,7 +133,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met BambooHR t
 
 2. Doe het volgende op de startpagina:
    
-    ![De pagina voor eenmalige aanmelding van BambooHR](./media/bamboo-hr-tutorial/ic796691.png "Eenmalige aanmelding")   
+    ![De BambooHR-pagina voor eenmalige aanmelding](./media/bamboo-hr-tutorial/ic796691.png "Eenmalige aanmelding")   
 
     a. Selecteer **Apps**.
    
@@ -142,7 +143,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD met BambooHR t
 
 3. Doe het volgende in het deelvenster **Eenmalige aanmelding op basis van SAML**:
    
-    ![Het deelvenster Eenmalige aanmelding op basis van SAML](./media/bamboo-hr-tutorial/IC796692.png "Eenmalige aanmelding op basis van SAML")
+    ![Het deel venster eenmalige aanmelding voor SAML](./media/bamboo-hr-tutorial/IC796692.png "Eenmalige aanmelding voor SAML")
    
     a. Plak in het vak **Aanmeldings-URL voor eenmalige aanmelding** de **Aanmeldings-URL** die u in stap 6 vanuit Azure Portal hebt gekopieerd.
       
@@ -168,12 +169,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -187,7 +188,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De link BambooHR in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -209,7 +210,7 @@ Als u wilt dat Azure AD-gebruikers zich bij BambooHR kunnen aanmelden, stelt u z
 
 2. Selecteer **Instellingen** in de werkbalk bovenaan.
    
-    ![De knop Instellingen](./media/bamboo-hr-tutorial/IC796694.png "Instelling")
+    ![De knop instellingen](./media/bamboo-hr-tutorial/IC796694.png "Instelling")
 
 3. Selecteer **Overzicht**.
 
@@ -224,11 +225,11 @@ Als u wilt dat Azure AD-gebruikers zich bij BambooHR kunnen aanmelden, stelt u z
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel van BambooHR klikt, zou u automatisch moeten worden aangemeld bij de instantie van BambooHR waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

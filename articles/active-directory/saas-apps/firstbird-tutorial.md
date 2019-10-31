@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: acab1200-32d3-4f4b-953f-f2a7e812b6a3
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f192b402aebcaeb87e068a4248c0794484e6c313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2aa9a5151433649e9f4d6cd383d33ee62cc34256
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102446"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firstbird"></a>Zelfstudie: Azure Active Directory-integratie met Firstbird
 
@@ -54,7 +55,7 @@ Voor het configureren van de integratie van Firstbird in Azure AD, moet u Firstb
 
 **Als u Firstbird uit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select_azuread.png)
 
@@ -77,7 +78,7 @@ Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure 
 
 Als u Azure AD-eenmalige aanmelding met [toepassingsnaam] wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
 2. **[Firstbird-eenmalige aanmelding configureren](#configure-firstbird-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
@@ -108,7 +109,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<company-domain>.auth.1brd.com/saml/sp`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<company-domain>.auth.1brd.com/saml/callback`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<company-domain>.auth.1brd.com/saml/callback`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -125,11 +126,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 7. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** configureert u het kenmerk van het SAML-token zoals wordt weergegeven in de bovenstaande afbeelding en voert u de volgende stappen uit:
 
-    | Name | Bronkenmerk|
+    | Naam | Bronkenmerk|
     | ---------------| --------- |
     | first_name | `user.givenname` |
     | last_name | `user.surname` |
-    | email | `user.mail` |
+    | e-mail | `user.mail` |
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
@@ -155,7 +156,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
 ### <a name="configure-firstbird-single-sign-on"></a>Firstbird-eenmalige aanmelding configureren
 
-Nadat u deze stappen hebt voltooid, moet u het XML-bestand met federatieve metagegevens in een ondersteuningsaanvraag per e-mail naar Firstbird verzenden. Stuur deze e-mail naar [support@firstbird.com](mailto:support@firstbird.com) met als onderwerp: "SSO-configuratie".
+Nadat u deze stappen hebt voltooid, moet u het XML-bestand met federatieve metagegevens per e-mail naar Firstbird verzenden als een ondersteuningsaanvraag. Stuur deze e-mail naar [support@firstbird.com](mailto:support@firstbird.com) met als onderwerp: 'SSO-configuratie'.
 
 Firstbird slaat vervolgens de configuratie op in het systeem en activeert eenmalige aanmelding voor uw account. Vervolgens neemt een lid van het ondersteuningsteam contact met u op om de configuratie te controleren.
 
@@ -180,12 +181,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon** in.
 
-    b. In de **gebruikersnaam** veld, typt u **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -199,7 +200,7 @@ In deze sectie gaat u Britta Simon in staat stellen om gebruik te maken van Azur
 
     ![De koppeling Firstbird in de lijst met toepassingen](common/all_applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users_groups_blade.png)
 
@@ -223,7 +224,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Firstbird in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Firstbird waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

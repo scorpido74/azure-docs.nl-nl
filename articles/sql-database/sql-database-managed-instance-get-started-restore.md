@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: c07daf4cf9f355e8eccfe618262dd06b4216106e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514019"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146392"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Snelstartgids: een Data Base herstellen naar een beheerd exemplaar
 
@@ -35,12 +35,12 @@ Voor deze snelstartgids geldt het volgende:
 - Maakt gebruik van resources uit de snelstart [Een beheerd exemplaar maken](sql-database-managed-instance-get-started.md).
 - De meest recente versie van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) moet op uw computer zijn geïnstalleerd.
 - Er moet gebruik worden gemaakt van SSMS voor verbinding met uw beheerde exemplaar. Raadpleeg de volgende snelstart voor het maken van verbinding:
+  - [Open bare eind punt inschakelen](sql-database-managed-instance-public-endpoint-configure.md) op een beheerd exemplaar: dit is de aanbevolen methode voor deze zelf studie.
   - [Verbinding maken met een Azure SQL Database Managed Instance vanaf een Azure-VM](sql-database-managed-instance-configure-vm.md)
   - [Een punt-naar-site-verbinding configureren naar een beheerd exemplaar voor Azure SQL Database van on-premises ](sql-database-managed-instance-configure-p2s.md).
-- Vereist een Azure Blob Storage-account (bijvoorbeeld Standard_LRS v2) op **openbaar IP-adres** dat is beveiligd met een **SAS-referentie** met `rw`-machtiging. [Privé IP-adressen voor Blob-opslag die wordt beveiligd door Firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) -en Azure Blob Storage service-eind punten worden momenteel niet ondersteund.
 
 > [!NOTE]
-> Zie [Back-up van SQL Server naar URL](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en het herstellen van de back-up.
+> Zie [Back-up van SQL Server naar URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en het herstellen van de back-up.
 
 ## <a name="restore-the-database-from-a-backup-file"></a>De database herstellen met een back-upbestand
 
@@ -86,7 +86,11 @@ Volg in SSMS deze stappen om de Wide World Importers-database te herstellen naar
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Wanneer het herstellen is voltooid, bekijkt u het herstel in Objectverkenner.
+7. Wanneer de herstel bewerking is voltooid, bekijkt u de data base in Objectverkenner. U kunt controleren of het terugzetten van de data base is voltooid met behulp van de [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) -weer gave.
+
+> [!NOTE]
+> De bewerking voor het terugzetten van de data base is asynchroon en genereerden. Mogelijk wordt er een fout SQL Server Management Studio als de verbinding wordt verbroken of een time-out verloopt. Azure SQL Database blijft de Data Base op de achtergrond herstellen, en u kunt de voortgang van de herstel bewerking volgen met de [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) -en [sys. DM _operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) -weer gaven.
+> In sommige fasen van het herstel proces ziet u een unieke id in plaats van de werkelijke database naam in de systeem weergaven. Meer informatie over [de verschillen in](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)het gedrag van de `RESTORE`-instructie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

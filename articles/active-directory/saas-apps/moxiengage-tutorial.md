@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Moxi betrekken | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Moxi betrekken.
+title: 'Zelf studie: integratie Azure Active Directory met Moxi-out | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Moxi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,26 +8,27 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1135a879-8f00-43b0-ac8a-831593d9586d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f12b564ac2827cae98e9029fc9c6ce20862fa6ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 85e025355d914f95c2be221341b5eff08d1378e5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096834"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160490"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Zelfstudie: Azure Active Directory-integratie met Moxi betrekken
+# <a name="tutorial-azure-active-directory-integration-with-moxi-engage"></a>Zelf studie: integratie Azure Active Directory met Moxi-deelname
 
-In deze zelfstudie leert u hoe u Moxi betrekken integreren met Azure Active Directory (Azure AD).
-Moxi betrekken integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Moxi kunt integreren met Azure Active Directory (Azure AD).
+Het integreren van Moxi met Azure AD biedt de volgende voor delen:
 
-* U kunt beheren in Azure AD die toegang tot Moxi betrekken heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Moxi contact opnemen met (Single Sign-On) inschakelen met hun Azure AD-accounts.
+* U kunt beheren in azure AD die toegang heeft tot Moxi.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Moxi (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -35,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Moxi betrekken, moet u de volgende items:
+Als u Azure AD-integratie met Moxi wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Moxi betrekken eenmalige aanmelding ingeschakeld abonnement
+* Abonnement voor eenmalige aanmelding Moxi inschakelen
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Moxi betrekken **SP** gestart door SSO
+* Moxi-deelname ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-moxi-engage-from-the-gallery"></a>Toe te voegen Moxi betrekken uit de galerie
+## <a name="adding-moxi-engage-from-the-gallery"></a>Moxi toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van Moxi betrekken in Azure AD, moet u Moxi betrekken uit de galerie aan de lijst met beheerde SaaS-apps toevoegt.
+Als u de integratie van Moxi wilt configureren in azure AD, moet u Moxi van de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Moxi betrekken uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u Moxi wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -64,31 +65,31 @@ Voor het configureren van de integratie van Moxi betrekken in Azure AD, moet u M
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Moxi betrekken**, selecteer **Moxi betrekken** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Moxi**in het zoekvak, selecteer **Moxi** deel nemen uit het paneel resultaten en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-     ![Moxi deelnemen aan de lijst met resultaten](common/search-new-app.png)
+     ![Moxi in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Moxi betrekken op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Moxi betrekken tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Moxi op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Moxi worden ingesteld.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met Moxi betrekken, u nodig hebt voor de volgende bouwstenen:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Moxi-out, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureer Moxi betrekken Single Sign-On](#configure-moxi-engage-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Moxi eenmalige aanmelding configureren](#configure-moxi-engage-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak testgebruiker Moxi betrekken](#create-moxi-engage-test-user)**  : als u wilt een equivalent van Britta Simon in Moxi betrekken die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Maak een Moxi-test gebruiker](#create-moxi-engage-test-user)** voor het maken van een equivalent van Julia Simon in Moxius dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Moxi betrekken, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Moxi-out:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Moxi betrekken** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Moxiing** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -102,18 +103,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met Moxi betrekken, moet
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Moxi betrekken domein en URL's eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![Informatie over eenmalige aanmelding voor domein en Url's Moxi](common/sp-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://svc.<moxiworks-integration-domain>/service/v1/auth/inbound/saml/aad`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [Moxi betrekken Client ondersteuningsteam](mailto:support@moxiworks.com) om de waarde. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Moxi](mailto:support@moxiworks.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **instellen Moxi betrekken** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer op de Moxi-afdeling **instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -123,9 +124,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Moxi betrekken, moet
 
     c. Afmeldings-URL
 
-### <a name="configure-moxi-engage-single-sign-on"></a>Configureer Moxi Ga in gesprek Single Sign-On
+### <a name="configure-moxi-engage-single-sign-on"></a>Eenmalige aanmelding voor Moxi configureren
 
-Het configureren van eenmalige aanmelding op **Moxi betrekken** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [ondersteuningsteam Moxi betrekken](mailto:support@moxiworks.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren voor **Moxi** aan de zijkant, moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar het [ondersteunings team van Moxi-deelname](mailto:support@moxiworks.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -145,26 +146,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon** in.
   
-    b. In de **gebruikersnaam** veld, typt u **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen via een Moxi.
+In deze sectie schakelt u Julia Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang toe te kennen aan Moxi.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Moxi betrekken**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Moxi**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Moxi betrekken**.
+2. Selecteer **Moxi**in de lijst toepassingen.
 
-    ![De koppeling Moxi betrekken in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling Moxi in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -174,21 +175,21 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
+6. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onderaan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-moxi-engage-test-user"></a>Testgebruiker Moxi betrekken maken
+### <a name="create-moxi-engage-test-user"></a>Test gebruiker van Moxi maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in Moxi betrekken. Werken met [ondersteuningsteam Moxi betrekken](mailto:support@moxiworks.com) om toe te voegen de gebruikers in het platform Moxi betrekken. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in Moxiing. Werk samen met het [ondersteunings team van Moxi](mailto:support@moxiworks.com) om de gebruikers toe te voegen aan het Moxi-deelname platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Moxi betrekken in het toegangsvenster, moet u worden automatisch aangemeld bij de Moxi betrekken waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Moxi in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Moxi waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

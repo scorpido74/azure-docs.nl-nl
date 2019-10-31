@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512768"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147089"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Azure Analysis Services
 
-Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's om verbinding te maken met Analysis Services-servers. Micro soft-client toepassingen zoals Power BI Desktop, Excel, SQL Server Management Studio (SSMS) en SQL Server Data Tools (SSDT) installeren alle drie client bibliotheken en werken ze samen met reguliere toepassings updates. In sommige gevallen moet u mogelijk nieuwere versies van de client bibliotheken installeren. Voor aangepaste client toepassingen moeten ook client bibliotheken zijn geïnstalleerd.
+Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's om verbinding te maken met Analysis Services-servers. Micro soft-client toepassingen als Power BI Desktop, Excel, SQL Server Management Studio (SSMS) en Analysis Services projects-extensie voor Visual Studio installeren alle drie client bibliotheken en werken ze samen met reguliere toepassings updates. In sommige gevallen moet u mogelijk nieuwere versies van de client bibliotheken installeren. Voor aangepaste client toepassingen moeten ook client bibliotheken zijn geïnstalleerd.
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Down load de nieuwste client bibliotheken (Windows Installer)  
 
@@ -58,7 +58,7 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
 
 ### <a name="amo"></a>AMO  
 
- AMO is een beheerde client bibliotheek die wordt gebruikt voor Server beheer en gegevens definitie. Het wordt geïnstalleerd en gebruikt door hulpprogram ma's en client toepassingen. SQL Server Management Studio (SSMS) gebruikt bijvoorbeeld AMO om verbinding te maken met Analysis Services. Een verbinding met AMO is doorgaans mini maal, bestaande uit `"data source=\<servername>"`. Nadat een verbinding tot stand is gebracht, gebruikt u de API om met database verzamelingen en hoofd objecten te werken. Zowel SSDT als SSMS gebruiken AMO om verbinding te maken met een Analysis Services-exemplaar.  
+ AMO is een beheerde client bibliotheek die wordt gebruikt voor Server beheer en gegevens definitie. Het wordt geïnstalleerd en gebruikt door hulpprogram ma's en client toepassingen. SQL Server Management Studio (SSMS) gebruikt bijvoorbeeld AMO om verbinding te maken met Analysis Services. Een verbinding met AMO is doorgaans mini maal, bestaande uit `"data source=\<servername>"`. Nadat een verbinding tot stand is gebracht, gebruikt u de API om met database verzamelingen en hoofd objecten te werken. Zowel Visual Studio als SSMS gebruiken AMO om verbinding te maken met een Analysis Services-exemplaar.  
 
   
 ### <a name="adomd"></a>ADOMD

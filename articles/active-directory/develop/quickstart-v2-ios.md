@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a96aab3fc5dfa62039732f7860f1e96e3f60e445
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b515a7954d82cdd377cec72fa8525fbd9691351d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964037"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149512"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Snelstartgids: gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een iOS-of macOS-app
 
-Deze Quick Start bevat een code voorbeeld dat laat zien hoe een systeem eigen iOS-of macOS-toepassing zich kan aanmelden bij persoonlijke, werk-en school accounts, een toegangs token kan ophalen en de Microsoft Graph-API aanroept.
+Deze Snelstartgids bevat een code voorbeeld dat laat zien hoe een systeem eigen iOS-of macOS-toepassing het micro soft Identity-platform kan gebruiken voor het aanmelden van persoonlijke, werk-en school accounts, het verkrijgen van een toegangs token en het aanroepen van de Microsoft Graph-API.
 
 Deze Quick start is van toepassing op iOS-en macOS-apps. Sommige stappen zijn alleen nodig voor iOS-apps. Bij deze stappen wordt ervan uitgegaan dat ze alleen voor iOS zijn.
 

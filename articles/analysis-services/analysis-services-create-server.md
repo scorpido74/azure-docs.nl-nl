@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c104af3bcfddb4b0863f69b6571d4cd62ca9c2b8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295049"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147112"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Snelstart: Een server maken - Portal
 
@@ -45,7 +45,7 @@ In deze snelstart wordt beschreven hoe u een Azure Analysis Services-serverresou
    * **Instelling voor back-upopslag**: optioneel. Als u al een [opslagaccount](../storage/common/storage-introduction.md) hebt, kunt u dit als de standaardopslag opgeven voor back-ups van de modeldatabase. U kunt de instellingen voor [back-up en herstellen](analysis-services-backup.md) ook later opgeven.
    * **Vervaldatum van de opslagsleutel**: optioneel. Geef een verloopperiode op voor de opslagsleutel.
 
-Het maken van de server duurt gewoonlijk minder dan een minuut. Als u **Toevoegen aan de portal** hebt geselecteerd, navigeert u naar de portal om de nieuwe server te zien. Of navigeer naar **Alle services** > **Analysis Services** om te zien of de server gereed is. Servers ondersteunen tabellaire modellen op de compatibiliteits niveaus 1200 en hoger. Het compatibiliteits niveau van het model is opgegeven in SSDT of SSMS.
+Het maken van de server duurt gewoonlijk minder dan een minuut. Als u **Toevoegen aan de portal** hebt geselecteerd, navigeert u naar de portal om de nieuwe server te zien. Of navigeer naar **Alle services** > **Analysis Services** om te zien of de server gereed is. Servers ondersteunen tabellaire modellen op de compatibiliteits niveaus 1200 en hoger. Het compatibiliteits niveau van het model is opgegeven in Visual Studio of SSMS.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

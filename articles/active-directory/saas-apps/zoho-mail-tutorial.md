@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Integratie van Azure Active Directory met Zoho | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Zoho | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Zoho.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c2599a2ddd09cbaf869bf4d9e21a8032855cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8fc58b9cdec1a68dd12b7f70f7521a024f358ce
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67086167"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161050"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Zelfstudie: Integratie van Azure Active Directory met Zoho
+# <a name="tutorial-azure-active-directory-integration-with-zoho"></a>Zelf studie: integratie Azure Active Directory met Zoho
 
 In deze zelfstudie leert u hoe u Zoho kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Zoho met Azure AD heeft de volgende voordelen:
@@ -53,7 +54,7 @@ Als u de integratie van Zoho in Azure AD wilt configureren, dient u Zoho vanuit 
 
 **Voer de volgende stappen uit als u Zoho vanuit de galerie wilt toevoegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -105,7 +106,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Zoho wi
 
     ![Informatie over eenmalige aanmelding van domeinen en URL's van Zoho](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<company name>.zohomail.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<company name>.zohomail.com`
 
     > [!NOTE]
     > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van Zoho](https://www.zoho.com/mail/contact.html) (Engelstalig) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -130,7 +131,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Zoho wi
 
 2. Ga naar het **Configuratiescherm**.
    
-    ![Configuratiescherm](./media/zoho-mail-tutorial/ic789607.png "Configuratiescherm")
+    ![Configuratie scherm](./media/zoho-mail-tutorial/ic789607.png "Configuratie scherm")
 
 3. Klik op het tabblad **SAML-verificatie**.
    
@@ -138,7 +139,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met Zoho wi
 
 4. Voer in het gedeelte **Details SAML-verificatie** de volgende stappen uit:
    
-    ![Details SAML-verificatie](./media/zoho-mail-tutorial/ic789609.png "Details SAML-verificatie")
+    ![Details van SAML-verificatie](./media/zoho-mail-tutorial/ic789609.png "Details van SAML-verificatie")
    
     a. Plak in het tekstvak **Aanmeldings-URL** de **aanmeldings-URL** die u in de Azure-portal hebt gekopieerd.
    
@@ -170,12 +171,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -189,7 +190,7 @@ In dit gedeelte hebt u Britta Simon in staat gesteld gebruik te maken van eenmal
 
     ![De koppeling Zoho in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -228,7 +229,7 @@ Als u gebruikers van Azure AD in staat wilt stellen zich aan te melden bij Zoho 
 
     b. Typ in het tekstvak **Achternaam** de achternaam van de gebruiker in, bijvoorbeeld **Simon**.
 
-    c. In de **E-mail-ID** tekstvak, type de e-mail-id van gebruiker, zoals **brittasimon\@contoso.com**.
+    c. In het tekstvak **e-mail-id** typt u de e-mail-id van de gebruiker, zoals **brittasimon\@contoso.com**.
 
     d. Voer in het tekstvak **Wachtwoord** het wachtwoord van de gebruiker in.
    
@@ -239,11 +240,11 @@ Als u gebruikers van Azure AD in staat wilt stellen zich aan te melden bij Zoho 
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Zoho in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Zoho waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

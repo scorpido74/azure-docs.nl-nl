@@ -4,15 +4,15 @@ description: Meer informatie over het bewaken van Analysis Services server-metri
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a66089d01ed9eabdb78975eb1738b87c99fbf311
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294873"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146795"
 ---
 # <a name="monitor-server-metrics"></a>Metrische servergegevens bewaken
 
@@ -27,7 +27,7 @@ Als u meer uitgebreide diagnostische gegevens wilt uitvoeren, de prestaties wilt
 
     ![Bewaken in Azure Portal](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. Selecteer in **beschik bare metrische**gegevens de metrische gegevens die in uw grafiek moeten worden meegenomen. 
+2. Selecteer bij **metrische gegevens**de metrische gegevens die u in uw grafiek wilt gebruiken. 
 
     ![Bewaak diagram](./media/analysis-services-monitor/aas-monitor-chart.png)
 

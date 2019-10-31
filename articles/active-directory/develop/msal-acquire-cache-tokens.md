@@ -1,5 +1,5 @@
 ---
-title: Tokens beheren (micro soft-verificatie bibliotheek)
+title: Tokens verkrijgen en cachen met behulp van MSAL
 titleSuffix: Microsoft identity platform
 description: Meer informatie over het verkrijgen en caching van tokens met behulp van de micro soft Authentication Library (MSAL).
 services: active-directory
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
+ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa6a939fce3eae8b1367c2d01e947e813fa5437
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0d47fa92de8365ed3a5e0349b78899ff7fde1375
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803300"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150640"
 ---
-# <a name="acquiring-and-caching-tokens-using-msal"></a>Tokens verkrijgen en cachen met behulp van MSAL
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokens verkrijgen en in de cache opslaan met behulp van de micro soft Authentication Library (MSAL)
+
 Met [toegangs tokens](access-tokens.md) kunnen clients veilig Web-api's aanroepen die worden beveiligd door Azure. Er zijn veel manieren om een token te verkrijgen met behulp van micro soft Authentication Library (MSAL). Voor sommige manieren is interactie van de gebruiker vereist via een webbrowser. Voor sommige gebruikers interacties is geen interactie van de gebruiker vereist. Over het algemeen is het mogelijk om een token te verkrijgen, afhankelijk van of de toepassing een open bare-client toepassing (desktop-of mobiele app) of een vertrouwelijke client toepassing (Web-app, Web-API of daemon-toepassing, zoals een Windows-service) is.
 
 MSAL slaat een token op in de cache nadat het is verkregen.  Toepassings code moet eerst proberen een token op de achtergrond (uit de cache) te krijgen voordat een token op een andere manier wordt verkregen.

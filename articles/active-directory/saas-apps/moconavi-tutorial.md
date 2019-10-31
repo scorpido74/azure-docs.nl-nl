@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met moconavi | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en moconavi.
+title: 'Zelf studie: integratie Azure Active Directory met moconavi | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en moconavi.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,26 +8,27 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 872a2daf30a2173c7cde93e534b8e7525c88a4d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 038520e662a205bc173035fd19656cbaf4800239
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67096848"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160521"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Zelfstudie: Azure Active Directory-integratie met moconavi
+# <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Zelf studie: integratie Azure Active Directory met moconavi
 
-In deze zelfstudie leert u hoe u moconavi integreren met Azure Active Directory (Azure AD).
-Moconavi integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u moconavi integreert met Azure Active Directory (Azure AD).
+Het integreren van moconavi met Azure AD biedt de volgende voor delen:
 
-* U kunt beheren in Azure AD die toegang tot moconavi heeft.
-* U kunt uw gebruikers worden automatisch aangemeld moconavi (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U kunt beheren in azure AD die toegang heeft tot moconavi.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij moconavi (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -35,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met moconavi, moet u de volgende items:
+Als u Azure AD-integratie met moconavi wilt configureren, hebt u de volgende items nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* eenmalige aanmelding moconavi ingeschakeld abonnement
+* abonnement voor eenmalige aanmelding moconavi ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* biedt ondersteuning voor moconavi **SP** gestart door SSO
+* moconavi ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-moconavi-from-the-gallery"></a>Moconavi uit de galerie toe te voegen
+## <a name="adding-moconavi-from-the-gallery"></a>Moconavi toevoegen uit de galerie
 
-Voor het configureren van de integratie van moconavi in Azure AD, moet u moconavi uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van moconavi in azure AD wilt configureren, moet u moconavi uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen moconavi uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om moconavi toe te voegen uit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -64,31 +65,31 @@ Voor het configureren van de integratie van moconavi in Azure AD, moet u moconav
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **moconavi**, selecteer **moconavi** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **moconavi**in het zoekvak, selecteer **moconavi** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
      ![moconavi in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met moconavi op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in moconavi tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met moconavi op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in moconavi tot stand worden gebracht.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met moconavi, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met moconavi, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van moconavi Single Sign-On](#configure-moconavi-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Moconavi eenmalige aanmelding configureren](#configure-moconavi-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker moconavi](#create-moconavi-test-user)**  : als u wilt een equivalent van Britta Simon in moconavi die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Maak een moconavi-test gebruiker](#create-moconavi-test-user)** -om een equivalent van Julia Simon in moconavi te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met moconavi, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met moconavi:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **moconavi** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **moconavi** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -102,7 +103,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met moconavi, moet u de 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![moconavi domein en URL's één aanmeldings-informatie](common/sp-identifier-reply.png)
+    ![informatie over eenmalige aanmelding voor moconavi domein en Url's](common/sp-identifier-reply.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<yourserverurl>/moconavi-saml2/saml/login`
 
@@ -111,13 +112,13 @@ Voor het configureren van Azure AD eenmalige aanmelding met moconavi, moet u de 
     c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<yourserverurl>/moconavi-saml2/saml/SSO`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met [moconavi Client ondersteuningsteam](mailto:support@recomot.co.jp) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL. Neem contact op met het [ondersteunings team van moconavi-clients](mailto:support@recomot.co.jp) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **moconavi instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer op de sectie **Moconavi instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -127,9 +128,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met moconavi, moet u de 
 
     c. Afmeldings-URL
 
-### <a name="configure-moconavi-single-sign-on"></a>Moconavi eenmalige aanmelding configureren
+### <a name="configure-moconavi-single-sign-on"></a>Eenmalige aanmelding voor moconavi configureren
 
-Het configureren van eenmalige aanmelding op **moconavi** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [moconavi ondersteuningsteam](mailto:support@recomot.co.jp). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren op **moconavi** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [moconavi ondersteunings team](mailto:support@recomot.co.jp). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -149,26 +150,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon Azure eenmalige aanmelding gebruiken door het verlenen van toegang tot moconavi.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan moconavi.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **moconavi**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **moconavi**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **moconavi**.
+2. Selecteer in de lijst toepassingen de optie **moconavi**.
 
     ![De koppeling moconavi in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -182,43 +183,43 @@ In deze sectie maakt inschakelen u Britta Simon Azure eenmalige aanmelding gebru
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-moconavi-test-user"></a>Moconavi testgebruiker maken
+### <a name="create-moconavi-test-user"></a>Moconavi-test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam van Britta Simon in moconavi. Werken met [moconavi ondersteuningsteam](mailto:support@recomot.co.jp) om toe te voegen de gebruikers in het moconavi-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam Julia Simon in moconavi. Werk samen met [moconavi-ondersteunings team](mailto:support@recomot.co.jp) om de gebruikers toe te voegen in het moconavi-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-1. Installeer moconavi vanuit Microsoft store.
+1. Installeer moconavi vanuit micro soft Store.
 
-2. Start moconavi.
+2. Moconavi starten.
 
-3. Klik op **verbinding maken met de instelling** knop.
+3. Klik op de knop **verbinding instellen** .
 
     ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing1.png)
 
-4. Voer `https://mcs-admin.moconavi.biz/gateway` in **verbinding maken met URL** tekstvak en klik vervolgens op **gedaan** knop.
+4. Voer `https://mcs-admin.moconavi.biz/gateway` in in **het tekstvak verbinding maken met URL** en klik op de knop **gereed** .
 
     ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing2.png)
 
-5. Voer de volgende stappen uit op de volgende schermafbeelding:
+5. Voer de volgende stappen uit op de volgende scherm afbeelding:
 
     ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing3.png)
 
-    a. Voer **invoer verificatiesleutel**:`azureAD` in **invoer verificatiesleutel** tekstvak.
+    a. Voer de **invoer verificatie sleutel**in:`azureAD` tekstvak voor de **invoer verificatie sleutel** .
 
-    b. Voer **invoer van gebruikers-ID**: `your ad account` in **invoer van gebruikers-ID** tekstvak.
+    b. Voer de **gebruikers-id voor invoer**in: `your ad account` in het tekstvak **invoer gebruikers-id** .
 
-    c. Klik op **aanmelding**.
+    c. Klik op **Aanmelden**.
 
-6. Voer uw Azure AD-wachtwoord in **wachtwoord** tekstvak en klik vervolgens op **aanmelding** knop.
+6. Voer uw Azure AD-wacht woord in voor het tekstvak **wacht woord** en klik vervolgens op de knop **Aanmelden** .
 
     ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing4.png)
 
-7. Azure AD-verificatie is geslaagd, wanneer het menu wordt weergegeven.
+7. De Azure AD-verificatie slaagt wanneer het menu wordt weer gegeven.
 
     ![Eenmalige aanmelding testen](./media/moconavi-tutorial/testing5.png)
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

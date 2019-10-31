@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71036629"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162609"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgets insluiten in uw toepassingen
 
@@ -253,7 +253,7 @@ Bijvoorbeeld:
 
 Video Indexer Player heeft standaard ondertiteling gegenereerd die is gebaseerd op de transcriptie van de video. De transcriptie wordt geëxtraheerd uit de video met de bron taal die is geselecteerd toen de video werd geüpload.
 
-Als u wilt insluiten met een andere taal, kunt u `&captions=< Language | ”all” | “false” >` toevoegen aan de Inge sloten URL van de speler. Als u bijschriften in alle beschik bare bijschriften van talen wilt, gebruikt u de waarde `all`. Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u `&showCaptions=true` door geven.
+Als u wilt insluiten met een andere taal, kunt u `&captions=< Language | "all" | "false" >` toevoegen aan de Inge sloten URL van de speler. Als u bijschriften in alle beschik bare bijschriften van talen wilt, gebruikt u de waarde `all`. Als u wilt dat de bijschriften standaard worden weer gegeven, kunt u `&showCaptions=true` door geven.
 
 De Inge sloten URL ziet er dan als volgt uit: 
 

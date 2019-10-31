@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met FactSet | Microsoft Docs'
+title: 'Zelf studie: integratie met Feitenset Azure Active Directory | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en FactSet.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f41072d1-b2a4-4c4d-9deb-101b52e29096
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27b154c5374fb16388e0ae72243fb7b32a400d96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 414ccdfb497e8ef18833fadf8c0cd495583179ad
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67102763"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73156286"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-factset"></a>Zelfstudie: Azure Active Directory-integratie met FactSet
+# <a name="tutorial-azure-active-directory-integration-with-factset"></a>Zelf studie: integratie met Feitelijkeset Azure Active Directory
 
 In deze zelfstudie leert u hoe u FactSet kunt integreren met Azure Active Directory (Azure AD).
 De integratie van FactSet met Azure AD biedt de volgende voordelen:
@@ -53,7 +54,7 @@ Om de integratie van FactSet te configureren in Azure AD, moet u FactSet uit de 
 
 **Voer de volgende stappen uit om FactSet toe te voegen uit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -110,9 +111,9 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://login.factset.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met uw accountvertegenwoordiger FactSet om op te halen van deze waarden. Als u niet wie uw vertegenwoordiger FactSet is weet, kunt u hulp vinden op de [FactSet getallen ondersteuningspagina](https://www.factset.com/support-numbers). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met uw FactSet-account vertegenwoordiger om deze waarden te verkrijgen. Als u niet weet wie uw feitelijke eigenaar is, kunt u hulp vinden op de [pagina met ondersteunings nummers voor feitenset](https://www.factset.com/support-numbers). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -128,7 +129,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
 ### <a name="configure-factset-single-sign-on"></a>FactSet configureren voor eenmalige aanmelding
 
-Het configureren van eenmalige aanmelding op **FactSet** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en juiste gekopieerde URL's van Azure portal naar personen FactSet ondersteuning u in contact met. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Voor het configureren van eenmalige aanmelding op de **feitenset** -zijde moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar de feitelijkeset-ondersteuning van personen waarmee u contact hebt. Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -148,12 +149,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -167,7 +168,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De FactSet-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -183,15 +184,15 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 ### <a name="create-factset-test-user"></a>FactSet-testgebruiker maken
 
-In deze sectie gaat u in FactSet een gebruiker maken met de naam Britta Simon. Werken met uw FactSet ondersteuning accountvertegenwoordigers om toe te voegen de gebruikers in het FactSet-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie gaat u in FactSet een gebruiker maken met de naam Britta Simon. Werk samen met de ondersteunings medewerkers van uw feiten account om de gebruikers toe te voegen in het Feitenset-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel FactSet klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van FactSet waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

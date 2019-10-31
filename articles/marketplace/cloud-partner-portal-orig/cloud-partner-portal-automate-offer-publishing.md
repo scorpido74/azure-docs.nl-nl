@@ -1,33 +1,33 @@
 ---
-title: Aanbieding publiceren automatiseren | Azure Marketplace
-description: Wordt uitgelegd hoe u voor het automatiseren van werkstromen voor publicatie van de virtuele machine via een programma.
+title: Automatische aanbieding publiceren | Azure Marketplace
+description: Hierin wordt uitgelegd hoe u de werk stroom voor het publiceren van virtuele machines programmatisch kunt automatiseren.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 0a927c72a82c6aa3c79988c599ea8b840821a2b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50b785ed9456b0b112dea01a219e988b81094571
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935890"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154650"
 ---
-<a name="automate-offer-publishing"></a>Aanbieding publiceren automatiseren
+<a name="automate-offer-publishing"></a>Automatische aanbieding publiceren
 =========================
 
-U kunt ook programmatisch automatiseren met de virtuele machine publiceren van de werkstroom, met behulp van de API's in de [API-verwijzing](./cloud-partner-portal-api-overview.md) sectie. Er zijn twee verschillende scenario's aan moet denken bij het plannen van automation: bieden een eerste publiceren en latere aanbieding publiceren.
+U kunt de werk stroom voor de VM-publicatie ook programmatisch automatiseren met behulp van de Api's in het gedeelte [API Reference](./cloud-partner-portal-api-overview.md) . Er zijn twee verschillende scenario's waarmee u rekening moet houden bij het plannen van Automation: bieden de eerste publicatie en de volgende aanbieding publiceren.
 
 
-<a name="offer-initial-publishing"></a>Bieden van eerste publiceren
+<a name="offer-initial-publishing"></a>Eerste publicatie aanbieden
 -------------------------
 
-Wanneer u een aanbieding voor de eerste keer publiceert, zijn een paar extra stappen vereist voordat u uploadt naar de marketplace.  Bijvoorbeeld, moet u de metagegevens voorbereiden en maken van een concept van de aanbieding. De eerste publiceren werkstroom wordt weergegeven in het volgende diagram.
+Wanneer u een aanbieding voor de eerste keer publiceert, zijn er enkele extra stappen nodig voordat u deze uploadt naar de Marketplace.  U moet bijvoorbeeld de meta gegevens voorbereiden en een concept van de aanbieding maken. De eerste publicatie werk stroom wordt weer gegeven in het volgende diagram.
 
-![Interacties van een eerste aanbieding publicatie](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
+![Interacties van een eerste aanbiedings publicatie](media/cloud-partner-portal-automate-offer-publishing/first-time-offer-publishing.png)
 
-De volgende voorbeeldcode ziet u deze stappen.
+In de volgende voorbeeld code ziet u deze stappen.
 
 ``` csharp
   CreateOfferAndPublish()
@@ -55,7 +55,7 @@ De volgende voorbeeldcode ziet u deze stappen.
   ValidateAndGoLive()    
   {
       // Confirm the version in preview slot is the version that needs to go live
-      offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+      offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
       if(!offer[skuName].containsVersion(VMDisk.Version))
       {
           UpdateOfferAndPublish()
@@ -77,9 +77,9 @@ De volgende voorbeeldcode ziet u deze stappen.
 <a name="subsequent-offer-publishing"></a>Volgende aanbieding publiceren
 ---------------------------
 
-Zodra de virtuele machine (VM)-aanbieding is geïntegreerd in een pijplijn voor continue integratie, kunt u de publicatie werkstroom moet worden uitgevoerd wanneer een nieuwe virtuele harde schijf (VHD) wordt gemaakt kunt automatiseren.  Deze werkstroom wordt aangegeven door het volgende diagram en voorbeeld-code.
+Zodra de aanbieding van de virtuele machine (VM) is geïntegreerd in een pijp lijn voor continue integratie, kunt u de werk stroom voor publiceren automatiseren om elke keer dat er een nieuwe virtuele harde schijf (VHD) wordt gemaakt, uit te voeren.  Deze werk stroom wordt geïllustreerd door het volgende diagram en voorbeeld code.
 
-![Interactie van de volgende bieden publicaties](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
+![Interacties van volgende aanbiedings publicaties](media/cloud-partner-portal-automate-offer-publishing/update-offer-and-publish.png)
 
 ``` csharp
     UpdateOfferAndPublish()
@@ -127,7 +127,7 @@ Zodra de virtuele machine (VM)-aanbieding is geïntegreerd in een pijplijn voor 
     ValidateAndGoLive()
     {
         // Confirm the version in preview slot is the version that needs to go live
-        offer = CloudPartnerPortal.Client.GetOffer(offerName, “Preview”);
+        offer = CloudPartnerPortal.Client.GetOffer(offerName, "Preview");
         if(!offer[skuName].containsVersion(VMDisk.Version))
         {
             UpdateOfferAndPublish()

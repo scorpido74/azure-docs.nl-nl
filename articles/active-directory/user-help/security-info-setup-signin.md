@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 705e3818aef0338d9b34da7b0320b99594573fca
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e05515c2fd118c21f891be86fae6423affab0324
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985985"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160904"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Uw beveiligingsgegevens (preview) instellen vanaf de opdrachtprompt voor de aanmeldingspagina
 
@@ -124,7 +124,7 @@ Wanneer u app-wacht woorden gebruikt, is het belang rijk om het volgende te onth
 
 1. Nadat u de vorige secties van de wizard hebt voltooid, selecteert u **volgende** en voltooit u de sectie **app-wacht woord** .
 
-2. Typ bijvoorbeeld `Outlook 2010`de naam van de app waarvoor het wacht woord nodig is, en selecteer vervolgens **volgende**.
+2. Typ de naam van de app waarvoor het wacht woord is vereist, bijvoorbeeld `Outlook 2010`, en selecteer vervolgens **volgende**.
 
     ![De naam van het app-wacht woord toevoegen in de wizard](media/security-info/app-password-app-password.png)
 
@@ -152,6 +152,6 @@ Wanneer u app-wacht woorden gebruikt, is het belang rijk om het volgende te onth
 
 - Zie voor meer informatie over hoe u zich aanmelden met de opgegeven methode [Hoe u zich aanmeldt](user-help-sign-in.md).
 
-- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](user-help-reset-password.md).
+- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md).
 
 - Krijg tips voor het oplossen van problemen en hulp met problemen met aanmelden in het artikel [U kunt niet aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

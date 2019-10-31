@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Boomi | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Boomi | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Boomi configureert.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 40d034ff-7394-4713-923d-1f8f2ed8bf36
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114d29d11e51209d5ac788ae25413b5b989b84f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d016782a7217aa2eae341e5f9af4f0e141df9c0f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106105"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157658"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Zelfstudie: Azure Active Directory-integratie met Boomi
+# <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Zelf studie: integratie Azure Active Directory met Boomi
 
 In deze zelfstudie leert u hoe u Boomi kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Boomi met Azure AD biedt de volgende voordelen:
@@ -53,7 +54,7 @@ Om de integratie van Boomi te configureren in Azure AD, moet u Boomi vanuit de g
 
 **Voer de volgende stappen uit om Boomi vanuit de galerie toe te voegen:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -118,7 +119,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 6. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** configureert u het kenmerk van het SAML-token zoals wordt weergegeven in de bovenstaande afbeelding en voert u de volgende stappen uit:
 
-    | Name |  Bronkenmerk|
+    | Naam |  Bronkenmerk|
     | ---------------|  --------- |
     | FEDERATION_ID | user.mail |
 
@@ -172,7 +173,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
     d. Schakel bij **Federation Id Location** het keuzerondje **Federation Id is in FEDERATION_ID Attribute element** in.
 
-    e. Klik op **opslaan** knop.
+    e. Klik op de knop **Save**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -192,12 +193,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -211,7 +212,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling naar Boomi in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -251,20 +252,20 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Boomi, moeten ze wo
 
     d. Typ een waarde voor de gebruiker in het vak **Federation ID**. Elke gebruiker moet een federatie-id hebben die de gebruiker uniek identificeert binnen het account.
 
-    e. Wijs de rol **Standard User** toe aan de gebruiker. Wijs de rol beheerder geen omdat dat ze zowel normale lucht toegang als eenmalige aanmelding toegang geven zou.
+    e. Wijs de rol **Standard User** toe aan de gebruiker. Wijs de beheerdersrol niet toe, omdat deze de normale toegang tot de atmosfeer en eenmalige aanmelding zou betekenen.
 
     f. Klik op **OK**.
 
     > [!NOTE]
-    > De gebruiker ontvangt geen een e-mailmelding Welkom met een wachtwoord dat kan worden gebruikt voor het aanmelden bij de AtomSphere-account, omdat het wachtwoord wordt beheerd via de id-provider. U kunt andere hulpprogramma's of API's van Boomi gebruiken voor het inrichten van AAD-gebruikersaccounts.
+    > De gebruiker ontvangt geen welkomst meldings-e-mail met een wacht woord dat kan worden gebruikt om u aan te melden bij het AtomSphere-account, omdat het wacht woord wordt beheerd via de ID-provider. U kunt andere hulpprogramma's of API's van Boomi gebruiken voor het inrichten van AAD-gebruikersaccounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Boomi klikt, wordt u automatisch aangemeld bij de instantie van Boomi waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

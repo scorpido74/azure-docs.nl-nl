@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512459"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146940"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Gegevens bronnen die worden ondersteund in Azure Analysis Services
 
@@ -97,12 +97,12 @@ Bij het migreren van een on-premises SQL Server Analysis Services tabellaire mod
 
 **Een provider opgeven**
 
-1. Klik in SSDT > **Tabellaire model verkenner** > **gegevens bronnen**met de rechter muisknop op een gegevens bron verbinding en klik vervolgens op **gegevens bron bewerken**.
+1. Klik in Visual Studio > **Tabellaire model verkenner** > **gegevens bronnen**met de rechter muisknop op een gegevens bron verbinding en klik vervolgens op **gegevens bron bewerken**.
 2. Klik in **verbinding bewerken**op **Geavanceerd** om het venster Geavanceerde eigenschappen te openen.
 3. Selecteer in **Geavanceerde eigenschappen instellen** > -**providers**de juiste provider.
 
 ## <a name="impersonation"></a>Imitatie
-In sommige gevallen kan het nodig zijn om een ander imitatie account op te geven. Het imitatie account kan worden opgegeven in Visual Studio (SSDT) of SSMS.
+In sommige gevallen kan het nodig zijn om een ander imitatie account op te geven. Het imitatie account kan worden opgegeven in Visual Studio of SSMS.
 
 Voor on-premises gegevens bronnen:
 

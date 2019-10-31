@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fd7a12dca92a4b84ecd3a2c9644509a1dc705c35
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727856"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161510"
 ---
-# <a name="security-frame-session-management"></a>Beveiligings frame: Sessie beheer
-| Product/Service | Artikel |
+# <a name="security-frame-session-management"></a>Beveiligings kader: sessie beheer
+| Product/service | Artikel |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Goed afmelden met behulp van ADAL-methoden implementeren bij gebruik van Azure AD](#logout-adal)</li></ul> |
 | IoT-apparaat | <ul><li>[Een eindige levens duur gebruiken voor gegenereerde SaS-tokens](#finite-tokens)</li></ul> |
-| **Azure Document DB** | <ul><li>[Minimale token levensduur gebruiken voor gegenereerde bron tokens](#resource-tokens)</li></ul> |
+| **Azure document DB** | <ul><li>[Minimale token levensduur gebruiken voor gegenereerde bron tokens](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[Goed afmelden met behulp van WsFederation-methoden implementeren bij gebruik van ADFS](#wsfederation-logout)</li></ul> |
 | **Identiteits server** | <ul><li>[Juiste afmelding implementeren bij gebruik van identiteits server](#proper-logout)</li></ul> |
 | **Webtoepassing** | <ul><li>[Toepassingen die beschikbaar zijn via HTTPS, moeten beveiligde cookies gebruiken](#https-secure-cookies)</li><li>[Voor alle op http gebaseerde toepassingen moet alleen http worden opgegeven voor de cookie definitie](#cookie-definition)</li><li>[Problemen oplossen met CSRF-aanvallen (cross-site request vervalsing) op ASP.NET webpagina's](#csrf-asp)</li><li>[Sessie instellen voor een levens duur van inactiviteit](#inactivity-lifetime)</li><li>[De juiste afmelding van de toepassing implementeren](#proper-app-logout)</li></ul> |
@@ -38,7 +38,7 @@ ms.locfileid: "68727856"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure AD | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -73,7 +73,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-apparaat | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -83,8 +83,8 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
-| **Onderdeel**               | Azure Document DB | 
-| **SDL-fase**               | Ontwikkelen |  
+| **Onderdeel**               | Azure document DB | 
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -95,7 +95,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | ADFS | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -144,7 +144,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Identiteits server | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [IdentityServer3-federatieve afmelden](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
@@ -155,7 +155,7 @@ Ook moet de gebruikers sessie worden vernietigd door de methode Session. Abandon
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | EnvironmentType-premises |
 | **Referentie**              | [httpCookies-element (ASP.net-instellingen schema)](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx), [HttpCookie. Secure, eigenschap](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
@@ -174,11 +174,11 @@ De instelling wordt afgedwongen, zelfs als HTTP wordt gebruikt voor toegang tot 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Web Forms, MVC5 |
+| **SDL-fase**               | Build |  
+| **Toepasselijke technologieën** | Webformulieren, MVC5 |
 | **Eigenschappen**              | EnvironmentType-premises |
 | **Referentie**              | N/A  |
-| **Stappen** | Wanneer de webtoepassing de Relying Party is en de IDP de ADFS-server is, kan het beveiligde kenmerk van het FedAuth-token worden geconfigureerd door requireSSL in `system.identityModel.services` te stellen op True in de sectie van web. config:|
+| **Stappen** | Wanneer de webtoepassing de Relying Party is en de IdP de ADFS-server is, kan het beveiligde kenmerk van het FedAuth-token worden geconfigureerd door requireSSL in te stellen op True in `system.identityModel.services` sectie van web. config:|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp
@@ -196,7 +196,7 @@ De instelling wordt afgedwongen, zelfs als HTTP wordt gebruikt voor toegang tot 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Kenmerk van beveiligde cookie](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
@@ -217,7 +217,7 @@ Alle op HTTP gebaseerde toepassingen die gebruikmaken van cookies, moeten HttpOn
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Eigenschap FormsAuthentication. RequireSSL](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
@@ -234,7 +234,7 @@ In het volgende code voorbeeld wordt het kenmerk requireSSL ingesteld in het bes
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC5 |
 | **Eigenschappen**              | EnvironmentType-premises |
 | **Referentie**              | [Configuratie van Windows Identity Foundation (WIF) – deel II](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
@@ -259,7 +259,7 @@ De volgende configuratie toont de juiste configuratie:
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -268,11 +268,11 @@ De volgende configuratie toont de juiste configuratie:
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [XSRF/CSRF voor komen in ASP.NET MVC en webpagina's](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
-| **Stappen** | Anti-CSRF en ASP.NET MVC-formulieren: gebruik `AntiForgeryToken` de Help-methode voor weer gaven `Html.AntiForgeryToken()` ; plaats een in het formulier, bijvoorbeeld|
+| **Stappen** | Anti-CSRF en ASP.NET MVC-formulieren: gebruik de `AntiForgeryToken`-hulp methode voor weer gaven. plaats een `Html.AntiForgeryToken()` in het formulier, bijvoorbeeld|
 
 ### <a name="example"></a>Voorbeeld
 ```csharp
@@ -302,10 +302,10 @@ public ViewResult SubmitUpdate()
 Autorisatie filter waarmee wordt gecontroleerd of:
 * De binnenkomende aanvraag heeft een cookie met de naam __RequestVerificationToken
 * De binnenkomende aanvraag heeft een `Request.Form` vermelding met de naam __RequestVerificationToken
-* Deze cookie en `Request.Form` waarden komen overeen met het hele goed, de aanvraag gaat normaal door. Als dat niet het geval is, wordt een autorisatie fout met het bericht "een vereiste anti-vervalsing-token niet opgegeven of is het niet geldig". 
+* Deze cookie-en `Request.Form` waarden komen overeen, ervan uitgaande dat de aanvraag zo goed als normaal gaat. Als dat niet het geval is, wordt een autorisatie fout met het bericht "een vereiste anti-vervalsing-token niet opgegeven of is het niet geldig". 
 
 ### <a name="example"></a>Voorbeeld
-Anti-CSRF en AJAX: Het formulier token kan een probleem zijn voor AJAX-aanvragen, omdat een AJAX-aanvraag mogelijk JSON-gegevens kan verzenden, geen HTML-formulier gegevens. Eén oplossing is het verzenden van de tokens in een aangepaste HTTP-header. De volgende code maakt gebruik van de syntaxis voor het genereren van de tokens en voegt vervolgens de tokens toe aan een AJAX-aanvraag. 
+Anti-CSRF en AJAX: het formulier token kan een probleem zijn voor AJAX-aanvragen, omdat een AJAX-aanvraag JSON-gegevens kan verzenden, niet de HTML-formulier gegevens. Eén oplossing is het verzenden van de tokens in een aangepaste HTTP-header. De volgende code maakt gebruik van de syntaxis voor het genereren van de tokens en voegt vervolgens de tokens toe aan een AJAX-aanvraag. 
 ```csharp
 <script>
     @functions{
@@ -354,7 +354,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Profiteer van ASP.NET ingebouwde functies om webaanvalen uit te Fend](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
@@ -374,7 +374,7 @@ void Page_Init (object sender, EventArgs e) {
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Eigenschap HttpSessionState. timeout](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
@@ -394,7 +394,7 @@ void Page_Init (object sender, EventArgs e) {
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Webformulieren |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Formulier element voor verificatie (ASP.NET-instellingen schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
@@ -409,8 +409,8 @@ void Page_Init (object sender, EventArgs e) {
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Web Forms, MVC5 |
+| **SDL-fase**               | Build |  
+| **Toepasselijke technologieën** | Webformulieren, MVC5 |
 | **Eigenschappen**              | EnvironmentType-premises |
 | **Referentie**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
 | **Stappen** | Wanneer de webtoepassing Relying Party is en ADFS de STS is, kan de levens duur van de verificatie cookies-FedAuth-tokens worden ingesteld door de volgende configuratie in web. config:|
@@ -436,7 +436,7 @@ void Page_Init (object sender, EventArgs e) {
 ### <a name="example"></a>Voorbeeld
 Daarnaast moet de levens duur van de door ADFS uitgegeven SAML-claim token worden ingesteld op 15 minuten, door de volgende Power shell-opdracht op de ADFS-server uit te voeren:
 ```csharp
-Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProviderName @(“Active Directory”) -TokenLifetime 15 -AlwaysRequireAuthentication $true
+Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName @("Active Directory") -TokenLifetime 15 -AlwaysRequireAuthentication $true
 ```
 
 ## <a id="proper-app-logout"></a>De juiste afmelding van de toepassing implementeren
@@ -444,7 +444,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -455,7 +455,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -464,11 +464,11 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [CSRF-aanvallen (cross-site request vervalsing) in ASP.NET-Web-API voor komen](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
-| **Stappen** | Anti-CSRF en AJAX: Het formulier token kan een probleem zijn voor AJAX-aanvragen, omdat een AJAX-aanvraag mogelijk JSON-gegevens kan verzenden, geen HTML-formulier gegevens. Eén oplossing is het verzenden van de tokens in een aangepaste HTTP-header. De volgende code maakt gebruik van de syntaxis voor het genereren van de tokens en voegt vervolgens de tokens toe aan een AJAX-aanvraag. |
+| **Stappen** | Anti-CSRF en AJAX: het formulier token kan een probleem zijn voor AJAX-aanvragen, omdat een AJAX-aanvraag JSON-gegevens kan verzenden, niet de HTML-formulier gegevens. Eén oplossing is het verzenden van de tokens in een aangepaste HTTP-header. De volgende code maakt gebruik van de syntaxis voor het genereren van de tokens en voegt vervolgens de tokens toe aan een AJAX-aanvraag. |
 
 ### <a name="example"></a>Voorbeeld
 ```Javascript
@@ -546,12 +546,12 @@ public ViewResult SubmitUpdate()
 Autorisatie filter waarmee wordt gecontroleerd of:
 * De binnenkomende aanvraag heeft een cookie met de naam __RequestVerificationToken
 * De binnenkomende aanvraag heeft een `Request.Form` vermelding met de naam __RequestVerificationToken
-* Deze cookie en `Request.Form` waarden komen overeen met het hele goed, de aanvraag gaat normaal door. Als dat niet het geval is, wordt een autorisatie fout met het bericht "een vereiste anti-vervalsing-token niet opgegeven of is het niet geldig".
+* Deze cookie-en `Request.Form` waarden komen overeen, ervan uitgaande dat de aanvraag zo goed als normaal gaat. Als dat niet het geval is, wordt een autorisatie fout met het bericht "een vereiste anti-vervalsing-token niet opgegeven of is het niet geldig".
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC5, MVC6 |
 | **Eigenschappen**              | ID-provider-ADFS, ID-provider-Azure AD |
 | **Referentie**              | [Een web-API beveiligen met afzonderlijke accounts en lokale aanmelding in ASP.NET Web API 2,2](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |

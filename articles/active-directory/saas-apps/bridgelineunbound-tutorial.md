@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Bridgeline Unbound | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met BridgeLine niet-gebonden | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Bridgeline Unbound.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: b018472f-c8b3-403d-ae66-9ed26a35f413
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a958c693699cb83274e840f7cf36efceadc2ce5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 641b3ee0dd2f6e232d2f36d08bda5b1f2cf80102
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106001"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157591"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Zelfstudie: Azure Active Directory-integratie met Bridgeline Unbound
+# <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Zelf studie: integratie Azure Active Directory met BridgeLine niet-afhankelijkheid
 
 In deze zelfstudie leert u hoe u Bridgeline Unbound kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Bridgeline Unbound met Azure AD biedt u de volgende voordelen:
@@ -54,7 +55,7 @@ Voor het configureren van de integratie van Bridgeline Unbound in Azure AD, moet
 
 **Voer de volgende stappen uit om Bridgeline Unbound toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -108,7 +109,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Bridgeline Unbound m
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `iApps_UPSTT_<ENVIRONMENTNAME>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.iapps.com/SAMLAssertionService.aspx`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.iapps.com/SAMLAssertionService.aspx`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
@@ -155,12 +156,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veld, typt u **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -174,7 +175,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Bridgeline Unbound in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -197,11 +198,11 @@ In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Bridgelin
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Bridgeline Unbound in het toegangsvenster klikt, wordt u automatisch aangemeld bij de instantie van Bridgeline Unbound waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

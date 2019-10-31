@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Soloinsight-CloudGate SSO | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Soloinsight-CloudGate SSO | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Soloinsight-CloudGate.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: celested
 ms.assetid: 9263c241-85a4-4724-afac-0351d6275958
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,69 +16,69 @@ ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2dc6dcbcdee8df93f34cf4d68b5e08453554bc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b88822f164e0fe8cdf55eddfa981644f725e01f3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090014"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159927"
 ---
-# <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Zelfstudie: Soloinsight CloudGate SSO integreren met Azure Active Directory
+# <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>Zelf studie: Soloinsight-CloudGate-SSO integreren met Azure Active Directory
 
-In deze zelfstudie leert u hoe u Soloinsight CloudGate SSO integreert met Azure Active Directory (Azure AD). Wanneer u Soloinsight CloudGate SSO met Azure AD integreert, kunt u het volgende doen:
+In deze zelf studie leert u hoe u Soloinsight-CloudGate-SSO integreert met Azure Active Directory (Azure AD). Wanneer u Soloinsight-CloudGate SSO integreert met Azure AD, kunt u het volgende doen:
 
-* Beheren in Azure AD die toegang tot Soloinsight CloudGate eenmalige aanmelding heeft.
-* Kunnen uw gebruikers worden automatisch aangemeld Soloinsight CloudGate eenmalige aanmelding met hun Azure AD-accounts.
-* Beheer uw accounts in één centrale locatie - Azure portal.
+* Controle in azure AD die toegang heeft tot SSO van Soloinsight-CloudGate.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Soloinsight-CloudGate SSO met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie voor meer informatie over de integratie van de SaaS-app met Azure AD, [wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om te beginnen, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, krijgt u de gratis proefversie van één maand [hier](https://azure.microsoft.com/pricing/free-trial/).
-* Ingeschakeld abonnement Soloinsight CloudGate SSO eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/)een gratis proef versie van één maand ontvangen.
+* Soloinsight-CloudGate SSO-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie hebt u configureren en testen van Azure AD-eenmalige aanmelding in een testomgeving. Biedt ondersteuning voor eenmalige aanmelding Soloinsight CloudGate **SP** gestart door SSO.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Soloinsight-CloudGate SSO ondersteunt door **SP** geïnitieerde SSO.
 
 ## <a name="adding-soloinsight-cloudgate-sso-from-the-gallery"></a>Soloinsight-CloudGate SSO toevoegen uit de galerie
 
 Voor de configuratie van de integratie van Soloinsight-CloudGate SSO in Azure Active Directory, moet u Soloinsight-CloudGate SSO vanuit de galerie aan uw lijst met beheerde SaaS-apps toevoegen.
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Selecteer in het navigatiedeelvenster links in de **Azure Active Directory** service.
-1. Navigeer naar **bedrijfstoepassingen** en selecteer vervolgens **alle toepassingen**.
-1. Nieuwe toepassing toevoegen, selecteert u **nieuwe toepassing**.
-1. In de **toevoegen vanuit de galerie** sectie, typt u **Soloinsight CloudGate SSO** in het zoekvak in.
-1. Selecteer **Soloinsight CloudGate SSO** van resultaten van het deelvenster en vervolgens de app toevoegen. Wacht een paar seconden terwijl de app wordt toegevoegd aan uw tenant.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ **Soloinsight-CLOUDGATE SSO** in het zoekvak in de sectie **toevoegen vanuit de galerie** .
+1. Selecteer **Soloinsight-CLOUDGATE SSO** van het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-Configureren en testen van Azure AD-eenmalige aanmelding met Soloinsight CloudGate eenmalige aanmelding met behulp van een testgebruiker met de naam **Britta Simon**. Voor eenmalige aanmelding om te werken, moet u een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Soloinsight CloudGate SSO vast te stellen.
+Azure AD SSO met Soloinsight-CloudGate SSO configureren en testen met behulp van een test gebruiker met de naam **Julia Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Soloinsight-CloudGate SSO.
 
-Als u wilt configureren en testen van Azure AD-eenmalige aanmelding met Soloinsight CloudGate eenmalige aanmelding, voert u de volgende bouwstenen:
+Als u Azure AD SSO wilt configureren en testen met Soloinsight-CloudGate SSO, voltooit u de volgende bouw stenen:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-sso)**  zodat uw gebruikers deze functie wilt gebruiken.
-2. **[Configureren van eenmalige aanmelding Soloinsight CloudGate](#configure-soloinsight-cloudgate-sso)**  de SSO-instellingen configureren op de kant van de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  voor het testen van Azure AD eenmalige aanmelding met Britta Simon.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  Britta Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Maak Soloinsight CloudGate SSO testgebruiker](#create-soloinsight-cloudgate-sso-test-user)**  hebben een equivalent van Britta Simon in Soloinsight CloudGate eenmalige aanmelding die is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-sso)**  om te controleren of de configuratie werkt.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configureer Soloinsight-CLOUDGATE SSO](#configure-soloinsight-cloudgate-sso)** om de SSO-instellingen aan de kant van de toepassing te configureren.
+3. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding voor Azure ad te testen met Julia Simon.
+4. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe om Julia Simon in staat te stellen om eenmalige aanmelding van Azure ad te gebruiken.
+5. **[Maak een Soloinsight-CLOUDGATE SSO-test gebruiker](#create-soloinsight-cloudgate-sso-test-user)** een equivalent van Julia Simon in Soloinsight-CloudGate SSO te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+6. **[Test SSO](#test-sso)** om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD-eenmalige aanmelding configureren
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de Azure-portal.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Soloinsight CloudGate SSO** toepassingspagina integratie, vinden de **beheren** sectie en selecteer **eenmalige aanmelding**.
-1. Op de **selecteert u een methode voor eenmalige aanmelding** pagina, selecteert u **SAML**.
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, klikt u op het pictogram voor bewerken/pen voor **SAML-basisconfiguratie** om de instellingen te bewerken.
+1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **SOLOINSIGHT-CloudGate SSO-** toepassings integratie de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **SAML-basisconfiguratie** pagina, voert u de waarden voor de volgende velden:
+1. Voer op de pagina **basis configuratie van SAML** de waarden in voor de volgende velden:
 
     1. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.sigateway.com/login`
 
@@ -86,39 +87,39 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
    > [!NOTE]
    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke URL voor eenmalige aanmelding en de id, zoals later in de zelfstudie wordt uitgelegd, in de sectie **Eenmalige aanmelding voor Soloinsight-CloudGate SSO configureren**.
 
-1. Op de **instellen van eenmalige aanmelding met SAML** pagina, in de **SAML-handtekeningcertificaat** sectie, zoeken **certificaat (Base64)** en selecteer **downloaden** voor het downloaden van het certificaat en sla deze op uw computer.
+1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Op de **Soloinsight CloudGate SSO instellen** sectie, kopieert u de juiste URL's op basis van uw behoeften.
+1. Op de **SSO-sectie Soloinsight-CloudGate instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="configure-soloinsight-cloudgate-sso"></a>Configure Soloinsight-CloudGate SSO
+### <a name="configure-soloinsight-cloudgate-sso"></a>Soloinsight-CloudGate-SSO configureren
 
-1. Voor het automatiseren van de configuratie in Soloinsight CloudGate SSO, moet u installeren **mijn Apps beveiligde aanmelding browserextensie** door te klikken op **de extensie installeren**.
+1. Als u de configuratie wilt automatiseren in Soloinsight-CloudGate SSO, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
 
-    ![Mijn apps-extensie](common/install-myappssecure-extension.png)
+    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
 
-2. Na het toevoegen van uitbreiding naar de browser, klikt u op **Setup Soloinsight CloudGate SSO** wordt u doorgeleid naar de Soloinsight CloudGate SSO-toepassing. Van daaruit, bieden de referenties van de beheerder zich aanmelden bij Soloinsight CloudGate eenmalige aanmelding. De browserextensie wordt automatisch configureren van de toepassing voor u en automatiseren van stap 3-8.
+2. Nadat u een uitbrei ding aan de browser hebt toegevoegd, klikt u op **Setup Soloinsight-CLOUDGATE SSO** stuurt u naar de SSO-toepassing Soloinsight-CloudGate. Geef de beheerders referenties op om u aan te melden bij Soloinsight-CloudGate SSO. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-8 geautomatiseerd.
 
-    ![Configuratie voor de installatie](common/setup-sso.png)
+    ![Configuratie van Setup](common/setup-sso.png)
 
-3. Als u Soloinsight CloudGate eenmalige aanmelding handmatig instellen wilt, opent u een nieuw browservenster en meld u aan bij uw site van het bedrijf Soloinsight CloudGate SSO als beheerder en voer de volgende stappen uit:
+3. Als u Soloinsight-CloudGate SSO hand matig wilt instellen, opent u een nieuw webbrowser venster en meldt u zich aan bij uw SSO-bedrijfs site Soloinsight-CloudGate als beheerder en voert u de volgende stappen uit:
 
-4. Als u de waarden die worden geplakt in Azure portal tijdens het configureren van Basic SAML, zich aanmelden bij de CloudGate Web-Portal met uw referenties en toegang tot de SSO-instellingen, die te in het volgende pad vinden **Start > Beheer > Instellingen > Algemeen**.
+4. Als u de waarden wilt ophalen die in de Azure Portal moeten worden geplakt tijdens het configureren van basis-SAML, meldt u zich met uw referenties aan bij de CloudGate-webportal en opent u vervolgens de SSO-instellingen, die u kunt vinden op de volgende locatie **Home > beheer > systeem instellingen > Algemeen**.
 
     ![CloudGate SSO-instellingen](./media/soloinsight-cloudgate-sso-tutorial/sso-main-settings.png)
 
 5. **URL voor SAML-consument**
 
-    * Kopiëren van de koppelingen op basis van de **URL voor Saml-consument** en de **Omleidings-URL** velden en plak deze in de Azure-portal **SAML-basisconfiguratie** sectie voor  **Id (entiteits-ID)** en **antwoord-URL** respectievelijk in velden.
+    * Kopieer de beschik bare koppelingen voor de URL van de **SAML-consument** en de **omleidings-URL** velden en plak ze in de sectie Azure Portal **Basic SAML-configuratie** voor **id (Entiteits-ID)** en **antwoord-URL** -velden.
 
         ![SAMLIdentifier](./media/soloinsight-cloudgate-sso-tutorial/saml-identifier.png)
 
 6. **SAML-handtekeningcertificaat**
 
-    * Ga naar de bron van het certificaat (Base64)-bestand dat is gedownload van Azure portal SAML-handtekeningcertificaat lijsten en met de rechtermuisknop op het. Kies in de lijst de optie **Bewerken met Notepad++** . 
+    * Ga naar de bron van het certificaat bestand (base64) dat is gedownload van Azure Portal SAML-handtekening certificaat lijsten en klik er met de rechter muisknop op. Kies in de lijst de optie **Bewerken met Notepad++** . 
 
         ![SAMLcertificate](./media/soloinsight-cloudgate-sso-tutorial/certificate-file.png)
 
@@ -138,42 +139,42 @@ Volg deze stappen voor het inschakelen van Azure AD-eenmalige aanmelding in de A
 
 8. **AD-id en aanmeldings-URL**
 
-    * De gekopieerde **aanmeldings-URL** vanuit Azure portal **Soloinsight CloudGate SSO instellen** configuraties worden ingevoerd in de sectie van de instellingen voor eenmalige Webaanmelding Portal CloudGate zijn.
+    * De gekopieerde **aanmeldings-URL** uit het Azure Portal **instellen van SOLOINSIGHT-CloudGate SSO-** configuraties moet worden ingevoerd in de sectie CloudGate Web Portal SSO Settings.
 
-    * Plak de **aanmeldings-URL** koppeling vanuit Azure portal in de webportal CloudGate **AD aanmeldings-URL** veld.
+    * Plak de koppeling van de **aanmeldings-URL** van Azure Portal in het veld CloudGate Web Portal AD- **aanmeldings-URL** .
 
-    * Plak de **Azure AD-id** koppeling vanuit Azure portal in de webportal CloudGate **AD id** veld
+    * Plak de koppeling **Azure ad id** van Azure Portal in het veld CloudGate Web Portal **ad id**
 
         ![AD-aanmelding](./media/soloinsight-cloudgate-sso-tutorial/ad-login.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een testgebruiker in Azure portal Britta Simon genoemd.
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam Julia Simon.
 
-1. Selecteer in het linkerdeelvenster in de Azure-portal, **Azure Active Directory**, selecteer **gebruikers**, en selecteer vervolgens **alle gebruikers**.
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-1. In de **gebruiker** eigenschappen als volgt te werk:
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `Britta Simon` in.  
-   1. In de **gebruikersnaam** en voer de username@companydomain.extension. Bijvoorbeeld `BrittaSimon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `BrittaSimon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie zult u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Soloinsight CloudGate eenmalige aanmelding inschakelen.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Soloinsight-CloudGate SSO.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
 1. Selecteer in de lijst met toepassingen **Soloinsight-CloudGate SSO**.
-1. Zoek in de pagina overzicht van de app, de **beheren** sectie en selecteer **gebruikers en groepen**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in de **toevoegen toewijzing** dialoogvenster.
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
     ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
-1. In de **gebruikers en groepen** dialoogvenster, selecteer **Britta Simon** uit de lijst met gebruikers, klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
-1. Als u een waarde voor de rol in het SAML-verklaring verwacht de **rol selecteren** dialoogvenster, selecteer de juiste rol voor de gebruiker in de lijst en klik vervolgens op de **Selecteer** knop aan de onderkant van het scherm.
+1. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="create-soloinsight-cloudgate-sso-test-user"></a>Soloinsight CloudGate SSO-testgebruiker maken
@@ -182,11 +183,11 @@ Om een testgebruiker te maken, selecteert u **Employees** (Werknemers) in het ho
 
 ![Werknemertest](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
-### <a name="test-sso"></a>Test eenmalige aanmelding
+### <a name="test-sso"></a>SSO testen
 
-Wanneer u de tegel Soloinsight CloudGate SSO in het toegangsvenster selecteert, moet u worden automatisch aangemeld bij de Soloinsight CloudGate SSO waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u de SSO-tegel Soloinsight-CloudGate in het toegangs venster selecteert, moet u automatisch worden aangemeld bij de Soloinsight-CloudGate-SSO waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

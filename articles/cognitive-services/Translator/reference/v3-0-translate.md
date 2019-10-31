@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b809171549a8f3cbbbb6ccad1553608598afa345
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515258"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161718"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text-API 3,0: vertalen
 
@@ -510,7 +510,7 @@ Als u al weet wat de vertaling is die u wilt Toep assen op een woord of een woor
 De op te geven opmaak maakt gebruik van de volgende syntaxis.
 
 ``` 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 ```
 
 Neem bijvoorbeeld de Engelse zin ' het woord wordomatic is een vermelding van een woorden lijst '. Als u het woord _wordomatic_ in de vertaling wilt behouden, verzendt u de aanvraag:
@@ -525,7 +525,7 @@ Het resultaat is:
 [
     {
         "translations":[
-            {"text":"Das Wort "wordomatic" ist ein Wörterbucheintrag.","to":"de"}
+            {"text":"Das Wort \"wordomatic\" ist ein Wörterbucheintrag.","to":"de"}
         ]
     }
 ]

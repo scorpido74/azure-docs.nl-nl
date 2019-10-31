@@ -4,17 +4,17 @@ description: Deze hand leiding helpt CEOs, Cio's, CISOs, Chief Identity Architec
 keywords: ''
 author: martincoetzer
 ms.author: martinco
-ms.date: 04/12/2018
+ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 524e923f005e2631e42f1d6b89b13cafdd646c2a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529392"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159708"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing 
 
@@ -69,13 +69,13 @@ Details over beslissings vragen:
 
 1. Azure AD kan aanmelden voor gebruikers afhandelen zonder afhankelijk te zijn van on-premises onderdelen om wacht woorden te controleren.
 2. Azure AD kan gebruikers aanmelding afleveren bij een vertrouwde verificatie provider, zoals de AD FS van micro soft.
-3. Als u op gebruikers niveau Active Directory beveiligings beleid wilt Toep assen, zoals verlopen accounts, uitgeschakelde accounts, wacht woorden verlopen, account vergrendeld en aanmeldings tijden voor elke aanmelding van de gebruiker, zijn voor Azure AD enkele on-premises onderdelen vereist.
+3. Als u wilt Toep assen op gebruikers niveau Active Directory beveiligings beleid, zoals verlopen accounts, uitgeschakelde accounts, wacht woorden verlopen, account vergrendeld en aanmeldings tijden voor elke aanmelding van de gebruiker, vereist Azure AD enkele on-premises onderdelen.
 4. Aanmeld functies die niet systeem eigen worden ondersteund door Azure AD:
    * Meld u aan met Smart Cards of certificaten.
    * Meld u aan met on-premises MFA-server.
    * Meld u aan met verificatie oplossing van derden.
    * Oplossing voor on-premises verificatie op meerdere locaties.
-5. Azure AD Identity Protection wacht woord-hash-synchronisatie vereist ongeacht de aanmeldings methode die u kiest, om het rapport *gebruikers met gelekte referenties* op te geven. Organisaties kunnen een failover naar een wacht woord-hash synchroniseren als de primaire aanmeldings methode mislukt en is geconfigureerd vóór de fout gebeurtenis.
+5. Azure AD Identity Protection wacht woord-hash-synchronisatie vereist ongeacht de aanmeldings methode die u kiest, om het rapport *gebruikers met gelekte referenties* op te geven. Organisaties kunnen een failover uitvoeren naar een wachtwoord hash-synchronisatie als hun primaire aanmeldings methode mislukt en is geconfigureerd voor de fout gebeurtenis.
 
 > [!NOTE]
 > [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) -licenties Azure AD Identity Protection vereisen.
@@ -88,9 +88,9 @@ Details over beslissings vragen:
 
 * **Gebruikers ervaring**. Als u de aanmeld procedure van gebruikers wilt verbeteren, implementeert u naadloze SSO met synchronisatie van wacht woord-hashes. Naadloze SSO elimineert overbodige vragen wanneer gebruikers zijn aangemeld.
 
-* **Geavanceerde scenario's**. Als organisaties hiervoor kiezen, is het mogelijk om inzichten te gebruiken van identiteiten met Azure AD Identity Protection rapporten met Azure AD Premium P2. Een voor beeld is het rapport met gelekte referenties. Windows hello voor bedrijven heeft [specifieke vereisten voor het gebruik van wachtwoord-hash-synchronisatie](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) wachtwoord hash-synchronisatie vereist om gebruikers in te richten met hun bedrijfs referenties in het beheerde domein.
+* **Geavanceerde scenario's**. Als organisaties hiervoor kiezen, is het mogelijk om inzichten te gebruiken van identiteiten met Azure AD Identity Protection rapporten met Azure AD Premium P2. Een voor beeld is het rapport met gelekte referenties. Windows hello voor bedrijven heeft [specifieke vereisten voor het gebruik van wachtwoord-hash-synchronisatie](https://docs.microsoft.com/windows/access-protection/hello-for-business/hello-identity-verification). Voor [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md) is wachtwoord hash-synchronisatie vereist om gebruikers in te richten met hun bedrijfs referenties in het beheerde domein.
 
-    Organisaties waarvoor multi-factor Authentication met wachtwoord hash-synchronisatie vereist is, moeten gebruikmaken van [aangepaste besturings elementen](../../active-directory/conditional-access/controls.md#custom-controls-preview)voor Azure AD multi-factor Authentication of voorwaardelijke toegang. Deze organisaties kunnen geen multi-factor Authentication-methoden van derden of on-premises gebruiken die afhankelijk zijn van Federatie.
+    Organisaties waarvoor multi-factor Authentication met wachtwoord hash-synchronisatie vereist is, moeten gebruikmaken van [aangepaste besturings elementen](../../active-directory/conditional-access/controls.md#custom-controls-preview)voor Azure AD multi-factor Authentication of voorwaardelijke toegang. Deze organisaties kunnen geen derden of on-premises multi-factor Authentication-methoden gebruiken die afhankelijk zijn van Federatie.
 
 > [!NOTE]
 > Voor voorwaardelijke toegang van Azure AD zijn [Azure AD Premium P1](https://azure.microsoft.com/pricing/details/active-directory/) -licenties vereist.
@@ -120,7 +120,7 @@ Raadpleeg de implementatie van [wacht woord-hash synchronisatie](../../active-di
 
     Er is nog een voor deel voor het implementeren van wachtwoord hash-synchronisatie naast Pass-Through-verificatie. Het fungeert als een methode voor het maken van een back-upverificatie wanneer de primaire authenticatie methode niet meer beschikbaar is.
 
-* **Overwegingen**. U kunt wachtwoord hash-synchronisatie gebruiken als een back-upauthenticatie methode voor Pass-Through-verificatie, wanneer de agents de referenties van een gebruiker niet kunnen valideren als gevolg van een belang rijke on-premises fout. Failover naar wachtwoord hash wordt niet automatisch uitgevoerd en u moet Azure AD Connect gebruiken om de aanmeldings methode hand matig te wijzigen. 
+* **Overwegingen**. U kunt wachtwoord hash-synchronisatie gebruiken als een back-upauthenticatie methode voor Pass-Through-verificatie, wanneer de agents de referenties van een gebruiker niet kunnen valideren als gevolg van een belang rijke on-premises fout. Failover naar wachtwoord-hash-synchronisatie vindt niet automatisch plaats en u moet Azure AD Connect gebruiken om de aanmeldings methode hand matig te wijzigen. 
 
     Zie [Veelgestelde vragen](../../active-directory/hybrid/how-to-connect-pta-faq.md)voor andere overwegingen met betrekking tot Pass-Through-verificatie, met inbegrip van alternatieve ID-ondersteuning.
 
@@ -207,8 +207,6 @@ Het gebruik of inschakelen van hash-synchronisatie van wacht woord voor de verif
 
 3. **Identiteits beveiliging**. Een van de beste manieren om gebruikers in de cloud te beveiligen, is Azure AD Identity Protection met Azure AD Premium P2. Micro soft scant voortdurend het Internet op gebruikers-en wachtwoord lijsten dat onjuiste actoren verkopen en beschikbaar maken op het donkere web. Azure AD kan deze informatie gebruiken om te controleren of een van de gebruikers namen en wacht woorden in uw organisatie is aangetast. Het is dus belang rijk om wachtwoord hash-synchronisatie in te scha kelen, ongeacht de verificatie methode die u gebruikt, of dat nu federatief of Pass-Through-verificatie is. Gelekte referenties worden weer gegeven als een rapport. Gebruik deze informatie om gebruikers te blok keren of te dwingen hun wacht woord te wijzigen wanneer ze zich proberen aan te melden met gelekte wacht woorden.
 
-Ten slotte heeft micro [](https://info.microsoft.com/landingIAMGartnerreportregistration.html)Soft de meest uitgebreide set met functies voor identiteits-en toegangs beheer. Micro soft verzorgt elke maand [450.000.000.000 verificatie aanvragen](https://www.microsoft.com/en-us/security/intelligence-report) om toegang te bieden tot duizenden SaaS-toepassingen, zoals Office 365 van vrijwel elk apparaat. 
-
 ## <a name="conclusion"></a>Conclusie
 
 In dit artikel vindt u een overzicht van verschillende verificatie opties die organisaties kunnen configureren en implementeren voor de ondersteuning van toegang tot Cloud-apps. Om te voldoen aan verschillende bedrijfs-, beveiligings-en technische vereisten, kunnen organisaties kiezen tussen wacht woord-hash synchronisatie, Pass Through-verificatie en Federatie. 
@@ -221,4 +219,4 @@ In de huidige wereld zijn bedreigingen 24 uur per dag aanwezig en zijn ze overal
 
 [Ga](../../active-directory/fundamentals/get-started-azure-ad.md) aan de slag met Azure AD en implementeer de juiste verificatie oplossing voor uw organisatie.
 
-Als u overweegt om te migreren van federatieve naar Cloud authenticatie, lees dan meer informatie over [het wijzigen van de aanmeldings methode](../../active-directory/hybrid/plan-connect-user-signin.md). Gebruik [deze project implementatie plannen](https://aka.ms/deploymentplans)om u te helpen bij het plannen en implementeren van de migratie.
+Als u overweegt om te migreren van federatieve naar Cloud authenticatie, lees dan meer informatie over [het wijzigen van de aanmeldings methode](../../active-directory/hybrid/plan-connect-user-signin.md). Als hulp bij het plannen en implementeren van de migratie, gebruikt u [Deze implementatie plannen](https://aka.ms/deploymentplans) van het project of overweegt u de nieuwe functie voor [gefaseerde](../../active-directory/hybrid/how-to-connect-staged-rollout.md) implementatie te gebruiken voor het migreren van federatieve gebruikers naar het gebruik van Cloud-verificatie in een gefaseerde benadering.

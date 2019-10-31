@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute en Site-naar-Site VPN-verbindingen configureren - naast elkaar worden gebruikt: klassiek: Azure | Microsoft Docs'
+title: 'ExpressRoute- en site-naar-site-VPN-verbindingen configureren die naast elkaar kunnen worden gebruikt: klassiek: Azure | Microsoft Docs'
 description: Dit artikel begeleidt u bij het configureren van ExpressRoute- en site-naar-site-VPN-verbindingen die naast elkaar kunnen worden gebruikt in het klassieke implementatiemodel.
 documentationcenter: na
 services: expressroute
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8eb1d7da9c588aedaedb37dc50c69970fe79ac2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370396"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162707"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Gelijktijdige ExpressRoute- en site-to-site-verbindingen configureren (klassiek)
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "60370396"
 > 
 > 
 
-Dit artikel helpt u bij het configureren van ExpressRoute en Site-naar-Site VPN-verbindingen die naast elkaar worden gebruikt. De mogelijkheid om site-naar-site-VPN en ExpressRoute te configureren heeft verschillende voordelen. U kunt een site-naar-site-VPN configureren als een beveiligd failoverpad voor ExpressRoute, of site-naar-site-VPN's gebruiken om verbinding te maken met sites die niet via ExpressRoute zijn verbonden. In dit artikel gaan we in op de stappen voor het configureren van beide scenario's. Dit artikel is van toepassing op het klassieke implementatiemodel. Deze configuratie is niet beschikbaar in de portal.
+In dit artikel leest u hoe u ExpressRoute- en site-naar-site-VPN-verbindingen configureert die naast elkaar kunnen worden gebruikt. De mogelijkheid om site-naar-site-VPN en ExpressRoute te configureren heeft verschillende voordelen. U kunt een site-naar-site-VPN configureren als een beveiligd failoverpad voor ExpressRoute, of site-naar-site-VPN's gebruiken om verbinding te maken met sites die niet via ExpressRoute zijn verbonden. In dit artikel gaan we in op de stappen voor het configureren van beide scenario's. Dit artikel is van toepassing op het klassieke implementatiemodel. Deze configuratie is niet beschikbaar in de portal.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -200,7 +200,7 @@ Als het gatewaysubnet /27 of groter is en het virtuele netwerk is verbonden via 
         Remove-AzureVNetGateway –VnetName MyAzureVNET
 3. Exporteer het schema van het virtuele netwerk. Gebruik de volgende PowerShell-cmdlet, waarbij u de waarden vervangt door uw eigen waarden.
    
-        Get-AzureVNetConfig –ExportToFile “C:\NetworkConfig.xml”
+        Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
 4. Bewerk het schema van het netwerkconfiguratiebestand zodanig dat het gatewaysubnet /27 of een kortere voorvoegsel (zoals /26 of /25) is. Zie het volgende voorbeeld 
    
    > [!NOTE]

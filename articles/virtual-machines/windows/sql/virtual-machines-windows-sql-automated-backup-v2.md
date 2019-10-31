@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 066c154c0ba3e62ac4f441e268c657dd5e991220
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 452dfcc04d9fc9048493222ad2a82a5bcc8b78f4
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102129"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162861"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatische back-up v2 voor Azure Virtual Machines (Resource Manager)
 
@@ -59,9 +59,9 @@ Als u automatische back-up v2 wilt gebruiken, controleert u de volgende vereiste
 ## <a name="settings"></a>Instellingen
 In de volgende tabel worden de opties beschreven die kunnen worden geconfigureerd voor automatische back-ups v2. De werkelijke configuratie stappen variëren, afhankelijk van of u de Azure Portal-of Azure Windows Power shell-opdrachten gebruikt.
 
-### <a name="basic-settings"></a>Basisinstellingen
+### <a name="basic-settings"></a>Basis instellingen
 
-| Instelling | Bereik (standaard) | Description |
+| Instelling | Bereik (standaard) | Beschrijving |
 | --- | --- | --- |
 | **Automatische back-up** | Inschakelen/uitschakelen (uitgeschakeld) | Hiermee wordt automatische back-ups voor een Azure-VM met SQL Server 2016/2017 Developer, Standard of ENTER prise in-of uitgeschakeld. |
 | **Bewaar periode** | 1-30 dagen (30 dagen) | Het aantal dagen dat back-ups moeten worden bewaard. |
@@ -71,9 +71,9 @@ In de volgende tabel worden de opties beschreven die kunnen worden geconfigureer
 
 ### <a name="advanced-settings"></a>Geavanceerde instellingen
 
-| Instelling | Bereik (standaard) | Description |
+| Instelling | Bereik (standaard) | Beschrijving |
 | --- | --- | --- |
-| **Back-ups van de systeem database** | Inschakelen/uitschakelen (uitgeschakeld) | Wanneer deze functie is ingeschakeld, wordt er ook een back-up van de systeem databases gemaakt: Master, MSDB en model. Controleer voor de MSDB-en model databases of ze zich in de modus voor volledig herstel bevinden als u wilt dat logboek back-ups worden gemaakt. Logboek back-ups worden nooit uitgevoerd voor de hoofd database. Er worden geen back-ups gemaakt voor TempDB. |
+| **Back-ups van de systeem database** | Inschakelen/uitschakelen (uitgeschakeld) | Als deze functie is ingeschakeld, wordt ook een back-up gemaakt van de systeem databases: Master, MSDB en model. Controleer voor de MSDB-en model databases of ze zich in de modus voor volledig herstel bevinden als u wilt dat logboek back-ups worden gemaakt. Logboek back-ups worden nooit uitgevoerd voor de hoofd database. Er worden geen back-ups gemaakt voor TempDB. |
 | **Back-upschema** | Hand matig/automatisch (automatisch) | Het back-upschema wordt standaard automatisch bepaald op basis van de logboek groei. Met hand matig back-upschema kan de gebruiker het tijd venster voor back-ups opgeven. In dit geval worden back-ups alleen uitgevoerd met de opgegeven frequentie en tijdens het opgegeven tijd venster van een bepaalde dag. |
 | **Frequentie van volledige back-up** | Dagelijks/wekelijks | De frequentie van volledige back-ups. In beide gevallen beginnen volledige back-ups tijdens het volgende geplande tijd venster. Wanneer wekelijks is geselecteerd, kunnen back-ups meerdere dagen duren totdat alle data bases zijn voorzien van een back-up. |
 | **Begin tijd volledige back-up** | 00:00 – 23:00 (01:00) | Begin tijd van een bepaalde dag waarin volledige back-ups kunnen worden uitgevoerd. |
@@ -83,15 +83,15 @@ In de volgende tabel worden de opties beschreven die kunnen worden geconfigureer
 ## <a name="understanding-full-backup-frequency"></a>Meer informatie over de frequentie van volledige back-ups
 Het is belang rijk dat u begrijpt wat het verschil is tussen dagelijkse en wekelijkse volledige back-ups. Houd rekening met de volgende twee voorbeeld scenario's.
 
-### <a name="scenario-1-weekly-backups"></a>Scenario 1: Wekelijkse back-ups
+### <a name="scenario-1-weekly-backups"></a>Scenario 1: wekelijkse back-ups
 U hebt een SQL Server-VM die een aantal grote data bases bevat.
 
 Op maandag schakelt u automatische back-up v2 in met de volgende instellingen:
 
-- Back-upschema: **Handmatig**
-- Frequentie van volledige back-up: **Laten**
+- Back-upschema: **hand matig**
+- Frequentie van volledige back-up: **wekelijks**
 - Begin tijd volledige back-up: **01:00**
-- Tijd venster volledige back-up: **1 uur**
+- Tijd venster voor volledige back-up: **1 uur**
 
 Dit betekent dat het volgende beschik bare venster voor back-ups dinsdag om 1 uur 's MIDDAGs is. Op dat moment wordt een back-up van uw data bases per keer met geautomatiseerde back-ups gemaakt. In dit scenario zijn uw data bases groot genoeg die volledige back-ups voor de eerste paar data bases zijn voltooid. Na één uur is er echter een back-up van de data bases gemaakt.
 
@@ -101,15 +101,15 @@ Nadat de app opnieuw is ingesteld, wordt er opnieuw een back-up van alle data ba
 
 Dit scenario laat zien dat automatische back-up alleen binnen het opgegeven tijd venster werkt en dat elke Data Base eenmaal per week een back-up wordt gemaakt. Dit betekent ook dat het mogelijk is dat back-ups meerdere dagen in beslag nemen wanneer het niet mogelijk is om alle back-ups op één dag te volt ooien.
 
-### <a name="scenario-2-daily-backups"></a>Scenario 2: Dagelijkse back-ups
+### <a name="scenario-2-daily-backups"></a>Scenario 2: dagelijkse back-ups
 U hebt een SQL Server-VM die een aantal grote data bases bevat.
 
 Op maandag schakelt u automatische back-up v2 in met de volgende instellingen:
 
-- Back-upschema: Handmatig
-- Frequentie van volledige back-up: Dagelijks
+- Back-upschema: hand matig
+- Frequentie van volledige back-up: dagelijks
 - Begin tijd volledige back-up: 22:00
-- Tijd venster volledige back-up: 6 uur
+- Tijd venster voor volledige back-up: 6 uur
 
 Dit betekent dat het volgende beschik bare back-upvenster maandag om 10 uur voor 6 uren is. Op dat moment wordt een back-up van uw data bases per keer met geautomatiseerde back-ups gemaakt.
 
@@ -170,7 +170,7 @@ Als de uitbrei ding voor de SQL Server IaaS-agent is geïnstalleerd, wordt deze 
 Als de app niet is geïnstalleerd of niet is ingericht, kunt u deze installeren met de volgende opdracht. Naast de naam van de virtuele machine en de resource groep moet u ook de regio ( **$Region**) opgeven waarin uw VM zich bevindt.
 
 ```powershell
-$region = “EASTUS2”
+$region = "EASTUS2"
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region 
@@ -200,7 +200,7 @@ FullBackupWindowHours       : 2
 LogBackupFrequency          : 60
 ```
 
-Als uw uitvoer laat zien dat **inschakelen** is ingesteldop ONWAAR, moet u automatische back-up inschakelen. Het goede nieuws is dat u op dezelfde manier automatische back-ups inschakelt en configureert. Zie de volgende sectie voor deze informatie.
+Als uw uitvoer laat zien dat **inschakelen** is ingesteld op **Onwaar**, moet u automatische back-up inschakelen. Het goede nieuws is dat u op dezelfde manier automatische back-ups inschakelt en configureert. Zie de volgende sectie voor deze informatie.
 
 > [!NOTE] 
 > Als u de instellingen direct na het aanbrengen van een wijziging controleert, is het mogelijk dat u de oude configuratie waarden terugkrijgt. Wacht enkele minuten en controleer de instellingen opnieuw om er zeker van te zijn dat uw wijzigingen zijn toegepast.
@@ -211,7 +211,7 @@ U kunt Power shell gebruiken om automatische back-ups in te scha kelen en de con
 Selecteer eerst of maak een opslag account voor de back-upbestanden. Met het volgende script wordt een opslag account geselecteerd of wordt het gemaakt als het niet bestaat.
 
 ```powershell
-$storage_accountname = “yourstorageaccount”
+$storage_accountname = "yourstorageaccount"
 $storage_resourcegroupname = $resourcegroupname
 
 $storage = Get-AzStorageAccount -ResourceGroupName $resourcegroupname `
@@ -276,8 +276,8 @@ Het volgende script bevat een set variabelen die u kunt aanpassen om automatisch
 ```powershell
 $vmname = "yourvmname"
 $resourcegroupname = "vmresourcegroupname"
-$region = “Azure region name such as EASTUS2”
-$storage_accountname = “storageaccountname”
+$region = "Azure region name such as EASTUS2"
+$storage_accountname = "storageaccountname"
 $storage_resourcegroupname = $resourcegroupname
 $retentionperiod = 10
 $backupscheduletype = "Manual"
@@ -315,7 +315,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 Als u automatische back-ups wilt bewaken op SQL Server 2016/2017, hebt u twee belang rijke opties. Omdat automatische back-up gebruikmaakt van de SQL Server beheerde back-upfunctie, zijn dezelfde bewakings technieken van toepassing op beide.
 
@@ -332,7 +332,7 @@ Een andere optie is om te profiteren van de ingebouwde Database Mail functie voo
 ## <a name="next-steps"></a>Volgende stappen
 Met geautomatiseerde back-up v2 wordt beheerde back-up geconfigureerd op virtuele machines van Azure. Het is dus belang rijk dat u [de documentatie voor beheerde back-up bekijkt](https://msdn.microsoft.com/library/dn449496.aspx) om het gedrag en de implicaties ervan te begrijpen.
 
-In het volgende artikel vindt u aanvullende richt lijnen voor back-up en herstel voor SQL Server op virtuele Azure-machines: [Back-ups maken en herstellen voor SQL Server in Azure virtual machines](virtual-machines-windows-sql-backup-recovery.md).
+Meer richt lijnen voor back-up en herstel van SQL Server op virtuele Azure-machines vindt u in het volgende artikel: [back-up en herstel voor SQL Server in Azure virtual machines](virtual-machines-windows-sql-backup-recovery.md).
 
 Zie [SQL Server IaaS agent extension](virtual-machines-windows-sql-server-agent-extension.md)(Engelstalig) voor meer informatie over andere beschik bare automatiserings taken.
 

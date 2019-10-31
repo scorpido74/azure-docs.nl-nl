@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4cd3e2ab18c05c8adfda1a54ea4f7820916eab5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 25f2776b9b5683a345c55af4bc0020fef8109edd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934892"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73150658"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Client toepassingen initialiseren met MSAL. js
 In dit artikel wordt beschreven hoe u de micro soft-verificatie bibliotheek voor Java script (MSAL. js) initialiseert met een exemplaar van een toepassing van een gebruikers agent. De toepassing van de gebruikers agent is een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser. Deze clients slaan geen geheimen op omdat de browser context geopend is. Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
@@ -46,7 +46,7 @@ Voor verificatie methoden met een omleidings stroom (`loginRedirect` en `acquire
 // Configuration object constructed
 const config = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”
+        clientId: "abcd-ef12-gh34-ikkl-ashdjhlhsdg"
     }
 }
 

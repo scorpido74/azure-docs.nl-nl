@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e1be41c854e212a7b673d8c2dff42d7b9981fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 101d478d37055a08a5ced9113e070bf826613bd3
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616137"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160770"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Beveiligings gegevens instellen (preview) voor het gebruik van een verificator-app
 
@@ -36,7 +36,7 @@ Afhankelijk van de instellingen van uw organisatie kunt u mogelijk een verificat
 
 ### <a name="to-set-up-the-microsoft-authenticator-app"></a>De app Microsoft Authenticator instellen
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens https://myprofile.microsoft.com/ naar de pagina.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
 
     ![Mijn profiel pagina, met gemarkeerde koppelingen voor beveiligings gegevens](media/security-info/securityinfo-myprofile-page.png)
 
@@ -148,6 +148,6 @@ U hebt extra opties voor het controleren van uw identiteit door uw organisatie, 
 
 - Meld u aan met behulp van de Microsoft Authenticator-app en volg de stappen in het artikel [Aanmelden met verificatie in twee stappen of beveiligings informatie](security-info-setup-signin.md) .
 
-- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](user-help-reset-password.md).
+- Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md).
 
 - Krijg tips voor het oplossen van problemen en hulp met problemen met aanmelden in het artikel [U kunt niet aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

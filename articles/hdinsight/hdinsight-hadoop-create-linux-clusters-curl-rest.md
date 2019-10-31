@@ -1,6 +1,6 @@
 ---
-title: Apache Hadoop-clusters met behulp van Azure REST API - Azure maken
-description: Leer hoe u HDInsight-clusters maken door het indienen van Azure Resource Manager-sjablonen op de Azure REST API.
+title: Apache Hadoop clusters maken met Azure REST API-Azure
+description: Meer informatie over het maken van HDInsight-clusters door Azure Resource Manager sjablonen te verzenden naar de Azure-REST API.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,29 +8,29 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059412"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152007"
 ---
-# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop-clusters met behulp van de Azure REST API maken
+# <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop clusters maken met behulp van de Azure-REST API
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Informatie over het maken van een HDInsight-cluster met behulp van een Azure Resource Manager-sjabloon en de Azure REST API.
+Meer informatie over het maken van een HDInsight-cluster met behulp van een Azure Resource Manager sjabloon en de Azure REST API.
 
-De Azure REST API kunt u beheerbewerkingen op services die worden gehost in de Azure-platform, met inbegrip van het maken van nieuwe resources zoals HDInsight-clusters.
+Met Azure REST API kunt u beheer bewerkingen uitvoeren op Services die worden gehost op het Azure-platform, inclusief het maken van nieuwe resources zoals HDInsight-clusters.
 
 > [!NOTE]  
-> De stappen in dit document gebruiken de [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) hulpprogramma om te communiceren met de Azure REST API.
+> De stappen in dit document gebruiken het [krul (https://curl.haxx.se/) -](https://curl.haxx.se/) hulp programma om te communiceren met de Azure-rest API.
 
 ## <a name="create-a-template"></a>Een sjabloon maken
 
-Azure Resource Manager-sjablonen zijn JSON-documenten die beschrijven een **resourcegroep** en alle resources (zoals HDInsight.) Deze benadering op basis van een sjabloon kunt u de resources definiëren die u nodig hebt voor HDInsight in één sjabloon.
+Azure Resource Manager sjablonen zijn JSON-documenten waarmee een **resource groep** en alle resources erin worden beschreven (zoals HDInsight.) Met deze op sjablonen gebaseerde benadering kunt u de resources definiëren die u nodig hebt voor HDInsight in één sjabloon.
 
-De volgende JSON-document is een fusie van de sjabloon en parameters-bestanden van [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), deze toepassing maakt een op basis van Linux-cluster met behulp van een wachtwoord om het SSH-gebruikersaccount te beveiligen.
+Het volgende JSON-document is een fusie van de sjabloon en de parameter bestanden van [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password), die een Linux-cluster maakt met behulp van een wacht woord om het SSH-gebruikers account te beveiligen.
 
    ```json
    {
@@ -145,7 +145,7 @@ De volgende JSON-document is een fusie van de sjabloon en parameters-bestanden v
                                "name": "headnode",
                                "targetInstanceCount": "2",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}" 
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -158,7 +158,7 @@ De volgende JSON-document is een fusie van de sjabloon en parameters-bestanden v
                                "name": "workernode",
                                "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}"
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -205,60 +205,60 @@ De volgende JSON-document is een fusie van de sjabloon en parameters-bestanden v
    }
    ```
 
-In dit voorbeeld wordt gebruikt in de stappen in dit document. Vervang het voorbeeld *waarden* in de **Parameters** sectie met de waarden voor uw cluster.
+Dit voor beeld wordt gebruikt in de stappen in dit document. Vervang de voorbeeld *waarden* in het gedeelte **para meters** door de waarden voor uw cluster.
 
 > [!IMPORTANT]  
-> De sjabloon maakt gebruik van het aantal worker-knooppunten (4) voor een HDInsight-cluster. Als u van plan op meer dan 32 worker-knooppunten bent, moet u de grootte van een hoofdknooppunt met ten minste 8 kerngeheugens en 14 GB RAM-geheugen selecteren.
+> De sjabloon gebruikt het standaard aantal worker-knoop punten (4) voor een HDInsight-cluster. Als u meer dan 32 worker-knoop punten wilt plannen, moet u een hoofd knooppunt grootte selecteren met ten minste 8 kernen en een RAM-geheugen van 14 GB.
 >
 > Zie [Prijsdetails voor Azure HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) voor meer informatie over knooppuntgrootten en de bijbehorende kosten.
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
 
-Volg de stappen beschreven in [aan de slag met Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) en maak verbinding met uw abonnement met de `az login` opdracht.
+Volg de stappen die worden beschreven in aan de [slag met Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) en verbinding maken met uw abonnement met behulp van de `az login` opdracht.
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
 > [!NOTE]  
-> Deze stappen zijn een verkorte versie van de *service-principal maken met een wachtwoord* sectie van de [gebruik Azure CLI voor het maken van een service-principal toegang krijgen tot bronnen](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) document. Deze stappen maakt u een service-principal die wordt gebruikt voor verificatie bij de Azure REST API.
+> Deze stappen zijn een verkorte versie van de sectie *Service-Principal maken met wacht woord* van [Azure CLI gebruiken om een service-principal te maken voor toegang tot resources](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) -document. Met deze stappen maakt u een service-principal die wordt gebruikt voor verificatie bij de Azure-REST API.
 
-1. Vanaf de opdrachtregel, gebruikt u de volgende opdracht uit om uw Azure-abonnementen weer te geven.
+1. Gebruik vanaf een opdracht regel de volgende opdracht om uw Azure-abonnementen weer te geven.
 
    ```bash
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    In de lijst, selecteer het abonnement dat u wilt gebruiken en houd er rekening mee de **abonnements-id** en __Tenant_ID__ kolommen. Deze waarden opslaan.
+    Selecteer in de lijst het abonnement dat u wilt gebruiken en noteer de kolommen **Subscription_ID** en __Tenant_ID__ . Sla deze waarden op.
 
-2. Gebruik de volgende opdracht om te maken van een toepassing in Azure Active Directory.
+2. Gebruik de volgende opdracht om een toepassing te maken in Azure Active Directory.
 
    ```bash
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
-    Vervang de waarden voor de `--display-name`, `--homepage`, en `--identifier-uris` door uw eigen waarden. Een wachtwoord opgeven voor de nieuwe Active Directory-vermelding.
+    Vervang de waarden voor de `--display-name`, `--homepage`en `--identifier-uris` met uw eigen waarden. Geef een wacht woord op voor de nieuwe Active Directory vermelding.
 
    > [!NOTE]  
-   > De `--home-page` en `--identifier-uris` waarden niet nodig hebt om te verwijzen naar een webpagina die wordt gehost op het internet. De unieke URI's, moeten ze zijn.
+   > De waarden `--home-page` en `--identifier-uris` hoeven niet te verwijzen naar een daad werkelijke webpagina die wordt gehost op internet. Ze moeten unieke Uri's zijn.
 
-   De geretourneerde waarde van deze opdracht wordt de __App-ID__ voor de nieuwe toepassing. Deze waarde wordt opgeslagen.
+   De waarde die door deze opdracht wordt geretourneerd, is de __App-ID__ voor de nieuwe toepassing. Sla deze waarde op.
 
-3. Gebruik de volgende opdracht om te maken van een service-principal met behulp van de **App-ID**.
+3. Gebruik de volgende opdracht om een service-principal te maken met behulp van de **App-ID**.
 
    ```bash
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     De geretourneerde waarde van deze opdracht wordt de __Object-ID__. Deze waarde wordt opgeslagen.
+     De waarde die door deze opdracht wordt geretourneerd, is de __object-id__. Sla deze waarde op.
 
-4. Toewijzen de **eigenaar** rol met de service principal via de **Object-ID** waarde. Gebruik de **abonnements-ID** u eerder hebt verkregen.
+4. Wijs de rol **eigenaar** toe aan de service-principal met behulp van de **object-id-** waarde. Gebruik de **abonnements-id** die u eerder hebt verkregen.
 
    ```bash
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
-## <a name="get-an-authentication-token"></a>Een verificatietoken ophalen
+## <a name="get-an-authentication-token"></a>Een verificatie Token ophalen
 
-Gebruik de volgende opdracht om geen verificatietoken ophalen:
+Gebruik de volgende opdracht om een verificatie token op te halen:
 
 ```bash
 curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
@@ -270,11 +270,11 @@ curl -X "POST" "https://login.microsoftonline.com/$TENANTID/oauth2/token" \
 --data-urlencode "resource=https://management.azure.com/"
 ```
 
-Stel `$TENANTID`, `$APPID`, en `$PASSWORD` op de waarden die zijn verkregen of eerder gebruikt.
+Stel `$TENANTID`, `$APPID`en `$PASSWORD` in voor de waarden die u eerder hebt verkregen of gebruikt.
 
-Als deze aanvraag geslaagd is, ontvangt u een antwoord 200-serie en de antwoordtekst bevat een JSON-document.
+Als deze aanvraag is voltooid, ontvangt u een respons van 200-series en bevat de antwoord tekst een JSON-document.
 
-Het JSON-document dat is geretourneerd door deze aanvraag bevat een element met de naam **access_token**. De waarde van **access_token** wordt gebruikt voor het verificatieaanvragen voor de REST-API.
+Het JSON-document dat door deze aanvraag wordt geretourneerd bevat een element met de naam **access_token**. De waarde van **access_token** wordt gebruikt voor het verifiëren van aanvragen voor de rest API.
 
 ```json
 {
@@ -288,12 +288,12 @@ Het JSON-document dat is geretourneerd door deze aanvraag bevat een element met 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Het volgende gebruiken om een resourcegroep te maken.
+Gebruik het volgende om een resource groep te maken.
 
-* Stel `$SUBSCRIPTIONID` aan het abonnement-ID ontvangen tijdens het maken van de service-principal.
-* Stel `$ACCESSTOKEN` aan het toegangstoken in de vorige stap hebt ontvangen.
-* Vervang `DATACENTERLOCATION` met het datacenter dat u maken van de resourcegroep en resources wilt, in. Bijvoorbeeld 'Zuid-centraal VS'.
-* Stel `$RESOURCEGROUPNAME` op de naam die u wilt gebruiken voor deze groep:
+* Stel `$SUBSCRIPTIONID` in op de abonnements-ID die is ontvangen tijdens het maken van de Service-Principal.
+* Stel `$ACCESSTOKEN` in op het toegangs token dat u in de vorige stap hebt ontvangen.
+* Vervang `DATACENTERLOCATION` door het Data Center waarin u de resource groep en de resources wilt maken. Bijvoorbeeld ' Zuid-Centraal VS '.
+* Stel `$RESOURCEGROUPNAME` in op de naam die u voor deze groep wilt gebruiken:
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME?api-version=2015-01-01" \
@@ -304,13 +304,13 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 }'
 ```
 
-Als deze aanvraag geslaagd is, ontvangt u een antwoord 200-serie en de antwoordtekst bevat een JSON-document dat informatie bevat over de groep. De `"provisioningState"` element bevat een waarde van `"Succeeded"`.
+Als deze aanvraag is voltooid, ontvangt u een respons van 200-series en bevat de antwoord tekst een JSON-document met informatie over de groep. Het element `"provisioningState"` bevat de waarde `"Succeeded"`.
 
 ## <a name="create-a-deployment"></a>Een implementatie maken
 
-Gebruik de volgende opdracht voor het implementeren van de sjabloon naar de resourcegroep.
+Gebruik de volgende opdracht om de sjabloon te implementeren in de resource groep.
 
-* Stel `$DEPLOYMENTNAME` op de naam die u wilt gebruiken voor deze implementatie.
+* Stel `$DEPLOYMENTNAME` in op de naam die u voor deze implementatie wilt gebruiken.
 
 ```bash
 curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -320,18 +320,18 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 ```
 
 > [!NOTE]  
-> Als u de sjabloon naar een bestand hebt opgeslagen, kunt u de volgende opdracht uit in plaats van `-d "{ template and parameters}"`:
+> Als u de sjabloon hebt opgeslagen in een bestand, kunt u de volgende opdracht gebruiken in plaats van `-d "{ template and parameters}"`:
 >
 > `--data-binary "@/path/to/file.json"`
 
-Als deze aanvraag geslaagd is, ontvangt u een antwoord 200-serie en de antwoordtekst bevat een JSON-document dat informatie bevat over de implementatiebewerking.
+Als deze aanvraag is voltooid, ontvangt u een respons van 200-series en bevat de antwoord tekst een JSON-document met informatie over de implementatie bewerking.
 
 > [!IMPORTANT]  
-> De implementatie is verzonden, maar is niet voltooid. Het kan enige tijd duren, meestal ongeveer 15, voor de installatie is voltooid.
+> De implementatie is verzonden, maar is niet voltooid. Het kan enkele minuten duren voordat de implementatie is voltooid.
 
-## <a name="check-the-status-of-a-deployment"></a>Controleer de status van een implementatie
+## <a name="check-the-status-of-a-deployment"></a>De status van een implementatie controleren
 
-Om te controleren of de status van de implementatie, gebruikt u de volgende opdracht:
+Als u de status van de implementatie wilt controleren, gebruikt u de volgende opdracht:
 
 ```bash
 curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resourcegroups/$RESOURCEGROUPNAME/providers/microsoft.resources/deployments/$DEPLOYMENTNAME?api-version=2015-01-01" \
@@ -339,7 +339,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -H "Content-Type: application/json"
 ```
 
-Met deze opdracht retourneert een JSON-document dat informatie bevat over de implementatiebewerking. De `"provisioningState"` element bevat de status van de implementatie. Als dit element een waarde van bevat `"Succeeded"`, en vervolgens de implementatie is voltooid.
+Met deze opdracht wordt een JSON-document geretourneerd dat informatie bevat over de implementatie bewerking. Het `"provisioningState"`-element bevat de status van de implementatie. Als dit element de waarde `"Succeeded"`bevat, is de implementatie voltooid.
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
@@ -347,9 +347,9 @@ Zie [Vereisten voor toegangsbeheer](hdinsight-hadoop-create-linux-clusters-porta
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u een HDInsight-cluster hebt gemaakt, gebruikt u de volgende voor informatie over het werken met uw cluster.
+Nu u een HDInsight-cluster hebt gemaakt, gebruikt u de volgende informatie om te leren werken met uw cluster.
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop-clusters
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop clusters
 
 * [Apache Hive gebruiken met HDInsight](hadoop/hdinsight-use-hive.md)
 * [Apache Pig gebruiken met HDInsight](hadoop/hdinsight-use-pig.md)
@@ -357,11 +357,11 @@ Nu dat u een HDInsight-cluster hebt gemaakt, gebruikt u de volgende voor informa
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase-clusters
 
-* [Aan de slag met Apache HBase op HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Java-toepassingen voor Apache HBase op HDInsight ontwikkelen](hbase/apache-hbase-build-java-maven-linux.md)
+* [Aan de slag met Apache HBase in HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Ontwikkel Java-toepassingen voor Apache HBase in HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="apache-storm-clusters"></a>Apache Storm-clusters
+### <a name="apache-storm-clusters"></a>Apache Storm clusters
 
 * [Java-topologieën ontwikkelen voor Apache Storm op HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Python-onderdelen in Apache Storm op HDInsight gebruiken](storm/apache-storm-develop-python-topology.md)
-* [Topologieën met Apache Storm op HDInsight implementeren en bewaken](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Python-onderdelen gebruiken in Apache Storm in HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Topologieën implementeren en bewaken met Apache Storm op HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)

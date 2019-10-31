@@ -1,5 +1,5 @@
 ---
-title: Verificatie in micro soft Identity platform (v1) | Azure
+title: Verificatie in het micro soft Identity platform (v 1.0) | Azure
 description: "Meer informatie over de basis principes van verificatie in het micro soft Identity-platform: het app-model, de API, het inrichten en de meest voorkomende verificatie scenario's die door micro soft Identity platform worden ondersteund."
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f64b16bde149c4dddd77ccec227781f45176a27d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377458"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149174"
 ---
 # <a name="what-is-authentication"></a>Wat is verificatie?
 
@@ -73,7 +73,7 @@ Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verifica
 |[Namens-stroom](v1-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
 |[Clientreferenties](v1-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
 
-Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte als gevolg van het terugsturen naar de browser via de URL (waarbij `response_mode` `query` of `fragment`).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Deze tokens hebben dus geen `groups`-of `wids`-claims. 
+Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` is `query` of `fragment`).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Deze tokens hebben dus geen `groups`-of `wids`-claims. 
 
 Nu u een overzicht van de basis principes hebt, leest u meer over het identiteits-app-model en de API, hoe Provisioning werkt in het micro soft Identity platform en koppelingen naar gedetailleerde informatie over de algemene scenario's die door micro soft Identity platform worden ondersteund.
 

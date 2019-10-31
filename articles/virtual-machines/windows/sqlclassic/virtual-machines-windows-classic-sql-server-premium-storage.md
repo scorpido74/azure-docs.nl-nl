@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ebcfa9da8fc8760fa4c13cec1a8921c4ecef5691
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101944"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162526"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Azure Premium Storage gebruiken met SQL Server op Virtual Machines
 
@@ -29,7 +29,7 @@ ms.locfileid: "70101944"
 [Azure Premium ssd's](../disks-types.md) is de volgende generatie opslag met lage latentie en een hoge doorvoer-io. Het werkt het beste voor intensieve i/o-werk belastingen, zoals SQL Server op IaaS [virtual machines](https://azure.microsoft.com/services/virtual-machines/).
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 In dit artikel vindt u plannings-en richt lijnen voor het migreren van een virtuele machine met SQL Server om Premium Storage te gebruiken. Dit omvat de stappen voor Azure-infra structuur (netwerken, opslag) en Windows VM-gast. In het voor beeld in de [bijlage](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) ziet u een volledig uitgebreide end-to-end migratie van hoe grotere vm's moeten worden verplaatst om te profiteren van verbeterde lokale SSD-opslag met Power shell.
 
@@ -43,7 +43,7 @@ Het is belang rijk om inzicht te krijgen in het end-to-end proces van het gebrui
 
 Zie [SQL Server in azure virtual machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)voor meer achtergrond informatie over SQL Server in azure virtual machines.
 
-**Lijsten** Enkele van de **Technische revisoren** van een enkele Sol: Luis Carlos Vargas haring, Sanjay Mishra, Pravin Mital, Juergen Thomas, Gonzalo Ruiz.
+**Auteur:** Een van de **volgende technische revisoren:** Luis Carlos Vargas haring, Sanjay Mishra, Pravin Mital, Juergen Thomas, Gonzalo Ruiz.
 
 ## <a name="prerequisites-for-premium-storage"></a>Vereisten voor Premium Storage
 
@@ -53,7 +53,7 @@ Er zijn verschillende vereisten voor het gebruik van Premium Storage.
 
 Voor het gebruik van Premium Storage moet u de DS-serie Virtual Machines (VM) gebruiken. Als u nog geen DS Series-computers in uw Cloud service hebt gebruikt, moet u de bestaande virtuele machine verwijderen, de gekoppelde schijven blijven gebruiken en vervolgens een nieuwe Cloud service maken voordat u de VM opnieuw maakt als DS * Role-grootte. Zie [Virtual machine and Cloud service sizes for Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)(Engelstalig) voor meer informatie over de grootte van virtuele machines.
 
-### <a name="cloud-services"></a>Cloud services
+### <a name="cloud-services"></a>Cloudservices
 
 U kunt DS * Vm's alleen gebruiken met Premium Storage wanneer ze worden gemaakt in een nieuwe Cloud service. Als u SQL Server altijd in azure gebruikt, verwijst de always on-listener naar het interne of externe Load Balancer IP-adres van Azure dat is gekoppeld aan een Cloud service. In dit artikel wordt uitgelegd hoe u migreert tijdens het onderhoud van de beschik baarheid in dit scenario.
 
@@ -68,7 +68,7 @@ Voor DS *-Vm's moet u de Virtual Network (VNET) configureren die uw Vm's hosten 
 
 ![RegionalVNET][1]
 
-U kunt een micro soft-ondersteunings ticket genereren om te migreren naar een regionaal VNET. Micro soft brengt vervolgens een wijziging aan. Wijzig de eigenschap AffinityGroup in de netwerk configuratie om de migratie naar regionale VNETs te volt ooien. Exporteer eerst de netwerk configuratie in Power shell en vervang vervolgens de eigenschap **AffinityGroup** in het element **VirtualNetworkSite** door een **locatie** -eigenschap. Geef `Location = XXXX` op `XXXX` waar zich een Azure-regio bevindt. Importeer vervolgens de nieuwe configuratie.
+U kunt een micro soft-ondersteunings ticket genereren om te migreren naar een regionaal VNET. Micro soft brengt vervolgens een wijziging aan. Wijzig de eigenschap AffinityGroup in de netwerk configuratie om de migratie naar regionale VNETs te volt ooien. Exporteer eerst de netwerk configuratie in Power shell en vervang vervolgens de eigenschap **AffinityGroup** in het element **VirtualNetworkSite** door een **locatie** -eigenschap. Geef `Location = XXXX` op waarbij `XXXX` een Azure-regio is. Importeer vervolgens de nieuwe configuratie.
 
 Bijvoorbeeld overwegende over de volgende VNET-configuratie:
 
@@ -191,7 +191,7 @@ Set-AzureSubscription -SubscriptionName $mysubscription
 Select-AzureSubscription -SubscriptionName $mysubscription -Current  
 ```
 
-#### <a name="step-1-create-a-premium-storage-account"></a>Stap 1: Een Premium Storage-account maken
+#### <a name="step-1-create-a-premium-storage-account"></a>Stap 1: een Premium Storage-account maken
 
 ```powershell
 #Create Premium Storage account, note Type
@@ -199,24 +199,24 @@ $newxiostorageaccountname = "danspremsams"
 New-AzureStorageAccount -StorageAccountName $newxiostorageaccountname -Location $location -Type "Premium_LRS"  
 ```
 
-#### <a name="step-2-create-a-new-cloud-service"></a>Stap 2: Een nieuwe Cloud service maken
+#### <a name="step-2-create-a-new-cloud-service"></a>Stap 2: een nieuwe Cloud service maken
 
 ```powershell
 $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-3-reserve-a-cloud-service-vip-optional"></a>Stap 3: Een Cloud service-VIP reserveren (optioneel)
+#### <a name="step-3-reserve-a-cloud-service-vip-optional"></a>Stap 3: een Cloud service-VIP reserveren (optioneel)
 
 ```powershell
 #check exisitng reserved VIP
 Get-AzureReservedIP
 
-$reservedVIPName = “sqlcloudVIP”
+$reservedVIPName = "sqlcloudVIP"
 New-AzureReservedIP –ReservedIPName $reservedVIPName –Label $reservedVIPName –Location $location
 ```
 
-#### <a name="step-4-create-a-vm-container"></a>Stap 4: Een VM-container maken
+#### <a name="step-4-create-a-vm-container"></a>Stap 4: een VM-container maken
 
 ```powershell
 #Generate storage keys for later
@@ -230,7 +230,7 @@ $containerName = 'vhds'
 New-AzureStorageContainer -Name $containerName -Context $xioContext
 ```
 
-#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>Stap 5: VHD van het besturings systeem plaatsen op Standard of Premium Storage
+#### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>Stap 5: VHD met besturings systeem op Standard of Premium Storage plaatsen
 
 ```powershell
 #NOTE: Set up subscription and default storage account which is used to place the OS VHD in
@@ -244,7 +244,7 @@ $standardstorageaccountname = "danstdams"
 Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount  $standardstorageaccountname
 ```
 
-#### <a name="step-6-create-vm"></a>Stap 6: VM maken
+#### <a name="step-6-create-vm"></a>Stap 6: een VM maken
 
 ```powershell
 #Get list of available SQL Server Images from the Azure Image Gallery.
@@ -293,7 +293,7 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmName |Get-AzureOSDisk
 
 Dit scenario laat zien hoe u bestaande aangepaste installatie kopieën hebt die zich bevinden in een Standard-opslag account. Zoals vermeld als u de VHD met het besturings systeem op Premium Storage wilt plaatsen, moet u de installatie kopie die in het standaard opslag account bestaat, kopiëren naar een Premium Storage voordat u deze kunt gebruiken. Als u een installatie kopie on-premises hebt, kunt u deze methode ook gebruiken om die rechtstreeks naar het Premium Storage-account te kopiëren.
 
-#### <a name="step-1-create-storage-account"></a>Stap 1: Storage-Account maken
+#### <a name="step-1-create-storage-account"></a>Stap 1: een opslag account maken
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -314,7 +314,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-3-use-existing-image"></a>Stap 3: Bestaande installatie kopie gebruiken
+#### <a name="step-3-use-existing-image"></a>Stap 3: een bestaande installatie kopie gebruiken
 
 U kunt een bestaande installatie kopie gebruiken. U kunt ook [een installatie kopie van een bestaande machine maken](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Let op dat de computer die u hebt geïnstalleerd, geen DS *-machine hoeft te zijn. Zodra u de installatie kopie hebt, ziet u in de volgende stappen hoe u deze kunt kopiëren naar het Premium Storage-account met de Power shell **-Commandlet start-AzureStorageBlobCopy** .
 
@@ -343,13 +343,13 @@ $blob = Start-AzureStorageBlobCopy -SrcBlob $myImageVHD -SrcContainer $container
 -Context $origContext -DestContext $destContext  
 ```
 
-#### <a name="step-5-regularly-check-copy-status"></a>Stap 5: Status van kopiëren regel matig controleren:
+#### <a name="step-5-regularly-check-copy-status"></a>Stap 5: de Kopieer status regel matig controleren:
 
 ```powershell
 $blob | Get-AzureStorageBlobCopyState
 ```
 
-#### <a name="step-6-add-image-disk-to-azure-disk-repository-in-subscription"></a>Stap 6: Installatie kopie schijf toevoegen aan Azure Disk-opslag plaats in abonnement
+#### <a name="step-6-add-image-disk-to-azure-disk-repository-in-subscription"></a>Stap 6: afbeeldings schijf toevoegen aan Azure Disk-opslag plaats in abonnement
 
 ```powershell
 $imageMediaLocation = $destContext.BlobEndPoint+"/"+$myImageVHD
@@ -361,7 +361,7 @@ Add-AzureVMImage -ImageName $newimageName -MediaLocation $imageMediaLocation
 > [!NOTE]
 > Hoewel de status rapporteert als geslaagd, kunt u nog steeds een fout in de schijf lease ophalen. Wacht in dit geval ongeveer 10 minuten.
 
-#### <a name="step-7--build-the-vm"></a>Stap 7:  De VM bouwen
+#### <a name="step-7--build-the-vm"></a>Stap 7: de VM bouwen
 
 Hier bouwt u de virtuele machine op basis van uw installatie kopie en voegt u twee Premium Storage Vhd's toe:
 
@@ -384,7 +384,7 @@ $availabilitySet = "cloudmigAVAMS3"
 
 #Machine User Credentials
 $userName = "myadmin"
-$pass = "theM)stC0mplexP@ssw0rd!”
+$pass = "theM)stC0mplexP@ssw0rd!"
 
 
 #Create VM Config
@@ -438,7 +438,7 @@ Er zijn twee strategieën voor het migreren van AlwaysOn-implementaties die enig
 1. **Meer secundaire replica's toevoegen aan een bestaand, altijd op cluster**
 2. **Migreren naar een nieuw cluster voor altijd**
 
-#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. Meer secundaire Replica's toevoegen aan een bestaand, altijd op cluster
+#### <a name="1-add-more-secondary-replicas-to-an-existing-always-on-cluster"></a>1. Voeg meer secundaire Replica's toe aan een bestaand, altijd op het cluster
 
 Een strategie bestaat uit het toevoegen van meer secundaire zones aan de AlwaysOn-beschikbaarheids groep. U moet deze toevoegen aan een nieuwe Cloud service en de listener bijwerken met het nieuwe load balancer IP-adres.
 
@@ -492,7 +492,7 @@ U dient tijd in te richten waar u hand matige failover en chaos-tests kunt uitvo
 * Tijdens het instellen van de secundaire zones kan er sprake zijn van langdurige tijd voor SQL-gegevens overdracht.
 * Tijdens de migratie worden extra kosten in rekening gebracht terwijl er parallelle computers worden uitgevoerd.
 
-#### <a name="2-migrate-to-a-new-always-on-cluster"></a>2. Migreren naar een nieuw cluster voor altijd
+#### <a name="2-migrate-to-a-new-always-on-cluster"></a>2. migreren naar een nieuw cluster voor altijd
 
 Een andere strategie is het maken van een gloed nieuw, altijd on-cluster met gloed nieuwe knoop punten in een nieuwe Cloud service en vervolgens de clients omleiden om deze te gebruiken.
 
@@ -520,10 +520,10 @@ Er is een uitval tijd wanneer u toepassingen en gebruikers overbrengt naar de ni
 
 Er zijn twee strategieën voor het migreren van AlwaysOn-implementaties voor minimale downtime:
 
-1. **Gebruik een bestaand secundair: Eén site**
-2. **Bestaande secundaire replica (s) gebruiken: Meerdere locaties**
+1. **Een bestaande secundaire: Eén site gebruiken**
+2. **Bestaande secundaire replica (s) gebruiken: meerdere locaties**
 
-#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. Gebruik een bestaand secundair: Eén site
+#### <a name="1-utilize-an-existing-secondary-single-site"></a>1. gebruik een bestaande secundaire: één site
 
 Een strategie voor minimale downtime is om een bestaande Cloud secundair te maken en deze te verwijderen uit de huidige Cloud service. Kopieer vervolgens de Vhd's naar het nieuwe Premium Storage-account en maak de virtuele machine in de nieuwe Cloud service. Werk vervolgens de listener bij in clustering en failover.
 
@@ -570,7 +570,7 @@ In dit document wordt niet het volledige end-to-end-voor beeld gedemonstreerd, m
 * Als u de stappen 5II gebruikt, voegt u SQL1 als mogelijke eigenaar toe voor de toegevoegde IP-adres resource
 * Testfailover.
 
-#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2. Bestaande secundaire replica (s) gebruiken: Multi-site
+#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2. gebruik bestaande secundaire replica (s): meerdere locaties
 
 Als u knoop punten in meer dan één Azure-Data Center (DC) hebt of als u een hybride omgeving hebt, kunt u in deze omgeving een permanente configuratie gebruiken om de downtime te minimaliseren.
 
@@ -617,13 +617,13 @@ In dit scenario wordt ervan uitgegaan dat u uw installatie hebt gedocumenteerd e
 * Testfailover.
 * Schakel de AFP terug naar SQL1 en SQL2
 
-## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>Nummer Een multi-site altijd op het cluster migreren naar Premium Storage
+## <a name="appendix-migrating-a-multisite-always-on-cluster-to-premium-storage"></a>Bijlage: een multi-site altijd op een cluster migreren naar Premium Storage
 
 In de rest van dit artikel vindt u een gedetailleerd voor beeld van het converteren van een multi-site-cluster naar Premium-opslag. Ook wordt de listener geconverteerd van het gebruik van een externe load balancer (ELB) naar een interne load balancer (ILB).
 
 ### <a name="environment"></a>Omgeving
 
-* Windows 2k12 / SQL 2k12
+* Windows 2k12/SQL 2k12
 * 1 DB-bestanden in SP
 * 2 x opslag groepen per knoop punt
 
@@ -635,7 +635,7 @@ In dit voor beeld laten we zien hoe u overstapt van een ELB naar ILB. ELB is bes
 
 ![Appendix2][12]
 
-### <a name="pre-steps-connect-to-subscription"></a>Voorbereidende stappen: Verbinding maken met abonnement
+### <a name="pre-steps-connect-to-subscription"></a>Voorbereidende stappen: verbinding maken met abonnement
 
 ```powershell
 Add-AzureAccount
@@ -644,7 +644,7 @@ Add-AzureAccount
 Get-AzureSubscription
 ```
 
-#### <a name="step-1-create-new-storage-account-and-cloud-service"></a>Stap 1: Nieuw opslag account en Cloud service maken
+#### <a name="step-1-create-new-storage-account-and-cloud-service"></a>Stap 1: nieuw opslag account en Cloud service maken
 
 ```powershell
 $mysubscription = "DansSubscription"
@@ -691,7 +691,7 @@ Het is verstandig om de fout limiet te verdubbelen. Als u dit wilt doen in Failo
 
 Wijzig het maximum aantal fouten in 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Stap 3: Toevoeging van IP-adres voor cluster \<groep optionele >
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Stap 3: extra IP-adres bron voor cluster groep \<optioneel >
 
 Als u slechts één IP-adres voor de cluster groep hebt en dit is afgestemd op het Cloud subnet, moet u er rekening mee houden als u per ongeluk alle cluster knooppunten in de Cloud op dat netwerk offline neemt, de cluster-IP-bron en de cluster netwerk naam niet online kunnen worden gebracht. In deze situatie voor komt u dat er updates voor andere cluster bronnen worden bijgewerkt.
 
@@ -753,7 +753,7 @@ Als uw SQL-client toepassing .NET 4,5 SQLClient ondersteunt, kunt u het tref woo
 
 Zie [MultiSubnetFailover-tref woord en bijbehorende functies](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)voor meer informatie over de vorige instellingen. Zie ook [SqlClient-ondersteuning voor hoge Beschik baarheid, herstel na nood gevallen](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx).
 
-#### <a name="step-5-cluster-quorum-settings"></a>Stap 5: Quorum instellingen voor het cluster
+#### <a name="step-5-cluster-quorum-settings"></a>Stap 5: cluster quorum instellingen
 
 Wanneer u ten minste één SQL Server tegelijk gaat uitnemen, moet u de quorum instelling van het cluster aanpassen als u bestands share-Witness (FSW) met twee knoop punten gebruikt, moet u het quorum zo instellen dat knooppunt meerderheid wordt toegestaan en dynamische stemmen worden gebruikt , waardoor een enkel knoop punt stand kan blijven.
 
@@ -763,7 +763,7 @@ Set-ClusterQuorum -NodeMajority
 
 Zie [het quorum configureren en beheren in een Windows Server 2012-failovercluster](https://technet.microsoft.com/library/jj612870.aspx)voor meer informatie over het beheren en configureren van het cluster quorum.
 
-#### <a name="step-6-extract-existing-endpoints-and-acls"></a>Stap 6: Bestaande eind punten en Acl's extra heren
+#### <a name="step-6-extract-existing-endpoints-and-acls"></a>Stap 6: bestaande eind punten en Acl's extra heren
 
 ```powershell
 #GET Endpoint info
@@ -774,13 +774,13 @@ Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConf
 
 Sla deze tekst op in een bestand.
 
-#### <a name="step-7-change-failover-partners-and-replication-modes"></a>Stap 7: Failover-partners en replicatie modi wijzigen
+#### <a name="step-7-change-failover-partners-and-replication-modes"></a>Stap 7: failover-partners en replicatie modi wijzigen
 
 Als u meer dan twee SQL-servers hebt, moet u de failover van een ander secundair in een andere domein controller of on-premises wijzigen in ' synchroon ' en het maken van een automatische failover-partner (AFP), zodat u HA kunt onderhouden terwijl u wijzigingen aanbrengt. U kunt dit doen via TSQL van Modify, maar SSMS:
 
 ![Appendix6][16]
 
-#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>Stap 8: Secundaire virtuele machine uit Cloud service verwijderen
+#### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>Stap 8: secundaire VM verwijderen uit Cloud service
 
 U moet eerst plannen dat u een secundair Cloud knooppunt wilt migreren. Als dit knoop punt momenteel primair is, moet u een hand matige failover initiëren.
 
@@ -799,7 +799,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | stop-AzureVM
 ##Building Existing Data Disk Configuration
 $file = "C:\Azure Storage Testing\mydiskconfig_$vmNameToMigrate.csv"
 $datadisks = @(Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | Get-AzureDataDisk )
-Add-Content $file “lun, vhdname, hostcaching, disklabel, diskName”
+Add-Content $file "lun, vhdname, hostcaching, disklabel, diskName"
 foreach ($disk in $datadisks)
 {
     $vhdname = $disk.MediaLink.AbsolutePath -creplace  "/vhds/"
@@ -833,7 +833,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name  $vmNameToMigrate
 Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 ```
 
-#### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>Stap 9: Instellingen voor schijf cache in CSV-bestand wijzigen en opslaan
+#### <a name="step-9-change-disk-caching-settings-in-csv-file-and-save"></a>Stap 9: instellingen voor schijf cache wijzigen in CSV-bestand en opslaan
 
 Voor gegevens volumes moet deze worden ingesteld op READONLY.
 
@@ -897,7 +897,7 @@ Voor informatie over afzonderlijke blobs:
 Get-AzureStorageBlobCopyState -Blob "blobname.vhd" -Container $containerName -Context $xioContext
 ```
 
-#### <a name="step-11-register-os-disk"></a>Stap 11: BESTURINGSSYSTEEM schijf registreren
+#### <a name="step-11-register-os-disk"></a>Stap 11: de besturingssysteem schijf registreren
 
 ```powershell
 #Change storage account
@@ -914,7 +914,7 @@ $xioDiskName = $osdiskforbuild + "xio"
 Add-AzureDisk -DiskName $xioDiskName -MediaLocation  "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$osvhd"  -Label "BootDisk" -OS "Windows"
 ```
 
-#### <a name="step-12-import-secondary-into-new-cloud-service"></a>Stap 12: Secundair importeren in een nieuwe Cloud service
+#### <a name="step-12-import-secondary-into-new-cloud-service"></a>Stap 12: secundaire importeren in een nieuwe Cloud service
 
 In de onderstaande code wordt ook de optie extra gebruikt. u kunt de machine importeren en het te behouden VIP gebruiken.
 
@@ -952,7 +952,7 @@ ForEach ( $attachdatadisk in $datadiskimport)
 $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)
 ```
 
-#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>Stap 13: ILB maken op nieuwe Cloud-SVC, eind punten met taak verdeling en Acl's toevoegen
+#### <a name="step-13-create-ilb-on-new-cloud-svc-add-load-balanced-endpoints-and-acls"></a>Stap 13: ILB maken op nieuwe Cloud-SVC, eind punten en Acl's voor taak verdeling toevoegen
 
 ```powershell
 #Check for existing ILB
@@ -977,7 +977,7 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 ```
 
-#### <a name="step-14-update-always-on"></a>Stap 14: Update altijd op
+#### <a name="step-14-update-always-on"></a>Stap 14: update always on
 
 ```powershell
 #Code to be executed on a Cluster Node
@@ -1006,15 +1006,15 @@ Verwijder nu het oude IP-adres van de Cloud service.
 
 ![Appendix10][20]
 
-#### <a name="step-15-dns-update-check"></a>Stap 15: Controle van DNS-updates
+#### <a name="step-15-dns-update-check"></a>Stap 15: controle van DNS-updates
 
 Controleer nu de DNS-servers op uw SQL Server-client netwerken en zorg ervoor dat clustering de extra hostrecord voor het toegevoegde IP-adres heeft toegevoegd. Als deze DNS-servers niet zijn bijgewerkt, kunt u overwegen om een DNS-zone overdracht af te dwingen en ervoor te zorgen dat de clients in dat subnet kunnen omzetten naar beide altijd op IP-adressen. Dit betekent dat u niet hoeft te wachten op automatische DNS-replicatie.
 
-#### <a name="step-16-reconfigure-always-on"></a>Stap 16: Altijd opnieuw configureren
+#### <a name="step-16-reconfigure-always-on"></a>Stap 16: altijd opnieuw configureren
 
 Op dit moment wacht u op het secundaire knoop punt dat is gemigreerd om volledig opnieuw te synchroniseren met het on-premises knoop punt en over te scha kelen naar het knoop punt synchrone replicatie en de AFP te maken.  
 
-#### <a name="step-17-migrate-second-node"></a>Stap 17: Tweede knoop punt migreren
+#### <a name="step-17-migrate-second-node"></a>Stap 17: tweede knoop punt migreren
 
 ```powershell
 $vmNameToMigrate="dansqlams1"
@@ -1032,7 +1032,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | stop-AzureVM
 #Building Existing Data Disk Configuration
 $file = "C:\Azure Storage Testing\mydiskconfig_$vmNameToMigrate.csv"
 $datadisks = @(Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | Get-AzureDataDisk )
-Add-Content $file “lun, vhdname, hostcaching, disklabel, diskName”
+Add-Content $file "lun, vhdname, hostcaching, disklabel, diskName"
 foreach ($disk in $datadisks)
 {
     $vhdname = $disk.MediaLink.AbsolutePath -creplace  "/vhds/"
@@ -1066,7 +1066,7 @@ Get-AzureVM -ServiceName $sourceSvc -Name  $vmNameToMigrate
 Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 ```
 
-#### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>Stap 18: Instellingen voor schijf cache in CSV-bestand wijzigen en opslaan
+#### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>Stap 18: instellingen voor het opslaan van schijven in CSV-bestand wijzigen en opslaan
 
 Voor gegevens volumes moeten de cache-instellingen worden ingesteld op READONLY.
 
@@ -1074,7 +1074,7 @@ De cache-instellingen voor TLOG-volumes moeten worden ingesteld op geen.
 
 ![Appendix11][21]
 
-#### <a name="step-19-create-new-independent-storage-account-for-secondary-node"></a>Stap 19: Nieuw onafhankelijk opslag account maken voor secundair knoop punt
+#### <a name="step-19-create-new-independent-storage-account-for-secondary-node"></a>Stap 19: nieuw onafhankelijk opslag account maken voor secundair knoop punt
 
 ```powershell
 $newxiostorageaccountnamenode2 = "danspremsams2"
@@ -1155,7 +1155,7 @@ Voor informatie over afzonderlijke blobs:
 Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
 ```
 
-#### <a name="step-21-register-os-disk"></a>Stap 21: BESTURINGSSYSTEEM schijf registreren
+#### <a name="step-21-register-os-disk"></a>Stap 21: de besturingssysteem schijf registreren
 
 ```powershell
 #change storage account to the new XIO storage account
@@ -1202,7 +1202,7 @@ ForEach ( $attachdatadisk in $datadiskimport)
 $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet -Verbose
 ```
 
-#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>Stap 22: Eind punten en Acl's voor taak verdeling toevoegen
+#### <a name="step-22-add-load-balanced-endpoints-and-acls"></a>Stap 22: eind punten en Acl's voor taak verdeling toevoegen
 
 ```powershell
 #Endpoints
@@ -1220,13 +1220,13 @@ Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEn
 #https://msdn.microsoft.com/library/azure/dn495192.aspx
 ```
 
-#### <a name="step-23-test-failover"></a>Stap 23: Failover testen
+#### <a name="step-23-test-failover"></a>Stap 23: testfailover
 
 Wacht tot het gemigreerde knoop punt is gesynchroniseerd met het on-premises altijd op het knoop punt. Plaats deze in de synchrone replicatie modus en wacht totdat deze is gesynchroniseerd. Vervolgens voert u een failover uit van on premises naar het eerste knoop punt dat is gemigreerd. Dit is de AFP. Nadat het is uitgevoerd, wijzigt u het laatste gemigreerde knoop punt naar de AFP.
 
 U moet failovers tussen alle knoop punten testen en chaos-tests uitvoeren om ervoor te zorgen dat failovers werken zoals verwacht en in een tijdige Manor.
 
-#### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>Stap 24: De instellingen van het cluster quorum en de DNS TTL/failover-Pntrs
+#### <a name="step-24-put-back-cluster-quorum-settings--dns-ttl--failover-pntrs--sync-settings"></a>Stap 24: de instellingen van het cluster quorum herstellen/instellingen voor DNS TTL/failover Pntrs/Sync
 
 ##### <a name="adding-ip-address-resource-on-same-subnet"></a>Een IP-adres bron op hetzelfde subnet toevoegen
 
@@ -1246,7 +1246,7 @@ Als u een IP-adres wilt toevoegen, raadpleegt u de bijlage, stap 14.
 
     ![Appendix15][25]
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Azure Premium Storage](../disks-types.md)
 * [Virtuele machines](https://azure.microsoft.com/services/virtual-machines/)

@@ -9,19 +9,19 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 5777d728f61b3ffe7d0fdaaac1391f600dca12fd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: ce07d43a289cf527664b120dd832cf832fb2b05e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097844"
+ms.locfileid: "73161414"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-by-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met behulp van de Maven-invoeg toepassing
 
 Met de Azure veer Cloud maven-invoeg toepassing kunt u eenvoudig uw Azure lente-Cloud service toepassingen maken en bijwerken. Door een configuratie vooraf te definiëren, kunt u toepassingen implementeren in uw bestaande Azure lente-Cloud service. In dit artikel gebruikt u een voorbeeld toepassing met de naam PiggyMetrics om deze functie te demonstreren.
 
 >[!Note]
-> Voordat u met deze Snelstartgids begint, moet u ervoor zorgen dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud. Als preview-service nodigen we u uit om contact met ons op te nemen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst. Als u de mogelijkheden van Azure lente Cloud wilt verkennen, vult u de [Azure lente-Cloud (private preview)-rente formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)in en verzendt u deze.
+> Voordat u met deze Snelstartgids begint, moet u ervoor zorgen dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud. Als preview-service nodigen we u uit om contact met ons op te nemen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst. Als u de mogelijkheden van Azure lente Cloud wilt verkennen, vult u de [Azure lente-Cloud (private preview)-rente formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)in en verzendt u deze. Hoewel Azure lente-Cloud in preview is, biedt micro soft beperkte ondersteuning zonder een SLA.  Raadpleeg deze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/)over ondersteuning voor meer informatie over ondersteuning tijdens previews.
 
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de opdrachten in dit artikel uit te voeren. Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, de Java Development Kit (JDK), maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud shell](https://shell.azure.com). Zie [overzicht van Azure Cloud shell](../cloud-shell/overview.md)voor meer informatie.

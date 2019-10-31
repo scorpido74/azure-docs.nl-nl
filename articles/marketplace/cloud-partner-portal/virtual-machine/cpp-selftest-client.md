@@ -1,53 +1,53 @@
 ---
-title: Client testen op een virtuele machine vooraf valideren | Azure Marketplace
-description: Het maken van een client testen voor het valideren van de installatiekopie van een virtuele machine vooraf voor de Azure Marketplace.
+title: Zelf test-client voor het vooraf valideren van een virtuele machine | Azure Marketplace
+description: Een self-test-client maken voor het vooraf valideren van een installatie kopie van een virtuele machine voor Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 117249feea04381b34f8fc1d95f77c2c1a567dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938724"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163255"
 ---
-# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Maak een zelftest-client voor het vooraf valideren van een installatiekopie van een virtuele machine van Azure
+# <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Een zelf test-client maken om een installatie kopie van een virtuele Azure-machine vooraf te valideren
 
-Gebruik dit artikel als richtlijn voor het maken van een client-service die de API testen verbruikt. De API testen kunt u een virtuele machine (VM) om te controleren of deze voldoet aan de meest recente Azure Marketplace publishing vereisten vooraf valideren. Deze client-service kunt u een virtuele machine testen voordat u uw aanbieding voor Microsoft-certificering indienen.
+Gebruik dit artikel als richt lijn voor het maken van een client service die gebruikmaakt van de zelf test-API. U kunt de zelf test-API gebruiken om een virtuele machine (VM) vooraf te valideren om te controleren of deze voldoet aan de meest recente publicatie vereisten voor Azure Marketplace. Met deze client service kunt u een virtuele machine testen voordat u uw aanbieding voor micro soft-certificering verzendt.
 
-## <a name="development-and-testing-overview"></a>Ontwikkeling en testen-overzicht
+## <a name="development-and-testing-overview"></a>Overzicht van ontwikkelen en testen
 
-Als onderdeel van het proces zelf testen maakt u een lokale client die verbinding met Azure Marketplace maakt voor het valideren van een virtuele machine die wordt uitgevoerd in uw Azure-abonnement. De virtuele machine kan worden uitgevoerd als het besturingssysteem Windows of Linux.
+Als onderdeel van het zelf test proces maakt u een lokale client die verbinding maakt met Azure Marketplace voor het valideren van een virtuele machine die wordt uitgevoerd in uw Azure-abonnement. Op de VM kan het Windows-of Linux-besturings systeem worden uitgevoerd.
 
-De lokale client voert een script dat wordt geverifieerd met de API testen, verbindingsgegevens verzendt en ontvangt de resultaten.
+De lokale client voert een script uit dat wordt geverifieerd met de API zelf test, verbindings gegevens verzendt en test resultaten ontvangt.
 
-De stappen op hoog niveau voor het maken van een client testen zijn:
+De stappen op hoog niveau voor het maken van een self-test-client zijn:
 
-1. Kies de tenant Azure Active Directory (AD) voor uw toepassing.
-2. De clientapp te registreren.
-3. Een token voor de client Azure AD-app maken.
-4. Het token doorgeven aan de API testen.
+1. Kies de Azure Active Directory (AD)-Tenant voor uw toepassing.
+2. Registreer de client-app.
+3. Maak een token voor de Azure AD-client-app.
+4. Geef het token door aan de zelf test-API.
 
-Nadat u de client hebt gemaakt, kunt u deze testen op basis van uw virtuele machine.
+Nadat u de-client hebt gemaakt, kunt u deze testen op uw virtuele machine.
 
-### <a name="self-test-client-authorization"></a>Clientautorisatie testen
+### <a name="self-test-client-authorization"></a>Zelf test-client autorisatie
 
-Het volgende diagram toont de werking van autorisatie voor service-to-service aanroepen met behulp van clientreferenties (gedeeld geheim of certificaat).
+In het volgende diagram ziet u hoe autorisatie werkt voor service-naar-service-aanroepen met behulp van client referenties (gedeeld geheim of certificaat.)
 
-![Het autorisatieproces client](./media/stclient-dev-process.png)
+![Client autorisatie proces](./media/stclient-dev-process.png)
 
-## <a name="the-self-test-client-api"></a>De client testen-API
+## <a name="the-self-test-client-api"></a>De zelf test-client-API
 
-De API testen bevat één eindpunt die ondersteuning biedt voor alleen de POST-methode.  De volgende structuur heeft.
+De zelf test-API bevat een enkel eind punt dat alleen de POST-methode ondersteunt.  Het heeft de volgende structuur.
 
 ```
 Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
-Request Header:  Content-Type: “application/json”
-Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
+Request Header:  Content-Type: "application/json"
+Authorization:   "Bearer xxxx-xxxx-xxxx-xxxxx"
 Request body:    The Request body parameters should use the following JSON format:
                  {
                    "DNSName":"XXXX.westus.cloudapp.azure.com",
@@ -59,35 +59,35 @@ Request body:    The Request body parameters should use the following JSON forma
                  }
 ```
 
-De volgende tabel beschrijft de API-velden.
+In de volgende tabel worden de API-velden beschreven.
 
 
-|      Veld         |    Description    |
+|      Veld         |    Beschrijving    |
 |  ---------------   |  ---------------  |
-|  Autorisatie     |  De tekenreeks 'Bearer xxxx-xxxx-xxxx-xxxxx' bevat het clienttoken van Azure Active Directory (AD), die kan worden gemaakt met behulp van PowerShell.          |
-|  DNS-naam           |  DNS-naam van de virtuele machine om te testen    |
-|  Gebruiker              |  Gebruikersnaam voor de aanmelding bij de virtuele machine         |
-|  Wachtwoord          |  Wachtwoord voor de aanmelding bij de virtuele machine          |
-|  OS                |  Besturingssysteem van de virtuele machine: ofwel `Linux` of `Windows`          |
-|  PortNo            |  Open poortnummer om verbinding te maken met de virtuele machine. Het poortnummer is doorgaans `22` voor Linux en `5986` voor Windows.          |
+|  Autorisatie     |  De teken reeks ' Bearer XXXX-XXXX-XXXX-xxxxx ' bevat het Azure Active Directory (AD) client token, dat kan worden gemaakt met behulp van Power shell.          |
+|  DNSName           |  De DNS-naam van de virtuele machine die u wilt testen    |
+|  Gebruiker              |  Gebruikers naam voor aanmelding bij de virtuele machine         |
+|  Wachtwoord          |  Wacht woord voor aanmelding bij de virtuele machine          |
+|  Besturingssysteem                |  Het besturings systeem van de virtuele machine: een `Linux` of `Windows`          |
+|  PortNo            |  Open het poort nummer om verbinding te maken met de virtuele machine. Het poort nummer is doorgaans `22` voor Linux en `5986` voor Windows.          |
 |  |  |
 
 ## <a name="consuming-the-api"></a>De API gebruiken
 
-U kunt de API testen met PowerShell of cURL verbruiken.
+U kunt de zelf test-API gebruiken met Power shell of krul.
 
-### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>PowerShell gebruiken om te gebruiken de API voor de Linux-besturingssysteem
+### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Power shell gebruiken voor het verbruiken van de API op het Linux-besturings systeem
 
-Voor het aanroepen van de API in PowerShell, de volgende stappen uit:
+Voer de volgende stappen uit om de API aan te roepen in Power shell:
 
-1. Gebruik de `Invoke-WebRequest` opdracht de API aan te roepen.
-2. De methode Post is en het inhoudstype is JSON, zoals wordt weergegeven in de volgende code voorbeeld en scherm vastleggen.
-3. Geef de van de hoofdtekstparameters in JSON-indeling.
+1. Gebruik de `Invoke-WebRequest` opdracht om de API aan te roepen.
+2. De methode is post en het inhouds type is JSON, zoals wordt weer gegeven in het volgende code voorbeeld en scherm opname.
+3. Geef de hoofd tekst parameters op in JSON-indeling.
 
-Het volgende codevoorbeeld toont een PowerShell-aanroep naar de API.
+Het volgende code voorbeeld toont een Power shell-aanroep van de API.
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -102,11 +102,11 @@ $Body = @{
 $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
-De volgende Schermafbeelding toont een voorbeeld voor het aanroepen van de API in PowerShell.
+In de volgende scherm opname ziet u een voor beeld van het aanroepen van de API in Power shell.
 
-![Roep de API met PowerShell voor Linux-besturingssysteem](./media/stclient-call-api-ps-linuxvm.png)
+![API aanroepen met Power shell voor Linux-besturings systeem](./media/stclient-call-api-ps-linuxvm.png)
 
-Met behulp van het vorige voorbeeld, kunt u ophalen van de JSON en parseren om op te halen van de volgende gegevens:
+In het vorige voor beeld kunt u de JSON ophalen en parseren om de volgende details op te halen:
 
 ```powershell
 $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
@@ -125,23 +125,23 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-De volgende schermopname laat zien op welke `$res.Content`, kunt u de details van de testresultaten in JSON-indeling.
+De volgende scherm opname, waarin `$res.Content`wordt weer gegeven, geeft u de details van de test resultaten in JSON-indeling.
 
-![JSON-resultaten van de PowerShell-aanroep voor Linux](./media/stclient-pslinux-rescontent-json.png)
+![JSON-resultaten van Power shell-aanroep naar Linux](./media/stclient-pslinux-rescontent-json.png)
 
-De volgende Schermafbeelding toont een voorbeeld van JSON de resultaten weergegeven in een online JSON-viewer (bijvoorbeeld [Code Maak](https://codebeautify.org/jsonviewer) of [JSON-Viewer](https://jsonformatter.org/json-viewer)).
+In de volgende scherm opname ziet u een voor beeld van resultaten van JSON-testen die zijn bekeken in een online JSON-Viewer (bijvoorbeeld [code beautify](https://codebeautify.org/jsonviewer) of [JSON Viewer](https://jsonformatter.org/json-viewer)).
 
-![JSON-resultaten van de PowerShell-aanroep voor Linux VM](./media/stclient-consume-api-pslinux-json.png)
+![JSON-resultaten van Power shell-aanroep naar Linux VM](./media/stclient-consume-api-pslinux-json.png)
 
-### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>PowerShell gebruiken om te gebruiken de API voor het Windows-besturingssysteem
+### <a name="use-powershell-to-consume-the-api-on-the-windows-os"></a>Power shell gebruiken voor het verbruik van de API op het Windows-besturings systeem
 
-Voor het aanroepen van de API in PowerShell, de volgende stappen uit:
+Voer de volgende stappen uit om de API aan te roepen in Power shell:
 
-1. Gebruik de `Invoke-WebRequest` opdracht de API aan te roepen.
-2. De methode Post is en het inhoudstype is JSON, zoals wordt weergegeven in de volgende code voorbeeld en scherm vastleggen.
-3. Maak de hoofdtekst van de parameters in JSON-indeling.
+1. Gebruik de `Invoke-WebRequest` opdracht om de API aan te roepen.
+2. De methode is post en het inhouds type is JSON, zoals wordt weer gegeven in het volgende code voorbeeld en scherm opname.
+3. Maak de hoofd tekst-para meters in JSON-indeling.
 
-Het volgende codevoorbeeld toont een PowerShell-aanroep naar de API.
+Het volgende code voorbeeld toont een Power shell-aanroep van de API.
 
 ```powershell
 $accesstoken = “Get token for your Client AAD App”
@@ -160,11 +160,11 @@ $res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "appl
 $Content = $res | ConvertFrom-Json
 ```
 
-De volgende Schermafbeelding toont een voorbeeld voor het aanroepen van de API in PowerShell.
+In de volgende scherm opname ziet u een voor beeld van het aanroepen van de API in Power shell.
 
-![Roep de API met PowerShell voor Windows VM](./media/stclient-call-api-ps-windowsvm.png)
+![API aanroepen met Power shell voor Windows VM](./media/stclient-call-api-ps-windowsvm.png)
 
-Met behulp van het vorige voorbeeld, kunt u ophalen van de JSON en parseren om op te halen van de volgende gegevens:
+In het vorige voor beeld kunt u de JSON ophalen en parseren om de volgende details op te halen:
 
 ```powershell
 $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
@@ -183,131 +183,131 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 }
 ```
 
-De volgende schermopname laat zien op welke `$res.Content`, kunt u de details van de testresultaten in JSON-indeling.
+De volgende scherm opname, waarin `$res.Content`wordt weer gegeven, geeft u de details van de test resultaten in JSON-indeling.
 
-![Het aanroepen van JSON-resultaten van PowerShell voor Windows](./media/stclient-pswindows-rescontent-json.png)
+![JSON-resultaten van Power shell-aanroepen naar Windows](./media/stclient-pswindows-rescontent-json.png)
 
-De volgende schermafbeelding ziet u de resultaten weergegeven in een online JSON-viewer.
-(bijvoorbeeld [Code Maak](https://codebeautify.org/jsonviewer), [JSON-Viewer](https://jsonformatter.org/json-viewer))
+In de volgende scherm opname ziet u de test resultaten die worden weer gegeven in een online JSON-viewer.
+(bijvoorbeeld [code beautify](https://codebeautify.org/jsonviewer), JSON- [Viewer](https://jsonformatter.org/json-viewer))
 
-![JSON-resultaten van de PowerShell-aanroep voor Windows-VM](./media/stclient-consume-api-pswindows-json.png)
+![JSON-resultaten van Power shell-aanroep naar Windows VM](./media/stclient-consume-api-pswindows-json.png)
 
-### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>CURL gebruiken om te gebruiken van de API voor de Linux-besturingssysteem
+### <a name="use-curl-to-consume-the-api-on-the-linux-os"></a>Krul gebruiken voor het gebruik van de API op het Linux-besturings systeem
 
-Volg deze stappen voor het aanroepen van de API met cURL:
+Voer de volgende stappen uit om de API met krul aan te roepen:
 
-1. Gebruik de opdracht curl de API aan te roepen.
-2. De methode Post is en het inhoudstype is JSON, zoals wordt weergegeven in het volgende codefragment.
+1. Gebruik de krul opdracht om de API aan te roepen.
+2. De methode is post en het inhouds type is JSON, zoals wordt weer gegeven in het volgende code fragment.
 
 ```
 CURL POST -H "Content-Type:application/json"
--H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
+-H "Authorization: Bearer XXXXXX-Token-XXXXXXXX"
 https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
 ```
 
-Het volgende scherm toont een voorbeeld van het gebruik van curl de API aan te roepen.
+In het volgende scherm ziet u een voor beeld van het gebruik van krul om de API aan te roepen.
 
-![API oproepen met curl-opdracht](./media/stclient-consume-api-curl.png)
+![API aanroepen met de opdracht krul](./media/stclient-consume-api-curl.png)
 
-De volgende schermopname ziet u de JSON-resultaten van de curl-aanroep.
+In de volgende scherm opname ziet u de JSON-resultaten van de krul aanroep.
 
-![JSON-resultaten van curl-aanroep](./media/stclient-consume-api-curl-json.png)
+![JSON-resultaten van krul oproep](./media/stclient-consume-api-curl-json.png)
 
 
-## <a name="choose-the-azure-ad-tenant-for-the-app"></a>Kies de Azure AD-tenant voor de app.
+## <a name="choose-the-azure-ad-tenant-for-the-app"></a>De Azure AD-Tenant voor de app kiezen
 
-Gebruik de volgende stappen uit om te kiezen van de Azure AD-tenant waar u om uw toepassing te maken.
+Gebruik de volgende stappen om de Azure AD-Tenant te kiezen waar u uw toepassing wilt maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
-2. Op de bovenste menubalk, selecteert u uw account en kies de Active Directory-tenant waar u uw toepassing registreren bij de adreslijst. Of Selecteer de **map + abonnement** pictogram om te zien van het filter globale abonnementen. De volgende Schermafbeelding toont een voorbeeld van dit filter.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Selecteer in de bovenste menu balk uw account en kies in de lijst met mappen de Active Directory Tenant waar u de toepassing wilt registreren. Of selecteer het pictogram voor het adres van de map en het **abonnement** om het globale abonnements filter weer te geven. In de volgende scherm opname ziet u een voor beeld van dit filter.
 
-   ![Selecteer het filter voor abonnementen](./media/stclient-subscription-filter.png)
+   ![Het abonnements filter selecteren](./media/stclient-subscription-filter.png)
 
-3. Selecteer op de navigatiebalk links **alle services** en selecteer vervolgens **Azure Active Directory**.
+3. Selecteer **alle services** op de navigatie balk aan de linkerkant en selecteer vervolgens **Azure Active Directory**.
 
-   In de volgende stappen, moet u mogelijk de tenantnaam (of de mapnaam) of de tenant-ID (of map-ID).
+   In de volgende stappen hebt u mogelijk de Tenant naam (of mapnaam) of de Tenant-ID (of directory-ID) nodig.
 
-   **Tenantgegevens ophalen:**
+   **Tenant gegevens ophalen:**
 
-   In **overzicht van Azure Active Directory**, zoek naar 'Eigenschappen' en selecteer vervolgens **eigenschappen**. Met behulp van de volgende schermopname als een voorbeeld:
+   In **Azure Active Directory overzicht**zoekt u naar ' Eigenschappen ' en selecteert u vervolgens **Eigenschappen**. Gebruik de volgende scherm opname als voor beeld:
 
-   - **Naam** -de tenantnaam of directory
-   - **Map-ID** -het tenant-ID of map-ID of gebruik de schuifbalk te vinden van eigenschappen.
+   - **Naam** : de naam van de Tenant of de Directory
+   - **Map** -id: de Tenant-id of directory-id of gebruik de schuif balk om eigenschappen te vinden.
 
-   ![Azure Active Directory-eigenschappenpagina](./media/stclient-aad-properties.png)
+   ![Pagina eigenschappen van Azure Active Directory](./media/stclient-aad-properties.png)
 
 ## <a name="register-the-client-app"></a>De client-app registreren
 
-Gebruik de volgende stappen uit om de clientapp te registreren.
+Gebruik de volgende stappen om de client-app te registreren.
 
-1. Selecteer op de navigatiebalk links **alle services** en selecteer vervolgens **App-registraties**.
-2. Onder **App-registraties**, selecteer **+ nieuwe toepassing registreren**.
-3. Onder **maken**, geeft u de gegevens die vereist zijn voor de volgende velden:
+1. Selecteer **alle services** op de navigatie balk aan de linkerkant en selecteer vervolgens **app-registraties**.
+2. Selecteer onder **app-registraties** **+ nieuwe toepassing registreren**.
+3. Geef onder **maken**de informatie op die vereist is voor de volgende velden:
 
-   - **Naam** – Geef een beschrijvende naam voor de app. Bijvoorbeeld: 'SelfTestClient'.
-   - **Toepassingstype** – Selecteer **Web-App/API**
-   - **Aanmeldings-URL** – Type ' https:\//isvapp.azurewebsites.net/selftest-vm "
+   - **Naam** : Voer een beschrijvende naam in voor de app. Bijvoorbeeld ' SelfTestClient '.
+   - **Toepassings type** : Selecteer **Web-app/API**
+   - **Aanmeldings-URL** : type ' https:\//isvapp.azurewebsites.net/selftest-VM '
 
 4. Selecteer **Maken**.
-5. Onder **App-registraties** of **geregistreerde app**, Kopieer de **toepassings-ID**.
+5. Kopieer de **toepassings-id**onder **app-registraties** of **geregistreerde app**.
 
    ![De toepassings-ID ophalen](./media/stclient-app-id.png)
 
-6. Selecteer in de werkbalk van de geregistreerde app **instellingen**.
-7. Selecteer **vereiste machtigingen** om machtigingen voor uw toepassing te configureren.
-8. Onder **vereiste machtigingen**, selecteer **+ toevoegen**.
-9. Onder **API-toegang toevoegen**, kies **Select an API**.
-10. Onder **Select an API**, type "Windows Azure classic deployment model" om te zoeken naar de API.
-11. Kies in de lijst met zoekresultaten **klassieke implementatiemodel van Windows Azure** en klik vervolgens op **Selecteer**.
+6. Selecteer in de werk balk geregistreerde app de optie **instellingen**.
+7. Selecteer de **vereiste machtigingen** om machtigingen voor uw toepassing te configureren.
+8. Selecteer onder **vereiste machtigingen** **+ toevoegen**.
+9. Onder **API-toegang toevoegen** **selecteert u een API**.
+10. Onder **Selecteer een API**typt u ' Windows Azure Classic Deployment model ' om te zoeken naar de API.
+11. Kies in de zoek resultaten het **klassieke Windows Azure-implementatie model** en klik vervolgens op **selecteren**.
 
-    ![Configureren van meerdere tenants voor app](./media/stclient-select-api.png)
+    ![Multi tenant voor app configureren](./media/stclient-select-api.png)
 
-12. Onder **API-toegang toevoegen**, kies **machtigingen selecteren**.
-13. Selecteer **'Windows Azure Service Management API' toegang tot**.
+12. Kies onder **API-toegang toevoegen**de **optie machtigingen selecteren**.
+13. Selecteer **toegang tot Windows Azure Service Management-API**.
 
-    ![API-toegang voor app inschakelen](./media/stclient-enable-api-access.png)
+    ![API-toegang voor de app inschakelen](./media/stclient-enable-api-access.png)
 
 14. Klik op **Selecteren**.
 15. Selecteer **Done**.
-16. Onder **instellingen**, selecteer **eigenschappen**.
-17. Onder **eigenschappen**, schuif omlaag naar **multitenant**. Selecteer **Ja**.
+16. Selecteer onder **Alle instellingen** de optie **Eigenschappen**.
+17. Onder **Eigenschappen**schuift u omlaag naar **multi-tenant**. Selecteer **Ja**.
 
-    ![Configureren van meerdere tenants voor app](./media/stclient-yes-multitenant.png)
+    ![Multi tenant voor app configureren](./media/stclient-yes-multitenant.png)
 
 18. Selecteer **Opslaan**.
-19. Onder **instellingen**, selecteer **sleutels**.
-20. Maken van een geheime sleutel door te selecteren van de sleutel **beschrijving** tekstvak. Configureer de volgende velden:
+19. Selecteer onder **instellingen**de optie **sleutels**.
+20. Maak een geheime sleutel door het tekstvak sleutel **Beschrijving** te selecteren. Configureer de volgende velden:
 
-    - Typ de naam van een sleutel. Bijvoorbeeld, "selftestclient"
-    - Op de **VERLOOPT** vervolgkeuzelijst, selecteer 'In de 1 jaar'.
-    - Selecteer **opslaan** om de sleutel te genereren.
-    - Onder **waarde**, Kopieer de sleutel.
+    - Typ een sleutel naam. Bijvoorbeeld ' selftestclient '
+    - Selecteer in de vervolg keuzelijst **Expires** de optie ' in 1 jaar '.
+    - Selecteer **Opslaan** om de sleutel te genereren.
+    - Kopieer onder **waarde**de sleutel.
 
       >[!Important]
-      >Niet mogelijk om te zien van de sleutelwaarde nadat u sluiten de **sleutels** formulier.
+      >U kunt de sleutel waarde niet zien nadat u het formulier **sleutels** hebt afgesloten.
 
-    ![Sleutelwaarde formulier](./media/stclient-create-key.png)
+    ![Formulier voor sleutel waarde](./media/stclient-create-key.png)
 
 ## <a name="create-the-token-for-the-client-app"></a>Het token voor de client-app maken
 
-U kunt een van de volgende programma's gebruiken om te maken en een met de REST-API van OAuth-token verkrijgen:
+U kunt elk van de volgende Program ma's gebruiken om een token te maken en op te halen met behulp van de OAuth-REST API:
 
 - Postman
-- cURL in Linux
+- Krul in Linux
 - C&#35;
 - PowerShell
 
-### <a name="to-create-and-get-a-token-using-postman"></a>Om te maken en een token met Postman
+### <a name="to-create-and-get-a-token-using-postman"></a>Een token maken en ophalen met behulp van postman
 
- Om te stellen Auth0 voor tokens voor het gebruik van uw geautoriseerde toepassingen, uitvoeren van een POST-bewerking op de [ https://login.microsoftonline.com/common/oauth2/token ](https://login.microsoftonline.com/common/oauth2/token) eindpunt met een nettolading van de volgende indeling hebben:
+ Als u Auth0 wilt stellen voor tokens voor een van uw geautoriseerde toepassingen, moet u een POST-bewerking uitvoeren op het [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) -eind punt met een nettolading in de volgende indeling:
 
 ```
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
 
-De volgende parameters doorgeven in de hoofdtekst van de aanvraag:
+Geef de volgende para meters door in de hoofd tekst van de aanvraag:
 
 ```
 Body Content-Type: x-www-form-urlencoded
@@ -317,19 +317,19 @@ client_secret: XXX (Paste your Secret Key of Web App/API Type client AD App)
 resource: https://management.core.windows.net
 ```
 
-De volgende parameters doorgeven in de aanvraagheader:
+Geef de volgende para meters in de aanvraag header door:
 
 ```
 Content-Type: application/x-www-form-urlencoded
 ```
 
-De volgende Schermafbeelding toont een voorbeeld van een token krijgen met Postman.
+In de volgende scherm opname ziet u een voor beeld van het gebruik van Postman om een token op te halen.
 
-![Ophalen van token met Postman](./media/stclient-postman-get-token.png)
+![Token ophalen met postman](./media/stclient-postman-get-token.png)
 
-### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Om te maken en een token met cURL in Linux
+### <a name="to-create-and-get-a-token-using-curl-in-linux"></a>Een token maken en ophalen met behulp van krul in Linux
 
-Om te stellen Auth0 voor tokens voor het gebruik van uw geautoriseerde toepassingen, uitvoeren van een POST-bewerking op de [ https://login.microsoftonline.com/common/oauth2/token ](https://login.microsoftonline.com/common/oauth2/token) eindpunt met een nettolading van de volgende indeling hebben:
+Als u Auth0 wilt stellen voor tokens voor een van uw geautoriseerde toepassingen, moet u een POST-bewerking uitvoeren op het [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token) -eind punt met een nettolading in de volgende indeling:
 
 ```
 Request:
@@ -344,13 +344,13 @@ Response:
 {"token":"UClCUUKxUlkdbhE1cHLz3kyjbIZYVh9eB34A5Q21Y3FPqKGSJs","expires":"2014-02-17 18:46:08"}
 ```
 
-De volgende Schermafbeelding toont een voorbeeld van een token krijgen met de curl-opdracht.
+In de volgende scherm opname ziet u een voor beeld van het gebruik van de krul opdracht om een token op te halen.
 
-![Ophalen van token met curl-opdracht](./media/stclient-curl-get-token.png)
+![Token ophalen met de opdracht krul](./media/stclient-curl-get-token.png)
 
-### <a name="to-create-and-get-a-token-using-c35"></a>Om te maken en een met c#-token verkrijgen&#35;
+### <a name="to-create-and-get-a-token-using-c35"></a>Een token maken en ophalen met C&#35;
 
-Om te stellen Auth0 voor tokens voor het gebruik van uw geautoriseerde toepassingen, uitvoeren van een POST-bewerking naar de https:\//soamtenant.auth0.com/oauth/token eindpunt met een nettolading van de volgende indeling hebben:
+Als u Auth0 wilt stellen voor tokens voor een van uw geautoriseerde toepassingen, voert u een POST-bewerking uit naar het https:\//soamtenant.auth0.com/oauth/token-eind punt met een nettolading in de volgende indeling:
 
 ```csharp
 string clientId = "Your Application Id";
@@ -371,9 +371,9 @@ var content = response.Content;
 var token = JObject.Parse(content)["access_token"];
 ```
 
-### <a name="to-create-and-get-a-token-using-powershell"></a>Om te maken en een token met behulp van PowerShell
+### <a name="to-create-and-get-a-token-using-powershell"></a>Een token maken en ophalen met behulp van Power shell
 
-Om te stellen Auth0 voor tokens voor het gebruik van uw geautoriseerde toepassingen, uitvoeren van een POST-bewerking naar de https:\//soamtenant.auth0.com/oauth/token eindpunt met een nettolading van de volgende indeling hebben:
+Als u Auth0 wilt stellen voor tokens voor een van uw geautoriseerde toepassingen, voert u een POST-bewerking uit naar het https:\//soamtenant.auth0.com/oauth/token-eind punt met een nettolading in de volgende indeling:
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
@@ -392,9 +392,9 @@ $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
 ```
 
-## <a name="pass-the-client-app-token-to-the-api"></a>App-token van de client doorgeeft aan de API
+## <a name="pass-the-client-app-token-to-the-api"></a>Het token van de client-app door geven aan de API
 
-Het token doorgeven aan de API testen met behulp van de volgende code in de autorisatie-header:
+Geef het token door aan de zelf test-API met behulp van de volgende code in de autorisatie-header:
 
 ```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
@@ -417,19 +417,19 @@ Write-Output 'Test Results:'
 $result.Content
 ```
 
-## <a name="test-your-self-test-client"></a>Testen van uw client testen
+## <a name="test-your-self-test-client"></a>Uw Self-Test client testen
 
-Als u wilt testen van de client, de volgende stappen uit:
+Voer de volgende stappen uit om de client te testen:
 
 1. Implementeer de virtuele machine die u wilt testen.
-2. Roep de API testen met behulp van uw client-app-token voor autorisatie.
-3. De resultaten van de ophalen in JSON-indeling.
+2. Roep de zelf test-API aan met behulp van uw client-app-token voor autorisatie.
+3. De test resultaten in JSON-indeling ophalen.
 
-### <a name="test-result-examples"></a>Voorbeelden van resultaat testen
+### <a name="test-result-examples"></a>Voor beelden van test resultaten
 
-De volgende fragmenten ziet de resultaten in JSON-indeling.
+In de volgende fragmenten worden test resultaten in JSON-indeling weer gegeven.
 
-**Testresultaten voor een Windows-VM:**
+**Test resultaten voor een Windows-VM:**
 
 ```json
 {
@@ -468,7 +468,7 @@ De volgende fragmenten ziet de resultaten in JSON-indeling.
     },
 ```
 
-**Testresultaten voor een Linux-VM:**
+**Test resultaten voor een virtuele Linux-machine:**
 
 ```json
 {
@@ -509,4 +509,4 @@ De volgende fragmenten ziet de resultaten in JSON-indeling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u hebt uw virtuele machine van Azure is getest, kunt u [de aanbieding publiceren](./cpp-publish-offer.md).
+Nadat u uw virtuele Azure-machine hebt getest, kunt u [de aanbieding publiceren](./cpp-publish-offer.md).

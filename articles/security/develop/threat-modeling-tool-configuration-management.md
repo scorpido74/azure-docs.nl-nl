@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fedf8118f5581056e40594419c17f074c339a61b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934814"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161542"
 ---
-# <a name="security-frame-configuration-management--mitigations"></a>Beveiligings frame: Configuratie beheer | Oplossingen 
-| Product/Service | Artikel |
+# <a name="security-frame-configuration-management--mitigations"></a>Beveiligings frame: configuratie beheer | Oplossingen 
+| Product/service | Artikel |
 | --------------- | ------- |
 | **Webtoepassing** | <ul><li>[Implementeer beveiligings beleid voor inhoud (CSP) en schakel inline java script uit](#csp-js)</li><li>[XSS-filter van browser inschakelen](#xss-filter)</li><li>[ASP.NET-toepassingen moeten tracering en fout opsporing uitschakelen vóór de implementatie](#trace-deploy)</li><li>[Toegang tot Java script van derden alleen vanuit vertrouwde bronnen](#js-trusted)</li><li>[Zorg ervoor dat geverifieerde ASP.NET-pagina's in de gebruikers interface zijn opgenomen of klik op verdedigings linie](#ui-defenses)</li><li>[Zorg ervoor dat alleen vertrouwde oorsprongen zijn toegestaan als CORS is ingeschakeld op ASP.NET-webtoepassingen](#cors-aspnet)</li><li>[Het kenmerk ValidateRequest op ASP.NET-pagina's inschakelen](#validate-aspnet)</li><li>[Nieuwste versies van Java script-bibliotheken gebruiken die lokaal worden gehost](#local-js)</li><li>[Automatische MIME-sniffing uitschakelen](#mime-sniff)</li><li>[Standaard server headers op Windows Azure websites verwijderen om te voor komen dat er wordt gevingerafdrukd](#standard-finger)</li></ul> |
 | **Database** | <ul><li>[Een Windows Firewall configureren voor toegang tot de data base-engine](#firewall-db)</li></ul> |
@@ -40,11 +40,11 @@ ms.locfileid: "68934814"
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Een inleiding tot het beveiligings beleid voor](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)inhoud, [referentie voor inhouds beveiligings beleid](https://content-security-policy.com/), [beveiligings functies](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), [Inleiding tot het BEVEILIGINGS beleid voor inhoud](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), [kan ik CSP gebruiken?](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **Stappen** | <p>Content Security Policy (CSP) is een ingrijpende beveiligings mechanisme, een W3C-standaard, waarmee eigen aren van webtoepassingen controle kunnen hebben over de inhoud die is inge sloten in hun site. CSP wordt toegevoegd als een HTTP-antwoord header op de webserver en wordt afgedwongen aan de client zijde door browsers. Het is een white list-beleid: een website kan een set vertrouwde domeinen declareren op basis waarvan actieve inhoud, zoals Java script, kan worden geladen.</p><p>CSP biedt de volgende beveiligings voordelen:</p><ul><li>**Beveiliging tegen XSS:** Als een pagina kwetsbaar is voor XSS, kan een aanvaller deze op twee manieren benutten:<ul><li>Injecteren `<script>malicious code</script>`. Deze Cracking werkt niet als gevolg van de basis beperking van CSP-1</li><li>Injecteren `<script src=”http://attacker.com/maliciousCode.js”/>`. Deze Cracking werkt niet omdat het domein dat door een aanvaller wordt beheerd, zich niet in de white list van het CSP bevindt</li></ul></li><li>**Controle over gegevens exfiltration:** Als schadelijke inhoud op een webpagina verbinding probeert te maken met een externe website en gegevens stelen, wordt de verbinding door de CSP afgebroken. Dit komt doordat het doel domein zich niet in de white list van de CSP bevindt</li><li>**Bescherming tegen klik-en-werking:** klik-en-authenticatie is een aanvals techniek waarbij een kwaadwillende persoon een legitieme website kan inzien en gebruikers kan dwingen om op UI-elementen te klikken. Momenteel wordt een verdedigings linie tegen klik-en-aansluitingen gerealiseerd door een antwoord header te configureren-X-frame-opties. Niet alle browsers respecteren deze header en de volgende keer dat CSP wordt doorgestuurd, is een standaard manier om te beschermen tegen klik-en-stekers</li><li>**Aanval in realtime:** Als er sprake is van een injectie aanval op een CSP-ingeschakelde website, wordt door browsers automatisch een melding geactiveerd naar een eind punt dat is geconfigureerd op de webserver. Op deze manier fungeert CSP als een real-time systeem voor waarschuwingen.</li></ul> |
+| **Stappen** | <p>Content Security Policy (CSP) is een ingrijpende beveiligings mechanisme, een W3C-standaard, waarmee eigen aren van webtoepassingen controle kunnen hebben over de inhoud die is inge sloten in hun site. CSP wordt toegevoegd als een HTTP-antwoord header op de webserver en wordt afgedwongen aan de client zijde door browsers. Het is een white list-beleid: een website kan een set vertrouwde domeinen declareren op basis waarvan actieve inhoud, zoals Java script, kan worden geladen.</p><p>CSP biedt de volgende beveiligings voordelen:</p><ul><li>**Beveiliging tegen XSS:** Als een pagina kwetsbaar is voor XSS, kan een aanvaller deze op twee manieren benutten:<ul><li>`<script>malicious code</script>`invoeren. Deze Cracking werkt niet als gevolg van de basis beperking van CSP-1</li><li>`<script src="http://attacker.com/maliciousCode.js"/>`invoeren. Deze Cracking werkt niet omdat het domein dat door een aanvaller wordt beheerd, zich niet in de white list van het CSP bevindt</li></ul></li><li>**Controle over gegevens exfiltration:** Als schadelijke inhoud op een webpagina verbinding probeert te maken met een externe website en gegevens stelen, wordt de verbinding door de CSP afgebroken. Dit komt doordat het doel domein zich niet in de white list van de CSP bevindt</li><li>**Bescherming tegen klik-en-werking:** klik-en-authenticatie is een aanvals techniek waarbij een kwaadwillende persoon een legitieme website kan inzien en gebruikers kan dwingen om op UI-elementen te klikken. Momenteel wordt een verdedigings linie tegen klik-en-aansluitingen gerealiseerd door een antwoord header te configureren-X-frame-opties. Niet alle browsers respecteren deze header en de volgende keer dat CSP wordt doorgestuurd, is een standaard manier om te beschermen tegen klik-en-stekers</li><li>**Aanval in realtime:** Als er sprake is van een injectie aanval op een CSP-ingeschakelde website, wordt door browsers automatisch een melding geactiveerd naar een eind punt dat is geconfigureerd op de webserver. Op deze manier fungeert CSP als een real-time systeem voor waarschuwingen.</li></ul> |
 
 ### <a name="example"></a>Voorbeeld
 Voorbeeld beleid: 
@@ -57,7 +57,7 @@ Met dit beleid kunnen scripts alleen worden geladen van de server van de webtoep
 Inline scripts worden niet uitgevoerd. Hier volgen enkele voor beelden van inline-scripts 
 ```javascript
 <script> some Javascript code </script>
-Event handling attributes of HTML tags (e.g., <button onclick=”function(){}”>
+Event handling attributes of HTML tags (e.g., <button onclick="function(){}">
 javascript:alert(1);
 ```
 
@@ -72,21 +72,21 @@ Example: var str="alert(1)"; eval(str);
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [XSS-beveiligings filter](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
-| **Stappen** | <p>Configuratie van de reactie header van de X-XSS-beveiliging bepaalt het script filter voor meerdere sites van de browser. Deze antwoord header kan de volgende waarden hebben:</p><ul><li>`0:`Hiermee wordt het filter uitgeschakeld</li><li>`1: Filter enabled`Als er een aanval op cross-site scripting wordt gedetecteerd, wordt de pagina door de browser opschoont, zodat de aanval kan worden gestopt</li><li>`1: mode=block : Filter enabled`. In plaats van de pagina op te schonen wanneer een XSS-aanval wordt gedetecteerd, kan de browser de pagina niet weer geven</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. De pagina opschonen van de browser en de schending melden.</li></ul><p>Dit is een chroom functie die gebruikmaakt van CSP-schendings rapporten om details naar een door u gewenste URI te verzenden. De laatste twee opties worden beschouwd als veilige waarden.</p>|
+| **Stappen** | <p>Configuratie van de reactie header van de X-XSS-beveiliging bepaalt het script filter voor meerdere sites van de browser. Deze antwoord header kan de volgende waarden hebben:</p><ul><li>`0:` Hiermee wordt het filter uitgeschakeld</li><li>`1: Filter enabled` als er een aanval via cross-site scripting wordt gedetecteerd, dan zal de browser de pagina opschonen om de aanval te stoppen</li><li>`1: mode=block : Filter enabled`. In plaats van de pagina op te schonen wanneer een XSS-aanval wordt gedetecteerd, kan de browser de pagina niet weer geven</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. De pagina opschonen van de browser en de schending melden.</li></ul><p>Dit is een chroom functie die gebruikmaakt van CSP-schendings rapporten om details naar een door u gewenste URI te verzenden. De laatste twee opties worden beschouwd als veilige waarden.</p>|
 
 ## <a id="trace-deploy"></a>ASP.NET-toepassingen moeten tracering en fout opsporing uitschakelen vóór de implementatie
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
-| **Referentie**              | Overzicht van [ASP.net-fout opsporing](https://msdn.microsoft.com/library/ms227556.aspx), overzicht van [ [ASP.net tracering](https://msdn.microsoft.com/library/bb386420.aspx), How to: Tracering inschakelen voor een ASP.net-](https://msdn.microsoft.com/library/0x5wc973.aspx)toepassing [, How to: Fout opsporing inschakelen voor ASP.NET-toepassingen](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
+| **Referentie**              | Overzicht van [ASP.net-fout opsporing](https://msdn.microsoft.com/library/ms227556.aspx), [overzicht van ASP.net tracering](https://msdn.microsoft.com/library/bb386420.aspx), [procedures: tracering inschakelen voor een ASP.NET-toepassing](https://msdn.microsoft.com/library/0x5wc973.aspx), [How to: fout opsporing voor ASP.NET-toepassingen inschakelen](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
 | **Stappen** | Wanneer tracering is ingeschakeld voor de pagina, verkrijgt elke browser die de aanvraag aanvraagt ook de tracerings informatie die gegevens bevat over de interne server status en-werk stroom. Deze informatie kan gevoelig zijn voor beveiliging. Als fout opsporing is ingeschakeld voor de pagina, hebben fouten die zich voordoen op de server tot gevolg dat er een volledige stack-tracerings gegevens aan de browser worden gepresenteerd. Deze gegevens kunnen beveiligings gevoelige informatie over de werk stroom van de server bloot stellen. |
 
 ## <a id="js-trusted"></a>Toegang tot Java script van derden alleen vanuit vertrouwde bronnen
@@ -94,7 +94,7 @@ Example: var str="alert(1)"; eval(str);
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -105,7 +105,7 @@ Example: var str="alert(1)"; eval(str);
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [OWASP Klik-Jack Cheat-werk blad](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), de [interne beveiliging van IE-gevechten Klik-Jack, met X-frame-opties](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
@@ -140,8 +140,8 @@ Web. config-code voor sites die enkel moeten worden geframed op pagina's in hetz
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Web Forms, MVC5 |
+| **SDL-fase**               | Build |  
+| **Toepasselijke technologieën** | Webformulieren, MVC5 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
 | **Stappen** | <p>Browserbeveiliging voorkomt dat een webpagina AJAX-aanvragen indient bij een ander domein. Deze beperking wordt hetzelfde-Origin-beleid genoemd en voor komt dat een schadelijke site gevoelige gegevens van een andere site leest. Soms moet het echter nodig zijn om Api's veilig zichtbaar te maken die andere sites kunnen gebruiken. Cross Origin Resource Sharing (CORS) is een W3C-standaard waarmee een server hetzelfde-Origin-beleid kan versoepelen. Door CORS te gebruiken, kan een server bepaalde cross-Origin-aanvragen expliciet toestaan tijdens het afwijzen van andere.</p><p>CORS is veiliger en flexibeler dan eerdere technieken, zoals JSONP. Op basis van de kern wordt het inschakelen van CORS omgezet in het toevoegen van een paar HTTP-antwoord headers (Access-Control-*) aan de webtoepassing. Dit kan op verschillende manieren worden uitgevoerd.</p>|
@@ -171,11 +171,11 @@ Het is belang rijk om ervoor te zorgen dat de lijst met oorsprongen in het kenme
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | Web Forms, MVC5 |
+| **SDL-fase**               | Build |  
+| **Toepasselijke technologieën** | Webformulieren, MVC5 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Validatie aanvragen-script aanvallen voor komen](https://www.asp.net/whitepapers/request-validation) |
-| **Stappen** | <p>Validatie aanvragen, een functie van ASP.NET sinds versie 1,1, voor komt dat de server inhoud accepteert met niet-versleutelde HTML. Deze functie is ontworpen om te voor komen dat aanvallen met scripts worden door gegeven, waarbij client script code of HTML onbewust kan worden verzonden naar een server, wordt opgeslagen en vervolgens aan andere gebruikers wordt gepresenteerd. We raden u echter ten zeerste aan alle invoer gegevens en HTML-code ring te valideren wanneer dat nodig is.</p><p>Validatie van aanvragen wordt uitgevoerd door alle invoer gegevens te vergelijken met een lijst met mogelijk gevaarlijke waarden. Als er een overeenkomst wordt gevonden, wordt `HttpRequestValidationException`een door ASP.net gegenereerd. Standaard is de functie voor het valideren van aanvragen ingeschakeld.</p>|
+| **Stappen** | <p>Validatie aanvragen, een functie van ASP.NET sinds versie 1,1, voor komt dat de server inhoud accepteert met niet-versleutelde HTML. Deze functie is ontworpen om te voor komen dat aanvallen met scripts worden door gegeven, waarbij client script code of HTML onbewust kan worden verzonden naar een server, wordt opgeslagen en vervolgens aan andere gebruikers wordt gepresenteerd. We raden u echter ten zeerste aan alle invoer gegevens en HTML-code ring te valideren wanneer dat nodig is.</p><p>Validatie van aanvragen wordt uitgevoerd door alle invoer gegevens te vergelijken met een lijst met mogelijk gevaarlijke waarden. Als er een overeenkomst wordt gevonden, wordt een `HttpRequestValidationException`door ASP.NET gegenereerd. Standaard is de functie voor het valideren van aanvragen ingeschakeld.</p>|
 
 ### <a name="example"></a>Voorbeeld
 Deze functie kan echter worden uitgeschakeld op pagina niveau: 
@@ -197,21 +197,21 @@ De functie voor het valideren van aanvragen wordt niet ondersteund en maakt geen
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
-| **Stappen** | <p>Ontwikkel aars die standaard Java script-bibliotheken gebruiken, zoals JQuery, moeten goedgekeurde versies van algemene Java script-bibliotheken gebruiken die geen bekende beveiligings fouten bevatten. Het is een goed idee om de meest recente versie van de bibliotheken te gebruiken, omdat deze beveiligings oplossingen bevatten voor bekende beveiligings problemen in hun oudere versies.</p><p>Als de meest recente versie niet kan worden gebruikt om de oorzaak van de compatibiliteit, moeten de onderstaande minimum versies worden gebruikt.</p><p>Aanvaard bare minimum versies:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery validate 1,9</li><li>JQuery Mobile 1.0.1</li><li>JQuery Cycle 2,99</li><li>JQuery DataTables 1.9.0</li></ul></li><li>**Ajax Control Toolkit**<ul><li>Ajax Control Toolkit 40412</li></ul></li><li>**ASP.NET en Ajax**<ul><li>Webformulieren en Ajax 4 van ASP.NET</li><li>ASP.NET AJAX 3,5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3.0</li></ul></li></ul><p>Een Java script-bibliotheek nooit laden vanaf externe sites zoals open bare Cdn's</p>|
+| **Stappen** | <p>Ontwikkel aars die standaard Java script-bibliotheken gebruiken, zoals JQuery, moeten goedgekeurde versies van algemene Java script-bibliotheken gebruiken die geen bekende beveiligings fouten bevatten. Het is een goed idee om de meest recente versie van de bibliotheken te gebruiken, omdat deze beveiligings oplossingen bevatten voor bekende beveiligings problemen in hun oudere versies.</p><p>Als de meest recente versie niet kan worden gebruikt om de oorzaak van de compatibiliteit, moeten de onderstaande minimum versies worden gebruikt.</p><p>Aanvaard bare minimum versies:</p><ul><li>**JQuery**<ul><li>JQuery 1.7.1</li><li>JQueryUI 1.10.0</li><li>JQuery validate 1,9</li><li>JQuery Mobile 1.0.1</li><li>JQuery Cycle 2,99</li><li>JQuery DataTables 1.9.0</li></ul></li><li>**Ajax Control Toolkit**<ul><li>Ajax Control Toolkit 40412</li></ul></li><li>**ASP.NET en Ajax**<ul><li>Webformulieren en Ajax 4 van ASP.NET</li><li>ASP.NET AJAX 3,5</li></ul></li><li>**ASP.NET MVC**<ul><li>ASP.NET MVC 3,0</li></ul></li></ul><p>Een Java script-bibliotheek nooit laden vanaf externe sites zoals open bare Cdn's</p>|
 
 ## <a id="mime-sniff"></a>Automatische MIME-sniffing uitschakelen
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
-| **Referentie**              | [Beveiligings deel van IE8 V: Uitgebreide beveiliging](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME-type](https://en.wikipedia.org/wiki/Mime_type) |
+| **Referentie**              | [Beveiligings deel van IE8 V: uitgebreide beveiliging](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME-type](https://en.wikipedia.org/wiki/Mime_type) |
 | **Stappen** | De X-content-type-Options-header is een HTTP-header waarmee ontwikkel aars kunnen opgeven dat hun inhoud niet MIME-sniffing mag zijn. Deze header is ontworpen om aanvallen met MIME-sniffing te verhelpen. Voor elke pagina die door de gebruiker te raden inhoud kan bevatten, moet u de HTTP-header X-content-type-Options: sniffe gebruiken. Als u de vereiste header globaal wilt inschakelen voor alle pagina's in de toepassing, kunt u een van de volgende handelingen uitvoeren:|
 
 ### <a name="example"></a>Voorbeeld
@@ -227,7 +227,7 @@ Voeg de header in het bestand Web. config toe als de toepassing wordt gehost doo
 ```
 
 ### <a name="example"></a>Voorbeeld
-Voeg de header toe via de BeginRequest\_van de globale toepassing 
+Voeg de header toe via de globale toepassing\_BeginRequest 
 ```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
@@ -273,7 +273,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Webtoepassing | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | EnvironmentType-Azure |
 | **Referentie**              | [Standaard server headers op Windows Azure websites verwijderen](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
@@ -284,8 +284,8 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Database | 
-| **SDL-fase**               | Ontwikkelen |  
-| **Toepasselijke technologieën** | SQL Azure, OnPrem |
+| **SDL-fase**               | Build |  
+| **Toepasselijke technologieën** | SQL Azure, premises |
 | **Eigenschappen**              | N.v.t., SQL-versie-V12 |
 | **Referentie**              | [Een Azure SQL database-firewall configureren](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/), [een Windows Firewall configureren voor toegang tot de data base-engine](https://msdn.microsoft.com/library/ms175043) |
 | **Stappen** | Firewall systemen helpen onbevoegde toegang tot computer bronnen te voor komen. Als u via een firewall toegang wilt krijgen tot een exemplaar van de SQL Server data base-engine, moet u de firewall configureren op de computer met SQL Server om toegang toe te staan |
@@ -295,7 +295,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC 5 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | Het [inschakelen van cross-Origin-aanvragen in ASP.net Web API 2](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api), [ASP.net Web API-CORS-ondersteuning in ASP.net Web API 2](https://msdn.microsoft.com/magazine/dn532203.aspx) |
@@ -391,13 +391,13 @@ public class ResourcesController : ApiController
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Web-API | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | MVC 6 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Het inschakelen van cross-Origin-aanvragen (CORS) in ASP.NET Core 1,0](https://docs.asp.net/en/latest/security/cors.html) |
 | **Stappen** | <p>In ASP.NET Core 1,0 kan CORS worden ingeschakeld met behulp van middleware of met MVC. Wanneer u MVC gebruikt om CORS in te scha kelen, worden dezelfde CORS-Services gebruikt, maar de middleware van CORS is niet.</p>|
 
-**Benadering-1** CORS inschakelen met middleware: Als u CORS wilt inschakelen voor de volledige toepassing, voegt u de CORS-middleware toe aan de aanvraag pijplijn met behulp van de extensie methode UseCors. Er kan een cross-Origin-beleid worden opgegeven bij het toevoegen van het CORS-middleware met behulp van de CorsPolicyBuilder-klasse. Er zijn twee manieren om dit te doen:
+**Benadering-1** Inschakelen van CORS met middleware: als u CORS wilt inschakelen voor de volledige toepassing, voegt u de CORS-middleware toe aan de aanvraag pijplijn met behulp van de extensie methode UseCors. Er kan een cross-Origin-beleid worden opgegeven bij het toevoegen van het CORS-middleware met behulp van de CorsPolicyBuilder-klasse. Er zijn twee manieren om dit te doen:
 
 ### <a name="example"></a>Voorbeeld
 De eerste is om UseCors aan te roepen met een Lambda. De Lambda neemt een CorsPolicyBuilder-object op: 
@@ -432,10 +432,10 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-**Benadering-2** CORS inschakelen in MVC: Ontwikkel aars kunnen ook MVC gebruiken om specifieke CORS per actie, per controller of globaal toe te passen voor alle controllers.
+**Benadering-2** Inschakelen van CORS in MVC: ontwikkel aars kunnen ook MVC gebruiken om specifieke CORS per actie, per controller of globaal toe te passen voor alle controllers.
 
 ### <a name="example"></a>Voorbeeld
-Per actie: Als u een CORS-beleid voor een specifieke actie wilt opgeven, voegt u het kenmerk [EnableCors] toe aan de actie. Geef de naam van het beleid op. 
+Per actie: als u een CORS-beleid voor een specifieke actie wilt opgeven, voegt u het kenmerk [EnableCors] toe aan de actie. Geef de naam van het beleid op. 
 ```csharp
 public class HomeController : Controller
 {
@@ -486,7 +486,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **SDL-fase**               | Implementatie |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
-| **Referentie**              | [Procedure: Configuratie secties versleutelen in ASP.net 2,0](https://msdn.microsoft.com/library/ff647398.aspx)met behulp van DPAPI, [een beveiligde configuratie provider opgeven](https://msdn.microsoft.com/library/68ze1hb2.aspx) [met behulp van Azure Key Vault om toepassings geheimen te beveiligen](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **Referentie**              | [Procedure: Configuratie secties versleutelen in ASP.NET 2,0 met behulp van DPAPI](https://msdn.microsoft.com/library/ff647398.aspx), [een beveiligde configuratie provider opgeven](https://msdn.microsoft.com/library/68ze1hb2.aspx) [met behulp van Azure Key Vault om toepassings geheimen te beveiligen](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **Stappen** | Configuratie bestanden zoals web. config, appSettings. json worden vaak gebruikt om gevoelige informatie te bewaren, zoals gebruikers namen, wacht woorden, database verbindings reeksen en versleutelings sleutels. Als u deze informatie niet beveiligt, is uw toepassing kwetsbaar voor aanvallen of kwaadwillende gebruikers die gevoelige informatie verkrijgen, zoals gebruikers namen en wacht woorden voor accounts, database namen en server namen. Op basis van het implementatie type (Azure/on-premises) versleutelt u de gevoelige secties van de configuratie bestanden met behulp van DPAPI of services als Azure Key Vault. |
 
 ## <a id="admin-strong"></a>Zorg ervoor dat alle beheer interfaces zijn beveiligd met sterke referenties
@@ -505,7 +505,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-apparaat | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Het inschakelen van veilige opstart-en BitLocker-Apparaatversleuteling in Windows 10 IoT core](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
@@ -516,7 +516,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-apparaat | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | N/A  |
@@ -560,7 +560,7 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | IoT-Cloud gateway | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | Gateway keuze-Azure IoT Hub |
 | **Referentie**              | [Overzicht van IOT hub Apparaatbeheer](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), [het bijwerken](../../iot-hub/tutorial-firmware-update.md) van de firmware van een apparaat |
@@ -586,14 +586,14 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [Azure Storage beveiligings handleiding: de sleutels van uw opslag account beheren](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_managing-your-storage-account-keys) |
-| **Stappen** | <p>Sleutel opslag: Het is raadzaam om de Azure Storage toegangs sleutels in Azure Key Vault als geheim op te slaan en de toepassingen de sleutel te laten ophalen uit de sleutel kluis. Dit wordt aanbevolen vanwege de volgende redenen:</p><ul><li>De toepassing beschikt nooit over de opslag sleutel die is opgeslagen in een configuratie bestand, waardoor dat verloopt van iemand die toegang krijgt tot de sleutels zonder specifieke toestemming</li><li>Toegang tot de sleutels kan worden beheerd met behulp van Azure Active Directory. Dit betekent dat de eigenaar van een account toegang kan verlenen tot de toepassingen die de sleutels moeten ophalen uit Azure Key Vault. Andere toepassingen hebben geen toegang tot de sleutels zonder specifiek toestemming te verlenen</li><li>Sleutel opnieuw genereren: Het wordt aanbevolen een proces te hebben om de toegangs sleutels voor Azure Storage opnieuw te genereren om veiligheids redenen. Informatie over waarom en hoe u moet plannen voor het opnieuw genereren van sleutels, wordt beschreven in het artikel Azure Storage Security Guide Reference</li></ul>|
+| **Stappen** | <p>Sleutel opslag: het wordt aanbevolen om de Azure Storage toegangs sleutels in Azure Key Vault als geheim op te slaan en de toepassingen de sleutel van de sleutel kluis te laten ophalen. Dit wordt aanbevolen vanwege de volgende redenen:</p><ul><li>De toepassing beschikt nooit over de opslag sleutel die is opgeslagen in een configuratie bestand, waardoor dat verloopt van iemand die toegang krijgt tot de sleutels zonder specifieke toestemming</li><li>Toegang tot de sleutels kan worden beheerd met behulp van Azure Active Directory. Dit betekent dat de eigenaar van een account toegang kan verlenen tot de toepassingen die de sleutels moeten ophalen uit Azure Key Vault. Andere toepassingen hebben geen toegang tot de sleutels zonder specifiek toestemming te verlenen</li><li>Sleutel opnieuw genereren: het wordt aanbevolen een proces te hebben om de toegangs sleutels voor Azure Storage om veiligheids redenen opnieuw te genereren. Informatie over waarom en hoe u moet plannen voor het opnieuw genereren van sleutels, wordt beschreven in het artikel Azure Storage Security Guide Reference</li></ul>|
 
 ## <a id="cors-storage"></a>Zorg ervoor dat alleen vertrouwde oorsprongen zijn toegestaan als CORS is ingeschakeld in azure Storage
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | Azure Storage | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | Encarta |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [CORS-ondersteuning voor de Azure Storage services](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
@@ -604,11 +604,11 @@ Als u CORS wilt uitschakelen voor een controller of actie, gebruikt u het kenmer
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com) |
-| **Stappen** | <p>Als u geen limiet voor het gebruik van systeem bronnen plaatst, kan dit leiden tot bron uitputting en uiteindelijk een denial of service.</p><ul><li>**EXPLANATION:** Windows Communication Foundation (WCF) biedt de mogelijkheid om service aanvragen te beperken. Als u te veel client aanvragen toestaat, kan dit een systeem overlaten en de bronnen ervan uitgeput raken. Als u daarentegen slechts een klein aantal aanvragen voor een service toestaat, kan het gebruik van de service door legitieme gebruikers worden voor komen. Elke service moet afzonderlijk worden afgestemd op en geconfigureerd om de juiste hoeveelheid resources toe te staan.</li><li>**Aanbevelingen** Schakel de service beperkings functie van WCF in en stel de benodigde limieten in voor uw toepassing.</li></ul>|
+| **Stappen** | <p>Als u geen limiet voor het gebruik van systeem bronnen plaatst, kan dit leiden tot bron uitputting en uiteindelijk een denial of service.</p><ul><li>**Uitleg:** Windows Communication Foundation (WCF) biedt de mogelijkheid om service aanvragen te beperken. Als u te veel client aanvragen toestaat, kan dit een systeem overlaten en de bronnen ervan uitgeput raken. Als u daarentegen slechts een klein aantal aanvragen voor een service toestaat, kan het gebruik van de service door legitieme gebruikers worden voor komen. Elke service moet afzonderlijk worden afgestemd op en geconfigureerd om de juiste hoeveelheid resources toe te staan.</li><li>**Aanbevelingen** Schakel de service beperkings functie van WCF in en stel de benodigde limieten in voor uw toepassing.</li></ul>|
 
 ### <a name="example"></a>Voorbeeld
 Hier volgt een voor beeld van een configuratie met beperking ingeschakeld:
@@ -627,11 +627,11 @@ Hier volgt een voor beeld van een configuratie met beperking ingeschakeld:
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Onderdeel**               | WCF | 
-| **SDL-fase**               | Ontwikkelen |  
+| **SDL-fase**               | Build |  
 | **Toepasselijke technologieën** | .NET Framework 3 |
 | **Eigenschappen**              | N/A  |
 | **Referentie**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Konink rijk](https://vulncat.fortify.com) |
-| **Stappen** | Meta gegevens kunnen kwaadwillende personen meer informatie geven over het systeem en een vorm van een aanval plannen. WCF-services kunnen worden geconfigureerd om meta gegevens zichtbaar te maken. Meta gegevens bieden gedetailleerde informatie over de service beschrijving en mogen niet worden uitgezonden in productie omgevingen. De `HttpGetEnabled` Eigenschappenvande`HttpsGetEnabled` klasse ServiceMetaData bepalen of een service de meta gegevens beschikbaar maakt  /  | 
+| **Stappen** | Meta gegevens kunnen kwaadwillende personen meer informatie geven over het systeem en een vorm van een aanval plannen. WCF-services kunnen worden geconfigureerd om meta gegevens zichtbaar te maken. Meta gegevens bieden gedetailleerde informatie over de service beschrijving en mogen niet worden uitgezonden in productie omgevingen. Het `HttpGetEnabled` / `HttpsGetEnabled` eigenschappen van de klasse ServiceMetaData definieert of een service de meta gegevens beschikbaar maakt | 
 
 ### <a name="example"></a>Voorbeeld
 Met de onderstaande code wordt het WCF van de meta gegevens van een service verzonden

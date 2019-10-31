@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: ff6fd45e0a68a3e93e4c62eb31a566a6dffa2344
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494954"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159694"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Overzicht van Azure Kubernetes-netwerk beleid
 
@@ -51,7 +51,7 @@ De onderstaande JSON-voorbeeld configuratie maakt een nieuw virtueel netwerk en 
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      “kubernetesConfig”: {
+      "kubernetesConfig": {
          "networkPolicy": "azure"
        }
     },
@@ -89,7 +89,7 @@ De onderstaande JSON-voorbeeld configuratie maakt een nieuw virtueel netwerk en 
 ### <a name="creating-your-own-kubernetes-cluster-in-azure"></a>Uw eigen Kubernetes-cluster maken in azure
 De implementatie kan worden gebruikt om netwerk beleid te bieden voor een Kubernetes-cluster dat u zelf implementeert, zonder dat u gebruikmaakt van hulpprogram ma's zoals de ACS-engine. In dit geval installeert u eerst de CNI-invoeg toepassing en schakelt u deze in op elke virtuele machine in een cluster. Zie [Deploy plug-in for a Kubernetes cluster](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster) (Invoegtoepassing implementeren voor een Kubernetes-cluster) voor gedetailleerde instructies.
 
-Zodra het cluster is geïmplementeerd, voert u `kubectl` de volgende opdracht uit om de Azure Network Policy *daemonset* te downloaden en toe te passen op het cluster.
+Zodra het cluster is geïmplementeerd, voert u de volgende `kubectl` opdracht uit om de Azure Network Policy *daemonset* te downloaden en toe te passen op het cluster.
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/Azure/acs-engine/master/parts/k8s/addons/kubernetesmasteraddons-azure-npm-daemonset.yaml

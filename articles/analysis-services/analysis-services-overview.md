@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c7cd377929d1dd6d2e6ed8831597695ae02d21c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512604"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146243"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -200,9 +200,9 @@ Ga naar het [Microsoft Vertrouwenscentrum](https://www.microsoft.com/trustcenter
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Ontwikkel en implementeer modellen met de gratis [SQL Server Data Tools (SSDT) voor Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt). SSDT bevat Analysis Services-projectsjablonen waarmee u snel aan de slag kunt gaan. SSDT bevat nu de modern Get data source-query en mashup-functionaliteit voor modellen in tabel vorm 1400. Als u al bekend bent met Get Data in Power BI Desktop en Excel 2016, weet u hoe eenvoudig het is om voor gegevensbronnen query's te maken die naadloos aansluiten bij uw behoeften. 
+Ontwikkel en implementeer modellen met Visual Studio met Analysis Services-projecten. De uitbrei ding Analysis Services projecten bevat sjablonen en wizards waarmee u snel aan de slag kunt gaan. De model bewerkings omgeving in Visual Studio bevat nu de moderne Get data source-query en de mashup-functionaliteit voor modellen in tabel 1400 en hoger. Als u al bekend bent met Get Data in Power BI Desktop en Excel 2016, weet u hoe eenvoudig het is om voor gegevensbronnen query's te maken die naadloos aansluiten bij uw behoeften. 
 
-Als u Visual Studio 2017 of hoger gebruikt, zijn micro soft Analysis Services-projecten beschikbaar als een gratis Installeer bare VSIX-pakket. [Downloaden van Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Micro soft Analysis Services Projects is beschikbaar als een gratis Installeer bare VSIX-pakket. [Downloaden van Marketplace](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). De uitbrei ding werkt met elke versie van Visual Studio 2017 en hoger, met inbegrip van de gratis Community Edition.
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

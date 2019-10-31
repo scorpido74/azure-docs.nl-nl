@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 10/23/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35a6ac955ade3eab77f01c4e234b35744f0a7be3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a50978b51fd1451cf65e33b38ca0699694cb115b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170095"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73151186"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Voorwaardelijke toegang: MFA vereisen voor beheerders
 
@@ -66,7 +66,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
       * Gebruikers beheerder
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Done**.
-1. Onder **Cloud-apps of acties**@no__t-**1,** selecteert u **alle Cloud-apps**en selecteert u **gereed**.
+1. Selecteer onder **Cloud-apps of acties** > **bevatten** **alle Cloud-apps**en selecteer **gereed**.
 1. Onder **toegangs beheer** > **toekenning**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.

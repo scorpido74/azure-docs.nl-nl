@@ -1,10 +1,10 @@
 ---
 title: Isolatie in de open bare Azure-Cloud | Microsoft Docs
-description: Meer informatie over Cloud Computing Services die een breed scala aan reken instanties bevatten & Services die automatisch omhoog en omlaag kunnen worden geschaald om te voldoen aan de behoeften van uw toepassing of onderneming.
+description: Meer informatie over hoe Azure isolatie biedt voor kwaadwillende en niet-kwaadwillende gebruikers en verschillende isolatie opties biedt voor architecten.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,38 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123048"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159753"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
-##  <a name="introduction"></a>Inleiding
-### <a name="overview"></a>Overzicht
-Micro soft heeft een reeks technische documenten, beveiligings overzichten, aanbevolen procedures, ontwikkeld en gebruikt om de huidige en potentiële Azure-klanten inzicht te geven en gebruik te maken van de verschillende aan beveiliging gerelateerde mogelijkheden die beschikbaar zijn in en rond het Azure-platform. Controle lijsten.
-De onderwerpen variëren qua breedte en diepte en worden regel matig bijgewerkt. Dit document maakt deel uit van die reeks, zoals wordt beschreven in het gedeelte abstract, volgt.
+Met Azure kunt u toepassingen en virtuele machines (Vm's) uitvoeren op gedeelde fysieke infra structuur. Een van de Prime economische motivaties voor het uitvoeren van toepassingen in een cloud omgeving is de mogelijkheid om de kosten van gedeelde resources over meerdere klanten te verdelen. In deze praktijk van multitenancy wordt de efficiëntie verbeterd door resources te multiplexen tussen verschillende klanten tegen lage kosten. Helaas introduceert het ook het risico van het delen van fysieke servers en andere infrastructuur resources om uw gevoelige toepassingen en Vm's uit te voeren die kunnen behoren tot een wille keurige en mogelijk schadelijke gebruiker.
 
-### <a name="azure-platform"></a>Azure Platform
-Azure is een open en flexibel Cloud service platform dat ondersteuning biedt voor de breedste selectie van besturings systemen, programmeer talen, frameworks, hulpprogram ma's, data bases en apparaten. U kunt bijvoorbeeld:
-- Linux-containers uitvoeren met docker-integratie;
-- Bouw apps met Java script, Python, .NET, PHP, Java en node. js; maar
-- Maak back-ends voor iOS-, Android-en Windows-apparaten.
-
-Microsoft Azure ondersteunt dezelfde technologieën waarvan miljoenen ontwikkel aars en IT-professionals al vertrouwen.
-
-Wanneer u IT-assets bouwt op of migreert naar, een open bare Cloud serviceprovider, bent u van plan op de mogelijkheden van die organisatie om uw toepassingen en gegevens te beschermen met de services en de besturings elementen die ze bieden om de beveiliging van uw cloud-gebaseerde assets te beheren.
-
-De infrastructuur van Azure is zo ontworpen dat toepassingen miljoenen klanten tegelijkertijd kunnen hosten en er daarnaast een betrouwbare basis wordt geboden waarop bedrijven kunnen voldoen aan hun beveiligingsbehoeften. Bovendien biedt Azure u een scala aan configureerbare beveiligingsopties en de mogelijkheid om deze te beheren, zodat u de beveiliging kunt afstemmen op de unieke vereisten van uw implementaties. Dit document helpt u te voldoen aan deze vereisten.
-
-### <a name="abstract"></a>Samenvatting
-
-Met Microsoft Azure kunt u toepassingen en virtuele machines (Vm's) uitvoeren op gedeelde fysieke infra structuur. Een van de Prime economische motivaties voor het uitvoeren van toepassingen in een cloud omgeving is de mogelijkheid om de kosten van gedeelde resources over meerdere klanten te verdelen. In deze praktijk van multitenancy wordt de efficiëntie verbeterd door resources te multiplexen tussen verschillende klanten tegen lage kosten. Helaas introduceert het ook het risico van het delen van fysieke servers en andere infrastructuur resources om uw gevoelige toepassingen en Vm's uit te voeren die kunnen behoren tot een wille keurige en mogelijk schadelijke gebruiker.
-
-In dit artikel wordt beschreven hoe Microsoft Azure isolatie biedt tegen kwaadwillende en niet-kwaadwillende gebruikers en fungeert als richt lijn voor het ontwikkelen van cloud oplossingen door diverse isolatie keuzes te bieden aan architecten. Dit technisch document richt zich op de technologie van het Azure-platform en de klant gerichte beveiligings controles en probeert geen overeenkomsten, prijs modellen en DevOps te behandelen.
+In dit artikel wordt beschreven hoe Azure isolatie biedt tegen kwaadwillende en niet-kwaadwillende gebruikers en fungeert als richt lijn voor het ontwikkelen van cloud oplossingen door diverse isolatie keuzes te bieden aan architecten.
 
 ## <a name="tenant-level-isolation"></a>Isolatie op Tenant niveau
 Een van de belangrijkste voor delen van Cloud Computing is een concept van een gedeelde, gemeen schappelijke infra structuur van talloze klanten tegelijk, waardoor de schaal voordelen worden uitgebreid. Dit concept heet multitenancy. Micro soft werkt continu om ervoor te zorgen dat de architectuur met meerdere tenants van Microsoft Cloud Azure ondersteuning biedt voor beveiliging, vertrouwelijkheid, privacy, integriteit en beschik baarheid.
@@ -245,7 +226,7 @@ De oplossing voor schijf versleuteling voor Windows is gebaseerd op [micro soft 
 De oplossing ondersteunt de volgende scenario's voor IaaS Vm's wanneer deze zijn ingeschakeld in Microsoft Azure:
 -   Integratie met Azure Key Vault
 
--   Vm's van de Standard-laag: A, D, DS, G, GS, enzovoort, serie IaaS Vm's
+-   Virtuele machines uit de Standard-laag: A, D, DS, G, GS, enzovoort, serie IaaS Vm's
 
 -   Versleuteling inschakelen op Windows-en Linux IaaS-Vm's
 
@@ -284,7 +265,7 @@ SQL Database is een relationele database-service in de Microsoft Cloud op basis 
 
 [Micro soft SQL Azure](../../sql-database/sql-database-single-database-get-started.md) Data Base is een relationele database service in de Cloud, gebouwd op basis van SQL Server technologieën. Het biedt een Maxi maal beschik bare, meerdere Tenant database service die door micro soft wordt gehost in de Cloud.
 
-Vanuit een toepassings perspectief SQL Azure levert de volgende hiërarchie: Elk niveau heeft een een-op-veel container-niveaus.
+Vanuit een toepassings perspectief SQL Azure levert de volgende hiërarchie: elk niveau heeft een een-op-veel container-niveaus.
 
 ![SQL Azure toepassings model](./media/isolation-choices/azure-isolation-fig10.png)
 
@@ -300,7 +281,7 @@ Logische hoofd databases zijn:
 
 -   SQL-aanmeldingen die worden gebruikt om verbinding te maken met de server
 
--   Firewallregels
+-   Firewall-regels
 
 Informatie over facturering en gebruik voor SQL Azure-data bases van dezelfde logische server is niet gegarandeerd hetzelfde als het fysieke exemplaar in SQL Azure cluster. in dat geval moeten toepassingen de naam van de doel database opgeven wanneer er verbinding wordt gemaakt.
 
@@ -350,4 +331,3 @@ Microsoft Azure biedt een aantal Cloud Computing Services die een breed scala aa
 - [Opslag isolatie](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 
 Microsoft Azure van de opslag van de virtuele machine op basis van een klant gescheiden. Met deze schei ding kunnen reken kracht en opslag onafhankelijk worden geschaald, waardoor het eenvoudiger is om multitenancy en isolatie te bieden. Daarom worden Azure Storage uitgevoerd op afzonderlijke hardware zonder netwerk verbinding met Azure compute, behalve logisch. Alle aanvragen die via HTTP of HTTPS worden uitgevoerd, zijn gebaseerd op de keuze van de klant.
-

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met AppBlade | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met AppBlade | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en AppBlade.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3360d7aa-6518-4f99-88bd-b7f7258183e8
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c1a0f15d67d76ca0e1b2e9b348b36be7dee3dd6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7085841a9d2bdb0be11c62d2b19bd3a39cf4915
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106897"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152851"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Zelfstudie: Azure Active Directory-integratie met AppBlade
+# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Zelf studie: integratie Azure Active Directory met AppBlade
 
 In deze zelfstudie leert u hoe u AppBlade integreert met Azure AD (Azure Active Directory).
 De integratie van AppBlade met Azure AD heeft de volgende voordelen:
@@ -54,7 +55,7 @@ Als u de integratie van AppBlade in Azure AD wilt configureren, moet u AppBlade 
 
 **Voer de volgende stappen uit om AppBlade toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -111,7 +112,7 @@ Als u Azure AD-eenmalige aanmelding met AppBlade wilt configureren, voert u de v
     > [!NOTE]
     > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteuningsteam voor AppBlade](mailto:support@appblade.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -147,12 +148,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -166,7 +167,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van Azure-een
 
     ![De AppBlade-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -182,7 +183,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van Azure-een
 
 ### <a name="create-appblade-test-user"></a>AppBlade-testgebruiker maken
 
-Het doel van deze sectie is om in de AppBlade een gebruiker met de naam Britta Simon te maken. AppBlade biedt ondersteuning voor Just-In-Time-inrichting. Dit is standaard ingeschakeld. **Zorg ervoor dat uw domeinnaam is geconfigureerd met AppBlade voor het inrichten van gebruikers. Hierna werkt de Just-In-Time-inrichting pas.**
+Het doel van deze sectie is om in de AppBlade een gebruiker met de naam Britta Simon te maken. AppBlade biedt ondersteuning voor Just-In-Time-inrichting. Dit is standaard ingeschakeld. **Zorg ervoor dat uw domein naam is geconfigureerd met AppBlade voor het inrichten van gebruikers. Daarna werkt alleen de just-in-time-gebruikers inrichting.**
 
 Als de gebruiker een e-mailadres heeft dat eindigt op het domein dat is geconfigureerd met AppBlade voor uw account, is deze gebruiker automatisch lid van het account met het door u opgegeven machtigingsniveau. Dit niveau kan zijn: Basic (een gebruiker die alleen toepassingen kan installeren), Teamlid (een gebruiker die nieuwe app-versies kan uploaden en projecten kan beheren), of Beheerder (een gebruiker met volledige beheerdersbevoegdheden voor het account). U wordt geadviseerd om Basic te kiezen en het niveau voor gebruikers vervolgens handmatig te verhogen via een beheerdersaanmelding. (In AppBlade moet vooraf een beheerdersaanmelding worden geconfigureerd, of na de aanmelding moet het niveau van een gebruiker namens de klant worden verhoogd.)
 
@@ -193,11 +194,11 @@ Er is geen actie-item voor u in deze sectie. Er wordt eventueel een nieuwe gebru
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel AppBlade in het toegangsvenster klikt, wordt u automatisch aangemeld bij het AppBlade-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

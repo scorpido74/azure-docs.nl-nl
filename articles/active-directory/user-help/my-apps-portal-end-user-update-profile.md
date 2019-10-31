@@ -13,16 +13,16 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383084"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160764"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Uw profiel en account gegevens bijwerken vanuit de portal mijn apps
 
-U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account  gegevens bij te werken, om uw groeps gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
+U kunt uw werk-of school account gebruiken met de portal van **mijn apps** op het web, om een aantal Cloud-apps in uw organisatie weer te geven en te starten, om een aantal van uw profiel-en account gegevens bij te werken, om uw **groeps** gegevens te bekijken en uit te voeren  **toegangs beoordelingen** voor uw apps en groepen. Als u geen toegang hebt tot de portal **mijn apps** , moet u contact opnemen met de Help Desk voor toestemming.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -65,7 +65,7 @@ De gegevens van uw werk-of school account bijwerken en beheren op de **profiel**
 
 - Meld u overal aan.
 
-## <a name="change-your-password"></a>Wachtwoord wijzigen
+## <a name="change-your-password"></a>Uw wacht woord wijzigen
 
 Als u het wacht woord voor uw werk-of school account wilt wijzigen, kunt u **wacht woord wijzigen** selecteren in het gebied **account beheren** van de **profiel** pagina.
 
@@ -77,7 +77,7 @@ Als u het wacht woord voor uw werk-of school account wilt wijzigen, kunt u **wac
 
     ![Pagina wacht woord wijzigen](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Selecteer **indienen**.
+3. Selecteer **Indienen**.
 
     Uw wacht woord is gewijzigd. U moet zich aanmelden bij alle apps die u eerder hebt aangemeld voor het gebruik van uw werk-of school account.
 
@@ -86,7 +86,7 @@ Als u het wacht woord voor uw werk-of school account wilt wijzigen, kunt u **wac
 Als u uw wacht woord bent verg eten, het nog nooit hebt ontvangen van het ondersteunings team van uw bedrijf of uw account hebt vergrendeld, kunt u uw eigen wacht woord opnieuw instellen.
 
 >[!Important]
->Uw beheerder moet deze functie inschakelen en u moet zich registreren om deel te nemen. Zie voor meer informatie over het registreren en opnieuw instellen van uw wacht woord [registreren voor selfservice voor het opnieuw instellen van wacht woorden](active-directory-passwords-reset-register.md) en [het opnieuw instellen van het wacht woord voor uw werk of school](user-help-reset-password.md).
+>Uw beheerder moet deze functie inschakelen en u moet zich registreren om deel te nemen. Zie voor meer informatie over het registreren en opnieuw instellen van uw wacht woord [registreren voor selfservice voor het opnieuw instellen van wacht woorden](active-directory-passwords-reset-register.md) en [het opnieuw instellen van het wacht woord voor uw werk of school](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="change-your-security-verification-information"></a>De gegevens van de beveiligings verificatie wijzigen
 
@@ -108,7 +108,7 @@ Voor twee ledige verificatie moet u twee soorten verificatie gegevens gebruiken,
 
     - **Stel de Microsoft Authenticator-app in.** U kunt ervoor kiezen om de Microsoft Authenticator-app zo in te stellen dat deze als verificatie methode wordt gebruikt. Zie [Wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md) voor meer informatie over de app Microsoft Authenticator.
 
-3. Selecteer **opslaan** uw wijzigingen op te slaan.
+3. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>De gebruiks voorwaarden van uw organisatie controleren
 

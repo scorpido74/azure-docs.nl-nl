@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Microsoft Azure Active Directory-integratie met ClickTime | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met ClickTime | Microsoft Docs'
 description: Lees hoe u eenmalige aanmelding configureert tussen Azure Active Directory en ClickTime.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b14b060cc37f94e51ceb902f8b4158120d4d02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 233ddde25645cbdd9073011eeec2a20e42c8e9a8
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105300"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73157404"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelfstudie: Azure Active Directory-integratie met ClickTime
+# <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Zelf studie: integratie Azure Active Directory met ClickTime
 
 In deze zelfstudie leert u hoe u ClickTime kunt integreren met Microsoft Azure Active Directory (Azure AD).
 Het integreren van ClickTime met Azure Active Directory biedt u de volgende voordelen:
@@ -53,7 +54,7 @@ Om de integratie van ClickTime in Azure Active Directory te integreren, moet u C
 
 **Voer de volgende stappen uit om ClickTime toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -136,7 +137,7 @@ Om eenmalige aanmelding van Azure Active Directory met ClickTime te configureren
 
 1. Voer in het configuratiegedeelte **Voorkeuren voor eenmalige aanmelding** de volgende stappen uit:
    
-    ![Beveiligingsinstellingen](./media/clicktime-tutorial/tic777280.png "Beveiligingsinstellingen")
+    ![Beveiligings instellingen](./media/clicktime-tutorial/tic777280.png "Beveiligings instellingen")
    
     a.  Selecteer **Toestaan** voor aanmelden met eenmalige aanmelding (SSO) met **Azure Active Directory**.
    
@@ -164,12 +165,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -183,7 +184,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De ClickTime-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -211,19 +212,19 @@ In het geval van ClickTime is inrichten een handmatige taak.
 
 1. Klik in de werkbalk bovenaan op **Company** en klik vervolgens op **People**.
    
-    ![People](./media/clicktime-tutorial/tic777282.png "People")
+    ![Iedereen](./media/clicktime-tutorial/tic777282.png "Personen")
 
 1. Klik op **Add Person**.
    
-    ![Add Person](./media/clicktime-tutorial/tic777283.png "Add Person")
+    ![Persoon toevoegen](./media/clicktime-tutorial/tic777283.png "Persoon toevoegen")
 
 1. Voer in de sectie New Person de volgende stappen uit:
    
-    ![People](./media/clicktime-tutorial/tic777284.png "People")
+    ![Iedereen](./media/clicktime-tutorial/tic777284.png "Personen")
    
     a.  Typ in het tekstvak **full name** de volledige naam van de gebruiker, zoals **Britta Simon**. 
   
-    b.  In de **e-mailadres** tekstvak, typ het e-mailadres van gebruiker, zoals **brittasimon\@contoso.com**.
+    b.  Typ in het tekstvak **e-mail adres** het e-mail bericht van de gebruiker, zoals **brittasimon\@contoso.com**.
        
     > [!NOTE]
     > U kunt desgewenst extra eigenschappen voor het nieuwe persoonsobject instellen.
@@ -232,11 +233,11 @@ In het geval van ClickTime is inrichten een handmatige taak.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel ClickTime klikt, wordt u automatisch aangemeld bij de instantie van ClickTime waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

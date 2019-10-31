@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: af1a0db397510014301a58aea7238b695a6c0740
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301188"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73146440"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -138,7 +138,7 @@ Op de overzichts pagina van de server bevinden zich twee server namen. Als u nog
 
 Voor client verbindingen van eind gebruikers, zoals Power BI Desktop, Excel en aangepaste apps, gebruikt u **Server naam**. 
 
-Voor SSMS-, SSDT-en verbindings reeksen in Power shell, Azure function-apps en AMO, gebruikt u de naam van de **beheer server**. De naam van de beheer server bevat een speciale kwalificatie van het `:rw` (lezen/schrijven). Alle verwerkings bewerkingen worden uitgevoerd op de beheer server (primair).
+Voor SSMS, Visual Studio en verbindings reeksen in Power shell, Azure function-apps en AMO, gebruikt u de naam van de **beheer server**. De naam van de beheer server bevat een speciale kwalificatie van het `:rw` (lezen/schrijven). Alle verwerkings bewerkingen worden uitgevoerd op de beheer server (primair).
 
 ![Server namen](media/analysis-services-scale-out/aas-scale-out-name.png)
 

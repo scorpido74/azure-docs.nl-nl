@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: ba594a2bc0f0cb50eb515a24255a3f9ad56a10a3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 05f7d022588eee0e5e97f10d6300da04c4be6270
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931877"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161955"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
@@ -941,7 +941,6 @@ Ga naar de naam ruimte van een resource provider:
 > | publicipprefixes | Ja | Ja |
 > | routefilters | Nee | Nee |
 > | routetables | Ja | Ja |
-> | securegateways | Ja | Ja |
 > | serviceendpointpolicies | Ja | Ja |
 > | trafficmanagerprofiles | Ja | Ja |
 > | virtualhubs | Nee | Nee |

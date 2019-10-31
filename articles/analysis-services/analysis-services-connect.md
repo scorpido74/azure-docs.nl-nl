@@ -4,25 +4,25 @@ description: Meer informatie over hoe u verbinding kunt maken met en gegevens ku
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295185"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147312"
 ---
 # <a name="connecting-to-servers"></a>Verbinding maken met servers
 
-In dit artikel wordt beschreven hoe u verbinding maakt met een server met behulp van gegevens modellering en beheer toepassingen als SQL Server Management Studio (SSMS) of SQL Server Data Tools (SSDT). Of, met client rapportage toepassingen zoals micro soft Excel, Power BI Desktop of aangepaste toepassingen. Verbindingen met Azure Analysis Services HTTPS gebruiken.
+In dit artikel wordt beschreven hoe u verbinding maakt met een server met behulp van gegevens modellering en beheer toepassingen als SQL Server Management Studio (SSMS) of Visual Studio met Analysis Services projecten, of met client Reporting-toepassingen, zoals micro soft Excel, Power BI Bureau blad of aangepaste toepassingen. Verbindingen met Azure Analysis Services HTTPS gebruiken.
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 
 [De nieuwste client bibliotheken ophalen](analysis-services-data-providers.md)
 
-Alle verbindingen met een server, ongeacht het type, vereisen bijgewerkte AMO-, ADOMD.NET-en OLEDB-client bibliotheken om verbinding te maken met en een interface met een Analysis Services-server. Voor SSMS, SSDT, Excel 2016 en hoger, en Power BI, worden de nieuwste client bibliotheken geïnstalleerd of bijgewerkt met maandelijkse releases. In sommige gevallen is het echter mogelijk dat een toepassing niet de meest recente heeft. Bijvoorbeeld wanneer beleids regels updates vertragen of Office 365-updates op het uitgestelde kanaal staan.
+Alle verbindingen met een server, ongeacht het type, vereisen bijgewerkte AMO-, ADOMD.NET-en OLEDB-client bibliotheken om verbinding te maken met en een interface met een Analysis Services-server. Voor SSMS, Visual Studio, Excel 2016 en hoger, en Power BI, worden de meest recente client bibliotheken geïnstalleerd of bijgewerkt met maandelijkse releases. In sommige gevallen is het echter mogelijk dat een toepassing niet de meest recente heeft. Bijvoorbeeld wanneer beleids regels updates vertragen of Office 365-updates op het uitgestelde kanaal staan.
 
 ## <a name="server-name"></a>Servernaam
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Deputy | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met adjunct | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Deputy.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8b61bc01e729472c140253f8f936b6ec0dd1b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0b52a56f51e4dcf5f27eddcd68ff17973df21c0
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104234"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159237"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Zelfstudie: Azure Active Directory-integratie met Deputy
+# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Zelf studie: integratie Azure Active Directory met adjunct
 
 In deze zelfstudie leert u hoe u Deputy kunt integreren met Azure Active Directory (Azure AD).
 Als u Deputy integreert met Azure AD, biedt dit de volgende voordelen:
@@ -53,7 +54,7 @@ Als u de integratie van Deputy in Azure AD wilt configureren, moet u Deputy vanu
 
 **Als u Deputy wilt toevoegen vanuit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -211,12 +212,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -230,7 +231,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling naar Deputy in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -254,15 +255,15 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Deputy, moeten ze w
 
 2. Klik in het bovenste navigatievenster op **People** (Personen).
    
-    ![People](./media/deputy-tutorial/tutorial_deputy_001.png "People")
+    ![Iedereen](./media/deputy-tutorial/tutorial_deputy_001.png "Personen")
 
 3. Klik op de knop **Add People** (Personen toevoegen) en klik op **Add a single person** (Eén persoon toevoegen).
    
-    ![Add People](./media/deputy-tutorial/tutorial_deputy_002.png "Add People")
+    ![Personen toevoegen](./media/deputy-tutorial/tutorial_deputy_002.png "Personen toevoegen")
 
 4. Voer de volgende stappen uit en klik op **Save & Invite** (Opslaan en uitnodigen).
    
-    ![New User](./media/deputy-tutorial/tutorial_deputy_003.png "New User")
+    ![Nieuwe gebruiker](./media/deputy-tutorial/tutorial_deputy_003.png "Nieuwe gebruiker")
 
     a. Typ de naam van de gebruiker in het tekstvak **Name** (Naam), bijvoorbeeld **Britta Simon**.
    
@@ -276,11 +277,11 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Deputy, moeten ze w
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Deputy klikt, wordt u automatisch aangemeld bij de instantie van Deputy waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

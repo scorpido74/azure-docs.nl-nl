@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 13aa1f8cd643d579734cc603bbc81519a690fe59
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7fe84dd30099377af09b8100f5e5e7246a0d6328
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085848"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162404"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
 
-Ontdek hoe u Azure Functions gebruikt om een [serverloze](https://azure.microsoft.com/solutions/serverless/) functie te maken die wordt uitgevoerd op basis van een schema dat u definieert.
+Meer informatie over het gebruik van Azure Functions om een functie zonder [Server](https://azure.microsoft.com/solutions/serverless/) te maken die wordt uitgevoerd op basis van een schema dat u definieert.
 
 ![Functie-app maken in Azure Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -48,18 +48,18 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 2. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-scheduled-function/add-first-function.png)
+    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-scheduled-function/add-first-function.png)
 
 3. Typ `timer` in het zoekveld en configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding.
 
     ![Maak een door een timer geactiveerde functie in Azure Portal.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
-    | Instelling | Voorgestelde waarde | Description |
+    | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
-    | **Name** | Standaard | Bepaalt de naam van de door de timer geactiveerde functie. |
+    | **Naam** | Standaard | Bepaalt de naam van de door de timer geactiveerde functie. |
     | **Planning** | 0 \*/1 \* \* \* \* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
 
-4. Klik op **Create**. Er wordt een functie gemaakt in uw gekozen taal en deze wordt elke minuut uitgevoerd.
+4. Klik op **Maken**. Er wordt een functie gemaakt in uw gekozen taal en deze wordt elke minuut uitgevoerd.
 
 5. Controleer of dit correct wordt uitgevoerd door de traceringsinformatie die naar logboeken wordt geschreven te bekijken.
 

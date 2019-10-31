@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 53c171df47dde58b264b354eea5ff1ccca9f5256
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ee4b2196240ceff1351b7ea310d9660ed613d075
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374715"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73152078"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migreren van Enterprise Agreement naar Api's voor micro soft-gebruikers overeenkomsten
 
@@ -193,7 +193,7 @@ De naam van de eigenschap met de matrix met gebruiks records is gewijzigd van ge
 | MeterName | meterName | De exacte teken reeks waarden kunnen verschillen. |
 | MeterRegion | meterRegion | De exacte teken reeks waarden kunnen verschillen. |
 | MeterSubCategory | meterSubCategory | De exacte teken reeks waarden kunnen verschillen. |
-| Maand | Geen | De datum van de maand wordt geparseerd. |
+| Month | Geen | De datum van de maand wordt geparseerd. |
 | Naam van aanbieding: | Geen | Gebruik publishernaam en productOrderName. |
 | OfferId | Geen | &nbsp;  |
 | Bestelnummer | Geen | &nbsp;  |
@@ -352,15 +352,15 @@ Maak een andere GET-aanroep naar de locatie. Het antwoord op de GET-aanroep is h
 ```
 HTTP Status 200
 
-                                    {
-                            “id”: “providers/Microsoft.Consumption/operationresults/{operationId}”,
-                            “name”: {operationId},
-                           “type”: “Microsoft.Consumption/operationResults”,
-                           “properties” : {
-                                  “downloadUrl”: {urltoblob},
-                                  “vaildTill”: “Date”
+{
+  "id": "providers/Microsoft.Consumption/operationresults/{operationId}",
+  "name": {operationId},
+  "type": “Microsoft.Consumption/operationResults",
+  "properties" : {
+    "downloadUrl": {urltoblob},
+    "validTill": "Date"
+  }
 }
-                     }
 ```
 
 De client kan ook een GET-aanroep voor de `Azure-AsyncOperation` maken. Het eind punt retourneert de status voor de bewerking.
@@ -432,7 +432,7 @@ De oudere eigenschappen voor [Azure Resource Manager prijs lijst-api's](/rest/ap
 | --- | --- | --- |
 | Id van de meter | _meterId_ | Unieke identificatie voor de meter. Hetzelfde als meterId. |
 | Meter naam | meterName | Naam van de meter. Meter vertegenwoordigt de resource die kan worden geïmplementeerd voor de Azure-service. |
-| Meter categorie  | service | Naam van de classificatiecategorie voor de meter. Hetzelfde als de service in het prijzen overzicht van de micro soft-klanten overeenkomst. De exacte teken reeks waarden verschillen. |
+| Meter categorie  | service | De naam van de classificatiecategorie voor de meter. Hetzelfde als de service in het prijzen overzicht van de micro soft-klanten overeenkomst. De exacte teken reeks waarden verschillen. |
 | Subcategorie van de meter | meterSubCategory | De naam van de subclassificatiecategorie voor de meter. Op basis van de classificatie van de functie set-differentiatie op hoog niveau in de service. Bijvoorbeeld Basic SQL DB versus Standard SQL DB. |
 | Meter regio | meterRegion | &nbsp;  |
 | Eenheid | _Niet van toepassing_ | Kan worden geparseerd vanuit unitOfMeasure. |

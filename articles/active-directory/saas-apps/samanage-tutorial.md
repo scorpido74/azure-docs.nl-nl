@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Samanage | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met SAManage | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Samanage.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f0db4fb0-7eec-48c2-9c7a-beab1ab49bc2
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714e67bc7cf9e9c928eb4fd0764619041c9c1424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 741efbae84e18c811beb6c0579c1949c5ddf619c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092598"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160111"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Zelfstudie: Azure Active Directory-integratie met Samanage
+# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Zelf studie: integratie Azure Active Directory met SAManage
 
 In deze zelfstudie leert u hoe u Samanage kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Samanage met Azure AD heeft de volgende voordelen:
@@ -53,7 +54,7 @@ Voor het configureren van de integratie van Samanage in Azure AD moet u Samanage
 
 **Voer de volgende stappen uit om Samanage toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -136,11 +137,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Samanage moet u de v
 
 3. Klik op **Single Sign-On**.
    
-    ![Single Sign-On](./media/samanage-tutorial/tutorial_samanage_002.png "Single Sign-On")
+    ![Eenmalige aanmelding](./media/samanage-tutorial/tutorial_samanage_002.png "Eenmalige aanmelding")
 
 4. Navigeer naar de sectie **Login using SAML** en voer de volgende stappen uit:
    
-    ![Login using SAML](./media/samanage-tutorial/tutorial_samanage_003.png "Login using SAML")
+    ![Aanmelden met SAML](./media/samanage-tutorial/tutorial_samanage_003.png "Aanmelden met SAML")
  
     a. Klik op **Enable Single Sign-On with SAML**.  
  
@@ -176,12 +177,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -195,7 +196,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling Samanage in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -220,7 +221,7 @@ In het geval van Samanage is inrichten een handmatige taak.
 
 2. Klik op **Dashboard** en selecteer **Setup** in het linker navigatievenster.
    
-    ![Setup](./media/samanage-tutorial/tutorial_samanage_001.png "Setup")
+    ![Instellen](./media/samanage-tutorial/tutorial_samanage_001.png "Instellen")
 
 3. Klik op het tabblad **Users**
    
@@ -228,22 +229,22 @@ In het geval van Samanage is inrichten een handmatige taak.
 
 4. Klik op **New User**.
    
-    ![New User](./media/samanage-tutorial/tutorial_samanage_007.png "New User")
+    ![Nieuwe gebruiker](./media/samanage-tutorial/tutorial_samanage_007.png "Nieuwe gebruiker")
 
 5. Typ bij **Name** en **Email Address** de naam en het e-mailadres van een Azure Active Directory-account dat u wilt inrichten, en klik op **Create user**.
    
-    ![Create User](./media/samanage-tutorial/tutorial_samanage_008.png "Create User")
+    ![Gebruiker maken](./media/samanage-tutorial/tutorial_samanage_008.png "Gebruiker maken")
    
    >[!NOTE]
    >De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om zijn account te bevestigen voordat het actief wordt. U kunt ook alle andere hulpprogramma's voor het creëren van Samanage-gebruikersaccounts of API's van Samanage gebruiken om Azure Active Directory-gebruikersaccounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de Samanage-tegel in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Samanage waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

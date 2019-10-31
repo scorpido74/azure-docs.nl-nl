@@ -11,12 +11,12 @@ manager: carmonm
 ms.topic: conceptual
 tags: connectors
 ms.date: 10/14/2019
-ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312043"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161615"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
 
@@ -68,7 +68,7 @@ In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-a
 
 1. Stel de eigenschappen **interval** en **frequentie** in, waarmee wordt aangegeven hoe vaak uw logische app de tabel controleert.
 
-   Deze trigger retourneert slechts één rij uit de geselecteerde tabel, niets anders. Als u andere taken wilt uitvoeren, moet u andere acties toevoegen waarmee de gewenste taken worden uitgevoerd. Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
+   Deze trigger retourneert slechts één rij uit de geselecteerde tabel, niets anders. Als u andere taken wilt uitvoeren, moet u andere acties toevoegen waarmee de gewenste taken worden uitgevoerd. Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
 
 1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
@@ -84,7 +84,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
 1. Selecteer **nieuwe stap**onder de trigger of actie waar u de SQL-actie wilt toevoegen.
 
-   ![Selecteer ' nieuwe stap '](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+   ![Nieuwe stap toevoegen aan uw logische app](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
    Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
@@ -92,13 +92,13 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
    In dit voor beeld wordt de actie **rij ophalen** gebruikt, waarmee één record wordt opgehaald.
 
-   ![Zoek en selecteer de actie SQL-rij ophalen](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+   ![Zoek en selecteer de actie SQL-rij ophalen](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Als u de gegevens in deze rij wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
+   Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Als u de gegevens in deze rij wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
 
 1. Als u wordt gevraagd om een verbinding te maken, [maakt u nu uw SQL-verbinding](#create-connection). Als uw verbinding bestaat, selecteert u een **tabel naam**en voert u de **rij-id** voor de gewenste record in.
 
-   ![De tabel naam en de rij-ID invoeren](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![De tabel naam en de rij-ID invoeren](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
 1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
 
@@ -132,7 +132,7 @@ Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resu
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Zie de [referentie pagina van de connector](/connectors/sql/)voor technische informatie over de triggers, acties en limieten van deze connector.
+Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor technische informatie over de triggers, acties en limieten van deze connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,21 +8,21 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299866"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163117"
 ---
-# <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelfstudie: Aangepaste IoT Edge-modules maken en implementeren
+# <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelf studie: aangepaste IoT Edge-modules maken en implementeren
 
 > [!NOTE]
 > Dit artikel maakt deel uit van een reeks voor een zelf studie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel hebt gearriveerd, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
 
 In dit artikel maken we drie IoT Edge modules die berichten van Leaf-apparaten ontvangen, de gegevens via uw machine learning model uitvoeren en inzichten vervolgens naar IoT Hub door sturen.
 
-IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeft alleen te geven van de invoer waarop ze berichten en de uitvoer waaraan ze berichten schrijven accepteren.
+IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeven alleen de invoer op te geven waarop de berichten worden geaccepteerd en de uitvoer waarnaar ze berichten schrijven.
 
 We willen dat het IoT Edge-apparaat vier dingen doet voor ons:
 
@@ -33,7 +33,7 @@ We willen dat het IoT Edge-apparaat vier dingen doet voor ons:
 
 We gebruiken drie aangepaste modules om deze taken uit te voeren:
 
-* **RESTERENDE levens duur-classificatie:** De turboFanRulClassifier-module die we hebben gemaakt in de [trein en implementatie van een Azure machine learning model](tutorial-machine-learning-edge-04-train-model.md) is een standaard machine learning module, waarmee een invoer wordt aangeduid met de naam ' amlInput ' en een uitvoer met de naam ' amlOutput '. De invoer van ' amlInput ' verwacht precies hetzelfde als de invoer die we hebben verzonden naar de ACI-gebaseerde webservice. Op dezelfde manier retourneert ' amlOutput ' dezelfde gegevens als de webservice.
+* **Resterende levens duur-classificatie:** De turboFanRulClassifier-module die we hebben gemaakt in de [trein en implementatie van een Azure machine learning model](tutorial-machine-learning-edge-04-train-model.md) is een standaard machine learning module, waarmee een invoer wordt aangeduid met de naam ' amlInput ' en een uitvoer met de naam ' amlOutput '. De invoer van ' amlInput ' verwacht precies hetzelfde als de invoer die we hebben verzonden naar de ACI-gebaseerde webservice. Op dezelfde manier retourneert ' amlOutput ' dezelfde gegevens als de webservice.
 
 * **Avro schrijver:** Deze module ontvangt berichten over de invoer van ' avroModuleInput ' en bewaart het bericht in de Avro-indeling naar de schijf voor later uploaden naar IoT Hub.
 
@@ -87,12 +87,12 @@ Tijdens de uitvoering van de tweede van onze twee Azure Notebooks hebben we een 
          "<your registry>": {
            "username": "$CONTAINER_REGISTRY_USERNAME_<your registry>",
            "password": "$CONTAINER_REGISTRY_PASSWORD_<your registry>",
-           "address": "<your registry>.azurecr.io”
+           "address": "<your registry>.azurecr.io"
          }
        }
        ```
 
-     * **Modules** Deze sectie bevat de set door de gebruiker gedefinieerde modules die met deze oplossing gaan. U zult zien dat deze sectie momenteel twee modules bevat: SimulatedTemperatureSensor en turbofanRulClassifier. De SimulatedTemperatureSensor is geïnstalleerd door de Visual Studio code-sjabloon, maar dit is niet nodig voor deze oplossing. U kunt de module definitie SimulatedTemperatureSensor verwijderen uit de sectie modules. Houd er rekening mee dat de definitie van de turbofanRulClassifier-module verwijst naar de installatie kopie in het container register. Wanneer we meer modules toevoegen aan de oplossing, worden ze weer gegeven in deze sectie.
+     * **Modules:** Deze sectie bevat de set door de gebruiker gedefinieerde modules die met deze oplossing gaan. U zult zien dat deze sectie momenteel twee modules bevat: SimulatedTemperatureSensor en turbofanRulClassifier. De SimulatedTemperatureSensor is geïnstalleerd door de Visual Studio code-sjabloon, maar dit is niet nodig voor deze oplossing. U kunt de module definitie SimulatedTemperatureSensor verwijderen uit de sectie modules. Houd er rekening mee dat de definitie van de turbofanRulClassifier-module verwijst naar de installatie kopie in het container register. Wanneer we meer modules toevoegen aan de oplossing, worden ze weer gegeven in deze sectie.
 
        ```json
        "modules": {
@@ -169,22 +169,22 @@ Vervolgens voegen we de router module toe aan onze oplossing. De router module v
 
 3. Noem de module **turbofanRouter**.
 
-4. Wanneer u wordt gevraagd om de opslag plaats voor de docker-installatie kopie, gebruikt u het REGI ster vanuit de machine learning-werk ruimte (u kunt het REGI ster vinden in het knoop punt registryCredentials van uw *implementatie. bestand sjabloon. json* ). Deze waarde is het volledig gekwalificeerde adres van het REGI ster, zoals  **\<uw\>REGI ster. azurecr.io/turbofanrouter**.
+4. Wanneer u wordt gevraagd om de opslag plaats voor de docker-installatie kopie, gebruikt u het REGI ster vanuit de machine learning-werk ruimte (u kunt het REGI ster vinden in het knoop punt registryCredentials van uw *implementatie. bestand sjabloon. json* ). Deze waarde is het volledig gekwalificeerde adres van het REGI ster, zoals **\<uw REGI ster\>. azurecr.io/turbofanrouter**.
 
     > [!NOTE]
     > In dit artikel gebruiken we de Azure Container Registry gemaakt door de werk ruimte Azure Machine Learning service, die we hebben gebruikt om onze classificatie te trainen en te implementeren. Dit is uitsluitend voor het gemak. We hebben een nieuw container register gemaakt en onze modules daar gepubliceerd.
 
-5. Open een nieuw terminal venster in Visual Studio code (**Terminal** **weer geven** > ) en kopieer bestanden vanuit de map modules.
+5. Open een nieuw terminal venster in Visual Studio code (**bekijk** > **Terminal**) en kopieer bestanden vanuit de map modules.
 
     ```cmd
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-6. Wanneer u wordt gevraagd om Program.cs te `y` overschrijven, drukt `Enter`u op en klikt u vervolgens op.
+6. Wanneer u wordt gevraagd program.cs te overschrijven, drukt u op `y` en vervolgens op `Enter`.
 
 ### <a name="build-router-module"></a>Build-router module
 
-1. Selecteer in Visual Studio code de optie **Terminal** > **default build-taak configureren**.
+1. Selecteer in Visual Studio code de optie **Terminal** > **standaard build-taak configureren**.
 
 2. Klik op **Create tasks. json file from Temp late**.
 
@@ -221,7 +221,7 @@ Vervolgens voegen we de router module toe aan onze oplossing. De router module v
 
 5. Sla tasks. json op en sluit het.
 
-6. Voer build with `Ctrl + Shift + B` of **Terminal** > **Run build Task**uit.
+6. Voer build uit met `Ctrl + Shift + B` of **Terminal** > een **bouw taak uit te voeren**.
 
 ### <a name="set-up-module-routes"></a>Module routes instellen
 
@@ -248,7 +248,7 @@ Zoals hierboven vermeld, gebruikt de IoT Edge-runtime routes die zijn geconfigur
    "classifierToRouter": "FROM /messages/modules/turbofanRulClassifier/outputs/amloutput INTO BrokeredEndpoint(\"/modules/turbofanRouter/inputs/rulInput\")"
    ```
 
-#### <a name="outputs"></a>outputs
+#### <a name="outputs"></a>Uitvoer
 
 Voeg vier extra routes toe aan de para meter $edgeHub route om uitvoer van de router module af te handelen.
 
@@ -298,7 +298,7 @@ Alle routes die het knoop punt ' $edgeHub ' samen worden genomen, moeten eruitzi
 ```
 
 > [!NOTE]
-> Bij het toevoegen van de turbofanRouter-module is de `turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream`volgende extra route gemaakt:. Verwijder deze route, waarbij alleen de routes worden weer gegeven die hierboven in uw implementatie zijn opgenomen. sjabloon. JSON-bestand.
+> Bij het toevoegen van de turbofanRouter-module is de volgende extra route gemaakt: `turbofanRouterToIoTHub": "FROM /messages/modules/turbofanRouter/outputs/* INTO $upstream`. Verwijder deze route, waarbij alleen de routes worden weer gegeven die hierboven in uw implementatie zijn opgenomen. sjabloon. JSON-bestand.
 
 #### <a name="copy-routes-to-deploymentdebugtemplatejson"></a>Routes naar implementatie kopiëren. debug. Temp late. json
 
@@ -314,15 +314,15 @@ De Avro Writer-module heeft twee verantwoordelijkheden in onze oplossing om beri
 
 ### <a name="create-module-and-copy-files"></a>Module maken en bestanden kopiëren
 
-1. Zoek in het opdracht palet naar en selecteer **python: Interpreter selecteren** in.
+1. Zoek in het opdracht palet naar Select **python: Select interpreter**.
 
-1. Kies de interpreter die is gevonden in\\C: Python37.
+1. Kies het verwerkings programma dat is gevonden in C:\\Python37.
 
-1. Open het opdracht palet opnieuw en zoek naar vervolgens de **optie Terminal: Selecteer standaard shell**.
+1. Open het opdracht palet opnieuw en zoek naar Selecteer vervolgens **Terminal: Selecteer standaard shell**.
 
 1. Wanneer u hierom wordt gevraagd, kiest u **opdracht prompt**.
 
-1. Open een nieuwe Terminal Shell, **Terminal** > **New**Terminal.
+1. Open een nieuwe Terminal Shell, **terminal** > **New Terminal**.
 
 1. Klik met de rechter muisknop op de map modules in Visual Studio code en kies **IOT Edge module toevoegen**.
 
@@ -338,7 +338,7 @@ De Avro Writer-module heeft twee verantwoordelijkheden in onze oplossing om beri
    copy C:\source\IoTEdgeAndMlSample\EdgeModules\modules\avroFileWriter\*.py C:\source\IoTEdgeAndMlSample\EdgeSolution\modules\avroFileWriter\
    ```
 
-1. Als u wordt gevraagd om Main.py te `y` overschrijven, typt `Enter`u en vervolgens klikt u op.
+1. Als u wordt gevraagd om main.py te overschrijven, typt u `y` en klikt u vervolgens op `Enter`.
 
 1. U ziet dat filemanager.py en schema.py zijn toegevoegd aan de oplossing en dat main.py is bijgewerkt.
 
@@ -406,7 +406,7 @@ Als u de map wilt toevoegen aan de container van de module, wijzigt u de Dockerf
    CMD [ "python3", "-u", "./main.py" ]
    ```
 
-   De `mkdir` opdrachten `chown` en geven het docker-buildproces opdracht om een map op het hoogste niveau te maken met de naam/avrofiles in de installatie kopie en vervolgens om de moduleuser de eigenaar van de map te brengen. Het is belang rijk dat deze opdrachten worden ingevoegd nadat de module gebruiker is toegevoegd aan de installatie kopie `useradd` met de opdracht en voordat de context wordt overgeschakeld naar de moduleuser (gebruiker moduleuser).
+   Met de opdrachten `mkdir` en `chown` wordt het docker-bouw proces geïnstrueerd om een map op het hoogste niveau met de naam/avrofiles in de installatie kopie te maken en vervolgens de moduleuser de eigenaar van die map te maken. Het is belang rijk dat deze opdrachten worden ingevoegd nadat de module gebruiker is toegevoegd aan de installatie kopie met de `useradd` opdracht en voordat de context wordt overgeschakeld naar de moduleuser (gebruiker moduleuser).
 
 3. Breng de bijbehorende wijzigingen aan in Dockerfile. amd64. debug en Dockerfile. arm32v7.
 
@@ -416,7 +416,7 @@ De laatste stap voor het maken van de binding is het bijwerken van de implementa
 
 1. Open implementatie. Temp late. json.
 
-2. Wijzig de module definitie voor avroFileWriter door de `Binds` para meter toe te voegen die de container Directory/avrofiles naar de lokale map op het edge-apparaat wijst. De module definitie moet overeenkomen met dit voor beeld:
+2. Wijzig de module definitie voor avroFileWriter door de para meter `Binds` toe te voegen die de container Directory/avrofiles naar de lokale map op het edge-apparaat wijst. De module definitie moet overeenkomen met dit voor beeld:
 
    ```json
    "avroFileWriter": {
@@ -441,7 +441,7 @@ De laatste stap voor het maken van de binding is het bijwerken van de implementa
 
 ### <a name="bind-mount-for-access-to-configyaml"></a>Binding koppelen voor toegang tot config. yaml
 
-Er moet nog één binding worden toegevoegd voor de schrijver-module. Deze binding geeft de module toegang om de connection string te lezen uit het/etc/iotedge/config.yaml-bestand op het IoT Edge-apparaat. We hebben de Connection String nodig om een IoTHubClient te maken, zodat we de asynchrone\_methode\_voor het uploaden van BLOB kunnen aanroepen om bestanden te uploaden naar de IOT-hub. De stappen voor het toevoegen van deze binding zijn vergelijkbaar met die in de vorige sectie.
+Er moet nog één binding worden toegevoegd voor de schrijver-module. Deze binding geeft de module toegang om de connection string te lezen uit het/etc/iotedge/config.yaml-bestand op het IoT Edge-apparaat. We hebben de connection string nodig om een IoTHubClient te maken, zodat we de methode voor het uploaden van\_BLOB\_async kunnen aanroepen om bestanden te uploaden naar de IoT-hub. De stappen voor het toevoegen van deze binding zijn vergelijkbaar met die in de vorige sectie.
 
 #### <a name="update-directory-permission"></a>Directory machtigingen bijwerken
 
@@ -469,7 +469,7 @@ Er moet nog één binding worden toegevoegd voor de schrijver-module. Deze bindi
 
 1. Open het bestand **Dockerfile. amd64** op uw ontwikkel computer.
 
-2. Voeg een extra set `mkdir` en `chown` opdrachten toe aan het bestand, zodat het er uitziet als:
+2. Voeg een extra set `mkdir` en `chown` opdrachten toe aan het bestand, zodat er ongeveer als volgt uitziet:
 
    ```dockerfile
    FROM ubuntu:xenial
@@ -500,7 +500,7 @@ Er moet nog één binding worden toegevoegd voor de schrijver-module. Deze bindi
 
 1. Open het bestand **Deployment. Temp late. json** .
 
-2. Wijzig de module definitie voor avroFileWriter door een tweede regel toe te voegen aan de `Binds` para meter die de container Directory (/app/iotconfig) naar de lokale map op het apparaat (/etc/iotedge) wijst.
+2. Wijzig de module definitie voor avroFileWriter door een tweede regel toe te voegen aan de para meter `Binds` die de container Directory (/app/iotconfig) naar de lokale map op het apparaat (/etc/iotedge) wijst.
 
    ```json
    "avroFileWriter": {
@@ -614,7 +614,7 @@ Als de router en classificatie zijn geïmplementeerd, wordt verwacht dat er rege
 
 7. Selecteer **een container kiezen**.
 
-8. Kies het opslag account dat wordt gebruikt in deze zelf studie, met de naam **\<iotedgeandml\>Unique suffix**.
+8. Kies het opslag account dat wordt gebruikt in deze zelf studie, met de naam **iotedgeandml\<unieke achtervoegsel\>** .
 
 9. Kies de **ruldata** -container en klik op **selecteren**.
 
@@ -791,7 +791,7 @@ In deze sectie delen we enkele technieken om te weten wat er mis is met een modu
 
 * **Visual Studio code:** Bekijk het deel venster apparaten van Azure IoT Hub. Als de meeste modules een actieve status hebben, maar één is gestopt, moet u de module gestopt verder onderzoeken. Als alle modules gedurende een lange periode een gestopte status hebben, kan dit ook duiden op storingen.
 
-* **Azure Portal:** Door te navigeren naar uw IoT-hub in de portal en vervolgens de pagina met details van het apparaat te zoeken (onder IoT Edge, zoomt u in op uw apparaat), ziet u mogelijk dat een module een fout heeft gerapporteerd of niets heeft genoteerd voor de IoT-hub.
+* **Azure portal:** Door te navigeren naar uw IoT-hub in de portal en vervolgens de pagina met details van het apparaat te zoeken (onder IoT Edge, zoomt u in op uw apparaat), ziet u mogelijk dat een module een fout heeft gerapporteerd of niets heeft genoteerd voor de IoT-hub.
 
 ### <a name="diagnosing-from-the-device"></a>Diagnoses van het apparaat
 

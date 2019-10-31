@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f76a2eb098e2d96f617d19de089e56c7e8a497fd
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720145"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162762"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -27,15 +27,15 @@ In deze release opmerkingen voor Azure Media Services worden wijzigingen in eerd
 > [!NOTE]
 > Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
-We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [Azure Media Services MSDN Forum]. 
+We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen van problemen die van invloed zijn op u. Als u een probleem wilt melden of vragen wilt stellen, verzendt u een bericht in het [MSDN-forum Azure Media Services]. 
 
-## <a name="a-idissuesknown-issues"></a><a id="issues"/>Bekende problemen
-### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Algemene problemen Media Services
+## <a name="a-idissuesknown-issues"></a>Bekende problemen <a id="issues"/>
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services algemene problemen
 
-| Probleem | Description |
+| Probleem | Beschrijving |
 | --- | --- |
 | Er zijn geen enkele algemene HTTP-headers in de REST API. |Als u Media Services toepassingen ontwikkelt met behulp van de REST API, worden enkele veelvoorkomende HTTP-header velden (met inbegrip van CLIENT-REQUEST-ID, aanvraag-ID en retour-CLIENT-REQUEST-ID) niet ondersteund. De kopteksten worden toegevoegd in een toekomstige update. |
-| Percentage-code ring is niet toegestaan. |Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het maken van Url's voor de streaming-inhoud ( `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`bijvoorbeeld). Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap name mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ & = + $,/?% # [] '. Daarnaast kan er slechts één '. ' zijn voor de bestandsnaam extensie. |
+| Percentage-code ring is niet toegestaan. |Media Services gebruikt de waarde van de eigenschap IAssetFile.Name bij het maken van Url's voor de streaming-inhoud (bijvoorbeeld `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Daarom is het percentage code ring niet toegestaan. De waarde van de eigenschap name mag niet de volgende tekens voor [percentage versleuteling](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)bevatten:! * ' ();: @ & = + $,/?% # [] '. Daarnaast kan er slechts één '. ' zijn voor de bestandsnaam extensie. |
 | De methode ListBlobs die deel uitmaakt van de Azure Storage SDK-versie 3. x is mislukt. |Media Services genereert SAS-Url's op basis van de [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) -versie. Als u de opslag-SDK wilt gebruiken om blobs in een BLOB-container weer te geven, gebruikt u de methode [CloudBlobContainer. ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs) die deel uitmaakt van de Storage SDK versie 2. x. |
 | Het Media Services beperkings mechanisme beperkt het resource gebruik voor toepassingen die overmatige aanvragen naar de service doen. De service kan de HTTP-status code ' service niet beschikbaar 503 ' retour neren. |Zie de beschrijving van de 503 HTTP-status code in [Media Services fout codes](media-services-encoding-error-codes.md)voor meer informatie. |
 | Wanneer u een query uitvoert op entiteiten, wordt een limiet van 1.000 entiteiten tegelijk geretourneerd, omdat de open bare REST versie 2 de query resultaten beperkt tot 1.000 resultaten. |Gebruik overs Laan en ondernemen (.NET)/top (REST) zoals beschreven in [dit .net-voor beeld](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) en [Dit rest API voor beeld](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
@@ -43,7 +43,7 @@ We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen va
 | Media Services .NET SDK-objecten kunnen niet worden geserialiseerd en werken daarom niet met Azure cache voor redis. |Als u probeert het SDK AssetCollection-object te serialiseren om het toe te voegen aan Azure-cache voor redis, wordt er een uitzonde ring gegenereerd. |
 |De REST API reageert met een fout bericht met de melding dat het filter niet kan worden geopend door deze versie van REST API wanneer wordt geprobeerd een filter op activa-of account niveau op te halen.|Het filter is gemaakt of gewijzigd met een nieuwere API-versie dan wordt gebruikt om het filter op te halen. Dit kan gebeuren als er twee API-versies worden gebruikt door code of hulpprogram ma's die door de klant worden gebruikt.  De beste oplossing is hier om de code of hulpprogram ma's bij te werken voor het gebruik van de nieuwere of de twee API-versies.|
 
-## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>Geschiedenis van REST API-versie
+## <a name="a-idrest_version_historyrest-api-version-history"></a>geschiedenis van <a id="rest_version_history"/>REST API-versie
 Zie de [Naslag informatie over Azure Media Services REST API]voor informatie over de versie geschiedenis van Media Services rest API.
 
 ## <a name="september-2019"></a>September 2019
@@ -54,7 +54,7 @@ Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Pre
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.
 
-## <a name="august-2019"></a>2019 augustus
+## <a name="august-2019"></a>Augustus 2019
 
 ### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
@@ -62,7 +62,7 @@ Er wordt een afschaffing van de media processors van *Windows Azure Media Encode
 
 Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) en [aam migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)voor meer informatie.
 
-## <a name="march-2019"></a>2019 maart
+## <a name="march-2019"></a>Maart 2019
 
 De preview-functie voor media Hyperlapse van Azure Media Services is afgeschaft.
 
@@ -111,7 +111,7 @@ Vanaf 12 mei 2018 krijgen Live kanalen niet langer ondersteuning voor het RTP/MP
     * Verbeteringen in de H. 264-decoder die in de Standard-Encoder wordt gebruikt, elimineren bepaalde zeldzame artefacten. 
 
 #### <a name="media-analytics"></a>Media Analytics
-Algemene Beschik baarheid van de Azure Media Redactor: Deze media processor voert anoniem maken uit door de gezichten van geselecteerde individuen te vervagen en is ideaal voor gebruik in de scenario's voor open bare veiligheid en nieuws media. 
+Algemene Beschik baarheid van de Azure Media Redactor: deze media processor voert anoniem maken uit door de gezichten van geselecteerde individuen te vervagen en is ideaal voor gebruik in de scenario's voor open bare veiligheid en nieuws media. 
 
 Zie [dit blog bericht](https://azure.microsoft.com/blog/azure-media-redactor/)voor een overzicht van deze nieuwe processor. Zie voor meer informatie over documentatie en instellingen [redactie gezichten met Azure Media Analytics](media-services-face-redaction.md).
 
@@ -153,7 +153,7 @@ Zie [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/str
 
  U kunt Media Services nu gebruiken voor toegang tot gegevens over telemetrie/metrieken voor de services. U kunt de huidige versie van Media Services gebruiken om telemetriegegevens te verzamelen voor Live Channel, streaming-eind punt en archief entiteiten. Zie [Media Services telemetrie](media-services-telemetry-overview.md)voor meer informatie.
 
-## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>Release van juli 2016
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>versie van 2016 juli
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Updates voor het manifest bestand (*. ISM) gegenereerd door coderings taken
 Wanneer een coderings taak wordt verzonden naar Media Encoder Standard of Media Encoder Premium, genereert de coderings taak een [streaming-manifest bestand](media-services-deliver-content-overview.md) (*. ISM) in de uitvoer Asset. Met de nieuwste service release is de syntaxis van dit bestand met het streaming-manifest bijgewerkt.
 
@@ -209,9 +209,9 @@ Het Azure SDK-team heeft een nieuwe release gepubliceerd van het pakket [Azure S
 Zie voor meer informatie:
 
 * De volgende [code voorbeelden](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) helpen u snel aan de slag te gaan:
-  * **vodworkflow_aes.php**: Dit PHP-bestand laat zien hoe u AES-128 dynamische versleuteling en de key delivery-service kunt gebruiken. Het is gebaseerd op het .NET-voor beeld dat is uitgelegd in [use AES-128 Dynamic Encryption en de key delivery service](media-services-protect-with-aes128.md).
-  * **vodworkflow_aes.php**: In dit PHP-bestand wordt uitgelegd hoe u dynamische versleuteling van PlayReady en de service voor de levering van licenties kunt gebruiken. Het is gebaseerd op het .NET-voor beeld dat wordt uitgelegd in het [gebruik van PlayReady en/of Widevine Dynamic common Encryption](media-services-protect-with-playready-widevine.md).
-  * **scale_encoding_units.php**: Dit PHP-bestand laat zien hoe u gereserveerde encoding-eenheden kunt schalen.
+  * **vodworkflow_aes. php**: in dit php-bestand ziet u hoe u met aes-128 dynamische versleuteling en de key delivery-service kunt gebruiken. Het is gebaseerd op het .NET-voor beeld dat is uitgelegd in [use AES-128 Dynamic Encryption en de key delivery service](media-services-protect-with-aes128.md).
+  * **vodworkflow_aes. php**: in dit php-bestand wordt uitgelegd hoe u dynamische versleuteling van PlayReady en de service voor de levering van licenties kunt gebruiken. Het is gebaseerd op het .NET-voor beeld dat wordt uitgelegd in het [gebruik van PlayReady en/of Widevine Dynamic common Encryption](media-services-protect-with-playready-widevine.md).
+  * **scale_encoding_units. php**: in dit php-bestand ziet u hoe u gereserveerde encoding-eenheden kunt schalen.
 
 ## <a id="nov_changes_15"></a>Release van november 2015
  Media Services biedt nu de Widevine-licentie leverings service in de Cloud. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie. Zie ook [deze zelf studie](media-services-protect-with-playready-widevine.md) en de [github-opslag plaats](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
@@ -219,10 +219,10 @@ Zie voor meer informatie:
 Widevine License Delivery Services van Media Services zijn beschikbaar als preview-versie. Zie [deze blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)voor meer informatie.
 
 ## <a id="oct_changes_15"></a>Release van oktober 2015
-Media Services is nu live in de volgende data centers: Brazilië-zuid, India-West, India-Zuid en India centraal. U kunt nu de Azure Portal gebruiken om [media service-accounts te maken](media-services-portal-create-account.md) en diverse taken uit te voeren die worden beschreven op de [webpagina van Media Services documentatie](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding is niet ingeschakeld in deze data centers. Verder zijn niet alle typen gereserveerde encoding-eenheden beschikbaar in deze data centers.
+Media Services is nu live in de volgende data centers: Brazilië-zuid, India-West, India-Zuid en India-centraal. U kunt nu de Azure Portal gebruiken om [media service-accounts te maken](media-services-portal-create-account.md) en diverse taken uit te voeren die worden beschreven op de [webpagina van Media Services documentatie](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding is niet ingeschakeld in deze data centers. Verder zijn niet alle typen gereserveerde encoding-eenheden beschikbaar in deze data centers.
 
-* Brazilië-zuid:                                          Er zijn alleen gereserveerde Standard-en Basic Encoding-eenheden beschikbaar.
-* India-West, India-Zuid en India-centraal:             Er zijn alleen gereserveerde Basic Encoding-eenheden beschikbaar.
+* Brazilië-zuid: er zijn alleen gereserveerde Standard en Basic Encoding-eenheden beschikbaar.
+* India-West, India-Zuid en India centraal: er zijn alleen gereserveerde basis-encoding-eenheden beschikbaar.
 
 ## <a id="september_changes_15"></a>Release van september 2015
 Media Services biedt nu de mogelijkheid om zowel video on demand als live streams te beveiligen met Widevine Modular DRM-technologie. U kunt de volgende partners voor leverings Services gebruiken om Widevine-licenties te leveren:
@@ -294,7 +294,7 @@ Zie [deze blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK-updates
 De Media Services .NET SDK is nu versie 3.2.0.0. De volgende updates zijn uitgevoerd:
 
-* Wijziging die fouten veroorzaakt: TokenRestrictionTemplate. Issuer en TokenRestrictionTemplate. Audience zijn gewijzigd in een teken reeks type.
+* Laatste wijziging: TokenRestrictionTemplate. Issuer en TokenRestrictionTemplate. Audience zijn gewijzigd in een teken reeks type.
 * Er zijn updates gemaakt met betrekking tot het maken van een aangepast beleid voor opnieuw proberen.
 * Er zijn oplossingen voor fouten gemaakt met betrekking tot het uploaden en downloaden van bestanden.
 * De MediaServicesCredentials-klasse accepteert nu de primaire en secundaire toegangs beheer eindpunten voor verificatie op basis van.
@@ -394,8 +394,8 @@ Wanneer u een Asset codeert, wordt een uitvoer activum geproduceerd wanneer de c
 ## <a id="july_changes_14"></a>Release van juli 2014
 De volgende oplossingen voor fouten zijn gemaakt voor de Azure Media Services packager en versleutelings programma:
 
-* Wanneer een Asset van een live-archief wordt verzonden naar HLS, wordt alleen audio afgespeeld: Dit probleem is opgelost en nu kunnen audio en video worden afgespeeld.
-* Wanneer een Asset is verpakt naar HLS en AES 128-bits envelop versleuteling, worden de verpakte streams niet afgespeeld op Android-apparaten: Deze bug is opgelost en de verpakte stroom wordt afgespeeld op Android-apparaten die ondersteuning bieden voor HLS.
+* Wanneer een Asset van een live-archief wordt verzonden naar HLS, wordt alleen audio afgespeeld: dit probleem is opgelost en nu kunnen audio en video worden afgespeeld.
+* Wanneer een Asset is verpakt naar HLS en AES 128-bits envelop versleuteling, worden de verpakte streams niet afgespeeld op Android-apparaten: deze bug is opgelost en de verpakte stroom wordt afgespeeld op Android-apparaten die ondersteuning bieden voor HLS.
 
 ## <a id="may_changes_14"></a>Kan 2014-release
 ### <a id="may_14_changes"></a>Algemene Media Services updates
@@ -455,27 +455,27 @@ De volgende Media Services Power shell-cmdlets zijn nu opgenomen in de [Azure SD
     Bijvoorbeeld: `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    Bijvoorbeeld: `New-AzureMediaServicesAccount -Name “MediaAccountName” -Location “Region” -StorageAccountName “StorageAccountName”`
+    Bijvoorbeeld: `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    Bijvoorbeeld: `New-AzureMediaServicesKey -Name “MediaAccountName” -KeyType Secondary -Force`
+    Bijvoorbeeld: `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
-    Bijvoorbeeld: `Remove-AzureMediaServicesAccount -Name “MediaAccountName” -Force`
+    Bijvoorbeeld: `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
 
 ## <a id="june_changes_13"></a>Release van juni 2013
 ### <a name="june_13_general_changes"></a>Media Services wijzigingen
 De volgende wijzigingen die in deze sectie worden vermeld, zijn updates die zijn opgenomen in de Media Services releases van juni 2013:
 
 * De mogelijkheid om meerdere opslag accounts te koppelen aan een media service-account. 
-    * StorageAccount
+    * Storage account
     * Activa. StorageAccountName en activum. Storage account
 * De mogelijkheid om de taak. Priority bij te werken. 
 * Aan meldingen gerelateerde entiteiten en eigenschappen: 
     * JobNotificationSubscription
     * NotificationEndPoint
-    * Taak
-* Asset.Uri 
+    * Job
+* Activum. URI 
 * Locator.Name 
 
 ### <a name="june_13_dotnet_changes"></a>Media Services .NET SDK-wijzigingen
@@ -484,39 +484,39 @@ De volgende wijzigingen zijn opgenomen in de releases van juni 2013 Media Servic
 * Vanaf versie 2.3.0.0 ondersteunt de Media Services SDK het koppelen van meerdere opslag accounts aan een Media Services-account. De volgende Api's ondersteunen deze functie:
   
     * Type IStorageAccount
-    * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
+    * Eigenschap micro soft. WindowsAzure. Media Services. client. Cloudmediacontext maakt. Storage accounts
     * Eigenschap Storage account
     * Eigenschap StorageAccountName
   
       Zie [Media Services-assets beheren in meerdere opslag accounts](https://msdn.microsoft.com/library/azure/dn271889.aspx)voor meer informatie.
 * Aan meldingen gerelateerde Api's. Vanaf versie 2.2.0.0 kunt u naar Azure Queue-opslag meldingen Luis teren. Zie [Media Services taak meldingen verwerken](https://msdn.microsoft.com/library/azure/dn261241.aspx)voor meer informatie.
   
-    * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions property
-    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
-    * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription type
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
+    * Eigenschap micro soft. WindowsAzure. Media Services. client. IJob. JobNotificationSubscriptions
+    * Het type micro soft. WindowsAzure. Media Services. client. INotificationEndPoint
+    * Het type micro soft. WindowsAzure. Media Services. client. IJobNotificationSubscription
+    * Het type micro soft. WindowsAzure. Media Services. client. NotificationEndPointCollection
+    * Het type micro soft. WindowsAzure. Media Services. client. NotificationEndPointType
 * Afhankelijkheid van de Storage client SDK 2,0 (Microsoft. WindowsAzure. StorageClient. dll)
 * Afhankelijkheid van OData 5,5 (Microsoft. data. OData. dll)
 
 ## <a id="december_changes_12"></a>Release van december 2012
 ### <a name="dec_12_dotnet_changes"></a>Media Services .NET SDK-wijzigingen
-* IntelliSense: Er is een ontbrekend IntelliSense-documentatie toegevoegd voor veel typen.
-* Micro soft. practices. TransientFaultHandling. core: Er is een probleem opgelost waarbij de SDK nog steeds een oude versie van deze assembly had. De SDK verwijst nu naar versie 5.1.1209.1 van deze assembly.
+* IntelliSense: er is een ontbrekende IntelliSense-documentatie toegevoegd voor veel typen.
+* Micro soft. practices. TransientFaultHandling. core: er is een probleem opgelost waarbij de SDK nog steeds een oude versie van deze assembly had. De SDK verwijst nu naar versie 5.1.1209.1 van deze assembly.
 
 Oplossingen voor problemen die in de SDK van november 2012 zijn gevonden:
 
-* IAsset. Locators. Count: Dit aantal wordt nu correct gerapporteerd voor nieuwe IAsset-interfaces nadat alle locators zijn verwijderd.
-* IAssetFile.ContentFileSize: Deze waarde is nu correct ingesteld na een upload door IAssetFile. upload (filepath).
-* IAssetFile.ContentFileSize: Deze eigenschap kan nu worden ingesteld wanneer u een activa bestand maakt. Het was eerder alleen-lezen.
-* IAssetFile. upload (filepath): Er is een probleem opgelost waarbij deze synchrone upload methode de volgende fout heeft opgetreden toen er meerdere bestanden werden geüpload naar de Asset. De fout is de server kan de aanvraag niet verifiëren. Zorg ervoor dat de waarde van autorisatie-header correct is opgemaakt, inclusief de hand tekening.
-* IAssetFile.UploadAsync: Er is een probleem opgelost waarbij de gelijktijdige upload van bestanden naar vijf bestanden is beperkt.
-* IAssetFile.UploadProgressChanged: Deze gebeurtenis is nu afkomstig van de SDK.
-* IAssetFile.DownloadAsync(string, BlobTransferClient, ILocator, CancellationToken): Deze methode-overload is nu opgenomen.
-* IAssetFile.DownloadAsync: Er is een probleem opgelost waarbij het gelijktijdig downloaden van bestanden naar vijf bestanden is beperkt.
-* IAssetFile.Delete(): Er is een probleem opgelost waarbij het aanroepen van verwijderen mogelijk een uitzonde ring genereert als er geen bestand is geüpload voor de IAssetFile.
-* Functies Er is een probleem opgelost waarbij een ' MP4 to Smooth streaming Task ' met een ' PlayReady Protection-taak ' wordt gekoppeld met behulp van een taak sjabloon om helemaal geen taken te maken.
-* EncryptionUtils.GetCertificateFromStore(): Met deze methode wordt geen null-referentie-uitzonde ring meer gegenereerd vanwege een fout bij het vinden van het certificaat op basis van problemen met de certificaat configuratie.
+* IAsset. Locators. Count: dit aantal wordt nu correct gerapporteerd voor nieuwe IAsset-interfaces nadat alle locators zijn verwijderd.
+* IAssetFile. ContentFileSize: deze waarde is nu correct ingesteld na een upload door IAssetFile. upload (filepath).
+* IAssetFile. ContentFileSize: deze eigenschap kan nu worden ingesteld wanneer u een activa bestand maakt. Het was eerder alleen-lezen.
+* IAssetFile. upload (filepath): er is een probleem opgelost waarbij deze synchrone upload methode de volgende fout heeft veroorzaakt toen er meerdere bestanden werden geüpload naar de Asset. De fout is de server kan de aanvraag niet verifiëren. Zorg ervoor dat de waarde van autorisatie-header correct is opgemaakt, inclusief de hand tekening.
+* IAssetFile. UploadAsync: er is een probleem opgelost waarbij de gelijktijdige upload van bestanden naar vijf bestanden is beperkt.
+* IAssetFile. UploadProgressChanged: deze gebeurtenis wordt nu door de SDK verschaft.
+* IAssetFile. DownloadAsync (String, BlobTransferClient, ILocator, CancellationToken): deze methode-overload is nu gegeven.
+* IAssetFile. DownloadAsync: er is een probleem opgelost waarbij de gelijktijdige down load van bestanden naar vijf bestanden is beperkt.
+* IAssetFile. Delete (): er is een probleem opgelost waarbij het aanroepen van verwijderen mogelijk een uitzonde ring genereert als er geen bestand is geüpload voor de IAssetFile.
+* Taken: er is een probleem opgelost waarbij het koppelen van een ' MP4 to Smooth streaming Task ' met een ' PlayReady Protection-taak ' met behulp van een taak sjabloon geen taken heeft gemaakt.
+* EncryptionUtils. GetCertificateFromStore (): deze methode genereert geen null-referentie-uitzonde ring vanwege een fout bij het vinden van het certificaat op basis van problemen met de certificaat configuratie.
 
 ## <a id="november_changes_12"></a>Release van november 2012
 De wijzigingen die in deze sectie worden vermeld, zijn updates opgenomen in de SDK van november 2012 (versie 2.0.0.0). Deze wijzigingen kunnen ertoe leiden dat code die is geschreven voor de preview SDK-versie van juni 2012, wordt gewijzigd of herschreven.
@@ -525,7 +525,7 @@ De wijzigingen die in deze sectie worden vermeld, zijn updates opgenomen in de S
   
     * IAsset. Create (assets) is de *enige* functie voor het maken van activa. IAsset. Create uploadt geen bestanden meer als onderdeel van de methode aanroep. Gebruik IAssetFile om te uploaden.
     * De methode IAsset. publish en de opsommings waarde AssetState. publish zijn verwijderd uit de Services SDK. Alle code die afhankelijk is van deze waarde moet worden herschreven.
-* FileInfo
+* File info
   
     * Deze klasse is verwijderd en vervangen door IAssetFile.
   
@@ -533,10 +533,10 @@ De wijzigingen die in deze sectie worden vermeld, zijn updates opgenomen in de S
   
     * IAssetFile vervangt File Info en heeft een ander gedrag. Als u dit wilt gebruiken, maakt u een exemplaar van het IAssetFiles-object, gevolgd door een bestand dat u kunt uploaden met behulp van de Media Services SDK of de opslag-SDK. De volgende IAssetFile. upload-Overloads kunnen worden gebruikt:
   
-        * IAssetFile. upload (filePath): Deze synchrone methode blokkeert de thread en wordt alleen aangeraden als u één bestand uploadt.
-        * IAssetFile. UploadAsync (filePath, blobTransferClient, Locator, cancellationToken): Deze asynchrone methode is het voorkeurs mechanisme voor het uploaden. 
+        * IAssetFile. upload (filePath): deze synchrone methode blokkeert de thread en wordt alleen aangeraden als u één bestand uploadt.
+        * IAssetFile. UploadAsync (filePath, blobTransferClient, Locator, cancellationToken): deze asynchrone methode is het voorkeurs mechanisme voor uploaden. 
     
-            Bekende fout: Als u het annulerings token gebruikt, wordt het uploaden geannuleerd. De taken kunnen veel ANNULERINGS statussen hebben. U moet uitzonde ringen goed ondervangen en verwerken.
+            Bekende fout: als u het annulerings token gebruikt, wordt het uploaden geannuleerd. De taken kunnen veel ANNULERINGS statussen hebben. U moet uitzonde ringen goed ondervangen en verwerken.
 * Locators
   
     * De origin-specifieke versies zijn verwijderd. De SAS-specifieke context. Locators. CreateSasLocator (Asset, accessPolicy) wordt gemarkeerd als afgeschaft of verwijderd door algemene Beschik baarheid. Zie de sectie ' Locators ' onder ' nieuwe functionaliteit ' voor bijgewerkt gedrag.
@@ -563,7 +563,7 @@ De volgende functionaliteit was nieuw in de release van november van de SDK:
 <!-- Images. -->
 
 <!--- URLs. --->
-[Azure Media Services MSDN Forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
+[MSDN-forum Azure Media Services]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Naslag informatie over Azure Media Services REST API]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Invoermetagegevens]: https://msdn.microsoft.com/library/azure/dn783120.aspx

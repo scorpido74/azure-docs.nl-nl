@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: e6a1dba603cbeea276dc6153f82ae599e3d29b3d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
-ms.translationtype: HT
+ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101343"
+ms.locfileid: "73162811"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
@@ -34,7 +34,7 @@ In deze Quick Start leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 >[!Note]
-> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service vragen we klanten om aan ons te bellen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  Als u de mogelijkheden van Azure lente Cloud wilt verkennen, kunt u contact met ons opnemen via e-mail: azure-spring-cloud@service.microsoft.com.
+> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service vragen we klanten om aan ons te bellen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  Als u de mogelijkheden van Azure lente Cloud wilt verkennen, vult u de [Azure lente-Cloud (private preview)-rente formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)in en verzendt u deze. Hoewel Azure lente-Cloud in preview is, biedt micro soft beperkte ondersteuning zonder een SLA.  Raadpleeg deze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/)over ondersteuning voor meer informatie over ondersteuning tijdens previews.
 
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, JDK, maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud shell](https://shell.azure.com) vanuit shell.Azure.com.  [Lees onze documentatie](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.

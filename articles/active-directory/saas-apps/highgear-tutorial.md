@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met HighGear | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met HighGear | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en HighGear.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 55dcd2fb-96b7-46ec-9e69-eee71c535773
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad7aedf90ead4b21bab661bdaf85316cd648fd75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67101257"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159050"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Zelfstudie: Azure Active Directory-integratie met HighGear
+# <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Zelf studie: integratie Azure Active Directory met HighGear
 
 In deze zelfstudie leert u hoe u HighGear kunt integreren met Azure Active Directory (Azure AD).
 De integratie van HighGear met Azure AD heeft de volgende voordelen:
@@ -181,12 +182,12 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -200,7 +201,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De koppeling HighGear in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -229,7 +230,7 @@ Meld u aan bij uw HighGear-systeem als u een testgebruiker voor HighGear wilt ma
     Aan de rechterkant schuift een deelvenster uit waarin u de gegevens voor de nieuwe gebruiker kunt typen.  
     ![Het formulier New Contact](media/highgear-tutorial/new-contact-form.png)
 
-3. Typ in het veld **Name** een naam voor de contactpersoon. Bijvoorbeeld: Britta Simon
+3. Typ in het veld **Name** een naam voor de contactpersoon. Bijvoorbeeld: Julia Simon
 
 4. Klik op het menu **More Options** en selecteer het menu-item **Account Info**.
 
@@ -248,11 +249,11 @@ Meld u aan bij uw HighGear-systeem als u een testgebruiker voor HighGear wilt ma
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel HighGear klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van HighGear in het toegangsvenster waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
