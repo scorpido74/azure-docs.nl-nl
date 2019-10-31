@@ -29,7 +29,7 @@
     - name: Registreren voor wachtwoordherstel
       href: active-directory-passwords-reset-register.md
     - name: Uw wachtwoord opnieuw instellen
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: Hulp bij Microsoft Authenticator-app
   items:
     - name: Overzicht
