@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 10/16/2019
-ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550704"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177650"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -208,7 +208,7 @@ De volgende twee procedures laten zien hoe u een Azure Active Directory beheerde
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-Server kan worden gehost op Azure SQL Database of Azure SQL Data Warehouse.)  ![choose-AD ][8]
+1. Ga naar de [Azure-portal](https://portal.azure.com/) en selecteer in de rechterbovenhoek uw verbinding om een lijst met mogelijke Active Directories weer te geven. Kies de juiste Active Directory als de standaard-Azure AD. In deze stap wordt de aan het abonnement gekoppelde Active Directory gekoppeld aan de Azure SQL-server, zodat u zeker weet dat hetzelfde abonnement wordt gebruikt voor zowel Azure AD als SQL Server. (De Azure SQL-Server kan worden gehost op Azure SQL Database of Azure SQL Data Warehouse.) ![kiezen-AD][8]
 
 2. Selecteer in het linkerdeel ster **alle services**en in het filter type in **SQL Server**. Selecteer **SQL-servers**.
 
@@ -218,7 +218,7 @@ De volgende twee procedures laten zien hoe u een Azure Active Directory beheerde
     > Op deze pagina kunt u, voordat u **SQL-servers**selecteert, de **ster** naast de naam selecteren om de categorie te *favoriet* en **SQL-servers** aan de linkernavigatiebalk toe te voegen.
 
 3. Selecteer op **SQL Server** pagina **Active Directory beheerder**.
-4. Selecteer op de pagina **Active Directory-beheerder** de optie **beheerder instellen**.   ![select Active Directory ](./media/sql-database-aad-authentication/select-active-directory.png)  
+4. Selecteer op de pagina **Active Directory-beheerder** de optie **beheerder instellen**.  ![Active Directory-](./media/sql-database-aad-authentication/select-active-directory.png) selecteren  
 
 5. Zoek op de pagina **Beheerder toevoegen** een gebruiker. Selecteer de gebruiker of groep die beheerder moet zijn en selecteer **Selecteren**. (Op de pagina Active Directory-beheerder ziet u alle leden en groepen van uw Active Directory.) Gebruikers of groepen die grijs zijn gekleurd, kunnen niet worden geselecteerd omdat ze niet worden ondersteund als beheerders voor Azure AD. (Zie de lijst met ondersteunde beheerders in de sectie **functies en beperkingen van Azure AD** van het [gebruik van Azure Active Directory verificatie voor verificatie met SQL database of SQL Data Warehouse](sql-database-aad-authentication.md).) Op rollen gebaseerd toegangs beheer (RBAC) is alleen van toepassing op de portal en wordt niet door gegeven aan SQL Server.
     ![beheerder selecteren](./media/sql-database-aad-authentication/select-admin.png)  
@@ -465,7 +465,7 @@ Zie [SQL Server Security Blog](https://blogs.msdn.microsoft.com/sqlsecurity/20..
 
 ### <a name="sqlcmd"></a>sqlcmd
 
-De volgende instructies zijn een verbinding met versie 13,1 van Sqlcmd, die beschikbaar is via het [Download centrum](https://go.microsoft.com/fwlink/?LinkID=825643).
+De volgende instructies zijn een verbinding met versie 13,1 van Sqlcmd, die beschikbaar is via het [Download centrum](https://www.microsoft.com/download/details.aspx?id=53591).
 
 > [!NOTE]
 > `sqlcmd` met de `-G` opdracht werkt niet met systeem identiteiten en vereist een gebruiker-Principal-aanmelding.

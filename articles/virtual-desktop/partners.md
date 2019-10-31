@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300226"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171608"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -71,6 +71,16 @@ deviceTRUST is een Windows-service provider voor virtueel bureau blad die de bed
 deviceTRUST breidt de waarde van Windows virtueel bureau blad uit met hun contextuele beveiligings technologie. deviceTRUST maakt voorwaardelijke toegang mogelijk voor een veilige toegang tot het virtuele bureau blad van Windows, voorwaardelijke toegang tot een toepassing binnen het virtuele bureau blad van Windows en voor het Toep assen van voorwaardelijke Windows-bureaublad beleid zonder extra infra structuur. Met deviceTRUST kunt u een mobiele, flexibele werk ruimte maken die voldoet aan alle vereisten voor beveiliging, naleving en regelgeving. 
 
 - [Ga naar de website van de partner](https://devicetrust.com/wvd).
+
+## <a name="ivanti"></a>Ivanti
+
+![Ivanti-logo](./media/partners/ivanti.png)
+
+Ivanti User Workspace Manager is een Windows-service voor virtueel bureau blad met toegevoegde waarde waarmee desktop implementatie en-beheer worden vergemakkelijkt door gebruikers gegevens van het bureau blad te scheiden voor een naadloze portabiliteit. Met Ivanti kunnen gebruikers complexe projecten leveren, zoals migreren naar Windows 10, Office 365 of het verplaatsen van services naar de Cloud versnellen. 
+
+Bij gebruik in combi natie met Windows Virtual Desktop biedt Ivanti gebruikers werkruimte beheer een eenvoudig context beheer van de gebruikers ervaring op het bureau blad, voor het elimineren van lange aanmeldings tijden en uitroeiing van Nightmares voor groeps beleid. Met de out-of-the-box-sjablonen van Ivanti-gebruikers werkruimte beheer wordt de installatie voor gebruikers vereenvoudigd via agents en de bestaande-console. Ivanti gebruikers werkruimte beheer biedt responsieve, beveiligde Desk tops die gebruikers bevallen, het besparen van geld op servers, het efficiënter beheren van gebruikers en het verminderen van het beveiligings risico van eind punten. 
+
+- [Ga naar de website van de partner](https://www.ivanti.com/products/user-workspace-manager).
 
 ## <a name="lakeside-software"></a>Lakeside-software
 
@@ -133,6 +143,26 @@ Het PrinterLogic-platform is beschikbaar als SaaS of als webstack in uw eigen pr
 
 - [Ga](https://www.printerlogic.com)naar de website van de partner.
 
+## <a name="numecent"></a>Numecent
+
+![Numecent-logo](./media/partners/numecent.png)
+
+Numecent is een Windows-service provider met toegevoegde waarde die de totale bedrijfs kosten aanzienlijk reduceert door snelle onboarding en migratie van gecompliceerde of niet-compatibele Windows-apps in Windows-omgevingen met virtueel bureau blad. Numecent minimaliseert ook de hoeveelheid configuratie gebruikers die moeten worden uitgevoerd, vermindert toepassings updates en vereenvoudigt complexe processen. Omdat Numecent Cloudpaging meer toepassingen naadloos ondersteunt dan elk ander hulp programma voor het leveren van toepassingen, worden er tijd-en IT-workloads in omgevingen met een verscheidenheid aan toepassingen gereduceerd. 
+
+Wanneer u gebruikt met Windows Virtual Desktop, vermindert Cloudpaging verdere kosten door de levens cyclus van software middelen te volt ooien van de implementatie tot het bijwerken, meten en verwijderen van toepassingen. Cloudpaging vereenvoudigt het beheer van afbeeldingen door apps dynamisch in realtime in te richten op de Windows-implementaties van virtuele Bureau bladen. Cloudpaging zorgt ervoor dat toepassingen zonder beheer of interventie worden uitgevoerd via de periodieke updates voor Windows 10. Cloudpaging vermindert ook de licentie kosten van dure toepassingen door efficiëntere implementatie en gebruik van deze toepassingen mogelijk te maken. 
+
+- [Ga naar de website van de partner](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
+
+## <a name="rdpsoft"></a>RDPSoft
+
+![RDPSoft-logo](./media/partners/rdpsoft.png)
+
+RDPSoft is een virtueel-bureaublad partner van Windows die krachtige en goedkope bewakings-, beheer-en rapportage oplossingen biedt. Met hun Extern bureaublad Commander-aanbod kunnen IT-professionals inzicht krijgen in de status, prestaties, gebruikers activiteiten, licenties en de beveiliging van hun Windows Virtual Desktop-implementaties. 
+ 
+De Extern bureaublad Commander-oplossingen van RDPSoft verbeteren het beheer van virtuele Windows-Bureau bladen. Premium-beheer functies vereenvoudigen de overdracht van beheer taken voor virtuele Windows-Bureau bladen ter ondersteuning van Desk medewerkers door hulp op afstand, gebruikers sessie en proces beheer te bieden. Terzelfder tijd verzamelt de Extern bureaublad Commander Suite rijke metrische gegevens over de prestaties van de gebruiker en de belasting, gebruikers activiteit en controle, Windows Virtual Desktop-verbindings kwaliteit (latentie en band breedte), licenties en beveiliging in een centrale Azure SQL data base-exemplaar voor controle. Met RDPSoft zijn uitgebreide historische rapporten en uitgebreide Dash boards gewoon op weg.
+
+- [Ga naar de partner website](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
 ## <a name="thinprint"></a>ThinPrint
 
 ![ThinPrint-logo](./media/partners/thinprint.png)
@@ -143,6 +173,16 @@ De ezeep-oplossing van ThinPrint breidt de waarde van virtueel bureau blad van W
 
 - [Bekijk de kortere oplossing](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
 - [Ga](https://www.ezeep.com/wvd-printing)naar de website van de partner.
+
+## <a name="tricerat"></a>Tricerat
+
+![Tricerat-logo](./media/partners/tricerat.png)
+
+Tricerat biedt een superieure oplossing voor afdruk beheer voor virtueel bureau blad en andere desktop platforms van Windows. Tricerat-software heeft robuuste functionaliteit en biedt een betere ervaring voor zowel gebruikers als beheerders. Beheerders profiteren van het volledige beheer van het stuur programma, een vereenvoudigde implementatie van afdruk wachtrijen en een consistent Management op hybride platforms. Gebruikers ervaring verbetert de snellere aanmeldings tijden, intelligente afdruk wachtrijen op basis van gebruiker, apparaat en netwerk locatie, en selfservice opties voor snelle printer selectie. 
+
+Met Tricerat is het afdrukken naadloos in het virtuele bureau blad van Windows en verder. Met Tricerat-software kunnen beheerders eenvoudig on-premises printers verbinden met de Cloud, waardoor het beheer van grote ondernemingen van traditionele omgevingen naar nieuwe, moderne werk ruimten kan worden uitgebreid.
+
+- [Ga naar de website van de partner](https://www.tricerat.com/solutions/wvd-microsoft/).
 
 ## <a name="workspot"></a>Workspot
 

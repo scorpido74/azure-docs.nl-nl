@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: b94d376ee107f9acd45dff5b96fc43722f2fe208
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 00de95f3b3e6eddd1f45be830202ba3ec8772bfd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965463"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176166"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Privé-eind punten gebruiken voor Azure Storage (preview-versie)
 
@@ -48,7 +48,7 @@ Wanneer u het persoonlijke eind punt maakt, moet u het opslag account en de opsl
 > [!TIP]
 > Maak een apart persoonlijk eind punt voor het secundaire exemplaar van de opslag service voor betere Lees prestaties op de RA-GRS-accounts.
 
-Voor lees Beschik baarheid voor een [geografisch redundant opslag account met lees toegang](storage-redundancy-grs.md#read-access-geo-redundant-storage)hebt u afzonderlijke persoonlijke eind punten nodig voor zowel de primaire als de secundaire instantie van de service. U hoeft geen persoonlijk eind punt te maken voor het secundaire exemplaar voor failover. Het persoonlijke eind punt maakt na een failover automatisch verbinding met het nieuwe primaire exemplaar.
+Voor lees Beschik baarheid voor een [geografisch redundant opslag account met lees toegang](storage-redundancy-grs.md#read-access-geo-redundant-storage)hebt u afzonderlijke persoonlijke eind punten nodig voor zowel de primaire als de secundaire instantie van de service. U hoeft geen persoonlijk eind punt te maken voor het secundaire exemplaar voor **failover**. Het persoonlijke eind punt maakt automatisch verbinding met het nieuwe primaire exemplaar na failover. git 
 
 #### <a name="resources"></a>Bronnen
 
@@ -91,14 +91,14 @@ Met deze aanpak is toegang tot het opslag account mogelijk via hetzelfde connect
 
 De aanbevolen DNS-zone namen voor privé-eind punten voor opslag Services zijn:
 
-| Opslag service       | Zone naam                          |
-| :-------------------- | :--------------------------------- |
-| Blob service          | privatelink.blob.core.windows.net  |
-| Data Lake bestands systeem | privatelink.dfe.core.windows.net   |
-| Bestands service          | privatelink.file.core.windows.net  |
-| Queue-service         | privatelink.queue.core.windows.net |
-| Table service         | privatelink.table.core.windows.net |
-| Statische websites       | privatelink.web.core.windows.net   |
+| Opslag service        | Zone naam                            |
+| :--------------------- | :----------------------------------- |
+| Blob service           | `privatelink.blob.core.windows.net`  |
+| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| Bestands service           | `privatelink.file.core.windows.net`  |
+| Queue-service          | `privatelink.queue.core.windows.net` |
+| Table service          | `privatelink.table.core.windows.net` |
+| Statische websites        | `privatelink.web.core.windows.net`   |
 
 ## <a name="pricing"></a>Prijzen
 
@@ -119,6 +119,6 @@ Clients in VNets met bestaande persoonlijke eind punten geven gezichts beperking
 
 Deze beperking is het gevolg van de DNS-wijzigingen die zijn aangebracht wanneer account a2 een persoonlijk eind punt maakt.
 
-### <a name="network-security-group-rules-on-subnets-with-private-endpoints"></a>Regels voor netwerk beveiligings groepen op subnetten met persoonlijke eind punten
+### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Regels voor netwerk beveiligings groepen voor subnetten met persoonlijke eind punten
 
-De regels voor de [netwerk beveiligings groep](../../virtual-network/security-overview.md) (NSG) kunnen op dit moment niet worden geconfigureerd voor subnetten met persoonlijke eind punten. Een beperkte tijdelijke oplossing voor dit probleem is het implementeren van uw toegangs regels voor privé-eind punten op de bron-subnetten, hoewel deze benadering mogelijk een hogere beheer overhead nodig heeft.
+Op dit moment kunt u geen NSG-regels ( [netwerk beveiligings groep](../../virtual-network/security-overview.md) ) configureren voor subnetten met persoonlijke eind punten. Een beperkte tijdelijke oplossing voor dit probleem is het implementeren van uw toegangs regels voor privé-eind punten op de bron-subnetten, hoewel deze benadering mogelijk een hogere beheer overhead nodig heeft.

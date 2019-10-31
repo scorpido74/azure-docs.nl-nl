@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254742"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176314"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor de Azure Kubernetes-service
 
@@ -164,7 +164,7 @@ Elke 5 minuten wordt de invoeg toepassing aangeroepen voor een volledige scan va
 
 De Azure Policy taal structuur voor het beheren van AKS volgt die van bestaande beleids regels. Het effect _EnforceRegoPolicy_ wordt gebruikt voor het beheren van uw AKS-clusters en bevat _gedetailleerde_ eigenschappen die specifiek zijn voor het werken met opa en gate keeper. Zie het effect [EnforceRegoPolicy](effects.md#enforceregopolicy) voor meer informatie en voor beelden.
 
-Als onderdeel van de eigenschap _Details. beleid_ in de beleids definitie geeft Azure Policy de URI van een Rego-beleid door aan de invoeg toepassing. Rego is de taal die OPA en gate keeper ondersteunen voor het valideren of mutate van een aanvraag naar het Kubernetes-cluster. Dankzij de ondersteuning van een bestaande standaard voor Kubernetes-beheer, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage van de naleving van de Cloud. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)voor meer informatie.
+Als onderdeel van de eigenschap _Details. beleid_ in de beleids definitie geeft Azure Policy de URI van een Rego-beleid door aan de invoeg toepassing. Rego is de taal die OPA en gate keeper ondersteunen voor het valideren of mutate van een aanvraag naar het Kubernetes-cluster. Dankzij de ondersteuning van een bestaande standaard voor Kubernetes-beheer, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage van de naleving van de Cloud. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)voor meer informatie.
 
 ## <a name="built-in-policies"></a>Ingebouwd beleid
 

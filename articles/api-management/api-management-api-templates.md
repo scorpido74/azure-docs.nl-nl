@@ -11,25 +11,25 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073824"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176882"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sjablonen in azure API Management
 
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, [zoals DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), glyph- [resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
-  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
+
 Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwikkelaars portal aanpassen.  
   
 -   [API-lijst](#APIList)  
 -   [Bewerking](#Product)  
 -   [Codevoorbeelden](#CodeSamples)  
-    -   [Curl](#Curl)  
+    -   [Ezelsoor](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
@@ -41,6 +41,8 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
 > [!NOTE]
 >  Voor beelden van standaard sjablonen zijn opgenomen in de volgende documentatie, maar zijn onderhevig aan wijzigingen als gevolg van voortdurende verbeteringen. U kunt de Live standaard sjablonen in de ontwikkelaars portal weer geven door te navigeren naar de gewenste afzonderlijke sjablonen. Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)voor meer informatie over het werken met sjablonen.  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="APIList"></a>API-lijst  
@@ -48,7 +50,7 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
   
  ![API-lijst voor ontwikkelaars Portal](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "API-lijst voor APIM Developer Portal-sjablonen")  
   
-### <a name="default-template"></a>Standaardsjabloon  
+### <a name="default-template"></a>Standaard sjabloon  
   
 ```xml  
 <search-control></search-control>  
@@ -81,15 +83,15 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
 ### <a name="controls"></a>Besturingselementen  
  De `API list` sjabloon kan gebruikmaken van de volgende [pagina besturings elementen](api-management-page-controls.md).  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [paginering-besturings element](api-management-page-controls.md#paging-control)  
   
 -   [besturings element zoeken](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
-|`apis`|Verzameling van [API](api-management-template-data-model-reference.md#APISummary) -overzichts entiteiten.|De Api's die zichtbaar zijn voor de huidige gebruiker.|  
+|`apis`|Verzameling van [API-overzichts](api-management-template-data-model-reference.md#APISummary) entiteiten.|De Api's die zichtbaar zijn voor de huidige gebruiker.|  
   
 ### <a name="sample-template-data"></a>Voorbeeld sjabloon gegevens  
   
@@ -112,11 +114,11 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
 ```  
   
 ## <a name="Product"></a>Schijf  
- Met de bewerkings sjabloon kunt u de hoofd tekst van de bewerkings pagina aanpassen in de ontwikkelaars Portal.  
+ Met de **bewerkings** sjabloon kunt u de hoofd tekst van de bewerkings pagina aanpassen in de ontwikkelaars Portal.  
   
  ![Bewerkings pagina ontwikkelaars Portal](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Bewerkings pagina voor sjablonen voor APIM ontwikkelaars Portal")  
   
-### <a name="default-template"></a>Standaardsjabloon  
+### <a name="default-template"></a>Standaard sjabloon  
   
 ```xml  
 <h2>{{api.name}}</h2>  
@@ -338,11 +340,11 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
 ```  
   
 ### <a name="controls"></a>Besturingselementen  
- De sjabloon staat het gebruik van geen enkele [pagina besturings elementen](api-management-page-controls.md)toe. `Operation`  
+ De `Operation` sjabloon staat het gebruik van geen enkele [pagina besturings elementen](api-management-page-controls.md)toe.  
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Description|  
+|Eigenschap|Type|Beschrijving|  
 |--------------|----------|-----------------|  
 |`apiId`|string|De ID van de huidige API.|  
 |`apiName`|string|De naam van de API.|  
@@ -646,7 +648,7 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
   
  ![Code voorbeelden van ontwikkelaars Portal-sjablonen](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Code voorbeelden van APIM Developer Portal-sjablonen")  
   
--   [Curl](#Curl)  
+-   [Ezelsoor](#Curl)  
   
 -   [C#](#CSharp)  
   
@@ -662,10 +664,10 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
   
 -   [Ruby](#Ruby)  
   
-### <a name="Curl"></a> Curl  
+### <a name="Curl"></a>Ezelsoor  
  Met de **DocumentationSamplesCurl** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```xml  
 @ECHO OFF  
@@ -715,10 +717,10 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="CSharp"></a> C#  
+### <a name="CSharp"></a>C#  
  Met de **DocumentationSamplesCsharp** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```csharp  
 using System;  
@@ -897,7 +899,7 @@ namespace CSHttpClientSample
 ### <a name="Stub"></a>Diagnostisch  
  Met de **DocumentationSamplesJava** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```java  
 // // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
@@ -993,7 +995,7 @@ public class JavaSample
 ### <a name="JavaScript"></a>Ondersteunen  
  Met de **DocumentationSamplesJs** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```html  
 <!DOCTYPE html>  
@@ -1082,7 +1084,7 @@ public class JavaSample
 ### <a name="ObjectiveC"></a>Doel stelling C  
  Met de **DocumentationSamplesObjc** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```objective-c  
 #import <Foundation/Foundation.h>  
@@ -1194,7 +1196,7 @@ int main(int argc, const char * argv[])
 ### <a name="PHP"></a>PHP  
  Met de **DocumentationSamplesPhp** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```php  
 <?php  
@@ -1284,7 +1286,7 @@ catch (HttpException $ex)
 ### <a name="Python"></a>Python  
  Met de **DocumentationSamplesPython** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```python  
 ########### Python 2.7 #############  
@@ -1402,7 +1404,7 @@ except Exception as e:
 ### <a name="Ruby"></a>Ruby  
  Met de **DocumentationSamplesRuby** -sjabloon kunt u dit code voorbeeld aanpassen in de sectie met code voorbeelden van de pagina bewerking.  
   
-#### <a name="default-template"></a>Standaardsjabloon  
+#### <a name="default-template"></a>Standaard sjabloon  
   
 ```ruby  
 require 'net/http'  

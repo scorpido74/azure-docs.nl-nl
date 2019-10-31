@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 2bb66c52e48e2e872d7f67bfdea88602ba12e5de
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e493ac10858aa374362d25f1467ded237b30ca44
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518588"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177401"
 ---
-# <a name="azure-notification-hubs-updates-for-ios-13"></a>Updates voor Azure Notification Hubs voor iOS 13
+# <a name="azure-notification-hubs-updates-for-ios-13"></a>Updates van Azure Notification Hubs voor iOS 13
 
 Er zijn onlangs enkele wijzigingen aangebracht in de open bare push service van Apple. de wijzigingen zijn vooral afgestemd op de releases van iOS 13 en Xcode. In dit artikel wordt de impact van deze wijzigingen op Azure Notification Hubs beschreven.
 
@@ -23,7 +23,7 @@ Er zijn onlangs enkele wijzigingen aangebracht in de open bare push service van 
 
 ### <a name="apns-push-type"></a>Type APNS-push
 
-Apple vereist nu dat ontwikkel aars meldingen identificeren als waarschuwings-of achtergrond meldingen via de nieuwe `apns-push-type`-header in de APNS API. Volgens de [documentatie van Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): ' de waarde van deze header moet nauw keurig overeenkomen met de inhoud van de nettolading van uw melding. Als er sprake is van een niet-overeenkomend of als de header ontbreekt op de vereiste systemen, retourneert APNs mogelijk een fout, wordt de bezorging van de melding vertraagd of wordt deze helemaal verwijderd. "
+Apple vereist nu dat ontwikkel aars meldingen identificeren als waarschuwings-of achtergrond meldingen via de nieuwe `apns-push-type`-header in de APNS API. Volgens de [documentatie van Apple](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns): ' de waarde van deze header moet nauw keurig overeenkomen met de inhoud van de nettolading van uw melding. Als er een mismatch is, of als de header ontbreekt op vereiste systemen, kunnen APN's een fout geven, de levering van de melding vertragen of deze helemaal verwijderen."
 
 Ontwikkel aars moeten deze header nu instellen in toepassingen die meldingen verzenden via Azure Notification Hubs. Vanwege een technische beperking moeten klanten verificatie op basis van tokens gebruiken voor APNS-referenties met aanvragen die dit kenmerk bevatten. Als u verificatie op basis van certificaten gebruikt voor uw APNS-referenties, moet u overschakelen op verificatie op basis van tokens.
 
@@ -46,7 +46,7 @@ await hub.SendNotificationAsync(notification);
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
 var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
-var notification = new ApnsNotification("notification text", headers);
+var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 
@@ -70,7 +70,7 @@ Het instellen van deze waarde op 10 is niet meer toegestaan voor achtergrond mel
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
 var headers = new Dictionary<string, string> {{"apns-push-type", "background"}, { "apns-priority", "5" }};
-var notification = new ApnsNotification("notification text", headers);
+var notification = new AppleNotification("notification text", headers);
 await hub.SendNotificationAsync(notification);
 ```
 

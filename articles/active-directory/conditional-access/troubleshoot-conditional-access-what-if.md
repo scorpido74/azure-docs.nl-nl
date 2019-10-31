@@ -11,20 +11,23 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278573"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175806"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Problemen met voorwaardelijke toegang oplossen met het What If-hulp programma
 
 Het [hulp programma What if](what-if-tool.md) in voorwaardelijke toegang is krachtig wanneer u wilt weten waarom een beleid is of niet is toegepast op een gebruiker in een specifieke omstandigheid, of dat een beleid van toepassing zou zijn op een bekende status.
 
-Het hulp programma What if bevindt zich in de **Azure Portal** > **Azure Active Directory** > **voorwaardelijke toegang** > **What if**.
+Het hulp programma What If bevindt zich in de **Azure Portal** > **Azure Active Directory** > **voorwaardelijke toegang** ** > What if.**
 
 ![What If tool voor voorwaardelijke toegang in de standaard status](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+
+> [!NOTE]
+> Het What If-hulp programma evalueert momenteel geen beleids regels in de modus alleen-rapport.
 
 ## <a name="gathering-information"></a>Gegevens verzamelen
 
@@ -34,7 +37,7 @@ De volgende aanvullende informatie is optioneel, maar helpt bij het beperken van
 
 * Cloud-apps of-acties
 * IP-adres 
-* Country
+* Land/regio
 * Platform apparaat
 * Client-apps (preview-versie)
 * Apparaatstatus (preview-versie) 
@@ -58,7 +61,7 @@ In deze lijst ziet u welke beleids regels voor voorwaardelijke toegang van toepa
 
 In deze lijst worden de beleids regels voor voorwaardelijke toegang weer gegeven die niet van toepassing zijn als de voor waarden worden toegepast. De lijst bevat alle beleids regels en de reden waarom ze niet van toepassing zijn. Voor beelden zijn onder meer gebruikers en groepen die kunnen worden uitgesloten van een beleid.
 
-## <a name="use-case"></a>Use-case
+## <a name="use-case"></a>Toepassing
 
 Veel organisaties maken beleids regels op basis van netwerk locaties, waardoor vertrouwde locaties en het blok keren van toegang tot de locatie worden geblokkeerd.
 
@@ -75,4 +78,4 @@ Deze test kan worden uitgebreid om andere gegevens punten op te nemen om het ber
 * [Wat is voorwaardelijke toegang?](overview.md)
 * [Wat is Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
 * [Wat is een apparaat-id?](../devices/overview.md)
-* [Hoe het werkt: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) (Hoe het werkt: Azure Multi-Factor Authentication) als u meer wilt weten over Azure Multi-Factor Authentication.
+* [Hoe werkt het - Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

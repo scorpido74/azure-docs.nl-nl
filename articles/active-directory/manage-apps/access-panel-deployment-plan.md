@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41cc8114061ff7d23951baa3e6215d4332dff0ed
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258504"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176056"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Een Azure Active Directory implementatie van het toegangs paneel plannen
 
@@ -36,30 +36,30 @@ Met behulp van het Azure AD-toegangs venster kunt u het volgende doen:
 
 Daarnaast kunnen beheerders het volgende beheren:
 
-* Servicevoorwaarden
+* Service voorwaarden
 * Organisaties
-* Toegangsbeoordelingen
+* Toegangscontroles
 
 
 ## <a name="benefits-of-azure-ad-access-panel-integration"></a>Voor delen van integratie van Azure AD-toegangs venster
 
 Het Azure AD-toegangs venster biedt bedrijven op de volgende manieren:
 
-**Biedt intuïtieve gebruikers ervaring**: Het toegangs venster biedt u één platform voor al uw Azure-toepassingen voor eenmalige aanmelding (SSO). U hebt een uniforme portal voor het vinden van bestaande instellingen en nieuwe mogelijkheden, zoals groeps beheer en self-service voor het opnieuw instellen van wacht woorden, wanneer ze worden toegevoegd. De intuïtieve ervaring stelt gebruikers in staat om sneller te werken en productiever te zijn, terwijl ze hun frustratie verminderen.
+**Biedt intuïtieve gebruikers ervaring**: het toegangs venster biedt u één platform voor al uw Azure-toepassingen voor eenmalige aanmelding (SSO). U hebt een uniforme portal voor het vinden van bestaande instellingen en nieuwe mogelijkheden, zoals groeps beheer en self-service voor het opnieuw instellen van wacht woorden, wanneer ze worden toegevoegd. De intuïtieve ervaring stelt gebruikers in staat om sneller te werken en productiever te zijn, terwijl ze hun frustratie verminderen.
 
-**Verhoogt de productiviteit**: Voor alle gebruikers toepassingen in het toegangs venster is SSO ingeschakeld. Door EENMALIGe aanmelding in te scha kelen tussen zakelijke toepassingen en Office 365 wordt een superieure aanmeldings ervaring gemaakt door extra aanmeldings prompts te verminderen of te elimineren. Het toegangs venster maakt gebruik van self-service en dynamisch lidmaatschap en verbetert de algehele beveiliging van uw identiteits systeem. Dit doet u door ervoor te zorgen dat de juiste personen de toegang tot de toepassingen beheren. Het toegangs venster fungeert als een samenhangende landings pagina voor u om snel resources te vinden en werk taken voort te zetten.
+**Verhoogt de productiviteit**: alle gebruikers toepassingen in het toegangs venster hebben SSO ingeschakeld. Door EENMALIGe aanmelding in te scha kelen tussen zakelijke toepassingen en Office 365 wordt een superieure aanmeldings ervaring gemaakt door extra aanmeldings prompts te verminderen of te elimineren. Het toegangs venster maakt gebruik van self-service en dynamisch lidmaatschap en verbetert de algehele beveiliging van uw identiteits systeem. Dit doet u door ervoor te zorgen dat de juiste personen de toegang tot de toepassingen beheren. Het toegangs venster fungeert als een samenhangende landings pagina voor u om snel resources te vinden en werk taken voort te zetten.
 
-**Beheert kosten**: Het inschakelen van het toegangs venster met Azure AD kan u helpen bij het Divestment van on-premises infra structuren. Het vermindert de ondersteunings kosten door u een consistente portal te bieden om al uw apps te vinden, toegang te vragen tot bronnen en accounts te beheren.
+**Beheert kosten**: door het toegangs venster in te scha kelen met Azure AD kunt u de Divestment van on-premises infra structuur helpen. Het vermindert de ondersteunings kosten door u een consistente portal te bieden om al uw apps te vinden, toegang te vragen tot bronnen en accounts te beheren.
 
-**Verhoogt de flexibiliteit en beveiliging**: Het toegangs venster biedt u toegang tot de beveiliging en flexibiliteit die een Cloud platform biedt. Beheerders kunnen instellingen eenvoudig wijzigen in toepassingen en bronnen en kunnen nieuwe beveiligings vereisten bieden zonder dat dit van invloed is op gebruikers.
+**Verhoogt de flexibiliteit en beveiliging**: het toegangs venster biedt toegang tot de beveiliging en flexibiliteit die een Cloud platform biedt. Beheerders kunnen instellingen eenvoudig wijzigen in toepassingen en bronnen en kunnen nieuwe beveiligings vereisten bieden zonder dat dit van invloed is op gebruikers.
 
-**Zorgt voor robuuste controle en bijhouden**van het gebruik: Controleren en bijhouden van het gebruik van alle gebruikers mogelijkheden laat u weten wanneer gebruikers hun resources gebruiken en ervoor zorgen dat u de beveiliging kunt beoordelen.
+**Maakt robuuste controle en het bijhouden van het gebruik mogelijk**: bij controle en gebruik bijhouden van alle gebruikers mogelijkheden kunt u zien wanneer gebruikers hun resources gebruiken en ervoor zorgen dat u de beveiliging kunt beoordelen.
 
 ### <a name="licensing-considerations"></a>Licentie overwegingen
 
 Het toegangs venster is gratis en er zijn geen licenties nodig om op basis niveau te gebruiken. Voor het aantal objecten in uw directory en de aanvullende functies die u wilt implementeren, kunnen echter extra licenties nodig zijn. Enkele algemene scenario's voor Azure AD met licentie vereisten zijn onder andere de volgende beveiligings functies:
 
-* [Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
+* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
 * [Groepslid maatschap](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
@@ -81,11 +81,11 @@ Voer de volgende vereisten uit voordat u met dit project begint:
 
 De volgende tabel geeft een overzicht van de belangrijkste use cases voor een implementatie van het toegangs paneel:
 
-| Onderwerp| Description |
+| Gebied| Beschrijving |
 | - | - |
-| Toegang| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
-|Toegang | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
-| Controleren| Gebruiks gegevens worden minstens elke 29 dagen in bedrijfs systemen gedownload. |
+| Access| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
+|Access | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
+| Controle| Gebruiks gegevens worden minstens elke 29 dagen in bedrijfs systemen gedownload. |
 | Beheer| De levens cyclus van de gebruikers toewijzingen aan toepassingen en groepen die zijn verbonden met Azure AD, wordt gedefinieerd en bewaakt. |
 | Beveiliging| Toegang tot bronnen wordt geregeld via gebruikers-en groeps toewijzingen. Alleen geautoriseerde gebruikers kunnen toegang tot resources beheren. |
 | Prestaties| De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. |
@@ -113,7 +113,7 @@ De functionaliteit van het toegangs venster kan geleidelijk worden ingeschakeld.
 
 1. Mijn groepen
    * Groepsbeheer via selfservice
-1. Toegangsbeoordelingen
+1. Toegangscontroles
    * Toegangs beoordelings beheer
 
 Vanaf mijn apps introduceert gebruikers de portal als een gemeen schappelijke locatie voor toegang tot resources. Het toevoegen van self-service toepassings detectie bouwt voort op de ervaring mijn apps. Mijn groepen en toegangs beoordelingen zijn gebaseerd op de self-service mogelijkheden.
@@ -181,7 +181,7 @@ Azure AD biedt ondersteuning voor drie verschillende manieren om [eenmalige aanm
     * Biedt extra rapportage in azure AD wanneer de toepassingen daar worden geïntroduceerd. 
     * Omvat het gebruik van Azure-toepassing-proxy en de gekoppelde modus voor eenmalige aanmelding.
 
-Meer informatie over het configureren van de SSO-modus van een toepassing: [Eenmalige aanmelding bij toepassingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Meer informatie over het configureren van de SSO-modus van een toepassing: [eenmalige aanmelding bij toepassingen in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 Voor de beste ervaring met de pagina mijn apps begint u met de integratie van Cloud toepassingen die beschikbaar zijn voor federatieve SSO. Met federatieve SSO kunnen gebruikers een consistente ervaring met één klik hebben in hun app-lanceer oppervlakken en zijn ze in het algemeen beter te verstevigen in configuratie beheer.
 
@@ -201,7 +201,7 @@ Als u SSO-toepassingen op basis van wacht woorden moet integreren, moet u een me
 
 * [Door de gebruiker gestuurde down load en configuratie voor Chrome, Firefox, micro soft Edge of IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-Meer informatie: [Het configureren van eenmalige aanmelding met een wacht woord](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
+Meer informatie: [het configureren van een eenmalige aanmelding met een wacht woord](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).
 
 Gebruikers die geen SSO-toepassingen op basis van wacht woorden gebruiken, profiteren ook van de uitbrei ding. Deze voor delen zijn onder andere de mogelijkheid om apps te starten vanaf de zoek balk, toegang te verkrijgen tot recent gebruikte toepassingen en een koppeling naar de pagina mijn apps te maken.
 
@@ -211,11 +211,11 @@ Dit is wat de gebruiker te zien krijgt wanneer een SSO-toepassing op basis van e
 
 #### <a name="plan-for-mobile-access"></a>Mobile Access plannen
 
-Een browser die is beveiligd met intune-beleid (micro soft Edge of Intune Managed Browser) is nodig voor mobiele gebruikers die SSO-toepassingen op basis van wacht woorden starten. Met een met beleid beveiligde browser kan de overdracht van het wacht woord dat voor de toepassing is opgeslagen, worden overgedragen. Micro soft Edge of de Managed browser biedt een aantal functies voor het beveiligen van webgegevens. U kunt ook micro soft Edge gebruiken voor zakelijke scenario's op iOS-en Android-apparaten. Micro soft Edge ondersteunt dezelfde beheer scenario's als de Intune Managed Browser en verbetert de gebruikers ervaring. Meer informatie: [Webtoegang beheren met een door Microsoft intune-beleid beveiligde browser](https://docs.microsoft.com/intune/app-configuration-managed-browser).
+Een browser die is beveiligd met intune-beleid (micro soft Edge of Intune Managed Browser) is nodig voor mobiele gebruikers die SSO-toepassingen op basis van wacht woorden starten. Met een met beleid beveiligde browser kan de overdracht van het wacht woord dat voor de toepassing is opgeslagen, worden overgedragen. Micro soft Edge of de Managed browser biedt een aantal functies voor het beveiligen van webgegevens. U kunt ook micro soft Edge gebruiken voor zakelijke scenario's op iOS-en Android-apparaten. Micro soft Edge ondersteunt dezelfde beheer scenario's als de Intune Managed Browser en verbetert de gebruikers ervaring. Meer informatie: [webtoegang beheren met een door Microsoft intune-beleid beveiligde browser](https://docs.microsoft.com/intune/app-configuration-managed-browser).
 
 ## <a name="plan-your-my-apps-deployment"></a>Uw implementatie van mijn apps plannen
 
-De basis van het toegangs venster is het start programma voor toepassingen van [https://myapps.microsoft.com](https://myapps.microsoft.com/)mijn apps, waarmee gebruikers toegang hebben. Met de pagina's van mijn apps hebben gebruikers één plek om hun werk te starten en naar hun benodigde toepassingen te gaan. Hier vinden gebruikers een lijst van alle toepassingen waarmee ze toegang hebben tot eenmalige aanmelding. 
+De basis van het toegangs venster is het start programma voor apps van de toepassing, die gebruikers op [https://myapps.microsoft.com](https://myapps.microsoft.com/)toegang hebben. Met de pagina's van mijn apps hebben gebruikers één plek om hun werk te starten en naar hun benodigde toepassingen te gaan. Hier vinden gebruikers een lijst van alle toepassingen waarmee ze toegang hebben tot eenmalige aanmelding. 
 
 ![Een scherm opname van het deel venster apps](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -226,6 +226,10 @@ Plan de volg orde waarin u toepassingen gaat toevoegen aan het start programma v
 #### <a name="add-applications-to-the-my-apps-panel"></a>Toepassingen toevoegen aan het deel venster mijn apps
 
 Elke toepassing met Azure AD SSO kan worden toegevoegd aan het start programma voor apps. Andere toepassingen worden toegevoegd met behulp van de optie gekoppelde SSO. U kunt een toepassings tegel configureren die wordt gekoppeld aan de URL van uw bestaande webtoepassing. Met gekoppelde SSO kunt u beginnen met het omleiden van gebruikers naar de portal mijn apps zonder alle toepassingen naar Azure AD SSO te migreren. U kunt geleidelijk overschakelen naar door Azure AD SSO geconfigureerde toepassingen zonder de gebruikers ervaring te onderbreken.
+
+#### <a name="use-my-apps-workspaces-preview"></a>Mijn apps-werk ruimten gebruiken (preview-versie)
+
+Standaard worden alle toepassingen op één pagina weer gegeven. Maar u kunt werk ruimten gebruiken om gerelateerde toepassingen te groeperen en ze te presen teren op een afzonderlijk tabblad, waardoor ze gemakkelijker te vinden zijn. U kunt bijvoorbeeld werk ruimten gebruiken om logische groeperingen van toepassingen te maken voor specifieke taak rollen, taken, projecten, enzovoort. Zie [mijn apps-werk ruimten gebruiken om deel Vensters voor gebruikers toegang te wijzigen (preview)](access-panel-workspaces.md)voor meer informatie. 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Plannen of mijn apps of een bestaande portal moeten worden gebruikt
 
@@ -259,12 +263,12 @@ Azure AD biedt [rapporten die technische en zakelijke inzichten bieden](https://
 
 |   | beheer risico's.| Productiviteit verhogen| Governance en naleving |
 |  - |- | - | - |
-| Rapporttypen|  Toepassings machtigingen en-gebruik| Activiteit voor het inrichten van accounts| Controleren wie toegang heeft tot de toepassingen |
+| Rapport typen|  Toepassings machtigingen en-gebruik| Activiteit voor het inrichten van accounts| Controleren wie toegang heeft tot de toepassingen |
 | Mogelijke acties| Toegang controleren; machtigingen intrekken| Eventuele inrichtings fouten herstellen| Toegang intrekken |
 
 Azure AD houdt de meeste controle gegevens gedurende 30 dagen. De gegevens zijn beschikbaar via de Azure-beheer portal of-API die u kunt downloaden naar uw analyse systemen.
 
-#### <a name="auditing"></a>Controleren
+#### <a name="auditing"></a>Controle
 
 Audit logboeken voor toegang tot toepassingen zijn 30 dagen beschikbaar. Als de beveiligings controle binnen uw onderneming een langere retentie vereist, moeten de logboeken worden geëxporteerd naar een SIEM-hulp programma (Security Information Event and Management), zoals Splunk of ArcSight.
 
@@ -282,7 +286,7 @@ Als tijdens het testen of de implementatie de groepen wilt toevoegen, maar nog n
 
 Voor Office 365-toepassingen ontvangen gebruikers een exemplaar van Office op basis van licenties die aan hen zijn toegewezen. Een vereiste voor toegang tot Office-toepassingen is dat gebruikers de juiste licenties kunnen toewijzen die zijn gekoppeld aan de Office-toepassingen. Wanneer u een licentie voor een gebruiker toewijst, worden automatisch de toepassingen weer geven die zijn gekoppeld aan de licentie op de pagina mijn apps en in het start programma voor Office 365-apps.
 
-Als u een set Office-toepassingen wilt verbergen voor gebruikers, is er een optie om apps te verbergen in de portal mijn apps, terwijl u toch toegang hebt tot de Office 365-Portal. Deze instellingen vindt u in het gedeelte gebruikers instellingen van de toepassing. Meer informatie: [Verberg een toepassing van de gebruikers ervaring in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
+Als u een set Office-toepassingen wilt verbergen voor gebruikers, is er een optie om apps te verbergen in de portal mijn apps, terwijl u toch toegang hebt tot de Office 365-Portal. Deze instellingen vindt u in het gedeelte gebruikers instellingen van de toepassing. Meer informatie: [een toepassing verbergen voor gebruikers ervaring in azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app).
 
 ![Een scherm afbeelding van het configureren van het verbergen van toepassingen](media/access-panel-deployment-plan/ap-dp-o365-portal.png)
 
@@ -292,7 +296,7 @@ Met toegang door selfservice toepassingen kunnen gebruikers zelf toegang krijgen
 
 U kunt de goed keuring van aanvragen voor toegang tot een toepassing overdragen aan zakelijke goed keurders. De zakelijke goed keurder kan de app-toegangs wachtwoorden instellen op de pagina mijn apps van de zakelijke goed keurder.
 
-Meer informatie: [Toegang tot selfservice toepassingen gebruiken](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).
+Meer informatie: de [toegang tot selfservice toepassingen gebruiken](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).
 
 ![Een scherm opname van het configureren van self-service toepassings beheer](media/access-panel-deployment-plan/ap-dp-salesforce.png)
 

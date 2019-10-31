@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936849"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177377"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Apache Spark-taken in HDInsight optimaliseren
 
@@ -40,7 +40,7 @@ Eerdere Spark-versies gebruiken Rdd's tot abstracte gegevens, Spark 1,3 en 1,6, 
     * Overhead voor serialisatie/deserialisatie toevoegen.
     * Hoge GC-overhead.
     * Het genereren van code met hele fase verbreken.
-* **RDDs**
+* **Rdd's**
     * U hoeft geen Rdd's te gebruiken, tenzij u een nieuwe aangepaste RDD wilt maken.
     * Geen query optimalisatie via Catalyst.
     * Geen code voor het genereren van de hele fase.
@@ -57,13 +57,13 @@ De beste prestatie-indeling is Parquet met *Snappy-compressie*. Dit is de standa
 
 Wanneer u een nieuw Spark-cluster maakt, kunt u Azure Blob Storage of Azure Data Lake Storage als de standaard opslag van uw cluster selecteren. Beide opties bieden u het voor deel van lange termijn opslag voor tijdelijke clusters, zodat uw gegevens niet automatisch worden verwijderd wanneer u uw cluster verwijdert. U kunt een tijdelijk cluster opnieuw maken en toch toegang krijgen tot uw gegevens.
 
-| Opslag type | Bestandssysteem | Snelheid | Tijdelijk | Gebruiksvoorbeelden |
+| Opslag type | Bestandssysteem | Snelheid | Wijk | Gebruiksvoorbeelden |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:** //url/ | **Standard** | Ja | Tijdelijk cluster |
+| Azure Blob Storage | **wasb:** //URL/ | **Standard** | Ja | Tijdelijk cluster |
 | Azure Blob Storage (beveiligd) | **wasbs:** //URL/ | **Standard** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage gen 2| **abfs:** //URL/ | **Faster** | Ja | Tijdelijk cluster |
-| Azure Data Lake Storage Gen 1| **adl:** //url/ | **Faster** | Ja | Tijdelijk cluster |
-| Lokale HDFS | **hdfs:** //url/ | **Fastest** | Nee | Interactive 24/7-cluster |
+| Azure Data Lake Storage gen 2| **abfs:** //URL/ | **Gereed** | Ja | Tijdelijk cluster |
+| Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Gereed** | Ja | Tijdelijk cluster |
+| Lokale HDFS | **hdfs:** //URL/ | **Snelste** | Nee | Interactive 24/7-cluster |
 
 ## <a name="use-the-cache"></a>De cache gebruiken
 
@@ -74,11 +74,11 @@ Spark biedt eigen systeem eigen caching-mechanismen die kunnen worden gebruikt v
     * Werkt niet voor partitionering, wat in toekomstige Spark-releases kan veranderen.
 
 * Caching op opslag niveau (aanbevolen)
-    * Kan worden geïmplementeerd met behulp van [Alluxio](https://www.alluxio.org/).
+    * Kan worden geïmplementeerd met behulp van [Alluxio](https://www.alluxio.io/).
     * Maakt gebruik van in-Memory en SSD-caching.
 
 * Lokale HDFS (aanbevolen)
-    * `hdfs://mycluster`programmapad.
+    * `hdfs://mycluster` pad.
     * Maakt gebruik van SSD-caching.
     * Gegevens in de cache gaan verloren wanneer u het cluster verwijdert, waardoor een cache opnieuw moet worden opgebouwd.
 
@@ -88,7 +88,7 @@ Spark werkt door gegevens in het geheugen te plaatsen, zodat het beheren van geh
 
 * Geniet de voor keur van kleinere gegevens partities en een account voor gegevens grootte, typen en distributie in uw strategie voor partitioneren.
 * Bekijk de nieuwere, efficiëntere [Kryo-gegevens serialisatie](https://github.com/EsotericSoftware/kryo), in plaats van de standaard Java-serialisatie.
-* Geniet van de `spark-submit` voor keur aan garens, omdat deze door batch worden gescheiden.
+* Geniet van de voor keur aan GARENs, omdat deze `spark-submit` per batch gescheiden zijn.
 * Spark-configuratie-instellingen bewaken en afstemmen.
 
 Ter referentie worden de Spark-geheugen structuur en enkele para meters voor de door Voer van de sleutel in de volgende afbeelding weer gegeven.
@@ -102,8 +102,8 @@ Als u [Apache HADOOP garens](https://hadoop.apache.org/docs/current/hadoop-yarn/
 Probeer het volgende om berichten over onvoldoende geheugen te adresseren:
 
 * DAG beheer in wille keurige volg orde controleren. Verlaag met rebuising aan de kaart zijde, pre-Partition (of buckets) bron gegevens, Maximaliseer enkele wille keurige volg orde en verminder de hoeveelheid verzonden gegevens.
-* De `ReduceByKey` voor keur met de vaste geheugen `GroupByKey`limiet tot, die aggregaties, windowing en andere functies biedt, maar wel een niet-gebonden geheugen limiet heeft.
-* Voor `TreeReduce`keur, waarmee u meer werk kunt doen aan de uitvoerders `Reduce`of partities, aan, dat alles op het stuur programma werkt.
+* De voor keur `ReduceByKey` met de vaste geheugen limiet voor `GroupByKey`, die aggregaties, Vensters en andere functies bevat, maar wel een niet-gebonden geheugen limiet heeft.
+* De voor keur `TreeReduce`, wat meer werk uitmaakt van de uitvoerders of partities, tot `Reduce`, dat alles op het stuur programma werkt.
 * Gebruik DataFrames in plaats van RDD-objecten op lagere niveaus.
 * Maak toe die acties inkapselen, zoals ' top N ', verschillende aggregaties of venster bewerkingen.
 
@@ -130,11 +130,11 @@ U kunt partitioneren en gelijktijdig buckets gebruiken.
 
 Als u langzame taken hebt voor een samen voeging of een wille keurige volg orde, is de oorzaak waarschijnlijk *gegevens scheefer*, wat asymmetrie is in uw taak gegevens. Een toewijzings taak kan bijvoorbeeld 20 seconden duren, maar u kunt ook een taak uitvoeren waarbij de gegevens worden toegevoegd of een wille keurige volg orde. Als u gegevens scheefheid wilt verhelpen, moet u de volledige sleutel zouten of een *geïsoleerde Salt* gebruiken voor slechts een deel van de sleutels. Als u een geïsoleerd zout gebruikt, moet u verder filteren om uw subset van gezoute sleutels in kaart verbindingen te isoleren. Een andere optie is om eerst een Bucket kolom en vooraf aggregatie in buckets in te voeren.
 
-Een andere factor veroorzaakt langzame samen voegingen zou het jointype kunnen zijn. Spark maakt standaard gebruik van het `SortMerge` jointype. Dit type samen voeging is het meest geschikt voor grote gegevens sets, maar is een andere reken kracht, omdat het eerst de linker-en rechter zijde van gegevens moet sorteren voordat u deze samenvoegt.
+Een andere factor veroorzaakt langzame samen voegingen zou het jointype kunnen zijn. Spark maakt standaard gebruik van het `SortMerge`-jointype. Dit type samen voeging is het meest geschikt voor grote gegevens sets, maar is een andere reken kracht, omdat het eerst de linker-en rechter zijde van gegevens moet sorteren voordat u deze samenvoegt.
 
-Een `Broadcast` samen voeging is het meest geschikt voor kleinere gegevens sets, of waarbij een zijde van de samen voeging veel kleiner is dan de andere kant. Dit type deelname zendt één zijde naar alle uitvoerende organisaties, en vereist daarom meer geheugen voor broadcasts in het algemeen.
+Een `Broadcast`-koppeling is het meest geschikt voor kleinere gegevens sets of waarbij een zijde van de samen voeging veel kleiner is dan de andere kant. Dit type deelname zendt één zijde naar alle uitvoerende organisaties, en vereist daarom meer geheugen voor broadcasts in het algemeen.
 
-U kunt het jointype in uw configuratie wijzigen door in te `spark.sql.autoBroadcastJoinThreshold`stellen, of u kunt een samenvoegings Hint instellen met behulp van de data frame-api's (`dataframe.join(broadcast(df2))`).
+U kunt het jointype in uw configuratie wijzigen door `spark.sql.autoBroadcastJoinThreshold`in te stellen of u kunt een samenvoegings Hint instellen met behulp van de data frame-Api's (`dataframe.join(broadcast(df2))`).
 
 ```scala
 // Option 1
@@ -149,7 +149,7 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Als u gekoppelde tabellen gebruikt, hebt u een derde jointype, de `Merge`-koppeling. Een juiste vooraf gepartitioneerde en vooraf gesorteerde gegevensset slaat de dure Sorteer fase over van een `SortMerge` koppeling.
+Als u gekoppelde tabellen gebruikt, hebt u een derde jointype, de `Merge` lid worden. Een juiste vooraf gepartitioneerde en vooraf gesorteerde gegevensset slaat de dure Sorteer fase over van een `SortMerge` deelname.
 
 De volg orde van de kwesties, met name in complexere query's. Begin met de meeste selectieve samen voegingen. U kunt ook koppelingen verplaatsen die het aantal rijen na aggregaties verg Roten wanneer dat mogelijk is.
 
@@ -161,9 +161,9 @@ Afhankelijk van de werk belasting van het Spark-cluster kunt u bepalen dat een n
 
 Hier volgen enkele algemene para meters die u kunt aanpassen:
 
-* `--num-executors`Hiermee stelt u het juiste aantal uitvoerender in.
-* `--executor-cores`Hiermee stelt u het aantal kernen in voor elke uitvoerder. Normaal gesp roken moet u middelste uitvoerings modules hebben, aangezien andere processen een deel van het beschik bare geheugen verbruiken.
-* `--executor-memory`Hiermee stelt u de grootte van het geheugen voor elke uitvoerder, waarmee de heapgrootte op GARENs wordt beheerd. U moet geheugen voor de overhead van uitvoeringen laten staan.
+* `--num-executors` stelt het juiste aantal uitvoerender in.
+* `--executor-cores` stelt het aantal kernen in voor elke uitvoerder. Normaal gesp roken moet u middelste uitvoerings modules hebben, aangezien andere processen een deel van het beschik bare geheugen verbruiken.
+* `--executor-memory` stelt de geheugen grootte voor elke uitvoerder in, waarmee de Heap-grootte op GARENs wordt beheerd. U moet geheugen voor de overhead van uitvoeringen laten staan.
 
 ### <a name="select-the-correct-executor-size"></a>Selecteer de juiste grootte voor de uitvoerder
 
@@ -177,8 +177,8 @@ Houd bij het bepalen van de configuratie van de uitvoerder rekening met de overh
     1. Verminder de communicatie overhead tussen uitvoerender.
     2. Verminder het aantal openstaande verbindingen tussen uitvoerders (N2) op grotere clusters (> 100 uitvoerendeers).
     3. Verg root de Heap-grootte zodat deze geschikt is voor geheugenintensieve taken.
-    4. Optioneel: Verminder de geheugen overhead per uitvoerder.
-    5. Optioneel: Verg root het gebruik en de gelijktijdigheid door de CPU te verlengen.
+    4. Optioneel: de overhead per uitvoerder geheugen verlagen.
+    5. Optioneel: gebruik verhogen en gelijktijdigheid door de CPU te verlengen.
 
 Als algemene vuist regel bij het selecteren van de grootte van de uitvoerder:
 
@@ -206,7 +206,7 @@ Bewaak uw actieve taken regel matig voor prestatie problemen. Als u meer inzicht
 * Het [Intel PAL-hulp programma](https://github.com/intel-hadoop/PAT) bewaakt CPU, opslag en netwerk bandbreedte gebruik.
 * De beheer profielen voor de [missie van Oracle Java 8](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) Spark en de uitvoerder code.
 
-De sleutel tot Spark 2. x query prestaties is de Tungsten-engine, die afhankelijk is van het genereren van code in een hele fase. In sommige gevallen kan het genereren van code in hele fase worden uitgeschakeld. Als u bijvoorbeeld een niet-ververanderd type (`string`) in de expressie aggregatie gebruikt, `SortAggregate` wordt dit weer gegeven in plaats van. `HashAggregate` Als u bijvoorbeeld betere prestaties wilt, kunt u het volgende proberen en vervolgens code generatie opnieuw inschakelen:
+De sleutel tot Spark 2. x query prestaties is de Tungsten-engine, die afhankelijk is van het genereren van code in een hele fase. In sommige gevallen kan het genereren van code in hele fase worden uitgeschakeld. Als u bijvoorbeeld een niet-ververanderd type (`string`) in de expressie aggregatie gebruikt, wordt `SortAggregate` weer gegeven in plaats van `HashAggregate`. Als u bijvoorbeeld betere prestaties wilt, kunt u het volgende proberen en vervolgens code generatie opnieuw inschakelen:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))

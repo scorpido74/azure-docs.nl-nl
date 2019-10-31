@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66302480"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177824"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Zelfstudie: AWS-infrastructuur voor het hosten van een Service Fabric-cluster maken
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Zelfstudie: AWS-infrastructuur maken voor het hosten van een Service Fabric-cluster
 
 Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze reeks zelfstudies maakt u een zelfstandig cluster dat in AWS wordt gehost en installeert u vervolgens een toepassing in het cluster.
 
@@ -33,7 +33,7 @@ In deel 1 van de reeks leert u het volgende:
 > [!div class="checklist"]
 > * Een set van EC2-exemplaren maken
 > * De beveiligingsgroep wijzigen
-> * Aanmelden bij een van de exemplaren
+> * Meld u aan bij een van de exemplaren
 > * Het exemplaar voorbereiden voor Service Fabric
 
 ## <a name="prerequisites"></a>Vereisten
@@ -42,7 +42,7 @@ U hebt een AWS-account nodig om deze zelfstudie te voltooien.  Als u nog geen ac
 
 ## <a name="create-ec2-instances"></a>EC2-exemplaren maken
 
-Meld u aan bij de AWS-Console > Enter **EC2** in het zoekvak > **EC2 virtuele Servers in de Cloud**
+Meld u aan bij de AWS-console > Voer **EC2** in het zoekvak in > **EC2 virtuele servers in de Cloud** .
 
 ![Zoeken in AWS-console][aws-console]
 
@@ -50,7 +50,7 @@ Selecteer **Launch Instance** en kies in het volgende scherm **Select** naast Mi
 
 ![EC2-exemplaar selecteren][aws-ec2instance]
 
-Selecteer **t2.medium**en selecteer vervolgens **volgende: Exemplaardetails configureren**op het volgende scherm het aantal exemplaren wijzigen `3`en selecteer vervolgens **geavanceerde Details** aan die sectie uit vouwen.
+Selecteer **t2.medium**, selecteer **Next: Configure Instance Details**, wijzig op het volgende scherm het aantal exemplaren in `3` en selecteer **Advanced Details**om die sectie uit te vouwen.
 
 Om uw virtuele machines te verbinden in Service Fabric, moeten de VM's die uw infrastructuur hosten dezelfde referenties hebben.  Er zijn twee manieren om consistente referenties te hanteren: alle machines toevoegen aan hetzelfde domein of op elke VM hetzelfde beheerderswachtwoord instellen.  Voor deze zelfstudie gebruikt u een script met gebruikersgegevens om voor alle EC2-exemplaren hetzelfde wachtwoord in te stellen.  In een productieomgeving is het veiliger om de hosts lid te maken van een Windows-domein.
 
@@ -82,7 +82,7 @@ Voor Service Fabric moeten verschillende poorten zijn geopend tussen de hosts in
 
 Om te voorkomen dat deze poorten voor iedereen worden geopend, opent u ze alleen voor hosts in dezelfde beveiligingsgroep. Noteer de id van de netwerkbeveiligingsgroep. In het voorbeeld is de id **sg-c4fb1eba**.  Selecteer vervolgens **Edit**.
 
-Voeg nu vier regels toe aan de beveiligingsgroep voor serviceafhankelijkheden en dan nog drie voor Service Fabric zelf. De eerste regel is om ICMP-verkeer toe te staan, voor essentiële connectiviteitscontroles. Met de andere regels worden de vereiste poorten geopend om SMB en Remote Registry in te schakelen.
+Voeg nu vier regels toe aan de beveiligingsgroep voor serviceafhankelijkheden en dan nog drie voor Service Fabric zelf. De eerste regel is om ICMP-verkeer toe te staan, voor essentiële connectiviteitscontroles. De andere regels openen de vereiste poorten om extern REGI ster in te scha kelen.
 
 Selecteer voor de eerste regel **Add Rule** en selecteer vervolgens in de vervolgkeuzelijst **All ICMP - IPv4**. Selecteer het invoervak naast Custom en voer de id van de beveiligingsgroep in die u eerder hebt genoteerd.
 
@@ -110,7 +110,7 @@ Als u alle IP-adressen hebt genoteerd, selecteert u een van de exemplaren om hie
 
 Als er verbinding is met het exemplaar, controleert u of u zonder problemen verbinding kunt maken en of u bestanden kunt delen.  U hebt de IP-adressen voor alle exemplaren verzameld. Selecteer een exemplaar waarmee geen verbinding is gemaakt. Ga naar **Start**, voer `cmd` in en selecteer **Opdrachtprompt**.
 
-In deze voorbeelden is de RDP-verbinding gemaakt met de volgende IP-adres: 172.31.21.141. Alle verbindingen testen vervolgens plaatsvinden naar het IP-adres: 172.31.20.163.
+In deze voorbeelden is een RDP-verbinding gemaakt met het volgende IP-adres: 172.31.21.141. Alle connectiviteitstesten vinden vervolgens plaats naar het andere IP-adres: 172.31.20.163.
 
 Als u wilt controleren of de basisconnectiviteit werkt, gebruikt u de ping-opdracht.
 
@@ -118,30 +118,18 @@ Als u wilt controleren of de basisconnectiviteit werkt, gebruikt u de ping-opdra
 ping 172.31.20.163
 ```
 
-Als de uitvoer er gedurende vier pogingen uitziet zoals `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, werkt de verbinding tussen de exemplaren.  Gebruik nu de volgende opdracht om te controleren of delen via SMB werkt:
-
-```
-net use * \\172.31.20.163\c$
-```
-
-De uitvoer moet gelijk zijn aan `Drive Z: is now connected to \\172.31.20.163\c$.`.
+Als de uitvoer er gedurende vier pogingen uitziet zoals `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, werkt de verbinding tussen de exemplaren.  
 
 ## <a name="prep-instances-for-service-fabric"></a>Exemplaren voorbereiden voor Service Fabric
 
-Als u alles helemaal zelf hebt gedaan, moet u nog een paar extra stappen uitvoeren.  U moet namelijk valideren of het externe register actief was, SMB inschakelen en de vereiste poorten openen voor SMB en het externe register.
+Als u alles helemaal zelf hebt gedaan, moet u nog een paar extra stappen uitvoeren.  Dat wil zeggen dat u moet controleren of het externe REGI ster actief is en de vereiste poorten opent.
 
 Om deze stappen te vereenvoudigen, hebt u al deze taken ingesloten toen u de exemplaren via een bootstrap hebt geladen met het script met gebruikersgegevens.
-
-Dit is de PowerShell-opdracht die u hebt gebruikt voor het inschakelen van SMB:
-
-```powershell
-netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-```
 
 Dit is de PowerShell-opdracht voor het openen van de poorten in de firewall:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -151,7 +139,7 @@ In deel één van de reeks hebt u geleerd hoe u drie EC2-exemplaren start en dez
 > [!div class="checklist"]
 > * Een set van EC2-exemplaren maken
 > * De beveiligingsgroep wijzigen
-> * Aanmelden bij een van de exemplaren
+> * Meld u aan bij een van de exemplaren
 > * Het exemplaar voorbereiden voor Service Fabric
 
 Ga naar deel twee van de reeks om Service Fabric te configureren in uw cluster.

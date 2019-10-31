@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: d1ab7089ba76890488aa73d03e0fd9fc8efbe4d5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193952"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176738"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integreren in een intern VNET met Application Gateway
 
@@ -46,7 +46,7 @@ Voor het volgen van de stappen die in dit artikel worden beschreven, hebt u het 
 
 * Certificaten: pfx en CER voor de API-hostnaam en pfx voor de hostnaam van de ontwikkelaars Portal.
 
-## <a name="scenario"> </a> Scenario
+## <a name="scenario"></a> Scenario
 
 In dit artikel wordt beschreven hoe u een single API Management-service gebruikt voor zowel interne als externe consumenten en hoe u deze kunt gebruiken als één frontend voor zowel on-premises als Cloud-Api's. U ziet ook hoe u slechts een subset van uw Api's beschikbaar maakt (in het voor beeld dat ze in het groen zijn gemarkeerd) voor extern verbruik met behulp van route ring beschikbaar in Application Gateway.
 
@@ -60,10 +60,10 @@ In het eerste voor beeld van Setup worden al uw Api's alleen beheerd vanuit uw V
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Wat is er vereist voor het maken van een integratie tussen API Management en Application Gateway?
 
-* **Back-endserverpool:** Dit is het interne virtuele IP-adres van de API Management service.
-* **Instellingen van back-endserverpool:** Elke pool heeft instellingen, zoals voor de poort, het protocol en de op cookies gebaseerde affiniteit. Deze instellingen worden toegepast op alle servers in de groep.
-* **Front-endpoort:** Dit is de open bare poort die wordt geopend op de Application Gateway. Aangestuurd verkeer wordt omgeleid naar een van de back-endservers.
-* **Listener:** De listener beschikt over een front-endpoort, een protocol (Http of Https, deze waarden zijn hoofdlettergevoelig) en de SSL-certificaatnaam (als u SSL-offloading configureert).
+* **Back-end-server groep:** Dit is het interne virtuele IP-adres van de API Management service.
+* **Back-endserverpoolinstellingen:** elke pool heeft instellingen, zoals voor de poort, het protocol en de op cookies gebaseerde affiniteit. Deze instellingen worden toegepast op alle servers in de groep.
+* **Front-end-poort:** Dit is de open bare poort die wordt geopend op de Application Gateway. Aangestuurd verkeer wordt omgeleid naar een van de back-endservers.
+* **Listener:** de listener beschikt over een front-endpoort, een protocol (Http of Https; deze waarden zijn hoofdlettergevoelig) en de SSL-certificaatnaam (als u SSL-offloading configureert).
 * **Regel:** De regel verbindt een listener met een back-endserver-Server groep.
 * **Aangepaste status test:** Application Gateway maakt standaard gebruik van tests op basis van IP-adressen om erachter te komen welke servers in de BackendAddressPool actief zijn. De API Management-service reageert alleen op aanvragen met de juiste host-header, daarom mislukken de standaard tests. Er moet een aangepaste status test worden gedefinieerd om de toepassings gateway te helpen bepalen dat de service actief is en dat aanvragen worden doorgestuurd.
 * **Aangepaste domein certificaten:** Om toegang te krijgen tot API Management vanaf internet, moet u een CNAME-toewijzing van de hostnaam maken naar de Application Gateway front-end-DNS-naam. Dit zorgt ervoor dat de naam van de host-header en het certificaat die worden verzonden naar Application Gateway die naar API Management worden doorgestuurd, één APIM kan herkennen als geldig. In dit voor beeld gebruiken we twee certificaten: voor de back-end en voor de ontwikkelaars Portal.  
@@ -86,7 +86,7 @@ In deze hand leiding wordt de **ontwikkelaars Portal** ook beschikbaar voor exte
 > Als u Azure AD of authenticatie van derden gebruikt, schakelt u de [cookie-functie voor sessie affiniteit op basis van cookies](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) in Application Gateway.
 
 > [!WARNING]
-> Als u wilt voor komen dat Application Gateway WAF het downloaden van de OpenAPI-specificatie in de ontwikkelaars Portal verbreekt, moet `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`u de firewall regel uitschakelen.
+> Als u wilt voor komen dat Application Gateway WAF het downloaden van de OpenAPI-specificatie in de ontwikkelaars Portal verbreekt, moet u de firewall regel `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`uitschakelen.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Een resourcegroep maken voor Resource Manager
 
@@ -187,7 +187,7 @@ Nadat de bovenstaande opdracht is uitgevoerd, raadpleegt u de [DNS-configuratie 
 
 ### <a name="step-1"></a>Stap 1
 
-Initialiseer de volgende variabelen met de details van de certificaten met persoonlijke sleutels voor de domeinen. In dit voor beeld gebruiken `api.contoso.net` we en. `portal.contoso.net`  
+Initialiseer de volgende variabelen met de details van de certificaten met persoonlijke sleutels voor de domeinen. In dit voor beeld gebruiken we `api.contoso.net` en `portal.contoso.net`.  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -208,12 +208,15 @@ Maak en stel de hostnamen-configuratie objecten voor de proxy en voor de portal 
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
-$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType DeveloperPortal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
 
 $apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
 $apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
 Set-AzApiManagement -InputObject $apimService
 ```
+
+> [!NOTE]
+> Als u de verouderde ontwikkelaars Portal-connectiviteit wilt configureren, moet u `-HostnameType DeveloperPortal` vervangen door `-HostnameType Portal`.
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Een openbaar IP-adres maken voor de front-endconfiguratie
 
@@ -273,10 +276,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Stap 6
 
-Aangepaste tests maken voor het domein eindpunt van `ContosoApi` de API Management-Service proxy. Het pad `/status-0123456789abcdef` is een standaard status eindpunt dat wordt gehost op alle API Management Services. Stel `api.contoso.net` in als een aangepaste test-hostnaam om deze te beveiligen met een SSL-certificaat.
+Aangepaste tests maken voor de API Management-service `ContosoApi` het domein eindpunt van de proxy. Het pad `/status-0123456789abcdef` is een standaard status eindpunt dat wordt gehost op alle API Management Services. Stel `api.contoso.net` in als een aangepaste test-hostnaam om deze te beveiligen met een SSL-certificaat.
 
 > [!NOTE]
-> De hostnaam `contosoapi.azure-api.net` is de standaard hostnaam van de proxy die is geconfigureerd `contosoapi` wanneer een service met de naam wordt gemaakt in open bare Azure.
+> De hostnaam `contosoapi.azure-api.net` is de standaard-hostnaam voor de proxy die is geconfigureerd wanneer een service met de naam `contosoapi` wordt gemaakt in open bare Azure.
 >
 
 ```powershell
@@ -350,7 +353,7 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupN
 
 Wanneer de gateway is gemaakt, gaat u in de volgende stap de front-end voor communicatie configureren. Bij het gebruik van een openbaar IP-adres Application Gateway een dynamisch toegewezen DNS-naam vereist, die mogelijk niet eenvoudig te gebruiken is.
 
-De DNS-naam van de Application Gateway moet worden gebruikt om een CNAME-record te maken die verwijst naar de hostnaam `api.contoso.net` van de APIM-proxy (bijvoorbeeld in de bovenstaande voor beelden) naar deze DNS-naam. Als u de frontend-IP CNAME-record wilt configureren, haalt u de details van de Application Gateway en de bijbehorende IP/DNS-naam op met het element PublicIPAddress. Het gebruik van A-records wordt niet aanbevolen, omdat het VIP kan worden gewijzigd bij het opnieuw starten van de gateway.
+De DNS-naam van de Application Gateway moet worden gebruikt voor het maken van een CNAME-record die verwijst naar de hostnaam van de APIM-proxy (bijvoorbeeld `api.contoso.net` in de bovenstaande voor beelden) naar deze DNS-naam. Als u de frontend-IP CNAME-record wilt configureren, haalt u de details van de Application Gateway en de bijbehorende IP/DNS-naam op met het element PublicIPAddress. Het gebruik van A-records wordt niet aanbevolen, omdat het VIP kan worden gewijzigd bij het opnieuw starten van de gateway.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"

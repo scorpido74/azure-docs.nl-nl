@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.reviewer: jeconnoc
 ms.author: v-vasuke
 author: v-vasuke
-ms.date: 08/08/2019
-ms.openlocfilehash: 31ef82976a1c6938ae0bf591b2f8c8b1a0040466
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 10/18/2019
+ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928940"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177893"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Zelf studie: een lente Cloud configuratie server instellen voor uw service
 
@@ -52,7 +52,7 @@ Wanneer u een open bare opslag plaats gebruikt, zijn uw Configureer bare eigensc
 Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt voor het instellen van de open bare `Git`-opslag plaats.
 
 > [!NOTE]
-> Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. Gebruik bijvoorbeeld `default-label` niet `defaultLabel`.
+> Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. U kunt bijvoorbeeld `default-label`gebruiken, maar niet `defaultLabel`.
 
 | Eigenschap        | Verplicht | Functie                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
@@ -67,7 +67,7 @@ Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt voor h
 Alle Configureer bare eigenschappen die worden gebruikt voor het instellen van een persoonlijke `Git` opslagplaats met `Ssh` worden hieronder weer gegeven.
 
 > [!NOTE]
-> Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. Gebruik bijvoorbeeld `default-label` niet `defaultLabel`.
+> Het gebruik van een koppel teken (-) om woorden te scheiden is de enige naamgevings Conventie die momenteel wordt ondersteund. U kunt bijvoorbeeld `default-label`gebruiken, maar niet `defaultLabel`.
 
 | Eigenschap                   | Verplicht | Functie                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
@@ -121,10 +121,6 @@ Hieronder vindt u alle Configureer bare eigenschappen die worden gebruikt om Git
 | `repos."host-key-algorithm"`       | `no`             | Het algoritme van de host-sleutel moet `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`of `ecdsa-sha2-nistp521`zijn. Alleen __vereist__ als `host-key` bestaat. |
 | `repos."strict-host-key-checking"` | `no`             | Hiermee geeft u op of de configuratie server niet kan worden gestart wanneer de persoonlijke `host-key`worden uitgevoerd. Moet `true` (standaard waarde) of `false`zijn. |
 
-### <a name="import-applicationyml-file-from-spring-cloud-config"></a>`application.yml`-bestand importeren uit lente-Cloud configuratie
-
-U kunt een aantal standaard instellingen voor de configuratie server rechtstreeks importeren vanuit de [lente-Cloud configuratie](https://spring.io/projects/spring-cloud-config) website. U kunt dit rechtstreeks doen vanuit de Azure Portal, dus u hoeft geen stappen te nemen om de bestanden of opslag plaats van uw config server voor te bereiden.
-
 ## <a name="attaching-your-config-server-repository-to-azure-spring-cloud"></a>De opslag plaats van uw configuratie server koppelen aan Azure lente-Cloud
 
 Nu u uw configuratie bestanden hebt opgeslagen in een opslag plaats, moet u er een Azure lente-cloud aan koppelen.
@@ -135,19 +131,60 @@ Nu u uw configuratie bestanden hebt opgeslagen in een opslag plaats, moet u er e
 
 1. Ga naar het tabblad **config server** onder de kop **instellingen** in het menu aan de linkerkant.
 
-### <a name="public-repository"></a>Open bare opslag plaats
+![scherm afbeelding van venster](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
-Als uw opslag plaats openbaar is, klikt u gewoon op de knop **openbaar** en plakt u de URL.
+### <a name="input-repository-information-directly-to-the-azure-portal"></a>Gegevens van de opslag plaats rechtstreeks naar de Azure Portal invoeren
 
-### <a name="private-repository"></a>Privé-opslag plaats
+#### <a name="default-repository"></a>Standaard opslagplaats
 
-Azure lente-Cloud ondersteunt SSH-verificatie. Volg de instructies op de Azure Portal voor het toevoegen van de open bare sleutel aan uw opslag plaats. Zorg er vervolgens voor dat u uw persoonlijke sleutel in het configuratie bestand opneemt.
+* Open bare opslag plaats: plak in de sectie **standaard opslagplaats** de URI van de opslag plaats in de sectie **URI** en zorg ervoor dat de **verificatie** -instelling **openbaar**is. Klik vervolgens op **Toep assen** om te volt ooien. 
 
-Klik op **Toep assen** om het instellen van uw configuratie server te volt ooien.
+* Privé-opslag plaats: Azure lente-Cloud ondersteunt basis verificatie op basis van wacht woord/tokens en SSH.
+
+    * Basis verificatie: plak in de sectie **standaard opslagplaats** de URI van de opslag plaats in de sectie **URI** en klik vervolgens op de **verificatie**. Selecteer **Basic** als uw **verificatie type** en voer uw gebruikers naam en wacht woord/token in om toegang te verlenen tot Azure lente-Cloud. Klik op **OK** en **Toep assen** om het instellen van de configuratie server te volt ooien.
+
+    ![scherm afbeelding van venster](media/spring-cloud-tutorial-config-server/basic-auth.png)
+    
+    > [!CAUTION]
+    > Sommige Git-opslagplaats servers zoals GitHub gebruiken een `personal-token` of een `access-token` als een wacht woord voor **basis verificatie**. U kunt dit type token als wacht woord gebruiken in azure lente-Cloud, omdat het nooit verloopt. Maar voor andere Git-opslagplaats servers, zoals BitBucket en Azure DevOps, verloopt de `access-token` binnen een of twee uur. Dit betekent dat de optie niet haalbaar is wanneer u deze opslagplaats servers gebruikt met Azure lente Cloud.]
+
+    * SSH: plak in het gedeelte **standaard opslagplaats** de URI van de opslag plaats in de sectie **URI** en klik vervolgens op de **verificatie**. Selecteer **SSH** als **verificatie type** en voer uw **persoonlijke sleutel**in. U kunt desgewenst uw host- **sleutel** en **host-algoritme**opgeven. Zorg ervoor dat u uw open bare sleutel in uw opslag plaats voor de configuratie Server opneemt. Klik op **OK** en **Toep assen** om het instellen van de configuratie server te volt ooien.
+
+    ![scherm afbeelding van venster](media/spring-cloud-tutorial-config-server/ssh-auth.png)
+
+#### <a name="pattern-repository"></a>Opslag plaats voor patronen
+
+Als u een **opslag plaats** voor een optioneel patroon wilt gebruiken om uw service te configureren, geeft u de **URI** en **verificatie** op dezelfde manier op als de **standaard opslagplaats**. Zorg ervoor dat u een **naam** voor uw patroon opgeeft en klik vervolgens op **Toep assen** om deze aan uw exemplaar toe te voegen. 
+
+### <a name="enter-repository-information-into-a-yaml-file"></a>Opslagplaats gegevens invoeren in een YAML-bestand
+
+Als u een YAML-bestand met de instellingen van uw opslag plaats hebt geschreven, kunt u uw YAML-bestand rechtstreeks vanaf uw lokale computer importeren in azure veer Cloud. Een eenvoudig YAML-bestand voor een privé opslagplaats met basis verificatie ziet er als volgt uit:
+
+```yml
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/azure-spring-cloud-samples/config-server-repository.git
+                    username: <username>
+                    password: <password/token>
+
+```
+
+Klik op de knop **Instellingen importeren** en selecteer vervolgens het `.yml` bestand in de projectmap. Klik op **importeren**. vervolgens wordt een `async` bewerking uit uw **meldingen** weer gegeven. Na 1-2 minuten zou het succes moeten worden gerapporteerd.
+
+![scherm afbeelding van venster](media/spring-cloud-tutorial-config-server/local-yml-success.png)
+
+
+U ziet nu de gegevens uit uw YAML-bestand dat wordt weer gegeven in de Azure Portal. Klik op **Toep assen** om te volt ooien. 
+
 
 ## <a name="delete-your-app-configuration"></a>Uw app-configuratie verwijderen
 
 Zodra u een configuratie bestand hebt opgeslagen, wordt de knop **app-configuratie verwijderen** weer gegeven op het tabblad **configuratie** . Hiermee worden de bestaande instellingen volledig gewist. U moet dit doen als u de configuratie server wilt verbinden met een andere bron, zoals het verplaatsen van GitHub naar Azure DevOps.
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

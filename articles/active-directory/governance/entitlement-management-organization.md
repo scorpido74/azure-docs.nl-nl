@@ -1,5 +1,5 @@
 ---
-title: Een verbonden organisatie toevoegen in azure AD rechten beheer (preview)-Azure Active Directory
+title: Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD-Azure Active Directory
 description: Meer informatie over het toestaan van personen buiten uw organisatie om toegangs pakketten aan te vragen, zodat u kunt samen werken aan projecten.
 services: active-directory
 documentationCenter: ''
@@ -16,14 +16,14 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23d45db1f62b370a2692ed932572e16c247b8903
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952483"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174134"
 ---
-# <a name="add-a-connected-organization-in-azure-ad-entitlement-management-preview"></a>Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD (preview-versie)
+# <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD
 
 Met het beheer van rechten van Azure AD kunt u samen werken met mensen buiten uw organisatie. Als u regel matig samenwerkt met gebruikers in een extern Azure AD-adres lijst of-domein, kunt u ze als een verbonden organisatie toevoegen. In dit artikel wordt beschreven hoe u een verbonden organisatie toevoegt zodat u gebruikers buiten uw organisatie in staat kunt stellen om resources in uw directory aan te vragen.
 
@@ -39,11 +39,9 @@ U kunt twee verbonden organisaties configureren: één voor Graphic Design Insti
 
 Hoe gebruikers van de Azure AD-Directory of het domein worden geverifieerd, is afhankelijk van het verificatie type. De verificatie typen voor verbonden organisaties zijn als volgt:
 
-| Verificatietype | Status |
-| --- | --- |
-| Azure AD | Ondersteund |
-| [Directe Federatie](../b2b/direct-federation.md) | Preview |
-| [Eenmalige wachtwoord code](../b2b/one-time-passcode.md) (domein) | Preview |
+- Azure AD
+- [Directe Federatie](../b2b/direct-federation.md)
+- [Eenmalige wachtwoord code](../b2b/one-time-passcode.md) (domein)
 
 ## <a name="add-a-connected-organization"></a>Een verbonden organisatie toevoegen
 

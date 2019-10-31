@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 30013bd72ac23475fe0e7b5eda50d8ec43464bad
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1f68ddabde58c68a4096fcc7a0b0e1dd8a2ba9e6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72955982"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176205"
 ---
 # <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -431,4 +431,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 Hier volgt de voorgestelde volgende stap:
 
 > [!div class="nextstepaction"]
-> [Edge-apparaat toevoegen](tutorial-add-edge-as-leaf-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Een apparaat verbinden](tutorial-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

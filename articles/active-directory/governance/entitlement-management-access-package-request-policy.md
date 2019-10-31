@@ -1,6 +1,6 @@
 ---
-title: Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in azure AD rechten beheer (preview)-Azure Active Directory
-description: Meer informatie over het wijzigen van de aanvraag-en goedkeurings instellingen voor een toegangs pakket in Azure Active Directory rechten beheer (preview).
+title: Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in azure AD-recht beheer-Azure Active Directory
+description: Meer informatie over het wijzigen van de aanvraag-en goedkeurings instellingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b060a17d9e7f795b6aad7df0e3e6349bbbd81b3
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392499"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174673"
 ---
-# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Instellingen voor aanvraag-en goed keuring wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
 Als Access Package Manager kunt u de gebruikers die op elk gewenst moment een toegangs pakket aanvragen, wijzigen door het beleid te bewerken of een nieuw beleid toe te voegen. U kunt ook de goedkeurings instellingen wijzigen.
 

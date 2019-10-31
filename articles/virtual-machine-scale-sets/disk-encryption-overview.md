@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69197b9c0d2a60e1833d03a3f12802221a8307e2
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530834"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177773"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>Azure Disk Encryption voor Virtual Machine Scale Sets
 
@@ -23,7 +23,7 @@ Azure Disk Encryption kan ook worden toegepast op schaal sets voor virtuele Wind
 - Besturings systeem-en gegevens volumes in Windows-schaal sets.
 - Gegevens volumes in Linux-schaal sets. Versleuteling van de besturingssysteem schijf wordt op dit moment niet ondersteund voor Linux-schaal sets.
 
-In slechts enkele minuten kunt u de basis principes van Azure Disk Encryption voor virtuele-machine schaal sets [versleutelen met de Azure cli](disk-encryption-cli.md) of het [versleutelen van een virtuele-machine schaal sets met de zelf studies van Azure cli](disk-encryption-powershell.md) .
+Meer informatie over de basis principes van Azure Disk Encryption voor schaal sets voor virtuele machines in slechts enkele minuten met het [versleutelen van een schaalset voor virtuele machines met behulp van de Azure cli](disk-encryption-cli.md) of het [versleutelen van een virtuele-machine schaal sets met de Azure PowerShell](disk-encryption-powershell.md) studies.
 
 ## <a name="next-steps"></a>Volgende stappen
 

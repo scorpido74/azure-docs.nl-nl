@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980501"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175780"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory
 
@@ -53,7 +53,7 @@ Alle beleids regels worden in twee fasen afgedwongen:
 
 - In de **tweede** fase wordt u gevraagd om te voldoen aan de vereisten die u niet hebt vervuld. Als een van de beleids regels toegang blokkeert, wordt u geblokkeerd en wordt niet gevraagd om te voldoen aan andere beleids elementen. Als geen van de beleids regels u blokkeert, wordt u gevraagd om aan andere beleids besturings elementen te voldoen in de volgende volg orde:
 
-   ![Bestellen](./media/best-practices/06.png)
+   ![Bestelling](./media/best-practices/06.png)
     
    Externe MFA-providers en gebruiks voorwaarden komen nu voor.
 

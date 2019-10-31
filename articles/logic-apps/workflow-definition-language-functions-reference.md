@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: 1c6051508a067e17afbc25702c26608da4cd4ca2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1d5197f585fde5388fdafac887d6a1454d6131e9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968921"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177090"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en Microsoft Flow
 
@@ -2019,7 +2019,7 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 
 | Parameter | Verplicht | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*interval* > | Ja | Geheel getal | Het aantal opgegeven tijds eenheden dat moet worden afgetrokken |
+| <*interval* > | Ja | Geheel getal | Het aantal opgegeven tijds eenheden dat moet worden toegevoegd |
 | <*timeUnit* > | Ja | Tekenreeks | De tijds eenheid die moet worden gebruikt met het *interval*: ' seconde ', ' minuut ', ' uur ', ' dag ', ' week ', ' maand ', ' jaar ' |
 | <*indeling* > | Nee | Tekenreeks | Een [enkele indelings aanduiding](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) of een [aangepast opmaak patroon](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). De standaard notatie voor de tijds tempel is ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (jjjj-mm-ddTuu: mm: SS: fffffffK), die voldoet aan [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) en tijd zone gegevens behoudt. |
 |||||

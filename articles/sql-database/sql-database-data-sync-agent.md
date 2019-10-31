@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568985"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177714"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Data Sync-agent voor Azure SQL Data Sync
 
@@ -33,9 +33,9 @@ Als u de Data Sync-agent wilt downloaden, gaat u naar [SQL Azure Data Sync agent
 
 Als u de Data Sync-agent op de achtergrond wilt installeren vanaf de opdracht prompt, voert u een opdracht in die vergelijkbaar is met het volgende voor beeld. Controleer de bestands naam van het gedownloade MSI-bestand en geef uw eigen waarden op voor de argumenten **TARGETDIR** en **SERVICEACCOUNT** .
 
-- Als u geen waarde opgeeft voor **TARGETDIR**, is `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`de standaard waarde.
+- Als u geen waarde opgeeft voor **TARGETDIR**, is de standaard waarde `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`.
 
-- Als u de `LocalSystem` waarde **SERVICEACCOUNT**opgeeft, gebruikt u SQL Server-verificatie wanneer u de agent configureert om verbinding te maken met de on-premises SQL Server.
+- Als u `LocalSystem` opgeeft als waarde voor **SERVICEACCOUNT**, gebruikt u SQL Server-verificatie wanneer u de agent configureert om verbinding te maken met de on-premises SQL Server.
 
 - Als u een domein gebruikers account of een lokale gebruikers account opgeeft als waarde voor **SERVICEACCOUNT**, moet u het wacht woord ook opgeven met het argument **SERVICEPASSWORD** . Bijvoorbeeld `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
@@ -99,10 +99,10 @@ Ga als volgt te werk als u de lokale agent vanaf een andere computer wilt uitvoe
 
 - **Oorzaak**. Veel scenario's kunnen deze fout veroorzaken. Bekijk de logboeken om de specifieke oorzaak van deze fout te bepalen.
 
-- **Oplossing**. Als u de specifieke oorzaak van de fout wilt achterhalen, genereert en bekijkt u de Windows Installer-Logboeken. U kunt logboek registratie inschakelen vanaf een opdracht prompt. Bijvoorbeeld, als het gedownloade installatie bestand `SQLDataSyncAgent-2.0-x86-ENU.msi`is, Genereer en onderzoek logboek bestanden met behulp van de volgende opdracht regels:
+- **Oplossing**. Als u de specifieke oorzaak van de fout wilt achterhalen, genereert en bekijkt u de Windows Installer-Logboeken. U kunt logboek registratie inschakelen vanaf een opdracht prompt. Als het gedownloade installatie bestand bijvoorbeeld `SQLDataSyncAgent-2.0-x86-ENU.msi`is, Genereer en onderzoekt u logboek bestanden met behulp van de volgende opdracht regels:
 
-  - Voor installaties:`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-  - Voor installatie:`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Voor installaties: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Voor het verwijderen: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     U kunt logboek registratie ook inschakelen voor alle installaties die worden uitgevoerd door Windows Installer. Het micro soft Knowledge Base-artikel [How to enable Windows Installer logging](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) biedt een oplossing met één klik om logboek registratie in te scha kelen voor Windows Installer. Het bevat ook de locatie van de logboeken.
 
@@ -115,7 +115,7 @@ De client agent werkt niet, zelfs nadat u de verwijdering ervan hebt geannuleerd
 - **Oplossing**. U kunt deze twee oplossingen proberen:
 
     -   Gebruik Services. msc om de referenties voor de client agent opnieuw in te voeren.
-    -   Verwijder deze client agent en installeer vervolgens een nieuwe. Down load en installeer de nieuwste client agent vanuit het [Download centrum](https://go.microsoft.com/fwlink/?linkid=221479).
+    -   Verwijder deze client agent en installeer vervolgens een nieuwe. Down load en installeer de nieuwste client agent vanuit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=27693).
 
 ### <a name="agent-list"></a>Mijn data base staat niet in de lijst met agents
 
@@ -138,7 +138,7 @@ Dit probleem kan de volgende oorzaken hebben:
 
 ### <a name="agent-start"></a>Client agent wordt niet gestart (fout 1069)
 
-U ontdekt dat de agent niet wordt uitgevoerd op een computer die als host fungeert voor SQL Server. Wanneer u probeert de agent hand matig te starten, ziet u een dialoog venster met het bericht ' fout 1069: De service is niet gestart vanwege een fout bij het aanmelden.
+U ontdekt dat de agent niet wordt uitgevoerd op een computer die als host fungeert voor SQL Server. Wanneer u probeert de agent hand matig te starten, ziet u een dialoog venster met het bericht ' fout 1069: de service is niet gestart vanwege een aanmeldings fout '.
 
 ![Het dialoog venster gegevens synchronisatie fout 1069](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -147,7 +147,7 @@ U ontdekt dat de agent niet wordt uitgevoerd op een computer die als host fungee
 - **Oplossing**. Werk het wacht woord van de agent bij naar uw huidige server wachtwoord:
 
   1. Zoek de service voor de SQL Data Sync-client agent.  
-    a. Selecteer **Start**.  
+    a. Selecteer **Starten**.  
     b. Typ **Services. msc**in het zoekvak.  
     c. Selecteer in de zoek resultaten **Services**.  
     d. Schuif in het venster **Services** naar de vermelding voor **SQL Data Sync agent**.  
@@ -188,7 +188,7 @@ Nadat u een sleutel voor een agent hebt gemaakt of opnieuw hebt gemaakt, probeer
 
   De nieuwe sleutel Toep assen op de agent:
 
-  1. Ga in Verkenner naar de installatiemap van uw agent. De standaard installatie directory is C:\\Program Files (x86)\\micro soft SQL Data Sync.
+  1. Ga in Verkenner naar de installatiemap van uw agent. De standaard installatie directory is C:\\programma bestanden (x86)\\micro soft SQL Data Sync.
   1. Dubbel klik op de submap van de opslag locatie.
   1. Open de toepassing SqlAzureDataSyncAgent.
   1. Selecteer **agent sleutel verzenden**.
@@ -205,7 +205,7 @@ Als een lokaal eind punt (dat wil zeggen, een Data Base) die is geregistreerd bi
 - **Oplossing**. Gebruik Force Delete om de onbereikbare data base te verwijderen.
 
 > [!NOTE]
-> Als de synchronisatie van meta gegevens tabellen behouden blijft na een geforceerd verwijderen `deprovisioningutil.exe` , gebruikt u om deze op te schonen.
+> Als de synchronisatie van meta gegevens tabellen behouden blijft na een geforceerd verwijderen, gebruikt u `deprovisioningutil.exe` om deze op te schonen.
 
 ### <a name="agent-connect"></a>Lokale synchronisatie agent-app kan geen verbinding maken met de lokale synchronisatie service
 
@@ -320,12 +320,12 @@ Raadpleeg de volgende artikelen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-database-sync-data.md)
 -   Data Sync instellen
-    - In de portal - [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
+    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
     - Met PowerShell
         -  [PowerShell gebruiken om meerdere Azure SQL-databases te synchroniseren](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Best practices: [Best practices voor Azure SQL Data Sync](sql-database-best-practices-data-sync.md)
--   SQL Data Sync controleren [met Azure monitor](sql-database-sync-monitor-oms.md) -logboeken
+-   SQL Data Sync controleren [met Azure monitor-logboeken](sql-database-sync-monitor-oms.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](sql-database-troubleshoot-data-sync.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](sql-database-update-sync-schema.md)

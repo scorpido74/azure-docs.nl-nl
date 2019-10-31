@@ -1,6 +1,6 @@
 ---
-title: Levenscyclus instellingen wijzigen voor een toegangs pakket in azure AD rechten beheer (preview)-Azure Active Directory
-description: Meer informatie over het wijzigen van de levenscyclus instellingen voor een toegangs pakket in Azure Active Directory rechten beheer (preview).
+title: Levenscyclus instellingen voor een toegangs pakket wijzigen in azure AD-recht beheer-Azure Active Directory
+description: Meer informatie over het wijzigen van de levenscyclus instellingen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d63a12443edf04db3570fa43fbd8f20619122e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 959d85f496a4a573a969bf736aba137d5b86154a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392343"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174732"
 ---
-# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Levenscyclus instellingen voor een toegangs pakket wijzigen in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Levenscyclus instellingen voor een toegangs pakket wijzigen in het beheer van rechten van Azure AD
 
 Als Access Package Manager kunt u de levenscyclus instellingen voor een toegangs pakket op elk gewenst moment wijzigen door een bestaand beleid te bewerken. Als u de verval datum voor een beleid wijzigt, wordt de verval datum voor aanvragen waarvoor al een goed keuring in behandeling of goedgekeurd staat, niet gewijzigd.
 

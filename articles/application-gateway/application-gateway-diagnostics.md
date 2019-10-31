@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7b9cbd4e84f60b42e8eb6cb250a9b25f398fd4a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693267"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176449"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-end status-en Diagnostische logboeken voor Application Gateway
 
@@ -216,7 +216,7 @@ Voor Application Gateway en WAF v2 bevatten de logboeken nog iets meer informati
 |timeTaken| De tijds duur (in milliseconden) die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat het veld voor de duur doorgaans de tijd bevat dat de aanvraag-en antwoord pakketten via het netwerk onderweg zijn. |
 |sslEnabled| Hiermee wordt aangegeven of communicatie met de back-endservers gebruik maakt van SSL. Geldige waarden zijn in-en uitgeschakeld.|
 |sslCipher| Coderings suite wordt gebruikt voor SSL-communicatie (als SSL is ingeschakeld).|
-|sslProtocol| SSL-protocol dat wordt gebruikt (als SSL is ingeschakeld).|
+|sslProtocol| SSL/TLS-protocol dat wordt gebruikt (als SSL is ingeschakeld).|
 |serverRouted| De back-endserver die Application Gateway naar verzendt.|
 |serverStatus| HTTP-status code van de back-endserver.|
 |serverResponseLatency| Latentie van het antwoord van de back-endserver.|

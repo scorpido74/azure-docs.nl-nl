@@ -1,6 +1,6 @@
 ---
-title: Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer (preview)-Azure Active Directory
-description: Meer informatie over het gebruik van de portal mijn toegang voor het goed keuren of weigeren van aanvragen voor een toegangs pakket in Azure Active Directory rechten beheer (preview).
+title: Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer-Azure Active Directory
+description: Meer informatie over het gebruik van de portal mijn toegang voor het goed keuren of weigeren van aanvragen voor een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da3e1b6439b033742af62d548775cfb628e955b7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: MT
+ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990710"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173456"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer
 
 Met het beheer van rechten van Azure AD kunt u beleid configureren om goed keuring van toegangs pakketten te vereisen en een of meer goed keurders kiezen. In dit artikel wordt beschreven hoe aangewezen goed keurders aanvragen voor toegangs pakketten kunnen goed keuren of weigeren.
 

@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e7c3ccb553010b84a30ccdad875ea0362112d830
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619094"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172324"
 ---
-# <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een beheer-VM maken om een Azure Active Directory Domain Services beheerd domein te configureren en te beheren
+# <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: een beheer-VM maken om een Azure Active Directory Domain Services beheerd domein te configureren en te beheren
 
 Azure Active Directory Domain Services (AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP en Kerberos/NTLM-verificatie die volledig compatibel is met Windows Server Active Directory. U beheert dit beheerde domein met behulp van dezelfde Remote Server Administration Tools (RSAT), net als bij een on-premises Active Directory Domain Services domein. Omdat Azure AD DS een beheerde service is, zijn er enkele beheer taken die u niet kunt uitvoeren, zoals het gebruik van Remote Desktop Protocol (RDP) om verbinding te maken met de domein controllers.
 
@@ -43,7 +43,7 @@ U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt o
     * Als dat nodig is, [maakt en configureert][create-azure-ad-ds-instance]de eerste zelf studie een Azure Active Directory Domain Services-exemplaar.
 * Een Windows Server-VM die is gekoppeld aan het beheerde domein van Azure AD DS.
     * Als dat nodig is, maakt de vorige zelf studie [een Windows Server-VM en voegt deze toe aan een beheerd domein][create-join-windows-vm].
-* Een gebruikers account dat lid is van de groep *Azure AD DC* -Administrators in uw Azure AD-Tenant.
+* Een gebruikers account dat lid is van de groep *Azure AD DC-Administrators* in uw Azure AD-Tenant.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -55,7 +55,7 @@ Azure AD DS biedt een beheerd domein voor de verbruikte gebruikers, toepassingen
 
 ### <a name="administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain"></a>Beheer taken die u kunt uitvoeren op een beheerd domein van Azure AD DS
 
-Leden van de groep *Aad DC* -Administrators beschikken over bevoegdheden op het door Azure AD DS beheerde domein waarmee ze taken kunnen uitvoeren zoals:
+Leden van de groep *Aad DC-Administrators* beschikken over bevoegdheden op het door Azure AD DS beheerde domein waarmee ze taken kunnen uitvoeren zoals:
 
 * Computers toevoegen aan het beheerde domein.
 * Configureer het ingebouwde groeps beleidsobject (GPO) voor de containers *AADDC computers* en *AADDC gebruikers* in het beheerde domein.
@@ -84,7 +84,7 @@ In de vorige zelf studie is een Windows Server-VM gemaakt en gekoppeld aan het b
 Als u aan de slag wilt gaan, maakt u als volgt verbinding met de virtuele machine van Windows Server:
 
 1. Selecteer in de Azure Portal **resource groepen** aan de linkerkant. Kies de resource groep waar uw VM is gemaakt, zoals *myResourceGroup*en selecteer vervolgens de virtuele machine, zoals *myVM*.
-1. Selecteer in het overzichts venster van de virtuele machine **verbinding maken**.
+1. Selecteer in het **overzichts** venster van de virtuele machine **verbinding maken**.
 
     ![Verbinding maken met een virtuele Windows-machine in de Azure Portal](./media/tutorial-create-management-vm/connect-vm.png)
 
@@ -92,16 +92,16 @@ Als u aan de slag wilt gaan, maakt u als volgt verbinding met de virtuele machin
 
 1. Selecteer de optie om het *RDP-bestand te downloaden*. Sla dit RDP-bestand op in de webbrowser.
 1. Open het gedownloade RDP-bestand om verbinding met de VM te maken. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
-1. Voer de referenties in van een gebruiker die deel uitmaakt van de groep *Azure AD DC* -Administrators, zoals *contoso\dee*
+1. Voer de referenties in van een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* , zoals *contoso\dee*
 1. Als tijdens het aanmeldings proces een certificaat waarschuwing wordt weer gegeven, selecteert u **Ja** of **door gaan** met verbinding maken.
 
 ## <a name="install-active-directory-administrative-tools"></a>Active Directory-beheer Programma's installeren
 
-Beheerde domeinen van Azure AD DS worden beheerd met dezelfde beheer Programma's als on-premises AD DS omgevingen, zoals de Active Directory-beheercentrum (ADAC) of AD Power shell. Deze hulpprogram ma's kunnen worden geïnstalleerd als onderdeel van de functie Remote Server Administration Tools (RSAT) op Windows Server-en client computers. Leden van de groep *Aad DC* -Administrators kunnen vervolgens Azure AD DS beheerde domeinen op afstand beheren met behulp van deze ad-beheer Programma's van een computer die is toegevoegd aan het beheerde domein.
+Beheerde domeinen van Azure AD DS worden beheerd met dezelfde beheer Programma's als on-premises AD DS omgevingen, zoals de Active Directory-beheercentrum (ADAC) of AD Power shell. Deze hulpprogram ma's kunnen worden geïnstalleerd als onderdeel van de functie Remote Server Administration Tools (RSAT) op Windows Server-en client computers. Leden van de groep *Aad DC-Administrators* kunnen vervolgens Azure AD DS beheerde domeinen op afstand beheren met behulp van deze ad-beheer Programma's van een computer die is toegevoegd aan het beheerde domein.
 
 Voer de volgende stappen uit om de Active Directory-beheer hulpprogramma's te installeren op een virtuele machine die lid is van een domein:
 
-1. **Serverbeheer** moet standaard worden geopend wanneer u zich aanmeldt bij de VM. Als dat niet het geval is, selecteert u **Serverbeheer**in het menu **Start** .
+1. Als **Serverbeheer** standaard niet wordt geopend wanneer u zich aanmeldt bij de VM, selecteert u het menu **Start** en kiest u vervolgens **Serverbeheer**.
 1. Selecteer in het deel venster *dash board* van het **Serverbeheer** -venster **functies en onderdelen toevoegen**.
 1. Selecteer op de pagina **voordat u begint** van de *wizard functies en onderdelen toevoegen*de optie **volgende**.
 1. Voor het *installatie type*, houdt u de **installatie optie op basis van functie of op basis** van het onderdeel ingeschakeld en selecteert u **volgende**.
@@ -118,7 +118,7 @@ Voer de volgende stappen uit om de Active Directory-beheer hulpprogramma's te in
 
 ## <a name="use-active-directory-administrative-tools"></a>Active Directory-beheer Programma's gebruiken
 
-Als u de beheer Programma's hebt geïnstalleerd, ziet u hoe u deze kunt gebruiken voor het beheren van het door Azure AD DS beheerde domein. Zorg ervoor dat u bent aangemeld bij de virtuele machine met een gebruikers account dat lid is van de groep *Aad DC* -Administrators.
+Als u de beheer Programma's hebt geïnstalleerd, ziet u hoe u deze kunt gebruiken voor het beheren van het door Azure AD DS beheerde domein. Zorg ervoor dat u bent aangemeld bij de virtuele machine met een gebruikers account dat lid is van de groep *Aad DC-Administrators* .
 
 1. Selecteer **Windows systeem beheer**in het menu **Start** . De AD-beheer Programma's die in de vorige stap zijn geïnstalleerd, worden weer gegeven.
 
@@ -131,17 +131,19 @@ Als u de beheer Programma's hebt geïnstalleerd, ziet u hoe u deze kunt gebruike
 
 1. Als u de gebruikers en groepen wilt zien die deel uitmaken van de Azure AD DS beheerde domein, selecteert u de container **AADDC-gebruikers** . De gebruikers accounts en-groepen van uw Azure AD-Tenant worden weer gegeven in deze container.
 
-    In de volgende voorbeeld uitvoer worden een gebruikers account met de naam *contosoadmin* en een groep voor *Aad DC-beheerders* weer gegeven in deze container.
+    In de volgende voorbeeld uitvoer wordt een gebruikers account met de naam *Contoso admin* en een groep voor *Aad DC-beheerders* weer gegeven in deze container.
 
     ![Bekijk de lijst met Azure AD DS-domein gebruikers in de Active Directory-beheercentrum](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
 1. Selecteer de container **AADDC computers** als u de computers wilt zien die lid zijn van het Azure AD DS beheerde domein. Er wordt een vermelding voor de huidige virtuele machine weer gegeven, zoals *myVM*. Computer accounts voor alle computers die lid zijn van het Azure AD DS beheerde domein worden opgeslagen in deze *AADDC* -container computers.
 
-Algemene Active Directory-beheercentrum acties, zoals het opnieuw instellen van een wacht woord voor een gebruikers account of het beheren van groepslid maatschap, zijn beschikbaar. U kunt ook de *Active Directory-module voor Windows Power shell*gebruiken, geïnstalleerd als onderdeel van de systeem beheer, voor het beheren van algemene acties in uw door Azure AD DS beheerd domein.
+Algemene Active Directory-beheercentrum acties, zoals het opnieuw instellen van een wacht woord voor een gebruikers account of het beheren van groepslid maatschap, zijn beschikbaar. Deze acties werken alleen voor gebruikers en groepen die rechtstreeks zijn gemaakt in het door Azure AD DS beheerde domein. Identiteits gegevens worden alleen gesynchroniseerd *vanuit* Azure AD naar Azure AD DS. Er is geen write-back van Azure AD DS naar Azure AD. U kunt geen wacht woorden of lidmaatschap van een beheerde groep wijzigen voor gebruikers die zijn gesynchroniseerd vanuit Azure AD en deze wijzigingen worden weer gesynchroniseerd.
+
+U kunt ook de *Active Directory-module voor Windows Power shell*gebruiken, geïnstalleerd als onderdeel van de systeem beheer, voor het beheren van algemene acties in uw door Azure AD DS beheerd domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Meer informatie over de beschik bare beheer taken in een door Azure AD DS beheerd domein

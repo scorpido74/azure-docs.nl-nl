@@ -1,5 +1,5 @@
 ---
-title: Het toegangs beheer voor toegang tot pakket managers in azure AD-rechts Management (preview) overdragen-Azure Active Directory
+title: Delegeer toegangs beheer voor toegang tot pakket beheerders in azure AD-beleid voor rechten-Azure Active Directory
 description: Meer informatie over het overdragen van toegangs beheer van IT-beheerders om toegang te krijgen tot pakket beheerders en project managers, zodat ze de toegang zelf kunnen beheren.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a2b6bfdb4904e11ffba3a9fe1097c7f5cfe9d6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170735"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174367"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management-preview"></a>Toegangs beheer delegeren voor toegang tot pakket beheerders in azure AD-recht-Management (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Het toegangs beheer voor toegang tot pakket beheerders in azure AD-rechts Management delegeren
 
 Als u het maken en beheren van toegangs pakketten in een catalogus wilt delegeren, voegt u gebruikers toe aan de rol toegangs pakket beheer. Toegangs pakket beheerders moeten vertrouwd zijn met de behoeften van gebruikers om toegang te vragen tot bronnen in een catalogus. Als er bijvoorbeeld een catalogus voor een project wordt gebruikt, kan een project lead een Access Package Manager voor die catalogus zijn.  Toegangs pakket beheerders kunnen geen resources toevoegen aan een catalogus, maar ze kunnen de toegangs pakketten en het beleid in een catalogus beheren.  Bij het delegeren naar een Access package manager kan die persoon vervolgens verantwoordelijk zijn voor:
 

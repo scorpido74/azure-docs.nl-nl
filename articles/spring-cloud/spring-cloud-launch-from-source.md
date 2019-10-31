@@ -4,24 +4,34 @@ description: Meer informatie over hoe u uw Azure lente-Cloud toepassing rechtstr
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170537"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177969"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Start uw lente-Cloud toepassing vanuit de bron code
 
+Met Azure lente Cloud kunt u eenvoudig lente-Cloud toepassingen uitvoeren op Azure.
+
 Met Azure lente Cloud kunt u uw toepassing rechtstreeks starten vanuit uw Java-bron code of van een vooraf gebouwde JAR. Dit artikel begeleidt u stapsgewijs door de vereiste stappen.
+
+In deze Quick Start leert u het volgende:
+
+> [!div class="checklist"]
+> * Een service-exemplaar inrichten
+> * Een configuratie server instellen voor een exemplaar
+> * Een micro Services-toepassing lokaal bouwen
+> * Implementeer elke micro service
+> * Openbaar eind punt voor uw toepassing toewijzen
 
 ## <a name="prerequisites"></a>Vereisten
 
 >[!Note]
-> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service wordt u gevraagd om contact met ons op te nemen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-)in als u de mogelijkheden van Azure lente-Cloud wilt verkennen.
+> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service wordt u gevraagd om contact met ons op te nemen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)in als u de mogelijkheden van Azure lente-Cloud wilt verkennen.  Hoewel Azure lente-Cloud in preview is, biedt micro soft beperkte ondersteuning zonder een SLA.  Raadpleeg deze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/)over ondersteuning voor meer informatie over ondersteuning tijdens previews.
 
 Voordat u begint, moet u ervoor zorgen dat uw Azure-abonnement de vereiste afhankelijkheden heeft:
 

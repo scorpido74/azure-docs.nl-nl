@@ -1,6 +1,6 @@
 ---
-title: Een catalogus met resources maken en beheren in azure AD rechten beheer (preview)-Azure Active Directory
-description: Meer informatie over het maken van een nieuwe container met resources en toegangs pakketten in Azure Active Directory rechten beheer (preview).
+title: Een catalogus met resources maken en beheren in azure AD-beheer-Azure Active Directory
+description: Meer informatie over het maken van een nieuwe container met resources en toegangs pakketten in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429607"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174438"
 ---
-# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Een catalogus met resources maken en beheren in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Een catalogus met resources maken en beheren in azure AD-rechts beheer
 
 ## <a name="create-a-catalog"></a>Een catalogus maken
 

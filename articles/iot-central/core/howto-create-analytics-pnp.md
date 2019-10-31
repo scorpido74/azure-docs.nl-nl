@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 040874f0ba5e2766aab8aa399bcae65a6676fa53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bcf19956d998ace88efbd4e1c9d787f1baeef642
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951131"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177385"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Informatie over het gebruik van Analytics voor het analyseren van apparaatgegevens
 
@@ -39,7 +39,7 @@ De gebruikers interface van Analytics bestaat uit drie hoofd onderdelen:
 
 U moet beginnen met het kiezen van een **apparaatgroep**en de telemetrie die u wilt analyseren. Wanneer u klaar bent, selecteert u **analyseren** om uw gegevens te visualiseren.
 
-- **Apparaatgroep:** Een [apparaatgroep](howto-use-device-groups-pnp.md) is een door de gebruiker gedefinieerde groep van uw apparaten. Bijvoorbeeld alle koel kasten in Oakland of alle versie 2,0-wind turbines.
+- **Apparaatgroep:** Een [apparaatgroep](tutorial-use-device-groups-pnp.md) is een door de gebruiker gedefinieerde groep van uw apparaten. Bijvoorbeeld alle koel kasten in Oakland of alle versie 2,0-wind turbines.
 
 - **Telemetrie:** Selecteer de telemetrie die u wilt analyseren en verkennen. U kunt meerdere webelementen selecteren om samen te analyseren. De standaard aggregatie methode is ingesteld op gemiddeld voor numeriek en aantal voor het gegevens type teken reeks. Ondersteunde aggregatie methoden voor numerieke gegevens typen zijn gemiddelde, maximum, minimum, aantal en, sum.  Ondersteunde aggregatie methoden voor het gegevens type teken reeks zijn aantal.
 

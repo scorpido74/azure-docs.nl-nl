@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7dfd7e29b119b5fe98b649b2e5f5f45b422c4634
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
-ms.translationtype: HT
+ms.openlocfilehash: 698702e24f1f6dfc6b94b75de77c08156832e566
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053432"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177844"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -159,11 +159,14 @@ Windows Server Failover Clustering wordt ondersteund door Azure File Sync voor d
 
 ### <a name="data-deduplication"></a>Gegevensontdubbeling
 **5.0.2.0 of nieuwer  van agent versie**  
-Gegevensontdubbeling wordt ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld op Windows Server 2016 en Windows Server 2019. Door Gegevensontdubbeling in te scha kelen op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten. 
+Gegevensontdubbeling wordt ondersteund op volumes waarvoor Cloud lagen zijn ingeschakeld op Windows Server 2016. Door Gegevensontdubbeling in te scha kelen op een volume waarvoor Cloud lagen zijn ingeschakeld, kunt u meer bestanden on-premises opslaan zonder dat u meer opslag ruimte hoeft in te richten. 
 
 Als Gegevensontdubbeling is ingeschakeld op een volume waarop Cloud lagen zijn ingeschakeld, worden geoptimaliseerde bestanden in de eindpunt locatie van het server niveau vergelijkbaar met een normaal bestand op basis van de beleids instellingen voor Cloud lagen. Zodra de geoptimaliseerde bestanden voor ontdubbeling zijn gelaagd, wordt de garbagecollection-taak voor Gegevensontdubbeling automatisch uitgevoerd om schijf ruimte vrij te maken door overbodige segmenten te verwijderen waarnaar niet meer wordt verwezen door andere bestanden op het volume.
 
 Houd er rekening mee dat de besparing van volumes alleen van toepassing is op de-server. uw gegevens in de Azure-bestands share worden niet ontdubbeld.
+
+> [!Note]  
+> Gegevensontdubbeling en Cloud lagen worden momenteel niet ondersteund op hetzelfde volume op server 2019 vanwege een fout die wordt opgelost in een toekomstige update.
 
 **Versies van Windows Server 2012 R2 of oudere agents**  
 Voor volumes waarvoor geen Cloud lagen zijn ingeschakeld, wordt door Azure File Sync ondersteuning voor Windows Server-gegevensontdubbeling ingeschakeld op het volume.
@@ -274,6 +277,8 @@ Azure File Sync is alleen beschikbaar in de volgende regio's:
 | US Gov - Arizona | Arizona |
 | US Gov - Texas | Texas |
 | US Gov - Virginia | Virginia |
+| VAE - noord | Dubai |
+| UAE-centraal * | Abu Dhabi |
 | Europa - west | Nederland |
 | VS - west-centraal | Wyoming |
 | VS - west | Californië |

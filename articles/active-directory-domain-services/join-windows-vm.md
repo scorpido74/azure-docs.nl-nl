@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 00e717202116cf9a48c2c2d889374d451b8e4d45
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 164ba5ff7be38d3b11a8c5f8e5c76a3ff19ff508
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754363"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172924"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelf studie: een virtuele Windows Server-machine toevoegen aan een beheerd domein
 
@@ -55,11 +55,11 @@ Als u wilt zien hoe een computer moet worden toegevoegd aan een door Azure AD DS
 Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u naar de sectie om [de VM toe te voegen aan het beheerde domein van Azure AD DS](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
 1. Selecteer in de linkerbovenhoek van de Azure Portal **+ een resource maken**.
-2. Kies **Windows Server 2016 Data Center** **om aan**de slag te gaan.
+1. Kies **Windows Server 2016 Data Center** **om aan**de slag te gaan.
 
     ![Kies voor het maken van een Windows Server 2016 Data Center VM in de Azure Portal](./media/join-windows-vm/select-vm-image.png)
 
-3. Configureer in het venster **basis beginselen** de kern instellingen voor de virtuele machine. Behoud de standaard instellingen voor *beschikbaarheids opties*, *afbeelding*en *grootte*.
+1. Configureer in het venster **basis beginselen** de kern instellingen voor de virtuele machine. Behoud de standaard instellingen voor *beschikbaarheids opties*, *afbeelding*en *grootte*.
 
     | Parameter            | Voorgestelde waarde   |
     |----------------------|-------------------|
@@ -69,17 +69,17 @@ Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u na
     | Gebruikersnaam             | Voer een gebruikers naam in voor het lokale beheerders account dat u op de virtuele machine wilt maken, zoals *azureuser* |
     | Wachtwoord             | Voer een veilig wacht woord voor de lokale beheerder in en bevestig dit om op de VM te maken. Geef geen referenties voor een domein gebruikers account op. |
 
-4. Vm's die in azure zijn gemaakt, zijn standaard niet toegankelijk via internet. Deze configuratie helpt de beveiliging van de virtuele machine te verbeteren en vermindert het gebied voor mogelijke aanvallen. In de volgende stap van deze zelf studie moet u verbinding maken met de virtuele machine met behulp van Remote Desktop Protocol (RDP) en vervolgens de Windows-Server toevoegen aan het beheerde domein van Azure AD DS.
+1. Vm's die in azure zijn gemaakt, zijn standaard niet toegankelijk via internet. Deze configuratie helpt de beveiliging van de virtuele machine te verbeteren en vermindert het gebied voor mogelijke aanvallen. In de volgende stap van deze zelf studie moet u verbinding maken met de virtuele machine met behulp van Remote Desktop Protocol (RDP) en vervolgens de Windows-Server toevoegen aan het beheerde domein van Azure AD DS.
 
     Wanneer RDP is ingeschakeld, worden er waarschijnlijk een geautomatiseerde aanmeldings aanval uitgevoerd, waardoor accounts met veelvoorkomende namen, zoals *admin* of *Administrator* , mogelijk worden uitgeschakeld vanwege meerdere mislukte opeenvolgende aanmeldings pogingen. RDP moet alleen worden ingeschakeld als dit vereist is, en beperkt tot een aantal toegestane IP-bereiken. [Azure just-in-time-VM-toegang][jit-access] als onderdeel van Azure Security Center kan deze korte, beperkte RDP-sessies inschakelen. U kunt ook [een Azure bastion-host maken en gebruiken (momenteel in Preview)][azure-bastion] om alleen toegang toe te staan via de Azure portal via SSL.
 
     Voor deze zelf studie schakelt u hand matig RDP-verbindingen met de virtuele machine in.
 
-    Onder **open bare binnenkomende poorten**selecteert u de optie voor het **toestaan van geselecteerde poorten**. Kies in de vervolg keuzelijst voor **Selecteer binnenkomende poorten**de optie *RDP*.
+    Onder **open bare binnenkomende poorten**selecteert u de optie voor het **toestaan van geselecteerde poorten**. Kies *RDP (3389)* in de vervolg keuzelijst voor **Selecteer binnenkomende poorten**.
 
-5. Wanneer u klaar bent, selecteert u **volgende: schijven**.
-6. Kies in de vervolg keuzelijst voor het **schijf type van het besturings systeem** *Standard-SSD*en selecteer vervolgens **volgende: netwerken**.
-7. Uw virtuele machine moet verbinding maken met een subnet van het virtuele netwerk van Azure dat kan communiceren met het subnet waarin uw Azure AD DS beheerde domein is geïmplementeerd. U kunt het beste een beheerd domein van Azure AD DS implementeren in een eigen toegewezen subnet. Implementeer uw virtuele machine niet in hetzelfde subnet als uw Azure AD DS beheerd domein.
+1. Wanneer u klaar bent, selecteert u **volgende: schijven**.
+1. Kies in de vervolg keuzelijst voor het **schijf type van het besturings systeem** *Standard-SSD*en selecteer vervolgens **volgende: netwerken**.
+1. Uw virtuele machine moet verbinding maken met een subnet van het virtuele netwerk van Azure dat kan communiceren met het subnet waarin uw Azure AD DS beheerde domein is geïmplementeerd. U kunt het beste een beheerd domein van Azure AD DS implementeren in een eigen toegewezen subnet. Implementeer uw virtuele machine niet in hetzelfde subnet als uw Azure AD DS beheerd domein.
 
     Er zijn twee hoofd manieren om uw virtuele machine te implementeren en verbinding te maken met een geschikt subnet van het virtuele netwerk:
     
@@ -88,20 +88,30 @@ Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u na
     
     Als u een subnet van een virtueel netwerk selecteert dat niet is verbonden met het subnet voor uw Azure AD DS-exemplaar, kunt u de VM niet toevoegen aan het beheerde domein. Voor deze zelf studie maken we een nieuw subnet in het virtuele Azure-netwerk.
 
-    Selecteer in het deel venster **netwerken** het virtuele netwerk waarin uw door Azure AD DS beheerd domein wordt geïmplementeerd, bijvoorbeeld *myVnet*
-8. In dit voor beeld wordt het bestaande *DomainServices* -subnet weer gegeven dat de Azure AD DS beheerde domein is verbonden met. Verbind uw virtuele machine niet met dit subnet. Als u een subnet voor de virtuele machine wilt maken, selecteert u **subnet configuratie beheren**.
+    Selecteer in het deel venster **netwerken** het virtuele netwerk waarin uw door Azure AD DS beheerd domein wordt geïmplementeerd, zoals *aaads-vnet*
+1. In dit voor beeld wordt het bestaande *aaads-subnet* weer gegeven dat de Azure AD DS beheerde domein is verbonden met. Verbind uw virtuele machine niet met dit subnet. Als u een subnet voor de virtuele machine wilt maken, selecteert u **subnet configuratie beheren**.
 
     ![Kies ervoor om de configuratie van het subnet in de Azure Portal te beheren](./media/join-windows-vm/manage-subnet.png)
 
-9. Selecteer **+ subnet**en voer een naam in voor het subnet, zoals *ManagedVMs*. Geef een **adres bereik (CIDR-blok)** op, bijvoorbeeld *10.1.1.0/24*. Zorg ervoor dat dit IP-adres bereik niet overlapt met andere bestaande Azure-of on-premises adresbereiken. Wijzig de andere opties als de standaard waarden en selecteer vervolgens **OK**.
+1. Selecteer in het menu aan de linkerkant van het venster virtueel netwerk **adres ruimte**. Het virtuele netwerk wordt gemaakt met één adres ruimte van *10.0.1.0/24*, dat wordt gebruikt door het standaard subnet.
+
+    Voeg een extra IP-adres bereik toe aan het virtuele netwerk. De grootte van dit adres bereik en het daad werkelijke IP-adres bereik dat moet worden gebruikt, is afhankelijk van andere netwerk bronnen die al zijn geïmplementeerd. Het IP-adres bereik mag niet overlappen met de bestaande adresbereiken in uw Azure-of on-premises omgeving. Zorg ervoor dat u de grootte van het IP-adres bereik groot genoeg hebt voor het aantal Vm's dat u naar verwachting in het subnet wilt implementeren.
+
+    In het volgende voor beeld wordt een extra IP-adres bereik van *10.0.2.0/24* toegevoegd. Wanneer u klaar bent, selecteert u **Opslaan**.
+
+    ![Voeg een extra IP-adres bereik toe voor het virtuele netwerk in de Azure Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
+
+1. Selecteer vervolgens in het menu aan de linkerkant van het venster virtueel netwerk **subnetten**en kies vervolgens **+ subnet** om een subnet toe te voegen.
+
+1. Selecteer **+ subnet**en voer een naam in voor het subnet, zoals *beheer*. Geef een **adres bereik (CIDR-blok)** op, bijvoorbeeld *10.0.2.0/24*. Zorg ervoor dat dit IP-adres bereik niet overlapt met andere bestaande Azure-of on-premises adresbereiken. Wijzig de andere opties als de standaard waarden en selecteer vervolgens **OK**.
 
     ![Een subnet-configuratie maken in de Azure Portal](./media/join-windows-vm/create-subnet.png)
 
-10. Het duurt een paar seconden om het subnet te maken. Zodra de app is gemaakt, selecteert u de *X* om het subnet venster te sluiten.
-11. Ga terug naar het deel venster **netwerken** om een virtuele machine te maken. Kies het subnet dat u hebt gemaakt in de vervolg keuzelijst, bijvoorbeeld *ManagedVMs*. Zorg ervoor dat u het juiste subnet kiest en implementeer uw virtuele machine niet in hetzelfde subnet als uw door Azure AD DS beheerd domein.
-12. Wijzig de andere opties als de standaard waarden en selecteer vervolgens **beheer**.
-13. Stel **Diagnostische gegevens over opstarten** in op *uit*. Wijzig de andere opties als de standaard waarden en selecteer vervolgens **controleren + maken**.
-14. Controleer de VM-instellingen en selecteer vervolgens **maken**.
+1. Het duurt een paar seconden om het subnet te maken. Zodra de app is gemaakt, selecteert u de *X* om het subnet venster te sluiten.
+1. Ga terug naar het deel venster **netwerken** om een virtuele machine te maken. Kies het subnet dat u hebt gemaakt in de vervolg keuzelijst, zoals *beheer*. Zorg ervoor dat u het juiste subnet kiest en implementeer uw virtuele machine niet in hetzelfde subnet als uw door Azure AD DS beheerd domein.
+1. Wijzig de andere opties als de standaard waarden en selecteer vervolgens **beheer**.
+1. Stel **Diagnostische gegevens over opstarten** in op *uit*. Wijzig de andere opties als de standaard waarden en selecteer vervolgens **controleren + maken**.
+1. Controleer de VM-instellingen en selecteer vervolgens **maken**.
 
 Het duurt enkele minuten om de virtuele machine te maken. In het Azure Portal wordt de status van de implementatie weer gegeven. Zodra de VM gereed is, selecteert **u Ga naar resource**.
 
@@ -124,7 +134,7 @@ We gaan nu verbinding maken met de nieuwe virtuele Windows Server-machine met be
 
 Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebracht, kunt u nu lid worden van de VM van Windows Server aan het beheerde domein van Azure AD DS. Dit proces is hetzelfde als een computer die verbinding maakt met een regel matig on-premises Active Directory Domain Services domein.
 
-1. **Serverbeheer** moet standaard worden geopend wanneer u zich aanmeldt bij de VM. Als dat niet het geval is, selecteert u **Serverbeheer**in het menu **Start** .
+1. Als **Serverbeheer** standaard niet wordt geopend wanneer u zich aanmeldt bij de VM, selecteert u het menu **Start** en kiest u vervolgens **Serverbeheer**.
 1. Selecteer **lokale server**in het linkerdeel venster van het venster **Serverbeheer** . Kies **werk groep**onder **Eigenschappen** in het rechterdeel venster.
 
     ![Open Serverbeheer op de VM en bewerk de eigenschap werk groep](./media/join-windows-vm/server-manager.png)
@@ -137,7 +147,7 @@ Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebrac
 
     ![Opgeven welke Azure AD DS beheerde domein moet worden toegevoegd](./media/join-windows-vm/join-domain.png)
 
-1. Voer de domein referenties in om lid te worden van het domein. Gebruik de referenties voor een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* . Alleen leden van deze groep hebben bevoegdheden om computers te koppelen aan het Azure AD DS beheerde domein. Account referenties kunnen op een van de volgende manieren worden opgegeven:
+1. Voer de domein referenties in om lid te worden van het domein. Gebruik de referenties voor een gebruiker die deel uitmaakt van de groep *Azure AD DC-Administrators* . Alleen leden van deze groep hebben bevoegdheden om computers te koppelen aan het Azure AD DS beheerde domein. Het account moet deel uitmaken van de Azure AD DS beheerde domein-of Azure AD-Tenant accounts van externe mappen die zijn gekoppeld aan uw Azure AD-Tenant, kan niet correct worden geverifieerd tijdens het proces voor het samen voegen van het domein. Account referenties kunnen op een van de volgende manieren worden opgegeven:
 
     * **UPN-indeling** (aanbevolen): Voer het achtervoegsel van de User Principal Name (UPN) in voor het gebruikers account, zoals geconfigureerd in azure AD. Het UPN-achtervoegsel van de *contosoadmin* van de gebruiker wordt bijvoorbeeld `contosoadmin@contoso.onmicrosoft.com`. Er zijn enkele algemene gebruiks gevallen waarbij de UPN-indeling betrouwbaar kan worden gebruikt om u aan te melden bij het domein in plaats van de *SAMAccountName* -indeling:
         * Als het UPN-voor voegsel van een gebruiker lang is, zoals *deehasareallylongname*, kan de *SAMAccountName* automatisch worden gegenereerd.
@@ -157,7 +167,7 @@ Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebrac
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
 >
-> Als u een domein wilt toevoegen aan een virtuele machine zonder verbinding te maken en de verbinding hand matig te configureren, kunt u ook het gebruik van de cmdlet [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell verkennen.
+> Als u een domein wilt toevoegen aan een virtuele machine zonder verbinding te maken en de verbinding hand matig te configureren, kunt u de cmdlet [set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell gebruiken.
 
 Als de virtuele machine van Windows Server opnieuw is opgestart, worden alle beleids regels die in het beheerde Azure AD DS Managed Domain worden toegepast, naar de virtuele machine gepusht. U kunt zich nu ook aanmelden bij de virtuele Windows Server-machine met behulp van de juiste domein referenties.
 
@@ -212,6 +222,7 @@ Als er een prompt wordt weer gegeven waarin wordt gevraagd om referenties om lid
 Na het uitvoeren van elk van deze probleemoplossings stappen probeert u de Windows Server-VM opnieuw aan het beheerde domein toe te voegen.
 
 * Zorg ervoor dat het gebruikers account dat u opgeeft, deel uitmaakt van de groep *Aad DC Administrators* .
+* Controleer of het account deel uitmaakt van de Azure AD DS beheerde domein of Azure AD-Tenant. Accounts van externe mappen die zijn gekoppeld aan uw Azure AD-Tenant, kunnen niet correct worden geverifieerd tijdens het proces voor het samen voegen van het domein.
 * Gebruik de UPN-indeling om referenties op te geven, zoals `contosoadmin@contoso.onmicrosoft.com`. Als er veel gebruikers zijn met hetzelfde UPN-voor voegsel in uw Tenant of als uw UPN-voor voegsel langer is dan lang, kan de *SAMAccountName* voor uw account automatisch worden gegenereerd. In dergelijke gevallen kan de *SAMAccountName* -indeling voor uw account afwijken van wat u verwacht of gebruikt in uw on-premises domein.
 * Controleer of u [wachtwoord synchronisatie hebt ingeschakeld][password-sync] voor uw beheerde domein. Zonder deze configuratie stap zijn de vereiste wacht woord-hashes niet aanwezig in de Azure AD DS beheerde domein om uw aanmeldings poging correct te verifiëren.
 * Wacht tot de wachtwoord synchronisatie is voltooid. Wanneer het wacht woord van een gebruikers account wordt gewijzigd, wordt met een automatische achtergrond synchronisatie vanuit Azure AD het wacht woord in azure AD DS bijgewerkt. Het duurt enige tijd voordat het wacht woord beschikbaar is voor gebruik door een domein.

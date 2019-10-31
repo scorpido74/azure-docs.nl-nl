@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5c45005d6a54765458b463acb12c21a1f3b6d0c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d727b570361e721c49173138bb60ae89df710e81
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336764"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175236"
 ---
 # <a name="web-app-that-signs-in-users---sign-in-and-sign-out"></a>Web-app waarmee gebruikers zich aanmelden en zich afmelden
 
@@ -37,7 +37,7 @@ Aanmelden wordt ingesteld door twee delen:
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.net core wordt de aanmeldings knop weer gegeven in `Views\Shared\_LoginPartial.cshtml` en wordt deze alleen weer geven wanneer er geen geverifieerd account is (dat wil zeggen dat de gebruiker zich nog niet heeft aangemeld of een afmelding heeft).
+In ASP.NET Core wordt de aanmeldings knop weer gegeven in `Views\Shared\_LoginPartial.cshtml` en wordt deze alleen weer geven wanneer er geen geverifieerd account is (dat wil zeggen dat de gebruiker zich nog niet heeft aangemeld of een afmelding heeft).
 
 ```html
 @using Microsoft.Identity.Web
@@ -55,7 +55,7 @@ else
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-In ASP.NET MVC is de knop Afmelden beschikbaar in `Views\Shared\_LoginPartial.cshtml` en wordt alleen weer gegeven wanneer er een geverifieerd account is (dat wil zeggen dat de gebruiker zich eerder heeft aangemeld).
+In ASP.NET MVC wordt de afmeldings knop weer gegeven in `Views\Shared\_LoginPartial.cshtml` en wordt deze alleen weer geven wanneer er een geverifieerd account is (dat wil zeggen wanneer de gebruiker zich eerder heeft aangemeld).
 
 ```html
 @if (Request.IsAuthenticated)
@@ -106,17 +106,17 @@ def index():
 
 ---
 
-### <a name="login-action-of-the-controller"></a>`Login`actie van de controller
+### <a name="login-action-of-the-controller"></a>`Login` actie van de controller
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Wanneer u in ASP.net op de knop **Aanmelden** klikt in de web-app, `SignIn` wordt de actie `AccountController` op de controller geactiveerd. In eerdere versies van de ASP.net core-sjablonen is `Account` de controller Inge sloten met de web-app, maar het is niet langer het geval omdat het nu deel uitmaakt van het ASP.net core-Framework zelf.
+Als u in ASP.NET op de knop **Aanmelden** klikt in de web-app, wordt de `SignIn` actie geactiveerd op de `AccountController` controller. In eerdere versies van de ASP.NET core-sjablonen werd de `Account`-controller Inge sloten met de web-app, maar het is niet meer het geval omdat het nu deel uitmaakt van het ASP.NET Core-Framework zelf.
 
-De code voor de `AccountController` is beschikbaar vanuit de ASP.net core-opslag plaats van [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). De account besturing vraagt de gebruiker door omleiden naar het micro soft Identity platform-eind punt. Zie voor meer informatie de [SignIn](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31) -methode die deel uitmaakt van ASP.net core.
+De code voor de `AccountController` is beschikbaar vanuit de ASP.NET core-opslag plaats van [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). De account besturing vraagt de gebruiker door omleiden naar het micro soft Identity platform-eind punt. Zie voor meer informatie de [SignIn](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31) -methode die deel uitmaakt van ASP.net core.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Bij ASP.net wordt afmelden geactiveerd vanuit de `SignOut()` methode op een controller (bijvoorbeeld [AccountController. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Deze methode maakt geen deel uit van het ASP.NET-Framework (in tegens telling tot wat er gebeurt in ASP.NET Core). ,
+In ASP.NET wordt afmelden geactiveerd vanuit de methode `SignOut()` op een controller (bijvoorbeeld instantie [AccountController. cs # L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Deze methode maakt geen deel uit van het ASP.NET-Framework (in tegens telling tot wat er gebeurt in ASP.NET Core). ,
 
 - Hiermee wordt een OpenID Connect-aanmeldings poging verzonden nadat een omleidings-URI is voorgesteld
 
@@ -161,7 +161,7 @@ public class AuthPageController {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-In tegens telling tot andere platforms, MSAL. Python zorgt ervoor dat de gebruiker zich aanmeldt vanaf de aanmeldings pagina. Zie [app. py # L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)
+In tegens telling tot andere platforms zorgt MSAL python ervoor dat de gebruiker zich aanmeldt vanaf de aanmeldings pagina. Zie [app. py # L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28)
 
 ```Python
 @app.route("/login")
@@ -211,23 +211,23 @@ Zodra de gebruiker zich heeft aangemeld bij uw app, wilt u deze waarschijnlijk i
 ## <a name="sign-out"></a>Afmelden
 
 Afmelden bij een web-app is meer dan het verwijderen van de informatie over het aangemelde account uit de status van de web-app.
-De web-app moet ook de gebruiker omleiden naar het micro `logout` Soft Identity platform-eind punt om u af te melden. Als uw web-app de gebruiker omleidt naar het `logout` eind punt, wordt met dit eind punt de sessie van de gebruiker uit de browser gewist. Als uw app niet naar het `logout` eind punt heeft gereageerd, wordt de gebruiker opnieuw geverifieerd bij uw app zonder de referenties opnieuw in te voeren, omdat ze een geldige sessie voor eenmalige aanmelding met het micro soft Identity platform-eind punt hebben.
+De web-app moet ook de gebruiker omleiden naar het micro soft Identity platform `logout`-eind punt om u af te melden. Als uw web-app de gebruiker omleidt naar het `logout`-eind punt, wordt met dit eind punt de sessie van de gebruiker uit de browser gewist. Als uw app niet naar het `logout`-eind punt gaat, wordt de gebruiker opnieuw geverifieerd bij uw app zonder dat ze hun referenties opnieuw in te voeren, omdat ze een geldige eenmalige aanmeldings sessie met het micro soft Identity platform-eind punt hebben.
 
 Zie de sectie [een aanvraag voor een afmelding verzenden](v2-protocols-oidc.md#send-a-sign-out-request) in het [micro soft Identity-platform en de conceptuele documentatie van het OpenID Connect Connect-protocol](v2-protocols-oidc.md) voor meer informatie.
 
-### <a name="application-registration"></a>Toepassingsregistratie
+### <a name="application-registration"></a>Een toepassing registreren
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Tijdens de registratie van de toepassing hebt u een **post afmeldings-URI**geregistreerd. In onze zelf studie hebt u `https://localhost:44321/signout-oidc` geregistreerd in het veld **afmeldings-URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** . Zie [de webApp-app registreren](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp) voor meer informatie.
+Tijdens de registratie van de toepassing hebt u een **post afmeldings-URI**geregistreerd. In onze zelf studie hebt u `https://localhost:44321/signout-oidc` geregistreerd in het veld **Afmeldings-URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** . Zie [de webApp-app registreren](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp) voor meer informatie.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Tijdens de registratie van de toepassing hebt u een **post afmeldings-URI**geregistreerd. In onze zelf studie hebt u `https://localhost:44308/Account/EndSession` geregistreerd in het veld **afmeldings-URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** . Zie [de webApp-app registreren](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet) voor meer informatie.
+Tijdens de registratie van de toepassing hebt u een **post afmeldings-URI**geregistreerd. In onze zelf studie hebt u `https://localhost:44308/Account/EndSession` geregistreerd in het veld **Afmeldings-URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** . Zie [de webApp-app registreren](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet) voor meer informatie.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Tijdens de registratie van de toepassing registreert u een URI voor een **post afmelding**. In onze zelf studie hebt u `http://localhost:8080/msal4jsample/` geregistreerd in het veld **afmeldings-URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** .
+Tijdens de registratie van de toepassing registreert u een URI voor een **post afmelding**. In onze zelf studie hebt u `http://localhost:8080/msal4jsample/sign_out` geregistreerd in het veld **Afmeldings-URL** van de sectie **Geavanceerde instellingen** op de pagina **verificatie** .
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -239,7 +239,7 @@ Tijdens de registratie van de toepassing hoeft u geen extra afmeldings-URL te re
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-In ASP.net core wordt de afmeldings knop weer gegeven in `Views\Shared\_LoginPartial.cshtml` en wordt deze alleen getoond wanneer er een geverifieerd account is (dat wil zeggen dat de gebruiker zich eerder heeft aangemeld).
+In ASP.NET Core wordt de afmeldings knop weer gegeven in `Views\Shared\_LoginPartial.cshtml` en wordt deze alleen weer geven wanneer er een geverifieerd account is (dat wil zeggen dat de gebruiker zich eerder heeft aangemeld).
 
 ```html
 @using Microsoft.Identity.Web
@@ -260,7 +260,7 @@ else
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-In ASP.NET MVC is de knop Afmelden beschikbaar in `Views\Shared\_LoginPartial.cshtml` en wordt alleen weer gegeven wanneer er een geverifieerd account is (dat wil zeggen dat de gebruiker zich eerder heeft aangemeld).
+In ASP.NET MVC wordt de afmeldings knop weer gegeven in `Views\Shared\_LoginPartial.cshtml` en wordt deze alleen weer geven wanneer er een geverifieerd account is (dat wil zeggen wanneer de gebruiker zich eerder heeft aangemeld).
 
 ```html
 @if (Request.IsAuthenticated)
@@ -320,23 +320,23 @@ In de Quick Start van python bevindt de afmeldings knop zich in het bestand [Tem
 
 ---
 
-### <a name="signout-action-of-the-controller"></a>`Signout`actie van de controller
+### <a name="signout-action-of-the-controller"></a>`Signout` actie van de controller
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Als u in ASP.net op de knop voor **Afmelden** op de web-app `SignOut` drukt, wordt `AccountController` de actie op de controller geactiveerd. In eerdere versies van de ASP.net core-sjablonen is `Account` de controller Inge sloten met de web-app, maar het is niet langer het geval omdat het nu deel uitmaakt van het ASP.net core-Framework zelf.
+Als u in ASP.NET op de knop voor **Afmelden** in de web-app klikt, wordt de `SignOut` actie geactiveerd op de `AccountController` controller. In eerdere versies van de ASP.NET core-sjablonen werd de `Account`-controller Inge sloten met de web-app, maar het is niet meer het geval omdat het nu deel uitmaakt van het ASP.NET Core-Framework zelf.
 
-De code voor de `AccountController` is beschikbaar vanuit de ASP.net-kern opslagplaats op van [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Het account beheer:
+De code voor de `AccountController` is beschikbaar vanuit de ASP.NET-kern opslagplaats op van [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs). Het account beheer:
 
-- Hiermee stelt u een omleidings-URI voor OpenID Connect in `/Account/SignedOut` zodat de controller weer wordt aangeroepen wanneer Azure AD de afmelding heeft voltooid.
-- Aanroepen `Signout()`, waarmee de OpenIdConnect-middleware contact kan opnemen met `logout` het micro soft Identity platform-eind punt:
+- Hiermee wordt een omleidings-URI voor OpenID Connect ingesteld op `/Account/SignedOut` zodat de controller weer wordt aangeroepen wanneer Azure AD de afmelding heeft voltooid.
+- Roept `Signout()`, waarmee de OpenIdConnect-middleware contact kan maken met het micro soft Identity platform `logout`-eind punt dat:
 
   - Hiermee wist u de sessie cookie uit de browser en
   - de **afmeldings-URL**wordt weer gegeven, die standaard de pagina afgemelde weer gave [SignedOut. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) weergeeft, ook als onderdeel van ASP.net core.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-Bij ASP.net wordt afmelden geactiveerd vanuit de `SignOut()` methode op een controller (bijvoorbeeld [AccountController. cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)). Deze methode maakt geen deel uit van het ASP.NET-Framework (in tegens telling tot wat er gebeurt in ASP.NET Core). ,
+In ASP.NET wordt afmelden geactiveerd vanuit de methode `SignOut()` op een controller (bijvoorbeeld instantie [AccountController. cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)). Deze methode maakt geen deel uit van het ASP.NET-Framework (in tegens telling tot wat er gebeurt in ASP.NET Core). ,
 
 - Hiermee wordt een OpenID Connect-afmeldings uitdaging verzonden
 - Hiermee wordt de cache gewist
@@ -388,13 +388,13 @@ def logout():
 
 ---
 
-### <a name="intercepting-the-call-to-the-logout-endpoint"></a>De aanroep naar het `logout` eind punt wordt onderschept
+### <a name="intercepting-the-call-to-the-logout-endpoint"></a>De aanroep naar het `logout`-eind punt wordt onderschept
 
 Met de afmeldings-URI van de post kunnen toepassingen deel nemen aan de globale afmelding.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Met de ASP.net core OpenIdConnect middleware kan uw app de aanroep naar het micro soft Identity platform `logout` -eind punt onderscheppen door een `OnRedirectToIdentityProviderForSignOut`OpenIdConnect-gebeurtenis op te geven met de naam. Zie [micro soft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156) voor een voor beeld van hoe u zich abonneert op deze gebeurtenis (om de token cache te wissen)
+Met de ASP.NET Core OpenIdConnect middleware kan uw app de aanroep naar het micro soft Identity platform `logout`-eind punt onderscheppen door een OpenIdConnect-gebeurtenis op te geven met de naam `OnRedirectToIdentityProviderForSignOut`. Zie [micro soft. Identity. Web/WebAppServiceCollectionExtensions. cs # L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156) voor een voor beeld van hoe u zich abonneert op deze gebeurtenis (om de token cache te wissen)
 
 ```CSharp
     // Handling the global sign-out
@@ -423,7 +423,7 @@ public class AccountController : Controller
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-De omleidings-URI voor afmelden in de Java-Snelstartgids bevat alleen de index. html-pagina 
+De omleidings-URI voor afmelden in de Java-Snelstartgids bevat alleen de index. html-pagina
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 

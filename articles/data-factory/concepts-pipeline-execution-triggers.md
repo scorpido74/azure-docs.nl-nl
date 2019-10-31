@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: 34ff075a604afdcbef67c7b10ce1ef8cbe2924e7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: adc7b65b4e079c55b9400b06603625971efc3ea3
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137040"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177675"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pijplijnen uitvoeren en triggers in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-scheduling-and-execution.md)
+> * [Versie 1](v1/data-factory-scheduling-and-execution.md)
 > * [Huidige versie](concepts-pipeline-execution-triggers.md)
 
 Een _pijplijnuitvoering_ in Azure Data Factory definieert een exemplaar van een pijplijnuitvoering. Stel dat u een pijplijn hebt die wordt uitgevoerd om 8:00 uur, 9:00 uur en 10:00 uur. In dit geval wordt de pijplijn drie keer afzonderlijk uitgevoerd, ook wel pijplijnuitvoeringen genoemd. Elke pijplijnuitvoering heeft een unieke id. Een uitvoerings-id is een GUID die de betreffende specifieke pijplijnuitvoering definieert.
@@ -90,7 +90,7 @@ POST
 https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGroup/providers/Microsoft.DataFactory/factories/myDataFactory/pipelines/copyPipeline/createRun?api-version=2017-03-01-preview
 ```
 
-Voor een volledig voor beeld raadpleegt [u Quick Start: Maak een data factory met behulp van](quickstart-create-data-factory-rest-api.md)de rest API.
+Zie [Snelstart: een Azure data factory en pijplijn maken door de REST-API te gebruiken](quickstart-create-data-factory-rest-api.md) voor het volledige voorbeeld.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -119,7 +119,7 @@ De nettolading van de reactie is een unieke ID van de pijplijnuitvoering:
 }
 ```
 
-Voor een volledig voor beeld raadpleegt [u Quick Start: Maak een data factory met behulp](quickstart-create-data-factory-powershell.md)van Azure PowerShell.
+Zie [Snelstart: een data factory in Azure maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md) voor een volledig voorbeeld.
 
 ### <a name="net-sdk"></a>.NET SDK
 In de volgende voorbeeldopdracht wordt getoond hoe u de pijplijn handmatig kunt uitvoeren met behulp van de .NET SDK:
@@ -128,7 +128,7 @@ In de volgende voorbeeldopdracht wordt getoond hoe u de pijplijn handmatig kunt 
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
 ```
 
-Voor een volledig voor beeld raadpleegt [u Quick Start: Maak een data factory met behulp van de](quickstart-create-data-factory-dot-net.md).NET SDK.
+Zie [Snelstart: een data factory en pijplijn maken met behulp van .NET SDK](quickstart-create-data-factory-dot-net.md) voor een volledig voorbeeld.
 
 > [!NOTE]
 > U kunt de .NET SDK gebruiken om Data Factory-pijplijnen vanuit Azure Functions, uw eigen webservices, enzovoort aan te roepen.
@@ -136,13 +136,13 @@ Voor een volledig voor beeld raadpleegt [u Quick Start: Maak een data factory me
 <h2 id="triggers">Uitvoeren van triggers</h2>
 Triggers zijn een andere manier om een pijplijnuitvoering te starten. Triggers zijn verwerkingseenheden die bepalen wanneer een pijplijnuitvoering moet worden gestart. Data Factory ondersteunt momenteel drie soorten triggers:
 
-- Trigger plannen: Een trigger die een pijp lijn aanroept op een schema met een muur klok.
+- Schematrigger: een trigger die een pijplijn volgens een wandklokschema aanroept.
 
-- Trigger voor tumblingvenstertriggers-venster: Een trigger die werkt met een periodiek interval, terwijl ook de status behouden blijft.
+- Tumblingvenstertrigger: een trigger die volgens een periodiek interval werkt terwijl de status behouden blijft.
 
-- Trigger op basis van gebeurtenissen: Een trigger die reageert op een gebeurtenis.
+- Trigger op basis van gebeurtenissen: een trigger die reageert op een gebeurtenis.
 
-Pijplijnen en triggers hebben een veel-op-veel-relatie. Meerdere triggers kunnen één pijplijn starten en één trigger kan meerdere pijplijnen starten. In de volgende triggerdefinitie verwijst de eigenschap **pijplijnen** naar een lijst met pijplijnen die worden geactiveerd door de bijbehorende trigger. In de definitie van de eigenschap zijn waarden opgenomen voor de pijplijnparameters.
+Pijp lijnen en triggers hebben een veel-op-veel-relatie (met uitzonde ring van de venster trigger voor tumblingvenstertriggers). Meerdere triggers kunnen één pijp lijn starten en één trigger kan meerdere pijp lijnen starten. In de volgende triggerdefinitie verwijst de eigenschap **pijplijnen** naar een lijst met pijplijnen die worden geactiveerd door de bijbehorende trigger. In de definitie van de eigenschap zijn waarden opgenomen voor de pijplijnparameters.
 
 ### <a name="basic-trigger-definition"></a>Basisdefinitie voor trigger
 
@@ -230,7 +230,7 @@ Als u wilt dat de schematrigger een pijplijnuitvoering activeert, moet u een ver
 ### <a name="schema-overview"></a>Schemaoverzicht
 De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die betrekking hebben op het terugkeerpatroon en het schema van een trigger:
 
-| JSON-eigenschap | Description |
+| JSON-eigenschap | Beschrijving |
 |:--- |:--- |
 | **startTime** | Een datum/tijdwaarde. Voor eenvoudige schema's is de waarde **startTime** van toepassing op de eerste gebeurtenis. In complexe schema's begint de trigger niet eerder dan de opgegeven waarde voor **startTime**. |
 | **endTime** | De einddatum en -tijd voor de trigger. De trigger wordt na de opgegeven einddatum en -tijd niet uitgevoerd. De waarde voor de eigenschap kan niet in het verleden liggen. <!-- This property is optional. --> |
@@ -276,11 +276,11 @@ De volgende tabel bevat een overzicht van de belangrijkste schema-elementen die 
 
 ### <a name="schema-defaults-limits-and-examples"></a>Standaardschemawaarden, limieten en voorbeelden
 
-| JSON-eigenschap | type | Vereist | Standaardwaarde | Geldige waarden | Voorbeeld |
+| JSON-eigenschap | Type | Verplicht | Standaardwaarde | Geldige waarden | Voorbeeld |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | string | Ja | Geen | Datums en tijden volgens ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | object | Ja | Geen | Een recurrence-object | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | nummer | Nee | 1 | 1 tot 1000 | `"interval":10` |
+| **interval** | getal | Nee | 1 | 1 tot 1000 | `"interval":10` |
 | **endTime** | string | Ja | Geen | Een datum/tijdwaarde die een toekomstig tijdstip aangeeft | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | object | Nee | Geen | Een schedule-object | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
@@ -292,7 +292,7 @@ In de volgende tabel ziet u hoe de eigenschap **startTime** de uitvoering van ee
 | **Starttijd ligt in het verleden** | Berekent de eerstvolgende uitvoering na de starttijd en voert deze op dat moment uit.<br /><br />Voert volgende uitvoeringen uit die zijn bekend op basis van de tijd waarop de laatste uitvoering heeft plaatsgevonden.<br /><br />Zie het voorbeeld onder deze tabel. | De trigger wordt _nooit vóór_ de opgegeven begintijd geactiveerd. De eerste uitvoering is gebaseerd op de planning die wordt berekend op basis van de starttijd.<br /><br />Volgende uitvoeringen worden op basis van het terugkeerschema uitgevoerd. |
 | **Starttijd ligt in de toekomst of op de huidige tijd** | Uitvoering vindt eenmaal plaats op de opgegeven starttijd.<br /><br />Voert volgende uitvoeringen uit die zijn bekend op basis van de tijd waarop de laatste uitvoering heeft plaatsgevonden. | De trigger wordt _nooit vóór_ de opgegeven begintijd geactiveerd. De eerste uitvoering is gebaseerd op de planning die wordt berekend op basis van de starttijd.<br /><br />Volgende uitvoeringen worden op basis van het terugkeerschema uitgevoerd. |
 
-Laten we eens kijken naar een voorbeeld van wat er gebeurt wanneer de startTime in het verleden ligt en er een terugkeerpatroon (recurrence), maar geen schema (schedule) is opgegeven. Neem aan dat de huidige tijd 2017-04-08 13:00 is, de starttijd 2017-04-07 14:00 en het terugkeerpatroon om de dag. (De waarde **recurrence** wordt gedefinieerd door de eigenschap **frequency** in te stellen op 'dag' en de eigenschap **interval** op 2.) U ziet dat de waarde **startTime** in het verleden ligt en plaatsvindt vóór de huidige tijd.
+Laten we eens kijken naar een voorbeeld van wat er gebeurt wanneer de startTime in het verleden ligt en er een terugkeerpatroon (recurrence), maar geen schema (schedule) is opgegeven. Neem aan dat de huidige tijd 2017-04-08 13:00 is, de starttijd 2017-04-07 14:00 en het terugkeerpatroon om de dag. (De waarde voor het **terugkeer patroon** wordt gedefinieerd door de eigenschap **Frequency** in te stellen op ' dag ' en de eigenschap **interval** op 2.) U ziet dat de waarde voor **StartTime** in het verleden ligt en vóór de huidige tijd plaatsvindt.
 
 Onder deze omstandigheden is de eerste uitvoering 2017-04-09 op 14:00. De scheduler-engine berekent uitvoeringen vanaf de startTime. Alle uitvoeringen in het verleden worden genegeerd. De engine gebruikt de eerstvolgende uitvoering die in de toekomst plaatsvindt. In dit scenario is de starttijd 2017-04-07 om 14:00 uur. De volgende uitvoering is twee dagen daarna op 2017-04-09 om 14:00 uur.
 
@@ -309,12 +309,12 @@ Als meerdere **schedule**-elementen worden opgegeven, is de volgorde voor de eva
 
 In de volgende tabel worden de **schedule**-elementen in detail beschreven:
 
-| JSON-element | Description | Geldige waarden |
+| JSON-element | Beschrijving | Geldige waarden |
 |:--- |:--- |:--- |
 | **minutes** | Minuten van het uur waarop de trigger wordt uitgevoerd. |- Geheel getal<br />- Matrix van gehele getallen|
 | **hours** | Uren van de dag waarop de trigger wordt uitgevoerd. |- Geheel getal<br />- Matrix van gehele getallen|
 | **weekDays** | Dagen van de week waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een weekfrequentie.|<br />- maandag<br />- dinsdag<br />- woensdag<br />- donderdag<br />- vrijdag<br />- zaterdag<br />- zondag<br />- Matrix met dagwaarden (maximale grootte van de matrix is 7)<br /><br />Dagwaarden zijn niet hoofdlettergevoelig|
-| **monthlyOccurrences** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. |-Matrix van **monthlyOccurrence** -objecten:`{ "day": day, "occurrence": occurrence }`<br />- Het attribuut **day** is de dag van de week waarop de trigger wordt uitgevoerd. Zo betekent de eigenschap **monthlyOccurrences** met een waarde **day** van `{Sunday}` dat er elke zondag van de maand een uitvoering is. Het attribuut **day** is verplicht.<br />- Het attribuut **occurrence** slaat op het uitvoeren van de trigger op de opgegeven dag, **day**, tijdens de maand. Zo betekent de eigenschap **monthlyOccurrences** met de waarden **day** en **occurrence** van `{Sunday, -1}` dat er elke laatste zondag van de maand een uitvoering is. Het attribuut **occurrence** is optioneel.|
+| **monthlyOccurrences** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. |-Matrix van **monthlyOccurrence** -objecten: `{ "day": day, "occurrence": occurrence }`<br />- Het attribuut **day** is de dag van de week waarop de trigger wordt uitgevoerd. Zo betekent de eigenschap **monthlyOccurrences** met een waarde **day** van `{Sunday}` dat er elke zondag van de maand een uitvoering is. Het attribuut **day** is verplicht.<br />- Het attribuut **occurrence** slaat op het uitvoeren van de trigger op de opgegeven dag, **day**, tijdens de maand. Zo betekent de eigenschap **monthlyOccurrences** met de waarden **day** en **occurrence** van `{Sunday, -1}` dat er elke laatste zondag van de maand een uitvoering is. Het attribuut **occurrence** is optioneel.|
 | **monthDays** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. |- Alle waarden < = -1 en > =-31<br />- Alle waarden > = 1 en < =31<br />- Matrix met waarden|
 
 ## <a name="tumbling-window-trigger"></a>Tumblingvenstertrigger
@@ -333,7 +333,7 @@ Dit gedeelte bevat voorbeelden van schema's met terugkeerpatronen. Dit artikel g
 
 In het voorbeeld wordt ervan uitgegaan dat de waarde **interval** 1 is en de waarde **frequency** correct is volgens de definitie van het schema. De waarde voor **frequency** kan bijvoorbeeld niet tegelijkertijd 'day' zijn én een wijziging **monthDays** in het **schedule**-object hebben. Dit soort beperkingen wordt beschreven in de tabel in het vorige gedeelte.
 
-| Voorbeeld | Description |
+| Voorbeeld | Beschrijving |
 |:--- |:--- |
 | `{"hours":[5]}` | Wordt elke dag om 5:00 uur uitgevoerd. |
 | `{"minutes":[15], "hours":[5]}` | Wordt elke dag om 5:15 uur uitgevoerd. |
@@ -371,7 +371,7 @@ In de volgende tabel wordt een vergelijking weergegeven tussen de tumblingvenste
 |:--- |:--- |:--- |
 | **Backfill-scenario's** | Ondersteund. Pijplijnuitvoeringen kunnen voor tijdvensters in het verleden worden gepland. | Wordt niet ondersteund. Pijplijnuitvoeringen kunnen alleen worden uitgevoerd in perioden vanaf de huidige tijd. |
 | **Betrouwbaarheid** | 100% betrouwbaarheid. Pijplijnuitvoeringen kunnen vanaf een bepaalde begindatum zonder onderbrekingen worden uitgevoerd voor alle tijdvensters. | Minder betrouwbaar. |
-| **Mogelijkheid voor nieuwe uitvoerpogingen** | Ondersteund. Nieuwe pogingen van pijplijnuitvoeringen vinden plaats volgens het standaardbeleid van 0 of volgens een beleid dat de gebruiker in de triggerdefinitie heeft opgegeven. Wordt automatisch opnieuw geprobeerd wanneer de pijp lijn wordt uitgevoerd vanwege gelijktijdigheids-, server-en beperkings limieten (dat wil zeggen, status codes 400: Gebruikers fout, 429: Te veel aanvragen en 500: Interne server fout). | Wordt niet ondersteund. |
+| **Mogelijkheid voor nieuwe uitvoerpogingen** | Ondersteund. Nieuwe pogingen van pijplijnuitvoeringen vinden plaats volgens het standaardbeleid van 0 of volgens een beleid dat de gebruiker in de triggerdefinitie heeft opgegeven. Er wordt automatisch een nieuwe poging gedaan als de pijplijnuitvoering mislukt wegens gelijktijdigheids-, server- of bandbreedtebeperkingen (dat wil zeggen: statuscodes 400: gebruikersfout; 429: te veel aanvragen; en 500: interne-serverfout). | Wordt niet ondersteund. |
 | **Gelijktijdigheid** | Ondersteund. Gebruikers kunnen expliciet gelijktijdigheidsbeperkingen voor de trigger instellen. Het is mogelijk om tussen de 1 en 50 door triggers geactiveerde pijplijnuitvoeringen gelijktijdig uit te voeren. | Wordt niet ondersteund. |
 | **Systeemvariabelen** | Ondersteunt het gebruik van de systeemvariabelen **WindowStart** en **WindowEnd**. Gebruikers kunnen voor de triggerdefinitie gebruikmaken van `triggerOutputs().windowStartTime` en `triggerOutputs().windowEndTime` als systeemvariabelen in de trigger. De waarden worden respectievelijk als de begin- en eindtijd van het tijdvenster gebruikt. Voor bijvoorbeeld een tumblingvenstertrigger die elk uur wordt uitgevoerd in het tijdvenster 1:00 uur tot 2:00 uur, is de definitie `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` en `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Wordt niet ondersteund. |
 | **Pipeline-trigger-relatie** | Ondersteunt een een-op-een-relatie. Slechts één pijplijn kan worden geactiveerd. | Ondersteunt veel-op-veel-relaties. Meerdere triggers kunnen één pijplijn activeren. Eén trigger kan meerdere pijplijnen activeren. |
@@ -379,6 +379,6 @@ In de volgende tabel wordt een vergelijking weergegeven tussen de tumblingvenste
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende zelfstudies:
 
-- [Snelstart: Een data factory maken met behulp van de .NET SDK](quickstart-create-data-factory-dot-net.md)
+- [Snelstart: Een data factory en pijplijn maken met behulp van .NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Een schematrigger maken](how-to-create-schedule-trigger.md)
 - [Een tumblingvenstertrigger maken](how-to-create-tumbling-window-trigger.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Picturepark | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Picturepark.
+title: 'Zelf studie: integratie Azure Active Directory met Picturepark | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Picturepark.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 32af532fcb3b3c5a294590bb7a1fa610d1068e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08c5bd8da0dda74156b2d44c8106ed345ef749dd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094442"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177012"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Zelfstudie: Azure Active Directory-integratie met Picturepark
+# <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Zelf studie: integratie Azure Active Directory met Picturepark
 
-In deze zelfstudie leert u hoe u Picturepark integreren met Azure Active Directory (Azure AD).
-Picturepark integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u Picturepark integreert met Azure Active Directory (Azure AD).
+Het integreren van Picturepark met Azure AD biedt de volgende voor delen:
 
-* U kunt beheren in Azure AD die toegang tot Picturepark heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Picturepark (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U kunt beheren in azure AD die toegang heeft tot Picturepark.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Picturepark (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Picturepark, moet u de volgende items:
+Als u Azure AD-integratie met Picturepark wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding Picturepark ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding Picturepark ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Picturepark **SP** gestart door SSO
+* Picturepark ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-picturepark-from-the-gallery"></a>Picturepark uit de galerie toe te voegen
+## <a name="adding-picturepark-from-the-gallery"></a>Picturepark toevoegen uit de galerie
 
-Voor het configureren van de integratie van Picturepark in Azure AD, moet u Picturepark uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van Picturepark in azure AD wilt configureren, moet u Picturepark uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen Picturepark uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om Picturepark toe te voegen uit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Picturepark in Azure AD, moet u Pict
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Picturepark**, selecteer **Picturepark** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **Picturepark**in het zoekvak, selecteer **Picturepark** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
      ![Picturepark in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Picturepark op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Picturepark tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Picturepark op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Picturepark tot stand worden gebracht.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Picturepark, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Picturepark, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Picturepark](#configure-picturepark-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Picturepark eenmalige aanmelding configureren](#configure-picturepark-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Picturepark](#create-picturepark-test-user)**  : als u wilt een equivalent van Britta Simon in Picturepark die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Maak een Picturepark-test gebruiker](#create-picturepark-test-user)** -om een equivalent van Julia Simon in Picturepark te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Picturepark, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Picturepark:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Picturepark** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Picturepark** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Picturepark, moet u 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Picturepark domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor Picturepark domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.picturepark.com`
 
@@ -117,7 +117,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Picturepark, moet u 
     | |
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [Picturepark Client ondersteuningsteam](https://picturepark.com/about/contact/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Picturepark-clients](https://picturepark.com/company/picturepark-customer-support) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
@@ -127,10 +127,10 @@ Voor het configureren van Azure AD eenmalige aanmelding met Picturepark, moet u 
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-7. Op de **Picturepark instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften. Voor **aanmeldings-URL**, gebruikt u de waarde met het volgende patroon: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
+7. Kopieer op de sectie **Picturepark instellen** de gewenste URL ('s) volgens uw vereiste. Gebruik voor **aanmeldings-URL**de waarde met het volgende patroon: `https://login.microsoftonline.com/_my_directory_id_/wsfed`
 
     > [!Note]
-    > _my_directory_id_ is de tenant-id van Azure AD-abonnement.
+    > _my_directory_id_ is de Tenant-id van het Azure AD-abonnement.
 
     ![Configuratie-URL's kopiëren](./media/picturepark-tutorial/configurls.png)
 
@@ -138,37 +138,37 @@ Voor het configureren van Azure AD eenmalige aanmelding met Picturepark, moet u 
 
     b. Afmeldings-URL
 
-### <a name="configure-picturepark-single-sign-on"></a>Picturepark voor eenmalige aanmelding configureren
+### <a name="configure-picturepark-single-sign-on"></a>Eenmalige aanmelding voor Picturepark configureren
 
-1. In een ander browservenster, meld u aan bij uw bedrijf Picturepark site als beheerder.
+1. Meld u in een ander webbrowser venster als beheerder aan bij uw Picturepark-bedrijfs site.
 
-2. Klik in de werkbalk bovenaan op **Systeembeheer**, en klik vervolgens op **beheerconsole**.
+2. Klik in de werk balk bovenaan op **systeem beheer**en klik vervolgens op **beheer console**.
    
-    ![Beheerconsole](./media/picturepark-tutorial/ic795062.png "-beheerconsole")
+    ![Beheer console](./media/picturepark-tutorial/ic795062.png "Beheer console")
 
-3. Klik op **verificatie**, en klik vervolgens op **id-providers**.
+3. Klik op **verificatie**en klik vervolgens op **id-providers**.
    
-    ![Authentication](./media/picturepark-tutorial/ic795063.png "Authentication")
+    ![Verificatie](./media/picturepark-tutorial/ic795063.png "Verificatie")
 
-4. In de **identiteit providerconfiguratie** sectie, voert u de volgende stappen uit:
+4. Voer de volgende stappen uit in de sectie configuratie van de **identiteits provider** :
    
-    ![ID-providerconfiguratie](./media/picturepark-tutorial/ic795064.png "Identity provider configureren")
+    ![Configuratie van de ID-provider](./media/picturepark-tutorial/ic795064.png "Configuratie van de ID-provider")
    
-    a. Klik op **Toevoegen**.
+    a. Klik op **Add**.
   
     b. Typ een naam voor uw configuratie.
    
-    c. Selecteer **ingesteld als standaard**.
+    c. Selecteer **als standaard instellen**.
    
-    d. In **verlener URI** tekstvak, plak de waarde van **aanmeldings-URL** die u hebt gekopieerd vanuit Azure portal.
+    d. Plak in het tekstvak **URI van uitgever** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
    
-    e. In **vertrouwde verlener Duimafdruk** tekstvak, plak de waarde van **vingerafdruk** die u hebt gekopieerd uit **SAML-handtekeningcertificaat** sectie. 
+    e. Plak in het tekstvak **vertrouwde uitgever van miniatuur** de waarde van de **vinger afdruk** die u hebt gekopieerd uit de sectie **SAML-handtekening certificaat** . 
 
 5. Klik op **JoinDefaultUsersGroup**.
 
-6. Om in te stellen de **Emailaddress** kenmerk in de **Claim** tekstvak, type `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` en klikt u op **opslaan**.
+6. Als u het kenmerk **EmailAddress** wilt instellen in het tekstvak **claim** , typt u `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` en klikt u op **Opslaan**.
 
-      ![Configuratie](./media/picturepark-tutorial/ic795065.png "configuratie")
+      ![Configuratie](./media/picturepark-tutorial/ic795065.png "Configuratie")
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -188,25 +188,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension` in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Picturepark.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Picturepark.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Picturepark**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Picturepark**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Picturepark**.
+2. Selecteer in de lijst toepassingen de optie **Picturepark**.
 
     ![De koppeling Picturepark in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -220,57 +220,57 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-picturepark-test-user"></a>Picturepark testgebruiker maken
+### <a name="create-picturepark-test-user"></a>Picturepark-test gebruiker maken
 
-Als u wilt dat Azure AD-gebruikers zich aanmelden bij Picturepark, moeten ze worden ingericht voor Picturepark. In het geval van Picturepark is inrichten een handmatige taak.
+Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Picturepark, moeten ze worden ingericht in Picturepark. In het geval van Picturepark is inrichting een hand matige taak.
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Aanmelden bij uw **Picturepark** tenant.
+1. Meld u aan bij uw **Picturepark** -Tenant.
 
-1. Klik in de werkbalk bovenaan op **Systeembeheer**, en klik vervolgens op **gebruikers**.
+1. Klik in de werk balk bovenaan op **systeem beheer**en klik vervolgens op **gebruikers**.
    
     ![Gebruikers](./media/picturepark-tutorial/ic795067.png "Gebruikers")
 
-1. In de **overzicht van gebruikers** tabblad **nieuw**.
+1. Klik op het tabblad **overzicht van gebruikers** op **Nieuw**.
    
-    ![Gebruikersbeheer](./media/picturepark-tutorial/ic795068.png "Gebruikersbeheer")
+    ![Gebruikers beheer](./media/picturepark-tutorial/ic795068.png "Gebruikers beheer")
 
-1. Op de **Create User** dialoogvenster, voer de volgende stappen uit een geldige Azure Active Directory-gebruiker u wilt om in te richten:
+1. Voer in het dialoog venster **gebruiker maken** de volgende stappen uit van een geldige Azure Active Directory gebruiker die u wilt inrichten:
    
-    ![Create User](./media/picturepark-tutorial/ic795069.png "Create User")
+    ![Gebruiker maken](./media/picturepark-tutorial/ic795069.png "Gebruiker maken")
    
-    a. In de **e-mailadres** tekstvak, type de **e-mailadres** van de gebruiker `BrittaSimon@contoso.com`.  
+    a. Typ in het tekstvak **e-mail adres** het **e-mail adres** van de gebruiker `BrittaSimon@contoso.com`.  
    
-    b. In de **wachtwoord** en **wachtwoord bevestigen** tekstvakken, type de **wachtwoord** van BrittaSimon. 
+    b. Typ in het tekstvak **wacht woord** en **wacht woord bevestigen** het **wacht woord** van BrittaSimon. 
    
-    c. In de **voornaam** tekstvak, type de **voornaam** van de gebruiker **Julia**. 
+    c. Typ in het tekstvak **voor de voor naam** de **voor naam** van de gebruiker **Julia**. 
    
-    d. In de **achternaam** tekstvak, type de **achternaam** van de gebruiker **Simon**.
+    d. Typ in het tekstvak **Achternaam** de **Achternaam** van de gebruiker **Simon**.
    
-    e. In de **bedrijf** tekstvak, type de **bedrijfsnaam** van de gebruiker. 
+    e. Typ in het tekstvak **Company** de **Bedrijfs naam** van de gebruiker. 
    
-    f. In de **land** tekstvak, selecteer de **land/regio** van de gebruiker.
+    f. Selecteer in het tekstvak **Country** het **land/de regio** van de gebruiker.
   
-    g. In de **ZIP** tekstvak, type de **postcode** van de plaats.
+    g. Typ in het tekstvak **zip** de **Post code** van de plaats.
    
-    h. In de **plaats** tekstvak, type de **plaatsnaam** van de gebruiker.
+    h. Typ in het tekstvak **City** de **plaatsnaam** van de gebruiker.
 
     i. Selecteer een **taal**.
    
-    j. Klik op **Create**.
+    j. Klik op **Maken**.
 
 >[!NOTE]
->U kunt alle andere Picturepark gebruiker-account maken van hulpprogramma's of API's geleverd door Picturepark voor het inrichten van gebruikersaccounts van de Azure AD.
+>U kunt alle andere hulpprogram ma's voor het maken van Picturepark-gebruikers accounts of Api's die worden geleverd door Picturepark, gebruiken om Azure AD-gebruikers accounts in te richten.
 >
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Picturepark in het toegangsvenster, moet u worden automatisch aangemeld bij de Picturepark waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Picturepark in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Picturepark waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

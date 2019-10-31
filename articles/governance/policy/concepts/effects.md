@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592803"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176334"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -275,7 +275,7 @@ De eigenschap **Details** van de AuditIfNotExists-effecten heeft alle subeigensc
   - Als **Details. type** een resource type onder de **if** -voor waarde-resource is, wordt in het beleid query's voor bronnen van dit **type** binnen het bereik van de geëvalueerde resource beschreven. Anders worden er beleids query's uitgevoerd binnen dezelfde resource groep als de geëvalueerde resource.
 - **Naam** (optioneel)
   - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]` zijn. In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]`zijn. In plaats daarvan moet echter een [controle](#audit) -effect worden overwogen.
 - **ResourceGroupName** (optioneel)
   - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
   - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
@@ -346,7 +346,7 @@ De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigensc
   - U begint met het ophalen van een resource onder de **if** -voor waarde resource en vervolgens query's in dezelfde resource groep als de **indienings** voorwaarde resource.
 - **Naam** (optioneel)
   - Hiermee geeft u de exacte naam op van de resource die moet worden vergeleken. het beleid zorgt ervoor dat er één specifieke resource wordt opgehaald in plaats van alle resources van het opgegeven type.
-  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]` zijn.
+  - Wanneer de voorwaarde waarden voor **if. Field. type** en **then. Details. type** overeenkomen, wordt de **naam** _vereist_ en moet `[field('name')]`zijn.
 - **ResourceGroupName** (optioneel)
   - Hiermee kan het vergelijken van de gerelateerde resource afkomstig zijn uit een andere resource groep.
   - Is niet van toepassing als **type** een resource is die onder de **if** -voor waarde-resource zou vallen.
@@ -433,7 +433,7 @@ Voor beeld: Hiermee worden SQL Server data bases geëvalueerd om te bepalen of t
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Dit effect wordt gebruikt in combi natie met de beleids definitie *modus* van `Microsoft.ContainerService.Data`. Het wordt gebruikt voor het door geven van regels voor toegangs beheer die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) voor het openen van de [beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
+Dit effect wordt gebruikt in combi natie met de beleids definitie *modus* van `Microsoft.ContainerService.Data`. Het wordt gebruikt voor het door geven van regels voor toegangs beheer die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het openen van de [beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
 > [Azure Policy voor Kubernetes](rego-for-aks.md) is in open bare preview en ondersteunt alleen ingebouwde beleids definities.

@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: v-vasuke
 ms.custom: mvc
-ms.openlocfilehash: d9db71a1b64ea6bf2dc73500160ce8e5e6022ef6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385027"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177725"
 ---
-# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Zelfstudie: Een Azure VM-infra structuur maken om een Service Fabric cluster te hosten
+# <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Zelf studie: een Azure VM-infra structuur maken om een Service Fabric cluster te hosten
 
 Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudie reeks maakt u een zelfstandig cluster dat wordt gehost op virtuele machines van Azure en installeert u er een toepassing op.
 
@@ -62,10 +62,10 @@ U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien.  Als u nog ge
 
    ![SF-inkomend][sf-inbound]
 
-   * Poort `3389`, voor RDP en ICMP (basis connectiviteit).
-   * Poorten `19000-19003`, voor service Fabric.
-   * Poorten `19080-19081`, voor service Fabric.
-   * Poort `8080`, voor webbrowser aanvragen.
+   * Poort `3389`, voor RDP en ICMP (Basic-verbinding).
+   * Poorten `19000-19003`, voor Service Fabric.
+   * Poorten `19080-19081`, voor Service Fabric.
+   * Poort `8080`, voor aanvragen van webbrowser.
 
    > [!TIP]
    > Om uw virtuele machines te verbinden in Service Fabric, moeten de VM's die uw infrastructuur hosten dezelfde referenties hebben.  Er zijn twee manieren om consistente referenties te hanteren: alle machines toevoegen aan hetzelfde domein of op elke VM hetzelfde beheerderswachtwoord instellen. Gelukkig staat Azure alle virtuele machines in hetzelfde **virtuele netwerk** toe om eenvoudig verbinding te maken. Daarom zullen we ervoor zorgen dat alle exemplaren op hetzelfde netwerk.
@@ -90,18 +90,12 @@ Start twee meer **virtual machines**en zorg ervoor dat u dezelfde instellingen b
  
 4. Open het RDP-bestand en voer de gebruikers naam en het wacht woord in die u hebt opgegeven tijdens de installatie van de virtuele machine.
 
-5. Zodra u verbinding hebt gemaakt met een exemplaar, moet u controleren of het externe REGI ster actief is, SMB inschakelen en de vereiste poorten openen voor het SMB en het externe REGI ster.
-
-   Als u SMB wilt inschakelen, is dit de Power shell-opdracht:
-
-   ```powershell
-   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-   ```
+5. Zodra u verbinding hebt gemaakt met een exemplaar, moet u controleren of het externe REGI ster actief is en de vereiste poorten openen.
 
 6. Dit is de PowerShell-opdracht voor het openen van de poorten in de firewall:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
    ```
 
 7. Herhaal dit proces voor uw andere instanties en pas de privé-IP-adressen opnieuw uit.
@@ -117,15 +111,6 @@ Start twee meer **virtual machines**en zorg ervoor dat u dezelfde instellingen b
    ```
 
    Als de uitvoer er gedurende vier pogingen uitziet zoals `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, werkt de verbinding tussen de exemplaren.
-
-3. Gebruik nu de volgende opdracht om te controleren of delen via SMB werkt:
-
-   ```
-   net use * \\172.31.20.163\c$
-   ```
-
-   De uitvoer moet gelijk zijn aan `Drive Z: is now connected to \\172.31.20.163\c$.`.
-
 
    Uw instanties zijn nu voor bereid voor Service Fabric.
 

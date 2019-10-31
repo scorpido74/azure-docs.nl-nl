@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f7c1987cd4184ba6cda37d4d1894f0dba0b2f1
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: ea38317868d183bd02958398b51ef906eb78e799
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024637"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177026"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -236,6 +236,10 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 > Deze functies zijn momenteel in ontwikkeling.
 >
 
+### <a name="group-administratorgroup-administrator"></a>[Groeps beheerder](#group-administrator)
+
+Gebruikers met deze rol kunnen groepen en de bijbehorende instellingen maken/beheren, zoals het naamgevings-en verloop beleid. Het is belang rijk om te begrijpen dat het toewijzen van een gebruiker aan deze rol de mogelijkheid biedt om alle groepen in de Tenant te beheren in verschillende werk belastingen, zoals teams, share point, Yammer en Outlook. Daarnaast kan de gebruiker de verschillende groeps instellingen beheren voor verschillende beheerders portals, zoals micro soft-beheer centrum, Azure Portal, en werk belasting-specifieke taken als teams en share point-beheer centrum.
+
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Gast uitnodiging](#guest-inviter-permissions)
 
 Gebruikers met deze rol kunnen uitnodigingen van Azure Active Directory B2B-gast gebruiker beheren wanneer de leden de gebruikers instelling **kunnen uitnodigen** is ingesteld op Nee. Meer informatie over B2B-samen werking bij de [samen werking met Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Het bevat geen andere machtigingen.
@@ -286,6 +290,10 @@ Gebruikers met deze rol kunnen alle meldingen in het berichten centrum bewaken, 
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[Berichten centrum-lezer](#message-center-reader-permissions)
 
 Gebruikers met deze rol kunnen meldingen en advies status updates in [Office 365 Message Center](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) voor hun organisatie controleren op geconfigureerde services zoals Exchange, intune en micro soft teams. Berichten centrum-lezers ontvangen wekelijkse e-mail samenvattingen van berichten, updates en kunnen berichten centrum berichten delen in Office 365. In azure AD hebben gebruikers die aan deze rol zijn toegewezen alleen alleen-lezen toegang tot Azure AD-services zoals gebruikers en groepen. Deze rol heeft geen toegang voor het weer geven, maken of beheren van ondersteunings tickets.
+
+### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Office-Apps beheerder](#office-apps-administrator-permissions)
+
+Gebruikers met deze rol kunnen de Cloud instellingen van Office 365 apps beheren. Dit omvat het beheer van Cloud beleid, self-service Download beheer en de mogelijkheid om aan Office-apps gerelateerde rapporten weer te geven. Deze rol biedt daarnaast de mogelijkheid om ondersteunings tickets te beheren en de service status in het hoofd beheer centrum te bewaken. Gebruikers die aan deze rol zijn toegewezen, kunnen ook de communicatie van nieuwe functies in Office-apps beheren. 
 
 ### <a name="partner-tier1-supportpartner-tier1-support-permissions"></a>[Ondersteuning voor partner Tier1](#partner-tier1-support-permissions)
 
@@ -1060,6 +1068,28 @@ Kan alles lezen dat een globale beheerder wel kan, maar geen bewerkingen kan ond
 | micro soft. office365. usageReports/de aflezingen/lezen | Lees de gebruiks rapporten van Office 365. |
 | micro soft. office365. webportal/de beleen baarheid/standaard/lezen   | Lees de standaard eigenschappen voor alle resources in micro soft. office365. webportal. |
 
+### <a name="group-administrator"></a>Groeps beheerder
+Kan alle aspecten van groepen en groeps instellingen, zoals naamgeving en verloop beleid, beheren
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. map/groepen/basis/lezen | Lees de standaard eigenschappen voor groepen in Azure Active Directory.  |
+| micro soft. Directory/groepen/basis/bijwerken | Basis eigenschappen van groepen in Azure Active Directory bijwerken. |
+| micro soft. map/groepen/maken | Groepen maken in Azure Active Directory. |
+| micro soft. Directory/groepen/createAsOwner | Groepen maken in Azure Active Directory. De Maker wordt toegevoegd als de eerste eigenaar en het gemaakte object telt op het quotum van 250 gemaakte objecten van de maker. |
+| micro soft. Directory/groepen/verwijderen | Groepen verwijderen in Azure Active Directory. |
+| micro soft. Directory/groepen/hiddenMembers/lezen | Lees de eigenschap groups. hiddenMembers in Azure Active Directory. |
+| micro soft. map/groepen/leden/bijwerken | Werk de eigenschap groups. members bij in Azure Active Directory. |
+| micro soft. Directory/groepen/eigen aren/bijwerken | Werk de eigenschap groups. Owners bij in Azure Active Directory. |
+| micro soft. Directory/groepen/herstellen | Groepen herstellen in Azure Active Directory. |
+| micro soft. Directory/groepen/instellingen/bijwerken | Werk de eigenschap groups. settings bij in Azure Active Directory. |
+| micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
+| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. office365. messageCenter/berichten/lezen | Lees berichten in micro soft. office365. messageCenter. |
+| micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
+| micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| micro soft. office365. usageReports/de aflezingen/lezen | Lees de gebruiks rapporten van Office 365. |
+
 ### <a name="guest-inviter-permissions"></a>Machtigingen voor gast Inviter
 Kan gast gebruikers uitnodigen onafhankelijk van de instelling leden kunnen gasten uitnodigen.
 
@@ -1201,6 +1231,25 @@ Kan berichten en updates voor hun organisatie alleen in het Office 365-berichten
 | --- | --- |
 | micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 | micro soft. office365. messageCenter/berichten/lezen | Lees berichten in micro soft. office365. messageCenter. |
+
+### <a name="office-apps-administrator-permissions"></a>Beheerders machtigingen voor Office-apps
+Kan de Office-apps Cloud Services, waaronder beleid en instellingen beheer, beheren, en de mogelijkheid om de inhoud van ' what's New ' te selecteren, te selecteren en te publiceren op apparaten van eind gebruikers.
+
+> [!NOTE]
+> Deze rol heeft aanvullende machtigingen buiten Azure Active Directory. Zie beschrijving van rol hierboven voor meer informatie.
+>
+>
+
+| **Acties** | **Beschrijving** |
+| --- | --- |
+| micro soft. Azure. serviceHealth/allTasks | Azure Service Health lezen en configureren. |
+| micro soft. Azure. supportTickets/allTasks | Ondersteunings tickets voor Azure maken en beheren. |
+| micro soft. office365. messageCenter/berichten/lezen | Lees berichten in micro soft. office365. messageCenter. |
+| micro soft. office365. serviceHealth/cons/allTasks | Lees en configureer Office 365 Service Health. |
+| micro soft. office365. supportTickets/cons/allTasks | Office 365-ondersteunings tickets maken en beheren. |
+| micro soft. office365. usageReports/de aflezingen/lezen | Lees de gebruiks rapporten van Office 365. |
+| micro soft. office365. userCommunication/cons/allTasks | Lees de zicht baarheid van nieuwe berichten en werk deze bij. |
+| micro soft. office365. webportal/de beleen baarheid/basis/lezen | Lees de basis eigenschappen van alle resources in micro soft. office365. webportal. |
 
 ### <a name="partner-tier1-support-permissions"></a>Tier1-ondersteunings machtigingen voor partners
 
@@ -1636,6 +1685,7 @@ Schrijvers van mappen | Schrijvers van mappen | 9360feb5-f418-4baa-8175-e2a00bac
 Exchange service-beheerder | Exchange-beheerder | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Beheerder van externe ID-provider | Beheerder van externe ID-provider | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Algemene lezer | Algemene lezer | f2ef992c-3afb-46b9-b7cf-a126ee74c451
+Groeps beheerder | Groeps beheerder | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Gast uitnodiging | Gast uitnodiging | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Helpdesk beheerder | Wachtwoord beheerder | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune-servicebeheerder | InTune-beheerder | 3a2c62db-5318-420d-8d74-23affee5d9d5
@@ -1644,6 +1694,7 @@ Licentie beheerder | Licentie beheerder | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync-service beheerder | Skype voor bedrijven-beheerder | 75941009-915a-4869-abe7-691bff18279e
 Berichten centrum-privacy-lezer | Berichten centrum-privacy-lezer | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 Berichten centrum-lezer | Berichten centrum-lezer | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
+Office-Apps beheerder | Office-Apps beheerder | 2b745bdf-0803-4d80-aa65-822c4493daac
 Ondersteuning voor partner Tier1 | Ondersteuning voor partner Tier1 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Ondersteuning voor partner Tier2 | Ondersteuning voor partner tier2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Wachtwoord beheerder | Wachtwoord beheerder | 966707d0-3269-4727-9be2-8c3a10f19b9d

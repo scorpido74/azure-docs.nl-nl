@@ -1,6 +1,6 @@
 ---
-title: Een toegangs pakket verbergen of verwijderen in azure AD-rechts beheer (preview)-Azure Active Directory
-description: Meer informatie over het verbergen of verwijderen van een toegangs pakket in Azure Active Directory rechten beheer (preview).
+title: Een toegangs pakket in azure AD-rechts beheer verbergen of verwijderen-Azure Active Directory
+description: Meer informatie over het verbergen of verwijderen van een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6f3a86d8e88ee2d7465fd32bde7b7555f1f326
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 4391cd20f3919e8def28fa3c1d5007f91b2d9f0b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389172"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174760"
 ---
-# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management-preview"></a>Een toegangs pakket verbergen of verwijderen in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Een toegangs pakket verbergen of verwijderen in het beheer van rechten van Azure AD
 
 Toegangs pakketten worden standaard gedetecteerd. Dit betekent dat als een beleid toestaat dat een gebruiker het toegangs pakket kan aanvragen, het toegangs pakket in hun mijn Access-Portal automatisch wordt weer gegeven. U kunt de **verborgen** instelling echter zodanig wijzigen dat het toegangs pakket niet wordt weer gegeven in de mijn Access-portal van de gebruiker.
 

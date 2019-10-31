@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: MT
+ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562169"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175160"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Meer informatie over veilige, door Azure beheerde werk stations
 
@@ -85,7 +85,7 @@ Essentieel voor een beveiligd werk station is een supply chain-oplossing waarbij
 ## <a name="device-roles-and-profiles"></a>Apparaatfuncties en-profielen
 
 Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen die u kunnen helpen bij het maken van veiligere oplossingen voor gebruikers, ontwikkel aars en IT-personeel. Deze profielen sluiten bruikbaarheid en risico's voor algemene gebruikers die kunnen profiteren van een uitgebreid of veilig werk station. De instellingen die hier worden beschreven, zijn gebaseerd op de door de industrie aanvaarde standaarden. In deze richt lijnen wordt beschreven hoe u Windows 10 kunt beveiligen en de Risico's kunt verminderen die aan het apparaat of de gebruiker zijn gekoppeld. Dit doet u door beleid en technologie te gebruiken om beveiligings functies en-risico's te beheren.
-![Niveaus van beveiligde werk stations](./media/concept-azure-managed-workstation/seccon-levels.png)
+![beveiligde werk station](./media/concept-azure-managed-workstation/seccon-levels.png)
 
 * **Lage beveiliging** : een beheerd, standaard werk station biedt een goed uitgangs punt voor het gebruik van de meeste thuis en kleine bedrijven. Deze apparaten worden geregistreerd in azure AD en beheerd met intune. Met dit profiel kunnen gebruikers toepassingen uitvoeren en bladeren door alle websites. Een anti-malware-oplossing zoals [micro soft Defender](https://www.microsoft.com/windows/comprehensive-security) moet zijn ingeschakeld.
 

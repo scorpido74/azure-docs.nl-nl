@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: uw eerste toegangs pakket maken in azure AD rechten beheer (preview)-Azure Active Directory'
-description: Stapsgewijze zelf studie voor het maken van uw eerste toegangs pakket in Azure Active Directory rechten beheer (preview).
+title: 'Zelf studie: uw eerste toegangs pakket maken in het beheer van rechten van Azure AD-Azure Active Directory'
+description: Stapsgewijze zelf studie voor het maken van uw eerste toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25213305e2bf73bfe6980c0a09ffc73bd4f94ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893680"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174871"
 ---
-# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management-preview"></a>Zelf studie: uw eerste toegangs pakket maken in azure AD rechten beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelf studie: uw eerste toegangs pakket maken in het beheer van rechten van Azure AD
 
 Het beheren van de toegang tot alle resources die werk nemers nodig hebben, zoals groepen, toepassingen en sites, is een belang rijke functie voor organisaties. U wilt werk nemers het juiste toegangs niveau geven om productief te zijn en hun toegang te verwijderen wanneer deze niet meer nodig is.
 
@@ -49,7 +44,7 @@ Bekijk de volgende video voor een stapsgewijze demonstratie van het proces voor 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-rechts beheer (preview) wilt gebruiken, hebt u een van de volgende licenties nodig:
+Als u Azure AD-beheer wilt gebruiken, moet u over een van de volgende licenties beschikken:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5-licentie

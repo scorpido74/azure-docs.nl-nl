@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0184aa7bff4203f50d834f603bed5fd2af52e4c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 051565d984196edce0404b12677cf27de9006f29
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514420"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175211"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Azure Active Directory-webtoepassingen toegang verlenen met de stroom voor het verlenen van de OAuth 2.0-code
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |Vereist |De toepassings-ID die is toegewezen aan uw app wanneer u deze hebt geregistreerd bij Azure AD. U kunt dit vinden in de Azure-Portal. Klik op **Azure Active Directory** in de zijbalk Services, klik op **app-registraties**en kies de toepassing. |
 | response_type |Vereist |Moet `code` voor de autorisatie code stroom bevatten. |
 | redirect_uri |aanbevelingen |De redirect_uri van uw app, waar verificatie reacties kunnen worden verzonden en ontvangen door uw app. Het moet exact overeenkomen met een van de redirect_uris die u in de portal hebt geregistreerd, behalve het moet een URL-code ring zijn. Voor systeem eigen & mobiele apps moet u de standaard waarde van `urn:ietf:wg:oauth:2.0:oob` gebruiken. |
-| response_mode |Beschrijving |Hiermee geeft u de methode op die moet worden gebruikt om het resulterende token terug naar uw app te verzenden. Kan `query`, `fragment` of `form_post` zijn. `query` levert de code als een query reeks parameter op de omleidings-URI. Als u een ID-token met behulp van de impliciete stroom aanvraagt, kunt u `query` niet gebruiken zoals opgegeven in de [OpenID Connect-specificatie](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Als u alleen de code wilt aanvragen, kunt u `query`, `fragment` of `form_post` gebruiken. `form_post` voert een bericht met de code naar uw omleidings-URI uit. De standaard waarde is `query` voor een code stroom.  |
+| response_mode |Beschrijving |Hiermee geeft u de methode op die moet worden gebruikt om het resulterende token terug naar uw app te verzenden. Kan `query`, `fragment`of `form_post`zijn. `query` levert de code als een query reeks parameter op de omleidings-URI. Als u een ID-token met behulp van de impliciete stroom aanvraagt, kunt u `query` niet gebruiken zoals opgegeven in de [OpenID Connect-specificatie](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Als u alleen de code wilt aanvragen, kunt u `query`, `fragment`of `form_post`gebruiken. `form_post` voert een bericht met de code naar uw omleidings-URI uit. De standaard waarde is `query` voor een code stroom.  |
 | state |aanbevelingen |Een waarde die in de aanvraag is opgenomen en die ook wordt geretourneerd in de token reactie. Een wille keurig gegenereerde unieke waarde wordt doorgaans gebruikt om [vervalsing van aanvragen op meerdere sites](https://tools.ietf.org/html/rfc6749#section-10.12)te voor komen. De status wordt ook gebruikt voor het coderen van informatie over de status van de gebruiker in de app voordat de verificatie aanvraag is uitgevoerd, zoals de pagina of weer gave waarin ze zich bevonden. |
 | Resource | aanbevelingen |De App-ID-URI van de doel-Web-API (beveiligde bron). Als u de URI van de App-ID wilt zoeken, klikt u in azure Portal op **Azure Active Directory**, klikt u op **toepassings registraties**, opent u de pagina **instellingen** van de toepassing en klikt u vervolgens op **Eigenschappen**. Het kan ook een externe bron zijn, zoals `https://graph.microsoft.com`. Dit is vereist in een van de autorisatie-of Token aanvragen. Om ervoor te zorgen dat er minder verificatie prompts worden uitgevoerd in de autorisatie aanvraag, om ervoor te zorgen dat de gebruiker om toestemming wordt gevraagd. |
 | scope | **genegeerd** | Voor v1 Azure AD-apps moeten scopes statisch worden geconfigureerd in azure portal onder de **instellingen**voor toepassingen, **vereiste machtigingen**. |
@@ -149,7 +149,7 @@ grant_type=authorization_code
 | client_id |Vereist |De toepassings-id die is toegewezen aan uw app wanneer u deze hebt geregistreerd bij Azure AD. U kunt dit vinden in de Azure Portal. De toepassings-id wordt weer gegeven in de instellingen van de app-registratie. |
 | grant_type |Vereist |Moet worden `authorization_code` voor de autorisatie code stroom. |
 | Gecodeerd |Vereist |Het `authorization_code` dat u in de vorige sectie hebt verkregen |
-| redirect_uri |Vereist | Een `redirect_uri`registered op de client toepassing. |
+| redirect_uri |Vereist | Een `redirect_uri`geregistreerd op de client toepassing. |
 | client_secret |vereist voor web-apps, niet toegestaan voor open bare clients |Het toepassings geheim dat u hebt gemaakt in azure portal voor uw app onder **sleutels**. Het kan niet worden gebruikt in een systeem eigen app (open bare client) omdat client_secrets niet betrouwbaar kan worden opgeslagen op apparaten. Dit is vereist voor web-apps en Web-Api's (alle vertrouwelijke clients), die de mogelijkheid hebben om de `client_secret` veilig op te slaan aan de server zijde. De client_secret moet een URL-code ring hebben voordat deze wordt verzonden. |
 | Resource | aanbevelingen |De App-ID-URI van de doel-Web-API (beveiligde bron). Als u de URI van de App-ID wilt zoeken, klikt u in azure Portal op **Azure Active Directory**, klikt u op **toepassings registraties**, opent u de pagina **instellingen** van de toepassing en klikt u vervolgens op **Eigenschappen**. Het kan ook een externe bron zijn, zoals `https://graph.microsoft.com`. Dit is vereist in een van de autorisatie-of Token aanvragen. Om ervoor te zorgen dat er minder verificatie prompts worden uitgevoerd in de autorisatie aanvraag, om ervoor te zorgen dat de gebruiker om toestemming wordt gevraagd. In zowel de autorisatie aanvraag als de token aanvraag moeten de para meters van de resource overeenkomen. | 
 | code_verifier | Beschrijving | Hetzelfde code_verifier dat is gebruikt om de authorization_code op te halen. Vereist als PKCE is gebruikt in de aanvraag voor autorisatie code toekenning. Zie voor meer informatie de [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
@@ -240,7 +240,7 @@ De volgende tabel bevat de HTTP-status codes die het eind punt voor token uitgif
 | temporarily_unavailable |De server is tijdelijk niet actief om de aanvraag af te handelen. |Voer de aanvraag opnieuw uit. De client toepassing kan bijvoorbeeld verklaren dat het antwoord van de gebruiker is vertraagd vanwege een tijdelijke voor waarde. |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>Het toegangs token gebruiken om toegang te krijgen tot de resource
-Nu u een `access_token` hebt aangeschaft, kunt u het token gebruiken in aanvragen voor web-Api's door dit op te nemen in de `Authorization`-header. In de [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) -specificatie wordt uitgelegd hoe u Bearer-tokens kunt gebruiken in HTTP-aanvragen om toegang te krijgen tot beveiligde bronnen.
+Nu u een `access_token`hebt aangeschaft, kunt u het token gebruiken in aanvragen voor web-Api's door dit op te nemen in de `Authorization`-header. In de [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) -specificatie wordt uitgelegd hoe u Bearer-tokens kunt gebruiken in HTTP-aanvragen om toegang te krijgen tot beveiligde bronnen.
 
 ### <a name="sample-request"></a>Voorbeeld aanvraag
 ```
@@ -279,7 +279,7 @@ De RFC 6750-specificatie definieert de volgende fouten voor resources die gebrui
 
 ## <a name="refreshing-the-access-tokens"></a>De toegangs tokens vernieuwen
 
-Toegangs tokens zijn korte duur en moeten worden vernieuwd nadat ze hebben geduurd om toegang te blijven houden tot resources. U kunt de `access_token` vernieuwen door een andere `POST` aanvraag naar het `/token`-eind punt te verzenden, maar deze keer de `refresh_token` in plaats van de `code` op te geven.  Vernieuwings tokens zijn geldig voor alle resources die uw client al toestemming heeft gegeven voor toegang. Daarom kan een vernieuwings token dat is uitgegeven op een aanvraag voor `resource=https://graph.microsoft.com`, worden gebruikt om een nieuw toegangs token aan te vragen voor `resource=https://contoso.com/api`. 
+Toegangs tokens zijn korte duur en moeten worden vernieuwd nadat ze hebben geduurd om toegang te blijven houden tot resources. U kunt de `access_token` vernieuwen door een andere `POST` aanvraag naar het `/token`-eind punt te verzenden, maar deze keer de `refresh_token` in plaats van de `code`op te geven.  Vernieuwings tokens zijn geldig voor alle resources die uw client al toestemming heeft gegeven voor toegang. Daarom kan een vernieuwings token dat is uitgegeven op een aanvraag voor `resource=https://graph.microsoft.com`, worden gebruikt om een nieuw toegangs token aan te vragen voor `resource=https://contoso.com/api`. 
 
 Voor vernieuwings tokens is geen levens duur opgegeven. De levens duur van vernieuwings tokens is doorgaans relatief lang. In sommige gevallen verloopt het vernieuwen van tokens, worden deze ingetrokken of beschikt over onvoldoende machtigingen voor de gewenste actie. Uw toepassing moet verwachten en fouten afhandelen die door het eind punt voor token uitgifte zijn geretourneerd.
 

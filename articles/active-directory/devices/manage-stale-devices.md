@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ddda8ff67cfdfebcf19f53c307c689884baf4d
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a2e92ca85c485f8c93fc9202b9084ec37d7506e1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942903"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175063"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: Verlopen apparaten beheren in Azure Active Directory
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
 
 In het ideale geval moet de levenscyclus van geregistreerde apparaten worden voltooid door de registratie van de apparaten ongedaan te maken op het moment dat ze niet meer nodig zijn. Als gevolg van bijvoorbeeld verloren, gestolen of defecte apparaten, of herinstallaties van het besturingssysteem, zijn er meestal echter nog wel verlopen apparaten aanwezig in uw omgeving. Als IT-beheerder is het prettig om te beschikken over een methode voor het verwijderen van verlopen apparaten, zodat u zich kunt richten op het beheren van apparaten die nog echt in gebruik zijn.
 
@@ -70,12 +70,12 @@ Om verlopen apparaten op een efficiënte manier op te schonen in uw omgeving, mo
 Als u een apparaat wilt bijwerken in Azure AD, hebt u een account nodig waaraan een van de volgende rollen is toegewezen:
 
 - Globale beheerder
-- Cloud-apparaatbeheerder
+- Beheerder van Cloud apparaat
 - Intune-servicebeheerder
 
 Selecteer in uw opschoningsbeleid accounts die over de vereiste rollen beschikken. 
 
-### <a name="timeframe"></a>Periode
+### <a name="timeframe"></a>Tijdsbestek
 
 Definieer de periode die u als indicator wilt gebruiken voor een verlopen apparaat. Als u uw tijds bestek definieert, factor het venster dat wordt vermeld voor het bijwerken van de tijds tempel van de activiteit in uw waarde. U moet bijvoorbeeld een tijds tempel overwegen die jonger is dan 21 dagen (inclusief variantie) als indicator voor een verouderd apparaat. Er zijn scenario's waarin het lijkt alsof een apparaat verlopen is terwijl dat niet het geval is. Zo is het bijvoorbeeld mogelijk dat de eigenaar van het apparaat op vakantie is of ziek is en  hierdoor de periode voor verlopen apparaten wordt overschreden.
 

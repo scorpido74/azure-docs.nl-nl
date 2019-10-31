@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 605614265d033647bfcf22bb99d45c89f275298b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596384"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175514"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-app die web-Api's aanroept-een Token ophalen
 
@@ -40,7 +40,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-In MSAL. Python, het configuratie bestand zou eruit zien als het volgende code fragment:
+In MSAL python zou het configuratie bestand eruitzien als het volgende code fragment:
 
 ```Json
 {
@@ -115,8 +115,6 @@ if not result:
 if "access_token" in result:
     # Call a protected API with the access token
     print(result["token_type"])
-    print(result["expires_in"])  # You don't normally need to care about this.
-                                 # It will be good for at least 5 minutes.
 else:
     print(result.get("error"))
     print(result.get("error_description"))
@@ -124,6 +122,8 @@ else:
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
+
+Dit is een uittreksel van de [MSAL java dev](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)-voor beelden.
 
 ```Java
 ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
@@ -183,7 +183,7 @@ Zie de documentatie over het [micro soft-identiteits platform en de OAuth 2,0-cl
 
 ## <a name="application-token-cache"></a>Toepassings token cache
 
-@No__t_0 gebruikt in MSAL.NET de cache van het **toepassings token** (alle andere AcquireTokenXX-methoden gebruiken de gebruikers token cache) pas `AcquireTokenSilent` aan voordat `AcquireTokenForClient` wordt aangeroepen als `AcquireTokenSilent` de token cache van de **gebruiker** gebruikt. `AcquireTokenForClient` controleert de cache van het **toepassings** token zelf en werkt deze bij.
+`AcquireTokenForClient` gebruikt in MSAL.NET de cache van het **toepassings token** (alle andere AcquireTokenXX-methoden gebruiken de gebruikers token cache) pas `AcquireTokenSilent` aan voordat `AcquireTokenForClient` wordt aangeroepen als `AcquireTokenSilent` de token cache van de **gebruiker** gebruikt. `AcquireTokenForClient` controleert de cache van het **toepassings** token zelf en werkt deze bij.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

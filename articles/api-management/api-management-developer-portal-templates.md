@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9657414c56296ee710f17663bf0bbdd3a4d67ac8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073772"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176811"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>De Azure API Management-ontwikkelaars portal aanpassen met behulp van sjablonen
 
@@ -26,15 +26,17 @@ Er zijn die manieren waarop u de ontwikkelaarsportal in Azure API Management kun
 
 * [De inhoud van statische pagina's en pagina-indelingselementen bewerken][modify-content-layout]
 * [De stijlen bijwerken die worden gebruikt voor pagina-elementen in de ontwikkelaars Portal][customize-styles]
-* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (dit wordt uitgelegd in deze hand leiding)
+* [De sjablonen bewerken die worden gebruikt voor pagina's die worden gegenereerd door de portal][portal-templates] (uitgelegd in deze hand leiding)
 
 Sjablonen worden gebruikt om de inhoud van door het systeem gegenereerde ontwikkelaars Portal pagina's aan te passen (bijvoorbeeld API-documenten, producten, gebruikers verificatie, enzovoort). Met behulp van de [DotLiquid](http://dotliquidmarkup.org/) -syntaxis en een opgegeven reeks gelokaliseerde teken reeks resources, pictogrammen en pagina besturings elementen kunt u de inhoud van de pagina's zo configureren dat deze er precies zo uitziet.
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="developer-portal-templates-overview"></a>Overzicht van sjablonen voor ontwikkelaars portals
 
-Het bewerken van sjablonen wordt uitgevoerd vanuit de **ontwikkelaars Portal** terwijl u bent aangemeld als beheerder. Als u eerst de Azure-Portal wilt openen, klikt u op **ontwikkelaars Portal** op de service werkbalk van uw API Management-exemplaar.
+Het bewerken van sjablonen wordt uitgevoerd vanuit de **ontwikkelaars Portal** terwijl u bent aangemeld als beheerder. Ga als volgt te werk om eerst de Azure Portal te openen en klik op **ontwikkelaars Portal** op de service werkbalk van uw API Management-exemplaar.
 
 Voor toegang tot de sjablonen voor de ontwikkelaars Portal klikt u op het pictogram aanpassen aan de linkerkant om het menu aanpassing weer te geven en klikt u op **sjablonen**.
 
@@ -100,7 +102,7 @@ In het vorige voor beeld worden twee producten weer gegeven in de ontwikkelaars 
 }
 ```
 
-De markering in de **product lijst** sjabloon verwerkt de gegevens om de gewenste uitvoer te leveren door de verzameling van producten te herhalen om informatie weer te geven en een koppeling naar elk afzonderlijk product. Let op `<search-control>` de `<page-control>` elementen en in de opmaak. Hiermee bepaalt u de weer gave van de besturings elementen zoeken en paginering op de pagina. `ProductsStrings|PageTitleProducts`is een gelokaliseerde teken reeks verwijzing die `h2` de koptekst voor de pagina bevat. Zie [API Management Naslag informatie voor ontwikkelaars portals](api-management-developer-portal-templates-reference.md)voor een lijst met teken reeks resources, pagina besturings elementen en pictogrammen die beschikbaar zijn voor gebruik in sjablonen voor ontwikkelaars portals.
+De markering in de **product lijst** sjabloon verwerkt de gegevens om de gewenste uitvoer te leveren door de verzameling van producten te herhalen om informatie weer te geven en een koppeling naar elk afzonderlijk product. Let op de `<search-control>`-en `<page-control>` elementen in de opmaak. Hiermee bepaalt u de weer gave van de besturings elementen zoeken en paginering op de pagina. `ProductsStrings|PageTitleProducts` is een gelokaliseerde teken reeks verwijzing die de `h2` koptekst tekst voor de pagina bevat. Zie [API Management Naslag informatie voor ontwikkelaars portals](api-management-developer-portal-templates-reference.md)voor een lijst met teken reeks resources, pagina besturings elementen en pictogrammen die beschikbaar zijn voor gebruik in sjablonen voor ontwikkelaars portals.
 
 ```html
 <search-control></search-control>
@@ -183,7 +185,7 @@ Als u alle sjablonen naar de standaard versie wilt herstellen, klikt u op **stan
 De herstelde sjablonen moeten vervolgens afzonderlijk of allemaal tegelijk worden gepubliceerd door de stappen in [te volgen om een sjabloon te publiceren](#to-publish-a-template).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [API Management naslag](api-management-developer-portal-templates-reference.md)informatie voor ontwikkelaars portals voor referentie-Portal sjablonen, teken reeks resources, pictogrammen en pagina besturings elementen.
+Zie [API Management Naslag informatie voor ontwikkelaars portals](api-management-developer-portal-templates-reference.md)voor referentie-Portal sjablonen, teken reeks resources, pictogrammen en pagina besturings elementen.
 
 [modify-content-layout]: api-management-modify-content-layout.md
 [customize-styles]: api-management-customize-styles.md

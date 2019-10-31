@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: f1c5bb6f8a4c7705940f8659575690939c3e5433
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 603c407f93294f2c9697dcee4c3d5d829033d5d9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964990"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176957"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>De Azure Blob Storage op IoT Edge module implementeren op uw apparaat
 
@@ -78,7 +78,7 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 
    - Vervang `<your storage account name>` door een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
 
-   - Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
+   - Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
 
    - Vervang `<storage mount>` volgens het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een map op uw IOT edge-apparaat waar de gegevens moeten worden opgeslagen in de BLOB-module. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.
 
@@ -191,7 +191,7 @@ Azure IoT Edge biedt sjablonen in Visual Studio code om u te helpen bij het ontw
 
 1. Vervang `<your storage account name>` door een naam die u kunt onthouden. Account namen moeten 3 tot 24 tekens lang zijn, met kleine letters en cijfers. Geen spaties.
 
-1. Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
+1. Vervang `<your storage account key>` door een base64-sleutel van 64-bytes. U kunt een sleutel met hulpprogram ma's zoals [GeneratePlus](https://generate.plus/en/base64)genereren. U gebruikt deze referenties om toegang te krijgen tot de Blob-opslag van andere modules.
 
 1. Vervang `<storage mount>` volgens het besturings systeem van de container. Geef de naam van een [volume](https://docs.docker.com/storage/volumes/) of het absolute pad op naar een map op uw IOT edge-apparaat waar de gegevens moeten worden opgeslagen in de BLOB-module. De opslag koppeling wijst een locatie op het apparaat toe die u hebt opgegeven voor een set-locatie in de module.  
 

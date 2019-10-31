@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 83c185a6ba8f1c5e6edf095db5baf575f750fa3b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372836"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176464"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
 Er is geen verschil in de structuur van runbooks die worden uitgevoerd in Azure Automation en runbooks die worden uitgevoerd op een Hybrid Runbook Worker. Runbooks die u gebruikt met elke waarschijnlijke verschillen aanzienlijk. Dit verschil is omdat runbooks die gericht zijn op een Hybrid Runbook Worker meestal resources op de lokale computer zelf of op basis van resources in de lokale omgeving beheert waar deze worden geïmplementeerd. Runbooks in Azure Automation beheren resources doorgaans in de Azure-Cloud.
 
-Wanneer u runbooks ontwerpt om uit te voeren op een Hybrid Runbook Worker, moet u de runbooks bewerken en testen op de computer die als host fungeert voor de Hybrid Worker. De hostcomputer heeft alle Power shell-modules en netwerk toegang die u nodig hebt voor het beheren en openen van de lokale resources. Zodra een runbook is getest op de Hybrid worker-machine, kunt u deze uploaden naar de Azure Automation omgeving waar deze beschikbaar is voor uitvoering in de Hybrid Worker. Het is belang rijk om te weten dat taken die worden uitgevoerd onder het lokale systeem account voor Windows of een speciaal gebruikers account `nxautomation` op Linux. In Linux betekent dit dat u moet controleren of het `nxautomation`-account toegang heeft tot de locatie waar u de modules opslaat. Wanneer u de cmdlet [install-module](/powershell/module/powershellget/install-module) gebruikt, geeft u **ALLUSERS** op in de para meter `-Scope` om te bevestigen dat de `naxautomation`-account toegang heeft.
+Wanneer u runbooks ontwerpt om uit te voeren op een Hybrid Runbook Worker, moet u de runbooks bewerken en testen op de computer die als host fungeert voor de Hybrid Worker. De hostcomputer heeft alle Power shell-modules en netwerk toegang die u nodig hebt voor het beheren en openen van de lokale resources. Zodra een runbook is getest op de Hybrid worker-machine, kunt u deze uploaden naar de Azure Automation omgeving waar deze beschikbaar is voor uitvoering in de Hybrid Worker. Het is belang rijk om te weten dat taken die worden uitgevoerd onder het lokale systeem account voor Windows of een speciaal gebruikers account `nxautomation` op Linux. In Linux betekent dit dat u moet controleren of het `nxautomation`-account toegang heeft tot de locatie waar u de modules opslaat. Wanneer u de cmdlet [install-module](/powershell/module/powershellget/install-module) gebruikt, geeft u **ALLUSERS** op in de para meter `-Scope` om te bevestigen dat het `nxautomation`-account toegang heeft.
 
 Zie voor meer informatie over Power shell op Linux [bekende problemen voor Power shell op niet-Windows-platforms](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
@@ -284,7 +284,7 @@ sudo chown -R nxautomation ~/.gnupg
 
 #### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>De sleutel hanger beschikbaar maken voor de Hybrid Runbook Worker
 
-Zodra de sleutel hanger is gemaakt, moet u deze beschikbaar maken voor de Hybrid Runbook Worker. Wijzig het instellingen bestand `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` als u het volgende voor beeld wilt toevoegen onder de sectie `[worker-optional]`
+Zodra de sleutel hanger is gemaakt, moet u deze beschikbaar maken voor de Hybrid Runbook Worker. Wijzig het instellingen bestand `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf`, zodat het volgende voor beeld wordt toegevoegd aan de sectie `[worker-optional]`
 
 ```bash
 gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
@@ -292,7 +292,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Controleren of de handtekening validatie is ingeschakeld
 
-Als handtekening validatie is uitgeschakeld op de computer, moet u deze inschakelen. Voer de volgende opdracht uit om handtekening validatie in te scha kelen. @No__t-0 vervangen door de werk ruimte-ID.
+Als handtekening validatie is uitgeschakeld op de computer, moet u deze inschakelen. Voer de volgende opdracht uit om handtekening validatie in te scha kelen. `<LogAnalyticsworkspaceId>` vervangen door de werk ruimte-ID.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>

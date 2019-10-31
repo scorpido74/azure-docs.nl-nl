@@ -1,6 +1,6 @@
 ---
-title: Resource rollen wijzigen voor een toegangs pakket in azure AD rechten beheer (preview)-Azure Active Directory
-description: Meer informatie over het wijzigen van de resource rollen voor een bestaand toegangs pakket in Azure Active Directory rechten beheer (preview).
+title: Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD-Azure Active Directory
+description: Meer informatie over het wijzigen van de resource rollen voor een bestaand toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b719546ec598f2e99061597e99a3d4e875b12cf
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429804"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174658"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Resource rollen wijzigen voor een toegangs pakket in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Resource rollen wijzigen voor een toegangs pakket in het beheer van rechten van Azure AD
 
 Als toegangs pakket beheer kunt u de resources in een toegangs pakket op elk gewenst moment wijzigen zonder dat u zich zorgen hoeft te maken over het inrichten van de toegang van de gebruiker tot de nieuwe resources of het verwijderen van de toegang tot de vorige resources. In dit artikel wordt beschreven hoe u de resource rollen voor een bestaand toegangs pakket wijzigt.
 

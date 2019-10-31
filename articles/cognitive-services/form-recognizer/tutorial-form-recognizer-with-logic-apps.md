@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: 7e155df62d05045ceed4479643ed13a8ba6fa06d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958299"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176992"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Zelf studie: formulier herkenner gebruiken met Azure Logic Apps voor het analyseren van facturen
 
@@ -62,7 +62,7 @@ U gebruikt deze container om voorbeeld gegevens te uploaden die nodig zijn om he
 
 Down load de voorbeeld gegevens die beschikbaar zijn op [github](https://go.microsoft.com/fwlink/?linkid=2090451). Extraheer de gegevens naar een lokale map en upload de inhoud van de map **/Train** naar de **formrecocontainer** die u eerder hebt gemaakt. Volg de instructies bij het [uploaden van een blok-BLOB](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) voor het uploaden van gegevens naar een container.
 
-Kopieer de URL van de container. U hebt dit later in deze zelf studie nodig. Als u het opslag account en de container met dezelfde namen hebt gemaakt als vermeld in deze zelf studie, wordt de URL *https://formrecostorage.blob.core.windows.net/formrecocontainer/* .
+Kopieer de URL van de container. U hebt dit later in deze zelf studie nodig. Als u het opslag account en de container met dezelfde namen hebt gemaakt als vermeld in deze zelf studie, is de URL *https:\//formrecostorage.blob.core.Windows.net/formrecocontainer/* .
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 

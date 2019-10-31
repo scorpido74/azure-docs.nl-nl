@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1be70d3eb74d3a8f0eddb1e5c22e4234987276b3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073694"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176830"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Meerdere versies van uw API publiceren 
 
@@ -37,8 +37,8 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 + Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
-+ Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-+ Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
++ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Een nieuwe versie toevoegen
 
@@ -94,11 +94,10 @@ Als aanroepers de nieuwe versie willen zien, moet deze worden toegevoegd aan een
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Blader door de portal voor ontwikkelaars om de versie te zien
 
 1. Selecteer **ontwikkelaarsportal** in het menu bovenaan.
-2. Selecteer **API's**. Bij **Demo Conference API** ziet u de versies **Origineel** en **v1**.
-3. Selecteer **v1**.
-4. U ziet de **Verzoek-URL** van de eerste bewerking in de lijst. Het laat zien dat het API URL-pad **v1** bevat.
-
-    ![Contextmenu van API - versie toevoegen](media/api-management-getstarted-publish-versions/developer_portal.png)
+2. Selecteer **api's** en klik op de **demo conferentie-API**.
+3. U ziet een vervolg keuzelijst met meerdere versies naast de naam van de API.
+4. Selecteer **v1**.
+5. U ziet de **Verzoek-URL** van de eerste bewerking in de lijst. Het laat zien dat het API URL-pad **v1** bevat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

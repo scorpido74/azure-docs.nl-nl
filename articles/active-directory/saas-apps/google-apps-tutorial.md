@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met G suite | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met G suite | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en G Suite.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e4449ac3519757bb9670d2d7fec53cb5f3ce152
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 540dbc3605cfddc9b8d83eceeae8407848f1a91e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948286"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175991"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met G suite
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met G suite
 
 In deze zelf studie leert u hoe u G suite integreert met Azure Active Directory (Azure AD). Wanneer u G suite integreert met Azure AD, kunt u het volgende doen:
 
@@ -46,34 +46,34 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
-- Gebruik uw productie-omgeving, niet als dat nodig is.
+- Gebruik niet de productieomgeving, tenzij dit echt nodig is.
 - Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-1. **V: Biedt deze integratie ondersteuning voor Google Cloud Platform-integratie voor eenmalige aanmelding met Azure AD?**
+1. **V: ondersteunt deze integratie Google Cloud Platform-SSO-integratie met Azure AD?**
 
     A: Ja. Google Cloud Platform en Google Apps delen hetzelfde verificatieplatform. Voor de GCP-integratie moet u dus de eenmalige aanmelding met Google Apps configureren.
 
-2. **V: Zijn Chromebooks en andere Chrome-apparaten compatibel met eenmalige aanmelding in Azure AD?**
+2. **V: zijn Chromebooks en andere Chrome-apparaten die compatibel zijn met de eenmalige aanmelding van Azure AD?**
   
-    A: Ja, gebruikers kunnen zich met behulp van hun Azure AD-referenties aanmelden bij hun Chromebook-apparaten. Bekijk dit [G Suite-ondersteuningsartikel](https://support.google.com/chrome/a/answer/6060880) voor informatie over waarom gebruikers mogelijk tweemaal om hun referenties wordt gevraagd.
+    A: Ja, gebruikers kunnen zich aanmelden bij hun Chromebook-apparaten met hun Azure AD-referenties. Bekijk dit [G Suite-ondersteuningsartikel](https://support.google.com/chrome/a/answer/6060880) voor informatie over waarom gebruikers mogelijk tweemaal om hun referenties wordt gevraagd.
 
-3. **V: Kunnen gebruikers, als ik eenmalige aanmelding inschakel, hun Azure AD-referenties gebruiken om zich aan te melden bij Google-producten, zoals Google Classroom, GMail, Google Drive, YouTube, enzovoort?**
+3. **V: als ik eenmalige aanmelding inschakel, kunnen gebruikers hun Azure AD-referenties gebruiken om zich aan te melden bij een Google-product, zoals Google Classroom, GMail, Google Drive, YouTube, enzovoort?**
 
-    A: Ja, afhankelijk van [de G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) die u inschakelt of uitschakelt voor uw organisatie.
+    A: Ja, afhankelijk van de [G suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) die u voor uw organisatie wilt in-of uitschakelen.
 
-4. **V: Kan ik eenmalige aanmelding voor alleen een subset G Suite-gebruikers inschakelen?**
+4. **V: kan ik eenmalige aanmelding inschakelen voor slechts een subset van mijn G Suite-gebruikers?**
 
-    A: Nee, als u eenmalige aanmelding inschakelt, moeten onmiddellijk alle G Suite-gebruikers zich verifiëren met hun Azure AD-referenties. Omdat G Suite geen ondersteuning biedt voor meerdere id-providers, kan de id-provider voor uw G Suite-omgeving Azure AD of Google zijn, maar niet beide tegelijkertijd.
+    A: Nee, wanneer u eenmalige aanmelding inschakelt, moeten alle gebruikers van G suite zich verifiëren met hun Azure AD-referenties. Omdat G Suite geen ondersteuning biedt voor meerdere id-providers, kan de id-provider voor uw G Suite-omgeving Azure AD of Google zijn, maar niet beide tegelijkertijd.
 
-5. **V: Wordt een gebruiker die is aangemeld via Windows, automatisch gevraagd om zich te verifiëren bij G Suite, zonder dat om een wachtwoord wordt gevraagd?**
+5. **V: als een gebruiker is aangemeld via Windows, worden ze automatisch geverifieerd bij G suite zonder dat om een wacht woord wordt gevraagd?**
 
-    A: Er zijn twee opties waarbij dit scenario zich voordoet. Ten eerste kan een gebruiker zich via [Deelnemen aan Azure Active Directory](../device-management-introduction.md) aanmelden bij een Windows 10-apparaat. Gebruikers kunnen zich ook aanmelden bij Windows-apparaten die zijn toegevoegd aan een domein in on-premises Active Directory waarvoor eenmalige aanmelding bij Azure AD is ingeschakeld via een [AD FS-implementatie (Active Directory Federation Services)](../hybrid/plan-connect-user-signin.md). Voor beide opties moet u de stappen in de volgende zelfstudie uitvoeren om eenmalige aanmelding tussen Azure AD en G Suite in te schakelen.
+    A: er zijn twee opties voor het inschakelen van dit scenario. Ten eerste kan een gebruiker zich via [Deelnemen aan Azure Active Directory](../device-management-introduction.md) aanmelden bij een Windows 10-apparaat. Gebruikers kunnen zich ook aanmelden bij Windows-apparaten die zijn toegevoegd aan een domein in on-premises Active Directory waarvoor eenmalige aanmelding bij Azure AD is ingeschakeld via een [AD FS-implementatie (Active Directory Federation Services)](../hybrid/plan-connect-user-signin.md). Voor beide opties moet u de stappen in de volgende zelfstudie uitvoeren om eenmalige aanmelding tussen Azure AD en G Suite in te schakelen.
 
-6. **V: Wat moet ik doen als ik een foutbericht over ongeldige e-mail krijg?**
+6. **V: wat moet ik doen als ik het fout bericht ' ongeldige e-mail ' Ontvang?**
 
-    A: Voor deze installatie is het e-mailkenmerk vereist voor de gebruikers om zich te kunnen aanmelden. Dit kenmerk kan niet handmatig worden ingesteld.
+    A: voor deze installatie is het e-mail kenmerk vereist zodat de gebruikers zich kunnen aanmelden. Dit kenmerk kan niet handmatig worden ingesteld.
 
     Het e-mailkenmerk wordt automatisch ingevuld voor elke gebruiker met een geldige Exchange-licentie. Als e-mail niet is ingeschakeld voor een gebruiker, wordt dit foutbericht ontvangen omdat de toepassing dit kenmerk moet ophalen om toegang te kunnen verlenen.
 
@@ -125,9 +125,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u wilt configureren voor **Gmail**:
 
-    a. In de **aanmeldings-URL** tekstvak, een URL met behulp van het volgende patroon: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. In de **id** tekstvak, een URL met behulp van het volgende patroon:
+    b. In het tekstvak **Id** typt u een URL met het volgende patroon:
 
     | |
     |--|
@@ -138,9 +138,9 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Voer in het gedeelte **Standaard SAML-configuratie** de volgende stappen uit als u wilt configureren voor **Google Cloud Platform**:
 
-    a. In de **aanmeldings-URL** tekstvak, een URL met behulp van het volgende patroon: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
+    a. Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
 
-    b. In de **id** tekstvak, een URL met behulp van het volgende patroon:
+    b. In het tekstvak **Id** typt u een URL met het volgende patroon:
     
     | |
     |--|
@@ -158,7 +158,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Bewerk in het gedeelte **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** de claims met het **pictogram Bewerken** of voeg de claims toe door met **Nieuwe claim toevoegen** het kenmerk van het SAML-token te configureren, zoals wordt weergegeven in de bovenstaande afbeelding. Hierna voert u de volgende stappen uit:
 
-    | Name | Bronkenmerk |
+    | Naam | Bronkenmerk |
     | ---------------| --------------- |
     | Unieke gebruikers-id | User.mail |
 
@@ -182,23 +182,23 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/certificatebase64.png)
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
 1. Op de sectie **G Suite instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -208,7 +208,7 @@ In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding 
 1. Selecteer in de lijst toepassingen de optie **G suite**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -224,7 +224,7 @@ In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding 
 
 2. Klik op **Beveiliging**. Als u de koppeling niet ziet, is deze mogelijk verborgen in het menu **Meer besturingselementen** onder aan het scherm.
 
-    ![Klik op Beveiliging.][10]
+    ![Klik op 'Security' (Beveiliging).][10]
 
 3. Klik op de pagina **Beveiliging** op **Eenmalige aanmelding (SSO) instellen.**
 
@@ -250,7 +250,9 @@ In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding 
 
 ### <a name="create-g-suite-test-user"></a>G Suite-testgebruiker maken
 
-Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in G Suite-software. G Suite biedt ondersteuning voor automatisch inrichten, wat standaard is ingeschakeld. U hoeft geen handelingen uit te voeren in dit gedeelte. Als een gebruiker nog niet bestaat in G Suite-software, wordt een nieuwe gebruiker gemaakt als u toegang probeert te krijgen tot G Suite-software.
+Het doel van deze sectie is het [maken van een gebruiker in G suite met de](https://support.google.com/a/answer/33310?hl=en) naam B. Simon. Nadat de gebruiker hand matig is gemaakt in G suite, kan de gebruiker zich nu aanmelden met hun aanmeldings referenties voor Office 365.
+
+G suite ondersteunt ook automatische gebruikers inrichting. Als u het automatisch inrichten van gebruikers wilt configureren, moet u eerst [G Suite configureren voor automatische gebruikers inrichting](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
 > Zorg ervoor dat uw gebruiker al bestaat in G Suite, als inrichten in Azure AD niet is ingeschakeld vóór het testen van eenmalige aanmelding.
@@ -260,11 +262,11 @@ Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in 
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel G Suite in het toegangsvenster klikt, wordt u automatisch aangemeld bij het G Suite-exemplaar waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 

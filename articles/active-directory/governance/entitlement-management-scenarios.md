@@ -1,6 +1,6 @@
 ---
-title: Algemene scenario's in het beheer van rechten van Azure AD (preview)-Azure Active Directory
-description: Meer informatie over de stappen op hoog niveau die u moet volgen voor algemene scenario's in Azure Active Directory rechten beheer (preview).
+title: Algemene scenario's in het beheer van rechten van Azure AD-Azure Active Directory
+description: Meer informatie over de stappen op hoog niveau die u moet volgen voor algemene scenario's in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,116 +12,146 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/23/2019
+ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81382ebecdff6c7b146386b3ae2b0768a7c834bf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389072"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173500"
 ---
-# <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Algemene scenario's in het beheer van rechten van Azure AD (preview-versie)
+# <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Algemene scenario's in het beheer van rechten van Azure AD
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+Er zijn verschillende manieren waarop u het rechten beheer voor uw organisatie kunt configureren. Als u echter net aan de slag gaat, is het handig om inzicht te krijgen in de algemene scenario's voor beheerders, catalogus eigenaars, toegangs pakket managers, goed keurders en aanvragers.
 
-Er zijn verschillende manieren waarop u het rechten beheer voor uw organisatie kunt configureren. Als u echter net aan de slag gaat, is het handig om de algemene scenario's voor beheerders, goed keurders en aanvragers te begrijpen.
+## <a name="delegate"></a>Gemachtigde
 
-## <a name="administrators"></a>Beheerders
+### <a name="administrator-delegate-management-of-resources"></a>Beheerder: beheer van resources delegeren
 
-### <a name="im-new-to-entitlement-management-and-i-want-help-with-getting-started"></a>Ik ben geen recht op het beheer van rechten en ik wil graag aan de slag
+1. [Video bekijken: delegeren naar Afdelings Manager](https://www.microsoft.com/videoplayer/embed/RE3Lq00)
+1. [Gebruikers delegeren aan de maker van de catalogus](entitlement-management-delegate-catalog.md)
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | [Volg de zelf studie voor het maken van uw eerste toegangs pakket](entitlement-management-access-package-first.md) | [pictogram ![Azure-Portal](./media/entitlement-management-scenarios/azure-portal.png)](./media/entitlement-management-scenarios/azure-portal-expanded.png#lightbox) |
+### <a name="catalog-creator-delegate-management-of-resources"></a>Catalogus Maker: beheer van resources delegeren
 
-### <a name="i-want-to-allow-users-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Ik wil dat gebruikers in mijn Directory toegang kunnen aanvragen tot groepen, toepassingen of share point-sites
+- [Een nieuwe catalogus maken](entitlement-management-catalog-create.md#create-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** [een nieuw toegangs pakket maken in een catalogus](entitlement-management-access-package-create.md#start-new-access-package) | ![Een toegangs pakket maken](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [resource rollen toevoegen voor toegang tot pakket](entitlement-management-access-package-resources.md#add-resource-roles)<ul><li>Groepen</li><li>Applicaties</li><li>SharePoint-sites</li></ul> | ![Resource rollen toevoegen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [een beleid toevoegen](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)<ul><li>Voor gebruikers in uw Directory</li><li>Goed keuring vereisen</li><li>Levenscyclus instellingen</li></ul> | ![Beleid toevoegen](./media/entitlement-management-scenarios/policy.png) |
+### <a name="catalog-owner-delegate-management-of-resources"></a>Catalogus eigenaar: beheer van resources delegeren
 
-### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Ik wil gebruikers van mijn zakelijke partners toestaan (met inbegrip van gebruikers die nog niet in mijn map zijn opgenomen) om toegang aan te vragen voor groepen, toepassingen of share point-sites
+1. [Mede-eigen aars toevoegen aan de catalogus](entitlement-management-catalog-create.md#add-additional-catalog-owners)
+1. [Resources toevoegen aan de catalogus](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** [een nieuw toegangs pakket maken in een catalogus](entitlement-management-access-package-create.md#start-new-access-package) | ![Een toegangs pakket maken](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [resource rollen toevoegen voor toegang tot pakket](entitlement-management-access-package-resources.md#add-resource-roles) | ![Resource rollen toevoegen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [een beleid voor externe gebruikers toevoegen](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)<ul><li>Voor gebruikers die niet in uw Directory voor komt</li><li>Goed keuring vereisen</li><li>Levenscyclus instellingen</li></ul> | ![Beleid voor externe gebruikers toevoegen](./media/entitlement-management-scenarios/policy-external.png) |
-> | **4.** [de koppeling verzenden om een toegangs pakket aan uw zakelijke partner aan te vragen](entitlement-management-access-package-settings.md)<ul><li>Zakelijke partner kan koppeling met hun gebruikers delen</li></ul> |  |
+### <a name="catalog-owner-delegate-management-of-access-packages"></a>Catalogus eigenaar: beheer van toegangs pakketten delegeren
 
-### <a name="i-want-to-change-the-groups-applications-or-sharepoint-sites-in-an-access-package"></a>Ik wil de groepen, toepassingen of share point-sites in een toegangs pakket wijzigen
+1. [Video bekijken: delegering van de catalogus eigenaar om toegang te krijgen tot pakket beheer](https://www.microsoft.com/videoplayer/embed/RE3Lq08)
+1. [Gebruikers delegeren voor toegang tot de rol pakket beheer](entitlement-management-delegate-managers.md)
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** Open het toegangs pakket | ![Resource rollen toevoegen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [resource rollen toevoegen of verwijderen](entitlement-management-access-package-resources.md#add-resource-roles) | ![Resource rollen toevoegen](./media/entitlement-management-scenarios/resource-roles-add.png) |
+## <a name="govern-access-for-users-in-your-organization"></a>De toegang bepalen voor gebruikers in uw organisatie
 
-### <a name="i-want-to-view-who-has-an-assignment-to-groups-applications-or-sharepoint-sites"></a>Ik wil weer geven wie een toewijzing heeft voor groepen, toepassingen of share point-sites
+### <a name="access-package-manager-allow-employees-in-your-organization-to-request-access-to-resources"></a>Access Package Manager: werk nemers in uw organisatie toestaan om toegang te vragen tot bronnen
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** open een toegangs pakket | ![Resource rollen toevoegen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [toewijzingen weer geven](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)<ul><li>Weer geven welke gebruikers toegang hebben tot een toegangs pakket</li><li>Weer gave van de toegang van de gebruiker is verlopen</li></ul> |  |
+1. [Een nieuw toegangs pakket maken](entitlement-management-access-package-create.md#start-new-access-package)
+1. [Groepen, teams, toepassingen of share point-sites toevoegen aan het toegangs pakket](entitlement-management-access-package-create.md#resource-roles)
+1. [Een aanvraag beleid toevoegen om gebruikers in uw directory toe te staan om toegang aan te vragen](entitlement-management-access-package-create.md#for-users-in-your-directory)
+1. [Verval instellingen opgeven](entitlement-management-access-package-create.md#lifecycle)
 
-### <a name="i-want-to-view-groups-applications-or-sharepoint-sites-a-user-has-access-to"></a>Ik wil groepen, toepassingen of share point-sites weer geven waartoe een gebruiker toegang heeft
+### <a name="requestor-request-access-to-resources"></a>Aanvrager: toegang tot resources aanvragen
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | [Rapport met gebruikers toewijzingen weer geven](entitlement-management-reports.md)<ul><li>Weer geven wanneer deze zijn aangevraagd en die zijn goedgekeurd</li></ul> |  |
+1. [Meld u aan bij de portal van mijn toegang](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. Toegangs pakket zoeken
+1. [Toegang aanvragen](entitlement-management-request-access.md#request-an-access-package)
 
-## <a name="approvers"></a>Goedkeurders
+### <a name="approver-approve-requests-to-resources"></a>Goed keurder: aanvragen goed keuren voor resources
 
-### <a name="i-want-to-approve-requests-to-access-groups-applications-or-sharepoint-sites"></a>Ik wil aanvragen goed keuren voor toegang tot groepen, toepassingen of share point-sites
+1. [Aanvraag openen in mijn Access-Portal](entitlement-management-request-approve.md#open-request)
+1. [Toegang aanvragen goed keuren of weigeren](entitlement-management-request-approve.md#approve-or-deny-request)
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** [aanvraag openen in mijn Access-Portal](entitlement-management-request-approve.md#open-request) | [1My-pictogram voor toegang tot @no__t-Portal](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** [aanvraag voor toegang goed keuren](entitlement-management-request-approve.md#approve-or-deny-request) | ![Toegang goed keuren](./media/entitlement-management-scenarios/approve-access.png) |
+### <a name="requestor-view-the-resources-you-already-have-access-to"></a>Aanvrager: Bekijk de resources waarmee u al toegang hebt
 
-## <a name="requestors"></a>Aanvragers
+1. [Meld u aan bij de portal van mijn toegang](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. Actieve toegangs pakketten weer geven
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-available-to-me-and-request-access"></a>Ik wil de groepen, toepassingen of share point-sites weer geven die beschikbaar zijn voor mij en toegang aanvragen
+## <a name="govern-access-for-users-outside-your-organization"></a>De toegang bepalen voor gebruikers buiten uw organisatie
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** [Meld u aan bij de portal van mijn toegang](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [1My-pictogram voor toegang tot @no__t-Portal](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** toegangs pakket zoeken |  |
-> | **3.** [toegang aanvragen](entitlement-management-request-access.md#request-an-access-package) | ![Toegang aanvragen](./media/entitlement-management-scenarios/request-access.png) |
+### <a name="administrator-collaborate-with-an-external-partner-organization"></a>Beheerder: samen werken met een externe partner organisatie
 
-### <a name="im-an-external-user-and-i-want-to-request-access-to-groups-applications-or-sharepoint-sites-with-a-direct-link"></a>Ik ben een externe gebruiker en ik wil toegang aanvragen tot groepen, toepassingen of share point-sites met een directe koppeling
+1. [Lees hoe Access werkt voor externe gebruikers](entitlement-management-external-users.md#how-access-works-for-external-users)
+1. [Instellingen voor externe gebruikers controleren](entitlement-management-external-users.md#settings-for-external-users)
+1. [Een verbinding met de externe organisatie toevoegen](entitlement-management-organization.md)
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** [Zoek de toegangs pakket koppeling die u hebt ontvangen](entitlement-management-access-package-settings.md) |  |
-> | **2.** [Meld u aan bij de portal van mijn toegang](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [1My-pictogram voor toegang tot @no__t-Portal](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **3.** [toegang aanvragen](entitlement-management-request-access.md#request-an-access-package) | ![Toegang aanvragen voor externe gebruiker](./media/entitlement-management-scenarios/request-access-external.png) |
+### <a name="access-package-manager-collaborate-with-an-external-partner-organization"></a>Access Package Manager: samen werken met een externe partner organisatie
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-i-already-have-access-to"></a>Ik wil de groepen, toepassingen of share point-sites weer geven waarvoor ik al toegang heb
+1. [Een nieuw toegangs pakket maken](entitlement-management-access-package-create.md#start-new-access-package)
+1. [Groepen, teams, toepassingen of share point-sites toevoegen aan het toegangs pakket](entitlement-management-access-package-resources.md#add-resource-roles)
+1. [Een aanvraag beleid toevoegen waarmee gebruikers die geen toegang hebben tot uw directory, toestemming kunnen vragen](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+1. [Verval instellingen opgeven](entitlement-management-access-package-create.md#lifecycle)
+1. [De koppeling kopiëren om het toegangs pakket aan te vragen](entitlement-management-access-package-settings.md)
+1. De koppeling naar uw contact partner van uw externe partner verzenden om deze te delen met hun gebruikers
 
-> [!div class="mx-tableFixed"]
-> | Stappen | Voorbeeld |
-> | --- | --- |
-> | **1.** [Meld u aan bij de portal van mijn toegang](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [1My-pictogram voor toegang tot @no__t-Portal](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** actieve toegangs pakketten weer geven |  |
+### <a name="requestor-request-access-to-resources-as-an-external-user"></a>Aanvrager: toegang tot resources aanvragen als externe gebruiker
+
+1. De toegangs pakket koppeling zoeken die u hebt ontvangen van uw contact persoon
+1. [Meld u aan bij de portal van mijn toegang](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. [Toegang aanvragen](entitlement-management-request-access.md#request-an-access-package)
+
+### <a name="approver-approve-requests-to-resources"></a>Goed keurder: aanvragen goed keuren voor resources
+
+1. [Aanvraag openen in mijn Access-Portal](entitlement-management-request-approve.md#open-request)
+1. [Toegang aanvragen goed keuren of weigeren](entitlement-management-request-approve.md#approve-or-deny-request)
+
+### <a name="requestor-view-the-resources-your-already-have-access-to"></a>Aanvrager: de resources weer geven waarmee u al toegang hebt
+
+1. [Meld u aan bij de portal van mijn toegang](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. Actieve toegangs pakketten weer geven
+
+## <a name="day-to-day-management"></a>Dagelijks beheer
+
+### <a name="access-package-manager-update-the-resources-for-a-project"></a>Access Package Manager: de resources voor een project bijwerken
+
+1. [Video bekijken: dagelijks beheer: dingen gewijzigd](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. Open het toegangs pakket
+1. [Groepen, teams, toepassingen of share point-sites toevoegen of verwijderen](entitlement-management-access-package-resources.md#add-resource-roles)
+
+### <a name="access-package-manager-update-the-duration-for-a-project"></a>Toegangs pakket beheer: de duur van een project bijwerken
+
+1. [Video bekijken: dagelijks beheer: dingen gewijzigd](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. Open het toegangs pakket
+1. [Open de levenscyclus instellingen](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
+1. [De verloop instellingen bijwerken](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+
+### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>Access Package Manager: update hoe de toegang wordt goedgekeurd voor een project
+
+1. [Video bekijken: dagelijks beheer: dingen gewijzigd](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [Een bestaand beleid voor aanvraag-en goedkeurings instellingen openen](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [De goedkeurings instellingen bijwerken](entitlement-management-access-package-request-policy.md#approval)
+
+### <a name="access-package-manager-update-the-people-for-a-project"></a>Toegangs pakket beheer: de personen voor een project bijwerken
+
+1. [Video bekijken: dagelijks beheer: dingen gewijzigd](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [Gebruikers verwijderen die geen toegang meer nodig hebben](entitlement-management-access-package-assignments.md)
+1. [Een bestaand beleid voor aanvraag-en goedkeurings instellingen openen](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [Gebruikers toevoegen die toegang nodig hebben](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
+
+### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>Access Package Manager: specifieke gebruikers rechtstreeks toewijzen aan een toegangs pakket
+
+1. [Als gebruikers verschillende levenscyclus instellingen nodig hebben, voegt u een nieuw beleid toe aan het toegangs pakket](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [Rechtstreeks toewijzen van specifieke gebruikers aan het toegangs pakket](entitlement-management-access-package-assignments.md#directly-assign-a-user)
+
+## <a name="assignments-and-reports"></a>Toewijzingen en rapporten
+
+### <a name="administrator-view-who-has-assignments-to-an-access-package"></a>Beheerder: weer geven wie toewijzingen heeft aan een toegangs pakket
+
+1. Een toegangs pakket openen
+1. [Toewijzingen weer geven](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)
+
+### <a name="administrator-view-resources-assigned-to-users"></a>Beheerder: resources weer geven die aan gebruikers zijn toegewezen
+
+1. [Toegangs pakketten voor een gebruiker weer geven](entitlement-management-reports.md#view-access-packages-for-a-user)
+1. [Resource toewijzingen voor een gebruiker weer geven](entitlement-management-reports.md#view-resource-assignments-for-a-user)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Zelf studie: uw eerste toegangs pakket maken](entitlement-management-access-package-first.md)
 - [Overdracht en rollen](entitlement-management-delegate.md)
+- [Aanvraag proces en e-mail meldingen](entitlement-management-process.md)

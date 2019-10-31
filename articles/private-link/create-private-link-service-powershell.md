@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 2f9b7b148900e827f4bfb17de1ef3cf05d8bbf10
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d8d40ed83d7f8234092ca6354642a76aaa83bc12
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169161"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173065"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Een persoonlijke koppelings service maken met behulp van Azure PowerShell
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure PowerShell.
@@ -115,7 +115,7 @@ Vervolgens laten we zien hoe u deze service kunt toewijzen aan een persoonlijk e
 
 ## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 ### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
-Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *vnetPE*@no__t 1in-resource groep met de naam *myResourceGroup*:
+Maak een virtueel netwerk voor uw persoonlijke eind punt met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In dit voor beeld wordt een virtueel netwerk gemaakt met de naam *vnetPE* in de resource groep met de naam *myResourceGroup*:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -128,7 +128,7 @@ $peSubnet = New-AzVirtualNetworkSubnetConfig `
 
 $vnetPE = New-AzVirtualNetwork `
 -Name $virtualNetworkNamePE `
--ResourceGroupName myResourceGroup `
+-ResourceGroupName $rgName `
 -Location $location `
 -AddressPrefix "11.0.0.0/16" `
 -Subnet $peSubnet 

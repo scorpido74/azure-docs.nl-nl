@@ -1,5 +1,5 @@
 ---
-title: Overdracht en rollen in azure AD-rechts beheer (preview)-Azure Active Directory
+title: Delegering en rollen in het beheer van rechten van Azure AD-Azure Active Directory
 description: Meer informatie over het overdragen van toegangs beheer van IT-beheerders aan afdelings managers en project managers zodat ze de toegang zelf kunnen beheren.
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9eb97b88be3ed68398cf7844b03e6a1fc9cd1b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934438"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174256"
 ---
-# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Delegering en rollen in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Overdracht en rollen in het beheer van rechten van Azure AD
 
 Standaard kunnen globale beheerders en gebruikers beheerders alle aspecten van het beheer van rechten van Azure AD maken en beheren. Het is echter mogelijk dat de gebruikers in deze rollen niet alle situaties kennen waarin toegangs pakketten zijn vereist. Normaal gesp roken is het gebruikers binnen de respectieve afdelingen, teams of projecten die weten wie ze samen werken, met welke resources en hoe lang. In plaats van onbeperkte machtigingen te verlenen aan niet-beheerders, kunt u gebruikers de minste machtigingen verlenen die ze nodig hebben om hun taak uit te voeren en te voor komen dat er conflicterende of onjuiste toegangs rechten zijn.
 
@@ -113,8 +108,9 @@ De volgende tabel geeft een lijst van de taken die de rechten voor het beheer ku
 | [Een gebruiker rechtstreeks toewijzen aan een toegangs pakket](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Weer geven wie een toewijzing voor een toegangs pakket heeft](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Aanvragen van een toegangs pakket weer geven](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [De leverings fouten van een aanvraag weer geven](entitlement-management-access-package-requests.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [Een aanvraag in behandeling annuleren](entitlement-management-access-package-requests.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [De leverings fouten van een aanvraag weer geven](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Een aanvraag opnieuw verwerken](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Een aanvraag in behandeling annuleren](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Een toegangs pakket verbergen](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [Een toegangs pakket verwijderen](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 

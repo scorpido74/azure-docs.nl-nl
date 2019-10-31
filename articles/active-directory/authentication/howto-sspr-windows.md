@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aa0480e95fa072b6fa87aea8debd3dafc8ebcab
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042065"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171864"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Procedure: wacht woord opnieuw instellen inschakelen vanuit het Windows-aanmeldings scherm
 
@@ -24,29 +24,10 @@ Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hu
 
 ![Voor beeld van een Windows 7-en 10-Aanmeldings scherm met een SSPR-koppeling](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>Algemene vereisten
-
-- Een beheerder moet Azure AD selfservice voor wachtwoord herstel inschakelen vanuit het Azure Portal.
-- **Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken**
-- Vereisten voor netwerk proxy
-   - Windows 10-apparaten 
-       - Poort 443 tot `passwordreset.microsoftonline.com` en `ajax.aspnetcdn.com`
-       - Windows 10-apparaten ondersteunen alleen proxy configuratie op computer niveau
-   - Windows 7-, 8-en 8,1-apparaten
-       - Poort 443 tot `passwordreset.microsoftonline.com`
-
 ## <a name="general-limitations"></a>Algemene beperkingen
 
 - Het opnieuw instellen van het wacht woord wordt momenteel niet ondersteund vanuit een Extern bureaublad of via Hyper-V-uitgebreide sessies.
 - Deze functie werkt niet voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd en de optie Onmiddellijk uitvoeren voor gebruiker zich aanmeldt. Voor netwerken waarvoor 802.1x-netwerkverificatie is geïmplementeerd, wordt het aanbevolen computerverificatie te gebruiken om deze functie in te schakelen.
-
-## <a name="windows-10-password-reset"></a>Windows 10-wacht woord opnieuw instellen
-
-### <a name="windows-10-specific-prerequisites"></a>Specifieke vereisten voor Windows 10
-
-- Voer ten minste Windows 10, versie april 2018 update (v1803) uit en de apparaten moeten zijn:
-    - Toegevoegd aan Azure AD
-    - Hybride Azure AD-join
 - Hybride Azure AD-computers moeten over een netwerk verbinding beschikken om het nieuwe wacht woord te kunnen gebruiken en referenties in de cache op te slaan.
 - Als u een installatie kopie gebruikt voordat u Sysprep uitvoert, moet u ervoor zorgen dat de webcache voor de ingebouwde beheerder is gewist voordat u de stap CopyProfile uitvoert. Meer informatie over deze stap vindt u in de ondersteunings artikelen [verslechte prestaties bij gebruik van aangepast standaard gebruikers profiel](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 - De volgende instellingen zijn bekend om te voor komen dat wacht woorden op Windows 10-apparaten kunnen worden gebruikt en opnieuw worden ingesteld
@@ -60,7 +41,21 @@ Voor computers met Windows 7, 8, 8,1 en 10 kunt u gebruikers in staat stellen hu
 - De combi natie van de volgende drie instellingen kan ervoor zorgen dat deze functie niet werkt.
     - Interactieve aanmelding: CTRL + ALT + DEL = disabled is uitgeschakeld
     - DisableLockScreenAppNotifications = 1 of ingeschakeld
-    - IsContentDeliveryPolicyEnforced = 1 of waar 
+    - IsContentDeliveryPolicyEnforced = 1 of waar
+
+## <a name="windows-10-password-reset"></a>Windows 10-wacht woord opnieuw instellen
+
+### <a name="windows-10-prerequisites"></a>Windows 10-vereisten
+
+- Een beheerder moet Azure AD selfservice voor wachtwoord herstel inschakelen vanuit het Azure Portal.
+- **Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken**
+- Vereisten voor netwerk proxy
+   - Windows 10-apparaten 
+       - Poort 443 tot `passwordreset.microsoftonline.com` en `ajax.aspnetcdn.com`
+       - Windows 10-apparaten ondersteunen alleen proxy configuratie op computer niveau
+- Voer ten minste Windows 10, versie april 2018 update (v1803) uit en de apparaten moeten zijn:
+    - Toegevoegd aan Azure AD
+    - Hybride Azure AD-join
 
 ### <a name="enable-for-windows-10-using-intune"></a>Inschakelen voor Windows 10 met intune
 
@@ -94,7 +89,6 @@ Intune gebruiken om de configuratie te wijzigen zodat gebruikers het wachtwoord 
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Problemen oplossen met Windows 10 wacht woord opnieuw instellen
 
 Het auditlogboek van Azure AD bevat informatie over het IP-adres en het ClientType waarvoor het wachtwoord opnieuw is ingesteld.
@@ -105,8 +99,13 @@ Wanneer gebruikers hun wacht woord opnieuw instellen vanuit het aanmeldings sche
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7, 8 en 8,1 wacht woord opnieuw instellen
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Specifieke vereisten voor Windows 7, 8 en 8,1
+### <a name="windows-7-8-and-81-prerequisites"></a>Vereisten voor Windows 7, 8 en 8,1
 
+- Een beheerder moet Azure AD selfservice voor wachtwoord herstel inschakelen vanuit het Azure Portal.
+- **Gebruikers moeten zich registreren voor SSPR voordat ze deze functie gebruiken**
+- Vereisten voor netwerk proxy
+   - Windows 7-, 8-en 8,1-apparaten
+       - Poort 443 tot `passwordreset.microsoftonline.com`
 - Een patch uitgevoerd voor Windows 7-of Windows 8,1-besturings systeem.
 - TLS 1,2 ingeschakeld met behulp van de richt lijnen die zijn gevonden in de [register instellingen van Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12).
 - Als er meer dan één externe referentie provider op uw computer is ingeschakeld, zien gebruikers meer dan één gebruikers profiel in het aanmeldings scherm.
@@ -151,7 +150,7 @@ Nu u het opnieuw instellen van het wacht woord voor uw Windows-apparaten hebt ge
 
 Wanneer gebruikers zich proberen aan te melden, zien ze nu de koppeling **wacht woord opnieuw instellen** of **verg eten wacht woord** waarmee de self-service voor het opnieuw instellen van wacht woorden wordt geopend in het aanmeldings scherm. Deze functionaliteit maakt het mogelijk dat gebruikers hun wachtwoord opnieuw instellen zonder dat ze een ander apparaat moeten gebruiken om toegang te krijgen tot een webbrowser.
 
-Uw gebruikers vinden hulp voor het gebruik van deze functie in [Uw wachtwoord voor werk of school opnieuw instellen](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)
+Uw gebruikers vinden hulp voor het gebruik van deze functie in [Uw wachtwoord voor werk of school opnieuw instellen](../user-help/active-directory-passwords-update-your-own-password.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

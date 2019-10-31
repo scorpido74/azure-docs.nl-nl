@@ -12,30 +12,30 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c5975b57b6f960badf747e33deb238adf260199
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ede458e7d4c1cb1a8d7e3f2e2c9df54d5925d6d8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967202"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175980"
 ---
 # <a name="choose-the-right-federation-protocol-for-your-multi-tenant-application"></a>Kies het juiste Federatie protocol voor uw multi tenant-toepassing
 
 Wanneer u uw SaaS-toepassing (Software as a Service) ontwikkelt, moet u het federatieve protocol selecteren dat het beste voldoet aan de behoeften van uw klanten. Deze beslissing is gebaseerd op uw ontwikkel platform en uw wensen te integreren met gegevens die beschikbaar zijn in het Office 365-en Azure AD-ecosysteem van uw klanten.
 
-Bekijk de volledige lijst met [protocollen die beschikbaar zijn voor SSO](what-is-single-sign-on.md) -integraties met Azure Active Directory.
+Bekijk de volledige lijst met [protocollen die beschikbaar zijn voor SSO-integraties](what-is-single-sign-on.md) met Azure Active Directory.
 De volgende tabel vergelijkt 
 * Open verificatie 2,0 (OAuth 2,0)
 * Open ID Connect (OIDC)
 * Security Assertion Markup Language (SAML)
 * Webservices-federatie (WSFed)
 
-| Mogelijkheid| OAuth-OIDC| SAML / WSFed |
+| Mogelijkheid| OAuth-OIDC| SAML-WSFed |
 | - |-|-|
 | Op het web gebaseerde eenmalige aanmelding| √| √ |
 | Op het web gebaseerde eenmalige afmelding| √| √ |
-| Eenmalige aanmelding op basis van mobiel| √| √* |
-| Op mobiele apparaten gebaseerde eenmalige afmelding| √| √* |
+| Eenmalige aanmelding op basis van mobiel| √| √ |
+| Op mobiele apparaten gebaseerde eenmalige afmelding| √| √ |
 | Beleid voor voorwaardelijke toegang voor mobiele toepassingen| √| X |
 | Naadloze MFA-ervaring voor mobiele toepassingen| √| X |
 | Toegang Microsoft Graph| √| X |

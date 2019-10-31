@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6b1f226fba43428cdf5f46d41425ac534219de7f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6270237e2319c42ed30fc347b7ab9c1c2a008314
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619053"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177745"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen in Azure
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen
 
 Deze zelf studie is deel drie van een reeks en laat zien hoe u uw bestaande cluster uit en in kunt schalen. Aan het einde van deze zelfstudie weet u hoe u een cluster kunt schalen en eventuele resterende resources kunt opschonen.  Lees [service Fabric clusters schalen](service-fabric-cluster-scaling.md)voor meer informatie over het schalen van een cluster dat wordt uitgevoerd in Azure.
 
@@ -48,7 +48,7 @@ In deze zelfstudiereeks leert u het volgende:
 
 Voor u met deze zelfstudie begint:
 
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Installeer [Azure Power shell](https://docs.microsoft.com/powershell/azure/install-Az-ps) of [Azure cli](/cli/azure/install-azure-cli).
 * Een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) maken in Azure
 
@@ -79,7 +79,7 @@ Nadat u een beveiligd [Windows-cluster](service-fabric-tutorial-create-vnet-and-
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar de resource groep met het cluster (**sfclustertutorialgroup**als u deze zelf studie volgt). 
 
-2. Selecteer in het linkerdeel venster **implementaties**of selecteer de koppeling onder implementaties . 
+2. Selecteer in het linkerdeel venster **implementaties**of selecteer de koppeling onder **implementaties**. 
 
 3. Selecteer de meest recente geslaagde implementatie uit de lijst.
 
@@ -387,20 +387,6 @@ Voeg in het bestand *Template. json* een nieuwe netwerk beveiligings groep en re
     },
     "properties": {
         "securityRules": [
-            {
-                "name": "allowSvcFabSMB",
-                "properties": {
-                    "access": "Allow",
-                    "destinationAddressPrefix": "*",
-                    "destinationPortRange": "445",
-                    "direction": "Inbound",
-                    "priority": 3950,
-                    "protocol": "*",
-                    "sourceAddressPrefix": "VirtualNetwork",
-                    "sourcePortRange": "*",
-                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
-                }
-            },
             {
                 "name": "allowSvcFabCluser",
                 "properties": {
@@ -873,7 +859,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Knoop punten toevoegen en verwijderen (uitschalen en schalen in)

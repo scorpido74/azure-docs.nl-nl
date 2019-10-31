@@ -1,35 +1,28 @@
 ---
-title: Proximity-plaatsings groepen gebruiken voor Windows-Vm's | Microsoft Docs
+title: Proximity-plaatsings groepen gebruiken voor Windows-Vm's
 description: Meer informatie over het maken en gebruiken van proximity-plaatsings groepen voor virtuele Windows-machines in Azure.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: af75b3f98232d6507fc8b0fda179bebc75828086
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088825"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171222"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-powershell"></a>Preview: Vm's implementeren op proximity-plaatsings groepen met Power shell
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Vm's implementeren op proximity-plaatsings groepen met Power shell
 
 
-Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementeren in een proximity-plaatsings [groep](co-location.md#preview-proximity-placement-groups).
+Als u virtuele machines zo dicht mogelijk wilt ophalen, moet u deze implementeren in een [proximity-plaatsings groep](co-location.md#proximity-placement-groups).
 
 Een proximity-plaatsings groep is een logische groepering die wordt gebruikt om ervoor te zorgen dat Azure Compute-resources zich fysiek dicht bij elkaar bevinden. Proximity-plaatsings groepen zijn handig voor werk belastingen waarbij lage latentie een vereiste is.
-
-> [!IMPORTANT]
-> Proximity-plaatsings groepen bevindt zich momenteel in een open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
->
-> Proximity-plaatsings groepen zijn niet beschikbaar in deze regio's tijdens de preview-versie: **Japan-Oost**, **Australië-Oost** en **India centraal**.
 
 
 ## <a name="create-a-proximity-placement-group"></a>Een nabijheidsplaatsingsgroep maken
@@ -56,9 +49,9 @@ Get-AzProximityPlacementGroup
 ```
 
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 
-Maak een virtuele machine in de plaatsings groep `-ProximityPlacementGroup $ppg.Id` van nabij met om te verwijzen naar de Proximity-groeps-id bij gebruik van [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) om de virtuele machine te maken.
+Maak een virtuele machine in de plaatsings groep met behulp van `-ProximityPlacementGroup $ppg.Id` om te verwijzen naar de locatie-ID van de Proximity-groep wanneer u [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) gebruikt om de virtuele machine te maken.
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -79,11 +72,11 @@ Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
 ```
 
 ## <a name="availability-sets"></a>Beschikbaarheidssets
-U kunt ook een beschikbaarheidsset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup` para meter met de cmdlet [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) voor het maken van een beschikbaarheidsset en alle virtuele machines die zijn gemaakt in de beschikbaarheidsset, worden ook gemaakt in dezelfde plaatsings groep.
+U kunt ook een beschikbaarheidsset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup`-para meter met de cmdlet [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) voor het maken van een beschikbaarheidsset en alle virtuele machines die zijn gemaakt in de beschikbaarheidsset, worden ook gemaakt in dezelfde plaatsings groep.
 
 ## <a name="scale-sets"></a>Schaalsets
 
-U kunt ook een schaalset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup` para meter met [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) voor het maken van een schaalset en alle instanties worden gemaakt in dezelfde plaatsings groep.
+U kunt ook een schaalset maken in de plaatsings groep voor proximity. Gebruik dezelfde `-ProximityPlacementGroup`-para meter met [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) om een schaalset te maken en alle instanties worden gemaakt in dezelfde plaatsings groep.
 
 ## <a name="next-steps"></a>Volgende stappen
 

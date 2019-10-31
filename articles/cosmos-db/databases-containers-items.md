@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0823b4b7e19bec9d8efc83dbb3996076425cb4f1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756886"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176928"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Werken met data bases, containers en items in Azure Cosmos DB
 
@@ -82,10 +82,10 @@ Een Azure Cosmos-container heeft een reeks door het systeem gedefinieerde eigens
 
 | Door het systeem gedefinieerde eigenschap | Door het systeem gegenereerd of door de gebruiker te configureren | Doel | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | Door het systeem gegenereerd | Unieke id van de container | Ja | Nee | Nee | Nee | Nee |
-|\_etag | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Ja | Nee | Nee | Nee | Nee |
-|\_ts | Door het systeem gegenereerd | Laatst bijgewerkte tijds tempel van de container | Ja | Nee | Nee | Nee | Nee |
-|\_self | Door het systeem gegenereerd | Adresseer bare URI van de container | Ja | Nee | Nee | Nee | Nee |
+|\_-id | Door het systeem gegenereerd | Unieke id van de container | Ja | Nee | Nee | Nee | Nee |
+|\_ETAG | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Ja | Nee | Nee | Nee | Nee |
+|\_TS | Door het systeem gegenereerd | Laatst bijgewerkte tijds tempel van de container | Ja | Nee | Nee | Nee | Nee |
+|\_Self | Door het systeem gegenereerd | Adresseer bare URI van de container | Ja | Nee | Nee | Nee | Nee |
 |id | Door de gebruiker te configureren | Door de gebruiker gedefinieerde unieke naam van de container | Ja | Ja | Ja | Ja | Ja |
 |indexingPolicy | Door de gebruiker te configureren | Biedt de mogelijkheid om het pad naar de index, het index type en de index modus te wijzigen | Ja | Nee | Nee | Nee | Ja |
 |TimeToLive | Door de gebruiker te configureren | Biedt de mogelijkheid om items automatisch uit een container te verwijderen na een bepaalde periode. Zie [time to Live](time-to-live.md)voor meer informatie. | Ja | Nee | Nee | Nee | Ja |
@@ -118,11 +118,11 @@ Elk Azure Cosmos-item heeft de volgende door het systeem gedefinieerde eigenscha
 
 | Door het systeem gedefinieerde eigenschap | Door het systeem gegenereerd of door de gebruiker te configureren| Doel | SQL-API | Cassandra-API | Azure Cosmos DB-API voor MongoDB | Gremlin-API | Tabel-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | Door het systeem gegenereerd | De unieke id van het item | Ja | Nee | Nee | Nee | Nee |
-|\_etag | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Ja | Nee | Nee | Nee | Nee |
-|\_ts | Door het systeem gegenereerd | Tijds tempel van de laatste update van het item | Ja | Nee | Nee | Nee | Nee |
-|\_self | Door het systeem gegenereerd | Adresseer bare URI van het item | Ja | Nee | Nee | Nee | Nee |
-|id | Merken | Door de gebruiker gedefinieerde unieke naam in een logische partitie. Als de gebruiker de ID niet opgeeft, wordt er automatisch een door het systeem gegenereerd. | Ja | Ja | Ja | Ja | Ja |
+|\_-id | Door het systeem gegenereerd | De unieke id van het item | Ja | Nee | Nee | Nee | Nee |
+|\_ETAG | Door het systeem gegenereerd | Entiteits code die wordt gebruikt voor optimistisch gelijktijdigheids beheer | Ja | Nee | Nee | Nee | Nee |
+|\_TS | Door het systeem gegenereerd | Tijds tempel van de laatste update van het item | Ja | Nee | Nee | Nee | Nee |
+|\_Self | Door het systeem gegenereerd | Adresseer bare URI van het item | Ja | Nee | Nee | Nee | Nee |
+|id | Merken | Door de gebruiker gedefinieerde unieke naam in een logische partitie. | Ja | Ja | Ja | Ja | Ja |
 |Wille keurige door de gebruiker gedefinieerde eigenschappen | Door de gebruiker gedefinieerde routes | Door de gebruiker gedefinieerde eigenschappen die worden weer gegeven in API-native representatie (waaronder JSON, BSON en CQL) | Ja | Ja | Ja | Ja | Ja |
 
 > [!NOTE]

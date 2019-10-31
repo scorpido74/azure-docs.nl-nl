@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 9923817e90062bdc0e458208474c651c929f772d
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044619"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177341"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Excel verbinden met Apache Hadoop in azure HDInsight met het micro soft Hive ODBC-stuur programma
 
@@ -33,7 +33,7 @@ Voordat u met dit artikel begint, moet u beschikken over de volgende items:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Micro soft Hive ODBC-stuur programma installeren
 
-Down load en installeer de versie van het [micro soft Hive ODBC-stuur programma](https://go.microsoft.com/fwlink/?LinkID=286698) die overeenkomt met de versie van de toepassing waarin u het ODBC-stuur programma gaat gebruiken.  Voor dit artikel wordt het stuur programma gebruikt voor Office Excel.
+Down load en installeer de versie van het [micro soft Hive ODBC-stuur programma](https://www.microsoft.com/download/details.aspx?id=40886) die overeenkomt met de versie van de toepassing waarin u het ODBC-stuur programma gaat gebruiken.  Voor dit artikel wordt het stuur programma gebruikt voor Office Excel.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC-gegevens bron maken
 

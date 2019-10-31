@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b0ef3dd2f39802d07c4ae04ad1eca23e40db502a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345499"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176024"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Meer informatie over Azure AD Connect 1.4. xx. x en het weer geven van apparaten
 Met versie 1.4. xx. x van Azure AD Connect kunnen sommige klanten enkele of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Met deze wijziging worden geen Windows-apparaten verwijderd die correct zijn geregistreerd bij Azure AD voor hybride Azure AD-deelname.
@@ -33,11 +33,11 @@ Met deze versie van Azure AD Connect worden alleen Windows 10-apparaten gesynchr
 ## <a name="down-level-windows-devices"></a>Windows-apparaten op lagere niveaus
 Azure AD Connect moet nooit [Windows-apparaten op lagere niveaus](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)synchroniseren. Alle apparaten in azure AD die voorheen onjuist zijn gesynchroniseerd, worden nu verwijderd uit Azure AD. Als Azure AD Connect probeert [Windows-apparaten op lagere niveaus](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)te verwijderen, is het apparaat niet de versie die is gemaakt door het [micro soft-Workplace join voor niet-Windows 10-computers MSI](https://www.microsoft.com/download/details.aspx?id=53554) en kan het niet worden gebruikt door een andere Azure AD-functie.
 
-Sommige klanten moeten mogelijk opnieuw een bezoek [brengen over: Plan uw hybride Azure Active Directory deelname-](../devices/hybrid-azuread-join-plan.md) implementatie om hun Windows-apparaten correct te registreren en zorg ervoor dat dergelijke apparaten volledig kunnen deel nemen aan op apparaten gebaseerde voorwaardelijke toegang. 
+Sommige klanten moeten mogelijk opnieuw door gaan met het [plannen van uw hybrid Azure Active Directory-implementatie](../devices/hybrid-azuread-join-plan.md) om de Windows-apparaten op de juiste wijze te registreren en ervoor te zorgen dat dergelijke apparaten volledig kunnen deel nemen aan voorwaardelijke toegang op basis van een apparaat. 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Hoe kan ik controleren welke apparaten worden verwijderd met deze update?
 
-Als u wilt controleren welke apparaten worden verwijderd, kunt u dit Power shell-script gebruiken: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+U kunt dit Power shell-script gebruiken om te controleren welke apparaten worden verwijderd: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
 Met dit script wordt een rapport gegenereerd over certificaten die zijn opgeslagen in Active Directory computer objecten, met name certificaten die zijn uitgegeven door de hybride Azure AD-functie voor deelname.
 Hiermee wordt gecontroleerd of de certificaten aanwezig zijn in de eigenschap UserCertificate van een computer object in AD en, voor elk niet-verlopen certificaat, wordt gevalideerd of het certificaat is uitgegeven voor de hybride functie voor Azure AD-deelname (de onderwerpnaam komt overeen met CN = {ObjectGUID}).

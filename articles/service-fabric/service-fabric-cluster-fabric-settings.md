@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: e361ba4c7275a783b9211def5047a5a755f5a8b8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882006"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177788"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric cluster instellingen aanpassen
 In dit artikel worden de verschillende infrastructuur instellingen voor uw Service Fabric cluster beschreven die u kunt aanpassen. Voor clusters die worden gehost in azure, kunt u instellingen aanpassen via de [Azure Portal](https://portal.azure.com) of met behulp van een Azure Resource Manager sjabloon. Zie [de configuratie van een Azure-cluster upgraden](service-fabric-cluster-config-upgrade-azure.md)voor meer informatie. Voor zelfstandige clusters past u de instellingen aan door het bestand *ClusterConfig. json* bij te werken en een configuratie-upgrade uit te voeren op uw cluster. Zie [de configuratie van een zelfstandig cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)voor meer informatie.
@@ -131,14 +131,14 @@ Hier volgt een lijst met infrastructuur instellingen die u kunt aanpassen, geord
 |AppEtwTraceDeletionAgeInDays |Int, standaard is 3 | Dynamisch |Aantal dagen waarna oude ETL-bestanden met toepassings-ETW-traceringen worden verwijderd. |
 |ApplicationLogsFormatVersion |int, standaard is 0 | Dynamisch |De versie voor de toepassings Logboeken. Ondersteunde waarden zijn 0 en 1. Versie 1 bevat meer velden uit het ETW-gebeurtenis record dan versie 0. |
 |AuditHttpRequests |BOOL, default is False | Dynamisch | Schakel HTTP-controle in of uit. Het doel van de controle is om de activiteiten te zien die zijn uitgevoerd op het cluster. inclusief wie de aanvraag heeft gestart. Houd er rekening mee dat dit een beste logboek registratie voor pogingen is. en tracerings verlies kan optreden. HTTP-aanvragen met verificatie van de gebruiker zijn niet geregistreerd. |
-|CaptureHttpTelemetry|BOOL, default is False | Dynamisch | Schakel HTTP-telemetrie in of uit. Het doel van telemetrie is dat Service Fabric telemetrie-gegevens kunnen vastleggen om toekomstige werkzaamheden te plannen en probleem gebieden te identificeren. Telemetrie legt geen persoonlijke gegevens of de hoofd tekst van de aanvraag vast. Alle HTTP-aanvragen worden door telemetrie vastgelegd, tenzij anders is geconfigureerd. |
+|CaptureHttpTelemetry|BOOL, default is True | Dynamisch | Schakel HTTP-telemetrie in of uit. Het doel van telemetrie is dat Service Fabric telemetrie-gegevens kunnen vastleggen om toekomstige werkzaamheden te plannen en probleem gebieden te identificeren. Telemetrie legt geen persoonlijke gegevens of de hoofd tekst van de aanvraag vast. Alle HTTP-aanvragen worden door telemetrie vastgelegd, tenzij anders is geconfigureerd. |
 |ClusterId |Tekenreeks | Dynamisch |De unieke id van het cluster. Deze wordt gegenereerd wanneer het cluster wordt gemaakt. |
 |ConsumerInstances |Tekenreeks | Dynamisch |De lijst met DCA-consumenten exemplaren. |
 |DiskFullSafetySpaceInMB |Int, standaard waarde is 1024 | Dynamisch |Resterende schijf ruimte in MB om te beschermen tegen gebruik door DCA. |
 |EnableCircularTraceSession |BOOL, default is False | Statisch |Vlag geeft aan of circulaire tracerings sessies moeten worden gebruikt. |
 |EnablePlatformEventsFileSink |BOOL, default is False | Statisch |Platform gebeurtenissen die naar de schijf worden geschreven, in-of uitschakelen |
 |EnableTelemetry |BOOL, default is True | Dynamisch |Hiermee wordt telemetrie in-of uitgeschakeld. |
-|FailuresOnlyHttpTelemetry | BOOL, default is True | Dynamisch | Als HTTP-telemetrie-opname is ingeschakeld; alleen mislukte aanvragen vastleggen. Zo kunt u het aantal gebeurtenissen dat wordt gegenereerd voor telemetrie verminderen. |
+|FailuresOnlyHttpTelemetry | BOOL, default is False | Dynamisch | Als HTTP-telemetrie-opname is ingeschakeld; alleen mislukte aanvragen vastleggen. Zo kunt u het aantal gebeurtenissen dat wordt gegenereerd voor telemetrie verminderen. |
 |HttpTelemetryCapturePercentage | int, standaard waarde is 50 | Dynamisch | Als HTTP-telemetrie-opname is ingeschakeld; Leg alleen een wille keurig percentage van aanvragen vast. Zo kunt u het aantal gebeurtenissen dat wordt gegenereerd voor telemetrie verminderen. |
 |MaxDiskQuotaInMB |Int, standaard waarde is 65536 | Dynamisch |Schijf quotum in MB voor Windows Fabric-logboek bestanden. |
 |ProducerInstances |Tekenreeks | Dynamisch |De lijst met DCA producer-exemplaren. |

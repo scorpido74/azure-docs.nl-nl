@@ -17,12 +17,12 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb1ed81c03e7c5ba30b813897dac5796c550ed23
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679826"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175657"
 ---
 # <a name="brokered-auth-in-android"></a>Brokered auth in Android
 
@@ -122,9 +122,9 @@ MSAL communiceert met de Broker op twee manieren:
 - Broker gebonden service
 - Android-AccountManager
 
-MSAL maakt eerst gebruik van de Broker gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding met de gebonden service mislukt, gebruikt MSAL de Android AccountManager-API. MSAL doet dit alleen als uw app de machtiging @no__t 0 al heeft gekregen.
+MSAL maakt eerst gebruik van de Broker gebonden service omdat het aanroepen van deze service geen Android-machtigingen vereist. Als binding met de gebonden service mislukt, gebruikt MSAL de Android AccountManager-API. MSAL doet dit alleen als uw app de `"READ_CONTACTS"` machtiging al heeft gekregen.
 
-Als u een `MsalClientException` krijgt met fout code `"BROKER_BIND_FAILURE"`, zijn er twee opties:
+Als u een `MsalClientException` met fout code `"BROKER_BIND_FAILURE"`krijgt, zijn er twee opties:
 
 - Vraag de gebruiker om energie optimalisatie uit te scha kelen voor de Microsoft Authenticator-app en de Intune-bedrijfsportal.
-- De gebruiker vragen om de `"READ_CONTACTS"` toestemming te verlenen
+- De gebruiker vragen om de `"READ_CONTACTS"` machtiging te verlenen

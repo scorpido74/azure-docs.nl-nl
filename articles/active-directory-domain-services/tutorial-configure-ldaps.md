@@ -7,16 +7,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5422298bf782944f10b60e98b5f251d8088f36ed
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193326"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172787"
 ---
-# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelfstudie: Een beveiligd LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
+# <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Zelf studie: secure LDAP configureren voor een Azure Active Directory Domain Services beheerd domein
 
 Als u wilt communiceren met uw Azure Active Directory Domain Services (Azure AD DS) beheerde domein, wordt LDAP (Lightweight Directory Access Protocol) gebruikt. Het LDAP-verkeer wordt standaard niet versleuteld, wat een beveiligings probleem is voor veel omgevingen. Met Azure AD DS kunt u het beheerde domein configureren voor het gebruik van Secure Lightweight Directory Access Protocol (LDAPS). Wanneer u beveiligde LDAP gebruikt, wordt het verkeer versleuteld. Secure LDAP is ook bekend als LDAP via Secure Sockets Layer (SSL)/Transport Layer Security (TLS).
 
@@ -68,7 +68,7 @@ Het certificaat dat u wilt aanvragen of maken, moet voldoen aan de volgende vere
 * **Sleutel gebruik** : het certificaat moet worden geconfigureerd voor *digitale hand tekeningen* en *sleutel codering*.
 * **Certificaat doeleinde** -het certificaat moet geldig zijn voor SSL-server authenticatie.
 
-In deze zelf studie maakt u een zelfondertekend certificaat voor beveiligde LDAP met behulp van Power shell. Open een Power shell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de *$dnsName* variabele door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *contoso.com*:
+In deze zelf studie maakt u een zelfondertekend certificaat voor secure LDAP met de cmdlet [New-SelfSignedCertificate][New-SelfSignedCertificate] . Open een Power shell-venster als **beheerder** en voer de volgende opdrachten uit. Vervang de *$dnsName* variabele door de DNS-naam die wordt gebruikt door uw eigen beheerde domein, zoals *contoso.com*:
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
@@ -102,10 +102,10 @@ Thumbprint                                Subject
 Als u beveiligde LDAP wilt gebruiken, wordt het netwerk verkeer versleuteld met behulp van open bare-sleutel infrastructuur (PKI).
 
 * Een **persoonlijke** sleutel wordt toegepast op het door Azure AD DS beheerde domein.
-    * Deze persoonlijke sleutel wordt gebruikt voor het ontsleutelen van het beveiligde LDAP-verkeer. De persoonlijke sleutel moet alleen worden toegepast op het beheerde domein van Azure AD DS en niet algemeen naar client computers worden gedistribueerd.
+    * Deze persoonlijke sleutel wordt gebruikt voor het *ontsleutelen* van het beveiligde LDAP-verkeer. De persoonlijke sleutel moet alleen worden toegepast op het beheerde domein van Azure AD DS en niet algemeen naar client computers worden gedistribueerd.
     * Een certificaat dat de persoonlijke sleutel bevat, maakt gebruik van de *. PFX* -bestands indeling.
 * Een **open bare** sleutel wordt toegepast op de client computers.
-    * Deze open bare sleutel wordt gebruikt voor het versleutelen van het beveiligde LDAP-verkeer. De open bare sleutel kan worden gedistribueerd naar client computers.
+    * Deze open bare sleutel wordt gebruikt voor het *versleutelen* van het beveiligde LDAP-verkeer. De open bare sleutel kan worden gedistribueerd naar client computers.
     * Certificaten zonder de persoonlijke sleutel gebruiken de *. CER* -bestands indeling.
 
 Deze twee sleutels, de *persoonlijke* en *open bare* sleutels, zorgen ervoor dat alleen de juiste computers met elkaar kunnen communiceren. Als u een open bare CA of een CA voor ondernemingen gebruikt, wordt u verleend met een certificaat dat de persoonlijke sleutel bevat en kan worden toegepast op een beheerd domein van Azure AD DS. De open bare sleutel moet al bekend zijn en worden vertrouwd door client computers. In deze zelf studie hebt u een zelfondertekend certificaat gemaakt met de persoonlijke sleutel, dus u moet de juiste persoonlijke en open bare onderdelen exporteren.
@@ -176,7 +176,7 @@ De *. CER* -certificaat bestand kan nu worden gedistribueerd naar client compute
 
 Als er een digitaal certificaat is gemaakt en geëxporteerd dat de persoonlijke sleutel bevat, en de client computer is ingesteld om de verbinding te vertrouwen, schakelt u nu beveiligde LDAP in op uw Azure AD DS beheerde domein. Voer de volgende configuratie stappen uit om beveiligde LDAP in te scha kelen op een beheerd domein van Azure AD DS:
 
-1. Zoek in het [Azure Portal](https://portal.azure.com)naar *Domain Services* in het vak **resources zoeken** . Selecteer **Azure AD Domain Services** in het Zoek resultaat.
+1. Voer in het [Azure Portal](https://portal.azure.com) *domein Services* in het vak **Zoek resources** in. Selecteer **Azure AD Domain Services** in het Zoek resultaat.
 
     ![Zoek en selecteer uw door Azure AD DS beheerde domein in het Azure Portal](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
@@ -207,21 +207,21 @@ Wanneer u beveiligde LDAP-toegang via internet naar uw Azure AD DS beheerde dome
 We gaan een regel maken om binnenkomende beveiligde LDAP-toegang via TCP-poort 636 uit een opgegeven reeks IP-adressen toe te staan. Een standaard *DenyAll* -regel met een lagere prioriteit is van toepassing op alle andere inkomende verkeer van het Internet, zodat alleen de opgegeven adressen uw Azure AD DS beheerde domein kunnen bereiken met behulp van secure LDAP.
 
 1. Selecteer in de Azure Portal *resource groepen* aan de linkerkant navigatie.
-1. Kies een resource groep, zoals *myResourceGroup*, en selecteer vervolgens uw netwerk beveiligings groep, zoals *AADDS-contoso.com-NSG*.
+1. Kies een resource groep, zoals *myResourceGroup*, en selecteer vervolgens uw netwerk beveiligings groep, zoals *aaads-NSG*.
 1. De lijst met bestaande binnenkomende en uitgaande beveiligings regels wordt weer gegeven. Kies aan de linkerkant van het venster netwerk beveiligings groep de optie **beveiliging > regels voor binnenkomende beveiliging**.
 1. Selecteer **toevoegen**en maak een regel om *TCP* -poort *636*toe te staan. Voor een betere beveiliging kiest u de bron als *IP-adressen* en geeft u vervolgens uw eigen geldige IP-adres of bereik op voor uw organisatie.
 
-    | Instelling                           | Value        |
+    | Instelling                           | Waarde        |
     |-----------------------------------|--------------|
-    | Source                            | IP-adressen |
+    | Bron                            | IP-adressen |
     | IP-adressen van bron/CIDR-bereiken | Een geldig IP-adres of-bereik voor uw omgeving |
-    | Source port ranges                | *            |
-    | Bestemming                       | Any          |
+    | Poortbereiken van bron                | *            |
+    | Bestemming                       | Alle          |
     | Poortbereiken van doel           | 636          |
     | Protocol                          | TCP          |
-    | Action                            | Allow        |
-    | Priority                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Bewerking                            | Toestaan        |
+    | Prioriteit                          | 401          |
+    | Naam                              | AllowLDAPS   |
 
 1. Wanneer u klaar bent, selecteert u **toevoegen** om de regel op te slaan en toe te passen.
 
@@ -252,7 +252,7 @@ Als u verbinding wilt maken met uw Azure AD DS beheerd domein en een zoek opdrac
 Maak vervolgens een binding met uw door Azure AD DS beheerd domein. Gebruikers (en service accounts) kunnen geen LDAP-eenvoudige bindingen uitvoeren als NTLM-wachtwoord synchronisatie is uitgeschakeld op uw Azure AD DS-exemplaar. Zie [Secure Your Azure AD DS Managed Domain][secure-domain](Engelstalig) voor meer informatie over het uitschakelen van NTLM-wachtwoord hash-synchronisatie.
 
 1. Selecteer de menu optie **verbinding** en kies vervolgens **binden...** .
-1. Geef de referenties op van een gebruikers account dat deel uitmaakt van de groep *Aad DC* -Administrators, zoals *contosoadmin*. Voer het wacht woord van het gebruikers account in en voer vervolgens uw domein in, bijvoorbeeld *contoso.com*.
+1. Geef de referenties op van een gebruikers account dat deel uitmaakt van de groep *Aad DC-Administrators* , zoals *contosoadmin*. Voer het wacht woord van het gebruikers account in en voer vervolgens uw domein in, bijvoorbeeld *contoso.com*.
 1. Kies voor **bindings type**de optie voor *binden met referenties*.
 1. Selecteer **OK** om een binding te maken met uw Azure AD DS beheerde domein.
 
@@ -273,11 +273,11 @@ Als u een DNS-vermelding hebt toegevoegd aan het lokale hosts-bestand van uw com
 
 1. Open *Klad blok* op uw lokale computer als beheerder
 1. Blader naar en open het bestand *C:\Windows\System32\drivers\etc*
-1. Verwijder de regel voor de record die u hebt toegevoegd, zoals`40.121.19.239    ldaps.contoso.com`
+1. Verwijder de regel voor de record die u hebt toegevoegd, zoals `40.121.19.239    ldaps.contoso.com`
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een digitaal certificaat maken voor gebruik met Azure AD DS
@@ -297,3 +297,4 @@ In deze zelfstudie heeft u het volgende geleerd:
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
+[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate

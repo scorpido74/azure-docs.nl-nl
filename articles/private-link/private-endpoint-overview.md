@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7f0d846a83312e28c305100e7c8dc74cc8140d7d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73023853"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73172991"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -81,7 +81,7 @@ De eigenaar van de resource van de persoonlijke koppeling kan de volgende acties
 > Alleen een persoonlijk eind punt met een goedgekeurde status kan verkeer verzenden naar een bepaalde persoonlijke koppelings bron. 
 
 ### <a name="connecting-using-alias"></a>Verbinding maken via alias
-Alias is een unieke moniker die wordt gegenereerd wanneer de service-eigenaar de privé koppelings service maakt achter een standaard load balancer. De eigenaar van de service kan deze alias met hun consumenten offline delen. Consumenten kunnen een verbinding met een privé koppelings service aanvragen met behulp van de resource-URI of de alias. Als u verbinding wilt maken met behulp van een alias, moet u een persoonlijk eind punt maken met de methode hand matige goed keuring voor verbinding. Stel voor het gebruik van hand matige goedkeurings methode de hand matige aanvraag parameter in op True tijdens het maken van een persoonlijk eind punt. Kijk naar [New-AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) en [AZ Network private-endpoint Create](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) voor meer informatie. 
+Alias is een unieke moniker die wordt gegenereerd wanneer de service-eigenaar de privé koppelings service maakt achter een standaard load balancer. De eigenaar van de service kan deze alias met hun consumenten offline delen. Consumenten kunnen een verbinding met een privé koppelings service aanvragen met behulp van de resource-URI of de alias. Als u verbinding wilt maken met behulp van een alias, moet u een persoonlijk eind punt maken met de methode hand matige goed keuring voor verbinding. Stel voor het gebruik van hand matige goedkeurings methode de hand matige aanvraag parameter in op True tijdens het maken van een persoonlijk eind punt. Kijk naar [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) en [AZ Network private-endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) voor meer informatie. 
 
 ## <a name="dns-configuration"></a>DNS-configuratie 
 Wanneer u verbinding maakt met een persoonlijke koppelings bron met behulp van een Fully Qualified Domain Name (FQDN) als onderdeel van de connection string, is het belang rijk om uw DNS-instellingen correct te configureren om te worden omgezet in het toegewezen privé-IP-adres. Bestaande Azure-Services hebben mogelijk al een DNS-configuratie die kan worden gebruikt om verbinding te maken via een openbaar eind punt. Deze moet worden overschreven om verbinding te maken via uw persoonlijke eind punt. 
@@ -91,7 +91,7 @@ De netwerk interface die aan het persoonlijke eind punt is gekoppeld, bevat de v
 U kunt de volgende opties gebruiken om uw DNS-instellingen voor privé-eind punten te configureren: 
 - **Het hostbestand gebruiken (alleen aanbevolen voor testen)** . U kunt het hostbestand op een virtuele machine gebruiken om de DNS te vervangen.  
 - **Gebruik een privé-DNS-zone**. U kunt privé-DNS-zones gebruiken om de DNS-omzetting voor een bepaald persoonlijk eind punt te negeren. Een persoonlijke DNS-zone kan worden gekoppeld aan uw virtuele netwerk om specifieke domeinen op te lossen.
-- **Gebruik uw aangepaste DNS-server**. U kunt uw eigen DNS-server gebruiken om de DNS-omzetting voor een bepaalde persoonlijke koppelings bron te negeren. Als uw [DNS-server](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server) wordt gehost op een virtueel netwerk, kunt u een DNS-doorstuur regel maken voor het gebruik van een privé-DNS-zone om de configuratie voor alle persoonlijke koppelings bronnen te vereenvoudigen.
+- **Gebruik uw aangepaste DNS-server**. U kunt uw eigen DNS-server gebruiken om de DNS-omzetting voor een bepaalde persoonlijke koppelings bron te negeren. Als uw [DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) wordt gehost op een virtueel netwerk, kunt u een DNS-doorstuur regel maken voor het gebruik van een privé-DNS-zone om de configuratie voor alle persoonlijke koppelings bronnen te vereenvoudigen.
  
 > [!IMPORTANT]
 > Het is niet raadzaam om een zone die actief is in gebruik te onderdrukken om open bare eind punten op te lossen. Verbindingen met bronnen kunnen niet correct worden omgezet zonder dat DNS naar de open bare DNS doorstuurt. Als u problemen wilt voor komen, maakt u een andere domein naam of volgt u de voorgestelde naam voor elke service hieronder. 
@@ -122,8 +122,6 @@ De volgende tabel bevat een lijst met bekende beperkingen bij het gebruik van pr
 |Beperking |Beschrijving |Oplossing  |
 |---------|---------|---------|
 |De regels voor de netwerk beveiligings groep (NSG) en door de gebruiker gedefinieerde routes zijn niet van toepassing op een privé-eind punt    |NSG wordt niet ondersteund op privé-eind punten. Hoewel aan subnetten met het persoonlijke eind punt NSG zijn gekoppeld, zijn de regels niet effectief op het verkeer dat door het persoonlijke eind punt wordt verwerkt. U moet [netwerk beleid afdwingen uitgeschakeld](disable-private-endpoint-network-policy.md) om persoonlijke eind punten te implementeren in een subnet. NSG wordt nog steeds afgedwongen op andere workloads die worden gehost op hetzelfde subnet. Voor routes op elk client subnet wordt het voor voegsel/32 gebruikt. voor het wijzigen van het standaard routerings gedrag is een vergelijk bare UDR vereist  | Beheer het verkeer met behulp van NSG-regels voor uitgaand verkeer op de bron-clients. Afzonderlijke routes met het voor voegsel/32 implementeren om persoonlijke eindpunt routes te overschrijven        |
-|Privé-eind punten kunnen niet worden gemaakt in subnetten die zijn ingeschakeld voor service-eind punten of gespecialiseerde werk belastingen    |Privé-eind punten kunnen niet worden geïmplementeerd op subnetten die zijn ingeschakeld voor service-eind punten of subnetten die zijn gedelegeerd aan gespecialiseerde werk belastingen|  Maak een apart subnet om de persoonlijke eind punten te implementeren.        |
-|een persoonlijk eind punt kan alleen worden toegewezen aan de service voor persoonlijke koppelingen (eigenaar van de klant) in dezelfde regio    |   Het is niet mogelijk om verbinding te maken met een persoonlijke koppelings service (uw eigen) vanuit een andere regio       |  Tijdens de preview moet u uw persoonlijke koppelings service in dezelfde regio implementeren.        |
 |  Peered Virtual Network met alleen persoonlijke eind punten worden niet ondersteund   |   Wanneer u verbinding maakt met persoonlijke eind punten op een peered Virtual Network zonder andere werk belasting, wordt niet ondersteund       | Implementeer één virtuele machine op de peered-Virtual Network om de connectiviteit in te scha kelen |
 |Speciale workloads hebben geen toegang tot persoonlijke eind punten    |   De volgende services die in uw virtuele netwerk zijn geïmplementeerd, hebben geen toegang tot een persoonlijke koppelings bron met behulp van privé-eind punten:<br>App Service-plan</br>Azure Container Instance</br>Azure NetApp Files</br>Azure toegewezen HSM<br>       |   Geen beperking tijdens de preview.       |
 

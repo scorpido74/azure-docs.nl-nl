@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 811591a3340f07b08b3a954ccd475e926b73a9cf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072569"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176772"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Revisies gebruiken om vaste wijzigingen veilig in Azure API Management aan te brengen
 Wanneer uw API klaar is voor gebruik en daadwerkelijk wordt ingezet door ontwikkelaars, moet u op een bepaald moment wijzigingen aanbrengen aan die API, zonder dat dit gevolgen heeft voor clients die de API aanroepen. Het is ook handig om ontwikkelaars te informeren over de aangebrachte wijzigingen. We kunnen dit doen in Azure API Management met **revisies**. Zie voor meer informatie [Versies en revisies](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) en [API-versies met Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -36,8 +36,8 @@ In deze zelfstudie leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 + Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
-+ Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-+ Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
++ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Een nieuwe revisie toevoegen
 
@@ -83,7 +83,7 @@ In deze zelfstudie leert u het volgende:
 
 2. Open het contextmenu ( **...** ) voor **Revisie 2**.
 3. Selecteer **Instellen als huidige**.
-4. Controleer **Op het openbare wijzigingenlogboek voor deze API plaatsen**, als u opmerkingen over deze wijziging wilt plaatsen. Geef een beschrijving op voor de wijziging die ontwikkel aars kunnen zien, bijvoorbeeld: **Revisies testen. Nieuwe 'test'-bewerking toegevoegd.**
+4. Controleer **Op het openbare wijzigingenlogboek voor deze API plaatsen**, als u opmerkingen over deze wijziging wilt plaatsen. Geef een beschrijving op voor de wijziging die ontwikkel aars kunnen zien, bijvoorbeeld: **revisies testen. Nieuwe test bewerking toegevoegd.**
 5. **Revisie 2** is nu actueel.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Door de portal voor ontwikkelaars browsen om de wijzigingen en het logboek in te zien
@@ -92,14 +92,12 @@ In deze zelfstudie leert u het volgende:
 2. Selecteer **ontwikkelaarsportal** in het menu bovenaan.
 3. Selecteer **API's** en selecteer vervolgens **Demo Conference API**.
 4. U ziet dat uw nieuwe **test**bewerking nu beschikbaar is.
-5. Selecteer **API-wijzigingsoverzicht** onder de API-naam.
+5. Klik op **wijzigingen logboek** in de buurt van de API-naam.
 6. U ziet dat de vermelding van het wijzigingslogboek in deze lijst wordt weergegeven.
-
-    ![Ontwikkelaarsportal](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een nieuwe revisie toevoegen

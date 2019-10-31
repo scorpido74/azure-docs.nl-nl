@@ -11,20 +11,22 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/19/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eb06c1c5db20f3216c5c8e81580e445f9c0ba804
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072606"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176785"
 ---
 # <a name="developer-portal-templates"></a>Sjablonen voor ontwikkelaars Portal
 
-Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, [zoals DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), glyph- [resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
+Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met [de DotLiquid](http://dotliquidmarkup.org/) -syntaxis en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven reeks gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u de flexibiliteit om te configureren de inhoud van de pagina's die u ziet, is geschikt voor het gebruik van deze sjablonen.  
   
 Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](api-management-developer-portal-templates.md)voor meer informatie over het werken met sjablonen.  
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -34,7 +36,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
     -   [API-lijst](api-management-api-templates.md#APIList)  
     -   [Bewerking](api-management-api-templates.md#Product)  
     -   [Codevoorbeelden](api-management-api-templates.md#CodeSamples)  
-        -   [Curl](api-management-api-templates.md#Curl)  
+        -   [Ezelsoor](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
@@ -47,7 +49,7 @@ Zie [de API Management ontwikkelaars portal aanpassen met behulp van sjablonen](
     -   [Voortplant](api-management-product-templates.md#Product)  
 -   [Toepassingen](api-management-application-templates.md)  
     -   [Lijst met toepassingen](api-management-application-templates.md#ProductList)  
-    -   [Toepassing](api-management-application-templates.md#Application)  
+    -   [Modules](api-management-application-templates.md#Application)  
 -   [Problemen](api-management-issue-templates.md)  
     -   [Lijst met problemen](api-management-issue-templates.md#IssueList)  
 -   [Gebruikers profiel](api-management-user-profile-templates.md)  

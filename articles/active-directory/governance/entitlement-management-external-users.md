@@ -1,5 +1,5 @@
 ---
-title: De toegang tot externe gebruikers beheren in azure AD rechten beheer (preview)-Azure Active Directory
+title: De toegang tot externe gebruikers beheren in azure AD-recht beheer-Azure Active Directory
 description: Meer informatie over de instellingen die u kunt opgeven om toegang te bepalen voor externe gebruikers in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3794f409b2cdc11373dc330099e5ff93d65a2a1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934393"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174172"
 ---
-# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Toegang tot externe gebruikers beheren in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>De toegang tot externe gebruikers bepalen in het beheer van rechten van Azure AD
 
 Het Azure AD-rechts beheer maakt gebruik van [Azure AD Business-to-Business (B2B)](../b2b/what-is-b2b.md) om samen te werken met mensen buiten uw organisatie in een andere adres lijst. Met Azure AD B2B verifiëren externe gebruikers hun basismap, maar hebben ze een weer gave in uw Directory. Met de weer gave in uw directory kan de gebruiker toegang krijgen tot uw resources.
 
@@ -74,6 +69,52 @@ Het volgende diagram en de stappen bieden een overzicht van hoe externe gebruike
 
 1. Afhankelijk van de levens cyclus van externe gebruikers instellingen, is de externe gebruiker niet langer gemachtigd om zich aan te melden en wordt het gast gebruikers account uit uw directory verwijderd wanneer de externe gebruiker geen toegangs pakket toewijzingen meer heeft.
 
+## <a name="settings-for-external-users"></a>Instellingen voor externe gebruikers
+
+Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen aanvragen en toegang krijgen tot de resources in deze toegangs pakketten, zijn er enkele instellingen die u moet controleren.
+
+### <a name="enable-catalog-for-external-users"></a>Catalogus inschakelen voor externe gebruikers
+
+- Wanneer u een [nieuwe catalogus](entitlement-management-catalog-create.md)maakt, is deze standaard ingeschakeld zodat externe gebruikers toegangs pakketten kunnen aanvragen in de catalogus. Zorg ervoor dat **ingeschakeld voor externe gebruikers** is ingesteld op **Ja**.
+
+    ![Catalogus instellingen bewerken](./media/entitlement-management-shared/catalog-edit.png)
+
+### <a name="configure-your-azure-ad-b2b-external-collaboration-settings"></a>Uw externe samenwerkings instellingen voor Azure AD B2B configureren
+
+- Als gasten toestaan andere gasten uit te nodigen voor uw directory, betekent dit dat bezoekers uitnodigen buiten het rechten beheer kunnen plaatsvinden. Het wordt aangeraden **gasten** in te stellen op **Nee** om alleen goed onderhevige uitnodigingen toe te staan.
+- Als u de lijst B2B allow gebruikt, moet u ervoor zorgen dat elk domein dat u wilt partner met behulp van rechten beheer, aan de lijst wordt toegevoegd. Als u de lijst voor het weigeren van B2B gebruikt, moet u er ook voor zorgen dat elk domein waarmee u een partner wilt maken, niet aan de lijst wordt toegevoegd.
+- Als u een recht beleid maakt voor **alle gebruikers** (alle verbonden organisaties en alle nieuwe externe gebruikers), hebben de instellingen voor het toestaan of weigeren van een B2B-lijst prioriteit. Zorg er daarom voor dat u de domeinen die u wilt opnemen in dit beleid, opneemt in de lijst met toegestane gebruikers als u er een gebruikt en deze uitsluit van de lijst weigeren als u een lijst voor weigeren gebruikt.
+- Als u een rechten beheer beleid wilt maken dat **alle gebruikers** (alle verbonden organisaties en alle nieuwe externe gebruikers) bevat, moet u eerst de verificatie van eenmalige e-mail wachtwoord code voor uw Directory inschakelen. Zie voor meer informatie [verificatie via e-mail eenmalige wachtwoord code (preview-versie)](../b2b/one-time-passcode.md#opting-in-to-the-preview).
+- Zie voor meer informatie over externe samenwerkings instellingen van Azure AD B2B externe [samen werking inschakelen en beheren wie gasten kan uitnodigen](../b2b/delegate-invitations.md).
+
+    ![Externe samenwerkings instellingen voor Azure AD](./media/entitlement-management-external-users/collaboration-settings.png)
+
+### <a name="review-your-conditional-access-policies"></a>Uw beleid voor voorwaardelijke toegang controleren
+
+- Zorg ervoor dat gasten worden uitgesloten van beleids regels voor voorwaardelijke toegang die nieuwe gast gebruikers niet kunnen bereiken omdat hiermee wordt voor komen dat ze zich kunnen aanmelden bij uw Directory. Gasten hebben bijvoorbeeld waarschijnlijk geen geregistreerd apparaat, bevinden zich niet op een bekende locatie en willen ze niet opnieuw registreren voor multi-factor Authentication (MFA). Als u deze vereisten toevoegt in een beleid voor voorwaardelijke toegang, worden gasten geblokkeerd voor het gebruik van rechten CRM. Zie [Wat zijn voor waarden in azure Active Directory voorwaardelijke toegang?](../conditional-access/conditions.md)voor meer informatie.
+
+    ![Instellingen voor het beleid voor voorwaardelijke toegang van Azure AD](./media/entitlement-management-external-users/conditional-access-exclude.png)
+
+### <a name="review-your-sharepoint-online-external-sharing-settings"></a>De instellingen voor extern delen van share point online controleren
+
+- Als u share point online-sites wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de instelling voor extern delen op organisatie niveau is ingesteld op **iedereen** (gebruikers hoeven zich niet aan te melden) of **nieuwe en bestaande gasten** (gasten moeten zich aanmelden). in of geef een verificatie code op). Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
+
+- Als u extern delen buiten het beheer van rechten wilt beperken, kunt u de instelling voor extern delen instellen op **bestaande gasten**. Alleen nieuwe gebruikers die via rechten beheer worden uitgenodigd, kunnen toegang krijgen tot deze sites. Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
+
+- Zorg ervoor dat de instellingen op site niveau gast toegang inschakelen (dezelfde optie selecties als eerder vermeld). Zie voor meer informatie [extern delen in-of uitschakelen voor een site](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
+
+### <a name="review-your-office-365-group-sharing-settings"></a>De instellingen voor het delen van uw Office 365-groep controleren
+
+- Als u Office 365-groepen wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de **gebruikers nieuwe gasten toevoegen aan de organisatie** zijn **ingesteld op aan om gast** toegang toe te staan. Zie [gast toegang beheren voor Office 365-groepen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups)voor meer informatie.
+
+- Als u wilt dat externe gebruikers toegang hebben tot de share point online-site en de resources die zijn gekoppeld aan een Office 365-groep, moet u extern delen van share point Online inschakelen. Zie [extern delen in-of uitschakelen](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)voor meer informatie.
+
+- Zie voor meer informatie over het instellen van het gast beleid voor Office 365-groepen op het mapniveau in Power shell, [voor beeld: gast beleid voor groepen op het niveau van de Directory configureren](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+
+### <a name="review-your-teams-sharing-settings"></a>De instellingen voor het delen van teams controleren
+
+- Als u teams wilt toevoegen aan uw toegangs pakketten voor externe gebruikers, moet u ervoor zorgen dat de **toegang gast toestaan in micro soft teams** is **ingesteld op aan om gast** toegang toe te staan. Zie voor meer informatie [gast toegang configureren in het micro soft teams-beheer centrum](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+
 ## <a name="manage-the-lifecycle-of-external-users"></a>De levens cyclus van externe gebruikers beheren
 
 U kunt selecteren wat er gebeurt wanneer een externe gebruiker, die is uitgenodigd voor uw directory via een aanvraag voor een toegangs pakket dat wordt goedgekeurd, geen toegangs pakket toewijzingen meer heeft. Dit kan gebeuren als de gebruiker alle toewijzingen van het toegangs pakket relinquishes of de toewijzing van het laatste toegangs pakket verloopt. Wanneer een externe gebruiker geen toegangs pakket toewijzingen meer heeft, is het standaard geblokkeerd om zich aan te melden bij uw Directory. Na 30 dagen wordt het gast gebruikers account verwijderd uit de map.
@@ -104,20 +145,8 @@ U kunt selecteren wat er gebeurt wanneer een externe gebruiker, die is uitgenodi
 
 1. Klik op **Opslaan**.
 
-## <a name="enable-a-catalog-for-external-users"></a>Een catalogus voor externe gebruikers inschakelen
-
-Wanneer u een [nieuwe catalogus](entitlement-management-catalog-create.md)maakt, is er een instelling waarmee gebruikers uit externe directory's toegang kunnen verkrijgen tot pakketten in de catalogus. Als u niet wilt dat externe gebruikers gemachtigd zijn om toegangs pakketten aan te vragen in de catalogus, stelt u **ingeschakeld voor externe gebruikers** in op **Nee**.
-
-**Vereiste rol:** Globale beheerder, gebruikers beheerder of catalogus eigenaar
-
-![Deel venster nieuwe catalogus](./media/entitlement-management-shared/new-catalog.png)
-
-U kunt deze instelling ook wijzigen nadat u de catalogus hebt gemaakt.
-
-![Catalogus instellingen bewerken](./media/entitlement-management-shared/catalog-edit.png)
-
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een verbonden organisatie toevoegen](entitlement-management-organization.md)
 - [Voor gebruikers die niet in uw Directory voor komt](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
-- [Een catalogus met resources maken en beheren](entitlement-management-catalog-create.md)
+- [Problemen oplossen](entitlement-management-troubleshoot.md)

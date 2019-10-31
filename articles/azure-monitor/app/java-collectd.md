@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 6c74684ac45a040be154a1e6406c1e7a5e0dd253
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 47e5e9dd81174b79e149ba29eec725c8c17eb1a6
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817147"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176402"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>verzamelde: metrische gegevens voor Linux-prestaties in Application Insights
 
@@ -32,7 +32,7 @@ Neem een kopie van de instrumentatie sleutel, die de resource identificeert.
 Op uw Linux-Server computers:
 
 1. Installeer [verzamelde](https://collectd.org/) -versie 5.4.0 of hoger.
-2. Down load de [Application Insights verzamelde Writer-invoeg toepassing](https://aka.ms/aijavasdk). Noteer het versie nummer.
+2. Down load de [Application Insights verzamelde Writer-invoeg toepassing](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Noteer het versie nummer.
 3. Kopieer de invoeg toepassing JAR naar `/usr/share/collectd/java`.
 4. `/etc/collectd/collectd.conf`bewerken:
    * Zorg ervoor dat [de Java-invoeg toepassing](https://collectd.org/wiki/index.php/Plugin:Java) is ingeschakeld.

@@ -1,6 +1,6 @@
 ---
-title: Toegang aanvragen tot een toegangs pakket in azure AD-rechts beheer (preview)-Azure Active Directory
-description: Informatie over het gebruik van de portal mijn toegang om toegang aan te vragen voor een toegangs pakket in Azure Active Directory rechten beheer (preview).
+title: Toegang aanvragen tot een toegangs pakket in azure AD-recht beheer-Azure Active Directory
+description: Meer informatie over het gebruik van de portal mijn toegang om toegang aan te vragen tot een toegangs pakket in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e57a216efee39df0ad22712b281073a68600e0df
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990760"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173701"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Toegang aanvragen tot een toegangs pakket in azure AD-rechts beheer (preview-versie)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Toegang tot een toegangs pakket aanvragen in het beheer van rechten van Azure AD
 
 Met het beheer van rechten van Azure AD maakt een toegangs pakket een eenmalige configuratie van resources en beleids regels waarmee de toegang voor de levens duur van het toegangs pakket automatisch wordt beheerd. 
 

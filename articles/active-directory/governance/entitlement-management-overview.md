@@ -1,5 +1,5 @@
 ---
-title: Wat is Azure AD-rechtenbeheer? (Preview)-Azure Active Directory
+title: Wat is Azure AD-rechtenbeheer? -Azure Active Directory
 description: Bekijk een overzicht van Azure Active Directory rechten beheer en hoe u dit kunt gebruiken voor het beheren van de toegang tot groepen, toepassingen en share point online-sites voor interne en externe gebruikers.
 services: active-directory
 documentationCenter: ''
@@ -12,136 +12,139 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/03/2019
+ms.date: 10/24/2019
 ms.author: ajburnle
-ms.reviewer: mwahl
+ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 136a9994415b42c456ebdb0caa8ed6edcc7b4534
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934381"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174154"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Wat is Azure AD-rechtenbeheer? (Preview)
+# <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD)-rechts beheer is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+Azure Active Directory (Azure AD) is een functie voor [identiteits](identity-governance-overview.md) beheer waarmee organisaties identiteits-en toegangs levenscyclus op schaal kunnen beheren door het automatiseren van werk stromen voor toegangs aanvragen, toegangs toewijzingen, recensies en verval.
 
-Werk nemers in organisaties moeten toegang hebben tot verschillende groepen, toepassingen en sites om hun taak uit te voeren. Het beheer van deze toegang is lastig. In de meeste gevallen is er geen geordende lijst met alle resources die een gebruiker nodig heeft voor een project. De project manager heeft een goed inzicht in de benodigde resources, de betrokken personen en hoe lang het duurt voordat het project wordt uitgevoerd. De project manager heeft meestal echter geen machtigingen om anderen goed te keuren of toegang te verlenen. Dit scenario wordt ingewik kelder wanneer u probeert te werken met externe individuen of bedrijven.
+Werk nemers in organisaties moeten toegang hebben tot verschillende groepen, toepassingen en sites om hun taak uit te voeren. Het beheer van deze toegang is lastig, omdat de vereisten veranderen: nieuwe toepassingen worden toegevoegd of gebruikers hebben extra toegangs rechten nodig.  Dit scenario haalt meer gecompliceerd op wanneer u samen met externe organisaties samenwerkt. u weet niet wie in de andere organisatie toegang nodig heeft tot de resources van uw organisatie en weet niet welke toepassingen, groepen of sites uw organisatie gebruikt.
 
-Azure Active Directory (Azure AD) rechten beheer kan u helpen bij het beheren van de toegang tot groepen, toepassingen en share point online-sites voor interne gebruikers en ook gebruikers buiten uw organisatie.
-
-In deze video vindt u een overzicht van het rechten beheer en de bijbehorende bedrijfs waarde:
-
->[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
+Met het beheer van rechten van Azure AD kunt u de toegang tot groepen, toepassingen en share point online-sites efficiënter beheren voor interne gebruikers, en voor gebruikers buiten uw organisatie die toegang nodig hebben tot deze resources.
 
 ## <a name="why-use-entitlement-management"></a>Waarom het beheer van rechten gebruiken?
 
-Bedrijfs organisaties geven vaak uitdagingen bij het beheren van toegang tot resources, zoals:
+Bedrijfs organisaties geven vaak uitdagingen bij het beheren van de toegang van werk nemers tot resources, zoals:
 
-- Gebruikers kunnen niet weten welke toegang ze moeten hebben
-- Gebruikers kunnen moeite hebben met het vinden van de juiste personen of de juiste resources
+- Gebruikers zijn mogelijk niet op de hoogte van de toegang die ze zouden hebben, en zelfs als ze dat doen, kunnen ze de juiste personen mogelijk niet vinden om hun toegang goed te keuren
 - Zodra gebruikers de toegang tot een resource hebben gevonden en ontvangen, kunnen ze meer toegang hebben dan is vereist voor zakelijke doel einden
 
-Deze problemen worden samengesteld voor gebruikers die toegang nodig hebben tot een andere Directory, zoals externe gebruikers die afkomstig zijn van toeleverings keten organisaties of andere zakelijke partners. Bijvoorbeeld:
+Deze problemen worden samengesteld voor gebruikers die toegang nodig hebben tot een andere organisatie, zoals externe gebruikers die afkomstig zijn van toeleverings keten organisaties of andere zakelijke partners. Bijvoorbeeld:
 
-- Organisaties kunnen niet alle specifieke personen in andere directory's weten om ze te kunnen uitnodigen
-- Zelfs als organisaties deze gebruikers kunnen uitnodigen, is het niet meer mogelijk om alle gebruikers toegang consistent te beheren
+- Niemand kan niet alle specifieke personen in de directory's van een organisatie weten om ze te kunnen uitnodigen
+- Zelfs als ze deze gebruikers kunnen uitnodigen, kan niemand in die organisatie de toegang tot alle gebruikers consistent beheren
 
-Het beheer van rechten van Azure AD kan u helpen om deze uitdagingen aan te pakken.
+Het beheer van rechten van Azure AD kan u helpen om deze uitdagingen aan te pakken.  Als u meer wilt weten over hoe klanten gebruik kunnen maken van het beheer van rechten van Azure AD, kunt u de [Avanade](https://aka.ms/AvanadeELMCase) -casestudy en de [centra](https://aka.ms/CentricaELMCase)-casestudy lezen.  In deze video vindt u een overzicht van het rechten beheer en de bijbehorende waarde:
+
+>[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
 ## <a name="what-can-i-do-with-entitlement-management"></a>Wat kan ik doen met het beheer van rechten?
 
 Hier volgen enkele mogelijkheden voor het beheer van rechten:
 
-- Pakketten maken met verwante resources die gebruikers kunnen aanvragen
-- Regels definiëren voor het aanvragen van resources en wanneer de toegang verloopt
-- De levens cyclus van toegang voor interne en externe gebruikers bepalen
-- Beheer van resources delegeren
-- Goed keurders aanwijzen om aanvragen goed te keuren
-- Rapporten maken om de geschiedenis bij te houden
+- Delegeren aan niet-beheerders de mogelijkheid om toegangs pakketten te maken. Deze toegangs pakketten bevatten bronnen die gebruikers kunnen aanvragen en de gedelegeerde toegangs pakket beheerders kunnen beleids regels definiëren waarvoor gebruikers een aanvraag kunnen indienen, die hun toegang moeten goed keuren en wanneer de toegang verloopt.
+- Selecteer verbonden organisaties waarvan de gebruikers toegang kunnen aanvragen.  Wanneer een gebruiker die zich nog niet in uw directory bevindt, toegang vraagt en is goedgekeurd, worden ze automatisch uitgenodigd voor de Directory en de toegewezen toegang.  Als de toegang is verlopen en er geen andere toegangs pakket toewijzingen zijn, kunnen hun B2B-account in uw Directory automatisch worden verwijderd.
 
-Bekijk de volgende video van de Ignite 2018-conferentie voor een overzicht van identiteits bestuur en rechten beheer:
+U kunt aan de slag met onze [zelf studie voor het maken van uw eerste toegangs pakket](entitlement-management-access-package-first.md). U kunt ook de [algemene scenario's](entitlement-management-scenarios.md)lezen of Video's bekijken, met inbegrip van
 
->[!VIDEO https://www.youtube.com/embed/aY7A0Br8u5M]
+- [Het beheer van rechten van Azure AD implementeren in uw organisatie](https://www.youtube.com/watch?v=zaaKvaaYwI4)
+- [Uw gebruik van het beheer van rechten van Azure AD bewaken en schalen](https://www.youtube.com/watch?v=omtNJ7ySjS0)
+- [Delegeren in het recht beheer](https://www.youtube.com/watch?v=Fmp1eBxzrqw)
 
-## <a name="what-resources-can-i-manage"></a>Welke resources kan ik beheren?
+## <a name="what-are-access-packages-and-what-resources-can-i-manage-with-them"></a>Wat zijn toegangs pakketten en welke resources kan ik met hen beheren?
 
-Dit zijn de typen resources waarmee u toegang tot kunt beheren met het beheer van rechten:
+Het beheer van rechten introduceert Azure AD het concept van een *toegangs pakket*. Een toegangs pakket is een bundel van alle resources met de toegang die een gebruiker nodig heeft om te werken aan een project of om de taak uit te voeren. Toegangs pakketten worden gebruikt voor toegang tot uw interne werk nemers en ook gebruikers buiten uw organisatie.
 
-- Azure AD-beveiligings groepen
-- Office 365 Groups
-- Zakelijke Azure AD-toepassingen, waaronder SaaS-toepassingen en aangepaste, geïntegreerde toepassingen die ondersteuning bieden voor Federatie of inrichting
-- Share point online-site verzamelingen en-sites
+ Dit zijn de typen resources waarmee u de toegang van de gebruiker tot het beheer recht kunt beheren:
+
+- Lidmaatschap van Azure AD-beveiligings groepen
+- Lidmaatschap van Office 365-groepen en-teams
+- Toewijzing aan Azure AD-zakelijke toepassingen, waaronder SaaS-toepassingen en toepassingen met aangepaste integratie die ondersteuning bieden voor Federatie/eenmalige aanmelding en/of inrichting
+- Lidmaatschap van share point online-sites
 
 U kunt ook de toegang beheren tot andere bronnen die afhankelijk zijn van Azure AD-beveiligings groepen of Office 365-groepen.  Bijvoorbeeld:
 
 - U kunt gebruikers licenties geven voor Microsoft Office 365 door een Azure AD-beveiligings groep te gebruiken in een toegangs pakket en op [groepen gebaseerde licentie verlening](../users-groups-roles/licensing-groups-assign.md) voor die groep te configureren
 - U kunt gebruikers toegang geven tot het beheer van Azure-resources met behulp van een Azure AD-beveiligings groep in een toegangs pakket en een [Azure-roltoewijzing](../../role-based-access-control/role-assignments-portal.md) voor die groep maken
 
-## <a name="what-are-access-packages-and-policies"></a>Wat zijn toegangs pakketten en beleids regels?
+## <a name="how-do-i-control-who-gets-access"></a>Hoe kan ik besturings element wie toegang krijgt?
 
-Het beheer van rechten introduceert het concept van een *toegangs pakket*. Een toegangs pakket is een bundel van alle resources die een gebruiker nodig heeft om te werken aan een project of om de taak uit te voeren. De resources bevatten toegang tot groepen, toepassingen of sites. Toegangs pakketten worden gebruikt voor toegang tot uw interne werk nemers en ook gebruikers buiten uw organisatie. Toegangs pakketten worden gedefinieerd in containers die *catalogi*worden genoemd.
+Met een toegangs pakket bevat een beheerder of gedelegeerde Access package manager de resources (groepen, apps en sites) en de rollen die de gebruikers nodig hebben voor deze resources.
 
-Toegangs pakketten bestaan ook uit een of meer *beleids regels*. Een beleid definieert de regels of Guardrails voor toegang tot een toegangs pakket. Als u een beleid inschakelt, wordt alleen de juiste gebruikers toegang verleend tot de juiste resources en voor de juiste hoeveelheid tijd.
+Toegangs pakketten bestaan ook uit een of meer *beleids regels*. Een beleid definieert de regels of Guardrails voor toewijzing aan toegangs pakket. Elk beleid kan worden gebruikt om ervoor te zorgen dat alleen de juiste gebruikers toegang kunnen vragen, dat er goed keurders zijn voor hun aanvraag en dat hun toegang tot deze resources een beperkt tijds limiet is en verloopt als het niet wordt verlengd.
 
 ![Toegang tot pakket en beleid](./media/entitlement-management-overview/elm-overview-access-package.png)
 
-Met een toegangs pakket en het bijbehorende beleid definieert de Access package manager het volgende:
+Binnen elk beleid definieert een beheerder of toegangs pakket beheer
 
-- Bronnen
-- Rollen die de gebruikers nodig hebben voor de resources
-- Interne gebruikers en partner organisaties van externe gebruikers die in aanmerking komen om toegang aan te vragen
-- Goedkeurings proces en de gebruikers die toegang kunnen goed keuren of weigeren
-- Duur van de toegang van de gebruiker
+- De al bestaande gebruikers (meestal werk nemers of al geuitgenodigde gasten) of de partner organisaties van externe gebruikers die in aanmerking komen voor het aanvragen van toegang
+- Het goedkeurings proces en de gebruikers die toegang kunnen goed keuren of weigeren
+- De duur van de toegangs toewijzing van een gebruiker na goed keuring voordat de toewijzing verloopt
 
-In het volgende diagram ziet u een voor beeld van de verschillende elementen in het recht beheer. Er worden twee voor beelden van toegangs pakketten weer gegeven.
+In het volgende diagram ziet u een voor beeld van de verschillende elementen in het recht beheer. Er wordt één catalogus met twee voor beelden van toegangs pakketten weer gegeven.
 
 - **Access-pakket 1** bevat één groep als een resource. Toegang is gedefinieerd met een beleid dat een set gebruikers in de Directory in staat stelt om toegang aan te vragen.
 - **Access-pakket 2** bevat een groep, een toepassing en een share point online-site als resources. Toegang is gedefinieerd met twee verschillende beleids regels. Met het eerste beleid kunt u een set gebruikers in de Directory toestaan om toegang aan te vragen. Met het tweede beleid kunnen gebruikers in een externe map toegang aanvragen.
 
 ![Overzicht van rechten beheer](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="terminology"></a>Terminologie
+## <a name="when-should-i-use-access-packages"></a>Wanneer moet ik toegangs pakketten gebruiken?
 
-Bekijk de volgende voor waarden om het rechten beheer en de bijbehorende documentatie beter te begrijpen.
+Toegangs pakketten worden niet vervangen door andere mechanismen voor toegangs toewijzing.  Ze zijn het meest geschikt in situaties zoals de volgende:
 
-| Term of concept | Beschrijving |
+- Werk nemers hebben tijd beperkte toegang nodig voor een bepaalde taak.  U kunt bijvoorbeeld groeps-gebaseerde licentie verlening en een dynamische groep gebruiken om ervoor te zorgen dat alle werk nemers over een Exchange Online-postvak beschikken en vervolgens toegangs pakketten gebruiken voor situaties waarin werk nemers extra toegang nodig hebben, zoals het lezen van afdelings resources van een andere vertrouwelijke.
+- De toegang moet worden goedgekeurd door de Manager van een werk nemer of door andere aangewezen personen.
+- Afdelingen willen hun eigen toegangs beleid voor hun resources beheren zonder IT-betrokkenheid.  
+- Er zijn twee of meer organisaties die samen werken aan een project. als gevolg hiervan moeten meerdere gebruikers van één organisatie worden binnengebracht via Azure AD B2B om toegang te krijgen tot de resources van een andere organisatie.
+
+## <a name="how-do-i-delegate-access"></a>Hoe kan ik gemachtigden toegang?
+
+ Toegangs pakketten worden gedefinieerd in containers die *catalogi*worden genoemd.  U kunt één catalogus voor al uw toegangs pakketten hebben, maar u kunt ook personen aanwijzen om hun eigen catalogi te maken. Een beheerder kan resources toevoegen aan elke catalogus, maar een niet-beheerder kan alleen een catalogus toevoegen aan de resources waarvan ze eigenaar zijn. Een catalogus eigenaar kan andere gebruikers toevoegen als catalogus co-eigen aren of als toegangs pakket beheerders.  Deze scenario's worden verder beschreven in het artikel [delegering en rollen in azure AD rechten beheer](entitlement-management-delegate.md).
+
+## <a name="summary-of-terminology"></a>Samen vatting van terminologie
+
+Als u meer inzicht wilt krijgen in het rechten beheer en de bijbehorende documentatie, kunt u teruggaan naar de volgende lijst met voor waarden.
+
+| Termijn | Beschrijving |
 | --- | --- |
-| beheer rechten | Een service waarmee toegangs pakketten worden toegewezen, ingetrokken en beheerd. |
-| toegangs pakket | Een bundel van resources die een team of project nodig heeft en die wordt beheerd door beleid. Een toegangs pakket bevindt zich altijd in een catalogus. |
-| toegangs aanvraag | Een aanvraag voor toegang tot de resources in een toegangs pakket. Een aanvraag loopt doorgaans via een werk stroom. |
-| policy | Een set regels die de toegangs levenscyclus definieert, bijvoorbeeld hoe gebruikers toegang krijgen, wie kan goed keuren en hoelang gebruikers toegang hebben. Voor beelden van beleids regels zijn toegang tot werk nemers en externe toegang. |
-| catalogus | Een container met gerelateerde resources en toegangs pakketten. |
-| Algemene catalogus | Een ingebouwde catalogus die altijd beschikbaar is. Om resources toe te voegen aan de algemene catalogus, zijn bepaalde machtigingen vereist. |
-| Resource | Een activum of service (zoals een Office-groep, een beveiligings groep, een toepassing of een share point online-site) waaraan een gebruiker machtigingen kan verlenen. |
-| Resource type | Het type resource, met inbegrip van groepen, toepassingen en share point online-sites. |
-| resource functie | Een verzameling machtigingen die zijn gekoppeld aan een resource. |
+| toegangs pakket | Een bundel van resources die een team of project nodig heeft en die wordt beheerd door beleid. Een toegangs pakket bevindt zich altijd in een catalogus. U maakt een nieuw toegangs pakket voor een scenario waarin gebruikers toegang moeten aanvragen.  |
+| toegangs aanvraag | Een aanvraag voor toegang tot de resources in een toegangs pakket. Een aanvraag loopt doorgaans via een goedkeurings werk stroom.  Als deze is goedgekeurd, ontvangt de gebruiker die de aanvraag heeft ingediend een toegangs pakket toewijzing. |
+| toewijzingen | Een toewijzing van een toegangs pakket aan een gebruiker zorgt ervoor dat de gebruiker alle resource rollen van dat toegangs pakket heeft.  Toegangs pakket toewijzingen hebben doorgaans een tijds limiet voordat ze verlopen. |
+| catalogus | Een container met gerelateerde resources en toegangs pakketten.  Catalogi worden gebruikt voor delegering, zodat niet-beheerders hun eigen toegangs pakketten kunnen maken. Catalog-eigen aren kunnen resources toevoegen die eigendom zijn van een catalogus. |
+| Maker van catalogus | Een verzameling gebruikers die gemachtigd zijn om nieuwe catalogussen te maken.  Wanneer een niet-beheerders gebruiker die gemachtigd is om een catalogus Maker te maken, een nieuwe catalogus maakt, wordt deze automatisch de eigenaar van die catalogus. |
+| verbonden organisatie | Een externe Azure AD-Directory of-domein waarmee u een relatie hebt. De gebruikers van een verbonden organisatie kunnen worden opgegeven in een beleid als toestemming om toegang aan te vragen. |
+| policy | Een set regels die de toegangs levenscyclus definieert, bijvoorbeeld hoe gebruikers toegang krijgen, wie kan goed keuren en hoelang gebruikers toegang hebben via een toewijzing. Een beleid is gekoppeld aan een toegangs pakket. Een toegangs pakket kan bijvoorbeeld twee beleids regels bevatten: een voor werk nemers om toegang aan te vragen en een tweede voor externe gebruikers om toegang aan te vragen. |
+| Resource | Een Asset, zoals een Office-groep, een beveiligings groep, een toepassing of een share point online-site, met een rol waaraan een gebruiker machtigingen kan verlenen. |
 | Resource Directory | Een map met een of meer resources die moeten worden gedeeld. |
-| verbonden organisatie | Een externe Azure AD-Directory of-domein waarmee u een relatie hebt. |
-| toegewezen gebruikers | Een toewijzing van een toegangs pakket aan een gebruiker, zodat de gebruiker alle resource rollen van dat toegangs pakket heeft. |
-| Kunt | Het proces van het beschikbaar maken van een toegangs pakket voor gebruikers om aan te vragen. |
+| resource functie | Een verzameling machtigingen die zijn gekoppeld aan en gedefinieerd door een resource. Een groep heeft twee rollen: lid en eigenaar. Share point-sites hebben doorgaans drie rollen, maar kunnen extra aangepaste rollen hebben. Toepassingen kunnen aangepaste rollen hebben. |
+
 
 ## <a name="license-requirements"></a>Licentievereisten
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Gespecialiseerde Clouds, zoals Azure Government, Azure Duitsland en Azure China 21Vianet, zijn momenteel niet beschikbaar voor gebruik in deze preview-versie.
+Gespecialiseerde Clouds, zoals Azure Government, Azure Duitsland en Azure China 21Vianet, zijn momenteel niet beschikbaar voor gebruik.
 
 ### <a name="which-users-must-have-licenses"></a>Welke gebruikers moeten licenties hebben?
 
-Uw Tenant moet ten minste evenveel Azure AD Premium P2-licenties hebben als u actieve leden van de gebruiker hebt. Gebruikers van actieve leden in het recht op beheer zijn onder andere:
+Uw Tenant moet ten minste evenveel Azure AD Premium P2-licenties hebben als lid van gebruikers actief zijn in het rechts beheer. Gebruikers van actieve leden in het recht op beheer zijn onder andere:
 
 - Een gebruiker die een aanvraag voor een toegangs pakket initieert of goedkeurt.
-- Een gebruiker aan wie een toegangs pakket is toegewezen. 
+- Een gebruiker aan wie een toegangs pakket is toegewezen.
 - Een gebruiker die toegangs pakketten beheert.
 
 Als onderdeel van de licenties voor leden van gebruikers kunt u ook een aantal gast gebruikers toestaan om te communiceren met het rechten beheer. Zie [Azure Active Directory B2B Collaboration guidance](../b2b/licensing-guidance.md)(Engelstalig) voor meer informatie over het berekenen van het aantal gast gebruikers dat u kunt gebruiken.
 
-Voor informatie over het toewijzen van licenties aan uw gebruikers raadpleegt u [licenties toewijzen of verwijderen via de Azure Active Directory Portal](../fundamentals/license-users-groups.md).
+Voor informatie over het toewijzen van licenties aan uw gebruikers raadpleegt u [licenties toewijzen of verwijderen via de Azure Active Directory Portal](../fundamentals/license-users-groups.md). Houd er rekening mee dat het rechten beheer momenteel geen licentie toewijzing afdwingt voor gebruikers.
 
 ## <a name="next-steps"></a>Volgende stappen
 

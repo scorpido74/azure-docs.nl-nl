@@ -1,30 +1,29 @@
 ---
-title: Windows Azure-Vm's samen zoeken | Microsoft Docs
+title: Windows Azure-Vm's samen zoeken
 description: Meer informatie over hoe co-locaties van Azure-VM-bronnen de latentie kunnen verbeteren.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/28/2019
-ms.author: cynthn
-ms.openlocfilehash: ddffcd1230048a0b1e47076270ac24a607d53a7e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 10/30/2019
+ms.author: zivr
+ms.openlocfilehash: b61a84f2b284177b7443be00efeea65e7eb8aaef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103241"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171074"
 ---
 # <a name="co-locate-resource-for-improved-latency"></a>Resource samen zoeken voor verbeterde latentie
 
 Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaakt, wat van invloed kan zijn op de algehele prestaties van uw toepassing. 
 
 
-## <a name="preview-proximity-placement-groups"></a>Preview: Proximity-plaatsings groepen 
+## <a name="proximity-placement-groups"></a>Proximity-plaatsings groepen 
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../../includes/virtual-machines-common-ppg-overview.md)]
 
@@ -32,3 +31,8 @@ Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaak
 
 Implementeer een virtuele machine op een [proximity-plaatsings groep](proximity-placement-groups.md) met behulp van Azure PowerShell.
 
+Meer informatie over het testen van de [netwerk latentie](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+Meer informatie over het optimaliseren van de [netwerk doorvoer](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+
+Meer informatie over het [gebruik van proximity-plaatsings groepen met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

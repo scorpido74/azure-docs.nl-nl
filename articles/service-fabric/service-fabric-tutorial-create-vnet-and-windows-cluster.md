@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598877"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177983"
 ---
-# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Zelfstudie: Een Service Fabric cluster met Windows implementeren in een virtueel Azure-netwerk
+# <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Zelf studie: een Service Fabric cluster met Windows implementeren in een virtueel Azure-netwerk
 
 Deze zelfstudie is deel één van een serie. U leert hoe u een Azure Service Fabric cluster met Windows implementeert in een [virtueel Azure-netwerk](../virtual-network/virtual-networks-overview.md) en een [netwerk beveiligings groep](../virtual-network/virtual-networks-nsg.md) met behulp van Power shell en een sjabloon. Wanneer u klaar bent, hebt u een cluster dat wordt uitgevoerd in de Cloud waarop u toepassingen kunt implementeren. Zie [een beveiligd Linux-cluster maken in azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)voor informatie over het maken van een Linux-cluster dat gebruikmaakt van de Azure cli.
 
@@ -80,14 +80,14 @@ In de resource **Microsoft.ServiceFabric/clusters** wordt een Windows-cluster ge
 
 * Drie knooppunt typen.
 * Vijf knoop punten in het primaire knooppunt type (configureerbaar in de sjabloon parameters) en één knoop punt in elk van de andere twee typen knoop punten.
-* Besturingssysteem: Windows Server 2016 Data Center met containers (configureerbaar in de sjabloon parameters).
+* Besturings systeem: Windows Server 2016 Data Center met containers (configureerbaar in de sjabloon parameters).
 * Certificaat beveiligd (configureerbaar in de sjabloon parameters).
 * [Omgekeerde proxy](service-fabric-reverseproxy.md) is ingeschakeld.
 * De [DNS-service](service-fabric-dnsservice.md) is ingeschakeld.
 * [Duurzaamheids niveau](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) van Bronze (configureerbaar in de sjabloon parameters).
 * [Betrouwbaarheids niveau](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) van zilver (configureerbaar in de sjabloon parameters).
-* Eind punt client verbinding: 19000 (configureerbaar in de sjabloon parameters).
-* het eindpunt van de HTTP-gateway: 19080 (configureerbaar in de sjabloon parameters).
+* Eind punt voor client verbinding: 19000 (configureerbaar in de sjabloon parameters).
+* HTTP-gateway-eind punt: 19080 (configureerbaar in de sjabloon parameters).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
@@ -112,7 +112,6 @@ De volgende regels voor binnenkomend verkeer worden ingeschakeld in de resource 
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
-* PROTOCOL 445
 * Internodecommunication: 1025, 1026, 1027
 * Tijdelijk poort bereik: 49152 tot 65534 (mini maal 256 poorten nodig).
 * Poorten voor toepassingsgebruik: 80 en 443
@@ -154,14 +153,14 @@ Het [Windows Defender anti virus-programma](/windows/security/threat-protection/
 
 Het bestand [azuredeploy. para meters. json][parameters] -para meters declareert veel waarden die worden gebruikt voor het implementeren van het cluster en de bijbehorende resources. Hier volgen de para meters die u kunt wijzigen voor uw implementatie:
 
-**Parameter** | **Voorbeeld waarde** | **Opmerkingen** 
+**Bepaalde** | **Voorbeeld waarde** | **Opmerkingen** 
 |---|---|---|
 |adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. De [gebruikers naam is vereist voor de VM](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's. [Wachtwoord vereisten voor de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| De naam van het cluster. Mag alleen letters en cijfers bevatten. De lengte kan minimaal 3 en maximaal 23 tekens zijn.|
 |location|southcentralus| De locatie van het cluster. |
 |certificateThumbprint|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de SHA1-waarde van de certificaatvingerafdruk in. Bijvoorbeeld 6190390162C988701DB5676EB81083EA608DCCF3.</p> |
-|certificateUrlValue|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft. </p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de URL van het certificaat in. Bijvoorbeeld ' https:\//mykeyvault.Vault.Azure.net:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346 '.</p>|
+|certificateUrlValue|| <p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft. </p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de URL van het certificaat in. Bijvoorbeeld ' https:\//mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346 '.</p>|
 |sourceVaultValue||<p>De waarde moet leeg zijn als u een zelfondertekend certificaat maakt of als u een certificaatbestand opgeeft.</p><p>Als u een bestaand certificaat wilt gebruiken dat u eerder hebt geüpload naar een sleutelkluis, vult u de waarde van de bronkluis in. Bijvoorbeeld /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT.</p>|
 
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Clientverificatie via Azure Active Directory instellen
@@ -192,7 +191,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 ```
 
 > [!NOTE]
-> Voor nationale Clouds (bijvoorbeeld Azure Government, Azure China, Azure Duitsland), geeft u `-Location` de para meter op.
+> Voor nationale Clouds (bijvoorbeeld Azure Government, Azure China, Azure Duitsland), geeft u de para meter `-Location` op.
 
 U vindt uw *TenantId* ofwel de map-id in de [Azure-portal](https://portal.azure.com). Selecteer **Azure Active Directory** > **Eigenschappen** en kopieer de waarde van de **map-id** .
 
@@ -444,7 +443,7 @@ Als u de Event Store-service in uw cluster wilt inschakelen, voegt u het volgend
 
 Azure Monitor-Logboeken is onze aanbeveling om gebeurtenissen op cluster niveau te bewaken. Als u Azure Monitor logboeken wilt instellen om uw cluster te bewaken, moet u [Diagnostische gegevens inschakelen om gebeurtenissen op cluster niveau weer te geven](#configure-diagnostics-collection-on-the-cluster).  
 
-De werkruimte moet worden verbonden met de diagnostische gegevens die afkomstig zijn van uw cluster.  Deze logboek gegevens worden opgeslagen in het *applicationDiagnosticsStorageAccountName* -opslag account in de tabellen WADServiceFabric * EventTable, WADWindowsEventLogsTable en WADETWEventTable.
+De werk ruimte moet zijn verbonden met de diagnostische gegevens die afkomstig zijn uit uw cluster.  Deze logboek gegevens worden opgeslagen in het *applicationDiagnosticsStorageAccountName* -opslag account in de tabellen WADServiceFabric * EventTable, WADWindowsEventLogsTable en WADETWEventTable.
 
 Voeg de Azure Log Analytics-werk ruimte toe en voeg de oplossing toe aan de werk ruimte:
 
