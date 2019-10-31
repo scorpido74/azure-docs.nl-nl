@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: de8782edcc8b9c64621f1ca67d4bb810c926afaf
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 06415db201582f3e594173e9fe891ee9fdba4b18
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973389"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200388"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheids injectie gebruiken in .NET Azure Functions
 
@@ -31,15 +31,15 @@ Azure Functions ondersteunt het ' Dependency Injection (DI)-ontwerp patroon voor
 
 Voordat u afhankelijkheids injectie kunt gebruiken, moet u de volgende NuGet-pakketten installeren:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Micro soft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Micro soft. net. SDK. functions pakket](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) versie 1.0.28 of hoger
 
 ## <a name="register-services"></a>Services registreren
 
-Als u services wilt registreren, maakt u een methode om onderdelen te configureren en toe te voegen aan een `IFunctionsHostBuilder`-exemplaar.  Op de Azure Functions-host wordt een instantie van `IFunctionsHostBuilder` gemaakt en direct door gegeven aan uw methode.
+Als u services wilt registreren, maakt u een methode om onderdelen te configureren en toe te voegen aan een `IFunctionsHostBuilder`-exemplaar.  Op de Azure Functions-host wordt een exemplaar van `IFunctionsHostBuilder` gemaakt en direct door gegeven aan uw methode.
 
-Als u de methode wilt registreren, voegt u het assembly kenmerk `FunctionsStartup` toe dat de type naam specificeert die wordt gebruikt tijdens het opstarten.
+Als u de methode wilt registreren, voegt u het `FunctionsStartup`-assembly-kenmerk toe dat de type naam specificeert die wordt gebruikt tijdens het opstarten.
 
 ```csharp
 using System;
@@ -72,15 +72,15 @@ namespace MyNamespace
 
 Een reeks registratie stappen die vóór en na de uitvoering van de runtime worden uitgevoerd, wordt de opstart klasse. Daarom houdt u de volgende punten in acht:
 
-- *De klasse Startup is uitsluitend bedoeld voor installatie en registratie.* Vermijd het gebruik van services die bij het opstarten worden geregistreerd tijdens het opstart proces. Probeer bijvoorbeeld niet een bericht in een logboek te registreren dat tijdens het opstarten wordt geregistreerd. Dit moment van het registratie proces is te vroeg om uw services beschikbaar te maken voor gebruik. Nadat de `Configure`-methode is uitgevoerd, blijft de runtime van functions extra afhankelijkheden registreren. Dit kan van invloed zijn op de werking van uw services.
+- *De klasse Startup is uitsluitend bedoeld voor installatie en registratie.* Vermijd het gebruik van services die bij het opstarten worden geregistreerd tijdens het opstart proces. Probeer bijvoorbeeld niet een bericht in een logboek te registreren dat tijdens het opstarten wordt geregistreerd. Dit moment van het registratie proces is te vroeg om uw services beschikbaar te maken voor gebruik. Nadat de `Configure` methode is uitgevoerd, blijft de runtime van functions extra afhankelijkheden registreren. Dit kan van invloed zijn op de werking van uw services.
 
-- *De container voor de injectie van afhankelijkheden bevat alleen expliciet geregistreerde typen*. De enige services die beschikbaar zijn als Injecteer bare typen, zijn wat is ingesteld in de `Configure`-methode. Als gevolg hiervan zijn functies-specifieke typen als `BindingContext` en `ExecutionContext` niet beschikbaar tijdens de installatie of als Injecteer bare typen.
+- *De container voor de injectie van afhankelijkheden bevat alleen expliciet geregistreerde typen*. De enige services die beschikbaar zijn als Injecteer bare typen, zijn de instellingen in de `Configure` methode. Als gevolg hiervan zijn functies-specifieke typen zoals `BindingContext` en `ExecutionContext` niet beschikbaar tijdens de installatie of als Injecteer bare typen.
 
 ## <a name="use-injected-dependencies"></a>Geïnjecteerde afhankelijkheden gebruiken
 
 Injectie van constructor wordt gebruikt om uw afhankelijkheden beschikbaar te maken in een functie. Voor het gebruik van een constructor-injectie moet u geen statische klassen gebruiken.
 
-In het volgende voor beeld ziet u hoe de afhankelijkheden `IMyService` en `HttpClient` worden ingevoegd in een functie die door HTTP wordt geactiveerd. In dit voor beeld wordt het pakket [micro soft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gebruikt om een `HttpClient` bij het opstarten te registreren.
+In het volgende voor beeld ziet u hoe de afhankelijkheden `IMyService` en `HttpClient` worden ingevoegd in een functie die door HTTP wordt geactiveerd. In dit voor beeld wordt het pakket [micro soft. Extensions. http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) gebruikt voor het registreren van een `HttpClient` bij het opstarten.
 
 ```csharp
 using System;
@@ -124,9 +124,9 @@ namespace MyNamespace
 
 Azure Functions-apps bieden dezelfde levens duur van de service als [ASP.net-afhankelijkheids injectie](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes). Voor een functions-app gedragen de verschillende levens duur van de service er als volgt uit:
 
-- **Tijdelijk**: Tijdelijke services worden op elke aanvraag van de service gemaakt.
-- **Bereik**: De levens duur van het bereik van de service komt overeen met de levens duur van de functies. Services met een bereik worden eenmaal per uitvoering gemaakt. Latere aanvragen voor die service tijdens het uitvoeren van het bestaande service-exemplaar opnieuw gebruiken.
-- **Singleton**: De levens duur van de singleton-service komt overeen met de levens duur van de host en wordt opnieuw gebruikt voor het uitvoeren van functies voor dat exemplaar. Services voor Singleton-levens duur worden aanbevolen voor verbindingen en clients, bijvoorbeeld `SqlConnection` of `HttpClient`-instanties.
+- **Tijdelijk**: tijdelijke services worden op elke aanvraag van de service gemaakt.
+- **Bereik**: de levens duur van het bereik van de service komt overeen met de levens duur van een functie. Services met een bereik worden eenmaal per uitvoering gemaakt. Latere aanvragen voor die service tijdens het uitvoeren van het bestaande service-exemplaar opnieuw gebruiken.
+- **Singleton**: de levens duur van de singleton-service komt overeen met de levens duur van de host en wordt opnieuw gebruikt voor het uitvoeren van functies voor dat exemplaar. Services voor Singleton-levens duur worden aanbevolen voor verbindingen en clients, bijvoorbeeld `SqlConnection`-of `HttpClient`-exemplaren.
 
 Bekijk of down load een voor [beeld van de verschillende levens duur](https://aka.ms/functions/di-sample) van de service op github.
 
@@ -135,14 +135,14 @@ Bekijk of down load een voor [beeld van de verschillende levens duur](https://ak
 Als u uw eigen registratie provider nodig hebt, moet u een aangepast type registreren als een `ILoggerProvider`-exemplaar. Application Insights wordt automatisch toegevoegd door Azure Functions.
 
 > [!WARNING]
-> - Voeg `AddApplicationInsightsTelemetry()` niet toe aan de verzameling Services omdat hiermee services worden geregistreerd die conflicteren met services van de omgeving.
+> - Voeg geen `AddApplicationInsightsTelemetry()` toe aan de verzameling Services omdat hiermee services worden geregistreerd die conflicteren met services die worden meegeleverd door de omgeving.
 > - Registreer uw eigen `TelemetryConfiguration` of `TelemetryClient` niet als u de ingebouwde Application Insights functionaliteit gebruikt.
 
 ## <a name="function-app-provided-services"></a>Services die door de functie-app worden meegeleverd
 
 De functie-host registreert veel services. De volgende services zijn veilig als afhankelijkheid in uw toepassing:
 
-|Servicetype|Dood|Description|
+|Servicetype|Dood|Beschrijving|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Runtime configuratie|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwoordelijk voor het opgeven van de ID van het exemplaar van de host|
@@ -157,7 +157,7 @@ Het overschrijven van services die door de host worden geboden, wordt momenteel 
 
 De waarden die zijn gedefinieerd in de [app-instellingen](./functions-how-to-use-azure-function-app-settings.md#settings) zijn beschikbaar in een `IConfiguration`-exemplaar, waarmee u waarden voor app-instellingen in de klasse Startup kunt lezen.
 
-U kunt waarden uit het `IConfiguration`-exemplaar in een aangepast type ophalen. Als u de waarden van de app-instellingen naar een aangepast type kopieert, kunt u uw services eenvoudig testen door deze waarden Injecteer te maken. De instellingen die in het configuratie-exemplaar worden gelezen, moeten eenvoudige sleutel-waardeparen zijn.
+U kunt waarden uit het `IConfiguration`-exemplaar extra heren in een aangepast type. Als u de waarden van de app-instellingen naar een aangepast type kopieert, kunt u uw services eenvoudig testen door deze waarden Injecteer te maken. De instellingen die in het configuratie-exemplaar worden gelezen, moeten eenvoudige sleutel-waardeparen zijn.
 
 Houd rekening met de volgende klasse die een eigenschap bevat met de naam consistent met een app-instelling.
 
@@ -168,7 +168,7 @@ public class MyOptions
 }
 ```
 
-Vanuit de `Startup.Configure`-methode kunt u waarden uit het `IConfiguration`-exemplaar in uw aangepaste type extra heren met behulp van de volgende code:
+Vanuit de `Startup.Configure` methode kunt u waarden uit het `IConfiguration`-exemplaar in uw aangepaste type extra heren met behulp van de volgende code:
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
@@ -178,9 +178,9 @@ builder.Services.AddOptions<MyOptions>()
                                            });
 ```
 
-Als `Bind` wordt aangeroepen, worden waarden opgehaald die overeenkomen met eigenschapnamen van de configuratie in het aangepaste exemplaar. Het optie-exemplaar is nu beschikbaar in de IoC-container om in een functie te injecteren.
+Bij het aanroepen `Bind` worden waarden opgehaald die overeenkomen met eigenschapnamen van de configuratie in het aangepaste exemplaar. Het optie-exemplaar is nu beschikbaar in de IoC-container om in een functie te injecteren.
 
-Het object Options wordt in de functie ingevoegd als een instantie van de interface generic `IOptions`. Gebruik de eigenschap `Value` om toegang te krijgen tot de waarden die in uw configuratie zijn gevonden.
+Het object Options wordt in de functie ingevoegd als een exemplaar van de algemene `IOptions`-interface. Gebruik de eigenschap `Value` om toegang te krijgen tot de waarden die in uw configuratie zijn gevonden.
 
 ```csharp
 using System;
@@ -192,7 +192,6 @@ public class HttpTrigger
 
     public HttpTrigger(IOptions<MyOptions> options)
     {
-        _service = service;
         _settings = options.Value;
     }
 }

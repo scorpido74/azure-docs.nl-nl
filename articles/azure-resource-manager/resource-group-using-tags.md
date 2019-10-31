@@ -4,14 +4,14 @@ description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146836"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199146"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Tags gebruiken om uw Azure-resources te organiseren
 
@@ -21,7 +21,7 @@ Om labels toe te passen op resources, moet de gebruiker schrijf toegang hebben t
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="policies"></a>Beleidsregels
+## <a name="policies"></a>Beleid
 
 U kunt [Azure Policy](../governance/policy/overview.md) gebruiken om regels en conventies voor code ring af te dwingen. Door een beleid te maken, vermijdt u het scenario van resources die worden geïmplementeerd in uw abonnement en die niet voldoen aan de verwachte Tags voor uw organisatie. In plaats van labels hand matig toe te passen of te zoeken naar resources die niet compatibel zijn, kunt u een beleid maken waarmee automatisch de benodigde Tags tijdens de implementatie worden toegepast. Labels kunnen nu ook worden toegepast op bestaande resources met het nieuwe [wijzigings](../governance/policy/concepts/effects.md#modify) effect en een [herstel taak](../governance/policy/how-to/remediate-resources.md). In de volgende sectie ziet u voor beelden van beleids regels voor Tags.
 
@@ -151,7 +151,7 @@ Geef een lege hash-tabel door om alle tags te verwijderen:
 Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Gebruik het volgende om de bestaande tags van een *resourcegroep* te bekijken:
 
@@ -180,13 +180,13 @@ Wanneer u een verzameling resources wilt door lopen, kunt u de resource weer gev
 az resource show --id <resource-id> --query tags
 ```
 
-Gebruik `az group list`de volgende informatie om resource groepen met een specifieke tag op te halen:
+Gebruik `az group list`om resource groepen met een specifieke tag op te halen:
 
 ```azurecli
 az group list --tag Dept=IT
 ```
 
-Als u alle resources met een bepaalde tag en waarde wilt ophalen, gebruikt `az resource list`u:
+Als u alle resources met een bepaalde tag en waarde wilt ophalen, gebruikt u `az resource list`:
 
 ```azurecli
 az resource list --tag Dept=Finance
@@ -250,7 +250,7 @@ done
 
 ## <a name="templates"></a>Sjablonen
 
-Als u een resource wilt labelen tijdens de `tags` implementatie, voegt u het element toe aan de resource die u implementeert. Geef de naam en waarde van de tag op.
+Als u een resource wilt labelen tijdens de implementatie, voegt u het `tags`-element toe aan de resource die u implementeert. Geef de naam en waarde van de tag op.
 
 ### <a name="apply-a-literal-value-to-the-tag-name"></a>Een letterlijke waarde toepassen op de tagnaam
 
@@ -361,7 +361,7 @@ Als u veel waarden wilt opslaan in een enkele tag, past u een JSON-tekenreeks to
 
 ### <a name="apply-tags-from-resource-group"></a>Tags Toep assen vanuit de resource groep
 
-Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u de functie [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) . Wanneer u de tag-waarde ophaalt, gebruikt u `tags.tag-name` de `tags.[tag-name]` syntaxis in plaats van de syntaxis, omdat sommige tekens niet goed worden geparseerd in de punt notatie.
+Als u labels van een resource groep wilt Toep assen op een resource, gebruikt u de functie [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) . Wanneer u de tag-waarde ophaalt, gebruikt u de syntaxis `tags.[tag-name]` in plaats van de `tags.tag-name` syntaxis, omdat sommige tekens niet goed worden geparseerd in de punt notatie.
 
 ```json
 {

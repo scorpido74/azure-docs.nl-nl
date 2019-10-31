@@ -36,8 +36,6 @@
           href: ../core/howto-manage-devices-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Een taak uitvoeren
           href: ../core/howto-run-a-job.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
-        - name: Apparaatgroepen gebruiken
-          href: ../core/howto-use-device-groups-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Versie van de sjabloon van het apparaat
           href: ../core/howto-version-device-template-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Bewaking en analytische gegevens

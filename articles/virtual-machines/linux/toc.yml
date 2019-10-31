@@ -379,7 +379,11 @@
         - name: Hoge beschikbaarheid
           href: manage-availability.md
         - name: Een nabijheidsplaatsingsgroep maken
-          href: proximity-placement-groups.md
+          items:
+            - name: CLI
+              href: proximity-placement-groups.md
+            - name: Portal
+              href: ../windows/proximity-placement-groups-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Een virtuele machine maken in de beschikbaarheidszone
           href: create-cli-availability-zone.md
     - name: Automation-hulpprogramma's gebruiken

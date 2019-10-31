@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 31d7299b0c14b35aad7a29c875630d8a7fa4827e
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529167"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200586"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -68,13 +68,7 @@ Elk cluster type heeft een reeks knooppunt typen en elk knooppunt type heeft spe
 
 Als u de optimale cluster grootte voor uw toepassing wilt bepalen, kunt u een bench Mark-cluster capaciteit opgeven en de opgegeven grootte verg Roten. U kunt bijvoorbeeld een gesimuleerde werk belasting of een *Canarische query*gebruiken. Met een gesimuleerde werk belasting voert u uw verwachte workloads uit op verschillende clusters, waardoor de grootte geleidelijk wordt verhoogd tot de gewenste prestaties zijn bereikt. Een Canarische query kan regel matig worden ingevoegd tussen de andere productie query's om weer te geven of het cluster voldoende bronnen heeft.
 
-De grootte en het type van de virtuele machine zijn afhankelijk van CPU-verwerkings kracht, RAM-grootte en netwerk latentie:
-
-* CPU: de grootte van de virtuele machine bepaalt het aantal kernen. Hoe meer kernen, des te groter de mate van parallelle reken kracht van elk knoop punt kan worden gerealiseerd. Daarnaast hebben sommige VM-typen snellere kernen.
-
-* RAM: de VM-grootte bepaalt ook de hoeveelheid RAM-geheugen dat beschikbaar is in de virtuele machine. Voor werk belastingen waarbij gegevens in het geheugen worden opgeslagen voor verwerking, in plaats van de schijf te lezen, moet u ervoor zorgen dat uw worker-knoop punten voldoende geheugen hebben om de gegevens te passen.
-
-* Netwerk: voor de meeste cluster typen worden de gegevens die door het cluster worden verwerkt, niet op de lokale schijf opgeslagen, maar in een externe opslag service, zoals Data Lake Storage of Azure Storage. Houd rekening met de netwerk bandbreedte en door Voer tussen de VM van het knoop punt en de opslag service. De netwerk bandbreedte die beschikbaar is voor een virtuele machine neemt doorgaans toe met grotere grootten. Zie [overzicht van VM-grootten](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)voor meer informatie.
+Zie [de juiste VM-grootte voor uw cluster selecteren](hdinsight-selecting-vm-size.md)voor meer informatie over het kiezen van de juiste VM-serie voor uw werk belasting.
 
 ## <a name="choose-the-cluster-scale"></a>De cluster schaal kiezen
 
@@ -104,10 +98,11 @@ Nadat u de VM-grootte,-schaal en-type van het doel cluster hebt bepaald, control
 1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
 1. Selecteer **Nieuwe ondersteuningsaanvraag**.
 1. Selecteer op de pagina **nieuwe ondersteunings aanvraag** , onder tabblad **basis beginselen** , de volgende opties:
+
    - **Probleem type**: **service-en abonnements limieten (quota's)**
    - **Abonnement**: het abonnement dat u wilt wijzigen
    - **Quotum type**: **HDInsight**
-    
+
      ![Een ondersteunings aanvraag maken om het HDInsight-kern quotum te verhogen](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. Selecteer **volgende: oplossingen > >** .

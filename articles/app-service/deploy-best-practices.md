@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.custom: ''
-ms.openlocfilehash: d1b6444b8512b1b55ac46370e805f8f662f5f555
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070685"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199488"
 ---
 # <a name="deployment-best-practices"></a>Aanbevolen procedures voor implementatie
 
@@ -28,11 +28,11 @@ Elk ontwikkel team heeft unieke vereisten waardoor het implementeren van een eff
 
 ## <a name="deployment-components"></a>Implementatie onderdelen
 
-### <a name="deployment-source"></a>Implementatiebron
+### <a name="deployment-source"></a>Implementatie bron
 
 Een implementatie bron is de locatie van de toepassings code. Voor productie-apps is de implementatie bron meestal een opslag plaats die wordt gehost door versie beheer software [, zoals github, BitBucket of Azure opslag plaatsen](deploy-continuous-deployment.md). Voor ontwikkelings-en test scenario's kan de implementatie bron [een project op uw lokale computer](deploy-local-git.md)zijn. App Service biedt ook ondersteuning voor [OneDrive-en Dropbox-mappen](deploy-content-sync.md) als implementatie bronnen. Met Cloud mappen kunt u gemakkelijk aan de slag met App Service. het wordt doorgaans niet aanbevolen deze bron te gebruiken voor productie toepassingen op ondernemings niveau. 
 
-### <a name="build-pipeline"></a>Build-pipeline
+### <a name="build-pipeline"></a>Pijp lijn bouwen
 
 Wanneer u een implementatie bron hebt gekozen, is de volgende stap het kiezen van een build-pijp lijn. Met een build-pijp lijn wordt de bron code van de implementatie bron gelezen en wordt een reeks stappen uitgevoerd (zoals het compileren van code, het minifying van HTML en Java script, het uitvoeren van tests en het inpakken van onderdelen) om de toepassing in een uitvoer bare-status te verkrijgen. De specifieke opdrachten die worden uitgevoerd door de build-pijp lijn, zijn afhankelijk van uw taal stack. Deze bewerkingen kunnen worden uitgevoerd op een bouw server zoals Azure-pijp lijnen of lokaal worden uitgevoerd.
 
@@ -40,8 +40,8 @@ Wanneer u een implementatie bron hebt gekozen, is de volgende stap het kiezen va
 
 Het implementatie mechanisme is de actie die wordt gebruikt om uw gemaakte toepassing in de */Home/site/wwwroot* -map van uw web-app te zetten. De */wwwroot* Directory is een gekoppelde opslag locatie die wordt gedeeld door alle exemplaren van uw web-app. Wanneer het implementatie mechanisme uw toepassing in deze map plaatst, ontvangen uw instanties een melding voor het synchroniseren van de nieuwe bestanden. App Service ondersteunt de volgende implementatie mechanismen:
 
-- Kudu-eind punten: [Kudu](https://github.com/projectkudu/kudu/wiki) is het open-source hulp programma voor ontwikkel aars dat wordt uitgevoerd als een afzonderlijk proces in Windows app service, en als een tweede container in Linux app service. Kudu verwerkt doorlopende implementaties en biedt HTTP-eind punten voor implementatie, zoals zipdeploy.
-- FTP en Web Deploy: Met de [referenties van uw site of gebruiker](deploy-configure-credentials.md)kunt u bestanden uploaden [via FTP](deploy-ftp.md) of Web Deploy. Deze mechanismen lopen niet via kudu.  
+- Kudu-eind punten: [kudu](https://github.com/projectkudu/kudu/wiki) is het open-source hulp programma voor ontwikkel aars dat wordt uitgevoerd als een afzonderlijk proces in Windows app service, en als een tweede container in Linux app service. Kudu verwerkt doorlopende implementaties en biedt HTTP-eind punten voor implementatie, zoals zipdeploy.
+- FTP en Web Deploy: door gebruik te maken van uw [site-of gebruikers referenties](deploy-configure-credentials.md)kunt u bestanden uploaden [via FTP](deploy-ftp.md) of Web Deploy. Deze mechanismen lopen niet via kudu.  
 
 Implementatie hulpprogramma's, zoals Azure-pijp lijnen, Jenkins en editor-invoeg toepassingen, gebruiken een van deze implementatie mechanismen.
 
@@ -53,11 +53,11 @@ Gebruik de kudu [zipdeploy/](deploy-zip.md) API voor het implementeren van jar-t
 
 ### <a name="node"></a>Knooppunt
 
-Kudu voert standaard de stappen voor het bouwen van de knooppunt toepassing (`npm install`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u `SCM_DO_BUILD_DURING_DEPLOYMENT`een app-instelling, `false`met een waarde van.
+Kudu voert standaard de stappen voor het bouwen van de knooppunt toepassing (`npm install`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u een app-instelling `SCM_DO_BUILD_DURING_DEPLOYMENT`met de waarde `false`.
 
 ### <a name="net"></a>.NET 
 
-Kudu voert standaard de stappen voor het bouwen van uw .NET-toepassing (`dotnet build`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u `SCM_DO_BUILD_DURING_DEPLOYMENT`een app-instelling, `false`met een waarde van.
+Kudu voert standaard de stappen voor het bouwen van uw .NET-toepassing (`dotnet build`) uit. Als u een build-service gebruikt, zoals Azure DevOps, is de kudu-build niet nodig. Als u de kudu-build wilt uitschakelen, maakt u een app-instelling `SCM_DO_BUILD_DURING_DEPLOYMENT`met de waarde `false`.
 
 ## <a name="other-deployment-considerations"></a>Andere overwegingen bij de implementatie
 
@@ -69,7 +69,7 @@ Gebruik waar mogelijk [implementatie sleuven](deploy-staging-slots.md) bij het i
 
 Azure App Service inhoud wordt opgeslagen op Azure Storage en wordt op een duurzame manier als een inhouds share geoppereerd. Sommige apps hebben echter alleen een hoogwaardige, alleen-lezen inhouds opslag nodig die kan worden uitgevoerd met hoge Beschik baarheid. Deze apps kunnen profiteren van het gebruik van [lokale cache](overview-local-cache.md). Lokale cache wordt niet aanbevolen voor content management-sites zoals WordPress.
 
-Gebruik altijd lokale cache in combi natie met [implementatie sleuven] (Deploy-staging-sleuven MD) om uitval tijd te voor komen. Zie [deze sectie](overview-local-cache.md#best-practices-for-using-app-service-local-cache) voor meer informatie over het samen gebruiken van deze functies.
+Gebruik altijd lokale cache in combi natie met [implementatie sleuven](deploy-staging-slots.md) om uitval tijd te voor komen. Zie [deze sectie](overview-local-cache.md#best-practices-for-using-app-service-local-cache) voor meer informatie over het samen gebruiken van deze functies.
 
 ### <a name="high-cpu-or-memory"></a>Hoge CPU of geheugen
 

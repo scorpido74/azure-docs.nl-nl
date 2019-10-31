@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a073a476043fc6570a42cc142e01f2c6f98c7741
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: b88648ce68a7359a842ec975d8633d6200b1a507
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175924"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200138"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor werkmappen gebruiken voor Azure Active Directory rapporten
 
@@ -65,7 +65,7 @@ Als u werkmappen wilt gebruiken, hebt u het volgende nodig:
 - [Toegang](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) tot de log Analytics-werk ruimte
 - De volgende rollen in Azure Active Directory (als u Log Analytics via Azure Active Directory Portal opent)
     - Beveiligingsbeheerder
-    - Beveiligings lezer
+    - Beveiligingslezer
     - Rapport lezer
     - Globale beheerder
 
@@ -73,10 +73,9 @@ Als u werkmappen wilt gebruiken, hebt u het volgende nodig:
 U moet een van de volgende rollen hebben en toegang hebben tot de [onderliggende log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) werk ruimte om de werkmappen te beheren:
 -   Globale beheerder
 -   Beveiligingsbeheerder
--   Beveiligings lezer
+-   Beveiligingslezer
 -   Rapport lezer
 -   Toepassings beheerder
-
 
 ## <a name="workbook-access"></a>Werkmap toegang 
 
@@ -84,16 +83,11 @@ Voor toegang tot werkmappen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-2. Selecteer **Azure Active Directory**in het navigatie deel venster aan de linkerkant.
+1. Navigeer naar **Azure Active Directory** > **bewaking** > **werkmappen**. 
 
-3. Selecteer in de sectie **controle** de optie **werkmappen**. 
+1. Selecteer een rapport of sjabloon of selecteer **openen**op de werk balk. 
 
-    ![Inzichten selecteren](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. Selecteer een rapport of sjabloon of selecteer **openen**op de werk balk. 
-
-    ![Selecteer openen](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![De Azure Monitor werkmappen in azure AD zoeken](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Aanmeldings analyse
 

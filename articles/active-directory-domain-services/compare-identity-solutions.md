@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: f1759bd2cc82073378c5668682f4cecf8482c2d3
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: e3ef082f19f979f1b8b0c2ba4afd9712b34b7321
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042262"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173165"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Zelf-beheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken
 
-Om toepassingen, services of apparaten toegang te geven tot een centrale identiteit, zijn er drie veelgebruikte manieren om op Active Directory gebaseerde services in azure te gebruiken. Deze keuze in identiteits oplossingen biedt u de flexibiliteit om de meest geschikte directory te gebruiken voor de behoeften van uw organisatie. Als u bijvoorbeeld voornamelijk Cloud gebruikers beheert die mobiele apparaten uitvoeren, is het wellicht niet zinvol om uw eigen Active Directory Domain Services-identiteits oplossing te bouwen en uit te voeren. In plaats daarvan kunt u Azure Active Directory gebruiken.
+Om toepassingen, services of apparaten toegang te geven tot een centrale identiteit, zijn er drie veelgebruikte manieren om op Active Directory gebaseerde services in azure te gebruiken. Deze keuze in identiteits oplossingen biedt u de flexibiliteit om de meest geschikte directory te gebruiken voor de behoeften van uw organisatie. Als u voornamelijk alleen Cloud gebruikers beheert die mobiele apparaten uitvoeren, is het wellicht niet zinvol om uw eigen identiteits oplossing voor Active Directory Domain Services (AD DS) te bouwen en uit te voeren. In plaats daarvan kunt u Azure Active Directory gebruiken.
 
 Hoewel de drie op Active Directory gebaseerde identiteits oplossingen een gemeen schappelijke naam en technologie delen, zijn ze ontworpen om services te leveren die voldoen aan verschillende eisen van klanten. Op hoog niveau zijn de volgende identiteits oplossingen en functie sets:
 
@@ -36,12 +36,16 @@ In dit overzichts artikel vindt u informatie over de manier waarop deze identite
 
 Als u toepassingen en services hebt die toegang nodig hebben tot traditionele verificatie mechanismen zoals Kerberos of NTLM, zijn er twee manieren om Active Directory Domain Services in de cloud te bieden:
 
-* Een *beheerd* domein dat u maakt met behulp van Azure Active Directory Domain Services. Micro soft maakt en beheert de vereiste resources.
-* Een *zelf beheerd* domein dat u maakt en configureert met traditionele resources zoals virtuele machines (vm's), Windows Server-gast besturingssysteem en Active Directory Domain Services. U kunt deze resources vervolgens blijven beheren.
+* Een *beheerd* domein dat u maakt met behulp van Azure Active Directory Domain Services (Azure AD DS). Micro soft maakt en beheert de vereiste resources.
+* Een *zelf beheerd* domein dat u maakt en configureert met traditionele resources zoals virtuele machines (vm's), Windows Server-gast besturingssysteem en Active Directory Domain Services (AD DS). U kunt deze resources vervolgens blijven beheren.
 
-Met Azure AD DS worden de belangrijkste service onderdelen door micro soft geïmplementeerd en beheerd als een *beheerde* domein ervaring. U kunt de AD DS-infra structuur voor onderdelen zoals de Vm's, Windows Server-besturings systemen of domein controllers (Dc's) niet implementeren, beheren, patchen en beveiligen. Azure AD DS biedt een kleinere subset van functies voor traditioneel zelf beheerde AD DS omgeving, waardoor de complexiteit van het ontwerp en beheer wordt verminderd. Er zijn bijvoorbeeld geen AD-forests, domein, sites en replicatie koppelingen om te ontwerpen en te onderhouden. Voor toepassingen en services die worden uitgevoerd in de Cloud en toegang moeten hebben tot traditionele verificatie mechanismen zoals Kerberos of NTLM, biedt Azure AD DS een beheerde domein ervaring met de minimale hoeveelheid administratieve overhead.
+Met Azure AD DS worden de belangrijkste service onderdelen door micro soft geïmplementeerd en beheerd als een *beheerde* domein ervaring. U kunt de AD DS-infra structuur voor onderdelen zoals de Vm's, Windows Server-besturings systemen of domein controllers (Dc's) niet implementeren, beheren, patchen en beveiligen.
 
-Wanneer u een zelf-beheerde AD DS omgeving implementeert en uitvoert, moet u alle bijbehorende infra structuur en Directory onderdelen onderhouden. Er is extra onderhouds overhead met een zelfbeheerde AD DS omgeving, maar u kunt vervolgens extra taken uitvoeren, zoals het schema uitbreiden of forest-vertrouwens relaties maken. Algemene implementatie modellen voor een zelf beheerde AD DS omgeving die identiteit biedt aan toepassingen en services in de Cloud, bevatten het volgende:
+ Azure AD DS biedt een kleinere subset van functies voor traditioneel zelf beheerde AD DS omgeving, waardoor de complexiteit van het ontwerp en beheer wordt verminderd. Er zijn bijvoorbeeld geen AD-forests, domein, sites en replicatie koppelingen om te ontwerpen en te onderhouden. Voor toepassingen en services die worden uitgevoerd in de Cloud en toegang moeten hebben tot traditionele verificatie mechanismen zoals Kerberos of NTLM, biedt Azure AD DS een beheerde domein ervaring met de minimale hoeveelheid administratieve overhead.
+
+Wanneer u een zelf-beheerde AD DS omgeving implementeert en uitvoert, moet u alle bijbehorende infra structuur en Directory onderdelen onderhouden. Er is extra onderhouds overhead met een zelfbeheerde AD DS omgeving, maar u kunt vervolgens extra taken uitvoeren, zoals het schema uitbreiden of forest-vertrouwens relaties maken.
+
+Algemene implementatie modellen voor een zelf beheerde AD DS omgeving die identiteit biedt aan toepassingen en services in de Cloud, bevatten het volgende:
 
 * **Zelfstandige alleen-cloud AD DS** : Azure-vm's worden geconfigureerd als domein controllers en er wordt een aparte AD DS omgeving voor de Cloud gemaakt. Deze AD DS omgeving kan niet worden geïntegreerd met een on-premises AD DS omgeving. Er wordt een andere set referenties gebruikt voor het aanmelden bij en het beheren van virtuele machines in de Cloud.
 * **Implementatie van resource-forest** -Azure vm's zijn geconfigureerd als domein controllers en een AD DS domein als onderdeel van een bestaand forest wordt gemaakt. Vervolgens wordt er een vertrouwens relatie geconfigureerd voor een on-premises AD DS omgeving. Andere virtuele machines van Azure kunnen samen voegen met dit bron-forest in de Cloud. Gebruikers verificatie wordt uitgevoerd via een VPN-ExpressRoute verbinding met de on-premises AD DS omgeving.
@@ -70,9 +74,11 @@ De volgende tabel bevat een overzicht van enkele van de functies die u nodig heb
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS en Azure AD
 
-Met Azure AD kunt u de identiteit beheren van apparaten die door de organisatie worden gebruikt en de toegang tot bedrijfs bronnen vanaf deze apparaten regelen. Gebruikers kunnen hun persoonlijke apparaat (een eigen of BYO, model) registreren bij Azure AD, dat het apparaat een identiteit geeft. Azure AD kan vervolgens het apparaat verifiëren wanneer een gebruiker zich aanmeldt bij Azure AD en het apparaat gebruikt voor toegang tot beveiligde bronnen. Het apparaat kan worden beheerd met Mobile Device Management (MDM)-software, zoals Microsoft Intune. Met deze beheer mogelijkheid kunt u de toegang tot gevoelige bronnen beperken tot beheerde en beleids compatibele apparaten.
+Met Azure AD kunt u de identiteit beheren van apparaten die door de organisatie worden gebruikt en de toegang tot bedrijfs bronnen vanaf deze apparaten regelen. Gebruikers kunnen ook hun persoonlijke apparaat (een eigen, of BYO, model) registreren bij Azure AD, dat het apparaat een identiteit geeft. Azure AD verifieert vervolgens het apparaat wanneer een gebruiker zich aanmeldt bij Azure AD en maakt gebruik van het apparaat om toegang te krijgen tot beveiligde bronnen. Het apparaat kan worden beheerd met Mobile Device Management (MDM)-software, zoals Microsoft Intune. Met deze beheer mogelijkheid kunt u de toegang tot gevoelige bronnen beperken tot beheerde en beleids compatibele apparaten.
 
-Traditionele computers en laptops kunnen ook worden toegevoegd aan Azure AD. Dit mechanisme biedt dezelfde voor delen van het registreren van een persoonlijk apparaat met Azure AD, zoals het toestaan van gebruikers om zich aan te melden bij het apparaat met hun bedrijfs referenties. Apparaten die zijn toegevoegd aan Azure AD bieden de volgende voor delen:
+Traditionele computers en laptops kunnen ook worden toegevoegd aan Azure AD. Dit mechanisme biedt dezelfde voor delen van het registreren van een persoonlijk apparaat met Azure AD, zoals het toestaan van gebruikers om zich aan te melden bij het apparaat met hun bedrijfs referenties.
+
+Apparaten die zijn toegevoegd aan Azure AD bieden de volgende voor delen:
 
 * Eenmalige aanmelding (SSO) voor toepassingen die zijn beveiligd met Azure AD.
 * Bedrijfs beleid: congebaseerde roaming van gebruikers instellingen op verschillende apparaten.
@@ -88,7 +94,9 @@ Apparaten kunnen worden gekoppeld aan Azure AD met of zonder een hybride impleme
 | Het apparaat dat eigendom is van de organisatie en niet is gekoppeld aan on-premises AD DS | Windows 10                       | Toegevoegd aan Azure AD        |
 | Apparaat waarvan de organisatie is verbonden met een on-premises AD DS  | Windows 10                       | Hybride Azure AD-join |
 
-Op een met Azure AD toegevoegde of geregistreerde apparaten gebeurt de verificatie van de gebruiker via moderne OAuth/OpenID Connect Connect-protocollen. Deze protocollen zijn ontworpen om via internet te werken. het is dus handig voor mobiele scenario's waarin gebruikers vanaf elke locatie toegang hebben tot bedrijfs bronnen. Met Azure AD DS-apparaten kunnen toepassingen gebruikmaken van de Kerberos-en NTLM-protocollen voor verificatie, zodat oudere toepassingen worden ondersteund die worden gemigreerd om te worden uitgevoerd op virtuele Azure-machines als onderdeel van een lift-en-Shift-strategie. De volgende tabel bevat een overzicht van de verschillen in de weer gave van de apparaten en kan zichzelf verifiëren voor de Directory:
+Op een met Azure AD toegevoegde of geregistreerde apparaten gebeurt de verificatie van de gebruiker via moderne OAuth/OpenID Connect Connect-protocollen. Deze protocollen zijn ontworpen om via internet te werken. het is dus handig voor mobiele scenario's waarin gebruikers vanaf elke locatie toegang hebben tot bedrijfs bronnen.
+
+Met Azure AD DS-apparaten kunnen toepassingen gebruikmaken van de Kerberos-en NTLM-protocollen voor verificatie, zodat oudere toepassingen worden ondersteund die worden gemigreerd om te worden uitgevoerd op virtuele Azure-machines als onderdeel van een lift-en-Shift-strategie. De volgende tabel bevat een overzicht van de verschillen in de weer gave van de apparaten en kan zichzelf verifiëren voor de Directory:
 
 | **-**                      | **Toegevoegd aan Azure AD**                                 | **Azure AD DS-lid**                                                    |
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |

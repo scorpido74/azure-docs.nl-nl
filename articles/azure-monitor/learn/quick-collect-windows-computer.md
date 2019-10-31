@@ -1,5 +1,5 @@
 ---
-title: Gegevens verzamelen van een hybride Windows-computer met Azure Monitor | Microsoft Docs
+title: Gegevens verzamelen van een hybride Windows-computer met Azure Monitor
 description: In deze Quick Start leert u hoe u de Log Analytics-agent kunt implementeren voor Windows-computers die buiten Azure worden uitgevoerd en het verzamelen van gegevens met Azure Monitor-logboeken inschakelen.
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 1b8888c2c8aaedce181d19c015206323ccf2b0ba
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 26919a64313df823dddad5dcfca6de5d08dcd993
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677232"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199025"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gegevens verzamelen van een Windows-computer in een hybride omgeving met Azure Monitor
 
@@ -99,7 +99,7 @@ Met de volgende stappen wordt de agent voor Log Analytics in Azure en Azure Gove
 
 10. Selecteer op de pagina **configuratie is voltooid** de optie **volt ooien**.
 
-Wanneer de installatie en installatie is voltooid, wordt micro soft monitoring agent weer gegeven in het configuratie scherm. U kunt uw configuratie controleren en controleren of de agent is verbonden met de Log Analytics-werk ruimte. Wanneer u verbinding hebt gemaakt, wordt het volgende bericht weer gegeven op het tabblad **Azure log Analytics** : **micro soft monitoring agent heeft verbinding gemaakt met de micro soft log Analytics-service.**<br><br> verbindings status van ![MMA ](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+Wanneer de installatie en installatie is voltooid, wordt micro soft monitoring agent weer gegeven in het configuratie scherm. U kunt uw configuratie controleren en controleren of de agent is verbonden met de Log Analytics-werk ruimte. Wanneer u verbinding hebt gemaakt, wordt het volgende bericht weer gegeven op het tabblad **Azure log Analytics** : **micro soft monitoring agent heeft verbinding gemaakt met de micro soft log Analytics-service.**<br><br> verbindings status van ![MMA](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 ## <a name="collect-event-and-performance-data"></a>Gebeurtenis- en prestatiegegevens verzamelen
 

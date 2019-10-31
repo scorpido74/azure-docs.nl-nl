@@ -4,55 +4,55 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b5d9deacdd4266da30f17c95b6e575a652d2f76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 00d292b3ba2d1b6c7c425d4c9f89188e660ac80d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176077"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182203"
 ---
-In deze procedure maakt u het volgende doen:
+In deze procedure gaat u als volgt te werk:
 
-1. [Voorbereiden om uit te voeren van het uitvoerbare bestand van de Maintainer](#to-prepare-to-run-the-maintainer) .
-2. [De inhoud van de database en de Prullenbak voorbereiden voor onmiddellijke verwijdering van zwevende BLOBs](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs).
-3. [Voer Maintainer.exe](#to-run-the-maintainer).
-4. [Herstellen van de inhoud van de database en de instellingen voor Prullenbak](#to-revert-the-content-database-and-recycle-bin-settings).
+1. [Voorbereiden op het uitvoeren van het uitvoer bare bestand van de onderhouds programma](#to-prepare-to-run-the-maintainer) .
+2. [Bereid de inhouds database en Prullenbak voor voor onmiddellijke verwijdering van zwevende blobs](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs).
+3. [Voer maintainer. exe uit](#to-run-the-maintainer).
+4. [De instellingen voor de inhouds database en de Prullenbak herstellen](#to-revert-the-content-database-and-recycle-bin-settings).
 
-#### <a name="to-prepare-to-run-the-maintainer"></a>Om voor te bereiden om uit te voeren van de Maintainer
-1. Open de SharePoint 2013-beheershell als beheerder op de front-endwebserver.
-2. Navigeer naar de map *opstartschijf*: \Program Files\Microsoft 10.50\Maintainer externe SQL-Blob-opslag\.
-3. Wijzig de naam van **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** naar **web.config**.
-4. Gebruik `aspnet_regiis -pdf connectionStrings` voor het ontsleutelen van het bestand web.config.
-5. In het ontsleutelde web.config-bestand, onder de `connectionStrings` knooppunt, de verbindingsreeks voor uw SQL server-exemplaar en de naam van de inhoud van de database toevoegen. Zie het volgende voorbeeld
+#### <a name="to-prepare-to-run-the-maintainer"></a>Voorbereiden om de onderhouds programma uit te voeren
+1. Open de share point 2013-beheer shell op de front-endwebserver van de web-server als beheerder.
+2. Ga naar het *opstart station*van de map: \Program Files\Microsoft SQL Remote Blob Storage 10,50 \ maintainer\.
+3. Wijzig de naam van **micro soft. data. SqlRemoteBlobs. maintainer. exe. config** in **Web. config**.
+4. Gebruik `aspnet_regiis -pdf connectionStrings` om het bestand Web. config te ontsleutelen.
+5. Voeg in het ontsleutelde web. config-bestand onder het knoop punt `connectionStrings` de connection string voor uw SQL Server-exemplaar en de naam van de inhouds database toe. Zie het volgende voorbeeld
    
-    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
-6. Gebruik `aspnet_regiis –pef connectionStrings` voor het opnieuw versleutelen van het bestand web.config. 
-7. De naam van web.config Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config. 
+    `<add name="RBSMaintainerConnectionWSSContent" connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
+6. Gebruik `aspnet_regiis –pef connectionStrings` om het bestand Web. config opnieuw te versleutelen. 
+7. Wijzig de naam van web. config in micro soft. data. SqlRemoteBlobs. maintainer. exe. config. 
 
-#### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>Als u wilt voorbereiden van de inhoud zwevende-database en de Prullenbak onmiddellijk verwijderen van BLOBs
-1. Op de SQL-Server in SQL Management Studio de volgende update query's uitvoeren voor de doeldatabase voor inhoud: 
+#### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>De inhouds database en Prullenbak voorbereiden om zwevende BLOBs onmiddellijk te verwijderen
+1. Voer op het SQL Server in SQL Management Studio de volgende bijwerk query's uit voor de data base met doel inhoud: 
    
        `use WSS_Content`
    
        `exec mssqlrbs.rbs_sp_set_config_value ‘garbage_collection_time_window’ , ’time 00:00:00’`
    
        `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
-2. Op de front-endwebserver onder **centrale beheersite**, bewerken de **algemene instellingen van webtoepassing** voor de gewenste inhoud van de database tijdelijk uit te schakelen de Prullenbak. Deze actie wordt ook de Prullenbak voor alle siteverzamelingen verwante. Om dit te doen, klikt u op **centrale beheersite** -> **Toepassingsbeheer** -> **Web-Apps (web-apps beheren)**  ->  **SharePoint - 80** -> **algemene toepassingsinstellingen**. Stel de **Status van de Prullenbak** naar **OFF**.
+2. Op de front-end-webserver, onder **Centraal beheer**, bewerkt u de **algemene instellingen voor de webtoepassing** voor de gewenste inhouds database om de Prullenbak tijdelijk uit te scha kelen. Met deze actie wordt ook de Prullenbak voor alle gerelateerde site verzamelingen leeg gelaten. Als u dit wilt doen, klikt u op **Centraal beheer** -> **toepassings beheer** -> **webtoepassingen (** webtoepassingen beheren) -> **share point-80** -> **algemene toepassings instellingen**. Stel de **status** van de Prullenbak in op **uit**.
    
-    ![Algemene instellingen van webtoepassing](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
+    ![Algemene instellingen voor webtoepassingen](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
-#### <a name="to-run-the-maintainer"></a>Om uit te voeren van de Maintainer
-* Op de front-end-webserver, in de SharePoint 2013-beheershell, voer de Maintainer als volgt uit:
+#### <a name="to-run-the-maintainer"></a>De maintainer uitvoeren
+* Voer op de front-end-webserver in de share point 2013-beheer shell de maintainer als volgt uit:
   
       `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
   
   > [!NOTE]
-  > Alleen de `GarbageCollection` bewerking wordt ondersteund voor StorSimple op dit moment. Houd er ook rekening mee dat de parameters die zijn uitgegeven voor Microsoft.Data.SqlRemoteBlobs.Maintainer.exe hoofdlettergevoelig zijn. 
+  > Op dit moment wordt alleen de `GarbageCollection` bewerking ondersteund voor StorSimple. Houd er ook rekening mee dat de para meters die zijn uitgegeven voor micro soft. data. SqlRemoteBlobs. maintainer. exe hoofdletter gevoelig zijn. 
   > 
   > 
 
-#### <a name="to-revert-the-content-database-and-recycle-bin-settings"></a>Om terug te zetten van de inhoud van de database en de instellingen voor Prullenbak
-1. Op de SQL-Server in SQL Management Studio de volgende update query's uitvoeren voor de doeldatabase voor inhoud:
+#### <a name="to-revert-the-content-database-and-recycle-bin-settings"></a>De instellingen voor de inhouds database en de Prullenbak herstellen
+1. Voer op het SQL Server in SQL Management Studio de volgende bijwerk query's uit voor de data base met doel inhoud:
    
       `use WSS_Content`
    
@@ -61,5 +61,5 @@ In deze procedure maakt u het volgende doen:
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. Op de front-endwebserver in **centrale beheersite**, bewerken de **algemene instellingen van webtoepassing** voor de gewenste inhoud van de database opnieuw inschakelen van de Prullenbak. Om dit te doen, klikt u op **centrale beheersite** -> **Toepassingsbeheer** -> **Web-Apps (web-apps beheren)**  ->  **SharePoint - 80** -> **algemene toepassingsinstellingen**. Zet de Status van Recycle Bin op **ON**.
+2. Bewerk op de front-end-webserver in **Centraal beheer**de **algemene instellingen voor de webtoepassing** voor de gewenste inhouds database om de Prullenbak weer in te scha kelen. Als u dit wilt doen, klikt u op **Centraal beheer** -> **toepassings beheer** -> **webtoepassingen (** webtoepassingen beheren) -> **share point-80** -> **algemene toepassings instellingen**. Stel de status van de Prullenbak **in op aan**.
 

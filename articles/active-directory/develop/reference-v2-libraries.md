@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e4199ff15dc63a729a601840e312afeadc8823
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a09f782e9a4d31385868e8383b9b7be83d85d0f0
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678082"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200297"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Micro soft Identity platform-verificatie bibliotheken
 
@@ -38,15 +38,15 @@ U wordt aangeraden bibliotheken te gebruiken die zijn geschreven door protocol d
 
 Het micro soft Identity platform-eind punt werkt met twee typen bibliotheken:
 
-* **Client bibliotheken**: Systeem eigen clients en servers gebruiken client bibliotheken om toegangs tokens te verkrijgen voor het aanroepen van een bron, zoals Microsoft Graph.
-* **Server middleware-bibliotheken**: Web-apps gebruiken middleware-bibliotheken voor gebruikers om zich aan te melden. Web-Api's gebruiken middleware-bibliotheken voor servers om tokens te valideren die door systeem eigen clients of door andere servers worden verzonden.
+* **Client bibliotheken**: native clients en servers gebruiken client bibliotheken om toegangs tokens te verkrijgen voor het aanroepen van een bron, zoals Microsoft Graph.
+* **Server middleware-bibliotheken**: Web-apps gebruiken server middleware-bibliotheken voor aanmelding door gebruikers. Web-Api's gebruiken middleware-bibliotheken voor servers om tokens te valideren die door systeem eigen clients of door andere servers worden verzonden.
 
 ## <a name="library-support"></a>Bibliotheek ondersteuning
 
 Bibliotheken zijn beschikbaar in twee ondersteunings Categorieën:
 
-* **Ondersteund door micro soft**: Micro soft biedt oplossingen voor deze bibliotheken en heeft SDL op deze tape wisselaars toegezien.
-* **Compatibel**: Micro soft heeft deze bibliotheken in de basis scenario's getest en heeft bevestigd dat ze werken met het micro soft Identity platform-eind punt. Micro soft biedt geen oplossingen voor deze bibliotheken en heeft geen beoordeling van deze bibliotheken uitgevoerd. Problemen en functie aanvragen moeten worden omgeleid naar het open-source project van de bibliotheek.
+* **Ondersteund door micro soft**: micro soft biedt oplossingen voor deze bibliotheken en heeft SDL op deze tape wisselaars aangehouden.
+* **Compatibel**: micro soft heeft deze bibliotheken getest in de basis scenario's en heeft bevestigd dat ze werken met het micro soft Identity platform-eind punt. Micro soft biedt geen oplossingen voor deze bibliotheken en heeft geen beoordeling van deze bibliotheken uitgevoerd. Problemen en functie aanvragen moeten worden omgeleid naar het open-source project van de bibliotheek.
 
 Zie de volgende secties voor een lijst met bibliotheken die samen werken met het micro soft Identity platform-eind punt.
 
@@ -56,12 +56,12 @@ Gebruik bibliotheken voor client verificatie voor het verkrijgen van een token v
 
 | Platform | Bibliotheek | Downloaden | Broncode | Voorbeeld | Referentie | Conceptueel document | Roadmap |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [App van één pagina](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Naslaginformatie](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [Conceptuele documenten](msal-overview.md)| [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
+| ![Javascript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [App van één pagina](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Naslaginformatie](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core/docs/classes/_useragentapplication_.useragentapplication.html) | [Conceptuele documenten](msal-overview.md)| [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 |![Angular JS](media/sample-v2-code/logo_angular.png) | MSAL-hoek JS | [NPM](https://www.npmjs.com/package/@azure/msal-angularjs) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md) |  |  | |
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL hoek (preview-versie) | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | | | |
 | ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Bureau blad-app](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Conceptuele documenten](msal-overview.md) | [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL python (preview-versie) | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Voorbeelden](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
-| ![Java](media/sample-v2-code/logo_java.png) | MSAL java (preview-versie) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Voorbeelden](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
+| ![Java](media/sample-v2-code/logo_java.png) | MSAL java (preview-versie) | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Voorbeelden](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Naslaginformatie](https://javadoc.io/doc/com.microsoft.azure/msal4j/0.6.0-preview/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
 | iOS-& macOS | MSAL iOS en macOS | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [IOS-app](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [macOS-app](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Naslaginformatie](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Conceptuele documenten](msal-overview.md) | |
 |![Android/java](media/sample-v2-code/logo_Android.png) | MSAL Android | [Centrale opslag plaats](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android-app](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [Conceptuele documenten](msal-overview.md) |[Roadmap](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
 
@@ -81,9 +81,9 @@ In de periode van ondersteunde besturings systemen versus talen is de toewijzing
 
 |             | Windows    | Linux      | macOS      | iOS | Android    |
 |-------------|------------|------------|------------|------------|------------|
-| ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
+| ![Javascript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
 | <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET, ASP.NET Core, MSAL.Net (.NET FW, Core, UWP)| ASP.NET Core, MSAL.Net (.NET core) | ASP.NET Core, MSAL.Net (MacOS)       | MSAL.Net (Xamarin. iOS) | MSAL.Net (Xamarin. Android)|
-| SWIFT <br> Objective-C |            |            | [MSAL voor iOS en macOS](msal-overview.md) | [MSAL voor iOS en macOS](msal-overview.md) |            |
+| Swift <br> Objective-C |            |            | [MSAL voor iOS en macOS](msal-overview.md) | [MSAL voor iOS en macOS](msal-overview.md) |            |
 | ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
 | ![Python](media/sample-v2-code/logo_python.png) Python | MSAL python | MSAL python | MSAL python |
 | ![Node. js](media/sample-v2-code/logo_nodejs.png) Node.JS | Pass Port. node | Pass Port. node | Pass Port. node |
@@ -94,13 +94,13 @@ Zie ook [scenario's voor ondersteunde platforms en talen](authentication-flows-a
 
 | Platform | Bibliotheek naam | Geteste versie | Broncode | Voorbeeld |
 |:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | Versie 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
+|![Javascript](media/sample-v2-code/logo_js.png)|[Hello. js](https://adodson.com/hello.js/) | Versie 1.13.5 |[Hello. js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
 | ![Java](media/sample-v2-code/logo_java.png) | [Scribe java](https://github.com/scribejava/scribejava) | [Versie 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
 | ![Java](media/sample-v2-code/logo_java.png) | [Gluu OpenID Connect Connect-bibliotheek](https://github.com/GluuFederation/oxAuth) | [Versie 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Gluu OpenID Connect Connect-bibliotheek](https://github.com/GluuFederation/oxAuth) | |
 | ![Python](media/sample-v2-code/logo_python.png) | [Aanvragen-OAuthlib](https://github.com/requests/requests-oauthlib) | [Versie 1.2.0](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Aanvragen-OAuthlib](https://github.com/requests/requests-oauthlib) | |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [openid-client](https://github.com/panva/node-openid-client) | [Versie 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [openid-client](https://github.com/panva/node-openid-client) | |
+| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [OpenID Connect-client](https://github.com/panva/node-openid-client) | [Versie 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [OpenID Connect-client](https://github.com/panva/node-openid-client) | |
 | ![PHP](media/sample-v2-code/logo_php.png) | [De PHP competitie oauth2-client](https://github.com/thephpleague/oauth2-client) | [Versie 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-oauth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
+| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 | iOS, macOS, & Android  | [Verificatie van systeem eigen app reageren](https://github.com/FormidableLabs/react-native-app-auth) | [Versie 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [Verificatie van systeem eigen app reageren](https://github.com/FormidableLabs/react-native-app-auth) | |
 
 U kunt voor elke bibliotheek die voldoet aan de normen, het micro soft Identity platform-eind punt gebruiken. Het is belang rijk om te weten waar u naar ondersteuning moet gaan:

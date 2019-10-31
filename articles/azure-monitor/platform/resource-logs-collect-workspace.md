@@ -1,5 +1,5 @@
 ---
-title: Azure-resource logboeken verzamelen in Log Analytics werk ruimte in Azure Monitor
+title: Azure-resource logboeken verzamelen in Log Analytics werk ruimte
 description: Meer informatie over het streamen van Azure-resource logboeken naar een Log Analytics-werk ruimte in Azure Monitor.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 2f5dba7c36ec04263f6d227d82b9fc50b82890a3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262438"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200503"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-resource logboeken verzamelen in Log Analytics werk ruimte in Azure Monitor
 [Resource logboeken](resource-logs-overview.md) in azure bieden uitgebreide, frequente gegevens over de interne werking van een Azure-resource. In dit artikel wordt beschreven hoe u bron logboeken verzamelt in een Log Analytics-werk ruimte, waarmee u het kunt analyseren met andere bewakings gegevens die zijn verzameld in Azure Monitor logboeken met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. 
@@ -51,14 +51,14 @@ Bekijk het volgende voor beeld waarin Diagnostische instellingen worden verzamel
 
 De tabel AzureDiagnostics ziet er als volgt uit:  
 
-| ResourceProvider    | Category     | A  | B  | C  | D  | E  | V  | O  | H  | I  |
+| ResourceProvider    | Category     | A  | B  | C  | D  | &  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Micro soft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
-| Micro soft. Service1 | ErrorLogs    |    |    |    | q1 | W1 | e1 |    |    |    |
-| Micro soft. Service2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
-| Micro soft. Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Micro soft. Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
-| Micro soft. Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
+| Micro soft. Service1 | Audit logs bevat    | x1 | Y1 | z1 |    |    |    |    |    |    |
+| Micro soft. Service1 | ErrorLogs    |    |    |    | eerste | W1 | E1 |    |    |    |
+| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j1 | K1 | L1 |
+| Micro soft. Service1 | ErrorLogs    |    |    |    | inclusief | Box | E2 |    |    |    |
+| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j3 | k3 | L3 |
+| Micro soft. Service1 | Audit logs bevat    | x5 | y5 waardeveld | z5 |    |    |    |    |    |    |
 | ... |
 
 ### <a name="resource-specific"></a>Resource-specifiek
@@ -68,26 +68,26 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
  
 - Tabel *Service1AuditLogs* als volgt:
 
-    | Resourceprovider | Category | A | B | C |
+    | Resource provider | Category | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | AuditLogs | x1 | y1 | z1 |
-    | Service1 | AuditLogs | x5 | y5 | z5 |
+    | Service1 | Audit logs bevat | x1 | Y1 | z1 |
+    | Service1 | Audit logs bevat | x5 | y5 waardeveld | z5 |
     | ... |
 
 - Tabel *Service1ErrorLogs* als volgt:  
 
-    | Resourceprovider | Category | D | E | V |
+    | Resource provider | Category | D | & | F |
     | -- | -- | -- | -- | -- | 
-    | Service1 | ErrorLogs |  q1 | W1 | e1 |
-    | Service1 | ErrorLogs |  q2 | w2 | e2 |
+    | Service1 | ErrorLogs |  eerste | W1 | E1 |
+    | Service1 | ErrorLogs |  inclusief | Box | E2 |
     | ... |
 
 - Tabel *Service2AuditLogs* als volgt:  
 
-    | Resourceprovider | Category | O | H | I |
+    | Resource provider | Category | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Service2 | AuditLogs | j1 | k1 | l1|
-    | Service2 | AuditLogs | j3 | k3 | l3|
+    | Service2 | Audit logs bevat | j1 | K1 | L1|
+    | Service2 | Audit logs bevat | j3 | k3 | L3|
     | ... |
 
 

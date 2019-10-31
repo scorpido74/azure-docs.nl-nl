@@ -1,5 +1,5 @@
 ---
-title: Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon | Microsoft Docs
+title: Een diagnostische instelling maken in azure met behulp van de Resource Manager-sjabloon
 description: Diagnostische instellingen maken met een resource manager-sjabloon voor het door sturen van Azure-platform logboeken naar Azure Monitor-logboeken, Azure-opslag of Azure Event Hubs.
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597289"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200486"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
 [Platform logboeken](platform-logs-overview.md) in azure bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u informatie over het gebruik van een [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) voor het configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties. Hierdoor kunt u automatisch het verzamelen van platform Logboeken starten wanneer een resource wordt gemaakt.
@@ -59,7 +59,7 @@ Afhankelijk van de [doelen](diagnostic-settings.md#destinations) voor de diagnos
 ```
 
 ### <a name="resources"></a>Bronnen
-In de resources-matrix van de resource waarvoor u de diagnostische instelling wilt maken, voegt u een resource van het type `[resource namespace]/providers/diagnosticSettings` toe. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Voeg de eigenschap `metrics` toe voor het verzamelen van metrische gegevens voor resources aan dezelfde doelen als de [resource metrische gegevens ondersteunt](metrics-supported.md).
+In de resources-matrix van de resource waarvoor u de diagnostische instelling wilt maken, voegt u een resource van het type `[resource namespace]/providers/diagnosticSettings`toe. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Voeg de eigenschap `metrics` toe voor het verzamelen van metrische gegevens voor resources aan dezelfde doelen als de [resource metrische gegevens ondersteunt](metrics-supported.md).
    
 ```json
 "resources": [

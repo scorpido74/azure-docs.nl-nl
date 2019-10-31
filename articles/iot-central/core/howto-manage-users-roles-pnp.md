@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 14789549218d46dc0eb147bc659fce7adba0a9bd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 17dd4862a02a736237257c50802135fb62883d77
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953237"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200613"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>Gebruikers en rollen beheren in uw IoT Central-toepassing (preview-functies)
 
@@ -40,6 +40,9 @@ Zie [Microsoft-account Help](https://support.microsoft.com/products/microsoft-ac
 
     > [!div class="mx-imgBorder"]
     >![gebruiker toevoegen en een rol selecteren](media/howto-manage-users-roles-pnp/add-user-pnp.png)
+
+    > [!NOTE]
+    > Een gebruiker die zich in een aangepaste rol bevindt die de machtiging verleent om andere gebruikers toe te voegen, kan alleen gebruikers toevoegen aan een rol met dezelfde of minder machtigingen dan hun eigen rol.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>De rollen bewerken die aan gebruikers zijn toegewezen
 
@@ -195,6 +198,9 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 | Toevoegen | Weergeven <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
 | Verwijderen | Weergeven <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
 | Volledig beheer | Weer geven, toevoegen, verwijderen <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
+
+> [!NOTE]
+> Een gebruiker die zich in een aangepaste rol bevindt die de machtiging verleent om andere gebruikers toe te voegen, kan alleen gebruikers toevoegen aan een rol met dezelfde of minder machtigingen dan hun eigen rol.
 
 #### <a name="customizing-the-app"></a>De App aanpassen
 

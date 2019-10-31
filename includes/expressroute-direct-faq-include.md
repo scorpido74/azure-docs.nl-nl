@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/07/2019
+ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72023080"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182198"
 ---
 ### <a name="what-is-expressroute-direct"></a>Wat is ExpressRoute Direct?
 
@@ -25,31 +25,7 @@ Klanten moeten samen werken met hun lokale vervoerders en co-locatie providers o
 
 ### <a name="what-locations-currently-support-expressroute-direct"></a>Welke locaties ondersteunen momenteel ExpressRoute direct? 
 
-De beschik bare poorten worden dynamisch en zijn beschikbaar in Power shell om de capaciteit te bekijken. Locaties bevatten en *zijn onderhevig aan wijzigingen op basis van Beschik baarheid*:
-
-* Amsterdam
-* Amsterdam2
-* Auckland 
-* Chicago
-* Dallas
-* Dublin
-* Hong Kong SAR
-* Londen
-* London2
-* Melbourne
-* New York City
-* Perth
-* San Antonio
-* Seattle
-* Seoul
-* Silicon Valley
-* Singapore2 
-* Sydney
-* Taipei
-* Tokio
-* Toronto
-* Washington DC
-* Washington DC2
+Controleer de beschik baarheid op de [pagina Locatie](../articles/expressroute/expressroute-locations-providers.md). 
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Wat is de SLA voor ExpressRoute direct?
 
@@ -57,7 +33,7 @@ ExpressRoute direct maakt gebruik [van dezelfde bedrijfs kwaliteit als ExpressRo
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Welke scenario's moeten klanten overwegen met ExpressRoute direct?  
 
-ExpressRoute direct biedt klanten direct 100 of 10 Gbps poort paren in de globale backbone van micro soft. De scenario's die klanten de beste voor delen bieden, zijn onder andere: Enorme gegevens opname, fysieke isolatie voor gereglementeerde markten en toegewezen capaciteit voor burst-scenario, zoals rendering. 
+ExpressRoute direct biedt klanten direct 100 of 10 Gbps poort paren in de globale backbone van micro soft. De scenario's die klanten de beste voor delen bieden, zijn onder andere: enorme gegevens opname, fysieke isolatie voor gereglementeerde markten en toegewezen capaciteit voor burst-scenario, zoals rendering. 
 
 ### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Wat is het facturerings model voor ExpressRoute direct? 
 

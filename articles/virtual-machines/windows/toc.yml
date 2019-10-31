@@ -447,7 +447,11 @@
         - name: Hoge beschikbaarheid
           href: manage-availability.md
         - name: Een nabijheidsplaatsingsgroep maken
-          href: proximity-placement-groups.md
+          items:
+            - name: Portal
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: Verticaal schalen
           items:
             - name: PowerShell

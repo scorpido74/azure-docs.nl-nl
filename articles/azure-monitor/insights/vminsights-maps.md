@@ -1,5 +1,5 @@
 ---
-title: App-afhankelijkheden weer geven met Azure Monitor voor VM's (preview) | Microsoft Docs
+title: App-afhankelijkheden weer geven met Azure Monitor voor VM's (preview-versie)
 description: De kaart is een functie van Azure Monitor voor VM's. Het detecteert automatisch toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. In dit artikel vindt u informatie over het gebruik van de kaart functie in verschillende scenario's.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: f886ce4ed1b9396cf90bf98626e0cfd2424b2eac
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553776"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199072"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Gebruik de kaart functie van Azure Monitor voor VM's (preview) om inzicht te krijgen in toepassings onderdelen
 In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. U kunt de virtuele machines op twee manieren bekijken. Een kaart rechtstreeks vanuit een virtuele machine weer geven of een kaart van Azure Monitor weer geven om de onderdelen van verschillende Vm's te bekijken. In dit artikel vindt u meer informatie over deze twee weergave methoden en over het gebruik van de kaart functie. 

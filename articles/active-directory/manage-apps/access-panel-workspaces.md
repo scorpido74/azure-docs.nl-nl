@@ -16,19 +16,19 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9efe76f15e2f07495a9d95f69b0c21d2bca4ea8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180548"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199824"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Werk ruimten maken in de portal mijn apps (preview-versie)
 
 Uw gebruikers kunnen de portal mijn apps (preview) gebruiken voor het weer geven en starten van de Cloud toepassingen waartoe ze toegang hebben. Standaard worden alle toepassingen die een gebruiker kan openen, op één pagina weer gegeven. Als u een Azure AD Premium P1-of P2-licentie hebt, kunt u deze pagina beter organiseren voor uw gebruikers. Met een werk ruimte kunt u toepassingen die verwant zijn (bijvoorbeeld op basis van de functie, taak of project) groeperen en weer geven op een afzonderlijk tabblad. In een werk ruimte wordt in feite een filter toegepast op de toepassingen waarmee een gebruiker al toegang heeft, zodat de gebruiker alleen de toepassingen ziet in de werk ruimte die aan hen is toegewezen.
 
 > [!NOTE]
-> In dit artikel wordt beschreven hoe een beheerder werk ruimten kan inschakelen en maken. Zie voor informatie over het gebruik van de portals en werk ruimten van mijn apps [Access en werk ruimten gebruiken](https://docs.microsoft.com/azure/active-directory/user-help/).
+> In dit artikel wordt beschreven hoe een beheerder werk ruimten kan inschakelen en maken. Zie voor informatie over het gebruik van de portals en werk ruimten van mijn apps [Access en werk ruimten gebruiken](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
 ## <a name="enable-my-apps-preview-features"></a>Preview-functies voor mijn apps inschakelen
 

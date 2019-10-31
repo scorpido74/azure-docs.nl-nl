@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00e5e4a9751a03fe961fe02fec28f41b49e5ba43
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175160"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200212"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>Meer informatie over veilige, door Azure beheerde werk stations
 
@@ -91,7 +91,7 @@ Deze richt lijnen verwijzen naar verschillende beveiligings profielen en rollen 
 
 * **Verbeterde beveiliging** : deze op instap niveau beveiligde oplossing is geschikt voor thuis gebruikers, gebruikers van kleine bedrijven en algemene ontwikkel aars.
 
-   Het verbeterde werk station is een op beleid gebaseerde manier om de beveiliging van het lage beveiligings profiel te verhogen. Het biedt een veilige manier om met klant gegevens te werken en ook met productiviteits Programma's zoals e-mail en surfen op internet. U kunt controle beleid en intune gebruiken om een uitgebreid werk station te bewaken voor gebruikers gedrag en profiel gebruik. U implementeert het profiel uitgebreid werk station met het script Windows10 (1809) en maakt gebruik van geavanceerde beveiliging tegen schadelijke software met behulp van [Advanced Threat Protection (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp).
+   Het verbeterde werk station is een op beleid gebaseerde manier om de beveiliging van het lage beveiligings profiel te verhogen. Het biedt een veilige manier om met klant gegevens te werken en ook met productiviteits Programma's zoals e-mail en surfen op internet. U kunt controle beleid en intune gebruiken om een uitgebreid werk station te bewaken voor gebruikers gedrag en profiel gebruik. U implementeert het profiel uitgebreid werk station met het script Windows10 (1809) en maakt gebruik van geavanceerde beveiliging tegen schadelijke software met behulp van [Advanced Threat Protection (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection).
 
 * **Hoge beveiliging** : de meest efficiënte manier om de kwets baarheid van een werk station te beperken, is het verwijderen van de mogelijkheid om het werk station zelf te beheren. Het verwijderen van lokale beheerders rechten is een stap die de beveiliging verbetert, maar kan de productiviteit beïnvloeden als deze onjuist is geïmplementeerd. Het High-Security-profiel is gebaseerd op het verbeterde beveiligings profiel met één belang rijke wijziging: het verwijderen van de lokale beheerder. Dit profiel is bedoeld voor gebruikers met een hoog profiel: leidinggevenden, Sala rissen en gevoelige gegevens gebruikers, goed keurders voor services en processen.
 

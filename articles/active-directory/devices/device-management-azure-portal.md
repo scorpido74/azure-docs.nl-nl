@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860903"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200240"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Apparaat-id's beheren met de Azure Portal
 
@@ -63,7 +63,7 @@ Op de pagina Apparaatinstellingen kunt u het volgende configureren:
 > **Gebruikers mogen apparaten toevoegen aan de Azure AD** -instelling is alleen van toepassing op Azure AD-deelname op Windows 10.
 
 - **Aanvullende lokale beheerders op aan Azure AD gekoppelde apparaten** : u kunt de gebruikers selecteren die lokale beheerders rechten op een apparaat krijgen. Gebruikers die hier worden toegevoegd, worden toegevoegd aan de rol van het *apparaat Administrators* in azure AD. Globale beheerders in azure AD en eigen aren van apparaten krijgen standaard lokale beheerders rechten. Deze optie is een Premium Edition-mogelijkheid die beschikbaar is via producten als Azure AD Premium of de Enter prise Mobility Suite (EMS).
-- **Gebruikers kunnen hun apparaten registreren bij Azure AD** . u moet deze instelling configureren zodat Windows 10 Personal-, Ios-, Android-en macOs-apparaten kunnen worden geregistreerd bij Azure AD. Als u **geen**selecteert, mogen apparaten zich niet registreren bij Azure AD. Inschrijving met Microsoft Intune of Mobile Device Management (MDM) voor Office 365 vereist registratie. Als u een van deze services hebt geconfigureerd **alle** is geselecteerd en **is** niet beschikbaar.
+- **Gebruikers kunnen hun apparaten registreren bij Azure AD** . u moet deze instelling configureren zodat Windows 10 Personal-, Ios-, Android-en macOs-apparaten kunnen worden geregistreerd bij Azure AD. Als u **geen**selecteert, mogen apparaten zich niet registreren bij Azure AD. Inschrijving met Microsoft Intune of Mobile Device Management (MDM) voor Office 365 vereist registratie. Als u een van deze services hebt geconfigureerd, is **Alles** **geselecteerd en is er geen beschikbaar** .
 - **Multi-factor Authentication vereisen voor het toevoegen van apparaten** : u kunt kiezen of gebruikers een extra verificatie factor moeten opgeven om hun apparaat toe te voegen aan Azure AD. De standaard waarde is **Nee**. U wordt aangeraden multi-factor Authentication te vereisen bij het registreren van een apparaat. Voordat u multi-factor Authentication inschakelt voor deze service, moet u ervoor zorgen dat multi-factor Authentication is geconfigureerd voor de gebruikers die hun apparaten registreren. Zie aan de slag [met Azure multi-factor Authentication](../authentication/concept-mfa-whichversion.md)voor meer informatie over de verschillende Azure multi-factor Authentication-Services. 
 
 > [!NOTE]
@@ -74,7 +74,7 @@ Op de pagina Apparaatinstellingen kunt u het volgende configureren:
 > [!NOTE]
 > De instelling **maximum aantal apparaten** is van toepassing op apparaten die zijn geregistreerd bij Azure AD of Azure AD. Deze instelling is niet van toepassing op hybride apparaten die deel uitmaken van Azure AD.
 
-- **Gebruikers kunnen instellingen en app-gegevens synchroniseren via apparaten** -deze instelling is standaard ingesteld op **NONE**. Als u specifieke gebruikers of groepen selecteert, kunnen de instellingen en app-gegevens van de gebruiker worden gesynchroniseerd op hun Windows 10-apparaten. Meer informatie over hoe synchronisatie werkt in Windows 10.
+- **Gebruikers kunnen instellingen en app-gegevens synchroniseren op alle apparaten** . deze instelling is standaard ingesteld op **geen**. Als u specifieke gebruikers of groepen selecteert, kunnen de instellingen en app-gegevens van de gebruiker worden gesynchroniseerd op hun Windows 10-apparaten. Meer informatie over hoe synchronisatie werkt in Windows 10.
 Deze optie is een Premium-functie die beschikbaar is via producten als Azure AD Premium of de Enter prise Mobility Suite (EMS).
 
 ## <a name="locate-devices"></a>Apparaten zoeken
@@ -136,6 +136,7 @@ Als u een apparaat wilt in-of uitschakelen, hebt u twee opties:
 
 - U moet een globale beheerder of een beheerder van een Cloud apparaat in azure AD zijn om een apparaat in-of uit te scha kelen. 
 - Als u een apparaat uitschakelt, kan een apparaat niet worden geverifieerd met Azure AD, waardoor het apparaat geen toegang heeft tot uw Azure AD-resources die worden beschermd door de CA van het apparaat of het gebruik van uw WH4B-referenties.
+- Als u het apparaat uitschakelt, worden zowel het primaire vernieuwings token (PRT) als een vernieuwings token (RT) op het apparaat ingetrokken.
 
 ### <a name="delete-an-azure-ad-device"></a>Een Azure AD-apparaat verwijderen
 
@@ -173,17 +174,17 @@ U kunt de BitLocker-sleutels weer geven en kopiëren om gebruikers te helpen hun
 
 Als u de BitLocker-sleutels wilt bekijken of kopiëren, moet u eigenaar zijn van het apparaat of een gebruiker zijn die ten minste een van de volgende rollen heeft:
 
-- Cloud-apparaatbeheerder
+- Beheerder van Cloud apparaat
 - Globale beheerder
-- Helpdeskbeheerder
+- Helpdesk beheerder
 - Intune-servicebeheerder
-- Beveiligingsbeheerder
-- Beveiligingslezer
+- Beveiligings beheerder
+- Beveiligings lezer
 
 > [!NOTE]
 > Hybride Azure AD-gekoppelde Windows 10-apparaten hebben geen eigenaar. Als u dus op zoek bent naar een apparaat op basis van de eigenaar en niet hebt gevonden, zoekt u op de apparaat-ID.
 
-## <a name="audit-logs"></a>Controlelogboeken
+## <a name="audit-logs"></a>Auditlogboeken
 
 Apparaat-activiteiten zijn beschikbaar via de activiteiten Logboeken. Deze logboeken bevatten activiteiten die worden geactiveerd door de Device Registration service en door gebruikers:
 
@@ -193,7 +194,7 @@ Apparaat-activiteiten zijn beschikbaar via de activiteiten Logboeken. Deze logbo
 
 Uw ingangs punt voor de controle gegevens is **controle logboeken** in het gedeelte **activiteit** van de pagina **apparaten** .
 
-![Controlelogboeken](./media/device-management-azure-portal/61.png)
+![Auditlogboeken](./media/device-management-azure-portal/61.png)
 
 Een controlelogboek heeft een standaardlijstweergave die het volgende laat zien:
 
@@ -202,24 +203,24 @@ Een controlelogboek heeft een standaardlijstweergave die het volgende laat zien:
 - De initiator/Actor (wie) van een activiteit
 - De activiteit (wat)
 
-![Controlelogboeken](./media/device-management-azure-portal/63.png)
+![Auditlogboeken](./media/device-management-azure-portal/63.png)
 
 U kunt de lijstweergave aanpassen door te klikken op **Kolommen** op de werkbalk.
 
-![Controlelogboeken](./media/device-management-azure-portal/64.png)
+![Auditlogboeken](./media/device-management-azure-portal/64.png)
 
 Als u de gerapporteerde gegevens wilt beperken tot een niveau dat geschikt is voor u, kunt u de controlegegevens filteren met de volgende velden:
 
-- Categorie
+- Category
 - Resourcetype van activiteit
 - Activiteit
 - Datumbereik
-- Doel
+- Kiezen
 - Gestart door (actor)
 
 Naast de filters kunt u zoeken naar specifieke vermeldingen.
 
-![Controlelogboeken](./media/device-management-azure-portal/65.png)
+![Auditlogboeken](./media/device-management-azure-portal/65.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

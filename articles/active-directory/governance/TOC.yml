@@ -5,7 +5,7 @@
   items:
     - name: Wat is identiteitsbeheer?
       href: identity-governance-overview.md
-    - name: Wat is rechtenbeheer? (Preview)
+    - name: Wat is rechtenbeheer?
       href: entitlement-management-overview.md
     - name: Wat zijn toegangsbeoordelingen?
       href: access-reviews-overview.md

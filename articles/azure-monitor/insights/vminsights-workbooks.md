@@ -1,5 +1,5 @@
 ---
-title: Interactieve rapporten maken met Azure Monitor werkmappen | Microsoft Docs
+title: Interactieve rapporten maken Azure Monitor voor VM's met werkmappen | Microsoft Docs
 description: Vereenvoudig complexe rapportage met vooraf gedefinieerde en aangepaste werkmappen met para meters voor Azure Monitor voor VM's.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553726"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200545"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Interactieve rapporten maken met Azure Monitor werkmappen
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken Azure Monitor voor VM's met werkmappen
 
 Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), metrische gegevens en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere team leden die toegang hebben tot dezelfde Azure-resources.
 
@@ -105,7 +105,7 @@ Voor het toevoegen van gegevens uit andere Log Analytics werk ruimten of van een
 
 ### <a name="advanced-analytic-query-settings"></a>Geavanceerde instellingen voor analytische query's
 
-Elke sectie heeft zijn eigen geavanceerde instellingen, die toegankelijk zijn via de instellingen ![Workbooks sectie besturings elementen bewerken ](media/vminsights-workbooks/006-settings.png) pictogram rechts van de knop **para meters toevoegen** .
+Elke sectie heeft zijn eigen geavanceerde instellingen, die toegankelijk zijn via de sectie instellingen ![werkmappen bewerkings besturings elementen](media/vminsights-workbooks/006-settings.png) pictogram rechts van de knop **para meters toevoegen** .
 
 ![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/007-settings-expanded.png)
 

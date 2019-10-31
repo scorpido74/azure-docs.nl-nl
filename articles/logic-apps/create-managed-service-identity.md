@@ -9,16 +9,16 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: fdc5340c9affa7137815577af842aa8b43a552a8
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799601"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200625"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Toegang tot Azure-bronnen verifiëren door beheerde identiteiten te gebruiken in Azure Logic Apps
 
-Om toegang te krijgen tot de resources in andere Azure Active Directory (Azure AD)-tenants en uw identiteit te verifiëren zonder zich aan te melden, kan uw logische app gebruikmaken van de door het systeem toegewezen [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI), in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. In dit artikel wordt beschreven hoe u de door het systeem toegewezen beheerde identiteit kunt instellen en gebruiken in uw logische app.
+Om toegang te krijgen tot de resources in andere Azure Active Directory (Azure AD)-tenants en uw identiteit te verifiëren zonder zich aan te melden, kan uw logische app gebruikmaken van de door het systeem toegewezen [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) (voorheen bekend als managed service Identity of MSI), in plaats van referenties of geheimen. Azure beheert deze identiteit voor u en helpt u bij het beveiligen van uw referenties omdat u geen geheimen hoeft op te geven of te draaien. In dit artikel wordt beschreven hoe u de door het systeem toegewezen beheerde identiteit kunt instellen en gebruiken in uw logische app. Beheerde identiteiten werken momenteel alleen met [specifieke ingebouwde triggers en acties](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls), niet beheerde connectors of verbindingen.
 
 Zie de volgende onderwerpen voor meer informatie:
 
@@ -155,7 +155,7 @@ Nadat u een beheerde identiteit hebt ingesteld voor uw logische app, kunt u [die
 
 ## <a name="authenticate-access-with-managed-identity"></a>Toegang verifiëren met beheerde identiteit
 
-Nadat u [de beheerde identiteit voor uw logische app hebt ingeschakeld](#azure-portal-system-logic-app) en [deze identiteit toegang tot de doel resource geeft](#access-other-resources), kunt u die identiteit gebruiken in [Triggers en acties die beheerde identiteiten ondersteunen](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+Nadat u [de beheerde identiteit voor uw logische app hebt ingeschakeld](#azure-portal-system-logic-app) en [deze identiteit toegang geeft tot de doel resource of entiteit](#access-other-resources), kunt u die identiteit gebruiken in [Triggers en acties die beheerde identiteiten ondersteunen](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
 > [!IMPORTANT]
 > Als u een Azure-functie hebt waarbij u de door het systeem toegewezen identiteit wilt gebruiken, moet u eerst [verificatie voor Azure functions inschakelen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
@@ -164,27 +164,34 @@ Deze stappen laten zien hoe u de beheerde identiteit met een trigger of actie ku
 
 1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
 
-1. Als u dit nog niet hebt gedaan, voegt u de trigger of actie toe [die beheerde identiteiten ondersteunt](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+1. Als u dit nog niet hebt gedaan, voegt u de [trigger of actie toe die beheerde identiteiten ondersteunt](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
-   Stel dat u de bewerking voor het maken van een [moment opname-BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) wilt uitvoeren op een BLOB in het Azure Storage account waar u eerder toegang hebt ingesteld voor uw identiteit, maar dat de [Azure Blob Storage-connector](/connectors/azureblob/) deze bewerking momenteel niet biedt. In plaats daarvan kunt u de [http-actie](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) gebruiken om de bewerking of een andere [rest API bewerkingen](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)van de BLOB-service uit te voeren. Voor verificatie kan de HTTP-actie gebruikmaken van de door het systeem toegewezen identiteit die u hebt ingeschakeld voor uw logische app. De HTTP-actie gebruikt deze eigenschappen ook om de resource op te geven die u wilt gebruiken:
+   De HTTP-trigger of actie kan bijvoorbeeld de door het systeem toegewezen identiteit gebruiken die u hebt ingeschakeld voor uw logische app. Over het algemeen gebruikt de HTTP-trigger of actie deze eigenschappen om de resource of entiteit op te geven waartoe u toegang wilt krijgen:
 
-   * De eigenschap **URI** specificeert de eind punt-URL voor toegang tot de Azure-doel resource. Deze URI-syntaxis bevat doorgaans de [resource-id](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) voor de Azure-resource of-service.
+   | Eigenschap | Verplicht | Beschrijving |
+   |----------|----------|-------------|
+   | **Methode** | Ja | De HTTP-methode die wordt gebruikt door de bewerking die u wilt uitvoeren |
+   | **URI** | Ja | De eind punt-URL voor toegang tot de Azure-doel bron of-entiteit. De URI-syntaxis bevat doorgaans de [resource-id](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) voor de Azure-resource of-service. |
+   | **Headers** | Nee | Eventuele header waarden die u nodig hebt of wilt toevoegen in de uitgaande aanvraag, zoals het inhouds type |
+   | **Query's** | Nee | Alle query parameters die u nodig hebt of wilt toevoegen in de aanvraag, zoals de para meter voor een specifieke bewerking of de API-versie voor de bewerking die u wilt uitvoeren |
+   | **Verificatie** | Ja | Het verificatie type dat moet worden gebruikt voor het verifiëren van de toegang tot de doel bron of entiteit |
+   ||||
 
-   * De eigenschap **headers** geeft eventuele header waarden die u nodig hebt of die u wilt gebruiken in de aanvraag, zoals de API-versie voor de bewerking die u wilt uitvoeren op de doel bron.
+   Stel dat u de bewerking voor het maken van een [moment opname-BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob) wilt uitvoeren op een BLOB in het Azure Storage account waar u eerder toegang hebt ingesteld voor uw identiteit. De [Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblob/) biedt deze bewerking echter momenteel niet. In plaats daarvan kunt u deze bewerking uitvoeren met behulp van de [http-actie](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) of een andere [Blob-service rest API bewerking](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs).
 
-   * De eigenschap **query's** geeft alle query parameters op die u moet gebruiken in de aanvraag, zoals de para meter voor een specifieke bewerking of een specifieke API-versie wanneer dit nodig is.
+   > [!IMPORTANT]
+   > Om toegang te krijgen tot Azure Storage-accounts achter firewalls met behulp van HTTP-aanvragen en beheerde identiteiten, moet u ervoor zorgen dat u ook uw opslag account hebt ingesteld met de [uitzonde ring die toegang verleent aan vertrouwde micro soft-Services](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service).
 
-   Met de HTTP-actie geeft u de volgende eigenschappen op om de bewerking van de [moment opname-BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)uit te voeren:
+   Als u de [BLOB-bewerking van de moment opname](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob)wilt uitvoeren, geeft de http-actie deze eigenschappen op:
 
-   * **Methode**: Hiermee geeft u de `PUT` bewerking.
-
-   * **URI**: Hiermee geeft u de resource-id voor een Azure Blob Storage-bestand op in de Azure Global (open bare) omgeving en gebruikt deze syntaxis:
-
-     `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}`
-
-   * **Headers**: Hiermee geeft u `x-ms-blob-type` als `BlockBlob` en `x-ms-version` als `2019-02-02` voor de BLOB-bewerking van de moment opname. Zie [aanvraag headers-moment opname-BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) en [versie beheer voor Azure Storage services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services)voor meer informatie.
-
-   * **Query's**: Hiermee geeft u `comp` als de naam van de query parameter en `snapshot` als parameter waarde.
+   | Eigenschap | Verplicht | Voorbeeldwaarde | Beschrijving |
+   |----------|----------|---------------|-------------|
+   | **Methode** | Ja | `PUT`| De HTTP-methode die wordt gebruikt door de BLOB-bewerking van de moment opname |
+   | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | De resource-ID voor een Azure Blob Storage-bestand in de Azure Global (open bare) omgeving, die gebruikmaakt van deze syntaxis |
+   | **Headers** | Ja, voor Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | De waarden voor de `x-ms-blob-type`-en `x-ms-version`-header die vereist zijn voor Azure Storage bewerkingen. <p><p>**Belang rijk**: in uitgaande HTTP-trigger-en actie aanvragen voor Azure Storage vereist de header de `x-ms-version`-eigenschap en de API-versie voor de bewerking die u wilt uitvoeren. <p>Zie de volgende onderwerpen voor meer informatie: <p><p>Aanvraag headers voor de - [-moment opname-BLOB](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>- [versie beheer voor Azure Storage services](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Query's** | Ja, voor deze bewerking | `comp` = `snapshot` | De naam en waarde van de query parameter voor de BLOB-bewerking van de moment opname. |
+   | **Verificatie** | Ja | `Managed Identity` | Het verificatie type dat moet worden gebruikt voor het verifiëren van toegang tot de Azure-Blob |
+   |||||
 
    Hier volgt een voor beeld van een HTTP-actie waarin al deze eigenschaps waarden worden weer gegeven:
 

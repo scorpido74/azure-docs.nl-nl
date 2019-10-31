@@ -16,12 +16,12 @@ ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf254f06c14afa7ee32f27d6632ab33665cf31c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: HT
+ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173456"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199799"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Toegangs aanvragen goed keuren of weigeren in azure AD-rechts beheer
 
@@ -35,7 +35,7 @@ De eerste stap voor het goed keuren of weigeren van toegangs aanvragen is het zo
 
 1. Zoek naar een e-mail bericht van Microsoft Azure waarin u wordt gevraagd of u een aanvraag wilt goed keuren of weigeren. Hier volgt een voor beeld van een e-mail bericht:
 
-    ![Aanvraag voor toegang tot pakket e-mail goed keuren](./media/entitlement-management-shared/email-approve-request.png)
+    ![Aanvraag voor toegang tot pakket e-mail goed keuren](./media/entitlement-management-shared/approver-request-email.png)
 
 1. Klik op de koppeling **aanvraag goed keuren of weigeren** om de toegangs aanvraag te openen.
 

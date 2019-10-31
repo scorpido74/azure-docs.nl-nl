@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: fd2b3a8a09ce69c07cc7d4715a4aaeacf64f0817
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273868"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200651"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Een beheerde installatie kopie maken van een gegeneraliseerde VM in azure
 
@@ -44,7 +44,7 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 1. Meld u aan bij uw Windows-VM.
    
-2. Open een opdracht prompt venster als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer uit `sysprep.exe`.
+2. Open een opdracht prompt venster als beheerder. Wijzig de Directory in%windir%\system32\sysprep en voer `sysprep.exe`uit.
    
 3. In het dialoog venster **hulp programma voor systeem voorbereiding** selecteert u **systeem out-of-Box Experience (OOBE) opgeven** en schakelt u het selectie vakje **generalize** in.
    
@@ -56,10 +56,21 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 6. Wanneer Sysprep is voltooid, wordt de VM afgesloten. Start de virtuele machine niet opnieuw op.
 
+> [!TIP]
+> **Optioneel** Gebruik [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) om uw installatie kopie te optimaliseren en de eerste opstart tijd van uw VM te verlagen.
+>
+> Als u uw installatie kopie wilt optimaliseren, koppelt u uw VHD door erop te dubbel klikken in Windows Verkenner en voert u vervolgens DISM uit met de para meter `/optimize-image`.
+>
+> ```cmd
+> DISM /image:D:\ /optimize-image /boot
+> ```
+> Waarbij D: het gekoppelde VHD-pad is.
+>
+> Het uitvoeren van `DISM /optimize-image` moet de laatste wijziging zijn die u in uw VHD aanbrengt. Als u voorafgaand aan de implementatie wijzigingen in uw VHD aanbrengt, moet u `DISM /optimize-image` opnieuw uitvoeren.
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Een beheerde installatie kopie maken in de portal 
 
-1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **virtuele machines** in het menu aan de linkerkant en selecteer vervolgens de virtuele machine in de lijst.
 
@@ -87,11 +98,11 @@ Voer de volgende stappen uit om uw Windows-VM te generaliseren:
 
 Als u een installatie kopie rechtstreeks vanuit de VM maakt, zorgt u ervoor dat de installatie kopie alle schijven bevat die zijn gekoppeld aan de virtuele machine, inclusief de besturingssysteem schijf en alle gegevens schijven. In dit voor beeld ziet u hoe u een beheerde installatie kopie maakt op basis van een virtuele machine die gebruikmaakt van beheerde schijven.
 
-Voordat u begint, moet u ervoor zorgen dat u de nieuwste versie van de module Azure PowerShell hebt. Voer `Get-Module -ListAvailable Az` in Power shell uit om de versie te vinden. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell op Windows installeren met PowerShellGet](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, voert `Connect-AzAccount` u uit om een verbinding te maken met Azure.
+Voordat u begint, moet u ervoor zorgen dat u de nieuwste versie van de module Azure PowerShell hebt. Voer `Get-Module -ListAvailable Az` in Power shell uit om de versie te vinden. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell op Windows installeren met PowerShellGet](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, voert u `Connect-AzAccount` uit om een verbinding te maken met Azure.
 
 
 > [!NOTE]
-> Als u uw installatie kopie wilt opslaan in zone-redundante opslag, moet u deze maken in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de `-ZoneResilient` para meter in de installatie kopie configuratie (`New-AzImageConfig` opdracht) bevatten.
+> Als u uw installatie kopie wilt opslaan in een zone-redundante opslag, moet u deze maken in een regio die [beschikbaarheids zones](../../availability-zones/az-overview.md) ondersteunt en de para meter `-ZoneResilient` toevoegen in de installatie kopie configuratie (`New-AzImageConfig` opdracht).
 
 Voer de volgende stappen uit om een VM-installatie kopie te maken:
 
@@ -207,7 +218,7 @@ U kunt een beheerde installatie kopie maken op basis van een moment opname van e
 
 ## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Een installatie kopie maken van een virtuele machine die gebruikmaakt van een opslag account
 
-Als u een beheerde installatie kopie wilt maken op basis van een virtuele machine die geen beheerde schijven gebruikt, hebt u de URI van de besturingssysteem-VHD in het opslag account nodig, in de volgende indeling: https://*mystorageaccount*. blob.core.Windows.net/*vhdcontainer* /  *vhdfilename. VHD*. In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
+Als u een beheerde installatie kopie wilt maken op basis van een virtuele machine die geen beheerde schijven gebruikt, hebt u de URI van de besturingssysteem-VHD in het opslag account nodig, in de volgende indeling: https://*mystorageaccount*. blob.core.windows.net/*vhdcontainer*/*vhdfilename. VHD* . In dit voor beeld bevindt de VHD zich in *mystorageaccount*, in een container met de naam *VHDCONTAINER*en de VHD-bestands naam *vhdfilename. VHD*.
 
 
 1.  Maak enkele variabelen.

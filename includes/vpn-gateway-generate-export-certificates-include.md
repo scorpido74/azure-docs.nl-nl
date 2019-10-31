@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cf384f29bcc82c80c94e1408f535c592b8b728cb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 89fa06dda418f328b3bc07aada49aa347e35220a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285722"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182202"
 ---
 ## <a name="rootcert"></a>Een zelfondertekend basis certificaat maken
 
@@ -58,7 +58,7 @@ Als u aanvullende client certificaten maakt of de Power shell-sessie die u hebt 
 1. Identificeer het zelfondertekende basis certificaat dat op de computer is geïnstalleerd. Deze cmdlet retourneert een lijst met certificaten die op uw computer zijn geïnstalleerd.
 
    ```powershell
-   Get-ChildItem -Path “Cert:\CurrentUser\My”
+   Get-ChildItem -Path "Cert:\CurrentUser\My"
    ```
 2. Zoek de onderwerpnaam in de lijst die wordt weer gegeven en kopieer de vinger afdruk die zich ernaast bevindt, naar een tekst bestand. In het volgende voor beeld zijn er twee certificaten. De CN-naam is de naam van het zelfondertekende basis certificaat van waaruit u een onderliggend certificaat wilt genereren. In dit geval ' P2SRootCert '.
 

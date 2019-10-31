@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391612"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182205"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -140,7 +140,7 @@ Een i/o-aanvraag is een eenheid voor invoer/uitvoer die door uw toepassing wordt
 I/o-grootte is een van de belang rijke factoren. De i/o-grootte is de grootte van de invoer-en uitvoer bewerkings aanvraag die wordt gegenereerd door uw toepassing. De i/o-grootte heeft een grote invloed op de prestaties, met name op de IOPS en band breedte die de toepassing kan krijgen. In de volgende formule ziet u de relatie tussen IOPS, i/o-grootte en band breedte/door voer.  
     ![](media/premium-storage-performance/image1.png)
 
-Sommige toepassingen bieden u de mogelijkheid om hun IO-grootte te wijzigen, terwijl sommige toepassingen dat niet doen. SQL Server bepaalt bijvoorbeeld de optimale IO-grootte zelf, en biedt gebruikers geen knoppen om deze te wijzigen. Anderzijds biedt Oracle een para meter met de naam [db @ no__t-1BLOCK @ no__t-2SIZE,](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) waarmee u de I/O-aanvraag grootte van de Data Base kunt configureren.
+Sommige toepassingen bieden u de mogelijkheid om hun IO-grootte te wijzigen, terwijl sommige toepassingen dat niet doen. SQL Server bepaalt bijvoorbeeld de optimale IO-grootte zelf, en biedt gebruikers geen knoppen om deze te wijzigen. Anderzijds biedt Oracle een para meter met de naam [DB\_blok\_grootte](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , waarmee u de I/O-aanvraag grootte van de Data Base kunt configureren.
 
 Als u een toepassing gebruikt die u niet toestaat de i/o-grootte te wijzigen, gebruikt u de richt lijnen in dit artikel om de prestatie-KPI te optimaliseren die het meest relevant is voor uw toepassing. Bijvoorbeeld:
 
@@ -189,15 +189,15 @@ Stel dat een toepassings vereiste een maximum van 4.000 IOPS is. U kunt dit doen
 *Kosten van bewerking*  
 In veel gevallen is het mogelijk dat uw totale kosten voor bewerking met behulp van Premium Storage lager zijn dan het gebruik van standaard opslag.
 
-Denk bijvoorbeeld aan een toepassing die 16.000 IOPS vereist. Voor deze prestaties hebt u een standaard @ no__t-0D14 Azure IaaS-VM nodig. Dit kan een maximale IOPS van 16.000 geven met behulp van 32 Standard Storage 1 TB schijven. Elke standaard opslag schijf van 1 TB kan Maxi maal 500 IOPS beslaan. De geschatte kosten van deze virtuele machine per maand zijn $1.570. De maandelijkse kosten van 32 standaard opslag schijven zijn $1.638. De geschatte totale maandelijkse kosten worden $3.208.
+Denk bijvoorbeeld aan een toepassing die 16.000 IOPS vereist. Voor deze prestaties hebt u een Standard-\_D14 Azure IaaS VM nodig. Dit kan een maximale IOPS van 16.000 bieden met behulp van 32 Standard Storage 1 TB schijven. Elke standaard opslag schijf van 1 TB kan Maxi maal 500 IOPS beslaan. De geschatte kosten van deze virtuele machine per maand zijn $1.570. De maandelijkse kosten van 32 standaard opslag schijven zijn $1.638. De geschatte totale maandelijkse kosten worden $3.208.
 
-Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een kleinere VM-grootte en minder Premium-opslag schijven nodig, waardoor de totale kosten worden verminderd. Een standaard-VM van @ no__t-0DS13 kan voldoen aan de 16.000 IOPS-vereiste met behulp van vier P30-schijven. De DS13-VM heeft een maximale IOPS van 25.600 en elke P30-schijf heeft een maximale IOPS van 5.000. Over het algemeen kan deze configuratie 5.000 x 4 = 20.000 IOPS behaalt. De geschatte kosten van deze virtuele machine per maand zijn $1.003. De maandelijkse kosten van vier P30 Premium-opslag schijven worden $544,34. De geschatte totale maandelijkse kosten worden $1.544.
+Als u echter dezelfde toepassing op Premium Storage hebt gehost, hebt u een kleinere VM-grootte en minder Premium-opslag schijven nodig, waardoor de totale kosten worden verminderd. Een standaard\_DS13 VM kan voldoen aan de 16.000 IOPS-vereiste met behulp van vier P30-schijven. De DS13-VM heeft een maximale IOPS van 25.600 en elke P30-schijf heeft een maximale IOPS van 5.000. Over het algemeen kan deze configuratie 5.000 x 4 = 20.000 IOPS behaalt. De geschatte kosten van deze virtuele machine per maand zijn $1.003. De maandelijkse kosten van vier P30 Premium-opslag schijven worden $544,34. De geschatte totale maandelijkse kosten worden $1.544.
 
 Onderstaande tabel bevat een overzicht van de kosten analyse van dit scenario voor Standard en Premium Storage.
 
 | &nbsp; | **Standard** | **Premium** |
 | --- | --- | --- |
-| **Kosten van VM per maand** |$1.570,58 (standaard @ no__t-0D14) |$1.003,66 (standaard @ no__t-0DS13) |
+| **Kosten van VM per maand** |$1.570,58 (Standard\_D14) |$1.003,66 (Standard\_DS13) |
 | **Kosten van schijven per maand** |$1.638,40 (32 x 1 TB schijven) |$544,34 (4 x P30 schijven) |
 | **Totale kosten per maand** |$3.208,98 |$1.544,34 |
 
@@ -298,12 +298,12 @@ Voor sommige versies is de meest recente LIS (Linux Integration Services), v 4.0
 | SUSE | SLES 12 of hoger| 3.12.36-38.1 + | SuSE-SLES-12-Priority-v20150213 <br> SuSE-SLES-12-v20150213 |
 | SUSE | SLES 11 SP4 of nieuwer| 3.0.101-0.63.1 + | &nbsp; |
 | CoreOS | 584.0.0 + of hoger| 3.18.4 + | CoreOS 584.0.0 |
-| CentOS | 6,5, 6,6, 6,7, 7,0 of nieuwer| &nbsp; | [LIS4 vereist](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zie de opmerking in het volgende gedeelte* |
-| CentOS | 7.1 + of hoger| 3.10.0-229.1.2. EL7 + | [LIS4 aanbevolen](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zie de opmerking in het volgende gedeelte* |
+| CentOS | 6,5, 6,6, 6,7, 7,0 of nieuwer| &nbsp; | [LIS4 vereist](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Zie de opmerking in het volgende gedeelte* |
+| CentOS | 7.1 + of hoger| 3.10.0-229.1.2. EL7 + | [LIS4 aanbevolen](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Zie de opmerking in het volgende gedeelte* |
 | Red Hat Enterprise Linux (RHEL) | 6,8 +, 7,2 + of hoger | &nbsp; | &nbsp; |
 | Oracle | 6.0 +, 7.2 + of nieuwer | &nbsp; | UEK4 of RHCK |
-| Oracle | 7.0-7.1 of hoger | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6,7 of hoger | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 7.0-7.1 of hoger | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 6.4-6,7 of hoger | &nbsp; | UEK4 of RHCK w/[Lis 4.1 +](https://www.microsoft.com/download/details.aspx?id=51612) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>LIS-Stuur Programma's voor open Logic CentOS
 
