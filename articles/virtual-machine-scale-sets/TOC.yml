@@ -125,6 +125,8 @@
     - name: Onderhoud en updates
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: Indelingsmodi
+      href: orchestration-modes.md
     - name: File Storage
       items:
         - name: Beheerde schijven

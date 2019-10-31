@@ -38,6 +38,8 @@
       href: spring-cloud-quotas.md
     - name: Informatie over metrische gegevens in Azure Spring Cloud
       href: spring-cloud-concept-metrics.md
+    - name: Herstel na noodgeval plannen
+      href: disaster-recovery.md
 - name: Handleidingen
   items:
     - name: 'Een Azure Spring Cloud-toepassing starten, stoppen en verwijderen'

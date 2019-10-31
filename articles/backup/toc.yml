@@ -232,6 +232,8 @@
           href: backup-azure-restore-windows-server.md
         - name: Windows Server-systeemstatus herstellen
           href: backup-azure-restore-system-state.md
+        - name: Back-ups van Windows Server-bestanden en -mappen beheren
+          href: backup-azure-manage-mars.md
     - name: Recovery Services-kluis
       items:
         - name: Overzicht van Recovery Services-kluizen

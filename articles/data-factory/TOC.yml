@@ -82,7 +82,7 @@
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
     - name: Gegevens transformeren met toewijzingsgegevensstroom
       href: tutorial-data-flow.md
-    - name: Gegevens in de cloud transformeren
+    - name: Externe transformaties
       items:
         - name: HDInsight Spark
           items:
@@ -94,7 +94,7 @@
           items:
             - name: Gebruikersinterface (UI)
               href: transform-data-using-databricks-notebook.md
-    - name: Gegevens in virtueel netwerk transformeren
+    - name: Hive-transformatie in virtueel netwerk
       items:
         - name: Gebruikersinterface (UI)
           href: tutorial-transform-data-hive-virtual-network-portal.md
@@ -622,6 +622,8 @@
       items:
         - name: Tekstbestanden met een vaste breedte verwerken
           href: how-to-fixed-width.md
+        - name: Verwerking van foutrijen
+          href: how-to-data-flow-error-rows.md
     - name: SSIS-migratie van on-premises
       items:
         - name: Overzicht SSIS-gegevensmigratie

@@ -137,6 +137,8 @@
               href: ./hdinsight-autoscale-clusters.md
             - name: Externe metagegevensopslag gebruiken
               href: ./hdinsight-use-external-metadata-stores.md
+            - name: Aangepaste Ambari-database
+              href: ./hdinsight-custom-ambari-db.md
             - name: Logboeken beheren voor een HDInsight-cluster
               href: ./hdinsight-log-management.md
             - name: Opslagaccounts toevoegen

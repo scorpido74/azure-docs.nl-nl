@@ -27,6 +27,8 @@
       href: storage-files-planning.md
     - name: Planning voor de implementatie van Azure Files Sync
       href: storage-sync-files-planning.md
+    - name: Aandachtspunten voor netwerken voor directe toegang
+      href: storage-files-networking-overview.md
     - name: Over opslag in cloudlagen
       href: storage-sync-cloud-tiering.md
     - name: Over opslagaccounts
@@ -101,6 +103,8 @@
           href: storage-sync-files-deployment-guide.md
         - name: Proxy- en firewallinstellingen van File Sync configureren
           href: storage-sync-files-firewall-and-proxy.md
+        - name: SQL Server FCI met Premium-bestandsshares
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Koppelen
       items:
         - name: Azure Files gebruiken met Windows
@@ -109,6 +113,14 @@
           href: storage-how-to-use-files-linux.md
         - name: Azure Files gebruiken met macOS
           href: storage-how-to-use-files-mac.md
+    - name: Netwerk
+      items:
+        - name: Site-naar-site-VPN configureren
+          href: storage-files-configure-s2s-vpn.md
+        - name: Punt-naar-site-VPN configureren in Windows
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: Punt-naar-site-VPN configureren in Linux
+          href: storage-files-configure-p2s-vpn-linux.md
     - name: Beheren
       items:
         - name: Een server registreren bij Azure Files Sync
@@ -169,6 +181,8 @@
           href: storage-troubleshooting-files-performance.md
         - name: Problemen met Azure Files Sync oplossen
           href: storage-sync-files-troubleshoot.md
+        - name: Problemen met het verwijderen van Azure Files oplossen
+          href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

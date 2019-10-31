@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: Aanbevelingen voor bandbreedte voor externe sessies
       href: bandwidth-recommendations.md
+    - name: Latentie van gebruikersverbinding bepalen
+      href: connection-latency.md
     - name: Gedelegeerde toegang in Windows Virtual Desktop
       href: delegated-access-virtual-desktop.md
     - name: Taakverdelingsmethoden voor hostpool
