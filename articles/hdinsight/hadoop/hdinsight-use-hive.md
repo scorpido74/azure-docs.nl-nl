@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/31/2019
 ms.locfileid: "72167352"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Wat is Apache Hive en HiveQL in azure HDInsight?
@@ -173,7 +173,7 @@ Met deze instructies worden de volgende acties uitgevoerd:
 
 * `STORED AS ORC`: de gegevens worden opgeslagen in de ORC-indeling (Optimized Row in kolommen). ORC is een zeer geoptimaliseerde en efficiënte indeling voor het opslaan van Hive-gegevens.
 
-* `INSERT OVERWRITE ... SELECT`: selecteert rijen uit de **log4jLogs** -tabel met **[error]** en voegt vervolgens de gegevens in de tabel **errorLogs** in.
+* `INSERT OVERWRITE ... SELECT`: selecteert rijen uit de tabel **log4jLogs** met **[error]** en voegt vervolgens de gegevens in de tabel **errorLogs** in.
 
 > [!NOTE]  
 > In tegens telling tot externe tabellen verwijdert het verwijderen van een interne tabel ook de onderliggende gegevens.
