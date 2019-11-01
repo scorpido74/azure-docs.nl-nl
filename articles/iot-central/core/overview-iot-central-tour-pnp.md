@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0bd078e8c920ca1ebe01767915036ca84650aadd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e012f595dbd12ba3f85045293420329352d30373
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958194"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176234"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Volg een rond leiding door de Azure IoT Central-gebruikers interface (preview-functies)
 
@@ -138,7 +138,7 @@ Zie de zelf studie [uw apparaten bewaken](tutorial-monitor-devices.md?toc=/azure
 > [!div class="mx-imgBorder"]
 > ![pagina apparaatgroepen](media/overview-iot-central-tour-pnp/device-groups-pnp.png)
 
-Apparaatgroep is een verzameling van gerelateerde apparaten. Een *oplossings functie voor oplossingen* definieert een query voor het identificeren van de apparaten die zijn opgenomen in een apparaatgroep. U gebruikt apparaatgroepen om bulk bewerkingen uit te voeren in uw toepassing. Zie voor meer informatie het artikel apparaatgroepen [gebruiken in uw Azure IOT Central-toepassing](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
+Apparaatgroep is een verzameling van gerelateerde apparaten. Een *oplossings functie voor oplossingen* definieert een query voor het identificeren van de apparaten die zijn opgenomen in een apparaatgroep. U gebruikt apparaatgroepen om bulk bewerkingen uit te voeren in uw toepassing. Zie voor meer informatie het artikel apparaatgroepen [gebruiken in uw Azure IOT Central-toepassing](tutorial-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
 
 ### <a name="rules"></a>Regels
 > [!div class="mx-imgBorder"]
@@ -151,7 +151,7 @@ Op de pagina regels kunt u regels definiëren op basis van de telemetrie, status
 > [!div class="mx-imgBorder"]
 > ![Analytics-pagina](media/overview-iot-central-tour-pnp/analytics-pnp.png)
 
-Met de analyse kunt u aangepaste weer gaven maken boven op de apparaatgegevens om inzichten uit uw toepassing af te leiden. Raadpleeg voor meer informatie het artikel [Create custom analytics for your Azure IoT Central application](howto-use-device-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) (Aangepaste analyses maken voor uw Azure IoT Central-toepassing).
+Met de analyse kunt u aangepaste weer gaven maken boven op de apparaatgegevens om inzichten uit uw toepassing af te leiden. Zie het artikel [Analytics maken voor uw Azure IOT Central-toepassing](howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) voor meer informatie.
 
 ### <a name="jobs"></a>Taken
 

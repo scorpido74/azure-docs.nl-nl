@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d7d2ad6adefb83c3c313063a9e630458ccebc5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 07c1d6e3c622a76a1e625962ad5f08d414ad8cef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851771"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175038"
 ---
 # <a name="what-is-a-device-identity"></a>Wat is een apparaat-id?
 
@@ -56,7 +56,7 @@ U hebt meerdere opties om een apparaat in azure AD op te halen:
 
 Apparaten in azure AD kunnen worden beheerd met behulp van Mobile Device Management (MDM)-hulpprogram ma's zoals Microsoft Intune, System Center Configuration Manager, groepsbeleid (Hybrid Azure AD-deelname), Mobile Application Management-hulpprogram ma's (MAM) of andere hulpprogram ma's van derden.
 
-## <a name="resource-access"></a>Brontoegang
+## <a name="resource-access"></a>Toegang tot bronnen
 
 Registreren en samen voegen bieden uw gebruikers naadloze aanmelding (SSO) voor cloud resources en beheerders de mogelijkheid om beleid voor voorwaardelijke toegang toe te passen op deze resources. 
 
@@ -66,14 +66,14 @@ Apparaten die zijn toegevoegd aan Azure AD of hybride Azure AD, profiteren van e
 
 - **Geregistreerde apparaten van Azure AD** gebruiken een account dat wordt beheerd door de eind gebruiker. dit account is een Microsoft-account of een andere lokaal beheerde referentie die is beveiligd met een of meer van de volgende.
    - Wachtwoord
-   - Pincode
+   - PINCODE
    - Patroon
    - Windows Hello
 - Aan **Azure AD gekoppelde of hybride Azure AD gekoppelde apparaten** maken gebruik van een organisatie account in azure AD dat is beveiligd met een of meer van de volgende.
    - Wachtwoord
    - Windows Hello voor Bedrijven
 
-## <a name="provisioning"></a>Inrichten
+## <a name="provisioning"></a>Inrichting
 
 Het ophalen van apparaten in voor Azure AD kan worden uitgevoerd op een selfservice manier of een bewaakt inrichtings proces door beheerders.
 

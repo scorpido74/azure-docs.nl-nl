@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ff7563a9ebbbc996af56f94b8e23d349752ef9f4
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964106"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200266"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app
 
@@ -58,14 +58,15 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 > 1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
 > 
-> 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/linkid=2083908) .
+> 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](/azure/active-directory/develop/) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 >    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `java-webapp`.
 >    - Laat de **omleidings-URI** nu leeg en selecteer **registreren**.
 > 1. Zoek op de pagina **overzicht** de **client-id** van de toepassing en de id van de **Directory (Tenant)** van de toepassing. Kopieer deze waarden voor later.
 > 1. Selecteer de **verificatie** in het menu en voeg de volgende gegevens toe:
->    - In **omleidings-uri's**voegt u `http://localhost:8080/msal4jsamples/secure/aad` en `https://localhost:8080/msal4jsamples/graph/me`toe.
+>    - In **omleidings-uri's**voegt u `http://localhost:8080/msal4jsamples/secure/aad` en `http://localhost:8080/msal4jsamples/graph/me`toe.
+>    - Voeg in **Geavanceerde instellingen**`https://localhost:8080/msal4jsample/sign-out` toe aan de **afmeldings-URL**.
 >    - Selecteer **Opslaan**.
 > 1. Selecteer de **certificaten & geheimen** in het menu en klik in de sectie **client geheimen** op **Nieuw client geheim**:
 > 
@@ -79,10 +80,10 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 
 > Het code voorbeeld voor deze Quick Start werkt alleen als u:
 > 
-> 1. Antwoord-Url's toevoegen als `http://localhost:8080/msal4jsamples/secure/aad` en `https://localhost:8080/msal4jsamples/graph/me`.
+> 1. Antwoord-Url's toevoegen als `http://localhost:8080/msal4jsamples/secure/aad` en `http://localhost:8080/msal4jsamples/graph/me`.
 > 1. Maak een client geheim.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Deze wijziging voor mij maken]()
+> > [Breng deze wijzigingen voor mij aan]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-aspnet-webapp/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken.
@@ -100,7 +101,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
-    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Name_Here/
+    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
     aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
     aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
@@ -111,7 +112,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 >
 > - `Enter_the_Application_Id_here`: de toepassings-id voor de toepassing die u hebt geregistreerd.
 > - `Enter_the_Client_Secret_Here`-is het **client geheim** dat u in **Certificaten & geheimen** hebt gemaakt voor de toepassing die u hebt geregistreerd.
-> - `Enter_the_Tenant_Name_Here`: is de **ID-waarde van de directory (Tenant)** van de toepassing die u hebt geregistreerd.
+> - `Enter_the_Tenant_Info_Here`: is de **ID-waarde van de directory (Tenant)** van de toepassing die u hebt geregistreerd.
 
 #### <a name="step-4-run-the-code-sample"></a>Stap 4: het code voorbeeld uitvoeren
 
@@ -149,7 +150,7 @@ Voeg MSAL4J toe aan uw toepassing met behulp van Maven of Gradle om uw afhankeli
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
 ```
 
 ### <a name="msal-initialization"></a>MSAL initialiseren
