@@ -1,5 +1,5 @@
 ---
-title: Apache Spark taak mislukt met InvalidClassException in azure HDInsight
+title: InvalidClassException-fout van Apache Spark-Azure HDInsight
 description: Apache Spark taak mislukt met InvalidClassException, niet-overeenkomende klasse versies in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: c32b6a5ed7e8c052096f6125a5246fc9685302d4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ad9ec8e97827fb6158476165a610c9d69b12a528
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088692"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241165"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark taak mislukt met InvalidClassException, niet-overeenkomende klasse versies in azure HDInsight
 
@@ -34,9 +34,9 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Oorzaak
 
-Deze fout kan worden veroorzaakt door een extra jar toe te voegen aan de `spark.yarn.jars` configuratie. Dit is een ' licht gekleurd ' jar dat een andere versie van `commons-lang3` het pakket bevat en introduceert een niet-overeenkomende klasse. Spark 2.1/2/3 maakt standaard gebruik van versie 3,5 van `commons-lang3`.
+Deze fout kan worden veroorzaakt door een extra jar toe te voegen aan de `spark.yarn.jars` config. Dit is een ' gearceerd ' jar met een andere versie van `commons-lang3` pakket en introduceert een niet-overeenkomende klasse. Spark 2.1/2/3 maakt standaard gebruik van versie 3,5 van `commons-lang3`.
 
-## <a name="resolution"></a>Oplossing
+## <a name="resolution"></a>Resolutie
 
 Verwijder het JAR of compileer het aangepaste JAR opnieuw (AzureLogAppender) en gebruik [maven-Shade-invoeg toepassing](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) om klassen te verplaatsen.
 
@@ -46,6 +46,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

@@ -7,16 +7,16 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333120"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243023"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Beheerde identiteit voor Service Fabric toepassing (preview-versie)
 
-Een veelvoorkomende uitdaging bij het bouwen van cloud-apps is het beheren van de referenties in uw code voor verificatie bij cloudservices. Het beveiligen van referenties is een belang rijke taak, omdat ze nooit worden weer gegeven op werk stations voor ontwikkel aars en niet zijn ingecheckt in broncode beheer. Met de functie beheerde identiteit voor Azure-resources in Azure Active Directory (Azure AD) is dit probleem opgelost. De functie biedt Azure-Services met een automatisch beheerde identiteit in azure AD. U kunt de identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, inclusief Key Vault, zonder referenties in de code.
+Een veelvoorkomende uitdaging bij het bouwen van cloud-apps is het beheren van de referenties in uw code voor verificatie bij cloudservices. Het beveiligen van referenties is een belang rijke taak, omdat ze nooit worden weer gegeven op werk stations voor ontwikkel aars en niet zijn ingecheckt in broncode beheer. Met de functie beheerde identiteit voor Azure-resources in Azure Active Directory (Azure AD) is dit probleem opgelost. De functie biedt Azure-services met een automatisch beheerde identiteit in Azure AD. U kunt de identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, inclusief Key Vault, zonder referenties in de code.
 
 De beheerde identiteits functie voor Azure-resources is gratis met Azure AD voor Azure-abonnementen. Er zijn geen extra kosten.
 
@@ -45,7 +45,7 @@ De volgende termen worden gebruikt in de documentatieset beheerde identiteit voo
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Ondersteunde scenario's voor Service Fabric toepassingen
 
-Beheerde identiteiten voor Service Fabric worden alleen ondersteund in azure geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources. Er kan geen identiteit worden toegewezen aan toepassingen die niet zijn geïmplementeerd als een Azure-resource. De ondersteuning voor beheerde identiteiten in azure Service Fabric cluster bestaat uit twee fasen:
+Beheerde identiteiten voor Service Fabric worden alleen ondersteund in azure geïmplementeerde Service Fabric-clusters en alleen voor toepassingen die zijn geïmplementeerd als Azure-resources. Er kan geen identiteit worden toegewezen aan een toepassing die niet is geïmplementeerd als een Azure-resource. De ondersteuning voor beheerde identiteiten in azure Service Fabric cluster bestaat uit twee fasen:
 
 1. Een of meer beheerde identiteiten toewijzen aan de resource van de toepassing. aan een toepassing kunnen respectievelijk een door het systeem toegewezen identiteit en/of Maxi maal 32 door de gebruiker toegewezen identiteiten worden toegewezen.
 
@@ -78,3 +78,4 @@ De volgende scenario's worden niet ondersteund of worden niet aanbevolen. Houd e
 * [Een Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Maak gebruik van de beheerde identiteit van een Service Fabric toepassing vanuit service code](./how-to-managed-identity-service-fabric-app-code.md)
 * [Een Azure Service Fabric-toepassing toegang verlenen tot andere Azure-resources](./how-to-grant-access-other-resources.md)
+* [Toepassings geheimen declareren en gebruiken als KeyVaultReferences](./service-fabric-keyvault-references.md) 

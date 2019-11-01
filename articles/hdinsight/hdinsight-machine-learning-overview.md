@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105421"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241631"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine learning op HDInsight
 
-HDInsight maakt het mogelijk om machine learning met big data, waardoor u waardevolle inzichten kunt verkrijgen van grote hoeveel heden (PETA bytes of zelfs Exabyte) van gestructureerde, ongestructureerde en snel bewegende gegevens. Er zijn verschillende machine learning opties in HDInsight:  SparkML en Apache Spark MLlib, R, Apache Hive en de Microsoft Cognitive Toolkit.
+HDInsight maakt het mogelijk om machine learning met big data, waardoor u waardevolle inzichten kunt verkrijgen van grote hoeveel heden (PETA bytes of zelfs Exabyte) van gestructureerde, ongestructureerde en snel bewegende gegevens. Er zijn verschillende machine learning opties in HDInsight: SparkML en Apache Spark MLlib, R, Apache Hive en de Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>SparkML en MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat ondersteuning biedt voor in-Memory verwerking om Big Data Analytics te stimuleren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt. Er zijn twee schaal bare machine learning bibliotheken die algoritmen model leren met deze gedistribueerde omgeving: MLlib en SparkML. MLlib bevat de oorspronkelijke API die boven op Rdd's is gebouwd. SparkML is een nieuwer pakket dat een op een hoger niveau ingebouwde API biedt voor het bouwen van ML-pijp lijnen. SparkML biedt nog geen ondersteuning voor alle functies van MLlib, maar vervangt MLlib als de standaard machine learning-bibliotheek van Spark.
+[HDInsight Spark](spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat ondersteuning biedt voor in-Memory verwerking om Big Data Analytics te stimuleren. De Spark-verwerkings engine is gebouwd voor snelheid, gebruiks gemak en geavanceerde analyses. Met de mogelijkheden van de gedistribueerde reken kracht van Spark in het geheugen is het een goede keuze voor de iteratieve algoritmen die worden gebruikt in machine learning-en grafiek berekeningen. Er zijn twee schaal bare machine learning bibliotheken die algoritmen model leren met deze gedistribueerde omgeving: MLlib en SparkML. MLlib bevat de oorspronkelijke API die boven op Rdd's is gebouwd. SparkML is een nieuwer pakket dat een op een hoger niveau ingebouwde API biedt voor het bouwen van ML-pijp lijnen. SparkML biedt nog geen ondersteuning voor alle functies van MLlib, maar vervangt MLlib als de standaard machine learning-bibliotheek van Spark.
 
 De micro Soft Machine Learning-bibliotheek voor Apache Spark is [MMLSpark](https://github.com/Azure/mmlspark). Deze bibliotheek is ontworpen om gegevens wetenschappers productiever te maken op Spark, de frequentie van experimenten te verhogen en de geavanceerde machine learning technieken uit te voeren, waaronder diepe kennis, op zeer grote gegevens sets. MMLSpark biedt een laag bovenop de Api's met een laag niveau van SparkML bij het bouwen van schaal bare ML-modellen, zoals het indexeren van teken reeksen, het afdwingen van gegevens in een indeling die wordt verwacht door machine learning algoritmen en het samen stellen van functie vectoren. De MMLSpark-bibliotheek vereenvoudigt deze en andere veelvoorkomende taken voor het bouwen van modellen in PySpark.
 
@@ -41,7 +41,7 @@ Azure Machine Learning voorziet in hulpprogram ma's om predictive analytics te m
 
 ![Overzicht van Microsoft Azure machine learning](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-Maak functies voor gegevens in een HDInsight Hadoop-cluster met behulp van [Hive-query's](../machine-learning/team-data-science-process/create-features-hive.md). *Feature engineering* probeert de voorspellende kracht van leer algoritmen te verhogen door functies te maken op basis van onbewerkte gegevens die het leer proces vergemakkelijken. U kunt HiveQL-query's uitvoeren vanuit Azure Machine Learning Studio en toegang krijgen tot gegevens die zijn verwerkt in Hive en opgeslagen in Blob Storage met behulp van de [module gegevens importeren](../machine-learning/studio/import-data.md).
+Maak functies voor gegevens in een HDInsight Hadoop-cluster met behulp van [Hive-query's](../machine-learning/team-data-science-process/create-features-hive.md). *Feature engineering* probeert de voorspellende kracht van leer algoritmen te verhogen door functies te maken op basis van onbewerkte gegevens die het leer proces vergemakkelijken. U kunt HiveQL-query's uitvoeren vanuit Azure Machine Learning Studio (klassiek) en toegang krijgen tot gegevens die in Hive zijn verwerkt en worden opgeslagen in Blob Storage met behulp van de [module gegevens importeren](../machine-learning/studio/import-data.md).
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 

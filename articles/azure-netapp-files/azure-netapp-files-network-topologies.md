@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984125"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242476"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlijnen voor Azure NetApp Files-netwerkplanning
 
@@ -99,7 +99,7 @@ Een basis scenario is het maken of verbinden van een Azure NetApp Files-volume v
 
 Als er extra VNets in dezelfde regio zijn die toegang moeten hebben tot de resources van elkaar, kan de VNets worden verbonden met behulp van [VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) om veilige connectiviteit mogelijk te maken via de Azure-infra structuur. 
 
-Overweeg VNet 2 en VNet 3 in het bovenstaande diagram. Als VM 2 verbinding moet maken met VM 3 of volume 2, of als VM 3 verbinding moet maken met VM 2 of volume 1, moet u VNet-peering inschakelen tussen VNet 2 en VNet 3. 
+Overweeg VNet 2 en VNet 3 in het bovenstaande diagram. Als VM 1 verbinding moet maken met VM 2 of volume 2, of als VM 2 verbinding moet maken met VM 1 of volume 1, moet u VNet-peering inschakelen tussen VNet 2 en VNet 3. 
 
 Bedenk daarnaast een scenario waarin VNet 1 is gekoppeld aan VNet 2 en VNet 2 is gekoppeld aan VNet 3 in dezelfde regio. De resources van VNet 1 kunnen verbinding maken met resources in VNet 2, maar kunnen geen verbinding maken met resources in VNet 3, tenzij VNet 1 en VNet 3 gelijkwaardig zijn. 
 

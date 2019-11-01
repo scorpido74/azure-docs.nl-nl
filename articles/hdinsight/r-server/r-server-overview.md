@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941700"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241865"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Wat is ML van services in azure HDInsight
 
@@ -23,7 +23,7 @@ ML Services op HDInsight biedt de nieuwste mogelijkheden voor R-analyses op gege
 
 Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een Edge-knoop punt hebt u de mogelijkheid om de geparallelleerde gedistribueerde functies van Scaleer uit te voeren op de kernen van de Edge-knooppunt server. U kunt ze ook uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van de Schaalr of Apache Spark reken contexten.
 
-De modellen of voor spellingen die het resultaat zijn van analyses, kunnen worden gedownload voor on-premises gebruik. Ze kunnen ook elders in Azure worden operationeel, met name via [Azure machine learning Studio](https://studio.azureml.net) - [webservice](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+De modellen of voor spellingen die het resultaat zijn van analyses, kunnen worden gedownload voor on-premises gebruik. Ze kunnen ook elders in Azure worden operationeel, met name door de [webservice](../../machine-learning/studio/publish-a-machine-learning-web-service.md)van [Azure machine learning Studio (klassiek)](https://studio.azureml.net) .
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Aan de slag met ML Services in HDInsight
 
@@ -43,7 +43,7 @@ ML Services in HDInsight biedt de volgende voor delen:
 
   Ondernemingen die gebruikmaken van traditionele modellen en omgevingen investeren veel tijd en inspanningen op uitoefening. Dit leidt tot ongestructureerde kosten en vertragingen, inclusief de omzettings tijd voor modellen, iteraties om ze geldig te blijven en huidige, gereglementeerde goed keuring en beheer machtigingen via uitoefening.
 
-  ML Services biedt [uitoefening](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)voor ondernemingen, in dat geval nadat een machine learning model is voltooid, zijn er maar een paar klikken om Web Services-api's te genereren. Deze [](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) webservices worden gehost op een server raster in de Cloud en kunnen worden geïntegreerd met line-of-business-toepassingen. Met de mogelijkheid om te implementeren in een elastisch raster kunt u naadloos schalen met de behoeften van uw bedrijf, zowel voor batch-als realtime-scores. Zie [operationeel maken ml Services in HDInsight](r-server-operationalize.md)voor instructies.
+  ML Services biedt [uitoefening](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)voor ondernemingen, in dat geval nadat een machine learning model is voltooid, zijn er maar een paar klikken om Web Services-api's te genereren. Deze [webservices](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services) worden gehost op een server raster in de Cloud en kunnen worden geïntegreerd met line-of-business-toepassingen. Met de mogelijkheid om te implementeren in een elastisch raster kunt u naadloos schalen met de behoeften van uw bedrijf, zowel voor batch-als realtime-scores. Zie [operationeel maken ml Services in HDInsight](r-server-operationalize.md)voor instructies.
 
 <!---
 * **Deep ecosystem engagements to deliver customer success with optimal total cost of ownership**
@@ -55,7 +55,7 @@ ML Services in HDInsight biedt de volgende voor delen:
 
 De volgende functies zijn opgenomen in ML Services op HDInsight.
 
-| Functie categorie | Description |
+| Functie categorie | Beschrijving |
 |------------------|-------------|
 | R-ingeschakeld | [R-pakketten](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) voor oplossingen die zijn geschreven in R, met een open-source distributie van R en runtime-infra structuur voor het uitvoeren van scripts. |
 | Python-ingeschakeld | [Python-modules](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) voor oplossingen die zijn geschreven in Python, met een open-source distributie van python en runtime-infra structuur voor het uitvoeren van scripts.
@@ -78,7 +78,7 @@ U kunt verbinding maken met micro soft ML Server op het Edge-knoop punt met behu
 
 ## <a name="develop-and-run-r-scripts"></a>R-scripts ontwikkelen en uitvoeren
 
-De R-scripts die u maakt en uitvoert, kunnen gebruikmaken van een van de 8000 + open source R-pakketten, naast de geparallelle en gedistribueerde routines die beschikbaar zijn in de Scaleer-bibliotheek. In het algemeen wordt een script dat wordt uitgevoerd met ML Services op het Edge-knoop punt uitgevoerd in de R-interpreter op dat knoop punt. De uitzonde ringen zijn de stappen die nodig zijn om een Scaleer-functie aan te roepen met een berekenings context die is ingesteld op Hadoop-toewijzings reductie (RxHadoopMR) of Spark (RxSpark). In dit geval wordt de functie in een gedistribueerde manier uitgevoerd voor de knoop punten van die gegevens (taak) van de cluster die zijn gekoppeld aan de gegevens waarnaar wordt verwezen. Voor meer informatie over de verschillende opties voor de compute-context, zie COMPUTE- [context opties voor ml Services in HDInsight](r-server-compute-contexts.md).
+De R-scripts die u maakt en uitvoert, kunnen gebruikmaken van een van de 8000 + open source R-pakketten, naast de geparallelle en gedistribueerde routines die beschikbaar zijn in de Scaleer-bibliotheek. In het algemeen wordt een script dat wordt uitgevoerd met ML Services op het Edge-knoop punt uitgevoerd in de R-interpreter op dat knoop punt. De uitzonde ringen zijn de stappen die nodig zijn om een Scaleer-functie aan te roepen met een berekenings context die is ingesteld op Hadoop-toewijzings reductie (RxHadoopMR) of Spark (RxSpark). In dit geval wordt de functie in een gedistribueerde manier uitgevoerd voor de knoop punten van die gegevens (taak) van de cluster die zijn gekoppeld aan de gegevens waarnaar wordt verwezen. Voor meer informatie over de verschillende opties voor de compute-context, Zie [Compute-context opties voor ml Services in HDInsight](r-server-compute-contexts.md).
 
 ## <a name="operationalize-a-model"></a>Een model operationeel maken
 
@@ -92,17 +92,17 @@ Als u een score in HDInsight wilt gebruiken, schrijft u een R-functie die uw mod
 
 Als u de score wilt gebruiken met behulp van Azure Machine Learning, gebruikt u het open source Azure Machine Learning R-pakket met de term [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/) om uw model te publiceren als een Azure-webservice. Voor het gemak is dit pakket vooraf geïnstalleerd op het Edge-knoop punt. Gebruik vervolgens de functies in Azure Machine Learning om een gebruikers interface voor de webservice te maken en roep vervolgens de webservice aan die nodig is voor de score.
 
-Als u deze optie kiest, moet u alle Scaleer-model objecten converteren naar gelijkwaardige open-source model objecten voor gebruik met de webservice. Gebruik functies voor het afdwingen van schalen, `as.randomForest()` zoals voor op ensembles gebaseerde modellen, voor deze conversie.
+Als u deze optie kiest, moet u alle Scaleer-model objecten converteren naar gelijkwaardige open-source model objecten voor gebruik met de webservice. Gebruik functies voor het afdwingen van schalen, zoals `as.randomForest()` voor op ensemble gebaseerde modellen, voor deze conversie.
 
 ### <a name="score-on-premises"></a>On-premises Score
 
-Als u een on-premises score wilt gebruiken nadat u het model hebt gemaakt, kunt u het model serialiseren in R, dit bestand downloaden, deserialiseren en het vervolgens gebruiken voor het scoren van nieuwe gegevens. U kunt nieuwe gegevens beoordelen met behulp van de aanpak die eerder in de [Score in HDInsight](#score-in-hdinsight) is beschreven of met behulp van webservices. [](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)
+Als u een on-premises score wilt gebruiken nadat u het model hebt gemaakt, kunt u het model serialiseren in R, dit bestand downloaden, deserialiseren en het vervolgens gebruiken voor het scoren van nieuwe gegevens. U kunt nieuwe gegevens beoordelen met behulp van de aanpak die eerder in de [Score in HDInsight](#score-in-hdinsight) is beschreven of met behulp van [webservices](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services).
 
 ## <a name="maintain-the-cluster"></a>Het cluster onderhouden
 
 ### <a name="install-and-maintain-r-packages"></a>R-pakketten installeren en onderhouden
 
-De meeste R-pakketten die u gebruikt, zijn vereist op het Edge-knoop punt, omdat de meeste stappen van uw R-scripts hier worden uitgevoerd. Als u extra R-pakketten wilt installeren op het Edge-knoop punt `install.packages()` , kunt u de methode gebruiken in R.
+De meeste R-pakketten die u gebruikt, zijn vereist op het Edge-knoop punt, omdat de meeste stappen van uw R-scripts hier worden uitgevoerd. Als u extra R-pakketten wilt installeren op het Edge-knoop punt, kunt u de methode `install.packages()` gebruiken in R.
 
 Als u alleen routines uit de Schaalset in het cluster gebruikt, hoeft u niet doorgaans extra R-pakketten te installeren op de gegevens knooppunten. Het is echter mogelijk dat u aanvullende pakketten nodig hebt om het gebruik van **rxExec** of **RxDataStep** -uitvoering op de gegevens knooppunten te ondersteunen.
 
@@ -110,7 +110,7 @@ In dergelijke gevallen kunnen de extra pakketten met een script actie worden ge�
 
 ### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Apache Hadoop MapReduce-geheugen instellingen wijzigen
 
-Een cluster kan worden gewijzigd om de hoeveelheid geheugen die beschikbaar is voor MILLILITER services te wijzigen wanneer er een MapReduce-taak wordt uitgevoerd. Als u een cluster wilt wijzigen, gebruikt u de Apache Ambari-gebruikers interface die beschikbaar is via de Blade Azure Portal voor uw cluster. Zie [HDInsight-clusters beheren met de Ambari](../hdinsight-hadoop-manage-ambari.md)-webgebruikersinterface voor instructies over het verkrijgen van toegang tot de Ambari-gebruikers interface voor uw cluster.
+Een cluster kan worden gewijzigd om de hoeveelheid geheugen die beschikbaar is voor MILLILITER services te wijzigen wanneer er een MapReduce-taak wordt uitgevoerd. Als u een cluster wilt wijzigen, gebruikt u de Apache Ambari-gebruikers interface die beschikbaar is via de Blade Azure Portal voor uw cluster. Zie [HDInsight-clusters beheren met de Ambari-webgebruikersinterface](../hdinsight-hadoop-manage-ambari.md)voor instructies over het verkrijgen van toegang tot de Ambari-gebruikers interface voor uw cluster.
 
 Het is ook mogelijk om de hoeveelheid geheugen die beschikbaar is voor de MILLILITER services te wijzigen door gebruik te maken van Hadoop-switches in de aanroep van **RxHadoopMR** als volgt:
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8eb329ae019f125b98c475b4a77d19e9cafe23fa
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 57f37808f3f90863079ba73f7899f142d32951d3
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053822"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242965"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Een Azure-VM tussen Azure-regio's herstellen
 
@@ -58,7 +58,7 @@ Nadat de Vm's opnieuw zijn beveiligd, kunt u indien nodig een failback uitvoeren
     ![VM op primaire en secundaire regio's](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> Voor computers waarop de Site Recovery extensie versie 9.28. x. x wordt uitgevoerd, [Update pakket 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery computers in de secundaire nood herstel regio opschoont, wordt nafter failback voltooid en worden de vm's opnieuw beveiligd. Het is niet nodig om Vm's en Nic's hand matig te verwijderen.
+> Voor machines met de Site Recovery extensie versie 9.28. x. x gaat u naar [Update pakket 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) site Recovery de computers in de secundaire nood herstel regio opschonen, nadat de failback is voltooid en de vm's opnieuw zijn beveiligd. Het is niet nodig om Vm's en Nic's hand matig te verwijderen in de secundaire regio. Als u de replicatie volledig uitschakelt nadat u een failback hebt uitgevoerd, Site Recovery de schijven in de nood herstel regio, naast de Vm's en Nic's, opschonen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

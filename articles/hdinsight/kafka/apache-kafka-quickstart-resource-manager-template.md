@@ -1,5 +1,5 @@
 ---
-title: Apache Kafka op HDInsight instellen met behulp van Azure Resource Manager-Quick Start
+title: 'Snelstartgids: Apache Kafka Azure Resource Manager-HDInsight gebruiken'
 description: In deze Quick Start leert u hoe u met Azure Resource Manager sjabloon een Apache Kafka cluster maakt in azure HDInsight. Er wordt ook aandacht besteed aan Kafka-onderwerpen, -abonnees en -consumenten.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: deae58c30e37aa4df1dd8ca9b1b64cc79e9509ae
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: d908d210ff0448069a9abc76209c72d9b2a7595c
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123182"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242016"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Quickstart: Apache Kafka cluster maken in azure HDInsight met behulp van Resource Manager-sjabloon
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Snelstartgids: Apache Kafka cluster in azure HDInsight maken met Resource Manager-sjabloon
 
 [Apache Kafka](https://kafka.apache.org/) is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten. 
 
@@ -39,11 +39,11 @@ Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache
 
 2. Gebruik de volgende waarden om het Kafka-cluster te maken:
 
-    | Eigenschap | Value |
+    | Eigenschap | Waarde |
     | --- | --- |
-    | Subscription | Uw Azure-abonnement. |
-    | Resource group | De resourcegroep waarin het cluster wordt gemaakt. |
-    | Location | De Azure-regio waarin het cluster wordt gemaakt. |
+    | Abonnement | Uw Azure-abonnement. |
+    | Resourcegroep | De resourcegroep waarin het cluster wordt gemaakt. |
+    | Locatie | De Azure-regio waarin het cluster wordt gemaakt. |
     | Clusternaam | De naam van het Kafka-cluster. |
     | Gebruikersnaam voor clusteraanmelding | De accountnaam die wordt gebruikt voor aanmelden bij op HTTPs gebaseerde services die worden gehost in het cluster. |
     | Wachtwoord voor clusteraanmelding | Het wachtwoord voor de gebruikersnaam voor aanmelden. |

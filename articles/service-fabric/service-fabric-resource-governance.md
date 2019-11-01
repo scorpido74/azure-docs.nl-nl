@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: atsenthi
-ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166552"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242920"
 ---
 # <a name="resource-governance"></a>Resourcebeheer
 
@@ -32,7 +32,7 @@ Wanneer u meerdere services op hetzelfde knoop punt of cluster uitvoert, is het 
 
 Resource governance wordt ondersteund in Service Fabric conform het [service pakket](service-fabric-application-model.md). De resources die zijn toegewezen aan het service pakket kunnen verder worden verdeeld tussen code pakketten. De resource limieten die zijn opgegeven, betekenen ook de reserve ring van de resources. Service Fabric ondersteunt het opgeven van CPU en geheugen per service pakket, met twee ingebouwde [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (metrische naam `servicefabric:/_CpuCores`): een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
+* *CPU* (metrisch naam `servicefabric:/_CpuCores`): een logische kern die beschikbaar is op de hostmachine. Alle kernen op alle knoop punten worden hetzelfde gewogen.
 
 * *Geheugen* (metrische naam `servicefabric:/_MemoryInMB`): het geheugen wordt uitgedrukt in mega bytes en wordt toegewezen aan het fysieke geheugen dat beschikbaar is op de computer.
 
@@ -110,6 +110,18 @@ Voor optimale prestaties moet u ook de volgende instelling inschakelen in het cl
 </Section>
 ```
 
+> [!IMPORTANT]
+> Vanaf Service Fabric versie 7,0 hebben we de regel voor het berekenen van de capaciteit van knooppunt resources bijgewerkt in de gevallen waarin de gebruiker de waarden voor knooppunt resource capaciteiten hand matig verstrekt. Laten we eens kijken naar het volgende scenario:
+>
+> * Er zijn 10 CPU-kernen voor het knoop punt
+> * SF is geconfigureerd voor het gebruik van 80% van de totale bronnen voor de gebruikers services (standaard instelling), waardoor een buffer van 20% wordt bereikt voor de andere services die worden uitgevoerd op het knoop punt (incl. Service Fabric systeem Services)
+> * De gebruiker besluit de resource capaciteit van het knoop punt voor de metrische gegevens van de CPU-kernen hand matig te overschrijven en stelt deze in op 5 kernen
+>
+> We hebben de regel voor het berekenen van de beschik bare capaciteit voor Service Fabric gebruikers services op de volgende manier gewijzigd:
+>
+> * Vóór Service Fabric 7,0 wordt de beschik bare capaciteit voor gebruikers services berekend op **5 kernen** (capaciteits buffer van 20% wordt genegeerd)
+> * Vanaf Service Fabric 7,0 wordt de beschik bare capaciteit voor gebruikers services berekend op **vier kernen** (capaciteits buffer van 20% wordt niet genegeerd)
+
 ## <a name="specify-resource-governance"></a>Resource governance opgeven
 
 De limieten voor resource beheer worden opgegeven in het manifest van de toepassing (ServiceManifestImport sectie), zoals wordt weer gegeven in het volgende voor beeld:
@@ -141,7 +153,7 @@ Geheugen limieten zijn absoluut, dus beide code pakketten zijn beperkt tot 1024 
 
 ### <a name="using-application-parameters"></a>Toepassings parameters gebruiken
 
-Bij het opgeven van resource governance is het mogelijk om [toepassings parameters](service-fabric-manage-multiple-environment-app-configuration.md) te gebruiken voor het beheren van meerdere app-configuraties. In het volgende voor beeld wordt het gebruik van toepassings parameters weer gegeven:
+Wanneer u bron beheer instellingen opgeeft, is het mogelijk om [toepassings parameters](service-fabric-manage-multiple-environment-app-configuration.md) te gebruiken voor het beheren van meerdere app-configuraties. In het volgende voor beeld wordt het gebruik van toepassings parameters weer gegeven:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
@@ -185,6 +197,27 @@ In dit voor beeld worden standaard parameter waarden ingesteld voor de productie
 > Het opgeven van het resource governance met toepassings parameters is beschikbaar vanaf Service Fabric versie 6,1.<br>
 >
 > Wanneer toepassings parameters worden gebruikt om resource governance op te geven, kan Service Fabric niet naar een eerdere versie dan versie 6,1 worden gedowngraded.
+
+## <a name="enforcing-the-resource-limits-for-user-services"></a>De resource limieten voor gebruikers services afdwingen
+
+Bij het Toep assen van resource governance op uw Service Fabric Services zorgt u ervoor dat deze bronnen niet groter kunnen zijn dan het quotum van resources. veel gebruikers moeten nog steeds een aantal van hun Service Fabric Services uitvoeren in de modus zonder toezicht. Als u ongebruikte Service Fabric-Services gebruikt, is het mogelijk om te worden uitgevoerd in situaties waarbij ' overmatige ' ongebruikte services alle beschik bare bronnen op de Service Fabric knooppunten verbruiken, wat kan leiden tot ernstige problemen zoals:
+
+* Resource beroving van andere services die worden uitgevoerd op de knoop punten (inclusief Service Fabric systeem Services)
+* Knoop punten die eindigen met een slechte status
+* Niet reageren Service Fabric-Api's voor cluster beheer
+
+Om te voor komen dat deze situaties zich voordoen, kunt u met Service Fabric *de resource limieten afdwingen voor alle service Fabric gebruikers services die op het knoop punt worden uitgevoerd* (zowel onder-als onbepaald) om te garanderen dat gebruikers services nooit meer gebruiken dan de opgegeven hoeveelheid resources. Dit wordt bereikt door de waarde voor de EnforceUserServiceMetricCapacities-configuratie in de sectie PlacementAndLoadBalancing van de ClusterManifest in te stellen op True. Deze instelling is standaard uitgeschakeld.
+
+```xml
+<SectionName="PlacementAndLoadBalancing">
+    <ParameterName="EnforceUserServiceMetricCapacities" Value="false"/>
+</Section>
+```
+
+Aanvullende opmerkingen:
+
+* Het afdwingen van resource limieten is alleen van toepassing op de metrische gegevens voor de `servicefabric:/_CpuCores` en `servicefabric:/_MemoryInMB` resources
+* Het afdwingen van resources werkt alleen als de capaciteit van knoop punten voor de metrische gegevens van de resource beschikbaar is voor Service Fabric, hetzij via een mechanisme voor automatische detectie, hetzij via gebruikers hand matig de knooppunt capaciteit opgeven (zoals wordt uitgelegd in de [cluster installatie voor inschakelen sectie resource](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) beheer). Als de knooppunt capaciteit niet is geconfigureerd, kan de functie voor het afdwingen van resources niet worden gebruikt omdat Service Fabric niet weet hoeveel bronnen er moeten worden gereserveerd voor gebruikers services. Service Fabric geeft een status waarschuwing als ' EnforceUserServiceMetricCapacities ' waar ' is, maar de knooppunt capaciteit niet is geconfigureerd.
 
 ## <a name="other-resources-for-containers"></a>Andere resources voor containers
 

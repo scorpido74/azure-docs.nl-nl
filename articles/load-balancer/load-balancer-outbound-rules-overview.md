@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9fc9eb347e97fe6ab57b3e30651e4ea77a4ce9c8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fd43e9c71db9ae553b24e6cd774495ee8cc5b621
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790236"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242340"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer uitgaande regels
 
@@ -86,7 +86,7 @@ Gebruik de volgende para meter om 10.000 SNAT-poorten per virtuele machine toe t
 
 Elk openbaar IP-adres van alle frontends van een uitgaande regel draagt bij aan Maxi maal 64.000 tijdelijke poorten voor gebruik als SNAT-poorten.  Load Balancer wijst SNAT-poorten toe in veelvouden van 8. Als u een waarde opgeeft die niet deelbaar is door 8, wordt de configuratie bewerking geweigerd.  Als u meer SNAT-poorten probeert toe te wijzen dan beschikbaar zijn op basis van het aantal open bare IP-adressen, wordt de configuratie bewerking geweigerd.  Als u bijvoorbeeld 10.000 poorten per VM toewijst en 7 virtuele machines in een back-end-pool een enkel openbaar IP-adres delen, wordt de configuratie geweigerd (7 x 10.000 SNAT-poorten > 64.000 SNAT-poorten).  U kunt meer open bare IP-adressen toevoegen aan de front-end van de regel voor uitgaande verbindingen om het scenario in te scha kelen.
 
-U kunt teruggaan naar de [automatische toewijzing van de SNAT-poort op basis van de grootte](load-balancer-outbound-connections.md#preallocatedports) van de back-endadresgroep door 0 op te geven voor het aantal poorten.
+U kunt teruggaan naar de [automatische toewijzing van de SNAT-poort op basis van de grootte](load-balancer-outbound-connections.md#preallocatedports) van de back-endadresgroep door 0 op te geven voor het aantal poorten. In dat geval krijgen de eerste 50 VM-exemplaren 1024 poorten, worden 51-100 VM-exemplaren 512 en dus weer op basis van de tabel. Als er meer dan één frontend met een openbaar IP-adres dat is gekoppeld aan de uitgaande regel, het aantal poorten dat aan elk VM-exemplaar is toegewezen, niet wordt verhoogd.
 
 ### <a name="idletimeout"></a>Uitgaande time-out voor niet-actieve stroom controleren
 

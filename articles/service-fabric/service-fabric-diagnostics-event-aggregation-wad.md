@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric Event aggregatie met Windows Azure Diagnostics | Microsoft Docs
-description: Meer informatie over aggregeren en het verzamelen van gebeurtenissen met WAD voor controle en diagnose van Azure Service Fabric-clusters.
+title: Aggregatie van Azure Service Fabric-gebeurtenissen met Windows Azure Diagnostics | Microsoft Docs
+description: Meer informatie over het samen voegen en verzamelen van gebeurtenissen met WAD voor bewaking en diagnose van Azure Service Fabric-clusters.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,72 +14,72 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 641f9150d1135f4f214038150b95b6691a37ecc0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 555a8a823526a51b045b4a0314ef7610bf728e5b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393260"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242971"
 ---
-# <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Aggregatie van de gebeurtenis en verzameling met Windows Azure Diagnostics
+# <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Gebeurtenis aggregatie en verzameling met behulp van Windows Azure Diagnostics
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
 > * [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
 >
 >
 
-Wanneer u een Azure Service Fabric-cluster uitvoert, is het een goed idee om de logboeken te verzamelen van alle knooppunten in een centrale locatie. De logboeken die in een centrale locatie, helpt u bij het analyseren en oplossen van problemen in uw cluster, of problemen in de toepassingen en services die worden uitgevoerd in het cluster.
+Wanneer u een Azure Service Fabric-cluster uitvoert, is het een goed idee om de logboeken te verzamelen van alle knoop punten op een centrale locatie. Met de logboeken op een centrale locatie kunt u problemen in uw cluster analyseren en oplossen, of problemen in de toepassingen en services die in dat cluster worden uitgevoerd.
 
-Eén manier om te uploaden en verzamelen van Logboeken is het gebruik van de extensie Windows Azure Diagnostics (WAD), die wordt logboeken geüpload naar Azure Storage en bevat ook een optie om Logboeken te verzenden naar Azure Application Insights of Eventhub. U kunt ook een extern proces gebruiken voor de gebeurtenissen kan lezen uit de opslag en plaats deze in een analyse platform product, zoals [logboeken van Azure Monitor](../log-analytics/log-analytics-service-fabric.md) of een andere oplossing voor het parseren van Logboeken.
+Een manier om logboeken te uploaden en te verzamelen, is door gebruik te maken van de extensie Windows Azure Diagnostics (WAD), waarmee logboeken naar Azure Storage worden geüpload en ook de optie is voor het verzenden van logboeken naar Azure-toepassing inzichten of Event Hubs. U kunt ook een extern proces gebruiken om de gebeurtenissen uit de opslag te lezen en deze te plaatsen in een analyse platform product, zoals [Azure monitor logboeken](../log-analytics/log-analytics-service-fabric.md) of een andere oplossing voor het parseren van Logboeken.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel worden de volgende hulpprogramma's gebruikt:
+De volgende hulpprogram ma's worden gebruikt in dit artikel:
 
 * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Resource Manager-sjabloon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="service-fabric-platform-events"></a>Service Fabric-platformgebeurtenissen
-Service Fabric stelt u met een paar [out-of-the-box logboekkanalen](service-fabric-diagnostics-event-generation-infra.md), van die de volgende kanalen vooraf geconfigureerd met de extensie zijn voor het verzenden van bewaking en diagnostische gegevens aan een opslagtabel of elders:
-  * [Operationele gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md): op een hoger niveau bewerkingen die de Service Fabric-platform wordt uitgevoerd. Voorbeelden zijn onder meer het maken van toepassingen en services, knooppunt statuswijzigingen en upgrade-informatie. Deze worden verzonden als logboeken van Event Tracing voor Windows (ETW)
-  * [Reliable Actors programming modelgebeurtenissen](service-fabric-reliable-actors-diagnostics.md)
-  * [Reliable Services programming modelgebeurtenissen](service-fabric-reliable-services-diagnostics.md)
+## <a name="service-fabric-platform-events"></a>Service Fabric-platform gebeurtenissen
+Service Fabric stelt u in met enkele kant-en- [klare logboek kanalen](service-fabric-diagnostics-event-generation-infra.md), waarvan de volgende kanalen vooraf zijn geconfigureerd met de extensie voor het verzenden van bewakings-en diagnostische gegevens naar een opslag tabel of elders:
+  * [Operationele gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md): bewerkingen op een hoger niveau die het service Fabric-platform uitvoert. Voor beelden zijn onder andere het maken van toepassingen en services, wijziging van knooppunt status en upgrade-informatie. Deze worden verzonden als Event Tracing for Windows-logboeken (ETW)
+  * [Reliable Actors van de programmeer model gebeurtenissen](service-fabric-reliable-actors-diagnostics.md)
+  * [Reliable Services van de programmeer model gebeurtenissen](service-fabric-reliable-services-diagnostics.md)
 
-## <a name="deploy-the-diagnostics-extension-through-the-portal"></a>De extensie voor diagnostische gegevens via de portal implementeren
-De eerste stap bij het verzamelen van Logboeken wordt de extensie voor diagnostische gegevens op de virtuele machine scale set knooppunten in het Service Fabric-cluster implementeren. De extensie voor diagnostische gegevens verzamelt logboeken op elke virtuele machine en geüpload naar het opslagaccount dat u opgeeft. De volgende stappen wordt beschreven hoe u dit doen voor nieuwe en bestaande clusters via de Azure-portal en Azure Resource Manager-sjablonen.
+## <a name="deploy-the-diagnostics-extension-through-the-portal"></a>De diagnostische extensie implementeren via de portal
+De eerste stap bij het verzamelen van Logboeken is het implementeren van de diagnostische uitbrei ding voor de knoop punten van de virtuele-machine schaalset in het Service Fabric cluster. De diagnostische uitbrei ding verzamelt logboeken op elke virtuele machine en uploadt deze naar het opslag account dat u opgeeft. In de volgende stappen wordt beschreven hoe u dit kunt doen voor nieuwe en bestaande clusters via de Azure Portal-en Azure Resource Manager sjablonen.
 
-### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>De extensie voor diagnostische gegevens als onderdeel van het maken van clusters via Azure portal implementeren
-Bij het maken van uw cluster in de stap voor het cluster configureren, vouwt u de optionele instellingen en zorg ervoor dat er diagnostische gegevens is ingesteld op **op** (de standaardinstelling).
+### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Implementeer de diagnostische extensie als onderdeel van het maken van een cluster via Azure Portal
+Wanneer u uw cluster maakt, vouwt u in de stap cluster configuratie de optionele instellingen uit en zorgt u ervoor dat diagnostische gegevens is ingesteld **op aan** (de standaard instelling).
 
-![Azure Diagnostics-instellingen in de portal voor het maken van clusters](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
+![Azure Diagnostics instellingen in de portal voor het maken van clusters](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
-We raden u aan dat u de sjabloon downloaden **voordat u klikt op maken** in de laatste stap. Raadpleeg voor meer informatie, [een Service Fabric-cluster instellen met behulp van een Azure Resource Manager-sjabloon](service-fabric-cluster-creation-via-arm.md). U moet de sjabloon te wijzigen op welke kanalen (Zie hierboven) voor het verzamelen van gegevens uit.
+We raden u ten zeerste aan de sjabloon te downloaden **voordat u op maken klikt** in de laatste stap. Zie [een service Fabric cluster instellen met behulp van een Azure Resource Manager sjabloon](service-fabric-cluster-creation-via-arm.md)voor meer informatie. U hebt de sjabloon nodig om wijzigingen in te voeren op welke kanalen (zie hierboven) gegevens moeten worden verzameld.
 
-![Clustersjabloon](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
+![Cluster sjabloon](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Nu dat u bij het samenvoegen van gebeurtenissen in Azure Storage, [instellen van Azure Monitor logboeken](service-fabric-diagnostics-oms-setup.md) inzicht en query's voor uitvoert in Azure Monitor-portal Logboeken
+Nu u gebeurtenissen in Azure Storage samenvoegt, [stelt u Azure monitor logboeken](service-fabric-diagnostics-oms-setup.md) in om inzicht te krijgen en query's uit te geven in de Azure monitor logboeken Portal
 
 >[!NOTE]
->Er is momenteel geen manier om te filteren of opschonen van de gebeurtenissen die worden verzonden naar de tabellen. Als u een proces voor het verwijderen van gebeurtenissen uit de tabel niet implementeert, de tabel blijft groeien (de limiet van de standaardwaarde is 50 GB). Instructies over het wijzigen van deze zijn [verderop in dit artikel](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Er is bovendien een voorbeeld van een gegevensservice opschonen die wordt uitgevoerd in de [Watchdog voorbeeld](https://github.com/Azure-Samples/service-fabric-watchdog-service), en wordt aanbevolen dat u een zelf ook, schrijven, tenzij er is een goede reden voor het opslaan van Logboeken na een periode 30 of 90 dagen.
+>Er is momenteel geen manier om de gebeurtenissen te filteren of op te schonen die naar de tabellen worden verzonden. Als u geen proces implementeert om gebeurtenissen uit de tabel te verwijderen, blijft de tabel groeien (de standaard limiet is 50 GB). Instructies voor het wijzigen hiervan vindt u [verderop in dit artikel](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Daarnaast is er een voor beeld van een service voor het opschonen van gegevens die wordt uitgevoerd in het watchdog-voor [beeld](https://github.com/Azure-Samples/service-fabric-watchdog-service)en wordt aanbevolen dat u er een voor uzelf schrijft, tenzij u een goede reden hebt om logboeken te bewaren buiten een periode van 30 of 90 dagen.
 
 
 
-## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>De extensie voor diagnostische gegevens via Azure Resource Manager implementeren
+## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>De diagnostische uitbrei ding implementeren via Azure Resource Manager
 
-### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Een cluster maken met de extensie voor diagnostische gegevens
-Voor het maken van een cluster met behulp van Resource Manager, moet u de configuratie van diagnostische JSON toevoegen aan de volledige Resource Manager-sjabloon. Wij bieden een voorbeeld van vijf VM-cluster Resource Manager-sjabloon met configuratie van diagnostische toegevoegd als onderdeel van onze voorbeelden Resource Manager-sjabloon. Op deze locatie in de galerie met voorbeelden van Azure kunt u deze bekijken: [Cluster met vijf knooppunten met een voorbeeld van diagnostische Resource Manager-sjabloon](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Een cluster maken met de uitbrei ding voor diagnostische gegevens
+Als u een cluster wilt maken met behulp van Resource Manager, moet u de JSON van de diagnostische configuratie toevoegen aan de volledige Resource Manager-sjabloon. We bieden een voor beeld van vijf VM-cluster resource manager-sjabloon met diagnostische configuratie die hieraan is toegevoegd als onderdeel van de voor beelden van de Resource Manager-sjabloon. U ziet het op deze locatie in de galerie met Azure-voor beelden: [cluster met vijf knoop punten met diagnostische Resource Manager-sjabloon voor beeld](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
-Als u de instelling voor diagnostische gegevens in het Resource Manager-sjabloon, open het bestand azuredeploy.json en zoeken naar **IaaSDiagnostics**. Voor het maken van een cluster met behulp van deze sjabloon, selecteert u de **implementeren in Azure** knop beschikbaar op de vorige koppeling.
+Als u de instelling diagnostische gegevens in de Resource Manager-sjabloon wilt zien, opent u het bestand azuredeploy. json en zoekt u naar **IaaSDiagnostics**. Als u een cluster wilt maken met behulp van deze sjabloon, selecteert u de knop **implementeren in azure die u kunt** vinden op de vorige koppeling.
 
-U kunt ook u kunt het Resource Manager-voorbeeld downloaden, wijzigingen aanbrengen en een cluster maken met de gewijzigde sjabloon met behulp van de `New-AzResourceGroupDeployment` opdracht in een Azure PowerShell-venster. Zie de volgende code voor de parameters die u aan de opdracht doorgeeft. Zie het artikel voor gedetailleerde informatie over het implementeren van een resourcegroep met behulp van PowerShell [implementeren van een resourcegroep met de Azure Resource Manager-sjabloon](../azure-resource-manager/resource-group-template-deploy.md).
+U kunt ook het Resource Manager-voor beeld downloaden, wijzigingen aanbrengen en een cluster maken met de gewijzigde sjabloon met behulp van de `New-AzResourceGroupDeployment` opdracht in een Azure PowerShell-venster. Raadpleeg de volgende code voor de para meters die u doorgeeft aan de opdracht. Voor gedetailleerde informatie over het implementeren van een resource groep met behulp van Power shell raadpleegt u het artikel [een resource groep implementeren met de sjabloon Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
 
-### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>De extensie voor diagnostische gegevens toevoegen aan een bestaand cluster
-Hebt u een bestaand cluster die geen diagnostische gegevens die zijn geïmplementeerd, kunt u deze kunt toevoegen of bijwerken via de clustersjabloon. Wijzig de Resource Manager-sjabloon die wordt gebruikt voor het maken van het bestaande cluster of de sjabloon downloaden via de portal zoals eerder beschreven. Wijzig het template.json-bestand door het uitvoeren van de volgende taken:
+### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>De diagnostische extensie toevoegen aan een bestaand cluster
+Als u een bestaand cluster hebt waarvoor geen diagnostische gegevens zijn geïmplementeerd, kunt u het toevoegen of bijwerken via de cluster sjabloon. Wijzig de Resource Manager-sjabloon die wordt gebruikt voor het maken van het bestaande cluster of down load de sjabloon uit de portal zoals eerder beschreven. Wijzig het bestand template. json door de volgende taken uit te voeren:
 
-Geen nieuwe opslagresource toevoegen aan de sjabloon door toe te voegen aan de sectie met resources.
+Voeg een nieuwe opslag resource toe aan de sjabloon door toe te voegen aan de sectie resources.
 
 ```json
 {
@@ -98,7 +98,7 @@ Geen nieuwe opslagresource toevoegen aan de sjabloon door toe te voegen aan de s
 },
 ```
 
- Voeg vervolgens toe aan de parametersectie direct na de definities van storage-account, tussen `supportLogStorageAccountName`. Vervang de tijdelijke aanduiding voor tekst *storage-accountnaam komt hier* met de naam van het opslagaccount dat u wilt.
+ Voeg vervolgens toe aan de sectie para meters vlak na de definities van het opslag account, tussen `supportLogStorageAccountName`. Vervang de naam van het *opslag account* voor tijdelijke aanduidingen hier de naam van het opslag account dat u wilt.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -120,7 +120,7 @@ Geen nieuwe opslagresource toevoegen aan de sjabloon door toe te voegen aan de s
       }
     },
 ```
-Werk vervolgens de `VirtualMachineProfile` sectie van het template.json-bestand door de volgende code binnen de matrix extensies toe te voegen. Zorg ervoor dat een door komma's toevoegen aan het begin of einde, afhankelijk van waar het ingevoegd.
+Werk vervolgens de sectie `VirtualMachineProfile` van het bestand template. json bij door de volgende code toe te voegen in de matrix extensies. Zorg ervoor dat u aan het begin of het einde een komma toevoegt, afhankelijk van waar deze is ingevoegd.
 
 ```json
 {
@@ -165,6 +165,15 @@ Werk vervolgens de `VirtualMachineProfile` sectie van het template.json-bestand 
                     "DefaultEvents": {
                     "eventDestination": "ServiceFabricSystemEventTable"
                     }
+                },
+                {
+                    "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                    "scheduledTransferLogLevelFilter": "Information",
+                    "scheduledTransferKeywordFilter": "4611686018427387904",
+                    "scheduledTransferPeriod": "PT5M",
+                    "DefaultEvents": {
+                    "eventDestination": "ServiceFabricSystemEventTable"
+                    }
                 }
                 ]
             }
@@ -177,10 +186,10 @@ Werk vervolgens de `VirtualMachineProfile` sectie van het template.json-bestand 
 }
 ```
 
-Nadat u het template.json-bestand hebt gewijzigd zoals wordt beschreven, publiceert u de Resource Manager-sjabloon opnieuw. Als de sjabloon is geëxporteerd, het bestand deploy.ps1 uitvoert rapport opnieuw publiceert de sjabloon. Nadat u hebt geïmplementeerd, zorg ervoor dat **ProvisioningState** is **geslaagd**.
+Nadat u het bestand template. json hebt gewijzigd zoals beschreven, publiceert u de Resource Manager-sjabloon opnieuw. Als de sjabloon is geëxporteerd, wordt de sjabloon opnieuw gepubliceerd met het bestand Deploy. ps1. Nadat u hebt geïmplementeerd, moet u ervoor zorgen dat **ProvisioningState** is **voltooid**.
 
 > [!TIP]
-> Als u containers kunt implementeren met uw cluster, inschakelen WAD om op te halen docker statistieken door toe te voegen aan uw **WadCfg > DiagnosticMonitorConfiguration** sectie.
+> Als u containers naar uw cluster wilt implementeren, schakelt u WAD in om docker-statistieken op te halen door deze toe te voegen aan uw **WadCfg > sectie DiagnosticMonitorConfiguration** .
 >
 >```json
 >"DockerSources": {
@@ -191,45 +200,45 @@ Nadat u het template.json-bestand hebt gewijzigd zoals wordt beschreven, publice
 >},
 >```
 
-### <a name="update-storage-quota"></a>Opslaglimiet bijwerken
+### <a name="update-storage-quota"></a>Opslag quotum bijwerken
 
-Sinds de tabellen die is gevuld met de extensie toeneemt totdat het quotum is bereikt, kunt u rekening houden met het quotum te verkleinen. De standaardwaarde is 50 GB en kan worden geconfigureerd in de sjabloon onder de `overallQuotaInMB` veld onder `DiagnosticMonitorConfiguration`
+Omdat de tabellen die worden gevuld door de uitbrei ding groeien tot het quotum wordt bereikt, kunt u overwegen de quotum grootte te verlagen. De standaard waarde is 50 GB en kan worden geconfigureerd in de sjabloon onder het veld `overallQuotaInMB` onder `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
 ```
 
-## <a name="log-collection-configurations"></a>Meld u verzameling configuraties
-Logboeken van extra kanalen zijn ook beschikbaar voor de verzameling, Hier volgen enkele van de meest voorkomende configuraties die kunt u in de sjabloon voor clusters die worden uitgevoerd in Azure.
+## <a name="log-collection-configurations"></a>Configuraties van logboek verzameling
+Logboeken van extra kanalen zijn ook beschikbaar voor de verzameling. Hier volgen enkele van de meest voorkomende configuraties die u in de sjabloon kunt maken voor clusters die worden uitgevoerd in Azure.
 
-* Operationele kanaal - Base: Standaard ingeschakeld, op hoog niveau bewerkingen die worden uitgevoerd door de Service Fabric en het cluster, met inbegrip van gebeurtenissen voor een knooppunt te komen, een nieuwe toepassing wordt geïmplementeerd of een upgrade terugdraaien, enzovoort. Raadpleeg voor een lijst van gebeurtenissen, [operationele kanaal gebeurtenissen](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Operationeel kanaal-basis: deze optie is standaard ingeschakeld voor bewerkingen op hoog niveau die worden uitgevoerd door Service Fabric en het cluster, met inbegrip van gebeurtenissen voor een knoop punt, een nieuwe toepassing die wordt geïmplementeerd of een upgrade wordt teruggedraaid, enzovoort. Raadpleeg [operationele kanaal gebeurtenissen](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)voor een lijst met gebeurtenissen.
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Operationele kanaal - beschreven: Dit omvat beslissingen, plus alles in de basis operationele kanaal voor taakverdeling en statusrapporten. Deze gebeurtenissen worden gegenereerd door het systeem of uw code met behulp van de status of API's van reporting zoals load [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) of [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Om weer te geven deze gebeurtenissen in Visual Studio diagnostische logboeken toevoegen ' Microsoft-ServiceFabric:4:0x4000000000000008 ' aan de lijst van ETW-providers.
+* Operationeel kanaal-gedetailleerd: Dit omvat status rapporten en taak verdelings beslissingen, plus alles in het basis-operationele kanaal. Deze gebeurtenissen worden gegenereerd door het systeem of door uw code met behulp van de status-of belasting rapportage-Api's zoals [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) of [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Als u deze gebeurtenissen wilt weer geven in de diagnostische Logboeken van Visual Studio, voegt u ' micro soft-ServiceFabric: 4:0x4000000000000008 ' toe aan de lijst met ETW-providers.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Wanneer u gegevens en Berichtenkanaal: Kritieke logboeken en gebeurtenissen die worden gegenereerd in de berichten (momenteel alleen de ReverseProxy) en het gegevenspad, ook naar kanaal met gedetailleerde operationele Logboeken. Deze gebeurtenissen zijn fouten en andere belangrijke problemen in de ReverseProxy verwerking van aanvragen, evenals aanvragen verwerkt. **Dit is onze aanbeveling voor uitgebreide logboekregistratie**. Als u wilt deze gebeurtenissen in Visual Studio diagnostische logboeken weergeven, toevoegen ' Microsoft-ServiceFabric:4:0x4000000000000010 ' aan de lijst van ETW-providers.
+* Gegevens-en Messa ging Channel-Base: essentiële logboeken en gebeurtenissen die zijn gegenereerd in de Messa ging (momenteel alleen de ReverseProxy) en het gegevenspad, evenals gedetailleerde operationele kanaal Logboeken. Deze gebeurtenissen zijn fouten bij het verwerken van aanvragen en andere kritieke problemen in de ReverseProxy, evenals de verwerkte aanvragen. **Dit is onze aanbeveling voor uitgebreide logboek registratie**. Als u deze gebeurtenissen wilt weer geven in de diagnostische Logboeken van Visual Studio, voegt u ' micro soft-ServiceFabric: 4:0x4000000000000010 ' toe aan de lijst met ETW-providers.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
   ```
 
-* Gegevens & Berichtenkanaal - beschreven: Uitgebreide kanaal met alle niet-kritieke logboeken van gegevens en berichten in het cluster en de gedetailleerde operationele kanaal. Voor gedetailleerde probleemoplossing voor alle omgekeerde proxy gebeurtenissen, verwijzen naar de [omgekeerde proxy diagnostics handleiding](service-fabric-reverse-proxy-diagnostics.md).  Als u wilt deze gebeurtenissen in Visual Studio diagnostische logboeken weergeven, toevoegen ' Microsoft-ServiceFabric:4:0x4000000000000020 ' aan de lijst van ETW-providers.
+* Data & Message Channel: gedetailleerd kanaal dat alle niet-kritieke Logboeken bevat van gegevens en berichten in het cluster en het gedetailleerde operationele kanaal. Raadpleeg de [reverse proxy Diagnostics Guide (Engelstalig](service-fabric-reverse-proxy-diagnostics.md)) voor meer informatie over het oplossen van problemen met alle omgekeerde proxy gebeurtenissen.  Als u deze gebeurtenissen wilt weer geven in de diagnostische logboeken van Visual Studio, voegt u ' micro soft-ServiceFabric: 4:0x4000000000000020 ' toe aan de lijst met ETW-providers.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387944"
   ```
 
 >[!NOTE]
->Dit kanaal is een zeer groot aantal gebeurtenissen, waardoor gebeurtenissen verzamelen uit deze gedetailleerde resultaten van kanaal in een groot aantal traceringen snel wordt gegenereerd en opslagcapaciteit kan gebruiken. Alleen dit inschakelen als dit absoluut noodzakelijk.
+>Dit kanaal heeft een zeer groot aantal gebeurtenissen, waardoor het verzamelen van gebeurtenissen uit dit gedetailleerde kanaal resulteert in een groot aantal traceringen die snel worden gegenereerd en opslag capaciteit kan verbruiken. Schakel deze optie alleen in als dit absoluut nood zakelijk is.
 
 
-Om in te schakelen de **Base operationele kanaal** onze aanbeveling voor uitgebreide logboekregistratie met zo min mogelijk ruis, de `EtwManifestProviderConfiguration` in de `WadCfg` van uw sjabloon er als volgt:
+De `EtwManifestProviderConfiguration` in de `WadCfg` van uw sjabloon kan er als volgt uitzien als u de aanbevolen **basis kanalen** wilt inschakelen voor uitgebreide logboek registratie met de minste ruis:
 
 ```json
   "WadCfg": {
@@ -262,6 +271,15 @@ Om in te schakelen de **Base operationele kanaal** onze aanbeveling voor uitgebr
                 "DefaultEvents": {
                   "eventDestination": "ServiceFabricSystemEventTable"
                 }
+              },
+              {
+                "provider": "02d06793-efeb-48c8-8f7f-09713309a810",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387904",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                "eventDestination": "ServiceFabricSystemEventTable"
+                }
               }
             ]
           }
@@ -269,13 +287,13 @@ Om in te schakelen de **Base operationele kanaal** onze aanbeveling voor uitgebr
       },
 ```
 
-## <a name="collect-from-new-eventsource-channels"></a>Verzamelen van nieuwe kanalen voor de gebeurtenisbron
+## <a name="collect-from-new-eventsource-channels"></a>Verzamelen uit nieuwe event source-kanalen
 
-Voor het bijwerken van diagnostische gegevens voor het verzamelen van Logboeken van nieuwe kanalen voor de gebeurtenisbron die staan voor een nieuwe toepassing bent over het implementeren, uit te voeren dezelfde cluster stappen zoals eerder beschreven voor het instellen van diagnostische gegevens voor een bestaand.
+Als u Diagnostische gegevens wilt bijwerken om logboeken te verzamelen van nieuwe event source-kanalen die een nieuwe toepassing vertegenwoordigen die u op het punt staat te implementeren, voert u dezelfde stappen uit als eerder beschreven voor het instellen van diagnostische gegevens voor een bestaand cluster.
 
-Update de `EtwEventSourceProviderConfiguration` sectie in het template.json-bestand om toe te voegen vermeldingen voor de nieuwe kanalen voor de gebeurtenisbron voordat u de configuratie van de toepassing met behulp van bijwerken de `New-AzResourceGroupDeployment` PowerShell-opdracht. De naam van de bron van de gebeurtenis wordt gedefinieerd als onderdeel van uw code in het bestand ServiceEventSource.cs Visual Studio gegenereerd.
+Werk de sectie `EtwEventSourceProviderConfiguration` in het bestand template. json bij om vermeldingen toe te voegen voor de nieuwe event source-kanalen voordat u de configuratie-update toepast met behulp van de `New-AzResourceGroupDeployment` Power shell-opdracht. De naam van de gebeurtenis bron wordt gedefinieerd als onderdeel van uw code in het Visual Studio-gegenereerde ServiceEventSource.cs-bestand.
 
-Bijvoorbeeld, als uw gebeurtenisbron de naam van mijn Eventsource, de volgende code om de gebeurtenissen uit mijn Eventsource in een tabel met de naam MyDestinationTableName toevoegen.
+Als uw gebeurtenis bron bijvoorbeeld mijn-Event source heet, voegt u de volgende code toe om de gebeurtenissen van mijn-Event source te plaatsen in een tabel met de naam MyDestinationTableName.
 
 ```json
         {
@@ -287,35 +305,35 @@ Bijvoorbeeld, als uw gebeurtenisbron de naam van mijn Eventsource, de volgende c
         }
 ```
 
-Voor het verzamelen van prestatiemeteritems of gebeurtenislogboeken, kunt u de Resource Manager-sjabloon aanpassen met behulp van de voorbeelden die zijn opgegeven [maken van een Windows-machine met controle en diagnostiek met behulp van een Azure Resource Manager-sjabloon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Vervolgens publiceert u de Resource Manager-sjabloon opnieuw.
+Als u prestatie meter items of gebeurtenis logboeken wilt verzamelen, wijzigt u de Resource Manager-sjabloon met behulp van de voor beelden in [een virtuele Windows-machine maken met bewaking en diagnose met behulp van een Azure Resource Manager sjabloon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Publiceer vervolgens de Resource Manager-sjabloon opnieuw.
 
-## <a name="collect-performance-counters"></a>Verzamelen van prestatiemeteritems
+## <a name="collect-performance-counters"></a>Prestatie meter items verzamelen
 
-Voor het verzamelen van metrische gegevens voor prestaties van uw cluster, moet u de prestatiemeteritems toevoegen aan uw "WadCfg > DiagnosticMonitorConfiguration' in het Resource Manager-sjabloon voor uw cluster. Zie [prestatiebewaking met WAD](service-fabric-diagnostics-perf-wad.md) voor stapsgewijze instructies over het aanpassen van uw `WadCfg` voor het verzamelen van specifieke prestatiemeteritems. Naslaginformatie over [Service Fabric-prestatiemeteritems](service-fabric-diagnostics-event-generation-perf.md) voor items die voor een lijst van de prestaties wordt aangeraden verzamelen.
+Als u prestatie gegevens wilt verzamelen uit uw cluster, voegt u de prestatie meter items toe aan uw ' WadCfg > DiagnosticMonitorConfiguration ' in de Resource Manager-sjabloon voor uw cluster. Zie [prestatie bewaking met wad](service-fabric-diagnostics-perf-wad.md) voor de stappen voor het aanpassen van uw `WadCfg` voor het verzamelen van specifieke prestatie meter items. Referentie [service Fabric prestatie meter items](service-fabric-diagnostics-event-generation-perf.md) voor een lijst met prestatie meter items die u kunt verzamelen.
   
-Als u een Application Insights-sink, zoals beschreven in de onderstaande sectie, en wilt dat deze metrische gegevens worden weergegeven in Application Insights, Controleer of voor het toevoegen van de naam van de sink in de sectie 'sinks' zoals u hierboven ziet. Hiermee wordt de prestatiemeteritems die afzonderlijk worden geconfigureerd automatisch verzonden naar uw Application Insights-resource.
+Als u een Application Insights-Sink gebruikt, zoals beschreven in de sectie hieronder, en u wilt dat deze metrische gegevens worden weer gegeven in Application Insights, moet u de naam van de Sink toevoegen in de sectie ' sinks ', zoals hierboven wordt weer gegeven. Hiermee worden automatisch de prestatie meter items verzonden die afzonderlijk zijn geconfigureerd voor uw Application Insights-resource.
 
 
-## <a name="send-logs-to-application-insights"></a>Logboeken verzenden naar Application Insights
+## <a name="send-logs-to-application-insights"></a>Logboeken naar Application Insights verzenden
 
 ### <a name="configuring-application-insights-with-wad"></a>Application Insights configureren met WAD
 
 >[!NOTE]
->Dit is alleen van toepassing op Windows-clusters op dit moment.
+>Dit is op dit moment alleen van toepassing op Windows-clusters.
 
-Er zijn twee primaire manieren om gegevens te verzenden vanuit WAD naar Azure Application Insights, waarmee wordt bereikt door een sink Application Insights toe te voegen aan de configuratie van de WAD, via de Azure-portal of via een Azure Resource Manager-sjabloon.
+Er zijn twee primaire manieren om gegevens te verzenden van WAD naar Azure-toepassing Insights. dit wordt bereikt door een Application Insights-Sink toe te voegen aan de WAD-configuratie, via de Azure Portal of via een Azure Resource Manager sjabloon.
 
-#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Een Application Insights-Instrumentatiesleutel toevoegen bij het maken van een cluster in Azure portal
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Een Application Insights instrumentatie sleutel toevoegen bij het maken van een cluster in Azure Portal
 
-![Toevoegen van een AIKey](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+![Een AIKey toevoegen](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
 
-Bij het maken van een cluster als diagnostische gegevens 'Aan' is ingeschakeld, ziet u een optioneel veld een sleutel van Application Insights-Instrumentatiepakket in te voeren. Als u uw Application Insights-sleutel hier plakt, worden de Application Insights-sink automatisch voor u in de Resource Manager-sjabloon die wordt gebruikt voor het implementeren van uw cluster geconfigureerd.
+Bij het maken van een cluster, als de diagnostische gegevens zijn ingeschakeld, een optioneel veld voor het invoeren van een Application Insights instrumentatie sleutel wordt weer gegeven. Als u uw Application Insights sleutel hier plakt, wordt de Application Insights-Sink automatisch voor u geconfigureerd in de Resource Manager-sjabloon die wordt gebruikt voor het implementeren van uw cluster.
 
-#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Het Sink-Application Insights toevoegen aan de Resource Manager-sjabloon
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>De Application Insights-Sink toevoegen aan de Resource Manager-sjabloon
 
-Toevoegen in de 'WadCfg' van de Resource Manager-sjabloon, een 'Sink' door de volgende twee wijzigingen op te nemen:
+Voeg in het ' WadCfg ' van de Resource Manager-sjabloon een ' sink ' toe door de volgende twee wijzigingen op te nemen:
 
-1. Toevoegen van de configuratie van de sink direct na het declareren van de `DiagnosticMonitorConfiguration` is voltooid:
+1. De Sink-configuratie direct toevoegen nadat het declareren van de `DiagnosticMonitorConfiguration` is voltooid:
 
     ```json
     "SinksConfig": {
@@ -329,28 +347,28 @@ Toevoegen in de 'WadCfg' van de Resource Manager-sjabloon, een 'Sink' door de vo
 
     ```
 
-2. Bevatten de Sink in de `DiagnosticMonitorConfiguration` door toe te voegen van de volgende regel in de `DiagnosticMonitorConfiguration` van de `WadCfg` (vlak voor de `EtwProviders` zijn gedeclareerd):
+2. Neem de Sink op in het `DiagnosticMonitorConfiguration` door de volgende regel toe te voegen aan de `DiagnosticMonitorConfiguration` van de `WadCfg` (rechts voordat de `EtwProviders` zijn gedeclareerd):
 
     ```json
     "sinks": "applicationInsights"
     ```
 
-In zowel de voorgaande codefragmenten, is de naam 'Application Insights' gebruikt om te beschrijven van de sink. Dit is geen vereiste en als de naam van de sink is opgenomen in een 'put', kunt u de naam van de instellen op een willekeurige tekenreeks.
+In zowel de voor gaande code fragmenten is de naam ' applicationInsights ' gebruikt om de sink te beschrijven. Dit is geen vereiste en zolang de naam van de sink is opgenomen in ' sinks ', kunt u de naam op een wille keurige teken reeks instellen.
 
-Op dit moment logboeken van het cluster weergegeven als **traceringen** in Application Insights-Logboeken. Omdat de meeste van de traceringen die afkomstig zijn van het platform van niveau 'Ter informatie' zijn, kunt u ook overwegen wijzigen van de sink-configuratie voor het verzenden van alleen logboeken van het type "Waarschuwing" of "Error". Dit kan worden gedaan door 'Kanalen' toevoegen aan uw sink, zoals geïllustreerd in [in dit artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+Op dit moment worden logboeken van het cluster weer gegeven als **traceringen** in de logboek weergave van Application Insights. Omdat de meeste traceringen van het platform van het niveau ' informatief ' zijn, kunt u ook overwegen de Sink-configuratie te wijzigen zodat alleen logboeken worden verzonden met het type waarschuwing of fout. U kunt dit doen door ' channels ' toe te voegen aan uw Sink, zoals wordt geïllustreerd in [dit artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 >[!NOTE]
->Als u een onjuiste Application Insights-sleutel in de portal of in het Resource Manager-sjabloon, moet u de sleutel handmatig te wijzigen en bijwerken van het cluster / opnieuw te implementeren.
+>Als u een onjuiste Application Insights sleutel in de portal of in uw Resource Manager-sjabloon gebruikt, moet u de sleutel hand matig wijzigen en het cluster bijwerken of opnieuw implementeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Wanneer u Azure diagnostics correct hebt geconfigureerd, ziet u gegevens in uw Storage-tabellen van Logboeken van de ETW- en gebeurtenisbron. Als u gebruikmaken van Azure Monitor-Logboeken, Kibana of een andere analyse- en visualisatieservice gegevensplatform die niet rechtstreeks in het Resource Manager-sjabloon is geconfigureerd wilt, moet u voor het instellen van het platform van uw keuze in de gegevens uit deze opslagtabellen worden gelezen. Deze manier voor Azure Monitor-Logboeken is relatief eenvoudig en wordt uitgelegd in [analyse van gebeurtenis- en logboekbestanden](service-fabric-diagnostics-event-analysis-oms.md). Application Insights is een deel van een speciaal geval in dit opzicht, omdat deze kan worden geconfigureerd als onderdeel van de configuratie van de extensie voor diagnostische gegevens, zodat u verwijzen naar de [juiste artikel](service-fabric-diagnostics-event-analysis-appinsights.md) als u AI gebruikt.
+Zodra u Azure Diagnostics correct hebt geconfigureerd, ziet u de gegevens in uw opslag tabellen in de logboeken ETW en Event source. Als u Azure Monitor-logboeken, Kibana of een ander gegevens analyse-en visualisatie platform wilt gebruiken dat niet rechtstreeks is geconfigureerd in de Resource Manager-sjabloon, moet u ervoor zorgen dat u het platform van uw keuze instelt voor het lezen van de gegevens uit deze opslag tabellen. Dit wordt gedaan voor Azure Monitor Logboeken is relatief redelijk en wordt uitgelegd in [gebeurtenis-en logboek analyse](service-fabric-diagnostics-event-analysis-oms.md). Application Insights is in deze zin een bit van een speciaal geval, omdat deze kan worden geconfigureerd als onderdeel van de configuratie van de diagnostische gegevens, dus Raadpleeg het [desbetreffende artikel](service-fabric-diagnostics-event-analysis-appinsights.md) als u ervoor kiest om AI te gebruiken.
 
 >[!NOTE]
->Er is momenteel geen manier om te filteren of opschonen van de gebeurtenissen die worden verzonden naar de tabel. Als een proces voor het verwijderen van gebeurtenissen uit de tabel niet is geïmplementeerd, blijft de tabel om te groeien. Er is momenteel een voorbeeld van een gegevensservice opschonen die wordt uitgevoerd in de [Watchdog voorbeeld](https://github.com/Azure-Samples/service-fabric-watchdog-service), en wordt aanbevolen dat u een zelf ook, schrijven, tenzij er is een goede reden voor het opslaan van Logboeken na een periode 30 of 90 dagen.
+>Er is momenteel geen manier om de gebeurtenissen te filteren of op te schonen die naar de tabel worden verzonden. Als u geen proces implementeert om gebeurtenissen uit de tabel te verwijderen, blijft de tabel groeien. Op dit moment is er een voor beeld van een service voor het opschonen van gegevens die wordt uitgevoerd in het watchdog-voor [beeld](https://github.com/Azure-Samples/service-fabric-watchdog-service)en wordt aanbevolen dat u er een voor uzelf schrijft, tenzij u een goede reden hebt om logboeken te bewaren buiten een periode van 30 of 90 dagen.
 
-* [Meer informatie over het verzamelen van prestatiemeteritems of de logboeken met behulp van de extensie voor diagnostische gegevens](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Gebeurtenis analyses en visualisatie met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Gebeurtenis analyses en visualisatie met Azure Monitor-Logboeken](service-fabric-diagnostics-event-analysis-oms.md)
-* [Gebeurtenis analyses en visualisatie met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Gebeurtenis analyses en visualisatie met Azure Monitor-Logboeken](service-fabric-diagnostics-event-analysis-oms.md)
+* [Meer informatie over het verzamelen van prestatie meter items of Logboeken met behulp van de diagnostische extensie](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Gebeurtenis analyse en visualisatie met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Gebeurtenis analyse en visualisatie met Azure Monitor-logboeken](service-fabric-diagnostics-event-analysis-oms.md)
+* [Gebeurtenis analyse en visualisatie met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Gebeurtenis analyse en visualisatie met Azure Monitor-logboeken](service-fabric-diagnostics-event-analysis-oms.md)

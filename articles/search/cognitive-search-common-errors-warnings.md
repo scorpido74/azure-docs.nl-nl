@@ -1,23 +1,24 @@
 ---
-title: Veelvoorkomende fouten en waarschuwingen
-titleSuffix: Azure Cognitive Search
-description: In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens AI-verrijking in azure Cognitive Search.
-manager: nitinme
+title: Veelvoorkomende fouten en waarschuwingen-Azure Search
+description: In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens een AI-verrijking in Azure Search.
+services: search
+manager: heidist
 author: amotley
-ms.author: abmotley
-ms.service: cognitive-search
+ms.service: search
+ms.workload: search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 09/18/2019
+ms.author: abmotley
+ms.openlocfilehash: 6455ac9dbe0933f6d46d1137e0a19dcc388d8c80
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787979"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243052"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen van de AI-verrijkings pijplijn in azure Cognitive Search
+# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-search"></a>Veelvoorkomende fouten en waarschuwingen van de AI-verrijkings pijplijn in Azure Search
 
-In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens AI-verrijking in azure Cognitive Search.
+In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens een AI-verrijking in Azure Search.
 
 ## <a name="errors"></a>Fouten
 Het indexeren stopt wanneer het aantal fouten groter is dan [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures). 
@@ -132,6 +133,10 @@ Het document is gelezen en verwerkt, maar als gevolg van een niet-overeenkomende
 
 In al deze gevallen raadpleegt u de [ondersteunde gegevens typen (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) en [toewijzing van gegevens typen voor indexeer functies in azure Search](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) om er zeker van te zijn dat u het index schema correct bouwt en de juiste [veld toewijzingen voor Indexeer functies](search-indexer-field-mappings.md)hebt ingesteld. Het fout bericht bevat details die kunnen helpen bij het volgen van de bron van de niet-overeenkomende bronnen.
 
+### <a name="could-not-process-document-within-indexer-max-run-time"></a>Het document kan niet worden verwerkt binnen de Indexeer functie Max. uitvoerings tijd
+
+Deze fout treedt op wanneer de verwerking van één document uit de gegevens bron binnen de toegestane uitvoerings tijd niet kan worden voltooid met de Indexeer functie. De [maximale uitvoerings tijd](search-limits-quotas-capacity.md#indexer-limits) is korter wanneer vaardig heden worden gebruikt. Als deze fout optreedt, als u maxFailedItems hebt ingesteld op een andere waarde dan 0, wordt het document in toekomstige uitvoeringen door de Indexeer functie omzeild, zodat de indexering kan worden uitgevoerd. Als u geen enkel document kunt overs Laan of als deze fout consequent wordt weer gegeven, kunt u overwegen documenten te verbreken in kleinere documenten zodat gedeeltelijke voortgang kan worden gemaakt binnen een uitvoering van één Indexeer functie.
+
 ##  <a name="warnings"></a>Berichten
 Waarschuwingen worden niet gestopt met indexeren, maar ze doen wel voor waarden die kunnen leiden tot onverwachte resultaten. Of u actie onderneemt of niet afhankelijk is van de gegevens en uw scenario.
 
@@ -160,7 +165,7 @@ Als u een standaard waarde wilt opgeven in het geval van een ontbrekende invoer,
 | --- | --- | --- |
 | De vaardigheids invoer is van het verkeerde type | De vereiste `X` voor vaardigheids invoer is niet van het verwachte type `String`. De vereiste indeling voor het `X` van de kwalificatie invoer is niet in de verwachte vorm. | Bepaalde vaardig heden verwachten invoer van bepaalde typen, bijvoorbeeld [sentiment-vaardigheid](cognitive-search-skill-sentiment.md) verwacht `text` een teken reeks te zijn. Als met de invoer een niet-teken reeks waarde wordt opgegeven, wordt de kwalificatie niet uitgevoerd en worden er geen uitvoer gegenereerd. Zorg ervoor dat uw gegevensset uniforme invoer waarden bevat, of gebruik een [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) om de invoer voor te verwerken. Als u de vaardigheid over een matrix wilt door lopen, controleert u of de context van de vaardigheid en de invoer `*` op de juiste posities hebben. Normaal gesp roken moet zowel de context als de invoer bron eindigen op `*` voor matrices. |
 | Vaardigheids invoer ontbreekt | De vereiste `X` voor vaardigheids invoer ontbreekt. | Als in al uw documenten deze waarschuwing wordt weer gegeven, is er waarschijnlijk een type fout in de invoer paden en moet u de naam van de eigenschap name, extra of ontbrekende `*` in het pad controleren en documenten uit de gegevens bron de vereiste invoer definiëren. |
-| De invoer voor de taal code van de bekwaamheid is ongeldig | @No__t_0 voor het invoeren van vaardig heden heeft de volgende taal codes `X,Y,Z`, ten minste één is ongeldig. | Meer details vindt u [hieronder](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
+| De invoer voor de taal code van de bekwaamheid is ongeldig | `languageCode` voor het invoeren van vaardig heden heeft de volgende taal codes `X,Y,Z`, ten minste één is ongeldig. | Meer details vindt u [hieronder](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid) |
 
 ### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>De vaardigheids invoer ' language code ' heeft de volgende taal codes X, Y, Z, ten minste één is ongeldig.
 Een of meer van de waarden die zijn door gegeven aan de optionele `languageCode` invoer van een stroomafwaartse vaardigheid, wordt niet ondersteund. Dit kan gebeuren als u de uitvoer van de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) doorgeeft aan de volgende vaardig heden en de uitvoer bestaat uit meer talen dan wordt ondersteund in deze downstream-vaardig heden.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb4668ae87404771513ca5825482efe9206308d
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025004"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242221"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -73,7 +73,7 @@ Als u een openbaar IP-adres gebruikt als een eind punt, vindt u de IP-en DNS-inf
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Verandert de IP-of DNS-naam gedurende de levens duur van de toepassings gateway?
 
-Het VIP kan worden gewijzigd als u de toepassings gateway stopt en start. Maar de DNS-naam die aan de toepassings gateway is gekoppeld, wordt niet gewijzigd gedurende de levens duur van de gateway. Omdat de DNS-naam niet wordt gewijzigd, moet u een CNAME-alias gebruiken en deze verwijzen naar het DNS-adres van de toepassings gateway.
+In Application Gateway v1 SKU kan het VIP worden gewijzigd als u de toepassings gateway stopt en start. Maar de DNS-naam die aan de toepassings gateway is gekoppeld, wordt niet gewijzigd gedurende de levens duur van de gateway. Omdat de DNS-naam niet wordt gewijzigd, moet u een CNAME-alias gebruiken en deze verwijzen naar het DNS-adres van de toepassings gateway. In Application Gateway v2 SKU kunt u het IP-adres instellen als statisch, zodat de IP-en DNS-naam niet wordt gewijzigd gedurende de levens duur van de toepassings gateway. 
 
 ### <a name="does-application-gateway-support-static-ip"></a>Ondersteunt Application Gateway statisch IP-adres?
 
@@ -322,7 +322,7 @@ Zie [OWASP Top-10-beveiligings problemen](https://www.owasp.org/index.php/Top10#
 
 ### <a name="does-waf-support-ddos-protection"></a>Biedt WAF ondersteuning voor DDoS-beveiliging?
 
-Ja. U kunt DDoS-beveiliging inschakelen voor het virtuele netwerk waarin de toepassings gateway is geïmplementeerd. Met deze instelling zorgt u ervoor dat de Azure DDoS Protection-Service ook de virtuele IP-adressen van de toepassings gateway (VIP) beveiligt.
+Ja. U kunt DDoS-beveiliging inschakelen op het virtuele netwerk waarop de toepassingsgateway is geïmplementeerd. Door deze instelling zorgt u ervoor dat met de Azure DDoS-beveiligingsservice ook het virtuele IP-adres (VIP) van de toepassingsgateway wordt beveiligd.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Zijn er richt lijnen beschikbaar om te migreren van de V1-SKU naar de v2-SKU?
 

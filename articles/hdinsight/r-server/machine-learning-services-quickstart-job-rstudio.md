@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: RStudio-server voor het uitvoeren van R ten opzichte van ML Services-Azure HDInsight'
+title: 'Quick Start: RStudio server & ML Services voor R-Azure HDInsight'
 description: In de Quick Start voert u een R-script uit op een cluster met MILLILITER Services in azure HDInsight met behulp van RStudio server.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,32 +8,32 @@ ms.topic: quickstart
 ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: e2fcdeb91517b048766d59a9714346f76091a8c8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8a6a204ee5080e3acf99c13ecba1e1c7664d68b4
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123129"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241884"
 ---
-# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Quickstart: Een R-script uitvoeren op een ML Services-cluster in azure HDInsight met behulp van de RStudio-server
+# <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-rstudio-server"></a>Snelstartgids: een R-script uitvoeren op een ML Services-cluster in azure HDInsight met behulp van RStudio-server
 
 Met ML-Services op Azure HDInsight kunnen R-scripts Apache Spark en Apache Hadoop MapReduce gebruiken om gedistribueerde berekeningen uit te voeren. MILLILITERs services bepalen hoe aanroepen worden uitgevoerd door de compute-context in te stellen. Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een Edge-knoop punt hebt u de mogelijkheid om de geparallel gedistribueerde functies van RevoScaleR uit te voeren op de kernen van de server met het Edge-knoop punt. U kunt ze ook uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van RevoScaleR of Apache Spark reken contexten.
 
 In deze Quick Start leert u hoe u een R-script kunt uitvoeren met RStudio-server met behulp van Spark voor gedistribueerde R-berekeningen. U definieert een compute-context om berekeningen lokaal uit te voeren op een Edge-knoop punt en wordt opnieuw gedistribueerd over de knoop punten in het HDInsight-cluster.
 
-## <a name="prerequisite"></a>Vereiste
+## <a name="prerequisite"></a>Vereisten
 
 Een cluster met MILLILITERs Services op HDInsight. Zie [Apache Hadoop-clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **ml Services** voor het **cluster type**.
 
 ## <a name="connect-to-rstudio-server"></a>Verbinding maken met RStudio Server
 
-De RStudio-server wordt uitgevoerd op het Edge-knoop punt van het cluster. Ga naar de volgende URL, `CLUSTERNAME` waarbij de naam is van het door u gemaakte ml Services-cluster:
+De RStudio-server wordt uitgevoerd op het Edge-knoop punt van het cluster. Ga naar de volgende URL, waarbij `CLUSTERNAME` de naam is van het door u gemaakte MILLILITERs Services-cluster:
 
 ```
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-De eerste keer dat u zich aanmeldt, moet u twee keer verifiëren. Geef bij de eerste verificatie prompt de aanmeldings naam van de Cluster beheerder en het wacht `admin`woord op. de standaard instelling is. Voor de tweede verificatie prompt geeft u de SSH-aanmeldings naam en het wacht `sshuser`woord op. de standaard instelling is. Voor volgende aanmeldingen zijn alleen de SSH-referenties vereist.
+De eerste keer dat u zich aanmeldt, moet u twee keer verifiëren. Geef bij de eerste verificatie prompt de aanmeldings naam en het wacht woord voor de Cluster beheerder op. de standaard waarde is `admin`. Geef voor de tweede verificatie prompt de SSH-aanmeldings naam en het wacht woord op. de standaard waarde is `sshuser`. Voor volgende aanmeldingen zijn alleen de SSH-referenties vereist.
 
 Zodra u verbonden bent, moet het scherm vergelijkbaar zijn met de volgende schermafbeelding:
 

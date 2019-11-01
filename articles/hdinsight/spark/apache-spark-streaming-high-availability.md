@@ -1,5 +1,5 @@
 ---
-title: Maxi maal beschik bare Spark-streaming-taken maken in GARENs-Azure HDInsight
+title: Maxi maal beschik bare Spark streaming-taken in GARENs-Azure HDInsight
 description: Apache Spark streaming instellen voor een scenario met een hoge Beschik baarheid in azure HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 3e48f220035c56d34d6ca5a7347e9a4ee100e1f1
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002937"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241239"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Apache Spark streaming-taken met hoge Beschik baarheid maken met GARENs
 
@@ -71,8 +71,8 @@ Als een **stuur programma** echter niet kan worden uitgevoerd, mislukken alle bi
 
 Stuur Programma's herstellen met DStream controle punt:
 
-* Automatisch opnieuw opstarten van Stuur Programma's op GARENs configureren `yarn.resourcemanager.am.max-attempts`met de configuratie-instelling.
-* Een map met een controle punt instellen in een bestands systeem met `streamingContext.checkpoint(hdfsDirectory)`HDFS-compatibel met.
+* Automatisch opnieuw opstarten van Stuur Programma's op garen configureren met de configuratie-instelling `yarn.resourcemanager.am.max-attempts`.
+* Stel een map voor het controle punt in op een bestands systeem met HDFS-compatibel met `streamingContext.checkpoint(hdfsDirectory)`.
 * Bron code herstructureren voor het gebruik van controle punten voor herstel, bijvoorbeeld:
 
     ```scala
@@ -88,7 +88,7 @@ Stuur Programma's herstellen met DStream controle punt:
         context.start()
     ```
 
-* Configureer verloren gegevens herstel door het Write-Ahead logboek (Wal) `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`in te scha kelen en de replicatie in het geheugen voor invoer DStreams uit te scha kelen met. `StorageLevel.MEMORY_AND_DISK_SER`
+* Configureer verloren gegevens herstel door het Write-Ahead logboek (WAL) in te scha kelen met `sparkConf.set("spark.streaming.receiver.writeAheadLog.enable","true")`en schakel in-Memory-replicatie uit voor invoer DStreams met `StorageLevel.MEMORY_AND_DISK_SER`.
 
 Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receivers, kunt u ' ten minste eenmaal ' gegevens herstel leveren:
 
@@ -106,7 +106,7 @@ Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receiver
     spark.yarn.am.attemptFailuresValidityInterval=1h
     ```
 
-* Spark en de gebruikers interface van Spark-streaming hebben een configureerbaar metrisch systeem. U kunt ook extra bibliotheken gebruiken, zoals grafiet/Grafana, om de metrische gegevens van het dash board te downloaden, zoals ' num records verwerkte ', ' geheugen/GC-gebruik op Stuur & programma ', ' totale vertraging ', ' gebruik van het cluster ' enzovoort. In structured streaming versie 2,1 of hoger kunt u gebruiken `StreamingQueryListener` om extra metrische gegevens te verzamelen.
+* Spark en de gebruikers interface van Spark-streaming hebben een configureerbaar metrisch systeem. U kunt ook extra bibliotheken gebruiken, zoals grafiet/Grafana, om de metrische gegevens van het dash board te downloaden, zoals ' num records verwerkte ', ' geheugen/GC-gebruik op Stuur & programma ', ' totale vertraging ', ' gebruik van het cluster ' enzovoort. In structured streaming versie 2,1 of hoger kunt u `StreamingQueryListener` gebruiken om extra metrische gegevens te verzamelen.
 
 * U moet langlopende taken segmenteren.  Wanneer een Spark-streaming-toepassing wordt ingediend bij het cluster, moet de GARENs wachtrij waarin de taak wordt uitgevoerd, worden gedefinieerd. U kunt een [capaciteits planner voor garens](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html) gebruiken om langlopende taken te verzenden naar afzonderlijke wacht rijen.
 
@@ -122,5 +122,5 @@ Als u wilt samenvatten, met behulp van controle punten + WAL + reliable receiver
 * [Overzicht van Apache Spark streaming](apache-spark-streaming-overview.md)
 * [Apache Spark streaming-taken maken met precies één keer per gebeurtenis verwerking](apache-spark-streaming-exactly-once.md)
 * [Langlopende Apache Spark streaming-taken op GARENs](https://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
-* [Structured streaming: Fout tolerante semantiek](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
-* [Onderscheiden streams: Een fout tolerant model voor schaal bare stroom verwerking](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)
+* [Structured streaming: fout tolerante semantiek](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
+* [Onderscheiden streams: een fout tolerant model voor schaal bare stroom verwerking](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

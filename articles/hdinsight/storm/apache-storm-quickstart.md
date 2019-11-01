@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Apache Storm topologie in azure HDInsight maken en bewaken'
+title: 'Snelstartgids: Apache Storm topologie maken/beheren-Azure HDInsight'
 description: In de Quick Start leert u hoe u een Apache Storm topologie kunt maken en bewaken in azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 9e48cb53b55cdc4200498a54dba31ae93ca8b31a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018578"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241224"
 ---
-# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Quickstart: Een Apache Storm topologie in azure HDInsight maken en bewaken
+# <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Snelstartgids: een Apache Storm topologie in azure HDInsight maken en bewaken
 
 Apache Storm is een gedistribueerd, schaalbaar, fouttolerant en realtime berekeningssysteem voor het verwerken van gegevensstromen. Met Storm in Azure HDInsight kunt u een op een cloud gebaseerd Storm-cluster maken dat in realtime big data-analyses uitvoert.
 
@@ -29,13 +29,13 @@ In deze Snelstartgids gebruikt u een voor beeld van het Apache [Storm-starter-](
 
 ## <a name="create-the-topology"></a>De topologie maken
 
-1. Maak verbinding met uw Storm-cluster. Bewerk de onderstaande opdracht door de `CLUSTERNAME` naam van uw Storm-cluster te vervangen en voer de volgende opdracht in:
+1. Maak verbinding met uw Storm-cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw Storm-cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. Het **WordCount** -voor beeld is opgenomen in uw HDInsight `/usr/hdp/current/storm-client/contrib/storm-starter/`-cluster op. De topologie genereert wille keurige zinnen en telt het aantal keren dat er woorden optreden. Gebruik de volgende opdracht om de **WordCount** -topologie op het cluster te starten:
+2. Het **WordCount** -voor beeld is opgenomen in uw HDInsight-cluster op `/usr/hdp/current/storm-client/contrib/storm-starter/`. De topologie genereert wille keurige zinnen en telt het aantal keren dat er woorden optreden. Gebruik de volgende opdracht om de **WordCount** -topologie op het cluster te starten:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -55,7 +55,7 @@ Voer de volgende stappen uit voor het bewaken van de topologie met behulp van de
 
     De nieuwe pagina bevat de volgende informatie:
 
-    |Eigenschap | Description |
+    |Eigenschap | Beschrijving |
     |---|---|
     |Topologie statistieken|Basis informatie over de topologie prestaties, geordend in tijd Vensters. Wanneer er een specifiek tijdvenster wordt geselecteerd, verandert het tijdvenster voor informatie die wordt weergegeven in andere gedeelten van de pagina.|
     |Spouts|Basis informatie over spouts, met inbegrip van de laatste fout die door elke Spout wordt geretourneerd.|
@@ -64,7 +64,7 @@ Voer de volgende stappen uit voor het bewaken van de topologie met behulp van de
     |Activeren|Hervat de verwerking van een gedeactiveerde topologie.|
     |Deactiveren|Hiermee wordt een actieve topologie onderbroken.|
     |Opnieuw verdelen|Hiermee past u de parallellisme van de topologie aan. Nadat u het aantal knooppunten in het cluster hebt gewijzigd, moet u actieve topologieën opnieuw verdelen. Met het opnieuw verdelen wordt de parallelle uitvoering aangepast om te compenseren voor het toegenomen/afgenomen aantal knooppunten in het cluster. Zie [informatie over de parallellisme van een Apache Storm topologie](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)voor meer informatie.|
-    |Afsluiten|Hiermee wordt een storm-topologie beëindigd na de opgegeven time-out.|
+    |Verwijderen|Hiermee wordt een storm-topologie beëindigd na de opgegeven time-out.|
 
 3. Selecteer op deze pagina een item in de sectie **Spouts** of **Bolts**. Er wordt informatie over het geselecteerde onderdeel weergegeven.
 
@@ -72,7 +72,7 @@ Voer de volgende stappen uit voor het bewaken van de topologie met behulp van de
 
     Op de pagina Nieuw wordt de volgende informatie weer gegeven:
 
-    |Eigenschap | Description |
+    |Eigenschap | Beschrijving |
     |---|---|
     |Spout/flits statistieken|Basis informatie over de prestaties van het onderdeel, geordend in tijd Vensters. Wanneer er een specifiek tijdvenster wordt geselecteerd, verandert het tijdvenster voor informatie die wordt weergegeven in andere gedeelten van de pagina.|
     |Invoer statistieken (alleen flits)|Informatie over onderdelen die gegevens produceren die door de schicht worden verbruikt.|

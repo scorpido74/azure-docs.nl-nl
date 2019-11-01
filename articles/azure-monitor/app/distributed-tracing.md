@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677122"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242456"
 ---
 # <a name="what-is-distributed-tracing"></a>Wat is gedistribueerde tracering?
 
@@ -40,6 +40,7 @@ De Application Insights Sdk's voor .NET, .NET core, Java, node. js en Java scrip
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python (preview-versie)](opencensus-python.md)
 
 Met de juiste Application Insights SDK geïnstalleerd en geconfigureerd, wordt tracerings informatie automatisch verzameld voor populaire frameworks, Bibliotheken en technologieën door de auto-Collector van de SDK-afhankelijkheden. De volledige lijst met ondersteunde technologieën is beschikbaar in [de documentatie voor het automatisch verzamelen van afhankelijkheden](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -49,7 +50,7 @@ Met de juiste Application Insights SDK geïnstalleerd en geconfigureerd, wordt t
 
 Naast de Application Insights Sdk's ondersteunt Application Insights ook gedistribueerde tracering via [Opentellingen](https://opencensus.io/). Opentelling is een open source, leverancier-neutraal, één distributie van bibliotheken voor het verzamelen van metrische gegevens en gedistribueerde tracering voor services. Daarnaast kan de open source-community gedistribueerde tracering inschakelen met populaire technologieën zoals redis, memcached of MongoDB. [Micro soft werkt samen met Opentellingen met verschillende andere bewakings-en Cloud partners](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Als u gedistribueerde tracerings mogelijkheden wilt toevoegen aan een toepassing met opentellingen, moet u eerst [de Application Insights lokale doorstuur server installeren en configureren](./../../azure-monitor/app/opencensus-local-forwarder.md). Vervolgens configureert u opentellingen om gedistribueerde tracerings gegevens via de lokale doorstuur server te routeren. Zowel [python](./../../azure-monitor/app/opencensus-python.md) als [Go](./../../azure-monitor/app/opencensus-go.md) worden ondersteund.
+[Python (preview-versie)](opencensus-python.md) 
 
 De opentellings website houdt API-referentie documentatie voor [python](https://opencensus.io/api/python/trace/usage.html) en [Go](https://godoc.org/go.opencensus.io), evenals verschillende hand leidingen voor het gebruik van opentellingen. 
 

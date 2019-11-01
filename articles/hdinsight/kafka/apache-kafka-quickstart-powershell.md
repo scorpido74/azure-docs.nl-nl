@@ -1,5 +1,5 @@
 ---
-title: Apache Kafka op HDInsight instellen met behulp van Azure PowerShell-Quick Start
+title: 'Snelstartgids: Apache Kafka maken met Azure PowerShell-HDInsight'
 description: In deze snelstartgids leert u hoe u met Azure PowerShell een Apache Kafka-cluster maakt in Azure HDInsight. Er wordt ook aandacht besteed aan Kafka-onderwerpen, -abonnees en -consumenten.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 79224879dc0f23c7ad022134c6add087b90304b7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 082be3630474ec5f97ab7d80a3ee1b92cdc28fd7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123155"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242325"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Quickstart: Apache Kafka cluster maken in azure HDInsight met behulp van Power shell
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Snelstartgids: Apache Kafka cluster maken in azure HDInsight met behulp van Power shell
 
 [Apache Kafka](https://kafka.apache.org/) is een open-source, gedistribueerd streamingplatform. Het wordt vaak gebruikt als een berichtenbroker, omdat het een functionaliteit biedt die vergelijkbaar is met een publicatie-/abonnementswachtrij voor berichten. 
 
@@ -35,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij uw Azure-abonnement `Connect-AzAccount` met de cmdlet en volg de instructies op het scherm.
+Meld u aan bij uw Azure-abonnement met de cmdlet `Connect-AzAccount` en volg de instructies op het scherm.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -60,12 +60,12 @@ $location = Read-Host -Prompt "Enter the Azure region to use"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Kafka in HDInsight maakt gebruik van Azure Managed Disks voor het opslaan van Kafka-gegevens. Daarnaast gebruikt het cluster Azure Storage voor het opslaan van gegevens zoals logboeken. Gebruik [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) om een nieuw opslag account te maken.
 
 > [!IMPORTANT]  
-> Het type `BlobStorage` opslag account kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
+> `BlobStorage` van het type opslag account kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"

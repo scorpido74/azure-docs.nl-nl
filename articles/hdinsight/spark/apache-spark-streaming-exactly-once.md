@@ -1,5 +1,5 @@
 ---
-title: Spark-streaming-taken met precies één keer per gebeurtenis verwerking-Azure HDInsight
+title: Spark-streaming & eenmalige gebeurtenis verwerking-Azure HDInsight
 description: Apache Spark streaming instellen om een gebeurtenis één keer en één keer te verwerken.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 34cb3f4cdcc5bfc11bba300ff1aa04422e0fcc57
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091027"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241145"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-taken maken met precies één keer per gebeurtenis verwerking
 
 Toepassingen voor het verwerken van streams hebben verschillende benaderingen van het verwerken van berichten na een storing in het systeem:
 
-* Ten minste één keer: Elk bericht wordt gegarandeerd verwerkt, maar kan meer dan één keer worden verwerkt.
-* Maxi maal eenmaal: Elk bericht kan of kan niet worden verwerkt. Als een bericht wordt verwerkt, wordt het slechts eenmaal verwerkt.
-* Slechts eenmaal: Elk bericht wordt gegarandeerd maar één keer verwerkt.
+* Ten minste één keer: elk bericht wordt gegarandeerd verwerkt, maar kan meer dan één keer worden verwerkt.
+* Maxi maal één keer: elk bericht kan of kan niet worden verwerkt. Als een bericht wordt verwerkt, wordt het slechts eenmaal verwerkt.
+* Precies één keer: elk bericht wordt gegarandeerd slechts één keer verwerkt en eenmaal.
 
 In dit artikel leest u hoe u Spark streaming kunt configureren om precies één keer te verwerken.
 
@@ -49,7 +49,7 @@ In Spark streaming hebben bronnen als Event Hubs en Kafka *betrouw bare ontvange
 
 ### <a name="use-the-write-ahead-log"></a>Het Write-Ahead logboek gebruiken
 
-Spark streaming ondersteunt het gebruik van een write-Ahead logboek waarbij elke ontvangen gebeurtenis eerst wordt geschreven naar de map met het controle punt van Spark in fout tolerante opslag en vervolgens wordt opgeslagen in een flexibele, gedistribueerde gegevensset (RDD). In azure wordt de fout tolerante opslag ondersteund door een Azure Storage of Azure Data Lake Storage. In uw Spark-streaming-toepassing wordt het Write-Ahead logboek ingeschakeld voor alle ontvangers door de `spark.streaming.receiver.writeAheadLog.enable` configuratie-instelling in te stellen op. `true` Het Write-Ahead logboek biedt fout tolerantie voor fouten van zowel het stuur programma als de uitvoerder.
+Spark streaming ondersteunt het gebruik van een write-Ahead logboek waarbij elke ontvangen gebeurtenis eerst wordt geschreven naar de map met het controle punt van Spark in fout tolerante opslag en vervolgens wordt opgeslagen in een flexibele, gedistribueerde gegevensset (RDD). In azure wordt de fout tolerante opslag ondersteund door een Azure Storage of Azure Data Lake Storage. In uw Spark-streaming-toepassing wordt het Write-Ahead logboek ingeschakeld voor alle ontvangers door de configuratie-instelling van `spark.streaming.receiver.writeAheadLog.enable` in te stellen op `true`. Het Write-Ahead logboek biedt fout tolerantie voor fouten van zowel het stuur programma als de uitvoerder.
 
 Voor werk nemers die taken uitvoeren op basis van de gebeurtenis gegevens, wordt elke RDD per definitie gerepliceerd en gedistribueerd over meerdere werk rollen. Als een taak mislukt omdat het uitvoeren van de werk nemer is vastgelopen, wordt de taak opnieuw gestart op een andere werk nemer die een replica van de gebeurtenis gegevens heeft, waardoor de gebeurtenis niet verloren gaat.
 

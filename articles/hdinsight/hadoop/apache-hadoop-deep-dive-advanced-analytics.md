@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066983"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241653"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Diep gaande kennis-geavanceerde analyse
 
@@ -63,7 +63,7 @@ HDInsight heeft verschillende machine learning opties voor een geavanceerde anal
 ### <a name="machine-learning-and-apache-spark"></a>Machine Learning en Apache Spark
 
 
-[HDInsight Spark](../spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat gebruikmaakt van in-Memory verwerking om de analyse van Big data te stimuleren. De Spark-verwerkingsengine is gebouwd voor snelheid, gebruiksgemak, en geavanceerde analyses. Gedistribueerde berekening in-memory-mogelijkheden van Spark kunnen u een goede keuze voor de zich herhalende algoritmen in machine learning- en grafiekberekeningen gebruikt. 
+[HDInsight Spark](../spark/apache-spark-overview.md) is een door Azure gehoste aanbieding van [Apache Spark](https://spark.apache.org/), een gecombineerd, open source, parallel data processing framework dat gebruikmaakt van in-Memory verwerking om de analyse van Big data te stimuleren. De Spark-verwerkings engine is gebouwd voor snelheid, gebruiks gemak en geavanceerde analyses. Met de mogelijkheden van de gedistribueerde reken kracht van Spark in het geheugen is het een goede keuze voor de iteratieve algoritmen die worden gebruikt in machine learning-en grafiek berekeningen. 
 
 
 Er zijn drie schaal bare machine learning bibliotheken die algoritmen model leren met deze gedistribueerde omgeving:
@@ -78,7 +78,7 @@ Als onderdeel van HDInsight kunt u een HDInsight-cluster maken met [ml Services]
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning en Apache Hive
 
-[Azure machine learning Studio](https://studio.azureml.net/) voorziet in hulpprogram ma's om Predictive Analytics te model leren en een volledig beheerde service die u kunt gebruiken om uw voorspellende modellen te implementeren als kant-en-klare webservices. Azure Machine Learning voorziet in hulpprogram ma's voor het maken van volledige predictive analytics-oplossingen in de cloud om snel voorspellende modellen te maken, te testen, te operationeel maken en te beheren. Maak een keuze uit een grote algoritme bibliotheek, gebruik een webgebaseerde Studio voor het ontwikkelen van modellen en implementeer uw model eenvoudig als een webservice.
+[Azure machine learning Studio (klassiek)](https://studio.azureml.net/) bevat hulpprogram ma's voor het model leren van Predictive Analytics en een volledig beheerde service die u kunt gebruiken om uw voorspellende modellen te implementeren als kant-en-klare webservices. Azure Machine Learning voorziet in hulpprogram ma's voor het maken van volledige predictive analytics-oplossingen in de cloud om snel voorspellende modellen te maken, te testen, te operationeel maken en te beheren. Maak een keuze uit een grote algoritme bibliotheek, gebruik een webgebaseerde Studio voor het ontwikkelen van modellen en implementeer uw model eenvoudig als een webservice.
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark en diep gaande lessen
 

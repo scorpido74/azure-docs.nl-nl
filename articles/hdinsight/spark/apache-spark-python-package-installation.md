@@ -1,5 +1,5 @@
 ---
-title: Script actie-Python-pakketten installeren met Jupyter in azure HDInsight
+title: Script actie voor python-pakketten met Jupyter in azure HDInsight
 description: Stapsgewijze instructies voor het gebruik van script actie voor het configureren van Jupyter-notebooks die beschikbaar zijn met HDInsight Spark-clusters voor het gebruik van externe Python-pakketten.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f80486758152c002762bbddd6ae97a2ce9468ccf
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900693"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241508"
 ---
 # <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Script actie voor het installeren van externe Python-pakketten voor Jupyter-notebooks in Apache Spark in HDInsight
 
@@ -23,7 +23,7 @@ ms.locfileid: "70900693"
 Meer informatie over het gebruik van script acties voor het configureren van een [Apache Spark](https://spark.apache.org/) cluster op HDInsight voor het gebruik van externe, door de Community bijgedragen **python** -pakketten die niet zijn opgenomen in het cluster.
 
 > [!NOTE]  
-> U kunt ook een Jupyter-notebook configureren door `%%configure` gebruik te maken van Magic om externe pakketten te gebruiken. Zie voor instructies [externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters op HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
+> U kunt ook een Jupyter-notebook configureren met behulp van `%%configure` Magic om externe pakketten te gebruiken. Zie voor instructies [externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters op HDInsight](apache-spark-jupyter-notebook-use-external-packages.md).
 
 U kunt de [pakket index](https://pypi.python.org/pypi) doorzoeken voor de volledige lijst met pakketten die beschikbaar zijn. U kunt ook een lijst met beschik bare pakketten uit andere bronnen ophalen. U kunt bijvoorbeeld pakketten installeren die beschikbaar worden gesteld via [Conda-vervalsing](https://conda-forge.org/feedstocks/).
 
@@ -50,7 +50,7 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 > [!IMPORTANT]   
 > Onderdelen die worden meegeleverd met het HDInsight-cluster, worden volledig ondersteund. Microsoft Ondersteuning helpt bij het isoleren en oplossen van problemen met betrekking tot deze onderdelen.
 >
-> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ook Apache-projecten hebben project sites [https://apache.org](https://apache.org)op, bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
+> Aangepaste onderdelen ontvangen commercieel redelijke ondersteuning om u te helpen het probleem verder op te lossen. Micro soft ondersteuning kan het probleem mogelijk oplossen of u wordt gevraagd beschik bare kanalen te betrekken voor de open source-technologieën waar diep gaande expertise voor die technologie wordt gevonden. Er zijn bijvoorbeeld veel community-sites die kunnen worden gebruikt, zoals: [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Apache-projecten hebben project sites op [https://apache.org](https://apache.org), bijvoorbeeld: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Externe pakketten gebruiken met Jupyter-notebooks
@@ -64,14 +64,14 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 4. Voer de volgende waarden in voor het venster **actie script verzenden** :  
 
 
-    |Parameter | Value |
+    |Parameter | Waarde |
     |---|---|
-    |Scripttype | Selecteer **-aangepast** in de vervolg keuzelijst.|
-    |Name |Voer `tensorflow` in het tekstvak in.|
+    |Script type | Selecteer **-aangepast** in de vervolg keuzelijst.|
+    |Naam |Voer `tensorflow` in het tekstvak in.|
     |Bash-script-URI |Voer `https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh` in het tekstvak in. |
     |Knooppunt type (n) | Schakel de selectie vakjes **Head**en **worker** in. |
 
-    `tensorflowinstall.sh`bevat de volgende opdrachten:
+    `tensorflowinstall.sh` bevat de volgende opdrachten:
 
     ```bash
     #!/usr/bin/env bash
@@ -86,7 +86,7 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
 
     ![Een nieuwe Jupyter-notebook maken](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Een nieuwe Jupyter-notebook maken")
 
-8. U gaat nu `import tensorflow` een Hello World-voor beeld uitvoeren. Voer de volgende code in:
+8. U gaat nu `import tensorflow` en een Hello World-voor beeld uitvoeren. Voer de volgende code in:
 
     ```
     import tensorflow as tf
@@ -100,13 +100,13 @@ Er zijn twee soorten open source-onderdelen die beschikbaar zijn in de HDInsight
     ![Tensor flow code-uitvoering](./media/apache-spark-python-package-installation/tensorflow-execution.png "Tensor flow-code uitvoeren")
 
 > [!NOTE]  
-> Er zijn twee python-installaties in het cluster. Spark maakt gebruik van de Anaconda python-installatie `/usr/bin/anaconda/bin` die zich bevindt in en is standaard ingesteld op de python 2,7-omgeving. Als u python 3. x wilt gebruiken en pakketten in de PySpark3-kernel wilt installeren, gebruikt `conda` u het pad naar het uitvoer bare `-n` bestand voor die omgeving en gebruikt u de para meter om de omgeving op te geven. Met de opdracht `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`wordt bijvoorbeeld het `ggplot` pakket geïnstalleerd op de python 3,5-omgeving met behulp van het `conda-forge` kanaal.
+> Er zijn twee python-installaties in het cluster. Spark maakt gebruik van de Anaconda python-installatie die zich bevindt op `/usr/bin/anaconda/bin` en wordt standaard ingesteld op de python 2,7-omgeving. Als u python 3. x wilt gebruiken en pakketten in de PySpark3-kernel wilt installeren, gebruikt u het pad naar het uitvoer bare `conda` voor die omgeving en gebruikt u de para meter `-n` om de omgeving op te geven. De opdracht `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35`, installeert het `ggplot` pakket bijvoorbeeld in de python 3,5-omgeving met behulp van het `conda-forge` kanaal.
 
 ## <a name="seealso"></a>Zie ook
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)

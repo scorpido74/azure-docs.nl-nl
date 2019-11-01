@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356f2eac06365b90052cab214d9d1ac318710730
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 70de9da44d52bd6e93377776a2dbfc1b802dd412
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389672"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241709"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Verificatie sessie beheer met voorwaardelijke toegang configureren
 
@@ -53,7 +53,7 @@ Met de Azure AD-standaard voor browser sessie persistent kunnen gebruikers op pe
 Voorwaardelijke toegang is een Azure AD Premium mogelijkheid en vereist een Premium-licentie. Zie [Wat is voorwaardelijke toegang in azure Active Directory?](overview.md#license-requirements) voor meer informatie over voorwaardelijke toegang.
 
 > [!WARNING]
-> Als u de functie [levens duur](../develop/active-directory-configurable-token-lifetimes.md) van het token in de open bare preview gebruikt, bieden we geen ondersteuning voor het maken van twee verschillende beleids regels voor dezelfde combi natie van gebruiker of app: een met deze functie en een andere met een configureerbaar token functie levens duur. Micro soft is van plan de Configureer bare levens duur van het token op 1 november in te stellen en te vervangen door de beheer functie voor de verificatie van de voorwaardelijke toegang.  
+> Als u de functie [levens duur](../develop/active-directory-configurable-token-lifetimes.md) van het token in de open bare preview gebruikt, bieden we geen ondersteuning voor het maken van twee verschillende beleids regels voor dezelfde combi natie van gebruiker of app: een met deze functie en een andere met een configureerbaar token functie levens duur. Micro soft is van plan de Configureer bare levens duur van het token op 1 mei 2020 te buiten gebruik te stellen en te vervangen door de beheer functie voor de verificatie van voorwaardelijke toegang.  
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Beleid 1: regel voor aanmeldings frequentie
 

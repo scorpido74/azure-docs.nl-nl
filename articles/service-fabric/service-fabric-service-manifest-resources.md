@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bb3fd77df60be68408fceea683ee4b8b74d77427
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170444"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242900"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources specificeren in een servicemanifest
 ## <a name="overview"></a>Overzicht
@@ -30,6 +30,8 @@ Wanneer een eindpunt resource is gedefinieerd in het service manifest, Service F
 
 > [!WARNING] 
 > Door statische poorten voor het ontwerp mogen niet overlappen met het toepassings poort bereik dat is opgegeven in de ClusterManifest. Als u een statische poort opgeeft, dient u deze buiten het toepassings poort bereik toe te wijzen, anders leidt dit tot poort conflicten. Met release 6.5 CU2 zullen we een **status waarschuwing** uitgeven wanneer een dergelijk conflict wordt gedetecteerd, maar de implementatie met het gedistribueerde 6,5-gedrag kan worden voortgezet. We kunnen er echter voor zorgen dat de implementatie van de toepassing van de volgende grote releases wordt voor komen.
+>
+> In release 7,0 wordt een **status waarschuwing** gegeven wanneer het gebruik van het toepassings poort bereik wordt gedetecteerd. dit wordt veroorzaakt door meer dan HostingConfig:: ApplicationPortExhaustThresholdPercentage (standaard 80%).
 >
 
 ```xml
@@ -56,7 +58,7 @@ Als er meerdere code pakketten aanwezig zijn in één service pakket, moet er oo
 Raadpleeg [stateful reliable Services configureren](service-fabric-reliable-services-configuration.md) voor meer informatie over het verwijzen naar eind punten uit het bestand config package Settings (Settings. XML).
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Voor beeld: een HTTP-eind punt opgeven voor uw service
-In het volgende service manifest worden één TCP-eindpunt resource en twee HTTP-eindpunt resources gedefinieerd in het element &lt;Resources @ no__t-1.
+In het volgende service manifest worden één TCP-eindpunt resource en twee HTTP-eindpunt resources gedefinieerd in het element &lt;resources&gt;.
 
 HTTP-eind punten worden automatisch door Service Fabric door de toegangs beheer lijst.
 

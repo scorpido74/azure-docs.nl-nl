@@ -1,5 +1,5 @@
 ---
-title: Problemen met JDBC/ODBC en Apache Thrift Framework downloaden-Azure HDInsight
+title: Problemen met JDBC/ODBC & Apache Thrift Framework-Azure HDInsight
 description: Kan geen grote gegevens sets downloaden met behulp van JDBC/ODBC en Apache Thrift software framework in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 939d94d0fdf07a67f2ad151b45494f03ce184d62
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7423687cbca069792a584277699c6bf8ce904d5d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087115"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241753"
 ---
 # <a name="unable-to-download-large-data-sets-using-jdbcodbc-and-apache-thrift-software-framework-in-hdinsight"></a>Kan geen grote gegevens sets downloaden met behulp van JDBC/ODBC en Apache Thrift software framework in HDInsight
 
@@ -31,9 +31,9 @@ Buffer overflow. Available: 0, required: 36518. To avoid this, increase spark.kr
 
 Deze uitzonde ring wordt veroorzaakt door het serialisatie proces en probeert meer buffer ruimte te gebruiken dan is toegestaan. In Spark 2.0.0 wordt de klasse `org.apache.spark.serializer.KryoSerializer` gebruikt voor het serialiseren van objecten wanneer gegevens worden geopend via het Apache Thrift software Framework. Een andere klasse wordt gebruikt voor gegevens die via het netwerk worden verzonden of in de cache worden opgeslagen.
 
-## <a name="resolution"></a>Oplossing
+## <a name="resolution"></a>Resolutie
 
-Verhoog de `Kryoserializer` buffer waarde. Voeg een sleutel toe `spark.kryoserializer.buffer.max` met de naam en `2048` stel deze in op `Custom spark2-thrift-sparkconf`spark2 config onder.
+Verhoog de `Kryoserializer` buffer waarde. Voeg een sleutel toe met de naam `spark.kryoserializer.buffer.max` en stel deze in op `2048` in spark2 config onder `Custom spark2-thrift-sparkconf`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -41,6 +41,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

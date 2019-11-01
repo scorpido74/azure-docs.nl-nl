@@ -1,5 +1,5 @@
 ---
-title: Het maken van het cluster is mislukt vanwege onvoldoende fout domeinen in de regio in azure HDInsight
+title: Er zijn onvoldoende fout domeinen in de regio fout in azure HDInsight
 description: Het maken van het cluster is mislukt vanwege onvoldoende fout domeinen in de regio in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,20 +7,20 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 1e0fae699752f5e2417a4a3cbd42f4f1d2bd891f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: defb0666a6537d62b22dca301f69a5163e887d3f
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091248"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241904"
 ---
-# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Scenario: Het maken van het `not sufficient fault domains in region` cluster is mislukt, omdat in azure HDInsight
+# <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>Scenario: het maken van het cluster is mislukt vanwege `not sufficient fault domains in region` in azure HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Er wordt een fout bericht `not sufficient fault domains in region` weer gegeven dat vergelijkbaar is met het maken van Apache Kafka cluster.
+Er wordt een fout bericht weer gegeven dat vergelijkbaar is met `not sufficient fault domains in region` bij het maken van Apache Kafka cluster.
 
 ## <a name="cause"></a>Oorzaak
 
@@ -30,7 +30,7 @@ Elke Azure-regio heeft een bepaald aantal foutdomeinen. Raadpleeg de documentati
 
 In HDInsight moeten Kafka-clusters worden ingericht in een regio met ten minste drie fout domeinen.
 
-## <a name="resolution"></a>Oplossing
+## <a name="resolution"></a>Resolutie
 
 Als de regio die u wilt maken het cluster niet voldoende fout domeinen heeft, neemt u contact op met het product team om de inrichting van het cluster toe te staan, zelfs als er niet drie fout domeinen zijn.
 
@@ -40,6 +40,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure-account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

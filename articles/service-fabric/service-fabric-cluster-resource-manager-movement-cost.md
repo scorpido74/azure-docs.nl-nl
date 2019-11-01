@@ -1,6 +1,6 @@
 ---
-title: 'Service Fabric Cluster Resource Manager: Kosten voor gegevensverplaatsing | Microsoft Docs'
-description: Overzicht van de kosten voor gegevensverplaatsing voor Service Fabric-services
+title: 'Cluster resource Manager Service Fabric: verplaatsings kosten | Microsoft Docs'
+description: Overzicht van de verplaatsings kosten voor Service Fabric Services
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80845fca8d163a4ebe9257f19825624acef3a815
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516603"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243011"
 ---
-# <a name="service-movement-cost"></a>Verplaatsingskosten van services
-Een van meerdere factoren die de Service Fabric Cluster Resource Manager acht bij een poging om te bepalen welke wijzigingen aanbrengen in een cluster zijn de kosten van deze wijzigingen. Het concept van "kosten" wordt verhandeld uitschakelen op basis van hoeveel van het cluster kan worden verbeterd. Kosten zijn meeberekend bij het verplaatsen van services voor taakverdeling, defragmentatie en andere vereisten. Het doel is om te voldoen aan de vereisten in de minste verstorende of dure manier. 
+# <a name="service-movement-cost"></a>Kosten voor service verplaatsing
+Een factor die de Service Fabric cluster resource manager beschouwt wanneer wordt geprobeerd te bepalen welke wijzigingen aan een cluster moeten worden aangebracht, zijn de kosten van die wijzigingen. Het principe van ' kosten ' wordt verhandeld op basis van de mate waarin het cluster kan worden verbeterd. Kosten worden in rekening gehouden bij het verplaatsen van services voor Balancing, defragmentatie en andere vereisten. Het doel is om te voldoen aan de vereisten in de minst verstorende of dure manier. 
 
-Verplaatsen van services kosten CPU-tijd en ten minste de netwerkbandbreedte. Voor stateful services moet het kopiëren van de status van deze services, verbruikt meer geheugen en schijfruimte. Minimaliseren van de kosten van de oplossingen die de Azure Service Fabric Cluster Resource Manager weergegeven met wordt, zorgt ervoor dat de resources van het cluster niet worden besteed aan het onnodig. Echter, u ook niet wilt negeren oplossingen die u wilt de toewijzing van resources in het cluster aanzienlijk verbeteren.
+Het verplaatsen van Services kost CPU-tijd en netwerk bandbreedte mini maal. Voor stateful Services moet de status van die services worden gekopieerd, waardoor er extra geheugen en schijf ruimte in beslag neemt. Het minimaliseren van de kosten van oplossingen die door Azure Service Fabric cluster resource manager worden geleverd, helpt ervoor te zorgen dat de resources van het cluster onnodig niet worden gebruikt. U wilt echter ook geen oplossingen negeren waarmee de toewijzing van resources in het cluster aanzienlijk wordt verbeterd.
 
-Cluster Resource Manager heeft twee manieren om de kosten voor computing en ze beperken terwijl er wordt geprobeerd om het cluster te beheren. Het eerste mechanisme is elke beweging die u zou gewoon tellen. Als er twee mogelijke oplossingen worden gegenereerd met ongeveer hetzelfde saldo (score), en vervolgens met Cluster Resource Manager de voorkeur geeft aan dat met de laagste kosten (totaal aantal verplaatst).
+Cluster resource manager heeft twee manieren om kosten te berekenen en te beperken tijdens het beheren van het cluster. Het eerste mechanisme telt gewoon elke verplaatsing die het zou doen. Als er twee oplossingen worden gegenereerd met ongeveer hetzelfde saldo (Score), geeft de cluster resource manager de voor keur aan het abonnement met de laagste kosten (het totale aantal verplaatsingen).
 
-Deze strategie werkt goed. Maar net als bij standaard- of statische belasting, is het onwaarschijnlijk dat in een complex systeem dat alle verplaatst gelijk zijn. Sommige zijn waarschijnlijk nog veel meer kostbaar zijn.
+Deze strategie werkt goed. Maar net als bij standaard of statische belasting, is het onwaarschijnlijk in een complex systeem dat alle verplaatsingen gelijk zijn. Sommige zijn waarschijnlijk veel duurder.
 
-## <a name="setting-move-costs"></a>Kosten van instelling verplaatsen 
-De standaardwaarde kosten voor een service verplaatsen wanneer deze is gemaakt, kunt u opgeven:
+## <a name="setting-move-costs"></a>Kosten voor verplaatsen instellen 
+U kunt de standaard kosten voor het verplaatsen van een service opgeven wanneer deze wordt gemaakt:
 
 PowerShell:
 
@@ -49,7 +49,7 @@ serviceDescription.DefaultMoveCost = MoveCost.Medium;
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-U kunt ook opgeven of MoveCost dynamisch bijwerken voor een service nadat de service is gemaakt: 
+U kunt MoveCost ook dynamisch opgeven of bijwerken voor een service nadat de service is gemaakt: 
 
 PowerShell: 
 
@@ -65,9 +65,9 @@ updateDescription.DefaultMoveCost = MoveCost.High;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/ServiceName"), updateDescription);
 ```
 
-## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dynamisch verplaatsen kosten op te geven op basis van de per-replica
+## <a name="dynamically-specifying-move-cost-on-a-per-replica-basis"></a>Dynamisch opgeven van kosten voor verplaatsing per replica
 
-De voorgaande codefragmenten zijn alle voor het MoveCost opgeven voor een hele service in één keer van buiten de service zelf. Echter, verplaatsen kosten is vooral handig is als de kosten van het verplaatsen van een specifieke service-object wordt gewijzigd via de levensduur. Omdat de services zelf hebt waarschijnlijk het beste idee van hoe kostbare ze worden uitgevoerd op een bepaald moment verplaatsen, is er een API voor services aan hun eigen afzonderlijke kosten verplaatsen tijdens runtime rapport. 
+De voor gaande code fragmenten zijn allemaal voor het opgeven van MoveCost voor een hele service van buiten de service zelf. De verplaatsings kosten zijn echter vooral nuttig wanneer de kosten voor het verplaatsen van een specifiek Service object worden gewijzigd gedurende de levens duur. Omdat de services zich waarschijnlijk het beste idee hebben van hoe kostbaar ze een bepaalde tijd moeten verplaatsen, is er een API voor services om hun eigen afzonderlijke verplaatsings kosten te rapporteren tijdens runtime. 
 
 C#:
 
@@ -75,25 +75,35 @@ C#:
 this.Partition.ReportMoveCost(MoveCost.Medium);
 ```
 
-## <a name="impact-of-move-cost"></a>Gevolgen van de kosten voor verplaatsen
-MoveCost heeft vier niveaus: Nul, laag, gemiddeld en hoog. MoveCosts zijn ten opzichte van elkaar worden verbonden, met uitzondering van nul. Kosten verplaatsen betekent dat verkeer gratis is en moet niet meegeteld in de score van de oplossing. Instellen van uw kosten verbonden aan het hoge heeft verplaatsing *niet* garantie dat de replica op één plek blijft.
+## <a name="impact-of-move-cost"></a>Impact van de kosten voor verplaatsen
+MoveCost heeft vijf niveaus: nul, laag, gemiddeld, hoog en VeryHigh. De volgende regels zijn van toepassing:
+
+* MoveCosts zijn relatief ten opzichte van elkaar, met uitzonde ring van nul en VeryHigh. 
+* De kosten voor het verplaatsen van nul betekent dat de verplaatsing gratis is en niet mag worden geteld op basis van de Score van de oplossing.
+* Bij het instellen van uw kosten voor verplaatsen naar hoog of VeryHigh wordt *niet* gegarandeerd dat de replica *nooit* wordt verplaatst.
+* Replica's met VeryHigh-verplaatsings kosten worden alleen verplaatst als er sprake is van een schending van een beperking in het cluster die op geen enkele andere manier kan worden opgelost (zelfs als er veel andere replica's moeten worden verplaatst om de schending op te lossen)
+
+
 
 <center>
 
-![Kosten verplaatsen als factor bij het selecteren van replica's voor gegevensverplaatsing][Image1]
+![kosten te verplaatsen als factor bij het selecteren van replica's voor verplaatsing][Image1]
 </center>
 
-MoveCost helpt u de oplossingen die ertoe leiden dat de minimale verstoring van de algehele en zijn het gemakkelijkst te controleren, terwijl u nog steeds die binnenkomen in equivalente balans te vinden. Begrip van de kosten van een service kan worden ten opzichte van een groot aantal dingen. De meest voorkomende factoren bij het berekenen van uw kosten verplaatsen zijn:
+MoveCost helpt u bij het vinden van de oplossingen die de minst onderbrekingen in het algemeen veroorzaken en gemakkelijk te belopen zijn, terwijl er nog steeds een gelijkwaardig saldo wordt bereikt. De kosten van een service kunnen relatief zijn ten opzichte van een groot aantal zaken. De meest voorkomende factoren bij het berekenen van de verplaatsings kosten zijn:
 
-- De hoeveelheid van status- of gegevens die de service te verplaatsen.
-- De kosten van ontkoppeling van clients. Het verplaatsen van een primaire replica is meestal duurder dan de kosten van het verplaatsen van een secundaire replica.
-- De kosten van het onderbreken van een bewerking die onderweg zijn. Bepaalde bewerkingen op de gegevens opslaan niveau of bewerkingen die worden uitgevoerd in reactie op een client-aanroep kostbaar zijn. Na een bepaald moment u niet ze stopt als u niet te hoeft. Dus terwijl de bewerking wordt gebruikt op, verhoogt u de kosten verplaatsen van deze service-object te verminderen de kans dat wordt verplaatst. Wanneer de bewerking is voltooid, moet u de kosten op normaal instellen.
+- De hoeveelheid status of gegevens die de service moet verplaatsen.
+- De kosten voor het verbreken van de verbinding van clients. Het verplaatsen van een primaire replica is doorgaans kostbaarer dan de kosten voor het verplaatsen van een secundaire replica.
+- De kosten voor het onderbreken van een in-Flight-bewerking. Bepaalde bewerkingen op het niveau van de gegevens opslag of de bewerkingen die worden uitgevoerd als reactie op een client aanroep, zijn kostbaar. Na een bepaald punt wilt u ze niet meer stoppen als dat niet het geval is. Wanneer de bewerking wordt uitgevoerd, verhoogt u de verplaatsings kosten van dit service object om de kans te verkleinen dat deze wordt verplaatst. Wanneer de bewerking is voltooid, stelt u de kosten weer in op normaal.
 
-## <a name="enabling-move-cost-in-your-cluster"></a>Inschakelen van kosten in het cluster verplaatsen
-Opdat de gedetailleerdere MoveCosts om te worden gehouden, moet MoveCost worden ingeschakeld in uw cluster. Zonder deze instelling is de standaardmodus van tellen verplaatst wordt gebruikt voor het berekenen van MoveCost en MoveCost rapporten worden genegeerd.
+> [!IMPORTANT]
+> Het gebruik van de VeryHigh-verplaatsings kosten moet zorgvuldig worden overwogen, omdat het de mogelijkheid van cluster resource manager aanzienlijk beperkt om een wereld wijd optimale plaatsings oplossing in het cluster te vinden. Replica's met VeryHigh-verplaatsings kosten worden alleen verplaatst als er sprake is van een schending van een beperking in het cluster die op geen enkele andere manier kan worden opgelost (zelfs als er veel andere replica's moeten worden verplaatst om de schending op te lossen)
+
+## <a name="enabling-move-cost-in-your-cluster"></a>Kosten voor verplaatsen in uw cluster inschakelen
+Voor een nauw keurigere MoveCosts moet MoveCost in uw cluster worden ingeschakeld... Zonder deze instelling wordt de standaard methode voor het tellen van aantallen gebruikt voor het berekenen van MoveCost en worden MoveCost-rapporten genegeerd.
 
 
-ClusterManifest.xml:
+ClusterManifest. XML:
 
 ``` xml
         <Section Name="PlacementAndLoadBalancing">
@@ -101,7 +111,7 @@ ClusterManifest.xml:
         </Section>
 ```
 
-via ClusterConfig.json voor implementaties met zelfstandige of Template.json voor Azure die worden gehost clusters:
+via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [
@@ -118,7 +128,7 @@ via ClusterConfig.json voor implementaties met zelfstandige of Template.json voo
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Service Fabric-Cluster Resource Manager gebruikt u metrische gegevens voor het beheren van gebruiks- en capaciteit in het cluster. Bekijk voor meer informatie over metrische gegevens en hoe u ze configureert, [resourceverbruik beheren en laden in Service Fabric met metrische gegevens over](service-fabric-cluster-resource-manager-metrics.md).
-- Bekijk voor meer informatie over hoe met Cluster Resource Manager beheert en verdeelt de taken in het cluster, [taakverdeling van uw Service Fabric-cluster](service-fabric-cluster-resource-manager-balancing.md).
+- Service Fabric cluster resource manager maakt gebruik van metrische gegevens voor het beheren van het verbruik en de capaciteit in het cluster. Voor meer informatie over metrische gegevens en hoe u deze kunt configureren, kunt u het [verbruik van resources beheren en laden in service fabric met metrische gegevens](service-fabric-cluster-resource-manager-metrics.md).
+- Voor meer informatie over hoe de cluster resource manager de belasting in het cluster beheert en balanceert, kunt u [het service Fabric-cluster uitbalanceren](service-fabric-cluster-resource-manager-balancing.md).
 
 [Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png

@@ -1,5 +1,5 @@
 ---
-title: Apache Spark gebruiken voor het analyseren van gegevens in Azure Data Lake Storage Gen1
+title: Azure Data Lake Storage Gen1 met HDInsight-Apache Spark analyseren
 description: Apache Spark taken uitvoeren om gegevens te analyseren die zijn opgeslagen in Azure Data Lake Storage Gen1
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002499"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241715"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark-cluster gebruiken voor het analyseren van gegevens in Data Lake Storage Gen1
 
@@ -23,7 +23,7 @@ In dit artikel gebruikt u [Jupyter notebook](https://jupyter.org/) die beschikba
 
 * Azure Data Lake Storage Gen1-account. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Azure HDInsight Spark cluster met Data Lake Storage Gen1 als opslag. Volg de instructies in [Quick Start: clusters instellen in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Azure HDInsight Spark cluster met Data Lake Storage Gen1 als opslag. Volg de instructies op [Quick Start: clusters instellen in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 ## <a name="prepare-the-data"></a>De gegevens voorbereiden
 
@@ -32,7 +32,7 @@ In dit artikel gebruikt u [Jupyter notebook](https://jupyter.org/) die beschikba
 
 Als u een HDInsight-cluster hebt gemaakt met Data Lake Storage als extra opslag en Azure Storage Blob als standaard opslag, moet u eerst een aantal voorbeeld gegevens kopiëren naar het Data Lake Storage-account. U kunt de voorbeeld gegevens gebruiken uit het Azure Storage Blob dat is gekoppeld aan het HDInsight-cluster. U kunt het [hulp programma ADLCopy](https://aka.ms/downloadadlcopy) gebruiken om dit te doen. Down load en installeer het hulp programma via de koppeling.
 
-1. Open een opdracht prompt en navigeer naar de map waarin AdlCopy is geïnstalleerd `%HOMEPATH%\Documents\adlcopy`.
+1. Open een opdracht prompt en ga naar de map waarin AdlCopy is geïnstalleerd, meestal `%HOMEPATH%\Documents\adlcopy`.
 
 2. Voer de volgende opdracht uit om een specifieke BLOB te kopiëren van de bron container naar Data Lake Storage:
 
@@ -75,7 +75,7 @@ Als u een HDInsight-cluster hebt gemaakt met Data Lake Storage als extra opslag 
 
     Telkens wanneer u een taak in Jupyter uitvoert, toont de venstertitel van uw webbrowser de status **(Bezet)** samen met de notebooktitel. Ook ziet u een gevulde cirkel naast de **PySpark**-tekst in de rechterbovenhoek. Nadat de taak is voltooid, verandert deze in een lege cirkel.
 
-     ![Status van een Jupyter-notebooktaak](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Status van een Jupyter-notebooktaak")
+     ![Status van een Jupyter-notebook taak](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Status van een Jupyter-notebooktaak")
 
 5. Laad voorbeeld gegevens in een tijdelijke tabel met behulp van het **HVAC. CSV** -bestand dat u hebt gekopieerd naar het data Lake Storage gen1-account. U kunt toegang krijgen tot de gegevens in het Data Lake Storage-account met behulp van het volgende URL-patroon.
 
@@ -108,18 +108,18 @@ Als u een HDInsight-cluster hebt gemaakt met Data Lake Storage als extra opslag 
            # Register the data fram as a table to run queries against
            hvacdf.registerTempTable("hvac")
 
-6. Omdat u een PySpark-kernel gebruikt, kunt u nu rechtstreeks een SQL-query uitvoeren op de tijdelijke tabel **hvac**, die u zojuist hebt gemaakt met behulp van de `%%sql`-magic. Zie `%%sql` [kernels die beschikbaar zijn op Jupyter-notebooks met Apache Spark HDInsight-clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)voor meer informatie over het Magic, evenals andere magics die beschikbaar zijn in de PySpark-kernel.
+6. Omdat u een PySpark-kernel gebruikt, kunt u nu rechtstreeks een SQL-query uitvoeren op de tijdelijke tabel **hvac**, die u zojuist hebt gemaakt met behulp van de `%%sql`-magic. Voor meer informatie over de `%%sql` Magic, evenals andere magics die beschikbaar zijn in de PySpark-kernel, raadpleegt u [kernels die beschikbaar zijn op Jupyter-notebooks met Apache Spark HDInsight-clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
         %%sql
         SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
 7. Nadat de taak is voltooid, wordt standaard de volgende uitvoer in tabelvorm weergegeven.
 
-      ![Tabeluitvoer van het queryresultaat](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Tabeluitvoer van het queryresultaat")
+      ![Tabel uitvoer van het query resultaat](./media/apache-spark-use-with-data-lake-store/jupyter-tabular-output.png "Tabeluitvoer van het queryresultaat")
 
      U kunt de resultaten ook in andere visualisaties bekijken. Zo ziet een gebiedsgrafiek voor dezelfde uitvoer er als volgt uit.
 
-     ![Gebiedsgrafiek van het queryresultaat](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Gebiedsgrafiek van het queryresultaat")
+     ![Gebieds grafiek van het query resultaat](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Gebiedsgrafiek van het queryresultaat")
 
 8. Wanneer u klaar bent met het uitvoeren van de toepassing, moet u de notebook afsluiten om de resources vrij te geven. Dit doet u door in het menu **Bestand** in de notebook te klikken op **Sluiten en stoppen**. Hiermee wordt de notebook afgesloten.
 

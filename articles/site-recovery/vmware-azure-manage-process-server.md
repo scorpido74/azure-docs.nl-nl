@@ -1,104 +1,76 @@
 ---
-title: Een processerver die wordt gebruikt voor herstel na noodgevallen van virtuele VMware-machines en fysieke servers naar Azure met Azure Site Recovery beheren | Microsoft Docs
-description: Dit artikel wordt beschreven voor het beheren van een processerver instellen voor herstel na noodgevallen van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
+title: Een proces server beheren die wordt gebruikt voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure met Azure Site Recovery | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u een proces server die is ingesteld voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure beheert met behulp van Azure Site Recovery.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 2c27779719c73adf4d7fc1a61a0c77d03df71815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 509b9aed9f5daebb70a18336837da2152667a458
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925633"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242836"
 ---
 # <a name="manage-process-servers"></a>Processervers beheren
 
-Dit artikel worden algemene taken voor het beheren van de processerver van Site Recovery.
+In dit artikel worden algemene taken voor het beheren van de Site Recovery proces server beschreven.
 
-De processerver wordt gebruikt om te ontvangen, optimaliseren en het verzenden van gegevens van replicatie naar Azure. Het voert ook een push-installatie van de Mobility-service op virtuele VMware-machines en fysieke servers die u repliceren wilt, en wordt automatische detectie van on-premises machines uitgevoerd. Voor het repliceren van on-premises VMware-machines of fysieke servers naar Azure, is de processerver standaard geïnstalleerd op de servercomputer van de configuratie. 
+De proces server wordt gebruikt om replicatie gegevens te ontvangen, te optimaliseren en te verzenden naar Azure. Er wordt ook een push-installatie uitgevoerd van de Mobility-service op VMware-Vm's en fysieke servers die u wilt repliceren, en voert automatische detectie van on-premises machines uit. Voor het repliceren van on-premises virtuele VMware-machines of fysieke servers naar Azure, wordt de proces server standaard geïnstalleerd op de computer met de configuratie server. 
 
-- Voor grote implementaties moet u mogelijk extra on-premises processervers dat moet capaciteit kunt schalen.
-- Voor de failback vanuit Azure naar on-premises, moet u een tijdelijke processerver in Azure instellen. Wanneer failback is voltooid, kunt u deze virtuele machine verwijderen. 
+- Voor grote implementaties hebt u mogelijk extra on-premises proces servers nodig om capaciteit te schalen.
+- Voor failback van Azure naar on-premises moet u een tijdelijke proces server instellen in Azure. U kunt deze virtuele machine verwijderen wanneer de failback is voltooid. 
 
-Meer informatie over de processerver.
+Meer informatie over de proces server.
 
 
-## <a name="upgrade-a-process-server"></a>Upgrade van een processerver
+## <a name="upgrade-a-process-server"></a>Een proces server bijwerken
 
-Wanneer u implementeert een processerver on-premises of als een Azure-VM voor failback, de meest recente versie van de processerver is geïnstalleerd. De Site Recovery teams release oplossingen en verbeteringen op gezette tijden, en we raden dat u processervers up-to-date houden. U kunt een processerver als volgt bijwerken:
+Wanneer u een proces server on-premises implementeert of als een Azure-VM voor failback, wordt de meest recente versie van de proces server geïnstalleerd. De versies van de Site Recovery teams kunnen regel matig worden uitgebreid en uitgebreid. Wij raden u aan de proces servers up-to-date te houden. U kunt als volgt een upgrade uitvoeren voor een proces server:
 
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
 
-## <a name="move-vms-to-balance-the-process-server-load"></a>Verplaatsen van virtuele machines om te verdelen van de belasting van de proces-server
+## <a name="move-vms-to-balance-the-process-server-load"></a>Vm's verplaatsen om de belasting van de proces server te verdelen
 
-Verdelen door te verplaatsen van virtuele machines tussen twee processervers mogelijk als volgt:
+U kunt als volgt de belasting verdelen door Vm's tussen twee proces servers te verplaatsen:
 
-1. In de kluis onder **beheren** klikt u op **Site Recovery-infrastructuur**. Onder **voor VMware en fysieke machines**, klikt u op **configuratieservers**.
-2. Klik op de configuratieserver waarmee de processervers zijn geregistreerd.
-3. Klik op de processerver waarvan u wilt om verkeer te verdelen.
+1. Klik in de kluis onder **beheren** op **site Recovery-infra structuur**. Klik onder **voor VMware & fysieke machines**op **configuratie servers**.
+2. Klik op de configuratie server waarmee de proces servers zijn geregistreerd.
+3. Klik op de proces server waarvoor u het verkeer wilt verdelen.
 
     ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. Klik op **verdelen**, selecteer de doelprocesserver waarnaar u wilt om machines te verplaatsen. Klik vervolgens op **OK**
+4. Klik op **taak verdeling**, selecteer de doel proces server waarnaar u machines wilt verplaatsen. Klik vervolgens op **OK**
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. Klik op **machines selecteren**, en kies de machines die u wilt verplaatsen van de huidige op de doelserver van het proces. Details van de gemiddelde gegevenswijziging worden weergegeven op basis van elke virtuele machine. Klik vervolgens op **OK**. 
-3. In de kluis, bewaakt de voortgang van de taak onder **bewaking** > **Site Recovery-taken**.
+2. Klik op **machines selecteren**en kies de computers die u van de huidige naar de doel proces server wilt verplaatsen. Details van de gemiddelde gegevens wijziging worden voor elke virtuele machine weer gegeven. Klik vervolgens op **OK**. 
+3. Controleer in de kluis de voortgang van de taak onder **bewaking** > **site Recovery taken**.
 
-Het duurt ongeveer 15 minuten voor wijzigingen in de portal worden weergegeven. Voor een snellere effect [vernieuwen van de configuratieserver](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+Het duurt ongeveer 15 minuten voordat wijzigingen worden weer gegeven in de portal. [Vernieuw de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server)voor een snellere werking.
 
-## <a name="switch-an-entire-workload-to-another-process-server"></a>Een hele werkbelasting overschakelen naar een andere processerver
+## <a name="switch-an-entire-workload-to-another-process-server"></a>Een hele werk belasting overschakelen naar een andere proces server
 
-De hele werkbelasting als volgt verwerkt door een processerver naar een andere processerver verplaatsen:
+Verplaats de hele werk belasting die door een proces server wordt verwerkt, als volgt naar een andere proces server:
 
-1. In de kluis onder **beheren** klikt u op **Site Recovery-infrastructuur**. Onder **voor VMware en fysieke machines**, klikt u op **configuratieservers**.
-2. Klik op de configuratieserver waarmee de processervers zijn geregistreerd.
-3. Klik op de processerver van waaruit u wilt overschakelen van de werkbelasting.
-4. Klik op **Switch**, selecteer de doelprocesserver waarnaar u wilt verplaatsen van de werkbelasting. Klik vervolgens op **OK**
+1. Klik in de kluis onder **beheren** op **site Recovery-infra structuur**. Klik onder **voor VMware & fysieke machines**op **configuratie servers**.
+2. Klik op de configuratie server waarmee de proces servers zijn geregistreerd.
+3. Klik op de proces server van waaruit u de werk belasting wilt wijzigen.
+4. Klik op **Switch**, selecteer de doel proces server waarnaar u de werk belasting wilt verplaatsen. Klik vervolgens op **OK**
 
     ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. In de kluis, bewaakt de voortgang van de taak onder **bewaking** > **Site Recovery-taken**.
+5. Controleer in de kluis de voortgang van de taak onder **bewaking** > **site Recovery taken**.
 
-Het duurt ongeveer 15 minuten voor wijzigingen in de portal worden weergegeven. Voor een snellere effect [vernieuwen van de configuratieserver](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+Het duurt ongeveer 15 minuten voordat wijzigingen worden weer gegeven in de portal. [Vernieuw de configuratie server](vmware-azure-manage-configuration-server.md#refresh-configuration-server)voor een snellere werking.
 
+## <a name="register-a-master-target-server"></a>Een hoofddoel server registreren
 
+De hoofddoel server bevindt zich op de configuratie server en scale-out proces servers. Het moet zijn geregistreerd bij de configuratie server. Als er een fout is opgetreden in deze registratie, kan dit van invloed zijn op de status van beveiligde items. Als u de Master doel server wilt registreren bij de configuratie server, meldt u zich aan bij de specifieke configuratie server/scale-out proces server waarop de registratie is vereist. Navigeer naar map **%PROGRAMDATA%\ASR\Agent**en voer het volgende uit op de opdracht prompt van de Administrator.
 
-## <a name="reregister-a-process-server"></a>Een processerver registreren
-
-Registreren van een processerver on-premises uitgevoerd of op een Azure-VM met de configuratieserver als volgt te werk:
-
-[!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
-
-Nadat u de instellingen hebt opgeslagen, het volgende doen:
-
-1. Open een opdrachtprompt als administrator op de processerver.
-2. Blader naar de map **%PROGRAMDATA%\ASR\Agent**, en voer de opdracht uit:
-
-    ```
-    cdpcli.exe --registermt
-    net stop obengine
-    net start obengine
-    ```
-
-## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Proxy-instellingen voor een on-premises processerver wijzigen
-
-Als een on-premises processerver gebruikmaakt van een proxy verbinding maken met Azure, kunt u de proxy-instellingen als volgt wijzigen:
-
-1. Meld u bij de server-machine proces. 
-2. Open een opdrachtvenster Admin PowerShell en voer de volgende opdracht uit:
-   ```powershell
-   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
-   net stop obengine
-   net start obengine
-   ```
-2. Blader naar de map **%PROGRAMDATA%\ASR\Agent**, en voer deze opdracht uit:
    ```
    cmd
    cdpcli.exe --registermt
@@ -110,19 +82,60 @@ Als een on-premises processerver gebruikmaakt van een proxy verbinding maken met
    exit
    ```
 
-## <a name="remove-a-process-server"></a>Een processerver verwijderen
+## <a name="reregister-a-process-server"></a>Een proces server opnieuw registreren
+
+Registreer een proces server die on-premises of op een virtuele machine van Azure wordt uitgevoerd met de configuratie server als volgt opnieuw:
+
+[!INCLUDE [site-recovery-vmware-register-process-server](../../includes/site-recovery-vmware-register-process-server.md)]
+
+Nadat u de instellingen hebt opgeslagen, gaat u als volgt te werk:
+
+1. Open een beheerders opdracht prompt op de proces server.
+2. Blader naar map **%PROGRAMDATA%\ASR\Agent**en voer de volgende opdracht uit:
+
+    ```
+    cdpcli.exe --registermt
+    net stop obengine
+    net start obengine
+    ```
+
+## <a name="modify-proxy-settings-for-an-on-premises-process-server"></a>Proxy-instellingen voor een on-premises proces server wijzigen
+
+Als een on-premises proces server een proxy gebruikt om verbinding te maken met Azure, kunt u de proxy-instellingen als volgt wijzigen:
+
+1. Meld u aan bij de computer met de proces server. 
+2. Open een Power shell-opdracht venster voor beheerders en voer de volgende opdracht uit:
+   ```powershell
+   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
+   net stop obengine
+   net start obengine
+   ```
+2. Blader naar map **%PROGRAMDATA%\ASR\Agent**en voer deze opdracht uit:
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
+
+## <a name="remove-a-process-server"></a>Een proces server verwijderen
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
 
-## <a name="exclude-folders-from-anti-virus-software"></a>Mappen uitsluiten van antivirussoftware
+## <a name="exclude-folders-from-anti-virus-software"></a>Mappen uitsluiten van antivirus software
 
-Als antivirussoftware wordt uitgevoerd op een uitbreidbare processerver (of de hoofddoelserver), moet u de volgende mappen uitsluiten van antivirusprogramma's bewerkingen:
+Als antivirus software wordt uitgevoerd op een scale-out proces server (of hoofddoel server), sluit u de volgende mappen uit van anti-virus bewerkingen:
 
 
-- C:\Program Files\Microsoft Azure Recovery Services Agent
+- C:\Program Files\Microsoft Azure Recovery Services-agent
 - C:\ProgramData\ASR
 - C:\ProgramData\ASRLogs
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- Map voor de installatie van proces server. Bijvoorbeeld: C:\Program Files (x86) \Microsoft Azure Site Recovery
+- Installatie directory van de proces server. Bijvoorbeeld: C:\Program Files (x86) \Microsoft Azure Site Recovery
