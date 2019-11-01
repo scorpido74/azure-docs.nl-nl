@@ -116,3 +116,13 @@
       href: my-apps-portal-end-user-access-reviews.md
     - name: Problemen oplossen
       href: my-apps-portal-end-user-troubleshoot.md
+- name: Hulp met Mijn apps-portal (preview)
+  items:
+    - name: Overzicht
+      href: my-applications-portal-overview.md
+    - name: Mijn Apps-portal openen en gebruiken
+      href: my-applications-portal-access.md
+    - name: Werkruimten openen en gebruiken
+      href: my-applications-portal-workspaces.md
+    - name: App-machtigingen bewerken of intrekken
+      href: my-applications-portal-permissions-saved-accounts.md

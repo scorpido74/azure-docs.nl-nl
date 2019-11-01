@@ -396,6 +396,10 @@
               href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Verplaatsen tussen regio's
           href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Problemen oplossen
+          items:
+            - name: Latentieproblemen
+              href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Naslaginformatie
       items:
         - name: Azure PowerShell

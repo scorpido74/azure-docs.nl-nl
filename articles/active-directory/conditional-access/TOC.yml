@@ -31,6 +31,8 @@
       href: location-condition.md
     - name: Besturingselementen
       href: controls.md
+    - name: Modus Alleen rapporteren
+      href: concept-conditional-access-report-only.md
     - name: Service-afhankelijkheden
       href: service-dependencies.md
     - name: Hulpprogramma What If
@@ -76,6 +78,8 @@
       href: untrusted-networks.md
     - name: Gebruiksvoorwaarden vereisen
       href: terms-of-use.md
+    - name: Modus Alleen rapporteren configureren
+      href: howto-conditional-access-report-only.md
     - name: Aanmeldingsfrequentie en besturingselementen voor browserpersistentie
       href: howto-conditional-access-session-lifetime.md
     - name: Klassieke beleidsregels migreren

@@ -31,8 +31,8 @@
       href: api-management-get-started-revise-api.md
     - name: '8: Meerdere versies toevoegen'
       href: api-management-get-started-publish-versions.md
-    - name: '9: De ontwikkelaarsportal aanpassen'
-      href: api-management-customize-styles.md
+    - name: 9 - Ontwikkelaarsportal aanpassen
+      href: api-management-howto-developer-portal-customize.md
 - name: Voorbeelden
   items:
     - name: Beleidsregels
@@ -121,17 +121,13 @@
           href: api-management-howto-ca-certificates.md
         - name: Protocollen en coderingen beheren
           href: api-management-howto-manage-protocols-ciphers.md
-    - name: De ontwikkelaarservaring aanpassen
+    - name: Ontwikkelaarservaring aanpassen
       items:
-        - name: De nieuwe ontwikkelaarsportal openen en aanpassen
+        - name: Inzicht in de ontwikkelaarsportal
           href: api-management-howto-developer-portal.md
-        - name: Pagina-inhoud en -indeling wijzigen
-          href: api-management-modify-content-layout.md
-        - name: Systeempagina's aanpassen met behulp van sjablonen
-          href: api-management-developer-portal-templates.md
-        - name: Verificatie met Azure AD
+        - name: Verifiëren met Azure AD
           href: api-management-howto-aad.md
-        - name: Verificatie met Azure AD B2C
+        - name: Verifiëren met Azure AD B2C
           href: api-management-howto-aad-b2c.md
         - name: Gedelegeerde verificatie
           href: api-management-howto-setup-delegation.md
@@ -139,6 +135,34 @@
           href: api-management-howto-configure-notifications.md
         - name: OAuth-ondersteuning in de console inschakelen
           href: api-management-howto-oauth2.md
+        - name: Verouderde portal - de portal aanpassen
+          href: api-management-customize-styles.md
+        - name: Verouderde portal - pagina's en indelingen bewerken
+          href: api-management-modify-content-layout.md
+        - name: Verouderde portal - aanpassen met sjablonen
+          href: api-management-developer-portal-templates.md
+    - name: Verouderde portalsjablonen
+      items:
+        - name: Naslaginformatie over gegevensmodellen
+          href: api-management-template-data-model-reference.md
+        - name: Paginabesturingselementen
+          href: api-management-page-controls.md
+        - name: Sjablonen
+          href: api-management-developer-portal-templates-reference.md
+        - name: API's
+          href: api-management-api-templates.md
+        - name: Producten
+          href: api-management-product-templates.md
+        - name: Toepassingen
+          href: api-management-application-templates.md
+        - name: Problemen
+          href: api-management-issue-templates.md
+        - name: Gebruikersprofiel
+          href: api-management-user-profile-templates.md
+        - name: Pagina's
+          href: api-management-page-templates.md
+        - name: Sjabloonresources
+          href: api-management-template-resources.md
     - name: Beleid definiëren
       items:
         - name: Beleid instellen of bewerken
@@ -167,28 +191,6 @@
           href: api-management-cross-domain-policies.md
         - name: Transformatiebeleid
           href: api-management-transformation-policies.md
-    - name: Sjabloonverwijzing
-      items:
-        - name: Sjablonen
-          href: api-management-developer-portal-templates-reference.md
-        - name: API's
-          href: api-management-api-templates.md
-        - name: Producten
-          href: api-management-product-templates.md
-        - name: Toepassingen
-          href: api-management-application-templates.md
-        - name: Problemen
-          href: api-management-issue-templates.md
-        - name: Gebruikersprofiel
-          href: api-management-user-profile-templates.md
-        - name: Pagina's
-          href: api-management-page-templates.md
-        - name: Sjabloonresources
-          href: api-management-template-resources.md
-    - name: Naslaginformatie over gegevensmodellen
-      href: api-management-template-data-model-reference.md
-    - name: Paginabesturingselementen
-      href: api-management-page-controls.md
     - name: Beheren tijdens productie
       items:
         - name: Groepen beheren

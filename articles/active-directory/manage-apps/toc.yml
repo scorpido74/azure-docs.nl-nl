@@ -131,10 +131,14 @@
           items:
             - name: Gebruikerstoestemming configureren
               href: configure-user-consent.md
+            - name: Beheerderstoestemming voor werkstroom configureren (preview)
+              href: configure-admin-consent-workflow.md
             - name: Methoden om gebruikers en groepen toe te wijzen aan een app
               href: methods-for-assigning-users-and-groups.md
             - name: Een gebruiker toewijzen aan een app
               href: assign-user-or-group-access-portal.md
+            - name: Werkruimten maken in Mijn apps (preview)
+              href: access-panel-workspaces.md
             - name: Selfservice-app-toegang gebruiken
               href: access-panel-manage-self-service-access.md
             - name: Methoden om gebruikerstoegang aan een app te verwijderen
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: Een ADFS-app migreren naar Azure
               href: migrate-adfs-apps-to-azure.md
+            - name: Het AD FS-toepassingsactiviteitrapport gebruiken (preview)
+              href: migrate-adfs-application-activity.md
         - name: Problemen oplossen
           items:
             - name: Problemen met apps toevoegen oplossen
