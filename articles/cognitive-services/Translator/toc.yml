@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: De dynamische woordenlijstfunctie gebruiken
           href: dynamic-dictionary.md
+        - name: Containers gebruiken
+          items:
+            - name: Containers installeren en uitvoeren
+              href: how-to-install-containers.md
+            - name: Containers configureren
+              href: translator-text-container-config.md
         - name: Vertalen achter firewalls
           href: firewalls.md
     - name: Voorbeelden
