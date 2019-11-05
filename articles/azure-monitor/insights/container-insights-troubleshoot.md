@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/27/2018
-ms.openlocfilehash: ec75f607f707405d6a5bea98deb784f4306c04f1
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 3d6ed3b13c134d8e9c1df72ae2cb880a477a803a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555367"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477048"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problemen met Azure Monitor voor containers oplossen
 
@@ -25,7 +25,7 @@ Tijdens het voorbereidings-of bijwerk proces wordt het verlenen van de roltoewij
 
 U kunt deze rol ook hand matig verlenen via de Azure Portal door de volgende stappen uit te voeren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 2. Klik in Azure Portal in de linkerbovenhoek op **Alle services**. Typ **Kubernetes**in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Azure Kubernetes**.
 3. Selecteer in de lijst met Kubernetes-clusters een in de lijst.
 2. Klik in het linkermenu op **toegangs beheer (IAM)** .
@@ -103,13 +103,33 @@ Als Azure Monitor voor containers is ingeschakeld en geconfigureerd, maar u geen
 
 De volgende tabel bevat een overzicht van bekende fouten die kunnen optreden bij het gebruik van Azure Monitor voor containers.
 
-| Foutberichten  | Bewerking |  
+| Foutberichten  | Actie |  
 | ---- | --- |  
 | Fout bericht `No data for selected filters`  | Het kan enige tijd duren voordat de bewakings gegevens stroom voor nieuwe clusters is ingesteld. Sta ten minste 10 tot 15 minuten toe dat er gegevens voor uw cluster worden weer gegeven. |   
-| Fout bericht `Error retrieving data` | Terwijl Azure Kubenetes service-cluster wordt ingesteld voor de status-en prestatie bewaking, wordt er een verbinding tot stand gebracht tussen het cluster en de Azure Log Analytics-werk ruimte. Een Log Analytics-werk ruimte wordt gebruikt om alle bewakings gegevens voor uw cluster op te slaan. Deze fout kan optreden als uw Log Analytics-werk ruimte is verwijderd. Controleer of de werk ruimte is verwijderd. als dat het geval is, moet u de bewaking van het cluster opnieuw inschakelen met Azure Monitor voor containers en een bestaande of een nieuwe werk ruimte maken. Als u het opnieuw wilt inschakelen, moet u de bewaking voor het cluster [uitschakelen](container-insights-optout.md) en de Azure monitor voor containers weer [inschakelen](container-insights-enable-new-cluster.md) . |  
+| Fout bericht `Error retrieving data` | Terwijl Azure Kubernetes service-cluster wordt ingesteld voor de status-en prestatie bewaking, wordt er een verbinding tot stand gebracht tussen het cluster en de Azure Log Analytics-werk ruimte. Een Log Analytics-werk ruimte wordt gebruikt om alle bewakings gegevens voor uw cluster op te slaan. Deze fout kan optreden als uw Log Analytics-werk ruimte is verwijderd. Controleer of de werk ruimte is verwijderd. als dat het geval is, moet u de bewaking van het cluster opnieuw inschakelen met Azure Monitor voor containers en een bestaande of een nieuwe werk ruimte maken. Als u het opnieuw wilt inschakelen, moet u de bewaking voor het cluster [uitschakelen](container-insights-optout.md) en de Azure monitor voor containers weer [inschakelen](container-insights-enable-new-cluster.md) . |  
 | `Error retrieving data` na het toevoegen van Azure Monitor voor containers via AZ AKS cli | Wanneer u controle inschakelt met behulp van `az aks cli`, is het mogelijk dat de Azure Monitor voor containers niet goed is geïmplementeerd. Controleer of de oplossing is geïmplementeerd. Als u dit wilt doen, gaat u naar uw Log Analytics-werk ruimte en bekijkt u of de oplossing beschikbaar is door **oplossingen** te selecteren in het deel venster aan de linkerkant. Als u dit probleem wilt oplossen, moet u de oplossing opnieuw implementeren door de instructies te volgen voor [het implementeren van Azure monitor voor containers](container-insights-onboard.md) |  
 
-Om het probleem op te lossen, is er [hier](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)een script voor het oplossen van problemen beschikbaar.  
+Om het probleem op te lossen, is er [hier](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)een script voor het oplossen van problemen beschikbaar.
+
+## <a name="azure-monitor-for-containers-agent-replicaset-pods-are-not-scheduled-on-non-azure-kubernetes-cluster"></a>Azure Monitor voor containers van de container-agent in een cluster zijn niet gepland voor niet-Azure Kubernetes-clusters
+
+Azure Monitor voor container agent-replicaset is een afhankelijkheid van de volgende knooppunt selectie vakjes op de worker-knoop punten (of agent) voor de planning:
+
+```
+nodeSelector:
+  beta.kubernetes.io/os: Linux
+  kubernetes.io/role: agent
+```
+
+Als aan uw worker-knoop punten geen knooppunt labels zijn gekoppeld, wordt de replicaset van de agent pas gepland. Raadpleeg [Kubernetes labels selecteren](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) voor instructies over het koppelen van het label.
+
+## <a name="performance-charts-dont-show-cpu-or-memory-of-nodes-and-containers-on-a-non-azure-cluster"></a>Prestatie grafieken tonen geen CPU of geheugen van knoop punten en containers op een niet-Azure-cluster
+
+Azure Monitor voor containers agent peulen maakt gebruik van het cAdvisor-eind punt op de knooppunt agent om de metrische gegevens over prestaties te verzamelen. Controleer of de container agent op het knoop punt zodanig is geconfigureerd dat `cAdvisor port: 10255` kan worden geopend op alle knoop punten in het cluster om metrische gegevens over prestaties te verzamelen.
+
+## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Niet-Azure Kubernetes-cluster wordt niet weer gegeven in Azure Monitor voor containers
+
+Als u het niet-Azure Kubernetes-cluster in Azure Monitor voor containers wilt weer geven, moet u lees toegang hebben op de Log Analytics-werk ruimte die dit inzicht ondersteunt en op de **ContainerInsights (*werk ruimte*)** van de container Insights-oplossing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 5694894a78a46ad658ec18f210c6a82fb82df23f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 00a20ac2d7f05c42be9e955eeb8f47c302db7885
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559597"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464567"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migreren van Bing Speech naar de speech-service
 
@@ -39,29 +39,29 @@ De spraak Services zijn grotendeels vergelijkbaar met Bing Speech, met de volgen
 
 Functie | Bing Speech | Spraakservices | Details
 -|-|-|-
-C++SDK | : heavy_minus_sign: | :heavy_check_mark: | Speech Services biedt ondersteuning voor Windows en Linux.
-Java-SDK | :heavy_check_mark: | :heavy_check_mark: | Spraak Services ondersteunen Android-en spraak apparaten.
+C++SDK | :heavy_minus_sign: | :heavy_check_mark: | Speech Services biedt ondersteuning voor Windows en Linux.
+Java SDK | :heavy_check_mark: | :heavy_check_mark: | Spraak Services ondersteunen Android-en spraak apparaten.
 C# SDK | :heavy_check_mark: | :heavy_check_mark: | Speech Services ondersteunt Windows 10, Universeel Windows-platform (UWP) en .NET Standard 2,0.
 Continue spraak herkenning | 10 minuten | Onbeperkt (met SDK) | De websockets protocollen van Bing Speech en Speech Services ondersteunen Maxi maal tien minuten per oproep. De Speech SDK maakt echter automatisch opnieuw verbinding met de time-out of de verbinding wordt verbroken.
 Gedeeltelijke of tussentijdse resultaten | :heavy_check_mark: | :heavy_check_mark: | Met het websockets protocol of SDK.
 Aangepaste spraak modellen | :heavy_check_mark: | :heavy_check_mark: | Voor Bing Speech is een afzonderlijk Custom Speech-abonnement vereist.
 Aangepaste spraak lettertypen | :heavy_check_mark: | :heavy_check_mark: | Voor Bing Speech is een apart aangepast spraak abonnement vereist.
-24-KHz stemmen | : heavy_minus_sign: | :heavy_check_mark:
+24-KHz stemmen | :heavy_minus_sign: | :heavy_check_mark:
 Spraakintentieherkenning | Vereist een afzonderlijke LUIS-API-aanroep | Geïntegreerd (met SDK) |  U kunt een LUIS-sleutel gebruiken met de spraak service.
-Eenvoudige intentie herkenning | : heavy_minus_sign: | :heavy_check_mark:
-Batch-transcriptie met lange audio bestanden | : heavy_minus_sign: | :heavy_check_mark:
+Eenvoudige intentie herkenning | :heavy_minus_sign: | :heavy_check_mark:
+Batch-transcriptie met lange audio bestanden | :heavy_minus_sign: | :heavy_check_mark:
 Herkennings-modus | Hand matig via eind punt-URI | Automatisch | Herkennings modus is niet beschikbaar in de speech-service.
 Locatie van eind punt | Wereldwijd | Landspecifieke | Regionale eind punten verbeteren de latentie.
-REST-API’s | :heavy_check_mark: | :heavy_check_mark: | De REST-Api's voor spraak Services zijn compatibel met Bing Speech (verschillende eind punten). REST-Api's bieden ondersteuning voor tekst-naar-spraak-en beperkte spraak-naar-tekst functionaliteit.
+REST API's | :heavy_check_mark: | :heavy_check_mark: | De REST-Api's voor spraak Services zijn compatibel met Bing Speech (verschillende eind punten). REST-Api's bieden ondersteuning voor tekst-naar-spraak-en beperkte spraak-naar-tekst functionaliteit.
 Protocollen voor websockets | :heavy_check_mark: | :heavy_check_mark: | De API voor websockets van speech Services is compatibel met Bing Speech (ander eind punt). Migreer naar de spraak-SDK, indien mogelijk, om uw code te vereenvoudigen.
-Service-naar-Service-API-aanroepen | :heavy_check_mark: | : heavy_minus_sign: | Verschaft in Bing Speech via de C# service bibliotheek.
-Open-Source-SDK | :heavy_check_mark: | : heavy_minus_sign: |
+Service-naar-Service-API-aanroepen | :heavy_check_mark: | :heavy_minus_sign: | Verschaft in Bing Speech via de C# service bibliotheek.
+Open-Source-SDK | :heavy_check_mark: | :heavy_minus_sign: |
 
 De spraak Services gebruiken een op tijd gebaseerd prijs model (in plaats van een model op basis van een trans actie). Zie de [prijzen voor spraak Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) voor meer informatie.
 
 ## <a name="migration-strategies"></a>Migratiestrategieën
 
-Als u of uw organisatie toepassingen in ontwikkeling of productie heeft die gebruikmaken van een Bing Speech-API, moet u ze zo snel mogelijk bijwerken om de spraak services te gebruiken. Raadpleeg de [documentatie voor speech Services](index.yml) voor beschik bare sdk's, code voorbeelden en zelf studies.
+Als u of uw organisatie toepassingen in ontwikkeling of productie heeft die gebruikmaken van een Bing Speech-API, moet u ze zo snel mogelijk bijwerken om de spraak services te gebruiken. Raadpleeg de [documentatie voor speech Services](index.md) voor beschik bare sdk's, code voorbeelden en zelf studies.
 
 De rest- [api's](rest-apis.md) voor spraak Services zijn compatibel met de Bing speech-api's. Als u momenteel de Bing Speech REST-Api's gebruikt, hoeft u alleen het REST-eind punt te wijzigen en over te scha kelen naar een abonnement sleutel voor spraak Services.
 
@@ -77,22 +77,22 @@ Als uw toepassing langdurige verbindingen gebruikt en geen beschik bare SDK kan 
 
 Om aan de slag te gaan met de Speech SDK:
 
-1. Download de [spraak SDK](speech-sdk.md).
-1. Werk met de [Snelstartgids](quickstart-csharp-dotnet-windows.md) en [zelf studies](how-to-recognize-intents-from-speech-csharp.md)voor spraak Services. Bekijk ook de [code voorbeelden](samples.md) om ervaring te krijgen met de nieuwe api's.
+1. Down load de [spraak-SDK](speech-sdk.md).
+1. Werk met de [Snelstartgids](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) en [zelf studies](how-to-recognize-intents-from-speech-csharp.md)voor spraak Services. Bekijk ook de [code voorbeelden](samples.md) om ervaring te krijgen met de nieuwe api's.
 1. Werk uw toepassing bij om de spraak services te gebruiken.
 
 ## <a name="support"></a>Ondersteuning
 
 Bing Speech klanten contact opnemen met klant ondersteuning door een [ondersteunings ticket](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)te openen. U kunt ook contact met ons opnemen als voor uw ondersteunings [abonnement een technisch ondersteunings plan](https://azure.microsoft.com/support/plans/)nodig is.
 
-Ga naar de ondersteunings [pagina](support.md)voor spraak Services voor spraak service, SDK en API-ondersteuning.
+Ga naar de [ondersteunings pagina](support.md)voor spraak Services voor spraak service, SDK en API-ondersteuning.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Probeer spraak services gratis uit](get-started.md)
-* [Snelstart: Spraak herkennen in een UWP-app met behulp van de Speech SDK](quickstart-csharp-uwp.md)
+* [Quick Start: spraak herkennen in een UWP-app met behulp van de Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Zie ook
 * [Opmerkingen bij de release van speech Services](releasenotes.md)
-* [Wat is de Speech-Service](overview.md)
+* [Wat is de speech-service](overview.md)
 * [Documentatie voor spraak Services en Speech SDK](speech-sdk.md#get-the-sdk)

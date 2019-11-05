@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: da84f72c1ccf85e1f3d0f003a5aca961118c0a0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672816"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472893"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes core-concepten voor Azure Kubernetes service (AKS)
 
@@ -72,11 +72,11 @@ De grootte van de Azure VM voor uw knoop punten bepaalt hoeveel Cpu's, hoeveel g
 
 In AKS is de VM-installatie kopie voor de knoop punten in uw cluster momenteel gebaseerd op Ubuntu Linux of Windows Server 2019. Wanneer u een AKS-cluster maakt of het aantal knoop punten schaalt, wordt het aangevraagde aantal Vm's door het Azure-platform gemaakt en geconfigureerd. Er is geen hand matige configuratie die u kunt uitvoeren. Agent knooppunten worden gefactureerd als standaard virtuele machines, dus eventuele kortingen op de VM-grootte die u gebruikt (inclusief [Azure-reserve ringen][reservation-discounts]) worden automatisch toegepast.
 
-Als u een ander host-besturings systeem, container runtime of aangepaste pakketten wilt gebruiken, kunt u uw eigen Kubernetes-cluster implementeren met behulp van [AKS-engine][aks-engine]. Met de upstream-`aks-engine` worden functies vrijgegeven en worden configuratie opties geboden voordat ze officieel worden ondersteund in AKS-clusters. Als u bijvoorbeeld een andere container-runtime dan Moby wilt gebruiken, kunt u `aks-engine` gebruiken om een Kubernetes-cluster te configureren en implementeren dat voldoet aan uw huidige behoeften.
+Als u een ander host-besturings systeem, container runtime of aangepaste pakketten wilt gebruiken, kunt u uw eigen Kubernetes-cluster implementeren met behulp van [AKS-engine][aks-engine]. De upstream-`aks-engine` releases functies en bevat configuratie opties voordat ze officieel worden ondersteund in AKS-clusters. Als u bijvoorbeeld een andere container-runtime dan Moby wilt gebruiken, kunt u `aks-engine` gebruiken om een Kubernetes-cluster te configureren en implementeren dat voldoet aan uw huidige behoeften.
 
 ### <a name="resource-reservations"></a>Resource reserveringen
 
-Knooppunt resources worden gebruikt door AKS om de knooppunt functie als onderdeel van het cluster te maken. Dit kan een discrepency maken tussen het totale aantal resources van het knoop punt en de bronnen die kunnen worden verplaatst bij gebruik in AKS. Dit is belang rijk om te weten wanneer u aanvragen en limieten instelt voor een door de gebruiker geïmplementeerde peul.
+Knooppunt resources worden gebruikt door AKS om de knooppunt functie als onderdeel van het cluster te maken. Dit kan een verschil maken tussen het totale aantal resources van het knoop punt en de resources die kunnen worden verplaatst wanneer ze worden gebruikt in AKS. Dit is belang rijk om te weten wanneer u aanvragen en limieten instelt voor een door de gebruiker geïmplementeerde peul.
 
 Ga als volgt te werk om te zoeken naar de toewijs bare resources van een knoop punt:
 ```kubectl
@@ -108,9 +108,9 @@ Het onderliggende knooppunt besturingssysteem vereist ook een aantal CPU-en gehe
 
 Zie [Best Practices for Basic scheduler-functies in AKS][operator-best-practices-scheduler]voor gekoppelde aanbevolen procedures.
 
-### <a name="node-pools"></a>Knooppuntgroepen
+### <a name="node-pools"></a>Knooppunt groepen
 
-Knoop punten van dezelfde configuratie worden samen in *knooppunt groepen*gegroepeerd. Een Kubernetes-cluster bevat een of meer knooppunt groepen. Het eerste aantal knoop punten en grootte worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaard knooppunt groep*wordt gemaakt. Deze standaard knooppunt groep in AKS bevat de onderliggende virtuele machines waarop de agent knooppunten worden uitgevoerd. Ondersteuning voor meerdere knooppunt groepen is momenteel beschikbaar als preview-versie in AKS.
+Knoop punten van dezelfde configuratie worden samen in *knooppunt groepen*gegroepeerd. Een Kubernetes-cluster bevat een of meer knooppunt groepen. Het eerste aantal knoop punten en grootte worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaard knooppunt groep*wordt gemaakt. Deze standaard knooppunt groep in AKS bevat de onderliggende virtuele machines waarop de agent knooppunten worden uitgevoerd.
 
 > [!NOTE]
 > Om ervoor te zorgen dat uw cluster betrouwbaar functioneert, moet u ten minste twee knoop punten in de standaard knooppunt groep uitvoeren.
@@ -140,7 +140,7 @@ spec:
 
 Zie [Aanbevolen procedures voor geavanceerde functies van scheduler in AKS][operator-best-practices-advanced-scheduler]voor meer informatie over het bepalen van de planning.
 
-## <a name="pods"></a>Gehele
+## <a name="pods"></a>gehele
 
 Kubernetes maakt gebruik van *peul* om een exemplaar van uw toepassing uit te voeren. Een pod vertegenwoordigt één exemplaar van uw toepassing. In het algemeen is er sprake van een 1:1-toewijzing met een container, hoewel er geavanceerde scenario's zijn waarbij een pod mogelijk meerdere containers bevat. Deze meerdere containers worden op hetzelfde knoop punt gepland en kunnen containers gerelateerde resources delen.
 
@@ -218,7 +218,7 @@ Er zijn twee Kubernetes-resources waarmee u deze typen toepassingen kunt beheren
 
 Ontwikkeling van moderne toepassingen is vaak gericht op stateless toepassingen, maar *StatefulSets* kan worden gebruikt voor stateful toepassingen, zoals toepassingen die database onderdelen bevatten. Een StatefulSet is vergelijkbaar met een implementatie in dat een of meer identieke peulen worden gemaakt en beheerd. Replica's in een StatefulSet volgen een gepaste, sequentiële benadering van implementatie, schaal, upgrades en beëindigingen. Met een StatefulSet zijn de naam Conventie, netwerk namen en opslag persistent, omdat replica's opnieuw worden gepland.
 
-U definieert de toepassing in YAML-indeling met `kind: StatefulSet` en de StatefulSet-controller verwerkt vervolgens de implementatie en het beheer van de vereiste replica's. Gegevens worden naar permanente opslag geschreven, die wordt verschaft door Azure Managed Disks of Azure Files. Met StatefulSets blijft de onderliggende permanente opslag behouden, zelfs wanneer de StatefulSet is verwijderd.
+U definieert de toepassing in YAML-indeling met behulp van `kind: StatefulSet`en de StatefulSet-controller verwerkt vervolgens de implementatie en het beheer van de vereiste replica's. Gegevens worden naar permanente opslag geschreven, die wordt verschaft door Azure Managed Disks of Azure Files. Met StatefulSets blijft de onderliggende permanente opslag behouden, zelfs wanneer de StatefulSet is verwijderd.
 
 Zie [Kubernetes StatefulSets][kubernetes-statefulsets]voor meer informatie.
 
@@ -230,7 +230,7 @@ Voor specifieke vereisten voor logboek verzameling of-bewaking moet u mogelijk e
 
 De controller van de Daemonset kan in het proces voor het opstarten van het cluster in een vroeg stadium plannen voordat de standaard Kubernetes scheduler is gestart. Op deze manier zorgt u ervoor dat het Peul in een Daemonset wordt gestart voordat het traditionele peul in een implementatie of StatefulSet wordt gepland.
 
-Net als StatefulSets wordt een Daemonset gedefinieerd als onderdeel van een YAML-definitie met behulp van `kind: DaemonSet`.
+Net als StatefulSets wordt een Daemonset gedefinieerd als onderdeel van een YAML definitie met behulp van `kind: DaemonSet`.
 
 Zie [Kubernetes DaemonSets][kubernetes-daemonset]voor meer informatie.
 

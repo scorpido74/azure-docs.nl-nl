@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: aabcb0b0d01d821c529803927dacec448c923745
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 41edcc40bae7915e321a278592dd2f73621aae05
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998021"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482407"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-uitbrei dingen in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -20,13 +20,13 @@ PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te b
 
 ## <a name="use-postgresql-extensions"></a>PostgreSQL-extensies gebruiken
 
-PostgreSQL-extensies moeten worden geïnstalleerd in uw Data Base voordat u ze kunt gebruiken. Als u een bepaalde extensie wilt installeren, voert u de opdracht [extensie](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) maken uit vanuit het psql-hulp programma om de verpakte objecten in uw data base te laden.
+PostgreSQL-extensies moeten worden geïnstalleerd in uw Data Base voordat u ze kunt gebruiken. Als u een bepaalde uitbrei ding wilt installeren, voert u de opdracht [extensie maken](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) uit vanuit het hulp programma psql om de verpakte objecten in uw data base te laden.
 
-Azure Database for PostgreSQL-grootschalige (Citus) Preview ondersteunt momenteel een subset van de sleutel uitbreidingen, zoals hier wordt weer gegeven. Extensies die niet worden vermeld, worden niet ondersteund. U kunt geen eigen uitbrei ding maken met Azure Database for PostgreSQL.
+Azure Database for PostgreSQL-grootschalige (Citus) ondersteunt momenteel een subset met sleutel uitbreidingen, zoals hier wordt weer gegeven. Extensies die niet worden vermeld, worden niet ondersteund. U kunt geen eigen uitbrei ding maken met Azure Database for PostgreSQL.
 
 ## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Extensies die worden ondersteund door Azure Database for PostgreSQL
 
-De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die momenteel door Azure Database for PostgreSQL worden ondersteund. Deze informatie is ook beschikbaar door te `SELECT * FROM pg_available_extensions;`worden uitgevoerd.
+De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die momenteel door Azure Database for PostgreSQL worden ondersteund. Deze informatie is ook beschikbaar door `SELECT * FROM pg_available_extensions;`uit te voeren.
 
 ### <a name="data-types-extensions"></a>Uitbrei dingen van gegevens typen
 
@@ -34,9 +34,9 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > | **Switch** | **Beschrijving** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | Bevat een hoofdletter gevoelig type teken reeks. |
-> | [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | Biedt een gegevens type voor multidimensionale kubussen. |
+> | [kubus](https://www.postgresql.org/docs/9.6/static/cube.html) | Biedt een gegevens type voor multidimensionale kubussen. |
 > | [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | Biedt een gegevens type voor het opslaan van sets sleutel-waardeparen. |
-> | [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | Biedt gegevens typen voor International product Numbering Standards. |
+> | [hebben](https://www.postgresql.org/docs/9.6/static/isn.html) | Biedt gegevens typen voor International product Numbering Standards. |
 > | [laag](https://www.postgresql.org/docs/current/lo.html) | Large Object onderhoud. |
 > | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | Voorziet in een gegevens type voor hiërarchische structuren op boom structuur. |
 > | [seg](https://www.postgresql.org/docs/current/seg.html) | Gegevens type voor de weer gave van lijn segmenten of drijvende-komma intervallen. |
@@ -49,7 +49,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > |---|---|
 > | [dicteren\_int](https://www.postgresql.org/docs/9.6/static/dict-int.html) | Voorziet in een woordenlijst sjabloon voor tekst zoeken voor gehele getallen. |
 > | [dict\_xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Zoek woordenlijst sjabloon voor tekst voor uitgebreide synoniemen verwerking. |
-> | [unaccent](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Een zoek woordenlijst voor tekst waarmee accenten (diakritische tekens) van lexemes worden verwijderd. |
+> | [accenten opzeggen](https://www.postgresql.org/docs/9.6/static/unaccent.html) | Een zoek woordenlijst voor tekst waarmee accenten (diakritische tekens) van lexemes worden verwijderd. |
 
 ### <a name="functions-extensions"></a>Extensies voor functies
 
@@ -59,15 +59,15 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Functies voor auto incrementele velden. |
 > | [earthdistance](https://www.postgresql.org/docs/9.6/static/earthdistance.html) | Biedt een manier om grote afstanden te berekenen op het Opper vlak van de aarde. |
 > | [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | Biedt verschillende functies voor het bepalen van overeenkomsten en de afstand tussen teken reeksen. |
-> | [gebruikers\_naam invoegen](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | Functies voor het bijhouden wie een tabel heeft gewijzigd. |
+> | [\_gebruikers naam invoegen](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.8) | Functies voor het bijhouden wie een tabel heeft gewijzigd. |
 > | [intagg](https://www.postgresql.org/docs/current/intagg.html) | Geheel getal, aggregator en Enumerator (verouderd). |
 > | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | Biedt functies en Opera tors voor het bewerken van Null-vrije matrices van gehele getallen. |
 > | [moddatetime](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.9) | Functies voor het bijhouden van de tijd van de laatste wijziging. |
 > | [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | Voorziet in cryptografische functies. |
-> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Hiermee beheert u gepartitioneerde tabellen op tijd of ID. |
-> | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Voorziet in functies en Opera tors voor het bepalen van de gelijkenis van alfanumerieke tekst op basis van het afstemmen van Trigram. |
-> | [refint](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Functies voor het implementeren van referentiële integriteit (verouderd). |
-> | sessie\_analyse | Functies voor het uitvoeren van query's op hstore-matrices. |
+> | [pag\_deelman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Hiermee beheert u gepartitioneerde tabellen op tijd of ID. |
+> | [pag\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Voorziet in functies en Opera tors voor het bepalen van de gelijkenis van alfanumerieke tekst op basis van het afstemmen van Trigram. |
+> | [verfijnt](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.5) | Functies voor het implementeren van referentiële integriteit (verouderd). |
+> | analyse van sessie-\_ | Functies voor het uitvoeren van query's op hstore-matrices. |
 > | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Biedt functies voor het bewerken van hele tabellen, inclusief Kruistabel query's. |
 > | [tcn](https://www.postgresql.org/docs/current/tcn.html) | Geactiveerde wijzigings meldingen. |
 > | [timetravel](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.6) | Functies voor het implementeren van tijd reizen. |
@@ -88,7 +88,7 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > |---|---|
 > | [bloei](https://www.postgresql.org/docs/current/bloom.html) | Toegangs methode voor bloei-index op basis van een hand tekening bestand. |
 > | [btree\_eginnen](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | Biedt een voor beeld van EGINNEN-operator klassen waarmee B-structuur-like-gedrag voor bepaalde gegevens typen kan worden geïmplementeerd. |
-> | [btreee\_-registratie](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | Bevat de klassen van een categorie-operator die de B-structuur implementeert. |
+> | [btree\_e-ster](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | Bevat de klassen van een categorie-operator die de B-structuur implementeert. |
 
 ### <a name="language-extensions"></a>Taal extensies
 
@@ -106,12 +106,12 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Functies voor het controleren van relatie-integriteit. |
 > | [bestands\_fdw](https://www.postgresql.org/docs/current/file-fdw.html) | Externe-gegevens wrapper voor toegang tot platte bestanden. |
 > | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) | De inhoud van database pagina's op een laag niveau controleren. |
-> | [pg\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Biedt een manier om te controleren wat er gebeurt in de gedeelde buffer cache in realtime. |
-> | [pg\_cron](https://github.com/citusdata/pg_cron) | Job Scheduler voor PostgreSQL. |
+> | [pag\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Biedt een manier om te controleren wat er gebeurt in de gedeelde buffer cache in realtime. |
+> | [pag\_cron](https://github.com/citusdata/pg_cron) | Job Scheduler voor PostgreSQL. |
 > | [pag\_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) | Bekijk de toewijzing van de vrije ruimte (FSM). |
-> | [pg\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Biedt een manier om relatie gegevens in de buffer cache te laden. |
-> | [PG\_stat\_-instructies](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Biedt een manier om uitvoerings statistieken op te sporen van alle SQL-instructies die worden uitgevoerd door een server. Zie de sectie ' pg_stat_statements ' voor meer informatie over deze uitbrei ding. |
-> | [zicht\_baarheid van pagina's](https://www.postgresql.org/docs/current/pgvisibility.html) | Bekijk de informatie over de zichtbaarheids kaart (VM) en de zicht baarheid op pagina niveau. |
+> | [pag\_-warm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Biedt een manier om relatie gegevens in de buffer cache te laden. |
+> | [pagina\_stat\_-instructies](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Biedt een manier om uitvoerings statistieken op te sporen van alle SQL-instructies die worden uitgevoerd door een server. Zie de sectie ' pg_stat_statements ' voor meer informatie over deze uitbrei ding. |
+> | [zicht baarheid van pagina's\_](https://www.postgresql.org/docs/current/pgvisibility.html) | Bekijk de informatie over de zichtbaarheids kaart (VM) en de zicht baarheid op pagina niveau. |
 > | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Biedt een manier om vergrendelings informatie op rijniveau te tonen. |
 > | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Biedt een manier om statistieken op tupleniveau weer te geven. |
 > | [post gres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Externe-gegevens wrapper die wordt gebruikt voor toegang tot gegevens die zijn opgeslagen in externe PostgreSQL-servers. Zie de sectie ' dblink and postgres_fdw ' voor informatie over deze uitbrei ding.|
@@ -128,19 +128,19 @@ De volgende tabellen geven een lijst van de standaard PostgreSQL-extensies die m
 > [!div class="mx-tableFixed"]
 > | **Switch** | **Beschrijving** |
 > |---|---|
-> | [Postgis](https://www.postgis.net/), postgis\_-topologie,\_postgis\_Tiger geocodeer,\_postgis sfcgal | Ruimtelijke en geografische objecten voor PostgreSQL. |
-> | adres\_standaardiserer,\_adresseer\_data gegevens\_ | Wordt gebruikt om een adres te parseren in onderdeel elementen. Wordt gebruikt ter ondersteuning van de stap voor het normaliseren van het adres voor geocodering. |
+> | [Postgis](https://www.postgis.net/), postgis\_topologie, postgis\_Tiger\_geocodeer, postgis\_sfcgal | Ruimtelijke en geografische objecten voor PostgreSQL. |
+> | Address\_Standardization, adres\_Standardization\_data\_ons | Wordt gebruikt om een adres te parseren in onderdeel elementen. Wordt gebruikt ter ondersteuning van de stap voor het normaliseren van het adres voor geocodering. |
 > | postgis\_sfcgal | PostGIS SFCGAL-functies. |
-> | postgis\_tiger\_geocoder | PostGIS Tiger geocodeer en reverse geocodeer. |
+> | postgis\_Tiger\_geocodeer | PostGIS Tiger geocodeer en reverse geocodeer. |
 > | postgis\_-topologie | Ruimtelijke typen en functies van de PostGIS-topologie. |
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-De [uitbrei\_ding pag\_. instructies](https://www.postgresql.org/docs/current/pgstatstatements.html) is vooraf geladen op elke Azure database for postgresql-server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
+De [uitbrei ding pag\_stat\_-instructies](https://www.postgresql.org/docs/current/pgstatstatements.html) is vooraf geladen op elke Azure database for postgresql-server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
 
-De instelling `pg_stat_statements.track` bepaalt welke instructies worden geteld door de uitbrei ding. De standaard instelling `top`is, wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all`. Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) of de [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
+De instelling `pg_stat_statements.track` bepaalt welke instructies worden geteld door de uitbrei ding. De standaard instelling is `top`, wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all`. Deze instelling kan worden geconfigureerd als een server parameter via de [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) of de [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
-Er is sprake van een afweging tussen de pg_stat_statements voor het uitvoeren van query's en het effect op de server prestaties bij het vastleggen van elke SQL-instructie. Als u de pg_stat_statements-extensie niet actief gebruikt, raden we u aan `pg_stat_statements.track` om `none`in te stellen op. Sommige bewakings services van derden zijn afhankelijk van pg_stat_statements voor het leveren van query prestaties, zodat u kunt bevestigen of dit het geval voor u is.
+Er is sprake van een afweging tussen de pg_stat_statements voor het uitvoeren van query's en het effect op de server prestaties bij het vastleggen van elke SQL-instructie. Als u de pg_stat_statements-extensie niet actief gebruikt, raden we u aan om `pg_stat_statements.track` in te stellen op `none`. Sommige bewakings services van derden zijn afhankelijk van pg_stat_statements voor het leveren van query prestaties, zodat u kunt bevestigen of dit het geval voor u is.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink en postgres_fdw
 U kunt dblink en postgres_fdw gebruiken om verbinding te maken tussen een PostgreSQL-server of een andere Data Base op dezelfde server. De ontvangende server moet verbindingen vanaf de verzendende server via de Firewall toestaan. Als u deze uitbrei dingen wilt gebruiken om verbinding te maken tussen Azure Database for PostgreSQL servers, stelt u **toegang tot Azure-Services toestaan** in op aan. U moet deze instelling ook inschakelen als u de uitbrei dingen wilt gebruiken om naar dezelfde server te gaan. De instelling **toegang tot Azure-Services toestaan vindt u** op de pagina Azure portal voor de post gres-server onder **verbindings beveiliging**. **Toegang tot Azure-Services toestaan** op whitelists alle Azure ip's.

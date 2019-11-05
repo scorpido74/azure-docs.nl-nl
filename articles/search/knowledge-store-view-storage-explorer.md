@@ -6,21 +6,21 @@ manager: nitinme
 author: lisaleib
 ms.author: v-lilei
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 9ba11b69a51a5bc563764a7e75189bed67cb2ac6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789978"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484992"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Een kennis archief met Storage Explorer weer geven
 
 > [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De [Azure Cognitive Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
+> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De portal en [Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
-In dit artikel leert u hoe u verbinding maakt en een kennis archief kunt verkennen met behulp van Storage Explorer in de Azure Portal. Zie [een kennis archief maken in azure Portal](knowledge-store-create-portal.md)voor het maken van het voor beeld van het kennis archief dat in dit scenario wordt gebruikt.
+In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe u deze kunt verkennen met behulp van Storage Explorer in de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +30,7 @@ In dit artikel leert u hoe u verbinding maakt en een kennis archief kunt verkenn
 
 ## <a name="view-edit-and-query-a-knowledge-store-in-storage-explorer"></a>Een kennis archief in Storage Explorer weer geven, bewerken en er een query op uitvoeren
 
-1. Open in het Azure Portal het opslag account dat u hebt gebruikt om het kennis archief te maken.
+1. Open in het Azure Portal [het opslag account](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) dat u hebt gebruikt om het kennis archief te maken.
 
 1. Klik op **Storage Explorer**in het linkernavigatievenster van het opslag account.
 
@@ -58,12 +58,8 @@ Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent bepe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie het volgende artikel voor meer informatie over het verbinden van dit kennis archief met Power BI.
+Verbind dit kennis archief met Power BI voor een diepere analyse of ga door met de code met behulp van de REST API en postman om een ander kennis archief te maken.
 
 > [!div class="nextstepaction"]
-> [Verbinden met Power BI](knowledge-store-connect-power-bi.md)
-
-Zie het volgende artikel voor meer informatie over het maken van een kennis archief met behulp van de REST-Api's en postman.  
-
-> [!div class="nextstepaction"]
-> [Een kennis archief maken in REST](knowledge-store-howto.md)
+> [Verbinding maken met Power BI](knowledge-store-connect-power-bi.md)
+> [een Knowledge Store in rest](knowledge-store-howto.md)

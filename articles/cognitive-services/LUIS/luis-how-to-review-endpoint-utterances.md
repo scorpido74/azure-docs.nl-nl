@@ -9,88 +9,89 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d5652857f2f35e392d3f512001044fd06bc0a0c9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499078"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Endpoint uitingen in LUIS-Portal controleren voor actief leren
 
 Met het [actieve leer proces](luis-concept-review-endpoint-utterances.md) worden eindpunt query's vastgelegd en wordt het uitingen van de gebruiker geselecteerd. U kunt deze uitingen bekijken om de intentie te selecteren en entiteiten te markeren voor deze uitingen met lees-of-wereld. Ga akkoord met deze wijzigingen in uw voor beeld uitingen en klik vervolgens op publiceren. LUIS identificeert uitingen nauw keuriger.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="enable-active-learning"></a>Actief leren inschakelen
 
-Meld gebruikers query's om actief leren in te scha kelen. Dit wordt bereikt door de [eindpunt query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) in te stellen `log=true` met de para meter en waarde van de query.
+Meld gebruikers query's om actief leren in te scha kelen. Dit wordt bereikt door de [eindpunt query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) in te stellen met de `log=true` query string-para meter en-waarde.
 
 ## <a name="disable-active-learning"></a>Actief leren uitschakelen
 
-Als u actief leren wilt uitschakelen, moet u geen gebruikers query's registreren. Dit wordt bereikt door de [eindpunt query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) in te stellen `log=false` met de para meter en waarde van de query.
+Als u actief leren wilt uitschakelen, moet u geen gebruikers query's registreren. Dit wordt bereikt door de [eindpunt query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) in te stellen met de `log=false` query string-para meter en-waarde.
 
 ## <a name="filter-utterances"></a>Uitingen filteren
 
-1. Open uw app (bijvoorbeeld TravelAgent) door te selecteren van de naam op **mijn Apps** pagina en selecteer vervolgens **bouwen** in de bovenste balk.
+1. Open uw app (bijvoorbeeld TravelAgent) door de naam ervan te selecteren op **mijn apps** pagina en vervolgens **Build** te selecteren in de bovenste balk.
 
-1. Onder de **verbeterde app-prestaties**, selecteer **bekijken eindpunt uitingen**.
+1. Selecteer **uitingen endpoint controleren**onder de prestaties van de **app verbeteren**.
 
-1. Op de **bekijken eindpunt uitingen** weergeeft, schakelt u in de **filterlijst met opzet of entiteit** in het tekstvak. Deze vervolgkeuzelijst bevat alle intents onder **INTENTS** en alle entiteiten in **entiteiten**.
+1. Selecteer op de pagina **eind punt uitingen** in het tekstvak **filteren op intentie of entiteit** . Deze vervolg keuzelijst bevat alle intenties onder **INtenties** en alle entiteiten onder **entiteiten**.
 
-    ![Uitingen filteren](./media/label-suggested-utterances/filter.png)
+    ![Uitingen-filter](./media/label-suggested-utterances/filter.png)
 
-1. Selecteer een categorie (intents of entiteiten) in de vervolgkeuzelijst en bekijk de uitingen.
+1. Selecteer een categorie (intenties of entiteiten) in de vervolg keuzelijst en controleer de uitingen.
 
-    ![Intentie uitingen](./media/label-suggested-utterances/intent-utterances.png)
+    ![Uitingen intentie](./media/label-suggested-utterances/intent-utterances.png)
 
-## <a name="label-entities"></a>Label-entiteiten
-LUIS vervangt entiteit tokens (woorden) met de namen van entiteiten in het blauw is gemarkeerd. Als een utterance is zonder label entiteiten, kunt u ze in de utterance label. 
+## <a name="label-entities"></a>Label entiteiten
+LUIS vervangt entiteits tokens (woorden) met entiteits namen die blauw zijn gemarkeerd. Als een utterance entiteiten zonder label heeft, labelt u ze in de utterance. 
 
-1. Selecteer op de woorden in de utterance. 
+1. Selecteer een of meer woorden in het utterance. 
 
 1. Selecteer een entiteit in de lijst.
 
-    ![Label-entiteit](./media/label-suggested-utterances/label-entity.png)
+    ![Entiteit labelen](./media/label-suggested-utterances/label-entity.png)
 
-## <a name="align-single-utterance"></a>Één utterance uitlijnen
+## <a name="align-single-utterance"></a>Eén utterance uitlijnen
 
-Elke utterance heeft een voorgestelde bedoeling weergegeven in de **uitgelijnd bedoeling** kolom. 
+Elke utterance heeft een voorgestelde intentie die wordt weer gegeven in de kolom **uitgelijnd intents** . 
 
-1. Als u akkoord met deze suggestie gaat, selecteert u op het vinkje hebt geklikt.
+1. Als u akkoord gaat met die suggestie, selecteert u op het vinkje.
 
-    ![Uitgelijnde intentie behouden](./media/label-suggested-utterances/align-intent-check.png)
+    ![Uitgelijnd doel behouden](./media/label-suggested-utterances/align-intent-check.png)
 
-1. Als u niet eens met het voorstel bent, selecteert u het juiste doel in de uitgelijnde, intentie vervolgkeuzelijst en selecteer op het vinkje aan de rechterkant van het uitgelijnde doel. 
+1. Als u niet akkoord gaat met het voor stel, selecteert u in de vervolg keuzelijst uitgelijnde intentie de juiste intentie en selecteert u vervolgens op het vinkje rechts van de uitgelijnde intentie. 
 
-    ![Bedoeling uitlijnen](./media/label-suggested-utterances/align-intent.png)
+    ![Intentie uitlijnen](./media/label-suggested-utterances/align-intent.png)
 
-1. Nadat u hebt geselecteerd op het vinkje hebt geklikt, wordt de utterance verwijderd uit de lijst. 
+1. Nadat u op het vinkje hebt geklikt, wordt de utterance uit de lijst verwijderd. 
 
-## <a name="align-several-utterances"></a>Verschillende uitingen uitlijnen
+## <a name="align-several-utterances"></a>Meerdere uitingen uitlijnen
 
-Om te worden uitgelijnd verschillende uitingen, schakel het selectievakje aan de linkerkant van de uitingen en selecteer vervolgens op de **toevoegen geselecteerd** knop. 
+Als u verschillende uitingen wilt uitlijnen, schakelt u het selectie vakje links van de uitingen in en selecteert u op de knop **selectie toevoegen** . 
 
-![Verschillende uitlijnen](./media/label-suggested-utterances/add-selected.png)
+![Meerdere uitlijnen](./media/label-suggested-utterances/add-selected.png)
 
-## <a name="verify-aligned-intent"></a>Controleer of uitgelijnde doel
+## <a name="verify-aligned-intent"></a>Uitgelijnde intentie controleren
 
-U kunt controleren of de utterance is afgestemd op de juiste intentie door te gaan naar de **Intents** pagina, selecteert u de naam van de intentie en controleren van de uitingen. De utterance van **bekijken eindpunt uitingen** is in de lijst.
+U kunt controleren of de utterance is uitgelijnd met de juiste intentie door naar de pagina **intenties** te gaan, de naam van de doel groep te selecteren en de uitingen te controleren. De utterance van het **controle-eind punt uitingen** bevindt zich in de lijst.
 
 ## <a name="delete-utterance"></a>Utterance verwijderen
 
-Elke utterance kan worden verwijderd uit de lijst controleren. Zodra verwijderd, wordt deze niet weergegeven in de lijst met het opnieuw. Dit geldt zelfs als de gebruiker de dezelfde utterance van het eindpunt voert. 
+Elk utterance kan worden verwijderd uit de controle lijst. Als de app eenmaal is verwijderd, wordt deze niet meer in de lijst weer gegeven. Dit geldt ook als de gebruiker dezelfde utterance van het eind punt opgeeft. 
 
-Als u niet zeker of u de utterance verwijdert, verplaatsen naar de intentie, geen of maak een nieuw doel, zoals "gemengde" en de utterance verplaatsen naar dit doel. 
+Als u niet zeker weet of u de utterance moet verwijderen, verplaatst u deze naar de geen intentie of maakt u een nieuwe intentie zoals ' Diversen ' en verplaatst u de utterance naar dat doel. 
 
-## <a name="delete-several-utterances"></a>Verschillende uitingen verwijderen
+## <a name="delete-several-utterances"></a>Meerdere uitingen verwijderen
 
-Als u wilt verwijderen van verschillende uitingen, selecteert u elk item en selecteer in de Prullenbak rechts van de **toevoegen geselecteerd** knop.
+Als u meerdere uitingen wilt verwijderen, selecteert u elk item en selecteert u op de Prullenbak rechts van de knop **geselecteerde toevoegen** .
 
-![Verschillende verwijderen](./media/label-suggested-utterances/delete-several.png)
+![Meerdere verwijderen](./media/label-suggested-utterances/delete-several.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt testen hoe prestaties worden verbeterd wanneer u de voorgestelde uitingen labels, kunt u de testconsole openen door het selecteren van **testen** in het bovenste deelvenster. Zie voor instructies over het testen van uw app met behulp van de testconsole [trainen en testen van uw app](luis-interactive-test.md).
+Als u wilt testen hoe de prestaties verbeteren nadat u het label gesuggereerde uitingen hebt, kunt u toegang krijgen tot de test console door **testen** te selecteren in het bovenste paneel. Zie [uw app trainen en testen](luis-interactive-test.md)voor instructies over het testen van uw app met behulp van de test console.

@@ -1,7 +1,7 @@
 ---
 title: Veelgestelde vragen (FAQ)-LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat antwoorden op veelgestelde vragen over Language Understanding (LUIS).
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
 author: diberry
 manager: nitinme
 ms.custom: seodec18
@@ -9,18 +9,18 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971972"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488695"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Veelgestelde vragen over Language Understanding
 
-In dit artikel bevat antwoorden op veelgestelde vragen over Language Understanding (LUIS).
+In dit artikel vindt u antwoorden op veelgestelde vragen over Language Understanding (LUIS).
 
 ## <a name="whats-new"></a>Nieuwe functies
 
@@ -30,47 +30,47 @@ Meer [informatie](whats-new.md) over wat er nieuw is in language Understanding.
 
 ## <a name="authoring"></a>Ontwerpen
 
-### <a name="what-are-the-luis-best-practices"></a>Wat zijn de aanbevolen procedures van LUIS?
-Beginnen met de [ontwerpen cyclus](luis-concept-app-iteration.md), leest u de [aanbevolen procedures](luis-concept-best-practices.md).
+### <a name="what-are-the-luis-best-practices"></a>Wat zijn de best practices voor LUIS?
+Begin met de [ontwerp cyclus](luis-concept-app-iteration.md)en lees vervolgens de [Aanbevolen procedures](luis-concept-best-practices.md).
 
-### <a name="what-is-the-best-way-to-start-building-my-app-in-luis"></a>Wat is de beste manier om te beginnen met het samenstellen van mijn app in LUIS?
+### <a name="what-is-the-best-way-to-start-building-my-app-in-luis"></a>Wat is de beste manier om mijn app te bouwen in LUIS?
 
-De beste manier om uw app te bouwen, is via een [incrementele proces](luis-concept-app-iteration.md).
+De beste manier om uw app te bouwen, is via een [Incrementeel proces](luis-concept-app-iteration.md).
 
-### <a name="what-is-a-good-practice-to-model-the-intents-of-my-app-should-i-create-more-specific-or-more-generic-intents"></a>Wat is een goede gewoonte om het model van de intenties van mijn app? Moet ik specifieker of een meer algemene intents maken?
+### <a name="what-is-a-good-practice-to-model-the-intents-of-my-app-should-i-create-more-specific-or-more-generic-intents"></a>Wat is een goede gewoonte om de intenties van mijn app te model leren? Moet ik meer specifieke of meer algemene intenties maken?
 
-Kies intents die niet dus algemeen zijn worden overlappende, maar niet zo specifiek die het maakt het moeilijk voor LUIS onderscheid maken tussen vergelijkbare intents. Het maken van discriminative specifieke intents is een van de aanbevolen procedures voor het modelleren van LUIS.
+Kies intenties die niet zo algemeen zijn dat ze elkaar overlappen, maar niet zo specifiek, waardoor het moeilijk is voor LUIS onderscheid te maken tussen vergelijk bare intenten. Het maken van discriminative-specifieke intenties is een van de aanbevolen procedures voor het LUIS-model leren.
 
-### <a name="is-it-important-to-train-the-none-intent"></a>Is het belangrijk om te trainen de intentie geen?
+### <a name="is-it-important-to-train-the-none-intent"></a>Is het belang rijk dat u de geen intentie traint?
 
-Ja, is het raadzaam om het trainen van uw **geen** intentie met meer uitingen als u meer labels aan andere intents toevoegen. Een goede verhouding is 1 of 2 labels op **geen** voor elke 10 labels toegevoegd aan een doel. Deze verhouding verhoogt de discriminative kracht van LUIS.
+Ja **, het is een goed** idee om uw eigen intentie te trainen met meer uitingen wanneer u meer labels toevoegt aan andere intenties. Een goede verhouding is 1 of 2 labels worden toegevoegd aan **geen** voor elke 10 labels die aan een intentie worden toegevoegd. Deze ratio verhoogt de discriminative kracht van LUIS.
 
-### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>Hoe kan ik in het corrigeren van spelfouten in uitingen?
+### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>Hoe kan ik spel fouten in uitingen corrigeren?
 
-Zie de [Bing spellingcontrole controleren-API-versie 7](luis-tutorial-bing-spellcheck.md) zelfstudie. LUIS afgedwongen limieten opgelegd door Bing spellingcontrole controleren-API-versie 7.
+Raadpleeg de [Bing spellingcontrole-API V7](luis-tutorial-bing-spellcheck.md) -zelf studie. LUIS dwingt limieten af die zijn opgelegd door Bing Spellingcontrole-API v7.
 
-### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Hoe kan ik mijn LUIS-app via een programma bewerken?
-Als u wilt uw LUIS-app via een programma bewerken, gebruikt u de [API ontwerpen](https://go.microsoft.com/fwlink/?linkid=2092087). Zie [aanroepen LUIS API ontwerpen](./luis-quickstart-node-add-utterance.md) en [een LUIS-App via een programma met behulp van Node.js](./luis-tutorial-node-import-utterances-csv.md) voor voorbeelden van hoe u de API ontwerpen aan te roepen. De API ontwerpen vereist het gebruik van een [ontwerpen sleutel](luis-concept-keys.md#authoring-key) in plaats van een eindpuntsleutel. Programmatische ontwerpen kan maximaal 1.000.000 aanroepen per maand en 5 transacties per seconde. Zie voor meer informatie over de sleutels die u met LUIS gebruikt [sleutels beheren](./luis-concept-keys.md).
+### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Hoe kan ik mijn LUIS-app programmatisch bewerken?
+Als u de LUIS-app programmatisch wilt bewerken, gebruikt u de [ontwerp-API](https://go.microsoft.com/fwlink/?linkid=2092087). Zie [Luis authoring API aanroepen](./luis-quickstart-node-add-utterance.md) en [een Luis-app maken met behulp van node. js](./luis-tutorial-node-import-utterances-csv.md) voor voor beelden van het aanroepen van de ontwerp-API. De ontwerp-API vereist dat u een [ontwerp sleutel](luis-concept-keys.md#azure-resources-for-luis) gebruikt in plaats van een eindpunt sleutel. Via programmatische ontwerp kunnen Maxi maal 1.000.000 oproepen per maand en vijf trans acties per seconde worden uitgevoerd. Zie [sleutels beheren](./luis-concept-keys.md)voor meer informatie over de sleutels die u gebruikt met Luis.
 
-### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Waar is de functie patroon die reguliere expressie opgegeven die overeenkomt met?
-De vorige **patroonfunctie** momenteel is afgeschaft, vervangen door  **[patronen](luis-concept-patterns.md)** .
+### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Waar bevindt zich de patroon functie die een reguliere expressie in overeenstemming voorziet?
+De vorige **patroon functie** is momenteel afgeschaft, vervangen door **[patronen](luis-concept-patterns.md)** .
 
-### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Hoe gebruik ik een entiteit voor het ophalen van de juiste gegevens?
-Zie [entiteiten](luis-concept-entity-types.md) en [gegevensextractie](luis-concept-data-extraction.md).
+### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Hoe kan ik een entiteit gebruiken om de juiste gegevens op te halen?
+Zie [entiteiten](luis-concept-entity-types.md) en [gegevens extractie](luis-concept-data-extraction.md).
 
-### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Moeten variaties van een voorbeeld-utterance leestekens bevatten?
-De verschillende variaties als voorbeeld uitingen met de intent toevoegen of het patroon van de voorbeeld-utterance met toevoegen de [syntaxis voor het negeren](luis-concept-patterns.md#pattern-syntax) de leestekens.
+### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Moeten variaties van een voor beeld-utterance een interpunctie omvatten?
+Voeg de verschillende variaties als voor beeld uitingen toe aan de intentie of Voeg het patroon van het voor beeld utterance toe met de [syntaxis voor het negeren](luis-concept-patterns.md#pattern-syntax) van de interpunctie.
 
 ### <a name="does-luis-currently-support-cortana"></a>Ondersteunt LUIS momenteel Cortana?
 
-Cortana vooraf gebouwde apps zijn afgeschaft in 2017. Ze worden niet meer ondersteund.
+Met Cortana vooraf gebouwde apps zijn afgeschaft in 2017. Ze worden niet meer ondersteund.
 
-### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hoe ik het eigendom overdraagt van een LUIS-app?
-Als u wilt een LUIS-app overzetten naar een ander Azure-abonnement, de LUIS-app exporteren en importeren met behulp van een nieuw account. Werk de LUIS-app-ID in de clienttoepassing die wordt aangeroepen. De nieuwe app mogelijk enigszins LUIS scores geretourneerd uit de oorspronkelijke app.
+### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Hoe kan ik eigendom van een LUIS-app overdragen?
+Als u een LUIS-app wilt overdragen naar een ander Azure-abonnement, exporteert u de LUIS-app en importeert u deze met behulp van een nieuw account. Werk de App-ID van de LUIS bij in de client toepassing die deze aanroept. De nieuwe app retourneert mogelijk iets verschillende LUIS-scores van de oorspronkelijke app.
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Een vooraf samengestelde entiteit is gelabeld in een voor beeld-utterance in plaats van mijn aangepaste entiteit. Hoe kan ik dit probleem oplossen? 
 
-Zie [problemen met vooraf gemaakte entiteiten oplossen](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+In de LUIS-Portal kunt u tekst labelen voor de exacte entiteit die u wilt uitpakken. Als de LUIS-Portal niet de juiste voor spelling van de entiteit weergeeft, moet u mogelijk meer uitingen toevoegen en de entiteit voorzien van een label in de tekst of een beschrijving (zoals een functie) toevoegen. 
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ik heb geprobeerd een app of versie bestand te importeren, maar ik kreeg een fout melding. Wat is er gebeurd? 
 
@@ -88,7 +88,7 @@ Zie [Azure Active Directory resources](luis-how-to-collaborate.md#azure-active-d
 
 ## <a name="endpoint"></a>Eindpunt
 
-### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Ik heb een HTTP 403-fout status code ontvangen. Hoe herstel ik deze?
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Ik heb een HTTP 403-fout status code ontvangen. Hoe kan ik oplossen?
 
 U krijgt de status codes 403 en 429 wanneer u de trans acties per seconde of trans acties per maand voor uw prijs categorie overschrijdt. Verhoog uw prijs categorie of gebruik Language Understanding [containers](luis-container-howto.md).
 
@@ -101,7 +101,7 @@ Oplossingen voor deze fout zijn onder andere:
 * Wijzig in de [Azure Portal](https://portal.azure.com), op uw language Understanding-resource, in de **prijs categorie resource management->** de prijs categorie in een hogere TPS-laag. U hoeft niets te doen in de Language Understanding portal als uw resource al is toegewezen aan uw Language Understanding app.
 *  Als uw gebruik de hoogste prijs categorie overschrijdt, voegt u meer Language Understanding resources toe met een load balancer. De [Language Understanding-container](luis-container-howto.md) met Kubernetes of docker-opstellen kan u hierbij helpen.
 
-### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Ik heb een HTTP 429-fout status code ontvangen. Hoe herstel ik deze?
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Ik heb een HTTP 429-fout status code ontvangen. Hoe kan ik oplossen?
 
 U krijgt de status codes 403 en 429 wanneer u de trans acties per seconde of trans acties per maand voor uw prijs categorie overschrijdt. Verhoog uw prijs categorie of gebruik Language Understanding [containers](luis-container-howto.md).
 
@@ -113,29 +113,29 @@ Oplossingen omvatten:
 * Als uw gebruik de hoogste prijs categorie overschrijdt, voegt u meer Language Understanding resources toe met een load balancer. De [Language Understanding-container](luis-container-howto.md) met Kubernetes of docker-opstellen kan u hierbij helpen.
 * U kunt de aanvragen van uw client toepassing gateiseren met een [beleid voor opnieuw proberen](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) dat u zelf implementeert wanneer u deze status code ophaalt. 
 
-### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Mijn query eindpunt heeft onverwachte resultaten geretourneerd. Wat moet ik doen?
+### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Mijn eindpunt query heeft onverwachte resultaten geretourneerd. Wat zal ik doen?
 
-Onverwachte query voorspellingsresultaten zijn gebaseerd op de status van het gepubliceerde model. Als u het model wilt corrigeren, moet u mogelijk het model, de training en de publicatie opnieuw wijzigen. 
+Onverwachte query Voorspellings resultaten zijn gebaseerd op de status van het gepubliceerde model. Als u het model wilt corrigeren, moet u mogelijk het model, de training en de publicatie opnieuw wijzigen. 
 
-Bezig met het herstellen van het model begint met [actief leren](luis-how-to-review-endpoint-utterances.md).
+Corrigeren van het model begint met [actief leren](luis-how-to-review-endpoint-utterances.md).
 
-U kunt niet-deterministisch training verwijderen door het bijwerken van de [toepassing versie instellingen API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) om te kunnen gebruiken alle trainingsgegevens.
+U kunt niet-deterministische trainingen verwijderen door de [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) voor de versie-instellingen van de toepassing bij te werken om alle trainings gegevens te kunnen gebruiken.
 
-Controleer de [aanbevolen procedures](luis-concept-best-practices.md) voor meer tips. 
+Bekijk de [Aanbevolen procedures](luis-concept-best-practices.md) voor andere tips. 
 
-### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Waarom LUIS spaties toevoegen aan de query rond of in het midden woorden
-LUIS [basis van woordgrenzen](luis-glossary.md#token) de utterance op basis van de [cultuur](luis-language-support.md#tokenization). Zowel de oorspronkelijke waarde en de waarde van de tokens zijn beschikbaar voor [gegevensextractie](luis-concept-data-extraction.md#tokenized-entity-returned).
+### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Waarom voegen LUIS spaties toe aan de query rondom of in het midden van woorden?
+LUIS [tokenizes](luis-glossary.md#token) de utterance op basis van de [cultuur](luis-language-support.md#tokenization). Zowel de oorspronkelijke waarde als de tokend-waarde zijn beschikbaar voor [gegevens extractie](luis-concept-data-extraction.md#tokenized-entity-returned).
 
-### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hoe ik maken en toewijzen van een LUIS eindpuntsleutel?
-[Maken van de eindpuntsleutel](luis-how-to-azure-subscription.md) in Azure voor uw [service](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) niveau. [Wijs de sleutel toe](luis-how-to-azure-subscription.md) op de pagina **[Azure-resources](luis-how-to-azure-subscription.md)** . Er is geen overeenkomende API voor deze actie. Vervolgens moet u de HTTP-aanvraag naar het eindpunt naar [gebruikt u de nieuwe eindpuntsleutel](luis-concept-keys.md).
+### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Hoe kan ik een LUIS-eindpunt sleutel maken en toewijzen?
+[Maak de eindpunt sleutel](luis-how-to-azure-subscription.md) in azure voor uw [service](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) niveau. [Wijs de sleutel toe](luis-how-to-azure-subscription.md) op de pagina **[Azure-resources](luis-how-to-azure-subscription.md)** . Er is geen bijbehorende API voor deze actie. Vervolgens moet u de HTTP-aanvraag voor het eind punt wijzigen om [de nieuwe eindpunt sleutel te gebruiken](luis-concept-keys.md).
 
-### <a name="how-do-i-interpret-luis-scores"></a>Hoe ik LUIS scores worden geïnterpreteerd?
-Uw systeem moet de hoogste score intentie, ongeacht de waarde ervan gebruiken. Bijvoorbeeld, betekent een score lager (minder dan 50%) 0,5 niet noodzakelijkerwijs dat LUIS weinig vertrouwen heeft. Biedt meer training gegevens kunt verhogen de [score](luis-concept-prediction-score.md) van het meest waarschijnlijk doel.
+### <a name="how-do-i-interpret-luis-scores"></a>Hoe kan ik LUIS-scores interpreteren?
+Uw systeem moet de hoogste score intentie gebruiken, ongeacht de waarde. Bijvoorbeeld een score onder 0,5 (minder dan 50%) betekent niet noodzakelijkerwijs dat LUIS weinig vertrouwen heeft. Het leveren van meer trainings gegevens kan helpen om de [Score](luis-concept-prediction-score.md) van de meest waarschijnlijke intentie te verg Roten.
 
-### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Waarom zie ik geen mijn treffers eindpunt in het Dashboard van mijn app?
-De totale eindpunt treffers in uw app Dashboard worden regelmatig bijgewerkt, maar de metrische gegevens die zijn gekoppeld aan uw LUIS-eindpuntsleutel in Azure portal vaker worden bijgewerkt.
+### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Waarom zie ik mijn eindpunt treffers in het dash board van mijn app niet?
+Het totale aantal treffers in het dash board van uw app wordt regel matig bijgewerkt, maar de metrische gegevens die zijn gekoppeld aan uw LUIS-eindpunt sleutel in de Azure Portal, worden vaker bijgewerkt.
 
-Als er geen bijgewerkte eindpunt treffers in het dash board worden weer gegeven, meldt u zich aan bij de Azure Portal, zoekt u de resource die is gekoppeld aan uw LUIS-eindpunt sleutel en opent u **metrische gegevens** om het **totale aantal aanroepen** te selecteren. Als de eindpuntsleutel wordt gebruikt voor meer dan één LUIS-app, ziet u de metrische gegevens in Azure portal het cumulatieve aantal aanroepen van alle LUIS-apps die worden gebruikt.
+Als er geen bijgewerkte eindpunt treffers in het dash board worden weer gegeven, meldt u zich aan bij de Azure Portal, zoekt u de resource die is gekoppeld aan uw LUIS-eindpunt sleutel en opent u **metrische gegevens** om het **totale aantal aanroepen** te selecteren. Als de eindpunt sleutel wordt gebruikt voor meer dan één LUIS-app, wordt in de waarde in het Azure Portal het cumulatieve aantal aanroepen weer gegeven van alle LUIS-apps die deze gebruiken.
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Is er een Power shell-opdracht die naar het eindpunt quotum gaat?
 
@@ -147,64 +147,64 @@ U kunt een Power shell-opdracht gebruiken om het eind punt quotum te bekijken:
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
 ``` 
 
-### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Mijn app LUIS werkte gisteren, maar vandaag ik krijg 403 fouten. Kan ik niet hebt de app gewijzigd. Hoe herstel ik deze?
+### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Mijn LUIS-app werkte gisteren, maar nu krijg ik 403 fouten. Ik heb de app niet gewijzigd. Hoe kan ik oplossen?
 Volg deze [instructies](#how-do-i-create-and-assign-a-luis-endpoint-key) voor het maken van een Luis-eindpunt sleutel en wijs deze toe aan de app. Vervolgens moet u de HTTP-aanvraag van de client toepassing wijzigen in het eind punt om [de nieuwe eindpunt sleutel te gebruiken](luis-concept-keys.md). Als u een nieuwe resource hebt gemaakt in een andere regio, wijzigt u de regio van de aanvraag voor de HTTP-client.
 
-### <a name="how-do-i-secure-my-luis-endpoint"></a>Hoe beveilig ik mijn eindpunt LUIS?
-Zie [beveiligen van het eindpunt](luis-concept-keys.md#securing-the-endpoint).
+### <a name="how-do-i-secure-my-luis-endpoint"></a>Hoe kan ik mijn LUIS-eind punt beveiligen?
+Zie [het eind punt beveiligen](luis-concept-keys.md#securing-the-endpoint).
 
-## <a name="working-within-luis-limits"></a>U werkt binnen de grenzen van LUIS
+## <a name="working-within-luis-limits"></a>Binnen LUIS-limieten werken
 
-### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Wat is het maximum aantal intenties en entiteiten dat een LUIS-app kan worden ondersteund?
-Zie de [grenzen](luis-boundaries.md) verwijzing.
+### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Wat is het maximum aantal intents en entiteiten dat een LUIS-app kan ondersteunen?
+Zie de [begrenzings](luis-boundaries.md) verwijzing.
 
-### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Ik wil een LUIS-app ontwikkelen met meer dan het maximum aantal intents. Wat moet ik doen?
+### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Ik wil een LUIS-app bouwen met meer dan het maximale aantal intenties. Wat zal ik doen?
 
-Zie [aanbevolen procedures voor intents](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
+Bekijk [Aanbevolen procedures voor intents](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
 
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Ik wil een app bouwen in LUIS met meer dan het maximum aantal entiteiten. Wat moet ik doen?
+### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Ik wil een app maken in LUIS met meer dan het maximum aantal entiteiten. Wat zal ik doen?
 
-Zie [aanbevolen procedures voor entiteiten](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
+[Aanbevolen procedures voor entiteiten](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities) bekijken
 
-### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>Wat zijn de limieten van het aantal en grootte van woordgroep bevat?
-Voor de maximale lengte van een [woordgroepenlijst](./luis-concept-feature.md), Zie de [grenzen](luis-boundaries.md) verwijzing.
+### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>Wat zijn de limieten voor het aantal en de grootte van woordgroepen lijsten?
+Zie de verwijzing [grenzen](luis-boundaries.md) voor de maximum lengte van een [woordgroepen lijst](./luis-concept-feature.md).
 
-### <a name="what-are-the-limits-on-example-utterances"></a>Wat zijn de limieten op voorbeeld uitingen?
-Zie de [grenzen](luis-boundaries.md) verwijzing.
+### <a name="what-are-the-limits-on-example-utterances"></a>Wat zijn de limieten voor voorbeeld uitingen?
+Zie de [begrenzings](luis-boundaries.md) verwijzing.
 
 ## <a name="testing-and-training"></a>Testen en trainen
 
-### <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>Ik zie een aantal fouten in het deelvenster voor enkele van de modellen in mijn app testen batch. Hoe kan ik dit probleem oplossen?
+### <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>Ik zie enkele fouten in het deel venster Batch testen voor een aantal modellen in mijn app. Hoe kan ik dit probleem oplossen?
 
-De fouten erop duiden dat er een discrepantie tussen de labels en de voorspellingen op basis van uw modellen. Om het probleem op te lossen, kunt u een of beide van de volgende taken:
-* Om te helpen verbeteren discriminatie tussen intents LUIS, kunt u meer labels toevoegen.
-* Toevoegen om te helpen sneller meer LUIS, woordgroep-lijst met functies die domeinspecifieke vocabulaire introduceren.
+De fouten geven aan dat er een verschil is tussen de labels en de voor spellingen van uw modellen. Voer een van de volgende taken uit om het probleem op te lossen:
+* Voeg meer labels toe om LUIS te helpen verbeteren.
+* Als u LUIS meer wilt weten, voegt u woordgroepen lijst functies toe die een serverspecifieke vocabulaire opleveren.
 
-Zie de [Batch testen](luis-tutorial-batch-testing.md) zelfstudie.
+Zie de zelf studie over [batch testen](luis-tutorial-batch-testing.md) .
 
-### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Wanneer een app is geëxporteerd en geïmporteerd in een nieuwe app (met een nieuwe app-ID), is de voorspelling LUIS scores zijn verschillend. Waarom gebeurt dit?
+### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Wanneer een app wordt geëxporteerd en vervolgens opnieuw in een nieuwe app (met een nieuwe app-ID) wordt geïmporteerd, zijn de LUIS-Voorspellings scores verschillend. Waarom gebeurt dit?
 
-Zie [voorspelling verschillen tussen exemplaren van dezelfde app](luis-concept-prediction-score.md#review-intents-with-similar-scores).
+Zie [Voorspellings verschillen tussen exemplaren van dezelfde app](luis-concept-prediction-score.md#review-intents-with-similar-scores).
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Sommige uitingen gaat u naar de verkeerde bedoelingen nadat ik wijzigingen in mijn app aangebracht. Het probleem lijkt niet meer zichtbaar in willekeurige volgorde. Hoe herstel ik deze? 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Sommige uitingen gaan naar het verkeerde doel nadat ik wijzigingen in mijn app heb aangebracht. Het probleem lijkt wille keurig te verdwijnen. Hoe kan ik oplossen? 
 
-Zie [Train met alle gegevens](luis-how-to-train.md#train-with-all-data).
+Bekijk [de trein met alle gegevens](luis-how-to-train.md#train-with-all-data).
 
-## <a name="app-publishing"></a>App publiceren
+## <a name="app-publishing"></a>App-publicatie
 
-### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Wat is de tenant-ID in het venster 'Toevoegen een sleutel aan uw app'?
-In Azure vertegenwoordigt een tenant de client of organisatie die is gekoppeld aan een service. Uw tenant-ID niet vinden in Azure portal in de **map-ID** selectievakje in naast selecteren **Azure Active Directory** > **beheren**  >  **Eigenschappen**.
+### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Wat is de Tenant-ID in het venster ' een sleutel toevoegen aan uw app '?
+In azure vertegenwoordigt een Tenant de client of organisatie die aan een service is gekoppeld. Zoek uw Tenant-ID in de Azure Portal in het vak **Directory-id** door Azure Active Directory ** > **  > **Eigenschappen**te selecteren.
 
-![Tenant-ID in Azure portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
+![Tenant-ID in de Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
 <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
 <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
 
 
-### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Waarom zijn er meer eindpunt sleutels die zijn toegewezen aan mijn app dan ik heb toegewezen?
-Elke LUIS-app beschikt over de authoring/starter-sleutel in de lijst met eindpunten gemakkelijker te maken. Deze sleutel kan slechts een paar eindpunt treffers, zodat u LUIS kunt uitproberen.  
+### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Waarom zijn er meer eindpunt sleutels toegewezen aan mijn app dan ik heb toegewezen?
+Elke LUIS-app heeft de ontwerp/starter sleutel in de lijst met eind punten als gemak. Met deze sleutel kunnen slechts enkele eindpunt treffers worden uitgevoerd, zodat u LUIS kunt uitproberen.  
 
-Als uw app bestond voordat LUIS is algemeen beschikbaar (GA), worden automatisch LUIS eindpunt sleutels in uw abonnement toegewezen. Dit is gedaan om de migratie van de algemene beschikbaarheid te vereenvoudigen. Geen nieuwe LUIS eindpunt sleutels in Azure portal zijn _niet_ automatisch toegewezen aan LUIS.
+Als uw app bestond voordat LUIS algemeen beschikbaar is (GA), worden LUIS-eindpunt sleutels in uw abonnement automatisch toegewezen. Dit is gedaan om de GA-migratie gemakkelijker te maken. Nieuwe LUIS-eindpunt sleutels in de Azure Portal worden _niet_ automatisch toegewezen aan Luis.
 
 ## <a name="key-management"></a>Sleutelbeheer
 
@@ -212,7 +212,7 @@ Als uw app bestond voordat LUIS is algemeen beschikbaar (GA), worden automatisch
 
 Zie [ontwerp-en query Voorspellings eindpunt sleutels in Luis](luis-concept-keys.md) voor meer informatie over de verschillen tussen de ontwerp sleutel en de Voorspellings runtime sleutel. 
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ik heb een fout melding ontvangen over het verlopen van het quotum. Hoe herstel ik deze? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Ik heb een fout melding ontvangen over het verlopen van het quotum. Hoe kan ik oplossen? 
 
 Zie HTTP-status code [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) en [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) voor meer informatie.
 
@@ -226,56 +226,56 @@ Bewerkings sleutels zijn beschikbaar in de LUIS-Portal na [de migratie naar de e
 
 ## <a name="app-management"></a>App-beheer
 
-### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hoe kan ik een logboek van de gebruiker uitingen downloaden?
-Uw LUIS-app registreert standaard uitingen van gebruikers. Als u wilt een logboek van uitingen die gebruikers naar uw LUIS-app verzenden downloaden, gaat u naar **mijn Apps**, en selecteer de app. Selecteer in de werkbalk contextuele **eindpunt-logboeken exporteren**. Het logboek wordt opgemaakt als een bestand met door komma's gescheiden waarden (CSV).
+### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hoe kan ik een logboek van de uitingen van de gebruiker downloaden?
+Uw LUIS-app registreert standaard uitingen van gebruikers. Als u een logboek van uitingen wilt downloaden dat gebruikers naar uw LUIS-app verzenden, gaat u naar **mijn apps**en selecteert u de app. Selecteer op de contextuele werk balk de optie **eindpunt logboeken exporteren**. Het logboek wordt opgemaakt als een bestand met door komma's gescheiden waarden (CSV).
 
-### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hoe kan ik de registratie van uitingen uitschakelen?
-U kunt de registratie van de gebruiker uitingen uitschakelen door in te stellen `log=false` in de eindpunt-URL die uw clienttoepassing maakt gebruik van LUIS query. Echter, uw LUIS-app kunnen voorstellen uitingen of prestaties die gebaseerd op het uitschakelen van logboekregistratie uitgeschakeld [actief leren](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Als u instelt `log=false` vanwege problemen van de privacy van gegevens, kan u een record van deze gebruiker uitingen van LUIS downloaden of die uitingen gebruiken voor het verbeteren van uw app.
+### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hoe kan ik de logboek registratie van uitingen uitschakelen?
+U kunt de logboek registratie van de gebruikers uitingen uitschakelen door `log=false` in te stellen in de eind punt-URL die door uw client toepassing wordt gebruikt voor het opvragen van LUIS. Door logboek registratie uit te scha kelen, wordt de mogelijkheid van uw LUIS-app echter uitgeschakeld om uitingen te suggereren of de prestaties te verbeteren op basis van [actief leren](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Als u `log=false` hebt ingesteld vanwege problemen die betrekking hebben op de privacy, kunt u geen record van die gebruiker uitingen downloaden van LUIS of deze uitingen gebruiken om uw app te verbeteren.
 
-Logboekregistratie is de enige opslag van uitingen.
+Logboek registratie is de enige opslag van uitingen.
 
-### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Waarom niet ik wilt dat alle van de eindpunt-uitingen aangemeld?
-Als u van het logboek voor de voorspelling analyse gebruikmaakt, test-uitingen in het logboek niet vastlegt.
+### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Waarom wilt u niet alle mijn eind punt uitingen in het logboek registreren?
+Als u uw logboek gebruikt voor Voorspellings analyse, moet u geen test uitingen vastleggen in het logboek.
 
 ## <a name="data-management"></a>Gegevensbeheer
 
-### <a name="can-i-delete-data-from-luis"></a>Kan ik gegevens verwijderen van LUIS?
+### <a name="can-i-delete-data-from-luis"></a>Kan ik gegevens verwijderen uit LUIS?
 
-* U kunt altijd voorbeeld uitingen die wordt gebruikt voor het trainen van LUIS verwijderen. Als u een voorbeeld-utterance uit uw LUIS-app verwijdert, wordt verwijderd uit de LUIS-webservice en is niet beschikbaar voor het exporteren.
-* U kunt uitingen verwijderen uit de lijst met gebruikers-uitingen die LUIS voorgesteld in de **bekijken eindpunt uitingen** pagina. Uitingen verwijderen uit deze lijst voorkomt dat deze wordt voorgesteld, maar niet verwijderd van Logboeken.
-* Als u een account verwijdert, worden alle apps verwijderd, samen met hun voorbeeld uitingen en Logboeken. De gegevens worden bewaard op de servers gedurende 60 dagen voordat deze worden definitief verwijderd.
+* U kunt altijd een voor beeld uitingen gebruiken dat wordt gebruikt voor training LUIS. Als u een voorbeeld utterance uit uw LUIS-app verwijdert, wordt deze verwijderd uit de LUIS-webservice en is deze niet beschikbaar voor export.
+* U kunt uitingen verwijderen uit de lijst met gebruikers uitingen die LUIS worden voorgesteld op de pagina **eind punt controleren uitingen** . Als u uitingen uit deze lijst verwijdert, kunnen ze niet worden voorgesteld, maar worden ze niet verwijderd uit de logboeken.
+* Als u een account verwijdert, worden alle apps verwijderd, samen met hun voor beeld-uitingen en-Logboeken. De gegevens worden gedurende 60 dagen op de servers bewaard voordat deze permanent worden verwijderd.
 
-### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Hoe beheert Microsoft gegevens die kan ik naar LUIS verzenden?
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>Hoe beheert micro soft gegevens die ik verzend naar LUIS?
 
-De [Trust Center](https://www.microsoft.com/trustcenter) wordt uitgelegd van onze verplichtingen en uw opties voor gegevensbeheer- en toegangsbeheer in Azure-Services.
+In het [vertrouwens centrum](https://www.microsoft.com/trustcenter) worden onze verplichtingen en opties voor gegevens beheer en-toegang in Azure-Services uitgelegd.
 
-## <a name="language-and-translation-support"></a>Ondersteuning voor taal en vertaling
+## <a name="language-and-translation-support"></a>Ondersteuning voor talen en vertalingen
 
-### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Ik heb een app in één taal en een parallelle app maken in een andere taal wilt. Wat is de eenvoudigste manier om dit te doen?
+### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Ik heb een app in één taal en wil een parallelle app maken in een andere taal. Wat is de eenvoudigste manier om dit te doen?
 1. Exporteer uw app.
-2. De gelabelde uitingen in de JSON-bestand van de geëxporteerde app naar de doel-taal vertalen.
-3. Mogelijk moet u de namen van de intenties en entiteiten wijzigen of ze laten zoals ze zijn.
-4. Ten slotte de app met een LUIS-app in de doeltaal importeren.
+2. Vertaal de gelabelde uitingen in het JSON-bestand van de geëxporteerde app naar de doel taal.
+3. Mogelijk moet u de namen van de intenties en entiteiten wijzigen of ze laten staan.
+4. Importeer ten slotte de app voor een LUIS-app in de doel taal.
 
 ## <a name="app-notification"></a>App-melding
 
-### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Waarom krijg ik een e-mailbericht dat ik heb bijna buiten het quotum?
-Uw sleutel ontwerpen/starter is alleen toegestaan voor 1000 eindpunt query's per maand. Maak een LUIS-eindpuntsleutel (gratis of betaald) en gebruikt deze sleutel als eindpunt query's. Als u endpoint-query's vanuit een bot of een andere clienttoepassing maakt, moet u de LUIS-eindpuntsleutel er wijzigen.
+### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Waarom krijg ik een e-mail met de melding dat er bijna geen quotum is?
+Uw ontwerp/starter sleutel is alleen toegestaan 1000-eind punt query's per maand. Maak een LUIS-eindpunt sleutel (gratis of betaald) en gebruik deze sleutel bij het maken van eindpunt query's. Als u eindpunt query's van een bot of een andere client toepassing maakt, moet u de LUIS-eindpunt sleutel daar wijzigen.
 
 ## <a name="bots"></a>Bots
 
-### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Mijn LUIS-bot werkt niet. Wat moet ik doen?
+### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Mijn LUIS-bot werkt niet. Wat kan ik doen?
 
 De eerste fout is het isoleren als het probleem betrekking heeft op LUIS of zich buiten de LUIS-middleware bevindt. 
 
 #### <a name="resolve-issue-in-luis"></a>Probleem oplossen in LUIS
 Geef dezelfde utterance door aan LUIS van het [Luis-eind punt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Als u een fout bericht ontvangt, lost u het probleem op in LUIS totdat de fout niet meer wordt geretourneerd. Veelvoorkomende fouten zijn onder andere:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`: dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)moet wijzigen. 
+* `Out of call volume quota. Quota will be replenished in <time>.`: dit probleem geeft aan dat u moet overschakelen van een ontwerp sleutel naar een [eindpunt sleutel](luis-how-to-azure-subscription.md) of dat u de [service lagen](luis-how-to-azure-subscription.md#change-pricing-tier)wilt wijzigen. 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probleem in Azure Bot Service oplossen
 
-Als u de Azure Bot Service gebruikt en het probleem is dat de **test in Web Chat** `Sorry, my bot code is having an issue` retourneert, controleert u de logboeken:
+Als u de Azure Bot Service gebruikt en het probleem is dat de **test in Web Chat** `Sorry, my bot code is having an issue`retourneert, controleert u de logboeken:
 
 1. In de Azure Portal, voor uw bot, in de sectie **bot Management** , selecteert u **Build**.
 1. Open de online code-editor. 
@@ -293,13 +293,13 @@ Zie [fouten opsporen in een bot](https://docs.microsoft.com/azure/bot-service/bo
 
 ## <a name="integrating-luis"></a>LUIS integreren
 
-### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>Waar wordt mijn LUIS-app gemaakt tijdens de Azure-web-app-bot-abonnement?
-Als u een LUIS-sjabloon selecteren en selecteer de **Selecteer** knop in het deelvenster van de sjabloon, het deelvenster aan de linkerkant om op te nemen van het type van de sjabloon wordt gewijzigd en u wordt gevraagd in welke regio de LUIS-sjabloon wilt maken. De web-app-bot proces maken echter een LUIS-abonnement niet.
+### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>Waar is mijn LUIS-app gemaakt tijdens het proces Azure web app-bot?
+Als u een LUIS-sjabloon selecteert en de knop **selecteren** in het deel venster sjabloon selecteert, wordt het sjabloon type in het deel venster aan de linkerkant gewijzigd en wordt u gevraagd in welke regio u de sjabloon Luis wilt maken. Het web app-bot proces maakt echter geen LUIS-abonnement.
 
-![LUIS sjabloon web-app-bot regio](./media/luis-faq/web-app-bot-location.png)
+![LUIS-sjabloon web-app-bot](./media/luis-faq/web-app-bot-location.png)
 
-### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>In welke regio LUIS ondersteuning voor Bot Framework spraak voorbereiden?
-[Spraak voorbereiden](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) wordt alleen ondersteund voor LUIS-apps in het centrale (VS)-exemplaar.
+### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Welke LUIS-regio's ondersteunen bot Framework speech gebeuren?
+[Speech gebeuren](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) wordt alleen ondersteund voor Luis-apps in het centrale exemplaar (US).
 
 ## <a name="api-programming-strategies"></a>API-programmeer strategieën
 
@@ -309,9 +309,9 @@ Gebruik het LUIS-voor beeld om de [regio](https://github.com/Azure-Samples/cogni
 
 ## <a name="luis-service"></a>LUIS-service
 
-### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Language Understanding (LUIS) on-premises beschikbaar is of in een privécloud?
+### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Is Language Understanding (LUIS) on-premises of in de privécloud beschikbaar?
 
-Ja, u kunt de LUIS [container](luis-container-howto.md) voor deze scenario's hebt u de benodigde verbindingen het gebruik kan meten. 
+Ja, u kunt de LUIS- [container](luis-container-howto.md) voor deze scenario's gebruiken als u de benodigde connectiviteit voor het gebruik van metingen hebt. 
 
 ## <a name="migrating-to-the-next-version"></a>Migreren naar de volgende versie
 
@@ -335,6 +335,6 @@ Video's:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over LUIS, de volgende bronnen:
-* [Stack Overflow vragen voorzien van LUIS](https://stackoverflow.com/questions/tagged/luis)
-* [MSDN-Language Understanding Intelligent Services (LUIS)-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)
+Raadpleeg de volgende bronnen voor meer informatie over LUIS:
+* [Stack Overflow vragen die zijn gelabeld met LUIS](https://stackoverflow.com/questions/tagged/luis)
+* [Forum MSDN Language Understanding intelligent Services (LUIS)](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)

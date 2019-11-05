@@ -7,40 +7,22 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 9d7a404b767d3975cefd55e1db8487fbb45042e2
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174185"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472861"
 ---
-# <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Voor beeld: een cluster automatisch schalen om te voldoen aan de toepassings vereisten van de Azure Kubernetes-service (AKS)
+# <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Schaal een cluster automatisch om te voldoen aan de vereisten van de toepassing op de Azure Kubernetes-service (AKS)
 
 Als u de vereisten van toepassingen in azure Kubernetes service (AKS) wilt blijven gebruiken, moet u mogelijk het aantal knoop punten aanpassen waarop uw workloads worden uitgevoerd. Het onderdeel voor het automatisch schalen van clusters kan in uw cluster worden bekeken en kan niet worden ingepland vanwege resource beperkingen. Wanneer er problemen worden gedetecteerd, wordt het aantal knoop punten in een knooppunt groep verhoogd om te voldoen aan de vraag van de toepassing. Knoop punten worden ook regel matig gecontroleerd op het ontbreken van een verwerkings hoeveelheid, met het aantal knoop punten dat vervolgens naar behoefte is afgenomen. Met deze mogelijkheid om automatisch het aantal knoop punten in uw AKS-cluster omhoog of omlaag te schalen, kunt u een efficiënt, rendabel cluster uitvoeren.
 
-In dit artikel wordt beschreven hoe u de cluster-automatische schaal functie inschakelt en beheert in een AKS-cluster. De cluster auto scaleer mag alleen worden getest als preview-versie van AKS-clusters.
-
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende artikelen met technische ondersteuning voor meer informatie.
->
-> * [AKS-ondersteunings beleid][aks-support-policies]
-> * [Veelgestelde vragen over ondersteuning voor Azure][aks-faq]
+In dit artikel wordt beschreven hoe u de cluster-automatische schaal functie inschakelt en beheert in een AKS-cluster. 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor dit artikel moet u de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
-
-### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
-
-Als u de automatische cluster uitbreiding wilt gebruiken, hebt u de *AKS-preview cli-* extensie versie 0.4.12 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] :
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
+Voor dit artikel moet u de Azure CLI-versie 2.0.76 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -90,21 +72,19 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --enable-vmss \
+  --vm-set-type VirtualMachineScaleSets \
+  --load-balancer-sku standard \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3
 ```
-
-> [!NOTE]
-> Als u een *--kubernetes* opgeeft bij het uitvoeren van `az aks create`, moet die versie voldoen aan of groter dan het minimum versie nummer dat is vereist, zoals beschreven in de vorige sectie [voordat u begint](#before-you-begin) .
 
 Het duurt enkele minuten om het cluster te maken en de instellingen voor het automatisch schalen van clusters te configureren.
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>De instellingen voor het automatisch schalen van clusters wijzigen
 
 > [!IMPORTANT]
-> Als u de functie *meerdere agent groepen* hebt ingeschakeld voor uw abonnement, gaat u naar de [sectie automatisch schalen met meerdere groepen van agents](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters waarvoor meerdere agent groepen zijn ingeschakeld, moet de `az aks nodepool`-opdracht worden gebruikt om de eigenschappen van de knooppunt groep te wijzigen in plaats van `az aks`. In de onderstaande instructies wordt ervan uitgegaan dat u meerdere knooppunt groepen niet hebt ingeschakeld. Als u wilt controleren of u deze hebt ingeschakeld, voert u `az feature  list -o table` uit en zoekt u naar `Microsoft.ContainerService/multiagentpoolpreview`.
+> Als u meerdere knooppunt groepen in uw AKS-cluster hebt, gaat u naar de [sectie automatisch schalen met meerdere agent groepen](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled). Voor clusters met meerdere agent Pools moet de opdracht `az aks nodepool` worden gebruikt voor het wijzigen van specifieke eigenschappen van de knooppunt groep in plaats van `az aks`.
 
 In de vorige stap om een AKS-cluster te maken of een bestaande knooppunt groep bij te werken, is het minimum aantal knoop punten van het cluster automatisch ingesteld op *1*en is het maximum aantal knoop punten ingesteld op *3*. Als uw toepassing wordt gewijzigd, moet u mogelijk het aantal knoop punten van de cluster automatisch schalen aanpassen.
 
@@ -122,7 +102,7 @@ az aks update \
 In het bovenstaande voor beeld wordt de cluster-automatische schaal functie van de groep met één knoop punt in *myAKSCluster* ingesteld op mini maal *1* en Maxi maal *5* knoop punten.
 
 > [!NOTE]
-> Tijdens de preview-periode kunt u geen hoger minimum aantal knoop punten instellen dan momenteel is ingesteld voor de knooppunt groep. Als u op dit moment bijvoorbeeld het aantal minuten hebt ingesteld op *1*, kunt u het aantal minuten niet bijwerken naar *3*.
+> U kunt geen hoger minimum aantal knoop punten instellen dan momenteel is ingesteld voor de knooppunt groep. Als u op dit moment bijvoorbeeld het aantal minuten hebt ingesteld op *1*, kunt u het aantal minuten niet bijwerken naar *3*.
 
 Bewaak de prestaties van uw toepassingen en services en pas het aantal knoop punten van de cluster automatisch aan, zodat dit overeenkomt met de vereiste prestaties.
 
@@ -141,33 +121,35 @@ U kunt het cluster hand matig schalen na het uitschakelen van de automatische cl
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Een uitgeschakelde cluster automatisch schalen opnieuw inschakelen
 
-Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met de opdracht [AZ AKS update][az-aks-update] , waarbij u de para meter *--Enable-cluster-auto Scaler* opgeeft.
+Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met de opdracht [AZ AKS update][az-aks-update] , waarbij u de para *meter--Enable-cluster-auto Scaler*, *--min-Count*en *--maximum-Count* opgeeft.
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>De automatische clustering van clusters gebruiken met meerdere knooppunt Pools ingeschakeld
 
-De cluster automatisch schalen kan worden gebruikt in combi natie met de [Preview-functie voor meerdere knooppunt Pools](use-multiple-node-pools.md) ingeschakeld. Volg dat document voor meer informatie over het inschakelen van meerdere knooppunt groepen en toevoegen van extra knooppunt groepen aan een bestaand cluster. Wanneer beide functies samen worden gebruikt, schakelt u de automatische schaal functie van het cluster in op elke afzonderlijke knooppunt groep in het cluster en kunt u hiervoor unieke regels voor automatisch schalen door geven.
+De cluster automatisch schalen kan worden gebruikt in combi natie met de [meerdere knooppunt Pools](use-multiple-node-pools.md) ingeschakeld. Volg dat document voor meer informatie over het inschakelen van meerdere knooppunt groepen en toevoegen van extra knooppunt groepen aan een bestaand cluster. Wanneer beide functies samen worden gebruikt, schakelt u de automatische schaal functie van het cluster in op elke afzonderlijke knooppunt groep in het cluster en kunt u hiervoor unieke regels voor automatisch schalen door geven.
 
 In de onderstaande opdracht wordt ervan uitgegaan dat u de [eerste instructies](#create-an-aks-cluster-and-enable-the-cluster-autoscaler) eerder in dit document hebt gevolgd en dat u het maximum aantal van een bestaande groep van een knoop punt wilt bijwerken van *3* naar *5*. Gebruik de opdracht [AZ AKS nodepool update][az-aks-nodepool-update] om de instellingen van een bestaande groep knoop punten bij te werken.
 
 ```azurecli-interactive
 az aks nodepool update \
   --resource-group myResourceGroup \
-  --cluster-name multipoolcluster \
-  --name mynodepool \
-  --enable-cluster-autoscaler \
+  --cluster-name myAKSCluster \
+  --name nodepool1 \
+  --update-cluster-autoscaler \
   --min-count 1 \
   --max-count 5
 ```
 
-De cluster automatisch schalen kan worden uitgeschakeld met [AZ AKS nodepool update][az-aks-nodepool-update] en door geven van de para meter `--disable-cluster-autoscaler`.
+De cluster automatisch schalen kan worden uitgeschakeld met [AZ AKS nodepool update][az-aks-nodepool-update] en de para meter `--disable-cluster-autoscaler` door gegeven.
 
 ```azurecli-interactive
 az aks nodepool update \
   --resource-group myResourceGroup \
-  --cluster-name multipoolcluster \
-  --name mynodepool \
+  --cluster-name myAKSCluster \
+  --name nodepool1 \
   --disable-cluster-autoscaler
 ```
+
+Als u de automatisch schalen van het cluster opnieuw wilt inschakelen op een bestaand cluster, kunt u het opnieuw inschakelen met behulp van de opdracht [AZ AKS nodepool update][az-aks-nodepool-update] , waarbij u het *--Enable-cluster-auto scaleer*, *--min-Count*en *--maximum-aantal* para meters opgeeft .
 
 ## <a name="next-steps"></a>Volgende stappen
 

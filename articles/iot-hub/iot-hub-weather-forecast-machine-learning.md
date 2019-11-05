@@ -1,149 +1,149 @@
 ---
-title: Weersvoorspelling met behulp van Azure Machine Learning met gegevens uit IoT Hub | Microsoft Docs
-description: Gebruik Azure Machine Learning om te voorspellen van de kans op regen op basis van de temperatuur en vochtigheid gegevens die uw IoT-hub worden verzameld van een sensor.
+title: Weers voorspelling met Azure Machine Learning met gegevens van IoT Hub | Microsoft Docs
+description: Gebruik Azure Machine Learning om de kans op een regen te voors pellen op basis van de Tempe ratuur en vochtigheids gegevens die uw IoT-hub van een sensor verzamelt.
 author: robinsh
 manager: philmea
-keywords: het weerbericht machine learning
+keywords: machine learning weer voors pellen
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ffc2e5fb588ce6861f5df6cefdf810c1a015c043
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61441016"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498888"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Weersvoorspelling met behulp van de sensorgegevens uit IoT hub in Azure Machine Learning
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Weers pellen met behulp van de sensor gegevens van uw IoT-hub in Azure Machine Learning
 
-![Diagram voor end-to-end](media/iot-hub-get-started-e2e-diagram/6.png)
+![End-to-end-diagram](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Machine learning is een techniek van gegevenswetenschap die computers leren uit bestaande gegevens om te voorspellen toekomstig gedrag, resultaten en trends helpt. Azure Machine Learning is een cloudservice voor predictive analytics waarmee u snel voorspellende modellen kunt maken en implementeren als analytics-oplossingen.
+Machine learning is een techniek van gegevens wetenschap die computers helpt bij het leren van bestaande gegevens om toekomstige gedragingen, resultaten en trends te voors pellen. Azure Machine Learning is een cloudservice voor predictive analytics waarmee u snel voorspellende modellen kunt maken en implementeren als analytics-oplossingen.
 
 ## <a name="what-you-learn"></a>Wat u leert
 
-Leert u hoe u Azure Machine Learning gebruiken om u te weerbericht prognose (kans van regen) met behulp van de temperatuur en vochtigheid gegevens uit uw Azure-IoT-hub. De kans van regen is de uitvoer van een voorspellingsmodel voorbereide weer. Het model is gebaseerd op historische gegevens te voorspellen op basis van de temperatuur en vochtigheid regen kans.
+U leert hoe u Azure Machine Learning kunt gebruiken voor de weers voorspelling (kans op regen) met behulp van de Tempe ratuur en vochtigheids gegevens van uw Azure IoT hub. De kans op regen is de uitvoer van een voor bereid model voor voor spellingen. Het model is gebaseerd op historische gegevens om de kans op een regen op basis van de Tempe ratuur en vochtigheid te ramen.
 
-## <a name="what-you-do"></a>Wat u allemaal doen
+## <a name="what-you-do"></a>Wat u doet
 
-- Het model van de voorspelling weer als een webservice implementeren.
-- Bereid u voor uw IoT-hub voor toegang tot gegevens door toe te voegen een consumergroep.
-- Een Stream Analytics-taak maken en configureren van de taak is:
-  - Temperatuur en vochtigheid gegevens lezen uit uw IoT-hub.
-  - Roep de webservice voor de neerslagkans.
-  - Sla het resultaat op in een Azure blob-opslag.
-- Microsoft Azure Storage Explorer gebruiken om de weersvoorspelling weer te geven.
+- Implementeer het weers voorspelling model als een webservice.
+- Haal uw IoT-hub gereed voor gegevens toegang door een Consumer groep toe te voegen.
+- Maak een Stream Analytics taak en stel de taak in op:
+  - Lees de gegevens over Tempe ratuur en vochtigheid van uw IoT-hub.
+  - Roep de webservice aan om de regen kans te halen.
+  - Sla het resultaat op in een Azure Blob-opslag.
+- Gebruik Microsoft Azure Storage Explorer om de weers voorspelling weer te geven.
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-- Voltooi de [Raspberry Pi online simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) zelfstudie of een van de apparaat-zelfstudies, bijvoorbeeld [Raspberry Pi met node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze betrekking hebben op de volgende vereisten:
+- Voltooi de zelf studie [Raspberry Pi online Simulator](iot-hub-raspberry-pi-web-simulator-get-started.md) of een van de zelf studies van het apparaat. bijvoorbeeld [Raspberry Pi met node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Deze voldoen aan de volgende vereisten:
   - Een actief Azure-abonnement.
-  - Een Azure IoT-hub in uw abonnement.
-  - Een clienttoepassing die berichten naar uw Azure-IoT-hub verzendt.
-- Een Azure Machine Learning Studio-account. ([Probeer Machine Learning Studio gratis](https://studio.azureml.net/)).
+  - Een Azure IoT hub onder uw abonnement.
+  - Een client toepassing die berichten verzendt naar uw Azure IoT hub.
+- Een [Azure machine learning Studio](https://studio.azureml.net/) -account.
 
-## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Het model van de voorspelling weer als een webservice implementeren
+## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Het weers voorspelling model als een webservice implementeren
 
-1. Ga naar de [weer voorspelling modelpagina](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. Klik op **Open in Studio** in Microsoft Azure Machine Learning Studio.
-   ![Open de weersomstandigheden voorspelling model-pagina in Cortana Intelligence-galerie](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. Klik op **uitvoeren** voor het valideren van de stappen in het model. Deze stap kan 2 minuten duren.
-   ![Weather voorspellingsmodel gemaakt in Azure Machine Learning Studio openen](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. Klik op **WEBSERVICE instellen** > **voorspellende webservice**.
-   ![Het weer voorspellingsmodel in Azure Machine Learning Studio implementeren](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. Sleep in het diagram wordt de **Web service invoer** module ergens in de buurt van de **Score Model** module.
-1. Verbinding maken met de **Web service invoer** module aan de **Score Model** module.
-   ![Verbinding maken met twee modules in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
-1. Klik op **uitvoeren** voor het valideren van de stappen in het model.
-1. Klik op **WEBSERVICE implementeren** het model als een webservice te implementeren.
-1. Op het dashboard van het model, downloaden de **Excel 2010 of ouder werkmap** voor **aanvraag/antwoord**.
+1. Ga naar de pagina voor het voors [pellen model](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
+1. Klik in Microsoft Azure Machine Learning Studio op **openen in Studio** .
+   ![de model pagina voor de weers voorspelling in Cortana Intelligence Gallery te openen](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
+1. Klik op **uitvoeren** om de stappen in het model te valideren. Deze stap kan twee minuten duren.
+   ![het model voor de weers voorspelling in Azure Machine Learning Studio te openen](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+1. Klik op **webservice instellen** > **voorspellende webservice**.
+   ![het weers Voorspellings model in Azure Machine Learning Studio te implementeren](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+1. In het diagram sleept u de module **webservice-invoer** ergens bij de module **score model** .
+1. Verbind de module **Web Service-invoer** met de module **score model** .
+   ![twee modules in Azure Machine Learning Studio te verbinden](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+1. Klik op **uitvoeren** om de stappen in het model te valideren.
+1. Klik op **Web service implementeren** om het model als een webservice te implementeren.
+1. Down load in het dash board van het model de **Excel 2010 of eerder-werkmap** voor **aanvraag/antwoord**.
 
    > [!Note]
-   > Zorg ervoor dat u downloadt de **Excel 2010 of ouder werkmap** , zelfs als u een nieuwere versie van Excel op uw computer worden uitgevoerd.
+   > Zorg ervoor dat u de **werkmap van excel 2010 of eerder** downloadt, zelfs als u een nieuwere versie van Excel op uw computer gebruikt.
 
-   ![Download het Excel voor de REQUEST RESPONSE-eindpunt](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Down load het Excel-eind punt voor aanvraag antwoorden](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
 
-1. Open de Excel-werkmap, noteer de **WEBSERVICE-URL** en **TOEGANGSSLEUTEL**.
+1. Open de Excel-werkmap, noteer de URL van de **webservice** en de **toegangs sleutel**.
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
-## <a name="create-configure-and-run-a-stream-analytics-job"></a>Maken, configureren en uitvoeren van een Stream Analytics-taak
+## <a name="create-configure-and-run-a-stream-analytics-job"></a>Een Stream Analytics taak maken, configureren en uitvoeren
 
 ### <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
 
 1. Klik [in de Azure Portal](https://portal.azure.com/) op **Een resource maken** > **Internet of Things** > **Stream Analytics-taak**.
 1. Voer de volgende informatie in voor de taak.
 
-   **Taaknaam**: De naam van de taak. De naam moet wereldwijd uniek zijn.
+   **Taaknaam**: de naam van de taak. De naam moet wereldwijd uniek zijn.
 
-   **Resourcegroep**: Gebruik dezelfde resourcegroep bevinden die gebruikmaakt van uw IoT-hub.
+   **Resource groep**: gebruik dezelfde resource groep als uw IOT-hub.
 
-   **Locatie**: Gebruik de dezelfde locatie als uw resourcegroep.
+   **Locatie**: gebruik dezelfde locatie als de resource groep.
 
-   **Vastmaken aan dashboard**: Schakel deze optie voor eenvoudige toegang voor uw IoT-hub vanuit het dashboard.
+   **Vastmaken aan dashboard**: vink deze optie aan voor eenvoudige toegang tot uw IoT-hub vanuit het dashboard.
 
-   ![Een Stream Analytics-taak maken in Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
+   ![Een Stream Analytics-taak maken in azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Een invoer aan de Stream Analytics-taak toevoegen
 
-1. Open de Stream Analytics-taak.
+1. Open de taak Stream Analytics.
 1. Klik onder **Taaktopologie** op **Invoer**.
-1. In de **invoer** deelvenster, klikt u op **toevoegen**, en voer de volgende informatie:
+1. Klik in het deel venster **invoer** op **toevoegen**en voer de volgende gegevens in:
 
-   **Invoeralias**: De unieke alias voor de invoer.
+   **Invoer alias**: de unieke alias voor de invoer.
 
-   **Bron**: Selecteer **IoT-hub**.
+   **Bron**: Selecteer **IOT hub**.
 
-   **Consumentengroep**: Selecteer de consumergroep die u hebt gemaakt.
+   **Consumenten groep**: Selecteer de Consumer groep die u hebt gemaakt.
 
-   ![Invoer voor de Stream Analytics-taak toevoegen in Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
+   ![Een invoer toevoegen aan de Stream Analytics-taak in azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Een uitvoer aan de Stream Analytics-taak toevoegen
 
 1. Klik onder **Taaktopologie** op **Uitvoer**.
-1. In de **uitvoer** deelvenster, klikt u op **toevoegen**, en voer de volgende informatie:
+1. Klik in het deel venster **uitvoer** op **toevoegen**en voer de volgende gegevens in:
 
-   **Uitvoeralias**: De alias die uniek is voor de uitvoer.
+   **Uitvoeralias**: de alias die uniek is voor de uitvoer.
 
    **Sink**: Selecteer **Blob Storage**.
 
-   **Opslagaccount**: Het opslagaccount voor de blob-opslag. U kunt een storage-account maken of gebruik een bestaande resourcegroep.
+   **Opslag account**: het opslag account voor de Blob-opslag. U kunt een opslag account maken of een bestaande gebruiken.
 
-   **Container**: De container waar de blob is opgeslagen. U kunt een container maken of gebruik een bestaande resourcegroep.
+   **Container**: de container waarin de blob is opgeslagen. U kunt een container maken of een bestaande gebruiken.
 
-   **Serialisatie-indeling voor gebeurtenissen**: Selecteer **CSV**.
+   **Indeling van de serialisatie van gebeurtenissen**: Selecteer **CSV**.
 
-   ![Uitvoer toevoegen aan de Stream Analytics-taak in Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
+   ![Een uitvoer toevoegen aan de Stream Analytics-taak in azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
-### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Een functie toevoegen aan de Stream Analytics-taak voor het aanroepen van de door u geïmplementeerde webservice
+### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Een functie toevoegen aan de Stream Analytics-taak om de door u geïmplementeerde webservice aan te roepen
 
-1. Onder **Taaktopologie**, klikt u op **functies** > **toevoegen**.
+1. Klik onder **taak topologie**op **functies** > **toevoegen**.
 1. Voer de volgende informatie in:
 
-   **Functie Alias**: Voer `machinelearning` in.
+   **Functie alias**: Voer `machinelearning`in.
 
-   **Functietype**: Selecteer **Azure ML**.
+   **Functie type**: Selecteer **Azure ml**.
 
-   **Importoptie**: Selecteer **importeren vanuit een ander abonnement**.
+   **Import optie**: Selecteer **importeren uit een ander abonnement**.
 
-   **URL**: Voer de URL van de WEBSERVICE die u hebt genoteerd uit de Excel-werkmap.
+   **URL**: Voer de URL in van de webservice die u hebt genoteerd uit de Excel-werkmap.
 
-   **sleutel**: Voer de TOEGANGSSLEUTEL die u hebt genoteerd uit de Excel-werkmap.
+   **Sleutel**: Voer de toegangs sleutel in die u hebt genoteerd uit de Excel-werkmap.
 
-   ![Een functie toevoegen aan de Stream Analytics-taak in Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
+   ![Een functie toevoegen aan de Stream Analytics-taak in azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>De query van de Stream Analytics-taak configureren
 
@@ -165,27 +165,27 @@ Leert u hoe u Azure Machine Learning gebruiken om u te weerbericht prognose (kan
 
 1. Klik op **Opslaan**.
 
-### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
+### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
 Klik in de Stream Analytics-taak op **Start** > **Nu** > **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
-![De Stream Analytics-taak uitvoeren](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![Voer de Stream Analytics-taak uit](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
-## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Microsoft Azure Storage Explorer gebruiken om de weersvoorspelling weer te geven
+## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Microsoft Azure Storage Explorer gebruiken om de weers voorspelling weer te geven
 
-Voer de clienttoepassing om te beginnen met het verzamelen van en temperatuur en vochtigheid gegevens te verzenden naar uw IoT-hub uit. Voor elk bericht dat uw IoT-hub ontvangt, wordt de Stream Analytics-taak de weersvoorspelling-webservice om de kans op regen produceren. Het resultaat wordt vervolgens opgeslagen in de Azure blob-opslag. Azure Storage Explorer is een hulpprogramma dat u gebruiken kunt om het resultaat weer te geven.
+Voer de client toepassing uit om te beginnen met het verzamelen en verzenden van gegevens over de Tempe ratuur en vochtigheid naar uw IoT-hub. Voor elk bericht dat uw IoT-hub ontvangt, roept de Stream Analytics-taak de webservice voor de weers voorspelling aan om de kans op regen te produceren. Het resultaat wordt vervolgens opgeslagen in uw Azure Blob-opslag. Azure Storage Explorer is een hulp programma dat u kunt gebruiken om het resultaat weer te geven.
 
-1. [Download en installeer Microsoft Azure Storage Explorer](https://storageexplorer.com/).
+1. [Down load en installeer Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 1. Open Azure Storage Explorer.
 1. Meld u aan bij uw Azure-account.
 1. Selecteer uw abonnement.
-1. Klik op uw abonnement > **Opslagaccounts** > uw storage-account > **Blobcontainers** > uw container.
-1. Open een CSV-bestand als het resultaat wilt weergeven. De laatste kolom registreert de kans op regen.
+1. Klik op uw abonnement > **opslag Accounts** > uw opslag account > **Blob-containers** > uw container.
+1. Open een CSV-bestand om het resultaat te bekijken. In de laatste kolom wordt de kans op regen vastgelegd.
 
-   ![Resultaat van de weersverwachting met Azure Machine Learning ophalen](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
+   ![Resultaat van de weers voorspelling ophalen met Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
 
 ## <a name="summary"></a>Samenvatting
 
-U hebt Azure Machine Learning is gebruikt voor het produceren van de kans op regen op basis van de temperatuur en vochtigheid gegevens die uw IoT-hub ontvangt.
+U hebt Azure Machine Learning gebruikt voor het produceren van de kans op een regen op basis van de Tempe ratuur en de vochtigheids gegevens die uw IoT-hub ontvangt.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

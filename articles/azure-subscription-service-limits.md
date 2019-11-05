@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345552"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476904"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
@@ -25,7 +25,7 @@ Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer
 > [!NOTE]
 > Als u de limiet of het quotum boven de standaard limiet wilt verhogen, kunt u gratis [een online klant ondersteuning-aanvraag openen](azure-resource-manager/resource-manager-quota-errors.md). De limieten kunnen niet hoger zijn dan de limiet waarde die in de volgende tabellen wordt weer gegeven. Als er geen kolom maximum limiet is, heeft de resource geen aanpas bare limieten.
 >
-> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u hebt een [gratis proefabonnement](https://azure.microsoft.com/offers/ms-azr-0044p), kunt u upgraden naar een [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) abonnement. Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](billing/billing-upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
+> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](billing/billing-upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Limieten en Azure Resource Manager
@@ -45,7 +45,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [API Management](#api-management-limits)
 * [App Service](#app-service-limits)
 * [Application Gateway](#application-gateway-limits)
-* [Automation](#automation-limits)
+* [Automatisering](#automation-limits)
 * [Azure Cache voor Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
@@ -56,7 +56,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Azure Firewall](#azure-firewall-limits)
 * [Azure Functions](#functions-limits)
 * [Azure Kubernetes Service](#azure-kubernetes-service-limits)
-* [Azure Machine Learning-service](#azure-machine-learning-service-limits)
+* [Azure Machine Learning](#azure-machine-learning-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
@@ -84,6 +84,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Multi-Factor Authentication](#multi-factor-authentication-limits)
 * [Netwerken](#networking-limits)
   * [Application Gateway](#application-gateway-limits)
+  * [Azure-Bastion](#azure-bastion-limits)
   * [Azure DNS](#azure-dns-limits)
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
@@ -103,7 +104,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Storage](#storage-limits)
+* [Opslag](#storage-limits)
 * [StorSimple systeem](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Abonnement](#subscription-limits)
@@ -154,7 +155,7 @@ De volgende tabel bevat een overzicht van de functies en limieten van de [servic
 ### <a name="azure-kubernetes-service-limits"></a>Limieten voor Azure Kubernetes-service
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
-### <a name="azure-machine-learning-service-limits"></a>Azure Machine Learning-service limieten
+### <a name="azure-machine-learning-limits"></a>Azure Machine Learning limieten
 De meest recente waarden voor Azure Machine Learning Compute quota vindt u op de [Azure machine learning quotum pagina](../articles/machine-learning/service/how-to-manage-quotas.md)
 
 ### <a name="networking-limits"></a>Netwerklimieten
@@ -179,6 +180,9 @@ De volgende tabel is van toepassing op v1-, v2-, Standard-en WAF-Sku's, tenzij a
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager limieten
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
+
+#### <a name="azure-bastion-limits"></a>Limieten voor Azure Bastion
+[!INCLUDE [Azure Bastion limits](../includes/bastion-limits.md)]
 
 #### <a name="azure-dns-limits"></a>Azure DNS limieten
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
@@ -260,7 +264,7 @@ De volgende tabel bevat de limieten voor Azure BizTalk Services.
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB limieten
 Zie [limieten in azure Cosmos DB](cosmos-db/concepts-limits.md)voor Azure Cosmos DB limieten.
 
-### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+### <a name="azure-database-for-mysql"></a>Azure Database voor MySQL
 Zie [beperkingen in azure database for MySQL](mysql/concepts-limits.md)voor Azure database for MySQL limieten.
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL

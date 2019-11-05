@@ -1,5 +1,5 @@
 ---
-title: 'Azure-toolkit voor IntelliJ: Toepassingen op afstand fouten opsporen in HDInsight Spark '
+title: 'Azure Toolkit: fouten opsporen Apache Spark apps extern-Azure HDInsight'
 description: Meer informatie over het gebruik van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ voor het op afstand opsporen van Spark-toepassingen die worden uitgevoerd op HDInsight-clusters via VPN.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: a558c0e767610f1fefdf29ca461a476c7bfcee59
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ac8ef620948048ae26ef6f408b4bc86b2a2bfbdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327322"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494582"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure-toolkit voor IntelliJ gebruiken om fout opsporing uit te Apache Spark toepassingen op afstand in HDInsight via VPN
 
@@ -37,7 +37,7 @@ In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van de HDInsig
 * **Meld u aan bij uw Azure-abonnement vanuit het IntelliJ-idee**. Volg de instructies in het [Azure-Toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken](apache-spark-intellij-tool-plugin.md).
 * **Tijdelijke uitzonde ring**. Tijdens het uitvoeren van de Spark scala-toepassing voor externe fout opsporing op een Windows-computer, kan er een uitzonde ring optreden. Deze uitzonde ring wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) en treedt op als gevolg van een ontbrekend WinUtils. exe-bestand in Windows. U kunt deze fout omzeilen door [het uitvoer bare bestand te downloaden](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) naar een locatie zoals **C:\WinUtils\bin**. Voeg een **HADOOP_HOME** -omgevings variabele toe en stel vervolgens de waarde van de variabele in op **C\WinUtils**.
 
-## <a name="step-1-create-an-azure-virtual-network"></a>Stap 1: Een virtueel Azure-netwerk maken
+## <a name="step-1-create-an-azure-virtual-network"></a>Stap 1: een virtueel Azure-netwerk maken
 
 Volg de instructies van de volgende koppelingen voor het maken van een virtueel Azure-netwerk en controleer vervolgens de connectiviteit tussen uw desktop computer en het virtuele netwerk:
 
@@ -45,11 +45,11 @@ Volg de instructies van de volgende koppelingen voor het maken van een virtueel 
 * [Een VNet maken met een site-naar-site-VPN-verbinding met behulp van Power shell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Een punt-naar-site-verbinding met een virtueel netwerk configureren met behulp van Power shell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-## <a name="step-2-create-an-hdinsight-spark-cluster"></a>Stap 2: Een HDInsight Spark-cluster maken
+## <a name="step-2-create-an-hdinsight-spark-cluster"></a>Stap 2: een HDInsight Spark-cluster maken
 
 Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat deel uitmaakt van het virtuele Azure-netwerk dat u hebt gemaakt. Gebruik de informatie die beschikbaar is in op [Linux gebaseerde clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Selecteer als onderdeel van de optionele configuratie het virtuele Azure-netwerk dat u in de vorige stap hebt gemaakt.
 
-## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>Stap 3: De connectiviteit tussen het hoofd knooppunt van het cluster en het bureau blad controleren
+## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>Stap 3: de connectiviteit tussen het hoofd knooppunt van het cluster en het bureau blad controleren
 
 1. Haal het IP-adres van het hoofd knooppunt op. Open de Ambari-gebruikers interface voor het cluster. Selecteer op de Blade cluster de optie **dash board**.
 
@@ -59,7 +59,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     ![Hosts in Apache Ambari selecteren](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. U ziet een lijst met hoofd knooppunten, Worker-knoop punten en Zookeeper-knoop punten. De hoofd knooppunten hebben een voor voegsel van **HN**\*. Selecteer het eerste hoofd knooppunt.
+1. U ziet een lijst met hoofd knooppunten, Worker-knoop punten en Zookeeper-knoop punten. De hoofd knooppunten hebben een voor voegsel van **HN***. Selecteer het eerste hoofd knooppunt.
 
     ![Het hoofd knooppunt zoeken in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
@@ -92,7 +92,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
 1. Herhaal de stappen voor het andere hoofd knooppunt.
 
-## <a name="step-4-create-an-apache-spark-scala-application-by-using-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>Stap 4: Een Apache Spark scala-toepassing maken met behulp van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ en deze configureren voor externe fout opsporing
+## <a name="step-4-create-an-apache-spark-scala-application-by-using-hdinsight-tools-in-azure-toolkit-for-intellij-and-configure-it-for-remote-debugging"></a>Stap 4: een Apache Spark scala-toepassing maken met behulp van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ en deze configureren voor externe fout opsporing
 
 1. Open IntelliJ-idee en maak een nieuw project. Voer in het dialoogvenster **Nieuw project** de volgende handelingen uit:
 
@@ -123,7 +123,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     a. Klik met de rechter muisknop op de project naam in de project structuur en selecteer vervolgens **module-instellingen openen**.
 
-    b. In het dialoog venster **project structuur** selecteert u **bibliotheken**, selecteert u het **+** ()-symbool en selecteert u vervolgens **van Maven**.
+    b. Selecteer in het dialoog venster **project structuur** de optie **bibliotheken**, selecteer het ( **+** )-symbool en selecteer vervolgens een **van de Maven**.
 
     ![Bibliotheek met IntelliJ-ideeën downloaden](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
@@ -132,24 +132,24 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
    * `org.scalatest:scalatest_2.10:2.2.1`
    * `org.apache.hadoop:hadoop-azure:2.7.1`
 
-1. Kopieer `yarn-site.xml` en`core-site.xml` van het hoofd knooppunt van het cluster en voeg deze toe aan het project. Gebruik de volgende opdrachten om de bestanden te kopiëren. U kunt [Cygwin](https://cygwin.com/install.html) gebruiken om de volgende `scp` opdrachten uit te voeren om de bestanden van de cluster hoofd knooppunten te kopiëren:
+1. Kopieer `yarn-site.xml` en `core-site.xml` van het hoofd knooppunt van het cluster en voeg deze toe aan het project. Gebruik de volgende opdrachten om de bestanden te kopiëren. U kunt [Cygwin](https://cygwin.com/install.html) gebruiken om de volgende `scp`-opdrachten uit te voeren om de bestanden van de cluster hoofd knooppunten te kopiëren:
 
     ```bash
     scp <ssh user name>@<headnode IP address or host name>://etc/hadoop/conf/core-site.xml .
     ```
 
-    Omdat we het IP-adres van het hoofd knooppunt van het cluster en de hostnamen voor het bestand hosts op het bureau blad `scp` al hebben toegevoegd, kunnen we de opdrachten op de volgende manier gebruiken:
+    Omdat we het IP-adres van het hoofd knooppunt van het cluster en de hostnamen voor het bestand hosts op het bureau blad al hebben toegevoegd, kunnen we de `scp`-opdrachten op de volgende manier gebruiken:
 
     ```bash
     scp sshuser@hn0-nitinp:/etc/hadoop/conf/core-site.xml .
     scp sshuser@hn0-nitinp:/etc/hadoop/conf/yarn-site.xml .
     ```
 
-    Als u deze bestanden wilt toevoegen aan uw project, kopieert u deze onder de map **/src** in de project structuur `<your project directory>\src`, bijvoorbeeld.
+    Als u deze bestanden wilt toevoegen aan uw project, kopieert u deze naar de map **/src** in de project structuur, bijvoorbeeld `<your project directory>\src`.
 
 1. Werk het `core-site.xml` bestand bij om de volgende wijzigingen door te voeren:
 
-   a. Vervang de versleutelde sleutel. Het `core-site.xml` bestand bevat de versleutelde sleutel voor het opslag account dat aan het cluster is gekoppeld. Vervang in `core-site.xml` het bestand dat u hebt toegevoegd aan het project de versleutelde sleutel door de werkelijke opslag sleutel die aan het standaard opslag account is gekoppeld. Zie [uw opslag toegangs sleutels beheren](../../storage/common/storage-account-manage.md#access-keys)voor meer informatie.
+   a. Vervang de versleutelde sleutel. Het `core-site.xml`-bestand bevat de versleutelde sleutel voor het opslag account dat aan het cluster is gekoppeld. Vervang in het `core-site.xml` bestand dat u aan het project hebt toegevoegd de versleutelde sleutel door de werkelijke opslag sleutel die aan het standaard opslag account is gekoppeld. Zie [uw opslag toegangs sleutels beheren](../../storage/common/storage-account-manage.md#access-keys)voor meer informatie.
 
     ```xml
     <property>
@@ -187,7 +187,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     ![IntelliJ-idee nieuwe scala-klasse maken](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 
-1. Plak de `MyClusterAppMain.scala` volgende code in het bestand. Met deze code wordt de Spark-context gemaakt `executeJob` en wordt een `SparkSample` methode vanuit het object geopend.
+1. Plak de volgende code in het `MyClusterAppMain.scala` bestand. Deze code maakt de Spark-context en opent een `executeJob` methode vanuit het `SparkSample`-object.
 
     ```scala
     import org.apache.spark.{SparkConf, SparkContext}
@@ -226,7 +226,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
     }
     ```
 
-1. Herhaal stap 8 en 9 om een nieuwe klasse met de `RemoteClusterDebugging`naam toe te voegen. Deze klasse implementeert het Spark-test raamwerk dat wordt gebruikt voor het opsporen van fouten in de toepassingen. Voeg de volgende code toe aan `RemoteClusterDebugging` de klasse:
+1. Herhaal stap 8 en 9 om een nieuwe klasse met de naam `RemoteClusterDebugging`toe te voegen. Deze klasse implementeert het Spark-test raamwerk dat wordt gebruikt voor het opsporen van fouten in de toepassingen. Voeg de volgende code toe aan de klasse `RemoteClusterDebugging`:
 
     ```scala
         import org.apache.spark.{SparkConf, SparkContext}
@@ -252,10 +252,10 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
      Er zijn enkele belang rijke dingen die u moet weten:
 
-      * Zorg `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`er voor dat de Spark-assembly jar beschikbaar is op de cluster opslag op het opgegeven pad.
-      * Geef `setJars`voor de locatie op waar het artefact jar is gemaakt. Normaal gesp roken is `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar`het.
+      * Controleer bij `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")`of de Spark-assembly JAR beschikbaar is op de cluster opslag op het opgegeven pad.
+      * Geef voor `setJars`de locatie op waar het artefact JAR is gemaakt. Normaal gesp roken is het `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar`.
 
-1. Klik in`*RemoteClusterDebugging` de klasse met de rechter muisknop `test` op het tref woord en selecteer vervolgens **RemoteClusterDebugging-configuratie maken**.
+1. Klik in de klasse`*RemoteClusterDebugging` met de rechter muisknop op het sleutel woord `test` en selecteer vervolgens **RemoteClusterDebugging-configuratie maken**.
 
     ![IntelliJ-idee een externe configuratie maken](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
@@ -267,9 +267,9 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     ![De vervolg keuzelijst externe uitvoering IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
 
-## <a name="step-5-run-the-application-in-debug-mode"></a>Stap 5: De toepassing uitvoeren in de foutopsporingsmodus
+## <a name="step-5-run-the-application-in-debug-mode"></a>Stap 5: de toepassing uitvoeren in de foutopsporingsmodus
 
-1. Open `SparkSample.scala` in uw IntelliJ-idee project een onderbrekings punt `val rdd1`naast. Selecteer in het pop-upmenu **onderbrekings punt maken voor** **regel in functie executeJob**.
+1. Open in uw IntelliJ-idee project `SparkSample.scala` en maak een onderbrekings punt naast `val rdd1`. Selecteer in het pop-upmenu **onderbrekings punt maken voor** **regel in functie executeJob**.
 
     ![IntelliJ-idee een onderbrekings punt toevoegen](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
@@ -281,11 +281,11 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     ![IntelliJ-idee het tabblad fout opsporing weer geven](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
 
-1. Als u een horloge wilt toevoegen, selecteert **+** u het pictogram ().
+1. Als u een horloge wilt toevoegen, selecteert u het pictogram ( **+** ).
 
     ![IntelliJ debug-add-Watch-variabele](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
-    In dit voor beeld wordt de toepassing gerepareerd `rdd1` voordat de variabele is gemaakt. Met deze controle kunnen we de eerste vijf rijen in de variabele `rdd`zien. Selecteer **Enter**.
+    In dit voor beeld wordt de toepassing afgebroken voordat de variabele `rdd1` gemaakt. Met deze controle kunnen we de eerste vijf rijen in de variabele `rdd`zien. Selecteer **Enter**.
 
     ![IntelliJ het programma uitvoeren in de foutopsporingsmodus](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 
@@ -301,16 +301,16 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
 ## <a name="seealso"></a>Volgende stappen
 
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="demo"></a>Demo
 
 * Scala-project maken (video): [Apache Spark scala-toepassingen maken](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Fout opsporing op afstand (video): [Azure-toolkit voor IntelliJ gebruiken om fouten in Apache Spark toepassingen op afstand op te lossen op een HDInsight-cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Externe fout opsporing (video): [Azure-Toolkit voor IntelliJ gebruiken om fouten op te sporen in Apache Spark toepassingen op afstand in een HDInsight-cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)

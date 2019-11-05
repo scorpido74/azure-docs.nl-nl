@@ -13,20 +13,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: d4605ad448916d788fd0a7089835a9ad3828697e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980412"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496378"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
-
-
-
-
 
 Als u Azure Sentinel wilt inschakelen, moet u eerst verbinding maken met uw gegevens bronnen. Azure Sentinel wordt geleverd met een aantal connectors voor micro soft-oplossingen, die beschikbaar zijn in de doos en die realtime-integratie bieden, waaronder oplossingen voor micro soft Threat Protection, en Microsoft 365 bronnen, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App Security, en nog veel meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligings ecosysteem voor niet-micro soft-oplossingen. U kunt ook algemene gebeurtenis indeling, syslog of REST-API gebruiken om uw gegevens bronnen met Azure Sentinel te verbinden.  
 
@@ -59,10 +55,12 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
     - [Windows-beveiligings gebeurtenissen](connect-windows-security-events.md) 
     - [Windows Firewall](connect-windows-firewall.md)
 
-- **Externe oplossingen via API**: Sommige gegevens bronnen zijn verbonden via Api's die worden meegeleverd met de verbonden gegevens bron. Doorgaans bieden de meeste beveiligings technologieën een set Api's waarmee gebeurtenis logboeken kunnen worden opgehaald. De Api's maken verbinding met Azure Sentinel en verzamelen specifieke gegevens typen en verzenden ze naar Azure Log Analytics. Apparaten verbonden via API zijn:
+- **Externe oplossingen via API**: sommige gegevens bronnen zijn verbonden via api's die worden meegeleverd met de verbonden gegevens bron. Doorgaans bieden de meeste beveiligings technologieën een set Api's waarmee gebeurtenis logboeken kunnen worden opgehaald. De Api's maken verbinding met Azure Sentinel en verzamelen specifieke gegevens typen en verzenden ze naar Azure Log Analytics. Apparaten verbonden via API zijn:
     - [Barracuda](connect-barracuda.md)
     - [Symantec](connect-symantec.md)
-- **Externe oplossingen via agent**: Azure Sentinel kan worden verbonden met alle andere gegevens bronnen waarmee in realtime logboek streaming kan worden uitgevoerd met behulp van het syslog-protocol, via een agent. <br>De meeste apparaten gebruiken het syslog-protocol om gebeurtenis berichten te verzenden die het logboek zelf en gegevens over het logboek bevatten. De indeling van de logboeken varieert, maar de meeste apparaten ondersteunen de standaard gebeurtenis indeling (CEF). <br>De Azure Sentinel-agent, die is gebaseerd op de Log Analytics-agent, converteert CEF opgemaakt Logboeken in een indeling die door Log Analytics kan worden opgenomen. Afhankelijk van het type apparaat wordt de agent rechtstreeks op het apparaat geïnstalleerd of op een speciale Linux-server. De agent voor Linux ontvangt gebeurtenissen van de syslog-daemon via UDP, maar als een Linux-machine verwacht een hoog volume aan syslog-gebeurtenissen te verzamelen, worden ze via TCP van de syslog-daemon naar de agent verzonden en van daaruit naar Log Analytics.
+    - [Citrix Analytics (beveiliging)](connect-citrix-analytics.md)
+
+- **Externe oplossingen via agent**: Azure Sentinel kan worden verbonden met alle andere gegevens bronnen die in realtime logboek streaming kunnen uitvoeren met behulp van het syslog-protocol, via een agent. <br>De meeste apparaten gebruiken het syslog-protocol om gebeurtenis berichten te verzenden die het logboek zelf en gegevens over het logboek bevatten. De indeling van de logboeken varieert, maar de meeste apparaten ondersteunen de op CEF (common Event Format) gebaseerde opmaak voor logboek gegevens. <br>De Azure Sentinel-agent, die is gebaseerd op de Log Analytics-agent, converteert CEF opgemaakt Logboeken in een indeling die door Log Analytics kan worden opgenomen. Afhankelijk van het type apparaat wordt de agent rechtstreeks op het apparaat geïnstalleerd of op een speciale Linux-server. De agent voor Linux ontvangt gebeurtenissen van de syslog-daemon via UDP, maar als een Linux-machine verwacht een hoog volume aan syslog-gebeurtenissen te verzamelen, worden ze via TCP van de syslog-daemon naar de agent verzonden en van daaruit naar Log Analytics.
     - Firewalls, proxy's en eind punten:
         - [F5](connect-f5.md)
         - [Controle punt](connect-checkpoint.md)
@@ -71,6 +69,10 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
         - [Palo Alto](connect-paloalto.md)
         - [Andere CEF-apparaten](connect-common-event-format.md)
         - [Andere syslog-apparaten](connect-syslog.md)
+        - [Barracuda CloudGen-firewall](connect-barracuda-cloudgen-firewall.md)
+        - [ExtraHop Reveal (x)](connect-extrahop.md)
+        - [Eén identiteits beveiliging](connect-one-identity.md)
+        - [Trend Micro diepe beveiliging](connect-trend-micro.md)
     - DLP-oplossingen
     - [Threat Intelligence-providers](connect-threat-intelligence.md)
     - [DNS-machines](connect-dns.md) -agent rechtstreeks geïnstalleerd op de DNS-computer
@@ -91,38 +93,38 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 ## <a name="map-data-types-with-azure-sentinel-connection-options"></a>Gegevens typen toewijzen met Azure Sentinel-verbindings opties
 
 
-| **Gegevenstype** | **Verbinding maken** | **Data Connector?** | **opmerkingen** |
+| **Gegevenstype** | **Verbinding maken** | **Data Connector?** | **Opmerkingen** |
 |------|---------|-------------|------|
-| AWSCloudTrail | [Verbinding maken met AWS](connect-aws.md) | V | |
-| AzureActivity | Overzicht van [Azure activiteit](connect-azure-activity.md) en [activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md) verbinden| V | |
-| AuditLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
-| SigninLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
-| AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | V | |
-| InformationProtectionLogs_CL  | [Azure Information Protection rapporten](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection verbinden](connect-azure-information-protection.md)  | V | Dit maakt gewoonlijk gebruik van de functie **InformationProtectionEvents** naast het gegevens type. Zie [de rapporten wijzigen en aangepaste query's maken](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) voor meer informatie|
+| AWSCloudTrail | [Verbinding maken met AWS](connect-aws.md) | Verticale | |
+| AzureActivity | Overzicht van [Azure activiteit](connect-azure-activity.md) en [activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md) verbinden| Verticale | |
+| Audit logs bevat | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | Verticale | |
+| SigninLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | Verticale | |
+| AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | Verticale | |
+| InformationProtectionLogs_CL  | [Azure Information Protection rapporten](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection verbinden](connect-azure-information-protection.md)  | Verticale | Dit maakt gewoonlijk gebruik van de functie **InformationProtectionEvents** naast het gegevens type. Zie [de rapporten wijzigen en aangepaste query's maken](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) voor meer informatie|
 | AzureNetworkAnalytics_CL  | Verkeers [analyse](../network-watcher/traffic-analytics.md) van [Traffic analytic-schema](../network-watcher/traffic-analytics.md)  | | |
-| CommonSecurityLog  | [Verbinding maken met CEF](connect-common-event-format.md)  | V | |
-| OfficeActivity | [Verbinding maken met Office 365](connect-office-365.md) | V | |
-| SecurityEvents | [Windows-beveiligings gebeurtenissen verbinden](connect-windows-security-events.md)  | V | Zie voor de werkmappen met Inveilige protocollen [onveilige protocollen werkmap instellen](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
-| Syslog | [Syslog verbinden](connect-syslog.md) | V | |
-| Micro soft Web Application firewall (WAF)-(AzureDiagnostics) |[Verbinding maken met micro soft Web Application firewall](connect-microsoft-waf.md) | V | |
-| SymantecICDx_CL | [Symantec verbinden](connect-symantec.md) | V | |
-| ThreatIntelligenceIndicator  | [Bedreigings informatie verbinden](connect-threat-intelligence.md)  | V | |
+| CommonSecurityLog  | [Verbinding maken met CEF](connect-common-event-format.md)  | Verticale | |
+| OfficeActivity | [Verbinding maken met Office 365](connect-office-365.md) | Verticale | |
+| SecurityEvents | [Windows-beveiligings gebeurtenissen verbinden](connect-windows-security-events.md)  | Verticale | Zie voor de werkmappen met Inveilige protocollen [onveilige protocollen werkmap instellen](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
+| Syslog | [Syslog verbinden](connect-syslog.md) | Verticale | |
+| Micro soft Web Application firewall (WAF)-(AzureDiagnostics) |[Verbinding maken met micro soft Web Application firewall](connect-microsoft-waf.md) | Verticale | |
+| SymantecICDx_CL | [Symantec verbinden](connect-symantec.md) | Verticale | |
+| ThreatIntelligenceIndicator  | [Bedreigings informatie verbinden](connect-threat-intelligence.md)  | Verticale | |
 | VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Toewijzing van Azure Monitor-service](../azure-monitor/insights/service-map.md)<br>[Voor bereiding op Azure Monitor VM Insights](../azure-monitor/insights/vminsights-onboard.md) <br> [Azure Monitor VM Insights inschakelen](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Eén virtuele machine on-boarding gebruiken](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [On-boarding gebruiken via het beleid](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| X | VM Insights-werkmap  |
-| DnsEvents | [DNS verbinden](connect-dns.md) | V | |
+| DnsEvents | [DNS verbinden](connect-dns.md) | Verticale | |
 | W3CIISLog | [IIS-logboeken verbinden](../azure-monitor/platform/data-sources-iis-logs.md)  | X | |
 | WireData | [Bedradings gegevens verbinden](../azure-monitor/insights/wire-data.md) | X | |
-| WindowsFirewall | [Windows Firewall verbinden](connect-windows-firewall.md) | V | |
-| AADIP SecurityAlert  | [Verbinding maken met Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | V | |
-| AATP SecurityAlert  | [Verbinding maken met Azure ATP](connect-azure-atp.md) | V | |
-| ASC SecurityAlert  | [Azure Security Center verbinden](connect-azure-security-center.md)  | V | |
-| MCAS SecurityAlert  | [Microsoft Cloud App Security verbinden](connect-cloud-app-security.md)  | V | |
+| WindowsFirewall | [Windows Firewall verbinden](connect-windows-firewall.md) | Verticale | |
+| AADIP SecurityAlert  | [Verbinding maken met Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | Verticale | |
+| AATP SecurityAlert  | [Verbinding maken met Azure ATP](connect-azure-atp.md) | Verticale | |
+| ASC SecurityAlert  | [Azure Security Center verbinden](connect-azure-security-center.md)  | Verticale | |
+| MCAS SecurityAlert  | [Microsoft Cloud App Security verbinden](connect-cloud-app-security.md)  | Verticale | |
 | SecurityAlert | | | |
 | Voor-en naactiviteit (gebeurtenis) | [Verbinding maken](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-gebeurtenissen verbinden](../azure-monitor/platform/data-sources-windows-events.md) <br> [De ophaal-parser ophalen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | De garbagecollection-verzameling wordt niet standaard op virtuele machines geïnstalleerd. [Zie voor](https://docs.microsoft.com/sysinternals/downloads/sysmon)meer informatie over het installeren van de opschoon agent. |
 | ConfigurationData  | [VM-inventarisatie automatiseren](../automation/automation-vm-inventory.md)| X | |
 | ConfigurationChange  | [VM-tracking automatiseren](../automation/change-tracking.md) | X | |
 | F5 BIG-IP | [Verbinding maken F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | X | |
 | McasShadowItReporting  |  | X | |
-| Barracuda_CL | [Verbinding maken met Barracuda](connect-barracuda.md) | V | |
+| Barracuda_CL | [Verbinding maken met Barracuda](connect-barracuda.md) | Verticale | |
 
 
 ## <a name="next-steps"></a>Volgende stappen

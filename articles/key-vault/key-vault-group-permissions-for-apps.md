@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73102368"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467173"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Key Vault verificatie met een toegangscontrole beleid bieden
 
@@ -53,7 +53,7 @@ Elk sleutel kluis toegangs beleid wordt een afzonderlijke set machtigingen verle
 
 Als u een toepassing, een Azure AD-groep of een gebruiker toegang wilt geven tot uw sleutel kluis, moet u eerst de objectId ophalen.
 
-#### <a name="applications"></a>Applicaties
+#### <a name="applications"></a>Toepassingen
 
 De objectId voor een toepassing komt overeen met de bijbehorende service-principal. Voor volledige informatie over service-principals. Zie [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md). 
 
@@ -162,7 +162,7 @@ Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys
 
 U kunt een Azure AD-groep maken, toepassingen en gebruikers toevoegen aan de groep en de groep toegang verlenen tot uw sleutel kluis.  Hierdoor kunt u een aantal toepassingen toevoegen aan een sleutel kluis als één vermelding in een toegangs beleid en hoeft u gebruikers geen directe toegang te geven tot uw sleutel kluis (wat er wordt voor komen). Zie [toegang tot apps en bronnen beheren met Azure Active Directory groepen](../active-directory/fundamentals/active-directory-manage-groups.md)voor meer informatie.
 
-### <a name="addition-prerequisites"></a>Toevoegen van vereisten
+### <a name="additional-prerequisites"></a>Aanvullende vereisten
 
 Naast de [bovenstaande vereisten](#prerequisites)hebt u machtigingen nodig voor het maken/bewerken van groepen in uw Azure Active Directory-Tenant. Als u geen machtigingen hebt, moet u mogelijk contact opnemen met uw Azure Active Directory-beheerder.
 

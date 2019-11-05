@@ -1,7 +1,7 @@
 ---
 title: Uw LUIS-app testen
 titleSuffix: Azure Cognitive Services
-description: Testen, is het proces van LUIS voorbeeld uitingen die en het ophalen van een reactie van LUIS herkend intenties en entiteiten.
+description: Testen is het proces van het leveren van voor beeld-uitingen aan LUIS en het verkrijgen van een antwoord op LUIS-herkende intenties en entiteiten.
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -9,55 +9,53 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 775b50c4735115dde8ae936c4d06b087d58683b1
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619775"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486680"
 ---
-# <a name="testing-example-utterances-in-luis"></a>Voorbeeld-uitingen testen in LUIS
+# <a name="testing-example-utterances-in-luis"></a>Test voorbeeld uitingen in LUIS
 
-Testen, is het proces van LUIS voorbeeld uitingen die en het ophalen van een reactie van LUIS herkend intenties en entiteiten. 
+Testen is het proces van het leveren van voor beeld-uitingen aan LUIS en het verkrijgen van een antwoord op LUIS-herkende intenties en entiteiten. 
 
-U kunt [testen](luis-interactive-test.md) LUIS interactief, één utterance tegelijkertijd, of geef een [batch](luis-concept-batch-test.md) van uitingen. Met testen, vergelijkt u de huidige [active](luis-concept-version.md#active-version) modellen met het gepubliceerde model. 
+U kunt LUIS interactief testen, één utterance tegelijk of een van uitingen. Tijdens het testen kunt u de reactie van het huidige actieve model vergelijken met de Voorspellings reactie van het gepubliceerde model. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
 <a name="E-(exponent)-notation"></a>
 
-## <a name="what-is-a-score-in-testing"></a>Wat is een score in de testfase?
-Zie [voorspelling score](luis-concept-prediction-score.md) concepten voor meer informatie over de scores voorspelling.
+## <a name="what-is-a-score-in-testing"></a>Wat is een score bij het testen?
+Zie de concepten van de [Voorspellings Score](luis-concept-prediction-score.md) voor meer informatie over Voorspellings scores.
 
 ## <a name="interactive-testing"></a>Interactief testen
-Interactieve testen wordt gedaan via de **Test** deelvenster van de website. U kunt een utterance om te zien hoe intenties en entiteiten worden geïdentificeerd en gewaardeerd invoeren. Als LUIS is niet voorspellen de intenties en entiteiten zoals op een utterance in het deelvenster met testen verwacht, kopieert u deze naar de **bedoeling** pagina als een nieuwe utterance. Vervolgens de onderdelen van deze utterance labelen en LUIS trainen. 
+Interactieve tests worden uitgevoerd vanuit het **test** paneel van de Luis-Portal. U kunt een utterance invoeren om te zien hoe intenties en entiteiten worden geïdentificeerd en gescoord. Als LUIS de intenties en entiteiten niet voordicteert zoals u verwacht op een utterance in het deel venster testen, kopieert u deze naar de pagina **intentie** als een nieuwe utterance. Vervolgens labelt u de onderdelen van die utterance voor entiteiten en traint u LUIS. 
 
 ## <a name="batch-testing"></a>Batchgewijs testen
-Zie [batch testen](luis-concept-batch-test.md) als u meer dan één utterance tegelijk wilt testen.
+Zie [batch testen](luis-concept-batch-test.md) als u meer dan één utterance per keer wilt testen.
 
-## <a name="endpoint-testing"></a>Eindpunt testen
-U kunt testen met behulp van de [eindpunt](luis-glossary.md#endpoint) met een maximum van twee versies van uw app. Met uw belangrijkste of live-versie van uw app instellen als de **productie** eindpunt, Voeg een tweede versie op de **staging** eindpunt. Deze aanpak biedt u drie versies van een utterance: het huidige model in het deelvenster van de [LUIS](luis-reference-regions.md) website en de twee versies op twee verschillende eindpunten. 
+## <a name="endpoint-testing"></a>Eindpunt tests
+U kunt met behulp van het [eind punt](luis-glossary.md#endpoint) testen met Maxi maal twee versies van uw app. Als uw hoofd-of live-versie van uw app is ingesteld als het **productie** -eind punt, voegt u een tweede versie toe aan het **staging** -eind punt. Deze benadering biedt u drie versies van een utterance: het huidige model in het test venster van de [Luis](luis-reference-regions.md) -website en de twee versies van de twee verschillende eind punten. 
 
-Alle eindpunt testen telt mee voor uw quotum voor het gebruik. 
+Alle eindpunt tests tellen mee voor uw gebruiks quota. 
 
-## <a name="do-not-log-tests"></a>Meld u tests niet
-Als u op basis van een eindpunt testen en niet dat de utterance geregistreerd wilt, moet u gebruiken de `logging=false` configuratie query-tekenreeks.
+## <a name="do-not-log-tests"></a>Geen tests vastleggen in logboek
+Als u een eind punt test en niet wilt dat de utterance wordt geregistreerd, moet u de `logging=false` query teken reeks configuratie gebruiken.
 
-## <a name="where-to-find-utterances"></a>Waar vind ik uitingen
-LUIS slaat alle geregistreerde uitingen in het querylogboek, beschikbaar voor downloaden op de [LUIS](luis-reference-regions.md) website **Apps** lijstpagina, evenals de LUIS [API's ontwerpen](https://go.microsoft.com/fwlink/?linkid=2092087). 
+## <a name="where-to-find-utterances"></a>Waar vind ik uitingen?
+LUIS slaat alle geregistreerde uitingen op in het query logboek, dat u kunt downloaden op de LUIS-Portal op de lijst pagina met **apps** , evenals de Luis- [ontwerp-api's](https://go.microsoft.com/fwlink/?linkid=2092087). 
 
-Alle uitingen LUIS zeker is worden weergegeven in de **[bekijken eindpunt uitingen](luis-how-to-review-endpoint-utterances.md)** pagina van de [LUIS](luis-reference-regions.md) website. 
+Alle uitingen LUIS zijn niet zeker van de lijst op de pagina **[endpoint uitingen](luis-how-to-review-endpoint-utterances.md)** van de [Luis](luis-reference-regions.md) -website. 
 
-![Eindpuntuitingen controleren](./media/luis-concept-test/review-endpoint-utterances.png)
- 
-## <a name="remember-to-train"></a>Houd er rekening mee te trainen
-Houd er rekening mee te [trainen](luis-how-to-train.md) LUIS nadat u wijzigingen in het model aanbrengt. Wijzigingen in de LUIS-app zijn niet zichtbaar in de testfase totdat de app wordt getraind. 
+## <a name="remember-to-train"></a>Vergeet niet om te trainen
+[Train](luis-how-to-train.md) Luis nadat u wijzigingen hebt aangebracht in het model. Wijzigingen in de LUIS-app worden niet weer gegeven in de test totdat de app is getraind. 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Informatie over [aanbevolen procedures](luis-concept-best-practices.md).
+Lees de [Aanbevolen procedures](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [testen](luis-interactive-test.md) uw uitingen.
+* Meer informatie over het [testen](luis-interactive-test.md) van uw uitingen.

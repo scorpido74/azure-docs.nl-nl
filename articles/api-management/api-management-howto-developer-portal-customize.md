@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 2fc22a8f2a9e1e9410f2e6a9738c50a296a6287f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180717"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472129"
 ---
 # <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
 
@@ -35,6 +35,10 @@ In deze zelfstudie leert u het volgende:
 Meer informatie over de ontwikkelaars Portal vindt u in het overzicht van de [Azure API Management-ontwikkelaars Portal](api-management-howto-developer-portal.md).
 
 ![API Management ontwikkelaars Portal-beheer modus](media/api-management-howto-developer-portal-customize/cover.png)
+
+> [!WARNING]
+> De ontwikkelaars portal wordt momenteel geïmplementeerd naar API Management Services.
+> Als uw service nieuw is gemaakt of een Developer tier-service is, moet u de nieuwste versie al hebben. Anders kunt u problemen ondervinden (bijvoorbeeld met de publicatie functionaliteit). De implementatie van de functie wordt voltooid op maandag 11 november 2019. 
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -1,7 +1,7 @@
 ---
 title: Vooraf gemaakte telefoon nummers-LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat vooraf gedefinieerde entiteit telefoonnummergegevens in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf opgebouwde telefoon nummer entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,39 +11,69 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 9e237b09bd2b0ecc3e91e10697f6c025f73057da
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 1cc7469bf6b29ed864fac3955dc8770aa879f84d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677441"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499534"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Op telefoon nummer vooraf gebouwde entiteit voor een LUIS-app
-De `phonenumber` entiteit extraheert tal van telefoonnummers, inclusief landcode. Omdat deze entiteit wordt al getraind, hoeft u geen voorbeeld uitingen toevoegen aan de toepassing. De `phonenumber` entiteit wordt ondersteund in `en-us` alleen de cultuur. 
+De `phonenumber` entiteit extraheert diverse telefoon nummers, inclusief land code. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen aan de toepassing toe te voegen. De entiteit `phonenumber` wordt alleen ondersteund in `en-us` cultuur. 
 
 ## <a name="types-of-a-phone-number"></a>Typen van een telefoon nummer
-`Phonenumber` wordt beheerd vanuit de [recognizers-tekst github-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) opslag plaats
+`Phonenumber` wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) github
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>Oplossing voor deze vooraf gebouwde entiteit
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+De volgende entiteits objecten worden geretourneerd voor de query:
 
-Het volgende voorbeeld ziet u de resolutie van de **builtin.phonenumber** entiteit.
+`my mobile is 1 (800) 642-7676`
+
+#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
 ```json
-{
-  "query": "my mobile is 1 (800) 642-7676",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8448457
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.8448457
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ],
+    "$instance": {
+
+        "phonenumber": [
+            {
+                "type": "builtin.phonenumber",
+                "text": "1 (800) 642-7676",
+                "startIndex": 13,
+                "length": 16,
+                "score": 1.0,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
     }
-  ],
-  "entities": [
+}
+```
+#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+
+In het volgende voor beeld ziet u de oplossing van de **ingebouwde entiteit. phoneNumber** .
+
+```json
+"entities": [
     {
         "entity": "1 (800) 642-7676",
         "type": "builtin.phonenumber",
@@ -54,73 +84,12 @@ Het volgende voorbeeld ziet u de resolutie van de **builtin.phonenumber** entite
             "value": "1 (800) 642-7676"
         }
     }
-  ]
-}
+]
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
-
-De volgende JSON is met de para meter `verbose` ingesteld op `false`:
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ]
-        }
-    }
-}
-```
-
-De volgende JSON is met de para meter `verbose` ingesteld op `true`:
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ],
-            "$instance": {
-                "phonenumber": [
-                    {
-                        "type": "builtin.phonenumber",
-                        "text": "1 (800) 642-7676",
-                        "startIndex": 13,
-                        "length": 16,
-                        "score": 1,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [percentage](luis-reference-prebuilt-percentage.md), [getal](luis-reference-prebuilt-number.md), en [temperatuur](luis-reference-prebuilt-temperature.md) entiteiten. 
+Meer informatie over de eenheden [percentage](luis-reference-prebuilt-percentage.md), [aantal](luis-reference-prebuilt-number.md)en [Tempe ratuur](luis-reference-prebuilt-temperature.md) . 

@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: acda549ffc03679de43b4e5956e65ccada766c15
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 957b12ad00f53a5aed7ff2a1ecd4afd21e58eb93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819952"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467442"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Resource sleutels voor ontwerpen en runtime gebruiken
 
 Het ontwerpen en uitvoeren van runtime-resources bieden verificatie voor uw LUIS-app en Voorspellings eindpunt.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>

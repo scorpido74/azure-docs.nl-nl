@@ -1,7 +1,7 @@
 ---
-title: Opnieuw trainen en een webservice implementeren
-titleSuffix: Azure Machine Learning Studio
-description: Informatie over het bijwerken van een webservice voor het gebruik van een nieuwe getrainde machine learning-model in Azure Machine Learning Studio.
+title: Een webservice opnieuw trainen en implementeren
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Meer informatie over het bijwerken van een webservice voor het gebruik van een pas getraind machine learning model in Azure Machine Learning Studio (klassiek).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,99 +10,99 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55b054ffe55430ea106c72cdd91fdfba3a457cf5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245099"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482996"
 ---
-# <a name="retrain-and-deploy-a-machine-learning-model"></a>Opnieuw trainen en implementeren van een machine learning-model
+# <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
 
-Opnieuw trainen is één manier om te controleren of de machine learning-modellen nauwkeurig en op basis van de meest relevante gegevens beschikbaar blijven. In dit artikel laat zien hoe het opnieuw trainen en implementeren van een machine learning-model als een nieuwe webservice in Studio. Als u wilt een klassieke webservice opnieuw trainen [weergeven in dit artikel met instructies.](retrain-classic-web-service.md)
+Retraining is een manier om ervoor te zorgen dat machine learning modellen nauw keurig blijven en op basis van de meest relevante gegevens die beschikbaar zijn. In dit artikel wordt beschreven hoe u een machine learning model opnieuw traint en implementeert als nieuwe webservice in Studio (klassiek). Als u een klassieke webservice opnieuw wilt trainen, [raadpleegt u dit artikel met instructies.](retrain-classic-web-service.md)
 
-In dit artikel wordt ervan uitgegaan dat u al een voorspellende webservice die is geïmplementeerd. Als u nog een voorspellende webservice hebt [informatie over het implementeren van een Studio-webservice hier.](publish-a-machine-learning-web-service.md)
+In dit artikel wordt ervan uitgegaan dat u al een voorspellende webservice hebt geïmplementeerd. Als u nog geen voorspellende webservice hebt, leest u [hier hoe u hier een studio-webservice (Classic) implementeert.](publish-a-machine-learning-web-service.md)
 
-Volgt u deze stappen voor het opnieuw trainen en implementeren van een machine learning nieuwe webservice:
+U kunt deze stappen volgen om een machine learning nieuwe webservice opnieuw te trainen en te implementeren:
 
-1. Implementeer een **webservice opnieuw trainen**
-1. Een nieuw model met behulp van de trein uw **webservice opnieuw trainen**
-1. Bijwerken van uw bestaande **Voorspellend experiment** naar het nieuwe model gebruiken
+1. Een **retraining-webservice** implementeren
+1. Een nieuw model trainen met behulp van uw **retraining-webservice**
+1. Werk uw bestaande **voorspellende experiment** bij om het nieuwe model te gebruiken
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="deploy-the-retraining-web-service"></a>De retraining webservice implementeren
+## <a name="deploy-the-retraining-web-service"></a>De webservice voor retraining implementeren
 
-Een retraining webservice kunt u opnieuw trainen van uw model met een nieuwe set parameters, zoals nieuwe gegevens, en bewaar het voor later. Wanneer u een verbinding tussen een **Web Service uitvoer** naar een **Train Model**, het trainingsexperiment levert een nieuw model te gebruiken.
+Met een Retrain web service kunt u uw model opnieuw trainen met een nieuwe set para meters, zoals nieuwe gegevens, en deze op een later tijdstip opslaan. Wanneer u een **webservice-uitvoer** verbindt met een **Train-model**, voert het trainings experiment een nieuw model uit dat u wilt gebruiken.
 
-Gebruik de volgende stappen uit om een retraining webservice te implementeren:
+Gebruik de volgende stappen voor het implementeren van een retraining-webservice:
 
-1. Verbinding maken met een **Web Service invoer** module aan de invoerpoort van uw gegevens. Doorgaans wilt u ervoor te zorgen dat de invoergegevens op dezelfde manier als uw oorspronkelijke trainingsgegevens wordt verwerkt.
-1. Verbinding maken met een **Web Service uitvoer** module aan de uitvoer van uw **Train Model**.
-1. Als u hebt een **Evaluate Model** -module, kunt u een **Web Service uitvoer** module voor de uitvoer van de resultaten van evaluatie van
-1. Voer uw experiment.
+1. Verbind een module voor het **invoeren van webservices** met uw gegevens invoer. Normaal gesp roken wilt u er zeker van zijn dat uw invoer gegevens op dezelfde manier worden verwerkt als de oorspronkelijke trainings gegevens.
+1. Verbind een **webservice-uitvoer** module met de uitvoer van uw Train- **model**.
+1. Als u een module voor het evalueren van een **model** hebt, kunt u een **webservice-uitvoer** module verbinden om de evaluatie resultaten uit te voeren
+1. Voer uw experiment uit.
 
-    Na het uitvoeren van uw experiment, moet de resulterende werkstroom zijn vergelijkbaar met de volgende afbeelding:
+    Na het uitvoeren van het experiment moet de resulterende werk stroom lijken op de volgende afbeelding:
 
-    ![Resulterende werkstroom](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![Resulterende werk stroom](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
-    Nu implementeren u de trainingsexperiment als een retraining webservice die een getraind model en de resultaten van evaluatie van model weergeeft.
+    Nu kunt u het trainings experiment implementeren als een retraining-webservice die een getraind model en de evaluatie resultaten van modellen uitvoert.
 
-1. Aan de onderkant van het experimentcanvas, klikt u op **Web Service instellen**
-1. Selecteer **[Nieuw]-webservice implementeren**. De Azure Machine Learning-webserviceportal wordt geopend op de **webservice implementeren** pagina.
-1. Typ een naam voor uw web-service en kies een abonnement.
+1. Klik aan de onderkant van het canvas op **set web service** .
+1. Selecteer **webservice implementeren [Nieuw]** . De Azure Machine Learning Web Services-portal wordt geopend op de pagina **Web service implementeren** .
+1. Typ een naam voor de webservice en kies een betalings plan.
 1. Selecteer **Implementeren**.
 
 ## <a name="retrain-the-model"></a>Het model opnieuw trainen
 
-In dit voorbeeld gebruiken we C# om de retraining toepassing te maken. U kunt ook voorbeeldcode voor Python of R gebruiken om deze taak te volbrengen.
+In dit voor beeld gebruiken C# we om de toepassing voor opnieuw trainen te maken. U kunt ook python-of R-voorbeeld code gebruiken om deze taak uit te voeren.
 
-Gebruik de volgende stappen uit om aan te roepen de retraining API's:
+Gebruik de volgende stappen voor het aanroepen van de Api's voor retraining:
 
-1. Maak een C# in Visual Studio-consoletoepassing: **Nieuwe** > **Project** > **Visual C#**   >  **Windows Classic Desktop**  >   **Console-App (.NET Framework)** .
-1. Aanmelden bij de portal voor Machine Learning-webservices.
-1. Klik op de web-service waarmee u werkt.
-1. Klik op **gebruiken**.
-1. Aan de onderkant van de **verbruiken** pagina, in de **voorbeeldcode** sectie, klikt u op **Batch**.
-1. Kopieer de voorbeeldcode voor de Batchuitvoering van C# en plak deze in het bestand Program.cs. Zorg ervoor dat de naamruimte intact blijft.
+1. Een C# console toepassing maken in Visual Studio: **New** > **project** > **Visual C#**  > **Windows Classic Desktop** > **console-app (.NET Framework)** .
+1. Meld u aan bij de Machine Learning Web Services-portal.
+1. Klik op de webservice waarmee u wilt werken.
+1. Klik op **verbruik**.
+1. Klik onder aan de pagina **verbruik** in het gedeelte **voorbeeld code** op **batch**.
+1. Kopieer de voorbeeld C# code voor batch uitvoering en plak deze in het Program.CS-bestand. Zorg ervoor dat de naam ruimte intact blijft.
 
-NuGet-pakket Microsoft.AspNet.WebApi.Client, zoals opgegeven in de opmerkingen toevoegen. De verwijzing naar Microsoft.WindowsAzure.Storage.dll wilt toevoegen, moet u mogelijk installeren de [-clientbibliotheek voor Azure Storage-services](https://www.nuget.org/packages/WindowsAzure.Storage).
+Voeg het NuGet-pakket micro soft. AspNet. WebApi. client toe, zoals is opgegeven in de opmerkingen. Als u de verwijzing naar micro soft. WindowsAzure. storage. dll wilt toevoegen, moet u mogelijk de [client bibliotheek voor Azure Storage services](https://www.nuget.org/packages/WindowsAzure.Storage)installeren.
 
-De volgende schermafbeelding ziet u de **verbruiken** pagina in de portal voor Azure Machine Learning-webservices.
+Op de volgende scherm afbeelding ziet u de pagina **verbruik** in de Azure machine learning webservices-Portal.
 
-![Pagina gebruiken](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
+![Pagina verbruiken](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
-### <a name="update-the-apikey-declaration"></a>De declaratie apikey bijwerken
+### <a name="update-the-apikey-declaration"></a>De apikey-declaratie bijwerken
 
-Zoek de **apikey** declaratie:
+Zoek de **apikey** -declaratie:
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-In de **Basic verbruik info** sectie van de **verbruiken** pagina, Ga naar de primaire sleutel en kopieert u het naar de **apikey** declaratie.
+Zoek in de sectie **basis informatie** over het gebruik van de pagina **verbruik** de primaire sleutel en kopieer deze naar de **apikey** -declaratie.
 
-### <a name="update-the-azure-storage-information"></a>De Azure Storage-gegevens bijwerken
+### <a name="update-the-azure-storage-information"></a>De Azure Storage gegevens bijwerken
 
-De BES-voorbeeldcode wordt een bestand vanaf een lokaal station (bijvoorbeeld ' C:\temp\CensusInput.csv') naar Azure Storage geüpload, verwerkt en schrijft de resultaten terug naar Azure Storage.
+De voorbeeld code BES uploadt een bestand van een lokaal station (bijvoorbeeld ' C:\temp\CensusInput.csv ') naar Azure Storage, verwerkt het en schrijft de resultaten terug naar Azure Storage.
 
 1. Aanmelden bij Azure Portal
-1. Klik in de linkernavigatiekolom op **meer services**, zoeken naar **opslagaccounts**, en selecteer deze.
-1. Selecteer in de lijst met opslagaccounts, een voor het opslaan van het retrained model.
-1. Klik in de linkernavigatiekolom op **toegangssleutels**.
-1. Kopieer en bewaar de **primaire toegangssleutel**.
-1. Klik in de linkernavigatiekolom op **Blobs**.
-1. Selecteer een bestaande container of een nieuwe maken en opslaan van de naam.
+1. Klik in de linker navigatie kolom op **meer services**, zoek naar **opslag accounts**en selecteer deze.
+1. Selecteer in de lijst met opslag accounts een om het opnieuw getrainde model op te slaan.
+1. Klik in de linker navigatie kolom op **toegangs toetsen**.
+1. Kopieer de **primaire toegangs sleutel**en sla deze op.
+1. Klik in de linker navigatie kolom op **blobs**.
+1. Selecteer een bestaande container, of maak een nieuwe, en sla de naam op.
 
-Zoek de *StorageAccountName*, *StorageAccountKey*, en *StorageContainerName* declaraties, en werk de waarden die u hebt opgeslagen in de portal.
+Zoek de *StorageAccountName*-, *StorageAccountKey*-en *StorageContainerName* -declaraties en werk de waarden bij die u hebt opgeslagen in de portal.
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
     const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
 
-Ook moet u zorgen dat het invoerbestand is beschikbaar op de locatie die u in de code opgeeft.
+U moet er ook voor zorgen dat het invoer bestand beschikbaar is op de locatie die u opgeeft in de code.
 
-### <a name="specify-the-output-location"></a>Geef de uitvoerlocatie
+### <a name="specify-the-output-location"></a>De uitvoer locatie opgeven
 
-Wanneer u de uitvoerlocatie opgeeft in de nettolading aanvragen, de uitbreiding van het bestand dat is opgegeven in *RelativeLocation* moet worden opgegeven als `ilearner`.
+Wanneer u de uitvoer locatie in de aanvraag lading opgeeft, moet de extensie van het bestand dat is opgegeven in *RelativeLocation* worden opgegeven als `ilearner`.
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -114,33 +114,33 @@ Wanneer u de uitvoerlocatie opgeeft in de nettolading aanvragen, de uitbreiding 
             }
         },
 
-Hier volgt een voorbeeld van retraining uitvoer:
+Hier volgt een voor beeld van het opnieuw trainen van uitvoer:
 
 ![Uitvoer opnieuw trainen](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
-### <a name="evaluate-the-retraining-results"></a>De retraining resultaten evalueren
+### <a name="evaluate-the-retraining-results"></a>De resultaten van het opnieuw trainen evalueren
 
-Wanneer u de toepassing uitvoert, wordt de uitvoer bevat de URL en de SAS-token die nodig zijn voor toegang tot de evaluatieresultaten.
+Wanneer u de toepassing uitvoert, bevat de uitvoer de token van de URL en Shared Access signatures die nodig zijn voor toegang tot de evaluatie resultaten.
 
-U kunt de prestatieresultaten van het model retrained zien door combineren de *BaseLocation*, *RelativeLocation*, en *SasBlobToken* vanuit de resultaten van de uitvoer voor *output2* en plakt de volledige URL in de adresbalk van de browser.
+U kunt de prestatie resultaten van het opnieuw getrainde model weer geven door de *BaseLocation*, *RelativeLocation*en *SasBlobToken* van de uitvoer resultaten voor *OUTPUT2* te combi neren en de volledige URL te plakken in de adres balk van de browser.
 
-Bekijk de resultaten om te bepalen als het nieuwe getrainde model beter dan de huidige versie presteert.
+Bekijk de resultaten om te bepalen of het nieuwe getrainde model beter presteert dan het bestaande.
 
-Sla de *BaseLocation*, *RelativeLocation*, en *SasBlobToken* vanuit de resultaten van de uitvoer.
+Sla de *BaseLocation*-, *RelativeLocation*-en *SasBlobToken* op uit de uitvoer resultaten.
 
-## <a name="update-the-predictive-experiment"></a>Update de Voorspellend experiment
+## <a name="update-the-predictive-experiment"></a>Het voorspellende experiment bijwerken
 
-### <a name="sign-in-to-azure-resource-manager"></a>Meld u aan met Azure Resource Manager
+### <a name="sign-in-to-azure-resource-manager"></a>Aanmelden bij Azure Resource Manager
 
-Eerst, aanmelden bij uw Azure-account van de PowerShell-omgeving met behulp van de [Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet.
+Meld u eerst aan bij uw Azure-account vanuit de Power shell-omgeving met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) .
 
-### <a name="get-the-web-service-definition-object"></a>De definitie van de Web Service-object ophalen
+### <a name="get-the-web-service-definition-object"></a>Het definitie object van de webservice ophalen
 
-Vervolgens de definitie van de Web Service-object ophalen door het aanroepen van de [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) cmdlet.
+Ga vervolgens naar het web service-definitie object door de cmdlet [Get-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) aan te roepen.
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Om te bepalen van de naam van de resourcegroep van een bestaande webservice, voer de cmdlet Get-AzMlWebService zonder parameters om de webservices in uw abonnement weer te geven. Ga naar de webservice en zoek vervolgens naar de web service-ID. De naam van de resourcegroep is het vierde element-id, direct na de *resourceGroups* element. In het volgende voorbeeld is de naam van de resourcegroep standaard-MachineLearning-SouthCentralUS.
+Als u de naam van de resource groep van een bestaande webservice wilt bepalen, voert u de cmdlet Get-AzMlWebService uit zonder para meters om de webservices in uw abonnement weer te geven. Zoek de webservice en controleer de webservice-ID. De naam van de resource groep is het vierde element in de ID, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -149,19 +149,19 @@ Om te bepalen van de naam van de resourcegroep van een bestaande webservice, voe
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-U kunt ook om te bepalen van de naam van de resourcegroep van een bestaande webservice, aanmelden bij de portal voor Azure Machine Learning-webservices. Selecteer de web-service. Naam van de resourcegroep is het vijfde element van de URL van de webservice direct na de *resourceGroups* element. In het volgende voorbeeld is de naam van de resourcegroep standaard-MachineLearning-SouthCentralUS.
+Als u de naam van de resource groep van een bestaande webservice wilt bepalen, meldt u zich aan bij de Azure Machine Learning Web Services-portal. Selecteer de webservice. De naam van de resource groep is het vijfde element van de URL van de webservice, net na het *resourceGroups* -element. In het volgende voor beeld is de naam van de resource groep standaard-MachineLearning-SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
-### <a name="export-the-web-service-definition-object-as-json"></a>De definitie van de Web Service-object worden geëxporteerd als JSON
+### <a name="export-the-web-service-definition-object-as-json"></a>Het web service-definitie object exporteren als JSON
 
-Als u wilt wijzigen van de definitie van het getrainde model op het zojuist getrainde model gebruiken, moet u eerst gebruiken de [Export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) cmdlet om te exporteren naar een bestand met JSON-indeling.
+Als u de definitie van het getrainde model voor het gebruik van het pas getrainde model wilt wijzigen, moet u eerst de cmdlet [export-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) gebruiken om het te exporteren naar een bestand met JSON-indeling.
 
     Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-reference-to-the-ilearner-blob"></a>De verwijzing naar de blob ilearner bijwerken
+### <a name="update-the-reference-to-the-ilearner-blob"></a>De verwijzing naar de ilearner-BLOB bijwerken
 
-Zoek in de assets, het [getrainde model], bij te werken de *uri* waarde in de *locationInfo* knooppunt met de URI van de ilearner-blob. De URI wordt gegenereerd door combineren de *BaseLocation* en de *RelativeLocation* uit de uitvoer van de aanroep opnieuw trainen BES.
+Zoek in de activa het [getrainde model], werk de *URI* -waarde in het *locationInfo* -knoop punt bij met de URI van de ilearner-blob. De URI wordt gegenereerd door het combi neren van de *BaseLocation* en de *RelativeLocation* van de uitvoer van de aanroep van de BES-training.
 
      "asset3": {
         "name": "Retrain Sample [trained model]",
@@ -176,21 +176,21 @@ Zoek in de assets, het [getrainde model], bij te werken de *uri* waarde in de *l
         }
       },
 
-### <a name="import-the-json-into-a-web-service-definition-object"></a>De JSON importeren in een definitie van de Web Service-object
+### <a name="import-the-json-into-a-web-service-definition-object"></a>De JSON importeren in een web service definition-object
 
-Gebruik de [importeren AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) cmdlet voor het converteren van het gewijzigde JSON-bestand naar een webservicedefinitie-object dat u gebruiken kunt om bij te werken het predicative experiment.
+Gebruik de cmdlet [import-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) om het gewijzigde JSON-bestand terug te converteren naar een web service-definitie object dat u kunt gebruiken om het predikaat bij te werken.
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-web-service"></a>Bijwerken van de webservice
+### <a name="update-the-web-service"></a>De webservice bijwerken
 
-Gebruik tot slot de [Update AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) cmdlet voor het bijwerken van de Voorspellend experiment.
+Gebruik ten slotte de cmdlet [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) om het voorspellende experiment bij te werken.
 
     Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het beheren van webservices of bijhouden van meerdere experimenten wordt uitgevoerd, de volgende artikelen:
+Raadpleeg de volgende artikelen voor meer informatie over het beheren van webservices of het bijhouden van meerdere experimenten.
 
-* [Maak kennis met de Web Services-portal](manage-new-webservice.md)
-* [Experimentherhalingen beheren](manage-experiment-iterations.md)
+* [De Web Services-portal verkennen](manage-new-webservice.md)
+* [Experiment herhalingen beheren](manage-experiment-iterations.md)

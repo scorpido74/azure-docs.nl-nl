@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802193"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498695"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Ondersteuningsmatrix voor Hyper-V-evaluatie en -migratie
 
@@ -35,26 +35,7 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor virtuele Hyper-
 --- | ---
 Azure-machtigingen | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
 Virtuele Hyper-V-machines | Evalueer Maxi maal 35.000 Hyper-V-Vm's in één project. U kunt meerdere projecten in een Azure-abonnement hebben. Een project kan zowel virtuele VMware-machines als virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten.
-Geografie | U kunt Azure Migrate projecten maken in een aantal geographs. Hoewel u projecten in specifieke geografische grafieken kunt maken, kunt u machines voor andere doel locaties evalueren of migreren. De Geografie van het project wordt alleen gebruikt om de gedetecteerde meta gegevens op te slaan.
-
-  **Geografie** | **Opslag locatie van meta gegevens**
-  --- | ---
-  Azure Government | US Gov - Virginia
-  Azië-Pacific | Azië Azië-oost of Zuidoost
-  Australië | Australië-oost of Australië-zuidoost
-  Brazilië | Brazilië - Zuid
-  Canada | Canada-centraal of Canada-oost
-  Europa | Europa - noord of Europa - west
-  Frankrijk | Frankrijk - centraal
-  India | Centraal-India of India-zuid
-  Japan |  Japan-Oost of Japan-West
-  Korea | Korea-centraal of Korea-zuid
-  Verenigd Koninkrijk | UK-zuid of UK-west
-  Verenigde Staten | VS-midden, VS-West 2
-
-
- > [!NOTE]
- > Ondersteuning voor Azure Government is momenteel alleen beschikbaar voor de [oudere versie](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) van Azure Migrate.
+Geografie | Ondersteunde geographs [bekijken](migrate-support-matrix.md#supported-geographies) .
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Beoordeling-vereisten voor de Hyper-V-host

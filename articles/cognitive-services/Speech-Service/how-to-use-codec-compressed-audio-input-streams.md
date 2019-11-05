@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 8f2896a6289ecaf4046d705da106636258cdadc5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 668964c597b8d748220cbeec68e0ba68300cb406
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802242"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464357"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Gecomprimeerde audio-invoer van codec gebruiken met de Speech SDK
 
@@ -43,7 +43,7 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeld code met behulp van gecomprimeerde audio-invoer van de codec
 
-Als u een gecomprimeerde audio-indeling naar de spraak Services wilt streamen, maakt u `PullAudioInputStream` of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een exemplaar van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
+Als u een gecomprimeerde audio-indeling naar de spraak Services wilt streamen, maakt u `PullAudioInputStream` of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een instantie van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
 
 We gaan ervan uit dat u een invoer stroom klasse hebt met de naam `myPushStream` en gebruikmaakt van OPUS/OGG. Uw code kan er als volgt uitzien:
 
@@ -67,4 +67,4 @@ var text = result.GetText();
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-- [Zie voor het herkennen van gesproken tekst in C#](quickstart-csharp-dotnet-windows.md)
+* [Zie spraak herkennen in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

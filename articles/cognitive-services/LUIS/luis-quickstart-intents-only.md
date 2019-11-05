@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Voor spel bedoelingen-LUIS'
+title: 'Zelf studie: bedoelingen voors pellen-Luis'
 titleSuffix: Azure Cognitive Services
 description: In deze zelfstudie maakt u een aangepaste app waarmee de intentie van een gebruiker wordt voorspeld. Deze app is het eenvoudigste type LUIS-app omdat de app geen verschillende gegevenselementen uit de utterancetekst extraheert, zoals e-mailadressen of datums.
 services: cognitive-services
@@ -11,16 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 83ecf0767f2b21065c698421e3ad8f07f31d5b16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375824"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465283"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Zelfstudie: LUIS-app bouwen om gebruikersintenties te bepalen
+# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Zelf studie: LUIS-app bouwen om de bedoelingen van de gebruiker te bepalen
 
 In deze zelfstudie maakt u een aangepaste HR-app (Human Resources) waarmee de intentie van een gebruiker wordt voorspeld op basis van de utterance (tekst). 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -47,9 +49,9 @@ Deze app heeft enkele intents.
 
 |Intentie|Doel|
 |--|--|
-|ApplyForJob|Bepaal of de gebruiker solliciteert naar een functie.|
-|GetJobInformation|Bepaal of de gebruiker op zoek is naar informatie over vacatures in het algemeen of over een specifieke vacature.|
-|Geen|Bepaal of de gebruiker een vraag stelt die niet met de app mag worden beantwoord. Deze intent is geleverd als onderdeel van het maken van de app en kan niet worden verwijderd. |
+|`ApplyForJob`|Bepaal of de gebruiker solliciteert naar een functie.|
+|`GetJobInformation`|Bepaal of de gebruiker op zoek is naar informatie over vacatures in het algemeen of over een specifieke vacature.|
+|`None`|Bepaal of de gebruiker een vraag stelt die niet met de app mag worden beantwoord. Deze intent is geleverd als onderdeel van het maken van de app en kan niet worden verwijderd. |
 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 
@@ -59,7 +61,7 @@ Deze app heeft enkele intents.
 
 1. Selecteer **Create new intent**. Voer de naam `GetJobInformation` in voor de nieuwe intent. Deze intent wordt voorspeld wanneer een gebruiker informatie wil over openstaande vacatures in het bedrijf. 
 
-    ![Schermafbeelding van het dialoogvenster Nieuwe intentie in Language Understanding (LUIS)](media/luis-quickstart-intents-only/create-intent.png "Schermafbeelding van het dialoogvenster Nieuwe intentie in Language Understanding (LUIS)")
+    ![Scherm opname van Language Understanding (LUIS) nieuw intentie dialoog venster](media/luis-quickstart-intents-only/create-intent.png "Scherm opname van Language Understanding (LUIS) nieuw intentie dialoog venster")
 
 1. Selecteer **Done**.
 
@@ -67,24 +69,24 @@ Deze app heeft enkele intents.
 
     | Voorbeelden van utterances|
     |--|
-    |Zijn er vandaag nieuwe vacatures geplaatst?|
-    |Zijn er nieuwe vacatures in het kantoor in Seattle?|
-    |Zijn er openstaande vacatures voor externe werknemers of telewerkers beschikbaar voor technici?|
-    |Zijn er banen beschikbaar voor het werken met databases?|
-    |Ik ben op zoek naar een co-workingvacature voor het kantoor in Tampa.|
-    |Is er een stageplaats beschikbaar voor het kantoor in San Francisco?|
-    |Is er parttimewerk beschikbaar voor mensen die nog studeren?|
-    |Op zoek naar een nieuwe werkomgeving met verantwoordelijkheden als boekhouder|
-    |Op zoek naar een vacature in New York voor tweetalige werknemers.|
-    |Op zoek naar een nieuwe werkomgeving met verantwoordelijkheden als boekhouder.|
-    |Nieuwe vacatures?|
-    |Geef alle vacatures voor technici weer die de afgelopen 2 dagen zijn toegevoegd.|
-    |Vandaag geplaatste vacatures?|
-    |Welke openstaande vacatures voor boekhouder zijn er voor het kantoor in Londen?|
-    |Welke vacatures bestaan er voor hoofdtechnici?|
-    |Waar is de vacaturelijst|
+    |`Any new jobs posted today?`|
+    |`Are there any new positions in the Seattle office?`|
+    |`Are there any remote worker or telecommute jobs open for engineers?`|
+    |`Is there any work with databases?`|
+    |`I'm looking for a co-working situation in the tampa office.`|
+    |`Is there an internship in the san francisco office?`|
+    |`Is there any part-time work for people in college?`|
+    |`Looking for a new situation with responsibilities in accounting`|
+    |`Looking for a job in new york city for bilingual speakers.`|
+    |`Looking for a new situation with responsibilities in accounting.`|
+    |`New jobs?`|
+    |`Show me all the jobs for engineers that were added in the last 2 days.`|
+    |`Today's job postings?`|
+    |`What accounting positions are open in the london office?`|
+    |`What positions are available for Senior Engineers?`|
+    |`Where is the job listings`|
 
-    [![Schermafbeelding van het invoeren van nieuwe uitingen voor MyStore-intentie](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Schermafbeelding van het invoeren van nieuwe uitingen voor MyStore-intentie")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Scherm opname van het invoeren van nieuwe uitingen voor de opslag intentie](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Scherm opname van het invoeren van nieuwe uitingen voor de opslag intentie")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     Door _voorbeelden van utterances_ op te geven traint u LUIS in het soort utterances dat voor deze intent kan worden voorspeld. 
 
@@ -149,29 +151,22 @@ Ga terug naar de LUIS-portal en maak een nieuwe intent om te bepalen of de gebru
 
     | Voorbeelden van utterances|
     |--|
-    |Sollicitatieformulier invullen voor vacature 123456|
-    |Hier is mijn cv voor vacature 654234|
-    |Hier is mijn cv voor de parttimefunctie van receptionist.|
-    |Met dit papierwerk solliciteer ik naar de functie van bureaumedewerker op de kunstafdeling.|
-    |Ik solliciteer naar de stageplaats bij de zomercursussen op de afdeling Onderzoek en ontwikkeling in San Diego|
-    |Ik wil mijn cv graag indienen voor de tijdelijke functie in de kantine.|
-    |Ik dien mijn cv in voor het nieuwe Autocar-team in Columbus, Ohio|
-    |Ik wil solliciteren op de nieuwe functie van boekhouder|
-    |Dit is het papierwerk voor vacature 456789 voor de stageplaats van boekhouder|
-    |Vacature 567890 en mijn papierwerk|
-    |Mijn papieren voor de stageplaats van boekhouder in Tulsa zijn bijgevoegd.|
-    |Mijn papierwerk voor de functie van bezorger tijdens de feestdagen|
-    |Kunt u mijn cv indienen voor de nieuwe functie van boekhouder in Seattle|
-    |Cv indienen voor vacature van engineer|
-    |Dit is mijn cv voor vacature 234123 in Tampa?|
+    |`Fill out application for Job 123456`|
+    |`Here is my c.v. for position 654234`|
+    |`Here is my resume for the part-time receptionist post.`|
+    |`I'm applying for the art desk job with this paperwork.`|
+    |`I'm applying for the summer college internship in Research and Development in San Diego`|
+    |`I'm requesting to submit my resume to the temporary position in the cafeteria.`|
+    |`I'm submitting my resume for the new Autocar team in Columbus, OH`|
+    |`I want to apply for the new accounting job`|
+    |`Job 456789 accounting internship paperwork is here`|
+    |`Job 567890 and my paperwork`|
+    |`My papers for the tulsa accounting internship are attached.`|
+    |`My paperwork for the holiday delivery position`|
+    |`Please send my resume for the new accounting job in seattle`|
+    |`Submit resume for engineering position`|
+    |`This is my c.v. for post 234123 in Tampa.`|
 
-<!--
-
-    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
-
-    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
-
--->
 
 ## <a name="train-again"></a>Opnieuw trainen
 

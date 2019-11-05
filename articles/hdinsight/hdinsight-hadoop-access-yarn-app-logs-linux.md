@@ -1,5 +1,5 @@
 ---
-title: Toegang tot Apache Hadoop garen-toepassings logboeken op op Linux gebaseerde HDInsight-Azure
+title: Toegang tot de toepassings logboeken van Apache Hadoop garen-Azure HDInsight
 description: Meer informatie over het openen van toepassings logboeken op basis van een op Linux gebaseerd HDInsight-cluster (Apache Hadoop) met behulp van de opdracht regel en een webbrowser.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091510"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494890"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Toegang tot Apache Hadoop GARENs van toepassings logboeken op HDInsight op basis van Linux
 
@@ -40,7 +40,7 @@ Toepassings Logboeken (en de bijbehorende container Logboeken) zijn van cruciaal
 
     /app-logs/<user>/logs/<applicationId>
 
-In het pad `user` is de naam van de gebruiker die de toepassing heeft gestart. De `applicationId` is de unieke id die is toegewezen aan een toepassing door de garens RM.
+In het pad is `user` de naam van de gebruiker die de toepassing heeft gestart. De `applicationId` is de unieke id die is toegewezen aan een toepassing door de GARENs RM.
 
 De geaggregeerde logboeken zijn niet rechtstreeks leesbaar, omdat ze zijn geschreven in een [TFile][T-file], [binaire indeling][binary-format] geïndexeerd door container. Gebruik de indelings-of CLI-hulpprogram ma's van de garen om deze logboeken als tekst zonder opmaak te bekijken voor toepassingen of containers die van belang zijn.
 
@@ -53,7 +53,7 @@ U kunt deze logboeken als tekst zonder opmaak weer geven door een van de volgend
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
-Geef de &lt;applicationId >, &lt;gebruiker-who-started-Application >, &lt;containerId > en &lt;work-node-Address > informatie op wanneer u deze opdrachten uitvoert.
+Geef de &lt;applicationId > op, &lt;gebruiker-who-started-Application >, &lt;containerId > en &lt;informatie over worker-node-Address > bij het uitvoeren van deze opdrachten.
 
 ## <a name="yarn-resourcemanager-ui"></a>De gebruikers interface van garen
 

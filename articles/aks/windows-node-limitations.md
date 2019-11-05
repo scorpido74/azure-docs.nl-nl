@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2cec24e5ea50360531e247b37369802f3ef4e336
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000219"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990302"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -89,6 +89,10 @@ Azure dev Spaces is momenteel alleen beschikbaar voor knooppunt groepen op basis
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>Kan mijn Windows Server-containers gMSA gebruiken?
 
 GMSA-ondersteuning (Group managed service accounts) is momenteel niet beschikbaar in AKS.
+
+## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kan ik Azure Monitor gebruiken voor containers met Windows-knoop punten en containers?
+
+Ja, u kunt Azure Monitor echter geen logboeken (stdout) uit Windows-containers verzamelen. U kunt nog steeds koppelen aan de live stream van stdout-logboeken vanuit een Windows-container.
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Wat moet ik doen als ik een functie heb nodig die niet wordt ondersteund?
 

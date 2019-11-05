@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561127"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73520463"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Quickstart: Een object detector bouwen met Custom Vision
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Quick Start: een object detector bouwen met Custom Vision
 
 In deze Quick Start leert u hoe u een object detector kunt bouwen via de Custom Vision-website. Wanneer u een detector model bouwt, kunt u de Custom Vision-service gebruiken voor object detectie.
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision resources maken in de Azure Portal
 
-Als u de Custom Vision Service wilt gebruiken, moet u Custom Vision trainings-en Voorspellings resources maken in de Azure Portal. Vul het dialoog venster op de pagina [Custom Vision maken](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) in om een trainings-en Voorspellings bron te maken. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Een nieuw project maken
 
@@ -51,7 +51,7 @@ Navigeer in uw webbrowser naar de webpagina van [Custom Vision](https://customvi
 
 1. Selecteer vervolgens een van de beschik bare domeinen. Elk domein optimaliseert de detector voor specifieke typen installatie kopieën, zoals beschreven in de volgende tabel. U kunt het domein later indien gewenst wijzigen.
 
-    |Domein|Doel|
+    |Domain|Doel|
     |---|---|
     |__Algemeen__| Geoptimaliseerd voor een breed scala aan object detectie taken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u wilt kiezen, selecteert u het algemene domein. |
     |__Logo__|Geoptimaliseerd voor het vinden van merk logo's in afbeeldingen.|
@@ -75,7 +75,7 @@ In deze sectie gaat u afbeeldingen uploaden en hand matig labelen om de detector
 
     ![Afbeeldingen die zijn geüpload, in de sectie zonder Tags](./media/get-started-build-detector/images-untagged.png)
 
-1. Klik en sleep een rechthoek rond het object in uw afbeelding. Voer vervolgens een nieuwe label naam in met de **+** knop of selecteer een bestaande tag in de vervolg keuzelijst. Het is belang rijk dat u alle exemplaren van de object (en) die u wilt detecteren, labelt, omdat de detector het ongecodeerde achtergrond gebied als een negatief voor beeld in de training gebruikt. Wanneer u klaar bent met Tags maken, klikt u op de pijl aan de rechter kant om uw tags op te slaan en naar de volgende afbeelding te gaan.
+1. Klik en sleep een rechthoek rond het object in uw afbeelding. Voer vervolgens een nieuwe label naam in met de knop **+** of selecteer een bestaande tag in de vervolg keuzelijst. Het is belang rijk dat u alle exemplaren van de object (en) die u wilt detecteren, labelt, omdat de detector het ongecodeerde achtergrond gebied als een negatief voor beeld in de training gebruikt. Wanneer u klaar bent met Tags maken, klikt u op de pijl aan de rechter kant om uw tags op te slaan en naar de volgende afbeelding te gaan.
 
     ![Een object met een rechthoekige selectie labelen](./media/get-started-build-detector/image-tagging.png)
 
@@ -96,7 +96,7 @@ Het trainings proces kan slechts enkele minuten duren. Gedurende deze periode wo
 Nadat de training is voltooid, worden de prestaties van het model berekend en weer gegeven. De Custom Vision-service gebruikt de installatie kopieën die u hebt ingediend voor training om de precisie, het terughalen en gemiddelde precisie te berekenen. Nauw keurigheid en intrekken zijn twee verschillende metingen van de effectiviteit van een detector:
 
 - **Precisie** geeft de Fractie van geïdentificeerde classificaties aan die juist zijn. Als het model bijvoorbeeld 100 installatie kopieën heeft geïdentificeerd als honden en 99 van de afbeeldingen daad werkelijk van honden, zou de precisie 99% zijn.
-- Bij intrekken wordt het gedeelte van de werkelijke classificaties aangegeven die juist zijn geïdentificeerd. Als er bijvoorbeeld daad werkelijk 100 installatie kopieën van Apples waren en het model 80 als Apple heeft geïdentificeerd, is het intrekken 80%.
+- Bij **intrekken** wordt het gedeelte van de werkelijke classificaties aangegeven die juist zijn geïdentificeerd. Als er bijvoorbeeld daad werkelijk 100 installatie kopieën van Apples waren en het model 80 als Apple heeft geïdentificeerd, is het intrekken 80%.
 
 ![De resultaten van de training tonen de algemene precisie en terugroeping en gemiddelde nauw keurigheid.](./media/get-started-build-detector/trained-performance.png)
 

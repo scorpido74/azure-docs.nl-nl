@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516765"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465006"
 ---
 # <a name="speech-services-for-telephony-data"></a>Spraak Services voor telefoon gegevens
 
@@ -38,9 +38,9 @@ Buiten het functionele aspect van de spraak Services zijn hun primaire doel: wan
 
 * Post-Call-analyses, batch verwerking van oproep opnames
 * Realtime analyse verwerking van het audio signaal om verschillende inzichten te extra heren wanneer de aanroep plaatsvindt (waarbij sentiment een prominente use-case is) en
-* Virtuele assistenten (bots), de dialoog tussen de klant en de bot in een poging om het probleem van de klant op te lossen zonder deel te nemen aan een agent of de toepassing van AI-protocollen om de agent te helpen.
+* Spraak assistenten (bots), waarbij u de dialoog tussen de klant en de bot aanstuurt in een poging om het probleem van de klant op te lossen zonder deelname aan de agent of de toepassing van AI-protocollen om de agent te helpen.
 
-Een typisch architectuur diagram van de implementatie van een batch-scenario wordt weer gegeven in de afbeelding hieronder ![Call Center transcriptie-architectuur ](media/scenarios/call-center-transcription-architecture.png)
+Een typisch architectuur diagram van de implementatie van een batch-scenario wordt weer gegeven in de onderstaande afbeelding ![-architectuur voor Call Center](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>Technologie onderdelen voor spraak analyse
 
@@ -92,7 +92,7 @@ Een typische oplossing maakt gebruik van de volgende services:
 * [Webhooks](webhooks.md) worden gebruikt om meldingen te ontvangen wanneer transcripties zijn voltooid.
 
 Intern gebruiken we de bovenstaande technologieën om micro soft-klant gesprekken in batch-modus te ondersteunen.
-![Batch architectuur ](media/scenarios/call-center-batch-pipeline.png)
+![batch architectuur](media/scenarios/call-center-batch-pipeline.png)
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Real-time transcriptie voor Call Center-gegevens
 

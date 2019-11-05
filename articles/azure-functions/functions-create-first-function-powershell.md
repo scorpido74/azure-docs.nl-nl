@@ -1,26 +1,21 @@
 ---
-title: Maak uw eerste Power shell-functie met Azure Functions
+title: Uw eerste Power shell-functie maken in azure
 description: Meer informatie over het maken van uw eerste Power shell-functie in azure met Visual Studio code.
-services: functions
-keywords: ''
 author: joeyaiello
-manager: jeconnoc
+manager: gwallace
 ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.devlang: powershell
-ms.openlocfilehash: c9de4cec417625bb8451457652dacb61550c31b0
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 1d6d641e141862b12fed40b800589aad70af2789
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248334"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469404"
 ---
-# <a name="create-your-first-powershell-function-in-azure-preview"></a>Uw eerste Power shell-functie maken in azure (preview)
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
+# <a name="create-your-first-powershell-function-in-azure"></a>Uw eerste Power shell-functie maken in azure
 
 Dit Quick Start-artikel helpt u bij het maken van uw eerste [serverloze](https://azure.com/serverless) Power shell-functie met Visual Studio code.
 
@@ -66,9 +61,9 @@ De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat k
     > [!NOTE]
     > Dit artikel is bedoeld om buiten een werkruimte te worden voltooid. Selecteer in dit geval geen projectmap die deel uitmaakt van een werkruimte.
 
-1. Selecteer de **Power shell (preview)** als taal voor uw functie-app-project en klik vervolgens **Azure functions v2**.
+1. Selecteer de **Power shell** als de taal voor uw functie-app-project en klik vervolgens **Azure functions v2**.
 
-1. Kies **http trigger** als de sjabloon voor uw eerste functie, gebruik `HTTPTrigger` als functie naam en kies een autorisatie niveau van een **functie**.
+1. Kies **http trigger** als de sjabloon voor uw eerste functie, gebruik `HTTPTrigger` als functie naam en kies een autorisatie **functie**niveau.
 
     > [!NOTE]
     > Het **functie** autorisatie niveau vereist een [functie sleutel](functions-bindings-http-webhook.md#authorization-keys) waarde bij het aanroepen van het functie-eind punt in Azure. Dit maakt het moeilijker voor iedereen om uw functie aan te roepen.
@@ -81,13 +76,13 @@ Visual Studio code maakt het Power shell-functie-app-project in een nieuwe werk 
 
 Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure Functions-project lokaal kunt uitvoeren en debuggen.  
 
-1. Als u fouten wilt opsporen in uw functie, voegt u een aanroep naar de [`Wait-Debugger`-] cmdlet in de functie code in voordat u de debugger kunt koppelen. Druk vervolgens op F5 om het functie-app-project te starten en de debugger te koppelen. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
+1. Als u fouten wilt opsporen in uw functie, voegt u een aanroep naar de cmdlet [`Wait-Debugger`] in de functie code in voordat u de debugger kunt koppelen. Druk vervolgens op F5 om het functie-app-project te starten en de debugger te koppelen. De uitvoer van Core Tools wordt weergegeven in het deelvenster **Terminal**.
 
 1. Kopieer het URL-eindpunt van de door HTTP getriggerde functie in het deelvenster **Terminal**.
 
     ![Lokale Azure-uitvoer](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
 
-1. Voeg de query reeks `?name=<yourname>` toe aan deze URL en gebruik vervolgens `Invoke-RestMethod` om de aanvraag uit te voeren, als volgt:
+1. Voeg de query reeks `?name=<yourname>` toe aan deze URL en gebruik `Invoke-RestMethod` om de aanvraag uit te voeren, als volgt:
 
     ```powershell
     PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
@@ -96,23 +91,23 @@ Azure Functions Core Tools integreert met Visual Studio code zodat u een Azure F
 
     U kunt ook de GET-aanvraag uitvoeren vanuit een browser.
 
-    Wanneer u het http trigger-eind punt aanroept zonder de para meter `name` door te geven als query parameter of in de hoofd tekst, retourneert de functie een [http status code]:: onjuiste aanvraag-fout. Wanneer u de code in run. ps1 bekijkt, ziet u dat deze fout wordt veroorzaakt door het ontwerp.
+    Wanneer u het http trigger-eind punt aanroept zonder een `name` para meter door te geven als query parameter of in de hoofd tekst, retourneert de functie een [http status code]:: onjuiste aanvraag-fout. Wanneer u de code in run. ps1 bekijkt, ziet u dat deze fout wordt veroorzaakt door het ontwerp.
 
 1. Als u wilt stoppen met fouten opsporen, drukt u op Shift + F5.
 
 Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure.
 
 > [!NOTE]
-> Vergeet niet om alle aanroepen naar `Wait-Debugger` te verwijderen voordat u uw functies naar Azure publiceert. 
-
-> [!NOTE]
-> Als u een functie-app in azure maakt, wordt er alleen naar functie-app naam gevraagd. Stel azureFunctions. advancedCreation in op True om te worden gevraagd om alle andere waarden.
+> Vergeet niet alle aanroepen naar `Wait-Debugger` te verwijderen voordat u uw functies naar Azure publiceert. 
+>
+> Het maken van een functie-app in azure vraagt alleen om de naam van uw functie-app. Andere waarden worden voor u gedefinieerd.
+> Stel `azureFunctions.advancedCreation` in op `true` moet worden gevraagd om alle andere waarden.
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
 ## <a name="test"></a>De functie uitvoeren in azure
 
-Als u wilt controleren of uw gepubliceerde functie wordt uitgevoerd in azure, voert u de volgende Power shell-opdracht uit en vervangt u de para meter `Uri` door de URL van de functie http trigger uit de vorige stap. Voeg de query reeks `&name=<yourname>` toe aan de URL, zoals in het volgende voor beeld:
+Als u wilt controleren of uw gepubliceerde functie wordt uitgevoerd in azure, voert u de volgende Power shell-opdracht uit en vervangt u de `Uri` para meter door de URL van de functie http trigger uit de vorige stap. Voeg, net als voorheen, de query reeks `&name=<yourname>` toe aan de URL, zoals in het volgende voor beeld:
 
 ```powershell
 PS > Invoke-WebRequest -Method Get -Uri "https://glengatest-vscode-powershell.azurewebsites.net/api/HttpTrigger?code=nrY05eZutfPqLo0som...&name=PowerShell"

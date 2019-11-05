@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972655"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990308"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identiteits bronnen instellen voor het gebruik van Active Directory
 
@@ -32,6 +32,10 @@ In deze hand leiding worden de taken beschreven voor het instellen van Active Di
 
 Voordat u [een identiteits bron toevoegt](#add-an-identity-source-on-vcenter), moet [u uw vCenter-bevoegdheden tijdelijk escaleren](escalate-private-cloud-privileges.md).
 
+> [!CAUTION]
+> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* .  
+
+
 ## <a name="identity-source-options"></a>Opties voor identiteits bron
 
 * [On-premises Active Directory toevoegen als identiteits bron met eenmalige aanmelding](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
@@ -49,14 +53,14 @@ Gebruik de informatie in de volgende tabel bij het instellen van uw Active Direc
 
 | **Optie** | **Beschrijving** |
 |------------|-----------------|
-| **Name** | De naam van de identiteits bron. |
+| **Naam** | De naam van de identiteits bron. |
 | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers. |
-| **Domeinnaam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
+| **Domein naam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
 | **Domein alias** | De NetBIOS-naam van het domein. Voeg de NetBIOS-naam van het Active Directory domein als alias van de identiteits bron toe als u SSPI-verificaties gebruikt. |
 | **Basis-DN voor groepen** | De DN-basis naam voor groepen. |
-| **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de notatie `ldap://hostname:port` of `ldaps://hostname:port`. De poort is doorgaans 389 voor LDAP-verbindingen en 636 voor LDAPS-verbindingen. Voor Active Directory implementaties van meerdere domein controllers is de poort doorgaans 3268 voor LDAP en 3269 voor LDAPS.<br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot `ldaps://`stand brengt, is vereist wanneer u gebruikt in de primaire of secundaire LDAP-URL. |
+| **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de indeling `ldap://hostname:port` of `ldaps://hostname:port`. De poort is doorgaans 389 voor LDAP-verbindingen en 636 voor LDAPS-verbindingen. Voor Active Directory implementaties van meerdere domein controllers is de poort doorgaans 3268 voor LDAP en 3269 voor LDAPS.<br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot stand brengt, is vereist wanneer u `ldaps://` in de primaire of secundaire LDAP-URL gebruikt. |
 | **URL van secundaire server** | Adres van de LDAP-server van de secundaire domein controller die wordt gebruikt voor failover. |
-| **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt er een knop certificaat kiezen `ldaps://`weer gegeven nadat u in het tekstvak URL hebt getypt . Een secundaire URL is niet vereist. |
+| **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt een knop certificaat kiezen weer gegeven nadat u `ldaps://` in het tekstvak URL hebt getypt. Een secundaire URL is niet vereist. |
 | **Gebruikersnaam** | ID van een gebruiker in het domein met mini maal alleen-lezen toegang tot de basis-DN voor gebruikers en groepen. |
 | **Wachtwoord** | Het wacht woord van de gebruiker die is opgegeven door de gebruikers naam. |
 
@@ -114,7 +118,7 @@ Nadat de netwerk verbinding tot stand is gebracht, volgt u de stappen in [on-pre
 
     ![Eenmalige aanmelding](media/OnPremAD02.png)
 
-5. Open het tabblad **identiteits bronnen** en **+** Klik om een nieuwe identiteits bron toe te voegen.
+5. Open het tabblad **identiteits bronnen** en klik op **+** om een nieuwe id-bron toe te voegen.
 
     ![Identiteits bronnen](media/OnPremAD03.png)
 

@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: C#Prediction-eind punt voor SDK-query's-LUIS"
+title: 'Quick Start C# : eind punt SDK-query Voorspellings-Luis'
 titleSuffix: Azure Cognitive Services
 description: Gebruik de C# SDK om een uiting van een gebruiker te verzenden naar LUIS en een voorspelling te ontvangen.
 author: diberry
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4d7c02d8cf37f155af1fd9c0d5de7fa8ec948c4b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: d7cf46add464a089f15a5bd15a20cea7d17eed37
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703125"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488690"
 ---
-# <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Quickstart: Query v2-Voorspellings eindpunt C# met .NET SDK
+# <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Quick Start: een query v2-eind punt C# voor voor spelling met .NET SDK
 
 Gebruik de .NET SDK, gevonden op [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/), om een uiting van een gebruiker te verzenden naar LUIS (Language Understanding) en een voorspelling van de intentie van de gebruiker te ontvangen. 
 
@@ -77,7 +77,7 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 
 ## <a name="create-a-new-method-for-the-prediction"></a>Een nieuwe methode maken voor de voorspelling
 
-Maak een nieuwe methode `GetPrediction` om de query te verzenden naar het eindpunt van de queryvoorspelling. De methode maakt en configureert alle benodigde objecten retourneert vervolgens een `Task` met de voorspellingsresultaten [`LuisResult`](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-dotnet). 
+Maak een nieuwe methode `GetPrediction` om de query te verzenden naar het eindpunt van de queryvoorspelling. De methode maakt en configureert alle benodigde objecten retourneert vervolgens een `Task` met de voorspellingsresultaten [`LuisResult`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-python). 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {
@@ -184,4 +184,4 @@ HomeAutomation.Room:'bedroom' begins at position 12 and ends at position 18
 Lees meer over de [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) en de [.NET-naslagdocumentatie](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
 
 > [!div class="nextstepaction"] 
-> [Zelfstudie: LUIS-app bouwen om gebruikersintenties te bepalen](luis-quickstart-intents-only.md) 
+> [Zelf studie: LUIS-app bouwen om de bedoelingen van de gebruiker te bepalen](luis-quickstart-intents-only.md) 

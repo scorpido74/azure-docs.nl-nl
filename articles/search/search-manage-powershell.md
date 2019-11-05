@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: efc61f7dc8e9d2caa53c4cbd7d932af9e1a206d1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793547"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466534"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Uw Azure Cognitive Search-service beheren met Power shell
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "72793547"
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)-> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) -> 
 
 U kunt Power shell-cmdlets en-scripts uitvoeren op Windows, Linux of in [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) om Azure Cognitive Search te maken en te configureren. De **AZ. Search** -module breidt Azure PowerShell] uit met volledige pariteit van de [rest api's voor Azure Cognitive Search Management](https://docs.microsoft.com/rest/api/searchmanagement). Met Azure PowerShell en **AZ. Search**kunt u de volgende taken uitvoeren:
 
@@ -40,7 +40,7 @@ Hoewel er geen speciale Power shell-opdrachten zijn voor inhouds beheer, kunt u 
 
 Andere taken die niet worden ondersteund via Power shell of een andere API (alleen Portal) zijn onder andere:
 + [Een cognitieve Services-resource koppelen](cognitive-search-attach-cognitive-services.md) voor [AI-verrijkte indexering](cognitive-search-concept-intro.md). Een cognitieve service is gekoppeld aan een vaardig heden, geen abonnement of service.
-+ [Bewakings oplossingen voor het](search-monitor-usage.md#add-on-monitoring-solutions) bewaken van Azure Search.
++ [Bewakings oplossingen voor het](search-monitor-usage.md#add-on-monitoring-solutions) bewaken van Azure Cognitive Search.
 
 <a name="check-versions-and-load"></a>
 
@@ -197,11 +197,11 @@ Tags
 
 [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wordt gebruikt om de beheer- [API-sleutels](search-security-api-keys.md)te herstellen. Voor geverifieerde toegang worden twee beheer sleutels gemaakt met elke service. Sleutels zijn vereist voor elke aanvraag. Beide beheerders sleutels zijn functioneel gelijkwaardig, waarbij volledige schrijf toegang wordt verleend aan een zoek service met de mogelijkheid om gegevens op te halen of om een wille keurig object te maken en te verwijderen. Er bestaan twee sleutels, zodat u deze kunt gebruiken terwijl u de andere vervangt. 
 
-U kunt slechts één keer opnieuw genereren, opgegeven als de sleutel `primary` of `secondary`. Voor een ononderbroken service moet u alle client code bijwerken om een secundaire sleutel te gebruiken terwijl u de primaire sleutel rolt. Vermijd het wijzigen van de sleutels tijdens de vlucht.
+U kunt slechts één keer opnieuw genereren, opgegeven als de `primary` of `secondary` sleutel. Voor een ononderbroken service moet u alle client code bijwerken om een secundaire sleutel te gebruiken terwijl u de primaire sleutel rolt. Vermijd het wijzigen van de sleutels tijdens de vlucht.
 
 Zoals u zou verwachten, zullen aanvragen die gebruikmaken van de oude sleutel, mislukken als u sleutels opnieuw genereert zonder de client code bij te werken. Door alle nieuwe sleutels te genereren, wordt uw service niet permanent vergrendeld en hebt u nog steeds toegang tot de service via de portal. Nadat u de primaire en secundaire sleutels opnieuw hebt gegenereerd, kunt u de client code bijwerken voor het gebruik van de nieuwe sleutels en bewerkingen worden hervat.
 
-De waarden voor de API-sleutels worden gegenereerd door de service. U kunt geen aangepaste sleutel opgeven voor Azure Cognitive Search te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor beheer-API-sleutels. Verwijzingen naar de sleutel zijn vaste teken reeksen, hetzij `primary` of `secondary`. 
+De waarden voor de API-sleutels worden gegenereerd door de service. U kunt geen aangepaste sleutel opgeven voor Azure Cognitive Search te gebruiken. Op dezelfde manier is er geen door de gebruiker gedefinieerde naam voor beheer-API-sleutels. Verwijzingen naar de sleutel zijn vaste teken reeksen, hetzij `primary`, hetzij `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

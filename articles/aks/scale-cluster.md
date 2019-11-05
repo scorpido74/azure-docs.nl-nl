@@ -1,32 +1,32 @@
 ---
-title: Een Azure Kubernetes Service (AKS)-cluster schalen
-description: Informatie over het schalen van het aantal knooppunten in een cluster Azure Kubernetes Service (AKS).
+title: Een AKS-cluster (Azure Kubernetes service) schalen
+description: Meer informatie over het schalen van het aantal knoop punten in een Azure Kubernetes service-cluster (AKS).
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9cc06df5d2a66ede18af52c13201c731c12e2049
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 719f45aeeb5c7aa7e9b5e597ed461808c9d2b005
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614492"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472593"
 ---
-# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Het aantal knooppunten in een Azure Kubernetes Service (AKS)-cluster schalen
+# <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Het aantal knoop punten in een Azure Kubernetes service (AKS)-cluster schalen
 
-Als de resource moet van uw toepassingen wijzigen, kunt u een AKS-cluster voor het uitvoeren van een ander aantal knooppunten handmatig schalen. Wanneer u omlaag schaalt, worden knooppunten zorgvuldig [afgebakend en geleegd][kubernetes-drain] om onderbreking actieve toepassingen te minimaliseren. Wanneer u omhoog schalen, AKS, wordt er gewacht tot er knooppunten zijn gemarkeerd `Ready` door het Kubernetes-cluster voordat schillen zijn gepland op deze.
+Als de resource behoeften van uw toepassingen veranderen, kunt u een AKS-cluster hand matig schalen om een ander aantal knoop punten uit te voeren. Wanneer u omlaag schaalt, worden knoop punten zorgvuldig [afgebakend en][kubernetes-drain] vertraagd om onderbreking van het uitvoeren van toepassingen tot een minimum te beperken. Wanneer u omhoog schaalt, wacht AKS totdat de knoop punten zijn gemarkeerd `Ready` door het Kubernetes-cluster voordat de peulen worden gepland.
 
 ## <a name="scale-the-cluster-nodes"></a>De clusterknooppunten schalen
 
-Haal eerst de *naam* van uw toepassingen met behulp de [az aks show][az-aks-show] opdracht. Het volgende voorbeeld wordt de naam van het knooppunt toepassingen voor het cluster met de naam *myAKSCluster* in de *myResourceGroup* resourcegroep:
+Haal eerst de *naam* van de groep van het knoop punt op met behulp van de opdracht [AZ AKS show][az-aks-show] . In het volgende voor beeld wordt de naam van de knooppunt groep opgehaald voor het cluster met de naam *myAKSCluster* in de resource groep *myResourceGroup* :
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
 ```
 
-De volgende voorbeelduitvoer ziet u dat de *naam* is *nodepool1*:
+In de volgende voorbeeld uitvoer ziet u dat de *naam* *nodepool1*is:
 
 ```console
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agentPoolProfiles
@@ -44,13 +44,13 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query agent
 ]
 ```
 
-Gebruik de [az aks schaal][az-aks-scale] opdracht voor het schalen van de clusterknooppunten. Het volgende voorbeeld wordt een cluster met de naam geschaald *myAKSCluster* naar één knooppunt. Geef uw eigen *--nodepool naam* uit de vorige opdracht, zoals *nodepool1*:
+Gebruik de opdracht [AZ AKS Scale][az-aks-scale] om de cluster knooppunten te schalen. In het volgende voor beeld wordt een cluster met de naam *myAKSCluster* naar één knoop punt geschaald. Geef uw eigen *-nodepool-naam* op uit de vorige opdracht, zoals *nodepool1*:
 
 ```azurecli-interactive
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 1 --nodepool-name <your node pool name>
 ```
 
-De volgende voorbeelduitvoer ziet het cluster heeft is geschaald naar één knooppunt, zoals wordt weergegeven in de *agentPoolProfiles* sectie:
+In de volgende voorbeeld uitvoer ziet u dat het cluster met één knoop punt is geschaald, zoals wordt weer gegeven in de sectie *agentPoolProfiles* :
 
 ```json
 {
@@ -74,7 +74,7 @@ De volgende voorbeelduitvoer ziet het cluster heeft is geschaald naar één knoo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel, moet u handmatig een AKS-cluster wilt verhogen of verlagen van het aantal knooppunten geschaald. U kunt ook de [automatisch schalen van cluster][cluster-autoscaler] (momenteel in preview in AKS) voor het automatisch schalen van uw cluster.
+In dit artikel hebt u hand matig een AKS-cluster geschaald om het aantal knoop punten te verg Roten of verkleinen. U kunt ook de cluster-automatische [schaal][cluster-autoscaler] functie gebruiken om uw cluster automatisch te schalen.
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/

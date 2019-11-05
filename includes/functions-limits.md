@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ad87964216db72cfef447a18d4cd05b8a976491b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69636459"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476883"
 ---
-| Resource | [Verbruiks abonnement](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-abonnement](../articles/azure-functions/functions-scale.md#premium-plan) | [App service plan](../articles/azure-functions/functions-scale.md#app-service-plan) <sup>1</sup> |
+| Resource | [Verbruiks abonnement](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-abonnement](../articles/azure-functions/functions-scale.md#premium-plan) | [App service abonnement](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Uitschalen | Gestuurde gebeurtenis | Gestuurde gebeurtenis | [Hand matig/automatisch schalen](../articles/app-service/manage-scale-up.md) | 
-| Max. exemplaren | 200 | 20 | 10-20 |
+| Maximumaantal exemplaren | 200 | 20 | 10-20 |
 |Standaard [time-outduur](../articles/azure-functions/functions-scale.md#timeout) (min) |5 | 30 |30<sup>2</sup> |
 |Maximale [time-outduur](../articles/azure-functions/functions-scale.md#timeout) (min.) |10 | unbounded | niet-gebonden<sup>3</sup> |
 | Maximum aantal uitgaande verbindingen (per instantie) | 600 actief (1200 totaal) | unbounded | unbounded |
@@ -26,8 +26,8 @@ ms.locfileid: "69636459"
 | Functie-apps per plan |100 |100 |niet-gebonden<sup>5</sup> |
 | [App Service-abonnementen](../articles/app-service/overview-hosting-plans.md) | 100 per [regio](https://azure.microsoft.com/global-infrastructure/regions/) |100 per resource groep |100 per resource groep |
 | Opslag<sup>6</sup> |1 GB |250 GB |50-1000 GB |
-| Aangepaste domeinen per app</a> |500<sup>7</sup> |500 |500 |
-| SSL- [ondersteuning](../articles/app-service/app-service-web-tutorial-custom-ssl.md) voor aangepaste domeinen |niet-gebonden SNI SSL verbinding opgenomen | niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen |niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen | 
+| </a> voor aangepaste domeinen per app |500<sup>7</sup> |500 |500 |
+| SSL- [ondersteuning](../articles/app-service/configure-ssl-bindings.md) voor aangepaste domeinen |niet-gebonden SNI SSL verbinding opgenomen | niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen |niet-gebonden SNI SSL en 1 IP SSL verbindingen inbegrepen | 
 
 <sup>1</sup> zie de [app service plan limieten](../articles/azure-subscription-service-limits.md#app-service-limits)voor specifieke limieten voor de verschillende opties voor het app service plan.  
 <sup>2</sup> standaard is de time-out voor de functies 1. x runtime in een app service plan ongebonden.  

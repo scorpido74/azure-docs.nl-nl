@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0cb5becd8375c393031892efb0b6c54786eeb8f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242221"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470069"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -327,6 +327,19 @@ Ja. U kunt DDoS-beveiliging inschakelen op het virtuele netwerk waarop de toepas
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Zijn er richt lijnen beschikbaar om te migreren van de V1-SKU naar de v2-SKU?
 
 Ja. Voor meer informatie raadpleegt u [Azure-toepassing gateway en Web Application firewall van v1 naar v2](migrate-v1-v2.md).
+
+## <a name="configuration---ingress-controller-for-aks"></a>Configuratie-ingangs controller voor AKS
+
+### <a name="what-is-an-ingress-controller"></a>Wat is een ingangs controller?
+
+Met Kubernetes kunt u `deployment` en `service` resource maken om een groep van Peul intern in het cluster weer te geven. Om dezelfde service extern beschikbaar te maken, wordt er een [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) resource gedefinieerd, waarmee taak verdeling, SSL-beëindiging en op naam gebaseerde virtuele hosting wordt geboden.
+Om aan deze `Ingress` resource te voldoen, is een ingangs controller vereist die luistert of er wijzigingen zijn in `Ingress` bronnen en wordt het load balancer beleid geconfigureerd.
+
+Met de Application Gateway ingangs controller kan [Azure-toepassing gateway](https://azure.microsoft.com/services/application-gateway/) worden gebruikt als binnenkomend verkeer voor een [Azure Kubernetes-service](https://azure.microsoft.com/services/kubernetes-service/) , ook wel een AKS-cluster genoemd.
+
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Kan één exemplaar van een ingangs controller meerdere toepassings gateways beheren?
+
+Op dit moment kan slechts één exemplaar van de ingangs controller aan een Application Gateway worden gekoppeld.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostische gegevens en logboekregistratie
 

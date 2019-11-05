@@ -8,12 +8,12 @@ manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.topic: conceptual
-ms.openlocfilehash: 7ccf6d93419b981203067e28f8c85ef8445ab0c2
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6e85e33cf0488cf688303c590c2bbaf5d671d9b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595289"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467105"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Virtuele netwerk service-eind punten voor Azure Key Vault
 
@@ -74,6 +74,7 @@ Hier volgt een lijst met vertrouwde services die toegang mogen hebben tot een sl
 |Azure Data Lake Store|[Versleuteling van gegevens in azure data Lake Store](../data-lake-store/data-lake-store-encryption.md) met een door de klant beheerde sleutel.|
 |Azure Databricks|[Snelle, eenvoudige en samen werkende, Apache Spark-gebaseerde analyse service](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API Management|[Certificaten voor een aangepast domein van Key Vault implementeren met behulp van MSI](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|
+|Azure Data Factory|[Referenties voor gegevens opslag ophalen in Key Vault van Data Factory](https://go.microsoft.com/fwlink/?linkid=2109491)|
 
 
 

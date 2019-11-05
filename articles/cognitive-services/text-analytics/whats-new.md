@@ -8,18 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 79a573f6338d0ea3a7c3c0e772f120c34c09b05c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 44ef6fb118be4d1110a693faded6c57bc8b4e2fd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931512"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499964"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Wat is er nieuw in de Text Analytics-API?
 
 De Text Analytics-API wordt doorlopend bijgewerkt. In dit artikel vindt u informatie over nieuwe releases en functies, zodat u op de hoogte blijft van recente ontwikkelingen.
+
+## <a name="named-entity-recognition-v3-public-preview---october-2019"></a>Named entity Recognition v3 Public Preview-oktober 2019
+
+De volgende versie van named entity Recognition (NER) is nu beschikbaar voor open bare preview en biedt uitgebreide detectie en categorisatie van entiteiten die in tekst zijn gevonden. De oplossing biedt het volgende:
+
+* Herkenning van de volgende nieuwe entiteits typen:
+    * Telefoonnummer
+    * IP-adres
+
+* Een nieuw eind punt voor het herkennen van entiteits typen van persoonlijke gegevens (alleen Engels)
+* Afzonderlijke eind punten voor entiteits herkenning en entiteits koppeling.
+
+Koppeling van entiteit ondersteunt Engels en Spaans. NER taal ondersteuning varieert per entiteits type. Zie de onderstaande koppeling voor meer informatie. 
+
+> [!div class="nextstepaction"]
+> [Meer informatie over named entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Open bare preview van Sentimentanalyse v3-oktober 2019
 
@@ -32,7 +48,6 @@ Het biedt ondersteuning voor Engels (`en`), Japans (`ja`), vereenvoudigd Chinees
 
 > [!div class="nextstepaction"]
 > [Meer informatie over Sentimentanalyse v3](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

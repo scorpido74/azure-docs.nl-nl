@@ -8,26 +8,26 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: gwallace
-ms.openlocfilehash: 9e7b7526f13fa6b9ae648c4ddb4004a627d85154
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359746"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469018"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>SSL configureren voor een toepassing in azure
 
 SSL-versleuteling (Secure Socket Layer) is de meest gebruikte methode voor het beveiligen van gegevens die via internet worden verzonden. In deze algemene taak wordt beschreven hoe u een HTTPS-eindpunt kunt opgeven voor een webrol en hoe u een SSL-certificaat kunt uploaden om uw toepassing te beveiligen.
 
 > [!NOTE]
-> De procedures in deze taak zijn van toepassing op Azure Cloud Services; [Zie voor](../app-service/app-service-web-tutorial-custom-ssl.md)app Services.
+> De procedures in deze taak zijn van toepassing op Azure Cloud Services; [Zie voor](../app-service/configure-ssl-bindings.md)app Services.
 >
 
 Deze taak maakt gebruik van een productie-implementatie. Meer informatie over het gebruik van een faserings implementatie vindt u aan het einde van dit onderwerp.
 
 Lees [Dit](cloud-services-how-to-create-deploy-portal.md) eerst als u nog geen Cloud service hebt gemaakt.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Stap 1: Een SSL-certificaat ophalen
+## <a name="step-1-get-an-ssl-certificate"></a>Stap 1: een SSL-certificaat ophalen
 Als u SSL wilt configureren voor een toepassing, moet u eerst een SSL-certificaat ophalen dat is ondertekend door een certificerings instantie (CA), een vertrouwde derde partij die certificaten uitgeeft voor dit doel. Als u er nog geen hebt, moet u er een verkrijgen van een bedrijf dat SSL-certificaten verkoopt.
 
 Het certificaat moet voldoen aan de volgende vereisten voor SSL-certificaten in Azure:
@@ -43,10 +43,10 @@ Vervolgens moet u informatie over het certificaat in uw service definitie en con
 
 <a name="modify"> </a>
 
-## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Stap 2: De service definitie en configuratie bestanden wijzigen
+## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Stap 2: de service definitie en configuratie bestanden wijzigen
 Uw toepassing moet worden geconfigureerd voor het gebruik van het certificaat en er moet een HTTPS-eind punt worden toegevoegd. Als gevolg hiervan moeten de service definitie en de service configuratie bestanden worden bijgewerkt.
 
-1. Open in uw ontwikkel omgeving het service definitie bestand (CSDEF), voeg een sectie **certificaten** toe binnen de  sectie webrol en neem de volgende informatie op over het certificaat (en tussenliggende certificaten):
+1. Open in uw ontwikkel omgeving het service definitie bestand (CSDEF), voeg een sectie **certificaten** toe binnen de sectie **webrol** en neem de volgende informatie op over het certificaat (en tussenliggende certificaten):
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -74,9 +74,9 @@ Uw toepassing moet worden geconfigureerd voor het gebruik van het certificaat en
 
    De sectie **certificaten** definieert de naam van het certificaat, de locatie en de naam van het archief waar het zich bevindt.
 
-   Permissions`permissionLevel` (Attribute) kunnen worden ingesteld op een van de volgende waarden:
+   De machtigingen (`permissionLevel` kenmerk) kunnen worden ingesteld op een van de volgende waarden:
 
-   | Machtigings waarde | Description |
+   | Machtigings waarde | Beschrijving |
    | --- | --- |
    | limitedOrElevated |**(Standaard)** Alle rollen processen hebben toegang tot de persoonlijke sleutel. |
    | verhoogde |Alleen verhoogde processen hebben toegang tot de persoonlijke sleutel. |
@@ -132,7 +132,7 @@ Uw toepassing moet worden geconfigureerd voor het gebruik van het certificaat en
 
 Nu de service definitie en de service configuratie bestanden zijn bijgewerkt, pakt u uw implementatie in voor uploaden naar Azure. Als u **cspack**gebruikt, gebruikt u de vlag **/generateConfigurationFile** niet, aangezien de certificaat gegevens die u zojuist hebt ingevoegd, worden overschreven.
 
-## <a name="step-3-upload-a-certificate"></a>Stap 3: Een certificaat uploaden
+## <a name="step-3-upload-a-certificate"></a>Stap 3: een certificaat uploaden
 Verbinding maken met de Azure Portal en...
 
 1. Selecteer in de sectie **alle resources** van de portal uw Cloud service.
@@ -149,7 +149,7 @@ Verbinding maken met de Azure Portal en...
 
 4. Geef het **bestand**, het **wacht woord**en klik op **uploaden** onder aan het gebied voor gegevens invoer.
 
-## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Stap 4: Verbinding maken met de rolinstantie met behulp van HTTPS
+## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>Stap 4: verbinding maken met de rolinstantie met behulp van HTTPS
 Nu uw implementatie in azure wordt uitgevoerd, kunt u er verbinding mee maken met behulp van HTTPS.
 
 1. Klik op de **site-URL** om de webbrowser te openen.
@@ -166,7 +166,7 @@ Nu uw implementatie in azure wordt uitgevoerd, kunt u er verbinding mee maken me
    ![Site preview](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Als u SSL wilt gebruiken voor een staging-implementatie in plaats van een productie-implementatie, moet u eerst de URL bepalen die wordt gebruikt voor de faserings implementatie. Zodra uw Cloud service is geïmplementeerd, wordt de URL naar de faserings omgeving bepaald door de GUID van de **implementatie-id** in deze indeling:`https://deployment-id.cloudapp.net/`  
+   > Als u SSL wilt gebruiken voor een staging-implementatie in plaats van een productie-implementatie, moet u eerst de URL bepalen die wordt gebruikt voor de faserings implementatie. Zodra uw Cloud service is geïmplementeerd, wordt de URL naar de faserings omgeving bepaald door de GUID van de **implementatie-id** in deze indeling: `https://deployment-id.cloudapp.net/`  
    >
    > Maak een certificaat met de common name (CN) dat gelijk is aan de GUID-gebaseerde URL (bijvoorbeeld **328187776e774ceda8fc57609d404462.cloudapp.net**). Gebruik de portal om het certificaat toe te voegen aan uw gefaseerde Cloud service. Voeg vervolgens de certificaat gegevens toe aan uw CSDEF-en CSCFG-bestanden, verpakt uw toepassing opnieuw en werk uw gefaseerde implementatie bij om het nieuwe pakket te gebruiken.
    >

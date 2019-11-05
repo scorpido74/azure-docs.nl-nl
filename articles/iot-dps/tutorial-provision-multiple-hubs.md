@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 887bda92a1165a3dd17e9105e921a5df9e0c5534
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61248161"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486013"
 ---
 # <a name="provision-devices-across-load-balanced-iot-hubs"></a>Apparaten inrichten in IoT-hubs met gelijke taakverdeling
 
@@ -48,9 +48,9 @@ Via de registratielijst wordt voor de Device Provisioning Service aangegeven wel
 
 Het toewijzingsbeleid is een instelling voor de Device Provisioning Service die bepaalt hoe apparaten aan een IoT-hub worden toegewezen. Er worden drie soorten toewijzingsbeleid ondersteund: 
 
-1. **Laagste latentie**: Apparaten worden ingericht voor een IoT-hub op basis van de hub met de laagste latentie voor het apparaat.
-2. **Gelijk gewogen distributie** (standaard): Gekoppelde IoT-hubs hebben evenveel kans dat apparaten die voor hen ingericht. Dit is de standaardinstelling. Als u apparaten voor slechts één IoT-hub inricht, kunt u deze instelling bewaren. 
-3. **Statische configuratie via de registratielijst**: Specificatie van de gewenste IoT-hub in de registratielijst heeft voorrang boven het toewijzingsbeleid Device Provisioning Service-niveau.
+1. **Laagste latentie**: apparaten worden ingericht voor een IoT-hub op basis van de hub met de laagste latentie voor het apparaat.
+2. **Gelijk gewogen distributie** (standaardinstelling): gekoppelde IoT-hubs hebben evenveel kans dat apparaten voor ze worden ingericht. Dit is de standaardinstelling. Als u apparaten voor slechts één IoT-hub inricht, kunt u deze instelling bewaren. 
+3. **Statische configuratie via de lijst inschrijving**: specificatie van de gewenste IoT-hub in de registratielijst heeft voorrang boven het toewijzingsbeleid op het niveau van de Device Provisioning Service.
 
 Volg deze stappen om het toewijzingsbeleid in te stellen:
 
@@ -64,7 +64,7 @@ Koppel de Device Provisioning Service en IoT Hub zodat de Device Provisioning Se
 
 1. Klik op de pagina **Alle resources** op de Device Provisioning Service die u eerder hebt gemaakt.
 2. Klik op de pagina Device Provisioning Service op **Gekoppelde IoT-hubs**.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
 4. Geef op de pagina **Koppeling toevoegen aan IoT-hub** met behulp van de keuzerondjes aan of de gekoppelde IoT-hub zich in het huidige abonnement of in een ander abonnement bevindt. Kies vervolgens de naam van de IoT-hub in het vak **IoT-hub**.
 5. Klik op **Opslaan**.
 
@@ -81,5 +81,5 @@ In deze zelfstudie heeft u het volgende geleerd:
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md
 > [!div class="nextstepaction"]
-> [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Bind an existing custom SSL certificate to Azure Web Apps]()
 -->

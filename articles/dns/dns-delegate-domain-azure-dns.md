@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 99a3ca0115611f45ed080c39767d13e087b8efb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563212"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464210"
 ---
-# <a name="tutorial-host-your-domain-in-azure-dns"></a>Zelfstudie: Uw domein hosten in Azure DNS
+# <a name="tutorial-host-your-domain-in-azure-dns"></a>Zelfstudie: uw domein hosten in Azure DNS
 
 U kunt Azure DNS gebruiken om uw DNS-domein te hosten en uw DNS-records te beheren. Door uw domeinen in Azure te hosten, kunt u uw DNS-records met dezelfde referenties, API's, hulpprogramma's en facturering beheren als voor uw andere Azure-services.
 
@@ -34,17 +34,17 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-U kunt een beschikbaar om mee te testen die u in Azure DNS hosten kunt-domeinnaam moet hebben. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+U moet een domein naam hebben om te kunnen testen met die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-De voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.net, maar gebruikt u de domeinnaam van uw eigen.
+Het voorbeeld domein dat voor deze zelf studie wordt gebruikt, is contoso.net, maar u kunt uw eigen domein naam gebruiken.
 
 ## <a name="create-a-dns-zone"></a>Een DNS-zone maken
 
-1. Meld u aan bij Azure Portal.
-1. Selecteer in de linkerbovenhoek **Een resource maken** > **Netwerken** > **DNS-zone** om de pagina **DNS-zone maken** te openen.
+1. Ga naar de [Azure Portal](https://portal.azure.com/) om een DNS-zone te maken. Zoek en selecteer **DNS-zones**.
 
    ![DNS-zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
+1. Selecteer **DNS-zone maken**.
 1. Voer op de pagina **DNS-zone maken** de volgende waarden in en selecteer **Maken**:
 
    | **Instelling** | **Waarde** | **Details** |

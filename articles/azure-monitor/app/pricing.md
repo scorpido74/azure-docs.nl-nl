@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 10/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4c56c8f98e536060ea18eb6b9d3a37179eebc89f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: eedb9d811e35d606f4d3e1df55d9303d68678b3c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044332"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478745"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
 
@@ -167,9 +167,9 @@ Als u het dagelijks kapje wilt wijzigen, selecteert u in de sectie **configurere
 
 ![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-003.png)
 
-Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), is de eigenschap die moet worden gewijzigd de `dailyQuota`.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de `warningThreshold` van het dagelijks kapje instellen. 
+Als u [het dagelijks kapje wilt wijzigen via Azure Resource Manager](../../azure-monitor/app/powershell.md), is de eigenschap die u wilt wijzigen de `dailyQuota`.  Via Azure Resource Manager kunt u ook de `dailyQuotaResetTime` en de `warningThreshold`van het dagelijks kapje instellen. 
 
-## <a name="sampling"></a>Sampling
+## <a name="sampling"></a>Steekproeven
 [Steek proeven](../../azure-monitor/app/sampling.md) zijn een methode om de snelheid waarmee telemetrie wordt verzonden naar uw app te verminderen, terwijl u de mogelijkheid houdt om gerelateerde gebeurtenissen te vinden tijdens diagnostische Zoek opdrachten. U behoudt ook de juiste gebeurtenis aantallen.
 
 Steek proeven zijn een efficiënte manier om kosten te verlagen en binnen uw maandelijkse quotum te blijven. De bemonsterings algoritme houdt gerelateerde items van telemetrie bij, zodat u bijvoorbeeld de aanvraag met betrekking tot een bepaalde uitzonde ring kunt vinden wanneer u zoekt. Het algoritme behoudt ook de juiste aantallen, zodat u de juiste waarden ziet in metrische Explorer voor aanvraag tarieven, uitzonderings snelheden en andere aantallen.
@@ -193,7 +193,7 @@ Gebruik een [Analytics-query](analytics.md)om de werkelijke sampling frequentie 
     | summarize 100/avg(itemCount) by bin(timestamp, 1h)
     | render areachart
 
-In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records aan dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
+In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
 
 ## <a name="change-the-data-retention-period"></a>De Bewaar periode voor gegevens wijzigen
 
@@ -229,7 +229,7 @@ De laag per knoop punt (voorheen onderneming) heeft een kosten per knoop punt en
 Zie [Application Insights prijzen](https://azure.microsoft.com/pricing/details/application-insights/)voor actuele prijzen in uw valuta en regio.
 
 > [!NOTE]
-> In april 2018 hebben we een nieuw prijs model [geïntroduceerd](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) voor Azure-bewaking. In dit model wordt een eenvoudig ' pay-as-u-go-' model voor de volledige Port Folio van bewakings Services aangenomen. Meer informatie over het [nieuwe prijs model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), [het beoordelen van de impact van het verplaatsen naar dit model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) op basis van uw gebruiks patronen en [hoe u zich kunt aanmelden bij het nieuwe model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
+> In april 2018 hebben we een nieuw prijs model [geïntroduceerd](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) voor Azure-bewaking. In dit model wordt een eenvoudig ' pay-as-u-go-' model voor de volledige Port Folio van bewakings Services aangenomen. Meer informatie over het [nieuwe prijs model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), [het beoordelen van de impact van het verplaatsen naar dit model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#understanding-your-azure-monitor-costs) op basis van uw gebruiks patronen en [hoe u zich kunt aanmelden bij het nieuwe model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#azure-monitor-pricing-model)
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>De rechten van het abonnement per knooppunt laag en het Operations Management Suite-pakket
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: b741e928ed80a045b61d79f99d2436577ca864b0
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d97470494af0d64cc20d78d69957d84a8acebc16
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494899"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
 
@@ -40,13 +40,13 @@ Wanneer u vanaf een client verbinding maakt met HDInsight via een Azure-Virtual 
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-Vervang `<headnode-FQDN>` door het Fully Qualified Domain Name van een cluster hoofd knooppunt. Als u de Fully Qualified Domain Name van een hoofd knooppunt wilt vinden, gebruikt u de informatie in het bestand [HDInsight beheren met behulp van het Apache Ambari rest API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) -document.
+Vervang `<headnode-FQDN>` door de Fully Qualified Domain Name van een cluster hoofd knooppunt. Als u de Fully Qualified Domain Name van een hoofd knooppunt wilt vinden, gebruikt u de informatie in het bestand [HDInsight beheren met behulp van het Apache Ambari rest API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) -document.
 
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Naar HDInsight Enterprise Security Package (ESP)-cluster met behulp van Kerberos
 
-Wanneer u verbinding maakt tussen een client en een Enterprise Security Package (ESP)-cluster dat is gekoppeld aan Azure Active Directory (AAD)-DS op een computer in dezelfde realm van het cluster, moet u ook de domein naam opgeven `<AAD-Domain>` en de naam van een domein gebruikers account met machtigingen voor toegang tot de cluster `<username>`:
+Wanneer u vanaf een client verbinding maakt met een Enterprise Security Package (ESP)-cluster dat is gekoppeld aan Azure Active Directory (AAD)-DS op een computer in dezelfde realm van het cluster, moet u ook de domein naam `<AAD-Domain>` en de naam van een domein gebruikers account met machtigingen opgeven voor toegang tot het cluster `<username>`:
 
 ```bash
 kinit <username>
@@ -59,7 +59,7 @@ Vervang `<username>` door de naam van een account in het domein met machtigingen
 
 ### <a name="over-public-or-private-endpoints"></a>Via open bare of persoonlijke eind punten
 
-Wanneer u verbinding maakt met een cluster met behulp van de open bare of persoonlijke eind punten, moet u de naam van het cluster aanmeldings account (standaard `admin`) en het wacht woord opgeven. Bijvoorbeeld, met behulp van Beeline van een-client systeem om verbinding te maken met het `<clustername>.azurehdinsight.net` adres. Deze verbinding wordt tot stand gebracht via poort `443`en is versleuteld met SSL:
+Wanneer u verbinding maakt met een cluster met behulp van de open bare of persoonlijke eind punten, moet u de naam van het cluster aanmeldings account (standaard `admin`) en het wacht woord opgeven. Gebruik bijvoorbeeld Beeline van een-client systeem om verbinding te maken met het `<clustername>.azurehdinsight.net`-adres. Deze verbinding wordt tot stand gebracht via poort `443` en is versleuteld met SSL:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
@@ -73,7 +73,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `<username>` door het cluster aanmeldings account voor uw cluster. Opmerking voor ESP-clusters wordt de volledige UPN (bijvoorbeeld user@domain.com) gebruikt. Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
-Persoonlijke eind punten verwijzen naar een basis load balancer die alleen toegankelijk is vanuit de VNETs die in dezelfde regio is gepeerd. Zie [voor](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) meer informatie. U kunt `curl` opdracht met `-v` optie voor het oplossen van verbindings problemen met open bare of persoonlijke eind punten voordat u Beeline gebruikt.
+Persoonlijke eind punten verwijzen naar een basis load balancer die alleen toegankelijk is vanuit de VNETs die in dezelfde regio is gepeerd. Zie [beperkingen voor wereld wijde VNet-peering en load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. U kunt de `curl` opdracht met `-v` optie om verbindings problemen met open bare of persoonlijke eind punten op te lossen voordat u Beeline gebruikt.
 
 ---
 
@@ -97,13 +97,13 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `<username>` door het cluster aanmeldings account voor uw cluster. Opmerking voor ESP-clusters wordt de volledige UPN (bijvoorbeeld user@domain.com) gebruikt. Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
-Persoonlijke eind punten verwijzen naar een basis load balancer die alleen toegankelijk is vanuit de VNETs die in dezelfde regio is gepeerd. Zie [voor](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) meer informatie. U kunt `curl` opdracht met `-v` optie voor het oplossen van verbindings problemen met open bare of persoonlijke eind punten voordat u Beeline gebruikt.
+Persoonlijke eind punten verwijzen naar een basis load balancer die alleen toegankelijk is vanuit de VNETs die in dezelfde regio is gepeerd. Zie [beperkingen voor wereld wijde VNet-peering en load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. U kunt de `curl` opdracht met `-v` optie om verbindings problemen met open bare of persoonlijke eind punten op te lossen voordat u Beeline gebruikt.
 
 ---
 
 #### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>Van cluster kop of binnen Azure Virtual Network met Apache Spark
 
-Wanneer u rechtstreeks verbinding maakt met het hoofd knooppunt van het cluster of van een resource binnen hetzelfde Azure-Virtual Network als het HDInsight-cluster, moet poort `10002` worden gebruikt voor Spark Thrift-server in plaats van `10001`. In het volgende voor beeld ziet u hoe u rechtstreeks verbinding maakt met het hoofd knooppunt:
+Wanneer u rechtstreeks verbinding maakt vanuit het hoofd knooppunt van het cluster of van een resource binnen hetzelfde Azure-Virtual Network als het HDInsight-cluster, moet poort `10002` worden gebruikt voor Spark Thrift-server in plaats van `10001`. In het volgende voor beeld ziet u hoe u rechtstreeks verbinding maakt met het hoofd knooppunt:
 
 ```bash
 /usr/hdp/current/spark2-client/bin/beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
@@ -137,9 +137,9 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-3. Beeline-opdrachten beginnen met een `!` teken, bijvoorbeeld `!help` Help weer gegeven. De `!` kan echter voor sommige opdrachten worden wegge laten. `help` werkt bijvoorbeeld ook.
+3. Beeline-opdrachten beginnen met een `!`-teken, bijvoorbeeld `!help` Help weer gegeven. De `!` kan echter worden wegge laten voor sommige opdrachten. `help` werkt bijvoorbeeld ook.
 
-    Er is `!sql`, die wordt gebruikt om HiveQL-instructies uit te voeren. HiveQL wordt echter vaak gebruikt, zodat u de voor gaande `!sql`kunt weglaten. De volgende twee instructies zijn gelijk:
+    Er is `!sql`, die wordt gebruikt om HiveQL-instructies uit te voeren. HiveQL wordt echter vaak gebruikt, zodat u de voor gaande `!sql` kunt weglaten. De volgende twee instructies zijn gelijk:
 
     ```hiveql
     !sql show tables;
@@ -195,11 +195,11 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
 
     Met deze instructies worden de volgende acties uitgevoerd:
 
-    * `DROP TABLE`-als de tabel bestaat, wordt deze verwijderd.
+    * `DROP TABLE`: als de tabel bestaat, wordt deze verwijderd.
 
     * `CREATE EXTERNAL TABLE`-maakt een **externe** tabel in Hive. Externe tabellen slaan de tabel definitie in Hive alleen op. De gegevens blijven op de oorspronkelijke locatie.
 
-    * `ROW FORMAT`: de indeling van de gegevens. In dit geval worden de velden in elk logboek gescheiden door een spatie.
+    * `ROW FORMAT`-de manier waarop de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
 
     * `STORED AS TEXTFILE LOCATION`-waar de gegevens worden opgeslagen en in welke bestands indeling.
 
@@ -236,7 +236,7 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. Gebruik `!exit`om Beeline af te sluiten.
+6. Gebruik `!exit` om Beeline af te sluiten.
 
 ## <a id="file"></a>Een HiveQL-bestand uitvoeren
 
@@ -273,7 +273,7 @@ Dit is een voortzetting van het vorige voor beeld. Gebruik de volgende stappen o
     ```
 
     > [!NOTE]  
-    > Met de para meter `-i` start u Beeline en voert u de instructies in het `query.hql`-bestand uit. Zodra de query is voltooid, ontvangt u de `jdbc:hive2://headnodehost:10001/>` prompt. U kunt ook een bestand uitvoeren met de para meter `-f`, die Beeline verlaat nadat de query is voltooid.
+    > De para meter `-i` start Beeline en voert de instructies in het `query.hql`-bestand uit. Zodra de query is voltooid, ontvangt u de `jdbc:hive2://headnodehost:10001/>`-prompt. U kunt ook een bestand uitvoeren met de para meter `-f`, die Beeline afsluit nadat de query is voltooid.
 
 5. Als u wilt controleren of de **errorLogs** -tabel is gemaakt, gebruikt u de volgende instructie om alle rijen uit **errorLogs**te retour neren:
 

@@ -1,125 +1,137 @@
 ---
-title: Instellen van een apparaat voor Azure Migrate evaluatie/servermigratie voor virtuele VMware-machines | Microsoft Docs
-description: Beschrijft hoe u voor het instellen van een apparaat voor detectie, beoordeling en zonder agents migratie van virtuele VMware-machines met behulp van Azure Migrate evaluatie/servermigratie.
+title: Een apparaat instellen voor Azure Migrate server evaluatie/migratie voor VMware-Vm's | Microsoft Docs
+description: Hierin wordt beschreven hoe u een apparaat instelt voor detectie, evaluatie en migratie van agentloze virtuele VMware-machines met Azure Migrate server evaluatie/migratie.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: fe190381df346278e75a3e6fd9876b80c33bd86b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 77bf9a0f73519aa979da49614475daf70f582a9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811724"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467118"
 ---
-# <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-VM 's
+# <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-Vm's
 
-Dit artikel wordt beschreven hoe u het apparaat Azure Migrate instelt als u beoordeling van de virtuele VMware-machines met het hulpprogramma Azure Migrate-Server-evaluatie, of u virtuele VMware-machines naar Azure migreert met de zonder agent migratie met behulp van het hulpprogramma voor migratie van Azure-Server migreren.
+In dit artikel wordt beschreven hoe u het Azure Migrate apparaat instelt als u virtuele VMware-machines evalueert met het hulp programma Azure Migrate server Assessment of virtuele VMware-machines naar Azure migreert met agentloze migratie met behulp van het hulp programma voor migratie van de Azure Migrate server.
 
-De VMware-VM-apparaat is een lichtgewicht apparaat die wordt gebruikt door Azure Migrate evaluatie/servermigratie het volgende doen:
+Het VMware VM-apparaat is een licht gewicht apparaat dat wordt gebruikt door Azure Migrate server-evaluatie/-migratie om het volgende te doen:
 
-- On-premises VMware-VM's detecteren.
-- Metagegevens-en prestatiegegevens voor gedetecteerde virtuele machines naar Azure migreren evaluatie/servermigratie verzenden.
+- Ontdek on-premises virtuele VMware-machines.
+- Meta gegevens en prestatie gegevens voor gedetecteerde Vm's verzenden naar Azure Migrate server evaluatie/migratie.
 
-[Meer informatie](migrate-appliance.md) over het apparaat Azure Migrate.
+Meer [informatie](migrate-appliance.md) over het Azure migrate apparaat.
 
 
-## <a name="appliance-deployment-steps"></a>Stappen voor de implementatie van apparaat
+## <a name="appliance-deployment-steps"></a>Implementatie stappen voor het apparaat
 
-Instellen van het apparaat u:
-- Een sjabloon voor OVA-bestanden downloaden en importeren naar de vCenter-Server.
-- Maken van het apparaat en controleer dat deze verbinding met Azure Migrate-Server-evaluatie maken kan. 
-- Het apparaat voor het eerst configureren en registreren bij de Azure Migrate-project.
+Als u het apparaat wilt instellen, doet u het volgende:
+- Down load een bestand met een eicellen-sjabloon en importeer het naar vCenter Server.
+- Maak het apparaat en controleer of het verbinding kan maken met Azure Migrate server beoordeling.
+- Configureer het apparaat voor de eerste keer en registreer het bij het Azure Migrate-project.
 
-## <a name="download-the-ova-template"></a>Het OVA-sjabloon downloaden
+## <a name="download-the-ova-template"></a>De eicellen-sjabloon downloaden
 
-1. In **migratie doelstellingen** > **Servers** > **Azure Migrate: Server-evaluatie**, klikt u op **ontdekken**.
-2. In **machines detecteren** > **zijn de machines gevirtualiseerd?** , klikt u op **Ja, met VMWare vSphere-hypervisor**.
-3. Klik op **downloaden** voor het downloaden van de. Sjabloon voor OVA-bestanden.
+1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **ontdekken**.
+2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met VMWare vSphere-hypervisor**.
+3. Klik op **Downloaden** om het .OVA-sjabloonbestand te downloaden.
 
 
 
 ### <a name="verify-security"></a>Beveiliging controleren
 
-Controleer of het OVA-bestand beveiligd is voordat u deze implementeert.
+Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
-2. Voer de volgende opdracht, voor het genereren van de hash voor het ova-bestand:
+2. Voer de volgende opdracht uit om de hash voor de eicellen te genereren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Voor versie 1.0.0.5 van het toestel, de gegenereerde hash moet overeenkomen met deze instellingen. 
+3. Voor de toestel versie 1.0.0.5 moet de gegenereerde hash overeenkomen met deze instellingen.
 
   **Algoritme** | **Hash-waarde**
   --- | ---
   MD5 | ddfdf21c64af02a222ed517ce300c977
 
 
-## <a name="create-the-appliance-vm"></a>De VM-toepassing maken
+## <a name="create-the-appliance-vm"></a>De apparaat-VM maken
 
-Importeer het gedownloade bestand en een virtuele machine maken.
+Importeer het gedownloade bestand en maak een virtuele machine.
 
 1. Klik in de Client vSphere-console op **Bestand** > **OVF-sjabloon implementeren**.
-2. In de Wizard OVF-sjabloon implementeren > **bron**, geef de locatie van het OVA-bestand.
-3. In **naam** en **locatie**, Geef een beschrijvende naam voor de virtuele machine. Selecteer de inventaris-object waarin de virtuele machine wordt gehost.
-5. In **Host/Cluster**, geeft u de host of cluster op waarmee de virtuele machine wordt uitgevoerd.
-6. In **opslag**, geef de opslaglocatie voor de virtuele machine.
+2. Geef in de wizard OVF-sjabloon implementeren > **bron**de locatie op van het bestand van de eicellen.
+3. Geef bij **naam** en **locatie**een beschrijvende naam op voor de virtuele machine. Selecteer het inventaris object waarin de VM wordt gehost.
+5. Geef in **host/cluster**de host of het cluster op waarop de virtuele machine wordt uitgevoerd.
+6. Geef in **opslag**de opslag bestemming voor de virtuele machine op.
 7. Geef in **Schijfindeling** het schijftype en de schijfgrootte op.
-8. In **netwerktoewijzing**, waarmee de virtuele machine verbinding maken via het netwerk opgeven. Het netwerk moet verbinding met internet, metagegevens verzenden naar Azure Migrate-Server-evaluatie.
+8. Geef bij **netwerk toewijzing**het netwerk op waarmee de virtuele machine verbinding maakt. Het netwerk heeft Internet connectiviteit nodig om meta gegevens te verzenden naar Azure Migrate server-evaluatie.
 9. Controleer en bevestig de instellingen en klik op **Voltooien**.
 
 
-### <a name="verify-appliance-access-to-azure"></a>Apparaat toegang tot Azure controleren
+### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
-Zorg ervoor dat het apparaat VM verbinding met maken kan [Azure-URL's](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
 
 
-## <a name="configure-the-appliance"></a>Configureer het apparaat
+## <a name="configure-the-appliance"></a>Het apparaat configureren
 
 Het apparaat voor de eerste keer instellen.
 
 1. Klik in de vSphere Client-console met de rechtermuisknop op de VM > **Console openen**.
-2. Geef de taal, de tijdzone en het wachtwoord voor het apparaat.
-3. Open een browser op elke computer die u kunt verbinding maken met de virtuele machine en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
+2. Geef de taal, de tijd zone en het wacht woord op voor het apparaat.
+3. Open een browser op een computer die verbinding kan maken met de virtuele machine en open de URL van de Web-App van het apparaat: **https:// *-apparaatnaam of IP-adres*: 44368**.
 
-   U kunt ook de app openen vanaf het bureaublad apparaat door te klikken op de snelkoppeling naar de app.
-4. In de web-app > **vereisten instellen**, doet u het volgende:
-    - **Licentie**: Accepteer de licentievoorwaarden en lees de informatie van derden.
-    - **Connectiviteit**: De app controleert of de virtuele machine toegang heeft tot internet heeft. Als de virtuele machine gebruikmaakt van een proxy:
-        - Klik op **Proxy-instellingen**, en geeft u het proxyadres en de luisterende poorten in het formulier http://ProxyIPAddress of http://ProxyFQDN.
+   U kunt de app ook vanuit het toestel bureau blad openen door te klikken op de snelkoppeling naar de app.
+4. Ga als volgt te werk in de web-app > vereisten in te **stellen**:
+    - **Licentie**: accepteer de licentie voorwaarden en lees de informatie van derden.
+    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
+        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in de notatie http://ProxyIPAddress of http://ProxyFQDN.
         - Geef referenties op als de proxy verificatie nodig heeft.
         - Alleen HTTP-proxy wordt ondersteund.
-    - **Tijd synchronisatie**: Tijd is geverifieerd. De tijd op het apparaat moet worden gesynchroniseerd met de tijd voor de detectie van goed te laten werken.
-    - **Updates installeren**: Azure Migrate controleert dat de meest recente updates voor apparaat zijn geïnstalleerd.
-    - **Installeer VDDK**: Azure Migrate wordt gecontroleerd of de VMWare vSphere virtuele schijf Development Kit (VDDK) is geïnstalleerd.
-        - Azure Migrates gebruikt de VDDK voor virtuele machines tijdens de migratie naar Azure repliceren.
-        - Download VDDK 6.7 van VMware en pak het gedownloade zip-inhoud naar de opgegeven locatie op het apparaat.
+    - **Tijd synchronisatie**: tijd wordt gecontroleerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat detectie goed werkt.
+    - **Updates installeren**: Azure migrate controleert of de nieuwste updates van het apparaat zijn geïnstalleerd.
+    - **Installeer VdDK**: Azure migrate controleert of de VMware VSphere Virtual Disk Development Kit (vddk) is geïnstalleerd.
+        - Azure Migrates maakt gebruik van de VDDK om machines te repliceren tijdens de migratie naar Azure.
+        - Down load VDDK 6,7 van VMware en extraheer de gedownloade zip-inhoud naar de opgegeven locatie op het apparaat.
 
-## <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren met Azure Migrate
+## <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
-1. Klik op **aanmelden**. Als deze niet wordt weergegeven, zorg er dan voor dat u uitgeschakeld hebt met het pop-upblokkering in de browser.
-2. Meld u aan met uw Azure-referenties op het nieuwe tabblad. 
-    - Meld u aan met uw gebruikersnaam en wachtwoord.
-    - Meld u aan met een PINCODE wordt niet ondersteund.
-3. Wanneer is aangemeld, gaat u terug naar de web-app.
-2. Selecteer het abonnement waarin de Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
-3. Geef een naam voor het apparaat. De naam moet alfanumeriek met 14 tekens of minder.
+1. Klik op **Aanmelden**. Als deze niet wordt weer gegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
+2. Meld u aan met uw Azure-referenties op het tabblad Nieuw.
+    - Meld u aan met uw gebruikers naam en wacht woord.
+    - Aanmelden met een pincode wordt niet ondersteund.
+3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
+2. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
+3. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
 4. Klik op **registreren**.
 
 
-## <a name="start-continuous-discovery"></a>Continue detectie starten
+## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>Continue detectie starten door vCenter Server en VM-referentie op te geven
 
-Nu verbinding maken tussen het apparaat en vCenter-Server en start de VM-detectie. 
+Het apparaat moet verbinding maken met vCenter Server om de configuratie-en prestatie gegevens van de virtuele machines te detecteren.
 
-1. In **opgeven van de vCenter-Serverdetails**, geef de FQDN-naam of IP-adres van de vCenter-Server. U kunt laat de standaardpoort, of een aangepaste poort op waarop de vCenter-Server luistert.
-2. In **gebruikersnaam** en **wachtwoord**, geef de alleen-lezen accountreferenties die het apparaat wordt gebruikt voor het detecteren van virtuele machines op de vCenter-server. Zorg ervoor dat het account heeft de [vereiste machtigingen voor de detectie van](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions).
-3. Klik op **-verbinding valideren** om ervoor te zorgen dat het apparaat verbinding met vCenter-Server maken kan.
-4. Nadat de verbinding tot stand is gebracht, klikt u op **opslaan en detectie starten**.
+### <a name="specify-vcenter-server-details"></a>vCenter Server-gegevens opgeven
+1. Geef in **vCenter Server Details opgeven**de naam (FQDN) of het IP-adres van de vCenter Server op. U kunt de standaard poort verlaten of een aangepaste poort opgeven waarop uw vCenter Server luistert.
+2. Geef bij **gebruikers naam** en **wacht woord**de alleen-lezen account referenties op die het apparaat gebruikt voor het detecteren van vm's op de vCenter-Server. Zorg ervoor dat het account de [vereiste machtigingen voor detectie](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)heeft. U kunt de detectie bereiken door de toegang tot het vCenter-account dienovereenkomstig te beperken. meer informatie over het detecteren van scopes [vindt u hier](tutorial-assess-vmware.md#scoping-discovery).
+3. Klik op **verbinding valideren** om te controleren of het apparaat verbinding kan maken met vCenter Server.
 
+### <a name="specify-vm-credentials"></a>VM-referenties opgeven
+Voor de detectie van toepassingen, functies en onderdelen en het visualiseren van afhankelijkheden van de virtuele machines, kunt u een VM-referentie opgeven die toegang heeft tot de virtuele VMware-machines. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) over de benodigde toegangs rechten.
 
-Hiermee start u detectie. Het duurt ongeveer 15 minuten voor metagegevens van de gedetecteerde virtuele machines in de portal worden weergegeven. 
+> [!NOTE]
+> Deze invoer is optioneel en is nodig voor het inschakelen van toepassings detectie en visualisatie van de afhankelijkheid van agents.
 
+1. In **toepassingen en afhankelijkheden detecteren op vm's**, klikt u op **referenties toevoegen**.
+2. Selecteer het **besturings systeem**.
+3. Geef een beschrijvende naam op voor de referentie.
+4. Geef in **gebruikers naam** en **wacht woord**een account op met ten minste gast toegang op de vm's.
+5. Klik op **Toevoegen**.
+
+Nadat u de vCenter Server-en VM-referenties (optioneel) hebt opgegeven, klikt u op **opslaan en detectie starten** om de detectie van de on-premises omgeving te starten.
+
+Het duurt ongeveer 15 minuten voor de meta gegevens van gedetecteerde Vm's die in de portal worden weer gegeven. De detectie van geïnstalleerde toepassingen, functies en onderdelen vergt enige tijd, de duur is afhankelijk van het aantal Vm's dat wordt gedetecteerd. Voor 500 Vm's duurt het ongeveer 1 uur voordat de toepassings voorraad wordt weer gegeven in de Azure Migrate Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de zelfstudies voor [VMware evaluatie](tutorial-assess-vmware.md) en [zonder agent migratie](tutorial-migrate-vmware.md).
+Bekijk de zelf studies voor [VMware-evaluatie](tutorial-assess-vmware.md) en migratie zonder [agent](tutorial-migrate-vmware.md).

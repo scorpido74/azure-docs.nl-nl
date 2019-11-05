@@ -1,97 +1,112 @@
 ---
-title: Azure SQL datawarehouse - MPP-architectuur | Microsoft Docs
-description: Meer informatie over hoe Azure SQL Data Warehouse combineert met massively parallelle verwerking (MPP) met Azure-opslag om hoge prestaties en schaalbaarheid te realiseren.
+title: Azure Synapse Analytics-architectuur (voorheen SQL DW) | Microsoft Docs
+description: Meer informatie over hoe Azure Synapse Analytics (voorheen SQL DW) enorm parallelle verwerking (MPP) combineert met Azure Storage om hoge prestaties en schaal baarheid te garanderen.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 25dc469c9f50dee7d088fccd214020791ff73def
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b463b0806d39ba20ae714c8785e5c0d227ce481b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515795"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466398"
 ---
-# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL datawarehouse - krachtige parallelle verwerking (MPP)-architectuur
-Meer informatie over hoe Azure SQL Data Warehouse combineert met massively parallelle verwerking (MPP) met Azure-opslag om hoge prestaties en schaalbaarheid te realiseren. 
+# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Architectuur van Azure Synapse Analytics (voorheen SQL DW) 
+
+Azure Synapse is een oneindige analyse service waarmee bedrijfs gegevensopslag en Big data-analyses worden gecombineerd. Het biedt u de vrijheid om gegevens op te vragen over uw voor waarden, met behulp van serverloze on-demand of ingerichte resources, op schaal. Azure Synapse brengt deze twee werelden samen met een uniforme ervaring om gegevens op te nemen, voor te bereiden, te beheren en te verwerken voor direct BI en machine learning behoeften.
+
+ Azure Synapse heeft vier onderdelen:
+- SQL Analytics: op T-SQL gebaseerde analyses volt ooien 
+    - SQL-groep (betalen per DWU ingericht): algemeen beschikbaar
+    - SQL on-demand (betalen per TB verwerkte) – (preview-versie)
+- Spark: diep geïntegreerde Apache Spark (preview-versie) 
+- Gegevens integratie: hybride gegevens integratie (preview-versie)
+- Studio: uniforme gebruikers ervaring.  (Preview)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
-## <a name="mpp-architecture-components"></a>Onderdelen van de MPP-architectuur
-SQL Data Warehouse maakt gebruik van een uitbreidbare architectuur voor de distributie van rekenkundige verwerking van gegevens over meerdere knooppunten. De eenheid van de schaal is een abstractie van de compute-kracht die bekend als staat een [datawarehouse unit](what-is-a-data-warehouse-unit-dwu-cdwu.md). SQL Data Warehouse scheidt compute uit de opslag zodat waar u om te schalen in uw systeem onafhankelijk van de gegevens COMPUTE.
+## <a name="sql-analytics-mpp-architecture-components"></a>Onderdelen van SQL Analytics MPP-architectuur
 
-![Architectuur van SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) maakt gebruik van een uitbreid bare architectuur voor het distribueren van reken kundige verwerking van gegevens over meerdere knoop punten. De schaal eenheid is een abstractie van reken kracht die wordt aangeduid als [Data Warehouse-eenheid](what-is-a-data-warehouse-unit-dwu-cdwu.md). Compute is gescheiden van opslag waarmee u de reken kracht onafhankelijk van de gegevens in uw systeem kunt schalen.
 
-SQL Data Warehouse maakt gebruik van een architectuur op basis van een knooppunt. Toepassingen verbinding maken en uitgeven van T-SQL-opdrachten op een beheerknooppunt, het één punt van de vermelding voor het datawarehouse is. Het beheerknooppunt wordt de MPP-engine die optimaliseert query's voor parallelle verwerking en geeft vervolgens bewerkingen voor Compute-knooppunten voor hun werk parallel uitgevoerd. De rekenknooppunten alle gebruikersgegevens worden opgeslagen in Azure Storage opslaat en de parallelle query's uitvoeren. Data Movement Service (DMS) is een interne op systeemniveau-service die gegevens naar de verschillende knooppunten die nodig is verplaatst voor query's parallel uitvoeren en nauwkeurige resultaten worden geretourneerd. 
+![Architectuur van SQL Analytics](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Als u opslag en rekenactiviteiten loskoppelt van elkaar, kan SQL Data Warehouse:
+SQL Analytics maakt gebruik van een architectuur op basis van een knoop punt. Toepassingen maken verbinding met T-SQL-opdrachten en geven ze aan een besturings element knoop punt. Dit is het enige invoer punt voor SQL Analytics. Het controle knooppunt voert de MPP-engine uit die query's voor parallelle verwerking optimaliseert en vervolgens bewerkingen aan reken knooppunten doorgeeft om hun werk parallel uit te voeren. 
 
-* Onafhankelijk van elkaar grootte compute-kracht, ongeacht uw opslagbehoeften.
-* De rekencapaciteit vergroten of verkleinen zonder gegevens te verplaatsen.
-* De rekencapaciteit onderbreken terwijl gegevens intact, zodat u alleen betaalt voor opslag.
+De reken knooppunten slaan alle gebruikers gegevens op in Azure Storage en voeren parallelle query's uit. De gegevens verplaatsings service (DMS) is een interne service op systeem niveau waarmee gegevens over de knoop punten zo nodig worden verplaatst om query's parallel uit te voeren en nauw keurige resultaten te retour neren. 
+
+Met een ontkoppelde opslag en reken kracht kunt u met behulp van SQL Analytics één het volgende doen:
+
+* Reken kracht onafhankelijk van de grootte van uw opslag behoeften.
+* De reken kracht binnen een SQL-groep (Data Warehouse) verg Roten of verkleinen zonder gegevens te verplaatsen.
+* De reken capaciteit onderbreken terwijl de gegevens intact blijven, zodat u alleen betaalt voor opslag.
 * De rekencapaciteit hervatten tijdens werktijden.
 
-### <a name="azure-storage"></a>Azure Storage
-SQL Data Warehouse maakt gebruik van Azure storage om uw gebruikersgegevens te beschermen.  Nadat uw gegevens worden opgeslagen en beheerd door Azure storage, SQL Data Warehouse in rekening gebracht afzonderlijk voor gebruik van de opslag. De gegevens zelf is in een shard **distributies** om de prestaties van het systeem te optimaliseren. U kunt kiezen welke sharding-patroon gebruiken voor het distribueren van de gegevens wanneer u de tabel definieert. SQL Data Warehouse biedt ondersteuning voor deze sharding-patronen voor:
+### <a name="azure-storage"></a>Azure-opslag
+
+SQL Analytics maakt gebruik van Azure Storage om uw gebruikers gegevens veilig te maken.  Aangezien uw gegevens worden opgeslagen en beheerd door Azure Storage, worden er afzonderlijke kosten in rekening gebracht voor uw opslag verbruik. De gegevens zelf worden Shard in **distributies** om de prestaties van het systeem te optimaliseren. U kunt kiezen welk sharding-patroon u wilt gebruiken om de gegevens te distribueren wanneer u de tabel definieert. Deze sharding-patronen worden ondersteund:
 
 * Hash
 * Round robin
 * Repliceren
 
-### <a name="control-node"></a>Beheerknooppunt
+### <a name="control-node"></a>Knoop punt beheren
 
-Het beheerknooppunt is het brein van het datawarehouse. Het is de front-end met interactie met alle toepassingen en verbindingen. De MPP-engine wordt uitgevoerd op het beheerknooppunt te optimaliseren en coördinatie van parallelle query's. Wanneer u een T-SQL-query naar SQL Data Warehouse verzendt, wordt het in het beheerknooppunt getransformeerd tot query's die voor elke distributie parallel uitgevoerd.
+Het knoop punt beheer is het brein van de architectuur. Het is de front-end met interactie met alle toepassingen en verbindingen. De MPP-engine wordt uitgevoerd op het beheer knooppunt om parallelle query's te optimaliseren en te coördineren. Wanneer u een T-SQL-query naar SQL Analytics verzendt, transformeert het knoop punt beheer deze in query's die parallel op elke distributie worden uitgevoerd.
 
-### <a name="compute-nodes"></a>Rekenknooppunten
+### <a name="compute-nodes"></a>Reken knooppunten
 
-De Compute-knooppunten bieden de rekenkracht. Distributies worden toegewezen aan rekenknooppunten voor verwerking. Als u voor meer rekenresources betaalt, wijst SQL Data Warehouse opnieuw de distributies naar de beschikbare Compute-knooppunten. Het aantal knooppunten kan variëren van 1 tot 60 compute en wordt bepaald door het serviceniveau voor het datawarehouse.
+De reken knooppunten bieden de reken kracht. Distributies worden toegewezen aan reken knooppunten voor verwerking. Wanneer u betaalt voor meer reken bronnen, wijst SQL Analytics de distributies opnieuw toe aan de beschik bare reken knooppunten. Het aantal Compute-knoop punten ligt tussen 1 en 60, en wordt bepaald door het service niveau voor SQL Analytics.
 
-Elk knooppunt heeft een knooppunt-ID die wordt weergegeven in systeemweergaven. U ziet de Compute-knooppunt-ID voor de kolom $node_id in systeemweergaven waarvan de namen met sys.pdw_nodes beginnen. Zie voor een lijst van deze systeemweergaven, [MPP systeemweergaven](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Elk Compute-knoop punt heeft een knoop punt-ID die zichtbaar is in systeem weergaven. U kunt de ID van het reken knooppunt zien door te zoeken naar de kolom node_id in systeem weergaven waarvan de naam begint met sys. pdw _nodes. Zie [MPP System views](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7)(Engelstalig) voor een lijst met deze systeem weergaven.
 
-### <a name="data-movement-service"></a>Data Movement Service
-Data Movement Service (DMS) is de technologie voor het transport van gegevens die coördineert de verplaatsing van gegevens tussen de rekenknooppunten. Sommige query's is de verplaatsing van gegevens om te controleren of de parallelle query's retourneren nauwkeurige resultaten. Bij het verplaatsen van gegevens is vereist, DMS zorgt ervoor dat de juiste gegevens naar de juiste locatie opgehaald. 
+### <a name="data-movement-service"></a>Gegevens verplaatsings service
+Gegevens verplaatsings service (DMS) is de gegevens transport technologie die de gegevens verplaatsing tussen de reken knooppunten coördineert. Voor sommige query's is gegevens verplaatsing vereist om ervoor te zorgen dat de parallelle query's accurate resultaten retour neren. Wanneer gegevens verplaatsing vereist is, zorgt DMS ervoor dat de juiste gegevens naar de juiste locatie worden opgehaald. 
 
 ## <a name="distributions"></a>Distributies
 
-Een distributiepunt is de basiseenheid voor opslag en verwerking voor parallelle query's die wordt uitgevoerd op gedistribueerde gegevens. Wanneer een query wordt uitgevoerd in SQL Data Warehouse, wordt het werk is onderverdeeld in 60 kleinere query's die parallel worden uitgevoerd. Elk van de 60 kleinere query's wordt uitgevoerd op een van de gegevens-distributies. Elk rekenknooppunt beheert een of meer van de 60 distributies. Een datawarehouse met maximale rekenresources heeft één distributie per knooppunt. Een datawarehouse met minimale rekenresources heeft alle distributies op een rekenknooppunt.  
+Een distributie is de basis eenheid voor opslag en verwerking voor parallelle query's die worden uitgevoerd op gedistribueerde gegevens. Wanneer met SQL Analytics een query wordt uitgevoerd, wordt het werk onderverdeeld in 60 kleinere query's die parallel worden uitgevoerd. 
+
+Elk van de 60 kleinere query's worden uitgevoerd op een van de gegevens distributies. Elk Compute-knoop punt beheert een of meer van de 60-distributies. Een SQL-groep met maximale Compute-resources heeft één distributie per reken knooppunt. Een SQL-groep met minimale Compute-resources heeft alle distributies op één reken knooppunt.  
 
 ## <a name="hash-distributed-tables"></a>Hash-gedistribueerde tabellen
-Een tabel kan de hoogste prestaties van query's voor samenvoegingen en aggregaties op grote tabellen leveren. 
+Een gedistribueerde hash-tabel kan de hoogste query prestaties bieden voor samen voegingen en aggregaties op grote tabellen. 
 
-Gegevens in een gedistribueerde hash-tabel gebruikt SQL Data Warehouse een hash-functie deterministische wijze elke rij toewijzen aan een distributiepunt. In het tabeldefinitie van de is een van de kolommen ingesteld als de distributiekolom. De hash-functie maakt gebruik van de waarden in de distributiekolom elke rij toewijzen aan een distributiepunt.
+Als u gegevens wilt Shard in een hash-gedistribueerde tabel, gebruikt SQL Analytics een hash-functie om elke rij per onbewerkte toewijzing toe te wijzen aan één verdeling. In de tabel definitie wordt een van de kolommen aangeduid als de kolom distributie. De hash-functie gebruikt de waarden in de kolom distributie om elke rij toe te wijzen aan een distributie.
 
-Het volgende diagram illustreert hoe een volledige (niet-gedistribueerde tabel) wordt opgeslagen als een tabel met hash worden verdeeld. 
+In het volgende diagram ziet u hoe een volledige (niet-gedistribueerde tabel) wordt opgeslagen als een hash-Distributed Table. 
 
-![Gedistribueerde tabel](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "gedistribueerde tabel")  
+![Gedistribueerde tabel](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Gedistribueerde tabel")  
 
-* Elke rij behoort tot één distributiepunt.  
-* Elke rij een deterministische hash-algoritme toegewezen aan een distributiepunt.  
-* Het aantal rijen per distributie varieert zoals aangegeven in de verschillende formaten van tabellen.
+* Elke rij behoort tot één distributie.  
+* Een deterministische hash-algoritme wijst elke rij toe aan één verdeling.  
+* Het aantal tabel rijen per distributie varieert, zoals wordt weer gegeven in de verschillende grootten van tabellen.
 
-Er zijn prestatie-overwegingen voor de selectie van een distributiekolom, zoals onderscheidbaarheid gegevensverschil en de typen query's die worden uitgevoerd op het systeem.
+Er zijn prestatie overwegingen voor de selectie van een distributie kolom, zoals de distinctiteit, de schei ding van gegevens en de typen query's die op het systeem worden uitgevoerd.
 
-## <a name="round-robin-distributed-tables"></a>Round robin gedistribueerde tabellen
-Een round robin-tabel is de eenvoudigste tabel te maken en biedt een snelle prestaties bij gebruik als een tijdelijke tabel bij belastingen.
+## <a name="round-robin-distributed-tables"></a>Round-Robin gedistribueerde tabellen
+Een Round Robin-tabel is de eenvoudigste tabel om snelle prestaties te maken en op te halen wanneer deze wordt gebruikt als faserings tabel voor belasting.
 
-Een distributietabel round robin distribueert gegevens gelijkmatig in de tabel, maar zonder eventuele verdere optimalisatie. Een distributiepunt wordt eerst willekeurig geselecteerd en klik vervolgens buffers van rijen zijn toegewezen aan distributies sequentieel worden verwerkt. Het is snel gegevens laden in een round robin-tabel, maar de prestaties van query's voor het vaak beter met gedistribueerde hashtabellen kan worden. Joins op round robin-tabellen vereisen reshuffling gegevens en dit meer tijd in beslag.
+Een met Round Robin gedistribueerde tabel distribueert gegevens gelijkmatig over de tabel, maar zonder verdere optimalisatie. Een distributie wordt in wille keurige volg orde gekozen en vervolgens worden buffers van rijen opeenvolgend toegewezen aan distributies. Het is snel om gegevens te laden in een Round-Robin tabel, maar de prestaties van query's kunnen vaak beter zijn bij gedistribueerde hash-tabellen. Voor het samen voegen van Round-Robin tabellen zijn gegevens in een andere volg orde nodig. dit duurt meer tijd.
 
 
 ## <a name="replicated-tables"></a>Gerepliceerde tabellen
-Een gerepliceerde tabel bevat de snelste prestaties van query's voor kleine tabellen.
+Een gerepliceerde tabel biedt de snelste query prestaties voor kleine tabellen.
 
-Een tabel die is gerepliceerd in de cache opgeslagen voor een volledige kopie van de tabel op elk knooppunt. Als gevolg daarvan kunnen repliceren van een tabel Hiermee verwijdert u de noodzaak om over te dragen van gegevens tussen rekenknooppunten voordat een join of aggregatie. Gerepliceerde tabellen het beste met kleine tabellen reguleren. Extra opslag is vereist en er is extra overhead die is gemaakt bij het schrijven van gegevens waarmee u grote tabellen niet praktisch.  
+Een tabel die wordt gerepliceerd, plaatst een volledige kopie van de tabel op elk reken knooppunt. Daarom verwijdert het repliceren van een tabel de nood zaak om gegevens over te dragen tussen reken knooppunten vóór een samen voeging of aggregatie. Gerepliceerde tabellen worden het meest gebruikt met kleine tabellen. Extra opslag ruimte is vereist en er worden extra overhead kosten in rekening gebracht voor het schrijven van gegevens die grote tabellen onbruikbaar maken.  
 
-Het volgende diagram toont een gerepliceerde tabel. Voor SQL Data Warehouse de gerepliceerde tabel is in de cache op de eerste distributie op elk knooppunt.  
+In het onderstaande diagram ziet u een gerepliceerde tabel die in de cache wordt opgeslagen op de eerste distributie op elk reken knooppunt.  
 
-![Gerepliceerde tabel](media/sql-data-warehouse-distributed-data/replicated-table.png "gerepliceerde tabel") 
+![Gerepliceerde tabel](media/sql-data-warehouse-distributed-data/replicated-table.png "Gerepliceerde tabel") 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u een en ander weet over SQL Data Warehouse, kunt u leren hoe u snel [een SQL Data Warehouse maakt][create a SQL Data Warehouse] en [voorbeeldgegevens laadt][load sample data]. Als u niet bekend bent met Azure, kan de [Azure-woordenlijst][Azure glossary] handig zijn bij het opzoeken van nieuwe terminologie. U kunt ook enkele andere SQL Data Warehouse-resources bekijken.  
+Nu u een beetje weet over Azure Synapse, leert u hoe u snel [een SQL-groep maakt][create a SQL pool] en [voorbeeld gegevens laadt][load sample data]. Als u niet bekend bent met Azure, kan de [Azure-woordenlijst][Azure glossary] handig zijn bij het opzoeken van nieuwe terminologie. Of Bekijk enkele van deze andere Azure Synapse-resources.  
 
 * [Succesverhalen van klanten]
 * [Blogs]
@@ -109,9 +124,9 @@ Nu u een en ander weet over SQL Data Warehouse, kunt u leren hoe u snel [een SQL
 <!--Article references-->
 [Ondersteuningsticket maken]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
 [Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
 [Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
 [Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
 [Azure glossary]: ../azure-glossary-cloud-terminology.md
@@ -127,6 +142,6 @@ Nu u een en ander weet over SQL Data Warehouse, kunt u leren hoe u snel [een SQL
 [Stack Overflow-forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Video's]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
+[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

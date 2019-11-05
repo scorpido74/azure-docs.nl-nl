@@ -1,5 +1,5 @@
 ---
-title: Knoop punten in Azure Database for PostgreSQL – grootschalige (Citus) (preview)
+title: Knoop punten in Azure Database for PostgreSQL – grootschalige (Citus)
 description: Meer informatie over de twee typen knoop punten, coördinator en werk nemers, in een server groep in Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 097fcdb3a7e53bb63db9dc2d352d754062df7be6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5348c8bbe432cd024a8da93ca866ae4458f956e4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947557"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468090"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Knoop punten in Azure Database for PostgreSQL – grootschalige (Citus) (preview)
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Knoop punten in Azure Database for PostgreSQL – grootschalige (Citus)
 
-Met het hosting type grootschalige (Citus) (preview) kunnen Azure Database for PostgreSQL-servers (knoop punten) worden gecooerdineerd met elkaar in een architectuur zonder gedeelde Nothing. De knoop punten in een server groep bevatten gezamenlijk meer gegevens en gebruiken meer CPU-kernen dan op één server mogelijk zijn. Met de architectuur kan de data base ook worden geschaald door meer knoop punten toe te voegen aan de Server groep.
+Met het hosting type grootschalige (Citus) kunnen Azure Database for PostgreSQL-servers (knoop punten) worden gecoördineerd met elkaar in een architectuur met het gedeelde Nothing. De knoop punten in een server groep bevatten gezamenlijk meer gegevens en gebruiken meer CPU-kernen dan op één server mogelijk zijn. Met de architectuur kan de data base ook worden geschaald door meer knoop punten toe te voegen aan de Server groep.
 
 ## <a name="coordinator-and-workers"></a>Coördinator en werk nemers
 

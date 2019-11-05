@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a59d9783eac122f96b1671f2dba5d0d708e1d83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757127"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499401"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Zelf studie: algemene intenties en entiteiten identificeren
 
 In deze zelfstudie voegt u vooraf gemaakte intenties en entiteiten toe aan de zelfstudie-app Human Resources om snel intenties te kunnen voorspellen en gegevens te extraheren. U hoeft geen utterances met vooraf gedefinieerde entiteiten te markeren omdat de entiteit automatisch wordt gedetecteerd.
 
 Vooraf gemaakte modellen (domeinen, intenties en entiteiten) helpen u om het model snel te bouwen.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 

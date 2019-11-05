@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 47258f27f44b6a21c5da72e4631591e695024400
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: bd65fcf6ebff931fbb408ca8337a37d355221dfe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053283"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480259"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -89,10 +89,10 @@ In de volgende tabel ziet u hoe verschillende beleids effecten werken met de eva
 
 | Resource status | Effect | Beleids evaluatie | Nalevings status |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Onwaar | Naleving |
-| Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | Onwaar | Naleving |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
 De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
@@ -131,9 +131,16 @@ Omdat een beleid of initiatief kan worden toegewezen aan verschillende bereiken,
 De lijst met resources op het tabblad **resource compatibiliteit** bevat de evaluatie status van bestaande resources voor de huidige toewijzing. Het tabblad wordt standaard ingesteld op **niet-compatibel**, maar kan worden gefilterd.
 Gebeurtenissen (toevoegen, controleren, weigeren, implementeren) die zijn geactiveerd door de aanvraag om een resource te maken, worden weer gegeven op het tabblad **gebeurtenissen** .
 
+> [!NOTE]
+> Voor een AKS-engine beleid is de weer gegeven resource de resource groep.
+
 ![Voor beeld van Azure Policy nalevings gebeurtenissen](../media/getting-compliance-data/compliance-events.png)
 
-Klik met de rechter muisknop op de rij van de gebeurtenis die u wilt meer informatie verzamelen en selecteer **activiteiten logboeken weer geven**. De pagina activiteiten logboek wordt geopend en wordt vooraf gefilterd op de zoek opdracht met Details voor de toewijzing en de gebeurtenissen. Het activiteiten logboek bevat aanvullende context en informatie over deze gebeurtenissen.
+Voor resources van de [resource provider modus](../concepts/definition-structure.md#resource-provider-modes) selecteert u op het tabblad **resource naleving** de resource, klikt u met de rechter muisknop op de rij en selecteert u **compatibiliteits details weer geven** de details van de onderdeel naleving. Deze pagina bevat ook tabbladen voor een overzicht van de beleids regels die zijn toegewezen aan deze resource, gebeurtenissen, onderdeel gebeurtenissen en wijzigings geschiedenis.
+
+![Voor beeld van de compatibiliteits Details van Azure Policy onderdelen](../media/getting-compliance-data/compliance-components.png)
+
+Klik op de pagina Resource naleving met de rechter muisknop op de rij van de gebeurtenis waarvoor u meer informatie wilt verzamelen en selecteer **activiteiten logboeken weer geven**. De pagina activiteiten logboek wordt geopend en wordt vooraf gefilterd op de zoek opdracht met Details voor de toewijzing en de gebeurtenissen. Het activiteiten logboek bevat aanvullende context en informatie over deze gebeurtenissen.
 
 ![Voor beeld van Azure Policy nalevings activiteiten logboek](../media/getting-compliance-data/compliance-activitylog.png)
 
@@ -240,7 +247,7 @@ Het onderstaande voor beeld antwoord is afgekapt tot één niet-conforme resourc
 }
 ```
 
-### <a name="view-events"></a>Evenementen bekijken
+### <a name="view-events"></a>Gebeurtenissen weergeven
 
 Wanneer een resource wordt gemaakt of bijgewerkt, wordt een resultaat van een beleids evaluatie gegenereerd. Resultaten worden _beleids gebeurtenissen_genoemd. Gebruik de volgende URI om recente beleids gebeurtenissen weer te geven die zijn gekoppeld aan het abonnement.
 

@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e07939bd5f0264df637fda439d96be213a8d28d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "72167352"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499213"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Wat is Apache Hive en HiveQL in azure HDInsight?
 
 [Apache Hive](https://hive.apache.org/) is een Data Warehouse systeem voor Apache Hadoop. Hive maakt gegevens samenvatting, query's en analyses van gegevens mogelijk. Hive-query's worden geschreven in HiveQL. Dit is een query taal die vergelijkbaar is met SQL.
 
-Met hive kunt u de structuur projecteren op grotendeels ongestructureerde gegevens. Nadat u de structuur hebt gedefinieerd, kunt u HiveQL gebruiken om de gegevens op te vragen zonder kennis van Java of MapReduce.
+Met hive kunt u structuur projecteren op grotendeels gestructureerde gegevens. Nadat u de structuur hebt gedefinieerd, kunt u HiveQL gebruiken om de gegevens op te vragen zonder kennis van Java of MapReduce.
 
 HDInsight biedt verschillende cluster typen, die zijn afgestemd op specifieke werk belastingen. De volgende cluster typen worden meestal gebruikt voor Hive-query's:
 
@@ -139,7 +139,7 @@ In het vorige voor beeld voeren de HiveQL-instructies de volgende acties uit:
 
 * `ROW FORMAT`: Hiermee wordt aangegeven hoe de gegevens worden opgemaakt. In dit geval worden de velden in elk logboek gescheiden door een spatie.
 
-* `STORED AS TEXTFILE LOCATION`: Hiermee wordt de Hive aangegeven waarin de gegevens worden opgeslagen (de `example/data`-map) en worden opgeslagen als tekst. De gegevens kunnen zich in één bestand bevindt of zich verspreiden over meerdere bestanden in de map.
+* `STORED AS TEXTFILE LOCATION`: vertelt de component waar de gegevens worden opgeslagen (de `example/data` Directory) en die worden opgeslagen als tekst. De gegevens kunnen zich in één bestand bevindt of zich verspreiden over meerdere bestanden in de map.
 
 * `SELECT`: selecteert een telling van alle rijen waarin de kolom **T4** de waarde **[error]** bevat. Deze instructie retourneert de waarde **3** omdat er drie rijen met deze waarde zijn.
 

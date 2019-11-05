@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998046"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482748"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabel co-locatie in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -20,7 +20,7 @@ Co-locatie betekent dat verwante informatie samen op dezelfde knoop punten wordt
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>Gegevens locatie voor op hash-gedistribueerde tabellen
 
-In Azure Database for PostgreSQL – grootschalige (Citus) Preview wordt een rij opgeslagen in een Shard als de hash van de waarde in de kolom distributie binnen het hash-bereik van de Shard valt. Shards met hetzelfde hash-bereik worden altijd op hetzelfde knoop punt geplaatst. Rijen met gelijke distributie kolom waarden bevinden zich altijd op hetzelfde knoop punt in tabellen.
+In Azure Database for PostgreSQL – grootschalige (Citus), een rij wordt opgeslagen in een Shard als de hash van de waarde in de kolom distributie binnen het hash-bereik van de Shard valt. Shards met hetzelfde hash-bereik worden altijd op hetzelfde knoop punt geplaatst. Rijen met gelijke distributie kolom waarden bevinden zich altijd op hetzelfde knoop punt in tabellen.
 
 ![Shards](media/concepts-hyperscale-colocation/colocation-shards.png)
 
@@ -68,7 +68,7 @@ Zolang de [werkset](https://en.wikipedia.org/wiki/Working_set) voor deze query i
 
 Query's met één server worden langzamer gestart naarmate het aantal tenants en de gegevens die voor elke Tenant zijn opgeslagen toenemen. De werkset stopt met het aanpassen van het geheugen en de CPU wordt een knel punt.
 
-In dit geval kunnen we de gegevens op verschillende knoop punten Shard met behulp van grootschalige (Citus). De eerste en belangrijkste keuze die we moeten maken wanneer we bepalen dat Shard de distributie kolom is. Laten we beginnen met een Naïve-keuze `event_id` voor de gebeurtenis tabel en `page_id` voor de `page` tabel:
+In dit geval kunnen we de gegevens op verschillende knoop punten Shard met behulp van grootschalige (Citus). De eerste en belangrijkste keuze die we moeten maken wanneer we bepalen dat Shard de distributie kolom is. Laten we beginnen met het gebruik van `event_id` voor de gebeurtenis tabel en `page_id` voor de tabel `page`:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -109,7 +109,7 @@ De gegevens worden verspreid, zodat de query's kunnen worden geparallelleerd. He
 
 ### <a name="distribute-tables-by-tenant"></a>Tabellen distribueren op Tenant
 
-In grootschalige (Citus) zijn rijen met dezelfde waarde voor de distributie kolom gegarandeerd dat deze zich op hetzelfde knoop punt bevinden. Als u begint met het maken van de tabel `tenant_id` , kunnen we de tabellen met de kolom distributie aanmaken.
+In grootschalige (Citus) zijn rijen met dezelfde waarde voor de distributie kolom gegarandeerd dat deze zich op hetzelfde knoop punt bevinden. Vanaf nu kunnen we de tabellen met `tenant_id` als de distributie kolom maken.
 
 ```sql
 -- co-locate tables by using a common distribution column

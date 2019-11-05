@@ -1,5 +1,5 @@
 ---
-title: HBase-cluster replicatie instellen in azure Virtual Networks-Azure HDInsight
+title: HBase cluster replicatie in virtuele netwerken-Azure HDInsight
 description: Meer informatie over het instellen van HBase-replicatie van één HDInsight-versie naar een andere voor taak verdeling, hoge Beschik baarheid, migratie van nul en uitval tijd en herstel na nood gevallen.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077183"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468423"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-cluster replicatie in virtuele Azure-netwerken instellen
 
@@ -66,34 +66,34 @@ Enkele van de in code vastgelegde waarden in de sjabloon:
 
 **VNet 1**
 
-| Eigenschap | Value |
+| Eigenschap | Waarde |
 |----------|-------|
-| Location | US - west |
-| VNET-naam | &lt;ClusterNamePrevix>-vnet1 |
+| Locatie | US - west |
+| VNet-naam | &lt;ClusterNamePrevix >-vnet1 |
 | Adres ruimte voorvoegsel | 10.1.0.0/16 |
 | Subnetnaam | subnet 1 |
 | Subnetvoorvoegsel | 10.1.0.0/24 |
 | Subnet-naam (gateway) | GatewaySubnet (kan niet worden gewijzigd) |
 | Voor voegsel van subnet (gateway) | 10.1.255.0/27 |
 | Gateway naam | vnet1gw |
-| Gatewaytype | VPN |
+| Gateway type | VPN |
 | VPN-type gateway | RouteBased |
 | Gateway-SKU | Basic |
 | Gateway-IP | vnet1gwip |
 
 **VNet 2**
 
-| Eigenschap | Value |
+| Eigenschap | Waarde |
 |----------|-------|
-| Location | East US |
-| VNET-naam | &lt;ClusterNamePrevix>-vnet2 |
+| Locatie | US - oost |
+| VNet-naam | &lt;ClusterNamePrevix >-vnet2 |
 | Adres ruimte voorvoegsel | 10.2.0.0/16 |
 | Subnetnaam | subnet 1 |
 | Subnetvoorvoegsel | 10.2.0.0/24 |
 | Subnet-naam (gateway) | GatewaySubnet (kan niet worden gewijzigd) |
 | Voor voegsel van subnet (gateway) | 10.2.255.0/27 |
 | Gateway naam | vnet2gw |
-| Gatewaytype | VPN |
+| Gateway type | VPN |
 | VPN-type gateway | RouteBased |
 | Gateway-SKU | Basic |
 | Gateway-IP | vnet1gwip |
@@ -121,12 +121,12 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     Vervang `sshuser` door het SSH-gebruikers account dat u hebt opgegeven bij het maken van de DNS-virtuele machine.
 
     > [!NOTE]  
-    > Er zijn verschillende manieren om het `ssh` hulp programma te verkrijgen. In Linux, UNIX en macOS wordt het meegeleverd als onderdeel van het besturings systeem. Als u met Windows werkt, kunt u een van de volgende opties gebruiken:
+    > Er zijn verschillende manieren om het `ssh`-hulp programma te verkrijgen. In Linux, UNIX en macOS wordt het meegeleverd als onderdeel van het besturings systeem. Als u met Windows werkt, kunt u een van de volgende opties gebruiken:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [Bash op Ubuntu in Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [Git https://git-scm.com/)](https://git-scm.com/)
-    > * [OpenSSH https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. Als u BIND wilt installeren, gebruikt u de volgende opdrachten uit de SSH-sessie:
 
@@ -135,7 +135,7 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     sudo apt-get install bind9 -y
     ```
 
-3. Configureer BIND om aanvragen voor naam omzetting door te sturen naar uw on-premises DNS-server. Als u dit wilt doen, gebruikt u de volgende tekst als de `/etc/bind/named.conf.options` inhoud van het bestand:
+3. Configureer BIND om aanvragen voor naam omzetting door te sturen naar uw on-premises DNS-server. Als u dit wilt doen, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.options`-bestand:
 
     ```
     acl goodclients {
@@ -162,7 +162,7 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     ```
     
     > [!IMPORTANT]  
-    > Vervang de waarden in de `goodclients` sectie door het IP-adres bereik van de twee virtuele netwerken. In deze sectie worden de adressen gedefinieerd waarvan deze DNS-server aanvragen accepteert.
+    > Vervang de waarden in de sectie `goodclients` door het IP-adres bereik van de twee virtuele netwerken. In deze sectie worden de adressen gedefinieerd waarvan deze DNS-server aanvragen accepteert.
 
     Als u dit bestand wilt bewerken, gebruikt u de volgende opdracht:
 
@@ -186,7 +186,7 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
 
     U moet ook het DNS-achtervoegsel van de andere DNS-server vinden. U hebt deze nodig in de volgende stap.
 
-5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de `/etc/bind/named.conf.local` volgende tekst als de inhoud van het bestand:
+5. Als u BIND wilt configureren om DNS-namen voor resources binnen het virtuele netwerk op te lossen, gebruikt u de volgende tekst als de inhoud van het `/etc/bind/named.conf.local`-bestand:
 
     ```
     // Replace the following with the DNS suffix for your virtual network
@@ -197,7 +197,7 @@ Als u BIND wilt installeren, gebruikt u de volgende procedure:
     ```
 
     > [!IMPORTANT]  
-    > U moet de `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` door het DNS-achtervoegsel van het andere virtuele netwerk vervangen. En het IP-adres van de doorstuur server bevindt zich in een ander virtueel netwerk.
+    > U moet de `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` vervangen door het DNS-achtervoegsel van het andere virtuele netwerk. En het IP-adres van de doorstuur server bevindt zich in een ander virtueel netwerk.
 
     Als u dit bestand wilt bewerken, gebruikt u de volgende opdracht:
 
@@ -261,11 +261,11 @@ Maak een [Apache HBase](https://hbase.apache.org/) -cluster in elk van de twee v
 
 - **Naam van resource groep**: gebruik dezelfde naam voor de resource groep als u de virtuele netwerken hebt gemaakt.
 - **Cluster type**: HBase
-- **Version**: HBase 1.1.2 (HDI 3,6)
-- **Locatie**: Dezelfde locatie gebruiken als het virtuele netwerk.  Vnet1 is standaard VS- *West*en VNET2 is VS- *Oost*.
+- **Versie**: HBase 1.1.2 (HDI 3,6)
+- **Locatie**: gebruik dezelfde locatie als het virtuele netwerk.  Vnet1 is standaard VS- *West*en VNET2 is VS- *Oost*.
 - **Opslag**: Maak een nieuw opslag account voor het cluster.
-- **Virtueel netwerk** (van geavanceerde instellingen op de portal): Selecteer de vnet1 die u in de laatste procedure hebt gemaakt.
-- **Subnet**: De standaard naam die in de sjabloon wordt gebruikt, is **subnet1**.
+- **Virtueel netwerk** (van geavanceerde instellingen op de portal): Selecteer vnet1 die u in de laatste procedure hebt gemaakt.
+- **Subnet**: de standaard naam die in de sjabloon wordt gebruikt, is **subnet1**.
 
 Om ervoor te zorgen dat de omgeving correct is geconfigureerd, moet u de FQDN van de hoofd knooppunt tussen de twee clusters kunnen pingen.
 
@@ -273,7 +273,7 @@ Om ervoor te zorgen dat de omgeving correct is geconfigureerd, moet u de FQDN va
 
 Wanneer u een cluster repliceert, moet u de tabellen opgeven die u wilt repliceren. In deze sectie laadt u enkele gegevens in het bron cluster. In de volgende sectie schakelt u de replicatie tussen de twee clusters in.
 
-Volg de instructies in [Apache HBase-zelf studie om een tabel **contact personen** te maken en gegevens in de tabel in te voegen: Aan de slag met Apache HBase in](apache-hbase-tutorial-get-started-linux.md)HDInsight.
+Volg de instructies in [Apache HBase-zelf studie: aan de slag met Apache HBase in HDInsight](apache-hbase-tutorial-get-started-linux.md)om een tabel **contact personen** te maken en gegevens in de tabel in te voegen.
 
 ## <a name="enable-replication"></a>Replicatie inschakelen
 
@@ -281,16 +281,16 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
 
 **HBase-replicatie inschakelen vanuit de Azure Portal**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Open het bron HBase-cluster.
 3. Selecteer **script acties**in het menu cluster.
 4. Selecteer aan de bovenkant van de pagina de optie **Nieuw verzenden**.
 5. Selecteer of voer de volgende gegevens in:
 
    1. **Naam**: Voer **replicatie inschakelen in**.
-   2. **URL van bash-script**: Voer **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** in.
+   2. **URL voor bash-script**: Voer **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** in.
    3. **Kop**: Zorg ervoor dat dit is geselecteerd. Wis de andere knooppunt typen.
-   4. **Parameters**: Met de volgende voorbeeld parameters wordt replicatie voor alle bestaande tabellen ingeschakeld en worden vervolgens alle gegevens van het bron cluster naar het doel cluster gekopieerd:
+   4. **Para meters**: de volgende voorbeeld parameters maken replicatie voor alle bestaande tabellen mogelijk en kopiëren alle gegevens van het bron cluster naar het doel cluster:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
@@ -301,7 +301,7 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
 
 Vereiste argumenten:
 
-|Name|Description|
+|Naam|Beschrijving|
 |----|-----------|
 |-s,--src-cluster | Hiermee geeft u de DNS-naam van het bron HBase-cluster. Bijvoorbeeld:-s hbsrccluster,--src-cluster = hbsrccluster |
 |-d,--DST-cluster | Hiermee geeft u de DNS-naam van het doel (replica) HBase-cluster. Bijvoorbeeld:-s dsthbcluster,--src-cluster = dsthbcluster |
@@ -310,17 +310,17 @@ Vereiste argumenten:
 
 Optionele argumenten:
 
-|Name|Description|
+|Naam|Beschrijving|
 |----|-----------|
-|-su, --src-ambari-user | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het HBase-bron cluster. De standaard waarde is **admin**. |
+|-su,--src-ambari-User | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het HBase-bron cluster. De standaard waarde is **admin**. |
 |-du,--DST-ambari-User | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het cluster van de doel-HBase. De standaard waarde is **admin**. |
 |-t,--tabel lijst | Hiermee worden de tabellen opgegeven die moeten worden gerepliceerd. Bijvoorbeeld:--Table-List = "Tabel1; tabel2; table3". Als u geen tabellen opgeeft, worden alle bestaande HBase-tabellen gerepliceerd.|
 |-m,--computer | Hiermee geeft u het hoofd knooppunt op waarop de script actie wordt uitgevoerd. De waarde is **hn0** of **HN1** en moet worden gekozen op basis van het actieve hoofd knooppunt. Gebruik deze optie wanneer u het script $0 als script actie uitvoert vanuit de HDInsight-portal of Azure PowerShell.|
-|-cp, -copydata | Hiermee schakelt u de migratie van bestaande gegevens in op de tabellen waarvoor replicatie is ingeschakeld. |
-|-rpm, -replicate-phoenix-meta | Hiermee schakelt u replicatie in voor Breda-systeem tabellen. <br><br>*Gebruik deze optie met een waarschuwing.* U wordt aangeraden Bredae tabellen opnieuw te maken op replica clusters voordat u dit script gebruikt. |
+|-CP,-copydata | Hiermee schakelt u de migratie van bestaande gegevens in op de tabellen waarvoor replicatie is ingeschakeld. |
+|-rpm,-repliceren-Phoenix-meta | Hiermee schakelt u replicatie in voor Breda-systeem tabellen. <br><br>*Gebruik deze optie met een waarschuwing.* U wordt aangeraden Bredae tabellen opnieuw te maken op replica clusters voordat u dit script gebruikt. |
 |-h,--Help | Hiermee worden gebruiks gegevens weer gegeven. |
 
-De `print_usage()` sectie van het [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) bevat een gedetailleerde uitleg van para meters.
+De sectie `print_usage()` van het [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) bevat een gedetailleerde uitleg van de para meters.
 
 Nadat de script actie is geïmplementeerd, kunt u SSH gebruiken om verbinding te maken met het doel-HBase-cluster en vervolgens controleren of de gegevens zijn gerepliceerd.
 
@@ -350,20 +350,20 @@ Er zijn twee afzonderlijke script actie scripts beschikbaar voor het kopiëren o
 
 - [Script voor kleine tabellen](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_copy_table.sh) (tabellen met een paar gigabytes grootte en de algehele kopie wordt in minder dan een uur naar verwachting voltooid)
 
-- [Script voor grote tabellen](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (tabellen die naar verwachting langer dan een uur moeten worden gekopieerd)
+- [Script voor grote tabellen](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/nohup_hdi_copy_table.sh) (tabellen die naar verwachting langer dan één uur moeten worden gekopieerd)
 
 U kunt dezelfde procedure volgen die wordt beschreven in [replicatie inschakelen](#enable-replication) om de script actie aan te roepen. Gebruik de volgende para meters:
 
     -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
 
-De `print_usage()` sectie van het [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) bevat een gedetailleerde beschrijving van para meters.
+De sectie `print_usage()` van het [script](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh) bevat een gedetailleerde beschrijving van para meters.
 
 ### <a name="scenarios"></a>Scenario's
 
 - **Kopieer specifieke tabellen (test1, Test2 en Test3) voor alle rijen die tot nu toe zijn bewerkt (huidige tijds tempel)** :
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  Of
+  of
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 
@@ -379,7 +379,7 @@ Als u de replicatie wilt uitschakelen, gebruikt u een ander script actie script 
 
     -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
-De `print_usage()` sectie van het [script](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) bevat een gedetailleerde uitleg van para meters.
+De sectie `print_usage()` van het [script](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) bevat een gedetailleerde uitleg van de para meters.
 
 ### <a name="scenarios"></a>Scenario's
 

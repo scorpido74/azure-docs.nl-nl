@@ -1,5 +1,5 @@
 ---
-title: On-premises Apache Hadoop clusters migreren naar Azure HDInsight-infra structuur
+title: 'Infra structuur: on-premises Apache Hadoop naar Azure HDInsight'
 description: Ontdek de aanbevolen procedures voor de infra structuur voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: e35917a7eb7b2e38fcc2689f6fe838ec6529428a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087453"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499221"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>On-premises Apache Hadoop clusters migreren naar de aanbevolen procedures voor Azure HDInsight-infra structuur
 
@@ -42,7 +42,7 @@ U kunt ook Apache Ambari UI of Ambari REST API gebruiken om de Hadoop-onderdelen
 
 Toepassingen of onderdelen die beschikbaar waren in on-premises clusters, maar die geen deel uitmaken van de HDInsight-clusters kunnen worden toegevoegd aan een Edge-knoop punt of op een virtuele machine in hetzelfde VNet als het HDInsight-cluster. Een Hadoop-toepassing van derden die niet beschikbaar is in azure HDInsight, kan worden geïnstalleerd met behulp van de optie ' toepassingen ' in het HDInsight-cluster. Aangepaste Hadoop-toepassingen kunnen worden geïnstalleerd op HDInsight-cluster met behulp van ' script acties '. De volgende tabel bevat enkele van de algemene toepassingen en de opties voor HDInsight-integratie:
 
-|**Toepassing**|**Opneming**
+|**Modules**|**Opneming**
 |---|---|
 |Lucht stroom|IaaS of HDInsight Edge-knoop punt
 |Alluxio|IaaS  
@@ -102,7 +102,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>HDInsight-configuratie aanpassen met Boots trap
 
-Wijzigingen in configuratie `core-site.xml`-instellingen in de configuratie bestanden, `hive-site.xml` zoals en `oozie-env.xml` kunnen worden gemaakt met Boots trap. Het volgende script is een voor beeld van het gebruik van de Power shell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) [-cmdlet New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
+Wijzigingen in de configuratie bestanden, zoals `core-site.xml`, `hive-site.xml` en `oozie-env.xml` kunnen worden gemaakt met Boots trap. Het volgende script is een voor beeld van het gebruik van de Power shell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) [-cmdlet New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster):
 
 ```powershell
 # hive-site.xml configuration
@@ -137,7 +137,7 @@ Een lege Edge-knoop punt is een virtuele Linux-machine waarop dezelfde client hu
 - client toepassingen testen
 - client toepassingen hosten
 
-Edge-knoop punten kunnen worden gemaakt en verwijderd via de Azure Portal en kunnen worden gebruikt tijdens of na het maken van het cluster. Nadat u het Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met het Edge-knoop punt en client hulpprogramma's uitvoeren om toegang te krijgen tot het Hadoop-cluster in HDInsight. Het SSH-eind punt van `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`het Edge-knoop punt is.
+Edge-knoop punten kunnen worden gemaakt en verwijderd via de Azure Portal en kunnen worden gebruikt tijdens of na het maken van het cluster. Nadat u het Edge-knoop punt hebt gemaakt, kunt u via SSH verbinding maken met het Edge-knoop punt en client hulpprogramma's uitvoeren om toegang te krijgen tot het Hadoop-cluster in HDInsight. Het SSH-eind punt van het Edge-knoop punt is `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
 
 Zie het artikel [lege Edge-knoop punten op Apache Hadoop clusters in HDInsight gebruiken](../hdinsight-apps-use-edge-node.md)voor meer informatie.
@@ -168,7 +168,7 @@ HDInsight kan worden toegevoegd aan een nieuwe of bestaande Azure-Virtual Networ
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Virtuele netwerken van Azure-overzicht](../../virtual-network/virtual-networks-overview.md)
-- [Azure HDInsight met behulp van een Azure-netwerk uitbreiden](../hdinsight-plan-virtual-network-deployment.md)
+- [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight-plan-virtual-network-deployment.md).
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Veilig verbinding maken met Azure-Services met Azure Virtual Network Service-eind punten
 

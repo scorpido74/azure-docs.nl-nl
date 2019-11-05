@@ -1,28 +1,28 @@
 ---
 title: 'Regressie van beslissings bos: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de herleidings module voor beslissings structuur in Azure Machine Learning service om een regressie model te maken op basis van een ensemble van beslissings structuren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module herregressies voor het besluitvormings forest in Azure Machine Learning om een regressie model te maken op basis van een ensemble van beslissings structuren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693178"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497972"
 ---
 # <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een regressie model te maken op basis van een ensemble van beslissings structuren.
 
-Nadat u het model hebt geconfigureerd, moet u het model trainen met een gegevensset met een label en de module [Train model](./train-model.md) .  Het getrainde model kan vervolgens worden gebruikt voor het maken van voor spellingen. 
+Nadat u het model hebt geconfigureerd, moet u het model trainen met een gegevensset met een label en de module [Train model](./train-model.md) . Het getrainde model kan vervolgens worden gebruikt voor het maken van voor spellingen. 
 
 ## <a name="how-it-works"></a>Het werkt als volgt
 
@@ -42,11 +42,11 @@ Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor 
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Het regressie model voor beslissings structuur configureren
 
-1. Voeg de regressie-module van de **beslissings structuur** toe aan de pijp lijn. U kunt de module vinden in de interface onder **machine learning**, **model initialiseren**en **regressie**.
+1. Voeg de regressie-module van de **beslissings structuur** toe aan de pijp lijn. U kunt de module vinden in de ontwerp functie onder **machine learning**, **model initialiseren**en **regressie**.
 
 2. Open de module-eigenschappen en kies voor **resampling methode**de methode die wordt gebruikt om de afzonderlijke structuren te maken.  U kunt **kiezen uit een** of meer van de **replicatie**.
 
-    - **Overbaggen**: de functie voor het *verzamelen van de Boots trap* Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit door middel van voor spellingen. De aggregatie is het vinden van een Gaussiaans waarvan de eerste twee seconden overeenkomen met de momenten van het combi natie van Gaussiaans, opgegeven door het combi neren van alle Gaussiaans die door afzonderlijke structuren worden geretourneerd.
+    - **Overbaggen**: de functie voor het *verzamelen van de Boots trap* Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit door middel van voor spellingen. De aggregatie is het vinden van een Gaussiaans waarvan de eerste twee seconden overeenkomen met de momenten van het combi natie van Gaussiaans distributies die worden gegeven door het combi neren van alle distributies die door afzonderlijke bomen worden geretourneerd.
 
          Zie de Wikipedia-vermelding voor [Boots trap aggregatie](https://wikipedia.org/wiki/Bootstrap_aggregating)voor meer informatie.
 
@@ -96,4 +96,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

@@ -6,57 +6,136 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: e86d1e16e7c61f851a75ad97d2744b0daa009617
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 491d97411cec65d4f747495a6246b4c62d33e973
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838515"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499614"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 * [Python 3.6](https://www.python.org/downloads/) of later.
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
-
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent--programmatically"></a>De intentie programmatisch ophalen
 
-U kunt Python gebruiken voor toegang tot de resultaten die u in het browservenster in de vorige stap hebt gezien.
+Gebruik python voor het uitvoeren van een query op de [API](https://aka.ms/luis-apim-v3-prediction) prediction-eind punt Get om het Voorspellings resultaat te verkrijgen.
 
-1. Kopieer een van de volgende codefragmenten naar een bestand met de naam `quickstart-call-endpoint.py`:
+1. Kopieer een van de volgende codefragmenten naar een bestand met de naam `predict.py`:
 
-    #### <a name="python-27tabp2"></a>[Python 2,7](#tab/P2)
+    ```python
+    ########### Python 3.6 #############
+    import requests
+    
+    try:
+    
+        key = 'YOUR-KEY'
+        endpoint = 'YOUR-ENDPOINT' # such as 'westus2.api.cognitive.microsoft.com' 
+        appId = 'df67dcdb-c37d-46af-88e1-8b97951ca1c2'
+        utterance = 'turn on all lights'
+    
+        headers = {
+        }
+    
+        params ={
+            'query': utterance,
+            'timezoneOffset': '0',
+            'verbose': 'true',
+            'show-all-intents': 'true',
+            'spellCheck': 'false',
+            'staging': 'false',
+            'subscription-key': key
+        }
+    
+        r = requests.get(f'https://{endpoint}/luis/prediction/v3.0/apps/{appId}/slots/production/predict',headers=headers, params=params)
+        print(r.json())
+    
+    except Exception as e:
+        print(f'{e}')
+    ```
 
-    [!code-python[Console app code that calls a LUIS endpoint for Python 2.7](~/samples-luis/documentation-samples/quickstarts/analyze-text/python/2.x/quickstart-call-endpoint-2-7.py)]    
+1. Vervang de volgende waarden:
 
-    #### <a name="python-36tabp3"></a>[Python 3,6](#tab/P3)
+    * `YOUR-KEY` met uw start sleutel
+    * `YOUR-ENDPOINT` met uw eind punt, bijvoorbeeld `westus2.api.cognitive.microsoft.com`
 
-    [!code-python[Console app code that calls a LUIS endpoint for Python 3.6](~/samples-luis/documentation-samples/quickstarts/analyze-text/python/3.x/quickstart-call-endpoint-3-6.py)]
+1. Afhankelijkheden installeren met de volgende console opdracht:
 
-    * * *
+    ```console
+    pip install requests
+    ```
 
-1. Vervang de waarde van het veld `Ocp-Apim-Subscription-Key` door de sleutel van uw LUIS-eindpunt.
+1. Voer het script uit met de volgende console opdracht:
 
-1. Installeer afhankelijkheden met `pip install requests`.
+    ```console
+    python predict.py
+    ``` 
 
-1. Voer het script uit met behulp van `python ./quickstart-call-endpoint.py`. De uitvoer bestaat uit de JSON die u eerder hebt gezien in het browservenster.
+1. Voorspellings antwoord in JSON-indeling controleren:
+
+    ```console
+    {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
+    ```
+
+    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid: 
+
+    ```JSON
+    {
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
 
 ## <a name="luis-keys"></a>LUIS-sleutels
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze snelstart, sluit u het Visual Studio-project en verwijdert u de projectmap uit het bestandssysteem. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen en Train toevoegen met python](../luis-get-started-python-add-utterance.md)
+> [Uitingen en Train toevoegen](../luis-get-started-python-add-utterance.md)

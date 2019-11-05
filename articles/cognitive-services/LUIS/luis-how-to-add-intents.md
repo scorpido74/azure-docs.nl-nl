@@ -1,46 +1,48 @@
 ---
 title: Intenties toevoegen-LUIS
 titleSuffix: Azure Cognitive Services
-description: Intents toevoegen aan uw LUIS-app voor het identificeren van groepen van vragen of de opdrachten die het hetzelfde doel hebben.
+description: Voeg intenties toe aan uw LUIS-app om groepen vragen of opdrachten te identificeren die dezelfde bedoelingen hebben.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: eb90a902b8f7fe8b37b81c2825cbdfc25ef5dc0d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f2f001489552203f0157dd24356341eb3184c81
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932897"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467546"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Intenties toevoegen om te bepalen wat de gebruikers intentie van uitingen zijn
 
-Voeg [intents](luis-concept-intent.md) naar uw LUIS-app en het identificeren van vragen of opdrachten die hetzelfde doel hebben. 
+Voeg [intenties](luis-concept-intent.md) toe aan uw Luis-app om groepen vragen of opdrachten te identificeren die hetzelfde doel hebben. 
 
-Intents worden beheerd vanuit de bovenste navigatiebalk staat **bouwen** sectie, klikt u vervolgens in het linkerpaneel **Intents**. 
+Intenties worden beheerd vanuit de **opbouw** sectie van de bovenste navigatie balk en vervolgens vanuit de **intenties**van het linkerdeel venster. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="add-intent"></a>Intentie toevoegen
 
 1. Selecteer **Create new intent** op de pagina **Intents**.
 
-1. In de **maken van nieuwe bedoeling** dialoogvenster vak, voer de naam van de intentie `GetEmployeeInformation`, en klikt u op **gedaan**.
+1. Voer in het dialoog venster **nieuwe intentie maken** de naam van de doel groep in `GetEmployeeInformation`in en klik op **gereed**.
 
-    ![Doel toevoegen](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
+    ![Intentie toevoegen](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-## <a name="add-an-example-utterance"></a>Een voorbeeld-utterance toevoegen
+## <a name="add-an-example-utterance"></a>Een voor beeld-utterance toevoegen
 
-Voorbeeld uitingen zijn voorbeelden van de tekst van de gebruiker vragen of opdrachten. Als u wilt leren Language Understanding (LUIS), moet u voorbeeld utterances toevoegen aan een doel.
+Voor beelden van uitingen zijn tekst voorbeelden van gebruikers vragen of-opdrachten. Als u Language Understanding wilt leren (LUIS), moet u bijvoorbeeld uitingen toevoegen aan een intentie.
 
-1. Op de **GetEmployeeInformation** intentie details pagina, voer een relevante utterance die u kunt van uw gebruikers, zoals verwachten `Does John Smith work in Seattle?` in het tekstvak onder de naam van de intentie en druk op Enter.
+1. Voer op de pagina Details van de **GetEmployeeInformation** -intentie een relevante utterance in die u van uw gebruikers verwacht, zoals `Does John Smith work in Seattle?` in het tekstvak onder de naam van de intentie en druk vervolgens op ENTER.
  
-    ![Schermafbeelding van de intenties pagina, met utterance gemarkeerd](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+    ![Scherm afbeelding van de pagina met details van de intenties, met utterance gemarkeerd](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-    LUIS alle uitingen geconverteerd naar kleine letters en voegt spaties rond tokens zoals afbreekstreepjes bevatten.
+    LUIS converteert alle uitingen naar kleine letters en voegt spaties rondom tokens, zoals afbreek streepjes, toe.
 
 <a name="#intent-prediction-discrepancy-errors"></a>
 
@@ -64,47 +66,47 @@ Gebruik het [dash board samen vatting](luis-how-to-use-dashboard.md)voor meer in
 
 ## <a name="add-a-custom-entity"></a>Een aangepaste entiteit toevoegen
 
-Zodra een utterance wordt toegevoegd aan een doel, kunt u tekst uit de utterance om een aangepaste entiteit te maken. Een aangepaste entiteit is een manier om de labeltekst voor uitpakken, samen met de juiste intentie. 
+Zodra een utterance is toegevoegd aan een intentie, kunt u tekst selecteren in de utterance om een aangepaste entiteit te maken. Een aangepaste entiteit is een manier om tekst te labelen voor extractie, samen met de juiste intentie. 
 
 Zie [entiteit toevoegen aan utterance](luis-how-to-add-example-utterances.md) voor meer informatie.
 
-## <a name="entity-prediction-discrepancy-errors"></a>Entiteit voorspelling discrepantie fouten 
+## <a name="entity-prediction-discrepancy-errors"></a>Discrepantie-fouten bij de voor spelling van de entiteit 
 
-De entiteit wordt dit onderstreept in rood om aan te geven een [entiteit voorspelling discrepantie](luis-how-to-add-example-utterances.md#entity-status-predictions). Omdat dit het eerste exemplaar van een entiteit, er zijn niet voldoende voorbeelden voor LUIS hebben een hoge betrouwbaarheid die deze tekst is gecodeerd met de juiste entiteit. Dit verschil wordt verwijderd wanneer de app wordt getraind. 
+De entiteit wordt rood onderstreept om de voor spelling van een [entiteit](luis-how-to-add-example-utterances.md#entity-status-predictions)te bepalen. Omdat dit het eerste exemplaar van een entiteit is, zijn er niet voldoende voor beelden voor LUIS om een hoge betrouw baarheid te hebben waarop deze tekst is gelabeld met de juiste entiteit. Dit verschil wordt verwijderd wanneer de app wordt getraind. 
 
-![Schermafbeelding van de intenties de pagina met details, de naam van de aangepaste entiteit in het blauw is gemarkeerd](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
+![Scherm afbeelding van de pagina Details van de intenties, de naam van de aangepaste entiteit is blauw gemarkeerd](./media/luis-how-to-add-intents/create-custom-entity-name-blue-highlight.png) 
 
-De tekst is in blauw, die wijzen op een entiteit gemarkeerd.  
+De tekst wordt blauw gemarkeerd, wat een entiteit aangeeft.  
 
-## <a name="add-a-prebuilt-entity"></a>Een vooraf gedefinieerde entiteit toevoegen
+## <a name="add-a-prebuilt-entity"></a>Een vooraf samengestelde entiteit toevoegen
 
-Zie voor meer informatie, [vooraf gedefinieerde entiteit](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
+Zie [prebuiled entity](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)(Engelstalig) voor meer informatie.
 
-## <a name="using-the-contextual-toolbar"></a>Met behulp van de contextuele werkbalk
+## <a name="using-the-contextual-toolbar"></a>De contextuele werk balk gebruiken
 
 Wanneer een of meer voor beeld-uitingen in de lijst zijn geselecteerd door het selectie vakje links van een utterance in te scha kelen, kunt u op de werk balk boven de lijst utterance de volgende acties uitvoeren:
 
-* Opnieuw toewijzen van doel: utterance(s) verplaatsen naar een ander doel
-* Utterance(s) verwijderen
-* Entiteit filters: alleen weergeven met gefilterde entiteiten uitingen
-* Alles weergeven / alleen fouten: uitingen met voorspelling fouten weergeven of weergeven van alle uitingen
-* Entiteiten/Tokens weergave: entiteiten weergeven met namen van entiteiten of onbewerkte tekst van utterance weergeven
-* Vergrootglas: zoek uitingen met specifieke tekst
+* Intentie opnieuw toewijzen: utterance (s) verplaatsen naar ander doel
+* Utterance (s) verwijderen
+* Entiteits filters: alleen uitingen weer geven met gefilterde entiteiten
+* Alleen alle/fouten weer geven: uitingen weer geven met Voorspellings fouten of alle uitingen weer geven
+* Weer gave entiteiten/tokens: entiteiten weer geven met entiteits namen of onbewerkte tekst van utterance weer geven
+* Vergroot glas: zoeken naar uitingen met specifieke tekst
 
 ## <a name="working-with-an-individual-utterance"></a>Werken met een afzonderlijke utterance
 
-De volgende acties kunnen worden uitgevoerd op een afzonderlijke utterance in het menu van de drie puntjes aan de rechterkant van de utterance:
+De volgende acties kunnen worden uitgevoerd op een afzonderlijke utterance in het menu met het weglatings teken rechts van de utterance:
 
 * Bewerken: de tekst van de utterance wijzigen
-* Verwijderen: Verwijder de utterance uit het doel. Als u nog steeds de utterance wilt, een betere methode is om te verplaatsen naar de **geen** intentie. 
-* Een patroon toevoegen: Een patroon biedt u de mogelijkheid om een gemeen schappelijk utterance te maken en vervang bare tekst te markeren en tekst te vervangen, waardoor de nood zaak van meer uitingen in de intentie wordt verkleind. 
+* Verwijderen: Verwijder de utterance uit de intentie. Als u de utterance nog steeds wilt, kunt u de methode het beste verplaatsen naar de **geen** intentie. 
+* Een patroon toevoegen: een patroon biedt u de mogelijkheid om een gemeen schappelijk utterance te maken en vervang bare tekst te markeren en om te voor komen dat u de nood zaak van meer uitingen in de bedoeling vermindert. 
 
-De **met het label bedoeling** kolom kunt u het doel van de utterance wijzigen.
+Met de kolom **labelen** in kunt u de bedoeling van de utterance wijzigen.
 
-## <a name="train-your-app-after-changing-model-with-intents"></a>Uw app na het wijzigen van model met intents trainen
+## <a name="train-your-app-after-changing-model-with-intents"></a>Uw app trainen nadat u een model met intenties hebt gewijzigd
 
-Na het toevoegen, bewerken of verwijderen van intents, [trainen](luis-how-to-train.md) en [publiceren](luis-how-to-publish-app.md) uw app zodat uw wijzigingen worden toegepast op eindpunt query's. 
+Nadat u intenties hebt toegevoegd, bewerkt of verwijderd, [traint](luis-how-to-train.md) en [publiceert](luis-how-to-publish-app.md) u uw app zodat uw wijzigingen worden toegepast op eindpunt query's. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het toevoegen van [voorbeeld uitingen](luis-how-to-add-example-utterances.md) met entiteiten. 
+Meer informatie over het toevoegen van [voor beeld-uitingen](luis-how-to-add-example-utterances.md) met entiteiten. 

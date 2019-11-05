@@ -1,7 +1,7 @@
 ---
 title: Vooraf samengestelde ordinale entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat rangtelwoord vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat vooraf opgemaakte informatie over de volg orde van de gegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,125 +9,81 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: d1d69b256c4fc7e7b9d1c84b7c409d01a9f8ce52
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b2a2d9e78a0b152da14bb737079cf0dfdef0dc05
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677544"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491240"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Vooraf gebouwde ordinale entiteit voor een LUIS-app
-Rangtelwoord is een numerieke representatie van een object in een set: `first`, `second`, `third`. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met rangtelwoord voor de toepassing intents. Rangtelwoord entiteit wordt ondersteund in [veel culturen](luis-reference-prebuilt-entities.md). 
+Rang nummer is een numerieke representatie van een object binnen een set: `first`, `second``third`. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met een rang telwoord toe te voegen aan de toepassings intentie. Ordinale entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md). 
 
-## <a name="types-of-ordinal"></a>Typen volgnummer
+## <a name="types-of-ordinal"></a>Typen rang telwoord
 Rang telwoord wordt beheerd vanuit de map [recognizers-text github-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) opslag plaats
 
-## <a name="resolution-for-prebuilt-ordinal-entity"></a>Oplossing voor vooraf gedefinieerde rangtelwoord entiteit
+## <a name="resolution-for-prebuilt-ordinal-entity"></a>Oplossing voor de vooraf gedefinieerde ordinale entiteit
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+De volgende entiteits objecten worden geretourneerd voor de query:
 
-Het volgende voorbeeld ziet u de resolutie van de **builtin.ordinal** entiteit.
+`Order the second option`
+
+#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
 ```json
-{
-  "query": "Order the second option",
-  "topScoringIntent": {
-    "intent": "OrderFood",
-    "score": 0.9993253
-  },
-  "intents": [
-    {
-      "intent": "OrderFood",
-      "score": 0.9993253
-    },
-    {
-      "intent": "None",
-      "score": 0.05046708
-    }
-  ],
-  "entities": [
-    {
-      "entity": "second",
-      "type": "builtin.ordinal",
-      "startIndex": 10,
-      "endIndex": 15,
-      "resolution": {
-        "value": "2"
-      }
-    }
-  ]
+"entities": {
+    "ordinal": [
+        2
+    ]
 }
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
-
-De volgende JSON is met de para meter `verbose` ingesteld op `false`:
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 
 ```json
-{
-    "query": "Order the second option",
-    "prediction": {
-        "normalizedQuery": "order the second option",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "ordinal": [
-                {
-                    "offset": 2,
-                    "relativeTo": "start"
-                }
-            ]
-        }
-    }
-}
-```
-
-De volgende JSON is met de para meter `verbose` ingesteld op `true`:
-
-```json
-{
-    "query": "Order the second option",
-    "prediction": {
-        "normalizedQuery": "order the second option",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.7124502
-            }
-        },
-        "entities": {
-            "ordinal": [
-                {
-                    "offset": 2,
-                    "relativeTo": "start"
-                }
-            ],
-            "$instance": {
-                "ordinal": [
-                  {
-                    "type": "builtin.ordinal",
-                    "text": "second",
-                    "startIndex": 10,
-                    "length": 6,
-                    "modelTypeId": 2,
-                    "modelType": "Prebuilt Entity Extractor",
-                    "recognitionSources": [
-                        "model"
-                    ]
-                  }
+"entities": {
+    "ordinal": [
+        2
+    ],
+    "$instance": {
+        "ordinal": [
+            {
+                "type": "builtin.ordinal",
+                "text": "second",
+                "startIndex": 10,
+                "length": 6,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
 
+#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+
+In het volgende voor beeld ziet u de resolutie van de **inbuiltin. ordinal** -entiteit.
+
+```json
+"entities": [
+  {
+    "entity": "second",
+    "type": "builtin.ordinal",
+    "startIndex": 10,
+    "endIndex": 15,
+    "resolution": {
+      "value": "2"
+    }
+  }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>Volgende stappen

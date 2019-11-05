@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/31/2019
 ms.author: helohr
-ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: 1d7f08dbaa9b91cd2dbac28daf5c17ea85d09985
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676748"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482203"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows-desktop-client
+# <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
 
 > Van toepassing op: Windows 7 en Windows 10
 
@@ -25,11 +25,11 @@ U hebt toegang tot de virtuele bureau blad-bronnen van Windows op apparaten met 
 
 ## <a name="install-the-windows-desktop-client"></a>De Windows-Desktop-Client installeren
 
-Dit zijn de clients die u momenteel kunt downloaden:
+Kies de client die overeenkomt met uw versie van Windows:
 
 - [Windows 64-bits](https://go.microsoft.com/fwlink/?linkid=2068602)
-
-Deze lijst wordt bijgewerkt wanneer de client beschikbaar wordt voor meer versies van Windows.
+- [Windows 32-bits preview](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows ARM64 preview](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 U kunt de client installeren voor de huidige gebruiker, waarvoor geen beheerders rechten zijn vereist, of uw beheerder kan de client installeren en configureren zodat alle gebruikers op het apparaat toegang hebben.
 

@@ -1,24 +1,23 @@
 ---
-title: Aangepaste cognitieve Zoek vaardigheid-Azure Search
-description: Mogelijkheden van cognitieve Zoek vaardig heden uitbreiden door naar web-Api's aan te roepen
-services: search
+title: Aangepaste web API-vaardigheid in een verrijkings pijplijn
+titleSuffix: Azure Cognitive Search
+description: Breid mogelijkheden van Azure Cognitive Search vaardig heden uit door aan te roepen naar web-Api's. Gebruik de aangepaste web API-vaardigheid om uw aangepaste code te integreren.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: fda4f96c2c73c5a2d39435a509afcf654ed77b70
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901320"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466734"
 ---
-# <a name="custom-web-api-skill"></a>Aangepaste web API-vaardigheid
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Aangepaste web API-vaardigheid in een Azure Cognitive Search-verrijkings pijplijn
 
-Met de **aangepaste web API** -vaardigheid kunt u een cognitieve zoek opdracht uitbreiden door aan te roepen naar een web-API-eind punt dat aangepaste bewerkingen biedt. Net als bij ingebouwde vaardig heden bevat een **aangepaste web-API** -vaardigheid invoer en uitvoer. Afhankelijk van de invoer, ontvangt uw web-API een JSON-nettolading wanneer de Indexeer functie wordt uitgevoerd en voert deze een JSON-nettolading uit als antwoord, samen met de status code geslaagd. Er wordt verwacht dat het antwoord de uitvoer bevat die is opgegeven door uw aangepaste vaardigheid. Elk ander antwoord wordt als een fout beschouwd en er worden geen verrijkingen uitgevoerd.
+Met de **aangepaste web API** -vaardigheid kunt u AI-verrijking uitbreiden door een web-API-eind punt aan te roepen waarmee aangepaste bewerkingen worden uitgevoerd. Net als bij ingebouwde vaardig heden bevat een **aangepaste web-API** -vaardigheid invoer en uitvoer. Afhankelijk van de invoer, ontvangt uw web-API een JSON-nettolading wanneer de Indexeer functie wordt uitgevoerd en voert deze een JSON-nettolading uit als antwoord, samen met de status code geslaagd. Er wordt verwacht dat het antwoord de uitvoer bevat die is opgegeven door uw aangepaste vaardigheid. Elk ander antwoord wordt als een fout beschouwd en er worden geen verrijkingen uitgevoerd.
 
 De structuur van de JSON-nettoladingen wordt verder beschreven in dit document.
 
@@ -58,7 +57,7 @@ Er zijn geen vooraf gedefinieerde uitvoer voor deze vaardigheid. Afhankelijk van
 ```json
   {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "A custom skill that can count the number of words or characters or lines in text",
+        "description": "A custom skill that can identify positions of different phrases in the source text",
         "uri": "https://contoso.count-things.com",
         "batchSize": 4,
         "context": "/document",
@@ -72,14 +71,13 @@ Er zijn geen vooraf gedefinieerde uitvoer voor deze vaardigheid. Afhankelijk van
             "source": "/document/languageCode"
           },
           {
-            "name": "countOf",
-            "source": "/document/propertyToCount"
+            "name": "phraseList",
+            "source": "/document/keyphrases"
           }
         ],
         "outputs": [
           {
-            "name": "count",
-            "targetName": "countOfThings"
+            "name": "hitPositions"
           }
         ]
       }
@@ -103,7 +101,7 @@ Deze beperkingen worden altijd gevolgd:
            {
              "text": "Este es un contrato en Inglés",
              "language": "es",
-             "countOf": "words"
+             "phraseList": ["Este", "Inglés"]
            }
       },
       {
@@ -112,16 +110,16 @@ Deze beperkingen worden altijd gevolgd:
            {
              "text": "Hello world",
              "language": "en",
-             "countOf": "characters"
+             "phraseList": ["Hi"]
            }
       },
       {
         "recordId": "2",
         "data":
            {
-             "text": "Hello world \r\n Hi World",
+             "text": "Hello world, Hi world",
              "language": "en",
-             "countOf": "lines"
+             "phraseList": ["world"]
            }
       },
       {
@@ -130,7 +128,7 @@ Deze beperkingen worden altijd gevolgd:
            {
              "text": "Test",
              "language": "es",
-             "countOf": null
+             "phraseList": []
            }
       }
     ]
@@ -159,7 +157,7 @@ De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API
             },
             "errors": [
               {
-                "message" : "Cannot understand what needs to be counted"
+                "message" : "'phraseList' should not be null or empty"
               }
             ],
             "warnings": null
@@ -167,7 +165,7 @@ De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API
         {
             "recordId": "2",
             "data": {
-                "count": 2
+                "hitPositions": [6, 16]
             },
             "errors": null,
             "warnings": null
@@ -175,7 +173,7 @@ De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API
         {
             "recordId": "0",
             "data": {
-                "count": 6
+                "hitPositions": [0, 23]
             },
             "errors": null,
             "warnings": null
@@ -183,10 +181,12 @@ De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API
         {
             "recordId": "1",
             "data": {
-                "count": 11
+                "hitPositions": []
             },
             "errors": null,
-            "warnings": null
+            "warnings": {
+                "message": "No occurrences of 'Hi' were found in the input text"
+            }
         },
     ]
 }
@@ -203,7 +203,6 @@ Als de Web-API niet beschikbaar is of een HTTP-fout retourneert, wordt een besch
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://aka.ms/powerskills)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Aangepaste vaardigheid toevoegen aan cognitieve zoek functie](cognitive-search-custom-skill-interface.md)
-+ [Voor beeld: een aangepaste vaardigheid maken voor cognitieve zoek acties](cognitive-search-create-custom-skill-example.md)
++ [Aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
++ [Voor beeld: het maken van een aangepaste vaardigheid voor AI-verrijking (cognitieve-Search-Create-Custom-vaardigheid-example.md)

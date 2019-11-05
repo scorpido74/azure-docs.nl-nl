@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: shipatel
-author: shivp950
-ms.date: 05/10/2019
+ms.author: sgilley
+author: sdgilley
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 511c737e160c0f0753e570314c9b29346972cb04
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1985c596b9f4b9b78b0055bfe1eab9888c30e201
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71269254"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489764"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk ruimten**](concept-workspace.md) in de Azure Portal voor [Azure machine learning](overview-what-is-azure-ml.md).  De portal is de eenvoudigste manier om aan de slag te gaan met werk ruimten, maar als uw behoeften wijzigen of vereisten voor automatisering verhogen, kunt u ook werk ruimten maken en verwijderen [met behulp van de CLI](reference-azure-machine-learning-cli.md), [met Python-code](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) of [via de VS code-extensie](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code).
 
@@ -26,7 +26,38 @@ In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk rui
 
 Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
-[!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
+
+1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
+
+      ![Een nieuwe resource maken](../../../includes/media/aml-create-in-portal/portal-create-resource.png)
+
+1. Gebruik de zoek balk om **machine learning service-werk ruimte**te vinden.
+
+1. Selecteer **machine learning service-werk ruimte**.
+
+1. Selecteer in het deel venster **machine learning service werkruimte** de optie **maken** om te beginnen.
+
+1. Geef de volgende informatie op om uw nieuwe werk ruimte te configureren:
+
+   Veld|Beschrijving 
+   ---|---
+   Werkruimte naam |Voer een unieke naam in die uw werk ruimte identificeert. In dit voor beeld gebruiken we **docs-WS**. De namen moeten uniek zijn in de resource groep. Gebruik een naam die gemakkelijk kan worden ingetrokken en om onderscheid te maken tussen werk ruimten die door anderen zijn gemaakt.  
+   Abonnement |Selecteer het Azure-abonnement dat u wilt gebruiken.
+   Resourcegroep | Gebruik een bestaande resource groep in uw abonnement of voer een naam in om een nieuwe resource groep te maken. Een resource groep bevat gerelateerde resources voor een Azure-oplossing. In dit voor beeld gebruiken we **docs-AML**. 
+   Locatie | Selecteer de locatie die het dichtst bij uw gebruikers ligt en de gegevens bronnen om uw werk ruimte te maken.
+   Werkruimte editie | Selecteer **Basic** of **Enter prise**.  Deze werk ruimte-editie bepaalt de functies waartoe u toegang hebt en de prijzen. Meer informatie over de [Basic-en Enter prise Edition-aanbiedingen](overview-what-is-azure-ml.md#sku). 
+
+    ![Uw werk ruimte configureren](media/how-to-manage-workspace/select-edition.png)
+
+1. Nadat u klaar bent met het configureren van de werk ruimte, selecteert u **maken**. 
+
+   > [!Warning] 
+   > Het kan enkele minuten duren om uw werk ruimte in de cloud te maken.
+
+   Wanneer het proces is voltooid, wordt een bericht over een geslaagde implementatie weer gegeven. 
+ 
+ 1. Als u de nieuwe werk ruimte wilt weer geven, selecteert u **Ga naar resource**.
 
 ### <a name="download-a-configuration-file"></a>Een configuratie bestand downloaden
 
@@ -38,27 +69,45 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog g
    
    Plaats het bestand in de mapstructuur met uw python-scripts of Jupyter-notebooks. Deze kan zich in dezelfde map bevindt, in een submap met de naam *. azureml*of in een bovenliggende map. Wanneer u een VM van een notebook maakt, wordt dit bestand voor u toegevoegd aan de juiste map op de virtuele machine.
 
+## <a name="upgrade"></a>Bijwerken naar Enter prise Edition
 
-## <a name="view"></a>Een werk ruimte weer geven
+U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om te profiteren van de uitgebreide functies, zoals ervaringen met weinig code en verbeterde beveiligings functies.
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+
+1. Selecteer de werk ruimte die u wilt bijwerken.
+
+1. Selecteer de optie **upgrade** bovenaan of in het bericht upgrade.
+
+    ![Een werk ruimte bijwerken](media/how-to-manage-workspace/upgrade.png)
+
+1. Selecteer **Update bevestigen**.
+
+
+> [!IMPORTANT]
+> U kunt een Enter prise Edition-werk ruimte niet naar een Basic editie-werk ruimte downgradeen. 
+
+## <a name="view"></a>Een werk ruimte zoeken
 
 1. Selecteer in de linkerbovenhoek van de portal **alle services**.
 
-1. Typ **machine learning service**in het veld **alle services** filter.  
+1. Typ **machine learning**in het veld **alle services** filter.  
 
-1. Selecteer **machine learning service-werk ruimten**.
+1. Selecteer **Azure machine learning**.
 
    ![Zoeken naar Azure Machine Learning-werk ruimte](media/how-to-manage-workspace/all-services.png)
 
 1. Bekijk de lijst met werk ruimten die zijn gevonden. U kunt filteren op basis van abonnement, resource groepen en locaties.  
 
 1. Selecteer een werk ruimte om de eigenschappen ervan weer te geven.
-   ![Workspace eigenschappen ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+   eigenschappen van ![werk ruimte](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
 Gebruik de knop verwijderen boven aan de werk ruimte die u wilt verwijderen.
 
   ![De knop Verwijderen](media/how-to-manage-workspace/delete-workspace.png)
+
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

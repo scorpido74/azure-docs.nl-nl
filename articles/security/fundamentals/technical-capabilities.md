@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129301"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468073"
 ---
-# <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden voor Azure-beveiliging
+# <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
 
 ## <a name="azure-platform"></a>Azure-platform
@@ -169,9 +169,9 @@ Met op rollen gebaseerd toegangsbeheer kunt u taken scheiden binnen uw team en a
 
 Een van de sleutels voor gegevens beveiliging in de Cloud is een Accounting voor de mogelijke statussen waarin uw gegevens zich kunnen voordoen en welke besturings elementen beschikbaar zijn voor die status. Voor de best practices voor Azure Data Security en versleuteling gelden de aanbevelingen voor de statussen van de volgende gegevens.
 
-- Op rest: Dit geldt ook voor alle informatie opslag objecten, containers en typen die statisch op fysieke media aanwezig zijn, een magnetische of optische schijf zijn.
+- Inactief: Dit omvat alle opslag objecten, containers en typen van informatie die statisch op fysieke media aanwezig zijn, op de magnetische of optische schijf.
 
-- In-transit: Wanneer gegevens worden overgedragen tussen onderdelen, locaties of Program ma's, zoals via het netwerk, via een service bus (van on-premises naar de Cloud en vice versa, waaronder hybride verbindingen zoals ExpressRoute), of tijdens een invoer-en uitvoer proces, wordt het gezien als bewegingen.
+- Transit: wanneer gegevens worden overgedragen tussen onderdelen, locaties of Program ma's, zoals via het netwerk, via een service bus (van on-premises naar de Cloud en vice versa, waaronder hybride verbindingen zoals ExpressRoute), of tijdens een invoer-en uitvoer proces , wordt het gezien als bewegingen.
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
@@ -256,7 +256,7 @@ Grotere gegevens sets kunnen worden verplaatst via een speciale WAN-verbinding m
 
 Als u werkt met Azure Storage via de Azure-Portal, worden alle trans acties uitgevoerd via HTTPS. [Opslag rest API](https://msdn.microsoft.com/library/azure/dd179355.aspx) via https kan ook worden gebruikt om te communiceren met [Azure Storage](https://azure.microsoft.com/services/storage/) en [Azure SQL database](https://azure.microsoft.com/services/sql-database/).
 
-Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/gg195821.aspx), afluis [teren](https://technet.microsoft.com/library/gg195641.aspx)en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn in het verkrijgen van toegang tot vertrouwelijke gegevens.
+Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/gg195821.aspx), [afluis teren](https://technet.microsoft.com/library/gg195641.aspx)en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn in het verkrijgen van toegang tot vertrouwelijke gegevens.
 
 Meer informatie over de Azure VPN-optie vindt u in het artikel [planning en ontwerp voor VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -309,7 +309,7 @@ Azure biedt ook verschillende gebruiks vriendelijke functies waarmee u zowel bin
 
 - [Azure Active Directory authenticatie instellen voor uw app](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
-- [Verkeer naar uw app beveiligen door Transport Layer Security (TLS/SSL)-HTTPS in te scha kelen](../../app-service/app-service-web-tutorial-custom-ssl.md)
+- [Verkeer naar uw app beveiligen door Transport Layer Security (TLS/SSL)-HTTPS in te scha kelen](../../app-service/configure-ssl-bindings.md)
 
   - [Alle binnenkomend verkeer via HTTPS-verbinding afdwingen](http://microsoftazurewebsitescheatsheet.info/)
 
@@ -352,7 +352,7 @@ Azure biedt ondersteuning voor speciale WAN-koppelings connectiviteit met uw on-
 
 Met [Azure virtual machines](../../virtual-machines/index.yml) kunt u een breed scala aan computer oplossingen implementeren op een flexibele manier. Met ondersteuning voor Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP en Azure BizTalk Services kunt u elke workload en elke taal implementeren op vrijwel elk besturingssysteem.
 
-Met Azure kunt u antimalware- [Software](antimalware.md) van beveiligings leveranciers gebruiken, zoals micro soft, Symantec, Trend Micro en Kaspersky, om uw virtuele machines te beschermen tegen schadelijke bestanden, adware en andere bedreigingen.
+Met Azure kunt u [antimalware-software](antimalware.md) van beveiligings leveranciers gebruiken, zoals micro soft, Symantec, Trend Micro en Kaspersky, om uw virtuele machines te beschermen tegen schadelijke bestanden, adware en andere bedreigingen.
 
 Micro soft antimalware voor Azure Cloud Services en Virtual Machines is een real-time beschermings functie waarmee u virussen, spyware en andere schadelijke software kunt identificeren en verwijderen. Micro soft antimalware biedt Configureer bare waarschuwingen wanneer bekende schadelijke of ongewenste software probeert zichzelf te installeren of uit te voeren op uw Azure-systemen.
 
@@ -360,7 +360,7 @@ Micro soft antimalware voor Azure Cloud Services en Virtual Machines is een real
 
 [Azure site Recovery](../../site-recovery/site-recovery-overview.md) helpt de replicatie, failover en herstel van werk belastingen en apps te organiseren, zodat deze beschikbaar zijn vanaf een secundaire locatie als uw primaire locatie uitvalt.
 
-## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>Compatibiliteit controleren: Controle lijst voor Cloud Services met verval datum
+## <a name="ensure-compliance-cloud-services-due-diligence-checklist"></a>Zorg voor naleving: controle lijst voor Cloud Services met verval datum
 
 Micro soft heeft [de controle lijst voor de Cloud Services](https://aka.ms/cloudchecklist.download) -overdenking ontwikkeld om organisaties te helpen om te zorgen dat de redenen zijn voor de overstap naar de Cloud. Het biedt een structuur voor een organisatie van elke omvang en type, persoonlijke bedrijven en organisaties uit de publieke sector, inclusief de overheid op alle niveaus en non-profit ondernemingen, om hun eigen prestaties, service, gegevens beheer en bedrijfs doelstellingen te identificeren en vereiste. Hierdoor kunnen ze de aanbiedingen van andere Cloud serviceproviders vergelijken en uiteindelijk de basis vormen voor een Cloud service overeenkomst.
 
@@ -388,7 +388,7 @@ Daarnaast is de controle lijst:
 
 Azure Operational Security is gebaseerd op een Framework met de kennis die is opgedaan via een aantal mogelijkheden die uniek zijn voor micro soft, waaronder micro soft Security Development Lifecycle (SDL), het micro soft Security Response Center-programma en dieper inzicht in de Cyber beveiliging Threat-landschap.
 
-### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure monitor
 
 [Azure monitor](../../azure-monitor/index.yml) is de IT-beheer oplossing voor de hybride Cloud. Als u de bestaande System Center-implementatie gebruikt of uitbreidt, biedt Azure Monitor logboeken u de maximale flexibiliteit en controle voor het beheer van uw infra structuur op basis van de Cloud.
 
@@ -438,11 +438,11 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 Cloud toepassingen zijn complex met veel bewegende onderdelen. Bewaking biedt gegevens om ervoor te zorgen dat uw toepassing in een goede staat actief blijft. Het helpt u ook om mogelijke problemen op te lossen of om Stave te oplossen.
 
-![Azure monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Daarnaast kunt u bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
+![Azure Monitor](./media/technical-capabilities/azure-security-technical-capabilities-fig10.png) Daarnaast kunt u bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
 
 Het controleren van de netwerk beveiliging is essentieel voor het detecteren van problemen met het netwerk en het controleren van de naleving van uw IT-beveiligings beleid en het regulerende governance model. Met de weer gave beveiligings groep kunt u de geconfigureerde netwerk beveiligings groep en beveiligings regels, evenals de juiste beveiligings regels, ophalen. Met de lijst met toegepaste regels kunt u bepalen welke poorten het beveiligings risico van open en SS hebben.
 
-### <a name="network-watcher"></a>Netwerk-watcher
+### <a name="network-watcher"></a>Network Watcher
 
 [Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op netwerk niveau in, naar en Azure. Met behulp van de hulpprogram ma's voor netwerk diagnose en visualisatie die beschikbaar zijn bij Network Watcher, kunt u uw netwerk in azure begrijpen, vaststellen en er inzicht in krijgen. Deze service omvat pakket opname, volgende hop, IP-stroom controleren, beveiligings groep weer geven, NSG stroom Logboeken. Bewaking op scenario niveau biedt een end-to-end weer gave van netwerk bronnen in tegens telling tot afzonderlijke netwerk bron bewaking.
 
@@ -507,7 +507,7 @@ Lees meer over beveiliging door enkele van onze diep gaande onderwerpen over bev
 
 - [Controle en logboekregistratie](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
 
-- [Cybercrime](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
+- [Cyber Crime](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
 
 - [Ontwerp en operationele beveiliging](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/25/2019
-ms.openlocfilehash: 06f4fd56ba5d0152b7e5d3fbfaa31dc4d6c4482d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 01553eb020c1493488e941705d9df8c8c946340a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554118"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478712"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Bewaking van een nieuw Azure Kubernetes service (AKS)-cluster inschakelen
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u Azure Monitor instelt voor containers voor
 
 U kunt de bewaking van een AKS-cluster inschakelen met een van de ondersteunde methoden:
 
-* Azure CLI
+* Azure-CLI
 * Terraform
 
 ## <a name="enable-using-azure-cli"></a>Inschakelen met behulp van Azure CLI
@@ -28,7 +28,7 @@ U kunt de bewaking van een AKS-cluster inschakelen met een van de ondersteunde m
 Als u de bewaking van een nieuw AKS-cluster dat is gemaakt met Azure CLI wilt inschakelen, volgt u de stap in het artikel Quick Start in het gedeelte [AKS-cluster maken](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer `az --version` uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). Als u de AKS-preview CLI-extensie versie 0.4.12 of hoger hebt geïnstalleerd, verwijdert u alle wijzigingen die u hebt aangebracht om een preview-uitbrei ding in te scha kelen, omdat AKS preview-functies niet beschikbaar zijn in de Cloud voor Amerikaanse Governmnet van Azure.
+>Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer `az --version`uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). Als u de AKS-preview CLI-extensie versie 0.4.12 of hoger hebt geïnstalleerd, verwijdert u alle wijzigingen die u hebt aangebracht om een preview-uitbrei ding in te scha kelen, omdat AKS preview-functies niet beschikbaar zijn in de Cloud voor Amerikaanse Governmnet van Azure.
 
 ## <a name="enable-using-terraform"></a>Inschakelen met behulp van terraform
 
@@ -97,7 +97,7 @@ omsagent   2         2         2         2            2           beta.kubernete
 ```  
 
 ## <a name="view-configuration-with-cli"></a>Configuratie weer geven met CLI
-Gebruik de `aks show`-opdracht om details op te halen, zoals de oplossing die is ingeschakeld of niet, wat is de Log Analytics werk ruimte resourceID en de samenvattings gegevens over het cluster.  
+Gebruik de `aks show` opdracht om details op te halen, zoals de oplossing die is ingeschakeld of niet, wat is de Log Analytics werk ruimte resourceID en de samenvattings gegevens over het cluster.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
@@ -120,4 +120,4 @@ Na enkele minuten is de opdracht voltooid en retourneert deze informatie over de
 
 * Als u problemen ondervindt bij het voorbereiden van de oplossing, raadpleegt u de [hand leiding](container-insights-troubleshoot.md) voor het oplossen van problemen
 
-* Als bewaking is ingeschakeld voor het vastleggen van metrische gegevens over de status van de AKS-cluster knooppunten en de peulen, zijn deze metrische gegevens over de status beschikbaar in de Azure Portal. Zie [Azure Kubernetes service Health weer geven](container-insights-analyze.md)voor meer informatie over het gebruik van Azure monitor voor containers.
+* Als controle is ingeschakeld voor het verzamelen van het status-en resource gebruik van uw AKS-cluster en werk belastingen die erop worden uitgevoerd, leert [u hoe u Azure monitor gebruikt](container-insights-analyze.md) voor containers.

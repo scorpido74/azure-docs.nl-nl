@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 7fe84dd30099377af09b8100f5e5e7246a0d6328
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a070a7da48af8abe138900dd0221bace2149aa20
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469313"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
 
@@ -42,13 +42,13 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-a-timer-triggered-function"></a>Een door een timer geactiveerde functie maken
 
-1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Anders gaat u verder met stap drie.
+1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Als dat niet het geval is, gaat u naar stap 3.
 
    ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
 2. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-scheduled-function/add-first-function.png)
+    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-scheduled-function/add-first-function.png)
 
 3. Typ `timer` in het zoekveld en configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding.
 

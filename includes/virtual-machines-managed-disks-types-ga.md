@@ -8,62 +8,68 @@ ms.topic: include
 ms.date: 05/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2bc5602011ed64b11b1b8c96b7e69a8d5ee9bf32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133143"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522658"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
-Azure premium SSD's bieden ondersteuning voor hoge prestaties en lage latentie schijven voor virtuele machines (VM's) met invoer/uitvoer (I/O)-intensieve workloads. Als u wilt profiteren van de snelheid en prestaties van premium storage-schijven, kunt u bestaande VM-schijven naar Premium SSD's migreren. Premium SSD's zijn geschikt voor essentiële productietoepassingen. Premium SSD's kunnen alleen worden gebruikt met VM-serie die premium-opslag-compatibel zijn.
+Azure Premium Ssd's bieden ondersteuning voor hoge prestaties en lage latentie voor virtuele machines (Vm's) met invoer/uitvoer-intensieve workloads. Als u gebruik wilt maken van de snelheid en prestaties van Premium-opslag schijven, kunt u bestaande VM-schijven migreren naar Premium-Ssd's. Premium-Ssd's zijn geschikt voor essentiële productie toepassingen. Premium-Ssd's kan alleen worden gebruikt in combi natie met een VM-reeks die compatibel is met Premium Storage.
 
-Zie voor meer informatie over afzonderlijke VM-typen en -grootten in Azure voor Windows, met inbegrip van welke grootten premium storage-compatibel is, zijn [Windows VM-grootten](../articles/virtual-machines/windows/sizes.md). Zie voor meer informatie over afzonderlijke VM-typen en -grootten in Azure voor Linux, inclusief welke grootten premium storage-compatibel is, zijn [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md).
+Zie [Windows VM-grootten](../articles/virtual-machines/windows/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Windows, waaronder de grootte die compatibel is met Premium Storage. Zie [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md)voor meer informatie over de verschillende VM-typen en-grootten in azure voor Linux, waaronder de grootte van Premium Storage-compatibel.
 
 ### <a name="disk-size"></a>Schijfgrootte
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-Wanneer u een premium-opslagschijf, in tegenstelling tot standaard opslag inrichten kunt u de capaciteit, IOPS en doorvoer van die schijf worden gegarandeerd. Als u een P50 schijf maakt, richt Azure bijvoorbeeld 4.095 GB opslagcapaciteit, 7.500 IOPS en doorvoer van 250 MB/s voor de schijf. Uw toepassing kunt gebruiken of een deel van de capaciteit en prestaties. Premium-SSD-schijven zijn ontworpen voor lage milliseconden latentie bieden en IOPS en doorvoer die wordt beschreven in de voorgaande tabel 99,9% van de tijd die als doel.
+Wanneer u een Premium-opslag schijf inricht, in tegens telling tot standaard opslag, bent u verzekerd van de capaciteit, IOPS en door Voer van de schijf. Als u bijvoorbeeld een P50-schijf maakt, wordt de opslag capaciteit van 4.095 GB door Azure ingericht, 7.500 IOPS en een door Voer van 250 MB/s voor die schijf. Uw toepassing kan alle of een deel van de capaciteit en prestaties gebruiken. Premium-SSD schijven zijn zodanig ontworpen dat er in de voor gaande tabel 99,9% van de tijd minder dan één milliseconde latentie en doel-IOPS en-door voer worden beschreven.
+
+## <a name="bursting-preview"></a>Bursting (preview-versie)
+
+Premium-SSD grootten die kleiner zijn dan P30 bieden nu schijf bursting (preview) en kunnen de IOPS per schijf tot 3.500 en de band breedte van Maxi maal 170 Mbps. Bursting wordt geautomatiseerd en werkt op basis van een tegoed systeem. Tegoeden worden automatisch opgeteld in een burst-Bucket wanneer het schijf verkeer lager is dan het ingerichte prestatie doel en de tegoeden automatisch worden gebruikt wanneer het verkeer groter wordt dan het doel, tot de maximale burst-limiet. De maximale burst-limiet bepaalt het maximum van schijf-IOPS & band breedte, zelfs als u burst-tegoeden hebt om te gebruiken. Schijf bursting biedt betere tolerantie voor onvoorspelbare wijzigingen van i/o-patronen. U kunt dit het beste gebruiken voor het opstarten van de besturingssysteem schijf en toepassingen met piekige-verkeer.    
+
+Schijven die ondersteuning bieden voor bursting, worden standaard ingeschakeld voor nieuwe implementaties van toepasselijke schijf grootten in de [voorbeeld regio's](https://docs.microsoft.com/azure/virtual-machines/linux/disk-bursting#regional-availability) , zonder dat de gebruiker actie hoeft te ondernemen. Voor bestaande schijven van de toepasselijke grootten kunt u bursting met een van de volgende twee opties inschakelen: Ontkoppel en koppel de schijf opnieuw of stop de gekoppelde VM. Alle burst-toepasselijke schijf grootten beginnen met een volledige burst-credit Bucket wanneer de schijf is gekoppeld aan een virtuele machine die een maximale duur van Maxi maal 30 minuten ondersteunt. Zie [Premium-SSD bursting](../articles/virtual-machines/linux/disk-bursting.md)voor meer informatie over hoe bursting werkt op Azure-schijven. 
 
 ### <a name="transactions"></a>Transacties
 
-Voor premium SSD's, elke i/o bewerking kleiner dan of gelijk zijn aan 256 KiB van doorvoer wordt beschouwd als één i/o-bewerking. I/o-bewerkingen die groter zijn dan 256 KiB zijn van doorvoer worden beschouwd als meerdere i/o's van de grootte van 256 KiB.
+Voor Premium-Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB.
 
 ## <a name="standard-ssd"></a>Standard - SSD
 
-Azure standard-SSD's zijn een optie voor rendabele opslag geoptimaliseerd voor workloads die consistente prestaties op lagere niveaus van IOP's nodig. Standard-SSD biedt een goede op instapniveau voor diegenen die u verplaatsen naar de cloud, wilt met name als u problemen ondervindt met de variantie van workloads die on-premises worden uitgevoerd op uw harde schijf-oplossingen. Vergeleken met de standaard harde schijven, bieden standard-SSD's betere beschikbaarheid, consistentie, betrouwbaarheid en latentie. Standard-SSD's zijn geschikt voor webservers, toepassingsservers met lage IOPS, weinig wordt gebruikt zakelijke toepassingen en werkbelastingen voor ontwikkelen/testen. Standard-SSD's zijn, zoals standaard harde schijven, beschikbaar op alle Azure-VM's.
+Azure Standard Ssd's is een voordelige opslag optie die is geoptimaliseerd voor workloads die consistente prestaties op lagere IOPS-niveaus nodig hebben. Standard-SSD biedt een goede ervaring op instap niveau voor degenen die willen overstappen op de Cloud, met name als u problemen ondervindt met de variantie van werk belastingen die op uw HDD-oplossingen op locatie worden uitgevoerd. In vergelijking met de standaard-Hdd's bieden de standaard-Ssd's betere Beschik baarheid, consistentie, betrouw baarheid en latentie. Standaard Ssd's zijn geschikt voor webservers, lage IOPS-toepassings servers, intensief gebruikte zakelijke toepassingen en werk belastingen voor ontwikkelen en testen. Net als standaard Hdd's zijn standaard Ssd's beschikbaar op alle Azure-Vm's.
 
 ### <a name="disk-size"></a>Schijfgrootte
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-Standard-SSD's zijn ontworpen voor slechts enkele milliseconden latentie en de IOPS en doorvoer tot aan de limieten die worden beschreven in de voorgaande tabel 99% van de tijd. Werkelijke IOPS en doorvoer kunnen soms variëren, afhankelijk van de patronen in het netwerkverkeer. Standard-SSD's biedt consistente prestaties dan de HDD-schijven met een lagere latentie.
+Standaard Ssd's zijn ontworpen om latentie van één cijfer en de IOPS en door voer te bieden tot de limieten die zijn beschreven in de voor gaande tabel 99% van de tijd. De werkelijke IOPS en door Voer kunnen soms variëren, afhankelijk van de verkeers patronen. Standaard Ssd's bieden consistente prestaties dan de harde schijven met een lagere latentie.
 
 ### <a name="transactions"></a>Transacties
 
-Voor standard SSD's, elke i/o bewerking kleiner dan of gelijk zijn aan 256 KiB van doorvoer wordt beschouwd als één i/o-bewerking. I/o-bewerkingen die groter zijn dan 256 KiB zijn van doorvoer worden beschouwd als meerdere i/o's van de grootte van 256 KiB. Deze transacties hebben facturering gevolgen.
+Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB. Deze trans acties hebben een facturerings impact.
 
 ## <a name="standard-hdd"></a>Standard HDD
 
-Azure standard HDD's leveren betrouwbare, voordelige schijfondersteuning voor virtuele machines waarop niet gevoelig werkbelastingen worden uitgevoerd. Met de standard-opslag, worden de gegevens worden opgeslagen op hardeschijfstations (HDD's). Latentie, IOPS en doorvoer van standaard harde schijven kunnen meer aanzienlijk verschillen in vergelijking met schijven op basis van SSD. Standaard harde schijven zijn ontworpen voor schrijven latenties onder 10ms leveren en lezen-latenties onder 20 ms voor de meeste i/o-bewerkingen, maar de werkelijke prestaties, afhankelijk van het patroon voor i/o-grootte en belasting variëren kunnen. Als u werkt met virtuele machines, kunt u standaard harde schijven kunt gebruiken voor scenario's voor ontwikkelen/testen en minder kritieke werkbelastingen. Standard HDD's zijn beschikbaar in alle Azure-regio's en kunnen worden gebruikt met alle Azure-VM's.
+Azure Standard Hdd's levert betrouw bare, voordelige schijf ondersteuning voor virtuele machines met latentie-ongevoelig werk belastingen. Bij standaard opslag worden de gegevens opgeslagen op de harde schijven (Hdd's). Latentie, IOPS en door Voer van Standard-HDD schijven kunnen veel meer verschillen in vergelijking met schijven op basis van SSD. Standard-HDD schijven zijn ontworpen voor het leveren van schrijf latentie onder 10 MS en lees latentie onder 20ms voor de meeste i/o-bewerkingen, maar de werkelijke prestaties kunnen echter variëren, afhankelijk van de i/o-grootte en het werkbelasting patroon. Wanneer u werkt met Vm's, kunt u standaard HDD-schijven gebruiken voor dev/test-scenario's en minder kritieke workloads. Standaard Hdd's zijn beschikbaar in alle Azure-regio's en kunnen worden gebruikt met alle Azure-Vm's.
 
 ### <a name="disk-size"></a>Schijfgrootte
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>Transacties
 
-Elke i/o-bewerking is voor Standard HDD's beschouwd als één transactie, ongeacht de i/o-grootte. Deze transacties hebben facturering gevolgen.
+Voor standaard Hdd's wordt elke IO-bewerking beschouwd als één trans actie, ongeacht de I/O-grootte. Deze trans acties hebben een facturerings impact.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
-Als u beheerde schijven gebruikt, zijn de volgende factureringsvoorwaarden van toepassing:
+Bij het gebruik van beheerde schijven gelden de volgende facturerings overwegingen:
 
 - Schijftype
-- Grootte van de beheerde schijf
+- Grootte van beheerde schijf
 - Momentopnamen
 - Uitgaande gegevensoverdracht
-- Aantal transacties
+- Aantal trans acties
 
-**Beheerde schijfgrootte**: beheerde schijven worden in rekening gebracht voor de ingerichte grootte. Azure wijst de ingerichte grootte (afgerond) naar de dichtstbijzijnde aangeboden schijfgrootte. Voor meer informatie over de grootte van de schijven die worden aangeboden, Zie de vorige tabellen. Elke schijf wordt toegewezen aan een aanbieding van de grootte van ondersteunde ingerichte schijf en dienovereenkomstig wordt gefactureerd. Bijvoorbeeld, als u een 200 GiB Standard-SSD ingericht, het wordt toegewezen aan de aanbieding van de grootte van schijf van E15 (256 GB). Facturering voor ingerichte schijven is per uur Pro rata met behulp van de maandelijkse prijs voor de Premium-opslag-aanbieding. Bijvoorbeeld, als u een schijf E10 ingericht en deze na 20 uur verwijderd, wordt u gefactureerd voor de aanbieding E10 20 uur Pro rata berekend. Dit is, ongeacht de hoeveelheid feitelijke gegevens geschreven naar de schijf.
+**Beheerde schijf grootte**: beheerde schijven worden gefactureerd op de ingerichte grootte. Azure wijst de ingerichte grootte (afgerond) toe aan de dichtstbijzijnde schijf grootte. Zie de vorige tabellen voor meer informatie over de geboden schijf groottes. Elke schijf wordt toegewezen aan een ondersteunde aanbieding van de ingerichte schijf en wordt dienovereenkomstig gefactureerd. Als u bijvoorbeeld een 200 GiB-Standard-SSD hebt ingericht, wordt deze toegewezen aan de aanbieding voor de schijf grootte van E15 (256 GiB). Facturering voor een ingerichte schijf wordt per uur naar beneden gefactureerd met behulp van de maandelijkse prijs voor de Premium Storage aanbieding. Als u bijvoorbeeld een E10-schijf hebt ingericht en deze na 20 uur hebt verwijderd, wordt u gefactureerd voor het E10-aanbod dat Maxi maal 20 uur in rekening wordt gebracht. Dit is ongeacht de hoeveelheid gegevens die naar de schijf wordt geschreven.
 
-**Momentopnamen**: Momentopnamen worden in rekening gebracht op basis van de gebruikte grootte. Als u een momentopname van een beheerde schijf met ingerichte capaciteit van 64 GiB en de werkelijke gebruikte gegevensgrootte van 10 GiB maakt, kunt u voor de momentopname, wordt gefactureerd alleen voor de gebruikte gegevensgrootte van 10 GiB.
+**Moment opnamen**: moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt de moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB.

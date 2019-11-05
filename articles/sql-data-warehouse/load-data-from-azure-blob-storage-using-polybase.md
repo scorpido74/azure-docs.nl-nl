@@ -1,6 +1,6 @@
 ---
-title: "Zelfstudie: Over taxi's gegevens van New York laden in Azure SQL Data Warehouse | Microsoft Docs"
-description: In de zelf studie worden Azure Portal en SQL Server Management Studio gebruikt voor het laden van nieuwe over taxi's-gegevens van een open bare Azure-Blob naar Azure SQL Data Warehouse.
+title: "Zelf studie: over taxi's-gegevens in New York laden voor Azure SQL Data Warehouse | Microsoft Docs"
+description: In de zelf studie worden Azure Portal en SQL Server Management Studio voor het laden van nieuwe over taxi's-gegevens van een globale Azure-Blob naar Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,20 +10,20 @@ ms.subservice: load-data
 ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e3bef20a92322b07219e42c4f7fe8443917eae32
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2e799d84aee9ba4d3bfb00ddfad358c9b90c3d59
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575215"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482404"
 ---
-# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Zelfstudie: Over taxi's gegevens van New York naar Azure SQL Data Warehouse laden
+# <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Zelf studie: over taxi's-gegevens voor New York laden in Azure SQL Data Warehouse
 
-In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van nieuwe over taxi's-gegevens van een open bare Azure-Blob naar Azure SQL Data Warehouse. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) voor het volgende: 
+In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van nieuwe over taxi's-gegevens van een globale Azure-Blob naar Azure SQL Data Warehouse. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) voor het volgende: 
 
 > [!div class="checklist"]
 > * Een datawarehouse maken in Azure Portal
-> * Een serverfirewallregel instellen in Azure Portal
+> * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding maken met het datawarehouse met SMMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
 > * Externe tabellen maken voor gegevens in Azure Blob Storage
@@ -58,9 +58,9 @@ Volg deze stappen om een leeg SQL Data Warehouse te maken.
 
    | Instelling | Voorgestelde waarde | Beschrijving | 
    | ------- | --------------- | ----------- | 
-   | **De naam van database** | mySampleDataWarehouse | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. | 
+   | **Databasenaam** | mySampleDataWarehouse | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. | 
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
+   | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
    | **Bron selecteren** | Lege database | Geeft aan dat er een lege database wordt gemaakt. Opmerking: een datawarehouse is een type database.|
 
     ![datawarehouse maken](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
@@ -156,7 +156,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
 
     ![verbinding maken met server](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. Klik op**Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
+4. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
 
 5. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
 
@@ -181,7 +181,7 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
     CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
     ```
 
-3. Klik op **Uitvoeren**.
+3. Klik op **Execute** (Uitvoeren).
 
 4. Klik met de rechtermuisknop op **mySampleDataWarehouse** en kies **Nieuwe query**. Er wordt een nieuw queryvenster geopend.  
 
@@ -195,7 +195,7 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
     EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
     ```
 
-6. Klik op **Uitvoeren**.
+6. Klik op **Execute** (Uitvoeren).
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Verbinding maken met de server als de ladende gebruiker
 
@@ -207,7 +207,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20
 
 2. Voer de volledig gekwalificeerde servernaam in en voer **LoaderRC20** als de aanmelding in.  Voer uw wachtwoord in voor LoaderRC20.
 
-3. Klik op**Verbinden**.
+3. Klik op **Verbinden**.
 
 4. Wanneer de verbinding gereed is, ziet u twee serververbindingen in Objectverkenner. Eén verbinding als de serverbeheerder en één verbinding als MedRCLogin.
 

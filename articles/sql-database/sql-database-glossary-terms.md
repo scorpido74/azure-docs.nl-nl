@@ -11,26 +11,26 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/26/2019
-ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f23ef5506027a5de9f4189a11636d323679707f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883350"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488475"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Woorden lijst met termen Azure SQL Database
 
-|Context|Begrip|Meer informatie|
+|Context|Termijn|Meer informatie|
 |:---|:---|:---|
 |Naam van de Azure-service|Azure SQL Database of SQL Database|[De Azure SQL Database-Service](sql-database-technical-overview.md)|
-|Compute-laag|Serverloze (preview-versie)|[Serverloze Compute-laag](sql-database-serverless.md)
+|Compute-laag|Serverloos |[Serverloze Compute-laag](sql-database-serverless.md)
 ||Ingericht|[Serverloze Compute-laag](sql-database-serverless.md)
 |Implementatieopties |Individuele database|[Individuele databases](sql-database-single-database.md)|
 ||Elastische pool|[Elastische pool](sql-database-elastic-pool.md)|
 ||Beheerd exemplaar|[Beheerd exemplaar](sql-database-managed-instance.md)|
-|Serverobjecten|SQL Database Server of database server|[Database server](sql-database-servers.md)|
+|Server objecten|SQL Database Server of database server|[Database server](sql-database-servers.md)|
 ||Managed instance server, Managed instance server of instance server SQL Database|[Beheerd exemplaar](sql-database-managed-instance.md)|
-Databaseobjecten|Azure SQL Database|Elke data base in Azure SQL Database|
+Database objecten|Azure SQL-database|Elke data base in Azure SQL Database|
 ||Individuele database|Een Data Base die is gemaakt met de implementatie optie voor één data base|
 ||Gegroepeerde Data Base|Een Data Base die is gemaakt in of verplaatst naar een elastische pool|
 ||Exemplaar database|Een Data Base die is gemaakt in een beheerd exemplaar|

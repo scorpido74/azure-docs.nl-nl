@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: a6dfe21cd92c5bf5580d7b121f33f68fb4e135fa
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 5d8ed625e13d31e148ef1e54d8028fc7d13a6ede
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838545"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499581"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -21,45 +21,136 @@ ms.locfileid: "71838545"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Id van openbare app: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
-
-> [!NOTE] 
-> De volledige Node.js-oplossing is beschikbaar in de GitHub-opslagplaats [**Azure-Samples**](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node).
-
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-U kunt Node.js gebruiken voor toegang tot dezelfde resultaten die u in het browservenster in de vorige stap hebt gezien.
+Gebruik node. js om de [API](https://aka.ms/luis-apim-v3-prediction) voor het Voorspellings eindpunt op te vragen om het Voorspellings resultaat te verkrijgen.
 
-1. Kopieer het volgende codefragment:
+1. Kopieer het volgende code fragment naar een bestand met de naam `predict.js`:
 
-   [!code-nodejs[Console app code that calls a LUIS endpoint for Node.js](~/samples-luis/documentation-samples/quickstarts/analyze-text/node/call-endpoint.js)]
-
-2. Maak het `.env`-bestand met de volgende tekst of stel deze variabelen in de systeemomgeving in:
-
-    ```CMD
-    LUIS_APP_ID=df67dcdb-c37d-46af-88e1-8b97951ca1c2
-    LUIS_ENDPOINT_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    ```javascript
+    var request = require('request');
+    var requestpromise = require('request-promise');
+    var querystring = require('querystring');
+    
+    // Analyze text
+    //
+    getPrediction = async () => {
+    
+        // YOUR-KEY - Language Understanding starter key
+        var endpointKey = "YOUR-KEY";
+    
+        // YOUR-ENDPOINT Language Understanding endpoint URL, an example is westus2.api.cognitive.microsoft.com
+        var endpoint = "YOUR-ENDPOINT";
+    
+        // Set the LUIS_APP_ID environment variable 
+        // to df67dcdb-c37d-46af-88e1-8b97951ca1c2, which is the ID
+        // of a public sample application.    
+        var appId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
+    
+        var utterance = "turn on all lights";
+    
+        // Create query string 
+        var queryParams = {
+            "show-all-intents": true,
+            "verbose":  true,
+            "query": utterance,
+            "subscription-key": endpointKey
+        }
+    
+        // append query string to endpoint URL
+        var URI = `https://${endpoint}/luis/prediction/v3.0/apps/${appId}/slots/production/predict?${querystring.stringify(queryParams)}`
+    
+        // HTTP Request
+        const response = await requestpromise(URI);
+    
+        // HTTP Response
+        console.log(response);
+    
+    }
+    
+    // Pass an utterance to the sample LUIS app
+    getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-3. Stel de omgevingsvariabele `LUIS_ENDPOINT_KEY` in voor de sleutel.
+1. Stel de volgende waarden in:
 
-4. Installeer afhankelijkheden door de volgende opdracht uit te voeren in de opdrachtregel: `npm install`.
+    * `YOUR-KEY` naar uw start sleutel
+    * `YOUR-ENDPOINT` naar uw eind punt-URL
 
-5. Voer de code uit met `npm start`. Deze geeft de dezelfde waarden weer die u eerder hebt gezien in het browservenster.
+1. Installeer afhankelijkheden door de volgende opdracht uit te voeren op de opdracht regel: 
 
+    ```console
+    npm install request request-promise querystring
+    ```
+
+1. Voer de code uit met de volgende opdracht:
+
+    ```console
+    node predict.js
+    ```
+
+ 1. Voorspellings antwoord in JSON-indeling controleren:   
+    
+    ```console
+    {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
+    ```
+
+    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid: 
+
+    ```JSON
+    {
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
 
 ## <a name="luis-keys"></a>LUIS-sleutels
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze snelstart, sluit u het Visual Studio-project en verwijdert u de projectmap uit het bestandssysteem. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen en Train toevoegen met node. js](../luis-get-started-node-add-utterance.md)
+> [Uitingen en Train toevoegen](../luis-get-started-node-add-utterance.md)

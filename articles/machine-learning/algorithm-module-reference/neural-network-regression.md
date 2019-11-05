@@ -1,20 +1,20 @@
 ---
 title: 'Neural netwerk regressie: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de Neural-module voor netwerk regressie in Azure Machine Learning service om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de Neural-module voor netwerk regressie in Azure Machine Learning om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 54518d21db0c9b14cbb7b4fc4316d1db2b871573
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692741"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466010"
 ---
 # <a name="neural-network-regression-module"></a>Neural-module voor netwerk regressie
 
@@ -24,7 +24,7 @@ ms.locfileid: "72692741"
   
 ## <a name="module-overview"></a>Module overzicht  
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
   
@@ -51,8 +51,8 @@ Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschr
     Deze optie is het beste als u al enigszins bekend bent met Neural Networks. U gebruikt de net # taal om de netwerk architectuur te definiëren.  
 
 ##  <a name="bkmk_DefaultArchitecture"></a>Een Neural-netwerk model maken met behulp van de standaard architectuur
-  
-1.  Voeg de **Neural-module netwerk regressie** toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **regressie** . 
+
+1.  Voeg de **Neural-module netwerk regressie** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **regressie** . 
   
 2. Geef aan hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.  
   
@@ -98,4 +98,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2590b9851b654990795f111e76f6cc5ea6c96723
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553447"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491953"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Snelstartgids: een virtuele Windows-machine maken en versleutelen met de Azure Portal
 
@@ -21,7 +21,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-key-vault"></a>Een sleutelkluis maken
 
@@ -55,13 +55,13 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer op de pagina Nieuw onder populair **Windows Server 2016 Data Center**.
 1. Controleer op het tabblad **basis beginselen** onder **Project Details**of het juiste abonnement is geselecteerd.
-1. Voor **resource groep**selecteert u de resource groep die u hebt gemaakt bij het maken van uw sleutel kluis hierboven (bijvoorbeeld **myResourceGroup**)
-1. Voer *MyVM*in bij **naam van virtuele machine** en kies 
+1. Voor **resource groep**selecteert u de resource groep die u hebt gemaakt bij het maken van uw sleutel kluis (bijvoorbeeld **myResourceGroup**).
+1. Voer *MyVM*in voor de naam van de **virtuele machine**.
 1. Selecteer voor **regio**dezelfde regio die u hebt gebruikt bij het maken van uw sleutel kluis (bijvoorbeeld **VS-Oost**).
 1. Zorg ervoor dat de grootte *standaard D2s v3*is.
 1. Selecteer **wacht woord**onder **Administrator-account**. Voer een gebruikers naam en wacht woord in.
-    ![ResourceGroup scherm maken ](../media/disk-encryption/portal-qs-windows-vm-creation.png)
-1. Selecteer het tabblad beheer en controleer of u een diagnostische opslag account hebt. Als u geen opslag accounts hebt, selecteert u nieuwe maken, geeft u het nieuwe account een naam en selecteert u OK ![ResourceGroup scherm maken ](../media/disk-encryption/portal-qs-vm-creation-storage.png)
+    ![ResourceGroup-scherm maken](../media/disk-encryption/portal-qs-windows-vm-creation.png)
+1. Selecteer het tabblad beheer en controleer of u een diagnostische opslag account hebt. Als u geen opslag accounts hebt, selecteert u nieuwe maken, geeft u het nieuwe account een naam en selecteert u OK ![ResourceGroup maken](../media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. Klik op ' bekijken + maken '.
 1. Op de pagina **Een virtuele machine maken** ziet u de details van de virtuele machine die u gaat maken. Wanneer u klaar bent, selecteert u **Maken**.
 

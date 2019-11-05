@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326604"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469153"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Aanmelden met een iOS-toepassing
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: aanmelden met een iOS-toepassing
 
 Op het Microsoft Identity-platform wordt gebruikgemaakt van open standaarden, zoals OAuth2 en OpenID Connect. Het gebruik van een open standaard-protocol biedt meer keuze voor ontwikkel aars bij het selecteren van een bibliotheek om te integreren met onze services. We hebben deze walkthrough en andere gebruikers hiervan op de hulp om ontwikkel aars te helpen bij het schrijven van toepassingen die verbinding maken met het micro soft-identiteits platform. De meeste bibliotheken die [de RFC6749 OAuth2-spec](https://tools.ietf.org/html/rfc6749) implementeren, kunnen verbinding maken met het micro soft-identiteits platform.
 
@@ -31,20 +31,22 @@ Als u geen ervaring hebt met OAuth2 of OpenID Connect, is het mogelijk dat veel 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Een Azure AD B2C-directory maken
 Voordat u Azure AD B2C kunt gebruiken, moet u een directory, of tenant, maken. Een directory is een container voor al uw gebruikers, apps, groepen en meer. Als u nog geen directory hebt, [maakt u een B2C-directory](tutorial-create-tenant.md) voordat u verdergaat.
 
-## <a name="create-an-application"></a>Een toepassing maken
+## <a name="create-an-application"></a>Een app maken
 
 Registreer vervolgens een toepassing in uw Azure AD B2C-Tenant. Dit geeft Azure AD de informatie die nodig is om veilig te communiceren met uw app.
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Noteer de **toepassings-id** voor gebruik in een latere stap. Selecteer vervolgens de toepassing in de lijst en noteer de **aangepaste omleidings-URI**, ook voor gebruik in een latere stap. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
+
+Neem ook uw aangepaste omleidings-URI op voor gebruik in een latere stap. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Uw gebruikers stromen maken
 In Azure AD B2C wordt elke gebruikers ervaring gedefinieerd door een [gebruikers stroom](active-directory-b2c-reference-policies.md). Deze toepassing bevat één identiteits ervaring: een gecombineerde aanmelding en registratie. Wanneer u de gebruikers stroom maakt, moet u het volgende doen:
 
 * Selecteer de **weergave naam**van het kenmerk onder **aanmeldings kenmerken**.  U kunt ook andere kenmerken selecteren.
 * Selecteer onder **toepassings claims**de **weergave naam** van de claims en de **object-id van de gebruiker**. U kunt ook andere claims selecteren.
-* Kopieer de **naam** van elke gebruikers stroom nadat u deze hebt gemaakt. De naam van de gebruikers stroom wordt voorafgegaan door `b2c_1_` wanneer u de gebruikers stroom opslaat.  U hebt de naam van de gebruikers stroom later nodig.
+* Kopieer de **naam** van elke gebruikers stroom nadat u deze hebt gemaakt. De naam van uw gebruikers stroom wordt voorafgegaan door `b2c_1_` wanneer u de gebruikers stroom opslaat.  U hebt de naam van de gebruikers stroom later nodig.
 
 Nadat u de gebruikers stromen hebt gemaakt, bent u klaar om uw app te bouwen.
 
@@ -63,15 +65,15 @@ Dit voor beeld is gemaakt door de Leesmij-instructies te volgen van het [IOS App
 
 U kunt communicatie met Azure AD B2C configureren door zowel het autorisatie-eind punt als de token-eind punt-Uri's op te geven.  Als u deze Uri's wilt genereren, hebt u de volgende gegevens nodig:
 * Tenant-ID (bijvoorbeeld contoso.onmicrosoft.com)
-* De naam van de gebruikers stroom (bijvoorbeeld B2C @ no__t-01 @ no__t-1SignUpIn)
+* Gebruikers stroom naam (bijvoorbeeld B2C\_1\_SignUpIn)
 
-De URI van het token-eind punt kan worden gegenereerd door de Tenant @ no__t-0ID en het beleid @ no__t-1Name in de volgende URL te vervangen:
+De URI van het token-eind punt kan worden gegenereerd door de Tenant\_-ID en het beleids\_naam in de volgende URL te vervangen:
 
 ```objc
 static NSString *const tokenEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/token";
 ```
 
-De URI van het autorisatie-eind punt kan worden gegenereerd door de Tenant @ no__t-0ID en het beleid @ no__t-1Name in de volgende URL te vervangen:
+De URI van het autorisatie-eind punt kan worden gegenereerd door de Tenant\_-ID en het beleids\_naam in de volgende URL te vervangen:
 
 ```objc
 static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.com/te/<Tenant_ID>/<Policy_Name>/oauth2/v2.0/authorize";

@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: BYOK TDE-Azure SQL Database beheerd exemplaar inschakelen | Microsoft Docs'
+title: 'Power shell: BYOK TDE-Azure SQL Database beheerd exemplaar inschakelen | Microsoft Docs'
 description: Meer informatie over het configureren van een Azure SQL Managed instance om te beginnen met het gebruik van BYOK Transparent Data Encryption (TDE) voor versleuteling-at-rest met behulp van Power shell.
 services: sql-database
 ms.service: sql-database
@@ -10,15 +10,15 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 04/19/2019
-ms.openlocfilehash: d8f0f4a8e603a9040d166b00682077cff23abd8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 11/04/2019
+ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569688"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500064"
 ---
-# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault-preview"></a>Transparent Data Encryption beheren in een beheerd exemplaar met uw eigen sleutel vanuit Azure Key Vault (preview-versie)
+# <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transparent Data Encryption beheren in een beheerd exemplaar met uw eigen sleutel vanuit Azure Key Vault
 
 Met dit Power shell-voorbeeld script wordt Transparent Data Encryption (TDE) in Bring Your Own Key (preview)-scenario geconfigureerd voor een Azure SQL Managed instance, met behulp van een sleutel van Azure Key Vault. Zie [TDE Bring your own Key naar Azure SQL](../transparent-data-encryption-byok-azure-sql.md)voor meer informatie over de ondersteuning van TDE met Bring your own Key (BYOK).
 

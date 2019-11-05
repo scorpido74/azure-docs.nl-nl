@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 46ada91060aa095b7c041ff75abb6256f3d05853
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527539"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464696"
 ---
 # <a name="try-speech-services-for-free"></a>Probeer spraak services gratis uit
 
@@ -26,7 +26,7 @@ Als u meer tijd nodig hebt, meldt u zich aan voor een Microsoft Azure-account. h
 
 Ten slotte biedt de spraak Services een gratis laag die geschikt is voor het ontwikkelen van toepassingen. U kunt dit gratis abonnement blijven, zelfs nadat het tegoed van uw service verloopt.
 
-## <a name="free-trial"></a>Gratis versie
+## <a name="free-trial"></a>Gratis proefversie
 
 De gratis proef versie van 30 dagen geeft u voor een beperkte periode toegang tot de prijs categorie Standard.
 
@@ -123,5 +123,5 @@ Sleutels die zijn gemaakt voor een regio, zijn alleen geldig in die regio. Als u
 Voltooi een van onze Quick starts voor 10 minuten of Bekijk onze SDK-voor beelden:
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: spraak herkennen in C# ](quickstart-csharp-dotnet-windows.md) 
+> [Snelstartgids: spraak herkennen in C# ](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
 > [Speech SDK](speech-sdk.md#get-the-samples) -voor beelden

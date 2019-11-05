@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: c20a14ef2bc74d73b93ab39ee52fe1be8a5f984f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12661c77c6a950b482187b09e4465c964e6d6652
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176153"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494067"
 ---
 Een van de belangrijkste mogelijkheden van Azure IoT Edge is dat u er code voor uw IoT Edge-apparaten mee kunt implementeren vanuit de cloud. **IoT Edge-modules** zijn uitvoerbare pakketten die zijn geïmplementeerd als containers. In dit gedeelte implementeert u een vooraf samengestelde module vanuit de [sectie IoT Edge-modules van de Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). 
 
@@ -37,7 +37,7 @@ Voer de volgende stappen uit als u uw eerste module vanuit de Microsoft Azure Ma
 
 3. Nu u een IoT Edge-module in de Microsoft Azure Marketplace hebt gekozen en een IoT Edge-apparaat hebt geselecteerd dat de module moet ontvangen, gaat u verder naar een wizard met drie stappen om precies te definiëren hoe de module moet worden geïmplementeerd. In de wizardstap **Modules toevoegen** ziet u dat de module **SimulatedTemperatureSensor** automatisch wordt ingevuld. In de zelfstudies gebruikt u deze pagina om meer modules aan uw implementatie toe te voegen. In deze quickstart implementeert u alleen deze ene module. Selecteer **Volgende** om door te gaan naar de volgende stap van de wizard.
 
-4. In de wizardstap **Routes opgeven** definieert u hoe berichten tussen modules en naar IoT Hub worden uitgewisseld. In deze snelstart wilt u dat alle berichten van alle modules naar de IoT Hub (`$upstream`) worden gestuurd. Als de gegevens niet automatisch worden ingevuld, voegt u de volgende code toe en selecteert u **Volgende**:
+4. In de wizardstap **Routes opgeven** definieert u hoe berichten tussen modules en naar IoT Hub worden uitgewisseld. In deze snelstart wilt u dat alle berichten van alle modules naar de IoT Hub (`$upstream`) worden gestuurd. Als deze niet automatisch wordt ingevuld, voegt u de volgende code toe:
 
    ```json
     {
@@ -46,6 +46,7 @@ Voer de volgende stappen uit als u uw eerste module vanuit de Microsoft Azure Ma
         }
     }
    ```
+   Selecteer vervolgens **Volgende**.
 
 5. In de wizardstap **Implementatie controleren** kunt u een preview bekijken van het JSON-bestand waarmee alle modules worden gedefinieerd die naar uw IoT Edge-apparaat worden geïmplementeerd. U ziet dat de module **SimulatedTemperatureSensor** hiervan deel uitmaakt, evenals twee extra systeemmodules **edgeAgent** en **edgeHub**. Selecteer **Indienen** wanneer u klaar bent met beoordelen.
 

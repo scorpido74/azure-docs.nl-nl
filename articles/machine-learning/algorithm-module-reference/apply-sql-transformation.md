@@ -1,5 +1,5 @@
 ---
-title: SQL-trans formatie Toep assen
+title: SQL-transformatie toepassen
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module voor het Toep assen van SQL-trans formatie in Azure Machine Learning-service om een SQLite-query uit te voeren op invoer gegevens sets om de gegevens te transformeren.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 8eede9d1fbee7d8b70f6b6924b9767b4d3f4e0bf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 62c61d589324fe8364fe4630b3cf2cc64e1860b1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694634"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493920"
 ---
-# <a name="apply-sql-transformation"></a>SQL-trans formatie Toep assen
+# <a name="apply-sql-transformation"></a>SQL-transformatie toepassen
 
-In dit artikel wordt een module van Azure Machine Learning visuele interface beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
 
 Met de module voor het Toep assen van SQL-trans formatie kunt u het volgende doen:
   
@@ -33,7 +33,7 @@ Met de module voor het Toep assen van SQL-trans formatie kunt u het volgende doe
 
 ## <a name="how-to-configure-apply-sql-transformation"></a>SQL-trans formatie Toep assen configureren  
 
-De module kan Maxi maal drie gegevens sets als invoer hebben. Wanneer u verwijst naar de gegevens sets die zijn verbonden met elke invoer poort, moet u de namen `t1`, `t2` en `t3` gebruiken. Het tabel nummer geeft de index van de invoer poort aan.  
+De module kan Maxi maal drie gegevens sets als invoer hebben. Wanneer u verwijst naar de gegevens sets die zijn verbonden met elke invoer poort, moet u de namen `t1`, `t2`en `t3`gebruiken. Het tabel nummer geeft de index van de invoer poort aan.  
   
 De resterende para meter is een SQL-query die gebruikmaakt van de SQLite-syntaxis. Wanneer u meerdere regels in het tekstvak **SQL script** typt, gebruikt u een punt komma om elke instructie te beëindigen. Anders worden regel einden geconverteerd naar spaties.  
 
@@ -55,9 +55,9 @@ Hoewel SQLite veel van de ANSI SQL-standaard ondersteunt, bevat het niet veel fu
   
 - `LEFT OUTER JOIN` is geïmplementeerd, maar niet `RIGHT OUTER JOIN` of `FULL OUTER JOIN`.  
 
-- U kunt `RENAME TABLE`-en `ADD COLUMN`-instructies gebruiken met de `ALTER TABLE` opdracht, maar andere componenten worden niet ondersteund, waaronder `DROP COLUMN`, `ALTER COLUMN` en `ADD CONSTRAINT`.  
+- U kunt `RENAME TABLE`-en `ADD COLUMN`-instructies gebruiken met de `ALTER TABLE` opdracht, maar andere componenten worden niet ondersteund, waaronder `DROP COLUMN`, `ALTER COLUMN`en `ADD CONSTRAINT`.  
   
-- U kunt een weer gave maken in SQLite, maar daarna zijn de weer gaven alleen-lezen. U kunt een `DELETE`-, `INSERT`-of `UPDATE`-instructie niet uitvoeren op een weer gave. U kunt echter een trigger maken die wordt geactiveerd op een poging om `DELETE`, `INSERT` of `UPDATE` op te geven in een weer gave en andere bewerkingen uit te voeren in de hoofd tekst van de trigger.  
+- U kunt een weer gave maken in SQLite, maar daarna zijn de weer gaven alleen-lezen. U kunt een `DELETE`-, `INSERT`-of `UPDATE`-instructie niet uitvoeren op een weer gave. U kunt echter een trigger maken die wordt geactiveerd op een poging om `DELETE`, `INSERT`of `UPDATE` op te geven in een weer gave en andere bewerkingen uit te voeren in de hoofd tekst van de trigger.  
   
 
 Naast de lijst met niet-ondersteunde functies die beschikbaar zijn op de officiële SQLite-site, biedt de volgende wiki een lijst met andere niet-ondersteunde functies: [sqlite-niet-ondersteunde SQL](http://www2.sqlite.org/cvstrac/wiki?p=UnsupportedSql)  

@@ -11,14 +11,15 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: c16b6d769aa191b0e8ac86768a7eafd35ccbc3b9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
-ms.translationtype: MT
+ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301024"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490015"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door Azure-toepassing inzichten in te scha kelen. Naast het verzamelen van de invoer gegevens en het antwoord van een eind punt kunt u het volgende controleren:
 * Aanvraag tarieven, reactie tijden en fout percentages.
@@ -47,15 +48,15 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 
 1. Selecteer op het tabblad **implementaties** de service waar u Azure-toepassing Insights wilt inschakelen.
 
-   [![List van services op het tabblad implementaties](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![lijst met Services op het tabblad implementaties](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Selecteer **Bewerken**.
 
-   [knop ![Edit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [knop bewerken ![](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in.
 
-   [het selectie vakje ![Selected voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![ingeschakeld selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
 
@@ -63,11 +64,11 @@ U kunt Azure-toepassing Insights in de Azure Portal in-en uitschakelen.
 1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com).
 1. Selecteer **implementaties**, selecteer de service en selecteer vervolgens **bewerken**.
 
-   [![Use de knop bewerken](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![de knop bewerken gebruiken](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** uit. 
 
-   [het selectie vakje ![Cleared voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![gewist selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
  
@@ -112,35 +113,68 @@ Als u Azure-toepassing Insights wilt uitschakelen, gebruikt u de volgende code:
 <service_name>.update(enable_app_insights=False)
 ```
     
+## <a name="use-studio-to-configure"></a>Studio gebruiken om te configureren
+
+U kunt Application Insights in Azure Machine Learning Studio inschakelen en uitschakelen.
+
+1. Open uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
+
+1. Selecteer op het tabblad **implementaties** de service waarvoor u Application Insights wilt inschakelen.
+
+   [![lijst met Services op het tabblad implementaties](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+
+3. Selecteer **Bewerken**.
+
+   [knop bewerken ![](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in.
+
+   [![ingeschakeld selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+
+1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
+
+### <a name="disable"></a>Uitschakelen
+1. Open uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
+1. Selecteer **implementaties**, selecteer de service en selecteer **bewerken**.
+
+   [![de knop bewerken gebruiken](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** uit. 
+
+   [![gewist selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+
+1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
+ 
+
 ## <a name="evaluate-data"></a>Gegevens evalueren
 De gegevens van uw service worden opgeslagen in uw Azure-toepassing Insights-account, in dezelfde resource groep als Azure Machine Learning.
 Om het weer te geven:
-1. Ga naar de werk ruimte van uw Machine Learning-service in de [Azure Portal](https://portal.azure.com). Klik op Azure-toepassing Insights-koppeling.
+1. Ga naar uw Machine Learning service-werk ruimte in [Azure machine learning Studio](https://ml.azure.com) en klik op Application Insights link.
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
 1. Selecteer het tabblad **overzicht** om een basis verzameling metrische gegevens voor uw service weer te geven.
 
-   [![Overview](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [Overzicht van ![](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 1. Als u de nettoladingen voor de invoer en het antwoord van de webservice wilt bekijken, selecteert u **Analytics**
 1. Selecteer in de sectie schema **traceringen** en filter traceringen met het bericht `"model_data_collection"`. In de aangepaste dimensies ziet u de invoer, voor spellingen en andere relevante informatie.
 
-   [![Model gegevens](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+   [Model gegevens ![](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
 3. Als u uw aangepaste traceringen wilt bekijken, selecteert u **Analytics**.
 4. Selecteer in de sectie schema **traceringen**. Selecteer vervolgens **uitvoeren** om de query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand. 
 
-   [![Custom-traceringen](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [Aangepaste traceringen ![](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Zie [Wat is Application Insights?](../../azure-monitor/app/app-insights-overview.md)voor meer informatie over het gebruik van Azure-toepassing Insights.
 
 ## <a name="export-data-for-further-processing-and-longer-retention"></a>Gegevens exporteren voor verdere verwerking en langere retentie
 
-U kunt met behulp van Azure-toepassing Insights [doorlopend exporteren](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) berichten verzenden naar een ondersteund opslag account, waarbij een langere retentie kan worden ingesteld. De `"model_data_collection"` berichten worden opgeslagen in JSON-indeling en kunnen gemakkelijk worden geparseerd om model gegevens op te halen. Azure Data Factory, Azure ML-pijp lijnen of andere hulpprogram ma's voor gegevens verwerking kunnen worden gebruikt om de gegevens naar behoefte te transformeren. Wanneer u de gegevens hebt getransformeerd, kunt u deze registreren bij de Azure Machine Learning service-werk ruimte als een gegevensset.
+U kunt met behulp van Azure-toepassing Insights [doorlopend exporteren](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) berichten verzenden naar een ondersteund opslag account, waarbij een langere retentie kan worden ingesteld. De `"model_data_collection"` berichten worden opgeslagen in JSON-indeling en kunnen gemakkelijk worden geparseerd om model gegevens op te halen. Azure Data Factory, Azure ML-pijp lijnen of andere hulpprogram ma's voor gegevens verwerking kunnen worden gebruikt om de gegevens naar behoefte te transformeren. Wanneer u de gegevens hebt getransformeerd, kunt u deze registreren bij de Azure Machine Learning-werk ruimte als een gegevensset. Zie [gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.
 
-   [![Continuous-export](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
+   [![continue export](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
 
 
 ## <a name="example-notebook"></a>Voor beeld van notebook

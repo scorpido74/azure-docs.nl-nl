@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 2647a8c33bf777cb2d97dcfe89799097ad719ac3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498175"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk voor Azure HDInsight plannen
 
@@ -136,7 +136,7 @@ Voor het inschakelen van naam omzetting tussen het virtuele netwerk en bronnen i
 
 2. Configureer het virtuele netwerk voor gebruik van de aangepaste DNS-server.
 
-3. Zoek het aan Azure toegewezen DNS-achtervoegsel voor het virtuele netwerk. Deze waarde is vergelijkbaar met `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Zie het [voor beeld voor meer informatie over het vinden van het DNS-achtervoegsel: Aangepaste DNS](hdinsight-create-virtual-network.md#example-dns) -sectie.
+3. Zoek het aan Azure toegewezen DNS-achtervoegsel voor het virtuele netwerk. Deze waarde is vergelijkbaar met `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Zie voor meer informatie over het vinden van het DNS-achtervoegsel het gedeelte [voor beeld: aangepaste DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 4. Het door sturen van de DNS-servers configureren. De configuratie is afhankelijk van het type extern netwerk.
 
@@ -148,7 +148,7 @@ Voor het inschakelen van naam omzetting tussen het virtuele netwerk en bronnen i
 
          * Alle andere aanvragen door sturen naar de on-premises DNS-server. De on-premises DNS verwerkt alle andere aanvragen voor naam omzetting, zelfs aanvragen voor Internet bronnen zoals Microsoft.com.
 
-     * __On-premises DNS__: Aanvragen voor het DNS-achtervoegsel van het virtuele netwerk naar de aangepaste DNS-server door sturen. De aangepaste DNS-server wordt vervolgens doorgestuurd naar de recursieve resolver van Azure.
+     * __On-premises DNS__: aanvragen door sturen voor het DNS-achtervoegsel van het virtuele netwerk naar de aangepaste DNS-server. De aangepaste DNS-server wordt vervolgens doorgestuurd naar de recursieve resolver van Azure.
 
        Deze configuratie routes aanvragen voor volledig gekwalificeerde domein namen die het DNS-achtervoegsel van het virtuele netwerk bevatten naar de aangepaste DNS-server. Alle andere aanvragen (zelfs voor open bare Internet adressen) worden verwerkt door de on-premises DNS-server.
 
@@ -162,13 +162,13 @@ Voor het inschakelen van naam omzetting tussen het virtuele netwerk en bronnen i
 
        De DNS-server voor elk netwerk stuurt aanvragen door naar de andere, op basis van DNS-achtervoegsel. Andere aanvragen worden opgelost met de recursieve resolver van Azure.
 
-     Voor een voor beeld van elke configuratie raadpleegt [u het voor beeld: Aangepaste DNS](hdinsight-create-virtual-network.md#example-dns) -sectie.
+     Zie voor een voor beeld van elke configuratie de sectie [voor beeld: aangepaste DNS](hdinsight-create-virtual-network.md#example-dns) .
 
 Zie voor meer informatie de [naam omzetting voor vm's en rollen instanties](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) document.
 
 ## <a name="directly-connect-to-apache-hadoop-services"></a>Rechtstreeks verbinding maken met Apache Hadoop Services
 
-U kunt verbinding maken met het cluster `https://CLUSTERNAME.azurehdinsight.net`op. Dit adres maakt gebruik van een openbaar IP, die mogelijk niet bereikbaar is als u Nsg's hebt gebruikt om het inkomende verkeer van Internet te beperken. Wanneer u het cluster in een VNet implementeert, kunt u dit ook openen via het persoonlijke `https://CLUSTERNAME-int.azurehdinsight.net`eind punt. Dit eind punt wordt omgezet in een persoonlijk IP-adres in het VNet voor toegang tot het cluster.
+U kunt verbinding maken met het cluster op `https://CLUSTERNAME.azurehdinsight.net`. Dit adres maakt gebruik van een openbaar IP, die mogelijk niet bereikbaar is als u Nsg's hebt gebruikt om het inkomende verkeer van Internet te beperken. Wanneer u het cluster in een VNet implementeert, kunt u dit ook openen met het persoonlijke eind punt `https://CLUSTERNAME-int.azurehdinsight.net`. Dit eind punt wordt omgezet in een persoonlijk IP-adres in het VNet voor toegang tot het cluster.
 
 Als u verbinding wilt maken met Apache Ambari en andere webpagina's via het virtuele netwerk, gebruikt u de volgende stappen:
 
@@ -194,7 +194,7 @@ Als u verbinding wilt maken met Apache Ambari en andere webpagina's via het virt
     az network nic list --resource-group RESOURCEGROUP --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Zoek in de lijst met knoop punten de FQDN voor de hoofd knooppunten en gebruik de FQDN-namen om verbinding te maken met Ambari en andere webservices. U kunt bijvoorbeeld gebruiken `http://<headnode-fqdn>:8080` om toegang te krijgen tot Ambari.
+    Zoek in de lijst met knoop punten de FQDN voor de hoofd knooppunten en gebruik de FQDN-namen om verbinding te maken met Ambari en andere webservices. Gebruik bijvoorbeeld `http://<headnode-fqdn>:8080` om toegang te krijgen tot Ambari.
 
     > [!IMPORTANT]  
     > Sommige services die op de hoofd knooppunten worden gehost, zijn op één knoop punt tegelijk actief. Als u probeert toegang te krijgen tot een service op één hoofd knooppunt en er wordt een 404-fout geretourneerd, gaat u naar het andere hoofd knooppunt.
@@ -207,9 +207,9 @@ Als u verbinding wilt maken met Apache Ambari en andere webpagina's via het virt
 
 Netwerk verkeer in een virtuele Azure-netwerken kan worden beheerd met behulp van de volgende methoden:
 
-* **Netwerk beveiligings groepen** (NSG) kunt u inkomend en uitgaand verkeer filteren op het netwerk. Zie het document [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/security-overview.md) voor meer informatie.
+* Met **netwerk beveiligings groepen** (NSG) kunt u inkomend en uitgaand verkeer filteren op het netwerk. Zie het document [netwerk verkeer filteren met netwerk beveiligings groepen](../virtual-network/security-overview.md) voor meer informatie.
 
-* **Virtuele netwerk apparaten** (NVA) kan alleen worden gebruikt met uitgaand verkeer. Nva's repliceert de functionaliteit van apparaten, zoals firewalls en routers. Zie het document [netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances) voor meer informatie.
+* **Virtuele netwerk apparaten** (NVA) kunnen alleen worden gebruikt met uitgaand verkeer. Nva's repliceert de functionaliteit van apparaten, zoals firewalls en routers. Zie het document [netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances) voor meer informatie.
 
 Als beheerde service vereist HDInsight onbeperkte toegang tot de HDInsight-status-en beheer Services voor binnenkomend en uitgaand verkeer van het VNET. Wanneer u Nsg's gebruikt, moet u ervoor zorgen dat deze services nog steeds kunnen communiceren met het HDInsight-cluster.
 
@@ -248,6 +248,10 @@ Als u van plan bent een **firewall** te gebruiken en u toegang te krijgen tot he
 Voor een lijst met poorten voor specifieke services, zie de [poorten die worden gebruikt door Apache Hadoop Services in HDInsight](hdinsight-hadoop-port-settings-for-services.md) -document.
 
 Zie het scenario document van het [virtuele apparaat](../virtual-network/virtual-network-scenario-udr-gw-nva.md) voor meer informatie over Firewall regels voor virtuele apparaten.
+
+## <a name="load-balancing"></a>Taakverdeling
+
+Wanneer u een HDInsight-cluster maakt, wordt er ook een load balancer gemaakt. Het type van deze load balancer bevindt zich op het niveau van de [basis-SKU](../load-balancer/load-balancer-overview.md#skus) met bepaalde beperkingen. Een van deze beperkingen is dat als u twee virtuele netwerken in verschillende regio's hebt, u geen verbinding kunt maken met Basic load balancers. Zie de [Veelgestelde vragen over virtuele netwerken: beperkingen voor wereld wijde vnet-peering](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

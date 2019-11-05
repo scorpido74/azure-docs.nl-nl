@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326311"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468957"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Meld u aan met een Android-toepassing in Azure Active Directory B2C
 
@@ -32,13 +32,15 @@ Als u nog geen ervaring hebt met OAuth2 of OpenID Connect, zal een groot gedeelt
 
 Voordat u Azure AD B2C kunt gebruiken, moet u een directory, of tenant, maken. Een directory is een container voor alle gebruikers, apps, groepen en meer. Als u nog geen directory hebt, [maakt u een B2C-directory](tutorial-create-tenant.md) voordat u verdergaat.
 
-## <a name="create-an-application"></a>Een toepassing maken
+## <a name="create-an-application"></a>Een app maken
 
 Registreer vervolgens een toepassing in uw Azure AD B2C-Tenant. Dit geeft Azure AD de informatie die nodig is om veilig te communiceren met uw app.
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Noteer de **toepassings-id** voor gebruik in een latere stap. Selecteer vervolgens de toepassing in de lijst en noteer de **aangepaste omleidings-URI**, ook voor gebruik in een latere stap. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
+
+Neem ook uw aangepaste omleidings-URI op voor gebruik in een latere stap. Bijvoorbeeld `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Uw gebruikers stromen maken
 
@@ -67,9 +69,9 @@ Het voor beeld is een wijziging van het voor beeld dat wordt verschaft door [App
 U kunt communicatie met Azure AD B2C configureren door ofwel de detectie-URI op te geven of door zowel het autorisatie-eind punt als het token-eind punt-Uri's op te geven. In beide gevallen hebt u de volgende informatie nodig:
 
 * Tenant-ID (bijvoorbeeld contoso.onmicrosoft.com)
-* Gebruikers stroom naam (bijvoorbeeld B2C @ no__t-01 @ no__t-1SignUpIn)
+* Gebruikers stroom naam (bijvoorbeeld B2C\_1\_SignUpIn)
 
-Als u ervoor kiest om automatisch de autorisatie en Token-eind punt-Uri's te detecteren, moet u de gegevens van de detectie-URI ophalen. De detectie-URI kan worden gegenereerd door de Tenant @ no__t-0ID en het beleid @ no__t-1Name in de volgende URL te vervangen:
+Als u ervoor kiest om automatisch de autorisatie en Token-eind punt-Uri's te detecteren, moet u de gegevens van de detectie-URI ophalen. De detectie-URI kan worden gegenereerd door de Tenant\_-ID en het beleids\_naam in de volgende URL te vervangen:
 
 ```java
 String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
@@ -96,7 +98,7 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-In plaats van detectie te gebruiken om de autorisatie-en Token-eind punt-Uri's te verkrijgen, kunt u ze ook expliciet opgeven door de Tenant @ no__t-0ID en het beleid @ no__t-1Name in de onderstaande URL te vervangen:
+In plaats van detectie te gebruiken om de autorisatie-en Token-eind punt-Uri's te verkrijgen, kunt u ze ook expliciet opgeven door de Tenant\_-ID en het beleid\_naam in de onderstaande URL te vervangen:
 
 ```java
 String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1a5871a052998e9dd32d698c5a89f57064cc7d6b
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972927"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987571"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Azure AD gebruiken als een id-provider voor vCenter op CloudSimple Private Cloud
 
@@ -85,17 +85,24 @@ U kunt desgewenst andere Azure AD-functies configureren.  Deze zijn niet vereist
 
     | **Optie** | **Beschrijving** |
     |------------|-----------------|
-    | **Name** | De naam van de identiteits bron. |
-    | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers.  Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Voor beeld `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`:.|
-    | **Domeinnaam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
+    | **Naam** | De naam van de identiteits bron. |
+    | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers.  Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
+    | **Domein naam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
     | **Domein alias** | *(optioneel)* De NetBIOS-naam van het domein. Voeg de NetBIOS-naam van het Active Directory domein als alias van de identiteits bron toe als u SSPI-verificaties gebruikt. |
-    | **Basis-DN voor groepen** | De DN-basis naam voor groepen. Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`Hierbij`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de indeling `ldaps://hostname:port`. De poort is doorgaans 636 voor LDAPS-verbindingen. <br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot `ldaps://`stand brengt, is vereist wanneer u gebruikt in de primaire of secundaire LDAP-URL. |
+    | **Basis-DN voor groepen** | De DN-basis naam voor groepen. Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de notatie `ldaps://hostname:port`. De poort is doorgaans 636 voor LDAPS-verbindingen. <br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot stand brengt, is vereist wanneer u `ldaps://` in de primaire of secundaire LDAP-URL gebruikt. |
     | **URL van secundaire server** | Adres van de LDAP-server van de secundaire domein controller die wordt gebruikt voor failover. |
-    | **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt er een knop certificaat kiezen `ldaps://`weer gegeven nadat u in het tekstvak URL hebt getypt . Een secundaire URL is niet vereist. |
+    | **Certificaat kiezen** | Als u LDAPS wilt gebruiken met uw Active Directory LDAP-server of OpenLDAP-server identiteits bron, wordt een knop certificaat kiezen weer gegeven nadat u `ldaps://` in het tekstvak URL hebt getypt. Een secundaire URL is niet vereist. |
     | **Gebruikersnaam** | ID van een gebruiker in het domein met mini maal alleen-lezen toegang tot de basis-DN voor gebruikers en groepen. |
     | **Wachtwoord** | Het wacht woord van de gebruiker die is opgegeven door de gebruikers naam. |
 
 3. Meld u aan bij uw Privécloud-vCenter nadat de bevoegdheden zijn geëscaleerd.
 4. Volg de instructies in [een id-bron toevoegen in vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) met de waarden uit de vorige stap om Azure Active Directory als een identiteits bron in te stellen.
 5. Gebruikers/groepen toevoegen vanuit Azure AD aan vCenter-groepen, zoals beschreven in het VMware-onderwerp [leden toevoegen aan een vCenter-groep voor eenmalige aanmelding](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
+
+> [!CAUTION]
+> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* .
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Meer informatie over machtigings model voor de Privécloud](learn-private-cloud-permissions.md)

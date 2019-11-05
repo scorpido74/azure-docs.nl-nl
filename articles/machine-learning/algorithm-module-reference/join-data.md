@@ -1,7 +1,7 @@
 ---
 title: 'Koppelings gegevens: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module koppeling samen voegen in Azure Machine Learning-service voor het samen voegen van gegevens sets.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module koppeling toevoegen aan Azure Machine Learning voor het samen voegen van gegevens sets.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693096"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495098"
 ---
 # <a name="join-data"></a>Gegevens samenvoegen
 
-In dit artikel wordt beschreven hoe u de module invoeg **gegevens** gebruikt in de Visual Interface van de Azure machine learning-service om twee gegevens sets samen te voegen met behulp van een koppelings bewerking in de database stijl.  
+In dit artikel wordt beschreven hoe u de module voor **samen** voegen in azure machine learning Designer (preview) gebruikt om twee gegevens sets samen te voegen met behulp van een Data Base-stijl-koppelings bewerking.  
 
 ## <a name="how-to-configure-join-data"></a>Koppelings gegevens configureren
 
@@ -64,8 +64,8 @@ Als u een koppeling wilt uitvoeren op twee gegevens sets, moeten deze worden ger
 
 1. Voer de pijp lijn uit of selecteer de module samenvoegings gegevens en de geselecteerde **uitvoering** om de koppeling uit te voeren.
 
-1. Als u de resultaten wilt weer geven, klikt u met de rechter muisknop op de **samenvoeg gegevens**  > **resultaten gegevensset**  > **visualiseren**.
+1. Als u de resultaten wilt weer geven, klikt u met de rechter muisknop op de **samenvoeg gegevens** > **resultaten gegevensset** > **visualiseren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

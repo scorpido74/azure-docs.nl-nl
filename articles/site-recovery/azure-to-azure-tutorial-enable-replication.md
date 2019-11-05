@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6987c6f1191b0dfc7b78b14e77a5d6a0ab369f57
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782607"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468027"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na nood geval instellen voor virtuele Azure-machines
 
@@ -43,7 +43,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 Maak de kluis in elke gewenste regio, met uitzondering van de bronregio.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Klik op **Een resource maken** > **Beheerhulpprogramma's** > **Backup en Site Recovery**.
+2. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. Selecteer vervolgens **beheer hulpprogramma's** > **back-up en site Recovery**.
 3. Geef in **Naam** een beschrijvende naam op om de kluis mee aan te duiden. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 4. Maak een resourcegroep of selecteer een bestaande resourcegroep. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
 5. Als u de kluis snel wilt kunnen openen via het dashboard, klikt u op **Vastmaken aan dashboard** en vervolgens op **Maken**.
@@ -175,8 +175,8 @@ Site Recovery maakt standaardinstellingen en replicatiebeleid voor de doelregio.
 Als de bron-VM voor Azure Disk Encryption (ADE) is ingeschakeld, controleert u de instellingen.
 
 1. Controleer de instellingen:
-    - **Sleutelkluizen voor schijfversleuteling**: Site Recovery maakt standaard een nieuwe sleutel kluis op de versleutelings sleutels van de bron-VM-schijf, met het achtervoegsel ' ASR '. Als de sleutel kluis al bestaat, wordt deze opnieuw gebruikt.
-    - **Sleutelkluizen voor versleutelingssleutel**: Site Recovery maakt standaard een nieuwe sleutel kluis in de doel regio. De naam heeft een ' ASR ' achtervoegsel en is gebaseerd op de sleutel versleutelings sleutels van de bron-VM. Als de sleutel kluis die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
+    - **Sleutel kluizen voor schijf versleuteling**: standaard maakt site Recovery een nieuwe sleutel kluis op de versleutelings sleutels van de bron-VM-schijf, met het achtervoegsel ' ASR '. Als de sleutel kluis al bestaat, wordt deze opnieuw gebruikt.
+    - Key **Encryption Key-kluizen**: standaard maakt site Recovery een nieuwe sleutel kluis in de doel regio. De naam heeft een ' ASR ' achtervoegsel en is gebaseerd op de sleutel versleutelings sleutels van de bron-VM. Als de sleutel kluis die is gemaakt door Site Recovery al bestaat, wordt deze opnieuw gebruikt.
 
 2. Klik op **Aanpassen** om de aangepaste sleutelkluizen te selecteren.
 

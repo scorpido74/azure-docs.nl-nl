@@ -1,34 +1,34 @@
 ---
 title: Azure Cosmos DB bindingen voor de functies 2. x
-description: Over het gebruik van Azure Cosmos DB-triggers en bindingen in Azure Functions.
+description: Meer informatie over het gebruik van Azure Cosmos DB triggers en bindingen in Azure Functions.
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: Azure functions, functies, gebeurtenisverwerking, dynamische Computing, serverloze architectuur
+keywords: Azure functions, functies, gebeurtenis verwerking, dynamische compute, serverloze architectuur
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 419241bf1e8511dd6015cd3f791099d6959c3e34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8aee88f6ef3f6a73beadfdf242d79d9b361de0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086760"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469387"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB bindingen voor Azure Functions 2. x
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
-> * [Versie 1:](functions-bindings-cosmosdb.md)
+> * [Versie 1](functions-bindings-cosmosdb.md)
 > * [Versie 2](functions-bindings-cosmosdb-v2.md)
 
-In dit artikel wordt uitgelegd hoe u [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) bindingen kunt gebruiken in azure functions 2. x. Azure Functions ondersteunt activeren, invoeren en uitvoerbindingen voor Azure Cosmos DB.
+In dit artikel wordt uitgelegd hoe u [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) bindingen kunt gebruiken in azure functions 2. x. Azure Functions ondersteunt trigger-, invoer-en uitvoer bindingen voor Azure Cosmos DB.
 
 > [!NOTE]
 > Dit artikel is voor [Azure functions versie 2. x](functions-versions.md).  Zie [Azure Cosmos DB bindingen voor Azure functions 1. x](functions-bindings-cosmosdb.md)voor informatie over het gebruik van deze bindingen in functions 1. x.
 >
-> Deze binding heette oorspronkelijk DocumentDB. In functies versie 2. x zijn de trigger, bindingen en pakket alle benoemde Cosmos DB.
+> Deze binding heeft oorspronkelijk de naam DocumentDB. In functies versie 2. x zijn de trigger, bindingen en pakket alle benoemde Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -36,31 +36,31 @@ In dit artikel wordt uitgelegd hoe u [Azure Cosmos DB](../cosmos-db/serverless-c
 
 [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
-## <a name="packages---functions-2x"></a>Pakketten - functies 2.x
+## <a name="packages---functions-2x"></a>Pakketten-functions 2. x
 
-De Azure Cosmos DB bindingen voor functies versie 2. x zijn opgenomen in het pakket [micro soft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) NuGet, versie 3. x. Broncode voor de bindingen is in de [azure webjobs-sdk extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) GitHub-opslagplaats.
+De Azure Cosmos DB bindingen voor functies versie 2. x zijn opgenomen in het pakket [micro soft. Azure. webjobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) NuGet, versie 3. x. De bron code voor de bindingen bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK-extensies](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Trigger
 
-De Azure Cosmos DB-Trigger gebruikt de [Azure Cosmos DB-Wijzigingenfeed](../cosmos-db/change-feed.md) om te luisteren naar invoegingen en updates over meerdere partities. De wijzigingenfeed publiceert invoegingen en updates, niet verwijderen.
+De Azure Cosmos DB trigger gebruikt de [Azure Cosmos DB wijzigings feed](../cosmos-db/change-feed.md) om te Luis teren naar invoeg toepassingen en updates op meerdere partities. De wijzigings feed publiceert invoegingen en updates, en kan niet worden verwijderd.
 
-## <a name="trigger---example"></a>Trigger - voorbeeld
+## <a name="trigger---example"></a>Trigger-voor beeld
 
-Zie het voorbeeld taalspecifieke:
+Zie het taalspecifieke voor beeld:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#script (. CSX)](#trigger---c-script-example)
 * [Java](#trigger---java-example)
 * [JavaScript](#trigger---javascript-example)
 * [Python](#trigger---python-example)
 
 Trigger voorbeelden overs Laan
 
-### <a name="trigger---c-example"></a>Trigger - voorbeeld met C#
+### <a name="trigger---c-example"></a>Trigger- C# voor beeld
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die wordt aangeroepen wanneer er zijn ingevoegd of bijgewerkt in de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die wordt aangeroepen wanneer er invoeg acties of updates in de opgegeven Data Base en verzameling zijn.
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -94,11 +94,11 @@ namespace CosmosDBSamplesV2
 
 Trigger voorbeelden overs Laan
 
-### <a name="trigger---c-script-example"></a>Trigger - voorbeeld van C#-script
+### <a name="trigger---c-script-example"></a>Voor beeld C# van trigger-script
 
-Het volgende voorbeeld ziet u een Cosmos DB-trigger binding in een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie schrijft logboekberichten wanneer Cosmos DB-records zijn gewijzigd.
+In het volgende voor beeld ziet u een binding van een Cosmos DB trigger in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden gewijzigd.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -113,7 +113,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
     #r "Microsoft.Azure.DocumentDB.Core"
@@ -132,11 +132,11 @@ Dit is de C#-scriptcode:
 
 Trigger voorbeelden overs Laan
 
-### <a name="trigger---javascript-example"></a>Trigger - JavaScript-voorbeeld
+### <a name="trigger---javascript-example"></a>Trigger-java script-voor beeld
 
-Het volgende voorbeeld ziet u een Cosmos DB-trigger binding in een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft logboekberichten wanneer Cosmos DB-records zijn gewijzigd.
+In het volgende voor beeld ziet u een Cosmos DB trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden gewijzigd.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -151,7 +151,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
     module.exports = function (context, documents) {
@@ -161,7 +161,7 @@ Dit is de JavaScript-code:
     }
 ```
 
-### <a name="trigger---java-example"></a>Trigger - Java-voorbeeld
+### <a name="trigger---java-example"></a>Trigger-Java-voor beeld
 
 In het volgende voor beeld ziet u een binding van het Cosmos DB trigger in het bestand *Function. json* en een [Java-functie](functions-reference-java.md) die gebruikmaakt van de binding. De functie is betrokken bij het invoegen of bijwerken van de opgegeven Data Base en verzameling.
 
@@ -195,16 +195,16 @@ Dit is de Java-code:
 ```
 
 
-Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@CosmosDBTrigger` functies de annotatie voor para meters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, pojo's of nullable-\<waarden met behulp van optionele T >.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBTrigger` annotatie op para meters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met behulp van optionele\<T >.
 
 
 Trigger voorbeelden overs Laan
 
 ### <a name="trigger---python-example"></a>Voor beeld van een trigger-python
 
-In het volgende voor beeld ziet u een binding van Cosmos DB trigger in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft logboekberichten wanneer Cosmos DB-records zijn gewijzigd.
+In het volgende voor beeld ziet u een binding van Cosmos DB trigger in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden gewijzigd.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -231,11 +231,11 @@ Dit is de python-code:
             logging.info('First document Id modified: %s', documents[0]['id'])
 ```
 
-## <a name="trigger---c-attributes"></a>Trigger - C# attributes
+## <a name="trigger---c-attributes"></a>Trigger- C# kenmerken
 
-In [C#-klassebibliotheken](functions-dotnet-class-library.md), gebruikt u de [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) kenmerk.
+Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) .
 
-De constructor van het kenmerk wordt de databasenaam en verzamelingsnaam. Zie voor meer informatie over deze instellingen en andere eigenschappen die u kunt configureren, [Trigger - configuratie](#trigger---configuration). Hier volgt een `CosmosDBTrigger` kenmerk voorbeeld in een handtekeningmethode:
+De constructor van het kenmerk neemt de naam van de data base en de verzameling. Zie [trigger-configuratie](#trigger---configuration)voor meer informatie over deze instellingen en andere eigenschappen die u kunt configureren. Hier volgt een voor beeld van een `CosmosDBTrigger` kenmerk in een methode handtekening:
 
 ```csharp
     [FunctionName("DocumentUpdates")]
@@ -248,75 +248,75 @@ De constructor van het kenmerk wordt de databasenaam en verzamelingsnaam. Zie vo
     }
 ```
 
-Zie voor een compleet voorbeeld [Trigger - voorbeeld met C#](#trigger---c-example).
+Zie voor een volledig voor beeld [trigger- C# voor beeld](#trigger---c-example).
 
 
-## <a name="trigger---configuration"></a>Trigger - configuratie
+## <a name="trigger---configuration"></a>Trigger-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `CosmosDBTrigger` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `CosmosDBTrigger`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type** || Moet worden ingesteld op `cosmosDBTrigger`. |
-|**direction** || Moet worden ingesteld op `in`. Deze parameter wordt automatisch ingesteld wanneer u de trigger in Azure portal maakt. |
-|**name** || De naam van de variabele die wordt gebruikt in functiecode aan te geven dat de lijst met documenten met wijzigingen vertegenwoordigt. |
-|**connectionStringSetting**|**connectionStringSetting** | De naam van een app-instelling met de verbindingsreeks waarmee verbinding met de Azure Cosmos DB-account dat wordt bewaakt. |
-|**databaseName**|**DatabaseName**  | De naam van de Azure Cosmos DB-database met de verzameling die worden bewaakt. |
-|**collectionName** |**collectionName** | De naam van de verzameling die worden bewaakt. |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Optioneel) De naam van een app-instelling met de verbindingsreeks voor de service die de leaseverzameling bevat. Als niet is ingesteld, de `connectionStringSetting` waarde wordt gebruikt. Deze parameter is automatisch ingesteld wanneer de binding in de portal wordt gemaakt. De verbindingsreeks voor de verzameling leases moet schrijfmachtigingen hebben.|
-|**leaseDatabaseName** |**LeaseDatabaseName** | (Optioneel) De naam van de database waarin de verzameling die wordt gebruikt voor het opslaan van de leases. Wanneer niet ingesteld, de waarde van de `databaseName` instelling wordt gebruikt. Deze parameter is automatisch ingesteld wanneer de binding in de portal wordt gemaakt. |
-|**leaseCollectionName** | **LeaseCollectionName** | (Optioneel) De naam van de verzameling die wordt gebruikt voor het opslaan van de leases. Als niet is ingesteld, de waarde `leases` wordt gebruikt. |
-|**createLeaseCollectionIfNotExists** | **createLeaseCollectionIfNotExists** | (Optioneel) Als de waarde `true`, de verzameling leases wordt automatisch gemaakt als deze nog niet bestaat. De standaardwaarde is `false`. |
-|**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Optioneel) Hiermee definieert u de hoeveelheid Aanvraageenheden om toe te wijzen wanneer de verzameling leases wordt gemaakt. Deze instelling is alleen gebruikt wanneer `createLeaseCollectionIfNotExists` is ingesteld op `true`. Deze parameter is automatisch ingesteld wanneer de binding wordt gemaakt met behulp van de portal.
-|**leaseCollectionPrefix**| **leaseCollectionPrefix**| (Optioneel) Als de waarde, wordt een voorvoegsel toegevoegd aan de leases gemaakt in de verzameling van de Lease voor deze functie is effectief zodat twee afzonderlijke Azure-functies voor het delen van dezelfde leaseverzameling met behulp van verschillende voorvoegsels.
-|**feedPollDelay**| **feedPollDelay**| (Optioneel) Wanneer is ingesteld, deze wordt gedefinieerd, in milliseconden, de vertraging tussen het opvragen van configuratiegegevens bij een partitie voor de nieuwe wijzigingen in de feed worden nadat alle huidige wijzigingen geleegd. De standaardwaarde is 5000 (5 seconden).
-|**leaseAcquireInterval**| **leaseAcquireInterval**| (Optioneel) Als de waarde, deze wordt gedefinieerd, in milliseconden, het interval voor een vliegende start een taak voor het berekenen van als partities gelijkmatig zijn verdeeld over exemplaren bekende hosten. De standaardwaarde is 13000 (13 seconden).
-|**leaseExpirationInterval**| **leaseExpirationInterval**| (Optioneel) Als de waarde, deze wordt gedefinieerd, in milliseconden, het interval waarvoor de lease op een lease voor een partitie wordt gemaakt. Als de lease niet binnen dit interval wordt vernieuwd, wordt het verlopen en eigendom van de partitie worden verplaatst naar een andere instantie. De standaardwaarde is 60000 (60 seconden).
-|**leaseRenewInterval**| **leaseRenewInterval**| (Optioneel) Als de waarde, deze wordt gedefinieerd, in milliseconden, het vernieuwingsinterval voor alle leases voor partities die momenteel worden vastgehouden door een exemplaar. De standaardwaarde is 17000 (17 seconden).
-|**checkpointFrequency**| **checkpointFrequency**| (Optioneel) Als de waarde, deze wordt gedefinieerd, in milliseconden, het interval tussen de lease controlepunten. De standaard waarde is altijd na elke functie aanroep.
-|**maxItemsPerInvocation**| **maxItemsPerInvocation**| (Optioneel) Als de waarde, past wordt de maximale hoeveelheid items ontvangen per aanroep van de functie.
-|**startFromBeginning**| **StartFromBeginning**| Beschrijving Wanneer dit is ingesteld, wordt aan de trigger aangegeven dat de wijzigingen moeten worden gelezen vanaf het begin van de geschiedenis van de verzameling in plaats van de huidige tijd. Dit werkt alleen de eerste keer dat de trigger wordt gestart, zoals bij volgende uitvoeringen, de controle punten al zijn opgeslagen. Als u dit `true` instelt op wanneer er al leases zijn gemaakt, heeft dit geen effect.
+|**direction** || Moet worden ingesteld op `in`. Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** || De naam van de variabele die wordt gebruikt in de functie code die de lijst met documenten met wijzigingen vertegenwoordigt. |
+|**connectionStringSetting**|**ConnectionStringSetting** | De naam van een app-instelling die de connection string bevat die wordt gebruikt om verbinding te maken met het Azure Cosmos DB account dat wordt bewaakt. |
+|**databaseName**|**DatabaseName**  | De naam van de Azure Cosmos DB-Data Base met de verzameling die wordt bewaakt. |
+|**collectionName** |**CollectionName** | De naam van de verzameling die wordt bewaakt. |
+|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Beschrijving De naam van een app-instelling die de connection string bevat voor de service waarin de lease verzameling zich bevindt. Als deze niet wordt ingesteld, wordt de `connectionStringSetting` waarde gebruikt. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt in de portal. De connection string voor de leases-verzameling moet schrijf machtigingen hebben.|
+|**leaseDatabaseName** |**LeaseDatabaseName** | Beschrijving De naam van de data base die de verzameling bevat die wordt gebruikt voor het opslaan van leases. Als deze optie niet is ingesteld, wordt de waarde van de instelling `databaseName` gebruikt. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt in de portal. |
+|**leaseCollectionName** | **LeaseCollectionName** | Beschrijving De naam van de verzameling die wordt gebruikt voor het opslaan van leases. Als deze niet wordt ingesteld, wordt de waarde `leases` gebruikt. |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Beschrijving Als deze is ingesteld op `true`, wordt de verzameling leases automatisch gemaakt wanneer deze nog niet bestaat. De standaard waarde is `false`. |
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| Beschrijving Hiermee wordt het aantal aanvraag eenheden gedefinieerd dat moet worden toegewezen wanneer de leases-verzameling wordt gemaakt. Deze instelling wordt alleen gebruikt wanneer `createLeaseCollectionIfNotExists` is ingesteld op `true`. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt met behulp van de portal.
+|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| Beschrijving Als deze optie is ingesteld, wordt er een voor voegsel toegevoegd aan de leases die zijn gemaakt in de lease verzameling voor deze functie, waardoor twee afzonderlijke Azure Functions dezelfde lease verzameling kunnen delen met behulp van verschillende voor voegsels.
+|**feedPollDelay**| **FeedPollDelay**| Beschrijving Als deze instelling is ingesteld, wordt in milliseconden de vertraging tussen het navragen van een partitie voor nieuwe wijzigingen in de feed gedefinieerd nadat alle huidige wijzigingen zijn vertraagd. De standaard waarde is 5000 (5 seconden).
+|**leaseAcquireInterval**| **LeaseAcquireInterval**| Beschrijving Als deze instelling is ingesteld, wordt in milliseconden het interval voor het starten van een taak gedefinieerd om te berekenen of de partities gelijkmatig worden verdeeld over bekende exemplaren van hosts. De standaard waarde is 13000 (13 seconden).
+|**leaseExpirationInterval**| **LeaseExpirationInterval**| Beschrijving Wanneer dit is ingesteld, wordt in milliseconden het interval voor het nemen van de lease op een lease die een partitie vertegenwoordigt. Als de lease niet binnen dit interval wordt vernieuwd, wordt het verlopen en het eigendom van de partitie verplaatst naar een ander exemplaar. De standaard waarde is 60000 (60 seconden).
+|**leaseRenewInterval**| **LeaseRenewInterval**| Beschrijving Wanneer dit is ingesteld, wordt in milliseconden het Vernieuwings interval voor alle leases gedefinieerd voor partities die momenteel door een instantie worden beheerd. De standaard waarde is 17000 (17 seconden).
+|**checkpointFrequency**| **CheckpointFrequency**| Beschrijving Als deze instelling is ingesteld, wordt in milliseconden het interval tussen de controle punten van de lease gedefinieerd. De standaard waarde is altijd na elke functie aanroep.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| Beschrijving Als deze eigenschap is ingesteld, wordt de maximum hoeveelheid ontvangen items per functie aanroep ingesteld. Als bewerkingen in de bewaakte verzameling worden uitgevoerd via opgeslagen procedures, blijft het [transactie bereik](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) behouden bij het lezen van items van de wijzigings feed. Als gevolg hiervan is het mogelijk dat de hoeveelheid ontvangen items hoger is dan de opgegeven waarde zodat de items die door dezelfde trans actie worden gewijzigd, worden geretourneerd als onderdeel van één atomische batch.
+|**startFromBeginning**| **StartFromBeginning**| Beschrijving Wanneer dit is ingesteld, wordt aan de trigger aangegeven dat de wijzigingen moeten worden gelezen vanaf het begin van de geschiedenis van de verzameling in plaats van de huidige tijd. Dit werkt alleen de eerste keer dat de trigger wordt gestart, zoals bij volgende uitvoeringen, de controle punten al zijn opgeslagen. Als u dit instelt op `true` wanneer er al leases zijn gemaakt, heeft dit geen effect.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Trigger - gebruik
+## <a name="trigger---usage"></a>Trigger-gebruik
 
-De trigger is vereist voor een tweede verzameling die worden gebruikt voor het opslaan van _leases_ via de partities. Zowel de verzameling die worden bewaakt en de verzameling waarin de leases moet beschikbaar zijn voor de trigger om te werken.
+Voor de trigger is een tweede verzameling vereist die wordt gebruikt voor het opslaan van _leases_ via de partities. Zowel de verzameling die wordt bewaakt als de verzameling die de leases bevat, moet beschikbaar zijn voor de werking van de trigger.
 
 >[!IMPORTANT]
-> Als meerdere functies zijn geconfigureerd voor het gebruik van een Cosmos DB-trigger voor dezelfde verzameling, moet elk van de functies gebruiken van een toegewezen leaseverzameling of geef een andere `LeaseCollectionPrefix` voor elke functie. Anders wordt slechts één van de functies worden geactiveerd. Zie voor meer informatie over het voorvoegsel de [configuratiesectie](#trigger---configuration).
+> Als er meerdere functies zijn geconfigureerd voor het gebruik van een Cosmos DB trigger voor dezelfde verzameling, moeten voor elk van de functies een toegewezen lease verzameling worden gebruikt, of moet voor elke functie een andere `LeaseCollectionPrefix` worden opgegeven. Anders wordt slechts een van de functies geactiveerd. Zie de [sectie configuratie](#trigger---configuration)voor meer informatie over het voor voegsel.
 
-De trigger wordt niet aangegeven dat of een document is bijgewerkt of ingevoegd, biedt deze alleen het document zelf. Als u nodig hebt voor het afhandelen van updates en toevoegingen anders, kunt u dat doen door het implementeren van timestamp velden voor het invoegen of bijwerken.
+De trigger geeft niet aan of een document is bijgewerkt of ingevoegd, maar het document zelf wordt geleverd. Als u updates wilt afhandelen en anders wilt invoegen, kunt u dit doen door tijds tempel velden te implementeren voor invoegen of bijwerken.
 
 ## <a name="input"></a>Invoer
 
-De Azure Cosmos DB-Invoerbinding maakt gebruik van de SQL-API om een of meer Azure Cosmos DB-documenten te halen en geeft deze door aan de invoerparameter van de functie. De document-ID of query parameters kunnen worden bepaald op basis van de trigger die de functie activeert.
+De Azure Cosmos DB invoer binding gebruikt de SQL API om een of meer Azure Cosmos DB documenten op te halen en geeft deze door aan de invoer parameter van de functie. De document-ID of query parameters kunnen worden bepaald op basis van de trigger die de functie aanroept.
 
-## <a name="input---examples"></a>Invoer - voorbeelden
+## <a name="input---examples"></a>Invoer-voor beelden
 
-Zie de voorbeelden taalspecifieke die één document worden gelezen door een id-waarde op te geven:
+Zie de taalspecifieke voor beelden van het lezen van één document door een ID-waarde op te geven:
 
 * [C#](#input---c-examples)
-* [C# script (.csx)](#input---c-script-examples)
+* [C#script (. CSX)](#input---c-script-examples)
 * [F#](#input---f-examples)
 * [Java](#input---java-examples)
 * [JavaScript](#input---javascript-examples)
 * [Python](#input---python-examples)
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-### <a name="input---c-examples"></a>Invoer - C#-voorbeelden
+### <a name="input---c-examples"></a>Invoer- C# voor beelden
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
-* [Wachtrijtrigger, zoekt u de ID van JSON](#queue-trigger-look-up-id-from-json-c)
-* [HTTP-trigger, uiterlijk-id van de query-tekenreeks](#http-trigger-look-up-id-from-query-string-c)
-* [HTTP-trigger, ID opzoeken van gegevens routeren](#http-trigger-look-up-id-from-route-data-c)
-* [HTTP-trigger, ID opzoeken van routegegevens, met behulp van SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
-* [HTTP activeren, meerdere documenten, met behulp van SqlQuery ophalen](#http-trigger-get-multiple-docs-using-sqlquery-c)
-* [HTTP activeren, meerdere documenten, met behulp van DocumentClient ophalen](#http-trigger-get-multiple-docs-using-documentclient-c)
+* [Wachtrij trigger, ID opzoeken vanuit JSON](#queue-trigger-look-up-id-from-json-c)
+* [HTTP-trigger, ID opzoeken vanuit query reeks](#http-trigger-look-up-id-from-query-string-c)
+* [HTTP-trigger, ID van route gegevens opzoeken](#http-trigger-look-up-id-from-route-data-c)
+* [HTTP-trigger, ID opzoeken op basis van route gegevens, met behulp van SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
+* [HTTP-trigger, meerdere docs ophalen met behulp van SqlQuery](#http-trigger-get-multiple-docs-using-sqlquery-c)
+* [HTTP-trigger, meerdere docs ophalen met behulp van DocumentClient](#http-trigger-get-multiple-docs-using-documentclient-c)
 
-De voorbeelden verwijzen naar een eenvoudige `ToDoItem` type:
+De voor beelden verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -329,11 +329,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-json-c"></a>Wachtrijtrigger, zoekt u de ID van JSON (C#)
+#### <a name="queue-trigger-look-up-id-from-json-c"></a>Wachtrij trigger, ID opzoeken vanuit JSON (C#)
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die één document worden opgehaald. De functie wordt geactiveerd door een wachtrijbericht met een JSON-object. De wachtrijtrigger parseert de JSON naar een object met de naam `ToDoItemLookup`, waarin de ID om te zoeken. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die één document ophaalt. De functie wordt geactiveerd door een wachtrij bericht dat een JSON-object bevat. De wachtrij trigger parseert de JSON naar een object met de naam `ToDoItemLookup`, dat de ID bevat die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -379,11 +379,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP-trigger, uiterlijk-id van de query-tekenreeks (C#)
+#### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP-trigger, ID opzoeken vanuit query teken reeksC#()
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die één document worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query-tekenreeks om op te geven van de ID om te zoeken. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
 >[!NOTE]
 >De para meter voor de HTTP-query reeks is hoofdletter gevoelig.
@@ -428,11 +428,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-c"></a>HTTP-trigger, ID opzoeken van routegegevens (C#)
+#### <a name="http-trigger-look-up-id-from-route-data-c"></a>HTTP-trigger, ID opzoeken op basis van routeC#gegevens ()
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die één document worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag dat maakt gebruik van gegevens om op te geven van de ID opzoeken routeren. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van route gegevens om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -473,13 +473,13 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>HTTP-trigger, ID opzoeken van routegegevens, met behulp van SqlQuery (C#)
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>HTTP-trigger, ID opzoeken op basis van route gegevens, metC#behulp van SqlQuery ()
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die één document worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag dat maakt gebruik van gegevens om op te geven van de ID opzoeken routeren. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van route gegevens om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
-In het voor beeld ziet u hoe u een bindings `SqlQuery` expressie gebruikt in de para meter. U kunt route gegevens door geven aan `SqlQuery` de para meter zoals weer gegeven, maar de waarden van de [query reeksen kunnen niet worden door gegeven](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
+In het voor beeld ziet u hoe u een bindings expressie gebruikt in de para meter `SqlQuery`. U kunt route gegevens door geven aan de para meter `SqlQuery` zoals weer gegeven, maar [u mag geen query reeks waarden door geven](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
 
 
 ```cs
@@ -517,11 +517,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c"></a>HTTP activeren, krijgen meerdere documenten, met behulp van SqlQuery (C#)
+#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c"></a>HTTP-trigger, meerdere docs ophalen met behulpC#van SqlQuery ()
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die een lijst met documenten worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De query is opgegeven in de `SqlQuery` eigenschap van het kenmerk.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee een lijst met documenten wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De query is opgegeven in de eigenschap van het `SqlQuery` kenmerk.
 
 ```cs
 using Microsoft.AspNetCore.Http;
@@ -560,11 +560,11 @@ namespace CosmosDBSamplesV2
 
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP activeren, krijgen meerdere documenten, met behulp van DocumentClient (C#)
+#### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP-trigger, meerdere docs ophalen met behulpC#van DocumentClient ()
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die een lijst met documenten worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De code gebruikt een `DocumentClient` exemplaar geleverd door de Azure Cosmos DB-binding met een lijst met documenten lezen. De `DocumentClient` exemplaar kan ook worden gebruikt voor bewerkingen voor schrijven.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee een lijst met documenten wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De code gebruikt een `DocumentClient` exemplaar dat wordt aangeboden door de Azure Cosmos DB-binding om een lijst met documenten te lezen. Het `DocumentClient`-exemplaar kan ook worden gebruikt voor schrijf bewerkingen.
 
 > [!NOTE]
 > U kunt ook de [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) -interface gebruiken om het testen gemakkelijker te maken.
@@ -625,20 +625,20 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-### <a name="input---c-script-examples"></a>Invoer - voorbeelden van C#-script
+### <a name="input---c-script-examples"></a>Voor beelden C# van invoer scripts
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
-* [Wachtrijtrigger, ID opzoeken van tekenreeks](#queue-trigger-look-up-id-from-string-c-script)
-* [Trigger in de wachtrij, meerdere documenten, met behulp van SqlQuery ophalen](#queue-trigger-get-multiple-docs-using-sqlquery-c-script)
-* [HTTP-trigger, uiterlijk-id van de query-tekenreeks](#http-trigger-look-up-id-from-query-string-c-script)
-* [HTTP-trigger, ID opzoeken van gegevens routeren](#http-trigger-look-up-id-from-route-data-c-script)
-* [HTTP activeren, meerdere documenten, met behulp van SqlQuery ophalen](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
-* [HTTP activeren, meerdere documenten, met behulp van DocumentClient ophalen](#http-trigger-get-multiple-docs-using-documentclient-c-script)
+* [Wachtrij trigger, ID opzoeken op basis van teken reeks](#queue-trigger-look-up-id-from-string-c-script)
+* [Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP-trigger, ID opzoeken vanuit query reeks](#http-trigger-look-up-id-from-query-string-c-script)
+* [HTTP-trigger, ID van route gegevens opzoeken](#http-trigger-look-up-id-from-route-data-c-script)
+* [HTTP-trigger, meerdere docs ophalen met behulp van SqlQuery](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
+* [HTTP-trigger, meerdere docs ophalen met behulp van DocumentClient](#http-trigger-get-multiple-docs-using-documentclient-c-script)
 
-De HTTP-trigger voorbeelden verwijzen naar een eenvoudige `ToDoItem` type:
+De voor beelden van HTTP-triggers verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -651,13 +651,13 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-string-c-script"></a>Wachtrijtrigger, zoekt u ID van een tekenreeks (C#-script)
+#### <a name="queue-trigger-look-up-id-from-string-c-script"></a>Wachtrij trigger, zoek-ID van teken reeksC# (script)
 
-Het volgende voorbeeld ziet u een Cosmos DB-Invoerbinding in een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie leest één document en updates van de tekstwaarde van het document.
+In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -671,9 +671,9 @@ Hier volgt de binding-gegevens de *function.json* bestand:
     "direction": "in"
 }
 ```
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
     using System;
@@ -685,15 +685,15 @@ Dit is de C#-scriptcode:
     }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>Trigger in de wachtrij, het ophalen van meerdere documenten, met behulp van SqlQuery (C#-script)
+#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>Wachtrij trigger, meerdere documenten ophalen met behulp vanC# SqlQuery (script)
 
-Het volgende voorbeeld ziet u een Azure Cosmos DB-Invoerbinding in een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten die zijn opgegeven door een SQL-query met behulp van een wachtrijtrigger voor het aanpassen van de queryparameters.
+In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
-De wachtrijtrigger bevat een parameter `departmentId`. Een wachtrijbericht van `{ "departmentId" : "Finance" }` retourneert alle records voor de afdeling Financiën.
+De trigger van de wachtrij bevat een para meter `departmentId`. Een wachtrij bericht van `{ "departmentId" : "Finance" }` zou alle records voor de afdeling Financiën retour neren.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -707,9 +707,9 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```csharp
     public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -726,13 +726,13 @@ Dit is de C#-scriptcode:
     }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>HTTP-trigger, uiterlijk-id van de query-tekenreeks (C#-script)
+#### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>HTTP-trigger, ID opzoeken vanuit query teken reeksC# (script)
 
-Het volgende voorbeeld wordt een [C#-scriptfunctie](functions-reference-csharp.md) die één document worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query-tekenreeks om op te geven van de ID om te zoeken. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [ C# script functie](functions-reference-csharp.md) waarmee één document wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -766,7 +766,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
 using System.Net;
@@ -788,13 +788,13 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>HTTP-trigger, ID opzoeken van gegevens routeren (C#-script)
+#### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>HTTP-trigger, ID opzoeken op basis van routeC# gegevens (script)
 
-Het volgende voorbeeld wordt een [C#-scriptfunctie](functions-reference-csharp.md) die één document worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag dat maakt gebruik van gegevens om op te geven van de ID opzoeken routeren. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [ C# script functie](functions-reference-csharp.md) waarmee één document wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van route gegevens om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -829,7 +829,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
 using System.Net;
@@ -851,13 +851,13 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>HTTP activeren, krijgen meerdere documenten, met behulp van SqlQuery (C#-script)
+#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>HTTP-trigger, meerdere documenten ophalen met behulpC# van SqlQuery (script)
 
-Het volgende voorbeeld wordt een [C#-scriptfunctie](functions-reference-csharp.md) die een lijst met documenten worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De query is opgegeven in de `SqlQuery` eigenschap van het kenmerk.
+In het volgende voor beeld ziet u een [ C# script functie](functions-reference-csharp.md) waarmee een lijst met documenten wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De query is opgegeven in de eigenschap van het `SqlQuery` kenmerk.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -891,7 +891,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
 using System.Net;
@@ -909,13 +909,13 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>HTTP activeren, krijgen meerdere documenten, met behulp van DocumentClient (C#-script)
+#### <a name="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>HTTP-trigger, meerdere documenten ophalen met behulpC# van DocumentClient (script)
 
-Het volgende voorbeeld wordt een [C#-scriptfunctie](functions-reference-csharp.md) die een lijst met documenten worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De code gebruikt een `DocumentClient` exemplaar geleverd door de Azure Cosmos DB-binding met een lijst met documenten lezen. De `DocumentClient` exemplaar kan ook worden gebruikt voor bewerkingen voor schrijven.
+In het volgende voor beeld ziet u een [ C# script functie](functions-reference-csharp.md) waarmee een lijst met documenten wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De code gebruikt een `DocumentClient` exemplaar dat wordt aangeboden door de Azure Cosmos DB-binding om een lijst met documenten te lezen. Het `DocumentClient`-exemplaar kan ook worden gebruikt voor schrijf bewerkingen.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -948,7 +948,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -988,24 +988,24 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-### <a name="input---javascript-examples"></a>Invoer - JavaScript-voorbeelden
+### <a name="input---javascript-examples"></a>Invoer-java script-voor beelden
 
 Deze sectie bevat de volgende voor beelden van het lezen van één document door een ID-waarde op te geven uit verschillende bronnen:
 
-* [Wachtrijtrigger, zoekt u de ID van JSON](#queue-trigger-look-up-id-from-json-javascript)
-* [HTTP-trigger, uiterlijk-id van de query-tekenreeks](#http-trigger-look-up-id-from-query-string-javascript)
-* [HTTP-trigger, ID opzoeken van gegevens routeren](#http-trigger-look-up-id-from-route-data-javascript)
-* [Trigger in de wachtrij, meerdere documenten, met behulp van SqlQuery ophalen](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
+* [Wachtrij trigger, ID opzoeken vanuit JSON](#queue-trigger-look-up-id-from-json-javascript)
+* [HTTP-trigger, ID opzoeken vanuit query reeks](#http-trigger-look-up-id-from-query-string-javascript)
+* [HTTP-trigger, ID van route gegevens opzoeken](#http-trigger-look-up-id-from-route-data-javascript)
+* [Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-json-javascript"></a>Wachtrijtrigger, zoekt u de ID van JSON (JavaScript)
+#### <a name="queue-trigger-look-up-id-from-json-javascript"></a>Wachtrij trigger, ID opzoeken vanuit JSON (Java script)
 
-Het volgende voorbeeld ziet u een Cosmos DB-Invoerbinding in een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie leest één document en updates van de tekstwaarde van het document.
+In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -1029,9 +1029,9 @@ Hier volgt de binding-gegevens de *function.json* bestand:
     "direction": "out"
 }
 ```
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
     // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
@@ -1042,13 +1042,13 @@ Dit is de JavaScript-code:
     };
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>HTTP-trigger, uiterlijk-id van de query-tekenreeks (JavaScript)
+#### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>HTTP-trigger, ID opzoeken vanuit de query reeks (Java script)
 
-Het volgende voorbeeld wordt een [JavaScript-functie](functions-reference-node.md) die één document worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query-tekenreeks om op te geven van de ID om te zoeken. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [Java script-functie](functions-reference-node.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -1082,7 +1082,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -1100,13 +1100,13 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP-trigger, uiterlijk-id van het routeren van gegevens (JavaScript)
+#### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP-trigger, ID opzoeken op basis van route gegevens (Java script)
 
-Het volgende voorbeeld wordt een [JavaScript-functie](functions-reference-node.md) die één document worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query-tekenreeks om op te geven van de ID om te zoeken. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [Java script-functie](functions-reference-node.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -1141,7 +1141,7 @@ Hier volgt de *function.json* bestand:
 }
 ```
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
 module.exports = function (context, req, toDoItem) {
@@ -1159,15 +1159,15 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>Trigger in de wachtrij, het ophalen van meerdere documenten, met behulp van SqlQuery (JavaScript)
+#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery (Java script)
 
-Het volgende voorbeeld ziet u een Azure Cosmos DB-Invoerbinding in een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten die zijn opgegeven door een SQL-query met behulp van een wachtrijtrigger voor het aanpassen van de queryparameters.
+In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
-De wachtrijtrigger bevat een parameter `departmentId`. Een wachtrijbericht van `{ "departmentId" : "Finance" }` retourneert alle records voor de afdeling Financiën.
+De trigger van de wachtrij bevat een para meter `departmentId`. Een wachtrij bericht van `{ "departmentId" : "Finance" }` zou alle records voor de afdeling Financiën retour neren.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -1181,9 +1181,9 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
     module.exports = function (context, input) {
@@ -1196,24 +1196,24 @@ Dit is de JavaScript-code:
     };
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
 ### <a name="input---python-examples"></a>Invoer-python-voor beelden
 
 Deze sectie bevat de volgende voor beelden van het lezen van één document door een ID-waarde op te geven uit verschillende bronnen:
 
-* [Wachtrijtrigger, zoekt u de ID van JSON](#queue-trigger-look-up-id-from-json-python)
-* [HTTP-trigger, uiterlijk-id van de query-tekenreeks](#http-trigger-look-up-id-from-query-string-python)
-* [HTTP-trigger, ID opzoeken van gegevens routeren](#http-trigger-look-up-id-from-route-data-python)
-* [Trigger in de wachtrij, meerdere documenten, met behulp van SqlQuery ophalen](#queue-trigger-get-multiple-docs-using-sqlquery-python)
+* [Wachtrij trigger, ID opzoeken vanuit JSON](#queue-trigger-look-up-id-from-json-python)
+* [HTTP-trigger, ID opzoeken vanuit query reeks](#http-trigger-look-up-id-from-query-string-python)
+* [HTTP-trigger, ID van route gegevens opzoeken](#http-trigger-look-up-id-from-route-data-python)
+* [Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery](#queue-trigger-get-multiple-docs-using-sqlquery-python)
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
 #### <a name="queue-trigger-look-up-id-from-json-python"></a>Wachtrij trigger, ID opzoeken vanuit JSON (python)
 
-In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie leest één document en updates van de tekstwaarde van het document.
+In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -1238,7 +1238,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de python-code:
 
@@ -1253,13 +1253,13 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
         return document
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
 #### <a name="http-trigger-look-up-id-from-query-string-python"></a>HTTP-trigger, ID opzoeken vanuit query reeks (python)
 
-In het volgende voor beeld ziet u een [python-functie](functions-reference-python.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query-tekenreeks om op te geven van de ID om te zoeken. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [python-functie](functions-reference-python.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -1311,13 +1311,13 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     return 'OK'
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
 #### <a name="http-trigger-look-up-id-from-route-data-python"></a>HTTP-trigger, ID opzoeken op basis van route gegevens (python)
 
-In het volgende voor beeld ziet u een [python-functie](functions-reference-python.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query-tekenreeks om op te geven van de ID om te zoeken. Dat ID wordt gebruikt om op te halen een `ToDoItem` document van de opgegeven database en verzameling.
+In het volgende voor beeld ziet u een [python-functie](functions-reference-python.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem`-document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier volgt de *function.json* bestand:
+Hier is het bestand *Function. json* :
 
 ```json
 {
@@ -1369,15 +1369,15 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
     return 'OK'
 ```
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
 #### <a name="queue-trigger-get-multiple-docs-using-sqlquery-python"></a>Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery (python)
 
-In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten die zijn opgegeven door een SQL-query met behulp van een wachtrijtrigger voor het aanpassen van de queryparameters.
+In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
-De wachtrijtrigger bevat een parameter `departmentId`. Een wachtrijbericht van `{ "departmentId" : "Finance" }` retourneert alle records voor de afdeling Financiën.
+De trigger van de wachtrij bevat een para meter `departmentId`. Een wachtrij bericht van `{ "departmentId" : "Finance" }` zou alle records voor de afdeling Financiën retour neren.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -1391,7 +1391,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Dit is de python-code:
 
@@ -1404,15 +1404,15 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
 ```
 
 
-[Invoer voorbeelden overslaan](#input---attributes)
+[Invoer voorbeelden overs Laan](#input---attributes)
 
 <a name="infsharp"></a>
 
-### <a name="input---f-examples"></a>Invoer - F# voorbeelden
+### <a name="input---f-examples"></a>Invoer- F# voor beelden
 
-Het volgende voorbeeld ziet u een Cosmos DB-Invoerbinding in een *function.json* bestand en een [ F# functie](functions-reference-fsharp.md) die gebruikmaakt van de binding. De functie leest één document en updates van de tekstwaarde van het document.
+In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [ F# functie](functions-reference-fsharp.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -1426,7 +1426,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#input---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#input---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Hier volgt de F# code:
 
@@ -1437,7 +1437,7 @@ Hier volgt de F# code:
     inputDocument?text <- "This has changed."
 ```
 
-In dit voorbeeld heeft een `project.json` -bestand dat Hiermee geeft u de `FSharp.Interop.Dynamic` en `Dynamitey` NuGet-afhankelijkheden:
+In dit voor beeld is een `project.json`-bestand vereist waarin de `FSharp.Interop.Dynamic`-en `Dynamitey` NuGet-afhankelijkheden worden opgegeven:
 
 ```json
 {
@@ -1452,19 +1452,19 @@ In dit voorbeeld heeft een `project.json` -bestand dat Hiermee geeft u de `FShar
 }
 ```
 
-Om toe te voegen een `project.json` bestand, Zie [ F# van Pakketbeheer](functions-reference-fsharp.md#package).
+Zie [ F# Package Management](functions-reference-fsharp.md#package)om een `project.json` bestand toe te voegen.
 
 ### <a name="input---java-examples"></a>Invoer-java-voor beelden
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
 * [HTTP-trigger, ID opzoeken op basis van query teken reeks para meter](#http-trigger-look-up-id-from-query-string---string-parameter-java)
 * [HTTP-trigger, ID opzoeken vanuit query teken reeks-POJO para meter](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)
-* [HTTP-trigger, ID opzoeken van gegevens routeren](#http-trigger-look-up-id-from-route-data-java)
-* [HTTP-trigger, ID opzoeken van routegegevens, met behulp van SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
+* [HTTP-trigger, ID van route gegevens opzoeken](#http-trigger-look-up-id-from-route-data-java)
+* [HTTP-trigger, ID opzoeken op basis van route gegevens, met behulp van SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
 * [HTTP-trigger, meerdere documenten ophalen van route gegevens, met behulp van SqlQuery](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
 
-De voorbeelden verwijzen naar een eenvoudige `ToDoItem` type:
+De voor beelden verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```java
 public class ToDoItem {
@@ -1531,11 +1531,11 @@ public class DocByIdFromQueryString {
 }
  ```
 
-Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@CosmosDBInput` functies de annotatie voor functie parameters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, pojo's of nullable-\<waarden met behulp van optionele T >.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBInput` annotatie voor functie parameters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met behulp van optionele\<T >.
 
 #### <a name="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>HTTP-trigger, ID opzoeken vanuit query teken reeks-POJO para meter (Java)
 
-In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling. Het document wordt vervolgens geconverteerd naar een exemplaar van de ```ToDoItem``` Pojo die eerder zijn gemaakt en door gegeven als een argument voor de functie.
+In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling. Het document wordt vervolgens geconverteerd naar een exemplaar van de ```ToDoItem``` POJO eerder gemaakt en door gegeven als een argument voor de functie.
 
 ```java
 public class DocByIdFromQueryStringPojo {
@@ -1577,7 +1577,7 @@ public class DocByIdFromQueryStringPojo {
 
 #### <a name="http-trigger-look-up-id-from-route-data-java"></a>HTTP-trigger, ID opzoeken op basis van route gegevens (Java)
 
-In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, en ```Optional<String>```dit als een te retour neren.
+In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, waarna het wordt geretourneerd als een ```Optional<String>```.
 
 ```java
 public class DocByIdFromRoute {
@@ -1622,7 +1622,7 @@ public class DocByIdFromRoute {
 
 #### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-java"></a>HTTP-trigger, ID opzoeken op basis van route gegevens, met behulp van SqlQuery (Java)
 
-In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID op te geven die moet worden gezocht. Deze id wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset wordt geconverteerd naar een, omdat er ```ToDoItem[]```veel documenten kunnen worden geretourneerd, afhankelijk van de query criteria.
+In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset wordt geconverteerd naar een ```ToDoItem[]```, omdat er veel documenten kunnen worden geretourneerd, afhankelijk van de query criteria.
 
 ```java
 public class DocByIdFromRouteSqlQuery {
@@ -1664,7 +1664,7 @@ public class DocByIdFromRouteSqlQuery {
 
 #### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java"></a>HTTP-trigger, meerdere documenten ophalen van route gegevens, met behulp van SqlQuery (Java)
 
-In het volgende voor beeld ziet u een Java-functie die meerdere documenten bevat. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route ```desc``` parameter om de teken reeks op te geven waarnaar ```description``` in het veld moet worden gezocht. De zoek term wordt gebruikt om een verzameling documenten op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset ```ToDoItem[]``` wordt geconverteerd naar een en wordt door gegeven als argument voor de functie.
+In het volgende voor beeld ziet u een Java-functie die meerdere documenten bevat. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter ```desc``` om de teken reeks op te geven waarnaar u wilt zoeken in het veld ```description```. De zoek term wordt gebruikt om een verzameling documenten op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset wordt geconverteerd naar een ```ToDoItem[]``` en wordt door gegeven als argument voor de functie.
 
 ```java
 public class DocsFromRouteSqlQuery {
@@ -1704,63 +1704,63 @@ public class DocsFromRouteSqlQuery {
 }
  ```
 
-## <a name="input---attributes"></a>Invoer - kenmerken
+## <a name="input---attributes"></a>Invoer kenmerken
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
 
-De constructor van het kenmerk wordt de databasenaam en verzamelingsnaam. Zie voor meer informatie over deze instellingen en andere eigenschappen die u kunt configureren, [de volgende configuratiesectie](#input---configuration).
+De constructor van het kenmerk neemt de naam van de data base en de verzameling. Zie [de volgende configuratie sectie](#input---configuration)voor informatie over de instellingen en andere eigenschappen die u kunt configureren.
 
-## <a name="input---configuration"></a>Invoer - configuratie
+## <a name="input---configuration"></a>Invoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `CosmosDB` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `CosmosDB`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**     || Moet worden ingesteld op `cosmosDB`.        |
 |**direction**     || Moet worden ingesteld op `in`.         |
-|**name**     || De naam van de bindingsparameter die het document in de functie vertegenwoordigt.  |
-|**databaseName** |**DatabaseName** |De database met het document.        |
-|**collectionName** |**collectionName** | De naam van de verzameling waarin het document. |
-|**id**    | **Id** | De ID van het document om op te halen. Deze eigenschap ondersteunt [expressies binding](./functions-bindings-expressions-patterns.md). Stelt beide niet de **id** en **sqlQuery** eigenschappen. Als u niet uit, één instelt, wordt de volledige verzameling worden opgehaald. |
-|**sqlQuery**  |**SqlQuery**  | Een Azure Cosmos DB SQL-query die wordt gebruikt voor het ophalen van meerdere documenten. De eigenschap biedt ondersteuning voor runtime-bindingen, zoals in dit voorbeeld: `SELECT * FROM c where c.departmentId = {departmentId}`. Stelt beide niet de **id** en **sqlQuery** eigenschappen. Als u niet uit, één instelt, wordt de volledige verzameling worden opgehaald.|
-|**connectionStringSetting**     |**connectionStringSetting**|De naam van de app-instelling met daarin uw Azure Cosmos DB-verbindingsreeks.        |
-|**partitionKey**|**partitionKey**|Hiermee geeft u de waarde voor de partitiesleutel voor de zoekopdracht. Kan omvatten bindende parameters.|
+|**naam**     || De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
+|**databaseName** |**DatabaseName** |De data base met het document.        |
+|**collectionName** |**CollectionName** | De naam van de verzameling die het document bevat. |
+|**id**    | **Id** | De ID van het document dat moet worden opgehaald. Deze eigenschap ondersteunt [bindings expressies](./functions-bindings-expressions-patterns.md). Stel de eigenschappen **id** en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald. |
+|**sqlQuery**  |**SqlQuery**  | Een Azure Cosmos DB SQL-query die wordt gebruikt om meerdere documenten op te halen. De eigenschap ondersteunt runtime bindingen, zoals in dit voor beeld: `SELECT * FROM c where c.departmentId = {departmentId}`. Stel de eigenschappen **id** en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald.|
+|**connectionStringSetting**     |**ConnectionStringSetting**|De naam van de app-instelling met uw Azure Cosmos DB connection string.        |
+|**partitionKey**|**PartitionKey**|Hiermee geeft u de partitie sleutel waarde voor de zoek opdracht op. Kan bindende para meters bevatten.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="input---usage"></a>Invoer - gebruik
+## <a name="input---usage"></a>Invoer gebruik
 
-In C# en F# functioneert, wanneer de functie wordt afgesloten, alle wijzigingen aan het ingevoerde document via invoer van de benoemde parameters worden automatisch doorgevoerd.
+In C# en F# functies worden wijzigingen die zijn aangebracht in het invoer document via benoemde invoer parameters automatisch behouden wanneer de functie wordt afgesloten.
 
-In JavaScript-functies worden niet automatisch updates aangebracht bij afsluiten van de functie. In plaats daarvan gebruik `context.bindings.<documentName>In` en `context.bindings.<documentName>Out` om updates te maken. Zie het Java script-voor beeld.
+In Java script-functies worden updates niet automatisch uitgevoerd bij het afsluiten van de functie. Gebruik in plaats daarvan `context.bindings.<documentName>In` en `context.bindings.<documentName>Out` om updates te maken. Zie het Java script-voor beeld.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
-De Azure Cosmos DB-uitvoer binding kunt schrijven u een nieuw document naar een Azure Cosmos DB-database met behulp van de SQL-API.
+Met de Azure Cosmos DB uitvoer binding kunt u een nieuw document naar een Azure Cosmos DB-Data Base schrijven met behulp van de SQL-API.
 
-## <a name="output---examples"></a>Uitvoer - voorbeelden
+## <a name="output---examples"></a>Uitvoer-voor beelden
 
-Zie de voorbeelden taalspecifieke:
+Zie de taalspecifieke voor beelden:
 
 * [C#](#output---c-examples)
-* [C# script (.csx)](#output---c-script-examples)
+* [C#script (. CSX)](#output---c-script-examples)
 * [F#](#output---f-examples)
 * [Java](#output---java-examples)
 * [JavaScript](#output---javascript-examples)
 * [Python](#output---python-examples)
 
-Zie ook de [invoer voorbeeld](#input---c-examples) die gebruikmaakt van `DocumentClient`.
+Zie ook het [invoer voorbeeld](#input---c-examples) dat gebruikmaakt van `DocumentClient`.
 
-[Voorbeelden van uitvoer overslaan](#output---attributes)
+[Uitvoer voorbeelden overs Laan](#output---attributes)
 
-### <a name="output---c-examples"></a>Uitvoer - C# voorbeelden
+### <a name="output---c-examples"></a>Uitvoer- C# voor beelden
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
-* Wachtrijtrigger, één document schrijven
-* Wachtrijtrigger, met behulp van IAsyncCollector schrijven-docs
+* Wachtrij trigger, een document schrijven
+* Wachtrij trigger, documenten schrijven met IAsyncCollector
 
-De voorbeelden verwijzen naar een eenvoudige `ToDoItem` type:
+De voor beelden verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -1773,11 +1773,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Voorbeelden van uitvoer overslaan](#output---attributes)
+[Uitvoer voorbeelden overs Laan](#output---attributes)
 
-#### <a name="queue-trigger-write-one-doc-c"></a>Wachtrijtrigger, schrijven één doc-bestand (C#)
+#### <a name="queue-trigger-write-one-doc-c"></a>Wachtrij trigger, een document schrijven (C#)
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) die een document wordt toegevoegd aan een database met behulp van gegevens die zijn opgegeven in het bericht van Queue storage.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee een document wordt toegevoegd aan een Data Base met behulp van gegevens die zijn opgenomen in het bericht uit de wachtrij opslag.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -1807,11 +1807,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Voorbeelden van uitvoer overslaan](#output---attributes)
+[Uitvoer voorbeelden overs Laan](#output---attributes)
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector-c"></a>Wachtrijtrigger, schrijven docs IAsyncCollector (C#) gebruiken
+#### <a name="queue-trigger-write-docs-using-iasynccollector-c"></a>Wachtrij trigger, documenten schrijven met behulpC#van IAsyncCollector ()
 
-Het volgende voorbeeld wordt een [C#-functie](functions-dotnet-class-library.md) waarmee een verzameling documenten worden toegevoegd aan een database met behulp van gegevens die zijn opgegeven in een wachtrijbericht JSON.
+In het volgende voor beeld ziet u een [ C# functie](functions-dotnet-class-library.md) waarmee een verzameling documenten wordt toegevoegd aan een Data Base, met behulp van gegevens die zijn opgenomen in een JSON van een wachtrij bericht.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -1845,20 +1845,20 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-[Voorbeelden van uitvoer overslaan](#output---attributes)
+[Uitvoer voorbeelden overs Laan](#output---attributes)
 
-### <a name="output---c-script-examples"></a>Uitvoer - voorbeelden van C#-script
+### <a name="output---c-script-examples"></a>Voor beelden C# van uitvoer scripts
 
-Deze sectie bevat de volgende voorbeelden:
+Deze sectie bevat de volgende voor beelden:
 
-* Wachtrijtrigger, één document schrijven
-* Wachtrijtrigger, met behulp van IAsyncCollector schrijven-docs
+* Wachtrij trigger, een document schrijven
+* Wachtrij trigger, documenten schrijven met IAsyncCollector
 
-[Voorbeelden van uitvoer overslaan](#output---attributes)
+[Uitvoer voorbeelden overs Laan](#output---attributes)
 
-#### <a name="queue-trigger-write-one-doc-c-script"></a>Wachtrijtrigger, schrijven één document (C#-script)
+#### <a name="queue-trigger-write-one-doc-c-script"></a>Wachtrij trigger, een doc schrijven (C# script)
 
-Het volgende voorbeeld ziet u een Azure Cosmos DB-Uitvoerbinding een *function.json* bestand en een [C#-scriptfunctie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-Invoerbinding voor een wachtrij die JSON in de volgende indeling ontvangt:
+In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *Function. json* -bestand en een [ C# script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
 
 ```json
 {
@@ -1868,7 +1868,7 @@ Het volgende voorbeeld ziet u een Azure Cosmos DB-Uitvoerbinding een *function.j
 }
 ```
 
-De functie wordt gemaakt van Azure Cosmos DB-documenten in de volgende indeling voor elke record:
+De functie maakt Azure Cosmos DB documenten in de volgende indeling voor elke record:
 
 ```json
 {
@@ -1879,7 +1879,7 @@ De functie wordt gemaakt van Azure Cosmos DB-documenten in de volgende indeling 
 }
 ```
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -1893,9 +1893,9 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
     #r "Newtonsoft.Json"
@@ -1919,11 +1919,11 @@ Dit is de C#-scriptcode:
     }
 ```
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Wachtrijtrigger, met behulp van IAsyncCollector schrijven-docs
+#### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Wachtrij trigger, documenten schrijven met IAsyncCollector
 
-Voor het maken van meerdere documenten, kunt u binden aan `ICollector<T>` of `IAsyncCollector<T>` waar `T` is een van de ondersteunde typen.
+Als u meerdere documenten wilt maken, kunt u binden aan `ICollector<T>` of `IAsyncCollector<T>` waarbij `T` een van de ondersteunde typen is.
 
-In dit voorbeeld verwijst naar een eenvoudige `ToDoItem` type:
+In dit voor beeld wordt naar een eenvoudig `ToDoItem` type verwezen:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -1936,7 +1936,7 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-Dit is het bestand function.json:
+Hier is het bestand function. json:
 
 ```json
 {
@@ -1961,7 +1961,7 @@ Dit is het bestand function.json:
 }
 ```
 
-Dit is de C#-scriptcode:
+Dit is de C# script code:
 
 ```cs
 using System;
@@ -1979,11 +1979,11 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-[Voorbeelden van uitvoer overslaan](#output---attributes)
+[Uitvoer voorbeelden overs Laan](#output---attributes)
 
-### <a name="output---javascript-examples"></a>Uitvoer - JavaScript-voorbeelden
+### <a name="output---javascript-examples"></a>Uitvoer-java script-voor beelden
 
-Het volgende voorbeeld ziet u een Azure Cosmos DB-Uitvoerbinding een *function.json* bestand en een [JavaScript-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-Invoerbinding voor een wachtrij die JSON in de volgende indeling ontvangt:
+In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
 
 ```json
 {
@@ -1993,7 +1993,7 @@ Het volgende voorbeeld ziet u een Azure Cosmos DB-Uitvoerbinding een *function.j
 }
 ```
 
-De functie wordt gemaakt van Azure Cosmos DB-documenten in de volgende indeling voor elke record:
+De functie maakt Azure Cosmos DB documenten in de volgende indeling voor elke record:
 
 ```json
 {
@@ -2004,7 +2004,7 @@ De functie wordt gemaakt van Azure Cosmos DB-documenten in de volgende indeling 
 }
 ```
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -2018,9 +2018,9 @@ Hier volgt de binding-gegevens de *function.json* bestand:
 }
 ```
 
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 
 ```javascript
     module.exports = function (context) {
@@ -2036,11 +2036,11 @@ Dit is de JavaScript-code:
     };
 ```
 
-[Voorbeelden van uitvoer overslaan](#output---attributes)
+[Uitvoer voorbeelden overs Laan](#output---attributes)
 
-### <a name="output---f-examples"></a>Uitvoer - F# voorbeelden
+### <a name="output---f-examples"></a>Uitvoer- F# voor beelden
 
-Het volgende voorbeeld ziet u een Azure Cosmos DB-Uitvoerbinding een *function.json* bestand en een [ F# functie](functions-reference-fsharp.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-Invoerbinding voor een wachtrij die JSON in de volgende indeling ontvangt:
+In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *Function. json* -bestand en een [ F# functie](functions-reference-fsharp.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
 
 ```json
 {
@@ -2050,7 +2050,7 @@ Het volgende voorbeeld ziet u een Azure Cosmos DB-Uitvoerbinding een *function.j
 }
 ```
 
-De functie wordt gemaakt van Azure Cosmos DB-documenten in de volgende indeling voor elke record:
+De functie maakt Azure Cosmos DB documenten in de volgende indeling voor elke record:
 
 ```json
 {
@@ -2061,7 +2061,7 @@ De functie wordt gemaakt van Azure Cosmos DB-documenten in de volgende indeling 
 }
 ```
 
-Hier volgt de binding-gegevens de *function.json* bestand:
+Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
 ```json
 {
@@ -2074,7 +2074,7 @@ Hier volgt de binding-gegevens de *function.json* bestand:
     "direction": "out"
 }
 ```
-De [configuratie](#output---configuration) sectie wordt uitgelegd dat deze eigenschappen.
+In de [configuratie](#output---configuration) sectie worden deze eigenschappen uitgelegd.
 
 Hier volgt de F# code:
 
@@ -2100,7 +2100,7 @@ Hier volgt de F# code:
           address = employee?address }
 ```
 
-In dit voorbeeld heeft een `project.json` -bestand dat Hiermee geeft u de `FSharp.Interop.Dynamic` en `Dynamitey` NuGet-afhankelijkheden:
+In dit voor beeld is een `project.json`-bestand vereist waarin de `FSharp.Interop.Dynamic`-en `Dynamitey` NuGet-afhankelijkheden worden opgegeven:
 
 ```json
 {
@@ -2115,7 +2115,7 @@ In dit voorbeeld heeft een `project.json` -bestand dat Hiermee geeft u de `FShar
 }
 ```
 
-Om toe te voegen een `project.json` bestand, Zie [ F# van Pakketbeheer](functions-reference-fsharp.md#package).
+Zie [ F# Package Management](functions-reference-fsharp.md#package)om een `project.json` bestand toe te voegen.
 
 ### <a name="output---java-examples"></a>Uitvoer-Java-voor beelden
 
@@ -2147,7 +2147,7 @@ public String cosmosDbQueryById(
 
 #### <a name="http-trigger-save-one-document-to-database-via-return-value-java"></a>HTTP-trigger, een document opslaan in de data base via de retour waarde (Java)
 
-In ```@CosmosDBOutput``` het volgende voor beeld ziet u een Java-functie waarvan de hand tekening aantekeningen bevat en de ```String```retour waarde van het type heeft. Het JSON-document dat door de functie wordt geretourneerd, wordt automatisch naar de bijbehorende CosmosDB-verzameling geschreven.
+In het volgende voor beeld ziet u een Java-functie waarvan de hand tekening is voorzien van ```@CosmosDBOutput``` en de retour waarde van het type ```String```heeft. Het JSON-document dat door de functie wordt geretourneerd, wordt automatisch naar de bijbehorende CosmosDB-verzameling geschreven.
 
 ```java
     @FunctionName("WriteOneDoc")
@@ -2184,7 +2184,7 @@ In ```@CosmosDBOutput``` het volgende voor beeld ziet u een Java-functie waarvan
 
 #### <a name="http-trigger-save-one-document-to-database-via-outputbinding-java"></a>HTTP-trigger, een document opslaan in de data base via OutputBinding (Java)
 
-In het volgende voor beeld ziet u een Java-functie die een document schrijft ```OutputBinding<T>``` naar CosmosDB via een uitvoer parameter. Houd er rekening mee dat in deze instelling de ```outputItem``` para meter is waarmee u aantekeningen ```@CosmosDBOutput```moet maken, niet de functie handtekening. Met ```OutputBinding<T>``` kunt u gebruikmaken van de binding om het document naar CosmosDB te schrijven en tegelijkertijd een andere waarde te retour neren naar de functie aanroeper, zoals een JSON-of XML-document.
+In het volgende voor beeld ziet u een Java-functie die een document schrijft naar CosmosDB via een ```OutputBinding<T>``` output-para meter. Houd er rekening mee dat in deze installatie de para meter ```outputItem``` is die moet worden gekoppeld aan ```@CosmosDBOutput```, niet de functie handtekening. Met behulp van ```OutputBinding<T>``` kan uw functie profiteren van de binding om het document naar CosmosDB te schrijven terwijl er ook een andere waarde kan worden geretourneerd aan de functie aanroeper, zoals een JSON-of XML-document.
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -2228,7 +2228,7 @@ In het volgende voor beeld ziet u een Java-functie die een document schrijft ```
 
 #### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding-java"></a>HTTP-trigger, meerdere documenten opslaan in de data base via OutputBinding (Java)
 
-In het volgende voor beeld ziet u een Java-functie die meerdere documenten naar ```OutputBinding<T>``` CosmosDB schrijft via een uitvoer parameter. Houd er rekening mee dat in deze instelling de ```outputItem``` para meter is waarmee u aantekeningen ```@CosmosDBOutput```moet maken, niet de functie handtekening. De output- ```outputItem``` para meter heeft een lijst ```ToDoItem``` met objecten als het parameter type van de sjabloon. Met ```OutputBinding<T>``` kunt u uw functie gebruiken om te profiteren van de binding om de documenten te schrijven naar CosmosDB, terwijl u ook een andere waarde kunt retour neren naar de functie aanroeper, zoals een JSON-of XML-document.
+In het volgende voor beeld ziet u een Java-functie die meerdere documenten naar CosmosDB schrijft via een ```OutputBinding<T>``` uitvoer parameter. Houd er rekening mee dat in deze installatie de para meter ```outputItem``` is die moet worden gekoppeld aan ```@CosmosDBOutput```, niet de functie handtekening. De para meter output bevat ```outputItem``` een lijst met ```ToDoItem```-objecten als het parameter type van de sjabloon. Met behulp van ```OutputBinding<T>``` kan uw functie profiteren van de binding om de documenten te schrijven naar CosmosDB, terwijl ook een andere waarde kan worden geretourneerd aan de functie aanroeper, zoals een JSON-of XML-document.
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -2275,13 +2275,13 @@ In het volgende voor beeld ziet u een Java-functie die meerdere documenten naar 
     }
 ```
 
-Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@CosmosDBOutput` functies de aantekening voor para meters die worden geschreven naar Cosmos db.  Het parameter type van de aantekening moet zijn ```OutputBinding<T>```, waarbij T een systeem eigen Java-type of een POJO is.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBOutput` annotatie voor para meters die worden geschreven naar Cosmos db.  Het parameter type aantekening moet ```OutputBinding<T>```zijn, waarbij T een systeem eigen Java-type of een POJO is.
 
 ### <a name="output---python-examples"></a>Uitvoer-python-voor beelden
 
 In het volgende voor beeld ziet u hoe u een document naar een Azure CosmosDB-data base schrijft als uitvoer van een functie.
 
-De bindings definitie is gedefinieerd in *Function. json* waarbij *type* is ingesteld `cosmosDB`op.
+De bindings definitie is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `cosmosDB`.
 
 ```json
 {
@@ -2315,7 +2315,7 @@ De bindings definitie is gedefinieerd in *Function. json* waarbij *type* is inge
 }
 ```
 
-Als u naar de Data Base wilt schrijven, geeft u een `set` document object door aan de methode van de data base-para meter.
+Als u naar de Data Base wilt schrijven, geeft u een document object door aan de methode `set` van de para meter data base.
 
 ```python
 import azure.functions as func
@@ -2329,11 +2329,11 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Uitvoer - kenmerken
+## <a name="output---attributes"></a>Uitvoer kenmerken
 
 Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)het kenmerk [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
 
-De constructor van het kenmerk wordt de databasenaam en verzamelingsnaam. Zie voor meer informatie over deze instellingen en andere eigenschappen die u kunt configureren, [uitvoer - configuratie](#output---configuration). Hier volgt een `CosmosDB` kenmerk voorbeeld in een handtekeningmethode:
+De constructor van het kenmerk neemt de naam van de data base en de verzameling. Zie [uitvoer-configuratie](#output---configuration)voor meer informatie over deze instellingen en andere eigenschappen die u kunt configureren. Hier volgt een voor beeld van een `CosmosDB` kenmerk in een methode handtekening:
 
 ```csharp
     [FunctionName("QueueToDocDB")]
@@ -2347,42 +2347,42 @@ De constructor van het kenmerk wordt de databasenaam en verzamelingsnaam. Zie vo
 
 Zie voor een volledig voor beeld uitvoer- C# voor beeld.
 
-## <a name="output---configuration"></a>Uitvoer - configuratie
+## <a name="output---configuration"></a>Uitvoer-configuratie
 
-De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt in de *function.json* bestand en de `CosmosDB` kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het kenmerk `CosmosDB`.
 
-|de eigenschap Function.JSON | De kenmerkeigenschap |Description|
+|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**     || Moet worden ingesteld op `cosmosDB`.        |
 |**direction**     || Moet worden ingesteld op `out`.         |
-|**name**     || De naam van de bindingsparameter die het document in de functie vertegenwoordigt.  |
-|**databaseName** | **DatabaseName**|De database met de verzameling waarin het document wordt gemaakt.     |
-|**collectionName** |**collectionName**  | De naam van de verzameling waarin het document wordt gemaakt. |
-|**createIfNotExists**  |**createIfNotExists**    | Een Booleaanse waarde om aan te geven of de verzameling is gemaakt als deze nog niet bestaat. De standaardwaarde is *false* omdat nieuwe verzamelingen worden gemaakt met gereserveerde doorvoer, wat gevolgen heeft kosten. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.  |
-|**partitionKey**|**partitionKey** |Wanneer `CreateIfNotExists` is ingesteld op true, wordt het pad van de partitie voor de gemaakte verzameling gedefinieerd.|
-|**collectionThroughput**|**collectionThroughput**| Wanneer `CreateIfNotExists` is ingesteld op true, definieert de [doorvoer](../cosmos-db/set-throughput.md) van de gemaakte verzameling.|
-|**connectionStringSetting**    |**connectionStringSetting** |De naam van de app-instelling met daarin uw Azure Cosmos DB-verbindingsreeks.        |
+|**naam**     || De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
+|**databaseName** | **DatabaseName**|De data base met de verzameling waarin het document is gemaakt.     |
+|**collectionName** |**CollectionName**  | De naam van de verzameling waar het document wordt gemaakt. |
+|**createIfNotExists**  |**CreateIfNotExists**    | Een Booleaanse waarde die aangeeft of de verzameling wordt gemaakt wanneer deze niet bestaat. De standaard waarde is *False* omdat nieuwe verzamelingen worden gemaakt met gereserveerde door Voer, wat gevolgen heeft voor de kosten. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.  |
+|**partitionKey**|**PartitionKey** |Als `CreateIfNotExists` waar is, definieert het pad van de partitie sleutel voor de gemaakte verzameling.|
+|**collectionThroughput**|**CollectionThroughput**| Als `CreateIfNotExists` waar is, definieert de [door Voer](../cosmos-db/set-throughput.md) van de gemaakte verzameling.|
+|**connectionStringSetting**    |**ConnectionStringSetting** |De naam van de app-instelling met uw Azure Cosmos DB connection string.        |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>Uitvoer - gebruik
+## <a name="output---usage"></a>Uitvoer gebruik
 
-Wanneer u naar de output-parameter in de functie schrijft wordt een document standaard gemaakt in uw database. Dit document bevat een automatisch gegenereerde GUID als de document-ID. U kunt de document-ID van het uitvoerdocument opgeven door op te geven de `id` eigenschap in het JSON-object doorgegeven aan de output-parameter.
+Wanneer u in uw functie naar de uitvoer parameter schrijft, wordt er standaard een document gemaakt in uw data base. Dit document heeft een automatisch gegenereerde GUID als document-ID. U kunt de document-ID van het uitvoer document opgeven door de eigenschap `id` op te geven in het JSON-object dat wordt door gegeven aan de uitvoer parameter.
 
 > [!Note]
-> Wanneer u de ID van een bestaand document opgeeft, wordt deze overschreven door het nieuwe uitvoerdocument.
+> Wanneer u de ID van een bestaand document opgeeft, wordt dit overschreven door het nieuwe uitvoer document.
 
-## <a name="exceptions-and-return-codes"></a>Uitzonderingen en retourcodes
+## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding | Referentie |
+| Dwingen | Naslaginformatie |
 |---|---|
-| CosmosDB | [Foutcodes in CosmosDB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| CosmosDB | [CosmosDB-fout codes](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 <a name="host-json"></a>
 
-## <a name="hostjson-settings"></a>instellingen voor host.JSON
+## <a name="hostjson-settings"></a>instellingen voor de host. json
 
-In deze sectie beschrijft de globale configuratie-instellingen beschikbaar voor deze binding in versie 2.x. Voor meer informatie over globale configuratie-instellingen in versie 2.x, Zie [naslaginformatie over host.json voor Azure Functions versie 2.x](functions-host-json.md).
+In deze sectie worden de algemene configuratie-instellingen beschreven die beschikbaar zijn voor deze binding in versie 2. x. Zie voor meer informatie over globale configuratie-instellingen in versie 2. x [host. json Reference voor Azure functions versie 2. x](functions-host-json.md).
 
 ```json
 {
@@ -2399,16 +2399,16 @@ In deze sectie beschrijft de globale configuratie-instellingen beschikbaar voor 
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en`Gateway`|
-|Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
+|GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en `Gateway`|
+|Protocol|https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
 |leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over serverloze computing met Cosmos DB-database](../cosmos-db/serverless-computing-database.md)
-* [Meer informatie over Azure functions-triggers en bindingen](functions-triggers-bindings.md)
+* [Meer informatie over database computing zonder server met Cosmos DB](../cosmos-db/serverless-computing-database.md)
+* [Meer informatie over Azure functions-triggers en-bindingen](functions-triggers-bindings.md)
 
 <!---
 > [!div class="nextstepaction"]

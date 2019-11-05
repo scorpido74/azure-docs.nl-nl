@@ -6,17 +6,21 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 08/14/2019
-ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: d3779a2d48db82bfccdc0f047119a36ef56c3bdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555426"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477415"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Veelgestelde vragen over containers Azure Monitor
 
 Deze veelgestelde vragen over micro soft is een lijst met veelgestelde vragen over Azure Monitor voor containers. Als u aanvullende vragen over de oplossing hebt, gaat u naar het [discussie forum](https://feedback.azure.com/forums/34192--general-feedback) en plaatst u uw vragen. Wanneer een vraag regel matig wordt gesteld, voegen we deze toe aan dit artikel zodat het snel en eenvoudig kan worden gevonden.
+
+## <a name="can-i-view-metrics-collected-in-grafana"></a>Kan ik de metrische gegevens weer geven die zijn verzameld in Grafana?
+
+Azure Monitor voor containers biedt ondersteuning voor het weer geven van gegevens die zijn opgeslagen in uw Log Analytics-werk ruimte in Grafana-Dash boards. We hebben een sjabloon die u kunt downloaden uit de Grafana van het [dash board](https://grafana.com/grafana/dashboards?dataSource=grafana-azure-monitor-datasource&category=docker) van micro soft om u op weg te helpen en te verwijzen naar informatie over het uitvoeren van een query op extra gegevens van uw bewaakte clusters om te visualiseren in aangepaste Grafana Dash boards. 
 
 ## <a name="can-i-monitor-my-aks-engine-cluster-with-azure-monitor-for-containers"></a>Kan ik mijn AKS-engine-cluster bewaken met Azure Monitor voor containers?
 
@@ -72,20 +76,15 @@ Raadpleeg de volgende [github-koppeling](https://github.com/moby/moby/issues/229
 
 ## <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Hoe kan ik Azure AD-fouten oplossen wanneer ik live-logboeken inschakel? 
 
-Mogelijk wordt de volgende fout weer **gegeven: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: ' <-toepassings-ID \> '** . De oplossing om deze op te lossen vindt u in het artikel een [realtime weer gave van container logboeken met Azure monitor voor containers](container-insights-live-logs.md#configure-aks-with-azure-active-directory). 
+Mogelijk wordt de volgende fout weer **gegeven: de antwoord-URL die in de aanvraag is opgegeven, komt niet overeen met de antwoord-url's die zijn geconfigureerd voor de toepassing: ' <-toepassings-ID\>'** . De oplossing voor het oplossen hiervan vindt u in het artikel [informatie over container gegevens in realtime weer geven met Azure monitor voor containers](container-insights-livedata-setup.md#configure-ad-integrated-authentication). 
 
 ## <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Waarom kan ik het cluster niet upgraden na het onboarden?
 
 Als u Azure Monitor voor containers voor een AKS-cluster hebt ingeschakeld, verwijdert u de Log Analytics werk ruimte waarnaar de gegevens naar het cluster zijn verzonden bij het upgraden van het cluster. U kunt dit probleem omzeilen door de bewaking uit te scha kelen en vervolgens weer in te scha kelen naar een andere geldige werk ruimte in uw abonnement. Wanneer u de cluster upgrade opnieuw probeert uit te voeren, moet het proces worden uitgevoerd en voltooid.  
 
 ## <a name="which-ports-and-domains-do-i-need-to-openwhitelist-for-the-agent"></a>Welke poorten en domeinen heb ik nodig om de agent te openen/white list?
-- *. ods.opinsights.azure.com 443
-- *. oms.opinsights.azure.com 443
-- *. blob.core.windows.net 443
-- dc.services.visualstudio.com 443
-- *. microsoftonline.com 443
-- *. monitoring.azure.com 443
-- login.microsoftonline.com 443
+
+Zie de [netwerk firewall vereisten](container-insights-onboard.md#network-firewall-requirements) voor de proxy-en firewall configuratie-informatie die is vereist voor de container agent met Azure, Azure US Government en Azure China Clouds.
 
 ## <a name="next-steps"></a>Volgende stappen
 

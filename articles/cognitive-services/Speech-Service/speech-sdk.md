@@ -1,7 +1,7 @@
 ---
 title: Over de Speech SDK-Speech-Service
 titleSuffix: Azure Cognitive Services
-description: De speech Software Development Kit (SDK) biedt uw toepassingen systeem eigen toegang tot de functies van de spraak service, waardoor het eenvoudiger wordt om software te ontwikkelen. In dit artikel biedt aanvullende informatie over de SDK voor Windows, Linux- en Android.
+description: De speech Software Development Kit (SDK) biedt uw toepassingen systeem eigen toegang tot de functies van de spraak service, waardoor het eenvoudiger wordt om software te ontwikkelen. In dit artikel vindt u meer informatie over de SDK voor Windows, Linux en Android.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: ee505cc78c16d85640c7e13541272f1bafe30061
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800007"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468775"
 ---
 # <a name="about-the-speech-sdk"></a>Over de Speech SDK
 
@@ -25,15 +25,15 @@ De speech Software Development Kit (SDK) biedt uw toepassingen toegang tot de fu
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="get-the-sdk"></a>Download de SDK
+## <a name="get-the-sdk"></a>De SDK downloaden
 
 ### <a name="windows"></a>Windows
 
-Bij Windows, wordt de volgende talen ondersteund:
+Voor Windows ondersteunen we de volgende talen:
 
-* C#(UWP en .NET), C++: U kunt de meest recente versie van het Speech SDK NuGet-pakket raadplegen en gebruiken. Het pakket bevat 32-bits en 64-bits-clientbibliotheken en beheerde (.NET)-bibliotheken. De SDK kan worden geïnstalleerd in Visual Studio met behulp van NuGet. Zoeken naar **Microsoft.CognitiveServices.Speech**.
+* C#(UWP en .NET) C++: u kunt verwijzen naar en de meest recente versie van het Speech SDK NuGet-pakket gebruiken. Het pakket bevat 32-bits en 64-bits-client bibliotheken en beheerde (.NET) bibliotheken. De SDK kan worden geïnstalleerd in Visual Studio met behulp van NuGet. Zoek naar **micro soft. CognitiveServices. speech**.
 
-* Java: U kunt de meest recente versie van het Speech SDK maven-pakket raadplegen en gebruiken dat alleen Windows x64 ondersteunt. Voeg in uw Maven-project `https://csspeechstorage.blob.core.windows.net/maven/` als een aanvullende opslagplaats en een verwijzing `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` als een afhankelijkheid.
+* Java: u kunt naar de meest recente versie van het Speech SDK maven-pakket verwijzen en gebruiken, dat alleen Windows x64 ondersteunt. Voeg `https://csspeechstorage.blob.core.windows.net/maven/` in uw Maven-project als een extra opslag plaats toe en referentie `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` als een afhankelijkheid.
 
 ### <a name="linux"></a>Linux
 
@@ -59,49 +59,49 @@ sudo apt-get update
 sudo apt-get install libssl1.0.2 libasound2
 ```
 
-* C#: U kunt de meest recente versie van het Speech SDK NuGet-pakket raadplegen en gebruiken. Om te verwijzen naar de SDK, het volgende pakketverwijzing toevoegen aan uw project:
+* C#: U kunt de meest recente versie van het Speech SDK NuGet-pakket raadplegen en gebruiken. Als u wilt verwijzen naar de SDK, voegt u de volgende pakket verwijzing toe aan uw project:
 
   ```xml
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.7.0" />
   ```
 
-* Java: U kunt de meest recente versie van het Speech SDK maven-pakket raadplegen en gebruiken. Voeg in uw Maven-project `https://csspeechstorage.blob.core.windows.net/maven/` als een aanvullende opslagplaats en een verwijzing `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` als een afhankelijkheid.
+* Java: u kunt verwijzen naar en de meest recente versie van het Speech SDK maven-pakket gebruiken. Voeg `https://csspeechstorage.blob.core.windows.net/maven/` in uw Maven-project als een extra opslag plaats toe en referentie `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` als een afhankelijkheid.
 
-* C++: Down load de SDK als een [. tar-pakket](https://aka.ms/csspeech/linuxbinary) en pak de bestanden uit in een door u gewenste map. De volgende tabel bevat de SDK-mapstructuur:
+* C++: Down load de SDK als een [. tar-pakket](https://aka.ms/csspeech/linuxbinary) en pak de bestanden uit in een door u gewenste map. In de volgende tabel ziet u de structuur van de SDK:
 
-  |Pad|Description|
+  |Pad|Beschrijving|
   |-|-|
   |`license.md`|Licentie|
   |`ThirdPartyNotices.md`|Mededelingen van derden|
-  |`include`|Header-bestanden voor C en C++|
-  |`lib/x64`|Systeemeigen x64 bibliotheek voor het koppelen met uw toepassing|
-  |`lib/x86`|Systeemeigen x86 bibliotheek voor het koppelen met uw toepassing|
+  |`include`|Header bestanden voor C enC++|
+  |`lib/x64`|Systeem eigen x64-bibliotheek voor koppeling met uw toepassing|
+  |`lib/x86`|Systeem eigen x86-bibliotheek voor koppeling met uw toepassing|
 
-  Voor het maken van een toepassing, kopiëren of verplaatsen van de vereiste binaire bestanden (en -bibliotheken) in uw ontwikkelomgeving. Deze waar nodig in uw build-proces opnemen.
+  Als u een toepassing wilt maken, kopieert of verplaatst u de vereiste binaire bestanden (en bibliotheken) naar uw ontwikkel omgeving. Neem deze op als vereist in uw bouw proces.
 
 ### <a name="android"></a>Android
 
-De Java SDK voor Android is verpakt als een [Aar (Android-bibliotheek)](https://developer.android.com/studio/projects/android-library), waaronder de benodigde bibliotheken en de vereiste Android-machtigingen. Deze wordt gehost in een Maven-opslagplaats op `https://csspeechstorage.blob.core.windows.net/maven/` als pakket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
+De Java SDK voor Android is verpakt als een [Aar (Android-bibliotheek)](https://developer.android.com/studio/projects/android-library), waaronder de benodigde bibliotheken en de vereiste Android-machtigingen. Het wordt gehost in een Maven-opslag plaats op `https://csspeechstorage.blob.core.windows.net/maven/` als pakket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`.
 
-Het pakket van uw Android Studio-project gebruiken, moet u de volgende wijzigingen aanbrengen:
+Als u het pakket wilt gebruiken uit uw Android Studio project, voert u de volgende wijzigingen uit:
 
-* In het niveau van het project build.gradle-bestand, het volgende toevoegen aan de `repository` sectie:
+* Voeg in het bestand build. gradle van project niveau het volgende toe aan de sectie `repository`:
 
   ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
-* In de module op serverniveau build.gradle-bestand, het volgende toevoegen aan de `dependencies` sectie:
+* Voeg in het bestand build. gradle van module niveau het volgende toe aan de sectie `dependencies`:
 
   ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
   ```
 
-De Java-SDK is ook deel uit van de [spraak Devices SDK](speech-devices-sdk.md).
+De Java SDK maakt ook deel uit van de [SDK voor spraak apparaten](speech-devices-sdk.md).
 
 [!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-* [Zie voor het herkennen van gesproken tekst in C#](quickstart-csharp-dotnet-windows.md)
+* [Zie spraak herkennen inC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

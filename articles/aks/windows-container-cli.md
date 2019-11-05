@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: ff4367194f06a8a6895c9c16252b01c3b94995d3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241256"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472509"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Voor beeld: een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van de Azure CLI
 
@@ -69,7 +69,7 @@ Het duurt enkele minuten voordat de registratie is voltooid. Controleer de regis
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/WindowsPreview')].{Name:name,State:properties.state}"
 ```
 
-Wanneer de registratie status `Registered` is, drukt u op CTRL-C om de status van de controle te stoppen.  Vernieuw vervolgens de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster][az-provider-register] :
+Wanneer de registratie status is `Registered`, drukt u op CTRL-C om de status van de controle te stoppen.  Vernieuw vervolgens de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster][az-provider-register] :
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -79,7 +79,6 @@ az provider register --namespace Microsoft.ContainerService
 
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor meerdere knooppunt groepen:
 
-* Er zijn meerdere knooppunt groepen beschikbaar voor clusters die zijn gemaakt nadat u de *WindowsPreview*hebt geregistreerd. Er zijn ook meerdere knooppunt groepen beschikbaar als u de *MultiAgentpoolPreview* -functie voor uw abonnement registreert. U kunt geen knooppunt groepen toevoegen of beheren met een bestaand AKS-cluster dat is gemaakt voordat deze functie is geregistreerd.
 * U kunt de eerste knooppunt groep niet verwijderen.
 
 Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepassing:
@@ -92,7 +91,7 @@ Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepas
 
 Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden de meta gegevens van de resource groep opgeslagen, maar ook de resources die in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resource groep met de opdracht [AZ Group Create][az-group-create] .
 
-In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS Oost*.
 
 > [!NOTE]
 > In dit artikel wordt gebruikgemaakt van de bash-syntaxis voor de opdrachten in deze zelf studie.
@@ -141,7 +140,8 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
     --network-plugin azure
 ```
 
@@ -175,7 +175,7 @@ Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kub
 az aks install-cli
 ```
 
-Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

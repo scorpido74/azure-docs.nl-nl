@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 17dd4862a02a736237257c50802135fb62883d77
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: c51af15d2334e873c8c7c399322fbd1279de3784
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200613"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468187"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>Gebruikers en rollen beheren in uw IoT Central-toepassing (preview-functies)
 
@@ -95,18 +95,18 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Beheer | Weergeven <br/> Andere afhankelijkheden: instanties van apparaten weer geven  |
+| Weergave | Geen     |
+| Beheren | Weergave <br/> Andere afhankelijkheden: instanties van apparaten weer geven  |
 | Volledig beheer | Weer geven, beheren <br/> Andere afhankelijkheden: instanties van apparaten weer geven |
 
 **Machtigingen voor apparaatexemplaar**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven |
-| Bijwerken | Weergeven <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
-| Create | Weergeven <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
-| Verwijderen | Weergeven <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
+| Weergave | Geen <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven |
+| Update | Weergave <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
+| Maken | Weergave <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
+| Verwijderen | Weergave <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
 | Opdrachten uitvoeren | Bijwerken, weer geven <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen, opdrachten uitvoeren <br/> Andere afhankelijkheden: Device-sjablonen en apparaatgroepen weer geven  |
 
@@ -114,10 +114,10 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven |
-| Bijwerken | Weergeven <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven   |
-| Create | Weer geven, bijwerken <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven   |
-| Verwijderen | Weergeven <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven   |
+| Weergave | Geen <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven |
+| Update | Weergave <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven   |
+| Maken | Weer geven, bijwerken <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven   |
+| Verwijderen | Weergave <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven   |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen <br/> Andere afhankelijkheden: Apparaatbeheer en instanties van apparaten weer geven |
 
 **Machtigingen voor connectiviteits beheer voor apparaten**
@@ -134,21 +134,21 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
-| Bijwerken | Weergeven <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
-| Create | Weer geven, bijwerken <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
-| Verwijderen | Weergeven <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
-| Uitvoeren | Weergeven <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen; Exemplaren van apparaten bijwerken; Opdrachten uitvoeren op instanties van apparaten |
+| Weergave | Geen <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
+| Update | Weergave <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
+| Maken | Weer geven, bijwerken <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
+| Verwijderen | Weergave <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen |
+| Uitvoeren | Weergave <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen; Exemplaren van apparaten bijwerken; Opdrachten uitvoeren op instanties van apparaten |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen, uitvoeren <br/> Andere afhankelijkheden: Apparaatinstellingen weer geven, exemplaren van apparaten en apparaatgroepen; Exemplaren van apparaten bijwerken; Opdrachten uitvoeren op instanties van apparaten |
 
 **Machtigingen voor regels**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
-| Bijwerken | Weergeven <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
-| Create | Weer geven, bijwerken <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
-| Verwijderen | Weergeven <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
+| Weergave | Geen <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
+| Update | Weergave <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
+| Maken | Weer geven, bijwerken <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
+| Verwijderen | Weergave <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen <br/> Andere afhankelijkheden: Apparaatbeheer weer geven |
 
 #### <a name="managing-the-app"></a>De app beheren
@@ -157,26 +157,26 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Bijwerken | Weergeven   |
-| Exemplaar | Weergeven <br/> Andere afhankelijkheden: Device-sjablonen weer geven, instanties van apparaten, apparaatgroepen, Dash boards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
-| Verwijderen | Weergeven   |
+| Weergave | Geen     |
+| Update | Weergave   |
+| Exemplaar | Weergave <br/> Andere afhankelijkheden: Device-sjablonen weer geven, instanties van apparaten, apparaatgroepen, Dash boards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
+| Verwijderen | Weergave   |
 | Volledig beheer | Weer geven, bijwerken, kopiëren, verwijderen <br/> Andere afhankelijkheden: Device-sjablonen weer geven, apparaatgroepen, toepassings dashboards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
 
 **Export machtigingen voor de toepassings sjabloon**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Exporteren | Weergeven <br/> Andere afhankelijkheden: Device-sjablonen weer geven, instanties van apparaten, apparaatgroepen, Dash boards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
+| Weergave | Geen     |
+| Exporteren | Weergave <br/> Andere afhankelijkheden: Device-sjablonen weer geven, instanties van apparaten, apparaatgroepen, Dash boards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
 | Volledig beheer | Weer geven, exporteren <br/> Andere afhankelijkheden: Device-sjablonen weer geven, apparaatgroepen, toepassings dashboards, gegevens exporteren, huis stijl, Help-koppelingen, aangepaste rollen, regels |
 
 **Facturerings machtigingen**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Beheer | Geen     |
-| Volledig beheer | Beheer |
+| Beheren | Geen     |
+| Volledig beheer | Beheren |
 
 #### <a name="managing-users-and-roles"></a>Gebruikers en rollen beheren
 
@@ -184,19 +184,19 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen |
-| Bijwerken | Weergeven |
-| Create | Weer geven, bijwerken |
-| Verwijderen | Weergeven |
+| Weergave | Geen |
+| Update | Weergave |
+| Maken | Weer geven, bijwerken |
+| Verwijderen | Weergave |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen |
 
 **Machtigingen voor gebruikers beheer**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
-| Toevoegen | Weergeven <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
-| Verwijderen | Weergeven <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
+| Weergave | Geen <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
+| Toevoegen | Weergave <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
+| Verwijderen | Weergave <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
 | Volledig beheer | Weer geven, toevoegen, verwijderen <br/> Andere afhankelijkheden: aangepaste rollen weer geven |
 
 > [!NOTE]
@@ -208,36 +208,36 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Bijwerken | Weergeven   |
-| Create | Weer geven, bijwerken |
-| Verwijderen | Weergeven   |
+| Weergave | Geen     |
+| Update | Weergave   |
+| Maken | Weer geven, bijwerken |
+| Verwijderen | Weergave   |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen |
 
 **Machtigingen voor persoonlijke Dash boards**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Bijwerken | Weergeven   |
-| Create | Weer geven, bijwerken   |
-| Verwijderen | Weergeven   |
+| Weergave | Geen     |
+| Update | Weergave   |
+| Maken | Weer geven, bijwerken   |
+| Verwijderen | Weergave   |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen |
 
 **Machtigingen voor huis stijl, favicon en kleuren**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Bijwerken | Weergeven   |
+| Weergave | Geen     |
+| Update | Weergave   |
 | Volledig beheer | Weer geven, bijwerken |
 
 **Machtigingen voor Help links**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Bijwerken | Weergeven   |
+| Weergave | Geen     |
+| Update | Weergave   |
 | Volledig beheer | Weer geven, bijwerken |
 
 #### <a name="extending-the-app"></a>De app uitbreiden
@@ -246,21 +246,21 @@ Wanneer u een aangepaste rol definieert, kiest u de set machtigingen die een geb
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Bijwerken | Weergeven   |
-| Create | Weer geven, bijwerken  |
-| Verwijderen | Weergeven   |
+| Weergave | Geen     |
+| Update | Weergave   |
+| Maken | Weer geven, bijwerken  |
+| Verwijderen | Weergave   |
 | Volledig beheer | Weer geven, bijwerken, maken, verwijderen |
 
 **API-token machtigingen**
 
 | Naam | Afhankelijkheden |
 | ---- | -------- |
-| Weergeven | Geen     |
-| Create | Weergeven   |
-| Verwijderen | Weergeven   |
+| Weergave | Geen     |
+| Maken | Weergave   |
+| Verwijderen | Weergave   |
 | Volledig beheer | Weer geven, maken, verwijderen |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u gebruikers en rollen in uw Azure IoT Central-toepassing kunt beheren, is de voorgestelde volgende stap om te leren hoe u [uw factuur beheert](/howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Nu u hebt geleerd hoe u gebruikers en rollen in uw Azure IoT Central-toepassing kunt beheren, is de voorgestelde volgende stap om te leren hoe u [uw factuur beheert](howto-view-bill-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).

@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Doel intentie met REST-Api's-LUIS"
+title: "Quick Start: profiteren van intenties met REST-Api's-LUIS"
 titleSuffix: Azure Cognitive Services
 description: Gebruik in deze REST API Snelstartgids een beschik bare open bare LUIS-app om de bedoeling van een gebruiker te bepalen op basis van de conversatie tekst.
 services: cognitive-services
@@ -9,19 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: f3eceed1c4ab06d9b7a1959bceda4122f0412b35
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 3a8badb74bb8919876f3c0670d785f44fbcbb397
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703158"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499693"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Quickstart: Doel intentie met REST-Api's
+# <a name="quickstart-get-intent-with-rest-apis"></a>Quick Start: profiteren van de bedoeling van REST-Api's
 
-[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+In deze snelstart gebruikt u een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst. Verzend de intentie van de gebruiker als tekst naar het HTTP-voorspellingseindpunt van de openbare app. Bij het eindpunt wordt via LUIS het model van de openbare app toegepast om de betekenis van tekst in natuurlijke taal te analyseren. Hiermee wordt de algehele intentie bepaald en worden gegevens geëxtraheerd die relevant zijn voor het onderwerpdomein van de app. 
+
+Deze snelstart gebruikt het REST-API-eindpunt. Zie voor meer informatie de [documentatie bij de eindpunt-API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78).
+
+Voor dit artikel hebt u een gratis [LUIS](https://www.luis.ai)-account nodig. 
 
 <a name="create-luis-subscription-key"></a>
 

@@ -1,5 +1,5 @@
 ---
-title: Overheids oplossingen bouwen met Azure IoT Central
+title: Oplossingen voor de overheid bouwen met Azure IoT Central
 description: Meer informatie over het bouwen van Smart City-oplossingen met behulp van Azure IoT Central-toepassings sjablonen.
 author: miriambrus
 ms.author: miriamb
@@ -7,14 +7,14 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 02918df348414058d176246da5c2d0f14df7b405
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026646"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464079"
 ---
-# <a name="building-government-solutions-with-azure-iot-central"></a>Overheids oplossingen bouwen met Azure IoT Central
+# <a name="building-government-solutions-with-azure-iot-central"></a>Oplossingen voor de overheid bouwen met Azure IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -79,5 +79,5 @@ Aan de slag met de [zelf studie voor de gekoppelde afval beheer toepassing](./tu
 * Meer informatie over de [bewakings concepten voor water kwaliteit](./concepts-waterqualitymonitoring-architecture.md)
 * Meer informatie over de [bewakings concepten water verbruik](./concepts-waterconsumptionmonitoring-architecture.md)
 * Meer informatie over de [beginselen van verbonden afval beheer](./concepts-connectedwastemanagement-architecture.md)  
-* Zie [overzicht IOT Central](https://docs.microsoft.com/azure/iot-central/overview-iot-central) voor meer informatie over IOT Central
+* Zie [overzicht IOT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) voor meer informatie over IOT Central
  

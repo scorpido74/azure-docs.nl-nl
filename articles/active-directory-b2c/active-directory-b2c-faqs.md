@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
-ms.translationtype: MT
+ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302537"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468939"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
@@ -35,9 +35,9 @@ Azure AD B2C kan niet worden gebruikt om gebruikers te verifiëren voor Microsof
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Wat zijn lokale accounts in Azure AD B2C? Wat zijn de verschillen tussen werk-of school accounts in azure AD?
 
-In een Azure AD-Tenant hebben gebruikers die deel uitmaken van de Tenant aanmelden met een e-mail adres van het formulier `<xyz>@<tenant domain>`. De `<tenant domain>` is een van de geverifieerde domeinen in de Tenant of het eerste `<...>.onmicrosoft.com` domein. Dit type account is een werk-of school account.
+In een Azure AD-Tenant hebben gebruikers die deel uitmaken van de aanmelding van de Tenant met een e-mail adres van het formulier `<xyz>@<tenant domain>`. De `<tenant domain>` is een van de geverifieerde domeinen in de Tenant of het oorspronkelijke `<...>.onmicrosoft.com` domein. Dit type account is een werk-of school account.
 
-In een Azure AD B2C-Tenant willen de meeste apps zich aanmelden met een wille keurig e-mail adres (bijvoorbeeld joe@comcast.net, bob@gmail.com, sarah@contoso.com of jim@live.com). Dit type account is een lokaal account. We ondersteunen ook wille keurige gebruikers namen als lokale accounts (bijvoorbeeld Joe, Bob, Sarah of Jim). U kunt een van deze twee lokale account typen kiezen bij het configureren van id-providers voor Azure AD B2C in de Azure Portal. Selecteer in uw Azure AD B2C-Tenant de optie **id-providers**, selecteer **lokaal account**en selecteer vervolgens **gebruikers naam**.
+In een Azure AD B2C-Tenant willen de meeste apps zich aanmelden met een wille keurig e-mail adres (bijvoorbeeld joe@comcast.net, bob@gmail.com, sarah@contoso.comof jim@live.com). Dit type account is een lokaal account. We ondersteunen ook wille keurige gebruikers namen als lokale accounts (bijvoorbeeld Joe, Bob, Sarah of Jim). U kunt een van deze twee lokale account typen kiezen bij het configureren van id-providers voor Azure AD B2C in de Azure Portal. Selecteer in uw Azure AD B2C-Tenant de optie **id-providers**, selecteer **lokaal account**en selecteer vervolgens **gebruikers naam**.
 
 Gebruikers accounts voor toepassingen moeten altijd worden gemaakt via een gebruikers stroom voor registratie, registratie of aanmelding, of met behulp van de Azure AD-Graph API. Gebruikers accounts die zijn gemaakt in de Azure Portal worden alleen gebruikt voor het beheer van de Tenant.
 
@@ -130,15 +130,20 @@ Momenteel niet. Deze functie is op ons plan. Als u uw domein verifieert op het t
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Mijn Azure AD B2C Tenant Hoe kan ik verwijderen?
 
-Voer de volgende stappen uit om uw Azure AD B2C-Tenant te verwijderen:
+Volg deze stappen om uw Azure AD B2C-Tenant te verwijderen.
 
+U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (Unified app-registraties)** gebruiken. Meer [informatie over de preview-ervaring](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als *abonnements beheerder*. Gebruik hetzelfde werk-of school account of hetzelfde Microsoft-account dat u hebt gebruikt om u aan te melden voor Azure.
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
 1. Verwijder alle **gebruikers stromen (beleids regels)** in uw Azure AD B2C-Tenant.
 1. Verwijder alle **toepassingen** die u hebt geregistreerd in uw Azure AD B2C-Tenant.
-1. Meld u vervolgens aan bij de [Azure Portal](https://portal.azure.com/) als abonnements beheerder. Gebruik hetzelfde werk-of school account of hetzelfde Microsoft-account dat u hebt gebruikt om u aan te melden voor Azure.
-1. Schakel over naar de Azure AD B2C-Tenant die u wilt verwijderen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Onder **Beheren**, selecteer **Gebruikers**.
-1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de abonnements beheerder die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
+1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de *abonnements beheerder* die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
 1. Selecteer onder **beheren**de optie **App-registraties** (of **app-registraties (verouderd)** ).
 1. Selecteer **alle toepassingen weer geven**
 1. Selecteer de toepassing met de naam **B2C-Extensions-app**, selecteer **verwijderen**en selecteer vervolgens **Ja** wanneer u hierom wordt gevraagd.
@@ -149,6 +154,28 @@ Voer de volgende stappen uit om uw Azure AD B2C-Tenant te verwijderen:
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als *abonnements beheerder*. Gebruik hetzelfde werk-of school account of hetzelfde Microsoft-account dat u hebt gebruikt om u aan te melden voor Azure.
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Verwijder alle **gebruikers stromen (beleids regels)** in uw Azure AD B2C-Tenant.
+1. Selecteer **app-registraties (preview)** en selecteer vervolgens het tabblad **alle toepassingen** .
+1. Alle toepassingen verwijderen die u hebt geregistreerd.
+1. Verwijder de **B2C-Extensions-app**.
+1. Onder **Beheren**, selecteer **Gebruikers**.
+1. Selecteer elke gebruiker op zijn beurt (sluit de gebruikers van de *abonnements beheerder* die u momenteel bent aangemeld als). Selecteer **verwijderen** onder aan de pagina en selecteer **Ja** wanneer u hierom wordt gevraagd.
+1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
+1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
+1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
+1. Selecteer onder **beheren**de optie **Eigenschappen**
+1. Selecteer onder **toegangs beheer voor Azure-resources**de optie **Ja**en selecteer vervolgens **Opslaan**.
+1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
+1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
+1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
+
+* * *
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Kan ik Azure AD B2C krijgen als onderdeel van ENTER prise Mobility Suite?
 

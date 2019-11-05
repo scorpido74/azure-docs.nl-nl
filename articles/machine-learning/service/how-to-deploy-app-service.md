@@ -10,14 +10,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b0d7286d96d2fbfa35eb7ce9079413dfd186288c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034601"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496956"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Meer informatie over het implementeren van een model van Azure Machine Learning als een web-app in Azure App Service.
 
@@ -28,7 +29,7 @@ Met Azure Machine Learning kunt u docker-installatie kopieën maken op basis van
 
 * Geavanceerde [verificatie](/azure/app-service/configure-authentication-provider-aad) voor verbeterde beveiliging. Verificatie methoden zijn zowel Azure Active Directory als multi-factor Authentication.
 * [Automatisch schalen](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) zonder opnieuw te hoeven implementeren.
-* [SSL-ondersteuning](/azure/app-service/app-service-web-ssl-cert-load) voor beveiligde communicatie tussen clients en de service.
+* [SSL-ondersteuning](/azure/app-service/configure-ssl-certificate-in-code) voor beveiligde communicatie tussen clients en de service.
 
 Zie [app service-overzicht](/azure/app-service/overview)voor meer informatie over de functies van Azure app service.
 
@@ -38,19 +39,19 @@ Zie [app service-overzicht](/azure/app-service/overview)voor meer informatie ove
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
-* De [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Een getraind machine learning model dat is geregistreerd in uw werk ruimte. Als u geen model hebt, gebruikt u de [zelf studie voor installatie kopie classificatie: Train model](tutorial-train-models-with-aml.md) om er een te trainen en te registreren.
 
     > [!IMPORTANT]
     > In de code fragmenten in dit artikel wordt ervan uitgegaan dat u de volgende variabelen hebt ingesteld:
     >
-    > * `ws`-Uw Azure Machine Learning-werk ruimte.
-    > * `model`-Het geregistreerde model dat wordt geïmplementeerd.
-    > * `inference_config`-De configuratie voor het afwachten van het model.
+    > * `ws`-uw Azure Machine Learning-werk ruimte.
+    > * `model`-het geregistreerde model dat wordt geïmplementeerd.
+    > * `inference_config`-de configuratie voor het afwachten van het model.
     >
     > Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
-## <a name="prepare-for-deployment"></a>Voorbereiden voor implementatie
+## <a name="prepare-for-deployment"></a>Implementatie voorbereiden
 
 Voordat u implementeert, moet u definiëren wat er nodig is om het model als een webservice uit te voeren. In de volgende lijst worden de basis items beschreven die nodig zijn voor een implementatie:
 
@@ -64,7 +65,7 @@ Voordat u implementeert, moet u definiëren wat er nodig is om het model als een
     > [!IMPORTANT]
     > De Azure Machine Learning SDK biedt geen manier om toegang te krijgen tot uw Data Store-of gegevens sets via de webservice. Als u het geïmplementeerde model nodig hebt om toegang te krijgen tot gegevens die buiten de implementatie zijn opgeslagen, zoals in een Azure Storage-account, moet u een oplossing voor aangepaste code ontwikkelen met behulp van de relevante SDK. Bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python).
     >
-    > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch](how-to-run-batch-predictions.md)voorspellingen. Dit biedt ook toegang tot gegevens opslag in de score.
+    > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch voorspellingen](how-to-run-batch-predictions.md). Dit biedt ook toegang tot gegevens opslag in de score.
 
     Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
 
@@ -99,7 +100,7 @@ Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.
 Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure App Service, gebruikt u [model. package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). Het volgende code fragment laat zien hoe u een nieuwe installatie kopie kunt bouwen op basis van het model en de configuratie voor het afwijzen van de afleiding:
 
 > [!NOTE]
-> In het code fragment wordt ervan `model` uitgegaan dat het een geregistreerd model `inference_config` bevat en dat de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
+> In het code fragment wordt ervan uitgegaan dat `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
 ```python
 from azureml.core import Model
@@ -110,14 +111,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package:<imagename>`. Bijvoorbeeld `myml08024f78fd10.azurecr.io/package:20190827151241`.
+Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package:<imagename>`. Bijvoorbeeld `myml08024f78fd10.azurecr.io/package:20190827151241`.
 
 > [!IMPORTANT]
 > Sla de locatie gegevens op, zoals deze worden gebruikt bij het implementeren van de installatie kopie.
 
 ## <a name="deploy-image-as-a-web-app"></a>Een installatie kopie implementeren als een web-app
 
-1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervangen `<acrinstance>` door de waarde die `package.location`eerder is geretourneerd door: 
+1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<acrinstance>` door de waarde van `package.location`die u eerder hebt geretourneerd: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -150,12 +151,12 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    In dit voor beeld wordt een __basis__ prijs categorie`--sku B1`() gebruikt.
+    In dit voor beeld wordt een __basis__ prijs categorie (`--sku B1`) gebruikt.
 
     > [!IMPORTANT]
-    > Installatie kopieën die zijn gemaakt door Azure machine learning Linux gebruiken, dus u `--is-linux` moet de para meter gebruiken.
+    > Installatie kopieën die zijn gemaakt door Azure Machine Learning Linux gebruiken, dus u moet de `--is-linux`-para meter gebruiken.
 
-1. Gebruik de volgende opdracht om de web-app te maken. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` `package.location` en `<imagename>` door de waarden die eerder zijn geretourneerd:
+1. Gebruik de volgende opdracht om de web-app te maken. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden van de geretourneerde `package.location` eerder:
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
@@ -184,7 +185,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     > [!IMPORTANT]
     > Op dit moment is de web-app gemaakt. Omdat u echter niet de referenties hebt ingevoerd voor de Azure Container Registry die de installatie kopie bevat, is de web-app niet actief. In de volgende stap geeft u de verificatie gegevens voor het container register op.
 
-1. Gebruik de volgende opdracht om de web-app te voorzien van de referenties die nodig zijn voor toegang tot het container register. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` `package.location` en `<imagename>` door de waarden die eerder zijn geretourneerd. Vervang `<username>` en`<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
+1. Gebruik de volgende opdracht om de web-app te voorzien van de referenties die nodig zijn voor toegang tot het container register. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden van `package.location` eerder zijn geretourneerd. Vervang `<username>` en `<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -230,7 +231,7 @@ Op dit moment begint de web-app met het laden van de installatie kopie.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Zodra de afbeelding is geladen en de site actief is, wordt in het logboek een bericht weer gegeven `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`waarin staat vermeld.
+> Zodra de afbeelding is geladen en de site actief is, wordt in het logboek een bericht weer gegeven met de status `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`.
 
 Als de installatie kopie eenmaal is geïmplementeerd, kunt u de hostnaam vinden met behulp van de volgende opdracht:
 
@@ -238,7 +239,7 @@ Als de installatie kopie eenmaal is geïmplementeerd, kunt u de hostnaam vinden 
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Deze opdracht retourneert informatie die lijkt op de volgende hostnaam `<app-name>.azurewebsites.net`:. Gebruik deze waarde als onderdeel van de __basis-URL__ voor de service.
+Deze opdracht retourneert informatie die lijkt op de volgende hostnaam-`<app-name>.azurewebsites.net`. Gebruik deze waarde als onderdeel van de __basis-URL__ voor de service.
 
 ## <a name="use-the-web-app"></a>De web-app gebruiken
 
@@ -267,6 +268,6 @@ print(response.json())
 
 * Meer informatie over het configureren van uw web-app in de documentatie [over app service in Linux](/azure/app-service/containers/) .
 * Meer informatie over schalen vindt u in aan de [slag met automatisch schalen in azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* [Gebruik een SSL-certificaat in uw Azure app service](/azure/app-service/app-service-web-ssl-cert-load).
+* [Gebruik een SSL-certificaat in uw Azure app service](/azure/app-service/configure-ssl-certificate-in-code).
 * [Configureer uw app service-app voor het gebruik van Azure Active Directory aanmelden](/azure/app-service/configure-authentication-provider-aad).
-* [Een ML-Model dat is geïmplementeerd als een webservice gebruiken](how-to-consume-web-service.md)
+* [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)

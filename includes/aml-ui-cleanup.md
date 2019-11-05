@@ -7,16 +7,16 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 10/16/2019
-ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5a66212122745d0f4426e48e9487e9d674cec53f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692428"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489982"
 ---
 >[!IMPORTANT]
->U kunt de resources die u hebt gemaakt als vereisten voor andere Azure Machine Learning service-zelf studies en procedures voor artikelen gebruiken.
+>U kunt de resources die u hebt gemaakt als vereisten voor andere Azure Machine Learning zelf studies en artikelen met instructies gebruiken.
 
 ### <a name="delete-everything"></a>Alles verwijderen
 
@@ -32,7 +32,7 @@ Als u niet van plan bent om iets te gebruiken dat u hebt gemaakt, verwijdert u d
 
 1. Selecteer **Resourcegroep verwijderen**.
 
-Als u de resource groep verwijdert, worden ook alle resources verwijderd die u hebt gemaakt in de visuele interface.  
+Als u de resource groep verwijdert, worden ook alle resources die u in de ontwerp functie hebt gemaakt, verwijderd.  
 
 ### <a name="delete-only-the-compute-target"></a>Alleen het reken doel verwijderen
 
@@ -48,6 +48,12 @@ Het reken doel dat u hier hebt gemaakt, wordt *automatisch geschaald* naar nul k
 
 ### <a name="delete-individual-assets"></a>Afzonderlijke assets verwijderen
 
-In de visuele interface waar u uw experiment hebt gemaakt, verwijdert u afzonderlijke assets door ze te selecteren en vervolgens de knop **verwijderen** te selecteren. U kunt de registratie van gegevens sets ongedaan maken in uw werk ruimte door elke gegevensset te selecteren en **registratie verwijderen**te selecteren.
+In de ontwerp functie waar u uw experiment hebt gemaakt, verwijdert u afzonderlijke assets door ze te selecteren en vervolgens de knop **verwijderen** te selecteren.
 
 ![Assets verwijderen](./media/aml-ui-cleanup/delete-asset.png)
+
+U kunt de registratie van gegevens sets ongedaan maken in uw werk ruimte door elke gegevensset te selecteren en **registratie verwijderen**te selecteren.
+
+![Registratie van gegevensset opheffen](./media/aml-ui-cleanup/unregister-dataset.png)
+
+

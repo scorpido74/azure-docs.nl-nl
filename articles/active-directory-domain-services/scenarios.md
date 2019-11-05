@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6f81bc2ccf11cbcc3621dc1149879864c88cf0cf
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980505"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474434"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Veelvoorkomend gebruik: cases en scenario's voor Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP en Kerberos/NTLM-verificatie. Azure AD DS is geïntegreerd met uw bestaande Azure AD-Tenant, waardoor gebruikers zich kunnen aanmelden met hun bestaande referenties. U gebruikt deze domein Services zonder dat u domein controllers in de Cloud hoeft te implementeren, beheren en te patchen. Dit biedt een soepelere lift-en-verschuiving van on-premises resources naar Azure.
+Azure Active Directory Domain Services (Azure AD DS) biedt beheerde domein Services, zoals domein deelname, groeps beleid, LDAP (Lightweight Directory Access Protocol) en Kerberos/NTLM-verificatie. Azure AD DS is geïntegreerd met uw bestaande Azure AD-Tenant, waardoor gebruikers zich kunnen aanmelden met hun bestaande referenties. U gebruikt deze domein Services zonder dat u domein controllers in de Cloud hoeft te implementeren, beheren en te patchen. Dit biedt een soepelere lift-en-verschuiving van on-premises resources naar Azure.
 
 In dit artikel vindt u een overzicht van een aantal algemene bedrijfs scenario's waarbij Azure AD DS een waarde biedt en aan die behoeften voldoet.
 
@@ -28,11 +28,11 @@ In dit artikel vindt u een overzicht van een aantal algemene bedrijfs scenario's
 
 Als u één set AD-referenties wilt gebruiken, kunnen virtuele Azure-machines (Vm's) worden toegevoegd aan een door Azure AD DS beheerd domein. Deze aanpak vermindert problemen met het beheer van referenties, zoals het onderhouden van lokale beheerders accounts op elke virtuele machine of het scheiden van accounts en wacht woorden tussen omgevingen.
 
-Vm's die zijn gekoppeld aan een door Azure AD DS beheerd domein kunnen ook worden beheerd en beveiligd met behulp van groepsbeleid. Vereiste beveiligings basislijnen kunnen worden toegepast op Vm's om ze te vergren delen in overeenstemming met de beveiligings richtlijnen van het bedrijf. U kunt bijvoorbeeld de mogelijkheden van groeps beleids beheer gebruiken om de typen toepassingen te beperken die kunnen worden gestart op de virtuele machine.
+Vm's die zijn gekoppeld aan een door Azure AD DS beheerd domein kunnen ook worden beheerd en beveiligd met groeps beleid. Vereiste beveiligings basislijnen kunnen worden toegepast op Vm's om ze te vergren delen in overeenstemming met de beveiligings richtlijnen van het bedrijf. U kunt bijvoorbeeld de mogelijkheden van groeps beleids beheer gebruiken om de typen toepassingen te beperken die kunnen worden gestart op de virtuele machine.
 
 ![Gestroomlijnd beheer van virtuele Azure-machines](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-Laten we eens kijken naar een gemeen schappelijk voorbeeld scenario. Als servers en andere infra structuur het einde van de levens duur bereiken, wil Contoso toepassingen die momenteel on-premises worden gehost, verplaatsen naar de Cloud. Het huidige IT-standaard mandaat dat servers die bedrijfs toepassingen hosten, moeten lid zijn van een domein en worden beheerd met groeps beleid. De IT-beheerder van Contoso zou de voor keur geven aan Vm's die in azure zijn geïmplementeerd om het beheer eenvoudiger te maken, terwijl gebruikers zich kunnen aanmelden met hun bedrijfs referenties. Bij het lid van een domein kunnen Vm's ook worden geconfigureerd om te voldoen aan de vereiste beveiligings basislijnen met behulp van groepsbeleid. Contoso zou het voor keur hebben om hun eigen domein controllers in azure te implementeren, te controleren en te beheren.
+Laten we eens kijken naar een gemeen schappelijk voorbeeld scenario. Als servers en andere infra structuur het einde van de levens duur bereiken, wil Contoso toepassingen die momenteel on-premises worden gehost, verplaatsen naar de Cloud. Het huidige IT-standaard mandaat dat servers die bedrijfs toepassingen hosten, moeten lid zijn van een domein en worden beheerd met groeps beleid. De IT-beheerder van Contoso zou de voor keur geven aan Vm's die in azure zijn geïmplementeerd om het beheer eenvoudiger te maken, terwijl gebruikers zich kunnen aanmelden met hun bedrijfs referenties. Bij het lid van een domein kunnen Vm's ook worden geconfigureerd om te voldoen aan de vereiste beveiligings basislijnen met behulp van groeps beleidsobjecten (Gpo's). Contoso zou het voor keur hebben om hun eigen domein controllers in azure te implementeren, te controleren en te beheren.
 
 Azure AD DS is in het bijzonder geschikt voor deze gebruiks case. Met een beheerd domein van Azure AD DS kunt u virtuele machines koppelen, een enkele set referenties gebruiken en groeps beleid Toep assen. Als een beheerd domein hoeft u de domein controllers niet zelf te configureren en te onderhouden.
 
@@ -48,7 +48,7 @@ De volgende overwegingen met betrekking tot de implementatie zijn van toepassing
 
 Als voorbeeld scenario heeft Contoso een on-premises toepassing die veel jaren geleden van een ISV is gekocht. De toepassing bevindt zich momenteel in de onderhouds modus door de ISV en het aanvragen van wijzigingen aan de toepassing is prohibitively duur. Deze toepassing heeft een webfrontend waarmee gebruikers referenties worden verzameld met behulp van een webformulier en vervolgens gebruikers verifieert door een LDAP-binding uit te voeren op de on-premises AD DS omgeving.
 
-![LDAP bind](./media/active-directory-domain-services-scenarios/ldap-bind.png)
+![LDAP-binding](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
 Contoso wil deze toepassing migreren naar Azure. De toepassing moet blijven werken, zonder dat u wijzigingen hoeft aan te brengen. Daarnaast moeten gebruikers zich kunnen verifiëren met hun bestaande bedrijfs referenties en zonder extra training. Het moet transparant zijn voor eind gebruikers waarop de toepassing wordt uitgevoerd.
 
@@ -63,7 +63,7 @@ De volgende overwegingen met betrekking tot de implementatie zijn van toepassing
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>On-premises toepassingen die gebruikmaken van LDAP, gebruiken om toegang te krijgen tot de adres lijst
 
-Net als bij het vorige voorbeeld scenario gaan we ervan uitgaan dat contoso een on-premises LOB-toepassing (line-of-Business) heeft die bijna een jaar geleden is ontwikkeld. Deze toepassing is Directory-Aware en is ontworpen voor het gebruik van LDAP (Lightweight Directory Access Protocol) om informatie/kenmerken over gebruikers van AD DS te lezen. De toepassing wijzigt geen kenmerken of op een andere manier naar de map schrijven.
+Net als bij het vorige voorbeeld scenario gaan we ervan uitgaan dat contoso een on-premises LOB-toepassing (line-of-Business) heeft die bijna een jaar geleden is ontwikkeld. Deze toepassing is Directory-Aware en is ontworpen om LDAP te gebruiken voor het lezen van informatie/kenmerken over gebruikers van AD DS. De toepassing wijzigt geen kenmerken of op een andere manier naar de map schrijven.
 
 Contoso wil deze toepassing migreren naar Azure en buiten gebruik stellen op de lokale hardware die momenteel als host fungeert voor deze toepassing. De toepassing kan niet worden herschreven voor het gebruik van moderne Directory-Api's, zoals de op REST gebaseerde Azure AD-Graph API. Er is een lift-en Shift-optie gewenst waarbij de toepassing kan worden gemigreerd om te worden uitgevoerd in de Cloud, zonder code te wijzigen of de toepassing te herschrijven.
 
@@ -99,7 +99,7 @@ U kunt Azure AD DS gebruiken om beheerde domein services te bieden aan extern bu
 
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>HDInsight-clusters die zijn gekoppeld aan een domein (preview-versie)
 
-U kunt een Azure HDInsight-cluster instellen dat is gekoppeld aan een door Azure AD DS beheerd domein waarvoor Apache zwerver is ingeschakeld. Deze functie is momenteel beschikbaar als preview-product. U kunt Hive-beleid maken en Toep assen via Apache zwerver, en gebruikers, zoals gegevens wetenschappers, toestaan verbinding te maken met hive met behulp van ODBC-hulpprogram ma's zoals Excel of tableau. We blijven werken om andere workloads, zoals HBase, Spark en Storm, toe te voegen aan HDInsight die lid is van een domein.
+U kunt een Azure HDInsight-cluster instellen dat is gekoppeld aan een door Azure AD DS beheerd domein waarvoor Apache zwerver is ingeschakeld. U kunt Hive-beleid maken en Toep assen via Apache zwerver, en gebruikers, zoals gegevens wetenschappers, toestaan verbinding te maken met hive met behulp van ODBC-hulpprogram ma's zoals Excel of tableau. We blijven werken om andere workloads, zoals HBase, Spark en Storm, toe te voegen aan HDInsight die lid is van een domein.
 
 Zie [HDInsight-clusters die zijn gekoppeld aan een domein configureren][hdinsight] voor meer informatie over dit implementatie scenario.
 

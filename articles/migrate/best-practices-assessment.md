@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e235116ab77159a0e2e9c66ad09cdb86ce6da1e9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007717"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466944"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
 
@@ -41,13 +41,19 @@ Een voor beeld: als u een on-premises VM hebt met vier kernen van 20% gebruik en
 
 ## <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
 
-Het Azure Migrate apparaat doorlopend uw on-premises omgeving profileert en verstuurt meta gegevens en prestatie gegevens naar Azure. Volg deze aanbevolen procedures voor het maken van evaluaties:
+Het Azure Migrate apparaat doorlopend uw on-premises omgeving profileert en verstuurt meta gegevens en prestatie gegevens naar Azure. Volg deze aanbevolen procedures voor evaluaties van servers die zijn gedetecteerd met een apparaat:
 
-- **Evaluaties maken als**: U kunt onmiddellijk evaluaties maken als uw computers in de Azure Migrate Portal worden weer gegeven.
-- Een **evaluatie op basis van prestaties maken**: Na het instellen van de detectie wordt u aangeraden minstens een dag te wachten voordat u een evaluatie op basis van prestaties uitvoert:
+- **Evaluaties maken als-is**: u kunt de evaluatie van de as-out onmiddellijk maken zodra uw computers in de Azure migrate Portal worden weer gegeven.
+- Een **evaluatie op basis van prestaties maken**: na het instellen van de detectie wordt u aangeraden minstens een dag te wachten voordat u een evaluatie op basis van prestaties uitvoert:
     - Het verzamelen van prestatie gegevens kost tijd. Als u op minstens een dag wacht, zorgt u ervoor dat er voldoende prestatie gegevens punten zijn voordat u de evaluatie uitvoert.
     - Wanneer u evaluaties op basis van prestaties uitvoert, moet u ervoor zorgen dat u uw omgeving voor de evaluatie duur profileert. Als u bijvoorbeeld een beoordeling maakt waarbij de duur van de prestatie is ingesteld op één week, moet u na het starten van de detectie worden gewacht totdat alle gegevens punten zijn verzameld. Als u dit niet doet, krijgt de evaluatie van de beoordeling geen vijf sterren.
-- **Evaluaties opnieuw berekenen**: Omdat beoordelingen moment opnamen van een bepaald moment zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een evaluatie met de meest recente gegevens wilt bijwerken, moet u deze opnieuw berekenen.
+- **Evaluaties opnieuw berekenen**: aangezien beoordelingen moment opnamen zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een evaluatie met de meest recente gegevens wilt bijwerken, moet u deze opnieuw berekenen.
+
+Volg deze aanbevolen procedures voor evaluaties van servers die in Azure Migrate worden geïmporteerd via. CSV-bestand:
+
+- **Evaluaties maken als-is**: u kunt de evaluatie van de as-out onmiddellijk maken zodra uw computers in de Azure migrate Portal worden weer gegeven.
+- Een **evaluatie op basis van prestaties maken**: Hiermee krijgt u een betere schatting van de kosten, met name als u lokale server capaciteit hebt overingericht. De nauw keurigheid van de analyse op basis van prestaties is echter afhankelijk van de prestatie gegevens die u voor de servers hebt opgegeven. 
+- **Evaluaties opnieuw berekenen**: aangezien beoordelingen moment opnamen zijn, worden ze niet automatisch bijgewerkt met de meest recente gegevens. Als u een evaluatie met de meest recente geïmporteerde gegevens wilt bijwerken, moet u deze opnieuw berekenen.
 
 ## <a name="best-practices-for-confidence-ratings"></a>Aanbevolen procedures voor betrouwbaarheids classificaties
 
@@ -73,11 +79,11 @@ Hier vindt u informatie over het oplossen van enkele veelvoorkomende omgevings p
 
 ###  <a name="out-of-sync-assessments"></a>Evaluaties buiten de synchronisatie
 
-Als u computers toevoegt aan of verwijdert uit een groep nadat u een evaluatie hebt gemaakt, wordt de door u gemaakte evaluatie gemarkeerd als **out-of-Sync**. Voer de evaluatie opnieuw uit(herberekening) om de groeps wijzigingen weer te geven.
+Als u computers toevoegt aan of verwijdert uit een groep nadat u een evaluatie hebt gemaakt, wordt de door u gemaakte evaluatie gemarkeerd als **out-of-Sync**. Voer de evaluatie opnieuw uit (**herberekening**) om de groeps wijzigingen weer te geven.
 
 ### <a name="outdated-assessments"></a>Verouderde evaluaties
 
-Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich in een groep bevinden die is geëvalueerd,wordt de evaluatie gemarkeerd als verouderd. Voer de evaluatie opnieuw uit om de wijzigingen weer te geven.
+Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich in een groep bevinden die is geëvalueerd, wordt de evaluatie gemarkeerd als **verouderd**. Voer de evaluatie opnieuw uit om de wijzigingen weer te geven.
 
 ### <a name="low-confidence-rating"></a>Beoordeling met lage betrouw baarheid
 

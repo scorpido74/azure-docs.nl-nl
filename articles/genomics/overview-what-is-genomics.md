@@ -1,7 +1,7 @@
 ---
 title: Wat is Microsoft Genomics?
 titleSuffix: Microsoft Genomics
-description: Meer informatie over hoe Microsoft Genomics met Power genoom-sequentiëren kunt werken met behulp van een Cloud implementatie van Burrows-Wheeler aligner (BWA) en genoom analyse Toolkit (GATK).
+description: Meer informatie over het gebruik van Microsoft Genomics voor het uitvoeren van de BWA-GATK-werk stroom voor genomic-analyse.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
-ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 461e385bae3b091c72355ed27a35ae5408bda7c2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244014"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498822"
 ---
 # <a name="what-is-microsoft-genomics"></a>Wat is Microsoft Genomics?
 Microsoft Genomics biedt een Cloud implementatie van de Burrows-Wheeler aligner (BWA) en de genoom analyse Toolkit (GATK) voor secundaire analyse. De service is ISO-gecertificeerd en voldoet aan de HIPAA-regelgeving en biedt prijs voor uw genoom toekennings behoeften. Lees onze Quick starts, zelf studies en documentatie voor meer informatie over het gebruik van de Microsoft Genomics-service en integratie met onze API.

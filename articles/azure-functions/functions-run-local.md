@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 28502c49c0eebce84ffd5aa376e7b20bd52213c0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674973"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469108"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -113,7 +113,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
 1. Controleer het `/etc/apt/sources.list.d/dotnetdev.list`-bestand voor een van de juiste Linux-versie teken reeksen die hieronder worden weer gegeven:
 
-    | Linux-distributie | Version |
+    | Linux-distributie | Versie |
     | --------------- | ----------- |
     | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
@@ -156,8 +156,8 @@ In versie 2. x, wanneer u de opdracht uitvoert, moet u een runtime voor uw proje
 Select a worker runtime:
 dotnet
 node
-python (preview)
-powershell (preview)
+python 
+powershell
 ```
 
 Gebruik de pijl omhoog/omlaag om een taal te kiezen en druk vervolgens op ENTER. Als u van plan bent java script-of type script-functies te ontwikkelen, kiest u **knoop punt**en selecteert u vervolgens de taal. Type script heeft [een aantal aanvullende vereisten](functions-reference-node.md#typescript). 
@@ -182,7 +182,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--force`** | Initialiseer het project zelfs wanneer er bestaande bestanden in het project aanwezig zijn. Deze instelling overschrijft bestaande bestanden met dezelfde naam. Andere bestanden in de projectmap worden niet beïnvloed. |
 | **`--no-source-control -n`** | Hiermee wordt voor komen dat een Git-opslag plaats standaard wordt gemaakt in versie 1. x. In versie 2. x wordt de Git-opslag plaats standaard niet gemaakt. |
 | **`--source-control`** | Hiermee wordt bepaald of een Git-opslag plaats wordt gemaakt. Een opslag plaats wordt standaard niet gemaakt. Als `true`, wordt er een opslag plaats gemaakt. |
-| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn `dotnet`, `node` (Java script), `java` en `python`. Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
+| **`--worker-runtime`** | Hiermee stelt u de taal runtime voor het project in. Ondersteunde waarden zijn `dotnet`, `node` (Java script), `java`en `python`. Wanneer deze niet is ingesteld, wordt u gevraagd uw runtime te kiezen tijdens de initialisatie. |
 
 > [!IMPORTANT]
 > Versie 2. x van de kern hulpprogramma's maakt standaard functie-app-projecten voor .NET runtime als [ C# class-projecten](functions-dotnet-class-library.md) (. csproj). Deze C# projecten, die kunnen worden gebruikt met Visual Studio of Visual Studio code, worden gecompileerd tijdens het testen en bij het publiceren naar Azure. Als u in plaats daarvan dezelfde C# script bestanden (. CSX) wilt maken en gebruiken die zijn gemaakt in versie 1. x en in de portal, moet u de para meter `--csx` toevoegen wanneer u functies maakt en implementeert.
@@ -202,17 +202,19 @@ De waarden van de functie-app-instellingen kunnen ook in uw code worden gelezen 
 
 Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsStorage`] en de emulator niet wordt gebruikt, wordt het volgende fout bericht weer gegeven:
 
-> Ontbrekende waarde voor AzureWebJobsStorage in Local. settings. json. Dit is vereist voor alle triggers behalve HTTP. U kunt func Azure functionapp fetch-app-Settings \<functionAppName \> uitvoeren of een connection string in Local. settings. json opgeven.
+> Ontbrekende waarde voor AzureWebJobsStorage in Local. settings. json. Dit is vereist voor alle triggers behalve HTTP. U kunt func Azure functionapp fetch-app-Settings \<functionAppName\>uitvoeren of een connection string in Local. settings. json opgeven.
 
 ### <a name="get-your-storage-connection-strings"></a>Uw opslag verbindings reeksen ophalen
 
 Zelfs wanneer u de opslag emulator gebruikt voor ontwikkeling, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
-+ Van de [Azure-portal]. Navigeer naar uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
+- Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
+  ![Storagea-accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
+  
+  Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
+  connection string ![kopiëren van Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-  ![connection string kopiëren van Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
-
-+ Gebruik [Azure Storage Explorer](https://storageexplorer.com/) om verbinding te maken met uw Azure-account. Vouw in de **Explorer**uw abonnement uit, selecteer uw opslag account en kopieer de primaire of secundaire Connection String.
+- Gebruik [Azure Storage Explorer](https://storageexplorer.com/) om verbinding te maken met uw Azure-account. Vouw in de **Explorer**uw abonnement uit, selecteer uw opslag account en kopieer de primaire of secundaire Connection String.
 
   ![connection string kopiëren van Storage Explorer](./media/functions-run-local/storage-explorer.png)
 
@@ -518,7 +520,7 @@ Azure Functions Core Tools is [open source en wordt gehost op github](https://gi
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure-portal]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 ['AzureWebJobsStorage']: functions-app-settings.md#azurewebjobsstorage

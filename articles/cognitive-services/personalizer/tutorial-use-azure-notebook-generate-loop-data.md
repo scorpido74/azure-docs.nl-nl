@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515165"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467241"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelf studie: persoonlijker gebruiken in azure notebook
 
@@ -81,7 +81,7 @@ Bestands beschrijvingen:
 
 ## <a name="configure-personalizer-resource"></a>Personaler-resource configureren
 
-Configureer in de Azure Portal uw [persoonlijke resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) met de frequentie van het **Update model** ingesteld op 15 seconden en een **wacht tijd** van vijf tien seconden. Deze instellingen zijn te vinden op de pagina **[instellingen](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
+Configureer in de Azure Portal uw [persoonlijke resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) met de frequentie van het **Update model** ingesteld op 15 seconden en een **wacht tijd** van vijf tien seconden. Deze waarden zijn te vinden op de **[configuratie](how-to-settings.md#configure-service-settings-in-the-azure-portal)** pagina. 
 
 |Instelling|Waarde|
 |--|--|
@@ -170,7 +170,7 @@ def get_last_updated(currentModifiedDate):
 
 Valideer de status van de service met deze twee REST-aanroepen.
 
-Deze cellen hebben geen uitvoer. De functie voert de service-instellingen uit als deze wordt aangeroepen.
+Deze cellen hebben geen uitvoer. De functie voert de service waarden uit als deze wordt aangeroepen.
 
 ```python
 def get_service_settings():
@@ -263,7 +263,7 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>Problemen met de eerste REST-aanroep oplossen
 
-Deze vorige cel is de eerste cel die aan persoonlijke voor keuren wordt door gebeld. Zorg ervoor dat de REST-status code in de uitvoer `<Response [200]>` is. Als er een fout optreedt, zoals 404, maar u zeker weet dat de bron sleutel en de naam juist zijn, laadt u het notitie blok opnieuw.
+Deze vorige cel is de eerste cel die aan persoonlijke voor keuren wordt door gebeld. Zorg ervoor dat de REST-status code in de uitvoer `<Response [200]>`is. Als er een fout optreedt, zoals 404, maar u zeker weet dat de bron sleutel en de naam juist zijn, laadt u het notitie blok opnieuw.
 
 Zorg ervoor dat het aantal koffie en gebruikers beide vier zijn. Als er een fout optreedt, controleert u of u alle drie de JSON-bestanden hebt geüpload. 
 
@@ -574,11 +574,11 @@ Dit diagram toont het succes van het model voor het huidige standaard Learning-b
 ![Dit diagram toont het succes van het huidige leer beleid voor de duur van de test.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Het ideale doel dat aan het einde van de test is, is het gemiddelde van een succes percentage dat dicht bij 100 procent min de exploratie ligt. De standaard instelling voor verkennen is 20%. 
+Het ideale doel dat aan het einde van de test is, is het gemiddelde van een succes percentage dat dicht bij 100 procent min de exploratie ligt. De standaard waarde voor verkennen is 20%. 
 
 `100-20=80`
 
-Deze instelling voor verkennen vindt u op de pagina **instellingen** van de Azure portal voor de persoonlijke resource. 
+Deze waarde voor verkennen vindt u op de pagina **configuratie** van de Azure portal voor de personaler-resource. 
 
 Als u een beter leer beleid wilt vinden op basis van uw gegevens naar de Rank API, voert u een [offline-evaluatie](how-to-offline-evaluation.md) uit in de portal voor uw personaler-lus.
 
@@ -587,7 +587,7 @@ Als u een beter leer beleid wilt vinden op basis van uw gegevens naar de Rank AP
 1. Open de pagina **evaluaties** van de persoonlijke resource In het Azure Portal.
 1. Selecteer **evaluatie maken**.
 1. Voer de vereiste gegevens van de evaluatie naam en het datum bereik voor de lus-evaluatie in. Het datum bereik moet alleen de dagen bevatten waarop u bent gericht voor uw evaluatie. 
-    Open de pagina evaluaties van de persoonlijke resource ![In de Azure Portal. Selecteer evaluatie maken. Voer de naam van de evaluatie en het datum bereik in. ](./media/tutorial-azure-notebook/create-offline-evaluation.png)
+    Open de pagina evaluaties van de persoonlijke resource ![in het Azure Portal. Selecteer evaluatie maken. Voer de naam van de evaluatie en het datum bereik in.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Het doel van deze offline-evaluatie is om te bepalen of er een beter leer beleid is voor de functies en acties die in deze lus worden gebruikt. Zorg ervoor dat het **optimalisatie beleid** is ingeschakeld om het betere leer beleid te vinden.
 
@@ -598,7 +598,7 @@ Als u een beter leer beleid wilt vinden op basis van uw gegevens naar de Rank AP
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>De frequentie van het update model wijzigen in 5 minuten
 
-1. Selecteer de pagina **instellingen** in de Azure Portal nog steeds op de persoonlijke resource. 
+1. Selecteer de pagina **configuratie** in het Azure Portal nog steeds op de persoonlijke resource. 
 1. Wijzig de **verwerkings frequentie** van het model en stel de **belonings tijd** in op 5 minuten en selecteer **Opslaan**.
 
 Meer informatie over de [wacht tijd](concept-rewards.md#reward-wait-time) en de [frequentie](how-to-settings.md#model-update-frequency)van het bijwerken van het model.

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: c2d7d7d97dce974ad8d72cc98f9ec6d3d554fb6d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 39f71e109b0d9d7b3b0375c0ec2c4d1e4a657994
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783988"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469481"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Zelf studie: gegevens extra heren, transformeren en laden met behulp van Azure Databricks
 
@@ -65,7 +65,7 @@ Voltooi deze taken voordat u aan deze zelfstudie begint:
 
    * Bij het uitvoeren van de stappen in de sectie [waarden ophalen voor ondertekening in](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) van het artikel, plakt u de Tenant-id, app-id en wachtwoord waarden in een tekst bestand. U hebt deze binnenkort nodig.
 
-* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+* Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Verzamel de benodigde informatie
 
@@ -89,9 +89,15 @@ Zorg dat u over alle vereisten voor deze zelfstudie beschikt.
 
 In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azure-portal.
 
-1. Selecteer in Azure Portal **Een resource maken** > **Analyse** > **Azure Databricks**.
+1. Selecteer in het menu Azure Portal de optie **een resource maken**.
 
-    ![Databricks op Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks op Azure Portal")
+    ![Een resource maken op Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
+
+    Selecteer vervolgens **Analytics** > **Azure Databricks**.
+
+    ![Azure Databricks maken op Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
+
+
 
 2. Geef bij **Azure Databricks Service** de volgende waarden op voor het maken van een Databricks-service:
 
@@ -101,7 +107,7 @@ In dit gedeelte gaat u een Azure Databricks-service maken met behulp van de Azur
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **US - west 2**.  Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.      |
-    |**Prijscategorie**     |  Selecteer **standaard**.     |
+    |**Prijscategorie**     |  selecteer **Standaard**.     |
 
 3. Het duurt enkele minuten om het account te maken. Bekijk de voortgangsbalk bovenaan om de bewerkingsstatus te volgen.
 
@@ -387,7 +393,7 @@ Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure Databricks-service maken

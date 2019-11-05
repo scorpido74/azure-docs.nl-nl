@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a61c52773c4c6036a76d7b233988c713c1da861f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947599"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482865"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Kies distributie kolommen in Azure Database for PostgreSQL – grootschalige (Citus)
 
-Het kiezen van de distributie kolom van elke tabel is een van de belangrijkste beslissingen die u kunt nemen. Azure Database for PostgreSQL – grootschalige (Citus)-voor beeld slaat rijen op in Shards op basis van de waarde van de kolom distributie kolommen.
+Het kiezen van de distributie kolom van elke tabel is een van de belangrijkste beslissingen die u kunt nemen. Azure Database for PostgreSQL – grootschalige (Citus) slaat rijen op in Shards op basis van de waarde van de kolom distributie kolommen.
 
 De juiste keuze groepen hebben gerelateerde gegevens samen op dezelfde fysieke knoop punten, waardoor query's snel worden gemaakt en ondersteuning wordt toegevoegd voor alle SQL-functies. Een onjuiste keuze maakt het systeem langzaam en wordt niet alle SQL-functies op verschillende knoop punten ondersteund.
 
@@ -28,7 +28,7 @@ De architectuur met meerdere tenants maakt gebruik van een hiërarchische indeli
 
 Grootschalige (Citus) inspecteert query's om te zien welke Tenant-ID ze hebben en vindt de overeenkomende tabel Shard. De query wordt doorgestuurd naar één worker-knoop punt dat de Shard bevat. Het uitvoeren van een query waarbij alle relevante gegevens op hetzelfde knoop punt worden geplaatst, wordt de locatie ' uplocation ' genoemd.
 
-In het volgende diagram ziet u de co-locatie in het gegevens model met meerdere tenants. Het bevat twee tabellen, accounts en campagnes, die elk worden gedistribueerd door `account_id`. De gearceerde vakken vertegenwoordigen Shards. Groene Shards worden samen op één werk knooppunt opgeslagen en blauwe Shards worden opgeslagen op een ander worker-knoop punt. U ziet hoe een koppelings query tussen accounts en campagnes alle benodigde gegevens op één knoop punt heeft wanneer beide tabellen zijn beperkt tot hetzelfde account @ no__t-0id.
+In het volgende diagram ziet u de co-locatie in het gegevens model met meerdere tenants. Het bevat twee tabellen, accounts en campagnes, die elk worden gedistribueerd door `account_id`. De gearceerde vakken vertegenwoordigen Shards. Groene Shards worden samen op één werk knooppunt opgeslagen en blauwe Shards worden opgeslagen op een ander worker-knoop punt. U ziet hoe een koppelings query tussen accounts en campagnes alle benodigde gegevens op één knoop punt heeft wanneer beide tabellen zijn beperkt tot hetzelfde account\_id.
 
 ![Multi tenant-co-locatie](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
@@ -37,13 +37,13 @@ Query's in het model met meerdere tenants zijn scoped voor een Tenant. Query's o
 
 #### <a name="best-practices"></a>Aanbevolen procedures
 
--   **Gedistribueerde tabellen partitioneren op basis van een gemeen schappelijke Tenant @ no__t-1id kolom.** In een SaaS-toepassing waarbij tenants bijvoorbeeld bedrijven zijn, is de Tenant @ no__t-0id waarschijnlijk het bedrijf @ no__t-1id.
+-   **Gedistribueerde tabellen partitioneren op basis van een gemeen schappelijke Tenant\_id kolom.** In een SaaS-toepassing waarbij tenants bijvoorbeeld bedrijven zijn, is de Tenant\_-id waarschijnlijk de bedrijfs\_-id.
 -   **Converteer kleine tabellen met meerdere tenants naar verwijzings tabellen.** Wanneer meerdere tenants een kleine tabel met gegevens delen, distribueer deze dan als een verwijzings tabel.
--   **Filter voor alle toepassings query's beperken op Tenant @ no__t-1id.** Elke query moet informatie voor één Tenant tegelijk aanvragen.
+-   **Filter voor alle toepassings query's beperken op Tenant\_-id.** Elke query moet informatie voor één Tenant tegelijk aanvragen.
 
 Lees de [multi tenant-zelf studie](./tutorial-design-database-hyperscale-multi-tenant.md) voor een voor beeld van hoe u dit type toepassing kunt bouwen.
 
-### <a name="real-time-apps"></a>Real-time apps
+### <a name="real-time-apps"></a>Realtime-apps
 
 De architectuur met meerdere tenants introduceert een hiërarchische structuur en maakt gebruik van gegevens verplaatsing voor het routeren van query's per Tenant. Real-time architecturen zijn daarentegen afhankelijk van specifieke distributie-eigenschappen van hun gegevens voor zeer parallelle verwerking.
 

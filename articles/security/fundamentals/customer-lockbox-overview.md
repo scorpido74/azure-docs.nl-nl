@@ -7,18 +7,18 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 06/20/2019
-ms.openlocfilehash: 7ca5c890b1f3161923cd808c5ecec0ccf0165d64
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466416"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Klanten-lockbox voor Microsoft Azure
 
 > [!NOTE]
-> Als u deze functie wilt gebruiken, moet uw organisatie een ondersteunings [abonnement voor Azure](https://azure.microsoft.com/support/plans/) hebben met een mini maal **ontwikkel**niveau.
+> Als u deze functie wilt gebruiken, moet uw organisatie een [ondersteunings abonnement voor Azure](https://azure.microsoft.com/support/plans/) hebben met een mini maal **ontwikkel**niveau.
 
 Klanten-lockbox voor Microsoft Azure biedt klanten een interface om aanvragen voor toegang tot klant gegevens te controleren en goed te keuren of af te wijzen. Dit wordt gebruikt in gevallen waarin een micro soft-Engineer toegang heeft tot klant gegevens tijdens een ondersteunings aanvraag.
 
@@ -74,8 +74,8 @@ De volgende stappen beschrijven een typische werk stroom voor een Klanten-lockbo
     ![Azure Klanten-lockbox-goed keuren of weigeren selecteren](./media/customer-lockbox-overview/customer-lockbox-approval.png)
     
     Als gevolg van de selectie:
-    - **Goed keuren**:  Toegang wordt verleend aan de micro soft-Engineer. De toegang wordt voor een standaard periode van acht uur verleend.
-    - **Weigeren**: De aanvraag voor verhoogde toegang van de micro soft-Engineer wordt geweigerd en er wordt geen verdere actie ondernomen.
+    - **Goed keuren**: de toegang tot de micro soft-Engineer wordt verleend. De toegang wordt voor een standaard periode van acht uur verleend.
+    - **Weigeren**: de aanvraag voor verhoogde toegang van de micro soft-Engineer wordt geweigerd en er wordt geen verdere actie ondernomen.
 
 Voor controle doeleinden worden de acties die in deze werk stroom worden uitgevoerd, geregistreerd in [klanten-lockbox aanvraag logboeken](#auditing-logs).
 
@@ -87,11 +87,11 @@ Klanten-lockbox logboeken worden opgeslagen in activiteiten Logboeken. Selecteer
 - **Lockbox-aanvraag goed keuren**
 - **Verval datum lockbox-aanvraag**
 
-Als u een voorbeeld:
+Bijvoorbeeld:
 
 ![Azure Klanten-lockbox-activiteiten logboeken](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios"></a>Ondersteunde services en scenario's
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Ondersteunde services en scenario's in algemene Beschik baarheid
 
 De volgende services en scenario's zijn momenteel in algemene Beschik baarheid voor Klanten-lockbox.
 
@@ -109,7 +109,24 @@ Klanten-lockbox is momenteel ingeschakeld voor toegangs aanvragen van extern bur
 
 Voor scenario's waarbij toegang tot extern bureau blad is vereist, kunt u Windows-gebeurtenis Logboeken gebruiken om de acties te bekijken die door de micro soft-Engineer worden uitgevoerd. Overweeg het gebruik van Azure Security Center om uw gebeurtenis logboeken te verzamelen en de gegevens naar uw werk ruimte te kopiëren voor analyse. Zie [gegevens verzameling in azure Security Center](../../security-center/security-center-enable-data-collection.md)voor meer informatie.
 
-## <a name="exclusions"></a>Uitsluitingen
+## <a name="supported-services-and-scenarios-in-preview"></a>Ondersteunde services en scenario's in Preview
+
+De volgende services zijn nu beschikbaar als preview-versie voor Klanten-lockbox:
+
+- Azure Storage 
+
+- Azure SQL Database 
+
+- Azure Data Explorer 
+
+- Virtuele machines (nu ook de toegang tot geheugen dumps en beheerde schijven best rijken) 
+
+- Azure-abonnements overdrachten
+
+Als u Klanten-lockbox wilt inschakelen voor deze preview-aanbiedingen voor uw organisatie, kunt u zich registreren voor [klanten-lockbox voor de open bare preview van Azure](https://aka.ms/customerlockbox/insiderprogram).
+
+
+## <a name="exclusions"></a>Uitzonderingen
 
 Klanten-lockbox aanvragen worden niet geactiveerd in de volgende technische ondersteunings scenario's:
 
@@ -119,6 +136,6 @@ Klanten-lockbox aanvragen worden niet geactiveerd in de volgende technische onde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Klanten-lockbox is automatisch beschikbaar voor alle klanten die een ondersteunings [abonnement voor Azure](https://azure.microsoft.com/support/plans/) hebben met een mini maal **ontwikkel**niveau.
+Klanten-lockbox is automatisch beschikbaar voor alle klanten die een [ondersteunings abonnement voor Azure](https://azure.microsoft.com/support/plans/) hebben met een mini maal **ontwikkel**niveau.
 
 Wanneer u een in aanmerking komend ondersteunings plan hebt, hoeft u geen actie te ondernemen om Klanten-lockbox in te scha kelen. Klanten-lockbox aanvragen worden geïnitieerd door een micro soft-Engineer als deze actie nodig is om een ondersteunings ticket te maken dat van iemand in uw organisatie is ingediend.

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9dd24a962ddece4ae7841effea7fc36bba1b727b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71257270"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496462"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure-blauwdruk voor beveiliging en naleving: Analytics voor FFIEC Financial Services
 
@@ -29,7 +29,7 @@ Voor het bereiken van FFIEC-naleving moeten gekwalificeerde Audi tors een produc
 
 Deze Azure-blauwdruk voor beveiliging en naleving biedt een analyse platform waarop klanten hun eigen analyse hulpprogramma's kunnen bouwen. In de referentie architectuur wordt een algemene use-case beschreven waarbij klanten gegevens invoeren via bulksgewijze gegevens import door de SQL/gegevens beheerder of door middel van operationele gegevens updates via een operationele gebruiker. Beide werk stromen bevatten Azure Functions voor het importeren van gegevens in Azure SQL Database. Azure Functions moet door de klant worden geconfigureerd via de Azure Portal voor het afhandelen van de import taken die uniek zijn voor de eigen analyse vereisten van elke klant.
 
-Azure biedt een aantal rapportage-en analyse Services voor de klanten. Deze oplossing bevat Azure Machine Learning Services in combi natie met Azure SQL Database om snel door gegevens te bladeren en sneller resultaten te leveren middels een slimmere model lering. Azure Machine Learning verhoogt de query snelheid door nieuwe relaties tussen gegevens sets te detecteren. Zodra de gegevens zijn getraind met verschillende statistische functies, kunnen Maxi maal zeven extra query Pools (8 met inbegrip van de klant server) worden gesynchroniseerd met dezelfde tabellaire modellen om query werk belastingen te spreiden en de reactie tijden te verminderen.
+Azure biedt een aantal rapportage-en analyse Services voor de klanten. Deze oplossing bevat Azure Machine Learning in combi natie met Azure SQL Database om snel door gegevens te bladeren en sneller resultaten te leveren middels een slimmere model lering. Azure Machine Learning verhoogt de query snelheid door nieuwe relaties tussen gegevens sets te detecteren. Zodra de gegevens zijn getraind met verschillende statistische functies, kunnen Maxi maal zeven extra query Pools (8 met inbegrip van de klant server) worden gesynchroniseerd met dezelfde tabellaire modellen om query werk belastingen te spreiden en de reactie tijden te verminderen.
 
 Azure SQL-data bases kunnen worden geconfigureerd met column Store-indexen voor uitgebreide analyse en rapportage. Zowel Azure Machine Learning-als Azure SQL-data bases kunnen omhoog of omlaag worden geschaald of volledig worden afgesloten in reactie op het gebruik van de klant. Alle SQL-verkeer wordt versleuteld met SSL via het opnemen van zelfondertekende certificaten. Als best practice, raadt Azure het gebruik aan van een vertrouwde certificerings instantie voor verbeterde beveiliging.
 
@@ -54,10 +54,10 @@ Deze oplossing maakt gebruik van de volgende Azure-Services. Details van de impl
 - Azure Key Vault
 - Azure Machine Learning
 - Azure Monitor (Logboeken)
-- Azure Beveiligingscentrum
+- Azure Security Center
 - Azure SQL Database
 - Azure Storage
-- Virtual Network van Azure
+- Azure Virtual Network
     - (1)/16 netwerk
     - (2)/24 netwerken
     - (2) netwerk beveiligings groepen
@@ -71,7 +71,7 @@ De volgende sectie bevat informatie over de implementatie-en implementatie-eleme
 
 **Azure functions**: [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) is een compute-service waarmee gebruikers code op aanvraag kunnen uitvoeren zonder expliciet een infra structuur in te richten of te beheren. Met Azure Functions kunt u een script of een stukje code uitvoeren in reactie op diverse gebeurtenissen.
 
-**Azure machine learning-service**: [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/) is een techniek voor gegevens wetenschap waarmee computers bestaande gegevens kunnen gebruiken om toekomstige gedragingen, resultaten en trends te voors pellen.
+**Azure machine learning**: [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/) is een techniek voor gegevens wetenschap waarmee computers bestaande gegevens kunnen gebruiken om toekomstige gedragingen, resultaten en trends te voors pellen.
 
 **Azure Data Catalog**: met [Data Catalog](../../data-catalog/overview.md) kunnen gegevens bronnen gemakkelijk worden gedetecteerd en begrijpelijk door de gebruikers die de gegevens beheren. Algemene gegevens bronnen kunnen worden geregistreerd, gelabeld en doorzocht op financiële gegevens. De gegevens blijven op de bestaande locatie, maar een kopie van de meta gegevens wordt toegevoegd aan Data Catalog, samen met een verwijzing naar de locatie van de gegevens bron. Deze metagegevens worden ook geïndexeerd zodat elke gegevensbron gemakkelijk kan worden gedetecteerd via zoekopdrachten, en begrijpelijk is voor gebruikers die de gegevensbron detecteren.
 
@@ -127,7 +127,7 @@ De volgende technologieën bieden mogelijkheden voor het beheren van toegang tot
 
 ### <a name="security"></a>Beveiliging
 
-**Geheimen beheer**: de oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten dergelijke gegevens beveiligen en benaderen:
+**Geheimen beheer**: de oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten dergelijke gegevens beveiligen en benaderen:
 
 - Geavanceerd toegangs beleid wordt geconfigureerd op basis van behoefte.
 - Key Vault toegangs beleid wordt gedefinieerd met mini maal vereiste machtigingen voor sleutels en geheimen.
@@ -182,7 +182,7 @@ De [Azure-blauwdruk voor beveiliging en naleving – FFIEC Data Analytics-implem
 
 Een beveiligde VPN-tunnel of [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) moet worden geconfigureerd om een veilige verbinding tot stand te brengen met de resources die zijn geïmplementeerd als onderdeel van deze referentie architectuur voor gegevens analyse. Door een VPN-of ExpressRoute in te stellen, kunnen klanten een beveiligingslaag toevoegen voor gegevens die onderweg zijn.
 
-Door een beveiligde VPN-tunnel te implementeren met Azure, kan een virtuele particuliere verbinding tussen een on-premises netwerk en een Azure-Virtual Network worden gemaakt. Deze verbinding vindt plaats via internet en stelt klanten in staat om &quot; informatie veilig te &quot;tunnel in een versleutelde&#39;koppeling tussen het netwerk van de klant en Azure. Site-naar-site-VPN is een veilige, rijpere technologie die is geïmplementeerd door ondernemingen van elke omvang voor tien tallen. De [IPSec-tunnel modus](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) wordt in deze optie als een versleutelings mechanisme gebruikt.
+Door een beveiligde VPN-tunnel te implementeren met Azure, kan een virtuele particuliere verbinding tussen een on-premises netwerk en een Azure-Virtual Network worden gemaakt. Deze verbinding vindt plaats via internet en biedt klanten de mogelijkheid om op een veilige manier tunnel&quot; informatie te &quot;in een&#39;versleutelde koppeling tussen het netwerk van de klant en Azure. Site-naar-site-VPN is een veilige, rijpere technologie die is geïmplementeerd door ondernemingen van elke omvang voor tien tallen. De [IPSec-tunnel modus](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) wordt in deze optie als een versleutelings mechanisme gebruikt.
 
 Omdat verkeer binnen de VPN-tunnel via internet met een site-naar-site-VPN gaat, biedt micro soft een andere, nog veiliger verbindings optie. Azure ExpressRoute is een specifieke WAN-verbinding tussen Azure en een on-premises locatie of een Exchange-hosting provider. Omdat ExpressRoute-verbindingen niet via internet werken, bieden deze verbindingen meer betrouw baarheid, hogere snelheden, lagere latenties en een betere beveiliging dan typische verbindingen via internet. Omdat dit een directe verbinding is tussen de telecommunicatie&#39;provider van de klant, worden de gegevens niet via internet verzonden en worden ze daarom niet blootgesteld aan de service.
 

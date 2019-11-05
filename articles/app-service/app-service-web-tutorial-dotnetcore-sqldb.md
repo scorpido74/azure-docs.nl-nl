@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9a4d4f84626eafdfbc5cc21eef1968a9ed64fcad
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a52a842bbd8ba9d8b22cdcf6792ec7e45a06e964
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "71055614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471158"
 ---
-# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Zelfstudie: Een ASP.NET Core-en SQL Database-app bouwen in Azure App Service
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Zelf studie: een ASP.NET Core-en SQL Database-app bouwen in Azure App Service
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een .NET Core- en SQL Database-app maken in Azure App Service op Linux](./containers/tutorial-dotnetcore-sqldb-app.md) als u naar App Service wilt implementeren op _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een .NET Core- en SQL Database-app maken in Azure App Service op Linux_ als u naar App Service wilt implementeren op [Linux](./containers/tutorial-dotnetcore-sqldb-app.md).
 >
 
 [App Servicex](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie in Azure. In deze zelfstudie leert u hoe u een .NET Core-app maakt en hoe u deze verbindt met een SQL-database. Als u klaar bent, hebt u een .NET Core MVC-app die in App Service wordt uitgevoerd.
@@ -56,7 +56,7 @@ In deze stap stelt u het lokale .NET Core-project in.
 
 ### <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-Voer in het terminalvenster de opdracht `cd` naar een werkmap uit.
+In het terminalvenster, `cd` in een werkmap.
 
 Voer de volgende opdrachten uit om de voorbeeldopslagplaats te klonen en de hoofdmap ervan te wijzigen.
 
@@ -99,7 +99,7 @@ Voor SQL Database wordt in deze zelfstudie gebruikgemaakt van [Azure SQL Databas
 
 Maak een logische Azure SQL Database-server in Cloud Shell met de opdracht [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create).
 
-Vervang de tijdelijke aanduiding *\<server_name>* door een unieke SQL Database-naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server_name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang tevens *\<db_username>* en *\<db_password>* door een zelfgekozen gebruikersnaam en wachtwoord. 
+Vervang de tijdelijke aanduiding *\<server_name>* door een unieke SQL Database-naam. Deze naam wordt gebruikt als onderdeel van het SQL Database-eindpunt, `<server_name>.database.windows.net`. De naam moet dus uniek zijn voor alle logische servers in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn. Vervang tevens *\<db_username>* en *\<db_password>* door een gebruikersnaam en wachtwoord dat u zelf mag kiezen. 
 
 
 ```azurecli-interactive
@@ -168,7 +168,7 @@ In deze stap implementeert u de met SQL Database verbonden .NET Core-app met App
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
-### <a name="create-a-web-app"></a>Een web-app maken
+### <a name="create-a-web-app"></a>Een webtoepassing maken
 
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-win-no-h.md)] 
 
@@ -180,7 +180,7 @@ Als u verbindingsreeksen voor de Azure-app wilt instellen, gebruikt u de opdrach
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection="<connection_string>" --connection-string-type SQLServer
 ```
 
-In ASP.net Core kunt u deze benoemde Connection String (`MyDbConnection`) gebruiken met het standaard patroon, zoals een Connection String dat is opgegeven in *appSettings. json*. In dit geval `MyDbConnection` wordt ook gedefinieerd in het bestand *appSettings. json*. Bij het uitvoeren van App Service heeft de connection string die in App Service gedefinieerd, voor rang op de connection string die is gedefinieerd in het bestand *appSettings. json*. De code gebruikt de waarde *appSettings. json* tijdens de lokale ontwikkeling en dezelfde code gebruikt de app service waarde wanneer deze wordt geïmplementeerd.
+In ASP.NET Core kunt u deze benoemde connection string (`MyDbConnection`) gebruiken met het standaard patroon, zoals elke connection string die is opgegeven in *appSettings. json*. In dit geval wordt `MyDbConnection` ook gedefinieerd in het bestand *appSettings. json*. Bij het uitvoeren van App Service heeft de connection string die in App Service gedefinieerd, voor rang op de connection string die is gedefinieerd in het bestand *appSettings. json*. De code gebruikt de waarde *appSettings. json* tijdens de lokale ontwikkeling en dezelfde code gebruikt de app service waarde wanneer deze wordt geïmplementeerd.
 
 Zie [verbinding maken met SQL database in productie](#connect-to-sql-database-in-production)om te zien hoe de Connection String in uw code wordt verwezen.
 
@@ -222,13 +222,13 @@ services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate
 
 Als deze code detecteert dat deze in productie wordt uitgevoerd (wat de Azure-omgeving aanduidt), gebruikt deze de connection string die u hebt geconfigureerd om verbinding te maken met de SQL Database.
 
-De `Database.Migrate()` aanroep helpt u wanneer deze wordt uitgevoerd in azure, omdat deze automatisch de data bases maakt die uw .net core-app nodig heeft, op basis van de migratie configuratie. 
+De `Database.Migrate()`-aanroep helpt u wanneer deze wordt uitgevoerd in azure, omdat hiermee automatisch de data bases worden gemaakt die uw .NET core-app nodig heeft, op basis van de migratie configuratie. 
 
 > [!IMPORTANT]
 > Voor productie-apps die u wilt uitbreiden, volgt u de best practices in [toepassen van migraties in productie](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
 > 
 
-Sla uw wijzigingen op en voer deze door naar de Git-opslagplaats. 
+Sla uw wijzigingen op en voor deze door naar de Git-opslagplaats. 
 
 ```bash
 git add .
@@ -311,7 +311,7 @@ Breng enkele wijzigingen aan de code aan zodat de eigenschap `Done` kan worden g
 
 Open _Controllers\TodosController.cs_.
 
-Zoek de `Create([Bind("ID,Description,CreatedDate")] Todo todo)`-methode en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw methode `Create()` er uit als de onderstaande code:
+Zoek de `Create([Bind("ID,Description,CreatedDate")] Todo todo)`-methode en voeg `Done` toe aan de lijst met eigenschappen in het attribuut `Bind`. Als u klaar bent, ziet uw `Create()`-methode er uit als de onderstaande code:
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -319,7 +319,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 
 Open _Views\Todos\Create.cshtml_.
 
-In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander element `<div class="form-group">` voor `CreatedDate`. Voeg direct na deze twee elementen een ander element `<div class="form-group">` voor `Done` toe:
+In de Razor-code zou u een `<div class="form-group">`-element voor `Description` moeten zien en vervolgens een ander element `<div class="form-group">` voor `CreatedDate`. Voeg direct na deze twee elementen een ander `<div class="form-group">`-element voor `Done` toe:
 
 ```csharp
 <div class="form-group">
@@ -333,7 +333,7 @@ In de Razor-code zou u een `<div class="form-group">`-element voor `Description`
 
 Open _Views\Todos\Index.cshtml_.
 
-Zoek het lege element `<th></th>`. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het lege `<th></th>`-element. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <th>
@@ -341,7 +341,7 @@ Zoek het lege element `<th></th>`. Vlak boven dit element voegt u de volgende Ra
 </th>
 ```
 
-Zoek het element `<td>` dat de taghelpers voor `asp-action` bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
+Zoek het `<td>`-element dat de `asp-action`-taghelpers bevat. Vlak boven dit element voegt u de volgende Razor-code toe:
 
 ```csharp
 <td>
@@ -369,7 +369,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Zodra het `git push` is voltooid, gaat u naar uw app service-app en probeert u een taak item toe te voegen en **te controleren.**
+Zodra de `git push` is voltooid, gaat u naar uw App Service-app en probeert u een taak item toe te voegen en **te controleren.**
 
 ![Azure-app na Code First Migration](./media/app-service-web-tutorial-dotnetcore-sqldb/this-one-is-done.png)
 
@@ -382,9 +382,9 @@ Terwijl uw ASP.NET Core-app wordt uitgevoerd in Azure App Service, kunt u de con
 Het voorbeeldproject volgt al de instructies in [ASP.NET Core-logboekregistratie in Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) met twee configuratiewijzigingen:
 
 - Bevat een verwijzing naar `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
-- Aanroepen `loggerFactory.AddAzureWebAppDiagnostics()` in *Program.cs*.
+- Roept `loggerFactory.AddAzureWebAppDiagnostics()` op in *Program.cs*.
 
-Om het [logboekniveau](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Error` in `Information`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
+Om het [logboekniveau](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) van ASP.NET Core in App Service te wijzigen van het standaardniveau `Information` in `Error`, gebruikt u de opdracht [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) in de Cloud Shell.
 
 ```azurecli-interactive
 az webapp log config --name <app_name> --resource-group myResourceGroup --application-logging true --level information
@@ -394,7 +394,7 @@ az webapp log config --name <app_name> --resource-group myResourceGroup --applic
 > Het logboekniveau van het project is al ingesteld op `Information` in *appsettings.json*.
 > 
 
-Gebruik voor het starten van logboekstreaming de opdracht [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in de Cloud Shell.
+Gebruik voor het starten van logboekstreaming de opdracht [ `az webapp log tail` ](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) in de Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup
@@ -402,19 +402,21 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 Nadat logboekstreaming is gestart, vernieuwt u de Azure-app in de browser om wat webverkeer te genereren. U kunt nu zien dat consolelogboeken worden doorgegeven aan de terminal. Als u de consolelogboeken niet meteen ziet, probeert u het opnieuw na 30 seconden.
 
-Als u het streamen van Logboeken op `Ctrl`elk gewenst moment wilt stoppen, typt + `C`u.
+Als u het streamen van Logboeken op elk gewenst moment wilt stoppen, typt u `Ctrl`+`C`.
 
 Zie [Logboekregistratie in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging) voor meer informatie over het aanpassen van de ASP.NET Core-logboeken.
 
 ## <a name="manage-your-azure-app"></a>Uw Azure-app beheren
 
-Ga naar de [Azure-portal](https://portal.azure.com) om de app te zien die u hebt gemaakt.
+Voor een overzicht van de app die u hebt gemaakt, zoekt en selecteert u in het [Azure Portal](https://portal.azure.com) **app Services**.
 
-Klik in het linkermenu op **App Services** en klik op de naam van uw Azure-app.
+![Selecteer App Services in Azure Portal](./media/app-service-web-tutorial-dotnetcore-sqldb/app-services.png)
+
+Selecteer op de pagina **app Services** de naam van uw Azure-app.
 
 ![Navigatie naar Azure-app in de portal](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 
-In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Deze pagina geeft u een overzicht van hoe uw app presteert. Hier kunt u ook algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen. De tabbladen aan de linkerkant van de pagina tonen de verschillende configuratiepagina's die u kunt openen.
+In de portal wordt standaard de pagina **Overzicht** van de app weergegeven. Deze pagina geeft u een overzicht van hoe uw app presteert. Hier kunt u ook algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen. Links op de pagina ziet u de verschillende configuratie pagina's die u kunt openen.
 
 ![App Service-pagina in Azure Portal](./media/app-service-web-tutorial-dotnetcore-sqldb/web-app-blade.png)
 

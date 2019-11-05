@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044965"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496188"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 
@@ -39,19 +39,19 @@ De grootschalige is alleen beschikbaar voor afzonderlijke data bases met behulp 
 
 De vCore-gebaseerde service lagen worden gedifferentieerd op basis van de beschik baarheid van de data base en het opslag type, de prestaties en de maximale grootte, zoals beschreven in de volgende tabel.
 
-| | Resourcetype | Algemeen doel |  Hyperscale | Bedrijfskritiek |
+| | Resourcetype | Algemeen gebruik |  Hyperscale | Bedrijfskritiek |
 |:---:|:---:|:---:|:---:|:---:|
-| **Geschikt voor** |Alles|Biedt berekenings-en opslag opties voor budget gericht evenwicht.|De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, snelle verticale en horizontale reken schaal, snel data base terugzetten.|OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
-|  **Resourcetype** ||Eén data base/elastische pool/beheerd exemplaar | Afzonderlijke database | Eén data base/elastische pool/beheerd exemplaar |
+| **Geschikt voor** |Alle|Biedt berekenings-en opslag opties voor budget gericht evenwicht.|De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, snelle verticale en horizontale reken schaal, snel data base terugzetten.|OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
+|  **Resourcetype** ||Eén data base/elastische pool/beheerd exemplaar | Individuele database | Eén data base/elastische pool/beheerd exemplaar |
 | **Reken grootte**|Eén data base/elastische pool * | 1 tot 80 vCores | 1 tot 80 vCores * | 1 tot 80 vCores |
-| |Beheerd exemplaar | 8, 16, 24, 32, 40, 64, 80 vCores | N/A | 8, 16, 24, 32, 40, 64, 80 vCores |
-| **Opslagtype** | Alles |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
+| |Beheerd exemplaar | 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 8, 16, 24, 32, 40, 64, 80 vCores |
+| **Opslagtype** | Alle |Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Opslag grootte** | Eén data base/elastische pool *| 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
-| | Beheerd exemplaar  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
-| **IOPS** | Afzonderlijke database | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
-| | Beheerd exemplaar | Is afhankelijk van de bestands grootte | N/A | 1375 IOPS/vCore |
-|**Beschikbaarheid**|Alles|1 replica, geen uitschalen van Lees bewerkingen, geen lokale cache | Meerdere replica's, Maxi maal 4 Lees scale-out, gedeeltelijke lokale cache | 3 replica's, 1 Lees scale-out, zone-redundante HA, volledige lokale opslag |
-|**Back-ups**|Alles|RA-GRS, 7-35 dagen retentie (standaard 7 dagen)| RA-GRS, 7 dagen retentie, constant tijds duur herstel (PITR) | RA-GRS, 7-35 dagen retentie (standaard 7 dagen) |
+| | Beheerd exemplaar  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
+| **IOPS** | Individuele database | 500 IOPS per vCore met 7000 maximum aantal IOPS | Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS is afhankelijk van de werk belasting. | 5000 IOPS met 200.000 maximum aantal IOPS|
+| | Beheerd exemplaar | Is afhankelijk van de bestands grootte | N.v.t. | 1375 IOPS/vCore |
+|**Beschikbaarheid**|Alle|1 replica, geen uitschalen van Lees bewerkingen, geen lokale cache | Meerdere replica's, Maxi maal 4 Lees scale-out, gedeeltelijke lokale cache | 3 replica's, 1 Lees scale-out, zone-redundante HA, volledige lokale opslag |
+|**Back-ups**|Alle|RA-GRS, 7-35 dagen retentie (standaard 7 dagen)| RA-GRS, 7 dagen retentie, constant tijds duur herstel (PITR) | RA-GRS, 7-35 dagen retentie (standaard 7 dagen) |
 
 \* elastische Pools worden niet ondersteund in de servicelaag grootschalige
 
@@ -127,7 +127,7 @@ Op dit moment kunt u uw reken kracht en aantal replica's echter omlaag schalen o
 
 ### <a name="can-i-provision-a-compute-replica-with-extra-ram-for-my-memory-intensive-workload"></a>Kan ik een reken replica met extra RAM inrichten voor mijn geheugenintensieve werk belasting
 
-Nee. Als u meer RAM-geheugen wilt ontvangen, moet u een upgrade uitvoeren naar een hogere reken grootte. Zie [grootschalige Storage and Compute sizes](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute)(Engelstalig) voor meer informatie.
+Nee. Als u meer RAM-geheugen wilt ontvangen, moet u een upgrade uitvoeren naar een hogere reken grootte. Zie [grootschalige Storage and Compute sizes](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)(Engelstalig) voor meer informatie.
 
 ### <a name="can-i-provision-multiple-compute-replicas-of-different-sizes"></a>Kan ik meerdere reken replica's van verschillende grootten inrichten
 
@@ -157,7 +157,7 @@ Het transactie logboek met grootschalige is nagenoeg oneindig. U hoeft zich geen
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Wordt mijn `tempdb` geschaald naarmate mijn data base groeit
 
-Uw `tempdb`-Data Base bevindt zich op lokale SSD-opslag en wordt geconfigureerd op basis van de berekenings grootte die u inricht. Uw `tempdb` is geoptimaliseerd voor maximale prestatie voordelen. `tempdb` grootte kan niet worden geconfigureerd en wordt voor u beheerd.
+Uw `tempdb`-data base bevindt zich op de lokale SSD-opslag en wordt geconfigureerd op basis van de reken grootte die u inricht. Uw `tempdb` is geoptimaliseerd voor maximale prestatie voordelen. `tempdb` grootte kan niet worden geconfigureerd en wordt voor u beheerd.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Neemt de grootte van de data base automatisch toe of moet ik de grootte van de gegevens bestanden beheren
 
@@ -278,7 +278,7 @@ Ja.  Geo-Restore wordt volledig ondersteund.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Kan ik geo-replicatie met grootschalige-data base instellen
 
-Op dit moment niet.
+Momenteel niet.
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>Kan ik een back-up van een grootschalige-data base maken en deze herstellen op mijn on-premises server of op SQL Server in een VM
 
@@ -363,7 +363,7 @@ Het resultaat is `READ_ONLY` als u verbonden bent met een secundaire replica met
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-a-read-scale-out-replica"></a>Kan ik een toegewezen eind punt maken voor een uitschaal replica
 
-Nee. U kunt alleen verbinding maken met het lezen van scale-out replica's door `ApplicationIntent=ReadOnly` op te geven.
+Nee. U kunt alleen verbinding maken met het lezen van scale-out replica's door `ApplicationIntent=ReadOnly`op te geven.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Voert het systeem intelligente taak verdeling van de werk belasting lezen uit
 

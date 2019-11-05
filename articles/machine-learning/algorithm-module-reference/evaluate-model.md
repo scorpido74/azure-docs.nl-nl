@@ -1,7 +1,7 @@
 ---
 title: 'Model evalueren: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module evaluate model in Azure Machine Learning service om de nauw keurigheid van een getraind model te meten.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module evaluate model in Azure Machine Learning om de nauw keurigheid van een getraind model te meten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693808"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497915"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om de nauw keurigheid van een getraind model te meten. U geeft een gegevensset op die uit een model gegenereerde scores bevat en de module **Evaluate model** berekent een aantal metrische gegevens over de evaluatie van de industrie standaard.
   
@@ -66,10 +66,10 @@ Deze functie is handig omdat u de resultaten van twee verschillende modellen op 
 
 ## <a name="results"></a>Resultaten
 
-Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten** om de resultaten te bekijken. U kunt het volgende doen:
+Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten** om de resultaten te bekijken. U kunt:
 
 + Sla de resultaten op als een gegevensset, zodat u gemakkelijker kunt analyseren met andere hulpprogram ma's
-+ Een visualisatie in de interface genereren
++ Een visualisatie in de ontwerp functie genereren
 
 Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model**, bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
 Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in het rapport weer gegeven, gevolgd door de metrieken voor de gegevensset of het model dat is gekoppeld aan de juiste poort.  
@@ -126,4 +126,4 @@ De metrische gegevens die voor regressie modellen worden geretourneerd, zijn in 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

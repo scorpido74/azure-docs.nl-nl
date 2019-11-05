@@ -11,14 +11,15 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda6c72504a75d600931185e224bb46db03e23ed
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e9d262380a8e0769b1191673a7e00eed770f7ab2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374295"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497085"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Als u een Azure Machine Learning model implementeert als een webservice, wordt een REST API gemaakt. U kunt gegevens naar deze API verzenden en de voor spelling ontvangen die door het model wordt geretourneerd. In dit document leest u hoe u clients voor de webservice maakt met behulp C#van, go, Java en python.
 
@@ -40,14 +41,14 @@ De algemene werk stroom voor het maken van een client die gebruikmaakt van een m
 
 De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) bevat de informatie die u nodig hebt voor het maken van een-client. De volgende `Webservice` eigenschappen zijn handig voor het maken van een client toepassing:
 
-* `auth_enabled`-als sleutel verificatie is ingeschakeld, `True`; zo niet, `False`.
-* `token_auth_enabled`-als token verificatie is ingeschakeld, `True`; zo niet, `False`.
-* `scoring_uri`: het REST API adres.
-* `swagger_uri`: het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md#schema)voor meer informatie.
+* `auth_enabled`-als sleutel verificatie is ingeschakeld, `True`; anders `False`.
+* `token_auth_enabled`-als token verificatie is ingeschakeld, `True`; anders `False`.
+* `scoring_uri`-het REST API adres.
+* `swagger_uri`-het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md#schema)voor meer informatie.
 
 Er zijn drie manieren om deze informatie op te halen voor geïmplementeerde webservices:
 
-* Wanneer u een model implementeert, wordt er een `Webservice`-object geretourneerd met informatie over de service:
+* Wanneer u een model implementeert, wordt er een `Webservice` object geretourneerd met informatie over de service:
 
     ```python
     service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
@@ -64,7 +65,7 @@ Er zijn drie manieren om deze informatie op te halen voor geïmplementeerde webs
     print(services[0].swagger_uri)
     ```
 
-* Als u de naam van de geïmplementeerde service weet, kunt u een nieuw exemplaar van `Webservice` maken en de werk ruimte en de service naam als para meters opgeven. Het nieuwe object bevat informatie over de geïmplementeerde service.
+* Als u de naam van de geïmplementeerde service weet, kunt u een nieuw exemplaar van `Webservice`maken en de werk ruimte en service naam als para meters opgeven. Het nieuwe object bevat informatie over de geïmplementeerde service.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -81,7 +82,7 @@ Azure Machine Learning biedt twee manieren om de toegang tot uw webservices te b
 |Sleutel|Standaard uitgeschakeld| Standaard ingeschakeld|
 |Token| Niet beschikbaar| Standaard uitgeschakeld |
 
-Wanneer u een aanvraag verzendt naar een service die is beveiligd met een sleutel of token, gebruikt u de __autorisatie__ -header om de sleutel of het token door te geven. De sleutel of het token moet zijn geformatteerd als `Bearer <key-or-token>`, waarbij `<key-or-token>` uw sleutel of Token waarde is.
+Wanneer u een aanvraag verzendt naar een service die is beveiligd met een sleutel of token, gebruikt u de __autorisatie__ -header om de sleutel of het token door te geven. De sleutel of het token moet zijn geformatteerd als `Bearer <key-or-token>`, waarbij `<key-or-token>` de sleutel of de token waarde is.
 
 #### <a name="authentication-with-keys"></a>Verificatie met sleutels
 
@@ -119,7 +120,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> U moet een nieuw token aanvragen na de `refresh_by`-tijd van het token. 
+> U moet een nieuw token aanvragen na de `refresh_by` tijd van het token. 
 
 ## <a name="request-data"></a>Gegevens opvragen
 

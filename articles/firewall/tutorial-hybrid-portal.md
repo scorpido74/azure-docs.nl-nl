@@ -1,21 +1,21 @@
 ---
-title: 'Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal'
+title: 'Zelf studie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal'
 description: In deze zelf studie leert u hoe u Azure Firewall implementeert en configureert met behulp van Azure Portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 11/02/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468461"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal
+# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Zelf studie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal
 
 Als u het on-premises netwerk verbindt met een virtueel Azure-netwerk om een hybride netwerk te maken, is de mogelijkheid om de toegang tot uw Azure-netwerkresources te beheren een belangrijk onderdeel van een algemeen beveiligingsplan.
 
@@ -108,14 +108,6 @@ Maak nu het VNet:
 10. Typ **10.6.0.0/24**voor het **adres bereik**.
 11. Accepteer de andere standaard instellingen en selecteer vervolgens **maken**.
 
-Maak nu een tweede subnet voor de gateway.
-
-1. Op de pagina **VNet-spoke** selecteert u **subnetten**.
-2. Selecteer **+ subnet**.
-3. Typ **GatewaySubnet**voor **naam**.
-4. Typ **10.6.1.0/24**voor het **adres bereik (CIDR-blok)** .
-5. Selecteer **OK**.
-
 ## <a name="create-the-on-premises-virtual-network"></a>Het on-premises virtuele netwerk maken
 
 1. Op de start pagina van Azure Portal selecteert u **een resource maken**.
@@ -157,14 +149,14 @@ Implementeer de firewall nu in het virtuele netwerk van de firewall hub.
 2. Selecteer in de linkerkolom **netwerken**en selecteer vervolgens **firewall**.
 4. Gebruik op de pagina **Firewall maken** de volgende tabel om de firewall te configureren:
 
-   |Instelling  |Value  |
+   |Instelling  |Waarde  |
    |---------|---------|
-   |Subscription     |\<uw abonnement\>|
-   |Resource group     |**FW-Hybrid-test** |
-   |Name     |**AzFW01**|
-   |Location     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
+   |Abonnement     |\<uw abonnement\>|
+   |Resourcegroep     |**FW-Hybrid-test** |
+   |Naam     |**AzFW01**|
+   |Locatie     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
    |Een virtueel netwerk kiezen     |**Bestaande gebruiken**:<br> **VNet-hub**|
-   |Openbaar IP-adres     |Nieuwe maken: <br>Naam - **FW-PIP**. |
+   |Openbaar IP-adres     |Nieuwe maken: <br>**Name** - **FW-PIP**. |
 
 5. Selecteer **Controleren + maken**.
 6. Bekijk de samen vatting en selecteer vervolgens **maken** om de firewall te maken.
@@ -341,7 +333,7 @@ Maak nu de standaard route van het spoke-subnet.
 2. Nadat de route tabel is gemaakt, selecteert u deze om de pagina route tabel te openen.
 3. Selecteer **routes** in de linkerkolom.
 4. Selecteer **Toevoegen**.
-5. Typ **ToSpoke**voor de route naam.
+5. Typ **ToHub**voor de route naam.
 6. Typ voor het adres voorvoegsel **0.0.0.0/0**.
 7. Selecteer **virtueel apparaat**bij type volgende hop.
 8. Voor het adres van de volgende hop typt u het privé-IP-adres van de firewall dat u eerder hebt genoteerd.
@@ -368,12 +360,12 @@ Maak een virtuele machine in het spoke-virtuele netwerk, waarop IIS wordt uitgev
 2. Onder **populair**selecteert u **Windows Server 2016 Data Center**.
 3. Voer deze waarden in voor de virtuele machine:
     - **Resource groep** : Selecteer **FW-Hybrid-test**.
-    - **Naam van virtuele machine**: *VM-spoke-01*.
+    - **Naam van de virtuele machine**: *VM-spoke-01*.
     - **Regio** -dezelfde regio die u eerder hebt gebruikt.
     - **Gebruikers naam**: *azureuser*.
-    - **Wachtwoord**: *Azure123456!*
+    - **Wacht woord**: *Azure123456!*
 4. Selecteer **Volgende: schijven**.
-5. Accepteer de standaard instellingen en **Selecteer volgende: Netwerken**.
+5. Accepteer de standaard instellingen en selecteer **volgende: netwerken**.
 6. Selecteer **VNet-spoke** voor het virtuele netwerk en het subnet is **sn-workload**.
 7. Selecteer voor **openbaar IP-adres** **geen**.
 8. Selecteer voor **open bare binnenkomende poorten**de optie **geselecteerde poorten toestaan**en selecteer vervolgens **http (80)** en **RDP (3389)**
@@ -384,7 +376,7 @@ Maak een virtuele machine in het spoke-virtuele netwerk, waarop IIS wordt uitgev
 ### <a name="install-iis"></a>IIS installeren
 
 1. Open in de Azure Portal de Cloud Shell en zorg ervoor dat deze is ingesteld op **Power shell**.
-2. Voer de volgende opdracht uit om IIS op de virtuele machine te installeren:
+2. Voer de volgende opdracht uit om IIS op de virtuele machine te installeren en wijzig indien nodig de locatie:
 
    ```azurepowershell-interactive
    Set-AzVMExtension `
@@ -406,10 +398,10 @@ Dit is een virtuele machine die u gebruikt om verbinding te maken met behulp van
 2. Onder **populair**selecteert u **Windows Server 2016 Data Center**.
 3. Voer deze waarden in voor de virtuele machine:
     - **Resource groep** : Selecteer bestaande en selecteer vervolgens **FW-Hybrid-test**.
-    - **Virtuele-machine naam** - *VM-premises*.
+    - **Naam van de virtuele machine** - *VM-premises*.
     - **Regio** -dezelfde regio die u eerder hebt gebruikt.
     - **Gebruikers naam**: *azureuser*.
-    - **Wachtwoord**: *Azure123456!* .
+    - **Wacht woord**: *Azure123456!* .
 4. Selecteer **Volgende: schijven**.
 5. Accepteer de standaard instellingen en selecteer **volgende: netwerken**.
 6. Selecteer **VNet-premises** voor het virtuele netwerk en het subnet is **sn-Corp**.
@@ -420,7 +412,7 @@ Dit is een virtuele machine die u gebruikt om verbinding te maken met behulp van
 
 ## <a name="test-the-firewall"></a>De firewall testen
 
-1. Haal eerst het privé-IP-adres van de virtuele machine **VM-spoke-01** op en noteer dit.
+1. Noteer eerst het privé-IP-adres voor virtuele machine van **VM-spoke-01** .
 
 2. Maak vanuit de Azure-portal verbinding met de virtuele machine **VM-OnPrem**.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
@@ -428,7 +420,7 @@ Dit is een virtuele machine die u gebruikt om verbinding te maken met behulp van
    You should get a reply.--->
 3. Open een webbrowser op **VM-OnPrem** en blader naar http://\<privé-IP-adres VM-spoke-01\>.
 
-   De webpagina **VM-spoke-01** wordt weer geven: ![VM-Spaak-01-webpagina](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
+   U ziet de webpagina **VM-spoke-01** : ![VM-spoke-01-webpagina](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
 
 4. Open vanuit de virtuele machine **VM-premises** een extern bureau blad naar **VM-spoke-01** op het privé-IP-adres.
 

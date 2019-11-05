@@ -3,8 +3,8 @@ title: Zelfstudie voor het gebruik van dynamische configuratie van Azure-app-con
 description: In deze zelfstudie leert u hoe u de configuratiegegevens voor ASP.NET Core-apps dynamisch bijwerkt
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,18 +12,18 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 235b55bcd727e3e3ea947ce086209e0a94f70752
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 7fc7bd6fa0067857bde64d43be5799bd50712490
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076387"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469678"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelfstudie: Dynamische configuratie in een ASP.NET Core-app gebruiken
+# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelf studie: dynamische configuratie in een ASP.NET Core-app gebruiken
 
-ASP.NET Core heeft een pluggable configuratie systeem waarmee configuratie gegevens kunnen worden gelezen uit verschillende bronnen. Het kan wijzigingen aan de vlucht afhandelen zonder dat de toepassing opnieuw wordt gestart. ASP.NET Core ondersteunt de binding van configuratie-instellingen tot sterk getypeerde .NET-klassen. Ze worden in uw code ingevoegd met behulp van de `IOptions<T>` verschillende patronen. Een van deze patronen, in `IOptionsSnapshot<T>`het bijzonder, laadt de configuratie van de toepassing automatisch opnieuw wanneer de onderliggende gegevens worden gewijzigd. U kunt `IOptionsSnapshot<T>` in domeincontrollers in uw toepassing invoeren voor toegang tot de meest recente configuratiegegevens die zijn opgeslagen in Azure-app-configuratie.
+ASP.NET Core heeft een pluggable configuratie systeem waarmee configuratie gegevens kunnen worden gelezen uit verschillende bronnen. Het kan wijzigingen aan de vlucht afhandelen zonder dat de toepassing opnieuw wordt gestart. ASP.NET Core ondersteunt de binding van configuratie-instellingen tot sterk getypeerde .NET-klassen. Ze worden in uw code ingevoegd met behulp van de verschillende `IOptions<T>` patronen. Een van deze patronen, met name `IOptionsSnapshot<T>`, laadt automatisch de configuratie van de toepassing wanneer de onderliggende gegevens worden gewijzigd. U kunt `IOptionsSnapshot<T>` in domeincontrollers in uw toepassing invoeren voor toegang tot de meest recente configuratiegegevens die zijn opgeslagen in Azure-app-configuratie.
 
 U kunt ook de app-configuratie ASP.NET Core client bibliotheek instellen om een set configuratie-instellingen dynamisch te vernieuwen met behulp van een middleware. Zolang de web-app aanvragen blijft ontvangen, blijven de configuratie-instellingen bijgewerkt met de configuratie opslag.
 
@@ -45,9 +45,17 @@ Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
+
 ## <a name="reload-data-from-app-configuration"></a>Gegevens opnieuw laden vanuit app-configuratie
 
-1. Open *Program.cs*en werk de `CreateWebHostBuilder` methode bij om de `config.AddAzureAppConfiguration()` methode toe te voegen.
+1. Voeg een verwijzing naar het NuGet-pakket van `Microsoft.Azure.AppConfiguration.AspNetCore` toe door de volgende opdracht uit te voeren:
+
+    ```CLI
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
+    ```
+
+1. Open *Program.cs*en werk de methode `CreateWebHostBuilder` bij om de methode `config.AddAzureAppConfiguration()` toe te voegen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -70,7 +78,7 @@ Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://
             .UseStartup<Startup>();
     ```
 
-    De `ConfigureRefresh` -methode wordt gebruikt om de instellingen op te geven die worden gebruikt voor het bijwerken van de configuratie gegevens met het app-configuratie archief wanneer een vernieuwings bewerking wordt geactiveerd. Als u een vernieuwings bewerking daad werkelijk wilt activeren, moet er een vernieuwde middleware worden geconfigureerd voor de toepassing om de configuratie gegevens te vernieuwen wanneer er wijzigingen optreden.
+    De methode `ConfigureRefresh` wordt gebruikt om de instellingen op te geven die worden gebruikt voor het bijwerken van de configuratie gegevens met het app-configuratie archief wanneer een vernieuwings bewerking wordt geactiveerd. Als u een vernieuwings bewerking daad werkelijk wilt activeren, moet er een vernieuwde middleware worden geconfigureerd voor de toepassing om de configuratie gegevens te vernieuwen wanneer er wijzigingen optreden.
 
 2. Voeg een *Settings.cs*-bestand toe dat een nieuwe `Settings`-klasse definieert en implementeert.
 
@@ -87,7 +95,7 @@ Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://
     }
     ```
 
-3. Open *Startup.cs*en werk de `ConfigureServices` methode bij om configuratie gegevens te binden aan `Settings` de klasse.
+3. Open *Startup.cs*en werk de `ConfigureServices`-methode bij om configuratie gegevens te binden aan de `Settings`-klasse.
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -104,7 +112,7 @@ Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://
     }
     ```
 
-4. Werk de `Configure` methode bij om een middleware toe te voegen zodat de configuratie-instellingen die voor vernieuwen zijn geregistreerd, kunnen worden bijgewerkt terwijl de ASP.net core web-app aanvragen blijft ontvangen.
+4. Werk de `Configure`-methode bij om een middleware toe te voegen zodat de configuratie-instellingen die voor vernieuwen zijn geregistreerd, kunnen worden bijgewerkt terwijl de ASP.NET Core web-app aanvragen blijft ontvangen.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -114,20 +122,20 @@ Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://
     }
     ```
     
-    De middleware maakt gebruik van de vernieuwings `AddAzureAppConfiguration` configuratie die `Program.cs` is opgegeven in de methode in om een vernieuwing te activeren voor elke aanvraag die wordt ontvangen door de ASP.net core web-app. Voor elke aanvraag wordt een vernieuwings bewerking geactiveerd en controleert de client bibliotheek of de in de cache opgeslagen waarde voor de geregistreerde configuratie-instellingen is verlopen. Voor de in de cache opgeslagen waarden die zijn verlopen, worden de waarden voor de instellingen bijgewerkt met de app-configuratie opslag en blijven de resterende waarden ongewijzigd.
+    De middleware maakt gebruik van de vernieuwings configuratie die is opgegeven in de `AddAzureAppConfiguration` methode in `Program.cs` om een vernieuwing te activeren voor elke aanvraag die wordt ontvangen door de ASP.NET Core web-app. Voor elke aanvraag wordt een vernieuwings bewerking geactiveerd en controleert de client bibliotheek of de in de cache opgeslagen waarde voor de geregistreerde configuratie-instellingen is verlopen. Voor de in de cache opgeslagen waarden die zijn verlopen, worden de waarden voor de instellingen bijgewerkt met de app-configuratie opslag en blijven de resterende waarden ongewijzigd.
     
     > [!NOTE]
-    > De standaard waarde voor de verval tijd van de cache voor een configuratie-instelling is 30 seconden, maar kan `SetCacheExpiration` worden overschreven door het aanroepen van de methode voor de `ConfigureRefresh` initialisatie functie voor opties die als een argument voor de methode wordt door gegeven.
+    > De standaard waarde voor de verval tijd van de cache voor een configuratie-instelling is 30 seconden, maar kan worden overschreven door de `SetCacheExpiration`-methode aan te roepen voor de initialisatie functie voor opties die als een argument aan de `ConfigureRefresh`-methode is door gegeven.
 
 ## <a name="use-the-latest-configuration-data"></a>De meest recente configuratiegegevens gebruiken
 
-1. Open *HomeController.cs* in de map controllers en voeg een verwijzing naar het `Microsoft.Extensions.Options` pakket toe.
+1. Open *HomeController.cs* in de map controllers en voeg een verwijzing naar het `Microsoft.Extensions.Options`-pakket toe.
 
     ```csharp
     using Microsoft.Extensions.Options;
     ```
 
-2. Werk de `HomeController` klasse bij om `Settings` deze via afhankelijkheids injectie te ontvangen en gebruik de waarden ervan.
+2. Werk de `HomeController` klasse bij om `Settings` te ontvangen via afhankelijkheids injectie en gebruik van de waarden.
 
     ```csharp
     public class HomeController : Controller
@@ -187,13 +195,13 @@ Als u deze zelf studie wilt uitvoeren, installeert u de [.net core SDK](https://
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+4. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 5. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 
-    | Sleutel | Value |
+    | Sleutel | Waarde |
     |---|---|
-    | TestApp:Settings:BackgroundColor | groen |
+    | TestApp:Settings:BackgroundColor | green |
     | TestApp:Settings:FontColor | lightGray |
     | TestApp:Settings:Message | Gegevens uit Azure-app-configuratie - nu met live updates! |
 

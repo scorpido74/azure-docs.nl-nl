@@ -1,7 +1,7 @@
 ---
 title: Een nieuwe app maken-LUIS
 titleSuffix: Azure Cognitive Services
-description: Maken en beheren van uw toepassingen op de webpagina van de Language Understanding (LUIS).
+description: Maak en beheer uw toepassingen op de webpagina Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,31 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500319"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Een nieuwe LUIS-app maken in de LUIS-Portal
-Er zijn een aantal manieren om een LUIS-app te maken. U kunt een LUIS-app in de [LUIS](https://www.luis.ai) portal of via het ontwerpen van LUIS [API's](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
+Er zijn een aantal manieren om een LUIS-app te maken. U kunt een LUIS-app maken in de [Luis](https://www.luis.ai) -portal of via de Luis-ontwerp- [api's](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
-## <a name="using-the-luis-portal"></a>Met behulp van de portal LUIS
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-U kunt een nieuwe app maken in de portal LUIS op verschillende manieren:
+## <a name="using-the-luis-portal"></a>De LUIS-Portal gebruiken
 
-* Beginnen met een lege app en intenties, uitingen en entiteiten te maken.
-* Beginnen met een lege app en voeg een [vooraf gemaakte domein](luis-how-to-use-prebuilt-domains.md).
-* Importeer een LUIS-app vanuit een JSON-bestand dat al intents, uitingen en entiteiten bevat.
+U kunt op verschillende manieren een nieuwe app maken in de LUIS-portal:
 
-## <a name="using-the-authoring-apis"></a>Met behulp van de API's voor ontwerpen
-U kunt een nieuwe app maken met de authoring API's in een aantal manieren:
+* Begin met een lege app en maak intents, uitingen en entiteiten.
+* Begin met een lege app en voeg een [vooraf gebouwd domein](luis-how-to-use-prebuilt-domains.md)toe.
+* Importeer een LUIS-app uit een JSON-bestand dat al de intenties, uitingen en entiteiten bevat.
 
-* [Start](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) met een lege app en intenties, uitingen en entiteiten te maken.
-* [Start](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) met een vooraf gedefinieerde domein.  
+## <a name="using-the-authoring-apis"></a>De ontwerp-Api's gebruiken
+U kunt op een aantal manieren een nieuwe app maken met behulp van de ontwerp-Api's:
+
+* [Begin](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) met een lege app en maak intents, uitingen en entiteiten.
+* [Begin](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) met een vooraf gebouwd domein.  
 
 
 <a name="export-app"></a>
@@ -45,16 +47,16 @@ U kunt een nieuwe app maken met de authoring API's in een aantal manieren:
 
 ## <a name="create-new-app-in-luis"></a>Nieuwe app maken in LUIS
 
-1. Op **mijn Apps** weergeeft, schakelt **nieuwe app maken**.
+1. Selecteer op **de pagina mijn apps** **+ maken**.
 
     ![Lijst met apps van LUIS](./media/luis-create-new-app/apps-list.png)
 
 
-2. Geef uw toepassing 'TravelAgent' in het dialoogvenster.
+2. Geef in het dialoog venster de naam van de toepassing "TravelAgent".
 
-    ![Dialoogvenster voor een nieuwe app maken](./media/luis-create-new-app/create-app.png)
+    ![Dialoog venster nieuwe app maken](./media/luis-create-new-app/create-app.png)
 
-3. Kies de cultuur van uw toepassing (voor TravelAgent app, kiest u Engels), en selecteer vervolgens **gedaan**. 
+3. Kies uw toepassings cultuur (voor de TravelAgent-app, Kies Engels) en selecteer vervolgens **gereed**. 
 
     > [!NOTE]
     > De cultuur kan niet worden gewijzigd nadat de toepassing is gemaakt. 
@@ -92,4 +94,4 @@ Mogelijke fouten zijn:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Uw eerste taak in de app bestaat uit het [intents toevoegen](luis-how-to-add-intents.md).
+Uw eerste taak in de app is om [intenties toe te voegen](luis-how-to-add-intents.md).

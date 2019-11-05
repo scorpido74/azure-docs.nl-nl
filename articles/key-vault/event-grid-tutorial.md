@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 56490ede89a5859ef73d9110b46ea55fd9b96d54
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 3b24da4d988554da240baba2984df44ff4744aaf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033553"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464098"
 ---
 # <a name="how-to-receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Procedure: belang rijke kluis meldingen ontvangen en hierop reageren met Azure Event Grid (preview-versie)
 
@@ -120,7 +120,7 @@ Maak nu een webhook om uw zojuist gemaakte runbook te activeren.
 
 Maak een Event Grid-abonnement via de [Azure Portal](https://portal.azure.com).
 
-1.  Open de Azure Portal met behulp van de volgende koppeling: https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true
+1.  Open de Azure Portal met behulp van de volgende koppeling: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true
 
 1.  Ga naar de sleutel kluis en selecteer het tabblad gebeurtenissen. Als u het tabblad gebeurtenissen niet kunt zien, moet u ervoor zorgen dat u de [Preview-versie van de portal](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)gebruikt.
 

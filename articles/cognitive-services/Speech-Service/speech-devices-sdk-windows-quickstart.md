@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: De speech apparaten SDK uitvoeren op de Windows Speech-Service'
+title: 'Snelstartgids: de speech apparaten SDK uitvoeren op de Windows Speech-Service'
 titleSuffix: Azure Cognitive Services
 description: Vereisten en instructies om aan de slag te gaan met een Windows speech-apparaat-SDK.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: erhopf
-ms.openlocfilehash: ad90a6443cc1c94bcdb730e783b82dfdd4798676
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b1f23ffac26cb48493f013290654189162861a27
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553128"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468735"
 ---
-# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Quickstart: De voor beeld-app voor de speech-apparaten SDK uitvoeren in Windows
+# <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Snelstartgids: de voor beeld-app voor de speech-apparaten SDK uitvoeren in Windows
 
 In deze Quick Start leert u hoe u de speech apparaten SDK voor Windows kunt gebruiken om een product met spraak herkenning te bouwen of dit te gebruiken als een [conversatie transcriptie](conversation-transcription-service.md) -apparaat. Momenteel wordt alleen [Azure KINECT DK](https://azure.microsoft.com/services/kinect-dk/) ondersteund.
 
@@ -25,13 +25,13 @@ De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op
 
 Voor deze hand leiding is een [Azure Cognitive Services](get-started.md) -account vereist met een speech Services-resource. Als u geen account hebt, kunt u de [gratis proefversie](https://azure.microsoft.com/try/cognitive-services/) gebruiken om een abonnementssleutel op te halen.
 
-De bron code voor de [voorbeeld toepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de speech-apparaten SDK. Het is ook [beschikbaar op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
+De bron code voor de [voorbeeld toepassing](https://aka.ms/sdsdk-download-JRE) is opgenomen in de speech-apparaten SDK. Het is ook [beschikbaar op github](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voor deze snelstart zijn de volgende zaken vereist:
 
-* Besturingssysteem: 64-bits Windows
+* Besturings systeem: 64-bits Windows
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * Alleen [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) of [jdk 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
@@ -55,7 +55,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 1. Binnen enkele ogenblikken verschijnt het hoofdvenster van de Eclipse-IDE. Sluit het welkomstscherm als dit verschijnt.
 
-1. Maak een nieuw project op de menu balk van de eclips door **bestand** > **Nieuw** > **Java-project**te kiezen. Als deze niet beschikbaar is, kiest u **project** en vervolgens **Java project**.
+1. Maak in de menu balk voor eclips een nieuw project door **bestand** > **Nieuw** > **Java-project**te kiezen. Als deze niet beschikbaar is, kiest u **project** en vervolgens **Java project**.
 
 1. De wizard **nieuw Java-project** wordt gestart. **Blader** naar de locatie van het voorbeeld project. Selecteer **Finish**.
 
@@ -65,13 +65,13 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
    ![Schermopname van Package explorer](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
-1. Kopiëren `kws.table`en  naar de projectmap target\classes `participants.properties` `Microsoft.CognitiveServices.Speech.extension.pma.dll`
+1. Kopieer `kws.table`, `participants.properties` en `Microsoft.CognitiveServices.Speech.extension.pma.dll` naar de projectmap **target\classes**
 
 ## <a name="configure-the-sample-application"></a>De voorbeeld toepassing configureren
 
-1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u proberen intentieherkenning wilt, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) abonnementssleutel en de toepassing-id.
+1. Voeg uw spraak abonnee sleutel toe aan de bron code. Als u de intentie herkenning wilt proberen, voegt u ook uw [Language Understanding service](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) -abonnements sleutel en toepassings-id toe.
 
-   Voor spraak-en LUIS gaat u naar `FunctionsList.java`de volgende informatie:
+   Voor spraak-en LUIS-informatie gaat u naar `FunctionsList.java`:
 
    ```java
     // Subscription
@@ -82,23 +82,23 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en regio gegevens ook nodig in `Cts.java`:
+    Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en de regio gegevens ook nodig in `Cts.java`:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Het standaard wake woord (trefwoord) is 'Computer'. U kunt ook een van de opgegeven andere woorden, zoals 'Machine' of 'Assistent' activeren. De bronbestanden voor deze alternatieve wake-woorden zijn in de SDK van de spraak-apparaten in de map trefwoord. `C:\SDSDK\JRE-Sample-Release\keyword\Computer` Bevat bijvoorbeeld de bestanden die worden gebruikt voor het Ontwaak woord "computer".
+1. Het sleutel woord default (sleutel woord) is "computer". U kunt ook een van de andere beschik bare tref woorden, zoals ' machine ' of ' assistent ', proberen. De bron bestanden voor deze alternatieve tref woorden bevinden zich in de speech-apparaten-SDK in de map tref woorden. `C:\SDSDK\JRE-Sample-Release\keyword\Computer` bevat bijvoorbeeld de bestanden die worden gebruikt voor het tref woord "computer".
 
    > [!TIP]
-   > U kunt ook [maken van een aangepaste wake-woord](speech-devices-sdk-create-kws.md).
+   > U kunt ook [een aangepast tref woord maken](speech-devices-sdk-create-kws.md).
 
-    Als u een nieuw Ontwaak woord wilt gebruiken, werkt u de `FunctionsList.java`volgende twee regels in en kopieert u het Ontwaak woord pakket naar uw app. Als u bijvoorbeeld het Ontwaak woord ' machine ' uit het Ontwaak `kws-machine.zip`programma wilt gebruiken:
+    Als u een nieuw tref woord wilt gebruiken, werkt u de volgende twee regels bij in `FunctionsList.java`en kopieert u het trefwoord pakket naar uw app. Als u bijvoorbeeld het tref woord ' machine ' van het trefwoord pakket `kws-machine.zip`wilt gebruiken:
 
-   * Kopieer het Ontwaak woord pakket naar de projectmap **/klassen**van het project.
+   * Kopieer het trefwoord pakket naar de projectmap **/klassen**van het project.
 
-   * Werk de `FunctionsList.java` met het sleutel woord en de pakket naam bij:
+   * Werk de `FunctionsList.java` bij met het sleutel woord en de pakket naam:
 
      ```java
      private static final String Keyword = "Machine";
@@ -107,15 +107,15 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 ## <a name="run-the-sample-application-from-eclipse"></a>De voorbeeld toepassing vanuit een eclips uitvoeren
 
-1.  >  Voer > in de menu balk van de eclips**uitvoeren als** **Java-toepassing**uit. Selecteer vervolgens **FunctionsList** en **OK**.
+1. **Voer** in de menu balk voor eclips > **uitvoeren als** > **Java-toepassing**. Selecteer vervolgens **FunctionsList** en **OK**.
 
    ![Scherm opname van een Java-toepassing selecteren](media/speech-devices-sdk/eclipse-run-sample.png)
 
-1. De voorbeeldtoepassing met spraak Devices SDK wordt gestart en worden de volgende opties weergegeven:
+1. De SDK-voorbeeld toepassing voor spraak apparaten wordt gestart en de volgende opties worden weer gegeven:
 
-   ![Voorbeeld van de voorbeeldtoepassing spraak Devices SDK en opties](media/speech-devices-sdk/java-sample-app-windows.png)
+   ![Voor beeld van de SDK-voorbeeld toepassing en-opties voor spraak apparaten](media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Probeer de nieuwe **transcriptie** -demo van de conversatie. Begin met transcriberen met**Start**van de **sessie** > . Standaard is iedereen een gast. Als u echter de spraak handtekeningen van een deel nemer hebt, kunnen ze in een `participants.properties` bestand worden geplaatst in het **doel/klassen**van de projectmap. Als u de spraak handtekening wilt genereren, kijkt u naar Transcribe- [gesprekken (SDK)](how-to-use-conversation-transcription-service.md).
+1. Probeer de nieuwe **transcriptie** -demo van de conversatie. Begin met transcriberen met **sessie** > **starten**. Standaard is iedereen een gast. Als u echter spraak handtekeningen van een deel nemer hebt, kunnen ze worden geplaatst in een bestand `participants.properties` in de **projectmap van het project.** Als u de spraak handtekening wilt genereren, kijkt u naar [Transcribe-gesprekken (SDK)](how-to-use-conversation-transcription-service.md).
 
    ![Transcriptie-toepassing voor demo gesprekken](media/speech-devices-sdk/cts-sample-app-windows.png)
 
@@ -131,7 +131,7 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
  
    ![Scherm opname van uitvoer bare JAR-bestand exporteren](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. Plaats `kws.table` `participants.properties` ,,`pma.dll` en indehierbovengekozendoelmap,omdatdezebestandennodigzijnvoordetoepassing.`Microsoft.CognitiveServices.Speech.extension.pma.dll` `unimic_runtime.dll`
+1. Plaats `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` en `Microsoft.CognitiveServices.Speech.extension.pma.dll` in de hierboven gekozen doelmap, omdat deze bestanden nodig zijn voor de toepassing.
 
 1. De zelfstandige toepassing uitvoeren
 
@@ -142,4 +142,4 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Opmerkingen bij de release bekijken](devices-sdk-release-notes.md)
+> [De release opmerkingen bekijken](devices-sdk-release-notes.md)

@@ -1,6 +1,6 @@
 ---
-title: Quick start voor Azure Database for PostgreSQL – grootschalige (Citus) (preview)
-description: Quick start voor het maken en doorzoeken van gedistribueerde tabellen op Azure Database for PostgreSQL grootschalige (Citus) (preview).
+title: Quick start voor Azure Database for PostgreSQL – grootschalige (Citus)
+description: Quick start voor het maken en doorzoeken van gedistribueerde tabellen op Azure Database for PostgreSQL grootschalige (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 6b5bfbf16e76cbf90a5536332d8e3bf1035f983a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70164021"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500081"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Quick Start: een Azure Database for PostgreSQL-grootschalige (Citus) (preview) maken in de Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Quick Start: een Azure Database for PostgreSQL-grootschalige (Citus) maken in de Azure Portal
 
-Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze Quick start ziet u hoe u een Citus-Server groep (Azure Database for PostgreSQL-grootschalige) (preview) maakt met behulp van de Azure Portal. U bekijkt gedistribueerde gegevens: sharding-tabellen tussen knoop punten, opname van voorbeeld gegevens en uitvoeren van query's die worden uitgevoerd op meerdere knoop punten.
+Azure Database for PostgreSQL is een beheerde service waarmee u PostgreSQL-databases met hoge beschikbaarheid in de cloud kunt uitvoeren, beheren en schalen. In deze Quick start ziet u hoe u een Citus-Server groep (Azure Database for PostgreSQL-grootschalige) maakt met behulp van de Azure Portal. U bekijkt gedistribueerde gegevens: sharding-tabellen tussen knoop punten, opname van voorbeeld gegevens en uitvoeren van query's die worden uitgevoerd op meerdere knoop punten.
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
@@ -113,7 +113,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Tot nu toe hebben de query's alleen betrekking op de GitHub-\_events, maar we kunnen deze informatie combi neren met github \_users. Omdat we zowel gebruikers als gebeurtenissen in dezelfde id (`user_id`) Shard, worden de rijen van beide tabellen met overeenkomende gebruikers-Id's op dezelfde database knooppunten [geplaatst](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) en kunnen ze eenvoudig worden gekoppeld.
+Tot nu toe hebben de query's alleen betrekking op de GitHub-\_gebeurtenissen, maar we kunnen deze informatie combi neren met github\_gebruikers. Omdat we zowel gebruikers als gebeurtenissen in dezelfde id (`user_id`) Shard, worden de rijen van beide tabellen met overeenkomende gebruikers-Id's op dezelfde database knooppunten [geplaatst](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) en kunnen ze eenvoudig worden gekoppeld.
 
 Als we deel nemen aan `user_id`, kan grootschalige de uitvoering van de samen voeging naar Shards pushen om parallel te worden uitgevoerd op worker-knoop punten. Laten we bijvoorbeeld de gebruikers vinden die het grootste aantal opslag plaatsen hebben gemaakt:
 

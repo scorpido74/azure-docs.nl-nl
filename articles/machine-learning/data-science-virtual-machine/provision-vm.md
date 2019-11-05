@@ -7,18 +7,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331777"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483239"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Snelstartgids: de Data Science Virtual Machine instellen voor Windows
 
 Ga aan de slag met een Windows-Data Science Virtual Machine.
 
-## <a name="prerequisite"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
 Als u een Windows-Data Science Virtual Machine wilt maken, moet u een Azure-abonnement hebben. [Probeer Azure gratis](https://azure.com/free)uit.
 Houd er rekening mee dat gratis Azure-accounts voor GPU ingeschakelde Sku's voor virtuele machines niet ondersteunen.
@@ -34,10 +34,10 @@ Een DSVM-exemplaar maken:
 
 1. Selecteer de knop **maken** onderaan.
 
-    [![](media/provision-vm/create-windows.png "Knop voor het maken van een Windows-computer")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. U moet worden omgeleid naar de Blade een virtuele machine maken.
-   @no__t tabblad 0Basics dat overeenkomt met Windows virtual machine @ no__t-1
+   ![tabblad basis principes dat overeenkomt met Windows virtual machine](./media/provision-vm/review-create-windows.png)
 
 1. Vul het tabblad **basis principes** in:
       * **Abonnement**: als u meer dan één abonnement hebt, selecteert u de computer waarop de machine wordt gemaakt en gefactureerd. U hebt privileges voor het maken van resources nodig voor dit abonnement.
@@ -72,7 +72,7 @@ U kunt ook een DSVM aan Azure Notebooks koppelen om Jupyter-notebooks op de virt
 ## <a name="next-steps"></a>Volgende stappen
 
 * Bekijk de hulpprogram ma's op de DSVM door het menu **Start** te openen.
-* Lees meer over de Azure Machine Learning-service door te lezen [Wat is Azure machine learning service?](../service/overview-what-is-azure-ml.md) en [zelf studies](../index.yml)te proberen.
+* Meer informatie over de Azure Machine Learning door te lezen [Wat is Azure machine learning?](../service/overview-what-is-azure-ml.md) en [zelf studies](../index.yml)te proberen.
 * Ga in Verkenner naar C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts voor voor beelden die gebruikmaken van de RevoScaleR-bibliotheek in R die ondersteuning biedt voor gegevens analyse op ondernemings schaal. 
 * Lees het artikel [tien dingen die u op het data Science virtual machine kunt doen](https://aka.ms/dsvmtenthings).
 * Leer hoe u end-to-end analytische oplossingen systematisch bouwt met behulp van het [team data Science process](../team-data-science-process/index.yml).

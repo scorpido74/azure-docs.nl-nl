@@ -1,5 +1,5 @@
 ---
-title: On-premises Apache Hadoop clusters migreren naar Azure HDInsight-architectuur
+title: 'Architectuur: on-premises Apache Hadoop naar Azure HDInsight'
 description: Ontdek de aanbevolen procedures voor de architectuur voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4243100d74515576463a6812e31625ddc0ca1f48
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735889"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499251"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>On-premises Apache Hadoop clusters migreren naar aanbevolen procedures voor de architectuur van Azure HDInsight
 
@@ -32,20 +32,20 @@ Azure HDInsight-clusters zijn ontworpen voor een specifiek type Compute-gebruik.
 |IoT/streaming|Kafka, Storm, Spark|
 |Transactionele verwerking van NoSQL|HBase|
 |Interactieve en snellere query's met in-memory cache|Interactive Query|
-|Data Science|ML Services, Spark|
+|Datawetenschap|ML Services, Spark|
 
 In de volgende tabel ziet u de verschillende methoden die kunnen worden gebruikt voor het maken van een HDInsight-cluster.
 
 |**Hulpprogramma**|**Browser op basis**|**Opdracht regel**|**REST API**|**SDK**|
 |---|---|---|---|---|
-|[Azure-portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
+|[.NET-SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[Java-SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure Resource Manager sjablonen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 Zie het artikel [cluster typen in HDInsight](../hadoop/apache-hadoop-introduction.md)voor meer informatie.

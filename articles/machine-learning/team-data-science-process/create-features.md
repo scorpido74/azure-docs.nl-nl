@@ -1,6 +1,6 @@
 ---
-title: Functie-engineering in data science - Team Data Science Process
-description: De toepassing van feature-engineering uitgelegd en bevat voorbeelden van de rol in de uitbreiding van de synchronisatiegegevens van machine learning.
+title: Functie techniek in data wetenschappen-team data Science process
+description: Hierin worden de doel einden van functie-engineering beschreven en vindt u voor beelden van de rol ervan in het proces voor gegevens verbetering van machine learning.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,85 +11,83 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e633c5742b8a7882149a347ced46e55440cb6913
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60398644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492433"
 ---
-# <a name="feature-engineering-in-data-science"></a>Functie-engineering in datatechnologie
-Dit artikel worden de doeleinden van feature-engineering en bevat voorbeelden van de rol in de uitbreiding van de synchronisatiegegevens van machine learning. De voorbeelden die wordt gebruikt ter illustratie van dit proces worden getekend van Azure Machine Learning Studio. 
+# <a name="feature-engineering-in-data-science"></a>Functie techniek in data wetenschappen
+In dit artikel wordt uitgelegd wat het doel is van functie techniek en vindt u voor beelden van hun rol in het proces voor gegevens verbetering van machine learning. De voor beelden die worden gebruikt voor het illustreren van dit proces, worden getrokken van Azure Machine Learning Studio. 
 
-Deze taak is een stap in de [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Deze taak is een stap in het [team data Science process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
-Functie engineering pogingen te verhogen van de voorspellende kracht van de learning-algoritmen met het maken van de functies van onbewerkte gegevens die helpen bij het leerproces te vergemakkelijken. Het technische team en de selectie van functies maakt deel uit van de TDSP die worden beschreven in de [wat is de levenscyclus van het Team Data Science Process?](overview.md) Feature-engineering en selectie maken deel uit van de **functies ontwikkelen** stap van de TDSP. 
+Feature engineering probeert de voorspellende kracht van leer algoritmen te verhogen door functies te maken op basis van onbewerkte gegevens die het leer proces helpen vergemakkelijken. De techniek en selectie van functies is een onderdeel van de TDSP die wordt beschreven in de [informatie over de levens cyclus van het team data Science process.](overview.md) Functie techniek en selectie zijn onderdelen van de stap **functies ontwikkelen** van de TDSP. 
 
-* **functie-engineering**: Dit proces probeert te maken van aanvullende desbetreffende functies van de bestaande onbewerkte functies in de gegevens, en de voorspellende kracht van het learning-algoritme te vergroten.
-* **functies selecteren**: Dit proces worden de belangrijke subset van functies van de oorspronkelijke gegevens in een poging om te beperken de dimensionaliteit van het probleem training geselecteerd.
+* **functie techniek**: dit proces probeert extra relevante functies te maken op basis van de bestaande onbewerkte functies in de gegevens en om de voorspellende kracht van het leer algoritme te verg Roten.
+* **functie selectie**: dit proces selecteert de sleutel subset van de oorspronkelijke gegevens functies in een poging om de dimensionaliteit van het trainings probleem te reduceren.
 
-Normaal gesproken **functie-engineering** eerst wordt toegepast voor het genereren van extra functies, en vervolgens de **functies selecteren** stap wordt uitgevoerd om te voorkomen, niet van belang, redundante of zeer gecorreleerde functies.
+Normaal gesp roken **functie techniek** wordt eerst toegepast om extra functies te genereren, en vervolgens wordt de **functie selectie** stap uitgevoerd om irrelevante, redundante of zeer gecorreleerde functies te elimineren.
 
-De trainingsgegevens gebruikt in machine learning kan vaak worden verbeterd door extractie van functies van de onbewerkte gegevens die worden verzameld. Een voorbeeld van een Social engineering-functie in de context van het leren hoe u kunt voor het classificeren van de afbeeldingen van handgeschreven tekens is het maken van een en ander dichtheid kaart is samengesteld uit de gegevens van de distributie onbewerkte bits. Deze kaart kan helpen de randen van de tekens efficiënter dan gewoon rechtstreeks met de onbewerkte distributie vinden.
+De trainings gegevens die in machine learning worden gebruikt, kunnen vaak worden verbeterd door het uitpakken van functies uit de verzamelde gegevens. Een voor beeld van een functie die is ontworpen in de context van het leren hoe u de afbeeldingen van handgeschreven tekens kunt classificeren, is het maken van een kaart met een beetje dichtheids die is samengesteld uit de gegevens van de ruwe bits distributie. Deze kaart kan helpen om de randen van de tekens efficiënter te vinden dan eenvoudigweg de onbewerkte distributie rechtstreeks te gebruiken.
 
-Voor het maken van functies voor gegevens in specifieke omgevingen, Zie de volgende artikelen:
+Raadpleeg de volgende artikelen voor informatie over het maken van functies voor gegevens in specifieke omgevingen:
 
 * [Functies maken voor gegevens in SQL Server](create-features-sql-server.md)
-* [Functies maken voor gegevens in een Hadoop-cluster met behulp van Hive-query 's](create-features-hive.md)
+* [Functies maken voor gegevens in een Hadoop-cluster met behulp van Hive-query's](create-features-hive.md)
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+## <a name="create-features-from-your-data---feature-engineering"></a>Functies maken op basis van uw gegevens functie techniek
+De trainings gegevens bestaan uit een matrix die bestaat uit voor beelden (records of waarnemingen die zijn opgeslagen in rijen), die elk een set functies hebben (variabelen of velden die in kolommen zijn opgeslagen). De functies die zijn opgegeven in het experimentele ontwerp, worden verwacht het karakteriseren van de patronen in de gegevens. Hoewel veel van de onbewerkte gegevens velden rechtstreeks kunnen worden opgenomen in de geselecteerde functieset voor het trainen van een model, is het vaak het geval dat extra (ontworpen) functies moeten worden samengesteld op basis van de functies in de onbewerkte gegevens om een verbeterde trainings gegevensset te genereren.
 
-## <a name="create-features-from-your-data---feature-engineering"></a>Functies maken van uw gegevens - functie-engineering
-De trainingsgegevens bestaat uit een matrix die bestaan uit voorbeelden (records of metingen die zijn opgeslagen in rijen), die allemaal een set functies (variabelen of velden die zijn opgeslagen in kolommen). De functies die zijn opgegeven in het ontwerp van de experimentele wordt verwacht dat de beschrijving van de patronen in de gegevens. Hoewel veel van de velden van de onbewerkte gegevens kunnen rechtstreeks worden opgenomen in de geselecteerde functie gebruikt voor een model te trainen, is het vaak het geval dat extra (Social engineering) functies moeten worden samengesteld uit de functies in de onbewerkte gegevens voor het genereren van een uitgebreide training-gegevensset.
+Wat voor soort functies moet worden gemaakt om de gegevensset te verbeteren bij het trainen van een model? Functies die zijn ontworpen om de training uit te breiden, bevatten informatie die de patronen in de gegevens beter onderscheidt. De nieuwe functies worden verwacht om aanvullende informatie te verstrekken die niet duidelijk is vastgelegd of gemakkelijk zichtbaar is in de oorspronkelijke of bestaande functieset. Maar dit proces is iets van een art. Geluids-en productiviteits beslissingen vereisen vaak enkele domein expertise.
 
-Wat voor soort functies moet worden gemaakt voor het verbeteren van de gegevensset bij het trainen van een model? Social engineering functies waarmee u de training kunt Geef informatie op die beter wordt onderscheid gemaakt de patronen in de gegevens tussen. De nieuwe functies worden voor aanvullende informatie die niet duidelijk vastgelegde of eenvoudig zichtbaar in de oorspronkelijke of een bestaande functieset verwacht. Maar dit proces is iets wat een afbeelding. Geluid en productieve beslissingen vereisen vaak de expertise van een domein.
+Wanneer u begint met Azure Machine Learning, kunt u dit proces het beste beton begrijpt met behulp van de voor beelden in de Studio. Er worden twee voor beelden weer gegeven:
 
-Bij het starten met Azure Machine Learning, is het eenvoudigste ingewikkeld van dit proces concrete invulling te geven met behulp van voorbeelden die in de Studio. Twee voorbeelden worden hier weergegeven:
+* Een voor beeld van een regressie voor voor [Spelling van het aantal fiets huren](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in een experiment met toezicht waarbij de doel waarden bekend zijn
+* Een voor beeld van een classificatie van tekst analyse met behulp van [functie-hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
-* Een voorbeeld van een regressie [voorspelling van het aantal huurfietsen](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in waar de doelwaarden zijn bekend is onder supervisie experiment
-* Een text mining classificatie voorbeeld met [hash-functies](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Voor beeld 1: tijdelijke functies toevoegen voor een regressie model
+We gebruiken het experiment ' vraag prognose van fietsen ' in Azure Machine Learning Studio (klassiek) om te laten zien hoe u functies voor een regressie taak kunt inbouwen. Het doel van dit experiment is het voors pellen van de vraag naar fietsen, dat wil zeggen het aantal fiets huren binnen een bepaalde maand/dag/uur. De gegevensset ' fiets huren ICB-gegevensset ' wordt gebruikt als de onbewerkte invoer gegevens. Deze gegevensset is gebaseerd op echte gegevens van het kapitaal Bike share-bedrijf dat een netwerk van een fiets verhuur in het Verenigde Staten onderhoudt in Washington DC. De gegevensset vertegenwoordigt het aantal fiets huren binnen een bepaald uur van een dag in de jaren 2011 en het jaar 2012 en bevat 17379 rijen en 17 kolommen. De onbewerkte functieset bevat weers omstandigheden (Tempe ratuur/vochtigheid/wind snelheid) en het type van de dag (feestdag/weekdag). Het veld om te voors pellen is het ' cnt-aantal ', dat de fiets huren binnen een bepaald uur vertegenwoordigt en een bereik van 1 tot en met 977.
 
-## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Voorbeeld 1: Tijdelijke functies voor een regressiemodel toevoegen
-We gebruiken het experiment ' on-Demand prognose van fietsen' in Azure Machine Learning Studio om te laten zien hoe u functies voor een taak regressie te ontwikkelen. Het doel van dit experiment is om te voorspellen van de vraag naar de fietsen, dat wil zeggen, het aantal huurfietsen binnen een specifieke maand/dag/uur. De gegevensset ' fiets verhuur UCI gegevensset ' wordt gebruikt als de onbewerkte invoergegevens. Deze gegevensset is gebaseerd op echte gegevens uit het kapitaal Bikeshare-bedrijf dat een fiets huur-netwerk in Washington D.C. in de Verenigde Staten. De gegevensset geeft het aantal huurfietsen binnen een bepaald uur per dag in het jaar 2011 en jaar 2012 en 17379 rijen en 17 kolommen bevat. De onbewerkte functieset bevat weersomstandigheden (temperatuur/vochtigheid/windsnelheid) en het type van de dag (feestdagen/dag). Het veld om te voorspellen is het aantal 'cnt', die de huurfietsen binnen een bepaald uur vertegenwoordigt en waarmee een bereik van 1 tot 977.
+Met het doel van het bouwen van efficiënte functies in de trainings gegevens worden vier regressie modellen gebouwd op basis van dezelfde algoritme, maar met vier verschillende trainings gegevens sets. De vier gegevens sets vertegenwoordigen dezelfde onbewerkte invoer gegevens, maar er is een steeds groter aantal functies ingesteld. Deze functies zijn onderverdeeld in vier categorieën:
 
-Met het doel van het maken van effectieve functies in de trainingsgegevens, vier regressie modellen zijn gebouwd met behulp van dezelfde algoritme, maar met vier verschillende training-gegevenssets. De vier gegevenssets dezelfde onbewerkte invoer gegevens vertegenwoordigen, maar met een toenemend aantal functies ingesteld. Deze functies zijn ingedeeld in vier categorieën:
+1. A = weer + feestdag + weekdag + weekend functies voor de voorspelde dag
+2. B = aantal fietsen dat in elk van de afgelopen 12 uur is gehuurd
+3. C = aantal fietsen dat in elk van de voor gaande 12 dagen op hetzelfde uur is gehuurd
+4. D = aantal fietsen dat in elk van de afgelopen 12 weken op hetzelfde uur en dezelfde dag is gehuurd
 
-1. Een = weer, feestdagen + weekdag + het weekend van functies voor de voorspelde dag
-2. B hoeveel fietsen verhuurd zijn in elk van de afgelopen 12 uur =
-3. C = aantal fietsen verhuurd zijn in elk van de afgelopen 12 dagen op hetzelfde uur
-4. D = aantal fietsen dat in elk van de vorige 12 weken op hetzelfde uur en dezelfde dag zijn gehuurd
+Naast de functieset A, die al aanwezig is in de oorspronkelijke onbewerkte gegevens, worden de andere drie sets functies gemaakt via het technisch proces van feature. Met de functieset B worden de meest recente vraag voor de fietsen vastgelegd. Met de functieset C worden de vraag naar fietsen op een bepaald uur vastgelegd. De functieset D legt de vraag naar fietsen op een bepaald uur en een bepaalde dag van de week vast. De vier trainings gegevens sets bevatten elk een functieset A, een + B, een + B + C en een + B + C + D.
 
-Naast de functie set A, die al in de oorspronkelijke onbewerkte gegevens bestaat, worden de andere drie sets van functies gemaakt via de functie voor engineering-proces. Functie ingesteld B opnamen recente aanvraag voor de fietsen. Functie instellen C legt de vraag naar fietsen op een bepaald uur. D opnamen vraag naar fietsen functie ingesteld op een bepaald uur en bepaalde dag van de week. De vier training gegevenssets die elke set-functie A, A + B, A + B + C en omvat A + B + C + D, respectievelijk.
+In het Azure Machine Learning experiment worden deze vier trainings gegevens sets gevormd via vier vertakkingen van de vooraf verwerkte invoer gegevensset. Met uitzonde ring van de meest linkse vertakking bevat elk van deze vertakkingen een [Execute R-script](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) module, waarin de afgeleide functies (functieset B, C en D) respectievelijk zijn gebouwd en worden toegevoegd aan de geïmporteerde gegevensset. In de volgende afbeelding ziet u het R-script dat wordt gebruikt om de functieset B in de tweede vertakking te maken.
 
-Deze vier trainingdatasets worden in de Azure Machine Learning-experiment, via vier vertakkingen van de vooraf verwerkte invoergegevensset gevormd. Met uitzondering van de meest linkse vertakking elk van deze vertakkingen bevat een [R-Script uitvoeren](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) -module, waarin de afgeleide functies (functie ingesteld B, C en D) zijn respectievelijk samengesteld en toegevoegd aan de geïmporteerde gegevensset. De volgende afbeelding ziet u het R-script gebruikt voor het maken van functieset B in de tweede links vertakking.
+![functies maken](./media/create-features/addFeature-Rscripts.png)
 
-![Functies maken](./media/create-features/addFeature-Rscripts.png)
+Een vergelijking van de prestatie resultaten van de vier modellen wordt in de volgende tabel samenvatten: 
 
-Een vergelijking van de prestatieresultaten van de vier modellen wordt in de volgende tabel samengevat: 
+![resultaat vergelijking](./media/create-features/result1.png)
 
-![vergelijking van resultaat](./media/create-features/result1.png)
+De beste resultaten worden weer gegeven door functies A + B + C. Houd er rekening mee dat de fout afneemt wanneer extra functie sets worden opgenomen in de trainings gegevens. Hiermee wordt het vermoeden gecontroleerd dat de functie set B, C aanvullende relevante informatie biedt voor de regressie taak. Het toevoegen van de D-functie lijkt geen extra verlaging van het fout aantal te bieden.
 
-De beste resultaten worden weergegeven door de functies A + B + C. Houd er rekening mee dat de frequentie van fouten wordt verlaagd wanneer extra functies zijn opgenomen in de trainingsgegevens. Er wordt gecontroleerd met de veronderstelling dat de functieset B, C meer relevante informatie voor de taak regressie bieden. Maar de D-functie toe te voegen lijkt niet te bieden een extra verlaging van de frequentie van fouten.
+## <a name="example2"></a>Voor beeld 2: functies maken in tekst analyse
+Functie techniek wordt veel toegepast in taken met betrekking tot tekst analyse, zoals document classificatie en sentiment analyse. Als u bijvoorbeeld documenten wilt classificeren in verschillende categorieën, is een typische veronderstelling dat het woord/de zinsdelen die zijn opgenomen in één document categorie minder waarschijnlijk in een andere document categorie voor komt. Met andere woorden, de frequentie voor de verdeling van woorden/zinsdelen kan verschillende document categorieën kenmerken. In toepassingen voor tekst analyse, omdat afzonderlijke delen van tekstinhoud doorgaans als invoer gegevens dienen, is het technisch proces van de functie nodig om de functies te maken die betrekking hebben op de frequentie van Word/uitdrukkingen.
 
-## <a name="example2"></a> Voorbeeld 2: Het maken van functies in text mining
-Feature-engineering is breed in taken met betrekking tot gegevensanalyse van tekst, zoals document classificatie en sentiment-analyse toegepast. Bijvoorbeeld, als u classificeren documenten in verschillende categorieën wilt, is een typische veronderstelling dat het woord/zinnen is opgenomen in één document categorie minder waarschijnlijk worden uitgevoerd in een andere categorie die doc-bestand. Met andere woorden, kan de frequentie van de distributie woorden/zinnen ander documentcategorieën karakteriseren. In text mining-toepassingen, omdat er afzonderlijke stukjes tekstinhoud meestal fungeren als de invoergegevens, de functie engineering-proces nodig om te maken van de functies met betrekking tot woord/bepaalde woordgroep frequenties.
+Ter verkrijging van deze taak wordt een techniek met de naam **hashing** toegepast om op efficiënte wijze wille keurige tekst functies in indexen in te scha kelen. In plaats van elke tekst functie (woorden/zinsdelen) aan een bepaalde index te koppelen, werkt deze methode door een hash-functie toe te passen op de functies en de hash-waarden ervan te gebruiken als indexen.
 
-Voor het bereiken van deze taak, een techniek met de naam **hash-functies** is toegepast om te zetten efficiënt willekeurige tekstfuncties in indexen. In plaats van elke tekstfunctie (woorden/zinnen) koppelen aan een bepaalde index, deze methode werkt door het toepassen van een hash-functie op de functies en het gebruik van de hashwaarden als indexen rechtstreeks.
+In Azure Machine Learning is er een [functie hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) -module waarmee deze Word/woordgroepen-functies op een gemakkelijke manier worden gemaakt. In de volgende afbeelding ziet u een voor beeld van het gebruik van deze module. De invoer gegevensset bevat twee kolommen: de classificatie van het boek van 1 tot 5 en de werkelijke beoordelings inhoud. Het doel van deze [functie hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) -module is om een aantal nieuwe functies op te halen die de frequentie van het voorval van de corresponderende woord (en)/phrase (s) in de specifieke boek beoordeling tonen. Als u deze module wilt gebruiken, voert u de volgende stappen uit:
 
-In Azure Machine Learning, er is een [hash-functies](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) module die u maakt deze woord/bepaalde woordgroep functies gemakkelijk. Volgende afbeelding toont een voorbeeld van het gebruik van deze module. De invoergegevensset bevat twee kolommen: het boek classificatie, variërend van 1 tot en met 5, en de inhoud van de werkelijke controleren. Het doel van deze [hash-functies](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) -module is om op te halen van een groot aantal nieuwe functies waarin de exemplaar-frequentie van de bijbehorende woorden / r-zin(nen) binnen het specifieke rapport bekijken. Voor het gebruik van deze module, voert u de volgende stappen uit:
+* Selecteer eerst de kolom die de invoer tekst bevat ("col2" in dit voor beeld).
+* Stel vervolgens ' hashing bitsize ' in op 8, wat betekent dat 2 ^ 8 = 256 functies worden gemaakt. Het woord/de fase in alle tekst wordt gehasht naar 256 indices. De para meter "hashing bitsize" ligt tussen 1 en 31. De woord (en)/phrase (en) worden waarschijnlijk in dezelfde index gehasht als het een groter getal is.
+* Ten derde stelt u de para meter "N-gram" in op 2. Met deze waarde wordt de frequentie van het aantal unigrams (een functie voor elk woord) en bigrams (een functie voor elk paar aaneengesloten woorden) opgehaald uit de invoer tekst. De para meter ' N-g ' variëren van 0 tot 10, waarmee het maximum aantal sequentiële woorden wordt aangegeven dat in een functie moet worden opgenomen.  
 
-* Selecteer eerst de kolom waarin de ingevoerde tekst ("Col2" in dit voorbeeld).
-* Ten tweede ingesteld 'Hashing bitsize' op 8, wat betekent dat 2 ^ 8 = 256 functies wordt gemaakt. Het woord of de fase in de tekst wordt naar 256 indexen worden gehasht. De parameter "Hashing bitsize" bereik van 1 tot en met 31. De tekst / r-zin(nen) waarschijnlijk minder worden opgedeeld in dezelfde index als deze een groter aantal instelt.
-* Derde, stel de parameter 'N-grammen' op 2. Deze waarde wordt de frequentie van het exemplaar van unigrams (een functie voor elke één woord) en bigrams (een functie voor elke combinatie van een aaneengesloten woorden) opgehaald uit de invoertekst. De parameter "N-grammen" bereik van 0 tot en met 10, waarmee het maximum aantal opeenvolgende woorden moeten worden opgenomen in een functie wordt aangegeven.  
+![De module ' hashing van functies '](./media/create-features/feature-Hashing1.png)
 
-![Module "Functie Hashing"](./media/create-features/feature-Hashing1.png)
+In de volgende afbeelding ziet u hoe deze nieuwe functie eruitziet.
 
-De volgende afbeelding ziet u wat deze nieuwe functie eruit.
-
-![Voorbeeld van de "Functie Hashing"](./media/create-features/feature-Hashing2.png)
+![Voor beeld van functie-hashing](./media/create-features/feature-Hashing2.png)
 
 ## <a name="conclusion"></a>Conclusie
-Ontworpen en geselecteerde functies verhoogt de efficiëntie van de trainingsproces, dat wordt geprobeerd om op te halen van de gegevens van de sleutel die is opgenomen in de gegevens. Ze verbeteren de kracht van deze modellen voor het classificeren van de ingevoerde gegevens correct en om te voorspellen van uitkomsten van belang zijn meer databases robuuster worden ook. Feature-engineering en selectie kunnen ook zodat de learning meer rekenintensief tractable combineren. Dit gebeurt verbeteren en vervolgens het aantal functies die nodig zijn om te kalibreren of een model te trainen te verminderen. Wiskundig spreken, zijn de functies die zijn geselecteerd voor het model te trainen een minimale set van onafhankelijke variabelen die uitgelegd van de patronen in de gegevens en vervolgens de resultaten met succes voorspellen.
+Ontworpen en geselecteerde functies verhogen de efficiëntie van het trainings proces, waardoor de belang rijke gegevens in de gegevens worden geëxtraheerd. Ze verbeteren ook de kracht van deze modellen om de invoer gegevens nauw keurig te classificeren en om de resultaten betrouwbaarder te voors pellen. Functie techniek en selectie kunnen ook worden gecombineerd om het leren van de reken kracht te maken. Dit doet u door het aantal functies te verhogen en te verminderen dat nodig is voor het kalibreren of trainen van een model. Mathematische spraak: de functies die zijn geselecteerd om het model te trainen, zijn een minimale set onafhankelijke variabelen waarmee de patronen in de gegevens worden uitgelegd en die vervolgens kunnen worden voor speld.
 
-Het is niet altijd noodzakelijk om uit te voeren Functieselectie engineering of functie. Of het nodig is of niet afhankelijk zijn van de gegevens te leveren of verzameld, de algoritme die is geselecteerd en het doel van het experiment.
+Het is niet altijd nood zakelijk om functie-engineering of functie selectie uit te voeren. Of het nu nodig is of niet afhankelijk is van de gegevens die moeten worden opgenomen of verzameld, het algoritme dat is geselecteerd en het doel van het experiment.
 

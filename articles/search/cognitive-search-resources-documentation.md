@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792058"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466713"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Documentatie bronnen voor AI-verrijking in azure Cognitive Search
 
@@ -22,8 +22,8 @@ AI-verrijking is een mogelijkheid van Azure Cognitive Search indexeren waarmee l
 De volgende artikelen zijn de volledige documentatie voor AI-verrijking.
 
 ## <a name="getting-started"></a>Aan de slag
-+ [Inleiding tot AI-verrijking in azure Cognitive Search](cognitive-search-concept-intro.md)
-+ [Quick Start: AI-verrijking in de portal](cognitive-search-quickstart-blob.md)
++ [Inleiding tot AI in azure Cognitive Search](cognitive-search-concept-intro.md)
++ [Snelstartgids: een cognitieve vaardigheids maken in de Azure Portal](cognitive-search-quickstart-blob.md)
 + [Zelf studie: verrijkte indexering met AI](cognitive-search-tutorial-blob.md)
 + [Voor beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md)
 
@@ -36,7 +36,7 @@ De volgende artikelen zijn de volledige documentatie voor AI-verrijking.
 + [Een aangepaste vaardigheden Interface definiëren](cognitive-search-custom-skill-interface.md)
 + [Tips voor probleemoplossing](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>Referentie
+## <a name="reference"></a>Naslaginformatie
 
 + [Ingebouwde vaardig heden](cognitive-search-predefined-skills.md)
   + [Micro soft. skills. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
@@ -49,6 +49,7 @@ De volgende artikelen zijn de volledige documentatie voor AI-verrijking.
   + [Micro soft. skills. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Micro soft. skills. Vision. OcrSkill](cognitive-search-skill-ocr.md)
   + [Micro soft. skills. util. ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Micro soft. skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Micro soft. skills. util. ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Aangepaste vaardigheden

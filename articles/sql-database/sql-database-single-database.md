@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 2f55ad795cc76d59581b25ca60a1c89e7db96b04
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316660"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496014"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Wat is een enkele data base in Azure SQL Database
 
@@ -29,7 +29,7 @@ De implementatie optie voor één data base maakt een data base in Azure SQL Dat
 
 ## <a name="dynamic-scalability"></a>Dynamische schaalbaarheid
 
-U kunt uw eerste app bouwen op een kleine, afzonderlijke data base tegen lage kosten in de serverloze Compute-laag (preview) of een kleine reken grootte in de ingerichte Compute-laag. U kunt de [Compute-of servicelaag](sql-database-single-database-scale.md) hand matig of via een programma op elk gewenst moment wijzigen om te voldoen aan de behoeften van uw oplossing. U kunt het prestatieniveau aanpassen zonder uitvaltijd voor uw app of voor uw klanten. Dankzij dynamische schaalbaarheid kan uw database op een transparante manier snel reageren op veranderende resourcevereisten en betaalt u alleen voor de resources die u nodig hebt wanneer u ze nodig.
+U kunt uw eerste app bouwen op een kleine, afzonderlijke data base tegen lage kosten in de serverloze Compute-laag of een kleine reken grootte in de ingerichte Compute-laag. U kunt de [Compute-of servicelaag](sql-database-single-database-scale.md) hand matig of via een programma op elk gewenst moment wijzigen om te voldoen aan de behoeften van uw oplossing. U kunt het prestatieniveau aanpassen zonder uitvaltijd voor uw app of voor uw klanten. Dankzij dynamische schaalbaarheid kan uw database op een transparante manier snel reageren op veranderende resourcevereisten en betaalt u alleen voor de resources die u nodig hebt wanneer u ze nodig.
 
 ## <a name="single-databases-and-elastic-pools"></a>Individuele databases en elastische pools
 
@@ -55,7 +55,7 @@ Zie voor meer informatie [Transact-SQL-verschillen oplossen tijdens de migratie 
 SQL Database biedt een reeks ingebouwde functies voor [beveiliging en naleving](sql-database-security-overview.md) om uw toepassing te helpen voldoen aan verschillende vereisten op het gebied van beveiliging en naleving.
 
 > [!IMPORTANT]
-> Azure SQL Database (alle implementatie opties), is gecertificeerd op basis van een aantal nalevings standaarden. Zie het vertrouwens centrum van [Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
+> Azure SQL Database (alle implementatie opties), is gecertificeerd op basis van een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

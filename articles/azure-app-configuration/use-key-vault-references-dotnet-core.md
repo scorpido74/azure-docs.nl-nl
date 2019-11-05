@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 277333cbca5a31fdc08ae943d2ff61c35d2c9310
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 992cface653bf3fe52afc7efa3f17573fcf91399
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802362"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469641"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Zelf studie: Key Vault verwijzingen gebruiken in een ASP.NET Core-app
 
@@ -82,7 +82,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault verwijzing toevoegen aan de app-configuratie
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer vervolgens de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer vervolgens de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **Configuration Explorer**.
 
@@ -123,7 +123,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. Voeg in de volgende opdrachten geheimen toe in plaats van *clientId* en *ClientSecret* naar geheimen Manager. De opdrachten moeten worden uitgevoerd in dezelfde map als het *. csproj* -bestand.
+1. Voeg geheimen toe voor *clientId* en *ClientSecret* aan geheimen Manager, het hulp programma voor het opslaan van gevoelige gegevens die u hebt toegevoegd aan het *. csproj* -bestand in [Quick Start: een ASP.net core-app maken met Azure-app-configuratie](./quickstart-aspnet-core-app.md). Deze opdrachten moeten worden uitgevoerd in dezelfde map als het *. csproj* -bestand.
 
     ```
     dotnet user-secrets set ConnectionStrings:KeyVaultClientId <clientId-of-your-service-principal>
@@ -189,7 +189,7 @@ Als u een geheim wilt toevoegen aan de kluis, hoeft u slechts een paar extra sta
 
     U hebt toegang tot de waarde van de Key Vault Reference **TestApp: Settings: KeyVaultMessage** op dezelfde manier als voor de configuratie waarde van **TestApp: Settings: Message**.
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 

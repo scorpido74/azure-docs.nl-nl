@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b0fab51e002ecb431bf68f58984290889296b2a9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470106"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -25,10 +25,15 @@ Azure biedt ingebouwde diagnostische gegevens om te helpen bij het opsporen van 
 
 In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.com) en Azure CLI voor het werken met Diagnostische logboeken. Zie [problemen met Azure in Visual Studio oplossen](troubleshoot-dotnet-visual-studio.md)voor meer informatie over het werken met Diagnostische logboeken met Visual Studio.
 
-|type|Platform|Location|Description|
+> [!NOTE]
+> Naast de instructies voor logboek registratie in dit artikel, is er een nieuwe, geïntegreerde logboek registratie functie met Azure-bewaking. U vindt deze mogelijkheid op [de pagina logboeken en diagnostische instellingen (preview)](https://aka.ms/appsvcblog-azmon). 
+>
+>
+
+|Type|Platform|Locatie|Beschrijving|
 |-|-|-|-|
-| Toepassing toevoegen aan het logboek | Windows, Linux | App Service bestands systeem en/of Azure Storage-blobs | Registreert berichten die zijn gegenereerd door de toepassings code. De berichten kunnen worden gegenereerd door het webframework dat u kiest, of vanuit de code van uw toepassing rechtstreeks met het standaard logboek registratie patroon van uw taal. Elk bericht krijgt een van de volgende categorieën: **Kritiek**, **fout**, **waarschuwing**, **info**, **fout opsporing**en **tracering**. U kunt selecteren hoe uitgebreid u de logboek registratie wilt maken door het Ernst niveau in te stellen wanneer u logboek registratie van toepassingen inschakelt.|
-| Webserverlogboeken| Windows | App Service bestands systeem of Azure Storage-blobs| Onbewerkte HTTP-aanvraag gegevens in de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Elk logboek bericht bevat gegevens zoals de HTTP-methode, bron-URI, client-IP, client poort, gebruikers agent, respons code, enzovoort. |
+| Toepassingslogboeken | Windows, Linux | App Service bestands systeem en/of Azure Storage-blobs | Registreert berichten die zijn gegenereerd door de toepassings code. De berichten kunnen worden gegenereerd door het webframework dat u kiest, of vanuit de code van uw toepassing rechtstreeks met het standaard logboek registratie patroon van uw taal. Aan elk bericht wordt een van de volgende categorieën toegewezen: **kritiek**, **fout**, **waarschuwing**, **info**, **fout opsporing**en **tracering**. U kunt selecteren hoe uitgebreid u de logboek registratie wilt maken door het Ernst niveau in te stellen wanneer u logboek registratie van toepassingen inschakelt.|
+| Logboek registratie van webserver| Windows | App Service bestands systeem of Azure Storage-blobs| Onbewerkte HTTP-aanvraag gegevens in de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Elk logboek bericht bevat gegevens zoals de HTTP-methode, bron-URI, client-IP, client poort, gebruikers agent, respons code, enzovoort. |
 | Gedetailleerde logboek registratie van fouten | Windows | App Service bestands systeem | Kopieën van de *htm* -fout pagina's die naar de client browser zouden zijn verzonden. Uit veiligheids overwegingen mogen gedetailleerde fout pagina's niet worden verzonden naar clients in de productie omgeving, maar App Service kunt de fout pagina opslaan telkens wanneer er een toepassings fout optreedt met HTTP-code 400 of hoger. De pagina bevat mogelijk informatie die u kan helpen bij het bepalen van de oorzaak van de fout code door de server. |
 | Tracering van mislukte aanvragen | Windows | App Service bestands systeem | Gedetailleerde tracerings informatie over mislukte aanvragen, inclusief een tracering van de IIS-onderdelen die worden gebruikt om de aanvraag te verwerken en de tijd die in elk onderdeel is gemaakt. Het is handig als u de prestaties van de site wilt verbeteren of een specifieke HTTP-fout wilt isoleren. Er wordt één map gegenereerd voor elke mislukte aanvraag, die het XML-logboek bestand bevat en het XSL-opmaak model waarmee het logboek bestand wordt weer gegeven. |
 | Implementatie logboek registratie | Windows, Linux | App Service bestands systeem | Logboeken voor wanneer u inhoud naar een app publiceert. De registratie van de implementatie wordt automatisch uitgevoerd en er zijn geen Configureer bare instellingen voor de registratie van de implementatie. Het helpt u om te bepalen waarom een implementatie is mislukt. Als u bijvoorbeeld een [aangepast implementatie script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)gebruikt, kunt u de implementatie logboek registratie gebruiken om te bepalen waarom het script mislukt. |
@@ -45,7 +50,7 @@ Als u toepassings logboeken wilt inschakelen voor Windows-apps in de [Azure Port
 
 Selecteer **aan** voor **toepassings Logboeken (bestands systeem)** of **toepassings Logboeken (BLOB)** of beide. 
 
-De optie **Bestands systeem** is bedoeld voor tijdelijke fout opsporing en schakelt zichzelf in 12 uur uit. De **BLOB** -optie is voor langdurige logboek registratie en er is een BLOB storage-container nodig om logboeken naar te schrijven.  De **BLOB** -optie bevat ook aanvullende informatie in de logboek berichten, zoals de id van de oorspronkelijke VM-instantie van het logboek bericht`InstanceId`(), de thread`Tid`-id () en een gedetailleerdere[`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)tijds tempel ().
+De optie **Bestands systeem** is bedoeld voor tijdelijke fout opsporing en schakelt zichzelf in 12 uur uit. De **BLOB** -optie is voor langdurige logboek registratie en er is een BLOB storage-container nodig om logboeken naar te schrijven.  De **BLOB** -optie bevat ook aanvullende informatie in de logboek berichten, zoals de id van de oorspronkelijke VM-instantie van het logboek bericht (`InstanceId`), thread-ID (`Tid`) en een gedetailleerdere tijds tempel ([`EventTickCount`](https://docs.microsoft.com/dotnet/api/system.datetime.ticks)).
 
 > [!NOTE]
 > Momenteel kunnen alleen .NET-toepassings logboeken worden geschreven naar de Blob-opslag. Java, PHP, node. js, python-toepassings logboeken kunnen alleen worden opgeslagen op het App Service-bestands systeem (zonder code wijzigingen voor het schrijven van logboeken naar externe opslag).
@@ -158,19 +163,19 @@ Als u de Azure Storage blobs-optie voor een logboek type configureert, hebt u ee
 
 Voor logboeken die zijn opgeslagen in het bestands systeem van App Service is de eenvoudigste manier om het ZIP-bestand te downloaden in de browser:
 
-- Linux/container-apps:`https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
-- Windows-apps:`https://<app-name>.scm.azurewebsites.net/api/dump`
+- Linux/container-apps: `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip`
+- Windows-apps: `https://<app-name>.scm.azurewebsites.net/api/dump`
 
 Voor Linux/container-apps bevat het ZIP-bestand console-uitvoer logboeken voor de docker-host en de docker-container. Voor een uitgeschaalde app bevat het ZIP-bestand één set logboeken voor elk exemplaar. In het App Service bestands systeem zijn deze logboek bestanden de inhoud van de map */Home/logfiles* .
 
 Voor Windows-apps bevat het ZIP-bestand de inhoud van de *D:\Home\LogFiles* -map in het app service-Bestands systeem. Het heeft de volgende structuur:
 
-| Logboektype | Directory | Description |
+| Logboek type | Directory | Beschrijving |
 |-|-|-|
 | **Toepassings logboeken** |*/LogFiles/Application/* | Bevat een of meer tekst bestanden. De indeling van de logboek berichten is afhankelijk van de logboek registratie provider die u gebruikt. |
 | **Traceringen van mislukte aanvragen** | */LogFiles/W3SVC#########/* | Bevat XML-bestanden en een XSL-bestand. U kunt de opgemaakte XML-bestanden weer geven in de browser. |
 | **Gedetailleerde fouten logboeken** | */LogFiles/DetailedErrors/* | Bevat HTM-fout bestanden. U kunt de HTM-bestanden weer geven in de browser.<br/>Een andere manier om de traceringen van mislukte aanvragen weer te geven, is door naar de app-pagina in de portal te navigeren. Selecteer in het linkermenu **problemen vaststellen en oplossen**, zoek naar **Logboeken voor tracering van mislukte aanvragen**en klik vervolgens op het pictogram om de gewenste tracering weer te geven. |
-| **Webserver logboeken** | */LogFiles/http/RawLogs/* | Bevat tekst bestanden die zijn ingedeeld met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met een tekst editor of een hulp programma zoals [log parser](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App service biedt geen ondersteuning `s-computername`voor `s-ip`de velden `cs-version` , of. |
+| **Webserver logboeken** | */LogFiles/http/RawLogs/* | Bevat tekst bestanden die zijn ingedeeld met de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Deze informatie kan worden gelezen met een tekst editor of een hulp programma zoals [log parser](https://go.microsoft.com/fwlink/?LinkId=246619).<br/>App Service biedt geen ondersteuning voor de velden `s-computername`, `s-ip`of `cs-version`. |
 | **Implementatie logboeken** | */Logfiles/Git/* en */Deployments/* | Logboeken bevatten die zijn gegenereerd door de interne implementatie processen, evenals logboeken voor git-implementaties. |
 
 ## <a name="nextsteps"></a> Volgende stappen

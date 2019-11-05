@@ -1,5 +1,5 @@
 ---
-title: Beperking van uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren
+title: Beperking van uitgaand netwerk verkeer configureren-Azure HDInsight
 description: Meer informatie over het configureren van de beperking van uitgaand netwerk verkeer voor Azure HDInsight-clusters.
 services: hdinsight
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: df691102b565824d6cb6a86f19e6fce3822d8ba8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789794"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498137"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall (preview-versie)
 
@@ -46,7 +46,7 @@ Een samen vatting van de stappen voor het vergren delen van uitgaand verkeer van
 
 Maak een toepassings regel verzameling waarmee het cluster belang rijke communicatie kan verzenden en ontvangen.
 
-Selecteer de nieuwe firewall **test-FW01** van de Azure Portal. Klik op **regels** onder **instellingen**  > **toepassings regel verzameling**  > **toepassings regel verzameling toevoegen**.
+Selecteer de nieuwe firewall **test-FW01** van de Azure Portal. Klik op **regels** onder **instellingen** > **toepassings regel verzameling** > **toepassings regel verzameling toevoegen**.
 
 ![Titel: toepassings regel verzameling toevoegen](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -66,7 +66,7 @@ Voer de volgende stappen uit op het scherm **toepassings regel toevoegen** :
    | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
    | Rule_4 | * | https: 443, http: 80 | < storage_account_name. blob. core. Windows. net > | Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat [beveiligde overdracht vereist](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld voor het opslag account. |
 
-1. Klik op **Add**.
+1. Klik op **Toevoegen**.
 
    ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit op het scherm **toepassings regel toevoegen** :
 Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
 1. Selecteer de nieuwe firewall **test-FW01** van de Azure Portal.
-1. Klik op **regels** onder **instellingen**  > **netwerk regel verzameling**  > **netwerk regel verzameling toevoegen**.
+1. Klik op **regels** onder **instellingen** > **netwerk regel verzameling** > **netwerk regel verzameling toevoegen**.
 1. Voer op het scherm **netwerk regel verzameling toevoegen** een **naam**en **prioriteit**in en klik op **toestaan** in het vervolg keuzemenu **actie** .
 1. Maak de volgende regels in de sectie **IP-adressen** :
 
@@ -115,12 +115,12 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 
 | Routenaam | Adresvoorvoegsel | Volgend hoptype | Adres van de volgende hop |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | N.V.T. |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | N.V.T. |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | N.V.T. |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | N.V.T. |
-| 13.67.223.215 | 13.67.223.215/32 | Internet | N.V.T. |
-| 40.86.83.253 | 40.86.83.253/32 | Internet | N.V.T. |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | N.v.t. |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | N.v.t. |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | N.v.t. |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | N.v.t. |
+| 13.67.223.215 | 13.67.223.215/32 | Internet | N.v.t. |
+| 40.86.83.253 | 40.86.83.253/32 | Internet | N.v.t. |
 | 0.0.0.0 | 0.0.0.0/0 | Virtueel apparaat | 10.1.1.4 |
 
 De configuratie van de route tabel volt ooien:
@@ -183,10 +183,10 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 
 | **Endpoints** | **Details** |
 |---|---|
-| \*:123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
+| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
 | [Hier](hdinsight-management-ip-addresses.md) gepubliceerde ip's | Dit zijn de HDInsight-service |
 | Privé-IP-adressen van AAD-DS voor ESP-clusters |
-| \*:16800 voor KMS Windows-activering |
+| \*: 16800 voor KMS Windows-activering |
 | \*12000 voor Log Analytics |
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-afhankelijkheden

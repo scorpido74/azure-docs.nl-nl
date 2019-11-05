@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Eenvoudige entiteit, woordgroepen lijst-LUIS'
+title: 'Zelf studie: eenvoudige entiteit, woordgroepen lijst-LUIS'
 titleSuffix: Azure Cognitive Services
 description: In deze zelfstudie haalt u via machine learning verkregen gegevens over een functienaam op uit een utterance met behulp van de entiteit Simple. Als u de nauwkeurigheid van het extraheren wilt vergroten, voegt u een woordenlijst toe met termen die specifiek gekoppeld zijn aan de Simple-entiteit.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a917176cb06e833745996326520341c1f819c5bf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376270"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465415"
 ---
-# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Zelfstudie: namen extraheren met de entiteit Simple en een woordenlijst
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Zelf studie: namen extra heren met een eenvoudige entiteit en een woordgroepen lijst
 
 In deze zelfstudie haalt u via machine learning verkregen gegevens over een functienaam op uit een utterance met behulp van de entiteit **Simple**. Als u de nauwkeurigheid van het extraheren wilt vergroten, voegt u een woordenlijst toe met termen die specifiek gekoppeld zijn aan de Simple-entiteit.
 
 De Simple-entiteit detecteert een concept met enkelvoudige gegevens dat is opgenomen in woorden of woordgroepen.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -93,7 +95,7 @@ Zodra de entiteiten in de voorbeeldutterances zijn gemarkeerd, is het belangrijk
 
 1. In de utterance `I want to apply for the new accounting job` selecteert u `accounting`, voert u `Job` in het bovenste veld van het snelmenu in en selecteert u **Create new entity** in het snelmenu. 
 
-    [![Schermopname van LUIS met intentie ApplyForJob en gemarkeerde stappen voor entiteit maken](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Schermopname van LUIS met intentie ApplyForJob en gemarkeerde stappen voor entiteit maken")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Scherm opname van LUIS met ' ApplyForJob ' voor het maken van entiteits stappen gemarkeerd](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Scherm opname van LUIS met ' ApplyForJob ' voor het maken van entiteits stappen gemarkeerd")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 1. Controleer de naam en het type van de entiteit in het pop-upvenster en selecteer **Done**.
 
@@ -101,7 +103,7 @@ Zodra de entiteiten in de voorbeeldutterances zijn gemarkeerd, is het belangrijk
 
 1. Markeer in de resterende uitingen de taakgerelateerde woorden met de entiteit **Taak** door het woord of zinsdeel te selecteren en vervolgens in het contextmenu **Taak** te selecteren. 
 
-    [![Schermopname van LUIS met het labelen als de entiteit Job gemarkeerd](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Schermopname van LUIS met het labelen als de entiteit Job gemarkeerd")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Scherm opname van LUIS labeling taak entiteit gemarkeerd](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Scherm opname van LUIS labeling taak entiteit gemarkeerd")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
 
 ## <a name="add-more-example-utterances-and-mark-entity"></a>Meer voorbeelduitingen toevoegen en entiteit markeren
@@ -133,7 +135,7 @@ Eenvoudige entiteiten hebben veel voorbeelden nodig om voorspellingen van hoge b
 
 1. Selecteer **Intents** in het linkermenu.
 
-1. Selecteer **GetJobInformation** in de lijst met intenties. 
+1. Selecteer **GetJobInformation** in de lijst met intents. 
 
 1. De taken in de voorbeelduitingen labelen
 
@@ -231,7 +233,7 @@ Open [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-services-
 
 1. Noem de nieuwe woordgroepenlijst `JobNames` en kopieer de lijst van jobs-phrase-list.csv naar het tekstvak voor het invoeren van **waarden**.
 
-    [![Schermopname van het pop-updialoogvenster voor het maken van een nieuwe woordgroepenlijst](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Schermopname van het pop-updialoogvenster voor het maken van een nieuwe woordgroepenlijst")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Scherm opname van dialoog venster nieuwe woordgroepen lijst maken pop-up](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Scherm opname van dialoog venster nieuwe woordgroepen lijst maken pop-up")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Als u wilt dat meer woorden worden toegevoegd aan de woordgroepenlijst, selecteert u **Recommand**, bekijkt u vervolgens de nieuwe **Gerelateerde waarden** en voegt de relevante toe. 
 
@@ -239,7 +241,7 @@ Open [jobs-phrase-list.csv](https://github.com/Azure-Samples/cognitive-services-
 
 1. Selecteer **gereed** om de lijst met zinsdelen te activeren.
 
-    [![Schermopname van het pop-upvenster voor het maken van een nieuwe woordgroepenlijst met woorden in het vak voor woordgroepenlijstwaarden](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Schermopname van het pop-upvenster voor het maken van een nieuwe woordgroepenlijst met woorden in het vak voor woordgroepenlijstwaarden")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Scherm afbeelding van het dialoog venster nieuwe woordgroepen lijst maken pop-up met woorden in het vak waarden van woordgroepen lijst](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Scherm afbeelding van het dialoog venster nieuwe woordgroepen lijst maken pop-up met woorden in het vak waarden van woordgroepen lijst")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 1. U moet de app opnieuw trainen en publiceren om de woordgroepenlijst te kunnen gebruiken.
 

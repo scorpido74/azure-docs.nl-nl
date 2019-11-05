@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: f8493794df2ec0c6123a85cc5405b18fbe1f6786
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: dfb550fd0bc93a6b865495bf2c19f394fb0737ed
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72957809"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987884"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Wat is Azure IoT Central (preview-functies)?
 
@@ -26,10 +26,6 @@ ms.locfileid: "72957809"
 Azure IoT Central is een IoT-toepassings platform waarmee de belasting en kosten voor het ontwikkelen, beheren en onderhouden van IoT-oplossingen op bedrijfs niveau worden verminderd. Als u ervoor kiest om met Azure IoT Central te bouwen, hebt u de mogelijkheid om tijd, geld en energie te best Eden aan het trans formatie van uw bedrijf met IoT-gegevens, in plaats van alleen maar een complexe en voortdurend veranderende IoT-infra structuur te onderhouden en bij te werken.
 
 Met de webgebruikersinterface kunt u de voor waarden van apparaten bewaken, regels maken en miljoenen apparaten en hun gegevens in hun levens cyclus beheren. Daarnaast kunt u hiermee op Device Insights reageren door IoT Intelligence uit te breiden in line-of-business-toepassingen.
-
-De volgende video biedt een overzicht van Azure IoT Central:
-
->[!VIDEO https://azure.microsoft.com/resources/videos/iot-central-updates/]
 
 Dit artikel bevat een overzicht van Azure IoT Central:
 

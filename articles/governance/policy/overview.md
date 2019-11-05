@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
-ms.openlocfilehash: b8628d60110818fe64e5b09b400a1396213147b6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 46d78ca9f82017e1a11642af6e5dcdc68e239c8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980776"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498280"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Overzicht van de Azure Policy-service
 
@@ -48,14 +48,13 @@ Het maken en implementeren van een beleidsregel in Azure Policy begint met het m
 
 In Azure Policy wordt een aantal ingebouwde beleidsregels geboden dat standaard beschikbaar is. Bijvoorbeeld:
 
-- **SQL Server 12.0 vereisen**: Hiermee controleert u of alle SQL-servers gebruikmaken van versie 12.0. Het bijbehorende effect is om alle servers te weigeren die niet voldoen aan deze criteria.
-- **Toegestane opslagaccount-SKU's**: Bepaalt of opslagaccounts die worden geïmplementeerd zich in een set SKU-grootten bevinden. Het bijbehorende effect is om alle opslagaccounts te weigeren die niet in overeenstemming zijn met de gedefinieerde SKU-grootten.
-- **Toegestaan resourcetype**: Hiermee definieert u de resourcetypen die u kunt implementeren. Het bijbehorende effect is om alle resources te weigeren die geen deel uitmaken van deze gedefinieerde lijst.
-- **Toegestane locaties**: Hiermee beperkt u de beschikbare locaties voor nieuwe resources. Het bijbehorende effect wordt gebruikt om uw geografisch nalevingsvereisten af te dwingen.
-- **Toegestane SKU's van virtuele machines**: Hiermee wordt een set SKU's voor virtuele machines gespecificeerd die u kunt implementeren.
-- **Tag met standaardwaarde toepassen**: Hiermee wordt een vereiste tag met bijbehorende standaardwaarde toegepast als de tag niet is opgegeven tijdens de implementatieaanvraag.
-- **Tag en waarde afdwingen**: Hiermee wordt een vereiste tag met de bijbehorende waarde afgedwongen in een resource.
-- **Niet toegestane resourcetypen**: Hiermee voorkomt u dat een lijst met resourcetypen wordt geïmplementeerd.
+- **Toegestane opslag account-sku's**: bepaalt of een opslag account dat wordt geïmplementeerd binnen een aantal SKU-grootten valt. Het bijbehorende effect is om alle opslagaccounts te weigeren die niet in overeenstemming zijn met de gedefinieerde SKU-grootten.
+- **Toegestaan resource type**: definieert de resource typen die u kunt implementeren. Het bijbehorende effect is om alle resources te weigeren die geen deel uitmaken van deze gedefinieerde lijst.
+- **Toegestane locaties**: Hiermee beperkt u de beschik bare locaties voor nieuwe resources. Het bijbehorende effect wordt gebruikt om uw geografisch nalevingsvereisten af te dwingen.
+- **Toegestane virtuele machine sku's**: Hiermee geeft u een set virtuele machine-sku's op die u kunt implementeren.
+- **Een tag toevoegen aan resources**: past een vereiste tag en de standaard waarde toe als deze niet is opgegeven door de implementatie aanvraag.
+- **Tag en de bijbehorende waarde afdwingen**: dwingt een vereiste tag en de waarde ervan af voor een resource.
+- **Niet-toegestane resource typen**: Hiermee wordt voor komen dat een lijst met resource typen wordt geïmplementeerd.
 
 Als u deze beleidsdefinities (zowel de ingebouwde als de aangepaste) wilt implementeren, dient u ze eerst toe te wijzen. U kunt elk van deze typen beleid toewijzen via Azure Portal, PowerShell of Azure CLI.
 

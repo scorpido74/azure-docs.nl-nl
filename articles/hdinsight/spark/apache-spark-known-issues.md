@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 76b4f721135c6e34eebdc20268a76e84d86b0637
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575678"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494531"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekende problemen met Apache Spark cluster op HDInsight
 
@@ -32,7 +32,7 @@ Gebruik de volgende procedure om het probleem te omzeilen:
 
         yarn application –list
 
-    De standaard taak namen worden livy als de taken zijn gestart met een interactieve livy-sessie waarvoor geen expliciete namen zijn opgegeven. Voor de livy-sessie die is gestart door [Jupyter notebook](https://jupyter.org/), begint de `remotesparkmagics_*`taak naam met.
+    De standaard taak namen worden livy als de taken zijn gestart met een interactieve livy-sessie waarvoor geen expliciete namen zijn opgegeven. Voor de livy-sessie die is gestart door [Jupyter notebook](https://jupyter.org/), begint de taak naam met `remotesparkmagics_*`.
 
 3. Voer de volgende opdracht uit om deze taken af te breken.
 
@@ -81,17 +81,17 @@ Gebruik geen niet-ASCII-tekens in Jupyter notebook-bestands namen. Als u probeer
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Fout tijdens het laden van notitie blokken met een grotere grootte
 
-U ziet mogelijk een fout **`Error loading notebook`** bij het verdelen van notitieblokken die groter zijn.  
+Mogelijk ziet u een fout **`Error loading notebook`** wanneer u notitie blokken laadt die groter zijn.  
 
 **Risico beperking**
 
-Als deze fout wordt weer gegeven, betekent dit niet dat uw gegevens beschadigd of verloren zijn gegaan.  Uw Notebooks bevinden zich nog `/var/lib/jupyter`in de schijf en u kunt deze in het cluster gebruiken om ze te openen. Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
+Als deze fout wordt weer gegeven, betekent dit niet dat uw gegevens beschadigd of verloren zijn gegaan.  Uw Notebooks bevinden zich nog steeds op de schijf in `/var/lib/jupyter`en u kunt deze in het cluster gebruiken om ze te openen. Zie [SSH-sleutels gebruiken met HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md) voor informatie.
 
 Zodra u met SSH verbinding hebt gemaakt met het cluster, kunt u uw notitie blokken vanuit uw cluster naar uw lokale computer (met SCP of WinSCP) kopiëren als back-up om te voor komen dat belang rijke gegevens in het notitie blok verloren gaan. U kunt vervolgens SSH-tunnels in uw hoofd knooppunt op poort 8001 gebruiken om toegang te krijgen tot Jupyter zonder de gateway te passeren.  Hier kunt u de uitvoer van uw notitie blok wissen en opnieuw opslaan om de grootte van het notitie blok te minimaliseren.
 
 U moet een aantal aanbevolen procedures volgen om te voor komen dat deze fout zich voordoet in de toekomst:
 
-* Het is belang rijk dat u de notitieblok grootte beperkt blijft. Elke uitvoer van uw Spark-taken die wordt teruggestuurd naar Jupyter, wordt persistent gemaakt in het notitie blok.  Het is een best practice met Jupyter in het algemeen om te `.collect()` voor komen dat het wordt uitgevoerd op grote rdd of dataframes; in plaats daarvan kunt u, als u de inhoud `.take()` van `.sample()` een rdd wilt bekijken, overwegen of u de uitvoer wilt verkorten.
+* Het is belang rijk dat u de notitieblok grootte beperkt blijft. Elke uitvoer van uw Spark-taken die wordt teruggestuurd naar Jupyter, wordt persistent gemaakt in het notitie blok.  Het is een best practice met Jupyter in het algemeen om te voor komen dat `.collect()` op grote RDD of dataframes worden uitgevoerd. Als u in plaats daarvan de inhoud van een RDD wilt bekijken, kunt u overwegen `.take()` of `.sample()` uit te voeren, zodat uw uitvoer niet te groot wordt.
 * Wanneer u een notitie blok opslaat, wist u ook alle uitvoer cellen om de grootte te verkleinen.
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Het eerste keer opstarten van de notebook duurt langer dan verwacht
@@ -117,11 +117,11 @@ Wanneer het Spark-cluster niet meer bronnen bevat, wordt er een time-out opgetre
 
 ## <a name="see-also"></a>Zie ook
 
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)

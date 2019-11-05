@@ -1,5 +1,5 @@
 ---
-title: 'Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie) '
+title: Fout opsporing voor Spark-taken met IntelliJ Azure Toolkit (preview)-HDInsight
 description: Richt lijnen voor het gebruik van HDInsight-Hulpprogram Ma's in Azure-toolkit voor IntelliJ voor fout opsporing in toepassingen
 keywords: fout opsporing op afstand IntelliJ, externe fout opsporing IntelliJ, SSH, IntelliJ, hdinsight, debug IntelliJ, fout opsporing
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 0275cd6ff83fd5fdcc75c8b88602e8943f9504dd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266166"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494605"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Fout bij het opsporen van Spark-taken met Azure-toolkit voor IntelliJ (preview-versie)
 
@@ -24,7 +24,7 @@ In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van HDInsight-
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). In deze zelfstudie wordt gebruikgemaakt van Java-versie 8.0.202.
   
-* IntelliJ-idee. In dit artikel [wordt gebruikgemaakt van IntelliJ-idee Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
+* IntelliJ-idee. In dit artikel wordt gebruikgemaakt van [IntelliJ-idee Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows).
   
 * Azure-toolkit voor IntelliJ. Zie [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (De Azure Toolkit voor IntelliJ installeren).
 
@@ -58,7 +58,7 @@ Een Spark 2.3.2-project maken om de fout opsporing voort te zetten, fout in het 
 
    d. Selecteer **Finish**.
 
-3. Selecteer **src** > Mainscala > om de code in het project te openen. In dit voor beeld wordt het script **AgeMean_Div ()** gebruikt.
+3. Selecteer **src** > **Main** > **scala** om de code in het project te openen. In dit voor beeld wordt het script **AgeMean_Div ()** gebruikt.
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>Een Spark scala/Java-toepassing uitvoeren op een HDInsight-cluster
 
@@ -68,11 +68,11 @@ Maak een Spark scala/Java-toepassing en voer de toepassing uit op een Spark-clus
 
    ![HDI IntelliJ configuratie toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. Selecteer in het dialoog venster **configuraties voor uitvoeren/fout opsporing** het plus teken **+** (). Selecteer vervolgens de optie **Apache Spark op HDInsight** .
+2. Selecteer in het dialoog venster **configuraties voor uitvoeren/fout opsporing** het plus teken ( **+** ). Selecteer vervolgens de optie **Apache Spark op HDInsight** .
 
    ![Nieuwe configuratie IntelliJ toevoegen](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Overschakelen naar **extern uitvoeren op** het tabblad cluster. Voer informatie in voor de **naam**, het **Spark-cluster**en de naam van de **hoofd klasse**. Onze hulp middelen ondersteunen debug met **uitvoerende**software. De **numExectors**, de standaard waarde is 5 en u kunt beter niet hoger dan 3 instellen. U kunt de uitvoerings tijd verminderen door **Spark. garens. maxAppAttempts** toe te voegen aan de **taak configuraties** en de waarde in te stellen op 1. Klik op de knop **OK** om de configuratie op te slaan.
+3. Schakel over op **extern uitvoeren op** het tabblad cluster. Voer informatie in voor de **naam**, het **Spark-cluster**en de naam van de **hoofd klasse**. Onze hulp middelen ondersteunen debug met **uitvoerende**software. De **numExectors**, de standaard waarde is 5 en u kunt beter niet hoger dan 3 instellen. U kunt de uitvoerings tijd verminderen door **Spark. garens. maxAppAttempts** toe te voegen aan de **taak configuraties** en de waarde in te stellen op 1. Klik op de knop **OK** om de configuratie op te slaan.
 
    ![IntelliJ voor fout opsporing uitvoeren](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -90,7 +90,7 @@ Maak een Spark scala/Java-toepassing en voer de toepassing uit op een Spark-clus
 
 Als het verzenden van de taak mislukt, kunt u het mislukte taak profiel downloaden naar de lokale computer voor verdere fout opsporing.
 
-1. Open **Microsoft Azure Storage Explorer**, zoek het HDInsight-account van het cluster voor de mislukte taak, down load de mislukte taak resources van de overeenkomstige locatie: **\hdp\spark2-events\\. Spark\\ -Failurestoepassings\<-id >** naar een lokale map. In het venster **activiteiten** wordt de voortgang van het downloaden weer gegeven.
+1. Open **Microsoft Azure Storage Explorer**, zoek het HDInsight-account van het cluster voor de mislukte taak, down load de mislukte taak resources van de overeenkomstige locatie: **\hdp\spark2-Events\\. spark-fouten\\\<toepassings-ID >** naar een lokale map. In het venster **activiteiten** wordt de voortgang van het downloaden weer gegeven.
 
    ![Fout bij het downloaden van Azure Storage Explorer](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -116,16 +116,16 @@ Als het verzenden van de taak mislukt, kunt u het mislukte taak profiel download
 
 ## <a name="seealso"></a>Volgende stappen
 
-* [Krijgt Fouten opsporen Apache Spark toepassingen](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Overzicht: fouten opsporen Apache Spark toepassingen](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 
 ### <a name="demo"></a>Demo
 
 * Scala-project maken (video): [Apache Spark scala-toepassingen maken](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Fout opsporing op afstand (video): [Azure-toolkit voor IntelliJ gebruiken om fouten in Apache Spark toepassingen op afstand op te lossen op een HDInsight-cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Externe fout opsporing (video): [Azure-Toolkit voor IntelliJ gebruiken om fouten op te sporen in Apache Spark toepassingen op afstand in een HDInsight-cluster](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyse met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](../hdinsight-apache-spark-custom-library-website-log-analysis.md)

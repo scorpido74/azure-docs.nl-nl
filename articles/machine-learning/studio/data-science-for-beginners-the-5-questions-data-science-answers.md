@@ -1,7 +1,7 @@
 ---
 title: Wetenschappelijke gegevens voor beginners
-titleSuffix: Azure Machine Learning Studio
-description: Gegevenswetenschap leert voor Beginners is basisconcepten in 5 korte video's, beginnend met de 5 vragen Gegevenswetenschap antwoord geeft. Vanuit Azure Machine Learning.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Data wetenschappen voor beginners is de basis concepten van vijf korte Video's, beginnend met de 5 vragen data Science-antwoorden. Van Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,130 +10,130 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: d89a701f1d4528e1f3dff08daf31873891778f07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1163d2faab48893fae992240feb0c56ef99324fe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751347"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493098"
 ---
-# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Gegevenswetenschap voor Beginners, video 1: Gegevenswetenschap antwoord geeft op de 5 vragen
-Een korte inleiding data Science van *Gegevenswetenschap voor Beginners* in vijf korte video's van een top gegevenswetenschapper. Deze video's zijn basis, maar kan handig zijn, of u geïnteresseerd bent in de gegevenswetenschap of u de datawetenschappers samenwerkt.
+# <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Gegevenswetenschap voor beginners, video 1: de 5 vragen waarop gegevenswetenschap antwoord geeft
+Krijg een korte inleiding tot data Science van *Data Science voor beginners* in vijf korte Video's van een top data wetenschapper. Deze Video's zijn basis, maar handig, of u graag zeker weet of u wilt weten hoe u uw data wetenschappen gaat gebruiken of dat u met gegevens wetenschappers werkt.
 
-Deze eerste video gaat over de soorten vragen waarop gegevenswetenschap antwoord kunt. Als u optimaal te profiteren van de serie, bekijk ze allemaal. [Ga naar de lijst met video 's](#other-videos-in-this-series)
+Deze eerste video is ongeveer het soort vragen dat door data Science kan worden beantwoord. Bekijk alles om alles uit de serie te halen. [Ga naar de lijst met Video's](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/8/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Andere video's in deze serie
-*Gegevenswetenschap voor Beginners* is een korte inleiding over data science duurt ongeveer 25 minuten totaal. Bekijk alle vijf video's:
+## <a name="other-videos-in-this-series"></a>Andere Video's in deze serie
+*Data wetenschappen voor beginners* is een snelle inleiding tot de data Science, die ongeveer 25 minuten in beslag neemt. Bekijk alle vijf de Video's:
 
-* Video 1: Gegevenswetenschap antwoord geeft op de 5 vragen
-* Video 2: [Zijn uw gegevens gereed voor gegevenswetenschap?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sec)*
-* Video 3: [Een vraag stellen u met gegevens kunt beantwoorden](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sec)*
-* Video 4: [Een antwoord met een eenvoudig model voorspellen](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sec)*
-* Video 5: [Kopiëren van het werk van anderen hiervoor gegevenswetenschap](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sec)*
+* Video 1: de 5 vragen data Science-antwoorden
+* Video 2: [zijn uw gegevens gereed voor gegevens wetenschap?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min. 56 sec.)*
+* Video 3: [Stel een vraag die u kunt beantwoorden met gegevens](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sec.)*
+* Video 4: [een antwoord voors pellen met een eenvoudig model](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 seconden)*
+* Video 5: [werk van anderen naar gegevens wetenschap kopiëren](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sec.)*
 
-## <a name="transcript-the-5-questions-data-science-answers"></a>Transcript: Gegevenswetenschap antwoord geeft op de 5 vragen
-Hallo! Welkom bij de videoserie *Gegevenswetenschap voor Beginners*.
+## <a name="transcript-the-5-questions-data-science-answers"></a>Transcriptie: de 5 vragen data Science-antwoorden
+Hallo! Welkom bij de *gegevens wetenschap van*de video serie voor beginners.
 
-Data Science mag overbrengen, zodat ik Behandel de basisbeginselen zonder vergelijkingen of computer jargon programmeren.
+Data Science kan worden intimideren, dus ik maak hier de basis principes zonder vergelijkingen of jargon van computer programmatuur.
 
-In deze eerste video praten we over "de 5 vragen gegevenswetenschap antwoord geeft."
+In deze eerste video wordt gecommuniceerd over ' de 5 vragen met betrekking tot gegevens wetenschap. '
 
-Data Science maakt gebruik van cijfers en names (ook wel bekend als categorieën of labels) om te voorspellen antwoorden op vragen.
+Data wetenschappen gebruikt cijfers en namen (ook wel categorieën of labels genoemd) om antwoorden op vragen te voors pellen.
 
-Deze u zult versteld staan, maar *er slechts vijf vragen zijn die gegevenswetenschap antwoord geeft*:
+Het kan voor komen dat u, maar *Er zijn slechts vijf vragen die worden beantwoord door data Science*:
 
-* Deze A of B is?
-* Is dit vreemd?
-* Hoeveel – of – hoeveel?
-* Hoe wordt dit geordend?
-* Wat moet ik doen?
+* Is dit A of B?
+* Is dit klinken?
+* Hoeveel – of: hoeveel?
+* Hoe wordt dit georganiseerd?
+* Wat moet ik nu doen?
 
-Elk van deze vragen een wordt beantwoord door een afzonderlijke serie van machine learning-methoden, genaamd algoritmen.
+Elk van deze vragen wordt beantwoord door een afzonderlijke familie van machine learning-methoden, die algoritmen worden genoemd.
 
-Het is handig om na te denken over een algoritme als een recept en uw gegevens als de onderdelen. Een algoritme legt uit hoe combineren en de gegevens combineren om een antwoord. Computers zijn, zoals een blender. Als u op het harde werk van het algoritme voor de meeste en ze deze vrij snel doen.
+Het is handig om te denken over een algoritme als recept en uw gegevens als ingrediënten. Een algoritme geeft aan hoe de gegevens moeten worden gecombineerd en gemengd om een antwoord te krijgen. Computers zijn vergelijkbaar met een blender. Ze doen de meeste werk van het algoritme voor u en ze zien het erg snel.
 
-## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Vraag 1: Deze A of B is? maakt gebruik van bestandsclassificatie-algoritmen
-Laten we beginnen met de vraag: Deze A of B is?
+## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Vraag 1: is dit A of B? maakt gebruik van classificatie algoritmen
+Laten we beginnen met de vraag: is dit A of B?
 
-![Algoritmen voor classificatie: Deze A of B is?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
+![Classificatie algoritmen: is dit A of B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
 
-Deze serie van algoritmen, twee klassen classificatie wordt genoemd.
+Deze reeks algoritmen wordt een classificatie met twee klassen genoemd.
 
-Dit is handig voor elke vraag die slechts twee mogelijke antwoorden heeft.
+Het is handig voor elke vraag die slechts twee mogelijke antwoorden heeft.
 
 Bijvoorbeeld:
 
-* Deze band mislukt in de volgende 1000 mijl: Ja of nee?
-* Dit maakt het mogelijk in meer klanten: $5 coupon of 25% korting?
+* Zal deze band in de volgende 1.000 mijlen mislukken: Ja of Nee?
+* Wat biedt meer klanten: een coupon van $5 of een korting van 25%?
 
-Deze vraag kan ook worden rephrased om op te nemen meer dan twee opties: Deze A of B of C of D, enz.?  Dit heet multiklassen classificatie en het bijbehorende handig als er meerdere — of enkele duizenden: mogelijke antwoorden. Multiklassen classificatie kiest het meest waarschijnlijk een.
+Deze vraag kan ook worden herformuleerd om meer dan twee opties op te halen: is dit A of B of C of D, enzovoort?  Dit wordt een categorie met meerdere klassen genoemd en is handig wanneer u enkele of meer duizend mogelijke antwoorden hebt. Classificatie met meerdere klassen kiest de meest waarschijnlijke.
 
-## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Vraag 2: Is dit vreemd? maakt gebruik van de detectie-algoritmen afwijkingen
-De volgende vraag wetenschappelijke gegevens kunt beantwoorden is: Is dit vreemd? Deze vraag is beantwoord door een familie van algoritmen anomaliedetectie genoemd.
+## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Vraag 2: is deze klinken? maakt gebruik van anomalie detectie algoritmen
+De volgende vraag van gegevens wetenschap kan beantwoorden: is deze klinken? Deze vraag wordt beantwoord door een serie algoritmen die anomalie detectie wordt genoemd.
 
-![Detectie-algoritmen afwijkingen: Is dit vreemd?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
+![Anomalie detectie algoritmen: is deze klinken?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-Als u een creditcard nodig hebt, hebt u al geprofiteerd van detectie van afwijkingen. Uw bedrijf creditcard analyseert uw aankoop-patronen, zodat ze u te voor mogelijke fraude waarschuwen kunnen. Kosten die zijn 'vreemd' mogelijk een aankoop op een store waar u normaal gesproken niet kopen of een ongebruikelijk kostbare item kopen.
+Als u een credit card hebt, hebt u al geprofiteerd van anomalie detectie. Uw creditcard maatschappij analyseert uw aankoop patronen, zodat u kunt worden gewaarschuwd voor mogelijke fraude. Kosten die ' klinken ' zijn, kunnen een aankoop zijn in een Store, waar u normaal gesp roken geen ongebruikelijk prijs item kunt winkelen of kopen.
 
-Deze vraag is handig in tal van manieren. Bijvoorbeeld:
+Deze vraag kan op tal van manieren handig zijn. Bijvoorbeeld:
 
-* Als u een auto met druk te verlichten meters hebt, is het raadzaam om te weten: Is deze meter druk te verlichten normale lezen?
-* Als u internet bewaakt bent, wilt u weten: Is dit bericht van het internet typische?
+* Als u een auto met druk meters hebt, wilt u mogelijk weten: is deze druk meter normaal lezen?
+* Als u het internet bewaakt, wilt u weten: is dit bericht van Internet standaard?
 
-Detectie van afwijkingen vlaggen onverwachte of ongebruikelijke gebeurtenissen of gedrag. Het biedt of er aanwijzingen waar ze moeten kijken voor problemen.
+Afwijkings detectie vlaggen onverwachte of ongebruikelijke gebeurtenissen of gedragingen. Dit geeft aanwijzingen voor het zoeken naar problemen.
 
-## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>Vraag 3: Hoeveel? of hoe veel? regressie algoritmen gebruikt
-Het antwoord op hoe u kunt ook veel voorspellen door machine learning? of hoe veel? De algoritme-familie waarmee deze vraag worden beantwoord wordt regressie genoemd.
+## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>Vraag 3: hoeveel? of hoeveel? gebruikt regressie algoritmen
+Machine learning kan het antwoord ook voor spelden? of hoeveel? De algoritme familie die deze vraag beantwoordt, heet regressie.
 
-![Regressie algoritmen: Hoeveel? of hoe veel?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
+![Regressie algoritmen: hoeveel? of hoeveel?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
 
-Regressie algoritmen voorspellingen numerieke, zoals:
+Regressie-algoritmen maken numerieke voor spellingen, zoals:
 
-* Wat de temperatuur worden volgende dinsdag?  
-* Wat is mijn vierde kwartaal-verkopen?
+* Wat is de volgende stap voor de Tempe ratuur?  
+* Wat is de omzet van mijn vierde kwar taal?
 
-Ze helpen u om alle waarin u wordt gevraagd voor een aantal vragen beantwoorden.
+Ze helpen bij het beantwoorden van elke vraag die vraagt naar een getal.
 
-## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>Vraag 4: Hoe wordt dit geordend? Gebruik algoritmen voor clustering
-Nu zijn de laatste twee vragen een meer geavanceerde bits.
+## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>Vraag 4: hoe is dit georganiseerd? gebruikt cluster algoritmen
+Nu zijn de laatste twee vragen een beetje geavanceerder.
 
-Soms wilt u de structuur van een gegevensset - begrijpen hoe wordt dit geordend? Voor deze vraag hebt u geen voorbeelden die u resultaten al kent.
+Soms wilt u weten wat de structuur van een gegevensset is? Voor deze vraag hebt u geen voor beelden waarvoor u al bekend bent met de resultaten voor.
 
-Er zijn veel manieren om te krachtvoer van de structuur van gegevens. Er is een benadering clustering. Deze gegevens in natuurlijke 'worden,"voor eenvoudiger interpretatie zijn gescheiden. Met clustering is er geen juist antwoord voor één.
+Er zijn veel manieren om de structuur van gegevens te spitten. Een aanpak is clustering. Het scheidt gegevens in natuurlijke "clumps", voor een betere interpretatie. Met clustering is er geen juiste antwoord.
 
-![Clustering algoritmen: Hoe wordt dit geordend?](./media/data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
+![Clustering-algoritmen: hoe wordt dit georganiseerd?](./media/data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
 
-Algemene voorbeelden van clustering vragen zijn:
+Hier volgen enkele algemene voor beelden van het clusteren van vragen:
 
-* Welke viewers dat dezelfde typen films?
-* Welke printermodellen niet dezelfde manier?
+* Welke kijkers lijken op dezelfde typen films?
+* Welke printer modellen werken op dezelfde manier?
 
-Door te begrijpen hoe de gegevens zijn onderverdeeld, kunt u beter inzicht in - en voorspellen - gedrag en gebeurtenissen.  
+Door inzicht te krijgen in de manier waarop gegevens worden georganiseerd, kunt u beter begrijpen en gedrag en gebeurtenissen voors pellen.  
 
-## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>Vraag 5: Wat moet ik nu doen? maakt gebruik van leren met bekrachtigingen beschikt learning-algoritmen
-De laatste vraag: wat moet ik nu doen? – maakt gebruik van een familie van algoritmen bekrachtigingen genoemd.
+## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>Vraag 5: wat moet ik nu doen? maakt gebruik van leer algoritmen voor versterking
+De laatste vraag: wat moet ik nu doen? : maakt gebruik van een serie algoritmen met de naam versterking leren.
 
-Bekrachtigingen is laat u inspireren door hoe het brein achter rat en mensen op bestraffing en voordelen reageren. Deze algoritmen Leer van resultaten en beslissen over de volgende actie.
+Versterking van het onderwijs werd geïnspireerd door de wijze waarop de hersenen en mensen reageren op bestraffing en voor delen. Deze algoritmen leren van de resultaten en beslissen over de volgende actie.
 
-Bekrachtigingen is meestal een geschikt voor geautomatiseerde systemen waarvoor te veel kleine beslissingen te nemen zonder menselijke richtlijnen.
+Over het algemeen is het versterken van een goed idee voor geautomatiseerde systemen die een groot aantal kleine beslissingen hoeven te nemen zonder personeel.
 
-![Learning-algoritmen voor leren met bekrachtigingen beschikt: Wat moet ik doen?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
+![Leer algoritmen voor versterking: wat moet ik nu doen?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
 
-Antwoorden op vragen zijn altijd over welke actie moet worden gehouden - doorgaans door een virtuele machine of een robot. Een aantal voorbeelden:
+Vragen met betrekking tot deze antwoorden zijn altijd informatie over welke actie moet worden ondernomen, meestal door een machine of een robot. Een aantal voorbeelden:
 
-* Als ik een besturingssysteem temperatuur van een huis: De temperatuur aanpassen of laat het veld waar deze zich?  
-* Als ik een automatische auto: Bij een lichte geel, rem of versnellen?  
-* Voor een onderdruk robot: Houd vacuuming of gaat u terug naar het station geladen?
+* Als ik een temperatuur controlesysteem voor een huis ben: pas de Tempe ratuur aan of geef het op waar het zich bevindt?  
+* Als ik zelf een zelfrijdende auto doe: tegen een geel lampje of snelle remmen?  
+* Voor een robot vacuüm: behoud de vacuüm of ga terug naar het oplaad station?
 
-Leren met bekrachtigingen beschikt learning-algoritmen verzamelen van gegevens als ze gaan, van en opstaan leren.
+Dankzij de versterking van algoritmen worden gegevens verzameld tijdens het vinden, leren van de proef versie en de fout.
 
-Dit is het - kunt gegevenswetenschap van de 5 vragen beantwoorden.
+Dat is alles: de gegevens wetenschap van 5 vragen kan beantwoorden.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Probeer een eerste gegevenswetenschapexperiment met Machine Learning Studio](create-experiment.md)
-* [Maak kennis met Machine Learning op Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Probeer een eerste experiment van data Science met Machine Learning Studio (klassiek)](create-experiment.md)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

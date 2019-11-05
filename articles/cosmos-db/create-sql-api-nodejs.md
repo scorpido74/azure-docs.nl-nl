@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Een Node.js-app bouwen met behulp van JavaScript SDK voor het beheren van Azure Cosmos DB SQL API-gegevens'
+title: 'Azure Cosmos DB: een Node.js-app bouwen met JavaScript SDK voor het beheren van Azure Cosmos DB SQL API-gegevens'
 description: Is een Node.js-codevoorbeeld dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit de SQL API van Azure Cosmos DB
 author: deborahc
 ms.service: cosmos-db
@@ -8,22 +8,22 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: dech
-ms.openlocfilehash: e6a04c840e0982947e1223abf82737e1cd9d4445
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd9405630a471fc1909b1930db8efb7d0419daaa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854192"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495217"
 ---
-# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Quickstart: een Node.js-app maken met behulp van een SQL API-account van Azure Cosmos DB
+# <a name="quickstart-build-a-nodejs-app-using-azure-cosmos-db-sql-api-account"></a>Snelstartgids: een node. js-app bouwen met Azure Cosmos DB SQL-API-account
 
 > [!div class="op_single_selector"]
-> * [.NET](create-sql-api-dotnet.md)
+> * [.NET V3](create-sql-api-dotnet.md)
+> * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
 Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB. 
 
@@ -34,7 +34,7 @@ Deze snelstart laat zien hoe u een [SQL API](sql-api-introduction.md)-account va
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* Daarnaast:
+* Daarnaast doet u het volgende:
     * [Node.js](https://nodejs.org/en/) versie v6.0.0 of hoger
     * [Git](https://git-scm.com/)
 
@@ -78,7 +78,7 @@ We gaan nu een SQL API-app klonen vanuit GitHub, de verbindingsreeks instellen e
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string). 
+Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsgegevens bijwerken](#update-your-connection-string). 
 
 Als u bekend bent met de vorige versie van de JavaScript SDK, komen de termen 'verzameling' en 'document' u vertrouwd voor. Azure Cosmos DB ondersteunt [meerdere API-modellen](https://docs.microsoft.com/azure/cosmos-db/introduction). Daarom maakt versie 2.0+ van de JavaScript SDK gebruik van de generieke termen 'verzameling', wat een collectie, een grafiek of tabel kan zijn, en 'item', om de inhoud van de container te beschrijven.
 

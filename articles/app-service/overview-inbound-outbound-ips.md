@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329778"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470176"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Binnenkomende en uitgaande IP-adressen in Azure App Service
 
@@ -32,7 +32,7 @@ Ongeacht het aantal uitgeschaalde instanties heeft elke app één inkomend IP-ad
 
 - Verwijder een app en maak deze opnieuw in een andere resource groep.
 - Verwijder de laatste app in een combi natie van resource groep _en_ regio en maak deze opnieuw.
-- Een bestaande SSL-binding verwijderen, bijvoorbeeld tijdens het vernieuwen van het certificaat (Zie [certificaten vernieuwen](app-service-web-tutorial-custom-ssl.md#renew-certificates)).
+- Een bestaande SSL-binding verwijderen, bijvoorbeeld tijdens het vernieuwen van het certificaat (Zie [certificaat vernieuwen](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Het inkomende IP-adres zoeken
 
@@ -44,7 +44,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>Een statisch inkomend IP-adres ophalen
 
-Soms wilt u mogelijk een toegewezen, statisch IP-adres voor uw app. Als u een statisch inkomend IP-adres wilt ophalen, moet u een [SSL-binding op basis van IP](app-service-web-tutorial-custom-ssl.md#secure-a-custom-domain)configureren. Als u niet echt SSL-functionaliteit nodig hebt om uw app te beveiligen, kunt u zelfs een zelfondertekend certificaat voor deze binding uploaden. In een SSL-binding op basis van IP is het certificaat gebonden aan het IP-adres zelf, dus App Service een statisch IP-adres in te stellen om het uit te voeren. 
+Soms wilt u mogelijk een toegewezen, statisch IP-adres voor uw app. Als u een statisch inkomend IP-adres wilt ophalen, moet u een [SSL-binding op basis van IP](configure-ssl-bindings.md#secure-a-custom-domain)configureren. Als u niet echt SSL-functionaliteit nodig hebt om uw app te beveiligen, kunt u zelfs een zelfondertekend certificaat voor deze binding uploaden. In een SSL-binding op basis van IP is het certificaat gebonden aan het IP-adres zelf, dus App Service een statisch IP-adres in te stellen om het uit te voeren. 
 
 ## <a name="when-outbound-ips-change"></a>Wanneer uitgaande Ip's worden gewijzigd
 

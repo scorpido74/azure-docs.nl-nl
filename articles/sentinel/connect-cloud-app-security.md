@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6e71028855344d083dedf3493682e1e27685de48
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240110"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498658"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verbinding maken met gegevens van Microsoft Cloud App Security 
 
@@ -30,20 +30,24 @@ U kunt Logboeken van [Cloud app Security](https://docs.microsoft.com/cloud-app-s
 ## <a name="prerequisites"></a>Vereisten
 
 - Gebruiker met de machtigingen globale beheerder of beveiligings beheerder
+- Als u Cloud Discovery-Logboeken in azure Sentinel wilt streamen, [schakelt u Azure Sentinel in als uw Siem in Microsoft Cloud app Security](aka.ms. https://aka.ms/AzureSentinelMCAS).
 
+> [!IMPORTANT]
+> Opname van Cloud Discovery Logboeken is momenteel beschikbaar als open bare preview.
+> Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+ 
 ## <a name="connect-to-cloud-app-security"></a>Verbinding maken met Cloud App Security
 
 Als u Cloud App Security al hebt, controleert u of deze is [ingeschakeld in uw netwerk](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security).
 Als Cloud App Security is geïmplementeerd en opnamet van uw gegevens, kunnen de waarschuwings gegevens eenvoudig worden gestreamd naar Azure Sentinel.
 
 
-1. Selecteer in azure Sentinel **Data connectors** en klik vervolgens op de tegel **Cloud app Security** .
+1. In azure Sentinel selecteert u **Data connectors**, klikt u op de tegel **Cloud app Security** en selecteert u de **pagina connector openen**.
 
-1. Selecteer de logboeken die u wilt streamen naar Azure Sentinel, u kunt **waarschuwingen**kiezen. 
+1. Selecteer de logboeken die u wilt streamen naar Azure Sentinel, u kunt **waarschuwingen** en **Cloud Discovery logboeken** kiezen (preview-versie). 
 
-1. U kunt selecteren of u wilt dat de waarschuwingen van Microsoft Cloud App Security automatisch incidenten in azure-Sentinel automatisch genereren. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
-
-1. Klik op**Verbinden**.
+1. Klik op **Verbinden**.
 
 1. Als u het relevante schema in Log Analytics voor de Cloud App Security waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert**.
 
@@ -53,4 +57,4 @@ Als Cloud App Security is geïmplementeerd en opnamet van uw gegevens, kunnen de
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u Microsoft Cloud App Security kunt verbinden met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
-- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).

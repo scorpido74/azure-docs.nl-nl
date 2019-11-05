@@ -1,7 +1,7 @@
 ---
 title: Taal ondersteuning-LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS heeft tal van functies in de service. Niet alle functies zijn op de dezelfde taalpariteit. Zorg ervoor dat u geïnteresseerd bent in functies worden ondersteund in de taal-cultuur die u ontwikkelt. Een LUIS-app is specifiek voor cultuur en kan niet worden gewijzigd nadat deze is ingesteld.
+description: LUIS heeft diverse functies binnen de service. Niet alle functies bevinden zich in dezelfde taal pariteit. Zorg ervoor dat de functies die u interesseen, worden ondersteund in de taal cultuur die u wilt richten. Een LUIS-app is specifiek voor een cultuur en kan niet meer worden gewijzigd nadat deze is ingesteld.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,87 +9,80 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949552"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500206"
 ---
-# <a name="language-and-region-support-for-luis"></a>Ondersteuning voor LUIS taal en regio
+# <a name="language-and-region-support-for-luis"></a>Taal-en regio ondersteuning voor LUIS
 
-LUIS heeft tal van functies in de service. Niet alle functies zijn op de dezelfde taalpariteit. Zorg ervoor dat u geïnteresseerd bent in functies worden ondersteund in de taal-cultuur die u ontwikkelt. Een LUIS-app is specifiek voor cultuur en kan niet worden gewijzigd nadat deze is ingesteld.
+LUIS heeft diverse functies binnen de service. Niet alle functies bevinden zich in dezelfde taal pariteit. Zorg ervoor dat de functies die u interesseen, worden ondersteund in de taal cultuur die u wilt richten. Een LUIS-app is specifiek voor een cultuur en kan niet meer worden gewijzigd nadat deze is ingesteld.
 
-## <a name="multi-language-luis-apps"></a>Apps voor meerdere talen LUIS
+## <a name="multi-language-luis-apps"></a>LUIS-apps met meerdere talen
 
-Als u een clienttoepassing voor meerdere talen LUIS, zoals een chatbot nodig hebt, hebt u een aantal opties. Als er LUIS biedt ondersteuning voor alle talen, ontwikkelt u een LUIS-app voor elke taal. Elke LUIS-app heeft een unieke app-ID en de eindpunt-Logboeken. Als u nodig hebt voor taalbegrip voor een taal LUIS niet ondersteunt, kunt u [Microsoft Translator API](../Translator/translator-info-overview.md) om te zetten de utterance in een ondersteunde taal, de utterance naar het eindpunt LUIS verzenden en ontvangen de resulterende scores.
+Als u een LUIS-client toepassing met meerdere talen nodig hebt, zoals een chatbot, hebt u een aantal opties. Als LUIS alle talen ondersteunt, ontwikkelt u een LUIS-app voor elke taal. Elke LUIS-app heeft een unieke App-ID en een eindpunt logboek. Als u taal inzicht moet bieden voor een taal LUIS ondersteunt, kunt u de [micro soft Translator-API](../Translator/translator-info-overview.md) gebruiken om de utterance te vertalen in een ondersteunde taal, de utterance naar het Luis-eind punt te verzenden en de resulterende scores te ontvangen.
 
 ## <a name="languages-supported"></a>Ondersteunde talen
 
 LUIS begrijpt uitingen in de volgende talen:
 
-| Taal |Landinstelling  |  Vooraf gedefinieerde domein | Vooraf gemaakte entiteiten | Aanbevelingen voor woordgroepen lijst | **[Tekstanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Sentiment en<br>Trefwoorden)|
+| Taal |Landinstelling  |  Vooraf gebouwd domein | Vooraf gebouwde entiteit | Aanbevelingen voor woordgroepen lijst | **[tekst analyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Sentiment en<br>Woord|
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikaans-Engels |`en-US` | ✔ | ✔  |✔|✔|
 | *[Chinees](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Nederlands |`nl-NL` |✔|  -   |-|✔|
-| Frans (Frankrijk) |`fr-FR` |✔| ✔ |✔ |✔|
+| Frans (Frank rijk) |`fr-FR` |✔| ✔ |✔ |✔|
 | Frans (Canada) |`fr-CA` |-|   -   |-|✔|
 | Duits |`de-DE` |✔| ✔ |✔ |✔|
 | Hindi | `hi-IN`|-|-|-|-|
 | Italiaans |`it-IT` |✔| ✔ |✔|✔|
-| *[Japans](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Alleen sleuteluitdrukkingen|
-| Koreaans |`ko-KR` |✔|   -   |-|Alleen sleuteluitdrukkingen|
-| Portugees (Brazilië) |`pt-BR` |✔| ✔ |✔ |niet alle onderliggende culturen|
+| *[Japans](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Alleen sleutel woorden|
+| Koreaans |`ko-KR` |✔|   -   |-|Alleen sleutel woorden|
+| Portugees (Brazilië) |`pt-BR` |✔| ✔ |✔ |niet alle subcultuuren|
 | Spaans (Spanje) |`es-ES` |✔| ✔ |✔|✔|
 | Spaans (Mexico)|`es-MX` |-|  -   |✔|✔|
 | Turks | `tr-TR` |✔|-|-|Alleen sentiment|
 
+Taal ondersteuning is afhankelijk van [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md) en [vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md).
 
-Taalondersteuning varieert voor [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md) en [vooraf gemaakte domeinen](luis-reference-prebuilt-domains.md).
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
-### <a name="chinese-support-notes"></a>\* Opmerkingen bij de ondersteuning voor Chinees
+### <a name="japanese-support-notes"></a>\* Japanse ondersteunings opmerkingen
 
- - In de `zh-cn` cultuur, LUIS wordt verwacht dat de vereenvoudigd Chinees tekenset in plaats van de traditionele tekenset.
- - De namen van de intenties, entiteiten, functies en reguliere expressies mogelijk Chinese of Romeins tekens.
- - Zie de [Naslag Gids met vooraf gedefinieerde domeinen](luis-reference-prebuilt-domains.md) voor informatie over welke vooraf ontwikkelde domeinen worden ondersteund in de `zh-cn`-cultuur.
-<!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
+ - Omdat LUIS geen syntaxis analyse biedt en geen inzicht heeft in het verschil tussen Keigo en informele Japans, moet u de verschillende formaliteiten op het niveau van de voor beelden voor uw toepassingen opnemen.
+     - でございます is niet hetzelfde als です.
+     - です is niet hetzelfde als だ.
 
-### <a name="japanese-support-notes"></a>\* Opmerkingen bij de Japanse ondersteuning
+[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
- - Omdat LUIS geen syntactische analyse biedt en het verschil tussen Keigo en informele Japans niet begrijpt, moet u gebruikmaken van de verschillende niveaus van formaliteit als voorbeelden van training voor uw toepassingen.
-     - でございます is niet gelijk zijn aan です.
-     - です is niet gelijk zijn aan だ.
+### <a name="speech-api-supported-languages"></a>Ondersteunde talen voor spraak-API
+Zie spraak [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) voor talen voor spraak herkenning.
 
-### <a name="text-analytics-support-notes"></a>** Opmerkingen bij de ondersteuning voor text analytics
-Tekstanalyse keyPhrase bevat vooraf gedefinieerde entiteits- en sentiment-analyse. Alleen Portugees wordt ondersteund voor overenting: `pt-PT` en `pt-BR`. Alle andere culturen worden ondersteund op het niveau van de primaire cultuur. Meer informatie over de Text Analytics [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages).
+### <a name="bing-spell-check-supported-languages"></a>Bing Spellingcontrole ondersteunde talen
+Zie Bing Spellingcontrole [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) voor een lijst met ondersteunde talen en status.
 
-### <a name="speech-api-supported-languages"></a>Talen voor spraak-API die wordt ondersteund
-Zie spraak [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) voor talen voor spraak dicteren modus.
-
-### <a name="bing-spell-check-supported-languages"></a>Bing Spell Check-ondersteunde talen
-Zie Bing spellingcontrole [ondersteunde talen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) voor een lijst van ondersteunde talen en status.
-
-## <a name="rare-or-foreign-words-in-an-application"></a>Zeldzame of refererende woorden in een toepassing
-In de `en-us` cultuur, LUIS te onderscheiden van de meest Nederlandse woorden, met inbegrip van slang leren. In de `zh-cn` cultuur, LUIS leert te onderscheiden van de meeste Chinese tekens. Als u een zeldzame woord in `en-us` of teken in `zh-cn`, en u ziet dat LUIS lijkt te onderscheiden van dit woord of teken, kunt u dit woord toevoegen of teken naar een [functie woordgroep lijst](luis-how-to-add-features.md). Bijvoorbeeld, moeten woorden buiten de cultuur van de toepassing, dat wil zeggen, woorden in vreemde talen--worden toegevoegd aan een functie woordgroep-lijst. 
+## <a name="rare-or-foreign-words-in-an-application"></a>Zeldzame of afwijkende woorden in een toepassing
+In de `en-us` cultuur leert LUIS om de meeste Engelse woorden te onderscheiden, met inbegrip van slang. In de `zh-cn` cultuur leert LUIS om de meeste Chinese tekens te onderscheiden. Als u een zeldzaam woord gebruikt in `en-us` of teken in `zh-cn`en u ziet dat LUIS niet kan worden onderscheiden van dat woord of teken, kunt u dat woord of teken toevoegen aan een [lijst functie van een woord groep](luis-how-to-add-features.md). Bijvoorbeeld: woorden buiten de cultuur van de toepassing, dat wil zeggen afwijkende woorden--moeten worden toegevoegd aan een woordgroepen lijst functie. 
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
-### <a name="hybrid-languages"></a>Hybride-talen
-Hybride talen combineren woorden uit twee culturen zoals Engels en Chinees. Deze talen worden niet ondersteund in LUIS omdat een app is gebaseerd op een enkele cultuur.
+### <a name="hybrid-languages"></a>Hybride talen
+Hybride talen combi neren woorden uit twee cult uren, zoals Engels en Chinees. Deze talen worden niet ondersteund in LUIS omdat een app is gebaseerd op één cultuur.
 
-## <a name="tokenization"></a>Tokeniseren
-Als u machine learning, LUIS een utterance opgesplitst in [tokens](luis-glossary.md#token) op basis van cultuur.
+## <a name="tokenization"></a>Token
+Om machine learning uit te voeren, breekt LUIS een utterance in [tokens](luis-glossary.md#token) op basis van de cultuur.
 
-|Taal|  elke ruimte of speciaal teken | niveau tekens|samengestelde woorden|[tokens entiteit geretourneerd](luis-concept-data-extraction.md#tokenized-entity-returned)
+|Taal|  elke spatie of speciaal teken | teken niveau|samengestelde woorden|[tokend geretourneerde entiteit](luis-concept-data-extraction.md#tokenized-entity-returned)
 |--|:--:|:--:|:--:|:--:|
 |Chinees||✔||✔|
 |Nederlands|||✔|✔|
 |Engels (en-us)|✔ ||||
 |Frans (fr-FR)|✔||||
-|Frans (fr-CA)|✔||||
+|Frans (FR-CA)|✔||||
 |Duits|||✔|✔|
 | Hindi |✔|-|-|-|-|
 |Italiaans|✔||||
@@ -103,10 +96,10 @@ Als u machine learning, LUIS een utterance opgesplitst in [tokens](luis-glossary
 
 De volgende cult uren hebben aangepaste tokenizer-versies:
 
-|Culture|Version|Doel|
+|Culture|Versie|Doel|
 |--|--|--|
-|Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ich fahre einen krankenwagen` opgeeft als een utterance, wordt deze ingesteld op `Ich fahre einen kranken wagen`. Het markeren van `kranken` en `wagen` onafhankelijk als verschillende entiteiten toestaan.|
-|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ich fahre einen krankenwagen` opgeeft als een utterance, blijft het één token. @No__t-0 is dus als één entiteit gemarkeerd. |
+|Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ich fahre einen krankenwagen` als een utterance invoert, wordt deze `Ich fahre einen kranken wagen`. Het markeren van `kranken` en het `wagen` onafhankelijk als verschillende entiteiten toestaan.|
+|Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ich fahre einen krankenwagen` opgeeft als een utterance, blijft het één token. `krankenwagen` is dus als één entiteit gemarkeerd. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migreren tussen tokenizer-versies
 <!--

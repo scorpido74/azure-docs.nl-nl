@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/10/2019
-ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: c3791946ee31183e4b3c5131a8e62934bf87dfee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497472"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -46,16 +46,31 @@ Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning Compute (beheerd)
 
-Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning Compute is de enige beheerde reken kracht vanaf 30 mei 2019. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
+Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learning. Deze berekening is geoptimaliseerd voor machine learning workloads. Azure Machine Learning compute-clusters en [reken instanties](concept-compute-instance.md) zijn de enige beheerde reken processen. Extra beheerde reken bronnen kunnen in de toekomst worden toegevoegd.
 
-U kunt Azure machine learning Compute for training en voor batch-(preview-versie) gebruiken.  Met deze reken resource hebt u het volgende:
+U kunt Azure Machine Learning Compute-instanties of reken clusters maken in:
+
+| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sjabloon | CLI |
+|---| ----- | ----- | ----- | ----- | ----- |
+| Reken instantie | ja | ja | ja | ja |  |
+| Reken cluster | ja | ja | ja | ja | ja |
+
+Wanneer u deze reken resources maakt, worden deze automatisch onderdeel van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
+
+> [!NOTE]
+> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
+>Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
+
+### <a name="compute-clusters"></a>Reken clusters
+
+U kunt Azure Machine Learning compute-clusters gebruiken voor training en voor het afleiden van batches (preview-versie).  Met deze reken resource hebt u het volgende:
 
 * Cluster met één of meerdere knoop punten
 * Automatisch schalen elke keer dat u een uitvoering verzendt 
 * Automatische Cluster beheer en taak planning 
 * Ondersteuning voor zowel CPU-als GPU-resources
 
-U kunt Azure Machine Learning Compute-instanties maken in Azure Portal of de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com), met de SDK of met de cli. Wanneer het wordt gemaakt, maakt het automatisch deel uit van uw werk ruimte, in tegens telling tot andere soorten Compute-doelen.
+
 
 ## <a name="unmanaged-compute"></a>Onbeheerde compute
 

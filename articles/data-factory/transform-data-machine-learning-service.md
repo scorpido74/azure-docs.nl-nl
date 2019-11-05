@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning service pijplijnen in uw Azure Data Factory pijp lijnen uitvoeren | Microsoft Docs
-description: Meer informatie over het uitvoeren van uw Azure Machine Learning service pijplijnen in uw Azure Data Factory pijp lijnen.
+title: Azure Machine Learning pijp lijnen uitvoeren in uw Azure Data Factory pijp lijnen | Microsoft Docs
+description: Meer informatie over het uitvoeren van uw Azure Machine Learning-pijp lijnen in uw Azure Data Factory pijp lijnen.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: ddaa020b3567f8f00cfd7fc7f7728f1160d9306b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c05a0fde7019d9162a051a04696c2251301d70dc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301345"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490603"
 ---
-# <a name="execute-azure-machine-learning-service-pipelines-in-azure-data-factory"></a>Azure Machine Learning service pijplijnen uitvoeren in Azure Data Factory
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning pijp lijnen uitvoeren in Azure Data Factory
 
-Voer uw Azure Machine Learning service pijplijnen uit als een stap in uw Azure Data Factory pijp lijnen. Met de activiteit pijp lijn uitvoeren Machine Learning kunt u batch Voorspellings scenario's maken, zoals het identificeren van mogelijke standaard waarden voor leningen, het bepalen van sentiment en het analyseren van gedrags patronen van klanten.
+Voer uw Azure Machine Learning-pijp lijnen uit als een stap in uw Azure Data Factory pijp lijnen. Met de activiteit pijp lijn uitvoeren Machine Learning kunt u batch Voorspellings scenario's maken, zoals het identificeren van mogelijke standaard waarden voor leningen, het bepalen van sentiment en het analyseren van gedrags patronen van klanten.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -44,15 +44,15 @@ Voer uw Azure Machine Learning service pijplijnen uit als een stap in uw Azure D
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Beschrijving | Toegestane waarden | Verplicht
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | Naam van de activiteit in de pijp lijn | Tekenreeks | Ja
+naam | Naam van de activiteit in de pijp lijn | Tekenreeks | Ja
 type | Type activiteit is ' AzureMLExecutePipeline ' | Tekenreeks | Ja
-linkedServiceName | Gekoppelde service aan Azure Machine Learning-service | Verwijzing naar gekoppelde service | Ja
+linkedServiceName | Gekoppelde service aan Azure Machine Learning | Verwijzing naar gekoppelde service | Ja
 mlPipelineId | ID van de gepubliceerde Azure Machine Learning pijp lijn | Teken reeks (of expressie met het resultType van de teken reeks) | Ja
 experimentnaam | Naam van het experiment met de uitvoerings geschiedenis van de Machine Learning pijplijn uitvoering | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
 mlPipelineParameters | Sleutel-, waardeparen die moeten worden door gegeven aan het gepubliceerde eind punt van Azure Machine Learning pijplijn. Sleutels moeten overeenkomen met de namen van de pijplijn parameters die in de gepubliceerde Machine Learning pijp lijn zijn gedefinieerd | Object met sleutel waarde-paren (of expressie met het resultType-object) | Nee
-mlParentRunId | De run-ID van de bovenliggende Azure Machine Learning service-pipeline | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
+mlParentRunId | De ID van de bovenliggende Azure Machine Learning pijplijn uitvoering | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
 continueOnStepFailure | Of de uitvoering van andere stappen in de Machine Learning pijplijn uitvoering moet worden voortgezet als een stap is mislukt | booleaans | Nee
 
 ## <a name="next-steps"></a>Volgende stappen

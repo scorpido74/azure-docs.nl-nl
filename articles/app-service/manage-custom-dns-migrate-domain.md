@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679802"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470365"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Een actieve DNS-naam migreren naar Azure App Service
 
@@ -48,15 +48,15 @@ Wanneer u ten slotte uw aangepaste DNS-naam migreert van de oude-site naar de Ap
 
 ### <a name="create-domain-verification-record"></a>Domein verificatie record maken
 
-Voeg een TXT-record toe om het domein eigendom te controleren. De TXT-record wordt toegewezen vanuit _awverify. &lt;subdomain >_ _&lt;appname >. azurewebsites. net_. 
+Voeg een TXT-record toe om het domein eigendom te controleren. De TXT-record wordt toegewezen vanuit _awverify.&lt;subdomein >_ _&lt;appName >. azurewebsites. net_. 
 
 De TXT-record die u nodig hebt, is afhankelijk van de DNS-record die u wilt migreren. Zie voor voor beelden de volgende tabel (`@` het hoofd domein meestal vertegenwoordigt):
 
 | Voor beeld van DNS-record | TXT-host | TXT-waarde |
 | - | - | - |
-| \@ (root) | _awverify_ | _&lt;appname >. azurewebsites. net_ |
-| www (sub) | _awverify. www_ | _&lt;appname >. azurewebsites. net_ |
-| \* (Joker teken) | _awverify. \*_ | _&lt;appname >. azurewebsites. net_ |
+| \@ (root) | _awverify_ | _&lt;appName >. azurewebsites. net_ |
+| www (sub) | _awverify. www_ | _&lt;appName >. azurewebsites. net_ |
+| \* (Joker teken) | _awverify.\*_ | _&lt;appName >. azurewebsites. net_ |
 
 Noteer op de pagina DNS-records het record type van de DNS-naam die u wilt migreren. App Service ondersteunt toewijzingen van CNAME-en A-records.
 
@@ -122,8 +122,8 @@ Voor het `contoso.com` voor beeld van het hoofd domein wijst u de A-of CNAME-rec
 | FQDN-voor beeld | Recordtype | Host | Waarde |
 | - | - | - | - |
 | contoso.com (root) | A | `@` | IP-adres uit [Het IP-adres van de app kopiëren](#info) |
-| www \.contoso. com (sub) | CNAME | `www` | _&lt;appname >. azurewebsites. net_ |
-| \*. contoso.com (Joker teken) | CNAME | _\*_ | _&lt;appname >. azurewebsites. net_ |
+| www\.contoso.com (sub) | CNAME | `www` | _&lt;appName >. azurewebsites. net_ |
+| \*. contoso.com (Joker teken) | CNAME | _\*_ | _&lt;appName >. azurewebsites. net_ |
 
 Sla de instellingen op.
 
@@ -140,4 +140,4 @@ U kunt de implementatie-eenheid voor uw app vinden door te kijken naar de domein
 Meer informatie over hoe u een aangepast SSL-certificaat verbindt met App Service.
 
 > [!div class="nextstepaction"]
-> [Een bestaand, aangepast SSL-certificaat met Azure App Service verbinden](app-service-web-tutorial-custom-ssl.md)
+> [Een SSL-certificaat aan Azure App Service binden](configure-ssl-bindings.md)

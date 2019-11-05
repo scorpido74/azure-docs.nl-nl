@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 27578e50c56a9c7dac3d74b88e14d0f8fbe9d402
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784981"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466866"
 ---
-# <a name="introduction-to-ai-enrichment-in-azure-cognitive-search"></a>Inleiding tot AI-verrijking in azure Cognitive Search
+# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Inleiding tot AI in azure Cognitive Search
 
-AI-verrijking is een mogelijkheid van Azure Cognitive Search indexeren, die wordt gebruikt om tekst uit afbeeldingen, blobs en andere ongestructureerde gegevens bronnen te extra heren, waardoor de inhoud beter kan worden doorzocht in een index of kennis opslag. Extractie en verrijking worden geïmplementeerd via *cognitieve vaardig heden* die zijn gekoppeld aan een indexerings pijplijn. Cognitieve vaardig heden vallen onder de volgende categorieën: 
+AI-verrijking is een mogelijkheid van Azure Cognitive Search indexeren, die wordt gebruikt om tekst uit afbeeldingen, blobs en andere ongestructureerde gegevens bronnen te extra heren, waardoor de inhoud beter kan worden doorzocht in een index of kennis opslag. Extractie en verrijking worden geïmplementeerd via *cognitieve vaardig heden* die zijn gekoppeld aan een indexerings pijplijn. Cognitieve vaardig heden die in de service zijn ingebouwd, vallen in deze categorieën: 
 
 + Vaardig heden voor de **verwerking van natuurlijke taal** zijn onder andere [entiteits herkenning](cognitive-search-skill-entity-recognition.md), [taal detectie](cognitive-search-skill-language-detection.md), [extractie van sleutel zinnen](cognitive-search-skill-keyphrases.md), tekst manipulatie en [sentiment detectie](cognitive-search-skill-sentiment.md). Met deze vaardig heden kan ongestructureerde tekst uitgaan van nieuwe formulieren, toegewezen als Doorzoek bare en filter bare velden in een index.
 
@@ -36,6 +36,12 @@ De verwerking van natuurlijke taal en afbeelding wordt toegepast tijdens de fase
 
 ## <a name="when-to-use-cognitive-skills"></a>Wanneer moet u cognitieve vaardig heden gebruiken?
 
+U kunt overwegen ingebouwde cognitieve vaardig heden te gebruiken als uw onbewerkte inhoud ongestructureerde tekst, afbeeldings inhoud of inhoud bevat die taal detectie en-omzetting nodig heeft. Het Toep assen van AI via de ingebouwde cognitieve vaardig heden kan deze inhoud ontgrendelen, waardoor de waarde en het hulp programma in uw zoek-en data Science-apps worden verhoogd. 
+
+Daarnaast kunt u overwegen een aangepaste vaardigheid toe te voegen als u een open source-, derden-of code van een andere partij hebt die u wilt integreren in de pijp lijn. Classificatie modellen die opvallende kenmerken van verschillende document typen identificeren, vallen in deze categorie, maar elk pakket dat waarde toevoegt aan uw inhoud, kan ook worden gebruikt.
+
+### <a name="more-about-built-in-skills"></a>Meer informatie over ingebouwde vaardig heden
+
 Een vaardig heden die is geassembleerd met behulp van ingebouwde vaardig heden, is goed geschikt voor de volgende toepassings scenario's:
 
 + Gescande documenten (JPEG) waarvoor u Zoek opdrachten in volledige tekst wilt uitvoeren. U kunt een OCR-vaardigheid (Optical Character Recognition) koppelen om tekst uit JPEG-bestanden te identificeren, uit te pakken en op te nemen.
@@ -49,6 +55,8 @@ Een vaardig heden die is geassembleerd met behulp van ingebouwde vaardig heden, 
   Blobs in het bijzonder bevatten vaak een grote inhoud die in één veld wordt verpakt. Door de vaardig heden van afbeeldingen en natuurlijke taal verwerking aan een Indexeer functie toe te voegen, kunt u nieuwe informatie maken die extant is in de onbewerkte inhoud, maar niet op andere wijze als DISTINCT-velden. Sommige kant-en-klare cognitieve vaardig heden die u kunnen helpen: sleutel woordgroepen extractie, sentiment analyse en entiteits herkenning (personen, organisaties en locaties).
 
   Daarnaast kunnen ingebouwde vaardig heden ook worden gebruikt om inhoud te herstructureren met behulp van tekst splitsen, samen voegen en vorm bewerkingen.
+
+### <a name="more-about-custom-skills"></a>Meer informatie over aangepaste vaardig heden
 
 Aangepaste vaardig heden kunnen complexere scenario's ondersteunen, zoals het herkennen van formulieren of het detecteren van aangepaste entiteiten met behulp van een model dat u opgeeft en inpakt in de [aangepaste vaardigheids webinterface](cognitive-search-custom-skill-interface.md). Enkele voor beelden van aangepaste vaardig heden zijn [formulieren Recognizer](/azure/cognitive-services/form-recognizer/overview), integratie van de [Bing entiteiten zoeken-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)en [aangepaste entiteits herkenning](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 

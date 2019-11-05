@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: cbbfc13cd818c3f29ed306beab49d101c70f562b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: b0f3a486edb0c650a4a14e5e60b4459f758a64d4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026489"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499943"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Zelf studie: een Power BI provider-dash board maken
 
@@ -51,7 +51,7 @@ In deze zelfstudie leert u het volgende:
 * Een Power BI-service-account. Als u er nog geen hebt, kunt u [een gratis proef account maken voor Power bi-service](https://app.powerbi.com/). Als u Power BI nog niet eerder hebt gebruikt, kan het nuttig zijn om aan de slag te gaan [met Power bi](https://docs.microsoft.com/power-bi/service-get-started).
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Een continue gegevens export naar Azure Event Hubs instellen
-U moet eerst een continue gegevens export instellen vanuit uw Azure IoT Central app-sjabloon naar de Azure Event hub in uw abonnement. U kunt dit doen door de stappen in deze Azure IoT Central-zelf studie [te volgen om naar Event hubs te exporteren](https://docs.microsoft.com/azure/iot-central/howto-export-data-event-hubs-service-bus-pnp). Voor de doel einden van deze zelf studie hoeft u alleen voor de telemetrie te exporteren.
+U moet eerst een continue gegevens export instellen vanuit uw Azure IoT Central app-sjabloon naar de Azure Event hub in uw abonnement. U kunt dit doen door de stappen in deze Azure IoT Central-zelf studie [te volgen om naar Event hubs te exporteren](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp). Voor de doel einden van deze zelf studie hoeft u alleen voor de telemetrie te exporteren.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Een gegevensset voor Power BI stream maken
 
@@ -91,7 +91,7 @@ Aan het einde van deze stap moet de ontwerp functie voor logische apps er als vo
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Gegevens streamen naar Power BI vanuit uw logische app
 De volgende stap is het parseren van de gegevens die afkomstig zijn van uw event hub om deze te streamen naar de Power BI gegevens sets die u eerder hebt gemaakt.
 
-1. Voordat u dit kunt doen, moet u weten wat de JSON-nettolading is die vanaf uw apparaat wordt verzonden naar uw event hub. U kunt dit doen door te kijken naar dit [voorbeeld schema](https://docs.microsoft.com/azure/iot-central/howto-export-data-event-hubs-service-bus-pnp#telemetry) en dit te wijzigen zodat dit overeenkomt met uw schema of [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) gebruiken om de berichten te controleren. Als u de toepassingen doorlopende patiënten-bewaking gebruikt, ziet uw berichten er als volgt uit:
+1. Voordat u dit kunt doen, moet u weten wat de JSON-nettolading is die vanaf uw apparaat wordt verzonden naar uw event hub. U kunt dit doen door te kijken naar dit [voorbeeld schema](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp#telemetry) en dit te wijzigen zodat dit overeenkomt met uw schema of [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) gebruiken om de berichten te controleren. Als u de toepassingen doorlopende patiënten-bewaking gebruikt, ziet uw berichten er als volgt uit:
 
 **Intelligente essentiële patch-telemetrie**
 

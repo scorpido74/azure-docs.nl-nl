@@ -1,6 +1,6 @@
 ---
 title: Voorbeeld van Azure CLI-script - abonneren op een Azure-abonnement | Microsoft Docs
-description: 'Voorbeeld van Azure CLI-script - abonneren op een Azure-abonnement '
+description: Voorbeeld van Azure CLI-script - abonneren op een Azure-abonnement
 services: event-grid
 documentationcenter: na
 author: tfitzmac
@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 11/02/2018
 ms.author: tomfitz
 ms.openlocfilehash: 9d1aa53ede323c2bb536c74eeaaba9fd28b01712
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: MT
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62127239"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73549304"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>Abonneren op gebeurtenissen voor een Azure-abonnement met Azure CLI
 

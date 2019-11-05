@@ -1,21 +1,21 @@
 ---
 title: Beschik baarheid van scenario-spraak service
 titleSuffix: Azure Cognitive Services
-description: Verwijzing voor regio's van de Speech-Service.
+description: Verwijzing voor regio's van de spraak service.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959029"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491346"
 ---
 # <a name="scenario-availability"></a>Beschik baarheid scenario
 
@@ -28,16 +28,16 @@ De Speech Service SDK bevat verschillende scenario's voor een groot aantal progr
   - C#/Windows & UWP & eenheid
   - Java (jre en Android)
   - Python
-  - SWIFT
+  - Swift
   - Objective-C
   - TTS-REST API kunnen worden gebruikt in elke andere situatie.
-- **Wake woord (Keyword Spotter/KWS)**
+- **Trefwoord herkennen (KWS)**
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
   - Java/Windows & Linux & Android (Speech-apparaten SDK)
-  - De functionaliteit van het Wake-woord (Keyword Spotter/KWS) kan worden gebruikt voor elk type microfoon, maar de ondersteuning van officiële KWS is momenteel beperkt tot de microfoon matrices die zijn gevonden in de Azure Kinect DK-hardware of de speech-apparaten SDK
-- **De televoice-eerste virtuele assistent**
+  - De functionaliteit van trefwoord herkennen (KWS) kan worden gebruikt voor elk type microfoon, maar de ondersteuning van officiële KWS is momenteel beperkt tot de microfoon matrices die zijn gevonden in de Azure Kinect DK-hardware of de speech-apparaten SDK
+- **Spraak assistenten**
   - C++/Windows & Linux & macOS
   - C#/Windows
   - Java/Windows & Linux & macOS & Android (Speech apparaten SDK)

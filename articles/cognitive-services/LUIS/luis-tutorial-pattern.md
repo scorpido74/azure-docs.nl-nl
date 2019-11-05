@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Patronen-LUIS'
+title: 'Zelf studie: patronen-LUIS'
 titleSuffix: Azure Cognitive Services
 description: Gebruik patronen voor het verhogen van intent- en entiteitsvoorspelling terwijl er minder voorbeeld-utterances nodig zijn. Het patroon wordt geleverd via een voorbeeld van een sjabloon-utterance, met de syntaxis voor het identificeren van entiteiten en te negeren tekst.
 services: cognitive-services
@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390342"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499007"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Zelfstudie: Indelingen voor sjabloon-utterances van algemene patronen toevoegen
+# <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Zelf studie: algemene utterance-indelingen voor patroon Sjablonen toevoegen
 
 Gebruik in deze zelfstudie patronen voor het verhogen van intent- en entiteitsvoorspelling terwijl er minder voorbeeld-utterances nodig zijn. Het patroon wordt geleverd via een voorbeeld van een sjabloon-utterance, met de syntaxis voor het identificeren van entiteiten en te negeren tekst. Een patroon is een combinatie van het vergelijken van expressies en machine learning.  Het voorbeeld van de sjabloon-utterance geeft samen met de intent-utterances LUIS een beter beeld van welke utterances het beste bij de intent passen. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -69,7 +71,7 @@ Voer de volgende stappen uit:
     |Aan wie moet Jill Jones rechtstreeks verantwoording afleggen?|
     |Wie is de supervisor van Jill Jones?|
 
-    [![Schermafbeelding van LUIS waarin nieuwe utterances worden toegevoegd aan intent](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Schermafbeelding van LUIS waarin nieuwe utterances worden toegevoegd aan intent")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![Scherm opname van LUIS nieuwe uitingen toevoegen aan intentie](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Scherm opname van LUIS nieuwe uitingen toevoegen aan intentie")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     Maakt u zich geen zorgen als in de utterances van de intent de keyPhrase-entiteit is gemarkeerd in plaats van de werknemer-entiteit. Beide zijn in het deelvenster Test en bij het eindpunt juist voorspeld. 
 
@@ -377,7 +379,7 @@ Voorbeeld sjabloon uitingen die deze optionele informatie toestaan:
 Dankzij het gebruik van de optionele syntaxis met vierkante haken, `[]`, kan deze optionele tekst eenvoudig worden toegevoegd aan de sjabloon-utterance en worden genest tot het tweede niveau met `[[]]`, en kunnen entiteiten of tekst worden opgenomen.
 
 
-**Vraag: Waarom zijn alle letters `w`, als eerste letter in elke sjabloon-utterance, kleine letters? Moeten die niet naar keuze hoofdletters of kleine letters kunnen zijn?** De utterance die door de clienttoepassing naar het query-eindpunt wordt verzonden, wordt omgezet in kleine letters. De sjabloon-utterance kan uit hoofdletters of kleine letters bestaan en dat geldt ook voor de eindpunt-utterance. De vergelijking wordt altijd uitgevoerd na de conversie naar kleine letters.
+**Vraag: Waarom zijn alle `w` letters, de eerste letter van elke sjabloon utterance, kleine letters? Is het niet zo dat ze ook in de bovenste of kleine letters worden gesteld?** De utterance die door de clienttoepassing naar het query-eindpunt wordt verzonden, wordt omgezet in kleine letters. De sjabloon-utterance kan uit hoofdletters of kleine letters bestaan en dat geldt ook voor de eindpunt-utterance. De vergelijking wordt altijd uitgevoerd na de conversie naar kleine letters.
 
 **Vraag: Waarom maakt het vooraf gemaakte getal geen deel uit van de sjabloon-utterance als 3 maart wordt voorspeld als het getal `3` en als de datum `March 3`?** De sjabloon-utterance maakt contextueel gebruik van een datum, letterlijk zoals in `March 3`, of figuurlijk zoals `in a month`. Een datum kan een waarde bevatten, maar een getal hoeft niet per se als een datum te worden beschouwd. Gebruik altijd de entiteit die het beste het type aangeeft dat u wilt laten retourneren in de JSON-voorspellingsresultaten.  
 
@@ -389,7 +391,7 @@ Dankzij het gebruik van de optionele syntaxis met vierkante haken, `[]`, kan dez
 
 1. Selecteer op de website LUIS de optie **Build** in het bovenste menu en selecteer **Patterns** in het menu links. 
 
-1. Zoek de bestaande sjabloon utterance, `Who is {Employee}['s] manager[?]`, en selecteer het beletsel teken (***...***) aan de rechter kant en selecteer vervolgens **bewerken** in het pop-upmenu. 
+1. Zoek de bestaande sjabloon utterance, `Who is {Employee}['s] manager[?]`en selecteer het beletsel teken (***...***) aan de rechter kant en selecteer vervolgens **bewerken** in het pop-upmenu. 
 
 1. Wijzig de sjabloon-utterance in: `who is {Employee}['s] manager [[on]{datetimeV2}?]`
 
@@ -424,9 +426,9 @@ Voor al deze utterances zijn de daarin opgenomen entiteiten gevonden en daarom k
 
 ## <a name="use-the-or-operator-and-groups"></a>De operator OR en groepen gebruiken
 
-Enkele van de vorige sjabloon uitingens worden bijna gesloten. Gebruik de **groep** `()` en **of** `|` syntaxis om de sjabloon uitingen te reduceren. 
+Enkele van de vorige sjabloon uitingens worden bijna gesloten. Gebruik de **groeps** `()` en **of** `|` syntaxis om de sjabloon uitingen te verminderen. 
 
-De volgende twee patronen kunnen in één patroon worden gecombineerd met behulp `()` van de `|` groep en of syntaxis.
+De volgende twee patronen kunnen in één patroon worden gecombineerd met behulp van de groeps `()` en of de `|` syntaxis.
 
 |Intentie|Voorbeeld-utterances met optionele tekst en voorafgemaakte entiteiten|
 |--|--|
@@ -437,9 +439,9 @@ Het nieuwe sjabloon utterance is:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`. 
 
-Dit maakt gebruik van een **groep** rond de vereiste term tien tallen `in` en `on` de optionele en met een **or** -pipe ertussen. 
+Dit maakt gebruik van een **groep** rond de vereiste term tien tallen en de optionele `in` en `on` met een **of** een sluis ertussen. 
 
-1. Selecteer op de pagina **patronen** het filter **organigram-Manager** . Verfijn de lijst door te zoeken `manager`. 
+1. Selecteer op de pagina **patronen** het filter **organigram-Manager** . Verfijn de lijst door te zoeken naar `manager`. 
 
     ![Zoeken in het organigram-Manager intentie patronen voor term ' Manager '](./media/luis-tutorial-pattern/search-patterns.png)
 
@@ -465,7 +467,7 @@ Dit maakt gebruik van een **groep** rond de vereiste term tien tallen `in` en `o
 
 ## <a name="use-the-utterance-beginning-and-ending-anchors"></a>De utterance begin-en eind ankerpunten gebruiken
 
-De syntaxis van het patroon biedt het begin-en eind utterance-anker `^`syntaxis van een caret,. De begin-en eind utterance-ankers kunnen samen worden gebruikt om een zeer specifieke en mogelijk letterlijke utterance te bereiken of om afzonderlijk te worden gebruikt voor doel intentie. 
+De syntaxis van het patroon biedt het begin-en eind utterance-anker syntaxis van een caret-`^`. De begin-en eind utterance-ankers kunnen samen worden gebruikt om een zeer specifieke en mogelijk letterlijke utterance te bereiken of om afzonderlijk te worden gebruikt voor doel intentie. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

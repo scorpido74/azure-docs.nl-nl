@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9a66e4ecf2230caad233a4eff12c0fadc95409d5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803809"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464279"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Gecomprimeerde audio-invoer van codec gebruiken met de Speech SDK op iOS
 
@@ -39,21 +39,21 @@ Deze functies kunnen om licentie redenen niet worden geleverd bij de SDK, maar e
 Als u deze wrapper-bibliotheek wilt maken, moet u eerst de [gstreamer-SDK](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg)downloaden en installeren.
 Down load vervolgens het Xcode-project voor de [wrapper-bibliotheek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper).
 Open het project in Xcode en bouw het voor het **algemene IOS-apparaat** doel--het zal niet werken voor een specifiek doel.
-Met de stap build wordt een dynamische Framework-bundel gegenereerd met een dynamische bibliotheek voor alle benodigde architecturen met de naam `GStreamerWrapper.framework`.
+Met de stap build wordt een dynamisch Framework gegenereerd met een dynamische bibliotheek voor alle benodigde architecturen met de naam van `GStreamerWrapper.framework`.
 Dit framework moet worden opgenomen in alle apps die gebruikmaken van gecomprimeerde audio stromen met de speech Services SDK.
 
 Pas de volgende instellingen in uw Xcode-project toe om dit te bewerkstelligen:
 
-1. Kopieer zowel de `GStreamerWrapper.framework` die u zojuist hebt gemaakt en het Framework van de Cognitive Services Speech SDK, die u [hier](https://aka.ms/csspeech/iosbinary)kunt downloaden, naar de map met uw voorbeeld project.
+1. Kopieer de `GStreamerWrapper.framework` die u zojuist hebt gemaakt en het Framework van de Cognitive Services Speech SDK, die u [hier](https://aka.ms/csspeech/iosbinary)kunt downloaden, naar de map met uw voorbeeld project.
 1. Wijzig de paden in de kaders in de *project instellingen*.
-    1. Op het tabblad **Algemeen**, onder de header **Ingesloten binaire bestanden** voegt u de SDK-bibliotheek toe als framework: **Inge sloten binaire bestanden toevoegen** > **andere toevoegen...** > Navigeer naar de map die u hebt gekozen en selecteer beide frameworks.
+    1. Voeg op het tabblad **Algemeen** onder de kop **Inge sloten binaire bestanden** de SDK-bibliotheek toe als Framework: **Voeg inge sloten binaire bestanden** toe > **Voeg andere toe...** > Navigeer naar de map die u hebt gekozen en selecteer beide frameworks.
     1. Ga naar het tabblad **Build Settings** en activeer **alle** instellingen.
 1. Voeg de map `$(SRCROOT)/..` toe aan de *Framework Search Paths* onder de kop **Search Paths**.
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeld code met behulp van gecomprimeerde audio-invoer van de codec
 
 Als u een gecomprimeerde audio-indeling naar de spraak Services wilt streamen, maakt u een `SPXPullAudioInputStream` of `SPXPushAudioInputStream`.
-Het volgende code fragment laat zien hoe u een `SPXAudioConfiguration` maakt op basis van een exemplaar van een `SPXPushAudioInputStream`, waarbij u MP3 opgeeft als de compressie-indeling van de stroom.
+Het volgende code fragment laat zien hoe u een `SPXAudioConfiguration` maakt op basis van een exemplaar van een `SPXPushAudioInputStream`en hoe MP3 wordt opgegeven als de compressie-indeling van de stroom.
 
 [!code-objectivec[Set up the input stream](~/samples-cognitive-services-speech-sdk/samples/objective-c/ios/compressed-streams/CompressedStreamsSample/CompressedStreamsSample/ViewController.m?range=66-77&highlight=2-11)]
 
@@ -64,4 +64,4 @@ In het volgende fragment ziet u hoe gecomprimeerde audio gegevens kunnen worden 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-- [Zie voor het herkennen van gesproken tekst in C#](quickstart-csharp-dotnet-windows.md)
+* [Zie spraak herkennen in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

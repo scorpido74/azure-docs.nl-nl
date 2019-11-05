@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470249"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service plan
 
@@ -35,9 +35,9 @@ Wanneer u in een bepaalde regio een App Service plan maakt (bijvoorbeeld Europa-
 
 De _prijs categorie_ van een app service plan bepaalt welke app service functies u krijgt en hoeveel u betaalt voor het abonnement. Er zijn een aantal categorie prijs Categorieën:
 
-- **Gedeelde Compute**: **Gratis** en **gedeeld**, de twee basis lagen, voert een app op dezelfde Azure-VM uit als andere app service-apps, waaronder apps van andere klanten. Deze lagen wijzen CPU-quota toe aan elke app die wordt uitgevoerd op de gedeelde bronnen, en de resources kunnen niet worden uitgeschaald.
-- **Toegewezen reken kracht**: Met de lagen **Basic**, **Standard**, **Premium**en **PremiumV2** worden apps op toegewezen Azure-vm's uitgevoerd. Alleen apps in hetzelfde App Service plan delen dezelfde reken resources. Hoe hoger de laag is, hoe meer VM-exemplaren er beschikbaar zijn voor uitschalen.
-- **Geïsoleerd**: Deze laag voert specifieke virtuele Azure-machines uit op specifieke Azure Virtual Networks. Het biedt netwerk isolatie boven op reken isolatie voor uw apps. Het biedt de maximale schaal mogelijkheden.
+- **Gedeelde Compute** **: de** twee basis **lagen, een**app, worden op dezelfde Azure-VM uitgevoerd als andere app service apps, inclusief apps van andere klanten. Deze lagen wijzen CPU-quota toe aan elke app die wordt uitgevoerd op de gedeelde bronnen, en de resources kunnen niet worden uitgeschaald.
+- **Toegewezen reken kracht**: de lagen **Basic**, **Standard**, **Premium**en **PremiumV2** voeren apps uit op specifieke Azure-vm's. Alleen apps in hetzelfde App Service plan delen dezelfde reken resources. Hoe hoger de laag is, hoe meer VM-exemplaren er beschikbaar zijn voor uitschalen.
+- **Geïsoleerd**: deze laag voert specifieke virtuele Azure-machines uit op specifieke Azure Virtual Networks. Het biedt netwerk isolatie boven op reken isolatie voor uw apps. Het biedt de maximale schaal mogelijkheden.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -54,7 +54,7 @@ Elke laag biedt ook een specifieke subset van App Service-functies. Deze functie
 > - Gemiddeld (twee CPU-kernen, 7 GiB geheugen) 
 > - Groot (vier CPU-kernen, 14 GiB geheugen)  
 >
-> Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor PremiumV2e prijs informatie.
+> Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor **PremiumV2e** prijs informatie.
 >
 > Zie [PremiumV2 laag configureren voor app service](app-service-configure-premium-tier.md)om aan de slag te gaan met de nieuwe prijs categorie **PremiumV2** .
 
@@ -77,7 +77,7 @@ In deze sectie wordt beschreven hoe App Service-apps worden gefactureerd. Zie [a
 Met uitzonde ring van de laag **gratis** geldt een app service plan een uurtarief op basis van de reken resources die worden gebruikt.
 
 - In de **gedeelde** laag ontvangt elke app een QUOTUM van CPU-minuten, zodat _elke app elk_ uur in rekening wordt gebracht voor het CPU-quotum.
-- In de toegewezen reken lagen (**Basic**, **Standard**, **Premium**, **PremiumV2**) wordt met het app service plan het aantal VM-exemplaren gedefinieerd waarmee de apps worden geschaald, zodat _elk VM-exemplaar_ in het app service plan over een uurtarief in rekening wordt gebracht. Deze VM-exemplaren worden op dezelfde manier in rekening gebracht, ongeacht het aantal apps dat erop wordt uitgevoerd. Zie [een app service plan](app-service-plan-manage.md#delete)opschonen om onverwachte kosten te voor komen.
+- In de toegewezen reken lagen (**Basic**, **Standard**, **Premium**, **PremiumV2**) wordt met het app service plan het aantal VM-exemplaren gedefinieerd waarmee de apps worden geschaald, zodat _elk VM-exemplaar_ in het app service plan over een uurtarief in rekening wordt gebracht. Deze VM-exemplaren worden op dezelfde manier in rekening gebracht, ongeacht het aantal apps dat erop wordt uitgevoerd. Zie [een app service plan opschonen](app-service-plan-manage.md#delete)om onverwachte kosten te voor komen.
 - In de **geïsoleerde** laag definieert het app service Environment het aantal geïsoleerde werk rollen waarop uw apps worden uitgevoerd, en _elke werk nemer_ wordt per uur in rekening gebracht. Daarnaast zijn er kosten per uur voor het uitvoeren van de App Service Environment zelf.
 
 Er worden geen kosten in rekening gebracht voor het gebruik van de App Service functies die voor u beschikbaar zijn (het configureren van aangepaste domeinen, SSL-certificaten, implementatie sleuven, back-ups, enz.). De uitzonde ringen zijn:
@@ -95,7 +95,7 @@ Er worden geen kosten in rekening gebracht voor het gebruik van de App Service f
 
 Uw App Service-abonnement kan op elk gewenst moment omhoog of omlaag worden geschaald. Het is net zo eenvoudig als het wijzigen van de prijs categorie van het plan. U kunt eerst een lagere prijs categorie kiezen en deze later omhoog schalen wanneer u meer App Service functies nodig hebt.
 
-U kunt bijvoorbeeld beginnen met het testen van uw web-app in een **gratis** app service plan en niets betalen. Wanneer u uw [aangepaste DNS-naam](app-service-web-tutorial-custom-domain.md) wilt toevoegen aan de web-app, schaalt u uw plan naar een **gedeelde** laag. Wanneer u later een [aangepast SSL-certificaat](app-service-web-tutorial-custom-ssl.md)wilt toevoegen, schaalt u uw abonnement op de **Basic** -laag. Wanneer u [faserings omgevingen](deploy-staging-slots.md)wilt, schaalt u omhoog naar de laag **standaard** . Wanneer u meer kernen, geheugen of opslag ruimte nodig hebt, kunt u omhoog schalen naar een grotere VM-grootte in dezelfde laag.
+U kunt bijvoorbeeld beginnen met het testen van uw web-app in een **gratis** app service plan en niets betalen. Wanneer u uw [aangepaste DNS-naam](app-service-web-tutorial-custom-domain.md) wilt toevoegen aan de web-app, schaalt u uw plan naar een **gedeelde** laag. Als u later [een SSL-binding wilt maken](configure-ssl-bindings.md), schaalt u uw abonnement op de **Basic** -laag. Wanneer u [faserings omgevingen](deploy-staging-slots.md)wilt, schaalt u omhoog naar de laag **standaard** . Wanneer u meer kernen, geheugen of opslag ruimte nodig hebt, kunt u omhoog schalen naar een grotere VM-grootte in dezelfde laag.
 
 Hetzelfde werkt in de omgekeerde volg orde. Wanneer u denkt dat u de mogelijkheden of functies van een hogere laag niet meer nodig hebt, kunt u omlaag schalen naar een lagere laag, waardoor u geld bespaart.
 

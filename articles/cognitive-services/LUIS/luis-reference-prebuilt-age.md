@@ -1,7 +1,7 @@
 ---
 title: Leeftijd preconstrueerde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat leeftijd vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat informatie over de leeftijds voorgedefinieerde entiteit in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,34 +9,69 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2a49cf406dea045302f84e95318eca1557fc3e22
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677734"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465103"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Leeftijd preconstrueerde entiteit voor een LUIS-app
-De vooraf gedefinieerde leeftijd entiteit bevat de leeftijdwaarde zowel numeriek en in termen van dagen, weken, maanden en jaren. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met leeftijd aan de toepassing intents. Leeftijd entiteit wordt ondersteund in [veel culturen](luis-reference-prebuilt-entities.md). 
+De vooraf gemaakte leeftijds entiteit legt de leeftijds waarde zowel numeriek als in termen van dagen, weken, maanden en jaren vast. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met leeftijd toe te voegen aan de doel stellingen van de toepassing. De leeftijds entiteit wordt in [veel cultures](luis-reference-prebuilt-entities.md)ondersteund. 
 
 ## <a name="types-of-age"></a>Typen leeftijd
 De leeftijd wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) github
 
-## <a name="resolution-for-prebuilt-age-entity"></a>Oplossing voor vooraf gedefinieerde leeftijd entiteit
+## <a name="resolution-for-prebuilt-age-entity"></a>Oplossing voor vooraf samengestelde leeftijds entiteit
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
 
-Het volgende voorbeeld ziet u de resolutie van de **builtin.age** entiteit.
+
+#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
 ```json
-{
-  "query": "A 90 day old utilities bill is quite late.",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8236133
-  },
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
+
+```json
+"entities": {
+    "age": [
+        {
+            "number": 90,
+            "unit": "Day"
+        }
+    ],
+    "$instance": {
+        "age": [
+            {
+                "type": "builtin.age",
+                "text": "90 day old",
+                "startIndex": 2,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor"
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
+
+In het volgende voor beeld ziet u de resolutie van de **inbuiltin. Age** -entiteit.
+
+```json
   "entities": [
     {
       "entity": "90 day old",
@@ -48,78 +83,11 @@ Het volgende voorbeeld ziet u de resolutie van de **builtin.age** entiteit.
         "value": "90"
       }
     }
-  ]
-}
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
-
-De volgende JSON is met de para meter `verbose` ingesteld op `false`:
-
-```json
-{
-    "query": "A 90 day old utilities bill is quite late.",
-    "prediction": {
-        "normalizedQuery": "a 90 day old utilities bill is quite late.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.558252
-            }
-        },
-        "entities": {
-            "age": [
-                {
-                    "number": 90,
-                    "unit": "Day"
-                }
-            ]
-        }
-    }
-}
-```
-
-De volgende JSON is met de para meter `verbose` ingesteld op `true`:
-
-```json
-{
-    "query": "A 90 day old utilities bill is quite late.",
-    "prediction": {
-        "normalizedQuery": "a 90 day old utilities bill is quite late.",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.558252
-            }
-        },
-        "entities": {
-            "age": [
-                {
-                    "number": 90,
-                    "unit": "Day"
-                }
-            ],
-            "$instance": {
-                "age": [
-                    {
-                        "type": "builtin.age",
-                        "text": "90 day old",
-                        "startIndex": 2,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [valuta](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), en [dimensie](luis-reference-prebuilt-dimension.md) entiteiten. 
+Meer informatie over de [valuta](luis-reference-prebuilt-currency.md)-, [datetimeV2](luis-reference-prebuilt-datetimev2.md)-en [dimensie](luis-reference-prebuilt-dimension.md) -entiteiten. 

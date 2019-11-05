@@ -1,7 +1,7 @@
 ---
 title: 'Tekst voorverwerken: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de tekst module preprocess in Azure Machine Learning service om tekst te reinigen en te vereenvoudigen.
+titleSuffix: Azure Machine Learning
+description: Informatie over het gebruik van de tekst module preprocess in Azure Machine Learning om tekst op te schonen en te vereenvoudigen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692693"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497677"
 ---
 # <a name="preprocess-text"></a>Tekst voorverwerken
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik de **tekst module preprocess** om tekst op te schonen en te vereenvoudigen. Deze algemene bewerkingen voor tekst verwerking worden ondersteund:
 
@@ -33,7 +33,7 @@ De **tekst module preprocess** ondersteunt momenteel alleen Engels.
 
 ## <a name="configure-text-preprocessing"></a>Tekst voorverwerken configureren  
 
-1.  Voeg de **tekst module preprocess** toe aan uw experiment in azure machine learning service. U kunt deze module vinden onder **Text Analytics**.
+1.  Voeg de **tekst module preprocess** toe aan uw pijp lijn in azure machine learning. U kunt deze module vinden onder **Text Analytics**.
 
 1. Verbind een gegevensset met ten minste één kolom met tekst.
 
@@ -70,7 +70,7 @@ De **tekst module preprocess** ondersteunt momenteel alleen Engels.
     
     * **Dubbele tekens verwijderen**: Selecteer deze optie als u wilt dat de extra tekens in een reeks die meer dan twee keer worden herhaald, worden verwijderd. Een reeks zoals ' aaaaa ' wordt bijvoorbeeld gereduceerd tot ' AA '.
     
-    * **E-mail adressen verwijderen**: Selecteer deze optie om een reeks van de indeling `<string>@<string>` te verwijderen.  
+    * **E-mail adressen verwijderen**: Selecteer deze optie om een reeks van de indeling `<string>@<string>`te verwijderen.  
     * **Url's verwijderen**: Selecteer deze optie om een reeks te verwijderen die de volgende URL-voor voegsels bevat: `http`, `https`, `ftp`, `www`
     
 1. **Uitbestedingen van woorden uitvouwen**: deze optie is alleen van toepassing op talen die verb-contract ANTEN gebruiken; Dit is momenteel alleen beschikbaar in het Engels. 
@@ -79,12 +79,12 @@ De **tekst module preprocess** ondersteunt momenteel alleen Engels.
 
 1. **Backslashes normaliseren naar slashes**: Selecteer deze optie om alle exemplaren van `\\` toe te wijzen aan `/`.
 
-1. **Tokens splitsen op speciale tekens**: Selecteer deze optie als u wilt dat woorden worden gesplitst in tekens zoals `&`, `-` enzovoort. Deze optie kan ook de speciale tekens verminderen wanneer deze meer dan twee keer wordt herhaald. 
+1. **Tokens splitsen op speciale tekens**: Selecteer deze optie als u wilt dat woorden worden gesplitst in tekens zoals `&`, `-`enzovoort. Deze optie kan ook de speciale tekens verminderen wanneer deze meer dan twee keer wordt herhaald. 
 
-    De teken reeks `MS---WORD` bijvoorbeeld worden onderverdeeld in drie tokens, `MS`, `-` en `WORD`.
+    De teken reeks `MS---WORD` bijvoorbeeld worden onderverdeeld in drie tokens, `MS`, `-`en `WORD`.
 
-1. Voer het experiment uit.
+1. Voer de pijplijn uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

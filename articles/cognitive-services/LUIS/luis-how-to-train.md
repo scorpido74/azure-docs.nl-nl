@@ -1,7 +1,7 @@
 ---
 title: App-LUIS trainen
 titleSuffix: Azure Cognitive Services
-description: Training is het proces van uw app-versie van de Language Understanding (LUIS) voor het verbeteren van de natuurlijke taal begrijpen lessen. Uw LUIS-app na updates voor het model zoals toevoegen, bewerken, labels of verwijderen van entiteiten, intents of uitingen trainen.
+description: Training is het proces van het aanwijzen van uw Language Understanding-App-versie (LUIS) om de duidelijkheid van natuurlijke taal te verbeteren. Train uw LUIS-app na het bijwerken van het model, zoals het toevoegen, bewerken, labelen of verwijderen van entiteiten, intenties of uitingen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,60 +9,76 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b3841c9d60cf275e423024fc66c15582f95c0a10
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 259ea23c05f0c0a138ad54b6efd11aad2061cf7a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932762"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500220"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Train uw actieve versie van de LUIS-app 
 
-Training is het proces van uw app Language Understanding (LUIS) voor het verbeteren van de natuurlijke taal begrijpen lessen. Uw LUIS-app na updates voor het model zoals toevoegen, bewerken, labels of verwijderen van entiteiten, intents of uitingen trainen. 
+Training is het proces van het aanwijzen van uw Language Understanding-app (LUIS) om de uitleg van natuurlijke taal te verbeteren. Train uw LUIS-app na het bijwerken van het model, zoals het toevoegen, bewerken, labelen of verwijderen van entiteiten, intenties of uitingen. 
 
-<!--
-When you train a LUIS app by example, LUIS generalizes from the examples you have labeled, and it learns to recognize the relevant intents and entities. This teaches LUIS to improve classification accuracy in the future. -->
+Training en [testen](luis-concept-test.md) van een app is een iteratief proces. Nadat u uw LUIS-app hebt getraind, test u deze met voor beeld-uitingen om te zien of de intenties en entiteiten goed zijn herkend. Als dat niet het geval is, moet u updates voor de LUIS-app, Train en test opnieuw uitvoeren. 
 
-Training en [testen](luis-concept-test.md) een app is een iteratief proces. Nadat u uw LUIS-app trainen, kunt u deze testen met voorbeeldgegevens uitingen om te controleren of de intenties en entiteiten correct worden herkend. Als ze niet zijn, moet u opnieuw updates voor de LUIS-app, trainen en testen. 
+Training wordt toegepast op de actieve versie in de LUIS-Portal. 
 
-Training wordt toegepast op de actieve versie in de LUIS-portal. 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
-## <a name="how-to-train-interactively"></a>Hoe u met het trainen van interactief
+## <a name="how-to-train-interactively"></a>Interactief trainen
 
-De iteratief proces gestart in de [LUIS portal](https://www.luis.ai), moet u eerst uw LUIS-app ten minste één keer te trainen. Zorg ervoor dat elke bedoeling heeft ten minste één utterance voordat een training.
+Als u het iteratieve proces in de [Luis-Portal](https://www.luis.ai)wilt starten, moet u eerst uw Luis-app ten minste één keer trainen. Zorg ervoor dat elke intentie ten minste één utterance heeft vóór de training.
 
-1. Toegang tot uw app door het selecteren van de naam ervan op de **mijn Apps** pagina. 
+1. U hebt toegang tot uw app door de naam ervan te selecteren op de pagina **mijn apps** . 
 
-2. Selecteer in uw app **Train** in het bovenste deelvenster. 
+2. In uw app selecteert u **trainen** in het bovenste paneel. 
 
-3. Wanneer training voltooid is, wordt een groen meldingsbalk weergegeven aan de bovenkant van de browser.
+3. Wanneer de training is voltooid, wordt boven aan de browser een groene meldings balk weer gegeven.
 
 <!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
 
 >[!NOTE]
->Als u een of meer intents in uw app die geen voorbeeld uitingen bevatten hebt, kunt u uw app kan niet trainen. Utterances voor alle uw intents toevoegen. Zie voor meer informatie, [voorbeeld utterances toevoegen](luis-how-to-add-example-utterances.md).
+>Als uw app een of meer intenties bevat die geen voorbeeld uitingen bevatten, kunt u uw app niet trainen. Voeg uitingen toe voor al uw intenties. Zie voor meer informatie [toevoegen voor beeld uitingen](luis-how-to-add-example-utterances.md).
 
 ## <a name="training-date-and-time"></a>Datum en tijd van training
 
 De trainings datum en-tijd zijn GMT + 2. 
 
-## <a name="train-with-all-data"></a>Met alle gegevens van de trein
+## <a name="train-with-all-data"></a>Train met alle gegevens
 
-Training maakt gebruik van een klein percentage van het negatieve samplen bijhouden. Als u wilt dat alle gegevens gebruiken in plaats van de kleine negatieve steekproeven, gebruikt u de [versie instellingen API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) met de `UseAllTrainingData` ingesteld op waar deze functie uitschakelen. 
+Training maakt gebruik van een klein percentage van negatieve steek proeven. 
+
+Als u alle gegevens wilt gebruiken in plaats van de kleine negatieve steek proef, gebruikt u de [API](#version-settings-api-use-of-usealltrainingdata).
+
+<!--
+
+ or the [LUIS portal setting](#luis-portal-setting-to-use-all-training-data)
+
+### LUIS portal setting to use all training data
+
+!!!IGNITE
+
+
+-->
+
+### <a name="version-settings-api-use-of-usealltrainingdata"></a>API-gebruik van versie-instellingen van UseAllTrainingData
+
+Gebruik de [API Version Settings](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) met de `UseAllTrainingData` ingesteld op True om deze functie uit te scha kelen. 
 
 ## <a name="unnecessary-training"></a>Onnodige training
 
-U hoeft niet te trainen na elke één wijziging. Training moet worden uitgevoerd nadat een groep van de wijzigingen worden toegepast op het model en de volgende stap die u wilt doen, is te testen of te publiceren. Als u niet hoeft te testen of te publiceren, training niet nodig. 
+U hoeft niet te trainen na elke wijziging. De training moet worden uitgevoerd nadat een groep wijzigingen op het model is toegepast en de volgende stap die u wilt uitvoeren, is om te testen of te publiceren. Als u niet hoeft te testen of publiceren, is training niet nodig. 
 
-## <a name="training-with-the-rest-apis"></a>Training met de REST API 's
+## <a name="training-with-the-rest-apis"></a>Training met de REST-Api's
 
-Training in de portal LUIS bestaat uit één stap van de te drukken de **Train** knop. Training met de REST API's is een proces in twee stappen. De eerste [aanvragen training](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) met HTTP POST. Vraag de [trainingsstatus](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) met HTTP Get. 
+Training in de LUIS-Portal is één stap van het drukken op de **trein** knop. Training met de REST-Api's is een proces dat uit twee stappen bestaat. Eerst moet u [training aanvragen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) met http post. Vraag vervolgens de [trainings status](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46) aan met HTTP Get. 
 
-Als u wilt weten wanneer de training is voltooid, moet u de status te peilen totdat alle modellen met succes zijn getraind. 
+Als u wilt weten wanneer de training is voltooid, moet u de status navragen totdat alle modellen zijn getraind. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Label van de voorgestelde uitingen van LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Functies gebruiken om uw LUIS-app-prestaties te verbeteren](luis-how-to-add-features.md) 
+* [Aanbevolen uitingen label met LUIS](luis-how-to-review-endpoint-utterances.md) 
+* [Functies gebruiken om de prestaties van uw LUIS-app te verbeteren](luis-how-to-add-features.md) 

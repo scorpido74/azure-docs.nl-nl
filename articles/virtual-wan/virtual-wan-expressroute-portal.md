@@ -5,85 +5,92 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ad86280eab3041667bf9d1713ae2b4bc82a4c9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077517"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491582"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Zelfstudie: Een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN (preview)
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Zelf studie: een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN
 
-In deze zelfstudie leert u hoe u Azure Virtual WAN gebruikt om uw resources in Azure te verbinden met behulp van een ExpressRoute-circuit en -koppeling. Zie voor meer informatie over Virtual WAN het [Overzicht van Virtual WAN](virtual-wan-about.md)
+In deze zelf studie ziet u hoe u met behulp van virtueel WAN verbinding maakt met uw resources in azure via een ExpressRoute-circuit. Zie het [overzicht van virtuele](virtual-wan-about.md)WAN-netwerken voor meer informatie over virtuele WAN-en virtuele WAN-resources.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een vWAN maken
-> * Een hub maken
-> * Een circuit zoeken en aan de hub koppelen
-> * Het circuit aan hub(s) koppelen
+> * Een virtueel WAN maken
+> * Een hub en een gateway maken
 > * Een VNet verbinden met een hub
-> * Uw virtuele WAN weergeven
-> * Resourcestatus weergeven
-> * Een verbinding bewaken
-
-> [!IMPORTANT]
-> Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+> * Een circuit verbinden met een hub-gateway
+> * Connectiviteit testen
+> * De grootte van een gateway wijzigen
+> * Een standaard route adverteren
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Controleer voordat u met de configuratie begint of u aan de volgende criteria hebt voldaan:
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* U hebt een virtueel netwerk waarmee u verbinding wilt maken. Controleer of geen van de subnetten van uw on-premises netwerken overlapt met de virtuele netwerken waarmee u verbinding wilt maken. Als u een virtueel netwerk in de Azure Portal wilt maken, raadpleegt u [Quick](../virtual-network/quick-create-portal.md)start.
 
-## <a name="register"></a>Deze functie registreren
+* Het virtuele netwerk heeft geen virtuele netwerk gateways. Als uw virtuele netwerk een gateway heeft (VPN of ExpressRoute), moet u alle gateways verwijderen. Voor deze configuratie moeten virtuele netwerken in plaats daarvan zijn verbonden met de virtuele WAN hub-gateway.
 
-Voordat u Virtual WAN kunt configureren, dient u eerst uw abonnement voor de Preview-versie te registreren. Anders kunt u niet met Virtual WAN werken in de portal. Als u wilt inschrijven, stuur een e-mail naar **azurevirtualwan\@microsoft.com** met uw abonnements-ID. U ontvangt een e-mailbevestiging zodra uw abonnement is geregistreerd.
+* Zorg dat u een IP-adresbereik krijgt voor uw hubregio. De hub is een virtueel netwerk dat wordt gemaakt en gebruikt door Virtual WAN. Het adres bereik dat u voor de hub opgeeft, mag niet overlappen met een van de bestaande virtuele netwerken waarmee u verbinding maakt. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. Als u niet bekend bent met de IP-adresbereiken die zich in uw on-premises netwerk configuratie bevinden, coördineert u met iemand die deze gegevens voor u kan opgeven.
 
-**Overwegingen bij de preview:**
+* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 
-  * Het ExpressRoute-circuit moet zijn ingeschakeld in een land/de regio die ondersteuning biedt voor [ExpressRoute globaal bereik](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported).
-  * Het ExpressRoute-circuit moet een Premium-circuit om verbinding met virtuele WAN-hub. 
+## <a name="openvwan"></a>Een virtueel WAN maken
 
-## <a name="vnet"></a>1. Een virtueel netwerk maken
+Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+1. Ga naar de virtuele WAN-pagina. Klik in de portal op **+Een resource maken**. Typ **Virtual WAN** in het zoekvak en selecteer ENTER.
+2. Selecteer **virtueel WAN** in de resultaten. Klik op de pagina virtueel WAN op **maken** om de pagina WAN maken te openen.
+3. Vul op de pagina **WAN maken** op het tabblad **basis beginselen** de volgende velden in:
 
-## <a name="openvwan"></a>2. Een virtueel WAN maken
+   ![WAN maken](./media/virtual-wan-expressroute-portal/createwan.png)
 
-Open een browser, ga naar de [Azure-portal (preview)](https://aka.ms/azurevirtualwanpreviewfeatures) en meld u aan met uw Azure-account.
+   * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
+   * **Resourcegroep** - maak een nieuwe resourcegroep of gebruik een bestaande.
+   * **Locatie van resource groep** : Kies een resource locatie in de vervolg keuzelijst. Een WAN een globale resource en bevindt zich niet in een bepaalde regio. U moet echter een regio selecteren om de WAN-resource die u maakt eenvoudiger te kunnen beheren en vinden.
+   * **Naam** : Typ de naam die u voor uw WAN wilt aanroepen.
+   * **Type** -Selecteer **standaard**. U kunt geen ExpressRoute-gateway maken met behulp van de basis-SKU.
+4. Wanneer u klaar bent met het invullen van de velden, selecteert u **controleren + maken**.
+5. Wanneer de validatie is geslaagd, selecteert u **maken** om het virtuele WAN te maken.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+## <a name="hub"></a>Een virtuele hub en gateway maken
 
-### <a name="getting-started-page"></a>Pagina Aan de slag
+Een virtuele hub is een virtueel netwerk dat door virtuele WAN wordt gemaakt en gebruikt. Het kan verschillende gateways bevatten, zoals VPN en ExpressRoute. In deze sectie maakt u een ExpressRoute-gateway voor uw virtuele hub. U kunt de gateway maken wanneer u [een nieuwe virtuele hub maakt](#newhub), of u kunt de gateway maken in een [bestaande hub](#existinghub) door deze te bewerken. 
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-gettingstarted-include.md)]
+ExpressRoute-gateways worden ingericht in eenheden van 2 Gbps. 1 schaal eenheid = 2 Gbps met ondersteuning van Maxi maal 10 schaal eenheden = 20 Gbps. Het duurt ongeveer 30 minuten voordat een virtuele hub en gateway volledig worden gemaakt.
 
-## <a name="hub"></a>3. Een hub maken
+### <a name="newhub"></a>Een nieuwe virtuele hub en een gateway maken
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+Maak een nieuwe virtuele hub. Zodra een hub is gemaakt, worden er kosten in rekening gebracht voor de hub, zelfs als u geen sites koppelt.
 
-## <a name="hub"></a>4. Een circuit zoeken en aan de hub koppelen
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-1. Selecteer uw vWAN en klikt u onder **virtuele WAN-architectuur**, selecteer **ExpressRoute-Circuits**.
-1. Als het ExpressRoute-circuit zich in hetzelfde abonnement als uw vWAN, klikt u op **selecteert u ExpressRoute-circuit** van uw abonnementen. 
-1. Selecteer in de vervolgkeuzelijst de ExpressRoute die u aan de hub wilt koppelen.
-1. Als het ExpressRoute-circuit zich niet in hetzelfde abonnement bevindt of u [een autorisatiesleutel en peer-id](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) hebt gekregen, selecteert u **Een circuit zoeken waarvoor een autorisatiesleutel moet worden ingewisseld**
-1. Voer de volgende details in:
-1. **Autorisatiesleutel**: gegenereerd door de circuiteigenaar zoals hierboven beschreven
-1. **URI van peercircuit**: circuit-URI die wordt geleverd door de circuiteigenaar en die de unieke id voor het circuit is
-1. **Routeringsgewicht** - [Routeringsgewicht](../expressroute/expressroute-optimize-routing.md) biedt u de mogelijkheid voorkeur te geven aan bepaalde paden wanneer meerdere circuits van verschillende peeringlocaties met dezelfde hub zijn verbonden
-1. Klik op **vinden circuit** en selecteert u het circuit als gevonden.
-1. Selecteer 1 of meer hubs in de vervolgkeuzelijst naar beneden en klik op **opslaan**.
+### <a name="existinghub"></a>Een gateway maken in een bestaande hub
 
-## <a name="vnet"></a>5. Uw VNet verbinden met een hub
+U kunt ook een gateway maken in een bestaande hub door deze te bewerken.
 
-In deze stap brengt u de peering-verbinding tussen uw hub en een VNet tot stand. Herhaal deze stappen voor elk VNet dat u wilt verbinden.
+1. Ga naar de virtuele hub die u wilt bewerken en selecteer deze.
+2. Schakel op de pagina **virtuele hub bewerken** het selectie vakje **ExpressRoute-gateway toevoegen**in.
+3. Selecteer **bevestigen** om uw wijzigingen te bevestigen. Het duurt ongeveer 30 minuten om de hub-en hub-resources volledig te maken.
+
+   ![bestaande hub](./media/virtual-wan-expressroute-portal/edithub.png "een hub bewerken")
+
+### <a name="to-view-a-gateway"></a>Een gateway weer geven
+
+Wanneer u een ExpressRoute-gateway hebt gemaakt, kunt u de gateway gegevens weer geven. Ga naar de hub, selecteer **ExpressRoute**en Bekijk de gateway.
+
+![Gateway weer geven](./media/virtual-wan-expressroute-portal/viewgw.png "gateway weer geven")
+
+## <a name="connectvnet"></a>Verbind uw VNet met de hub
+
+In deze sectie maakt u de peering-verbinding tussen uw hub en een VNet. Herhaal deze stappen voor elk VNet dat u wilt verbinden.
 
 1. Klik op de pagina voor uw virtuele WAN op **Virtuele netwerkverbinding**.
 2. Klik op de pagina Virtuele netwerkverbinding op **+Verbinding toevoegen**.
@@ -92,44 +99,58 @@ In deze stap brengt u de peering-verbinding tussen uw hub en een VNet tot stand.
     * **Verbindingsnaam** - voer een naam in voor uw verbinding.
     * **Hubs** - selecteer de hub die u wilt koppelen aan deze verbinding.
     * **Abonnement** - controleer of het abonnement klopt.
-    * **Virtueel netwerk** - selecteer het virtuele netwerk dat met deze hub wilt verbinden. Het virtuele netwerk mag geen bestaande virtuele netwerkgateway hebben.
+    * **Virtueel netwerk** - selecteer het virtuele netwerk dat met deze hub wilt verbinden. Het virtuele netwerk kan geen bestaande gateway van een virtueel netwerk (VPN of ExpressRoute) hebben.
 
+## <a name="connectcircuit"></a>Uw circuit verbinden met de hub gateway
 
-## <a name="viewwan"></a>6. Uw virtuele WAN weergeven
+Zodra de gateway is gemaakt, kunt u er een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) aan koppelen. Houd er rekening mee dat ExpressRoute Premium-circuits die zich bevinden in ExpressRoute Global Reach ondersteunde locaties verbinding kunnen maken met een virtuele WAN ExpressRoute-gateway.
 
-1. Navigeer naar uw virtuele WAN.
-2. Op de pagina Overzicht vertegenwoordigt elk punt op de kaart een hub. Houd de muisaanwijzer boven een punt om de statussamenvatting voor de hub weer te geven.
-3. In de sectie Hubs en verbindingen vindt u informatie over de hubstatus, site, regio, VPN-verbindingsstatus en verzonden en ontvangen bytes.
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Het circuit verbinden met de hub gateway
 
-## <a name="viewhealth"></a>7. Resourcestatus bekijken
+Ga in de portal naar de pagina **Virtual hub-> Connectivity-> ExpressRoute** . Als u in uw abonnement toegang hebt tot een ExpressRoute-circuit, ziet u het circuit dat u wilt gebruiken in de lijst met circuits. Als er geen circuits worden weer gegeven, maar wel zijn voorzien van een autorisatie sleutel en een peer circuit-URI, kunt u een circuit inwisselen en aansluiten. Zie [verbinding maken door een autorisatie sleutel in te wisselen](#authkey).
 
-1. Navigeer naar uw WAN.
-2. Klik op de pagina van uw WAN, in de sectie **Ondersteuning en probleemoplossing**, op **Status** en bekijk de status van uw resource.
+1. Selecteer het circuit.
+2. Selecteer **verbinding maken circuit (s)** .
 
-## <a name="connectmon"></a>8. Een verbinding bewaken
+   ![circuits verbinden](./media/virtual-wan-expressroute-portal/cktconnect.png "circuits verbinden")
 
-Maak een verbinding om de communicatie tussen een Azure-VM en een externe site te bewaken. Zie voor meer informatie over het instellen van een verbindingscontrole de pagina [Netwerkcommunicatie bewaken](~/articles/network-watcher/connection-monitor.md). Het bronveld is het IP-adres van de VM in Azure en het doel-IP-adres is het IP-adres voor de site.
+### <a name="authkey"></a>Verbinding maken door een autorisatie sleutel in te wisselen
 
-## <a name="cleanup"></a>9. Resources opschonen
+Gebruik de autorisatie sleutel en circuit-URI die u hebt gekregen om verbinding te maken.
 
-Als u deze resources niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resourcegroep en alle resources die deze bevat te verwijderen. Vervangen 'myResourceGroup' door de naam van uw resourcegroep en voer de volgende PowerShell-opdracht uit:
+1. Klik op de pagina ExpressRoute op **+ autorisatie sleutel inwisselen**
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+   ![inwisselen](./media/virtual-wan-expressroute-portal/redeem.png "inwisselen")
+2. Vul de waarden in op de pagina autorisatie sleutel voor inwisselen.
+
+   ![sleutel waarden inwisselen](./media/virtual-wan-expressroute-portal/redeemkey2.png "sleutel waarden inwisselen")
+3. Selecteer **toevoegen** om de sleutel toe te voegen.
+4. Bekijk het circuit. Een ingewisseld circuit bevat alleen de naam (zonder het type, de provider en andere informatie) omdat deze zich in een ander abonnement bevindt dan die van de gebruiker.
+
+## <a name="to-test-connectivity"></a>De connectiviteit testen
+
+Nadat de verbinding met het circuit tot stand is gebracht, geeft de status van de hub-verbinding ' This hub ' aan. Dit betekent dat de verbinding tot stand wordt gebracht met de hub ExpressRoute-gateway. Wacht ongeveer 5 minuten voordat u de verbinding van een client achter uw ExpressRoute-circuit test, bijvoorbeeld een virtuele machine in het VNet dat u eerder hebt gemaakt.
+
+Als u sites hebt verbonden met een virtuele WAN-VPN-gateway in dezelfde hub als de ExpressRoute-gateway, kunt u een bidirectionele verbinding hebben tussen VPN-en ExpressRoute-eind punten. Dynamische route ring (BGP) wordt ondersteund. De ASN van de gateways in de hub is vast en kan op dit moment niet worden bewerkt.
+
+## <a name="to-change-the-size-of-a-gateway"></a>De grootte van een gateway wijzigen
+
+Als u de grootte van uw ExpressRoute-gateway wilt wijzigen, gaat u naar de ExpressRoute-gateway in de hub en selecteert u de schaal eenheden in de vervolg keuzelijst. Sla de wijziging op. Het duurt ongeveer 30 minuten om de hub-gateway bij te werken.
+
+![Gateway grootte wijzigen](./media/virtual-wan-expressroute-portal/changescale.png "Gateway grootte wijzigen")
+
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>Standaard route 0.0.0.0/0 aan eind punten adverteren
+
+Als u wilt dat de virtuele Azure-hub de standaard route 0.0.0.0/0 aan uw ExpressRoute-eind punten aankondigt, moet u de standaard route door geven inschakelen.
+
+1. Selecteer uw **circuit->...-> verbinding bewerken**.
+
+   ![Verbinding bewerken](./media/virtual-wan-expressroute-portal/defaultroute1.png "Verbinding bewerken")
+
+2. Selecteer **inschakelen** om de standaard route door te geven.
+
+   ![Standaard route door geven](./media/virtual-wan-expressroute-portal/defaultroute2.png "Standaard route door geven")
 
 ## <a name="next-steps"></a>Volgende stappen
-
-In deze zelfstudie heeft u het volgende geleerd:
-
-> [!div class="checklist"]
-> * Een vWAN maken
-> * Een hub maken
-> * Een circuit zoeken en aan de hub koppelen
-> * Het circuit aan hub(s) koppelen
-> * Een VNet verbinden met een hub
-> * Uw virtuele WAN weergeven
-> * Resourcestatus weergeven
-> * Een verbinding bewaken
 
 Zie voor meer informatie over Virtual WAN de pagina [Overzicht van Virtual WAN](virtual-wan-about.md).

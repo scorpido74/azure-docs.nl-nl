@@ -1,5 +1,5 @@
 ---
-title: Data Lake-hulpprogram ma's voor Visual Studio met Hortonworks sandbox-Azure HDInsight
+title: Data Lake-hulpprogram ma's voor Visual Studio & Hortonworks-Azure HDInsight
 description: Meer informatie over het gebruik van de Azure Data Lake-hulpprogram ma's voor Visual Studio met de sandbox Hortonworks die wordt uitgevoerd op een lokale VM. Met deze hulpprogram ma's kunt u Hive-en Pig-taken in de sandbox maken en uitvoeren en taak uitvoer en-geschiedenis weer geven.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e128aaf6e1726b7a1341fefc6df3cdafd3beb880
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098774"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500152"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>De Azure Data Lake-hulpprogram ma's voor Visual Studio gebruiken met de sandbox Hortonworks
 
@@ -33,7 +33,7 @@ Met de Hortonworks sandbox kunt u lokaal met Hadoop in uw ontwikkel omgeving wer
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Wacht woorden voor de sandbox configureren
 
-Zorg ervoor dat de Hortonworks sandbox wordt uitgevoerd. Volg vervolgens de stappen in het [Hortonworks aan de slag in het sandbox-document van de module](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) . Met deze stappen configureert u het wacht woord `root` voor het SSH-account en `admin` het Apache Ambari-account. Deze wacht woorden worden gebruikt wanneer u verbinding maakt met de sandbox vanuit Visual Studio.
+Zorg ervoor dat de Hortonworks sandbox wordt uitgevoerd. Volg vervolgens de stappen in het [Hortonworks aan de slag in het sandbox-document van de module](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) . Met deze stappen configureert u het wacht woord voor de SSH-`root` account en het Apache Ambari `admin`-account. Deze wacht woorden worden gebruikt wanneer u verbinding maakt met de sandbox vanuit Visual Studio.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>De hulpprogram ma's verbinden met de sandbox
 
@@ -49,7 +49,7 @@ Zorg ervoor dat de Hortonworks sandbox wordt uitgevoerd. Volg vervolgens de stap
 
     Selecteer **Volgende** om door te gaan.
 
-4. Gebruik het veld **wacht woord** om het wacht woord in te voeren `root` dat u voor het account hebt geconfigureerd. De overige velden op de standaard waarde laten staan.
+4. Gebruik het veld **wacht woord** om het wacht woord in te voeren dat u hebt geconfigureerd voor het `root`-account. De overige velden op de standaard waarde laten staan.
 
     ![Scherm afbeelding van het dialoog venster met het tekstvak basis wachtwoord gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password1.png)
 
@@ -63,7 +63,7 @@ Zorg ervoor dat de Hortonworks sandbox wordt uitgevoerd. Volg vervolgens de stap
     > Het update proces maakt gebruik van Ambari om de configuratie van de Hortonworks-sandbox te wijzigen in wat er wordt verwacht door de Data Lake-hulpprogram ma's voor Visual Studio.
 
 6. Nadat de validatie is voltooid, selecteert u **volt ooien** om de configuratie te volt ooien.
-    ![Scherm afbeelding van het dialoog venster met de knop volt ooien gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
+    Scherm afbeelding van het dialoog venster ![met de knop volt ooien gemarkeerd](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect-dialog.png)
 
      >[!NOTE]  
      > Afhankelijk van de snelheid van uw ontwikkel omgeving en de hoeveelheid geheugen die aan de virtuele machine is toegewezen, kan het enkele minuten duren om de services te configureren en valideren.

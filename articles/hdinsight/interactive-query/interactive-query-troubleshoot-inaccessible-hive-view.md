@@ -1,5 +1,5 @@
 ---
-title: Apache Hive kan geen verbinding tot stand brengen met Apache Zookeeper-Azure HDInsight
+title: Apache Hive verbindingen naar Apache Zookeeper-Azure HDInsight
 description: Apache Hive weer gave is niet toegankelijk vanwege Apache Zookeeper-problemen in azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,20 +7,20 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: a99b2deac7304813c07622fef76eaf034a4305f7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a6ede13ea258048857e06e1c158a297219ff0df6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091437"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494274"
 ---
-# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>Scenario: Apache Hive kan geen verbinding tot stand brengen met Apache Zookeeper in azure HDInsight
+# <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>Scenario: Apache Hive kan geen verbinding maken met Apache Zookeeper in azure HDInsight
 
 In dit artikel worden probleemoplossings stappen en mogelijke oplossingen voor problemen beschreven bij het gebruik van interactieve query onderdelen in azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-De Hive-weer gave is niet toegankelijk en in `/var/log/hive` de logboeken wordt een fout weer gegeven die er ongeveer als volgt uitziet:
+De Hive-weer gave is niet toegankelijk en de logboeken in `/var/log/hive` tonen een fout die er ongeveer als volgt uitziet:
 
 ```
 ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:checkTimeouts(200)) - Connection timed out for connection string (zk0-cluster.cloud.wbmi.com:2181,zk1-cluster.cloud.wbmi.com:2181,zk2-cluster.cloud.wbmi.com:2181) and timeout (15000) / elapsed (21852)
@@ -30,7 +30,7 @@ ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:check
 
 Het is mogelijk dat de Hive geen verbinding kan maken met Zookeeper, waardoor de Hive-weer gave niet kan worden gestart.
 
-## <a name="resolution"></a>Oplossing
+## <a name="resolution"></a>Resolutie
 
 1. Controleer of de Zookeeper-service in orde is.
 
@@ -49,6 +49,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Zie [Een ondersteuningsaanvraag maken voor Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) voor meer informatie. Toegang tot abonnementsbeheer en factuurbeheer is in uw Microsoft Azure-abonnement inbegrepen, en technische ondersteuning wordt verstrekt via een van de [Azure-ondersteuningsplannen](https://azure.microsoft.com/support/plans/).

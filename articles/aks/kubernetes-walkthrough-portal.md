@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 0e09d541cb84ef7857e4d68f776b92f845488771
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329893"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472705"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Snelstartgids: een AKS-cluster (Azure Kubernetes service) implementeren met behulp van de Azure Portal
 
-Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In deze snelstart implementeert u een AKS-cluster met behulp van Azure Portal. In het cluster wordt een toepassing met meerdere containers uitgevoerd die bestaat uit een web-front-end en een Redis-exemplaar. Vervolgens ziet u hoe u de status van het cluster en de pods kunt bewaken die uw toepassing uitvoeren.
+Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In deze quickstart implementeert u een AKS-cluster met behulp van Azure Portal. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster. U ziet vervolgens hoe u de status van het cluster en de pods die uw toepassing uitvoeren kunt bewaken.
 
 ![Afbeelding van browsen naar de Azure Vote-voorbeeldtoepassing](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-In deze snelstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes core-concepten voor Azure Kubernetes service (AKS)][kubernetes-concepts]voor meer informatie.
+In deze quickstart wordt ervan uitgegaan dat u een basisbegrip hebt van Kubernetes-concepten. Zie [Kubernetes core-concepten voor Azure Kubernetes service (AKS)][kubernetes-concepts]voor meer informatie.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -31,27 +31,29 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-Selecteer in de linkerbovenhoek van de Azure Portal **+ een resource maken** > **containers** >  **Kubernetes-service**.
-
 Voltooi de volgende stappen om een AKS-cluster te maken:
 
-1. Configureer op de pagina **basis beginselen** de volgende opties:
-   - *PROJECTDETAILS*: selecteer een Azure-abonnement, en selecteer of maak vervolgens een Azure-resourcegroep, zoals *myResourceGroup*. Voer een **Kubernetes-clusternaam** in, zoals *myAKSCluster*.
-   - *CLUSTERDETAILS*: selecteer een regio, Kubernetes-versie en DNS-naamvoorvoegsel voor het AKS-cluster.
-   - **Primaire knooppunt groep**: Selecteer een VM-grootte voor de AKS-knoop punten. De VM-grootte kan **niet** meer worden gewijzigd als een AKS-cluster eenmaal is geïmplementeerd. 
-       - Selecteer het aantal knooppunten dat u in het cluster wilt implementeren. Stel voor deze quickstart het **Aantal knooppunten** in op *1*. Het aantal knooppunten kan nog **wel** worden gewijzigd als het cluster is geïmplementeerd.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
+
+2. Selecteer **Containers** >  **Kubernetes-service**.
+
+3. Configureer op de pagina **basis beginselen** de volgende opties:
+    - **Project Details**: Selecteer een Azure- **abonnement**en selecteer of maak een Azure- **resource groep**, zoals *myResourceGroup*.
+    - **Cluster Details**: Voer een **Kubernetes-cluster naam**in, zoals *myAKSCluster*. Selecteer een **regio**, **Kubernetes-versie**en het voor voegsel van de **DNS-naam** voor het AKS-cluster.
+    - **Primaire knooppunt groep**: Selecteer een VM- **knooppunt grootte** voor de AKS-knoop punten. De grootte van de virtuele machine *kan niet* worden gewijzigd nadat een AKS-cluster is geïmplementeerd. 
+            -Selecteer het aantal knoop punten dat in het cluster moet worden geïmplementeerd. Stel voor deze quickstart het **Aantal knooppunten** in op *1*. Het aantal knooppunten kan nog *wel* worden gewijzigd als het cluster is geïmplementeerd.
     
-     ![AKS-cluster maken - basisgegevens opgeven](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+    ![AKS-cluster maken - basisgegevens opgeven](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     Selecteer **volgende: schalen** wanneer voltooid.
+    Selecteer **volgende: schalen** wanneer voltooid.
 
-2. Behoud op de pagina **schaal** de standaard opties. Klik onder aan het scherm op **volgende: authenticatie**.
-> [!CAUTION]
-> Het maken van nieuwe AAD-service-principals kan enige minuten duren en is beschikbaar als gevolg van Service-Principal niet gevonden fouten en validatie fouten in Azure Portal. Als u dit hebt bereikt, kunt u [hier](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) naar oplossingen zoeken.
+4. Behoud op de pagina **schaal** de standaard opties. Klik onder aan het scherm op **volgende: authenticatie**.
+    > [!CAUTION]
+    > Het maken van nieuwe AAD-service-principals kan enige minuten duren en is beschikbaar als gevolg van Service-Principal niet gevonden fouten en validatie fouten in Azure Portal. Als u dit hebt bereikt, kunt u [hier](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) naar oplossingen zoeken.
 
-3. Configureer op de pagina **verificatie** de volgende opties:
-   - Maak een nieuwe Service-Principal door het veld **Service Principal** te verlaten met **(nieuw) standaard Service-Principal**. U kunt ook *Service-Principal configureren* selecteren om een bestaande te gebruiken. Als u een bestaand account gebruikt, moet u de SPN-client-ID en het geheim opgeven.
-   - Schakel de optie voor Kubernetes-toegangsbeheer op basis van rollen (RBAC) in. Dit biedt meer nauw keurige controle over toegang tot de Kubernetes-resources die zijn geïmplementeerd in uw AKS-cluster.
+5. Configureer op de pagina **verificatie** de volgende opties:
+    - Maak een nieuwe Service-Principal door het veld **Service Principal** te verlaten met **(nieuw) standaard Service-Principal**. U kunt ook *Service-Principal configureren* selecteren om een bestaande te gebruiken. Als u een bestaand account gebruikt, moet u de SPN-client-ID en het geheim opgeven.
+    - Schakel de optie voor Kubernetes-toegangsbeheer op basis van rollen (RBAC) in. Dit biedt meer nauw keurige controle over toegang tot de Kubernetes-resources die zijn geïmplementeerd in uw AKS-cluster.
 
 Standaard worden *basis* netwerkfuncties gebruikt en Azure Monitor voor containers is ingeschakeld. Klik op **beoordeling + maken** en **Maak** een validatie wanneer de verificatie is voltooid.
 
@@ -67,7 +69,7 @@ Open Cloud Shell met behulp van de knop `>_` aan de bovenkant van de Azure Porta
 
 ![Open Azure Cloud Shell in de portal](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties. In het volgende voorbeeld worden de referenties opgehaald voor de clusternaam *myAKSCluster* in de resourcegroep met de naam *myResourceGroup*:
+Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties. In het volgende voorbeeld worden de referenties opgehaald voor de clusternaam *myAKSCluster* in de resourcegroep met de naam *myResourceGroup*:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -93,7 +95,7 @@ In een Kubernetes-manifestbestand wordt een gewenste status voor het cluster ged
 > [!TIP]
 > In deze snelstart maakt en implementeert u handmatig uw toepassingsmanifesten in het AKS-cluster. In meer Real-World scenario's kunt u [Azure dev Spaces][azure-dev-spaces] gebruiken om snel uw code te herhalen en fouten in het AKS-cluster op te sporen. U kunt Dev Spaces gebruiken op alle OS-platformen en in alle ontwikkelomgevingen, en u kunt samenwerken met andere leden van uw team.
 
-Gebruik in de Cloud shell `nano` of `vi` om een bestand met de naam `azure-vote.yaml` te maken en kopieer de volgende YAML definitie:
+Gebruik `nano` of `vi` in Cloud shell om een bestand met de naam `azure-vote.yaml` te maken en kopieer de volgende YAML definitie:
 
 ```yaml
 apiVersion: apps/v1
@@ -237,7 +239,7 @@ De containers *azure-vote-back* en *azure-vote-front* worden weergegeven, zoals 
 
 ![De status van actieve containers in AKS weergeven](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-Als u de logboeken voor de `azure-vote-front`-pod wilt bekijken, selecteert u de **container logboeken weer geven** in de vervolg keuzelijst van de lijst met containers. Deze logboeken bevatten de stromen *stdout* en *stderr* van de container.
+Als u de logboeken voor de `azure-vote-front` pod wilt bekijken, selecteert u de **container logboeken weer geven** in de vervolg keuzelijst van de lijst met containers. Deze logboeken bevatten de stromen *stdout* en *stderr* van de container.
 
 ![De containerlogboeken in AKS weergeven](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 

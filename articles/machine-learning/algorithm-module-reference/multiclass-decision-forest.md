@@ -1,24 +1,24 @@
 ---
 title: 'Multi Class-besluitvormings forest: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module voor de beslissings structuur voor het maken van een machine learning model in Azure Machine Learning-service om op basis van het algoritme van het *beslissings forest* een gemodelleerde
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module voor het maken van een machine learning model op basis van *het algoritme van de beslissings* forest in azure machine learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692768"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466020"
 ---
 # <a name="multiclass-decision-forest-module"></a>Module voor de beslissings forest voor multi klassen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een machine learning model te maken op basis van het algoritme van het *beslissings forest* . Een besluitvormings forest is een ensemble model dat snel een reeks beslissings structuren bouwt, terwijl u leert van gelabelde gegevens.
 
@@ -39,9 +39,7 @@ De classificatie van het beslissings forest in Azure Machine Learning bestaat ui
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Het configureren van een forest met een klassen beslissing
 
-
-
-1. Voeg de module voor het **beslissings forest** met een klassen naam toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **machine learning**, **model initialiseren**en **classificatie**.
+1. Voeg de module voor het **beslissings forest** met een klassemodule toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning**, **model initialiseren**en **classificatie**.
 
 2. Dubbel klik op de module om het deel venster **Eigenschappen** te openen.
 
@@ -88,4 +86,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1c9cdfa54494cd6d77edcd13110a79e5265e5032
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817849"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467922"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Een Azure Data Lake Storage Gen2-opslagaccount maken
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u een account maakt met behulp van de Azure 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
 
-|           | Vereisten |
+|           | Vereiste |
 |-----------|--------------|
 |Portal     | Geen         |
 |PowerShell | Voor dit artikel is de Power shell-module AZ. Storage versie **0,7** of hoger vereist. Voer de opdracht `Get-Module -ListAvailable Az.Storage` uit om uw huidige versie te vinden. Als u na het uitvoeren van deze opdracht geen resultaten ziet of als er een versie lager dan **0,7** wordt weer gegeven, moet u de Power shell-module bijwerken. Zie de sectie [Upgrade uitvoeren van uw powershell-module](#upgrade-your-powershell-module) van deze handleiding.
@@ -58,9 +58,9 @@ Zie [Overzicht van Azure-opslagaccount](../common/storage-account-overview.md) v
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Een account maken in Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-### <a name="create-a-storage-account"></a>Maak een opslagaccount
+### <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. In dit artikel wordt beschreven hoe u een nieuwe resource groep maakt.
 
@@ -78,7 +78,7 @@ Als u een v2-opslagaccount voor algemeen gebruik wilt maken in de Azure Portal, 
 4. Voer vervolgens een naam in voor het opslagaccount. De naam die u kiest, moet uniek zijn binnen Azure. Verder moet de naam 3 tot 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 5. Kies een locatie.
 6. Zorg ervoor dat **StorageV2 (algemeen gebruik v2)** als geselecteerd wordt weer gegeven in de vervolg keuzelijst **account type** .
-7. Wijzig desgewenst de waarden in elk van deze velden: **prestaties**, **replicatie**, **toegangs niveau**. Zie [Inleiding tot Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#introducing-the-azure-storage-services)voor meer informatie over deze opties.
+7. Wijzig desgewenst de waarden in elk van deze velden: **prestaties**, **replicatie**, **toegangs niveau**. Zie [Inleiding tot Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services)voor meer informatie over deze opties.
 8. Kies het tabblad **Geavanceerd** .
 10. In de sectie **Data Lake Storage Gen2** stelt u **Hiërarchische naamruimte** in op **Ingeschakeld**.
 11. Klik op **Beoordelen en maken** om het opslagaccount te maken.

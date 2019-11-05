@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803833"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473791"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Procedure: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id-providers
 
@@ -34,13 +34,13 @@ In dit artikel wordt uitgelegd hoe u uw micro soft-verificatie bibliotheek-app v
 `MSALPublicClientApplication` is geconfigureerd met een standaard instantie-URL van `https://login.microsoftonline.com/common`, dat geschikt is voor de meeste Azure Active Directory AAD-scenario's. Tenzij u geavanceerde scenario's zoals nationale Clouds implementeert, of als u werkt met B2C, hoeft u deze niet te wijzigen.
 
 > [!NOTE]
-> Moderne authenticatie met Active Directory Federation Services als id-provider (ADFS) wordt niet ondersteund (Zie [ADFS voor ontwikkel aars](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers) voor meer informatie). ADFS wordt ondersteund via Federatie.
+> Moderne authenticatie met Active Directory Federation Services als id-provider (ADFS) wordt niet ondersteund (Zie [ADFS voor ontwikkel aars](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) voor meer informatie). ADFS wordt ondersteund via Federatie.
 
 ## <a name="change-the-default-authority"></a>De standaard instantie wijzigen
 
 In sommige scenario's, zoals Business-to-consumer (B2C), moet u mogelijk de standaard instantie wijzigen.
 
-### <a name="b2c"></a>Business to consumer
+### <a name="b2c"></a>B2C
 
 Voor het werken met B2C is voor de [micro soft Authentication Library (MSAL)](reference-v2-libraries.md) een andere certificerings instantie geconfigureerd. MSAL herkent één instantie-URL-indeling als B2C. De herkende indeling voor de B2C-instantie is `https://<host>/tfp/<tenant>/<policy>`, bijvoorbeeld `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SignInPolicy`. U kunt echter ook andere ondersteunde B2C ca-Url's gebruiken door instanties expliciet te declareren als B2C-instantie.
 

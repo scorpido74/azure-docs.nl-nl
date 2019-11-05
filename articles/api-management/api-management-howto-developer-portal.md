@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eb5e2c2e2eeb0f29eb74b3727ecf14d70d2381f6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176688"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472220"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -25,7 +25,10 @@ Ontwikkelaars Portal is een automatisch gegenereerde, volledig aanpas bare websi
 
 In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde versies van de ontwikkelaars Portal in API Management. Ook wordt de architectuur uitgelegd en vindt u antwoorden op veelgestelde vragen.
 
-> [!IMPORTANT]
+> [!WARNING]
+> De nieuwe ontwikkelaars portal wordt momenteel geïmplementeerd naar API Management Services.
+> Als uw service nieuw is gemaakt of een Developer tier-service is, moet u de nieuwste versie al hebben. Anders kunt u problemen ondervinden (bijvoorbeeld met de publicatie functionaliteit). De implementatie van de functie wordt voltooid op maandag 11 november 2019.
+>
 > [Meer informatie over het migreren van de preview-versie naar de algemeen beschik bare versie](#preview-to-ga) van de ontwikkelaars Portal.
 
 ![API Management ontwikkelaars Portal](media/api-management-howto-developer-portal/cover.png)

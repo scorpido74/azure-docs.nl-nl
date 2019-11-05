@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/27/2019
+ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: b36e967e960ec6a2b39409ea7be5f3f98f69b9c8
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 04e7f582920c4b328de39bda3d37e886e26f8bae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838494"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499635"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -21,66 +21,149 @@ ms.locfileid: "71838494"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Id van openbare app: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
-
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-U kunt Go gebruiken voor toegang tot de dezelfde resultaten die u in het browservenster in de vorige stap hebt gezien. 
+Gebruik Go om een query uit te geven op de prediction endpoint GET [API](https://aka.ms/luis-apim-v3-prediction) om het Voorspellings resultaat te verkrijgen.
 
-1. Maak een nieuw bestand met de naam `endpoint.go`. Voeg de volgende code toe:
+1. Maak een nieuw bestand met de naam `predict.go`. Voeg de volgende code toe:
     
-   [!code-go[Go code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/go/endpoint.go?range=36-98)]
-
-2. Voer, in dezelfde map waarin u het bestand hebt gemaakt, met een opdrachtprompt `go build endpoint.go` in om het Go-bestand te compileren. De opdrachtprompt retourneert geen informatie voor een geslaagde build.
-
-3. Voer de Go-toepassing uit vanaf de opdrachtregel door de volgende tekst in te voeren in de opdrachtprompt: 
-
-    ```CMD
-    go run endpoint.go -appID df67dcdb-c37d-46af-88e1-8b97951ca1c2 -endpointKey <add-your-key> -region westus
+    ```go
+    package main
+    
+    /* Do dependencies */
+    import (
+        "fmt"
+        "net/http"
+        "net/url"
+        "io/ioutil"
+        "log"
+    )
+    func main() {
+        
+        // public app
+        var appID = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
+        
+        // utterance for public app
+        var utterance = "turn on all lights"
+        
+        // YOUR-KEY - your starter or prediction key
+        var endpointKey = "YOUR-KEY"
+        
+        // YOUR-ENDPOINT - example is westus2.api.cognitive.microsoft.com
+        var endpoint = "YOUR-ENDPOINT"
+    
+        endpointPrediction(appID, endpointKey, endpoint, utterance)
+    }
+    func endpointPrediction(appID string, endpointKey string, endpoint string, utterance string) {
+    
+        var endpointUrl = fmt.Sprintf("https://%s/luis/prediction/v3.0/apps/%s/slots/production/predict?subscription-key=%s&verbose=true&show-all-intents=true&query=%s", endpoint, appID, endpointKey, url.QueryEscape(utterance))
+        
+        response, err := http.Get(endpointUrl)
+    
+        if err!=nil {
+            // handle error
+            fmt.Println("error from Get")
+            log.Fatal(err)
+        }
+        
+        response2, err2 := ioutil.ReadAll(response.Body)
+    
+        if err2!=nil {
+            // handle error
+            fmt.Println("error from ReadAll")
+            log.Fatal(err2)
+        }
+    
+        fmt.Println("response")
+        fmt.Println(string(response2))
+    }
     ```
-    
-    Vervang `<add-your-key>` door de waarde van de sleutel.  
+
+1. Vervang de volgende waarden:
+
+    * `YOUR-KEY` met uw start sleutel
+    * `YOUR-ENDPOINT` met uw eind punt, bijvoorbeeld `westus2.api.cognitive.microsoft.com`
+
+1. Voer bij een opdracht prompt in de map waarin u het bestand hebt gemaakt de volgende opdracht in om het Go-bestand te compileren:
+
+    ```console
+    go build predict.go
+    ```  
+
+1. Voer de Go-toepassing uit vanaf de opdrachtregel door de volgende tekst in te voeren in de opdrachtprompt: 
+
+    ```console
+    go run predict.go
+    ```
     
     Het antwoord van de opdrachtregel is: 
     
-    ```CMD
+    ```console
     appID has value df67dcdb-c37d-46af-88e1-8b97951ca1c2
-    endpointKey has value xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    region has value westus
-    utterance has value turn on the bedroom light
+    endpointKey has value a7b206911f714e71a1ddae36928a61cc
+    endpoint has value westus2.api.cognitive.microsoft.com
+    utterance has value turn on all lights
     response
+    {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
+    ```
+
+    JSON-indeling voor lees baarheid:
+
+    ```json
     {
-        "query": "turn on the bedroom light",
-        "topScoringIntent": {
-            "intent": "HomeAutomation.TurnOn",
-            "score": 0.809439957
-        },
-        "entities": [
-            {
-            "entity": "bedroom",
-            "type": "HomeAutomation.Room",
-            "startIndex": 12,
-            "endIndex": 18,
-            "score": 0.8065475
+        "query": "turn on all lights",
+        "prediction": {
+            "topIntent": "HomeAutomation.TurnOn",
+            "intents": {
+                "HomeAutomation.TurnOn": {
+                    "score": 0.5375382
+                },
+                "None": {
+                    "score": 0.08687421
+                },
+                "HomeAutomation.TurnOff": {
+                    "score": 0.0207554
+                }
+            },
+            "entities": {
+                "HomeAutomation.Operation": [
+                    "on"
+                ],
+                "$instance": {
+                    "HomeAutomation.Operation": [
+                        {
+                            "type": "HomeAutomation.Operation",
+                            "text": "on",
+                            "startIndex": 5,
+                            "length": 2,
+                            "score": 0.724984169,
+                            "modelTypeId": -1,
+                            "modelType": "Unknown",
+                            "recognitionSources": [
+                                "model"
+                            ]
+                        }
+                    ]
+                }
             }
-        ]
+        }
     }
     ```
 
 
 ## <a name="luis-keys"></a>LUIS-sleutels
 
-[!INCLUDE [Use authoring key for endpoint](../../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze snelstart, sluit u het Visual Studio-project en verwijdert u de projectmap uit het bestandssysteem. 
+Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen toevoegen en trainen met Go](../luis-get-started-go-add-utterance.md)
+> [Uitingen en Train toevoegen](../luis-get-started-go-add-utterance.md)

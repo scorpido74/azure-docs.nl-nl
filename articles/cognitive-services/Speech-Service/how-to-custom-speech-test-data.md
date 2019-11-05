@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464558"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
@@ -25,11 +25,11 @@ Of u nu test om te zien hoe nauw keurige spraak herkenning van micro soft is of 
 
 In deze tabel worden de geaccepteerde gegevens typen vermeld, wanneer elk gegevens type moet worden gebruikt en de aanbevolen hoeveelheid. Niet elk gegevens type is vereist voor het maken van een model. De gegevens vereisten variëren, afhankelijk van het feit of u een model maakt of een training uitvoert.
 
-| Gegevenstype | Testen gebruiken | Hoeveelheid | Gebruikt voor training | Hoeveelheid |
+| Gegevenstype | Testen gebruiken | Aantal | Gebruikt voor training | Aantal |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Ja<br>Gebruikt voor visuele inspectie | 5 + audio bestanden | Nee | N.v.t. |
+| [Geluiden](#audio-data-for-testing) | Ja<br>Gebruikt voor visuele inspectie | 5 + audio bestanden | Nee | n.v.t. |
 | [Audio en Transcripten met menselijke labels](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Wordt gebruikt om de nauw keurigheid te evalueren | 0,5-5 uur audio | Ja | 1-1.000 uur audio |
-| [Gerelateerde tekst](#related-text-data-for-training) | Nee | N.v.t. | Ja | 1-200 MB aan Verwante tekst |
+| [Gerelateerde tekst](#related-text-data-for-training) | Nee | n.v.t. | Ja | 1-200 MB aan Verwante tekst |
 
 Bestanden moeten worden gegroepeerd door te typen in een gegevensset en worden geüpload als een zip-bestand. Elke gegevensset kan slechts één gegevens type bevatten.
 
@@ -52,10 +52,10 @@ Audio gegevens zijn optimaal voor het testen van de nauw keurigheid van het spra
 
 Gebruik deze tabel om ervoor te zorgen dat uw audio bestanden correct zijn ingedeeld voor gebruik met Custom Speech:
 
-| Eigenschap | Value |
+| Eigenschap | Waarde |
 |----------|-------|
 | Bestands indeling | RIFF (WAV) |
-| Steekproeffrequentie | 8\.000 Hz of 16.000 Hz |
+| Sample frequentie | 8\.000 Hz of 16.000 Hz |
 | Kanalen | 1 (mono) |
 | Maximum lengte per audio | 2 uur |
 | Voorbeeld indeling | PCM, 16-bits |
@@ -64,7 +64,7 @@ Gebruik deze tabel om ervoor te zorgen dat uw audio bestanden correct zijn inged
 
 Als uw audio niet voldoet aan deze eigenschappen of als u wilt controleren of dit het geval is, wordt u aangeraden [Sox](http://sox.sourceforge.net) te downloaden om de audio te controleren of te converteren. Hieronder ziet u enkele voor beelden van de manier waarop elk van deze activiteiten kan worden uitgevoerd via de opdracht regel:
 
-| Activiteit | Description | Sox-opdracht |
+| Activiteit | Beschrijving | Sox-opdracht |
 |----------|-------------|-------------|
 | Audio-indeling controleren | Gebruik deze opdracht om de indeling van het audio bestand te controleren. | `sox --i <filename>` |
 | Audio-indeling converteren | Gebruik deze opdracht om het audio bestand te converteren naar één kanaal, 16-bits, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -73,10 +73,10 @@ Als uw audio niet voldoet aan deze eigenschappen of als u wilt controleren of di
 
 Als u de nauw keurigheid van de spraak-naar-tekst nauwkeurigheid van micro soft tijdens het verwerken van uw audio bestanden wilt meten, moet u transcripties (woord voor woord) van de mens voorzien voor vergelijking. Hoewel menselijke labels transcriptie vaak tijdrovend zijn, is het nood zakelijk om nauw keurigheid te evalueren en het model te trainen voor uw gebruiks voorbeelden. Houd er rekening mee dat de verbeteringen in de herkenning alleen van belang zijn voor de gegevens. Daarom is het belang rijk dat alleen transcripten van hoogwaardige kwaliteit worden geüpload.  
 
-| Eigenschap | Value |
+| Eigenschap | Waarde |
 |----------|-------|
 | Bestands indeling | RIFF (WAV) |
-| Steekproeffrequentie | 8\.000 Hz of 16.000 Hz |
+| Sample frequentie | 8\.000 Hz of 16.000 Hz |
 | Kanalen | 1 (mono) |
 | Maximum lengte per audio | 60 s |
 | Voorbeeld indeling | PCM, 16-bits |
@@ -94,7 +94,7 @@ Voor het oplossen van problemen zoals het verwijderen of vervangen van woorden, 
 > [!NOTE]
 > Transcriptie moet worden gecodeerd als UTF-8 BOM (Byte Order Mark).
 
-De tekst van de transcripties wordt genormaliseerd zodat ze door het systeem kunnen worden verwerkt. Er zijn echter enkele belangrijke normalisaties die door de gebruiker moeten worden uitgevoerd _voordat_ de gegevens worden geüpload naar de Custom Speech Service. Voor de juiste taal die moet worden gebruikt wanneer u uw transcripties voorbereidt, Zie [How to Create a Human-gelabeld transcriptie](how-to-custom-speech-human-labeled-transcriptions.md)
+De tekst van de transcripties wordt genormaliseerd zodat ze door het systeem kunnen worden verwerkt. Er zijn echter enkele belang rijke normalisatie die door de gebruiker moet worden uitgevoerd _voordat_ de gegevens naar de speech Studio worden geüpload. Voor de juiste taal die moet worden gebruikt wanneer u uw transcripties voorbereidt, Zie [How to Create a Human-gelabeld transcriptie](how-to-custom-speech-human-labeled-transcriptions.md)
 
 Nadat u de audio bestanden en de bijbehorende transcripties hebt verzameld, moeten ze worden ingepakt als één ZIP-bestand voordat ze naar de [Custom speech-Portal](https://speech.microsoft.com/customspeech)kunnen worden geüpload. Dit is een voor beeld van een gegevensset met drie audio bestanden en een transcriptie-bestand met menselijke Labels:
 
@@ -117,7 +117,7 @@ Als u een aangepast model met behulp van gerelateerde tekst wilt maken, moet u e
 
 Gebruik deze tabel om ervoor te zorgen dat het gerelateerde gegevens bestand voor uitingen correct is ingedeeld:
 
-| Eigenschap | Value |
+| Eigenschap | Waarde |
 |----------|-------|
 | Tekstcodering | UTF-8 BOM |
 | Aantal utterances per regel | 1 |
@@ -138,7 +138,7 @@ Als er ongebruikelijke voor waarden zijn zonder standaard uitspraak dat uw gebru
 
 Dit omvat voor beelden van een gesp roken utterance en een aangepaste uitspraak voor elk:
 
-| Herkend/weer gegeven formulier | Gesproken formulier |
+| Herkend/weer gegeven formulier | Gesp roken formulier |
 |--------------|--------------------------|
 | 3CPO | drie c p |  
 | CNTK | c n t k |
@@ -148,14 +148,14 @@ Het gesp roken formulier is de fonetische volg orde die is gespeld. Het kan best
 
 Aangepaste uitspraak is beschikbaar in het Engels (nl-nl) en Duits (de-DE). In deze tabel worden de ondersteunde tekens per taal weer gegeven:
 
-| Taal | Landinstelling | Tekens |
+| Taal | Landinstelling | Aantal |
 |----------|--------|------------|
-| Engels | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
+| Nederlands | en-US | a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 | Duits | de-DE | ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z |
 
 Gebruik deze tabel om ervoor te zorgen dat het gerelateerde gegevens bestand voor uitspraak juist is ingedeeld. De uitspraak bestanden zijn klein en mogen niet meer dan een paar Kb's overschrijden.
 
-| Eigenschap | Value |
+| Eigenschap | Waarde |
 |----------|-------|
 | Tekstcodering | UTF-8-stuk lijst (ANSI wordt ook ondersteund voor Engels) |
 | aantal uitspraakingen per regel | 1 |

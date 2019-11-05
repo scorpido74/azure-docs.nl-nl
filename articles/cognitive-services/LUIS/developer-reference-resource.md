@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8accac7fe6068007180403fdab27013da161b28c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437187"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465722"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Bronnen voor ontwikkel aars voor Language Understanding
 
@@ -54,6 +54,17 @@ De API'S voor ontwerpen en voor spellingen van eind punten zijn beschikbaar via 
 |Node.js|[Ontwerpen](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Voorspelling](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM ontwerpen](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM-voor spelling](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Voorspelling](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Ontwerpen met behulp van REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[Voor spelling met REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
 |Python|[Ontwerpen en voors pellen](sdk-python-quickstart-authoring-app.md)|[Gooien](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Ontwerpen](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Ontwerpen](sdk-python-quickstart-authoring-app.md)<br>[Voor spelling met REST](luis-get-started-python-get-intent.md)
 
+
+### <a name="containers"></a>Containers
+
+Language Understanding (LUIS) biedt een [container](luis-container-howto.md) om on-premises en opgenomen versies van uw app te bieden. 
+
+### <a name="export-and-import-formats"></a>Indelingen exporteren en importeren
+
+Language Understanding biedt de mogelijkheid om uw app en de bijbehorende modellen te beheren in een JSON-indeling, de `.LU`-indeling ([LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)) en een gecomprimeerd pakket voor de Language Understanding-container. 
+
+Het importeren en exporteren van deze indelingen is beschikbaar via de Api's en vanuit de LUIS-Portal. De portal biedt importeren en exporteren als onderdeel van de lijst met apps en versies. 
+
 ## <a name="other-tools-and-sdks"></a>Andere hulpprogram ma's en Sdk's
 
 Het bot-Framework is beschikbaar als [een SDK](https://github.com/Microsoft/botframework) in verschillende talen en als een service met behulp van [Azure bot service](https://dev.botframework.com/). 
@@ -69,4 +80,8 @@ Bot Framework biedt [verschillende hulpprogram ma's](https://github.com/microsof
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de veelvoorkomende [HTTP-fout codes](luis-reference-response-codes.md)
+* Meer informatie over de veelvoorkomende [HTTP-fout codes](luis-reference-response-codes.md)
+* [Referentie documentatie](https://docs.microsoft.com/azure/index#pivot=sdkstools) voor alle Api's en sdk's
+* [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) en [Azure bot service](https://dev.botframework.com/)
+* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
+* [Cognitieve containers](../cognitive-services-container-support.md)

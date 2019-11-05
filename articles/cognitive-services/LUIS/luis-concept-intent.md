@@ -1,7 +1,7 @@
 ---
-title: Intenties-LUIS
+title: Intents en entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: Eén intentie vertegenwoordigt een taak of actie die de gebruiker wil uitvoeren. Het is een doel of het doel, uitgedrukt in van een gebruiker utterance. Een set intents die overeenkomt met voor acties die gebruikers te nemen in uw toepassing wilt definiëren.
+description: Eén intentie vertegenwoordigt een taak of actie die de gebruiker wil uitvoeren. Het is een doel of doel dat wordt weer gegeven in de utterance van een gebruiker. Definieer een set intenties die overeenkomt met acties die gebruikers in uw toepassing willen uitvoeren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,80 +9,70 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 3d2895fa8d45ad594963d3f26cbe04fd968f5fcc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619915"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487524"
 ---
-# <a name="concepts-about-intents-in-your-luis-app"></a>Concepten over de intenties in uw LUIS-app
+# <a name="intents-in-your-luis-app"></a>Intenties in uw LUIS-app
 
-Een doel vertegenwoordigt een taak of actie de gebruiker wil om uit te voeren. Het is een doel of het doel, uitgedrukt in van een gebruiker [utterance](luis-concept-utterance.md).
+Een intentie vertegenwoordigt een taak of actie die de gebruiker wil uitvoeren. Het is een doel of doel dat wordt weer gegeven in de [utterance](luis-concept-utterance.md)van een gebruiker.
 
-Een set intents die overeenkomt met voor acties die gebruikers te nemen in uw toepassing wilt definiëren. Bijvoorbeeld, definieert een reis-app verschillende intents:
+Definieer een set intenties die overeenkomt met acties die gebruikers in uw toepassing willen uitvoeren. Een reis-app definieert bijvoorbeeld verschillende intenties:
 
-App-intents reizen   |   Voorbeelden van utterances   | 
+App-intenties voor reizen   |   Voorbeelden van utterances   | 
 ------|------|
- BookFlight     |   "Book me een vlucht Rio volgende week" <br/> "Vliegt me naar Rio op de 24th" <br/> "Ik moet een ticket vlak volgende zondag naar Rio de Janeiro"    |
- Begroeting     |   'Hallo' <br/>"Hallo" <br/>"Goedemorgen"  |
- CheckWeather | "Wat is het weer, zoals in Boston?" <br/> 'Toon de prognose voor dit weekend' |
- Geen         | 'Ophalen me een cookie recept'<br>"De Lakers te winnen?" |
+ BookFlight     |   "Boek me een vlucht naar Rio volgende week" <br/> "Vlucht naar Rio op het 24" <br/> "Ik heb een vlak ticket nodig volgende zondag tot Rio de Janeiro"    |
+ Begroeting     |   Snelle <br/>Hello <br/>' Goede ochtend '  |
+ CheckWeather | ' Wat is de weers verwachting zoals in Boston? ' <br/> De prognose voor dit weekend weer geven |
+ Geen         | Een recept voor een cookie ontvangen<br>"Heeft de Lakeers gewonnen?" |
 
-Alle toepassingen worden geleverd met de vooraf gedefinieerde intentie, '[geen](#none-intent-is-fallback-for-app)', de terugval opzet. 
+Alle toepassingen worden geleverd met de vooraf gedefinieerde intentie, '[geen](#none-intent)', de terugval opzet. 
 
-## <a name="prebuilt-domains-provide-intents"></a>Vooraf gemaakte domeinen bieden intents
-Naast intents die u definieert, kunt u vooraf gedefinieerde intents uit een van de vooraf gemaakte domeinen gebruiken. Zie voor meer informatie, [vooraf gemaakte domeinen in LUIS-apps gebruiken](luis-how-to-use-prebuilt-domains.md) voor meer informatie over het aanpassen van de intenties van een vooraf gedefinieerde domein voor gebruik in uw app.
+## <a name="prebuilt-domains-provide-intents"></a>Vooraf ontwikkelde domeinen bieden intenties
+Naast de intenties die u definieert, kunt u vooraf ontwikkelde intenties gebruiken uit een van de [vooraf ontwikkelde domeinen](luis-how-to-use-prebuilt-domains.md). 
 
-## <a name="return-all-intents-scores"></a>Retourneren van alle intents scores
-U toewijzen een utterance aan een één doel. Wanneer LUIS een utterance op het eindpunt ontvangt, wordt het een belangrijkste doel voor deze utterance. Als u scores voor alle intents voor de utterance wilt, kunt u opgeven `verbose=true` vlag aan de query-tekenreeks van de API [eindpunt aanroep](https://aka.ms/v1-endpoint-api-docs). 
+## <a name="return-all-intents-scores"></a>Alle uitstaande scores van intenties retour neren
+U wijst een utterance toe aan één intentie. Wanneer LUIS een utterance op het eind punt ontvangt, wordt standaard het hoogste doel voor die utterance geretourneerd. 
 
-## <a name="intent-compared-to-entity"></a>Kunt u lezen wat ten opzichte van entiteit
-De bedoeling vertegenwoordigt actie de chatbot kunt uitvoeren voor de gebruiker en zijn gebaseerd op de hele utterance. De entiteit vertegenwoordigt woorden of zinsdelen die zich in de utterance. Een utterance kan slechts één boven scoren doel hebben, maar het kan veel entiteiten hebben. 
+Als u de scores voor alle intenties voor de utterance wilt, kunt u een vlag geven op de query reeks van de prediction-API. 
+
+|API-versie voor voor spelling|Markeringen|
+|--|--|
+|V2|`verbose=true`|
+|V3|`show-all-intents=true`|
+
+## <a name="intent-compared-to-entity"></a>Intentie vergeleken met entiteit
+De intentie vertegenwoordigt actie die de bot voor de gebruiker moet uitvoeren en is gebaseerd op de hele utterance. Een utterance kan slechts één bovenste Score intentie hebben, maar kan een groot aantal entiteiten hebben. 
 
 <a name="how-do-intents-relate-to-entities"></a>
 
-Maak een intentie wanneer de _bedoeling_ van de gebruiker een actie in uw client toepassing zou activeren, zoals een aanroep van de functie checkweather (). Vervolgens maakt u een entiteit om weer te geven van de parameters die zijn vereist voor het uitvoeren van de actie. 
+Maak een intentie wanneer de _bedoeling_ van de gebruiker een actie in uw client toepassing zou activeren, zoals een aanroep van de functie checkweather (). Maak vervolgens entiteiten om de vereiste para meters voor het uitvoeren van de actie weer te geven. 
 
-|Voorbeeld van doel   | Entiteit | Entiteit in de voorbeeld-uitingen   | 
+|Intentie   | Entiteit | Voorbeeld van een utterance   | 
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"type": "locatie", "entiteit": "seattle"}<br>{"type": "builtin.datetimeV2.date","entity": 'morgen', 'Oplossing': "2018-05-23"} | Wat het weer, zoals `Seattle` `tomorrow`? |
-| CheckWeather | {"type": "date_range', 'entiteit':"dit weekend"} | De weersvoorspelling voor weergeven `this weekend` | 
+| CheckWeather | {"type": "locatie", "entiteit": "Seattle"}<br>{"type": "Builtin. datetimeV2. date", "entiteit": "morgen", "oplossing": "2018-05-23"} | Wat is de weers verwachting als in `Seattle` `tomorrow`? |
+| CheckWeather | {"type": "date_range", "entiteit": "dit weekend"} | De prognose voor `this weekend` weer geven | 
 ||||
 
-## <a name="custom-intents"></a>Aangepaste intents
+## <a name="prebuilt-domain-intents"></a>Vooraf ontwikkelde domein intentie
 
-Op dezelfde manier populariteit [uitingen](luis-concept-utterance.md) komen overeen met een één doel. Uitingen in uw bedoeling kunnen u elk [entiteit](luis-concept-entity-types.md) in de app omdat de entiteiten zijn niet specifiek voor een doel. 
-
-## <a name="prebuilt-domain-intents"></a>Vooraf gedefinieerde domein intents
-
-[Vooraf gemaakte domeinen](luis-how-to-use-prebuilt-domains.md) intents met uitingen hebben.  
+[Vooraf ontwikkelde domeinen](luis-how-to-use-prebuilt-domains.md) bieden intenties met uitingen. 
 
 ## <a name="none-intent"></a>None- intent
 
-De **enige** intentie is voor elke app belang rijk en mag geen uitingen hebben.
+**Geen** intentie wordt gemaakt, maar is op het doel leeg gelaten. **Geen** intentie is een vereiste intentie en kan niet worden verwijderd of de naam ervan kan niet worden gewijzigd. Vul het met uitingen die zich buiten uw domein bevinden.
 
-### <a name="none-intent-is-fallback-for-app"></a>Geen intentie is terugval voor app
-De **geen** bedoeling is de bedoeling van een catch-all of terugval. Het wordt gebruikt om te leren LUIS uitingen die in het app-domein (onderwerpsgebied) niet belangrijk zijn. De **geen** bedoeling moet tussen 10 en 20 procent van de totale uitingen in de toepassing. Laat niets leeg. 
+De **geen** intentie is de terugval intentie, die belang rijk is voor elke app, en moet 10% van de totale uitingen hebben. Dit wordt gebruikt om LUIS uitingen te leren die niet belang rijk zijn in het app-domein (onderwerpgebied). Als u geen uitingen toevoegt voor de **geen** intentie, dwingt Luis een utterance af die zich buiten het domein bevindt in een van de domein intentie. Hierdoor worden de Voorspellings scores schuingetrokken door LUIS de verkeerde intentie te geven voor de utterance. 
 
-### <a name="none-intent-helps-conversation-direction"></a>Geen intentie helpt conversatie richting
-Wanneer een utterance wordt voorspeld omdat het geen intentie en geretourneerd naar de chatbot met die voorspelling de bot kunt meer vragen stellen of geef een menu voor het regelen van de gebruiker kan de geldige opties in de chatbot. 
+Wanneer een utterance wordt voor speld als geen intentie, kan de client toepassing meer vragen stellen of een menu opgeven om de gebruiker naar geldige keuzes te sturen. 
 
-### <a name="no-utterances-in-none-intent-skews-predictions"></a>Er is geen uitingen geen intentie Hiermee laat u overhellen voorspellingen
-Als u niet alle uitingen van toevoegt de **geen** intentie, LUIS dwingt een utterance die zich buiten het domein in een van de domein-intents. Hiermee wordt de scores voorspelling scheeftrekken door onderwijzen LUIS het verkeerde type voor de utterance. 
-
-### <a name="add-utterances-to-the-none-intent"></a>Utterances toevoegen op de intentie None
-De **geen** bedoeling is gemaakt, maar opzet leeg wordt gelaten. Vul het met uitingen die zich buiten uw domein. Een goede utterance voor **geen** is iets volledig buiten de app, evenals de bedrijfstak van de app fungeert. Een reis-app moet bijvoorbeeld niet gebruiken alle uitingen voor **geen** die kan betrekking hebben op reis, zoals facturering, food, hospitality, lading, actieve entertainment-reserveringen. 
-
-Welk type uitingen worden gegeven voor de geen intentie? Beginnen met een bepaald dat uw bot mag niet beantwoord deze 'wat voor soort dinosaur heeft blauw tanden?" Dit is een zeer specifieke vraag ver buiten een reis-app. 
-
-### <a name="none-is-a-required-intent"></a>Geen is een vereiste doel
-De **geen** kunt u lezen wat is een vereiste bedoeling en kan niet worden verwijderd of hernoemd.
-
-## <a name="negative-intentions"></a>Negatieve bedoelingen 
-Als u wilt bepalen negatief als positief bedoelingen, zoals ' ik **wilt** een auto "en" ik **niet** wilt van een auto ", kunt u twee intents (één positieve en negatieve één) maken en juiste utterances voor toevoegen elke. Of u kunt maken van een enkele kunt u lezen wat en markeren van de twee verschillende positieve en negatieve voorwaarden als een entiteit.  
+## <a name="negative-intentions"></a>Negatieve voornemens 
+Als u negatieve en positieve doel stellingen wilt bepalen, zoals "ik **wil** een auto" en "Ik wil een auto **niet** willen", kunt u twee intenten (één positieve en één negatieve) maken en voor elk het juiste uitingen toevoegen. U kunt ook één intentie maken en de twee verschillende positieve en negatieve voor waarden markeren als een entiteit.  
 
 ## <a name="intents-and-patterns"></a>Doel stellingen en patronen
 
@@ -90,30 +80,28 @@ Als u bijvoorbeeld uitingen hebt, die in een deel of geheel kunnen worden gedefi
 
 Het gebruik van een reguliere expressie-entiteit waarborgt de extractie van gegevens zodat het patroon wordt vergeleken. Het patroon dat overeenkomt met een exacte intentie, wordt geretourneerd. 
 
-## <a name="intent-balance"></a>Intentie saldo
-De app-intents domein moeten een balans tussen uitingen voor elk doel hebben. Beschikt niet over een doel met 10 uitingen en een ander doel met 500 uitingen. Dit is niet met gelijke taakverdeling. Als u deze situatie hebt, raadpleegt u de bedoeling van 500 uitingen om te zien als veel van de intenties kunnen opnieuw worden gerangschikt in een [patroon](luis-concept-patterns.md). 
+## <a name="intent-balance"></a>Saldo van intentie
+De intenties van het app-domein moeten een evenwicht hebben tussen uitingen in elke intentie. Hebben niet één intentie met 10 uitingen en een andere intentie met 500 uitingen. Dit is niet in balans. Als dit het geval is, raadpleegt u de intentie met 500 uitingen om te zien of veel van de intenties in een [patroon](luis-concept-patterns.md)kunnen worden ingedeeld. 
 
-De **geen** doel is niet opgenomen in het saldo. Dit doel moet 10% van de totale uitingen in de app bevatten.
+**Geen** intentie is in het saldo opgenomen. Dat intentie moet 10% van het totale aantal uitingen in de app bevatten.
 
-## <a name="intent-limits"></a>Intentie limieten
-Beoordeling [limieten](luis-boundaries.md#model-boundaries) om te begrijpen hoeveel intents kunt u toevoegen aan een model. 
+## <a name="intent-limits"></a>Limieten voor intenties
+Bekijk de [limieten](luis-boundaries.md#model-boundaries) om inzicht te krijgen in het aantal intenties dat u aan een model kunt toevoegen. 
 
-### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Als u meer dan het maximum aantal intents nodig hebt 
-Ten eerste kunt u overwegen of uw systeem is te veel intents. 
+### <a name="if-you-need-more-than-the-maximum-number-of-intents"></a>Als u meer dan het maximum aantal intenties nodig hebt 
+Houd eerst rekening met het feit of uw systeem te veel intenties gebruikt. 
 
-### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Meerdere intents kunnen worden gecombineerd in één doel met entiteiten 
-Intents die te veel zijn kunnen maken voor LUIS onderscheid maken tussen deze moeilijker. Intents moet voldoende zijn om vast te leggen van de belangrijkste taken die de gebruiker wordt gevraagd, maar ze niet nodig hebben om vast te leggen van elk pad uw code wordt gevarieerd. Bijvoorbeeld, BookFlight en FlightCustomerService mogelijk afzonderlijke intents in een reis-app, maar BookInternationalFlight en BookDomesticFlight te vergelijkbaar zijn. Als uw systeem nodig heeft om deze te onderscheiden, gebruikt u entiteiten of andere logische gebruikt in plaats van een intents. 
+### <a name="can-multiple-intents-be-combined-into-single-intent-with-entities"></a>Kan meerdere intenties worden gecombineerd tot één intentie met entiteiten 
+Intenties die te vergelijkbaar zijn, kunnen het moeilijker maken om de LUIS te onderscheiden. Intenties moeten voldoende worden aangepast om de belangrijkste taken vast te leggen waarvoor de gebruiker wordt gevraagd, maar ze hoeven niet elk pad op te nemen dat door de code wordt gebruikt. BookFlight en FlightCustomerService kunnen bijvoorbeeld afzonderlijke intenties zijn in een reis-app, maar BookInternationalFlight en BookDomesticFlight zijn te vergelijkbaar. Als uw systeem ze moet onderscheiden, gebruikt u entiteiten of andere logica in plaats van intents. 
 
-### <a name="dispatcher-model"></a>Model van de functie voor berichtverzending
-Meer informatie over het combineren van LUIS en QnA maker-apps met de [verzending model](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
+### <a name="dispatcher-model"></a>Model voor dispatcher
+Meer informatie over het combi neren van LUIS-en QnA Maker-apps met het [Verzend model](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps). 
 
-### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Help-informatie voor apps met een groot aantal intenties Request
-Neem contact op met ondersteuning als het aantal intents te verminderen of uw intenties verdelen in meerdere apps niet voor u werkt. Als uw Azure-abonnement voor ondersteuningsservices bevat, neem dan contact op met [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/). 
-
-
+### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Hulp vragen voor apps met een groot aantal intenties
+Neem contact op met de ondersteuning als het aantal intenties of het delen van uw intenties in meerdere apps niet geschikt is voor u. Als uw Azure-abonnement ondersteunings services bevat, neemt u contact op met de [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [entiteiten](luis-concept-entity-types.md), die zijn belangrijk woorden die relevant zijn voor intents
-* Meer informatie over het [toevoegen en beheren van intents](luis-how-to-add-intents.md) in uw LUIS-app.
-* Controleren van de intentie [aanbevolen procedures](luis-concept-best-practices.md)
+* Meer informatie over [entiteiten](luis-concept-entity-types.md), die belang rijke woorden zijn die relevant zijn voor intenties
+* Meer informatie over het [toevoegen en beheren van intenties](luis-how-to-add-intents.md) in uw Luis-app.
+* [Aanbevolen procedures](luis-concept-best-practices.md) voor het controleren van de intentie

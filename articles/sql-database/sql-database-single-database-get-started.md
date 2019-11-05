@@ -11,14 +11,14 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0035495d9dd3b82b65aa3b4a7b1d918c73288df8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845288"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496169"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Quickstart: Een enkele data base in Azure SQL Database maken met behulp van de Azure Portal, Power shell en Azure CLI
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Snelstartgids: een enkele data base in Azure SQL Database maken met behulp van de Azure Portal, Power shell en Azure CLI
 
 Het maken van [één database](sql-database-single-database.md) is de snelste een eenvoudigste implementatieoptie om een database te maken in Azure SQL Database. Aan de hand van deze quickstart kunt u een individuele database maken via de Azure-portal.
 
@@ -28,7 +28,7 @@ Voor alle stappen in deze snelstartgids moet u zich aanmelden bij [Azure Portal]
 
 ## <a name="create-a-single-database"></a>Een individuele database maken
 
-U kunt één data base maken in de bewerkings laag ingericht of serverloos (preview).
+U kunt één data base maken in de ingerichte of serverloze Compute-laag.
 
 - Een enkele data base in de ingerichte Compute-laag is vooraf toegewezen een vaste hoeveelheid reken resources, inclusief CPU en geheugen, met behulp van een van twee [aankoop modellen](sql-database-purchase-models.md).
 - Eén data base in de compute-laag zonder server heeft een bereik van reken resources, inclusief CPU en geheugen die automatisch worden geschaald en alleen beschikbaar is in de [vCore-gebaseerde aankoop modellen](sql-database-service-tiers-vcore.md).

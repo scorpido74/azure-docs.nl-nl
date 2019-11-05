@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793710"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466443"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Een Azure Cognitive Search-index opnieuw samen stellen
 
@@ -46,7 +46,7 @@ Andere wijzigingen kunnen worden aangebracht zonder dat dit van invloed is op be
 
 Wanneer u een nieuw veld toevoegt, krijgen bestaande geïndexeerde documenten een null-waarde voor het nieuwe veld. Bij een toekomstige gegevens vernieuwing worden waarden uit externe bron gegevens vervangen door de nullen die zijn toegevoegd door Azure Cognitive Search. Zie [documenten toevoegen, bijwerken of verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)voor meer informatie over het bijwerken van index inhoud.
 
-## <a name="partial-or-incremental-indexing"></a>Gedeeltelijke of incrementele indexering
+## <a name="partial-indexing"></a>Gedeeltelijke indexering
 
 In azure Cognitive Search kunt u indexering niet per veld beheren, en kunt u ervoor kiezen om specifieke velden te verwijderen of opnieuw te maken. Op dezelfde manier is er geen ingebouwd mechanisme voor het [indexeren van documenten op basis van criteria](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Alle vereisten voor het op criteria gebaseerde indexering moeten worden voldaan door aangepaste code.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: query Apache HBase in azure HDInsight-Apache Phoenix'
+title: 'Snelstartgids: Apache HBase & Apache Phoenix-Azure HDInsight'
 description: In deze Quick Start leert u hoe u Apache Phoenix kunt gebruiken in HDInsight. U leert ook hoe u sqlline gebruiken op uw computer installeert en instelt om verbinding te maken met een HBase-cluster in HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 20af6d32d03ae5d4fe37b1a37198ef1f2c50ec95
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: a6896eaad86c5e361c50cd81257131ee75a8d6a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312199"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467036"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>Quick Start: query Apache HBase in azure HDInsight met Apache Phoenix
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="identify-a-zookeeper-node"></a>Een ZooKeeper-knoop punt identificeren
 
-Wanneer u verbinding maakt met een HBase-cluster, moet u verbinding maken met een van de knoop punten van Apache ZooKeeper. Elk HDInsight-cluster heeft drie ZooKeeper-knoop punten. Krul kan worden gebruikt om snel een ZooKeeper-knoop punt te identificeren. Bewerk de onderstaande krul opdracht door `PASSWORD` en `CLUSTERNAME` te vervangen door de relevante waarden en voer de opdracht in een opdracht prompt in:
+Wanneer u verbinding maakt met een HBase-cluster, moet u verbinding maken met een van de knoop punten van Apache ZooKeeper. Elk HDInsight-cluster heeft drie ZooKeeper-knoop punten. Krul kan worden gebruikt om snel een ZooKeeper-knoop punt te identificeren. Bewerk de onderstaande krul opdracht door `PASSWORD` te vervangen en `CLUSTERNAME` met de relevante waarden en voer de opdracht in een opdracht prompt in:
 
 ```cmd
 curl -u admin:PASSWORD -sS -G https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER
@@ -53,7 +53,7 @@ Noteer de waarde voor `host_name` voor later gebruik.
 
 U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apache Phoenix gebruiken om HBase-tabellen, gegevens in te voegen en gegevens op te vragen.
 
-1. Gebruik de `ssh`-opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw cluster en voer de volgende opdracht in:
+1. Gebruik `ssh` opdracht om verbinding te maken met uw HBase-cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -65,7 +65,7 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
     cd /usr/hdp/current/phoenix-client/bin
     ```
 
-3. Start [sqlline gebruiken](http://sqlline.sourceforge.net/). Bewerk de onderstaande opdracht door `ZOOKEEPER` te vervangen door het knoop punt ZooKeeper dat eerder is geïdentificeerd en voer vervolgens de volgende opdracht in:
+3. Start [sqlline gebruiken](http://sqlline.sourceforge.net/). Bewerk de onderstaande opdracht door `ZOOKEEPER` te vervangen door het knoop punt ZooKeeper dat eerder is geïdentificeerd, en voer vervolgens de volgende opdracht in:
 
     ```bash
     ./sqlline.py ZOOKEEPER:2181:/hbase-unsecure
@@ -77,7 +77,7 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
     CREATE TABLE Company (company_id INTEGER PRIMARY KEY, name VARCHAR(225));
     ```
 
-5. Gebruik de sqlline gebruiken `!tables`-opdracht om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
+5. Gebruik de sqlline gebruiken-opdracht `!tables` om alle tabellen in HBase weer te geven. Voer de volgende opdracht in:
 
     ```sqlline
     !tables
@@ -108,7 +108,7 @@ U kunt SSH gebruiken om verbinding te maken met HBase-clusters en vervolgens Apa
     DROP TABLE Company;
     ```
 
-10. Gebruik de sqlline gebruiken `!quit`-opdracht om sqlline gebruiken af te sluiten. Voer de volgende opdracht in:
+10. Gebruik de opdracht sqlline gebruiken `!quit` om sqlline gebruiken af te sluiten. Voer de volgende opdracht in:
 
     ```sqlline
     !quit

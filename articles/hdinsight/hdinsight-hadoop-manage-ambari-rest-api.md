@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 146aaa8b1b69c29e22f39d48883f604098b8e348
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718405"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498243"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-clusters beheren met behulp van de Apache Ambari REST API
 
@@ -33,31 +33,31 @@ Meer informatie over het gebruik van de Apache Ambari REST API voor het beheren 
 
 * **JQ**, een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* **Windows PowerShell**.  U kunt ook [bash](https://www.gnu.org/software/bash/)gebruiken.
+* **Windows Power shell**.  U kunt ook [bash](https://www.gnu.org/software/bash/)gebruiken.
 
 ## <a name="base-uri-for-ambari-rest-api"></a>Basis-URI voor Ambari rest API
 
- De basis-URI (Uniform Resource Identifier) voor de Ambari REST API op HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, waarbij `CLUSTERNAME` de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig**.  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI (`CLUSTERNAME.azurehdinsight.net`) is hoofdletter gevoelig en andere exemplaren in de URI zijn hoofdletter gevoelig.
+ De basis-URI (Uniform Resource Identifier) voor de Ambari REST API op HDInsight is `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, waarbij `CLUSTERNAME` de naam van uw cluster is.  Cluster namen in Uri's zijn **hoofdletter gevoelig**.  De naam van het cluster in het Fully Qualified Domain Name (FQDN) van de URI (`CLUSTERNAME.azurehdinsight.net`) is niet hoofdletter gevoelig, maar andere instanties in de URI zijn hoofdletter gevoelig.
 
 ## <a name="authentication"></a>Authentication
 
 Voor het maken van verbinding met Ambari op HDInsight is HTTPS vereist. Gebruik de naam van het beheerders account (de standaard **beheerder**) en het wacht woord dat u hebt opgegeven tijdens het maken van het cluster.
 
-Voor Enterprise Security Package clusters gebruikt u in plaats van `admin` een volledig gekwalificeerde gebruikers naam, zoals `username@domain.onmicrosoft.com`.
+Voor Enterprise Security Package clusters gebruikt u in plaats van `admin`een volledig gekwalificeerde gebruikers naam, zoals `username@domain.onmicrosoft.com`.
 
 ## <a name="examples"></a>Voorbeelden
 
 ### <a name="setup-preserve-credentials"></a>Setup (referenties behouden)
 Bewaar uw referenties om te voor komen dat ze opnieuw worden ingevoerd voor elk voor beeld.  De naam van het cluster wordt in een afzonderlijke stap bewaard.
 
-**ÉÉN. Bash @ no__t-0  
-Bewerk het onderstaande script door uw `PASSWORD` eigen wacht woord te vervangen.  Voer vervolgens de opdracht in.
+**A. bash**  
+Bewerk het onderstaande script door `PASSWORD` te vervangen door uw eigen wacht woord.  Voer vervolgens de opdracht in.
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B. PowerShell**  
+**B. Power shell**  
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -66,7 +66,7 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ### <a name="identify-correctly-cased-cluster-name"></a>Cluster naam met een onjuiste naam identificeren
 De daad werkelijke behuizing van de cluster naam kan anders zijn dan verwacht, afhankelijk van hoe het cluster is gemaakt.  In de stappen hier wordt het werkelijke hoofdletter gebruik weer gegeven en opgeslagen in een variabele voor alle volgende voor beelden.
 
-Bewerk de onderstaande scripts om deze `CLUSTERNAME` te vervangen door de naam van uw cluster. Voer vervolgens de opdracht in. (De cluster naam voor de FQDN is niet hoofdletter gevoelig.)
+Bewerk de onderstaande scripts om `CLUSTERNAME` te vervangen door de naam van uw cluster. Voer vervolgens de opdracht in. (De cluster naam voor de FQDN is niet hoofdletter gevoelig.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -85,7 +85,7 @@ $clusterName
 
 ### <a name="parsing-json-data"></a>JSON-gegevens parseren
 
-In het volgende voor beeld wordt [JQ](https://stedolan.github.io/jq/) of [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) gebruikt om het JSON-respons document te parseren en alleen de `health_report`-informatie uit de resultaten weer te geven.
+In het volgende voor beeld wordt [JQ](https://stedolan.github.io/jq/) of [ConvertFrom-JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json) gebruikt om het JSON-respons document te parseren en alleen de `health_report` informatie uit de resultaten weer te geven.
 
 ```bash
 curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" \
@@ -208,13 +208,13 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
 > [!IMPORTANT]  
-> In deze voor beelden wordt de eerste configuratie geretourneerd die wordt toegepast op de server (@no__t 0) die deze informatie bevat. Als u een waarde ophaalt die is gewijzigd na het maken van het cluster, moet u mogelijk de configuratie versies weer geven en de laatste ophalen.
+> In deze voor beelden wordt de eerste configuratie geretourneerd die wordt toegepast op de server (`service_config_version=1`) die deze informatie bevat. Als u een waarde ophaalt die is gewijzigd na het maken van het cluster, moet u mogelijk de configuratie versies weer geven en de laatste ophalen.
 
 De geretourneerde waarde is vergelijkbaar met een van de volgende voor beelden:
 
 * `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`: deze waarde geeft aan dat het cluster een Azure Storage-account gebruikt voor de standaard opslag. De `ACCOUNTNAME` waarde is de naam van het opslag account. Het gedeelte `CONTAINER` is de naam van de BLOB-container in het opslag account. De container is de hoofdmap van de HDFS-compatibele opslag voor het cluster.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`: deze waarde geeft aan dat het cluster Azure Data Lake Storage Gen2 gebruikt voor de standaard opslag. De waarden `ACCOUNTNAME` en `CONTAINER` hebben dezelfde betekenis als voor eerder vermelde Azure Storage.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`: deze waarde geeft aan dat het cluster Azure Data Lake Storage Gen2 gebruikt voor de standaard opslag. De waarden `ACCOUNTNAME` en `CONTAINER` hebben dezelfde betekenis als Azure Storage eerder beschreven.
 
 * `adl://home`: deze waarde geeft aan dat het cluster Azure Data Lake Storage Gen1 gebruikt voor de standaard opslag.
 
@@ -232,7 +232,7 @@ De geretourneerde waarde is vergelijkbaar met een van de volgende voor beelden:
     $respObj.items.configurations.properties.'dfs.adls.home.hostname'
     ```
 
-    De geretourneerde waarde is vergelijkbaar met `ACCOUNTNAME.azuredatalakestore.net`, waarbij `ACCOUNTNAME` de naam van het Data Lake Storage-account is.
+    De geretourneerde waarde is vergelijkbaar met `ACCOUNTNAME.azuredatalakestore.net`, waarbij `ACCOUNTNAME` de naam is van het Data Lake Storage-account.
 
     Gebruik de volgende voor beelden om de map te vinden in Data Lake Storage die de opslag voor het cluster bevat:
 
@@ -302,19 +302,19 @@ In dit voor beeld wordt een JSON-document geretourneerd met de huidige configura
 
 ### <a name="update-configuration"></a>Configuratie bijwerken
 
-1. Maak `newconfig.json`.  
+1. `newconfig.json`maken.  
    Wijzig en voer de volgende opdrachten in:
 
    * Vervang `livy2-conf` door het gewenste onderdeel.
-   * Vervang `INITIAL` door de werkelijke waarde opgehaald voor `tag` van [alle configuraties ophalen](#get-all-configurations).
+   * Vervang `INITIAL` door de werkelijke waarde op te halen voor `tag` van [alle configuraties ophalen](#get-all-configurations).
 
-     **ÉÉN. Bash @ no__t-0  
+     **A. bash**  
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     **B. PowerShell**  
+     **B. Power shell**  
      Het Power shell-script maakt gebruik van [JQ](https://stedolan.github.io/jq/).  Bewerk `C:\HD\jq\jq-win64` hieronder om uw eigen pad en versie van [JQ](https://stedolan.github.io/jq/)weer te geven.
 
      ```powershell
@@ -332,13 +332,13 @@ In dit voor beeld wordt een JSON-document geretourneerd met de huidige configura
 
    * Hiermee maakt u een hoofd document voor de nieuwe gewenste configuratie.
 
-   * Hiermee haalt u de inhoud van de matrix `.items[]` en voegt u deze toe onder het element **desired_config** .
+   * Hiermee wordt de inhoud van de `.items[]` matrix opgehaald en toegevoegd onder het element **desired_config** .
 
-   * Hiermee worden de elementen `href`, `version` en `Config` verwijderd, omdat deze elementen niet nodig zijn om een nieuwe configuratie in te dienen.
+   * Hiermee worden de elementen `href`, `version`en `Config` verwijderd, omdat deze elementen niet nodig zijn om een nieuwe configuratie in te dienen.
 
-   * Voegt een `tag`-element toe met de waarde `version#################`. Het numerieke gedeelte is gebaseerd op de huidige datum. Elke configuratie moet een unieke tag hebben.
+   * Hiermee voegt u een `tag`-element toe met de waarde `version#################`. Het numerieke gedeelte is gebaseerd op de huidige datum. Elke configuratie moet een unieke tag hebben.
 
-     Ten slotte worden de gegevens opgeslagen in het document `newconfig.json`. De document structuur moet er ongeveer uitzien als in het volgende voor beeld:
+     Ten slotte worden de gegevens opgeslagen in het `newconfig.json` document. De document structuur moet er ongeveer uitzien als in het volgende voor beeld:
 
      ```json
      {
@@ -358,14 +358,14 @@ In dit voor beeld wordt een JSON-document geretourneerd met de huidige configura
      }
      ```
 
-2. Bewerk `newconfig.json`.  
-   Open het document `newconfig.json` en wijzig/voeg waarden toe aan het `properties`-object. In het volgende voor beeld wordt de waarde van `"livy.server.csrf_protection.enabled"` gewijzigd van `"true"` in `"false"`.
+2. `newconfig.json`bewerken.  
+   Open het `newconfig.json`-document en wijzig/voeg waarden toe aan het `properties`-object. In het volgende voor beeld wordt de waarde van `"livy.server.csrf_protection.enabled"` gewijzigd van `"true"` in `"false"`.
 
         "livy.server.csrf_protection.enabled": "false",
 
     Sla het bestand op wanneer u klaar bent met het maken van wijzigingen.
 
-3. @No__t-0 verzenden.  
+3. `newconfig.json`verzenden.  
    Gebruik de volgende opdrachten om de bijgewerkte configuratie naar Ambari te verzenden.
 
     ```bash
@@ -453,10 +453,10 @@ Als u de Ambari-webgebruikersinterface bekijkt, geeft de Spark-service aan dat d
     ```
 
     > [!IMPORTANT]  
-    > De `href`-waarde die door deze URI wordt geretourneerd, maakt gebruik van het interne IP-adres van het cluster knooppunt. Als u het van buiten het cluster wilt gebruiken, vervangt u het deel `10.0.0.18:8080` door de FQDN van het cluster.  
+    > Het interne IP-adres van het cluster knooppunt wordt gebruikt door de `href` waarde die door deze URI wordt geretourneerd. Als u het van buiten het cluster wilt gebruiken, vervangt u het `10.0.0.18:8080` gedeelte door de FQDN van het cluster.  
 
 4. Controleer de aanvraag.  
-    Bewerk de onderstaande opdracht door `29` te vervangen door de werkelijke waarde voor `id` geretourneerd door de vorige stap.  Met de volgende opdrachten wordt de status van de aanvraag opgehaald:
+    Bewerk de onderstaande opdracht door `29` te vervangen door de werkelijke waarde voor `id` die is geretourneerd uit de vorige stap.  Met de volgende opdrachten wordt de status van de aanvraag opgehaald:
 
     ```bash
     curl -u admin:$password -sS -H "X-Requested-By: ambari" \

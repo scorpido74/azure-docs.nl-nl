@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een afbeeldingsclassificatieproject maken met de Custom Vision-SDK voor Python'
+title: 'Snelstart: Een afbeeldingsclassificatieproject maken met de Custom Vision-SDK voor Python'
 titleSuffix: Azure Cognitive Services
 description: Maak een project, voeg tags toe, upload afbeeldingen, train uw project en doe een voorspelling met behulp van de Python-SDK.
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 87c504fa936d89707020f1bf3ac9a0ccd4f81946
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6a626c2e27bf26ed98dd3244c52671a4dfa4aa76
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946093"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73519380"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Quickstart: Een afbeeldingsclassificatieproject maken met de Custom Vision-SDK met Python
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Snelstart: Een afbeeldingsclassificatieproject maken met de Custom Vision Python-SDK
 
-Dit artikel biedt informatie en voorbeeldcode om u te helpen om met de Custom Vision-SDK met Python een afbeeldingsclassificatiemodel te maken. Nadat de app is gemaakt, kunt u Tags toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde voor spelling-eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Python-toepassing te maken. Zie de [handleiding voor browsers](getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
+Dit artikel biedt informatie en voorbeeldcode om u te helpen om met de Custom Vision-SDK met Python een afbeeldingsclassificatiemodel te maken. Nadat de app is gemaakt, kunt u Tags toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde voor spelling-eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Python-toepassing te maken. Zie de _handleiding voor browsers_ als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken [zonder](getting-started-build-a-classifier.md) code.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Python 2.7+ of 3.5+](https://www.python.org/downloads/)
 - [pip](https://pip.pypa.io/en/stable/installing/)-hulpprogramma
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>De Custom Vision-SDK installeren
 
@@ -38,20 +39,21 @@ pip install azure-cognitiveservices-vision-customvision
 
 [!INCLUDE [python-get-images](includes/python-get-images.md)]
 
-
 ## <a name="add-the-code"></a>Code toevoegen
 
 Maak een nieuw bestand met de naam *sample.py* in uw projectmap.
 
 ### <a name="create-the-custom-vision-service-project"></a>Het Custom Vision Service-project maken
 
-Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in. Raadpleeg de [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) -methode om andere opties op te geven wanneer u uw project maakt (Zie de hand leiding [een classificatie](getting-started-build-a-classifier.md) -webportal bouwen).   
+Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in. U kunt ook uw eind punt-URL ophalen via de pagina instellingen van de website van Custom Vision.
+
+Raadpleeg de [create_project](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.custom_vision_training_client.customvisiontrainingclient?view=azure-python#create-project-name--description-none--domain-id-none--classification-type-none--target-export-platforms-none--custom-headers-none--raw-false----operation-config- ) -methode om andere opties op te geven wanneer u uw project maakt (Zie de hand leiding [een classificatie](getting-started-build-a-classifier.md) -webportal bouwen).  
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
 
-ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
+ENDPOINT = "<your API endpoint>"
 
 # Replace with a valid key
 training_key = "<your training key>"

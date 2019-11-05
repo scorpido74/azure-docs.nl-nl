@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 26d66868ab4c003dbd962e0c94009bc38bb36345
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558833"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468628"
 ---
 # <a name="support-and-help-options"></a>Ondersteunings-en Help-opties
 
@@ -55,7 +55,7 @@ Waar *{uw zoek termen}* de zoek woorden zijn.
 
 Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal.
 
-* [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal voor de Verenigde Staten overheid](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>Een vraag stellen aan Stack Overflow
@@ -64,14 +64,14 @@ Stack Overflow is het voorkeurs kanaal voor vragen met betrekking tot ontwikkeli
 
 Als u via zoeken geen antwoord op uw probleem kunt vinden, dient u een nieuwe vraag naar Stack Overflow te verzenden. Gebruik een van de volgende tags wanneer u de vraag formuleren:
 
-|Onderdeel/gebied  |Labels  |
+|Onderdeel/gebied  |Tags  |
 |---------|---------|
-|Spraakherkenning |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Spraak-synthese |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|Spraakherkenning |[[micro soft-cognitieve + spraak-naar-tekst]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|Spraak-synthese |[[micro soft-cognitieve + tekst-naar-spraak]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
 |Spraakomzetting |[[micro soft-cognitieve + vertaling]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Spraak intentie |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Algemene spraak-SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-| Virtuele assistenten voor spraak (preview) | [[micro soft-cognitieve + virtuele-assistent + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+|Spraak intentie |[[micro soft-cognitieve + Luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|Algemene spraak-SDK |[[micro soft-cognitieve + micro soft-Speech-API]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|Spraak assistenten | [[micro soft-cognitieve + virtuele-assistent + botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > De volgende berichten van Stack Overflow bevatten tips voor het maken van vragen en het toevoegen van de bron code. Als u deze richt lijnen volgt, kunt u de kans verg Roten dat leden van de Community uw vraag snel beoordelen en erop reageren:  

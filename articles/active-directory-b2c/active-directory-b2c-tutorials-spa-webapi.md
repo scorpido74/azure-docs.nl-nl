@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 30e7059605ef86e6afd86251db0e416c9143a9ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374249"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475118"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Zelf studie: toegang verlenen tot een ASP.NET Core Web-API vanuit een toepassing met één pagina met behulp van Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Bereiken bieden een manier om toegang tot beveiligde resources te reguleren. Ber
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Noteer de **volledige bereik waarde** voor het `demo.read`-bereik dat u in een latere stap kunt gebruiken wanneer u de toepassing met één pagina configureert. De volledige bereik waarde is vergelijkbaar met `https://yourtenant.onmicrosoft.com/api/demo.read`.
+Noteer de waarde onder **scopes** voor het `demo.read` bereik voor gebruik in een latere stap wanneer u de toepassing met één pagina configureert. De volledige bereik waarde is vergelijkbaar met `https://contosob2c.onmicrosoft.com/api/demo.read`.
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen
 
@@ -58,11 +58,11 @@ In de hand leiding voor vereisten hebt u een webtoepassing gemaakt met de naam *
 
 Uw webtoepassing met één pagina is geregistreerd om de beveiligde web-API aan te roepen. Een gebruiker wordt geverifieerd met Azure AD B2C om de toepassing met één pagina te gebruiken. De app met één pagina verkrijgt een autorisatie machtiging van Azure AD B2C om toegang te krijgen tot de beveiligde web-API.
 
-## <a name="configure-the-sample"></a>Voorbeeld configureren
+## <a name="configure-the-sample"></a>Het voorbeeld configureren
 
 Nu de web-API is geregistreerd en u bereiken hebt gedefinieerd, moet u de web-API-code configureren om uw Azure AD B2C-tenant te gebruiken. In deze zelf studie configureert u een voor beeld van een .NET core-webtoepassing die u kunt downloaden van GitHub.
 
-[Down load een @no__t -1. zip archive](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) of kloon het project voor het voor beeld-Web-API van github.
+[Down load een \*. zip-archief](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi/archive/master.zip) of kloon de voor beeld-Web-API-project van github.
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi.git
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 ### <a name="configure-the-web-api"></a>De web-API configureren
 
 1. Open het bestand <em>B2C-WebApi/**appSettings. json**</em>  in Visual Studio of Visual Studio code.
-1. Wijzig het `AzureAdB2C`-blok zodat dit overeenkomt met de naam van uw Tenant, de toepassings-ID van de Web-API-toepassing, de naam van uw registratie-of aanmeldings beleid en de scopes die u eerder hebt gedefinieerd. Het blok moet er ongeveer uitzien als in het volgende voor beeld (met de juiste `Tenant`-en `ClientId`-waarden):
+1. Wijzig het `AzureAdB2C` blok zodat dit overeenkomt met de naam van uw Tenant, de toepassings-ID van de Web-API-toepassing, de naam van uw aanmeldings-en aanmeldings beleid en de scopes die u eerder hebt gedefinieerd. Het blok moet er ongeveer uitzien als in het volgende voor beeld (met de juiste `Tenant` en `ClientId` waarden):
 
     ```json
     "AzureAdB2C": {
@@ -96,7 +96,7 @@ Als u wilt toestaan dat uw toepassing met één pagina de ASP.NET Core Web-API a
         services.AddCors();
     ```
 
-1. Stel ook binnen de `ConfigureServices()`-methode de waarde voor de `jwtOptions.Authority` in op de volgende token Uitgever-URI.
+1. Stel ook binnen de `ConfigureServices()`-methode de `jwtOptions.Authority` waarde in op de volgende token Uitgever-URI.
 
     Vervang `<your-tenant-name>` door de naam van uw B2C-Tenant.
 
@@ -104,7 +104,7 @@ Als u wilt toestaan dat uw toepassing met één pagina de ASP.NET Core Web-API a
     jwtOptions.Authority = $"https://<your-tenant-name>.b2clogin.com/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0";
     ```
 
-1. Configureer CORS in de `Configure()`-methode.
+1. Configureer CORS in de methode `Configure()`.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -113,8 +113,8 @@ Als u wilt toestaan dat uw toepassing met één pagina de ASP.NET Core Web-API a
             builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-1. (Alleen Visual Studio) Open het bestand *launchSettings. json* onder **eigenschappen** in het Solution Explorer en zoek vervolgens het `iisExpress`-blok.
-1. (Alleen Visual Studio) Werk de `applicationURL`-waarde bij met het poort nummer dat u hebt opgegeven toen u de *webapi1* -toepassing in een eerdere stap hebt geregistreerd. Bijvoorbeeld:
+1. (Alleen Visual Studio) Open het bestand *launchSettings. json* onder **eigenschappen** in het Solution Explorer en zoek het `iisExpress` blok.
+1. (Alleen Visual Studio) Werk de `applicationURL` waarde bij met het poort nummer dat u hebt opgegeven toen u de *webapi1* -toepassing in een eerdere stap hebt geregistreerd. Bijvoorbeeld:
 
     ```json
     "iisExpress": {
@@ -133,10 +133,10 @@ Als u de instellingen in de beveiligd-wachtwoord verificatie wilt wijzigen:
 
 1. Open het bestand *index. html* in het project [Active Directory-B2C-java script-msal-singlepageapp][github-js-spa] dat u in de vorige zelf studie hebt gedownload of gekloond.
 1. Configureer het voor beeld met de URI voor de *demo. Lees* bereik dat u eerder hebt gemaakt en de URL van de Web-API.
-    1. Vervang in de definitie van `appConfig` de waarde van `b2cScopes` door de volledige URI voor het bereik (de **waarde** die u eerder hebt geregistreerd).
-    1. Wijzig de waarde voor @no__t 0 in de waarde voor `applicationURL` die u in de vorige sectie hebt opgegeven.
+    1. Vervang in de `appConfig` definitie de `b2cScopes` waarde door de volledige URI voor het bereik (de waarde van het **bereik** dat u eerder hebt vastgelegd).
+    1. Wijzig de `webApi` waarde in de omleidings-URI die u hebt toegevoegd toen u de Web-API-toepassing in een eerdere stap hebt geregistreerd.
 
-    De definitie van de `appConfig` moet er ongeveer uitzien als in het volgende code blok (met de naam van uw Tenant op de plaats van `<your-tenant-name>`):
+    De `appConfig` definitie moet er ongeveer uitzien als in het volgende code blok (met de naam van uw Tenant op de plaats van `<your-tenant-name>`):
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -158,13 +158,13 @@ Druk in Visual Studio op **F5** om de oplossing *B2C-WebAPI. SLN* te bouwen en f
 
 Als u liever de `dotnet` CLI gebruikt in plaats van Visual Studio:
 
-1. Open een console venster en ga naar de map met het bestand *@no__t -1. csproj* . Bijvoorbeeld:
+1. Open een console venster en ga naar de map met het bestand *\*. csproj* . Bijvoorbeeld:
 
     `cd active-directory-b2c-dotnetcore-webapi/B2C-WebApi`
 
-1. Bouw en voer de Web-API uit door `dotnet run` uit te voeren.
+1. Bouw en voer de Web-API uit door `dotnet run`uit te voeren.
 
-    Wanneer de API actief is, ziet u uitvoer die lijkt op het volgende (voor de zelf studie kunt u elke `NETSDK1059` waarschuwing negeren):
+    Wanneer de API actief is, ziet u uitvoer die lijkt op het volgende (voor de zelf studie kunt u een `NETSDK1059` waarschuwingen veilig negeren):
 
     ```console
     $ dotnet run
@@ -193,8 +193,8 @@ Als u liever de `dotnet` CLI gebruikt in plaats van Visual Studio:
     Listening on port 6420...
     ```
 
-1. Ga in uw browser naar `http://localhost:6420` om de toepassing weer te geven.
-1. Meld u aan met het e-mail adres en het wacht woord dat u in de [vorige zelf studie](active-directory-b2c-tutorials-spa.md)hebt gebruikt. Wanneer de aanmelding is geslaagd, wordt het `User 'Your Username' logged-in`-bericht weer gegeven.
+1. Navigeer naar `http://localhost:6420` in uw browser om de toepassing weer te geven.
+1. Meld u aan met het e-mail adres en het wacht woord dat u in de [vorige zelf studie](active-directory-b2c-tutorials-spa.md)hebt gebruikt. Wanneer de aanmelding is geslaagd, wordt het `User 'Your Username' logged-in` bericht weer gegeven.
 1. Selecteer de knop **Web-API aanroepen** . De beveiligd-wachtwoord verificatie verkrijgt een machtigings toekenning van Azure AD B2C en opent vervolgens de beveiligde web-API om de inhoud van de index pagina weer te geven:
 
     ```Output
@@ -204,7 +204,7 @@ Als u liever de `dotnet` CLI gebruikt in plaats van Visual Studio:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een web-API-toepassing toevoegen

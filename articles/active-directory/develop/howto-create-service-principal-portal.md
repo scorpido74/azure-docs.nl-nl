@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d60c1a01f3a4ca3a191ddb322def7d86a316c58f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803324"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473872"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Procedure: een Azure AD-toepassing en service-principal maken met behulp van de portal om toegang te krijgen tot resources
 
@@ -51,7 +51,7 @@ Als u toegang wilt krijgen tot resources in uw abonnement, moet u de toepassing 
 
 U kunt het bereik instellen op het niveau van het abonnement, de resource groep of de resource. Machtigingen worden overgenomen door lagere bereik niveaus. Als u bijvoorbeeld een toepassing toevoegt aan de rol van lezer voor een resource groep, betekent dit dat de resource groep en alle resources die deze bevat, kunnen worden gelezen.
 
-1. Navigeer naar het bereik dat u aan de toepassing wilt toewijzen. Als u bijvoorbeeld een rol wilt toewijzen aan het abonnements bereik, selecteert u **alle services** en **abonnementen**.
+1. Selecteer in het Azure Portal het bereik dat u aan de toepassing wilt toewijzen. Als u bijvoorbeeld een rol wilt toewijzen aan het abonnements bereik, zoekt en selecteert u **abonnementen**, of selecteert u **abonnementen** op de **Start** pagina.
 
    ![U kunt bijvoorbeeld een rol aan het abonnements bereik toewijzen](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -147,7 +147,7 @@ Als de instelling app-registraties is ingesteld op **Nee**, kunnen alleen gebrui
 
 ### <a name="check-azure-subscription-permissions"></a>Azure-abonnements machtigingen controleren
 
-Uw account moet in uw Azure-abonnement beschikken over `Microsoft.Authorization/*/Write`-toegang om een AD-app toe te wijzen aan een rol. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account is toegewezen aan de rol **Inzender** , hebt u niet de juiste machtigingen. Er wordt een fout bericht weer gegeven wanneer u een service-principal aan een rol probeert toe te wijzen.
+In uw Azure-abonnement moet uw account beschikken over `Microsoft.Authorization/*/Write` toegang om een AD-app toe te wijzen aan een rol. Deze toegang wordt verleend via de rol [Eigenaar](../../role-based-access-control/built-in-roles.md#owner) of [Administrator voor gebruikerstoegang](../../role-based-access-control/built-in-roles.md#user-access-administrator). Als uw account is toegewezen aan de rol **Inzender** , hebt u niet de juiste machtigingen. Er wordt een fout bericht weer gegeven wanneer u een service-principal aan een rol probeert toe te wijzen.
 
 Uw abonnements machtigingen controleren:
 

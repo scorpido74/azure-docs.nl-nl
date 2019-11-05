@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: f66508a4794b8009523cc2820efe0156b4a9e2f6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756854"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498301"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Time to Live (TTL) in Azure Cosmos DB 
 
 Met **time to Live** of TTL biedt Azure Cosmos DB de mogelijkheid om automatisch items uit een container te verwijderen na een bepaalde tijds periode. Standaard kunt u time to Live instellen op container niveau en de waarde per item overschrijven. Nadat u de TTL hebt ingesteld op een container of op item niveau, worden deze items na de periode door Azure Cosmos DB automatisch verwijderd, sinds de tijd waarop ze voor het laatst zijn gewijzigd. De waarde voor time to Live wordt in seconden geconfigureerd. Wanneer u TTL configureert, worden de verlopen items automatisch door het systeem verwijderd op basis van de TTL-waarde, zonder dat er een Verwijder bewerking hoeft te worden uitgevoerd die expliciet door de client toepassing wordt verleend.
 
-Het verwijderen van verlopen items is een achtergrond taak die gebruikmaakt van aanvragen voor links op [aanvraag](request-units.md), die aanvraag eenheden zijn die niet zijn verbruikt door gebruikers aanvragen. Verlopen kunnen worden vertraagd als de container zwaar wordt belast en er geen aanvraag eenheid voor onderhouds taken wordt gelaten.
+Het verwijderen van verlopen items is een achtergrond taak die gebruikmaakt van aanvragen voor links op [aanvraag](request-units.md), die aanvraag eenheden zijn die niet zijn verbruikt door gebruikers aanvragen. Zelfs nadat de TTL is verlopen, wordt de verwijdering van gegevens vertraagd als de container is overbelast met aanvragen en als er onvoldoende RU beschikbaar is. Gegevens worden verwijderd wanneer voldoende RUs beschikbaar is om de Verwijder bewerking uit te voeren. Hoewel het verwijderen van gegevens is vertraagd, worden er geen gegevens geretourneerd door query's (door een API) nadat de TTL is verlopen.
 
 ## <a name="time-to-live-for-containers-and-items"></a>Time to Live voor containers en items
 

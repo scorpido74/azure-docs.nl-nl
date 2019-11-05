@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een afbeeldingsclassificatieproject maken met de Custom Vision-SDK voor Node.js'
+title: 'Snelstartgids: een afbeeldings classificatie project maken met de Custom Vision SDK voor node. js'
 titleSuffix: Azure Cognitive Services
 description: Maak een project, voeg tags toe, upload afbeeldingen, train uw project en doe een voorspelling met behulp van de Node.js-SDK.
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: edb9e50cceed95d8ca77567e7c1228704b5f177d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1a7780c78e8771ae0eae19d7c8b9da6fbedd220c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982369"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73519388"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Quickstart: Een afbeeldingsclassificatieproject maken met de Node.js-SDK van Custom Vision
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Snelstartgids: een afbeeldings classificatie project maken met de Custom Vision node. js-SDK
 
-Dit artikel biedt informatie en voorbeeldcode om u te helpen om met de Custom Vision-SDK met Node.js een afbeeldingsclassificatiemodel te maken. Nadat de app is gemaakt, kunt u Tags toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde voor spelling-eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken. Zie de [handleiding voor browsers](getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
+Dit artikel biedt informatie en voorbeeldcode om u te helpen om met de Custom Vision-SDK met Node.js een afbeeldingsclassificatiemodel te maken. Nadat de app is gemaakt, kunt u Tags toevoegen, afbeeldingen uploaden, het project trainen, de gepubliceerde voor spelling-eind punt-URL van het project ophalen en het eind punt gebruiken om een afbeelding programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Node.js-toepassing te maken. Zie de _handleiding voor browsers_ als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken [zonder](getting-started-build-a-classifier.md) code.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [Node.js 8](https://www.nodejs.org/en/download/) of hoger geïnstalleerd.
 - [npm](https://www.npmjs.com/) geïnstalleerd.
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>De Custom Vision-SDK installeren
 
@@ -60,7 +61,7 @@ const predictionKey = "<your prediction key>";
 const predictionResourceId = "<your prediction resource id>";
 const sampleDataRoot = "<path to image files>";
 
-const endPoint = "https://southcentralus.api.cognitive.microsoft.com"
+const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "classifyModel";
 

@@ -9,20 +9,39 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813277"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498927"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
-Meer informatie over wat er nieuw is in de service. Bij deze items kunnen opmerkingen, Video's, blog berichten en andere soorten informatie worden vrijgegeven. Bladwijzer deze pagina om up-to-date te blijven met de service.  
+Meer informatie over wat er nieuw is in de service. Deze items zijn release opmerkingen, Video's, blog berichten en andere soorten informatie. Bladwijzer deze pagina om up-to-date te blijven met de service.  
 
 ## <a name="release-notes"></a>Releaseopmerkingen 
+
+### <a name="november-4-2019---ignite"></a>4 november 2019-Ignite
+
+* Verbeterde productiviteit van ontwikkel aars
+    * Algemene Beschik baarheid van ons [Voorspellings eindpunt v3](luis-migration-api-v3.md). 
+    * De mogelijkheid om apps te importeren en exporteren met de. lu-indeling ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dit wordt de manier om een effectief CI/CD-proces uit te voeren. 
+* Taal uitbreiding
+    * [Arabisch en Hindi](luis-language-support.md) in open bare preview.
+* Modellen voorbouwen
+    * [Vooraf gebouwde domeinen](luis-reference-prebuilt-domains.md) zijn nu algemeen beschikbaar (ga)
+    * Japanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#japanese-entity-support) : leeftijd, valuta, getal, percentage worden niet ondersteund in v3.
+    * Italiaanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#italian-entity-support) -leeftijd, valuta, dimensie, getal, percentage resolutie gewijzigd van v2.
+* Verbeter de gebruikers ervaring in de [Preview.Luis.ai-Portal](https://preview.luis.ai) met verbeterde labels om het bouwen en debuggen van complexe modellen mogelijk te maken.
+* Geavanceerde taal mogelijkheden: [Geavanceerde taal modellen bouwen](luis-concept-entity-types.md) met minder inspanning. 
+* Het definiëren van machine learning-functies op model niveau en het inschakelen van modellen die kunnen worden gebruikt als signalen voor een ander model, zoals het gebruik van entiteiten als functies voor intenties en andere entiteiten.
+* Nieuwe, uitgebreide [limieten](luis-boundaries.md) : hoger maximum voor woordgroepen lijsten en totaal aantal zinsdelen, nieuw model als een functie limiet
+* Haal informatie op uit tekst in de indeling van een diepe hiërarchie structuur, zodat conversatie toepassingen krachtiger worden.
+
+    ![door de machine geleerde entiteits afbeelding](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3 september 2019
 
@@ -59,7 +78,7 @@ De volgende functies zijn uitgebracht op de build 2019-conferentie:
 
 ## <a name="blogs"></a>Blogs
 
-[Bot Framework](https://blog.botframework.com/)
+[Bot-Framework](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Video's
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b0adc75d2da1a8ef053edf0078746df8f36ed5e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 329e4b262731ae1b23fb94da7b937c9c1549185f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430321"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473625"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snelstartgids: een toepassing registreren bij het micro soft Identity-platform
 
@@ -34,7 +34,7 @@ In deze Quick start ziet u hoe u een toepassing kunt toevoegen en registreren me
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de door u gewenste Azure Active Directory-tenant.
-1. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties > nieuwe registratie**.
+1. Zoek en selecteer **Azure Active Directory**. Selecteer op de pagina **Active Directory** **app-registraties** en selecteer vervolgens **nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 
    - **Naam**: voer een beschrijvende toepassingsnaam in. Deze wordt zichtbaar voor gebruikers van de app.
@@ -54,11 +54,11 @@ In deze Quick start ziet u hoe u een toepassing kunt toevoegen en registreren me
 
 1. Selecteer **Registreren** wanneer u klaar bent.
 
-    [![Shows het scherm om een nieuwe toepassing in de Azure Portal te registreren](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
+    [![toont het scherm om een nieuwe toepassing te registreren in de Azure Portal](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-registration-expanded.png#lightbox)
 
 In Azure AD wordt een unieke toepassings-id (client) toegewezen aan de app, waarna u naar de pagina **Overzicht** van de toepassing wordt geleid. Als u aanvullende mogelijkheden wilt toevoegen aan de toepassing, kunt u andere configuratieopties selecteren, waaronder huisstijl, certificaten en geheimen, API-machtigingen, en meer.
 
-[![Example van een nieuw geregistreerde app-overzichts pagina](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
+[![voor beeld van een nieuw geregistreerde app-overzichts pagina](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

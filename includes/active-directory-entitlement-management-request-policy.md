@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 78a0dafeedc9aac4db69903b9f1193574cbd39c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6f2b5eb96eeb1c4b7d07219d5fe54a8a0ca9e28a
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934577"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73412961"
 ---
 ## <a name="for-users-in-your-directory"></a>Voor gebruikers in uw Directory
 
@@ -105,19 +105,19 @@ Volg deze stappen om de goedkeurings instellingen op te geven voor de gebruikers
 
 1. Als u goed keuring wilt vereisen voor aanvragen van de geselecteerde gebruikers, stelt u de schakel optie **goed keuring vereisen** in op **Ja**. Als u wilt dat aanvragen automatisch worden goedgekeurd, stelt u de wissel knop in op **Nee**.
 
-    ![Toegangs aanvragen-goedkeurings instellingen voor het pakket](./media/active-directory-entitlement-management-request-policy/approval.png)
-
 1. Als u wilt dat gebruikers een reden opgeven om het toegangs pakket aan te vragen, stelt u de optie uitschakeling van **aanvrager vereisen** in op **Ja**.
 
-1. Bepaal of de aanvraag één of meerdere fasen moet goed keuren. Stel in hoeveel **fasen** **moeten worden in-** of uitgeschakeld voor één fase.
+    ![Toegangs aanvragen-goedkeurings instellingen voor het pakket](./media/active-directory-entitlement-management-request-policy/approval.png)
+
+### <a name="single-stage-approval"></a>Goed keuring in één fase
 
 1. Voor goed keurders selecteert u **Manager als fiatteur** of **kiest u specifieke goed keurders**.
 
-    De Manager wordt bepaald door het kenmerk **Manager** in het profiel van de gebruiker van Azure AD. Zie [de profiel gegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md)voor meer informatie.
-
-    ![Azure Active Directory gebruikers profiel-kenmerk Manager](./media/active-directory-entitlement-management-request-policy/profile-manager.png)
+    ![Toegang tot pakket aanvragen-instellingen voor één fase](./media/active-directory-entitlement-management-request-policy/approval-single-stage.png)
 
 1. Als u Manager als fiatteur hebt geselecteerd, klikt u op **terugval toevoegen** om een of meer gebruikers of groepen in uw directory te selecteren als terugval fiatteur in het geval van rechten beheer kan de Manager niet vinden.
+
+    De Manager wordt bepaald door het kenmerk **Manager** in het profiel van de gebruiker van Azure AD. Zie [de profiel gegevens van een gebruiker toevoegen of bijwerken met behulp van Azure Active Directory](../articles/active-directory/fundamentals/active-directory-users-profile-azure-portal.md)voor meer informatie.
 
 1. Als u specifieke goed keurders kiezen hebt geselecteerd, klikt u op goed keurders **toevoegen** om een of meer gebruikers of groepen in uw directory te selecteren voor goed keurders.
 
@@ -125,9 +125,34 @@ Volg deze stappen om de goedkeurings instellingen op te geven voor de gebruikers
 
     Als een aanvraag niet binnen deze tijds periode wordt goedgekeurd, wordt deze automatisch geweigerd. De gebruiker moet een andere aanvraag indienen voor het toegangs pakket.
 
-1. Als u wilt dat gebruikers een reden opgeven om het toegangs pakket aan te vragen, stelt u in **dat** moet worden ingesteld op **Ja**.
+1. Als u wilt dat gebruikers een reden opgeven om het toegangs pakket aan te vragen, stelt u de **uitvulling van goed keurder vereisen** in op **Ja**.
 
     Een motivering is zichtbaar voor andere goed keurders en de aanvrager.
+
+### <a name="alternate-approvers"></a>Alternatieve goed keurders
+
+Naast het opgeven van de primaire goed keurders die aanvragen kunnen goed keuren, kunt u alternatieve goed keurders opgeven. Dit helpt ervoor te zorgen dat de aanvragen worden goedgekeurd of geweigerd voordat ze verlopen (time-out).
+
+Als u een andere fiatteur (s) opgeeft, wordt de aanvraag in behandeling doorgestuurd naar de alternatieve fiatteur (s) die u hebt opgegeven tijdens het instellen van het beleid, in het geval dat de primaire fiatteur (s) de aanvraag niet heeft goedgekeurd of geweigerd. Ze ontvangen een e-mail om de in behandeling zijnde aanvraag goed te keuren of te weigeren.
+
+Nadat de aanvraag is doorgestuurd naar de alternatieve goed keurders, kunnen de primaire goed keurders de aanvraag toch goed keuren of weigeren. Alternatieve goed keurders gebruiken dezelfde mijn Access-site als de primaire goed keurders om de in behandeling zijnde aanvraag goed te keuren of te weigeren.
+
+We kunnen personen of groepen van mensen een lijst geven als primaire goed keurders en alternatieve goed keurders. Zorg ervoor dat u een lijst met verschillende groepen mensen als primaire goed keurders en de alternatieve goed keurders vermeldt.
+Als u bijvoorbeeld Anne en Bob als primaire goed keurders hebt genoteerd, vermeldt u Carola en Dave als de alternatieve fiatteur (s). Gebruik de volgende stappen om alternatieve goed keurders toe te voegen aan een toegangs pakket:
+
+1. Klik op **Geavanceerde instellingen voor aanvragen weer geven**.
+
+    ![Toegangs pakket-beleid: Geavanceerde aanvraag instellingen weer geven](./media/active-directory-entitlement-management-request-policy/alternate-approvers-click-advanced-request.png)
+
+1. Instellen **als er geen actie wordt ondernomen, door sturen naar alternatieve goed keurders? in-** of **uitschakelen.**
+
+1. Klik op **alternatieve goed keurders toevoegen** en selecteer de alternatieve fiatteur (s) in de lijst.
+
+    ![Toegangs pakket-beleid-alternatieve goed keurders toevoegen](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
+
+1. Stel in het vak **door sturen naar alternatieve goed keurder (en) na hoeveel dagen** het aantal dagen in dat de goed keurders een aanvraag moeten goed keuren of weigeren. Als geen goed keurders de aanvraag hebben goedgekeurd of geweigerd vóór de duur van de aanvraag, is de aanvraag verloopt (time-out) en moet de gebruiker een andere aanvraag indienen voor het toegangs pakket. 
+
+    Aanvragen kunnen alleen worden doorgestuurd naar alternatieve goed keurders op een dag nadat de duur van de aanvraag een halve duur heeft bereikt. In dit voor beeld is de duur van de aanvraag 14 dagen. Dit betekent dat de duur van de aanvraag halfjaarlijks is op dag 7. De aanvraag kan dus niet eerder dan dag 8 worden doorgestuurd. Bovendien kunnen aanvragen niet worden doorgestuurd naar de alternatieve goed keurder op de laatste dag van de aanvraag duur. In het voor beeld kan de meest recente aanvraag worden doorgestuurd is dag 13.
 
 ## <a name="enable-requests"></a>Aanvragen inschakelen
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: 7b5fd9800fdd2ee3b46087308f81f506e3e09e03
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a971b428da72028bcabd874e848d53bc2392a0f6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034952"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496107"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Service lagen Azure SQL Database
 
@@ -32,29 +32,29 @@ In dit artikel worden de verschillen tussen de service lagen en de opslag-en bac
 
 In de volgende tabel worden de belangrijkste verschillen tussen service lagen voor de nieuwste generatie (GEN5) beschreven. Houd er rekening mee dat de kenmerken van de servicelaag kunnen verschillen in Individuele database en een beheerd exemplaar.
 
-| | Resourcetype | Algemeen doel |  Hyperscale | Bedrijfskritiek |
+| | Resourcetype | Algemeen gebruik |  Hyperscale | Bedrijfskritiek |
 |:---:|:---:|:---:|:---:|:---:|
 | **Geschikt voor** | |  Biedt berekenings-en opslag opties voor budget gericht evenwicht. | De meeste zakelijke workloads. Opslag grootte automatisch schalen tot 100 TB, vloeiend verticaal en horizon taal berekenen, snel terugzetten van de data base. | OLTP-toepassingen met hoge transactie snelheden en lage IO-latentie. Biedt de hoogste flexibiliteit voor fouten en snelle failovers met behulp van meerdere synchroon bijgewerkte replica's.|
 |  **Beschikbaar in resource type:** ||Eén data base/elastische pool/beheerd exemplaar | Individuele database | Eén data base/elastische pool/beheerd exemplaar |
 | **Reken grootte**|Eén data base/elastische pool | 1 tot 80 vCores | 1 tot 80 vCores | 1 tot 80 vCores |
-| | Beheerd exemplaar | 4, 8, 16, 24, 32, 40, 64, 80 vCores | N/A | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
-| | Beheerde exemplaar groepen | 2, 4, 8, 16, 24, 32, 40, 64, 80 vCores | N/A | N/A |
+| | Beheerd exemplaar | 4, 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
+| | Beheerde exemplaar groepen | 2, 4, 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | N.v.t. |
 | **Opslagtype** | Alle | Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Database grootte** | Eén data base/elastische pool | 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
-| | Beheerd exemplaar  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
+| | Beheerd exemplaar  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
 | **Opslag grootte** | Eén data base/elastische pool | 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
-| | Beheerd exemplaar  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
-| **TempDB-grootte** | Eén data base/elastische pool | [32 GB per vCore](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | [32 GB per vCore](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) | [32 GB per vCore](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
-| | Beheerd exemplaar  | [24 GB per vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | N/A | Tot 4 TB, [beperkt door de opslag grootte](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-| **Schrijf doorvoer vastleggen in logboek** | Individuele database | [1,875 MB/s per vCore (Maxi maal 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) | 100 MB/s | [6 MB/s per vCore (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) |
-| | Beheerd exemplaar | [3 MB/s per vCore (Maxi maal 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | N/A | [4 MB/s per VCore (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| | Beheerd exemplaar  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
+| **TempDB-grootte** | Eén data base/elastische pool | [32 GB per vCore](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | [32 GB per vCore](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) | [32 GB per vCore](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
+| | Beheerd exemplaar  | [24 GB per vCore](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | N.v.t. | Tot 4 TB, [beperkt door de opslag grootte](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| **Schrijf doorvoer vastleggen in logboek** | Individuele database | [1,875 MB/s per vCore (Maxi maal 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [6 MB/s per vCore (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
+| | Beheerd exemplaar | [3 MB/s per vCore (Maxi maal 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | N.v.t. | [4 MB/s per VCore (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 |**Beschikbaarheid**|Alle| 99,99% |  [99,95% met één secundaire replica, 99,99% met meer replica's](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99,99% <br/> [99,995% met zone redundante single data base](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Back-ups**|Alle|RA-GRS, 7-35 dagen (standaard 7 dagen)| RA-GRS, 7 dagen, constant tijdstip herstel (PITR) | RA-GRS, 7-35 dagen (standaard 7 dagen) |
-|**OLTP in het geheugen** | | N/A | N/A | Beschikbaar |
+|**OLTP in het geheugen** | | N.v.t. | N.v.t. | Beschikbaar |
 |**Alleen-lezen replica's**| | 0  | 0 - 4 | 1 (ingebouwd, inbegrepen in de prijs) |
 |**Prijzen/facturering** | Individuele database | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. | [vCore voor elke replica en gebruikte opslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>IOPS nog niet gefactureerd. | [vCore, gereserveerde opslag en back-upopslag](https://azure.microsoft.com/pricing/details/sql-database/single/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht. |
-|| Beheerd exemplaar | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | N/A | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | 
-|**Kortings modellen**| | [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)|
+|| Beheerd exemplaar | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | N.v.t. | [vCore en gereserveerde opslag](https://azure.microsoft.com/pricing/details/sql-database/managed/) worden in rekening gebracht. <br/>Voor IOPS worden geen kosten in rekening gebracht.<br/>Er wordt nog geen back-upopslag in rekening gebracht. | 
+|**Kortings modellen**| | [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)| [Gereserveerde instanties](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (niet beschikbaar in dev/test-abonnementen)<br/>Ontwikkel-en test abonnementen voor [ondernemingen](https://azure.microsoft.com/offers/ms-azr-0148p/) en [betalen naar gebruik](https://azure.microsoft.com/offers/ms-azr-0023p/)|
 
 Zie voor meer informatie de gedetailleerde verschillen tussen de service lagen in [één data base (vCore)](sql-database-vcore-resource-limits-single-databases.md), [Single Data Base Pools (vCore)](sql-database-dtu-resource-limits-single-databases.md), [Single Data Base (DTU)](sql-database-dtu-resource-limits-single-databases.md), [Single Data Base Pools (DTU)](sql-database-dtu-resource-limits-single-databases.md)en een [beheerd exemplaar](sql-database-managed-instance-resource-limits.md) pagina's.
 
@@ -81,14 +81,14 @@ De volgende factoren zijn van invloed op de hoeveelheid opslag die wordt gebruik
 Gebruik [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)om de huidige totale grootte van uw MDF-en LDF-bestanden te controleren. Gebruik [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql)om de huidige grootte van de afzonderlijke MDF-en LDF-bestanden te bewaken.
 
 > [!IMPORTANT]
-> In sommige gevallen is het wellicht voor het verkleinen van een database voor het vrijmaken van ongebruikte ruimte. Zie voor meer informatie, [bestandsruimte in Azure SQL Database beheren](sql-database-file-space-management.md).
+> In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](sql-database-file-space-management.md)voor meer informatie.
 
 ## <a name="backups-and-storage"></a>Back-ups en opslag
 
 Opslag voor back-ups van data bases wordt toegewezen ter ondersteuning van de mogelijkheden voor PITR (Point-in-time Restore) en [v.l.n.r. (Long-term retention)](sql-database-long-term-retention.md) van SQL database. Deze opslag wordt afzonderlijk voor elke Data Base toegewezen en gefactureerd als twee afzonderlijke kosten per data base.
 
-- **PITR**: Afzonderlijke database back-ups worden automatisch naar [geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md) gekopieerd. De opslag grootte neemt dynamisch toe wanneer er nieuwe back-ups worden gemaakt. De opslag wordt gebruikt door wekelijkse volledige back-ups, dagelijkse differentiële back-ups en back-ups van transactie logboeken, die elke vijf minuten worden gekopieerd. Het opslag verbruik is afhankelijk van de frequentie waarmee de data base wordt gewijzigd en de retentie periode voor back-ups. U kunt tussen 7 en 35 dagen een afzonderlijke Bewaar periode configureren voor elke Data Base. Er wordt geen extra kosten in rekening gebracht voor een minimale opslag hoeveelheid die gelijk is aan 100 procent (1x) van de grootte van de data base. Voor de meeste data bases is deze hoeveelheid voldoende om zeven dagen back-ups op te slaan.
-- **LTR**: SQL Database biedt u de mogelijkheid om lange termijn retentie van volledige back-ups te configureren gedurende Maxi maal tien jaar. Als u een LTR-beleid instelt, worden deze back-ups automatisch opgeslagen in RA-GRS-opslag, maar u kunt bepalen hoe vaak de back-ups worden gekopieerd. Als u wilt voldoen aan verschillende nalevings vereisten, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. De configuratie die u kiest, bepaalt hoeveel opslag ruimte wordt gebruikt voor V.L.N.R.-back-ups. U kunt de LTR-prijs calculator gebruiken om de kosten van V.L.N.R.-opslag te schatten. Zie [SQL database lange termijn retentie](sql-database-long-term-retention.md)voor meer informatie.
+- **PITR**: afzonderlijke database back-ups worden automatisch naar [geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md) gekopieerd. De opslag grootte neemt dynamisch toe wanneer er nieuwe back-ups worden gemaakt. De opslag wordt gebruikt door wekelijkse volledige back-ups, dagelijkse differentiële back-ups en back-ups van transactie logboeken, die elke vijf minuten worden gekopieerd. Het opslag verbruik is afhankelijk van de frequentie waarmee de data base wordt gewijzigd en de retentie periode voor back-ups. U kunt tussen 7 en 35 dagen een afzonderlijke Bewaar periode configureren voor elke Data Base. Er wordt geen extra kosten in rekening gebracht voor een minimale opslag hoeveelheid die gelijk is aan 100 procent (1x) van de grootte van de data base. Voor de meeste data bases is deze hoeveelheid voldoende om zeven dagen back-ups op te slaan.
+- **LTR**: SQL database biedt u de mogelijkheid om lange termijn retentie van volledige back-ups te configureren gedurende Maxi maal tien jaar. Als u een LTR-beleid instelt, worden deze back-ups automatisch opgeslagen in RA-GRS-opslag, maar u kunt bepalen hoe vaak de back-ups worden gekopieerd. Als u wilt voldoen aan verschillende nalevings vereisten, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. De configuratie die u kiest, bepaalt hoeveel opslag ruimte wordt gebruikt voor V.L.N.R.-back-ups. U kunt de LTR-prijs calculator gebruiken om de kosten van V.L.N.R.-opslag te schatten. Zie [SQL database lange termijn retentie](sql-database-long-term-retention.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,24 +1,24 @@
 ---
 title: 'Rijen toevoegen: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module rijen toevoegen in Azure Machine Learning service om twee gegevens sets samen te voegen.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module rijen toevoegen in Azure Machine Learning om twee gegevens sets samen te voegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: c8d8b6a873ee17d1658b0cb47de830848b215b89
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: a16dc0bfc3fae8852c46435f6407c56149e1b14e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693240"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493945"
 ---
 # <a name="add-rows-module"></a>Module rijen toevoegen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om twee gegevens sets samen te voegen. In samen voeging worden de rijen van de tweede gegevensset toegevoegd aan het einde van de eerste gegevensset.  
   
@@ -42,4 +42,4 @@ Als u rijen wilt samen voegen vanuit twee gegevens sets, moeten de rijen precies
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

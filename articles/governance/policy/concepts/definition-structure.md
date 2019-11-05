@@ -3,15 +3,15 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe u de definitie van bron beleid gebruikt door Azure Policy om conventies voor resources in uw organisatie te bepalen door te beschrijven wanneer het beleid wordt afgedwongen en welk effect er moet worden uitgevoerd.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053499"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464024"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -81,12 +81,17 @@ In de meeste gevallen is het raadzaam om de **modus** in te stellen op `all`. Al
 
 `indexed` moet worden gebruikt bij het maken van beleids regels voor het afdwingen van tags of locaties. Hoewel dit niet vereist is, voor komt u dat resources die tags en locaties ondersteunen, niet kunnen worden weer gegeven als niet-compatibel in de nalevings resultaten. De uitzonde ring is **resource groepen**. Beleids regels die de locatie of tags voor een resource groep afdwingen, moeten de **modus** instellen op `all` en specifiek gericht zijn op het `Microsoft.Resources/subscriptions/resourceGroups` type. Zie Labels voor een [resource groep afdwingen](../samples/enforce-tag-rg.md)voor een voor beeld. Zie [tag-ondersteuning voor Azure-resources](../../../azure-resource-manager/tag-support.md)voor een lijst met resources die Tags ondersteunen.
 
-### <a name="resource-provider-modes"></a>Resource provider modi
+### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />resource provider modi (preview-versie)
 
-De enige resource provider modus die momenteel wordt ondersteund, is `Microsoft.ContainerService.Data` voor het beheren van Admission controller-regels voor de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
+De volgende resource provider modi worden momenteel ondersteund tijdens de preview-versie:
+
+- `Microsoft.ContainerService.Data` voor het beheren van regels voor toegangs beheer in de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md). Beleids regels die gebruikmaken van deze resource provider modus **moeten** het [EnforceRegoPolicy](./effects.md#enforceregopolicy) -effect gebruiken.
+- `Microsoft.Kubernetes.Data` voor het beheren van zelf-beheerde AKS-engine Kubernetes-clusters op Azure.
+  Beleids regels die gebruikmaken van deze resource provider modus **moeten** het [EnforceOPAConstraint](./effects.md#enforceopaconstraint) -effect gebruiken.
+- `Microsoft.KeyVault.Data` voor het beheren van kluizen en certificaten in [Azure Key Vault](../../../key-vault/key-vault-overview.md).
 
 > [!NOTE]
-> [Azure Policy voor Kubernetes](rego-for-aks.md) is in open bare preview en ondersteunt alleen ingebouwde beleids definities.
+> De resource provider modi bieden alleen ondersteuning voor ingebouwde beleids definities en bieden geen ondersteuning voor initiatieven als er een preview-versie beschikbaar is.
 
 ## <a name="parameters"></a>Parameters
 
@@ -134,7 +139,7 @@ U kunt bijvoorbeeld een beleids definitie definiëren om de locaties te beperken
 
 ### <a name="using-a-parameter-value"></a>Een parameter waarde gebruiken
 
-In de beleids regel verwijst u naar para meters met de volgende `parameters` syntaxis van de functie implementatie waarde:
+In de beleids regel verwijst u naar para meters met de volgende `parameters` functie syntaxis:
 
 ```json
 {
@@ -272,7 +277,7 @@ De volgende velden worden ondersteund:
 - `tags['''<tagName>''']`
   - De syntaxis van het haakje ondersteunt label namen met apostrofs in het teken met dubbele apostrofs.
   - Waarbij **'\<tagName\>'** de naam van het label is voor het valideren van de voor waarde voor.
-  - Voor beeld: `tags['''My.Apostrophe.Tag''']` waarbij **\<tagName\>** de naam van de tag is.
+  - Voor beeld: `tags['''My.Apostrophe.Tag''']` waarbij **' My. apostrof. tag '** de naam van de tag is.
 - eigenschaps aliassen: Zie [aliassen](#aliases)voor een lijst.
 
 > [!NOTE]
@@ -282,7 +287,7 @@ De volgende velden worden ondersteund:
 
 Een parameter waarde kan worden door gegeven aan een label veld. Door een para meter door te geven aan een label veld, verhoogt u de flexibiliteit van de beleids definitie tijdens beleids toewijzing.
 
-In het volgende voor beeld wordt `concat` gebruikt voor het maken van een label veld met de naam de waarde van de para meter **tagName** . Als deze tag niet bestaat, wordt het **toevoeg** effect gebruikt om de tag toe te voegen met behulp van de waarde van dezelfde benoemde tag die is ingesteld voor de bovenliggende resource groep van de gecontroleerde resources met behulp van de functie lookup `resourcegroup()`.
+In het volgende voor beeld wordt `concat` gebruikt voor het maken van een label veld met de naam de waarde van de para meter **tagName** . Als dat label niet bestaat, wordt het **wijzigings** effect gebruikt om de tag toe te voegen met behulp van de waarde van dezelfde benoemde tag die is ingesteld voor de bovenliggende resource groep van de gecontroleerde resources met behulp van de functie lookup `resourcegroup()`.
 
 ```json
 {
@@ -291,11 +296,17 @@ In het volgende voor beeld wordt `concat` gebruikt voor het maken van een label 
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
@@ -390,42 +401,15 @@ Met de gereviseerde beleids regel controleert `if()` de lengte van de **naam** v
 
 Azure Policy ondersteunt de volgende typen effect:
 
-- **Weigeren**: er wordt een gebeurtenis in het activiteiten logboek gegenereerd en de aanvraag mislukt
-- **Controle**: er wordt een waarschuwings gebeurtenis gegenereerd in het activiteiten logboek, maar de aanvraag mislukt niet
 - **Toevoegen**: Hiermee voegt u de gedefinieerde set velden toe aan de aanvraag
-- **AuditIfNotExists**: Hiermee schakelt u de controle in als een bron niet bestaat
-- **DeployIfNotExists**: implementeert een resource als deze nog niet bestaat
+- **Controle**: er wordt een waarschuwings gebeurtenis gegenereerd in het activiteiten logboek, maar de aanvraag mislukt niet
+- **AuditIfNotExists**: er wordt een waarschuwings gebeurtenis in het activiteiten logboek gegenereerd als een gerelateerde resource niet bestaat
+- **Weigeren**: er wordt een gebeurtenis in het activiteiten logboek gegenereerd en de aanvraag mislukt
+- **DeployIfNotExists**: implementeert een gerelateerde resource als deze nog niet bestaat
 - **Uitgeschakeld**: resources worden niet geëvalueerd voor naleving van de beleids regel
-- **EnforceRegoPolicy**: Hiermee configureert u de open Policy Agent Admissions-controller in de Azure Kubernetes-service (preview)
+- **EnforceOPAConstraint** (preview): Hiermee configureert u de open Policy Agent Admissions controller met gate keeper v3 voor zelf-beheerde Kubernetes-clusters in azure (preview-versie)
+- **EnforceRegoPolicy** (preview): Hiermee configureert u de open Policy Agent Admissions-controller met gate keeper v2 in de Azure Kubernetes-service
 - **Wijzigen**: de gedefinieerde labels worden toegevoegd, bijgewerkt of verwijderd uit een resource
-
-Voor **Append**moet u de volgende gegevens opgeven:
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-De waarde kan een teken reeks of een JSON-indelings object zijn.
-
-**AuditIfNotExists** en **DeployIfNotExists** evalueren het bestaan van een gerelateerde resource en Toep assen van een regel. Als de resource niet overeenkomt met de regel, wordt het effect geïmplementeerd. U kunt bijvoorbeeld vereisen dat een Network Watcher wordt geïmplementeerd voor alle virtuele netwerken. Zie voor meer informatie het voor beeld [controleren als de extensie niet bestaat](../samples/audit-ext-not-exist.md) .
-
-Het effect **DeployIfNotExists** vereist de eigenschap **roledefinitionid hebben** in het gedeelte **Details** van de beleids regel. Zie voor meer informatie [herstel-beleids definitie configureren](../how-to/remediate-resources.md#configure-policy-definition).
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-**Wijzig** ook de eigenschap **roledefinitionid hebben** vereist in het gedeelte **Details** van de beleids regel voor de [herstel taak](../how-to/remediate-resources.md). Voor het **wijzigen** moet ook een **Operations** -matrix worden gedefinieerd om te bepalen welke acties moeten worden uitgevoerd voor de tags voor de resources.
 
 Zie voor meer informatie over elk effect, de volg orde van evaluatie, eigenschappen en voor beelden [informatie over Azure Policy effecten](effects.md).
 
@@ -489,7 +473,7 @@ De lijst met aliassen is altijd groeien. Als u wilt weten welke aliassen momente
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
-- Azure CLI
+- Azure-CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell

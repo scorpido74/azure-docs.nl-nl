@@ -1,7 +1,7 @@
 ---
 title: Woordgroepen lijsten-spraak service
 titleSuffix: Azure Cognitive Services
-description: Informatie over het leveren van de spraak Services met een woordgroepen lijst `PhraseListGrammar` met behulp van het object om herkennings resultaten voor spraak naar tekst te verbeteren.
+description: Informatie over het leveren van spraak Services met een woordgroepen lijst met behulp van het `PhraseListGrammar`-object om de resultaten van spraak-naar-tekst herkenning te verbeteren.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 0e552d502184d1b537263c2c1f6b2a8562cdf791
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562781"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464542"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Woordgroepen lijsten voor spraak naar tekst
 
-Door de spraak Services met een woordgroepen lijst te bieden, kunt u de nauw keurigheid van spraak herkenning verbeteren. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie.
+Door de spraak Services met een lijst met zinsdelen te bieden, kunt u de nauw keurigheid van spraak herkenning verbeteren. Woordgroepen lijsten worden gebruikt voor het identificeren van bekende woord groepen in audio gegevens, zoals de naam van een persoon of een specifieke locatie.
 
 Als u bijvoorbeeld een opdracht ' verplaatsen naar ' en een mogelijke bestemming van ' naar onder ' hebt, kunt u een vermelding van ' verplaatsen naar binnen ' toevoegen. Als u een woord groep toevoegt, wordt de kans groter dat wanneer de audio wordt herkend dat ' naar binnen verplaatsen ' wordt herkend.
 
-Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woordgroepen lijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als de audio een exacte overeenkomst bevat. Als de woordgroepen lijst in het vorige voor beeld is opgenomen, wordt ' verplaatsen naar de andere ' weer geven en de vastgelegde woord groep ' langzaam verplaatsen naar de andere '.
+Enkele woorden of volledige woord groepen kunnen worden toegevoegd aan een woordgroepen lijst. Tijdens de herkenning wordt een vermelding in een woordgroepen lijst gebruikt als de audio een exacte overeenkomst bevat. Op basis van het vorige voor beeld, als de woordgroepen lijst ' verplaatsen naar de andere ' bevat en de audio-vastgelegde geluiden vergelijkbaar genoeg zijn met ' verplaatsen naar ' en ' naar de andere locatie ', wordt het herkennings resultaat waarschijnlijk langer herkend als ' naar een andere locatie verplaatsen '.
 
 >[!Note]
 > Op dit moment ondersteunt een woordgroepen lijst alleen het Engels voor spraak naar tekst.
 
 ## <a name="how-to-use-phrase-lists"></a>Woordgroepen lijsten gebruiken
 
-In de onderstaande voor beelden ziet u hoe u een woordgroepen lijst `PhraseListGrammar` maakt met behulp van het object.
+In de onderstaande voor beelden ziet u hoe u een woordgroepen lijst maakt met behulp van het `PhraseListGrammar`-object.
 
 ```C++
 auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
@@ -70,7 +70,7 @@ phraseListGrammar.addPhrase("Move to Ted");
 >[!Note]
 > Het maximum aantal woordgroepen lijsten dat door de spraak service wordt gebruikt om te voldoen aan spraak is 1024 zinsdelen.
 
-U kunt ook de zinsdelen wissen die zijn gekoppeld `PhraseListGrammar` aan de door het aanroepen van Clear ().
+U kunt ook de zinsdelen wissen die zijn gekoppeld aan de `PhraseListGrammar` door Clear () aan te roepen.
 
 ```C++
 phraselist->Clear();
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Wijzigingen in een `PhraseListGrammar` object worden van invloed op de volgende herkenning of na het opnieuw verbinden met de spraak Services.
+> Wijzigingen in een `PhraseListGrammar`-object worden van kracht bij de volgende herkenning of na het opnieuw verbinden met de spraak Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,22 +6,22 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
-ms.translationtype: MT
+ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255845"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464071"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gast configuratie van Azure Policy begrijpen
 
-Om Azure-resources te controleren en te [herstellen](../how-to/remediate-resources.md) , kunnen Azure Policy instellingen in een machine controleren. De validatie wordt uitgevoerd door de gast configuratie-extensie en-client. De uitbrei ding, via de client, valideert instellingen zoals:
+Om Azure-resources te controleren en te [herstellen](../how-to/remediate-resources.md) , kunnen Azure Policy instellingen in een machine controleren. De validatie wordt uitgevoerd door de extensie en client voor gastconfiguratie. De extensie valideert, via de client, instellingen zoals:
 
 - De configuratie van het besturings systeem
-- Toepassings configuratie of-aanwezigheid
-- Omgevings instellingen
+- Configuratie of aanwezigheid van toepassingen
+- Omgevingsinstellingen
 
-Op dit moment Azure Policy de gast configuratie alleen de controle-instellingen binnen de computer. Configuraties worden niet toegepast.
+Op dit moment worden met de functie voor gastconfiguratie van Azure Policy alleen instellingen van de machine gecontroleerd. Het is niet mogelijk om configuraties toe te passen.
 
 ## <a name="extension-and-client"></a>Extensie en client
 
@@ -123,6 +123,29 @@ Azure Policy maakt gebruik van de **complianceStatus** -eigenschap van de gast c
 
 Alle ingebouwde beleids regels voor gast configuratie zijn opgenomen in een initiatief om de definities te groeperen voor gebruik in toewijzingen. Het ingebouwde initiatief met de naam *[Preview]: controleren wachtwoord beveiligings instellingen binnen Linux-en Windows-machines* bevat 18 beleids regels. Er zijn zes **DeployIfNotExists** -en **AuditIfNotExists** -paren voor Windows en drie paren voor Linux. De [beleids definitie](definition-structure.md#policy-rule) logica valideert dat alleen het doel besturingssysteem wordt geëvalueerd.
 
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>De instellingen van het besturings systeem controleren volgens de industrie basislijnen
+
+Een van de beschik bare initiatieven in Azure Policy biedt de mogelijkheid om de instellingen van het besturings systeem te controleren binnen virtuele machines na een basis lijn van micro soft.  De definitie, *[Preview]: controleren van Windows-vm's die niet overeenkomen met de basis instellingen van Azure Security* bevat een volledige set controle regels op basis van instellingen van Active Directory groepsbeleid.
+
+De meeste instellingen zijn beschikbaar als para meters.  Met deze functionaliteit kunt u aanpassen wat wordt gecontroleerd om het beleid uit te lijnen met de vereisten van uw organisatie, of om het beleid toe te wijzen aan gegevens van derden, zoals industriële regelgevende normen.
+
+Sommige para meters ondersteunen een bereik van gehele waarden.  Zo kan de maximale wachtwoord leeftijds parameter worden ingesteld met behulp van een bereik operator om flexibiliteit te bieden aan computer eigenaren.  U kunt controleren of de effectief groepsbeleid instelling die gebruikers nodig hebben om hun wacht woord te wijzigen, niet meer dan 70 dagen mag zijn, maar niet minder dan 1 dag.  Zoals beschreven in de info-bubble voor de para meter, stelt u de waarde in op ' 1, 70 ' om de juiste controle waarde te maken.
+
+Als u het beleid toewijst met behulp van een Azure Resource Manager dployment-sjabloon, kunt u een parameter bestand gebruiken om deze instellingen te beheren vanuit broncode beheer.
+Als u een hulp programma zoals Git gebruikt voor het beheren van wijzigingen in controle beleid met opmerkingen bij elke check-in, wordt door het document bewezen waarom een toewijzing in een uitzonde ring moet worden opgenomen met de verwachte waarde.
+
+#### <a name="applying-configurations-using-guest-configuration"></a>Configuraties Toep assen met behulp van gast configuratie
+
+Met de nieuwste functie van Azure Policy configureert u instellingen binnen machines.
+De definitie *configureren van de tijd zone op Windows-machines* brengt wijzigingen aan op de machine door de tijd zone te configureren.
+
+Bij het toewijzen van definities die beginnen met *configureren*, moet u ook de *vereisten voor definitie-implementatie toewijzen om gast configuratie beleid in te scha kelen op Windows-vm's.*
+U kunt deze definities in een initiatief combi neren, indien gewenst.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Beleids regels toewijzen aan computers buiten Azure
+
+Het beschik bare controle beleid voor gast configuratie omvat het resource type **micro soft. HybridCompute/machines** .  Alle computers die worden uitgevoerd op de Azure-Arc die zich binnen het bereik van de toewijzing bevinden, worden automatisch opgenomen.
+
 ### <a name="multiple-assignments"></a>Meerdere toewijzingen
 
 Gast configuratie beleid biedt momenteel alleen ondersteuning voor het toewijzen van dezelfde gast toewijzing per computer, zelfs als de beleids toewijzing gebruikmaakt van verschillende para meters.
@@ -140,7 +163,7 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Waarbij `<version>` verwijst naar het huidige versie nummer.
+Waar `<version>` naar het huidige versie nummer verwijst.
 
 ### <a name="collecting-logs-remotely"></a>Logboeken extern verzamelen
 

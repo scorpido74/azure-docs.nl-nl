@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Sentiment-analyse-LUIS'
+title: 'Zelf studie: sentiment analyse-LUIS'
 titleSuffix: Azure Cognitive Services
 description: In deze zelfstudie maakt u een app die laat zien hoe u positieve, negatieve en neutrale gevoelens kunt ophalen uit uitingen. Het gevoel wordt bepaald op basis van de gehele uiting.
 services: cognitive-services
@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: ed403e3d761b32c6837eb8e72edef3f3e6380217
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 07afd197e514adb0f2fc65c11e9fec552aa05b99
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307576"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492660"
 ---
-# <a name="tutorial--get-sentiment-of-utterance"></a>Zelfstudie:  Het gevoel achter een uiting ophalen
+# <a name="tutorial--get-sentiment-of-utterance"></a>Zelf studie: sentiment van utterance ophalen
 
 In deze zelfstudie maakt u een app die laat zien hoe u positieve, negatieve en neutrale gevoelens van uitingen kunt bepalen. Het gevoel wordt bepaald op basis van de gehele uiting.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -38,7 +40,7 @@ In deze zelfstudie maakt u een app die laat zien hoe u positieve, negatieve en n
 
 De volgende utterances zijn voorbeelden van gevoelens:
 
-|Sentiment|Score|Utterance|
+|Stemming|Score|Utterance|
 |:--|:--|:--|
 |positief|0,91 |John W. Smith heeft een geweldige presentatie gegeven in Parijs.|
 |positief|0,84 |De engineers in Seattle hebben fantastisch werk gedaan om Parker als klant binnen te halen.|
@@ -123,7 +125,7 @@ Voeg een nieuwe intentie toe om feedback van werknemers die tot het bedrijf beho
 
     `Jill Jones work with the media team on the public portal was amazing` 
 
-    De laatste parameter van de queryreeks is `q`, de utterance **query**. Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intentie `EmployeeFeedback` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
+    De laatste parameter van de queryreeks is `q`, de utterance **query**. Deze utterance is niet hetzelfde als een van de gelabelde utterances en dit is dus een goede test die de intent `EmployeeFeedback` als resultaat moet geven met de sentimentanalyse geëxtraheerd.
     
     ```json
     {
@@ -159,7 +161,7 @@ Voeg een nieuwe intentie toe om feedback van werknemers die tot het bedrijf beho
 
     SentimentAnalysis is positief met een score van 86%. 
 
-    Probeer een andere utterance door de waarde voor `q` te verwijderen in de adres balk van de browser: `William Jones did a terrible job presenting his ideas.`De sentiment-score geeft een negatieve sentiment aan door een lage `0.18597582`score te retour neren.
+    Probeer een andere utterance door de waarde voor `q` te verwijderen in de adres balk van de browser: `William Jones did a terrible job presenting his ideas.` de sentiment-Score duidt op een negatieve sentiment door een lage score `0.18597582`te retour neren.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

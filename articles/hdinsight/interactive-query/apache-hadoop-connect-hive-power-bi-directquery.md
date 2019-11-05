@@ -1,5 +1,5 @@
 ---
-title: Interactieve query-Hive-gegevens visualiseren met Power BI in azure HDInsight
+title: Interactieve query-Hive-gegevens bekijken met Power BI in azure HDInsight
 description: Micro soft Power BI gebruiken om interactieve query-Hive-gegevens te visualiseren vanuit Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 0f273f75c33362bc99efbd7ac6bc46c3778ae88b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123019"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467148"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Interactieve query Apache Hive gegevens visualiseren met micro soft Power BI met behulp van directe query's in HDInsight
 
-In dit artikel wordt beschreven hoe u micro soft Power BI verbindt met Azure HDInsight Interactive query-clusters en Apache Hive gegevens visualiseren met behulp van directe query's. In het voor beeld worden de gegevens van `hivesampletable` een Hive-tabel geladen in Power bi. De `hivesampletable` Hive-tabel bevat een aantal gebruiks gegevens over mobiele telefoons. U kunt de gebruiks gegevens vervolgens op een wereld kaart uitzetten:
+In dit artikel wordt beschreven hoe u micro soft Power BI verbindt met Azure HDInsight Interactive query-clusters en Apache Hive gegevens visualiseren met behulp van directe query's. Met het voor beeld worden de gegevens van een `hivesampletable` Hive-tabel geladen in Power BI. De `hivesampletable` Hive-tabel bevat een aantal gebruiks gegevens over mobiele telefoons. U kunt de gebruiks gegevens vervolgens op een wereld kaart uitzetten:
 
 ![HDInsight-Power BI het kaart rapport](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -35,7 +35,7 @@ De `hivesampletable` Hive-tabel wordt geleverd met alle HDInsight-clusters.
 
 1. Start Power BI Desktop.
 
-2. Ga in de menu balk naar **Start** > **gegevens** > ophalen**meer...** .
+2. Ga in de menu balk naar **start** > **gegevens ophalen** > **meer...** .
 
     ![HDInsight-Power BI gegevens meer ophalen](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

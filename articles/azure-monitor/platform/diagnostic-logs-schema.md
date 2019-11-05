@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 0031a0c96ecadbb3c7d3a479384bee92ba4d102c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 09d1a25b83f405b45bbefd39766c82565ea86925
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161985"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476668"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure-resource logboeken
 
@@ -21,25 +21,25 @@ ms.locfileid: "73161985"
 
 [Azure monitor bron logboeken](../../azure-monitor/platform/resource-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle bron logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
 
-Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`) en de `category` unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor resource logboeken en koppelingen naar de schema's voor elke service beschreven.
+Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`) en de `category` is een unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor resource logboeken en koppelingen naar de schema's voor elke service beschreven.
 
 ## <a name="top-level-resource-logs-schema"></a>Schema voor resource logboeken op het hoogste niveau
 
 | Naam | Vereist/optioneel | Beschrijving |
 |---|---|---|
-| tijd | Verplicht | De tijds tempel (UTC) van de gebeurtenis. |
-| resourceId | Verplicht | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
+| tijd | Vereist | De tijds tempel (UTC) van de gebeurtenis. |
+| resourceId | Vereist | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
 | tenantId | Vereist voor Tenant logboeken | De Tenant-ID van de Active Directory-Tenant waaraan deze gebeurtenis is gekoppeld. Deze eigenschap wordt alleen gebruikt voor logboeken op Tenant niveau, maar wordt niet weer gegeven in Logboeken op resource niveau. |
-| operationName | Verplicht | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd. Als de gebeurtenis een RBAC-bewerking vertegenwoordigt, is dit de naam van de RBAC-bewerking (bijvoorbeeld Micro soft. Storage/Storage accounts/blobServices/blobs/lezen). Normaal gesp roken gemodelleerd in de vorm van een resource manager-bewerking, zelfs als ze niet de werkelijke gedocumenteerde Resource Manager-bewerkingen (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | Vereist | De naam van de bewerking die door deze gebeurtenis wordt vertegenwoordigd. Als de gebeurtenis een RBAC-bewerking vertegenwoordigt, is dit de naam van de RBAC-bewerking (bijvoorbeeld Micro soft. Storage/Storage accounts/blobServices/blobs/lezen). Normaal gesp roken gemodelleerd in de vorm van een resource manager-bewerking, zelfs als ze niet de werkelijke gedocumenteerde Resource Manager-bewerkingen (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | Optioneel | De API-versie die aan de bewerking is gekoppeld als de bewerking is uitgevoerd met een API (bijvoorbeeld `http://myservice.windowsazure.net/object?api-version=2016-06-01`). Als er geen API is die overeenkomt met deze bewerking, vertegenwoordigt de versie de versie van die bewerking in het geval dat de eigenschappen die aan de bewerking zijn gekoppeld in de toekomst worden gewijzigd. |
-| category | Verplicht | De logboek categorie van de gebeurtenis. Categorie is de granulariteit waarmee u Logboeken voor een bepaalde resource kunt in-of uitschakelen. De eigenschappen die worden weer gegeven in de BLOB eigenschappen van een gebeurtenis zijn hetzelfde binnen een bepaalde logboek categorie en hetzelfde resource type. Veelvoorkomende logboek categorieën zijn ' Auditing ' ' Execution ' en ' request '. |
+| category | Vereist | De logboek categorie van de gebeurtenis. Categorie is de granulariteit waarmee u Logboeken voor een bepaalde resource kunt in-of uitschakelen. De eigenschappen die worden weer gegeven in de BLOB eigenschappen van een gebeurtenis zijn hetzelfde binnen een bepaalde logboek categorie en hetzelfde resource type. Veelvoorkomende logboek categorieën zijn ' Auditing ' ' Execution ' en ' request '. |
 | resultType | Optioneel | De status van de gebeurtenis. Typische waarden zijn gestart, in uitvoering, geslaagd, mislukt, actief en opgelost. |
 | resultSignature | Optioneel | De substatus van de gebeurtenis. Als deze bewerking overeenkomt met een REST API-aanroep, is dit de HTTP-status code van de bijbehorende REST-aanroep. |
 | resultDescription | Optioneel | De statische tekst beschrijving van deze bewerking, bijvoorbeeld. Opslag bestand ophalen. |
 | durationMs | Optioneel | De duur van de bewerking in milliseconden. |
 | callerIpAddress | Optioneel | Het IP-adres van de beller, als de bewerking overeenkomt met een API-aanroep die afkomstig zou zijn van een entiteit met een openbaar beschikbaar IP-adres. |
 | correlationId | Optioneel | Een GUID die wordt gebruikt om een set gerelateerde gebeurtenissen samen te voegen. Normaal gesp roken, als twee gebeurtenissen dezelfde operationname hebben, maar twee verschillende statussen hebben (bijvoorbeeld ' Started ' en ' geslaagd '), delen ze dezelfde correlatie-ID. Dit kan ook andere relaties tussen gebeurtenissen vertegenwoordigen. |
-| identiteit | Optioneel | Een JSON-BLOB waarmee de identiteit wordt beschreven van de gebruiker of toepassing die de bewerking heeft uitgevoerd. Dit omvat meestal de autorisatie en claims/JWT-token van Active Directory. |
+| identity | Optioneel | Een JSON-BLOB waarmee de identiteit wordt beschreven van de gebruiker of toepassing die de bewerking heeft uitgevoerd. Dit omvat meestal de autorisatie en claims/JWT-token van Active Directory. |
 | Niveau | Optioneel | Het Ernst niveau van de gebeurtenis. Moet een van de volgende informatie hebben: waarschuwing, fout of kritiek. |
 | location | Optioneel | De regio van de resource waarmee de gebeurtenis wordt verzonden, bijvoorbeeld. "VS-Oost" of "Frankrijk-zuid" |
 | properties | Optioneel | Alle uitgebreide eigenschappen die betrekking hebben op deze specifieke gebeurtenis categorie. Alle aangepaste/unieke eigenschappen moeten in dit deel B van het schema worden geplaatst. |
@@ -56,9 +56,10 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | Azure Automation |[Log Analytics voor Azure Automation](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch logboek registratie](../../batch/batch-diagnostics.md) |
 | Azure Database voor MySQL | [Diagnostische logboeken Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Database voor PostgreSQL | [Azure Database for PostgreSQL logboeken](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL logboeken](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Data Explorer | [Azure Data Explorer-logboeken](../../data-explorer/using-diagnostic-logs.md) |
 | Cognitive Services | [Logboek registratie voor Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
+| Container Registry | [Logboek registratie voor Azure Container Registry](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | CDN (Content Delivery Network) | [Azure-logboeken voor CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB logboek registratie](../../cosmos-db/logging.md) |
 | Data Factory | [Gegevens fabrieken bewaken met behulp van Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
@@ -71,7 +72,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Logboek registratie voor Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
 | Load balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
-| Logische apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| Logic Apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netwerkbeveiligingsgroepen |[Logboekanalyses voor netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS Protection | [Azure DDoS Protection Standard beheren](../../virtual-network/manage-ddos-protection.md) |
 | Power BI Dedicated | [Logboek registratie voor Power BI Embedded in azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
@@ -82,7 +83,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | Stream Analytics |[Taak logboeken](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Traffic Manager-logboek schema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Virtuele netwerken | Het schema is niet beschikbaar. |
-| Virtuele-netwerkgateways | Het schema is niet beschikbaar. |
+| Virtuele netwerkgateways | Het schema is niet beschikbaar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Ondersteunde logboek categorieën per resource type
 |Resourcetype|Category|Weergave naam categorie|
@@ -114,8 +115,8 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. ClassicNetwork/networksecuritygroups|Stroom gebeurtenis van regel voor netwerk beveiligings groep|Stroom gebeurtenis van regel voor netwerk beveiligings groep|
 |Micro soft. CognitiveServices/accounts|Controleren|Auditlogboeken|
 |Micro soft. CognitiveServices/accounts|RequestResponse|Aanvraag-en antwoord logboeken|
-|Micro soft. ContainerRegistry/registers|ContainerRegistryRepositoryEvents|RepositoryEvent-logboeken|
-|Micro soft. ContainerRegistry/registers|ContainerRegistryLoginEvents|Aanmeldings gebeurtenissen|
+|Micro soft. ContainerRegistry/registers|ContainerRegistryRepositoryEvents|RepositoryEvent-Logboeken (preview-versie)|
+|Micro soft. ContainerRegistry/registers|ContainerRegistryLoginEvents|Aanmeldings gebeurtenissen (preview-versie)|
 |Micro soft. container service/managedClusters|uitvoeren-apiserver|Kubernetes-API-server|
 |Micro soft. container service/managedClusters|uitvoeren-Controller-Manager|Kubernetes-controller beheer|
 |Micro soft. container service/managedClusters|uitvoeren-scheduler|Kubernetes scheduler|
@@ -201,7 +202,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Micro soft. IoTSpaces/Graph|Functioneren|Functioneren|
 |Micro soft. IoTSpaces/Graph|Controleren|Controleren|
 |Micro soft. IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
-|Micro soft. IoTSpaces/Graph|Binnenkomend|Binnenkomend|
+|Micro soft. IoTSpaces/Graph|Inkomend verkeer|Inkomend verkeer|
 |Micro soft. IoTSpaces/Graph|Uitgaand verkeer|Uitgaand verkeer|
 |Micro soft.-sleutel kluis/-kluizen|Audit event|Auditlogboeken|
 |Micro soft. Kusto/clusters|SucceededIngestion|Geslaagde opname bewerkingen|

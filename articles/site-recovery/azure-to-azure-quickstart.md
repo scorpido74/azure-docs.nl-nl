@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d23d16d1315eeaf224a5291641ab088212fcdc77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b06cae5bcb07831ba79b805802a7851c2b6ad2b3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146960"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468003"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Herstel na noodgeval instellen naar een secundaire Azure-regio voor een Azure-VM        
 
@@ -28,15 +28,15 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
-Meld u aan bij Azure Portal op https://portal.azure.com.
+Meld u aan bij de Azure-portal op https://portal.azure.com.
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Replicatie inschakelen voor de Azure-VM
 
-1. Klik in Azure Portal op **Virtuele machines** en selecteer de VM die u wilt repliceren.
-2. Klik bij **Bewerkingen** op **Herstel na noodgeval**.
+1. Selecteer **virtuele machines**in het menu Azure portal of zoek en selecteer *virtuele machines* op een wille keurige pagina. Selecteer de virtuele machine die u wilt repliceren.
+2. Selecteer in **Bewerkingen** de optie **Herstel na noodgeval**.
 3. Selecteer in **Noodherstel configureren** > **Doelregio** de doelregio waarnaar u wilt repliceren.
 4. Accepteer voor deze snelstartgids de overige standaardinstellingen.
-5. Klik op **Replicatie inschakelen**. Hierdoor wordt een taak gestart voor het inschakelen van replicatie voor de VM.
+5. Selecteer **evalueren en replicatie starten**. Selecteer vervolgens **replicatie starten** om een taak te starten om replicatie in te scha kelen voor de virtuele machine.
 
     ![replicatie inschakelen](media/azure-to-azure-quickstart/enable-replication1.png)
 
@@ -44,8 +44,10 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Nadat de replicatietaak is voltooid, kunt u de replicatiestatus controleren, de replicatie-instellingen wijzigen en de implementatie testen.
 
-1. Klik bij **Bewerkingen** op **Herstel na noodgeval**.
-2. U kunt de replicatiestatus, de gemaakte herstelpunten, en de bron- en doelregio's op de kaart controleren.
+1. Selecteer **virtuele machines**in het menu Azure portal of zoek en selecteer *virtuele machines* op een wille keurige pagina. Selecteer de virtuele machine die u wilt controleren.
+2. Selecteer in **Bewerkingen** de optie **Herstel na noodgeval**.
+
+   U kunt de replicatiestatus, de gemaakte herstelpunten, en de bron- en doelregio's op de kaart controleren.
 
    ![Replicatiestatus](media/azure-to-azure-quickstart/replication-status.png)
 
@@ -58,8 +60,8 @@ De VM in de primaire regio stopt met repliceren wanneer u replicatie uitschakelt
 
 Stop de replicatie als volgt
 
-1. Selecteer de VM.
-2. Klik in **Herstel na noodgeval** op **Replicatie uitschakelen**.
+1. Selecteer **virtuele machines**in het menu Azure portal of zoek en selecteer *virtuele machines* op een wille keurige pagina. Selecteer de virtuele machine die u wilt wijzigen.
+2. Selecteer **replicatie uitschakelen**bij **herstel na nood gevallen**.
 
    ![Replicatie uitschakelen](media/azure-to-azure-quickstart/disable2-replication.png)
 

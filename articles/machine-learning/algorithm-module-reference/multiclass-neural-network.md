@@ -1,24 +1,24 @@
 ---
 title: 'Multi Class Neural Network: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de netwerk module Multi Class Neural in Azure Machine Learning service voor het maken van een Neural-netwerk model dat kan worden gebruikt om een doel met meerdere waarden te voors pellen.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de netwerk module Multi Class Neural in Azure Machine Learning voor het maken van een Neural-netwerk model dat kan worden gebruikt om een doel met meerdere waarden te voors pellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3322f2be3c5c6f819adbc9d83ee9eb6b6577f707
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b49ff44e898a78d865278df087aca75e4f8e50ca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692726"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466032"
 ---
 # <a name="multiclass-neural-network-module"></a>Multi Class Neural-netwerk module
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module voor het maken van een Neural-netwerk model dat kan worden gebruikt om een doel met meerdere waarden te voors pellen. 
 
@@ -40,7 +40,7 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
 
 ## <a name="configure-multiclass-neural-network"></a>Multi Class Neural-netwerk configureren
 
-1. Voeg de **netwerk module Multi Class Neural** toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **classificatie** .
+1. Voeg de **netwerk module Multi Class Neural** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **machine learning**, **initialiseren**, in de categorie **classificatie** .
 
 2. De **trainer modus maken**: gebruik deze optie om op te geven hoe u wilt dat het model wordt getraind:
 
@@ -93,4 +93,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
