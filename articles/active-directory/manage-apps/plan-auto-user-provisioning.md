@@ -12,14 +12,14 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab1caeb59cf7fc0a6baef5ba0001e734a75fccd2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72758232"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473345"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>Een automatische implementatie van gebruikers inrichten plannen
+# <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
 Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service) zoals ServiceNow, Zscaler en toegestane vertraging voor de productiviteit van eind gebruikers. Historische IT-mede werkers hebben gebruikgemaakt van hand matige inrichtings methoden zoals het uploaden van CSV-bestanden, of het gebruik van aangepaste scripts om gebruikers identiteiten in elke SaaS-toepassing veilig te beheren. Deze processen zijn fout gevoelig, onveilig en moeilijk te beheren.
 
@@ -63,17 +63,17 @@ In dit artikel worden de volgende termen gebruikt:
 
 * Doel systeem: de opslag plaats van gebruikers die door de Azure AD worden ingericht. Het doel systeem is doorgaans een SaaS-toepassing, zoals ServiceNow, Zscaler en toegestane vertraging. Het doel systeem kan ook een on-premises systeem zijn, zoals AD.
 
-* [Systeem voor Identity Management (scim) voor meerdere domeinen](http://www.simplecloud.info/) -Een open standaard waarmee de gebruikers inrichting kan worden geautomatiseerd. SCIM communiceert gebruikers identiteits gegevens tussen id-providers zoals micro soft, en service providers zoals Sales Force of andere SaaS-apps waarvoor gebruikers identiteits gegevens zijn vereist.
+* [Systeem voor Cross-Domain Identity Management (scim)](https://aka.ms/scimoverview) : een open standaard die het automatiseren van het inrichten van gebruikers mogelijk maakt. SCIM communiceert gebruikers identiteits gegevens tussen id-providers zoals micro soft, en service providers zoals Sales Force of andere SaaS-apps waarvoor gebruikers identiteits gegevens zijn vereist.
 
 ### <a name="training-resources"></a>Trainings bronnen
 
 | Bronnen| Koppeling en beschrijving |
 | - | - |
-| On-demand webinars| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
-| Video’s| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| Webinars op aanvraag| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
+| Video's| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Onlinecursussen| SkillUp online: [identiteiten beheren](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Leer hoe u Azure AD integreert met veel SaaS-toepassingen en gebruikers toegang tot deze toepassingen kunt beveiligen. |
 | Boeken| [Moderne verificatie met Azure Active Directory voor webtoepassingen (Naslag informatie voor ontwikkel aars) 1e editie](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Dit is een gezaghebbende, diep gaande hand leiding voor het bouwen van Active Directory verificatie oplossingen voor deze nieuwe omgevingen. |
-| Zelfstudie| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
+| Zelfstudies| Zie de [lijst met zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
 | Veelgestelde vragen| [Veelgestelde vragen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) over het automatisch inrichten van gebruikers |
 
 ### <a name="solution-architectures"></a>Architecturen voor oplossingen
@@ -281,6 +281,8 @@ Na een geslaagde [eerste cyclus](https://docs.microsoft.com/azure/active-directo
 * Het inrichtings proces gaat in quarantaine vanwege een hoge fout frequentie en blijft meer dan vier weken in quarantaine, wanneer deze automatisch wordt uitgeschakeld.
 
 Zie Azure AD- [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context)voor het controleren van deze gebeurtenissen en alle andere activiteiten die worden uitgevoerd door de inrichtings service.
+
+Als u wilt weten hoe lang het inrichten van de inrichtings cyclus duurt en de voortgang van de inrichtings taak bewaken, kunt u [de status van het inrichten van gebruikers controleren](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
 
 ### <a name="gain-insights-from-reports"></a>Inzichten verkrijgen van rapporten
 

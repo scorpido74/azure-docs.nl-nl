@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515187"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494431"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor python
 
@@ -26,7 +26,7 @@ Ga aan de slag met de Personaler-client bibliotheek voor python. Volg deze stapp
  * Rang schikking van een lijst met acties voor persoonlijke instellingen.
  * Rapport belonings Score die het succes van de beste geclassificeerde actie aangeeft.
 
-[Pakket (pypi)  | -](https://pypi.org/project/azure-cognitiveservices-personalizer/) voor[beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Pakket (pypi) | -](https://pypi.org/project/azure-cognitiveservices-personalizer/) voor [beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,7 +39,7 @@ Ga aan de slag met de Personaler-client bibliotheek voor python. Volg deze stapp
 Er zijn verschillende stappen voor het gebruik van deze Snelstartgids:
 
 * Maak een persoonlijke resource in de Azure Portal
-* Wijzig de update frequentie van het model op de pagina **instellingen** van de Azure portal voor de persoonlijke resource.
+* Wijzig de update frequentie van het model in de Azure Portal voor de resource Personaler op de pagina **configuratie**
 * Maak in een code-editor een code bestand en bewerk het code bestand
 * Vanaf de opdracht regel of Terminal installeert u de SDK vanaf de opdracht regel
 * Voer in de opdracht regel of Terminal het code bestand uit
@@ -70,7 +70,7 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
-Wijzig in het Azure Portal, in de resource Personaler op de pagina **instellingen** , de **Update frequentie** van het model in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
+Wijzig in de Azure Portal in de resource personaliseren op de pagina **configuratie** de **verwerkings frequentie** van het model in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
 
 ![Update frequentie van het model wijzigen](./media/settings/configure-model-update-frequency-settings.png)
 

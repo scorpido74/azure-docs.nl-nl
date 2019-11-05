@@ -1,7 +1,7 @@
 ---
 title: Naslag informatie over functie hashing-module
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module functie hashing in de Azure Machine Learning-service voor het parametriseer van tekst gegevens.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module functie hashing in de Azure Machine Learning voor het parametriseer van tekst gegevens.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170871"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497838"
 ---
 # <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer (preview).
 
 Gebruik de functie hashing-module om een stroom van Engelse tekst te transformeren in een set integer-functies. U kunt deze hash-functie vervolgens door geven die is ingesteld op een machine learning algoritme voor het trainen van een tekst analyse model.
 
@@ -30,7 +30,7 @@ Hashing van functies werkt door unieke tokens te converteren naar gehele getalle
 
 Neem bijvoorbeeld een aantal eenvoudige zinnen zoals deze, gevolgd door een sentiment-Score. Stel dat u deze tekst wilt gebruiken om een model te bouwen.
 
-|Gebruikers tekst|Sentiment|
+|Gebruikers tekst|Stemming|
 |--------------|---------------|
 |Ik gek dit boek|3|
 |Ik Hated dit boek|1|
@@ -39,7 +39,7 @@ Neem bijvoorbeeld een aantal eenvoudige zinnen zoals deze, gevolgd door een sent
 
 Intern maakt de functie hashing-module een woorden lijst van n-gram. De lijst met bigrams voor deze gegevensset zou er bijvoorbeeld als volgt moeten uitzien:
 
-|Term (bigrams)|Frequentie|
+|Term (bigrams)|Frequency|
 |------------|---------------|
 |Dit boek|3|
 |Ik gek|1|
@@ -48,18 +48,18 @@ Intern maakt de functie hashing-module een woorden lijst van n-gram. De lijst me
 
 U kunt de grootte van het n-gram instellen met behulp van de eigenschap **n-gram** . Als u kiest voor bigrams, worden unigrams ook berekend. De woorden lijst bevat ook enkele voor waarden, zoals de volgende:
 
-|Term (unigrams)|Frequentie|
+|Term (unigrams)|Frequency|
 |------------|---------------|
 |telefoonlijst|3|
 |I|3|
-|Houding|1|
-|was|1|
+|houding|1|
+|aangetroffen|1|
 
 Nadat de woorden lijst is gebouwd, zet de functie hashing module de woordenlijst termen om in hash-waarden. Vervolgens wordt berekend of een functie in elk geval is gebruikt. Voor elke rij met tekst gegevens voert de module een set kolommen uit, één kolom voor elke hash-functie.
 
 Zo kunnen de functie kolommen na hashing er ongeveer als volgt uitzien:
 
-|Classificatie|Hash-functie 1|Hash-functie 2|Hash-functie 3|
+|Vermogen|Hash-functie 1|Hash-functie 2|Hash-functie 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
@@ -73,7 +73,7 @@ Met numerieke uitvoer kunt u ook algemene machine learning methoden gebruiken, z
 
 ## <a name="configure-the-feature-hashing-module"></a>De functie hashing-module configureren
 
-1.  Voeg de functie hashing module toe aan uw experiment in een visuele interface.
+1.  Voeg de functie hashing module toe aan uw pijp lijn in de ontwerp functie.
 
 1. Verbind de gegevensset die de tekst bevat die u wilt analyseren.
 
@@ -94,7 +94,7 @@ Met numerieke uitvoer kunt u ook algemene machine learning methoden gebruiken, z
 
     Als u bijvoorbeeld 3, unigrams, bigrams en trigrams invoert, worden deze gemaakt.
 
-1. Voer het experiment uit.
+1. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 
@@ -127,8 +127,8 @@ Met de volgende aanbevolen procedures kunt u optimaal profiteren van de functie 
     * Verwijdering van Lees tekens en speciale tekens
     * Als gevolg  
 
-De optimale set voor verwerkings methoden die in een oplossing moeten worden toegepast, is afhankelijk van domein, vocabulaire en zakelijke behoefte. Experimenteer met uw gegevens om te zien welke tekst verwerkings methoden het meest effectief zijn.
+De optimale set voor verwerkings methoden die in een oplossing moeten worden toegepast, is afhankelijk van domein, vocabulaire en zakelijke behoefte. pijp lijn met uw gegevens om te zien welke tekst verwerkings methoden het meest effectief zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
             
-Bekijk de [set beschik bare modules](module-reference.md) voor de Azure machine learning-service. 
+De [set met modules bekijken die beschikbaar zijn](module-reference.md) voor Azure machine learning 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
-ms.translationtype: MT
+ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973005"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522656"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS-VM-schijven en beheerde en onbeheerde Premium-schijven
 
@@ -31,11 +31,11 @@ Een standaard beheerde schijf die is gemaakt op basis van een VHD van 80 GB, wor
 
 **Zijn er transactie kosten voor Standard Managed disks?**
 
-Ja. Er worden kosten in rekening gebracht voor elke trans actie. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+Ja. Elke transactie wordt in rekening gebracht. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Voor een Standard Managed disk worden er kosten in rekening gebracht voor de werkelijke grootte van de gegevens op de schijf of voor de ingerichte capaciteit van de schijf?**
 
-Er worden kosten in rekening gebracht op basis van de ingerichte capaciteit van de schijf. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
+De kosten zijn gebaseerd op de ingerichte capaciteit van de schijf. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/storage) voor meer informatie.
 
 **Hoe worden de prijzen van Premium-beheerde schijven afwijkend van niet-beheerde schijven?**
 
@@ -85,9 +85,9 @@ U stelt een privé opslag account in voor de diagnostische gegevens van de virtu
 
 Managed Disks ondersteunt drie belangrijkste standaard rollen:
 
-* Bent Kan alles beheren, inclusief toegang
-* Groep Kan alles behalve toegang beheren
-* Gelezen Kan alles weer geven, maar kan geen wijzigingen aanbrengen
+* Eigenaar: kan alles beheren, inclusief toegang
+* Inzender: kan alles beheren behalve toegang
+* Lezer: kan alles weer geven, maar kan geen wijzigingen aanbrengen
 
 **Is er een manier waarop ik een beheerde schijf naar een privé opslag account kan kopiëren of exporteren?**
 
@@ -145,6 +145,30 @@ GPT-partitionering kan alleen worden gebruikt op gegevens schijven, niet op best
 
 Moment opnamen van Premium-SSD, Standard SSD en Standard HDD-ondersteuning. Voor deze drie schijf typen worden moment opnamen ondersteund voor alle schijf grootten (inclusief schijven tot 32 TiB groot). Ultra disks bieden geen ondersteuning voor moment opnamen.
 
+### <a name="disk-reservation"></a>Schijf reservering
+
+**Wat is Azure Disk reservation?**
+Schijf reservering is de mogelijkheid om één jaar aan schijf ruimte te kopen, zodat u de totale kosten kunt verlagen.
+
+**Welke opties biedt Azure Disk reservation-aanbieding?**
+Azure Disk reservation biedt de mogelijkheid om Premium-Ssd's te kopen in de opgegeven Sku's van P30 (1 TiB) tot P80 (32 TiB) voor een periode van één jaar. Er is geen beperking voor de minimale hoeveelheid schijven die nodig is om een schijf reservering te kopen. U kunt er ook voor kiezen om te betalen met één enkele, vooraf betaalde betaling of maandelijkse betalingen. Er zijn geen aanvullende transactie kosten toegepast voor Premium-SSD Managed Disks.
+
+Reserve ringen worden gemaakt in de vorm van schijven, niet op capaciteit. Met andere woorden, wanneer u een P80-schijf (32 TiB) reserveert, krijgt u één P80 schijf, kunt u die specifieke reserve ring niet divvy tot twee kleinere P70-schijven (16 TiB). U kunt natuurlijk zo veel of zo weinig schijven reserveren als u wilt, met inbegrip van twee afzonderlijke P70 (16 TiB)-schijven.
+
+**Hoe worden er kosten in rekening gebracht voor Azure Disk reservation?**
+- Voor Enterprise Agreement (EA)-klanten wordt de monetaire toezeg ging van Azure voor het eerst gebruikt voor het kopen van Azure Disk-reserve ringen. In scenario's waarin EA-klanten al hun monetaire toezeg gingen hebben gebruikt, kunnen er nog steeds schijf reserveringen worden gekocht. deze aankopen worden gefactureerd voor de enkele, vooraf betaalde betaling op de volgende overschrijding factuur.
+
+- Voor klanten die via Azure.com kopen, worden op het moment van de aankoop de credit card in rekening gebracht voor de volledige betaling vooraf (of maandelijks vaste betalingen) van de reserve ring van Azure-schijven.
+
+**Hoe wordt Azure Disk reservation toegepast?**
+Schijf reservering volgt een model dat vergelijkbaar is met gereserveerde VM-exemplaren (Virtual Machine). Het verschil is dat een schijf reservering niet kan worden toegepast op verschillende Sku's, terwijl een VM-instantie dat kan. Zie [kosten besparen met Azure reserved VM instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) voor meer informatie over VM-exemplaren. 
+
+**Kan ik mijn gegevensopslag gebruiken die via een Azure-schijf reservering is aangeschaft in meerdere regio's?**
+Azure Disk-reserve ringen worden aangeschaft voor een specifieke regio en SKU (zoals P30 in VS-Oost 2) en kunnen daarom niet buiten deze constructs worden gebruikt. U kunt altijd een extra reserve ring voor Azure-schijven aanschaffen voor uw schijf opslag behoeften in andere regio's of Sku's.
+
+**Wat gebeurt er wanneer mijn Azure disks-reserve ring verloopt?**
+U ontvangt een e-mail melding van 30 dagen vóór de verval datum en opnieuw op het verloop van de gegevens. Zodra de reserve ring verloopt, blijven geïmplementeerde schijven actief en wordt de laatste betalen naar gebruik- [tarieven](https://azure.microsoft.com/pricing/details/managed-disks/)in rekening gebracht.
+
 ## <a name="ultra-disks"></a>Ultra schijven
 
 **Welke regio's ondersteunen momenteel Ultra schijven?**
@@ -157,7 +181,7 @@ Moment opnamen van Premium-SSD, Standard SSD en Standard HDD-ondersteuning. Voor
 - DSv3
 
 **Hoe stel ik mijn Ultra Disk-door Voer in op?**
-Als u niet zeker weet wat uw schijf doorvoer moet instellen, raden we u aan om te beginnen met een i/o-grootte van 16 KiB en de prestaties van daar aan te passen terwijl u uw toepassing bewaakt. De formule is: Door Voer in MBps = aantal IOPS * 16/1000.
+Als u niet zeker weet wat uw schijf doorvoer moet instellen, raden we u aan om te beginnen met een i/o-grootte van 16 KiB en de prestaties van daar aan te passen terwijl u uw toepassing bewaakt. De formule is: door Voer in MBps = aantal IOPS * 16/1000.
 
 **Ik heb mijn schijf geconfigureerd voor 40000 IOPS, maar ik zie alleen 12800 IOPS, waarom worden de prestaties van de schijf niet weer gegeven?**
 Naast de schijf beperking is er sprake van een IO-beperking die wordt opgelegd op het niveau van de virtuele machine. Zorg ervoor dat de grootte van de virtuele machine die u gebruikt, de niveaus kan ondersteunen die op uw schijven zijn geconfigureerd. Zie [grootten voor virtuele Windows-machines in azure](../articles/virtual-machines/windows/sizes.md)voor meer informatie over de i/o-limieten die door uw virtuele machine worden opgelegd.
@@ -239,7 +263,7 @@ Zie [een virtuele machine maken op basis van een Windows-installatie kopie met S
 
 **Kan ik mijn bestaande schijven converteren naar Standard-SSD?**
 Ja, dat is mogelijk. Raadpleeg de [opslag voor Azure Managed disks converteren van Standard naar Premium en](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) omgekeerd voor de algemene richt lijnen voor het converteren van Managed disks. En gebruik de volgende waarde om het schijf type bij te werken naar Standard-SSD.
--AccountType StandardSSD_LRS
+-Account type StandardSSD_LRS
 
 **Wat is het voor deel van het gebruik van Standard-SSD schijven in plaats van HDD?**
 Standard-SSD schijven bieden betere latentie, consistentie, Beschik baarheid en betrouw baarheid in vergelijking met HDD-schijven. Werk belastingen van toepassingen worden veel soepeler uitgevoerd op Standard-SSD vanwege dat. Houd er rekening mee dat Premium-SSD schijven de aanbevolen oplossing zijn voor de meeste IO-intensieve productie workloads.
@@ -250,7 +274,7 @@ Nee, standaard Ssd's-schijven zijn alleen beschikbaar als Managed Disks.
 **Ondersteunen Standard-SSD schijven ' single instance VM SLA '?**
 Nee, standaard Ssd's hebben geen SLA voor de VM van één exemplaar. Gebruik Premium-SSD schijven voor de SLA van de VM met één exemplaar.
 
-## <a name="migrate-to-managed-disks"></a>Migreren naar beheerde schijven
+## <a name="migrate-to-managed-disks"></a>Migreren naar Managed Disks
 
 **Is er sprake van de migratie van de Managed Disks prestaties?**
 
@@ -333,7 +357,19 @@ Ja
 
 Nee. Maar als u een VHD exporteert naar een versleuteld opslag account van een versleutelde, beheerde schijf of moment opname, wordt deze versleuteld. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Premium-schijven: Beheerd en onbeheerd
+## <a name="premium-disks-managed-and-unmanaged"></a>Premium-schijven: beheerd en onbeheerd
+
+**Welke regio's ondersteunen bursting-mogelijkheden voor de toepasselijke Premium SSD-schijf grootte?**
+
+De bursting-functie wordt momenteel ondersteund in azure West-Centraal vs.
+
+**Welke regio's zijn 4/8/16 beheerde schijf grootten (P1/P2/P3, E1/E2/E3) ondersteund in?**
+
+Deze nieuwe schijf grootten worden momenteel ondersteund in azure-West-Centraal vs.
+
+**Worden schijf grootten van P1/P2/P3 ondersteund voor onbeheerde schijven of pagina-blobs?**
+
+Nee, dit wordt alleen ondersteund op Premium-SSD Managed Disks. 
 
 **Als een virtuele machine gebruikmaakt van een grootte reeks die Premium-SSD schijven ondersteunt, zoals een DSv2, kan ik zowel Premium-als standaard gegevens schijven koppelen?** 
 
@@ -363,7 +399,7 @@ De lokale SSD is tijdelijke opslag die deel uitmaakt van een Managed Disks VM. E
 
 Er is geen nadeel van het gebruik van knippen op Azure-schijven op Premium-of Standard-schijven.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nieuwe schijf grootten: Beheerd en onbeheerd
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nieuwe schijf grootten: beheerd en onbeheerd
 
 **Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
@@ -381,12 +417,12 @@ De grootste grootte van de pagina-blob die door Azure wordt ondersteund, is 8 Ti
 
 U hoeft de bestaande Azure-hulpprogram ma's niet bij te werken om schijven groter dan 1 TiB te maken, te koppelen of te wijzigen. Als u uw VHD-bestand rechtstreeks van on-premises naar Azure wilt uploaden als pagina-BLOB of een niet-beheerde schijf, moet u de meest recente programma sets gebruiken die hieronder worden weer gegeven. Er worden alleen VHD-uploads ondersteund van Maxi maal 8 TiB.
 
-|Azure-hulpprogramma 's      | Ondersteunde versies                                |
+|Azure-hulpprogram ma's      | Ondersteunde versies                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Versie nummer 4.1.0: Release van juni 2017 of hoger|
-|Azure CLI v1     | Versie nummer 0.10.13: Mogelijk 2017 release of hoger|
-|Azure CLI v2     | Versie nummer 2.0.12: Release van juli 2017 of hoger|
-|AzCopy           | Versie nummer 6.1.0: Release van juni 2017 of hoger|
+|Azure PowerShell | Versie nummer 4.1.0: juni 2017 release of hoger|
+|Azure CLI v1     | Versie nummer 0.10.13: mogelijk 2017 release of hoger|
+|Azure CLI v2     | Versie nummer 2.0.12: juli 2017 release of hoger|
+|AzCopy           | Versie nummer 6.1.0: juni 2017 release of hoger|
 
 **Worden de schijf grootten van P4 en P6 ondersteund voor onbeheerde schijven of pagina-blobs?**
 
@@ -410,7 +446,7 @@ De grootste schijf grootte die wordt ondersteund door Azure Backup en Azure Site
 
 **Wat zijn de aanbevolen VM-grootten voor grotere schijf grootten (> 4 TiB) voor Standard-SSD en Standard-HDD schijven voor een geoptimaliseerde schijf-IOPS en band breedte?**
 
-We raden u aan een nieuwe VM te implementeren vanuit een van de volgende VM-grootten om de prestaties van Standard-SSD en Standard-HDD groot aantal schijven (> 4 TiB 60 500) te verzorgen. De Vm's uit de B-serie, de DSv2-serie, de Dsv3-serie, de ESv3-serie, de FS-serie, de Fsv2-serie, de M-serie, de NCv2-serie, de NCv3-serie of de LS-serie. Als u grote schijven koppelt aan bestaande Vm's of Vm's die niet gebruikmaken van de aanbevolen groottes, kan dit de prestaties verlagen.
+We raden u aan een nieuwe VM te implementeren vanaf een van de volgende VM-grootten om de prestaties van Standard-SSD en Standard-HDD groot aantal schijven (> 4 TiB 60 500) te verzorgen om uw prestatie te optimaliseren: B-serie, DSv2-serie, Dsv3-Series, ESv3-serie , FS-serie, Fsv2-serie, M-series, GS-serie, NCv2-serie, NCv3-Series of LS-serie-Vm's. Als u grote schijven koppelt aan bestaande Vm's of Vm's die niet gebruikmaken van de aanbevolen groottes, kan dit de prestaties verlagen.
 
 **Hoe kan ik een upgrade uitvoeren van mijn schijven (> 4 TiB) die zijn geïmplementeerd tijdens de preview-versie van grotere schijven om de meer IOPS & band breedte te verkrijgen bij GA?**
 

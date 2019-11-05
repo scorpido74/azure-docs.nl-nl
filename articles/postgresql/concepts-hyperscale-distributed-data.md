@@ -7,23 +7,23 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 53d656d8d39c71c813d7dd7a504ec45667bf18b4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947488"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482439"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Gedistribueerde gegevens in Azure Database for PostgreSQL – grootschalige (Citus)
 
-In dit artikel wordt een overzicht gegeven van de drie tabel typen in Azure Database for PostgreSQL – grootschalige (Citus) Preview.
+Dit artikel bevat een overzicht van de drie tabel typen in Azure Database for PostgreSQL – grootschalige (Citus).
 U ziet hoe gedistribueerde tabellen worden opgeslagen als Shards en hoe Shards op knoop punten worden geplaatst.
 
 ## <a name="table-types"></a>Tabel typen
 
 Er zijn drie typen tabellen in een grootschalige-Server groep (Citus), die voor verschillende doel einden worden gebruikt.
 
-### <a name="type-1-distributed-tables"></a>Type 1: Gedistribueerde tabellen
+### <a name="type-1-distributed-tables"></a>Type 1: gedistribueerde tabellen
 
 Het eerste type, de meest voorkomende, is gedistribueerde tabellen. Ze lijken normale tabellen te zijn voor SQL-instructies, maar ze zijn horizon taal gepartitioneerd tussen werk knooppunten. Dit betekent dat de rijen van de tabel worden opgeslagen op verschillende knoop punten, in fragment tabellen met de naam Shards.
 
@@ -35,13 +35,13 @@ Als u het schema van een gedistribueerde tabel trapsgewijs wijzigt, worden de Sh
 Grootschalige (Citus) maakt gebruik van een algoritme sharding om rijen aan Shards toe te wijzen. De toewijzing wordt deterministisch gemaakt op basis van de waarde van een tabel kolom die de kolom distributie heet. De Cluster beheerder moet deze kolom aanwijzen bij het distribueren van een tabel.
 Het is belang rijk dat u de juiste keuze maakt voor prestaties en functionaliteit.
 
-### <a name="type-2-reference-tables"></a>Type 2: Verwijzings tabellen
+### <a name="type-2-reference-tables"></a>Type 2: verwijzings tabellen
 
 Een verwijzings tabel is een type gedistribueerde tabel waarvan de volledige inhoud in één Shard is geconcentreerd. De Shard wordt gerepliceerd op elke werk nemer. Query's op elke werk nemer hebben lokaal toegang tot de referentie gegevens, zonder de netwerk belasting van het aanvragen van rijen van een ander knoop punt. Verwijzings tabellen hebben geen distributie kolom, omdat er geen onderscheid hoeft te worden gemaakt tussen afzonderlijke Shards per rij.
 
 Verwijzings tabellen zijn doorgaans klein en worden gebruikt voor het opslaan van gegevens die relevant zijn voor query's die worden uitgevoerd op een worker-knoop punt. Een voor beeld is opsommings waarden, zoals order statussen of product categorieën.
 
-### <a name="type-3-local-tables"></a>Type 3: Lokale tabellen
+### <a name="type-3-local-tables"></a>Type 3: lokale tabellen
 
 Wanneer u grootschalige (Citus) gebruikt, is het coördinator knooppunt waarmee u verbinding maakt, een normale PostgreSQL-data base. U kunt gewone tabellen maken op de coördinator en ervoor kiezen deze niet te Shard.
 
@@ -51,7 +51,7 @@ Een goede kandidaat voor lokale tabellen is kleine beheer tabellen die geen deel
 
 In de vorige sectie wordt beschreven hoe gedistribueerde tabellen worden opgeslagen als Shards op worker-knoop punten. In deze sectie worden meer technische details besproken.
 
-De meta gegevens tabel van @no__t 0 in de coördinator bevat een rij voor elk Shard van elke gedistribueerde tabel in het systeem. De rij komt overeen met een Shard-ID met een bereik van gehele getallen in een hash-ruimte (shardminvalue, shardmaxvalue).
+De `pg_dist_shard` meta gegevens tabel in de coördinator bevat een rij voor elk Shard van elke gedistribueerde tabel in het systeem. De rij komt overeen met een Shard-ID met een bereik van gehele getallen in een hash-ruimte (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Als het coördinator knooppunt wil bepalen welke Shard een rij `github_events` bevat, wordt de waarde van de kolom Distribution in de rij hashes. Vervolgens controleert het knoop punt welk Shard @ no__t-0s-bereik de gehashte waarde bevat. De bereiken worden gedefinieerd zodat de afbeelding van de hash-functie de niet-aaneengesloten samen voeging is.
+Als het coördinator knooppunt wil bepalen welke Shard een rij met `github_events`bevat, wordt de waarde van de kolom Distribution in de rij hashes. Vervolgens controleert het knoop punt welk Shard\'s-bereik de gehashte waarde bevat. De bereiken worden gedefinieerd zodat de afbeelding van de hash-functie de niet-aaneengesloten samen voeging is.
 
 ### <a name="shard-placements"></a>Shard plaatsen
 
 Stel dat Shard 102027 is gekoppeld aan de betreffende rij. De rij wordt in een tabel met de naam `github_events_102027` in een van de werk rollen gelezen of geschreven. Welke werk nemer? Dat wordt volledig bepaald door de meta gegevens tabellen. De toewijzing van Shard aan worker wordt de Shard-plaatsing genoemd.
 
-Het coördinator knooppunt schrijft query's opnieuw in fragmenten die verwijzen naar de specifieke tabellen, zoals `github_events_102027`, en voert deze fragmenten uit op de juiste werk rollen. Hier volgt een voor beeld van een query die wordt uitgevoerd achter de schermen om het knoop punt te vinden dat Shard ID 102027.
+Het coördinator knooppunt schrijft query's opnieuw in fragmenten die verwijzen naar de specifieke tabellen zoals `github_events_102027` en voert deze fragmenten uit op de juiste werk rollen. Hier volgt een voor beeld van een query die wordt uitgevoerd achter de schermen om het knoop punt te vinden dat Shard ID 102027.
 
 ```sql
 SELECT

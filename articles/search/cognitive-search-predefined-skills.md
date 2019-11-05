@@ -1,5 +1,5 @@
 ---
-title: Ingebouwde extractie van gegevens, natuurlijke taal, verwerking van afbeeldingen
+title: Ingebouwde vaardig heden voor het uitpakken van gegevens, natuurlijke taal, afbeeldings verwerking tijdens het indexeren.
 titleSuffix: Azure Cognitive Search
 description: Gegevens extractie, natuurlijke taal, cognitieve vaardig heden voor afbeeldings verwerking Voeg semantiek en structuur toe aan onbewerkte inhoud in een Azure Cognitive Search-pijp lijn.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792089"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466795"
 ---
 # <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>Ingebouwde cognitieve vaardig heden voor inhouds verrijking (Azure Cognitive Search)
 
@@ -25,7 +25,7 @@ In dit artikel vindt u meer informatie over de cognitieve vaardig heden die word
 > De uitvoering van ingebouwde vaardig heden wordt in rekening gebracht op basis van de bestaande [Cognitive Services betalen naar](https://azure.microsoft.com/pricing/details/cognitive-services/)gebruik-prijs. Prijzen voor Image extractie worden beschreven op de [pagina met prijzen voor Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 
-## <a name="built-in-skills"></a>Ingebouwde vaardig heden
+## <a name="built-in-skills"></a>Ingebouwde vaardigheden
 
 Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Over het algemeen zijn de meeste vaardig heden gebaseerd op vooraf getrainde modellen, wat betekent dat u het model niet kunt trainen met uw eigen trainings gegevens. In de volgende tabel worden de vaardig heden van micro soft opgesomd en beschreven. 
 
@@ -41,6 +41,7 @@ Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Ove
 | [Micro soft. skills. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Deze vaardigheid maakt gebruik van een algoritme voor detectie van de afbeelding om de inhoud van een afbeelding te identificeren en een beschrijving van een tekst te genereren. |
 | [Micro soft. skills. Vision. OcrSkill](cognitive-search-skill-ocr.md) | Optische teken herkenning. |
 | [Micro soft. skills. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Staat filteren toe, het toewijzen van een standaard waarde en het samen voegen van gegevens op basis van een voor waarde.|
+| [Micro soft. skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | Extraheert inhoud uit een bestand binnen de verrijkings pijplijn. |
 | [Micro soft. skills. util. ShaperSkill](cognitive-search-skill-shaper.md) | Wijst uitvoer toe aan een complex type (een gegevens type met meerdere delen, dat kan worden gebruikt voor een volledige naam, een adres van meerdere regels of een combi natie van achternaam en persoonlijke id). |
 | [Micro soft. skills. custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Hiermee kan een AI-verrijkings pijplijn worden uitgebreid door een HTTP-aanroep naar een aangepaste web-API te maken |
 

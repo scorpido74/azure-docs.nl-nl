@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 90de0b4bfad4c5096ebc38eb3d31fc41bca6649b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091502"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494855"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Heap-dumps inschakelen voor Apache Hadoop Services op HDInsight op basis van Linux
 
@@ -21,7 +21,7 @@ ms.locfileid: "71091502"
 
 Heap-dumps bevatten een moment opname van het geheugen van de toepassing, met inbegrip van de waarden van variabelen op het moment dat de dump werd gemaakt. Ze zijn dus handig voor het vaststellen van problemen die zich tijdens runtime voordoen.
 
-## <a name="whichServices"></a>Services
+## <a name="whichServices"></a>Onderzoeksservices
 
 U kunt heap-dumps inschakelen voor de volgende services:
 
@@ -37,12 +37,12 @@ U kunt ook heap-dumps inschakelen voor de kaart en processen verminderen die doo
 
 Heap-dumps worden ingeschakeld door de opties voor het door geven (ook wel "kiest of para meters" genoemd) aan de JVM toe te staan wanneer een service wordt gestart. Voor de meeste [Apache Hadoop](https://hadoop.apache.org/) Services kunt u het shell script dat wordt gebruikt om de service te starten, zodanig wijzigen dat deze opties worden door gegeven.
 
-In elk script is er een export voor  **\* \_kiest**, die de opties bevat die zijn door gegeven aan de JVM. In het script **Hadoop-env.sh** bevat bijvoorbeeld de regel die begint met `export HADOOP_NAMENODE_OPTS=` de opties voor de NameNode-service.
+In elk script is er een export voor **\*\_kiest**, die de opties bevat die zijn door gegeven aan de JVM. In het **Hadoop-env.sh** -script bevat de regel die begint met `export HADOOP_NAMENODE_OPTS=` bijvoorbeeld de opties voor de NameNode-service.
 
 Het toewijzen en verminderen van processen is iets anders, omdat deze bewerkingen een onderliggend proces van de MapReduce-service zijn. Elke kaart of vermindert proces wordt uitgevoerd in een onderliggende container en er zijn twee vermeldingen die de JVM-opties bevatten. Beide zijn opgenomen in **mapred-site. XML**:
 
-* **mapreduce.admin.map.child.java.opts**
-* **mapreduce.admin.reduce.child.java.opts**
+* **MapReduce. admin. map. Child. java. kiest**
+* **MapReduce. admin. reduce. Child. java. kiest**
 
 > [!NOTE]  
 > We raden u aan [Apache Ambari](https://ambari.apache.org/) te gebruiken om de instellingen voor scripts en mapred-site. XML te wijzigen, omdat Ambari de replicatie van wijzigingen tussen knoop punten in het cluster moet afhandelen. Zie de sectie [Apache Ambari gebruiken](#using-apache-ambari) voor specifieke stappen.
@@ -64,7 +64,7 @@ De standaard locatie voor het dump bestand is de huidige werkmap. U kunt bepalen
 
     -XX:HeapDumpPath=/path
 
-Als u bijvoorbeeld gebruikt `-XX:HeapDumpPath=/tmp` , worden de dumps opgeslagen in de map/tmp-map.
+Als u bijvoorbeeld `-XX:HeapDumpPath=/tmp` gebruikt, worden de dumps opgeslagen in de map/tmp-map.
 
 ### <a name="scripts"></a>Scripts
 
@@ -75,7 +75,7 @@ U kunt ook een script activeren als er een **OutOfMemoryError** optreedt. U kunt
 > [!NOTE]  
 > Omdat Apache Hadoop een gedistribueerd systeem is, moet elk gebruikt script op alle knoop punten in het cluster worden geplaatst waarop de-service wordt uitgevoerd.
 > 
-> Het script moet zich ook bevindt op een locatie die toegankelijk is voor het account waarop de service wordt uitgevoerd, en moet machtigingen voor uitvoeren opgeven. U kunt bijvoorbeeld scripts opslaan in `/usr/local/bin` en gebruiken `chmod go+rx /usr/local/bin/filename.sh` om machtigingen voor lezen en uitvoeren te verlenen.
+> Het script moet zich ook bevindt op een locatie die toegankelijk is voor het account waarop de service wordt uitgevoerd, en moet machtigingen voor uitvoeren opgeven. U kunt bijvoorbeeld scripts opslaan in `/usr/local/bin` en `chmod go+rx /usr/local/bin/filename.sh` gebruiken om machtigingen voor lezen en uitvoeren te verlenen.
 
 ## <a name="using-apache-ambari"></a>Apache Ambari gebruiken
 
@@ -96,7 +96,7 @@ Als u de configuratie voor een service wilt wijzigen, gebruikt u de volgende sta
 
     ![Gefilterde lijst Apache Ambari config](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Zoek het  **\* itemomlaagvoordeservicewaarvoorudeopslagvanheap-dumpswiltinschakelenenvoegdeoptiestoedieuwiltinschakelen.\_** In de volgende afbeelding hebt `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` u de vermelding **HADOOP\_NAMENODE\_kiest** :
+4. Zoek de vermelding **\*\_** veld voor de service waarvoor u de opslag van heap-dumps wilt inschakelen en voeg de opties toe die u wilt inschakelen. In de volgende afbeelding hebt u `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` toegevoegd aan de **HADOOP-\_NAMENODE\_** veld veld:
 
     ![Apache Ambari Hadoop-namenode-kiest](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

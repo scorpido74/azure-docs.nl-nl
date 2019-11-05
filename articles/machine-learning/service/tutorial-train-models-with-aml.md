@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie over classificatie van afbeeldingen: Modellen trainen'
+title: 'Zelf studie over afbeeldings classificatie: modellen trainen'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het trainen van een afbeeldings classificatie model met scikit-informatie over een python Jupyter-notebook met Azure Machine Learning. Deze zelfstudie is deel één van een serie van twee.
 services: machine-learning
@@ -8,16 +8,17 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/20/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
-ms.translationtype: MT
+ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128953"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493564"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Zelfstudie: Beeld classificatie modellen trainen met MNIST-gegevens en scikit-meer informatie met behulp van Azure Machine Learning
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Zelf studie: classificatie modellen van een installatie kopie trainen met MNIST-gegevens en scikit-informatie met behulp van Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In deze zelfstudie gaat u een machine learning-model trainen op externe rekenresources. U gebruikt de trainings-en implementatie werk stroom voor Azure Machine Learning in een python Jupyter-notebook.  Vervolgens kunt u het notebook gebruiken als een sjabloon voor het trainen van uw eigen machine learning-model met uw eigen gegevens. Deze zelfstudie is **deel één van een serie van twee**.  
 
@@ -36,19 +37,25 @@ In [deel twee van deze zelfstudie](tutorial-deploy-models-with-aml.md) leert u h
 Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
 
 >[!NOTE]
-> De code in dit artikel is getest met [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -versie 1.0.57.
+> De code in dit artikel is getest met [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -versie 1.0.65.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U moet de [Zelfstudie: Ga aan de slag met het maken](tutorial-1st-experiment-sdk-setup.md) van uw eerste ml-experiment tot:
+* Voltooi de [zelf studie: Ga aan de slag met het maken van uw eerste ml-experiment](tutorial-1st-experiment-sdk-setup.md) tot:
     * Een werkruimte maken
-    * Een Cloud notebook server maken
-    * Het Jupyter notebook-dash board starten
+    * Kopieer de notebooks van de zelf studies naar uw map in de werk ruimte.
+    * Maak een cloud-gebaseerd reken exemplaar.
 
-* Nadat u het Jupyter notebook-dash board hebt gestart, opent u het notitie blok **zelf studies/img-Classification-part1-training. ipynb** .
+* Open in de map gekloonde **zelf studies** de notebook **IMG-classificatie-part1-training. ipynb** . 
 
-De zelf studie en het bijbehorende **utils.py** -bestand zijn ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u het wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u en `matplotlib` `scikit-learn` in uw omgeving hebt geïnstalleerd.
 
+De zelf studie en het bijbehorende **utils.py** -bestand zijn ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u het wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local). Voer `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` uit om afhankelijkheden te installeren voor deze zelf studie.
+
+> [!Important]
+> De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
+>
+> Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code. 
+> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
 
 ## <a name="start"></a>De ontwikkelomgeving instellen
 
@@ -143,51 +150,48 @@ U beschikt nu over de vereiste pakketten en rekenresources voor het trainen van 
 
 ## <a name="explore-data"></a>Gegevens verkennen
 
-Voordat u een model gaat trainen, is het belangrijk dat u de gegevens begrijpt die u gebruikt voor het trainen. U moet ook de gegevens uploaden naar de Cloud met zodat deze toegankelijk is voor uw Cloud trainings omgeving. In deze sectie leert u hoe u de volgende acties uitvoert:
+Voordat u een model gaat trainen, is het belangrijk dat u de gegevens begrijpt die u gebruikt voor het trainen. In dit gedeelte leert u het volgende:
 
 * De MNIST-gegevensset downloaden.
 * Enkele voorbeeldafbeeldingen weergeven.
-* Gegevens uploaden naar uw werk ruimte in de Cloud.
 
 ### <a name="download-the-mnist-dataset"></a>De MNIST-gegevensset downloaden
 
-Download de MNIST-gegevensset en sla de bestanden op in een lokale map `data`. Er worden afbeeldingen en labels gedownload voor trainings- en testdoeleinden:
+Gebruik Azure open gegevens sets om de onbewerkte MNIST-gegevens bestanden op te halen. [Azure open gegevens sets](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) zijn alle open bare gegevens sets die u kunt gebruiken om scenario's met specifieke functies toe te voegen aan Machine Learning oplossingen voor nauw keurigere modellen. Elke gegevensset heeft een bijbehorende klasse, `MNIST` in dit geval om de gegevens op verschillende manieren op te halen.
+
+Met deze code worden de gegevens opgehaald als een `FileDataset`-object, een subklasse van `Dataset`. Een `FileDataset` verwijst naar één of meer bestanden van een indeling in uw gegevens opslag of open bare URL. De-klasse biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw Compute door een verwijzing naar de locatie van de gegevens bron te maken. Daarnaast registreert u de gegevensset voor uw werk ruimte, zodat u deze eenvoudig kunt ophalen tijdens de training.
+
+Volg de [instructies](how-to-create-register-datasets.md) om meer te weten te komen over gegevens sets en hun gebruik in de SDK.
 
 ```python
-import urllib.request
-import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
 
 data_folder = os.path.join(os.getcwd(), 'data')
 os.makedirs(data_folder, exist_ok=True)
 
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'train-labels.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-images.gz'))
-urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz',
-                           filename=os.path.join(data_folder, 'test-labels.gz'))
-```
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
 
-U ziet uitvoer die lijkt op de volgende: ```('./data/test-labels.gz', <http.client.HTTPMessage at 0x7f40864c77b8>)```
+mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
+                                                 name='mnist_opendataset',
+                                                 description='training and test dataset',
+                                                 create_new_version=True)
+```
 
 ### <a name="display-some-sample-images"></a>Enkele voorbeeldafbeeldingen weergeven
 
-Laad de gecomprimeerde bestanden in `numpy`-matrices. Gebruik vervolgens `matplotlib` om 30 willekeurige afbeeldingen uit de gegevensset te tekenen, met de bijbehorende labels erboven. Voor deze stap hebt u een `load_data`-functie nodig die is opgenomen in een `util.py`-bestand. Dit bestand staat in de map met voorbeelden. Zorg ervoor dat u het bestand in de map met dit notebook zet. Met de `load_data`-functie parseert u de gecomprimeerde bestanden eenvoudig in numpy-matrices:
+Laad de gecomprimeerde bestanden in `numpy`-matrices. Gebruik vervolgens `matplotlib` om 30 willekeurige afbeeldingen uit de gegevensset te tekenen, met de bijbehorende labels erboven. Voor deze stap hebt u een `load_data`-functie nodig die is opgenomen in een `util.py`-bestand. Dit bestand staat in de map met voorbeelden. Zorg ervoor dat u het bestand in de map met dit notebook zet. De functie `load_data` parseert de gecomprimeerde bestanden simpelweg in numpy-matrices.
 
 ```python
 # make sure utils.py is in the same directory as this code
 from utils import load_data
 
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the model converge faster.
-X_train = load_data(os.path.join(
-    data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(
-    data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(os.path.join(data_folder, "train-images-idx3-ubyte.gz"), False) / 255.0
+X_test = load_data(os.path.join(data_folder, "t10k-images-idx3-ubyte.gz"), False) / 255.0
+y_train = load_data(os.path.join(data_folder, "train-labels-idx1-ubyte.gz"), True).reshape(-1)
+y_test = load_data(os.path.join(data_folder, "t10k-labels-idx1-ubyte.gz"), True).reshape(-1)
 
 # now let's show some randomly chosen images from the traininng set.
 count = 0
@@ -209,33 +213,6 @@ Er wordt een steekproef van afbeeldingen weergegeven:
 
 U hebt nu een beter beeld van hoe deze afbeeldingen eruit zien en wat u voor resultaat kunt verwachten van de voorspelling.
 
-### <a name="create-a-filedataset"></a>Een FileDataset maken
-
-Een `FileDataset` -object verwijst naar een of meer bestanden in uw werk ruimte of open bare url's. De bestanden hebben een wille keurige indeling en de-klasse biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw computer. Door een `FileDataset`te maken, maakt u een verwijzing naar de locatie van de gegevens bron. Als u trans formaties hebt toegepast op de gegevensset, worden deze ook opgeslagen in de gegevens verzameling. De gegevens blijven op de bestaande locatie, waardoor er geen extra opslag kosten in rekening worden gebracht. Raadpleeg `Dataset` de [hand leiding van het pakket](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) voor meer informatie.
-
-```python
-from azureml.core.dataset import Dataset
-
-web_paths = [
-            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
-            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
-            ]
-dataset = Dataset.File.from_files(path=web_paths)
-```
-
-Gebruik de `register()` methode om de gegevensset te registreren voor uw werk ruimte, zodat deze kan worden gedeeld met anderen, opnieuw kan worden gebruikt in verschillende experimenten en waarnaar wordt verwezen met de naam in uw trainings script.
-
-```python
-dataset = dataset.register(workspace=ws,
-                           name='mnist dataset',
-                           description='training and test dataset',
-                           create_new_version=True)
-```
-
-U hebt nu alles wat u nodig hebt om een model te gaan trainen.
-
 ## <a name="train-on-a-remote-cluster"></a>Trainen op een extern cluster
 
 Voor deze taak verstuurt u de taak naar het cluster voor externe training dat u eerder hebt ingesteld.  Om een taak te verzenden, moet u het volgende doen:
@@ -249,7 +226,6 @@ Voor deze taak verstuurt u de taak naar het cluster voor externe training dat u 
 Maak een map om de benodigde code vanaf uw computer aan te bieden aan de externe resource.
 
 ```python
-import os
 script_folder = os.path.join(os.getcwd(), "sklearn-mnist")
 os.makedirs(script_folder, exist_ok=True)
 ```
@@ -317,7 +293,7 @@ U ziet hoe met het script gegevens worden opgehaald en modellen worden opgeslage
 
 + Het trainings script slaat uw model op in een map met de naam **uitvoer**. Alles gegevens die naar deze map worden geschreven, worden automatisch geüpload naar uw werkruimte. Verderop in de zelfstudie gaat u dit model openen vanuit deze map. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ Het trainings script vereist dat het `utils.py` bestand de gegevensset correct laadt. Met de volgende code `utils.py` wordt `script_folder` gekopieerd naar, zodat het bestand kan worden geopend samen met het trainings script op de externe bron.
++ Voor het trainings script moet het bestand `utils.py` de gegevensset correct laden. Met de volgende code worden `utils.py` naar `script_folder` gekopieerd, zodat het bestand kan worden geopend samen met het trainings script op de externe bron.
 
   ```python
   import shutil
@@ -351,7 +327,7 @@ Maak vervolgens de Estimator met de volgende code.
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': dataset.as_named_input('mnist').as_mount(),
+    '--data-folder': mnist_file_dataset.as_named_input('mnist_opendataset').as_mount(),
     '--regularization': 0.5
 }
 
@@ -379,15 +355,15 @@ In totaal duurt de eerste run **ongeveer tien minuten**. Voor latere runs wordt 
 
 Terwijl u wacht, gebeurt het volgende:
 
-- **Afbeelding maken**: Er wordt een Docker-afbeelding gemaakt die overeenkomt met de Python-omgeving die is opgegeven met de estimator. De afbeelding wordt naar de werkruimte geüpload. Het maken en uploaden van de afbeelding duurt **circa vijf minuten**.
+- **Installatie kopie maken**: er wordt een docker-installatie kopie gemaakt die overeenkomt met de python-omgeving die is opgegeven door de Estimator. De afbeelding wordt naar de werkruimte geüpload. Het maken en uploaden van de afbeelding duurt **circa vijf minuten**.
 
   Deze fase vindt eenmaal plaats voor elke Python-omgeving, aangezien de container voor volgende runs in de cache wordt opgeslagen. Tijdens het maken van de afbeelding, worden er logboeken gestreamd naar de uitvoeringsgeschiedenis. U kunt de voortgang van het maken van afbeeldingen volgen aan de hand van deze logboeken.
 
-- **Schalen**: Als voor het externe cluster meer knooppunten zijn vereist voor het uitvoeren van de run dan er momenteel beschikbaar zijn, worden er automatisch extra knooppunten toegevoegd. Het schalen duurt meestal **ongeveer vijf minuten.**
+- **Schalen**: als het externe cluster meer knoop punten nodig heeft om de uitvoering dan momenteel beschikbaar te maken, worden extra knoop punten automatisch toegevoegd. Het schalen duurt meestal **ongeveer vijf minuten.**
 
-- **Uitvoeren**: In deze fase worden de noodzakelijke scripts en bestanden verzonden naar het rekendoel. Vervolgens worden gegevensarchieven gekoppeld of gekopieerd. Ten slotte wordt het **entry_script** uitgevoerd. Terwijl de taak wordt uitgevoerd, worden **stdout** en de map **./logs** naar de uitvoeringsgeschiedenis gestreamd. U kunt de voortgang van de run volgen aan de hand van deze logboeken.
+- **Uitvoeren**: in deze fase worden de benodigde scripts en bestanden naar het reken doel verzonden. Vervolgens worden gegevensarchieven gekoppeld of gekopieerd. Ten slotte wordt het **entry_script** uitgevoerd. Terwijl de taak wordt uitgevoerd, worden **stdout** en de map **./logs** naar de uitvoeringsgeschiedenis gestreamd. U kunt de voortgang van de run volgen aan de hand van deze logboeken.
 
-- **Nabewerken**: De map **./outputs** van de run wordt naar de uitvoeringsgeschiedenis in uw werkruimte gekopieerd, zodat u deze resultaten kunt bekijken.
+- **Na de verwerking**: de map **./outputs** van de uitvoering wordt gekopieerd naar de uitvoerings geschiedenis in uw werk ruimte, zodat u deze resultaten kunt openen.
 
 U kunt de voortgang van een actieve taak op verschillende manieren controleren. In deze zelfstudie wordt gebruikgemaakt van een Jupyter-widget en de methode `wait_for_completion`.
 

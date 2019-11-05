@@ -1,93 +1,98 @@
 ---
-title: Afhankelijkheids visualisatie in Azure Migrate | Microsoft Docs
+title: Visualisatie van afhankelijkheden in Azure Migrate
 description: Hierin wordt een overzicht gegeven van de evaluatie berekeningen in de server Assessment-service in Azure Migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178123"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489204"
 ---
 # <a name="dependency-visualization"></a>Visualisatie van afhankelijkheden
 
-Azure Migrate: Server evaluatie evalueert groepen van on-premises machines voor migratie naar Azure. U kunt de functionaliteit voor de visualisatie van afhankelijkheden in Server evaluatie gebruiken om groepen te maken. Dit artikel bevat informatie over deze functie.
+In dit artikel wordt de functie voor de visualisatie van afhankelijkheden in Azure Migrate: Server evaluatie beschreven.
+
+De visualisatie van afhankelijkheden helpt u bij het begrijpen van afhankelijkheden tussen computers die u wilt beoordelen en migreren. U gebruikt meestal afhankelijkheids toewijzing als u computers wilt beoordelen met een hoger vertrouwens niveau.
+
+- In Azure Migrate: Server analyse verzamelt u computers in groepen voor evaluatie. Groepen bestaan gewoonlijk uit machines die samen moeten worden gemigreerd en afhankelijkheids visualisatie helpt u bij het controleren van afhankelijkheden van machines, zodat u machines nauw keurig kunt groeperen.
+- Met visualisatie kunt u afhankelijke systemen detecteren die samen moeten worden gemigreerd. U kunt nagaan of actieve systemen nog in gebruik zijn of of systemen uit de buiten gebruiks telling kunnen worden genomen in plaats van gemigreerd.
+- Met het visualiseren van afhankelijkheden kunt u ervoor zorgen dat er geen onverwachte storingen optreden tijdens de migratie.
+- Deze functie is vooral nuttig als u niet volledig op de hoogte bent van machines die deel uitmaken van apps en daarom samen moeten worden gemigreerd naar Azure.
+
 
 > [!NOTE]
 > De functie voor visualisatie van afhankelijkheden is niet beschikbaar in Azure Government.
 
-## <a name="overview"></a>Overzicht
+## <a name="agent-based-and-agentless"></a>Op agent en zonder agent
 
-Met de functie voor afhankelijkheids visualisatie in Server evaluatie kunt u groepen met hoge betrouw baarheid maken voor migratie-evaluaties. Met behulp van afhankelijkheids visualisatie kunt u netwerk afhankelijkheden van machines weer geven en gerelateerde computers identificeren die samen moeten worden gemigreerd naar Azure. Deze functionaliteit is handig in scenario's waarin u niet volledig op de hoogte bent van de computers die uw toepassing vormen en samen moeten worden gemigreerd naar Azure.
+Er zijn twee opties voor het implementeren van afhankelijkheids visualisatie:
 
-## <a name="before-you-start"></a>Voordat u begint
+- **Visualisatie van afhankelijkheid zonder agent**: deze optie is momenteel beschikbaar als preview-versie. U hoeft geen agents op computers te installeren. 
+    - Het werkt door de TCP-verbindings gegevens vast te leggen van de computers waarvoor deze is ingeschakeld. [Meer informatie](how-to-create-group-machine-dependencies-agentless.md).
+Nadat de detectie van afhankelijkheden is gestart, verzamelt het apparaat gegevens van machines met een polling-interval van vijf minuten.
+    - De volgende gegevens worden verzameld:
+        - TCP-verbindingen
+        - Namen van processen die actieve verbindingen hebben
+        - Namen van geïnstalleerde toepassingen die de bovenstaande processen uitvoeren
+        - Nee. van verbindingen die zijn gedetecteerd bij elk polling-interval
+- **Visualisatie van afhankelijkheid op basis van een agent**: voor het gebruik van op agents gebaseerde afhankelijkheids visualisatie moet u de volgende agents downloaden en installeren op elke on-premises computer die u wilt analyseren.  
+    - [Microsoft Monitoring Agent (MMA](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)) moet op elke computer worden geïnstalleerd. Meer [informatie](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) over het installeren van de MMA-agent.
+    - De [afhankelijkheids agent](../azure-monitor/platform/agents-overview.md#dependency-agent) moet op elke computer worden geïnstalleerd. Meer [informatie](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) over het installeren van de afhankelijkheids agent.
+    - En als u VM's zonder internetverbinding hebt, moet u op deze machines Log Analytics-gateway downloaden en installeren.
 
-- Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
-- Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
-- Zorg ervoor dat u uw computers hebt gedetecteerd in Azure Migrate. u kunt dit doen door een Azure Migrate apparaat in te stellen voor [VMware](how-to-set-up-appliance-vmware.md) of [Hyper-V](how-to-set-up-appliance-hyper-v.md). Het apparaat detecteert on-premises machines en verstuurt meta gegevens en prestatie gegevens naar Azure Migrate: Server evaluatie. [Meer informatie](migrate-appliance.md).
+## <a name="agent-based-requirements"></a>Vereisten op basis van een agent
 
-## <a name="how-does-it-work"></a>Hoe werkt het?
+### <a name="what-do-i-need-to-deploy-dependency-visualization"></a>Wat heb ik nodig om de afhankelijkheids visualisatie te implementeren?
+
+Voordat u een afhankelijkheids visualisatie implementeert, moet er een Azure Migrate project aanwezig zijn, met het Azure Migrate: Server assessment tool is toegevoegd aan het project. U kunt de visualisatie van de afhankelijkheid implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises machines te detecteren.
+
+Meer [informatie](how-to-assess.md) over het toevoegen van het hulp programma en het implementeren van een apparaat voor [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)-en fysieke servers.
+
+
+### <a name="how-does-it-work"></a>Hoe werkt het?
 
 Azure Migrate gebruikt de [servicetoewijzing](../operations-management-suite/operations-management-suite-service-map.md) oplossing in [Azure monitor logboeken](../log-analytics/log-analytics-overview.md) voor de visualisatie van afhankelijkheden.
+
 - Als u gebruik wilt maken van afhankelijkheids visualisatie, moet u een Log Analytics werk ruimte (nieuw of bestaand) koppelen aan een Azure Migrate-project.
-- U kunt alleen een werk ruimte maken of koppelen in hetzelfde abonnement als het Azure Migrate project is gemaakt.
-- Een Log Analytics-werk ruimte koppelen aan een project:
-    1. Klik op het tabblad **servers** in **Azure migrate: tegel server evaluatie** op **overzicht**.
-    2. Klik in het **overzicht**op de pijl-omlaag om **essentiële**items uit te vouwen.
-    3. Klik in de **OMS-werk ruimte**op **configuratie vereist**.
-    4. In **werk ruimte configureren**geeft u op of u een nieuwe werk ruimte wilt maken of een bestaande wilt gebruiken:
-    
-    ![Werk ruimte toevoegen](./media/how-to-create-group-machine-dependencies/workspace.png)
-
-- Tijdens het koppelen van een werk ruimte krijgt u de mogelijkheid om een nieuwe werk ruimte te maken of een bestaande te koppelen:
-  - Wanneer u een nieuwe werk ruimte maakt, moet u een naam opgeven voor de werk ruimte. U kunt de [regio](https://azure.microsoft.com/global-infrastructure/regions/) kiezen waarin de werk ruimte wordt gemaakt.
-  - Wanneer u een bestaande werk ruimte koppelt, kunt u kiezen uit alle beschik bare werk ruimten in hetzelfde abonnement als het migratie project. Houd er rekening mee dat alleen deze werk ruimten worden weer gegeven die zijn gemaakt in een regio waar [servicetoewijzing wordt ondersteund](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Als u een werk ruimte wilt koppelen, moet u ervoor zorgen dat u toegang hebt tot de werk ruimte.
-
-  > [!NOTE]
-  > Zodra u een werk ruimte aan een project hebt gekoppeld, kunt u deze later niet meer wijzigen.
-
-  > [!NOTE]
-  > Azure Migrate ondersteunt momenteel het maken of koppelen van Log Analytics werk ruimten in VS-Oost, Zuidoost-Azië en Europa-west regio's. Als de werk ruimte buiten Azure Migrate wordt gemaakt in een niet-ondersteunde regio, kan deze momenteel niet worden gekoppeld aan een Azure Migrate-project. 
-
-- De gekoppelde werk ruimte is gelabeld met het sleutel **migratie project**en de waarde van de **project naam**, die u kunt gebruiken om te zoeken in de Azure Portal.
-- Als u wilt navigeren naar de werk ruimte die is gekoppeld aan het project, gaat u naar de sectie met **essentiële onderdelen** van de pagina **overzicht** van het project en opent u de werk ruimte
+- De werk ruimte moet zich in hetzelfde abonnement bevinden als waarin u het Azure Migrate project maakt.
+- Azure Migrate ondersteunt werk ruimten die zich in het VS-Oost, Zuidoost-Azië en Europa-west regio's bevinden. Werk ruimten in andere regio's kunnen niet worden gekoppeld aan een project. Houd er ook rekening mee dat de werk ruimte zich in een regio moet bevinden waarin [servicetoewijzing wordt ondersteund](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).
+- De werk ruimte voor een Azure Migrate project kan niet worden gewijzigd nadat deze is toegevoegd.
+- In Log Analytics wordt de werk ruimte die is gekoppeld aan Azure Migrate gelabeld met de sleutel van het migratie project en de project naam.
 
     ![Log Analytics werk ruimte navigeren](./media/concepts-dependency-visualization/oms-workspace.png)
 
-Als u visualisatie van afhankelijkheden wilt gebruiken, moet u agents downloaden en installeren op elke on-premises computer die u wilt analyseren.  
 
-- [Micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) moet op elke computer worden geïnstalleerd. Meer [informatie](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) over het installeren van de MMA-agent.
-- De [afhankelijkheids agent](../azure-monitor/platform/agents-overview.md#dependency-agent) moet op elke computer worden geïnstalleerd. Meer [informatie](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) over het installeren van de afhankelijkheids agent.
-- En als u VM's zonder internetverbinding hebt, moet u op deze machines Log Analytics-gateway downloaden en installeren.
 
-U hebt deze agents niet nodig op computers die u wilt beoordelen, tenzij u gebruikmaakt van afhankelijkheids visualisatie.
+### <a name="do-i-need-to-pay-for-it"></a>Moet ik hiervoor betalen?
 
-## <a name="do-i-need-to-pay-for-it"></a>Moet ik hiervoor betalen?
+Voor afhankelijkheids visualisatie zijn Servicetoewijzing en een gekoppelde Log Analytics-werk ruimte vereist. 
 
-De functie voor het visualisatie gebied is gratis beschikbaar. Voor het gebruik van de functie voor het betrekken van afhankelijkheden in Server evaluatie is Servicetoewijzing vereist. u moet een Log Analytics werk ruimte (nieuw of bestaand) koppelen aan het Azure Migrate project. De functionaliteit van de afhankelijkheids visualisatie in Server evaluatie is gratis voor de eerste 180 dagen.
-
-1. Het gebruik van oplossingen met uitzonde ring van Servicetoewijzing in deze Log Analytics werk ruimte worden [standaard log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) kosten in rekening gebracht.
-2. Ter ondersteuning van migratie scenario's zonder extra kosten Servicetoewijzing, worden voor de eerste 180 dagen geen kosten in rekening gebracht vanaf de dag van de koppeling van de Log Analytics werk ruimte met het Azure Migrate project. Na 180 dagen zijn de standaard Log Analytics kosten van toepassing.
-
-Wanneer u agents registreert bij de werk ruimte, gebruikt u de ID en de sleutel die is opgegeven door het project op de pagina agent stappen installeren.
-
-Wanneer het Azure Migrate project wordt verwijderd, wordt de werk ruimte samen niet verwijderd. Post de verwijdering van het project, het Servicetoewijzing gebruik is niet gratis en elk knoop punt wordt in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte.
-
-> [!NOTE]
-> De visualisatie functie dependency maakt gebruik van Servicetoewijzing via een Log Analytics-werk ruimte. Sinds 28 februari 2018, met de aankondiging van Azure Migrate algemene Beschik baarheid, is de functie nu gratis beschikbaar. U moet een nieuw project maken om de werk ruimte gratis gebruik te kunnen gebruiken. Bestaande werk ruimten voor algemene Beschik baarheid worden nog steeds in rekening gebracht. Daarom raden we u aan om over te stappen op een nieuw project.
+- De Servicetoewijzing oplossing heeft geen kosten in rekening gebracht voor de eerste 180 dagen. Dit is vanaf de dag dat u de werk ruimte Log Analytics hebt gekoppeld aan het Azure Migrate-project.
+- Na 180 dagen zijn de standaard Log Analytics kosten van toepassing.
+- Bij het gebruik van een andere oplossing dan Servicetoewijzing in de gekoppelde Log Analytics werk ruimte worden [standaard log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) kosten in rekening gebracht.
+- Wanneer het Azure Migrate project wordt verwijderd, wordt de werk ruimte samen niet verwijderd. Na het verwijderen van het project is Servicetoewijzing gebruik niet gratis en worden voor elk knoop punt de kosten in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte.
 
 Meer informatie over prijzen voor Azure Migrate vindt u [hier](https://azure.microsoft.com/pricing/details/azure-migrate/).
 
-## <a name="how-do-i-manage-the-workspace"></a>Hoe kan ik de werk ruimte beheren?
+> [!NOTE]
+> Als u projecten hebt die u hebt gemaakt vóór Azure Migrate algemene Beschik baarheid in 28 februari 2018, hebt u mogelijk extra Servicetoewijzing kosten in rekening gebracht. Om ervoor te zorgen dat u na 180 dagen alleen betaalt, is het raadzaam om een nieuw project te maken, omdat de bestaande werk ruimten voor algemene Beschik baarheid nog steeds toerekenbaar zijn.
 
-U kunt de Log Analytics-werk ruimte gebruiken buiten Azure Migrate. Het wordt niet verwijderd als u het Azure Migrate project verwijdert waarin het is gemaakt. Als u de werk ruimte niet meer nodig hebt, [verwijdert u deze](../azure-monitor/platform/manage-access.md) hand matig.
 
-Verwijder de werk ruimte die is gemaakt door Azure Migrate, tenzij u het Azure Migrate project verwijdert. Als u dat wel doet, werkt de visualisatie functionaliteit voor afhankelijkheden niet zoals verwacht.
+
+### <a name="how-do-i-manage-the-workspace"></a>Hoe kan ik de werk ruimte beheren?
+
+- Wanneer u agents registreert bij de werk ruimte, gebruikt u de ID en de sleutel van het Azure Migrate project.
+- U kunt de Log Analytics-werk ruimte gebruiken buiten Azure Migrate.
+- Als u het gekoppelde Azure Migrate project verwijdert, wordt de werk ruimte niet automatisch verwijderd. U moet [deze hand matig verwijderen](../azure-monitor/platform/manage-access.md).
+- Verwijder de werk ruimte die is gemaakt door Azure Migrate, tenzij u het Azure Migrate project verwijdert. Als u dat wel doet, werkt de visualisatie functionaliteit voor afhankelijkheden niet zoals verwacht.
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Machines groeperen met behulp van machine afhankelijkheden](how-to-create-group-machine-dependencies.md)
 - Meer [informatie](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) over de veelgestelde vragen over de visualisatie van afhankelijkheden.
+
+

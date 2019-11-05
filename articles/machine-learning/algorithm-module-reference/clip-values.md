@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a45755ca13aed6a514b548674ef424c40238fa42
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 704b7c8a0c55bdcdd69bd8a44b0f9f44e8ddf457
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694738"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493835"
 ---
 # <a name="clip-values"></a>Waarden inperken
 
-In dit artikel wordt een module van Azure Machine Learning visuele interface beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
 
 Gebruik de module voor clip waarden voor het identificeren en vervangen van gegevens waarden die boven of onder een bepaalde drempel waarde vallen, met een gemiddelde, constante of andere vervanger.  
 

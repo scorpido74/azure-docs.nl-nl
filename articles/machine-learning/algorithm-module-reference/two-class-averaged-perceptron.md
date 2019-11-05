@@ -1,24 +1,24 @@
 ---
 title: 'Regressie van beslissings bos: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de Perceptron-module met twee klassen in Azure Machine Learning service om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de Perceptron-module met twee klassen in Azure Machine Learning om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693628"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490361"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Gemiddelde Perceptron-module met twee klassen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een machine learning model te maken op basis van het gemiddelde Perceptron-algoritme.  
   
@@ -61,4 +61,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a863c8fe81a08f00385cb267bf360994918fe82
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9adf083f8e4c8c269b895dac87b4e4613ec1b023
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212117"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474373"
 ---
-# <a name="quickstart-self-service-password-reset"></a>Snelstart: Self-service voor wachtwoord opnieuw instellen
+# <a name="quickstart-self-service-password-reset"></a>Snelstart: selfservice voor wachtwoordherstel
 
 In deze snelstart wordt het configureren van de selfservice voor wachtwoordherstel (SSPR) uitgelegd. Deze service biedt een eenvoudige manier voor IT-beheerders om gebruikers in staat te stellen hun eigen wachtwoord opnieuw in te stellen of account te ontgrendelen.
 
@@ -33,7 +33,7 @@ In deze snelstart wordt het configureren van de selfservice voor wachtwoordherst
 
 [Dit proces als een video op YouTube weer geven](https://youtu.be/Pa0eyqjEjvQ)
 
-1. Selecteer vanuit uw bestaande Azure AD-tenant in **Azure Portal** onder **Azure Active Directory** de optie **Wachtwoord opnieuw instellen**.
+1. Selecteer **Azure Active Directory**uit uw bestaande Azure AD-Tenant vanuit het menu Azure portal of vanaf de **Start** pagina. Selecteer vervolgens **wacht woord opnieuw instellen**.
 
 2. Op de pagina **Eigenschappen** kiest u onder **Selfservice voor wachtwoord opnieuw instellen is ingeschakeld** de optie **Geselecteerd**.
     * Selecteer bij **Groep selecteren** de pilotgroep die u hebt gemaakt als onderdeel van het gedeelte over vereisten in dit artikel.

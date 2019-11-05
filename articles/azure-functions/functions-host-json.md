@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 2a61a2ba74ccdaa69b26cae65dd4f74a7b837ccf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927454"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469198"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host. json-verwijzing voor Azure Functions 2. x  
 
@@ -71,6 +71,9 @@ Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgege
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -78,10 +81,7 @@ Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgege
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -113,11 +113,11 @@ Hiermee bepaalt u de [sampling functie in Application Insights](./functions-moni
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|waar|Hiermee worden steek proeven in-of uitgeschakeld.| 
+|isEnabled|true|Hiermee worden steek proeven in-of uitgeschakeld.| 
 |maxTelemetryItemsPerSecond|20|De drempel waarde waarmee steek proeven worden gestart.| 
-|EnableLiveMetrics |waar|Hiermee wordt de verzameling Live Metrics ingeschakeld.|
-|EnableDependencyTracking|waar|Hiermee schakelt u het bijhouden van afhankelijkheden in.|
-|EnablePerformanceCountersCollection|waar|Hiermee schakelt u de verzameling kudu-prestatie meter items.|
+|EnableLiveMetrics |true|Hiermee wordt de verzameling Live Metrics ingeschakeld.|
+|EnableDependencyTracking|true|Hiermee schakelt u het bijhouden van afhankelijkheden in.|
+|EnablePerformanceCountersCollection|true|Hiermee schakelt u de verzameling kudu-prestatie meter items.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -174,7 +174,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|ingeschakeld|waar|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|ingeschakeld|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
 |healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie met de instelling `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
@@ -222,10 +222,10 @@ Hiermee bepaalt u het gedrag van logboek registratie van de functie-app, met inb
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never`, `always`, `debugOnly`. |
-|logLevel|n.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x volgt de ASP.NET Core indeling voor het filteren van de logboek categorie. Hiermee kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
-|console|n.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
-|applicationInsights|n.v.t.| De instelling [applicationInsights](#applicationinsights) . |
+|fileLoggingMode|debugOnly|Hiermee wordt gedefinieerd welk niveau van bestands logboek registratie is ingeschakeld.  Opties zijn `never`, `always``debugOnly`. |
+|logLevel|N.v.t.|Object dat de logboek categorie filtering definieert voor functies in de app. Versie 2. x volgt de ASP.NET Core indeling voor het filteren van de logboek categorie. Hiermee kunt u logboek registratie voor specifieke functies filteren. Zie [logboek filtering](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in de ASP.net core-documentatie voor meer informatie. |
+|console|N.v.t.| De instelling voor de logboek registratie van de [console](#console) . |
+|applicationInsights|N.v.t.| De instelling [applicationInsights](#applicationinsights) . |
 
 ## <a name="console"></a>console
 
@@ -246,6 +246,18 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |isEnabled|onwaar|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+
+## <a name="manageddependency"></a>managedDependency
+
+Managed dependency is een functie die momenteel alleen wordt ondersteund met Power shell-functies. Hierdoor kunnen afhankelijkheden automatisch worden beheerd door de service. Wanneer de eigenschap `enabled` is ingesteld op `true`, wordt het `requirements.psd1` bestand verwerkt. Afhankelijkheden worden bijgewerkt wanneer er secundaire versies worden vrijgegeven. Zie [beheerde afhankelijkheden](functions-reference-powershell.md#dependency-management) in het Power shell-artikel voor meer informatie.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
 
 ## <a name="queues"></a>Bestel
 
@@ -281,7 +293,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
-|lockAcquisitionPollingInterval|n.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
+|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="version"></a>versie
 
@@ -294,18 +306,6 @@ Een set [gedeelde code mappen](functions-reference-csharp.md#watched-directories
 ```json
 {
     "watchDirectories": [ "Shared" ]
-}
-```
-
-## <a name="manageddependency"></a>managedDependency
-
-Managed dependency is een preview-functie die momenteel alleen wordt ondersteund met Power shell-functies. Hierdoor kunnen afhankelijkheden automatisch worden beheerd door de service. Wanneer de ingeschakelde eigenschap is ingesteld op True, wordt het bestand [Requirements. psd1](functions-reference-powershell.md#dependency-management) verwerkt. Afhankelijkheden worden bijgewerkt wanneer er secundaire versies worden vrijgegeven.
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
 }
 ```
 

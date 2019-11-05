@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044407"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469727"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw virtuele Azure-machines beheren
 
@@ -47,8 +47,9 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Schakel voor deze zelfstudie eerst updatebeheer in op de VM:
 
-1. Selecteer in Azure Portal in het linkermenu de optie **Virtuele machines**. Selecteer een VM in de lijst.
-2. Selecteer op de VM-pagina, onder **BEWERKINGEN** de optie **Updatebeheer**. Het deelvenster **Updatebeheer inschakelen** wordt geopend.
+1. In het menu [Azure Portal](https://portal.azure.com) selecteert u **virtuele machines** of zoekt en selecteert u **virtuele machines** op de **Start** pagina.
+1. Selecteer de virtuele machine waarvoor u Updatebeheer wilt inschakelen.
+1. Selecteer op de VM-pagina, onder **BEWERKINGEN** de optie **Updatebeheer**. Het deelvenster **Updatebeheer inschakelen** wordt geopend.
 
 Er wordt een validatie uitgevoerd om te bepalen of updatebeheer is ingeschakeld voor deze VM. Deze validatie bevat controles voor een Azure Log Analytics-werkruimte en het gekoppelde Automation-account, en controleert of de oplossing voor updatebeheer zich in de werkruimte bevindt.
 
@@ -143,9 +144,9 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 
   De classificatietypen zijn:
 
-   |Besturingssysteem  |Type  |
+   |OS  |Type  |
    |---------|---------|
-   |Windows     | Essentiële updates</br>Beveiligingsupdates</br>Updatepakketten</br>Functiepakketten</br>Servicepacks</br>Definitie-updates</br>Tools</br>Updates        |
+   |Windows     | Essentiële updates</br>Beveiligingsupdates</br>Updatepakketten</br>Functiepakketten</br>Servicepacks</br>Definitie-updates</br>Hulpprogramma's</br>Updates        |
    |Linux     | Essentiële en beveiligingsupdates</br>Andere Updates       |
 
    Raadpleeg [Updateclassificaties](automation-view-update-assessments.md#update-classifications) voor een beschrijving van de classificatietypen.
@@ -153,7 +154,7 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 * **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven.
 
 > [!NOTE]
-> Het is belang rijk te weten dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van `*` definieert, worden er geen patches of pakketten geïnstalleerd, aangezien deze allemaal uitgesloten zijn. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend van de machine. Voor Linux-machines als een pakket is opgenomen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
+> Het is belang rijk te weten dat uitsluitingen insluitingen opheffen. Als u bijvoorbeeld een uitsluitings regel van `*`definieert, worden er geen patches of pakketten geïnstalleerd, aangezien deze allemaal uitgesloten zijn. Uitgesloten patches worden nog steeds weer gegeven als ontbrekend van de machine. Voor Linux-machines als een pakket is opgenomen, maar een afhankelijk pakket heeft dat is uitgesloten, is het pakket niet geïnstalleerd.
 
 * **Planningsinstellingen**: het deelvenster **Planningsinstellingen** wordt geopend. De standaard begintijd is 30 minuten na de huidige tijd. U kunt de starttijd op elke gewenste tijd instellen, maar minstens 10 minuten na de huidige tijd.
 
@@ -219,7 +220,7 @@ Zodra de update-implementatie is voltooid, wordt er een e-mail verzonden die ver
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Onboarding voor Updatebeheer uitvoeren voor een VM

@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/08/2019
-ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 10/25/2019
+ms.openlocfilehash: 6590b6c3ecf1efc43822a4fefab79cdc7f624dcd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034636"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496987"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Een model implementeren naar Azure Container Instances
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op Azure Container Instances (ACI). Gebruik Azure Container Instances als aan een van de volgende voor waarden wordt voldaan:
 
-- U moet sneller te implementeren en valideren van uw model. U hoeft geen ACI-containers vooraf te maken. Ze worden gemaakt als onderdeel van het implementatie proces.
-- U test een model dat is in ontwikkeling. 
+- U moet uw model snel implementeren en valideren. U hoeft geen ACI-containers vooraf te maken. Ze worden gemaakt als onderdeel van het implementatie proces.
+- U test een model dat wordt ontwikkeld. 
 
 Zie [quota's en regionale Beschik baarheid voor Azure container instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) artikel voor meer informatie over de beschik baarheid van quota en REGIO'S voor ACI.
 
@@ -36,13 +37,13 @@ Zie [quota's en regionale Beschik baarheid voor Azure container instances](https
 
 - In de code fragmenten van __python__ in dit artikel wordt ervan uitgegaan dat de volgende variabelen zijn ingesteld:
 
-    * `ws`-Ingesteld op uw werk ruimte.
-    * `model`-Ingesteld op uw geregistreerde model.
-    * `inference_config`-Stel in op de configuratie voor het afstellen van het model.
+    * `ws`-ingesteld op uw werk ruimte.
+    * `model`-ingesteld op uw geregistreerde model.
+    * `inference_config`-ingesteld op de configuratie voor het afstellen van het model.
 
     Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
-- In het __cli__ -fragment in dit artikel wordt ervan uitgegaan dat `inferenceconfig.json` u een document hebt gemaakt. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van dit document.
+- In de __cli__ -fragmenten in dit artikel wordt ervan uitgegaan dat u een `inferenceconfig.json`-document hebt gemaakt. Zie [hoe en wanneer u modellen wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het maken van dit document.
 
 ## <a name="deploy-to-aci"></a>Implementeren naar ACI
 
@@ -85,7 +86,7 @@ Zie [uw modellen implementeren met VS code](how-to-vscode-tools.md#deploy-and-ma
 > [!IMPORTANT]
 > U hoeft geen ACI-container te maken om vooraf te testen. ACI-containers worden zo nodig gemaakt.
 
-## <a name="update-the-web-service"></a>Bijwerken van de webservice
+## <a name="update-the-web-service"></a>De webservice bijwerken
 
 [!INCLUDE [aml-update-web-service](../../../includes/machine-learning-update-web-service.md)]
 
@@ -93,7 +94,7 @@ Zie [uw modellen implementeren met VS code](how-to-vscode-tools.md#deploy-and-ma
 
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
-* [Een ML-Model dat is geïmplementeerd als een webservice gebruiken](how-to-consume-web-service.md)
+* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
+* [Een ML-model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)

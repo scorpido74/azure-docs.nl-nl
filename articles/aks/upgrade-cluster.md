@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 9404888eadf94eaf86a6e8584b49595e10b34c69
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 36bd05940644b62bc3e58b642bfe6c00238383fa
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264186"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472464"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes service) upgraden
 
@@ -36,9 +36,9 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 ```
 
 > [!NOTE]
-> Wanneer u een upgrade uitvoert voor een AKS-cluster, kunnen secundaire versies van Kubernetes niet worden overgeslagen. Bijvoorbeeld: upgrades tussen *1.12. x* -> *1.13. x* of *1.13. x* -> *1.14. x* zijn toegestaan, maar *1.12. x* -> *1.14. x* is niet.
+> Wanneer u een upgrade uitvoert voor een AKS-cluster, kunnen secundaire versies van Kubernetes niet worden overgeslagen. Bijvoorbeeld: upgrades tussen *1.12. x* -> *1.13. x* of *1.13. x* -> *1.14. x* zijn toegestaan, maar *1.12. x* -> *1.14. x* niet.
 >
-> Als u een upgrade wilt uitvoeren, van *1.12. x* -> *1.14. x*, moet u eerst een upgrade uitvoeren van *1.12. x* -> *1.13. x*en vervolgens een upgrade uitvoeren van *1.13. x* -> *1.14. x*.
+> U kunt een upgrade uitvoeren van *1.12. x* -> *1.14. x*, eerst een upgrade uitvoeren van *1.12. x* -> *1.13. x*en vervolgens een upgrade uitvoeren vanaf *1.13. x* -> *1.14. x*.
 
 In de volgende voorbeeld uitvoer ziet u dat het cluster kan worden bijgewerkt naar versies *1.13.9* en *1.13.10*:
 

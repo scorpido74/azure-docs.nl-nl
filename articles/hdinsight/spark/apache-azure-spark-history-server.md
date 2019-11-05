@@ -1,5 +1,5 @@
 ---
-title: Uitgebreide Spark-geschiedenis server voor het opsporen van fouten in Spark-toepassingen-Azure HDInsight
+title: Uitgebreide Spark-geschiedenis server voor het opsporen van fouten in apps-Azure HDInsight
 description: Uitgebreide Spark-geschiedenis server gebruiken voor het opsporen en diagnosticeren van Spark-toepassingen-Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9398745cb240e7b7dff45ff5d6d9cdf064239bfd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1320764687f3eb2f033ca70703a9bcb16ab616ea
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130351"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494726"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Uitgebreide Apache Spark geschiedenis server gebruiken om fouten op te sporen en op te sporen Apache Spark toepassingen
 
@@ -32,7 +32,7 @@ Apache Spark geschiedenis server is de Web-UI voor voltooide en actieve Spark-to
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>De Web-UI van de Spark-geschiedenis server op URL openen
 
-Open de Spark-geschiedenis server door te bladeren naar de volgende URL `<ClusterName>` , vervang door de Spark-cluster naam van de klant.
+Open de Spark-geschiedenis server door te bladeren naar de volgende URL, vervang `<ClusterName>` door de Spark-cluster naam van de klant.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
@@ -106,16 +106,16 @@ Selecteer taak-ID en klik vervolgens op **grafiek** in het menu van het hulp pro
 
 + Als u de taak wilt afspelen, klikt u op de knop **afspelen** en stopt u op elk moment door te klikken op de knop stoppen. De taak wordt in kleur weer gegeven om een andere status weer te geven tijdens het afspelen:
 
-  + Groen voor geslaagd: De taak is voltooid.
-  + Oranje voor opnieuw proberen: Exemplaren van taken die zijn mislukt, hebben geen invloed op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe instanties die later kunnen slagen.
-  + Blauw voor het uitvoeren van: De taak wordt uitgevoerd.
-  + Wit voor wachtend of overgeslagen: De taak wacht op uitvoering of het stadium is overgeslagen.
-  + Rood voor mislukt: De taak is mislukt.
+  + Groen voor geslaagd: de taak is voltooid.
+  + Oranje voor opnieuw uitgevoerd: exemplaren van taken die zijn mislukt, maar die geen invloed hebben op het uiteindelijke resultaat van de taak. Deze taken bevatten dubbele of nieuwe instanties die later kunnen slagen.
+  + Blauw voor uitvoeren: de taak wordt uitgevoerd.
+  + Wit voor wachtend of overgeslagen: de taak wacht op uitvoering of het stadium is overgeslagen.
+  + Rood voor mislukt: de taak is mislukt.
 
     ![Kleur voorbeeld van Spark-toepassing en taak grafiek, uitvoeren](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
 
     De overgeslagen fase wordt wit weer gegeven.
-    ![Kleur voorbeeld van Spark-toepassing en taak grafiek, overs Laan](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+    ![Spark-toepassing en taak grafiek kleur voorbeeld overs Laan](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
 
     ![Kleur voorbeeld van Spark-toepassing en taak grafiek, mislukt](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
 
@@ -168,7 +168,7 @@ Selecteer taak-ID en klik vervolgens op **diagnose** in het menu van het hulp pr
 
 Klik op het tabblad **gegevens scheef trekken** , de overeenkomstige scheefende taken worden weer gegeven op basis van de opgegeven para meters.
 
-+ **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven die worden gebruikt voor het detecteren van gegevens scheefheid. De ingebouwde regel is: De taak gegevens die zijn gelezen, zijn meer dan drie keer gelezen van de gegevens van het gemiddelde van de taak en de gelezen taak gegevens zijn meer dan 10 MB. Als u uw eigen regel wilt definiëren voor gescheefde taken, kunt u de para meters kiezen, de sectie **scheefe fase**en **schuine tekens** wordt dienovereenkomstig vernieuwd.
++ **Para meters opgeven** : in de eerste sectie worden de para meters weer gegeven die worden gebruikt voor het detecteren van gegevens scheefheid. De ingebouwde regel is: het lezen van de taak gegevens is groter dan drie keer van de gemiddelde taak gegevens gelezen en de gelezen taak gegevens zijn meer dan 10 MB. Als u uw eigen regel wilt definiëren voor gescheefde taken, kunt u de para meters kiezen, de sectie **scheefe fase**en **schuine tekens** wordt dienovereenkomstig vernieuwd.
 
 + **Scheefe fase** : in het tweede gedeelte worden fasen weer gegeven met gescheefe taken die voldoen aan de bovenstaande criteria. Als er meer dan een scheefe taak in een fase is, wordt in de tabel verscheefde fase alleen de meest afgeschuinde taak weer gegeven (bijvoorbeeld de grootste gegevens voor het hellen van gegevens).
 
@@ -202,7 +202,7 @@ In de gebruiks grafiek van de uitvoerder wordt de werkelijke uitvoerings toewijz
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-### <a name="1-revert-to-community-version"></a>1. Herstellen naar Community-versie
+### <a name="1-revert-to-community-version"></a>1. terugkeren naar Community-versie
 
 Voer de volgende stappen uit om de Community-versie terug te zetten:
 
@@ -224,7 +224,7 @@ Voer de volgende stappen uit om de Community-versie terug te zetten:
     ![Geschiedenis van Apache Ambari Spark2 opnieuw starten](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 9. De Web-UI van de Spark-geschiedenis server vernieuwen, wordt deze teruggezet naar de Community-versie.
 
-### <a name="2-upload-history-server-event"></a>2. Gebeurtenis geschiedenis server uploaden
+### <a name="2-upload-history-server-event"></a>2. Upload geschiedenis server gebeurtenis
 
 Als u een geschiedenis server fout uitvoert, volgt u de stappen om de gebeurtenis op te geven:
 
@@ -240,11 +240,11 @@ Als u een geschiedenis server fout uitvoert, volgt u de stappen om de gebeurteni
 
     ![voor beeld van een Apache Spark-bestands probleem](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Het jar-bestand voor het hotfix-scenario bijwerken
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. upgrade jar-bestand voor hotfix-scenario
 
 Als u een upgrade wilt uitvoeren met hotfix, gebruikt u het onderstaande script om Spark-Enhancement. jar * bij te werken.
 
-**upgrade_spark_enhancement.sh**:
+**upgrade_spark_enhancement. v**:
 
    ```bash
     #!/usr/bin/env bash
@@ -295,7 +295,7 @@ Als u een upgrade wilt uitvoeren met hotfix, gebruikt u het onderstaande script 
 
 `upgrade_spark_enhancement.sh https://${jar_path}`
 
-**Voor beeld**:
+**Voorbeeld**:
 
 `upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar`
 
@@ -330,4 +330,4 @@ Als u een upgrade wilt uitvoeren met hotfix, gebruikt u het onderstaande script 
 
 ## <a name="contact-us"></a>Contact opnemen
 
-Als u feedback hebt of als u andere problemen ondervindt bij het gebruik van dit hulp programma, kunt u een[hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)e-mail verzenden via ().
+Als u feedback hebt of als u andere problemen ondervindt bij het gebruik van dit hulp programma, kunt u een e-mail verzenden via ([hdivstool@microsoft.com](mailto:hdivstool@microsoft.com)).

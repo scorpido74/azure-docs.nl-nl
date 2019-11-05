@@ -1,7 +1,7 @@
 ---
-title: Web service-eindpunten maken
-titleSuffix: Azure Machine Learning Studio
-description: Maak web service-eindpunten in Azure Machine Learning Studio. Elk eindpunt in de webservice is onafhankelijk van elkaar geadresseerd, beperkt en beheerd.
+title: Webservice-eind punten maken
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Webservice-eind punten maken in Azure Machine Learning Studio (klassiek). Elk eind punt in de webservice wordt onafhankelijk aangepakt, beperkt en beheerd.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,45 +10,45 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d98df3e2dcc8112df9d56033bece069607380d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751175"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493233"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Eindpunten voor geïmplementeerde Azure Machine Learning Studio-webservices maken
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Eind punten maken voor geïmplementeerde Azure Machine Learning Studio (klassieke) webservices
 
 > [!NOTE]
-> Dit onderwerp wordt beschreven technieken die van toepassing op een **klassieke** Machine Learning-webservice.
+> In dit onderwerp worden technieken beschreven die van toepassing zijn op een **klassieke** machine learning-webservice.
 
-Na de implementatie van een webservice wordt een standaardeindpunt voor de service gemaakt. Het standaardeindpunt kan worden aangeroepen met de API-sleutel. U kunt meer eindpunten toevoegen met hun eigen sleutels van de Web Services-portal.
-Elk eindpunt in de webservice is onafhankelijk van elkaar geadresseerd, beperkt en beheerd. Elk eindpunt is een unieke URL met een autorisatiesleutel die u aan uw klanten kunt distribueren.
+Na de implementatie van een webservice wordt een standaardeindpunt voor de service gemaakt. Het standaardeindpunt kan worden aangeroepen met de API-sleutel. U kunt meer eind punten toevoegen met hun eigen sleutels vanuit de portal voor webservices.
+Elk eind punt in de webservice wordt onafhankelijk aangepakt, beperkt en beheerd. Elk eind punt is een unieke URL met een autorisatie sleutel die u aan uw klanten kunt distribueren.
 
-## <a name="add-endpoints-to-a-web-service"></a>Eindpunten toevoegen aan een webservice
+## <a name="add-endpoints-to-a-web-service"></a>Eind punten toevoegen aan een webservice
 
-U kunt een eindpunt toevoegen aan een webservice met behulp van de portal van Azure Machine Learning-webservices. Zodra het eindpunt is gemaakt, kunt u deze via synchrone API's, batch-API's, gebruiken en excel-werkbladen.
+U kunt een eind punt toevoegen aan een webservice met behulp van de Azure Machine Learning Web Services-portal. Zodra het eind punt is gemaakt, kunt u het gebruiken via synchrone Api's, batch-Api's en Excel-werk bladen.
 
 > [!NOTE]
-> Als u extra eindpunten aan de web-service hebt toegevoegd, kunt u het standaardeindpunt niet verwijderen.
+> Als u extra eind punten aan de webservice hebt toegevoegd, kunt u het standaard eindpunt niet verwijderen.
 
-1. In Machine Learning Studio, klikt u op de linkernavigatiekolom op Web Services.
-2. Klik aan de onderkant van het dashboard van de webservice op **-eindpunten beheren**. De Azure Machine Learning-webserviceportal geopend op de pagina eindpunten voor de webservice.
+1. Klik in Machine Learning Studio (klassiek) in de linker navigatie kolom op Web Services.
+2. Klik onder aan het dash board van de webservice op **eind punten beheren**. De Azure Machine Learning Web Services-portal wordt geopend op de pagina eind punten voor de webservice.
 3. Klik op **Nieuw**.
-4. Typ een naam en beschrijving voor het nieuwe eindpunt. Namen van eindpunten 24 tekens of minder lang moeten zijn en moeten bestaan uit kleine letters of cijfers. Selecteer het niveau van logboekregistratie en of de voorbeeldgegevens is ingeschakeld. Zie voor meer informatie over logboekregistratie, [logboekregistratie inschakelen voor Machine Learning-webservices](web-services-logging.md).
+4. Typ een naam en beschrijving voor het nieuwe eind punt. Namen van eind punten moeten uit 24 tekens of minder bestaan en moeten bestaan uit kleine letters of cijfers. Selecteer het logboek registratie niveau en of voorbeeld gegevens zijn ingeschakeld. Zie [logboek registratie inschakelen voor machine learning-webservices](web-services-logging.md)voor meer informatie over logboek registratie.
 
-## <a id="scaling"></a> Een webservice schalen door extra eindpunten toe te voegen
+## <a id="scaling"></a>Een webservice schalen door extra eind punten toe te voegen
 
-Standaard is elke gepubliceerde webservice is geconfigureerd voor ondersteuning van 20 gelijktijdige aanvragen, en mag wel 200 gelijktijdige aanvragen. Azure Machine Learning Studio wordt automatisch geoptimaliseerd voor de instelling voor de beste prestaties voor uw webservice en de portal waarde wordt genegeerd.
+Elke gepubliceerde webservice is standaard geconfigureerd voor de ondersteuning van 20 gelijktijdige aanvragen en kan Maxi maal 200 gelijktijdige aanvragen zijn. De klassieke versie van Azure Machine Learning Studio optimaliseert automatisch de instelling om de beste prestaties voor uw webservice te bieden en de waarde van de portal wordt genegeerd.
 
-Als u wilt de API met een hogere belasting dan een waarde voor maximum aantal gelijktijdige aanroepen van 200 aanroepen ondersteunt, moet u meerdere eindpunten maken van de dezelfde web-service. U kunt uw load willekeurig distribueren op alle.
+Als u van plan bent de API aan te roepen met een hogere belasting dan een maximum waarde voor gelijktijdige aanroepen van 200, moet u meerdere eind punten maken op dezelfde webservice. U kunt de belasting vervolgens wille keurig verdelen over al deze taken.
 
-De schaal van een webservice is een veelvoorkomende taak. Er zijn enkele redenen om te schalen naar meer dan 200 gelijktijdige aanvragen ondersteunen, hogere mate van beschikbaarheid via meerdere eindpunten of het bieden van afzonderlijke eindpunten voor de webservice. U kunt de schaal vergroten door het toevoegen van extra eindpunten voor de dezelfde webservice via de [Azure Machine Learning-webservice](https://services.azureml.net/) portal.
+Het schalen van een webservice is een veelvoorkomende taak. Enkele redenen om te schalen zijn het ondersteunen van meer dan 200 gelijktijdige aanvragen, het verhogen van de beschik baarheid via meerdere eind punten of het bieden van afzonderlijke eind punten voor de webservice. U kunt de schaal verg Roten door extra eind punten voor dezelfde webservice toe te voegen via de [Azure machine learning-webservice](https://services.azureml.net/) Portal.
 
-Houd er rekening mee dat met behulp van een aantal hoge gelijktijdigheid schadelijk als u niet van de API met een overeenkomstige hoge frequentie aanroepen bent. U ziet er kunnen sporadisch time-outs en/of pieken in de latentie als u een relatief lage belasting voor een API die is geconfigureerd voor hoge belasting.
+Houd er rekening mee dat het gebruik van een hoog gelijktijdigheids aantal nadelig kan zijn als u de API niet aanroept met een overeenkomend hoog aantal. U kunt sporadische time-outs en/of pieken in de latentie zien als u een relatief lage belasting voor een API hebt geconfigureerd voor hoge belasting.
 
-De synchrone API's worden meestal gebruikt in situaties waar een lage latentie is vereist. Hier latentie betekent de tijd die nodig is voor de API om een aanvraag te voltooien en niet wordt gehouden met eventuele vertragingen in het netwerk. Stel dat u hebt een API met een latentie 50 ms. Volledig gebruiken voor de beschikbare capaciteit met toevoerregelniveau hoog en het maximum aantal gelijktijdige aanroepen = 20, moet u deze API 20 * 1000 aanroepen / 50 = 400 keer per seconde. Een maximum aantal gelijktijdige aanroepen van 200 kunt dit verder uitgebreid, u voor het aanroepen van de API 4000 mislukte opvragingen per seconde, ervan uitgaande dat het een 50 ms latentie.
+De synchrone Api's worden doorgaans gebruikt in situaties waarin een lage latentie gewenst is. De latentie is hier de tijd die de API nodig heeft om één aanvraag te volt ooien en geen netwerk vertragingen. Stel dat u een API hebt met een latentie van 50 MS. Als u de beschik bare capaciteit met het hoge en maximum aantal gelijktijdige aanroepen = 20 volledig wilt gebruiken, moet u deze API 20 * 1000/50 = 400 keer per seconde aanroepen. Door dit verder uit te breiden, kunt u met een maximum aantal gelijktijdige aanroepen van 200 de API 4000 keer per seconde aanroepen, uitgaande van een latentie van 50 MS.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Het gebruik van een Azure Machine Learning-webservice](consume-web-services.md).
+[Een Azure machine learning-webservice gebruiken](consume-web-services.md).

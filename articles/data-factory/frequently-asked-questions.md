@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 764a4dd31125dad20f6ef23e3628d7710dba2b85
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880144"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481148"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
@@ -55,7 +55,7 @@ Voor ontwikkel aars en gegevens technici van Visual Data is de Data Factory-webi
 
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Uitgebreide platformoverschrijdende Sdk's voor geavanceerde gebruikers
 Data Factory v2 biedt een uitgebreide set Sdk's die kan worden gebruikt voor het ontwerpen, beheren en bewaken van pijp lijnen met behulp van uw favoriete IDE, waaronder:
-* Python-SDK
+* Python SDK
 * Power shell CLI
 * C# SDK
 
@@ -72,7 +72,7 @@ Als u uw SSIS-workloads wilt verplaatsen, kunt u een Data Factory maken en een A
 ### <a name="sdks"></a>SDK's
 Als u een ervaren gebruiker bent en op zoek bent naar een programmatische interface, biedt Data Factory een uitgebreide set Sdk's die u kunt gebruiken om pijp lijnen te ontwerpen, beheren of bewaken met behulp van uw favoriete IDE. Taal ondersteuning omvat .NET, Power shell, python en REST.
 
-### <a name="monitoring"></a>Controleren
+### <a name="monitoring"></a>Bewaking
 U kunt uw gegevens fabrieken bewaken via Power shell, SDK of de visuele controle Hulpprogramma's in de gebruikers interface van de browser. U kunt op aanvraag, op basis van triggers en op tijd gebaseerde aangepaste stromen op een efficiënte en efficiënte manier bewaken en beheren. Annuleer bestaande taken, Bekijk fouten in een oogopslag, zoom op om gedetailleerde fout berichten op te halen en los de problemen op, in één venster van glas zonder tussen komst te scha kelen of te navigeren tussen schermen. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nieuwe functies voor SSIS in Data Factory
@@ -168,13 +168,13 @@ Ja, para meters zijn een concept op het hoogste niveau in Data Factory. U kunt p
 Ja. U kunt standaard waarden definiëren voor de para meters in de pijp lijnen. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Kan een activiteit in een pijp lijn argumenten gebruiken die worden door gegeven aan een pijplijn uitvoering? 
-Ja. Elke activiteit in de pijp lijn kan de parameter waarde gebruiken die wordt door gegeven aan de pijp lijn en wordt uitgevoerd met de constructie `@parameter`. 
+Ja. Elke activiteit in de pijp lijn kan de parameter waarde gebruiken die wordt door gegeven aan de pijp lijn en wordt uitgevoerd met de `@parameter` constructie. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Kan een uitvoer eigenschap van een activiteit worden gebruikt in een andere activiteit? 
-Ja. Een uitvoer van de activiteit kan worden gebruikt in een volgende activiteit met de constructie `@activity`.
+Ja. Een uitvoer van de activiteit kan worden gebruikt in een volgende activiteit met de `@activity`-constructie.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hoe kan ik worden Null-waarden in een uitvoer van een activiteit zonder problemen verwerkt? 
-U kunt de `@coalesce`-construct in de expressies gebruiken om null-waarden correct te verwerken. 
+U kunt de `@coalesce` construct in de expressies gebruiken om null-waarden zonder problemen te verwerken. 
 
 ## <a name="mapping-data-flows"></a>Toewijzing gegevensstromen
 
@@ -191,6 +191,82 @@ Gebruik de Kopieer activiteit om gegevens te stage van een van de andere connect
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Is de zelf-hostende Integration runtime beschikbaar voor gegevens stromen?
 
 Zelf-hostende IR is een ADF-pijp lijn constructie die u met de Kopieer activiteit kunt gebruiken om gegevens te verkrijgen of te verplaatsen naar en van on-premises of op virtuele machines gebaseerde gegevens bronnen en Sinks. Faseer de gegevens eerst met een kopie, vervolgens de gegevens stroom voor trans formatie en vervolgens een volgende kopie als u de getransformeerde gegevens terug naar de on-premises opslag wilt verplaatsen.
+
+## <a name="wrangling-data-flows"></a>Wrangling-gegevens stromen
+
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Wat zijn de ondersteunde regio's voor wrangling data flow?
+
+Wrangling-gegevens stroom wordt momenteel ondersteund in gegevens fabrieken die in de volgende regio's zijn gemaakt:
+
+* Australië - oost
+* Canada - centraal
+* India - centraal
+* US - centraal
+* US - oost
+* US - oost 2
+* Japan - Oost
+* Europa - noord
+* Azië - zuidoost
+* US - zuid-centraal
+* VK - zuid
+* US - west-centraal
+* Europa -west
+* US - west
+* US - west 2
+
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Wat zijn de beperkingen en beperkingen met wrangling-gegevens stroom?
+
+Namen van gegevensset mogen alleen alfanumerieke tekens bevatten. De volgende gegevens archieven worden ondersteund:
+
+* DelimitedText-gegevensset in Azure Blob Storage met account sleutel verificatie
+* DelimitedText-gegevensset in Azure Data Lake Storage Gen2 met account sleutel of Service-Principal-verificatie
+* DelimitedText-gegevensset in Azure Data Lake Storage gen1 met Service-Principal-verificatie
+* Azure SQL Database en data warehouse met behulp van SQL-verificatie. Zie ondersteunde SQL-typen hieronder. Er is geen poly base-of staging-ondersteuning voor Data Warehouse.
+
+Op dit moment wordt de integratie van de gekoppelde service Key Vault niet ondersteund in de wrangling-gegevens stromen.
+
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Wat is het verschil tussen de gegevens stromen toewijzing en wrangling?
+
+Het toewijzen van gegevens stromen biedt een manier om gegevens op schaal te transformeren zonder dat hiervoor benodigde code hoeft te worden uitgevoerd. U kunt een gegevens transformatie taak ontwerpen in het canvas voor gegevens stromen door een reeks trans formaties te maken. Begin met een wille keurig aantal bron transformaties gevolgd door de stappen voor gegevens transformatie. Voltooi uw gegevens stroom met een Sink om uw resultaten in een doel te brengen. Toewijzing van gegevens stroom is handig bij het toewijzen en transformeren van gegevens met zowel bekende als onbekende schema's in de sinks en bronnen.
+
+Wrangling-gegevens stromen bieden u de mogelijkheid om flexibele gegevens voor te bereiden en te verkennen met behulp van de online Mashup-Editor van Power Query op schaal via Spark-uitvoering. Met de verhoging van de gegevens-meren hoeft u alleen maar een gegevensset te verkennen of in het Lake-gegevens verzameling te maken. U bent niet toegewezen aan een bekend doel. Wrangling-gegevens stromen worden gebruikt voor minder formele en op modellen gebaseerde analyse scenario's.
+
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Wat is het verschil tussen het Power platform gegevens stromen-en wrangling-gegevens stromen?
+
+Met de gegevens stromen van het Power-platform kunnen gebruikers gegevens uit een breed scala aan gegevens bronnen importeren en transformeren in de Common Data Service en Azure Data Lake om PowerApps-toepassingen te bouwen, Power BI rapporten of stroom automatisering. Power platform gegevens stromen gebruiken de gemaakte Power Query gegevens voorbereidings ervaring, vergelijkbaar met Power BI en Excel. Het gegevens stromen van het Power platform kan ook eenvoudig hergebruik binnen een organisatie inschakelen en de indeling automatisch afhandelen (bijvoorbeeld door het automatisch vernieuwen van gegevens stromen die afhankelijk zijn van een andere gegevens stroom wanneer de voormalige versie wordt vernieuwd).
+
+Azure Data Factory (ADF) is een beheerde service voor gegevens integratie waarmee gegevens technici en burger data integrator complexe (ETL) en werk stromen voor het ophalen van een load-trans formatie (. Wrangling data flow in ADF biedt gebruikers een vrije, serverloze omgeving die het voorbereiden van gegevens in de Cloud vereenvoudigt en kan worden geschaald naar een wille keurige gegevens grootte zonder dat er infrastructuur beheer nodig is. Er wordt gebruikgemaakt van de Power Query gegevens voorbereidings technologie (ook gebruikt in Power platform gegevens stromen, Excel, Power BI) om de gegevens voor te bereiden en te vorm te geven. Wrangling-gegevens stromen maken het voor de verwerking van alle complexiteiten en de schaal uitdagingen van big data integratie, zodat gebruikers snel gegevens op schaal kunnen voorbereiden via Spark-uitvoering. Gebruikers kunnen flexibele gegevens pijplijnen bouwen in een toegankelijke visuele omgeving met onze browser interface en de complexiteit van Spark-uitvoering laten afhandelen met ADF. Bouw planningen voor uw pijp lijnen en bewaak de uitvoeringen van uw gegevens stroom vanuit de ADF-bewakings Portal. Beheer de beschik baarheid van gegevens beschikbaarheid met de uitgebreide Beschik baarheid en waarschuwingen van de ADF en profiteer van ingebouwde continue integratie-en implementatie mogelijkheden om uw stromen in een beheerde omgeving op te slaan en te beheren. Stel waarschuwingen in en Bekijk uitvoerings plannen om te valideren dat uw logica wordt uitgevoerd zoals gepland wanneer u uw gegevens stromen afstemt.
+
+### <a name="supported-sql-types"></a>Ondersteunde SQL-typen
+
+Wrangling-gegevens stroom ondersteunt de volgende gegevens typen in SQL. U krijgt een validatie fout voor het gebruik van een gegevens type dat niet wordt ondersteund.
+
+* korte
+* double
+* realistische
+* float
+* char
+* nchar
+* varchar
+* nvarchar
+* geheel getal
+* int
+* bitmask
+* booleaans
+* smallint
+* tinyint
+* bigint
+* omvang
+* tekst
+* date
+* datum/tijd
+* DATETIME2
+* smalldatetime
+* tijdstempel
+* unieke
+* xml
+
+Andere gegevens typen zullen in de toekomst worden ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende zelf studies voor stapsgewijze instructies voor het maken van een data factory:

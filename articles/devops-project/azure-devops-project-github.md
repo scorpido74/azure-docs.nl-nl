@@ -16,16 +16,16 @@ ms.date: 06/27/2019
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4a48b5c413f6dfb58a1ba3f896ded49250cde306
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15ac201a078864717d8e0079801507cf5fc0fe3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481082"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Zelfstudie: een CI/CD-pijplijn voor uw bestaande code maken met behulp van het Azure DevOps Projects
 
-Azure DevOps Projects biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een voorbeeldtoepassing kiest voor het maken van een pijplijn voor CI (Continue integratie) en CD (Continue levering) naar Azure.
+Azure DevOps Projects biedt een vereenvoudigde ervaring waar u uw bestaande code en Git-opslagplaats gebruikt of een voorbeeldtoepassing kiest voor het maken van een CI- (Continue integratie) en CD-pijplijn (Continue levering) naar Azure.
 
 U gaat het volgende doen:
 
@@ -46,9 +46,13 @@ U gaat het volgende doen:
 
 In Azure DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U kunt een nieuwe Azure DevOps-organisatie maken of een bestaande organisatie gebruiken. Azure DevOps Projects maakt ook Azure-resources in het Azure-abonnement van uw keuze.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-2. Selecteer in het linkerdeel venster **+ een resource maken** in de linkernavigatiebalk en zoek vervolgens naar **DevOps projects**en selecteer **maken**.
+2. Selecteer in het menu Azure Portal de optie **een resource maken**.
+
+   ![Azure Portal menu: een resource maken](_img/azure-devops-project-github/createaresource.png)
+
+3. Selecteer **DevOps > DevOps-project**.
 
    ![Het DevOps Projects-dashboard](_img/azure-devops-project-github/azuredashboard.png)
 
@@ -84,7 +88,7 @@ In Azure DevOps Projects wordt een CI/CD-pijplijn gemaakt in Azure Pipelines. U 
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-them-to-azure"></a>Wijzigingen doorvoeren in GitHub en automatisch implementeren in Azure
 
-U bent nu klaar om met een team samen te werken aan de app met behulp van een CI/CD-proces waarmee automatisch uw meest recente werk op uw website wordt geïmplementeerd. Bij elke wijziging in de GitHub-opslagplaats wordt een build gestart in Azure DevOps, en met een CD-pijplijn wordt een implementatie uitgevoerd in Azure.
+U bent nu klaar om met een team samen te werken aan de app met behulp van een CI/CD-proces waarmee automatisch uw meest recente werk aan uw website wordt geïmplementeerd. Bij elke wijziging in de GitHub-opslagplaats wordt een build gestart in Azure DevOps, en met een CD-pijplijn wordt een implementatie uitgevoerd in Azure.
 
 1. Selecteer in uw DevOps project-dash board **opslag**plaatsen. Uw GitHub-opslag plaats wordt geopend in een nieuw browser tabblad. Breng een wijziging aan in de toepassing en klik vervolgens op **wijzigingen door voeren**.
 
@@ -112,7 +116,7 @@ In Azure DevOps Projects wordt automatisch een CI/CD-pijplijn geconfigureerd in 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de Azure-app-service en de gerelateerde resources die u in deze zelfstudie hebt gemaakt, verwijderen wanneer u ze niet meer nodig hebt. Gebruik hiervoor de functionaliteit **Verwijderen** op het DevOps Projects-dashboard.
+U kunt de Azure-app-service en de gerelateerde resources die u in deze zelfstudie hebt gemaakt, verwijderen wanneer u ze niet meer nodig hebt. Hiertoe gebruikt u de functionaliteit **Verwijderen** op het dashboard van DevOps Projects.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -126,7 +130,7 @@ Toen u het CI/CD-proces in deze quickstart configureerde, zijn er automatisch ee
 > * De CI/CD-pijplijn van Azure Pipelines onderzoeken
 > * Resources opschonen
 
-Voor meer informatie over de CI/CD-pijplijn raadpleegt u:
+Voor meer informatie over de CI/CD-pijplijn, zie:
 
 > [!div class="nextstepaction"]
 > [Een CD-pijplijn (continue implementatie) met meerdere fasen definiëren](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

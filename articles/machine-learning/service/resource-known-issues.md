@@ -9,35 +9,34 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.custom: seodec18
-ms.openlocfilehash: 5edf4a4f53e6b4255970f86dd942795ad2e4cbe2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476073"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
 Dit artikel helpt u bij het zoeken naar en corrigeren van fouten of fouten die zijn opgetreden bij het gebruik van Azure Machine Learning.
 
-## <a name="upcoming-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Aanstaande SR-IOV-upgrade naar NCv3 machines in AmlCompute
+## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Storing: SR-IOV upgraden naar NCv3 machines in AmlCompute
 
-Azure Compute werkt de NCv3-Sku's bij vanaf begin november ter ondersteuning van alle MPI-implementaties en-versies en RDMA-werk woorden voor met InfiniBand uitgeruste virtuele machines. Hiervoor is een korte downtime vereist. [Lees meer informatie over de SR-IOV-upgrade](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
+Azure Compute werkt de NCv3-Sku's bij vanaf begin november 2019 voor de ondersteuning van alle MPI-implementaties en-versies en RDMA-werk woorden voor door InfiniBand uitgeruste virtuele machines. Hiervoor is een korte downtime vereist. [Lees meer informatie over de SR-IOV-upgrade](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
 Als klant van Azure Machine Learning Managed Compute-aanbieding (AmlCompute), hoeft u op dit moment geen wijzigingen aan te brengen. Op basis van de [Update planning](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) moet u een korte breuk in uw training plannen. De service neemt de verantwoordelijkheid voor het bijwerken van de VM-installatie kopieën op uw cluster knooppunten en het automatisch schalen van uw cluster. Zodra de upgrade is voltooid, kunt u alle andere MPI-discibutions gebruiken (zoals OpenMPI met Pytorch), naast een hogere InfiniBand-band breedte, lagere latenties en betere prestaties van gedistribueerde toepassingen.
 
-## <a name="visual-interface-issues"></a>Problemen met de Visual-Interface
+## <a name="azure-machine-learning-designer-issues"></a>Problemen met Azure Machine Learning Designer
 
-Visuele interface voor problemen met de machine learning-service.
+Bekende problemen met de ontwerp functie.
 
 ### <a name="long-compute-preparation-time"></a>Tijd van lange reken voorbereiding
 
 Het maken van een nieuwe Compute-of aanroepen duurt een tijd, kan een paar minuten of zelfs langer duren. Het team werkt voor Optima Lise ring.
 
 
-### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Kan geen experiment uitvoeren alleen gegevensset bevat 
+### <a name="cannot-run-an-experiment-only-contains-a-dataset"></a>Een experiment kan niet worden uitgevoerd met een gegevensset 
 
 Mogelijk wilt u een experiment uitvoeren met alleen gegevensset voor het visualiseren van de gegevensset. Het is echter niet toegestaan om een experiment uit te voeren, maar nog geen gegevensset bevat. Dit probleem wordt momenteel opgelost.
  
@@ -144,11 +143,12 @@ Als u met deze stappen het probleem niet kunt oplossen, probeert u het cluster o
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-Als er een fout `FailToSendFeather` wordt weer gegeven bij het lezen van gegevens op Azure Databricks cluster, raadpleegt u de volgende oplossingen:
+Als er een `FailToSendFeather` fout optreedt bij het lezen van gegevens op Azure Databricks cluster, raadpleegt u de volgende oplossingen:
 
 * Upgrade `azureml-sdk[automl]` pakket naar de nieuwste versie.
-* Voeg .1.8-versie of hoger toe.
+* Voeg `azure-dataprep` versie 1.1.8 of hoger toe.
 * Voeg `pyarrow` versie 0,11 of hoger toe.
+
 
 ## <a name="datasets"></a>Gegevenssets
 
@@ -158,11 +158,11 @@ Dit zijn bekende problemen voor Azure Machine Learning gegevens sets.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Als u rechtstreeks gaat om uw werk ruimte weer te geven vanaf een koppeling voor delen vanuit de SDK of de portal, kunt u de pagina met het normale overzicht niet weer geven met abonnements gegevens in de uitbrei ding. U kunt ook niet overschakelen naar een andere werk ruimte. Als u een andere werk ruimte wilt weer geven, kunt u de tijdelijke oplossing rechtstreeks naar de [Azure Portal](https://portal.azure.com) gaan en zoeken naar de naam van de werk ruimte.
+Als u rechtstreeks gaat om uw werk ruimte weer te geven vanaf een koppeling voor delen vanuit de SDK of de portal, kunt u de pagina met het normale overzicht niet weer geven met abonnements gegevens in de uitbrei ding. U kunt ook niet overschakelen naar een andere werk ruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
-Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om hulp vraagt. Als u bepaalde logboeken wilt zien, gaat u naar [Azure Portal](https://portal.azure.com) en gaat u naar uw werk ruimte en selecteert u **werk ruimte > experiment > > Logboeken uit te voeren**.  U kunt deze informatie ook vinden in de sectie **experimenten** van de [landings pagina van de werk ruimte (preview)](https://ml.azure.com).
+Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om hulp vraagt. Als u bepaalde logboeken wilt weer geven, gaat u naar [Azure machine learning Studio](https://ml.azure.com) en gaat u naar uw werk ruimte en selecteert u **werk ruimte > experiment > > Logboeken uit te voeren**.  
 
 > [!NOTE]
 > Azure Machine Learning registreert gegevens uit verschillende bronnen tijdens de training, zoals AutoML of de docker-container die de trainings taak uitvoert. Veel van deze logboeken zijn niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
@@ -193,13 +193,13 @@ U ontvangt bijvoorbeeld een fout melding als u een reken doel probeert te maken 
 
 ## <a name="overloaded-azurefile-storage"></a>Overbelaste AzureFile-opslag
 
-Als er een fout `Unable to upload project files to working directory in AzureFile because the storage is overloaded` wordt weer gegeven, moet u de volgende tijdelijke oplossingen Toep assen.
+Als er een fout `Unable to upload project files to working directory in AzureFile because the storage is overloaded`wordt weer gegeven, moet u de volgende tijdelijke oplossingen Toep assen.
 
 Als u bestands share gebruikt voor andere werk belastingen, zoals gegevens overdracht, is de aanbeveling om blobs te gebruiken zodat de bestands share gratis kan worden gebruikt voor het verzenden van uitvoeringen. U kunt de werk belasting ook splitsen tussen twee verschillende werk ruimten.
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Webservices in azure Kubernetes-service fouten 
 
-Veel mislukte webservice-fouten in de Azure Kubernetes-service kunnen worden opgespoord door verbinding te maken met het cluster met behulp van `kubectl`. U kunt de `kubeconfig.json` ophalen voor een Azure Kubernetes service-cluster door het uit te voeren
+Veel webservice-fouten in de Azure Kubernetes-service kunnen worden opgespoord door verbinding te maken met het cluster met behulp van `kubectl`. U kunt de `kubeconfig.json` voor een Azure Kubernetes-service cluster verkrijgen door het uit te voeren
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -233,7 +233,7 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Als u het SSL-certificaat en de persoonlijke sleutel niet meer hebt of als u een certificaat gebruikt dat is gegenereerd door Azure Machine Learning, kunt u de bestanden ophalen voordat u het cluster ontkoppelt door verbinding te maken met het cluster met `kubectl` en de geheime `azuremlfessl` op te halen.
+Als u het SSL-certificaat en de persoonlijke sleutel niet meer hebt of als u een certificaat gebruikt dat is gegenereerd door Azure Machine Learning, kunt u de bestanden ophalen voordat u het cluster loskoppelt door verbinding te maken met het cluster met behulp van `kubectl` en de geheime `azuremlfessl`op te halen.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml

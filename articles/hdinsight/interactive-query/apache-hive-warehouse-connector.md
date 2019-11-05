@@ -1,5 +1,5 @@
 ---
-title: Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
+title: Apache Spark & component-Hive Warehouse connector-Azure HDInsight
 description: Meer informatie over het integreren van Apache Spark en Apache Hive met de Hive-Warehouse connector op Azure HDInsight.
 author: nakhanha
 ms.author: nakhanha
@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 440820b7772d8edeb43ce328b8393789d7ba2973
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 2448550cf35f92bc8d91bc6ad9d5b22cc90b5ae0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264308"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494313"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Apache Spark en Apache Hive integreren met de Hive-Warehouse connector
 
@@ -46,7 +46,7 @@ Volg deze stappen om de Hive-Warehouse connector in te stellen tussen een Spark 
 
 ### <a name="modify-hosts-file"></a>Hosts-bestand wijzigen
 
-Kopieer de knooppunt gegevens uit het bestand `/etc/hosts` op headnode0 van uw interactieve query cluster en voeg de informatie toe aan het `/etc/hosts`-bestand in de headnode0 van uw Spark-cluster. Met deze stap kan uw Spark-cluster IP-adressen van de knoop punten in het interactieve query cluster omzetten. Bekijk de inhoud van het bijgewerkte bestand met `cat /etc/hosts`. De uiteindelijke uitvoer moet er ongeveer als volgt uitzien, zoals in de onderstaande scherm afbeelding wordt weer gegeven.
+Kopieer de knooppunt gegevens uit het `/etc/hosts`-bestand op headnode0 van uw interactieve query cluster en voeg de informatie toe aan het `/etc/hosts` bestand op de headnode0 van uw Spark-cluster. Met deze stap kan uw Spark-cluster IP-adressen van de knoop punten in het interactieve query cluster omzetten. Bekijk de inhoud van het bijgewerkte bestand met `cat /etc/hosts`. De uiteindelijke uitvoer moet er ongeveer als volgt uitzien, zoals in de onderstaande scherm afbeelding wordt weer gegeven.
 
 ![hosten bestand van Hive Warehouse-connector](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
 
@@ -54,21 +54,21 @@ Kopieer de knooppunt gegevens uit het bestand `/etc/hosts` op headnode0 van uw i
 
 #### <a name="from-your-interactive-query-cluster"></a>Vanuit uw interactieve query cluster
 
-1. Ga naar de start pagina van de Apache Ambari van het cluster met `https://LLAPCLUSTERNAME.azurehdinsight.net`, waarbij `LLAPCLUSTERNAME` de naam is van uw interactieve query cluster.
+1. Ga naar de start pagina van de Apache Ambari van het cluster met `https://LLAPCLUSTERNAME.azurehdinsight.net` waarbij `LLAPCLUSTERNAME` de naam is van uw interactieve query cluster.
 
-1. Navigeer naar **Hive** > **configuratie** > **Advanced** > **Advanced component-site** > **Hive. Zookeeper. quorum** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
+1. Navigeer naar **Hive** > **configs** > **Geavanceerde** > **Advanced component-site** > **Hive. Zookeeper. quorum** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`.
 
-1. Navigeer naar **Hive** > -**configuratie** > **Advanced** > **General** > **component. meta Store. uri's** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
+1. Navigeer naar **hive** > **configs** > **Advanced** > **General** > **Hive. meta Store. uri's** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `thrift://hn0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`.
 
 #### <a name="from-your-apache-spark-cluster"></a>Vanuit uw Apache Spark-cluster
 
-1. Ga naar de start pagina van de Apache Ambari van het cluster met `https://SPARKCLUSTERNAME.azurehdinsight.net`, waarbij `SPARKCLUSTERNAME` de naam is van uw Apache Spark cluster.
+1. Ga naar de start pagina van de Apache Ambari van het cluster met `https://SPARKCLUSTERNAME.azurehdinsight.net` waarbij `SPARKCLUSTERNAME` de naam is van uw Apache Spark cluster.
 
-1. Navigeer naar **Hive** > -**configuratie** > **Geavanceerde** > **Advanced component-Interactive-site** > **Hive. llap. daemon. service. hosts** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `@llap0`.
+1. Navigeer naar **hive** > **configuraties** > **Geavanceerde** > **Geavanceerde component-Interactive-site** > **Hive. llap. daemon. service. hosts** en noteer de waarde. De waarde kan er ongeveer als volgt uitzien: `@llap0`.
 
 ### <a name="configure-spark-cluster-settings"></a>Spark-cluster instellingen configureren
 
-Navigeer vanuit uw Spark Ambari-webgebruikersinterface naar **Spark2** > -**configuratie** > **Custom Spark2-defaults**.
+Navigeer vanuit uw Spark Ambari-webgebruikersinterface naar **Spark2** > **configs** > **aangepaste Spark2-defaults**.
 
 ![Configuratie van Apache Ambari Spark2](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
@@ -80,7 +80,7 @@ Selecteer **eigenschap toevoegen...** , indien nodig, om het volgende toe te voe
 |`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Ingesteld op de JDBC-connection string, die verbinding maakt met Hiveserver2 op het interactieve query cluster. Vervang `LLAPCLUSTERNAME` door de naam van uw interactieve query cluster. Vervang `PWD` door het wacht woord.|
 |`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. Stel in op een geschikte, met HDFS compatibele tijdelijke directory. Als u twee verschillende clusters hebt, moet de map voor gefaseerde installatie een map zijn in de map met tijdelijke bestanden van het opslag account van het LLAP-cluster, zodat HiveServer2 er toegang toe heeft.  Vervang `STORAGE_ACCOUNT_NAME` door de naam van het opslag account dat wordt gebruikt door het cluster en `STORAGE_CONTAINER_NAME` door de naam van de opslag container.|
 |`spark.datasource.hive.warehouse.metastoreUri`|De waarde die u eerder hebt verkregen uit **Hive. meta Store. uri's**.|
-|`spark.security.credentials.hiveserver2.enabled`|`false` voor de implementatie modus van de garen-client.|
+|`spark.security.credentials.hiveserver2.enabled`|`false` voor de implementatie modus voor GARENs van de client.|
 |`spark.hadoop.hive.zookeeper.quorum`|De waarde die u eerder hebt verkregen van **Hive. Zookeeper. quorum**.|
 
 Sla de wijzigingen op en start de onderdelen indien nodig opnieuw op.
@@ -111,7 +111,7 @@ Voer de volgende stappen uit om een Spark-shell-sessie te starten:
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
-    Er wordt een welkomst bericht weer gegeven en een `scala>`-prompt waarin u opdrachten kunt invoeren.
+    Er wordt een welkomst bericht weer gegeven en een `scala>` prompt waarin u opdrachten kunt invoeren.
 
 1. Nadat u de Spark-shell hebt gestart, kunt u een component Warehouse connector-exemplaar starten met behulp van de volgende opdrachten:
 
@@ -163,7 +163,7 @@ Spark ondersteunt geen systeem eigen ondersteuning voor het schrijven naar de ta
     hive.createTable("sampletable_colorado").column("clientid","string").column("querytime","string").column("market","string").column("deviceplatform","string").column("devicemake","string").column("devicemodel","string").column("state","string").column("country","string").column("querydwelltime","double").column("sessionid","bigint").column("sessionpagevieworder","bigint").create()
     ```
 
-1. Filter de tabel `hivesampletable`, waarbij de kolom `state` gelijk is aan `Colorado`. Deze query van de Hive-tabel wordt geretourneerd als een Spark-data frame. Vervolgens wordt de data frame opgeslagen in de Hive-tabel `sampletable_colorado` met behulp van de `write`-functie.
+1. Filter de tabel `hivesampletable` waarbij de kolom `state` gelijk is aan `Colorado`. Deze query van de Hive-tabel wordt geretourneerd als een Spark-data frame. Vervolgens wordt de data frame opgeslagen in de Hive-tabel `sampletable_colorado` met behulp van de functie `write`.
 
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
@@ -193,7 +193,7 @@ Volg de onderstaande stappen om een component Warehouse connector-voor beeld te 
 
 1. Genereer gegevens voor de Spark-stroom die u hebt gemaakt door de volgende stappen uit te voeren:
     1. Open een tweede SSH-sessie op hetzelfde Spark-cluster.
-    1. Typ `nc -lk 9999` bij de opdracht prompt. Met deze opdracht wordt het netcat-hulp programma gebruikt voor het verzenden van gegevens van de opdracht regel naar de opgegeven poort.
+    1. Typ `nc -lk 9999`bij de opdracht prompt. Met deze opdracht wordt het netcat-hulp programma gebruikt voor het verzenden van gegevens van de opdracht regel naar de opgegeven poort.
 
 1. Ga terug naar de eerste SSH-sessie en maak een nieuwe Hive-tabel om de streaminggegevens te bewaren. Voer in de Spark-shell de volgende opdracht in:
 
@@ -224,7 +224,7 @@ Volg de onderstaande stappen om een component Warehouse connector-voor beeld te 
     hive.table("stream_table").show()
     ```
 
-Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruik `:q` om Spark-shell te verlaten voor de eerste SSH-sessie.
+Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruik `:q` om Spark-shell te sluiten voor de eerste SSH-sessie.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Gegevens beveiligen op Spark ESP-clusters
 
@@ -237,7 +237,7 @@ Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruik `:q`
     INSERT INTO demo VALUES ('InteractiveQuery');
     ```
 
-1. Bekijk de inhoud van de tabel met de volgende opdracht. Voordat het beleid wordt toegepast, wordt in de tabel @no__t 0 de volledige kolom weer gegeven.
+1. Bekijk de inhoud van de tabel met de volgende opdracht. Voordat u het beleid toepast, wordt in de tabel `demo` de volledige kolom weer gegeven.
 
     ```scala
     hive.executeQuery("SELECT * FROM demo").show()
@@ -248,13 +248,13 @@ Gebruik **CTRL + C** om netcat te stoppen bij de tweede SSH-sessie. Gebruik `:q`
 1. Pas een kolom maskerings beleid toe dat alleen de laatste vier tekens van de kolom bevat.  
     1. Ga naar de gebruikers interface van zwerver op `https://CLUSTERNAME.azurehdinsight.net/ranger/`.
     1. Klik onder **Hive**op de component service voor uw cluster.
-        ![ranger Service Manager @ no__t-1
+        ![zwerver Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
     1. Klik op het tabblad **maskeren** en vervolgens op **Nieuw beleid toevoegen**
 
         ![Hive-beleids lijst van de component Warehouse connector zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Add**.
-                ![create-beleid @ no__t-1
+    a. Geef een gewenste beleids naam op. Data base selecteren: **standaard**, Hive-tabel: **demo**, Hive-kolom: **naam**, gebruiker: **rsadmin2**, toegangs typen: **selecteren**, en **gedeeltelijk masker: weer geven laatste 4** van het menu **optie masker selecteren** . Klik op **Toevoegen**.
+                ![beleid maken](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Bekijk de inhoud van de tabel opnieuw. Na het Toep assen van het beleid voor zwerver, kunnen we alleen de laatste vier tekens van de kolom zien.
 
     ![demo tabel na toepassing van het beleid van zwerver](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)

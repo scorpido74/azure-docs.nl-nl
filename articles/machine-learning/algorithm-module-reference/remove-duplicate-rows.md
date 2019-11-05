@@ -1,24 +1,24 @@
 ---
 title: 'Dubbele rijen verwijderen: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module dubbele rijen verwijderen in Azure Machine Learning-service om mogelijke dubbele items uit een gegevensset te verwijderen.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module dubbele rijen verwijderen in Azure Machine Learning om mogelijke dubbele items uit een gegevensset te verwijderen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693665"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497701"
 ---
 # <a name="remove-duplicate-rows-module"></a>Module dubbele rijen verwijderen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om potentiële duplicaten uit een gegevensset te verwijderen.
 
@@ -26,15 +26,15 @@ Stel dat uw gegevens er als volgt uitzien en dat er meerdere records worden aang
 
 | PatientID | Initialen| Geslacht|Leeftijd|Stoffen|
 |----|----|----|----|----|
-|1|F.M.| mln.| 53| Jan|
-|2| F.A.M.| mln.| 53| Jan|
-|3| F.A.M.| mln.| 24| Jan|
-|3| F.M.| mln.| 24| Februari|
-|4| F.M.| mln.| 23| Februari|
-| | F.M.| mln.| 23| |
-|5| F.A.M.| mln.| 53| |
-|6| F.A.M.| mln.| Ner| |
-|7| F.A.M.| mln.| Ner| |
+|1|F.M.| M| 53| Jan|
+|2| F.A.M.| M| 53| Jan|
+|3| F.A.M.| M| 24| Jan|
+|3| F.M.| M| 24| Februari|
+|4| F.M.| M| 23| Februari|
+| | F.M.| M| 23| |
+|5| F.A.M.| M| 53| |
+|6| F.A.M.| M| Ner| |
+|7| F.A.M.| M| Ner| |
 
 Het is duidelijk dat dit voor beeld meerdere kolommen bevat met mogelijk dubbele gegevens. Of ze daad werkelijk worden gedupliceerd, is afhankelijk van uw kennis van de gegevens. 
 
@@ -78,4 +78,4 @@ Wanneer u de module uitvoert, wordt er een gegevensset voor kandidaten gemaakt e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

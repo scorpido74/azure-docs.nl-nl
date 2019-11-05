@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 5664bf1eaee85d2492601ef00968d9b17d857abb
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900488"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489094"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -22,9 +22,9 @@ Dit artikel laat u zien hoe u statische website-hosting kunt inschakelen met beh
 
 <a id="portal" />
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Voor een stapsgewijze zelf studie raadpleegt [u zelf studie: Een statische website hosten op Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+Zie [zelf studie: een statische website hosten op Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)voor een stapsgewijze zelf studie.
 
 Nadat u de functie voor het hosten van statische websites hebt ingeschakeld, kunt u de pagina's van uw site vanuit een browser weer geven met behulp van de open bare URL van de website.
 
@@ -38,7 +38,7 @@ In het deel venster dat wordt weer gegeven naast de pagina account overzicht van
 
 <a id="cli" />
 
-## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 
@@ -50,7 +50,7 @@ U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht re
    az account set --subscription <subscription-id>
    ```
 
-   Vervang de `<subscription-id>` waarde van de tijdelijke aanduiding door de id van uw abonnement.
+   Vervang de waarde van de tijdelijke `<subscription-id>` door de ID van uw abonnement.
 
 3. Schakel statisch website hosting in.
 
@@ -60,14 +60,14 @@ U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht re
 
    * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-   * Vervang de `<error-document-name>` tijdelijke aanduiding door de naam van het fout document dat voor gebruikers wordt weer gegeven wanneer een browser een pagina op uw site aanvraagt die niet bestaat.
+   * Vervang de tijdelijke aanduiding `<error-document-name>` door de naam van het fout document dat voor gebruikers wordt weer gegeven wanneer een browser een pagina op uw site aanvraagt die niet bestaat.
 
-   * Vervang de `<index-document-name>` tijdelijke aanduiding door de naam van het index document. Dit document is vaak "index. html".
+   * Vervang de tijdelijke aanduiding `<index-document-name>` door de naam van het index document. Dit document is vaak "index. html".
 
 4. Objecten uploaden naar de *$Web* container vanuit een bronmap.
 
    > [!NOTE]
-   > Als u Azure Cloud shell gebruikt, zorg er dan voor dat u `\` een escape-teken toevoegt bij `$web` het verwijzen naar de container `\$web`(bijvoorbeeld:). Als u een lokale installatie van Azure CLI gebruikt, hoeft u het escape teken niet te gebruiken.
+   > Als u Azure Cloud Shell gebruikt, moet u ervoor zorgen dat u een `\` escape-teken toevoegt bij het verwijzen naar de `$web` container (bijvoorbeeld `\$web`). Als u een lokale installatie van Azure CLI gebruikt, hoeft u het escape teken niet te gebruiken.
 
    In dit voor beeld wordt ervan uitgegaan dat u opdrachten uit Azure Cloud Shell sessie uitvoert.
 
@@ -77,10 +77,10 @@ U kunt statisch website hosting inschakelen met behulp van de [Azure-opdracht re
 
    * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-   * Vervang de `<source-path>` tijdelijke aanduiding door een pad naar de locatie van de bestanden die u wilt uploaden.
+   * Vervang de tijdelijke aanduiding `<source-path>` door een pad naar de locatie van de bestanden die u wilt uploaden.
 
    > [!NOTE]
-   > Als u een locatie-installatie van Azure CLI gebruikt, kunt u het pad naar een wille keurige locatie op de lokale computer gebruiken ( `C:\myFolder`bijvoorbeeld:.
+   > Als u een locatie-installatie van Azure CLI gebruikt, kunt u het pad naar een wille keurige locatie op de lokale computer gebruiken (bijvoorbeeld: `C:\myFolder`.
    >
    > Als u Azure Cloud Shell gebruikt, moet u verwijzen naar een bestands share die zichtbaar is voor de Cloud Shell. Deze locatie kan de bestands share zijn van de Cloud share zelf of een bestaande bestands share die u koppelt van de Cloud Shell. Zie [bestanden in azure Cloud shell persistent](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)maken voor meer informatie over hoe u dit doet.
 
@@ -98,11 +98,11 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
-* Vervang de `<resource-group-name>` waarde van de tijdelijke aanduiding door de naam van uw resource groep.
+* Vervang de waarde van de tijdelijke aanduiding `<resource-group-name>` door de naam van uw resource groep.
 
 <a id="powershell" />
 
-## <a name="use-powershell"></a>PowerShell gebruiken
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 U kunt statisch website hosting inschakelen met behulp van de module Azure PowerShell.
 
@@ -129,7 +129,7 @@ U kunt statisch website hosting inschakelen met behulp van de module Azure Power
    Set-AzContext $context
    ```
 
-   Vervang de `<subscription-id>` waarde van de tijdelijke aanduiding door de id van uw abonnement.
+   Vervang de waarde van de tijdelijke `<subscription-id>` door de ID van uw abonnement.
 
 5. Haal de context van het opslag account op waarmee het opslag account wordt gedefinieerd dat u wilt gebruiken.
 
@@ -138,7 +138,7 @@ U kunt statisch website hosting inschakelen met behulp van de module Azure Power
    $ctx = $storageAccount.Context
    ```
 
-   * Vervang de `<resource-group-name>` waarde van de tijdelijke aanduiding door de naam van uw resource groep.
+   * Vervang de waarde van de tijdelijke aanduiding `<resource-group-name>` door de naam van uw resource groep.
 
    * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
@@ -148,9 +148,9 @@ U kunt statisch website hosting inschakelen met behulp van de module Azure Power
    Enable-AzStorageStaticWebsite -Context $ctx -IndexDocument <index-document-name> -ErrorDocument404Path <error-document-name>
    ```
 
-   * Vervang de `<error-document-name>` tijdelijke aanduiding door de naam van het fout document dat voor gebruikers wordt weer gegeven wanneer een browser een pagina op uw site aanvraagt die niet bestaat.
+   * Vervang de tijdelijke aanduiding `<error-document-name>` door de naam van het fout document dat voor gebruikers wordt weer gegeven wanneer een browser een pagina op uw site aanvraagt die niet bestaat.
 
-   * Vervang de `<index-document-name>` tijdelijke aanduiding door de naam van het index document. Dit document is vaak "index. html".
+   * Vervang de tijdelijke aanduiding `<index-document-name>` door de naam van het index document. Dit document is vaak "index. html".
 
 7. Objecten uploaden naar de *$Web* container vanuit een bronmap.
 
@@ -162,9 +162,9 @@ U kunt statisch website hosting inschakelen met behulp van de module Azure Power
     -Context $ctx
      ```
 
-   * Vervang de `<path-to-file>` waarde van de tijdelijke aanduiding door het volledig gekwalificeerde pad naar het bestand dat u wilt uploaden (bijvoorbeeld `C:\temp\index.html`:).
+   * Vervang de waarde van de tijdelijke aanduiding `<path-to-file>` door het volledig gekwalificeerde pad naar het bestand dat u wilt uploaden (bijvoorbeeld: `C:\temp\index.html`).
 
-   * Vervang de `<blob-name>` waarde van de tijdelijke aanduiding door de naam die u de resulterende BLOB wilt geven (bijvoorbeeld `index.html`:).
+   * Vervang de waarde van de tijdelijke aanduiding `<blob-name>` door de naam die u de resulterende BLOB wilt geven (bijvoorbeeld: `index.html`).
 
 <a id="powershell-find-url" />
 
@@ -179,17 +179,19 @@ Zoek de URL met behulp van de volgende opdracht:
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
-* Vervang de `<resource-group-name>` waarde van de tijdelijke aanduiding door de naam van uw resource groep.
+* Vervang de waarde van de tijdelijke aanduiding `<resource-group-name>` door de naam van uw resource groep.
 
 * Vervang de waarde van de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
 <a id="metrics" />
 
+---
+
 ## <a name="enable-metrics-on-static-website-pages"></a>Metrische gegevens inschakelen op de vaste website pagina's
 
 Wanneer u metrische gegevens hebt ingeschakeld, worden verkeers statistieken voor bestanden in de **$Web** container gerapporteerd in het dash board metrische gegevens.
 
-1. Klik op **instellingen** > **meet waarden** **controleren** > .
+1. Klik op **instellingen** > **bewaking** > **metrische gegevens**.
 
    Metrische gegevens worden gegenereerd door te hooken in verschillende metrische Api's. In de portal worden alleen de API-leden weer gegeven die binnen een bepaalde periode zijn gebruikt, zodat ze alleen kunnen worden gericht op leden die gegevens retour neren. Om ervoor te zorgen dat u het benodigde API-lid kunt selecteren, is de eerste stap om het tijds bestek uit te breiden.
 
@@ -201,7 +203,7 @@ Wanneer u metrische gegevens hebt ingeschakeld, worden verkeers statistieken voo
 
    ![Naam ruimte voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-metrics-namespace.png)
 
-4. Selecteer vervolgens de waarde voor uitgaand verkeer.
+4. Selecteer **vervolgens de waarde** voor uitgaand verkeer.
 
    ![Metrische gegevens voor metrische gegevens van statische websites Azure Storage](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
@@ -225,4 +227,4 @@ Wanneer u metrische gegevens hebt ingeschakeld, worden verkeers statistieken voo
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Uw eerste serverloze web-app bouwen](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Zelfstudie: Uw domein hosten in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+* [Zelf studie: uw domein hosten in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

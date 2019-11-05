@@ -1,6 +1,6 @@
 ---
-title: Implementatieplannen voor - Azure Active Directory | Microsoft Docs
-description: End-to-end-richtlijnen over het implementeren van de vele mogelijkheden van Azure Active Directory.
+title: Implementatie plannen-Azure Active Directory | Microsoft Docs
+description: End-to-end-richt lijnen over het implementeren van veel Azure Active Directory mogelijkheden.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336863"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473281"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-implementatieplannen
 Zoekt u end-to-end-richt lijnen voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden? Met Azure AD-implementatie plannen kunt u de bedrijfs waarde, plannings overwegingen en operationele procedures door lopen die nodig zijn om algemene Azure AD-mogelijkheden te implementeren.
@@ -29,7 +29,7 @@ Wanneer u begint met het plannen van uw implementatie voor een nieuwe functie, i
 
 Rollen kunnen de volgende zijn: 
 
-|Role |Description |
+|Rol |Beschrijving |
 |-|-|
 |Eind gebruiker|Een representatieve groep gebruikers waarvoor de functionaliteit wordt geïmplementeerd. Bekijkt vaak een voor beeld van de wijzigingen in een test programma.
 |IT-ondersteunings Manager|De IT-afdeling ondersteunt organisaties die in het perspectief van een helpdesk medewerker invoer kunnen bieden over de ondersteuning van deze wijziging.  
@@ -59,23 +59,24 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 
 ## <a name="deploy-authentication"></a>Verificatie implementeren
 
-| Mogelijkheid | Description|
+| Mogelijkheid | Beschrijving|
 | -| -|
-| [Multi-Factor Authentication](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)| Azure Multi-Factor Authentication (MFA) is een Microsoft-oplossing voor verificatie in twee stappen. Met door de beheerder goedgekeurde verificatie methoden helpt Azure MFA u bij het beveiligen van de toegang tot uw gegevens en toepassingen terwijl de vraag naar een eenvoudig aanmeldings proces beantwoordt. |
+| [Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)| Azure Multi-Factor Authentication (MFA) is een Microsoft-oplossing voor verificatie in twee stappen. Met door de beheerder goedgekeurde verificatie methoden helpt Azure MFA u bij het beveiligen van de toegang tot uw gegevens en toepassingen terwijl de vraag naar een eenvoudig aanmeldings proces beantwoordt. |
 | [Voorwaardelijke toegang](https://aka.ms/deploymentplans/ca)| Met voorwaardelijke toegang kunt u geautomatiseerde beslissingen over toegangs beheer implementeren voor wie toegang heeft tot uw Cloud-apps, op basis van voor waarden. |
 | [Self-service voor wachtwoord opnieuw instellen](https://aka.ms/deploymentplans/sspr)| Met selfservice voor wachtwoord herstel kunnen uw gebruikers hun wacht woord opnieuw instellen zonder tussen komst van de beheerder, wanneer en wanneer dat nodig is. |
+| [Geen wacht woord](https://aka.ms/deploymentplans/passwordless) | Implementeer verificatie op basis van een wacht woord met behulp van de Microsoft Authenticator app-of FIDO2-beveiligings sleutels in uw organisatie |
 
 ## <a name="deploy-application-management"></a>Toepassings beheer implementeren
 
-| Mogelijkheid | Description|
+| Mogelijkheid | Beschrijving|
 | -| - |
 | [Eenmalige aanmelding](https://aka.ms/deploymentplans/sso)| Met eenmalige aanmelding kunnen uw gebruikers toegang krijgen tot de apps en bronnen die ze nodig hebben om zaken te doen terwijl ze zich slechts één keer aanmelden. Nadat ze zich hebben aangemeld, kunnen ze van Microsoft Office naar Sales Force naar interne toepassingen gaan zonder dat ze een tweede keer referenties hoeven in te voeren. |
-| [Toegangs venster](https://aka.ms/deploymentplans/accesspanel)| Biedt uw gebruikers een eenvoudige hub om te ontdekken en toegang tot al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
+| [Toegangs venster](https://aka.ms/deploymentplans/accesspanel)| Bied uw gebruikers een eenvoudige hub voor het detecteren en openen van al hun toepassingen. Stel ze in staat om productiever te zijn met selfservice mogelijkheden, zoals het aanvragen van toegang tot apps en groepen, of het beheren van de toegang tot bronnen namens anderen. |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>Hybride scenario's implementeren
 
-| Mogelijkheid | Description|
+| Mogelijkheid | Beschrijving|
 | -| -|
 | [ADFS voor wachtwoordhash-synchronisatie](https://aka.ms/deploymentplans/adfs2phs)| Met wacht woord-hash-synchronisatie worden hashes van gebruikers wachtwoorden gesynchroniseerd van on-premises Active Directory naar Azure AD, zodat gebruikers zonder tussen komst van de on-premises-Active Directory worden geverifieerd met Azure AD. |
 | [ADFS voor Pass Through-verificatie](https://aka.ms/deploymentplans/adfs2pta)| Met Azure AD Pass-Through-verificatie kunnen gebruikers zich aanmelden bij zowel lokale als Cloud toepassingen met dezelfde wacht woorden. Deze functie biedt gebruikers een betere ervaring-een minder wacht woord om te onthouden en vermindert de IT-helpdesk kosten, omdat gebruikers minder kans hebben om zich aan te melden. Als iemand zich aanmeldt bij Azure AD, worden met deze functie de wachtwoorden rechtstreeks gecontroleerd tegen de on-premises Active Directory. |
@@ -84,14 +85,14 @@ Het uitbreiden van de implementatie naar grotere groepen gebruikers moet worden 
 
 ## <a name="deploy-user-provisioning"></a>Gebruikers inrichten implementeren
 
-| Mogelijkheid | Description|
+| Mogelijkheid | Beschrijving|
 | -| -|
-| [Inrichten van gebruikers](https://aka.ms/UserProvisioningDPDownload)| Met Azure AD kunt u het maken, onderhouden en verwijderen van gebruikers-id's in cloud(SaaS)-toepassingen als Dropbox, Salesforce, ServiceNow en andere, automatiseren. |
-| [Inrichten van WorkDay gebaseerde inkomende gebruikers](https://aka.ms/WorkdayDeploymentPlan)| WorkDay gebaseerde inkomende inrichten van gebruikers naar Active Directory maakt u een basis voor lopende identiteitsbestuur, en verbetert de kwaliteit van zakelijke processen die afhankelijk van de gezaghebbende identiteitsgegevens zijn. Met deze functie kunt u de identiteits levenscyclus van werk nemers en voorwaardelijke werkers naadloos beheren door regels te configureren die de processen voor het inrichten van de invoeg toepassing (zoals maken, beëindigen, overdragen) toewijzen aan IT-inrichtings acties (zoals Create, Enable, Scha |
+| [Inrichten van gebruikers](https://aka.ms/deploymentplans/userprovisioning)| Met Azure AD kunt u het maken, onderhouden en verwijderen van gebruikers-id's in cloud(SaaS)-toepassingen als Dropbox, Salesforce, ServiceNow en andere, automatiseren. |
+| [Op werk dagen aangedreven inkomend gebruikers inrichten](https://aka.ms/WorkdayDeploymentPlan)| Door werkdag aangestuurde inkomend gebruikers inrichten voor Active Directory maakt een basis voor de continue identiteits bestuur en verbetert de kwaliteit van bedrijfs processen die afhankelijk zijn van gezaghebbende identiteits gegevens. Met deze functie kunt u de identiteits levenscyclus van werk nemers en voorwaardelijke werkers naadloos beheren door regels te configureren die de processen voor het inrichten van de invoeg toepassing (zoals maken, beëindigen, overdragen) toewijzen aan IT-inrichtings acties (zoals Create, Enable, Scha |
 
 ## <a name="deploy-governance-and-reporting"></a>Governance en rapportage implementeren
 
-| Mogelijkheid | Description|
+| Mogelijkheid | Beschrijving|
 | -| -|
 | [Privileged Identity Management](https://aka.ms/deploymentplans/pim)| Azure AD Privileged Identity Management (PIM) helpt u bij het beheren van geprivilegieerde beheerders rollen in azure AD, Azure-resources en andere online services van micro soft. PIM biedt oplossingen zoals just-in-time-toegang, werk stromen voor het aanvragen van goed keuring en volledig geïntegreerde toegangs beoordelingen, zodat u schadelijke activiteiten van geprivilegieerde rollen in realtime kunt identificeren, detecteren en voor komen. |
 | [Rapportage en bewaking](https://aka.ms/deploymentplans/reporting)| Het ontwerp van uw Azure AD-oplossing voor rapportage en bewaking is afhankelijk van uw wettelijke, beveiligings-en operationele vereisten, evenals uw bestaande omgeving en processen. In dit artikel vindt u de verschillende ontwerp opties en wordt u begeleid bij de juiste implementatie strategie. |

@@ -1,24 +1,24 @@
 ---
 title: '2-klasse support vector machine: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de computer module voor **ondersteuning van twee klassen** in azure machine learning service om een model te maken dat is gebaseerd op het algoritme van de ondersteunings vector machine.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de machine module voor **ondersteuning van twee klassen** in azure machine learning om een model te maken dat is gebaseerd op de computer algoritme van de ondersteunings vector.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0ab4a0ebf2844d064e40c8417ab22162d2d0ded6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692608"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485859"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Machine module voor de ondersteuning van twee klassen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een model te maken dat is gebaseerd op de computer algoritme van de ondersteunings vector. 
 
@@ -80,4 +80,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

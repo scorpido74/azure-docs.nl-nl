@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717257"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522731"
 ---
-## <a name="create-a-speech-resource"></a>Een spraak-resource maken
+## <a name="create-a-speech-resource"></a>Een spraak bron maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com)
-1. Klik op [maken **spraak** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices) resource
-1. Voer alle vereiste instellingen:
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
+1. Klik [op **spraak** bron maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)
+1. Voer alle vereiste instellingen in:
 
     |Instelling|Waarde|
     |--|--|
-    |Name|Gewenste naam (2-64 tekens)|
-    |Subscription|Selecteer de juiste abonnement|
-    |Location|Selecteer een locatie in de buurt en beschikbaar|
-    |Prijscategorie|`F0` -de minimale prijscategorie|
-    |Resourcegroep|Selecteer een beschikbare resourcegroep|
+    |Naam|Gewenste naam (2-64 tekens)|
+    |Abonnement|Selecteer het juiste abonnement|
+    |Locatie|Selecteer een locatie in de buurt en beschik bare locaties|
+    |Prijscategorie|`F0`-de minimale prijs categorie|
+    |Resourcegroep|Een beschik bare resource groep selecteren|
 
-1. Klik op **maken** en wacht tot de resource moet worden gemaakt. Nadat deze is gemaakt, gaat u naar de resourcepagina
-1. Verzamelen geconfigureerd `endpoint` en een API-sleutel:
+1. Klik op **maken** en wacht tot de resource is gemaakt. Nadat deze is gemaakt, gaat u naar de pagina Resource
+1. Geconfigureerde `endpoint` en een API-sleutel verzamelen:
 
-    |Resource-tabblad in de Portal|Instelling|Value|
+    |Het tabblad resource in de portal|Instelling|Waarde|
     |--|--|--|
-    |**Overzicht**|Eindpunt|Kopieer het eindpunt. Het lijkt op `https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
-    |**sleutels**|API-sleutel|1 van de twee sleutels kopiëren. Het is een 32 tekenreeks alfanumerieke tekens zonder spaties of streepjes, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+    |**Overzicht**|Eindpunt|Kopieer het eind punt. Het lijkt op `https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
+    |**Subknooppuntsleutels**|API-sleutel|Kopieer 1 van de twee sleutels. Het is een teken reeks van 32 alfanumerieke tekens zonder spaties of streepjes `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|

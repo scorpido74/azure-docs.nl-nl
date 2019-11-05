@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8b8e7270851c71869b1a67f0f0f0ba2187f0e87
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470671"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certificaten en de App Service Environment 
 
@@ -64,7 +64,7 @@ Apps die worden gehost in een ASE kunnen gebruikmaken van de app-gerichte certif
 - Op IP gebaseerde SSL, die alleen wordt ondersteund met een externe ASE.  Een ILB-ASE biedt geen ondersteuning voor SSL op basis van IP.
 - Gehoste certificaten voor de sleutel kluis 
 
-De instructies voor het uploaden en beheren van deze certificaten zijn beschikbaar in de App Service https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl SSL-zelf studie.  Als u alleen certificaten configureert die overeenkomen met een aangepaste domein naam die u hebt toegewezen aan uw web-app, zijn deze instructies voldoende. Als u het certificaat voor een ILB ASE-web-app uploadt met de naam van het standaard domein, geeft u de SCM-site op in het SAN van het certificaat zoals eerder is aangegeven. 
+De instructies voor het uploaden en beheren van deze certificaten zijn beschikbaar in [een SSL-certificaat toevoegen in azure app service](../configure-ssl-certificate.md).  Als u alleen certificaten configureert die overeenkomen met een aangepaste domein naam die u hebt toegewezen aan uw web-app, zijn deze instructies voldoende. Als u het certificaat voor een ILB ASE-web-app uploadt met de naam van het standaard domein, geeft u de SCM-site op in het SAN van het certificaat zoals eerder is aangegeven. 
 
 ## <a name="tls-settings"></a>TLS-instellingen 
 

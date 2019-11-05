@@ -14,17 +14,17 @@ ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 82a1dc293a019e4a48760ccbce830d067f2d620d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240928"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471608"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Een ASP.NET Core-web-app maken in Azure
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie [Een .NET Core-web-app maken en implementeren in App Service onder Linux ](./containers/quickstart-dotnetcore.md) om een app te implementeren in App Service onder _Linux_.
+> In dit artikel gaat u een app implementeren in App Service onder Windows. Zie _Een .NET Core-web-app maken en implementeren in App Service onder Linux_  om een app te implementeren in App Service onder [Linux](./containers/quickstart-dotnetcore.md).
 >
 
 [Azure App Service](overview.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie.
@@ -39,8 +39,8 @@ Als u deze zelf studie wilt volt ooien, installeert u <a href="https://www.visua
 
 Als u Visual Studio 2019 al hebt geïnstalleerd:
 
-- Installeer de meest recente updates in Visual Studio door **Help** > **controleren op updates**te selecteren.
-- Voeg de werk belasting toe door **extra** > hulp middelen**en functies**te selecteren.
+- Installeer de meest recente updates in Visual Studio door **Help** te selecteren > **op updates te controleren**.
+- Voeg de werk belasting toe door **extra** > **Hulpprogram Ma's en functies ophalen**te selecteren.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Een ASP.NET Core-web-app maken
 
@@ -60,7 +60,7 @@ Maak een ASP.NET Core-web-app door de volgende stappen uit te voeren:
 
     U kunt elk type ASP.NET Core-web-app implementeren in Azure.
 
-1. Selecteer in het Visual Studio-menu de optie **fout opsporing** > **starten zonder fout opsporing** om de web-app lokaal uit te voeren.
+1. Selecteer in het menu van Visual Studio **fout opsporing** > **zonder fout opsporing starten** om de web-app lokaal uit te voeren.
 
    ![De app lokaal uitvoeren](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
@@ -92,15 +92,15 @@ Maak een ASP.NET Core-web-app door de volgende stappen uit te voeren:
 
 1. Voer in het dialoog venster **hosting plan configureren** de waarden in van de volgende tabel en selecteer vervolgens **OK**.
 
-   | Instelling | Voorgestelde waarde | Description |
+   | Instelling | Voorgestelde waarde | Beschrijving |
    |-|-|-|
    |App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
-   | Location | Europa -west | Het datacenter waar de web-app wordt gehost. |
-   | Size | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
+   | Locatie | Europa -west | Het datacenter waar de web-app wordt gehost. |
+   | Grootte | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
 
    ![Een App Service-plan maken](./media/app-service-web-get-started-dotnet/app-service-plan-vs2019.png)
 
-1. Voer **bij naam**een unieke app-naam in die alleen de `a-z`geldige tekens bevat: `A-Z` `0-9`,, en `-`. U kunt de automatisch gegenereerde unieke naam accepteren. De URL van de web-app is `http://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is.
+1. Voer bij **naam**een unieke app-naam in die alleen de geldige tekens bevat `a-z`, `A-Z`, `0-9`en `-`. U kunt de automatisch gegenereerde unieke naam accepteren. De URL van de web-app is `http://<app_name>.azurewebsites.net`, waarbij `<app_name>` de naam van uw app is.
 
    ![Uw app-naam configureren](./media/app-service-web-get-started-dotnet/web-app-name-vs2019.png)
 
@@ -110,13 +110,13 @@ Zodra de wizard is voltooid, wordt de ASP.NET Core-web-app naar Azure gepublicee
 
 ![Gepubliceerde ASP.NET-web-app in Azure](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
-De naam van de app die is opgegeven in de **app service nieuwe pagina maken** , wordt gebruikt als het `http://<app_name>.azurewebsites.net`URL-voor voegsel in de notatie.
+De naam van de app die is opgegeven in de **app service nieuwe pagina maken** , wordt gebruikt als het URL-voor voegsel in de notatie `http://<app_name>.azurewebsites.net`.
 
 **Gefeliciteerd!** Uw ASP.NET Core web-app wordt live uitgevoerd in Azure App Service.
 
 ## <a name="update-the-app-and-redeploy"></a>De app bijwerken en opnieuw implementeren
 
-1. Open in **Solution Explorer**onder uw project de **pagina's** > **index. cshtml**.
+1. Ga in **Solution Explorer**naar het project en open **pagina's** > **index. cshtml**.
 
 1. Vervang de twee `<div>`-tags door de volgende code:
 
@@ -139,17 +139,19 @@ Als het publiceren is voltooid, start Visual Studio een browser waarin de URL va
 
 ## <a name="manage-the-azure-app"></a>De Azure-app beheren
 
-1. Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de web-app te beheren.
+Als u de Web-App wilt beheren, gaat u naar de [Azure Portal](https://portal.azure.com)en zoekt en selecteert u **app Services**.
 
-1. Selecteer in het linkermenu **App Services** en selecteer de naam van uw Azure-app.
+![App Services selecteren](./media/app-service-web-get-started-dotnet/app-services.png)
 
-   ![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
+Selecteer op de pagina **app Services** de naam van uw web-app.
 
-   De pagina Overzicht van uw web-app wordt weergegeven. Hier kunt u het basis beheer, zoals bladeren, stoppen, starten, opnieuw starten en verwijderen.
+![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-dotnet/access-portal-vs2019.png)
 
-   ![App Service in Azure Portal](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+De pagina Overzicht van uw web-app wordt weergegeven. Hier kunt u het basis beheer, zoals bladeren, stoppen, starten, opnieuw starten en verwijderen.
 
-   Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
+![App Service in Azure Portal](./media/app-service-web-get-started-dotnet/web-app-general-vs2019.png)
+
+Het linkermenu bevat een aantal pagina's voor het configureren van uw app.
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c668d1d0783300333e4d0b78c93fe5e7a9d0dd0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5a7374af71b262a72b680ac215f6960f961b3a15
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069241"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470624"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Inleiding tot Azure App Service Environments #
  
@@ -29,8 +29,8 @@ Azure App Service Environment is een functie van Azure App Service die een volle
 * Web-apps van Windows
 * Linux-web-apps 
 * Docker-containers
-* Mobile Apps
-* Functies
+* Mobiele apps
+* Functions
 
 AS-omgevingen (App Service-omgevingen) zijn geschikt voor werkbelastingen van toepassingen waarvoor het volgende is vereist:
 
@@ -66,7 +66,7 @@ AS-omgevingen hebben een vast maandtarief waarmee de infrastructuur wordt betaal
 
 ## <a name="virtual-network-support"></a>Ondersteuning voor virtuele netwerken ##
 
-De ASE-functie is een implementatie van Azure App Service rechtstreeks in het virtuele netwerk van Azure Resource Manager van een klant. Zie de [Veelgestelde vragen over virtuele Azure-netwerken](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) voor meer informatie over virtuele Azure-netwerken. Een AS-omgeving bevindt zich altijd in een virtueel netwerk en, preciezer nog, binnen een subnet van een virtueel netwerk. U kunt de beveiligingsfuncties van virtuele netwerken gebruiken om binnenkomende en uitgaande netwerkcommunicatie voor apps te beheren.
+De functie ASE is een implementatie van de Azure App Service rechtstreeks in het Azure Resource Manager virtuele netwerk van een klant. Zie de [Veelgestelde vragen over virtuele Azure-netwerken](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/) voor meer informatie over virtuele Azure-netwerken. Een AS-omgeving bevindt zich altijd in een virtueel netwerk en, preciezer nog, binnen een subnet van een virtueel netwerk. U kunt de beveiligingsfuncties van virtuele netwerken gebruiken om binnenkomende en uitgaande netwerkcommunicatie voor apps te beheren.
 
 Een AS-omgeving kan internetgericht zijn met een openbaar IP-adres of intern met alleen een Azure ILB-adres (Internal Load Balancer).
 
@@ -104,7 +104,7 @@ ASEv1 maakt gebruik van een ander prijsmodel dan ASEv2. In ASEv1 betaalt u voor 
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/waf-overview.md

@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: ff5505c2cb35d088565773e8d0ba01e8abb4b8c3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933243"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496167"
 ---
 In deze stap maakt u een Azure SQL Database afzonderlijke data base. 
 
@@ -55,12 +55,12 @@ Maak uw resource groep en één data base met behulp van de Azure Portal.
 
      ![SQL Database Details](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Selecteer **ingericht** en **GEN5**.
+   - Selecteer **ingericht**.
 
      ![Ingerichte Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - Controleer de instellingen voor **Max vCores**, **min vCores**, **autopause delay**en **Data max size**. Wijzig deze naar wens.
-   - Accepteer de voor waarden van de preview-versie en klik op **OK**.
+   - Controleer de instellingen voor **vCores**en de **maximale grootte**van de gegevens. Wijzig deze naar wens. 
+     - U kunt desgewenst ook **configuratie wijzigen** selecteren om het genereren van de hardware te wijzigen.
    - Selecteer **Toepassen**.
 
 5. Selecteer het tabblad **extra instellingen** . 
@@ -146,7 +146,7 @@ In dit gedeelte van het artikel worden de volgende Power shell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een logische server. | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe Azure SQL Database afzonderlijke data base. | 
@@ -217,12 +217,12 @@ Maak uw resource groep en één data base met behulp van AZ CLI.
       --capacity 2
    ```
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [AZ-account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Hiermee stelt u een abonnement in als het huidige actieve abonnement. | 
-| [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [az group create](/cli/azure/group#az-group-create) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [AZ SQL Server firewall-Rule Create](/cli/azure/sql/server/firewall-rule) | Hiermee maakt u de firewall regels van een server. | 
 | [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Hiermee maakt u een Data Base. | 

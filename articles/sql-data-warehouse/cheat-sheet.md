@@ -1,24 +1,25 @@
 ---
-title: Tips voor Azure SQL Data Warehouse | Microsoft Docs
-description: Links en best practices om snel uw Azure SQL Data Warehouse-oplossingen te maken.
+title: Cheat-blad voor Azure Synapse Analytics (voorheen SQL DW) | Microsoft Docs
+description: Vind koppelingen en aanbevolen procedures om snel uw Azure Synapse Analytics-oplossingen (voorheen SQL DW) te bouwen.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 08/23/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: be5e8952ddfc6cb831b87f880bc281d6ceb2ba3d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195055"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492263"
 ---
-# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tips voor Azure SQL Data Warehouse
-Dit overzicht biedt nuttige tips en best practices voor het maken van uw Azure SQL Data Warehouse-oplossingen. Voordat u begint, kunt u gedetailleerde informatie over elke stap lezen in [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) (Patronen en anti-patronen voor workloads van Microsoft Azure SQL Data Warehouse), waarin wordt uitgelegd wat SQL Data Warehouse is.
+# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat-blad voor Azure Synapse Analytics (voorheen SQL DW)
+
+Dit Cheat-blad bevat nuttige tips en aanbevolen procedures voor het bouwen van Azure Synapse-oplossingen. 
 
 De volgende afbeelding geeft het proces weer voor het ontwerpen van een datawarehouse:
 
@@ -35,14 +36,14 @@ Als u de typen bewerkingen van tevoren kent, kunt u het ontwerp van uw tabellen 
 
 ## <a name="data-migration"></a>Gegevensmigratie
 
-Laad eerst uw gegevens in [Azure data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) of Azure Blob-opslag. Gebruik vervolgens PolyBase om uw gegevens in SQL Data Warehouse in een faseringstabel te laden. Gebruik de volgende configuratie:
+Laad eerst uw gegevens in [Azure data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) of Azure Blob Storage. Gebruik vervolgens poly Base om uw gegevens in faserings tabellen te laden. Gebruik de volgende configuratie:
 
-| Ontwerpen | Aanbeveling |
+| Ontwerp | Aanbeveling |
 |:--- |:--- |
 | Distributie | Round robin |
 | Indexeren | Heap |
 | Partitionering | Geen |
-| Bronklasse | largerc of xlargerc |
+| Resourceklasse | largerc of xlargerc |
 
 Meer informatie over [gegevensmigratie], [gegevens laden], en het [ELT-proces (extraheren, laden en transformeren)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
 
@@ -50,7 +51,7 @@ Meer informatie over [gegevensmigratie], [gegevens laden], en het [ELT-proces (e
 
 Gebruik de volgende strategieën, afhankelijk van de eigenschappen van de tabel:
 
-| type | Zeer geschikt voor...| Kijk uit met...|
+| Type | Zeer geschikt voor...| Kijk uit met...|
 |:--- |:--- |:--- |
 | Gerepliceerd | • Kleine dimensietabellen in een stervormig schema met minder dan 2 GB aan opslagruimte na compressie (ca. 5x compressie) |• Veel schijftransacties voor de tabel (zoals invoegen, upsert, verwijderen, bijwerken)<br></br>• Data Warehouse Units (DWU) die u vaak opnieuw inricht<br></br>• U gebruikt maar twee of drie kolommen terwijl de tabel veel kolommen heeft<br></br>• U indexeert een gerepliceerde tabel |
 | Round robin (standaard) | • Tijdelijke/faseringstabel<br></br> • Geen duidelijke samenvoegsleutel of goede kandidaatkolom |•   Trage prestaties vanwege een gegevensverplaatsing |
@@ -70,7 +71,7 @@ Meer informatie over [gerepliceerde tabellen] en [gedistribueerde tabellen].
 
 Indexeren is handig voor het snel lezen van tabellen. Er bestaat een unieke reeks technologieën die u op basis van uw behoeften kunt gebruiken:
 
-| type | Zeer geschikt voor... | Kijk uit met...|
+| Type | Zeer geschikt voor... | Kijk uit met...|
 |:--- |:--- |:--- |
 | Heap | • Faseringstabel/tijdelijke tabel<br></br>• Kleine tabellen met kleine zoekacties |• Elke zoekopdracht scant de volledige tabel |
 | Geclusterde index | • Tabellen met maximaal 100 miljoen rijen<br></br>• Grote tabellen (meer dan 100 miljoen rijen) waarin slechts één of twee kolommen intensief worden gebruikt |• Gebruikt in een gerepliceerde tabel<br></br>•    U hebt complexe query's met betrekking tot meerdere Samenvoegen- en Groeperen op-bewerkingen<br></br>•  U maakt updates op de geïndexeerde kolommen: het neemt geheugen in beslag |
@@ -98,28 +99,28 @@ Meer informatie over [partities].
 
 Als u uw gegevens incrementeel laadt, moet u eerst grotere resourceklassen toewijzen voor het laden van uw gegevens.  Dit is vooral belang rijk bij het laden in tabellen met geclusterde column Store-indexen.  Zie [resource klassen](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) voor meer informatie.  
 
-We raden u aan PolyBase en ADF V2 te gebruiken voor het automatiseren van uw ELT-pijplijnen in SQL Data Warehouse.
+We raden u aan poly base en ADF v2 te gebruiken voor het automatiseren van uw ELT-pijp lijnen in uw data warehouse.
 
 Voor een grote batch met updates in uw historische gegevens kunt u een [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) gebruiken voor het schrijven van de gegevens die u in een tabel wilt houden, in plaats van INSERT, update en DELETE te gebruiken.
 
 ## <a name="maintain-statistics"></a>Statistieken bijhouden
- Tot automatische statistieken algemeen beschikbaar zijn, vereist SQL Data Warehouse handmatig onderhoud van statistieken. Het is belangrijk om uw statistieken bij te werken wanneer er *significante* wijzigingen optreden in uw gegevens. Dit helpt u om uw queryplannen te optimaliseren. Als u vindt dat het onderhouden van al uw statistieken te lang duurt, kunt u selectiever zijn over welke kolommen statistieken bevatten. 
+ Totdat de automatische statistieken algemeen beschikbaar zijn, is hand matig onderhoud van statistieken vereist. Het is belangrijk om uw statistieken bij te werken wanneer er *significante* wijzigingen optreden in uw gegevens. Dit helpt u om uw queryplannen te optimaliseren. Als u vindt dat het onderhouden van al uw statistieken te lang duurt, kunt u selectiever zijn over welke kolommen statistieken bevatten. 
 
 U kunt ook de frequentie van de updates definiëren. Zo wilt u datumkolommen, waar nieuwe waarden kunnen zijn toegevoegd, misschien dagelijks bijwerken. U haalt het meeste voordeel uit statistieken bij kolommen die onderdeel uitmaken van samenvoegingen, kolommen met het WHERE-component en kolommen in GROUP BY.
 
 Meer informatie over [statistieken].
 
 ## <a name="resource-class"></a>Resourceklasse
-SQL Data Warehouse gebruikt resourcegroepen om geheugen toe te wijzen aan query’s. Als u meer geheugenruimte nodig hebt voor het verbeteren van de query- of laadsnelheid, kunt u hogere resourceklassen toewijzen. Aan de andere kant hebben grotere resourceklassen een impact op de gelijktijdigheid. Denk hier goed over na voordat u alle gebruikers naar een grote resourceklasse verplaatst.
+Resource groepen worden gebruikt als een manier om geheugen aan query's toe te wijzen. Als u meer geheugenruimte nodig hebt voor het verbeteren van de query- of laadsnelheid, kunt u hogere resourceklassen toewijzen. Aan de andere kant hebben grotere resourceklassen een impact op de gelijktijdigheid. Denk hier goed over na voordat u alle gebruikers naar een grote resourceklasse verplaatst.
 
 Als u merkt dat query's te lang duren, controleert u of uw gebruikers niet in grote resourceklassen worden uitgevoerd. Grote resourceklassen nemen veel gelijktijdigheidssleuven in beslag. Ze kunnen ervoor zorgen dat andere query's in de wachtrij komen.
 
-Door het gebruik van Gen2 van SQL Data Warehouse krijgt iedere resourceklasse uiteindelijk 2,5 keer zoveel geheugen als Gen1.
+Ten slotte haalt elke resource klasse met behulp van Gen2 van [SQL-pool](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)2,5 keer meer geheugen dan gen1.
 
 Meer informatie over het werken met [resourceklassen en gelijktijdigheid].
 
 ## <a name="lower-your-cost"></a>Uw kosten verlagen
-Een belangrijke functie van SQL Data Warehouse is de mogelijkheid om [rekenresources te beheren](sql-data-warehouse-manage-compute-overview.md). U kunt de datawarehouse onderbreken wanneer u deze niet gebruikt, wat voorkomt dat rekenresources in rekening worden gebracht. U kunt de schaal van resources aanpassen om te voldoen aan uw prestatievereisten. Voor onderbreken gebruikt u [Azure Portal](pause-and-resume-compute-portal.md) of [PowerShell](pause-and-resume-compute-powershell.md). Voor schaal aanpassen gebruikt u [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) of een [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Een belang rijke functie van Azure Synapse is de mogelijkheid om [reken resources te beheren](sql-data-warehouse-manage-compute-overview.md). U kunt de SQL-groep onderbreken wanneer u deze niet gebruikt, waardoor de facturering van reken resources wordt gestopt. U kunt de schaal van resources aanpassen om te voldoen aan uw prestatievereisten. Voor onderbreken gebruikt u [Azure Portal](pause-and-resume-compute-portal.md) of [PowerShell](pause-and-resume-compute-powershell.md). Voor schaal aanpassen gebruikt u [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) of een [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 U kunt nu op elk moment automatisch de schaal aanpassen met Azure Functions:
 
@@ -131,9 +132,9 @@ U kunt nu op elk moment automatisch de schaal aanpassen met Azure Functions:
 
 We raden u aan SQL Database en Azure Analysis Services in een hub-en-spoke-architectuur te gebruiken. Deze oplossing kan workloadisolatie bieden tussen verschillende gebruikersgroepen en tegelijkertijd geavanceerde beveiligingsfuncties van SQL Database en Azure Analysis Services gebruiken. Dit is ook een manier om grenzeloze gelijktijdigheid te bieden aan uw gebruikers.
 
-Meer informatie over [typische architecturen die profiteren van SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Meer informatie over [typische architecturen die profiteren van Azure Synapse](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Met één muisklik uw spokes van SQL Data Warehouse naar SQL databases implementeren:
+Implementeer met één klik op uw spokes in SQL-data bases uit de SQL-groep:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>

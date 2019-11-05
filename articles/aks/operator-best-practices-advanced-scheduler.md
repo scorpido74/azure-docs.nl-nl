@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: f260e019ffa6eb89e8a2c1e17d2bf239e74290c2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900116"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472612"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde functies van scheduler in azure Kubernetes service (AKS)
 
@@ -31,7 +31,7 @@ Dit artikel Best practices is gericht op geavanceerde Kubernetes plannings funct
 
 Wanneer u uw AKS-cluster maakt, kunt u knoop punten met GPU-ondersteuning of een groot aantal krachtige Cpu's implementeren. Deze knoop punten worden vaak gebruikt voor werk belastingen voor grote gegevens verwerking, zoals machine learning (ML) of een kunst matige intelligentie (AI). Aangezien dit type hardware meestal een dure knooppunt resource is om te implementeren, beperkt u de werk belastingen die op deze knoop punten kunnen worden gepland. U kunt in plaats daarvan enkele knoop punten in het cluster reserveren om ingangs services uit te voeren en andere workloads te voor komen.
 
-Deze ondersteuning voor verschillende knoop punten wordt geboden door gebruik te maken van meerdere knooppunt groepen. Een AKS-cluster biedt een of meer knooppunt groepen. Ondersteuning voor meerdere knooppunt groepen in AKS is momenteel beschikbaar als preview-versie.
+Deze ondersteuning voor verschillende knoop punten wordt geboden door gebruik te maken van meerdere knooppunt groepen. Een AKS-cluster biedt een of meer knooppunt groepen.
 
 De Kubernetes scheduler kan taints en verdragen gebruiken om te beperken welke workloads op knoop punten kunnen worden uitgevoerd.
 
@@ -44,7 +44,7 @@ Wanneer u een pod implementeert in een AKS-cluster, plant Kubernetes alleen een 
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld worden de `sku: gpu` en `effect: NoSchedule` gedefinieerd om de Taint die wordt toegepast op het knoop punt in de vorige stap, te verdragen:
+Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld worden de `sku: gpu` en `effect: NoSchedule` gedefinieerd om de Taint die in de vorige stap zijn toegepast op het knoop punt te verdragen:
 
 ```yaml
 kind: Pod
@@ -81,16 +81,16 @@ Zie [meerdere knooppunt groepen maken en beheren voor een cluster in AKS][use-mu
 
 Wanneer u een groep van een knoop punt bijwerkt in AKS, volgen taints en toleranties een set patroon wanneer ze worden toegepast op nieuwe knoop punten:
 
-- **Standaard clusters zonder ondersteuning voor schaal baarheid van virtuele machines**
-  - We gaan ervan uit dat u een cluster met twee knoop punten *Knooppunt1* en *Knooppunt2*. Wanneer u een upgrade uitvoert, wordt er een extra knoop punt (*Knooppunt3*) gemaakt.
+- **Standaard clusters die gebruikmaken van schaal sets voor virtuele machines**
+  - We gaan ervan uit dat u een cluster met twee knoop punten *Knooppunt1* en *Knooppunt2*. U werkt de knooppunt groep bij.
+  - Er worden twee extra knoop punten gemaakt, *Knooppunt3* en *Knooppunt4*, en de taints worden respectievelijk door gegeven.
+  - De oorspronkelijke *Knooppunt1* en *Knooppunt2* worden verwijderd.
+
+- **Clusters zonder ondersteuning voor schaal sets voor virtuele machines**
+  - We gaan ervan uit dat u een cluster met twee knoop punten hebt, *Knooppunt1* en *Knooppunt2*. Wanneer u een upgrade uitvoert, wordt er een extra knoop punt (*Knooppunt3*) gemaakt.
   - De taints van *Knooppunt1* worden toegepast op *Knooppunt3*, waarna *Knooppunt1* wordt verwijderd.
   - Er wordt een ander nieuw knoop punt gemaakt (met de naam *Knooppunt1*, omdat de vorige *Knooppunt1* is verwijderd) en de *Knooppunt2* taints worden toegepast op de nieuwe *Knooppunt1*. *Knooppunt2* wordt vervolgens verwijderd.
   - In essentie *Knooppunt1* wordt *Knooppunt3*en *Knooppunt2* wordt *Knooppunt1*.
-
-- **Clusters die gebruikmaken van schaal sets voor virtuele machines**
-  - We gaan ervan uit dat u een cluster met twee knoop punten hebt, *Knooppunt1* en *Knooppunt2*. U werkt de knooppunt groep bij.
-  - Er worden twee extra knoop punten gemaakt, *Knooppunt3* en *Knooppunt4*, en de taints worden respectievelijk door gegeven.
-  - De oorspronkelijke *Knooppunt1* en *Knooppunt2* worden verwijderd.
 
 Wanneer u een knooppunt groep in AKS schaalt, worden taints en verdragen niet door het ontwerp getransporteerd.
 

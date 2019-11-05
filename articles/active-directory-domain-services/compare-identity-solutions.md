@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e3ef082f19f979f1b8b0c2ba4afd9712b34b7321
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173165"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474712"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Zelf-beheerde Active Directory Domain Services, Azure Active Directory en beheerde Azure Active Directory Domain Services vergelijken
 
@@ -41,7 +41,7 @@ Als u toepassingen en services hebt die toegang nodig hebben tot traditionele ve
 
 Met Azure AD DS worden de belangrijkste service onderdelen door micro soft geïmplementeerd en beheerd als een *beheerde* domein ervaring. U kunt de AD DS-infra structuur voor onderdelen zoals de Vm's, Windows Server-besturings systemen of domein controllers (Dc's) niet implementeren, beheren, patchen en beveiligen.
 
- Azure AD DS biedt een kleinere subset van functies voor traditioneel zelf beheerde AD DS omgeving, waardoor de complexiteit van het ontwerp en beheer wordt verminderd. Er zijn bijvoorbeeld geen AD-forests, domein, sites en replicatie koppelingen om te ontwerpen en te onderhouden. Voor toepassingen en services die worden uitgevoerd in de Cloud en toegang moeten hebben tot traditionele verificatie mechanismen zoals Kerberos of NTLM, biedt Azure AD DS een beheerde domein ervaring met de minimale hoeveelheid administratieve overhead.
+Azure AD DS biedt een kleinere subset van functies voor traditioneel zelf beheerde AD DS omgeving, waardoor de complexiteit van het ontwerp en beheer wordt verminderd. Er zijn bijvoorbeeld geen AD-forests, domein, sites en replicatie koppelingen om te ontwerpen en te onderhouden. Voor toepassingen en services die worden uitgevoerd in de Cloud en toegang moeten hebben tot traditionele verificatie mechanismen zoals Kerberos of NTLM, biedt Azure AD DS een beheerde domein ervaring met de minimale hoeveelheid administratieve overhead.
 
 Wanneer u een zelf-beheerde AD DS omgeving implementeert en uitvoert, moet u alle bijbehorende infra structuur en Directory onderdelen onderhouden. Er is extra onderhouds overhead met een zelfbeheerde AD DS omgeving, maar u kunt vervolgens extra taken uitvoeren, zoals het schema uitbreiden of forest-vertrouwens relaties maken.
 
@@ -102,9 +102,9 @@ Met Azure AD DS-apparaten kunnen toepassingen gebruikmaken van de Kerberos-en NT
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Apparaat beheerd door            | Azure AD                                            | Beheerd domein door Azure AD DS                                                |
 | Vertegenwoordiging in de Directory | Apparaatgroepen in de Azure AD-adres lijst            | Computer objecten in het door Azure AD DS beheerde domein                        |
-| Verificatie                  | Op OAuth/OpenID Connect Connect gebaseerde protocollen              | Kerberos-en NTLM-protocollen                                               |
+| Authentication                  | Op OAuth/OpenID Connect Connect gebaseerde protocollen              | Kerberos-en NTLM-protocollen                                               |
 | Beheer                      | MDM-software (Mobile Device Management), zoals intune | groepsbeleid                                                              |
-| Networking                      | Werkt via Internet                             | Moet zijn verbonden met of moeten worden gekoppeld aan het virtuele netwerk waarop het beheerde domein is geïmplementeerd |
+| Netwerken                      | Werkt via Internet                             | Moet zijn verbonden met of moeten worden gekoppeld aan het virtuele netwerk waarop het beheerde domein is geïmplementeerd |
 | Geweldig voor...                    | Mobiele of desktop apparaten voor eind gebruikers                  | Server-Vm's die zijn geïmplementeerd in azure                                              |
 
 ## <a name="next-steps"></a>Volgende stappen

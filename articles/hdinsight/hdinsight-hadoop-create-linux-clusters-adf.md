@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Apache Hadoop clusters op aanvraag in azure HDInsight-Data Factory'
+title: 'Zelf studie: clusters op aanvraag in azure HDInsight met Data Factory'
 description: Zelf studie-informatie over het maken van on-demand Apache Hadoop clusters in HDInsight met behulp van Azure Data Factory.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
-ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1d1ddb84c000efaf58356ffdd15382e0b74aa744
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72264530"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494872"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Zelf studie: Apache Hadoop clusters op aanvraag maken in HDInsight met behulp van Azure Data Factory
 
@@ -42,13 +42,13 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="create-preliminary-azure-objects"></a>Voorlopige Azure-objecten maken
 
-In deze sectie maakt u verschillende objecten die worden gebruikt voor het HDInsight-cluster dat u op aanvraag maakt. Het gemaakte opslag account bevat het voor beeld- [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) -script, `partitionweblogs.hql`, dat u gebruikt om een voor beeld- [Apache Hive](https://hive.apache.org/) taak te simuleren die op het cluster wordt uitgevoerd.
+In deze sectie maakt u verschillende objecten die worden gebruikt voor het HDInsight-cluster dat u op aanvraag maakt. Het gemaakte opslag account bevat het voor beeld- [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) -script, `partitionweblogs.hql`, dat u gebruikt voor het simuleren van een voor beeld [Apache Hive](https://hive.apache.org/) -taak die wordt uitgevoerd op het cluster.
 
 In deze sectie wordt gebruikgemaakt van een Azure PowerShell script voor het maken van het opslag account en het kopiëren van de vereiste bestanden in het opslag account. Met het voorbeeld script Azure PowerShell in deze sectie worden de volgende taken uitgevoerd:
 
 1. Meldt zich aan bij Azure.
 2. Hiermee maakt u een Azure-resourcegroep.
-3. Hiermee maakt u een Azure-opslagaccount.
+3. Hiermee wordt een Azure Storage-account gemaakt.
 4. Hiermee maakt u een BLOB-container in het opslag account
 5. Hiermee kopieert u het voor beeld-HiveQL-script (**partitionweblogs. HQL**) naar de BLOB-container. Het script is beschikbaar op [https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql](https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql). Het voorbeeld script is al beschikbaar in een andere open bare BLOB-container. Het onderstaande Power shell-script maakt een kopie van deze bestanden in het Azure Storage-account dat wordt gemaakt.
 
@@ -181,9 +181,9 @@ In dit artikel configureert u de Hive-activiteit voor het maken van een Hadoop-c
     
 3. Het HDInsight Hadoop-cluster wordt verwijderd nadat de verwerking is voltooid en het cluster gedurende de ingestelde tijd (timeToLive-instelling) niet actief is. Als het volgende gegevens segment beschikbaar is voor verwerking met in deze timeToLive niet-actieve tijd, wordt hetzelfde cluster gebruikt voor het verwerken van het segment.  
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Ga in het menu links naar **+ een resource maken** > **Analytics** > **Data Factory**.
 
@@ -196,7 +196,7 @@ In dit artikel configureert u de Hive-activiteit voor het maken van een Hadoop-c
     |Naam | Voer een naam in voor de data factory. Deze naam moet wereldwijd uniek zijn.|
     |Abonnement | Selecteer uw Azure-abonnement. |
     |Resourcegroep | Selecteer **bestaande gebruiken** en selecteer vervolgens de resource groep die u hebt gemaakt met behulp van het Power shell-script. |
-    |Version | Verlaat **v2**. |
+    |Versie | Verlaat **v2**. |
     |Locatie | De locatie wordt automatisch ingesteld op de locatie die u hebt opgegeven tijdens het maken van de resource groep. Voor deze zelf studie is de locatie ingesteld op **VS-Oost**. |
     |GIT inschakelen|Schakel dit selectie vakje uit.|
 
@@ -267,9 +267,9 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
     | Voor voegsel van cluster naam | Geef een waarde op die wordt voorafgegaan door de cluster typen die door de data factory worden gemaakt. |
     |Abonnement |Selecteer uw abonnement in de vervolg keuzelijst.|
     | Resourcegroep selecteren | Selecteer de resource groep die u hebt gemaakt als onderdeel van het Power shell-script dat u eerder hebt gebruikt.|
-    | Type besturings systeem/SSH-gebruikers naam van het cluster | Voer een SSH-gebruikers naam in, vaak `sshuser`. |
+    | Type besturings systeem/SSH-gebruikers naam van het cluster | Voer een SSH-gebruikers naam in, die meestal `sshuser`. |
     | Type besturings systeem/SSH-wacht woord voor het cluster | Geef een wacht woord op voor de SSH-gebruiker |
-    | Type besturings systeem/cluster gebruikers naam | Voer een gebruikers naam voor het cluster in, vaak `admin`. |
+    | Type besturings systeem/cluster gebruikers naam | Voer een gebruikers naam voor het cluster in, meestal `admin`. |
     | Type besturings systeem/cluster wachtwoord | Geef een wacht woord op voor de cluster gebruiker. |
 
     Selecteer vervolgens **Maken**.
@@ -294,11 +294,11 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
 
     1. Voor **gekoppelde script service**selecteert u **HDIStorageLinkedService** in de vervolg keuzelijst. Deze waarde is de gekoppelde opslag service die u eerder hebt gemaakt.
 
-    1. Selecteer **voor bestandspad**bladeren in **opslag** en navigeer naar de locatie waar het script van de voorbeeld Hive beschikbaar is. Als u het Power shell-script eerder hebt uitgevoerd, moet deze locatie `adfgetstarted/hivescripts/partitionweblogs.hql` zijn.
+    1. Selecteer **voor bestandspad**bladeren in **opslag** en navigeer naar de locatie waar het script van de voorbeeld Hive beschikbaar is. Als u het Power shell-script eerder hebt uitgevoerd, moet deze locatie `adfgetstarted/hivescripts/partitionweblogs.hql`zijn.
 
         ![Details van Hive-script voor de pijp lijn opgeven](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Details van Hive-script voor de pijp lijn opgeven")
 
-    1. Selecteer onder **Geavanceerde** **para meters**voor  >  de optie **automatische opvulling van script**. Met deze optie zoekt u naar para meters in het Hive-script waarvoor waarden moeten worden opgegeven tijdens runtime. Het script dat u gebruikt (**partitionweblogs. HQL**) heeft een **uitvoer** parameter. Geef de **waarde** op in de notatie `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` zodat deze verwijst naar een bestaande map op uw Azure Storage. Het pad is hoofdlettergevoelig. Dit is het pad waar de uitvoer van het script wordt opgeslagen. Het `wasbs`-schema is nodig omdat voor opslag accounts nu beveiligde overdracht is vereist ingeschakeld.
+    1. Selecteer onder **geavanceerde** > **para meters**de optie **automatische opvulling van script**. Met deze optie zoekt u naar para meters in het Hive-script waarvoor waarden moeten worden opgegeven tijdens runtime. Het script dat u gebruikt (**partitionweblogs. HQL**) heeft een **uitvoer** parameter. Geef de **waarde** op in de notatie `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` zodat deze verwijst naar een bestaande map op uw Azure Storage. Het pad is hoofdlettergevoelig. Dit is het pad waar de uitvoer van het script wordt opgeslagen. Het `wasbs` schema is nood zakelijk omdat voor opslag accounts nu beveiligde overdracht is vereist ingeschakeld.
     
         ![Para meters opgeven voor het Hive-script](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Para meters opgeven voor het Hive-script")
 
@@ -312,7 +312,7 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
 
 ## <a name="trigger-a-pipeline"></a>Een pijp lijn activeren
 
-1. Selecteer in de werk balk op het ontwerp oppervlak **trigger toevoegen** > **trigger**.
+1. Selecteer in de werk balk op het ontwerp oppervlak **trigger toevoegen** > **nu activeren**.
 
     ![De Azure Data Factory pijp lijn activeren](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "De Azure Data Factory pijp lijn activeren")
 
@@ -336,7 +336,7 @@ In deze sectie maakt u twee gekoppelde services in uw data factory.
 
     - U ziet een **adfgerstarted/outputfolder** die de uitvoer van het Hive-script bevat dat is uitgevoerd als onderdeel van de pijp lijn.
 
-    - U ziet een **adfhdidatafactory-\<linked-service-name >-\<timestamp >** -container. Deze container is de standaard opslag locatie van het HDInsight-cluster dat is gemaakt als onderdeel van de pijplijn uitvoering.
+    - U ziet een **adfhdidatafactory-\<gekoppelde-service naam >\<tijds tempel >** container. Deze container is de standaard opslag locatie van het HDInsight-cluster dat is gemaakt als onderdeel van de pijplijn uitvoering.
 
     - U ziet een **adfjobs** -container met de Azure Data Factory-taak Logboeken.  
 

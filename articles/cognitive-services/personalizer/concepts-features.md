@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756110"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490783"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Functies zijn informatie over acties en context
 
@@ -26,7 +26,7 @@ Personaler maakt gebruik van **functies**. Dit is informatie over de **huidige c
 U hebt bijvoorbeeld een **functie** over:
 
 * De _gebruiker_ , zoals een `Sports_Shopper`. Dit mag geen afzonderlijke gebruikers-ID zijn. 
-* De _inhoud_ zoals als een video een `Documentary`, een `Movie` of een `TV Series` is, of of een retail-item beschikbaar is in de Store.
+* De _inhoud_ zoals als een video een `Documentary`, een `Movie`of een `TV Series`is, of of een retail-item beschikbaar is in de Store.
 * De _huidige_ tijds periode, zoals de dag van de week.
 
 Personaler schrijft, beperkt of corrigeert de functies die u kunt verzenden voor acties en context:
@@ -56,12 +56,12 @@ Personaler neemt functies die zijn ingedeeld in naam ruimten. U kunt in uw toepa
 Hier volgen enkele voor beelden van onderdeel naam ruimten die worden gebruikt door toepassingen:
 
 * User_Profile_from_CRM
-* Tijd
+* Time
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Meteorologische
+* Weer
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,10 @@ Hier volgen enkele voor beelden van onderdeel naam ruimten die worden gebruikt d
 U kunt functie naam ruimten volgen volgens uw eigen conventies, zolang ze geldige JSON-sleutels zijn. Naam ruimten worden gebruikt om functies in verschillende sets te organiseren en om dubbel zinnigheid te maken met vergelijk bare namen. U kunt naam ruimten beschouwen als een voor voegsel die wordt toegevoegd aan functie namen. Naam ruimten kunnen niet worden genest.
 
 
-In de volgende JSON zijn `user`, `state` en `device` functie naam ruimten. Opmerking voor open bare Preview: we raden u momenteel aan om namen te gebruiken voor functie naam ruimten die zijn gebaseerd op UTF-8 en beginnen met andere letters. Bijvoorbeeld `user`, `state` en `device` beginnen met `u`, `s` en `d`. Momenteel hebben naam ruimten met dezelfde eerste tekens kunnen leiden tot conflicten in indexen die worden gebruikt voor machine learning.
+In de volgende JSON zijn `user`, `state`en `device` functie naam ruimten. 
+
+> [!Note]
+> We raden u op dit moment ten zeerste aan om namen te gebruiken voor functie naam ruimten die zijn gebaseerd op UTF-8 en beginnen met andere letters. Bijvoorbeeld `user`, `state`en `device` beginnen met `u`, `s`en `d`. Momenteel hebben naam ruimten met dezelfde eerste tekens kunnen leiden tot conflicten in indexen die worden gebruikt voor machine learning.
 
 JSON-objecten kunnen geneste JSON-objecten en eenvoudige eigenschappen/waarden bevatten. Een matrix kan alleen worden opgenomen als de matrix items getallen zijn. 
 
@@ -175,7 +178,7 @@ De acties die u naar de positie-API verzendt, zijn afhankelijk van wat u probeer
 
 Hier volgen enkele voorbeelden:
 
-|Doel|Bewerking|
+|Doel|Actie|
 |--|--|
 |Personaliseer welk artikel op een nieuws website is gemarkeerd.|Elke actie is een mogelijk nieuws artikel.|
 |Optimaliseer de plaatsing van advertenties op een website.|Elke actie is een indeling of regels voor het maken van een indeling voor de advertenties (bijvoorbeeld bovenaan, kleine afbeeldingen, grote afbeeldingen).|

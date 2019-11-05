@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673092"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491980"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundante opslag (ZRS) voor het bouwen van Maxi maal beschik bare Azure Storage toepassingen
 
@@ -32,8 +32,8 @@ Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende reg
 - Europa - west
 - Europa - noord
 - Frankrijk - centraal
-- Japan - oost
-- Verenigd Koninkrijk Zuid
+- Japan - Oost
+- VK - zuid
 - US - centraal
 - US - oost
 - US - oost 2
@@ -42,6 +42,7 @@ Voor algemeen gebruik v2-accounts is ZRS algemeen beschikbaar in de volgende reg
 Voor FileStorage-accounts is ZRS algemeen beschikbaar in de volgende regio's:
 
 - Europa - west
+- US - oost
 
 Micro soft blijft ZRS inschakelen in extra Azure-regio's. Controleer regel matig de pagina met [updates voor Azure-Services](https://azure.microsoft.com/updates/) voor informatie over nieuwe regio's.
 
@@ -56,7 +57,7 @@ Uw gegevens zijn nog steeds toegankelijk voor zowel lees-als schrijf bewerkingen
 
 Wanneer een zone niet beschikbaar is, onderneemt Azure netwerk updates, zoals DNS-distributie. Deze updates kunnen van invloed zijn op uw toepassing als u toegang hebt tot uw gegevens voordat de updates zijn voltooid.
 
-ZRS kan uw gegevens mogelijk niet beschermen tegen een regionale ramp waarbij meerdere zones permanent worden beïnvloed. In plaats daarvan biedt ZRS tolerantie voor uw gegevens als deze tijdelijk niet beschikbaar is. Voor beveiliging tegen regionale rampen raadt micro soft aan gebruik te maken van geo-redundante opslag (GRS). Zie [geo-redundante opslag (GRS) voor meer informatie over GRS: Kruis regionale replicatie voor Azure Storage](storage-redundancy-grs.md).
+ZRS kan uw gegevens mogelijk niet beschermen tegen een regionale ramp waarbij meerdere zones permanent worden beïnvloed. In plaats daarvan biedt ZRS tolerantie voor uw gegevens als deze tijdelijk niet beschikbaar is. Voor beveiliging tegen regionale rampen raadt micro soft aan gebruik te maken van geo-redundante opslag (GRS). Zie [geo-redundante opslag (GRS): cross-Regional Replication for Azure Storage](storage-redundancy-grs.md)voor meer informatie over GRS.
 
 ## <a name="converting-to-zrs-replication"></a>Converteren naar ZRS-replicatie
 
@@ -90,7 +91,7 @@ Houd u aan de volgende beperkingen voor Livemigratie:
 - Uw account moet gegevens bevatten.
 - U kunt alleen gegevens binnen dezelfde regio migreren. Als u uw gegevens wilt migreren naar een ZRS-account dat zich in een andere regio dan het bron account bevindt, moet u een hand matige migratie uitvoeren.
 - Alleen de standaard opslag typen bieden ondersteuning voor Livemigratie. Premium Storage-accounts moeten hand matig worden gemigreerd.
-- Livemigratie van ZRS naar LRS, GRS of RA-GRS wordt niet ondersteund. U moet de gegevens hand matig verplaatsen naar een nieuw of een bestaand opslag account.
+- Livemigratie van ZRS naar LRS, GRS of RA-GRS wordt niet ondersteund. U moet de gegevens handmatig verplaatsen naar een nieuw opslagaccount of een bestaand opslagaccount.
 - Managed disks zijn alleen beschikbaar voor LRS en kunnen niet worden gemigreerd naar ZRS. U kunt moment opnamen en installatie kopieën voor Standard-SSD-Managed Disks op Standard-HDD opslag opslaan en [kiezen tussen opties voor LRS en ZRS](https://azure.microsoft.com/pricing/details/managed-disks/). Zie [Introduction to Azure Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)(Engelstalig) voor integratie met beschikbaarheids sets.
 - LRS-of GRS-accounts met Archief gegevens kunnen niet worden gemigreerd naar ZRS.
 
@@ -99,11 +100,11 @@ U kunt Live migratie aanvragen via de [ondersteunings portal van Azure](https://
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en de resource die u wilt converteren naar ZRS. 
 3. Selecteer **Volgende**. 
 4. Geef de volgende waarden op voor het **probleem** gedeelte: 
-    - **Ernst**: De standaard waarde ongewijzigd laten.
-    - **Probleem type**: Selecteer **gegevens migratie**.
+    - **Ernst**: behoud de standaard waarde in.
+    - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar ZRS**.
-    - **Title**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
-    - **Details**: Typ meer details in het vak **Details** . Ik wil bijvoorbeeld migreren naar ZRS vanuit [LRS, GRS] in de regio \_ @ no__t-2. 
+    - **Titel**: Typ een beschrijvende titel, bijvoorbeeld ZRS- **account migratie**.
+    - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ik wil migreren naar ZRS vanuit [LRS, GRS] in de regio \_\_. 
 5. Selecteer **Volgende**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
@@ -136,7 +137,7 @@ Voordat u een aanvraag voor een Livemigratie naar ZRS, moet u ervoor zorgen dat 
 
 Als u uw gegevens wilt migreren naar een ZRS-account dat zich in een andere regio dan de regio van het bron account bevindt, moet u een hand matige migratie uitvoeren.
 
-## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>Klassieke ZRS: Een verouderde optie voor redundantie van blok-blobs
+## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS Classic: een verouderde optie voor redundantie van blok-blobs
 > [!NOTE]
 > Micro soft zal ZRS Classic-accounts op 31 maart 2021 terugboeken en migreren. Meer informatie vindt u voor ZRS Classic-klanten vóór afschaffing. 
 >
@@ -146,7 +147,7 @@ ZRS Classic repliceert asynchroon gegevens tussen data centers binnen een tot tw
 
 ZRS Classic is alleen beschikbaar voor **blok-blobs** in opslag accounts voor algemeen gebruik (GPv1). Zie [Overzicht van Azure-opslagaccount](storage-account-overview.md) voor meer informatie over opslagaccounts.
 
-Gebruik een van de volgende hulpprogram ma's om de ZRS-account gegevens hand matig te migreren naar of van een LRS-, ZRS klassieke, GRS-of RA-GRS-account: AzCopy, Azure Storage Explorer, Azure PowerShell of Azure CLI. U kunt ook uw eigen migratie oplossing bouwen met een van de Azure Storage-client bibliotheken.
+Gebruik een van de volgende hulpprogram ma's om ZRS-account gegevens hand matig te migreren naar of van een LRS-, ZRS klassieke, GRS-of RA-GRS-account: AzCopy, Azure Storage Explorer, Azure PowerShell of Azure CLI. U kunt ook uw eigen migratie oplossing bouwen met een van de Azure Storage-client bibliotheken.
 
 U kunt ook uw klassieke ZRS-account (s) upgraden naar ZRS in de portal of gebruikmaken van Azure PowerShell of Azure CLI in de regio's waar ZRS beschikbaar is. Als u een upgrade wilt uitvoeren naar ZRS in de Azure Portal, gaat u naar de sectie **configuratie** van het account en kiest u **upgrade uitvoeren**:
 
@@ -164,5 +165,5 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 ## <a name="see-also"></a>Zie ook
 - [Azure Storage-replicatie](storage-redundancy.md)
-- [Lokaal redundante opslag (LRS): Lage kosten voor gegevens redundantie voor Azure Storage](storage-redundancy-lrs.md)
-- [Geografisch redundante opslag (GRS): Kruis regionale replicatie voor Azure Storage](storage-redundancy-grs.md)
+- [Lokaal redundante opslag (LRS): lage kosten voor gegevens redundantie voor Azure Storage](storage-redundancy-lrs.md)
+- [Geografisch redundante opslag (GRS): cross-regionale replicatie voor Azure Storage](storage-redundancy-grs.md)

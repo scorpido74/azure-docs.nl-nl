@@ -1,7 +1,7 @@
 ---
-title: PowerShell-modules voor Machine Learning Studio
-titleSuffix: Azure Machine Learning Studio
-description: PowerShell gebruiken om te maken en beheren van Azure Machine Learning Studio-werkruimten, experimenten, webservices en meer.
+title: Power shell-modules voor Machine Learning Studio (klassiek)
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Power shell gebruiken voor het maken en beheren van Azure Machine Learning Studio (klassieke) werk ruimten, experimenten, webservices en meer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,61 +9,61 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 04/25/2019
-ms.openlocfilehash: bee42f8a9582908963c0eef95a2fd04742cd425e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dae20a86c7a16e1d989b529a3f2dd4e32253a354
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205664"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496807"
 ---
-# <a name="powershell-modules-for-azure-machine-learning-studio"></a>PowerShell-modules voor Azure Machine Learning Studio
+# <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Power shell-modules voor Azure Machine Learning Studio (klassiek)
 
-Met behulp van PowerShell-modules, kunt u programmatisch beheren uw Studio resources en -assets zoals werkruimten, gegevenssets en -webservices.
+U kunt met behulp van Power shell-modules uw studio-resources en-assets programmatisch beheren, zoals werk ruimten, gegevens sets en webservices.
 
-U kunt werken met Studio resources met behulp van drie Powershell-modules:
+U kunt communiceren met de klassieke versie van Studio-resources met behulp van drie Power shell-modules:
 
-* [Azure PowerShell-Az](#az-rm) uitgebracht in 2018, bevat alle functionaliteit van AzureRM, hoewel u met de namen van de verschillende cmdlets
-* [AzureRM](#az-rm) uitgebracht 2016, vervangen door PowerShell Az
-* [Azure Machine Learning PowerShell-klassiek](#classic) in 2016 uitgebracht
+* [Azure PowerShell AZ](#az-rm) uitgebracht in 2018, bevat alle functionaliteit van AzureRM, maar met verschillende cmdlet-namen
+* [AzureRM](#az-rm) uitgebracht in 2016, vervangen door Power shell AZ
+* [Azure machine learning Power shell Classic](#classic) uitgebracht in 2016
 
-Hoewel deze PowerShell-modules hebben een aantal overeenkomsten, is elk ontworpen voor bepaalde scenario's. Dit artikel beschrijft de verschillen tussen de PowerShell-modules en helpt die u bepalen welke u moet kiezen.  
+Hoewel deze Power shell-modules enkele overeenkomsten hebben, zijn deze allemaal ontworpen voor bepaalde scenario's. In dit artikel worden de verschillen tussen de Power shell-modules beschreven en kunt u bepalen welke u wilt kiezen.  
 
-Controleer de [ondersteuning tabel](#support-table) hieronder om te zien welke bronnen worden ondersteund door elke module. 
+Raadpleeg de [ondersteunings tabel](#support-table) hieronder om te zien welke resources door elke module worden ondersteund. 
 
-## <a name="az-rm"></a> Azure PowerShell-Az en AzureRM
+## <a name="az-rm"></a>Azure PowerShell AZ en AzureRM
 
-AZ is nu de beoogde PowerShell-module voor interactie met Azure en bevat alle vorige functionaliteit van de AzureRM. AzureRM blijven ontvangen van oplossingen voor problemen, maar ontvangt geen nieuwe-cmdlets of functies.  AZ en AzureRM beide beheren van oplossingen die zijn geïmplementeerd met behulp van de **Azure Resource Manager** implementatiemodel. Deze bronnen omvatten Studio-werkruimten en "New" Studio-webservices. 
+AZ is nu de beoogde Power shell-module voor interactie met Azure en bevat alle eerdere functies van AzureRM. AzureRM blijft problemen met oplossingen ontvangen, maar er worden geen nieuwe cmdlets of functies ontvangen.  AZ en AzureRM beheren oplossingen die zijn geïmplementeerd met het **Azure Resource Manager** -implementatie model. Deze resources zijn onder andere studio (klassieke) werk ruimten en Studio (klassieke) ' nieuwe ' webservices. 
 
-PowerShell klassiek kan worden geïnstalleerd naast Az of AzureRM voor beide typen resource 'Nieuw' en 'klassieke'. Het verdient echter niet beschikken over Az- en AzureRM geïnstalleerd op hetzelfde moment. Microsoft raadt Az om te beslissen tussen Az en AzureRM, aan voor alle toekomstige implementaties.  Meer informatie over Az ten opzichte van de azurerm-module en het migratiepad in [Inleiding tot de Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+Klassieke Power shell kan worden geïnstalleerd naast AZ of AzureRM voor zowel de resource typen ' nieuw ' als ' klassiek '. Het is echter niet raadzaam AZ en AzureRM tegelijkertijd te installeren. Om te kiezen tussen AZ en AzureRM, raadt micro soft AZ aan voor alle toekomstige implementaties.  Meer informatie over AZ versus AzureRM en het migratie traject in [Inleiding tot de Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
-Als u wilt beginnen met Az, volgt u de [installatie-instructies voor Azure Az](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Volg de [installatie-instructies voor Azure AZ](https://docs.microsoft.com/powershell/azure/install-az-ps)om aan de slag te gaan met AZ.
 
-## <a name="classic"></a> PowerShell klassiek
+## <a name="classic"></a>Klassieke Power shell
 
-De Studio [klassieke PowerShell-module](https://aka.ms/amlps) kunt u voor het beheren van resources die zijn geïmplementeerd met behulp van de **klassieke implementatiemodel**. Deze bronnen omvatten Studio gebruiker activa, webservices 'klassieke' en 'klassieke' web service-eindpunten.
+Met de klassieke [Power shell-module](https://aka.ms/amlps) van Studio (klassiek) kunt u resources beheren die zijn geïmplementeerd met het **klassieke implementatie model**. Deze resources zijn onder andere studio-(klassieke) gebruikers assets, klassieke webservices en ' klassieke ' webservice-eind punten.
 
-Microsoft raadt echter aan dat u het Resource Manager-implementatiemodel voor alle toekomstige resources gebruiken voor het vereenvoudigen van de implementatie en het beheer van resources. Als u meer informatie over de implementatiemodellen wilt, raadpleegt u de [Azure Resource Manager en klassieke implementatie](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) artikel.
+Micro soft raadt u echter aan het Resource Manager-implementatie model te gebruiken voor alle toekomstige resources om de implementatie en het beheer van resources te vereenvoudigen. Zie het artikel over de [implementatie van Azure Resource Manager vs. klassiek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) als u meer wilt weten over de implementatie modellen.
 
-Om te beginnen met PowerShell klassiek, downloadt de [releasepakket](https://github.com/hning86/azuremlps/releases) van GitHub en volgt de [instructies voor de installatie](https://github.com/hning86/azuremlps/blob/master/README.md). De instructies wordt uitgelegd hoe u de gedownloade/uitgepakte DLL deblokkeren en vervolgens importeren in uw PowerShell-omgeving.
+Down load het [release pakket](https://github.com/hning86/azuremlps/releases) van github en volg de [instructies voor de installatie](https://github.com/hning86/azuremlps/blob/master/README.md)om aan de slag te gaan met Power shell Classic. In de instructies wordt uitgelegd hoe u de blok kering van de gedownloade/ongecomprimeerde DLL kunt opheffen en vervolgens kunt importeren in uw Power shell-omgeving
 
-PowerShell klassiek kan worden geïnstalleerd naast Az of AzureRM voor beide typen resource 'Nieuw' en 'klassieke'.
+Klassieke Power shell kan worden geïnstalleerd naast AZ of AzureRM voor zowel de resource typen ' nieuw ' als ' klassiek '.
 
-## <a name="support-table"></a> PowerShell-ondersteuning-tabel
+## <a name="support-table"></a>Power shell-ondersteunings tabel
 
 
-| | **Az** |  **PowerShell klassiek** |
+| | **AZ** |  **PowerShell klassiek** |
 | --- | --- | --- |
-| Werkruimten maken/verwijderen | [Resource Manager-sjablonen](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
-| Werkruimte toegezegde abonnementen beheren | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
-| Gebruikers van deze werkruimte beheren |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| Webservices beheren | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>('Nieuw' web services)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>('klassieke' web services) |
-| Web service-eindpunten/sleutels beheren |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
-| Gebruiker gegevenssets/getrainde modellen beheren| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
-| Gebruiker experimenten beheren |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
+| Werk ruimten maken/verwijderen | [Resource Manager-sjablonen](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
+| Toezeggings plannen voor werk ruimten beheren | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
+| Werkruimte gebruikers beheren |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
+| Webservices beheren | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>(' nieuwe ' webservices)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>(' klassieke ' webservices) |
+| Webservice-eind punten/-sleutels beheren |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
+| Gebruikers gegevens sets/getrainde modellen beheren| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
+| Gebruikers experimenten beheren |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |
 | Aangepaste modules beheren | | [New-AmlCustomModule](https://github.com/hning86/azuremlps#manage-custom-module) |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volledige documentatie deze PowerShell-module:
+Raadpleeg de volledige documentatie deze Power shell-module:
 * [PowerShell klassiek](https://aka.ms/amlps)
-* [Azure PowerShell Az](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)
+* [Azure PowerShell AZ](https://docs.microsoft.com/powershell/module/az.machinelearning/#machine_learning)

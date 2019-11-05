@@ -1,51 +1,45 @@
 ---
-title: Verbinding maken met een Windows-VM met behulp van Azure bastionhost | Microsoft Docs
-description: In dit artikel leert u hoe u verbinding maakt met een virtuele Machine in Azure waarop Windows wordt uitgevoerd met behulp van Azure bastionhost.
+title: Verbinding maken met een virtuele Windows-machine met behulp van Azure Bastion | Microsoft Docs
+description: In dit artikel leert u hoe u verbinding kunt maken met een virtuele Azure-machine met Windows met behulp van Azure Bastion.
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 376b7042a513dd50647dc8f88bf1de70f65bb21c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: dc741007c7de8d8e24f9c0f9e4e0c03306d036a4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478408"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498351"
 ---
-# <a name="connect-to-a-windows-virtual-machine-using-azure-bastion-preview"></a>Verbinding maken met een Windows virtuele machine met behulp van Azure bastionhost (Preview)
+# <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Verbinding maken met een virtuele Windows-machine met behulp van Azure Bastion
 
-In dit artikel leest u hoe veilig en naadloos RDP naar uw Windows-VM's in een virtuele Azure-netwerk wilt met behulp van Azure bastionhost. U kunt rechtstreeks verbinding maken met een VM vanuit Azure Portal. Bij gebruik van Azure Bastion hebben VM's geen client, agent of aanvullende software nodig. Zie voor meer informatie over Azure bastionhost, de [overzicht](bastion-overview.md).
-
-> [!IMPORTANT]
-> Deze openbare preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Bepaalde functies worden mogelijk niet ondersteund, zijn mogelijk beperkt of zijn mogelijk niet beschikbaar in alle Azure-locaties. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+In dit artikel wordt beschreven hoe u veilig en naadloos RDP kunt gebruiken voor uw Windows-Vm's in een virtueel Azure-netwerk met behulp van Azure Bastion. U kunt rechtstreeks verbinding maken met een VM vanuit Azure Portal. Bij gebruik van Azure Bastion hebben VM's geen client, agent of aanvullende software nodig. Zie het [overzicht](bastion-overview.md)voor meer informatie over Azure Bastion.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Zorg ervoor dat u een Azure-bastionhost voor het virtuele netwerk waarin de virtuele machine zich bevindt hebt ingesteld. Zie voor meer informatie, [maken van een Azure-bastionhost](bastion-create-host-portal.md). Zodra de service van de Bastionomgeving is ingericht en geïmplementeerd in uw virtuele netwerk, kunt u deze kunt gebruiken om te verbinden met alle virtuele machines in dit virtuele netwerk. In deze Preview-versie bastionhost wordt ervan uitgegaan dat u van RDP gebruikmaakt verbinding maken met een Windows-VM en SSH verbinding maken met uw virtuele Linux-machines. Zie voor meer informatie over de verbinding met een Linux VM [verbinding maken met een VM - Linux](bastion-connect-vm-ssh.md).
+Zorg ervoor dat u een Azure bastion-host hebt ingesteld voor het virtuele netwerk waarin de VM zich bevindt. Zie [een Azure bastion-host maken](bastion-create-host-portal.md)voor meer informatie. Zodra de Bastion-service is ingericht en geïmplementeerd in uw virtuele netwerk, kunt u deze gebruiken om verbinding te maken met elke virtuele machine in dit virtuele netwerk. Bastion gaat ervan uit dat u RDP gebruikt om verbinding te maken met een virtuele Windows-machine, en SSH om verbinding te maken met uw Linux-Vm's. Zie [verbinding maken met een VM-Linux](bastion-connect-vm-ssh.md)voor meer informatie over verbinding met een virtuele Linux-machine.
 
-Als u wilt een verbinding maakt, zijn de volgende rollen zijn vereist:
+De volgende rollen zijn vereist om een verbinding te maken:
 
-* Rol van lezer voor de virtuele machine
-* Rol van lezer voor de NIC met particuliere IP-adres van de virtuele machine
-* Rol van lezer voor de Bastionomgeving voor Azure-resource
+* Rol van lezer op de virtuele machine
+* De rol van lezer op de NIC met het privé-IP-adres van de virtuele machine
+* Rol van lezer in de Azure Bastion-resource
 
-## <a name="rdp"></a>Verbinding maken met behulp van RDP
+## <a name="rdp"></a>Verbinding maken via RDP
 
-1. Gebruik [deze koppeling](https://aka.ms/BastionHost) de preview-portal-pagina voor Azure bastionhost openen. Navigeer naar de virtuele machine die u verbinding maken wilt met en klik vervolgens op **Connect**. De virtuele machine moet een Windows virtuele machine bij het gebruik van een RDP-verbinding.
+1. Open de [Azure Portal](https://portal.azure.com). Navigeer naar de virtuele machine waarmee u verbinding wilt maken en klik vervolgens op **verbinding maken**. De VM moet een virtuele Windows-machine zijn wanneer u een RDP-verbinding gebruikt.
 
-    ![Virtuele machine verbinding maken](./media/bastion-connect-vm-rdp/connect.png)
+   ![VM-verbinding](./media/bastion-connect-vm-rdp/connect.png)
+1. Nadat u op verbinding maken hebt geklikt, wordt er een zijbalk weer gegeven met drie tabbladen: RDP, SSH en Bastion. Als Bastion is ingericht voor het virtuele netwerk, is het tabblad Bastion standaard actief. Als u Bastion niet hebt ingericht voor het virtuele netwerk, kunt u klikken op de koppeling om Bastion te configureren. Zie [Bastion configureren](bastion-create-host-portal.md)voor configuratie-instructies.
 
-1. Nadat u op verbinden klikt, verschijnt er een zijbalk met drie tabbladen: RDP, SSH en bastionhost. Als de Bastionomgeving is ingericht voor het virtuele netwerk, is het tabblad bastionhost standaard actief. Als u nog niet hebt bastionhost voor het virtuele netwerk ingericht, kunt u klikken op de koppeling voor het configureren van de Bastionomgeving. Zie voor configuratie-instructies, [configureren bastionhost](bastion-create-host-portal.md). Als u niet ziet **bastionhost** weergegeven, u hebt niet geopend de preview-portal. Open de portal voor gebruik van deze [preview koppeling](https://aka.ms/BastionHost).
+   ![VM-verbinding](./media/bastion-connect-vm-rdp/bastion.png)
+1. Op het tabblad Bastion, de gebruikers naam en het wacht woord voor uw virtuele machine en klik vervolgens op **verbinding maken**. De RDP-verbinding met deze virtuele machine via Bastion wordt rechtstreeks geopend in de Azure Portal (via HTML5) met behulp van poort 443 en de Bastion-service.
 
-    ![Virtuele machine verbinding maken](./media/bastion-connect-vm-rdp/bastion.png)
-
-1. Klik op het tabblad bastionhost, de gebruikersnaam en het wachtwoord voor uw virtuele machine, **Connect**. De RDP-verbinding met deze virtuele machine via bastionhost wordt rechtstreeks in Azure portal (via HTML5) met behulp van poort 443 en de service van de Bastionomgeving geopend.
-
-    ![Virtuele machine verbinding maken](./media/bastion-connect-vm-rdp/443rdp.png)
+   ![VM-verbinding](./media/bastion-connect-vm-rdp/443rdp.png)
  
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees de [bastionhost Veelgestelde vragen](bastion-faq.md)
+Lees de [Veelgestelde vragen over Bastion](bastion-faq.md)

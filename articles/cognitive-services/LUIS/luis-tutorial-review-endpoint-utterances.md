@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Endpoint uitingen-LUIS controleren'
+title: 'Zelf studie: eind punt uitingen-LUIS controleren'
 titleSuffix: Azure Cognitive Services
 description: Verbeter de voorspellingen van de app door de uitingen die worden ontvangen via het LUIS-HTTP-eindpunt (en waar LUIS niet zeker over is) te controleren of corrigeren. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 04f30818e3c871d74d94bfd92bd3f73e4e6637a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387521"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499416"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelfstudie: Onzekere voorspellingen herstellen door eindpuntuitingen te controleren
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelf studie: herstel onzekere voor spellingen door eind punt uitingen te controleren
 In deze zelfstudie leert u de voorspellingen van de app te verbeteren door de uitingen die worden ontvangen via het LUIS-HTTP-eindpunt (en waar LUIS niet zeker over is) te controleren of corrigeren. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit. Controleer de eindpuntuitingen regelmatig als onderdeel van uw geplande LUIS-onderhoud. 
 
 Dit beoordelingsproces is een andere manier waarop LUIS meer over uw app-domein kan leren. De uitingen die in de beoordelingslijst worden weergegeven, zijn door LUIS geselecteerd. Deze lijst:
@@ -28,6 +28,8 @@ Dit beoordelingsproces is een andere manier waarop LUIS meer over uw app-domein 
 * dient op periodieke basis te worden gecontroleerd. 
 
 Door de eindpuntuitingen te boordelen, kunt u de voorspelde intenties controleren of corrigeren. U kunt ook aangepaste entiteiten die niet of onjuist zijn voorspeld van een label voorzien. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -75,7 +77,7 @@ Voer de volgende stappen uit:
     [![Schermafbeelding van het paneel Eindpuntuitingen beoordelen met de wisselknop Entiteiten weergeven gemarkeerd](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
 
-    Deze utterance, `I'm looking for a job with Natural Language Processing`, is niet in de juiste intentie. 
+    Deze utterance, `I'm looking for a job with Natural Language Processing`, bevindt zich niet in de juiste intentie. 
 
     De reden waarom de utterance een misvoor speld is, is dat de **ApplyForJob** -intentie 21 uitingen heeft vergeleken met de 7 uitingen in **GetJobInformation**. De intentie met meer uitingen heeft een hogere voor spelling. Het is belang rijk dat de hoeveelheid en de kwaliteit van de uitingen in de intenties evenwichtig is.
 
@@ -85,7 +87,7 @@ Voer de volgende stappen uit:
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Taak - 'Natuurlijke taalverwerking'|
 
-    Als u `natural language processing` van een woordgroepen entiteit wilt overschakelen naar een taak entiteit, selecteert u de woord groep en selecteert u vervolgens **taak** in de lijst. Als u slechts een deel van de tekst van de woordgroep voor een andere entiteit wilt selecteren, moet u de woordgroep verwijderen als een entiteit, een label met een andere entiteit en vervolgens de entiteit met de superwoord groep opnieuw Toep assen op de app. 
+    Als u `natural language processing` van een instantie van een woordgroep wilt wijzigen in een taak entiteit, selecteert u de woord groep en selecteert u vervolgens **taak** in de lijst. Als u slechts een deel van de tekst van de woordgroep voor een andere entiteit wilt selecteren, moet u de woordgroep verwijderen als een entiteit, een label met een andere entiteit en vervolgens de entiteit met de superwoord groep opnieuw Toep assen op de app. 
 
     Als u de utterance toevoegt, wordt de utterance van het **eind punt van de beoordeling uitingen** naar de **GetJobInformation** -intentie verplaatst. De eindpuntuiting is nu een voorbeelduiting voor deze intentie. 
 

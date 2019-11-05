@@ -1,5 +1,5 @@
 ---
-title: On-premises Apache Hadoop migreren naar Azure HDInsight-motivatie en voor delen
+title: 'Voor delen: migratie van on-premises Apache Hadoop naar Azure HDInsight'
 description: Meer informatie over de motivatie en voor delen voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718364"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494934"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
 
@@ -51,9 +51,9 @@ Azure HDInsight is een Cloud distributie van Hadoop-onderdelen. Azure HDInsight 
 
 - **Productiviteit** : u kunt verschillende hulpprogram Ma's voor Hadoop en Spark gebruiken in uw favoriete ontwikkel omgeving.
 
-- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) deployments van Azure Markt plaats.
+- **Uitbreid baarheid met aangepaste hulpprogram ma's of toepassingen** van derden-HDInsight-clusters kunnen worden uitgebreid met geïnstalleerde onderdelen en kunnen ook worden geïntegreerd met de andere oplossingen van Big data met [één klik](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) implementaties van Azure Markt plaats.
 
-- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure monitor-logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) to biedt één interface waarmee u al uw clusters kunt bewaken.
+- **Eenvoudig beheer, beheer en controle** : Azure HDInsight kan worden geïntegreerd met [Azure Monitor logboeken](../hdinsight-hadoop-oms-log-analytics-tutorial.md) om een enkele interface te bieden waarmee u al uw clusters kunt bewaken.
 
 - **Integratie met andere Azure-Services** -HDInsight kan eenvoudig worden geïntegreerd met andere populaire Azure-Services, zoals de volgende:
 
@@ -82,15 +82,15 @@ De volgende stappen worden aanbevolen voor het plannen van een migratie van on-p
 Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt verzamelen over:
 
 - De on-premises implementatie
-- Projectgegevens
+- Project Details
 - Azure-vereisten
 
 ### <a name="on-premises-deployment-questionnaire"></a>Vragen lijst on-premises implementatie
 
 | **Produkt** | **Voorbeeld** | **Antwoord** |
 |---|---|---|
-|**Onderwerp**: **Variabelen**|||
-|Distributie versie van cluster|HDP 2.6.5, CDH 5.7|
+|**Onderwerp**: **omgeving**|||
+|Distributie versie van cluster|HDP 2.6.5, CDH 5,7|
 |Systeem onderdelen van Big Data|HDFS, garens, Hive, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, solr, Sqoop, Oozie, zwerver, Atlas, Falcon, Zeppelin, R|
 |Cluster typen|Hadoop, Spark, Confluent Kafka, Storm, solr|
 |Aantal clusters|4|
@@ -106,12 +106,12 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Nood herstel/back-up|Back-upcluster?|  
 |Systemen die afhankelijk zijn van het cluster|SQL Server, Teradata, Power BI, MongoDB|
 |Integraties van derden|Tableau, GridGain, Qubole, informatica, Splunk|
-|**Onderwerp**: **Beveiligingsprincipal**|||
+|**Onderwerp**: **beveiliging**|||
 |Perimeter beveiliging|Firewalls|
 |Autorisatie voor cluster verificatie &|Active Directory, Ambari, Cloudera Manager, geen verificatie|
 |HDFS Access Control|  Hand matig, SSH-gebruikers|
 |Autorisatie van Hive-verificatie &|Sentry, LDAP, AD met Kerberos, zwerver|
-|Controleren|Ambari, Cloudera Navigator, Ranger|
+|Controleren|Ambari, Cloudera Navigator, zwerver|
 |Bewaking|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
 |Waarschuwingen|Kapacitor, Prometheus, Datadog|
 |Duur van gegevens retentie| 3 jaar, 5 jaar|
@@ -121,62 +121,62 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 
 |**Produkt**|**Voorbeeld**|**Antwoord**|
 |---|---|---|
-|**Onderwerp**: **Werk belastingen en frequentie**|||
+|**Onderwerp**: **werk belastingen en frequentie**|||
 |MapReduce-taken|10 taken-twee keer per dag||
 |Hive-taken|100-taken--elk uur||
 |Spark-batch taken|50 taken: elke 15 minuten||
 |Spark-streaming-taken|5 taken--elke 3 minuten||
 |Structured streaming-taken|5 taken--elke minuut||
 |Trainings taken voor ML model|2 taken: één keer per week||
-|Programmeertalen|Python, Scala, Java||
-|Uitvoeren van scripts|Shell, Python||
-|**Onderwerp**: **Gegevens**|||
+|Programmeertalen|Python, scala, java||
+|Scripts|Shell, python||
+|**Onderwerp**: **gegevens**|||
 |Gegevensbronnen|Platte bestanden, JSON, Kafka, RDBMS||
 |Data orchestratie|Oozie werk stromen, lucht stroom||
 |Zoek opdrachten in het geheugen|Apache Ignite, redis||
 |Gegevens bestemmingen|HDFS, RDBMS, Kafka, MPP ||
-|**Onderwerp**: **Meta gegevens**|||
+|**Onderwerp**: **meta gegevens**|||
 |DATABASE type van Hive|MySQL, post gres||
 |Aantal Hive-meta Stores|2||
 |Aantal Hive-tabellen|100||
 |Aantal beleids regels voor Zwerver|20||
 |Aantal Oozie-werk stromen|100||
-|**Onderwerp**: **Schalen**|||
+|**Onderwerp**: **schalen**|||
 |Gegevens volume inclusief replicatie|100 TB||
 |Dagelijks opname volume|50 GB||
 |Groei tempo van gegevens|10% per jaar||
 |Groei tempo van cluster knooppunten|5% per jaar
-|**Onderwerp**: **Cluster gebruik**|||
+|**Onderwerp**: **cluster gebruik**|||
 |Gemiddeld CPU-percentage gebruikt|60%||
 |Gemiddeld geheugen gebruikt%|75%||
-|Gebruikte schijfruimte|75%||
+|Gebruikte schijf ruimte|75%||
 |Gemiddeld netwerk gebruikt%|25%
-|**Onderwerp**: **Mede**|||
+|**Onderwerp**: **personeel**|||
 |Aantal beheerders|2||
 |Aantal ontwikkel aars|10||
 |Aantal eind gebruikers|100||
-|Vaardigheden|Hadoop, Spark||
+|Lacune|Hadoop, Spark||
 |Aantal beschik bare resources voor migratie taken|2||
-|**Onderwerp**: **Beperkingen**|||
+|**Onderwerp**: **beperkingen**|||
 |Huidige beperkingen|Latentie is hoog||
 |Huidige uitdagingen|Probleem met gelijktijdigheid||
 
 ### <a name="azure-requirements-questionnaire"></a>Vragen lijst Azure-vereisten
 
-|**Onderwerp**: **Analyseren** |||
+|**Onderwerp**: **infra structuur** |||
 |---|---|---|
 |**Produkt**|**Voorbeeld**|**Antwoord**|
-| Voorkeursregio|US - oost||
+| Voorkeurs regio|US - oost||
 |Voor keur voor VNet?|Ja||
 |HA/DR nodig?|Ja||
 |Integratie met andere Cloud Services?|ADF, CosmosDB||
-|**Onderwerp**:   **Gegevensverplaatsing**  |||
-|Initiële laad voorkeur|DistCp, Data box, ADF, WANDisco||
+|**Onderwerp**: **gegevens verplaatsing**  |||
+|Initiële laad voorkeur|DistCp, data box, ADF, WANDisco||
 |Delta voor gegevens overdracht|DistCp, AzCopy||
 |Voortdurende incrementele gegevens overdracht|DistCp, Sqoop||
-|**Onderwerp**:   **Bewaking & waarschuwingen** |||
+|**Onderwerp**: **bewaking & waarschuwingen** |||
 |Azure monitoring &-waarschuwingen gebruiken versus bewaking van derden integreren|Azure monitoring &-waarschuwingen gebruiken||
-|**Onderwerp**:   **Beveiligings voorkeuren** |||
+|**Onderwerp**: **beveiligings voorkeuren** |||
 |Persoonlijke en beveiligde gegevens pijplijn?|Ja||
 |Aan het domein toegevoegd cluster (ESP)?|     Ja||
 |On-premises AD Sync naar de Cloud?|     Ja||
@@ -189,7 +189,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Controle vereist?|                  Ja||
 |Gegevens versleuteling in rust?|          Ja||
 |Gegevens versleuteling in transit?|       Ja||
-|**Onderwerp**:   **Voor keuren voor nieuwe architectuur** |||
+|**Onderwerp**: **voor keuren voor opnieuw bearchitectuur** |||
 |Eén cluster versus specifieke cluster typen|Specifieke cluster typen||
 |Opgeslagen opslag versus externe opslag?|Externe opslag||
 |Kleinere cluster grootte naarmate gegevens extern worden opgeslagen?|Kleinere cluster grootte||

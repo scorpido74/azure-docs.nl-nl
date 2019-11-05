@@ -1,7 +1,7 @@
 ---
 title: Modelresultaten interpreteren
-titleSuffix: Azure Machine Learning Studio
-description: Klik hier voor meer informatie over het kiezen van de optimale parameter is ingesteld voor een algoritme gebruikt en score model uitvoer visualiseren.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: De optimale parameterset voor een algoritme kiezen met behulp van en het visualiseren van score model uitvoer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,298 +10,298 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07f446daafea8b866083933bb414b0f5ef04bb4d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60867019"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492907"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Modelresultaten in Azure Machine Learning Studio interpreteren
-In dit onderwerp wordt uitgelegd hoe te visualiseren en te interpreteren voorspellingsresultaten in Azure Machine Learning Studio. Nadat u hebt een model wordt getraind en voorspellingen daarboven ("het model beoordeeld') wordt uitgevoerd, moet u om te begrijpen en interpreteren van het resultaat voorspelling.
+# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Model resultaten interpreteren in Azure Machine Learning Studio (klassiek)
+In dit onderwerp wordt uitgelegd hoe u de Voorspellings resultaten in Azure Machine Learning Studio (klassiek) kunt visualiseren en interpreteren. Nadat u een model hebt getraind en voor spellingen hebt uitgevoerd (het ' gescoorde ' model '), moet u het Voorspellings resultaat begrijpen en interpreteren.
 
 
 
-Er zijn vier belangrijke soorten machine learning-modellen in Azure Machine Learning Studio:
+Er zijn vier belang rijke soorten machine learning modellen in de klassieke versie van Azure Machine Learning Studio:
 
 * Classificatie
 * Clustering
 * Regressie
-* Recommender systemen
+* Aanbevolen systemen
 
-De modules die worden gebruikt voor voorspelling boven op deze modellen zijn:
+De modules die worden gebruikt voor de voor spelling boven op deze modellen zijn:
 
-* [Score Model] [ score-model] -module voor de classificatie- en regressiemodellen
-* [Toewijzen aan Clusters] [ assign-to-clusters] -module voor clustering
-* [Score Matchbox Recommender] [ score-matchbox-recommender] voor aanbevelingssystemen
+* Module [score model][score-model] voor classificatie en regressie
+* [Toewijzen aan clusters][assign-to-clusters] module voor clustering
+* [Score matchbox aanbevolen][score-matchbox-recommender] voor aanbevolen systemen
 
-Dit document wordt uitgelegd hoe u moet interpreteren voorspellingsresultaten voor elk van deze modules. Zie voor een overzicht van deze modules [hoe u parameters kiezen voor het optimaliseren van uw algoritmen in Azure Machine Learning Studio](algorithm-parameters-optimize.md).
+In dit document wordt uitgelegd hoe u de Voorspellings resultaten voor elk van deze modules kunt interpreteren. Zie [para meters kiezen voor het optimaliseren van uw algoritmen in azure machine learning Studio (klassiek)](algorithm-parameters-optimize.md)voor een overzicht van deze modules.
 
-Dit onderwerp bevat voorspelling interpretatie, maar niet de evaluatie van het model. Zie voor meer informatie over het evalueren van uw model [hoe modelprestaties evalueren in Azure Machine Learning Studio](evaluate-model-performance.md).
+In dit onderwerp wordt de interpretatie van voor spellingen, maar geen model evaluatie beschreven. Zie voor meer informatie over het evalueren van uw model de [prestaties van modellen in azure machine learning Studio (klassiek) evalueren](evaluate-model-performance.md).
 
-Als u niet bekend bent met Azure Machine Learning Studio en hulp krijgen bij het maken van een eenvoudig experiment aan de slag, raadpleeg dan [een eenvoudig experiment maken in Azure Machine Learning Studio](create-experiment.md) in Azure Machine Learning Studio.
+Als u geen ervaring hebt met de klassieke versie van Azure Machine Learning Studio en u hulp nodig hebt bij het maken van een eenvoudig experiment om aan de slag te gaan, raadpleegt u [een eenvoudig experiment maken in azure machine learning Studio (klassiek)](create-experiment.md).
 
 ## <a name="classification"></a>Classificatie
 Er zijn twee subcategorieën van classificatie problemen:
 
 * Problemen met slechts twee klassen (twee klassen of binaire classificatie)
-* Problemen met meer dan twee klassen (ROC-indeling)
+* Problemen met meer dan twee klassen (classificatie met meerdere klassen)
 
-Azure Machine Learning Studio heeft andere modules te maken met elk van deze typen classificatie, maar de methoden voor het interpreteren van hun voorspellingsresultaten zijn vergelijkbaar.
+Azure Machine Learning Studio (klassiek) heeft verschillende modules die met elk van deze typen classificatie kunnen omgaan, maar de methoden voor het interpreteren van de resultaten van de voor spellingen zijn vergelijkbaar.
 
-### <a name="two-class-classification"></a>Classificatie van twee klassen
-**Voorbeeldexperiment**
+### <a name="two-class-classification"></a>Classificatie met twee klassen
+**Voorbeeld experiment**
 
-Een voorbeeld van een probleem met twee klassen classificatie is de indeling van de iris bloemen. De taak is het classificeren van iris bloemen op basis van hun functies. De Iris-gegevensset vindt u in Azure Machine Learning Studio is een subset van de populaire [Iris-gegevensset](https://en.wikipedia.org/wiki/Iris_flower_data_set) exemplaren van die alleen de twee bloem soorten (klassen 0 en 1). Er zijn vier functies voor elke bloem (petal length, petal width petal length en petal width).
+Een voor beeld van een classificatie probleem met twee klassen is de classificatie van Iris bloemen. De taak is het classificeren van Iris bloemen op basis van hun functies. De Iris gegevensset die in de klassieke versie van Azure Machine Learning Studio is opgegeven, is een subset van de populaire [Iris gegevensset](https://en.wikipedia.org/wiki/Iris_flower_data_set) met slechts exemplaren van twee bloem soorten (klassen 0 en 1). Er zijn vier functies voor elke bloem (SEPA-lengte, breedte van het SEPA, lengte van de bloem en breedte van het bloem).
 
-![Schermafbeelding van de iris-experiment](./media/interpret-model-results/1.png)
+![Scherm opname van Iris experiment](./media/interpret-model-results/1.png)
 
-Afbeelding 1. IRIS twee klassen classificatie probleem experiment
+Afbeelding 1. Probleem met het classificeren van twee klassen voor Iris
 
-Een experiment is uitgevoerd om op te lossen dit probleem, zoals wordt weergegeven in afbeelding 1. Een tweeklasse boosted decision tree model is getraind en beoordeeld. Nu u de voorspellingsresultaten van visualiseren kunt de [Score Model] [ score-model] module door te klikken op de uitvoerpoort van de [Score Model] [ score-model] module en vervolgens te klikken op **Visualize**.
+Er is een experiment uitgevoerd om dit probleem op te lossen, zoals wordt weer gegeven in afbeelding 1. Een gestimuleerd beslissings structuur model met twee klassen is getraind en gescoord. Nu kunt u de Voorspellings resultaten van de module [score model][score-model] visualiseren door te klikken op de uitvoer poort van de module [score model][score-model] en vervolgens te klikken op **visualiseren**.
 
-![Score model-module](./media/interpret-model-results/1_1.png)
+![Module score model](./media/interpret-model-results/1_1.png)
 
-Hiermee wordt de scoring resultaten zoals wordt weergegeven in afbeelding 2.
+Hiermee worden de Score resultaten weer gegeven, zoals aangegeven in afbeelding 2.
 
-![Resultaten van de iris twee klassen classificatie-experiment](./media/interpret-model-results/2.png)
+![Resultaten van een met twee klassen geclassificeerde experimenten](./media/interpret-model-results/2.png)
 
-Afbeelding 2. Een resultaat score-model in twee klassen classificatie visualiseren
+Afbeelding 2. Een score model visualiseren als gevolg van een classificatie met twee klassen
 
-**Resultaat interpretatie**
+**Resultaten interpretatie**
 
-Er zijn zes kolommen in de tabel met resultaten. Vier kolommen aan de linkerkant vindt u de vier functies. De juiste twee kolommen, Labels beoordeeld en gewaardeerd kansen, worden de voorspellingsresultaten. De kolom beoordeeld kansen toont de kans dat een bloem behoort tot het positieve class (klasse 1). Bijvoorbeeld, is het eerste getal in de kolom (0.028571) betekent dat er 0.028571 kans dat de eerste bloem deel uitmaakt van klasse 1. De kolom Scored Labels geeft de voorspelde klasse voor elke bloem. Dit is gebaseerd op de kolom kansen beoordeeld. Als de beoordeelde waarschijnlijkheid van een bloem groter zijn dan 0,5 is, wordt voorspeld als klasse 1. Anders wordt voorspeld als klasse 0.
+De resultaten tabel bevat zes kolommen. De vier meest linkse kolommen zijn de vier functies. De juiste twee kolommen, gescoorde labels en gescoorde kansen, zijn de Voorspellings resultaten. In de kolom gescoorde kansen ziet u de kans dat een bloem deel uitmaakt van de positieve klasse (klasse 1). Het eerste getal in de kolom (0,028571) betekent bijvoorbeeld dat er 0,028571 waarschijnlijk is dat de eerste bloem deel uitmaakt van klasse 1. In de kolom scoored labels wordt de voorspelde klasse voor elke bloem weer gegeven. Dit is gebaseerd op de kolom gescoorde kansen. Als de gescoorde kans van een bloem groter is dan 0,5, wordt het voor speld als klasse 1. Anders wordt het voor speld als klasse 0.
 
-**Publicatie van de Web service**
+**Publicatie van de webservice**
 
-Nadat de voorspellingsresultaten zijn begrepen en beoordeeld, gezonde, kan het experiment worden gepubliceerd als een webservice zodat u kunt deze in verschillende toepassingen implementeren en deze om te verkrijgen, voorspellingen van de klasse op alle nieuwe iris bloem aanroepen. Zie voor informatie over het wijzigen van een trainingsexperiment in een scoring-experiment en deze publiceren als een webservice, [zelfstudie 3: Tegoed risicomodel implementeren](tutorial-part3-credit-risk-deploy.md). Deze procedure biedt u een experiment scoring zoals wordt weergegeven in afbeelding 3.
+Nadat de resultaten van de voor spelling zijn geïnterpreteerd en geoordeeld, kan het experiment worden gepubliceerd als een webservice, zodat u het kunt implementeren in verschillende toepassingen en hoe u de voor spellingen van de klasse van een nieuwe Iris bloem kan aanroepen. Zie [zelf studie 3: krediet risico model implementeren](tutorial-part3-credit-risk-deploy.md)voor meer informatie over het wijzigen van een studie experiment in een score experiment en om het te publiceren als webservice. Met deze procedure kunt u een score experiment bekijken, zoals wordt weer gegeven in afbeelding 3.
 
-![Schermopname van het scoring-experiment](./media/interpret-model-results/3.png)
+![Scherm afbeelding van scores experiment](./media/interpret-model-results/3.png)
 
-Afbeelding 3. Het experiment iris twee klassen classificatie probleem scoren
+Afbeelding 3. Het afexperimenteren van een probleem met twee klassen van de Iris
 
-Nu moet u om in te stellen van de invoer en uitvoer voor de webservice. De invoer is de rechterinvoerpoort van [Score Model][score-model], die de bloem Iris is uitgerust met invoer. De keuze van de uitvoer is afhankelijk van of u geïnteresseerd in de voorspelde klasse (beoordeelde label), de kans op beoordeelde of beide bent. In dit voorbeeld wordt ervan uitgegaan dat u geïnteresseerd in beide bent. U selecteert de gewenste uitvoerkolommen met een [kolommen in gegevensset selecteren] [ select-columns] module. Klik op [kolommen in gegevensset selecteren][select-columns], klikt u op **kolomkiezer lancering**, en selecteer **Scored Labels** en **Scored Kansen**. Na het instellen van de uitvoerpoort van [kolommen in gegevensset selecteren] [ select-columns] en het nogmaals uit te voeren, moet u het scoring experiment als een webservice publiceren door te klikken op **WEBSERVICE publiceren** . Het laatste experiment ziet er uit zoals in afbeelding 4.
+Nu moet u de invoer en uitvoer voor de webservice instellen. De invoer is de juiste invoer poort van het [score model][score-model], wat de invoer van de Iris bloem-functies is. De keuze van de uitvoer is afhankelijk van of u geïnteresseerd bent in de voorspelde klasse (gescoord label), de gescoorde waarschijnlijkheid of beide. In dit voor beeld wordt ervan uitgegaan dat u bent geïnteresseerd in beide. Als u de gewenste uitvoer kolommen wilt selecteren, gebruikt u de module [select columns in data set][select-columns] . Klik op [kolommen selecteren in gegevensset][select-columns], klik op **kolom kiezer starten**en selecteer **gescoorde labels** en **gescoorde kansen**. Nadat u de uitvoer poort van [geselecteerde kolommen in de gegevensset][select-columns] hebt ingesteld en deze opnieuw uitvoert, moet u klaar zijn om het Score experiment als een webservice te publiceren door te klikken op **Web service publiceren**. Het laatste experiment ziet eruit als afbeelding 4.
 
-![Het iris twee klassen classificatie-experiment](./media/interpret-model-results/4.png)
+![Het experiment voor de classificatie met twee klassen van Iris](./media/interpret-model-results/4.png)
 
-Afbeelding 4. Laatste scoring experiment van een probleem met de classificatie van twee klassen iris
+Afbeelding 4. Laatste score beoordelings experiment van een Iris probleem met twee klassen
 
-Nadat u de webservice uitvoeren en enkele waarden van de functie van een test-instantie invoeren, retourneert het resultaat twee getallen. Het eerste getal is het beoordeelde label en de tweede is de kans op beoordeelde. Deze bloem wordt voorspeld als klasse 1 met 0.9655 kans.
+Nadat u de webservice hebt uitgevoerd en enkele onderdeel waarden van een test instantie hebt opgegeven, retourneert het resultaat twee getallen. Het eerste nummer is het gescoorde label en de tweede is de gescoorde kans. Deze bloem wordt voor speld als klasse 1 met een kans van 0,9655.
 
-![Test interpreteren score-model](./media/interpret-model-results/4_1.png)
+![Testen van score model analyseren](./media/interpret-model-results/4_1.png)
 
-![De resultaten van score](./media/interpret-model-results/5.png)
+![Resultaten van Score test](./media/interpret-model-results/5.png)
 
-Afbeelding 5. Web service resultaat van de iris twee klassen classificatie
+Afbeelding 5. Webservice resultaat van een twee klassen classificatie van Iris
 
-### <a name="multi-class-classification"></a>Meerdere klasse-classificatie
-**Voorbeeldexperiment**
+### <a name="multi-class-classification"></a>Classificatie in meerdere klassen
+**Voorbeeld experiment**
 
-In dit experiment voert u een taak letter erkenning als een voorbeeld van multiklassen classificatie. De classificatie probeert te voorspellen van een bepaalde letter (klasse) op basis van bepaalde incheck-kenmerkwaarden opgehaald uit de incheck-installatiekopieën.
+In dit experiment voert u een taak voor het herkennen van een brief uit als voor beeld van een classificatie met een meervoudige klasse. De classificatie probeert een bepaalde letter (klasse) voor tes pellen op basis van een aantal hand matig geschreven kenmerk waarden die zijn geëxtraheerd uit de hand geschreven afbeeldingen.
 
-![Voorbeeld van de spraakherkenning letter](./media/interpret-model-results/5_1.png)
+![Voor beeld van letter herkenning](./media/interpret-model-results/5_1.png)
 
-Er zijn 16 functies die zijn geëxtraheerd uit een letter incheck-installatiekopieën in de trainingsgegevens. De 26 letters vormen onze 26-klassen. Afbeelding 6 ziet u een experiment die een multiklassen classificeringsmodel voor opname van de letter trainen en voorspellen op dezelfde functieset van een test-gegevensset.
+In de trainings gegevens zijn er 16 functies geëxtraheerd uit handgeschreven letter beelden. 26 letters vormen onze 26 klassen. In afbeelding 6 ziet u een experiment waarmee u een classificatie model met een klasse voor de spraak herkenning kunt trainen en voors pellen op dezelfde functie die is ingesteld voor een test gegevensset.
 
-![Letter erkenning multiklassen classificatie-experiment](./media/interpret-model-results/6.png)
+![Proef experiment voor het classificeren van multi klassen](./media/interpret-model-results/6.png)
 
-Afbeelding 6. Letter erkenning multiklassen classificatie probleem experiment
+Afbeelding 6. Letter herkenning van het probleem met de classificatie van multi klassen
 
-Visualiseren de resultaten van de [Score Model] [ score-model] module door te klikken op de uitvoerpoort van [Score Model] [ score-model] -module en vervolgens te klikken op **Visualize**, ziet u inhoud zoals wordt weergegeven in afbeelding 7.
+Het visualiseren van de resultaten van de module [score model][score-model] door te klikken op de uitvoer poort van de module [score model][score-model] en vervolgens te klikken op **visualiseren**, ziet u inhoud zoals weer gegeven in afbeelding 7.
 
-![Score modelresultaten](./media/interpret-model-results/7.png)
+![Resultaten van score model](./media/interpret-model-results/7.png)
 
-Afbeelding 7. Score modelresultaten in een ROC-classificatie te visualiseren
+Afbeelding 7. De resultaten van een score model visualiseren in een classificatie met meerdere klassen
 
-**Resultaat interpretatie**
+**Resultaten interpretatie**
 
-Kolommen aan de linkerkant 16 vertegenwoordigen de waarden van de functie van de test is ingesteld. De kolommen met namen beoordeeld kansen voor klasse "XX" zijn net als de kolom kansen gescoord in het geval van twee klassen. Ze worden weergegeven de kans dat de bijbehorende vermelding in een bepaalde klasse valt. Voor het eerste item is er bijvoorbeeld 0.003571 kans dat het is een 'A,' 0.000451 kans dat het is een "B", enzovoort. De laatste kolom (Scored Labels) is hetzelfde als Scored Labels in het geval van twee klassen. Wordt de klasse met de grootste kans op beoordeelde geselecteerd als de voorspelde klasse van de bijbehorende vermelding. Bijvoorbeeld, voor het eerste item het beoordeelde label is 'F' omdat dit de grootste kans om te worden van een 'F' (0.916995) heeft.
+De links 16 kolommen vertegenwoordigen de functie waarden van de testset. De kolommen met namen zoals een gescoorde waarschijnlijkheid voor klasse "XX" zijn net als de kolom met de gescoorde kansen in het geval van twee klassen. Ze tonen de waarschijnlijkheid dat de overeenkomende vermelding in een bepaalde klasse valt. Voor de eerste vermelding is er bijvoorbeeld 0,003571 kans dat het een "A" 0,000451 waarschijnlijk is dat het een "B,", enzovoort. De laatste kolom (labels met punten) is hetzelfde als de gescoorde labels in de twee klassen. De klasse met de grootste waarschijnlijkheid wordt geselecteerd als de voorspelde klasse van de corresponderende vermelding. Bijvoorbeeld: voor de eerste vermelding is het Score label ' F ', omdat het de grootste kans heeft op ' F ' (0,916995).
 
-**Publicatie van de Web service**
+**Publicatie van de webservice**
 
-U kunt ook de beoordeelde label ophalen voor elk item en de kans op het beoordeelde label. De basislogica is te vinden van de grootste kans tussen de beoordeelde kansen. Om dit te doen, moet u gebruiken de [R-Script uitvoeren] [ execute-r-script] module. De R-code wordt weergegeven in afbeelding 8, en het resultaat van het experiment wordt weergegeven in afbeelding 9.
+U kunt ook het gescoorde label voor elke vermelding en de waarschijnlijkheid van het label van de Score ophalen. De basis logica is het vinden van de grootste kans op alle gescoorde kansen. Hiervoor moet u de module [R-script uitvoeren][execute-r-script] gebruiken. De R-code wordt weer gegeven in afbeelding 8 en het resultaat van het experiment wordt weer gegeven in afbeelding 9.
 
-![Voorbeeld van R-code](./media/interpret-model-results/8.png)
+![R-code voorbeeld](./media/interpret-model-results/8.png)
 
-Afbeelding 8. R-code voor het extraheren van Scored Labels en de bijbehorende waarschijnlijkheid van de labels
+Afbeelding 8. R-code voor het uitpakken van gescoorde labels en de bijbehorende kansen van de labels
 
-![Resultaat van experiment](./media/interpret-model-results/9.png)
+![Experiment resultaat](./media/interpret-model-results/9.png)
 
-Afbeelding 9. Laatste scoring experiment van de letter erkenning regressieprobleem
+Afbeelding 9. Laatste score beoordelings experiment van het probleem met de classificatie met meervoudige klassen
 
-Nadat u publiceren en de webservice uitvoeren en voer de waarden van bepaalde invoer functie, de geretourneerd resultaat eruit afbeelding 10. Deze letter incheck-met de uitgepakte 16-functies, wordt moet een "T" met 0.9715 kans voorspeld.
+Nadat u de webservice hebt gepubliceerd en uitgevoerd en enkele invoer waarden hebt ingevoerd, ziet het geretourneerde resultaat eruit als afbeelding 10. Deze hand geschreven letter, met de geëxtraheerde 16 functies, wordt voor speld als ' T ' met een kans van 0,9715.
 
-![Module voor de tests interpreteren score](./media/interpret-model-results/9_1.png)
+![De Score module voor het interpreteren testen](./media/interpret-model-results/9_1.png)
 
 ![Testresultaat](./media/interpret-model-results/10.png)
 
-Afbeelding 10. Resultaat van de Web service van multiklassen classificatie
+Afbeelding 10. Webservice resultaat van een classificatie met meer klassen
 
 ## <a name="regression"></a>Regressie
-Regressie problemen treden verschillende problemen met de classificatie. In een classificatie probleem probeert u afzonderlijke klassen, zoals welke klasse een iris-bloem te behoort voorspellen. Maar zoals u in het volgende voorbeeld van een regressieprobleem ziet, probeert u een continue variabele, zoals de prijs van een auto's voorspellen.
+Regressie problemen verschillen van classificatie problemen. In een classificatie probleem probeert u afzonderlijke klassen te voors pellen, bijvoorbeeld op welke klasse een Iris bloem is aangesloten. Maar zoals u kunt zien in het volgende voor beeld van een regressie probleem, probeert u een continue variabele te voors pellen, zoals de prijs van een auto.
 
-**Voorbeeldexperiment**
+**Voorbeeld experiment**
 
-Auto's voorspellen gebruiken als uw voorbeeld voor regressie. U probeert te voorspellen de prijs van een auto op basis van de functies, waaronder maken, brandstoftype, hoofdtekst en station wheel. Het experiment wordt weergegeven in afbeelding 11.
+Gebruik de voor spelling van prijzen voor auto Mobile als voor beeld voor regressie. U probeert de prijs van een auto te voors pellen op basis van de bijbehorende functies, zoals het merk, het brandstof type, het hoofdtekst type en de schijf wiel. Het experiment wordt weer gegeven in afbeelding 11.
 
-![Auto's prijs regressie-experiment](./media/interpret-model-results/11.png)
+![Auto Mobile-experiment voor prijs regressie](./media/interpret-model-results/11.png)
 
-Afbeelding 11. Auto's prijs regressie probleem experiment
+Afbeelding 11. Probleem met prijs regressie voor auto Mobile
 
-Visualiseren van de [Score Model] [ score-model] -module, het resultaat ziet eruit als afbeelding 12.
+Het visualiseren van de module [score model][score-model] , het resultaat ziet eruit als afbeelding 12.
 
-![Scoring-resultaten voor auto's prijs voorspelling probleem](./media/interpret-model-results/12.png)
+![Score resultaten voor het oplossen van problemen met prijzen voor auto Mobile](./media/interpret-model-results/12.png)
 
-Afbeelding 12. Scoring resultaat voor het probleem van ' Automobile ' prijs voorspellen
+Afbeelding 12. Score resultaat voor het probleem met de Voorspellings prijs voor auto Mobile
 
-**Resultaat interpretatie**
+**Resultaten interpretatie**
 
-Scored Labels is de kolom met resultaten in dit scoring resultaat. De getallen zijn de voorspelde prijs voor elke auto.
+Gescoorde labels is de resultaat kolom in dit Score resultaat. De getallen zijn de voorspelde prijs voor elke auto.
 
-**Publicatie van de Web service**
+**Publicatie van de webservice**
 
-U kunt de regressie-experiment naar een webservice publiceren en deze op dezelfde manier als in de classificatie van twee klassen use-case voor auto's voorspellen aanroepen.
+U kunt het regressie-experiment publiceren naar een webservice en deze aanroepen voor het voors pellen van prijzen voor auto Mobile op dezelfde manier als in de classificatie met twee klassen.
 
-![Scoring-experiment voor auto's prijs regressieprobleem](./media/interpret-model-results/13.png)
+![Score experiment voor het oplossen van problemen met prijs regressie voor auto Mobile](./media/interpret-model-results/13.png)
 
-Afbeelding 13. Scoring-experiment van een auto's prijs regressieprobleem
+Afbeelding 13. Score-experiment van een probleem met prijs regressie voor auto Mobile
 
-Met de webservice, het geretourneerde resultaat ziet eruit als afbeelding 14. De voorspelde prijs voor deze auto is $15,085.52.
+Als de webservice wordt uitgevoerd, ziet het geretourneerde resultaat eruit als afbeelding 14. De voorspelde prijs voor deze auto is $15.085,52.
 
-![Interpreteren scoremodule testen](./media/interpret-model-results/13_1.png)
+![Analyse van Score module interpreteren](./media/interpret-model-results/13_1.png)
 
-![Resultaten van de module score](./media/interpret-model-results/14.png)
+![Resultaten van Score module](./media/interpret-model-results/14.png)
 
-Afbeelding 14. Web service resultaat van een auto's prijs regressieprobleem
+Afbeelding 14. Webservice resultaat van een probleem met prijs regressie voor auto Mobile
 
 ## <a name="clustering"></a>Clustering
-**Voorbeeldexperiment**
+**Voorbeeld experiment**
 
-Laten we de Iris-gegevensset opnieuw gebruiken voor het bouwen van een experiment clustering. Hier kunt u filteren van de klasse labels in de gegevensset zodat deze alleen functies en kan worden gebruikt voor clustering. In deze iris use-case, geef het aantal clusters worden twee tijdens de training, wat betekent dat u zou de bloemen cluster in de twee klassen. Het experiment wordt weergegeven in afbeelding 15.
+We gebruiken de Iris gegevensset opnieuw om een clustering-experiment te maken. Hier kunt u de klassen labels in de gegevensset filteren, zodat deze alleen functies heeft en kan worden gebruikt voor clustering. In dit geval van Iris gebruik geeft u het aantal clusters twee op tijdens het trainings proces. Dit betekent dat u de bloemen in twee klassen zou kunnen verdeelen. Het experiment wordt weer gegeven in afbeelding 15.
 
-![IRIS clustering probleem experimenteren](./media/interpret-model-results/15.png)
+![Probleem met het afexperimenteren van Iris clusters](./media/interpret-model-results/15.png)
 
-Afbeelding 15. IRIS clustering probleem experimenteren
+Afbeelding 15. Probleem met het afexperimenteren van Iris clusters
 
-Clustering wijkt af van de classificatie in die de set trainingsgegevens geen grond waarheid labels op zichzelf. Clustering groepen de exemplaren van de gegevensset training in verschillende clusters. Tijdens de training label het model de vermeldingen door te leren van de verschillen tussen de functies. Daarna kan het getrainde model worden gebruikt voor het classificeren van verdere toekomstige vermeldingen. Er zijn twee onderdelen van het resultaat we geïnteresseerd in binnen een clustering probleem zijn. Het eerste deel is de set trainingsgegevens labels en de tweede is een nieuwe gegevensset met het getrainde model classificeren.
+Clustering verschilt van classificatie omdat de set met trainings gegevens zelf geen labels met een grond waarheid heeft. Clustering groepeert de gegevensverzamelings instanties van de training in afzonderlijke clusters. Tijdens het trainings proces labelt het model de vermeldingen door de verschillen tussen hun functies te leren. Daarna kan het getrainde model worden gebruikt om toekomstige vermeldingen verder te classificeren. Er zijn twee delen van het resultaat die in een cluster probleem zijn geïnteresseerd. Het eerste deel is het labelen van de set met trainings gegevens en de tweede is een nieuwe gegevensset classificeren met het getrainde model.
 
-Het eerste deel van het resultaat kan worden gevisualiseerd door te klikken op de uitvoerpoort links van [Clustering Train-Model] [ train-clustering-model] en vervolgens te klikken op **Visualize**. De visualisatie wordt weergegeven in afbeelding 16.
+Het eerste deel van het resultaat kan worden gevisualiseerd door te klikken op de linker uitvoer poort van [Train clustering model][train-clustering-model] en vervolgens te klikken op **visualiseren**. De visualisatie wordt weer gegeven in afbeelding 16.
 
-![Clustering resultaat](./media/interpret-model-results/16.png)
+![Resultaat van clustering](./media/interpret-model-results/16.png)
 
-Afbeelding 16. Resultaat van de set trainingsgegevens clustering visualiseren
+Afbeelding 16. Het cluster resultaat voor de set met trainings gegevens visualiseren
 
-Het resultaat van het tweede deel, nieuwe vermeldingen met het getrainde clustering-model, clustering wordt weergegeven in afbeelding 17.
+Het resultaat van het tweede deel, clustering van nieuwe vermeldingen met het getrainde cluster model, wordt weer gegeven in afbeelding 17.
 
-![Clustering resultaat visualiseren](./media/interpret-model-results/17.png)
+![Resultaat van gevisualiseerde clustering](./media/interpret-model-results/17.png)
 
-Afbeelding 17. Resultaat van een nieuwe gegevensset clustering visualiseren
+Afbeelding 17. Het cluster resultaat in een nieuwe gegevensset visualiseren
 
-**Resultaat interpretatie**
+**Resultaten interpretatie**
 
-Hoewel de resultaten van de twee onderdelen uit verschillende experiment fasen voortvloeien, ze zien er hetzelfde en op dezelfde manier worden geïnterpreteerd. De eerste vier kolommen zijn functies. De laatste kolom, toewijzingen, is het resultaat voorspelling. De vermeldingen hetzelfde nummer toegewezen wordt voorspeld dat zich in hetzelfde cluster, dat wil zeggen, dat er overeenkomsten op een bepaalde manier (dit experiment wordt gebruikgemaakt van de standaard Euclidean afstand metrische gegevens) worden gedeeld. Omdat u het aantal clusters 2 hebt opgegeven, wordt de vermeldingen in toewijzingen zijn gelabeld 0 of 1.
+Hoewel de resultaten van de twee onderdelen afkomstig zijn uit verschillende experimenten, zien ze er hetzelfde uit en worden ze op dezelfde manier geïnterpreteerd. De eerste vier kolommen zijn functies. De laatste kolom, toewijzingen, is het Voorspellings resultaat. De vermeldingen waaraan hetzelfde nummer is toegewezen, worden voor speld in hetzelfde cluster, dat wil zeggen dat ze vergelijk bare items op een of andere manier delen (dit experiment maakt gebruik van de standaard Euclidean afstands waarde). Omdat u het aantal clusters hebt opgegeven dat 2 moet zijn, worden de vermeldingen in toewijzingen aangeduid met de waarde 0 of 1.
 
-**Publicatie van de Web service**
+**Publicatie van de webservice**
 
-U kunt de clustering experiment naar een webservice publiceren en deze aanroepen voor voorspellingen van de dezelfde manier als in de classificatie van twee klassen use-case-clustering.
+U kunt het clustering-experiment publiceren naar een webservice en deze aanroepen voor voor spellingen op dezelfde manier als in de classificatie met twee klassen.
 
-![Scoring-experiment voor clustering iris-probleem](./media/interpret-model-results/18.png)
+![Score experiment voor het oplossen van problemen met Iris clusters](./media/interpret-model-results/18.png)
 
-Afbeelding 18. Scoring-experiment van een iris clustering probleem
+Afbeelding 18. Score experiment van een probleem met Iris clustering
 
-Na het uitvoeren van de webservice, is de geretourneerde resultaten ziet eruit als afbeelding 19. Deze bloem wordt voorspeld moeten in een cluster 0.
+Nadat u de-webservice hebt uitgevoerd, ziet het geretourneerde resultaat eruit als afbeelding 19. Deze bloem wordt voor speld als cluster 0.
 
-![Test scoremodule interpreteren](./media/interpret-model-results/18_1.png)
+![Test module interpreteren](./media/interpret-model-results/18_1.png)
 
-![Resultaat van de module score](./media/interpret-model-results/19.png)
+![Resultaat van Score module](./media/interpret-model-results/19.png)
 
-Afbeelding 19. Web service resultaat van de iris twee klassen classificatie
+Afbeelding 19. Webservice resultaat van een twee klassen classificatie van Iris
 
-## <a name="recommender-system"></a>Recommender system
-**Voorbeeldexperiment**
+## <a name="recommender-system"></a>Aanbevolen systeem
+**Voorbeeld experiment**
 
-Voor recommender systemen, kunt u het probleem van de aanbeveling restaurant gebruiken als een voorbeeld: u kunt restaurants aanbeveelt voor klanten op basis van de geschiedenis van hun classificatie. De ingevoerde gegevens bestaat uit drie onderdelen:
+Voor aanbevolen systemen kunt u het advies probleem van het restaurant als voor beeld gebruiken: u kunt restaurants aanbevelen voor klanten op basis van hun beoordelings geschiedenis. De invoer gegevens bestaan uit drie delen:
 
 * Restaurant beoordelingen van klanten
-* Functie-klantgegevens
-* Gegevens van de functie restaurant
+* Gegevens van klant functie
+* Gegevens van het restaurant onderdeel
 
-Er zijn verschillende dingen die we met doen kunnen de [Train Matchbox Recommender] [ train-matchbox-recommender] module in Azure Machine Learning Studio:
+Er zijn verschillende dingen die u kunt doen met de module [Train matchbox aanbevelen][train-matchbox-recommender] in de klassieke versie van Azure machine learning studio:
 
-* Classificaties voor een bepaalde gebruiker en een item te voorspellen
-* Doe aanbevelingen voor artikelen aan een bepaalde gebruiker
-* Gebruikers met betrekking tot een bepaalde gebruiker zoeken
-* Items die betrekking hebben op een bepaald item zoeken
+* Beoordelingen voor een bepaalde gebruiker en een bepaald item voors pellen
+* Het aanbevelen van items aan een bepaalde gebruiker
+* Gebruikers zoeken die zijn gerelateerd aan een bepaalde gebruiker
+* Items zoeken die betrekking hebben op een bepaald item
 
-U kunt kiezen wat u wilt doen door te selecteren in de vier opties in de **Recommender voorspelling soort** menu. Hier kunt u alle vier scenario's behandelen.
+U kunt kiezen wat u wilt doen door een van de vier opties te selecteren in het menu **Aanbevolen voor spellingen** . Hier kunt u alle vier de scenario's door lopen.
 
-![Matchbox recommender](./media/interpret-model-results/19_1.png)
+![Matchbox-aanbeveling](./media/interpret-model-results/19_1.png)
 
-Een typische Azure Machine Learning Studio-experiment voor een systeem recommender eruit als afbeelding 20. Zie voor meer informatie over het gebruik van deze system aanbevelingsmodules [Train matchbox recommender] [ train-matchbox-recommender] en [Score matchbox recommender] [ score-matchbox-recommender].
+Een typisch Azure Machine Learning Studio (klassiek) experiment voor een aanbevolen systeem ziet eruit als afbeelding 20. Voor informatie over het gebruik van deze aanbevolen systeem modules, raadpleegt u [Train matchbox aanbevelen][train-matchbox-recommender] en [Score matchbox raadt][score-matchbox-recommender].
 
-![Recommender system experiment](./media/interpret-model-results/20.png)
+![Systeem experiment voor aanbevolen systemen](./media/interpret-model-results/20.png)
 
-Afbeelding 20. Recommender system experiment
+Afbeelding 20. Systeem experiment voor aanbevolen systemen
 
-**Resultaat interpretatie**
+**Resultaten interpretatie**
 
-**Classificaties voor een bepaalde gebruiker en een item te voorspellen**
+**Beoordelingen voor een bepaalde gebruiker en een bepaald item voors pellen**
 
-Door het selecteren van **classificatie voorspelling** onder **Recommender voorspelling soort**, vraagt u het systeem recommender om te voorspellen van de classificatie voor een bepaalde gebruiker en een item. De visualisatie van de [Score Matchbox Recommender] [ score-matchbox-recommender] uitvoer ziet eruit als afbeelding 21.
+Als u de optie **beoordelings voorspelling** selecteert onder **Aanbevolen Voorspellings type**, vraagt u het aanbevolen systeem om de classificatie voor een bepaalde gebruiker en een bepaald item te voors pellen. De visualisatie van de [Score matchbox-aanbevolen][score-matchbox-recommender] uitvoer ziet eruit als afbeelding 21.
 
-![Resultaat van het systeem recommender--voorspelling beoordeling beoordelen](./media/interpret-model-results/21.png)
+![Score resultaat van het aanbevolen systeem-classificatie voor spelling](./media/interpret-model-results/21.png)
 
-Afbeelding 21. Het resultaat van de score van het systeem recommender--waardering voorspelling visualiseren
+Afbeelding 21. Het Score resultaat van de voor spelling van het aanbevolen systeem visualiseren
 
-De eerste twee kolommen zijn het item voor gebruikersgegevens-paren die is geleverd door de ingevoerde gegevens. De derde kolom is de voorspelde score van een gebruiker voor een bepaald onderdeel. In de eerste rij de klant U1048 bijvoorbeeld naar tarief restaurant 135026 voorspelde door 2.
+De eerste twee kolommen zijn de door de invoer gegevens opgegeven combi Naties van gebruikers items. De derde kolom is de voorspelde classificatie van een gebruiker voor een bepaald item. In de eerste rij wordt de klant U1048 bijvoorbeeld voorspeld om de frequentie 135026 te beoordelen.
 
-**Doe aanbevelingen voor artikelen aan een bepaalde gebruiker**
+**Het aanbevelen van items aan een bepaalde gebruiker**
 
-Door het selecteren van **Item aanbeveling** onder **Recommender voorspelling soort**, vraagt u het systeem recommender items gaat aanraden aan een bepaalde gebruiker. De laatste parameter om te kiezen in dit scenario is *aanbevolen itemselectie*. De optie **uit het prioriteitsniveau van Items (voor evaluatie van model)** is voornamelijk bedoeld voor model evaluatie tijdens de training. Voor deze fase voorspelling kiezen wij **van alle Items**. De visualisatie van de [Score Matchbox Recommender] [ score-matchbox-recommender] uitvoer ziet eruit als afbeelding 22.
+Door **item aanbeveling** te selecteren onder **Aanbevolen Voorspellings type**, vraagt u het aanbevolen systeem om items aan een bepaalde gebruiker aan te bevelen. De laatste para meter die in dit scenario moet worden gekozen, is de *Aanbevolen selectie van items*. De optie **van nominale items (voor de model evaluatie)** is voornamelijk bedoeld voor de model evaluatie tijdens het trainings proces. Voor deze Voorspellings fase kiezen we **uit alle items**. De visualisatie van de [Score matchbox-aanbevolen][score-matchbox-recommender] uitvoer ziet eruit als afbeelding 22.
 
-![Resultaat van de score van recommender men item aanbeveling](./media/interpret-model-results/22.png)
+![Resultaat van de Score van het aanbevolen systeem--item aanbeveling](./media/interpret-model-results/22.png)
 
-Afbeelding 22. Resultaat van het systeem recommender--item aanbeveling score visualiseren
+Afbeelding 22. Het Score resultaat van het aanbevolen systeem visualiseren--artikel aanbeveling
 
-De eerste dag van de zes kolommen staat voor de opgegeven gebruikers-id's om aan te bevelen items, zoals opgegeven door de ingevoerde gegevens. De vijf kolommen vertegenwoordigen de items die zijn aanbevolen voor de gebruiker in aflopende volgorde van relevantie. In de eerste rij is het meest aanbevolen restaurant voor klant U1048 bijvoorbeeld 134986, gevolgd door 135018, 134975 135021 en 132862.
+De eerste van de zes kolommen duidt op de opgegeven gebruikers-Id's voor het aanbevelen van items, zoals opgegeven door de invoer gegevens. De andere vijf kolommen vertegenwoordigen de items die aan de gebruiker worden aanbevolen in aflopende volg orde van relevantie. In de eerste rij is bijvoorbeeld het meest aanbevolen restaurant voor klant U1048 134986, gevolgd door 135018, 134975, 135021 en 132862.
 
-**Gebruikers met betrekking tot een bepaalde gebruiker zoeken**
+**Gebruikers zoeken die zijn gerelateerd aan een bepaalde gebruiker**
 
-Door het selecteren van **gerelateerde gebruikers** onder **Recommender voorspelling soort**, vraagt u het systeem recommender om gerelateerde gebruikers aan een bepaalde gebruiker te vinden. Gerelateerde gebruikers zijn de gebruikers die vergelijkbare voorkeuren hebben. De laatste parameter om te kiezen in dit scenario is *gebruikersselectie gerelateerde*. De optie **van gebruikers die beoordeeld Items (voor evaluatie van model)** is voornamelijk bedoeld voor model evaluatie tijdens de training. Kies **van alle gebruikers** voor de fase van deze voorspelling. De visualisatie van de [Score Matchbox Recommender] [ score-matchbox-recommender] uitvoer ziet eruit als afbeelding 23.
+Als u **gerelateerde gebruikers** selecteert onder **Aanbevolen Voorspellings type**, vraagt u het aanbevolen systeem om verwante gebruikers te vinden voor een bepaalde gebruiker. Gerelateerde gebruikers zijn de gebruikers die vergelijk bare voor keuren hebben. De laatste para meter die in dit scenario moet worden gekozen, is *gerelateerde gebruikers selectie*. De optie **van gebruikers die geclassificeerde items (voor de model evaluatie),** is voornamelijk bedoeld voor de model evaluatie tijdens het trainings proces. Kies **uit alle gebruikers** voor deze Voorspellings fase. De visualisatie van de [Score matchbox-aanbevolen][score-matchbox-recommender] uitvoer ziet eruit als afbeelding 23.
 
-![Resultaat van de score van recommender systeem--Verwante gebruikers](./media/interpret-model-results/23.png)
+![Score resultaat van het aanbevelen van systeem-gerelateerde gebruikers](./media/interpret-model-results/23.png)
 
-Afbeelding 23. Scoreresultaten van het systeem recommender--Verwante gebruikers visualiseren
+Afbeelding 23. De resultaten van de Score van het aanbevelende systeem-gerelateerde gebruikers visualiseren
 
-De eerste dag van de zes kolommen bevat de opgegeven gebruiker id's die nodig zijn om gerelateerde gebruikers te vinden zoals bepaald door de invoergegevens. De vijf kolommen opslaan van de voorspelde gerelateerde gebruikers van de gebruiker in aflopende volgorde van relevantie. In de eerste rij is de meest relevante klant voor klant U1048 bijvoorbeeld U1051, gevolgd door U1066, U1044 U1017 en U1072.
+In de eerste van de zes kolommen worden de opgegeven gebruikers-Id's weer gegeven voor het vinden van gerelateerde gebruikers, zoals opgegeven door de invoer gegevens. De andere vijf kolommen slaan de voorspelde gerelateerde gebruikers van de gebruiker op in aflopende volg orde van relevantie. In de eerste rij is de meest relevante klant voor klant U1048 bijvoorbeeld U1051, gevolgd door U1066, U1044, U1017 en U1072.
 
-**Items die betrekking hebben op een bepaald item zoeken**
+**Items zoeken die betrekking hebben op een bepaald item**
 
-Door het selecteren van **verwante Items** onder **Recommender voorspelling soort**, vraagt u het systeem recommender om gerelateerde items aan een bepaald artikel te vinden. Verwante items zijn de items die waarschijnlijk worden leuk gevonden door dezelfde gebruiker. De laatste parameter om te kiezen in dit scenario is *die betrekking hebben de selectie van items*. De optie **uit het prioriteitsniveau van Items (voor evaluatie van model)** is voornamelijk bedoeld voor model evaluatie tijdens de training. We kiezen **van alle Items** voor de fase van deze voorspelling. De visualisatie van de [Score Matchbox Recommender] [ score-matchbox-recommender] uitvoer ziet eruit als afbeelding 24 uur per dag.
+Als u **Verwante items** selecteert onder **Voorspellings type**, vraagt u het aanbevolen systeem om verwante items naar een bepaald item te zoeken. Gerelateerde items zijn de items die waarschijnlijk dezelfde gebruiker hebben. De laatste para meter die in dit scenario moet worden gekozen, is *gerelateerde item selectie*. De optie **van nominale items (voor de model evaluatie)** is voornamelijk bedoeld voor de model evaluatie tijdens het trainings proces. We kiezen **uit alle items** voor deze Voorspellings fase. De visualisatie van de [Score matchbox-aanbevolen][score-matchbox-recommender] uitvoer ziet eruit als afbeelding 24.
 
-![Resultaat van de score van recommender systeem--verwante items](./media/interpret-model-results/24.png)
+![Score resultaat van het aanbevelen van systeem-gerelateerde items](./media/interpret-model-results/24.png)
 
-Afbeelding 24 uur per dag. Scoreresultaten van het systeem recommender--verwante items visualiseren
+Afbeelding 24. De resultaten van de Score van het aanbevelende systeem-gerelateerde items visualiseren
 
-De eerste dag van de zes kolommen vertegenwoordigt het opgegeven item-id's die nodig zijn om verwante items te vinden, zoals bepaald door de ingevoerde gegevens. De vijf kolommen opslaan van de voorspelde verwante items van het item in aflopende volgorde in termen van relevantie. In de eerste rij is het meest relevant item voor item 135026 bijvoorbeeld 135074, gevolgd door 135035, 132875 135055 en 134992.
+De eerste van de zes kolommen duidt op de opgegeven item-Id's die nodig zijn om verwante items te zoeken, zoals opgegeven door de invoer gegevens. De andere vijf kolommen bevatten de voorspelde gerelateerde items van het item in aflopende volg orde in termen van relevantie. In de eerste rij is bijvoorbeeld het meest relevante item voor item 135026 135074, gevolgd door 135035, 132875, 135055 en 134992.
 
-**Publicatie van de Web service**
+**Publicatie van de webservice**
 
-Het proces van de publicatie van deze experimenten als webservices om op te halen van voorspellingen is vergelijkbaar voor elk van de vier scenario's. We nemen hier het tweede scenario (aanbevolen items aan een bepaalde gebruiker) als voorbeeld. U kunt dezelfde procedure met de andere drie volgen.
+Het proces voor het publiceren van deze experimenten als webservices om voor spellingen te verkrijgen, is vergelijkbaar met elk van de vier scenario's. Hier volgen we het tweede scenario (het aanbevelen van items aan een bepaalde gebruiker) als voor beeld. U kunt dezelfde procedure volgen met de andere drie.
 
-Het systeem getrainde recommender opslaan als een getraind model en filteren de invoergegevens naar een enkele gebruiker-ID-kolom, zoals aangevraagd, kunt u het experiment zoals in afbeelding 25 koppelt en publiceren als een webservice.
+Als u het getrainde aanbevolen systeem opslaat als een getraind model en u de invoer gegevens naar een enkele kolom met gebruikers-id's filtert zoals aangevraagd, kunt u het experiment aansluiten zoals in afbeelding 25 en publiceren als een webservice.
 
-![Scoring-experiment van het probleem van de aanbeveling restaurant](./media/interpret-model-results/25.png)
+![Score experiment van het advies probleem van het restaurant](./media/interpret-model-results/25.png)
 
-Afbeelding 25. Scoring-experiment van het probleem van de aanbeveling restaurant
+Afbeelding 25. Score experiment van het advies probleem van het restaurant
 
-Met de webservice, het geretourneerde resultaat ziet eruit als afbeelding 26. De vijf aanbevolen restaurants voor gebruiker U1048 zijn 134986, 135018, 134975, 135021 en 132862.
+Als de webservice wordt uitgevoerd, ziet het geretourneerde resultaat eruit als afbeelding 26. De vijf aanbevolen restaurants voor gebruikers U1048 zijn 134986, 135018, 134975, 135021 en 132862.
 
-![Voorbeeld van recommender systeemservice](./media/interpret-model-results/25_1.png)
+![Voor beeld van een aanbevolen systeem service](./media/interpret-model-results/25_1.png)
 
-![Voorbeeldresultaten van experiment](./media/interpret-model-results/26.png)
+![Voorbeeld resultaten voor experiment](./media/interpret-model-results/26.png)
 
-Afbeelding 26. Resultaat van de Web service restaurant aanbeveling probleem
+Afbeelding 26. Webservice resultaat van het advies probleem van het restaurant
 
 <!-- Module References -->
 [assign-to-clusters]: https://msdn.microsoft.com/library/azure/eed3ee76-e8aa-46e6-907c-9ca767f5c114/

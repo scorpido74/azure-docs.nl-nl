@@ -10,12 +10,12 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 10/19/2019
-ms.openlocfilehash: 0a93bedb697a0d5a514fddab55c79b969b2bd77b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1d152c921d38931f8c67396fc5769cfd2dfcf58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954225"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468236"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Een RuuviTag-sensor verbinden met uw Azure IoT Central-toepassing
 
@@ -34,7 +34,7 @@ Als u RuuviTag Sens oren wilt verbinden, hebt u de volgende resources nodig:
 
 * Een RuuviTag-sensor. Ga naar [RuuviTag](https://ruuvi.com/)voor meer informatie. 
 * Een Rigado-trapsgewijs 500-apparaat of een andere uitstaande gateway. Ga naar [Rigado](https://www.rigado.com/)voor meer informatie.
-* Een Azure IoT Central-toepassing die is gemaakt op basis van een van de preview-toepassings sjablonen. Zie voor meer informatie de [nieuwe toepassing maken](https://docs.microsoft.com/azure/iot-central/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+* Een Azure IoT Central-toepassing die is gemaakt op basis van een van de preview-toepassings sjablonen. Zie voor meer informatie de [nieuwe toepassing maken](https://docs.microsoft.com/azure/iot-central/core/quick-deploy-iot-central-pnp?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
 ## <a name="add-a-ruuvitag-device-template"></a>Een sjabloon voor een RuuviTag-apparaat toevoegen
 

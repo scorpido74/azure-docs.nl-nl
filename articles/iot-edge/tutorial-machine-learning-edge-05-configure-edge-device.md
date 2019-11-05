@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 6d8f67cf94e143cd67a525fa2cc675650fb59e65
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965397"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494027"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Zelf studie: een IoT Edge apparaat configureren
 
@@ -73,11 +73,11 @@ In deze sectie maken we de zelfondertekende certificaten met behulp van een dock
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Certificaten uploaden naar Azure Key Vault
 
-Om onze certificaten veilig op te slaan en ze toegankelijk te maken vanaf meerdere apparaten, zullen we de certificaten uploaden naar Azure Key Vault. Zoals u kunt zien in de bovenstaande lijst, hebben we twee typen certificaat bestanden: PFX en PEM. De PFX wordt behandeld als Key Vault certificaten die worden geüpload naar Key Vault. De PEM-bestanden zijn tekst zonder opmaak en wij behandelen ze als Key Vault geheimen. We gaan de Key Vault gebruiken die zijn gekoppeld aan de Azure Machine Learning service-werk ruimte die we hebben gemaakt door de [Azure notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)uit te voeren.
+Om onze certificaten veilig op te slaan en ze toegankelijk te maken vanaf meerdere apparaten, zullen we de certificaten uploaden naar Azure Key Vault. Zoals u kunt zien in de bovenstaande lijst, hebben we twee typen certificaat bestanden: PFX en PEM. De PFX wordt behandeld als Key Vault certificaten die worden geüpload naar Key Vault. De PEM-bestanden zijn tekst zonder opmaak en wij behandelen ze als Key Vault geheimen. We gebruiken de Key Vault gekoppeld aan de Azure Machine Learning-werk ruimte die we hebben gemaakt door de [Azure notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)uit te voeren.
 
-1. Ga vanuit het [Azure Portal](https://portal.azure.com)naar de werk ruimte van uw Azure machine learning-service.
+1. Navigeer vanuit het [Azure Portal](https://portal.azure.com)naar uw Azure machine learning-werk ruimte.
 
-2. Ga naar de pagina overzicht van de werk ruimte van de Azure Machine Learning-service en zoek de naam van de **Key Vault**.
+2. Ga naar de pagina overzicht van de werk ruimte Azure Machine Learning en zoek de naam van de **Key Vault**.
 
     ![Sleutel kluis naam kopiëren](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 

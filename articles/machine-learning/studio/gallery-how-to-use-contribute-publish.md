@@ -1,7 +1,7 @@
 ---
 title: Azure AI-galerie
-titleSuffix: Azure Machine Learning Studio
-description: Delen en ontdekken analytics-resources en meer in de Azure AI Gallery. Leer van anderen en uw eigen bijdragen aan de community.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Deel en ontdek analyse bronnen en meer in de Azure AI Gallery. Leer van anderen en maak uw eigen bijdragen aan de community.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,195 +10,195 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 445ea2fa299e32d0ceae7b3eee9bbf0a82dd75af
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811536"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492937"
 ---
-# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Delen en ontdekken van bronnen in de Azure AI Gallery
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Resources delen en ontdekken in de Azure AI Gallery
 
-**[Azure AI Gallery](https://gallery.azure.ai)**  is een community-gestuurde site voor het detecteren van en het delen van oplossingen die zijn gebouwd met Azure AI.
-De galerie heeft een aantal resources die u gebruiken kunt om uw eigen analytics-oplossingen te ontwikkelen.
+**[Azure AI Gallery](https://gallery.azure.ai)** is een door de community gerichte site voor het detecteren en delen van oplossingen die zijn gebouwd met Azure AI.
+De galerie bevat een aantal bronnen die u kunt gebruiken om uw eigen analyse oplossingen te ontwikkelen.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Wat kan ik vinden in de galerie?
 
-De Azure AI Gallery bevat een aantal verschillende bronnen die zijn bijgedragen door Microsoft en leden van de data science-community. Deze omvatten:
+Het Azure AI Gallery bevat een aantal verschillende resources die door micro soft en leden van de data Science-Community zijn bijgedragen. Deze omvatten:
 
-* **Experimenten** -de galerie bevat een groot aantal experimenten die zijn ontwikkeld in Azure Machine Learning Studio. Deze variëren van snelle proof of concept experimenten die een specifieke machine learning-technieken, naar volledig ontwikkelde oplossingen voor problemen met complexe machine learning laten zien.
-* **Zelfstudies** : Er zijn een aantal zelfstudies beschikbaar om te zien hoe u machine learning-technologieën en -concepten of om te beschrijven geavanceerde methoden voor het oplossen van problemen met verschillende machine learning.
-* **Verzamelingen** -een verzameling kunt u om te experimenten, API's en andere resources galerie die een bepaalde oplossing of -concept groeperen.
-* **Aangepaste Modules** -u kunt aangepaste modules downloaden in de Studio-werkruimte in uw eigen experimenten gebruiken.
-* **Jupyter-Notebooks** : Jupyter-Notebooks code, visualisaties van zoekgegevens opnemen en documentatie in een enkele, interactief canvas. Notitieblokken in de galerie bieden zelfstudies en gedetailleerde uitleg van geavanceerde machine learning-technieken en oplossingen.
+* **Experimenten** : de galerie bevat een groot aantal experimenten dat is ontwikkeld in azure machine learning Studio (klassiek). Dit bereik is een snelle haalbaarheids test die een specifieke machine learning techniek demonstreert, tot volledig ontwikkelde oplossingen voor ingewikkelde machine learning problemen.
+* **Zelf studies** : er zijn een aantal zelf studies beschikbaar om u te helpen bij machine learning technologieën en concepten, of om geavanceerde methoden te beschrijven voor het oplossen van verschillende machine learning problemen.
+* **Verzamelingen** : met een verzameling kunt u experimenten, api's en andere galerie resources groeperen die een specifieke oplossing of concept verpakken.
+* **Aangepaste modules** : u kunt aangepaste modules downloaden naar uw studio-werk ruimte (klassiek) om in uw eigen experimenten te gebruiken.
+* **Jupyter-notebooks** : Jupyter-notebooks bevatten code, gegevens visualisaties en documentatie in één, interactief canvas. Notebooks in de galerie bieden zelf studies en gedetailleerde uitleg van geavanceerde machine learning technieken en oplossingen.
 
-## <a name="discover-and-contribute"></a>Detecteren en bij te dragen
+## <a name="discover-and-contribute"></a>Ontdekken en bijdragen
 
-Iedereen kan bladeren en de verschillende soorten resources zoeken in de galerie die is bijgedragen door Microsoft en de data science-community.
-Gebruik deze bronnen voor meer informatie en een goede start op het oplossen van problemen met uw eigen gegevens-analyse.
+Iedereen kan bladeren en de verschillende typen resources zoeken in de galerie die door micro soft en de data Science-Community zijn bijgedragen.
+Gebruik deze bronnen om meer te weten te komen en aan de slag te gaan met het oplossen van uw eigen gegevens analyse problemen.
 
-U kunt eenvoudig onlangs gepubliceerde en populaire resources zoeken in de galerie of u kunt zoeken op naam, tags, algoritmen en andere kenmerken.
-Klik op **door alles bladeren** in de kop van de galerie, en selecteer vervolgens zoeken naar verfijningen aan de linkerkant van de pagina en Typ zoektermen aan de bovenkant.
-Bijdragen van de auteur van een bepaalde weergeven door te klikken op de naam van de auteur van binnen een van de tegels.
-U kunt opmerkingen, feedback geven of vragen via de sectie met opmerkingen op de pagina van elke resource.
-U kunt een resource van belang zijn zelfs delen met vrienden en collega's met behulp van de mogelijkheden van het delen van LinkedIn- of Twitter, of door een koppeling e-mailen.
+U kunt gemakkelijk recent gepubliceerde en populaire resources vinden in de galerie, maar u kunt ook zoeken op naam, labels, algoritmen en andere kenmerken.
+Klik op **Bladeren** in de koptekst van de galerie en selecteer vervolgens zoek verfijningen links van de pagina en voer de zoek termen bovenaan in.
+Bekijk de bijdragen van een bepaalde auteur door te klikken op de naam van de auteur in een van de tegels.
+U kunt opmerkingen maken, feedback geven of vragen stellen via de sectie opmerkingen op elke resource pagina.
+U kunt zelfs een belang rijke resource delen met vrienden of collega's met behulp van de mogelijkheden voor delen van LinkedIn of Twitter, of door een e-mail bericht te verzenden naar een koppeling.
 
-Wanneer u zich in uw Word lid van de galerie-community. Hiermee kunt u resources downloaden of uw eigen galerie-items bij te dragen, zodat anderen kunnen profiteren van de oplossingen die u hebt ontdekt.
+Wanneer u zich aanmeldt, wordt u lid van de galerie-community. Zo kunt u bronnen downloaden of uw eigen galerie-items bijdragen zodat anderen kunnen profiteren van de oplossingen die u hebt gedetecteerd.
 
-U kunt downloaden **experimenten**, **aangepaste modules**, en **Jupyter-notebooks** te gebruiken bij het ontwikkelen van uw eigen analytics-oplossingen.
-U kunt bijdragen **experimenten**, **zelfstudies**, en **verzamelingen** naar de galerie.
+U kunt **experimenten**, **aangepaste modules**en Jupyter- **notebooks** downloaden om te gebruiken bij het ontwikkelen van uw eigen analyse oplossingen.
+U kunt **experimenten**, **zelf studies**en **verzamelingen** bijdragen aan de galerie.
 
-## <a name="download-experiments-modules-notebooks"></a>Downloaden van experimenten, modules, -laptops
+## <a name="download-experiments-modules-notebooks"></a>Experimenten, modules, notebooks downloaden
 
-U kunt downloaden **experimenten**, **aangepaste modules**, en **Jupyter-notebooks** in uw eigen Machine Learning Studio-werkruimte te gebruiken bij het ontwikkelen van uw eigen oplossingen.
+U kunt **experimenten**, **aangepaste modules**en Jupyter- **notebooks** downloaden in uw eigen machine learning Studio (klassieke) werk ruimte om te gebruiken bij het ontwikkelen van uw eigen oplossingen.
 
-Voor het downloaden van een resource in binnen de AI-galerie:
+Een resource downloaden vanuit de AI-galerie:
 
-1. Open de resource in AI-galerie.
-1. Klik op **Open in Studio**.
+1. Open de resource in de AI-galerie.
+1. Klik op **openen in Studio**.
 
-![Open een item van de AI-galerie](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
+![Een item openen vanuit de AI-galerie](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-Een resource in Studio downloaden:
+Een resource downloaden vanuit de klassieke versie van Studio:
 
-1. Selecteer in Studio **nieuw**.
-1. Selecteer **Module**, **Experiment**, of **Notebook**.
-1. Bladeren of zoeken naar een galeriebron.
-1. Wijs met de muis op de resource en selecteer vervolgens **Open in Studio**.
-    ![Open galerie experimenteren uit in Machine Learning Studio](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
+1. Selecteer in de klassieke versie van Studio de optie **Nieuw**.
+1. Selecteer **module**, **experiment**of **notebook**.
+1. Blader of zoek naar een galerie resource.
+1. Plaats de muis op de resource en selecteer vervolgens **openen in Studio**.
+    ![Gallery-experiment van binnen Machine Learning Studio (klassiek) openen](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-Zodra de resource in uw werkruimte is, kunt u deze kunt aanpassen en deze gebruiken zoals u zou doen alles wat u in Studio maakt.
+Zodra de resource zich in uw werk ruimte bevindt, kunt u deze aanpassen en gebruiken zoals u dat in de klassieke versie van Studio maakt.
 
-Het gebruik van een geïmporteerde aangepaste module:
+Een geïmporteerde aangepaste module gebruiken:
 
-1. Een experiment maken of openen van een bestaand experiment.
-1. Om uit te breiden de lijst met aangepaste modules in uw werkruimte, in het modulepalet Selecteer **aangepaste**. Het modulepalet is aan de linkerkant van het experimentcanvas.
+1. Maak een experiment of open een bestaand experiment.
+1. Als u de lijst met aangepaste modules in uw werk ruimte wilt uitvouwen, selecteert u **aangepast**in het palet module. Het module palet bevindt zich links van het canvas van het experiment.
 1. Selecteer de module die u hebt geïmporteerd en sleep deze naar uw experiment.
 
-## <a name="contribute-experiments"></a>Experimenten bijdragen
+## <a name="contribute-experiments"></a>Contribute-experimenten
 
-Ter illustratie van technieken analytics, of waarmee anderen snel op hun oplossingen, u kunt bijdragen **experimenten** u hebt ontwikkeld in Studio.
-Als anderen uw bijdrage in de galerie tegenkomt, kunt u het aantal weergaven en downloads van uw inzending volgen.
-Gebruikers kunnen ook opmerkingen toevoegen en uw bijdragen delen met andere leden van de data science-community.
-En u kunt zich aanmelden met een discussie hulpprogramma zoals Disqus voor het ontvangen van meldingen voor reacties op uw bijdragen.
+Om analyse technieken te demonstreren of anderen een jump-start uit te geven op hun oplossingen, kunt u **experimenten** die u hebt ontwikkeld in de klassieke versie van Studio, bijdragen.
+Wanneer anderen over uw bijdrage in de galerie komen, kunt u het aantal weer gaven en down loads van uw bijdrage volgen.
+Gebruikers kunnen ook opmerkingen toevoegen en bijdragen delen met andere leden van de data Science-community.
+En u kunt zich aanmelden met een discussie hulpprogramma zoals Disqus om meldingen te ontvangen voor opmerkingen over uw bijdragen.
 
-1. Open uw experiment in Studio.
+1. Open uw experiment in de klassieke versie van Studio.
 
-1. Selecteer in de lijst met acties onder het experimentcanvas **publiceren naar de galerie**.
+1. Selecteer in de lijst met acties onder het canvas **op publiceren naar galerie**.
 
-1. Voer in de galerie, een **naam** en **Tags** die zijn beschrijvend. Markeer de technieken die u hebt gebruikt of het werkelijke probleem u oplossen. Een voorbeeld van een experiment beschrijvende titel is ' binaire classificatie: Twitter-Sentimentanalyse."
+1. Voer in de galerie een beschrijvende **naam** en **Tags** in. Markeer de technieken die u hebt gebruikt of het probleem dat u wilt oplossen. Een voor beeld van een beschrijvende titel voor een experiment is ' binaire classificatie: Twitter Sentimentanalyse '.
 
-1. In de **samenvatting** voert u een overzicht van uw experiment. Een korte beschrijving van het probleem dat het experiment is opgelost en hoe u nadert.
+1. Voer in het vak **samen vatting** een samen vatting van uw experiment in. Geef een korte beschrijving van het probleem dat het experiment oplost en hoe u dit aanpakt.
 
-1. In de **gedetailleerde beschrijving** vak, worden de stappen beschreven die u hebt genomen in elk onderdeel van uw experiment. Er zijn enkele nuttige onderwerpen om op te nemen:
-   * Schermafbeelding van de grafiek experiment
-   * Uitleg bij en gegevensbronnen
+1. In het vak **gedetailleerde beschrijving** Beschrijf de stappen die u in elk deel van uw experiment hebt genomen. U kunt onder andere het volgende doen:
+   * Scherm opname van experiment-grafiek
+   * Gegevens bronnen en uitleg
    * Gegevensverwerking
    * Functie-engineering
    * Modelbeschrijving
-   * Resultaten en evaluatie van de modelprestaties van
+   * Resultaten en evaluatie van model prestaties
 
-   U kunt markdown gebruiken om de opmaak van uw beschrijving. Als u wilt zien hoe uw gegevens op de pagina van de beschrijving experiment eruit ziet wanneer het experiment wordt gepubliceerd, selecteert u **Preview**.
-
-   > [!TIP]
-   > De tekstvakken voor markdown bewerken en voorbeeld van klein zijn. Het is raadzaam dat u de documentatie van uw experiment in een markdown-editor schrijven (zoals [Visual Studio Code](https://aka.ms/vscode)) en kopieer en plak de voltooide documentatie in het tekstvak in de galerie.
-
-1. Op de **selectie van een installatiekopie** pagina, kies een miniatuurafbeelding voor uw experiment. De miniatuur wordt weergegeven aan de bovenkant van de pagina met details van het experiment en in de tegel experiment. Andere gebruikers zien de miniatuurafbeelding wanneer ze door de galerie bladeren. U kunt een installatiekopie uploaden vanaf uw computer of een slot installatiekopie in de galerie selecteren.
-
-1. Op de **instellingen** pagina onder **zichtbaarheid**, kies of u uw inhoud openbaar publiceren (**openbare**) of dat deze alleen toegankelijk voor mensen met een koppeling naar de pagina ( **Niet-vermelde**).
+   U kunt prijs verlaging gebruiken om uw beschrijving op te maken. Als u wilt zien hoe uw vermeldingen op de pagina beschrijving van experiment eruit zien wanneer het experiment wordt gepubliceerd, selecteert u **voor beeld**.
 
    > [!TIP]
-   > Als u controleren of uw documentatie is gelukt wilt voordat u deze openbaar release, kunt u eerst het experiment als publiceren **niet-weergegeven**. Later, kunt u de van zichtbaarheidsinstelling wijzigen **openbare** op de detailpagina van het experiment. Houd er rekening mee dat wanneer u een experiment hebt ingesteld voor **openbare** u deze later niet wijzigen **niet-weergegeven**.
+   > De tekst vakken voor het bewerken van de prijs verlaging en de preview-versie zijn klein. We raden u aan uw experimentele documentatie te schrijven in een prijs opgave-editor (zoals [Visual Studio code](https://aka.ms/vscode)) en vervolgens de voltooide documentatie te kopiëren en plakken in het tekstvak in de galerie.
 
-1. Voor het publiceren van het experiment naar de galerie, selecteer de **OK** selectievakje is ingeschakeld.
+1. Kies op de pagina **selectie van afbeeldingen** een miniatuur afbeelding voor uw experiment. De miniatuur afbeelding wordt weer gegeven aan de bovenkant van de pagina Details van experiment en op de tegel experiment. Andere gebruikers zien de miniatuur afbeelding wanneer ze door de galerie bladeren. U kunt een installatie kopie van uw computer uploaden of een Stock installatie kopie selecteren in de galerie.
 
-### <a name="update-your-experiment"></a>Bijwerken van uw experiment
+1. Kies op de pagina **instellingen** onder **zicht baarheid**of u uw inhoud openbaar (**openbaar**) wilt publiceren of alleen toegankelijk wilt maken voor personen die een koppeling naar de pagina hebben (niet**vermeld**).
 
-Als u nodig hebt, kunt u wijzigingen aanbrengen aan de werkstroom in een experiment die u hebt gepubliceerd naar de galerie (modules, parameters, enzovoort). Breng wijzigingen wilt aanbrengen in het experiment en vervolgens opnieuw publiceren in Machine Learning Studio. Uw gepubliceerde experiment wordt met uw wijzigingen bijgewerkt.
+   > [!TIP]
+   > Als u er zeker van wilt zijn dat uw documentatie correct wordt weer gegeven voordat u deze openbaar vrijgeeft, kunt u het experiment eerst als niet- **weer**gegeven publiceren. Later kunt u de zichtbaarheids instelling wijzigen in **openbaar** op de pagina met details van het experiment. Houd er rekening mee dat nadat u een experiment hebt ingesteld op **openbaar** , dit later niet meer kan worden gewijzigd in niet **weer geven**.
 
-U kunt een van de volgende informatie voor uw experiment rechtstreeks in de galerie wijzigen:
+1. Schakel het selectie vakje **OK** in om het experiment naar de galerie te publiceren.
 
-* Naam van experiment
-* Samenvatting of beschrijving
+### <a name="update-your-experiment"></a>Uw experiment bijwerken
+
+Als dat het geval is, kunt u wijzigingen aanbrengen in de werk stroom (modules, para meters, enzovoort) in een experiment dat u hebt gepubliceerd in de galerie. Breng in Machine Learning Studio (klassiek) alle wijzigingen aan die u wilt aanbrengen in het experiment en publiceer het vervolgens opnieuw. Uw gepubliceerde experiment wordt bijgewerkt met uw wijzigingen.
+
+U kunt de volgende gegevens voor uw experiment rechtstreeks in de galerie wijzigen:
+
+* Naam experiment
+* Samen vatting of beschrijving
 * Tags
 * Installatiekopie
-* Zichtbaarheidsinstelling (**openbare** of **niet-weergegeven**)
+* Zichtbaarheids instelling (**openbaar** of niet in **lijst**)
 
-U kunt ook het experiment verwijderen uit de galerie.
+U kunt ook het experiment uit de galerie verwijderen.
 
-U kunt deze wijzigingen aanbrengt, of het experiment verwijderd uit de pagina met details van het experiment of op uw profielpagina in de galerie.
+U kunt deze wijzigingen aanbrengen of het experiment verwijderen via de pagina Details van experiment of van uw profiel pagina in de galerie.
 
-* Op de pagina met details van experiment, om de details voor uw experiment wijzigen, selecteer **bewerken**. De pagina met details krijgt de bewerkingsmodus. Als u wilt wijzigen, selecteert u **bewerken** naast de naam van experiment, samenvatting of tags. Wanneer u klaar bent bent, selecteert u **gedaan**. De instellingen van de zichtbaarheid van het experiment wijzigen (**openbare** of **niet-weergegeven**), of selecteer wilt verwijderen van het experiment uit de galerie de **instellingen** pictogram.
+* Selecteer op de pagina experiment Details de optie **bewerken**om de details van uw experiment te wijzigen. De pagina Details wordt in de bewerkings modus geactiveerd. Als u wijzigingen wilt aanbrengen, selecteert u **bewerken** naast de naam, samen vatting of tags van het experiment. Wanneer u klaar bent met het maken van wijzigingen, selecteert u **gereed**. Als u de zichtbaarheids instellingen voor het experiment (**openbaar** of niet- **weer geven**) wilt wijzigen, of als u het experiment uit de galerie wilt verwijderen, selecteert u het pictogram **instellingen** .
 
-* Selecteer de pijl-omlaag voor het experiment op uw profielpagina en selecteer vervolgens **bewerken**. Hiermee gaat u naar de pagina met details voor uw experiment in de bewerkingsmodus. Wanneer u klaar bent bent, selecteert u **gedaan**. Selecteer wilt verwijderen van het experiment uit de galerie **verwijderen**.
+* Selecteer op de pagina Profiel de pijl-omlaag voor het experiment en selecteer vervolgens **bewerken**. Hiermee gaat u naar de pagina Details voor uw experiment in de bewerkings modus. Wanneer u klaar bent met het maken van wijzigingen, selecteert u **gereed**. Als u het experiment uit de galerie wilt verwijderen, selecteert u **verwijderen**.
 
 ### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tips voor het documenteren en publiceren van uw experiment
 
-* U kunt ervan uitgaan dat de lezer voorgaande datatechnologie is-ervaring, maar kan het handig is voor gebruik van eenvoudige taal zijn. Wordt uitgelegd wat in detail indien mogelijk.
-* Geef voldoende informatie en stapsgewijze uitleg voor de lezers van uw experiment te navigeren.
-* Visuele elementen kunnen nuttig zijn voor lezers het interpreteren en correct gebruik van de documentatie van uw experiment. Visuele elementen bevatten experimentele grafieken en schermopnamen van gegevens.
-* Als u een gegevensset in uw experiment (dat wil zeggen, u bent niet importeren van de gegevensset via de module gegevens importeren), de gegevensset is onderdeel van uw experiment en in de galerie wordt gepubliceerd. Zorg ervoor dat de gegevensset die u publiceert heeft licentievoorwaarden die delen en te downloaden door iedereen toestaan. Galeriebijdragen vallen onder de Azure [gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+* U kunt ervan uitgaan dat de lezer een eerdere ervaring voor gegevens wetenschap heeft, maar het kan handig zijn om eenvoudige taal te gebruiken. Leg zo mogelijk dingen gedetailleerd uit.
+* Geef voldoende informatie en stapsgewijze uitleg om lezers te helpen door uw experiment te navigeren.
+* Visuele elementen kunnen handig zijn om lezers te laten interpreteren en uw experimentele documentatie goed te gebruiken. Visuele elementen zijn experimentele grafieken en scherm afbeeldingen van gegevens.
+* Als u in uw experiment een gegevensset opneemt (dat wil zeggen dat u de gegevensset niet importeert via de module gegevens importeren), maakt de gegevensset deel uit van uw experiment en wordt deze in de galerie gepubliceerd. Zorg ervoor dat de gegevensset die u publiceert licentie voorwaarden heeft die door iedereen kunnen worden gedeeld en gedownload. Galerie bijdragen worden gedekt door de [gebruiks voorwaarden van](https://azure.microsoft.com/support/legal/website-terms-of-use/)Azure.
 
-## <a name="contribute-tutorials-and-collections"></a>Zelfstudies en verzamelingen bijdragen
+## <a name="contribute-tutorials-and-collections"></a>Zelf studies en verzamelingen van Contribute
 
-Kunt u anderen helpen met het schrijven van een **zelfstudie** in de galerie die machine learning-concepten uitgelegd of op basis van een **verzameling** die meerdere resources om een specifieke oplossing gegroepeerd.
+U kunt anderen helpen bij het schrijven van een **zelf studie** in de galerie met uitleg over machine learning concepten of door een **verzameling** te maken die meerdere resources rond een specifieke oplossing samenvoegt.
 
-1. Meld u aan de galerie met uw Microsoft-account.
+1. Meld u aan bij de galerie met behulp van uw Microsoft-account.
 
-1. Selecteer de afbeelding in de rechterbovenhoek van de pagina en selecteer vervolgens de naam van uw.
+1. Selecteer de afbeelding in de rechter bovenhoek van de pagina en selecteer vervolgens uw naam.
 
 1. Selecteer **Nieuw Item**.
 
-1. Op de **beschrijving** pagina voor **ITEMTYPE**, selecteer **zelfstudie** of **verzameling**. Voer een naam, een korte samenvatting, een gedetailleerde beschrijving en eventuele labels die kunnen helpen bij andere gebruikers van uw bijdrage vinden. Klik op **Volgende**.
+1. Selecteer op de pagina **Beschrijving** voor **item type** **zelf studie** of **verzameling**. Voer een naam, een korte samen vatting, een gedetailleerde beschrijving en alle labels in die mogelijk andere gebruikers kunnen helpen bij het vinden van uw bijdrage. Klik op **Volgende**.
 
-1. Op de **selectie van een installatiekopie** pagina, selecteert u een afbeelding die wordt weergegeven met uw inzending. U kunt uw eigen installatiekopie uploaden of Selecteer de installatiekopie van een voorraad. Kies een installatiekopie die kan helpen bij de gebruikers identificeren de inhoud en het doel van uw inzending. Klik op **Volgende**.
+1. Selecteer op de pagina **selectie van afbeeldingen** een afbeelding die bij uw bijdrage wordt weer gegeven. U kunt uw eigen afbeeldings bestand uploaden of een Stock installatie kopie selecteren. Kies een installatie kopie waarmee gebruikers de inhoud en het doel van uw bijdrage kunnen identificeren. Klik op **Volgende**.
 
-1. Op de **instellingen** pagina voor **zichtbaarheid**, selecteren of uw bijdrage **openbare** (iedereen kan bekijken) of **niet-weergegeven** (alleen mensen met een directe koppeling kunnen bekijken).
+1. Selecteer op de pagina **instellingen** voor **zicht baarheid**of uw bijdrage **openbaar** is (iedereen kan deze weer geven **) of niet weer geven** (alleen personen met een directe koppeling kunnen deze bekijken).
 
    > [!TIP]
-   > Als u controleren of uw documentatie is gelukt wilt voordat u deze openbaar release, kunt u eerst het experiment als publiceren **niet-weergegeven**. Later, kunt u de van zichtbaarheidsinstelling wijzigen **openbare** op de detailpagina van het experiment. Houd er rekening mee dat wanneer u een experiment hebt ingesteld voor **openbare** u deze later niet wijzigen **niet-weergegeven**.
+   > Als u er zeker van wilt zijn dat uw documentatie correct wordt weer gegeven voordat u deze openbaar vrijgeeft, kunt u het experiment eerst als niet- **weer**gegeven publiceren. Later kunt u de zichtbaarheids instelling wijzigen in **openbaar** op de pagina met details van het experiment. Houd er rekening mee dat nadat u een experiment hebt ingesteld op **openbaar** , dit later niet meer kan worden gewijzigd in niet **weer geven**.
 
 1. Selecteer **Maken**.
 
-Uw bijdrage is nu in Azure AI Gallery. Uw bijdragen worden weergegeven op de pagina van uw account op de **Items** tabblad.
+Uw bijdrage is nu in Azure AI Gallery. Uw bijdragen worden weer gegeven op uw account pagina op het tabblad **items** .
 
-### <a name="add-to-and-edit-your-collection"></a>Toevoegen aan en bewerken van uw verzameling
+### <a name="add-to-and-edit-your-collection"></a>Toevoegen en uw verzameling bewerken
 
-U kunt items toevoegen aan uw verzameling op twee manieren:
+U kunt op twee manieren items toevoegen aan uw verzameling:
 
-* De verzameling openen, selecteert u **bewerken**, en selecteer vervolgens **Item toevoegen**. U kunt items die u hebt bijgedragen aan de galerie toevoegen of u kunt zoeken naar de galerie voor items om toe te voegen. Nadat u hebt geselecteerd de items die u wilt toevoegen, klikt u op **toevoegen**.
+* Open de verzameling, selecteer **bewerken**en selecteer vervolgens **item toevoegen**. U kunt items toevoegen die u aan de galerie hebt bijgedragen of u kunt in de galerie zoeken naar items die u wilt toevoegen. Nadat u de items hebt geselecteerd die u wilt toevoegen, klikt u op **toevoegen**.
 
-* Als u een item dat u toevoegen wilt, terwijl u de galerie bladert, opent u het item en selecteer **toevoegen aan de verzameling**. Selecteer de verzameling die u wilt toevoegen van het item aan.
+* Als u een item vindt dat u wilt toevoegen terwijl u de galerie bekijkt, opent u het item en selecteert u **toevoegen aan verzameling**. Selecteer de verzameling waaraan u het item wilt toevoegen.
 
-U kunt de items in uw verzameling bewerken door te selecteren **bewerken**.
+U kunt de items in uw verzameling bewerken door **bewerken**te selecteren.
 
-* U kunt de samenvatting, beschrijving of labels wijzigen voor de verzameling.
-* U kunt de volgorde van de items in de verzameling wijzigen met behulp van de pijl naast een item.
-* Notities toevoegen aan de items in uw verzameling, selecteer de rechterbovenhoek van een item en selecteer vervolgens **toevoegen/bewerken Opmerking**.
-* Als u wilt een item uit de verzameling verwijderen, selecteert u de rechterbovenhoek van een item en selecteer vervolgens **verwijderen**.
+* U kunt de samen vatting, beschrijving of labels voor uw verzameling wijzigen.
+* U kunt de volg orde van de items in de verzameling wijzigen door de pijlen naast een item te gebruiken.
+* Als u notities wilt toevoegen aan de items in uw verzameling, selecteert u de rechter bovenhoek van een item en selecteert u vervolgens **Opmerking toevoegen/bewerken**.
+* Als u een item uit uw verzameling wilt verwijderen, selecteert u de rechter bovenhoek van een item en selecteert u vervolgens **verwijderen**.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**Wat zijn de vereisten voor het verzenden of bewerken van een installatiekopie?**
+**Wat zijn de vereisten voor het indienen of bewerken van een installatie kopie?**
 
-Installatiekopieën die u met uw bijdrage indient worden gebruikt voor het maken van een tegel. Het is raadzaam dat installatiekopieën niet kleiner zijn dan 500 KB, met een aspect ratio van 3:2, en een resolutie van 960 &#215; 640.
+Afbeeldingen die u met uw bijdrage verzendt, worden gebruikt voor het maken van een tegel. Het is raadzaam dat installatie kopieën kleiner zijn dan 500 KB, met een hoogte-breedte verhouding van 3:2 en een &#215; resolutie van 960 640.
 
-**Wat gebeurt er met de gegevensset die ik in een experiment gebruikt? Wordt de gegevensset ook gepubliceerd in de galerie?**
+**Wat gebeurt er met de gegevensset die ik in een experiment heb gebruikt? Is de gegevensset ook gepubliceerd in de galerie?**
 
-Als uw gegevensset onderdeel van uw experiment is en niet via de Import-module wordt geïmporteerd, wordt de gegevensset gepubliceerd in de galerie als onderdeel van uw experiment. Zorg ervoor dat de gegevensset die u met uw experiment publiceert de juiste licentievoorwaarden heeft. De licentievoorwaarden moeten toestaan iedereen te delen en de gegevens te downloaden. Galeriebijdragen vallen onder de Azure [gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+Als uw gegevensset deel uitmaakt van uw experiment en niet wordt geïmporteerd via de module gegevens importeren, wordt de gegevensset in de galerie gepubliceerd als onderdeel van uw experiment. Zorg ervoor dat de gegevensset die u met uw experiment publiceert, de juiste licentie voorwaarden heeft. De licentie voorwaarden moeten iedereen toestaan om de gegevens te delen en te downloaden. Galerie bijdragen worden gedekt door de [gebruiks voorwaarden van](https://azure.microsoft.com/support/legal/website-terms-of-use/)Azure.
 
-**Ik heb een experiment die gebruikmaakt van een module gegevens importeren gegevens wilt halen uit Azure HDInsight of SQL Server. Mijn referenties wordt gebruikt om de gegevens te halen. Kan ik dit soort experiment publiceren? Hoe kan ik er zeker van zijn dat mijn referenties niet wordt gedeeld?**
+**Ik heb een experiment dat gebruikmaakt van een import gegevens module voor het ophalen van gegevens uit Azure HDInsight of SQL Server. Hierbij worden mijn referenties gebruikt om de gegevens op te halen. Kan ik dit soort experiment publiceren? Hoe kan ik ervoor zorgen dat mijn referenties niet worden gedeeld?**
 
-Momenteel kunt publiceren u niet in de galerie een experiment dat referenties gebruikt.
+Op dit moment kunt u niet publiceren in de galerie, een experiment waarbij referenties worden gebruikt.
 
-**Hoe voer ik meerdere labels?**
+**Hoe kan ik meerdere labels invoeren?**
 
-Druk op de Tab-toets nadat u een label, om in te voeren van een andere code invoeren.
+Nadat u een tag hebt ingevoerd, drukt u op de tab-toets om een andere tag in te voeren.
 
-## <a name="we-want-to-hear-from-you"></a>We horen graag van u!
+## <a name="we-want-to-hear-from-you"></a>Laat het ons weten!
 
-We willen de galerie in op worden aangestuurd door onze gebruikers en voor onze gebruikers. Gebruik de gezichtje aan de rechterkant om ons te vertellen wat u uw favoriete of hekel over de Gallery.  
+We willen dat de galerie wordt aangestuurd door onze gebruikers en voor onze gebruikers. Gebruik het lachebekje aan de rechter kant om ons te laten weten wat u vindt of hate over de galerie.  
 
 ![Feedback](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[TERUG NAAR DE GALERIE &GT;&GT;](https://gallery.azure.ai)**
+**[Ga naar de galerie > >](https://gallery.azure.ai)**

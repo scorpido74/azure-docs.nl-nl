@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073999"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470119"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Apps in Azure App Service bewaken
 [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) biedt ingebouwde bewakings functionaliteit voor web-apps, mobiele back-ends en API-apps in de [Azure Portal](https://portal.azure.com).
@@ -38,12 +38,12 @@ Als de app wordt gehost in een *Basic*-, *Standard*-of *Premium* -abonnement, wo
 
 Quota voor gratis of gedeelde apps zijn:
 
-| Quota | Description |
+| Quota | Beschrijving |
 | --- | --- |
 | **CPU (kort)** | De hoeveelheid CPU die is toegestaan voor deze app in een interval van 5 minuten. Dit quotum wordt om de vijf minuten opnieuw ingesteld. |
 | **CPU (dag)** | De totale hoeveelheid CPU die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
 | **Geheugenmetabase** | De totale hoeveelheid geheugen die is toegestaan voor deze app. |
-| **Bandwidth** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
+| **Bandbreedte** | De totale hoeveelheid uitgaande band breedte die op een dag is toegestaan voor deze app. Dit quotum wordt om de 24 uur opnieuw ingesteld om middernacht UTC. |
 | **System** | De totale hoeveelheid toegestane opslag ruimte. |
 
 Het enige quotum dat van toepassing is op apps die worden gehost in *Basic*-, *Standard*-en *Premium* -abonnementen is bestands systeem.
@@ -68,9 +68,9 @@ Metrische gegevens geven informatie over de app of het gedrag van het App Servic
 
 De beschik bare metrische gegevens voor een app zijn:
 
-| Gegevens | Description |
+| Gegevens | Beschrijving |
 | --- | --- |
-| **Gemiddelde reactie tijd** | De gemiddelde tijd die nodig is voor het uitvoeren van aanvragen in de app, in milliseconden. |
+| **Gemiddelde reactie tijd** | De gemiddelde tijd die nodig is voor het verwerken van aanvragen in de app. |
 | **Gemiddelde werkset geheugen** | De gemiddelde hoeveelheid geheugen die wordt gebruikt door de app, in mega bytes (MiB). |
 | **Verbindingen** | Het aantal gekoppelde sockets dat in de sandbox aanwezig is (W3wp. exe en de onderliggende processen).  Een gebonden socket wordt gemaakt door binding-Api's ()/Connect () aan te roepen en blijft totdat de andere socket is gesloten met CloseHandle ()/closesocket (). |
 | **CPU-tijd** | De hoeveelheid CPU die wordt verbruikt door de app, in seconden. Zie [CPU-tijd versus CPU-percentage](#cpu-time-vs-cpu-percentage)voor meer informatie over deze metrische gegevens. |
@@ -81,13 +81,13 @@ De beschik bare metrische gegevens voor een app zijn:
 | **1 garbagecollection-verzamelingen** | Het aantal keren dat de generatie 1-objecten permanent zijn verzameld sinds het begin van het app-proces. Een hogere generatie GCs bevatten alle lagere GCs.|
 | **Opschoon verzamelingen van generatie 2** | Het aantal keren dat de generatie 2-objecten permanent zijn verzameld sinds het begin van het app-proces.|
 | **Aantal ingangen** | Het totale aantal ingangen dat momenteel door het app-proces is geopend.|
-| **Http 2xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 200, maar < 300. |
-| **Http 3xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 300, maar < 400. |
+| **Http-2xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 200, maar < 300. |
+| **HTTP-3xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 300, maar < 400. |
 | **HTTP 401** | Het aantal aanvragen dat resulteert in de HTTP 401-status code. |
 | **HTTP 403** | Het aantal aanvragen dat resulteert in de HTTP 403-status code. |
 | **Http 404** | Het aantal aanvragen dat resulteert in de HTTP 404-status code. |
 | **Http 406** | Het aantal aanvragen dat resulteert in de HTTP 406-status code. |
-| **Http 4xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 400, maar < 500. |
+| **Http-4xx** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 400, maar < 500. |
 | **Http-server fouten** | Het aantal aanvragen dat resulteert in een HTTP-status code ≥ 500, maar < 600. |
 | **Andere i/o-bytes per seconde** | De snelheid waarmee het app-proces bytes uitgeeft aan I/O-bewerkingen die geen gegevens bevatten, zoals controle bewerkingen.|
 | **Andere i/o-bewerkingen per seconde** | De snelheid waarmee I/O-bewerkingen worden uitgevoerd die geen lees-of schrijf bewerkingen zijn.|
@@ -110,7 +110,7 @@ De beschik bare metrische gegevens voor een App Service plan zijn:
 > De metrische gegevens voor het App Service plan zijn alleen beschikbaar voor abonnementen in de lagen *Basic*, *Standard*en *Premium* .
 > 
 
-| Gegevens | Description |
+| Gegevens | Beschrijving |
 | --- | --- |
 | **CPU-percentage** | De gemiddelde CPU die wordt gebruikt voor alle exemplaren van het plan. |
 | **Geheugen percentage** | Het gemiddelde geheugen dat wordt gebruikt voor alle exemplaren van het plan. |
@@ -124,14 +124,14 @@ De beschik bare metrische gegevens voor een App Service plan zijn:
 
 Er zijn twee metrische gegevens die het CPU-gebruik weer spie gelen:
 
-**CPU-tijd**: Dit is handig voor apps die worden gehost in gratis of gedeelde abonnementen, omdat een van de quota's is gedefinieerd in CPU-minuten die door de app worden gebruikt.
+**CPU-tijd**: handig voor apps die worden gehost in een gratis of gedeeld abonnement, omdat een van de quota's is gedefinieerd in CPU-minuten die door de app worden gebruikt.
 
-**CPU-percentage**: Dit is handig voor apps die worden gehost in Basic-, Standard-en Premium-abonnementen, omdat ze kunnen worden uitgeschaald. CPU-percentage is een goede indicatie van het totale gebruik voor alle exemplaren.
+**CPU-percentage**: handig voor apps die worden gehost in Basic-, Standard-en Premium-abonnementen, omdat ze kunnen worden uitgeschaald. CPU-percentage is een goede indicatie van het totale gebruik voor alle exemplaren.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Granulatie van metrische gegevens en bewaar beleid
 Metrische gegevens voor een app-en app service-plan worden vastgelegd en geaggregeerd door de service, met de volgende granulaties en bewaar beleid:
 
-* De metrische gegevens over de nauw keurigheid van de granulatie worden 30 uur bewaard.
+* De metrische gegevens over **de nauw** keurigheid van de granulatie worden 30 uur bewaard.
 * De metrische granulatie waarden voor het **uur** worden 30 dagen bewaard.
 * **Dag** granulatie waarden worden gedurende 30 dagen bewaard.
 
@@ -140,13 +140,13 @@ Als u de status van de verschillende quota's en metrische gegevens wilt bekijken
 
 ![De grafiek quota's in het Azure Portal][quotas]
 
-Selecteer **instellingen** > **quota's**om quota's te vinden. In de grafiek kunt u het volgende controleren: 
+Als u quota's wilt zoeken, selecteert u **instellingen** > **quota's**. In de grafiek kunt u het volgende controleren: 
 1. De naam van het quotum.
 1. Het interval voor opnieuw instellen.
 1. De huidige limiet.
 1. De huidige waarde.
 
-![Grafiek met metrische gegevens in][metrics] de Azure Portal hebt u rechtstreeks toegang tot metrische gegevens via de **resource** pagina. De grafiek aanpassen: 
+![grafiek met metrische gegevens in de Azure Portal][metrics] u de gegevens rechtstreeks vanaf de pagina **resource** kunt openen. De grafiek aanpassen: 
 1. Selecteer de grafiek.
 1. Selecteer **grafiek bewerken**.
 1. Bewerk het **tijds bereik**.

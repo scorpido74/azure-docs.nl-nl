@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: c26c0b16331ae01f7505e44cef3fe91b3282750b
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809859"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494793"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-clusters maken met behulp van Azure CLI
 
@@ -44,14 +44,14 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
 
 2. Omgevings variabelen instellen. Het gebruik van variabelen in dit artikel is gebaseerd op bash. Er zijn kleine variaties nodig voor andere omgevingen. Zie [AZ-hdinsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) voor een volledige lijst met mogelijke para meters voor het maken van een cluster.
 
-    |Parameter | Description |
+    |Parameter | Beschrijving |
     |---|---|
-    |`--size`| Het aantal worker-knoop punten in het cluster. In dit artikel wordt de `clusterSizeInNodes` variabele gebruikt als de waarde `--size`die wordt door gegeven aan. |
-    |`--version`| De versie van het HDInsight-cluster. In dit artikel wordt de `clusterVersion` variabele gebruikt als de waarde `--version`die wordt door gegeven aan. Zie ook: [Ondersteunde HDInsight-versies](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Type HDInsight-cluster, zoals Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  In dit artikel wordt de `clusterType` variabele gebruikt als de waarde `--type`die wordt door gegeven aan. Zie ook: [Cluster typen en-configuratie](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
-    |`--component-version`|De versies van verschillende Hadoop-onderdelen, in versies die zijn gescheiden in de indeling ' onderdeel = versie '. In dit artikel wordt de `componentVersion` variabele gebruikt als de waarde `--component-version`die wordt door gegeven aan. Zie ook: [Hadoop-onderdelen](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--size`| Het aantal worker-knoop punten in het cluster. In dit artikel wordt gebruikgemaakt van de variabele `clusterSizeInNodes` als de waarde die is door gegeven aan `--size`. |
+    |`--version`| De versie van het HDInsight-cluster. In dit artikel wordt gebruikgemaakt van de variabele `clusterVersion` als de waarde die is door gegeven aan `--version`. Zie ook: [ondersteunde HDInsight-versies](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Type HDInsight-cluster, zoals Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  In dit artikel wordt gebruikgemaakt van de variabele `clusterType` als de waarde die is door gegeven aan `--type`. Zie ook: [cluster typen en configuratie](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--component-version`|De versies van verschillende Hadoop-onderdelen, in versies die zijn gescheiden in de indeling ' onderdeel = versie '. In dit artikel wordt gebruikgemaakt van de variabele `componentVersion` als de waarde die is door gegeven aan `--component-version`. Zie ook: [Hadoop-onderdelen](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
-    Vervang `RESOURCEGROUPNAME` ,`LOCATION` ,,`PASSWORD` en door de gewenste waarden. `CLUSTERNAME` `STORAGEACCOUNTNAME` Wijzig de waarden voor de andere variabelen naar wens. Voer vervolgens de CLI-opdrachten in.
+    Vervang `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`en `PASSWORD` met de gewenste waarden. Wijzig de waarden voor de andere variabelen naar wens. Voer vervolgens de CLI-opdrachten in.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -76,7 +76,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure 
         --name $resourceGroupName
     ```
 
-    Gebruik de `az account list-locations` opdracht voor een lijst met geldige locaties en gebruik vervolgens een van de locaties van de `name` waarde.
+    Gebruik de opdracht `az account list-locations` voor een lijst met geldige locaties en gebruik vervolgens een van de locaties van de `name` waarde.
 
 4. [Maak een Azure Storage-account](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) door de onderstaande opdracht in te voeren:
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554387"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474304"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
@@ -28,7 +28,7 @@ Mensen maken verbinding met de resources van de organisatie in steeds complexe s
 
 Voordat u een implementatie van Azure Multi-Factor Authentication start, zijn er vereiste items die moeten worden overwogen.
 
-| Scenario | Vereisten |
+| Scenario | Vereiste |
 | --- | --- |
 | **Cloud-only-** identiteits omgeving met moderne verificatie | **Geen aanvullende vereiste taken** |
 | Scenario's voor **hybride** identiteit | [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) wordt geïmplementeerd en gebruikers identiteiten worden gesynchroniseerd of Federated met de on-premises Active Directory Domain Services met Azure Active Directory. |
@@ -220,6 +220,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account voor globale beheerders.
 1. Blader naar **Azure Active Directory**, **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
+   ![een beleid voor voorwaardelijke toegang maken om MFA in te scha kelen voor Azure Portal gebruikers in de groep prototype](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Geef een beschrijvende naam op voor uw beleid.
 1. Onder **gebruikers en groepen**:
    * Schakel op het tabblad **include** het keuze rondje **alle gebruikers** in
@@ -237,8 +238,6 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
 1. Sla de **sessie** sectie over.
 1. Stel de **Schakel** optie voor het inschakelen van beleid in **op aan**.
 1. Klik op **Maken**.
-
-![Een beleid voor voorwaardelijke toegang maken om MFA in te scha kelen voor Azure Portal gebruikers in de test groep](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Integratie met on-premises systemen plannen
 

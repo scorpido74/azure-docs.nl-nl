@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Een gegevenswetenschappelijk experiment opzetten'
-titleSuffix: Azure Machine Learning Studio
+title: 'Snelstartgids: een Data science-experiment maken'
+titleSuffix: Azure Machine Learning Studio (classic)
 description: Deze quickstart over machine learning leidt u door een eenvoudig gegevenswetenschappelijk experiment. We voorspellen de prijs van een auto met behulp van een regressiealgoritme.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c95954bbe96b947312a952ebaab4e6bfc2b2f5a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515119"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493288"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Quickstart: Uw eerste gegevenswetenschappelijke experiment maken in Azure Machine Learning Studio
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Quick Start: uw eerste proef versie van data Science maken in Azure Machine Learning Studio (klassiek)
 
-In deze quickstart maakt u een Machine Learning-experiment in [Azure Machine Learning Studio](what-is-ml-studio.md) om de prijs van een auto te voorspellen op basis van verschillende variabelen, zoals het merk en de technische specificaties.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+In deze Quick Start maakt u een machine learning experiment in [Azure machine learning Studio (klassiek)](what-is-ml-studio.md) waarmee de prijs van een auto wordt voor speld op basis van verschillende variabelen, zoals het merk en de technische specificaties.
 
 Als u nog geen ervaring hebt met machine learning, is de videoserie [Data Science for Beginners](data-science-for-beginners-the-5-questions-data-science-answers.md) een geweldige inleiding tot machine learning, in gewone taal en met bekende begrippen.
 
@@ -40,20 +42,18 @@ In deze quickstart wordt de standaardwerkstroom voor een experiment gevolgd:
 [Een algoritme kiezen en toepassen]: #choose-and-apply-an-algorithm
 [Prijzen van nieuwe auto's voorspellen]: #predict-new-automobile-prices
 
-Als u geen een Studio-account hebt, gaat u naar de [startpagina van Studio](https://studio.azureml.net) en selecteert u **Hier aanmelden** om een gratis account te maken. De gratis werkruimte heeft alle functies die u nodig hebt voor deze quickstart.
-
 ## <a name="get-the-data"></a>De gegevens ophalen
 
 Het eerste wat u voor machine learning nodig hebt, zijn gegevens.
-Studio bevat een aantal voorbeeldgegevenssets die u kunt gebruiken. Daarnaast kunt u uit tal van bronnen gegevens importeren. Voor dit voorbeeld gebruiken we de voorbeeldgegevensset **Automobile price data (Raw)** . Deze is opgenomen in de werkruimte.
+Er zijn verschillende voorbeeld gegevens sets die deel uitmaken van de klassieke versie van studio die u kunt gebruiken, of u kunt gegevens importeren uit een groot aantal bronnen. Voor dit voorbeeld gebruiken we de voorbeeldgegevensset **Automobile price data (Raw)** . Deze is opgenomen in de werkruimte.
 Deze gegevensset bevat vermeldingen voor verschillende auto's, inclusief informatie over het merk, het model, de technische specificaties en de prijs.
 
 > [!TIP]
-> U vindt een werkende kopie van het volgende experiment in de [Azure AI Gallery](https://gallery.azure.ai). Ga naar **[Your first data science experiment - Automobile price prediction](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** en klik op **Open in Studio** om een kopie van het experiment naar uw Machine Learning Studio-werkruimte te downloaden.
+> U vindt een werkende kopie van het volgende experiment in de [Azure AI Gallery](https://gallery.azure.ai). Ga naar **[uw eerste proef versie van data Science-auto Mobile Price prediction](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** en klik op **Open in Studio** om een kopie van het experiment te downloaden naar de werk ruimte machine learning Studio (klassiek).
 
 U voegt de gegevensset als volgt toe aan uw experiment.
 
-1. Maak een nieuw experiment door onderaan het Machine Learning Studio-venster op **+NEW** te klikken. Selecteer **EXPERIMENT** >  **Blank Experiment**.
+1. Maak een nieuw experiment door onder aan het venster Machine Learning Studio (klassiek) op **+ Nieuw** te klikken. Selecteer **EXPERIMENT** >  **Blank Experiment**.
 
 1. Het experiment krijgt een standaardnaam die boven aan het canvas wordt weergegeven. Selecteer deze tekst en wijzig de naam in iets relevants, bijvoorbeeld **prijzen auto's voorspellen**. De naam hoeft niet uniek te zijn.
 
@@ -97,7 +97,7 @@ Eerst voegen we een module toe waarmee de kolom **normalized-losses** volledig w
 
    - Klik links op **With rules**
    - Klik onder **Begin With** op **All columns**. Met deze regels worden [kolommen in dataset geselecteerd][select-columns] voor het door geven van alle kolommen (met uitzonde ring van de kolommen die we nu gaan uitsluiten).
-   - Selecteer in de vervolgkeuzelijsten **Exclude** en **column names** en klik in het tekstvak. Er wordt een lijst met kolommen weergegeven. Selecteer **normalized-losses** om dit aan het tekstvak toe te voegen.
+   - Selecteer in de vervolgkeuzelijsten **Exclude** (Uitsluiten) en **column names** (kolomnamen) en klik in het tekstvak. Er wordt een lijst met kolommen weergegeven. Selecteer **normalized-losses** om dit aan het tekstvak toe te voegen.
    - Klik rechtsonder op de knop met het vinkje (OK) om de kolomkiezer te sluiten.
 
      ![De kolomkiezer starten en de kolom normalized-losses uitsluiten](./media/create-experiment/launch-column-selector.png)
@@ -183,7 +183,7 @@ We gebruiken onze gegevens zowel voor trainings- als testdoeleinden door ze op t
 
 1. Als u een leeralgoritme wilt selecteren, moet u de categorie **Machine Learning** in het modulepalet links van het canvas uitvouwen en vouwt u vervolgens **Initialize Model** uit. Er worden verschillende categorieën weergegeven die kunnen worden gebruikt om de machine learning-algoritmen te initialiseren. Voor dit experiment selecteert u de [lineaire regressie][linear-regression] module onder de categorie **regressie** en sleept u deze naar het canvas op het experiment. (U kunt de module ook zoeken door 'linear regression' in het zoekvak van het palet te typen.)
 
-1. Zoek de module [Train model][train-model] en sleep deze naar het canvas van het experiment. Koppel de uitvoer van de module [Linear Regression][linear-regression] aan de linkerkant van de module [Train model][train-model] en koppel de gegevens uitvoer (links poort) van de module gesplitste [gegevens][split] aan de rechter invoer van de module [Train model][train-model] .
+1. Zoek de module [Train model][train-model] en sleep deze naar het canvas van het experiment. Koppel de uitvoer van de module [Linear Regression][linear-regression] aan de linkerkant van de module [Train model][train-model] en koppel de gegevens uitvoer (links poort) van de module [gesplitste gegevens][split] aan de rechter invoer van de module [Train model][train-model] .
 
     ![De module Train Model verbinden met de modules Linear Regression en Split Data](./media/create-experiment/connect-train-model.png)
 
@@ -211,7 +211,7 @@ Nu we het model met 75 procent van de gegevens hebben getraind, kunnen we het mo
 
     ![Uitvoer van de module Score Model](./media/create-experiment/score-model-output.png)
 
-1. Ten slotte testen we de kwaliteit van de resultaten. Selecteer de module [Evaluate model][evaluate-model] en sleep deze naar het canvas van het experiment en koppel de uitvoer van de module [score model][score-model] aan de linker invoer van het evaluate- [model][evaluate-model]. Het laatste experiment ziet er ongeveer als volgt uit:
+1. Ten slotte testen we de kwaliteit van de resultaten. Selecteer de module [Evaluate model][evaluate-model] en sleep deze naar het canvas van het experiment en koppel de uitvoer van de module [score model][score-model] aan de linker invoer van het [Evaluate-model][evaluate-model]. Het laatste experiment ziet er ongeveer als volgt uit:
 
     ![Laatste experiment](./media/create-experiment/complete-linear-regression-experiment.png)
 
@@ -223,11 +223,11 @@ Als u de uitvoer van de module [Evaluate model][evaluate-model] wilt weer geven,
 
 De volgende statistieken worden weergegeven voor het model:
 
-- **Gemiddelde absolute fout** (Mean Absolute Error of MAE): Het gemiddelde aan absolute fouten (een *fout* is het verschil tussen de voorspelde waarde en de werkelijke waarde).
-- **Standaardafwijking** (Root Mean Squared Error of RMSE): De vierkantswortel uit het gemiddelde aan kwadratische fouten voor de voorspellingen op basis van de testgegevensset.
-- **Relatieve absolute fout**: Het gemiddelde aan absolute fouten ten opzichte van het absolute verschil tussen de werkelijke waarden en het gemiddelde van alle werkelijke waarden.
-- **Relatieve kwadratische fout**: Het gemiddelde aan kwadratische fouten ten opzichte van het kwadratische verschil tussen de werkelijke waarden en het gemiddelde van alle werkelijke waarden.
-- **Determinatiecoëfficiënt**: ook wel **R²-waarde** genoemd, is een statistische meetwaarde die aangeeft hoe goed het model is in het voorspellen van de gegevens.
+- **Mean Absolute Error** (MAE): het gemiddelde aan absolute fouten (een *fout* is het verschil tussen de voorspelde waarde en de werkelijke waarde).
+- **Root Mean Squared Error** (RMSE): de wortel uit het gemiddelde aan gekwadrateerde fouten voor de voorspellingen op basis van de testgegevensset.
+- **Relative Absolute Error**: het gemiddelde aan absolute fouten ten opzichte van het absolute verschil tussen de werkelijke waarden en het gemiddelde van alle werkelijke waarden.
+- **Relative Squared Error**: het gemiddelde aan gekwadrateerde fouten ten opzichte van het gekwadrateerde verschil tussen de werkelijke waarden en het gemiddelde van alle werkelijke waarden.
+- **Coefficient of Determination**: de determinatiecoëfficiënt, ook wel **R²-waarde** genoemd, is een statistische meetwaarde die aangeeft hoe goed het model is in het voorspellen van de gegevens.
 
 Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleine waarde geeft aan dat de voorspelling dichter bij de werkelijke waarde ligt. Hoe dichter de **determinatiecoëfficiënt** bij één (1.0) ligt, hoe nauwkeuriger de voorspellingen.
 
@@ -240,7 +240,7 @@ Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleine waarde
 In deze quickstart hebt u een eenvoudig experiment uitgevoerd met behulp van een voorbeeldgegevensset. Als u het proces van het maken en implementeren van een model nader wilt verkennen, gaat u naar de zelfstudie over voorspellende oplossingen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een voorspellende oplossing ontwikkelen in Studio](tutorial-part1-credit-risk.md)
+> [Zelf studie: een voorspellende oplossing ontwikkelen in Studio (klassiek)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

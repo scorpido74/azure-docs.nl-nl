@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 5bf8aea05855d81e88face1dd507f0006cc19cab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332290"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483890"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Zelfstudie: Een leslokaallab instellen 
 In deze zelfstudie stelt u een leslokaallab in met virtuele machines die worden gebruikt door studenten in het leslokaal.  
@@ -111,11 +111,11 @@ Maak een geplande gebeurtenis voor het Lab zodat Vm's in het lab automatisch wor
 1. Ga naar de pagina **schema's** en selecteer een **geplande gebeurtenis toevoegen** op de werk balk. 
 
     ![Knop schema toevoegen op de pagina planningen](../media/how-to-create-schedules/add-schedule-button.png)
-2. Bevestig dat de **standaard** is geselecteerd het **gebeurtenis type**. U selecteert **alleen starten** om alleen de begin tijd voor de virtuele machines op te geven. U selecteert **alleen stoppen** om alleen de eind tijd voor de virtuele machines op te geven. 
-7. Selecteer in de sectie **herhalen** het huidige schema. 
+2. Controleer of **standaard** is geselecteerd als het **gebeurtenis type**. U selecteert **alleen starten** om alleen de begin tijd voor de virtuele machines op te geven. U selecteert **alleen stoppen** om alleen de eind tijd voor de virtuele machines op te geven. 
+3. Selecteer in de sectie **herhalen** het huidige schema. 
 
     ![Knop schema toevoegen op de pagina planningen](../media/how-to-create-schedules/select-current-schedule.png)
-5. In het dialoog venster **herhalen** voert u de volgende stappen uit:
+4. Als u het schema selecteert, wordt het dialoog venster **herhalen** geopend. Voer in dit dialoog venster de volgende stappen uit:
     1. Bevestig dat **elke week** is ingesteld voor het veld **repeat** . 
     3. De **begin datum**opgeven.
     4. Geef de **begin tijd** op waarop u de vm's wilt starten.
@@ -124,10 +124,8 @@ Maak een geplande gebeurtenis voor het Lab zodat Vm's in het lab automatisch wor
     2. Selecteer de dagen waarop u de planning wilt laten ingaan. In het volgende voor beeld is maandag-donderdag geselecteerd. 
     8. Selecteer **Opslaan**. 
 
-        ![Herhalings schema instellen](../media/how-to-create-schedules/set-repeat-schedule.png)
-
-3. Voer nu op de pagina **geplande gebeurtenis toevoegen** voor **notities (optioneel)** een beschrijving of notities in voor de planning. 
-4. Selecteer op de pagina **geplande gebeurtenis toevoegen** de optie **Opslaan**. 
+5. Voer nu op de pagina **geplande gebeurtenis toevoegen** voor **notities (optioneel)** een beschrijving of notities in voor de planning. 
+6. Selecteer op de pagina **geplande gebeurtenis toevoegen** de optie **Opslaan**. 
 
     ![Wekelijks schema](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
@@ -140,7 +138,7 @@ Maak een geplande gebeurtenis voor het Lab zodat Vm's in het lab automatisch wor
 1. Voer op de pagina **uitnodiging per E-mail verzenden** een optioneel bericht in en selecteer vervolgens **verzenden**. Het e-mail bericht bevat automatisch de registratie koppeling. U kunt deze registratie koppeling ophalen door te selecteren **... (weglatings tekens)** op de werk balk en **registratie koppeling**. 
 
     ![Registratie koppeling via e-mail verzenden](../media/tutorial-setup-classroom-lab/send-email.png)
-4. U ziet de status van de **uitnodiging** in de lijst met **gebruikers** . De status moet worden gewijzigd in **verzenden** en vervolgens **verzonden op &lt;date @ no__t-3**. 
+4. U ziet de status van de **uitnodiging** in de lijst met **gebruikers** . De status wordt gewijzigd in **verzenden** en vervolgens **verzonden op &lt;datum&gt;** . 
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie hebt u een leslokaallab gemaakt en het lab geconfigureerd. Ga voor meer informatie over hoe een student toegang kan krijgen tot een virtuele machine in het lab met behulp van de registratiekoppeling naar de volgende zelfstudie:

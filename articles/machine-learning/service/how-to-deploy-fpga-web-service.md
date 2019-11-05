@@ -7,50 +7,51 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.author: tedway
-author: tedway
-ms.date: 07/25/2019
+ms.author: jordane
+author: jpe316
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c3c844ba7044f8e1c9c313f1ac63b94310ea322
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5e8dc6181660f0c1545df0688e2749f8f0187027
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350532"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496891"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dit artikel bevat een inleiding tot veld-Programmeer bare poort matrices (FPGA) en laat zien hoe u uw modellen implementeert met behulp van Azure Machine Learning naar een Azure-FPGA. 
 
 Fpga's bevatten een matrix met Programmeer bare logische blokken en een hiërarchie van Herconfigureer bare onderlinge verbindingen. Met de onderlinge verbindingen kunnen deze blokken na de productie op verschillende manieren worden geconfigureerd. Vergeleken met andere chips, biedt Fpga's een combi natie van programmeer baarheid en prestaties.
 
-## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA's vs. CPU, GPU en ASIC
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Fpga's versus CPU, GPU en ASIC
 
 In het volgende diagram en in de tabel ziet u hoe Fpga's met andere processors kan worden vergeleken.
 
 ![Diagram van Azure Machine Learning FPGA-vergelijking](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
-|Processor||Description|
+|Processor||Beschrijving|
 |---|:-------:|------|
-|Toepassingsspecifieke geïntegreerde circuits|ASICs|Aangepaste circuits, zoals Google TensorFlow Processor eenheden (TPU), biedt het hoogste rendement. Ze kunnen niet opnieuw worden geconfigureerd als uw behoeften veranderen.|
-|Veld-programmable gate arrays|FPGA 's|Fpga's, zoals die beschikbaar zijn op Azure, bieden de prestaties bijna ASICs. Ze zijn ook flexibel en kunnen na verloop van tijd opnieuw worden geconfigureerd om nieuwe logica te implementeren.|
-|Grafische verwerkingseenheden|GPU 's|Een populaire keuze voor AI-berekeningen. Gpu's bieden parallelle verwerkings mogelijkheden, waardoor het sneller wordt weer gegeven in de beeld weergave dan Cpu's.|
-|Central processing units|CPU's|Processors voor algemeen gebruik, de prestaties die niet ideaal zijn voor grafische en video verwerking.|
+|Toepassingsspecifieke geïntegreerde circuits|ASICs|Aangepaste circuits, zoals Google tensor flow processor units (TPU), bieden de hoogste efficiëntie. Ze kunnen niet opnieuw worden geconfigureerd als uw behoeften veranderen.|
+|Veld-Programmeer bare poort matrices|FPGAs|Fpga's, zoals die beschikbaar zijn op Azure, bieden de prestaties bijna ASICs. Ze zijn ook flexibel en kunnen na verloop van tijd opnieuw worden geconfigureerd om nieuwe logica te implementeren.|
+|Grafische verwerkings eenheden|GPU's|Een populaire keuze voor AI-berekeningen. Gpu's bieden parallelle verwerkings mogelijkheden, waardoor het sneller wordt weer gegeven in de beeld weergave dan Cpu's.|
+|Centrale verwerkings eenheden|CPU's|Processors voor algemeen gebruik, de prestaties die niet ideaal zijn voor grafische en video verwerking.|
 
 Fpga's op Azure zijn gebaseerd op de FPGA-apparaten van Intel, die gegevens wetenschappers en ontwikkel aars gebruiken om real-time AI-berekeningen te versnellen. Deze architectuur met FPGA biedt prestaties, flexibiliteit en schaal baarheid en is beschikbaar in Azure.
 
 Fpga's maken het mogelijk om lage latentie te bieden voor aanvragen voor realtime-interferentie (of model scores). Asynchrone aanvragen (batch verwerking) zijn niet nodig. Batch verwerking kan latentie veroorzaken, omdat er meer gegevens moeten worden verwerkt. Implementaties van Neural-verwerkings eenheden vereisen geen batch verwerking; de latentie kan daarom veel keer lager zijn, vergeleken met CPU-en GPU-processors.
 
-### <a name="reconfigurable-power"></a>Herconfigureerbare power
-U kunt Fpga's opnieuw configureren voor verschillende soorten machine learning modellen. Deze flexibiliteit maakt het gemakkelijker om te versnellen van de toepassingen op basis van de meest optimale numerieke precisie en model van het geheugen wordt gebruikt. Omdat Fpga's opnieuw worden geconfigureerd, kunt u op de hoogte blijven van de vereisten van het snel wijzigen van AI-algoritmen.
+### <a name="reconfigurable-power"></a>Configureer bare energie
+U kunt Fpga's opnieuw configureren voor verschillende soorten machine learning modellen. Deze flexibiliteit maakt het eenvoudiger om de toepassingen te versnellen op basis van de meest optimale numerieke precisie en het gebruikte geheugen model dat wordt gebruikt. Omdat Fpga's opnieuw worden geconfigureerd, kunt u op de hoogte blijven van de vereisten van het snel wijzigen van AI-algoritmen.
 
-## <a name="whats-supported-on-azure"></a>Wat wordt ondersteund op Azure
-Microsoft Azure is de grootste Cloud investering wereld wijd in Fpga's. Met deze hardwarearchitectuur FPGA-functionaliteit, getrainde neurale netwerken uitvoeren snel en met een lagere latentie. Azure kan vooraf getrainde diepe Neural-netwerken (DNN) parallelliserenen over Fpga's om uw service uit te breiden. De dnn's kunnen worden vooraf getrainde, als een grondige featurizer voor overdracht leren of op uw wensen afgestemd met bijgewerkte waarden.
+## <a name="whats-supported-on-azure"></a>Wat wordt ondersteund in azure
+Microsoft Azure is de grootste Cloud investering wereld wijd in Fpga's. Met deze FPGA-compatibele hardware-architectuur worden getrainde Neural-netwerken snel uitgevoerd en met een lagere latentie. Azure kan vooraf getrainde diepe Neural-netwerken (DNN) parallelliserenen over Fpga's om uw service uit te breiden. De DNNs kan vooraf worden getraind als een diep gaande featurizer voor het leren van de overdracht of nauw keurig zijn afgestemd op bijgewerkte gewichten.
 
 Fpga's op Azure ondersteunt:
 
-+ Afbeelding classificatie en herkenning van scenario 's
-+ TensorFlow-implementatie
++ Scenario's voor classificatie en herkenning van installatie kopieën
++ Tensor flow-implementatie
 + Intel FPGA-hardware 
 
 Deze DNN modellen zijn momenteel beschikbaar:
@@ -61,7 +62,7 @@ Deze DNN modellen zijn momenteel beschikbaar:
   - SSD-VGG
 
 Fpga's zijn beschikbaar in deze Azure-regio's:
-  - East US
+  - US - oost
   - Azië - zuidoost
   - Europa -west
   - US - west 2
@@ -76,13 +77,13 @@ De **PBS-serie van Azure-vm's** bevat Intel Arria 10 fpga's. Het wordt weer gege
 Azure Fpga's zijn geïntegreerd met Azure Machine Learning. Micro soft maakt gebruik van Fpga's voor DNN-evaluatie, zoek volgorde van Bing en SDN (software defined Networking) om de latentie te reduceren, terwijl Cpu's worden vrijgemaakt voor andere taken.
 
 De volgende scenario's gebruiken Fpga's:
-+ [Geautomatiseerd systeem voor netwerkinspectie optische](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
++ [Systeem voor geautomatiseerde optische inspectie](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
-+ [Land cover toewijzing](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
++ [Landings cover toewijzing](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
 
 
-## <a name="example-deploy-models-on-fpgas"></a>Voorbeeld: Modellen implementeren op Fpga's 
+## <a name="example-deploy-models-on-fpgas"></a>Voor beeld: modellen op Fpga's implementeren 
 
 U kunt een model als een webservice implementeren op Fpga's met Azure Machine Learning Modellen met hardwareversnelling. Het gebruik van Fpga's biedt een dering van ultra lage latentie, zelfs met één batch grootte. Defactorion of model Score is de fase waarin het geïmplementeerde model wordt gebruikt voor de voor spelling, meestal op productie gegevens.
 
@@ -98,7 +99,7 @@ U kunt een model als een webservice implementeren op Fpga's met Azure Machine Le
     ```
 
     > [!TIP]
-    > De andere mogelijke locaties zijn ``southeastasia``, ``westeurope``, en ``westus2``.
+    > De andere mogelijke locaties zijn ``southeastasia``, ``westeurope``en ``westus2``.
 
     De opdracht retourneert tekst die er ongeveer als volgt uitziet:
 
@@ -110,7 +111,7 @@ U kunt een model als een webservice implementeren op Fpga's met Azure Machine Le
 
     Zorg ervoor dat er ten minste 6 Vcpu's zijn onder __CurrentValue__.
 
-    Als u geen quota hebt, verzendt u een aanvraag op [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
+    Als u geen quota hebt, moet u een aanvraag indienen bij [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
 
 - Er is een Azure Machine Learning-werk ruimte en de Azure Machine Learning SDK voor python geïnstalleerd. Zie [een werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
  
@@ -121,17 +122,17 @@ U kunt een model als een webservice implementeren op Fpga's met Azure Machine Le
     ```
 
 
-## <a name="1-create-and-containerize-models"></a>1. Modellen maken en container plaatsen
+## <a name="1-create-and-containerize-models"></a>1. modellen maken en container plaatsen
 
 In dit document wordt beschreven hoe u een tensor flow-grafiek maakt om de invoer installatie kopie voor te verwerken, een featurizer te maken met ResNet 50 op een FPGA en vervolgens de functies uit te voeren via een getrainde classificatie voor de ImageNet data set.
 
-Volg de instructies voor:
+Volg de instructies voor het volgende:
 
 * Het tensor flow-model definiëren
 * Het model converteren
 * Het model implementeren
-* De geïmplementeerde model gebruiken
-* Geïmplementeerde services verwijderen
+* Het geïmplementeerde model gebruiken
+* Geïmplementeerde Services verwijderen
 
 Gebruik de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) om een service definitie te maken. Een service definitie is een bestand met een beschrijving van een pijp lijn van grafieken (invoer, featurizer en classificatie) op basis van tensor flow. De implementatie opdracht comprimeert de definitie en grafieken automatisch in een ZIP-bestand en uploadt de ZIP naar Azure Blob-opslag. De DNN is al geïmplementeerd om te worden uitgevoerd op de FPGA.
 
@@ -165,7 +166,7 @@ print(image_tensors.shape)
 
 ### <a name="load-featurizer"></a>Featurizer laden
 
-Initialiseren van het model en een TensorFlow-controlepunt van de quantized versie van ResNet50 moet worden gebruikt als een featurizer downloaden.  U kunt ' QuantizedResnet50 ' in het onderstaande code fragment vervangen door andere diepe Neural-netwerken te importeren:
+Initialiseer het model en down load een tensor flow-controle punt van de gevormde versie van ResNet50 die moet worden gebruikt als een featurizer.  U kunt ' QuantizedResnet50 ' in het onderstaande code fragment vervangen door andere diepe Neural-netwerken te importeren:
 
 - QuantizedResnet152
 - QuantizedVgg16
@@ -315,11 +316,11 @@ for i in Image.list(workspace=ws):
         i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
 ```
 
-## <a name="2-deploy-to-cloud-or-edge"></a>2. Implementeren in de Cloud of Edge
+## <a name="2-deploy-to-cloud-or-edge"></a>2. implementeren naar de Cloud of Edge
 
 ### <a name="deploy-to-the-cloud"></a>Implementeren in de Cloud
 
-Gebruik voor het implementeren van uw modellen vervolgens als een webservice schalen-productie, Azure Kubernetes Service (AKS). U kunt een nieuwe maken met behulp van de Azure Machine Learning SDK, CLI, de [Azure Portal](https://portal.azure.com) of de [pagina voor het land van de werk ruimte (preview)](https://ml.azure.com).
+Gebruik Azure Kubernetes service (AKS) om uw model te implementeren als een grootschalige productie-webservice. U kunt een nieuw abonnement maken met behulp van de Azure Machine Learning SDK, CLI of [Azure machine learning Studio](https://ml.azure.com).
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -420,10 +421,10 @@ converted_model.delete()
 
 ### <a name="deploy-to-a-local-edge-server"></a>Implementeren op een lokale Edge-Server
 
-Alle [Azure data Box Edge-](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
-) apparaten bevatten een FPGA voor het uitvoeren van het model.  Er kan slechts één model tegelijk op de FPGA worden uitgevoerd.  Als u een ander model wilt uitvoeren, implementeert u gewoon een nieuwe container. Instructies en voorbeeld code vindt u in [Dit Azure](https://github.com/Azure-Samples/aml-hardware-accelerated-models)-voor beeld.
+Alle [Azure data Box edge-apparaten](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview
+) bevatten een FPGA voor het uitvoeren van het model.  Er kan slechts één model tegelijk op de FPGA worden uitgevoerd.  Als u een ander model wilt uitvoeren, implementeert u gewoon een nieuwe container. Instructies en voorbeeld code vindt u in [Dit Azure](https://github.com/Azure-Samples/aml-hardware-accelerated-models)-voor beeld.
 
-## <a name="secure-fpga-web-services"></a>Beveiligde FPGA-webservices
+## <a name="secure-fpga-web-services"></a>FPGA-webservices beveiligen
 
 Als u uw FPGA-webservices wilt beveiligen, raadpleegt u het document [beveiligde webservices](how-to-secure-web-service.md) .
 
@@ -433,8 +434,8 @@ Bekijk deze notitie blokken, Video's en blogs:
 
 + Verschillende voor [beelden van notitie blokken](https://aka.ms/aml-accel-models-notebooks).
 
-+ [Grootschalige-hardware: ML op de schaal boven op Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
++ [Grootschalige-hardware: ML op schaal boven op Azure + FPGA: Build 2018 (video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
-+ [In de Microsoft FPGA gebaseerde instelbare cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
++ [In de op micro soft FPGA Configureer bare Cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)
 
-+ [Project Brainwave voor realtime AI: project-startpagina](https://www.microsoft.com/research/project/project-brainwave/)
++ [Project brainwave voor real-time AI: start pagina van project](https://www.microsoft.com/research/project/project-brainwave/)

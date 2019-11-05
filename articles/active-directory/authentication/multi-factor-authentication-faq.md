@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ecec4d0701f6f55385937f872151a373b2f62e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ea174de04d0e75bc996c6f692edd474a9396346a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808108"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474265"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Veelgestelde vragen over Azure Multi-Factor Authentication
 
@@ -61,7 +61,7 @@ In Canada gebruikt micro soft de volgende korte SMS-codes:
 
 Micro soft biedt geen garantie voor consistentie op basis van SMS-of spraak Multi-Factor Authentication op hetzelfde nummer. In het belang van onze gebruikers mag micro soft op elk gewenst moment korte codes toevoegen of verwijderen, aangezien we route aanpassingen aanbrengen om de levering van SMS te verbeteren. Micro soft biedt geen ondersteuning voor korte codes voor landen/regio's, naast de Verenigde Staten en Canada.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 U kunt de meeste facturerings vragen beantwoorden door te verwijzen naar de [pagina met multi-factor Authentication prijzen](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) of de documentatie over het [verkrijgen van Azure multi-factor Authentication](concept-mfa-licensing.md).
 
@@ -219,7 +219,7 @@ Een tijdelijke oplossing voor deze fout is het gebruik van afzonderlijke gebruik
 
 Als uw vraag hier niet wordt beantwoord, kunt u deze in de opmerkingen onder aan de pagina laten staan. U kunt ook de volgende aanvullende opties gebruiken om hulp te krijgen:
 
-* Zoek in de [Microsoft ondersteuning Knowledge Base](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) naar oplossingen voor veelvoorkomende technische problemen.
+* Zoek in de [Microsoft ondersteuning Knowledge Base](https://www.microsoft.com/en-us/search?form=mssupport&q=phonefactor&rtc=1) naar oplossingen voor veelvoorkomende technische problemen.
 * Zoek en blader door technische vragen en antwoorden van de Community of vraag uw eigen vraag in de [Azure Active Directory forums](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required).
 * Als u een verouderde Phone factor-klant bent en u vragen hebt of hulp nodig hebt bij het opnieuw instellen van een wacht woord, gebruikt u de koppeling [wacht woord opnieuw instellen](mailto:phonefactorsupport@microsoft.com) om een ondersteunings aanvraag te openen.
 * Neem contact op met een ondersteunings medewerker via [ondersteuning voor Azure multi-factor Authentication-Server (Phone factor)](https://support.microsoft.com/oas/default.aspx?prid=14947). Wanneer u contact met ons opneemt, is het handig als u zoveel mogelijk informatie over uw probleem kunt opnemen. Informatie die u kunt opgeven, omvat de pagina waar u de fout hebt gezien, de specifieke fout code, de specifieke sessie-ID en de ID van de gebruiker die de fout heeft gezien.

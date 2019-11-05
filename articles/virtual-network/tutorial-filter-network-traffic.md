@@ -14,14 +14,14 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984910"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519269"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Zelfstudie: Netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure Portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Zelf studie: netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure Portal
 
 U kunt het netwerkverkeer inkomend in en uitgaand naar een subnet van een virtueel netwerk filteren met een netwerkbeveiligingsgroep. Netwerkbeveiligingsgroepen bevatten beveiligingsregels die netwerkverkeer filteren op IP-adres, poort en protocol. Beveiligingsregels worden toegepast op resources die zijn geïmplementeerd in een subnet. In deze zelfstudie leert u het volgende:
 
@@ -41,7 +41,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. 
 2. Selecteer **Netwerken** en selecteer vervolgens **Virtueel netwerk**.
 3. Voer de volgende informatie in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Maken**:
 
@@ -51,7 +51,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
     | Adresruimte           | 10.0.0.0/16                                        |
     | Abonnement            | Selecteer uw abonnement.                          |
     | Resourcegroep          | Selecteer **Nieuwe maken** en voer *myResourceGroup* in. |
-    | Location                | Selecteer **US - oost**.                                |
+    | Locatie                | Selecteer **US - oost**.                                |
     | Subnet - naam            | mySubnet                                           |
     | Subnet - adresbereik  | 10.0.0.0/24                                        |
 
@@ -59,38 +59,38 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare functies groeperen, zoals webservers.
 
-1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
-2. Voer *Toepassingsbeveiligingsgroep* in het vak **In Marketplace zoeken** in. Wanneer **Toepassingsbeveiligingsgroep** wordt weergegeven in de zoekresultaten, selecteert u deze optie. Vervolgens selecteert u onder **Alles** opnieuw **Toepassingsbeveiligingsgroep** en selecteert u **Maken**.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. 
+2. Voer **Toepassingsbeveiligingsgroep** in het vak *In Marketplace zoeken* in. Wanneer **Toepassingsbeveiligingsgroep** wordt weergegeven in de zoekresultaten, selecteert u deze optie. Vervolgens selecteert u onder **Alles** opnieuw **Toepassingsbeveiligingsgroep** en selecteert u **Maken**.
 3. Voer de volgende gegevens in of selecteer deze, en selecteer **Maken**:
 
     | Instelling        | Waarde                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgWebServers                                               |
-    | Subscription   | Selecteer uw abonnement.                                     |
-    | Resource group | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
-    | Location       | East US                                                       |
+    | Naam           | myAsgWebServers                                               |
+    | Abonnement   | Selecteer uw abonnement.                                     |
+    | Resourcegroep | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
+    | Locatie       | US - oost                                                       |
 
 4. Voer stap 3 opnieuw uit en geef hierbij de volgende waarden op:
 
     | Instelling        | Waarde                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgMgmtServers                                              |
-    | Subscription   | Selecteer uw abonnement.                                     |
-    | Resource group | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
-    | Location       | East US                                                       |
+    | Naam           | myAsgMgmtServers                                              |
+    | Abonnement   | Selecteer uw abonnement.                                     |
+    | Resourcegroep | Selecteer **Bestaande gebruiken** en selecteer vervolgens **myResourceGroup**. |
+    | Locatie       | US - oost                                                       |
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. 
 2. Selecteer **Netwerken** en selecteer **Netwerkbeveiligingsgroep**.
 3. Voer de volgende gegevens in of selecteer deze, en selecteer **Maken**:
 
     |Instelling|Waarde|
     |---|---|
-    |Name|myNsg|
-    |Subscription| Selecteer uw abonnement.|
+    |Naam|myNsg|
+    |Abonnement| Selecteer uw abonnement.|
     |Resourcegroep | Selecteer **Bestaande gebruiken** en selecteer *myResourceGroup*.|
-    |Location|East US|
+    |Locatie|US - oost|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Netwerkbeveiligingsgroep koppelen aan subnet
 
@@ -109,22 +109,22 @@ Met een toepassingsbeveiligingsgroep kunt u servers met vergelijkbare functies g
 
 2. Maak een beveiligingsregel op basis waarvan poorten 80 en 443 worden gekoppeld aan de beveiligingsgroep **myAsgWebServers**. Typ of selecteer onder **Inkomende beveiligingsregel toevoegen** de volgende waarden, accepteer de resterende standaardwaarden en selecteer vervolgens **Toevoegen**:
 
-    | Instelling                 | Value                                                                                                           |
+    | Instelling                 | Waarde                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Bestemming             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgWebServers** als **Toepassingsbeveiligingsgroep**.  |
+    | Doel             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgWebServers** als **Toepassingsbeveiligingsgroep**.  |
     | Poortbereiken van doel | Voer 80,443 in                                                                                                    |
     | Protocol                | Selecteer TCP                                                                                                      |
-    | Name                    | Allow-Web-All                                                                                                   |
+    | Naam                    | Allow-Web-All                                                                                                   |
 
 3. Voer stap 2 opnieuw uit, met behulp van de volgend waarden:
 
-    | Instelling                 | Value                                                                                                           |
+    | Instelling                 | Waarde                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | Bestemming             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgMgmtServers** als **Toepassingsbeveiligingsgroep**. |
+    | Doel             | Selecteer **Toepassingsbeveiligingsgroep** en selecteer vervolgens **myAsgMgmtServers** als **Toepassingsbeveiligingsgroep**. |
     | Poortbereiken van doel | Voer 3389 in                                                                                                      |
     | Protocol                | Selecteer TCP                                                                                                      |
-    | Priority                | Voer 110 in                                                                                                       |
-    | Name                    | Allow-RDP-All                                                                                                   |
+    | Prioriteit                | Voer 110 in                                                                                                       |
+    | Naam                    | Allow-RDP-All                                                                                                   |
 
     In deze zelfstudie wordt RDP (poort 3389) voor internet beschikbaar gemaakt voor de VM die is toegewezen aan de toepassingsbeveiligingsgroep *myAsgMgmtServers*. Voor productieomgevingen wordt u aanbevolen in plaats van poort 3389 voor internet te gebruiken, via een VPN of persoonlijke netwerkverbinding verbinding te maken met Azure-resources die u wilt beheren.
 
@@ -138,16 +138,16 @@ Maak twee VM’s in het virtuele netwerk.
 
 ### <a name="create-the-first-vm"></a>De eerste VM maken
 
-1. Selecteer **+ Een resource maken** in de linkerbovenhoek van Azure Portal.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. 
 2. Selecteer **Compute** en vervolgens **Windows Server 2016 Datacenter**.
 3. Voer de volgende informatie in of Selecteer deze, en accepteer de standaard waarden voor de overige instellingen:
 
-    |Instelling|Value|
+    |Instelling|Waarde|
     |---|---|
-    |Subscription| Selecteer uw abonnement.|
-    |Resource group| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
-    |Name|myVmWeb|
-    |Location| Selecteer **US - oost**.|
+    |Abonnement| Selecteer uw abonnement.|
+    |Resourcegroep| Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.|
+    |Naam|myVmWeb|
+    |Locatie| Selecteer **US - oost**.|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
 

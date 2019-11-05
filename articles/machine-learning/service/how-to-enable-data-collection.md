@@ -6,19 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
+ms.reviewer: laobri
+ms.author: copeters
+author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 25017e6ea0be5d4320832298cdadbec7ec5a05cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929367"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489985"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
 > Deze SDK wordt binnenkort buiten gebruik gesteld. Deze SDK is nog steeds geschikt voor ontwikkel aars die gegevens drift in modellen bewaken, maar de meeste ontwikkel aars moeten de vereenvoudigde [gegevens bewaking met Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights)gebruiken. 
@@ -79,7 +80,7 @@ Als u deze wilt inschakelen, moet u het volgende doen:
    from azureml.monitoring import ModelDataCollector
    ```
 
-2. Declareer de variabelen voor het verzamelen van gegevens in de functie `init()`:
+2. Declareer de variabelen voor het verzamelen van gegevens in uw `init()`-functie:
 
     ```python
     global inputs_dc, prediction_dc
@@ -115,7 +116,7 @@ Als u deze wilt inschakelen, moet u het volgende doen:
 
 Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw **omgevings bestand** en **Score bestand**, schakelt u het verzamelen van gegevens in:
 
-1. Ga naar [Azure Portal](https://portal.azure.com).
+1. Ga naar [Azure machine learning Studio](https://ml.azure.com).
 
 1. Open uw werk ruimte.
 
@@ -125,7 +126,7 @@ Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw 
 
 1. Schakel in **Geavanceerde instellingen**de optie **model gegevens verzamelen inschakelen**uit. 
 
-    [Gegevens verzameling![controleren](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
+    [Gegevens verzameling ![controleren](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
    In dit venster kunt u er ook voor kiezen om Appinsights Diagnostics in te scha kelen om de status van uw service bij te houden.  
 
@@ -133,24 +134,24 @@ Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw 
 
 
 ## <a name="disable-data-collection"></a>Gegevens verzameling uitschakelen
-U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik de python-code of de Azure Portal om het verzamelen van gegevens uit te scha kelen.
+U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik python-code of Azure Machine Learning Studio om het verzamelen van gegevens uit te scha kelen.
 
-+ Optie 1: de Azure Portal uitschakelen 
-  1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
++ Optie 1-uitschakelen in Azure Machine Learning studio: 
+  1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
   1. Open uw werk ruimte.
 
   1. Ga naar **implementaties** -> **Selecteer Service** -> **bewerken**.
 
-     [optie voor![bewerken](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
+     [optie voor ![bewerken](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
   1. Schakel in **Geavanceerde instellingen**de optie **model gegevens verzamelen inschakelen**uit. 
 
-     [Gegevens verzameling![uitschakelen](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+     [Gegevens verzameling ![uitschakelen](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
   1. Selecteer **bijwerken** om de wijziging toe te passen.
 
-  U kunt deze instellingen ook gebruiken op de [landings pagina van de werk ruimte (preview)](https://ml.azure.com).
+  U kunt deze instellingen ook openen in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
 
 + Optie 2: gebruik python om het verzamelen van gegevens uit te scha kelen:
 
@@ -160,15 +161,15 @@ U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik de pyt
   ```
 
 ## <a name="validate-your-data-and-analyze-it"></a>Valideer uw gegevens en Analyseer deze
-U kunt elk gewenst hulp programma kiezen voor het analyseren van de verzamelde gegevens in uw Azure-Blob. 
+U kunt elk gewenst hulp programma kiezen voor het analyseren van de verzamelde gegevens in uw Azure-Blob.
 
 Om snel toegang te krijgen tot de gegevens van uw blob:
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
 1. Open uw werk ruimte.
 1. Klik op **opslag**.
 
-    [Opslag![](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
+    [Opslag ![](media/how-to-enable-data-collection/StorageLocation.png)](./media/how-to-enable-data-collection/StorageLocation.png#lightbox)
 
 1. Volg het pad naar de uitvoer gegevens in de blob met de volgende syntaxis:
 
@@ -184,7 +185,7 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
 
 1. Selecteer **gegevens ophalen** en klik op [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
-    [Setup van aan pbi-BLOB![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
+    [Setup van aan pbi-BLOB ![](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
 1. Voeg de naam van uw opslag account toe en voer uw opslag sleutel in. U kunt deze informatie vinden in de **instellingen** van uw blob > > toegangs sleutels. 
@@ -199,7 +200,7 @@ Om snel toegang te krijgen tot de gegevens van uw blob:
 
 1. Klik op de dubbele pijl afgezien van de kolom **inhoud** om de bestanden te combi neren. 
 
-    [AAN pbi-inhoud![](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
+    [AAN pbi-inhoud ![](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
 1. Klik op OK om de gegevens vooraf te laden.
 

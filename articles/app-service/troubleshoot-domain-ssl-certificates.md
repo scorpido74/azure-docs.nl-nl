@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 778836661ff15c334823f95fef42acadb3e8b649
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121984"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470148"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problemen met domein-en SSL-certificaten in Azure App Service oplossen
 
 In dit artikel vindt u veelvoorkomende problemen die u kunt tegen komen wanneer u een domein-of SSL-certificaat voor uw web-apps configureert in Azure App Service. Hierin worden ook mogelijke oorzaken en oplossingen voor deze problemen beschreven.
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -70,14 +70,14 @@ Verwijder de SSL-binding voor dat certificaat uit de apps. Verwijder vervolgens 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>U kunt geen App Service certificaat kopen 
 
 #### <a name="symptom"></a>Symptoom
-U kunt geen [Azure app service certificaat](./web-sites-purchase-ssl-web-site.md) kopen via de Azure Portal.
+U kunt geen [Azure app service certificaat](./configure-ssl-certificate.md#import-an-app-service-certificate) kopen via de Azure Portal.
 
 #### <a name="cause-and-solution"></a>Oorzaak en oplossing
 Dit probleem kan om de volgende redenen optreden:
 
 - Het App Service plan is gratis of gedeeld. Deze prijs categorieën bieden geen ondersteuning voor SSL. 
 
-    **Oplossing**: Voer een upgrade uit voor het App Service plan voor app naar Standard.
+    **Oplossing**: Voer een upgrade uit voor het app service plan voor de app naar Standard.
 
 - Het abonnement heeft geen geldige credit card.
 
@@ -85,18 +85,18 @@ Dit probleem kan om de volgende redenen optreden:
 
 - Het abonnements aanbod biedt geen ondersteuning voor het aanschaffen van een App Service certificaat zoals micro soft student.  
 
-    **Oplossing**: Voer een upgrade van uw abonnement uit. 
+    **Oplossing**: Voer een upgrade uit voor uw abonnement. 
 
 - Het abonnement heeft de limiet voor het aantal aankopen dat is toegestaan voor een abonnement bereikt.
 
-    **Oplossing**: App Service certificaten hebben een limiet van 10 certificaat aankopen voor de typen betalen per gebruik en EA-abonnement. Voor andere typen abonnementen is de limiet 3. Neem contact op met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om de limiet te verhogen.
-- Het App Service certificaat is gemarkeerd als fraude. U hebt het volgende fout bericht ontvangen: "Uw certificaat is gemarkeerd voor mogelijke fraude. De aanvraag wordt momenteel gecontroleerd. Als het certificaat binnen 24 uur niet kan worden gebruikt, neemt u contact op met de ondersteuning van Azure. "
+    **Oplossing**: voor app service certificaten geldt een limiet van 10 certificaat aankopen voor de typen betalen per gebruik en EA-abonnement. Voor andere typen abonnementen is de limiet 3. Neem contact op met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om de limiet te verhogen.
+- Het App Service certificaat is gemarkeerd als fraude. U hebt het volgende fout bericht ontvangen: ' uw certificaat is gemarkeerd voor mogelijke fraude. De aanvraag wordt momenteel gecontroleerd. Als het certificaat binnen 24 uur niet kan worden gebruikt, neemt u contact op met de ondersteuning van Azure. "
 
-    **Oplossing**: Als het certificaat is gemarkeerd als fraude en na 24 uur niet is opgelost, voert u de volgende stappen uit:
+    **Oplossing**: als het certificaat is gemarkeerd als fraude en na 24 uur niet is opgelost, voert u de volgende stappen uit:
 
-    1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+    1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
     2. Ga naar **app service certificaten**en selecteer het certificaat.
-    3. Selecteer **certificaat configuratie** > **stap 2: Verificatie**van**domein**verifiëren > . Met deze stap verzendt u een e-mail bericht naar de Azure-certificaat provider om het probleem op te lossen.
+    3. Selecteer **certificaat configuratie** > **stap 2: Controleer** de **verificatie**van > domein. Met deze stap verzendt u een e-mail bericht naar de Azure-certificaat provider om het probleem op te lossen.
 
 ## <a name="custom-domain-problems"></a>Problemen met aangepaste domeinen
 
@@ -196,9 +196,9 @@ App Service synchroniseert uw certificaat automatisch binnen 48 uur. Wanneer u e
 
 U kunt de synchronisatie van het certificaat forceren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
 2. Selecteer opnieuw **genereren en synchroniseren**en selecteer vervolgens **synchroniseren**. Het kan enige tijd duren voordat de synchronisatie is voltooid. 
-3. Wanneer de synchronisatie is voltooid, ziet u de volgende melding: "Heeft alle resources bijgewerkt met het nieuwste certificaat."
+3. Wanneer de synchronisatie is voltooid, ziet u de volgende melding: alle resources zijn bijgewerkt met het nieuwste certificaat.
 
 ### <a name="domain-verification-is-not-working"></a>Domein verificatie werkt niet 
 
@@ -219,7 +219,7 @@ Als alternatief kunt u de methode HTML-webpagina gebruiken om uw domein hand mat
 3.  Upload dit bestand in de hoofdmap van de webserver die als host fungeert voor uw domein.
 4.  Selecteer **vernieuwen** om de certificaat status te controleren. Het kan enkele minuten duren voordat de verificatie is voltooid.
 
-Als u bijvoorbeeld een standaard certificaat voor Azure.com koopt met het domein verificatie token 1234abcd, moet er een webaanvraag worden ingediend om https://azure.com/1234abcd.html 1234abcd te retour neren. 
+Als u bijvoorbeeld een standaard certificaat voor azure.com koopt met de 1234abcd van het domein verificatie token, moet een webaanvraag die naar https://azure.com/1234abcd.html wordt gedaan, 1234abcd retour neren. 
 
 > [!IMPORTANT]
 > Een certificaat order heeft slechts 15 dagen voor het volt ooien van de domein verificatie bewerking. Na 15 dagen weigert de certificerings instantie het certificaat en worden er geen kosten in rekening gebracht voor het certificaat. In deze situatie verwijdert u dit certificaat en probeert u het opnieuw.
@@ -247,7 +247,7 @@ Dit probleem treedt op om een van de volgende redenen:
     **Oplossing**: Neem contact op met de [ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om een verhoging van de limiet aan te vragen.
 - Uw type Azure-abonnement biedt geen ondersteuning voor de aankoop van een App Service domein.
 
-    **Oplossing**: Voer een upgrade uit voor uw Azure-abonnement naar een ander abonnements type, zoals een abonnement voor betalen per gebruik.
+    **Oplossing**: Voer een upgrade uit van uw Azure-abonnement naar een ander abonnements type, zoals een abonnement op basis van betalen naar gebruik.
 
 ### <a name="you-cant-add-a-host-name-to-an-app"></a>U kunt geen hostnaam toevoegen aan een app 
 
@@ -261,7 +261,7 @@ Dit probleem treedt op om een van de volgende redenen:
 
 - U bent niet gemachtigd om een hostnaam toe te voegen.
 
-    **Oplossing**: Vraag de abonnements beheerder u toestemming te geven om een hostnaam toe te voegen.
+    **Oplossing**: vraag de abonnements beheerder u toestemming te geven om een hostnaam toe te voegen.
 - Het eigendom van het domein kan niet worden geverifieerd.
 
     **Oplossing**: Controleer of de CNAME of een record juist is geconfigureerd. Als u een aangepast domein wilt toewijzen aan een app, moet u een CNAME-record of een record maken. Als u een hoofd domein wilt gebruiken, moet u een-en TXT-record gebruiken:
@@ -276,7 +276,7 @@ Dit probleem treedt op om een van de volgende redenen:
 
 **Moet ik mijn aangepaste domein voor mijn website configureren nadat ik het heb gekocht?**
 
-Wanneer u een domein aanschaft vanuit de Azure Portal, wordt de App Service-toepassing automatisch geconfigureerd voor gebruik van dat aangepaste domein. U hoeft geen extra stappen uit te voeren. Bekijk [Azure app service Self Help voor meer informatie: Voeg een aangepaste domein naam](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) toe aan Channel 9.
+Wanneer u een domein aanschaft vanuit de Azure Portal, wordt de App Service-toepassing automatisch geconfigureerd voor gebruik van dat aangepaste domein. U hoeft geen extra stappen uit te voeren. Bekijk [Azure app service Self Help: een aangepaste domein naam toevoegen](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) aan Channel 9 voor meer informatie.
 
 **Kan ik een in de Azure Portal gekocht domein gebruiken om in plaats daarvan naar een virtuele Azure-machine te verwijzen?**
 

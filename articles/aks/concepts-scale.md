@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097844"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472877"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Schaal opties voor toepassingen in azure Kubernetes service (AKS)
 
@@ -56,8 +56,6 @@ Om te reageren op het wijzigen van de pod-vraag, heeft Kubernetes een cluster au
 ![Kubernetes-cluster automatisch schalen](media/concepts-scale/cluster-autoscaler.png)
 
 Cluster automatisch schalen wordt doorgaans samen met de horizontale pod automatisch geschaald gebruikt. In combi natie met de horizontale pod wordt het aantal peulen verg root of verkleind op basis van de vraag van de toepassing en past het cluster automatisch te schalen het aantal knoop punten zo nodig aan om deze te kunnen uitvoeren.
-
-Cluster automatisch schalen mag alleen worden getest als preview-versie van AKS-clusters.
 
 Als u aan de slag wilt gaan met de automatische cluster schaalr in AKS, raadpleegt u [cluster automatisch schalen op AKS][aks-cluster-autoscaler].
 

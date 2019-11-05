@@ -1,6 +1,6 @@
 ---
-title: 'Snelstart: multi-factor authentication (MFA) vereist voor specifieke apps met Azure Active Directory voor voorwaardelijke toegang | Microsoft Docs'
-description: In deze snelstartgids leert u hoe u uw verificatievereisten voor het type gebruikte cloud-app met behulp van voorwaardelijke toegang van Azure Active Directory (Azure AD) kunt verbinden.
+title: 'Quick Start: multi-factor Authentication (MFA) vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory | Microsoft Docs'
+description: In deze Quick Start leert u hoe u uw verificatie vereisten kunt koppelen aan het type van de toegang tot de Cloud-app met behulp van Azure Active Directory (Azure AD) voorwaardelijke toegang.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,178 +11,178 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36cb3b1555a339249528e290e376454dd78f1e53
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7a23f8fc10e0e5a19be1f93cc6d6e5e8e301f86d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509069"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474037"
 ---
-# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Quickstart: MFA vereisen voor specifieke apps met Azure Active Directory voor voorwaardelijke toegang
+# <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Quick Start: MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory
 
-Ter vereenvoudiging van de aanmeldingservaring van uw gebruikers, is het raadzaam om toe te staan dat ze zich aanmelden bij uw cloud-apps met behulp van een gebruikersnaam en wachtwoord. Veel omgevingen hebben echter ten minste een aantal apps waarvoor u wordt aangeraden een sterkere vorm van verificatie-account, zoals multi-factor authentication (MFA) vereist. Het is mogelijk dat dit beleid geldt voor toegang tot e-mailsysteem van uw organisatie of uw HR-apps. In Azure Active Directory (Azure AD), kunt u dit doel met beleid voor voorwaardelijke toegang uitvoeren.
+Als u de aanmeld ervaring van uw gebruikers wilt vereenvoudigen, kunt u hen toestaan zich aan te melden bij uw Cloud-apps met behulp van een gebruikers naam en wacht woord. Veel omgevingen hebben echter ten minste enkele apps waarvoor wordt aanbevolen een sterkere vorm van account verificatie te vereisen, zoals MFA (multi-factor Authentication). Dit beleid kan waar zijn om toegang te krijgen tot het e-mail systeem van uw organisatie of uw HR-apps. In Azure Active Directory (Azure AD) kunt u dit doel bereiken met een beleid voor voorwaardelijke toegang.
 
-Deze quickstart laat zien hoe u configureert een [Azure AD voorwaardelijke toegangsbeleid](../active-directory-conditional-access-azure-portal.md) waarvoor multi-factor Authentication-verificatie is vereist voor een geselecteerde cloud-app in uw omgeving.
+In deze Quick start ziet u hoe u een [beleid voor voorwaardelijke toegang voor Azure AD](../active-directory-conditional-access-azure-portal.md) configureert waarvoor multi-factor Authentication is vereist voor een geselecteerde Cloud-app in uw omgeving.
 
-![Voorbeeld van beleid voor voorwaardelijke toegang in Azure portal](./media/app-based-mfa/32.png)
+![Voor beeld van beleid voor voorwaardelijke toegang in de Azure Portal](./media/app-based-mfa/32.png)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt het scenario in deze snelstartgids hebt voltooid, hebt u het volgende nodig:
+Voor het volt ooien van het scenario in deze Quick Start hebt u het volgende nodig:
 
-- **Toegang tot een Azure AD Premium-editie** -Azure AD voor voorwaardelijke toegang is een Azure AD Premium-capaciteit.
-- **Een testaccount met de naam Isabella Simonsen** : als u niet hoe ik een testaccount maakt weet, Zie [cloudgebruikers toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Toegang tot een Azure AD Premium Edition** : voorwaardelijke toegang voor Azure AD is een Azure AD Premium mogelijkheid.
+- **Een test account met de naam Isabella Simonsen** : als u niet weet hoe u een test account moet maken, raadpleegt u [Cloud gebruikers toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-Het scenario in deze quickstart vereist dat per gebruiker MFA niet is ingeschakeld voor uw testaccount. Zie voor meer informatie, [hoe u verificatie in twee stappen vereist voor een gebruiker](../authentication/howto-mfa-userstates.md).
+Voor het scenario in deze Snelstartgids moet per gebruiker MFA niet zijn ingeschakeld voor uw test account. Zie [verificatie in twee stappen vereisen voor een gebruiker](../authentication/howto-mfa-userstates.md)voor meer informatie.
 
-## <a name="test-your-experience"></a>Uw ervaring te testen
+## <a name="test-your-experience"></a>Uw ervaring testen
 
-Het doel van deze stap is om een indruk van de ervaring zonder een beleid voor voorwaardelijke toegang.
+Het doel van deze stap is om een indruk te krijgen van de ervaring zonder beleid voor voorwaardelijke toegang.
 
 **Uw omgeving initialiseren:**
 
-1. Meld u aan uw Azure-portal als Isabella Simonsen.
+1. Meld u aan bij uw Azure Portal als Isabella Simonsen.
 1. Meld u af.
 
-## <a name="create-your-conditional-access-policy"></a>Uw beleid voor voorwaardelijke toegang maken
+## <a name="create-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang maken
 
-Deze sectie wordt beschreven hoe u het vereiste beleid voor voorwaardelijke toegang maken. Maakt gebruik van het scenario in deze Quick Start:
+In deze sectie wordt beschreven hoe u het vereiste beleid voor voorwaardelijke toegang maakt. In het scenario in deze Snelstartgids wordt het volgende gebruikt:
 
-- De Azure-portal als tijdelijke aanduiding voor een cloud-app die MFA vereist. 
-- De voorbeeldgebruiker in voor het testen van het beleid voor voorwaardelijke toegang.  
+- De Azure Portal als tijdelijke aanduiding voor een Cloud-app die MFA vereist. 
+- Uw voorbeeld gebruiker om het beleid voor voorwaardelijke toegang te testen.  
 
-Stel in het beleid:
+Stel in uw beleid het volgende in:
 
-| Instelling | Value |
+| Instelling | Waarde |
 | --- | --- |
 | Gebruikers en groepen | Isabella Simonsen |
-| Cloud-apps | Microsoft Azure Management |
-| Toegang verlenen | Meervoudige verificatie vereisen |
+| Cloud-apps | Microsoft Azure beheer |
+| Toegang verlenen | Multi-factor Authentication vereisen |
 
-![Uitgebreide beleid voor voorwaardelijke toegang](./media/app-based-mfa/31.png)
+![Uitgebreid beleid voor voorwaardelijke toegang](./media/app-based-mfa/31.png)
 
-**Uw beleid voor voorwaardelijke toegang configureren:**
+**Het beleid voor voorwaardelijke toegang configureren:**
 
-1. Aanmelden bij uw [Azure-portal](https://portal.azure.com) als hoofdbeheerder, beveiligingsbeheerder of een beheerder van voorwaardelijke toegang.
-1. Klik in de Azure-portal op de navigatiebalk links op **Azure Active Directory**.
+1. Meld u aan bij uw [Azure Portal](https://portal.azure.com) als globale beheerder, beveiligings beheerder of een beheerder voor voorwaardelijke toegang.
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 
    ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-1. Op de **Azure Active Directory** pagina, in de **Security** sectie, klikt u op **voorwaardelijke toegang**.
+1. Klik op de pagina **Azure Active Directory** in de sectie **beveiliging** op **voorwaardelijke toegang**.
 
    ![Voorwaardelijke toegang](./media/app-based-mfa/03.png)
 
-1. Op de **voorwaardelijke toegang** in de werkbalk bovenaan op de pagina, klikt u op **nieuw beleid**.
+1. Klik op de pagina **voorwaardelijke toegang** in de werk balk aan de bovenkant op **Nieuw beleid**.
 
    ![Toevoegen](./media/app-based-mfa/04.png)
 
-1. Op de **nieuw** pagina, in de **naam** tekstvak, type **MFA vereisen voor toegang tot Azure portal**.
+1. Typ op de pagina **Nieuw** in het TEKSTVAK **naam** **MFA vereisen voor toegang tot Azure Portal**.
 
-   ![Name](./media/app-based-mfa/05.png)
+   ![Naam](./media/app-based-mfa/05.png)
 
-1. In de **toewijzing** sectie, klikt u op **gebruikers en groepen**.
+1. Klik in de sectie **toewijzing** op **gebruikers en groepen**.
 
    ![Gebruikers en groepen](./media/app-based-mfa/06.png)
 
-1. Op de **gebruikers en groepen** pagina, voert u de volgende stappen uit:
+1. Voer de volgende stappen uit op de pagina **gebruikers en groepen** :
 
    ![Gebruikers en groepen](./media/app-based-mfa/24.png)
 
-   1. Klik op **gebruikers en groepen selecteren**, en selecteer vervolgens **gebruikers en groepen**.
+   1. Klik op **gebruikers en groepen selecteren**en selecteer vervolgens **gebruikers en groepen**.
    1. Klik op **Selecteren**.
-   1. Op de **Selecteer** pagina, selecteert u **Isabella Simonsen**, en klik vervolgens op **Selecteer**.
-   1. Op de **gebruikers en groepen** pagina, klikt u op **gedaan**.
+   1. Selecteer op de pagina **selecteren** de optie **Isabella Simonsen**en klik vervolgens op **selecteren**.
+   1. Klik op de pagina **gebruikers en groepen** op **gereed**.
 
 1. Klik op **Cloud-apps**.
 
    ![Cloud-apps](./media/app-based-mfa/08.png)
 
-1. Op de **Cloud-apps** pagina, voert u de volgende stappen uit:
+1. Voer de volgende stappen uit op de pagina **Cloud-apps** :
 
    ![Cloud-apps selecteren](./media/app-based-mfa/26.png)
 
    1. Klik op **apps selecteren**.
    1. Klik op **Selecteren**.
-   1. Op de **Selecteer** pagina, selecteert u **Microsoft Azure Management**, en klik vervolgens op **Selecteer**.
-   1. Op de **Cloud-apps** pagina, klikt u op **gedaan**.
+   1. Selecteer op de pagina **selecteren** de optie **Microsoft Azure beheer**en klik vervolgens op **selecteren**.
+   1. Klik op de pagina **Cloud-apps** op **gereed**.
 
-1. In de **besturingselementen voor toegang** sectie, klikt u op **verlenen**.
+1. Klik in de sectie **toegangs beheer** op **verlenen**.
 
-   ![Besturingselementen voor toegang](./media/app-based-mfa/10.png)
+   ![Toegangs beheer](./media/app-based-mfa/10.png)
 
-1. Op de **verlenen** pagina, voert u de volgende stappen uit:
+1. Voer de volgende stappen uit op de pagina **Grant** :
 
-   ![Verlenen](./media/app-based-mfa/11.png)
+   ![Geef](./media/app-based-mfa/11.png)
 
    1. Selecteer **toegang verlenen**.
-   1. Selecteer **meervoudige verificatie vereisen**.
+   1. Selecteer **multi-factor Authentication vereisen**.
    1. Klik op **Selecteren**.
 
-1. In de **beleid inschakelen** sectie, klikt u op **op**.
+1. Klik in de sectie **beleid inschakelen** op **aan**.
 
    ![Beleid inschakelen](./media/app-based-mfa/18.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerde aanmelden evalueren
+## <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerd aanmelden evalueren
 
-Nu dat u uw beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weet of deze werkt zoals verwacht. Gebruik als een eerste stap de voorwaardelijke toegang wat gebeurt er als beleid hulpprogramma voor het simuleren van een teken in van uw testgebruiker. De simulatie maakt een schatting van de impact voor deze aanmelding heeft op uw beleid en genereert een simulatierapport.  
+Nu u het beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weten of het werkt zoals verwacht. Als eerste stap gebruikt u de voorwaardelijke toegang What if Policy tool om een aanmelding van uw test gebruiker te simuleren. De simulatie schat de invloed die dit aanmelden heeft op uw beleid en genereert een simulatie rapport.  
 
-Initialiseren de **wat gebeurt er als** hulpprogramma voor het evalueren van beleid instellen:
+Stel het hulp programma voor het evalueren van **What if** -beleid in door het volgende in te stellen:
 
 - **Isabella Simonsen** als gebruiker
-- **Microsoft Azure Management** als cloud-app
+- **Microsoft Azure beheer** als Cloud-app
 
-Te klikken op **wat gebeurt er als** maakt u een simulatierapport waarin wordt weergegeven:
+Als u op **What if** klikt, wordt er een simulatie rapport gemaakt waarin wordt getoond:
 
-- **MFA vereisen voor toegang tot Azure portal** onder **beleidsregels die worden toegepast**
-- **Meervoudige verificatie vereisen** als **besturingselementen verlenen**.
+- **MFA vereisen voor toegang tot Azure Portal** onder **beleids regels die van toepassing zijn**
+- **Multi-factor Authentication vereisen** als **Grant-besturings elementen**.
 
-![Wat gebeurt er als hulpprogramma voor beleid](./media/app-based-mfa/23.png)
+![Wat als beleids programma](./media/app-based-mfa/23.png)
 
-**Uw beleid voor voorwaardelijke toegang evalueren:**
+**Het beleid voor voorwaardelijke toegang evalueren:**
 
-1. Op de [voorwaardelijke toegang - beleid](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu bovenaan op de pagina, klikt u op **wat gebeurt er als**.  
+1. Klik op de pagina [voorwaardelijke toegang-beleids regels](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu aan de bovenkant op **What if**.  
 
    ![Wat als](./media/app-based-mfa/14.png)
 
-1. Klik op **gebruikers**, selecteer **Isabella Simonsen**, en klik vervolgens op **Selecteer**.
+1. Klik op **gebruikers**, selecteer **Isabella Simonsen**en klik vervolgens op **selecteren**.
 
    ![Gebruiker](./media/app-based-mfa/15.png)
 
-1. Selecteer een cloud-app, moet u de volgende stappen uitvoeren:
+1. Als u een Cloud-app wilt selecteren, voert u de volgende stappen uit:
 
    ![Cloud-apps](./media/app-based-mfa/16.png)
 
    1. Klik op **Cloud-apps**.
-   1. Op de **pagina voor Cloud-apps**, klikt u op **apps selecteren**.
+   1. Klik op de **pagina Cloud-apps**op **apps selecteren**.
    1. Klik op **Selecteren**.
-   1. Op de **Selecteer** pagina, selecteert u **Microsoft Azure Management**, en klik vervolgens op **Selecteer**.
-   1. Klik op de pagina van de cloud-apps op **gedaan**.
+   1. Selecteer op de pagina **selecteren** de optie **Microsoft Azure beheer**en klik vervolgens op **selecteren**.
+   1. Klik op de pagina Cloud-apps op **gereed**.
 
-1. Klik op **wat gebeurt er als**.
+1. Klik op **What if**.
 
-## <a name="test-your-conditional-access-policy"></a>Testen van uw beleid voor voorwaardelijke toegang
+## <a name="test-your-conditional-access-policy"></a>Het beleid voor voorwaardelijke toegang testen
 
-In de vorige sectie hebt u geleerd hoe u een gesimuleerde aanmelden evalueren. Naast een simulatie, moet u ook testen van uw beleid voor voorwaardelijke toegang om ervoor te zorgen dat deze naar verwachting werkt.
+In de vorige sectie hebt u geleerd hoe u een gesimuleerd aanmelden kunt evalueren. Naast een simulatie moet u ook het beleid voor voorwaardelijke toegang testen om er zeker van te zijn dat het werkt zoals verwacht.
 
-Als u wilt testen van uw beleid, probeert u zich aanmeldt bij uw [Azure-portal](https://portal.azure.com) met behulp van uw **Isabella Simonsen** test-account. U ziet een dialoogvenster dat vereist dat u het instellen van uw account voor aanvullende beveiligingsverificatie.
+Als u uw beleid wilt testen, probeert u zich aan te melden bij uw [Azure Portal](https://portal.azure.com) met behulp van uw **Isabella Simonsen** -test account. Er wordt een dialoog venster weer geven waarin u uw account moet instellen voor aanvullende beveiligings verificatie.
 
 ![Multi-Factor Authentication](./media/app-based-mfa/22.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u niet meer nodig hebt, verwijdert u de testgebruiker en het beleid voor voorwaardelijke toegang:
+Wanneer u deze niet meer nodig hebt, verwijdert u de test gebruiker en het beleid voor voorwaardelijke toegang:
 
-- Als u niet hoe u een Azure AD-gebruiker verwijdert weet, Zie [gebruikers verwijderen uit Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- Als u wilt verwijderen van uw beleid, selecteert u uw beleid en klik vervolgens op **verwijderen** in de werkbalk Snelle toegang.
+- Zie [gebruikers uit Azure ad verwijderen](../fundamentals/add-users-azure-active-directory.md#delete-a-user)als u niet weet hoe u een Azure AD-gebruiker verwijdert.
+- Als u uw beleid wilt verwijderen, selecteert u uw beleid en klikt u vervolgens op **verwijderen** op de werk balk snelle toegang.
 
     ![Multi-Factor Authentication](./media/app-based-mfa/33.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Vereisen dat de gebruiksrechtovereenkomst moet zijn geaccepteerd](require-tou.md)
-> [toegang blokkeren als er een risico voor de sessie wordt gedetecteerd](app-sign-in-risk.md)
+> [Vereisen dat gebruiks voorwaarden worden geaccepteerd](require-tou.md)
+> [toegang blok keren als er een sessie risico wordt gedetecteerd](app-sign-in-risk.md)

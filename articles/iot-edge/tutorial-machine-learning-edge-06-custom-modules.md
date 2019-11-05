@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163117"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494005"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelf studie: aangepaste IoT Edge-modules maken en implementeren
 
@@ -172,7 +172,7 @@ Vervolgens voegen we de router module toe aan onze oplossing. De router module v
 4. Wanneer u wordt gevraagd om de opslag plaats voor de docker-installatie kopie, gebruikt u het REGI ster vanuit de machine learning-werk ruimte (u kunt het REGI ster vinden in het knoop punt registryCredentials van uw *implementatie. bestand sjabloon. json* ). Deze waarde is het volledig gekwalificeerde adres van het REGI ster, zoals **\<uw REGI ster\>. azurecr.io/turbofanrouter**.
 
     > [!NOTE]
-    > In dit artikel gebruiken we de Azure Container Registry gemaakt door de werk ruimte Azure Machine Learning service, die we hebben gebruikt om onze classificatie te trainen en te implementeren. Dit is uitsluitend voor het gemak. We hebben een nieuw container register gemaakt en onze modules daar gepubliceerd.
+    > In dit artikel gebruiken we de Azure Container Registry gemaakt door de Azure Machine Learning-werk ruimte, die we hebben gebruikt om onze classificatie te trainen en te implementeren. Dit is uitsluitend voor het gemak. We hebben een nieuw container register gemaakt en onze modules daar gepubliceerd.
 
 5. Open een nieuw terminal venster in Visual Studio code (**bekijk** > **Terminal**) en kopieer bestanden vanuit de map modules.
 
@@ -752,7 +752,7 @@ Nu u de configuratie wijzigingen hebt aangebracht, kunt u de installatie kopieë
 
 Zodra de build is voltooid, kunnen we de Azure Portal gebruiken om onze gepubliceerde modules te bekijken.
 
-1. Ga in het Azure Portal naar de werk ruimte van uw Azure Machine Learning-service en klik op de Hyper link voor het **REGI ster**.
+1. Navigeer in het Azure Portal naar uw werk ruimte Azure Machine Learning en klik op de Hyper link voor het **REGI ster**.
 
     ![Naar het REGI ster navigeren vanuit de machine learning service werkruimte](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 

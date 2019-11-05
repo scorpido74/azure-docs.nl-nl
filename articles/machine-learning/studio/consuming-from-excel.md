@@ -1,7 +1,7 @@
 ---
 title: Webservice in Excel gebruiken
-titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning Studio maakt het eenvoudig om aan te roepen webservices rechtstreeks vanuit Excel zonder code te schrijven.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Met Azure Machine Learning Studio (klassiek) kunt u eenvoudig webservices rechtstreeks vanuit Excel aanroepen zonder dat u code hoeft te schrijven.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,59 +10,59 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: afa6430a76650b08f979687e2a1e5c7b53c89180
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773754"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493249"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Een Azure Machine Learning Studio-webservice uit Excel gebruiken
+# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Een Azure Machine Learning Studio-webservice (klassiek) gebruiken vanuit Excel
 
- Azure Machine Learning Studio maakt het eenvoudig om aan te roepen webservices rechtstreeks vanuit Excel zonder code te schrijven.
+ Met Azure Machine Learning Studio (klassiek) kunt u eenvoudig webservices rechtstreeks vanuit Excel aanroepen zonder dat u code hoeft te schrijven.
 
-Als u Excel 2013 (of hoger) of Excel Online, gebruikt, raden wij aan dat u de Excel [Excel-invoegtoepassing](excel-add-in-for-web-services.md).
+Als u Excel 2013 (of hoger) of Excel online gebruikt, wordt u aangeraden de Excel [Excel-invoeg toepassing](excel-add-in-for-web-services.md)te gebruiken.
 
 
 
 ## <a name="steps"></a>Stappen
-Een webservice publiceren. [Zelfstudie 3: Tegoed risicomodel implementeren](tutorial-part3-credit-risk-deploy.md) wordt uitgelegd hoe u om dit te doen. De Excel-werkmap-functie wordt momenteel alleen ondersteund voor aanvraag/antwoord-services die een enkele uitvoer (dat wil zeggen, een enkel scoring label) hebben. 
+Publiceer een webservice. [Zelf studie 3: het model](tutorial-part3-credit-risk-deploy.md) voor het maken van een credit risico geeft uitleg hoe dit moet doen. Momenteel wordt de functie Excel-werkmap alleen ondersteund voor aanvraag/antwoord-Services met één uitvoer (dat wil zeggen, een enkel Score label). 
 
-Als u een webservice hebt, klikt u op de **WEBSERVICES** sectie aan de linkerkant van de studio en selecteer vervolgens de webservice om te gebruiken vanuit Excel.
+Zodra u een webservice hebt, klikt u op de **sectie webservices** aan de linkerkant van Studio en selecteert u vervolgens de webservice die vanuit Excel moet worden gebruikt.
 
 **Klassieke webservice**
 
-1. Op de **DASHBOARD** tabblad voor de webservice is een rij voor de **aanvraag/antwoord** service. Als deze service een enkele uitvoer heeft, ziet u de **Excel-werkmap downloaden** koppeling in die rij.
+1. Op het tabblad **dash board** voor de webservice is een rij voor de **aanvraag/antwoord** service. Als deze service één uitvoer had, ziet u de koppeling **Excel-werkmap downloaden** in die rij.
 
-    ![Excel-werkmap met behulp van de portal van de Studio-webservice downloaden](./media/consuming-from-excel/excellink.png)
+    ![Excel-werkmap downloaden met behulp van de Web Service-Portal van Studio (klassiek)](./media/consuming-from-excel/excellink.png)
 2. Klik op **Excel-werkmap downloaden**.
 
 **Nieuwe webservice**
 
-1. Selecteer in de portal voor Azure Machine Learning-webservice **verbruiken**.
-2. Op de pagina verbruiken in de **Web service verbruik opties** sectie, klikt u op het Excel-pictogram.
+1. Selecteer in de portal Azure Machine Learning-webservice de optie **verbruik**.
+2. Klik op de pagina verbruik in de sectie opties voor het gebruik van **webservices** op het pictogram Excel.
 
-**Met behulp van de werkmap**
+**De werkmap gebruiken**
 
 1. Open de werkmap.
-2. Er wordt een beveiligingswaarschuwing weergegeven. Klik op de **Enable Editing** knop.
+2. Er wordt een beveiligings waarschuwing weer gegeven. Klik op de knop **bewerken inschakelen** .
 
-    ![Als u wilt verwijderen van de beveiligingswaarschuwing beveiligde weergave bewerken inschakelen](./media/consuming-from-excel/enableeditting.png)
-3. Er wordt een beveiligingswaarschuwing weergegeven. Klik op de **inhoud inschakelen** knop macro's uitvoeren op uw werkblad.
+    ![Bewerken inschakelen om de beveiligde weer gave beveiligings waarschuwing te verwijderen](./media/consuming-from-excel/enableeditting.png)
+3. Er wordt een beveiligings waarschuwing weer gegeven. Klik op de knop **inhoud inschakelen** om macro's uit te voeren in uw werk blad.
 
-    ![Inschakelen van inhoud voor het verwijderen van de beveiligingswaarschuwing macro's uitschakelen](./media/consuming-from-excel/enablecontent.png)
-4. Zodra de macro's zijn ingeschakeld, wordt een tabel wordt gegenereerd. Kolommen in blauw zijn vereist als invoer voor de webservice RRS of **PARAMETERS**. Houd er rekening mee de uitvoer van de service RRS **VOORSPELDE waarden** in het groen. Wanneer alle kolommen voor een bepaalde rij zijn ingevuld, de werkmap wordt automatisch de scoring-API-aanroepen en de beoordeelde resultaten worden weergegeven.
+    ![Inhoud inschakelen voor het uitschakelen van de beveiligings waarschuwing macro's verwijderen](./media/consuming-from-excel/enablecontent.png)
+4. Zodra macro's zijn ingeschakeld, wordt er een tabel gegenereerd. Kolommen in blauw zijn vereist als invoer in de bron records-webservice, of **para meters**. Let op de uitvoer van de RR'S-service, **VOORspelde waarden** groen. Wanneer alle kolommen voor een bepaalde rij zijn gevuld, wordt de Score-API automatisch door de werkmap aangeroepen en worden de gescoorde resultaten weer gegeven.
 
-    ![Tabel voor invoer van de parameter en de resulterende voorspelde waarden](./media/consuming-from-excel/sampletable.png)
-5. Voor het scoren van meer dan één rij opvulling van de tweede rij met gegevens en de voorspelde waarden worden geproduceerd. U kunt zelfs meerdere rijen in één keer plakken.
+    ![Tabel voor parameter invoer en de resulterende voorspelde waarden](./media/consuming-from-excel/sampletable.png)
+5. Als u meer dan één rij wilt scoren, vult u de tweede rij met gegevens in en worden de voorspelde waarden geproduceerd. U kunt zelfs meerdere rijen tegelijk plakken.
 
-U kunt een van de Excel-functies (grafieken, power map, voorwaardelijke opmaak, enzovoort) met de voorspelde waarden gebruiken om u te helpen bij het visualiseren van de gegevens.
+U kunt een van de Excel-functies (grafieken, Power map, voorwaardelijke opmaak enz.) gebruiken met de voorspelde waarden om te helpen bij het visualiseren van de gegevens.
 
-## <a name="sharing-your-workbook"></a>Delen van uw werkmap
-Voor de macro's om te werken, moet uw API-sleutel deel uitmaken van het werkblad. Dat betekent dat u de werkmap moet delen alleen met entiteiten/personen die u vertrouwt.
+## <a name="sharing-your-workbook"></a>Uw werkmap delen
+Voor een goede werking van de macro's moet uw API-sleutel deel uitmaken van het werk blad. Dit betekent dat u de werkmap alleen moet delen met entiteiten/individuen die u vertrouwt.
 
 ## <a name="automatic-updates"></a>Automatische updates
-Een RRS-aanroep wordt uitgevoerd in deze twee gevallen:
+In deze twee situaties wordt een aanroep van een bron records gemaakt:
 
-1. De eerste keer dat een rij bevat inhoud in alle van de **PARAMETERS**
-2. Telkens wanneer u een van de **PARAMETERS** wijzigingen in een rij die al had de **PARAMETERS** ingevoerd.
+1. De eerste keer dat een rij inhoud bevat in alle **para meters**
+2. Telkens wanneer een van de **para meters** verandert in een rij waarvoor alle **para meters** zijn opgegeven.

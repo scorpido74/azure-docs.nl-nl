@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/03/2019
-ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173296"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476196"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Zelf studie: uw eerste ML model trainen
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Deze zelfstudie is **deel twee van een tweedelige reeks**. In de vorige zelf studie hebt u [een werk ruimte gemaakt en een ontwikkel omgeving gekozen](tutorial-1st-experiment-sdk-setup.md). In deze zelf studie leert u de Foundational ontwerp patronen in Azure Machine Learning en traint u een eenvoudig scikit model op basis van de diabetes-gegevensset. Na het volt ooien van deze zelf studie beschikt u over de praktische kennis van de SDK voor het uitbreiden van meer complexe experimenten en werk stromen.
 
@@ -37,7 +39,7 @@ In dit gedeelte van de zelf studie voert u de code in het voor beeld-Jupyter-not
 
 ## <a name="open-the-notebook"></a>Open het notitie blok
 
-1. Meld u aan bij de pagina voor het land van de [werk ruimte](https://ml.azure.com/).
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
 
 1. Open de **zelf studie-1ste experiment-SDK-Train. ipynb** in uw map, zoals weer gegeven in [deel één](tutorial-1st-experiment-sdk-setup.md#open).
 
@@ -62,7 +64,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Maak nu een experiment in uw werk ruimte. Een experiment is een andere Foundational Cloud resource die een verzameling experimenten vertegenwoordigt (afzonderlijke model uitvoeringen). In deze zelf studie gebruikt u het experiment om uitvoeringen te maken en uw model training bij te houden in de Azure Portal. Para meters bevatten uw werkruimte referentie en een teken reeks naam voor het experiment.
+Maak nu een experiment in uw werk ruimte. Een experiment is een andere Foundational Cloud resource die een verzameling experimenten vertegenwoordigt (afzonderlijke model uitvoeringen). In deze zelf studie gebruikt u het experiment om uitvoeringen te maken en uw model training te volgen in de Azure Machine Learning Studio. Para meters bevatten uw werkruimte referentie en een teken reeks naam voor het experiment.
 
 
 ```python
@@ -72,15 +74,17 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Gegevens laden en trainingen voorbereiden
 
-Voor deze zelf studie gebruikt u de diabetes-gegevensset, een vooraf gestandaardiseerde gegevensset die is opgenomen in scikit-meer informatie. Deze gegevensset maakt gebruik van functies zoals Age, gender en BMI om de voortgang van diabetes ziekten te voors pellen. Laad de gegevens van de statische functie `load_diabetes()` en splits deze in de trainings-en test sets met behulp van `train_test_split()`. Met deze functie worden de gegevens gescheiden, zodat het model ongebruikte gegevens heeft om de volgende training te testen.
+Voor deze zelf studie gebruikt u de gegevensset diabetes, die functies als Age, gender en BMI gebruikt om de voortgang van diabetes ziekten te voors pellen. Laad de gegevens uit de klasse [Azure open data sets](https://azure.microsoft.com/services/open-datasets/) en splits deze in trainings-en test sets met `train_test_split()`. Met deze functie worden de gegevens gescheiden, zodat het model ongebruikte gegevens heeft om de volgende training te testen.
 
 
 ```python
-from sklearn.datasets import load_diabetes
+from azureml.opendatasets import Diabetes
 from sklearn.model_selection import train_test_split
 
-X, y = load_diabetes(return_X_y = True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
+x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
+y_df = x_df.pop("Y")
+
+X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
 ## <a name="train-a-model"></a>Een model trainen
@@ -139,7 +143,7 @@ Wanneer trainings modellen worden geschaald op honderden en duizenden afzonderli
 
 ![Hoofd proef pagina in de portal](./media/tutorial-quickstart/experiment-main.png)
 
-Als u op een koppeling met een uitvoerings nummer klikt in de kolom `RUN NUMBER`, gaat u naar de pagina voor elke afzonderlijke uitvoering. Op de standaard tabblad **Details** ziet u meer gedetailleerde informatie over elke uitvoering. Navigeer naar het tabblad **uitvoer** en u ziet het `.pkl`-bestand voor het model dat tijdens elke trainings herhaling naar de uitvoering is geüpload. Hier kunt u het model bestand downloaden in plaats van het hand matig opnieuw te hoeven trainen.
+Als u op een koppeling met een uitvoerings nummer klikt in de kolom `RUN NUMBER`, gaat u naar de pagina voor elke afzonderlijke uitvoering. Op de standaard tabblad **Details** ziet u meer gedetailleerde informatie over elke uitvoering. Ga naar het tabblad **uitvoer** en u ziet het `.pkl` bestand voor het model dat tijdens elke trainings herhaling naar de uitvoering is geüpload. Hier kunt u het model bestand downloaden in plaats van het hand matig opnieuw te hoeven trainen.
 
 ![Pagina Details uitvoeren in Portal](./media/tutorial-quickstart/model-download.png)
 
@@ -193,19 +197,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning zelf studies uit te voeren.
 
-### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
+### <a name="stop-the-compute-instance"></a>Het reken exemplaar stoppen
 
-Als u een Cloud notebook server hebt gebruikt, stopt u de virtuele machine wanneer u deze niet gebruikt om de kosten te verlagen.
-
-1. Selecteer in uw werk ruimte de optie **laptop vm's**.
-
-   ![De VM-server stoppen](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. Selecteer de VM in de lijst.
-
-1. Selecteer **stoppen**.
-
-1. Wanneer u klaar bent om de server opnieuw te gebruiken, selecteert u **starten**.
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>Alles verwijderen
 

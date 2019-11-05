@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433198"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471475"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Een Node.js-web-app maken in Azure 
 
@@ -43,7 +43,7 @@ Nadat de extensie is geïnstalleerd, meldt u zich aan bij uw Azure-account. Sele
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
-Als u de fout melding **' kan geen abonnement vinden met de naam [abonnements-id] '** ziet, kan het zijn dat u zich achter een proxy bevindt en de Azure API niet kunt bereiken. Configureer `HTTP_PROXY`-en `HTTPS_PROXY`-omgevings variabelen met uw proxy gegevens in uw Terminal met behulp van `export`.
+Als u de fout melding **' kan geen abonnement vinden met de naam [abonnements-id] '** ziet, kan het zijn dat u zich achter een proxy bevindt en de Azure API niet kunt bereiken. Configureer `HTTP_PROXY`-en `HTTPS_PROXY` omgevings variabelen met uw proxy gegevens in uw Terminal met behulp van `export`.
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -70,15 +70,15 @@ Maak vervolgens een node. js-toepassing die in de cloud kan worden geïmplemente
 
 ### <a name="scaffold-a-new-application-with-the-express-generator"></a>Steiger een nieuwe toepassing met de Express-generator
 
-[Express](https://www.expressjs.com) is een populair Framework voor het bouwen en uitvoeren van node. js-toepassingen. U kunt een nieuwe Express-toepassing maken met behulp van het hulp programma [Express Generator](https://expressjs.com/en/starter/generator.html) . De Express-generator wordt geleverd als een NPM-module en kan direct worden uitgevoerd (zonder installatie) met behulp van het opdracht regel programma NPM `npx`.
+[Express](https://www.expressjs.com) is een populair Framework voor het bouwen en uitvoeren van node. js-toepassingen. U kunt een nieuwe Express-toepassing maken met behulp van het hulp programma [Express Generator](https://expressjs.com/en/starter/generator.html) . De Express-generator wordt geleverd als een NPM-module en kan rechtstreeks worden uitgevoerd (zonder installatie) met behulp van het NPM-opdracht regel programma `npx`.
 
 ```bash
 npx express-generator myExpressApp --view pug --git
 ```
 
-Met de para meters voor de `--view pug --git` wordt de generator verteld om de [Pug](https://pugjs.org/api/getting-started.html) -sjabloon Engine (voorheen bekend als `jade`) te gebruiken en om een `.gitignore`-bestand te maken.
+De `--view pug --git`-para meters geven de generator de [Pug](https://pugjs.org/api/getting-started.html) -sjabloon Engine (voorheen bekend als `jade`) en om een `.gitignore` bestand te maken.
 
-Als u alle afhankelijkheden van de toepassing wilt installeren, gaat u naar de nieuwe map en voert u `npm install` uit.
+Als u alle afhankelijkheden van de toepassing wilt installeren, gaat u naar de nieuwe map en voert u `npm install`uit.
 
 ```bash
 cd myExpressApp
@@ -87,7 +87,7 @@ npm install
 
 ### <a name="run-the-application"></a>De toepassing uitvoeren
 
-Controleer vervolgens of de toepassing wordt uitgevoerd. Start vanuit de Terminal de toepassing met behulp van de `npm start`-opdracht om de server te starten.
+Controleer vervolgens of de toepassing wordt uitgevoerd. Start vanuit de Terminal de toepassing met behulp van de `npm start` opdracht om de server te starten.
 
 ```bash
 npm start
@@ -100,7 +100,7 @@ Open nu uw browser en navigeer naar [http://localhost:3000](http://localhost:300
 > [!div class="nextstepaction"]
 > [Ik heb een probleem ondertreden](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Implementatie in Azure
+## <a name="deploy-to-azure"></a>Implementeren in Azure
 
 In deze sectie implementeert u uw node. js-app met behulp van VS code en de uitbrei ding Azure App Service. Deze Snelstartgids maakt gebruik van het meest eenvoudige implementatie model waarin uw app is ingepakt en geïmplementeerd op een Azure Web App on Linux.
 
@@ -124,13 +124,13 @@ Selecteer in de Verkenner van **Azure app service** het pictogram met de blauwe 
 1. Kies een optie voor het maken op basis van het besturings systeem dat u wilt implementeren:
 
     - Linux: Kies **nieuwe web-app maken**.
-    - Windows: Kies **nieuwe web-app maken... Geavanceerd**.
+    - Windows: Kies **nieuwe web-app maken** en selecteer de optie **Geavanceerd** .
 
 1. Typ een wereld wijd unieke naam voor de web-app en druk op ENTER. Geldige tekens voor de naam van een app zijn ' a-z ', ' 0-9 ' en '-'.
 
 1. Als u een Linux-doel groep hebt, selecteert u een node. js-versie wanneer u hierom wordt gevraagd. Een **LTS** -versie wordt aanbevolen.
 
-1. Volg de extra prompts bij het richten op Windows met de optie *Advanced**:
+1. Als u de optie voor het maken van Vensters wilt gebruiken, volgt **u de extra** prompts:
     1. Selecteer **een nieuwe resource groep maken**en voer een naam in voor de resource groep.
     1. Selecteer **Windows** voor het besturings systeem.
     1. Selecteer een bestaand App Service plan of maak een nieuw abonnement. U kunt een prijs categorie selecteren bij het maken van een nieuw plan.

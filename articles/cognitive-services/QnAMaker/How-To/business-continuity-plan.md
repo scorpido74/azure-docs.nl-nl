@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 84f13f7e1d83f1ead00303b694b617d3ba1c8931
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e748e81de39b2bef14b543063adeb51b8b3ecdb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876650"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486724"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Een bedrijfs continuïteits plan maken voor uw QnA Maker-service
 
@@ -29,11 +29,11 @@ Het idee op hoog niveau zoals hierboven wordt weer gegeven, is als volgt:
 
 2. Zorg ervoor dat de primaire en secundaire Azure Search-indexen synchroon blijven. Gebruik het GitHub-voor beeld [hier](https://github.com/pchoudhari/QnAMakerBackupRestore) om te zien hoe u een back-up maakt van Azure-indexen.
 
-3. Maak een back-up van de Application Insights met doorlopend [exporteren](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry).
+3. Maak een back-up van de Application Insights met [doorlopend exporteren](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry).
 
 4. Zodra de primaire en secundaire Stacks zijn ingesteld, gebruikt u [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) om de twee eind punten te configureren en een routerings methode in te stellen.
 
-5. U moet een SSL-certificaat voor uw Traffic Manager-eind punt maken. [BIND het SSL-certificaat](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) in uw app-Services.
+5. U moet een SSL-certificaat voor uw Traffic Manager-eind punt maken. [BIND het SSL-certificaat](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) in uw app-Services.
 
 6. Ten slotte gebruikt u het Traffic Manager-eind punt in uw bot of app.
 

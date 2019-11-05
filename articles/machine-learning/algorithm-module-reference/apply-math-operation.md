@@ -1,5 +1,5 @@
 ---
-title: Wiskundige bewerking Toep assen
+title: Wiskundige bewerking toepassen
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module math bewerking Toep assen in Azure Machine Learning-service om een wiskundige bewerking toe te passen op kolom waarden in een pijp lijn.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 49bab338f559b1b43389e12d98c75bbffbb25a85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694764"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493942"
 ---
-# <a name="apply-math-operation"></a>Wiskundige bewerking Toep assen
+# <a name="apply-math-operation"></a>Wiskundige bewerking toepassen
 
-In dit artikel wordt een module van Azure Machine Learning visuele interface beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
 
 Gebruik de bewerking math Toep assen om berekeningen te maken die worden toegepast op numerieke kolommen in de invoer gegevensset. 
 
@@ -95,7 +95,7 @@ Als u de resultaten genereert met de opties **Append** of **ResultOnly** , geven
 -   **Is gelijk aan (Col2_Col1)** , wat aangeeft dat u col2 op Kol1 hebt getest.  
 -   **Is gelijk aan (Col2_ $10)** , wat aangeeft dat u kolom 2 hebt vergeleken met de constante 10.  
 
-Zelfs als u de optie **InPlace** gebruikt, worden de bron gegevens niet verwijderd of gewijzigd. de kolom in de oorspronkelijke gegevensset is nog steeds beschikbaar in de visuele interface. Als u de oorspronkelijke gegevens wilt bekijken, kunt u verbinding maken met de module [kolommen toevoegen](add-columns.md) en deze koppelen aan de uitvoer van de **bewerking wiskunde Toep assen**.  
+Zelfs als u de optie **InPlace** gebruikt, worden de bron gegevens niet verwijderd of gewijzigd. de kolom in de oorspronkelijke gegevensset is nog steeds beschikbaar in de ontwerp functie. Als u de oorspronkelijke gegevens wilt bekijken, kunt u verbinding maken met de module [kolommen toevoegen](add-columns.md) en deze koppelen aan de uitvoer van de **bewerking wiskunde Toep assen**.  
     
 ## <a name="basic-math-operations"></a>Eenvoudige wiskundige bewerkingen 
 
@@ -130,7 +130,7 @@ Hiermee berekent u de derdemachts wortel voor de waarden in de geselecteerde kol
 
 Retourneert de grootte van de tussen ruimte tussen de huidige waarde en het volgende hoogste getal met dubbele precisie. Komt overeen met de EPS-functie in MATLAB.  
   
-### <a name="exp"></a>Geldig
+### <a name="exp"></a>Exp
 
 Retourneert e verheven tot de macht van de waarde in de geselecteerde kolom. Dit is hetzelfde als de Excel EXP-functie.  
 
@@ -168,7 +168,7 @@ Retourneert het logboek van de waarden in de geselecteerde kolom, op basis van h
 
 U kunt de basis waarde (het tweede argument) opgeven als constante of door een andere kolom met waarden te selecteren.  
 
-### <a name="log10"></a>Anders
+### <a name="log10"></a>Log10
 
 Retourneert de logaritme met grondtal 10 voor de geselecteerde kolom.  
 
@@ -194,7 +194,7 @@ In **tweede argument type**selecteert u de kolom die de exponent bevat of geeft 
 
 Als het tweede argument een kolom is, wordt elke waarde in de kolom gebruikt als exponent voor de corresponderende rij. Als het tweede argument een constante is, typt u de waarde voor de exponent in het tekstvak **tweede argument** .  
 
-### <a name="sqrt"></a>Wortel
+### <a name="sqrt"></a>Sqrt
 
 Retourneert de vierkantswortel van de waarden in de geselecteerde kolom.  
 
@@ -208,7 +208,7 @@ Kwadraten de waarden in de geselecteerde kolom.
 
 ## <a name="comparison-operations"></a>Vergelijkings bewerkingen  
 
-Gebruik de vergelijkings functies in Azure Machine Learning visuele interface op elk gewenst moment dat u twee sets met waarden voor elkaar moet testen. Stel dat u in een pijp lijn deze vergelijkings bewerkingen moet uitvoeren:  
+Gebruik de vergelijkings functies in Azure Machine Learning Designer op elk gewenst moment dat u twee sets waarden voor elkaar moet testen. Stel dat u in een pijp lijn deze vergelijkings bewerkingen moet uitvoeren:  
 
 - Een kolom met waarschijnlijkheids scores op basis van een drempel waarde evalueren.
 - Bepaal of twee sets resultaten hetzelfde zijn. Voor elke rij die afwijkt, voegt u een onwaare vlag toe die kan worden gebruikt voor verdere verwerking of filtering.  
@@ -280,13 +280,13 @@ Geef de kolom met waarden op die u wilt gebruiken (de *aftrek getal*) door een a
 
 ##  <a name="rounding-operations"></a>Afrondings bewerkingen 
 
-Azure Machine Learning visuele interface ondersteunt diverse Afrondings bewerkingen. Voor veel bewerkingen moet u de hoeveelheid precisie opgeven die moet worden gebruikt bij het afronden. U kunt een statisch nauwkeurigheids niveau gebruiken dat is opgegeven als een constante, of u kunt een dynamische precisie waarde Toep assen die is verkregen van een kolom met waarden.  
+Azure Machine Learning Designer ondersteunt diverse Afrondings bewerkingen. Voor veel bewerkingen moet u de hoeveelheid precisie opgeven die moet worden gebruikt bij het afronden. U kunt een statisch nauwkeurigheids niveau gebruiken dat is opgegeven als een constante, of u kunt een dynamische precisie waarde Toep assen die is verkregen van een kolom met waarden.  
 
 - Als u een constante gebruikt, stelt u het **type precisie** in op **constant** en typt u het aantal cijfers als een geheel getal in het tekstvak **constante precisie** . Als u een niet-geheel getal typt, wordt er door de module geen fout gegenereerd, maar de resultaten kunnen onverwacht zijn.  
 
 - Als u een andere precisie waarde voor elke rij in uw gegevensset wilt gebruiken, stelt u het **type precisie** in op **kolomset**en kiest u vervolgens de kolom die de juiste precisie waarden bevat.  
 
-### <a name="ceiling"></a>Maximum
+### <a name="ceiling"></a>Ceiling
 
 Retourneert het plafond voor de waarden in de **kolomset**.  
 
@@ -330,7 +330,7 @@ Retourneert de waarden in de **kolomset**, afgerond op het dichtstbijzijnde voll
 
 Retourneert de waarden in de **kolomset**, afgerond op het dichtstbijzijnde volledige, oneven getal.  
 
-### <a name="truncate"></a>Afkappen
+### <a name="truncate"></a>Truncate
 
 De waarden in de **kolomset** worden afgekapt door alle cijfers te verwijderen die niet zijn toegestaan door de opgegeven precisie.  
   
@@ -485,7 +485,7 @@ Berekent de arctangens van de kolom waarden, in graden.
 
 Berekent de hyperbolische arctangens van de kolom waarden.  
 
-### <a name="cos"></a>Wissen
+### <a name="cos"></a>Cos
 
 Berekent de cosinus van de kolom waarden.  
 
@@ -552,11 +552,11 @@ Berekent de sinus waarde van de kolom waarden.
 
 Berekent de sinus voor de kolom waarden, in graden.  
 
-### <a name="sinh"></a>SINH
+### <a name="sinh"></a>Sinh
 
 Berekent de hyperbolische sinus van de kolom waarden.  
 
-### <a name="tan"></a>Tang
+### <a name="tan"></a>Tan
 
 Berekent de tangens van de kolom waarden.  
 
@@ -564,7 +564,7 @@ Berekent de tangens van de kolom waarden.
 
 Berekent de tangens voor het argument, in graden.  
 
-### <a name="tanh"></a>TANH
+### <a name="tanh"></a>Tanh
 
 Berekent de hyperbolische tangens van de kolom waarden.  
   

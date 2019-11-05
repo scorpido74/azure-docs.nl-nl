@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Language Understanding bot C# v4'
+title: 'Zelf studie: bot C# v4 van Language Understanding'
 titleSuffix: Azure Cognitive Services
 description: Bouw met behulp van C# een chatbot met ingebouwd taalbegrip (LUIS). De bot is gebouwd met de bot Framework versie 4 en de Azure web app bot-service.
 services: cognitive-services
@@ -9,18 +9,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 0911747da38ed736a79e692fd511e5bfbfaf7439
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 213449a78baf8fc2b7cb6c74709efeaf2a50d5b2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772918"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495471"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Zelfstudie: Een web-app-bot gebruiken die is ingeschakeld met Language Understanding inC#
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Zelf studie: een web-app-bot gebruiken die is ingeschakeld met Language Understanding inC#
 
 Gebruik C# om een chat-bot te maken die is geïntegreerd met language Standing (Luis). De bot is gebouwd met de Azure [Web app bot](https://docs.microsoft.com/azure/bot-service/) -resource en [bot Framework-versie](https://github.com/Microsoft/botbuilder-dotnet) v4.
+
+[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
+
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -47,9 +50,9 @@ Gebruik C# om een chat-bot te maken die is geïntegreerd met language Standing (
     |Instelling|Doel|Aanbevolen instelling|
     |--|--|--|
     |Botnaam|Resourcenaam|`luis-csharp-bot-` + `<your-name>`, bijvoorbeeld, `luis-csharp-bot-johnsmith`|
-    |Subscription|Het abonnement waarvoor de bot moet worden gemaakt.|Uw primaire abonnement.
-    |Resource group|Logische groep van Azure-resources|Maak een nieuwe groep voor het opslaan van alle resources die worden gebruikt met deze bot. Geef de groep de naam `luis-csharp-bot-resource-group`.|
-    |Location|Azure-regio: deze hoeft niet dezelfde te zijn als de LUIS-regio voor maken en publiceren.|`westus`|
+    |Abonnement|Het abonnement waarvoor de bot moet worden gemaakt.|Uw primaire abonnement.
+    |Resourcegroep|Logische groep van Azure-resources|Maak een nieuwe groep voor het opslaan van alle resources die worden gebruikt met deze bot. Geef de groep de naam `luis-csharp-bot-resource-group`.|
+    |Locatie|Azure-regio: deze hoeft niet dezelfde te zijn als de LUIS-regio voor maken en publiceren.|`westus`|
     |Prijscategorie|Wordt gebruikt voor serviceaanvraaglimieten en facturatie.|`F0` is de gratis laag.
     |Naam van app|Deze naam wordt gebruikt als subdomein wanneer uw bot wordt geïmplementeerd in de cloud (bijvoorbeeld humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, bijvoorbeeld, `luis-csharp-bot-johnsmith`|
     |Botsjabloon|Instellingen voor het botframework - zie de volgende tabel|
@@ -64,7 +67,7 @@ Gebruik C# om een chat-bot te maken die is geïntegreerd met language Standing (
     |--|--|--|
     |SDK-versie|Versie van het botframework|**SDK v4**|
     |SDK-taal|Computertaal van de bot|**C#**|
-    |Bot|Type bot|**Basisbot**|
+    |Tape|Type bot|**Basisbot**|
     
 1. Selecteer **Maken**. Hiermee maakt u de botservice en implementeert u deze in Azure. Bij dit proces wordt een LUIS-app gemaakt met de naam `luis-csharp-bot-XXXX`. Deze naam is gebaseerd op de naam van de/Azure bot service-app.
 
@@ -86,7 +89,7 @@ Tijdens het maken van de bot-service wordt ook een nieuwe LUIS-app gemaakt met i
 ## <a name="test-the-bot-in-web-chat"></a>De bot in Web Chat testen
 
 1. Selecteer in de Azure Portal voor de nieuwe bot nog **testen in Web Chat**. 
-1. Voer in het tekstvak **type uw bericht** de tekst `Book a flight from Seattle to Berlin tomorrow`in. De bot reageert met de verificatie dat u een vlucht wilt boeken. 
+1. Voer in het tekstvak **type uw bericht** de tekst in `Book a flight from Seattle to Berlin tomorrow`. De bot reageert met de verificatie dat u een vlucht wilt boeken. 
 
     ![Scherm opname van Azure Portal, voer de tekst ' Hello ' in.](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
@@ -230,12 +233,12 @@ Start de bot in Visual Studio 2019. Er wordt een browservenster geopend met de w
 1. Voer de **micro soft app-id** en het **micro soft app-wacht woord**in die u hebt gevonden in het bestand **appSettings. json** in de hoofdmap van de bot-code die u hebt gedownload.
 
 
-1. Voer `Book a flight from Seattle to Berlin tomorrow` in de bot-emulator hetzelfde antwoord in voor de Basic-bot die u hebt ontvangen tijdens de **test in Web Chat**.
+1. Voer in de bot-emulator `Book a flight from Seattle to Berlin tomorrow` in en ontvang hetzelfde antwoord voor de Basic-bot die u hebt ontvangen tijdens de **test in Web Chat**.
 
     [![Antwoord van de basisbot in de emulator](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
 1. Selecteer **Ja**. De bot reageert met een overzicht van de bijbehorende acties. 
-1. Selecteer de regel die is opgenomen `Luis Trace`in het logboek van de bot-emulator. Hiermee wordt het JSON-antwoord van LUIS voor de intentie en entiteiten van de utterance weer gegeven.
+1. Selecteer in het logboek van de bot-emulator de regel die `Luis Trace`bevat. Hiermee wordt het JSON-antwoord van LUIS voor de intentie en entiteiten van de utterance weer gegeven.
 
     [![Antwoord van de basisbot in de emulator](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
 

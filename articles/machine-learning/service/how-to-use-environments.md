@@ -10,14 +10,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 4d4d83e12d284ce760b8a7e87fd42e6c8ebb4850
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001208"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489310"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Maak en beheer herbruikbare omgevingen voor training en implementatie met Azure Machine Learning.
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel vindt u informatie over het maken en beheren van Azure Machine Learning [omgevingen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) , zodat u de software afhankelijkheden van uw projecten kunt bijhouden en reproduceren tijdens het ontwikkelen.
 
@@ -149,7 +150,7 @@ run = myexp.submit(config=runconfig)
 run.wait_for_completion(show_output=True)
 ```
 
-Op dezelfde manier kunt u, als u een [`Estimator`-](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) object gebruikt voor training, het Estimator-exemplaar rechtstreeks als een uitvoering verzenden zonder dat u een omgeving hoeft op te geven. Het `Estimator`-object heeft de omgeving en het reken doel al ingekapseld.
+Op dezelfde manier kunt u, als u een [`Estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) -object gebruikt voor training, het Estimator-exemplaar rechtstreeks als een uitvoering verzenden zonder dat u een omgeving hoeft op te geven. Het `Estimator`-object heeft de omgeving en het reken doel al ingekapseld.
 
 
 ## <a name="add-packages-to-an-environment"></a>Pakketten toevoegen aan een omgeving
@@ -160,7 +161,7 @@ Voeg pakketten toe aan een omgeving met Conda-, PIP-of privé-wiel bestanden. Ge
 
 Als een pakket beschikbaar is in een Conda-pakket opslagplaats, is het raadzaam om de installatie van Conda over PIP te gebruiken. De reden hiervoor is dat Conda-pakketten doorgaans worden geleverd met vooraf gemaakte binaire bestanden die de installatie betrouwbaarder maken.
 
-In het volgende voor beeld worden `scikit-learn`, met name versie 0.21.3 en `pillow`-pakket aan de omgeving toegevoegd, `myenv` met de methoden [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) en [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) .
+In het volgende voor beeld worden `scikit-learn`, met name versie 0.21.3, en `pillow` pakket toegevoegd aan de omgeving, respectievelijk `myenv` met de methoden [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) en [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) .
 
 ```python
 from azureml.core import Environment
@@ -178,7 +179,7 @@ myenv.python.conda_dependencies=conda_dep
 
 ### <a name="private-wheel-files"></a>Privé-wiel bestanden
 
-U kunt privé PIP-wiel bestanden gebruiken door deze eerst naar uw werkruimte opslag te uploaden met behulp van een statische [`add_private_pip_wheel()`-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) methode, vervolgens de opslag-URL vast te leggen en de URL door te geven aan de `add_pip_package()`-methode
+U kunt privé PIP-wiel bestanden gebruiken door deze eerst naar uw werkruimte opslag te uploaden met behulp van de methode static [`add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) , vervolgens de opslag-URL vast te leggen en de URL door te geven aan de `add_pip_package()`-methode
 
 ```python
 # During environment creation the service replaces the URL by secure SAS URL, so your wheel file is kept private and secure
@@ -216,7 +217,7 @@ Bekijk de omgevingen in uw werk ruimte met [`Environment.list(workspace="workspa
 #### <a name="get-environment-by-name"></a>Omgeving ophalen op naam
 
 U kunt ook een specifieke omgeving verkrijgen op naam en versie.
-In de volgende code wordt de methode [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) gebruikt om versie `1` van de omgeving op te halen `myenv` in de werk ruimte `ws`.
+De volgende code maakt gebruik van de methode [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) om de versie `1` van de omgeving op te halen, `myenv` in de `ws`-werk ruimte.
 
 ```python
 restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
@@ -258,9 +259,9 @@ Wanneer u `enable` docker, bouwt de service een docker-installatie kopie en maak
 myenv.docker.enabled = True
 ```
 
-Als de docker-installatie kopie eenmaal is gemaakt, wordt deze standaard weer gegeven in de Azure Container Registry die aan de werk ruimte is gekoppeld.  De naam van de opslag plaats heeft de indeling *azureml/azureml_ @ no__t-1uuid @ no__t-2*. Het onderdeel voor de unieke id (*uuid*) komt overeen met een hash die is berekend op basis van de configuratie van de omgeving. Hiermee kan de service bepalen of een installatie kopie die overeenkomt met de opgegeven omgeving al bestaat voor hergebruik.
+Als de docker-installatie kopie eenmaal is gemaakt, wordt deze standaard weer gegeven in de Azure Container Registry die aan de werk ruimte is gekoppeld.  De naam van de opslag plaats heeft de indeling *azureml/azureml_\<uuid\>* . Het onderdeel voor de unieke id (*uuid*) komt overeen met een hash die is berekend op basis van de configuratie van de omgeving. Hiermee kan de service bepalen of een installatie kopie die overeenkomt met de opgegeven omgeving al bestaat voor hergebruik.
 
-Daarnaast gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers)en installeert de opgegeven Python-pakketten. De basis installatie kopie heeft CPU-en GPU-versies. Azure Machine Learning-service detecteert automatisch welke versie moet worden gebruikt.
+Daarnaast gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde [basis installatie kopieën](https://github.com/Azure/AzureML-Containers)en installeert de opgegeven Python-pakketten. De basis installatie kopie heeft CPU-en GPU-versies. Azure Machine Learning detecteert automatisch welke versie moet worden gebruikt.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -304,7 +305,7 @@ run = exp.submit(runconfig)
 
 Als u de omgeving niet opgeeft in de configuratie van de uitvoering, wordt door de service een standaard omgeving voor u gemaakt wanneer u de uitvoering verzendt.
 
-### <a name="train-with-an-estimator"></a>Trainen met een estimator
+### <a name="train-with-an-estimator"></a>Train met een estimator
 
 Als u een [Estimator](how-to-train-ml-models.md) voor training gebruikt, kunt u het Estimator-exemplaar gewoon rechtstreeks indienen, omdat het de omgeving en het reken doel al heeft ingekapseld.
 
@@ -358,12 +359,12 @@ service = Model.deploy(
     deployment_config = deployment_config)
 ```
 
-## <a name="example-notebooks"></a>Voorbeeld-laptops
+## <a name="example-notebooks"></a>Voorbeeld notitieblokken
 
 In dit [voor beeld wordt het notitie blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) uitgebreid op concepten en methoden die in dit artikel worden getoond.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Zelfstudie: Voor het trainen van een model @ no__t-0 wordt een beheerd Compute-doel gebruikt voor het trainen van een model.
+* [Zelf studie: een model trainen](tutorial-train-models-with-aml.md) maakt gebruik van een beheerd Compute-doel om een model te trainen.
 * Wanneer u een getraind model hebt, leert u [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md).
 * Bekijk de naslag informatie voor de SDK van de [omgevings klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) .

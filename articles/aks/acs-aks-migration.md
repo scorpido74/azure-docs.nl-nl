@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 84e0af89e2b3247bc922ab84286a79a0934323a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097890"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472990"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migreren van Azure Container Service (ACS) naar Azure Kubernetes service (AKS)
 
@@ -26,9 +26,9 @@ ACS en AKS verschillen in bepaalde belang rijke gebieden die van invloed zijn op
 
 * AKS-knoop punten gebruiken [beheerde schijven](../virtual-machines/windows/managed-disks-overview.md).
     * Niet-beheerde schijven moeten worden geconverteerd voordat u ze kunt koppelen aan AKS-knoop punten.
-    * Aangepaste `StorageClass` objecten voor Azure-schijven moeten worden gewijzigd `unmanaged` van `managed`in.
-    * Elk `PersistentVolumes` gebruik .`kind: Managed`
-* AKS ondersteunt [meerdere knooppunt groepen](https://docs.microsoft.com/azure/aks/use-multiple-node-pools) (momenteel als preview-versie).
+    * Aangepaste `StorageClass`-objecten voor Azure-schijven moeten worden gewijzigd van `unmanaged` in `managed`.
+    * Elk `PersistentVolumes` moet `kind: Managed`gebruiken.
+* AKS ondersteunt [meerdere knooppunt groepen](https://docs.microsoft.com/azure/aks/use-multiple-node-pools).
 * Knoop punten op basis van Windows Server zijn momenteel beschikbaar als [Preview-versie in AKS](https://azure.microsoft.com/blog/kubernetes-on-azure/).
 * AKS ondersteunt een beperkt aantal [regio's](https://docs.microsoft.com/azure/aks/quotas-skus-regions).
 * AKS is een beheerde service met een gehoste Kubernetes-besturings vlak. Mogelijk moet u uw toepassingen aanpassen als u de configuratie van uw ACS-Masters eerder hebt gewijzigd.
@@ -41,13 +41,13 @@ Als u migreert naar een nieuwere versie van Kubernetes, raadpleegt u de volgende
 
 ## <a name="migration-considerations"></a>Overwegingen bij migraties
 
-### <a name="agent-pools"></a>Agentpools
+### <a name="agent-pools"></a>Agent groepen
 
 Hoewel AKS het Kubernetes-besturings vlak beheert, definieert u nog steeds de grootte en het aantal knoop punten dat in het nieuwe cluster moet worden meegenomen. Als u wilt dat een toewijzing van 1:1 van ACS naar AKS, moet u de bestaande gegevens van het ACS-knoop punt vastleggen. Gebruik deze gegevens wanneer u een nieuw AKS-cluster maakt.
 
 Voorbeeld:
 
-| Name | Count | VM-grootte | Besturingssysteem |
+| Naam | Aantal | VM-grootte | Besturingssysteem |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
@@ -58,7 +58,7 @@ Zie [Azure-abonnement en service limieten](https://docs.microsoft.com/azure/azur
 
 ### <a name="networking"></a>Netwerken
 
-Voor complexe toepassingen migreert u doorgaans over tijd in plaats van allemaal tegelijk. Dit betekent dat de oude en nieuwe omgevingen mogelijk moeten communiceren via het netwerk. Toepassingen waarvoor eerder Services `ClusterIP` zijn gebruikt om te communiceren, moeten mogelijk worden weer `LoadBalancer` gegeven als type en moeten op de juiste manier worden beveiligd.
+Voor complexe toepassingen migreert u doorgaans over tijd in plaats van allemaal tegelijk. Dit betekent dat de oude en nieuwe omgevingen mogelijk moeten communiceren via het netwerk. Toepassingen die eerder `ClusterIP` Services hebben gebruikt om te communiceren, moeten mogelijk worden weer gegeven als type `LoadBalancer` en correct worden beveiligd.
 
 Als u de migratie wilt volt ooien, moet u clients verwijzen naar de nieuwe services die worden uitgevoerd op AKS. We raden aan dat u verkeer omleidt door DNS te laten verwijzen naar de Load Balancer die zich vóór uw AKS-cluster bevindt.
 
@@ -112,13 +112,13 @@ Als uw toepassing meerdere replica's kan hosten die naar dezelfde bestands share
 4. Subelementid.
 5. Punt verkeer naar het AKS-cluster.
 
-Als u met een lege share wilt beginnen en een kopie van de bron gegevens wilt maken, kunt u de [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) opdrachten gebruiken om uw gegevens te migreren.
+Als u met een lege share wilt beginnen en een kopie van de bron gegevens wilt maken, kunt u de [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) -opdrachten gebruiken om uw gegevens te migreren.
 
 ### <a name="deployment-strategy"></a>Implementatie strategie
 
-We raden u aan uw bestaande CI/CD-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. Kloon uw bestaande implementatie taken en zorg ervoor `kubeconfig` dat u naar het nieuwe AKS-cluster verwijst.
+We raden u aan uw bestaande CI/CD-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. Kloon uw bestaande implementatie taken en zorg ervoor dat `kubeconfig` naar het nieuwe AKS-cluster verwijst.
 
-Als dat niet mogelijk is, kunt u resource definities exporteren uit ACS en vervolgens Toep assen op AKS. U kunt gebruiken `kubectl` om objecten te exporteren.
+Als dat niet mogelijk is, kunt u resource definities exporteren uit ACS en vervolgens Toep assen op AKS. U kunt `kubectl` gebruiken om objecten te exporteren.
 
 ```console
 kubectl get deployment -o=yaml --export > deployments.yaml
@@ -126,7 +126,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 Er kunnen verschillende open source-hulpprogram ma's worden geholpen, afhankelijk van de behoeften van uw implementatie:
 
-* [Velero](https://github.com/heptio/ark) (Voor dit hulp programma is Kubernetes 1,7.)
+* [Velero](https://github.com/heptio/ark) (voor dit hulp programma is Kubernetes 1,7 vereist.)
 * [Azure uitvoeren CLI-extensie](https://github.com/yaron2/azure-kube-cli)
 * [Reshifter](https://github.com/mhausenblas/reshifter)
 
@@ -137,9 +137,9 @@ Er kunnen verschillende open source-hulpprogram ma's worden geholpen, afhankelij
    > [!NOTE]
    > Zoek naar voorbeeld Azure Resource Manager sjablonen voor AKS in de [Azure/AKS-](https://github.com/Azure/AKS/tree/master/examples/vnet) opslag plaats op github.
 
-2. Breng de benodigde wijzigingen aan in uw YAML-definities. Vervang `apps/v1beta1` bijvoorbeelddoor`Deployments`voor. `apps/v1`
+2. Breng de benodigde wijzigingen aan in uw YAML-definities. Vervang bijvoorbeeld `apps/v1beta1` door `apps/v1` voor `Deployments`.
 
-3. [Volumes migreren](#migrating-persistent-volumes) (optioneel) van uw ACS-cluster naar uw AKS-cluster.
+3. [Migreer volumes](#migrating-persistent-volumes) (optioneel) van uw ACS-cluster naar uw AKS-cluster.
 
 4. Gebruik uw CI/CD-systeem om toepassingen te implementeren in AKS. Of gebruik kubectl om de YAML-definities toe te passen.
 

@@ -13,21 +13,21 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cabefcc53106a53459975fc26513dc59ae7d3372
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 841271c474ba8e24bc352bcae1fa037cf382a8ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073217"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470577"
 ---
 # <a name="use-an-app-service-environment"></a>Een App Service omgeving gebruiken #
 
 Azure App Service Environment is een implementatie van Azure App Service in een subnet in het virtuele Azure-netwerk van een klant. Het bestaat uit:
 
-- **Front-ends**: De front-ends zijn waar HTTP/HTTPS eindigt in een App Service omgeving (ASE).
-- **Werk nemers**: De werk nemers zijn de resources die uw apps hosten.
-- **Data Base**: De Data Base bevat informatie die de omgeving definieert.
-- **Opslag**: De opslag wordt gebruikt voor het hosten van de door de klant gepubliceerde apps.
+- **Front-ends**: de front-ends zijn waar http/https eindigt in een app service omgeving (ASE).
+- **Werk nemers**: de werk nemers zijn de resources die uw apps hosten.
+- **Data Base**: de Data Base bevat informatie die de omgeving definieert.
+- **Opslag**: de opslag wordt gebruikt voor het hosten van de door de klant gepubliceerde apps.
 
 > [!NOTE]
 > Er zijn twee versies van App Service Environment: ASEv1 en ASEv2. In ASEv1 moet u de resources beheren voordat u ze kunt gebruiken. Zie [Configure an app service Environment v1][ConfigureASEv1](Engelstalig) voor meer informatie over het configureren en beheren van ASEv1. De rest van dit artikel richt zich op ASEv2.
@@ -47,7 +47,7 @@ Als u geen ASE hebt, kunt u er een maken door de instructies in [een app service
 
 Een app maken in een ASE:
 
-1. Selecteer **een resource** > maken**Web en mobiel** > **Web-app**.
+1. Selecteer **een resource maken** > **Web en mobiel** > **Web-app**.
 
 2. Voer een naam in voor de app. Als u al een App Service plan in een ASE hebt geselecteerd, weerspiegelt de domein naam voor de app de domein naam van de ASE.
 
@@ -105,7 +105,7 @@ Front-end-resources zijn het HTTP/HTTPS-eind punt voor de ASE. Met de standaard 
 
 ## <a name="app-access"></a>App-toegang ##
 
-In een externe ASE wijkt het domein dat wordt gebruikt bij het maken van apps af van de multi tenant-App Service. Het bevat de naam van de ASE. Zie [een app service omgeving maken][MakeExternalASE]voor meer informatie over het maken van een externe ASE. De domein naam in een externe ASE ziet er als volgt uit *.&lt; asename&gt;. p.azurewebsites.net*. Als uw ASE bijvoorbeeld de naam _External-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, bereikt u deze op de volgende url's:
+In een externe ASE wijkt het domein dat wordt gebruikt bij het maken van apps af van de multi tenant-App Service. Het bevat de naam van de ASE. Zie [een app service omgeving maken][MakeExternalASE]voor meer informatie over het maken van een externe ASE. De domein naam in een externe ASE ziet eruit als *.&lt;asename&gt;. p.azurewebsites.net*. Als uw ASE bijvoorbeeld de naam _External-ASE_ heeft en u een app met de naam _CONTOSO_ in die ASE host, bereikt u deze op de volgende url's:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
@@ -122,7 +122,7 @@ In een ILB-ASE bepaalt u het domein tijdens de implementatie. Zie [een ILB ASE m
 Net als bij de multi tenant App Service, in een ASE kunt u het volgende publiceren:
 
 - Webimplementatie.
-- FTP.
+- Via.
 - Continue integratie.
 - Sleep en zet neer in de kudu-console.
 - Een IDE, zoals Visual Studio, eclips of IntelliJ.
@@ -133,7 +133,7 @@ Het belangrijkste verschil met publiceren is ten opzichte van een ILB-ASE. Met e
 
 Op internet gebaseerde CI-systemen, zoals GitHub en Azure DevOps, werken niet met een ILB ASE omdat het publicatie-eind punt niet toegankelijk is via internet. Voor Azure DevOps kunt u dit probleem omzeilen door een zelf-hostende release agent te installeren in het interne netwerk waar de ILB kan worden bereikt. U kunt ook een CI-systeem gebruiken dat gebruikmaakt van een pull-model, zoals Dropbox.
 
-De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. U kunt dit zien in het publicatie Profiel van de app en in de portal-Blade van > de app (in overzichts**kernen** en ook in **Eigenschappen**). 
+De publicatie-eindpunten voor apps in een ILB AS-omgeving maken gebruik van het domein waarmee de ILB AS-omgeving is gemaakt. U kunt dit zien in het publicatie Profiel van de app en in de portal-Blade van de app (in **overzicht** > **Essentials** en ook in **Eigenschappen**). 
 
 ## <a name="pricing"></a>Prijzen ##
 
@@ -179,7 +179,7 @@ Een ASE verwijderen:
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
-[ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
+[ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

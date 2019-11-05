@@ -1,7 +1,7 @@
 ---
-title: Evaluatie van de gegevens
-titleSuffix: Azure Machine Learning Studio
-description: Vier criteria uw gegevens moet voldoen om te worden gereed voor gegevenswetenschap. Deze video heeft concrete voorbeelden om te helpen bij de evaluatie van de algemene gegevens.
+title: Gegevens evaluatie
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Vier criteria waaraan uw gegevens moeten voldoen om de data technologie gereed te maken voor gegevens wetenschap. Deze video bevat concrete voor beelden die u helpen bij de evaluatie van de basis gegevens.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,98 +10,98 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 1d9475b49b3ef8a2e672e1ce505a7d94d19cb14f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 0903bbd5e0000e26472660271bd2fc8970279061
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875326"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493135"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Zijn gegevens gereed voor gegevenswetenschap?
-## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Data wetenschappen voor beginners-serie
-Informatie over het evalueren van uw gegevens om ervoor te zorgen dat deze voldoet aan de basiscriteria als gereed voor gegevenswetenschap.
+## <a name="video-2-data-science-for-beginners-series"></a>Video 2: gegevens wetenschap voor beginners-serie
+Meer informatie over het evalueren van uw gegevens om te controleren of deze voldoet aan de basis criteria die voor data technologie kunnen worden gemaakt.
 
-Als u optimaal te profiteren van de serie, bekijk ze allemaal. [Ga naar de lijst met video 's](#other-videos-in-this-series)
+Bekijk alles om alles uit de serie te halen. [Ga naar de lijst met Video's](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Andere video's in deze serie
-*Gegevenswetenschap voor Beginners* is een korte inleiding over data Science in vijf korte video's.
+## <a name="other-videos-in-this-series"></a>Andere Video's in deze serie
+*Data wetenschappen voor beginners* is een snelle inleiding tot data Science in vijf korte Video's.
 
-* Video 1: [De 5 vragen data Science-antwoorden](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 minuten 14 seconde)*
-* Video 2: Zijn gegevens gereed voor gegevenswetenschap?
+* Video 1: [de 5 vragen van data Science-antwoorden](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 minuten 14 seconden)*
+* Video 2: zijn uw gegevens gereed voor gegevens wetenschap?
 * Video 3: [Stel een vraag die u kunt beantwoorden met gegevens](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sec.)*
-* Video 4: [Een antwoord voors pellen met een eenvoudig model](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sec)*
-* Video 5: [Het werk van anderen naar gegevens wetenschap kopiëren](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 seconde)*
+* Video 4: [een antwoord voors pellen met een eenvoudig model](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 seconden)*
+* Video 5: [werk van anderen naar gegevens wetenschap kopiëren](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sec.)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Verslag Zijn gegevens gereed voor gegevenswetenschap?
-Welkom bij de "Zijn uw gegevens gereed voor gegevenswetenschap?" de tweede video in de reeks *Gegevenswetenschap voor Beginners*.  
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Transcriptie: is uw gegevens gereed voor gegevens wetenschap?
+Welkom bij "zijn uw gegevens gereed voor gegevens wetenschap?" de tweede video in de reeks *gegevens wetenschap voor beginners*.  
 
-Voordat gegevenswetenschap u de antwoorden die u wilt geeft, moet u hieraan een hoge kwaliteit grondstoffen om te werken met. Net als bij het maken van een pizza, hoe beter de onderdelen die u met, hoe beter de uiteindelijke product begint. 
+Voordat de gegevens wetenschap u de gewenste antwoorden kan geven, moet u ervoor zorgen dat er een aantal grond stoffen van hoge kwaliteit is om mee te werken. Net als bij het maken van een pizza, hoe beter de ingrediënten waarmee u begint, het uiteindelijke product. 
 
 ## <a name="criteria-for-data"></a>Criteria voor gegevens
-Er zijn bepaalde onderdelen die samen met inbegrip van moeten worden opgehaald in wetenschappelijke gegevens:
+In data Wetenschappen zijn er bepaalde ingrediënten die samen moeten worden getrokken, waaronder:
 
-* Relevante
+* Dienen
 * Verbonden
-* Nauwkeurige
-* Voldoende zijn voor het werken met
+* Onjuiste
+* Voldoende voor het gebruik van
 
-## <a name="is-your-data-relevant"></a>Uw gegevens is van belang?
-Het eerste onderdeel - moet u de gegevens die relevant is.
+## <a name="is-your-data-relevant"></a>Zijn uw gegevens relevant?
+Dus het eerste ingrediënt: u hebt gegevens nodig die relevant zijn.
 
-![Gegevens worden geëvalueerd relevante gegevens versus irrelevante gegevens:](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
+![Relevante gegevens vergeleken met irrelevante gegevens-gegevens evalueren](./media/data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
-Aan de linkerkant geeft de tabel het niveau van de alcohol bloed van zeven mensen buiten een balk Boston, het gemiddelde Red Sox batting in hun laatste game en de prijs van melk in de dichtstbijzijnde gemak store getest.
+Aan de linkerkant ziet u het bloed alcohol niveau van zeven mensen die buiten een Boston-balk zijn getest, het Rode Sox batting gemiddeld in het laatste spel en de prijs van melk in de dichtstbijzijnde winkel.
 
-Dit zijn alle perfect legitieme gegevens. Het enige probleem is dat deze is niet relevant. Er is geen duidelijke relatie tussen deze getallen. Als iemand u de huidige prijs van melk en het gemiddelde van de batting Red Sox, is er geen enkele manier kan u de inhoud van hun bloed alcohol gokken.
+Dit zijn alle rechtmatige gegevens. De enige fout is dat deze niet relevant is. Er is geen duidelijke relatie tussen deze getallen. Als iemand u de huidige prijs van melk en het Rode Sox batting-gemiddelde heeft gegeven, is er geen manier om de inhoud van de bloed alcohol te raden.
 
-Bekijk nu de tabel aan de rechterkant. Deze keer van elke persoon hoofdtekst voor massaopslag en het aantal drank ze al werd gemeten.  De getallen in elke rij zijn nu relevant zijn voor elkaar. Als ik u de instantie heeft voor massaopslag en het aantal Margaritas ik ben al meer, u kunt een schatting op mijn bloed alcohol inhoud.
+Bekijk nu de tabel aan de rechter kant. Deze keer wordt de hoofd massa van elke persoon gemeten, evenals het aantal drank dat ze hebben gehad.  De getallen in elke rij zijn nu relevant voor elkaar. Als ik mijn lichaams massa en het aantal Margaritas dat ik heb ontvangen, zou je een schatting kunnen maken bij mijn bloed alcohol-inhoud.
 
-## <a name="do-you-have-connected-data"></a>U hebt gegevens verbonden?
-Het volgende onderdeel is met elkaar verbonden gegevens.
+## <a name="do-you-have-connected-data"></a>Hebt u gegevens verbonden?
+Het volgende ingrediënt is verbonden met gegevens.
 
-![Verbonden data vs. niet-verbonden gegevens - criteria voor gegevens, gegevens gereed](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
+![Verbonden gegevens versus gegevens gegevens die niet zijn verbonden, gegevens die klaar zijn](./media/data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
-Hier zijn enkele relevante gegevens op de kwaliteit van hamburgers: grill temperatuur, patty gewicht en classificatie in de lokale voedselvoorzieningsketen magazine. Maar u ziet de hiaten in de tabel aan de linkerkant.
+Hier volgt een aantal relevante gegevens over de kwaliteit van hamburgers: rooster temperatuur, Patty-gewicht en classificatie in het lokale voedsel-Magazine. U ziet echter wel de hiaten in de tabel aan de linkerkant.
 
-Sommige waarden ontbreken in de meeste gegevenssets. Het is gebruikelijk dat gaten als volgt en manieren om ze te omzeilen. Maar als er te veel ontbreekt, uw gegevens begint zodat het eruitziet als Zwitserse kaas.
+Voor de meeste gegevens sets ontbreken enkele waarden. Het is gebruikelijk om deze te laten werken en er zijn manieren om deze te omzeilen. Maar als er te veel ontbreekt, worden uw gegevens weer gegeven als Zwitserse kaas.
 
-Als u de tabel aan de linkerkant bekijkt, is er dus veel gegevens ontbreken, is het moeilijk te komen met welke aard dan ook van relatie tussen rooster temperatuur- en patty gewicht. In dit voorbeeld ziet niet-verbonden gegevens.
+Als u de tabel aan de linkerkant bekijkt, is er zoveel ontbrekende gegevens, is het moeilijk om een soort relatie te hebben tussen de rooster temperatuur en het Patty-gewicht. In dit voor beeld ziet u gegevens die niet zijn verbonden.
 
-De tabel aan de rechterkant, maar dan wel vol is en is voltooid - een voorbeeld van met elkaar verbonden gegevens.
+De tabel aan de rechter kant, maar is vol en volledig, een voor beeld van gekoppelde gegevens.
 
-## <a name="is-your-data-accurate"></a>De gegevens nauwkeurig is?
-Het volgende onderdeel van is nauwkeurigheid. Hier vindt u vier doelen bereiken.
+## <a name="is-your-data-accurate"></a>Zijn uw gegevens nauw keurig?
+Het volgende ingrediënt is nauw keurig. Hier vindt u vier doelen die u kunt aanraken.
 
-![Nauwkeurige data vs. waardoor onnauwkeurige gegevens - criteria voor gegevens](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
+![Nauw keurige gegevens versus onjuiste gegevens criteria](./media/data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
-Kijken naar het doel in de rechterbovenhoek. Er is een nauwe groepering rechts rond de ogen stieren. Dat is natuurlijk nauwkeurige. Oddly, in de taal van wetenschappelijke gegevens, prestaties aan de rechterkant van het doel eronder wordt ook beschouwd als nauwkeurige.
+Bekijk het doel in de rechter bovenhoek. Er is een nauw keurig deel van de groep over het stieren-oog. Dat is natuurlijk nauw keurig. Oddly, in de taal van de gegevens wetenschap, wordt de prestaties van het doel recht hieronder ook als nauw keurig beschouwd.
 
-Als u uit het midden van deze pijlen klikt toegewezen, ziet u dat het zeer dicht bij de ogen stieren is. De pijlen zijn verspreid rondom het doel, zodat deze worden beschouwd als onnauwkeurige, maar ze zijn gecentreerd rond de ogen stieren, zodat deze worden beschouwd als nauwkeurige.
+Als u het midden van deze pijlen hebt toegewezen, ziet u dat deze zeer dicht bij het oog op de stieren wordt weer gegeven. De pijlen zijn alle rond het doel verdeeld, waardoor ze niet nauw keurig worden beschouwd, maar ze rond het blote oog worden gecentreerd, zodat ze nauw keurig worden beschouwd.
 
-Bekijk nu het doel van de linkerbovenhoek. De pijlen Druk hier heel dicht bij elkaar, een nauwe groepering. Ze nauwkeurig, maar ze zijn onjuist omdat het center manier uit het oog stieren is. De pijlen in de doel-linksonder zijn onjuist en onnauwkeurig. Deze archer moet meer praktijk.
+Bekijk nu het doel linksboven. Hier worden de pijlen zeer dicht bij elkaar geraken, een nauw keurig groeperen. Ze zijn nauw keurig, maar ze zijn niet nauw keurig, omdat het midden het blote-oog is. De pijlen in het rechtsonder-doel zijn zowel onjuist als onnauwkeurig. Deze Archer vereist meer prak tijken.
 
-## <a name="do-you-have-enough-data-to-work-with"></a>Hebt u voldoende gegevens om te werken met?
-Ten slotte is onderdeel van #4 voldoende gegevens.
+## <a name="do-you-have-enough-data-to-work-with"></a>Hebt u voldoende gegevens om mee te werken?
+Ten slotte is ingrediënt #4 voldoende gegevens.
 
-![Hebt u voldoende gegevens voor analyse? Evaluatie van de gegevens](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
+![Hebt u voldoende gegevens voor analyse? Gegevens evaluatie](./media/data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
-Denk aan elk gegevenspunt in de tabel als een lijn kwast in een schilderij. Hebt u slechts een paar van deze, het afbeelden mag fuzzy - is het moeilijk om te vertellen wat dat inhoudt.
+Denk aan elk gegevens punt in de tabel als een penseel streek in een tekening. Als u slechts een paar van deze hebt, kan het zijn dat u precies weet wat het is.
 
-Als u bepaalde meer kwast lijnen toevoegt, vervolgens uw afbeelden wordt gestart om op te halen iets sterkere.
+Als u nog meer penseel streken toevoegt, begint uw tekenen met een beetje scherper.
 
-Wanneer u nauwelijks voldoende lijnen hebt, ziet u alleen voldoende zijn voor sommige brede beslissingen te nemen. Is het ergens die ik wellicht wilt u? Neem helder, dat ziet eruit als schoon water: Ja, dat is waar ik ben nu op vakantie.
+Wanneer u net genoeg streken hebt, ziet u alleen genoeg voor het maken van een groot aantal beslissingen. Kan ik nog een bezoek brengen? Het lijkt alsof het goed is, dat ziet eruit als schoon water – Ja, dat is waar ik op vakantie ga.
 
-Als u meer gegevens toevoegt, wordt de afbeelding wordt duidelijker en u meer gedetailleerde beslissingen kunt nemen. U kunt nu de drie hotels op de linker bank kijken. U kunt u ziet de architecturale functies van het certificaat in de voorgrond is geplaatst. U kunt ook selecteren om te blijven op de derde floor vanwege de weergave.
+Wanneer u meer gegevens toevoegt, wordt de afbeelding duidelijker en kunt u gedetailleerde beslissingen nemen. Nu kunt u de drie hotels bekijken aan de linkerkant. U kunt de architectuur functies van de functie op de voor grond opmerken. U kunt zelfs kiezen om op de derde verdieping te blijven vanwege de weer gave.
 
-Met gegevens die relevant zijn, verbonden, nauwkeurige en genoeg, u hebt alle onderdelen nodig voor sommige gegevenswetenschap van hoge kwaliteit.
+Met gegevens die relevant, verbonden, nauw keurig en voldoende zijn, hebt u alle benodigde ingrediënten nodig voor een hoogwaardige gegevens wetenschap.
 
-Zorg ervoor dat u de andere vier Video's in *Data Science voor beginners* van Microsoft Azure machine learning Studio bekijkt.
+Zorg ervoor dat u de andere vier Video's in *Data Science voor beginners* van Microsoft Azure machine learning Studio (klassiek) bekijkt.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Probeer een eerste gegevenswetenschapexperiment met Machine Learning Studio](create-experiment.md)
-* [Maak kennis met Machine Learning op Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Probeer een eerste experiment van data Science met Machine Learning Studio (klassiek)](create-experiment.md)
+* [Krijg een inleiding tot Machine Learning op Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

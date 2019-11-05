@@ -1,5 +1,5 @@
 ---
-title: "Zelfstudie: Gegevens laden en query's uitvoeren op Apache Spark cluster in azure HDInsight"
+title: "Zelf studie: gegevens laden & query's uitvoeren met Apache Spark-Azure HDInsight"
 description: "Zelf studie: informatie over het laden van gegevens en het uitvoeren van interactieve query's op Spark-clusters in azure HDInsight."
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/03/2019
-ms.openlocfilehash: 3d6b7cf67faa94d0947d16cc79d0d5b839de7acb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027786"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494490"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Zelfstudie: Gegevens laden en query's uitvoeren in een Apache Spark-cluster in Azure HDInsight
 
@@ -36,7 +36,7 @@ Jupyter Notebook is een interactieve notitieblokomgeving die ondersteuning biedt
 
 2. Selecteer op de webpagina Jupyter **nieuwe** > **PySpark** om een notitie blok te maken.
 
-   ![Jupyter Notebook maken om de interactieve Spark SQL-query uit te voeren](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook maken om de interactieve Apache Spark SQL-query uit te voeren")
+   ![Een Jupyter Notebook maken om de interactieve Spark SQL-query uit te voeren](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Een Jupyter Notebook maken om de interactieve Spark SQL-query uit te voeren")
 
    Er wordt een nieuw notitie blok gemaakt en geopend met de naam Naamloos (`Untitled.ipynb`).
 
@@ -47,7 +47,7 @@ Jupyter Notebook is een interactieve notitieblokomgeving die ondersteuning biedt
 
 Toepassingen kunnen dataframes rechtstreeks maken op basis van bestanden of mappen in de externe opslag, zoals Azure Storage of Azure Data Lake Storage; uit een Hive-tabel; of van andere gegevens bronnen die door Spark worden ondersteund, zoals Cosmos DB, Azure SQL DB, DW, enzovoort. In de volgende schermafbeelding ziet u een momentopname van het bestand HVAC.csv dat wordt gebruikt in deze zelfstudie. Het CSV-bestand wordt geleverd met alle HDInsight Spark-clusters. De gegevens hebben betrekking op de schommelingen in temperatuur van sommige gebouwen.
 
-![Momentopname van gegevens voor interactieve Spark SQL-query](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Momentopname van gegevens voor interactieve Spark SQL-query")
+![Moment opname van gegevens voor de interactieve Spark SQL-query](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Moment opname van gegevens voor de interactieve Spark SQL-query")
 
 1. Plak de volgende code in een lege cel van het Jupyter-notitie blok en druk op **SHIFT + ENTER** om de code uit te voeren. Met de code importeert u de typen die voor dit scenario zijn vereist:
 
@@ -81,11 +81,11 @@ Zodra de tabel is gemaakt, kunt u een interactieve query uitvoeren op de gegeven
 
    De uitvoer wordt weergegeven in een tabel.
 
-     ![Tabeluitvoer van resultaat van interactieve Spark-query](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Tabeluitvoer van resultaat van interactieve Spark-query")
+     ![Tabel uitvoer van resultaat van interactieve Spark-query](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Tabel uitvoer van resultaat van interactieve Spark-query")
 
 2. U kunt de resultaten ook in andere visualisaties bekijken. Als u een vlakdiagram wilt zien voor dezelfde uitvoer, selecteert u **Area** en stelt u de andere waarden in zoals deze worden weergegeven.
 
-    ![Gebiedsgrafiek van resultaat van interactieve Spark-query](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Gebiedsgrafiek van resultaat van interactieve Spark-query")
+    ![Gebieds grafiek van resultaat van interactieve Spark-query](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Gebieds grafiek van resultaat van interactieve Spark-query")
 
 3. Navigeer in de menu balk van de notitie blok naar **bestand** > **opslaan en controle punt**.
 

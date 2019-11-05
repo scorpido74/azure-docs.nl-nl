@@ -3,20 +3,20 @@ title: Meer informatie over Azure Policy voor de Azure Kubernetes-service
 description: Meer informatie over hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters op de Azure Kubernetes-service.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/24/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176314"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480903"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor de Azure Kubernetes-service
 
 Azure Policy integreert met de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md) (AKS) om op schaal afdwingingen en beveiligingen op uw clusters op een gecentraliseerde, consistente manier toe te passen.
-Door het gebruik van [gate keeper](https://github.com/open-policy-agent/gatekeeper), een _toegangs controller Webhook_ voor [Open Policy Agent](https://www.openpolicyagent.org/) (opa) uit te breiden, kunt Azure Policy de nalevings status van uw Azure-resources en AKS-clusters op één plek beheren en rapporteren.
+Door gebruik te maken van [gate keeper](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated) v2, een _toegangs controller Webhook_ voor [Open Policy Agent](https://www.openpolicyagent.org/) (opa), maakt Azure Policy het mogelijk om de nalevings status van uw Azure-resources en AKS-clusters op één plek te beheren en te rapporteren.
 
 > [!NOTE]
 > Azure Policy voor AKS is een beperkte preview-versie en ondersteunt alleen ingebouwde beleids definities.
@@ -107,7 +107,7 @@ Voordat u de invoeg toepassing in uw AKS-cluster installeert, moet de uitbrei di
    az aks list
    ```
 
-1. Installeer versie _0.4.0_ van de Azure cli preview-uitbrei ding voor AKS, `aks-preview`:
+1. Installeer versie _0.4.0_ van de Azure cli preview-extensie voor AKS, `aks-preview`:
 
    ```azurecli-interactive
    # Log in first with az login if you're not using Cloud Shell
@@ -120,7 +120,7 @@ Voordat u de invoeg toepassing in uw AKS-cluster installeert, moet de uitbrei di
    ```
 
    > [!NOTE]
-   > Als u de uitbrei ding _voor AKS-preview_ eerder hebt geïnstalleerd, installeert u updates met behulp van de opdracht `az extension update --name aks-preview`.
+   > Als u de uitbrei ding _voor AKS-preview_ eerder hebt geïnstalleerd, installeert u updates met behulp van de `az extension update --name aks-preview` opdracht.
 
 #### <a name="installation-steps"></a>Installatie stappen
 
@@ -143,7 +143,7 @@ Zodra de vereisten zijn voltooid, installeert u de Azure Policy-invoeg toepassin
      > [!NOTE]
      > Als de knop **invoeg toepassing inschakelen** grijs wordt weer gegeven, is het abonnement nog niet toegevoegd aan de preview-versie. Zie [opt-in voor een voor beeld](#opt-in-for-preview) voor de vereiste stappen.
 
-- Azure CLI
+- Azure-CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -162,7 +162,7 @@ Elke 5 minuten wordt de invoeg toepassing aangeroepen voor een volledige scan va
 
 ## <a name="policy-language"></a>Beleids taal
 
-De Azure Policy taal structuur voor het beheren van AKS volgt die van bestaande beleids regels. Het effect _EnforceRegoPolicy_ wordt gebruikt voor het beheren van uw AKS-clusters en bevat _gedetailleerde_ eigenschappen die specifiek zijn voor het werken met opa en gate keeper. Zie het effect [EnforceRegoPolicy](effects.md#enforceregopolicy) voor meer informatie en voor beelden.
+De Azure Policy taal structuur voor het beheren van AKS volgt die van bestaande beleids regels. Het effect _EnforceRegoPolicy_ wordt gebruikt om uw AKS-clusters te beheren en bevat _gedetailleerde_ eigenschappen die specifiek zijn voor het werken met opa en gate keeper v2. Zie het effect [EnforceRegoPolicy](effects.md#enforceregopolicy) voor meer informatie en voor beelden.
 
 Als onderdeel van de eigenschap _Details. beleid_ in de beleids definitie geeft Azure Policy de URI van een Rego-beleid door aan de invoeg toepassing. Rego is de taal die OPA en gate keeper ondersteunen voor het valideren of mutate van een aanvraag naar het Kubernetes-cluster. Dankzij de ondersteuning van een bestaande standaard voor Kubernetes-beheer, maakt Azure Policy het mogelijk om bestaande regels opnieuw te gebruiken en deze te koppelen aan Azure Policy voor een uniforme rapportage van de naleving van de Cloud. Zie [Wat is Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)voor meer informatie.
 
@@ -182,6 +182,9 @@ Voer de volgende stappen uit om het ingebouwde beleid voor het beheren van AKS m
 > Bij het toewijzen van de Azure Policy voor AKS definitie moet het **bereik** de AKS-cluster resource bevatten.
 
 U kunt ook de Snelstartgids [een beleid toewijzen-Portal](../assign-policy-portal.md) gebruiken om een AKS-beleid te zoeken en toe te wijzen. Zoek in plaats van het voor beeld ' vm's controleren ' naar een Kubernetes-beleids definitie.
+
+> [!IMPORTANT]
+> Ingebouwde beleids regels in de categorie **Kubernetes-service** zijn alleen bedoeld voor gebruik met AKS.
 
 ## <a name="logging"></a>Logboekregistratie
 
@@ -220,13 +223,36 @@ Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, geb
 
      ![De Azure Policy voor de invoeg toepassing AKS uitschakelen](../media/rego-for-aks/disable-policy-add-on.png)
 
-- Azure CLI
+- Azure-CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
 
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
+
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Diagnostische gegevens die door Azure Policy invoeg toepassing zijn verzameld
+
+De Azure Policy-invoeg toepassing voor Kubernetes verzamelt beperkte diagnostische gegevens van het cluster. Deze diagnostische gegevens zijn vitale technische gegevens met betrekking tot software en prestaties. Deze wordt op de volgende manieren gebruikt:
+
+- Azure Policy invoeg toepassing up-to-date houden
+- Bewaar Azure Policy extra beveiliging, betrouw bare, krachtige prestaties
+- De statistische analyse van het gebruik van de invoeg toepassing verbeteren Azure Policy
+
+De gegevens die door de invoeg toepassing worden verzameld, zijn geen persoonlijke gegevens. De volgende details worden momenteel verzameld:
+
+- Azure Policy-Agent versie van invoeg toepassing
+- Clustertype
+- Cluster regio
+- Cluster resource groep
+- Cluster bron-ID
+- Abonnements-ID van cluster
+- Cluster besturingssysteem (voor beeld: Linux)
+- Cluster plaats (voor beeld: Seattle)
+- Status of provincie van cluster (voor beeld: Washington)
+- Land of regio van het cluster (voor beeld: Verenigde Staten)
+- Uitzonde ringen/fouten aangetroffen door Azure Policy-invoeg toepassing tijdens de installatie van de agent op beleids evaluatie
+- Het aantal gate keeper-beleids regels dat niet is geïnstalleerd door Azure Policy invoeg toepassing
 
 ## <a name="next-steps"></a>Volgende stappen
 

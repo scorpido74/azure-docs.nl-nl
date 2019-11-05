@@ -4,31 +4,31 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: b84b503fad951b5a6998bf0b06d466ce41031aa8
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 1f08067768f2d4a0a0c2ab31b3db1c9f2c9e1521
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72526739"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476920"
 ---
-| Bron | Gratis | Gedeeld | Basic | Standard | Premium (v2) | Isolated </th> |
+| Resource | Gratis | Gedeeld | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobiele of API-apps](https://azure.microsoft.com/services/app-service/) per [Azure app service abonnement](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup>|
 | [App Service-plan](../articles/app-service/overview-hosting-plans.md) |10 per regio |10 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep |100 per resource groep|
 | Type Compute-instantie |Gedeeld |Gedeeld |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup> |Toegewezen<sup>3</sup></p> |Toegewezen<sup>3</sup>|
 | [Uitschalen](../articles/app-service/manage-scale-up.md) (maximum aantal instanties) |1 gedeeld |1 gedeeld |3 toegewezen<sup>3</sup> |10 toegewezen<sup>3</sup> |20 toegewezen<sup>3</sup>|100 toegewezen<sup>4</sup>|
 | Opslag<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
-| CPU-tijd (5 minuten)<sup>6</sup> |3 minuten |3 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a>|
-| CPU-tijd (dag)<sup>6</sup> |60 minuten |240 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/) </a> |
-| Geheugen (1 uur) |1\.024 MB per App Service-abonnement |1\.024 MB per app |N/A |N/A |N/A |N/A |
+| CPU-tijd (5 minuten)<sup>6</sup> |3 minuten |3 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a>|
+| CPU-tijd (dag)<sup>6</sup> |60 minuten |240 minuten |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |Onbeperkt, betalen tegen standaard [tarieven](https://azure.microsoft.com/pricing/details/app-service/)</a> |
+| Geheugen (1 uur) |1\.024 MB per App Service-abonnement |1\.024 MB per app |N.v.t. |N.v.t. |N.v.t. |N.v.t. |
 | Bandbreedte |165 MB |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |Onbeperkte, [tarieven voor gegevens overdracht](https://azure.microsoft.com/pricing/details/data-transfers/) zijn van toepassing |
 | Toepassingsarchitectuur |32-bits |32-bits |32-bits/64-bits |32-bits/64-bits |32-bits/64-bits |32-bits/64-bits |
 | Websockets per exemplaar<sup>7</sup> |5 |35 |350 |Onbeperkt |Onbeperkt |Onbeperkt |
 | IP-verbindingen | 600 | 600 | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | Is afhankelijk van de grootte van het exemplaar<sup>8</sup> | 64.000 |
 | Gelijktijdige [verbindingen van fout opsporing](../articles/app-service/troubleshoot-dotnet-visual-studio.md) per toepassing |1 |1 |1 |5 |5 |5 |
 | App Service certificaten per abonnement<sup>9</sup>| Niet ondersteund | Niet ondersteund |10 |10 |10 |10 |
-| @No__t_0 voor aangepaste domeinen per app |0 (alleen azurewebsites.net subdomein)|500 |500 |500 |500 |500 |
-| SSL- [ondersteuning](../articles/app-service/app-service-web-tutorial-custom-ssl.md) voor aangepaste domeinen |Niet ondersteund, Joker certificaat voor *. azurewebsites.net is standaard beschikbaar|Niet ondersteund, Joker certificaat voor *. azurewebsites.net is standaard beschikbaar|Onbeperkte SNI SSL verbindingen |Onbeperkt aantal SNI SSL en 1 IP SSL verbindingen |Onbeperkt aantal SNI SSL en 1 IP SSL verbindingen | Onbeperkt aantal SNI SSL en 1 IP SSL verbindingen|
+| </a> voor aangepaste domeinen per app |0 (alleen azurewebsites.net subdomein)|500 |500 |500 |500 |500 |
+| SSL- [ondersteuning](../articles/app-service/configure-ssl-certificate.md) voor aangepaste domeinen |Niet ondersteund, Joker certificaat voor *. azurewebsites.net is standaard beschikbaar|Niet ondersteund, Joker certificaat voor *. azurewebsites.net is standaard beschikbaar|Onbeperkte SNI SSL verbindingen |Onbeperkt aantal SNI SSL en 1 IP SSL verbindingen |Onbeperkt aantal SNI SSL en 1 IP SSL verbindingen | Onbeperkt aantal SNI SSL en 1 IP SSL verbindingen|
 | Hybride verbindingen per plan | | | 5 | 25 | 200 | 200 |
 | Geïntegreerde load balancer | |X |X |X |X |X<sup>10</sup> |
 | [Altijd aan](../articles/app-service/configure-common.md) | | |X |X |X |X |
@@ -38,7 +38,7 @@ ms.locfileid: "72526739"
 | Ondersteuning voor [Azure scheduler](https://azure.microsoft.com/services/scheduler/) | |X |X |X |X |X |
 | [Eindpuntbewaking](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [Staging-sleuven](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
-| SLA | |  |99,95%|99,95%|99,95%|99,95%|  
+| SLA | |  |99.95%|99.95%|99.95%|99.95%|  
 
 <sup>1</sup> Apps en opslag quota zijn per App Service abonnement, tenzij anders vermeld.  
 <sup>2</sup> Het werkelijke aantal apps dat u op deze computers kunt hosten, is afhankelijk van de activiteit van de apps, de grootte van de computer instanties en het bijbehorende resource gebruik.  

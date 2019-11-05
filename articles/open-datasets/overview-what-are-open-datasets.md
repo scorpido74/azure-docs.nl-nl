@@ -1,22 +1,22 @@
 ---
 title: Wat zijn open gegevens sets? Gecuratore open bare gegevens sets
-titleSuffix: Azure Open Datasets (preview)
-description: Meer informatie over Azure open gegevens sets (preview), gegevens sets met curator van het open bare domein die klaar zijn voor gebruik in machine learning-en analyse oplossingen. Data sets bevatten open bare gegevens zoals weer, telling, feest dagen en locatie om u te helpen bij het verrijken van voorspellende oplossingen.
+titleSuffix: Azure Open Datasets
+description: Meer informatie over Azure open gegevens sets, gegevens sets van het open bare domein, zoals weer, telling, feest dagen en locatie naar verrijkende voorspellende oplossingen.
 ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70213594"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496589"
 ---
-# <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Wat zijn Azure open gegevens sets (preview) en hoe kunt u deze gebruiken?
+# <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Wat zijn Azure open gegevens sets en hoe kunt u deze gebruiken?
 
-[Azure open gegevens sets](https://azure.microsoft.com/services/open-datasets/) zijn alle open bare gegevens sets die u kunt gebruiken om scenario's met specifieke functies toe te voegen aan Machine Learning oplossingen voor nauw keurigere modellen. Open gegevens sets bevinden zich in de Cloud op Microsoft Azure en zijn direct beschikbaar voor Azure Databricks, Machine Learning service en Machine Learning Studio. U kunt de gegevens sets ook openen via Api's en deze gebruiken in andere producten, zoals Power BI en Azure Data Factory.
+[Azure open gegevens sets](https://azure.microsoft.com/services/open-datasets/) zijn alle open bare gegevens sets die u kunt gebruiken om scenario's met specifieke functies toe te voegen aan Machine Learning oplossingen voor nauw keurigere modellen. Open gegevens sets bevinden zich in de Cloud op Microsoft Azure en zijn geïntegreerd in Azure Machine Learning en kunnen direct beschikbaar worden gesteld voor Azure Databricks en Machine Learning Studio (klassiek). U kunt de gegevens sets ook openen via Api's en deze gebruiken in andere producten, zoals Power BI en Azure Data Factory.
 
 Gegevens sets bevatten informatie over openbaar domein voor weer, telling, feest dagen, open bare veiligheid en locatie die u helpen bij het trainen van machine learning modellen en verrijkende voorspellende oplossingen. U kunt ook uw open bare gegevens sets delen in azure open-gegevens sets. 
 
@@ -33,21 +33,21 @@ Hieronder vindt u voor beelden van gegevens sets die beschikbaar zijn.
 
 ### <a name="weather-data"></a>Weer gegevens
  
-|Gegevensset         | Notebooks     | Description                                    |
+|Gegevensset         | Notebooks     | Beschrijving                                    |
 |----------------|---------------|------------------------------------------------|
 |[NOAA Integrated Surface data (ISD)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/?tab=data-access#AzureDatabricks) | Wereld wijd per uur weer gegevens van NOAA met de beste ruimtelijke dekking in Noord-Amerika, Europa, Australië en delen van Azië. Dagelijks bijgewerkt. |
 |[NOAA Global-prognose systeem (GFS)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/noaa-global-forecast-system/?tab=data-access#AzureDatabricks) | 15 dagen van de Amerikaanse weers verwachting van de gegevens van NOAA. Dagelijks bijgewerkt. |
 
 ### <a name="calendar-data"></a>Agenda gegevens
 
-|Gegevensset         | Notebooks     | Description                                    |
+|Gegevensset         | Notebooks     | Beschrijving                                    |
 |----------------|---------------|------------------------------------------------|
 |[Open bare feest dagen](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) | [Azure Notebooks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureNotebooks) <br> [Azure Databricks](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/?tab=data-access#AzureDatabricks) | Wereld wijde gegevens over de open bare feestdag, met betrekking tot 41 landen of regio's van 1970 tot 2099. Inclusief land en of de meeste mensen een betaalde time-out hebben. |
 
 ## <a name="access-to-datasets"></a>Toegang tot gegevens sets  
 Met een Azure-account kunt u toegang krijgen tot open gegevens sets met behulp van code of via de Azure-service-interface. De gegevens worden samen met Azure Cloud Compute-resources gebruikt voor gebruik in uw machine learning-oplossing.  
 
-Gegevens sets openen biedt Azure Notebooks en Azure Databricks notitie blokken die u kunt gebruiken om verbinding te maken met Azure Machine Learning service en Azure Databricks. Gegevens sets kunnen ook worden geopend via een python-SDK. 
+Open gegevens sets zijn beschikbaar via de Azure Machine Learning-gebruikers interface en-SDK. Gegevens sets openen biedt ook Azure Notebooks en Azure Databricks notitie blokken die u kunt gebruiken om verbinding te maken met Azure Machine Learning en Azure Databricks. Gegevens sets kunnen ook worden geopend via een python-SDK. 
 
 U hebt echter geen Azure-account nodig om toegang te krijgen tot open gegevens sets; u kunt ze openen vanuit elke python-omgeving met of zonder Spark.
 
@@ -57,5 +57,5 @@ Als u de gewenste gegevens niet kunt vinden, kunt u een e-mail sturen naar een [
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Voorbeeld notitieblok](samples.md)
-* [Zelfstudie: Regressie modellen met NY-taxi gegevens](tutorial-opendatasets-automl.md)
+* [Zelf studie: regressie modellen met NY-taxi gegevens](tutorial-opendatasets-automl.md)
 * [Python-SDK voor open gegevens sets](/python/api/azureml-opendatasets/?view=azure-ml-py)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 44e9e7220594cc84c78e2f540cce8b595643ac56
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 999e545d49b11eef84d1a03401eb28cde36e82af
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927474"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991371"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
 
@@ -86,7 +86,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Britse Maagdeneilanden                              |                 |                |              |      ✓     |          ✓         |
 | Amerikaanse Maagden eilanden                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
-## <a name="asia-pacific"></a>Azië-Pacific
+## <a name="asia-pacific"></a>Azië en Stille Oceaan
 
 | Land/regio                                      | Adres punten |Huis nummers | Straat niveau | Niveau van de stad | Interessante punten |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
@@ -127,7 +127,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Pakistan                                            |                 |                |              |      ✓     |          ✓         |
 | Palau                                               |                 |                |              |      ✓     |          ✓         |
 | Papoea-Nieuw-Guinea                                    |                 |                |              |      ✓     |          ✓         |
-| Filippijnen                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Filipijnen                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Pitcairneilanden                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
 | Senkakuman eilanden                                     |        ✓        |                |              |      ✓     |          ✓         |
@@ -157,7 +157,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | België                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Bosnië-Herzegovina                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Bulgarije                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Wit-Rusland                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Belarus                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kroatië                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Cyprus                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Tsjechië                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -289,7 +289,7 @@ De mogelijkheid tot Geocode in een land/regio is afhankelijk van de dekking van 
 | Tanzania                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunesië                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Uganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
+| Oeganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Verenigde Arabische Emiraten                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jemen                                               |                 |                |              |      ✓     |          ✓         |
 | Zambia                                              |                 |                |       ✓      |      ✓     |          ✓         |

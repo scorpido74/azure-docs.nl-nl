@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985327"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521012"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Failover van een opslag account initiëren (preview-versie)
 
@@ -32,19 +32,19 @@ In dit artikel wordt beschreven hoe u een failover voor een account initieert vo
 Voordat u een account-failover kunt uitvoeren op uw opslag account, moet u ervoor zorgen dat u de volgende stappen hebt uitgevoerd:
 
 - Meld u aan voor de preview-versie van het account-failover. Zie [over de preview-versie](storage-disaster-recovery-guidance.md#about-the-preview)voor meer informatie over het registreren van.
-- Zorg ervoor dat uw opslag account is geconfigureerd voor het gebruik van geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Zie [geo-redundante opslag (GRS) voor meer informatie over geografisch redundante opslag: Kruis regionale replicatie voor Azure Storage](storage-redundancy-grs.md). 
+- Zorg ervoor dat uw opslag account is geconfigureerd voor het gebruik van geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS). Zie [geo-redundante opslag (GRS): cross-Regional Replication for Azure Storage](storage-redundancy-grs.md)voor meer informatie over geografisch redundante opslag. 
 
 ## <a name="important-implications-of-account-failover"></a>Belang rijke implicaties van account-failover
 
 Wanneer u een failover voor een account initieert voor uw opslag account, worden de DNS-records voor het secundaire eind punt bijgewerkt zodat het secundaire eind punt het primaire eind punt wordt. Zorg ervoor dat u de mogelijke gevolgen voor uw opslag account begrijpt voordat u een failover initieert.
 
-Als u de omvang van gegevens verlies wilt schatten voordat u een failover initieert, controleert u de **laatste synchronisatie tijd** - `Get-AzStorageAccount` eigenschap met de Power shell- `-IncludeGeoReplicationStats` cmdlet en neemt u de para meter op. Controleer vervolgens de `GeoReplicationStats` eigenschap voor uw account. 
+Als u de omvang van gegevens verlies wilt schatten voordat u een failover initieert, controleert u de eigenschap van de **laatste synchronisatie tijd** met de `Get-AzStorageAccount` Power shell-cmdlet en neemt u de para meter `-IncludeGeoReplicationStats` op. Controleer vervolgens de eigenschap `GeoReplicationStats` voor uw account. 
 
 Na de failover wordt uw type opslag account automatisch geconverteerd naar lokaal redundante opslag (LRS) in de nieuwe primaire regio. U kunt geografisch redundante opslag (GRS) of geografisch redundante opslag met lees toegang (RA-GRS) opnieuw inschakelen voor het account. Houd er rekening mee dat het converteren van LRS naar GRS of RA-GRS een extra kosten in beslag brengt. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie. 
 
 Nadat u GRS voor uw opslag account opnieuw hebt ingeschakeld, begint micro soft met het repliceren van de gegevens in uw account naar de nieuwe secundaire regio. De replicatie tijd is afhankelijk van de hoeveelheid gegevens die wordt gerepliceerd.  
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Voer de volgende stappen uit om een account-failover te initiëren vanuit de Azure Portal:
 
@@ -60,14 +60,14 @@ Voer de volgende stappen uit om een account-failover te initiëren vanuit de Azu
 
     ![Scherm opname van het bevestigings dialoogvenster voor een account-failover](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Als u Power shell wilt gebruiken om een account-failover te initiëren, moet u eerst de 6.0.1-Preview-module installeren. Volg deze stappen om de module te installeren:
 
 1. Eerdere installaties van Azure PowerShell verwijderen:
 
     - Verwijder eerdere installaties van Azure PowerShell van Windows met de instelling **Apps & onderdelen** onder **instellingen**.
-    - Verwijder alle **Azure** -modules `%Program Files%\WindowsPowerShell\Modules`uit.
+    - Verwijder alle **Azure** -modules van `%Program Files%\WindowsPowerShell\Modules`.
 
 1. Zorg ervoor dat de meest recente versie van PowerShellGet is geïnstalleerd. Open een Windows Power shell-venster en voer de volgende opdracht uit om de meest recente versie te installeren:
 
@@ -97,7 +97,7 @@ Voer de volgende opdracht uit om een account-failover te initiëren vanuit Power
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u Azure CLI wilt gebruiken om een account-failover te initiëren, voert u de volgende opdrachten uit:
 
@@ -106,8 +106,10 @@ az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
 
+---
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Herstel na nood gevallen en failover van accounts (preview) in Azure Storage](storage-disaster-recovery-guidance.md)
 - [Maximaal beschikbare toepassingen met RA-GRS ontwerpen](storage-designing-ha-apps-with-ragrs.md)
-- [Zelfstudie: Een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 
+- [Zelf studie: een Maxi maal beschik bare toepassing bouwen met Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 

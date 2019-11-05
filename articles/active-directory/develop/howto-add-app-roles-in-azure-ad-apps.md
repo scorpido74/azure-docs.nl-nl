@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87660c6ef8266d3ebfbad1b7a8a7cb98b936e9c6
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803353"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473775"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -39,13 +39,13 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 
 ### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer uw account in de bovenste balk en **Schakel vervolgens over naar de map**.
 1. Zodra het deel venster voor het **adres lijst** en-abonnement wordt geopend, kiest u de Active Directory Tenant waar u uw toepassing wilt registreren in de lijst **Favorieten** of **alle directory's** .
 1. Selecteer **alle services** in het Linkernavigatie-navigatie venster en kies **Azure Active Directory**.
-1. Selecteer in het deel venster Azure Active Directory **app-registraties** om een lijst met al uw toepassingen weer te geven.
+1. Selecteer in het deel venster Azure Active Directory **app-registraties (verouderd)** om een lijst met al uw toepassingen weer te geven.
 
-     Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u de diverse filters boven aan de lijst **app-registraties** om de lijst te beperken of omlaag te schuiven in de lijst om uw toepassing te vinden.
+     Als u de toepassing die u wilt weer geven hier niet ziet, gebruikt u de diverse filters boven aan de lijst **app-registraties (verouderd)** om de lijst te beperken of omlaag te schuiven in de lijst om uw toepassing te vinden.
 
 1. Selecteer de toepassing waarvoor u de app-rollen wilt definiëren.
 1. Selecteer in de Blade voor uw toepassing **manifest**.

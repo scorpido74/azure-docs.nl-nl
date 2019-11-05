@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474353"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aanmelding zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)
 
@@ -31,7 +31,7 @@ In plaats van een prompt weer te geven voor een wacht woord na Microsoft Authent
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Multi-factor Authentication van Azure, waarbij push meldingen zijn toegestaan als verificatie methode 
+- Azure Multi-Factor Authentication, waarbij push meldingen zijn toegestaan als verificatie methode 
 - Nieuwste versie van Microsoft Authenticator geïnstalleerd op apparaten met iOS 8,0 of hoger, of Android 6,0 of hoger.
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Verificatie methoden met wacht woord-aanmeld authenticatie inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
-1. Blader naar **Azure Active Directory** > verificatie methode beleid voor verificatie**methoden** >  **(preview-versie)**
+1. Bladeren naar **Azure AD-beveiligings** > **verificatie methoden** > **verificatie methode beleid (preview-versie)**
 1. Onder **Aanmelden met een wacht woord voor eenmalige aanmelding**kiest u de volgende opties
    1. **Inschakelen** -ja of Nee
    1. **Doel** -alle gebruikers of Selecteer gebruikers
@@ -78,7 +78,7 @@ Nadat u uw gebruikers naam op het web hebt getypt en **vervolgens volgende**sele
 
 Het is mogelijk dat een gebruiker op een bepaald moment een aanmeld referentie voor een wacht woord heeft gemaakt in de huidige Microsoft Authenticator-app of op een eerder apparaat. Zodra een beheerder het beleid voor de authenticatie methode voor een aanmelding met een wacht woord is ingeschakeld, wordt een gebruiker met een geregistreerde referentie gestart met de nieuwe aanmeldings prompt, ongeacht of deze zijn ingeschakeld voor het gebruik van het beleid of niet. Als de gebruiker niet gemachtigd is om de referentie per beleid te gebruiken, wordt er een fout melding weer gegeven na het volt ooien van de verificatie stroom. 
 
-De beheerder kan ervoor kiezen om de gebruiker in staat te stellen om aanmelding zonder wacht woord te gebruiken, of de gebruiker moet de methode verwijderen. Als de gebruiker het geregistreerde apparaat niet meer heeft, kan [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) hij of zij het verwijderen. Als ze nog steeds de verificator voor MFA gebruiken, kunnen ze de optie **voor het uitschakelen** van de telefoon selecteren in het Microsoft Authenticator.  
+De beheerder kan ervoor kiezen om de gebruiker in staat te stellen om aanmelding zonder wacht woord te gebruiken, of de gebruiker moet de methode verwijderen. Als de gebruiker het geregistreerde apparaat niet meer heeft, kan hij of zij naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) gaan en het verwijderen. Als ze nog steeds de verificator voor MFA gebruiken, kunnen ze de optie **voor het uitschakelen** van de telefoon selecteren in het Microsoft Authenticator.  
 
 ### <a name="ad-fs-integration"></a>Integratie van AD FS
 
@@ -103,4 +103,4 @@ Een van de vereisten voor het maken van deze nieuwe sterke referentie is dat het
 
 [Meer informatie over apparaatregistratie](../devices/overview.md#getting-devices-in-azure-ad)
 
-[Meer informatie over Azure multi-factor Authentication](../authentication/howto-mfa-getstarted.md)
+[Meer informatie over Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

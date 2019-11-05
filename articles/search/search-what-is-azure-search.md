@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 51d7cf270a0df665fdcf5bc90cae283c85ae5d22
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1df8bb293834fca123b2573f02871410754a6bdc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794181"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479637"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Wat is Azure Cognitive Search?
 
@@ -67,8 +67,8 @@ Azure Cognitive Search is heel geschikt voor de volgende toepassings scenario's:
 |-------------------|----------|
 | Hulpprogramma's voor het ontwikkelen van prototypen en voor controle | In de portal kunt u de [**wizard Gegevens importeren**](search-import-data-portal.md) gebruiken om indexeerfuncties te configureren, Index Designer om een index te bouwen, en [**Search Explorer**](search-explorer.md) om query’s te testen en scoreprofielen te verfijnen. U kunt ook elke gewenste index openen om het bijbehorende schema te bekijken. |
 | Controle en diagnose | [**Schakel de bewakings functies**](search-monitor-usage.md) in om verder te gaan dan de metrische gegevens: in één oogopslag die altijd zichtbaar zijn in de portal. Metrische gegevens over query’s per seconde, latentie en beperkingen worden vastgelegd en gerapporteerd op portalpagina’s zonder dat hiervoor extra configuratie is vereist.|
-| Versleuteling aan de serverzijde | [**Micro soft Managed encryption-at-rest**](search-security-overview.md#encrypted-transmission-and-storage) is ingebouwd in de interne opslaglaag en is onherroepelijk. Optioneel kunt u de standaard versleuteling aanvullen met door de [**klant beheerde versleutelings sleutels (preview)** ](search-security-manage-encryption-keys.md). Sleutels die u in Azure Key Vault maakt en beheert, worden gebruikt voor het versleutelen van indexen en synoniemen in Azure Search. |
-| Infrastructuur | Het **maximaal beschikbare platform** zorgt ervoor dat de zoekservice uiterst betrouwbaar is. [Azure Search biedt een SLA voor 99,9% beschikbaarheid](https://azure.microsoft.com/support/legal/sla/search/v1_0/) als er naar behoren is geschaald.<br/><br/> Azure Search is een end-to-end oplossing die **volledig beheerd en schaalbaar** is en vereist geen enkel infrastructuurbeheer. De service kan worden aangepast aan uw persoonlijke behoeften door in twee dimensies te schalen voor het verwerken van meer documentopslag, een hogere querybelasting, of beide.<br/><br/>|
+| Versleuteling aan de serverzijde | [**Micro soft Managed encryption-at-rest**](search-security-overview.md#encrypted-transmission-and-storage) is ingebouwd in de interne opslaglaag en is onherroepelijk. Optioneel kunt u de standaard versleuteling aanvullen met door de [**klant beheerde versleutelings sleutels (preview)** ](search-security-manage-encryption-keys.md). Sleutels die u in Azure Key Vault maakt en beheert, worden gebruikt voor het versleutelen van indexen en synoniemen in azure Cognitive Search. |
+| Infrastructuur | Het **maximaal beschikbare platform** zorgt ervoor dat de zoekservice uiterst betrouwbaar is. Bij een juiste schaal [biedt Azure Cognitive Search een sla van 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> **Volledig beheerd en schaalbaar** als een end-to-end oplossing vereist Azure Cognitive Search absoluut geen infrastructuur beheer. De service kan worden aangepast aan uw persoonlijke behoeften door in twee dimensies te schalen voor het verwerken van meer documentopslag, een hogere querybelasting, of beide.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Azure Cognitive Search gebruiken
 ### <a name="step-1-provision-service"></a>Stap 1: Service inrichten
@@ -131,10 +131,10 @@ Hoewel er veel taken kunnen worden uitgevoerd in de portal, is Azure Cognitive S
 |[REST](/rest/api/searchservice/) | HTTP-opdrachten die worden ondersteund door een willekeurig programmeerplatform en een willekeurige programmeertaal, waaronder Xamarin, Java en JavaScript|
 |[.NET-SDK](search-howto-dotnet-sdk.md) | .NET-wrapper voor de REST API biedt efficiënte codering in C# en andere beheerde codetalen die zijn bedoeld voor .NET Framework |
 
-## <a name="free-trial"></a>Gratis versie
+## <a name="free-trial"></a>Gratis proefversie
 Azure-abonnees kunnen [een service inrichten in de gratis laag](search-create-service-portal.md).
 
-Als u geen abonnee bent, kunt u [gratis een Azure-account openen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). U krijgt een tegoed om de betaalde Azure-services uit te proberen. Als uw tegoed op is, kunt u het account behouden en de [gratis Azure-services](https://azure.microsoft.com/free/) gebruiken. Er worden nooit kosten in rekening gebracht bij uw creditcard tenzij u de instellingen expliciet wijzigt en aangeeft dat u wilt betalen.
+Als u geen abonnee bent, kunt u [gratis een Azure-account openen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). U krijgt een tegoed om de betaalde Azure-services uit te proberen. Als uw tegoed op is, kunt u het account behouden en de [gratis Azure-services](https://azure.microsoft.com/free/) gebruiken. Er wordt nooit geld van uw creditcard afgeschreven, tenzij u uw instellingen zelf wijzigt en expliciet aangeeft dat u wilt betalen.
 
 U kunt ook [de voordelen voor MSDN-abonnees activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F): bij uw MSDN-abonnement ontvangt u elke maand een tegoed dat u kunt gebruiken voor betaalde Azure-services. 
 

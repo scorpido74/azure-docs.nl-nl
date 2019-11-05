@@ -1,24 +1,24 @@
 ---
 title: 'Ontbrekende gegevens wissen: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module clean missing data in Azure Machine Learning service om ontbrekende waarden te verwijderen, te vervangen of af te leiden.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module clean missing data in Azure Machine Learning voor het verwijderen, vervangen of afleiden van ontbrekende waarden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693203"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493821"
 ---
 # <a name="clean-missing-data-module"></a>Ontbrekende gegevens module wissen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Met deze module kunt u ontbrekende waarden verwijderen, vervangen of afleiden. 
 
@@ -133,8 +133,8 @@ Als u vaak reinigings bewerkingen wilt herhalen, kunt u het beste uw recept opsl
   
 2.  Voeg de gegevensset die u wilt reinigen toe en verbind de gegevensset met de juiste invoer poort.  
   
-3.  Vouw de groep **trans formaties** uit in het linkerdeel venster van de interface. Zoek de opgeslagen trans formatie en sleep deze naar de pijp lijn.  
-  
+3.  Vouw de groep **trans formaties** uit in het linkerdeel venster van de ontwerp functie. Zoek de opgeslagen trans formatie en sleep deze naar de pijp lijn.  
+
 4.  Verbind de opgeslagen trans formatie met de linker invoer poort van [Apply trans formatie](./apply-transformation.md). 
 
     Wanneer u een opgeslagen trans formatie toepast, kunt u de kolommen waarop de trans formatie wordt toegepast, niet selecteren. Dat komt doordat de trans formatie al is gedefinieerd en automatisch wordt toegepast op de kolommen die zijn opgegeven in de oorspronkelijke bewerking.
@@ -145,4 +145,4 @@ Als u vaak reinigings bewerkingen wilt herhalen, kunt u het beste uw recept opsl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

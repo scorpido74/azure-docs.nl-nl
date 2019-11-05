@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Contextuele gegevens met rollen-LUIS'
+title: 'Zelf studie: contextuele gegevens met rollen-LUIS'
 titleSuffix: Azure Cognitive Services
 description: Zoek gerelateerde gegevens op basis van de context. Een bestemmings- en doellocatie voor de fysieke verhuizing tussen twee gebouwen zijn bijvoorbeeld aan elkaar gerelateerd.
 services: cognitive-services
@@ -9,20 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308042"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488726"
 ---
-# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Zelfstudie: Contextueel gerelateerde gegevens ophalen uit een utterance
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Zelf studie: contextuele gerelateerde gegevens uit een utterance ophalen
 
 In deze zelfstudie zoekt u gerelateerde gegevens op basis van context. Denk bijvoorbeeld aan de locaties van oorsprong en bestemming voor een overplaatsing tussen vestigingen. Hiervoor zijn mogelijk beide gegevenselementen vereist en ze zijn aan elkaar gerelateerd.  
 
 Een rol kan worden gebruikt met een vooraf samengesteld of aangepast entiteits type en wordt gebruikt in beide voor beelden van uitingen en patronen. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -36,7 +38,7 @@ Een rol kan worden gebruikt met een vooraf samengesteld of aangepast entiteits t
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="related-data"></a>Verwante gegevens
+## <a name="related-data"></a>Gerelateerde gegevens
 
 Deze app bepaalt waar een werknemer moet worden verplaatst van de plaats van oorsprong naar de plaats van bestemming. Er wordt een GeographyV2-vooraf gedefinieerde entiteit gebruikt om de namen van steden te identificeren en het maakt gebruik van rollen om de locatie typen (oorsprong en bestemming) in de utterance te bepalen.
 
@@ -83,12 +85,12 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
 
 1. Selecteer **entiteiten** in de navigatie aan de linkerkant.
 
-1. Selecteer vooraf **samengestelde entiteit toevoegen**en selecteer `geo` vervolgens in de zoek balk om de vooraf gemaakte entiteiten te filteren. 
+1. Selecteer vooraf **samengestelde entiteit toevoegen**en selecteer vervolgens `geo` op de zoek balk om de vooraf gemaakte entiteiten te filteren. 
 
     ![Een vooraf gemaakte geographyV2-entiteit toevoegen aan de app](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Schakel het selectie vakje in en selecteer **gereed**.
 1. Selecteer in de lijst **entiteiten** de **geographyV2** om de nieuwe entiteit te openen. 
-1. Voeg twee rollen toe `Origin`, en `Destination`. 
+1. Voeg twee rollen, `Origin`en `Destination`toe. 
 
     ![Rollen toevoegen aan vooraf samengestelde entiteit](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Selecteer **intenties** in de navigatie aan de linkerkant en selecteer vervolgens de **MoveEmployeeToCity** intentie. U ziet dat de namen van steden worden aangeduid met de vooraf samengestelde entiteit **geographyV2**.
@@ -113,7 +115,7 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Ga naar het einde van de URL in de adresbalk en voer `Please move Carl Chamerlin from Tampa to Portland` in. De laatste parameter van de queryreeks is `q`, de utterance **query**. Deze utterance is niet hetzelfde als een van de gelabelde uitingen, dus het is een goede test en moet de `MoveEmployee` bedoeling retour neren met de entiteit geëxtraheerd.
+1. Ga naar het einde van de URL in de adresbalk en voer `Please move Carl Chamerlin from Tampa to Portland` in. De laatste parameter van de queryreeks is `q`, de utterance **query**. Deze utterance is niet hetzelfde als een van de gelabelde uitingen zodat het een goede test is en de `MoveEmployee` intentie moet retour neren met de entiteit geëxtraheerd.
 
     ```json
     {

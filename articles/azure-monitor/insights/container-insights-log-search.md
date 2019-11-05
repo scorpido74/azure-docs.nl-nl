@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555406"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477074"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Logboeken van Azure Monitor voor containers opvragen
 
@@ -46,7 +46,7 @@ Voor beelden van records die worden verzameld door Azure Monitor voor containers
 
 Met Azure Monitor Logboeken kunt u zoeken naar trends, knel punten diagnosticeren, prognoses maken of correleren van gegevens waarmee u kunt bepalen of de huidige cluster configuratie optimaal presteert. Vooraf gedefinieerde zoek opdrachten in Logboeken worden weer gegeven zodat u direct aan de slag kunt gaan met of kunt aanpassen om de informatie op de gewenste manier te retour neren.
 
-U kunt een interactieve analyse van gegevens in de werk ruimte uitvoeren door de **gebeurtenis logboeken Kubernetes weer geven** of **container logboeken weer geven** te selecteren in het voorbeeld venster. De pagina **Zoeken in Logboeken** wordt weer gegeven aan de rechter kant van de Azure portal pagina waarop u zich bevond.
+U kunt een interactieve analyse van de gegevens in de werk ruimte uitvoeren door de **gebeurtenis logboeken Kubernetes weer geven** of **container logboeken weer geven** te selecteren in het deel venster voor beeld in de vervolg keuzelijst **analyse weer geven** . De pagina **Zoeken in Logboeken** wordt weer gegeven aan de rechter kant van de Azure portal pagina waarop u zich bevond.
 
 ![Gegevens analyseren in Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -56,7 +56,7 @@ De container logboeken uitvoer die wordt doorgestuurd naar uw werk ruimte zijn S
 
 Het is vaak handig om query's te bouwen die beginnen met een voor beeld of twee en deze vervolgens te wijzigen zodat ze aan uw vereisten voldoen. Om geavanceerdere query's te kunnen bouwen, kunt u experimenteren met de volgende voorbeeld query's:
 
-| Query | Beschrijving | 
+| Query’s uitvoeren | Beschrijving | 
 |-------|-------------|
 | ContainerInventory<br> &#124;project computer, naam, afbeelding, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124;tabel weer geven | Alle levenscyclus gegevens van een container weer geven| 
 | KubeEvents_CL<br> &#124;where not (IsEmpty (Namespace_s))<br> &#124;sorteren op TimeGenerated desc<br> &#124;tabel weer geven | Kubernetes-gebeurtenissen|
@@ -65,37 +65,57 @@ Het is vaak handig om query's te bouwen die beginnen met een voor beeld of twee 
 | **Selecteer de weergave optie lijn diagram**:<br> Prestatie<br> &#124;waarbij ObjectName = = "K8SContainer" en CounterName = = "memoryRssBytes" &#124; samen vatting AvgUsedRssMemoryBytes = AVG (CounterValue) by bin (TimeGenerated, 30m), INSTANCENAME | Containergeheugen |
 | InsightsMetrics<br> &#124;WHERE name = = "requests_count"<br> &#124;noeme val = any (val) by TimeGenerated = bin (TimeGenerated, 1M)<br> &#124;sorteren op TimeGenerated ASC<br> &#124;project RequestsPerMinute = val-vorig (val), TimeGenerated <br> &#124;Barchart weer geven  | Aanvragen per minuut met aangepaste metrische gegevens |
 
-Het volgende voor beeld is een query voor Prometheus-metrische gegevens. De verzamelde metrische gegevens zijn aantallen en om te bepalen hoeveel fouten binnen een bepaalde periode zijn opgetreden, moeten we van de telling aftrekken. De gegevensset wordt gepartitioneerd door *partitionKey*, wat betekent dat voor elke unieke set met de *naam*, de *hostnaam*en de *OperationType*een subquery wordt uitgevoerd op die set die de logboeken bestelt op *TimeGenerated*, een proces dat het mogelijk maakt om Zoek het vorige *TimeGenerated* en het aantal dat voor die tijd is vastgelegd om een bepaald aantal te bepalen.
+## <a name="query-prometheus-metrics-data"></a>Prometheus metrische gegevens opvragen
+
+Het volgende voor beeld is een Prometheus-query met metrische gegevens per schijf per knoop punt voor het lezen van de schijf.
 
 ```
-let data = InsightsMetrics 
-| where Namespace contains 'prometheus' 
-| where Name == 'kubelet_docker_operations' or Name == 'kubelet_docker_operations_errors'    
-| extend Tags = todynamic(Tags) 
-| extend OperationType = tostring(Tags['operation_type']), HostName = tostring(Tags.hostName) 
-| extend partitionKey = strcat(HostName, '/' , Name, '/', OperationType) 
-| partition by partitionKey ( 
-    order by TimeGenerated asc 
-    | extend PrevVal = prev(Val, 1), PrevTimeGenerated = prev(TimeGenerated, 1) 
-    | extend Rate = iif(TimeGenerated == PrevTimeGenerated, 0.0, Val - PrevVal) 
-    | where isnull(Rate) == false 
-) 
-| project TimeGenerated, Name, HostName, OperationType, Rate; 
-let operationData = data 
-| where Name == 'kubelet_docker_operations' 
-| project-rename OperationCount = Rate; 
-let errorData = data 
-| where Name == 'kubelet_docker_operations_errors' 
-| project-rename ErrorCount = Rate; 
-operationData 
-| join kind = inner ( errorData ) on TimeGenerated, HostName, OperationType 
-| project-away TimeGenerated1, Name1, HostName1, OperationType1 
-| extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
+InsightsMetrics
+| where Namespace == 'container.azm.ms/diskio'
+| where TimeGenerated > ago(1h)
+| where Name == 'reads'
+| extend Tags = todynamic(Tags)
+| extend HostName = tostring(Tags.hostName), Device = Tags.name
+| extend NodeDisk = strcat(Device, "/", HostName)
+| order by NodeDisk asc, TimeGenerated asc
+| serialize
+| extend PrevVal = iif(prev(NodeDisk) != NodeDisk, 0.0, prev(Val)), PrevTimeGenerated = iif(prev(NodeDisk) != NodeDisk, datetime(null), prev(TimeGenerated))
+| where isnotnull(PrevTimeGenerated) and PrevTimeGenerated != TimeGenerated
+| extend Rate = iif(PrevVal > Val, Val / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1), iif(PrevVal == Val, 0.0, (Val - PrevVal) / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1)))
+| where isnotnull(Rate)
+| project TimeGenerated, NodeDisk, Rate
+| render timechart
+
+```
+
+Als u de metrische gegevens van Prometheus wilt weer geven die door Azure Monitor gefilterd op naam ruimte, geeft u Prometheus op. Hier volgt een voor beeld van een query voor het weer geven van metrische gegevens over Prometheus uit de naam ruimte `default` kubernetes.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| extend tags=parse_json(Tags)
+| summarize count() by Name
+```
+
+Prometheus gegevens kunnen ook rechtstreeks worden doorzocht op naam.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| where Name contains "some_prometheus_metric"
+```
+
+### <a name="query-config-or-scraping-errors"></a>Query configuratie of uitval fouten
+
+Voor het onderzoeken van eventuele configuratie-en uitval fouten, retourneert de volgende voorbeeld query informatieve gebeurtenissen uit de `KubeMonAgentEvents` tabel.
+
+```
+KubeMonAgentEvents | where Level != "Info" 
 ```
 
 De uitvoer ziet er ongeveer als volgt uit:
 
-![Query resultaten van het volume gegevens opname vastleggen](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
+![Query resultaten van informatieve gebeurtenissen van agent vastleggen in logboek](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

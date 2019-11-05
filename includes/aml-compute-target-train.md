@@ -9,20 +9,21 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/30/2019
-ms.openlocfilehash: 1b62d4b2ac1bb69e2270c3202d29eb595df7aac4
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.openlocfilehash: aa1120db5451583153928bd2cbc383a46781a267
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806028"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489567"
 ---
-**COMPUTE-doelen kunnen worden hergebruikt van één trainingstaak naar de volgende**. Bijvoorbeeld, wanneer u een externe VM aan uw werkruimte koppelen, u deze opnieuw kunt gebruiken voor meerdere taken.
+**Reken doelen kunnen opnieuw worden gebruikt voor een trainings taak naar de volgende**. Als u bijvoorbeeld een externe virtuele machine aan uw werk ruimte koppelt, kunt u deze opnieuw gebruiken voor meerdere taken.
 
-|Training &nbsp;doelen| GPU-ondersteuning |[Geautomatiseerde ML](../articles/machine-learning/service/concept-automated-ml.md) | [ML-pijplijnen](../articles/machine-learning/service/concept-ml-pipelines.md) | [Visuele interface](../articles/machine-learning/service/ui-concept-visual-interface.md)
+|Trainings &nbsp;doelen| GPU-ondersteuning |[Automatische ML](../articles/machine-learning/service/concept-automated-ml.md) | [ML-pijp lijnen](../articles/machine-learning/service/concept-ml-pipelines.md) | [Azure Machine Learning Designer](../articles/machine-learning/service/concept-designer.md)
 |----|:----:|:----:|:----:|:----:|
-|[Lokale computer](../articles/machine-learning/service/how-to-set-up-training-targets.md#local)| Misschien | ja | &nbsp; | &nbsp; |
-|[Azure Machine Learning-Computing](../articles/machine-learning/service/how-to-set-up-training-targets.md#amlcompute)| ja | Ja & <br/>hyperparameter&nbsp;tuning | ja | ja |
-|[Externe virtuele machine](../articles/machine-learning/service/how-to-set-up-training-targets.md#vm) |ja | Ja & <br/>hyperparameter afstemmen | ja | &nbsp; |
+|[Lokale computer](../articles/machine-learning/service/how-to-set-up-training-targets.md#local)| wel | ja | &nbsp; | &nbsp; |
+|[Reken instantie Azure Machine Learning](../articles/machine-learning/service/concept-compute-instance.md)| ja | | ja |  |
+|[Azure Machine Learning Compute-Cluster](../articles/machine-learning/service/how-to-set-up-training-targets.md#amlcompute)| ja | Ja & <br/>afstemming&nbsp;afstemmen | ja | ja |
+|[Externe VM](../articles/machine-learning/service/how-to-set-up-training-targets.md#vm) |ja | Ja & <br/>afstemming afstemmen | ja | &nbsp; |
 |[Azure&nbsp;Databricks](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#databricks)| &nbsp; | ja | ja | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/service/how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | ja | &nbsp; |
 |[Azure HDInsight](../articles/machine-learning/service/how-to-set-up-training-targets.md#hdinsight)| &nbsp; | &nbsp; | ja | &nbsp; |

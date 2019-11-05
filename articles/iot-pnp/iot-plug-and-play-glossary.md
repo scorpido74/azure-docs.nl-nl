@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: db3581616b369345ad654593192048e8573c6fa4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935216"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72988793"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
 
@@ -28,7 +28,7 @@ U kunt de [Azure Certified voor IOT-Portal](https://aka.ms/ACFI) website gebruik
 - [Hulp modellen voor apparaten](#device-capability-model)zoeken.
 - Een mogelijkheidsprofiel naar de [open bare model opslagplaats](#public-model-repository)publiceren.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
 De Azure CLI is een platform, opdracht regel programma voor het beheer van Azure-resources. De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor interactie met en het testen van [IoT Plug en Play-apparaten](#iot-plug-and-play-device). U kunt de extensie gebruiken voor het volgende:
 
@@ -117,7 +117,7 @@ Een ontwikkelaar van een apparaat maakt gebruik van een [mogelijkheidsprofiel](#
 
 ## <a name="device-provisioning-service"></a>Device Provisioning Service
 
-[Azure IOT Central](#azure-iot-central) maakt gebruik van de Device Provisioning Service voor het beheer van alle apparaatregistratie en de verbinding. Zie [connectiviteit van apparaten in Azure IOT Central](../iot-central/core/concepts-connectivity-pnp.md)voor meer informatie. U kunt ook de Device Provisioning Service gebruiken voor het beheren van apparaatregistratie en verbinding met uw op IoT Hub gebaseerde IoT-oplossing. Zie [apparaten inrichten met Azure IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
+[Azure IOT Central](#azure-iot-central) maakt gebruik van de Device Provisioning Service voor het beheer van alle apparaatregistratie en de verbinding. Zie [connectiviteit van apparaten in Azure IOT Central](../iot-central/core/overview-iot-central-get-connected-pnp.md)voor meer informatie. U kunt ook de Device Provisioning Service gebruiken voor het beheren van apparaatregistratie en verbinding met uw op IoT Hub gebaseerde IoT-oplossing. Zie [apparaten inrichten met Azure IOT hub Device Provisioning Service](../iot-dps/about-iot-dps.md)voor meer informatie.
 
 ## <a name="device-registration"></a>Apparaatregistratie
 

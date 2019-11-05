@@ -1,7 +1,7 @@
 ---
-title: 'Maken van aangepaste neurale netwerken met Net #'
-titleSuffix: Azure Machine Learning Studio
-description: 'Syntaxis van de handleiding voor de Net # neurale netwerken specificatietaal. Informatie over het maken van aangepaste neurale netwerk modellen in Azure Machine Learning Studio.'
+title: 'Aangepaste Neural-netwerken maken met net #'
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 'Syntaxis handleiding voor de specificatie taal net # Neural Networks. Meer informatie over het maken van aangepaste Neural-netwerk modellen in Azure Machine Learning Studio (klassiek).'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,96 +10,96 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7e7ad51622c3d3c8254755fb1ad24a047d48a58b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751663"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493350"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Handleiding voor het Net # neurale-netwerkspecificatie voor Azure Machine Learning Studio
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Hand leiding voor de netwerk specificatie taal net # Neural voor Azure Machine Learning Studio (klassiek)
 
-NET # is een door Microsoft ontwikkelde taal die wordt gebruikt om complexe neural network-architecturen zoals deep neural networks of convoluties van willekeurige dimensies te definiëren. U kunt complexe structuren gebruiken om te leren op gegevens, zoals afbeeldingen, video of audio verbeteren.
+Net # is een door micro soft ontwikkelde taal die wordt gebruikt voor het definiëren van complexe Neural-netwerk architecturen, zoals diepe Neural netwerken of convoluties van wille keurige dimensies. U kunt complexe structuren gebruiken om het leren van gegevens zoals afbeeldingen, Video's of audio te verbeteren.
 
-In deze context kunt u een specificatie Net #-architectuur:
+In deze contexten kunt u een specificatie van het net # architectuur gebruiken:
 
-+ Alle neutrale netwerkmodules in Microsoft Azure Machine Learning Studio: [Multiklassen Neural Network](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Two-Class Neural Network](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), en [Neural Network regressie](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Neural network-functies in Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) en [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)voor de taal R en [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) voor Python.
-
-
-In dit artikel beschrijft de basisconcepten en de syntaxis die nodig zijn voor het ontwikkelen van een aangepaste neural network met Net #:
-
-+ Neural network-vereisten en het definiëren van de primaire onderdelen
-+ De syntaxis en trefwoorden van de Net #-specificatietaal
-+ Voorbeelden van aangepaste neurale netwerken die zijn gemaakt met Net #
++ Alle Neural-netwerk modules in Microsoft Azure Machine Learning Studio (klassiek): meerdere [klassen Neural netwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Neural netwerk met twee klassen](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)en [Neural netwerk regressie](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Neural-netwerk functies in micro soft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) en [RxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)voor de R-taal en [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) voor python.
 
 
+In dit artikel worden de basis concepten en syntaxis beschreven die nodig zijn voor het ontwikkelen van een aangepast Neural-netwerk met behulp van net #:
 
-## <a name="neural-network-basics"></a>Neural network-basisbeginselen
++ Neural-netwerk vereisten en het definiëren van de primaire onderdelen
++ De syntaxis en tref woorden van de specificatie taal net #
++ Voor beelden van aangepaste Neural-netwerken die zijn gemaakt met net #
 
-De structuur van een neuraal netwerk bestaat uit knooppunten die zijn ingedeeld in lagen, en gewogen verbindingen (of randen) tussen de knooppunten. De verbindingen zijn gericht en elke verbinding heeft een bronknooppunt en een doelknooppunt.
 
-Elke trainable laag (een verborgen of een uitvoer-laag) heeft een of meer **verbinding bundels**. Een bundel verbinding bestaat uit een bronlaag en een specificatie van de verbindingen van die bronlaag. Alle verbindingen in een bepaalde bundel delen bron- en lagen. In de Net #, wordt beschouwd als een bundel verbinding als behorend tot de doellaag van de bundel.
 
-NET # biedt ondersteuning voor verschillende soorten verbinding bundels, die u kunnen aanpassen van de invoer van de manier waarop worden toegewezen aan verborgen lagen en toegewezen aan de uitvoer.
+## <a name="neural-network-basics"></a>Basis beginselen van Neural-netwerken
 
-De standaard- of standard-bundel is een **volledige bundel**, in die op elk knooppunt in de bronlaag is verbonden met elk knooppunt in de doellaag.
+Een Neural-netwerk structuur bestaat uit knoop punten die zijn ingedeeld in lagen en gewogen verbindingen (of randen) tussen de knoop punten. De verbindingen zijn richting en elke verbinding heeft een bron knooppunt en een doel knooppunt.
 
-Daarnaast ondersteunt Net # de volgende vier soorten geavanceerde verbinding bundels:
+Elke trainable-laag (een verborgen of een uitvoer laag) heeft een of meer **verbindings bundels**. Een verbindings bundel bestaat uit een bronlaag en een specificatie van de verbindingen van die bronlaag. Alle verbindingen in een opgegeven bundel share bron-en doel lagen. In net # wordt een verbindings bundel beschouwd als onderdeel van de doellaag van de bundel.
 
-+ **Gefilterd bundels**. U kunt een predicaat definiëren met behulp van de locaties van het bronknooppunt laag en het doelknooppunt voor de laag. Knooppunten zijn verbonden wanneer het predikaat True is.
+Net # ondersteunt verschillende soorten verbindings bundels, waarmee u de manier waarop invoer wordt toegewezen aan verborgen lagen kunt aanpassen en aan de uitvoer kunt toewijzen.
 
-+ **Convolutional bundels**. U kunt kleine groepen van knooppunten definiëren in de bronlaag. Elk knooppunt in de doellaag is verbonden met één groep van knooppunten in de bronlaag.
+De standaard-of standaard bundel is een **volledige bundel**, waarbij elk knoop punt in de bronlaag is verbonden met elk knoop punt in de doellaag.
 
-+ **Groeperen bundels** en **antwoord normalisering bundels**. Dit zijn vergelijkbaar met convolutional bundels in dat de gebruiker gedefinieerd kleine groepen van knooppunten in de bronlaag. Het verschil is dat het gewicht van de randen in deze pakketten niet trainable zijn. In plaats daarvan wordt een vooraf gedefinieerde functie toegepast op de waarden van het knooppunt bron om te bepalen van de waarde van de doel-knooppunt.
+Daarnaast ondersteunt net # de volgende vier soorten geavanceerde verbindings bundels:
+
++ **Gefilterde bundels**. U kunt een predikaat definiëren met behulp van de locaties van het bron laag knooppunt en het knoop punt van de doel laag. Knoop punten zijn verbonden wanneer het predicaat True is.
+
++ **Convolutional bundels**. U kunt kleine groepen van knoop punten in de bronlaag definiëren. Elk knoop punt in de doellaag is verbonden met één groep knoop punten in de bronlaag.
+
++ **Bundels** bundels en **antwoord-normalisatie pakketten**. Deze zijn vergelijkbaar met convolutional-bundels in dat de gebruiker kleine groepen van knoop punten in de bronlaag definieert. Het verschil is dat het gewicht van de randen in deze bundels niet kan worden getraind. In plaats daarvan wordt een vooraf gedefinieerde functie toegepast op de waarden van het bron knooppunt om de waarde van het doel knooppunt te bepalen.
 
 
 ## <a name="supported-customizations"></a>Ondersteunde aanpassingen
 
-De architectuur van neural network-modellen die u in Azure Machine Learning Studio maakt kan worden uitgebreid met behulp van Net # zijn aangepast. U kunt:
+De architectuur van Neural-netwerk modellen die u in de klassieke versie van Azure Machine Learning Studio maakt, kan uitgebreid worden aangepast met behulp van net #. U kunt:
 
-+ Verborgen lagen maken en beheren van het aantal knooppunten in elke laag.
-+ Opgeven hoe lagen moeten met elkaar worden verbonden.
-+ Speciaal connectiviteit structuren, zoals convoluties en gewicht delen bundels definiëren.
-+ Geef de activering van de verschillende functies.
++ Maak verborgen lagen en beheer het aantal knoop punten in elke laag.
++ Opgeven hoe lagen met elkaar moeten worden verbonden.
++ Definieer speciale connectiviteits structuren, zoals convoluties en gewichts delen.
++ Geef verschillende activerings functies op.
 
-Zie voor meer informatie over de syntaxis van de specificatie, [structuur specificatie](#structure-specifications).
+Zie [structure Specification](#structure-specifications)(Engelstalig) voor meer informatie over de syntaxis van de specificatie taal.
 
-Zie voor meer voorbeelden van het definiëren van neurale netwerken voor sommige reguliere machine learning-taken uit Simplex () aan complexe [voorbeelden](#examples-of-net-usage).
+Voor voor beelden van het definiëren van Neural-netwerken voor enkele veelvoorkomende machine learning taken, van eenvoudig naar complex, Zie [voor beelden](#examples-of-net-usage).
 
 ## <a name="general-requirements"></a>Algemene vereisten
 
-+ Er zijn moet exact één uitvoer laag, ten minste één invoer-laag en nul of meer verborgen lagen.
-+ Elke laag heeft een vast aantal knooppunten, conceptueel gezien gerangschikt in een rechthoekige matrix van willekeurige dimensies.
-+ Invoer lagen hebben geen gekoppelde getrainde parameters en het punt waar gegevens van exemplaar van het netwerk krijgt vertegenwoordigen.
-+ Trainable lagen (de lagen verborgen en uitvoer) hebt getraind parameters, ook wel het gewicht en vooroordelen gekoppeld.
-+ De bron- als doelknooppunten moeten zich in afzonderlijke lagen.
-+ Verbindingen moet acyclische; Er kan niet met andere woorden, een keten van toonaangevende terug naar het eerste bronknooppunt-verbindingen.
-+ De uitvoer-laag kan niet een bronlaag van een bundel verbinding.
++ Er moet precies één uitvoer laag, ten minste één invoer laag en nul of meer verborgen lagen zijn.
++ Elke laag heeft een vast aantal knoop punten, die conceptueel zijn gerangschikt in een rechthoekige matrix met wille keurige dimensies.
++ Invoer lagen hebben geen gekoppelde getrainde para meters en vertegenwoordigen het punt waar de exemplaar gegevens het netwerk binnenkomen.
++ Trainable Layers (de verborgen en uitvoer lagen) hebben gerelateerde getrainde para meters, ook wel gewichten en bias genoemd.
++ De bron-en doel knooppunten moeten zich in afzonderlijke lagen bedelen.
++ Verbindingen moeten acyclische zijn; met andere woorden, er kan geen keten van verbindingen worden gemaakt met het eerste bron knooppunt.
++ De uitvoer laag kan geen bronlaag van een verbindings bundel zijn.
 
 ## <a name="structure-specifications"></a>Structuur specificaties
 
-Een specificatie van de structuur neurale netwerk bestaat uit drie secties: de **declaratie van de constante**, wordt de **laag declaratie**, wordt de **verbinding declaratie**. Er is ook een optionele **delen declaratie** sectie. De secties kunnen in willekeurige volgorde worden opgegeven.
+Een specificatie van een Neural-netwerk structuur bestaat uit drie secties: de **constante declaratie**, de **laag declaratie**, de **verbindings declaratie**. Er is ook een optionele **share declaratie** sectie. De secties kunnen in een wille keurige volg orde worden opgegeven.
 
-## <a name="constant-declaration"></a>Constante declaratie
+## <a name="constant-declaration"></a>Constanten declaratie
 
-Een constante verklaring is optioneel. Het biedt een manier voor het definiëren van waarden die elders in de netwerkdefinitie van neurale wordt gebruikt. De declaratie-instructie bestaat uit een id die wordt gevolgd door een gelijkteken en een waarde-expressie.
+Een constante declaratie is optioneel. Het biedt een manier om waarden te definiëren die elders in de Neural-netwerk definitie worden gebruikt. De declaratie-instructie bestaat uit een id gevolgd door een gelijkteken en een waarde-expressie.
 
-Bijvoorbeeld, de volgende instructie definieert een constante `x`:
+De volgende instructie definieert bijvoorbeeld een constante `x`:
 
 `Const X = 28;`
 
-Als u twee of meer constanten tegelijkertijd definieert, plaatst u de id-namen en waarden tussen accolades en gescheiden door puntkomma's. Bijvoorbeeld:
+Als u twee of meer constanten tegelijk wilt definiëren, plaatst u de id-namen en waarden tussen accolades en scheidt u deze met behulp van punt komma's. Bijvoorbeeld:
 
 `Const { X = 28; Y = 4; }`
 
-De rechterkant van de toewijzingsexpressie voor elke kan een geheel getal, een reëel getal, een Booleaanse waarde (waar of ONWAAR) of een rekenkundige expressie zijn. Bijvoorbeeld:
+De rechter kant van elke toewijzings expressie kan een geheel getal, een reëel getal, een Booleaanse waarde (waar of onwaar) of een wiskundige expressie zijn. Bijvoorbeeld:
 
 `Const { X = 17 * 2; Y = true; }`
 
-## <a name="layer-declaration"></a>Laag-declaratie
+## <a name="layer-declaration"></a>Laag declaratie
 
-De declaratie van de laag is vereist. Hiermee worden de grootte en de bron van de laag, met inbegrip van de verbinding bundels en kenmerken gedefinieerd. De declaratie-instructie wordt gestart met de naam van de laag (input, verborgen of uitvoer), gevolgd door de afmetingen van de laag (een tuple van positieve gehele getallen). Bijvoorbeeld:
+De laag declaratie is vereist. Hiermee worden de grootte en de bron van de laag gedefinieerd, inclusief de verbindings bundels en-kenmerken. De instructie Declare begint met de naam van de laag (invoer, verborgen of uitvoer), gevolgd door de afmetingen van de laag (een tuple van positieve gehele getallen). Bijvoorbeeld:
 
 ```Net#
 input Data auto;
@@ -107,16 +107,16 @@ hidden Hidden[5,20] from Data all;
 output Result[2] from Hidden all;
 ```
 
-+ Het product van de dimensies is het aantal knooppunten in de laag. In dit voorbeeld zijn er twee dimensies [5,20], wat betekent dat er 100 knooppunten zijn in de laag.
-+ De lagen kunnen worden gedeclareerd in willekeurige volgorde, met één uitzondering: Als meer dan één invoer laag is gedefinieerd, moet de volgorde van de functies in de ingevoerde gegevens overeenkomen met de volgorde waarin ze zijn gedeclareerd.
++ Het product van de dimensies is het aantal knoop punten in de laag. In dit voor beeld zijn er twee dimensies [5, 20], wat betekent dat er 100 knoop punten in de laag zijn.
++ De lagen kunnen in een wille keurige volg orde worden gedeclareerd, met één uitzonde ring: als er meer dan één invoer laag is gedefinieerd, moet de volg orde waarin ze zijn gedeclareerd overeenkomen met de volg orde van de functies in de invoer gegevens.
 
-Als u wilt opgeven dat het aantal knooppunten in een laag automatisch worden bepaald, gebruikt u de `auto` trefwoord. De `auto` sleutelwoord heeft verschillende effecten, afhankelijk van de laag:
+Gebruik het sleutel woord `auto` om op te geven dat het aantal knoop punten in een laag automatisch moet worden bepaald. Het sleutel woord `auto` heeft verschillende effecten, afhankelijk van de laag:
 
-+ In de declaratie van een invoer-laag is het aantal knooppunten in het aantal functies in de ingevoerde gegevens.
-+ In een verklaring van de verborgen laag, is het aantal knooppunten het getal dat is opgegeven door de waarde van parameter voor **aantal verborgen knooppunten**.
-+ In een laag uitvoerdeclaratie is het aantal knooppunten 2 voor classificatie van twee klassen, 1 voor regressie en gelijk is aan het aantal uitvoerknooppunten voor multiklassen classificatie.
++ In een declaratie van een invoer laag is het aantal knoop punten het aantal functies in de invoer gegevens.
++ In de declaratie van een verborgen laag is het aantal knoop punten het nummer dat is opgegeven door de parameter waarde voor het **aantal verborgen knoop punten**.
++ In een declaratie van een uitvoer laag is het aantal knoop punten 2 voor de classificatie met twee klassen, 1 voor regressie en gelijk aan het aantal uitvoer knooppunten voor de classificatie met meerdere klassen.
 
-De volgende netwerkdefinitie kan bijvoorbeeld de grootte van alle lagen worden automatisch bepaald:
+Met de volgende netwerk definitie kan de grootte van alle lagen bijvoorbeeld automatisch worden bepaald:
 
 ```Net#
 input Data auto;
@@ -124,44 +124,44 @@ hidden Hidden auto from Data all;
 output Result auto from Hidden all;
 ```
 
-Een verklaring van de laag voor een trainable laag (de uitvoer of verborgen lagen) (optioneel) de uitvoer-functie kan bevatten (ook wel een functie voor activering genoemd), die standaard **sigmoid** voor classificatie-modellen en  **lineaire** voor regressiemodellen. Zelfs als u de standaardwaarde gebruikt, kunt u de functie activeren kunt expliciet aangeven desgewenst voor de duidelijkheid.
+Een laag declaratie voor een trainable laag (de verborgen of uitvoer lagen) kan optioneel de functie output (ook wel een activerings functie genoemd) bevatten, die standaard wordt **sigmoid** voor classificatie modellen en **lineaire** voor regressie modellen. Zelfs als u de standaard waarde gebruikt, kunt u de activerings functie expliciet aangeven, indien gewenst voor de duidelijkheid.
 
-De volgende uitvoer-functies worden ondersteund:
+De volgende uitvoer functies worden ondersteund:
 
 + sigmoid
-+ Lineair
++ lineaire
 + softmax
 + rlinear
-+ square
-+ WORTEL
++ wortel
++ Wortel
 + srlinear
-+ ABS
-+ tanh
++ Afwezigheid
++ TANH
 + brlinear
 
-De volgende declaratie gebruikt bijvoorbeeld de **softmax** functie:
+De volgende declaratie maakt bijvoorbeeld gebruik van de functie **Softmax** :
 
 `output Result [100] softmax from Hidden all;`
 
-## <a name="connection-declaration"></a>De declaratie van de verbinding
+## <a name="connection-declaration"></a>Verbindings declaratie
 
-Onmiddellijk na het definiëren van de trainable laag, moet u de verbindingen tussen de lagen die u hebt gedefinieerd declareren. De declaratie van de bundel verbinding begint met het sleutelwoord `from`, gevolgd door de naam van de bronlaag van de bundel en het type van de bundel verbinding te maken.
+Onmiddellijk nadat de trainable-laag is gedefinieerd, moet u verbindingen declareren tussen de lagen die u hebt gedefinieerd. De declaratie van de verbindings bundel begint met het tref woord `from`, gevolgd door de naam van de bron-laag van de bundel en het type verbindings bundel dat u wilt maken.
 
-Op dit moment worden verbinding bundels vijf typen ondersteund:
+Op dit moment worden er vijf soorten verbindings bundels ondersteund:
 
-+ **Volledige** bundels, aangegeven door het sleutelwoord `all`
-+ **Gefilterd** bundels, aangegeven door het sleutelwoord `where`, gevolgd door een predicaatexpressie
-+ **Convolutional** bundels, aangegeven door het sleutelwoord `convolve`, gevolgd door de kenmerken convolutiefilter
-+ **Groeperen** bundels, aangegeven door de trefwoorden **max pool** of **betekenen van toepassingen**
-+ **Antwoord normalisering** bundels, aangegeven door het sleutelwoord **antwoord norm**
++ **Volledige** bundels, aangegeven door het tref woord `all`
++ **Gefilterde** bundels, aangegeven door het tref woord `where`, gevolgd door een predicaat expressie
++ **Convolutional** -bundels, aangegeven door het tref woord `convolve`, gevolgd door de convolutie kenmerken
++ Bundeling van **groepen** , aangeduid door de tref woorden **Max pool** of **gemiddelde Pool**
++ Bundels van **antwoord normalisatie** , aangegeven door de **reactie norm** van het tref woord
 
 ## <a name="full-bundles"></a>Volledige bundels
 
-Een volledige verbinding bundel bevat een verbinding van elk knooppunt in de bronlaag aan elk knooppunt in de doellaag. Dit is het verbindingstype van de standaard-netwerk.
+Een volledige verbindings bundel bevat een verbinding van elk knoop punt in de bronlaag naar elk knoop punt in de doellaag. Dit is het standaard type netwerk verbinding.
 
 ## <a name="filtered-bundles"></a>Gefilterde bundels
 
-De specificatie van een gefilterde verbinding bundel bevat een zeer predicaat, syntactisch, uitgedrukt als een C# lambda-expressie. Het volgende voorbeeld definieert twee gefilterde pakketten:
+Een gefilterde specificatie van de verbindings bundel bevat een predikaat, een syntactisch, vergelijkbaar C# met een lambda-expressie. In het volgende voor beeld worden twee gefilterde bundels gedefinieerd:
 
 ```Net#
 input Pixels [10, 20];
@@ -169,71 +169,71 @@ hidden ByRow[10, 12] from Pixels where (s,d) => s[0] == d[0];
 hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 ```
 
-+ In het predikaat voor `ByRow`, `s` is een parameter voor een index in de matrix rechthoekige knooppunten van de invoer-laag, `Pixels`, en `d` is een parameter voor een index in de matrix van knooppunten in de verborgen laag `ByRow`. Het type van beide `s` en `d` is een tuple met gehele getallen van de lengte van de twee. Conceptueel gezien `s` bereiken via alle paren van gehele getallen met `0 <= s[0] < 10` en `0 <= s[1] < 20`, en `d` bereiken via alle paren van gehele getallen, met `0 <= d[0] < 10` en `0 <= d[1] < 12`.
++ In het predikaat voor `ByRow`is `s` een para meter die een index vertegenwoordigt in de rechthoekige matrix van knoop punten van de invoer laag, `Pixels`en `d` is een para meter die een index vertegenwoordigt in de matrix van knoop punten van de verborgen laag , `ByRow`. Het type van zowel `s` als `d` is een tuple met gehele getallen van lengte twee. Conceptueel `s` het bereiken van alle paren met gehele getallen met `0 <= s[0] < 10` en `0 <= s[1] < 20`en `d` bereiken over alle paren van gehele getallen, met `0 <= d[0] < 10` en `0 <= d[1] < 12`.
 
-+ Aan de rechterkant van de predicaatexpressie is er een voorwaarde. In dit voorbeeld, voor elke waarde van `s` en `d` zodanig dat de voorwaarde waar is, er een rand van het bronknooppunt laag naar het doelknooppunt voor de laag is. Dus dit filterexpressie geeft aan dat de bundel een verbinding van het knooppunt dat is gedefinieerd omvat door `s` naar het knooppunt dat is gedefinieerd door `d` in alle gevallen waarin s [0] gelijk aan d [0 is].
++ Aan de rechter kant van de predicaat expressie bevindt zich een voor waarde. In dit voor beeld, voor elke waarde van `s` en `d` zodanig dat de voor waarde waar is, is er een rand van het knoop punt van de bron laag naar het knoop punt van de doel laag. Daarom geeft deze filter expressie aan dat de bundel een verbinding bevat van het knoop punt dat is gedefinieerd door `s` naar het knoop punt dat is gedefinieerd door `d` in alle gevallen waarbij s [0] gelijk is aan d [0].
 
-U kunt eventueel een set waarden voor een gefilterde bundel opgeven. De waarde voor de **gewichten** kenmerk moet een tuple van zwevende waarden met een lengte die overeenkomt met het aantal verbindingen die zijn gedefinieerd door de bundel. Standaard worden gewichten willekeurig gegenereerd.
+Desgewenst kunt u een set gewichten voor een gefilterde bundel opgeven. De waarde voor het kenmerk **Weights** moet een tuple van drijvende-komma waarden zijn met een lengte die overeenkomt met het aantal verbindingen dat door de bundel is gedefinieerd. Standaard worden de gewichten wille keurig gegenereerd.
 
-Gewichtswaarden zijn gegroepeerd op de index van de doel-knooppunt. Dat wil zeggen, als het eerste bestemmingsknooppunt is verbonden met de bronknooppunten K, de eerste `K` elementen van de **gewichten** tuple zijn het gewicht voor het eerste doelknooppunt in volgorde van de gegevensbron-index. Hetzelfde geldt voor de resterende knooppunten van de bestemming.
+Gewichts waarden worden gegroepeerd op de doel knooppunt index. Dat wil zeggen, als het eerste bestemmings knooppunt is verbonden met K-bron knooppunten, de eerste `K` elementen van de tuple met **gewichten** de gewichten zijn voor het eerste doel knooppunt, in de volg orde van de bron index. Hetzelfde geldt voor de resterende doel knooppunten.
 
-Het is mogelijk om op te geven van het gewicht rechtstreeks als constante waarden. Bijvoorbeeld, als u het gewicht eerder hebt geleerd, kunt u ze als constanten met behulp van deze syntaxis:
+Het is mogelijk om gewichten rechtstreeks als constante waarden op te geven. Als u bijvoorbeeld het gewicht eerder hebt geleerd, kunt u ze als constanten opgeven met behulp van de volgende syntaxis:
 
 `const Weights_1 = [0.0188045055, 0.130500451, ...]`
 
 ## <a name="convolutional-bundles"></a>Convolutional bundels
 
-Wanneer de trainingsgegevens een homogene structuur heeft, worden vaak convolutional verbindingen gebruikt voor meer informatie over geavanceerde functies van de gegevens. Gegevens bijvoorbeeld: in afbeelding, audio of video, ruimtelijke of tijdelijke dimensionaliteit kunnen zijn redelijk uniform.
+Wanneer de trainings gegevens een homogene structuur hebben, worden convolutional-verbindingen doorgaans gebruikt voor het leren van de gegevens op hoog niveau. Zo kan een ruimtelijke of tijdelijke maat eenheid in afbeeldings-, audio-of video gegevens tamelijk uniform zijn.
 
-Convolutional bundels maken gebruik van rechthoekige **kernels** die via de dimensies worden geschoven. In wezen elke kernel definieert een reeks gewichten toegepast in de lokale groepen, aangeduid als **kerneltoepassingen**. Elke toepassing kernel komt overeen met een knooppunt in de bronlaag, die is aangeduid als de **centraal knooppunt**. Het gewicht van een kernel worden door veel verbindingen gedeeld. In een convolutional bundel elke kernel rechthoekig is en alle kerneltoepassingen even groot zijn.
+Convolutional-bundels maken gebruik van rechthoekige **kernels** die door de afmetingen schuiven. In wezen definieert elke kernel een set gewichten die worden toegepast in lokale groepen, aangeduid als **kernel-toepassingen**. Elke kernel-toepassing komt overeen met een knoop punt in de bronlaag, dat het **centrale knoop punt**wordt genoemd. Het gewicht van een kernel wordt gedeeld tussen verschillende verbindingen. In een convolutional bundel is elke kernel rechthoekig en zijn alle kernel-toepassingen even groot.
 
-Convolutional bundels ondersteunen de volgende kenmerken:
+Convolutional-bundels ondersteunen de volgende kenmerken:
 
-**InputShape** definieert de dimensionaliteit van de bronlaag voor het doel van deze convolutional bundel. De waarde moet een tuple van positieve gehele getallen zijn. Het product van de gehele getallen moet gelijk zijn aan het aantal knooppunten in de bronlaag, maar anders hoeft niet overeenkomt met de dimensionaliteit gedeclareerd voor de bronlaag. De lengte van deze tuple wordt de **specifikaci** waarde voor de convolutional bundel. Specifikaci verwijst doorgaans naar het aantal argumenten of operanden met een functie kan duren.
+**InputShape** definieert de dimensionaliteit van de bronlaag voor de doel einden van deze convolutional-bundel. De waarde moet een tuple van positieve gehele getallen zijn. Het product van de gehele getallen moet gelijk zijn aan het aantal knoop punten in de bronlaag, maar anders hoeft het niet overeen te komen met de dimensionaliteit die voor de bronlaag is gedeclareerd. De lengte van deze tuple wordt de **ariteit** waarde voor de convolutional-bundel. Een ariteit verwijst doorgaans naar het aantal argumenten of operanden dat een functie kan uitvoeren.
 
-Gebruik de kenmerken definiëren van de shape en locaties van de kernels **KernelShape**, **Stride**, **opvulling**, **LowerPad**, en  **UpperPad**:
+Voor het definiëren van de vorm en locaties van de kernels, gebruikt u de kenmerken **KernelShape**, **stride**, **padding**, **LowerPad**en **UpperPad**:
 
-+ **KernelShape**: (vereist) definieert de dimensionaliteit van elke kernel voor de convolutional bundel. De waarde moet een tuple van positieve gehele getallen met een lengte die gelijk is aan de specifikaci van de bundel. Elk onderdeel van deze tuple is mag niet langer zijn dan het overeenkomstige onderdeel van **InputShape**.
++ **KernelShape**: (vereist) Hiermee wordt de dimensionaliteit van elke kernel voor de convolutional-bundel gedefinieerd. De waarde moet een tuple van positieve gehele getallen zijn met een lengte die gelijk is aan de ariteit van de bundel. Elk onderdeel van deze tuple mag niet groter zijn dan het bijbehorende onderdeel van **InputShape**.
 
-+ **Stride**: (optioneel) definieert de sliding stap grootte van de convolutiefilter (één stapgrootte voor elke dimensie), die de afstand tussen de centrale knooppunten. De waarde moet een tuple van positieve gehele getallen met een lengte die de specifikaci van de bundel is. Elk onderdeel van deze tuple is mag niet langer zijn dan het overeenkomstige onderdeel van **KernelShape**. De standaardwaarde is een tuple met alle onderdelen die gelijk is aan één.
++ **Stride**: (optioneel) Hiermee definieert u de verschuivende stap grootte van de convolutie (één stap grootte voor elke dimensie), de afstand tussen de centrale knoop punten. De waarde moet een tuple van positieve gehele getallen zijn met een lengte die de ariteit van de bundel is. Elk onderdeel van deze tuple mag niet groter zijn dan het bijbehorende onderdeel van **KernelShape**. De standaard waarde is een tuple met alle onderdelen die gelijk zijn aan een.
 
-+ **Delen van**: (optioneel) definieert het gewicht voor elke dimensie van de convolutiefilter delen. De waarde kan zijn één Booleaanse waarde of een tuple van Booleaanse waarden met een lengte die de specifikaci van de bundel is. Één Booleaanse waarde is uitgebreid om te worden van een tuple van de juiste lengte met alle onderdelen die gelijk is aan de opgegeven waarde. De standaardwaarde is een tuple die uit alle waar waarden bestaat.
++ **Delen**: (optioneel) Hiermee definieert u het delen van gewichten voor elke dimensie van de convolutie. De waarde kan een enkele Booleaanse waarde zijn of een tuple van Boole-waarden met een lengte die de ariteit van de bundel is. Een enkele Booleaanse waarde is uitgebreid tot een tuple met de juiste lengte en alle onderdelen die gelijk zijn aan de opgegeven waarde. De standaard waarde is een tuple die uit alle werkelijke waarden bestaat.
 
-+ **MapCount**: (optioneel) definieert het nummer van de functie voor de convolutional bundel wordt toegewezen. De waarde kan niet een afzonderlijke positieve gehele getallen of een tuple van positieve gehele getallen met een lengte die de specifikaci van de bundel. Een enkele gehele waarde is uitgebreid om te worden van een tuple van de juiste lengte met de eerste onderdelen die gelijk is aan de opgegeven waarde en de resterende onderdelen gelijk is aan een. De standaardwaarde is een. Het totale aantal toewijzingen van de functie is het product van de onderdelen van de tuple. Het kiezen van deze totale aantal voor de onderdelen bepaalt hoe de waarden van de kaart functie worden gegroepeerd in de doel-knooppunten.
++ **MapCount**: (optioneel) Hiermee wordt het aantal functie toewijzingen voor de convolutional-bundel gedefinieerd. De waarde kan een enkel positief geheel getal zijn of een tuple van positieve gehele getallen met een lengte die de ariteit van de bundel is. Een enkele integerwaarde wordt uitgebreid naar een tuple van de juiste lengte met de eerste onderdelen die gelijk zijn aan de opgegeven waarde en alle resterende onderdelen die gelijk zijn aan een. De standaard waarde is één. Het totale aantal functie overzichten is het product van de onderdelen van de tuple. De factoring van dit totale aantal over de onderdelen bepaalt hoe de functie waarden worden gegroepeerd in de doel knooppunten.
 
-+ **Gewicht**: (optioneel) het eerste gewicht voor de bundel definieert. De waarde moet een tuple van zwevende waarden met een lengte die is het aantal keren dat kernels het nummer van het gewicht per kernel, zoals verderop in dit artikel worden gedefinieerd. De standaardwaarden gebruiken worden willekeurig gegenereerd.
++ **Gewichten**: (optioneel) Hiermee wordt het oorspronkelijke gewicht voor de bundel gedefinieerd. De waarde moet een tuple van drijvende-komma waarden zijn met een lengte die het aantal kernels maal het aantal kernen per kernel is, zoals verderop in dit artikel wordt beschreven. De standaard gewichten worden wille keurig gegenereerd.
 
-Er zijn twee sets van eigenschappen die regelen opvulling, de eigenschappen worden sluiten elkaar wederzijds uit:
+Er zijn twee sets eigenschappen die opvulling bepalen, de eigenschappen sluiten elkaar wederzijds uit:
 
-+ **Opvulling**: (optioneel) bepaalt of de invoer moet worden aangevuld met behulp van een **opvulling standaardschema**. De waarde kan één Booleaanse waarde, of een tuple van Booleaanse waarden met een lengte die de specifikaci van de bundel kan zijn.
++ **Opvulling**: (optioneel) Hiermee wordt bepaald of de invoer moet worden aangevuld met een **standaard opvullings schema**. De waarde kan een enkele Booleaanse waarde zijn, of kan een tuple van Boole-waarden zijn met een lengte die de ariteit van de bundel is.
 
-    Één Booleaanse waarde is uitgebreid om te worden van een tuple van de juiste lengte met alle onderdelen die gelijk is aan de opgegeven waarde.
+    Een enkele Booleaanse waarde is uitgebreid tot een tuple met de juiste lengte en alle onderdelen die gelijk zijn aan de opgegeven waarde.
 
-    Als de waarde voor een dimensie waar is, worden de bron logisch opgevuld in die dimensie met de waarde nul cellen ter ondersteuning van aanvullende kerneltoepassingen, zodat de centrale knooppunten van de eerste en laatste kernels in die dimensie, de eerste en laatste knooppunten in die dimensie in de bronlaag. Dus, het aantal "dummy" knooppunten in elke dimensie wordt automatisch bepaald, precies past `(InputShape[d] - 1) / Stride[d] + 1` kernels in de bronlaag gevuld.
+    Als de waarde voor een dimensie waar is, wordt de bron logisch opgevuld in die dimensie met cellen met nulwaarden ter ondersteuning van extra kernel-toepassingen, zodat de centrale knoop punten van de eerste en laatste kernels in die dimensie het eerste en laatste knoop punt zijn in dat dimensie in de bronlaag. Daarom wordt het aantal "dummy"-knoop punten in elke dimensie automatisch bepaald, zodat er exact `(InputShape[d] - 1) / Stride[d] + 1` kernels in de opgevulde bronlaag passen.
 
-    Als de waarde voor een dimensie ONWAAR is, worden de kernels gedefinieerd, zodat het aantal knooppunten aan beide zijden die worden weggelaten hetzelfde (maximaal een verschil van 1 wordt). De standaardwaarde van dit kenmerk is een tuple met alle onderdelen die gelijk is aan de waarde False.
+    Als de waarde voor een dimensie onwaar is, worden de kernels gedefinieerd zodat het aantal knoop punten aan elke zijde die wordt verlaten hetzelfde is (tot een verschil van 1). De standaard waarde van dit kenmerk is een tuple waarbij alle onderdelen gelijk zijn aan false.
 
-+ **UpperPad** en **LowerPad**: (optioneel) Geef meer controle over de hoeveelheid opvulling te gebruiken. **Belangrijk:** Deze kenmerken kunnen worden gedefinieerd als en alleen als de **opvulling** eigenschap hierboven is ***niet*** gedefinieerd. De waarden moet tuples integer-waarde met een lengte die de specifikaci van de bundel. Wanneer deze kenmerken zijn opgegeven, wordt "dummy" knooppunten worden toegevoegd aan het einde van het onderste en bovenste van elke dimensie van de invoer-laag. Het aantal knooppunten die zijn toegevoegd aan het einde van het onderste en bovenste in elke dimensie wordt bepaald door **LowerPad**[i] en **UpperPad**[i] respectievelijk.
++ **UpperPad** en **LowerPad**: (optioneel) bieden meer controle over de hoeveelheid opvulling die moet worden gebruikt. **Belang rijk:** Deze kenmerken kunnen worden gedefinieerd als en alleen als de bovenstaande eigenschap **opvulling** hierboven ***niet*** is gedefinieerd. De waarden moeten Tuples met een waarde van integers zijn met een lengte van de ariteit van de bundel. Als deze kenmerken zijn opgegeven, worden pop-knoop punten toegevoegd aan de onderste en bovenste uiteinden van elke dimensie van de invoer laag. Het aantal knoop punten dat is toegevoegd aan de onderste en bovenste uiteinden van elke dimensie wordt bepaald door respectievelijk **LowerPad**[i] en **UpperPad**[i].
 
-    Om ervoor te zorgen dat de kernels alleen naar 'echte' knooppunten en niet naar "dummy" knooppunten overeenkomen, moeten de volgende voorwaarden worden voldaan:
-  - Elk onderdeel van **LowerPad** moet strikt minder dan `KernelShape[d]/2`.
-  - Elk onderdeel van **UpperPad** mag niet langer zijn dan `KernelShape[d]/2`.
-  - De standaardwaarde van deze kenmerken is een tuple met alle onderdelen die gelijk zijn aan 0.
+    Om ervoor te zorgen dat kernels alleen overeenkomen met "echte" knoop punten en niet naar Dummy-knoop punten, moet aan de volgende voor waarden worden voldaan:
+  - Elk onderdeel van **LowerPad** moet strikt kleiner zijn dan `KernelShape[d]/2`.
+  - Elk onderdeel van **UpperPad** mag niet groter zijn dan `KernelShape[d]/2`.
+  - De standaard waarde van deze kenmerken is een tuple met alle onderdelen die gelijk zijn aan 0.
 
-    De instelling **opvulling** = true kunt zoveel opvulling als nodig is voor het behouden van de 'center' van de kernel in de 'realtime' invoer. Hiermee wordt een en ander voor het berekenen van de uitvoergrootte van de gewijzigd. Over het algemeen de uitvoergrootte *D* wordt berekend als `D = (I - K) / S + 1`, waarbij `I` is de invoergrootte `K` is de grootte kernel `S` is de stride en `/` delen door geheel getal (afronden op nul is ). Als u UpperPad = [1, 1], de grootte van de invoer `I` is in feite 29, en dus `D = (29 - 5) / 2 + 1 = 13`. Echter, wanneer **opvulling** = true, in feite `I` opgehaald tegenaan omhoog door `K - 1`; daarom `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Door op te geven waarden voor **UpperPad** en **LowerPad** krijgt u veel meer controle over de opvulling aan dan als u stelt **opvulling** = true.
+    Met de instelling **opvulling** = waar kunt u zoveel opvulling gebruiken als nodig is om het ' Center ' van de kernel in de werkelijke invoer te blijven. Hiermee wijzigt u de wiskunde voor het berekenen van de uitvoer grootte. Over het algemeen wordt de uitvoer grootte *D* berekend als `D = (I - K) / S + 1`, waarbij `I` de invoer grootte is, `K` de kernel-grootte, `S` de stride is en `/` het gehele getal is (afronden naar nul). Als u UpperPad = [1, 1] instelt, is de invoer grootte `I` in feite 29, en dus `D = (29 - 5) / 2 + 1 = 13`. Echter, wanneer **padding** = True, in wezen `I` wordt gestoten door `K - 1`; Daarom `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Door waarden op te geven voor **UpperPad** en **LowerPad** krijgt u veel meer controle over de opvulling dan als u alleen **opvulling** = True instelt.
 
-Zie voor meer informatie over convolutional netwerken en hun toepassingen, de volgende artikelen:
+Raadpleeg de volgende artikelen voor meer informatie over convolutional-netwerken en hun toepassingen:
 
 + [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
 + [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
-## <a name="pooling-bundles"></a>Bundels groeperen
+## <a name="pooling-bundles"></a>Bundels van groepen
 
-Een **groeperen bundel** geometrie die vergelijkbaar is met convolutional connectiviteit, toepassing, maar hierbij vooraf gedefinieerde functies aan de waarden van de bron voor het afleiden van de waarde van de doel-knooppunt. Groepsgewijze verbindingen bundels hebben daarom geen trainable status (gewicht of vooroordelen). Groepsgewijze verbindingen bundels ondersteuning voor alle convolutional kenmerken, behalve **delen**, **MapCount**, en **gewichten**.
+Een **pooling bundel** past geometrie toe vergelijkbaar met convolutional-connectiviteit, maar gebruikt vooraf gedefinieerde functies voor waarden van het bron knooppunt om de waarde van het doel knooppunt af te leiden. Pooling bundels hebben daarom geen treinloze status (gewicht of bias). Pooling bundels bieden ondersteuning voor alle convolutional-kenmerken behalve **delen**, **MapCount**en **gewichten**.
 
-Normaal gesproken overlappen de kernels samengevat per aangrenzende groepsgewijze verbindingen eenheden niet. Als Stride [d] gelijk aan KernelShape [d] in elke dimensie is, is de laag die is verkregen de traditionele lokale groepsgewijze verbindingen laag, die meestal in convolutional neural networks gebruikt wordt. Elk bestemmingsknooppunt berekent het maximum of het gemiddelde van de activiteiten van de kernel in de bronlaag.
+Normaal gesp roken overlappen de kernels die worden samenvatten door aangrenzende pooling-eenheden niet. Als stride [d] gelijk is aan KernelShape [d] in elke dimensie, is de laag die wordt verkregen de traditionele lokale pooling Layer, die meestal wordt gebruikt in convolutional Neural Networks. Elk doel knooppunt berekent het maximum of het gemiddelde van de activiteiten van de kernel in de bronlaag.
 
-Het volgende voorbeeld wordt een groepering bundel:
+In het volgende voor beeld ziet u een pooling bundel:
 
 ```Net#
 hidden P1 [5, 12, 12]
@@ -244,43 +244,43 @@ hidden P1 [5, 12, 12]
   }
 ```
 
-+ De specifikaci van de bundel is 3: dat wil zeggen, de lengte van de tuples `InputShape`, `KernelShape`, en `Stride`.
-+ Het aantal knooppunten in de bronlaag is `5 * 24 * 24 = 2880`.
-+ Dit is een traditionele lokale groepsgewijze verbindingen layer omdat **KernelShape** en **Stride** gelijk zijn.
-+ Het aantal knooppunten in de doellaag is `5 * 12 * 12 = 1440`.
++ De ariteit van de bundel is 3: de lengte van de Tuples `InputShape`, `KernelShape`en `Stride`.
++ Het aantal knoop punten in de bronlaag is `5 * 24 * 24 = 2880`.
++ Dit is een traditionele lokale pooling-laag, omdat **KernelShape** en **stride** gelijk zijn.
++ Het aantal knoop punten in de doellaag is `5 * 12 * 12 = 1440`.
 
-Zie de volgende artikelen voor meer informatie over groepsgewijze verbindingen lagen:
+Zie de volgende artikelen voor meer informatie over het groeperen van lagen:
 
-+ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (Sectie 3.4)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (sectie 3,4)
 + [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
-## <a name="response-normalization-bundles"></a>Antwoord normalisering bundels
+## <a name="response-normalization-bundles"></a>Bundels van antwoord normalisatie
 
-**Antwoord normalisering** is een lokale normalisering schema die is geïntroduceerd door Geoffrey Hinton, et al., in het document [ImageNet classificatie met Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
+**Antwoord normalisatie** is een lokaal normalisatie schema dat voor het eerst werd geïntroduceerd door Geoffrey Hinton,, et al, in het paper [ImageNet-classificatie met diepe Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf).
 
-Antwoord normalisering wordt gebruikt om u te helpen generalisatie in neurale netwerken. Wanneer één neuron wordt uitgevoerd op het Activeringsniveau van een zeer hoge, wordt in een lokale antwoord normalisering laag het Activeringsniveau van de omringende neurons onderdrukt. Dit wordt gedaan met behulp van de drie parameters (`α`, `β`, en `k`) en een convolutional structuur (of de groep vorm). Elke neuron in de doellaag **y** komt overeen met een neuron **x** in de bronlaag. Het Activeringsniveau van **y** wordt bepaald door de volgende formule, waarbij `f` is het Activeringsniveau van een neuron en `Nx` is de kernel (of de set met de neurons in de groep van **x**), zoals gedefinieerd door de volgende convolutional structuur:
+Antwoord normalisatie wordt gebruikt om de generalisatie in neural-netten te helpen. Wanneer één neuron wordt geactiveerd op een zeer hoog activerings niveau, onderdrukt een lokale reactie-beveiligingslaag het activerings niveau van de omringende neurons. Dit wordt gedaan met behulp van drie para meters (`α`, `β`en `k`) en een convolutional-structuur (of een vorm van een groep). Elke neuron in de doellaag **y** komt overeen met een neuron **x** in de bronlaag. Het activerings niveau van **y** wordt gegeven door de volgende formule, waarbij `f` het activerings niveau van een neuron is, en `Nx` de kernel is (of de set die de neurons bevat in de groep **x**), zoals gedefinieerd door de volgende convolutional structuur
 
-![formule voor convolutional structuur](./media/azure-ml-netsharp-reference-guide/formula_large.png)
+![formule voor convolutional-structuur](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-Antwoord normalisering bundels ondersteuning voor alle convolutional kenmerken, behalve **delen**, **MapCount**, en **gewichten**.
+Bundels van antwoord normalisatie ondersteunen alle convolutional-kenmerken behalve **delen**, **MapCount**en **gewichten**.
 
-+ Als de kernel neurons in de dezelfde map als bevat ***x***, het normalisatie-schema wordt aangeduid als **hetzelfde normalisering toewijzen**. Voor het definiëren van dezelfde kaart normalisering, de eerste coördinaat in **InputShape** moet de waarde 1 hebben.
++ Als de kernel neurons in dezelfde toewijzing bevat als ***x***, wordt het normalisatie schema **dezelfde toewijzings normalisatie**genoemd. Als u dezelfde toewijzings normalisatie wilt definiëren, moet de eerste coördinaat in **InputShape** de waarde 1 hebben.
 
-+ Als de kernel neurons in dezelfde ruimtelijke positie als bevat ***x***, maar de neurons zijn in andere toewijzingen, het schema normalisering heet **over meerdere toewijzingen normalisering**. Dit type antwoord normalisering implementeert een vorm van laterale maar geïnspireerd op het type gevonden in de echte neurons, het maken van de concurrentie voor grote activering niveaus onder neuron uitvoer berekend op de andere kaarten. Om te definiëren via maps normalisering, moet de eerste coördinaat een geheel getal groter dan één en niet langer zijn dan het aantal kaarten, en de rest van de coördinaten moet de waarde 1 hebben.
++ Als de kernel neurons in dezelfde ruimtelijke positie bevat als ***x***, maar de neurons zich in andere kaarten bevinden, wordt het normalisatie schema aangeroepen in de vorm van een **genormaliseerd toewijzing**. Dit type antwoord normalisatie implementeert een vorm van een zijdelingse remming die is geïnspireerd op het type dat in real neurons is gevonden, waardoor er concurrentie wordt gemaakt voor grote activerings niveaus onder neuron uitvoer die op verschillende kaarten zijn berekend. Voor het definiëren van de toewijzings normalisatie moet de eerste coördinaat een geheel getal zijn dat groter is dan één en niet groter is dan het aantal kaarten, en de rest van de coördinaten moet de waarde 1 hebben.
 
-Omdat een vooraf gedefinieerde functie antwoord normalisering bundels op waarden van de bron-knooppunt om te bepalen van de waarde van de doel-knooppunt toepassen, hebben ze geen trainable status (gewicht of vooroordelen).
+Omdat de bundels van antwoord vragen een vooraf gedefinieerde functie Toep assen op de waarden van het bron knooppunt om de waarde van het doel knooppunt te bepalen, hebben ze geen treinloze status (gewicht of bias).
 
 > [!NOTE]
-> De knooppunten in de doellaag komen overeen met neurons die de centrale knooppunten van de kernels. Bijvoorbeeld, als `KernelShape[d]` is oneven, `KernelShape[d]/2` komt overeen met het centrale kernel-knooppunt. Als `KernelShape[d]` even getal is, is de centrale knooppunt is `KernelShape[d]/2 - 1`. Dus als `Padding[d]` is ONWAAR, de eerste en de laatste `KernelShape[d]/2` knooppunten geen bijbehorende knooppunten in de doellaag. Om te voorkomen dat deze situatie, definiëren **opvulling** als [true, true,..., true].
+> De knoop punten in de doellaag komen overeen met neurons die de centrale knoop punten van de kernels zijn. Als `KernelShape[d]` bijvoorbeeld oneven is, dan komt `KernelShape[d]/2` overeen met het knoop punt van de centrale kernel. Als `KernelShape[d]` even is, bevindt het centrale knoop punt zich op `KernelShape[d]/2 - 1`. Als `Padding[d]` is ingesteld op False, hebben de eerste en laatste `KernelShape[d]/2` knoop punten geen corresponderende knoop punten in de doellaag. Om deze situatie te voor komen, definieert u **opvulling** als [True, True,..., True].
 
-Naast de vier kenmerken die eerder zijn beschreven, ondersteuning antwoord normalisering bundels ook voor de volgende kenmerken:
+Naast de vier kenmerken die eerder zijn beschreven, worden ook de volgende kenmerken ondersteund door bundels van antwoord normalisatie:
 
-+ **Alpha**: (vereist) Hiermee wordt een drijvende-kommawaarde die overeenkomt met `α` in de vorige formule.
-+ **Bèta**: (vereist) Hiermee wordt een drijvende-kommawaarde die overeenkomt met `β` in de vorige formule.
-+ **Offset**: (optioneel) Hiermee wordt een drijvende-kommawaarde die overeenkomt met `k` in de vorige formule. Wordt standaard op 1.
++ **Alfa**: (vereist) Hiermee geeft u een drijvende-komma waarde op die overeenkomt met `α` in de vorige formule.
++ **Bèta**: (vereist) Hiermee geeft u een drijvende-komma waarde op die overeenkomt met `β` in de vorige formule.
++ **Offset**: (optioneel) Hiermee geeft u een drijvende-komma waarde op die overeenkomt met `k` in de vorige formule. De standaard waarde is 1.
 
-Het volgende voorbeeld wordt een antwoord normalisering bundel met behulp van deze kenmerken gedefinieerd:
+In het volgende voor beeld wordt een bundel met antwoord op basis van deze kenmerken gedefinieerd:
 
 ```Net#
 hidden RN1 [5, 10, 10]
@@ -292,13 +292,13 @@ from P1 response norm {
   }
 ```
 
-+ De bronlaag omvat vijf maps, elk met aof-dimensie van 12 x 12, tellen in 1440 knooppunten.
-+ De waarde van **KernelShape** geeft aan dat dit een dezelfde normalisering kaartLaag, waarbij de groep een rechthoek 3 x 3 is.
-+ De standaardwaarde van **opvulling** is ingesteld op False, waardoor de doellaag slechts 10 knooppunten is in elke dimensie. Toevoegen als u wilt opnemen een knooppunt in de doellaag die overeenkomt met elk knooppunt in de bronlaag, opvulling = [true, true, true]; en wijzig de grootte van RN1 in [5, 12, 12].
++ De bronlaag bevat vijf kaarten, elk met een AOF dimensie van 12x12, in totaal 1440 knoop punten.
++ De waarde van **KernelShape** geeft aan dat dit een even laag is voor het toewijzen van een kaart, waarbij de groep een drie hoek rechthoek is.
++ De standaard waarde voor **opvulling** is onwaar, waardoor de doellaag slechts tien knoop punten in elke dimensie heeft. Als u één knoop punt in de doellaag wilt toevoegen dat overeenkomt met elk knoop punt in de bronlaag, voegt u padding = [True, True, True]; en wijzig de grootte van RN1 in [5, 12, 12].
 
-## <a name="share-declaration"></a>Verklaring delen
+## <a name="share-declaration"></a>Share declaratie
 
-NET # ondersteunt (optioneel) meerdere pakketten met gedeelde gewicht definiëren. Het gewicht van elke twee pakketten kunnen worden gedeeld als hun structuren hetzelfde zijn. De volgende syntaxis definieert bundels met gedeelde gewicht:
+Net # biedt de mogelijkheid om meerdere bundels met gedeeld gewichten te definiëren. De gewichten van de twee bundels kunnen worden gedeeld als de bijbehorende structuren hetzelfde zijn. De volgende syntaxis definieert bundels met gedeeld gewichten:
 
 ```Net#
 share-declaration:
@@ -328,7 +328,7 @@ share-declaration:
     identifier
 ```
 
-De volgende share-declaratie benoemt bijvoorbeeld de laagnamen van de die aangeeft dat de gewichten en vooroordelen mag worden gedeeld:
+De volgende share-declaratie bevat bijvoorbeeld de laag namen, waarmee wordt aangegeven dat beide gewichten en BIASS moeten worden gedeeld:
 
 ```Net#
 Const {
@@ -350,11 +350,11 @@ output Result [2] {
 share { H1, H2 } // share both weights and biases
 ```
 
-+ De invoerfuncties zijn in twee gelijke grootte invoer lagen gepartitioneerd.
-+ Hogere niveau functies op de twee lagen van de invoer moet u de verborgen lagen berekenen.
-+ De share-declaratie geeft aan dat *H1* en *H2* op dezelfde manier van hun respectieve invoer moet worden berekend.
++ De invoer functies zijn gepartitioneerd in twee even grote invoer lagen.
++ De verborgen lagen berekenen vervolgens de functies op een hoger niveau op de twee invoer lagen.
++ De share-declaratie geeft aan dat *H1* en *H2* op dezelfde manier moeten worden berekend dan bij hun respectieve invoer.
 
-U kunt ook kan dit worden opgegeven met twee afzonderlijke share-declaraties als volgt:
+U kunt dit ook opgeven met twee afzonderlijke shares-declaraties als volgt:
 
 ```Net#
 share { Data1 => H1, Data2 => H2 } // share weights
@@ -362,15 +362,15 @@ share { Data1 => H1, Data2 => H2 } // share weights
     share { 1 => H1, 1 => H2 } // share biases
 ```
 
-U kunt de verkorte vorm alleen als de lagen één bundel bevatten. In het algemeen is delen mogelijk alleen wanneer de structuur van de relevante identiek zijn is, wat betekent dat ze dezelfde grootte, dezelfde convolutional geometrie, enzovoort hebben.
+U kunt het korte formulier alleen gebruiken wanneer de lagen één bundel bevatten. Over het algemeen is delen alleen mogelijk als de relevante structuur identiek is, wat betekent dat ze dezelfde grootte hebben, dezelfde convolutional geometrie, enzovoort.
 
-## <a name="examples-of-net-usage"></a>Voorbeelden van de Net # gebruik
+## <a name="examples-of-net-usage"></a>Voor beelden van het gebruik van net #
 
-Deze sectie bevat enkele voorbeelden van hoe u Net # kunt verborgen lagen toevoegen, het definiëren van de manier waarop verborgen lagen met andere lagen communiceren en convolutional netwerken bouwen.
+In deze sectie vindt u enkele voor beelden van hoe u net # kunt gebruiken om verborgen lagen toe te voegen, de manier definiëren waarop verborgen lagen met andere lagen communiceren en convolutional-netwerken bouwen.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definieer een eenvoudig aangepaste neurale netwerk: 'Hallo wereld'-voorbeeld
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Een eenvoudig aangepast Neural-netwerk definiëren: Hallo wereld-voor beeld
 
-Dit eenvoudige voorbeeld ziet u hoe u een neuraal netwerk-model met één verborgen laag maken.
+In dit eenvoudige voor beeld ziet u hoe u een Neural-netwerk model met één verborgen laag maakt.
 
 ```Net#
 input Data auto;
@@ -378,15 +378,15 @@ hidden H [200] from Data all;
 output Out [10] sigmoid from H all;
 ```
 
-Het voorbeeld ziet u enkele eenvoudige opdrachten als volgt:
+In het voor beeld ziet u enkele eenvoudige opdrachten:
 
-+ De eerste regel wordt gedefinieerd voor de invoer-laag (met de naam `Data`). Wanneer u gebruikt de `auto` trefwoord, het neurale netwerk omvat alle kolommen van de functie automatisch in de invoer voorbeelden.
-+ De tweede regel maakt de verborgen laag. De naam van de `H` is toegewezen aan de verborgen laag met 200 knooppunten. Deze laag is volledig wordt verbonden met de invoer-laag.
-+ De derde regel definieert de uitvoer-laag (met de naam `Out`), die 10 uitvoerknooppunten bevat. Als het neurale netwerk wordt gebruikt voor classificatie, is er een uitvoer van de knooppunten per klasse. Het sleutelwoord **sigmoid** geeft aan dat de uitvoer-functie wordt toegepast op de uitvoer-laag.
++ De eerste regel definieert de invoer laag (met de naam `Data`). Wanneer u het sleutel woord `auto` gebruikt, bevat het Neural-netwerk automatisch alle functie kolommen in de invoer voorbeelden.
++ De tweede regel maakt de verborgen laag. De naam `H` is toegewezen aan de verborgen laag, met 200 knoop punten. Deze laag is volledig verbonden met de invoer laag.
++ De derde regel definieert de uitvoer laag (met de naam `Out`), die 10 uitvoer knooppunten bevat. Als het Neural-netwerk wordt gebruikt voor classificatie, is er één uitvoer knooppunt per klasse. Het tref woord **sigmoid** geeft aan dat de functie output wordt toegepast op de uitvoer laag.
 
-### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Meerdere verborgen lagen definiëren: computer vision-voorbeeld
+### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Meerdere verborgen lagen definiëren: computer Vision-voor beeld
 
-Het volgende voorbeeld ziet u hoe u een complexere neural network, met meerdere lagen van aangepaste verborgen definiëren.
+In het volgende voor beeld ziet u hoe u een iets complex Neural netwerk met meerdere aangepaste verborgen lagen definieert.
 
 ```Net#
 // Define the input layers
@@ -412,17 +412,17 @@ from MetaData all;
 }
 ```
 
-In dit voorbeeld ziet u verschillende functies van de specificatietaal van neurale netwerken:
+In dit voor beeld ziet u verschillende functies van de Neural Networks Specification Language:
 
-+ De structuur heeft twee invoer lagen, `Pixels` en `MetaData`.
-+ De `Pixels` laag is een bronlaag voor twee verbinding-bundels met doel-lagen, `ByRow` en `ByCol`.
-+ De lagen `Gather` en `Result` bestemming lagen in meerdere pakketten van de verbinding.
-+ De uitvoer-laag, `Result`, is een doellaag in twee verbinding bundels, één met de tweede niveau verborgen laag `Gather` als een doellaag, en de andere met de invoer laag `MetaData` als een doellaag.
-+ De verborgen lagen, `ByRow` en `ByCol`, gefilterde verbinding opgeven met behulp van predikaat expressies. Preciezer nog, het knooppunt in `ByRow` op [x, y] is verbonden met de knooppunten in `Pixels` dat zijn de eerste index coördineren gelijk zijn aan het knooppunt van de eerste coördineren, x. Op dezelfde manier het knooppunt in `ByCol` op [x, y] is verbonden met de knooppunten in `Pixels` dat zijn de tweede index coördineren binnen een van het knooppunt van de tweede coördinaat, y.
++ De structuur bevat twee invoer lagen, `Pixels` en `MetaData`.
++ De laag `Pixels` is een bronlaag voor twee verbindings bundels, met behulp van doel lagen, `ByRow` en `ByCol`.
++ De lagen `Gather` en `Result` zijn doel lagen in meerdere verbindings bundels.
++ De uitvoer laag, `Result`, is een doellaag in twee verbindings bundels; een met het tweede niveau verborgen laag `Gather` als doellaag en de andere met de invoer laag `MetaData` als een doellaag.
++ Met de verborgen lagen, `ByRow` en `ByCol`, geeft u gefilterde connectiviteit op met behulp van predicaat expressies. Nauw keuriger is het knoop punt in `ByRow` op [x, y] verbonden met de knoop punten in `Pixels` die de eerste index coördinaat hebben die gelijk is aan de eerste coördinaat van het knoop punt, x. Op dezelfde manier is het knoop punt in `ByCol` op [x, y] verbonden met de knoop punten in `Pixels` die de tweede index coördinaat hebben binnen een van de tweede coördinaat van het knoop punt, y.
 
-### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Definieer een convolutional network voor multiklassen classificatie: cijfer erkenning voorbeeld
+### <a name="define-a-convolutional-network-for-multiclass-classification-digit-recognition-example"></a>Definieer een convolutional-netwerk voor de classificatie van een multi klasse: cijfer herkennings voorbeeld
 
-De definitie van de volgende network is ontworpen voor het herkennen van getallen en ziet u enkele geavanceerde technieken voor het aanpassen van een neural network.
+De definitie van het volgende netwerk is ontworpen voor het herkennen van getallen en illustreert een aantal geavanceerde technieken voor het aanpassen van een Neural-netwerk.
 
 ```Net#
 input Image [29, 29];
@@ -446,20 +446,20 @@ hidden Hid3 [100] from Conv2 all;
 output Digit [10] from Hid3 all;
 ```
 
-+ De structuur heeft één invoer-laag, `Image`.
-+ Het sleutelwoord `convolve` geeft aan dat de naam van de lagen `Conv1` en `Conv2` convolutional lagen. Elk van deze laag declaraties wordt gevolgd door een lijst van de kenmerken convolutiefilter.
-+ De net is een derde verborgen laag `Hid3`, die volledig is verbonden met de tweede verborgen laag `Conv2`.
-+ De uitvoer-laag, `Digit`, is alleen verbonden met de derde verborgen laag `Hid3`. Het sleutelwoord `all` geeft aan dat de uitvoer-laag volledig is verbonden met `Hid3`.
-+ De specifikaci van de convolutiefilter is drie: de lengte van de tuples `InputShape`, `KernelShape`, `Stride`, en `Sharing`.
-+ Het aantal gewicht per kernel is `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Of `26 * 50 = 1300`.
-+ U kunt de knooppunten in de verborgen laag als volgt berekend:
++ De structuur heeft één invoer laag, `Image`.
++ Het sleutel woord `convolve` geeft aan dat de lagen met de naam `Conv1` en `Conv2` convolutional-lagen zijn. Elk van deze laag declaraties wordt gevolgd door een lijst met de convolutie kenmerken.
++ Het net heeft een derde verborgen laag, `Hid3`, die volledig is verbonden met de tweede verborgen laag, `Conv2`.
++ De uitvoer laag, `Digit`, is alleen verbonden met de derde verborgen laag, `Hid3`. Het sleutel woord `all` geeft aan dat de uitvoer laag volledig is verbonden met `Hid3`.
++ De ariteit van de convolutie is drie: de lengte van de Tuples `InputShape`, `KernelShape`, `Stride`en `Sharing`.
++ Het aantal gewichten per kernel is `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Of `26 * 50 = 1300`.
++ U kunt als volgt de knoop punten in elke verborgen laag berekenen:
 
     `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
-+ Het totale aantal knooppunten kan worden berekend met behulp van de gedeclareerde dimensionaliteit van de laag [50, 5, 5], als volgt: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ Omdat `Sharing[d]` False is alleen voor `d == 0`, is het aantal kernels `MapCount * NodeCount\[0] = 10 * 5 = 50`.
++ Het totale aantal knoop punten kan worden berekend met behulp van de gedeclareerde dimensionaliteit van de laag, [50, 5, 5], als volgt: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
++ Omdat `Sharing[d]` alleen onwaar is voor `d == 0`, wordt het aantal kernels `MapCount * NodeCount\[0] = 10 * 5 = 50`.
 
 ## <a name="acknowledgements"></a>Bevestigingen
 
-De Net #-taal voor het aanpassen van de architectuur van neurale netwerken is bij Microsoft ontwikkeld door Shon Katzenberger (Architect, Machine Learning) en Alexey Kamenev (Software Engineer, Microsoft Research). Het wordt intern gebruikt voor machine learning-projecten en toepassingen, variërend van detectie van de installatiekopie met text analytics. Zie voor meer informatie, [Neurale netwerken in Azure Machine Learning studio - Inleiding tot Net #](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)
+De net # taal voor het aanpassen van de architectuur van Neural-netwerken is ontwikkeld door micro soft Shon Katzenberger (architect, Machine Learning) en Alexey Kamenev (software engineer, micro soft Research). Het wordt intern gebruikt voor machine learning projecten en toepassingen variërend van afbeeldings detectie tot tekst analyse. Zie [neural-netten in azure machine learning Studio-Introduction to net # (](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx) Engelstalig) voor meer informatie.

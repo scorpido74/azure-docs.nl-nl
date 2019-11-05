@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 08/06/2019
-ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 9fbe4f34bb27d2de662f11dbdd047356ff3d3941
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720161"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497349"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -22,41 +22,40 @@ De werk ruimte is de resource op het hoogste niveau voor Azure Machine Learning,
 
 Wanneer u een model hebt dat u wilt, registreert u het bij de werk ruimte. Vervolgens gebruikt u de geregistreerde model-en Score scripts om te implementeren op Azure Container Instances, Azure Kubernetes-service of een veld-Programmeer bare poort matrix (FPGA) als een HTTP-eind punt op basis van de REST. U kunt het model ook implementeren op een Azure IoT Edge-apparaat als een module.
 
+Prijzen en functies die beschikbaar zijn, zijn afhankelijk van het feit of [Basic of ENTER prise Edition](overview-what-is-azure-ml.md#sku) is geselecteerd voor de werk ruimte. U selecteert de editie wanneer u [de werk ruimte maakt](#create-workspace).  U kunt ook een [upgrade uitvoeren](#upgrade) van Basic naar Enter prise Edition.
+
 ## <a name="taxonomy"></a>Taxonomie 
 
 Een taxonomie van de werk ruimte wordt geïllustreerd in het volgende diagram:
 
-[![Taxonomie van werkruimte](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[taxonomie van ![werk ruimte](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 In het diagram worden de volgende onderdelen van een werk ruimte weer gegeven:
 
-+ Een werk ruimte kan VM- [vm's](tutorial-1st-experiment-sdk-setup.md)bevatten, cloud resources die zijn geconfigureerd met de python-omgeving die nodig is om Azure machine learning uit te voeren.
++ Een werk ruimte kan [Azure machine learning reken instanties](concept-compute-instance.md)bevatten, cloud resources die zijn geconfigureerd met de python-omgeving die nodig is om Azure machine learning uit te voeren.
 + [Gebruikers rollen](how-to-assign-roles.md) bieden u de mogelijkheid om uw werk ruimte te delen met andere gebruikers, teams of projecten.
 + [Reken doelen](concept-azure-machine-learning-architecture.md#compute-targets) worden gebruikt om uw experimenten uit te voeren.
 + Wanneer u de werk ruimte maakt, worden er ook [gekoppelde resources](#resources) voor u gemaakt.
-+ [Experimenten](concept-azure-machine-learning-architecture.md#experiments) zijn trainings uitvoeringen die u gebruikt om uw modellen te bouwen.  U kunt experimenten maken en uitvoeren met
-    + De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
-    + De sectie [geautomatiseerde machine learning experimenten (preview)](how-to-create-portal-experiments.md) in de Azure portal of de landings pagina van uw werk ruimte (preview).
-    + De [visuele interface (preview-versie)](ui-concept-visual-interface.md).
++ [Experimenten](concept-azure-machine-learning-architecture.md#experiments) zijn trainings uitvoeringen die u gebruikt om uw modellen te bouwen.  
 + [Pijp lijnen](concept-azure-machine-learning-architecture.md#ml-pipelines) zijn herbruikbare werk stromen voor trainingen en trainingen van uw model.
 + Gegevens [sets](concept-azure-machine-learning-architecture.md#datasets-and-datastores) bieden ondersteuning bij het beheer van de data die u gebruikt voor model training en het maken van pijp lijnen.
 + Zodra u een model hebt dat u wilt implementeren, maakt u een geregistreerd model.
-+ Gebruik het geregistreerde model en een score script om een [implementatie](concept-azure-machine-learning-architecture.md#deployment)te maken.
++ Gebruik het geregistreerde model en een score script om een [implementatie-eind punt](concept-azure-machine-learning-architecture.md#endpoints)te maken.
 
 ## <a name="tools-for-workspace-interaction"></a>Hulp middelen voor werkruimte interactie
 
 U kunt op de volgende manieren met uw werk ruimte werken:
 
 + Op het web:
-    + [Azure Portal](https://portal.azure.com)
-    + De [landings pagina van uw werk ruimte (preview-versie)](https://ml.azure.com)
-    + De [visuele interface (preview-versie)](ui-concept-visual-interface.md)
-+ In python met Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+    + [Azure Machine Learning Studio](https://ml.azure.com) 
+    + [Azure machine learning Designer (preview)](concept-designer.md) : alleen beschikbaar in [Enter prise Edition](overview-what-is-azure-ml.md#sku) -werk ruimten.
++ In een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
++ In elke R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Op de opdracht regel met behulp van de Azure Machine Learning [cli-extensie](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)
 
 ## <a name="machine-learning-with-a-workspace"></a>Machine learning met een werk ruimte
 
-Machine learning-taken lezen en/of schrijven artefacten naar uw werk ruimte. 
+Machine learning-taken lezen en/of schrijven artefacten naar uw werk ruimte.
 
 + Voer een experiment uit om een model voor het schrijven van modellen te trainen in de werk ruimte.
 + Gebruik automatische ML om een model te trainen-schrijf de resultaten van de training naar de werk ruimte.
@@ -70,30 +69,41 @@ Machine learning-taken lezen en/of schrijven artefacten naar uw werk ruimte.
 
 U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 
-| Werkruimte beheer taak   | Portal              | SDK        | CLI        |
-|---------------------------|------------------|------------|------------|
-| Een werkruimte maken        | **&check;**     | **&check;** | **&check;** |
-| Reken resources maken en beheren    | **&check;**   | **&check;** |  **&check;**   |
-| Toegang tot de werk ruimte beheren    | **&check;**   | |  **&check;**    |
-| Een VM voor een notebook maken | **&check;**   | |     |
+| Werkruimte beheer taak   | Portal              | Studio | Python SDK/R SDK       | CLI        |
+|---------------------------|---------|---------|------------|------------|
+| Een werkruimte maken        | **&check;**     | | **&check;** | **&check;** |
+| Toegang tot de werk ruimte beheren    | **&check;**   || |  **&check;**    |
+| Bijwerken naar Enter prise Edition    | **&check;** |  | |     |
+| Reken resources maken en beheren    |   | **&check;** | **&check;** |  **&check;**   |
+| Een reken instantie maken | **&check;**  | **&check;** | **&check;** |     |
+
+> [!NOTE]
+> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
+>Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken.
 
 ## <a name='create-workspace'></a>Een werk ruimte maken
 
-Er zijn meerdere manieren om een werk ruimte te maken.
+Wanneer u een werk ruimte maakt, bepaalt u of u deze maakt met [Basic of ENTER prise Edition](overview-what-is-azure-ml.md#sku). De editie bepaalt de functies die beschikbaar zijn in de werk ruimte. Enter prise Edition biedt onder andere functies toegang tot [Azure machine learning Designer](concept-designer.md) en de Studio-versie van het bouwen van [geautomatiseerde machine learning experimenten](tutorial-first-experiment-automated-ml.md).  Zie [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details/machine-learning/)voor meer informatie en prijs informatie.
+
+Er zijn meerdere manieren om een werk ruimte te maken:  
 
 * Gebruik de [Azure Portal](how-to-manage-workspace.md) voor een punt-en-klik-interface om elke stap stapsgewijs te door lopen.
 * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) gebruiken om een werk ruimte te maken in de vlucht vanuit Python-scripts of Jupiter-notebooks
 * Gebruik een [Azure Resource Manager sjabloon](how-to-create-workspace-template.md) of de [Azure machine learning cli](reference-azure-machine-learning-cli.md) wanneer u het maken van de zakelijke beveiligings normen wilt automatiseren of aanpassen.
 * Als u in Visual Studio code werkt, gebruikt u de [VS code-extensie](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code).
 
+## <a name="upgrade"></a>Bijwerken naar Enter prise Edition
+
+U kunt [uw werk ruimte bijwerken met behulp van de Basic-naar-Enter prise-editie](how-to-manage-workspace.md#upgrade) met Azure Portal. U kunt een Enter prise Edition-werk ruimte niet naar een Basic editie-werk ruimte downgradeen. 
+
 ## <a name="resources"></a>Gekoppelde resources
 
-Wanneer u een nieuwe werkruimte maakt, wordt automatisch verschillende Azure-resources die worden gebruikt door de werkruimte gemaakt:
+Wanneer u een nieuwe werk ruimte maakt, worden er automatisch verschillende Azure-resources gemaakt die worden gebruikt door de werk ruimte:
 
-+ [Azure container Registry](https://azure.microsoft.com/services/container-registry/): Registreert docker-containers die u tijdens de training gebruikt en wanneer u een model implementeert. Om de kosten te minimaliseren, wordt ACR **Lazy geladen** totdat implementatie installatie kopieën zijn gemaakt.
-+ [Azure Storage account](https://azure.microsoft.com/services/storage/): Wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw laptop-Vm's, worden hier ook opgeslagen.
-+ [Azure-toepassing Insights](https://azure.microsoft.com/services/application-insights/): Slaat bewakings informatie over uw modellen op.
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Slaat geheimen op die worden gebruikt door Compute-doelen en andere gevoelige informatie die nodig is voor de werk ruimte.
++ [Azure container Registry](https://azure.microsoft.com/services/container-registry/): registreert docker-containers die u tijdens de training gebruikt en wanneer u een model implementeert. Om de kosten te minimaliseren, wordt ACR **Lazy geladen** totdat implementatie installatie kopieën zijn gemaakt.
++ [Azure Storage account](https://azure.microsoft.com/services/storage/): wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw Azure Machine Learning Compute-exemplaar worden hier ook opgeslagen.
++ [Azure-toepassing Insights](https://azure.microsoft.com/services/application-insights/): slaat bewakings informatie over uw modellen op.
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): slaat geheimen op die worden gebruikt door Compute-doelen en andere gevoelige informatie die nodig is voor de werk ruimte.
 
 > [!NOTE]
 > Naast het maken van nieuwe versies, kunt u ook bestaande Azure-Services gebruiken.
@@ -105,4 +115,7 @@ Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 + [Overzicht van Azure Machine Learning](overview-what-is-azure-ml.md)
 + [Een werkruimte maken](how-to-manage-workspace.md)
 + [Een werkruimte beheren](how-to-manage-workspace.md)
-+ [Zelfstudie: een model trainen](tutorial-train-models-with-aml.md)
++ [Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK](tutorial-1st-experiment-sdk-setup.md)
++ [Zelf studie: aan de slag met Azure Machine Learning met de R SDK]( tutorial-1st-r-experiment.md)
++ [Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning](tutorial-first-experiment-automated-ml.md) (alleen beschikbaar in de [Enter prise Edition](overview-what-is-azure-ml.md#sku) -werk ruimten)
++ [Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie](tutorial-designer-automobile-price-train-score.md) (alleen beschikbaar in werk ruimten voor [Enter prise Edition](overview-what-is-azure-ml.md#sku) )

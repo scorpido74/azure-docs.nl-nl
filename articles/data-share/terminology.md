@@ -1,21 +1,21 @@
 ---
-title: Preview-terminologie van Azure data share
-description: Meer informatie over algemene termen die worden gebruikt voor het beschrijven van resources die worden gebruikt in azure data share Preview (gegevens provider, gegevens verbruiker, gegevens share, share abonnement, moment opname, uitnodiging, ontvanger)
+title: Azure Data Share-terminologie
+description: Meer informatie over algemene termen die worden gebruikt voor het beschrijven van resources die worden gebruikt in de Azure-gegevens share (gegevens provider, gegevens verbruiker, gegevens share, share abonnement, moment opname, uitnodiging, ontvanger)
+ms.service: data-share
 author: joannapea
 ms.author: joanpo
-ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166274"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468552"
 ---
-# <a name="azure-data-share-preview-concepts"></a>Azure data share preview-concepten 
+# <a name="azure-data-share-concepts"></a>Concepten van Azure data share 
 
-Azure data share preview introduceert een aantal nieuwe terminologie met betrekking tot het delen van gegevens. In dit artikel worden enkele veelgebruikte termen beschreven die in de service kunnen worden gebruikt. 
+Azure data share introduceert een aantal nieuwe terminologie met betrekking tot het delen van gegevens. In dit artikel worden enkele veelgebruikte termen beschreven die in de service kunnen worden gebruikt. 
 
 ## <a name="data-provider"></a>Gegevens provider
 
@@ -47,7 +47,7 @@ Een gegevens provider kan een moment opname-instelling voor een gegevens share i
 
 Als een gegevens provider deze instelling inschakelt, kan een interval voor een terugkeer patroon worden geselecteerd. Het interval voor het terugkeer patroon kan elk uur of dagelijks zijn. 
 
-Een gegevens verbruiker heeft de optie om deel te nemen aan dit momentopname schema om incrementele updates te ontvangen, waaronder alle gegevens die zijn gewijzigd sinds de eerste keer een nieuwe moment opname heeft gegenereerd. 
+Een gegevens verbruiker heeft de mogelijkheid om zich aan te melden bij dit momentopname schema voor het ontvangen van incrementele updates, waaronder alle gegevens die zijn gewijzigd sinds de eerste keer een nieuwe moment opname heeft gegenereerd. 
 
 ## <a name="invitation"></a>Nodig
 
@@ -64,4 +64,3 @@ Een ontvanger is iemand die een uitnodiging voor een gegevens share ontvangt. No
 ## <a name="next-steps"></a>Volgende stappen
 
 Ga door naar de zelf studie [uw gegevens delen](share-your-data.md) voor meer informatie over het delen van gegevens.
-

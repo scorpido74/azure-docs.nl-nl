@@ -1,7 +1,7 @@
 ---
 title: Help voor voor spelling van patronen-LUIS
 titleSuffix: Azure Cognitive Services
-description: Een patroon kunt u meer nauwkeurigheid voor een doel zonder op te geven veel meer uitingen krijgen.
+description: Met een patroon kunt u een grotere nauwkeurigheid verkrijgen voor een intentie zonder te voorzien in veel meer uitingen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,37 +9,37 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: bad3bdc2b4508c082ca50647d5de5e7265c763a1
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4ca3a27a63f84eccb66b24d5046e2ae7d751387d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639190"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487556"
 ---
-# <a name="patterns-improve-prediction-accuracy"></a>Patronen verbeteren nauwkeurigheid
-Patronen zijn ontworpen voor betere nauwkeurigheid wanneer verschillende uitingen vergelijkbaar zijn.  Een patroon kunt u meer nauwkeurigheid voor een doel zonder op te geven veel meer uitingen krijgen. 
+# <a name="patterns-improve-prediction-accuracy"></a>Nauw keurigheid van de voor spelling verbeteren
+Patronen zijn ontworpen om de nauw keurigheid te verbeteren wanneer verschillende uitingen zeer vergelijkbaar zijn.  Met een patroon kunt u een grotere nauwkeurigheid verkrijgen voor een intentie zonder te voorzien in veel meer uitingen. 
 
-## <a name="patterns-solve-low-intent-confidence"></a>Patronen oplossen lage intentie vertrouwen
-Houd rekening met een Human Resources-app die in de organisatie-grafiek ten opzichte van een werknemer-rapporten. Gezien de naam en de relatie van een werknemer, retourneert LUIS de werknemers die betrokken zijn. Overweeg een werk nemer, Tom, met de naam van een manager en een team van ondergeschikten met de naam: Michael, Rebecca en Carl.
+## <a name="patterns-solve-low-intent-confidence"></a>Patronen voor minder betrouw baarheid oplossen
+Overweeg een Human resources-app die rapporteert over het organigram in relatie tot een werk nemer. Op basis van de naam en relatie van een werk nemer LUIS worden de betrokken werk nemers geretourneerd. Overweeg een werk nemer, Tom, met de naam van een manager en een team van ondergeschikten met de naam Michael, Rebecca en Carl.
 
 ![Afbeelding van organigram](./media/luis-concept-patterns/org-chart.png)
 
-|Utterances|Bedoeling voorspeld|Intentie score|
+|Utterances|Intentie voor speld|Intente Score|
 |--|--|--|
-|Wie is de Tom ondergeschikte?|GetOrgChart|.30|
-|Wie is de onderliggend niveau van Tom?|GetOrgChart|.30|
+|Wie is de ondergeschikte van Tom?|GetOrgChart|.30|
+|Wie is de ondergeschikte van Tom?|GetOrgChart|.30|
 
-Als een app heeft tussen 10 en 20 uitingen met verschillende lengtes van zin, verschillende woordvolgorde en zelfs verschillende woorden (synoniemen van 'onderliggende', 'beheren', "rapport"), opleveren LUIS met een lage betrouwbaarheidsscore. Maak een patroon om LUIS inzicht te krijgen in het belang van de woord volgorde. 
+Als een app tussen 10 en 20 uitingen met verschillende lengten van zinnen, een andere woord volgorde en zelfs andere woorden (synoniemen, ' beheer ', ' rapport ') heeft, kan LUIS een lage betrouwbaarheids Score retour neren. Maak een patroon om LUIS inzicht te krijgen in het belang van de woord volgorde. 
 
-Patronen oplossen van de volgende situaties: 
+Met patronen worden de volgende situaties opgelost: 
 
 * De intentie Score is laag
 * De juiste intentie is niet de hoogste score, maar te dicht bij de bovenste Score. 
 
-## <a name="patterns-are-not-a-guarantee-of-intent"></a>Patronen zijn geen garantie van doel
-Patronen gebruiken een combinatie van technologieën voor voorspelling. Instellen van een doel voor de utterance van een sjabloon in een patroon is geen garantie van de intentie voorspelling maar het is een sterk signaal. 
+## <a name="patterns-are-not-a-guarantee-of-intent"></a>Patronen zijn geen garantie van intentie
+Patronen gebruiken een combi natie van voorspellings technologieën. Het instellen van een intentie voor een sjabloon utterance in een patroon is geen garantie voor de intentie voorspelling, maar is een sterk signaal. 
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
@@ -49,27 +49,27 @@ Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rolle
 
 Het is niet raadzaam om verbeterde entiteits voorspellingen te zien als u meerdere uitingen samenvouwt tot één patroon. Voor eenvoudige entiteiten die moeten worden gestart, moet u uitingen toevoegen of de lijst entiteiten gebruiken. anders wordt uw patroon niet geactiveerd.
 
-## <a name="patterns-use-entity-roles"></a>Patronen entiteit rollen gebruiken
-Als twee of meer entiteiten in een patroon contextueel zijn gerelateerd, patronen entiteit gebruiken [rollen](luis-concept-roles.md) contextuele gegevens over entiteiten extraheren.  
+## <a name="patterns-use-entity-roles"></a>Patronen gebruiken entiteits rollen
+Als twee of meer entiteiten in een patroon contextuele gerelateerde zijn, gebruiken patronen entiteits [rollen](luis-concept-roles.md) om contextuele informatie over entiteiten te extra heren.  
 
-## <a name="prediction-scores-with-and-without-patterns"></a>Voorspelling scores met en zonder patronen
-Onvoldoende uitingen voorbeeld gezien, zou LUIS kunnen worden vergroot het vertrouwen van voorspelling geen patronen weergegeven. De betrouwbaarheidsscore verhogen patronen zonder deze op te geven zoveel uitingen.  
+## <a name="prediction-scores-with-and-without-patterns"></a>Voorspellings scores met en zonder patronen
+Gezien voldoende voor beeld uitingen, kan LUIS de Voorspellings betrouwbaarheid zonder patronen verg Roten. Patronen verhogen de betrouwbaarheids Score zonder zoveel uitingen te bieden.  
 
-## <a name="pattern-matching"></a>Jokertekens
-Een patroon wordt op basis van de entiteiten in het patroon eerst detecteren en valideren van de rest van de woorden en de woordvolgorde van het patroon vergeleken. Entiteiten zijn vereist in het patroon voor een patroon voor de overeenkomst. Het patroon wordt toegepast op het niveau van token niet het teken-niveau. 
+## <a name="pattern-matching"></a>Patroon vergelijking
+Er wordt een patroon vergeleken op basis van het detecteren van de entiteiten in het patroon, waarna de rest van de woorden en de woord volgorde van het patroon worden gevalideerd. Entiteiten zijn vereist in het patroon voor een patroon dat overeenkomt met. Het patroon wordt toegepast op token niveau, niet op het teken niveau. 
 
-## <a name="pattern-syntax"></a>De syntaxis van het patroon
-De syntaxis van het patroon is een sjabloon voor een utterance. De sjabloon moet bevatten woorden en entiteiten die u wilt vergelijken en woorden en leestekens die u wilt negeren. Het is **niet** een reguliere expressie. 
+## <a name="pattern-syntax"></a>Syntaxis van patroon
+De syntaxis van het patroon is een sjabloon voor een utterance. De sjabloon moet woorden en entiteiten bevatten die u wilt laten overeenkomen, evenals woorden en interpunctie die u wilt negeren. Het is **geen** reguliere expressie. 
 
-Entiteiten in de patronen zijn omgeven door accolades, `{}`. Patronen kunnen bestaan uit entiteiten en entiteiten met functies. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt. 
+Entiteiten in patronen worden omgeven door accolades, `{}`. Patronen kunnen entiteiten en entiteiten met rollen bevatten. [Patroon. any](luis-concept-entity-types.md#patternany-entity) is een entiteit die alleen in patronen wordt gebruikt. 
 
 De syntaxis van het patroon ondersteunt de volgende syntaxis:
 
-|Function|Syntaxis|Niveau nesten|Voorbeeld|
+|Functie|Syntaxis|Niveau nesten|Voorbeeld|
 |--|--|--|--|
-|entiteit| {}-accolades|2|Waar is formulier {entity-name}?|
-|optioneel|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|
-|shapes|()-haakjes|2|is (a \| b)|
+|Vennootschap| {} accolades|2|Waar is formulier {entity-name}?|
+|Beschrijving|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|
+|Shapes|()-haakjes|2|is (a \| b)|
 |of| \|-verticale streep (pipe)<br><br>Er is een limiet van 2 op de verticale balken (of) in één groep |-|Waar is formulier ({Form-name-Short} &#x7c; {Form-name-Long} &#x7c; {Form-Number})| 
 |begin en/of einde van utterance|^-caret|-|^ utterance starten<br>de utterance is voltooid.<br>^ strikte letterlijke overeenkomst van de volledige utterance met {Number} entiteit ^|
 
@@ -99,8 +99,8 @@ Een combi natie van **groepering** met **optionele** syntaxis heeft een limiet v
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Ja|( [ ( test1 &#x7c; test2 ) ] &#x7c; test3 )|
-|Nee|( [ ( [ test1 ] &#x7c; test2 ) ] &#x7c; test3 )|
+|Ja|([(test1 &#x7c; Test2)] &#x7c; Test3)|
+|Nee|([([test1] &#x7c; Test2)] &#x7c; Test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Limieten voor het nesten van groepen met de syntaxis
 
@@ -108,37 +108,37 @@ Een combi natie van **groepering** met **of-ING-** syntaxis heeft een limiet van
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Ja|( test1 &#x7c; test2 &#x7c; ( test3 &#x7c; test4 ) )|
-|Nee|( test1 &#x7c; test2 &#x7c; test3 &#x7c; ( test4 &#x7c; test5 ) ) |
+|Ja|(test1 &#x7c; Test2 &#x7c; (Test3 &#x7c; test4))|
+|Nee|(test1 &#x7c; Test2 &#x7c; Test3 &#x7c; (test4 &#x7c; test5)) |
 
-## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis voor een entiteit toevoegen aan een patroon-sjabloon
-Als u wilt toevoegen een entiteit in de sjabloon voor het patroon, zoals de naam van de entiteit met behulp van accolades, rondom `Who does {Employee} manage?`. 
+## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis om een entiteit toe te voegen aan een patroon sjabloon
+Als u een entiteit wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit tussen accolades, zoals `Who does {Employee} manage?`. 
 
 |Patroon met entiteit|
 |--|
 |`Who does {Employee} manage?`|
 
-## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxis voor het toevoegen van een entiteit en een rol aan een patroon-sjabloon
-De entiteitsrol van een wordt aangeduid als `{entity:role}` met de naam van de entiteit gevolgd door een dubbele punt, gevolgd door de rolnaam. Als u wilt toevoegen een entiteit met een rol in de sjabloon voor het patroon, moet u de naam van de entiteit en de rolnaam met behulp van accolades, zoals `Book a ticket from {Location:Origin} to {Location:Destination}`. 
+## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxis voor het toevoegen van een entiteit en rol aan een patroon sjabloon
+De rol van een entiteit wordt aangeduid als `{entity:role}` met de naam van de entiteit, gevolgd door een dubbele punt, en vervolgens de naam van de rol. Als u een entiteit met een rol wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit en de naam van de rol door accolades, zoals `Book a ticket from {Location:Origin} to {Location:Destination}`. 
 
-|Patroon met behulp van entiteit|
+|Patroon met entiteits rollen|
 |--|
 |`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
-## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxis voor het toevoegen van een pattern.any aan patroon sjabloon
-De entiteit Pattern.any kunt u een entiteit van de verschillende lengten toevoegen aan het patroon. Als de sjabloon patroon wordt gevolgd, mag de pattern.any een willekeurige lengte. 
+## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxis voor het toevoegen van een patroon. elke sjabloon voor een patroon
+Het patroon. elke entiteit kunt u een entiteit van een lengte van variërend aan het patroon toevoegen. Zolang de patroon sjabloon wordt gevolgd, is het patroon. elk kan elk wille keurig lengte zijn. 
 
-Om toe te voegen een **Pattern.any** entiteit in de sjabloon patroon rondom de Pattern.any-entiteit met de accolades, zoals `How much does {Booktitle} cost and what format is it available in?`.  
+Als u een **patroon wilt toevoegen. een wille keurige** entiteit in de patroon sjabloon, rondom het patroon. elke entiteit met de accolades, zoals `How much does {Booktitle} cost and what format is it available in?`.  
 
-|Patroon met Pattern.any entiteit|
+|Patroon met patroon. elke entiteit|
 |--|
 |`How much does {Booktitle} cost and what format is it available in?`|
 
-|Titels in het patroon|
+|Boek titels in het patroon|
 |--|
-|Wat kost **stelen dit boek** kosten, en welke indeling is beschikbaar in?|
-|Wat kost **vragen** kosten, en welke indeling is beschikbaar in?|
-|Wat kost **de benieuwd Incident van de hond in de nacht-tijd** kosten, en welke indeling is beschikbaar in?| 
+|Wat zijn de kosten van **Dit boek** , maar wat is er beschikbaar in?|
+|Wat zijn de kosten voor de **vraag** en welke indeling is er beschikbaar in?|
+|Wat gebeurt er met **het nieuws gierige incidenten van de hond in de nacht** kosten en in welke indeling deze beschikbaar is?| 
 
 De woorden van de boek titel zijn niet verwarrend voor LUIS, omdat LUIS weet waar de titel van het boek eindigt, op basis van het patroon. elke entiteit.
 
@@ -149,38 +149,38 @@ Maak een [expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/serv
 * Uw patroon bevat een [patroon.](luis-concept-entity-types.md#patternany-entity)
 * En met deze patroon syntaxis kan een onjuiste entiteits extractie worden uitgevoerd op basis van de utterance. 
 
-Stel bijvoorbeeld dat u hebt een patroon met beide optioneel syntaxis `[]`, en de syntaxis van de entiteit, `{}`, gecombineerde op een manier om gegevens te extraheren onjuist.
+Stel dat u een patroon hebt met zowel een optionele syntaxis, `[]`en de syntaxis van de entiteit, `{}`, gecombineerd op een manier om gegevens onjuist op te halen.
 
-Houd rekening met het patroon [zoeken] e-mail over {subject} [van {persoon}].
+Overweeg het patroon [Find] e-mail over {subject} [van {person}].
 
-In de volgende uitingen de **onderwerp** en **persoon** entiteit correct en niet correct worden opgehaald:
+In de volgende uitingen worden het **onderwerp** en de **persoons** entiteit op de juiste wijze en onjuist opgehaald:
 
 |Utterance|Entiteit|Juiste extractie|
 |--|--|:--:|
-|e-mail over honden van Chris|onderwerp = honden<br>persoon Chris =|✔|
-|per e-mail over de man in de La Mancha|onderwerp = de man<br>persoon La Mancha =|X|
+|e-mail over honden van Chris|onderwerp = honden<br>persoon = Chris|✔|
+|e-mail over de man van La Mancha|onderwerp = de man<br>persoon = La Mancha|X|
 
-In de voor gaande tabel moet het onderwerp ( `the man from La Mancha` de titel van een boek) zijn, maar omdat het onderwerp het `from`optionele woord bevat, is de titel onjuist voor speld. 
+In de voor gaande tabel moet het onderwerp worden `the man from La Mancha` (een boek titel), maar omdat het onderwerp het optionele woord `from`bevat, is de titel onjuist voor speld. 
 
-U kunt met het oplossen van deze uitzondering op het patroon, toevoegen `the man from la mancha` als een lijst met expliciete-overeenkomst voor de {subject} entiteit met de [API ontwerpen voor expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
+Als u deze uitzonde ring op het patroon wilt herstellen, voegt u `the man from la mancha` toe als expliciet overeenkomende lijst voor de entiteit {subject} met behulp van de [API voor het maken van een expliciete lijst](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8).
 
 ## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxis voor het markeren van optionele tekst in een sjabloon utterance
-Optionele tekst in de utterance met behulp van de syntaxis van reguliere expressie vierkant haakje sluiten, markeert `[]`. De optionele tekst kunt vierkante haken maximaal twee vierkante haken nesten.
+Markeer optionele tekst in de utterance met de reguliere expressie vier Kante haakjes syntaxis `[]`. Met de optionele tekst kunnen vier Kante haken Maxi maal twee haken worden genest.
 
 |Patroon met optionele tekst|Betekenis|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find`en `from {person}` zijn optioneel|
+|`[find] email about {subject} [from {person}]`|`find` en `from {person}` zijn optioneel|
 |' Kan ik me helpen [?]|Het lees teken is optioneel|
 
-Lees tekens (`?`, `!`, `.`) moeten worden genegeerd en u moet ze negeren met de syntaxis van het vier Kante haakje in patronen. 
+Lees tekens (`?`, `!`, `.`) moeten worden genegeerd en u moet ze negeren met de syntaxis van de vier Kante haken in patronen. 
 
 ## <a name="pattern-only-apps"></a>Alleen patroon-apps
 U kunt een app bouwen met intenties die geen voor beeld uitingen hebben, zolang er voor elke intentie een patroon is. Het patroon mag voor een alleen-patroon app geen door machines geleerde entiteiten bevatten, omdat hiervoor bijvoorbeeld uitingen nodig zijn. 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Informatie over [aanbevolen procedures](luis-concept-best-practices.md).
+Lees de [Aanbevolen procedures](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het implementeren van patronen in deze zelfstudie](luis-tutorial-pattern.md)
+> [Meer informatie over het implementeren van patronen in deze zelf studie](luis-tutorial-pattern.md)

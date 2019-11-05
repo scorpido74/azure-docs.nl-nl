@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121314"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470528"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Veelgestelde vragen over configuratie en beheer voor Web Apps in azure
 
@@ -43,12 +43,12 @@ Zie [een aangepaste domein naam kopen en configureren in app service](manage-cus
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hoe kan ik een bestaand SSL-certificaat voor mijn web-app uploaden en configureren?
 
-Zie [een bestaand aangepast SSL-certificaat koppelen aan een Azure-web-app](app-service-web-tutorial-custom-ssl.md#upload)voor meer informatie over het uploaden en instellen van een bestaand aangepast SSL-certificaat.
+Zie [een SSL-certificaat toevoegen aan uw app service-app](configure-ssl-certificate.md)voor meer informatie over het uploaden en instellen van een bestaand aangepast SSL-certificaat.
 
 
 ## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Hoe kan ik kopen en configureren van een nieuw SSL-certificaat in azure voor mijn web-app?
 
-Zie [een SSL-certificaat toevoegen aan uw app service app](web-sites-purchase-ssl-web-site.md)voor meer informatie over het aanschaffen en instellen van een SSL-certificaat voor uw app service Web-app.
+Zie [een SSL-certificaat toevoegen aan uw app service app](configure-ssl-certificate.md)voor meer informatie over het aanschaffen en instellen van een SSL-certificaat voor uw app service Web-app.
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Application Insights resources Hoe kan ik verplaatsen?
@@ -71,7 +71,7 @@ De tijd zone van de server instellen voor uw web-app:
     * Waarde = *de tijd zone die u wilt*
 3. Selecteer **Opslaan**.
 
-Zie de kolom tijd **zone** in het artikel [standaard tijd zones](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) voor geaccepteerde waarden voor de app-services die worden uitgevoerd in Windows. Voor de app-services die worden uitgevoerd op Linux, stelt u de naam van de [TZ-data base](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in als de waarde van de tijd zone. Hier volgt een voor beeld van de naam van de TZ-Data Base: America/Adak.
+Zie de kolom tijd **zone** in het artikel [standaard tijd zones](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) voor geaccepteerde waarden voor de app-services die worden uitgevoerd in Windows. Voor de app-services die worden uitgevoerd op Linux, stelt u de naam van de [TZ-data base](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in als de waarde van de tijd zone. Hier volgt een voor beeld van de TZ-database naam: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Waarom mislukken mijn doorlopende webtaken?
 
@@ -139,7 +139,7 @@ Webtaaks logboeken bekijken:
 6. Selecteer de knop **uitvoer in-/uitschakelen** .
 7. Selecteer de download koppeling.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Ik probeer Hybride verbindingen te gebruiken met SQL Server. Waarom kan ik het bericht ' System. OverflowException: Reken kundige bewerking resulteerde in een overflow "?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Ik probeer Hybride verbindingen te gebruiken met SQL Server. Waarom wordt het bericht ' System. OverflowException: reken kundige bewerking resulteerde in een overloop '?
 
 Als u Hybride verbindingen gebruikt voor toegang tot SQL Server, kan een Microsoft .NET update op 10 mei 2016 ertoe leiden dat verbindingen mislukken. Dit bericht kan worden weer gegeven:
 
@@ -147,13 +147,13 @@ Als u Hybride verbindingen gebruikt voor toegang tot SQL Server, kan een Microso
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 De uitzonde ring is veroorzaakt door een probleem met de Hybrid Connection Manager dat sindsdien is opgelost. Zorg ervoor dat u [uw Hybrid Connection Manager bijwerkt](https://go.microsoft.com/fwlink/?LinkID=841308) om dit probleem op te lossen.
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Hoe kan ik een regel voor het opnieuw schrijven van een URL toevoegen?
 
-Als u een regel voor het herschrijven van een URL wilt toevoegen, maakt u een web. config-bestand met de relevante configuratie vermeldingen in de map **wwwroot** . Zie [voor meer informatie Azure-app Services: Informatie over het herschrijven](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)van url's.
+Als u een regel voor het herschrijven van een URL wilt toevoegen, maakt u een web. config-bestand met de relevante configuratie vermeldingen in de map **wwwroot** . Zie [Azure-app Services: informatie over het herschrijven van url's](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)voor meer informatie.
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Hoe kan ik inkomend verkeer naar App Service beheren?
 
@@ -197,7 +197,7 @@ U kunt de [har-Viewer](https://www.softwareishard.com/har/viewer/)gebruiken om e
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Waarom krijg ik een fout melding wanneer ik een App Service web-app probeer te verbinden met een virtueel netwerk dat is verbonden met ExpressRoute?
 
-Als u probeert een Azure-web-app te verbinden met een virtueel netwerk dat is verbonden met Azure ExpressRoute, mislukt dit. Het volgende bericht weergegeven: "De gateway is geen VPN-gateway."
+Als u probeert een Azure-web-app te verbinden met een virtueel netwerk dat is verbonden met Azure ExpressRoute, mislukt dit. Het volgende bericht wordt weer gegeven: gateway is geen VPN-gateway.
 
 Op dit moment kunt u geen punt-naar-site-VPN-verbindingen hebben met een virtueel netwerk dat is verbonden met ExpressRoute. Een punt-naar-site-VPN en ExpressRoute kunnen niet worden gecombineerd voor hetzelfde virtuele netwerk. Zie [limieten en beperkingen voor ExpressRoute-en site-naar-site-VPN-verbindingen](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations)voor meer informatie.
 

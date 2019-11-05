@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970907"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495750"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Over VPN Gateway configuratie-instellingen
 
@@ -61,7 +61,7 @@ Als u de Azure Portal gebruikt om een virtuele netwerk gateway van Resource Mana
 
 #### <a name="powershell"></a>PowerShell
 
-In het volgende Power shell-voor beeld wordt de `-GatewaySku` opgegeven als VpnGw1. Wanneer u Power shell gebruikt om een gateway te maken, moet u eerst de IP-configuratie maken en vervolgens een variabele gebruiken om ernaar te verwijzen. In dit voor beeld is de configuratie variabele $gwipconfig.
+In het volgende Power shell-voor beeld wordt de `-GatewaySku` als VpnGw1 opgegeven. Wanneer u Power shell gebruikt om een gateway te maken, moet u eerst de IP-configuratie maken en vervolgens een variabele gebruiken om ernaar te verwijzen. In dit voor beeld is de configuratie variabele $gwipconfig.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 Als u een VPN-gateway hebt en u een andere gateway-SKU wilt gebruiken, moet u de grootte van de gateway-SKU aanpassen of een andere SKU kiezen. Wanneer u overschakelt naar een andere gateway-SKU, verwijdert u de bestaande gateway volledig en maakt u een nieuwe. Het bouwen van een gateway kan tot 45 minuten duren. Ter vergelijking: wanneer u het formaat van een gateway-SKU wijzigt, is er weinig downtime, omdat u de gateway niet hoeft te verwijderen en opnieuw op te bouwen. Als u de mogelijkheid hebt om de grootte van de gateway-SKU te wijzigen in plaats van deze aan te passen, moet u dat doen. Er zijn echter regels voor het wijzigen van de grootte:
 
-1. U kunt wisselen tussen VpnGw1-, VpnGw2- en VpnGw3-SKU's.
+1. Met uitzonde ring van de basis-SKU kunt u de grootte van een VPN gateway-SKU wijzigen in een andere VPN gateway-SKU binnen dezelfde generatie (Generation1 of Generation2). Zo kan VpnGw1 van Generation1 worden gewijzigd in VpnGw2 van Generation1, maar niet op VpnGw2 van Generation2.
 2. Als u met de oude gateway-SKU's werkt, kunt u wisselen tussen Basic-, Standard- en HighPerformance-SKU's.
-3. U kunt**niet** wisselen van Basic-/Standard-/HighPerformance-SKU's naar de nieuwe VpnGw2-/VpnGw1-/VpnGw3-SKU's. U moet in plaats daarvan [overschakelen](#change) naar de nieuwe sku's.
+3. U **kunt** de grootte van de sku's Basic/Standard/high performance niet wijzigen in VpnGw-sku's. U moet in plaats daarvan [overschakelen](#change) naar de nieuwe sku's.
 
 #### <a name="resizegwsku"></a>Het formaat van een gateway wijzigen
 
@@ -118,7 +118,7 @@ Nadat een virtuele netwerk gateway is gemaakt, kunt u het VPN-type niet wijzigen
 
 [!INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
 
-In het volgende Power shell-voor beeld wordt de `-VpnType` opgegeven als *RouteBased*. Wanneer u een gateway maakt, moet u het juiste VPN-type voor uw configuratie kiezen.
+In het volgende Power shell-voor beeld wordt de `-VpnType` als *RouteBased*opgegeven. Wanneer u een gateway maakt, moet u het juiste VPN-type voor uw configuratie kiezen.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -173,7 +173,7 @@ Zie de volgende pagina's voor aanvullende technische bronnen en specifieke synta
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
-| Niet ondersteund | [Azure-CLI](/cli/azure/network/vnet-gateway)|
+| Niet ondersteund | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Volgende stappen
 

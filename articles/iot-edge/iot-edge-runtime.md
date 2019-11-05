@@ -1,40 +1,40 @@
 ---
 title: Meer informatie over hoe de runtime apparaten beheert-Azure IoT Edge | Microsoft Docs
-description: Meer informatie over hoe de modules, beveiliging, communicatie en rapportage op uw apparaten worden beheerd door de Azure IoT Edge runtime
+description: Meer informatie over hoe de IoT Edge runtime modules, beveiliging, communicatie en rapportage beheert op uw apparaten
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/06/2019
+ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 49abd9e5ecee8637d830604028463650071c0198
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 94e33c855327e70f486746bcd781491823324dec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163155"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490434"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Inzicht in de runtime van Azure IoT Edge en de architectuur ervan
 
-De IoT Edge runtime is een verzameling Program ma's die een apparaat in een IoT Edge apparaat omzetten. De IoT Edge runtime-onderdelen maken het samen IoT Edge apparaten de mogelijkheid code te ontvangen die aan de rand worden uitgevoerd en de resultaten te communiceren. 
+De IoT Edge runtime is een verzameling Program ma's die een apparaat in een IoT Edge apparaat omzetten. De IoT Edge-runtime-onderdelen maken het samen IoT Edge apparaten de mogelijkheid code te ontvangen die aan de rand worden uitgevoerd en de resultaten te communiceren. 
 
-De IoT Edge runtime voert de volgende functies op IoT Edge apparaten uit:
+De IoT Edge runtime is verantwoordelijk voor de volgende functies op IoT Edge apparaten:
 
 * Workloads op het apparaat installeren en bijwerken.
 * De Azure IoT Edge-beveiligingsstandaarden op het apparaat onderhouden.
 * Zorg ervoor dat [IOT Edge modules](iot-edge-modules.md) altijd worden uitgevoerd.
 * De status van de module aan de cloud rapporteren voor externe bewaking.
-* De communicatie tussen downstream Leaf-apparaten en IoT Edge apparaten mogelijk te maken.
-* De communicatie tussen modules op het IoT Edge apparaat te vergemakkelijken.
-* De communicatie tussen het IoT Edge apparaat en de Cloud mogelijk te maken.
+* Communicatie tussen downstream-apparaten en IoT Edge apparaten beheren.
+* Communicatie tussen modules op het IoT Edge apparaat beheren.
+* Communicatie tussen het IoT Edge apparaat en de Cloud beheren.
 
 ![Runtime communiceert inzichten en module status naar IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
 De verantwoordelijkheden van de IoT Edge runtime worden onderverdeeld in twee categorieën: communicatie en module beheer. Deze twee rollen worden uitgevoerd door twee onderdelen die deel uitmaken van de IoT Edge runtime. De *IOT Edge hub* is verantwoordelijk voor communicatie, terwijl de *IOT Edge agent* de modules implementeert en bewaakt. 
 
-Zowel de IoT Edge hub als de IoT Edge-agent zijn modules, net als elke andere module die wordt uitgevoerd op een IoT Edge apparaat. 
+Zowel de IoT Edge hub als de IoT Edge-agent zijn modules, net als elke andere module die wordt uitgevoerd op een IoT Edge apparaat. Ze worden soms ook wel de *runtime modules*genoemd. 
 
 ## <a name="iot-edge-hub"></a>IoT Edge hub
 
@@ -45,7 +45,7 @@ De IoT Edge hub is een van de twee modules waaruit de Azure IoT Edge-runtime bes
 
 De IoT Edge hub is geen volledige versie van IoT Hub die lokaal wordt uitgevoerd. Er zijn enkele dingen die de IoT Edge hub op de achtergrond delegeert naar IoT Hub. IoT Edge hub stuurt bijvoorbeeld verificatie aanvragen door naar IoT Hub wanneer een apparaat voor het eerst verbinding probeert te maken. Nadat de eerste verbinding tot stand is gebracht, worden de beveiligings gegevens lokaal opgeslagen in de cache van IoT Edge hub. Volgende verbindingen van dat apparaat zijn toegestaan zonder dat ze bij de Cloud moeten worden geverifieerd. 
 
-Om de band breedte die uw IoT Edge oplossing gebruikt, te verminderen, optimaliseert de IoT Edge hub het aantal werkelijke verbindingen dat in de Cloud wordt gemaakt. IoT Edge hub maakt logische verbindingen van clients, zoals modules of blad apparaten, en combineert deze voor één fysieke verbinding met de Cloud. De details van dit proces zijn transparant voor de rest van de oplossing. Clients denken dat ze hun eigen verbinding met de Cloud hebben, zelfs als ze allemaal via dezelfde verbinding worden verzonden. 
+Om de band breedte die uw IoT Edge oplossing gebruikt, te verminderen, optimaliseert de IoT Edge hub het aantal werkelijke verbindingen dat in de Cloud wordt gemaakt. IoT Edge hub maakt logische verbindingen van clients, zoals modules of downstream-apparaten en combineert deze voor één fysieke verbinding met de Cloud. De details van dit proces zijn transparant voor de rest van de oplossing. Clients denken dat ze hun eigen verbinding met de Cloud hebben, zelfs als ze allemaal via dezelfde verbinding worden verzonden. 
 
 ![IoT Edge hub is een gateway tussen fysieke apparaten en IoT Hub](./media/iot-edge-runtime/Gateway.png)
 
@@ -73,13 +73,13 @@ Als u een bericht wilt ontvangen, registreert u een call back waarmee berichten 
 
 Voor meer informatie over de ModuleClient-klasse en de communicatie methoden raadpleegt u de API-verwijzing voor uw voorkeurs [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)taal voor SDK:, [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)of [node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-De oplossings ontwikkelaar is verantwoordelijk voor het opgeven van de regels die bepalen hoe IoT Edge hub berichten tussen modules doorgeeft. Routerings regels worden gedefinieerd in de Cloud en gepusht naar IoT Edge hub op het apparaat. Dezelfde syntaxis voor IoT Hub routes wordt gebruikt voor het definiëren van routes tussen modules in Azure IoT Edge. Zie [informatie over het implementeren van modules en het tot stand brengen van routes in IOT Edge](module-composition.md)voor meer informatie.   
+De oplossings ontwikkelaar is verantwoordelijk voor het opgeven van de regels die bepalen hoe IoT Edge hub berichten tussen modules doorgeeft. Routerings regels worden gedefinieerd in de Cloud en naar IoT Edge hub gepusht in de module dubbele. Dezelfde syntaxis voor IoT Hub routes wordt gebruikt voor het definiëren van routes tussen modules in Azure IoT Edge. Zie [informatie over het implementeren van modules en het tot stand brengen van routes in IOT Edge](module-composition.md)voor meer informatie.   
 
 ![Routes tussen modules worden IoT Edge hub door lopen](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge-agent
 
-De IoT Edge-agent is de andere module die de Azure IoT Edge runtime vormt. Het is verantwoordelijk voor het instantiëren van modules, om ervoor te zorgen dat ze blijven worden uitgevoerd en de status van de modules terug te rapporteren aan IoT Hub. Net als bij andere modules gebruikt de IoT Edge-agent de module twee om deze configuratie gegevens op te slaan. 
+De IoT Edge-agent is de andere module die de Azure IoT Edge runtime vormt. Het is verantwoordelijk voor het instantiëren van modules, om ervoor te zorgen dat ze blijven worden uitgevoerd en de status van de modules terug te rapporteren aan IoT Hub. Deze configuratie gegevens worden geschreven als een eigenschap van de IoT Edge Agent module dubbele. 
 
 De [IOT Edge Security daemon](iot-edge-security-manager.md) start de IOT Edge-agent op het opstarten van het apparaat. De-agent haalt de module twee van IoT Hub op en inspecteert het implementatie manifest. Het implementatie manifest is een JSON-bestand dat de modules declareert die moeten worden gestart. 
 
@@ -92,7 +92,7 @@ Elk item in het implementatie manifest bevat specifieke informatie over een modu
    * In uitvoering
    * Slechte
    * Mislukt
-   * Stopped
+   * Gestopt
 * **restartPolicy** : de manier waarop de IOT Edge-agent een module opnieuw opstart. Mogelijke waarden:
    * `never`: de IoT Edge agent voert de module nooit opnieuw uit.
    * `on-failure`-als de module vastloopt, wordt deze door de IoT Edge-agent opnieuw opgestart. Als de module op een schone manier wordt afgesloten, wordt deze niet opnieuw opgestart door de IoT Edge-agent.

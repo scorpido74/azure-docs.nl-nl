@@ -1,7 +1,7 @@
 ---
 title: Batch-test-LUIS
 titleSuffix: Azure Cognitive Services
-description: Met Language Understanding (LUIS) batch testsets te uitingen met onjuiste intenties en entiteiten.
+description: Gebruik Language Understanding (LUIS) batch test sets om uitingen te vinden met onjuiste doel stellingen en entiteiten.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,74 +9,76 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bf8b2551390fa36736f678c756093a55d6ceb0c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a99b2e7097f2abf36f184368b3b4fdaba8f2730b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932880"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467419"
 ---
-# <a name="batch-testing-with-a-set-of-example-utterances"></a>Testen met een set van voorbeeld-uitingen batch
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch tests met een set voor beeld-uitingen
 
- Testen van de batch is een uitgebreide test op uw huidige, getrainde model voor het meten van de prestaties van LUIS. De gegevens sets die worden gebruikt voor batch tests mogen geen voor beeld-uitingen bevatten in de intenties of uitingen die worden ontvangen van het voor spelling runtime-eind punt. 
+ Batch tests is een uitgebreide test op uw huidige getrainde model om de prestaties in LUIS te meten. De gegevens sets die worden gebruikt voor batch tests mogen geen voor beeld-uitingen bevatten in de intenties of uitingen die worden ontvangen van het voor spelling runtime-eind punt. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="batch-testing"></a>
 
-## <a name="import-a-dataset-file-for-batch-testing"></a>Importeren van een gegevensset-bestand voor het testen van batch
+## <a name="import-a-dataset-file-for-batch-testing"></a>Een gegevenssetbestand importeren voor batch tests
 
-1. Selecteer **Test** in de bovenste menubalk en selecteert u vervolgens **Batch testen deelvenster**.
+1. Selecteer **test** in de bovenste balk en selecteer vervolgens **het deel venster voor batch testen**.
 
-    ![Batch-koppeling testen](./media/luis-how-to-batch-test/batch-testing-link.png)
+    ![Koppeling voor batch testen](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. Selecteer **importeren gegevensset**. De **nieuwe gegevensset importeren** in het dialoogvenster wordt weergegeven. Selecteer **bestand kiezen** en zoekt u een JSON-bestand met de juiste [JSON-indeling](luis-concept-batch-test.md#batch-file-format) die bevat *niet meer dan 1000* uitingen om te testen.
+2. Selecteer **gegevensset importeren**. Het dialoog venster **nieuwe gegevensset importeren** wordt weer gegeven. Selecteer **bestand kiezen** en zoek naar een JSON-bestand met de juiste [JSON-indeling](luis-concept-batch-test.md#batch-file-format) die *niet meer dan 1.000* uitingen bevat om te testen.
 
-    Fouten worden gerapporteerd in een rode meldingsbalk aan de bovenkant van de browser. Wanneer een import fouten bevat, wordt er geen gegevensset gemaakt. Zie voor meer informatie, [veelvoorkomende fouten](luis-concept-batch-test.md#common-errors-importing-a-batch).
+    Import fouten worden gerapporteerd in een rode meldingen balk boven aan de browser. Wanneer een import fouten bevat, wordt er geen gegevensset gemaakt. Zie [common Errors](luis-concept-batch-test.md#common-errors-importing-a-batch)(Engelstalig) voor meer informatie.
 
-3. In de **gegevenssetnaam** en voer een naam voor uw gegevensset-bestand. De gegevensset-bestand bevat een **reeks uitingen** met inbegrip van de *met het label bedoeling* en *entiteiten*. Controleer de [voorbeeld van de batch-bestand](luis-concept-batch-test.md#batch-file-format) -syntaxis. 
+3. Voer in het veld **naam van gegevensset** een naam in voor het gegevenssetbestand. Het gegevenssetbestand bevat een **matrix met uitingen** , met inbegrip van het *Label intentie* en *entiteiten*. Bekijk het [voor beeld van een batch bestand](luis-concept-batch-test.md#batch-file-format) op syntaxis. 
 
-4. Selecteer **Done**. De gegevensset-bestand wordt toegevoegd.
+4. Selecteer **Done**. Het gegevenssetbestand wordt toegevoegd.
 
-## <a name="run-rename-export-or-delete-dataset"></a>Voer, wijzig de naam van, exporteren of gegevensset verwijderen
+## <a name="run-rename-export-or-delete-dataset"></a>Gegevensset uitvoeren, naam wijzigen, exporteren of verwijderen
 
-Als u wilt uitvoeren, wijzig de naam van, exporteren of verwijderen van de gegevensset, gebruikt u het beletselteken (***...*** ) knop aan het einde van de rij van de gegevensset.
+Als u de gegevensset wilt uitvoeren, verwijderen of de naam ervan wilt wijzigen, gebruikt u de knop met het weglatings teken (***...***) aan het einde van de rij van de gegevensset.
 
 ![Gegevensset acties](./media/luis-how-to-batch-test/batch-testing-options.png)
 
-## <a name="run-a-batch-test-on-your-trained-app"></a>Een batch-test uitvoeren op uw getrainde app
+## <a name="run-a-batch-test-on-your-trained-app"></a>Een batch test uitvoeren op uw getrainde app
 
-Als u wilt de test uitvoert, selecteert u de naam van de gegevensset. Wanneer de test is voltooid, wordt het resultaat van de gegevensset weergegeven in deze rij.
+Als u de test wilt uitvoeren, selecteert u de naam van de gegevensset. Wanneer de test is voltooid, wordt in deze rij het test resultaat van de gegevensset weer gegeven.
 
-![Testresultaat van batch](./media/luis-how-to-batch-test/run-test.png)
+![Resultaat van batch-test](./media/luis-how-to-batch-test/run-test.png)
 
-De downloadbare gegevensset is de hetzelfde bestand dat is geüpload voor het testen van batch.
+De gegevensset die u wilt downloaden is hetzelfde als het bestand dat is geüpload voor batch tests.
 
 |Status|Betekenis|
 |--|--|
-|![Pictogram van de groene cirkel test is geslaagd](./media/luis-how-to-batch-test/batch-test-result-green.png)|Alle uitingen zijn geslaagd.|
-|![Beschadigde test rode x-pictogram](./media/luis-how-to-batch-test/batch-test-result-red.png)|Ten minste één utterance doel komt niet overeen met de voorspelling.|
-|![Gereed voor het testen van pictogram](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test is gereed om uit te voeren.|
+|![Groene cirkel pictogram met geslaagde test](./media/luis-how-to-batch-test/batch-test-result-green.png)|Alle uitingen zijn geslaagd.|
+|![Rode x-pictogram testen mislukt](./media/luis-how-to-batch-test/batch-test-result-red.png)|Ten minste één utterance-intentie komt niet overeen met de voor spelling.|
+|![Pictogram gereed voor test](./media/luis-how-to-batch-test/batch-test-result-blue.png)|De test is gereed om te worden uitgevoerd.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>Batch-testresultaten weergeven 
+## <a name="view-batch-test-results"></a>Test resultaten van batch weer geven 
 
-Als u wilt controleren van de resultaten van de batch, selecteer **resultaten**.
+Selecteer **resultaten weer geven**om de resultaten van de batch test te controleren.
 
-![De resultaten van batch](./media/luis-how-to-batch-test/run-test-results.png)
+![Resultaten batch-test](./media/luis-how-to-batch-test/run-test-results.png)
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
 
-## <a name="filter-chart-results"></a>Resultaten van de grafiek filteren
+## <a name="filter-chart-results"></a>Grafiek resultaten filteren
 
-Om te filteren op de kaart op een bepaald doel of de entiteit, selecteert u het doel of de entiteit in het filteren aan de rechterkant-deelvenster. De gegevenspunten en de verdeling ervan bijwerken in de grafiek op basis van uw selectie. 
+Als u de grafiek wilt filteren op een specifieke intentie of entiteit, selecteert u de intentie of entiteit in het deel venster filter aan de rechter kant. De gegevens punten en hun distributie-update in de grafiek volgens uw selectie. 
  
-![Testresultaat gevisualiseerde Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
+![Gevisualiseerd batch test resultaat](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
-## <a name="view-single-point-utterance-data"></a>Single point utterance-gegevens weergeven
+## <a name="view-single-point-utterance-data"></a>Utterance gegevens met één punt weer geven
 
-In de grafiek, Beweeg de muisaanwijzer boven een gegevenspunt om te zien van de score zekerheid van de voorspelling. Selecteer een gegevenspunt om op te halen van de bijbehorende utterance in de lijst uitingen onder aan de pagina. 
+Beweeg de muis aanwijzer over een gegevens punt in de grafiek om de zekerheids Score van de voor spelling te zien. Selecteer een gegevens punt om de bijbehorende utterance op te halen in de lijst met uitingen aan de onderkant van de pagina. 
 
 ![Geselecteerde utterance](./media/luis-how-to-batch-test/selected-utterance.png)
 
@@ -84,25 +86,25 @@ In de grafiek, Beweeg de muisaanwijzer boven een gegevenspunt om te zien van de 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 
-## <a name="view-section-data"></a>Gegevens van de sectie weergeven
+## <a name="view-section-data"></a>Sectie gegevens weer geven
 
-Selecteer in de grafiek van vier cijfers, de naam van de sectie zoals **ONWAAR positief** in de rechterbovenhoek van de grafiek. Onder de grafiek, worden alle uitingen in die sectie onder de grafiek in een lijst weergegeven. 
+Selecteer in het diagram met vier secties de naam van de sectie, zoals **Onwaar positief** in de rechter bovenhoek van de grafiek. Onder de grafiek worden alle uitingen in dat gedeelte onder de grafiek in een lijst weer gegeven. 
 
-![Geselecteerde uitingen door sectie](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
+![Geselecteerde uitingen per sectie](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-In deze voorgaande afbeelding is de utterance `switch on` wordt aangeduid met de bedoeling TurnAllOn, maar de voorspelling van geen intentie ontvangen. Hiermee wordt aangegeven dat de bedoeling TurnAllOn behoefte heeft aan meer voorbeeld uitingen om de verwachte voorspelling. 
+In deze voor gaande afbeelding wordt de utterance-`switch on` aangeduid met de TurnAllOn intentie, maar is de voor spelling van geen intentie ontvangen. Dit is een indicatie dat de TurnAllOn-intentie meer voorbeeld uitingen nodig heeft om de verwachte voor spelling te maken. 
 
-De twee secties van de grafiek in het rood geven uitingen die komt niet overeen met de verwachte voorspelling. Deze uitingen geven aan welke LUIS meer training nodig heeft. 
+De twee secties van de grafiek worden rood aangeduid met uitingen die niet overeenkomen met de verwachte voor spelling. Deze geven aan uitingen welke LUIS meer training nodig heeft. 
 
-De twee secties van de grafiek in het groen komt overeen met de verwachte voorspelling.
+De twee secties van de grafiek in het groen komen overeen met de verwachte voor spelling.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als testen geeft aan dat uw LUIS-app niet wordt herkend door de juiste intenties en entiteiten, kunt u uw LUIS-app om prestaties te verbeteren door meer uitingen labels of het toevoegen van functies werken. 
+Als met testen wordt aangegeven dat uw LUIS-app de juiste intenties en entiteiten niet herkent, kunt u werken om de prestaties van uw LUIS-app te verbeteren door meer uitingen te labelen of functies toe te voegen. 
 
-* [Label van de voorgestelde uitingen van LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Functies gebruiken om uw LUIS-app-prestaties te verbeteren](luis-how-to-add-features.md) 
-* [Informatie over batch testen met deze zelfstudie](luis-tutorial-batch-testing.md)
-* [Informatie over batch testen van concepten](luis-concept-batch-test.md).
+* [Aanbevolen uitingen label met LUIS](luis-how-to-review-endpoint-utterances.md) 
+* [Functies gebruiken om de prestaties van uw LUIS-app te verbeteren](luis-how-to-add-features.md) 
+* [Meer informatie over batch tests met deze zelf studie](luis-tutorial-batch-testing.md)
+* [Meer informatie over het testen van batches](luis-concept-batch-test.md).

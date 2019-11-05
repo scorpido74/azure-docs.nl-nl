@@ -1,7 +1,7 @@
 ---
 title: Uw experiment uitbreiden met R
-titleSuffix: Azure Machine Learning Studio
-description: Klik hier voor meer informatie over het uitbreiden van de functionaliteit van Azure Machine Learning Studio via de R-taal met behulp van de module R-Script uitvoeren.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: De functionaliteit van Azure Machine Learning Studio (klassiek) uitbreiden via de R-taal met behulp van de script module Execute R.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,34 +10,34 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 8c1292d0d36874892a286d91b1e367c7336b99aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1a3eca380240d624da3e2f086749756aabccbe2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811421"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492944"
 ---
-# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio: Uw experiment uitbreiden met R 
-U kunt de functionaliteit van Azure Machine Learning Studio via de R-taal uitbreiden met behulp van de [R-Script uitvoeren] [ execute-r-script] module.
+# <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (klassiek): uw experiment uitbreiden met R 
+U kunt de functionaliteit van Azure Machine Learning Studio (klassiek) uitbreiden via de R-taal door gebruik te maken van de module [r-script uitvoeren][execute-r-script] .
 
-Deze module accepteert meerdere gegevenssets voor invoer en resulteert in een enkele gegevensset als uitvoer. Typt u een R-script in de **R-Script** parameter van de [R-Script uitvoeren] [ execute-r-script] module.
+Deze module accepteert meerdere invoer gegevens sets en levert één gegevensset als uitvoer op. U kunt een R-script in de **r-script** parameter van de module voor het uitvoeren van een [r][execute-r-script] -script typen.
 
-U toegang tot elke invoerpoort van de module met behulp van code die vergelijkbaar is met het volgende:
+U hebt toegang tot elke invoer poort van de module met behulp van code die er ongeveer als volgt uitziet:
 
     dataset1 <- maml.mapInputPort(1)
 
-## <a name="listing-all-currently-installed-packages"></a>Lijst van alle geïnstalleerde pakketten
-De lijst met geïnstalleerde pakketten kunt wijzigen. Een lijst met geïnstalleerde pakketten te vinden in [R-pakketten ondersteund door Azure Machine Learning Studio](https://msdn.microsoft.com/library/azure/mt741980.aspx).
+## <a name="listing-all-currently-installed-packages"></a>Een lijst met alle momenteel geïnstalleerde pakketten
+De lijst met geïnstalleerde pakketten kan worden gewijzigd. Een lijst met geïnstalleerde pakketten vindt u in [R-pakketten die worden ondersteund door Azure machine learning Studio (klassiek)](https://msdn.microsoft.com/library/azure/mt741980.aspx).
 
-U kunt de volledige, actuele lijst met geïnstalleerde pakketten ook ophalen door in te voeren van de volgende code in de [R-Script uitvoeren] [ execute-r-script] module:
+U kunt ook de volledige, huidige lijst met geïnstalleerde pakketten ophalen door de volgende code in te voeren in de module voor het [uitvoeren van R-scripts][execute-r-script] :
 
     out <- data.frame(installed.packages(,,,fields="Description"))
     maml.mapOutputPort("out")
 
-Hierdoor wordt de lijst met pakketten verzonden naar de uitvoerpoort van de [R-Script uitvoeren] [ execute-r-script] module.
-Als u wilt weergeven van de pakketlijst, verbinding maken met een conversie-module, zoals [converteren naar CSV] [ convert-to-csv] aan de linkerkant uitvoer van de [R-Script uitvoeren] [ execute-r-script] module Voer het experiment uit, klik op de uitvoer van de conversie-module en selecteer **downloaden**. 
+Hiermee wordt de lijst met pakketten verzonden naar de uitvoer poort van de module voor het uitvoeren van een [R-script][execute-r-script] .
+Als u de pakket lijst wilt weer geven, koppelt u een conversie module, zoals [converteren naar CSV][convert-to-csv] , naar de linkerkant van de [script module Execute R][execute-r-script] , voert u het experiment uit, klikt u op de uitvoer van de module conversie en selecteert u **downloaden**. 
 
-![Uitvoer van "Converteren naar CSV"-module downloaden](./media/extend-your-experiment-with-r/download-package-list.png)
+![Download uitvoer van de module Convert to CSV](./media/extend-your-experiment-with-r/download-package-list.png)
 
 
 <!--
@@ -45,12 +45,12 @@ For convenience, here is the [current full list with version numbers in Excel fo
 -->
 
 ## <a name="importing-packages"></a>Pakketten importeren
-U kunt importeren pakketten die nog niet zijn geïnstalleerd met behulp van de volgende opdrachten in de [R-Script uitvoeren] [ execute-r-script] module:
+U kunt pakketten importeren die nog niet zijn geïnstalleerd met behulp van de volgende opdrachten in de module voor het uitvoeren van een [R-script][execute-r-script] :
 
     install.packages("src/my_favorite_package.zip", lib = ".", repos = NULL, verbose = TRUE)
     success <- library("my_favorite_package", lib.loc = ".", logical.return = TRUE, verbose = TRUE)
 
-waar de `my_favorite_package.zip` -bestand bevat uw pakket.
+waar het `my_favorite_package.zip`-bestand het pakket bevat.
 
 
 

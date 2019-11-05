@@ -11,14 +11,15 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: c32b587464d66148957672be16493b66dc051ada
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
-ms.translationtype: MT
+ms.openlocfilehash: d98e45d3ef77fea6b64efef10c20ecce3787b14c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219690"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489305"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Houd metrische gegevens bij en implementeer modellen met MLflow en Azure Machine Learning (preview-versie)
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel wordt beschreven hoe u de tracerings-URI en logboek registratie-API van MLflow kunt [inschakelen, met](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)Azure machine learning. Zo kunt u:
 
@@ -39,7 +40,7 @@ In het volgende diagram ziet u dat er met MLflow-tracking een experiment kan wor
  MLflow tracking biedt metrische logboek registratie en opslag functies voor artefacten die alleen beschikbaar zijn via de [python-SDK van Azure machine learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 
-| | MLflow tracking &-implementatie | Azure Machine Learning python-SDK |  Azure Machine Learning CLI | Landings pagina van Azure Portal of werk ruimte (preview-versie)|
+| | MLflow tracking &-implementatie | Azure Machine Learning python-SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
 | Werk ruimte beheren |   | ✓ | ✓ | ✓ |
 | Gegevens archieven gebruiken  |   | ✓ | ✓ | |
@@ -61,7 +62,7 @@ In het volgende diagram ziet u dat er met MLflow-tracking een experiment kan wor
 
 MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegevens en artefacten van uw lokale uitvoeringen opslaan in uw Azure Machine Learning-werk ruimte.
 
-Installeer het `azureml-contrib-run` pakket voor het gebruik van MLflow tracking met Azure machine learning van uw experimenten die lokaal worden uitgevoerd in een Jupyter notebook of code-editor.
+Installeer het `azureml-contrib-run`-pakket voor het gebruik van MLflow tracking met Azure Machine Learning van uw experimenten die lokaal worden uitgevoerd in een Jupyter Notebook of code-editor.
 
 ```shell
 pip install azureml-contrib-run
@@ -70,9 +71,9 @@ pip install azureml-contrib-run
 >[!NOTE]
 >De contrib-naam ruimte wordt regel matig gewijzigd, omdat we de service kunnen verbeteren. Als zodanig moeten alle in deze naam ruimte worden beschouwd als een preview en niet volledig worden ondersteund door micro soft.
 
-Importeer de `mlflow` klassen [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) en en configureer de MLflow om uw werk ruimte te openen.
+Importeer de `mlflow`-en [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) klassen om de tracerings-URI van de MLflow te openen en uw werk ruimte te configureren.
 
-In de volgende code wijst de `get_mlflow_tracking_uri()` methode een uniek tracerings-URI-adres toe aan de `ws`werk ruimte `set_tracking_uri()` en wijst de tracerings-URI van de MLflow naar dat adres.
+In de volgende code wijst de `get_mlflow_tracking_uri()` methode een uniek tracking-URI-adres toe aan de werk ruimte, `ws`en `set_tracking_uri()` wijst de tracerings-URI van de MLflow naar dat adres.
 
 ```Python
 import mlflow
@@ -86,7 +87,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 >[!NOTE]
 >De tracerings-URI is Maxi maal een uur of minder geldig. Als u het script na enige tijd opnieuw opstart, gebruikt u de get_mlflow_tracking_uri-API om een nieuwe URI op te halen.
 
-Stel de naam van het MLflow `set_experiment()` -experiment in met en start `start_run()`uw trainings uitvoering met. Vervolgens gebruikt `log_metric()` u de MLflow-logboek registratie-API en begint u met het vastleggen van metrische gegevens voor uw trainings uitvoering.
+Stel de naam van het MLflow-experiment in met `set_experiment()` en start uw training met `start_run()`. Gebruik vervolgens `log_metric()` om de API voor MLflow-logboek registratie te activeren en de metrische gegevens van uw trainings uitvoering te registreren.
 
 ```Python
 experiment_name = 'experiment_with_mlflow'
@@ -102,7 +103,7 @@ MLflow tracking met Azure Machine Learning kunt u de vastgelegde metrische gegev
 
 Met extern uitvoeren kunt u uw modellen trainen op krachtige reken mogelijkheden, zoals virtuele machines met GPU of Machine Learning Compute clusters. Zie [Compute-doelen voor model training instellen](how-to-set-up-training-targets.md) voor meer informatie over verschillende reken opties.
 
-Configureer uw reken-en trainings uitvoerings omgeving met [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) de-klasse. Opname `mlflow` - `azure-contrib-run` en PIP-pakketten in [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) de sectie van de omgeving. Maak [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) vervolgens met uw externe Compute als het reken doel.
+Configureer uw reken-en trainings uitvoerings omgeving met de klasse [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) . Neem `mlflow` en `azure-contrib-run` PIP-pakketten op in de sectie [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) van de omgeving. Maak vervolgens [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) met uw externe Compute als het reken doel.
 
 ```Python
 from azureml.core import Environment
@@ -124,7 +125,7 @@ src.run_config.target = 'my-remote-compute-compute'
 src.run_config.environment = mlflow_env
 ```
 
-Importeer `mlflow` in uw trainings script om de MLflow-logboek registratie-api's te gebruiken en begin met het vastleggen van de metrische gegevens voor de uitvoering.
+Importeer in uw trainings script `mlflow` voor het gebruik van de MLflow-logboek registratie-Api's en begin met het vastleggen van de metrische gegevens voor de uitvoering.
 
 ```Python
 import mlflow
@@ -133,7 +134,7 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-Met deze Compute-en training-uitvoerings configuratie `Experiment.submit('train.py')` gebruikt u de methode voor het verzenden van een run. Hiermee wordt de tracerings-URI van de MLflow automatisch ingesteld en wordt de logboek registratie van MLflow naar uw werk ruimte omgeleid.
+Met deze Compute-en training-uitvoerings configuratie gebruikt u de methode `Experiment.submit('train.py')` om een uitvoering te verzenden. Hiermee wordt de tracerings-URI van de MLflow automatisch ingesteld en wordt de logboek registratie van MLflow naar uw werk ruimte omgeleid.
 
 ```Python
 run = exp.submit(src)
@@ -217,7 +218,7 @@ Wanneer u correct is geconfigureerd, kunt u uw MLflow tracking-gegevens bekijken
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Metrische gegevens en artefacten in uw werk ruimte weer geven
 
-De metrische gegevens en artefacten van MLflow-logboek registratie worden bewaard in uw werk ruimte. Als u ze op elk gewenst moment wilt weer geven, gaat u naar uw werk ruimte en zoekt u het experiment op naam op de [Azure Portal](https://portal.azure.com) of in de [landings pagina van de werk ruimte (preview)](https://ml.azure.com).  Of voer de onderstaande code uit. 
+De metrische gegevens en artefacten van MLflow-logboek registratie worden bewaard in uw werk ruimte. Als u ze op een wille keurig tijdstip wilt weer geven, gaat u naar uw werk ruimte en zoekt u het experiment op naam in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).  Of voer de onderstaande code uit. 
 
 ```python
 run.get_metrics()
@@ -244,7 +245,7 @@ import mlflow.sklearn
 mlflow.sklearn.log_model(regression_model, model_save_path)
 ```
 >[!NOTE]
-> Neem de `conda_env` para meter op voor het door geven van een woordenboek weergave van de afhankelijkheden en de omgeving waarin dit model moet worden uitgevoerd.
+> Neem de para meter `conda_env` op voor het door geven van een woordenboek weergave van de afhankelijkheden en de omgeving waarin dit model moet worden uitgevoerd.
 
 ### <a name="retrieve-model-from-previous-run"></a>Model ophalen uit vorige uitvoering
 
@@ -263,7 +264,7 @@ model_save_path = 'model'
 
 ### <a name="create-docker-image"></a>Docker-installatie kopie maken
 
-De `mlflow.azureml.build_image()` functie bouwt een docker-installatie kopie van het opgeslagen model op een framework bewuste manier. Er wordt automatisch een bedrijfsspecifieke wrapper-code voor het decoderen van het Framework gemaakt en er worden pakket afhankelijkheden voor u opgegeven. Geef het pad naar het model, de werk ruimte, de run-ID en andere para meters op.
+De functie `mlflow.azureml.build_image()` bouwt een docker-installatie kopie van het opgeslagen model op een op een framework bewuste manier. Er wordt automatisch een bedrijfsspecifieke wrapper-code voor het decoderen van het Framework gemaakt en er worden pakket afhankelijkheden voor u opgegeven. Geef het pad naar het model, de werk ruimte, de run-ID en andere para meters op.
 
 Met de volgende code wordt een docker-installatie kopie gemaakt met *uitvoering van:/< run. id >/model* als het model_uri-pad voor een Scikit-leer experiment.
 
@@ -385,9 +386,9 @@ Als u niet van plan bent om de vastgelegde metrische gegevens en artefacten in u
 1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen**.
 
 
-## <a name="example-notebooks"></a>Voorbeeld-laptops
+## <a name="example-notebooks"></a>Voorbeeld notitieblokken
 
-De [MLflow met Azure ml](https://aka.ms/azureml-mlflow-examples) -notebooks demonstreren en uitvouwen op concepten die in dit artikel worden gepresenteerd.
+De [MLflow met Azure ml-notebooks](https://aka.ms/azureml-mlflow-examples) demonstreren en uitvouwen op concepten die in dit artikel worden gepresenteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Uw modellen beheren](concept-model-management-and-deployment.md).

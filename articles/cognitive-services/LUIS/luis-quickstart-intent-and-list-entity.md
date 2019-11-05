@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Exacte tekst overeenkomst-LUIS'
+title: 'Zelf studie: exacte tekst overeenkomst-LUIS'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u gegevens ophaalt die overeenkomen met een vooraf gedefinieerde lijst met items. Elk item in de lijst kan synoniemen hebben die ook exact overeenkomen
 services: cognitive-services
@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307616"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492716"
 ---
-# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Zelfstudie: Gegevens met exacte tekstovereenkomst ophalen uit een utterance
+# <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Zelf studie: exacte tekst-overeenkomende gegevens ophalen uit een utterance
 
 In deze zelfstudie leert u hoe u entiteitsgegevens ophaalt die overeenkomen met een vooraf gedefinieerde lijst met items. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -28,7 +30,7 @@ In deze zelfstudie leert u hoe u entiteitsgegevens ophaalt die overeenkomen met 
 > [!div class="checklist"]
 > * App maken
 > * Intentie toevoegen
-> * Een entiteit List toevoegen 
+> * Een lijstentiteit toevoegen 
 > * Trainen 
 > * Publiceren
 > * Intenties en entiteiten ophalen van eindpunt
@@ -67,18 +69,18 @@ Een entiteit List is een goede keuze voor dit type gegevens wanneer:
 
     |Voorbeelden van utterances|
     |--|
-    |Smith naar de boekhoudafdeling|
-    |Jill Jones overdragen van naar R&D|
-    |Afdeling 1234 heeft een nieuw lid genaamd Bill Bradstreet|
-    |Plaats John Jackson in Engineering |
-    |verplaats Debra Doughtery naar Inside Sales|
-    |mv Jill Jones aan IT|
-    |Verplaats Alice Anderson naar DevOps|
-    |Carl Chamerlin voor Finance|
-    |Steve Standish tot 1234|
-    |Tanner Thompson naar 3456|
+    |move John W. Smith to the accounting department|
+    |transfer Jill Jones from to R&D|
+    |Dept 1234 has a new member named Bill Bradstreet|
+    |Place John Jackson in Engineering |
+    |move Debra Doughtery to Inside Sales|
+    |mv Jill Jones to IT|
+    |Shift Alice Anderson to DevOps|
+    |Carl Chamerlin to Finance|
+    |Steve Standish to 1234|
+    |Tanner Thompson to 3456|
 
-    [![Schermafbeelding van intentie met voorbeelden van utterances](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Schermafbeelding van intentie met voorbeelden van utterances")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
+    [![Scherm afbeelding van intentie met voor beeld uitingen](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Scherm afbeelding van intentie met voor beeld uitingen")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -94,7 +96,7 @@ De primaire, _canonieke_, naam voor elk item is de afdelingsnaam. Voorbeelden va
 |Development Operations|DevOps<br>4949|
 |Engineering|eng<br>enging<br>4567|
 |Finance|fin<br>2020|
-|Information Technology|it<br>2323|
+|Information Technology|IT<br>2323|
 |Inside Sales|isale<br>insale<br>1414|
 |Research and Development|R&D<br>1234|
 
@@ -104,7 +106,7 @@ De primaire, _canonieke_, naam voor elk item is de afdelingsnaam. Voorbeelden va
 
 1. Voer in het pop-updialoogvenster `Department` in als naam voor de entiteit en **List** als het entiteitstype. Selecteer **Done**.  
 
-    [![Schermopname van een pop-upvenster voor het maken van een nieuwe entiteit](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Schermopname van een pop-upvenster voor het maken van een nieuwe entiteit")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![Scherm opname van pop-updialoogvenster nieuwe entiteit maken](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Scherm opname van pop-updialoogvenster nieuwe entiteit maken")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
 1. Voer op de pagina van de entiteit Department `Accounting` in als de nieuwe waarde.
 

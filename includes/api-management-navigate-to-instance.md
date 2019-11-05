@@ -4,29 +4,20 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: 3a46462f761e7608ae7554604577a1e9d7f88b15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52c2768605fa50f82029511b50bfd313fe325026
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66238125"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471967"
 ---
 ## <a name="go-to-your-api-management-instance"></a>Ga naar uw API Management-exemplaar
 
-![Navigeer naar uw API Management-exemplaar](./media/api-management-navigate-to-instance/00-FindResource-01.png)
+1. Zoek en selecteer **API Management Services**In het Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+   ![API Management Services selecteren](media/api-management-navigate-to-instance/view-apim1.png)
 
-2. Selecteer **Alle services**.  
+1. Selecteer uw API Management instantie op het scherm **API Management** .
 
-3. Typ `api management` in het zoekvak.
-
-4. Selecteer **API Management-services** in de zoekresultaten.
-
-5. Selecteer uw service-exemplaar van API Management.
-
-> [!TIP]
-> Selecteer de ster om API Management toe te voegen aan uw favorieten in Azure Portal.
->
-> Het pictogram voor API Management (![API Management-pictogram](./media/api-management-navigate-to-instance/apim-icon.png)) wordt nu weergegeven in het menu aan de linkerkant van de portal.
+   ![Selecteer uw API Management-exemplaar](media/api-management-navigate-to-instance/view-apim2.png)
 

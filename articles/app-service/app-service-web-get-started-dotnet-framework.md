@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 258e547c58016cb449c74b058d02f2a2e4d7d683
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04dd7cb55f9a6d4ceb722606f0eb90792413e414
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792717"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471778"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Een ASP.NET Framework-web-app maken in Azure
 
@@ -91,7 +91,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
    | Instelling | Voorgestelde waarde | Beschrijving |
    |-|-|-|
    |App Service-plan| myAppServicePlan | De naam van het App Service-plan. |
-   | Locatie | Europa - west | Het datacenter waar de web-app wordt gehost. |
+   | Locatie | Europa -west | Het datacenter waar de web-app wordt gehost. |
    | Grootte | Gratis | De [prijscategorie](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bepaalt de hosting-functies. |
 
    ![Een App Service-plan maken](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
@@ -131,9 +131,11 @@ Als het publiceren is voltooid, start Visual Studio een browser waarin de URL va
 
 ## <a name="manage-the-azure-app"></a>De Azure-app beheren
 
-1. Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de web-app te beheren.
+1. Als u de Web-App wilt beheren, gaat u naar de [Azure Portal](https://portal.azure.com)en zoekt en selecteert u **app Services**.
 
-2. Selecteer in het linkermenu **App Services** en selecteer de naam van uw Azure-app.
+   ![App-services selecteren](./media/app-service-web-get-started-dotnet-framework/app-services.png)
+
+2. Selecteer op de pagina **app Services** de naam van uw web-app.
 
    ![Navigatie naar Azure-app in de portal](./media/app-service-web-get-started-dotnet-framework/access-portal-framework-vs2019.png)
 

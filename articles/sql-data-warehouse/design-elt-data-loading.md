@@ -10,12 +10,12 @@ ms.subservice: load-data
 ms.date: 07/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c90deefba75cd8bbeda126c9da8a05e1069831d4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c248a2e3e6724388fa6402a70ac3bcb51f0f9ef3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597465"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492256"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Ontwerpen van een polybase data strategie voor het laden van Azure SQL Data Warehouse
 
@@ -43,7 +43,7 @@ Zie [poly Base gebruiken voor het laden van gegevens uit Azure Blob-opslag naar 
 Zie [blog voor het laden van patronen](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)voor meer informatie. 
 
 
-## <a name="1-extract-the-source-data-into-text-files"></a>1. De bron gegevens extra heren in tekst bestanden
+## <a name="1-extract-the-source-data-into-text-files"></a>1. Extraheer de bron gegevens in tekst bestanden
 
 Het ophalen van gegevens uit uw bron systeem is afhankelijk van de opslag locatie.  Het doel is om de gegevens te verplaatsen naar poly base-ondersteunde tekst bestanden met scheidings tekens. 
 
@@ -57,37 +57,37 @@ Poly base laadt gegevens van UTF-8-en UTF-16-gecodeerde tekst bestanden met sche
 |       smallint        |                           smallint                           |
 |          int          |                             int                              |
 |        bigint         |                            bigint                            |
-|        boolean        |                             bit                              |
+|        booleaans        |                             bitmask                              |
 |        double         |                            float                             |
-|         float         |                             real                             |
-|        double         |                            money                             |
+|         float         |                             realistische                             |
+|        double         |                            financieel                             |
 |        double         |                          smallmoney                          |
-|        string         |                            nchar                             |
-|        string         |                           nvarchar                           |
-|        string         |                             char                             |
-|        string         |                           varchar                            |
-|        binary         |                            binary                            |
-|        binary         |                          varbinary                           |
-|       timestamp       |                             date                             |
-|       timestamp       |                        smalldatetime                         |
-|       timestamp       |                          datetime2                           |
-|       timestamp       |                           datetime                           |
-|       timestamp       |                             time                             |
+|        tekenreeks         |                            nchar                             |
+|        tekenreeks         |                           nvarchar                           |
+|        tekenreeks         |                             char                             |
+|        tekenreeks         |                           varchar                            |
+|        waarde         |                            waarde                            |
+|        waarde         |                          varbinary                           |
+|       tijdstempel       |                             date                             |
+|       tijdstempel       |                        smalldatetime                         |
+|       tijdstempel       |                          DATETIME2                           |
+|       tijdstempel       |                           datum/tijd                           |
+|       tijdstempel       |                             tijd                             |
 |       date            |                             date                             |
 |        decimal        |                            decimal                           |
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. De gegevens in Azure Blob-opslag of Azure Data Lake Store
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Voer de gegevens over naar Azure Blob-opslag of Azure Data Lake Store
 
 Als u de gegevens in azure Storage wilt laten staan, kunt u deze verplaatsen naar [Azure Blob-opslag](../storage/blobs/storage-blobs-introduction.md) of [Azure data Lake Store](../data-lake-store/data-lake-store-overview.md). In beide locaties moeten de gegevens worden opgeslagen in tekst bestanden. Poly Base kan worden geladen vanuit een van beide locaties.
 
 Hulpprogram ma's en services die u kunt gebruiken om gegevens naar Azure Storage te verplaatsen:
 
-- De [Azure ExpressRoute](../expressroute/expressroute-introduction.md) -service verbetert de netwerk doorvoer, prestaties en voorspel baarheid. ExpressRoute is een service die uw gegevens via een speciale persoonlijke verbinding naar Azure. ExpressRoute-verbindingen sturen geen gegevens via het open bare Internet. De verbindingen bieden meer betrouw baarheid, hogere snelheden, lagere wacht tijden en hogere beveiliging dan typische verbindingen via het open bare Internet.
+- De [Azure ExpressRoute](../expressroute/expressroute-introduction.md) -service verbetert de netwerk doorvoer, prestaties en voorspel baarheid. ExpressRoute is een service waarmee uw gegevens worden gerouteerd via een speciale particuliere verbinding met Azure. ExpressRoute-verbindingen sturen geen gegevens via het open bare Internet. De verbindingen bieden meer betrouw baarheid, hogere snelheden, lagere wacht tijden en hogere beveiliging dan typische verbindingen via het open bare Internet.
 - Met het [hulp programma AZCopy](../storage/common/storage-moving-data.md) kunt u gegevens verplaatsen naar Azure Storage via het open bare Internet. Dit werkt als uw gegevens grootten minder dan 10 TB zijn. Als u de belasting regel matig wilt uitvoeren met AZCopy, test u de netwerk snelheid om te controleren of deze acceptabel is. 
 - [Azure Data Factory (ADF)](../data-factory/introduction.md) heeft een gateway die u op uw lokale server kunt installeren. Vervolgens kunt u een pijp lijn maken om gegevens van uw lokale server naar Azure Storage te verplaatsen. Zie [gegevens laden in SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse)als u Data Factory wilt gebruiken met SQL Data Warehouse.
 
 
-## <a name="3-prepare-the-data-for-loading"></a>3. De gegevens voorbereiden voor het laden
+## <a name="3-prepare-the-data-for-loading"></a>3. de gegevens voorbereiden voor het laden
 
 Mogelijk moet u de gegevens in uw opslag account voorbereiden en opschonen voordat u deze in SQL Data Warehouse kunt laden. Gegevens voorbereiding kan worden uitgevoerd terwijl de gegevens zich in de bron bevinden, terwijl u de gegevens naar tekst bestanden exporteert of wanneer de gegevens zich in Azure Storage bevinden.  Het is eenvoudig om zo snel mogelijk in het proces te werken met de gegevens.  
 
@@ -112,7 +112,7 @@ De tekst bestanden opmaken:
 - Scheid velden in het tekst bestand met een terminator.  Zorg ervoor dat u een teken of een teken reeks gebruikt die niet in uw bron gegevens is gevonden. Gebruik de Terminator die u hebt opgegeven met [externe BESTANDS indeling maken](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 
-## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. De gegevens in SQL Data Warehouse faserings tabellen laden met poly base
+## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. gegevens in SQL Data Warehouse faserings tabellen laden met poly base
 
 Het is best practice om gegevens in een faserings tabel te laden. Met faserings tabellen kunt u fouten afhandelen zonder de productie tabellen te verstoren. Een faserings tabel biedt u ook de mogelijkheid om SQL Data Warehouse MPP te gebruiken voor gegevens transformaties voordat u de gegevens in productie tabellen invoegt.
 
@@ -123,19 +123,19 @@ Als u gegevens wilt laden met poly Base, kunt u een van de volgende laad opties 
 - [Poly Base met T-SQL](load-data-from-azure-blob-storage-using-polybase.md) werkt goed als uw gegevens zich in Azure Blob storage of Azure data Lake Store bevinden. Het biedt u de meeste controle over het laad proces, maar u moet ook externe gegevens objecten definiëren. Met de andere methoden worden deze objecten achter de schermen gedefinieerd wanneer u bron tabellen aan doel tabellen toewijst.  U kunt met behulp van Azure Data Factory-, SSIS-of Azure-functies voor het organiseren van T-SQL-belasting. 
 - [Poly Base met SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) werkt goed als uw bron gegevens zich in SQL Server bevinden, hetzij SQL Server on-premises of in de Cloud. SSIS definieert de bron-naar-doel tabel toewijzingen en organiseert ook de belasting. Als u al SSIS-pakketten hebt, kunt u de pakketten wijzigen om met de nieuwe Data Warehouse-bestemming te werken. 
 - [Poly Base met Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) is een andere Orchestration-tool.  Hierin worden een pijp lijn en plannings taken gedefinieerd. 
-- [Poly Base met Azure DataBricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) brengt gegevens over van een SQL Data Warehouse tabel naar een DataBricks data frame en/of schrijft gegevens van een DataBricks data frame naar een SQL Data Warehouse tabel met poly base.
+- [Poly Base met Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) gegevens overdraagt van een SQL Data Warehouse tabel naar een Databricks data frame en/of schrijft gegevens van een Databricks data frame naar een SQL Data Warehouse-tabel met poly base.
 
 ### <a name="non-polybase-loading-options"></a>Opties voor het laden van niet-poly base
 
 Als uw gegevens niet compatibel zijn met poly Base, kunt u [bcp](/sql/tools/bcp-utility) of de [SQLBulkCopy-API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)gebruiken. BCP wordt rechtstreeks naar SQL Data Warehouse geladen zonder Azure Blob-opslag te passeren en is uitsluitend bedoeld voor kleine belastingen. Houd er rekening mee dat de belasting prestaties van deze opties aanzienlijk langzamer zijn dan poly base. 
 
 
-## <a name="5-transform-the-data"></a>5. De gegevens te transformeren
+## <a name="5-transform-the-data"></a>5. de gegevens transformeren
 
 Terwijl de gegevens zich in de faserings tabel bevindt, voert u trans formaties uit die nodig zijn voor uw werk belasting. Verplaats de gegevens vervolgens naar een productie tabel.
 
 
-## <a name="6-insert-the-data-into-production-tables"></a>6. De gegevens invoegen in productie tabellen
+## <a name="6-insert-the-data-into-production-tables"></a>6. Voeg de gegevens in productie tabellen in
 
 INVOEGEN in... Met de instructie SELECT worden de gegevens van de faserings tabel naar de permanente tabel verplaatst. 
 

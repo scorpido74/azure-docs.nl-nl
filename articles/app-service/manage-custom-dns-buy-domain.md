@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 188db5e89097542b5a47b43e7bc8bbb2ce30b072
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1354f48843f8006b4a6180a2cea60e735413e446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073134"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470463"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Een aangepaste domein naam voor Azure App Service kopen
 
@@ -62,7 +62,7 @@ De huidige laag van de app wordt gemarkeerd door een blauwe rand. Controleer of 
 
 ![Controleer prijscategorie](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Als het App Service plan zich niet in de **F1** -laag bevindt, sluit u de pagina opschalen en gaat u verder met [het kopen van het domein](#buy-the-domain).
+Als het App Service plan zich niet in de **F1** -laag bevindt, sluit u de pagina **opschalen** en gaat u verder met [het kopen van het domein](#buy-the-domain).
 
 ### <a name="scale-up-the-app-service-plan"></a>Het App Service-plan opschalen
 
@@ -78,7 +78,7 @@ Wanneer u de volgende melding ziet, is de schaalbewerking voltooid.
 
 ## <a name="buy-the-domain"></a>Het domein kopen
 
-### <a name="pricing-information"></a>Prijsgegevens
+### <a name="pricing-information"></a>Prijs informatie
 Ga voor prijs informatie over Azure App Service domeinen naar de [pagina met app service prijzen](https://azure.microsoft.com/pricing/details/app-service/windows/) en schuif omlaag naar app service domein.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -105,7 +105,7 @@ Typ op de pagina **app service domein** in het vak **zoeken naar domein** de naa
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
-> De volgende [domeinen op het hoogste niveau](https://wikipedia.org/wiki/Top-level_domain) worden ondersteund door app service domeinen: _com_, _net_, _co.uk_, _org_, _nl_, _in_, _org.uk_en _co.in_.
+> De volgende [domeinen op het hoogste niveau](https://wikipedia.org/wiki/Top-level_domain) worden ondersteund door app service domeinen: _com_, _net_, _co.uk_, _org_, _nl_, in _,_ _org.uk_en _co.in_.
 >
 >
 
@@ -115,9 +115,9 @@ Het is belang rijk dat u alle verplichte velden zo nauw keurig mogelijk invult. 
 
 Selecteer vervolgens de gewenste opties voor uw domein. Zie de volgende tabel voor uitleg:
 
-| Instelling | Voorgestelde waarde | Description |
+| Instelling | Voorgestelde waarde | Beschrijving |
 |-|-|-|
-|Privacybescherming | Inschakelen | Meld u aan als privacy-beveiliging, die in de _gratis_aankoop prijs is opgenomen. Sommige domeinen op het hoogste niveau worden beheerd door registraties die geen ondersteuning bieden voor privacy-bescherming en ze worden vermeld op de pagina **privacy-beveiliging** . |
+|Privacy-beveiliging | Inschakelen | Meld u aan als privacy-beveiliging, die in de _gratis_aankoop prijs is opgenomen. Sommige domeinen op het hoogste niveau worden beheerd door registraties die geen ondersteuning bieden voor privacy-bescherming en ze worden vermeld op de pagina **privacy-beveiliging** . |
 | Standaard hostnamen toewijzen | **www** en **\@** | Selecteer de gewenste hostnamen bindingen, indien gewenst. Wanneer de aankoop bewerking van het domein is voltooid, kan uw app worden geopend op de geselecteerde hostnamen. Als de app zich achter [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)bevindt, ziet u de optie voor het toewijzen van het hoofd domein (@) niet, omdat Traffic Manager geen records ondersteunt. U kunt wijzigingen aanbrengen in de hostname-toewijzingen nadat de domein aankoop is voltooid. |
 
 ### <a name="accept-terms-and-purchase"></a>Voor waarden accepteren en kopen
@@ -146,7 +146,7 @@ U ziet ook de geselecteerde hostnamen op de pagina **aangepaste domeinen** , in 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> Een **niet-beveiligd** label voor uw aangepaste domein betekent dat het nog niet is gebonden aan een SSL-certificaat en dat de HTTPS-aanvraag van een browser naar uw aangepaste domein een fout of waarschuwing krijgt, afhankelijk van de browser. Zie [een SSL-certificaat voor Azure app service kopen en configureren voor](web-sites-purchase-ssl-web-site.md)meer informatie over het configureren van SSL-binding.
+> Een **niet-beveiligd** label voor uw aangepaste domein betekent dat het nog niet is gebonden aan een SSL-certificaat en dat de HTTPS-aanvraag van een browser naar uw aangepaste domein een fout of waarschuwing krijgt, afhankelijk van de browser. Als u SSL-binding wilt configureren, raadpleegt u [een aangepaste DNS-naam beveiligen met een SSL-binding in azure app service](configure-ssl-bindings.md).
 >
 
 Als u de hostnamen wilt testen, gaat u naar de vermelde hostnamen in de browser. In het voor beeld in de vorige scherm afbeelding gaat u naar _kontoso.net_ en _www\.kontoso.net_.
@@ -157,8 +157,8 @@ Als u ervoor kiest om een of meer standaard-hostnamen niet aan uw app toe te wij
 
 U kunt ook hostnamen in het App Service domein toewijzen aan een andere app. De stappen zijn afhankelijk van het feit of het App Service domein en de app tot hetzelfde abonnement behoren.
 
-- Ander abonnement: Wijs aangepaste DNS-records uit het App Service domein toe aan de app, zoals een extern aangeschaft domein. Zie [aangepaste DNS-records beheren](#custom)voor meer informatie over het toevoegen van aangepaste DNS-namen aan een app service domein. Als u een extern aangekocht domein wilt toewijzen aan een app, raadpleegt u [een bestaande aangepaste DNS-naam toewijzen aan Azure app service](app-service-web-tutorial-custom-domain.md). 
-- Hetzelfde abonnement: Gebruik de volgende stappen.
+- Ander abonnement: wijs aangepaste DNS-records uit het App Service domein toe aan de app, zoals een extern aangeschaft domein. Zie [aangepaste DNS-records beheren](#custom)voor meer informatie over het toevoegen van aangepaste DNS-namen aan een app service domein. Als u een extern aangekocht domein wilt toewijzen aan een app, raadpleegt u [een bestaande aangepaste DNS-naam toewijzen aan Azure app service](app-service-web-tutorial-custom-domain.md). 
+- Hetzelfde abonnement: gebruik de volgende stappen.
 
 ### <a name="launch-add-hostname"></a>Hostnaam van toevoegen starten
 Selecteer op de pagina **app Services** de naam van uw app waaraan u hostnamen wilt toewijzen, selecteer **instellingen**en selecteer vervolgens **aangepaste domeinen**.
@@ -228,8 +228,8 @@ Als uw domein is vernieuwd, ontvangt u binnen 24 uur een e-mail melding.
 
 Azure behandelt App Service domeinen die verlopen of verlopen zijn als volgt:
 
-* Als automatische verlenging is uitgeschakeld: 90 dagen voordat het domein is verlopen, wordt een e-mail melding voor de vernieuwing naar u verzonden en wordt de knop **domein vernieuwen** geactiveerd in de portal.
-* Als automatische verlenging is ingeschakeld: Op de dag na de verval datum van uw domein probeert Azure u te betalen voor het vernieuwen van de domein naam.
+* Als automatische verlenging is uitgeschakeld: 90 dagen vóór het verlopen van het domein, wordt er een e-mail bericht voor het vernieuwen van de e-mail naar u verzonden en wordt de knop voor het vernieuwen van het **domein** geactiveerd in de portal.
+* Als automatische verlenging is ingeschakeld: op de dag na de verval datum van uw domein probeert Azure u te factureren voor het vernieuwen van de domein naam.
 * Als er een fout optreedt tijdens het automatisch verlengen (bijvoorbeeld als uw kaart in het bestand is verlopen) of als automatische verlenging is uitgeschakeld en u toestaat dat het domein verloopt, ontvangt Azure u een melding van het domein verloop en Parken uw domein naam. U kunt uw domein [hand matig verlengen](#renew-the-domain) .
 * Op de dag van de vierde en twaalfde dagen na verloop van tijd stuurt Azure u extra e-mail berichten. U kunt uw domein [hand matig verlengen](#renew-the-domain) .
 * Op de 19e dag na de verval datum blijft uw domein in de wacht staan, maar wordt het onderhouds tarief in rekening gebracht. U kunt klant ondersteuning aanroepen om uw domein naam te vernieuwen, afhankelijk van eventuele verlengings-en activerings kosten.
@@ -244,7 +244,7 @@ In Azure worden DNS-records voor een App Service domein beheerd met behulp van [
 
 ### <a name="open-app-service-domain"></a>App Service domein openen
 
-Selecteer in het menu Azure Portal in het linkermenu **alle services** > **app service domeinen**.
+Selecteer in het menu links in het Azure Portal **alle services** > **app service domeinen**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -264,13 +264,13 @@ Nadat u het App Service-domein hebt aangeschaft, hebt u vijf dagen de aankoop vo
 
 ### <a name="open-app-service-domain"></a>App Service domein openen
 
-Selecteer in het menu Azure Portal in het linkermenu **alle services** > **app service domeinen**.
+Selecteer in het menu links in het Azure Portal **alle services** > **app service domeinen**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Selecteer het domein dat u wilt annuleren of verwijderen. 
 
-### <a name="delete-hostname-bindings"></a>Hostnaambindingen verwijderen
+### <a name="delete-hostname-bindings"></a>Hostname-bindingen verwijderen
 
 Selecteer in het menu links **hostnamen bindingen**. De hostname-bindingen van alle Azure-Services worden hier weer gegeven.
 
@@ -278,7 +278,7 @@ Selecteer in het menu links **hostnamen bindingen**. De hostname-bindingen van a
 
 U kunt het App Service domein pas verwijderen als alle hostnamen bindingen zijn verwijderd.
 
-Verwijder elke hostnaam binding door te selecteren **...**  >  **Verwijderen**. Nadat alle bindingen zijn verwijderd, selecteert u **Opslaan**.
+Verwijder elke hostnaam binding door **...**  > **verwijderen**te selecteren. Nadat alle bindingen zijn verwijderd, selecteert u **Opslaan**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
@@ -296,4 +296,4 @@ Nadat de bewerking is voltooid, wordt het domein vrijgegeven uit uw abonnement e
 
 ## <a name="direct-default-url-to-a-custom-directory"></a>Standaard-URL naar een aangepaste map omleiden
 
-Standaard stuurt App Service webaanvragen naar de hoofdmap van uw app-code. Als u ze wilt omleiden naar een submap, `public`Zie [de standaard-URL naar een aangepaste map](app-service-web-tutorial-custom-domain.md#virtualdir).
+Standaard stuurt App Service webaanvragen naar de hoofdmap van uw app-code. Als u ze wilt omleiden naar een submap, zoals `public`, raadpleegt u [de standaard-URL voor een aangepaste map](app-service-web-tutorial-custom-domain.md#virtualdir).

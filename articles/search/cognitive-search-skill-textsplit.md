@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784855"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479653"
 ---
 # <a name="text-split-cognitive-skill"></a>Cognitieve vaardigheid van tekst splitsen
 
@@ -33,7 +33,7 @@ Para meters zijn hoofdletter gevoelig.
 |--------------------|-------------|
 | textSplitMode      | ' Pagina's ' of ' zinnen ' | 
 | maximumPageLength | Als textSplitMode is ingesteld op ' pagina's ', verwijst dit naar de maximale pagina lengte, zoals gemeten door `String.Length`. De minimum waarde is 100.  Als de textSplitMode is ingesteld op ' pagina's ', probeert het algoritme de tekst te splitsen in segmenten die de meeste grootte hebben ' maximumPageLength '. In dit geval is het algoritme het beste om de zin op een zin te verkorten, zodat de grootte van het segment iets kleiner is dan ' maximumPageLength '. | 
-| defaultLanguageCode   | Beschrijving Een van de volgende taal codes: `da, de, en, es, fi, fr, it, ko, pt`. De standaard waarde is Engels (en). Enkele dingen die u moet overwegen:<ul><li>Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.</li><li>Als de taal zich niet in de vorige lijst bevindt, wordt de tekst door de gesplitste vaardigheid op teken grenzen afgebroken.</li><li>Het is handig om een taal code op te geven om te voor komen dat een woord in de helft wordt geknipt voor niet-beschik bare talen, zoals Chinees, Japans en Koreaans.</li></ul>  |
+| defaultLanguageCode   | Beschrijving Een van de volgende taal codes: `da, de, en, es, fi, fr, it, ko, pt`. De standaard waarde is Engels (en). Enkele dingen die u moet overwegen:<ul><li>Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.</li><li>Als de taal zich niet in de vorige lijst bevindt, wordt de tekst door de gesplitste vaardigheid op teken grenzen afgebroken.</li><li>Het opgeven van een taal code is handig om te voor komen dat een woord in de helft wordt geknipt voor niet-spatie talen, zoals Chinees, Japans en Koreaans.</li><li>Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), moet de standaard waarde voor Engels (en) voldoende zijn. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
@@ -41,7 +41,7 @@ Para meters zijn hoofdletter gevoelig.
 | Parameternaam       | Beschrijving      |
 |----------------------|------------------|
 | tekst  | De tekst die moet worden gesplitst in subtekenreeks. |
-| languageCode  | Beschrijving De taal code voor het document.  |
+| languageCode  | Beschrijving De taal code voor het document. Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), is het veilig om deze invoer te verwijderen.  |
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer 
 

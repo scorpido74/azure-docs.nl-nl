@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996811"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495475"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Inzicht in facturering voor Azure CDN
 
@@ -55,11 +55,11 @@ Het gebruik van Azure CDN heeft ook enkele gebruiks kosten in rekening gebracht 
 
 Als u Azure Blob Storage gebruikt als oorsprong voor uw inhoud, worden ook de volgende opslag kosten in rekening gebracht voor cache opvullingen:
 
-- Werkelijk gebruikte GB: De werkelijke opslag van uw bron objecten.
+- Werkelijk gebruikte GB: de daad werkelijke opslag van uw bron objecten.
 
-- Transacties Als dat nodig is om de cache te vullen.
+- Trans acties: als dat nodig is om de cache te vullen.
 
-- Overdrachten in GB: De hoeveelheid gegevens die wordt overgedragen om de CDN-caches op te vullen.
+- Overdrachten in GB: de hoeveelheid gegevens die wordt overgedragen om de CDN-caches op te vullen.
 
 > [!NOTE]
 > Vanaf 2019 oktober, als u Azure CDN van micro soft gebruikt, zijn de kosten voor gegevens overdracht van oorsprong die worden gehost in azure naar CDN Pop's gratis. Azure CDN van Verizon en Azure CDN van Akamai zijn onderhevig aan de tarieven die hieronder worden beschreven.
@@ -68,9 +68,9 @@ Zie [Azure Storage facturering – band breedte, trans acties en capaciteit](htt
 
 Als u gebruikmaakt van *gehoste service levering*, worden er kosten in rekening gebracht:
 
-- Tijd van Azure-berekening: De reken instanties die fungeren als de oorsprong.
+- Azure-reken tijd: de reken instanties die fungeren als de oorsprong.
 
-- Azure Compute-overdracht: De gegevens overdracht van de reken instanties om de Azure CDN-caches op te vullen.
+- Azure Compute Transfer: de gegevens overdracht van de reken instanties om de Azure CDN-caches op te vullen.
 
 Als uw client aanvragen voor byte bereik gebruikt (ongeacht de oorspronkelijke service), zijn de volgende overwegingen van toepassing:
 
@@ -81,11 +81,11 @@ Als uw client aanvragen voor byte bereik gebruikt (ongeacht de oorspronkelijke s
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Hoeveel overdrachts activiteit wordt uitgevoerd om de cache te ondersteunen?
 Telkens wanneer een CDN-POP de cache moet invullen, wordt er een aanvraag naar de oorsprong voor het object dat in de cache wordt opgeslagen. Als gevolg hiervan wordt de oorsprong een factureer bare trans actie op elke cache-Misser. Het aantal missers in de cache is afhankelijk van een aantal factoren:
 
-- Hoe cachebaar de inhoud is: Als de inhoud een hoge TTL-waarde (time-to-Live)/Expiration heeft en regel matig wordt geopend, zodat deze populair blijft in de cache, wordt de meeste belasting door het CDN verwerkt. Een typische verhouding in de cache-treffer is ruim meer dan 90%, wat betekent dat minder dan 10% van client aanvragen moet worden teruggestuurd naar de oorsprong, hetzij voor een cache-Missing of het vernieuwen van objecten.
+- Hoe kan de inhoud in de cache worden opgeslagen: als de inhoud een hoge TTL-waarde (time-to-Live)/Expiration heeft en regel matig wordt geopend zodat deze populair blijft in de cache, wordt de grootste deel van de belasting verwerkt door het CDN. Een typische verhouding in de cache-treffer is ruim meer dan 90%, wat betekent dat minder dan 10% van client aanvragen moet worden teruggestuurd naar de oorsprong, hetzij voor een cache-Missing of het vernieuwen van objecten.
 
-- Het aantal knoop punten dat het object moet laden: Telkens wanneer een knoop punt een object van de oorsprong laadt, wordt er een factureer bare trans actie in rekening gebracht. Als gevolg hiervan resulteert meer globale inhoud (toegankelijk vanaf meer knoop punten) in meer factureer bare trans acties.
+- Hoeveel knoop punten moet het object laden: telkens wanneer een knoop punt een object van de oorsprong laadt, wordt er een factureer bare trans actie gemaakt. Als gevolg hiervan resulteert meer globale inhoud (toegankelijk vanaf meer knoop punten) in meer factureer bare trans acties.
 
-- TTL-invloed: Een hogere TTL voor een object houdt in dat deze van de oorsprong minder vaak moet worden opgehaald. Dit betekent ook dat clients, zoals browsers, het object langer in de cache kunnen opslaan, waardoor de trans acties naar het CDN kunnen worden verminderd.
+- TTL-invloed: een hogere TTL voor een object houdt in dat deze van de oorsprong minder vaak moet worden opgehaald. Dit betekent ook dat clients, zoals browsers, het object langer in de cache kunnen opslaan, waardoor de trans acties naar het CDN kunnen worden verminderd.
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Welke oorspronkelijke Services komen in aanmerking voor gratis gegevens overdracht met Azure CDN van micro soft? 
 Als u een van de volgende Azure-Services gebruikt als uw CDN-oorsprong, worden er geen kosten in rekening gebracht voor gegevens overdracht van de oorsprong naar de CDN-Pop's. 
@@ -93,8 +93,8 @@ Als u een van de volgende Azure-Services gebruikt als uw CDN-oorsprong, worden e
 - Azure Storage
 - Azure Media Services
 - Azure Virtual Machines
-- Virtueel netwerk
-- Load Balancer
+- Virtual Network
+- Load balancer
 - Application Gateway
 - Azure DNS
 - ExpressRoute
@@ -113,8 +113,8 @@ Als u een van de volgende Azure-Services gebruikt als uw CDN-oorsprong, worden e
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Azure Machine Learning-service 
-- Azure SQL Database
+- Azure Machine Learning 
+- Azure SQL-database
 - Azure Cache voor Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Hoe kan ik mijn kosten het meest effectief beheren?

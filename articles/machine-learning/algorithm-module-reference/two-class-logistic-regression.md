@@ -1,24 +1,24 @@
 ---
 title: 'Logistiek regressie met twee klassen: Naslag informatie over de module'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module logistiek-regressie van twee klassen in Azure Machine Learning service voor het maken van een logistiek regressie model dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module logistiek-regressie voor twee klassen in Azure Machine Learning voor het maken van een logistiek regressie model dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7020bf529fa635d74959a9dac071aa6e2b134c5b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: f64352906da5d6e3a314b3af68e37f4dc5bb80bd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692628"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485934"
 ---
 # <a name="two-class-logistic-regression-module"></a>Logistiek regressie module met twee klassen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Met deze module kunt u een logistiek regressie model maken dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen. 
 
@@ -87,4 +87,4 @@ Nadat de training is voltooid:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

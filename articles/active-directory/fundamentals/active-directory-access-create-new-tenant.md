@@ -12,36 +12,38 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bc3e3bb178efbbc8f4cee6d81417ce70bd7a662
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c8310b6fc33f1d03e1ccc9ccddfcd7b9e6c35d37
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562067"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473362"
 ---
-# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Snelstartgids: Een nieuwe tenant maken in Azure Active Directory
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Snelstartgids: een nieuwe Tenant maken in Azure Active Directory
 U kunt al uw administratieve taken uitvoeren met behulp van de portal van Azure Active Directory (Azure AD), met inbegrip van het maken van een nieuwe tenant voor uw organisatie. 
 
 In deze Snelstartgids leert u hoe u bij de Azure Portal en Azure Active Directory komt en hoe u een eenvoudige tenant voor uw organisatie maakt.
 
 Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
-Meld u aan bij de [Azure Portal](https://portal.azure.com/) van uw organisatie met een Globale-administratoraccount.
-
-![Azure Portal scherm, met de optie Azure AD](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
-
 ## <a name="create-a-new-tenant-for-your-organization"></a>Een nieuwe tenant maken voor uw organisatie
 Nadat u zich bij Azure Portal aanmeldt, kunt u een nieuwe tenant maken voor uw organisatie. De nieuwe tenant vertegenwoordigt uw organisatie en helpt u bij het beheren van een specifiek exemplaar van Microsoft cloudservices voor uw interne en externe gebruikers.
 
 ### <a name="to-create-a-new-tenant"></a>Een nieuwe tenant maken
-1. Selecteer **Een resource maken**, selecteer **Identiteit** en selecteer vervolgens **Azure Active Directory**.
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) van uw organisatie met een Globale-administratoraccount.
+
+1. Selecteer in het menu Azure Portal de optie **een resource maken**.  
+
+    ![Azure Active Directory een herstellende pagina maken](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+
+1. Selecteer **identiteit**en selecteer vervolgens **Azure Active Directory**.
 
     De pagina **Map maken** wordt weergegeven.
 
     ![De pagina Maken voor Azure Active Directory](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
 
-2.  Op de pagina **Map maken**, voer de volgende informatie in:
+1.  Op de pagina **Map maken**, voer de volgende informatie in:
     
     - Type _Contoso_ in het vak **Organisatienaam**.
 
@@ -49,7 +51,7 @@ Nadat u zich bij Azure Portal aanmeldt, kunt u een nieuwe tenant maken voor uw o
 
     - Laat de optie _Verenigde Staten_ in het vak **Land of regio**.
 
-3. Selecteer **Maken**.
+1. Selecteer **Maken**.
 
 De nieuwe tenant wordt gemaakt met het domein contoso.onmicrosoft.com.
 

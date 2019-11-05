@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 6e5e293e9759f091b6537d5efab9884e0a20fabc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725458"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520487"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Een afhankelijkheid voor een tumblingvenstertrigger maken
 
@@ -79,8 +79,8 @@ De volgende tabel bevat de lijst met kenmerken die nodig zijn voor het definiër
 | **Eigenschaps naam** | **Beschrijving**  | **Type** | **Vereist** |
 |---|---|---|---|
 | type  | Alle bestaande tumblingvenstertriggers-venster triggers worden weer gegeven in deze vervolg keuzelijst. Kies de trigger voor het maken van afhankelijkheden.  | TumblingWindowTriggerDependencyReference of SelfDependencyTumblingWindowTriggerReference | Ja |
-| offset | Verschuiving van de afhankelijkheids trigger. Geef een waarde op in de indeling van de tijd en zowel negatieve als positieve verschuivingen zijn toegestaan. Deze eigenschap is verplicht als de trigger afhankelijk is van zichzelf en in alle andere gevallen optioneel is. De Self-afhankelijkheid moet altijd een negatieve verschuiving zijn. Als er geen waarde is opgegeven, is het venster hetzelfde als de trigger. | Timespan<br/>(UU: mm: SS) | Zelf afhankelijkheid: Ja<br/>Overige: Nee |
-| size | Grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. Geef een positieve time span-waarde op. Deze eigenschap is optioneel. | Timespan<br/>(UU: mm: SS) | Nee  |
+| offset | Verschuiving van de afhankelijkheids trigger. Geef een waarde op in de indeling van de tijd en zowel negatieve als positieve verschuivingen zijn toegestaan. Deze eigenschap is verplicht als de trigger afhankelijk is van zichzelf en in alle andere gevallen optioneel is. De Self-afhankelijkheid moet altijd een negatieve verschuiving zijn. Als er geen waarde is opgegeven, is het venster hetzelfde als de trigger. | Periode<br/>(UU: mm: SS) | Zelf afhankelijkheid: Ja<br/>Overige: Nee |
+| Size | Grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. Geef een positieve time span-waarde op. Deze eigenschap is optioneel. | Periode<br/>(UU: mm: SS) | Nee  |
 
 > [!NOTE]
 > Een trigger voor een tumblingvenstertriggers-venster kan afhankelijk zijn van een maximum van twee andere triggers.
@@ -141,7 +141,7 @@ Hieronder ziet u een aantal voor beelden van scenario's en het gebruik van eigen
 
 Een dagelijkse telemetrie-verwerkings taak, afhankelijk van een andere dagelijkse taak waarmee de uitvoer van de laatste zeven dagen wordt geaggregeerd en die zeven dagen worden gegenereerd:
 
-![Voor beeld] van afhankelijkheid (media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Voor beeld") van afhankelijkheid
+![Voor beeld van afhankelijkheid](media/tumbling-window-trigger-dependency/tumbling-window-dependency05.png "Voor beeld van afhankelijkheid")
 
 ### <a name="dependency-on-itself"></a>Afhankelijkheid op zichzelf
 
@@ -151,15 +151,17 @@ Een dagelijkse taak zonder hiaten in de uitvoer stromen van de taak:
 
 ## <a name="monitor-dependencies"></a>Afhankelijkheden controleren
 
-U kunt de afhankelijkheids keten en de bijbehorende Vensters bewaken vanaf de controle pagina voor het uitvoeren van triggers. Navigeer naar **bewaking > trigger uitvoeringen**.
+U kunt de afhankelijkheids keten en de bijbehorende Vensters bewaken vanaf de controle pagina voor het uitvoeren van triggers. Navigeer naar **bewaking > trigger uitvoeringen**. In de kolom acties kunt u de trigger opnieuw uitvoeren of de afhankelijkheden ervan weer geven.
 
-![Trigger uitvoeringen controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Trigger uitvoeringen controleren")
+![Trigger uitvoeringen controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Triggeruitvoeringen controleren")
 
-Klik op het actie pictogram om alle afhankelijke trigger uitvoeringen van het geselecteerde venster weer te geven.
+Als u op trigger afhankelijkheden weer geven klikt, ziet u de status van de afhankelijkheden. Als een van de afhankelijkheids triggers mislukt, moet u deze opnieuw uitvoeren om de afhankelijke trigger uit te voeren. Een trigger voor een tumblingvenstertriggers-venster wacht op afhankelijkheden voor zeven dagen voordat een time-out optreedt.
 
 ![Afhankelijkheden controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Afhankelijkheden controleren")
 
-In het bovenstaande voor beeld is een dagelijkse trigger afhankelijk van een uur trigger zonder dat er een venster is gedefinieerd en een offset van 3 uur. Als gevolg hiervan wordt de trigger uitgevoerd na 24 geslaagde uitvoeringen van de afhankelijkheid.
+Als u een visueel element wilt weer geven, selecteert u de Gantt-weer gave.
+
+![Afhankelijkheden controleren](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Afhankelijkheden controleren")
 
 ## <a name="next-steps"></a>Volgende stappen
 

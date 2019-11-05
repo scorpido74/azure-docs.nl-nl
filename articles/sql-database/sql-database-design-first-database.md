@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Uw eerste relationele database in Azure SQL Database ontwerpen met SSMS | Microsoft Docs'
+title: 'Zelf studie: uw eerste relationele data base in Azure SQL Database ontwerpen met behulp van SSMS | Microsoft Docs'
 description: Leer hoe u uw eerste relationele database in een individuele database in Azure SQL Database kunt ontwerpen met behulp van SQL Server Management Studio.
 services: sql-database
 ms.service: sql-database
@@ -9,20 +9,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640951"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492016"
 ---
-# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Zelfstudie: Een relationele database in een individuele database in Azure SQL Database ontwerpen met behulp van SQL Server Management Studio
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Zelf studie: een relationele data base ontwerpen in één data base in Azure SQL Database met behulp van SSMS
 
 Azure SQL-database is een relationele DBaaS (database-as-a-service) in Microsoft Cloud (Azure). In deze zelfstudie leert u hoe u met Azure Portal en [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) de volgende taken uitvoert:
 
 > [!div class="checklist"]
-> - Een individuele database maken met Azure Portal*
-> - Een IP-firewallregel op serverniveau instellen met Azure Portal
+> - Een individuele database maken met behulp van de Azure-portal*
+> - Een IP-firewallregel op serverniveau instellen met de Azure-portal
 > - Verbinding maken met de database via SQL Server Management Studio
 > - Tabellen maken met SSMS
 > - Gegevens bulksgewijs laden met BCP
@@ -33,7 +33,7 @@ Azure SQL-database is een relationele DBaaS (database-as-a-service) in Microsoft
 > [!TIP]
 > De volgende Microsoft Learn module helpt u gratis te leren hoe u [een ASP.NET-toepassing kunt ontwikkelen en configureren die een query uitvoert op een Azure SQL database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), inclusief het maken van een eenvoudige data base.
 > [!NOTE]
-> Voor deze zelfstudie wordt gebruikgemaakt van een individuele database. U kunt ook een gepoolde database in een elastische pool of een exemplaardatabase in een beheerd exemplaar gebruiken. Zie voor connectiviteit naar een beheerd exemplaar deze quickstarts over beheerde exemplaren: [Snelstart: Azure VM configureren om verbinding te maken met een Azure SQL Database Managed Instance](sql-database-managed-instance-configure-vm.md) en [quickstart: Een punt-naar-site-verbinding configureren naar een beheerd exemplaar voor Azure SQL Database van on-premises](sql-database-managed-instance-configure-p2s.md).
+> Voor deze zelfstudie wordt gebruikgemaakt van een individuele database. U kunt ook een gepoolde database in een elastische pool of een exemplaardatabase in een beheerd exemplaar gebruiken. Zie deze Quick starts voor het beheerde exemplaar: [Snelstartgids: Configure Azure VM to Connect to a Azure SQL database Managed instance](sql-database-managed-instance-configure-vm.md) and Quick Start ( [een punt-naar-site-verbinding naar een Azure SQL database configureren) voor verbinding met een beheerd exemplaar. Beheerd exemplaar van on-premises](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -44,7 +44,7 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Een lege individuele database maken
 
@@ -52,7 +52,7 @@ Een individuele Azure SQL-database wordt gemaakt met een gedefinieerde set reken
 
 Volg deze stappen om een lege individuele database te maken.
 
-1. Klik in de linkerbovenhoek van Azure Portal op **Een resource maken**.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
 2. Selecteer op de pagina **Nieuw** **Databases** in de sectie Azure Marketplace en klik vervolgens op **SQL Database** in de sectie **Aanbevolen**.
 
    ![lege database maken](./media/sql-database-design-first-database/create-empty-database.png)
@@ -61,9 +61,9 @@ Volg deze stappen om een lege individuele database te maken.
 
     | Instelling       | Voorgestelde waarde | Beschrijving |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **De naam van database** | *yourDatabase* | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. |
+    | **Databasenaam** | *yourDatabase* | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. |
     | **Abonnement** | *yourSubscription*  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-    | **Resourcegroep** | *yourResourceGroup* | Zie [Naming conventions](/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
+    | **Resourcegroep** | *yourResourceGroup* | Zie [Naming conventions](/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
     | **Bron selecteren** | Lege database | Hiermee geeft u aan dat er een lege database moet worden gemaakt. |
 
 4. Klik op **Server** als u een bestaande databaseserver wilt gebruiken of een nieuwe databaseserver wilt maken en configureren. Selecteer een bestaande server of klik op **Een nieuwe server maken** en vul het formulier **Nieuwe server** in met de volgende gegevens:
@@ -73,7 +73,7 @@ Volg deze stappen om een lege individuele database te maken.
     | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige servernamen. |
     | **Aanmeldgegevens van serverbeheerder** | Een geldige naam | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige aanmeldingsnamen. |
     | **Wachtwoord** | Een geldig wachtwoord | Uw wachtwoord moet uit minstens acht tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
-    | **Location** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |
+    | **Locatie** | Een geldige locatie | Zie [Azure-regio's](https://azure.microsoft.com/regions/) voor informatie over regio's. |
 
     ![database-server maken](./media/sql-database-design-first-database/create-database-server.png)
 
@@ -97,21 +97,23 @@ De service SQL Database maakt een IP-firewall op serverniveau. De firewall voork
 > [!IMPORTANT]
 > De service SQL Database communiceert via poort 1433. Als u verbinding met deze service probeert te maken vanuit een bedrijfsnetwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw individuele database, tenzij de beheerder poort 1433 openstelt.
 
-1. Wanneer de implementatie is voltooid, klikt u op **SQL Databases** in het menu aan de linkerkant. Klik vervolgens op de pagina **SQL Databases** op *yourDatabase*. De overzichtspagina voor de database wordt geopend, met de volledig gekwalificeerde **servernaam** (bijvoorbeeld *yourserver.database.windows.net*) en opties voor verdere configuratie.
+1. Nadat de implementatie is voltooid, selecteert u **SQL-data bases** in het menu Azure portal of zoekt u naar een wille keurige pagina SQL-data *bases* en selecteert u deze.  
 
-2. Kopieer vanuit SQL Server Management Studio deze volledig gekwalificeerde servernaam om verbinding te maken met de server en de databases.
+1. Selecteer *yourDatabase* op de pagina **SQL-data bases** . De overzichts pagina voor de data base wordt geopend, met de volledig gekwalificeerde **Server naam** (zoals `contosodatabaseserver01.database.windows.net`) en biedt opties voor verdere configuratie.
 
    ![servernaam](./media/sql-database-design-first-database/server-name.png)
 
-3. Klik op de werkbalk op **Serverfirewall instellen**. De pagina **Firewallinstellingen** voor de SQL Database-server wordt geopend.
+1. Kopieer vanuit SQL Server Management Studio deze volledig gekwalificeerde servernaam om verbinding te maken met de server en de databases.
+
+1. Klik op de werkbalk op **Serverfirewall instellen**. De pagina **Firewallinstellingen** voor de SQL Database-server wordt geopend.
 
    ![IP-firewallregel op serverniveau](./media/sql-database-design-first-database/server-firewall-rule.png)
 
-4. Klik op **IP van client toevoegen** op de werkbalk om uw huidige IP-adres aan een nieuwe IP-firewallregel toe te voegen. Een IP-firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
+1. Klik op **IP van client toevoegen** op de werkbalk om uw huidige IP-adres aan een nieuwe IP-firewallregel toe te voegen. Een IP-firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
 
-5. Klik op **Opslaan**. Er wordt een IP-firewallregel op serverniveau gemaakt voor uw huidige IP-adres waarbij poort 1433 wordt geopend op de SQL Database-server.
+1. Klik op **Opslaan**. Er wordt een IP-firewallregel op serverniveau gemaakt voor uw huidige IP-adres waarbij poort 1433 wordt geopend op de SQL Database-server.
 
-6. Klik op **OK** en sluit de pagina **Firewallinstellingen**.
+1. Klik op **OK** en sluit de pagina **Firewallinstellingen**.
 
 Uw IP-adres wordt niet meer geblokkeerd via de IP-firewall. U kunt nu verbinding maken met uw individuele database met SQL Server Management Studio of een ander hulpprogramma naar keuze. Gebruik het beheerdersaccount voor de server dat u eerder hebt gemaakt.
 
@@ -125,7 +127,7 @@ Gebruik [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
 1. Open SQL Server Management Studio.
 2. Voer in het dialoogvenster **Verbinding maken met server** de volgende informatie in:
 
-   | Instelling       | Voorgestelde waarde | Description |
+   | Instelling       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Servertype** | Database-engine | Deze waarde is verplicht. |
    | **Servernaam** | De volledig gekwalificeerde servernaam | Bijvoorbeeld *yourserver.database.windows.net*. |
@@ -139,7 +141,7 @@ Gebruik [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ss
 
     ![verbinding maken met database op server](./media/sql-database-design-first-database/options-connect-to-db.png)  
 
-4. Klik op**Verbinden**. Het venster **Objectverkenner** wordt geopend in SSMS.
+4. Klik op **Verbinden**. Het venster **Objectverkenner** wordt geopend in SSMS.
 
 5. In **Objectverkenner** vouwt u **Databases** en daarna *yourDatabase* uit om de objecten in de voorbeelddatabase weer te geven.
 

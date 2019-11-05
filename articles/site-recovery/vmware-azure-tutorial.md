@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 268def74a354b19427849738549fbc0c6b197746
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813397"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488462"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Herstel van on-premises VMware-VM’s naar Azure na een noodgeval instellen
 
@@ -60,9 +60,9 @@ Voltooi de vorige zelf studies:
 
 In uw bron omgeving hebt u één Maxi maal beschik bare on-premises computer nodig om deze on-premises Site Recovery onderdelen te hosten:
 
-- **Configuratie server**: De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie.
-- **Processerver**: De processerver fungeert als replicatiegateway. Het ontvangt replicatie gegevens; optimaliseert het met caching, compressie en versleuteling, en verzendt het naar een cache-opslag account in Azure. De proces server installeert ook de Mobility Service-agent op Vm's die u wilt repliceren en voert automatische detectie van on-premises virtuele VMware-machines uit.
-- **Hoofddoel server**: Op de hoofddoelserver worden de replicatiegegevens tijdens de failback vanuit Azure afgehandeld.
+- **Configuratie server**: de configuratie server coördineert de communicatie tussen on-premises en Azure, en beheert de gegevens replicatie.
+- **Proces server**: de proces server fungeert als replicatie gateway. Het ontvangt replicatie gegevens; optimaliseert het met caching, compressie en versleuteling, en verzendt het naar een cache-opslag account in Azure. De proces server installeert ook de Mobility Service-agent op Vm's die u wilt repliceren en voert automatische detectie van on-premises virtuele VMware-machines uit.
+- **Hoofddoel server**: de hoofddoel server verwerkt de replicatie gegevens tijdens de failback van Azure.
 
 
 Al deze onderdelen worden samen geïnstalleerd op de afzonderlijke on-premises machines die de *Configuratie server*worden genoemd. Voor VMware-nood herstel stellen we standaard de configuratie server in als een Maxi maal beschik bare virtuele VMware-machine. Hiervoor downloadt u een voor bereide open Virtualization Application (eicellen) sjabloon en importeert u de sjabloon in VMware om de VM te maken. 
@@ -104,7 +104,7 @@ Al deze onderdelen worden samen geïnstalleerd op de afzonderlijke on-premises m
 Als u een extra NIC aan de configuratie server wilt toevoegen, voegt u deze toe voordat u de server in de kluis registreert. Het toevoegen van extra adapters wordt niet ondersteund na registratie.
 
 1. Klik in de vSphere Client-inventaris met de rechtermuisknop op de VM en selecteer **Instellingen bewerken**.
-2. Selecteer **Toevoegen** > **Ethernet-adapter** bij **Hardware**. Selecteer vervolgens **Volgende**.
+2. Selecteer **Toevoegen**Ethernet-adapter >  bij **Hardware**. Selecteer vervolgens **Volgende**.
 3. Selecteer een adaptertype en een netwerk. 
 4. Als u verbinding wilt maken met de virtuele NIC verbinding wanneer de VM wordt ingeschakeld, selecteert u **Verbinding maken bij inschakelen**. Selecteer **Volgende** > **voltooien**. Selecteer vervolgens **OK**.
 
@@ -158,7 +158,7 @@ Selecteer en controleer doelbronnen.
 
 ## <a name="create-a-replication-policy"></a>Een replicatiebeleid maken
 
-1. Open [Azure Portal](https://portal.azure.com) en selecteer **Alle resources**.
+1. Open de [Azure Portal](https://portal.azure.com). Zoek en selecteer **Recovery Services kluizen**.
 2. Selecteer de Recovery Services-kluis (**ContosoVMVault** in deze zelfstudie).
 3. Selecteer **Infrastructuur voor Site Recovery** > **Herstelbeleid** >  **+Herstelbeleid** om een replicatiebeleid te maken.
 4. Voer bij **Replicatiebeleid maken** de naam van het beleid in. Hiervoor wordt **VMwareRepPolicy** gebruikt.

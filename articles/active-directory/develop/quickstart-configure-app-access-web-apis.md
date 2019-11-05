@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473696"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Snelstartgids: een client toepassing configureren voor toegang tot Web-Api's
 
@@ -57,7 +57,8 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek en stelt u uw portal sessie in op de gewenste Azure AD-Tenant.
-1. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**.
+1. Zoek en selecteer **Azure Active Directory**. 
+1. Selecteer **app-registraties**in het linkerdeel venster.
 1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Volg de stappen om uw toepassing te configureren voor toegang tot web-API's:
     * [Omleidings-URI's toevoegen aan uw toepassing](#add-redirect-uris-to-your-application)
@@ -113,11 +114,11 @@ Wanneer u [de ondersteunde account typen hebt geconfigureerd](quickstart-registe
 
 De ondersteunde account typen voor een bestaande app-registratie wijzigen:
 
-* Zie [het toepassings manifest configureren](reference-app-manifest.md) en de sleutel `signInAudience` bijwerken.
+* Zie [het toepassings manifest configureren](reference-app-manifest.md) en de `signInAudience` sleutel bijwerken.
 
 ## <a name="configure-platform-settings-for-your-application"></a>Platform instellingen voor uw toepassing configureren
 
-[![Configure-instellingen voor uw app op basis van het platform of apparaat](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+[![instellingen configureren voor uw app op basis van het platform of apparaat](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
 
 Als u toepassings instellingen wilt configureren op basis van het platform of apparaat, bent u gericht op het volgende:
 
@@ -132,7 +133,7 @@ Als u toepassings instellingen wilt configureren op basis van het platform of ap
    | **Webtoepassingen**    | **Web**              | Voer de **omleidings-URI** voor uw toepassing in. |
    | **Mobiele toepassingen** | **iOS**              | Voer de **bundel-id**van de app in, die u kunt vinden in Xcode in info. plist of build-instellingen. Als u de bundel-ID toevoegt, wordt er automatisch een omleidings-URI voor de toepassing gemaakt. |
    |                         | **Android**          | * Geef de **pakket naam**van de app op die u in het bestand AndroidManifest. XML kunt vinden.<br/>* Genereer en voer de **hand tekening-hash**in. Als de hand tekening-hash wordt toegevoegd, wordt er automatisch een omleidings-URI voor de toepassing gemaakt.  |
-   | **Bureau blad + apparaten**   | **Bureau blad + apparaten** | Beschrijving. Selecteer een van de aanbevolen **omleidings-uri's** als u apps voor desktop-en apparaten bouwt.<br/>Beschrijving. Voer een **aangepaste omleidings-URI**in, die wordt gebruikt als de locatie waar Azure AD gebruikers omleidt als reactie op verificatie aanvragen. Gebruik bijvoorbeeld `https://localhost` voor .NET core-toepassingen waarbij u een interactie wilt. |
+   | **Bureau blad + apparaten**   | **Bureau blad + apparaten** | Beschrijving. Selecteer een van de aanbevolen **omleidings-uri's** als u apps voor desktop-en apparaten bouwt.<br/>Beschrijving. Voer een **aangepaste omleidings-URI**in, die wordt gebruikt als de locatie waar Azure AD gebruikers omleidt als reactie op verificatie aanvragen. Gebruik bijvoorbeeld `https://localhost`voor .NET core-toepassingen waarbij u interactie wilt. |
 
    > [!IMPORTANT]
    > Voor mobiele toepassingen die niet gebruikmaken van de meest recente MSAL-bibliotheek of die geen Broker gebruikt, moet u de omleidings-Uri's voor deze toepassingen configureren in **Desktop +-apparaten**.
@@ -180,7 +181,7 @@ Ga als volgt te werk om machtiging(en) voor toegang tot resource-API's van uw cl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees meer in deze andere gerelateerde snelstarts voor app-beheer:
+Lees meer over andere gerelateerde snelstarts voor app-beheer:
 
 * [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)

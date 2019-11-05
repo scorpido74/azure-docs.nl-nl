@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002638"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489718"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u een Azure Machine Learning-werk ruimte maakt met behulp van de Azure CLI. De Azure CLI bevat opdrachten voor het beheer van Azure-resources. De machine learning-extensie voor de CLI bevat opdrachten voor het werken met Azure Machine Learning-resources.
 
@@ -68,7 +69,7 @@ De Azure Machine Learning-werk ruimte is afhankelijk van de volgende Azure-Servi
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-De Azure Machine Learning-werk ruimte moet binnen een resource groep worden gemaakt. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Gebruik de volgende opdracht om __een nieuwe resource groep te maken__. Vervang `<resource-group-name>` door de naam die u voor deze resource groep wilt gebruiken. Vervang `<location>` door de Azure-regio die u wilt gebruiken voor deze resource groep:
+De Azure Machine Learning-werk ruimte moet binnen een resource groep worden gemaakt. U kunt een bestaande resource groep gebruiken of een nieuwe maken. Gebruik de volgende opdracht om __een nieuwe resource groep te maken__. Vervang `<resource-group-name>` door de naam die u voor deze resource groep wilt gebruiken. Vervang `<location>` door de Azure-regio die u voor deze resource groep wilt gebruiken:
 
 > [!TIP]
 > U moet een regio selecteren waar Azure Machine Learning beschikbaar is. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)voor meer informatie.
@@ -133,7 +134,7 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
 > [!IMPORTANT]
 > U hoeft niet alle bestaande resources op te geven. U kunt een of meer opgeven. U kunt bijvoorbeeld een bestaand opslag account opgeven en de andere resources worden gemaakt door de werk ruimte.
 
-+ **Azure Storage account**:`az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage account**: `az storage account show --name <storage-account-name> --query "id"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor uw opslag account:
 
@@ -163,7 +164,7 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure container Registry**:`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Het antwoord van deze opdracht is vergelijkbaar met de volgende tekst en is de ID voor het container register:
 
@@ -172,7 +173,7 @@ Als u een werk ruimte wilt maken waarin bestaande resources worden gebruikt, moe
     > [!IMPORTANT]
     > Het [beheerders account](/azure/container-registry/container-registry-authentication#admin-account) moet zijn ingeschakeld voor het container register voordat het kan worden gebruikt met een Azure machine learning-werk ruimte.
 
-Wanneer u de id's hebt voor de resource (s) die u wilt gebruiken voor de werk ruimte, gebruikt u de `az workspace create -w <workspace-name> -g <resource-group-name>` basis opdracht en voegt u de para meter (s) en de id ('s) toe voor de bestaande resources. Met de volgende opdracht maakt u bijvoorbeeld een werk ruimte die gebruikmaakt van een bestaand container register:
+Wanneer u de Id's hebt voor de resource (s) die u wilt gebruiken voor de werk ruimte, gebruikt u de basis `az workspace create -w <workspace-name> -g <resource-group-name>` opdracht en voegt u de para meter (s) en de ID ('s) toe voor de bestaande resources. Met de volgende opdracht maakt u bijvoorbeeld een werk ruimte die gebruikmaakt van een bestaand container register:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
@@ -201,7 +202,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 }
 ```
 
-## <a name="list-workspaces"></a>Lijst met werkruimten
+## <a name="list-workspaces"></a>Werk ruimten weer geven
 
 Als u alle werk ruimten voor uw Azure-abonnement wilt weer geven, gebruikt u de volgende opdracht:
 

@@ -10,20 +10,20 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a93c71a97cdb1f6296919a248cf7ef545f7b307f
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: df23c41629dfe86058f0f2fb6602e85fd5a6d494
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269239"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489301"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Aan de slag met Azure Machine Learning voor Visual Studio code
 
 In dit artikel leert u hoe u de **Azure machine learning voor Visual Studio code** extension kunt gebruiken om machine learning modellen te trainen en te implementeren.
 
-De [Azure machine learning-service](overview-what-is-azure-ml.md) stroomlijnt het bouwen, trainen en implementeren van machine learning modellen.
+De [Azure machine learning](overview-what-is-azure-ml.md) stroomlijnt het bouwen, trainen en implementeren van machine learning modellen.
 + Voor trainingen biedt het ondersteuning voor het lokaal of extern uitvoeren van experimenten. Voor elk experiment kunt u aangepaste metrische gegevens van meerdere uitvoeringen vastleggen om Hyper parameters te verfijnen
-+ U kunt ook de Azure Machine Learning-service gebruiken om gemakkelijk machine learning modellen te implementeren voor uw test-en productie behoeften.
++ U kunt ook de Azure Machine Learning gebruiken om machine learning modellen eenvoudig te implementeren voor uw test-en productie behoeften.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -58,7 +58,7 @@ De Azure Machine Learning-extensie installeren:
 > U kunt het installatie programma voor extensies ook rechtstreeks downloaden van [Azure machine learning voor Visual Studio code extension (preview)](https://aka.ms/vscodetoolsforai).
 
 ## <a name="quickstart-with-azure-machine-learning"></a>Snelstartgids met Azure Machine Learning
-Er zijn meerdere manieren waarop u uw trainings scripts kunt uitvoeren met behulp van de Azure Machine Learning-service. Als u net aan de slag gaat, laten we eerst zien hoe u snel een trainings script kunt indienen om uit te voeren in Azure.
+Er zijn meerdere manieren waarop u uw trainings scripts kunt uitvoeren met behulp van Azure Machine Learning. Als u net aan de slag gaat, laten we eerst zien hoe u snel een trainings script kunt indienen om uit te voeren in Azure.
 
 Als u al even vertrouwd bent met de Azure Machine Learning-concepten en meer informatie wilt over het beheren en gebruiken van de uitbrei ding, raadpleegt u [Azure machine learning uitgebreid met VS-code](./how-to-vscode-tools.md#azure-machine-learning-in-depth-with-vs-code) .
 
@@ -75,11 +75,11 @@ Aan de slag. U kunt uw eigen trainings script gebruiken als u het hebt voor bere
 
 1. Open **Train.py** en voer deze uit door het fout opsporingsprogramma te openen en op de knop uitvoeren te drukken (of druk op F5).
 
-   [![MNIST-training uitvoeren](./media/vscode-tools-for-ai/run-mnist.gif)](./media/vscode-tools-for-ai/run-mnist.gif#lightbox)
+   [MNIST-training ![uitvoeren](./media/vscode-tools-for-ai/run-mnist.gif)](./media/vscode-tools-for-ai/run-mnist.gif#lightbox)
 
 Als alles correct is geïnstalleerd, wordt het script uitgevoerd en wordt er een tensor flow-model in de map outputs gemaakt.
 
-[![Tensor flow model weer geven](./media/vscode-tools-for-ai/show-tensorflow-model.gif)](./media/vscode-tools-for-ai/show-tensorflow-model.gif#lightbox)
+[Tensor flow-model ![weer geven](./media/vscode-tools-for-ai/show-tensorflow-model.gif)](./media/vscode-tools-for-ai/show-tensorflow-model.gif#lightbox)
 
 Nu u weet dat uw script correct wordt uitgevoerd, kunt u het uitvoeren in Azure.
 
@@ -139,7 +139,7 @@ Om uw project te wijzigen zodat Azure op de hoogte kan worden gesteld van belang
 ### <a name="run-the-script-in-azure"></a>Het script uitvoeren in azure
 Dat is alles. Gebruik nu alleen de extensie om uw script uit te voeren in de Cloud. De volgende scenario video neemt de vrijheid van het comprimeren van de tijd die nodig is om een nieuwe Azure ML-werk ruimte en-berekeningen te maken, evenals de tijd die nodig is om het trainings script uit te voeren.
 
-   [![Een Azure ML-experiment starten](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
+   [![een Azure ML-experiment starten](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
 
 Nadat u op de knop experiment uitvoeren hebt geklikt, beantwoordt u de prompts als volgt:
 
@@ -153,12 +153,12 @@ Nadat u op de knop experiment uitvoeren hebt geklikt, beantwoordt u de prompts a
 1. Bekijk de standaard namen en-specificaties voor de uitvoering van het experiment en klik op de koppeling **verzenden experiment** in het JSON-bestand. Het JSON-bestand wordt niet opgeslagen, maar dit is alleen mogelijk als u de instellingen voor het experiment wilt controleren of wijzigen voordat u het document instuurt.
 1. U kunt terug en even horen terwijl de uitbrei ding alles voor u instelt en uw script uitvoert.
 
-    [![Trainen in Cloud](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
+    [![Train in de Cloud](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
 
-Over een paar seconden wordt u gewaarschuwd dat het experiment is verzonden naar Azure, op welk moment u de voortgang kunt bekijken in de Azure Portal door te klikken op de koppeling **experiment-uitvoering weer geven** in de melding over de VS-code of in VS code door te vernieuwen op het tabblad Azure.
+Over een paar seconden wordt u gewaarschuwd dat het experiment is verzonden naar Azure, op welk moment u de voortgang kunt bekijken in de Azure Machine Learning Studio door te klikken op de koppeling **experiment-uitvoering weer geven** in de melding over het VS-programma of in VS code op Klik op de knop Vernieuwen op het tabblad Azure.
 
-Op het moment wordt het weer geven van metrische uitvoerings gegevens alleen ondersteund in de Azure Portal. Met de koppeling voor het uitvoeren van het **experiment weer geven** hierboven gaat u naar de uitvoering waar u de metrische gegevens ziet die u hebt geregistreerd.
-[![Experiment uitvoeren in de portal](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
+Op het moment wordt het weer geven van metrische uitvoerings gegevens alleen ondersteund in de Studio. Met de koppeling voor het uitvoeren van het **experiment weer geven** hierboven gaat u naar de uitvoering waar u de metrische gegevens ziet die u hebt geregistreerd.
+[![experiment in Portal uitvoeren](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
 
 ## <a name="azure-machine-learning-in-depth-with-vs-code"></a>Azure Machine Learning diep gaande met VS-code
 
@@ -170,7 +170,7 @@ Voordat u begint met het trainen en implementeren van machine learning modellen 
 
 1. Op de activiteiten balk van Visual Studio, selecteert u het pictogram van Azure. De Azure Machine Learning zijbalk wordt weer gegeven.
 
-    [![Een werk ruimte maken](./media/vscode-tools-for-ai/create-workspace.gif)](./media/vscode-tools-for-ai/create-workspace.gif#lightbox)
+    [een werk ruimte ![maken](./media/vscode-tools-for-ai/create-workspace.gif)](./media/vscode-tools-for-ai/create-workspace.gif#lightbox)
 
 
 1. Klik met de rechter muisknop op uw Azure-abonnement en selecteer **werk ruimte maken**. Er wordt standaard een naam gegenereerd met de datum en tijd van het maken. Wijzig de naam in **TeamWorkspace** en druk op ENTER.
@@ -192,14 +192,14 @@ Een of meer experimenten kunnen worden gemaakt in uw werk ruimte om de uitvoerin
 
 1. In een werk ruimte kunt u met de rechter muisknop op een experiment klikken om dit als het **actieve** experiment in te stellen. Het **actieve** experiment bevat koppelingen waarmee in de Cloud wordt geexperimenteerd naar de map die u momenteel hebt geopend in Visual Studio code. Deze map moet uw lokale python-scripts bevatten. Door een actief experiment in te stellen, worden belang rijke metrische gegevens voor alle trainings runs opgeslagen in het experiment, ongeacht waar ze worden uitgevoerd.
 
-    [![Een experiment maken](./media/vscode-tools-for-ai/create-experiment.gif)](./media/vscode-tools-for-ai/create-experiment.gif#lightbox)
+    [![een experiment maken](./media/vscode-tools-for-ai/create-experiment.gif)](./media/vscode-tools-for-ai/create-experiment.gif#lightbox)
 
 
-### <a name="create-and-manage-compute-targets"></a>Maken en beheren van compute-doelen
+### <a name="create-and-manage-compute-targets"></a>Reken doelen maken en beheren
 
 Met Azure Machine Learning voor Visual Studio code kunt u uw gegevens voorbereiden, modellen trainen en deze zowel lokaal als op externe Compute-doelen implementeren.
 
-De extensie ondersteunt diverse externe Compute-doelen voor Azure Machine Learning. Zie de volledige lijst met ondersteunde COMPUTE- [doelen voor Azure machine learning](how-to-set-up-training-targets.md)voor meer informatie.
+De extensie ondersteunt diverse externe Compute-doelen voor Azure Machine Learning. Zie de volledige lijst met ondersteunde [Compute-doelen voor Azure machine learning](how-to-set-up-training-targets.md)voor meer informatie.
 
 ### <a name="create-compute-targets-for-azure-machine-learning-in-visual-studio-code"></a>Reken doelen voor Azure Machine Learning maken in Visual Studio code
 
@@ -209,9 +209,9 @@ Een reken doel maken:
 
 1. Vouw in de structuur weergave uw Azure-abonnement en Azure Machine Learning-werk ruimte uit.
 
-1. Onder het werkruimteknooppunt met de rechtermuisknop op de **Compute** knooppunt en kies **maken Compute**.
+1. Klik onder het knoop punt werk ruimte met de rechter muisknop op het knoop punt **Compute** en kies **Compute maken**.
 
-1. Kies het doeltype compute in de lijst.
+1. Kies het type berekenings doel in de lijst.
 
 1. Selecteer de grootte van een virtuele machine in de opdracht prompt. U kunt de berekeningen filteren met tekst, zoals ' GPU '.
 
@@ -219,11 +219,11 @@ Een reken doel maken:
 
 1. Nadat u de naam hebt ingevoerd, wordt de berekening gemaakt met behulp van de standaard parameters. Als u de para meters wilt wijzigen, klikt u met de rechter muisknop op de nieuwe Compute en kiest u **Compute bewerken**.
 
-1. Breng de gewenste wijzigingen aan in de JSON die wordt weer gegeven en klik vervolgens op ' opslaan en door gaan ' code lens (met behulp van het toetsen bord kunt u op **CTRL + SHIFT + p** drukken om het opdracht palet aan te roepen en **Azure ml uit te voeren: Opslaan en door** gaan opdracht)
+1. Breng de gewenste wijzigingen aan in het JSON-bestand dat wordt weer gegeven en klik vervolgens op ' opslaan en door gaan ' code lens (met behulp van het toetsen bord kunt u op **CTRL + SHIFT + p** drukken om het opdracht palet aan te roepen en de opdracht **Azure ml: opslaan en door gaan** uit te voeren)
 
 Hier volgt een voor beeld van het maken en bewerken van een Azure Machine Learning Compute (AMLCompute):
 
-[![AML-berekeningen maken in Visual Studio code](./media/vscode-tools-for-ai/create-remote-compute.gif)](./media/vscode-tools-for-ai/create-remote-compute.gif#lightbox)
+[![AML-Compute maken in Visual Studio code](./media/vscode-tools-for-ai/create-remote-compute.gif)](./media/vscode-tools-for-ai/create-remote-compute.gif#lightbox)
 
 #### <a name="the-run-configuration-file"></a>Het configuratie bestand voor de uitvoering
 
@@ -231,7 +231,7 @@ Als u een Azure Machine Learning experiment wilt uitvoeren op een compute, moet 
 
 Hier volgt een voor beeld van het maken van een uitvoerings configuratie voor de AmlCompute die hierboven is gemaakt.
 
-[![Een uitvoerings configuratie maken voor een compute](./media/vscode-tools-for-ai/create-runconfig.gif)](./media/vscode-tools-for-ai/create-runconfig.gif#lightbox)
+[![een uitvoerings configuratie maken voor een compute](./media/vscode-tools-for-ai/create-runconfig.gif)](./media/vscode-tools-for-ai/create-runconfig.gif#lightbox)
 
 Als u Azure ML experimenten op uw lokale computer wilt uitvoeren, moet u een configuratie bestand voor uitvoering nog steeds gebruiken. Wanneer u een lokale uitvoerings configuratie maakt, wordt de python-omgeving die wordt gebruikt, standaard ingesteld op het pad naar de interpreter die u hebt opgegeven in VS code.
 
@@ -239,10 +239,10 @@ Als u Azure ML experimenten op uw lokale computer wilt uitvoeren, moet u een con
 
 Met de uitbrei ding voor Azure ML van VS code zijn er meerdere manieren om een trainings script uit te voeren in een experiment.
 
-1. Klik met de rechter muisknop op het trainings **script en kies Azure ml: Als experiment uitvoeren in azure**
+1. Klik met de rechter muisknop op het trainings script en kies **Azure ml: uitvoeren als experiment in azure**
 1. Klik op het pictogram van de werk balk experiment uitvoeren.
 1. Klik met de rechter muisknop op een knoop punt voor het uitvoeren van een configuratie.
-1. Gebruik het opdracht palet VS code voor het **uitvoeren van Azure ml: Experiment uitvoeren**
+1. Het VS code-opdracht palet gebruiken om **Azure ml uit te voeren: experiment uitvoeren**
 
 Een Azure Machine Learning experiment uitvoeren:
 
@@ -252,15 +252,15 @@ Een Azure Machine Learning experiment uitvoeren:
 
 1. Vouw het knoop punt **experimenten** onder het knoop punt werk ruimte uit en klik met de rechter muisknop op het experiment dat u wilt uitvoeren.
 
-1. Selecteer **Experiment uit te voeren**.
+1. Selecteer **experiment uitvoeren**.
 
-1. Kies de naam van het python-bestand dat u wilt uitvoeren om het model te trainen en druk op ENTER om de uitvoering te verzenden. Opmerking: Het gekozen bestand moet zich bevinden in de map die momenteel is geopend in VS code.
+1. Kies de naam van het python-bestand dat u wilt uitvoeren om het model te trainen en druk op ENTER om de uitvoering te verzenden. Opmerking: het gekozen bestand moet zich bevinden in de map die momenteel is geopend in VS code.
 
-1. Nadat de uitvoering is ingediend, wordt er een **knoop punt uitvoeren** weer gegeven onder het experiment dat u hebt gekozen. Gebruik dit knoop punt om de status van uw uitvoeringen te controleren. Opmerking: Het kan nodig zijn om het venster regel matig te vernieuwen om de meest recente status weer te geven.
+1. Nadat de uitvoering is ingediend, wordt er een **knoop punt uitvoeren** weer gegeven onder het experiment dat u hebt gekozen. Gebruik dit knoop punt om de status van uw uitvoeringen te controleren. Opmerking: het kan nodig zijn om het venster regel matig te vernieuwen om de meest recente status weer te geven.
 
 Hier volgt een voor beeld van hoe u een experiment uitvoert op de eerder gemaakte comput:
 
-[![Een lokaal experiment uitvoeren](./media/vscode-tools-for-ai/run-experiment.gif)](./media/vscode-tools-for-ai/run-experiment.gif#lightbox)
+[![een experiment lokaal uitvoeren](./media/vscode-tools-for-ai/run-experiment.gif)](./media/vscode-tools-for-ai/run-experiment.gif#lightbox)
 
 ### <a name="deploy-and-manage-models"></a>Modellen implementeren en beheren
 In Azure Machine Learning kunt u uw machine learning modellen implementeren en beheren in de Cloud en aan de rand.
@@ -275,19 +275,19 @@ Uw model registreren:
 
 1. Vouw in de structuur weergave uw Azure-abonnement en Azure Machine Learning-werk ruimte uit.
 
-1. Onder het werkruimteknooppunt met de rechtermuisknop op **modellen** en kies **Model registreren**.
+1. Klik onder het werkruimte knooppunt met de rechter muisknop op **modellen** en kies **model registreren**.
 
 1. Voer in het opdracht palet in het veld een model naam in.
 
 1. Kies in de lijst of u een **model bestand** (voor één model) of een **modelsubsite** (voor modellen met meerdere bestanden, zoals tensor flow) wilt uploaden.
 
-1. Selecteer uw map of bestand.
+1. Selecteer de map of het bestand.
 
 1. Wanneer u klaar bent met het configureren van de model eigenschappen, selecteert u in de rechter benedenhoek van het venster **verzenden**.
 
 Hier volgt een voor beeld van het registreren van uw model bij Azure Machine Learning:
 
-[![Een model registreren voor AML](./media/vscode-tools-for-ai/register-model.gif)](./media/vscode-tools-for-ai/register-model.gif#lightbox)
+[![de registratie van een model op AML](./media/vscode-tools-for-ai/register-model.gif)](./media/vscode-tools-for-ai/register-model.gif#lightbox)
 
 
 #### <a name="deploy-your-service-from-visual-studio-code"></a>Implementeer uw service vanuit Visual Studio code
@@ -304,7 +304,7 @@ Een webservice implementeren:
 
 1. Vouw uw Azure-abonnement en uw Azure Machine Learning-werk ruimte uit in de structuur weergave.
 
-1. Vouw onder het werkruimteknooppunt, de **modellen** knooppunt.
+1. Vouw het knoop punt **modellen** onder het knoop punt werk ruimte uit.
 
 1. Klik met de rechter muisknop op het model dat u wilt implementeren en kies **service implementeren vanuit geregistreerd model** in het context menu.
 
@@ -322,15 +322,15 @@ De webservice is nu geïmplementeerd.
 
 Hier volgt een voor beeld van hoe u een webservice implementeert:
 
-[![Een webservice implementeren](./media/vscode-tools-for-ai/create-image.gif)](./media/vscode-tools-for-ai/create-image.gif#lightbox)
+[een webservice ![implementeren](./media/vscode-tools-for-ai/create-image.gif)](./media/vscode-tools-for-ai/create-image.gif#lightbox)
 
 ### <a name="experiment-with-additional-features"></a>Experimenteren met aanvullende functies
 
 U kunt het opdracht palet gebruiken om toegang te krijgen tot veel Azure Machine Learning functies in Visual Studio code. Om het opdracht palet type CTRL + SHIFT + P aan te roepen. Hier kunt u zoeken naar aanvullende Azure ML-functies van de uitbrei ding.
 
-[![Sneltoetsen voor de Azure Machine Learning voor Visual Studio code](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
+[![toetsenbord snel toetsen voor Azure Machine Learning voor Visual Studio code](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [zelf studie voor een overzicht van het trainen van Azure machine learning buiten Visual Studio code: Train modellen met Azure Machine Learning](tutorial-train-models-with-aml.md).
+* Zie [zelf studie: modellen trainen met Azure machine learning](tutorial-train-models-with-aml.md)voor een overzicht van het trainen van Azure machine learning buiten Visual Studio code.
 * Zie de zelf studie over het gebruik van de [python Hello-wereld](https://code.visualstudio.com/docs/Python/Python-tutorial)voor een overzicht van het lokaal bewerken, uitvoeren en fout opsporing van code.

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba2288fa4add6df6b7861b5f8a99bcd3ee8b4c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472202"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
 
@@ -63,7 +63,7 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
     - Selecteer in het **certificaat**een certificaat van Key Vault. U kunt ook een geldige uploaden. PFX-bestand en geef het **wacht woord**op als het certificaat is beveiligd met een wacht woord.
 
     > [!NOTE]
-    > Domein namen met Joker tekens, `*.contoso.com` zoals worden ondersteund in alle lagen, behalve de laag verbruik.
+    > Domein namen met Joker tekens, zoals `*.contoso.com`, worden in alle lagen ondersteund, met uitzonde ring van de laag verbruik.
 
     > [!TIP]
     > U kunt het beste Azure Key Vault gebruiken voor het beheren van certificaten en het instellen hiervan op automatisch draaien.
@@ -88,7 +88,7 @@ Bij het configureren van DNS voor uw aangepaste domein naam hebt u twee opties:
 -   Configureer een A-record die verwijst naar het IP-adres van uw API Management Gateway.
 
 > [!NOTE]
-> Hoewel het IP-adres van de API Management-instantie statisch is, kan dit in een paar scenario's worden gewijzigd. Daarom is het raadzaam om CNAME te gebruiken bij het configureren van een aangepast domein. Neem hierbij rekening mee bij het kiezen van een DNS-configuratie methode. Meer informatie vindt u in de [Veelgestelde vragen over API Mananagement](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
+> Hoewel het IP-adres van de API Management-instantie statisch is, kan dit in een paar scenario's worden gewijzigd. Daarom is het raadzaam om CNAME te gebruiken bij het configureren van een aangepast domein. Neem hierbij rekening mee bij het kiezen van een DNS-configuratie methode. Meer informatie vindt u in de [Veelgestelde vragen over API Management](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services).
 
 ## <a name="next-steps"></a>Volgende stappen
 

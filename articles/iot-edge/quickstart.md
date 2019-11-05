@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8264030593a1e44b2a50d9f95dce925136eb4d26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: edb100901dea4419d65635f9214555c27c1949f0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965994"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494072"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quick Start: uw eerste IoT Edge-module implementeren op een virtueel Windows-apparaat
 
@@ -22,7 +22,7 @@ Test Azure IoT Edge in deze Snelstartgids door container code te implementeren o
 
 In deze snelstart leert u de volgende zaken:
 
-1. Een IoT Hub maken.
+1. Maak een IoT-hub.
 2. Een IoT Edge-apparaat registreren in uw IoT-hub.
 3. Installeer en start de IoT Edge runtime op het virtuele apparaat.
 4. Op afstand een module op een IoT Edge-apparaat implementeren en telemetrie naar IoT Hub verzenden.
@@ -91,7 +91,7 @@ Met de volgende code wordt een gratis **F1**-hub gemaakt in de resourcegroep **I
 
    Als er een fout optreedt omdat er al één gratis hub in uw abonnement is, wijzigt u de SKU in **S1**. Als u het foutbericht ontvangt dat de naam van de IoT Hub niet beschikbaar is, betekent dit dat iemand anders al een hub met die naam heeft. Probeer een andere naam.
 
-## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren.
+## <a name="register-an-iot-edge-device"></a>Een IoT Edge-apparaat registreren
 
 Registreer een IoT Edge-apparaat bij uw net gemaakte IoT Hub.
 ![Diagram - Een apparaat registreren met een IoT Hub-entiteit](./media/quickstart/register-device.png)
@@ -139,7 +139,7 @@ Gebruik PowerShell om de IoT Edge-runtime te downloaden en te installeren. Gebru
 
 1. Als u dat nog niet hebt gedaan, volgt u de stappen in [een nieuw Azure IOT edge apparaat registreren](how-to-register-device.md) om uw apparaat te registreren en de Connection String van het apparaat op te halen.
 
-2. Voer Power shell uit als beheerder.
+2. Voer Power shell uit als beheerder in de virtuele machine.
 
    >[!NOTE]
    >Gebruik een AMD64-sessie van Power shell om IoT Edge, niet Power shell (x86), te installeren. Als u niet zeker weet welk sessie type u gebruikt, voert u de volgende opdracht uit:

@@ -1,24 +1,24 @@
 ---
 title: 'Score model: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module score model in Azure Machine Learning service om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
+titleSuffix: Azure Machine Learning
+description: Leer hoe u de module score model in Azure Machine Learning kunt gebruiken om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: f046b41d02ac392d003a9ecd15f25b43e5449cd0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: e7ab953a7ac0907244ebaab70b3b86cbe6f0f4d9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692678"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497640"
 ---
 # <a name="score-model-module"></a>De module Score Model (Scoremodel)
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
 
@@ -50,7 +50,6 @@ De Score of voorspelde waarde kan in veel verschillende indelingen worden opgege
 
 Een gemeen schappelijk gebruik van scores is het retour neren van de uitvoer als onderdeel van een voorspellende webservice. Zie voor meer informatie deze zelf studie over het maken van een webservice op basis van een pijp lijn in Azure Machine Learning:
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

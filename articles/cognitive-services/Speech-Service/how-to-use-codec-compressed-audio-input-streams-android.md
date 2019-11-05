@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: df5eb123a2fd47a3eceea8153786442bf56a2718
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803831"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464367"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Gecomprimeerde audio-invoer van codec gebruiken met de Speech SDK op Android
 
@@ -37,13 +37,13 @@ Zie de mainline speech-documentatie voor WAV/PCM.  Buiten WAV/PCM worden de volg
 
 Gecomprimeerde audio-codecs worden geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Uit het oogpunt van licenties worden gstreamer binaire bestanden niet gecompileerd met de SDK. U moet de vooraf gemaakte binaire bestanden voor Android gebruiken. Zie [installatie voor Android-ontwikkeling](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)voor informatie over het downloaden van de vooraf ontwikkelde bibliotheken. 
 
-`libgstreamer_android.so` is vereist. Zorg ervoor dat uw GStreamer-invoeg toepassingen zijn gekoppeld in `libgstreamer_android.so`.
+`libgstreamer_android.so` is vereist. Zorg ervoor dat uw GStreamer-invoeg toepassingen zijn gekoppeld aan `libgstreamer_android.so`.
 
 ```make
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 audioresample audioparsers ogg opusparse opus wavparse alaw mulaw flac
 ```
 
-Hieronder vindt u een voor beeld `Android.mk` en `Application.mk`-bestand. Volg deze stappen om het gedeelde gstreamer-object te maken: `libgstreamer_android.so`.
+Hieronder vindt u een voor beeld `Android.mk` en `Application.mk` bestand. Volg deze stappen om het gedeelde gstreamer-object te maken: `libgstreamer_android.so`.
 
 ```make
 # Android.mk
@@ -97,7 +97,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-U kunt `libgstreamer_android.so` maken met behulp van de volgende opdracht in Ubuntu 16,04 of 18,04. De volgende opdracht regels zijn alleen getest voor [gstreamer Android-versie 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) met [Android ndk b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+U kunt `libgstreamer_android.so` bouwen met behulp van de volgende opdracht in Ubuntu 16,04 of 18,04. De volgende opdracht regels zijn alleen getest voor [gstreamer Android-versie 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) met [Android ndk b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # assuming wget and unzip already installed on the system
@@ -133,7 +133,7 @@ Zodra het gedeelde object (libgstreamer_android. so) is gebouwd, moet de ontwikk
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Voorbeeld code met behulp van gecomprimeerde audio-invoer van de codec
 
-Als u een gecomprimeerde audio-indeling naar de spraak Services wilt streamen, maakt u `PullAudioInputStream` of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een exemplaar van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
+Als u een gecomprimeerde audio-indeling naar de spraak Services wilt streamen, maakt u `PullAudioInputStream` of `PushAudioInputStream`. Maak vervolgens een `AudioConfig` van een instantie van uw Stream-klasse, waarbij u de compressie-indeling van de stroom opgeeft.
 
 We gaan ervan uit dat u een invoer stroom klasse hebt met de naam `myPullStream` en gebruikmaakt van OPUS/OGG. Uw code kan er als volgt uitzien:
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-- [Zie voor het herkennen van gesproken tekst in C#](quickstart-csharp-dotnet-windows.md)
+* [Zie spraak herkennen in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

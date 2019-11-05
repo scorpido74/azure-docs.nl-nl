@@ -1,6 +1,6 @@
 ---
-title: Firewallregels voor Azure Service Bus | Microsoft Docs
-description: Het gebruik van firewallregels om verbindingen van specifieke IP-adressen met Azure Service Bus te staan.
+title: Firewall regels voor Azure Service Bus | Microsoft Docs
+description: Hoe u firewall regels kunt gebruiken om verbindingen van bepaalde IP-adressen toe te staan Azure Service Bus.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -11,68 +11,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704593"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496337"
 ---
-# <a name="use-firewall-rules"></a>Firewall-regels gebruiken
+# <a name="use-firewall-rules"></a>Firewall regels gebruiken
 
-Voor scenario's waarin Azure Service Bus alleen toegankelijk zijn van bepaalde bekende sites is, kunnen Firewall-regels u regels voor het accepteren van verkeer dat afkomstig is van de specifieke IPv4-adressen te configureren. Bijvoorbeeld, kunnen deze adressen die van een zakelijke NAT-gateway zijn.
+Voor scenario's waarin Azure Service Bus alleen toegankelijk is vanaf bepaalde bekende sites, kunt u met firewall regels regels configureren voor het accepteren van verkeer dat afkomstig is van specifieke IPv4-adressen. Deze adressen kunnen bijvoorbeeld van een NAT-netwerk gateway zijn.
 
 ## <a name="when-to-use"></a>Wanneer gebruikt u dit?
 
-Als u op zoek bent naar Service Bus-instellingen zoals die moet ontvangen verkeer alleen vanaf een opgegeven bereik van IP-adressen en alle andere afwijzen en vervolgens kunt u gebruikmaken van een *Firewall* moet worden geblokkeerd dat Service Bus-eindpunten van andere IP-adressen. Bijvoorbeeld, gebruikt u Service Bus met [Azure Express Route] [ express-route] particuliere verbindingen met uw on-premises infrastructuur te maken. 
+Als u wilt instellen Service Bus zodanig dat er alleen verkeer wordt ontvangen van een opgegeven bereik van IP-adressen en alle andere gegevens afwijzen, kunt u een *firewall* gebruiken om service bus-eind punten van andere IP-adressen te blok keren. U gebruikt bijvoorbeeld Service Bus met [Azure Express route][express-route] om particuliere verbindingen te maken met uw on-premises infra structuur. 
 
-## <a name="how-filter-rules-are-applied"></a>Hoe regels worden toegepast
+## <a name="how-filter-rules-are-applied"></a>Hoe filter regels worden toegepast
 
-De IP-filterregels worden toegepast op het niveau van de Service Bus-naamruimte. Daarom de regels van toepassing op alle verbindingen van clients met behulp van een ondersteund protocol.
+De IP-filter regels worden toegepast op het niveau van de Service Bus naam ruimte. Daarom gelden de regels voor alle verbindingen van clients die gebruikmaken van elk ondersteund protocol.
 
-Elke verbindingspoging vanaf een IP-adres dat komt niet overeen met een toegestane IP-regel op de Service Bus naamruimte wordt geweigerd als niet-geautoriseerde. Het antwoord wordt niet vermeld voor de IP-regel.
+Een verbindings poging van een IP-adres dat niet overeenkomt met een toegestane IP-regel op de Service Bus naam ruimte, wordt geweigerd als niet-geautoriseerd. De IP-regel wordt niet vermeld in het antwoord.
 
-## <a name="default-setting"></a>Standaardinstelling
+## <a name="default-setting"></a>Standaard instelling
 
-Standaard de **IP-Filter** raster in de portal voor Service Bus is leeg. Deze instelling betekent dat uw naamruimte verbindingen elk IP-adres aanvaardt. Deze instelling is gelijk aan een regel waarmee het 0.0.0.0/0 IP-adresbereik accepteert.
+Het **IP-filter** raster in de portal voor service bus is standaard leeg. Deze standaard instelling betekent dat de naam ruimte verbinding kan maken met elk IP-adres. Deze standaard instelling komt overeen met een regel die het IP-adres bereik 0.0.0.0/0 accepteert.
 
-## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filter
+## <a name="ip-filter-rule-evaluation"></a>Evaluatie van IP-filter regel
 
-IP-filterregels worden toegepast in volgorde en de eerste regel die overeenkomt met het IP-adres bepaalt de actie accepteren of weigeren.
+IP-filter regels worden in volg orde toegepast en de eerste regel die overeenkomt met het IP-adres, bepaalt de accepteren of afwijzen.
 
 >[!WARNING]
-> Implementatie van Firewall-regels kunt voorkomen dat andere Azure-services interactie met Service Bus.
+> Het implementeren van firewall regels kan verhinderen dat andere Azure-Services communiceren met Service Bus.
 >
-> Vertrouwde Microsoft-services worden niet ondersteund wanneer IP-filters (Firewall-regels) worden geïmplementeerd en beschikbaar gesteld binnenkort.
+> Vertrouwde micro soft-services worden niet ondersteund wanneer IP-filtering (firewall regels) worden geïmplementeerd en binnenkort beschikbaar wordt gesteld.
 >
-> Algemene Azure-scenario's die niet met IP-filters werken (Let op: de lijst is **niet** volledig)-
+> Algemene scenario's voor Azure die niet werken met IP-filtering (Let op: de lijst is **niet** volledig)-
 > - Azure Monitor
 > - Azure Stream Analytics
 > - Integratie met Azure Event Grid
-> - Azure IoT Hub Routes
-> - Azure IoT Device Explorer
-> - Azure Data Explorer
+> - Azure-IoT Hub routes
+> - Azure IoT-Device Explorer
 >
-> De onderstaande Microsoft services vereist zijn om te worden in een virtueel netwerk
+> De onderstaande micro soft-services moeten zich in een virtueel netwerk bevinden
 > - Azure App Service
 > - Azure Functions
 
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Het maken van een virtueel netwerk en firewall-regel met Azure Resource Manager-sjablonen
+### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Een virtueel netwerk en een firewall regel met Azure Resource Manager sjablonen maken
 
 > [!IMPORTANT]
-> Firewalls en virtuele netwerken worden alleen ondersteund in de **premium** laag van Service Bus.
+> Firewalls en virtuele netwerken worden alleen ondersteund in de **Premium** -laag van service bus.
 
-De volgende Resource Manager-sjabloon kunt een regel voor virtuele netwerken toe te voegen aan een bestaande Service Bus-naamruimte.
+Met de volgende Resource Manager-sjabloon kan een regel voor een virtueel netwerk worden toegevoegd aan een bestaande Service Bus naam ruimte.
 
-Sjabloonparameters:
+Sjabloon parameters:
 
-- **ipMask** is één IPv4-adres of een blok IP-adressen in CIDR-notatie. Bijvoorbeeld, in CIDR vertegenwoordigt notatie 70.37.104.0/24 de 256 IPv4-adressen van 70.37.104.0 tot 70.37.104.255, met 24 uur per dag die wijzen op het aantal bits aanzienlijke voorvoegsel voor het bereik.
+- **ipMask** is een enkel IPv4-adres of een blok met IP-adressen in CIDR-notatie. Bijvoorbeeld, in CIDR-notatie 70.37.104.0/24 staat voor de IPv4-adressen 256 van 70.37.104.0 naar 70.37.104.255, met 24 waarmee het aantal belang rijke voorvoegsel bits voor het bereik wordt aangegeven.
 
 > [!NOTE]
-> Er zijn geen regels voor weigeren mogelijk, de Azure Resource Manager-sjabloon is de standaardactie die is ingesteld op **'Toestaan'** die verbindingen niet beperken.
-> Bij het maken van regels voor Virtueelnetwerk of Firewalls, moeten we wijzigen de ***"defaultAction"***
+> Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.
+> Wanneer u Virtual Network of firewall regels maakt, moeten we de ***' defaultAction '*** wijzigen
 > 
-> from
+> Van
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -143,13 +142,13 @@ Sjabloonparameters:
   }
 ```
 
-Volg de instructies voor het implementeren van de sjabloon, [Azure Resource Manager][lnk-deploy].
+Als u de sjabloon wilt implementeren, volgt u de instructies voor [Azure Resource Manager][lnk-deploy].
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Virtuele netwerken, Zie de volgende koppeling voor beperken de toegang tot Azure Service Bus:
+Zie de volgende koppeling voor meer informatie over het beperken van toegang tot Service Bus voor virtuele netwerken van Azure:
 
-- [Virtual Network-Service-eindpunten voor Servicebus][lnk-vnet]
+- [Service-eind punten Virtual Network voor Service Bus][lnk-vnet]
 
 <!-- Links -->
 

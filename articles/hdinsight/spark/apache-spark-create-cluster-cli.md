@@ -1,34 +1,34 @@
 ---
-title: 'Quickstart: Een Apache Spark-cluster maken in Azure HDInsight met Azure CLI'
-description: Deze quickstart laat zien hoe u Azure CLI gebruiken voor het maken van een Apache Spark-cluster in Azure HDInsight.
+title: 'Snelstartgids: Apache Spark clusters met Azure CLI-Azure HDInsight'
+description: In deze Quick start ziet u hoe u Azure CLI gebruikt om een Apache Spark cluster in azure HDInsight te maken.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 72bdab9d7fb5c3019d97ffc4c92257c49ec2b8e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 71b5e9f0ece79633673b183ca7288852f42ca3c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066249"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494708"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Quickstart: Apache Spark-cluster maken in Azure HDInsight met behulp van Azure CLI
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Snelstartgids: Apache Spark cluster maken in azure HDInsight met behulp van Azure CLI
 
-In deze snelstartgids leert u hoe u een Apache Spark-cluster maken in Azure HDInsight met behulp van Azure CLI. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. De [Azure-opdrachtregelinterface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) is de ervaring van Microsoft platformoverschrijdende opdrachtregelprogramma voor het beheren van Azure-resources.
+In deze Quick Start leert u hoe u een Apache Spark cluster maakt in azure HDInsight met behulp van Azure CLI. Apache Spark maakt het mogelijk om snelle gegevensanalyses en clusterberekeningen uit te voeren met behulp van verwerking in het geheugen. De [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) is de platformoverschrijdende opdracht regel ervaring van micro soft voor het beheer van Azure-resources.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) voor stappen.
+Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure cli installeren voor de](https://docs.microsoft.com/cli/azure/install-azure-cli) stappen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Een Apache Spark-cluster maken
 
-1. Aanmelden bij uw Azure-abonnement. Als u van plan bent te gebruiken van Azure Cloud Shell en vervolgens selecteert u **uitproberen** in de rechterbovenhoek van het codeblok. Anders, voer de volgende opdracht:
+1. Meld u aan bij uw Azure-abonnement. Als u Azure Cloud Shell wilt gebruiken, selecteert u **deze** in de rechter bovenhoek van het code blok. Anders voert u de onderstaande opdracht in:
 
     ```azurecli-interactive
     az login
@@ -37,7 +37,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI insta
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Omgevingsvariabelen instellen. Het gebruik van variabelen in deze Quick Start is gebaseerd op Bash. Kleine variaties nodig voor andere omgevingen. Vervangen door RESOURCEGROUPNAME, locatie, CLUSTERNAME, STORAGEACCOUNTNAME en het wachtwoord in het codefragment hieronder de gewenste waarden. Voer vervolgens de CLI-opdrachten om in te stellen de omgevingsvariabelen.
+2. Omgevings variabelen instellen. Het gebruik van variabelen in deze Quick start is gebaseerd op bash. Er zijn kleine variaties nodig voor andere omgevingen. Vervang RESOURCEGROUPNAME, LOCATION, CLUSTERNAME, STORAGEACCOUNTNAME en PASSWORD in het onderstaande code fragment door de gewenste waarden. Voer vervolgens de CLI-opdrachten in om de omgevings variabelen in te stellen.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -54,7 +54,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI insta
     export componentVersion=Spark=2.3
     ```
 
-3. De resourcegroep maken met de onderstaande opdracht:
+3. Maak de resource groep door de volgende opdracht in te voeren:
 
     ```azurecli-interactive
     az group create \
@@ -62,7 +62,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI insta
         --name $resourceGroupName
     ```
 
-4. Maak een Azure storage-account met de onderstaande opdracht:
+4. Maak een Azure Storage-account door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI insta
         --sku Standard_LRS
     ```
 
-5. De primaire sleutel onttrekken aan het Azure storage-account en op te slaan in een variabele met de onderstaande opdracht:
+5. Extraheer de primaire sleutel uit het Azure-opslag account en sla deze op in een variabele door de onderstaande opdracht in te voeren:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -83,7 +83,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI insta
         --query [0].value -o tsv)
     ```
 
-6. Maak een Azure storage-container met de onderstaande opdracht:
+6. Maak een Azure storage-container door de volgende opdracht in te voeren:
 
     ```azurecli-interactive
     az storage container create \
@@ -92,7 +92,7 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI insta
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. De Apache Spark-cluster maken met de volgende opdracht:
+7. Maak het Apache Spark-cluster door de volgende opdracht in te voeren:
 
     ```azurecli-interactive
     az hdinsight create \
@@ -114,9 +114,9 @@ Azure CLI. Als u de Azure CLI nog niet hebt geïnstalleerd, Zie [Azure CLI insta
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat u de Quick Start hebt voltooid, kunt u het cluster verwijdert. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
+Nadat u de Snelstartgids hebt voltooid, kunt u het cluster verwijderen. Met HDInsight worden uw gegevens opgeslagen in Azure Storage zodat u een cluster veilig kunt verwijderen wanneer deze niet wordt gebruikt. Voor een HDInsight-cluster worden ook kosten in rekening gebracht, zelfs wanneer het niet wordt gebruikt. Aangezien de kosten voor het cluster vaak zoveel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer clusters te verwijderen wanneer ze niet worden gebruikt.
 
-Geef alle of een deel van de volgende opdrachten om resources te verwijderen:
+Voer alle of enkele van de volgende opdrachten in om resources te verwijderen:
 
 ```azurecli-interactive
 # Remove cluster
@@ -141,7 +141,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u geleerd hoe u een Apache Spark-cluster maakt in Azure HDInsight met behulp van Azure CLI.  Ga naar de volgende zelfstudie voor informatie over het gebruik van een HDInsight Spark-cluster om interactieve query's uit te voeren op voorbeeldgegevens.
+In deze Quick Start hebt u geleerd hoe u een Apache Spark cluster maakt in azure HDInsight met behulp van Azure CLI.  Ga naar de volgende zelfstudie voor informatie over het gebruik van een HDInsight Spark-cluster om interactieve query's uit te voeren op voorbeeldgegevens.
 
 > [!div class="nextstepaction"]
 > [Interactieve query's uitvoeren in Apache Spark](./apache-spark-load-data-run-query.md)

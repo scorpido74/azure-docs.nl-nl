@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: fe4a2082647ef1325d03ce4eec428ed1579704c5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: MT
+ms.openlocfilehash: 373713cc92379236385024beff201d16fbbfd4b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755988"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497050"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u een [machine learning pijp lijn](concept-ml-pipelines.md) kunt maken, publiceren, uitvoeren en bijhouden met behulp van de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Gebruik **ml-pijp lijnen** om een werk stroom te maken die verschillende stadia van de milliliter bundelt en vervolgens die pijp lijn naar uw Azure machine learning-werk ruimte te publiceren om deze later te openen of te delen met anderen.  ML-pijp lijnen zijn ideaal voor batch Score scenario's, met behulp van verschillende reken processen, het opnieuw gebruiken van stappen in plaats van deze opnieuw uit te voeren, evenals het delen van werk stromen met anderen. 
 
@@ -36,7 +37,11 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 
 * Maak een [Azure machine learning-werk ruimte](how-to-manage-workspace.md) om al uw pijplijn resources te bevatten.
 
-* [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren of gebruik een [notebook-VM](tutorial-1st-experiment-sdk-setup.md#azure) met de SDK die al is geïnstalleerd.
+* [Configureer uw ontwikkel omgeving](how-to-configure-environment.md) om de Azure machine learning SDK te installeren, of gebruik een [Azure machine learning Compute-exemplaar](concept-compute-instance.md) waarbij de SDK al is geïnstalleerd.
+
+> [!NOTE]
+> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
+>Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
 
 Begin met het koppelen van uw werk ruimte:
 
@@ -410,21 +415,21 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Resultaten van een gepubliceerde pijp lijn weer geven
 
 Bekijk de lijst met alle gepubliceerde pijp lijnen en de details van de uitvoering:
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
 1. [Bekijk uw werk ruimte](how-to-manage-workspace.md#view) om de lijst met pijp lijnen te vinden.
- ![list van machine learning pijp lijnen ](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
+ ![lijst met machine learning pijp lijnen](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Selecteer een specifieke pijp lijn om de resultaten van de uitvoering te bekijken.
 
-Deze resultaten zijn ook beschikbaar op de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
+Deze resultaten zijn ook beschikbaar in uw werk ruimte in [Azure Machine Learning Studio]] (https://ml.azure.com).
 
 ### <a name="disable-a-published-pipeline"></a>Een gepubliceerde pijp lijn uitschakelen
 
 Als u een pijp lijn wilt verbergen in de lijst met gepubliceerde pijp lijnen, schakelt u deze uit:
 
 ```
-# Get the pipeline by using its ID from the Azure portal
+# Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
@@ -439,7 +444,7 @@ Om het gedrag van uw pijp lijnen te optimaliseren en aan te passen, kunt u enkel
 + **Breid hashing verder uit met het script**, om ook een absoluut pad of relatieve paden naar de bronmap te gebruiken voor andere bestanden en mappen met behulp van de `hash_paths=['<file or directory']` 
 + **Het opnieuw genereren van uitvoer afdwingen voor alle stappen in een uitvoering** met `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-@No__t_0 voor stappen is standaard ingeschakeld en alleen het hoofd script bestand wordt gehasht. Als het script voor een gegeven stap hetzelfde blijft (`script_name`, invoer en de para meters), wordt de uitvoer van een vorige uitvoering van de stap opnieuw gebruikt, wordt de taak niet verzonden naar de compute en worden de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de volgende stap.  
+`allow_reuse` voor stappen is standaard ingeschakeld en alleen het hoofd script bestand wordt gehasht. Als het script voor een gegeven stap hetzelfde blijft (`script_name`, invoer en de para meters), wordt de uitvoer van een vorige uitvoering van de stap opnieuw gebruikt, wordt de taak niet verzonden naar de compute en worden de resultaten van de vorige uitvoering onmiddellijk beschikbaar voor de volgende stap.  
 
 ```python
 step = PythonScriptStep(name="Hello World",

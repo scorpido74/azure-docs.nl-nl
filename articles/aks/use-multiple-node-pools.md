@@ -7,91 +7,45 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
-ms.translationtype: MT
+ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212261"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472448"
 ---
-# <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Voor beeld: meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
 In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Deze knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Het eerste aantal knoop punten en hun grootte (SKU) worden gedefinieerd wanneer u een AKS-cluster maakt, waarmee een *standaard knooppunt groep*wordt gemaakt. Als u toepassingen wilt ondersteunen die verschillende reken-of opslag vereisten hebben, kunt u extra knooppunt groepen maken. Gebruik bijvoorbeeld deze extra knooppunt groepen om Gpu's te bieden voor computerintensieve toepassingen, of om toegang te krijgen tot krachtige SSD-opslag.
 
 > [!NOTE]
-> Deze functie biedt meer controle over het maken en beheren van meerdere knooppunt groepen. Als gevolg hiervan zijn afzonderlijke opdrachten vereist voor maken/bijwerken/verwijderen. Eerder cluster bewerkingen via `az aks create` of `az aks update` gebruikt de managedCluster-API en waren de enige optie om uw besturings vlak en een groep met één knoop punt te wijzigen. Deze functie beschrijft een afzonderlijke bewerking voor agent groepen via de agent pool-API en vereist het gebruik van de opdrachtset voor het `az aks nodepool` uitvoeren van bewerkingen op een afzonderlijke knooppunt groep.
+> Deze functie biedt meer controle over het maken en beheren van meerdere knooppunt groepen. Als gevolg hiervan zijn afzonderlijke opdrachten vereist voor maken/bijwerken/verwijderen. Voorheen cluster bewerkingen via `az aks create` of `az aks update` de managedCluster-API gebruikt en waren de enige optie om uw besturings vlak en een groep met één knoop punt te wijzigen. Deze functie biedt een afzonderlijke bewerking die is ingesteld voor agent groepen via de agent pool-API en waarvoor het gebruik van de `az aks nodepool` opdracht moet worden gebruikt om bewerkingen uit te voeren op een afzonderlijke knooppunt groep.
 
-In dit artikel wordt beschreven hoe u meerdere knooppunt groepen kunt maken en beheren in een AKS-cluster. Deze functie is momenteel beschikbaar als preview-product.
-
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service opt-in. Previews worden ' as-is ' en ' as available ' gegeven en zijn uitgesloten van de service level agreements en beperkte garantie. AKS-previews worden gedeeltelijk gedekt door klant ondersteuning, op basis van de beste inspanningen. Daarom zijn deze functies niet bedoeld voor productie gebruik. Raadpleeg de volgende artikelen met technische ondersteuning voor meer informatie.
->
-> * [AKS-ondersteunings beleid][aks-support-policies]
-> * [Veelgestelde vragen over ondersteuning voor Azure][aks-faq]
+In dit artikel wordt beschreven hoe u meerdere knooppunt groepen kunt maken en beheren in een AKS-cluster.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.0.61 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
-
-### <a name="install-aks-preview-cli-extension"></a>AKS-preview CLI-extensie installeren
-
-Als u meerdere knooppunt groepen wilt gebruiken, hebt u de *AKS-preview cli-* extensie versie 0.4.16 of hoger nodig. Installeer de Azure CLI *-extensie AKS-preview* met behulp van de opdracht [AZ extension add][az-extension-add] en controleer vervolgens of er beschik bare updates zijn met behulp van de opdracht [AZ extension update][az-extension-update] ::
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-multiple-node-pool-feature-provider"></a>De functie provider voor meerdere knooppunt groepen registreren
-
-Als u een AKS-cluster wilt maken dat meerdere knooppunt groepen kan gebruiken, moet u eerst een functie vlag voor uw abonnement inschakelen. Registreer de functie vlag *MultiAgentpoolPreview* met behulp van de opdracht [AZ feature REGI ster][az-feature-register] , zoals wordt weer gegeven in het volgende voor beeld:
-
-> [!CAUTION]
-> Wanneer u een functie op een abonnement registreert, kunt u de registratie van die functie op dit moment niet ongedaan maken. Nadat u enkele preview-functies hebt ingeschakeld, kunnen standaard waarden worden gebruikt voor alle AKS-clusters die vervolgens in het abonnement zijn gemaakt. Schakel geen preview-functies in voor productie abonnementen. Gebruik een afzonderlijk abonnement om Preview-functies te testen en feedback te verzamelen.
-
-```azurecli-interactive
-az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-```
-
-> [!NOTE]
-> Elk AKS-cluster dat u maakt nadat u de *MultiAgentpoolPreview* hebt geregistreerd, gebruiken deze preview-cluster ervaring. Schakel preview-functies niet in voor productie abonnementen om regel matige, volledig ondersteunde clusters te blijven maken. Gebruik een afzonderlijk test-of ontwikkelings-Azure-abonnement voor het testen van preview-functies.
-
-Het duurt enkele minuten voordat de status is *geregistreerd*. U kunt de registratie status controleren met de opdracht [AZ Feature List][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-```
-
-Als u klaar bent, vernieuwt u de registratie van de resource provider *micro soft. container service* met de opdracht [AZ provider REGI ster][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+U moet de Azure CLI-versie 2.0.76 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="limitations"></a>Beperkingen
 
 De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en beheert die ondersteuning bieden voor meerdere knooppunt groepen:
 
-* Meerdere knooppunt groepen zijn alleen beschikbaar voor clusters die zijn gemaakt nadat u de *MultiAgentpoolPreview* -functie hebt geregistreerd voor uw abonnement. U kunt geen knooppunt groepen toevoegen of beheren met een bestaand AKS-cluster dat is gemaakt voordat deze functie is geregistreerd.
 * U kunt de standaard-knooppunt groep (First) niet verwijderen.
 * De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
 * U kunt geen knooppunt groepen toevoegen of verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
 * De naam van een knooppunt groep moet beginnen met een kleine letter en mag alleen alfanumerieke tekens bevatten. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
-
-Hoewel deze functie in preview is, zijn de volgende extra beperkingen van toepassing:
-
 * Het AKS-cluster kan Maxi maal acht knooppunt groepen bevatten.
 * Het AKS-cluster kan Maxi maal 400 knoop punten in deze acht knooppunt groepen hebben.
 * Alle knooppunt groepen moeten zich in hetzelfde subnet bevinden.
+* Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
 Om aan de slag te gaan, maakt u een AKS-cluster met één knooppunt groep. In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *eastus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . Een *--kubernetes-versie* van *1.13.10* wordt gebruikt om te laten zien hoe u een knooppunt groep in een volgende stap bijwerkt. U kunt elke [ondersteunde versie van Kubernetes][supported-versions]opgeven.
 
-Het is raadzaam om de standaard SKU-load balancer te gebruiken wanneer u meerdere knooppunt groepen gebruikt. Lees [dit document](load-balancer-standard.md) voor meer informatie over het gebruik van standaard load balancers met AKS.
+> [!NOTE]
+> De *Basic* load BALANACER-SKU wordt niet ondersteund wanneer meerdere knooppunt groepen worden gebruikt. Standaard worden AKS-clusters gemaakt met de *standaard* LOADBALACER-SKU.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -113,7 +67,7 @@ Het duurt een paar minuten om het cluster te maken.
 > [!NOTE]
 > Om ervoor te zorgen dat uw cluster betrouwbaar werkt, moet u ten minste twee knoop punten in de standaard knooppunt groep uitvoeren, aangezien essentiële systeem services worden uitgevoerd in deze knooppunt groep.
 
-Wanneer het cluster gereed is, gebruikt u de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] om de cluster referenties te verkrijgen `kubectl`voor gebruik met:
+Wanneer het cluster gereed is, gebruikt u de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] om de cluster referenties te verkrijgen voor gebruik met `kubectl`:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -178,7 +132,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Upgrade-en schaal bewerkingen op een cluster of knooppunt groep kunnen niet tegelijkertijd plaatsvinden, als er een fout wordt geretourneerd. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](https://aka.ms/aks-pending-upgrade).
 
-Als uw AKS-cluster in de eerste stap is gemaakt, is `--kubernetes-version` er een van *1.13.10* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de standaard knooppunt groep. Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt.
+Wanneer uw AKS-cluster oorspronkelijk in de eerste stap is gemaakt, is er een `--kubernetes-version` van *1.13.10* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de standaard knooppunt groep. Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt.
 
 De relatie tussen het upgraden van de Kubernetes-versie van het besturings vlak en de knooppunt groep wordt uitgelegd in de [volgende sectie](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
@@ -244,20 +198,20 @@ Als best practice moet u alle knooppunt groepen in een AKS-cluster upgraden naar
 
 Een AKS-cluster heeft twee cluster resource objecten waaraan Kubernetes-versies zijn gekoppeld. De eerste is een Kubernetes-versie van besturings vlak. De tweede is een agent groep met een Kubernetes-versie. Een besturings vlak wordt toegewezen aan een of meer knooppunt groepen. Het gedrag van een upgrade bewerking is afhankelijk van welke Azure CLI-opdracht wordt gebruikt.
 
-1. Voor het bijwerken van het besturings vlak is het vereist`az aks upgrade`
+* Voor het bijwerken van het besturings vlak is het gebruik van `az aks upgrade` vereist
    * Hiermee worden de versie van het besturings element en alle knooppunt Pools in het cluster bijgewerkt
-   * Door door `az aks upgrade` te geven `--control-plane-only` aan de vlag wordt alleen het cluster besturings vlak bijgewerkt en geen van de gekoppelde knooppunt groepen wordt gewijzigd. De `--control-plane-only` markering is beschikbaar in **AKS-preview-uitbrei ding v 0.4.16** of hoger.
-1. Voor het upgraden van afzonderlijke knooppunt groepen is het vereist`az aks nodepool upgrade`
+   * Door `az aks upgrade` door te geven aan de `--control-plane-only`-vlag wordt alleen het cluster besturings vlak bijgewerkt en worden geen van de gekoppelde knooppunt groepen gewijzigd.
+* Voor het upgraden van afzonderlijke knooppunt Pools is `az aks nodepool upgrade` vereist
    * Hiermee wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
 
 De relatie tussen de Kubernetes-versies van knooppunt Pools moet ook volgen op een set regels.
 
-1. U kunt het besturings vlak of de Kubernetes-versie van de knooppunt groep niet opdowngradeen.
-1. Als er geen Kubernetes-versie van een knooppunt groep wordt opgegeven, is het gedrag afhankelijk van de gebruikte client. Voor een declaratie in de ARM-sjabloon wordt de bestaande versie die is gedefinieerd voor de knooppunt groep gebruikt, als er geen is ingesteld, wordt de versie van het besturings element gebruikt.
-1. U kunt een besturings vlak of knooppunt groep op een bepaald moment bijwerken of schalen, u kunt beide bewerkingen niet tegelijkertijd verzenden.
-1. Een Kubernetes-versie van een knooppunt groep moet dezelfde primaire versie zijn als het besturings vlak.
-1. Een Kubernetes-versie van een knooppunt groep kan Maxi maal twee (2) secundaire versies kleiner zijn dan het besturings vlak, nooit meer.
-1. Een knooppunt groep kan een Kubernetes-patch versie zijn die kleiner is dan of gelijk is aan het besturings vlak, nooit meer.
+* U kunt het besturings vlak of de Kubernetes-versie van de knooppunt groep niet opdowngradeen.
+* Als er geen Kubernetes-versie van een knooppunt groep wordt opgegeven, is het gedrag afhankelijk van de gebruikte client. Voor een declaratie in de Resource Manager-sjabloon wordt de bestaande versie die is gedefinieerd voor de knooppunt groep gebruikt, als er geen is ingesteld dat de versie van het besturings element wordt gebruikt.
+* U kunt een besturings vlak of knooppunt groep op een bepaald moment bijwerken of schalen, u kunt beide bewerkingen niet tegelijkertijd verzenden.
+* Een Kubernetes-versie van een knooppunt groep moet dezelfde primaire versie zijn als het besturings vlak.
+* Een Kubernetes-versie van een knooppunt groep kan Maxi maal twee (2) secundaire versies kleiner zijn dan het besturings vlak, nooit meer.
+* Een knooppunt groep kan een Kubernetes-patch versie zijn die kleiner is dan of gelijk is aan het besturings vlak, nooit meer.
 
 ## <a name="scale-a-node-pool-manually"></a>Een knooppunt groep hand matig schalen
 
@@ -313,7 +267,7 @@ Het duurt enkele minuten voordat de schaal bewerking is voltooid.
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Een specifieke knooppunt groep automatisch schalen door de automatische cluster schaalr in te scha kelen
 
-AKS biedt een afzonderlijke functie in Preview voor het automatisch schalen van knooppunt groepen met een functie genaamd [cluster auto Scaler](cluster-autoscaler.md). Deze functie is een AKS-invoeg toepassing die per knooppunt groep kan worden ingeschakeld met unieke minimum-en maximum schaal aantallen per knooppunt groep. Meer informatie over [het gebruik van de cluster-automatische schaal functie per knooppunt groep](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+AKS biedt een afzonderlijke functie voor het automatisch schalen van knooppunt groepen met een functie die de automatische [cluster schaalr](cluster-autoscaler.md)wordt genoemd. Deze functie kan worden ingeschakeld per knooppunt groep met unieke minimum-en maximum schaal aantallen per knooppunt groep. Meer informatie over [het gebruik van de cluster-automatische schaal functie per knooppunt groep](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Een knooppunt groep verwijderen
 
@@ -367,7 +321,7 @@ In de vorige voor beelden voor het maken van een knooppunt groep is een standaar
 
 In het volgende voor beeld maakt u een op GPU gebaseerde knooppunt groep die gebruikmaakt van de *Standard_NC6* VM-grootte. Deze Vm's worden aangedreven door de NVIDIA Tesla K80-kaart. Zie [grootten voor virtuele Linux-machines in azure][vm-sizes]voor meer informatie over de beschik bare VM-grootten.
 
-Maak een knooppunt groep met de opdracht [AZ AKS node pool add][az-aks-nodepool-add] opnieuw. Geef deze keer de naam *gpunodepool*op en gebruik de `--node-vm-size` para meter om de *Standard_NC6* -grootte op te geven:
+Maak een knooppunt groep met de opdracht [AZ AKS node pool add][az-aks-nodepool-add] opnieuw. Geef deze keer de naam *gpunodepool*op en gebruik de para meter `--node-vm-size` om de *Standard_NC6* -grootte op te geven:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -433,7 +387,7 @@ De Kubernetes scheduler kan taints en verdragen gebruiken om te beperken welke w
 
 Zie [Best Practices for Advanced scheduler-functies in AKS][taints-tolerations] voor meer informatie over het gebruik van geavanceerde Kubernetes-functies.
 
-In dit voor beeld past u een Taint toe op uw GPU-knoop punt met behulp van de [kubectl Taint knoop punt][kubectl-taint] opdracht. Geef de naam van uw op GPU gebaseerde knoop punt op uit de uitvoer van `kubectl get nodes` de vorige opdracht. De Taint wordt toegepast als *sleutel: waarde* en vervolgens een plannings optie. In het volgende voor beeld wordt het combi natie *SKU = GPU* gebruikt en definieert u de mogelijkheid om het *schema* niet te gebruiken:
+In dit voor beeld past u een Taint toe op uw GPU-knoop punt met behulp van de [kubectl Taint knoop punt][kubectl-taint] opdracht. Geef de naam van uw op GPU gebaseerde knoop punt op uit de uitvoer van de vorige `kubectl get nodes` opdracht. De Taint wordt toegepast als *sleutel: waarde* en vervolgens een plannings optie. In het volgende voor beeld wordt het combi natie *SKU = GPU* gebruikt en definieert u de mogelijkheid om het *schema* niet te gebruiken:
 
 ```console
 kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -441,7 +395,7 @@ kubectl taint node aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 
 In het volgende voor beeld van een YAML-manifest wordt met behulp van een tolerantie toegestaan dat de Kubernetes scheduler een NGINX pod op het op GPU gebaseerde knoop punt uitvoert. Zie [Gpu's gebruiken voor computerintensieve werk belastingen op AKS][gpu-cluster]voor een meer geschikt, maar tijdrovende voor beeld om een tensor flow-taak uit te voeren op basis van de MNIST-gegevensset.
 
-Maak een bestand met `gpu-toleration.yaml` de naam en kopieer het in het volgende voor beeld YAML:
+Maak een bestand met de naam `gpu-toleration.yaml` en kopieer het in het volgende voor beeld YAML:
 
 ```yaml
 apiVersion: v1
@@ -466,7 +420,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-Plan de Pod met behulp van de `kubectl apply -f gpu-toleration.yaml` opdracht:
+Plan de Pod met de opdracht `kubectl apply -f gpu-toleration.yaml`:
 
 ```console
 kubectl apply -f gpu-toleration.yaml
@@ -497,7 +451,7 @@ Alleen een van de peulen waarvoor deze Taint is toegepast, kan worden gepland op
 
 Wanneer u een Azure Resource Manager sjabloon gebruikt om resources te maken en te beheren, kunt u de instellingen in uw sjabloon doorgaans bijwerken en opnieuw implementeren om de resource bij te werken. Met knooppunt Pools in AKS kan het oorspronkelijke knooppunt groeps profiel niet worden bijgewerkt nadat het AKS-cluster is gemaakt. Dit gedrag houdt in dat u een bestaande resource manager-sjabloon niet kunt bijwerken, een wijziging kunt aanbrengen in de knooppunt groepen en opnieuw moet implementeren. In plaats daarvan moet u een afzonderlijke resource manager-sjabloon maken waarmee alleen de agent groepen voor een bestaand AKS-cluster worden bijgewerkt.
 
-Maak een sjabloon `aks-agentpools.json` , zoals en plak het volgende voor beeld-manifest. Met deze voorbeeld sjabloon worden de volgende instellingen geconfigureerd:
+Maak een sjabloon, zoals `aks-agentpools.json` en plak het volgende voorbeeld manifest. Met deze voorbeeld sjabloon worden de volgende instellingen geconfigureerd:
 
 * Hiermee werkt u de *Linux* -agent pool met de naam *myagentpool* bij om drie knoop punten uit te voeren.
 * Hiermee stelt u de knoop punten in de knooppunt groep in op het uitvoeren van Kubernetes-versie *1.13.10*.
@@ -593,7 +547,7 @@ AKS-knoop punten vereisen geen eigen open bare IP-adressen voor communicatie. He
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Na een geslaagde registratie implementeert u een Azure Resource Manager-sjabloon volgens dezelfde instructies als [hierboven](#manage-node-pools-using-a-resource-manager-template) en voegt u de volgende Boole-waarde-eigenschap ' enableNodePublicIP ' toe aan de agentPoolProfiles. Stel dit in `true` op as Default is ingesteld alsof `false` het niet is opgegeven. Dit is een alleen-maken eigenschap en vereist een minimale API-versie van 2019-06-01. Dit kan worden toegepast op zowel Linux-als Windows-knooppunt groepen.
+Na een geslaagde registratie implementeert u een Azure Resource Manager-sjabloon volgens dezelfde instructies als [hierboven](#manage-node-pools-using-a-resource-manager-template) en voegt u de volgende Boole-waarde-eigenschap ' enableNodePublicIP ' toe aan de agentPoolProfiles. Stel dit in op `true`, zoals standaard ingesteld als `false` als dit niet is opgegeven. Dit is een alleen-maken eigenschap en vereist een minimale API-versie van 2019-06-01. Dit kan worden toegepast op zowel Linux-als Windows-knooppunt groepen.
 
 ```
 "agentPoolProfiles":[  
@@ -637,11 +591,6 @@ Zie [een Windows Server-container maken in AKS][aks-windows]om Windows Server-co
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
@@ -659,7 +608,3 @@ Zie [een Windows Server-container maken in AKS][aks-windows]om Windows Server-co
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update

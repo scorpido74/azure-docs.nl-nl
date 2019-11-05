@@ -3,26 +3,27 @@ title: Reken doelen voor model training maken en gebruiken
 titleSuffix: Azure Machine Learning
 description: Configureer de trainings omgevingen (Compute-doelen) voor de training van machine learning model. U kunt eenvoudig overschakelen tussen trainings omgevingen. Start training lokaal. Als u wilt uitschalen, gaat u naar een compute-doel op basis van de Cloud.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46a212719846eddc7d21f3aeb0815dfbf4119e15
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935357"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489584"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Met Azure Machine Learning kunt u uw model trainen op diverse resources of omgevingen, die gezamenlijk worden aangeduid als [__Compute-doelen__](concept-azure-machine-learning-architecture.md#compute-targets). Een compute-doel kan een lokale machine of een Cloud resource zijn, zoals een Azure Machine Learning compute, Azure HDInsight of een externe virtuele machine.  U kunt ook reken doelen voor model implementatie maken, zoals wordt beschreven in [' waar en hoe u uw modellen implementeert '](how-to-deploy-and-where.md).
 
-U kunt een reken doel maken en beheren met behulp van de Azure Machine Learning SDK, Azure Portal, de landings pagina voor de werk ruimte (preview), de Azure CLI of de Azure Machine Learning VS code-extensie. Als u reken doelen hebt die zijn gemaakt via een andere service (bijvoorbeeld een HDInsight-cluster), kunt u deze gebruiken door deze te koppelen aan uw Azure Machine Learning-werk ruimte.
+U kunt een compute-doel maken en beheren met behulp van de Azure Machine Learning SDK, Azure Machine Learning Studio, Azure CLI of Azure Machine Learning VS code extension. Als u reken doelen hebt die zijn gemaakt via een andere service (bijvoorbeeld een HDInsight-cluster), kunt u deze gebruiken door deze te koppelen aan uw Azure Machine Learning-werk ruimte.
  
 In dit artikel leert u hoe u verschillende reken doelen kunt gebruiken voor model training.  De stappen voor alle Compute-doelen volgen dezelfde werk stroom:
 1. __Maak__ een reken doel als u er nog geen hebt.
@@ -132,7 +133,7 @@ Een permanente Azure Machine Learning Compute kan opnieuw worden gebruikt voor v
    U kunt ook verschillende geavanceerde eigenschappen configureren wanneer u Azure Machine Learning Compute maakt. Met de eigenschappen kunt u een permanent cluster met een vaste grootte of binnen een bestaand Azure-Virtual Network in uw abonnement maken.  Zie de [klasse AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ) voor meer informatie.
     
-   U kunt ook een permanente Azure Machine Learning Compute-bron maken en koppelen [in de Azure Portal](#portal-create).
+   U kunt ook een permanente Azure Machine Learning Compute-bron maken en koppelen in [Azure machine learning Studio](#portal-create).
 
 1. **Configureren**: een uitvoerings configuratie maken voor het permanente Compute-doel.
 
@@ -154,7 +155,7 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
     > [!WARNING]
     > Azure Machine Learning ondersteunt alleen virtuele machines waarop Ubuntu wordt uitgevoerd. Wanneer u een virtuele machine maakt of een bestaande virtuele machine kiest, moet u een virtuele machine selecteren die gebruikmaakt van Ubuntu.
 
-1. **Bijvoegen**: als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de Fully QUALIFIED domain name (FQDN), de gebruikers naam en het wacht woord voor de virtuele machine opgeven. Vervang in het voor beeld \<fqdn > met de open bare FQDN van de virtuele machine of het open bare IP-adres. Vervang \<username > en \<password > door de SSH-gebruikers naam en het wacht woord voor de virtuele machine.
+1. **Bijvoegen**: als u een bestaande virtuele machine als een reken doel wilt koppelen, moet u de Fully QUALIFIED domain name (FQDN), de gebruikers naam en het wacht woord voor de virtuele machine opgeven. Vervang in het voor beeld \<FQDN-> met de open bare FQDN van de virtuele machine of het open bare IP-adres. Vervang \<gebruikers naam > en \<wacht woord > door de SSH-gebruikers naam en het wacht woord voor de virtuele machine.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -179,7 +180,7 @@ Gebruik Azure Data Science Virtual Machine (DSVM) als de Azure-VM van de keuze v
    compute.wait_for_completion(show_output=True)
    ```
 
-   U kunt de DSVM ook aan uw werk ruimte koppelen [met behulp van de Azure Portal](#portal-reuse).
+   U kunt de DSVM ook aan uw werk ruimte koppelen [met behulp van Azure machine learning Studio](#portal-reuse).
 
 1. **Configureren**: een uitvoerings configuratie voor het DSVM Compute-doel maken. Docker en Conda worden gebruikt om de trainings omgeving op de DSVM te maken en te configureren.
 
@@ -196,9 +197,9 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
 
     Wanneer u het cluster maakt, moet u een SSH-gebruikers naam en-wacht woord opgeven. Noteer deze waarden, omdat u ze nodig hebt om HDInsight als reken doel te gebruiken.
     
-    Nadat het cluster is gemaakt, maakt u een verbinding met de hostnaam \<clustername >-ssh.azurehdinsight.net, waarbij \<clustername > de naam is die u voor het cluster hebt ingesteld. 
+    Nadat het cluster is gemaakt, maakt u een verbinding met de hostnaam \<cluster naam >-ssh.azurehdinsight.net, waarbij \<clustername > de naam is die u hebt ingevoerd voor het cluster. 
 
-1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de hostnaam, de gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. In het volgende voor beeld wordt de SDK gebruikt om een cluster aan uw werk ruimte te koppelen. Vervang in het voor beeld \<clustername > door de naam van uw cluster. Vervang \<username > en \<password > door de SSH-gebruikers naam en het wacht woord voor het cluster.
+1. **Bijvoegen**: als u een HDInsight-cluster als een reken doel wilt koppelen, moet u de hostnaam, de gebruikers naam en het wacht woord voor het HDInsight-cluster opgeven. In het volgende voor beeld wordt de SDK gebruikt om een cluster aan uw werk ruimte te koppelen. Vervang in het voor beeld \<clustername > door de naam van uw cluster. Vervang \<gebruikers naam > en \<wacht woord > door de SSH-gebruikers naam en het wacht woord voor het cluster.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -220,7 +221,7 @@ Azure HDInsight is een populair platform voor Big data-analyses. Het platform bi
    hdi_compute.wait_for_completion(show_output=True)
    ```
 
-   Of u kunt het HDInsight-cluster aan uw werk ruimte koppelen [met behulp van de Azure Portal](#portal-reuse).
+   U kunt het HDInsight-cluster ook koppelen aan uw werk ruimte [met behulp van Azure machine learning Studio](#portal-reuse).
 
 1. **Configureren**: een uitvoerings configuratie voor het HDI Compute-doel maken. 
 
@@ -270,9 +271,9 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-in-azure-portal"></a>Ingesteld in Azure Portal
+## <a name="set-up-in-azure-machine-learning-studio"></a>Instellen in Azure Machine Learning Studio
 
-U kunt toegang krijgen tot de reken doelen die zijn gekoppeld aan uw werk ruimte in de Azure Portal.  U kunt de portal gebruiken om het volgende te doen:
+U kunt toegang krijgen tot de reken doelen die zijn gekoppeld aan uw werk ruimte in de Azure Machine Learning Studio.  U kunt de Studio gebruiken voor het volgende:
 
 * [Reken doelen weer geven](#portal-view) die zijn gekoppeld aan uw werk ruimte
 * [Een compute-doel](#portal-create) in uw werk ruimte maken
@@ -291,11 +292,11 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Als u de reken doelen voor uw werk ruimte wilt zien, gebruikt u de volgende stappen:
 
-1. Ga naar het [Azure Portal](https://portal.azure.com) en open uw werk ruimte. U kunt dezelfde stappen ook gebruiken op de [landings pagina van de werk ruimte (preview)](https://ml.azure.com), hoewel de onderstaande afbeeldingen de Azure portal weer geven.
+1. Navigeer naar [Azure machine learning Studio](https://ml.azure.com).
  
 1. Selecteer __berekenen__onder __toepassingen__.
 
-    [tabblad Compute![weer geven](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [tabblad Compute ![weer geven](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Een reken doel maken
 
@@ -310,7 +311,7 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 1. Selecteer **machine learning Compute** als het type Compute dat moet worden gebruikt voor de __training__. 
 
     >[!NOTE]
-    >Azure Machine Learning Compute is de enige beheerde-reken resource die u kunt maken in de Azure Portal.  Alle andere reken bronnen kunnen worden bijgevoegd nadat ze zijn gemaakt.
+    >Azure Machine Learning Compute is de enige beheerde-reken resource die u in Azure Machine Learning Studio kunt maken.  Alle andere reken bronnen kunnen worden bijgevoegd nadat ze zijn gemaakt.
 
 1. Vul het formulier in. Geef waarden op voor de vereiste eigenschappen, met name voor de **VM-familie**, en het **maximum aantal knoop punten** dat moet worden gebruikt om de berekening uit te voeren.  
 
@@ -336,7 +337,7 @@ Volg de stappen die eerder zijn beschreven om de lijst met Compute-doelen weer t
 1. Selecteer het type berekening dat moet worden gekoppeld voor de __training__:
 
     > [!IMPORTANT]
-    > Niet alle reken typen kunnen worden bijgevoegd vanuit het Azure Portal. De berekenings typen die momenteel aan de training kunnen worden gekoppeld, zijn:
+    > Niet alle reken typen kunnen worden bijgevoegd vanuit Azure Machine Learning Studio. De berekenings typen die momenteel aan de training kunnen worden gekoppeld, zijn:
     >
     > * Een externe VM
     > * Azure Databricks (voor gebruik in machine learning pijp lijnen)
@@ -414,7 +415,7 @@ Hetzelfde experiment wisselen om uit te voeren in een ander reken doel door gebr
 
 U kunt ook het volgende doen:
 
-* Dien het experiment in met een `Estimator`-object zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
+* Verzend het experiment met een `Estimator`-object, zoals wordt weer gegeven in de [trein ml-modellen met schattingen](how-to-train-ml-models.md).
 * Verzend een HyperDrive-uitvoering voor [afstemming-afstemming](how-to-tune-hyperparameters.md).
 * Een experiment verzenden via de [VS code-extensie](how-to-vscode-tools.md#train-and-tune-models).
 
@@ -422,7 +423,7 @@ Zie de documentatie voor [ScriptRunConfig](https://docs.microsoft.com/python/api
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Voer een configuratie uit en voer run uit met Azure Machine Learning CLI
 
-U kunt [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [machine learning cli-extensie](reference-azure-machine-learning-cli.md) gebruiken voor het maken van uitvoerings configuraties en het verzenden van uitvoeringen op verschillende reken doelen. In de volgende voor beelden wordt ervan uitgegaan dat u een bestaande Azure Machine Learning-werkruimte hebt en u bent aangemeld bij Azure met behulp van de `az login` CLI-opdracht. 
+U kunt [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en [machine learning cli-extensie](reference-azure-machine-learning-cli.md) gebruiken voor het maken van uitvoerings configuraties en het verzenden van uitvoeringen op verschillende reken doelen. In de volgende voor beelden wordt ervan uitgegaan dat u een bestaande Azure Machine Learning-werkruimte hebt en u bent aangemeld bij Azure met behulp van `az login` CLI-opdracht. 
 
 ### <a name="create-run-configuration"></a>Configuratie voor uitvoeren maken
 
@@ -432,7 +433,7 @@ De eenvoudigste manier om een uitvoerings configuratie te maken is door de map t
 az ml folder attach
 ```
 
-Met deze opdracht maakt u een submap `.azureml` met de configuratie bestanden voor het uitvoeren van sjablonen voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
+Met deze opdracht maakt u een submap `.azureml` die sjabloon configuratie bestanden bevat voor verschillende Compute-doelen. U kunt deze bestanden kopiëren en bewerken om uw configuratie aan te passen, bijvoorbeeld om Python-pakketten toe te voegen of docker-instellingen te wijzigen.  
 
 ### <a name="structure-of-run-configuration-file"></a>Structuur van het configuratie bestand voor de uitvoering
 
@@ -446,6 +447,8 @@ Het configuratie bestand voor de uitvoering is YAML opgemaakt, met de volgende s
  * Configuratie details die specifiek zijn voor het geselecteerde Framework.
  * Details van gegevens referentie en gegevens opslag.
  * Configuratie gegevens die specifiek zijn voor Machine Learning Compute voor het maken van een nieuw cluster.
+
+Zie het JSON-voorbeeld [bestand](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) voor een volledig runconfig-schema.
 
 ### <a name="create-an-experiment"></a>Een experiment maken
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 164ba5ff7be38d3b11a8c5f8e5c76a3ff19ff508
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172924"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474697"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Zelf studie: een virtuele Windows Server-machine toevoegen aan een beheerd domein
 
@@ -54,7 +54,8 @@ Als u wilt zien hoe een computer moet worden toegevoegd aan een door Azure AD DS
 
 Als u al een virtuele machine hebt die lid moet worden van een domein, gaat u naar de sectie om [de VM toe te voegen aan het beheerde domein van Azure AD DS](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
-1. Selecteer in de linkerbovenhoek van de Azure Portal **+ een resource maken**.
+1. Selecteer in het menu Azure Portal of op de **Introductie** pagina de optie **een resource maken**.
+
 1. Kies **Windows Server 2016 Data Center** **om aan**de slag te gaan.
 
     ![Kies voor het maken van een Windows Server 2016 Data Center VM in de Azure Portal](./media/join-windows-vm/select-vm-image.png)
@@ -152,7 +153,7 @@ Wanneer de virtuele machine is gemaakt en een RDP-verbinding tot stand is gebrac
     * **UPN-indeling** (aanbevolen): Voer het achtervoegsel van de User Principal Name (UPN) in voor het gebruikers account, zoals geconfigureerd in azure AD. Het UPN-achtervoegsel van de *contosoadmin* van de gebruiker wordt bijvoorbeeld `contosoadmin@contoso.onmicrosoft.com`. Er zijn enkele algemene gebruiks gevallen waarbij de UPN-indeling betrouwbaar kan worden gebruikt om u aan te melden bij het domein in plaats van de *SAMAccountName* -indeling:
         * Als het UPN-voor voegsel van een gebruiker lang is, zoals *deehasareallylongname*, kan de *SAMAccountName* automatisch worden gegenereerd.
         * Als meerdere gebruikers hetzelfde UPN-voor voegsel hebben in uw Azure AD-Tenant, zoals *Dee*, kan de *SAMAccountName* -indeling automatisch worden gegenereerd.
-    * **SAMAccountName-indeling** : Voer de account naam in de *sAMAccountName* -indeling in. De *SAMAccountName* van de gebruiker *contosoadmin* zou bijvoorbeeld `CONTOSO\contosoadmin` zijn.
+    * **SAMAccountName-indeling** : Voer de account naam in de *sAMAccountName* -indeling in. De *SAMAccountName* van de gebruiker *contosoadmin* zou bijvoorbeeld `CONTOSO\contosoadmin`zijn.
 
 1. Het duurt een paar seconden om lid te worden van het door Azure AD DS beheerde domein. Wanneer dit is voltooid, ontvangt u het volgende bericht:
 
@@ -203,7 +204,7 @@ Als u deze virtuele machine van Windows Server niet gaat gebruiken, verwijdert u
 
 De virtuele machine van Windows Server moet worden toegevoegd aan het Azure AD DS beheerde domein, op dezelfde manier als een vaste on-premises computer zou worden toegevoegd aan een Active Directory Domain Services domein. Als de virtuele machine van Windows Server geen lid kan worden van het beheerde domein van Azure AD DS, wordt hiermee aangegeven dat er een probleem is met de connectiviteit of met betrekking tot referenties. Raadpleeg de volgende secties voor probleem oplossing om lid te worden van het beheerde domein.
 
-### <a name="connectivity-issues"></a>Verbindingsproblemen
+### <a name="connectivity-issues"></a>Connectiviteitsproblemen
 
 Als er geen prompt wordt weer gegeven waarin wordt gevraagd om referenties om lid te worden van het domein, is er een probleem met de verbinding. De virtuele machine kan het door Azure AD DS beheerde domein niet bereiken op het virtuele netwerk.
 
@@ -229,7 +230,7 @@ Na het uitvoeren van elk van deze probleemoplossings stappen probeert u de Windo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Windows Server-VM maken

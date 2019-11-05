@@ -3,15 +3,15 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176334"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464048"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -25,6 +25,7 @@ Deze effecten worden momenteel ondersteund in een beleids definitie:
 - [Toestaan](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Uitgeschakeld](#disabled)
+- [EnforceOPAConstraint](#enforceopaconstraint) (preview-versie)
 - [EnforceRegoPolicy](#enforceregopolicy) (preview-versie)
 - [Wijzigen](#modify)
 
@@ -39,7 +40,7 @@ Aanvragen voor het maken of bijwerken van een bron via Azure Resource Manager wo
 
 Nadat de resource provider een succes code heeft geretourneerd, wordt **AuditIfNotExists** en **DeployIfNotExists** geëvalueerd om te bepalen of er aanvullende logboek registratie of actie vereist is.
 
-Er is momenteel geen volg orde van evaluatie voor het **EnforceRegoPolicy** -effect.
+Er is momenteel geen volg orde voor de evaluatie van de **EnforceOPAConstraint** -of **EnforceRegoPolicy** -effecten.
 
 ## <a name="disabled"></a>Uitgeschakeld
 
@@ -99,7 +100,7 @@ Voor beeld 2: een combi natie van één **veld/waarde** met een **[\*]** - [alia
 
 ## <a name="modify"></a>Wijzigen
 
-Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Voor een wijzigings beleid moet `mode` altijd zijn ingesteld op _geïndexeerd_ , tenzij de doel resource een resource groep is. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
+Modify wordt gebruikt om tags toe te voegen, bij te werken of te verwijderen tijdens het maken of bijwerken van een resource. Een voor beeld hiervan is het bijwerken van tags op resources, zoals costCenter. Voor een wijzigings beleid moet altijd `mode` zijn ingesteld op _geïndexeerd_ , tenzij de doel resource een resource groep is. Bestaande niet-compatibele resources kunnen worden hersteld met een [herstel taak](../how-to/remediate-resources.md). Eén wijzigings regel kan elk wille keurig aantal bewerkingen hebben.
 
 > [!IMPORTANT]
 > Modify is momenteel alleen voor gebruik met tags. Als u labels beheert, is het raadzaam om wijzigen te gebruiken in plaats van toevoegen als wijzigen biedt extra bewerkings typen en de mogelijkheid om bestaande resources te herstellen. Toevoegen wordt echter aanbevolen als u geen beheerde identiteit kunt maken.
@@ -134,7 +135,7 @@ De eigenschap array **Operations** maakt het mogelijk verschillende labels op ve
 
 - Hiermee stelt u de `environment`-tag in op ' test ', zelfs als deze al bestaat met een andere waarde.
 - Hiermee verwijdert u het label `TempResource`.
-- Hiermee stelt u de `Dept`-tag in op de beleids parameter _Dept_ die is geconfigureerd op de beleids toewijzing.
+- Hiermee stelt u de `Dept`-tag in op de _beleids parameter voor_ de beleids toewijzing geconfigureerd.
 
 ```json
 "details": {
@@ -168,7 +169,7 @@ De eigenschap **Operation** heeft de volgende opties:
 
 ### <a name="modify-examples"></a>Voor beelden wijzigen
 
-Voor beeld 1: Voeg de tag `environment` toe en vervang bestaande `environment`-tags door ' test ':
+Voor beeld 1: Voeg het `environment` tag toe en vervang bestaande `environment` Tags door ' test ':
 
 ```json
 "then": {
@@ -242,7 +243,7 @@ Controle wordt gebruikt om een waarschuwings gebeurtenis in het activiteiten log
 
 ### <a name="audit-evaluation"></a>Controle-evaluatie
 
-Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Azure Policy verzendt vervolgens de resource naar de resource provider. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action`-bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
+Controle is het laatste effect dat door Azure Policy is gecontroleerd tijdens het maken of bijwerken van een resource. Azure Policy verzendt vervolgens de resource naar de resource provider. Audit werkt hetzelfde voor een resource aanvraag en een evaluatie cyclus. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek toe en markeert de resource als niet-compatibel.
 
 ### <a name="audit-properties"></a>Controle-eigenschappen
 
@@ -264,7 +265,7 @@ Met AuditIfNotExists kunt **u** controleren op resources die overeenkomen met de
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists-evaluatie
 
-AuditIfNotExists wordt uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft verwerkt en een status code voor geslaagd heeft geretourneerd. De controle treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action`-bewerking op dezelfde manier als het controle-effect toe aan het activiteiten logboek. Als deze wordt geactiveerd, is de resource die voldoet aan de **if** -voor waarde de resource die is gemarkeerd als niet-compatibel.
+AuditIfNotExists wordt uitgevoerd nadat een resource provider een aanvraag voor het maken of bijwerken van een resource heeft verwerkt en een status code voor geslaagd heeft geretourneerd. De controle treedt op als er geen gerelateerde resources zijn of als de resources die zijn gedefinieerd door **ExistenceCondition** niet naar waar worden geëvalueerd. Azure Policy voegt een `Microsoft.Authorization/policies/audit/action` bewerking aan het activiteiten logboek op dezelfde manier toe als het controle-effect. Als deze wordt geactiveerd, is de resource die voldoet aan de **if** -voor waarde de resource die is gemarkeerd als niet-compatibel.
 
 ### <a name="auditifnotexists-properties"></a>AuditIfNotExists-eigenschappen
 
@@ -373,7 +374,7 @@ De eigenschap **Details** van het effect DeployIfNotExists heeft alle subeigensc
   - Een _locatie_ -eigenschap moet worden opgegeven in de _implementatie_ bij het gebruik van implementaties op abonnements niveau.
   - De standaard waarde is _ResourceGroup_.
 - **Implementatie** [vereist]
-  - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan de `Microsoft.Resources/deployments`-invoeg-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
+  - Deze eigenschap moet de volledige sjabloon implementatie bevatten, aangezien deze wordt door gegeven aan de `Microsoft.Resources/deployments` PUT-API. Zie [implementaties rest API](/rest/api/resources/deployments)voor meer informatie.
 
   > [!NOTE]
   > Alle functies in de **implementatie** -eigenschap worden geëvalueerd als onderdelen van de sjabloon, niet het beleid. De uitzonde ring is de eigenschap **para meters** waarmee waarden van het beleid worden door gegeven aan de sjabloon. De **waarde** in deze sectie onder een sjabloon parameter naam wordt gebruikt om deze waarde door te geven (Zie _FullDbName_ in het DeployIfNotExists-voor beeld).
@@ -431,12 +432,68 @@ Voor beeld: Hiermee worden SQL Server data bases geëvalueerd om te bepalen of t
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Dit effect wordt gebruikt in combi natie met de beleids definitie *modus* van `Microsoft.ContainerService.Data`. Het wordt gebruikt voor het door geven van regels voor toegangs beheer die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het openen van de [beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
+Dit effect wordt gebruikt in combi natie met de beleids definitie *modus* van `Microsoft.Kubernetes.Data`. Het wordt gebruikt voor het door geven van gate keeper-toegangs beheer regels die zijn gedefinieerd met [opa CONSTRAINT Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) om de [beleids agent](https://www.openpolicyagent.org/) (opa) te openen voor zelf-beheerde Kubernetes-clusters in Azure.
 
 > [!NOTE]
-> [Azure Policy voor Kubernetes](rego-for-aks.md) is in open bare preview en ondersteunt alleen ingebouwde beleids definities.
+> [Azure Policy voor de AKS-engine](aks-engine.md) bevindt zich in de open bare preview en ondersteunt alleen ingebouwde beleids definities.
+
+### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint-evaluatie
+
+De open Policy Agent Admission controller evalueert elke nieuwe aanvraag op het cluster in realtime.
+Elke 5 minuten wordt een volledige scan van het cluster voltooid en worden de resultaten gerapporteerd aan Azure Policy.
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint-eigenschappen
+
+De eigenschap **Details** van het effect EnforceOPAConstraint heeft de subeigenschappen waarmee de gate keeper v3 Admission Control-regel wordt beschreven.
+
+- **constraintTemplate** [vereist]
+  - De beperkings sjabloon CustomResourceDefinition (CRD) waarmee nieuwe beperkingen worden gedefinieerd. De sjabloon definieert de Rego Logic, het beperkings schema en de beperkings parameters die worden door gegeven via **waarden** van Azure Policy.
+- **beperking** [vereist]
+  - De CRD-implementatie van de beperkings sjabloon. Maakt gebruik van para meters die via **waarden** worden door gegeven als `{{ .Values.<valuename> }}`. In het onderstaande voor beeld is dit `{{ .Values.cpuLimit }}` en `{{ .Values.memoryLimit }}`.
+- **waarden** [Optioneel]
+  - Hiermee definieert u de para meters en waarden die moeten worden door gegeven aan de beperking. Elke waarde moet bestaan in de beperkings sjabloon CRD.
+
+### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy-voor beeld
+
+Voor beeld: gate keeper v3 Admission Control regel voor het instellen van limieten voor container CPU en geheugen bronnen in de AKS-engine.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Dit effect wordt gebruikt in combi natie met de beleids definitie *modus* van `Microsoft.ContainerService.Data`. Het wordt gebruikt voor het door geven van de regels voor toegangs beheer van gate keeper v2 die zijn gedefinieerd met [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) voor het [openen van beleids agent](https://www.openpolicyagent.org/) (opa) op de [Azure Kubernetes-service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Azure Policy voor AKS](rego-for-aks.md) is een beperkte preview-versie en ondersteunt alleen ingebouwde beleids definities
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy-evaluatie
 
@@ -445,7 +502,7 @@ Elke 5 minuten wordt een volledige scan van het cluster voltooid en worden de re
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy-eigenschappen
 
-De eigenschap **Details** van het effect EnforceRegoPolicy heeft de subeigenschappen die de Rego Admission Control-regel beschrijven.
+De eigenschap **Details** van het effect EnforceRegoPolicy heeft de subeigenschappen waarmee de gate keeper v2 Admission Control-regel wordt beschreven.
 
 - **policyId** [vereist]
   - Een unieke naam die als een para meter wordt door gegeven aan de Rego Admission Control-regel.
@@ -456,7 +513,7 @@ De eigenschap **Details** van het effect EnforceRegoPolicy heeft de subeigenscha
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy-voor beeld
 
-Voor beeld: Rego Admission Control-regel om alleen de opgegeven container installatie kopieën in AKS toe te staan.
+Voor beeld: gate keeper v2 Admission Control regel om alleen de opgegeven container installatie kopieën in AKS toe te staan.
 
 ```json
 "if": {

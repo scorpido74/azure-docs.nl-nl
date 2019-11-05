@@ -5,17 +5,16 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.custom: mvc
-ms.openlocfilehash: d1c90e61890ee98dc5371faed872d03409aaf31f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489549"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495658"
 ---
-# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Zelfstudie: Een VPN-gateway maken en beheren met behulp van PowerShell
+# <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Zelf studie: een VPN-gateway maken en beheren met Power shell
 
 Azure VPN-gateways bieden veilige, cross-premises connectiviteit tussen de klanten-premises en Azure. Deze zelfstudie bevat informatie over implementatie-basiselementen voor Azure VPN-gateways, zoals het maken en beheren van een VPN-gateway. In deze zelfstudie leert u procedures om het volgende te doen:
 
@@ -85,7 +84,7 @@ New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Azure VPN-gateway biedt cross-premises connectiviteit en P2S-VPN-server-functionaliteit voor uw virtuele netwerk. Voeg de VPN-gateway toe aan een bestaand virtueel netwerk of maak een nieuw virtueel netwerk en de gateway. U ziet dat in het voor beeld de naam van het gateway-subnet specifiek wordt opgegeven. U moet altijd de naam van het gateway-subnet opgeven als ' GatewaySubnet ', zodat deze correct werkt. In dit voorbeeld wordt een nieuw virtueel netwerk met drie subnetten gemaakt: front-end, back-end en GatewaySubnet met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) en [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
+Azure VPN-gateway biedt cross-premises connectiviteit en P2S-VPN-server-functionaliteit voor uw virtuele netwerk. Voeg de VPN-gateway toe aan een bestaand virtueel netwerk of maak een nieuw virtueel netwerk en de gateway. U ziet dat in het voor beeld de naam van het gateway-subnet specifiek wordt opgegeven. U moet altijd de naam van het gateway-subnet opgeven als ' GatewaySubnet ', zodat deze correct werkt. In dit voor beeld wordt een nieuw virtueel netwerk met drie subnetten gemaakt: front-end, back-end en GatewaySubnet met behulp van [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) en [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork):
 
 ```azurepowershell-interactive
 $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
@@ -128,9 +127,9 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 Sleutelparameterwaarden:
 * GatewayType: Gebruik **Vpn** voor site-naar-site- en VNet-naar-VNet-verbindingen
 * VpnType: Gebruik **RouteBased** om te communiceren met meer verschillende VPN-apparaten en meer routeringsfuncties
-* GatewaySku: **VpnGw1** is de standaardinstelling; wijzig deze in VpnGw2 of VpnGw3 als u hogere doorvoercapaciteit of meer verbindingen nodig hebt. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
+* GatewaySku: **VpnGw1** is de standaard instelling. Wijzig deze in een andere VpnGw-SKU als u hogere door Voer of meer verbindingen nodig hebt. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
 
-Als u de TryIt gebruikt, is het mogelijk dat de sessie een time-out geeft. Dat is niet erg. De gateway wordt alsnog gemaakt.
+Als u de TryIt gebruikt, is er mogelijk een time-out opgetreden voor uw sessie. Is goed zo. De gateway wordt alsnog gemaakt.
 
 Nadat het maken van de gateway is voltooid, kunt u een verbinding maken tussen uw virtuele netwerk en een ander VNet of een verbinding maken tussen uw virtuele netwerk en een on-premises locatie. U kunt ook een P2S-verbinding configureren voor uw VNet vanaf een clientcomputer.
 
@@ -147,7 +146,7 @@ $myGwIp.IpAddress
 
 ## <a name="resize-a-gateway"></a>Het formaat van een gateway wijzigen
 
-U kunt de VPN-gateway-SKU wijzigen nadat de gateway is gemaakt. Verschillende gateway-SKU's ondersteunen verschillende specificaties zoals doorvoercapaciteit, aantal verbindingen, enzovoort. In het volgende voorbeeld wordt [Resize-AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) gebruikt om het formaat van uw gateway te wijzigen van VpnGw1 in VpnGw2. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
+U kunt de VPN-gateway-SKU wijzigen nadat de gateway is gemaakt. Verschillende gateway-Sku's ondersteunen verschillende specificaties, zoals door Voer, aantal verbindingen, enzovoort. In het volgende voor beeld wordt de grootte van de gateway [AzVirtualNetworkGateway](/powershell/module/az.network/Resize-azVirtualNetworkGateway) gewijzigd van VpnGw1 naar VpnGw2. Zie [Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie.
 
 ```azurepowershell-interactive
 $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
@@ -169,7 +168,7 @@ Zie [Reset a VPN gateway](vpn-gateway-resetgw-classic.md) (Een VPN-gateway opnie
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u overstapt naar de [volgende zelf studie](vpn-gateway-tutorial-vpnconnection-powershell.md), wilt u deze resources blijven gebruiken omdat dit de vereisten zijn.
+Als u [overstapt naar de volgende zelf studie](vpn-gateway-tutorial-vpnconnection-powershell.md), wilt u deze resources blijven gebruiken omdat dit de vereisten zijn.
 
 Als de gateway echter deel uitmaakt van een prototype, test of 'proof of concept'-implementatie, kunt u de opdracht [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resourcegroep, de VPN-gateway en alle bijbehorende resources te verwijderen.
 

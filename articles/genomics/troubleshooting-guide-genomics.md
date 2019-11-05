@@ -1,7 +1,7 @@
 ---
-title: Gids voor probleem oplossing
+title: Handleiding voor het oplossen van problemen
 titleSuffix: Microsoft Genomics
-description: Meer informatie over strategieën voor het oplossen van problemen met het gebruik van Microsoft Genomics.
+description: Meer informatie over strategieën voor het oplossen van problemen met het gebruik van Microsoft Genomics, waaronder fout berichten en hoe u deze kunt oplossen.
 keywords: problemen oplossen, fouten opsporen
 services: genomics
 author: ruchir
@@ -11,14 +11,14 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: f6ef56e4188a7541036db096e4ab35a1b95fc141
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485998"
 ---
-# <a name="troubleshooting-guide"></a>Probleemoplossingsgids
+# <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
 
 Hier volgen enkele tips voor het oplossen van problemen die u kunt tegen komen wanneer u de Microsoft Genomics-service gebruikt, MSGEN.
 
@@ -27,7 +27,7 @@ Hier volgen enkele tips voor het oplossen van problemen die u kunt tegen komen w
 
 U vindt de fout berichten die zijn gekoppeld aan de werk stroom door:
 
-1. Gebruik de opdracht regel en typ `msgen status`
+1. De opdracht regel gebruiken en typen in `msgen status`
 2. De inhoud van Standard output. txt wordt onderzocht.
 
 ### <a name="1-using-the-command-line-msgen-status"></a>1. met behulp van de opdracht regel `msgen status`
@@ -47,7 +47,7 @@ Er zijn drie vereiste argumenten:
 
   
 * ID: de werk stroom-ID
-    * Zoek uw werk stroom-ID-type in `msgen list` opdracht. Ervan uitgaande dat uw configuratie bestand de URL en de toegangs sleutels bevat en zich op dezelfde locatie bevindt als uw msgen exe, ziet de opdracht er als volgt uit: 
+    * Om het type werk stroom-ID te vinden in `msgen list` opdracht. Ervan uitgaande dat uw configuratie bestand de URL en de toegangs sleutels bevat en zich op dezelfde locatie bevindt als uw msgen exe, ziet de opdracht er als volgt uit: 
         
         ```bash
         msgen list -f "config.txt"
@@ -83,7 +83,7 @@ msgen status -w 1001 -f "config.txt"
 ```
 
 ### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Controleer de inhoud van Standard output. txt 
-Zoek de uitvoer container voor de betreffende werk stroom. MSGEN maakt een, `[workflowfilename].logs.zip`-map nadat elke werk stroom is uitgevoerd. Pak de map uit om de inhoud ervan weer te geven:
+Zoek de uitvoer container voor de betreffende werk stroom. MSGEN maakt een `[workflowfilename].logs.zip` map na elke uitvoering van de werk stroom. Pak de map uit om de inhoud ervan weer te geven:
 
 * outputFileList. txt: een lijst met de uitvoer bestanden die zijn geproduceerd tijdens de werk stroom
 * Standard error. txt: dit bestand is leeg.

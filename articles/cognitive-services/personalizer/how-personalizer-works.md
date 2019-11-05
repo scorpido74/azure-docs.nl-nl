@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002894"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490753"
 ---
 # <a name="how-personalizer-works"></a>Hoe Personalizer werkt
 
@@ -27,13 +27,13 @@ Voor elke lus **roept u de Rank API aan** op basis van de huidige context, waarb
 
 De **positie** -API besluit om de volgende te gebruiken:
 
-* _Misbruik_: Het huidige model om de beste actie te bepalen op basis van gegevens in het verleden.
+* _Exploit_: het huidige model om de beste actie te bepalen op basis van gegevens in het verleden.
 * _Verkennen_: Selecteer een andere actie in plaats van de bovenste actie.
 
 De **belonings** -API:
 
 * Verzamelt gegevens om het model te trainen door de functies en belonings scores van elke positie oproep vast te leggen.
-* Gebruikt die gegevens om het model bij te werken op basis van de instellingen die zijn opgegeven in het _trainings beleid_.
+* Gebruikt deze gegevens om het model bij te werken op basis van de configuratie die is opgegeven in het _Learning-beleid_.
 
 ## <a name="architecture"></a>Architectuur
 
@@ -55,9 +55,9 @@ Personaler is gebaseerd op wetenschap en onderzoek op het gebied van versterking
 
 ## <a name="terminology"></a>Terminologie
 
-* **Leer loop**: U kunt voor elk onderdeel van uw toepassing een leer proces maken dat kan profiteren van personalisatie. Als u meer dan één ervaring hebt om persoonlijker te maken, maakt u een lus voor elke. 
+* **Learning-lus**: u kunt een leer proces maken voor elk deel van uw toepassing dat kan profiteren van personalisatie. Als u meer dan één ervaring hebt om persoonlijker te maken, maakt u een lus voor elke. 
 
-* **Acties**: Acties zijn de inhouds items, zoals producten of promoties, waaruit u kunt kiezen. Personaler kiest voor de beste actie die aan uw gebruikers wordt weer gegeven. dit wordt aangeduid met de _actie_-API. Elke actie kan functies hebben verzonden met de rang aanvraag.
+* **Acties**: acties zijn de inhouds items, zoals producten of promoties, waaruit u kunt kiezen. Personaler kiest voor de beste actie die aan uw gebruikers wordt weer gegeven. dit wordt aangeduid met de _actie_-API. Elke actie kan functies hebben verzonden met de rang aanvraag.
 
 * **Context**: Geef informatie op over uw context om een nauw keurigere positie te geven, bijvoorbeeld:
     * Uw gebruiker.
@@ -68,19 +68,19 @@ Personaler is gebaseerd op wetenschap en onderzoek op het gebied van versterking
 
     Uw specifieke toepassing heeft mogelijk andere context informatie. 
 
-* **[Functies](concepts-features.md)** : Een eenheid van informatie over een inhouds item of een gebruikers context.
+* **[Functies](concepts-features.md)** : een eenheid van informatie over een inhouds item of een gebruikers context.
 
-* **Beloning**: Een meting van de manier waarop de gebruiker heeft gereageerd op de geretourneerde API van de interface, als een score tussen 0 en 1. De waarde van 0 tot 1 wordt ingesteld door uw bedrijfs logica, op basis van de manier waarop de keuze heeft geholpen bij het bereiken van uw zakelijke doel stellingen voor persoonlijke instellingen. 
+* **Beloning**: een meting van de manier waarop de gebruiker heeft gereageerd op de geretourneerde actie-API, als een score tussen 0 en 1. De waarde van 0 tot 1 wordt ingesteld door uw bedrijfs logica, op basis van de manier waarop de keuze heeft geholpen bij het bereiken van uw zakelijke doel stellingen voor persoonlijke instellingen. 
 
-* **Verkennen**: De Personaler Service verkennen wanneer, in plaats van de beste actie te retour neren, een andere actie voor de gebruiker wordt gekozen. De Personaler-service vermijdt drift, stagnation en kan worden aangepast aan het doorlopende gedrag van gebruikers door te verkennen. 
+* **Exploratie**: de personaler-service wordt gebruikt wanneer, in plaats van de beste actie te retour neren, een andere actie voor de gebruiker wordt gekozen. De Personaler-service vermijdt drift, stagnation en kan worden aangepast aan het doorlopende gedrag van gebruikers door te verkennen. 
 
-* **Duur**van het experiment: De hoeveelheid tijd die de Personaler-service wacht op een beloning, vanaf het moment dat de rang oproep voor die gebeurtenis is opgetreden.
+* **Duur**van het experiment: de hoeveelheid tijd die de personaler-service wacht op een beloning, vanaf het moment dat de positie oproep voor die gebeurtenis is opgetreden.
 
-* **Inactieve gebeurtenissen**: Een inactieve gebeurtenis is een locatie waar u positie noemt, maar u weet niet zeker dat de gebruiker het resultaat ooit zal zien vanwege beslissingen van de client toepassing. Inactieve gebeurtenissen bieden u de mogelijkheid om persoonlijke resultaten te maken en op te slaan. vervolgens besluit u deze later te negeren zonder dat dit van invloed is op het machine learning model.
+* **Inactieve gebeurtenissen**: een inactieve gebeurtenis is de locatie waar u positie noemt, maar u weet niet zeker dat de gebruiker het resultaat ooit zal zien vanwege beslissingen van de client toepassing. Inactieve gebeurtenissen bieden u de mogelijkheid om persoonlijke resultaten te maken en op te slaan. vervolgens besluit u deze later te negeren zonder dat dit van invloed is op het machine learning model.
 
-* **Model**: Een persoonlijk model bevat alle gegevens die zijn geleerd over het gedrag van gebruikers, het ophalen van trainings gegevens uit de combi natie van de argumenten die u verzendt voor het classificeren en beloningen en het trainings gedrag dat door het leer beleid wordt bepaald. 
+* **Model**: een personalr model legt alle gegevens vast die zijn geleerd over het gedrag van gebruikers, en trainings gegevens ophalen uit de combi natie van de argumenten die u verzendt voor het classificeren en beloningen en met een opleidings gedrag dat door het leer beleid wordt bepaald. 
 
-* **Leer beleid**: Hoe Personaler een model voor elke gebeurtenis traint, wordt bepaald door Meta-para meters die van invloed zijn op de werking van de machine learning-algoritmen. Nieuwe Personaler-lussen beginnen met een standaard learningbeleid, waarmee de prestaties kunnen worden vertraagd. Bij het [](concepts-offline-evaluation.md)uitvoeren van evaluaties kan personaler een nieuw leer beleid maken dat specifiek is geoptimaliseerd voor de gebruiks voorbeelden van uw lus. Personaler presteert aanzienlijk beter met beleids regels die zijn geoptimaliseerd voor elke specifieke lus, die tijdens de evaluatie wordt gegenereerd.
+* **Trainings beleid**: hoe personaler een model voor elke gebeurtenis moet treinen, wordt bepaald door Meta-para meters die van invloed zijn op de werking van de machine learning-algoritmen. Nieuwe Personaler-lussen beginnen met een standaard learningbeleid, waarmee de prestaties kunnen worden vertraagd. Bij het uitvoeren van [evaluaties](concepts-offline-evaluation.md)kan personaler een nieuw leer beleid maken dat specifiek is geoptimaliseerd voor de gebruiks voorbeelden van uw lus. Personaler presteert aanzienlijk beter met beleids regels die zijn geoptimaliseerd voor elke specifieke lus, die tijdens de evaluatie wordt gegenereerd.
 
 ## <a name="example-use-cases-for-personalizer"></a>Voor beelden van use cases for Personaler
 
@@ -154,9 +154,9 @@ In sommige architecturen is de bovenstaande reeks mogelijk moeilijk te implement
 
 ## <a name="verifying-adequate-effectiveness-of-personalizer"></a>De juiste effectiviteit van Personaler controleren
 
-U kunt de effectiviteit van personalisatie periodiek controleren door [offline](how-to-offline-evaluation.md) -evaluaties uit te voeren
+U kunt de effectiviteit van personalisatie periodiek controleren door [offline-evaluaties](how-to-offline-evaluation.md) uit te voeren
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Meer informatie over [hoe u personaler kunt gebruiken](where-can-you-use-personalizer.md).
-[Offline](how-to-offline-evaluation.md) -evaluaties uitvoeren
+[Offline-evaluaties](how-to-offline-evaluation.md) uitvoeren

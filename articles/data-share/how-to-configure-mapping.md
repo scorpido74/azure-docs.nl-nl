@@ -1,37 +1,43 @@
 ---
-title: Een toewijzing van een gegevensset configureren in de preview-versie van Azure data share
-description: Meer informatie over het configureren van een toewijzing van een gegevensset voor een ontvangen share met behulp van de preview-versie van Azure data share.
+title: Een toewijzing van een gegevensset configureren in een Azure-gegevens share
+description: Meer informatie over het configureren van een toewijzing van een gegevensset voor een ontvangen share met behulp van de Azure-gegevens share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169140"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490651"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Een toewijzing van een gegevensset configureren voor een ontvangen share in de preview-versie van Azure data share
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Een toewijzing van een gegevensset configureren voor een ontvangen share in de Azure-gegevens share
 
-In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de preview-versie van Azure data share. U kunt dit doen als u een uitnodiging voor gegevens delen hebt geaccepteerd, maar u ervoor hebt gekozen om deze later te accepteren en te configureren. Als dat niet het geval is, wilt u wellicht gewoon het doel-opslag account voor uw ontvangen gegevens wijzigen. 
+In dit artikel wordt uitgelegd hoe u een toewijzing van een gegevensset configureert voor een ontvangen share met behulp van de Azure-gegevens share. U kunt dit doen als u een uitnodiging voor gegevens delen hebt geaccepteerd, maar u ervoor hebt gekozen om deze later te accepteren en te configureren. U kunt een toewijzing van een gegevensset configureren als u de bestemming wilt wijzigen voor gegevens die met u worden gedeeld, of als u gegevens wilt ontvangen in een SQL Server. 
 
 ## <a name="navigate-to-a-received-data-share"></a>Navigeer naar een ontvangen gegevens share
 
 Navigeer in de Azure data share-service naar de share die u hebt ontvangen en selecteer het tabblad **Details** . 
 
-![]Gegevensset(./media/dataset-mapping.png "toewijzing") gegevensset 
+![Toewijzing van gegevensset](./media/dataset-mapping.png "Toewijzing van gegevensset") 
 
-Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt toewijzen en klik op **+ toewijzen aan doel**. Mogelijk moet u eerst de toewijzing opheffen als u al een doel opslag account hebt geconfigureerd en u de toewijzing wilt wijzigen in een ander opslag account. 
+Schakel het selectie vakje in naast de gegevensset waaraan u een bestemming wilt toewijzen. Selecteer **toewijzing** opheffen om de bestaande toewijzing te ontkoppelen. Selecteer **+ toewijzen aan doel** om een nieuw doel archief te kiezen. 
 
-![Toewijzen aan doel](./media/dataset-map-target.png "toewijzing aan doel") 
+![Toewijzen aan doel](./media/dataset-map-target.png "Toewijzen aan doel") 
 
-## <a name="select-a-new-storage-account"></a>Een nieuw opslag account selecteren 
+## <a name="select-a-new-destination-store"></a>Een nieuw doel archief selecteren
 
-Selecteer een opslag account waarin u wilt dat de gegevens binnenkomen. Houd er rekening mee dat alle gegevens die al in de eerder toegewezen opslag accounts bestaan, niet automatisch worden verplaatst naar het nieuwe opslag account.
+Selecteer een doel gegevens type waarvan u wilt dat de gegevens binnenkomen. Alle gegevens die al in een eerder toegewezen opslag account bestaan, worden niet automatisch verplaatst naar de nieuwe bestemming.
 
-(./media/map-target.png "Doel opslag") van ![doel opslag account] 
+![Doel opslag account](./media/dataset-map-target-sql.png "Doel opslag") 
+
+## <a name="select-a-file-format-sql-sources-only"></a>Selecteer een bestands indeling (alleen SQL-bronnen)
+
+Als de bron gegevens afkomstig zijn uit een bron op basis van SQL, kunt u kiezen in welke indeling deze wordt ontvangen. 
+
+![Indeling kiezen](./media/sql-file-formats.png "SQL-bestands indelingen")
 
 ## <a name="next-steps"></a>Volgende stappen
 

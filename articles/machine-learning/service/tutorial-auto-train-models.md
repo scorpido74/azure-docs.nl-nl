@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie voor een regressiemodel: Geautomatiseerde machine learning'
+title: 'Zelf studie voor regressie model: geautomatiseerde ML'
 titleSuffix: Azure Machine Learning
 description: Leer hoe u een machine learning-model genereert met behulp van geautomatiseerde machine learning. Azure Machine Learning kan voorbewerking van gegevens, selectie van algoritmes en selectie van hyperparameters automatisch voor u uitvoeren. Vervolgens wordt het uiteindelijke model geïmplementeerd met Azure Machine Learning.
 services: machine-learning
@@ -9,15 +9,16 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 08/21/2019
-ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: a7bd735a808532ed0e61cf42dca2d7a797092487
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003980"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493701"
 ---
-# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelfstudie: Automatische machine learning gebruiken om taxi tarieven te voors pellen
+# <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelf studie: automatische machine learning gebruiken om taxi tarieven te voors pellen
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In deze zelf studie gebruikt u geautomatiseerde machine learning in Azure Machine Learning om een regressie model te maken om de prijzen van het NYCe taxi te voors pellen. Dit proces accepteert trainings gegevens en configuratie-instellingen en herhaalt automatisch combi Naties van verschillende methoden voor het normaliseren/standaardiseren van functies, modellen en afstemming-instellingen om het beste model te ontvangen.
 
@@ -41,7 +42,7 @@ Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/Machine
 
 ## <a name="download-and-prepare-data"></a>Gegevens downloaden en voorbereiden
 
-Importeer de benodigde pakketten. Het open gegevens sets pakket bevat een klasse die elke gegevens bron`NycTlcGreen` vertegenwoordigt (bijvoorbeeld) om eenvoudig datum parameters te filteren voordat u downloadt.
+Importeer de benodigde pakketten. Het open gegevens sets pakket bevat een klasse die elke gegevens bron vertegenwoordigt (`NycTlcGreen` bijvoorbeeld) om eenvoudig datum parameters te filteren voordat u downloadt.
 
 ```python
 from azureml.opendatasets import NycTlcGreen
@@ -50,7 +51,7 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 ```
 
-Maak eerst een data frame om de taxi gegevens te bewaren. Als u in een niet-Spark-omgeving werkt, kunt u met data sets alleen één maand aan gegevens tegelijk downloaden met bepaalde klassen `MemoryError` om te voor komen dat er grote gegevens sets zijn.
+Maak eerst een data frame om de taxi gegevens te bewaren. Als u in een niet-Spark-omgeving werkt, kunt u met data sets alleen één maand aan gegevens tegelijk met bepaalde klassen downloaden om `MemoryError` met grote gegevens sets te voor komen.
 
 Voor het downloaden van taxi gegevens, wordt een maand tegelijk opgehaald en voordat deze wordt toegevoegd aan `green_taxi_df` wille keurige 2.000 records van elke maand om te voor komen dat de data frame wordt gepipetteerd. Bekijk een voor beeld van de gegevens.
 
@@ -96,7 +97,7 @@ green_taxi_df.head(10)
       <th>...</th>
       <th>paymentType</th>
       <th>fareAmount</th>
-      <th>kent</th>
+      <th>Kent</th>
       <th>mtaTax</th>
       <th>improvementSurcharge</th>
       <th>tipAmount</th>
@@ -145,7 +146,7 @@ green_taxi_df.head(10)
       <td>-73,96</td>
       <td>...</td>
       <td>2</td>
-      <td>4.50</td>
+      <td>4,50</td>
       <td>1,00</td>
       <td>0,50</td>
       <td>0,3</td>
@@ -353,7 +354,7 @@ green_taxi_df.head(10)
 </div>
 
 
-Nu de initiële gegevens zijn geladen, definieert u een functie voor het maken van verschillende op tijd gebaseerde functies uit het veld Datum/tijd ophalen. Hiermee maakt u nieuwe velden voor het maand nummer, de dag van de maand, de dag van de week en het uur van de dag, waarna het model kan worden gefactord op basis van de op tijd gebaseerde seizoensgebondenheid. Gebruik de `apply()` functie op de data frame om iteratieve `build_time_features()` functie toe te passen op elke rij in de taxi gegevens.
+Nu de initiële gegevens zijn geladen, definieert u een functie voor het maken van verschillende op tijd gebaseerde functies uit het veld Datum/tijd ophalen. Hiermee maakt u nieuwe velden voor het maand nummer, de dag van de maand, de dag van de week en het uur van de dag, waarna het model kan worden gefactord op basis van de op tijd gebaseerde seizoensgebondenheid. Gebruik de functie `apply()` op de data frame om iteratief de `build_time_features()` functie toe te passen op elke rij in de taxi gegevens.
 
 ```python
 def build_time_features(vector):
@@ -668,7 +669,7 @@ green_taxi_df.head(5)
 
 ### <a name="cleanse-data"></a>Gegevens opschonen
 
-Voer de `describe()` functie uit op de nieuwe data frame om samenvattings statistieken voor elk veld weer te geven.
+Voer de `describe()` functie uit op het nieuwe data frame om samenvattings statistieken voor elk veld weer te geven.
 
 ```python
 green_taxi_df.describe()
@@ -720,7 +721,7 @@ green_taxi_df.describe()
       <td>48000,00</td>
     </tr>
     <tr>
-      <th>gemiddelde</th>
+      <th>Greenwich</th>
       <td>1,78</td>
       <td>1,37</td>
       <td>2,87</td>
@@ -736,21 +737,21 @@ green_taxi_df.describe()
     </tr>
     <tr>
       <th>Std</th>
-      <td>0.41</td>
+      <td>0,41</td>
       <td>1,04</td>
       <td>2,93</td>
       <td>2,76</td>
       <td>1,52</td>
-      <td>2.61</td>
+      <td>2,61</td>
       <td>1,44</td>
       <td>12,08</td>
-      <td>3.45</td>
+      <td>3,45</td>
       <td>8,45</td>
       <td>1,95</td>
       <td>6,83</td>
     </tr>
     <tr>
-      <th>min</th>
+      <th>min.</th>
       <td>1,00</td>
       <td>0,00</td>
       <td>0,00</td>
@@ -774,7 +775,7 @@ green_taxi_df.describe()
       <td>-73,97</td>
       <td>40,70</td>
       <td>7,80</td>
-      <td>3.75</td>
+      <td>3,75</td>
       <td>8,00</td>
       <td>2,00</td>
       <td>9,00</td>
@@ -810,7 +811,7 @@ green_taxi_df.describe()
       <td>19,00</td>
     </tr>
     <tr>
-      <th>max</th>
+      <th>aantal</th>
       <td>2,00</td>
       <td>9,00</td>
       <td>97,57</td>
@@ -831,9 +832,9 @@ green_taxi_df.describe()
 
 Vanuit de samenvattings statistieken ziet u dat er verschillende velden zijn met uitbijters of waarden waardoor de nauw keurigheid van het model wordt verminderd. Filter eerst of de velden lat/long binnen de grenzen van het gebied Manhattan. Zo kunt u de langere taxi-reizen of-reizen die uitschieters afwegen tegen hun relatie met andere functies filteren.
 
-U kunt het `tripDistance` veld ook filteren op een waarde groter dan nul, maar kleiner dan 31 mijl (de haversine-afstand tussen de twee lat/long-paren). Dit elimineert lange uitschieter-reizen met inconsistente reis kosten.
+U kunt het `tripDistance` veld ook filteren op een waarde groter dan nul, maar kleiner dan 31 mijl (de haversine afstand tussen de twee lat/long-paren). Dit elimineert lange uitschieter-reizen met inconsistente reis kosten.
 
-Ten slotte heeft `totalAmount` het veld negatieve waarden voor de taxi tarieven, wat niet zinvol is in de context van ons model en het `passengerCount` veld bevat ongeldige gegevens met de minimum waarden nul.
+Ten slotte heeft het veld `totalAmount` negatieve waarden voor de taxi tarieven, die niet zinvol zijn in de context van ons model en de `passengerCount` veld bevat ongeldige gegevens, waarbij de minimum waarden nul zijn.
 
 Filter deze afwijkingen met behulp van query functies en verwijder vervolgens de laatste paar kolommen die niet nodig zijn voor de training.
 
@@ -849,7 +850,7 @@ for col in columns_to_remove_for_training:
     final_df.pop(col)
 ```
 
-Roep `describe()` opnieuw aan met de gegevens om te controleren of het goed is gereinigd. U hebt nu een voor bereide en gereinigde set met gegevens over de taxi, feestdag en weers Taan die u voor machine learning model training kunt gebruiken.
+Roep `describe()` opnieuw aan op de gegevens om te controleren of het goed is gereinigd. U hebt nu een voor bereide en gereinigde set met gegevens over de taxi, feestdag en weers Taan die u voor machine learning model training kunt gebruiken.
 
 ```python
 final_df.describe()
@@ -857,7 +858,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Werkruimte configureren
 
-Maak een werkruimte-object van de bestaande werkruimte. Een [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is een klasse die uw Azure-abonnement en resource gegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden. `Workspace.from_config()`leest het bestand **config. json** en laadt de verificatie gegevens in een object `ws`met de naam. `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
+Maak een werkruimte-object van de bestaande werkruimte. Een [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is een klasse die uw Azure-abonnement en resource gegevens accepteert. Hier wordt ook een cloudresource gemaakt om de uitvoeringen van uw model te controleren en bij te houden. `Workspace.from_config()` leest het bestand **config. json** en laadt de verificatie gegevens in een object met de naam `ws`. `ws` wordt gebruikt in de rest van de code in deze zelfstudie.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -866,9 +867,9 @@ ws = Workspace.from_config()
 
 ## <a name="split-the-data-into-train-and-test-sets"></a>Gegevens splitsen in sets voor trainen en voor testen
 
-Splits de gegevens in trainings-en test sets met `train_test_split` behulp van `scikit-learn` de functie in de-bibliotheek. Met deze functie worden de gegevens gescheiden in de x (**onderdelen**) gegevensset voor model training en de y (**waarden voor voors pellen**) gegevensset voor het testen.
+Splits de gegevens in trainings-en test sets met behulp van de functie `train_test_split` in de `scikit-learn`-bibliotheek. Met deze functie worden de gegevens gescheiden in de x (**onderdelen**) gegevensset voor model training en de y (**waarden voor voors pellen**) gegevensset voor het testen.
 
-Met de parameter `test_size` wordt het percentage gegevens bepaald dat moet worden toegewezen aan testen. Met `random_state` de para meter wordt een Seed ingesteld op de wille keurige generator, zodat de splitsingen van uw Train tests deterministisch zijn.
+Met de parameter `test_size` wordt het percentage gegevens bepaald dat moet worden toegewezen aan testen. Met de para meter `random_state` wordt een Seed ingesteld op de wille keurige generator, zodat de splitsingen van uw Train tests deterministisch zijn.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -891,14 +892,15 @@ Als u automatisch een model wilt trainen, voert u de volgende stappen uit:
 
 ### <a name="define-training-settings"></a>Trainings instellingen definiëren
 
-Definieer de para meter voor het experiment en de model instellingen voor training. Bekijk de volledige lijst met [instellingen](how-to-configure-auto-train.md). Het verzenden van het experiment met deze standaard instellingen duurt ongeveer 5-10 minuten, maar als u een kortere uitvoerings tijd wilt, `iterations` moet u de para meter verlagen.
+Definieer de para meter voor het experiment en de model instellingen voor training. Bekijk de volledige lijst met [instellingen](how-to-configure-auto-train.md). Het verzenden van het experiment met deze standaard instellingen duurt ongeveer 5-20 minuten, maar als u een kortere uitvoerings tijd wilt, vermindert u de `experiment_timeout_minutes`-para meter.
 
-|Eigenschap| Waarde in deze zelfstudie |Description|
+|Eigenschap| Waarde in deze zelfstudie |Beschrijving|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Tijdslimiet in minuten voor elke iteratie. Verklein deze waarde als u de totale uitvoeringstijd wilt verminderen.|
-|**iterations**|20|Aantal iteraties. Bij elke iteratie wordt een nieuw Machine Learning-model getraind met uw gegevens. Dit is de primaire waarde die van invloed is op de totale uitvoeringstijd.|
+|**experiment_timeout_minutes**|20|Maximale tijds duur in minuten dat alle iteraties worden gecombineerd voordat het experiment wordt beëindigd.|
+|**enable_early_stopping**|True|Markeer om vroege beëindiging te enble als de score niet op de korte termijn wordt verbeterd.|
 |**primary_metric**| spearman_correlation | De metrische gegevens die u wilt optimaliseren. Het optimale model wordt gekozen op basis van deze metrische waarde.|
-|**preprocess**| Waar | Gebruik **True** voor de voorverwerking van de invoergegevens van het experiment (afhandeling van ontbrekende gegevens, conversie van tekst naar numerieke waarden, enzovoort).|
+|**parametrisatie**| Auto | Door **auto**te gebruiken, kan het experiment de invoer gegevens voorverwerken (waarbij ontbrekende gegevens worden verwerkt, tekst naar numerieke waarde worden geconverteerd, enzovoort).|
 |**uitgebreidheid**| logging.INFO | Hiermee bepaalt u het niveau van logboekregistratie.|
 |**n_cross_validations**|5|Aantal kruisvalidaties dat moet worden uitgevoerd wanneer er geen validatiegegevens worden opgegeven.|
 
@@ -907,15 +909,16 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "iterations": 20,
+    "experiment_timeout_minutes": 20,
+    "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
-    "preprocess": True,
+    "featurization": 'auto',
     "verbosity": logging.INFO,
     "n_cross_validations": 5
 }
 ```
 
-Gebruik uw gedefinieerde trainings instellingen als een `**kwargs` para meter voor `AutoMLConfig` een object. Geef uw trainingsgegevens en het type model op. In dat geval is dat `regression`.
+Gebruik uw gedefinieerde trainings instellingen als een `**kwargs` para meter voor een `AutoMLConfig`-object. Geef uw trainingsgegevens en het type model op. In dat geval is dat `regression`.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -932,7 +935,7 @@ automl_config = AutoMLConfig(task='regression',
 
 ### <a name="train-the-automatic-regression-model"></a>Het automatische regressiemodel trainen
 
-Maak een experiment object in uw werk ruimte. Een experiment fungeert als een container voor uw afzonderlijke uitvoeringen. Geef het gedefinieerde `automl_config` object door aan het experiment en stel de uitvoer in `True` om de voortgang tijdens de uitvoering weer te geven.
+Maak een experiment object in uw werk ruimte. Een experiment fungeert als een container voor uw afzonderlijke uitvoeringen. Geef het gedefinieerde `automl_config` object door aan het experiment en stel de uitvoer in op `True` om de voortgang tijdens de uitvoering weer te geven.
 
 Na het starten van het experiment, worden de uitvoer weer gegeven als de proef versies. Voor elke iteratie ziet u het modeltype, de uitvoeringsduur en de nauwkeurigheid van de training. In het veld `BEST` wordt de beste trainingsscore op basis van uw type metrische waarde bijgehouden.
 
@@ -995,7 +998,7 @@ RunDetails(local_run).show()
 
 ### <a name="retrieve-the-best-model"></a>Het beste model ophalen
 
-Selecteer het beste model in uw iteraties. De `get_output` functie retourneert de beste uitvoering en het model dat voor het laatst aan de aanroep is aangepast. Door de Overloads op op `get_output`te gebruiken, kunt u het beste uitvoeren en het geschikte model voor elke vastgelegde metriek of een bepaalde herhaling ophalen.
+Selecteer het beste model in uw iteraties. De functie `get_output` retourneert de beste uitvoering en het model van de voor keur voor de laatste aanpassing. Door de Overloads op `get_output`te gebruiken, kunt u het beste uitvoeren en het geschikte model voor elke vastgelegde metriek of een bepaalde herhaling ophalen.
 
 ```python
 best_run, fitted_model = local_run.get_output()
@@ -1005,7 +1008,7 @@ print(fitted_model)
 
 ### <a name="test-the-best-model-accuracy"></a>Nauwkeurigheid van het beste model testen
 
-Gebruik het beste model om voor spellingen uit te voeren op de test gegevens die zijn ingesteld om de taxi tarieven te voors pellen. De functie `predict` maakt gebruik van het beste model en voor spelt de waarden voor y, **reis kosten**en `x_test` de gegevensset. Druk de eerste 10 voorspelde kostenwaarden uit `y_predict` af.
+Gebruik het beste model om voor spellingen uit te voeren op de test gegevens die zijn ingesteld om de taxi tarieven te voors pellen. De functie `predict` gebruikt het beste model en voor spelt de waarden voor y, **reis kosten**, uit de gegevensset van `x_test`. Druk de eerste 10 voorspelde kostenwaarden uit `y_predict` af.
 
 ```python
 y_predict = fitted_model.predict(x_test.values)
@@ -1023,7 +1026,7 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Voer de volgende code uit om de gemiddelde absolute percentage fout (MAPE) te berekenen met `y_actual` behulp van de volledige en `y_predict` gegevens sets. Met deze statistiek wordt een absoluut verschil tussen elke voorspelde en werkelijke waarde berekent en worden alle verschillen opgeteld. Vervolgens wordt deze som als een percentage van het totaal van de werkelijke waarden.
+Voer de volgende code uit om de gemiddelde absolute percentage fout (MAPE) te berekenen met behulp van de volledige `y_actual` en `y_predict` gegevens sets. Met deze statistiek wordt een absoluut verschil tussen elke voorspelde en werkelijke waarde berekent en worden alle verschillen opgeteld. Vervolgens wordt deze som als een percentage van het totaal van de werkelijke waarden.
 
 ```python
 sum_actuals = sum_errors = 0
@@ -1053,20 +1056,15 @@ print(1 - mean_abs_percent_error)
 
 Uit de twee nauw keurige meet gegevens voor de voor spellingen ziet u dat het model redelijk goed is bij het voors pellen van de taxi tarieven van de functies van de gegevensset, doorgaans binnen +-$4,00 en ongeveer 15% fout.
 
-De traditionele machine learning-model ontwikkelingsproces is zeer resource-intensieve en aanzienlijke domein kennis en het tijdstip investering uitvoeren en vergelijk de resultaten van tientallen modellen vereist. Geautomatiseerde machine learning is een uitstekende manier om in korte tijd veel verschillende modellen voor uw scenario te testen.
+In het traditionele ontwikkelingsproces voor een Machine Learning-model vergt het veel resourcecapaciteit, domeinkennis en tijd om verschillende modellen uit te voeren en de resultaten daarvan met elkaar te vergelijken. Geautomatiseerde machine learning is een uitstekende manier om in korte tijd veel verschillende modellen voor uw scenario te testen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Voltooi deze sectie niet als u van plan bent andere Azure Machine Learning zelf studies uit te voeren.
 
-### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
+### <a name="stop-the-compute-instance"></a>Het reken exemplaar stoppen
 
-Als u een Cloud notebook server hebt gebruikt, stopt u de virtuele machine wanneer u deze niet gebruikt om de kosten te verlagen.
-
-1. Selecteer in uw werk ruimte de optie **laptop vm's**.
-1. Selecteer de VM in de lijst.
-1. Selecteer **stoppen**.
-1. Wanneer u klaar bent om de server opnieuw te gebruiken, selecteert u **starten**.
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>Alles verwijderen
 

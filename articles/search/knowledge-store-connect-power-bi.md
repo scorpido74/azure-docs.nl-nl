@@ -8,27 +8,30 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790074"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485149"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Verbinding maken met een kennis archief met Power BI
 
 > [!Note]
-> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De [Azure Cognitive Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
+> Het kennis archief is in Preview en mag niet worden gebruikt in de productie omgeving. De portal en [Search rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
-In dit artikel leert u hoe u verbinding maakt en een kennis archief kunt verkennen met behulp van Power Query in de Power BI Desktop-app. Zie [een kennis archief maken in azure Portal](knowledge-store-create-portal.md)voor het maken van het voor beeld van het kennis archief dat in dit scenario wordt gebruikt.
+
+In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe u deze kunt verkennen met behulp van Power Query in de Power BI Desktop-app. U kunt sneller aan de slag met sjablonen of een aangepast dash board maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Volg de stappen in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md) om het voor beeld van het kennis archief te maken dat wordt gebruikt in dit overzicht. U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
-
 + [Power BI Desktop installeren](https://powerbi.microsoft.com/downloads/)
 
-## <a name="connect-with-power-bi"></a>Verbinden met Power BI
++ U hebt een kennis archief nodig met een projectie in azure Table Storage. U hebt ook de naam nodig van het Azure Storage-account dat wordt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
+
+Als u wilt werken met een voor beeld van een Knowledge Store, volgt u de instructies voor het [maken van een kennis archief](knowledge-store-create-portal.md).
+
+## <a name="create-a-custom-report"></a>Een aangepast rapport maken
 
 1. Start Power BI Desktop en klik op **gegevens ophalen**.
 

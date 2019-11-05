@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Azure SQL Database doorzoeken met de queryeditor | Microsoft Docs'
+title: 'Azure-portal: Azure SQL Database doorzoeken met de queryeditor | Microsoft Docs'
 description: Leer hoe u verbinding maakt met SQL Database in Azure Portal door gebruik te maken van de SQL-queryeditor. Voer daarna Transact-SQL-instructies (T-SQL) uit om query's uit te voeren voor gegevens en om gegevens te bewerken.
 keywords: verbinding maken met sql database, azure portal, portal, queryeditor
 services: sql-database
@@ -11,15 +11,15 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/28/2019
-ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/24/2019
+ms.openlocfilehash: 433f2a190cf24a7e59dcd1d5a5aba0d3aa4e8588
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569172"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492185"
 ---
-# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Snelstartgids: Gebruik de SQL-queryeditor van Azure Portal om verbinding te maken en query's op gegevens uit te voeren
+# <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Quick Start: de SQL-query-editor van Azure Portal gebruiken om verbinding te maken en gegevens op te vragen
 
 De SQL-queryeditor is een browsertool in de Azure-portal die een eenvoudige manier biedt om SQL-query's uit te voeren op uw Azure SQL Database of Azure SQL Data Warehouse. In deze snelstart gebruikt u de query-editor om verbinding te maken met een SQL-database en vervolgens Transact-SQL-instructies uit te voeren om gegevens te zoeken, in te voegen, bij te werken en te verwijderen.
 
@@ -42,45 +42,51 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="sign-in-the-azure-portal"></a>Meld u aan bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="connect-using-sql-authentication"></a>Verbinding maken met behulp van SQL-verificatie
 
-1. Selecteer **SQL-databases** in het menu links en selecteer vervolgens **mySampleDatabase**.
+1. Ga naar de Azure Portal om verbinding te maken met een SQL database. Zoek en selecteer **SQL-data bases**.
 
-2. Zoek in het linkermenu **Query-editor (preview)** en selecteer deze optie. De pagina **Aanmelden** wordt weergegeven.
+    ![Ga naar SQL database lijst Azure Portal](./media/sql-database-connect-query-portal/search-for-sql-databases.png)
+
+2. Selecteer uw SQL database.
+
+    ![Selecteer een SQL database, Azure Portal](./media/sql-database-connect-query-portal/select-a-sql-database.png)
+
+3. Selecteer in het menu **SQL database** de optie **query-editor (preview)** .
 
     ![queryeditor zoeken](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. Selecteer in de vervolgkeuzelijst **Autorisatietype** de optie **SQL Server-verificatie** en voer de gebruikersnaam en het wachtwoord van het serverbeheerdersaccount in dat wordt gebruikt om de database te maken.
+4. Op de **aanmeldings** pagina, onder het label **SQL Server-verificatie** , voert u de **aanmeldings** -id en het **wacht woord** in van het Server beheerders account dat is gebruikt voor het maken van de data base. Selecteer vervolgens **OK**.
 
     ![aanmelden](./media/sql-database-connect-query-portal/login-menu.png)
 
-4. Selecteer **OK**.
-
-
 ## <a name="connect-using-azure-active-directory"></a>Verbinding maken met Azure Active Directory
 
-Als u een Active Directory-beheerder (AD) instelt, kunt u gebruikmaken van één identiteit om u aan te melden bij Azure Portal en uw SQL-database. Volg de onderstaande stappen om een AD-beheerder te configureren voor uw SQL Server.
+Als u een Azure Active Directory-beheerder (Azure AD) configureert, kunt u een enkele identiteit gebruiken om u aan te melden bij de Azure Portal en uw SQL database. Volg de onderstaande stappen om een Azure AD-beheerder voor uw SQL-Server te configureren.
 
 > [!NOTE]
-> * E-mailaccounts (bijvoorbeeld outlook.com, gmail.com, yahoo.com, enzovoort) worden nog niet ondersteund als AD-beheerders. Kies een gebruiker die ofwel systeemeigen is gemaakt in de Azure AD ofwel federatief in Azure AD.
+> * E-mail accounts (bijvoorbeeld outlook.com, gmail.com, yahoo.com enzovoort) worden nog niet ondersteund als Azure AD-Administrators. Kies een gebruiker die ofwel systeemeigen is gemaakt in de Azure AD ofwel federatief in Azure AD.
 > * Azure AD-beheerdersaanmelding werkt niet met accounts waarvoor tweeledige verificatie is ingeschakeld.
 
-1. Selecteer **Alle resources** in het menu links en selecteer vervolgens uw SQL Server.
+1. Selecteer **alle resources**in het menu Azure portal of op de **Start** pagina.
 
-2. Selecteer in het menu **Instellingen** van uw SQL Server de optie **Active Directory-beheerder**.
+2. Selecteer uw SQL-Server.
 
-3. Selecteer op de werkbalk van de AD-beheerderspagina de optie **Beheerder instellen** en kies de gebruiker of groep als uw AD-beheerder.
+3. Selecteer in het menu **SQL Server** onder **instellingen**de optie **Active Directory beheerder**.
+
+4. Selecteer in de werk balk SQL Server **Active Directory-beheer** pagina de optie **beheerder instellen** en kies de gebruiker of groep als uw Azure AD-beheerder.
 
     ![active directory selecteren](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. Selecteer **Opslaan** op de werkbalk van de AD-beheerderspagina.
+5. Voer op de pagina **beheer toevoegen** in het zoekvak een gebruiker of groep in die u wilt zoeken, Selecteer deze als beheerder en klik vervolgens op de knop **selecteren** .
 
-5. Navigeer naar de database **mySampleDatabase** en selecteer in het menu links **Query-editor (preview)** . De pagina **Aanmelden** wordt weergegeven. Als u een AD-beheerder bent, wordt aan de rechterkant, onder **Active Directory: eenmalige aanmelding** een bericht weergegeven met de mededeling dat u bent aangemeld.
+6. Selecteer in de werk balk van de SQL Server **Active Directory-beheer** pagina de optie **Opslaan**.
 
-6. Selecteer **OK**.
+7. Selecteer **SQL-data bases**in het menu **SQL Server** en selecteer vervolgens uw SQL database.
 
+8. Selecteer in het menu **SQL database** de optie **query-editor (preview)** . Op de **aanmeldings** pagina onder het label **Active Directory verificatie** wordt een bericht weer gegeven met de melding dat u bent aangemeld als u een Azure AD-beheerder bent. Selecteer vervolgens de knop **door gaan als** *\<uw gebruiker of groeps-id >* .
 
 ## <a name="view-data"></a>Gegevens weergeven
 
@@ -95,16 +101,16 @@ Als u een Active Directory-beheerder (AD) instelt, kunt u gebruikmaken van één
 
 2. Selecteer op de werkbalk de optie **Uitvoeren** en bekijk de uitvoer in het deelvenster **Resultaten**.
 
-![resultaten queryeditor](./media/sql-database-connect-query-portal/query-editor-results.png)
+   ![resultaten queryeditor](./media/sql-database-connect-query-portal/query-editor-results.png)
 
 ## <a name="insert-data"></a>Gegevens invoegen
 
 Voer de volgende Transact-SQL [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-instructie uit om een nieuw product toe te voegen in de tabel `SalesLT.Product`.
 
-1. Vervang de vorige query door deze.
+1. Vervang de vorige query door de volgende.
 
-   ```sql
-   INSERT INTO [SalesLT].[Product]
+    ```sql
+    INSERT INTO [SalesLT].[Product]
            ( [Name]
            , [ProductNumber]
            , [Color]
@@ -113,7 +119,7 @@ Voer de volgende Transact-SQL [INSERT](https://msdn.microsoft.com/library/ms1743
            , [ListPrice]
            , [SellStartDate]
            )
-     VALUES
+    VALUES
            ('myNewProduct'
            ,123456789
            ,'NewColor'
@@ -124,14 +130,14 @@ Voer de volgende Transact-SQL [INSERT](https://msdn.microsoft.com/library/ms1743
    ```
 
 
-2. Selecteer **Uitvoeren** om een nieuwe rij in te voegen in de tabel `Product`. Het deelvenster **Berichten** toont **Query voltooid: Betroffen rijen: 1**.
+2. Selecteer **Uitvoeren** om een nieuwe rij in te voegen in de tabel `Product`. In het deel venster **berichten** worden de **query geslaagd weer gegeven: betrokken rijen: 1**.
 
 
 ## <a name="update-data"></a>Gegevens bijwerken
 
 Voer de volgende Transact-SQL [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-instructie uit om uw nieuwe product te wijzigen.
 
-1. Vervang de vorige query door deze.
+1. Vervang de vorige query door de volgende.
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -139,20 +145,20 @@ Voer de volgende Transact-SQL [UPDATE](https://msdn.microsoft.com/library/ms1775
    WHERE Name = 'myNewProduct';
    ```
 
-2. Selecteer **Uitvoeren** om de opgegeven rij in de tabel `Product` bij te werken. Het deelvenster **Berichten** toont **Query voltooid: Betroffen rijen: 1**.
+2. Selecteer **Uitvoeren** om de opgegeven rij in de tabel `Product` bij te werken. In het deel venster **berichten** worden de **query geslaagd weer gegeven: betrokken rijen: 1**.
 
 ## <a name="delete-data"></a>Gegevens verwijderen
 
 Gebruik de volgende Transact-SQL [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-instructie om uw nieuwe product te verwijderen.
 
-1. Vervang de vorige query door deze:
+1. Vervang de vorige query door de volgende:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Selecteer **Uitvoeren** om de opgegeven rij in de tabel `Product` te verwijderen. Het deelvenster **Berichten** toont **Query voltooid: Betroffen rijen: 1**.
+2. Selecteer **Uitvoeren** om de opgegeven rij in de tabel `Product` te verwijderen. In het deel venster **berichten** worden de **query geslaagd weer gegeven: betrokken rijen: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Overwegingen met betrekking tot de queryeditor

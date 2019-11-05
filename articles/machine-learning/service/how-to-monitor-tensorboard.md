@@ -9,23 +9,24 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: 0908ca232ee38e2b0d461aa9f597558adc4461ef
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
-ms.translationtype: MT
+ms.openlocfilehash: a45548d3698d28a0189be4f46c26e418da8c91ef
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489639"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Experimentele uitvoeringen en metrische gegevens visualiseren met TensorBoard en Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u de uitvoeringen van uw experiment en metrische gegevens in TensorBoard kunt weer geven met behulp van [het `tensorboard` pakket](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) in de belangrijkste Azure machine learning-SDK. Wanneer u de experimentele uitvoeringen hebt geïnspecteerd, kunt u uw machine learning modellen beter afstemmen en opnieuw trainen.
+In dit artikel leert u hoe u de uitvoeringen van uw experiment en metrische gegevens in TensorBoard kunt weer geven met behulp van [het `tensorboard`-pakket](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) in de hoofd Azure machine learning-SDK. Wanneer u de experimentele uitvoeringen hebt geïnspecteerd, kunt u uw machine learning modellen beter afstemmen en opnieuw trainen.
 
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) is een suite van webtoepassingen voor het inspecteren en leren van uw experiment structuur en prestaties.
 
 Hoe u TensorBoard start met Azure Machine Learning experimenten is afhankelijk van het type experiment:
 + Als uw experiment systeem eigen logboek bestanden uitvoert die kunnen worden gebruikt door TensorBoard, zoals PyTorch, Chainer en tensor flow experimenten, kunt u [TensorBoard rechtstreeks](#direct) vanuit de uitvoerings geschiedenis van het experiment starten. 
 
-+ Voor experimenten waarbij geen systeem eigen TensorBoard kan worden uitgevoerd, zoals Scikit-leren of Azure machine learning experimenten, gebruikt u [de `export_to_tensorboard()` methode](#export) om de run-runs te exporteren als TensorBoard-logboeken en TensorBoard van daaruit te starten. 
++ Voor experimenten waarbij geen systeem eigen uitvoer bare TensorBoard-bestanden worden uitgevoerd, zoals Scikit-leer-of Azure Machine Learning experimenten, gebruikt u [de methode `export_to_tensorboard()`](#export) om de run-runs te exporteren als TensorBoard-logboeken en TensorBoard van daaruit te starten. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,9 +34,9 @@ Hoe u TensorBoard start met Azure Machine Learning experimenten is afhankelijk v
 
 * De code in deze procedure kan worden uitgevoerd in een van de volgende omgevingen: 
 
-    * Azure Machine Learning-notebook-VM-geen down loads of installatie vereist
+    * Azure Machine Learning Compute-instantie-geen down loads of installatie vereist
 
-        * U moet de [Zelfstudie: Omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) instellen voor het maken van een toegewezen notebook server vooraf geladen met de SDK en de voor beeld-opslag plaats.
+        * Voltooi de [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken vooraf geladen met de SDK en de voor beeld-opslag plaats.
 
         * In de map met voor beelden op de notebook server zoekt u twee voltooide en uitgevouwen notitie blokken door te navigeren naar deze map: **How-to-use-azureml > training-met-diepe**training.
         * exporteren-uitvoeren-geschiedenis-naar-uit-geschiedenis. ipynb
@@ -47,9 +48,9 @@ Hoe u TensorBoard start met Azure Machine Learning experimenten is afhankelijk v
           * [Maak een configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
-## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Optie 1: Uitvoerings geschiedenis rechtstreeks weer geven in TensorBoard
+## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Optie 1: uitvoerings geschiedenis rechtstreeks weer geven in TensorBoard
 
-Deze optie werkt voor experimenten waarbij logboek bestanden met de eigen TensorBoard worden uitgevoerd, zoals PyTorch, Chainer en tensor flow experimenten. Als dat niet het geval is, gebruikt u [de `export_to_tensorboard()` methode](#export) in plaats daarvan.
+Deze optie werkt voor experimenten waarbij logboek bestanden met de eigen TensorBoard worden uitgevoerd, zoals PyTorch, Chainer en tensor flow experimenten. Als dat niet het geval is, gebruikt u in plaats daarvan [de `export_to_tensorboard()` methode](#export) .
 
 De volgende voorbeeld code maakt gebruik van het [MNIST-demo experiment](https://raw.githubusercontent.com/tensorflow/tensorflow/r1.8/tensorflow/examples/tutorials/mnist/mnist_with_summaries.py) van de opslag plaats van tensor flow in een extern Compute-doel Azure machine learning compute. We trainen ons model met de aangepaste [tensor flow-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)van de SDK en starten vervolgens TensorBoard op basis van dit tensor flow experiment, dat wil zeggen, een experiment waarbij TensorBoard-gebeurtenis bestanden systeem eigen worden uitgevoerd.
 
@@ -81,9 +82,9 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-In het MNIST-code bestand, mnist_with_summaries. py, ziet u dat er regels zijn die `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` enzovoort aanroepen. Deze methoden groeperen, registreren en labelen de metrische gegevens van uw experimenten in uitvoerings geschiedenis. De `tf.summary.FileWriter()` is vooral belang rijk omdat deze gegevens uit de metrische experimentele meet waarden serialeert, waardoor TensorBoard er visualisaties uit kan genereren.
+In het MNIST-code bestand, mnist_with_summaries. py, ziet u dat er regels zijn die `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` enzovoort aanroepen. Deze methoden groeperen, registreren en labelen de metrische gegevens van uw experimenten in uitvoerings geschiedenis. De `tf.summary.FileWriter()` is met name belang rijk omdat de gegevens worden geserialiseerd in de metrische waarden van uw vastgelegde experiment, waardoor TensorBoard er visualisaties uit kan genereren.
 
- ### <a name="configure-experiment"></a>Configureren van experiment
+ ### <a name="configure-experiment"></a>Experiment configureren
 
 In het volgende worden we het experiment geconfigureerd en mappen voor logboeken en gegevens ingesteld. Deze logboeken worden geüpload naar de artefact service, waar TensorBoard later toegang toe hebt.
 
@@ -160,7 +161,7 @@ run = exp.submit(tf_estimator)
 
 ### <a name="launch-tensorboard"></a>TensorBoard starten
 
-U kunt TensorBoard starten tijdens het uitvoeren of nadat het is voltooid. In het volgende voor beeld maken we een exemplaar van het `tb`TensorBoard-object, dat de geschiedenis van de experimentele `run`uitvoering in de heeft geladen en vervolgens `start()` TensorBoard start met de-methode. 
+U kunt TensorBoard starten tijdens het uitvoeren of nadat het is voltooid. In het volgende voor beeld maken we een exemplaar van het TensorBoard-object, `tb`, dat de geschiedenis van het experiment wordt geladen in de `run`, waarna TensorBoard wordt gestart met de methode `start()`. 
   
 De [TensorBoard-constructor](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py) neemt een matrix van uitvoeringen, dus zorg ervoor dat u deze in als een matrix met één element doorgeeft.
 
@@ -178,13 +179,13 @@ tb.stop()
 
 <a name="export"></a>
 
-## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>Optie 2: Geschiedenis exporteren als weer te geven logboek in TensorBoard
+## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>Optie 2: Geschiedenis exporteren als logboek om weer te geven in TensorBoard
 
 Met de volgende code wordt een voor beeld van een experiment ingesteld, wordt het logboek registratie gestart met behulp van de Api's van de Azure Machine Learning-uitvoerings geschiedenis en wordt de geschiedenis van het experiment uitgevoerd naar logboeken die kunnen worden gebruikt door TensorBoard voor visualisatie. 
 
 ### <a name="set-up-experiment"></a>Experiment instellen
 
-Met de volgende code wordt een nieuw experiment ingesteld en wordt de map `root_run`run met een naam gemaakt. 
+Met de volgende code wordt een nieuw experiment ingesteld en wordt de `root_run`voor het uitvoeren van de Directory een naam. 
 
 ```python
 from azureml.core import Workspace, Experiment
@@ -215,7 +216,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>Experiment-en logboek metrieken uitvoeren
 
-Voor deze code trainen we een lineair regressie model en de metrische gegevens van de sleutel, de Alfa coëfficiënt `alpha` en de gemiddelde `mse`fout, in de uitvoerings geschiedenis.
+Voor deze code trainen we een lineair regressie model en de metrische gegevens van een logboek sleutel, de Alfa coëfficiënt, `alpha` en het kwadraat van de fout, `mse`, in uitvoerings geschiedenis.
 
 ```Python
 from tqdm import tqdm
@@ -241,7 +242,7 @@ for alpha in tqdm(alphas):
 
 Met de [export_to_tensorboard ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.export?view=azure-ml-py) -methode van de SDK kunt u de uitvoerings geschiedenis van onze Azure machine learning-experiment exporteren naar tensorboard-logboeken, zodat we deze kunnen bekijken via tensorboard.  
 
-In de volgende code maken we de map `logdir` in de huidige werkmap. In deze map worden de geschiedenis en logboeken van `root_run` de experimentele uitvoering geëxporteerd en vervolgens gemarkeerd als voltooid. 
+In de volgende code maken we de map `logdir` in onze huidige werkmap. In deze map worden onze experimentele uitvoerings geschiedenis en logboeken van `root_run` geëxporteerd en wordt de uitvoering als voltooid gemarkeerd. 
 
 ```Python
 from azureml.tensorboard.export import export_to_tensorboard
@@ -262,7 +263,7 @@ root_run.complete()
 ```
 
 >[!Note]
- U kunt ook een bepaalde uitvoering exporteren naar TensorBoard door de naam van de uitvoeringsrun op te geven`export_to_tensorboard(run_name, logdir)`
+ U kunt ook een bepaalde uitvoering exporteren naar TensorBoard door de naam van de run-`export_to_tensorboard(run_name, logdir)` op te geven
 
 ### <a name="start-and-stop-tensorboard"></a>TensorBoard starten en stoppen
 Zodra de uitvoerings geschiedenis van dit experiment is geëxporteerd, kunnen we TensorBoard starten met de methode [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) . 

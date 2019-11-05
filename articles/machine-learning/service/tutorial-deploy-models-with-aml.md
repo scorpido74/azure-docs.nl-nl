@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie over de classificatie van afbeeldingen: Modellen implementeren'
+title: 'Zelf studie voor installatie kopie classificatie: modellen implementeren'
 titleSuffix: Azure Machine Learning
 description: Deze zelf studie laat zien hoe u Azure Machine Learning kunt gebruiken om een installatie kopie-classificatie model te implementeren met scikit-Learn in een python Jupyter-notebook. Deze zelfstudie is deel 2 van een tweedelige reeks.
 services: machine-learning
@@ -10,14 +10,15 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 988f91d9ab644df4ecb375114abf4245440cbf13
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae657daca86c979495ca14d9df845e2a7a769e0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162532"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476158"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelfstudie: Een afbeeldingsclassificatiemodel implementeren in Azure Container Instances
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelf studie: een classificatie model voor een installatie kopie implementeren in Azure Container Instances
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Deze zelfstudie is **deel twee van een tweedelige reeks**. In de [vorige zelfstudie](tutorial-train-models-with-aml.md) hebt u Machine Learning-modellen getraind en vervolgens een model geregistreerd in uw werkruimte in de cloud.  
 
@@ -39,9 +40,15 @@ Container Instances is een uitstekende oplossing voor het testen en inzicht krij
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u het notebook wilt uitvoeren, moet u eerst het trainen van het model voltooien in [Zelfstudie (deel 1): Train een afbeeldings classificatie](tutorial-train-models-with-aml.md)model.   Open vervolgens het notebook **zelf studies/img-Classification-part2-Deploy. ipynb** met dezelfde notebook server.
+Als u het notitie blok wilt uitvoeren, voltooit u eerst de model training in [zelf studie (deel 1): een classificatie model voor een installatie kopie trainen](tutorial-train-models-with-aml.md).   Open vervolgens het notebook **IMG-classificatie-part2-Deploy. ipynb** in de map gekloonde **zelf studies** .
 
-Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u en `matplotlib` `scikit-learn` in uw omgeving hebt geïnstalleerd. 
+Deze zelf studie is ook beschikbaar op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) als u deze wilt gebruiken in uw eigen [lokale omgeving](how-to-configure-environment.md#local).  Zorg ervoor dat u `matplotlib` en `scikit-learn` hebt geïnstalleerd in uw omgeving. 
+
+> [!Important]
+> De rest van dit artikel bevat dezelfde inhoud als u ziet in het notitie blok.  
+>
+> Schakel nu over naar het Jupyter-notebook als u wilt lezen tijdens het uitvoeren van de code.
+> Als u één code-cel in een notitie blok wilt uitvoeren, klikt u op de cel code en drukt u op **SHIFT + ENTER**. U kunt ook het hele notitie blok uitvoeren door **alles uitvoeren** op de bovenste werk balk te kiezen.
 
 ## <a name="start"></a>Stel de omgeving in
 

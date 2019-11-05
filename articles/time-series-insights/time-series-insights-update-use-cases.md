@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed302b9c98cf5931afa745f5aab4611a54fedb60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989989"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492059"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights preview-cases gebruiken
 
@@ -60,17 +60,17 @@ Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Tim
 
     * Meer informatie over het delen van Url's en de nieuwe gebruikers interface vindt u [in visualiseren van gegevens in de Azure time series Insights preview Explorer](time-series-insights-update-explorer.md).
 
-- De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from`, `to`, `first` en `last`. Het bevat aggregaties en trans formaties zoals `average`, `min`, `max`, `split by`, `order by` en `DateHistogram`. Er zijn ook filter operatoren, zoals `has`, `in`, `and`, `or`, `greater than` en `REGEX`. Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. Gebruik ze om Homegrown-visualisaties te vullen om afwijkingen op te sporen.
+- De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from`, `to`, `first`en `last`. Het bevat aggregaties en trans formaties zoals `average`, `min`, `max`, `split by`, `order by`en `DateHistogram`. Er zijn ook filter operatoren, zoals `has`, `in`, `and`, `or`, `greater than`en `REGEX`. Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. Gebruik ze om Homegrown-visualisaties te vullen om afwijkingen op te sporen.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Operationele analyse en efficiëntere processen
 
 Gebruik Time Series Insights om de status, het gebruik en de prestaties van apparatuur op schaal te bewaken. Time Series Insights biedt een eenvoudige manier om de operationele efficiëntie te meten. Time Series Insights helpt bij het beheer van uiteenlopende en onvoorspelbare IoT-workloads, zonder de opname- en queryprestaties te verminderen.
 
-[Overzicht van![](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[Overzicht van ![](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streaming en doorlopende verwerking van gegevens die afkomstig zijn van operationele processen kunnen alle bedrijven omzetten als deze worden gecombineerd met de juiste technologie of oplossing. Vaak zijn deze oplossingen een combi natie van meerdere systemen. Ze maken het mogelijk om gegevens te verkennen en te analyseren die voortdurend worden gewijzigd, met name in de IoT-realm en een gemeen schappelijk patroon delen.
 
-Deze patronen beginnen vaak met IoT-platformen die miljarden gebeurtenissen van apparaten en Sens oren die verschillende land instellingen omvatten. Deze systemen verwerken en analyseren streaminggegevens om real-time inzichten en acties af te leiden. Gegevens worden doorgaans opgeslagen in warme en koude opslag voor bijna realtime-en batch analyse.
+Deze patronen beginnen vaak met IoT-platformen die miljarden gebeurtenissen van apparaten en Sens oren die verschillende land instellingen omvatten. Deze systemen verwerken en analyseren streaminggegevens om real-time inzichten en acties af te leiden. Gegevens worden meestal opgeslagen in warme en koude opslag voor bijna realtime-en batch analyse.
 
 Gegevens die worden verzameld, passeren een serie verwerkingen om deze op te schonen en waarmee voor downstream-query's en analyse scenario's. Azure biedt uitgebreide services die kunnen worden toegepast op IoT-scenario's zoals onderhoud en productie van activa. Deze services omvatten Time Series Insights, IoT Hub, Event Hubs, Azure Stream Analytics, Azure Functions, Azure Logic Apps, Azure Databricks, Azure Machine Learning en Power BI.
 
@@ -82,7 +82,7 @@ De oplossings architectuur kan op de volgende manier worden bereikt:
 
 Time Series Insights biedt een bijna realtime gegevens onderzoek en inzichten op basis van een activum via historische gegevens. Afhankelijk van de behoeften van uw bedrijf, kunnen MapReduce en Hive-taken worden uitgevoerd op gegevens die zijn opgeslagen in Time Series Insights door Time Series Insights te verbinden met Azure HDInsight. Gegevens die zijn opgeslagen in Time Series Insights, zijn beschikbaar voor Power BI en andere klant toepassingen via de Time Series Insights open bare Surface-query-Api's. Deze gegevens kunnen worden gebruikt voor uitgebreide bedrijfs-en operationele informatie scenario's.
 
-## <a name="advanced-analytics"></a>Advanced analytics
+## <a name="advanced-analytics"></a>Geavanceerde analyse
 
 Integreer met geavanceerde analyse services zoals Machine Learning en Azure Databricks. Time Series Insights ingresses onbewerkte gegevens van miljoenen apparaten. Het voegt contextuele gegevens toe die naadloos kunnen worden gebruikt door een suite van Azure Analytics Services.
 

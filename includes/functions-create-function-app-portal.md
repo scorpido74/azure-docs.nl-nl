@@ -8,22 +8,18 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3204387a8e0920d2a7196edbad229bf811a9ba0a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cd118def8b9caf97f26aaa5ad5dc1f6fb015316d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469238"
 ---
-1. Open de Azure Portal vanuit [https://portal.azure.com](https://portal.azure.com)
+1. Selecteer in het menu Azure Portal de optie **een resource maken**.
 
-1. Selecteer de knop **een resource maken**
+    ![Resource toevoegen met behulp van het menu Azure Portal](./media/functions-create-function-app-portal/create-function-app-resource.png)
 
-    ![Resource maken](./media/functions-create-function-app-portal/function-app-create-resource.png)
-
-1. Selecteer **reken** > **functie-app**.
-
-    ![Een functie-app maken in Azure Portal](./media/functions-create-function-app-portal/function-app-create-start.png)
+1. Selecteer op de pagina **Nieuw** de optie **reken** > **functie-app**.
 
 1. Gebruik voor de functie-app de instellingen die in de tabel onder de afbeelding zijn opgegeven.
 
@@ -34,7 +30,7 @@ ms.locfileid: "72958542"
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. |
     | **[Resourcegroep](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
     | **functie-app naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (niet hoofdletter gevoelig), `0-9`en `-`.  |
-    |**Publiceren**| Coderen | Optie voor het publiceren van code bestanden of een docker-container. |
+    |**Publiceren**| Code | Optie voor het publiceren van code bestanden of een docker-container. |
     | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET** voor C#- en F#-functies. |
     |**Regio**| Voorkeurs regio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
 
@@ -54,7 +50,7 @@ ms.locfileid: "72958542"
 
 1. Voer de volgende instellingen in voor bewaking.
 
-    ![Controleren](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
+    ![Bewaking](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |

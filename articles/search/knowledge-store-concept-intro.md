@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 82f8606f4b4201833667347d3ed16fdd73f70a36
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2e6d20a1eca7a6b3281e33d8534ab3456e79ccdf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790356"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485079"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Inleiding tot kennis winkels in azure Cognitive Search
 
@@ -21,7 +21,7 @@ ms.locfileid: "72790356"
 > Het kennis archief is een preview-versie en is niet bedoeld voor productie gebruik. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt deze functie. Er is op dit moment geen .NET SDK-ondersteuning.
 >
 
-Knowledge Store is een functie in azure Cognitive Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor latere analyses of andere downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van AI-processen. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. 
+Knowledge Store is een functie van Azure Cognitive Search die de uitvoer van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) persistent maakt voor latere analyses of andere downstream-verwerking. Een *verrijkt document* is de uitvoer van een pijp lijn, gemaakt op basis van inhoud die is geëxtraheerd, gestructureerd en geanalyseerd met behulp van AI-processen. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. 
 
 Als u in het verleden cognitieve vaardig heden hebt gebruikt met Azure Cognitive Search, weet u al dat *vaardig heden* een document verplaatst via een reeks verrijkingen. De uitkomst kan een zoek index zijn of (nieuw in deze preview) projecties in een kennis archief. De twee uitvoer, zoek index en kennis opslag, delen dezelfde inhoud, maar worden op zeer verschillende manieren opgeslagen en gebruikt.
 
@@ -29,13 +29,11 @@ Fysiek is een kennis archief [Azure Storage](https://docs.microsoft.com/azure/st
 
 ![Kennis archief in pijplijn diagram](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Kennis archief in pijplijn diagram")
 
-Projecties zijn uw mechanisme voor het structureren van gegevens in een kennis archief. In projecties kunt u bijvoorbeeld kiezen of de uitvoer wordt opgeslagen als één BLOB of een verzameling gerelateerde tabellen. 
-
 Als u het kennis archief wilt gebruiken, voegt u een `knowledgeStore`-element toe aan een vaardig heden die stapsgewijze bewerkingen in een indexerings pijplijn definieert. Tijdens de uitvoering maakt Azure Cognitive Search een ruimte in uw Azure Storage-account en projecteert de verrijkte documenten als blobs of in tabellen, afhankelijk van uw configuratie.
 
 ## <a name="benefits-of-knowledge-store"></a>Voor delen van kennis archief
 
-Een kennis archief biedt u de structuur, context en werkelijke inhoud-afgelezen van ongestructureerde en semi-gestructureerde gegevens bestanden zoals blobs, afbeeldings bestanden die een analyse hebben ondergaan of zelfs gestructureerde gegevens die in nieuwe formulieren worden omgezet. In een [Stapsgewijze](knowledge-store-howto.md) uitleg dat voor deze preview is geschreven, kunt u de eerste hand leiding zien hoe een dicht JSON-document is gepartitioneerd in substructuren, worden omgezet in nieuwe structuren en op andere wijze beschikbaar worden gesteld voor downstream-processen zoals machine Leer-en data wetenschappen-workloads.
+Een kennis archief biedt u de structuur, context en werkelijke inhoud-afgelezen van ongestructureerde en semi-gestructureerde gegevens bestanden zoals blobs, afbeeldings bestanden die een analyse hebben ondergaan of zelfs gestructureerde gegevens die in nieuwe formulieren worden omgezet. In een [stap-voor-stap](knowledge-store-howto.md)ziet u de eerste hand leiding hoe een dicht JSON-document is gepartitioneerd in substructuren, opnieuw samengesteld in nieuwe structuren en op andere wijze beschikbaar wordt gesteld voor downstream-processen zoals machine learning en data wetenschappen workloads.
 
 Hoewel het handig is om te zien wat een AI-verrijkings pijplijn kan produceren, is de mogelijkheid om gegevens te wijzigen. U kunt beginnen met een basis vaardighedenset en vervolgens door lopen om meer structuur niveaus toe te voegen. deze kunnen vervolgens worden gecombineerd tot nieuwe structuren in andere apps dan Azure Cognitive Search.
 
@@ -48,13 +46,13 @@ Geïnventariseerd, de voor delen van kennis archief zijn onder andere het volgen
 + De gegevens vorm geven in nieuwe formulieren. Het omvormen wordt in vaardig heden gecodificeerd, maar het punt is dat deze mogelijkheid nu kan worden geboden door een vaardig heden. De [shaper-vaardigheid](cognitive-search-skill-shaper.md) in azure Cognitive Search is uitgebreid om deze taak te kunnen verwerken. Met Reshaping kunt u een projectie definiëren die wordt afgestemd op uw gebruik van de gegevens, terwijl de relaties behouden blijven.
 
 > [!Note]
-> Bent u niet bekend met AI enrichcment met behulp van Cognitive Services? Azure Cognitive Search integreert met Cognitive Services Vision-en taal functies om bron gegevens te extra heren en te verrijken met behulp van optische teken herkenning (OCR) over afbeeldings bestanden, het herkennen van entiteiten en het uitpakken van sleutel zinnen uit tekst bestanden. Zie [AI-verrijking in Azure Cognitive Search](cognitive-search-concept-intro.md)voor meer informatie.
+> Nieuwe voor AI-verrijkings-en cognitieve vaardig heden? Azure Cognitive Search integreert met Cognitive Services Vision-en taal functies om bron gegevens te extra heren en te verrijken met behulp van optische teken herkenning (OCR) over afbeeldings bestanden, het herkennen van entiteiten en het uitpakken van sleutel zinnen uit tekst bestanden. Zie [AI-verrijking in Azure Cognitive Search](cognitive-search-concept-intro.md)voor meer informatie.
 
 ## <a name="creating-a-knowledge-store"></a>Een kennis archief maken
 
 Een kennis archief maakt deel uit van een [vaardig heden](cognitive-search-working-with-skillsets.md), die op zijn beurt deel uitmaakt van een [Indexeer functie](search-indexer-overview.md). 
 
-In deze preview kunt u een kennis archief maken met behulp van de REST API en `api-version=2019-05-06-Preview` of via de wizard **gegevens importeren** in de portal.
+In deze preview kunt u een kennis archief maken met behulp van de REST API en `api-version=2019-05-06-Preview`of via de wizard **gegevens importeren** in de portal.
 
 ### <a name="json-representation-of-a-knowledge-store"></a>JSON-weer gave van een kennis archief
 
@@ -62,7 +60,7 @@ De volgende JSON geeft een `knowledgeStore`, die deel uitmaakt van een vaardig h
 
 Een `knowledgeStore` bestaat uit een verbinding en projecties. 
 
-+ Verbinding is een opslag account in dezelfde regio als Azure Search. 
++ Verbinding is een opslag account in dezelfde regio als Azure Cognitive Search. 
 
 + Projecties zijn tabellen-object paren. `Tables` de fysieke expressie van verrijkte documenten in azure Table Storage te definiëren. `Objects` definieert u de fysieke objecten in Azure Blob-opslag.
 
@@ -182,53 +180,6 @@ Zodra de verrijkingen in de opslag ruimte bestaan, kunnen alle hulp middelen of 
 
 + [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) voor verdere manipulatie.
 
-
-<!---
-## Data lifecycle and billing
-
-Each time you run the indexer, the cache in Azure storage is updated if the skillset definition or underlying source data has changed. As input documents are edited or deleted, changes are propagated through the annotation cache to the projections, ensuring that your projected data is a current representation of your inputs at the end of the indexer run. 
-
-Generally speaking, pipeline processing can be an all-or-nothing operation, but Azure Search can process incremental changes, which saves you time and money.
-
-If a document is new or updated, all skills are run. If only the skillset changes, reprocessing is scoped to just those skills and documents affected by your edit.
-
-### Changes to a skillset
-Suppose that you have a pipeline composed of multiple skills, operating over a large body of static data (for example, scanned documents), that takes 8 hours and costs $200 to create the knowledge store. Now suppose you need to tweak one of the skills in the skillset. Rather than starting over, Azure Search can determine which skill is affected, and reprocess only that skill. Cached data and projections that are unaffected by the change remain intact in the knowledge store.
-
-### Changes in the data
-Scenarios can vary considerably, but let's suppose instead of static data, you have volatile data that changes between indexer invocations. Given no changes to the skillset, you are charged for processing the delta of new and modified document. The timestamp information varies by data source, but for illustration, in a Blob container, Azure Search looks at the `lastmodified` date to determine which blobs need to be ingested.
-
-> [!Note]
-> While you can edit the data in the projections, any edits will be overwritten on the next pipeline invocation, assuming the document in source data is updated. 
-
-### Deletions
-
-Although Azure Search creates and updates structures and content in Azure storage, it does not delete them. Projections and cached documents continue to exist even when the skillset is deleted. As the owner of the storage account, you should delete a projection if it is no longer needed. 
-
-### Tips for development
-
-+ Start small with a representative sample of your data as you make significant changes to skillset composition. As your design finalizes, you can slowly add more data during later-stage development, and then roll in the entire data set when you are comfortable with the pipeline composition.
-
-+ Retain control over indexer invocation. Indexers can run on a schedule, which is helpful for solutions that are rolled into production, but less helpful if you are actively developing your pipeline. During development, avoid schedules so that you don’t lose track of cache or projection state. Once your solution is in production and skillset composition is static, you can put the indexer on a schedule to pick up routine changes in the external source data. 
-
--->
-
-<!-- ## Where do I start?
-
-We recommend the Free service for learning purposes, but be aware that the number of free transactions is limited to 20 documents per day, per subscription.
-
-When using multiple services, create all of your services in the same region for best performance and to minimize costs. You are not charged for bandwidth for inbound data or outbound data that goes to another service in the same region.
-
-**Step 1: [Create an Azure Cognitive Search resource](search-create-service-portal.md)** 
-
-**Step 2: [Create an Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
-
-**Step 3: [Create a Cognitive Services resource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
-
-**Step 4: [Get started with the portal](cognitive-search-quickstart-blob.md) - or - [Get started with sample data using REST and Postman](knowledge-store-howto.md)** 
-
-You can use REST `api-version=2019-05-06-Preview` to construct an AI-based pipeline that includes knowledge store. In the newest preview API, the Skillset object provides the `knowledgeStore` definition. -->
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Knowledge Store biedt persistentie van verrijkte documenten, handig bij het ontwerpen van een vaardig heden of het maken van nieuwe structuren en inhoud voor het gebruik door client toepassingen die toegang kunnen krijgen tot een Azure Storage-account.
@@ -236,5 +187,5 @@ Knowledge Store biedt persistentie van verrijkte documenten, handig bij het ontw
 De eenvoudigste manier om verrijkte documenten te maken, is via de wizard **gegevens importeren** , maar u kunt ook postman en rest API gebruiken. Dit is handiger als u inzicht wilt in de manier waarop objecten worden gemaakt en waarnaar wordt verwezen.
 
 > [!div class="nextstepaction"]
-> [Een kennis archief maken met behulp van de portal](knowledge-store-create-portal.md) 
+> [Een kennis archief maken met behulp van de portal](knowledge-store-create-portal.md)
 > [een kennis archief maken met behulp van Postman en de rest APi](knowledge-store-create-rest.md)

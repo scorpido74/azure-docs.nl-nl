@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: 20da8abff943e71deb5d5ec8b7bd6411c176e2e3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6f04ccf216edb4e6a654c83c6220451bfccfe6ac
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244557"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488510"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Meer informatie over de uitvoer van Azure Stream Analytics
 
@@ -69,16 +69,16 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blob-opslag en Azure Data Lake Gen2
 
-Uitgaand naar Azure Data Lake Gen2 wordt aangeboden als een preview-functie in de beperkte regio's over de hele wereld. U kunt toegang tot het voor beeld aanvragen door aanvullende details op ons [aanvraag formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)op te geven.
+Data Lake Storage Gen2 maakt Azure Storage de basis voor het bouwen van zakelijke gegevens meren op Azure. Data Lake Storage Gen2 is ontworpen met het starten van meerdere PETA bytes aan gegevens terwijl er honderden gigabits van de door voer worden gehouden, en waarmee u eenvoudig enorme hoeveel heden gegevens kunt beheren. Een fundamenteel onderdeel van Data Lake Storage Gen2 is het toevoegen van een hiërarchische naam ruimte aan Blob Storage.
 
 Azure Blob-opslag biedt een voordelige en schaal bare oplossing voor het opslaan van grote hoeveel heden ongestructureerde gegevens in de Cloud. Zie [blobs uploaden, downloaden en weer geven met de Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md)voor een inleiding in Blob Storage en het gebruik ervan.
 
-De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschrijvingen voor het maken van een BLOB-uitvoer.
+De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschrijvingen voor het maken van een BLOB of ADLS Gen2 uitvoer.
 
 | Naam van eigenschap       | Beschrijving                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Uitvoeralias        | Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze Blob-opslag te sturen. |
-| Opslagaccount     | De naam van het opslag account waarin u uw uitvoer wilt verzenden.               |
+| Storage-account     | De naam van het opslag account waarin u uw uitvoer wilt verzenden.               |
 | Sleutel van het opslag account | De geheime sleutel die is gekoppeld aan het opslag account.                              |
 | Opslag container   | Een logische groepering voor blobs die zijn opgeslagen in de Azure-Blob service. Wanneer u een BLOB uploadt naar de Blob service, moet u een container voor die BLOB opgeven. |
 | Padpatroon | Optioneel. Het patroon van het bestandspad dat wordt gebruikt voor het schrijven van uw blobs binnen de opgegeven container. <br /><br /> In het pad patroon kunt u kiezen voor het gebruik van een of meer exemplaren van de variabelen datum en tijd om de frequentie op te geven waarmee blobs worden geschreven: <br /> {date}, {time} <br /><br />U kunt aangepaste BLOB-partitionering gebruiken om één aangepaste {Field}-naam van uw gebeurtenis gegevens op te geven voor het partitioneren van blobs. De naam van het veld is alfanumeriek en kan spaties, afbreek streepjes en onderstrepings tekens bevatten. De volgende beperkingen zijn van toepassing op aangepaste velden: <ul><li>Veld namen zijn niet hoofdletter gevoelig. De service kan bijvoorbeeld geen onderscheid maken tussen de kolom-ID en de kolom-id.</li><li>Geneste velden zijn niet toegestaan. Gebruik in plaats daarvan een alias in de taak query om het veld af te vlakken.</li><li>Expressies kunnen niet worden gebruikt als veld naam.</li></ul> <br />Met deze functie kunt u het gebruik van aangepaste configuraties voor datum/tijd-indeling in het pad. Aangepaste datum-en tijd notaties moeten een voor een worden opgegeven, omgeven door het sleutel woord {DateTime: \<specifier >}. Toegestane invoer voor \<specifier > zijn jjjj, MM, M, dd, d, HH, H, mm, M, SS of s. Het sleutel woord {DateTime: \<specifier >} kan meermaals worden gebruikt in het pad naar aangepaste datum/tijd-configuraties. <br /><br />Voorbeelden: <ul><li>Voor beeld 1: cluster1/logboeken/{date}/{time}</li><li>Voor beeld 2: cluster1/logboeken/{date}</li><li>Voor beeld 3: cluster1/{client_id}/{date}/{time}</li><li>Voor beeld 4: cluster1/{DateTime: SS}/{myField} waarbij de query is: SELECT data. myField AS myField FROM input;</li><li>Voor beeld 5: cluster1/Year = {DateTime: jjjj}/month = {DateTime: MM}/Day = {DateTime: dd}</ul><br />De tijds tempel van de gemaakte mappen structuur volgt UTC en niet lokale tijd.<br /><br />Bestands namen gebruiken de volgende Conventie: <br /><br />{Pad voorvoegsel patroon}/schemaHashcode_Guid_Number.extension<br /><br />Voorbeeld uitvoer bestanden:<ul><li>MYOUTPUT/20170901/00/45434_gguid_1. CSV</li>  <li>MYOUTPUT/20170901/01/45434_gguid_1. CSV</li></ul> <br />Zie [Azure stream Analytics aangepaste BLOB-uitvoer partitionering](stream-analytics-custom-path-patterns-blob-storage-output.md)voor meer informatie over deze functie. |
@@ -175,7 +175,7 @@ Dubbelklik | Dubbelklik | Tekenreeks | Tekenreeks | Dubbelklik
 Tekenreeks | Tekenreeks | Tekenreeks | Tekenreeks | Tekenreeks 
 Datetime | Tekenreeks | Tekenreeks |  Datetime | Tekenreeks
 
-## <a name="table-storage"></a>Tabelopslag
+## <a name="table-storage"></a>Table Storage
 
 [Azure Table Storage](../storage/common/storage-introduction.md) biedt een Maxi maal beschik bare, zeer schaal bare opslag, zodat een toepassing automatisch kan worden geschaald om te voldoen aan de vraag van de gebruiker. Table Storage is de NoSQL sleutel/kenmerk opslag van micro soft, die u kunt gebruiken voor gestructureerde gegevens met minder beperkingen voor het schema. Azure-tabel opslag kan worden gebruikt om gegevens op te slaan voor persistentie en efficiënt ophalen.
 
@@ -184,7 +184,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | Naam van eigenschap | Beschrijving |
 | --- | --- |
 | Uitvoeralias |Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze tabel opslag te sturen. |
-| Opslagaccount |De naam van het opslag account waarin u uw uitvoer wilt verzenden. |
+| Storage-account |De naam van het opslag account waarin u uw uitvoer wilt verzenden. |
 | Sleutel van het opslag account |De toegangs sleutel die aan het opslag account is gekoppeld. |
 | Tabelnaam |De naam van de tabel. De tabel wordt gemaakt als deze nog niet bestaat. |
 | Partitiesleutel |De naam van de uitvoer kolom die de partitie sleutel bevat. De partitie sleutel is een unieke id voor de partitie in een tabel die het eerste deel vormt van de primaire sleutel van een entiteit. Dit is een teken reeks waarde die Maxi maal 1 KB groot kan zijn. |

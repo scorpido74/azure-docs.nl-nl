@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984272"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488625"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -23,55 +23,117 @@ De [benoemde entiteit herkennings-API](https://westcentralus.dev.cognitive.micro
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Entiteits koppelingen en benoemde entiteits herkenning
 
-Het `entities` eind punt van de Text Analytics ondersteunt zowel ner (named entity Recognition) als entiteits koppeling.
+Het Text Analytics `entities`-eind punt ondersteunt zowel entiteits herkenning (NER) als entiteits koppelingen.
 
 ### <a name="entity-linking"></a>Entiteiten koppelen
-Entiteit koppelen is de mogelijkheid om de identiteit van een entiteit te identificeren en dubbel zinnigheid die in tekst is gevonden (bijvoorbeeld om te bepalen of de Mars wordt gebruikt als planeet of als Romeins niet van War). Voor dit proces moet de aanwezigheid van een Knowledge Base waaraan herkende entiteiten zijn gekoppeld, worden gebruikt als de Knowledge Base voor het `entities` eind punt Text Analytics.
+Entiteit koppelen is de mogelijkheid om de identiteit van een entiteit te identificeren en dubbel zinnigheid die in tekst is gevonden (bijvoorbeeld om te bepalen of de Mars wordt gebruikt als planeet of als Romeins niet van War). Voor dit proces moet de aanwezigheid van een Knowledge Base waaraan herkende entiteiten zijn gekoppeld, worden gebruikt als de Knowledge Base voor het `entities`-eind punt Text Analytics.
 
 ### <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
-Herkenning van benoemde entiteiten (NER) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en deze te categoriseren in vooraf gedefinieerde klassen. De ondersteunde klassen van entiteiten worden hieronder weer gegeven.
+Named entity Recognition (NER) is de mogelijkheid om verschillende entiteiten in tekst te identificeren en deze te categoriseren in vooraf gedefinieerde klassen of typen. 
 
-In Text Analytics [versie 2,1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)zijn zowel entiteits koppelingen als benoemde entiteits herkenning (ner) beschikbaar voor verschillende talen. Zie het artikel [language support (Engelstalig)](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) voor meer informatie.
+## <a name="named-entity-recognition-v3-public-preview"></a>Named entity Recognition v3 open bare preview
+
+De [volgende versie van named entity Recognition](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) is nu beschikbaar voor open bare preview. Het biedt updates voor zowel entiteits koppelingen als benoemde entiteits herkenning. 
+
+:::row:::
+    :::column span="":::
+        **Functie**
+    :::column-end:::
+    ::: column span="":::
+        **Beschrijving** 
+    :::column-end:::
+:::row-end:::
+<!-- expanded types and subtypes row-->
+:::row:::
+    :::column span="":::
+        Uitgebreide entiteits typen en subtypen
+    :::column-end:::
+    :::column span="":::
+     Uitgebreide classificatie en detectie voor verschillende typen entiteit met een naam.
+    :::column-end:::
+:::row-end:::
+<!-- separate endpoints row-->
+:::row:::
+    :::column span="":::
+        Afzonderlijke aanvraag eindpunten 
+    :::column-end:::
+    :::column span="":::
+        Afzonderlijke eind punten voor het verzenden van entiteits koppelings-en NER-aanvragen.
+    :::column-end:::
+:::row-end:::
+<!-- model-version row -->
+:::row:::
+    :::column span="":::
+        `model-version` para meter
+    :::column-end:::
+    :::column span="":::
+        Een optionele para meter voor het kiezen van een versie van het Text Analytics model. Momenteel is alleen het standaard model beschikbaar voor gebruik.
+    :::column-end:::
+:::row-end:::
+
+### <a name="entity-types"></a>Entiteits typen
+
+Named entity Recognition V3 biedt uitgebreide detectie over meerdere typen. Op dit moment kan NER v3 de volgende categorieën entiteiten herkennen. Zie het artikel type met de [naam entiteit](../named-entity-types.md) voor een gedetailleerde lijst met ondersteunde entiteiten en talen.
+
+* Algemeen
+* Persoonlijke gegevens 
+
+### <a name="request-endpoints"></a>Eind punten van aanvraag
+
+Met named entity Recognition v3 worden afzonderlijke eind punten gebruikt voor NER en aanvragen voor entiteits koppelingen. Gebruik een URL-indeling hieronder op basis van uw aanvraag:
+
+NER
+* Algemene entiteiten-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Persoonlijke informatie-entiteiten-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Entiteit koppelen
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Model versie beheer
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Ondersteunde typen voor de herkenning van benoemde entiteiten v2
+
+> [!NOTE]
+> De volgende entiteiten worden ondersteund door de named entity Recognition (NER) versie 2. [Ner v3](#named-entity-recognition-v3-public-preview) bevindt zich in de open bare preview en breidt het aantal en de diepte van de entiteiten die in tekst worden herkend, aanzienlijk uit.   
+
+| Type  | SubType | Voorbeeld |
+|:-----------   |:------------- |:---------|
+| Person        | N.v.t.\*         | ' Jeff ', ' Bill Gates '     |
+| Locatie      | N.v.t.\*         | Redmond, Washington; Parijs  |
+| Organisatie  | N.v.t.\*         | Microsoft   |
+| Aantal      | Aantal        | 6, zes     |
+| Aantal      | Percentage    | 50%, vijftig procent|
+| Aantal      | Rangtelwoord       | 2e, tweede     |
+| Aantal      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
+| Aantal      | Valuta      | $ 10,99     |
+| Aantal      | Dimensie     | 10 mijl, 40 cm     |
+| Aantal      | Temperatuur   | 32 graden    |
+| DateTime      | N.v.t.\*         | 18:30 uur, 4 februari 2012      |
+| DateTime      | Date          | 2 mei 2017, 05-02-2017   |
+| DateTime      | Time          | "8 a.m.", "8:00"  |
+| DateTime      | Datumbereik     | 2 mei tot 5 mei    |
+| DateTime      | Tijdsbereik     | 18.00 uur tot 19.00 uur     |
+| DateTime      | Duur      | 1 minuut en 45 seconden   |
+| DateTime      | Instellen           | elke dinsdag     |
+| URL           | N.v.t.\*         | "https:\//www.bing.com"    |
+| Email         | N.v.t.\*         | "support@contoso.com" |
+
+\* afhankelijk van de invoer en geëxtraheerde entiteiten, kunnen bepaalde entiteiten de `SubType`weglaten.  Alle ondersteunde entiteits typen die worden weer gegeven, zijn alleen beschikbaar voor de talen Engels, Chinees, vereenvoudigd, Duits en Spaans.
 
 ### <a name="language-support"></a>Taalondersteuning
 
-Voor het gebruik van entiteits koppeling in verschillende talen moet u in elke taal een bijbehorende kennis database gebruiken. Voor entiteits koppeling in Text Analytics betekent dit dat elke taal die wordt ondersteund door `entities` het eind punt, wordt gekoppeld aan de bijbehorende Wikipedia-verzameling in die taal. Aangezien de grootte van corpora varieert tussen talen, wordt verwacht dat het intrekken van de entiteits koppelingen ook verschillen.
-
-## <a name="supported-types-for-named-entity-recognition"></a>Ondersteunde typen voor herkenning van benoemde entiteiten
-
-| type  | SubType | Voorbeeld |
-|:-----------   |:------------- |:---------|
-| Person        | N.V.T.\*         | "Jeff", "Bill Gates"     |
-| Location      | N.V.T.\*         | Redmond, Washington; Parijs  |
-| Organisatie  | N.V.T.\*         | "Microsoft"   |
-| Hoeveelheid      | Aantal        | "6", "six"     |
-| Hoeveelheid      | Percentage    | 50%, vijftig procent|
-| Hoeveelheid      | Rangtelwoord       | 2e, tweede     |
-| Hoeveelheid      | Leeftijd           | "90 dag oud", "30 jaar oud"    |
-| Hoeveelheid      | Currency      | $ 10,99     |
-| Hoeveelheid      | Dimensie     | 10 mijl, 40 cm     |
-| Hoeveelheid      | Temperatuur   | 32 graden    |
-| DateTime      | N.V.T.\*         | 18:30 uur, 4 februari 2012      |
-| DateTime      | Date          | 2 mei 2017, 05-02-2017   |
-| DateTime      | Time          | "8 a.m.", "8:00"  |
-| DateTime      | DateRange     | 2 mei tot 5 mei    |
-| DateTime      | TimeRange     | 18.00 uur tot 19.00 uur     |
-| DateTime      | Duration      | 1 minuut en 45 seconden   |
-| DateTime      | Set           | elke dinsdag     |
-| URL           | N.V.T.\*         | "https:\//www.bing.com"    |
-| Email         | N.V.T.\*         | "support@contoso.com" |
-
-\*Afhankelijk van de invoer en geëxtraheerde entiteiten kunnen bepaalde entiteiten de `SubType`niet weglaten.  Alle ondersteunde entiteits typen die worden weer gegeven, zijn alleen beschikbaar voor Engels, vereenvoudigd Chinees, Frans, Duits en Spaans.
-
-
+Voor het gebruik van entiteits koppeling in verschillende talen moet u in elke taal een bijbehorende kennis database gebruiken. Voor entiteits koppeling in Text Analytics betekent dit dat elke taal die wordt ondersteund door het `entities` eind punt een koppeling maakt naar de bijbehorende Wikipedia-verzameling in die taal. Aangezien de grootte van corpora varieert tussen talen, wordt verwacht dat het intrekken van de entiteits koppelingen ook verschillen. Zie het artikel [language support (Engelstalig)](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) voor meer informatie.
 
 ## <a name="preparation"></a>Voorbereiding
 
-U moet JSON-documenten hebben in deze indeling: ID, tekst, taal
+U moet JSON-documenten hebben met de volgende indeling: ID, tekst, taal
 
 Voor ondersteunde talen raadpleegt u [deze lijst](../text-analytics-supported-languages.md).
 
-De documentgrootte moet minder dan maximaal 5120 tekens per document zijn, en u kunt maximaal 1000 items (id's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend. Het volgende voor beeld is een illustratie van inhoud die u kunt verzenden naar het einde van de entiteit koppeling.
+De documentgrootte moet minder dan 5120 tekens per document bevatten en u kunt maximaal 1000 items (id's) per verzameling hebben. De verzameling is in de hoofdtekst van de aanvraag ingediend. Het volgende voor beeld is een illustratie van inhoud die u kunt verzenden naar het einde van de entiteit koppeling.
 
 ```json
     {
@@ -90,13 +152,13 @@ De documentgrootte moet minder dan maximaal 5120 tekens per document zijn, en u 
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>Stap 1: Structureer de aanvraag
+## <a name="step-1-structure-the-request"></a>Stap 1: Structuur van de aanvraag
 
 Meer informatie over de definitie van de aanvraag kunt u vinden in [De Text Analytics-API aanroepen](text-analytics-how-to-call-api.md). De volgende punten zijn voor uw gemak opnieuw geformuleerd:
 
-+ Maak een **POST**-aanvraag. Bekijk de API-documentatie voor deze aanvraag: [API voor entiteiten](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
++ Maak een **POST**-aanvraag. Raadpleeg de API-documentatie voor deze aanvraag: [entities-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet het `/text/analytics/v2.1/entities`volgende toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
++ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet `/text/analytics/v2.1/entities`toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Stel een aanvraag header in voor [het toevoegen van de toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
 
@@ -105,7 +167,7 @@ Meer informatie over de definitie van de aanvraag kunt u vinden in [De Text Anal
 > [!Tip]
 > Gebruik [Postman](text-analytics-how-to-call-api.md) of open de **API-testconsole** in de [documentatie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) om de aanvraag te structureren en POST deze in de service.
 
-## <a name="step-2-post-the-request"></a>Stap 2: Plaats de aanvraag
+## <a name="step-2-post-the-request"></a>Stap 2: De aanvraag posten
 
 Analyse wordt uitgevoerd na ontvangst van de aanvraag. Zie de sectie [gegevens limieten](../overview.md#data-limits) in het overzicht voor informatie over de grootte en het aantal aanvragen dat u per minuut en seconde kunt verzenden.
 

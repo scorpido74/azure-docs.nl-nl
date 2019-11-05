@@ -5,19 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 979a09da805abfd6558fac90e6adedb66de438f1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d4050fd5bfd33e50404c7007aecf5d1b868e2083
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175919"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495764"
 ---
 > [!NOTE]
-> De nieuwe VPN-gateway-SKU's (VpnGw1, VpnGw2 en VpnGw3) worden alleen ondersteund voor het Resource Manager-implementatiemodel. Klassieke virtuele netwerken moeten echter ook doorgaan met de oude (verouderde) SKU's.
->  * Zie voor meer informatie over het werken met de oude gateway-SKU (Basic, Standard en HighPerformance) [werken met VPN gateway-SKU's (verouderde SKU's)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md).
->  * Zie voor een ExpressRoute-gateway SKU's, [virtuele netwerkgateways voor ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md).
->
+> VpnGw Sku's (VpnGw1, VpnGw1AZ, VpnGw2, VpnGw2AZ, VpnGw3, VpnGw3AZ, VpnGw4, VpnGw4AZ, VpnGw5 en VpnGw5AZ) worden alleen ondersteund voor het Resource Manager-implementatie model. Klassieke virtuele netwerken moeten de oude (verouderde) Sku's blijven gebruiken.
+>  * Zie [werken met VPN gateway-sku's (verouderde sku's)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)voor meer informatie over het werken met de verouderde gateway-Sku's (Basic, Standard en high performance).
+>  * Zie [Virtual Network gateways voor ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md)voor ExpressRoute gateway-sku's.
 >

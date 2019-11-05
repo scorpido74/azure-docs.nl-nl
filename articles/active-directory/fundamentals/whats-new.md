@@ -1,5 +1,5 @@
 ---
-title: Wat is er nieuw? Release opmerkingen-Azure Active Directory | Microsoft Docs
+title: Nieuwe functies Release opmerkingen-Azure Active Directory | Microsoft Docs
 description: Ontdek wat er nieuw is met Azure Active Directory, zoals de nieuwste opmerkingen bij de release, bekende problemen, oplossingen voor fouten, afgeschafte functionaliteit en aanstaande wijzigingen.
 services: active-directory
 author: eross-msft
@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6847384177e71c7f2b012e46211a5c09fa80fedb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7db35b89903de6c5027bb7ea445245d84b96d6ef
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149020"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473296"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -196,9 +196,9 @@ Het menu nieuwe **beveiliging** bevat:
 
 - Voorwaardelijke toegang
 - Identiteitsbeveiliging
-- Beveiligingscentrum
+- Security Center
 - Identiteits veilige Score
-- Authenticatiemethoden
+- Verificatiemethoden
 - MFA
 - Risico rapporten-Risk ante gebruikers, Risk ante aanmeldingen, risico detecties
 - En meer...
@@ -434,7 +434,7 @@ De moderne beveiligings rapporten bieden extra mogelijkheden van de oudere versi
 - Risico status, waaronder: risico, genegeerd, hersteld en bevestigde schadelijke
 - Nieuwe detecties met een risico (beschikbaar voor Azure AD Premium abonnees)
 
-Zie [Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report), [Risk ante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report)en [risico detectie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections-report)voor meer informatie.
+Zie [Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users), [Risk ante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins)en [risico detectie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risk-detections)voor meer informatie.
 
 ---
 
@@ -494,7 +494,7 @@ Zie voor meer informatie over de apps [SaaS-toepassings integratie met Azure Act
 
 Er zijn nieuwe updates beschikbaar voor de AzureAD-en AzureAD preview Power shell-modules:
 
-- Er is een nieuwe `-Filter`-para meter toegevoegd aan de para meter `Get-AzureADDirectoryRole` in de AzureAD-module. Met deze para meter kunt u filteren op de Directory functies die door de cmdlet worden geretourneerd.
+- Er is een nieuwe `-Filter`-para meter toegevoegd aan de para meter `Get-AzureADDirectoryRole` in de module AzureAD. Met deze para meter kunt u filteren op de Directory functies die door de cmdlet worden geretourneerd.
 - Er zijn nieuwe cmdlets toegevoegd aan de AzureADPreview-module, waarmee u aangepaste rollen kunt definiëren en toewijzen in azure AD, waaronder:
 
     - `Get-AzureADMSRoleAssignment`
@@ -551,7 +551,7 @@ Voor meer informatie over het instellen van Azure Monitor raadpleegt u [Azure AD
 
 Op 25 september 2019 worden de oude, niet-verbeterde beveiligings gegevens voor het registreren en beheren van gebruikers beveiligings gegevens uitgeschakeld en wordt alleen de nieuwe, [verbeterde versie](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)ingeschakeld. Dit betekent dat uw gebruikers de oude ervaring niet langer kunnen gebruiken.
 
-Voor meer informatie over de verbeterde ervaring met beveiligings informatie raadpleegt u onze [beheerders documentatie](https://aka.ms/securityinfodocs) and onze [gebruikers documentatie](https://aka.ms/securityinfoguide).
+Voor meer informatie over de verbeterde ervaring met beveiligings informatie raadpleegt u onze [beheerders documentatie](https://aka.ms/securityinfodocs) en onze [gebruikers documentatie](https://aka.ms/securityinfoguide).
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>Als u deze nieuwe ervaring wilt inschakelen, moet u het volgende doen:
 
@@ -739,7 +739,7 @@ Alle Azure AD-beheerders kunnen nu het vaandel selecteren boven aan bestaande be
 
 - Risico status, waaronder: risico, genegeerd, hersteld en bevestigde schadelijke
 
-Zie rapport met [Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users-report) en [rapporten met Risk ante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins-report)voor meer informatie.
+Zie rapport met [Risk ante gebruikers](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-users) en [rapporten met Risk ante aanmeldingen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-investigate-risk#risky-sign-ins)voor meer informatie.
 
 ---
 

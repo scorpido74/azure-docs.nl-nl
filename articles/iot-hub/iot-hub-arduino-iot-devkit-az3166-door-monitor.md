@@ -1,6 +1,6 @@
 ---
-title: Een e-mailbericht ontvangen wanneer de deur wordt geopend met behulp van SendGrid-service en Azure Functions | Microsoft Docs
-description: De magnetische sensor om te detecteren wanneer een deur wordt geopend en Azure Functions gebruiken voor het verzenden van een e-mailmelding bewaken.
+title: Een e-mail ontvangen wanneer de deur wordt geopend met behulp van de SendGrid-service en Azure Functions | Microsoft Docs
+description: Bewaak de magnetische sensor om te detecteren wanneer een deur wordt geopend en gebruik Azure Functions om een e-mail melding te verzenden.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,196 +9,196 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: a620b592a33f9de11de53d623d257f203da2157b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cbf3f906b511d9d76319f57f5508a2c584213cb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61370273"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484071"
 ---
-# <a name="door-monitor"></a>De deur van Monitor          
+# <a name="door-monitor"></a>Monitor voor deur          
 
-De MXChip IoT DevKit bevat een ingebouwde magnetische sensor. In dit project detecteren u de aanwezigheid of afwezigheid van een sterke magnetische veld in de buurt--in dit geval die afkomstig zijn van een kleine, permanente Magneet.
+De MXChip IoT DevKit bevat een ingebouwde magnetische sensor. In dit project detecteert u de aanwezigheid of afwezigheid van een sterk magnetisch veld met een nabijgelegen niveau, in dit geval afkomstig van een kleine, permanente magneet.
 
 ## <a name="what-you-learn"></a>Wat u leert
 
 In dit project leert u het volgende:
-- Het gebruik van de MXChip IoT DevKit magnetische sensor voor het detecteren van het verplaatsen van een in de buurt Magneet.
-- Het gebruik van de SendGrid-service een melding verzenden naar uw e-mailadres.
+- De MXChip IoT DevKit-magneet sensor gebruiken om de verplaatsing van een nabijgelegen magneet te detecteren.
+- Hoe u de SendGrid-service gebruikt om een melding te verzenden naar uw e-mail adres.
 
 > [!NOTE]
-> Voor een praktische gebruik van dit project, moet u de volgende taken uitvoeren:
-> - Koppel een Magneet aan de rand van een klep.
-> - Koppel de DevKit op het identificatienummer dicht bij de magneet. Openen of sluiten van de deur wordt de sensor, wat resulteert in uw ontvangt een e-mailmelding van de gebeurtenis geactiveerd.
+> Voer de volgende taken uit voor een praktisch gebruik van dit project:
+> - Een magneet aan de rand van een deur koppelen.
+> - Koppel de DevKit aan de deur jamb dicht bij de magneet. Als de deur wordt geopend of gesloten, wordt de sensor geactiveerd, wat leidt tot een e-mail melding van de gebeurtenis.
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
-Voltooid de [Getting Started Guide](iot-hub-arduino-iot-devkit-az3166-get-started.md) aan:
+De aan de slag- [hand leiding](iot-hub-arduino-iot-devkit-az3166-get-started.md) volt ooien om:
 
-* Hebt u uw DevKit verbonden met Wi-Fi
+* Uw DevKit hebben verbonden met Wi-Fi
 * De ontwikkelomgeving voorbereiden
 
-Een actief Azure-abonnement. Als u een hebt, kunt u registreren via een van deze methoden:
+Een actief Azure-abonnement. Als u er nog geen hebt, kunt u zich registreren via een van de volgende methoden:
 
-* Activeer een [gratis 30-daagse proefversie Microsoft Azure-account](https://azure.microsoft.com/free/).
-* Claim uw [Azure-tegoed](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) als u een MSDN of Visual Studio-abonnee bent.
+* Activeer een [gratis Microsoft Azure-abonnement van 30 dagen](https://azure.microsoft.com/free/).
+* Claim uw [Azure-tegoed](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) als u een MSDN-of Visual Studio-abonnee bent.
 
-## <a name="deploy-the-sendgrid-service-in-azure"></a>De SendGrid-service in Azure implementeren
+## <a name="deploy-the-sendgrid-service-in-azure"></a>De SendGrid-service in azure implementeren
 
-[SendGrid](https://sendgrid.com/) is een cloud-gebaseerd e delivery-platform. Deze service wordt gebruikt voor het verzenden van e-mailmeldingen.
+[SendGrid](https://sendgrid.com/) is een e-mail bezorgings platform in de Cloud. Deze service wordt gebruikt om e-mail meldingen te verzenden.
 
 > [!NOTE]
-> Als u al een SendGrid-service hebt geïmplementeerd, kunt u doorgaan rechtstreeks naar [IoT-Hub implementeren in Azure](#deploy-iot-hub-in-azure).
+> Als u al een SendGrid-service hebt geïmplementeerd, kunt u direct door gaan met het [implementeren van IOT hub in azure](#deploy-iot-hub-in-azure).
 
 ### <a name="sendgrid-deployment"></a>SendGrid-implementatie
 
-Voor het inrichten van Azure-services, gebruikt u de **implementeren in Azure** knop. Deze knop kunt snel en eenvoudig implementeren in uw open-source-projecten met Microsoft Azure.
+Gebruik de knop **implementeren naar Azure** om Azure-Services in te richten. Met deze knop kunt u uw open-source projecten snel en eenvoudig implementeren om te Microsoft Azure.
 
-Klik op de **implementeren in Azure** hieronder. 
+Klik hieronder op de knop **implementeren naar Azure** . 
 
 [![Implementeren in Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
 
-Als u bent niet al aangemeld bij uw Azure-account, nu aanmelden. 
+Als u nog niet bent aangemeld bij uw Azure-account, meldt u zich nu aan. 
 
-U ziet nu het SendGrid aanmeldingsformulier hebt ingevuld.
+U ziet nu het SendGrid-aanmeld formulier.
 
 ![SendGrid-implementatie](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-deploy.png)
 
-Voer het aanmeldingsformulier hebt ingevuld:
+Vul het formulier voor het aanmelden in:
 
-   * **Resourcegroep**: Maak een resourcegroep voor het hosten van de SendGrid-service of gebruik een bestaande resourcegroep. Zie [resourcegroepen gebruiken voor het beheren van uw Azure-resources](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Resource groep**: Maak een resource groep om de SendGrid-service te hosten of gebruik een bestaande. Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md).
 
-   * **Naam**: De naam voor uw SendGrid-service. Kies een unieke naam, die afwijkt van andere services die u hebt.
+   * **Naam**: de naam voor uw SendGrid-service. Kies een unieke naam die verschilt van andere services die u mogelijk hebt.
 
-   * **Wachtwoord**: De service is een wachtwoord, die niet worden gebruikt voor alles wat in dit project.
+   * **Wacht woord**: de service vereist een wacht woord dat niet voor alles in dit project wordt gebruikt.
 
-   * **e-mailbericht**: De SendGrid-service wordt verificatie naar dit e-mailadres verzonden.
+   * **E-mail**: de SendGrid-service stuurt verificatie naar dit e-mail adres.
 
-Controleer de **vastmaken aan dashboard** om deze toepassing makkelijker te vinden in de toekomst optie en klik vervolgens op **aankoop** om in te dienen het aanmeldingsformulier.
+Controleer de optie **vastmaken aan dash board** om deze toepassing in de toekomst gemakkelijker te kunnen vinden en klik vervolgens op **aanschaffen** om het aanmeld formulier in te dienen.
  
 ### <a name="sendgrid-api-key-creation"></a>SendGrid-API-sleutel maken
 
-Nadat de implementatie is voltooid, klikt u op deze en klik vervolgens op de **beheren** knop. Uw SendGrid-account-pagina wordt weergegeven, waar u nodig hebt om te controleren of uw e-mailadres.
+Nadat de implementatie is voltooid, klikt u erop en klikt u vervolgens op de knop **beheren** . Uw SendGrid-account pagina wordt weer gegeven, waar u uw e-mail adres moet verifiëren.
 
 ![SendGrid beheren](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-Klik op de pagina SendGrid **instellingen** > **API-sleutels** > **API-sleutel maken**.
+Klik op de pagina SendGrid op **instellingen** > **api-sleutels** > **API-sleutel maken**.
 
-![SendGrid-API eerst maken](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
+![SendGrid eerst API maken](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
-Op de **API-sleutel maken** pagina, voer de **de naam van de API-sleutel** en klikt u op **maken & weergave**.
+Voer op de pagina **API-sleutel maken** de **naam** van de API-sleutel in en klik op **& weer gave maken**.
 
-![SendGrid-API ten tweede maken](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
+![SendGrid Create API Second](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
 
-Uw API-sleutel wordt slechts één keer weergegeven. Moet u kopiëren en sla deze op veilig, omdat deze wordt gebruikt in de volgende stap.
+Uw API-sleutel wordt slechts één keer weer gegeven. Zorg ervoor dat u deze veilig kopieert en opslaat, zoals in de volgende stap wordt gebruikt.
 
-## <a name="deploy-iot-hub-in-azure"></a>IoT-Hub in Azure implementeren
+## <a name="deploy-iot-hub-in-azure"></a>IoT Hub implementeren in azure
 
-De volgende stappen uit andere Azure-IoT wordt ingericht gerelateerde services en Azure Functions implementeren voor dit project.
+Met de volgende stappen worden andere Azure IoT-gerelateerde services ingericht en worden Azure Functions voor dit project geïmplementeerd.
 
-Klik op de **implementeren in Azure** hieronder. 
+Klik hieronder op de knop **implementeren naar Azure** . 
 
 [![Implementeren in Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
 
-Het aanmeldingsformulier hebt ingevuld, wordt weergegeven.
+Het formulier voor aanmelden wordt weer gegeven.
 
-![IoTHub Deployment](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/iot-hub-deploy.png)
+![IoTHub-implementatie](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/iot-hub-deploy.png)
 
-Vul de velden in het aanmeldingsformulier hebt ingevuld.
+Vul de velden in op het formulier voor registratie.
 
-   * **Resourcegroep**: Maak een resourcegroep voor het hosten van de SendGrid-service of gebruik een bestaande resourcegroep. Zie [resourcegroepen gebruiken voor het beheren van uw Azure-resources](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Resource groep**: Maak een resource groep om de SendGrid-service te hosten of gebruik een bestaande. Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md).
 
-   * **De naam van IOT Hub**: De naam voor uw IoT-hub. Kies een unieke naam, die afwijkt van andere services die u hebt.
+   * **IOT-hub-naam**: de naam voor uw IOT-hub. Kies een unieke naam die verschilt van andere services die u mogelijk hebt.
 
-   * **IOT Hub-Sku**: F1 (beperkt tot één per abonnement) is gratis. U kunt meer informatie over de prijzen zien op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/iot-hub/).
+   * **IOT hub SKU**: F1 (beperkt tot één per abonnement) is gratis. U kunt meer prijs informatie weer geven op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-   * **Van e-mailbericht**: Dit veld moet hetzelfde e-mailadres dat u hebt gebruikt bij het instellen van de SendGrid-service.
+   * **Van e-mail**: dit veld moet hetzelfde zijn als het e-mail adres dat u hebt gebruikt bij het instellen van de SendGrid-service.
 
-Controleer de **vastmaken aan dashboard** om deze toepassing makkelijker te vinden in de toekomst optie en klik vervolgens op **aankoop** wanneer u bent klaar om door te gaan met de volgende stap.
+Controleer de optie **vastmaken aan dash board** om deze toepassing in de toekomst gemakkelijker te kunnen vinden en klik vervolgens op **aanschaffen** wanneer u klaar bent om door te gaan naar de volgende stap.
  
-## <a name="build-and-upload-the-code"></a>Bouwen en de code uploaden
+## <a name="build-and-upload-the-code"></a>Bouw en upload de code
 
-Vervolgens laadt de voorbeeldcode in VS Code en de benodigde Azure-services inrichten.
+Laad vervolgens de voorbeeld code in VS code en richt de benodigde Azure-Services in.
 
-### <a name="start-vs-code"></a>Start VS Code
+### <a name="start-vs-code"></a>Begin VS code
 
-- Zorg ervoor dat uw DevKit is **niet** op uw computer is aangesloten.
-- Start VS Code.
-- De DevKit verbinden met uw computer.
-
-> [!NOTE]
-> Als u VS Code starten, krijgt u mogelijk een foutbericht dat aangeeft dat deze het Arduino IDE of gerelateerde Bord pakket kan niet vinden. Als u dit foutbericht ontvangt, sluiten VS Code, starten, opnieuw de Arduino IDE en VS Code moeten Ga naar het pad met Arduino IDE correct.
-
-### <a name="open-arduino-examples-folder"></a>Map openen Arduino-voorbeelden
-
-Vouw aan de linkerkant **ARDUINO voorbeelden** sectie, blader naar **voorbeelden voor MXCHIP AZ3166 > AzureIoT**, en selecteer **DoorMonitor**. Deze actie wordt een nieuwe VS Code-venster geopend met een projectmap daarin.
-
-![Mini-solution-voorbeelden](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
-
-U kunt ook de voorbeeld-app openen vanuit het opdrachtenpalet. Gebruik `Ctrl+Shift+P` (Mac OS: `Cmd+Shift+P`) om te openen de command palette, typt u **Arduino**, en zoek en selecteer **Arduino: Voorbeelden**.
-
-### <a name="provision-azure-services"></a>Azure-services inrichten
-
-Voer in het venster van de oplossing, de cloudinrichting-taak:
-- Type `Ctrl+P` (Mac OS: `Cmd+P`).
-- Voer `task cloud-provision` in het tekstvak opgegeven.
-
-In de terminal van VS Code en helpt een interactieve vanaf de opdrachtregel u de vereiste Azure-services voor het inrichten. Selecteer alle dezelfde items in de na vragen aan gebruiker lijst die u eerder hebt ingericht in [IoT-Hub implementeren in Azure](#deploy-iot-hub-in-azure).
-
-![Cloud inrichten](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
+- Zorg ervoor dat uw DevKit **niet** is verbonden met uw computer.
+- Begin VS code.
+- Verbind de DevKit met uw computer.
 
 > [!NOTE]
-> Als de pagina reageert niet meer in de status van de geladen bij het aanmelden bij Azure, raadpleegt u de ["page wijzigingen wanneer u zich aanmeldt" sectie van de IoT DevKit Veelgestelde vragen over](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) om dit probleem te verhelpen. 
+> Wanneer u VS code start, wordt er mogelijk een fout bericht weer gegeven met de melding dat het Arduino IDE-of gerelateerde board-pakket niet kan worden gevonden. Als deze fout wordt weer gegeven, sluit u VS code, start u de Arduino IDE opnieuw en de VS code moet het Arduino IDE-pad correct vinden.
 
-### <a name="build-and-upload-the-device-code"></a>Bouwen en de apparaatcode uploaden
+### <a name="open-arduino-examples-folder"></a>Map met voor beelden van Arduino openen
+
+Vouw de sectie **ARDUINO-voor beelden** aan de linkerkant uit, blader naar voor **beelden voor MXCHIP AZ3166 > AzureIoT**en selecteer **DoorMonitor**. Met deze actie wordt een nieuw versus code venster geopend met daarin een projectmap.
+
+![Mini-Solution-voor beelden](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
+
+U kunt ook de voor beeld-app openen vanuit het opdracht palet. Gebruik `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) om het opdracht palet te openen, typ **Arduino**en zoek en selecteer vervolgens **Arduino: voor beelden**.
+
+### <a name="provision-azure-services"></a>Azure-Services inrichten
+
+Voer in het oplossings venster de taak Cloud inrichting uit:
+- Typ `Ctrl+P` (macOS: `Cmd+P`).
+- Geef `task cloud-provision` op in het opgegeven tekstvak.
+
+In de VS code-terminal wordt u door een interactieve opdracht regel begeleid bij het inrichten van de vereiste Azure-Services. Selecteer alle items uit de lijst met vragen die u eerder hebt ingericht in [implementatie IOT hub in azure](#deploy-iot-hub-in-azure).
+
+![Cloud inrichting](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/cloud-provision.png)
+
+> [!NOTE]
+> Als de pagina in de laad status vastloopt wanneer u zich probeert aan te melden bij Azure, raadpleegt u de [sectie ' de pagina loopt vast wanneer u zich aanmeldt ' in de veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure) om dit probleem op te lossen. 
+
+### <a name="build-and-upload-the-device-code"></a>Bouw en upload de toestel code
 
 Upload vervolgens de code voor het apparaat.
 
 #### <a name="windows"></a>Windows
 
-1. Gebruik `Ctrl+P` om uit te voeren `task device-upload`.
+1. Gebruik `Ctrl+P` om `task device-upload`uit te voeren.
 
-2. De terminal vraagt u om in te voeren van de configuratiemodus. Om dit te doen, houdt u ingedrukt A, en vervolgens push- en release van de knop opnieuw instellen. Het scherm wordt weergegeven de DevKit id-nummer en het woord *configuratie*.
+2. De Terminal vraagt u de configuratie modus in te voeren. Als u dit wilt doen, houdt u de knop A ingedrukt en geeft u de knop opnieuw instellen op. In het scherm worden het DevKit-identificatie nummer en de woord *configuratie*weer gegeven.
 
 #### <a name="macos"></a>macOS
 
-1. De DevKit in configuratiemodus geplaatst: Houd ingedrukt A, en vervolgens push- en release van de knop opnieuw instellen. Het scherm wordt weergegeven dat 'Configuration'.
+1. De DevKit in de configuratie modus zetten: Houd de knop ingedrukt en druk vervolgens de knop Reset. In het scherm wordt ' configuratie ' weer gegeven.
 
-2. Klik op `Cmd+P` om uit te voeren `task device-upload`.
+2. Klik op `Cmd+P` om `task device-upload`uit te voeren.
 
-#### <a name="verify-upload-and-run-the-sample-app"></a>Verifiëren en uitvoeren van de voorbeeld-app uploaden
+#### <a name="verify-upload-and-run-the-sample-app"></a>De voor beeld-app verifiëren, uploaden en uitvoeren
 
-De verbindingsreeks die is opgehaald uit de [inrichten Azure services](#provision-azure-services) stap nu is ingesteld. 
+De connection string die wordt opgehaald uit de stap voor het [inrichten van Azure-Services](#provision-azure-services) is nu ingesteld. 
 
-VS Code vervolgens begint te controleren en uploaden van de Arduino schetsen naar de DevKit.
+VS code controleert vervolgens de Arduino-schets en uploadt deze naar de DevKit.
 
-![apparaat-upload](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
+![apparaat uploaden](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
-De DevKit opnieuw wordt opgestart en de code wordt gestart.
+De DevKit wordt opnieuw opgestart en de code wordt gestart.
 
 > [!NOTE]
-> Van tijd tot tijd, ontvangt u mogelijk een ' fout: AZ3166: Onbekend pakket"foutbericht. Deze fout treedt op wanneer de bord package index niet correct wordt vernieuwd. U kunt deze fout oplossen, raadpleegt u de [ontwikkeling-sectie van de IoT DevKit Veelgestelde vragen over](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> In sommige gevallen wordt het fout bericht ' fout: AZ3166: onbekend pakket ' weer gegeven. Deze fout treedt op wanneer de pakket index van het board niet correct wordt vernieuwd. Raadpleeg de [sectie ontwikkeling van de veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)om deze fout op te lossen.
 
 ## <a name="test-the-project"></a>Het project testen
 
-Het programma wordt eerst geïnitialiseerd wanneer de DevKit met een stabiele magnetische-veld.
+Het programma wordt eerst geïnitialiseerd wanneer de DevKit zich in de aanwezigheid van een stabiel magnetisch veld bevindt.
 
-Na de initialisatie van, `Door closed` op het scherm wordt weergegeven. Als er een wijziging in het veld magnetische is, de status gewijzigd in `Door opened`. Telkens wanneer de status van de deur verandert, ontvangt u een e-mailmelding. (Deze e-mailberichten kunnen tot vijf minuten om te worden ontvangen duren).
+Na de initialisatie wordt `Door closed` op het scherm weer gegeven. Als er een wijziging in het magnetische veld is, wordt de status gewijzigd in `Door opened`. Telkens wanneer de status van de deur verandert, ontvangt u een e-mail melding. (Het kan vijf minuten duren voordat deze e-mail berichten zijn ontvangen.)
 
-![Magnetische dicht bij de sensor: Klep gesloten](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "magnetische dicht bij de sensor: De deur is gesloten")
+![Magneten dicht bij de sensor: deur gesloten](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "Magneten dicht bij de sensor: deur gesloten")
 
-![Magneet weg van de sensor is verplaatst: Klep geopend](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "Magneet weg van de sensor verplaatst: De deur van geopend")
+![De magneet is verwijderd van de sensor: de deur is geopend](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "De magneet is verwijderd van de sensor: de deur is geopend")
 
 ## <a name="problems-and-feedback"></a>Problemen en feedback
 
-Als u problemen ondervindt, raadpleegt u de [IoT DevKit Veelgestelde vragen over](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) of verbinding maken met behulp van de volgende kanalen:
+Als u problemen ondervindt, raadpleegt u de [Veelgestelde vragen over IOT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) of maakt u verbinding met behulp van de volgende kanalen:
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een apparaat DevKit verbinden met uw externe controle van Azure IoT-oplossingsversnellers en de SendGrid-service gebruikt voor het verzenden van een e-mailbericht. Hier volgen de voorgestelde volgende stappen:
+U hebt geleerd hoe u een DevKit-apparaat verbindt met uw oplossings versneller van Azure IoT voor externe controle en de SendGrid-service gebruikt om een e-mail te verzenden. Hier volgen de voorgestelde volgende stappen:
 
-* [Overzicht van Azure accelerator voor externe controle IoT-oplossing](https://docs.microsoft.com/azure/iot-suite/)
-* [Een apparaat MXChip IoT DevKit verbinden met uw Azure IoT Central-toepassing](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Overzicht van de oplossing voor externe controle van Azure IoT](https://docs.microsoft.com/azure/iot-suite/)
+* [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](/azure/iot-central/core/howto-connect-devkit)

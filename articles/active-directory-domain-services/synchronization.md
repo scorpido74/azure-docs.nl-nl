@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 7d4546a6d2de01575825154ab30a909b76b3fc89
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171932"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474476"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Hoe objecten en referenties worden gesynchroniseerd in een Azure AD Domain Services beheerd domein
 
-Objecten en referenties in een door Azure Active Directory Domain Services (AD DS) beheerd domein kunnen lokaal in het domein worden gemaakt of worden gesynchroniseerd vanuit een Azure Active Directory-Tenant (AD). Wanneer u Azure AD DS voor het eerst implementeert, wordt een automatische eenrichtings synchronisatie geconfigureerd en gestart om de objecten te repliceren vanuit Azure AD. Deze eenrichtings synchronisatie blijft actief op de achtergrond om de Azure AD DS beheerde domein up-to-date te houden met eventuele wijzigingen van Azure AD.
+Objecten en referenties in een door Azure Active Directory Domain Services (AD DS) beheerd domein kunnen lokaal in het domein worden gemaakt of worden gesynchroniseerd vanuit een Azure Active Directory-Tenant (Azure AD). Wanneer u Azure AD DS voor het eerst implementeert, wordt een automatische eenrichtings synchronisatie geconfigureerd en gestart om de objecten te repliceren vanuit Azure AD. Deze eenrichtings synchronisatie blijft actief op de achtergrond om de Azure AD DS beheerde domein up-to-date te houden met eventuele wijzigingen van Azure AD. Er wordt geen synchronisatie uitgevoerd vanuit Azure AD DS terug naar Azure AD.
 
 In een hybride omgeving kunnen objecten en referenties van een on-premises AD DS domein worden gesynchroniseerd met Azure AD met behulp van Azure AD Connect. Zodra deze objecten zijn gesynchroniseerd met Azure AD, maakt de automatische achtergrond synchronisatie deze objecten en referenties beschikbaar voor toepassingen met behulp van het door Azure AD DS beheerde domein.
 
@@ -38,16 +38,18 @@ Het synchronisatie proces is een manier/unidirectioneel. Er is geen omgekeerde s
 
 De volgende tabel bevat enkele algemene kenmerken en hoe deze worden gesynchroniseerd met Azure AD DS.
 
-| Kenmerk in azure AD DS | Source | Opmerkingen |
+| Kenmerk in azure AD DS | Bron | Opmerkingen |
 |:--- |:--- |:--- |
 | UPN | Het *UPN* -kenmerk van de gebruiker in de Azure AD-Tenant | Het UPN-kenmerk van de Azure AD-Tenant wordt gesynchroniseerd naar Azure AD DS. De UPN is de meest betrouw bare manier om u aan te melden bij een door Azure AD DS beheerd domein. |
-| SAMAccountName | Het *mailNickname* -kenmerk van de gebruiker in azure AD-Tenant of automatisch gegenereerd | Het kenmerk *SAMAccountName* wordt afgeleid van het kenmerk *mailNickname* in de Azure AD-Tenant. Als meerdere gebruikers accounts hetzelfde mailnickname -kenmerk hebben, wordt de *SAMAccountName* automatisch gegenereerd. Als de mailnickname of het *UPN* -voor voegsel van de gebruiker langer is dan 20 tekens, wordt de *SAMAccountName* automatisch gegenereerd om te voldoen aan de limiet van 20 tekens voor *SAMAccountName* -kenmerken. |
+| SAMAccountName | Het *mailNickname* -kenmerk van de gebruiker in azure AD-Tenant of automatisch gegenereerd | Het kenmerk *SAMAccountName* wordt afgeleid van het kenmerk *mailNickname* in de Azure AD-Tenant. Als meerdere gebruikers accounts hetzelfde *mailNickname* -kenmerk hebben, wordt de *SAMAccountName* automatisch gegenereerd. Als de *mailNickname* of het *UPN* -voor voegsel van de gebruiker langer is dan 20 tekens, wordt de *SAMAccountName* automatisch gegenereerd om te voldoen aan de limiet van 20 tekens voor *SAMAccountName* -kenmerken. |
 | Wachtwoorden | Het wacht woord van de gebruiker van de Azure AD-Tenant | Verouderde wacht woord-hashes die zijn vereist voor NTLM-of Kerberos-verificatie, worden gesynchroniseerd vanuit de Azure AD-Tenant. Als de Azure AD-Tenant is geconfigureerd voor hybride synchronisatie met Azure AD Connect, worden deze wacht woord-hashes afgeleid van de on-premises AD DS omgeving. |
 | Primaire gebruikers-en groeps-SID | Automatisch gegenereerde | De primaire SID voor gebruikers-en groeps accounts wordt automatisch gegenereerd in azure AD DS. Dit kenmerk komt niet overeen met de primaire gebruiker/groeps-SID van het object in een on-premises AD DS omgeving. Dit komt niet overeen omdat de Azure AD DS beheerde domein een andere SID-naam ruimte heeft dan de on-premises AD DS domein. |
 | SID-geschiedenis voor gebruikers en groepen | On-premises primaire gebruikers-en groeps-SID | Het kenmerk *SidHistory* voor gebruikers en groepen in azure AD DS is zo ingesteld dat het overeenkomt met de overeenkomstige primaire gebruiker of groeps-sid in een on-premises AD DS omgeving. Deze functie helpt bij het opheffen van lift-en Shift-locaties naar Azure AD DS eenvoudiger, omdat u resources niet opnieuw moet gebruiken. |
 
 > [!TIP]
-> **Aanmelden bij het beheerde domein met de UPN-indeling** Het kenmerk *SAMAccountName* , zoals `CONTOSO\driley`, kan automatisch worden gegenereerd voor sommige gebruikers accounts in een door Azure AD DS beheerd domein. Automatische gegenereerde *SAMAccountName* van gebruikers kan afwijken van het UPN-voor voegsel, dus is niet altijd een betrouw bare manier om u aan te melden. Als meerdere gebruikers bijvoorbeeld hetzelfde mailnickname-kenmerk hebben of gebruikers over lange UPN-voor voegsels beschikken, kunnen de *SAMAccountName* voor deze gebruikers automatisch worden gegenereerd. Gebruik de UPN-indeling, zoals `driley@contoso.com`, om u op een betrouw bare manier aan te melden bij een door Azure AD DS beheerd domein.
+> **Aanmelden bij het beheerde domein met de UPN-indeling** Het kenmerk *SAMAccountName* , zoals `CONTOSO\driley`, kan automatisch worden gegenereerd voor sommige gebruikers accounts in een door Azure AD DS beheerd domein. Automatische gegenereerde *SAMAccountName* van gebruikers kan afwijken van het UPN-voor voegsel, dus is niet altijd een betrouw bare manier om u aan te melden.
+>
+> Als meerdere gebruikers bijvoorbeeld hetzelfde *mailNickname* -kenmerk hebben of gebruikers over lange UPN-voor voegsels beschikken, kunnen de *SAMAccountName* voor deze gebruikers automatisch worden gegenereerd. Gebruik de UPN-indeling, zoals `driley@contoso.com`, om u op een betrouw bare manier aan te melden bij een door Azure AD DS beheerd domein.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Kenmerk toewijzing voor gebruikers accounts
 
@@ -55,28 +57,28 @@ In de volgende tabel ziet u hoe specifieke kenmerken voor gebruikers objecten in
 
 | Gebruikers kenmerk in azure AD | Gebruikers kenmerk in azure AD DS |
 |:--- |:--- |
-| accountEnabled |userAccountControl (Hiermee wordt de ACCOUNT_DISABLED-bit ingesteld of gewist) |
-| city |l |
-| regio |CO |
-| Afdeling |Afdeling |
+| AccountEnabled |userAccountControl (Hiermee wordt de ACCOUNT_DISABLED-bit ingesteld of gewist) |
+| city |Winst |
+| Regio |collega's |
+| department |department |
 | displayName |displayName |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
-| givenName |givenName |
-| Functie |titel |
+| GivenName |GivenName |
+| JobTitle |titel |
 | mail |mail |
-| mailNickname |msDS-AzureADMailNickname |
-| mailNickname |SAMAccountName (kan soms automatisch worden gegenereerd) |
-| mobiele |mobiele |
+| MailNickname |msDS-AzureADMailNickname |
+| MailNickname |SAMAccountName (kan soms automatisch worden gegenereerd) |
+| provider |provider |
 | id |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Sid |
 | passwordPolicies |userAccountControl (Hiermee wordt de DONT_EXPIRE_PASSWORD-bit ingesteld of gewist) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
-| Postcode |Postcode |
+| Code |Code |
 | preferredLanguage |preferredLanguage |
-| toestand |St |
+| state |& |
 | streetAddress |streetAddress |
-| Achternaam |SN |
-| telephoneNumber |telephoneNumber |
+| surname |SN |
+| TelephoneNumber |TelephoneNumber |
 | userPrincipalName |userPrincipalName |
 
 ### <a name="attribute-mapping-for-groups"></a>Kenmerk toewijzing voor groepen
@@ -88,7 +90,7 @@ In de volgende tabel ziet u hoe specifieke kenmerken voor groeps objecten in azu
 | displayName |displayName |
 | displayName |SAMAccountName (kan soms automatisch worden gegenereerd) |
 | mail |mail |
-| mailNickname |msDS-AzureADMailNickname |
+| MailNickname |msDS-AzureADMailNickname |
 | id |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |Sid |
 | securityEnabled |groupType |
@@ -112,7 +114,7 @@ Zoals eerder is beschreven, is er geen synchronisatie van Azure AD DS terug naar
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Wat is niet gesynchroniseerd met Azure AD DS
 
-De volgende objecten of kenmerken worden niet gesynchroniseerd met Azure AD of naar Azure AD DS:
+De volgende objecten of kenmerken worden niet gesynchroniseerd van een on-premises AD DS omgeving naar Azure AD of Azure AD DS:
 
 * **Uitgesloten kenmerken:** U kunt ervoor kiezen om bepaalde kenmerken uit te sluiten van synchronisatie met Azure AD vanuit een on-premises AD DS omgeving met behulp van Azure AD Connect. Deze uitgesloten kenmerken zijn niet beschikbaar in azure AD DS.
 * **Groeps beleid:** Groeps beleid dat is geconfigureerd in een on-premises AD DS omgeving, wordt niet gesynchroniseerd met Azure AD DS.

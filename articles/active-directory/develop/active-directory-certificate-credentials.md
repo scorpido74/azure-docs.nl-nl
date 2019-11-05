@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1184d210f5b7ea25b9f73cbd70b5f960402126a1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803536"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473968"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certificaat referenties voor toepassings verificatie
 
@@ -101,7 +101,7 @@ U kunt de certificaat referentie koppelen aan de client toepassing in azure AD v
 In de registratie van de Azure-app voor de client toepassing:
 1. Selecteer **certificaten & geheimen**. 
 2. Klik op **certificaat uploaden** en selecteer het certificaat bestand dat u wilt uploaden.
-3. Klik op **Add**.
+3. Klik op **Toevoegen**.
   Zodra het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven. 
 
 ### <a name="updating-the-application-manifest"></a>Het toepassings manifest bijwerken
@@ -133,5 +133,8 @@ In de registratie van de Azure-app voor de client toepassing:
    De eigenschap `keyCredentials` heeft meerdere waarden, dus u kunt meerdere certificaten uploaden voor uitgebreid sleutel beheer.
    
 ## <a name="code-sample"></a>Codevoorbeeld
+
+> [!NOTE]
+> U moet de X5T-header berekenen door de hash van het certificaat te gebruiken en deze te converteren naar een base64-teken reeks. C# Dit ziet er ongeveer als volgt uit: `System.Convert.ToBase64String(cert.GetCertHash());`
 
 Het code voorbeeld voor het [verifiëren van Azure AD in daemon-apps met certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) met behulp van de `New-SelfSignedCertificate` Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.

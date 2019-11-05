@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Patroon. een wille keurige entiteit-LUIS'
+title: 'Zelf studie: patroon. elke entiteit-LUIS'
 titleSuffix: Azure Cognitive Services
 description: Gebruik de entiteit pattern.any om gegevens te extraheren uit utterances die goed zijn opgemaakt en waar het einde van de gegevens eenvoudig kan worden verward met de resterende woorden van de utterance.
 services: cognitive-services
@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390284"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499430"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Zelfstudie: Vrije vorm-gegevens ophalen met Pattern.any-entiteit
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Zelf studie: vrije-vorm gegevens uitpakken met een patroon. elke entiteit
 
 In deze zelfstudie gebruikt u de entiteit pattern.any om gegevens te extraheren uit utterances die goed zijn opgemaakt en waar het einde van de gegevens eenvoudig kan worden verward met de resterende woorden van de utterance. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -117,7 +119,7 @@ De entiteit Pattern.any extraheert entiteiten met verschillende lengten. Dit wer
 
     Als u rekening wilt houden met variaties voor het formulier, zoals enkele aanhalingstekens in plaats van dubbele aanhalingstekens of een punt in plaats van een vraagteken, moet u voor elke variatie een nieuw patroon maken.
 
-## <a name="train-the-luis-app"></a>LUIS-app trainen
+## <a name="train-the-luis-app"></a>LUIS-app inleren
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 

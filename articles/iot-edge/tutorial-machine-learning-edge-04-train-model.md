@@ -1,6 +1,6 @@
 ---
-title: Trainen en implementeren van een model - Machine Learning in Azure IoT Edge | Microsoft Docs
-description: Een machine learning-model met behulp van Azure Machine Learning te trainen en het model als een containerinstallatiekopie die kan worden geïmplementeerd als een Azure IoT Edge-Module in het pakket.
+title: Een model-Machine Learning trainen en implementeren op Azure IoT Edge | Microsoft Docs
+description: Train een machine learning model met behulp van Azure Machine Learning en verpakt het model als een container installatie kopie die kan worden geïmplementeerd als een Azure IoT Edge-module.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,121 +8,121 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: acf0b1984eb3e68858be6ed68731612448e672f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6e1ee1fda658ef0884975e4055891f705c4f5058
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432694"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493986"
 ---
-# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Zelfstudie: Een Azure Machine Learning-model trainen en implementeren
+# <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Zelf studie: een Azure Machine Learning model trainen en implementeren
 
 > [!NOTE]
-> In dit artikel maakt deel uit van een reeks voor een zelfstudie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel zijn ontvangen, u wordt aangeraden te beginnen met de [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
+> Dit artikel maakt deel uit van een reeks voor een zelf studie over het gebruik van Azure Machine Learning op IoT Edge. Als u rechtstreeks in dit artikel hebt gearriveerd, raden we u aan om te beginnen met het [eerste artikel](tutorial-machine-learning-edge-01-intro.md) in de reeks voor de beste resultaten.
 
-In dit artikel, we gebruiken Azure-notitieblokken eerst naar een machine learning-model met behulp van Azure Machine Learning te trainen en vervolgens het pakket dat model als een containerinstallatiekopie die kan worden geïmplementeerd als een Azure IoT Edge-Module. De Azure-Notebooks profiteren van een Azure Machine Learning-service-werkruimte en dit is een fundamentele blok gebruikt om te experimenteren en implementeren van machine learning-modellen trainen.
+In dit artikel gebruiken we Azure Notebooks eerst om een machine learning model met behulp van Azure Machine Learning te trainen en die model vervolgens te verpakken als een container installatie kopie die kan worden geïmplementeerd als een Azure IoT Edge-module. De Azure Notebooks profiteren van een Azure Machine Learning-werk ruimte, een basis blok dat wordt gebruikt om machine learning modellen te experimenteren, te trainen en te implementeren.
 
-De activiteiten in dit gedeelte van de zelfstudie zijn verdeeld in twee notitieblokken.
+De activiteiten in dit deel van de zelf studie zijn verdeeld over twee notitie blokken.
 
-* **01-turbofan\_regression.ipynb:** Dit notitieblok begeleid bij de stappen voor het trainen en publiceren van een model met behulp van Azure Machine Learning. Ruime zin is zijn de vereiste stappen:
+* **01-turbofan\_regressie. ipynb:** In dit notitie blok worden de stappen beschreven voor het trainen en publiceren van een model met behulp van Azure Machine Learning. De volgende stappen zijn breed:
 
-  1. Downloaden en verkennen van de trainingsgegevens voorbereiden
-  2. Gebruik de service-werkruimte maken en uitvoeren van een machine learning-experiment
-  3. Evalueren van de modelresultaten van het experiment
-  4. Het beste model publiceren naar de werkruimte van de service
+  1. De trainings gegevens downloaden, voorbereiden en verkennen
+  2. De service werkruimte gebruiken om een machine learning experiment te maken en uit te voeren
+  3. De model resultaten van het experiment evalueren
+  4. Het beste model naar de service werkruimte publiceren
 
-* **02-turbofan\_deploy\_model.ipynb:** Dit notitieblok neemt het model in de vorige notebook gemaakt en gebruikt voor het maken van een containerinstallatiekopie die kan worden geïmplementeerd voor een Azure IoT Edge-apparaat.
+* **02-turbofan\_\_model implementeren. ipynb:** Dit notitie blok haalt het model op dat in het vorige notitie blok is gemaakt en gebruikt dit om een container installatie kopie te maken die kan worden geïmplementeerd op een Azure IoT Edge apparaat.
 
-  1. Een scoring-script voor het model maken
-  2. Maken en publiceren van de installatiekopie
-  3. De installatiekopie implementeert als een webservice op Azure Container Instance
-  4. De web-service gebruiken om te valideren van het model en de installatiekopie werken zoals verwacht
+  1. Een score script maken voor het model
+  2. De installatie kopie maken en publiceren
+  3. De installatie kopie implementeren als webservice in azure container instance
+  4. De webservice gebruiken om het model te valideren en de installatie kopie werkt zoals verwacht
 
-De stappen in dit artikel kunnen doorgaans worden uitgevoerd door de datawetenschappers.
+De stappen in dit artikel worden mogelijk doorgaans uitgevoerd door gegevens wetenschappers.
 
-## <a name="set-up-azure-notebooks"></a>Azure-notitieblokken instellen
+## <a name="set-up-azure-notebooks"></a>Azure Notebooks instellen
 
-We gebruiken Azure-notitieblokken voor het hosten van de twee Jupyter Notebooks en ondersteunende bestanden. Hier we maken en configureren van een Azure-notitieblokken-project. Als u niet de Jupyter-en/of Azure-notitieblokken gebruikt hebt, zijn hier een aantal inleidende documenten:
+We gebruiken Azure Notebooks om de twee Jupyter-notebooks en ondersteunende bestanden te hosten. Hier maken en configureren we een Azure Notebooks project. Als u Jupyter en/of Azure Notebooks niet hebt gebruikt, zijn hier enkele inleidende documenten:
 
-* **Snelstartgids:** [Een notebook maken en delen](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **Zelfstudie:** [Maken en uitvoeren van een Jupyter-notebook met Python](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* **Snelstartgids:** [een notitie blok maken en delen](../notebooks/quickstart-create-share-jupyter-notebook.md)
+* **Zelf studie:** [een Jupyter-notebook maken en uitvoeren met python](../notebooks/tutorial-create-run-jupyter-notebook.md)
 
-Als met de ontwikkelaar van virtuele machine, met behulp van Azure notebooks zorgt ervoor dat een consistente omgeving voor de oefening.
+Net als bij de ontwikkel aars van de virtuele machine zorgt Azure-notebooks voor een consistente omgeving voor de oefening.
 
 > [!NOTE]
-> Eenmaal hebt ingesteld, wordt de service Azure notitieblokken toegankelijk vanaf elke virtuele machine. Tijdens de installatie, moet u de ontwikkeling van virtuele machine waaraan alle van de bestanden die u nodig hebt.
+> Zodra de Azure Notebooks-service is ingesteld, kan deze vanaf elke computer worden geopend. Tijdens de installatie moet u de virtuele machine voor ontwikkeling gebruiken, die alle bestanden bevat die u nodig hebt.
 
-### <a name="create-an-azure-notebooks-account"></a>Een Azure-notitieblokken-account maken
+### <a name="create-an-azure-notebooks-account"></a>Een Azure Notebooks-account maken
 
-Azure Notebook-accounts zijn onafhankelijk van de Azure-abonnementen. Voor het gebruik van Azure-laptops, moet u een account maken.
+Azure notebook-accounts zijn onafhankelijk van Azure-abonnementen. Als u Azure Notebooks wilt gebruiken, moet u een account maken.
 
-1. Navigeer naar [Azure notitieblokken](https://notebooks.azure.com).
+1. Navigeer naar [Azure-notebooks](https://notebooks.azure.com).
 
-2. Klik op **aanmelden** in de bovenste, rechter hoek van de pagina.
+2. Klik op **Aanmelden** in de rechter bovenhoek van de pagina.
 
-3. Meld u aan met uw werk of school-account (Azure Active Directory) of uw persoonlijke account (Microsoft-Account).
+3. Meld u aan met uw werk-of school account (Azure Active Directory) of uw persoonlijke account (micro soft-account).
 
-4. Als u Azure-notitieblokken voordat u niet hebt gebruikt, wordt u gevraagd om toegang voor de Azure-notitieblokken-app te verlenen.
+4. Als u Azure Notebooks nog niet eerder hebt gebruikt, wordt u gevraagd toegang te verlenen voor de Azure Notebooks-app.
 
-5. Een gebruikers-ID voor Azure-notitieblokken maken.
+5. Maak een gebruikers-ID voor Azure Notebooks.
 
-### <a name="upload-jupyter-notebooks-files"></a>Jupyter-notebooks bestanden uploaden
+### <a name="upload-jupyter-notebooks-files"></a>Jupyter-notitieblok bestanden uploaden
 
-In deze stap wordt een nieuw project voor de Azure-notitieblokken maken en bestanden uploaden naar het. Met name zijn de bestanden die we uploaden:
+In deze stap maken we een nieuw Azure Notebooks project en uploaden ze bestanden. De bestanden die we uploaden, zijn met name:
 
-* **01-turbofan\_regression.ipynb**: Jupyter notebook bestand die helpt bij het proces van het downloaden van de gegevens die worden gegenereerd door de basis van het apparaat van de Azure storage-account; verkennen en voor te bereiden voor de classificatie; training het model trainen testen van de gegevens met behulp van de testgegevensset gevonden in de Test\_FD003.txt bestand; ten slotte het opslaan van de classificatie voor het model en in de werkruimte van de Machine Learning-service.
+* **01-turbofan\_regressie. ipynb**: Jupyter notebook-bestand dat het proces voor het downloaden van de gegevens die zijn gegenereerd door de apparaat-harnas vanuit het Azure-opslag account. het verkennen en voorbereiden van de gegevens voor het trainen van de classificatie; het model trainen; testen van de gegevens met behulp van de gegevensset test die is gevonden in de test\_FD003. txt-bestand. en ten slotte het classificatie model op te slaan in de werk ruimte Machine Learning service.
 
-* **02-turbofan\_deploy\_model.ipynb:** Jupyter-notebook die u bij het proces begeleidt van het gebruik van de classificatie-model dat is opgeslagen in de werkruimte van de Machine Learning-service voor het produceren van een containerinstallatiekopie. Nadat de installatiekopie is gemaakt, wordt de notebook wordt beschreven hoe u door het proces van het implementeren van de installatiekopie als een webservice, zodat u kunt controleren of deze zoals werkt verwacht. De installatiekopie van het gevalideerde wordt geïmplementeerd op de Edge-apparaat in de [maken en implementeren van aangepaste IoT Edge-modules](tutorial-machine-learning-edge-06-custom-modules.md) gedeelte van deze zelfstudie.
+* **02-turbofan\_\_model implementeren. ipynb:** Jupyter notebook dat u helpt bij het proces van het gebruik van het classificatie model dat is opgeslagen in de werk ruimte van de Machine Learning-service voor het produceren van een container installatie kopie. Zodra de installatie kopie is gemaakt, wordt u door het proces van de implementatie van de installatie kopie als een webservice geleid, zodat u kunt valideren dat deze werkt zoals verwacht. De gevalideerde installatie kopie wordt geïmplementeerd op het IoT Edge apparaat in het gedeelte [aangepaste IOT Edge modules maken en implementeren](tutorial-machine-learning-edge-06-custom-modules.md) in deze zelf studie.
 
-* **Test\_FD003.txt:** Dit bestand bevat de gegevens die we onze test ingesteld gebruiken bij het valideren van onze getraind classificatie. We hebben gekozen om de testgegevens als de oorspronkelijke wedstrijd bedoeld als onze test is ingesteld voor het gemak van het voorbeeld te gebruiken.
+* **Test\_FD003. txt:** Dit bestand bevat de gegevens die we als onze testset gebruiken bij het valideren van onze getrainde classificatie. We hebben ervoor gekozen om de test gegevens te gebruiken zoals is opgegeven voor de oorspronkelijke wedstrijd als onze test die is ingesteld voor het gemak van het voor beeld.
 
-* **RUL\_FD003.txt:** Dit bestand bevat de resterende Levensduur voor de laatste cyclus van elk apparaat in de Test\_FD003.txt-bestand. Zie de **Leesmij.txt** en de **schade doorgifte Modeling.pdf** bestanden in de C:\\bron\\IoTEdgeAndMlSample\\gegevens\\Turbofan voor een gedetailleerde uitleg van de gegevens.
+* **Resterende levens duur\_FD003. txt:** Dit bestand bevat de resterende levens duur voor de laatste fase van elk apparaat in de test\_het bestand FD003. txt. Raadpleeg het **bestand README. txt** en het model voor het **door geven van beschadigingen. PDF-** bestanden in de C:\\source\\IoTEdgeAndMlSample\\data\\turbofan voor een gedetailleerde uitleg van de gegevens.
 
-* **Utils.py:** Bevat een set functies voor Python-hulpprogramma voor het werken met gegevens. Het eerste notitieblok bevat een gedetailleerde beschrijving van de functies.
+* **Utils.py:** Bevat een set python-hulp programma functies voor het werken met gegevens. Het eerste notitie blok bevat een gedetailleerde uitleg van de functies.
 
-* **README.md:** Leesmij-bestand met een beschrijving van het gebruik van de notebooks.
+* **README.MD:** Leesmij-bestand met een beschrijving van het gebruik van de notitie blokken.
 
-Een nieuw project maken en de bestanden uploaden naar uw laptop.
+Maak een nieuw project en upload de bestanden naar uw notitie blok.
 
-1. Selecteer **Mijn projecten** in de bovenste menubalk.
+1. Selecteer **Mijn projecten** in de bovenste menu balk.
 
-1. Selecteer **+ nieuw Project**. Geef een naam en een ID. Er is niet nodig voor het project op openbaar of hebt u een Leesmij-bestand.
+1. Selecteer **+ Nieuw project**. Geef een naam en een ID op. Het is niet nodig om het project openbaar te maken of een Leesmij te hebben.
 
-1. Selecteer **uploaden** en kies **van Computer**.
+1. Selecteer **uploaden** en kies **van computer**.
 
 1. Selecteer **bestanden kiezen**.
 
-1. Navigeer naar **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Selecteer alle bestanden en klikt u op **Open**.
+1. Navigeer naar **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Selecteer alle bestanden en klik op **openen**.
 
-1. Selecteer **uploaden** moet beginnen met uploaden en selecteer vervolgens **gedaan** zodra het proces voltooid is.
+1. Selecteer **uploaden** om te beginnen met uploaden en selecteer vervolgens **gereed** zodra het proces is voltooid.
 
-## <a name="run-azure-notebooks"></a>Azure-notitieblokken uitvoeren
+## <a name="run-azure-notebooks"></a>Azure Notebooks uitvoeren
 
-Nu het project is gemaakt, voert de **01-turbofan\_regression.ipynb** notebook.
+Nu het project is gemaakt, voert u het **turbofan van 01-\_regressie. ipynb** uit.
 
-1. Selecteer in de projectpagina turbofan **01-turbofan\_regression.ipynb**.
+1. Selecteer op de pagina turbofan-project **01-turbofan\_regressie. ipynb**.
 
-    ![Selecteer eerst notitieblok om uit te voeren](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    ![Selecteer het eerste notitie blok dat moet worden uitgevoerd](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-2. Als u hierom wordt gevraagd, kiest u de Python 3.6 Kernel in het dialoogvenster en selecteer **ingesteld Kernel**.
+2. Als hierom wordt gevraagd, kiest u de python 3,6-kernel in het dialoog venster en selecteert u **kernel instellen**.
 
-3. Als de notebook wordt vermeld als **niet wordt vertrouwd**, klikt u op de **niet wordt vertrouwd** widget in de rechterbovenhoek van de notebook. Wanneer het dialoogvenster weergegeven wordt, selecteert u **vertrouwen**.
+3. Als het notitie blok niet wordt **vertrouwd**, klikt u op het **niet-vertrouwde** object in de rechter bovenhoek van het notitie blok. Wanneer het dialoog venster wordt geopend, selecteert u **vertrouwen**.
 
-4. Volg de instructies in het notitieblok.
+4. Volg de instructies in het notitie blok.
 
-    * `Ctrl + Enter` wordt uitgevoerd een cel.
-    * `Shift + Enter` een cel wordt uitgevoerd en gaat u naar de volgende cel.
-    * Wanneer een cel wordt uitgevoerd, heeft deze een sterretje tussen de vierkante haken, zoals **[\*]** . Wanneer deze bewerking voltooid is, het sterretje door een getal vervangen wordt en relevante uitvoer mogelijk worden hieronder weergegeven. Aangezien cellen vaak op het werk van de vorige adressen maken, kan slechts één cel tegelijk uitgevoerd.
+    * `Ctrl + Enter` een cel wordt uitgevoerd.
+    * `Shift + Enter` wordt een cel uitgevoerd en wordt naar de volgende cel genavigeerd.
+    * Wanneer een cel wordt uitgevoerd, heeft deze een sterretje tussen de vier Kante haken, zoals **[\*]** . Wanneer de asterisk is voltooid, wordt het sterretje vervangen door een aantal en de relevante uitvoer kan hieronder worden weer gegeven. Omdat cellen vaak worden gebaseerd op het werk van de voor gaande, kan er slechts één cel tegelijk worden uitgevoerd.
 
-5. Wanneer u klaar bent met het uitvoeren de **01-turbofan\_regression.ipynb** laptop, Ga terug naar de pagina van het project.
+5. Wanneer u klaar bent met het uitvoeren van de **01-turbofan\_regressie. ipynb** -notebook, gaat u terug naar de pagina van het project.
 
-6. Open **02-turbofan\_implementeren\_model.ipynb** en Herhaal de stappen in deze sectie voor het uitvoeren van het tweede notitieblok.
+6. Open **02-turbofan\_implementeer\_model. ipynb** en herhaal de stappen in deze sectie om de tweede notebook uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel gebruikt we twee Jupyter-Notebooks die worden uitgevoerd in Azure-notitieblokken gebruiken de gegevens van de turbofan-apparaten met het trainen van een resterende nuttige levensduur (RUL)-classificatie, classificatie opslaan als een model, om een containerinstallatiekopie te maken en te implementeren en testen van de afbeelding als een web-se rvice.
+In dit artikel hebben we twee Jupyter-notebooks gebruikt die in Azure Notebooks worden uitgevoerd om de gegevens van de turbofan-apparaten te gebruiken om een resterende bruikbare levens duur (resterende levens duur) te trainen, om de classificatie als een model op te slaan, een container installatie kopie te maken en de installatie kopie te implementeren en te testen als een web-se rvice.
 
-Doorgaan met het volgende artikel voor het maken van een IoT Edge-apparaat.
+Ga door naar het volgende artikel om een IoT Edge apparaat te maken.
 
 > [!div class="nextstepaction"]
-> [Een IoT Edge-apparaat configureren](tutorial-machine-learning-edge-05-configure-edge-device.md)
+> [Een IoT Edge apparaat configureren](tutorial-machine-learning-edge-05-configure-edge-device.md)

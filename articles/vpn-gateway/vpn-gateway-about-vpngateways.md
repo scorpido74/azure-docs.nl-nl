@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 10/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799000"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495689"
 ---
 # <a name="what-is-vpn-gateway"></a>Wat is VPN Gateway?
 
@@ -21,11 +21,13 @@ Een VPN-gateway is een speciaal soort virtueel-netwerkgateway die wordt gebruikt
 
 ## <a name="whatis"></a>Wat is een virtuele netwerkgateway?
 
-Een gateway voor een virtueel netwerk bestaat uit twee of meer virtuele machines die zijn geïmplementeerd voor een specifiek subnet dat u maakt. Dit wordt het *gatewaysubnet* genoemd. De virtuele machines die zich in het gatewaysubnet bevinden, worden gemaakt wanneer u de virtuele netwerkgateway maakt. Virtuele machines uit virtuele netwerkgateways bevatten routeringstabellen en gatewayservices speciaal voor de bijbehorende gateway. U kunt de virtuele machines die deel uitmaken van de virtuele netwerkgateway niet rechtstreeks configureren, en u mag nooit aanvullende resources implementeren op het gatewaysubnet.
+Een virtuele netwerk gateway bestaat uit twee of meer virtuele machines die zijn geïmplementeerd op een specifiek subnet dat u maakt, het *Gateway-subnet*. Virtuele netwerk gateway-Vm's bevatten routerings tabellen en voeren specifieke Gateway Services uit. Deze Vm's worden gemaakt wanneer u de virtuele netwerk gateway maakt. U kunt de Vm's die deel uitmaken van de gateway van het virtuele netwerk niet rechtstreeks configureren.
 
-VPN-gateways kunnen worden geïmplementeerd in Azure-Beschikbaarheidszones. Dit zorgt voor tolerantie, schaalbaarheid en hogere mate van beschikbaarheid naar virtuele netwerkgateways. Implementeren van gateways in Azure-Beschikbaarheidszones fysiek en logisch, scheidt gateways binnen een regio, terwijl u uw on-premises netwerkconnectiviteit naar Azure beveiligt tegen storingen van de zone-niveau. Zie [over zone-redundante virtuele netwerkgateways in Azure-Beschikbaarheidszones](about-zone-redundant-vnet-gateways.md)
+Een instelling die u configureert voor een virtuele netwerk gateway is het gateway type. Met het gateway type geeft u op hoe de virtuele netwerk gateway wordt gebruikt en welke acties de gateway gaat uitvoeren. Het gateway type ' VPN ' geeft aan dat het type van de virtuele netwerk gateway dat is gemaakt een VPN-gateway is, in plaats van een ExpressRoute-gateway. Een virtueel netwerk kan twee virtuele netwerk gateways hebben. Eén VPN-gateway en één ExpressRoute-gateway, zoals het geval is met [naast elkaar bestaande](#coexisting) verbindings configuraties. Zie [Soorten gateways](vpn-gateway-about-vpn-gateway-settings.md#gwtype) voor meer informatie.
 
-Het maken van een gateway voor een virtueel netwerk kan tot 45 minuten duren. Wanneer u een gateway voor een virtueel netwerk maakt, worden gateway-VM's in het gatewaysubnet geïmplementeerd en geconfigureerd met de instellingen die u opgeeft. Een van de instellingen die u configureert, is het gatewaytype. Het gatewaytype 'vpn' geeft aan dat het type van de gemaakte virtuele netwerkgateway, een VPN-gateway is. Nadat u een VPN-gateway hebt gemaakt, kunt u een IPsec/IKE-VPN-tunnelverbinding maken tussen die VPN-gateway en een andere VPN-gateway (VNet-naar-VNet) of een cross-premises IPsec/IKE-VPN-tunnelverbinding maken tussen de VPN-gateway en een on-premises VPN-apparaat (site-naar-site). U kunt ook een punt-naar-Site VPN-verbinding (VPN via OpenVPN, IKEv2 of SSTP), waarmee u verbinding maakt met het virtuele netwerk vanaf een externe locatie, zoals vanuit een conferentie of thuis maken.
+VPN-gateways kunnen in Azure-beschikbaarheidszones worden geïmplementeerd. Dit brengt tolerantie, schaal baarheid en hogere Beschik baarheid voor virtuele netwerk gateways. Het implementeren van gateways in Azure-beschikbaarheidszones fysiek en logisch scheidt gateways binnen een regio, terwijl uw on-premises netwerk connectiviteit met Azure wordt beschermd tegen storingen op zone niveau. Zie [info over zone-redundante virtuele netwerk gateways in azure-beschikbaarheidszones](about-zone-redundant-vnet-gateways.md)
+
+Het maken van een gateway voor een virtueel netwerk kan tot 45 minuten duren. Wanneer u een gateway voor een virtueel netwerk maakt, worden gateway-VM's in het gatewaysubnet geïmplementeerd en geconfigureerd met de instellingen die u opgeeft. Nadat u een VPN-gateway hebt gemaakt, kunt u een IPsec/IKE-VPN-tunnelverbinding maken tussen die VPN-gateway en een andere VPN-gateway (VNet-naar-VNet) of een cross-premises IPsec/IKE-VPN-tunnelverbinding maken tussen de VPN-gateway en een on-premises VPN-apparaat (site-naar-site). U kunt ook een punt-naar-site-VPN-verbinding (VPN via OpenVPN, IKEv2 of SSTP) maken, waarmee u verbinding kunt maken met uw virtuele netwerk vanaf een externe locatie, zoals vanuit een conferentie of thuis.
 
 ## <a name="configuring"></a>Een VPN-gateway configureren
 
@@ -51,7 +53,7 @@ De volgende tabel kan u helpen bij het kiezen van de beste connectiviteitsoptie 
 
 ## <a name="gwsku"></a>Gateway-SKU's
 
-Wanneer u een virtuele netwerkgateway maakt, geeft u de gewenste gateway-SKU op. Selecteer de SKU die aan uw vereisten voldoet op basis van de typen werkbelasting, doorvoer, functies en SLA's. Zie voor meer informatie over gateway-SKU, met inbegrip van ondersteunde functies, productie en dev-test- en configuratiestappen, het [instellingen voor VPN Gateway - Gateway-SKU's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) artikel. Zie voor informatie over het verouderde SKU, [werken met verouderde SKU's](vpn-gateway-about-skus-legacy.md).
+Wanneer u een virtuele netwerkgateway maakt, geeft u de gewenste gateway-SKU op. Selecteer de SKU die aan uw vereisten voldoet op basis van de typen werkbelasting, doorvoer, functies en SLA's. Zie het artikel [VPN gateway-Gateway-sku's](vpn-gateway-about-vpn-gateway-settings.md#gwsku) voor meer informatie over Gateway-sku's, waaronder ondersteunde functies, productie en dev-test en configuratie stappen. Zie [werken met oudere sku's](vpn-gateway-about-skus-legacy.md)voor meer informatie over oudere sku's.
 
 ### <a name="benchmark"></a>Gateway-SKU's per tunnel, verbinding en doorvoer
 
@@ -59,7 +61,7 @@ Wanneer u een virtuele netwerkgateway maakt, geeft u de gewenste gateway-SKU op.
 
 ## <a name="diagrams"></a>Diagrammen over de verbindingstopologie
 
-Het is belangrijk te weten dat er verschillende configuraties beschikbaar zijn voor VPN-gatewayverbindingen. U moet bepalen welke configuratie het beste aansluit bij uw behoeften. In de gedeelten hieronder kunt u informatie en topologiediagrammen over de volgende VPN-gatewayverbindingen bekijken: De volgende gedeelten bevatten tabellen met de volgende informatie:
+Het is belangrijk te weten dat er verschillende configuraties beschikbaar zijn voor VPN-gatewayverbindingen. U moet bepalen welke configuratie het beste aansluit bij uw behoeften. In de gedeelten hieronder kunt u informatie en topologiediagrammen over de volgende VPN-gatewayverbindingen bekijken. In de tabellen worden de volgende zaken weergegeven:
 
 * Beschikbaar implementatiemodel
 * Beschikbare configuratiehulpprogramma's
@@ -85,7 +87,7 @@ Dit type verbinding is een variatie op de site-naar-site-verbinding. U maakt mee
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="P2S"></a>Punt-naar-Site-VPN
+## <a name="P2S"></a>Punt-naar-site-VPN
 
 Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke clientcomputer een beveiligde verbinding maken met uw virtuele netwerk. Een P2S-verbinding wordt tot stand gebracht door deze te starten vanaf de clientcomputer. Deze oplossing is handig voor telewerkers die verbinding willen maken met een Azure VNet vanaf een externe locatie, zoals vanaf thuis of een conferentie. P2S-VPN is ook een uitstekende oplossing in plaats van een S2S-VPN wanneer u maar een paar clients hebt die verbinding moeten maken met een VNet.
 

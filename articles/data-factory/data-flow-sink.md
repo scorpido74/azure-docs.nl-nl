@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: da8dc332794cadc0eb6677390c566e67a6df6f3f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882446"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519315"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Sink-trans formatie voor een gegevens stroom
-
-
 
 Nadat u uw gegevens stroom hebt getransformeerd, kunt u de gegevens in een doel-gegevensset opvangen. Kies in de Sink-trans formatie een definitie van de gegevensset voor de doel uitvoer gegevens. U kunt zoveel Sink-trans formaties hebben als uw gegevens stroom vereist.
 
@@ -107,6 +105,13 @@ Data base-instellingen kiezen:
 
 > [!NOTE]
 > Wanneer u rijen in de data base-Sink bijwerkt of verwijdert, moet u de sleutel kolom instellen. Met deze instelling kan de Alter-Row trans formatie de unieke rij in de gegevens verplaatsings bibliotheek (DML) bepalen.
+
+### <a name="cosmosdb-specific-settings"></a>Specifieke instellingen voor CosmosDB
+
+Wanneer u gegevens in CosmosDB, moet u rekening houden met de volgende extra opties:
+
+* Partitie sleutel: dit is een verplicht veld. Voer een teken reeks in die de partitie sleutel voor uw verzameling vertegenwoordigt. Voorbeeld: ```/movies/title```
+* Door Voer: Stel een optionele waarde voor het aantal RUs in dat u wilt Toep assen op uw CosmosDB-verzameling voor elke uitvoering van deze gegevens stroom. Minimum is 400.
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u de gegevens stroom hebt gemaakt, voegt u een [gegevens stroom activiteit toe aan uw pijp lijn](concepts-data-flow-overview.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: cefd0653985e4340e62e0ea56f73ff2cabf5741b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 985823e5aa806244596277c982cc129554d890f2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312129"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489046"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuele WAN-partners en virtuele-hub-locaties
 
@@ -40,7 +40,7 @@ Sommige connectiviteits partners kunnen de automatisering uitbreiden om de virtu
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-De volgende partners zijn zou op ons schema voor de nabije toekomst: Arista, F5 Networks, Fortinet, Silver-piek, Velocloud, nuage Nokia.
+De volgende partners zijn zou op ons schema voor de nabije toekomst: Arista, F5 Networks, Velocloud.
 
 ## <a name="locations"></a>Maplocaties
 

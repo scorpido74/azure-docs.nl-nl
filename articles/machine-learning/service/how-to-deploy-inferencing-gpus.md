@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 07/24/2019
-ms.openlocfilehash: d0e0c5601a6cddf936604df6d5b48b8bf48e7c8d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: 2e088557bf61141d3ea3cbeb25d53f711a71fd97
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162434"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496870"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken om een model met GPU te implementeren als een webservice. De informatie in dit artikel is gebaseerd op het implementeren van een model in azure Kubernetes service (AKS). Het AKS-cluster biedt een GPU-resource die wordt gebruikt door het model voor demijnen.
 
@@ -132,11 +133,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Dit bestand heeft de `score.py`naam. Voor meer informatie over invoer scripts, Zie [hoe en waar u wilt implementeren](how-to-deploy-and-where.md).
+Dit bestand heeft de naam `score.py`. Voor meer informatie over invoer scripts, Zie [hoe en waar u wilt implementeren](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>De Conda-omgeving definiëren
 
-Het Conda-omgevings bestand bevat de afhankelijkheden voor de service. Het bevat afhankelijkheden die worden vereist door het model en het script. De volgende YAML definieert de omgeving voor een tensor flow-model. Hiermee wordt `tensorflow-gpu`opgegeven, waarmee gebruik wordt gemaakt van de GPU die in deze implementatie wordt gebruikt:
+Het Conda-omgevings bestand bevat de afhankelijkheden voor de service. Het bevat afhankelijkheden die worden vereist door het model en het script. De volgende YAML definieert de omgeving voor een tensor flow-model. Hiermee geeft u `tensorflow-gpu`op. Dit maakt gebruik van de GPU die wordt gebruikt in deze implementatie:
 
 ```yaml
 name: project_environment
@@ -209,7 +210,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Als het `InferenceConfig` object heeft `enable_gpu=True`, moet de `deployment_target` para meter verwijzen naar een cluster dat een GPU biedt. Anders mislukt de implementatie.
+> Als het `InferenceConfig`-object `enable_gpu=True`heeft, moet de `deployment_target` para meter verwijzen naar een cluster dat een GPU biedt. Anders mislukt de implementatie.
 
 Zie de referentie documentatie voor [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)voor meer informatie.
 

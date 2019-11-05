@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65c68e4f24dd95696cc53b92dd7e2b59d940b6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473808"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -54,7 +54,7 @@ Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verifica
 |[Toestel code stroom](v2-oauth2-device-code.md) | | x| x| x| |
 |[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
  
-Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` is `query` of `fragment`).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Deze tokens hebben dus geen `groups`-of `wids`-claims.
+Tokens die zijn uitgegeven via de impliciete modus, hebben een beperkte lengte omdat ze via de URL worden teruggestuurd naar de browser (waarbij `response_mode` is `query` of `fragment`).  Voor sommige browsers geldt een limiet voor de grootte van de URL die in de browser balk kan worden geplaatst en die kan worden uitgevoerd als deze te lang is.  Deze tokens hebben dus geen `groups`-of `wids` claims.
 
 ## <a name="interactive"></a>Interactief
 
@@ -203,7 +203,7 @@ Dit betekent dat een van de volgende voor waarden waar is:
 - U hebt een manier gegeven waarop gebruikers toestemming kunnen geven voor de toepassing (Zie [toestemming van individuele gebruiker aanvragen](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - U hebt een manier voor de Tenant beheerder om toestemming te geven voor de toepassing (Zie toestemming van de [beheerder](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-De IWA-stroom is ingeschakeld voor .NET Desktop-, .NET core-en Windows Universal platform-apps. In .NET Core is alleen de overbelasting beschikbaar die de gebruikers naam neemt. Het .NET Core-platform kan de gebruikers naam niet vragen aan het besturings systeem.
+De IWA-stroom is ingeschakeld voor .NET Desktop-, .NET core-en Windows Universal platform-apps. In .NET Core moet u de gebruikers naam opgeven voor IWA, omdat .NET core geen gebruikers namen kan ophalen uit het besturings systeem.
   
 Zie [v 2.0-machtigingen en-toestemming](v2-permissions-and-consent.md)voor meer informatie over toestemming.
 

@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: a3c25553e7abbe39c00407e8000880dc99056bcd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172991"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475923"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
-Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig een service kunt verbinden met een persoonlijke Azure-koppeling. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. De service kan een Azure-service zijn, zoals Azure Storage, SQL, enzovoort of uw eigen [persoonlijke koppelings service](private-link-service-overview.md).
+Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig een service kunt verbinden met een persoonlijke Azure-koppeling. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. De service kan een Azure-service zijn, zoals Azure Storage, Azure Cosmos DB, SQL, etc. of uw eigen [persoonlijke koppelings service](private-link-service-overview.md).
   
 ## <a name="private-endpoint-properties"></a>Eigenschappen van persoonlijk eind punt 
  Een persoonlijk eind punt geeft de volgende eigenschappen aan: 
@@ -57,7 +57,7 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure SQL Data Warehouse** | Micro soft. SQL/servers    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)       |
- 
+|**Azure Cosmos DB** | Micro soft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabel|
  
 ## <a name="network-security-of-private-endpoints"></a>Netwerk beveiliging van privé-eind punten 
 Wanneer u privé-eind punten voor Azure-Services gebruikt, wordt het verkeer beveiligd met een specifieke persoonlijke koppelings bron. Het platform voert een toegangs controle uit om netwerk verbindingen te valideren die alleen de opgegeven persoonlijke koppelings bron bereiken. Als u toegang wilt krijgen tot extra resources binnen dezelfde Azure-service, zijn er extra persoonlijke eind punten vereist. 
@@ -107,9 +107,12 @@ Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de v
 |Opslag account (micro soft. Storage/Storage accounts)   |    Bestand (bestand, file_secondary)      |    privatelink.file.core.windows.net      |
 |Opslag account (micro soft. Storage/Storage accounts)     |  Web (Web, web_secondary)        |    privatelink.web.core.windows.net      |
 |Data Lake File System Gen2 (micro soft. Storage/Storage accounts)  |  Data Lake File System Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Tabel|privatelink.table.cosmos.azure.com|
  
-
 Azure maakt een canonieke naam DNS-record (CNAME) op de open bare DNS om de oplossing om te leiden naar de voorgestelde domein namen. U kunt de oplossing overschrijven met het privé-IP-adres van uw privé-eind punten. 
  
 Uw toepassingen hoeven de verbindings-URL niet te wijzigen. Bij het oplossen van het gebruik van een open bare DNS-server wordt nu omgezet naar uw privé-eind punten. Het proces heeft geen invloed op uw toepassingen. 
@@ -131,4 +134,5 @@ De volgende tabel bevat een lijst met bekende beperkingen bij het gebruik van pr
 - [Een persoonlijk eind punt voor SQL Database Server maken met behulp van Power shell](create-private-endpoint-powershell.md)
 - [Een persoonlijk eind punt voor SQL Database Server maken met behulp van CLI](create-private-endpoint-cli.md)
 - [Een persoonlijk eind punt maken voor opslag account met behulp van portal](create-private-endpoint-storage-portal.md)
+- [Een persoonlijk eind punt voor Azure Cosmos-account maken met behulp van portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Uw eigen persoonlijke koppelings service maken met behulp van Azure PowerShell](create-private-link-service-powershell.md)

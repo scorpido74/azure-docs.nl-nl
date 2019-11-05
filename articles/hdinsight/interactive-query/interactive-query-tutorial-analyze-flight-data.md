@@ -1,5 +1,5 @@
 ---
-title: "Zelfstudie: ETL-bewerkingen uitvoeren met interactieve Query's in azure HDInsight"
+title: 'Zelf studie: ETL-bewerkingen met interactieve query-Azure HDInsight'
 description: "Zelf studie: informatie over het extra heren van gegevens uit een onbewerkte CSV-gegevensset, deze transformeren met interactieve Query's op HDInsight en vervolgens de getransformeerde gegevens in Azure SQL database laden met behulp van Apache Sqoop."
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735836"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494148"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Zelfstudie: Gegevens uitpakken, transformeren en laden met interactieve Query's in azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Zelf studie: gegevens uitpakken, transformeren en laden met interactieve Query's in azure HDInsight
 
 In deze zelf studie maakt u een onbewerkt CSV-gegevens bestand met openbaar beschik bare vlucht gegevens, importeert u het in HDInsight-cluster opslag en transformeert u de gegevens met behulp van interactieve Query's in azure HDInsight. Als de gegevens zijn getransformeerd, laadt u die gegevens met behulp van [Apache Sqoop](https://sqoop.apache.org/) in een Azure SQL-database.
 
@@ -42,7 +42,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 2. Wis alle velden op de pagina en selecteer vervolgens de volgende waarden:
 
-   | Name | Waarde |
+   | Naam | Waarde |
    | --- | --- |
    | Filterjaar |2019 |
    | Filterperiode |Januari |
@@ -54,7 +54,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Er zijn veel manieren om gegevens te uploaden naar de opslag die is gekoppeld aan een HDInsight-cluster. In dit gedeelte gebruikt u `scp` om gegevens te uploaden. Zie [Gegevens uploaden naar HDInsight](../hdinsight-upload-data.md) voor informatie over andere manieren om gegevens te uploaden.
 
-1. Upload het zip-bestand naar het hoofd knooppunt van het HDInsight-cluster. Bewerk de onderstaande opdracht door de `FILENAME` naam van het zip-bestand en `CLUSTERNAME` de naam van het HDInsight-cluster te vervangen. Open vervolgens een opdracht prompt, stel uw werkmap in op de bestands locatie en voer de opdracht in.
+1. Upload het zip-bestand naar het hoofd knooppunt van het HDInsight-cluster. Bewerk de onderstaande opdracht door `FILENAME` te vervangen door de naam van het zip-bestand en `CLUSTERNAME` door de naam van het HDInsight-cluster. Open vervolgens een opdracht prompt, stel uw werkmap in op de bestands locatie en voer de opdracht in.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
@@ -62,13 +62,13 @@ Er zijn veel manieren om gegevens te uploaden naar de opslag die is gekoppeld aa
 
     Als u wordt gevraagd ja of Nee in te voeren om door te gaan, typt u Ja bij de opdracht prompt en drukt u op ENTER. De tekst wordt niet weer gegeven in het venster terwijl u typt.
 
-2. Nadat het uploaden is voltooid, maakt u via SSH verbinding met het cluster. Bewerk de onderstaande opdracht door de `CLUSTERNAME` naam van het HDInsight-cluster te vervangen. Voer vervolgens de volgende opdracht in:
+2. Nadat het uploaden is voltooid, maakt u via SSH verbinding met het cluster. Bewerk de onderstaande opdracht door `CLUSTERNAME` te vervangen door de naam van het HDInsight-cluster. Voer vervolgens de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Stel de omgevings variabele in zodra een SSH-verbinding tot stand is gebracht. Vervang `FILE_NAME` ,`SQL_SERVERNAME` ,,`SQL_PASWORD` en door de juiste waarden. `SQL_DATABASE` `SQL_USER` Voer vervolgens de volgende opdracht in:
+3. Stel de omgevings variabele in zodra een SSH-verbinding tot stand is gebracht. Vervang `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`en `SQL_PASWORD` met de juiste waarden. Voer vervolgens de volgende opdracht in:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -260,15 +260,15 @@ In de vorige gedeelten hebt u de getransformeerde gegevens op `/tutorials/flight
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Met deze opdracht wordt een lijst met data bases geretourneerd, met inbegrip van `delays` de Data Base waarin u de tabel eerder hebt gemaakt.
+    Met deze opdracht wordt een lijst met data bases geretourneerd, met inbegrip van de Data Base waarin u eerder de `delays` tabel hebt gemaakt.
 
-2. Exporteer gegevens uit `/tutorials/flightdelays/output` naar de `delays` tabel door de volgende opdracht in te voeren:
+2. Exporteer gegevens uit `/tutorials/flightdelays/output` naar de tabel `delays` door de onderstaande opdracht in te voeren:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop maakt verbinding met de data base die `delays` de tabel bevat en exporteert gegevens uit `/tutorials/flightdelays/output` de Directory naar `delays` de tabel.
+    Sqoop maakt verbinding met de data base die de `delays` tabel bevat en exporteert gegevens uit de `/tutorials/flightdelays/output` Directory naar de `delays` tabel.
 
 3. Nadat de sqoop-opdracht is voltooid, gebruikt u het hulp programma TSQL om verbinding te maken met de data base door de volgende opdracht in te voeren:
 

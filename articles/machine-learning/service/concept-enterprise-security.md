@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/07/2019
-ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: e834c55ec35195ff627176603c7611abbf6adf1c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035561"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497504"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Enter prise Security voor Azure Machine Learning
 
@@ -31,7 +31,7 @@ Multi-factor Authentication wordt ondersteund als Azure Active Directory (Azure 
 1. De client geeft het token aan Azure Resource Manager en alle Azure Machine Learning.
 1. De Machine Learning-service levert een Machine Learning-service token aan het gebruikers Compute-doel (bijvoorbeeld Machine Learning Compute). Dit token wordt gebruikt door het gebruikers Compute-doel om terug te bellen naar de Machine Learning-service nadat de uitvoering is voltooid. Het bereik is beperkt tot de werk ruimte.
 
-[![Verificatie in Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[Verificatie ![in Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Verificatie voor de implementatie van de webservice
 
@@ -49,9 +49,9 @@ Wanneer u sleutel verificatie inschakelt voor een implementatie, maakt u automat
 * Verificatie is standaard ingeschakeld wanneer u implementeert in azure Kubernetes service (AKS).
 * Verificatie is standaard uitgeschakeld wanneer u implementeert in Azure Container Instances.
 
-Als u sleutel verificatie wilt inschakelen, `auth_enabled` gebruikt u de para meter bij het maken of bijwerken van een implementatie.
+Als u sleutel verificatie wilt inschakelen, gebruikt u de para meter `auth_enabled` wanneer u een implementatie maakt of bijwerkt.
 
-Als sleutel verificatie is ingeschakeld, kunt u de `get_keys` methode gebruiken om een primaire en secundaire verificatie sleutel op te halen:
+Als sleutel verificatie is ingeschakeld, kunt u de methode `get_keys` gebruiken om een primaire en secundaire verificatie sleutel op te halen:
 
 ```python
 primary, secondary = service.get_keys()
@@ -59,7 +59,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Als u een sleutel opnieuw genereren wilt, gebruikt u [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
 
 #### <a name="authentication-with-tokens"></a>Verificatie met tokens
 
@@ -68,9 +68,9 @@ Wanneer u token verificatie inschakelt voor een webservice, moeten gebruikers ee
 * Token verificatie is standaard uitgeschakeld wanneer u implementeert in azure Kubernetes service.
 * Verificatie van tokens wordt niet ondersteund wanneer u implementeert in Azure Container Instances.
 
-Als u de verificatie van tokens `token_auth_enabled` wilt beheren, gebruikt u de para meter bij het maken of bijwerken van een implementatie.
+Als u de verificatie van tokens wilt beheren, gebruikt u de para meter `token_auth_enabled` wanneer u een implementatie maakt of bijwerkt.
 
-Als token verificatie is ingeschakeld, kunt u de `get_token` methode gebruiken om een JSON Web token (JWT) op te halen en de verval tijd van dat token:
+Als token verificatie is ingeschakeld, kunt u de methode `get_token` gebruiken om een JSON Web Token (JWT) op te halen en de verval tijd van dat token:
 
 ```python
 token, refresh_by = service.get_token()
@@ -78,7 +78,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> U moet een nieuw token aanvragen na de tijd van `refresh_by` de token.
+> U moet een nieuw token aanvragen na de `refresh_by` tijd van het token.
 >
 > We raden u ten zeerste aan om uw Azure Machine Learning-werk ruimte te maken in dezelfde regio als uw Azure Kubernetes service-cluster. 
 >
@@ -86,9 +86,9 @@ print(token)
 >
 > Hoe groter de afstand tussen de regio van uw cluster en de regio van uw werk ruimte, hoe langer het duurt om een token op te halen.
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Autorisatie
 
-U kunt meerdere werkruimten maken en elke werkruimte kan worden gedeeld door meerdere personen. Wanneer u een werk ruimte deelt, kunt u de toegang hiertoe beheren door deze rollen toe te wijzen aan gebruikers:
+U kunt meerdere werk ruimten maken en elke werk ruimte kan worden gedeeld door meerdere personen. Wanneer u een werk ruimte deelt, kunt u de toegang hiertoe beheren door deze rollen toe te wijzen aan gebruikers:
 
 * Eigenaar
 * Inzender
@@ -100,13 +100,14 @@ De volgende tabel bevat enkele van de belangrijkste Azure Machine Learning bewer
 | ---- |:----:|:----:|:----:|
 | Werkruimte maken | ✓ | ✓ | |
 | Werk ruimte delen | ✓ | |  |
+| Werk ruimte bijwerken naar Enter prise Edition | ✓ | |
 | Reken doel maken | ✓ | ✓ | |
 | Reken doel koppelen | ✓ | ✓ | |
 | Gegevens archieven koppelen | ✓ | ✓ | |
-| Experiment uit te voeren | ✓ | ✓ | |
+| Experiment uitvoeren | ✓ | ✓ | |
 | Uitvoeringen/metrische gegevens weer geven | ✓ | ✓ | ✓ |
 | Model registreren | ✓ | ✓ | |
-| Installatiekopie maken | ✓ | ✓ | |
+| Installatie kopie maken | ✓ | ✓ | |
 | Webservice implementeren | ✓ | ✓ | |
 | Modellen/afbeeldingen weer geven | ✓ | ✓ | ✓ |
 | Webservice aanroepen | ✓ | ✓ | ✓ |
@@ -124,15 +125,15 @@ Zie [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azur
 | Resource | Machtigingen |
 | ----- | ----- |
 | Werkruimte | Inzender |
-| Storage-account | Bijdrager voor opslagblobgegevens |
-| Sleutelkluis | Toegang tot alle sleutels, geheimen, certificaten |
+| Storage-account | Inzender voor Storage BLOB-gegevens |
+| Key Vault | Toegang tot alle sleutels, geheimen, certificaten |
 | Azure Container Registry | Inzender |
 | Resource groep die de werk ruimte bevat | Inzender |
 | De resource groep die de sleutel kluis bevat (als deze anders is dan de naam die de werk ruimte bevat) | Inzender |
 
 Het is niet raadzaam om beheerders de toegang tot de beheerde identiteit in te trekken voor de resources die in de voor gaande tabel worden vermeld. U kunt de toegang herstellen met behulp van de bewerking voor het opnieuw synchroniseren van sleutels.
 
-Azure machine learning maakt een extra toepassing (de naam begint met `aml-` of `Microsoft-AzureML-Support-App-`) met toegang op Inzender niveau in uw abonnement voor elke werkruimte regio. Als u bijvoorbeeld één werk ruimte hebt in VS-Oost en een andere werk ruimte in Europa-noord in hetzelfde abonnement, ziet u twee van deze toepassingen. Met deze toepassingen kunt u Azure Machine Learning helpen bij het beheren van reken resources.
+Azure Machine Learning maakt een extra toepassing (de naam begint met `aml-` of `Microsoft-AzureML-Support-App-`) met toegang op Inzender niveau in uw abonnement voor elke werkruimte regio. Als u bijvoorbeeld één werk ruimte hebt in VS-Oost en een andere werk ruimte in Europa-noord in hetzelfde abonnement, ziet u twee van deze toepassingen. Met deze toepassingen kunt u Azure Machine Learning helpen bij het beheren van reken resources.
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
@@ -193,7 +194,7 @@ Aan elke werk ruimte is een door het systeem toegewezen beheerde identiteit geko
 
 U kunt Azure Monitor metrische gegevens gebruiken om metrische gegevens voor uw Azure Machine Learning-werk ruimte weer te geven en te controleren. Selecteer in de [Azure Portal](https://portal.azure.com)uw werk ruimte en selecteer vervolgens **metrische gegevens**:
 
-[![Scherm opname van voor beelden van metrische gegevens voor een werk ruimte](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
+[![scherm opname van voor beelden van metrische gegevens voor een werk ruimte](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 De metrische gegevens bevatten informatie over uitvoeringen, implementaties en registraties.
 
@@ -205,7 +206,7 @@ U kunt het activiteiten logboek van een werk ruimte bekijken om verschillende be
 
 Deze scherm afbeelding toont het activiteiten logboek van een werk ruimte:
 
-[![Scherm opname van het activiteiten logboek van een werk ruimte](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
+[![scherm opname van het activiteiten logboek van een werk ruimte](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Details van Score aanvragen worden opgeslagen in Application Insights. Application Insights wordt in uw abonnement gemaakt wanneer u een werk ruimte maakt. Geregistreerde gegevens zijn onder andere velden als HTTPMethod, User agent, ComputeType, RequestUrl, status code, aanvraag code en duur.
 
@@ -233,7 +234,7 @@ Aanvullende resources worden tijdens het maken van de werk ruimte gemaakt in het
 
 De gebruiker kan ook andere reken doelen inrichten die zijn gekoppeld aan een werk ruimte (zoals Azure Kubernetes service of Vm's), indien nodig.
 
-[![Werkruimte werk stroom maken](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
+[werk stroom werkruimte ![maken](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Bron code opslaan (trainings scripts)
 
@@ -241,7 +242,7 @@ In het volgende diagram ziet u de werk stroom voor code momentopnamen.
 
 Gekoppeld aan een Azure Machine Learning werk ruimte zijn mappen (experimenten) die de bron code (trainings scripts) bevatten. Deze scripts worden opgeslagen op uw lokale machine en in de Cloud (in de Azure Blob-opslag voor uw abonnement). De code momentopnamen worden gebruikt voor uitvoering of inspectie voor historische controle.
 
-[![Workflow voor code momentopname](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
+[werk stroom voor moment opnamen van ![code](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Training
 
@@ -268,7 +269,7 @@ Omdat Machine Learning Compute een beheerd reken doel is (dat wil zeggen, wordt 
 
 In het onderstaande stroom diagram treedt deze stap op wanneer het doel voor het berekenen van de training de metrische uitvoerings waarden terugschrijft naar Azure Machine Learning van opslag in de Cosmos DB-Data Base. Clients kunnen Azure Machine Learning aanroepen. Met Machine Learning worden de metrische gegevens van de Cosmos DB-Data Base opgehaald en terug naar de client geretourneerd.
 
-[![Werk stroom voor training](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
+[werk stroom voor ![training](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Webservices maken
 
@@ -283,13 +284,13 @@ Dit zijn de details:
 * Details van Score aanvragen worden opgeslagen in Application Insights, dat zich in het abonnement van de gebruiker bevindt.
 * Telemetrie wordt ook gepusht naar het micro soft/Azure-abonnement.
 
-[![Werk stroom afwijzen](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
+[werk stroom voor ![afwijzen](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Machine Learning-webservices met SSL beveiligde](how-to-secure-web-service.md)
+* [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)
 * [Een Machine Learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md)
-* [Het uitvoeren van voorspellingen van batch](how-to-run-batch-predictions.md)
+* [Batch voorspellingen uitvoeren](how-to-run-batch-predictions.md)
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

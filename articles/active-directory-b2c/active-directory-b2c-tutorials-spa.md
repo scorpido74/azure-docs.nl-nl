@@ -5,21 +5,21 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 07/24/2019
+ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 40b92f24922b146dfdc66c1b0a59aab748dea6f2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: f6a417e33ac9c60c978d8638539a1e5a0772a034
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931369"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475053"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Zelf studie: verificatie inschakelen in een toepassing met één pagina met behulp van Azure Active Directory B2C (Azure AD B2C)
 
-In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers aan te melden bij een toepassing met één pagina (SPA). Met Azure AD B2C zijn uw toepassingen in staat om zich met behulp van open-standaardprotocollen te verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
+In deze zelf studie wordt uitgelegd hoe u Azure Active Directory B2C (Azure AD B2C) gebruikt om u aan te melden en gebruikers aan te melden bij een toepassing met één pagina (SPA). Met Azure AD B2C kunnen uw toepassingen zich met behulp van open-standaardprotocollen verifiëren bij sociale accounts, Enterprise-accounts en Azure Active Directory-accounts.
 
 In deze zelfstudie leert u het volgende:
 
@@ -48,13 +48,30 @@ Daarnaast hebt u het volgende nodig in uw lokale ontwikkel omgeving:
 
 In de tweede zelf studie die u als onderdeel van de vereisten hebt voltooid, hebt u een webtoepassing geregistreerd in Azure AD B2C. Om te communiceren met het voorbeeld in deze zelfstudie, moet u een omleidings-URI toevoegen aan de toepassing in Azure AD B2C.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (Unified app-registraties)** gebruiken om de toepassing bij te werken. Meer [informatie over de preview-ervaring](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Toepassingen](#tab/applications/)
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD B2C-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Tenant bevat.
 1. Selecteer **alle services** in de linkerbovenhoek van de Azure Portal, zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **Toepassingen** en selecteer vervolgens de toepassing *webapp1*.
 1. Voeg onder **Antwoord-URL** `http://localhost:6420` toe.
 1. Selecteer **Opslaan**.
 1. Noteer de **toepassings-id**op de pagina Eigenschappen. U gebruikt de App-ID in een latere stap wanneer u de code in de webtoepassing met één pagina bijwerkt.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
+1. Selecteer **app-registraties (preview)** , selecteer het tabblad **toepassingen die eigendom** zijn en selecteer vervolgens de toepassing *webapp1* .
+1. Selecteer **verificatie**en selecteer vervolgens **de nieuwe ervaring uitproberen** (indien weer gegeven).
+1. Onder **Web**selecteert u de koppeling **URI toevoegen** , voert u `http://localhost:6420`in en selecteert u vervolgens **Opslaan**.
+1. Selecteer **Overzicht**.
+1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap wanneer u de code in de webtoepassing met één pagina bijwerkt.
+
+* * *
 
 ## <a name="get-the-sample-code"></a>De voorbeeldcode halen
 
@@ -124,7 +141,7 @@ Het voorbeeld biedt ondersteuning voor registratie, aanmelding, het bewerken van
 
     Gebruik een geldig e-mailadres en voer de verificatie uit met de verificatiecode. Stel een wachtwoord in. Geef waarden voor de aangevraagde kenmerken op.
 
-    ![Registratie pagina die wordt weer gegeven door de gebruikers stroom aanmelden/registreren](./media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.PNG)
+    ![Registratie pagina die wordt weer gegeven door de gebruikers stroom aanmelden/registreren](./media/active-directory-b2c-tutorials-spa/azure-ad-b2c-sign-up-workflow.png)
 
 1. Selecteer **maken** om een lokaal account te maken in de Azure AD B2C Directory.
 

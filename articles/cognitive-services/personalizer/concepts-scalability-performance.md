@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: d116f6bd389b1404ea723c965111cd05880e6c30
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 5ac9a870cb05328f040febd0f8161a97f0982e09
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662821"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490791"
 ---
 # <a name="scalability-and-performance"></a>Schaal baarheid en prestaties
 
@@ -24,28 +24,15 @@ Websites en toepassingen met hoge prestaties en hoog verkeer hebben twee belang 
 * Lage latentie behouden bij het maken van Rank API-aanroepen
 * Zorgen dat de door Voer van de training wordt bijgewerkt met gebeurtenis invoer
 
-Personalisatie kan een absolute positie zeer snel retour neren, met de meeste gespreks duur die is toegewezen aan communicatie via de REST API. Azure schaalt automatisch de mogelijkheid om snel te reageren op aanvragen.
+Persoonlijke instellingen kunnen snel een absolute waarde Retour neren, met de meeste gespreks duur die is toegewezen aan communicatie via de REST API. Azure schaalt automatisch de mogelijkheid om snel te reageren op aanvragen.
 
 ##  <a name="low-latency-scenarios"></a>Scenario's met lage latentie
 
-Voor sommige toepassingen is een lage latentie vereist bij het retour neren van een positie. Dit is nodig:
+Voor sommige toepassingen is een lage latentie vereist bij het retour neren van een positie. Er zijn lage latenties nodig:
 
 * Om te voor komen dat de gebruiker een opvallende hoeveelheid tijd moet wachten voordat geclassificeerde inhoud wordt weer gegeven.
 * Om een server te helpen die extreem veel verkeer ondervindt, vermijdt u het koppelen van schaarse reken tijd en netwerk verbindingen.
 
-<!--
-
-If your web site is scaled on your infrastructure, you can avoid making HTTP calls by hosting the Personalizer API in your own servers running a Docker container.
-
-This change would be transparent to your application, other than using an endpoint URL referring to the running docker instances as opposed to an online service in the cloud.
-
-
-
-### Extreme Low Latency Scenarios
-
-If you require latencies under a millisecond, and have already tested using Personalizer via containers, please contact our support team so we can assess your scenario and provide guidance suited to your needs.
-
--->
 
 ## <a name="scalability-and-training-throughput"></a>Door Voer voor schaal baarheid en training
 

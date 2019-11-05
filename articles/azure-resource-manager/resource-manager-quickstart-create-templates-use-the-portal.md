@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 109c838d903faee7510441a8b3d502a7e95d8bb4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 4bdf482357789b71b2f87bb74afd76d9ebc7f7d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533664"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476805"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Snelstart: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal
 
 Leer hoe u een Resource Manager-sjabloon kunt genereren met behulp van de Azure-portal, en hoe u de sjabloon vanuit de portal bewerkt en implementeert. Resource Manager-sjablonen zijn JSON-bestanden die de resources definiëren die u voor uw oplossing moet implementeren. Zie [Overzicht van Azure Resource Manager](resource-group-overview.md) voor inzicht in de concepten die gerelateerd zijn aan het implementeren en beheren van uw Azure-oplossingen.
 
-![diagram van de Snelstartgids voor de Resource Manager-sjabloon](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
+![Diagram van de Snelstartgids voor de Resource Manager-sjabloon](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 Na het voltooien van de zelfstudie implementeert u een Azure Storage-account. Hetzelfde proces kan worden gebruikt voor het implementeren van andere Azure-resources.
 
@@ -36,16 +36,20 @@ Het maken van een nieuwe resource manager-sjabloon is geen eenvoudige taak, met 
 
 Veel ervaren sjabloon ontwikkelaars gebruiken deze methode om sjablonen te genereren wanneer ze proberen om Azure-resources te implementeren die ze niet kennen. Zie [resource groepen exporteren naar sjablonen](./manage-resource-groups-portal.md#export-resource-groups-to-templates)voor meer informatie over het exporteren van sjablonen met behulp van de portal. De andere manier om een werk sjabloon te vinden, is vanuit [Azure Quick](https://azure.microsoft.com/resources/templates/)start-sjablonen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **Een resource maken** > **Opslag** > **Opslagaccount - blob, bestand, tabel, wachtrij**.
+1. Ga in een webbrowser naar de [Azure Portal](https://portal.azure.com) en meld u aan.
+2. Selecteer in het menu Azure Portal de optie **een resource maken**.
 
-    ![Een Azure Storage-account in Azure Portal maken](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
-3. Voer de volgende informatie in:
+    ![Selecteer een resource maken in het menu Azure Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
+
+3. Selecteer **opslag** > **Storage-account**.
+
+    ![Een Azure-opslagaccount maken](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+1. Voer de volgende informatie in:
 
     |Naam|Waarde|
     |----|----|
-    |**Resourcegroep**|Selecteer **nieuwe maken**en geef een naam op voor de resource groep van uw keuze. In de schermafbeelding is de naam van de resourcegroep *mystorage1016rg*. Een resourcegroep is een container voor Azure-resources. Een resourcegroep maakt het gemakkelijker Azure-resources te beheren. |
-    |**Naam**|geef uw opslagaccount een unieke naam. De naam van het opslag account moet uniek zijn binnen Azure en mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn. Als er een fout bericht wordt weer gegeven met de melding ' de naam van het opslag account ' mystorage1016 ' is al aanwezig ', gebruikt u **&lt;your naam > &lt;Today de datum van de opslag in MMDD >** , bijvoorbeeld **johndolestorage1016**. Zie [naamgevings regels en beperkingen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor meer informatie.|
+    |**Resourcegroep**|Selecteer **Nieuwe maken** en geef een resourcegroepnaam naar keuze op. In de schermafbeelding is de naam van de resourcegroep *mystorage1016rg*. Een resourcegroep is een container voor Azure-resources. Een resourcegroep maakt het gemakkelijker Azure-resources te beheren. |
+    |**Naam**|geef uw opslagaccount een unieke naam. De naam van het opslag account moet uniek zijn binnen Azure en mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn. Als er een fout bericht wordt weer gegeven met de melding ' de naam van het opslag account ' mystorage1016 ' is al aanwezig ', gebruikt u **&lt;uw naam > opslag&lt;huidige datum in MMDD >** , bijvoorbeeld **johndolestorage1016**. Zie [naamgevings regels en beperkingen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor meer informatie.|
 
     Voor de overige eigenschappen kunt u de standaardwaarden gebruiken.
 
@@ -54,8 +58,8 @@ Veel ervaren sjabloon ontwikkelaars gebruiken deze methode om sjablonen te gener
     > [!NOTE]
     > Sommige geëxporteerde sjablonen moeten worden bewerkt voordat u ze implementeren.
 
-4. Selecteer **Controleren + maken** onderaan in het scherm. Selecteer in de volgende stap niet **maken** .
-5. Selecteer **Een sjabloon voor automatisering downloaden** onderaan in het scherm. In de portal wordt de gegenereerde sjabloon weergegeven:
+5. Selecteer **Controleren + maken** onderaan in het scherm. Selecteer in de volgende stap niet **maken** .
+6. Selecteer **Een sjabloon voor automatisering downloaden** onderaan in het scherm. In de portal wordt de gegenereerde sjabloon weergegeven:
 
     ![Een sjabloon genereren via de portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
@@ -64,9 +68,9 @@ Veel ervaren sjabloon ontwikkelaars gebruiken deze methode om sjablonen te gener
     Er zijn zes parameters gedefinieerd. Een van deze parameters heet **storageAccountName**. In het tweede gemarkeerde gedeelte van de bovenstaande schermopname ziet u hoe u in de sjabloon naar deze parameter kunt verwijzen. In het volgende gedeelte bewerkt u de sjabloon zodat er voor het opslagaccount gebruik wordt gemaakt van een gegenereerde naam.
 
     In de sjabloon is er één Azure-resource gedefinieerd. Het type is `Microsoft.Storage/storageAccounts`. Bekijk hoe de resource is gedefinieerd en wat de definitie structuur is.
-6. Selecteer **downloaden** vanaf de bovenkant van het scherm.
-7. Open het gedownloade zip-bestand en sla **sjabloon. json** op uw computer op. In het volgende gedeelte gebruikt u een implementatiehulpprogramma voor sjablonen om de sjabloon te bewerken.
-8. Selecteer het tabblad **Parameter** om de waarden te bekijken die u voor de parameters hebt opgegeven. Schrijf deze waarden op. U hebt ze in het volgende gedeelte (bij het implementeren van de sjabloon) weer nodig.
+7. Selecteer **downloaden** vanaf de bovenkant van het scherm.
+8. Open het gedownloade zip-bestand en sla **sjabloon. json** op uw computer op. In het volgende gedeelte gebruikt u een implementatiehulpprogramma voor sjablonen om de sjabloon te bewerken.
+9. Selecteer het tabblad **Parameter** om de waarden te bekijken die u voor de parameters hebt opgegeven. Schrijf deze waarden op. U hebt ze in het volgende gedeelte (bij het implementeren van de sjabloon) weer nodig.
 
     ![Een sjabloon genereren via de portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
@@ -81,7 +85,7 @@ U kunt de Azure-portal gebruiken om eenvoudige wijzigingen door te voeren in sja
 
 Azure vereist dat elke Azure-service een unieke naam heeft. De implementatie mislukt als u de naam van een opslagaccount invoert dat al bestaat. Om dit probleem te vermijden, voegt u een aanroep naar de sjabloonfunctie `uniquestring()` toe aan de sjabloon om een unieke naam voor de opslagaccount te genereren.
 
-1. Selecteer in Azure Portal **Een resource maken**.
+1. Selecteer in het menu Azure Portal of op de **Introductie** pagina de optie **een resource maken**.
 2. In **Marketplace doorzoeken** typt u **sjabloonimplementatie**. Druk vervolgens op **ENTER**.
 3. Selecteer **Sjabloonimplementatie**.
 
@@ -160,9 +164,9 @@ Azure vereist dat elke Azure-service een unieke naam heeft. De implementatie mis
     |----|----|
     |**Resourcegroep**|Selecteer de naam van de resource groep die u in de laatste sectie hebt gemaakt. |
     |**Locatie**|Selecteer een locatie voor het opslag account. Bijvoorbeeld **US - centraal**. |
-    |**Account type**|Voer **Standard_LRS** in voor deze Quick Start. |
-    |**Type**|Voer **StorageV2** in voor deze Quick Start. |
-    |**Toegangs niveau**|Voer **warme** in voor deze Quick Start. |
+    |**Account type**|voer voor deze snelstart **Standard_LRS** in. |
+    |**Type**|voer voor deze snelstart **StorageV2** in. |
+    |**Toegangs niveau**|voer voor deze snelstart **Dynamisch** in. |
     |**HTTPS-verkeer is alleen ingeschakeld**| Selecteer voor deze snelstart **true**. |
     |**Ik ga akkoord met de bovenstaande voor waarden**|uitgeschakeld|
 

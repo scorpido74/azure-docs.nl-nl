@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154667"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490884"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Belonings scores geven aan dat het succes van personalisatie is geslaagd
 
@@ -71,48 +71,42 @@ U kunt vervolgens de totale beloning verzenden naar de API.
 
 ## <a name="calling-the-reward-api-multiple-times"></a>De belonings-API meerdere keren aanroepen
 
-U kunt ook de belonings-API aanroepen met dezelfde gebeurtenis-ID, waarbij verschillende belonings scores worden verzonden. Wanneer personalisatie deze voor delen ophaalt, bepaalt hij de definitieve beloning voor die gebeurtenis door deze samen te voegen zoals opgegeven in de persoonlijke instellingen.
+U kunt ook de belonings-API aanroepen met dezelfde gebeurtenis-ID, waarbij verschillende belonings scores worden verzonden. Wanneer personalisatie deze voor delen ophaalt, bepaalt hij de definitieve beloning voor die gebeurtenis door deze samen te voegen zoals is opgegeven in de persoonlijke configuratie.
 
-Aggregatie-instellingen:
+Aggregatie waarden:
 
-*  **Eerst**: Neemt de eerste belonings Score die voor de gebeurtenis is ontvangen en verwijdert de rest.
-* **Som**: Neemt alle belonings scores op die zijn verzameld voor de gebeurtenis-en voegt deze samen.
+*  **Eerst**: de eerste belonings Score die voor de gebeurtenis is ontvangen, en de rest wordt verwijderd.
+* **Sum**: Hiermee worden alle belonings scores verzameld voor de gebeurtenis-en toegevoegd aan elkaar.
 
 Alle beloningen voor een gebeurtenis, die na de **wacht tijd**van de beloning worden ontvangen, worden genegeerd en hebben geen invloed op de training van modellen.
 
 Als u belonings scores opneemt, ligt uw definitieve beloning mogelijk buiten het verwachte score bereik. Dit maakt de service niet meer.
 
-<!--
-@edjez - is the number ignored if it is outside the acceptable range?
--->
-
 ## <a name="best-practices-for-calculating-reward-score"></a>Aanbevolen procedures voor het berekenen van de belonings Score
 
-* **Denk na over echte indica toren van geslaagde personalisatie**: Het is eenvoudig om te zien wat de voor delen zijn, maar een goede beloning is gebaseerd op wat u uw gebruikers *wilt laten doen in plaats van* wat uwilt.  Een voor beeld: een vergoeding op klikken kan leiden tot het selecteren van inhoud die clickbait gevoelig is.
+* **Denk aan echte indica toren voor een geslaagde personalisatie**: het is gemakkelijk om op de slag te gaan met klikken, maar een goede beloning is gebaseerd op wat u uw *gebruikers wilt laten doen in plaats van* wat u wilt *doen*.  Een voor beeld: een vergoeding op klikken kan leiden tot het selecteren van inhoud die clickbait gevoelig is.
 
-* **Gebruik een belonings score voor de goede persoonlijke instellingen**: Het personaliseren van een voor stel van een film zou er zeker van zijn dat de gebruiker de film bekijkt en een hoge classificatie krijgt. Omdat de classificatie van films waarschijnlijk afhankelijk is van veel dingen (de kwaliteit van de werking, de stemming van de gebruiker), is het geen goed idee om te bepalen hoe goed *het persoonlijke karakter* heeft gewerkt. De gebruiker die de eerste paar minuten van de film bekijkt, kan echter een beter signaal zijn bij de effectiviteit van de persoonlijke voor keuren en een beloning van 1 na 5 minuten een beter signaal sturen.
+* **Gebruik een belonings score voor de goede persoonlijke instellingen**: door een voor stel van een film te personaliseren, zou u er zeker van zijn dat de gebruiker de film bekijkt en een hoge classificatie krijgt. Omdat de classificatie van films waarschijnlijk afhankelijk is van veel dingen (de kwaliteit van de werking, de stemming van de gebruiker), is het geen goed idee om te bepalen hoe goed *het persoonlijke karakter* heeft gewerkt. De gebruiker die de eerste paar minuten van de film bekijkt, kan echter een beter signaal zijn bij de effectiviteit van de persoonlijke voor keuren en een beloning van 1 na 5 minuten een beter signaal sturen.
 
-* **Beloningen zijn alleen van toepassing op RewardActionID**: Personaler past de voor delen toe om inzicht te krijgen in de effectiviteit van de actie die is opgegeven in RewardActionID. Als u ervoor kiest om andere acties weer te geven en de gebruiker erop klikt, moet de beloning nul zijn.
+* **Beloningen zijn alleen van toepassing op RewardActionID**: personaler past de voor delen toe om inzicht te krijgen in de effectiviteit van de actie die is opgegeven in RewardActionID. Als u ervoor kiest om andere acties weer te geven en de gebruiker erop klikt, moet de beloning nul zijn.
 
-* **Onbedoelde gevolgen overwegen**: Maak belonings functies die leiden tot de verantwoordelijke uitkomsten met [ethiek en verantwoordelijk gebruik](ethics-responsible-use.md).
+* **Houd rekening met onbedoelde gevolgen**: Maak belonings functies die leiden tot de verantwoordelijke uitkomsten met [ethiek en verantwoordelijk gebruik](ethics-responsible-use.md).
 
-* **Incrementele beloningen gebruiken**: Het toevoegen van gedeeltelijke voor delen voor kleinere gebruikers gedrag helpt persoonlijker te maken met betere beloningen. Met deze incrementele beloning kan het algoritme ervoor worden geprofiteerd dat het dichter bij de gebruiker komt in het uiteindelijke gewenste gedrag.
+* **Incrementele beloningen gebruiken**: het toevoegen van gedeeltelijke voor delen voor kleinere gebruikers gedrag helpt persoonlijker te maken met betere beloningen. Met deze incrementele beloning kan het algoritme ervoor worden geprofiteerd dat het dichter bij de gebruiker komt in het uiteindelijke gewenste gedrag.
     * Als er een lijst met films wordt weer gegeven, kunt u, als de gebruiker de eerste keer aanwijst voor een tijdje, bepalen dat er een bepaalde gebruikers betrokkenheid heeft plaatsgevonden. Het gedrag kan tellen met een belonings Score van 0,1. 
     * Als de gebruiker de pagina opent en vervolgens afsluit, kan de belonings score 0,2 zijn. 
 
-## <a name="reward-wait-time"></a>Wachttijd voor beloning
+## <a name="reward-wait-time"></a>wacht tijd op beloning
 
 Personaler geeft de informatie van een classificatie oproep samen met de beloningen die worden verzonden in belonings gesprekken om het model te trainen. Deze kunnen zich op verschillende tijdstippen voordoen. Personaler wacht op een beperkte tijd, vanaf het moment dat de rang oproep heeft plaatsgevonden, zelfs als de rang oproep is gemaakt als inactieve gebeurtenis en later wordt geactiveerd.
 
 Als de **wacht tijd** voor de beloning is verlopen en er geen belonings informatie is, wordt er een standaard beloning toegepast op die gebeurtenis voor training. De maximale wacht tijd is zes dagen.
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>Aanbevolen procedures voor het instellen van de wacht tijd op beloning
+## <a name="best-practices-for-reward-wait-time"></a>Aanbevolen procedures voor de wacht tijd van beloning
 
 Volg deze aanbevelingen voor betere resultaten.
 
 * Stel de berekenings tijd even lang zo kort als mogelijk, terwijl u voldoende tijd hebt om gebruikers feedback te krijgen. 
-
-<!--@Edjez - storage quota? -->
 
 * Kies niet een duur die korter is dan de tijd die nodig is om feedback te krijgen. Als er bijvoorbeeld een aantal van uw voor delen beschikbaar is nadat een gebruiker 1 minuut van een video heeft bekeken, moet het experiment ten minste dubbele waarde zijn.
 

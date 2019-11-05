@@ -1,5 +1,5 @@
 ---
-title: On-premises Apache Hadoop clusters migreren naar Azure HDInsight-beveiliging
+title: 'Beveiliging: migratie van on-premises Apache Hadoop naar Azure HDInsight'
 description: Leer de best practices voor beveiliging en DevOps voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 1cebe425e323eefda6e26b0f32ddeda0118a70d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736142"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494964"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-beveiligings-en DevOps best practices
 
@@ -43,12 +43,12 @@ Gebruik de volgende stappen om het HDInsight-cluster dat is gekoppeld aan het do
 
 
 - Implementeer het HDInsight ESP-cluster door de volgende para meters in te stellen:
-    - **Domein naam**: De domein naam die is gekoppeld aan Azure AD DS.
-    - **Domein gebruikers naam**: Het service account in het door Azure AD DS DC beheerde domein dat u in de vorige sectie hebt gemaakt, bijvoorbeeld: `hdiadmin@contoso.onmicrosoft.com`. Deze domein gebruiker is de beheerder van dit HDInsight-cluster.
-    - **Domein wachtwoord**: Het wacht woord van het service account.
-    - **Organisatie-eenheid**: De DN-naam van de organisatie-eenheid die u wilt gebruiken met het HDInsight-cluster, `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`bijvoorbeeld:. Als deze OE niet bestaat, probeert het HDInsight-cluster de OE te maken met behulp van de bevoegdheden van het service account.
+    - **Domein naam**: de domein naam die is gekoppeld aan Azure AD DS.
+    - **Domein gebruikers naam**: het service account in het door Azure AD DS DC beheerde domein dat u in de vorige sectie hebt gemaakt, bijvoorbeeld: `hdiadmin@contoso.onmicrosoft.com`. Deze domein gebruiker is de beheerder van dit HDInsight-cluster.
+    - **Domein wachtwoord**: het wacht woord van het service account.
+    - **Organisatie-eenheid**: de DN-naam van de OE die u wilt gebruiken met het HDInsight-cluster, bijvoorbeeld: `OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`. Als deze OE niet bestaat, probeert het HDInsight-cluster de OE te maken met behulp van de bevoegdheden van het service account.
     - **URL van LDAPS**: bijvoorbeeld `ldaps://contoso.onmicrosoft.com:636`.
-    - **Gebruikers groep voor toegang**: De beveiligings groepen waarvan u de gebruikers wilt synchroniseren met het cluster, bijvoorbeeld: `HiveUsers`. Als u meerdere gebruikers groepen wilt opgeven, scheidt u deze met punt komma '; '. De groep (en) moeten aanwezig zijn in de map voordat het ESP-cluster wordt gemaakt.
+    - **Gebruikers groep openen**: de beveiligings groepen waarvan u de gebruikers wilt synchroniseren met het cluster, bijvoorbeeld: `HiveUsers`. Als u meerdere gebruikers groepen wilt opgeven, scheidt u deze met punt komma '; '. De groep (en) moeten aanwezig zijn in de map voordat het ESP-cluster wordt gemaakt.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
@@ -108,13 +108,13 @@ Voer regel matig een upgrade uit naar de nieuwste HDInsight-versie om te profite
 1. Importeer alle tijdelijke gegevens waarvan een back-up is gemaakt.
 1. Start taken/Ga door met de verwerking met het nieuwe cluster.
 
-Zie voor meer informatie het artikel: [Upgrade HDInsight-cluster naar een nieuwe versie](../hdinsight-upgrade-cluster.md).
+Zie het artikel: [HDInsight-cluster upgraden naar een nieuwe versie](../hdinsight-upgrade-cluster.md)voor meer informatie.
 
 ## <a name="patch-cluster-operating-systems"></a>Patch voor cluster besturingssystemen
 
 Als beheerde Hadoop-service zorgt HDInsight voor het patchen van het besturings systeem van de virtuele machines die worden gebruikt door HDInsight-clusters.
 
-Zie voor meer informatie het artikel: [Patches voor het besturings systeem voor HDInsight](../hdinsight-os-patching.md).
+Zie het artikel: [patches voor het besturings systeem voor HDInsight](../hdinsight-os-patching.md)voor meer informatie.
 
 ## <a name="post-migration"></a>Na de migratie
 

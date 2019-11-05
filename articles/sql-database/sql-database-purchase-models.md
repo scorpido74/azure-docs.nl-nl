@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567018"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492496"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Kiezen tussen de vCore en de DTU-aankoop modellen
 
 Met Azure SQL Database kunt u eenvoudig een volledig beheerd platform as a service-data base-engine (PaaS) aanschaffen die aan uw prestatie-en kosten behoeften voldoet. Afhankelijk van het implementatie model dat u hebt gekozen voor Azure SQL Database, kunt u het inkoop model selecteren dat voor u geschikt is:
 
-- [Op virtuele kern (vCore) gebaseerd inkoop model](sql-database-service-tiers-vcore.md) (aanbevolen). Dit aankoop model biedt een keuze tussen een ingerichte Compute-laag en een compute-gegevenslaagtoepassingen (serverloze voor beeld). Met de ingerichte Compute-laag kiest u de exacte hoeveelheid reken resources die altijd worden ingericht voor uw werk belasting. Met de compute-laag zonder server geeft u het automatisch schalen van de reken resources over een configureerbaar reken bereik op. Met deze Compute-laag kunt u de data base ook automatisch onderbreken en hervatten op basis van de activiteit van de werk belasting. De vCore eenheids prijs per tijds eenheid is lager in de ingerichte Compute-laag dan in de serverloze Compute-laag.
+- [Op virtuele kern (vCore) gebaseerd inkoop model](sql-database-service-tiers-vcore.md) (aanbevolen). Dit aankoop model biedt een keuze tussen een ingerichte Compute-laag en een serverloze Compute-laag. Met de ingerichte Compute-laag kiest u de exacte hoeveelheid reken resources die altijd worden ingericht voor uw werk belasting. Met de compute-laag zonder server geeft u het automatisch schalen van de reken resources over een configureerbaar reken bereik op. Met deze Compute-laag kunt u de data base ook automatisch onderbreken en hervatten op basis van de activiteit van de werk belasting. De vCore eenheids prijs per tijds eenheid is lager in de ingerichte Compute-laag dan in de serverloze Compute-laag.
 - [Op DTU (data base Trans Action Unit) gebaseerd aankoop model](sql-database-service-tiers-dtu.md). Dit aankoop model bevat gebundelde reken-en opslag pakketten die zijn afgebalanceerd voor algemene werk belastingen.
 
 Er zijn verschillende aankoop modellen beschikbaar voor verschillende Azure SQL Database-implementatie modellen:
@@ -53,7 +53,7 @@ De kosten voor back-upopslag zijn hetzelfde voor de tier Business Critical servi
 
 ### <a name="serverless-compute-costs"></a>Reken kosten zonder server
 
-Zie [SQL database serverloos (preview)](sql-database-serverless.md)voor een beschrijving van de manier waarop reken capaciteit is gedefinieerd en de kosten worden berekend voor de serverloze Compute-laag.
+Zie [SQL database serverloos](sql-database-serverless.md)voor een beschrijving van de manier waarop reken capaciteit is gedefinieerd en de kosten worden berekend voor de serverloze Compute-laag.
 
 ## <a name="storage-costs"></a>Opslagkosten
 
@@ -67,7 +67,7 @@ Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/sql-data
 
 Een virtuele kern (vCore) vertegenwoordigt een logische CPU en biedt u de mogelijkheid om te kiezen tussen generaties van hardware en fysieke kenmerken van de hardware (bijvoorbeeld het aantal kernen, het geheugen en de opslag grootte). Het vCore-inkoop model biedt u flexibiliteit, controle, transparantie van het gebruik van afzonderlijke bronnen en een eenvoudige manier om on-premises werkbelasting vereisten te vertalen naar de Cloud. Met dit model kunt u reken-, geheugen-en opslag Resources kiezen op basis van de behoeften van uw werk belasting.
 
-In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [algemene doel](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) -en [bedrijfskritische](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) service lagen voor [individuele data bases](sql-database-single-database-scale.md), elastische [Pools](sql-database-elastic-pool.md)en [beheerde exemplaren](sql-database-managed-instance.md). Voor afzonderlijke data bases kunt u ook de [grootschalige-servicelaag](sql-database-service-tier-hyperscale.md)kiezen.
+In het op vCore gebaseerde aankoop model kunt u kiezen tussen de [algemene doel](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) -en [bedrijfskritische](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) service lagen voor [individuele data bases](sql-database-single-database-scale.md), [elastische Pools](sql-database-elastic-pool.md)en [beheerde exemplaren](sql-database-managed-instance.md). Voor afzonderlijke data bases kunt u ook de [grootschalige-servicelaag](sql-database-service-tier-hyperscale.md)kiezen.
 
 Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag Resources kiezen, de on-premises prestaties afstemmen en de prijs optimaliseren. In het op vCore gebaseerde aankoop model betaalt u voor:
 
@@ -76,7 +76,7 @@ Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag R
 - Back-upopslag (RA-GRS).
 
 > [!IMPORTANT]
-> Reken resources, I/O en gegevens-en logboek opslag worden in rekening gebracht per data base of elastische pool. Back-upopslag wordt per data base in rekening gebracht. Zie Managed instances (Engelstalig) voor [](sql-database-managed-instance.md)meer informatie over beheerde exemplaar kosten.
+> Reken resources, I/O en gegevens-en logboek opslag worden in rekening gebracht per data base of elastische pool. Back-upopslag wordt per data base in rekening gebracht. Zie [Managed](sql-database-managed-instance.md)instances (Engelstalig) voor meer informatie over beheerde exemplaar kosten.
 > **Beperkingen van de regio:** Zie voor de huidige lijst met ondersteunde regio's [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een beheerd exemplaar wilt maken in een regio die momenteel niet wordt ondersteund, [verzendt u een ondersteunings aanvraag via de Azure Portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 
 Als uw afzonderlijke data base of elastische pool meer dan 300 Dtu's verbruikt, kan het converteren naar het op vCore gebaseerde aankoop model uw kosten verlagen. U kunt converteren met behulp van de API van Choice of met behulp van de Azure Portal, zonder uitval tijd. Conversie is echter niet vereist en wordt niet automatisch uitgevoerd. Als het op DTU gebaseerde aankoop model voldoet aan uw prestatie-en bedrijfs vereisten, moet u het blijven gebruiken.

@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2530fb0bd27cd98b702d804b0cb5a1dc60419f2f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259224"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490402"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met behulp van de Azure Portal
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Snelstart: Een geheim uit Azure Key Vault instellen en ophalen met behulp van de Azure Portal
 
 Azure Key Vault is een cloudservice die werkt als een beveiligd archief voor geheimen. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. Azure-sleutelkluizen kunnen worden gemaakt en beheerd via Azure Portal. In deze snelstart kunt u een sleutelkluis maken en daarin een geheim opslaan. Raadpleeg het [Overzicht](key-vault-overview.md) voor meer informatie over Key Vault.
 
@@ -29,16 +29,14 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Een kluis maken
 
-1. Selecteer de optie **Een resource maken** in de linkerbovenhoek van Azure Portal
-
-    ![Uitvoer nadat het maken van de sleutelkluis is voltooid](./media/quick-create-portal/search-services.png)
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
 2. Typ **Sleutelkluis** in het zoekvak.
 3. Kies **Sleutelkluis** in de lijst met resultaten.
 4. Kies **Maken** in de sectie Sleutelkluis.
 5. Geef in de sectie **Sleutelkluis maken** de volgende gegevens op:
-    - **Naam**: geef een unieke naam op. Voor deze snelstart gebruiken we **Contoso-vault2**. 
-    - **Abonnement**: Kies een abonnement.
-    - Kies **Nieuw** bij **Resourcegroep** en voer de naam van een resourcegroep in.
+    - **Naam**: geef een unieke naam op. Voor deze Quick Start gebruiken we **Contoso-vault2**. 
+    - **Abonnement**: kies een abonnement.
+    - Kies onder **resource groep**de optie **nieuwe maken** en voer een naam voor de resource groep in.
     - Kies een locatie in de vervolgkeuzelijst **Locatie**.
     - Houd voor de overige opties de standaardwaarden aan.
 6. Selecteer na het opgeven van de bovenstaande gegevens **Maken**.
@@ -56,13 +54,13 @@ Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op dez
 
 Als u een geheim wilt toevoegen aan de kluis, hoeft u maar een paar extra stappen uit te voeren. In dit geval voegen we een wachtwoord toe dat door een toepassing kan worden gebruikt. Het wachtwoord heeft de naam **ExamplePassword** en slaat daarin de waarde **hVFkk965BuUv** op.
 
-1. Selecteer op de eigenschappenpagina's van de sleutelkluis **Geheimen**.
+1. Selecteer op de pagina eigenschappen van Key Vault de optie **geheimen**.
 2. Klik op **Genereren/importeren**.
 3. Kies in het scherm **Een geheim maken** de volgende waarden:
     - **Uploadopties**: Handmatig.
     - **Naam**: ExamplePassword.
     - **Waarde**: hVFkk965BuUv
-    - Houd voor de overige waarden de standaardwaarden aan. Klik op **Create**.
+    - Houd voor de overige waarden de standaardwaarden aan. Klik op **Maken**.
 
 Zodra u het bericht ontvangt dat het geheim met succes is gemaakt, kunt u erop klikken in de lijst. Vervolgens ziet u enkele van de eigenschappen. Als u op de huidige versie klikt, ziet u de waarde die u hebt opgegeven in de vorige stap.
 

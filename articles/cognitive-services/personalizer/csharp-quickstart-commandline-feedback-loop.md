@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b86a8df86b7f9b8a5936752a5f0413aa863ae85f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515592"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490793"
 ---
 # <a name="quickstart-personalizer-client-library-for-net"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor .NET
 
@@ -26,7 +26,7 @@ Ga aan de slag met de Personaler-client bibliotheek voor .NET. Volg deze stappen
  * Rang schikking van een lijst met acties voor persoonlijke instellingen.
  * Rapport belonings Score die het succes van de beste geclassificeerde actie aangeeft.
 
-[Referentie documentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  | -[bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  | -voor[beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Referentie documentatie](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,29 +38,28 @@ Ga aan de slag met de Personaler-client bibliotheek voor .NET. Volg deze stappen
 Er zijn verschillende stappen voor het gebruik van deze Snelstartgids:
 
 * Maak een persoonlijke resource in de Azure Portal
-* Wijzig de update frequentie van het model op de pagina **instellingen** van de Azure portal voor de persoonlijke resource.
+* Wijzig de update frequentie van het model in de Azure Portal voor de resource Personaler op de pagina **configuratie**
 * Maak in een code-editor een code bestand en bewerk het code bestand
 * Vanaf de opdracht regel of Terminal installeert u de SDK vanaf de opdracht regel
 * Voer in de opdracht regel of Terminal het code bestand uit
 
 ## <a name="create-a-personalizer-azure-resource"></a>Een persoonlijke Azure-resource maken
 
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Personaler met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
+Maak een resource voor Personaler met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
 
 * Ontvang een [proef versie](https://azure.microsoft.com/try/cognitive-services) die 7 dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
 
-<!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
 * `PERSONALIZER_RESOURCE_KEY` voor de resource sleutel.
 * `PERSONALIZER_RESOURCE_ENDPOINT` voor het resource-eind punt.
 
-In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar op de pagina **Quick Start** .
+In de Azure Portal zijn de sleutel-en eindpunt waarden beschikbaar via de pagina **Quick** start.
 
 ## <a name="change-the-model-update-frequency"></a>De update frequentie van het model wijzigen
 
-Wijzig in het Azure Portal, in de resource Personaler op de pagina **instellingen** , de **Update frequentie** van het model in 10 seconden. Hiermee wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
+Wijzig in de Azure Portal in de resource personaliseren op de pagina **configuratie** de **verwerkings frequentie** van het model in 10 seconden. Met deze korte duur wordt de service snel getraind, zodat u kunt zien hoe de belangrijkste actie voor elke herhaling wordt gewijzigd.
 
 ![Update frequentie van het model wijzigen](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -110,11 +109,11 @@ Om te vragen om een positie van de inhoud, maakt u een [RankRequest](https://doc
 
 Als u een beloning naar persoonlijker wilt verzenden, maakt u een [RewardRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.models.rewardrequest?view=azure-dotnet-preview)en geeft u het door aan de [client. Belonings](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer.personalizerclientextensions.reward?view=azure-dotnet-preview) methode. 
 
-Het bepalen van de beloning, in deze Snelstartgids is trivial. In een productie systeem kan de bepaling van wat invloed heeft op de [belonings Score](concept-rewards.md) en wat een complex proces kan zijn, u mogelijk besluiten om de tijd te wijzigen. Dit moet een van de belangrijkste ontwerp beslissingen zijn in uw persoonlijke architectuur. 
+Het bepalen van de beloning, in deze Snelstartgids is trivial. In een productie systeem kan de bepaling van wat invloed heeft op de [belonings Score](concept-rewards.md) en wat een complex proces kan zijn, u mogelijk besluiten om de tijd te wijzigen. Deze ontwerp beslissing moet een van de belangrijkste beslissingen van uw Personaler-architectuur zijn. 
 
 ## <a name="code-examples"></a>Code voorbeelden
 
-Deze code fragmenten laten zien hoe u het volgende kunt doen met de Personaler-client bibliotheek voor .NET:
+Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Personaler-client bibliotheek voor .NET:
 
 * [Een Personaler-client maken](#create-a-personalizer-client)
 * [Een positie aanvragen](#request-a-rank)

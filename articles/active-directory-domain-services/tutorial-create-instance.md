@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d880bcc7c0c3f1b9cf647242a54cc779ba8945e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2a1fbe8d47af8a2215b0d0a3d81fbe67a62d4755
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172379"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474432"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Zelf studie: een Azure Active Directory Domain Services-exemplaar maken en configureren
 
@@ -55,7 +55,7 @@ In deze zelf studie maakt en configureert u het Azure AD DS-exemplaar met behulp
 
 Voer de volgende stappen uit om de wizard **Azure AD Domain Services inschakelen** te starten:
 
-1. Selecteer in de linkerbovenhoek van de Azure Portal **+ een resource maken**.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
 1. Voer *domein Services* in de zoek balk in en kies *Azure AD Domain Services* in de zoek suggesties.
 1. Selecteer op de pagina Azure AD Domain Services **maken**. De wizard **Azure AD Domain Services inschakelen** wordt gestart.
 1. Selecteer het Azure- **abonnement** waarin u het beheerde domein wilt maken.
@@ -169,7 +169,7 @@ Het duurt enkele minuten voordat u uw wacht woord voor het nieuwe wacht woord he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Informatie over DNS-vereisten voor een beheerd domein

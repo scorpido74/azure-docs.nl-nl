@@ -1,7 +1,7 @@
 ---
-title: Excel-invoegtoepassing voor webservices
-titleSuffix: Azure Machine Learning Studio
-description: Het gebruik van Azure Machine Learning-webservices rechtstreeks in Excel zonder een code te schrijven.
+title: Excel-invoeg toepassing voor webservices
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Azure Machine Learning webservices rechtstreeks in Excel gebruiken zonder dat u code hoeft te schrijven.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,76 +10,76 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 9e801e0d7a26cd4d6c43118959aee1dec7216b1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e7e2c2c57bd44cb974e5de668045d6322bc4ce
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750180"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492987"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-invoegtoepassing voor Azure Machine Learning Studio-webservices
-Excel maakt het eenvoudig om aan te roepen webservices rechtstreeks zonder code te schrijven.
+# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Excel-invoeg toepassing voor Azure Machine Learning Studio (klassieke) webservices
+Excel maakt het eenvoudig om webservices rechtstreeks aan te roepen zonder dat u code hoeft te schrijven.
 
 ## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Stappen voor het gebruik van een bestaande webservice in de werkmap
 
-1. Open de [Excel-voorbeeldbestand](https://aka.ms/amlexcel-sample-2), die de Excel-invoegtoepassing en de gegevens over passagiers op ramp met de Titanic bevat. 
+1. Open het [Excel-voorbeeld bestand](https://aka.ms/amlexcel-sample-2), dat de Excel-invoeg toepassing bevat en gegevens over reizigers op het Titanic. 
  
     > [!NOTE]
-    > U ziet de lijst met de webservices die betrekking hebben op het bestand en onder een selectievakje voor "automatisch"voorspellen. Als u inschakelt auto-voorspellen de voorspellingen van **alle** uw services worden bijgewerkt telkens wanneer er een wijziging in de invoer is. Als dit selectievakje is uitgeschakeld wordt u voor vernieuwing te klikken op 'Alle voorspellen' hebben. Voor het inschakelen van automatische-voorspellen op een service level gaat u naar stap 6.
+    > U ziet de lijst met de webservices die zijn gerelateerd aan het bestand en onder een selectie vakje voor ' automatisch voors pellen '. Als u automatische voor speling inschakelt, worden de voor spellingen van **alle** Services telkens bijgewerkt wanneer er een wijziging wordt doorgevoerd in de invoer. Als u dit selectie vakje uitschakelt, moet u op alles voors pellen klikken voor vernieuwen. Ga naar stap 6 voor het inschakelen van automatische voor speling op een service niveau.
 
-2. De webservice kiezen door erop te klikken-' Titanic nagelaten voorspelde (Excel-invoegtoepassing voorbeeld) [Score] ' in dit voorbeeld.
+2. Kies de webservice door erop te klikken: ' Titanic Survivor Prediction (voor beeld van Excel-invoeg toepassing) [score] ' in dit voor beeld.
    
-    ![-Webservice selecteren](./media/excel-add-in-for-web-services/image1.png)
-3. Hiermee gaat u naar de **Predict** sectie.  Deze werkmap bevat al voorbeeldgegevens, maar voor een lege werkmap kunt u een cel selecteren in Excel en klikt u op **Gebruik voorbeeldgegevens**.
-4. Selecteer de gegevens met kopteksten en klikt u op het pictogram voor het bereik van invoergegevens.  Zorg ervoor dat het selectievakje 'Mijn gegevens bevatten kopteksten' is ingeschakeld.
-5. Onder **uitvoer**, voer het aantal cellen waar u de uitvoer te zijn, bijvoorbeeld "H1" hier.
-6. Klik op **voorspellen**. Als u het selectievakje "auto-predict" activeert geen wijzigingen in de geselecteerde gebieden (de items die zijn opgegeven als invoer) een aanvraag en een update van de cellen uitvoer zonder de noodzaak voor u om de predict-knop te drukken.
+    ![Webservice selecteren](./media/excel-add-in-for-web-services/image1.png)
+3. Hiermee gaat u naar de sectie voor **speld** .  Deze werkmap bevat al voorbeeld gegevens, maar voor een lege werkmap kunt u een cel in Excel selecteren en op **voorbeeld gegevens gebruiken**klikken.
+4. Selecteer de gegevens met kopteksten en klik op het pictogram invoer gegevens bereik.  Zorg ervoor dat het selectie vakje mijn gegevens bevat kopteksten is ingeschakeld.
+5. Onder **uitvoer**voert u het nummer in van de cel waar de uitvoer moet worden opgegeven, bijvoorbeeld "H1".
+6. Klik op voor **spel**. Als u het selectie vakje ' automatisch voors pellen ' inschakelt, wordt een wijziging in de geselecteerde gebieden (de waarden die zijn opgegeven als invoer) geactiveerd en wordt er een update van de uitvoer cellen uitgevoerd zonder dat u op de knop voor het voors pellen hoeft te drukken.
    
-    ![Sectie voorspellen](./media/excel-add-in-for-web-services/image1.png)
+    ![Sectie voors pellen](./media/excel-add-in-for-web-services/image1.png)
 
-Een webservice implementeren of gebruik een bestaande webservice. Zie voor meer informatie over het implementeren van een webservice [zelfstudie 3: Tegoed risicomodel implementeren](tutorial-part3-credit-risk-deploy.md).
+Een webservice implementeren of een bestaande webservice gebruiken. Zie voor meer informatie over het implementeren van een webservice [zelf studie 3: het model](tutorial-part3-credit-risk-deploy.md)voor het implementeren van een credit risico.
 
-Haal de API-sleutel voor uw webservice. Wanneer u deze actie is afhankelijk van of u een klassieke Machine Learning-webservice van een nieuwe Machine Learning-webservice hebt gepubliceerd.
+Down load de API-sleutel voor uw webservice. Wanneer u deze actie uitvoert, is afhankelijk van of u een klassieke Machine Learning-webservice van een nieuwe Machine Learning-webservice hebt gepubliceerd.
 
 **Een klassieke webservice gebruiken** 
 
-1. In Machine Learning Studio, klikt u op de **WEBSERVICES** sectie in het linkerdeelvenster en selecteer vervolgens de web-service.
+1. Klik in Machine Learning Studio (klassiek) op de sectie **WEBservices** in het linkerdeel venster en selecteer vervolgens de webservice.
    
-    ![Studio selecteert een webservice](./media/excel-add-in-for-web-services/image4.png)
+    ![Studio een webservice selecteren](./media/excel-add-in-for-web-services/image4.png)
 2. Kopieer de API-sleutel voor de webservice.
    
     ![Studio API-sleutel](./media/excel-add-in-for-web-services/image5.png)
-3. Op de **DASHBOARD** tabblad voor de webservice, klikt u op de **aanvraag/antwoord** koppeling.
-4. Zoek de **aanvraag-URI** sectie.  Kopieer en bewaar de URL.
+3. Klik op het tabblad **dash board** voor de webservice op de koppeling **aanvraag/antwoord** .
+4. Zoek naar de sectie **URI van aanvraag** .  Kopieer de URL en sla deze op.
 
 > [!NOTE]
-> Het is nu mogelijk aan te melden bij de [Azure Machine Learning-webservices](https://services.azureml.net) -portal voor het verkrijgen van de API-sleutel voor een klassieke Machine Learning-webservice.
+> Het is nu mogelijk om u aan te melden bij de [Azure machine learning Web Services](https://services.azureml.net) -Portal om de API-sleutel voor een klassieke machine learning-webservice te verkrijgen.
 > 
 > 
 
 **Een nieuwe webservice gebruiken**
 
-1. In de [Azure Machine Learning-webservices](https://services.azureml.net) en klik op **webservices**, selecteer vervolgens uw webservice. 
-2. Klik op **gebruiken**.
-3. Zoek de **Basic verbruik info** sectie. Kopieer en bewaar de **primaire sleutel** en de **Request Response** URL.
+1. Klik in het [Azure machine learning Web Services](https://services.azureml.net) -Portal op **webservices**en selecteer vervolgens uw webservice. 
+2. Klik op **verbruik**.
+3. Zoek naar de sectie **basis informatie over verbruik** . Kopieer de **primaire sleutel** en sla de **aanvraag-antwoord-** URL op.
 
 ## <a name="steps-to-add-a-new-web-service"></a>Stappen voor het toevoegen van een nieuwe webservice
 
-1. Een webservice implementeren of gebruik een bestaande webservice. Zie voor meer informatie over het implementeren van een webservice [zelfstudie 3: Tegoed risicomodel implementeren](tutorial-part3-credit-risk-deploy.md).
-2. Klik op **gebruiken**.
-3. Zoek de **Basic verbruik info** sectie. Kopieer en bewaar de **primaire sleutel** en de **Request Response** URL.
-4. In Excel, gaat u naar de **webservices** sectie (als u zich in de **Predict** sectie, klikt u op de pijl-terug naar de lijst van webservices).
+1. Een webservice implementeren of een bestaande webservice gebruiken. Zie voor meer informatie over het implementeren van een webservice [zelf studie 3: het model](tutorial-part3-credit-risk-deploy.md)voor het implementeren van een credit risico.
+2. Klik op **verbruik**.
+3. Zoek naar de sectie **basis informatie over verbruik** . Kopieer de **primaire sleutel** en sla de **aanvraag-antwoord-** URL op.
+4. Ga in Excel naar de sectie **webservices** (als u in de sectie voor **spelt** klikt u op de pijl terug om naar de lijst met webservices te gaan).
    
-    ![Ga naar de Web service selecteren](./media/excel-add-in-for-web-services/image3.png)
-5. Klik op **-webservice toevoegen**.
-6. Plak de URL in de Excel-invoegtoepassing tekstvak met het label **URL**.
-7. Plak de API/primaire sleutel in het tekstvak met het label **API-sleutel**.
-8. Klik op **Add**.
+    ![Ga naar de selectie van de webservice](./media/excel-add-in-for-web-services/image3.png)
+5. Klik op **Add Web Service**.
+6. Plak de URL in het tekstvak Excel-invoeg toepassing met de naam **URL**.
+7. Plak de API/Primary-sleutel in de label- **API-sleutel**van het tekstvak.
+8. Klik op **Toevoegen**.
    
     ![URL en API-sleutel voor een klassieke webservice.](./media/excel-add-in-for-web-services/image6.png)
-9. Voor het gebruik van de webservice, volgt u de voorgaande instructies, "Stappen voor het gebruik van een bestaande web Service."
+9. Als u de webservice wilt gebruiken, volgt u de voor gaande instructies, ' stappen voor het gebruik van een bestaande webservice '.
 
-## <a name="sharing-your-workbook"></a>Delen van uw werkmap
-Als u uw werkmap opslaat, wordt ook de API/primaire sleutel voor de web-services die u hebt toegevoegd opgeslagen. Dit betekent dat u moet de werkmap alleen delen met personen die u vertrouwt.
+## <a name="sharing-your-workbook"></a>Uw werkmap delen
+Als u de werkmap opslaat, wordt de API/Primary-sleutel voor de webservices die u hebt toegevoegd, ook opgeslagen. Dit betekent dat u de werkmap alleen moet delen met personen die u vertrouwt.
 
-Vragen in de volgende sectie van de opmerking of op onze [forum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Stel alle vragen in de volgende sectie met opmerkingen of op ons [forum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).

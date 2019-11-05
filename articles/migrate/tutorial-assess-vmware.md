@@ -5,18 +5,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 10/11/2019
 ms.author: hamusa
-ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952106"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521235"
 ---
-# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Virtuele VMware-machines beoordelen met Azure Migrate: Server Assessment
+# <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Virtuele VMware-machines beoordelen met Azure Migrate: Server evaluatie
 
-In dit artikel leest u hoe u on-premises VMware-Vm's kunt beoordelen met behulp van de Azure Migrate: Hulp programma Server Assessment.
+In dit artikel leest u hoe u on-premises VMware-Vm's kunt beoordelen met behulp van het Azure Migrate: Server assessment tool.
 
 [Azure migrate](migrate-services-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden.
 
@@ -48,20 +48,20 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate project instellen
 
-Stel als volgt een nieuw Azure Migrate-project in.
+Ga als volgt te werk om een nieuw Azure Migrate-project op te zetten:
 
-1. Zoek in het Azure Portal **alle services**> naar **Azure migrate**.
-2. Onder **Services**selecteert u **Azure migrate**.
-3. Klik in **overzicht**onder **servers detecteren, evalueren en migreren**op **servers beoordelen en migreren**.
+1. Zoek in de Azure-portal in **Alle services** naar **Azure Migrate**.
+2. Onder **Services** selecteert u **Azure Migrate**.
+3. In **Overzicht**, onder **Servers ontdekken, evalueren en migreren**, klikt u op **Servers evalueren en migreren**.
 
     ![Servers detecteren en beoordelen](./media/tutorial-assess-vmware/assess-migrate.png)
 
-4. Klik in **aan**de slag op **hulp middelen toevoegen**.
-5. Selecteer in **project migreren**uw Azure-abonnement en maak een resource groep als u er nog geen hebt.     
+4. Klik in **Aan de slag** op **Hulpprogramma's toevoegen**.
+5. Selecteer in **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.     
 6. Geef in **Project Details**de project naam en de geografie op waarin u het project wilt maken. Azië, Europa, UK en de Verenigde Staten worden ondersteund.
 
-    - Het project geografie wordt alleen gebruikt om de meta gegevens op te slaan die zijn verzameld van on-premises Vm's.
-    - U kunt een wille keurige doel regio selecteren wanneer u een migratie uitvoert.
+    - Het geografische gebied voor het project wordt alleen gebruikt om de metagegevens op te slaan die worden verzameld van on-premises virtuele machines.
+    - Wanneer u een migratie uitvoert, kunt u elke gewenste doelregio selecteren.
 
     ![Een Azure Migrate-project maken](./media/tutorial-assess-vmware/migrate-project.png)
 
@@ -71,14 +71,14 @@ Stel als volgt een nieuw Azure Migrate-project in.
 
     ![Een Azure Migrate-project maken](./media/tutorial-assess-vmware/assessment-tool.png)
 
-9. Selecteer in **hulp programma voor migratie selecteren** **de optie overs Laan een migratie hulpmiddel toevoegen voor nu** > **volgende**.
-10. Controleer de instellingen in **hulp middelen voor beoordeling en toevoegen**en klik op **hulp middelen toevoegen**.
-11. Wacht enkele minuten totdat het Azure Migrate project is geïmplementeerd. U wordt naar de project-pagina geleid. Als u het project niet ziet, kunt u het openen vanaf **servers** in het dash board van Azure Migrate.
+9. In **Migratieprogramma selecteren** selecteert u **Het toevoegen van een migratieprogramma voorlopig overslaan** > **Volgende**.
+10. Controleer in **Evalueren en hulpprogramma's toevoegen** de instellingen en klik op **Hulpmiddelen toevoegen**.
+11. Wacht een paar minuten tot het Azure Migrate-project is geïmplementeerd. U wordt naar de projectpagina geleid. Als u het project niet ziet, kunt u het openen vanuit **Servers** in het Azure Migrate-dashboard.
 
 
 ## <a name="set-up-the-appliance-vm"></a>De toestel-VM instellen
 
-Azure Migrate: Server Assessment voert een licht gewicht VMware-VM-apparaat uit.
+Azure Migrate: Server bepaling voert een licht gewicht VMware-VM-apparaat uit.
 
 - Dit apparaat voert VM-detectie uit en verzendt meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate server beoordeling.
 - Als u het apparaat wilt instellen, doet u het volgende:
@@ -89,9 +89,9 @@ Azure Migrate: Server Assessment voert een licht gewicht VMware-VM-apparaat uit.
 
 ### <a name="download-the-ova-template"></a>De eicellen-sjabloon downloaden
 
-1. In **migratie doelen** > **servers** > Azuremigrate **: Server evaluatie**, klikt u op **ontdekken**.
-2. **Zijn uw machines**in **Discover-computers** > gevirtualiseerd?, klikt u op **Ja, met VMware vSphere Hyper Visor**.
-3. Klik op **downloaden** om de te downloaden. Bestand met de eicellen-sjabloon.
+1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **ontdekken**.
+2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met VMWare vSphere-hypervisor**.
+3. Klik op **Downloaden** om het .OVA-sjabloonbestand te downloaden.
 
     ![.OVA-bestand downloaden](./media/tutorial-assess-vmware/download-ova.png)
 
@@ -104,7 +104,7 @@ Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 2. Gebruik de volgende opdracht om de hash voor het OVA-bestand te genereren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Voor versie 2.19.07.30 moet de gegenereerde hash overeenkomen met deze waarden. 
+3. Voor versie 2.19.07.30 moet de gegenereerde hash overeenkomen met deze waarden.
 
   **Algoritme** | **Hash-waarde**
   --- | ---
@@ -140,18 +140,18 @@ Stel het apparaat in met behulp van de volgende stappen.
 
 1. Klik in de vSphere Client-console met de rechtermuisknop op de VM > **Console openen**.
 2. Geef de taal, de tijd zone en het wacht woord op voor het apparaat.
-3. Open een browser op een computer die verbinding kan maken met de virtuele machine en open de URL van de web-app **van het apparaat:*naam of IP-adres van https://-apparaat*: 44368**.
+3. Open een browser op een computer die verbinding kan maken met de virtuele machine en open de URL van de Web-App van het apparaat: **https:// *-apparaatnaam of IP-adres*: 44368**.
 
    U kunt de app ook vanuit het toestel bureau blad openen door te klikken op de snelkoppeling naar de app.
 4. Ga als volgt te werk in de web-app > vereisten in te **stellen**:
-    - **Licentie**: Accepteer de licentievoorwaarden en lees de informatie van derden.
-    - **Connectiviteit**: De app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
-        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in http://ProxyIPAddress het http://ProxyFQDN formulier of.
+    - **Licentie**: accepteer de licentie voorwaarden en lees de informatie van derden.
+    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
+        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in de notatie http://ProxyIPAddress of http://ProxyFQDN.
         - Geef referenties op als de proxy verificatie nodig heeft.
         - Alleen HTTP-proxy wordt ondersteund.
     - **Tijd synchronisatie**: de tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat de detectie goed werkt.
-    - **Updates installeren**: Het apparaat zorgt ervoor dat de meest recente updates zijn geïnstalleerd.
-    - **VdDK installeren**: Het apparaat controleert of VMWare vSphere Virtual Disk Development Kit (VDDK) is geïnstalleerd.
+    - **Updates installeren**: het apparaat zorgt ervoor dat de meest recente updates worden geïnstalleerd.
+    - **VdDK installeren**: het apparaat controleert of VMware VSphere Virtual Disk Development Kit (vddk) is geïnstalleerd.
         - Azure Migrate: Server migratie gebruikt de VDDK om computers te repliceren tijdens de migratie naar Azure.
         - Down load VDDK 6,7 van VMware en extraheer de gedownloade zip-inhoud naar de opgegeven locatie op het apparaat.
 
@@ -166,17 +166,30 @@ Stel het apparaat in met behulp van de volgende stappen.
 3. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
 4. Klik op **registreren**.
 
-
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
 
-Maak nu verbinding van het apparaat met vCenter Server en start de VM-detectie.
+Het apparaat moet verbinding maken met vCenter Server om de configuratie-en prestatie gegevens van de virtuele machines te detecteren.
 
+### <a name="specify-vcenter-server-details"></a>vCenter Server-gegevens opgeven
 1. Geef in **vCenter Server Details opgeven**de naam (FQDN) of het IP-adres van de vCenter Server op. U kunt de standaard poort verlaten of een aangepaste poort opgeven waarop uw vCenter Server luistert.
 2. Geef bij **gebruikers naam** en **wacht woord**de alleen-lezen account referenties op die het apparaat gebruikt voor het detecteren van vm's op de vCenter-Server. Zorg ervoor dat het account de [vereiste machtigingen voor detectie](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)heeft. U kunt de detectie bereiken door de toegang tot het vCenter-account dienovereenkomstig te beperken. meer informatie over het detecteren van scopes [vindt u hier](tutorial-assess-vmware.md#scoping-discovery).
 3. Klik op **verbinding valideren** om te controleren of het apparaat verbinding kan maken met vCenter Server.
-4. Nadat de verbinding tot stand is gebracht, klikt u op **opslaan en start u detectie**.
 
-De detectie wordt gestart. Het duurt ongeveer 15 minuten voor de meta gegevens van gedetecteerde Vm's die in de portal worden weer gegeven.
+### <a name="specify-vm-credentials"></a>VM-referenties opgeven
+Voor de detectie van toepassingen, functies en onderdelen en het visualiseren van afhankelijkheden van de virtuele machines, kunt u een VM-referentie opgeven die toegang heeft tot de virtuele VMware-machines. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) over de benodigde toegangs rechten.
+
+> [!NOTE]
+> Deze invoer is optioneel en is nodig voor het inschakelen van toepassings detectie en visualisatie van de afhankelijkheid van agents.
+
+1. In **toepassingen en afhankelijkheden detecteren op vm's**, klikt u op **referenties toevoegen**.
+2. Selecteer het **besturings systeem**.
+3. Geef een beschrijvende naam op voor de referentie.
+4. Geef in **gebruikers naam** en **wacht woord**een account op met ten minste gast toegang op de vm's.
+5. Klik op **Toevoegen**.
+
+Nadat u de vCenter Server-en VM-referenties (optioneel) hebt opgegeven, klikt u op **opslaan en detectie starten** om de detectie van de on-premises omgeving te starten.
+
+Het duurt ongeveer 15 minuten voor de meta gegevens van gedetecteerde Vm's die in de portal worden weer gegeven. De detectie van geïnstalleerde toepassingen, functies en onderdelen vergt enige tijd, de duur is afhankelijk van het aantal Vm's dat wordt gedetecteerd. Voor 500 Vm's duurt het ongeveer 1 uur voordat de toepassings voorraad wordt weer gegeven in de Azure Migrate Portal.
 
 ### <a name="scoping-discovery"></a>Detectie van bereik
 
@@ -189,13 +202,13 @@ Als u het bereik wilt instellen, moet u de volgende stappen uitvoeren:
 
 **Een vCenter-gebruikers account maken**
 1.  Meld u aan bij de vSphere-webclient als de vCenter Server beheerder.
-2.  Klik op **beheer** > **SSO-gebruikers en groepen** > **gebruikers** tabblad.
+2.  Klik op **beheer** > **SSO-gebruikers en-groepen** > tabblad **gebruikers** .
 3.  Klik op het pictogram **nieuwe gebruiker** .
 4.  Vul de vereiste gegevens in om een nieuwe gebruiker te maken en klik op **OK**.
 
 **Een nieuwe rol definiëren met vereiste bevoegdheden** (<em>vereist voor server migratie zonder agent</em>)
 1.  Meld u aan bij de vSphere-webclient als vCenter Server beheerder.
-2.  Blader naar **beheer** > **rolbeheer**.
+2.  Blader naar **beheer** > **Role Manager**.
 3.  Selecteer uw vCenter Server in de vervolg keuzelijst.
 4.  Klik op actie voor het maken van een **rol** .
 5.  Typ een naam voor de nieuwe rol. (zoals <em>Azure_Migrate</em>).
@@ -205,18 +218,18 @@ Als u het bereik wilt instellen, moet u de volgende stappen uitvoeren:
 **Machtigingen toewijzen voor vCenter-objecten**
 
 Er zijn twee methoden voor het toewijzen van machtigingen aan inventaris objecten in vCenter aan het vCenter-gebruikers account waaraan een rol is toegewezen.
-- Voor Server evaluatie moet de rol **alleen-lezen** worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de vm's worden gehost die moeten worden gedetecteerd. Alle bovenliggende objecten-host, map van hosts, cluster, map met clusters in de hiërarchie tot aan het Data Center moeten worden opgenomen. Deze machtigingen moeten worden door gegeven aan onderliggende objecten in de hiërarchie. 
+- Voor Server evaluatie moet de rol **alleen-lezen** worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de vm's worden gehost die moeten worden gedetecteerd. Alle bovenliggende objecten-host, map van hosts, cluster, map met clusters in de hiërarchie tot aan het Data Center moeten worden opgenomen. Deze machtigingen moeten worden door gegeven aan onderliggende objecten in de hiërarchie.
 
-    Net als bij server migratie moet een door de gebruiker gedefinieerde rol (met de naam <em>Azure _Migrate</em>) [](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de virtuele machines worden gehost die worden gemigreerd.
+    Net als bij server migratie moet een door de gebruiker gedefinieerde rol (met de naam <em>Azure _Migrate</em>) worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de virtuele machines worden [gehost die worden](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) gemigreerd.
 
 ![Machtigingen toewijzen](./media/tutorial-assess-vmware/assign-perms.png)
 
 - De alternatieve methode is het toewijzen van het gebruikers account en de rol op het datacenter niveau en het door geven van deze aan de onderliggende objecten. Geef vervolgens voor elk object (zoals Vm's) dat u niet wilt detecteren of migreren het account een **Access** -rol. Deze configuratie is omslachtig. Het biedt onbedoelde toegangs controles, omdat voor elk nieuw onderliggend object ook automatisch toegang wordt verleend die wordt overgenomen van de bovenliggende. Daarom wordt u aangeraden de eerste benadering te gebruiken.
- 
+
 > [!NOTE]
 > Momenteel kan server evaluatie geen Vm's detecteren als het vCenter-account toegang heeft gekregen op het niveau van de vCenter-VM-map. Als u uw detectie op basis van VM-mappen wilt beperken, kunt u dit doen door ervoor te zorgen dat het vCenter-account alleen-lezen toegang heeft dat is toegewezen op een VM-niveau.  Hieronder vindt u instructies over hoe u dit kunt doen:
 >
-> 1. Wijs alleen-lezen machtigingen toe op alle virtuele machines in de VM-mappen die u wilt bereiken voor de detectie. 
+> 1. Wijs alleen-lezen machtigingen toe op alle virtuele machines in de VM-mappen die u wilt bereiken voor de detectie.
 > 2. Ken alleen-lezen toegang toe aan alle bovenliggende objecten waarbij de Vm's worden gehost. Alle bovenliggende objecten-host, map van hosts, cluster, map met clusters-in de hiërarchie tot aan het Data Center moeten worden opgenomen. U hoeft de machtigingen niet door te geven aan alle onderliggende objecten.
 > 3. Gebruik de referenties voor detectie Data Center als *verzamelings bereik*selecteren. De RBAC-instelling zorgt ervoor dat de bijbehorende vCenter-gebruiker alleen toegang heeft tot Tenant-specifieke Vm's.
 >
@@ -227,16 +240,16 @@ Er zijn twee methoden voor het toewijzen van machtigingen aan inventaris objecte
 Na de detectie kunt u controleren of de virtuele machines worden weer gegeven in de Azure Portal.
 
 1. Open het Azure Migrate dash board.
-2. In **Azure migrate-servers** > **Azure migrate: Pagina Server** evaluatie klikt u op het pictogram dat het aantal voor **gedetecteerde servers**weergeeft.
+2. Klik in **Azure migrate-Servers** > pagina **Azure migrate: Server beoordeling** op het pictogram met het aantal voor **gedetecteerde servers**.
 
 ## <a name="set-up-an-assessment"></a>Een evaluatie instellen
 
-Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server-evaluatie.
+Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: Server Assessment.
 
-**Onderzoek** | **Details** | **Gegevens**
+**Evaluatie** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatie gegevens | **Aanbevolen VM-grootte**: Op basis van gegevens van het CPU-en geheugen gebruik.<br/><br/> **Aanbevolen schijf type (Standard of Premium Managed disk)** : Op basis van de IOPS en door Voer van de on-premises schijven.
-**Als on-premises** | Evaluaties op basis van on-premises grootte. | **Aanbevolen VM-grootte**: Op basis van de on-premises VM-grootte<br/><br> **Aanbevolen schijf type**: Op basis van de instelling voor het opslag type die u voor de evaluatie selecteert.
+**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatie gegevens | **Aanbevolen VM-grootte**: op basis van gegevens van CPU en geheugen gebruik.<br/><br/> **Aanbevolen schijf type (Standard of Premium Managed disk)** : op basis van de IOPS en door Voer van de on-premises schijven.
+**Als on-premises** | Evaluaties op basis van on-premises grootte. | **Aanbevolen VM-grootte**: op basis van de on-PREMISes VM-grootte<br/><br> **Aanbevolen schijf type**: op basis van de instelling voor het opslag type die u voor de evaluatie selecteert.
 
 
 ### <a name="run-an-assessment"></a>Een evaluatie uitvoeren
@@ -244,14 +257,14 @@ Er zijn twee soorten evaluaties die u kunt maken met behulp van Azure Migrate: S
 Voer een evaluatie als volgt uit:
 
 1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
-2. Op het tabblad **servers** , in **Azure migrate: Tegel server** bepaling, klikt u op **evalueren**.
+2. Klik op het tabblad **servers** in **Azure migrate: tegel server bepaling** op **evalueren**.
 
     ![Evalueren](./media/tutorial-assess-vmware/assess.png)
 
 2. Geef in **servers beoordelen**een naam op voor de evaluatie.
 3. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.
 
-    ![Beoordelingseigenschappen](./media/tutorial-assess-vmware/view-all.png)
+    ![Eigenschappen van beoordeling](./media/tutorial-assess-vmware/view-all.png)
 
 3. In **een groep selecteren of maken**, selecteert u **nieuwe maken**en geeft u een groeps naam op. Een groep verzamelt een of meer Vm's samen voor evaluatie.
 4. Selecteer op **computers toevoegen aan de groep**de optie vm's die u aan de groep wilt toevoegen.
@@ -259,7 +272,7 @@ Voer een evaluatie als volgt uit:
 
     ![Een evaluatie maken](./media/tutorial-assess-vmware/assessment-create.png)
 
-6. Nadat de evaluatie is gemaakt, bekijkt u deze in **servers** > **Azure migrate: Evaluaties**van server evaluaties > .
+6. Nadat de evaluatie is gemaakt, bekijkt u deze in **Servers** > **Azure migrate: Server evaluatie** > - **evaluaties**.
 7. Klik op **Evaluatie exporteren** om deze te downloaden als een Excel-bestand.
 
 
@@ -268,27 +281,27 @@ Voer een evaluatie als volgt uit:
 
 Een evaluatie beschrijft:
 
-- **Azure**-gereedheid: Of Vm's geschikt zijn voor migratie naar Azure.
-- **Schatting maandelijkse kosten**: De geschatte maandelijkse reken-en opslag kosten voor het uitvoeren van de virtuele machines in Azure.
-- **Schatting maandelijkse opslag kosten**: Geschatte kosten voor schijf opslag na migratie.
+- **Azure-gereedheid**: of vm's geschikt zijn voor migratie naar Azure.
+- **Schatting van maandelijkse kosten**: de geschatte maandelijkse reken-en opslag kosten voor het uitvoeren van de virtuele machines in Azure.
+- **Schatting maandelijkse opslag kosten**: geschatte kosten voor schijf opslag na migratie.
 
 ### <a name="view-an-assessment"></a>Een evaluatie weer geven
 
-1. In **migratie doelen** >  **servers**, klikt u op evaluaties in **Azure migrate: Server evaluatie**.
+1. In **migratie doelen** >  **servers**, klikt u op **evaluaties** in **Azure migrate: Server evaluatie**.
 2. Klik in **beoordelingen**op een evaluatie om deze te openen.
 
-    ![Evaluatie-overzicht](./media/tutorial-assess-vmware/assessment-summary.png)
+    ![Evaluatie samenvatting](./media/tutorial-assess-vmware/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>Azure-gereedheid controleren
 
 1. Controleer in **Azure Readiness**of de vm's gereed zijn voor migratie naar Azure.
 2. Controleer de status van de virtuele machine:
-    - **Gereed voor Azure**: Azure Migrate raadt een VM-grootte en schattingen voor de kosten aan voor Vm's in de evaluatie.
-    - **Klaar met voor waarden**: Geeft problemen en voorgestelde herbemiddeling weer.
-    - **Niet gereed voor Azure**: Geeft problemen en voorgestelde herbemiddeling weer.
-    - **Gereedheid onbekend**: Wordt gebruikt wanneer Azure Migrate de gereedheid niet kan beoordelen door problemen met de beschik baarheid van gegevens.
+    - **Gereed voor Azure**: Azure migrate RAADT een VM-grootte en schattingen voor de kosten aan voor vm's in de evaluatie.
+    - **Klaar met voor waarden**: toont problemen en voorgestelde herbemiddeling.
+    - **Niet gereed voor Azure**: toont problemen en voorgestelde herbemiddeling.
+    - **Gereedheid onbekend**: wordt gebruikt wanneer Azure migrate de gereedheid niet kan beoordelen door problemen met de beschik baarheid van gegevens.
 
-2. Klik op de status van een **Azure** -gereedheid. U kunt details van de VM-gereedheid bekijken en inzoomen op de details van de virtuele machine, met inbegrip van compute-, opslag-en netwerk instellingen.
+2. Klik op de status van een **Azure-gereedheid** . U kunt details van de VM-gereedheid bekijken en inzoomen op de details van de virtuele machine, met inbegrip van compute-, opslag-en netwerk instellingen.
 
 
 
@@ -310,7 +323,7 @@ In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitv
 
 Wanneer u evaluaties op basis van prestaties uitvoert, wordt een betrouwbaarheids classificatie aan de evaluatie toegewezen.
 
-![Betrouwbaarheidswaardering](./media/tutorial-assess-vmware/confidence-rating.png)
+![Betrouwbaarheidsclassificatie](./media/tutorial-assess-vmware/confidence-rating.png)
 
 - Er wordt een classificatie van 1 ster (laagste) tot 5 sterren (hoogst) toegekend.
 - De betrouwbaarheids classificatie helpt u bij het schatten van de betrouw baarheid van de grootte aanbevelingen van de evaluatie.

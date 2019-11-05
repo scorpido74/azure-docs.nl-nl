@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7a782c62165aa6f2641c2ebe8e4600198ec373c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387273"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486214"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter Row Transform
 
@@ -22,7 +22,7 @@ Gebruik de Alter Row trans formatie om INSERT-, Delete-, update-en upsert-beleid
 ![Rij-instellingen wijzigen](media/data-flow/alter-row1.png "Rij-instellingen wijzigen")
 
 > [!NOTE]
-> Alter Row-trans formaties worden alleen toegepast op data base-sinks in uw gegevens stroom. De acties die u toewijst aan rijen (invoegen, bijwerken, verwijderen, upsert) worden niet uitgevoerd tijdens foutopsporingssessie. U moet een taak stroom voor het uitvoeren van gegevens toevoegen aan een pijp lijn en de fout opsporing of triggers voor pijp lijn gebruiken om de Alter Row-beleids regels in uw database tabellen te bepalen.
+> Alter Row-trans formaties worden alleen toegepast op Data Base-of CosmosDB-sinks in uw gegevens stroom. De acties die u toewijst aan rijen (invoegen, bijwerken, verwijderen, upsert) worden niet uitgevoerd tijdens foutopsporingssessie. U moet een taak stroom voor het uitvoeren van gegevens toevoegen aan een pijp lijn en de fout opsporing of triggers voor pijp lijn gebruiken om de Alter Row-beleids regels in uw database tabellen te bepalen.
 
 ## <a name="indicate-a-default-row-policy"></a>Een standaard beleid voor rijen aangeven
 

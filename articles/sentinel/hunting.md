@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372410"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489197"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Zoeken naar bedreigingen met in azure Sentinel
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Zoeken naar bedreigingen met Azure Sentinel
 
 Als u een onderzoeker bent die proactief wil zijn om te kijken naar beveiligings Risico's, worden de Azure Sentinel krachtige zoek-en query hulpprogramma's gebruikt om beveiligings Risico's te vinden in de gegevens bronnen van uw organisatie. Maar uw systemen en beveiligings apparaten genereren bergen van gegevens die moeilijk kunnen worden geparseerd en gefilterd in betekenis volle gebeurtenissen. Om beveiligings analisten proactief te bieden voor nieuwe afwijkingen die niet door uw beveiligings-apps zijn gedetecteerd, kunt u met de ingebouwde jacht-query's van Azure Sentinel de juiste vragen stellen om problemen op te sporen in de gegevens die u al in uw netwerk hebt. 
 
@@ -48,7 +46,7 @@ Met Azure Sentinel-jacht kunt u profiteren van de volgende mogelijkheden:
 ## <a name="get-started-hunting"></a>Aan de slag met jacht
 
 1. Klik in de Azure-Sentinel-Portal op **jacht**.
-  ![Azure-Sentinel start de jacht @ no__t-1
+  ![Azure-Sentinel wordt gestart](media/tutorial-hunting/hunting-start.png)
 
 2. Wanneer u de pagina **jacht** opent, worden alle Zoek opdrachten in één tabel weer gegeven. De tabel bevat een lijst met alle query's die zijn geschreven door het team van beveiligings analisten van micro soft, evenals de aanvullende query's die u hebt gemaakt of gewijzigd. Elke query bevat een beschrijving van de functie voor het zoeken naar en de soort gegevens waarop deze wordt uitgevoerd. Deze sjablonen worden gegroepeerd op hun verschillende tactiek-de pictogrammen aan de rechter kant categoriseren het type bedreiging, zoals initiële toegang, persistentie en exfiltration. U kunt deze jacht-query sjablonen filteren met behulp van een van de velden. U kunt elke query opslaan in uw favorieten. Als u een query opslaat in uw favorieten, wordt de query automatisch uitgevoerd telkens wanneer de pagina **jacht** wordt geopend. U kunt uw eigen zoek opdracht maken of een bestaande zoek opdracht sjabloon klonen en aanpassen. 
  
