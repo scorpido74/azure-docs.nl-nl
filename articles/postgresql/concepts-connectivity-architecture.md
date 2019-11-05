@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 92844f0fe3a851802836015a1340983eb4633ed2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5288c3025e523e767082f4ab7cfbb08805a74eaf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900554"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500091"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Connectiviteits architectuur in Azure Database for PostgreSQL
 In dit artikel wordt uitgelegd wat de Azure Database for PostgreSQL connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for PostgreSQL data base-exemplaar van clients, zowel binnen als buiten Azure.
@@ -31,7 +31,7 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | Australië - oost | 13.75.149.87 | 40.79.161.1 |
 | Australië - zuidoost | 191.239.192.109 | 13.73.109.251 |
 | Brazilië - zuid | 104.41.11.5 | |
-| Canada - midden | 40.85.224.249 | |
+| Canada - centraal | 40.85.224.249 | |
 | Canada - oost | 40.86.226.166 | |
 | US - centraal | 23.99.160.139 | 13.67.215.62 |
 | China-oost 1 | 139.219.130.35 | |
@@ -46,15 +46,18 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | India - centraal | 104.211.96.159 | |
 | India - zuid | 104.211.224.146 | |
 | India - west | 104.211.160.80 | |
-| Japan - oost | 191.237.240.43 | 13.78.61.196 |
+| Japan - Oost | 191.237.240.43 | 13.78.61.196 |
 | Japan - west | 191.238.68.11 | 104.214.148.156 |
 | Korea - centraal | 52.231.32.42 | |
 | Korea - zuid | 52.231.200.86 |  |
-| US - noord-centraal | 23.98.55.75 | 23.96.178.199 |
+| VS - noord-centraal | 23.98.55.75 | 23.96.178.199 |
 | Europa - noord | 191.235.193.75 | 40.113.93.91 |
 | US - zuid-centraal | 23.98.162.75 | 13.66.62.124 |
 | Azië - zuidoost | 23.100.117.95 | 104.43.15.0 |
-| Verenigd Koninkrijk Zuid | 51.140.184.11 | |
+| Zuid-Afrika - noord | 102.133.152.0 | |
+| Zuid-Afrika - west | 102.133.24.0 | |
+| VAE - noord | 65.52.248.0 | |
+| VK - zuid | 51.140.184.11 | |
 | Verenigd Koninkrijk West | 51.141.8.11| |
 | Europa -west | 191.237.232.75 | 40.68.37.158 |
 | VS-West 1 | 23.99.34.75 | 104.42.238.205 |
@@ -62,9 +65,9 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 ||||
 
 > [!NOTE]
-> *VS-Oost 2* heeft ook een tertiair IP- `52.167.104.0`adres van.
+> *VS-Oost 2* heeft ook een tertiair IP-adres van `52.167.104.0`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure Database for PostgreSQL firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-using-portal.md)
-* [Maken en beheren van Azure-Database voor firewallregels PostgreSQL met Azure CLI](./howto-manage-firewall-using-cli.md)
+* [Azure Database for PostgreSQL firewall regels maken en beheren met Azure CLI](./howto-manage-firewall-using-cli.md)

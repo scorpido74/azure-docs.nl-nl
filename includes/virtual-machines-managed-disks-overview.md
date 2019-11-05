@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 979fa8bed99a8244e9ebae9de4b615bfac4bd773
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72966461"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522657"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -85,12 +85,12 @@ Elke VM bevat een tijdelijke schijf, die geen beheerde schijf is. De tijdelijke 
 
 Een moment opname van een beheerde schijf is een alleen-lezen, crash consistente volledige kopie van een beheerde schijf die standaard wordt opgeslagen als standaard beheerde schijf. Met moment opnamen kunt u op elk moment een back-up maken van uw beheerde schijven. Deze moment opnamen bestaan onafhankelijk van de bron schijf en kunnen worden gebruikt om nieuwe beheerde schijven te maken. 
 
-Moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt die moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB. U kunt de gebruikte grootte van uw moment opnamen zien door het Azure- [gebruiks rapport](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)te bekijken. Als de gebruikte gegevens grootte van een moment opname bijvoorbeeld 10 GiB is, wordt in het gebruiks rapport 10 GiB/(31 dagen x 24 uur) = 0,013441 GiB weer gegeven als de verbruikte hoeveelheid.
+Moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt die moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB. U kunt de gebruikte grootte van uw moment opnamen zien door het Azure- [gebruiks rapport](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill)te bekijken. Als de gebruikte gegevens grootte van een moment opname bijvoorbeeld 10 GiB is, wordt in het **dagelijks** gebruiks rapport 10 GiB/(31 dagen) = 0,3226 weer gegeven als de verbruikte hoeveelheid.
 
-Raadpleeg de volgende bronnen voor meer informatie over het maken van moment opnamen met Managed disks:
+Raadpleeg de volgende bronnen voor meer informatie over het maken van moment opnamen voor beheerde schijven:
 
-* [Een kopie maken van een VHD die is opgeslagen als beheerde schijf met behulp van moment opnamen in Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Een kopie maken van een VHD die is opgeslagen als beheerde schijf met behulp van momentopnamen in Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Een moment opname van een beheerde schijf maken in Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Een moment opname van een beheerde schijf maken in Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>Installatiekopieën
 

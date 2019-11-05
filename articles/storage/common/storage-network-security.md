@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: af5b2a8c6894846ec529763f80c78bc50debabe6
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: e7f4d58ceab78aea7031d2c706504bdcb99434c6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965514"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520642"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage firewalls en virtuele netwerken configureren
 
@@ -262,7 +262,7 @@ Elk opslag account ondersteunt Maxi maal 100 IP-netwerk regels.
 
 Als u toegang wilt verlenen vanaf uw on-premises netwerken naar uw opslag account met een IP-netwerk regel, moet u de Internet gerichte IP-adressen identificeren die door uw netwerk worden gebruikt. Neem contact op met uw netwerk beheerder voor hulp.
 
-Als u [ExpressRoute](/azure/expressroute/expressroute-introduction) gebruikt vanuit uw on-premises netwerk voor openbare peering of Microsoft-peering, moet u de NAT IP-adressen opgeven die worden gebruikt. Voor openbare peering gebruikt elk ExpressRoute-circuit standaard twee NAT IP-adressen. Deze worden toegepast op Azure-serviceverkeer wanneer het verkeer het Microsoft Azure-backbone-netwerk binnenkomt. Voor Microsoft-peering worden de NAT IP-adressen die worden gebruikt opgegeven door de klant of de serviceprovider. Voor toegang tot uw serviceresources moet u deze openbare IP-adressen toestaan in de instelling voor IP-firewall voor de resource. Wanneer u op zoek bent naar de IP-adressen van uw ExpressRoute-circuit, opent u [een ondersteuningsticket met ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) via de Azure Portal. Meer informatie over [NAT voor openbare peering en Microsoft-peering met ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
+Als u [ExpressRoute](/azure/expressroute/expressroute-introduction) gebruikt vanuit uw on-premises netwerk voor openbare peering of Microsoft-peering, moet u de NAT IP-adressen opgeven die worden gebruikt. Voor openbare peering gebruikt elk ExpressRoute-circuit standaard twee NAT IP-adressen. Deze worden toegepast op Azure-serviceverkeer wanneer het verkeer het Microsoft Azure-backbone-netwerk binnenkomt. Voor micro soft-peering worden de IP-adressen van NAT die worden gebruikt door de klant of door de service provider verschaft. Voor toegang tot uw serviceresources moet u deze openbare IP-adressen toestaan in de instelling voor IP-firewall voor de resource. Wanneer u op zoek bent naar de IP-adressen van uw ExpressRoute-circuit, opent u [een ondersteuningsticket met ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) via de Azure Portal. Meer informatie over [NAT voor openbare peering en Microsoft-peering met ExpressRoute.](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)
 
 ### <a name="managing-ip-network-rules"></a>IP-netwerk regels beheren
 
@@ -362,13 +362,13 @@ Met netwerk regels kunt u een beveiligde omgeving maken voor verbindingen tussen
 
 ### <a name="trusted-microsoft-services"></a>Vertrouwde micro soft-Services
 
-Sommige micro soft-services werken vanuit netwerken die niet in uw netwerk regels kunnen worden opgenomen. U kunt een subset van dergelijke vertrouwde micro soft-Services toegang geven tot het opslag account, terwijl netwerk regels voor andere apps worden onderhouden. Deze services kunnen vervolgens sterke verificatie gebruiken om veilig verbinding te maken met uw opslag account. We bieden twee typen vertrouwde toegang voor micro soft-Services.
+Sommige micro soft-services werken vanuit netwerken die niet in uw netwerk regels kunnen worden opgenomen. U kunt een subset van dergelijke vertrouwde micro soft-Services toegang verlenen tot het opslag account, terwijl netwerk regels voor andere apps worden onderhouden. Deze vertrouwde services kunnen vervolgens sterke verificatie gebruiken om veilig verbinding te maken met uw opslag account. We bieden twee typen vertrouwde toegang voor micro soft-Services.
 
-- Resources van sommige services kunnen toegang krijgen voor Select-bewerkingen, zoals het schrijven van Logboeken of voor het maken van back-ups.
-- Aan een bepaald exemplaar van sommige services kan toegang worden verleend door [een RBAC-rol](storage-auth-aad.md#assign-rbac-roles-for-access-rights) toe te wijzen aan het bron exemplaar.
+- Resources van sommige services, **als deze zijn geregistreerd in uw abonnement**, hebben toegang tot opslag accounts **in hetzelfde abonnement** , alleen voor Select-bewerkingen, zoals het schrijven van Logboeken of voor back-ups.
+- Resource-instanties van sommige services kunnen expliciet toegang krijgen tot uw opslag account door [**een RBAC-rol**](storage-auth-aad.md#assign-rbac-roles-for-access-rights) toe te wijzen aan het bron exemplaar.
 
 
-Wanneer u de optie **vertrouwde micro soft-Services toestaan...** uitzonde ring inschakelt, krijgen de volgende services (wanneer deze zijn geregistreerd in uw abonnement) toegang tot het opslag account voor Select-bewerkingen, zoals wordt beschreven:
+Wanneer u de optie **vertrouwde micro soft-Services toestaan...** uitzonde ring inschakelt, krijgen deze services (als deze zijn geregistreerd in uw abonnement) toegang tot het opslag account voor Select-bewerkingen, zoals wordt beschreven:
 
 | Service                  | Naam van resource provider     | Doel                            |
 |:------------------------ |:-------------------------- |:---------------------------------- |
@@ -379,19 +379,20 @@ Wanneer u de optie **vertrouwde micro soft-Services toestaan...** uitzonde ring 
 | Azure Event Hubs         | Microsoft.EventHub         | Gegevens archiveren met Event Hubs Capture. [Meer informatie](/azure/event-hubs/event-hubs-capture-overview). |
 | Azure File Sync          | Micro soft. StorageSync      | Hiermee kunt u uw on-premises Bestands server transformeren naar een cache voor Azure-bestands shares. Het toestaan van synchronisatie op meerdere locaties, snelle herstel na nood gevallen en back-ups aan de Cloud zijde. [Meer informatie](../files/storage-sync-files-planning.md) |
 | Azure HDInsight          | Microsoft.HDInsight        | Richt de oorspronkelijke inhoud in van het standaard bestandssysteem voor een nieuw HDInsight-cluster. [Meer informatie](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/). |
-| Azure Machine Learning-service | Microsoft.MachineLearningServices | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage. [Meer informatie](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Azure Machine Learning | Microsoft.MachineLearningServices | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage. [Meer informatie](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace).   
 | Azure Monitor            | Microsoft.Insights         | Hiermee staat u het schrijven van bewakings gegevens naar een beveiligd [opslag account toe](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
 | Azure-netwerken         | Microsoft.Network          | Sla logboeken voor netwerk verkeer op en Analyseer deze. [Meer informatie](/azure/network-watcher/network-watcher-packet-capture-overview). |
 | Azure Site Recovery      | Micro soft. SiteRecovery     | Schakel replicatie in voor herstel na nood gevallen van virtuele Azure IaaS-machines wanneer u gebruikmaakt van cache-, bron-of doel opslag accounts die gebruikmaken van een firewall.  [Meer informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
-Met de uitzonde ring **vertrouwde micro soft-Services toestaan...** kunnen bepaalde instanties van deze services toegang krijgen tot het opslag account als aan de [aan het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het exemplaar een RBAC-rol is toegewezen.
+Met de uitzonde ring ' **vertrouwde micro soft-Services toestaan...** ' kan een bepaald exemplaar van de onderstaande services toegang krijgen tot het opslag account, als u expliciet een RBAC-rol toewijst aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor het bron exemplaar.
 
-| Service                  | Naam van resource provider          | Doel                            |
-| :----------------------- | :------------------------------ | :--------------------------------- |
-| Azure Data Factory       | Micro soft. DataFactory/fabrieken | Hiermee hebt u toegang tot opslag accounts via de ADF-runtime. |
-| Azure Logic Apps         | Micro soft. Logic/werk stromen       | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. |
-| Azure SQL Data Warehouse | Microsoft.Sql                   | Staat het importeren en exporteren van gegevens uit specifieke SQL Database instanties met poly base toe. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
-| Azure Stream Analytics   | Microsoft.StreamAnalytics       | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel beschikbaar als preview-product. [Meer informatie](../../stream-analytics/blob-output-managed-identity.md). |
+| Service                        | Naam van resource provider          | Doel                            |
+| :----------------------------- | :------------------------------ | :--------------------------------- |
+| Azure Data Factory             | Micro soft. DataFactory/fabrieken | Hiermee hebt u toegang tot opslag accounts via de ADF-runtime. |
+| Azure Logic Apps               | Micro soft. Logic/werk stromen       | Hiermee kunnen logische apps toegang krijgen tot opslag accounts. |
+| Azure Machine Learning-service | Microsoft.MachineLearningServices | Geautoriseerde Azure Machine Learning-werk ruimten schrijven experiment-uitvoer, modellen en logboeken naar Blob Storage. [Meer informatie](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace). | 
+| Azure SQL Data Warehouse       | Microsoft.Sql                   | Staat het importeren en exporteren van gegevens uit specifieke SQL Database instanties met poly base toe. [Meer informatie](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview). |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics       | Hiermee staat u toe dat gegevens van een streaming-taak naar de Blob-opslag worden geschreven. Deze functie is momenteel beschikbaar als preview-product. [Meer informatie](../../stream-analytics/blob-output-managed-identity.md). |
 
 
 ### <a name="storage-analytics-data-access"></a>Opslag Analytics-gegevens toegang

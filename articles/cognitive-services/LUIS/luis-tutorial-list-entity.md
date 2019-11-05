@@ -1,7 +1,7 @@
 ---
 title: Extact tekst overeenkomst entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: Informatie over het toevoegen van een entiteit lijst om te helpen LUIS label variaties van een woord of woordgroep.
+description: Meer informatie over het toevoegen van een lijst entiteit om LUIS label variaties van een woord of woord groep te helpen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,101 +10,103 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390277"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499477"
 ---
-# <a name="use-a-list-entity-to-increase-entity-detection"></a>Een lijst met entiteit gebruiken voor het verhogen van detectie van entiteit 
-In dit artikel wordt het gebruik van een [lijst entiteit](luis-concept-entity-types.md) gedemonstreerd om de entiteits detectie te verg Roten. Lijst met entiteiten hoeft te worden gelabeld als ze exact overeenkomen met de voorwaarden zijn.  
+# <a name="use-a-list-entity-to-increase-entity-detection"></a>Een lijst entiteit gebruiken om de entiteits detectie te verg Roten 
+In dit artikel wordt het gebruik van een [lijst entiteit](luis-concept-entity-types.md) gedemonstreerd om de entiteits detectie te verg Roten. De lijst entiteiten hoeven niet te worden gelabeld omdat ze exact overeenkomen met de termen.  
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Een lijst met entiteit maken 
+> * Een lijst entiteit maken 
 > * Genormaliseerde waarden en synoniemen toevoegen
-> * Verbeterde entiteits-id valideren
+> * Verbeterde Entiteits-ID valideren
 
 ## <a name="prerequisites"></a>Vereisten
 
 > [!div class="checklist"]
-> * Meest recente [Node.js](https://nodejs.org)
-> * [LUIS-app HomeAutomation](luis-get-started-create-app.md). Als u niet de start Automation-app hebt gemaakt hebt, een nieuwe app maken en toevoegen van het vooraf gedefinieerde domein **HomeAutomation**. Train en publiceer de app. 
-> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (als het uitvoeren van query's is vaak), app-ID, versie-ID en [regio](luis-reference-regions.md) voor de LUIS-app.
+> * Laatste [node. js](https://nodejs.org)
+> * [HOMEAUTOMATION Luis-app](luis-get-started-create-app.md). Als u de Home Automation-app niet hebt gemaakt, maakt u een nieuwe app en voegt u het vooraf gedefinieerde domein **HomeAutomation**toe. Train en publiceer de app. 
+> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (als query's meermaals worden doorzocht), App-ID, versie-id en [regio](luis-reference-regions.md) voor de Luis-app.
 
 > [!Tip]
-> Als u nog geen een abonnement, kunt u zich registreren voor een [gratis account](https://azure.microsoft.com/free/).
+> Als u nog geen abonnement hebt, kunt u zich registreren voor een [gratis account](https://azure.microsoft.com/free/).
 
 Alle code in dit artikel is beschikbaar in de [github-opslag plaats Azure-samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
 
-## <a name="use-homeautomation-app"></a>HomeAutomation app gebruiken
-De app HomeAutomation geeft u controle over apparaten zoals lichten, entertainmentsystemen en omgeving van besturingselementen, zoals verwarming en koeling. Deze systemen zijn diverse verschillende namen die de fabrikant van namen, bijnamen acroniemen en slang kunnen opnemen. 
+## <a name="use-homeautomation-app"></a>HomeAutomation-app gebruiken
+De HomeAutomation-app biedt u de controle over apparaten zoals lampen, entertainment systemen en omgevings controles zoals verwarming en koeling. Deze systemen hebben verschillende namen die namen van fabrikanten, bijnamen, acroniemen en slang kunnen bevatten. 
 
-Een systeem met veel namen in verschillende culturen en demografische gegevens is de thermostaat. Een thermostaat kunt beheren, zowel koeling en verwarming van een huis of gebouw.
+Een systeem met veel namen in verschillende cult uren en demografische gegevens is de Thermo staat. Een thermo staat kan zowel koel-als verwarmings systemen voor een huis of gebouw best uren.
 
-In het ideale geval de volgende uitingen moeten worden omgezet naar de vooraf gedefinieerde entiteit **HomeAutomation.Device**:
+In het ideale geval worden de volgende uitingen omgezet in de vooraf samengestelde entiteit **HomeAutomation. apparaat**:
 
-|#|Utterance|entiteit geïdentificeerd|score|
+|#|utterance|entiteit geïdentificeerd|Score|
 |--|--|--|--|
-|1|de ac inschakelen|HomeAutomation.Device - "ac"|0.8748562|
-|2|inschakelen van de heatmap|HomeAutomation.Device - "voor"|0.784990132|
-|3|Controleer kouder|||
+|1|AC inschakelen|HomeAutomation. apparaat-"AC"|0,8748562|
+|2|de hitte in te scha kelen|HomeAutomation. apparaat-"hitte"|0,784990132|
+|3|IT-koeler maken|||
 
-De eerste twee uitingen worden toegewezen aan verschillende apparaten. De derde utterance 'Maak deze kouder', niet is toegewezen aan een apparaat, maar in plaats daarvan een resultaat-aanvragen. LUIS bekend niet is dat de term 'kouder', betekent dat de thermostaat is het gewenste apparaat. LUIS moet worden al deze uitingen in het ideale geval omgezet naar hetzelfde apparaat. 
+De eerste twee uitingen worden toegewezen aan verschillende apparaten. De derde utterance, ' Maak IT kouder ', is niet toegewezen aan een apparaat maar vraagt een resultaat op. LUIS weet niet dat de term ' kouder ', de Thermo staat het aangevraagde apparaat is. In het ideale geval moet LUIS al deze uitingen op hetzelfde apparaat omzetten. 
 
-## <a name="use-a-list-entity"></a>Een lijst met entiteit gebruiken
-De entiteit HomeAutomation.Device is erg handig voor een klein aantal apparaten of met enkele variaties van de namen. Voor een kantoorgebouw of campus groter de apparaatnamen wordt dan het nut van de entiteit HomeAutomation.Device. 
+## <a name="use-a-list-entity"></a>Een lijst entiteit gebruiken
+De entiteit HomeAutomation. apparaat is geweldig voor een klein aantal apparaten of met enkele variaties van de namen. Voor een kantoor gebouw of campus groeien de apparaatnamen zich buiten het nut van de HomeAutomation. device-entiteit. 
 
-Een **entiteit lijst** is een goede keuze voor dit scenario omdat de set voorwaarden voor een apparaat in een gebouw of campus een bekende set is, zelfs als het een grote set. Met behulp van een entiteit lijst, LUIS ontvangen van een mogelijke waarde in de verzameling van de thermostaat, en naar alleen de één apparaat "thermostaat" oplossen. 
+Een **lijst entiteit** is een goede keuze voor dit scenario, omdat de set voor waarden voor een apparaat in een gebouw of campus een bekende set is, zelfs als het een enorme set is. Met behulp van een lijst entiteit kan LUIS elke mogelijke waarde in de set voor de Thermo staat ontvangen en deze omzetten in alleen het apparaat "Thermo staat". 
 
 Dit artikel gaat over het maken van een entiteits lijst met de Thermo staat. De alternatieve namen voor een thermo staat in dit artikel zijn: 
 
-|alternatieve namen voor thermostaat|
+|alternatieve namen voor Thermo staat|
 |--|
-| netstroom |
-| wisselstroomadapter|
-| een c|
-|brandstof|
-|hot|
+| auto |
+| a/c|
+| a-c|
+|hitte|
+|direct|
 |hotter|
-|koude|
+|Huizen|
 |kouder|
 
-Als LUIS nodig heeft om een nieuw alternatief vaak te bepalen en vervolgens een [woordgroepenlijst](luis-concept-feature.md#how-to-use-phrase-lists) is een beter antwoord.
+Als LUIS een nieuw alternatief vaak moet bepalen, is een [woordgroepen lijst](luis-concept-feature.md#how-to-use-phrase-lists) een beter antwoord.
 
-## <a name="create-a-list-entity"></a>Een lijst met entiteit maken
-Maak een Node.js-bestand en kopieer de volgende code naar het. Wijzig de waarden authoringKey, appId, versionId en regio.
+## <a name="create-a-list-entity"></a>Een lijst entiteit maken
+Maak een node. js-bestand en kopieer de volgende code hierin. Wijzig de waarden voor authoringKey, appId, versionId en Region.
 
    [!code-javascript[Create DevicesList List Entity](~/samples-luis/documentation-samples/tutorial-list-entity/add-entity-list.js "Create DevicesList List Entity")]
 
-Gebruik de volgende opdracht om te installeren de NPM-afhankelijkheden en voert u de code voor het maken van de entiteit lijst:
+Gebruik de volgende opdracht om de NPM-afhankelijkheden te installeren en de code uit te voeren om de lijst entiteit te maken:
 
 ```console
 npm install && node add-entity-list.js
 ```
 
-De uitvoer van de uitvoering is de ID van de entiteit van de lijst:
+De uitvoer van de uitvoering is de ID van de lijst entiteit:
 
 ```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 
 ## <a name="train-the-model"></a>Het model trainen
-LUIS trainen in volgorde van de nieuwe lijst invloed heeft op de queryresultaten. Training is een proces tweedelige van training, klikt u vervolgens de status controleren als de training wordt gedaan. Een app met meerdere modellen duurt enkele minuten om te trainen. De volgende code traint van de app en wacht totdat de training geslaagd is. De code maakt gebruik van een strategie voor wait-en-opnieuw proberen om te voorkomen dat de 429 ' te veel aanvragen ' fout. 
+Train LUIS zodat de nieuwe lijst de query resultaten kan beïnvloeden. Training is een tweedelig proces van training en vervolgens de status controleren als de training is voltooid. Het kan even duren voordat een app met veel modellen traint. De volgende code traint de app vervolgens totdat de training is geslaagd. De code maakt gebruik van een wacht-en-nieuwe strategie om te voor komen dat de 429 "te veel aanvragen"-fout. 
 
-Maak een Node.js-bestand en kopieer de volgende code naar het. Wijzig de waarden authoringKey, appId, versionId en regio.
+Maak een node. js-bestand en kopieer de volgende code hierin. Wijzig de waarden voor authoringKey, appId, versionId en Region.
 
    [!code-javascript[Train LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/train.js "Train LUIS")]
 
-Gebruik de volgende opdracht om uit te voeren van de code voor het trainen van de app:
+Gebruik de volgende opdracht om de code uit te voeren om de app te trainen:
 
 ```console
 node train.js
 ```
 
-De uitvoer van de uitvoering is de status van elke herhaling van de training van de LUIS-modellen. De volgende uitvoering vereist slechts één selectievakje training:
+De uitvoer van de uitvoering is de status van elke herhaling van de training van de LUIS-modellen. Voor de volgende uitvoering is slechts één controle op de training vereist:
 
 ```console
 1 trained = true
@@ -122,20 +124,20 @@ De uitvoer van de uitvoering is de status van elke herhaling van de training van
     details: { statusId: 2, status: 'UpToDate', exampleCount: 45 } } ]
 
 ```
-## <a name="publish-the-model"></a>Publiceer het model
-Publiceren, zodat de entiteit lijst beschikbaar via het eindpunt is.
+## <a name="publish-the-model"></a>Het model publiceren
+Publiceren, zodat de lijst entiteit beschikbaar is vanuit het eind punt.
 
-Maak een Node.js-bestand en kopieer de volgende code naar het. Wijzig de waarden endpointKey, toepassings-id en de regio. U kunt uw authoringKey gebruiken als u niet van plan bent om aan te roepen van dit bestand buiten de limiet voor uw.
+Maak een node. js-bestand en kopieer de volgende code hierin. Wijzig de waarden voor endpointKey, appId en Region. U kunt uw authoringKey gebruiken als u niet van plan bent dit bestand aan te roepen buiten uw quotum limiet.
 
    [!code-javascript[Publish LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/publish.js "Publish LUIS")]
 
-Gebruik de volgende opdracht in de code om op te vragen van de app uit te voeren:
+Gebruik de volgende opdracht om de code uit te voeren voor het uitvoeren van een query op de app:
 
 ```console
 node publish.js
 ```
 
-De volgende uitvoer bevat de eindpunt-url voor alle query's. Echte JSON-resultaten, zou de echte appID bevatten. 
+De volgende uitvoer bevat de eind punt-URL voor alle query's. Echte JSON-resultaten zouden de echte appID bevatten. 
 
 ```json
 { 
@@ -149,20 +151,20 @@ De volgende uitvoer bevat de eindpunt-url voor alle query's. Echte JSON-resultat
 }
 ```
 
-## <a name="query-the-app"></a>Query uitvoeren op de app. 
-Query uitvoeren op de app van het eindpunt om te bewijzen dat de entiteit lijst bijdraagt aan een LUIS bepalen van het apparaattype.
+## <a name="query-the-app"></a>Query's uitvoeren op de app 
+Voer een query uit op de app vanuit het eind punt om te bewijzen dat de lijst entiteit helpt het apparaattype te LUIS te bepalen.
 
-Maak een Node.js-bestand en kopieer de volgende code naar het. Wijzig de waarden endpointKey, toepassings-id en de regio. U kunt uw authoringKey gebruiken als u niet van plan bent om aan te roepen van dit bestand buiten de limiet voor uw.
+Maak een node. js-bestand en kopieer de volgende code hierin. Wijzig de waarden voor endpointKey, appId en Region. U kunt uw authoringKey gebruiken als u niet van plan bent dit bestand aan te roepen buiten uw quotum limiet.
 
    [!code-javascript[Query LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/query.js "Query LUIS")]
 
-Gebruik de volgende opdracht naar de code worden uitgevoerd en de app op te vragen:
+Gebruik de volgende opdracht om de code uit te voeren en de app te doorzoeken:
 
 ```console
 node train.js
 ```
 
-De uitvoer is de queryresultaten. Omdat de code toegevoegd de **uitgebreide** naam/waarde-paar aan de querytekenreeks, de uitvoer bevat alle intents en hun scores:
+De uitvoer is de query resultaten. Omdat de code de **uitgebreide** naam/waarde-paar aan de query reeks heeft toegevoegd, bevat de uitvoer alle intenten en hun scores:
 
 ```json
 {
@@ -208,16 +210,16 @@ De uitvoer is de queryresultaten. Omdat de code toegevoegd de **uitgebreide** na
 }
 ```
 
-Het apparaat van **thermostaat** wordt aangeduid met een resultaat-georiënteerde query van 'inschakelen van de heatmap'. Omdat de oorspronkelijke HomeAutomation.Device entiteit nog steeds in de app is, kunt u ook de resultaten bekijken. 
+Het specifieke apparaat van de **Thermo** staat wordt aangeduid met een resultaat gerichte query van ' de hitte in te scha kelen '. Omdat de oorspronkelijke HomeAutomation. apparaat-entiteit zich nog steeds in de app bevindt, ziet u ook de resultaten. 
 
-Probeer de andere twee uitingen om te zien dat ze ook worden geretourneerd als een thermostaat. 
+Probeer de andere twee uitingen om te zien dat ze ook als Thermo staat worden geretourneerd. 
 
-|#|Utterance|entiteit|type|waarde|
+|#|utterance|Vennootschap|type|waarde|
 |--|--|--|--|--|
-|1|de ac inschakelen| netstroom | DevicesList | Thermostaat|
-|2|inschakelen van de heatmap|heatmap| DevicesList |Thermostaat|
-|3|Controleer kouder|kouder|DevicesList|Thermostaat|
+|1|AC inschakelen| auto | DevicesList | Thermo staat|
+|2|de hitte in te scha kelen|temperatuur| DevicesList |Thermo staat|
+|3|IT-koeler maken|kouder|DevicesList|Thermo staat|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt een andere lijst entiteit om uit te breiden apparaat locaties te ruimten, verdiepingen, gebouwen maken. 
+U kunt een andere lijst entiteit maken om de locaties van apparaten uit te breiden naar kamers, vloeren of gebouwen. 

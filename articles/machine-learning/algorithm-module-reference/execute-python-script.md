@@ -1,26 +1,26 @@
 ---
 title: 'Python-script uitvoeren: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over hoe u de script module voor python uitvoeren in Azure Machine Learning service kunt gebruiken om python-code uit te voeren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de script module python uitvoeren in Azure Machine Learning voor het uitvoeren van python-code.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693782"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497873"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
-Gebruik deze module om python-code uit te voeren. Zie [het volgende artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts) voor meer informatie over de architectuur en ontwerp principes van python.
+Gebruik deze module om python-code uit te voeren. Zie [het volgende artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)voor meer informatie over de architectuur en ontwerp principes van python.
 
 Met python kunt u taken uitvoeren die momenteel niet worden ondersteund door bestaande modules, zoals:
 
@@ -81,7 +81,7 @@ De **script module python uitvoeren** bevat een voor beeld van python-code die u
 
 1. Voeg de **script module python uitvoeren** toe aan de pijp lijn.
 
-2. Voeg gegevens sets toe aan **Dataset1** uit de interface die u voor invoer wilt gebruiken en maak er verbinding mee. Verwijs naar deze gegevensset in uw python-script als **DataFrame1**.
+2. Voeg gegevens sets toe aan **Dataset1** uit de ontwerp functie die u voor invoer wilt gebruiken en maak er verbinding mee. Verwijs naar deze gegevensset in uw python-script als **DataFrame1**.
 
     Het gebruik van een gegevensset is optioneel, als u gegevens wilt genereren met behulp van python of python-code wilt gebruiken om de gegevens rechtstreeks in de module te importeren.
 
@@ -97,15 +97,15 @@ De **script module python uitvoeren** bevat een voor beeld van python-code die u
 
 5. Typ of plak geldige python-script in het tekstvak **python-script** .
 
-    Het **python-script** tekstvak is vooraf ingevuld met enkele instructies in opmerkingen, en voorbeeld code voor gegevens toegang en-uitvoer. **U moet deze code bewerken of vervangen.** Zorg ervoor dat u python-conventies voor inspringing en hoofdletter gebruik volgt.
+    Het **python-script** tekstvak is vooraf ingevuld met enkele instructies in opmerkingen, en voorbeeld code voor gegevens toegang en-uitvoer. U moet deze code bewerken of vervangen. Zorg ervoor dat u python-conventies voor inspringing en hoofdletter gebruik volgt.
 
     + Het script moet een functie met de naam `azureml_main` bevatten als het invoer punt voor deze module.
     + De functie toegangs punt kan Maxi maal twee invoer argumenten bevatten: `Param<dataframe1>` en `Param<dataframe2>`
-    + Gezipte bestanden die zijn verbonden met de derde invoer poort, worden uitgepakt en opgeslagen in de map, `.\Script Bundle`, die ook aan de python-`sys.path` worden toegevoegd. 
+    + Gezipte bestanden die zijn verbonden met de derde invoer poort, worden uitgepakt en opgeslagen in de map, `.\Script Bundle`, die ook aan de python-`sys.path`worden toegevoegd. 
 
-    Als uw zip-bestand `mymodule.py` bevat, kunt u dit importeren met behulp van `import mymodule`.
+    Als uw zip-bestand `mymodule.py`bevat, kunt u dit importeren met behulp van `import mymodule`.
 
-    + Er kunnen twee gegevens sets worden geretourneerd naar de interface, die een reeks van het type `pandas.DataFrame` moet zijn. U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
+    + Er kunnen twee gegevens sets worden geretourneerd naar de ontwerp functie, die een reeks van het type `pandas.DataFrame`moet zijn. U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
 
 6. Voer de pijp lijn uit of selecteer de module en klik op **geselecteerde uitvoeren** om alleen het python-script uit te voeren.
 
@@ -124,4 +124,4 @@ De module retourneert twee gegevens sets:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

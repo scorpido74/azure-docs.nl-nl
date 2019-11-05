@@ -1,7 +1,7 @@
 ---
 title: 'R-script uitvoeren: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module voor het uitvoeren van R-script in Azure Machine Learning-service om R-code uit te voeren.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module R-script uitvoeren in Azure Machine Learning om R-code uit te voeren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693771"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497878"
 ---
 # <a name="execute-r-script"></a>R-Script uitvoeren
 
-In dit artikel wordt beschreven hoe u de **script module Execute** r gebruikt voor het uitvoeren van r-code in uw visuele interface pijplijn.
+In dit artikel wordt beschreven hoe u de **script module Execute** r gebruikt voor het uitvoeren van r-code in uw Azure machine learning Designer (preview)-pijp lijn.
 
 Met R kunt u taken uitvoeren die momenteel niet worden ondersteund door bestaande modules, zoals: 
 - Aangepaste gegevens transformaties maken
 - Uw eigen metrische gegevens gebruiken om voor spellingen te evalueren
-- Modellen bouwen met behulp van algoritmen die niet zijn geïmplementeerd als zelfstandige modules in de visuele interface
+- Modellen bouwen met behulp van algoritmen die niet zijn geïmplementeerd als zelfstandige modules in de ontwerp functie
 
 ## <a name="r-version-support"></a>R-versie ondersteuning
 
-De Azure Machine Learning service Visual Interface maakt gebruik van de KRANs (uitgebreid R-archief netwerk) distributie van R. De versie die momenteel wordt gebruikt, is KRANs 3.5.1.
+Azure Machine Learning Designer gebruikt de KRANs (uitgebreid R-archief netwerk) distributie van R. De versie die momenteel wordt gebruikt, is KRANs 3.5.1.
 
 ## <a name="supported-r-packages"></a>Ondersteunde R-pakketten
 
@@ -73,7 +73,7 @@ De module voor het **uitvoeren van R-scripts** bevat voorbeeld code die u als ui
 
 ![R-module](media/module/execute-r-script.png)
 
-Gegevens sets die zijn opgeslagen in de visuele interface, worden automatisch geconverteerd naar een R-gegevens frame wanneer deze met deze module wordt geladen.
+Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch geconverteerd naar een R-gegevens frame wanneer deze met deze module wordt geladen.
 
 1.  Voeg de module voor het **uitvoeren van R-scripts** toe aan de pijp lijn.
 
@@ -116,10 +116,10 @@ azureml_main <- function(dataframe1, dataframe2){
  * De functie toegangs punt kan Maxi maal twee invoer argumenten bevatten: `Param<dataframe1>` en `Param<dataframe2>`
  
    > [!NOTE]
-    > Er wordt verwezen naar de gegevens die worden door gegeven aan de **Execute R-script** module als `dataframe1` en `dataframe2`, die verschillen van Azure machine learning Studio (Studio reference as `dataset1`, `dataset2`). Controleer of de ingevoerde gegevens correct zijn referneced in het script.  
+    > Er wordt verwezen naar de gegevens die worden door gegeven aan de **Execute R-script** module als `dataframe1` en `dataframe2`. Dit wijkt af van Azure machine learning Designer (de naslag informatie voor de ontwerper als `dataset1`, `dataset2`). Controleer of de ingevoerde gegevens correct zijn referneced in het script.  
  
     > [!NOTE]
-    >  Bestaande R-code heeft mogelijk kleine wijzigingen nodig om te worden uitgevoerd in een visuele interface pijplijn. Invoer gegevens die u in CSV-indeling opgeeft, moeten bijvoorbeeld expliciet worden geconverteerd naar een gegevensset voordat u deze in uw code kunt gebruiken. Gegevens-en kolom typen die in de R-taal worden gebruikt, verschillen ook op een aantal manieren van de gegevens-en kolom typen die in de visuele interface worden gebruikt.
+    >  Bestaande R-code heeft mogelijk kleine wijzigingen nodig om te worden uitgevoerd in een designer-pijp lijn. Invoer gegevens die u in CSV-indeling opgeeft, moeten bijvoorbeeld expliciet worden geconverteerd naar een gegevensset voordat u deze in uw code kunt gebruiken. Gegevens-en kolom typen die in de R-taal worden gebruikt, verschillen ook op een aantal manieren van de gegevens-en kolom typen die in de ontwerp functie worden gebruikt.
 
 1.  **Wille keurige Seed**: Typ een waarde die in de R-omgeving moet worden gebruikt als de wille keurige Seed-waarde. Deze para meter is gelijk aan het aanroepen van `set.seed(value)` in R-code.  
 
@@ -127,7 +127,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>Resultaten
 
-De **script** modules voor het uitvoeren van r kunnen meerdere uitvoer retour neren, maar moeten als R-gegevens frames worden weer gegeven. Data-frames worden automatisch geconverteerd naar Visual Interface-gegevens sets voor compatibiliteit met andere modules.
+De **script** modules voor het uitvoeren van r kunnen meerdere uitvoer retour neren, maar moeten als R-gegevens frames worden weer gegeven. Gegevens frames worden automatisch geconverteerd naar gegevens sets in de ontwerp functie voor compatibiliteit met andere modules.
 
 Standaard berichten en fouten van R worden teruggestuurd naar het logboek van de module.
 
@@ -235,7 +235,7 @@ U kunt R-objecten door geven tussen exemplaren van de module **r-script uitvoere
     }
     ```
 
-    De expliciete conversie naar een geheel getal wordt uitgevoerd, omdat de serialization-functie gegevens uitvoer in de R-`Raw` indeling, die niet wordt ondersteund door de visuele interface.
+    De expliciete conversie naar een geheel getal wordt uitgevoerd, omdat de serialisatiefunctie-functie gegevens uitvoer in de R-`Raw` indeling, die niet wordt ondersteund door de ontwerp functie.
 
 1. Voeg een tweede exemplaar van de module voor het **uitvoeren van R-scripts** toe en verbind deze met de uitvoer poort van de voor gaande module.
 
@@ -256,7 +256,7 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 
 |              |            | 
 |--------------|------------| 
-| Pakket      | Version    | 
+| Pakket      | Versie    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
@@ -402,4 +402,4 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

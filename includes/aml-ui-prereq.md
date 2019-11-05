@@ -8,19 +8,20 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
-ms.openlocfilehash: 695153438ba33d9803f7f938aa15b6552d28da40
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 18e855a5f87e700481b69c39c4fe03a69437895e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692592"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490025"
 ---
-1. [Maak een Azure machine learning service-werk ruimte](../articles/machine-learning/service/how-to-manage-workspace.md) als u er nog geen hebt.
+1. [Maak een Azure machine learning-werk ruimte](../articles/machine-learning/service/how-to-manage-workspace.md) als u er nog geen hebt.
 
-1. Open uw werk ruimte in de [Azure Portal](https://portal.azure.com/).  Als u niet zeker weet hoe u uw werk ruimte in de portal kunt vinden, raadpleegt u [uw werk ruimte zoeken](../articles/machine-learning/service/how-to-manage-workspace.md#view).  
+1. Meld u aan bij [ml.Azure.com](https://ml.azure.com) en selecteer de werk ruimte waarmee u wilt werken.
 
-1. Selecteer in uw werk ruimte de optie **visuele interface**.  
- 
-    ![Visual Interface starten](./media/aml-ui-prereq/launch-ui.png)
+1. Selecteer **ontwerp functie**.
 
-    U kunt ook toegang krijgen tot de visuele interface via de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com).
+    ![De ontwerp functie starten](./media/aml-ui-prereq/launch-designer.png)
+
+
+

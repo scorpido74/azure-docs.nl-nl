@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 62ec5d4e85a6e72982b49872af59e7b579c4fd77
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249390"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496266"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -26,18 +26,18 @@ Dit artikel bevat een overzicht van SQL Database functies die momenteel beschikb
 
 | Functie | Details |
 | ---| --- |
+| Nieuwe hardware gegenereerd met de Fsv2-serie en M-serie| Zie [Hardware-generaties](sql-database-service-tiers-vcore.md#hardware-generations)voor meer informatie.|
 | [Persoonlijke Azure-koppeling](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Private Link vereenvoudigt de netwerkarchitectuur en beveiligt de verbinding tussen eindpunten in Azure doordat gegevens op het Azure-netwerk blijven en niet worden blootgesteld op het openbare internet. U kunt met Private Link ook uw eigen services maken en weergeven in Azure. |
 | Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](sql-database-accelerated-database-recovery.md)voor meer informatie.|
 |Aantal benadering|Zie [geschatte aantallen DISTINCT](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)voor meer informatie.|
 |Batch-modus op Rowstore (onder compatibiliteits niveau 150)|Zie [batch-modus op Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)voor meer informatie.|
 | Gegevensdetectie en -classificatie  |Zie [Azure SQL database en SQL Data Warehouse gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md)voor meer informatie.|
 | Taken voor Elastic Database | Zie [elastische taken maken, configureren en beheren](elastic-jobs-overview.md)voor meer informatie. |
-| Query's in Elastic Database | Zie [overzicht van elastische query's](sql-database-elastic-query-overview.md)voor meer informatie. |
+| Elastische query’s | Zie [overzicht van elastische query's](sql-database-elastic-query-overview.md)voor meer informatie. |
 | Elastische transacties | [Gedistribueerde trans acties over Cloud databases](sql-database-elastic-transactions-overview.md). |
 |Feedback over geheugen toekenning (rij-modus) (onder compatibiliteits niveau 150)|Zie [feedback over geheugen toekenning (rij-modus)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)voor meer informatie.|
 | Query-Editor in het Azure Portal |Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](sql-database-connect-query-portal.md)voor meer informatie.|
 | R Services/machine learning met afzonderlijke data bases en elastische Pools |Zie [Machine Learning Services in Azure SQL database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)voor meer informatie.|
-| Serverloze compute-laag | Zie [SQL database serverloze (preview-versie)](sql-database-serverless.md)voor meer informatie.|
 |SQL-analyse|Zie [Azure SQL-analyse](../azure-monitor/insights/azure-sql.md)voor meer informatie.|
 |Uitgestelde compilatie van tabel variabele (onder compatibiliteits niveau 150)|Zie voor meer informatie [tabel variabele uitgestelde compilatie](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |

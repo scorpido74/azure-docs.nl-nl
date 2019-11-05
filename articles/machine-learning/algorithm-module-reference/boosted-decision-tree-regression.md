@@ -1,24 +1,24 @@
 ---
 title: 'Regressie van de beslissings structuur verbeterd: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de versterkde regressie-module voor de beslissings structuur in Azure Machine Learning service om een ensemble van regressie structuren te maken met behulp van Boosting.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over hoe u met behulp van de versterkte regressie module voor de beslissings structuur in Azure Machine Learning een ensemble van regressie structuren kunt maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 4b8ff1c9f5b0f0b04448b950d3ba904ba76927c9
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693842"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493876"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Regressie module voor versterkte beslissings structuur
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een ensemble van regressie structuren te maken met behulp van Boosting. *Versterking* houdt in dat elke boom structuur afhankelijk is van eerdere structuren. Het algoritme leert u door het aanpassen van de rest van de bomen die erop werden gevolgd. Zo kunt u in een beslissings structuur een ensemble verhogen om de nauw keurigheid van een klein risico van minder behoefte aan te nemen.  
   
@@ -97,6 +97,8 @@ Nadat de training is voltooid:
 
 + Als u het model voor scores wilt gebruiken, verbindt u het met het [score model](./score-model.md)om waarden te voors pellen voor nieuwe invoer voorbeelden.
 
++ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer van de trainings module en selecteert u **Opslaan als**. Het exemplaar van het getrainde model dat u opslaat, wordt niet bijgewerkt op opeenvolgende uitvoeringen van de pijp lijn.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

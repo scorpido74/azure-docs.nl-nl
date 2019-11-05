@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: rajanaki
-ms.openlocfilehash: 972223815810917684f35c4e99f04e1ab5b882c8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 68881d57f251d2f26996b2a837780106326ec1d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952119"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492280"
 ---
 # <a name="upcoming-deprecation-of-dr-between-customer-owned-sites-using-hyper-v-and-between-sites-managed-by-scvmm-to-azure"></a>Toekomstige afschaffing van DR tussen sites van klanten die gebruikmaken van Hyper-V en tussen sites die worden beheerd door SCVMM naar Azure
 
@@ -32,13 +32,13 @@ In dit artikel worden de geplande afschaffing, de overeenkomstige implicaties en
 
 - Zodra de scenario's zijn afgeschaft, zijn er de volgende implicaties, tenzij de klant de aanbevolen stappen volgt.
 
-    - DR tussen de Hyper-V-Vm's die worden beheerd door SCVMM tussen sites van de klant: de replicaties blijven werken, omdat de onderliggende mogelijkheid van Hyper-V replica blijft werken, maar klanten kunnen geen aan de slag gerelateerde bewerkingen van het DR-beleid weer geven, beheren of uitvoeren via de Azure Sire-herstel ervaring in de Azure Portal. 
-    - DR. virtuele Hyper-V-machines die worden beheerd door SCVMM naar Azure: de bestaande replicaties worden onderbroken en klanten kunnen niet-gerelateerde Azure-bewerkingen via de Azure Site Recovery weer geven, beheren of uitvoeren.
+    - DR tussen de Hyper-V-Vm's die worden beheerd door SCVMM tussen sites van de klant: de replicaties blijven werken, omdat de onderliggende mogelijkheid van Hyper-V replica blijft werken, maar klanten kunnen geen DR-gerelateerde bewerkingen weer geven, beheren of uitvoeren via de Azure Sire-herstel ervaring in de Azure Portal. 
+    - DR. virtuele Hyper-V-machines die worden beheerd door SCVMM naar Azure: de bestaande replicaties worden onderbroken en klanten kunnen geen DR-gerelateerde bewerkingen weer geven, beheren of uitvoeren via de Azure Site Recovery
 
 
 ## <a name="recommended-actions-to-be-taken"></a>Aanbevolen acties die moeten worden uitgevoerd
 
-Hieronder vindt u de alternatieve opties die de klant heeft, om ervoor te zorgen dat de DR-strategie niet wordt beïnvloed zodra het scenario is afgeschaft. 
+Hieronder ziet u de opties die de klant heeft om ervoor te zorgen dat de DR-strategie niet wordt beïnvloed zodra het scenario is afgeschaft. 
 
 - Kies ervoor om [Azure te gaan gebruiken als het Dr-doel voor vm's op Hyper-V-hosts](hyper-v-azure-tutorial.md).
 

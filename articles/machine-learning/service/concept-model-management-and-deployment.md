@@ -1,7 +1,7 @@
 ---
 title: 'MLOps: ML-modellen beheren, implementeren & bewaken'
 titleSuffix: Azure Machine Learning
-description: 'Meer informatie over het gebruik van Azure Machine Learning voor MLOps: uw modellen implementeren, beheren en bewaken om ze continu te verbeteren. U kunt de modellen die u met Azure Machine Learning, getraind op uw lokale computer of uit andere bronnen kunt implementeren.'
+description: 'Meer informatie over het gebruik van Azure Machine Learning voor MLOps: uw modellen implementeren, beheren en bewaken om ze continu te verbeteren. U kunt de modellen implementeren die u hebt getraind met Azure Machine Learning, op uw lokale machine of vanuit andere bronnen.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 06/24/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98a3102d47504b40a6b62eb329b508468947ca79
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035468"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497432"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Modellen beheren, implementeren en bewaken met Azure Machine Learning
+# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: modellen beheren, implementeren en bewaken met Azure Machine Learning
 
 In dit artikel vindt u informatie over het gebruik van Azure Machine Learning voor het beheren van de levens cyclus van uw modellen. Azure Machine Learning maakt gebruik van een MLOps-benadering (Machine Learning Operations), waarmee de kwaliteit en consistentie van uw machine learning oplossingen worden verbeterd. 
 
@@ -47,7 +47,7 @@ Met model registratie kunt u uw modellen in de Azure-Cloud opslaan en versie, in
 > [!TIP]
 > Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in uw Azure Machine Learning-werk ruimte. Na de registratie kunt u het geregistreerde model downloaden of implementeren en alle geregistreerde bestanden ontvangen.
  
-Geregistreerde modellen worden geïdentificeerd op naam en versie. Telkens wanneer die u een model met dezelfde naam als een bestaande resourcegroep registreren in het register wordt het versienummer verhoogd. U kunt ook aanvullende metagegevenstags opgeven tijdens de registratie die kan worden gebruikt bij het zoeken naar voor modellen. Azure Machine Learning ondersteunt elk model dat kan worden geladen met python 3.5.2 of hoger.
+Geregistreerde modellen worden geïdentificeerd op naam en versie. Telkens wanneer u een model met dezelfde naam registreert als een bestaande, wordt de versie door het REGI ster verhoogd. U kunt ook extra labels voor meta gegevens opgeven tijdens de registratie die kan worden gebruikt bij het zoeken naar modellen. Azure Machine Learning ondersteunt elk model dat kan worden geladen met python 3.5.2 of hoger.
 
 > [!TIP]
 > U kunt ook modellen die zijn getraind buiten Azure Machine Learning registreren.
@@ -88,9 +88,9 @@ Deze assets worden verpakt in een docker-installatie kopie en geïmplementeerd a
 
 U kunt desgewenst de volgende para meters gebruiken voor het afstemmen van de implementatie:
 
-* GPU inschakelen: Wordt gebruikt om GPU-ondersteuning in te scha kelen in de docker-installatie kopie. De installatie kopie moet worden gebruikt voor Microsoft Azure Services, zoals Azure Container Instances, Azure Kubernetes service, Azure Machine Learning Compute of Azure Virtual Machines.
-* Extra stappen voor het docker-bestand: Een bestand dat aanvullende docker-stappen bevat die moeten worden uitgevoerd bij het maken van de docker-installatie kopie.
-* Basis installatie kopie: Een aangepaste installatie kopie die moet worden gebruikt als basis installatie kopie. Als u geen aangepaste installatie kopie gebruikt, wordt de basis installatie kopie verschaft door Azure Machine Learning.
+* Enable GPU: wordt gebruikt om GPU-ondersteuning in te scha kelen in de docker-installatie kopie. De installatie kopie moet worden gebruikt voor Microsoft Azure Services, zoals Azure Container Instances, Azure Kubernetes service, Azure Machine Learning Compute of Azure Virtual Machines.
+* Extra stappen voor het docker-bestand: een bestand dat extra docker-stappen bevat die moeten worden uitgevoerd bij het maken van de docker-installatie kopie.
+* Basis installatie kopie: een aangepaste installatie kopie die moet worden gebruikt als basis installatie kopie. Als u geen aangepaste installatie kopie gebruikt, wordt de basis installatie kopie verschaft door Azure Machine Learning.
 
 U kunt ook de configuratie van het platform voor doel implementatie opgeven. Bijvoorbeeld, het type van de VM-familie, het beschik bare geheugen en het aantal kernen bij het implementeren naar Azure Kubernetes service.
 
@@ -115,13 +115,13 @@ Als u het model als een webservice wilt implementeren, moet u de volgende items 
 
 Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
-#### <a name="iot-edge-devices"></a>IoT Edge-apparaten
+#### <a name="iot-edge-devices"></a>Apparaten IoT Edge
 
 U kunt modellen met IoT-apparaten gebruiken via **Azure IOT Edge-modules**. IoT Edge-modules worden op het apparaat geïmplementeerd op een hardwareapparaat, waarmee de functie voor inschakeling of het model kan worden Gescored.
 
 Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
-### <a name="analytics"></a>Analyse
+### <a name="analytics"></a>Analytische gegevens
 
 Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
 
@@ -157,7 +157,7 @@ Voor meer informatie over het gebruik van Azure-pijp lijnen met Azure Machine Le
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md) met Azure machine learning. Zie [zelf studie voor een voor beeld van de implementatie: Implementeer een installatie kopie classificatie model in](tutorial-deploy-models-with-aml.md)Azure container instances.
+Meer informatie over [hoe en waar u modellen kunt implementeren](how-to-deploy-and-where.md) met Azure machine learning. Zie [zelf studie: een classificatie model voor een installatie kopie implementeren in azure container instances](tutorial-deploy-models-with-aml.md)voor een voor beeld van de implementatie.
 
 Meer informatie over het maken [van een continue integratie en implementatie van ml-modellen met Azure-pijp lijnen](/azure/devops/pipelines/targets/azure-machine-learning). 
 

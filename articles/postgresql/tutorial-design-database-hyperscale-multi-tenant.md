@@ -1,6 +1,6 @@
 ---
-title: Een multi tenant-data base ontwerpen met de zelf studie Azure Database for PostgreSQL – grootschalige (Citus) (preview)
-description: In deze zelf studie ziet u hoe u gedistribueerde tabellen maakt, vult en doorzoekt op Azure Database for PostgreSQL grootschalige (Citus) (preview).
+title: Een multi tenant-data base ontwerpen met de zelf studie Azure Database for PostgreSQL – grootschalige (Citus)
+description: In deze zelf studie ziet u hoe u gedistribueerde tabellen maakt, vult en doorzoekt op Azure Database for PostgreSQL grootschalige (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70163987"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496538"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Zelf studie: een Data Base met meerdere tenants ontwerpen met behulp van Azure Database for PostgreSQL – grootschalige (Citus) (preview)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Zelf studie: een Data Base met meerdere tenants ontwerpen met behulp van Azure Database for PostgreSQL – grootschalige (Citus)
 
-In deze zelf studie gebruikt u Azure Database for PostgreSQL-grootschalige (Citus) (preview) voor meer informatie over:
+In deze zelf studie gebruikt u Azure Database for PostgreSQL-grootschalige (Citus) voor meer informatie over het volgende:
 
 > [!div class="checklist"]
 > * Een Hyperscale (Citus)-servergroep maken
@@ -35,7 +35,7 @@ In deze zelf studie gebruikt u Azure Database for PostgreSQL-grootschalige (Citu
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Het hulp programma psql gebruiken om een schema te maken
 
-Nadat u verbinding hebt gemaakt met de Azure Database for PostgreSQL-grootschalige (Citus) (preview) met behulp van psql, kunt u een aantal basis taken volt ooien. In deze zelf studie wordt u begeleid bij het maken van een web-app waarmee adverteerders hun campagnes kunnen volgen.
+Nadat u verbinding hebt gemaakt met de Azure Database for PostgreSQL-grootschalige (Citus) met behulp van psql, kunt u een aantal basis taken volt ooien. In deze zelf studie wordt u begeleid bij het maken van een web-app waarmee adverteerders hun campagnes kunnen volgen.
 
 Meerdere bedrijven kunnen de app gebruiken, dus we maken een tabel om bedrijven en een andere voor hun campagnes te bewaren. Voer de volgende opdrachten uit in de psql-console:
 
@@ -130,7 +130,7 @@ Toepassingen met meerdere tenants kunnen alleen uniekheid afdwingen per Tenant. 
 
 In een grootschalige-implementatie worden tabel rijen op verschillende knoop punten opgeslagen op basis van de waarde van een door de gebruiker opgegeven kolom. Deze distributie kolom markeert welke Tenant eigenaar is van welke rijen.
 
-Laten we de distributie kolom instellen op bedrijfs \_id, de Tenant-id. Voer in psql de volgende functies uit:
+Laten we de distributie kolom instellen als bedrijfs\_-id, de Tenant-id. Voer in psql de volgende functies uit:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -211,7 +211,7 @@ Laad deze met voorbeeld gegevens. Vergeet niet om deze opdracht in psql uit te v
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Het toevoegen van de klikkens tabel met geo \_ips is efficiënt op alle knoop punten.
+Het toevoegen van de klikkens tabel met geo\_ip's is efficiënt op alle knoop punten.
 Hier volgt een koppeling om de locaties te vinden van iedereen die op ad heeft geklikt
 290. Probeer de query uit te voeren in psql.
 

@@ -5,17 +5,17 @@ services: iot-central
 ms.service: iot-central
 ms.topic: tutorial
 ms.custom:
-- iot-storeAnalytics-conditionMonitor
+- iot-storeAnalytics-checkout
 - iot-p0-scenario
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 057602e9a595f1cb76927810801bd87e4f124d31
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026377"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495132"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Zelf studie: gegevens exporteren uit Azure IoT Central en inzichten in Power BI visualiseren
 
@@ -41,7 +41,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 Voordat u uw Event Hub en logische app maakt, moet u een resource groep maken om deze te beheren. De resource groep moet zich op dezelfde locatie bezien als uw **in-Store Analytics-kassa IOT Central-** toepassing. Een resourcegroep maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer in het navigatie venster links **resource groepen**. Selecteer vervolgens **Toevoegen**.
 1. Voor het **abonnement**selecteert u de naam van het Azure-abonnement dat u hebt gebruikt om uw IOT Central-toepassing te maken.
 1. Voer _Retail-Store-Analysis_* in voor de naam van de **resource groep** .
@@ -109,7 +109,7 @@ Uw Power BI-dash board geeft gegevens weer uit uw toepassing voor retail bewakin
 
     | Waardenaam  | Waardetype |
     | ----------- | ---------- |
-    | Tijdstempel   | Datum/tijd   |
+    | Tijdstempel   | DateTime   |
     | Vochtigheid    | Aantal     |
     | Temperatuur | Aantal     |
 
@@ -132,7 +132,7 @@ U hebt ook een streaming-gegevensset nodig voor de telemetrie van de bezetting:
 
     | Waardenaam     | Waardetype |
     | -------------- | ---------- |
-    | Tijdstempel      | Datum/tijd   |
+    | Tijdstempel      | DateTime   |
     | Wachtrij lengte 1 | Aantal     |
     | Wachtrij lengte 2 | Aantal     |
     | Woning tijd 1   | Aantal     |
@@ -475,9 +475,9 @@ Voeg vier kaart tegels toe om de lengte en de duur van de wachtrij voor de twee 
 | ------- | ------- | ------- | ------- | ------- |
 | Gegevensset | Bezetting sensor | Bezetting sensor | Bezetting sensor | Bezetting sensor |
 | Visualisatie type | Gegroepeerd kolom diagram | Gegroepeerd kolom diagram | Meter | Meter |
-| Axis    | Tijdstempel | Tijdstempel | N/A | N/A |
+| Axis    | Tijdstempel | Tijdstempel | N.v.t. | N.v.t. |
 | Waarde | Woning tijd 1 | Woning tijd 2 | Wachtrij lengte 1 | Wachtrij lengte 2 |
-| Tijd venster | 60 minuten | 60 minuten |  N/A | N/A |
+| Tijd venster | 60 minuten | 60 minuten |  N.v.t. | N.v.t. |
 | Titel | Woning tijd | Woning tijd | Lengte van wachtrij | Lengte van wachtrij |
 | Ondertitel | Uitchecken 1 | Uitchecken 2 | Uitchecken 1 | Uitchecken 2 |
 

@@ -1,24 +1,24 @@
 ---
 title: 'Versterkte beslissings structuur met twee klassen: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de geboostte beslissings structuur module met twee klassen in Azure Machine Learning service om een machine learning model te maken dat is gebaseerd op het gestimuleerde beslissings structuren algoritme.
+titleSuffix: Azure Machine Learning
+description: Informatie over het gebruik van de geboostte beslissings structuur module met twee klassen in Azure Machine Learning om een machine learning model te maken dat is gebaseerd op het gestimuleerde beslissings structuren algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692637"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490173"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Uitmuntende beslissings structuur module met twee klassen
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een machine learning model te maken dat is gebaseerd op het boosted Decision Trees-algoritme. 
 
@@ -75,4 +75,4 @@ Nadat de model training is voltooid, klikt u met de rechter muisknop op de uitvo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

@@ -1,6 +1,6 @@
 ---
 title: Uw cluster visualiseren met Azure Service Fabric Explorer | Microsoft Docs
-description: Service Fabric Explorer is een toepassing voor het inspecteren en beheren van cloudtoepassingen en knooppunten in een Microsoft Azure Service Fabric-cluster.
+description: Service Fabric Explorer is een toepassing voor het inspecteren en beheren van Cloud toepassingen en knoop punten in een Microsoft Azure Service Fabric cluster.
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 88fe73988f6a90fd5041445a561c0f77f25eddc1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 75568cf3c88c02968b3e3e95971f81cf1b9285d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060460"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496356"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisern van uw cluster met Service Fabric Explorer
 
-Service Fabric Explorer (SFX) is een open-source-hulpprogramma voor het inspecteren en beheren van Azure Service Fabric-clusters. Service Fabric Explorer is een bureaubladtoepassing voor Windows, macOS en Linux.
+Service Fabric Explorer (SFX) is een open source-hulp programma voor het inspecteren en beheren van Azure Service Fabric-clusters. Service Fabric Explorer is een bureaublad toepassing voor Windows, macOS en Linux.
 
 ## <a name="service-fabric-explorer-download"></a>Service Fabric Explorer downloaden
 
-Gebruik de volgende koppelingen voor het downloaden van Service Fabric Explorer als een bureaubladtoepassing:
+Gebruik de volgende koppelingen om Service Fabric Explorer te downloaden als een bureaublad toepassing:
 
 - Windows
   - https://aka.ms/sfx-windows
@@ -40,98 +40,107 @@ Gebruik de volgende koppelingen voor het downloaden van Service Fabric Explorer 
   - https://aka.ms/sfx-macos
 
 > [!NOTE]
-> De bureaubladversie van Service Fabric Explorer kan meer of minder functies dan de clusterondersteuning hebben. U kunt terugschakelen naar de versie van de Service Fabric Explorer geïmplementeerd in het cluster volledige functiecompatibiliteit te garanderen.
+> De bureaublad versie van Service Fabric Explorer kan meer of minder functies hebben dan het cluster ondersteunt. U kunt terugvallen op de Service Fabric Explorer-versie die is geïmplementeerd op het cluster om de volledige functie compatibiliteit te garanderen.
 >
 >
 
-### <a name="running-service-fabric-explorer-from-the-cluster"></a>Service Fabric Explorer uitvoeren vanaf het cluster
+### <a name="running-service-fabric-explorer-from-the-cluster"></a>Service Fabric Explorer uitvoeren vanuit het cluster
 
-Service Fabric Explorer is ook die wordt gehost in een Service Fabric-cluster HTTP-eindpunt. Als u wilt starten SFX in een webbrowser, blader naar de HTTP-eindpunt van het cluster vanuit elke browser - bijvoorbeeld https:\//clusterFQDN:19080.
+Service Fabric Explorer wordt ook gehost in het HTTP-beheer eindpunt van een Service Fabric cluster. Als u SFX in een webbrowser wilt starten, bladert u naar het HTTP-beheer eindpunt van het cluster vanuit een browser, bijvoorbeeld https:\//clusterFQDN: 19080.
 
-Voor instellingen voor ontwikkelaars werkstation, kunt u Service Fabric Explorer starten op uw lokale cluster door te navigeren naar https://localhost:19080/Explorer. Dit artikel om te kijken [uw ontwikkelomgeving voorbereiden](service-fabric-get-started.md).
+Voor het installatie programma voor ontwikkel aars kunt u Service Fabric Explorer op uw lokale cluster starten door te navigeren naar https://localhost:19080/Explorer. Bekijk dit artikel om [uw ontwikkel omgeving voor te bereiden](service-fabric-get-started.md).
 
 > [!NOTE]
-> Als uw cluster is beveiligd door een zelfondertekend certificaat dat u ontvangt een foutbericht van de webbrowser is' deze site niet beveiligd'. U kunt gewoon doorgaan via de meeste moderne webbrowsers door de waarschuwing overschrijven. In een productieomgeving moet uw cluster zijn beveiligd met behulp van de algemene naam en een certificaat uitgegeven certificaat. 
+> Als uw cluster wordt beveiligd met een zelfondertekend certificaat, ontvangt u een fout bericht van de webbrowser ' deze site is niet veilig '. U kunt gewoon door gaan met de meeste moderne webbrowsers door de waarschuwing te vervangen. In een productie omgeving moet uw cluster worden beveiligd met een algemene naam en een certificaat certificerings instantie. 
 >
 >
 
-## <a name="connect-to-a-service-fabric-cluster"></a>Verbinding maken met een Service Fabric-cluster
-Voor verbinding met een Service Fabric-cluster, moet u het eindpunt voor clusters (FQDN-naam/IP-) en de HTTP-eindpunt-beheerpoort (19080 standaard). Bijvoorbeeld https\:/ / mysfcluster.westus.cloudapp.azure.com:19080. Gebruik het selectievakje 'Verbinding maken met localhost' verbinding maken met een lokaal cluster op uw werkstation.
+## <a name="connect-to-a-service-fabric-cluster"></a>Verbinding maken met een Service Fabric cluster
+Als u verbinding wilt maken met een Service Fabric cluster, hebt u het knoop punt voor cluster beheer (FQDN/IP) en de HTTP-beheer eindpunt poort (standaard 19080) nodig. Bijvoorbeeld https\://mysfcluster.westus.cloudapp.azure.com:19080. Gebruik het selectie vakje ' verbinding maken met localhost ' om verbinding te maken met een lokaal cluster op uw werk station.
 
 ### <a name="connect-to-a-secure-cluster"></a>Verbinding maken met een beveiligd cluster
-U kunt clienttoegang tot uw Service Fabric-cluster aan certificaten of met behulp van Azure Active Directory (AAD) beheren.
+U kunt de client toegang tot uw Service Fabric cluster beheren met certificaten of met behulp van Azure Active Directory (AAD).
 
-Als u probeert om verbinding met een beveiligd cluster te maken, klikt u vervolgens afhankelijk van de configuratie van het cluster moet u een clientcertificaat of meld u aan met behulp van AAD.
+Als u probeert verbinding te maken met een beveiligd cluster, is afhankelijk van de configuratie van het cluster dat u nodig hebt om een client certificaat aan te bieden of u aan te melden met AAD.
 
-## <a name="understand-the-service-fabric-explorer-layout"></a>Inzicht in de indeling van de Service Fabric Explorer
-U kunt navigeren via de Service Fabric Explorer met behulp van de boomstructuur aan de linkerkant. In de hoofdmap van de structuur bevat het clusterdashboard een overzicht van het cluster, inclusief een overzicht van de toepassings- en knooppuntstatus.
+## <a name="understand-the-service-fabric-explorer-layout"></a>De indeling van Service Fabric Explorer begrijpen
+U kunt door Service Fabric Explorer navigeren met behulp van de structuur aan de linkerkant. In de hoofdmap van de structuur biedt het cluster Dashboard een overzicht van het cluster, inclusief een samen vatting van de status van toepassingen en knoop punten.
 
-![Service Fabric Explorer cluster-dashboard][sfx-cluster-dashboard]
+![Cluster dashboard Service Fabric Explorer][sfx-cluster-dashboard]
 
-### <a name="view-the-clusters-layout"></a>De indeling van het cluster weergeven
-Knooppunten in een Service Fabric-cluster worden geplaatst in een tweedimensionale raster van foutdomeinen en upgradedomeinen. Deze plaatsing zorgt ervoor dat uw toepassingen met problemen met de hardware en upgrades van toepassingen beschikbaar blijven. U kunt bekijken hoe het huidige cluster is ingedeeld met behulp van de cluster-kaart.
+### <a name="view-the-clusters-layout"></a>De indeling van het cluster weer geven
+Knoop punten in een Service Fabric cluster worden geplaatst in een tweedimensionale raster met fout domeinen en upgrade domeinen. Deze plaatsing zorgt ervoor dat uw toepassingen beschikbaar blijven in de aanwezigheid van hardwarefouten en toepassings upgrades. U kunt zien hoe het huidige cluster wordt gevormd door gebruik te maken van de cluster toewijzing.
 
-![Service Fabric Explorer cluster-kaart][sfx-cluster-map]
+![Cluster toewijzing Service Fabric Explorer][sfx-cluster-map]
 
-### <a name="view-applications-and-services"></a>Bekijk toepassingen en services
-Het cluster bevat twee substructuren: één voor toepassingen en andere knooppunten.
+### <a name="view-applications-and-services"></a>Toepassingen en services weer geven
+Het cluster bevat twee substructuren: één voor toepassingen en een andere voor knoop punten.
 
-U kunt de toepassingsweergave gebruiken om te navigeren door de Service Fabric logische hiërarchie: toepassingen, services, partities en replica's.
+U kunt de weer gave toepassing gebruiken om te navigeren door de logische hiërarchie van Service Fabric: toepassingen, services, partities en replica's.
 
-In het volgende voorbeeld wordt de toepassing **Mijntoep** bestaat uit twee services **MyStatefulService** en **WebService**. Aangezien **MyStatefulService** stateful is, is het een partitie met één primair knooppunt en twee secundaire replica's bevat. Daarentegen WebSvcService is staatloos en één exemplaar bevat.
+In het onderstaande voor beeld bestaat de toepassing **MyApp** uit twee services: **MyStatefulService** en **webservice**. Aangezien **MyStatefulService** is stateful, bevat het een partitie met één primaire en twee secundaire replica's. WebSvcService is daarentegen stateless en bevat één exemplaar.
 
-![Service Fabric Explorer toepassing weergeven][sfx-application-tree]
+![Toepassings weergave Service Fabric Explorer][sfx-application-tree]
 
-In het hoofdvenster ziet op elk niveau van de structuur van de relevante informatie over het item. Bijvoorbeeld, ziet u de status van en de versie voor een bepaalde service.
+Op elk niveau van de structuur bevat het hoofd venster relevante informatie over het item. U kunt bijvoorbeeld de status en versie van de status voor een bepaalde service weer geven.
 
-![Service Fabric Explorer essentials-deelvenster][sfx-service-essentials]
+![Service Fabric Explorer deel venster Essentials][sfx-service-essentials]
 
-### <a name="view-the-clusters-nodes"></a>Knooppunten van het cluster weergeven
-In de knooppuntweergave ziet u de fysieke indeling van het cluster. Voor elk knooppunt kunt u controleren voor welke toepassingen er op het knooppunt code is geïmplementeerd. Meer specifiek, kunt u zien welke replica's er momenteel worden uitgevoerd.
+### <a name="view-the-clusters-nodes"></a>De knoop punten van het cluster weer geven
+In de knooppuntweergave ziet u de fysieke indeling van het cluster. Voor elk knooppunt kunt u controleren voor welke toepassingen er op het knooppunt code is geïmplementeerd. Meer specifiek kunt u zien welke replica's momenteel worden uitgevoerd.
 
 ## <a name="actions"></a>Acties
-Service Fabric Explorer biedt een snelle manier om aan te roepen acties op de knooppunten, toepassingen en services in uw cluster.
+Service Fabric Explorer biedt een snelle manier om acties op knoop punten, toepassingen en services in uw cluster aan te roepen.
 
-Bijvoorbeeld, als u wilt verwijderen van exemplaar van een toepassing, kiest u de toepassing uit de structuur aan de linkerkant en kies vervolgens **acties** > **Delete Application**.
+Als u bijvoorbeeld een toepassings exemplaar wilt verwijderen, kiest u de toepassing in de structuur aan de linkerkant en kiest u vervolgens **acties** > **toepassing verwijderen**.
 
-![Verwijderen van een toepassing in Service Fabric Explorer][sfx-delete-application]
+![Een toepassing in Service Fabric Explorer verwijderen][sfx-delete-application]
 
 > [!TIP]
-> U kunt dezelfde acties uitvoeren door te klikken op het weglatingsteken naast elk element.
+> U kunt dezelfde acties uitvoeren door op het weglatings teken naast elk element te klikken.
 >
-> Elke actie die kan worden uitgevoerd via de Service Fabric Explorer kan ook worden uitgevoerd via PowerShell of een REST-API-automatisering inschakelen.
+> Elke actie die via Service Fabric Explorer kan worden uitgevoerd, kan ook worden uitgevoerd via Power shell of een REST API om Automation in te scha kelen.
 >
 >
 
-U kunt ook Service Fabric Explorer gebruiken om instanties van de toepassing voor een bepaald type en de versie te maken. Kies het toepassingstype in de structuurweergave wordt weergegeven en klik vervolgens op de **maken-app-exemplaar** koppelen naast de versie die u in het rechter deelvenster dat wilt.
+U kunt ook Service Fabric Explorer gebruiken om toepassings exemplaren te maken voor een bepaald toepassings type en-versie. Kies het toepassings type in de structuur weergave en klik vervolgens op de koppeling **app-exemplaar maken** naast de versie die u wilt weer geven in het rechterdeel venster.
 
-![Het exemplaar van een toepassing maken in Service Fabric Explorer][sfx-create-app-instance]
+![Een instantie van een toepassing maken in Service Fabric Explorer][sfx-create-app-instance]
 
 > [!NOTE]
-> Service Fabric Explorer biedt geen ondersteuning voor parameters bij het maken van exemplaren van de toepassing. Exemplaren van een toepassing gebruik standaardwaarden voor parameters.
+> Service Fabric Explorer biedt geen ondersteuning voor para meters bij het maken van toepassings exemplaren. Toepassings exemplaren gebruiken standaard parameter waarden.
 >
 >
 
-## <a name="event-store"></a>Gebeurtenis-Store
-EventStore is een functie die wordt aangeboden door het platform waarmee u Service Fabric-platformgebeurtenissen beschikbaar in de Service Fabric Explorer en via REST-API. Hier ziet u een momentopname van wat in uw cluster voor elke entiteit bijvoorbeeld gebeurt er knooppunt, service, toepassing en query's op basis van de tijd van de gebeurtenis. U kunt ook meer informatie over de EventStore op de [overzicht van EventStore](service-fabric-diagnostics-eventstore.md).   
+## <a name="event-store"></a>Gebeurtenis archief
+Event Store is een functie die wordt aangeboden door het platform dat Service Fabric platform gebeurtenissen bevat die beschikbaar zijn in de Service Fabric Explorer en via REST API. Op basis van de tijd van de gebeurtenis ziet u een moment opname van wat er in uw cluster gebeurt voor elke entiteit, bijvoorbeeld knoop punt, service, toepassing en query. Meer informatie over de Event Store vindt u in het [overzicht van Event Store](service-fabric-diagnostics-eventstore.md).   
 
-![EventStore][sfx-eventstore]
-
->[!NOTE]
->Vanaf het Service Fabric versie 6.4. EventStore is niet standaard ingeschakeld en moet zijn ingeschakeld in het resource manager-sjabloon
+![Event Store][sfx-eventstore]
 
 >[!NOTE]
->Vanaf het Service Fabric versie 6.4. De APIs EventStore zijn alleen beschikbaar voor Windows-clusters wordt alleen uitgevoerd op Azure. Er wordt gewerkt aan het overzetten van deze functionaliteit voor zowel Linux als onze zelfstandige clusters.
+>Vanaf Service Fabric versie 6,4. Event Store is standaard niet ingeschakeld en moet worden ingeschakeld in de Resource Manager-sjabloon
 
-## <a name="image-store-viewer"></a>Afbeelding Store Viewer
-Afbeeldingsviewer store is een functie die worden aangeboden als met behulp van systeemeigen afbeelding Store waarmee voor het weergeven van de huidige inhoud van de installatiekopie van het opslaan en ophalen van bestanden en mappen informatie, samen met het verwijderen van bestanden/mappen.
+>[!NOTE]
+>Vanaf Service Fabric versie 6,4. de Event Store-Api's zijn alleen beschikbaar voor Windows-clusters die alleen op Azure worden uitgevoerd. We werken aan het porteren van deze functionaliteit naar Linux en met de zelfstandige clusters.
 
-![Service Fabric Explorer cluster-kaart][sfx-imagestore]
+## <a name="image-store-viewer"></a>Image Store viewer
+Viewer voor afbeeldings archief is een functie die wordt aangeboden als u gebruikmaakt van systeem eigen Image Store waarmee de huidige inhoud van de installatie kopie wordt weer gegeven en informatie over bestanden en mappen kan worden opgehaald, samen met het verwijderen van bestanden/mappen.
 
+![Cluster toewijzing Service Fabric Explorer][sfx-imagestore]
 
+## <a name="backup-and-restore"></a>Back-up en herstel
+Service Fabric Explorer biedt de mogelijkheid om een interface te [maken voor back-up en herstel](./service-fabric-reliable-services-backup-restore.md). De volgende bewerkingen zijn mogelijk:
+
+* Een back-upbeleid maken, bewerken en verwijderen.
+* Back-ups voor een toepassing, service of partitie inschakelen en uitschakelen.
+* Back-ups voor een toepassing, service of partitie opschorten en hervatten.
+* Een back-up van een partitie activeren en bijhouden.
+* Herstel voor een partitie activeren en bijhouden.
+
+Zie voor meer informatie over de service voor back-up en herstel de [rest API verwijzing](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore).
 ## <a name="next-steps"></a>Volgende stappen
-* [Beheren van uw Service Fabric-toepassingen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
-* [Implementatie van service Fabric-toepassing met behulp van PowerShell](service-fabric-deploy-remove-applications.md)
+* [Uw Service Fabric-toepassingen beheren in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
+* [Implementatie van Service Fabric-toepassing met behulp van Power shell](service-fabric-deploy-remove-applications.md)
 
 <!--Image references-->
 [sfx-cluster-dashboard]: ./media/service-fabric-visualizing-your-cluster/sfx-cluster-dashboard.png

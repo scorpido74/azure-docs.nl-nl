@@ -1,5 +1,5 @@
 ---
-title: Prestaties van Apache Spark workloads met Azure HDInsight IO-cache (preview-versie)
+title: Prestaties van Apache Spark-Azure HDInsight IO-cache (preview-versie)
 description: Meer informatie over de Azure HDInsight i/o-cache en hoe u deze kunt gebruiken om de prestaties van Apache Spark te verbeteren.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: b60906df01f640877e90281812acf64082ffad01
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3ef2def6329dc31eb1b175133b4525f87de9181c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162829"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494653"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbeter de prestaties van Apache Spark werk belastingen met behulp van de Azure HDInsight IO-cache
 
@@ -69,7 +69,7 @@ Er kunnen schijf ruimte fouten optreden bij het uitvoeren van Spark-taken na het
 
 1. Selecteer **Opslaan** in de rechter bovenhoek.
 
-1. Selecteer **opnieuw opstarten**  > **alle betrokken problemen opnieuw**op te starten.
+1. Selecteer **opnieuw opstarten** > **alle betrokken problemen opnieuw**op te starten.
 
     ![Apache Ambari alle betrokken software opnieuw opstarten](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Alle betrokken software opnieuw opstarten")
 

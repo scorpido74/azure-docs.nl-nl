@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 80a1ac3ebe5f49d6a63f47e08e0b16114d75e91f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199212"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489074"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Virtuele SQL-machines in azure bulksgewijs registreren met de resource provider van de SQL-VM
 
@@ -37,7 +37,7 @@ Als u uw SQL Server-VM wilt registreren bij de resource provider, hebt u het vol
 - Een [Azure-abonnement](https://azure.microsoft.com/free/) dat is [geregistreerd bij de resource provider](virtual-machines-windows-sql-register-with-resource-provider.md#register-subscription-with-rp) en geen geregistreerde SQL Server virtuele machines bevat. 
 - De client referenties die worden gebruikt om de virtuele machines te registreren, bestaan in een van de volgende RBAC-rollen: Inzender, **Inzender**of **eigenaar**van de **virtuele machine**. 
 - De nieuwste versie van [AZ Power shell](/powershell/azure/new-azureps-module-az). 
-- De meest recente versie van [AZ. SqlVirtualMachine] (https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0.
+- De meest recente versie van [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
 
 ## <a name="getting-started"></a>Aan de slag
 

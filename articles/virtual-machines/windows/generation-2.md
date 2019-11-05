@@ -1,5 +1,5 @@
 ---
-title: Azure-ondersteuning voor virtuele machines van generatie 2 (preview) | Microsoft Docs
+title: Azure-ondersteuning voor virtuele machines van generatie 2 | Microsoft Docs
 description: Overzicht van Azure-ondersteuning voor virtuele machines van de 2e generatie
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,31 +11,26 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: c85e02b01e11b94d9e23e669bf2f6fcde7f2c1de
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 63cf3301a08ce4073998c5d281f155a6b3eefe4d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064020"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491920"
 ---
-# <a name="support-for-generation-2-vms-preview-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 (preview) op Azure
+# <a name="support-for-generation-2-vms-on-azure"></a>Ondersteuning voor virtuele machines van generatie 2 op Azure
 
-> [!IMPORTANT]
-> Er is momenteel een preview-versie van Azure-ondersteuning voor virtuele machines van generatie 2.
-> Deze preview-versie is beschikbaar zonder een service overeenkomst en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ondersteuning voor virtuele machines van generatie 2 (Vm's) is nu beschikbaar in Azure. U kunt de generatie van een virtuele machine niet wijzigen nadat u deze hebt gemaakt. Controleer de overwegingen op deze pagina voordat u een generatie kiest.
 
-Ondersteuning voor virtuele machines van generatie 2 (Vm's) is nu beschikbaar als preview-versie in Azure. U kunt de generatie van een virtuele machine niet wijzigen nadat u deze hebt gemaakt. Controleer de overwegingen op deze pagina voordat u een generatie kiest. 
-
-Vm's van generatie 2 ondersteunen belang rijke functies die niet worden ondersteund in virtuele machines van de eerste generatie. Tot deze functies behoren meer geheugen, Intel-software Guard Extensions (Intel SGX) en gevirtualiseerde permanent geheugen (vPMEM). Vm's van de tweede generatie hebben ook enkele functies die nog niet in Azure worden ondersteund. Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor meer informatie.
+Vm's van generatie 2 ondersteunen belang rijke functies die niet worden ondersteund in virtuele machines van de eerste generatie. Tot deze functies behoren meer geheugen, Intel-software Guard Extensions (Intel SGX) en gevirtualiseerde permanent geheugen (vPMEM). Virtuele machines van de tweede generatie die on-premises worden uitgevoerd, hebben enkele functies die nog niet worden ondersteund in Azure. Zie de sectie [functies en mogelijkheden](#features-and-capabilities) voor meer informatie.
 
 Vm's van generatie 2 gebruiken de nieuwe op UEFI gebaseerde opstart architectuur in plaats van de op BIOS gebaseerde architectuur die wordt gebruikt door virtuele machines van de eerste generatie. Vergeleken met virtuele machines van de eerste generatie, hebben virtuele machines van de tweede generatie mogelijk betere opstart-en installatie tijden. Zie voor een overzicht van de virtuele machines van de 2e generatie en enkele verschillen tussen de generatie 1 en generatie 2, [moet ik een generatie 1 of 2 maken in Hyper-V?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>VM-grootten van generatie 2
 
-Virtuele machines van de eerste generatie worden ondersteund door alle VM-grootten in Azure. Azure biedt nu preview-generatie 2-ondersteuning voor de volgende geselecteerde VM-serie:
+Virtuele machines van de eerste generatie worden ondersteund door alle VM-grootten in Azure. Azure biedt nu ondersteuning voor generatie 2 voor de volgende geselecteerde VM-serie:
 
 * [B-serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -66,7 +61,6 @@ Vm's van generatie 2 ondersteunen de volgende installatie kopieën van Marketpla
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu-Server 16.04 +
 
-
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>On-premises versus Azure Generation 2 Vm's
 
 Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-premises Hyper-V ondersteunt voor virtuele machines van de tweede generatie.
@@ -87,7 +81,7 @@ Azure biedt momenteel geen ondersteuning voor enkele van de functies die on-prem
 |---------|--------------|--------------|
 | Opstarten             | PCAT                      | UEFI                               |
 | Schijf controllers | IDE                       | SCSI                               |
-| VM-grootten         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
+| Formaten van virtuele machines         | Alle VM-grootten | Alleen Vm's die ondersteuning bieden voor Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Mogelijkheden van generatie 1 vs. generatie 2
 
@@ -126,7 +120,7 @@ Wanneer u een Windows Server-SKU als het aanbod selecteert, is er op het tabblad
 
 U kunt ook Power shell gebruiken om een virtuele machine te maken door rechtstreeks te verwijzen naar de SKU van de eerste en 2e generatie.
 
-Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de Sku's in de `WindowsServer`-aanbieding.
+Gebruik bijvoorbeeld de volgende Power shell-cmdlet om een lijst op te halen van de Sku's in de `WindowsServer` aanbieding.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer

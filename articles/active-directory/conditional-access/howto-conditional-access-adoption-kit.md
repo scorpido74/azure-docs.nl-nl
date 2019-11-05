@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: daaced0aae595e839f2b2476562fc5caffb63640
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430050"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473937"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Voorwaardelijke toegang voor Azure AD
 
@@ -86,7 +86,7 @@ Raadpleeg ook de volgende koppelingen voor meer informatie over het beveiligen v
 **Azure Active Directory voor voorwaardelijke toegang inschakelen voor toegang tot beveiligde gebruikers**
    > [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
 
-### <a name="online-courses"></a>Online cursussen
+### <a name="online-courses"></a>Onlinecursussen
 
 Raadpleeg de volgende cursussen voor voorwaardelijke toegang en meer op [Pluralsight.com](https://www.pluralsight.com/):
 
@@ -104,10 +104,10 @@ Raadpleeg de volgende cursussen voor voorwaardelijke toegang en meer op [Plurals
 * O'Reilly-de [implementatie van Azure Solutions-Second Edition.](https://www.oreilly.com/library/view/implementing-azure-solutions/9781789343045/b7ead3db-eb1c-4ace-897e-86ee25ea86be.xhtml)
    * "Ga aan de slag met Azure-Services en leer hoe u deze implementeert in uw organisatie. Voorwaardelijke toegang van Azure AD is opgenomen in het hoofd stuk [Deploying and synchronizing Azure Active Directory](https://learning.oreilly.com/library/view/implementing-azure-solutions/9781789343045/02ca8bba-08cf-4691-a7d0-1b96e286e7ea.xhtml).
 
-* Wiley- [mastering Microsoft Azure-infrastructuur services](https://www.wiley.com/Mastering+Microsoft+Azure+Infrastructure+Services-p-9781119003298)
+* Wiley- [Microsoft Azure-infrastructuur services voor architecten: Cloud oplossingen ontwerpen](https://www.wiley.com/Microsoft+Azure+Infrastructure+Services+for+Architects%3A+Designing+Cloud+Solutions-p-9781119596547)
    * "Dit is alles wat u nodig hebt om omgevingen te begrijpen, te evalueren, te implementeren en te onderhouden die gebruikmaken van Microsoft Azure."
 
-## <a name="white-papers"></a>Whitepapers
+## <a name="white-papers"></a>Technische documenten
 
 * Gepubliceerd 18 december 2018, [een flexibele toegangs beheer strategie maken met Azure Active Directory](../authentication/concept-resilient-controls.md)
    * Dit document bevat richt lijnen voor strategieën die een organisatie kan aannemen om flexibiliteit te bieden om het risico van vergren deling tijdens onvoorziene onderbrekingen te verminderen.
@@ -136,7 +136,7 @@ Hier vindt u nuttige koppelingen om aan de slag te gaan:
    * Voor aanvullende vragen kunt u ook het MSDN- [forum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure)bekijken.
    * Als u het antwoord op een probleem niet kunt vinden, zijn onze ondersteunings teams altijd beschikbaar om u verder te helpen. [Neem contact op met micro soft ondersteuning](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
 
-### <a name="tutorials"></a>Zelfstudie
+### <a name="tutorials"></a>Zelfstudies
 
 * [**Quick Start: MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory**](app-based-mfa.md)
    * In deze Quick start ziet u hoe u een beleid voor voorwaardelijke toegang voor Azure AD configureert waarvoor multi-factor Authentication is vereist voor een geselecteerde Cloud-app in uw omgeving.

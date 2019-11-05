@@ -1,5 +1,5 @@
 ---
-title: Query Apache Hive met ODBC-stuur programma en Power shell-Azure HDInsight
+title: Query Apache Hive met ODBC-stuur programma & Power shell-Azure HDInsight
 description: Gebruik het micro soft Hive ODBC-stuur programma en Power shell om Apache Hive clusters in azure HDInsight op te vragen.
 keywords: Hive, Hive ODBC, Power shell
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 4ec580c3d4c30fa4d86c24defb7eaded464dea3b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177315"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494325"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Zelf studie: query Apache Hive met ODBC en Power shell
 
@@ -56,7 +56,7 @@ De volgende stappen laten zien hoe u een Apache Hive ODBC-gegevens bron maakt.
    | --- | --- |
    |  Naam van de gegevensbron |Geef uw gegevensbron een naam |
    |  Host (s) |Voer `CLUSTERNAME.azurehdinsight.net` in. Bijvoorbeeld: `myHDICluster.azurehdinsight.net` |
-   |  Port |Gebruik **443**.|
+   |  Poort |Gebruik **443**.|
    |  Database |**Standaard instelling**gebruiken. |
    |  Mechanisme |Selecteer de **Windows Azure HDInsight-service** |
    |  Gebruikersnaam |Voer de gebruikers naam van het HDInsight-cluster in. De standaardgebruikersnaam **admin**. |

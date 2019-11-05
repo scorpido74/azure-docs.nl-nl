@@ -1,75 +1,75 @@
 ---
-title: Instellingen van de aanbieding voor een advies service-aanbieding definiëren | Azure Marketplace
-description: Aanbieding instellingen definiëren in een Azure- of Dynamics 365 advies serviceaanbieding vallen in de Cloud Partner-Portal voor Azure Marketplace.
+title: Aanbiedings instellingen voor een advies service-aanbieding definiëren | Azure Marketplace
+description: Definieer aanbiedings instellingen in een Azure-of Dynamics 365 consulting service-aanbieding in het Cloud Partner-portal voor de Azure Marketplace.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a89c1c548469b568a34521b240683af285c2342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942777"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485188"
 ---
 # <a name="offer-settings-tab"></a>Tabblad voor aanbiedingsinstellingen
 
-Op de **nieuwe aanbieding** scherm, de eerste stap is het maken van de identiteit van de aanbieding. De identiteit van de aanbieding bestaat uit drie onderdelen: **Aanbiedings-ID**, **uitgevers-ID**, en **naam**. Elk van deze onderdelen wordt in de volgende secties beschreven.
+In het scherm **nieuwe aanbieding** is de eerste stap het maken van de aanbiedings identiteit. De identiteit van de aanbieding bestaat uit drie delen: **aanbiedings-id**, **uitgevers-id**en **naam**. Elk van deze onderdelen wordt behandeld in de volgende secties.
 
-![Maken van een nieuwe service-aanbieding advies - tabblad instellingen bieden](media/consultingoffer-settings-tab.png)
+![Een nieuw advies service-aanbod maken-aanbod instellingen tabblad](media/consultingoffer-settings-tab.png)
 
 
-### <a name="offer-id"></a>Aanbieding -ID *
+### <a name="offer-id"></a>Aanbiedings-ID *
 
-Deze id is een unieke naam die u maakt wanneer u de aanbieding voor het eerst verzendt. Deze moet bestaan alleen uit kleine letters, alfanumerieke tekens, streepjes of onderstrepingstekens bevatten. De **aanbiedings-ID** zichtbaar is in de URL en de invloed van zoekmachineresultaten. Een voorbeeld is *yourcompanyname_exampleservice*.
+Deze id is een unieke naam die u maakt wanneer u de aanbieding voor het eerst verzendt. De naam mag alleen bestaan uit kleine letters, streepjes of onderstrepings tekens. De **aanbiedings-id** is zichtbaar in de URL en is van invloed op de resultaten van de zoek machine. Een voor beeld is *yourcompanyname_exampleservice*.
 
-Zoals wordt weergegeven in het voorbeeld wordt de **aanbiedings-ID** wordt toegevoegd aan de uitgevers-ID te maken van een unieke id. Deze unieke id wordt weergegeven als een permanente koppeling die kan worden gereserveerd en wordt geïndexeerd door de zoekmachines.
+Zoals in het voor beeld wordt weer gegeven, wordt de **aanbiedings-id** toegevoegd aan de uitgevers-id om een unieke id te maken. Deze unieke id wordt weer gegeven als een permanente koppeling die kan worden geboekt en wordt geïndexeerd door de zoek machines.
 
 >[!Note]
->Nadat een aanbieding gepubliceerd is, kan de id kan niet worden bijgewerkt.
+>Nadat een aanbieding Live is, kan de id ervan niet worden bijgewerkt.
 
 
-### <a name="publisher-id"></a>Uitgever -ID *
+### <a name="publisher-id"></a>Uitgevers-ID *
 
-Deze id is gerelateerd aan uw account. Nadat u zich aanmelden met uw organisatieaccount, uw **uitgevers-ID** wordt weergegeven in de vervolgkeuzelijst.
+Deze id is gerelateerd aan uw account. Nadat u zich hebt aangemeld met uw organisatie account, wordt uw **uitgevers-id** weer gegeven in de vervolg keuzelijst.
 
 
-### <a name="name"></a>De naam *
+### <a name="name"></a>Naam
 
-Deze tekenreeks wordt weergegeven als de aanbiedingsnaam van de op AppSource of in de Azure Marketplace. De **naam** vak is beperkt tot 50 tekens. De revisor mogelijk om de titel voor het toevoegen van de duur en bieden dat u wilt de aanbiedingsnaam van uw te bewerken.
+Deze teken reeks wordt weer gegeven als de naam van het aanbod op AppSource of in de Azure Marketplace. Het vak **naam** is beperkt tot 50 tekens. De revisor moet mogelijk uw titel bewerken om de duur en het aanbiedings type toe te voegen aan de naam van uw aanbieding.
 
-Het volgende voorbeeld laat zien hoe de aanbiedingsnaam van de is samengesteld. 
+In het volgende voor beeld ziet u hoe de naam van het aanbod wordt geassembleerd. 
 
 ![Een nieuwe advies service-aanbieding maken](media/cppsampleconsultingoffer.png)
 
-De aanbiedingsnaam van de bestaat uit vier onderdelen:
+De naam van het aanbod bestaat uit vier delen:
 
--   **Duur:** Gedefinieerd op de **Storefront Details** tabblad van de editor. Duur kan worden uitgedrukt in uren, dagen of weken.
--   **Type van de service:** Gedefinieerd op de **Storefront Details** tabblad van de editor. Typen van de services zijn `Assessment`, `Briefing`, `Implementation`, `Proof of concept`, en `Workshop`.
--   **Voorzetsel:** Door de revisor is ingevoegd.
--   **Naam:** Gedefinieerd op de **instellingen bieden** pagina.
+-   **Duur:** Gedefinieerd op het tabblad Details van de **winkel** van de editor. De duur kan worden uitgedrukt in uren, dagen of weken.
+-   **Type service:** Gedefinieerd op het tabblad Details van de **winkel** van de editor. Typen services zijn `Assessment`, `Briefing`, `Implementation`, `Proof of concept`en `Workshop`.
+-   Voor **positie:** Ingevoegd door de revisor.
+-   **Naam:** Gedefinieerd op de pagina **aanbiedings instellingen** .
 
 >[!Note]
->De **naam** vak is beperkt tot 50 tekens. De revisor mogelijk om de titel voor het toevoegen van de duur en bieden dat u wilt de aanbiedingsnaam van uw te bewerken.
+>Het vak **naam** is beperkt tot 50 tekens. De revisor moet mogelijk uw titel bewerken om de duur en het aanbiedings type toe te voegen aan de naam van uw aanbieding.
 
-De volgende lijst bevat enkele goed benoemde aanbieding namen:
+De volgende lijst bevat verschillende namen van aanbiedingen van de naam:
 
--   Essentials voor professionele diensten: 1 uur Briefing
--   Cloudplatform voor migratie: 1 uur Briefing
--   PowerApps en Microsoft Flow: 1 dag-Workshop
--   Azure Machine Learning Services: 3-wk PoC
--   Brick en klikt u op van een Retailanalyse oplossing: 1 uur Briefing
--   Gebruik uw eigen gegevens: 1-Wk Workshop
--   Cloud-analyse: 3 dagen-Workshop
--   Power BI Training: 3 dagen-Workshop
--   Verkoop Management-oplossing: 1 week-implementatie
--   CRM-Snelstartgids: 1 dag-Workshop
--   Dynamics 365 for Sales: 2-daagse evaluatie
+-   Essentiële zaken voor professionele services: 1-HR-informatie
+-   Cloudmigratie-platform: 1-HR-informatie
+-   PowerApps en Microsoft Flow: 1 dag workshop
+-   Azure Machine Learning: haalbaarheids test voor 3 weken
+-   Brick en klik op Retail-oplossing: 1-HR-informatie
+-   Uw eigen gegevens meenemen: 1 WK workshop
+-   Cloud Analytics: 3-daags workshop
+-   Power BI training: 3-daags workshop
+-   Verkoop beheer oplossing: implementatie van 1 week
+-   CRM-Snelstartgids: 1 dag workshop
+-   Dynamics 365 voor verkoop: evaluatie van 2 dagen
 
-Nadat u vult het **instellingen bieden** tabblad, sla uw inzending. De aanbiedingsnaam van de wordt nu weergegeven boven de editor en u vindt deze in **alle biedt**.
+Nadat u het tabblad Instellingen voor de **aanbieding** hebt ingevuld, slaat u uw inzending op. De naam van de aanbieding wordt nu boven de editor weer gegeven en u kunt deze in **alle aanbiedingen**vinden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu kunt u [winkel om details te bepalen of in de Azure Marketplace of AppSource publiceren](./cpp-consulting-service-storefront-details.md).
+U kunt nu [Details van de winkel opgeven en bepalen of u wilt publiceren in azure Marketplace of op AppSource](./cpp-consulting-service-storefront-details.md).

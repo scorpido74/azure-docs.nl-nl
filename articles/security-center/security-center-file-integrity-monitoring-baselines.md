@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e7ef558ec75622b804aef96781b549f1a833e21
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202133"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518867"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Basis lijnen vergelijken met behulp van File Integrity Monitoring (FIM)
 
@@ -46,21 +46,21 @@ De standaard instellingen van de FIM-register onderdelen bieden een handige mani
 FIM-basis lijnen worden gestart door kenmerken te identificeren van een bekende goede status voor het besturings systeem en de ondersteunende toepassing.  In dit voor beeld richten we zich op de wachtwoord beleids configuraties voor Windows Server 2008 en hoger.
 
 
-|Beleidsnaam                 | Register instelling|
+|Policy Name                 | Register instelling|
 |---------------------------------------|-------------|
-|Domein controller: Wachtwoord wijzigingen van computer accounts weigeren| MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\RefusePasswordChange|
-|Domeinlid: Gegevens in beveiligd kanaal digitaal versleutelen of ondertekenen (altijd)|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\RequireSignOrSeal|
-|Domeinlid: Gegevens in beveiligd kanaal digitaal versleutelen (indien mogelijk)|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\SealSecureChannel|
-|Domeinlid: Gegevens in beveiligd kanaal digitaal ondertekenen (indien mogelijk)|MACHINE\System\CurrentControlSet\Services   \Netlogon\Parameters\SignSecureChannel|
-|Domeinlid: Wachtwoord wijzigingen van computer accounts uitschakelen|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\DisablePasswordChange|
-|Domeinlid: Maximale leeftijd van wacht woord van computer account|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\MaximumPasswordAge|
-|Domeinlid: Sterke sessie sleutel vereist (Windows 2000 of hoger)|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\RequireStrongKey|
-|Netwerk beveiliging: NTLM beperken:  NTLM-verificatie in dit domein|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Netwerk beveiliging: NTLM beperken: Server uitzonderingen toevoegen in dit domein|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
-|Netwerk beveiliging: NTLM beperken: NTLM-verificatie in dit domein controleren|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
+|Domein controller: wijzigingen in wacht woorden van computer accounts weigeren| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
+|Lid van domein: gegevens in beveiligd kanaal digitaal versleutelen of ondertekenen (altijd)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
+|Lid van domein: gegevens in beveiligd kanaal digitaal versleutelen (indien mogelijk)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
+|Lid van domein: gegevens in beveiligd kanaal digitaal ondertekenen (indien mogelijk)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
+|Lid van domein: wijzigingen van wacht woorden van computer accounts uitschakelen|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DisablePasswordChange|
+|Lid van domein: maximale leeftijd van wacht woord voor computer account|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
+|Lid van domein: sterke sessie sleutel verplicht (Windows 2000 of hoger)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
+|Netwerk beveiliging: NTLM beperken: NTLM-authenticatie in dit domein|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Netwerk beveiliging: NTLM beperken: uitzonde ringen voor servers in dit domein toevoegen|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Netwerk beveiliging: NTLM beperken: NTLM-authenticatie in dit domein controleren|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Raadpleeg voor meer informatie over register instellingen die worden ondersteund door de verschillende versies van het besturings systeem, het [werk blad Groepsbeleid instellingen referentie](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250).
+> Raadpleeg voor meer informatie over register instellingen die worden ondersteund door de verschillende versies van het besturings systeem, het [werk blad Groepsbeleid instellingen referentie](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
 *FIM configureren voor het bewaken van register basislijnen:*
 

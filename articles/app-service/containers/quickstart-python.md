@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 8c3015f78df1427af760f14bd948057643ef2a98
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 69e7cfef01005432a99dd10ed5bc7f004562e582
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990829"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470802"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
 
@@ -207,17 +207,19 @@ Als u het streamen van Logboeken op elk gewenst moment wilt stoppen, typt u `Ctr
 
 ## <a name="manage-the-azure-app"></a>De Azure-app beheren
 
-U beheert de app die u hebt gemaakt in de <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. 
+Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de app te beheren die u hebt gemaakt. Zoek en selecteer **app Services**.
 
-Selecteer in het linkermenu **App Services** en selecteer de naam van uw Azure-app.
+![Navigeer naar App Services in het Azure Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
+
+Selecteer de naam van uw Azure-app.
 
 ![Navigeer naar uw python-app in App Services in het Azure Portal](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-De overzichts pagina van uw app wordt vervolgens weer gegeven. Op deze pagina kunt u basis beheer taken uitvoeren, zoals bladeren, stoppen, starten, opnieuw starten en verwijderen.
+De pagina Overzicht van uw app wordt weergegeven. Hier kunt u algemene beheertaken uitvoeren, zoals bladeren, stoppen, starten, opnieuw opstarten en verwijderen.
 
 ![Beheer uw python-app op de pagina overzicht in de Azure Portal](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
-Het linkermenu bevat een aantal pagina's voor het configureren van uw app. 
+Het App Service menu bevat verschillende pagina's voor het configureren van uw app.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

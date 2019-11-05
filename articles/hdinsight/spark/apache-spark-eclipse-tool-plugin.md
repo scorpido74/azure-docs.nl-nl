@@ -1,5 +1,5 @@
 ---
-title: 'Azure-toolkit voor Eclipse: Scala-toepassingen maken voor HDInsight Spark '
+title: 'Azure-toolkit voor Eclipse: scala-apps maken voor HDInsight Spark'
 description: Gebruik HDInsight-Hulpprogram Ma's in Azure-toolkit voor Eclipse om Spark-toepassingen te ontwikkelen die zijn geschreven in scala en deze rechtstreeks vanuit de eclips-IDE naar een HDInsight Spark-cluster te verzenden.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5336153a776f3324e5f73564ba2804389cd96938
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257572"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494674"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure-toolkit voor Eclipse gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
@@ -71,7 +71,7 @@ De gebruiker kan [zich aanmelden bij het Azure-abonnement](#sign-in-to-your-azur
 
 ## <a name="link-a-cluster"></a>Een cluster koppelen
 
-U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam Ambari. Op dezelfde manier kunt u voor een HDInsight-cluster dat is gekoppeld aan een domein een koppeling maken met behulp `user1@contoso.com`van het domein en de gebruikers naam, zoals.
+U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam Ambari. Op dezelfde manier kunt u voor een HDInsight-cluster dat is gekoppeld aan een domein een koppeling maken met behulp van het domein en de gebruikers naam, zoals `user1@contoso.com`.
 
 1. Selecteer **een cluster koppelen** in **Azure Verkenner**.
 
@@ -206,7 +206,7 @@ U kunt verschillende bewerkingen uitvoeren met HDInsight-Hulpprogram Ma's, waaro
 
 1. Klik in azure Verkenner met de rechter muisknop op de naam van uw Spark-cluster en selecteer vervolgens **openen Spark-gebruikers interface**. Wanneer u hierom wordt gevraagd, voert u de beheerders referenties voor het cluster in. U hebt deze opgegeven tijdens het inrichten van het cluster.
 
-1. In het Spark-geschiedenis server dashboard gebruikt u de naam van de toepassing om te zoeken naar de toepassing die u zojuist hebt uitgevoerd. In de voor gaande code stelt u de naam van de toepassing `val conf = new SparkConf().setAppName("MyClusterApp")`in met behulp van. Uw Spark-toepassings naam is dus **MyClusterApp**.
+1. In het Spark-geschiedenis server dashboard gebruikt u de naam van de toepassing om te zoeken naar de toepassing die u zojuist hebt uitgevoerd. In de voor gaande code stelt u de naam van de toepassing in met behulp van `val conf = new SparkConf().setAppName("MyClusterApp")`. Uw Spark-toepassings naam is dus **MyClusterApp**.
 
 ### <a name="start-the-apache-ambari-portal"></a>De Apache Ambari-Portal starten
 
@@ -312,17 +312,17 @@ Wanneer u een cluster koppelt, kunt u de referenties van de opslag opgeven.
 
 Er zijn twee modi voor het verzenden van de taken. Als opslag referentie is verstrekt, wordt de batch modus gebruikt voor het verzenden van de taak. Anders wordt de interactieve modus gebruikt. Als het cluster bezet is, wordt mogelijk de volgende fout weer gegeven.
 
-fout bij het ophalen van de ![eclips wanneer het cluster bezet] is fout bij het ophalen van de (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "eclips wanneer het cluster bezet") is
+![fout bij het ophalen van de eclips wanneer het cluster bezet is](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "fout bij het ophalen van de eclips wanneer het cluster bezet is")
 
-fout bij het ophalen van de ![eclips als cluster bezet-garens] fout bij het ophalen van de (./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "eclips als cluster bezet-garens")
+![fout bij het ophalen van de eclips als cluster bezet-garens](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "fout bij het ophalen van de eclips als cluster bezet-garens")
 
 ## <a name="seealso"></a>Zie ook
 
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)

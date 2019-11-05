@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 08/07/2019
-ms.openlocfilehash: ffc71cf8b2f60568e3c4bc63a3751bc44be66e58
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.date: 11/04/2019
+ms.openlocfilehash: cc98e620194c5bf67d2efa12d61af44d5527bafc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063128"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497488"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Diep gaande informatie versus machine learning
 
@@ -113,6 +113,11 @@ Convolutional Neural Networks zijn gebruikt in gebieden zoals video herkenning, 
 In de volgende artikelen ziet u hoe u de technologie voor diepe leren gebruikt in [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri):
 
 - [Hand matige cijfers classificeren met behulp van een tensor flow-model](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+
 - [Geclassificeerde handgeschreven cijfers door gebruik te maken van een tensor flow Estimator en Keras](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+
 - [Installatie kopieën classificeren met behulp van een Pytorch-model](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+
 - [Hand matige cijfers classificeren met behulp van een ketting model](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+
+U kunt ook het [Cheat-venster van machine learning Algorithm](../algorithm-cheat-sheet.md) gebruiken om algoritmen voor uw model te kiezen.

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b6f122abff1ac75bb1cb836f3389c96dfcdf60e0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074105"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470093"
 ---
 # <a name="security-in-azure-app-service"></a>Beveiliging in Azure App Service
 
@@ -40,16 +40,20 @@ In de volgende secties ziet u hoe u uw App Service-app verder kunt beveiligen te
 
 ## <a name="https-and-certificates"></a>HTTPS en certificaten
 
-Met App Service kunt u uw apps beveiligen met [https](https://wikipedia.org/wiki/HTTPS). Wanneer uw app wordt gemaakt, is de standaard domein naam\<(app_name >. azurewebsites. net) al toegankelijk met behulp van HTTPS. Als u [een aangepast domein voor uw app configureert](app-service-web-tutorial-custom-domain.md), moet u [dit ook beveiligen met een aangepast certificaat](app-service-web-tutorial-custom-ssl.md) zodat client browsers beveiligde HTTPS-verbindingen met uw aangepaste domein kunnen maken. Er zijn twee manieren om dit te doen:
+Met App Service kunt u uw apps beveiligen met [https](https://wikipedia.org/wiki/HTTPS). Wanneer uw app wordt gemaakt, is de standaard domein naam (\<app_name >. azurewebsites. net) al toegankelijk met behulp van HTTPS. Als u [een aangepast domein voor uw app configureert](app-service-web-tutorial-custom-domain.md), moet u [dit ook beveiligen met een SSL-certificaat](configure-ssl-bindings.md) zodat client browsers beveiligde HTTPS-verbindingen met uw aangepaste domein kunnen maken. Er worden verschillende soorten certificaten ondersteund door App Service:
 
-- **App service certificaat** : Maak een certificaat rechtstreeks in Azure. Het certificaat is beveiligd in [Azure Key Vault](/azure/key-vault/)en kan in uw app service-app worden geïmporteerd. Zie [een SSL-certificaat voor uw Azure app service kopen en configureren](web-sites-purchase-ssl-web-site.md)voor meer informatie.
-- **Certificaat** van derden: Upload een aangepast SSL-certificaat dat u hebt aangeschaft bij een vertrouwde certificerings instantie en koppel dit aan uw app service-app. App Service ondersteunt certificaten met één domein en Joker tekens. Het ondersteunt ook zelfondertekende certificaten voor test doeleinden. Zie [een bestaand aangepast SSL-certificaat binden aan Azure app service](app-service-web-tutorial-custom-ssl.md)voor meer informatie.
+- Beheerd certificaat Free App Service
+- App Service certificaat
+- Certificaat van derden
+- Het certificaat is geïmporteerd uit Azure Key Vault
+
+Zie [een SSL-certificaat toevoegen in azure app service](configure-ssl-certificate.md)voor meer informatie.
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Niet-beveiligde protocollen (HTTP, TLS 1,0, FTP)
 
-Als u uw app wilt beveiligen tegen alle niet-versleutelde (HTTP) verbindingen, biedt App Service een configuratie met één klik voor het afdwingen van HTTPS. Niet-beveiligde aanvragen worden verwijderd voordat ze uw toepassings code kunnen bereiken. Zie [https afdwingen](app-service-web-tutorial-custom-ssl.md#enforce-https)voor meer informatie.
+Als u uw app wilt beveiligen tegen alle niet-versleutelde (HTTP) verbindingen, biedt App Service een configuratie met één klik voor het afdwingen van HTTPS. Niet-beveiligde aanvragen worden verwijderd voordat ze uw toepassings code kunnen bereiken. Zie [https afdwingen](configure-ssl-bindings.md#enforce-https)voor meer informatie.
 
-[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 wordt niet meer beschouwd als veilig door industriële normen, zoals [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). Met App Service kunt u verouderde protocollen uitschakelen door [TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)af te dwingen.
+[TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1,0 wordt niet meer beschouwd als veilig door industriële normen, zoals [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). Met App Service kunt u verouderde protocollen uitschakelen door [TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)af te dwingen.
 
 App Service ondersteunt zowel FTP-als FTPS voor het implementeren van uw bestanden. FTPS moet echter wel worden gebruikt in plaats van FTP, indien dit mogelijk is. Wanneer een of beide protocollen niet in gebruik zijn, moet u [deze uitschakelen](deploy-ftp.md#enforce-ftps).
 
@@ -57,7 +61,7 @@ App Service ondersteunt zowel FTP-als FTPS voor het implementeren van uw bestand
 
 Standaard accepteert uw App Service-app aanvragen van alle IP-adressen van het Internet, maar u kunt de toegang tot een kleine subset van IP-adressen beperken. Met App Service in Windows kunt u een lijst met IP-adressen definiëren die toegang hebben tot uw app. De lijst met toegestane namen kan afzonderlijke IP-adressen bevatten of een bereik van IP-adressen die zijn gedefinieerd door een subnetmasker. Zie [Azure app service static IP-beperkingen](app-service-ip-restrictions.md)voor meer informatie.
 
-Voor App Service in Windows kunt u IP-adressen ook dynamisch beperken door het _Web. config_te configureren. Zie [dynamicIpSecurity > voor dynamische IP-beveiliging \<](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)voor meer informatie.
+Voor App Service in Windows kunt u IP-adressen ook dynamisch beperken door het _Web. config_te configureren. Zie voor meer informatie [Dynamic IP Security \<dynamicIpSecurity >](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Client verificatie en-autorisatie
 
@@ -110,7 +114,7 @@ U kunt ook uw App Service-app integreren met [Azure Key Vault](/azure/key-vault/
 
 ## <a name="network-isolation"></a>Netwerk isolatie
 
-Met uitzonde ring van de geïsoleerde prijs categorie worden met alle lagen uw apps uitgevoerd op de gedeelde netwerk infrastructuur in app service. De open bare IP-adressen en de front-end load balancers worden bijvoorbeeld gedeeld met andere tenants. De **geïsoleerde** laag biedt u volledige netwerk isolatie door uw apps in een speciale [app service omgeving](environment/intro.md)uit te voeren. Een App Service omgeving wordt uitgevoerd in uw eigen exemplaar van [Azure Virtual Network](/azure/virtual-network/). U kunt het volgende doen: 
+Met uitzonde ring van de **geïsoleerde** prijs categorie worden met alle lagen uw apps uitgevoerd op de gedeelde netwerk infrastructuur in app service. De open bare IP-adressen en de front-end load balancers worden bijvoorbeeld gedeeld met andere tenants. De **geïsoleerde** laag biedt u volledige netwerk isolatie door uw apps in een speciale [app service omgeving](environment/intro.md)uit te voeren. Een App Service omgeving wordt uitgevoerd in uw eigen exemplaar van [Azure Virtual Network](/azure/virtual-network/). U kunt het volgende doen: 
 
 - U kunt uw apps gebruiken via een speciaal openbaar eind punt, met speciale front-ends.
 - Een interne toepassing uitvoeren met behulp van een interne load balancer (ILB), waarmee alleen toegang wordt toegestaan vanuit uw Azure Virtual Network. De ILB heeft een IP-adres van uw particuliere subnet. Dit biedt een Total isolatie van uw apps via internet.

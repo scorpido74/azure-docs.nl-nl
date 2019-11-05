@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database serverloze (preview-versie) | Microsoft Docs
+title: Azure SQL Database serverloze | Microsoft Docs
 description: In dit artikel wordt de nieuwe serverloze Compute-laag beschreven en vergelijkt deze met de bestaande ingerichte Compute-laag
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173400"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496252"
 ---
-# <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database serverloze (preview-versie)
+# <a name="azure-sql-database-serverless"></a>Azure SQL Database - Serverloos
 
-Azure SQL Database serverloos (preview) is een compute-laag voor afzonderlijke data bases waarmee de berekening automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
+Azure SQL Database serverloos is een compute-laag voor afzonderlijke data bases waarmee de berekening automatisch wordt geschaald op basis van de vraag van de werk belasting en de facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
 
 ## <a name="serverless-compute-tier"></a>Serverloze compute-laag
 
@@ -129,9 +129,9 @@ Autohervatten wordt geactiveerd als een van de volgende voor waarden op elk mome
 |Verificatie en autorisatie|Aanmelden|
 |Detectie van bedreigingen|Instellingen voor detectie van bedreigingen in-of uitschakelen op Data Base-of server niveau.<br>Instellingen voor detectie van bedreigingen wijzigen op Data Base-of server niveau.|
 |Gegevensdetectie en -classificatie|Toevoegen, wijzigen, verwijderen of weer geven van gevoeligheids labels|
-|Controle|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
+|Controleren|Controle records weer geven.<br>Controle beleid bijwerken of weer geven.|
 |Gegevensmaskering|Regels voor gegevens maskering toevoegen, wijzigen, verwijderen of weer geven|
-|Transparante dataversleuteling|Status of status van transparante gegevens versleuteling weer geven|
+|Transparent Data Encryption|Status of status van transparante gegevens versleuteling weer geven|
 |Gegevens Archief voor query (prestaties)|Query Store-instellingen wijzigen of weer geven|
 |Autotuning|Toepassing en verificatie van aanbevelingen voor automatische afstemming, zoals automatisch indexeren|
 |Data base kopiëren|Maak een Data Base als kopie.<br>Exporteren naar een BACPAC-bestand.|
@@ -155,23 +155,23 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
 
 1. Geef de naam van de service doelstelling op. De service doelstelling schrijft de service tier, het genereren van hardware en het maximale aantal vCores. In de volgende tabel worden de opties voor service doelstelling weer gegeven:
 
-   |Naam van service doelstelling|Serviceniveau|Hardware genereren|Maximum aantal vCores|
+   |Naam van service doelstelling|Servicelaag|Hardware genereren|Maximum aantal vCores|
    |---|---|---|---|
-   |GP_S_Gen5_1|Algemeen doel|Gen5|1|
-   |GP_S_Gen5_2|Algemeen doel|Gen5|2|
-   |GP_S_Gen5_4|Algemeen doel|Gen5|4|
-   |GP_S_Gen5_6|Algemeen doel|Gen5|6|
-   |GP_S_Gen5_8|Algemeen doel|Gen5|8|
-   |GP_S_Gen5_10|Algemeen doel|Gen5|10|
-   |GP_S_Gen5_12|Algemeen doel|Gen5|12|
-   |GP_S_Gen5_14|Algemeen doel|Gen5|14|
-   |GP_S_Gen5_16|Algemeen doel|Gen5|16|
+   |GP_S_Gen5_1|Algemeen gebruik|Gen5|1|
+   |GP_S_Gen5_2|Algemeen gebruik|Gen5|2|
+   |GP_S_Gen5_4|Algemeen gebruik|Gen5|4|
+   |GP_S_Gen5_6|Algemeen gebruik|Gen5|6|
+   |GP_S_Gen5_8|Algemeen gebruik|Gen5|8|
+   |GP_S_Gen5_10|Algemeen gebruik|Gen5|10|
+   |GP_S_Gen5_12|Algemeen gebruik|Gen5|12|
+   |GP_S_Gen5_14|Algemeen gebruik|Gen5|14|
+   |GP_S_Gen5_16|Algemeen gebruik|Gen5|16|
 
 2. Geef desgewenst de minimale vCores en de vertraging voor autopause op om de standaard waarden te wijzigen. De volgende tabel bevat de beschik bare waarden voor deze para meters.
 
    |Parameter|Opties voor waarden|Standaardwaarde|
    |---|---|---|---|
-   |Min vCores|Is afhankelijk van het maximum aantal geconfigureerde vCores-Zie [resource limieten](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 vCores|
+   |Min vCores|Is afhankelijk van het maximum aantal geconfigureerde vCores-Zie [resource limieten](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 vCores|
    |Vertraging van autopause|Minimum: 60 minuten (1 uur)<br>Maximum: 10080 minuten (7 dagen)<br>Aantal stappen: 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
 
 > [!NOTE]
@@ -243,7 +243,7 @@ Het wijzigen van de min-vCores wordt uitgevoerd met behulp van de [set-AzSqlData
 
 Het wijzigen van de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) in Power shell met behulp van het argument `AutoPauseDelayInMinutes`.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -286,11 +286,11 @@ Get-AzSqlDatabase `
   | Select -ExpandProperty "Status"
 ```
 
-## <a name="resource-limits"></a>Bronbeperkingen
+## <a name="resource-limits"></a>Bronlimieten
 
-Zie [serverloze Compute-laag](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.
+Zie [serverloze Compute-laag](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)voor resource limieten.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 De hoeveelheid berekenings kosten is het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid CPU en het gebruikte geheugen kleiner is dan het minimum aantal dat voor elk is ingericht, wordt de ingerichte hoeveelheid gefactureerd. Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.
 
@@ -331,4 +331,4 @@ De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](sql-database-single-database-get-started.md)om aan de slag te gaan.
-- Zie [resource limieten voor serverloze Compute-lagen](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)voor resource limieten.
+- Zie [resource limieten voor serverloze Compute-lagen](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)voor resource limieten.

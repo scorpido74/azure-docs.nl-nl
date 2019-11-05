@@ -3,44 +3,46 @@ title: Automated ML externe Compute-doelen
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het bouwen van modellen met behulp van geautomatiseerde machine learning op een Azure Machine Learning extern Compute-doel met Azure Machine Learning
 services: machine-learning
-author: nacharya1
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 7/12/2019
-ms.openlocfilehash: 9eab21fe6b5269229de186a7553e11a147c1033e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034994"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497316"
 ---
-# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainen van modellen met geautomatiseerde machine learning in de cloud
+# <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met automatische machine learning in de Cloud
 
-In Azure Machine Learning, door uw model op verschillende soorten compute-resources die u beheert te trainen. Het Compute-doel kan een lokale computer of een bron in de Cloud zijn.
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+In Azure Machine Learning traint u uw model op verschillende soorten reken bronnen die u beheert. Het Compute-doel kan een lokale computer of een bron in de Cloud zijn.
 
 U kunt uw machine learning experiment eenvoudig opschalen of uitschalen door extra reken doelen toe te voegen, zoals Azure Machine Learning Compute (AmlCompute). AmlCompute is een infra structuur voor beheerde berekeningen waarmee u eenvoudig een enkele of meerdere knoop punten kunt maken.
 
 In dit artikel leert u hoe u een model bouwt met behulp van geautomatiseerde MILLILITERs met AmlCompute.
 
-## <a name="how-does-remote-differ-from-local"></a>Hoe verschilt afstand van lokale?
+## <a name="how-does-remote-differ-from-local"></a>Hoe verschilt extern van lokaal?
 
-In de zelf studie "[een classificatie model trainen met geautomatiseerde machine learning](tutorial-auto-train-models.md)" leert u hoe u een lokale computer kunt gebruiken om een model met automatische ml te trainen. De werkstroom bij het trainen van lokaal ook van toepassing is ook externe doelen. Echter met externe compute geautomatiseerde ML-iteraties uitgevoerd asynchroon. Deze functie kunt u een bepaalde iteratie annuleren, bekijk de status van de uitvoering of blijven werken van andere cellen in de Jupyter-notebook. Als u op afstand wilt trainen, maakt u eerst een extern Compute-doel zoals AmlCompute. Vervolgens de externe bron te configureren en verzenden van uw code er.
+In de zelf studie "[een classificatie model trainen met geautomatiseerde machine learning](tutorial-auto-train-models.md)" leert u hoe u een lokale computer kunt gebruiken om een model met automatische ml te trainen. De werk stroom wanneer training lokaal ook van toepassing is op externe doelen. Met externe Compute worden automatisch experimenten van het experiment asynchroon uitgevoerd. Met deze functie kunt u een bepaalde herhaling annuleren, de status van de uitvoering bekijken of door gaan met het werken aan andere cellen in het Jupyter-notitie blok. Als u op afstand wilt trainen, maakt u eerst een extern Compute-doel zoals AmlCompute. Vervolgens configureert u de externe resource en verzendt u de code daar.
 
-In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Een object in de werkruimte `ws`, uit de zelfstudie wordt gebruikt in de code hier.
+In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Het werkruimte object, `ws`, uit de zelf studie wordt in de hele code gebruikt.
 
 ```python
 ws = Workspace.from_config()
 ```
 
-## <a name="create-resource"></a>Bron maken
+## <a name="create-resource"></a>Resource maken
 
-Maak het AmlCompute-doel in uw werk`ws`ruimte () als deze nog niet bestaat.
+Maak het doel van de AmlCompute in uw werk ruimte (`ws`) als deze nog niet bestaat.
 
-**Geschatte tijd**: Het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
+**Geschatte tijd**: het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -60,17 +62,17 @@ compute_target.wait_for_completion(
     show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-U kunt nu de `compute_target` object als de externe compute-doel.
+U kunt nu het `compute_target`-object gebruiken als het externe Compute-doel.
 
 De beperkingen voor de cluster naam zijn onder andere:
-+ Moet korter zijn dan 64 tekens lang zijn.
-+ De volgende tekens niet bevatten: `\` ~! @ # $ % ^ & * () = + [] {} van _ \\ \\ |;: \' \\', in combinatie /?. `
++ Moet korter zijn dan 64 tekens.
++ Kan geen van de volgende tekens bevatten: `\` ~! @ # $% ^ & * () = + _ [] {} \\\\ |; : \' \\", < >/?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Toegang tot gegevens met de functie TabularDataset
 
-X en y als `TabularDataset`s gedefinieerd, die worden door gegeven aan automatische milliliters in de AutoMLConfig. `from_delimited_files`Standaard wordt de `infer_column_types` waarde waar ingesteld, waardoor het kolom Type automatisch wordt afleiden. 
+X en y gedefinieerd als `TabularDataset`s, die worden door gegeven aan geautomatiseerd ML in de AutoMLConfig. `from_delimited_files` standaard wordt de `infer_column_types` ingesteld op True, waardoor het kolommen type automatisch wordt afleiden. 
 
-Als u de kolom typen hand matig wilt instellen, kunt u het `set_column_types` argument instellen om het type van elke kolom hand matig in te stellen. In het volgende codevoorbeeld wordt de gegevens zijn afkomstig uit het pakket sklearn.
+Als u de kolom typen hand matig wilt instellen, kunt u het argument `set_column_types` instellen om het type van elke kolom hand matig in te stellen. In het volgende code voorbeeld zijn de gegevens afkomstig uit het sklearn-pakket.
 
 ```python
 # Create a project_folder if it doesn't exist
@@ -101,7 +103,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>Configuratie voor uitvoeren maken
 
-Als u afhankelijkheden beschikbaar wilt maken voor het script get_data. py `RunConfiguration` , definieert u `CondaDependencies`een object met gedefinieerd. Gebruik dit object voor de `run_configuration` para meter `AutoMLConfig`in.
+Als u afhankelijkheden beschikbaar wilt maken voor het script get_data. py, definieert u een `RunConfiguration`-object met gedefinieerde `CondaDependencies`. Gebruik dit object voor de para meter `run_configuration` in `AutoMLConfig`.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -119,8 +121,8 @@ run_config.environment.python.conda_dependencies = dependencies
 
 Bekijk dit [voorbeeld notitieblok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) voor een extra voor beeld van dit ontwerp patroon.
 
-## <a name="configure-experiment"></a>Configureren van experiment
-Geef de instellingen voor `AutoMLConfig`.  (Zie een [volledige lijst met parameters](how-to-configure-auto-train.md#configure-experiment) en hun mogelijke waarden.)
+## <a name="configure-experiment"></a>Experiment configureren
+Geef de instellingen voor `AutoMLConfig`op.  (Zie een [volledige lijst met para meters](how-to-configure-auto-train.md#configure-experiment) en de bijbehorende mogelijke waarden.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -151,7 +153,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ### <a name="enable-model-explanations"></a>Model uitleg inschakelen
 
-Stel de optionele `model_explainability` parameter in de `AutoMLConfig` constructor. Bovendien een dataframe validatieobject moet worden doorgegeven als parameter `X_valid` om het model explainability-functie te gebruiken.
+Stel de optionele para meter `model_explainability` in de `AutoMLConfig`-constructor in. Daarnaast moet een validatie data frame-object worden door gegeven als een para meter `X_valid` voor het gebruik van de functie voor model uitleg.
 
 ```python
 automl_config = AutoMLConfig(task='classification',
@@ -167,9 +169,9 @@ automl_config = AutoMLConfig(task='classification',
                              )
 ```
 
-## <a name="submit-training-experiment"></a>Trainingsexperiment verzenden
+## <a name="submit-training-experiment"></a>Trainings experiment verzenden
 
-Nu de configuratie voor het automatisch selecteren van het algoritme, de hyper-parameters indienen en het model te trainen.
+Verzend de configuratie nu om automatisch het algoritme te selecteren, de Hyper-para meters en het model te trainen.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -177,7 +179,7 @@ experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
-Hier ziet u uitvoer die vergelijkbaar is met het volgende voorbeeld:
+De uitvoer ziet er ongeveer uit zoals in het volgende voor beeld:
 
     Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6
     ***********************************************************************************************
@@ -220,12 +222,12 @@ from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
 
-Hier ziet u een statische afbeelding van de widget.  In het notitieblok, kunt u klikken op elke regel in de tabel om te zien van de eigenschappen voor de uitvoerbewerking en uitvoer van Logboeken voor die worden uitgevoerd.   U kunt ook de vervolgkeuzelijst boven de grafiek gebruiken om een grafiek van elke beschikbare metrische gegevens voor elke herhaling van weer te geven.
+Hier ziet u een statische afbeelding van de widget.  In het notitie blok kunt u klikken op een wille keurige regel in de tabel om uitvoerings eigenschappen en uitvoer logboeken voor die uitvoering weer te geven.   U kunt ook de vervolg keuzelijst boven de grafiek gebruiken om een grafiek van elke beschik bare metrische gegevens voor elke iteratie weer te geven.
 
 ![tabel van widget](./media/how-to-auto-train-remote/table.png)
 ![grafiek van widget](./media/how-to-auto-train-remote/plot.png)
 
-De widget wordt weergegeven een URL die u gebruiken kunt om te zien en de details uitvoering van afzonderlijke verkennen.  
+Met de widget wordt een URL weer gegeven die u kunt gebruiken om de afzonderlijke details van de uitvoering te bekijken en te verkennen.  
 
 Als u zich niet in een Jupyter-notebook bevindt, kunt u de URL van de uitvoeringsrun zelf weer geven:
 
@@ -237,26 +239,26 @@ Dezelfde informatie is beschikbaar in uw werk ruimte.  Zie [inzicht in geautomat
 
 ### <a name="view-logs"></a>Logboeken weergeven
 
-Logboeken zoeken op de DSVM onder `/tmp/azureml_run/{iterationid}/azureml-logs`.
+Zoek naar Logboeken op de DSVM onder `/tmp/azureml_run/{iterationid}/azureml-logs`.
 
 ## <a name="explain"></a>Best mogelijke model uitleg
 
-Uitleg bij modelgegevens ophalen, kunt u gedetailleerde informatie over de implementatiemodellen transparantie in wat wordt uitgevoerd op de back-end te vergroten. In dit voorbeeld moet u uitleg over model alleen voor de beste passend model uitvoeren. Als u voor alle modellen in de pijplijn uitvoert, wordt dit aanzienlijke uitvoeringstijd leiden. Modelgegevens uitleg bevat:
+Door model uitleg gegevens op te halen, kunt u gedetailleerde informatie over de modellen weer geven om de transparantie van de back-end te verg Roten. In dit voor beeld voert u alleen model verklaringen uit voor het beste model. Als u voor alle modellen in de pijp lijn uitvoert, resulteert dit in een aanzienlijke uitvoerings tijd. Informatie over model uitleg:
 
-* shap_values: De uitleg informatie die is gegenereerd door Shap lib.
-* expected_values: De verwachte waarde van het model dat wordt toegepast op de set met X_train-gegevens.
-* overall_summary: De belang rijke waarden van de functie op model niveau worden in aflopende volg orde gesorteerd.
-* overall_imp: De functie namen worden gesorteerd in dezelfde volg orde als in overall_summary.
-* per_class_summary: De belang rijke waarden voor functie niveau zijn gesorteerd in aflopende volg orde. Alleen beschikbaar voor de classificatie case.
-* per_class_imp: De functie namen worden gesorteerd in dezelfde volg orde als in per_class_summary. Alleen beschikbaar voor de classificatie case.
+* shap_values: de uitleg informatie die is gegenereerd door Shap lib.
+* expected_values: de verwachte waarde van het model dat wordt toegepast op set met X_train-gegevens.
+* overall_summary: de belang rijke waarden van de functie op model niveau in aflopende volg orde gesorteerd.
+* overall_imp: de functie namen worden gesorteerd in dezelfde volg orde als in overall_summary.
+* per_class_summary: de belang rijke waarden voor functie niveau zijn in aflopende volg orde gesorteerd. Alleen beschikbaar voor de classificatie case.
+* per_class_imp: de functie namen worden gesorteerd in dezelfde volg orde als in per_class_summary. Alleen beschikbaar voor de classificatie case.
 
-Gebruik de volgende code om te selecteren van de beste pijplijn uit uw iteraties. De `get_output` methode retourneert de beste uitvoering en het model voor de laatste aanroep past.
+Gebruik de volgende code om de beste pijp lijn te selecteren uit uw iteraties. De `get_output`-methode retourneert het beste uitvoeren en het model dat het meest geschikt is voor het aanroepen van de laatste.
 
 ```python
 best_run, fitted_model = remote_run.get_output()
 ```
 
-Importeren van de `retrieve_model_explanation` functioneren en worden uitgevoerd op het beste model.
+Importeer de functie `retrieve_model_explanation` en voer deze uit op het beste model.
 
 ```python
 from azureml.train.automl.automlexplainer import retrieve_model_explanation
@@ -265,7 +267,7 @@ shap_values, expected_values, overall_summary, overall_imp, per_class_summary, p
     retrieve_model_explanation(best_run)
 ```
 
-Afdrukken van resultaten voor de `best_run` uitleg variabelen die u wilt weergeven.
+Resultaten afdrukken voor de `best_run` uitleg variabelen die u wilt weer geven.
 
 ```python
 print(overall_summary)
@@ -274,13 +276,13 @@ print(per_class_summary)
 print(per_class_imp)
 ```
 
-Afdrukken via de `best_run` uitleg samenvatting variabelen resultaten in de volgende uitvoer.
+Het afdrukken van de samenvattings variabelen van de `best_run`-uitleg resulteert in de volgende uitvoer.
 
-![Model explainability console-uitvoer](./media/how-to-auto-train-remote/expl-print.png)
+![Uitvoer van de console voor de uitleg van modellen](./media/how-to-auto-train-remote/expl-print.png)
 
-U kunt het belang van de functie ook visualiseren via de gebruikers interface van de widget, de webgebruikersinterface op Azure Portal of de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com). 
+U kunt het belang van de functie ook visualiseren via de gebruikers interface van de widget of in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com). 
 
-![Model explainability UI](./media/how-to-auto-train-remote/model-exp.png)
+![Gebruikers interface voor model uitleg](./media/how-to-auto-train-remote/model-exp.png)
 
 ## <a name="example"></a>Voorbeeld
 
@@ -290,4 +292,4 @@ In de notebook [How-to-use-azureml/automated-machine-learning/remote-amlcompute/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over [over het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).
+Meer informatie [over het configureren van instellingen voor automatische training](how-to-configure-auto-train.md).

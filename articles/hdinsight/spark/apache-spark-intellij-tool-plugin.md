@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie-Azure-toolkit voor IntelliJ: Spark-toepassing voor HDInsight-cluster'
+title: 'Zelf studie-Azure-toolkit voor IntelliJ: Spark-app-HDInsight'
 description: 'Zelf studie: gebruik de Azure-toolkit voor IntelliJ voor het ontwikkelen van Spark-toepassingen die zijn geschreven in scala en verzend deze naar een HDInsight Spark-cluster.'
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: ff08d3ffde958a8e64dce911ace83cec87201117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327273"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494233"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Zelfstudie: Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
+# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Zelf studie: Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
 In deze zelf studie ziet u hoe u de Azure-toolkit voor IntelliJ-invoeg toepassing gebruikt om Apache Spark toepassingen te ontwikkelen die in [scala](https://www.scala-lang.org/)zijn geschreven en deze vervolgens rechtstreeks vanuit de IntelliJ Integrated Development Environment (IDE) naar een HDInsight Spark-cluster te verzenden. U kunt de invoeg toepassing op een paar manieren gebruiken:
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 
 * [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  In deze zelfstudie wordt gebruikgemaakt van Java-versie 8.0.202.
 
-* IntelliJ-idee. In dit artikel [wordt gebruikgemaakt van IntelliJ-idee Community ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
+* IntelliJ-idee. In dit artikel wordt gebruikgemaakt van [IntelliJ-idee Community ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
 * Azure-toolkit voor IntelliJ.  Zie [Installing the Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable) (De Azure Toolkit voor IntelliJ installeren).
 
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
     ![IntelliJ-idee scala-invoeg toepassing inschakelen](./media/apache-spark-intellij-tool-plugin/enable-scala-plugin1.png)
 
-3. Selecteer **Install** voor de Scala-invoegtoepassing die in het nieuwe venster wordt weergegeven.  
+3. Select **Install** voor de Scala-invoegtoepassing die in het nieuwe venster wordt weergegeven.  
 
     ![IntelliJ-idee scala-invoeg toepassing installeren](./media/apache-spark-intellij-tool-plugin/install-scala-plugin.png)
 
@@ -73,12 +73,12 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
 6. Geef in het venster **New project** de volgende gegevens op:  
 
-    |  Eigenschap   | Description   |  
+    |  Eigenschap   | Beschrijving   |  
     | ----- | ----- |  
     |Projectnaam| Voer een naam in.  In deze zelfstudie wordt `myApp` gebruikt.|  
     |Project&nbsp;location| Voer de gewenste locatie in om uw project in op te slaan.|
     |Project SDK| Dit kan leeg zijn bij het eerste gebruik van het idee.  Selecteer **New...** en ga naar uw JDK.|
-    |Spark-versie|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voorbeeld wordt **Spark 2.3.0 (Scala 2.11.8)** gebruikt.|
+    |Spark version|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Selecteer **Spark 1.x** als de Spark-clusterversie ouder is dan 2.0. Selecteer anders **Spark 2.x**. In dit voorbeeld wordt **Spark 2.3.0 (Scala 2.11.8)** gebruikt.|
 
     ![De Apache Spark SDK selecteren](./media/apache-spark-intellij-tool-plugin/intellij-new-project.png)
 
@@ -96,7 +96,7 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
 9. Voeg de bron code van uw toepassing toe door de volgende handelingen uit te voeren:
 
-    a. Ga vanuit Project naar **Mijntoep** > **src** > **Main** > **scala**.  
+    a. Ga vanuit Project naar **mijntoep** > **src** > **Main** > **scala**.  
 
     b. Klik met de rechter muisknop op **scala**en navigeer vervolgens naar de **nieuwe** > **scala-klasse**.
 
@@ -126,14 +126,14 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
     
         }
 
-    De code leest de gegevens van HVAC. CSV (beschikbaar op alle HDInsight Spark-clusters), haalt de rijen met slechts één cijfer in de zevende kolom in het CSV-bestand op en schrijft de uitvoer `/HVACOut` naar onder de standaard opslag container voor het cluster.
+    De code leest de gegevens van HVAC. CSV (beschikbaar op alle HDInsight Spark-clusters), haalt de rijen met slechts één cijfer in de zevende kolom in het CSV-bestand op en schrijft de uitvoer naar `/HVACOut` onder de standaard opslag container voor het cluster.
 
 ## <a name="connect-to-your-hdinsight-cluster"></a>Verbinding maken met uw HDInsight-cluster
 De gebruiker kan [zich aanmelden bij het Azure-abonnement](#sign-in-to-your-azure-subscription)of [een HDInsight-cluster koppelen](#link-a-cluster) met behulp van Ambari gebruikers naam/wacht woord of referenties die lid zijn van een domein om verbinding te maken met uw HDInsight-cluster.
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
 
-1. Ga in de menu balk naar het**hulp programma Windows** > **Azure Verkenner** **bekijken** > .
+1. Ga in de menu balk **naar > ** **hulp programma Windows** > **Azure Verkenner**.
 
    ![IntelliJ-idee Azure Explorer weer geven](./media/apache-spark-intellij-tool-plugin/show-azure-explorer1.png)
 
@@ -171,9 +171,9 @@ De gebruiker kan [zich aanmelden bij het Azure-abonnement](#sign-in-to-your-azur
 
 ### <a name="link-a-cluster"></a>Een cluster koppelen
 
-U kunt een HDInsight-cluster koppelen met behulp van de Apache Ambari Managed username. Op dezelfde manier kunt u voor een HDInsight-cluster dat is gekoppeld aan een domein een koppeling maken met behulp `user1@contoso.com`van het domein en de gebruikers naam, zoals. U kunt ook een livy-service cluster koppelen.
+U kunt een HDInsight-cluster koppelen met behulp van de Apache Ambari Managed username. Op dezelfde manier kunt u voor een HDInsight-cluster dat is gekoppeld aan een domein een koppeling maken met behulp van het domein en de gebruikers naam, zoals `user1@contoso.com`. U kunt ook een livy-service cluster koppelen.
 
-1. Ga in de menu balk naar het**hulp programma Windows** > **Azure Verkenner** **bekijken** > .
+1. Ga in de menu balk **naar > ** **hulp programma Windows** > **Azure Verkenner**.
 
 1. Klik in azure Verkenner met de rechter muisknop op het **HDInsight** -knoop punt en selecteer vervolgens **koppelen van een cluster**.
 
@@ -183,26 +183,26 @@ U kunt een HDInsight-cluster koppelen met behulp van de Apache Ambari Managed us
 
     * **HDInsight-cluster**  
   
-        |Eigenschap |Value |
+        |Eigenschap |Waarde |
         |----|----|
         |Resource type voor koppeling|Selecteer **HDInsight-cluster** in de vervolg keuzelijst.|
         |Cluster naam/URL| Voer de cluster naam in.|
-        |Authenticatietype| Als **basis verificatie** laten staan|
-        |Naam van gebruiker| Voer de gebruikers naam van het cluster in, de standaard instelling is admin.|
+        |Verificatie type| Als **basis verificatie** laten staan|
+        |Gebruikersnaam| Voer de gebruikers naam van het cluster in, de standaard instelling is admin.|
         |Wachtwoord| Voer het wacht woord in voor de gebruikers naam.|
 
         ![IntelliJ-idee een cluster dialoogvenster koppelen](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
 
     * **Livy-service**  
   
-        |Eigenschap |Value |
+        |Eigenschap |Waarde |
         |----|----|
         |Resource type voor koppeling|Selecteer **livy-service** in de vervolg keuzelijst.|
         |Livy-eind punt| Livy-eind punt invoeren|
         |Clusternaam| Voer de cluster naam in.|
         |Eind punt van garen|Optioneel.|
-        |Authenticatietype| Als **basis verificatie** laten staan|
-        |Naam van gebruiker| Voer de gebruikers naam van het cluster in, de standaard instelling is admin.|
+        |Verificatie type| Als **basis verificatie** laten staan|
+        |Gebruikersnaam| Voer de gebruikers naam van het cluster in, de standaard instelling is admin.|
         |Wachtwoord| Voer het wacht woord in voor de gebruikers naam.|
 
         ![Dialoog venster IntelliJ-idee livy-cluster](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
@@ -219,7 +219,7 @@ U kunt een HDInsight-cluster koppelen met behulp van de Apache Ambari Managed us
 
 Nadat u een scala-toepassing hebt gemaakt, kunt u deze verzenden naar het cluster.
 
-1. Ga vanuit Project naar **Mijntoep** > **src** > **Main** > scalaMijntoep > .  Klik met de rechter muisknop op **MyApp**en selecteer vervolgens **Spark-toepassing verzenden** (deze staat waarschijnlijk onder aan de lijst).
+1. Ga vanuit Project naar **mijntoep** > **src** > **Main** > **scala** > **Mijntoep**.  Klik met de rechter muisknop op **MyApp**en selecteer vervolgens **Spark-toepassing verzenden** (deze staat waarschijnlijk onder aan de lijst).
 
       ![De opdracht Spark-toepassing verzenden naar HDInsight](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
@@ -227,19 +227,19 @@ Nadat u een scala-toepassing hebt gemaakt, kunt u deze verzenden naar het cluste
 
 3. Geef in het venster **configuratie bewerken** de volgende waarden op en selecteer **OK**:
 
-    |Eigenschap |Value |
+    |Eigenschap |Waarde |
     |----|----|
     |Spark-clusters (alleen Linux)|Selecteer het HDInsight Spark-cluster waarop u de toepassing wilt uitvoeren.|
     |Een artefact selecteren om in te dienen|De standaard instelling ongewijzigd.|
     |Naam van hoofd klasse|De standaard waarde is de hoofd klasse van het geselecteerde bestand. U kunt de klasse wijzigen door het weglatings teken ( **...** ) te selecteren.  en kies een andere klasse.|
     |Taak configuraties|U kunt de standaard sleutels en/of-waarden wijzigen. Zie [Apache Livy rest API](https://livy.incubator.apache.org./docs/latest/rest-api.html)voor meer informatie.|
-    |Opdrachtregelargumenten|Als dat nodig is, kunt u argumenten door geven die worden gescheiden door de ruimte voor de hoofd klasse.|
+    |Opdracht regel argumenten|Als dat nodig is, kunt u argumenten door geven die worden gescheiden door de ruimte voor de hoofd klasse.|
     |Potten waarnaar wordt verwezen en waarnaar wordt verwezen|U kunt de paden voor de potten en bestanden waarnaar wordt verwezen, opgeven. U kunt ook bladeren door bestanden in het virtuele bestands systeem van Azure, dat momenteel alleen ondersteuning biedt voor ADLS gen 2-cluster. Voor meer informatie: [Apache Spark configuratie](https://spark.apache.org/docs/latest/configuration.html#runtime-environment).  Zie ook [How to upload resources to cluster](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer).|
     |Upload opslag van taken|Uitvouwen om extra opties weer te geven.|
-    |Opslagtype|Selecteer **Azure-Blob gebruiken om te uploaden** uit de vervolg keuzelijst.|
+    |Opslag type|Selecteer **Azure-Blob gebruiken om te uploaden** uit de vervolg keuzelijst.|
     |Opslagaccount|Voer uw opslag account in.|
-    |Opslagsleutel|Voer uw opslag sleutel in.|
-    |Storage-Container|Selecteer uw opslag container in de vervolg keuzelijst zodra het **opslag account** en de **opslag sleutel** zijn ingevoerd.|
+    |Opslag sleutel|Voer uw opslag sleutel in.|
+    |Opslag container|Selecteer uw opslag container in de vervolg keuzelijst zodra het **opslag account** en de **opslag sleutel** zijn ingevoerd.|
 
     ![Het dialoog venster voor de verzen ding van Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
 
@@ -253,11 +253,11 @@ We raden ook een andere manier aan om de Spark-toepassing naar het cluster te ve
 
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>HDInsight Spark-clusters openen en beheren met behulp van Azure-toolkit voor IntelliJ
 
-U kunt verschillende bewerkingen uitvoeren met behulp van Azure-toolkit voor IntelliJ.  De meeste bewerkingen worden gestart vanuit **Azure Verkenner**.  Ga in de menu balk naar het**hulp programma Windows** > **Azure Verkenner** **bekijken** > .
+U kunt verschillende bewerkingen uitvoeren met behulp van Azure-toolkit voor IntelliJ.  De meeste bewerkingen worden gestart vanuit **Azure Verkenner**.  Ga in de menu balk **naar > ** **hulp programma Windows** > **Azure Verkenner**.
 
 ### <a name="access-the-job-view"></a>De taak weergave openen
 
-1. Ga in azure Verkenner naar **HDInsight** > \<om uw cluster > > **taken**.
+1. Ga in azure Verkenner naar **HDInsight** > \<uw Cluster > > **taken**.
 
     ![IntelliJ Azure Explorer-taak weergave knooppunt](./media/apache-spark-intellij-tool-plugin/intellij-job-view-node.png)
 
@@ -280,7 +280,7 @@ U kunt verschillende bewerkingen uitvoeren met behulp van Azure-toolkit voor Int
 1. Vouw in azure Explorer **HDInsight**uit, klik met de rechter muisknop op de naam van uw Spark-cluster en selecteer vervolgens **openen Spark-gebruikers interface**.  
 2. Wanneer u hierom wordt gevraagd, voert u de beheerders referenties van het cluster in, die u hebt opgegeven bij het instellen van het cluster.
 
-3. Op het Spark-geschiedenis server dashboard kunt u de naam van de toepassing gebruiken om te zoeken naar de toepassing die u zojuist hebt uitgevoerd. In de voor gaande code stelt u de naam van de toepassing `val conf = new SparkConf().setAppName("myApp")`in met behulp van. Daarom is de Spark-toepassings naam **Mijntoep**.
+3. Op het Spark-geschiedenis server dashboard kunt u de naam van de toepassing gebruiken om te zoeken naar de toepassing die u zojuist hebt uitgevoerd. In de voor gaande code stelt u de naam van de toepassing in met behulp van `val conf = new SparkConf().setAppName("myApp")`. Daarom is de Spark-toepassings naam **Mijntoep**.
 
 ### <a name="start-the-ambari-portal"></a>De Ambari-Portal starten
 
@@ -304,15 +304,15 @@ U kunt een lokale Spark-console (scala) uitvoeren of een Spark livy-console (sca
 
 Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
 
-1. Navigeer in de menu balk naar**bewerkings configuraties** **uitvoeren** > ....
+1. Navigeer in de menu balk naar **uitvoeren** > - **configuraties bewerken...** .
 
-2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op hdinsight** >  **[Spark op hdinsight] Mijntoep**.
+2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op Hdinsight** >  **[Spark op hdinsight] MyApp**.
 
 3. Selecteer in het hoofd venster het tabblad **lokaal uitvoeren** .
 
 4. Geef de volgende waarden op en selecteer **OK**:
 
-    |Eigenschap |Value |
+    |Eigenschap |Waarde |
     |----|----|
     |Hoofd klasse van taak|De standaard waarde is de hoofd klasse van het geselecteerde bestand. U kunt de klasse wijzigen door het weglatings teken ( **...** ) te selecteren.  en kies een andere klasse.|
     |Omgevingsvariabelen|Zorg ervoor dat de waarde voor HADOOP_HOME juist is.|
@@ -320,9 +320,9 @@ Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
 
     ![Configuratie van lokale console instellen](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
 
-5. Ga vanuit Project naar **Mijntoep** > **src** > **Main** > scalaMijntoep > .  
+5. Ga vanuit Project naar **mijntoep** > **src** > **Main** > **scala** > **Mijntoep**.  
 
-6. Ga in de menu balk naar **extra** > **Spark console** > **uitvoeren Spark Local Console (scala)** .
+6. Navigeer in de menu balk naar **Hulpprogram ma's** > **Spark-console** > een **Spark lokale console uit te voeren (scala)** .
 
 7. Vervolgens worden er twee dialoog vensters weer gegeven waarin u wordt gevraagd of u afhankelijkheden automatisch wilt oplossen. Als dit het geval is, selecteert u **automatisch oplossen**.
 
@@ -330,7 +330,7 @@ Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
 
     ![IntelliJ-idee Spark automatisch oplossen dialog2](./media/apache-spark-intellij-tool-plugin/intellij-console-autofix2.png)
 
-8. De-console moet er ongeveer als volgt uitzien. In het console venster typt `sc.appName`en druk vervolgens op CTRL + ENTER.  Het resultaat wordt weer gegeven. U kunt de lokale console beëindigen door op de knop rood te klikken.
+8. De-console moet er ongeveer als volgt uitzien. Typ `sc.appName`in het console venster en druk vervolgens op CTRL + ENTER.  Het resultaat wordt weer gegeven. U kunt de lokale console beëindigen door op de knop rood te klikken.
 
     ![Resultaat van lokale console voor IntelliJ-ideeën](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
 
@@ -338,26 +338,26 @@ Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
 
 Het wordt alleen ondersteund op IntelliJ 2018,2 en 2018,3.
 
-1. Navigeer in de menu balk naar**bewerkings configuraties** **uitvoeren** > ....
+1. Navigeer in de menu balk naar **uitvoeren** > - **configuraties bewerken...** .
 
-2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op hdinsight** >  **[Spark op hdinsight] Mijntoep**.
+2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op Hdinsight** >  **[Spark op hdinsight] MyApp**.
 
 3. Selecteer in het hoofd venster het tabblad op **afstand uitvoeren op het cluster** .
 
 4. Geef de volgende waarden op en selecteer **OK**:
 
-    |Eigenschap |Value |
+    |Eigenschap |Waarde |
     |----|----|
     |Spark-clusters (alleen Linux)|Selecteer het HDInsight Spark-cluster waarop u de toepassing wilt uitvoeren.|
     |Naam van hoofd klasse|De standaard waarde is de hoofd klasse van het geselecteerde bestand. U kunt de klasse wijzigen door het weglatings teken ( **...** ) te selecteren.  en kies een andere klasse.|
 
     ![Configuratie van een interactieve console instellen](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
 
-5. Ga vanuit Project naar **Mijntoep** > **src** > **Main** > scalaMijntoep > .  
+5. Ga vanuit Project naar **mijntoep** > **src** > **Main** > **scala** > **Mijntoep**.  
 
-6. Ga in de menu balk naar **extra** > **Spark-console** > en**Voer Spark livy Interactive Session console (scala)** uit.
+6. Ga in de menu balk naar **Hulpprogram ma's** > **spark-console** > **Voer Spark livy Interactive Session console (scala)** uit.
 
-7. De-console moet er ongeveer als volgt uitzien. In het console venster typt `sc.appName`en druk vervolgens op CTRL + ENTER.  Het resultaat wordt weer gegeven. U kunt de lokale console beëindigen door op de knop rood te klikken.
+7. De-console moet er ongeveer als volgt uitzien. Typ `sc.appName`in het console venster en druk vervolgens op CTRL + ENTER.  Het resultaat wordt weer gegeven. U kunt de lokale console beëindigen door op de knop rood te klikken.
 
     ![Resultaat van interactieve console van IntelliJ-ideeën](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
 
@@ -428,7 +428,7 @@ U kunt de bestaande Spark scala-toepassingen die u in IntelliJ-idee hebt gemaakt
 
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
 
-   Bewerk het element dat u `UniqueKey="HDInsightTool"` wilt toevoegen, zodat het **module** -element er als volgt uitziet:
+   Bewerk het element om `UniqueKey="HDInsightTool"` toe te voegen zodat het **module** -element er als volgt uitziet:
 
         <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4" UniqueKey="HDInsightTool">
 
@@ -438,7 +438,7 @@ U kunt de bestaande Spark scala-toepassingen die u in IntelliJ-idee hebt gemaakt
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat u hebt gemaakt met de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 
@@ -448,7 +448,7 @@ Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat 
 
 1. Selecteer **Verwijderen**. Selecteer **Ja**.
 
-Hdinsight- ![cluster verwijderen Azure Portal verwijderen](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "") van hdinsight-cluster
+![HDInsight-cluster Azure Portal verwijderen](./media/apache-spark-intellij-tool-plugin/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
 
 ## <a name="next-steps"></a>Volgende stappen
 

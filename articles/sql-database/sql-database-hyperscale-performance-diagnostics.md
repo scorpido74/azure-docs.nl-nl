@@ -9,12 +9,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: 92a1fda85e5ee49f12a13123e8a296492fd9eb4b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fa8b02cf5ee6f24bcc77aae057f41842da721981
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598173"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521134"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostische gegevens voor het oplossen van problemen met SQL grootschalige-prestaties
 
@@ -101,7 +101,7 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- Zie [grootschalige vCore service tier VCore limieten](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute) voor resource limieten voor een grootschalige-data base.
+- Zie [grootschalige vCore service tier VCore limieten](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) voor resource limieten voor een grootschalige-data base.
 - Zie [query prestaties in Azure SQL database](sql-database-performance-guidance.md) voor Azure SQL database afstemming van prestaties.
 - Zie [prestatie bewaking met query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/) voor het afstemmen van de prestaties met behulp van query Store
 - Zie [prestaties bewaken Azure SQL database met dynamische beheer weergaven](sql-database-monitoring-with-dmvs.md) voor dmv-bewakings scripts

@@ -9,14 +9,14 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6af9f2c80915745f995144c24ae1649fb02a31ae
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192269"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497604"
 ---
-# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u dit op de Windows Data Science Virtual Machine doen kunt
+# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tien dingen die u kunt doen op de Windows-Data Science Virtual Machine
 
 De Windows Data Science Virtual Machine (DSVM) is een krachtige ontwikkel omgeving voor data technologie waar u gegevens kunt verkennen en model leren. De omgeving is al gebouwd en gebundeld met verschillende populaire hulpprogram ma's voor gegevens analyse, zodat u snel aan de slag kunt gaan met uw analyse voor on-premises, Cloud-of hybride implementaties. 
 
@@ -25,11 +25,11 @@ De DSVM werkt nauw samen met Azure-Services. Dit kan gegevens lezen en verwerken
 In dit artikel leert u hoe u uw DSVM kunt gebruiken om data Science-taken uit te voeren en te communiceren met andere Azure-Services. Hier volgen enkele dingen die u op de DSVM kunt doen:
 
 - Verken gegevens en ontwikkel modellen lokaal op het DSVM met behulp van Microsoft Machine Learning Server en python.
-- Gebruik een Jupyter-notebook om te experimenteren met uw gegevens in een browser met behulp van python 2, python 3 en micro soft R. (Micro soft R is een bedrijfs klare versie van R, ontworpen voor prestaties.)
+- Gebruik een Jupyter-notebook om te experimenteren met uw gegevens in een browser met behulp van python 2, python 3 en micro soft R. (micro soft R is een bedrijfs klare versie van R, ontworpen voor prestaties.)
 - Implementeer modellen die zijn gemaakt met R en python op Azure Machine Learning, zodat client toepassingen toegang hebben tot uw modellen met behulp van een eenvoudige webservice-interface.
 - Beheer uw Azure-resources met behulp van de Azure Portal of Power shell.
 - Breid uw opslag ruimte uit en deel gegevens sets/code op grote schaal in uw hele team door een Azure Files share te maken als een koppelbaar station op uw DSVM.
-- Deel code met uw team met behulp van GitHub. Toegang tot uw opslag plaats met behulp van de vooraf geïnstalleerde Git-clients: Git-Bash en git-GUI.
+- Deel code met uw team met behulp van GitHub. Toegang tot uw opslag plaats met behulp van de vooraf geïnstalleerde Git-clients: Git Bash en git GUI.
 - Toegang tot Azure data-en Analytics-Services zoals Azure Blob Storage, Azure Data Lake, Azure HDInsight (Hadoop), Azure Cosmos DB, Azure SQL Data Warehouse en Azure SQL Database.
 - Bouw rapporten en een dash board met behulp van de Power BI Desktop-instantie die vooraf is geïnstalleerd op de DSVM en implementeer deze in de Cloud.
 - Schaal uw DSVM dynamisch om te voldoen aan de behoeften van uw project.
@@ -42,26 +42,26 @@ In dit artikel leert u hoe u uw DSVM kunt gebruiken om data Science-taken uit te
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U moet een Azure-abonnement. U kunt [zich registreren voor een gratis proef versie](https://azure.microsoft.com/free/).
+* U hebt een Azure-abonnement nodig. U kunt [zich registreren voor een gratis proef versie](https://azure.microsoft.com/free/).
 * Instructies voor het inrichten van een Data Science Virtual Machine op de Azure Portal zijn beschikbaar voor het [maken van een virtuele machine](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Gegevens verkennen en modellen ontwikkelen met Microsoft Machine Learning Server
-Talen als R en Python kunt u uw gegevens analyseren op de DSVM.
+U kunt talen als R en python gebruiken om uw gegevens analyse rechtstreeks op de DSVM uit te voeren.
 
 Voor R kunt u een IDE gebruiken zoals RStudio die u kunt vinden in het menu Start of op het bureau blad. U kunt ook R-Hulpprogram Ma's voor Visual Studio gebruiken. Micro soft heeft extra bibliotheken op de open source-KRANs R geboden om schaal bare analyses mogelijk te maken en de mogelijkheid om gegevens te analyseren die groter zijn dan de geheugen grootte die is toegestaan in parallelle gesegmenteerde analyse. 
 
-Voor Python, kunt u een IDE zoals Visual Studio Community Edition, met Python Tools for Visual Studio (PTVS)-extensie die vooraf zijn geïnstalleerd. Standaard wordt alleen python 3,6, de hoofd-Conda-omgeving, geconfigureerd op PTVS. Voer de volgende stappen uit om Anaconda python 2,7 in te scha kelen:
+Voor python kunt u een IDE gebruiken zoals de versie van Visual Studio Community, waarop de uitbrei ding Python Tools for Visual Studio (PTVS) vooraf is geïnstalleerd. Standaard wordt alleen python 3,6, de hoofd-Conda-omgeving, geconfigureerd op PTVS. Voer de volgende stappen uit om Anaconda python 2,7 in te scha kelen:
 
-1. Maak aangepaste omgevingen voor elke versie door naar **hulpprogram ma's** > **python tools** > python-**omgevingen**te gaan en vervolgens **+ Custom** te selecteren in de versie van Visual Studio community.
+1. Maak aangepaste omgevingen voor elke versie door te gaan naar **Hulpprogram ma's** > **python-Hulpprogram ma's** > **python-omgevingen**en selecteer vervolgens **+ aangepast** in Visual Studio Community Edition.
 1. Geef een beschrijving en stel het pad voor het voor voegsel van de omgeving in als **c:\anaconda\envs\python2** voor anaconda python 2,7.
 1. Selecteer **Automatische detectie** > **Toep assen** om de omgeving op te slaan.
 
 Raadpleeg de [PTVS-documentatie](https://aka.ms/ptvsdocs) voor meer informatie over het maken van python-omgevingen.
 
-Nu kunt u een nieuw python-project maken. Ga naar **bestand** > **Nieuw** > projectpython > en selecteer het type python-toepassing dat u wilt maken. U kunt de python-omgeving voor het huidige project instellen op de gewenste versie (python 2,7 of 3,6) door met de rechter muisknop te klikken op **python-omgevingen** en vervolgens **python-omgevingen toevoegen/verwijderen**te selecteren. Meer informatie over het werken met PTVS vindt u in de [product documentatie](https://aka.ms/ptvsdocs).
+Nu kunt u een nieuw python-project maken. Ga naar **bestand** > **nieuwe** > **project** > **python** en selecteer het type python-toepassing dat u wilt maken. U kunt de python-omgeving voor het huidige project instellen op de gewenste versie (python 2,7 of 3,6) door met de rechter muisknop te klikken op **python-omgevingen** en vervolgens **python-omgevingen toevoegen/verwijderen**te selecteren. Meer informatie over het werken met PTVS vindt u in de [product documentatie](https://aka.ms/ptvsdocs).
 
 ## <a name="use-jupyter-notebooks"></a>Jupyter Notebook gebruiken
 De Jupyter Notebook biedt een op een browser gebaseerde IDE voor het verkennen en model leren van gegevens. U kunt python 2, python 3 of R (zowel open source als Microsoft R Server) gebruiken in een Jupyter-notebook.
@@ -72,7 +72,7 @@ Nadat u Jupyter hebt gestart, ziet u een map met enkele voor beelden van noteboo
 
 * Selecteer het notitie blok om de code te zien.
 * Voer elke cel uit door SHIFT + ENTER te selecteren.
-* Voer het hele notitie blok uit door de **cel** > **Run**te selecteren.
+* Voer het hele notitie blok uit door **cel** > **uitvoeren**te selecteren.
 * Maak een nieuw notitie blok door het Jupyter-pictogram (linkerbovenhoek) te selecteren, de knop **Nieuw** aan de rechter kant te selecteren en vervolgens de taal voor het notitie blok te kiezen (ook wel kernels genoemd).   
 
 > [!NOTE]
@@ -83,14 +83,9 @@ Nadat u Jupyter hebt gestart, ziet u een map met enkele voor beelden van noteboo
 Wanneer u zich in het notitie blok bevindt, kunt u uw gegevens verkennen, het model bouwen en het model testen met behulp van uw favoriete bibliotheken.
 
 ## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Modellen trainen en implementeren met behulp van Azure Machine Learning
-Nadat u het model hebt gemaakt en gevalideerd, wordt de volgende stap meestal geïmplementeerd in productie. Met deze stap kunnen uw client toepassingen de model voorspellingen op basis van real-time of een batch modus aanroepen. Azure Machine Learning biedt een mechanisme om een ingebouwd in R of Python-model operationeel te maken.
+Nadat u het model hebt gemaakt en gevalideerd, wordt de volgende stap meestal geïmplementeerd in productie. Met deze stap kunnen uw client toepassingen de model voorspellingen op basis van real-time of een batch modus aanroepen. Azure Machine Learning biedt een mechanisme voor het operationeel maken van een model dat is ingebouwd in R of python.
 
-Wanneer u uw model in Azure Machine Learning operationeel maken, wordt een webservice weer gegeven. Hiermee kunnen clients REST-aanroepen maken die invoer parameters door geven en voor spellingen van het model ontvangen als uitvoer.   
-
-> [!NOTE]
-> Als u zich nog niet hebt aangemeld voor Azure Machine Learning, kunt u een gratis werk ruimte of een Standard-werk ruimte downloaden door de [Azure machine learning Studio](https://studio.azureml.net/) start pagina te bezoeken en **aan de slag te gaan**.   
-> 
-> 
+Wanneer u uw model in Azure Machine Learning operationeel maken, wordt een webservice weer gegeven. Hiermee kunnen clients REST-aanroepen maken die invoer parameters door geven en voor spellingen van het model ontvangen als uitvoer.
 
 ### <a name="build-and-operationalize-python-models"></a>Python-modellen bouwen en operationeel maken
 Hier volgt een code fragment dat is ontwikkeld in een python Jupyter-notebook dat een eenvoudig model bouwt met behulp van de Scikit-Learn-bibliotheek:
@@ -119,7 +114,7 @@ def predictIris(sep_l, sep_w, pet_l, pet_w):
 return clf.predict(inputArray)
 ```
 
-Een client kan nu aanroepen naar de webservice. Gebruiks vriendelijke wrappers maken de REST API aanvragen. Hier volgt een voorbeeld code voor het verbruik van de webservice:
+Een client kan nu aanroepen naar de webservice maken. Gebruiks vriendelijke wrappers maken de REST API aanvragen. Hier volgt een voorbeeld code voor het verbruik van de webservice:
 
 ```python
 # Consume through web service URL and keys
@@ -143,13 +138,13 @@ U kunt R-modellen implementeren die op de Data Science Virtual Machine of ergens
 
 1. Maak een bestand settings. json om uw werk ruimte-ID en verificatie token op te geven. 
 2. Schrijf een wrapper voor de functie voors pellen van het model.
-3. Aanroep ```publishWebService``` in de Azure machine learning-bibliotheek om door te geven in de functie-wrapper.  
+3. Roep ```publishWebService``` aan in de Azure Machine Learning-bibliotheek om door te geven aan de functie wrapper.  
 
 Gebruik de volgende procedure en code fragmenten voor het instellen, bouwen, publiceren en gebruiken van een model als een webservice in Azure Machine Learning.
 
 #### <a name="set-up"></a>Instellen
 
-Maak een bestand settings. json onder een map met ```.azureml``` de naam onder uw basismap. Geef de para meters op uit uw Azure Machine Learning-werk ruimte.
+Maak een bestand settings. json in een map met de naam ```.azureml``` onder uw basismap. Geef de para meters op uit uw Azure Machine Learning-werk ruimte.
 
 Dit zijn de instellingen. json-bestands structuur:
 
@@ -160,7 +155,7 @@ Dit zijn de instellingen. json-bestands structuur:
 }}
 ```
 
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Een model in R bouwen en deze publiceren in Azure Machine Learning
+#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Bouw een model in R en publiceer het in Azure Machine Learning
 
 ```r
 library(AzureML)
@@ -180,8 +175,8 @@ sleepyPredict <- function(newdata){
 ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
 ```
 
-#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Het model is geïmplementeerd in Azure Machine Learning gebruiken
-Als u het model van een client toepassing wilt gebruiken, gebruikt u de Azure Machine Learning bibliotheek om de gepubliceerde webservice op naam op te zoeken. Gebruik de `services` API-aanroep om het eind punt te bepalen. Dan Roep je de `consume` werken en door te geven in het kader van de gegevens om te worden voorspeld.
+#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Het model gebruiken dat is geïmplementeerd in Azure Machine Learning
+Als u het model van een client toepassing wilt gebruiken, gebruikt u de Azure Machine Learning bibliotheek om de gepubliceerde webservice op naam op te zoeken. Gebruik de API-aanroep van `services` om het eind punt te bepalen. Vervolgens roept u de `consume`-functie aan en geeft u aan dat het gegevens frame moet worden voor speld.
 
 Gebruik de volgende code om het model te gebruiken dat is gepubliceerd als een Azure Machine Learning-webservice:
 
@@ -210,7 +205,7 @@ Als u uw Azure-abonnement en cloud resources wilt beheren, hebt u twee opties:
 + Gebruik Power shell-scripts. Voer Azure PowerShell uit vanuit een snelkoppeling op het bureau blad of vanuit het menu **Start** . Raadpleeg de [Microsoft Azure PowerShell-documentatie](../../powershell-azure-resource-manager.md) voor volledige informatie. 
 
 ## <a name="extend-storage-by-using-shared-file-systems"></a>Opslag uitbreiden met behulp van gedeelde bestands systemen
-Gegevenswetenschappers kunnen delen grote gegevenssets, code of andere resources in het team. De DSVM heeft ongeveer 45 GB beschik bare ruimte. Als u uw opslag wilt uitbreiden, kunt u Azure Files gebruiken en deze koppelen aan een of meer DSVM-instanties of toegang krijgen via een REST API. U kunt ook de [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) gebruiken of [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) gebruiken om extra toegewezen gegevens schijven toe te voegen. 
+Gegevens wetenschappers kunnen grote gegevens sets, code of andere resources binnen het team delen. De DSVM heeft ongeveer 45 GB beschik bare ruimte. Als u uw opslag wilt uitbreiden, kunt u Azure Files gebruiken en deze koppelen aan een of meer DSVM-instanties of toegang krijgen via een REST API. U kunt ook de [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) gebruiken of [Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) gebruiken om extra toegewezen gegevens schijven toe te voegen. 
 
 > [!NOTE]
 > De maximale ruimte op de Azure Files share is 5 TB. De maximale grootte voor elk bestand is 1 TB. 
@@ -247,24 +242,24 @@ cmdkey /add:<<mydatadisk>>.file.core.windows.net /user:<<mydatadisk>> /pass:<sto
 net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
 ```
 
-Nu kunt u dit station openen als een normale station op de virtuele machine.
+U hebt nu toegang tot dit station, net zoals bij een normaal station op de virtuele machine.
 
 ## <a name="share-code-in-github"></a>Code delen in GitHub
-GitHub is een code opslagplaats waar u code voorbeelden en bronnen voor diverse hulp middelen kunt vinden met behulp van technologieën die worden gedeeld door de ontwikkelaars community. Deze Git gebruikt als de technologie bij te houden en versies van de bestanden opslaat. GitHub is ook een platform waar u uw eigen opslag plaats kunt maken om de gedeelde code en documentatie van uw team op te slaan, versie beheer te implementeren en te bepalen wie toegang heeft tot het weer geven en bijdragen van code. 
+GitHub is een code opslagplaats waar u code voorbeelden en bronnen voor diverse hulp middelen kunt vinden met behulp van technologieën die worden gedeeld door de ontwikkelaars community. Het gebruikt Git als technologie om versies van de code bestanden bij te houden en op te slaan. GitHub is ook een platform waar u uw eigen opslag plaats kunt maken om de gedeelde code en documentatie van uw team op te slaan, versie beheer te implementeren en te bepalen wie toegang heeft tot het weer geven en bijdragen van code. 
 
-Ga naar de [GitHub help-pagina's](https://help.github.com/) voor meer informatie over het gebruik van Git. U kunt GitHub gebruiken als een van de manieren om samen te werken met uw team, code te gebruiken die is ontwikkeld door de community en de code naar de community te bijdragen.
+Ga naar de [Help-pagina's van github](https://help.github.com/) voor meer informatie over het gebruik van Git. U kunt GitHub gebruiken als een van de manieren om samen te werken met uw team, code te gebruiken die is ontwikkeld door de community en de code naar de community te bijdragen.
 
 De DSVM wordt geladen met client hulpprogramma's op de opdracht regel en in de gebruikers interface om toegang te krijgen tot de GitHub-opslag plaats. Het opdracht regel programma voor het werken met Git en GitHub heet Git Bash. Visual Studio is geïnstalleerd op de DSVM en heeft de Git-extensies. U vindt pictogrammen voor deze hulpprogram ma's in het menu **Start** en op het bureau blad.
 
-Als u wilt downloaden code vanuit een GitHub-opslagplaats, gebruikt u de ```git clone``` opdracht. Als u bijvoorbeeld de data Science-opslag plaats wilt downloaden die door micro soft in de huidige map is gepubliceerd, kunt u de volgende opdracht uitvoeren in Git Bash:
+Als u code uit een GitHub-opslag plaats wilt downloaden, gebruikt u de opdracht ```git clone```. Als u bijvoorbeeld de data Science-opslag plaats wilt downloaden die door micro soft in de huidige map is gepubliceerd, kunt u de volgende opdracht uitvoeren in Git Bash:
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-In Visual Studio, kunt u de dezelfde kloonbewerking doen. In de volgende scherm afbeelding ziet u hoe u de hulpprogram ma's Git en GitHub opent in Visual Studio:
+In Visual Studio kunt u dezelfde kloon bewerking uitvoeren. In de volgende scherm afbeelding ziet u hoe u de hulpprogram ma's Git en GitHub opent in Visual Studio:
 
 ![Scherm opname van Visual Studio waarbij de GitHub-verbinding wordt weer gegeven](./media/vm-do-ten-things/VSGit.PNG)
 
-U vindt meer informatie over het gebruik van Git om te werken met uw GitHub-opslag plaats van resources die beschikbaar zijn op github.com. De [overzichtskaart](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) is een nuttig verwijzing.
+U vindt meer informatie over het gebruik van Git om te werken met uw GitHub-opslag plaats van resources die beschikbaar zijn op github.com. Het [Cheat-blad](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) is een nuttige verwijzing.
 
 ## <a name="access-azure-data-and-analytics-services"></a>Toegang tot Azure data en Analytics Services
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
@@ -277,7 +272,7 @@ Azure Blob-opslag is een betrouw bare, voordelige service voor Cloud opslag voor
    ![Scherm opname van het proces voor het maken van het opslag account in de Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Controleer of het opdracht regel programma AzCopy vooraf is geïnstalleerd: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. De map met azcopy. exe bevindt zich al in uw omgevings variabele PATH, dus u kunt voor komen dat u het volledige pad naar de opdracht typt wanneer u dit hulp programma uitvoert. Zie de [AzCopy-documentatie](../../storage/common/storage-use-azcopy.md)voor meer informatie over het hulp programma AzCopy.
-* Start het hulpprogramma Azure Storage Explorer. U kunt deze downloaden van de [Storage Explorer webpagina](https://storageexplorer.com/). 
+* Start het Azure Storage Explorer-hulp programma. U kunt deze downloaden van de [Storage Explorer webpagina](https://storageexplorer.com/). 
 
    ![Scherm afbeelding van Azure Storage Explorer toegang tot een opslag account](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -304,20 +299,20 @@ Nadat u de AzCopy-opdracht hebt uitgevoerd om naar een Azure-Blob te kopiëren, 
 
 ![Scherm afbeelding van het opslag account waarin het geüploade CSV-bestand wordt weer gegeven](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>Gegevens verplaatsen van een virtuele machine naar een Azure-Blob: Azure Opslagverkenner
+#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>Gegevens verplaatsen van een virtuele machine naar een Azure-Blob: Azure Storage Explorer
 
 U kunt ook gegevens uit het lokale bestand in uw virtuele machine uploaden met behulp van Azure Storage Explorer:
 
-* Als u gegevens wilt uploaden naar een container, selecteert u de doel container en selecteert u de knop **uploaden** . ![Scherm afbeelding van de knop uploaden in azure Storage Explorer](./media/vm-do-ten-things/storage-accounts.png)
-* Selecteer het beletsel teken ( **...** ) rechts van het vak **bestanden** , selecteer een of meer bestanden die u wilt uploaden uit het bestands systeem en selecteer **uploaden** om te beginnen met het uploaden van de bestanden. ![Scherm afbeelding van het dialoog venster bestanden uploaden](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Als u gegevens wilt uploaden naar een container, selecteert u de doel container en selecteert u de knop **uploaden** .![scherm opname van de knop uploaden in Azure Storage Explorer](./media/vm-do-ten-things/storage-accounts.png)
+* Selecteer het beletsel teken ( **...** ) rechts van het vak **bestanden** , selecteer een of meer bestanden die u wilt uploaden uit het bestands systeem en selecteer **uploaden** om te beginnen met het uploaden van de bestanden.![scherm opname van het dialoog venster bestanden uploaden](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Gegevens lezen uit een Azure-Blob: Module Machine Learning lezer
+#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Gegevens lezen uit een Azure-Blob: Machine Learning reader-module
 
 In Azure Machine Learning Studio kunt u de module gegevens importeren gebruiken om gegevens uit uw BLOB te lezen.
 
-![Schermafbeelding van de module gegevens importeren in Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Scherm afbeelding van de module gegevens importeren in Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-#### <a name="read-data-from-an-azure-blob-python-odbc"></a>Gegevens lezen uit een Azure-Blob: Python ODBC
+#### <a name="read-data-from-an-azure-blob-python-odbc"></a>Gegevens lezen uit een Azure-Blob: python ODBC
 
 U kunt de BlobService-bibliotheek gebruiken om gegevens rechtstreeks te lezen uit een BLOB in een Jupyter-notebook of in een python-programma.
 
@@ -367,10 +362,10 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 
 De gegevens worden als een gegevens frame gelezen:
 
-![Schermafbeelding van de eerste 10 rijen met gegevens](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![Scherm afbeelding van de eerste 10 rijen met gegevens](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage is een grootschalige-opslag plaats voor big data analytische werk belastingen en compatibel is met Hadoop Distributed File System (HDFS). Het werkt met Hadoop, Spark- en Azure Data Lake Analytics. In deze sectie leert u hoe u gegevens kunt verplaatsen naar Azure Data Lake Storage en hoe u een analyse uitvoert met behulp van Azure Data Lake Analytics.
+Azure Data Lake Storage is een grootschalige-opslag plaats voor big data analytische werk belastingen en compatibel is met Hadoop Distributed File System (HDFS). Het werkt met Hadoop, Spark en Azure Data Lake Analytics. In deze sectie leert u hoe u gegevens kunt verplaatsen naar Azure Data Lake Storage en hoe u een analyse uitvoert met behulp van Azure Data Lake Analytics.
 
 #### <a name="prerequisites"></a>Vereisten
 
@@ -444,7 +439,7 @@ Nadat de query is verzonden naar de server, wordt in een diagram de status van u
 
 #### <a name="query-data-in-data-lake-u-sql"></a>Gegevens opvragen in Data Lake: U-SQL
 
-Nadat de gegevensset in Azure Data Lake is opgenomen, kunt u de [u-SQL-taal](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) gebruiken om de gegevens op te vragen en te verkennen. U-SQL-taal is vergelijkbaar met T-SQL, maar combineert een aantal C# functies van zodat gebruikers aangepaste modules en door de gebruiker gedefinieerde functies kunnen schrijven. U kunt de scripts in de vorige stap.
+Nadat de gegevensset in Azure Data Lake is opgenomen, kunt u de [u-SQL-taal](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) gebruiken om de gegevens op te vragen en te verkennen. U-SQL-taal is vergelijkbaar met T-SQL, maar combineert een aantal C# functies van zodat gebruikers aangepaste modules en door de gebruiker gedefinieerde functies kunnen schrijven. U kunt de scripts in de vorige stap gebruiken.
 
 Nadat de query is verzonden naar de server, tripdata_summary. CSV wordt weer gegeven in Azure Data Lake Explorer. U kunt een voor beeld van de gegevens bekijken door met de rechter muisknop op het bestand te klikken.
 
@@ -452,20 +447,20 @@ Nadat de query is verzonden naar de server, tripdata_summary. CSV wordt weer geg
 
 De bestands informatie wordt weer gegeven:
 
-![Schermafbeelding van de samenvatting bestandsgegevens](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![Scherm afbeelding van de samenvattings informatie van het bestand](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop-clusters
 Azure HDInsight is een beheerde Apache Hadoop-, Spark-, HBase-en Storm-service in de Cloud. U kunt eenvoudig met Azure HDInsight-clusters werken vanuit het Data Science Virtual Machine.
 
 #### <a name="prerequisites"></a>Vereisten
 
-* Maak uw Azure Blob-opslag account vanuit het [Azure Portal](https://portal.azure.com). Dit opslagaccount wordt gebruikt voor het opslaan van gegevens voor HDInsight-clusters.
+* Maak uw Azure Blob-opslag account vanuit het [Azure Portal](https://portal.azure.com). Dit opslag account wordt gebruikt voor het opslaan van gegevens voor HDInsight-clusters.
 
    ![Scherm afbeelding van het maken van een opslag account vanuit de Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Pas Azure HDInsight Hadoop clusters aan vanuit de [Azure Portal](../team-data-science-process/customize-hadoop-cluster.md).
   
-   Koppel het opslag account dat is gemaakt met uw HDInsight-cluster wanneer het wordt gemaakt. Dit opslagaccount wordt gebruikt voor toegang tot gegevens die kunnen worden verwerkt binnen het cluster.
+   Koppel het opslag account dat is gemaakt met uw HDInsight-cluster wanneer het wordt gemaakt. Dit opslag account wordt gebruikt voor toegang tot gegevens die in het cluster kunnen worden verwerkt.
 
    ![Selecties voor het koppelen van het opslag account dat is gemaakt met een HDInsight-cluster](./media/vm-do-ten-things/Create_HDI_v4.PNG)
 
@@ -473,13 +468,13 @@ Azure HDInsight is een beheerde Apache Hadoop-, Spark-, HBase-en Storm-service i
 
    ![Extern bureaublad knop voor het inschakelen van externe toegang tot het HDInsight-cluster](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Een Azure Machine Learning-werkruimte maken. Uw Machine Learning experimenten worden opgeslagen in deze Machine Learning werk ruimte. Selecteer de gemarkeerde opties in de portal, zoals wordt weer gegeven in de volgende scherm afbeelding:
+* Maak een Azure Machine Learning-werk ruimte. Uw Machine Learning experimenten worden opgeslagen in deze Machine Learning werk ruimte. Selecteer de gemarkeerde opties in de portal, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
    ![Een Azure Machine Learning-werkruimte maken](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
 * Geef de para meters voor uw werk ruimte op.
 
-   ![Parameters voor Machine Learning-werkruimte invoeren](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
+   ![Machine Learning werkruimte parameters invoeren](./media/vm-do-ten-things/Create_ML_Space_step2_v2.PNG)
 
 * Gegevens uploaden met behulp van IPython notebook. Importeer vereiste pakketten, referenties voor de invoeg toepassing, maak een data base in uw opslag account en laad vervolgens gegevens in HDI-clusters.
 
@@ -576,7 +571,7 @@ for i in range(1, 13):
     cursor.execute(queryString)
 ```
 
-U kunt [dit scenario](../team-data-science-process/hive-walkthrough.md) ook volgen om NYC taxi-gegevens te uploaden naar het HDI-cluster. Belangrijke stappen omvatten:
+U kunt [dit scenario](../team-data-science-process/hive-walkthrough.md) ook volgen om NYC taxi-gegevens te uploaden naar het HDI-cluster. De belangrijkste stappen zijn onder andere:
   
 * Gebruik AzCopy om ingepakte Csv's te downloaden van de open bare BLOB naar uw lokale map.
 * Gebruik AzCopy om uitgepakte Csv's te uploaden van de lokale map naar een HDI-cluster.
@@ -584,7 +579,7 @@ U kunt [dit scenario](../team-data-science-process/hive-walkthrough.md) ook volg
 
 Nadat de gegevens in het HDI-cluster zijn geladen, kunt u uw gegevens controleren in Azure Storage Explorer. En de nyctaxidb-data base is gemaakt in het HDI-cluster.
 
-#### <a name="data-exploration-hive-queries-in-python"></a>Gegevens verkennen: Hive-Query's in python
+#### <a name="data-exploration-hive-queries-in-python"></a>Gegevens exploratie: Hive-Query's in python
 
 Omdat de gegevens zich in een Hadoop-cluster bevinden, kunt u het pyodbc-pakket gebruiken om verbinding te maken met Hadoop-clusters en query's uit te voeren op data bases met behulp van Hive voor onderzoek en functie techniek. U kunt de bestaande tabellen weer geven die u in de vereiste stap hebt gemaakt.
 
@@ -595,9 +590,9 @@ queryString = """
 pd.read_sql(queryString, connection)
 ```
 
-![Bestaande tabellen weergeven](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
+![Bestaande tabellen weer geven](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
-Bekijk het aantal records in elke maand en de frequentie van de Gekantelde of niet in de tabel trip:
+Laten we eens kijken naar het aantal records in elke maand en de frequentie van de gekantelde of niet in de reis tabel:
 
 ```python
 queryString = """
@@ -613,7 +608,7 @@ df.index = df['month']
 df['trip_count'].plot(kind='bar')
 ```
 
-![Diagram van het aantal records in elke maand](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
+![Het teken van het aantal records per maand](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
 
 ```python
 queryString = """
@@ -633,7 +628,7 @@ df.index = df['tipped']
 df['trip_count'].plot(kind='bar')
 ```
 
-![Diagram van de frequenties tip](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
+![Plots van fooien frequenties](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
 U kunt ook de afstand tussen de verzamel locatie en de uitstel locatie berekenen en deze vervolgens vergelijken met de reis afstand.
 
@@ -809,15 +804,15 @@ pd.read_sql(queryString, connection)
 
 ![Bovenste rijen met gegevens uit de tabel](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-#### <a name="read-data-from-hdi-by-using-machine-learning-reader-module"></a>Gegevens lezen van HDI met behulp van Machine Learning: reader module
+#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Gegevens lezen van HDI met behulp van Azure Machine Learning Studio (klassiek): reader module
 
-U kunt ook de module lezer in Machine Learning Studio gebruiken om toegang te krijgen tot de data base in een Hadoop-cluster. Sluit de referenties van uw HDI-clusters en Azure-opslag account in om het bouwen van machine learning modellen mogelijk te maken met behulp van een data base in HDI-clusters.
+U kunt ook de module lezer in Azure Machine Learning Studio (klassiek) gebruiken om toegang te krijgen tot de data base in een Hadoop-cluster. Sluit de referenties van uw HDI-clusters en Azure-opslag account in om het bouwen van machine learning modellen mogelijk te maken met behulp van een data base in HDI-clusters.
 
-![Eigenschappen van de module Reader](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
+![Eigenschappen van Reader module](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
 
 U kunt vervolgens de gescoorde gegevensset weer geven:
 
-![Beoordeelde gegevensset weergeven](./media/vm-do-ten-things/AML_Model_Results.PNG)
+![Score gegevensset weer geven](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse en data bases
 Azure SQL Data Warehouse is een elastisch data warehouse als een service met een SQL Server ervaring op bedrijfs niveau.
@@ -825,27 +820,27 @@ Azure SQL Data Warehouse is een elastisch data warehouse als een service met een
 U kunt uw Azure SQL Data Warehouse inrichten door de instructies in [dit artikel](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)te volgen. Nadat u uw SQL Data Warehouse hebt ingericht, kunt u [deze procedure](../team-data-science-process/sqldw-walkthrough.md) gebruiken om gegevens te uploaden, te verkennen en te model leren met behulp van gegevens in SQL Data Warehouse.
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
-Azure Cosmos DB is een NoSQL-database in de cloud. U kunt het gebruiken om te werken met documenten zoals JSON, en om de documenten op te slaan en op te vragen.
+Azure Cosmos DB is een NoSQL-data base in de Cloud. U kunt het gebruiken om te werken met documenten zoals JSON, en om de documenten op te slaan en op te vragen.
 
 Gebruik de volgende vereiste stappen om toegang te krijgen tot Azure Cosmos DB van de DSVM:
 
 1. De Azure Cosmos DB python SDK is al geïnstalleerd op de DSVM. Voer ```pip install pydocumentdb --upgrade``` uit vanaf een opdracht prompt om het bij te werken.
 2. Maak een Azure Cosmos DB-account en-data base via de [Azure Portal](https://portal.azure.com).
 3. Down load het hulp programma voor gegevens migratie van Azure Cosmos DB van het [micro soft Download centrum](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) en pak het uit naar een gewenste map.
-4. Importeer JSON-gegevens (Volcano-gegevens) die zijn opgeslagen in een [open bare BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) in azure Cosmos DB met de volgende opdracht parameters voor het hulp programma voor migratie. (Gebruik dtui. exe in de map waarin u het hulp programma voor gegevens migratie Azure Cosmos DB hebt geïnstalleerd.) Geef de locatie van de bron en doel met de volgende parameters:
+4. Importeer JSON-gegevens (Volcano-gegevens) die zijn opgeslagen in een [open bare BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) in azure Cosmos DB met de volgende opdracht parameters voor het hulp programma voor migratie. (Gebruik dtui. exe in de map waarin u het hulp programma voor gegevens migratie Azure Cosmos DB hebt geïnstalleerd.) Voer de bron-en doel locatie in met de volgende para meters:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
 Nadat u de gegevens hebt geïmporteerd, gaat u naar Jupyter en opent u het notitie blok met de titel *DocumentDBSample*. Het bevat python-code om toegang te krijgen tot Azure Cosmos DB en een eenvoudige query uit te voeren. Ga naar de [documentatie pagina](https://docs.microsoft.com/azure/cosmos-db/)van de service voor meer informatie over Azure Cosmos db.
 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI-rapporten en-dash boards gebruiken 
-U kunt het JSON-bestand van Volcano visualiseren vanuit het voor gaande Azure Cosmos DB voor beeld in Power BI Desktop om visuele inzichten in de gegevens te krijgen. Gedetailleerde stappen zijn beschikbaar in de [Power BI-artikel](../../cosmos-db/powerbi-visualize.md). Hier volgen de hoofdstappen:
+U kunt het JSON-bestand van Volcano visualiseren vanuit het voor gaande Azure Cosmos DB voor beeld in Power BI Desktop om visuele inzichten in de gegevens te krijgen. In het [Power bi-artikel](../../cosmos-db/powerbi-visualize.md)vindt u gedetailleerde stappen. Dit zijn de stappen op hoog niveau:
 
-1. Open Power BI Desktop en selecteer **gegevens ophalen**. Geef de URL op als https://cahandson.blob.core.windows.net/samples/volcano.json:.
+1. Open Power BI Desktop en selecteer **gegevens ophalen**. Geef de URL op als: https://cahandson.blob.core.windows.net/samples/volcano.json.
 2. U ziet de JSON-records die zijn geïmporteerd als een lijst. De lijst converteren naar een tabel zodat Power BI ermee kan werken.
 4. Vouw de kolommen uit door het pictogram uitvouwen (pijl) te selecteren.
-5. U ziet dat de locatie een **record** veld is. Vouw de record en selecteert u alleen de coördinaten. **Coordinate** is een lijst kolom.
-6. Voeg een nieuwe kolom toe om de lijst coördinaten kolom te converteren naar een door komma's gescheiden kolom **LatLong** . Voeg de twee elementen in het veld coördinaten lijst samen met behulp van ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```de formule.
+5. U ziet dat de locatie een **record** veld is. Vouw de record uit en selecteer alleen de coördinaten. **Coordinate** is een lijst kolom.
+6. Voeg een nieuwe kolom toe om de lijst coördinaten kolom te converteren naar een door komma's gescheiden kolom **LatLong** . Voeg de twee elementen in het veld coördinaten lijst samen met behulp van de formule ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
 7. Converteer de kolom **verhoging** naar decimaal en selecteer de knoppen **sluiten** en **Toep assen** .
 
 In plaats van de voor gaande stappen kunt u de volgende code plakken. De stappen die worden gebruikt in de Geavanceerde editor in Power BI om de gegevens transformaties in een query taal te schrijven.
@@ -862,7 +857,7 @@ in
     #"Changed Type"
 ```
 
-U hebt nu de gegevens in uw Power BI-gegevensmodel. Uw Power BI Desktop-exemplaar moet er als volgt uitzien:
+U hebt nu de gegevens in uw Power BI gegevens model. Uw Power BI Desktop-exemplaar moet er als volgt uitzien:
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
@@ -883,20 +878,20 @@ Op dezelfde manier kan de VM-verwerkings capaciteit afnemen. (Bijvoorbeeld: u he
 ## <a name="add-more-tools"></a>Meer hulp middelen toevoegen
 De hulpprogram ma's die vooraf zijn ingebouwd in de DSVM, kunnen een groot aantal algemene vereisten voor gegevens analyse verpakken. Dit bespaart u tijd omdat u uw omgevingen niet één voor één hoeft te installeren en configureren. Ook bespaart u geld, want u betaalt alleen voor de resources die u gebruikt.
 
-U kunt andere Azure data-en Analytics-Services in dit artikel gebruiken om uw analyse omgeving uit te breiden. In sommige gevallen hebt u mogelijk extra hulp middelen nodig, waaronder een aantal eigen partner tools. U hebt volledige beheerders toegang op de virtuele machine om nieuwe hulpprogram ma's te installeren die u nodig hebt. U kunt ook extra pakketten installeren in Python / R die niet vooraf zijn geïnstalleerd. Voor python kunt u ofwel ```conda``` of ```pip```gebruiken. Voor R kunt u gebruiken ```install.packages()``` in de r-console of de IDE gebruiken en > pakketten**installeren**.
+U kunt andere Azure data-en Analytics-Services in dit artikel gebruiken om uw analyse omgeving uit te breiden. In sommige gevallen hebt u mogelijk extra hulp middelen nodig, waaronder een aantal eigen partner tools. U hebt volledige beheerders toegang op de virtuele machine om nieuwe hulpprogram ma's te installeren die u nodig hebt. U kunt ook aanvullende pakketten installeren in Python en R die niet vooraf zijn geïnstalleerd. Voor python kunt u ```conda``` of ```pip```gebruiken. Voor R kunt u ```install.packages()``` gebruiken in de R-console of de IDE gebruiken en **pakketten** selecteren > **pakketten installeren**.
 
 ## <a name="deep-learning"></a>Deep learning
 
 Naast de voor beelden op basis van het Framework, kunt u een set uitgebreide instructies verkrijgen die zijn gevalideerd op de DSVM. Met deze procedures kunt u snel aan de slag met het ontwikkelen van geavanceerde toepassingen in domeinen zoals afbeeldings-en tekst-en taal informatie.   
 
 
-- Het [uitvoeren van Neural-netwerken in verschillende Frameworks](https://github.com/ilkarman/DeepLearningFrameworks): In dit scenario ziet u hoe u code kunt migreren van het ene naar het andere Framework. Er wordt ook gedemonstreerd hoe u modellen en runtime prestaties in Frameworks kunt vergelijken. 
+- [Neural netwerken uitvoeren in verschillende frameworks: in](https://github.com/ilkarman/DeepLearningFrameworks)dit scenario ziet u hoe u code kunt migreren van het ene naar het andere Framework. Er wordt ook gedemonstreerd hoe u modellen en runtime prestaties in Frameworks kunt vergelijken. 
 
-- [Een hand leiding met instructies voor het bouwen van een end-to-end oplossing voor het detecteren van producten in installatie kopieën](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Image detectie is een techniek waarmee objecten binnen afbeeldingen kunnen worden gevonden en geclassificeerd. Deze technologie biedt de mogelijkheid om enorme voor delen te bieden in veel zakelijke domeinen in de praktijk. Bijvoorbeeld, kunnen detailhandelaren deze techniek gebruiken om te bepalen welk product een klant is opgehaald uit de plank. Deze informatie helpt op zijn beurt winkels productinventaris beheren. 
+- [Een hand leiding met instructies voor het bouwen van een end-to-end oplossing voor het detecteren van producten binnen installatie kopieën](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detectie van afbeeldingen is een techniek waarmee objecten in afbeeldingen kunnen worden gevonden en geclassificeerd. Deze technologie biedt de mogelijkheid om enorme voor delen te bieden in veel zakelijke domeinen in de praktijk. Detail handelaren kunnen bijvoorbeeld deze techniek gebruiken om te bepalen welk product een klant uit het schap heeft gekozen. Met deze informatie kunt u de product inventaris van beheer opslaan. 
 
-- [Diep gaande leren voor audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): In deze zelf studie leert u hoe u een diep-Learning model kunt trainen voor de detectie van audio gebeurtenissen op de [gegevensset stads geluiden](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Het bevat ook een overzicht van hoe u met audio gegevens werkt.
+- [Diep gaande informatie over audio: in](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)deze zelf studie leert u hoe u een diep-Learning model kunt trainen voor de detectie van audio gebeurtenissen op de [gegevensset stads geluiden](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html). Het bevat ook een overzicht van hoe u met audio gegevens werkt.
 
-- [Classificatie van tekst documenten](https://github.com/anargyri/lstm_han): In dit scenario ziet u hoe u twee Neural-netwerk architecturen bouwt en traint: Hiërarchische aandacht voor netwerk en LSTM-netwerk (Long Short Term Memory). Deze neurale netwerken voor het gebruik van de Keras-API voor deep learning voor het classificeren van documenten. Keras is een front-end tot drie van de meest populaire lessen voor diep gaande: Microsoft Cognitive Toolkit, tensor flow en Theano.
+- [Classificatie van tekst documenten](https://github.com/anargyri/lstm_han): in dit scenario ziet u hoe u twee Neural-netwerk architecturen bouwt en traint: hiërarchische netwerk-en LSTM-netwerk (Long Short Term Memory). Deze Neural-netwerken gebruiken de Keras-API voor diep gaande lessen om tekst documenten te classificeren. Keras is een front-end tot drie van de meest populaire lessen voor het leren: Microsoft Cognitive Toolkit, tensor flow en Theano.
 
 ## <a name="summary"></a>Samenvatting
 In dit artikel worden enkele dingen beschreven die u kunt doen op de micro soft-Data Science Virtual Machine. Er zijn nog veel meer dingen die u kunt doen om de DSVM een efficiënte analyse omgeving te maken.

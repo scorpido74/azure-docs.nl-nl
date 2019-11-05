@@ -1,21 +1,21 @@
 ---
-title: Preview van Azure data share bewaken
-description: Meer informatie over het controleren van de status van de uitnodiging, het delen van abonnementen en de geschiedenis van moment opnamen in azure data share preview.
+title: De Azure-gegevens share bewaken
+description: Meer informatie over het controleren van de status van de uitnodiging, het delen van abonnementen en de geschiedenis van moment opnamen in een Azure-gegevens share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169122"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490516"
 ---
-# <a name="monitor-azure-data-share-preview"></a>Preview van Azure data share bewaken 
+# <a name="monitor-azure-data-share"></a>Azure Data Share bewaken  
 
-In dit artikel wordt uitgelegd hoe u uw gegevens shares kunt bewaken met behulp van de preview-versie van Azure data share. Als gegevens provider kunt u verschillende aspecten van uw relaties voor het delen van gegevens bewaken. Details over de vraag of uw gegevens gebruikers uw uitnodiging voor de gegevens share hebben geaccepteerd en of ze een share abonnement hebben gemaakt en dat ze uw gegevens kunnen gebruiken, zijn allemaal beschikbaar voor bewaking. 
+In dit artikel wordt uitgelegd hoe u uw gegevens shares kunt bewaken met behulp van de Azure-gegevens share. Als gegevens provider kunt u verschillende aspecten van uw relaties voor het delen van gegevens bewaken. Details over de vraag of uw gegevens gebruikers uw uitnodiging voor de gegevens share hebben geaccepteerd en of ze een share abonnement hebben gemaakt en dat ze uw gegevens kunnen gebruiken, zijn allemaal beschikbaar voor bewaking. 
 
 Als gegevens verbruiker kunt u de moment opnamen bewaken die zijn geactiveerd in uw Azure-abonnement. 
 
@@ -23,7 +23,7 @@ Als gegevens verbruiker kunt u de moment opnamen bewaken die zijn geactiveerd in
 
 Bekijk de status van uw uitnodigingen voor gegevens delen door te navigeren naar verzonden shares->-uitnodigingen. 
 
-(./media/invitation-status.png "Status uitnodiging") voor ![uitnodigingen] 
+![Status van uitnodiging](./media/invitation-status.png "Status van uitnodiging") 
 
 Er zijn drie statussen die uw uitnodiging kan bevinden:
 
@@ -42,13 +42,13 @@ Bekijk de status van uw abonnementen voor delen door te navigeren naar verzonden
 
 Op het tabblad geschiedenis kunt u de moment opnamen weer geven die zijn gekopieerd naar de Tenant van uw gegevens verbruiker. U kunt de frequentie en duur van elk moment opname-interval bewaken. 
 
-![](./media/sent-shares.png "Geschiedenis") van momentopname geschiedenis 
+![Momentopname geschiedenis](./media/sent-shares.png "Momentopname geschiedenis") 
 
 U kunt meer informatie over de uitvoering van elke moment opname bekijken door te klikken op de begin datum van de uitvoering. 
 
 Er worden standaard Maxi maal 30 dagen van de momentopname geschiedenis weer gegeven. Als u meer dan 30 dagen voor de geschiedenis wilt zien, gaat u naar bewaking-> Diagnostische instellingen en selecteert u **Diagnostische instelling toevoegen**. U moet een opslag account selecteren om deze logboeken op te slaan in. 
 
-(./media/diagnostic-settings.png "Diagnostische instellingen") voor ![momentopname geschiedenis] 
+![Momentopname geschiedenis](./media/diagnostic-settings.png "Diagnostische instellingen") 
 
 ## <a name="next-steps"></a>Volgende stappen 
 

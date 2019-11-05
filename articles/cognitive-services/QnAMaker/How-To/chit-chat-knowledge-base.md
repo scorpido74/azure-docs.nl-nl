@@ -1,28 +1,28 @@
 ---
-title: Chit chat toe te voegen aan een kennisdatabase QnA Maker
+title: Chit-Chat toevoegen aan een QnA Maker Knowledge Base
 titleSuffix: Azure Cognitive Services
-description: Persoonlijke chit-chat toe te voegen aan uw bot kunt u meer beschrijvende en aantrekkelijke bij het maken van een KB. QnA Maker kunt u eenvoudig een vooraf gevulde set van de bovenste chit-chat, toevoegen aan uw KB.
+description: Door persoonlijke Chit toe te voegen aan uw bot kunt u meer praten en oefenen wanneer u een KB maakt. Met QnA Maker kunt u eenvoudig een vooraf gevulde set van de bovenste Chit-Chat toevoegen aan uw KB.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 10/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a8ebd0b36c6ee8bf6762a70af9f4a7c09f6b118d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.openlocfilehash: 15253e67283d1ad53bb1d4c018987dceaafac6c8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955158"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486753"
 ---
-# <a name="add-chit-chat-to-a-knowledge-base"></a>Chit chat toevoegen aan een kennisdatabase
+# <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-Chat toevoegen aan een kennis database
 
-Chit chat toe te voegen aan uw bot kunt u meer beschrijvende en aantrekkelijke. De functie chit chat in QnA maker kunt u eenvoudig een vooraf gevulde set van de bovenste chit-chat, toevoegen aan uw knowledge base (KB). Dit kan een startpunt voor de persoonlijkheid van uw bot, en u bespaart de tijd en kosten van het schrijven van deze helemaal.  
+Door Chit toe te voegen aan uw bot kunt u meer praten en aantrekkelijker maken. Met de Chit-Chat functie in QnA Maker kunt u eenvoudig een vooraf gevulde set van de top Chit-Chat toevoegen aan uw Knowledge Base (KB). Dit kan een begin punt zijn voor de persoonlijkheid van uw bot en bespaart u de tijd en kosten voor het schrijven van deze bestanden.  
 
-Deze gegevensset bevat ongeveer 100 scenario's met Chit-Chat in de stem van meerdere personen, zoals Professional, vriendelijk en witty. Kies de persona die van uw bot stem het beste past. De aanvraag voor een gebruiker worden gegeven, probeert QnA Maker moet deze overeenkomen met de meest bekende chit-chat QnA.  
+Deze gegevensset bevat ongeveer 100 scenario's met Chit-Chat in de stem van meerdere personen, zoals Professional, vriendelijk en witty. Kies de persoon die het meest overeenkomt met de stem van uw bot. Op basis van een gebruikers query probeert QnA Maker deze te vergelijken met de dichtstbijzijnde bekende Chit-Chat QnA.  
 
 Hieronder vindt u enkele voor beelden van de verschillende persoonlijke wensen. U kunt alle persoons [gegevens sets](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets) weer geven samen met details van de persoonlijke gegevens.
 
@@ -31,47 +31,60 @@ Voor de gebruikers query van `When is your birthday?`heeft elke persoonlijkheid 
 <!-- added quotes so acrolinx doesn't score these sentences -->
 |Persoonlijkheid|Voorbeeld|
 |--|--|
-|Professional|De leeftijd is niet echt op mij van toepassing.|
+|Professioneel|De leeftijd is niet echt op mij van toepassing.|
 |Weergave|Ik heb geen leeftijd.|
 |Witty|Ik ben gratis.|
 |Caring|Ik heb geen leeftijd.|
 |Enthousiast|Ik ben een bot, dus ik heb geen leeftijd.|
 ||
 
-> [!NOTE]
-> Chit chatsupport is alleen beschikbaar in het Engels. 
 
-## <a name="add-chit-chat-during-kb-creation"></a>Chit chat toevoegen tijdens het maken van KB
-Tijdens de ontwikkeling van knowledge base, na het toevoegen van de bron-URL en de bestanden, is er een optie voor het toevoegen van chit chat. Kies de persoonlijkheid die u wilt gebruiken als uw base chit chat. Als u niet wilt toevoegen van chit chatten of als u al chit-chat-ondersteuning in uw gegevensbronnen, kiest u **geen**. 
-   
-![Chit chat toevoegen tijdens het maken](../media/qnamaker-how-to-chit-chat/create-kb-chit-chat.png)
+## <a name="language-support"></a>Taalondersteuning
 
-## <a name="add-chit-chat-to-an-existing-kb"></a>Chit chat toevoegen aan een bestaande KB
-Selecteer uw KB, en Ga naar de **instellingen** pagina. Er is een koppeling naar alle chit chat-gegevenssets in de juiste **.tsv** indeling. De persoonlijkheid die u wilt downloaden, en vervolgens uploaden als een bron. Zorg ervoor dat u niet de indeling of de metagegevens bewerken wanneer u downloadt en upload het bestand. 
+Chit-Chat gegevens sets worden ondersteund in de volgende talen:
+
+|Taal|
+|--|
+|Chinees, `zh-cn`|
+|Engels, `en-us`|
+|Frans, `fr-fr`|
+|Duitsland, `de-de`|
+|Italiaans, `it-it`|
+|Japans, `ja-jp`|
+|Koreaans, `ko-kr`|
+|Portugees, `pr-br`|
+|Spaans, `es-es`|
+
+
+## <a name="add-chit-chat-during-kb-creation"></a>Chit-Chat toevoegen tijdens het maken van KB
+Tijdens het maken van de Knowledge Base hebt u na het toevoegen van uw bron-Url's en-bestanden een optie voor het toevoegen van Chit-Chat. Kies de gewenste persoonlijkheid als uw Chit-Chat base. Als u geen chit-chat wilt toevoegen of als u al Chit-Chat ondersteuning hebt in uw gegevens bronnen, kiest u **geen**. 
+
+## <a name="add-chit-chat-to-an-existing-kb"></a>Chit-Chat toevoegen aan een bestaande KB
+Selecteer uw KB en navigeer naar de pagina **instellingen** . Er is een koppeling naar alle Chit-Chat gegevens sets in de juiste **. TSV** -indeling. Down load de gewenste persoonlijkheid en upload deze als een bestands bron. Zorg ervoor dat u de indeling of de meta gegevens niet bewerkt wanneer u het bestand downloadt en uploadt. 
   
-![Chit chat toevoegen aan bestaande KB](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
+![Chit-Chat toevoegen aan bestaande KB](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
 
-## <a name="edit-your-chit-chat-questions-and-answers"></a>Bewerk uw chit chat vragen en antwoorden
-Wanneer u uw KB bewerkt, ziet u een nieuwe bron voor chit-chat, op basis van de persoonlijkheid die u hebt geselecteerd. U kunt nu gewijzigd vragen toevoegen of bewerken van de reacties, net als met een andere bron. 
+## <a name="edit-your-chit-chat-questions-and-answers"></a>Uw chit-chat vragen en-antwoorden bewerken
+Wanneer u uw KB bewerkt, ziet u een nieuwe bron voor Chit-Chat, op basis van de door u geselecteerde persoonlijkheid. U kunt nu gewijzigde vragen toevoegen of de antwoorden bewerken, net als bij elke andere bron. 
 
-![Chit chat vragen en antwoorden supereenvoudig bewerken](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
+![Chit-Chat QnAs bewerken](../media/qnamaker-how-to-chit-chat/edit-chit-chat.png)
 
 Als u de meta gegevens wilt bekijken, selecteert u **weergave opties** op de werk balk en selecteert u vervolgens **meta gegevens weer geven**.
 
-## <a name="add-additional-chit-chat-questions-and-answers"></a>Toevoegen van extra chit-chat vragen en antwoorden
-U kunt nieuwe chit chat QnA die niet in de vooraf gedefinieerde toevoegen. Zorg ervoor dat u niet een combinatie van QnA die al wordt beschreven in de set chit chat dupliceert. Wanneer u een nieuwe chit chat QnA toevoegt, wordt deze toegevoegd aan uw **redactionele** bron. Om ervoor te zorgen de kerntechnologie zich van bewust dat dit chit chat, toevoegen de metagegevens van sleutel/waarde-paar "redactionele: chit chat ', zoals te zien is in de volgende afbeelding:
+## <a name="add-additional-chit-chat-questions-and-answers"></a>Aanvullende chit-chat vragen en-antwoorden toevoegen
+U kunt nieuwe Chit-Chat QnA toevoegen die zich niet in de vooraf gedefinieerde set bevindt. Zorg ervoor dat u geen QnA-paar dupliceert dat al wordt behandeld in de Chit-Chat set. Wanneer u een nieuwe Chit-Chat QnA toevoegt, wordt deze toegevoegd aan uw **redactionele** bron. Om ervoor te zorgen dat de classificatieer weet dat dit Chit-Chat is, voegt u de meta gegevens sleutel/waardepaar ' Redactionel: Chit-Chat ' toe, zoals in de volgende afbeelding wordt weer gegeven:
    
 ![! [Add Chit-Chat QnAs] (.. /media/qnamaker-how-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
 
-## <a name="delete-chit-chat-from-an-existing-kb"></a>Chit chat verwijderen uit een bestaande KB
-Selecteer uw KB, en Ga naar de **instellingen** pagina. Uw specifieke chit-chat-bron wordt vermeld als een bestand met de naam van de geselecteerde persoonlijkheid. U kunt dit als een bestand verwijderen.
+## <a name="delete-chit-chat-from-an-existing-kb"></a>Chit verwijderen van een bestaande KB
+Selecteer uw KB en navigeer naar de pagina **instellingen** . Uw specifieke Chit-Chat bron wordt weer gegeven als een bestand met de naam van de geselecteerde persoonlijkheid. U kunt dit als een bron bestand verwijderen.
 
-![Chit chat uit KB verwijderen](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
+![Chit verwijderen-chatten vanuit KB](../media/qnamaker-how-to-chit-chat/delete-chit-chat.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een kennisdatabase importeren](../Tutorials/migrate-knowledge-base.md)
+> [Een Knowledge Base importeren](../Tutorials/migrate-knowledge-base.md)
 
 ## <a name="see-also"></a>Zie ook 
 

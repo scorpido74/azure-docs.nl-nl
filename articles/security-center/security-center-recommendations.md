@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201060"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520735"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Aanbevelingen voor beveiliging in Azure Security Center 
 In dit onderwerp wordt uitgelegd hoe u de aanbevelingen in Azure Security Center kunt bekijken en begrijpen om u te helpen uw Azure-resources te beveiligen.
@@ -36,7 +36,7 @@ Security Center regel matig de beveiligings status van uw Azure-resources analys
 Elke aanbeveling biedt u het volgende:
 
 - Een korte beschrijving van wat wordt aanbevolen.
-- De herstels tappen die u moet uitvoeren om de aanbeveling te implementeren. <!-- In some cases, one-click remediation is available. -->
+- De herstels tappen die u moet uitvoeren om de aanbeveling te implementeren. <!-- In some cases, Quick Fix remediation is available. -->
 - Aan welke resources moet u de aanbevolen actie uitvoeren.
 - De **impact van de beveiligde Score**, de mate waarin uw beveiligde Score meegaat als u deze aanbeveling implementeert.
 
@@ -48,23 +48,23 @@ Security Center analyseert de beveiligings status van uw resources om mogelijke 
 
 1. Selecteer de **tegel aanbevelingen** onder **overzicht**. De lijst met **aanbevelingen** wordt geopend.
 
-      ![Aanbevelingen weergeven](./media/security-center-recommendations/view-recommendations.png)
+      ![Aanbevelingen bekijken](./media/security-center-recommendations/view-recommendations.png)
 
     U kunt de aanbevelingen filteren. Als u de aanbevelingen wilt filteren, selecteert u **filter** op de Blade **aanbevelingen** . De Blade **filter** wordt geopend en u selecteert de ernst en de status waarden die u wilt zien.
 
-   * **AANBEVELINGEN**: De aanbeveling.
-   * **EFFECT OP BEVEILIGDE SCORE**: Een score die wordt gegenereerd door Security Center met behulp van uw aanbevelingen voor beveiliging en het Toep assen van geavanceerde algoritmen om te bepalen hoe belang rijk elke aanbeveling is. Zie [Secure Score Calculation](security-center-secure-score.md#secure-score-calculation)(Engelstalig) voor meer informatie.
-   * **RESOURCE**: Hier worden de resources vermeld waarop deze aanbeveling van toepassing is.
-   * **STATUS BALKEN**:  Beschrijft de ernst van die specifieke aanbeveling:
-       * **Hoog (rood)** : Er bestaat een beveiligings probleem met een zinvolle bron (zoals een toepassing, een virtuele machine of een netwerk beveiligings groep) en er is aandacht vereist.
-       * **Middel groot (oranje)** : Er bestaat een beveiligingslek en er zijn niet-kritieke of extra stappen vereist om het te elimineren of om een proces te volt ooien.
-       * **Laag (blauw)** : Er is een beveiligings probleem dat moet worden verholpen, maar dit vereist geen onmiddellijke aandacht. (Standaard worden er geen minimale aanbevelingen gepresenteerd, maar u kunt filteren op lage aanbevelingen als u deze wilt zien.) 
+   * **Aanbevelingen**: de aanbeveling.
+   * **Effect op beveiligde Score**: een score die wordt gegenereerd door Security Center met behulp van uw beveiligings aanbevelingen en het Toep assen van geavanceerde algoritmen om te bepalen hoe belang rijk elke aanbeveling is. Zie [Secure Score Calculation](security-center-secure-score.md#secure-score-calculation)(Engelstalig) voor meer informatie.
+   * **Resource**: geeft een lijst van de resources waarop deze aanbeveling van toepassing is.
+   * **Status balken**: beschrijft de ernst van de betreffende aanbeveling:
+       * **Hoog (rood)** : er bestaat een beveiligings probleem met een zinvolle bron (zoals een toepassing, een virtuele machine of een netwerk beveiligings groep) en vereist aandacht.
+       * **Gemiddeld (oranje)** : er bestaat een beveiligings probleem en er zijn niet-kritieke of extra stappen vereist om het te elimineren of om een proces te volt ooien.
+       * **Laag (blauw)** : er is een beveiligings probleem dat moet worden opgelost, maar dit vereist geen onmiddellijke aandacht. (Standaard worden er geen minimale aanbevelingen gepresenteerd, maar u kunt filteren op lage aanbevelingen als u deze wilt zien.) 
        * **In orde (groen)** :
        * **Niet beschikbaar (grijs)** :
 
 1. Klik op de aanbeveling om de details van elke aanbeveling weer te geven.
 
-    ![Details van de aanbeveling](./media/security-center-recommendations/recommendation-details.png)
+    ![Details van aanbeveling](./media/security-center-recommendations/recommendation-details.png)
 
 >[!NOTE] 
 > Zie [klassieke en Resource Manager-implementatie modellen](../azure-classic-rm.md) voor Azure-resources.

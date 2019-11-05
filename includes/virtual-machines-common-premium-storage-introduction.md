@@ -9,24 +9,24 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717118"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522736"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Azure premium storage: ontwerp voor hoge prestaties
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 
-In dit artikel bevat richtlijnen voor het bouwen van toepassingen met hoge prestaties met behulp van Azure Premium Storage. U kunt de instructies in dit document in combinatie met aanbevolen procedures voor prestaties van toepassing op de technologieën die worden gebruikt door uw toepassing gebruiken. Ter illustratie van de richtlijnen, hebben we met SQL Server op Premium-opslag als voorbeeld in dit document gebruikt.
+Dit artikel bevat richt lijnen voor het bouwen van toepassingen met hoge prestaties met behulp van Azure Premium Storage. U kunt de instructies in dit document gebruiken in combi natie met best practices voor prestaties die van toepassing zijn op technologieën die door uw toepassing worden gebruikt. Ter illustratie van de richt lijnen hebben we SQL Server uitgevoerd op Premium Storage als voor beeld in dit document gebruikt.
 
-Terwijl de prestaties van scenario's voor de opslaglaag in dit artikel behandelen we, moet u het niveau van de toepassing optimaliseren. Bijvoorbeeld, als u een SharePoint-Farm op Azure Premium Storage host, kunt u de SQL Server-voorbeelden uit dit artikel om te optimaliseren van de database-server. Bovendien het Optimaliseer de webserver en de toepassingsserver op de meeste prestaties van de SharePoint-Farm.
+Hoewel we prestatie scenario's voor de opslaglaag in dit artikel adresseren, moet u de toepassingslaag optimaliseren. Als u bijvoorbeeld als host fungeert voor een share point-Farm in azure Premium Storage, kunt u de SQL Server-voor beelden in dit artikel gebruiken om de database server te optimaliseren. Daarnaast optimaliseert u de webserver en toepassings server van de share point-farm om de meeste prestaties te verkrijgen.
 
-Dit artikel voor het antwoord volgen Veelgestelde vragen over het optimaliseren van prestaties van toepassingen op Azure Premium Storage
+Dit artikel helpt u bij het beantwoorden van de volgende veelgestelde vragen over het optimaliseren van de prestaties van toepassingen op Azure Premium Storage.
 
-* Hoe kunt u voor het meten van prestaties van uw toepassing?  
-* Waarom ziet u niet verwacht hoge prestaties?  
-* Welke factoren van invloed zijn op de prestaties van uw toepassing op Premium Storage?  
-* Hoe deze factoren van invloed op prestaties van uw toepassing op Premium Storage?  
-* Hoe kunt u optimaliseren voor IOPS, bandbreedte en wachttijden?  
+* Hoe kunt u de prestaties van uw toepassingen meten?  
+* Waarom worden de verwachte hoge prestaties niet weer gegeven?  
+* Welke factoren zijn van invloed op de prestaties van uw toepassing op Premium Storage?  
+* Hoe beïnvloeden deze factoren de prestaties van uw toepassing op Premium Storage?  
+* Hoe optimaliseert u het aantal IOPS, de band breedte en de latentie?  
 
-We hebben deze richtlijnen die specifiek voor Premium-opslag omdat workloads die worden uitgevoerd op de Premium-opslag zeer gevoelige prestaties zijn. Indien van toepassing zijn zijn er voorbeelden beschikbaar. U kunt sommige van deze richtlijnen ook toepassen op toepassingen die worden uitgevoerd op virtuele IaaS-machines met Standard Storage-schijven.
+We hebben deze richt lijnen specifiek voor Premium Storage gegeven, omdat werk belastingen die worden uitgevoerd op Premium Storage uiterst prestaties gevoelig zijn. Er zijn voor beelden, waar van toepassing. U kunt ook enkele van deze richt lijnen Toep assen op toepassingen die worden uitgevoerd op IaaS-Vm's met standaard opslag schijven.

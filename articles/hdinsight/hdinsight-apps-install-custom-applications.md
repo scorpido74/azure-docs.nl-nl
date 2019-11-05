@@ -1,5 +1,5 @@
 ---
-title: Uw eigen aangepaste Apache Hadoop-toepassingen installeren in azure HDInsight
+title: Uw aangepaste Apache Hadoop-toepassingen installeren in azure HDInsight
 description: Meer informatie over het installeren van HDInsight-toepassingen voor Apache Hadoop clusters in azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: b96f08ab03b6db73cfae413b42a4c7a1d75177a0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: e3211e799b0c2cb4c4c9aa2aabcd40d237875b3c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076200"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497997"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Aangepaste Apache Hadoop-toepassingen installeren in azure HDInsight
 
@@ -23,23 +23,23 @@ Een HDInsight-toepassing is een toepassing die gebruikers kunnen installeren op 
 
 Andere verwante artikelen:
 
-* [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md): Meer informatie over het installeren van een HDInsight-toepassing in uw clusters.
-* [HDInsight-toepassingen publiceren](hdinsight-apps-publish-applications.md): Meer informatie over het publiceren van uw aangepaste HDInsight-toepassingen naar Azure Marketplace.
-* [NETWORK Een HDInsight-toepassing](https://msdn.microsoft.com/library/mt706515.aspx)installeren: Meer informatie over het definiëren van HDInsight-toepassingen.
+* [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md): informatie over het installeren van een HDInsight-toepassing op uw clusters.
+* [HDInsight-toepassingen publiceren](hdinsight-apps-publish-applications.md): informatie over het publiceren van aangepaste HDInsight-toepassingen in Azure Marketplace.
+* [MSDN: een HDInsight-toepassing installeren](https://msdn.microsoft.com/library/mt706515.aspx): informatie over het definiëren van HDInsight-toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 Als u HDInsight-toepassingen wilt installeren op een bestaand HDInsight-cluster, hebt u een HDInsight-cluster nodig. Zie [Clusters maken](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) voor informatie over het maken van een cluster. U kunt ook HDInsight-toepassingen installeren wanneer u een HDInsight-cluster maakt.
 
 ## <a name="install-hdinsight-applications"></a>HDInsight-toepassingen installeren
-HDInsight-toepassingen kunnen worden geïnstalleerd wanneer u een cluster maakt of op een bestaand HDInsight-cluster. Zie [voor het definiëren van Azure Resource Manager sjablonen MSDN: Een HDInsight-toepassing](https://msdn.microsoft.com/library/mt706515.aspx)installeren.
+HDInsight-toepassingen kunnen worden geïnstalleerd wanneer u een cluster maakt of op een bestaand HDInsight-cluster. Zie [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: een HDInsight-toepassing installeren) voor het definiëren van Azure Resource Manager-sjablonen.
 
 De bestanden die nodig zijn voor het implementeren van deze toepassing (Hue):
 
-* [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json): De Resource Manager-sjabloon voor het installeren van HDInsight-toepassing. Zie [MSDN: Installeer een HDInsight-](https://msdn.microsoft.com/library/mt706515.aspx) toepassing voor het ontwikkelen van uw eigen Resource Manager-sjabloon.
-* [tint-install_v0. v](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh): De script actie die wordt aangeroepen door de Resource Manager-sjabloon voor het configureren van het Edge-knoop punt.
-* [Hue-binaries. tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): Het binaire tint bestand dat wordt aangeroepen vanuit Hui-install_v0. sh.
-* [Hue-binaries-14-04. tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): Het binaire tint bestand dat wordt aangeroepen vanuit Hui-install_v0. sh.
-* [webwasb-Tomcat. tar. gz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/webwasb-tomcat.tar.gz): Een voor beeld van een webtoepassing (Tomcat) die wordt aangeroepen vanuit Hui-install_v0. sh.
+* [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json): de Resource Manager-sjabloon voor het installeren van de HDInsight-toepassing. Zie [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: een HDInsight-toepassing installeren) om uw eigen Resource Manager-sjabloon te ontwikkelen.
+* [hue-install_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh): de scriptactie die wordt aangeroepen met de Resource Manager-sjabloon om het Edge-knooppunt te configureren.
+* [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): het binaire Hue-bestand dat wordt aangeroepen vanuit hui-install_v0.sh.
+* [hue-binaries-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): het binaire Hue-bestand dat wordt aangeroepen vanuit hui-install_v0.sh.
+* [webwasb-tomcat.tar.gz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/webwasb-tomcat.tar.gz): een voorbeeldweb-app (Tomcat) die wordt aangeroepen vanuit hui-install_v0.sh.
 
 **Hue installeren op een bestaand HDInsight-cluster**
 
@@ -47,10 +47,10 @@ De bestanden die nodig zijn voor het implementeren van deze toepassing (Hue):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Met deze knop opent u een Resource Manager-sjabloon in de Azure Portal.  De Resource Manager-sjabloon bevindt zich op [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  Ga [voor meer informatie over het schrijven van deze resource manager-sjabloon naar MSDN: Een HDInsight-toepassing](https://msdn.microsoft.com/library/mt706515.aspx)installeren.
+    Met deze knop opent u een Resource Manager-sjabloon in de Azure Portal.  De Resource Manager-sjabloon bevindt zich op [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  Zie [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: een HDInsight-toepassing installeren) voor informatie over het schrijven van deze Resource Manager-sjabloon.
 2. Voer op de blade **Parameters** het volgende in:
 
-   * **Clustername**: Voer de naam in van het cluster waarop u de toepassing wilt installeren. Dit cluster moet een bestaand cluster zijn.
+   * **Clusternaam**: voer de naam in van het cluster waarop u de toepassing wilt installeren. Dit cluster moet een bestaand cluster zijn.
 3. Klik op **OK** om de parameters op te slaan.
 4. Voer op de blade **Aangepaste implementatie** de **Resourcegroep** in.  De resourcegroep is een container waarin het cluster, het afhankelijke opslagaccount en andere resources zijn gegroepeerd. U moet dezelfde resourcegroep gebruiken als het cluster.
 5. Klik op **Juridische voorwaarden** en vervolgens op **Maken**.
@@ -62,7 +62,7 @@ De bestanden die nodig zijn voor het implementeren van deze toepassing (Hue):
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Met deze knop opent u een Resource Manager-sjabloon in de Azure Portal.  De Resource Manager-sjabloon bevindt zich op [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Ga [voor meer informatie over het schrijven van deze resource manager-sjabloon naar MSDN: Een HDInsight-toepassing](https://msdn.microsoft.com/library/mt706515.aspx)installeren.
+    Met deze knop opent u een Resource Manager-sjabloon in de Azure Portal.  De Resource Manager-sjabloon bevindt zich op [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Zie [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: een HDInsight-toepassing installeren) voor informatie over het schrijven van deze Resource Manager-sjabloon.
 2. Volg de instructies om het cluster te maken en Hue te installeren. Zie [Op Linux gebaseerde Hadoop-clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over het maken van HDInsight-clusters.
 
 Naast de Azure Portal, kunt u ook [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) en [Azure Classic cli](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-azure-cli) gebruiken voor het aanroepen van Resource Manager-sjablonen.
@@ -72,7 +72,7 @@ Controleer de status van de toepassing in de Azure Portal om de installatie van 
 
 **De Hue-portal openen**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Klik in het linkermenu op **HDInsight-clusters**.  Als u dit niet ziet, klikt u op **Bladeren** en vervolgens op **HDInsight-clusters**.
 3. Klik op het cluster waarop u de toepassing hebt geïnstalleerd.
 4. Klik op de blade **Instellingen** onder de categorie **Algemeen** op **Toepassingen**. U ziet nu **Hue** vermeld staan op de blade **Geïnstalleerde apps**.
@@ -89,12 +89,12 @@ Als de installatie van een toepassing is mislukt, kunt u de foutberichten en fou
     Open het cluster vanuit de portal en klik op de blade Instellingen op Toepassingen:
 
     ![Fout bij het installeren van HDInsight-toepassingen](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png)
-* HDInsight-script actie: Als het fout bericht van HDInsight-toepassingen aangeeft dat een script actie is mislukt, wordt meer informatie over de script fout weer gegeven in het deel venster script acties.
+* HDInsight-scriptactie: als het foutbericht voor HDInsight-toepassingen een mislukte scriptactie aangeeft, wordt er meer informatie over deze fout weergegeven in het deelvenster Scriptacties.
 
     Klik op de blade Instellingen op Scriptactie. De foutberichten worden weergegeven in de geschiedenis van de scriptactie
 
     ![Scriptactiefout voor HDInsight-toepassingen](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png)
-* Ambari-webgebruikersinterface: Als het installatie script de oorzaak van de fout is, gebruikt u de Ambari-webgebruikersinterface om volledige logboeken over de installatie scripts te controleren.
+* Ambari-webgebruikersinterface: als de fout wordt veroorzaakt door het installatiescript, gebruikt u de Ambari-webgebruikersinterface om volledige logboeken over de installatiescripts te controleren.
 
     Zie [Probleemoplossing](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) voor meer informatie .
 
@@ -104,7 +104,7 @@ Er zijn verschillende manieren om HDInsight-toepassingen te verwijderen.
 ### <a name="use-portal"></a>De portal gebruiken
 **Een toepassing verwijderen via de portal**
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Klik in het linkermenu op **HDInsight-clusters**.  Als u dit niet ziet, klikt u op **Bladeren** en vervolgens op **HDInsight-clusters**.
 3. Klik op het cluster waarop u de toepassing hebt geïnstalleerd.
 4. Klik op de blade **Instellingen** onder de categorie **Algemeen** op **Toepassingen**. Er wordt een lijst met geïnstalleerde toepassingen weergegeven. Voor dit artikel wordt de **kleur Toon** weer gegeven op de Blade **geïnstalleerde apps** .
@@ -120,9 +120,9 @@ Met behulp van Azure PowerShell kunt u het cluster of de resourcegroep verwijder
 Met behulp van Azure CLI kunt u het cluster of de resourcegroep verwijderen. Zie [Clusters verwijderen met behulp van Azure CLI](hdinsight-administer-use-command-line.md#delete-clusters).
 
 ## <a name="next-steps"></a>Volgende stappen
-* [NETWORK Een HDInsight-toepassing](https://msdn.microsoft.com/library/mt706515.aspx)installeren: informatie over het ontwikkelen van Resource Manager-sjablonen voor het implementeren van HDInsight-toepassingen.
-* [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md): Meer informatie over het installeren van een HDInsight-toepassing in uw clusters.
-* [HDInsight-toepassingen publiceren](hdinsight-apps-publish-applications.md): Meer informatie over het publiceren van uw aangepaste HDInsight-toepassingen naar Azure Marketplace.
+* [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: een HDInsight-toepassing installeren): informatie over het ontwikkelen van Resource Manager-sjablonen voor het implementeren van HDInsight-toepassingen.
+* [HDInsight-toepassingen installeren](hdinsight-apps-install-applications.md): informatie over het installeren van een HDInsight-toepassing op uw clusters.
+* [HDInsight-toepassingen publiceren](hdinsight-apps-publish-applications.md): informatie over het publiceren van aangepaste HDInsight-toepassingen in Azure Marketplace.
 * [Op Linux gebaseerde HDInsight-clusters aanpassen met behulp van een scriptactie](hdinsight-hadoop-customize-cluster-linux.md): informatie over het gebruik van een scriptactie om extra toepassingen te installeren.
-* [Apache Hadoop op basis van Linux-clusters in HDInsight met behulp van Resource Manager-sjablonen maken](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informatie over het aanroepen van Resource Manager-sjablonen om HDInsight-clusters te maken.
+* [Op Linux gebaseerde Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen](hdinsight-hadoop-create-linux-clusters-arm-templates.md): informatie over het aanroepen van Resource Manager-sjablonen voor het maken van HDInsight-clusters.
 * [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md) (Lege edge-knooppunten gebruiken in HDInsight): meer informatie over het gebruik van een leeg edge-knooppunt om toegang te krijgen tot het HDInsight-cluster, HDInsight toepassingen te testen en HDInsight-toepassingen te hosten.

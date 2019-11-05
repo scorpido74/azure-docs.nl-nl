@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Patroon rollen-LUIS'
+title: 'Zelf studie: patroon rollen-LUIS'
 titleSuffix: Azure Cognitive Services
 description: Patronen halen gegevens op uit goed opgemaakte sjabloon uitingen. De sjabloon-utterance maakt gebruik van een enkele entiteit en rollen om verwante gegevens te extraheren, zoals de locatie van de oorsprong en die van het doel.
 ms.custom: seodec18
@@ -9,19 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 13a1589a6cc6ed48f159f361ff69a5a3ba8f0f80
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499454"
 ---
-# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Zelfstudie: Context afhankelijke gerelateerde patronen extra heren met behulp van rollen
+# <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Zelf studie: context afhankelijke gerelateerde patronen extra heren met behulp van rollen
 
 In deze zelfstudie gebruikt u een patroon om gegevens te extraheren uit een correct opgemaakte sjabloon-utterance. De sjabloon utterance maakt gebruik van een [eenvoudige entiteit](luis-concept-entity-types.md#simple-entity) en [rollen](luis-concept-roles.md) voor het extra heren van gerelateerde gegevens, zoals de bron locatie en de doel locatie.  Met patronen zijn er minder voorbeeld-utterances nodig voor de intentie.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -47,7 +48,7 @@ De naam van de nieuwe werknemer, Billy Patterson, maakt nog geen deel uit van de
 
 De nieuwe werknemer en zijn gezin moeten verhuizen van hun huidige woonplaats naar een plaats waar het fictieve bedrijf is gevestigd. Omdat een nieuwe medewerker uit willekeurig welke plaats kan komen, moeten de locaties worden gedetecteerd. Een ingestelde lijst, zoals een lijstentititeit, werkt in dit geval niet omdat alleen de plaatsen in de lijst zouden worden geëxtraheerd.
 
-De rolnamen die zijn gekoppeld aan de plaats van oorsprong en de plaats van bestemming moeten uniek zijn binnen alle entiteiten. Een eenvoudige manier om ervoor te zorgen dat de rollen uniek zijn, is door ze met behulp van een naamgevingsstrategie binden aan de containerentiteit. De entiteit **NewEmployeeRelocation** is een eenvoudige entiteit met twee rollen: **NewEmployeeReloOrigin** en **NewEmployeeReloDestination**. Relo is de afkorting van relocation (verhuizing).
+De rolnamen die zijn gekoppeld aan de plaats van oorsprong en de plaats van bestemming moeten uniek zijn binnen alle entiteiten. Een eenvoudige manier om ervoor te zorgen dat de rollen uniek zijn, is door ze met behulp van een naamgevingsstrategie binden aan de containerentiteit. De entiteit **NewEmployeeRelocation** is een enkele entiteit met twee rollen: **NewEmployeeReloOrigin** en **NewEmployeeReloDestination**. Relo is de afkorting van relocation (verhuizing).
 
 Omdat de voorbeeld-utterance `Move new employee Robert Williams from Sacramento and San Francisco` alleen door de computer aangeleerde entiteiten bevat, is het belangrijk om voldoende utterances voor de intentie te verstrekken, zodat de entiteiten worden gedetecteerd.  
 
@@ -107,7 +108,7 @@ Het labelen van de entiteiten in deze stappen is misschien eenvoudiger als u de 
     |Verhuis **J. Benson** van **Boston** naar **Staines-upon-Thames**|J. Benson|Boston, Staines-upon-Thames|
     |Verhuis **Travis "Trav" Hinton** van **Castelo Branco** naar **Orlando**|Travis "Trav" Hinton|Castelo Branco, Orlando|
     |Verhuis **Trevor Nottington III** van **Aranda de Duero** naar **Boise**|Trevor Nottington III|Aranda de Duero, Boise|
-    |Verhuis **Dr. Greg Williams** van **Orlando** naar **Ellicott City**|Dr. Greg Williams|Orlando, Ellicott City|
+    |**Dr. Greg Williams** verplaatsen van **Orlando** naar **Ellicott City**|Dr. Greg Williams|Orlando, Ellicott City|
     |Verhuis **Robert "Bobby" Gregson** van **Kansas City** naar **San Juan Capistrano**|Robert "Bobby" Gregson|Kansas City, San Juan Capistrano|
     |Verhuis **Patti Owens** van **Bellevue** naar **Rockford**|Patti Owens|Bellevue, Rockford|
     |Verhuis **Janet Bartlet** van **Toscane** naar **Santa Fe**|Janet Bartlet|Toscane, Santa Fe|

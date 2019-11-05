@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
-ms.translationtype: MT
+ms.openlocfilehash: 2d8bf44f5e5e7a3f8c328a47480599f9dd18b845
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045211"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489527"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Verbeter het proces voor het maken van het model door de metrische gegevens voor experimenten en bewakings uitvoeringen bij te houden. In dit artikel leert u hoe u logboek registratie code kunt toevoegen aan uw trainings script, een experiment moet verzenden, de uitvoering ervan kunt controleren en de resultaten kunt controleren in Azure Machine Learning.
 
@@ -261,7 +262,7 @@ print(run.get_portal_url())
    ![Jupyter notebook-widget voor automatische Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-Als u meer details van een pijp lijn wilt weer geven, klikt u op de pijp lijn die u wilt verkennen in de tabel. de grafieken worden weer gegeven in een pop-up van de Azure Portal.
+Als u meer details van een pijp lijn wilt weer geven, klikt u op de pijp lijn die u in de tabel wilt verkennen. de grafieken worden weer gegeven in een pop-up van de Azure Machine Learning Studio.
 
 ### <a name="get-log-results-upon-completion"></a>Resultaten van logboeken weergeven bij voltooiing
 
@@ -273,27 +274,24 @@ Model training en-bewaking vindt plaats op de achtergrond, zodat u andere taken 
 U kunt de metrische gegevens van een getraind model weer geven met behulp van ```run.get_metrics()```. U kunt nu alle metrische gegevens ophalen die zijn vastgelegd in bovenstaand voor beeld om het beste model te bepalen.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Bekijk het experiment in de Azure Portal of de [landings pagina van uw werk ruimte (preview)](https://ml.azure.com)
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>Het experiment in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com) weer geven
 
-Wanneer een experiment is uitgevoerd, kunt u bladeren naar de record voor het uitvoeren van opgenomen experimenten. U kunt de geschiedenis op twee manieren openen:
+Wanneer een experiment is uitgevoerd, kunt u bladeren naar de record voor het uitvoeren van opgenomen experimenten. U kunt de geschiedenis openen vanuit de [Azure machine learning Studio](https://ml.azure.com).
 
-* De URL naar de uitvoering rechtstreeks ophalen ```print(run.get_portal_url())```
-* Bekijk de details van de uitvoering door de naam van de uitvoeringsrun (in dit geval ```run```) in te dienen. Op deze manier wijst u naar de naam van het experiment, de ID, het type, de status, de detail pagina, een koppeling naar de Azure Portal en een koppeling naar de documentatie.
+Ga naar het tabblad experimenten en selecteer uw experiment. U wordt naar het dash board voor experimenteren geleid, waar u bijgehouden metrische gegevens en grafieken kunt zien die voor elke uitvoering worden vastgelegd. In dit geval hebben we de MSE en de alpha-waarden geregistreerd.
 
-Met de koppeling voor de uitvoering brengt u rechtstreeks naar de pagina Details uitvoeren in de Azure Portal. Hier ziet u alle eigenschappen, bijgehouden metrische gegevens, afbeeldingen en grafieken die zijn geregistreerd in het experiment. In dit geval hebben we de MSE en de alpha-waarden geregistreerd.
+  ![Details uitvoeren in de Azure Machine Learning Studio](./media/how-to-track-experiments/experiment-dashboard.png)
 
-  ![Details uitvoeren in de Azure Portal](./media/how-to-track-experiments/run-details-page.png)
-
-U kunt ook uitvoer of logboeken bekijken voor de uitvoering, of de moment opname van het experiment downloaden dat u hebt verzonden, zodat u de map experiment met anderen kunt delen.
+U kunt inzoomen op een specifieke uitvoering om de uitvoer of logboeken weer te geven of de moment opname te downloaden van het experiment dat u hebt verzonden, zodat u de map experiment met anderen kunt delen.
 
 ### <a name="viewing-charts-in-run-details"></a>Grafieken weer geven in details van uitvoering
 
-Er zijn verschillende manieren om de logboek registratie-Api's te gebruiken voor het vastleggen van verschillende soorten metrische gegevens tijdens een uitvoering en om ze weer te geven als grafieken in de Azure Portal. 
+Er zijn verschillende manieren om de logboek registratie-Api's te gebruiken voor het vastleggen van verschillende soorten metrische gegevens tijdens een uitvoering en om ze weer te geven als grafieken in Azure Machine Learning Studio.
 
 |Geregistreerde waarde|Voorbeeld code| Weer geven in de portal|
 |----|----|----|
 |Een matrix met numerieke waarden vastleggen in een logboek| `run.log_list(name='Fibonacci', value=[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])`|lijn diagram met één variabele|
-|Een enkele numerieke waarde met dezelfde metrische naam in het logboek vastleggen, herhaaldelijk gebruikt (bijvoorbeeld van binnen een for-lus)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Lijn diagram met één variabele|
+|Een enkele numerieke waarde met dezelfde metrische naam in het logboek vastleggen, herhaaldelijk gebruikt (bijvoorbeeld van binnen een for-lus)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| lijn diagram met één variabele|
 |Een rij met 2 numerieke kolommen herhaaldelijk vastleggen|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Lijn diagram met twee variabelen|
 |Logboek tabel met 2 numerieke kolommen|`run.log_table(name='Sine Wave', value=sines)`|Lijn diagram met twee variabelen|
 

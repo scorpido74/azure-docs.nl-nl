@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 964bc915347d11e087da0b34a8d4160d807a4158
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f89218b066b0a22559c00c4a53316f0df9c0bb8f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965404"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488446"
 ---
 # <a name="public-ip-address-prefix"></a>Voorvoegsel van openbaar IP-adres
 
@@ -46,9 +46,9 @@ Wanneer u resources met een openbaar IP-adres maakt, wijst Azure een beschikbaar
 ## <a name="scenarios"></a>Scenario's
 U kunt de volgende resources koppelen aan een statisch openbaar IP-adres van een voor voegsel:
 
-|Bron|Scenario|Stappen|
+|Resource|Scenario|Stappen|
 |---|---|---|
-|Virtual Machines| Het koppelen van open bare Ip's van een voor voegsel aan uw virtuele machines in azure reduceert de beheer overhead wanneer het gaat om white list Ip's in een firewall. U kunt eenvoudig een volledig voor voegsel white list met één firewall regel. Wanneer u schaalt met virtuele machines in azure, kunt u IP-adressen koppelen aan hetzelfde voor voegsel kosten, tijd en beheer overhead besparen.| IP-adressen van een voor voegsel aan uw virtuele machine koppelen: 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. [Koppel het IP-adres aan de netwerk interface van de virtuele machine.](virtual-network-network-interface-addresses.md#add-ip-addresses)
+|Virtuele machines| Het koppelen van open bare Ip's van een voor voegsel aan uw virtuele machines in azure reduceert de beheer overhead wanneer het gaat om white list Ip's in een firewall. U kunt eenvoudig een volledig voor voegsel white list met één firewall regel. Wanneer u schaalt met virtuele machines in azure, kunt u IP-adressen koppelen aan hetzelfde voor voegsel kosten, tijd en beheer overhead besparen.| IP-adressen van een voor voegsel aan uw virtuele machine koppelen: 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. [Koppel het IP-adres aan de netwerk interface van de virtuele machine.](virtual-network-network-interface-addresses.md#add-ip-addresses) U kunt [de IP-adressen ook koppelen aan een schaalset voor virtuele machines](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 | Standaard load balancers | Het koppelen van open bare Ip's van een voor voegsel aan uw frontend-IP-configuratie of de regel voor uitgaande verbindingen van een Load Balancer zorgt voor vereenvoudiging van uw open bare IP-adres ruimte van Azure. U kunt uw scenario vereenvoudigen door het opschonen van uitgaande verbindingen van een bereik van aaneengesloten IP-adressen die zijn gedefinieerd door het open bare IP-voor voegsel. | IP-adressen van een voor voegsel aan uw Load Balancer koppelen: 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. Wanneer u de Load Balancer maakt, selecteert of werkt u het IP-adres dat u in stap 2 hierboven hebt gemaakt, in als het frontend-IP-adres van uw Load Balancer. |
 | Azure Firewall | U kunt een openbaar IP-adres gebruiken uit een voor voegsel voor uitgaande SNAT. Dit betekent dat al het uitgaande virtuele netwerk verkeer wordt omgezet naar het [Azure firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) open bare IP-adres. Aangezien dit IP-adres afkomstig is van een vooraf bepaald voor voegsel, is het heel eenvoudig om te weten te komen hoe uw open bare IP-Opper vlak in azure eruitziet. | 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. Wanneer u [de Azure-firewall implementeert](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), moet u ervoor zorgen dat u het IP-adres selecteert dat u eerder van het voor voegsel hebt toegewezen.|
 | Application Gateway v2 | U kunt een openbaar IP-adres gebruiken uit een voor voegsel voor uw automatisch schalen en een zone-redundante toepassings gateway v2. Aangezien dit IP-adres afkomstig is van een vooraf bepaald voor voegsel, is het heel eenvoudig om te weten te komen hoe uw open bare IP-Opper vlak in azure eruitziet. | 1. [Maak een voor voegsel.](manage-public-ip-address-prefix.md) 2. [Maak een IP-adres van het voor voegsel.](manage-public-ip-address-prefix.md) 3. Wanneer u [de Application Gateway implementeert](../application-gateway/quick-create-portal.md#create-an-application-gateway), moet u ervoor zorgen dat u het IP-adres selecteert dat u eerder van het voor voegsel hebt toegewezen.|

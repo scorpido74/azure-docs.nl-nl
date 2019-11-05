@@ -1,25 +1,25 @@
 ---
-title: Een abonnement voor delen intrekken in de preview-versie van Azure data share
-description: Meer informatie over het intrekken van een share-abonnement van een ontvanger met behulp van de preview-versie van Azure data share.
+title: Een abonnement voor delen intrekken in een Azure-gegevens share
+description: Meer informatie over het intrekken van een share-abonnement van een ontvanger met Azure data share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: bd8ef23ead500acb9e403b38fd52a2d980d12bf4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 97f672b266c2df6956282aea6dec8d5207944943
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169059"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476378"
 ---
-# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share-preview"></a>Het deel abonnement voor het delen van een consument in azure data share preview intrekken
+# <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Het delen van een gebruikers abonnement in azure data share intrekken
 
-In dit artikel wordt uitgelegd hoe u een share abonnement intrekt van een of meer van uw consumenten met behulp van de preview-versie van Azure data share. Zo voor komt u dat een gebruiker meer moment opnamen kan activeren. Als de gebruiker nog geen moment opname heeft geactiveerd, worden de gegevens nooit meer ontvangen zodra het abonnement van de share is ingetrokken. Als ze eerder een moment opname hebben geactiveerd, blijven de meest recente gegevens in hun account.
+In dit artikel wordt uitgelegd hoe u een share abonnement intrekt van een of meer van uw consumenten met behulp van Azure data share. Zo voor komt u dat een gebruiker meer moment opnamen kan activeren. Als de gebruiker nog geen moment opname heeft geactiveerd, worden de gegevens nooit meer ontvangen zodra het abonnement van de share is ingetrokken. Als ze eerder een moment opname hebben geactiveerd, blijven de meest recente gegevens in hun account.
 
 ## <a name="navigate-to-a-sent-data-share"></a>Navigeer naar een verzonden gegevens share
 
-In azure data share preview gaat u naar de verzonden share en selecteert u het tabblad **abonnementen delen** .
+In azure data share gaat u naar de verzonden share en selecteert u het tabblad **abonnementen delen** .
 
 ![Abonnement op delen intrekken](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
 

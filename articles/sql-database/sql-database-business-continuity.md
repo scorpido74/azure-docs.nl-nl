@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 69ff1a5681fbb0b434d7114b069610ed34d9e843
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744470"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492199"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Overzicht van bedrijfscontinuïteit met Azure SQL Database
 
@@ -53,7 +53,7 @@ SQL Database biedt ook verschillende functies voor bedrijfs continuïteit, die u
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Een Data Base binnen dezelfde Azure-regio herstellen
 
-U kunt automatische database back-ups gebruiken om een Data Base te herstellen naar een bepaald tijdstip in het verleden. Op deze manier kunt u herstellen van gegevens beschadigingen die worden veroorzaakt door menselijke fouten. Met de webservicepunt-in-time herstel bewerking kunt u een nieuwe data base maken op dezelfde server die de status van de gegevens van vóór de beschadigde gebeurtenis vertegenwoordigt. Voor de meeste data bases worden de herstel bewerkingen minder dan 12 uur in beslag genomen. Het kan langer duren om een zeer grote of zeer actieve Data Base te herstellen. Zie [Data Base Recovery Time](sql-database-recovery-using-backups.md#recovery-time)(Engelstalig) voor meer informatie over herstel tijd. 
+U kunt automatische database back-ups gebruiken om een Data Base te herstellen naar een bepaald tijdstip in het verleden. Op deze manier kunt u herstellen van gegevens beschadigingen die worden veroorzaakt door menselijke fouten. Met het herstel naar een bepaald tijdstip kunt u een nieuwe data base maken op dezelfde server die de status van de gegevens van vóór de beschadigde gebeurtenis weergeeft. Voor de meeste data bases worden de herstel bewerkingen minder dan 12 uur in beslag genomen. Het kan langer duren om een zeer grote of zeer actieve Data Base te herstellen. Zie [Data Base Recovery Time](sql-database-recovery-using-backups.md#recovery-time)(Engelstalig) voor meer informatie over herstel tijd. 
 
 Als de maximale ondersteunde Bewaar periode voor back-ups voor PITR (Point-in-time Restore) niet voldoende is voor uw toepassing, kunt u deze uitbreiden door een beleid voor lange termijn retentie (LTR) voor de data base (s) te configureren. Zie [lange termijn retentie van back-ups](sql-database-long-term-retention.md)voor meer informatie.
 

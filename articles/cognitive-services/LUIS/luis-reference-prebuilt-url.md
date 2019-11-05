@@ -1,7 +1,7 @@
 ---
 title: URL-preconstrueerde entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: In dit artikel bevat een url vooraf gedefinieerde entiteitgegevens in Language Understanding (LUIS).
+description: Dit artikel bevat URL-vooraf opgebouwde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,109 +9,78 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 77e1c9e64081e20ef064fd8341c54c13940f0dd4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 12831ede2b9d9251f2e02fa396ee7d2fb2d61240
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499502"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>URL preconstrueerde entiteit voor een LUIS-app
-URL-entiteit extraheert URL's met domeinnamen of IP-adressen. Omdat deze entiteit wordt al getraind, hoeft u niet om toe te voegen van de voorbeeld-uitingen met URL's naar de toepassing. URL-entiteit wordt ondersteund in `en-us` alleen de cultuur. 
+URL-entiteit extraheert Url's met domein namen of IP-adressen. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met Url's aan de toepassing toe te voegen. URL-entiteit wordt alleen ondersteund in `en-us` cultuur. 
 
-## <a name="types-of-urls"></a>Typen van URL 's
+## <a name="types-of-urls"></a>Typen Url's
 URL wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) github
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Oplossing voor vooraf gedefinieerde URL-entiteit
+## <a name="resolution-for-prebuilt-url-entity"></a>Oplossing voor preingebouwde URL-entiteit
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2-antwoord op Voorspellings eindpunt](#tab/V2)
+De volgende entiteits objecten worden geretourneerd voor de query:
 
-Het volgende voorbeeld ziet u de resolutie van de **builtin.url** entiteit.
+`https://www.luis.ai is a great cognitive services example of artificial intelligence`
+
+#### <a name="v3-responsetabv3"></a>[V3-antwoord](#tab/V3)
+
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `false`:
 
 ```json
-{
-  "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.781975448
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.781975448
-    }
-  ],
-  "entities": [
-    {
-      "entity": "https://www.luis.ai",
-      "type": "builtin.url",
-      "startIndex": 0,
-      "endIndex": 17
-    }
-  ]
+"entities": {
+    "url": [
+        "https://www.luis.ai"
+    ]
 }
 ```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
-
-De volgende JSON is met de para meter `verbose` ingesteld op `false`:
-
-```json
-{
-    "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
-    "prediction": {
-        "normalizedQuery": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.421936184
-            }
-        },
-        "entities": {
-            "url": [
-                "https://www.luis.ai"
-            ]
-        }
-    }
-}
-```
-
-De volgende JSON is met de para meter `verbose` ingesteld op `true`:
+De volgende JSON is waarvan de `verbose` para meter is ingesteld op `true`:
 
 ```json
-{
-    "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
-    "prediction": {
-        "normalizedQuery": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.421936184
-            }
-        },
-        "entities": {
-            "url": [
-                "https://www.luis.ai"
-            ],
-            "$instance": {
-                "url": [
-                    {
-                        "type": "builtin.url",
-                        "text": "https://www.luis.ai",
-                        "startIndex": 0,
-                        "length": 19,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "url": [
+        "https://www.luis.ai"
+    ],
+    "$instance": {
+        "url": [
+            {
+                "type": "builtin.url",
+                "text": "https://www.luis.ai",
+                "startIndex": 0,
+                "length": 17,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2-antwoord](#tab/V2)
 
+In het volgende voor beeld ziet u de oplossing van de https://www.luis.ai is een fantastisch voor beeld van een fraaie cognitieve service van kunst matige intelligentie
+
+```json
+"entities": [
+    {
+        "entity": "https://www.luis.ai",
+        "type": "builtin.url",
+        "startIndex": 0,
+        "endIndex": 17
+    }
+]
+```
 
 * * * 
 
@@ -119,4 +88,4 @@ De volgende JSON is met de para meter `verbose` ingesteld op `true`:
 
 Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
-Meer informatie over de [rangtelwoord](luis-reference-prebuilt-ordinal.md), [getal](luis-reference-prebuilt-number.md), en [temperatuur](luis-reference-prebuilt-temperature.md) entiteiten.
+Meer informatie over het [rang telwoord](luis-reference-prebuilt-ordinal.md), het [aantal](luis-reference-prebuilt-number.md)en de [Tempe ratuur](luis-reference-prebuilt-temperature.md) .

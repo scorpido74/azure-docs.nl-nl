@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: dfc137375e35d0d13a34ff45b0c6639bcf6784df
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561061"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73519156"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Quickstart: Een classificatie bouwen met Custom Vision
+# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Snelstartgids: een classificatie bouwen met Custom Vision
 
 In deze Quick Start leert u hoe u een classificatie kunt bouwen via de website van Custom Vision. Nadat u een classificatie model hebt gemaakt, kunt u de Custom Vision-service gebruiken voor het classificeren van afbeeldingen.
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision resources maken in de Azure Portal
 
-Als u de Custom Vision Service wilt gebruiken, moet u Custom Vision trainings-en Voorspellings resources maken in de Azure Portal. Vul het dialoog venster op de pagina [Custom Vision maken](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) in om een trainings-en Voorspellings bron te maken. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Een nieuw project maken
 
@@ -51,7 +51,7 @@ Navigeer in uw webbrowser naar de webpagina van [Custom Vision](https://customvi
 
 1. Selecteer vervolgens een van de beschik bare domeinen. Elk domein optimaliseert de classificatie voor specifieke typen installatie kopieën, zoals beschreven in de volgende tabel. U kunt het domein later indien gewenst wijzigen.
 
-    |Domein|Doel|
+    |Domain|Doel|
     |---|---|
     |__Encarta__| Geoptimaliseerd voor een breed scala aan afbeeldings classificatie taken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u wilt kiezen, selecteert u het algemene domein. |
     |__Middel__|Geoptimaliseerd voor foto's van vaat werk zoals u zou zien in een restaurant menu. Als u foto's van afzonderlijke vruchten of groenten wilt classificeren, gebruikt u het voedsel domein.|
@@ -99,7 +99,7 @@ Het trainings proces kan slechts enkele minuten duren. Gedurende deze periode wo
 Nadat de training is voltooid, worden de prestaties van het model geschat en weer gegeven. De Custom Vision Service gebruikt de installatie kopieën die u hebt ingediend voor training om de nauw keurigheid te berekenen en op te halen met behulp van een proces met de [Kruis validatie met de vouw k-vouwen](https://en.wikipedia.org/wiki/Cross-validation_(statistics)). Nauw keurigheid en intrekken zijn twee verschillende metingen van de effectiviteit van een classificatie:
 
 - **Precisie** geeft de Fractie van geïdentificeerde classificaties aan die juist zijn. Als het model bijvoorbeeld 100 installatie kopieën heeft geïdentificeerd als honden en 99 van de afbeeldingen daad werkelijk van honden, zou de precisie 99% zijn.
-- Bij intrekken wordt het gedeelte van de werkelijke classificaties aangegeven die juist zijn geïdentificeerd. Als er bijvoorbeeld daad werkelijk 100 installatie kopieën van Apples waren en het model 80 als Apple heeft geïdentificeerd, is het intrekken 80%.
+- Bij **intrekken** wordt het gedeelte van de werkelijke classificaties aangegeven die juist zijn geïdentificeerd. Als er bijvoorbeeld daad werkelijk 100 installatie kopieën van Apples waren en het model 80 als Apple heeft geïdentificeerd, is het intrekken 80%.
 
 ![De resultaten van de training tonen de algehele nauw keurigheid en intrekken en de nauw keurigheid en intrekken voor elke tag in de classificatie.](./media/getting-started-build-a-classifier/train03.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202089"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520810"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Het SQL Information Protection-beleid in Azure Security Center aanpassen (preview-versie)
  
@@ -52,7 +52,7 @@ Als u het Information Protection-beleid voor uw Azure-Tenant wilt aanpassen, moe
 2. In het scherm **gevoeligheids label configureren** kunt u de naam van het label en de beschrijving maken of wijzigen. U kunt ook instellen of het label actief of uitgeschakeld is door de **ingeschakelde** switch in of uit te scha kelen. Ten slotte kunt u gegevens typen toevoegen of verwijderen die zijn gekoppeld aan het label. Alle gegevens die zijn gedetecteerd die overeenkomen met dat informatie type, bevatten automatisch het bijbehorende gevoeligheids label in de classificatie aanbevelingen.
 3. Klik op **OK**.
  
-   ![Gevoeligheidslabel configureren](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Gevoeligheids label configureren](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Labels worden weer gegeven in volg orde van oplopende gevoeligheid. Als u de rang schikking tussen labels wilt wijzigen, sleept u de labels om ze in de tabel opnieuw te rangschikken of gebruikt u de knoppen **omhoog** en **omlaag** om de volg orde te wijzigen. 
  
@@ -83,8 +83,5 @@ In dit artikel hebt u geleerd hoe u een SQL Information Protection-beleid defini
 
 Raadpleeg de volgende artikelen voor meer informatie over beveiligings beleid en gegevens beveiliging in Azure Security Center:
  
-- [Overzicht van beveiligings beleid](security-center-policies-overview.md): Bekijk een overzicht van beveiligings beleid in Security Center
-- [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): Meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen
-- [Azure Security Center gegevens beveiliging](security-center-data-security.md): Meer informatie over het Security Center beheren en beveiligen van gegevens
-
-
+- [Beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md): meer informatie over het configureren van beveiligings beleid voor uw Azure-abonnementen en-resource groepen
+- [Azure Security Center gegevens beveiliging](security-center-data-security.md): meer informatie over het Security Center beheren en beveiligen van gegevens

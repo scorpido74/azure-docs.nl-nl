@@ -1,24 +1,24 @@
 ---
 title: 'Gesplitste gegevens: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Informatie over het gebruik van de module Split data in Azure Machine Learning service om een gegevensset in twee verschillende sets te verdelen.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module gegevens splitsen in Azure Machine Learning om een gegevensset in twee verschillende sets te verdelen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692650"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492639"
 ---
 # <a name="split-data-module"></a>Module voor splitsen van gegevens
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een gegevensset in twee verschillende sets te verdelen.
 
@@ -30,7 +30,7 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
 > Voordat u de Splits modus kiest, moet u alle opties lezen om te bepalen welk type splitsing u nodig hebt.
 > Als u de Splits modus wijzigt, kunnen alle andere opties opnieuw worden ingesteld.
 
-1. Voeg de module **gegevens splitsen** toe aan uw pijp lijn in de-interface. U kunt deze module vinden onder **gegevens transformatie**in de categorie voor **Beeld en splitsen** .
+1. Voeg de module **gegevens splitsen** toe aan uw pijp lijn in de ontwerp functie. U kunt deze module vinden onder **gegevens transformatie**in de categorie voor **Beeld en splitsen** .
 
 2. **Splits modus**: Kies een van de volgende modi, afhankelijk van het type gegevens dat u hebt, en hoe u deze wilt delen. Elke Splits modus heeft verschillende opties. Klik op de volgende onderwerpen voor gedetailleerde instructies en voor beelden. 
 
@@ -45,7 +45,8 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
     - **Relatieve expressie splitsen**: gebruik deze optie wanneer u een voor waarde op een kolom getal wilt Toep assen. Het getal kan een datum/tijd-veld, een kolom met leeftijds-of dollar bedragen of zelfs een percentage zijn. Stel dat u uw gegevensset wilt delen, afhankelijk van de kosten van de items, het groeperen van personen op leeftijds bereiken of het scheiden van gegevens op basis van een kalender datum.
 
 ### <a name="split-rows"></a>Rijen splitsen
-1.  Voeg de module [gegevens splitsen](./split-data.md) toe aan uw pijp lijn in de interface en verbind de gegevensset die u wilt splitsen.
+
+1.  Voeg de module [gegevens splitsen](./split-data.md) toe aan uw pijp lijn in de ontwerp functie en verbind de gegevensset die u wilt splitsen.
   
 2.  Voor de **Splits modus**kiest u **rijen splitsen**. 
 
@@ -114,4 +115,4 @@ Deze module is vooral nuttig wanneer u gegevens moet scheiden in trainings-en te
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

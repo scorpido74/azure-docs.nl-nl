@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710155"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496290"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
@@ -58,7 +58,7 @@ U kunt [Data Base exporteren naar BACPAC](sql-database-export.md) en vervolgens 
 
 Transactionele replicatie kan worden gebruikt als alle tabellen in de data base primaire sleutels hebben.
 
-Systeem `COPY_ONLY` eigen back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server.
+Systeem eigen `COPY_ONLY` back-ups die zijn gemaakt van het beheerde exemplaar, kunnen niet worden hersteld naar SQL Server omdat het beheerde exemplaar een hogere database versie heeft dan SQL Server.
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Hoe kan ik mijn exemplaar database migreren naar een enkele Azure SQL Database?
 
@@ -134,8 +134,8 @@ Case-study's voor beheerde instanties:
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
 - [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
 - [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
-Als u een beter inzicht wilt krijgen in de voor delen, kosten en risico's die zijn gekoppeld aan het implementeren van Azure SQL Database beheerde instantie, is er ook een voor beeld van een Forrester: [Totale economische impact van Mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
+Om een beter inzicht te krijgen in de voor delen, kosten en risico's die zijn gekoppeld aan het implementeren van Azure SQL Database beheerde instantie, is er ook een Forrester studie: [totale economische impact van Mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 
 ## <a name="can-i-do-dns-refresh"></a>Kan ik DNS vernieuwen? 
@@ -171,7 +171,7 @@ Tijdelijke oplossingen zijn onder andere het maken van een nieuw beheerd exempla
 
 Voor een vergelijking van de prestaties tussen het beheerde exemplaar en SQL Server, is een goed uitgangs punt [Aanbevolen procedures voor de prestatie vergelijking tussen Azure SQL Managed instance en SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) artikel.
 
-Het laden van gegevens is vaak langzamer op het beheerde exemplaar dan in SQL Server vanwege een verplicht volledig [](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) herstel model en limieten voor schrijf doorvoer in transactie logboek. Dit kan soms worden omzeild door het laden van tijdelijke gegevens in TempDB in plaats van de gebruikers database, of met behulp van geclusterde column Store of tabellen die zijn geoptimaliseerd voor geheugen.
+Het laden van gegevens is vaak langzamer op het beheerde exemplaar dan in SQL Server vanwege een verplicht volledig herstel model en [limieten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) voor schrijf doorvoer in transactie logboek. Dit kan soms worden omzeild door het laden van tijdelijke gegevens in TempDB in plaats van de gebruikers database, of met behulp van geclusterde column Store of tabellen die zijn geoptimaliseerd voor geheugen.
 
 
 ## <a name="can-i-restore-my-encrypted-database-to-managed-instance"></a>Kan ik mijn versleutelde data base herstellen naar een beheerd exemplaar?
@@ -179,7 +179,7 @@ Het laden van gegevens is vaak langzamer op het beheerde exemplaar dan in SQL Se
 Ja, u hoeft uw data base niet te ontsleutelen zodat deze kan worden hersteld naar een beheerd exemplaar. U moet een certificaat/sleutel opgeven die wordt gebruikt als een versleutelings sleutel beveiliging in het bron systeem naar het beheerde exemplaar om gegevens te kunnen lezen uit het versleutelde back-upbestand. Er zijn twee manieren waarop u dit kunt doen:
 
 - *Upload certificaat beveiliging naar het beheerde exemplaar*. Dit kan alleen worden gedaan met behulp van Power shell. In het [voorbeeld script](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) wordt het hele proces beschreven.
-- De *asymmetrische sleutel beveiliging uploaden naar Azure Key Vault (Azure) en het beheerde exemplaar*. Deze benadering lijkt op het gebruik van de BYOK-TDE-use-case (uw eigen sleutel), die ook gebruikmaakt van Azure-integratie om de versleutelings sleutel op te slaan. Als u de sleutel niet wilt gebruiken als een versleutelings sleutel beveiliging en alleen de sleutel beschikbaar wilt maken voor een beheerd exemplaar om versleutelde data bases te herstellen, volgt u de instructies voor het [instellen van BYOK TDe](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)en schakelt u het selectie vakje *de geselecteerde sleutel maken de standaard TDE-beveiliging*.
+- De *asymmetrische sleutel beveiliging uploaden naar Azure Key Vault (Azure) en het beheerde exemplaar*. Deze benadering lijkt op het gebruik van de BYOK-TDE-use-case (uw eigen sleutel), die ook gebruikmaakt van Azure-integratie om de versleutelings sleutel op te slaan. Als u de sleutel niet wilt gebruiken als een versleutelings sleutel beveiliging en alleen de sleutel beschikbaar wilt maken voor een beheerd exemplaar om versleutelde data bases te herstellen, volgt u de instructies voor het [instellen van BYOK TDe](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)en schakelt u het selectie vakje *de geselecteerde sleutel maken de standaard TDE-beveiliging*.
 
 Wanneer u de versleutelings beveiliging hebt gemaakt voor een beheerd exemplaar, kunt u door gaan met de standaard procedure voor het herstellen van data bases.
 

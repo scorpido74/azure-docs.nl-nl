@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 42ce8bfa78cfa40e147ee90de28c1ac1430070f1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 67870cdfcf92bb49d6e4f954b7001a8a705dcc42
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259749"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496402"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Azure-blauwdruk voor beveiliging en naleving: Analytics voor PCI DSS
 
@@ -29,7 +29,7 @@ Voor het bereiken van PCI DSS-naleving is vereist dat een goedgekeurde gekwalifi
 
 Deze Azure-blauwdruk voor beveiliging en naleving biedt een analyse platform waarop klanten hun eigen analyse hulpprogramma's kunnen bouwen. In de referentie architectuur wordt een algemene use-case beschreven waarbij klanten gegevens invoeren via bulksgewijze gegevens import door de SQL/gegevens beheerder of door middel van operationele gegevens updates via een operationele gebruiker. Beide werk stromen bevatten Azure Functions voor het importeren van gegevens in Azure SQL Database. Azure Functions moet door de klant worden geconfigureerd via de Azure Portal voor het afhandelen van de import taken die uniek zijn voor de eigen analyse vereisten van elke klant.
 
-Azure biedt een aantal rapportage-en analyse Services voor de klanten. Deze oplossing bevat Azure Machine Learning Services in combi natie met Azure SQL Database om snel door gegevens te bladeren en sneller resultaten te leveren middels een slimmere model lering. Azure Machine Learning verhoogt de query snelheid door nieuwe relaties tussen gegevens sets te detecteren. Zodra de gegevens zijn getraind met verschillende statistische functies, kunnen Maxi maal zeven extra query Pools (8 met inbegrip van de klant server) worden gesynchroniseerd met dezelfde tabellaire modellen om query werk belastingen te spreiden en de reactie tijden te verminderen.
+Azure biedt een aantal rapportage-en analyse Services voor de klanten. Deze oplossing bevat Azure Machine Learning in combi natie met Azure SQL Database om snel door gegevens te bladeren en sneller resultaten te leveren middels een slimmere model lering. Azure Machine Learning verhoogt de query snelheid door nieuwe relaties tussen gegevens sets te detecteren. Zodra de gegevens zijn getraind met verschillende statistische functies, kunnen Maxi maal zeven extra query Pools (8 met inbegrip van de klant server) worden gesynchroniseerd met dezelfde tabellaire modellen om query werk belastingen te spreiden en de reactie tijden te verminderen.
 
 Azure SQL-data bases kunnen worden geconfigureerd met column Store-indexen voor uitgebreide analyse en rapportage. Zowel Azure Machine Learning-als Azure SQL-data bases kunnen omhoog of omlaag worden geschaald of volledig worden afgesloten in reactie op het gebruik van de klant. Alle SQL-verkeer wordt versleuteld met SSL via het opnemen van zelfondertekende certificaten. Als best practice, raadt Azure het gebruik aan van een vertrouwde certificerings instantie voor verbeterde beveiliging.
 
@@ -67,19 +67,19 @@ Deze oplossing maakt gebruik van de volgende Azure-Services. Details van de impl
 
 De volgende sectie bevat informatie over de implementatie-en implementatie-elementen.
 
-**Azure Event grid**: Met [Azure Event grid](https://docs.microsoft.com/azure/event-grid/overview) kunnen klanten eenvoudig toepassingen bouwen met op gebeurtenissen gebaseerde architecturen. Gebruikers selecteren de Azure-resource die ze willen abonneren en geven de gebeurtenis-handler of webhook een eind punt om de gebeurtenis naar te verzenden. Klanten kunnen webhook-eind punten beveiligen door query parameters toe te voegen aan de webhook-URL bij het maken van een gebeurtenis abonnement. Azure Event Grid ondersteunt alleen HTTPS-webhook-eind punten. Met Azure Event Grid kunnen klanten het toegangs niveau voor verschillende gebruikers beheren om verschillende beheer bewerkingen uit te voeren, zoals abonnementen op lijst gebeurtenissen, nieuwe maken en sleutels genereren. Event Grid maakt gebruik van op rollen gebaseerd toegangs beheer van Azure.
+**Azure Event grid**: met [Azure Event grid](https://docs.microsoft.com/azure/event-grid/overview) kunnen klanten eenvoudig toepassingen bouwen met op gebeurtenissen gebaseerde architecturen. Gebruikers selecteren de Azure-resource die ze willen abonneren en geven de gebeurtenis-handler of webhook een eind punt om de gebeurtenis naar te verzenden. Klanten kunnen webhook-eind punten beveiligen door query parameters toe te voegen aan de webhook-URL bij het maken van een gebeurtenis abonnement. Azure Event Grid ondersteunt alleen HTTPS-webhook-eind punten. Met Azure Event Grid kunnen klanten het toegangs niveau voor verschillende gebruikers beheren om verschillende beheer bewerkingen uit te voeren, zoals abonnementen op lijst gebeurtenissen, nieuwe maken en sleutels genereren. Event Grid maakt gebruik van op rollen gebaseerd toegangs beheer van Azure.
 
 **Azure functions**: [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) is een compute-service waarmee gebruikers code op aanvraag kunnen uitvoeren zonder expliciet een infra structuur in te richten of te beheren. Met Azure Functions kunt u een script of een stukje code uitvoeren in reactie op diverse gebeurtenissen.
 
-**Azure machine learning-service**: [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/) is een techniek voor gegevens wetenschap waarmee computers bestaande gegevens kunnen gebruiken om toekomstige gedragingen, resultaten en trends te voors pellen.
+**Azure machine learning**: [Azure machine learning](https://docs.microsoft.com/azure/machine-learning/service/) is een techniek voor gegevens wetenschap waarmee computers bestaande gegevens kunnen gebruiken om toekomstige gedragingen, resultaten en trends te voors pellen.
 
-**Azure Data Catalog**: [Data Catalog](../../data-catalog/overview.md) zorgt ervoor dat gegevens bronnen gemakkelijk kunnen worden gedetecteerd en begrijpelijk zijn voor de gebruikers die de gegevens beheren. Algemene gegevens bronnen kunnen worden geregistreerd, gelabeld en doorzocht op financiële gegevens. De gegevens blijven op de bestaande locatie, maar een kopie van de meta gegevens wordt toegevoegd aan Data Catalog, samen met een verwijzing naar de locatie van de gegevens bron. Deze metagegevens worden ook geïndexeerd zodat elke gegevensbron gemakkelijk kan worden gedetecteerd via zoekopdrachten, en begrijpelijk is voor gebruikers die de gegevensbron detecteren.
+**Azure Data Catalog**: met [Data Catalog](../../data-catalog/overview.md) kunnen gegevens bronnen gemakkelijk worden gedetecteerd en begrijpelijk door de gebruikers die de gegevens beheren. Algemene gegevens bronnen kunnen worden geregistreerd, gelabeld en doorzocht op financiële gegevens. De gegevens blijven op de bestaande locatie, maar een kopie van de meta gegevens wordt toegevoegd aan Data Catalog, samen met een verwijzing naar de locatie van de gegevens bron. Deze metagegevens worden ook geïndexeerd zodat elke gegevensbron gemakkelijk kan worden gedetecteerd via zoekopdrachten, en begrijpelijk is voor gebruikers die de gegevensbron detecteren.
 
 ### <a name="virtual-network"></a>Virtueel netwerk
 
 De architectuur definieert een particulier virtueel netwerk met een adres ruimte van 10.200.0.0/16.
 
-**Netwerk beveiligings groepen**: [Netwerk beveiligings groepen](../../virtual-network/virtual-network-vnet-plan-design-arm.md) bevatten toegangs beheer lijsten waarmee verkeer binnen een virtueel netwerk wordt toegestaan of geweigerd. Netwerk beveiligings groepen kunnen worden gebruikt voor het beveiligen van verkeer op een subnet of een afzonderlijk VM-niveau. De volgende netwerk beveiligings groepen bestaan:
+**Netwerk beveiligings groepen**: [netwerk beveiligings groepen](../../virtual-network/virtual-network-vnet-plan-design-arm.md) bevatten toegangs beheer lijsten waarmee verkeer binnen een virtueel netwerk wordt toegestaan of geweigerd. Netwerk beveiligings groepen kunnen worden gebruikt voor het beveiligen van verkeer op een subnet of een afzonderlijk VM-niveau. De volgende netwerk beveiligings groepen bestaan:
 
   - Een netwerk beveiligings groep voor Active Directory
   - Een netwerk beveiligings groep voor de werk belasting
@@ -89,21 +89,21 @@ Voor elk van de netwerk beveiligings groepen zijn specifieke poorten en protocol
 - [Diagnostische logboeken en gebeurtenissen](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) worden ingeschakeld en opgeslagen in een opslag account
 - Azure Monitor-logboeken zijn verbonden met de [netwerk&#39;beveiligings groep s Diagnostische logboeken](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
-**Subnetten**: Elk subnet is gekoppeld aan de bijbehorende netwerk beveiligings groep.
+**Subnetten**: elk subnet is gekoppeld aan de bijbehorende netwerk beveiligings groep.
 
 ### <a name="data-in-transit"></a>Actieve gegevens
 
 Azure versleutelt standaard alle communicatie naar en van Azure-data centers. Alle trans acties die via de Azure Portal worden Azure Storage, vindt plaats via HTTPS.
 
-### <a name="data-at-rest"></a>Data-at-rest
+### <a name="data-at-rest"></a>Inactieve gegevens
 
 De architectuur beveiligt gegevens op rest door versleuteling, database controle en andere metingen.
 
-**Azure Storage**: Om te voldoen aan de versleutelde gegevens op rest-vereisten, gebruikt alle [Azure Storage](https://azure.microsoft.com/services/storage/) [Storage service Encryption](../../storage/common/storage-service-encryption.md).  Dit helpt de gegevens van de kaart houder te beschermen en te beschermen ter ondersteuning van organisatie beveiligings verplichtingen en nalevings vereisten die zijn gedefinieerd door PCI DSS 3,2.
+**Azure Storage**: om aan de rest-vereisten te voldoen aan versleutelde gegevens, gebruikt alle [Azure Storage](https://azure.microsoft.com/services/storage/) [Storage service Encryption](../../storage/common/storage-service-encryption.md).  Dit helpt de gegevens van de kaart houder te beschermen en te beschermen ter ondersteuning van organisatie beveiligings verplichtingen en nalevings vereisten die zijn gedefinieerd door PCI DSS 3,2.
 
 **Azure Disk Encryption**: [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) maakt gebruik van de BitLocker-functie van Windows om volume versleuteling voor gegevens schijven te bieden. De oplossing kan worden geïntegreerd met Azure Key Vault om de versleutelings sleutels voor de schijf te controleren en te beheren.
 
-**Azure SQL Database**: Het Azure SQL Database exemplaar maakt gebruik van de volgende data base Security-maat eenheden:
+**Azure SQL database**: de Azure SQL database instantie gebruikt de volgende data base Security-maat eenheden:
 
 - Met [Active Directory verificatie en autorisatie](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) kan identiteits beheer van database gebruikers en andere micro soft-Services op één centrale locatie worden beheerd.
 - Met [SQL database controle](../../sql-database/sql-database-auditing.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in een Azure-opslag account geschreven.
@@ -127,7 +127,7 @@ De volgende technologieën bieden mogelijkheden voor het beheren van toegang tot
 
 ### <a name="security"></a>Beveiliging
 
-**Beheer van geheimen**: De oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten dergelijke gegevens beveiligen en benaderen:
+**Geheimen beheer**: de oplossing maakt gebruik van [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) voor het beheer van sleutels en geheimen. Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten dergelijke gegevens beveiligen en benaderen:
 
 - Geavanceerd toegangs beleid wordt geconfigureerd op basis van behoefte.
 - Key Vault toegangs beleid wordt gedefinieerd met mini maal vereiste machtigingen voor sleutels en geheimen.
@@ -137,7 +137,7 @@ De volgende technologieën bieden mogelijkheden voor het beheren van toegang tot
 - Diagnostische logboeken voor Key Vault zijn ingeschakeld met een Bewaar periode van ten minste 365 dagen.
 - Toegestane cryptografische bewerkingen voor sleutels zijn beperkt tot de vereisten die nodig zijn.
 
-**Azure Security Center**: Met [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)kunnen klanten centraal beveiligings beleid Toep assen en beheren voor werk belastingen, bloot stelling aan bedreigingen beperken en aanvallen detecteren en erop reageren. Daarnaast Azure Security Center de bestaande configuraties van Azure-Services openen om aanbevelingen voor de configuratie en service te bieden voor het verbeteren van de beveiliging postuur en het beveiligen van gegevens.
+**Azure Security Center**: met [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)kunnen klanten centraal beveiligings beleid Toep assen en beheren voor werk belastingen, bloot stelling aan bedreigingen beperken en aanvallen detecteren en erop reageren. Daarnaast Azure Security Center de bestaande configuraties van Azure-Services openen om aanbevelingen voor de configuratie en service te bieden voor het verbeteren van de beveiliging postuur en het beveiligen van gegevens.
 
 Azure Security Center maakt gebruik van diverse detectie mogelijkheden om klanten te waarschuwen over mogelijke aanvallen die zijn gericht op hun omgeving. Deze waarschuwingen bevatten waardevolle informatie over de trigger van de waarschuwing, de betrokken resources en de bron van de aanval. Azure Security Center heeft een reeks [vooraf gedefinieerde beveiligings waarschuwingen](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), die worden geactiveerd wanneer een bedreiging of verdachte activiteit plaatsvindt. Met [aangepaste waarschuwings regels](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) in azure Security Center kunnen klanten nieuwe beveiligings waarschuwingen definiëren op basis van gegevens die al zijn verzameld uit hun omgeving.
 
@@ -146,22 +146,22 @@ Azure Security Center biedt beveiligings waarschuwingen en-incidenten met priori
 ### <a name="logging-and-auditing"></a>Logboekregistratie en bewaking
 
 Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals systeem status:
-- **Activiteiten logboeken**: [Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement. Activiteiten logboeken kunnen helpen bij het bepalen van de initiator, het tijdstip van de gebeurtenis en de status van een bewerking.
-- **Diagnostische logboeken**: [Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md) bevatten alle logboeken die elke resource heeft verzonden. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
+- **Activiteiten logboeken**: [activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md) bieden inzicht in bewerkingen die worden uitgevoerd op resources in een abonnement. Activiteiten logboeken kunnen helpen bij het bepalen van de initiator, het tijdstip van de gebeurtenis en de status van een bewerking.
+- **Diagnostische logboeken**: [Diagnostische](../../azure-monitor/platform/resource-logs-overview.md) logboeken bevatten alle logboeken die worden verzonden door elke resource. Deze logboeken bevatten Windows-gebeurtenis systeem logboeken, Azure Storage logboeken, Key Vault controle logboeken en Application Gateway toegang en firewall Logboeken. Alle Diagnostische logboeken schrijven naar een gecentraliseerd en versleuteld Azure Storage-account voor archivering. De retentie kan door de gebruiker worden geconfigureerd, tot 730 dagen, om te voldoen aan de specifieke vereisten voor het bewaren van een organisatie.
 
-**Azure monitor logboeken**: Deze logboeken worden samengevoegd in [Azure monitor logboeken](https://azure.microsoft.com/services/log-analytics/) voor verwerking, opslag en dashboard rapportage. Zodra de gegevens zijn verzameld, worden deze in verschillende tabellen ingedeeld voor elk gegevens type binnen Log Analytics werk ruimten, waardoor alle gegevens kunnen worden geanalyseerd, ongeacht de oorspronkelijke bron. Bovendien kan Azure Security Center worden geïntegreerd met Azure Monitor-logboeken, zodat klanten Kusto-query's kunnen gebruiken om toegang te krijgen tot de gegevens van de beveiligings gebeurtenis en deze te combi neren met gegevens uit andere services.
+**Azure monitor logboeken**: deze logboeken worden samengevoegd in [Azure monitor logboeken](https://azure.microsoft.com/services/log-analytics/) voor het verwerken, opslaan en dashboard rapportage. Zodra de gegevens zijn verzameld, worden deze in verschillende tabellen ingedeeld voor elk gegevens type binnen Log Analytics werk ruimten, waardoor alle gegevens kunnen worden geanalyseerd, ongeacht de oorspronkelijke bron. Bovendien kan Azure Security Center worden geïntegreerd met Azure Monitor-logboeken, zodat klanten Kusto-query's kunnen gebruiken om toegang te krijgen tot de gegevens van de beveiligings gebeurtenis en deze te combi neren met gegevens uit andere services.
 
 De volgende Azure- [bewakings oplossingen](../../monitoring/monitoring-solutions.md) zijn opgenomen als onderdeel van deze architectuur:
--   [Active Directory-evaluatie](../../azure-monitor/insights/ad-assessment.md): De Active Directory Health Check-oplossing evalueert het risico en de status van de server omgevingen volgens een regel matig interval en biedt een lijst met aanbevelingen die specifiek zijn voor de geïmplementeerde server infrastructuur.
-- [SQL-evaluatie](../../azure-monitor/insights/sql-assessment.md): De SQL Health Check-oplossing evalueert het risico en de status van de server omgevingen met een regel matig interval en biedt klanten een lijst met prioriteiten die specifiek zijn voor de geïmplementeerde server infrastructuur.
-- [Status van agent](../../monitoring/monitoring-solution-agenthealth.md): De Status van agent oplossing meldt hoeveel agents zijn geïmplementeerd en wat hun geografische distributie zijn, en hoeveel agents niet reageren en het aantal agents dat operationele gegevens verzendt.
--   [Analyse van activiteitenlogboek](../../azure-monitor/platform/collect-activity-logs.md): De Analyse van activiteitenlogboek oplossing helpt bij het analyseren van de activiteiten logboeken van Azure in alle Azure-abonnementen voor een klant.
+-   [Active Directory-evaluatie](../../azure-monitor/insights/ad-assessment.md): de Active Directory Health Check-oplossing evalueert het risico en de status van de server omgevingen volgens een regel matig interval en biedt een lijst met aanbevelingen die specifiek zijn voor de geïmplementeerde server infrastructuur.
+- [SQL-evaluatie](../../azure-monitor/insights/sql-assessment.md): de SQL Health Check-oplossing evalueert het risico en de status van server omgevingen met een regel matig interval en biedt klanten een lijst met prioriteiten die specifiek zijn voor de geïmplementeerde server infrastructuur.
+- [Status van agent](../../monitoring/monitoring-solution-agenthealth.md): de status van agent oplossing rapporteert hoeveel agents er zijn geïmplementeerd en wat hun geografische distributie zijn, en hoeveel agents niet reageren en het aantal agents dat operationele gegevens verzendt.
+-   [Analyse van activiteitenlogboek](../../azure-monitor/platform/collect-activity-logs.md): de analyse van activiteitenlogboek oplossing helpt bij het analyseren van de activiteiten logboeken van Azure in alle Azure-abonnementen voor een klant.
 
-**Azure Automation**: [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) winkels, uitvoeren en beheren van runbooks. In deze oplossing helpen runbooks bij het verzamelen van logboeken van Azure SQL Database. Met de oplossing Automation [Wijzigingen bijhouden](../../automation/change-tracking.md) kunnen klanten eenvoudig wijzigingen in de omgeving identificeren.
+**Azure Automation**: [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) runbooks opslaat, uitvoert en beheert. In deze oplossing helpen runbooks bij het verzamelen van logboeken van Azure SQL Database. Met de oplossing Automation [Wijzigingen bijhouden](../../automation/change-tracking.md) kunnen klanten eenvoudig wijzigingen in de omgeving identificeren.
 
-**Azure monitor**: [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) helpt gebruikers bij het volgen van prestaties, het onderhouden van de beveiliging en het identificeren van trends door organisaties in te scha kelen, waarschuwingen te maken en gegevens te archiveren, met inbegrip van tracking-API-aanroepen in hun Azure-resources.
+**Azure monitor**: [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) helpt gebruikers bij het volgen van prestaties, het onderhouden van de beveiliging en het identificeren van trends door organisaties in te scha kelen, waarschuwingen te maken en gegevens te archiveren, inclusief het volgen van API-aanroepen in hun Azure-resources.
 
-**Application Insights**: [Application Insights](https://docs.microsoft.com/azure/application-insights/) is een UITBREID bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Het detecteert prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt diagnosticeren en inzicht kunt krijgen wat gebruikers daad werkelijk doen met de app. Het is ontworpen om gebruikers te helpen de prestaties en bruikbaarheid continu te verbeteren.
+**Application Insights**: [Application Insights](https://docs.microsoft.com/azure/application-insights/) is een uitbreid bare apm-service (Application Performance Management) voor webontwikkelaars op meerdere platforms. Het detecteert prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt diagnosticeren en inzicht kunt krijgen wat gebruikers daad werkelijk doen met de app. Het is ontworpen om gebruikers te helpen de prestaties en bruikbaarheid continu te verbeteren.
 
 ## <a name="threat-model"></a>Bedreigings model
 

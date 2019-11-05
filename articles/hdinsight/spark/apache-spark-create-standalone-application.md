@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: scala maven-toepassing voor Spark met IntelliJ-Azure HDInsight'
+title: 'Zelf studie: scala maven-app voor Spark & IntelliJ-Azure HDInsight'
 description: 'Zelf studie: een Spark-toepassing maken die is geschreven in scala met Apache Maven als het build-systeem en een bestaande maven archetype voor scala van IntelliJ-ideeën.'
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 667590120bba4676cbedf3d3bb2ff08e31656e1d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 156892a4785bf1644d29b82e98c3b2ae202c5a49
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71147027"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494695"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Zelfstudie: Een Scala Maven-toepassing maken voor Apache Spark in HDInsight met behulp van IntelliJ
 
-In deze zelfstudie leert u hoe u met behulp van [Apache Maven](https://maven.apache.org/) met IntelliJ IDEA een [Apache Spark](https://spark.apache.org/)-toepassing maakt die is geschreven in [Scala](https://www.scala-lang.org/). In dit artikel wordt Apache Maven gebruikt als het buildsysteem en er is een bestaand Maven-archetype voor Scala beschikbaar geleverd door IntelliJ IDEA.  Het maken van een Scala-toepassing in IntelliJ IDEA omvat de volgende stappen:
+In deze zelfstudie leert u hoe u met behulp van [Apache Maven](https://spark.apache.org/) met IntelliJ IDEA een [Apache Spark](https://www.scala-lang.org/)-toepassing maakt die is geschreven in [Scala](https://maven.apache.org/). In dit artikel wordt Apache Maven gebruikt als het buildsysteem en er is een bestaand Maven-archetype voor Scala beschikbaar geleverd door IntelliJ IDEA.  Het maken van een Scala-toepassing in IntelliJ IDEA omvat de volgende stappen:
 
 * Maven gebruiken als het buildsysteem.
 * POM-bestand (Project Object Model) bijwerken om afhankelijkheden van Spark-module om te zetten.
@@ -71,7 +71,7 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
    ![Het dialoog venster Nieuw project IntelliJ](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
 
-5. Selecteer **Next**.
+5. Selecteer **Volgende**.
 
 6. Geef in het venster **New project** de volgende gegevens op:  
 
@@ -100,14 +100,14 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
     ![IntelliJ-idee Maven-project maken](./media/apache-spark-create-standalone-application/create-maven-project.png)
 
-6. Selecteer **Next**.
+6. Selecteer **Volgende**.
 
 7. Geef relevante waarden op voor **GroupId**, **ArtifactId** en **Version**. In deze zelfstudie worden de volgende waarden gebruikt:
 
     - **GroupId:** com.microsoft.spark.example
     - **ArtifactId:** SparkSimpleApp
 
-8. Selecteer **Next**.
+8. Selecteer **Volgende**.
 
 9. Controleer de instellingen en selecteer vervolgens **Next**.
 
@@ -210,7 +210,7 @@ U kunt de volgende methoden gebruiken om de toepassing uit te voeren in het clus
 
 Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat u hebt gemaakt met de volgende stappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Typ **HDInsight** in het **Zoekvak** bovenaan.
 
@@ -220,7 +220,7 @@ Als u deze toepassing niet wilt blijven gebruiken, verwijdert u het cluster dat 
 
 1. Selecteer **Verwijderen**. Selecteer **Ja**.
 
-![Hdinsight Azure Portal cluster]verwijderen(./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "hdinsight-cluster verwijderen")
+![HDInsight Azure Portal cluster verwijderen](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight-cluster verwijderen")
 
 ## <a name="next-step"></a>Volgende stap
 

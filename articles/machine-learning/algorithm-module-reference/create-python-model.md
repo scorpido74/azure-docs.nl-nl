@@ -1,7 +1,7 @@
 ---
 title: 'Python-model maken: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Leer hoe u het python-model model maken in Azure Machine Learning service kunt gebruiken om een aangepaste module voor model lering of gegevens verwerking te maken.
+titleSuffix: Azure Machine Learning
+description: Leer hoe u het python-model model maken in Azure Machine Learning kunt gebruiken om een aangepaste module voor model lering of gegevens verwerking te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 33e15055958ac99f2aa9eb160f9e5cf3c5b0cd41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693896"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493799"
 ---
 # <a name="create-python-model"></a>Python-model maken
 
 In dit artikel wordt beschreven hoe u de module **python-model maken** gebruikt voor het maken van een niet-traind model van een python-script. 
 
-U kunt het model baseren op alle informatie die is opgenomen in een python-pakket in de Azure Machine Learning omgeving. 
+U kunt het model baseren op alle informatie die is opgenomen in een python-pakket in de Azure Machine Learning Designer-omgeving. 
 
 Nadat u het model hebt gemaakt, kunt u [Train model](train-model.md) gebruiken om het model op een gegevensset te trainen, zoals elke andere informatieer in azure machine learning. Het getrainde model kan worden door gegeven aan het [score model](score-model.md) voor het gebruik van het model voor het maken van voor spellingen. Het getrainde model kan vervolgens worden opgeslagen en de Score werk stroom kan worden gepubliceerd als een webservice.
 

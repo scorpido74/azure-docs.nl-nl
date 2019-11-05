@@ -9,20 +9,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819849"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497356"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u een regressie model voor Time-Series kunt trainen met behulp van geautomatiseerde machine learning in Azure Machine Learning. Het configureren van een prognose model is vergelijkbaar met het instellen van een standaard regressie model met behulp van geautomatiseerde machine learning, maar bepaalde configuratie opties en vooraf verwerkings stappen bestaan voor het werken met gegevens van de tijd reeks. In de volgende voor beelden ziet u hoe u:
 
 * Gegevens voorbereiden voor time series-model lering
-* Specifieke time series-para meters in een [`AutoMLConfig`-](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) object configureren
+* Specifieke time series-para meters in een [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) -object configureren
 * Voor spellingen uitvoeren met gegevens van de tijd reeks
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -50,7 +51,7 @@ Uitgebreide leer modellen hebben drie ingebouwde capbailities:
 1. Ze ondersteunen meerdere invoer en uitvoer
 1. Ze kunnen automatisch patronen extra heren in invoer gegevens die meer dan lange reeksen overschrijden
 
-Door grotere gegevens te krijgen, kunnen diepe leer modellen, zoals gedurende ' ForecasTCN ', de scores van het resulterende model verbeteren. 
+Door grotere gegevens te krijgen, kunnen diepe leer modellen, zoals gedurende ' ForecastTCN ', de scores van het resulterende model verbeteren. 
 
 Systeem eigen time series-informatie wordt ook verschaft als onderdeel van automatische MILLILITERs. Prophet werkt het beste met een tijd reeks met krachtige seizoensgebonden effecten en verschillende seizoenen historische gegevens. Prophet is nauw keurig & snelle, robuuste uitbijters, ontbrekende gegevens en dramatische wijzigingen in uw tijd reeks. 
 
@@ -63,7 +64,7 @@ AutoRegressive Integrated zwevend gemiddelde (ARIMA) is een populaire statistisc
 
 ## <a name="preparing-data"></a>Gegevens voorbereiden
 
-Het belangrijkste verschil tussen een prognose taak type en een regressie taak type in automatische machine learning, bevat een functie in uw gegevens die een geldige tijd reeks voor stelt. Een reguliere tijd reeks heeft een duidelijk gedefinieerde en consistente frequentie en heeft op elk steekproef punt een waarde in een doorlopende periode. Bekijk de volgende moment opname van een bestand `sample.csv`.
+Het belangrijkste verschil tussen een prognose taak type en een regressie taak type in automatische machine learning, bevat een functie in uw gegevens die een geldige tijd reeks voor stelt. Een reguliere tijd reeks heeft een duidelijk gedefinieerde en consistente frequentie en heeft op elk steekproef punt een waarde in een doorlopende periode. Bekijk de volgende moment opname van een bestands `sample.csv`.
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -112,13 +113,14 @@ Voor prognose taken maakt automatische machine learning gebruik van vooraf verwe
 
 Het `AutoMLConfig`-object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. Net als bij een regressie probleem definieert u de standaard opleidings parameters, zoals het taak type, het aantal iteraties, de trainings gegevens en het aantal Kruis validaties. Voor prognose taken zijn er aanvullende para meters die moeten worden ingesteld die van invloed zijn op het experiment. In de volgende tabel worden de para meters en het gebruik ervan toegelicht.
 
-| Param | Beschrijving | Verplicht |
+| Param | Beschrijving | Vereist |
 |-------|-------|-------|
 |`time_column_name`|Wordt gebruikt om de kolom datetime op te geven in de invoer gegevens die worden gebruikt voor het bouwen van de tijd reeks en het uitstellen van de frequentie.|✓|
 |`grain_column_names`|Naam (en) die afzonderlijke reeks groepen in de invoer gegevens definiëren. Als korrel niet is gedefinieerd, wordt ervan uitgegaan dat de gegevensset één keer wordt gebruikt.||
 |`max_horizon`|Definieert de maximale gewenste prognose horizon in eenheden van de time-series. Eenheden zijn gebaseerd op het tijds interval van uw trainings gegevens, bijvoorbeeld maandelijks, wekelijks dat de Forecaster moet voors pellen.|✓|
 |`target_lags`|Het aantal rijen dat de doel waarden moeten worden vertraagd op basis van de frequentie van de gegevens. Dit wordt weer gegeven als een lijst of één geheel getal. Er moet een vertraging worden gebruikt wanneer de relatie tussen de onafhankelijke variabelen en de afhankelijke variabele niet standaard overeenkomen of correleren. Wanneer u bijvoorbeeld de vraag voor een product wilt voors pellen, is de vraag in elke maand mogelijk afhankelijk van de prijs van specifieke producten 3 maanden vóór. In dit voor beeld wilt u mogelijk het doel (de vraag) met drie maanden uitsteld, zodat het model op de juiste relatie wordt getraind.||
 |`target_rolling_window_size`|*n* historische Peri Oden die moeten worden gebruikt voor het genereren van prognose waarden, < = grootte van de Trainingsset. Als u dit weglaat, is *n* de volledige grootte van de Trainingsset. Geef deze para meter op als u alleen een bepaalde hoeveelheid geschiedenis wilt beschouwen bij het trainen van het model.||
+|`enable_dnn`|DNNs voor het maken van prognoses.||
 
 Raadpleeg de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) voor meer informatie.
 
@@ -140,7 +142,7 @@ time_series_settings = {
 
 Als u de `grain_column_names` in het bovenstaande code fragment definieert, maakt AutoML twee afzonderlijke tijdreeks groepen, ook wel bekend als meerdere tijd reeksen. Als er geen korrel is gedefinieerd, wordt ervan uitgegaan dat de gegevensset een enkele time series is. Zie de [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)voor meer informatie over eenmalige time-series.
 
-Maak nu een standaard `AutoMLConfig`-object, geef het taak type `forecasting` op en verzend het experiment. Wanneer het model is voltooid, haalt u de best mogelijke run-iteratie op.
+Maak nu een standaard `AutoMLConfig`-object, geef het `forecasting` taak type op en verzend het experiment. Wanneer het model is voltooid, haalt u de best mogelijke run-iteratie op.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -150,7 +152,8 @@ import logging
 
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=15,
+                             enable_early_stopping=True,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -170,6 +173,17 @@ Raadpleeg de [Energy demand notebook](https://github.com/Azure/MachineLearningNo
 * Cross-Origin-Kruis validatie
 * Configureer bare lags
 * statistische functies van het Rolling venster
+
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Een DNN-experiment voor het maken van prognoses configureren
+
+> [!NOTE]
+> DNN-ondersteuning voor prognoses in geautomatiseerde Machine Learning is een preview-versie.
+
+Als u gebruik wilt maken van DNNs voor prognoses, moet u de para meter `enable_dnn` in de AutoMLConfig instellen op True. 
+
+Voor het gebruik van DNNs kunt u het beste een AML Compute-cluster gebruiken met GPU-Sku's en ten minste twee knoop punten als het reken doel. Raadpleeg de [AML Compute-documentatie](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) voor meer informatie. Zie [grootten van GPU geoptimaliseerde virtuele machines](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) voor meer informatie over de VM-grootten die gpu's bevatten.
+
+Om voldoende tijd te bieden aan het volt ooien van de DNN-training, wordt aangeraden de time-out voor het experiment in te stellen op ten minste een aantal uren.
 
 ### <a name="view-feature-engineering-summary"></a>Samen vatting van feature engineering weer geven
 

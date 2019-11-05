@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175858"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495829"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wordt het aangepaste beleid voor IPsec/IKE op alle Azure VPN Gateway-SKU's ondersteund?
-Het aangepaste beleid voor IPsec/IKE wordt ondersteund op Azure VPN-gateways **VpnGw1, VpnGw2, VpnGw3, Standard** en **HighPerformance**. De **basis**-SKU wordt **niet** ondersteund.
+Aangepaste IPsec/IKE-beleid wordt ondersteund op **alle Azure sku's, met uitzonde ring van de basis-SKU**.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hoeveel beleidsregels kan ik opgeven voor een verbinding?
 U kunt maar ***één*** beleidscombinatie opgeven voor een bepaalde verbinding.
@@ -103,5 +103,5 @@ Ja. Een VNet-naar-VNet-tunnel bestaat uit twee verbindingsresources in Azure, é
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Werkt een aangepast IPsec/IKE-beleid op een ExpressRoute-verbinding?
 Nee. IPsec/IKE-beleid werkt alleen op S2S-VPN- en VNet-naar-VNet-verbindingen via de Azure VPN-gateways.
 
-### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Waar vind ik meer configuratie-informatie voor IPsec
-Zie [configureren IPsec/IKE-beleid voor S2S- of VNet-naar-VNet-verbindingen](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Waar vind ik meer informatie over de configuratie van IPsec?
+Zie [IPSec/IKE-beleid configureren voor S2S-of vnet-naar-vnet-verbindingen](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671148"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495981"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik
 
@@ -23,9 +23,9 @@ Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw
 > [!IMPORTANT]
 > Een upgrade uitvoeren van een v1-of Blob Storage-account voor algemeen gebruik naar algemeen gebruik v2 is permanent en kan niet ongedaan worden gemaakt.
 
-## <a name="upgrade-using-the-azure-portal"></a>Bijwerken met behulp van de Azure Portal
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Ga naar uw opslagaccount.
 3. Klik in de sectie **instellingen** op **configuratie**.
 4. Klik onder **Soort account** op **Upgrade**.
@@ -34,7 +34,7 @@ Een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik vanuit uw
 
     ![Soort upgrade-account](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-## <a name="upgrade-with-powershell"></a>Een upgrade uitvoeren met PowerShell
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,8 +45,7 @@ Roep vervolgens de volgende opdracht aan om het account bij te werken, waarbij u
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
-
-## <a name="upgrade-with-azure-cli"></a>Een upgrade uitvoeren met Azure CLI
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u een algemeen v1-account wilt bijwerken naar een v2-account voor algemeen gebruik met behulp van Azure CLI, moet u eerst de nieuwste versie van Azure CLI installeren. Zie [Azure CLI 2.0 installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) voor meer informatie over het installeren van de CLI.
 
@@ -56,11 +55,13 @@ Roep vervolgens de volgende opdracht aan om het account bij te werken, waarbij u
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```
 
+---
+
 ## <a name="specify-an-access-tier-for-blob-data"></a>Een toegangs laag voor BLOB-gegevens opgeven
 
 V2-accounts voor algemeen gebruik ondersteunen alle Azure Storage-services en gegevens objecten, maar toegangs lagen zijn alleen beschikbaar voor blok-blobs in Blob-opslag. Wanneer u een upgrade uitvoert naar een v2-opslag account voor algemeen gebruik, kunt u een toegangs laag voor uw BLOB-gegevens opgeven.
 
-Met toegangs lagen kunt u de meest rendabele opslag kiezen op basis van uw verwachte gebruiks patronen. Blok-blobs kunnen worden opgeslagen in een warme, koele of archief laag. Zie [Azure Blob Storage (Engelstalig) voor meer informatie over toegangs lagen: Dynamische, coole en archief opslag lagen](../blobs/storage-blob-storage-tiers.md).
+Met toegangs lagen kunt u de meest rendabele opslag kiezen op basis van uw verwachte gebruiks patronen. Blok-blobs kunnen worden opgeslagen in een warme, koele of archief laag. Zie [Azure Blob Storage: warme, cool en archief opslag lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 
 Er wordt standaard een nieuw opslag account gemaakt in de laag Hot Access en er wordt een upgrade uitgevoerd van een algemeen v1-opslag account naar de laag Hot Access. Als u de toegangs laag bekijkt die u voor uw gegevens na de upgrade wilt gebruiken, moet u rekening houden met uw scenario. Er zijn twee typische gebruikers scenario's voor het migreren naar een v2-account voor algemeen gebruik:
 
@@ -75,17 +76,17 @@ Een upgrade uitvoeren van een v1-opslag account naar een v2-account voor algemee
 
 Alle opslagaccounts maken gebruik van een prijsmodel voor het opslaan van blobs op basis van laag van elke blob. Als u een opslagaccount gebruikt, zijn de volgende factureringsvoorwaarden van toepassing:
 
-* **Opslag kosten**: Naast de hoeveelheid opgeslagen gegevens zijn de kosten voor het opslaan van gegevens afhankelijk van de opslag toegangs laag. De kosten per GB nemen af als de laag minder dynamisch ('cooler') wordt.
+* **Opslag kosten**: naast de hoeveelheid opgeslagen gegevens, zijn de kosten voor het opslaan van gegevens afhankelijk van de opslag toegangs laag. De kosten per GB nemen af als de laag minder dynamisch ('cooler') wordt.
 
-* **Kosten voor gegevens toegang**: De kosten voor gegevens toegang nemen toe naarmate de laag koeler wordt. Voor gegevens in de koel-en archief opslag-laag, worden er kosten in rekening gebracht voor de toegang tot gegevens per gigabyte.
+* **Kosten van gegevenstoegang**: de kosten voor gegevenstoegang nemen toe als de laag minder dynamisch ('cooler') wordt. Voor gegevens in de koel-en archief opslag-laag, worden er kosten in rekening gebracht voor de toegang tot gegevens per gigabyte.
 
-* **Transactie kosten**: Er zijn kosten per trans actie voor alle lagen die toenemen naarmate de laag koeler wordt.
+* **Transactiekosten**: er gelden kosten per transactie voor alle lagen. Deze kosten nemen toe als de laag minder dynamisch wordt.
 
-* **Kosten voor gegevens overdracht met geo-replicatie**: Deze kosten zijn alleen van toepassing op accounts waarvoor geo-replicatie is geconfigureerd, inclusief GRS en RA-GRS. Kosten voor gegevensoverdracht met geo-replicatie worden in rekening gebracht per GB.
+* **Kosten voor gegevensoverdracht met geo-replicatie**: deze kosten zijn alleen van toepassing op accounts waarvoor geo-replicatie is geconfigureerd, inclusief GRS en RA-GRS. Kosten voor gegevensoverdracht met geo-replicatie worden in rekening gebracht per GB.
 
-* **Kosten voor uitgaande gegevens overdracht**: Uitgaande gegevens overdracht (gegevens die uit een Azure-regio worden overgebracht) kunnen per Gigabyte worden gefactureerd, op basis van de opslag accounts voor algemeen gebruik.
+* **Kosten voor uitgaande gegevens overdracht**: uitgaande gegevens overdracht (gegevens die worden overgedragen uit een Azure-regio), maakt het mogelijk om het bandbreedte gebruik per gigabyte te betalen, in overeenstemming met opslag accounts voor algemeen gebruik.
 
-* **De laag voor opslag toegang wijzigen**: Als u de toegangs laag voor account opslag wijzigt van koud naar warm, worden er kosten in rekening gebracht die gelijk zijn aan het lezen van alle bestaande gegevens in het opslag account. Als u de laag van het account echter wijzigt van dynamisch in Cool, worden er kosten in rekening gebracht die gelijk zijn aan het schrijven van alle gegevens in de cool-laag (alleen GPv2-accounts).
+* **De laag voor opslag toegang wijzigen**: het toegangs niveau van de account opslag wijzigen van koud in warme, waarbij de kosten gelijk zijn aan het lezen van alle gegevens in het opslag account. Als u de laag van het account echter wijzigt van dynamisch in Cool, worden er kosten in rekening gebracht die gelijk zijn aan het schrijven van alle gegevens in de cool-laag (alleen GPv2-accounts).
 
 > [!NOTE]
 > Zie de pagina [Prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie over het prijsmodel voor opslagaccounts. Zie de pagina [Prijsinformatie voor bandbreedte](https://azure.microsoft.com/pricing/details/data-transfers/) voor meer informatie over de kosten voor uitgaande gegevensoverdracht.

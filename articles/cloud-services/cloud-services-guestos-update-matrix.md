@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/7/2019
+ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: 1a3945569002ea0ec88a9e23a6f02e7833d7690a
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: fa6f3e77a49afc5b16d11cb0c7d434f967c7cd53
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035141"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500245"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS releases en SDK Compatibility Matrix
 Voorziet in actuele informatie over de nieuwste versies van het Azure-gast besturingssysteem voor Cloud Services. Deze informatie helpt u bij het plannen van het upgradepad voordat een gast besturingssysteem wordt uitgeschakeld. Als u uw rollen configureert voor het gebruik van *automatische* updates van gast besturingssystemen zoals beschreven in de update-instellingen van het [Azure-gast besturingssysteem][Azure Guest OS Update Settings], is het niet belang rijk dat u deze pagina leest.
@@ -41,6 +41,9 @@ Voorziet in actuele informatie over de nieuwste versies van het Azure-gast bestu
 Weet u niet zeker hoe u uw gast besturingssysteem kunt bijwerken? Bekijk [Dit][cloud updates] uit.
 
 ## <a name="news-updates"></a>Nieuws updates
+
+###### <a name="november-1-2019"></a>**1 november 2019**
+Het besturings systeem van oktober gast is uitgebracht.
 
 ###### <a name="october-7-2019"></a>**7 oktober 2019**
 Het besturings systeem september gast is uitgebracht.
@@ -106,17 +109,18 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
-| WA-GUEST-OS-6.11 _201909-01 | 7 oktober 2019 |  Post 6,13  |  
-| WA-GUEST-OS-6.10 _201908-01 | 4 augustus 2019 |  Post 6,12  |  
+| WA-GUEST-OS-6,12 _201910-01 | 1 november 2019 | Post 6,14 |  
+| WA-GUEST-OS-6.11 _201909-01 | 7 oktober 2019 | Post 6,13 |  
+|~~WA-GUEST-OS-6.10 _201908-01~~| 4 augustus 2019 | 1 november 2019  |  
 |~~WA-GUEST-OS-6,9 _201907-0~~|26 juli 2019 | 7 oktober 2019 |
 |~~WA-GUEST-OS-6,8 _201906-01~~|8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-6,7 _201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-6.6_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-6.5_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-6.4_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-6.3_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-6.2_201812-01~~ |24 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-6.1_201811-01~~ |24 januari 2019 |5 februari 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-6,6 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-6.5 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-6.4 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-6.3 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-6.2 _201812-01~~ |24 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-6.1 _201811-01~~ |24 januari 2019 |5 februari 2019 |
 
 ## <a name="family-5-releases"></a>Versies van familie 5
 **Windows Server 2016**
@@ -130,61 +134,64 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-5.36 _201910-01 | 1 november 2019 | Post 5,38 |  
 | WA-GUEST-OS-5.35 _201909-01 | 7 oktober 2019 | Post 5,37 |  
-| WA-GUEST-OS-5.34 _201908-01  |  4 augustus 2019  |  Post 5,36 |  
+|~~WA-GUEST-OS-5.34 _201908-01~~|  4 augustus 2019  |  Post 5,36 |  
 |~~WA-GUEST-OS-5.33 _201907-01~~| 26 juli 2019 | 7 oktober 2019 |  
 |~~WA-GUEST-OS-5.32 _201906-01~~|8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-5.31 _201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-5.30_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-5.29_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-5.28_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-5.27_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-5.26_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-5.25_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-5.24_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-5.23_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|~~WA-GUEST-OS-5.30 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-5.29 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-5.28 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-5.27 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-5.26 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-5,25 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-5.24 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-5.23 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
 ## <a name="family-4-releases"></a>Releases van familie 4
 **Windows Server 2012 R2**
 
-.NET Framework geïnstalleerd: 3.5, 4.5.1, 4.5.2
+.NET Framework geïnstalleerd: 3,5, 4.5.1, 4.5.2
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-4.71 _201910-01 | 1 november 2019 | Post 4,73 |  
 | WA-GUEST-OS-4.70 _201909-01 | 7 oktober 2019 | Post 4,72 |  
-| WA-GUEST-OS-4.69 _201908-01 | 4 augustus 2019 | Post 4,71 |  
+|~~WA-GUEST-OS-4.69 _201908-01~~| 4 augustus 2019 | 1 november 2019 |  
 |~~WA-GUEST-OS-4.68 _201907-01~~| 26 juli 2019  | 7 oktober 2019 |
 |~~WA-GUEST-OS-4.67 _201906-01~~| 8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-4.66 _201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-4.65_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-4.64_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-4.63_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-4.62_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-4.61_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-4.60_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-4.59_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-4.58_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|~~WA-GUEST-OS-4.65 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-4.64 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-4.63 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-4.62 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-4.61 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-4.60 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-4.59 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-4.58 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
 ## <a name="family-3-releases"></a>Versies van familie 3
 **Windows Server 2012**
 
-.NET Framework geïnstalleerd: 3.5, 4.5
+.NET Framework geïnstalleerd: 3,5, 4,5
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-3.78 _201910-01 | 1 november 2019 | Post 3,80 |  
 | WA-GUEST-OS-3.77 _201909-01 | 7 oktober 2019 | Post 3,79 |  
-| WA-GUEST-OS-3.76 _201908-01 |  4 augustus 2019  |  Post 3,78  |  
+|~~WA-GUEST-OS-3.76 _201908-01~~|  4 augustus 2019  |  1 november 2019  |  
 |~~WA-GAST BESTURINGSSYSTEEM-3,75 _201907-01~~| 26 juli 2019 | 7 oktober 2019 |
 |~~WA-GUEST-OS-3.74 _201906-01~~| 8 juli 2019 |4 augustus 2019 |
 |~~WA-GUEST-OS-3.73 _201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-3.72_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-3.71_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-3.70_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-3.69_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-3.68_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-3.67_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-3.66_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-3.65_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|~~WA-GUEST-OS-3.72 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-3.71 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GAST BESTURINGSSYSTEEM-3.70 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-3.69 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-3.68 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-3.67 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-3.66 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-3.65 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
 ## <a name="family-2-releases"></a>Versies van familie 2
 **Windows Server 2008 R2 SP1**
@@ -193,19 +200,20 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
+| WA-GUEST-OS-2.91 _201910-01 | 1 november 2019 | Post 2,93 |  
 | WA-GUEST-OS-2.90 _201909-01 | 7 oktober 2019 | Post 2,92 |  
-| WA-GUEST-OS-2.89 _201908-01 | 4 augustus 2019 | Post 2,91 |  
+|~~WA-GUEST-OS-2.89 _201908-01~~| 4 augustus 2019 | 1 november 2019 |  
 |~~WA-GUEST-OS-2,88 _201907-01~~| 26 juli 2019 | 7 oktober 2019 |
 |~~WA-GUEST-OS-2.87 _201906-01~~|8 juli 2019 | 4 augustus 2019 |
 |~~WA-GUEST-OS-2.86 _201905-01~~ |6 juni 2019 |26 juli 2019 |
-|~~WA-GUEST-OS-2.85_201904-01~~ |7 mei 2019 |8 juli 2019 |
-|~~WA-GUEST-OS-2.84_201903-01~~ |26 maart 2019 |6 juni 2019 |
-|~~WA-GUEST-OS-2.83_201902-01~~ |12 maart 2019 |7 mei 2019 |
-|~~WA-GUEST-OS-2.82_201901-01~~ |5 februari 2019 |26 maart 2019 |
-|~~WA-GUEST-OS-2.81_201812-01~~ |7 januari 2019 |12 maart 2019 |
-|~~WA-GUEST-OS-2.80_201811-01~~ |14 december 2018 |5 februari 2019 |
-|~~WA-GUEST-OS-2.79_201810-01~~ |8 november 2018 |7 januari 2019 |
-|~~WA-GUEST-OS-2.78_201809-01~~ |12 oktober 2018 |14 december 2018 |
+|~~WA-GUEST-OS-2.85 _201904-01~~ |7 mei 2019 |8 juli 2019 |
+|~~WA-GUEST-OS-2.84 _201903-01~~ |26 maart 2019 |6 juni 2019 |
+|~~WA-GUEST-OS-2.83 _201902-01~~ |12 maart 2019 |7 mei 2019 |
+|~~WA-GUEST-OS-2.82 _201901-01~~ |5 februari 2019 |26 maart 2019 |
+|~~WA-GUEST-OS-2.81 _201812-01~~ |7 januari 2019 |12 maart 2019 |
+|~~WA-GUEST-OS-2,80 _201811-01~~ |14 december 2018 |5 februari 2019 |
+|~~WA-GUEST-OS-2.79 _201810-01~~ |8 november 2018 |7 januari 2019 |
+|~~WA-GUEST-OS-2.78 _201809-01~~ |12 oktober 2018 |14 december 2018 |
 
 ## <a name="msrc-patch-updates"></a>Updates van MSRC-patch
 De lijst met patches die zijn opgenomen in elke maandelijkse versie van het gast besturingssysteem, is [hier][patches]beschikbaar.

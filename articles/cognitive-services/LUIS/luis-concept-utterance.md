@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638326"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486637"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Begrijpen wat goede uitingen zijn voor uw LUIS-app
 
@@ -35,7 +35,7 @@ Verzamel uitingen die u denkt dat gebruikers worden ingevoerd. Neem uitingen op.
 
 ## <a name="how-to-choose-varied-utterances"></a>Een variabele uitingen kiezen
 
-Wanneer u voor het eerst aan de slag gaat door [bijvoorbeeld uitingen](luis-how-to-add-example-utterances.md) toe te voegen aan uw Luis-model, zijn hier enkele principes die u moet onthouden.
+Wanneer u voor het eerst aan de slag gaat door [bijvoorbeeld uitingen toe te voegen](luis-how-to-add-example-utterances.md) aan uw Luis-model, zijn hier enkele principes die u moet onthouden.
 
 ### <a name="utterances-arent-always-well-formed"></a>Uitingen zijn niet altijd goed gevormd
 
@@ -90,7 +90,7 @@ Diakritische tekens zijn tekens of tekens in de tekst, bijvoorbeeld:
 
 Als uw app normalisatie inschakelt, worden de scores in het **test** deel venster, batch tests en eindpunt query's gewijzigd voor alle uitingen met diakritische tekens of interpunctie.
 
-Schakel utterance normalisatie voor diakritische tekens of interpunctie in voor uw Luis JSON-app-bestand `settings` in de para meter.
+Schakel utterance normalisatie voor diakritische tekens of interpunctie in voor uw LUIS JSON-app-bestand in de para meter `settings`.
 
 ```JSON
 "settings": [
@@ -99,7 +99,7 @@ Schakel utterance normalisatie voor diakritische tekens of interpunctie in voor 
 ] 
 ```
 
-Het normaliseren van interpunctie betekent dat voordat uw modellen worden getraind en voordat uw eindpunt query's worden voor speld, wordt interpunctie verwijderd uit de uitingen. 
+Het normaliseren van **interpunctie** betekent dat voordat uw modellen worden getraind en voordat uw eindpunt query's worden voor speld, wordt interpunctie verwijderd uit de uitingen. 
 
 Als **diakritische** tekens worden genormaliseerd, worden de tekens vervangen door accenten in uitingen. Bijvoorbeeld: `Je parle français` wordt `Je parle francais`. 
 
@@ -108,25 +108,25 @@ Norma Lise ring betekent niet dat er geen lees-en diakritische tekens worden wee
 
 ### <a name="punctuation-marks"></a>Lees tekens
 
-Interpunctie is een afzonderlijke token in LUIS. Een utterance die een punt bevat aan het einde en een utterance die geen punt aan het einde bevatten, zijn twee afzonderlijke uitingen en kunnen twee verschillende voor spellingen ontvangen. 
+Interpunctie is een afzonderlijk token in LUIS. Een utterance die een punt bevat aan het einde en een utterance die geen punt aan het einde bevatten, zijn twee afzonderlijke uitingen en kunnen twee verschillende voor spellingen ontvangen. 
 
 Als interpunctie niet is genormaliseerd, LUIS niet standaard interpunctie markeringen negeren, omdat sommige client toepassingen significant kunnen zijn voor deze markeringen. Zorg ervoor dat uw voor beeld-uitingen zowel interpunctie als geen interpunctie gebruiken voor beide stijlen om dezelfde relatieve scores te retour neren. 
 
-Zorg ervoor dat het model interpunctie ofwel worden verwerkt in de [voorbeeld uitingen](luis-concept-utterance.md) (met en niet met leestekens) of in de [patronen](luis-concept-patterns.md) waar is het eenvoudiger om interpunctie met de syntaxis van de speciale negeren: `I am applying for the {Job} position[.]`
+Zorg ervoor dat het model interpunctie verwerkt in het [voor beeld uitingen](luis-concept-utterance.md) (zonder interpunctie) of in de [patronen](luis-concept-patterns.md) waar het gemakkelijker is om interpunctie te negeren met de speciale syntaxis: `I am applying for the {Job} position[.]`
 
-Als interpunctie geen specifieke betekenis heeft in uw client toepassing, kunt u overwegen interpunctie te [negeren](#utterance-normalization) door interpunctie te normaliseren. 
+Als interpunctie geen specifieke betekenis heeft in uw client toepassing, kunt u overwegen [interpunctie te negeren](#utterance-normalization) door interpunctie te normaliseren. 
 
 ### <a name="ignoring-words-and-punctuation"></a>Woorden en interpunctie negeren
 
-Als u specifieke woorden of interpunctie in patronen wilt negeren, gebruikt u een [patroon](luis-concept-patterns.md#pattern-syntax) met de syntaxis _negeren_ van de vier Kante haken, `[]`. 
+Als u specifieke woorden of interpunctie in patronen wilt negeren, gebruikt u een [patroon](luis-concept-patterns.md#pattern-syntax) met de syntaxis _negeren_ van de vier Kante haken `[]`. 
 
 ## <a name="training-utterances"></a>Trainings uitingen
 
-Training is doorgaans niet-deterministisch: de utterance-voor spelling kan enigszins variëren in verschillende versies of apps. U kunt niet-deterministische trainingen verwijderen door de API voor [versie](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -instellingen `UseAllTrainingData` te wijzigen met de naam/waarde-paar om alle trainings gegevens te gebruiken.
+Training is doorgaans niet-deterministisch: de utterance-voor spelling kan enigszins variëren in verschillende versies of apps. U kunt niet-deterministische trainingen verwijderen door de API voor [versie-instellingen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) bij te werken met de `UseAllTrainingData` naam/waarde-paar om alle trainings gegevens te gebruiken.
 
 ## <a name="testing-utterances"></a>Uitingen testen 
 
-Ontwikkel aars moeten hun LUIS-toepassing met echt verkeer testen door uitingen naar de URL voor het Voorspellings [eindpunt](luis-how-to-azure-subscription.md) te sturen. Deze uitingen worden gebruikt om de prestaties van de intenties en entiteiten te verbeteren met [beoordeling uitingen](luis-how-to-review-endpoint-utterances.md). Tests die zijn verzonden met het deel venster LUIS website testen, worden niet via het eind punt verzonden en bijdragen dus niet aan actief leren. 
+Ontwikkel aars moeten hun LUIS-toepassing met echt verkeer testen door uitingen naar de URL voor het [Voorspellings eindpunt](luis-how-to-azure-subscription.md) te sturen. Deze uitingen worden gebruikt om de prestaties van de intenties en entiteiten te verbeteren met [beoordeling uitingen](luis-how-to-review-endpoint-utterances.md). Tests die zijn verzonden met het deel venster LUIS website testen, worden niet via het eind punt verzonden en bijdragen dus niet aan actief leren. 
 
 ## <a name="review-utterances"></a>Uitingen controleren
 
@@ -135,6 +135,20 @@ Nadat uw model is getraind, gepubliceerd en [endpoint](luis-glossary.md#endpoint
 ## <a name="best-practices"></a>Aanbevolen procedures
 
 Bekijk [Aanbevolen procedures](luis-concept-best-practices.md) en pas deze toe als onderdeel van uw reguliere ontwerp cyclus.
+
+## <a name="label-for-word-meaning"></a>Label voor woord betekenis
+
+Als het woord of de rang schikking van Word hetzelfde is, maar niet hetzelfde is, moet u deze niet aan de entiteit labelen. 
+
+De volgende uitingen is het woord `fair` een homograph is. De spelling is hetzelfde, maar heeft een andere betekenis:
+
+|Utterance|
+|--|
+|Wat voor soort graafschap komt in het gebied Seattle van deze zomer?|
+|Is de huidige beoordeling voor de Seattle-beoordeling eerlijk?|
+
+Als u wilt dat een gebeurtenis entiteit alle gebeurtenis gegevens vindt, labelt u het woord `fair` in de eerste utterance, maar niet in de tweede.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [voor beeld uitingen toevoegen](luis-how-to-add-example-utterances.md) voor informatie over het trainen van een Luis-app om inzicht te krijgen in gebruikers uitingen.

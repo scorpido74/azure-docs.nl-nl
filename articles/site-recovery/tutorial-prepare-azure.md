@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814331"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488550"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-resources voorbereiden op herstel na noodgevallen van on-premises machines
 
@@ -49,21 +49,22 @@ Als u zojuist een gratis Azure-account hebt gemaakt, bent u de beheerder van uw 
 - Schrijven naar een Azure Storage-account.
 - Schrijven naar een door Azure beheerde schijf.
 
-U kunt deze taken alleen uitvoeren als aan uw account de ingebouwde rol van Inzender voor virtuele machines is toegewezen. En als u Site Recovery-bewerkingen wilt beheren in een kluis, moet aan uw account ook de ingebouwde rol van Site Recovery-inzender zijn toegewezen.
+U kunt deze taken alleen uitvoeren als aan uw account de ingebouwde rol van Inzender voor virtuele machines is toegewezen. Daarnaast moet aan uw account de ingebouwde rol Site Recovery Inzender zijn toegewezen om Site Recovery bewerkingen in een kluis te beheren.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-1. Klik in de Azure Portal op **+ een resource maken**en zoek op de Marketplace naar **herstel**.
-2. Klik op **back-up en site Recovery**en klik op de pagina back-up en site Recovery op **maken**. 
-1. Ga naar **Recovery Services-kluis** > **Naam** en voer een beschrijvende naam in voor de kluis. Voor deze reeks zelfstudies gebruiken we **ContosoVMVault**.
-2. Selecteer bij **Resourcegroep** een bestaande resourcegroep of maak een nieuwe. Voor deze zelfstudie gebruiken we **contosoRG**.
-3. Selecteer bij **Locatie** de regio waarin de kluis zich moet bevinden. In dit voorbeeld gebruiken we **Europa - west**.
-4. Voor snelle toegang tot de kluis vanuit het dashboard, selecteert u **Aan dashboard vastmaken** > **Maken**.
+1. Selecteer in het menu Azure Portal de optie **een resource maken**en zoek op de Marketplace naar **herstel**.
+2. Selecteer **back-up en site Recovery** in de zoek resultaten en klik op de pagina back-up en site Recovery op **maken**. 
+3. Selecteer op de pagina **Recovery Services kluis maken** het **abonnement**. We gebruiken het **Contoso-abonnement**.
+4. Selecteer bij **Resourcegroep** een bestaande resourcegroep of maak een nieuwe. Voor deze zelfstudie gebruiken we **contosoRG**.
+5. Voer in **kluis naam**een beschrijvende naam in om de kluis aan te duiden. Voor deze reeks zelfstudies gebruiken we **ContosoVMVault**.
+6. Selecteer in **regio**de regio waarin de kluis zich bevindt. gebruiken we **Europa - west**.
+7. Selecteer **Controleren + maken**.
 
    ![Een nieuwe kluis maken](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   De nieuwe kluis wordt weergegeven in **Dashboard** > **Alle resources** en op de hoofdpagina **Recovery Services-kluizen**.
+   De nieuwe kluis wordt nu weer gegeven in het **dash board** > **alle resources**en op de hoofd pagina van **Recovery Services kluizen** .
 
 ## <a name="set-up-an-azure-network"></a>Een Azure-netwerk instellen
 
@@ -72,16 +73,17 @@ On-premises machines worden gerepliceerd naar Azure Managed disks. Als er een fa
 1. Selecteer in [Azure Portal](https://portal.azure.com) **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
 2. Zorg ervoor dat **Resource Manager** is geselecteerd als het implementatie model.
 3. Voer bij **Naam** een netwerknaam in. De naam moet uniek zijn binnen de Azure-resourcegroep. In deze zelfstudie gebruiken we **ContosoASRnet**.
-4. Geef de resourcegroep op waarin het netwerk wordt gemaakt. We gebruiken de bestaande resourcegroep **contosoRG**.
-5. In **adres bereik**voert u het bereik voor het netwerk in. We gebruiken **10.1.0.0/24**en maken geen gebruik van een subnet.
-6. Selecteer bij **Abonnement** het abonnement waarin u het netwerk wilt maken.
+4. Voer in **adres ruimte**het adres bereik van het virtuele netwerk in de notatie CDR in. We gebruiken **10.1.0.0/24**.
+5. Selecteer bij **Abonnement** het abonnement waarin u het netwerk wilt maken.
+6. Geef de **resource groep** op waarin het netwerk wordt gemaakt. We gebruiken de bestaande resourcegroep **contosoRG**.
 7. Selecteer bij **locatie**de regio waarin de Recovery Services kluis is gemaakt. In onze zelf studie is deze **Europa-West**. Het netwerk moet zich in dezelfde regio bevinden als de kluis.
-8. We laten de standaardopties staan voor DDoS-basisbescherming zonder service-eindpunt op het netwerk.
-9. Klik op **Create**.
+8. In **adres bereik**voert u het bereik voor het netwerk in. We gebruiken **10.1.0.0/24**en maken geen gebruik van een subnet.
+9. We hebben de standaard opties van Basic DDoS Protection, zonder service-eind punt of firewall op het netwerk, verlaten.
+9. Selecteer **Maken**.
 
    ![Een virtueel netwerk maken](media/tutorial-prepare-azure/create-network.png)
 
-Het duurt een paar seconden voordat het virtuele netwerk is gemaakt. Nadat dit is gemaakt, wordt het in het Azure Portal-dashboard weergegeven.
+Het duurt een paar seconden voordat het virtuele netwerk is gemaakt. Nadat de app is gemaakt, wordt deze weer geven in het dash board van Azure Portal.
 
 
 

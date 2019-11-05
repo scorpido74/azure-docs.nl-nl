@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: a0c86f9ad134e9b640d33d1a391c5387af9f9afd
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 40797c1b46bc88ecdaab6e28ef64f05a73e3ba8d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965669"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495913"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-adrestypen en toewijzingsmethoden in Azure
 
@@ -105,7 +105,7 @@ Statische openbare IP-adressen worden vaak gebruikt in de volgende scenario's:
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-hostnaamomzetting
-U kunt voor een openbare IP-resource een DNS-domeinnaamlabel opgeven, zodat *domeinnaamlabel*.*locatie*. cloudapp.azure.com verwijst naar het openbare IP-adres op de door Azure beheerde DNS-servers. Als u bijvoorbeeld een openbare IP-resource maakt met **contoso** als *domeinnaamlabel* op de Azure *-locatie***US - west**, wordt de FQDN-naam (Fully Qualified Domain Name) **contoso.westus.cloudapp.azure.com** omgezet in het openbare IP-adres van de resource.
+U kunt voor een openbare IP-resource een DNS-domeinnaamlabel opgeven, zodat *domeinnaamlabel*.*locatie*. cloudapp.azure.com verwijst naar het openbare IP-adres op de door Azure beheerde DNS-servers. Als u bijvoorbeeld een openbare IP-resource maakt met **contoso** als *domeinnaamlabel* op de Azure **-locatie***US - west*, wordt de FQDN-naam (Fully Qualified Domain Name) **contoso.westus.cloudapp.azure.com** omgezet in het openbare IP-adres van de resource.
 
 > [!IMPORTANT]
 > Elk domeinnaamlabel dat wordt gemaakt, moet uniek zijn binnen de Azure-locatie.  
@@ -151,7 +151,7 @@ In het Azure Resource Manager-implementatiemodel is een privé-IP-adres gekoppel
 
 ### <a name="allocation-method"></a>Toewijzingsmethode
 
-Een privé-IP-adres wordt in toegewezen in het adresbereik van het subnet van het virtuele netwerk waarin een resource wordt geïmplementeerd. Azure reserveert de eerste vier adressen in het adresbereik van elk subnet, zodat die adressen niet aan resources kunnen worden toegewezen. Als het adresbereik van het subnet bijvoorbeeld 10.0.0.0/16 is, kunnen de adressen van 10.0.0.0 tot en met-10.0.0.3 niet aan resources worden toegewezen. IP-adressen binnen het adresbereik van het subnet kunnen slechts aan één resource tegelijkertijd worden toegewezen. 
+Een privé-IP-adres wordt in toegewezen in het adresbereik van het subnet van het virtuele netwerk waarin een resource wordt geïmplementeerd. Azure reserveert de eerste vier adressen in het adresbereik van elk subnet, zodat die adressen niet aan resources kunnen worden toegewezen. Als het adres bereik van het subnet bijvoorbeeld 10.0.0.0/16 is, kunnen de adressen 10.0.0.0-10.0.0.3 en 10.0.255.255 niet worden toegewezen aan resources. IP-adressen binnen het adresbereik van het subnet kunnen slechts aan één resource tegelijkertijd worden toegewezen. 
 
 Er zijn twee methoden voor het toewijzen van een privé-IP-adres:
 
@@ -180,10 +180,10 @@ De volgende tabel toont de specifieke eigenschap waarmee een privé-IP-adres kan
 | Resource op het hoogste niveau | IP-adreskoppeling | Dynamisch | Statisch |
 | --- | --- | --- | --- |
 | Virtuele machine |Netwerkinterface |Ja |Ja |
-| Load Balancer |Front-end-configuratie |Ja |Ja |
+| Load balancer |Front-end-configuratie |Ja |Ja |
 | Toepassingsgateway |Front-end-configuratie |Ja |Ja |
 
-## <a name="limits"></a>Beperkingen
+## <a name="limits"></a>Limieten
 De limieten die zijn opgelegd voor IP-adressen, vindt u in de volledige set [limieten voor netwerken](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. De limieten gelden per regio en per abonnement. U kunt [contact opnemen met ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u op basis van uw bedrijfsbehoeften de standaardlimieten wilt verhogen tot de maximumlimieten.
 
 ## <a name="pricing"></a>Prijzen

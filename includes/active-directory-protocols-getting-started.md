@@ -13,25 +13,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: priyamo
-ms.openlocfilehash: b6dd4cd55755ae2c92afd327ad72ffe6966b9a07
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7772b3ee5d0e27c09e83f7d118eb9f67f17e0d07
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176208"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522653"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Uw toepassing registreren bij uw AD-tenant
-Eerst moet u uw toepassing registreren bij uw tenant Azure Active Directory (Azure AD). Na registratie beschikt u over een toepassings-id voor uw toepassing en kan uw toepassing tokens ontvangen.
+Registreer eerst uw toepassing met uw Azure Active Directory-Tenant (Azure AD). Na registratie beschikt u over een toepassings-id voor uw toepassing en kan uw toepassing tokens ontvangen.
 
-* Meld u aan bij [Azure Portal](https://portal.azure.com).
-* Kies uw Azure AD-tenant door te klikken op uw account in de rechterbovenhoek van de pagina, gevolgd door te klikken op de **schakelen tussen mappen** navigatie en selecteer vervolgens de juiste tenant. 
-  * Sla deze stap over als u maar één Azure tenant in uw account hebt, of als u al de juiste Azure Active Directory tenant hebt gekozen.
-* Klik in het linkernavigatievenster op **Azure Active Directory**.
-* Klik op **App-registraties** en klikt u op **registratie van nieuwe**.
-* Volg de aanwijzingen op het scherm en maak een nieuwe toepassing. Het wordt niet als het een webtoepassing of een openbare client (mobiele en desktop)-toepassing voor deze zelfstudie is van belang, maar als u specifieke voorbeelden voor webtoepassingen of openbare clienttoepassingen, Bekijk onze [snelstartgidsen](../articles/active-directory/develop/v1-overview.md).
-  * **Naam** is de naam van de toepassing en beschrijft de toepassing voor eindgebruikers.
-  * Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
-  * Geef de **omleidings-URI**. Voor webtoepassingen is dit de basis-URL van uw app waar gebruikers zich kunnen aanmelden.  Bijvoorbeeld `http://localhost:12345`. Voor openbare-client (mobiele en desktop), Azure AD gebruikt om tokenantwoorden te retourneren. Voer een specifieke waarde voor uw toepassing.  Bijvoorbeeld `http://MyFirstAADApp`.
-    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
-* Als u de registratie hebt voltooid, toewijzen Azure AD uw toepassing een unieke client-id (de **toepassings-ID**). U moet deze waarde in de volgende secties, dus te kopiëren uit de toepassingspagina.
-* Uw toepassing in Azure portal, klik op **App-registraties**, en klik vervolgens op **alle toepassingen weergeven**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+   
+1. Kies uw Azure AD-Tenant door uw account te selecteren in de rechter bovenhoek van de pagina, gevolgd door het selecteren van de **map navigatie wisselen** en vervolgens de juiste Tenant te selecteren. 
+   - Sla deze stap over als u slechts één Azure AD-Tenant onder uw account hebt of als u de juiste Azure AD-Tenant al hebt geselecteerd.
+   
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
+   
+1. Selecteer **app-registraties**In het **Azure Active Directory** menu links en selecteer vervolgens **nieuwe registratie**.
+   
+1. Volg de aanwijzingen op het scherm en maak een nieuwe toepassing. Het maakt niet uit of het een webtoepassing of een toepassing voor een open bare client (Mobile & bureau blad) voor deze zelf studie is, maar als u specifieke voor beelden wilt voor webtoepassingen of open bare client toepassingen, raadpleegt u onze [Snelstartgids](../articles/active-directory/develop/v1-overview.md).
+   
+   - **Naam** is de naam van de toepassing en beschrijft de toepassing voor eindgebruikers.
+   - Selecteer onder **Ondersteunde accounttypen** de optie **Accounts in een organisatieadreslijst en persoonlijke Microsoft-account**.
+   - Geef de **omleidings-URI**op. Voor webtoepassingen is dit de basis-URL van uw app waarmee gebruikers zich kunnen aanmelden.  Bijvoorbeeld `http://localhost:12345`. Voor de open bare client (mobiel & bureau blad) gebruikt Azure AD deze om token antwoorden te retour neren. Voer een waarde in die specifiek is voor uw toepassing.  Bijvoorbeeld `http://MyFirstAADApp`.
+   <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
+   
+1. Zodra u de registratie hebt voltooid, wordt uw toepassing door Azure AD toegewezen aan een unieke client-id (de **toepassings-id**). U hebt deze waarde nodig in de volgende secties, dus kopieer deze van de toepassings pagina.
+   
+1. Als u uw toepassing wilt vinden in de Azure Portal, selecteert u **app-registraties**en selecteert u **alle toepassingen weer geven**.

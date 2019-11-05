@@ -1,6 +1,6 @@
 ---
 title: Problemen met module fouten oplossen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Problemen met module-uitzonde ringen in Azure Machine Learning Studio oplossen met fout codes
 services: machine-learning
 ms.service: machine-learning
@@ -8,25 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b07b1fc14ac7ac72a30f75a098b4aab35f2de713
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693080"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497734"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Uitzonde ringen en fout codes voor de verwijzing naar de algoritme-& module
 
-Meer informatie over de fout berichten en uitzonderings codes die u kunt tegen komen met behulp van modules in Azure Machine Learning Studio. 
+Meer informatie over de fout berichten en uitzonderings codes die u kunt tegen komen met behulp van modules in Azure Machine Learning Designer (preview). 
 
-Om het probleem op te lossen, raadpleegt u de fout in dit artikel voor meer informatie over veelvoorkomende oorzaken. Er zijn twee manieren om de volledige tekst van een fout bericht in Studio te verkrijgen:  
+Om het probleem op te lossen, raadpleegt u de fout in dit artikel voor meer informatie over veelvoorkomende oorzaken. Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp functie te verkrijgen:  
  
 - Klik op de koppeling, **Bekijk het uitvoer logboek**in het rechterdeel venster en schuif naar beneden. Het gedetailleerde fout bericht wordt weer gegeven in de laatste twee regels van het venster.  
   
 - Selecteer de module met de fout en klik op de rode X. Alleen de relevante fout tekst wordt weer gegeven.  
   
-Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de context en eventuele gewenste toevoegingen of wijzigingen. U kunt feedback verzenden in het fout onderwerp of naar het [Azure machine learning Studio-forum](https://aka.ms/aml-forum-studio) bezoeken en een vraag plaatsen.  
+Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de context en eventuele gewenste toevoegingen of wijzigingen door feedback in te dienen.
 
 
 ## <a name="error-0001"></a>Fout 0001  
@@ -39,8 +39,8 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer opgegeven kolommen zijn niet gevonden|  
-|Kan geen kolom met de naam of de index {0} vinden|  
-|De kolom met de naam of index ' {0} ' bestaat niet in {1}|  
+|Kan geen kolom met de naam of de index{0}vinden|  
+|De kolom met de naam of index '{0}' bestaat niet in{1}|  
  
 
 ## <a name="error-0002"></a>Fout 0002  
@@ -53,11 +53,11 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan para meter niet parseren|  
-|Parseren van de para meter {0} is mislukt|  
-|Kan para meter "{0}" niet parseren (converteren) naar {1}|  
+|Parseren van de para meter{0}is mislukt|  
+|Kan para meter "{0}" niet parseren (converteren) naar{1}|  
 |Kan para meter "{0}" niet converteren van "{1}" naar "{2}"|  
-|Kan de parameter waarde ' {0} ' {1} ' niet converteren van ' {2} ' naar ' {3} '|  
-|Kan de waarde ' {0} ' in kolom ' {1} ' niet converteren van ' {2} ' naar ' {3} ' met het gebruik van de indeling ' {4} '|  
+|Kan de parameter waarde '{0}'{1}' niet converteren van '{2}' naar '{3}'|  
+|Kan de waarde '{0}' in kolom '{1}' niet converteren van '{2}' naar '{3}' met het gebruik van de indeling '{4}'|  
   
 
 ## <a name="error-0003"></a>Fout 0003  
@@ -76,7 +76,7 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer invoer waarden zijn null of leeg|  
-|De invoer {0} is null of leeg|  
+|De invoer{0}is null of leeg|  
   
 
 ## <a name="error-0004"></a>Fout 0004  
@@ -89,8 +89,8 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meter moet groter zijn dan de grens waarde.|  
-|De waarde van de para meter {0} moet groter zijn dan {1}.|  
-|De para meter {0} heeft de waarde {1} die groter moet zijn dan {2}|  
+|De waarde van de para meter{0}moet groter zijn dan {1}.|  
+|De para meter{0}heeft de waarde{1}die groter moet zijn dan {2}|  
   
 
 
@@ -104,8 +104,8 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meter moet groter dan of gelijk aan de grens waarde zijn.|  
-|De waarde van de para meter {0} moet groter dan of gelijk zijn aan {1}.|  
-|De para meter {0} heeft de waarde {1} die groter is dan of gelijk is aan {2}.|  
+|De waarde van de para meter{0}moet groter dan of gelijk zijn aan {1}.|  
+|De para meter{0}heeft de waarde{1}die groter is dan of gelijk is aan {2}.|  
   
 
 ## <a name="error-0006"></a>Fout 0006  
@@ -118,8 +118,8 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meters komen niet overeen. Een van de para meters moet kleiner zijn dan de andere.|  
-|De waarde van de para meter {0} moet kleiner zijn dan de waarde van de para meter {1}.|  
-|De para meter {0} heeft de waarde {1} die kleiner moet zijn dan {2}.|  
+|De waarde van de para meter{0}moet kleiner zijn dan de waarde van de para meter{1}.|  
+|De para meter{0}heeft de waarde{1}die kleiner moet zijn dan {2}.|  
   
 
 ## <a name="error-0007"></a>Fout 0007  
@@ -140,8 +140,8 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |De para meters komen niet overeen. Een van de para meters moet kleiner zijn dan of gelijk zijn aan een andere.|  
-|De waarde van de para meter {0} moet kleiner zijn dan of gelijk zijn aan de waarde van de para meter {1}.|  
-|De para meter {0} heeft de waarde {1} die kleiner moet zijn dan of gelijk is aan {2}.|  
+|De waarde van de para meter{0}moet kleiner zijn dan of gelijk zijn aan de waarde van de para meter{1}.|  
+|De para meter{0}heeft de waarde{1}die kleiner moet zijn dan of gelijk is aan {2}.|  
   
 
 ## <a name="error-0008"></a>Fout 0008  
@@ -156,16 +156,16 @@ Als de tekst van het fout bericht niet nuttig is, stuur ons informatie over de c
 |Uitzonderings berichten|  
 |------------------------|  
 |De parameter waarde bevindt zich niet in het opgegeven bereik.|  
-|De waarde voor de para meter {0} ligt niet in het bereik.|  
-|De waarde van de para meter {0} moet tussen [{1}, {2}] liggen.|  
+|De waarde voor de para meter{0}ligt niet in het bereik.|  
+|De waarde van de para meter{0}moet tussen [{1}, {2}] liggen.|  
   
 
 ## <a name="error-0009"></a>Fout 0009  
  Uitzonde ring treedt op wanneer de naam van het Azure-opslag account of de container naam onjuist is opgegeven.  
   
-Deze fout treedt op in Azure Machine Learning Studio wanneer u para meters opgeeft voor een Azure Storage-account, maar de naam of het wacht woord niet kan worden omgezet. Fouten met betrekking tot wacht woorden of account namen kunnen om verschillende redenen optreden:
+Deze fout treedt op in Azure Machine Learning Designer wanneer u para meters opgeeft voor een Azure Storage-account, maar de naam of het wacht woord niet kan worden omgezet. Fouten met betrekking tot wacht woorden of account namen kunnen om verschillende redenen optreden:
  
- + Het account is van het verkeerde type. Sommige nieuwe account typen worden niet ondersteund voor gebruik met Machine Learning Studio. Zie [gegevens importeren](import-data.md) voor meer informatie.
+ + Het account is van het verkeerde type. Sommige nieuwe account typen worden niet ondersteund voor gebruik met Machine Learning Designer. Zie [gegevens importeren](import-data.md) voor meer informatie.
  + U hebt de onjuiste account naam opgegeven
  + Het account bestaat niet meer
  + Het wacht woord voor het opslag account is onjuist of gewijzigd
@@ -264,7 +264,7 @@ Als het model is getraind met een van de gespecialiseerde trainings modules, kop
 |Uitzonderings berichten|  
 |------------------------|  
 |De leerer van een ongeldig type is door gegeven.|  
-|De leerer {0} heeft een ongeldig type.|  
+|De leerer{0}heeft een ongeldig type.|  
 
 
 ## <a name="error-0014"></a>Fout 0014  
@@ -339,9 +339,9 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan kolom van het huidige type niet verwerken. Het type wordt niet ondersteund door de module.|  
-|Kan geen kolom van het type {0} verwerken. Het type wordt niet ondersteund door de module.|  
-|Kan kolom {1} van het type {0} niet verwerken. Het type wordt niet ondersteund door de module.|  
-|Kan kolom {1} van het type {0} niet verwerken. Het type wordt niet ondersteund door de module. Parameter naam: {2}|  
+|Kan geen kolom van het type {0}verwerken. Het type wordt niet ondersteund door de module.|  
+|Kan kolom{1}van het type {0}niet verwerken. Het type wordt niet ondersteund door de module.|  
+|Kan kolom{1}van het type {0}niet verwerken. Het type wordt niet ondersteund door de module. Parameter naam: {2}|  
   
 
 ## <a name="error-0018"></a>Fout 0018  
@@ -381,8 +381,8 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|  
 |------------------------|  
 |De waarden in de kolom worden niet gesorteerd.|  
-|De waarden in de kolom {0} zijn niet gesorteerd.|  
-|De waarden in de kolom {0} van de gegevensset {1} zijn niet gesorteerd.|  
+|De waarden in de kolom{0}zijn niet gesorteerd.|  
+|De waarden in de kolom{0}van de gegevensset{1}zijn niet gesorteerd.|  
   
 
 ## <a name="error-0020"></a>Fout 0020  
@@ -396,7 +396,7 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |------------------------|  
 |Het aantal kolommen in de invoer gegevensset is kleiner dan het toegestane minimum.|  
 |Het aantal kolommen in de invoer gegevensset is kleiner dan het toegestane minimum van {0} kolom (men).|  
-|Het aantal kolommen in de invoer gegevensset {0} is kleiner dan het toegestane minimum van {1} kolom (men).|
+|Het aantal kolommen in de invoer gegevensset{0}is kleiner dan het toegestane minimum van {1} kolom (men).|
 
 ## <a name="error-0021"></a>Fout 0021  
  Uitzonde ring treedt op als het aantal rijen in een deel van de gegevens sets die aan de module zijn door gegeven, te klein is.  
@@ -439,8 +439,8 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |------------------------|  
 |Het aantal geselecteerde kolommen in de invoer-gegevensset is niet gelijk aan het verwachte aantal.|  
 |Het aantal geselecteerde kolommen in de invoer-gegevensset is niet gelijk aan {0}.|  
-|Het kolom selectie patroon ' {0} ' bevat het aantal geselecteerde kolommen in de ingevoerde gegevensset die niet gelijk is aan {1}.|  
-|Het kolom selectie patroon ' {0} ' wordt verwacht om {1} kolom (men) op te geven die zijn geselecteerd in de invoer gegevensset, maar {2} kolom (men) is/zijn opgegeven.|  
+|Het kolom selectie patroon '{0}' bevat het aantal geselecteerde kolommen in de ingevoerde gegevensset die niet gelijk is aan {1}.|  
+|Het kolom selectie patroon '{0}' wordt verwacht om {1} kolom (men) op te geven die zijn geselecteerd in de invoer gegevensset, maar {2} kolom (men) is/zijn opgegeven.|  
 
 
 
@@ -454,8 +454,8 @@ Voor kolommen die u wilt gebruiken voor groepering of categorisatie, neemt u sta
 |Uitzonderings berichten|  
 |------------------------|  
 |De invoer gegevensset bevat een niet-ondersteunde doel kolom.|  
-|De invoer gegevensset bevat een niet-ondersteunde doel kolom {0}.|  
-|De invoer gegevensset bevat een niet-ondersteunde doel kolom {0} voor meer informatie over type {1}.|  
+|De invoer gegevensset bevat een niet-ondersteunde doel kolom{0}.|  
+|De invoer gegevensset bevat een niet-ondersteunde doel kolom{0}voor meer informatie over type {1}.|  
  
 
 ## <a name="error-0024"></a>Fout 0024  
@@ -475,7 +475,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |De gegevensset bevat geen label kolom.|  
-|Er bevindt zich geen kolom Label in {0}.|  
+|Er bevindt zich geen kolom Label in{0}.|  
   
 
 ## <a name="error-0025"></a>Fout 0,025  
@@ -488,8 +488,8 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |Gegevensset bevat geen kolom met scores.|  
-|Er bevindt zich geen kolom met scores in {0}.|  
-|Er bevindt zich geen score kolom in {0} die wordt geproduceerd door een {1}. Geef de gegevensset een score met het juiste type kenniser.|  
+|Er bevindt zich geen kolom met scores in{0}.|  
+|Er bevindt zich geen score kolom in{0}die wordt geproduceerd door een{1}. Geef de gegevensset een score met het juiste type kenniser.|  
   
 
 ## <a name="error-0026"></a>Fout 0026  
@@ -502,7 +502,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |Er zijn gelijke kolom namen opgegeven in argumenten. Gelijke kolom namen zijn niet toegestaan per module.|  
-|Gelijke kolom namen in argumenten {0} en {1} zijn niet toegestaan. Geef verschillende namen op.|  
+|Gelijke kolom namen in argumenten{0}en{1}zijn niet toegestaan. Geef verschillende namen op.|  
   
 
 ## <a name="error-0027"></a>Fout 0027  
@@ -521,7 +521,7 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |De grootte van de door gegeven objecten is inconsistent.|  
-|De grootte van ' {0} ' is inconsistent met de grootte van ' {1} '.|  
+|De grootte van '{0}' is inconsistent met de grootte van '{1}'.|  
   
 
 ## <a name="error-0028"></a>Fout 0028  
@@ -534,8 +534,8 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |De kolomset bevat dubbele kolom namen.|  
-|De naam {0} is gedupliceerd.|  
-|De naam {0} is gedupliceerd in {1}.|  
+|De naam{0}is gedupliceerd.|  
+|De naam{0}is gedupliceerd in{1}.|  
   
 
 ## <a name="error-0029"></a>Fout 0029  
@@ -595,20 +595,20 @@ Het kan ook gebeuren dat een label kolom aanwezig is in de gegevensset, maar nie
 |Uitzonderings berichten|  
 |------------------------|  
 |Het argument is geen getal.|  
-|' {0} ' is geen getal.|  
+|'{0}' is geen getal.|  
   
 
 ## <a name="error-0033"></a>Fout 0033  
  Uitzonde ring treedt op als argument oneindig is.  
   
- Deze fout in Azure Machine Learning treedt op als het argument oneindig is. Deze fout treedt op als het argument `double.NegativeInfinity` of `double.PositiveInfinity` is.  
+ Deze fout in Azure Machine Learning treedt op als het argument oneindig is. Deze fout treedt op als het argument `double.NegativeInfinity` of `double.PositiveInfinity`is.  
   
 **Oplossing:** Wijzig het opgegeven argument in een geldige waarde.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Argument moet eindig zijn.|  
-|' {0} ' is niet eindig.|  
+|'{0}' is niet eindig.|  
   
 
 ## <a name="error-0034"></a>Fout 0034  
@@ -685,8 +685,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal elementen is niet geldig.|  
-|Het aantal elementen in {0} is niet geldig.|  
-|Het aantal elementen in {0} is niet gelijk aan het geldige aantal {1} element (en).|  
+|Het aantal elementen in{0}is niet geldig.|  
+|Het aantal elementen in{0}is niet gelijk aan het geldige aantal {1} element (en).|  
   
 
 ## <a name="error-0039"></a>Fout 0039  
@@ -715,7 +715,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Uitzonderings berichten|  
 |------------------------|  
 |De afgeschafte module wordt geopend.|  
-|Module {0} is afgeschaft. Gebruik in plaats daarvan de module {1}.|  
+|Module{0}is afgeschaft. Gebruik in plaats daarvan de module{1}.|  
  
 
 ## <a name="error-0041"></a>Fout 0041  
@@ -728,7 +728,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Uitzonderings berichten|  
 |------------------------|  
 |De afgeschafte module wordt geopend.|  
-|Module {0} is afgeschaft. Gebruik de modules {1} voor de aangevraagde functionaliteit.|  
+|Module{0}is afgeschaft. Gebruik de modules{1}voor de aangevraagde functionaliteit.|  
  
 
 ## <a name="error-0042"></a>Fout 0042  
@@ -765,8 +765,8 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |------------------------|  
 |Conversie niet toegestaan.|  
 |Kan kolom van het type {0} niet converteren naar een kolom van het type {1}.|  
-|Kan kolom {2} van het type {0} niet converteren naar een kolom van het type {1}.|  
-|Kan kolom {2} van het type {0} niet converteren naar kolom {3} van het type {1}.|  
+|Kan kolom{2}van het type {0} niet converteren naar een kolom van het type {1}.|  
+|Kan kolom{2}van het type {0} niet converteren naar kolom{3}van het type {1}.|  
   
 
 ## <a name="error-0043"></a>Fout 0043  
@@ -779,7 +779,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Er is geen toegankelijke expliciete methode gevonden die overeenkomt met.|  
-|Kan geen waarden vergelijken voor kolom \\ {0} \\ van het type {1}. Er is geen toegankelijke expliciete methode gevonden die overeenkomt met.|  
+|Kan geen waarden vergelijken voor kolom \\{0}\\van het type {1}. Er is geen toegankelijke expliciete methode gevonden die overeenkomt met.|  
 
 
 ## <a name="error-0044"></a>Fout 0044  
@@ -792,8 +792,8 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Element type van de kolom kan niet worden afgeleid.|  
-|Kan element type niet afleiden voor kolom {0}--alle elementen zijn null-verwijzingen.|  
-|Kan element type niet afleiden voor kolom {0} van gegevensset {1}--alle elementen zijn null-verwijzingen.|  
+|Kan element type niet afleiden voor kolom{0}--alle elementen zijn null-verwijzingen.|  
+|Kan element type niet afleiden voor kolom{0}van gegevensset{1}--alle elementen zijn null-verwijzingen.|  
   
 
 ## <a name="error-0045"></a>Fout 0045  
@@ -806,7 +806,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan geen kolom met gemengde element typen maken.|  
-|Kan geen kolom maken met de ID ' {0} ' van gemengde element typen: \ n\tType van gegevens [{1}, {0}] is {2} \n\tType aan gegevens [{3}] {0}.|  
+|Kan geen kolom maken met de ID '{0}' van gemengde element typen: \ n\tType van gegevens [{1}, {0}] is {2}\n\tType aan gegevens [{3}] {0}.{4}|  
   
 
 ## <a name="error-0046"></a>Fout 0046  
@@ -833,7 +833,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |------------------------|  
 |Het aantal functie kolommen in de invoer gegevensset is lager dan het toegestane minimum.|  
 |Het aantal functie kolommen in de invoer gegevensset is kleiner dan het toegestane minimum van {0} kolom (men).|  
-|Het aantal functie kolommen in de invoer-gegevensset {0} is kleiner dan het toegestane minimum van {1} kolom (men).|  
+|Het aantal functie kolommen in de invoer-gegevensset{0}is kleiner dan het toegestane minimum van {1} kolom (men).|  
   
 
 ## <a name="error-0048"></a>Fout 0048  
@@ -928,7 +928,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |------------------------|  
 |Gegevens hebben te weinig unieke waarden in de opgegeven kolom om de bewerking te volt ooien.|  
 |Gegevens hebben te weinig unieke waarden in de opgegeven kolom om de bewerking te volt ooien. Het vereiste minimum is {0} elementen.|  
-|Gegevens hebben te weinig unieke waarden in de kolom {1} om de bewerking te volt ooien. Het vereiste minimum is {0} elementen.|  
+|Gegevens hebben te weinig unieke waarden in de kolom{1}om de bewerking te volt ooien. Het vereiste minimum is {0} elementen.|  
   
 
 ## <a name="error-0055"></a>Fout 0055  
@@ -939,7 +939,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |De afgeschafte module wordt geopend.|  
-|Module {0} is afgeschaft.|  
+|Module{0}is afgeschaft.|  
 
 ## <a name="error-0056"></a>Fout 0056  
  Uitzonde ring treedt op als de kolommen die u hebt geselecteerd voor een bewerking, de vereisten schenden.  
@@ -963,7 +963,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer geselecteerde kolommen bevinden zich niet in een categorie die is toegestaan.|  
-|De kolom met de naam {0} heeft geen toegestane categorie.|  
+|De kolom met de naam{0}heeft geen toegestane categorie.|  
   
 
 ## <a name="error-0057"></a>Fout 0057  
@@ -1000,8 +1000,8 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |De kolom Label is niet zoals verwacht|  
-|De kolom Label is niet zoals verwacht in {0}.|  
-|De label kolom {0} wordt niet verwacht in {1}.|  
+|De kolom Label is niet zoals verwacht in{0}.|  
+|De label kolom{0}wordt niet verwacht in{1}.|  
   
 
 ## <a name="error-0059"></a>Fout 0059  
@@ -1014,7 +1014,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Een of meer opgegeven kolom indexen of index bereiken kunnen niet worden geparseerd.|  
-|De kolom index of het bereik {0} kan niet worden geparseerd.|  
+|De kolom index of het bereik{0}kan niet worden geparseerd.|  
   
 
 ## <a name="error-0060"></a>Fout 0060  
@@ -1027,7 +1027,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldig of buiten bereik opgegeven kolom index bereik.|  
-|Het kolom bereik {0} is ongeldig of valt buiten het bereik.|  
+|Het kolom bereik{0}is ongeldig of valt buiten het bereik.|  
   
 
 ## <a name="error-0061"></a>Fout 0061  
@@ -1063,7 +1063,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
   
 **Resolution:**
 
-1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
+1. In Azure Machine Learning designer, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
     + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
@@ -1134,7 +1134,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |De resource kan niet worden geüpload naar Azure Storage.|  
-|Het bestand ' {0} ' kan niet worden geüpload naar Azure Storage als {1}.|  
+|Het bestand '{0}' kan niet worden geüpload naar Azure Storage als {1}.|  
   
 
 ## <a name="error-0067"></a>Fout 0067  
@@ -1147,7 +1147,7 @@ Een andere reden hiervoor is dat u deze fout kunt krijgen als u een kolom met dr
 |Uitzonderings berichten|  
 |------------------------|  
 |Er is een onverwacht aantal kolommen in de DataTable.|  
-|Er worden {0} kolommen verwacht, maar er zijn {1} kolommen gevonden.|  
+|Er worden{0}kolommen verwacht, maar er zijn{1}kolommen gevonden.|  
   
 
 ## <a name="error-0068"></a>Fout 0068  
@@ -1192,14 +1192,14 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
   
  Als er een gegenereerd SQL-bericht wordt gemeld door de module-uitzonde ring, actie ondernemen op basis van de gerapporteerde fout. De fout berichten bevatten bijvoorbeeld soms specifieke richt lijnen voor de waarschijnlijke fout:
 + Een *dergelijke kolom of ontbrekende data base*geeft aan dat u een ongeldige kolom naam hebt opgegeven. Als u zeker weet dat de naam van de kolom juist is, gebruikt u accolades of aanhalings tekens om de kolom-id op te sluiten.
-+ *Er is een SQL Logic-fout opgetreden in de buurt van \<SQL tref woord \>* , waarmee wordt aangegeven dat u een syntaxis fout hebt vóór het opgegeven tref woord
++ *SQL-logische fout in de buurt van \<SQL-tref woord\>* , wat aangeeft dat u een syntaxis fout hebt vóór het opgegeven tref woord
 
   
 |Uitzonderings berichten|  
 |------------------------|  
 |SQL-script is onjuist.|  
-|De SQL-query {0} is niet juist.|  
-|De SQL-query {0} is niet juist: {1}|  
+|De SQL-query{0}is niet juist.|  
+|De SQL-query{0}is niet juist: {1}|  
   
 
 ## <a name="error-0070"></a>Fout 0070  
@@ -1212,7 +1212,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|  
 |------------------------|  
 |De Azure-tabel bestaat niet.|  
-|De Azure-tabel {0} bestaat niet.|  
+|De Azure-tabel{0}bestaat niet.|  
   
 ## <a name="error-0071"></a>Fout 0071  
  Uitzonde ring treedt op als de gegeven referenties onjuist zijn.  
@@ -1238,7 +1238,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor mach
 |Uitzonderings berichten|  
 |------------------------|  
 |Er zijn onjuiste referenties door gegeven.|  
-|Er is een onjuiste gebruikers naam {0} of het wacht woord is door gegeven|  
+|Er is een onjuiste gebruikers naam{0}of het wacht woord is door gegeven|  
   
 
 ## <a name="error-0072"></a>Fout 0072  
@@ -1429,8 +1429,8 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldige Count-Transform opgegeven.|  
-|De Count-trans formatie op de invoer poort {0} is ongeldig.|  
-|De Count-trans formatie op de invoer poort {0} kan niet worden samengevoegd met de Count-trans formatie op de invoer poort {1}. Controleer de meta gegevens die worden gebruikt voor het tellen van overeenkomsten.|  
+|De Count-trans formatie op de invoer poort{0}is ongeldig.|  
+|De Count-trans formatie op de invoer poort{0}kan niet worden samengevoegd met de Count-trans formatie op de invoer poort{1}. Controleer de meta gegevens die worden gebruikt voor het tellen van overeenkomsten.|  
   
 
 ## <a name="error-0087"></a>Fout 0087  
@@ -1463,7 +1463,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Er is een ongeldig tellings type opgegeven.|  
-|Het opgegeven Counting-type ' {0} ' is geen geldig type Count.|  
+|Het opgegeven Counting-type '{0}' is geen geldig type Count.|  
   
 
 ## <a name="error-0089"></a>Fout 0089  
@@ -1480,7 +1480,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal klassen is onjuist. Zorg ervoor dat het aantal klassen dat u opgeeft in het parameter deel venster groter is dan of gelijk is aan het aantal klassen in de kolom Label.|  
-|Het opgegeven aantal klassen is {0}, maar dit is niet groter dan een label waarde {1} in de gegevensset die wordt gebruikt om te tellen. Zorg ervoor dat het aantal klassen dat u opgeeft in het parameter deel venster groter is dan of gelijk is aan het aantal klassen in de kolom Label.|  
+|Het opgegeven aantal klassen is{0}, maar dit is niet groter dan een label waarde{1}in de gegevensset die wordt gebruikt om te tellen. Zorg ervoor dat het aantal klassen dat u opgeeft in het parameter deel venster groter is dan of gelijk is aan het aantal klassen in de kolom Label.|  
   
 
 ## <a name="error-0090"></a>Fout 0090  
@@ -1493,8 +1493,8 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |De Hive-tabel kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|  
-|De Hive-tabel {0} kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|  
-|De Hive-tabel {0} kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat is gekoppeld aan het cluster ' {1} ' is.|  
+|De Hive-tabel{0}kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat aan het cluster is gekoppeld, overeenkomt met wat wordt door gegeven via de module parameter.|  
+|De Hive-tabel{0}kan niet worden gemaakt. Zorg ervoor dat voor een HDInsight-cluster de naam van het Azure Storage-account dat is gekoppeld aan het cluster '{1}' is.|  
  
 
 ## <a name="error-0100"></a>Fout 0100  
@@ -1521,7 +1521,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Alle poort-en parameter-Id's voor een module moeten uniek zijn|  
-|Module {0} heeft dubbele poort/argument-Id's. Alle poort/argument-Id's moeten uniek zijn voor een module.|  
+|Module{0}heeft dubbele poort/argument-Id's. Alle poort/argument-Id's moeten uniek zijn voor een module.|  
   
 
 ## <a name="error-0102"></a>Fout 0102  
@@ -1564,7 +1564,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het R-script bestand waarnaar wordt verwezen, bestaat niet.|  
-|Het R-script bestand {0} waarnaar wordt verwezen, is niet gevonden. Zorg ervoor dat het relatieve pad naar het bestand juist is op de locatie van de definities.|  
+|Het R-script bestand{0}waarnaar wordt verwezen, is niet gevonden. Zorg ervoor dat het relatieve pad naar het bestand juist is op de locatie van de definities.|  
 
 
 ## <a name="error-0105"></a>Fout 0105  
@@ -1577,7 +1577,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteund parameter type.|  
-|Niet-ondersteund parameter type ' {0} ' opgegeven.|  
+|Niet-ondersteund parameter type '{0}' opgegeven.|  
 
 
 ## <a name="error-0106"></a>Fout 0106  
@@ -1590,7 +1590,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteund invoer type.|  
-|Niet-ondersteund invoer type {0} opgegeven.|  
+|Niet-ondersteund invoer type{0}opgegeven.|  
 
 
 ## <a name="error-0107"></a>Fout 0107  
@@ -1603,7 +1603,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Niet-ondersteund uitvoer type.|  
-|Niet-ondersteund uitvoer type {0} opgegeven.|  
+|Niet-ondersteund uitvoer type{0}opgegeven.|  
 
 
 ## <a name="error-0108"></a>Fout 0108  
@@ -1616,7 +1616,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het ondersteunde aantal invoer-of uitvoer poorten is overschreden.|  
-|Het aantal ondersteunde poorten voor de {0} is overschreden. Het Maxi maal toegestane aantal {0} poorten is {1}.| 
+|Het aantal ondersteunde poorten voor de{0}is overschreden. Het Maxi maal toegestane aantal{0}poorten is{1}.| 
 
 ## <a name="error-0109"></a>Fout 0109  
  Deze wordt gegenereerd wanneer een module definitie bestand een onjuiste kolom kiezer definieert  
@@ -1640,7 +1640,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Kolom kiezer verwijst naar een niet-bestaande invoer poort-ID.|  
-|Kolom kiezer verwijst naar een niet-bestaande invoer poort-ID {0}.|  
+|Kolom kiezer verwijst naar een niet-bestaande invoer poort-ID{0}.|  
   
 
 ## <a name="error-0111"></a>Fout 0111  
@@ -1653,7 +1653,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Eigenschaps definitie is ongeldig.|  
-|De definitie van de eigenschap {0} is ongeldig.|  
+|De definitie van de eigenschap{0}is ongeldig.|  
   
 
 ## <a name="error-0112"></a>Fout 0112  
@@ -1666,7 +1666,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het definitie bestand van de module kan niet worden geparseerd.|  
-|Kan het definitie bestand voor de module {0} niet parseren.|  
+|Kan het definitie bestand voor de module{0}niet parseren.|  
   
 
 ## <a name="error-0113"></a>Fout 0113  
@@ -1679,8 +1679,8 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het definitie bestand van de module bevat fouten.|  
-|Het definitie bestand van de module {0} bevat fouten.|  
-|Het definitie bestand van de module {0} bevat fouten. {1}|  
+|Het definitie bestand van de module{0}bevat fouten.|  
+|Het definitie bestand van de module{0}bevat fouten. {1}|  
   
 
 ## <a name="error-0114"></a>Fout 0114  
@@ -1805,7 +1805,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |De pixel grootte van de afbeelding overschrijdt de toegestane limiet.|  
-|De pixel grootte van de afbeelding in het bestand {0} overschrijdt de toegestane limiet: {1}|  
+|De pixel grootte van de afbeelding in het bestand{0}overschrijdt de toegestane limiet:{1}|  
 
 
 ## <a name="error-0128"></a>Fout 0128  
@@ -1816,7 +1816,7 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet.|  
-|Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet. De kolommen {0} en {1} zijn het problematische paar.|  
+|Het aantal voorwaardelijke kansen voor categorische kolommen overschrijdt de limiet. De kolommen{0}en{1}zijn het problematische paar.|  
 
 
 ## <a name="error-0129"></a>Fout 0129  
@@ -1827,9 +1827,9 @@ Over het algemeen kan een trans formatie op basis van een aantal alleen worden t
 |Uitzonderings berichten|  
 |------------------------|  
 |Het aantal kolommen in de gegevensset overschrijdt de toegestane limiet.|  
-|Het aantal kolommen in de gegevensset in {0} overschrijdt toegestaan.|  
-|Het aantal kolommen in de gegevensset in {0} overschrijdt de toegestane limiet van {1}.|  
-|Het aantal kolommen in de gegevensset in {0} overschrijdt de toegestane {1} limiet van {2}.|  
+|Het aantal kolommen in de gegevensset in{0}overschrijdt toegestaan.|  
+|Het aantal kolommen in de gegevensset in{0}overschrijdt de toegestane limiet van{1}.|  
+|Het aantal kolommen in de gegevensset in{0}overschrijdt de toegestane{1}limiet van{2}.|  
 ## <a name="error-0130"></a>Fout 0130  
  Uitzonde ring treedt op wanneer alle rijen in de training-gegevensset ontbrekende waarden bevatten.  
   
@@ -1981,8 +1981,8 @@ Oplossing:
 |Kan niet converteren: {0}.|  
 |Kan niet converteren: {0}, op rij {1}.|  
 |Kan kolom van het type {0} niet converteren naar een kolom van het type {1} op rij {2}.|  
-|Kan kolom {2} van het type {0} niet converteren naar een kolom van het type {1} op rij {3}.|  
-|Kan kolom ' {2} ' van het type {0} niet converteren naar kolom {3} van het type {1} op rij-{4}.| 
+|Kan kolom{2}van het type {0} niet converteren naar een kolom van het type {1} op rij {3}.|  
+|Kan kolom '{2}' van het type {0} niet converteren naar kolom{3}van het type {1} op rij-{4}.| 
 
 ## <a name="error-0140"></a>Fout 0140  
  Uitzonde ring treedt op als het door gegeven argument van de kolom set geen andere kolommen bevat behalve een label kolom.  
@@ -2041,12 +2041,12 @@ Oplossing:
   
  Deze fout in Azure Machine Learning treedt op wanneer u een GitHub-bestands bron opgeeft met een ongeldige URL-indeling.  
   
-**Oplossing:** Controleer of de URL van de GitHub-opslag plaats geldig is en eindigt op \blob\ of \tree \\.  
+**Oplossing:** Controleer of de URL van de GitHub-opslag plaats geldig is en eindigt op \blob\ of \tree\\.  
   
 |Uitzonderings berichten|  
 |------------------------|  
 |Kan de GitHub-URL niet parseren.|  
-|Kan de GitHub-URL niet parseren (\blob \\ ' of ' \tree \\ ' wordt verwacht na de naam van de opslag plaats): {0}|  
+|Kan de GitHub-URL niet parseren (\blob\\' of ' \tree\\' wordt verwacht na de naam van de opslag plaats): {0}|  
 
 ## <a name="error-0145"></a>Fout 0145  
  Kan geen replicatie Directory maken om een of andere reden.  
@@ -2171,7 +2171,7 @@ Oplossing: Controleer de URL en controleer of deze schrijfbaar is.
 |Uitzonderings berichten|  
 |------------------------|  
 |Ongeldig antwoord voor HCatalog-server. Controleer of alle services worden uitgevoerd.|  
-|Ongeldig antwoord voor HCatalog-server. Controleer of alle services worden uitgevoerd. Fout Details: {0}|
+|Ongeldig antwoord voor HCatalog-server. Controleer of alle services worden uitgevoerd. Foutdetails: {0}|
 
 ## <a name="error-0157"></a>Fout 0157  
  Er is een fout opgetreden tijdens het lezen van Azure Cosmos DB vanwege inconsistente of verschillende document schema's. Reader vereist dat alle documenten hetzelfde schema hebben.  

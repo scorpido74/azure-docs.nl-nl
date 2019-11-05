@@ -10,14 +10,15 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 47387108de09c9b24471c4afc06a25fa0cbeca00
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496932"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van getrainde modellen met Azure Machine Learning.
 
@@ -183,7 +184,7 @@ Micro soft biedt verschillende docker-installatie kopieën op een openbaar toega
 | Installatiekopie | Beschrijving |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basis installatie kopie voor Azure Machine Learning |
-| `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX runtime voor CPU-inferecning |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX-runtime voor CPU-de |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Bevat de ONNX runtime en CUDA voor GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Bevat ONNX runtime en TensorRT voor GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Bevat de ONNX runtime en open-wijn<sup> </sup> voor het ontwerp van de Intel Vision Accelerator op basis van Movidius<sup>TM</sup> tallozex VPUs |

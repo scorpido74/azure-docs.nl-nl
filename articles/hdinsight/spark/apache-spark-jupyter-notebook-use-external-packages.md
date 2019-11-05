@@ -1,5 +1,5 @@
 ---
-title: Aangepaste maven-pakketten gebruiken met Jupyter in Spark in azure HDInsight
+title: Aangepaste maven-pakketten gebruiken met Jupyter in Spark-Azure HDInsight
 description: Stapsgewijze instructies voor het configureren van Jupyter-notebooks die beschikbaar zijn met HDInsight Spark-clusters voor het gebruik van aangepaste maven-pakketten.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: cd88c85c927c635269d814c20b15f574212e1a6d
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337688"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494541"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Externe pakketten met Jupyter-notebooks gebruiken in Apache Spark clusters in HDInsight
 
@@ -46,13 +46,13 @@ U moet het volgende hebben:
 
 1. Maak een nieuwe notebook. Klik op **Nieuw**en klik vervolgens op **Spark**.
    
-    ![Een nieuwe Jupyter]-notebook van Spark maken(./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "een nieuw Jupyter-notebook maken")
+    ![Een nieuwe Spark Jupyter-notebook maken](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Een nieuwe Jupyter-notebook maken")
 
 1. Er wordt een nieuwe notebook gemaakt en geopend met de naam Untitled.pynb. Klik bovenaan op de naam van de notebook en wijzig deze in een beschrijvende naam.
    
-    ![Een naam opgeven voor de notebook](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Een naam opgeven voor de notebook")
+    ![Geef een naam op voor het notitie blok](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Een naam opgeven voor de notebook")
 
-1. U gebruikt de `%%configure` Magic om het notitie blok te configureren voor het gebruik van een extern pakket. Zorg er in notitie blokken die gebruikmaken van externe pakketten voor dat u de `%%configure` Magic aanroept in de code van de eerste cel. Dit zorgt ervoor dat de kernel zo is geconfigureerd dat het pakket wordt gebruikt voordat de sessie wordt gestart.
+1. U gaat de `%%configure` Magic gebruiken om het notitie blok te configureren voor het gebruik van een extern pakket. Zorg er in notitie blokken die gebruikmaken van externe pakketten voor dat u de `%%configure` Magic aanroept in de eerste cel van de code. Dit zorgt ervoor dat de kernel zo is geconfigureerd dat het pakket wordt gebruikt voordat de sessie wordt gestart.
 
     >[!IMPORTANT]  
     >Als u vergeet de kernel in de eerste cel te configureren, kunt u de `%%configure` gebruiken met de para meter `-f`, maar wordt de sessie opnieuw gestart en gaat alle voortgang verloren.
@@ -66,7 +66,7 @@ U moet het volgende hebben:
    
     a. Zoek het pakket in de Maven-opslag plaats. Voor dit artikel gebruiken we [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
-    b. Verzamel de waarden voor **GroupId**, **ArtifactId**en **Version**uit de opslag plaats. Zorg ervoor dat de waarden die u verzamelt, overeenkomen met uw cluster. In dit geval gebruiken we een scala 2,10-en Spark 1.4.0-pakket, maar u moet mogelijk verschillende versies selecteren voor de juiste scala-of Spark-versie in uw cluster. U kunt de scala-versie in uw cluster vinden door `scala.util.Properties.versionString` uit te voeren in de Spark Jupyter-kernel of op Spark-verzen ding. U kunt de Spark-versie in uw cluster vinden door `sc.version` op Jupyter-notebooks uit te voeren.
+    b. Verzamel de waarden voor **GroupId**, **ArtifactId**en **Version**uit de opslag plaats. Zorg ervoor dat de waarden die u verzamelt, overeenkomen met uw cluster. In dit geval gebruiken we een scala 2,10-en Spark 1.4.0-pakket, maar u moet mogelijk verschillende versies selecteren voor de juiste scala-of Spark-versie in uw cluster. U kunt de scala-versie in uw cluster vinden door `scala.util.Properties.versionString` uit te voeren op de Spark Jupyter-kernel of op Spark-verzen ding. U kunt de Spark-versie in uw cluster vinden door `sc.version` op Jupyter notebooks uit te voeren.
    
     ![Externe pakketten gebruiken met Jupyter notebook](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Externe pakketten gebruiken met Jupyter notebook")
    
@@ -96,11 +96,11 @@ U moet het volgende hebben:
 
 ## <a name="seealso"></a>Zie ook
 
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
 
-* [Apache Spark met BI: Interactieve gegevens analyse uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
+* [Apache Spark met BI: interactieve gegevens analyses uitvoeren met behulp van Spark in HDInsight met BI-hulpprogram ma's](apache-spark-use-bi-tools.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken voor het analyseren van de gebouw temperatuur met behulp van HVAC-gegevens](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)

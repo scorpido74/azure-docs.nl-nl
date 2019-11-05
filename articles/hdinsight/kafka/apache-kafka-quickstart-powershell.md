@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 082be3630474ec5f97ab7d80a3ee1b92cdc28fd7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242325"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494755"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Snelstartgids: Apache Kafka cluster maken in azure HDInsight met behulp van Power shell
 
@@ -28,6 +28,8 @@ De Kafka-API is alleen toegankelijk voor resources binnen hetzelfde virtuele net
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd.
 
@@ -60,7 +62,7 @@ $location = Read-Host -Prompt "Enter the Azure region to use"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Maak een opslagaccount
+## <a name="create-a-storage-account"></a>Een opslagaccount maken
 
 Kafka in HDInsight maakt gebruik van Azure Managed Disks voor het opslaan van Kafka-gegevens. Daarnaast gebruikt het cluster Azure Storage voor het opslaan van gegevens zoals logboeken. Gebruik [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) om een nieuw opslag account te maken.
 

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515222"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490709"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>Analyseer uw leer proces met een offline-evaluatie
 
 Meer informatie over het volt ooien van een offline-evaluatie en het begrijpen van de resultaten.
 
-Met offline-evaluaties kunt u meten hoe effectief Personaler wordt vergeleken met het standaard gedrag van uw toepassing, hoe functies het meest aan persoonlijke voor keur hebben en nieuwe machine learning-instellingen automatisch detecteren.
+Met offline-evaluaties kunt u meten hoe effectief Personaler wordt vergeleken met het standaard gedrag van uw toepassing, hoe functies het meest aan persoonlijke voor keur hebben en nieuwe machine learning waarden automatisch detecteren.
 
 Lees meer over [offline-evaluaties](concepts-offline-evaluation.md) voor meer informatie.
 
@@ -35,11 +35,11 @@ Lees meer over [offline-evaluaties](concepts-offline-evaluation.md) voor meer in
 
 1. Zoek uw persoonlijke bron in het [Azure Portal](https://azure.microsoft.com/free/).
 1. Ga in het Azure Portal naar de sectie **evaluaties** en selecteer **evaluatie maken**.
-    ![In de Azure Portal gaat u naar de sectie * *-evaluaties * * en selecteert u * * evaluatie maken * *. ](./media/offline-evaluation/create-new-offline-evaluation.png)
-1. Selecteer de volgende instellingen:
+    Ga ![in het Azure Portal naar de sectie * *-evaluaties * * en selecteer * * evaluatie maken * *.](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. Configureer de volgende waarden:
 
     * Een evaluatie naam
-    * Begin-en eind datum: Dit zijn datums in het verleden die het bereik opgeven van de gegevens die in de evaluatie moeten worden gebruikt. Deze gegevens moeten aanwezig zijn in de logboeken, zoals opgegeven in de instelling voor het [bewaren van gegevens](how-to-settings.md) .
+    * Begin-en eind datum: Dit zijn datums in het verleden die het bereik opgeven van de gegevens die in de evaluatie moeten worden gebruikt. Deze gegevens moeten aanwezig zijn in de logboeken, zoals opgegeven in de waarde voor [gegevens retentie](how-to-settings.md) .
     * Optimalisatie detectie is ingesteld op **Ja**
 
     ![Instellingen voor offline-evaluatie kiezen](./media/offline-evaluation/create-an-evaluation-form.png)

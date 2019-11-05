@@ -1,7 +1,7 @@
 ---
 title: Aan de slag met R
-titleSuffix: Azure Machine Learning Studio
-description: Gebruik deze programmeren R-zelfstudie aan de slag met behulp van de R-taal met Azure Machine Learning Studio om een prognose-oplossing te maken.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Gebruik deze zelf studie voor R-Program ma's om aan de slag te gaan met de R-taal met Azure Machine Learning Studio (klassiek) om een prognose oplossing te maken.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,99 +10,99 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d3bc64291f58c5dd77531141c31490451cc8ea2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726529"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496833"
 ---
-# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Aan de slag met de programmeertaal in Azure Machine Learning Studio R
+# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Aan de slag met de programmeer taal R in Azure Machine Learning Studio (klassiek)
 
 <!-- Stephen F Elston, Ph.D. -->
 
 ## <a name="introduction"></a>Inleiding
 
-Deze zelfstudie helpt u Azure Machine Learning Studio uitgebreid met behulp van de R-programmeertaal. Volg deze programmeren R-zelfstudie voor het maken, testen en uitvoeren van R-code in Studio. Als u de zelfstudie doorloopt, maakt u een volledige prognose-oplossing met behulp van de R-taal in Studio.  
+Deze zelf studie helpt u bij het uitbreiden van Azure Machine Learning Studio (klassiek) met behulp van de programmeer taal R. Volg deze zelf studie over R-Program ma's om R-code te maken, te testen en uit te voeren in Studio (klassiek). Tijdens de zelf studie maakt u een volledige oplossing voor prognoses met behulp van de R-taal in de klassieke versie van Studio.  
 
-Microsoft Azure Machine Learning Studio bevat veel krachtige machine learning en manipulatie modules. De krachtige R-taal heeft als lingua franca van analytics zijn beschreven. Analyse- en manipuleren in Studio kan worden uitgebreid met behulp van R. Deze combinatie biedt van de schaalbaarheid en een eenvoudige implementatie van Studio met de flexibiliteit en diepgaande analyse van R.
+De klassieke versie van Azure Machine Learning Studio bevat veel krachtige modules voor machine learning en gegevens manipulatie. De krachtige R-taal is beschreven als franca van Analytics. Het gebruik van de klassieke versie van Studio kan met behulp van R worden uitgebreid. Deze combi natie biedt de schaal baarheid en het gemak van de implementatie van de klassieke versie van Studio met de flexibiliteit en diepe analyse van R.
 
-### <a name="forecasting-and-the-dataset"></a>Maken van prognoses en de gegevensset
+### <a name="forecasting-and-the-dataset"></a>Prognoses en de gegevensset
 
-Prognose is een analysemethode veel werknemers en zeer nuttig. Algemene maakt gebruik van het bereik van het voorspellen van de verkoop van seizoensgebonden items, waarmee wordt bepaald optimale inventarisniveaus, om te voorspellen macro-economische variabelen. Prognose gebeurt meestal met time series-modellen.
+Het maken van prognoses is een veelgebruikte en zeer nuttige analyse methode. Veelvoorkomende toepassingen variëren van het voors pellen van de verkoop van seizoensgebonden artikelen, het bepalen van optimale inventaris niveaus, voor het voors pellen van macro-variabelen. Prognoses worden doorgaans uitgevoerd met Time Series-modellen.
 
-Time series-gegevens zijn gegevens waarmee de waarden een tijdsindex hebt. De tijdsindex worden regelmatig, bijvoorbeeld elke maand of elke minuut of onregelmatig. Een time series-model is gebaseerd op time series-gegevens. De programmeertaal R bevat een flexibele framework en de uitgebreide analyse voor time series-gegevens.
+Time Series-gegevens zijn gegevens waarin de waarden een tijd index hebben. De tijd index kan normaal, bijvoorbeeld elke maand of elke minuut, of onregelmatig zijn. Een tijdreeks model is gebaseerd op Time Series-gegevens. De programmeer taal R bevat een flexibel Framework en uitgebreide analyses voor tijdreeks gegevens.
 
-In deze handleiding wordt worden werken met Californië zuivelproductie en gegevens over prijzen. Deze gegevens omvatten maandelijkse informatie op de productie van verschillende producten en de prijs van melkvet, een benchmark-product.
+In deze hand leiding gaan we werken met productie-en prijs gegevens van Californië zuivel. Deze gegevens omvatten maandelijkse gegevens over de productie van verschillende zuivel producten en de prijs van melkvet, een benchmark product.
 
-De gegevens die worden gebruikt in dit artikel, samen met R-scripts, kan worden gedownload vanaf [MachineLearningSamples-notitieblokken/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Gegevens in het bestand `cadairydata.csv` oorspronkelijk is gemaakt van gegevens op de universiteit van Wisconsin op [ https://dairymarkets.com ](https://dairymarkets.com).
+De gegevens die in dit artikel worden gebruikt, samen met R-scripts, kunnen worden gedownload van [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Gegevens in het bestand `cadairydata.csv` oorspronkelijk zijn gesynthesizerd op basis van de informatie die beschikbaar is via de University of Wisconsin op [https://dairymarkets.com](https://dairymarkets.com).
 
 ### <a name="organization"></a>Organisatie
 
-We zullen navigatie door de verschillende stappen als u meer informatie over het maken, testen en analyse- en bewerken van R-code uitvoeren in de Azure Machine Learning Studio-omgeving.  
+Er worden verschillende stappen uitgevoerd voor het maken, testen en uitvoeren van analyse-en gegevens manipulatie R-code in de klassieke versie van Azure Machine Learning Studio omgeving.  
 
-* Eerst zullen we de basisprincipes van het gebruik van de R-taal in de Azure Machine Learning Studio-omgeving verkennen.
-* Vervolgens voortgang we bespreken van verschillende aspecten van i/o voor gegevens, R-code en afbeeldingen in de Azure Machine Learning Studio-omgeving.
-* We wordt vervolgens het eerste deel van onze prognoseoplossing maken door het maken van code voor het opschonen van gegevens en -transformaties.
-* Met onze voorbereid gaat een analyse van de correlatie tussen verschillende van de variabelen in onze gegevensset uitvoeren.
-* Ten slotte maken we een prognoses seizoensgebonden time series-model voor.
+* Eerst gaan we de basis beginselen van het gebruik van de R-taal in de klassieke versie van Azure Machine Learning Studio omgeving verkennen.
+* Vervolgens wordt er geadviseerd om verschillende aspecten van I/O te bespreken voor gegevens, R-code en grafische afbeeldingen in de klassieke versie van Azure Machine Learning Studio omgeving.
+* We bouwen nu het eerste deel van onze prognose oplossing door code te maken voor het opschonen van gegevens en trans formatie.
+* Met onze gegevens die zijn voor bereid, voeren we een analyse uit van de correlaties tussen verschillende variabelen in onze gegevensset.
+* Ten slotte gaan we een seizoen prognose model voor de productie van de melk maken.
 
-## <a id="mlstudio"></a>Communiceren met de programmeertaal R in Machine Learning Studio
+## <a id="mlstudio"></a>Communiceren met R-taal in Machine Learning Studio (klassiek)
 
-In deze sectie doorloopt u enkele basisprincipes van de interactie met de programmeertaal R in de Machine Learning Studio-omgeving. De R-taal biedt een krachtig hulpprogramma voor het maken van aangepaste analyses en gegevens manipuleren modules in de Azure Machine Learning Studio-omgeving.
+In deze sectie maakt u kennis met enkele basis principes van interactie met de programmeer taal R in de omgeving Machine Learning Studio (klassiek). De R-taal biedt een krachtig hulp programma voor het maken van aangepaste analyse-en gegevens manipulatie modules in de klassieke versie van Azure Machine Learning Studio omgeving.
 
-Ik zal RStudio gebruiken om te ontwikkelen, testen en fouten opsporen in R-code op kleine schaal. Deze code wordt vervolgens knippen en plakken in een [R-Script uitvoeren] [ execute-r-script] module in Machine Learning Studio kan worden uitgevoerd.  
+Ik gebruik RStudio om R-code op een kleine schaal te ontwikkelen, te testen en op te sporen. U kunt deze code vervolgens knippen en plakken in een module voor het [uitvoeren van R-scripts][execute-r-script] die kan worden uitgevoerd in de klassieke versie van machine learning Studio.  
 
-### <a name="the-execute-r-script-module"></a>De module R-Script uitvoeren
+### <a name="the-execute-r-script-module"></a>De module R-script uitvoeren
 
-In Machine Learning Studio, R-scripts worden uitgevoerd binnen de [R-Script uitvoeren] [ execute-r-script] module. Een voorbeeld van de [R-Script uitvoeren] [ execute-r-script] module in Machine Learning Studio wordt weergegeven in afbeelding 1.
+In de klassieke versie van Machine Learning Studio worden R-scripts uitgevoerd in de module voor het uitvoeren van een [r-script][execute-r-script] . Een voor beeld van de module voor het [uitvoeren van R-scripts][execute-r-script] in de klassieke versie van machine learning Studio wordt weer gegeven in afbeelding 1.
 
- ![R-programmeertaal: De R-Script uitvoeren-module in Machine Learning Studio geselecteerd](./media/r-quickstart/fig1.png)
+ ![R-programmeer taal: de module voor het uitvoeren van R-scripts geselecteerd in Machine Learning Studio (klassiek)](./media/r-quickstart/fig1.png)
 
-*Afbeelding 1. De Machine Learning Studio-omgeving met de R-Script uitvoeren-module die is geselecteerd.*
+*Afbeelding 1. De Machine Learning Studio-omgeving (klassiek) waarin de module voor het uitvoeren van R-script is geselecteerd.*
 
-Verwijzen naar afbeelding 1, laten we kijken enkele van de belangrijkste onderdelen van de Machine Learning Studio-omgeving voor het werken met de [R-Script uitvoeren] [ execute-r-script] module.
+Zie afbeelding 1 voor een overzicht van de belangrijkste onderdelen van de Machine Learning Studio (klassieke) omgeving voor het werken met de [script module Execute R][execute-r-script] .
 
-* De modules in het experiment worden weergegeven in het middelste deelvenster.
-* Het bovenste gedeelte van het rechterdeelvenster bevat een venster wilt weergeven en bewerken van uw R-scripts.  
-* Het onderste gedeelte van het rechter deelvenster ziet u enkele eigenschappen van de [R-Script uitvoeren][execute-r-script]. U kunt Logboeken van de fout en uitvoer weergeven door de juiste punten van dit deelvenster.
+* De modules in het experiment worden weer gegeven in het middelste deel venster.
+* Het bovenste deel venster bevat een venster waarin u uw R-scripts kunt weer geven en bewerken.  
+* Het onderste deel venster aan de rechter kant bevat enkele eigenschappen van het [R-script uitvoeren][execute-r-script]. U kunt de fout-en uitvoer logboeken weer geven door de juiste vlekken van dit deel venster te selecteren.
 
-We zullen natuurlijk worden besproken in hoeverre de [R-Script uitvoeren] [ execute-r-script] in meer detail in de rest van dit artikel.
+In de rest van dit artikel bespreken we natuurlijk het [Execute R-script][execute-r-script] in meer detail.
 
-Als u werkt met complexe R-functies, ik u aan dat u bewerken, testen en fouten in RStudio opsporen. Net als bij de ontwikkeling van alle software, incrementeel uitbreiden van uw code en deze testen op kleine simpele testcases. Vervolgens knippen en plakken van uw functies in de R-script-venster van de [R-Script uitvoeren] [ execute-r-script] module. Deze aanpak kunt u gebruikmaken van zowel de RStudio integrated development environment (IDE) en de kracht van Azure Machine Learning Studio.  
+Wanneer u werkt met complexe R-functies, raden we u aan om te bewerken, testen en fouten op te sporen in RStudio. Net als bij elke ontwikkeling van software breidt u de code stapsgewijs uit en test u deze op kleine eenvoudige test cases. Knip en plak vervolgens uw functies in het R-Script venster van de module voor het uitvoeren van een [r-script][execute-r-script] . Met deze aanpak kunt u zowel de RStudio-Integrated Development Environment (IDE) als de kracht van de klassieke versie van Azure Machine Learning Studio benutten.  
 
 #### <a name="execute-r-code"></a>R-code uitvoeren
 
-Alle R-code in de [R-Script uitvoeren] [ execute-r-script] module worden uitgevoerd wanneer u het experiment door het selecteren van uitvoeren de **uitvoeren** knop. Wanneer de uitvoering is voltooid, een vinkje wordt weergegeven op de [R-Script uitvoeren] [ execute-r-script] pictogram.
+Alle R-code in de [script module Execute r][execute-r-script] wordt uitgevoerd wanneer u het experiment uitvoert door de knop **uitvoeren** te selecteren. Wanneer de uitvoering is voltooid, wordt er een vinkje weer gegeven op het pictogram voor het uitvoeren van een [R-script][execute-r-script] .
 
-#### <a name="defensive-r-coding-for-azure-machine-learning"></a>Defensieve R coderen voor Azure Machine Learning
+#### <a name="defensive-r-coding-for-azure-machine-learning"></a>Verdediging R-code ring voor Azure Machine Learning
 
-Als u R-code voor bijvoorbeeld een web-service ontwikkelt met behulp van Azure Machine Learning Studio, moet u zeker plannen hoe uw code wordt omgaan met een onverwachte invoer en uitzonderingen. Als u wilt behouden duidelijkheid, ik niet opgenomen veel heeft op het gebied controleren of de afhandeling van uitzonderingen in de meeste van de codevoorbeelden die wordt weergegeven. Echter, als we gaan ik krijgt u enkele voorbeelden van functies met behulp van de mogelijkheid voor het verwerken van de R-uitzondering.  
+Als u R-code ontwikkelt voor, zegt, een webservice met behulp van de klassieke versie van Azure Machine Learning Studio, moet u zeker plannen hoe uw code zal omgaan met een onverwachte gegevens invoer en uitzonde ringen. Als u de duidelijkheid wilt behouden, hebt u niet veel opgenomen in de manier waarop de controle of de uitzonde ring wordt verwerkt in de meeste code voorbeelden. We bieden echter verschillende voor beelden van functies door gebruik te maken van de functie voor het verwerken van uitzonde ringen.  
 
-Als u nodig hebt voor een volledigere behandeling van de afhandeling van uitzonderingen R, ik raadzaam te lezen van de betreffende gedeelten van het boek door Wickham in onderstaande [meer weten](#appendixb).
+Als u een meer volledige behandeling van de verwerking van R-uitzonde ringen nodig hebt, raden we u aan om de toepasselijke secties van het boek te lezen in Wickham die hieronder worden vermeld in [verdere Lees bewerkingen](#appendixb).
 
-#### <a name="debug-and-test-r-in-machine-learning-studio"></a>Fouten opsporen en testen van R in Machine Learning Studio
+#### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>Fouten opsporen en testen R in Machine Learning Studio (klassiek)
 
-Samenvattend: ik u aan u testen en fouten opsporen in uw R-code op kleine schaal in RStudio. Er zijn echter gevallen waarin u wordt voor het opsporen van problemen met R-code in de [R-Script uitvoeren] [ execute-r-script] zelf. Bovendien is het verstandig om te controleren of de resultaten in Machine Learning Studio.
+Als u wilt herhalen, raden we u aan om uw R-code te testen en fouten op een kleine schaal in RStudio op te lossen. Er zijn echter gevallen waarin u R-code problemen in het uitvoeren van het R- [script][execute-r-script] zelf moet volgen. Daarnaast is het verstandig om uw resultaten te controleren in de klassieke versie van Machine Learning Studio.
 
-Uitvoer van de uitvoering van uw R-code en op het platform van Azure Machine Learning Studio is voornamelijk in uitvoer.log gevonden. Aanvullende informatie is zichtbaar in error.log.  
+Uitvoer van de uitvoering van uw R-code en de klassieke versie van Azure Machine Learning Studio platform is voornamelijk gevonden in output. log. Meer informatie wordt weer gegeven in fout. log.  
 
-Als er een fout optreedt in Machine Learning Studio tijdens het uitvoeren van uw R-code, moet de eerste cursus van actie om te kijken naar error.log. Dit bestand kan handig zijn foutberichten om te begrijpen en corrigeer de fout bevatten. Als u wilt error.log weergeven, selecteert u **foutenlogboek weergeven** op de **deelvenster met eigenschappen** voor de [R-Script uitvoeren] [ execute-r-script] met de fout.
+Als er een fout optreedt in de klassieke versie van Machine Learning Studio tijdens het uitvoeren van uw R-code, moet u eerst naar fout. log kijken. Dit bestand kan nuttige fout berichten bevatten om u te helpen uw fout te begrijpen en te verhelpen. Als u fout. log wilt weer geven, selecteert u **fout logboek weer geven** in het **deel venster Eigenschappen** voor het [script uitvoeren][execute-r-script] dat de fout bevat.
 
-Bijvoorbeeld: ik de volgende R-code wordt uitgevoerd met een niet-gedefinieerde variabele y, in een [R-Script uitvoeren] [ execute-r-script] module:
+Bijvoorbeeld: Ik heb de volgende R-code uitgevoerd, met een niet-gedefinieerde variabele y, in een script module voor uitvoeren van een [r][execute-r-script] .
 
 ```R
 x <- 1.0
 z <- x + y
 ```
 
-Deze code niet kan worden uitgevoerd, wat resulteert in een foutstatus. Selecteren **foutenlogboek weergeven** op de **eigenschappendeelvenster** produceert de weergave wordt weergegeven in afbeelding 2.
+Deze code kan niet worden uitgevoerd, wat resulteert in een fout. Als u het **fouten logboek weer geven** in het **deel venster Eigenschappen** selecteert, wordt de weer gave in afbeelding 2 weer gegeven.
 
-  ![Pop-upvenster foutbericht](./media/r-quickstart/fig2.png)
+  ![Pop-upvenster voor fout berichten](./media/r-quickstart/fig2.png)
 
-*Afbeelding 2. Foutbericht pop-upvenster.*
+*Afbeelding 2. Pop-upvenster met fout berichten.*
 
-Het lijkt, moeten we zoeken in uitvoer.log om de R-foutbericht te zien. Selecteer de [R-Script uitvoeren] [ execute-r-script] en selecteer vervolgens de **uitvoer.log weergeven** item op de **deelvenster met eigenschappen** aan de rechterkant. Hiermee opent u een nieuw browservenster en ik Zie de volgende.
+Het lijkt erop dat er in output. log moet worden gezocht om het R-fout bericht te zien. Selecteer het [script Execute R][execute-r-script] en selecteer vervolgens het item **uitvoer weer geven. logboek** in het **deel venster Eigenschappen** aan de rechter kant. Er wordt een nieuw browser venster geopend en het volgende wordt weer gegeven.
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -112,111 +112,111 @@ Het lijkt, moeten we zoeken in uitvoer.log om de R-foutbericht te zien. Selectee
     object 'y' not found
     ----------- End of error message from R -----------
 
-Dit bericht bevat geen verrassingen en duidelijk identificeert het probleem.
+Dit fout bericht bevat geen verrassingen en identificeert het probleem duidelijk.
 
-Als u wilt controleren van de waarde van een object in R, kunt u deze waarden naar het bestand uitvoer.log afdrukken. De regels voor het onderzoeken van objectwaarden zijn in wezen hetzelfde als in een interactieve R-sessie. Bijvoorbeeld, als u de naam van een variabele op een regel typt, dan worden de waarde van het object naar het bestand uitvoer.log afgedrukt.  
+Als u de waarde van een object in R wilt controleren, kunt u deze waarden afdrukken naar het bestand output. log. De regels voor het onderzoeken van object waarden zijn in wezen hetzelfde als in een interactieve R-sessie. Als u bijvoorbeeld de naam van een variabele op een regel typt, wordt de waarde van het object afgedrukt naar het bestand output. log.  
 
-#### <a name="packages-in-machine-learning-studio"></a>Pakketten in Machine Learning Studio
+#### <a name="packages-in-machine-learning-studio-classic"></a>Pakketten in Machine Learning Studio (klassiek)
 
-Studio wordt gekenmerkt door meer dan 350 pakketten voor vooraf geïnstalleerde R-taal. U kunt de volgende code in de [R-Script uitvoeren] [ execute-r-script] module voor het ophalen van een lijst van de vooraf geïnstalleerde pakketten.
+Studio wordt geleverd met meer dan 350 vooraf geïnstalleerde R-taal pakketten. U kunt de volgende code in de module voor het [uitvoeren van R-scripts][execute-r-script] gebruiken om een lijst met vooraf geïnstalleerde pakketten op te halen.
 
 ```R
 data.set <- data.frame(installed.packages())
 maml.mapOutputPort("data.set")
 ```
 
-Als u niet weet de laatste regel van deze code op dit moment wat, lees dan verder. In de rest van dit artikel wordt uitvoerig besproken R gebruiken in de Studio-omgeving.
+Lees de informatie over als u de laatste regel van deze code op dit moment niet begrijpt. In de rest van dit artikel wordt uitgebreide informatie over het gebruik van R in de studio-omgeving (klassiek) besproken.
 
 ### <a name="introduction-to-rstudio"></a>Inleiding tot RStudio
 
-RStudio is een veel gebruikte IDE voor R. Ik zal RStudio gebruiken voor het bewerken, testen en foutopsporing in enkele van de R-code die wordt gebruikt in deze handleiding. Zodra de R-code getest en klaar zijn is, u kunt gewoon knippen en plakken in de RStudio-editor naar een Machine Learning Studio [R-Script uitvoeren] [ execute-r-script] module.  
+RStudio is een veel gebruikte IDE voor R. Ik gebruik RStudio voor het bewerken, testen en opsporen van fouten in een deel van de R-code die in deze hand leiding wordt gebruikt. Zodra de R-code is getest en klaar is, kunt u eenvoudig knippen en plakken vanuit de RStudio-editor naar een klassieke [R-script][execute-r-script] module voor het uitvoeren van een machine learning Studio.  
 
-Als u de programmeertaal R op uw computer is geïnstalleerd hebt, raden ik dat u dit nu doen. Gratis downloads van open-sourcetaal R zijn beschikbaar op de uitgebreide R Archive Network (CRAN) op [ https://www.r-project.org/ ](https://www.r-project.org/). Er zijn downloads beschikbaar voor Windows, Mac OS en Linux/UNIX. Kies in de buurt mirror en volg de aanwijzingen downloaden. CRAN bevat bovendien een schat aan handig pakketten voor analyse- en manipuleren.
+Als u de R-programmeer taal niet op uw computer hebt geïnstalleerd, raden we u aan om dit nu te doen. Gratis down loads van de open source R-taal zijn beschikbaar op het uitgebreide R-archief netwerk (KRANen) op [https://www.r-project.org/](https://www.r-project.org/). Er zijn down loads beschikbaar voor Windows, Mac OS en Linux/UNIX. Kies een nabijgelegen mirror en volg de download instructies. Daarnaast bevat KRANen een schat aan nuttige analyse-en gegevens manipulatie-pakketten.
 
-Als u niet bekend bent met RStudio, moet u downloadt en installeert de desktopversie. U vindt de RStudio-downloads voor Windows, Mac OS en Linux/UNIX op http://www.rstudio.com/products/RStudio/. Volg de instructies voor het installeren van RStudio op uw computer.  
+Als u niet bekend bent met RStudio, moet u de desktop versie downloaden en installeren. U kunt de RStudio-down loads voor Windows, Mac OS en Linux/UNIX vinden op http://www.rstudio.com/products/RStudio/. Volg de instructies voor het installeren van RStudio op uw desktop computer.  
 
-Een inleiding van zelfstudie rstudio is beschikbaar op [met behulp van de RStudio IDE](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
+Een zelf studie Inleiding tot RStudio is beschikbaar op [het gebruik van de RSTUDIO IDE](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
 
-Ik geef aanvullende informatie over het gebruik van RStudio in [handleiding RStudio documentatie](#appendixa) hieronder.  
+Hieronder vindt u aanvullende informatie over het gebruik van RStudio in de [hand leiding voor RStudio-documentatie](#appendixa) hieronder.  
 
-## <a id="scriptmodule"></a>Gegevens vanuit de R-Script uitvoeren-module ophalen
+## <a id="scriptmodule"></a>Gegevens ophalen uit en uit de module voor het uitvoeren van R-scripts
 
-In deze sectie bespreken we hoe u gegevens ophalen naar en van de [R-Script uitvoeren] [ execute-r-script] module. Tenslotte leest hoe u voor het afhandelen van verschillende soorten gegevens naar en van de [R-Script uitvoeren] [ execute-r-script] module.
+In deze sectie wordt uitgelegd hoe u gegevens in en uit de module voor het [uitvoeren van R-script][execute-r-script] kunt ophalen. We bekijken hoe u verschillende gegevens typen kunt verwerken die in en uit de module voor het uitvoeren van een [R-script][execute-r-script] worden gelezen.
 
-De volledige code voor deze sectie is in [MachineLearningSamples-notitieblokken/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+De volledige code voor deze sectie bevindt zich in [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="load-and-check-data-in-machine-learning-studio"></a>Laden en controleer de gegevens in Machine Learning Studio
+### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Gegevens in Machine Learning Studio laden en controleren (klassiek)
 
-#### <a id="loading"></a>Laden van de gegevensset
+#### <a id="loading"></a>De gegevensset laden
 
-We zullen beginnen bij het laden van de **csdairydata.csv** -bestand in Azure Machine Learning Studio.
+We gaan beginnen met het laden van het bestand **csdairydata. CSV** naar de klassieke versie van Azure machine learning Studio.
 
-1. Start uw Azure Machine Learning Studio-omgeving.
-1. Selecteer **+ nieuw** in de linkerbenedenhoek van het scherm en selecteer **gegevensset**.
-1. Selecteer **uit lokale bestand**, en vervolgens **Bladeren** om het bestand te selecteren.
-1. Zorg ervoor dat u hebt geselecteerd **generieke CSV-bestand met de header (.csv)** als het type voor de gegevensset.
-1. Klik op het vinkje.
-1. Nadat de gegevensset is geüpload, ziet u de nieuwe gegevensset door het selecteren van de **gegevenssets** tabblad.  
+1. Start uw klassieke versie van Azure Machine Learning Studio omgeving.
+1. Selecteer **+ Nieuw** linksonder in het scherm en selecteer **gegevensset**.
+1. Selecteer een **lokaal bestand**en klik vervolgens op **Bladeren** om het bestand te selecteren.
+1. Zorg ervoor dat u het **algemene CSV-bestand met de header (. CSV)** hebt geselecteerd als het type voor de gegevensset.
+1. Schakel het selectie vakje in.
+1. Nadat de gegevensset is geüpload, ziet u de nieuwe gegevensset door het tabblad **gegevens sets** te selecteren.  
 
 #### <a name="create-an-experiment"></a>Een experiment maken
 
-Nu dat we enkele gegevens in Machine Learning Studio hebben, moeten we het maken van een experiment voor de analyse.  
+Nu we een aantal gegevens in de klassieke versie van Machine Learning Studio hebben, moeten we een experiment maken om de analyse uit te voeren.  
 
-1. Selecteer **+ nieuw** op de onderste links en selecteer **Experiment**, klikt u vervolgens **leeg Experiment**.
-1. U kunt uw experiment naam door te selecteren en te wijzigen, de **Experiment gemaakt op...**  titel boven aan de pagina. Zo wijzigen dat **CA Zuivel Analysis**.
-1. Vouw aan de linkerkant van de pagina experiment **opgeslagen gegevenssets**, en vervolgens **mijn gegevenssets**. U ziet de **cadairydata.csv** die u eerder hebt geüpload.
-1. Sleep en zet de **csdairydata.csv gegevensset** naar het experimentcanvas.
-1. In de **zoeken items experimenteren** vak boven aan het linkerdeelvenster, type [R-Script uitvoeren][execute-r-script]. Hier ziet u de module worden weergegeven in de zoeklijst.
-1. Sleep en zet de [R-Script uitvoeren] [ execute-r-script] module naar het palet.  
-1. Koppel de uitvoer van de **csdairydata.csv gegevensset** naar de meest linkse invoer (**Dataset1**) van de [R-Script uitvoeren][execute-r-script].
-1. **Vergeet niet om te selecteren van 'Opslaan'!**  
+1. Selecteer **+ Nieuw** linksonder en selecteer **experiment**en vervolgens **leeg experiment**.
+1. U kunt uw experiment een naam bieden door te selecteren en te wijzigen, het **experiment gemaakt op...** titel boven aan de pagina. U kunt deze bijvoorbeeld wijzigen in **CA-zuivel analyse**.
+1. Vouw aan de linkerkant van de pagina experiment **opgeslagen gegevens sets**en vervolgens **mijn gegevens sets**uit. U ziet het **cadairydata. CSV** -bestand dat u eerder hebt geüpload.
+1. Sleep de **gegevensset csdairydata. CSV** naar het experiment en zet deze neer.
+1. Typ in het vak **Zoek proef items** boven in het linkerdeel venster de opdracht [R-script uitvoeren][execute-r-script]. U ziet dat de module wordt weer gegeven in de lijst zoeken.
+1. Sleep de module voor het [uitvoeren van R-scripts][execute-r-script] naar uw pallet.  
+1. Verbind de uitvoer van de **csdairydata. CSV-gegevensset** naar de meest linkse invoer (**Dataset1**) van het [script Execute R][execute-r-script].
+1. **Vergeet niet om ' opslaan ' te selecteren.**  
 
-Op dit moment ziet uw experiment er ongeveer als in afbeelding 3.
+Op dit moment moet het experiment er ongeveer uitzien als afbeelding 3.
 
-![De CA Zuivel analyse experimenteren met de gegevensset en het uitvoeren van R-Script-module](./media/r-quickstart/fig3.png)
+![Het analyse experiment van de CA-melk met de module gegevensset en execute R-script](./media/r-quickstart/fig3.png)
 
-*Afbeelding 3. De CA Zuivel analyse experimenteren met de gegevensset en het uitvoeren van R-Script-module.*
+*Afbeelding 3. Het analyse experiment van de CA-melk met de module gegevensset en execute R-script.*
 
-#### <a name="check-on-the-data"></a>Controleer op de gegevens
+#### <a name="check-on-the-data"></a>De gegevens controleren
 
-We hebben een overzicht van de gegevens die we in onze experiment hebben geladen. Selecteer in het experiment, de uitvoer van de **cadairydata.csv gegevensset** en selecteer **visualiseren**. U ziet er ongeveer als afbeelding 4.  
+Laten we eens kijken naar de gegevens die we in ons experiment hebben geladen. In het experiment selecteert u de uitvoer van de **gegevensset cadairydata. CSV** en selecteert u **visualiseren**. U ziet iets als afbeelding 4.  
 
-![Samenvatting van de gegevensset cadairydata.csv](./media/r-quickstart/fig4.png)
+![Samen vatting van de cadairydata. CSV-gegevensset](./media/r-quickstart/fig4.png)
 
-*Afbeelding 4. Samenvatting van de gegevensset cadairydata.csv.*
+*Afbeelding 4. Samen vatting van de cadairydata. CSV-gegevensset.*
 
-In deze weergave ziet u een groot aantal nuttige informatie. U ziet de eerste verschillende rijen van de gegevensset. Als we een kolom selecteert, wordt de sectie statistieken meer informatie over de kolom. Bijvoorbeeld, laat de rij functietype zien welke gegevenstypen Azure Machine Learning Studio wordt toegewezen aan de kolom. Het is een goede controle dat als volgt: een beknopt overzicht hebben, voordat we ernstige werk.
+In deze weer gave zien we veel nuttige informatie. We kunnen de eerste verschillende rijen van die gegevensset zien. Als we een kolom selecteren, ziet u in de sectie statistieken meer informatie over de kolom. De rij functie type laat bijvoorbeeld zien welke gegevens worden weer gegeven in de klassieke versie van Azure Machine Learning Studio die aan de kolom is toegewezen. Een kort overzicht is een goede Sanity controle voordat we een ernstige hoeveelheid werk gaan uitvoeren.
 
 ### <a name="first-r-script"></a>Eerste R-script
 
-We maken een eenvoudige eerste R-script om te experimenteren met in Azure Machine Learning Studio. Ik heb gemaakt en getest met het volgende script in RStudio.  
+Laten we een eenvoudig eerste R-script maken om te experimenteren met in de klassieke versie van Azure Machine Learning Studio. Ik heb het volgende script in RStudio gemaakt en getest.  
 
 ```R
 ## Only one of the following two lines should be used
-## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
 cadairydata <- maml.mapInputPort(1)
 # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
 str(cadairydata)
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
-Nu wil ik dit script overbrengen naar Azure Machine Learning Studio. Ik kan gewoon knippen en plakken. Echter, in dit geval ik worden overgebracht mijn R-script via een zip-bestand.
+Ik moet dit script nu overdragen aan de klassieke versie van Azure Machine Learning Studio. Ik kan eenvoudigweg knippen en plakken. In dit geval brengt ik echter mijn R-script over via een zip-bestand.
 
-### <a name="data-input-to-the-execute-r-script-module"></a>Gegevensinvoer voor de module R-Script uitvoeren
+### <a name="data-input-to-the-execute-r-script-module"></a>Gegevens invoer van de module voor het uitvoeren van R-scripts
 
-We hebben een overzicht van de invoer voor de [R-Script uitvoeren] [ execute-r-script] module. In dit voorbeeld leest de Californië melkkoeien gegevens in de [R-Script uitvoeren] [ execute-r-script] module.  
+Laten we eens kijken naar de invoer voor de module [R-script uitvoeren][execute-r-script] . In dit voor beeld lezen we de gegevens van Californië zuivel in de module voor het [uitvoeren van R-scripts][execute-r-script] .  
 
-Er zijn drie mogelijke invoer voor de [R-Script uitvoeren] [ execute-r-script] module. U kunt een of meer van deze invoer, afhankelijk van uw toepassing. Het is ook perfect redelijke een R-script die helemaal geen invoer te gebruiken.  
+Er zijn drie mogelijke invoer voor de module voor het uitvoeren van een [R-script][execute-r-script] . U kunt een of meer van deze invoer gebruiken, afhankelijk van uw toepassing. Het is ook zeer redelijk om een R-script te gebruiken dat helemaal geen invoer in beslag neemt.  
 
-Laten we bekijken op elk van deze invoer, die van links naar rechts. Ziet u de namen van elk van de invoerwaarden door plaatst u de cursor op de invoer en de knopinfo te lezen.  
+We gaan elk van deze invoer eens bekijken, van links naar rechts. U kunt de namen van elk van de invoer zien door de cursor over de invoer te plaatsen en de knop info te lezen.  
 
-#### <a name="script-bundle"></a>Script-bundel
+#### <a name="script-bundle"></a>Script bundel
 
-De Script-bundel invoer zodat u de inhoud van een zip-bestand in [R-Script uitvoeren] [ execute-r-script] module. U kunt een van de volgende opdrachten gebruiken om de inhoud van het zip-bestand in uw R-code.
+Met de invoer van de script bundel kunt u de inhoud van een zip-bestand door geven in de module voor het uitvoeren van een [R-script][execute-r-script] . U kunt een van de volgende opdrachten gebruiken om de inhoud van het zip-bestand te lezen in de R-code.
 
 ```R
 source("src/yourfile.R") # Reads a zipped R script
@@ -224,52 +224,52 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Azure Machine Learning Studio-bestanden in het ZIP-bestand worden behandeld alsof ze zich in de src / map, dus moet u het voorvoegsel van de bestandsnamen van uw met de naam van deze map. Bijvoorbeeld, als het ZIP-bestand bevat de bestanden `yourfile.R` en `yourData.rdata` in de hoofdmap van het ZIP-bestand, wilt u deze als oplossen `src/yourfile.R` en `src/yourData.rdata` bij het gebruik van `source` en `load`.
+> De klassieke versie van Azure Machine Learning Studio behandelt bestanden in de zip alsof ze zich in de map src/directory bevinden, dus u moet de bestands namen met deze naam van de map voor voegsel. Als de zip bijvoorbeeld de bestanden `yourfile.R` en `yourData.rdata` in de hoofdmap van de zip bevat, kunt u deze als `src/yourfile.R` en `src/yourData.rdata` bij het gebruik van `source` en `load`.
 
-We gegevenssets laden in de eerder besproken [laden van de gegevensset](#loading). Nadat u hebt gemaakt en getest het R-script dat wordt weergegeven in de vorige sectie, het volgende doen:
+[De gegevensset voor het](#loading)laden van gegevens sets is al besproken. Als u het R-script hebt gemaakt en getest dat in de vorige sectie wordt weer gegeven, gaat u als volgt te werk:
 
-1. Sla het R-script in een. R-bestand. Roep ik mijn scriptbestand "simpleplot. R'. Hier volgt de inhoud.
+1. Sla het R-script op in een. R-bestand. Ik bel mijn script bestand "simpleplot. R. Dit is de inhoud.
 
    ```R
    ## Only one of the following two lines should be used
-   ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+   ## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
    ## If in RStudio, use the second line with read.csv()
    cadairydata <- maml.mapInputPort(1)
    # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
    str(cadairydata)
    pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
    ## The following line should be executed only when running in
-   ## Azure Machine Learning Studio
+   ## Azure Machine Learning Studio (classic)
    maml.mapOutputPort('cadairydata')
    ```
 
-1. Maak een zip-bestand en kopieer het script in dit zip-bestand. Op Windows, kunt u met de rechtermuisknop op het bestand en selecteer **verzenden naar**, en vervolgens **gecomprimeerde map**. Hiermee maakt u een nieuw zipbestand met de 'simpleplot. R'-bestand.
+1. Maak een zip-bestand en kopieer uw script naar dit zip-bestand. In Windows kunt u met de rechter muisknop op het bestand klikken en **verzenden naar**en **gecomprimeerde map**selecteren. Hiermee maakt u een nieuw zip-bestand met de ' simpleplot. R-bestand.
 
-1. Toevoegen van het bestand naar de **gegevenssets** in Machine Learning Studio, op te geven het type als **zip**. U ziet nu het zip-bestand in uw gegevenssets.
+1. Voeg uw bestand toe aan de **gegevens sets** in de klassieke versie van machine learning Studio en geef het type op als **zip**. U ziet nu het zip-bestand in de gegevens sets.
 
-1. Slepen en neerzetten van het zip-bestand van **gegevenssets** naar de **ML Studio canvas**.
+1. Sleep het zip-bestand van **gegevens sets** naar het **ml Studio (klassiek)-canvas**.
 
-1. Koppel de uitvoer van de **zip-gegevens** pictogram aan de **Script bundel** invoer van de [R-Script uitvoeren] [ execute-r-script] module.
+1. Koppel de uitvoer van het pictogram **zip-gegevens** aan de invoer van de **script bundel** van de module voor het uitvoeren van een [R-script][execute-r-script] .
 
-1. Type de `source()` functie met de naam van uw zip-bestand in het codevenster voor de [R-Script uitvoeren] [ execute-r-script] module. In mijn geval ik hebt getypt `source("src/simpleplot.R")`.  
+1. Typ de `source()` functie met de naam van het zip-bestand in het code venster voor de module voor het uitvoeren van een [R-script][execute-r-script] . Ik heb in mijn geval getypt `source("src/simpleplot.R")`.  
 
-1. Zorg ervoor dat u selecteert **opslaan**.
+1. Zorg ervoor dat u **Opslaan**selecteert.
 
-Als deze stappen voltooid zijn, de [R-Script uitvoeren] [ execute-r-script] module wordt het R-script uitgevoerd in het zip-bestand wanneer het experiment wordt uitgevoerd. Op dit moment ziet uw experiment er ongeveer als afbeelding 5.
+Zodra deze stappen zijn voltooid, wordt [het r][execute-r-script] -script in het zip-bestand uitgevoerd wanneer het experiment wordt uitgevoerd. Op dit moment moet het experiment er ongeveer als volgt uitzien, zoals in afbeelding 5.
 
-![Experimenteer met behulp van ZIP R-script](./media/r-quickstart/fig6.png)
+![Experimenteren met het gebruik van een gezipt R-script](./media/r-quickstart/fig6.png)
 
-*Afbeelding 5. Experimenteer met behulp van ZIP R-script.*
+*Afbeelding 5. Experimenteer met het gezipte R-script.*
 
 #### <a name="dataset1"></a>Dataset1
 
-U kunt een rechthoekig tabel met gegevens doorgeven aan uw R-code met behulp van de invoer Dataset1. In onze eenvoudig script de `maml.mapInputPort(1)` functie leest de gegevens van poort 1. Deze gegevens wordt vervolgens toegewezen aan een gegevensframe variabelenaam in uw code. In onze eenvoudig script voert de eerste coderegel de toewijzing.
+U kunt een rechthoekige tabel met gegevens door geven aan uw R-code met behulp van de Dataset1-invoer. In ons eenvoudige script wordt de functie `maml.mapInputPort(1)` de gegevens van poort 1 gelezen. Deze gegevens worden vervolgens toegewezen aan de naam van een data frame-variabele in uw code. In ons eenvoudige script voert de eerste regel code de toewijzing uit.
 
 ```R
 cadairydata <- maml.mapInputPort(1)
 ```
 
-Uw experiment uitvoeren door het selecteren van de **uitvoeren** knop. Wanneer de uitvoering is voltooid, selecteert u de [R-Script uitvoeren] [ execute-r-script] -module en selecteer vervolgens **logboek van de uitvoer weergeven** in het deelvenster met eigenschappen. Een nieuwe pagina moet worden weergegeven in uw browser met daarin de inhoud van het bestand uitvoer.log. Wanneer u naar beneden schuift ziet u er ongeveer als volgt uit.
+Voer uw experiment uit door de knop **uitvoeren** te selecteren. Wanneer de uitvoering is voltooid, selecteert u de module [R-script uitvoeren][execute-r-script] en selecteert u vervolgens **uitvoer logboek weer geven** in het deel venster Eigenschappen. Er wordt een nieuwe pagina weer gegeven in de browser die de inhoud van het bestand output. log weergeeft. Als u naar beneden schuift, ziet u iets zoals in het volgende.
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -280,7 +280,7 @@ Uw experiment uitvoeren door het selecteren van de **uitvoeren** knop. Wanneer d
     [ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
     [ModuleOutput] }
 
-Verder omlaag op de pagina is dat meer gedetailleerde informatie over de kolommen die er ongeveer als volgt ziet.
+Verder is de pagina meer gedetailleerde informatie over de kolommen. deze ziet er ongeveer als volgt uit.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput]
@@ -304,81 +304,81 @@ Verder omlaag op de pagina is dat meer gedetailleerde informatie over de kolomme
     [ModuleOutput]
     [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
 
-Deze resultaten zijn zoals verwacht, met 228 opmerkingen en 9 kolommen van het gegevensframe voornamelijk. We kunnen zien de namen van kolommen, het gegevenstype van R en een voorbeeld van elke kolom.
+Deze resultaten zijn voornamelijk zoals verwacht, met 228 waarnemingen en 9 kolommen in de data frame. De kolom namen, het gegevens Type R en een voor beeld van elke kolom worden weer gegeven.
 
 > [!NOTE]
-> Deze dezelfde afdruk is eenvoudig beschikbaar vanuit de R-apparaat-uitvoer van de [R-Script uitvoeren] [ execute-r-script] module. Bespreken we de uitvoer van de [R-Script uitvoeren] [ execute-r-script] module in de volgende sectie.  
+> Dezelfde gedrukte uitvoer is eenvoudig beschikbaar vanuit de R-uitvoer van de module voor het uitvoeren van een [r-script][execute-r-script] . De uitvoer van de module voor het [uitvoeren van R-script][execute-r-script] wordt in de volgende sectie besproken.  
 
 #### <a name="dataset2"></a>Dataset2
 
-Het gedrag van de invoer Dataset2 is identiek aan die van Dataset1. Met behulp van deze gegevens kunt u een tweede rechthoekige tabel met gegevens in uw R-code doorgeven. De functie `maml.mapInputPort(2)`, met het argument 2 wordt gebruikt om door te geven van deze gegevens.  
+Het gedrag van de Dataset2-invoer is gelijk aan die van Dataset1. Met deze invoer kunt u een tweede rechthoekige tabel met gegevens door geven aan uw R-code. De functie `maml.mapInputPort(2)`, met het argument 2, wordt gebruikt om deze gegevens door te geven.  
 
-### <a name="execute-r-script-outputs"></a>Uitvoer van de R-Script uitvoeren
+### <a name="execute-r-script-outputs"></a>Uitvoer van R-script uitvoeren
 
-#### <a name="output-a-dataframe"></a>Uitvoer van een dataframe
+#### <a name="output-a-dataframe"></a>Een data frame uitvoeren
 
-U kunt de inhoud van een R-dataframe uitvoer als een rechthoekig tabel via de poort resultaat Dataset1 met behulp van de `maml.mapOutputPort()` functie. In onze eenvoudige R-script wordt deze uitgevoerd door de volgende regel.
+U kunt de inhoud van een R-data frame uitvoeren als een rechthoekige tabel via de Dataset1-poort van het resultaat met behulp van de functie `maml.mapOutputPort()`. In ons eenvoudige R-script wordt dit uitgevoerd door de volgende regel.
 
 ```
 maml.mapOutputPort('cadairydata')
 ```
 
-Nadat het experiment is uitgevoerd, selecteert u het resultaat Dataset1 uitvoerpoort en selecteer vervolgens **Visualize**. U ziet er ongeveer als afbeelding 6.
+Na het uitvoeren van het experiment selecteert u het resultaat Dataset1 uitvoer poort en selecteert u vervolgens **visualiseren**. U ziet iets als afbeelding 6.
 
-![De visualisatie van de uitvoer van de melkkoeien Californië-gegevens](./media/r-quickstart/fig7.png)
+![De visualisatie van de uitvoer van de California zuivel gegevens](./media/r-quickstart/fig7.png)
 
-*Afbeelding 6. De visualisatie van de uitvoer van de melkkoeien Californië-gegevens.*
+*Afbeelding 6. De visualisatie van de uitvoer van de California zuivel-gegevens.*
 
-Deze uitvoer ziet er uit identiek zijn aan de input, precies zoals verwacht.  
+Deze uitvoer ziet er precies zo uit als verwacht.  
 
-### <a name="r-device-output"></a>Uitvoer van de R-apparaat
+### <a name="r-device-output"></a>R-apparaat-uitvoer
 
-De uitvoer van het apparaat van de [R-Script uitvoeren] [ execute-r-script] -module bevat de uitvoer van berichten en afbeeldingen. Beide standard standard- en uitvoer foutberichten van R worden verzonden naar de uitvoerpoort van R-apparaat.  
+De uitvoer van het apparaat van de [script module Execute R][execute-r-script] bevat berichten en grafische uitvoer. Standaard uitvoer en standaard fout berichten van R worden verzonden naar de uitvoer poort van het R-apparaat.  
 
-De R-apparaat als uitvoer wilt bekijken, selecteert u de poort en klik vervolgens op **Visualize**. Ziet u de standaarduitvoer en de standaardfout van de R-script in afbeelding 7.
+Als u de uitvoer van het R-apparaat wilt weer geven, selecteert u de poort en vervolgens op **visualiseren**. We zien de standaard uitvoer en de standaard fout van het R-script in afbeelding 7.
 
-![Standaarduitvoer en de standaardfout van de poort-R-apparaat](./media/r-quickstart/fig8.png)
+![Standaard uitvoer en standaard fout van de R-poort van apparaat](./media/r-quickstart/fig8.png)
 
-*Afbeelding 7. Standaarduitvoer en de standaardfout van de poort-R-apparaat.*
+*Afbeelding 7. De standaard uitvoer en de standaard fout van de R-poort van het apparaat.*
 
-We bladeren ziet de uitvoer van de afbeeldingen van onze R-script in afbeelding 8.  
+Schuif omlaag er wordt een grafische uitvoer van het R-script in afbeelding 8 weer geven.  
 
-![Grafische uitvoer van de poort-R-apparaat](./media/r-quickstart/fig9.png)
+![Grafische uitvoer van de R-poort van apparaat](./media/r-quickstart/fig9.png)
 
-*Afbeelding 8. Grafische uitvoer van de poort-R-apparaat.*  
+*Afbeelding 8. Grafische uitvoer van de R-poort van het apparaat.*  
 
-## <a id="filtering"></a>Gegevens filteren en transformatie
+## <a id="filtering"></a>Gegevens filteren en trans formatie
 
-In deze sectie wordt we enkele elementaire gegevens filteren en transformatiebewerkingen op de Californië melkkoeien gegevens uitvoeren. Aan het einde van deze sectie hebben we gegevens in een indeling die geschikt zijn voor het bouwen van een Analytics-model.  
+In deze sectie worden enkele basis bewerkingen voor gegevens filtering en-trans formatie uitgevoerd voor de California zuivel-gegevens. Aan het einde van deze sectie hebben we gegevens in een indeling die geschikt is voor het bouwen van een analytisch model.  
 
-Meer specifiek, in deze sectie wordt we enkele algemene gegevens opschonen en transformatie van taken uitvoeren: transformatie, filteren op dataframes, toe te voegen nieuwe berekende kolommen, typen en de waarde van transformaties. Deze achtergrond kunt u om te gaan met de veel variaties aangetroffen in de praktijk problemen.
+In deze sectie worden echter verschillende algemene taken voor het opschonen van gegevens en trans formatie uitgevoerd: type trans formatie, filteren op dataframes, toevoegen van nieuwe berekende kolommen en waarde-trans formaties. Deze achtergrond zou u kunnen helpen bij het oplossen van de vele variaties die in praktijk problemen optreden.
 
-De volledige R-code voor deze sectie is beschikbaar in [MachineLearningSamples-notitieblokken/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+De volledige R-code voor deze sectie is beschikbaar in [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="type-transformations"></a>Type transformaties
+### <a name="type-transformations"></a>Type trans formaties
 
-Nu dat we de Californië melkkoeien gegevens kunt lezen in de R-code in de [R-Script uitvoeren] [ execute-r-script] -module, moeten we om ervoor te zorgen dat de gegevens in de kolommen het gewenste type en de indeling heeft.  
+Nu we de California zuivel-gegevens kunnen lezen in de R-code in de script module voor het [uitvoeren van r][execute-r-script] , moeten we ervoor zorgen dat de gegevens in de kolommen het beoogde type en de juiste indeling hebben.  
 
-R is een dynamisch getypeerde taal, wat betekent dat gegevenstypen van één naar een andere als vereist worden afgedwongen. De atomische gegevenstypen in R bevatten numeriek, logische en -teken. Het type van meerdere factoren wordt gebruikt voor het opslaan van compactly categorische gegevens. U vindt meer informatie over gegevenstypen in de verwijzingen in [meer weten](#appendixb) hieronder.
+R is een dynamisch getypeerde taal, wat betekent dat de gegevens typen zo nodig naar een andere worden gedwongen. De atomische gegevens typen in R bevatten numeriek, logisch en teken. Het type factor wordt gebruikt om categorische-gegevens op te slaan. Meer informatie over gegevens typen vindt u in de verwijzingen in [meer Lees](#appendixb) hieronder.
 
-Als gegevens in tabelvorm wordt gelezen in R vanuit een externe bron, maar het is altijd een goed idee om te controleren of de resulterende typen in de kolommen. U kunt een kolom van het typeteken, maar in veel gevallen deze wordt weergegeven als factor of vice versa. In andere gevallen een kolom die u denkt dat moet worden wordt numerieke vertegenwoordigd door tekengegevens, bijvoorbeeld '1,23' in plaats van 1,23 als een zwevende-kommagetal.  
+Wanneer tabellaire gegevens in R van een externe bron worden gelezen, is het altijd een goed idee om de resulterende typen in de kolommen te controleren. Mogelijk wilt u een kolom van het type teken, maar in veel gevallen wordt dit weer gegeven als factor of andersom. In andere gevallen moet een kolom die u beschouwt numeriek zijn door teken gegevens, bijvoorbeeld ' 1,23 ' in plaats van 1,23 als een getal met drijvende komma.  
 
-Het is gelukkig eenvoudig één type converteren naar een andere, zolang de toewijzing is mogelijk. Bijvoorbeeld, u 'Nevada' niet converteren naar een numerieke waarde, maar u kunt converteren naar een factor (categorische variabele). Als een ander voorbeeld kunt u een numerieke 1 converteren naar een teken '1' of een van meerdere factoren.  
+Gelukkig is het eenvoudig om het ene type naar het andere te converteren, zolang de toewijzing mogelijk is. U kunt bijvoorbeeld ' Nevada ' niet converteren naar een numerieke waarde, maar deze converteren naar een factor (categorische-variabele). Een ander voor beeld: u kunt een numerieke waarde 1 omzetten in een teken ' 1 ' of een factor.  
 
-De syntaxis voor het gebruik van deze conversies is eenvoudig: `as.datatype()`. Deze conversiefuncties omvatten het volgende.
+De syntaxis voor deze conversies is eenvoudig: `as.datatype()`. Deze functies voor type conversie zijn onder andere de volgende.
 
 * `as.numeric()`
 * `as.character()`
 * `as.logical()`
 * `as.factor()`
 
-Kijken naar de gegevenstypen van de kolommen die we in de vorige sectie invoer: alle kolommen van het type Numeriek, met uitzondering van de kolom met het label 'Maand', van het typeteken is zijn. Laten we deze converteren naar een multi-factor Authentication en de resultaten testen.  
+Bekijk de gegevens typen van de kolommen die we in de vorige sectie hebben ingevoerd: alle kolommen zijn van het type Numeriek, met uitzonde ring van de kolom met het label month, die van het type teken is. Laten we dit omzetten naar een factor en de resultaten testen.  
 
-Ik heb de regel die de matrix teststappen gemaakt en een regel die de kolom 'Maand' converteren naar een factor toegevoegd hebt verwijderd. In mijn experiment wordt ik net Knip en plak de R-code in het code-venster van de [R-Script uitvoeren] [ execute-r-script] Module. U kunt ook bijwerken van het zip-bestand en dit uploaden naar Azure Machine Learning Studio, maar dit duurt een aantal stappen uitvoeren.  
+Ik heb de regel voor het maken van de scatterplot-matrix verwijderd en een regel toegevoegd die de kolom month omzet in een factor. In mijn experiment knipt u gewoon de R-code en plakt u deze in het code venster van de module voor het uitvoeren van een [R-script][execute-r-script] . U kunt het zip-bestand ook bijwerken en uploaden naar de klassieke versie van Azure Machine Learning Studio, maar dit kan verschillende stappen in beslag nemen.  
 
 ```R
 ## Only one of the following two lines should be used
-## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
 cadairydata <- maml.mapInputPort(1)
 # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
@@ -386,11 +386,11 @@ cadairydata <- maml.mapInputPort(1)
 cadairydata$Month <- as.factor(cadairydata$Month)
 str(cadairydata) # Check the result
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
-Laten we deze code uitvoeren en kijken naar het uitvoerlogboek voor voor de R-script. De relevante gegevens van het logboek wordt weergegeven in afbeelding 9.
+We gaan deze code uitvoeren en kijken naar het uitvoer logboek voor het R-script. De relevante gegevens uit het logboek worden weer gegeven in afbeelding 9.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -418,18 +418,18 @@ Laten we deze code uitvoeren en kijken naar het uitvoerlogboek voor voor de R-sc
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Afbeelding 9. Samenvatting van het gegevensframe met een factor-variabele.*
+*Afbeelding 9. Samen vatting van de data frame met een factor variabele.*
 
-Het type voor de maand moet nu de melding ontvangen '**Factor met 14 niveaus**'. Dit is een probleem omdat er alleen 12 maanden van het jaar. U kunt ook controleren om te zien dat het type in **Visualize** van de resultaat-gegevensset-poort is '**Categorisch**'.
+Het type voor maand moet nu '**factor w/14 niveaus**' uitspreken. Dit is een probleem omdat er slechts 12 maanden in het jaar zijn. U kunt ook controleren of het type in **visualiseren** van de**categorische**van de resultaat gegevensset is.
 
-Het probleem is dat de kolom 'Maand' niet systematisch heeft zijn gecodeerd. In sommige gevallen een maand April wordt genoemd en in andere gevallen wordt het Apr afgekort. We kunnen dit probleem oplossen door de tekenreeks die moet 3 tekens. De regel code ziet er nu als volgt uit:
+Het probleem is dat de kolom month niet systematisch is gecodeerd. In sommige gevallen wordt een maand april genoemd en wordt deze afgekort tot apr. We kunnen dit probleem oplossen door de teken reeks te verkleinen tot drie tekens. De regel code ziet er nu als volgt uit:
 
 ```R
 ## Ensure the coding is consistent and convert column to a factor
 cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 ```
 
-Het experiment opnieuw uitvoeren en het uitvoerlogboek weergeven. De verwachte resultaten worden weergegeven in afbeelding 10.  
+Voer het experiment opnieuw uit en Bekijk het uitvoer logboek. De verwachte resultaten worden weer gegeven in afbeelding 10.  
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -457,27 +457,27 @@ Het experiment opnieuw uitvoeren en het uitvoerlogboek weergeven. De verwachte r
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Afbeelding 10. Samenvatting van het gegevensframe met het juiste aantal factor levels.*
+*Afbeelding 10. Samen vatting van de data frame met het juiste aantal factor niveaus.*
 
-Onze variabele factor heeft nu de gewenste 12 niveaus.
+Onze factor variabele heeft nu de gewenste 12 niveaus.
 
-### <a name="basic-data-frame-filtering"></a>Basisgegevens frame filteren
+### <a name="basic-data-frame-filtering"></a>Basis gegevens frames filteren
 
-R dataframes ondersteunen krachtige filteropties. Gegevenssets zijn subset met behulp van logische filters op rijen of kolommen. In veel gevallen is complexe filtercriteria vereist. De verwijzingen in [meer weten](#appendixb) hieronder bevat uitgebreide voorbeelden van dataframes filteren.  
+R dataframes ondersteunen krachtige filter mogelijkheden. Gegevens sets kunnen worden subsetted met behulp van logische filters voor rijen en kolommen. In veel gevallen is het complexe filter criterium vereist. De verwijzingen in [verdere Lees bewerkingen](#appendixb) bevatten uitgebreide voor beelden van het filteren van dataframes.  
 
-Er is één bit filteren we altijd moeten doen op de gegevensset. Als u de kolommen van het gegevensframe cadairydata bekijkt, ziet u twee overbodige kolommen. De eerste kolom bevat alleen een rijnummer, niet erg nuttig is. De tweede kolom, Year.Month, bevat redundante informatie. We kunnen deze kolommen eenvoudig uitsluiten met behulp van de volgende R-code.
+Er zijn twee filters die in onze gegevensset moeten worden uitgevoerd. Als u de kolommen in de cadairydata-data frame bekijkt, worden er twee overbodige kolommen weer geven. De eerste kolom bevat alleen een rijnummer. Dit is niet erg nuttig. De tweede kolom, jaar. maand, bevat redundante informatie. We kunnen deze kolommen eenvoudig uitsluiten met behulp van de volgende R-code.
 
 > [!NOTE]
-> Van nu af in deze sectie alleen ziet u de aanvullende code die ik toe te voegen in de [R-Script uitvoeren] [ execute-r-script] module. Ik zal elke nieuwe regel toevoegen **voordat** de `str()` functie. Kan ik deze functie gebruiken om te controleren of de resultaten in Azure Machine Learning Studio.
+> Vanaf nu in deze sectie ziet u alleen de extra code die ik toevoeg in de module voor het uitvoeren van een [R-script][execute-r-script] . Ik voeg elke nieuwe regel toe **voor** de functie `str()`. Ik gebruik deze functie om mijn resultaten te controleren in de klassieke versie van Azure Machine Learning Studio.
 
-Kan ik de volgende regel toevoegen aan mijn R-code in de [R-Script uitvoeren] [ execute-r-script] module.
+Ik voeg de volgende regel toe aan mijn R-code in de module voor het uitvoeren van een [r-script][execute-r-script] .
 
 ```R
 # Remove two columns we do not need
 cadairydata <- cadairydata[, c(-1, -2)]
 ```
 
-Voer deze code in uw experiment uit en controleer het resultaat van het uitvoerlogboek voor. Deze resultaten worden weergegeven in afbeelding 11.
+Voer deze code uit in uw experiment en controleer het resultaat van het uitvoer logboek. Deze resultaten worden weer gegeven in afbeelding 11.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -501,15 +501,15 @@ Voer deze code in uw experiment uit en controleer het resultaat van het uitvoerl
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Afbeelding 11. Samenvatting van het gegevensframe met twee kolommen zijn verwijderd.*
+*Afbeelding 11. Samen vatting van de data frame met twee kolommen verwijderd.*
 
-Goed nieuws! Krijgen we de verwachte resultaten.
+Goed nieuws. De verwachte resultaten worden opgehaald.
 
 ### <a name="add-a-new-column"></a>Een nieuwe kolom toevoegen
 
-Voor het maken van time series modellen is het handig zijn als een kolom met de maanden sinds de start van de tijdreeks. We gaan een nieuwe kolom 'Month.Count' maken.
+Als u een time series-model wilt maken, is het handig om een kolom te hebben die de maanden sinds het begin van de tijd reeks bevat. Er wordt een nieuwe kolom month. Count gemaakt.
 
-Om u te helpen met het organiseren van de code maken we onze eerste eenvoudige functie `num.month()`. Deze functie voor het maken van een nieuwe kolom in het dataframe zullen we vervolgens toepassen. De nieuwe code is als volgt.
+Om de code te organiseren, maken we onze eerste eenvoudige functie `num.month()`. Vervolgens worden deze functies toegepast om een nieuwe kolom in de data frame te maken. De nieuwe code is als volgt.
 
 ```R
 ## Create a new column with the month count
@@ -527,7 +527,7 @@ num.month <- function(Year, Month) {
 cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 ```
 
-Nu de bijgewerkte experiment uit te voeren en het uitvoerlogboek voor gebruiken om de resultaten weer te geven. Deze resultaten worden weergegeven in afbeelding 12.
+Voer nu het bijgewerkte experiment uit en gebruik het uitvoer logboek om de resultaten weer te geven. Deze resultaten worden weer gegeven in afbeelding 12.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -553,19 +553,19 @@ Nu de bijgewerkte experiment uit te voeren en het uitvoerlogboek voor gebruiken 
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Afbeelding 12. Samenvatting van het gegevensframe met de extra kolom.*
+*Afbeelding 12. Samen vatting van de data frame met de aanvullende kolom.*
 
-Het lijkt erop dat alles werkt. De nieuwe kolom met de verwachte waarden hebben we in onze dataframe.
+Het lijkt alsof alles werkt. We hebben de nieuwe kolom met de verwachte waarden in onze data frame.
 
-### <a name="value-transformations"></a>Waarde transformaties
+### <a name="value-transformations"></a>Waarde-trans formaties
 
-In deze sectie wordt we enkele eenvoudige transformaties uitvoeren op de waarden in enkele van de kolommen van onze dataframe. De R-taal ondersteunt bijna willekeurige waarde transformaties. De verwijzingen in [meer weten](#appendixb) hieronder bevat uitgebreide voorbeelden.
+In deze sectie worden enkele eenvoudige trans formaties uitgevoerd op de waarden in een aantal van de kolommen van onze data frame. De R-taal ondersteunt bijna wille keurige waarden trans formaties. De verwijzingen in [verdere Lees bewerkingen](#appendixb) bevatten uitgebreide voor beelden.
 
-Als u de waarden in de samenvattingen van onze dataframe bekijkt ziet u iets oneven hier. Meer ice cream dan melk geproduceerd in Californië? Nee, natuurlijk niet, omdat dit geen begrijpelijk is, als dit feit sad mogelijk tot een aantal van ons ice cream Ontwikkelaarshulpmiddelen. De eenheden zijn verschillend. De prijs is in eenheden van ons pond, melk is in eenheden van 1 miljoen US pond, ice cream in eenheden van 1000 ons gallon en Kwark in eenheden van 1000 VS pond is. Ervan uitgaande dat ice cream weegt ongeveer 6,5 pond per gallon, kunnen eenvoudig doen we de vermenigvuldiging als u wilt converteren van deze waarden, zodat ze allemaal op gelijke eenheden van 1000 pond.
+Als u de waarden in de samen vattingen van onze data frame bekijkt, moet u hier iets oneven kijken. Is er meer ijs dan in Californië geproduceerde melk? Nee, uiteraard niet, als dit niet zinvol is, is het mogelijk dat er een deel van de Amerikaanse Ice room-Lovers is. De eenheden verschillen. De prijs is in eenheden van Amerikaanse ponden, melk in eenheden van 1 M VS pond, ijs is in eenheden van 1.000 VS gallons en huis kaas is in eenheden van 1.000 VS pond. Aangenomen dat ijs ongeveer 6,5 pond per gallon weegt, kunnen we de vermenigvuldiging eenvoudig uitvoeren om deze waarden te converteren zodat ze allemaal in gelijke eenheden van 1.000 Euro's liggen.
 
-Voor onze prognosemodel gebruiken we een Multiplicatieve model voor de trend en seizoensgebonden aanpassing van deze gegevens. Een transformatie logboek kan we een lineair model, vereenvoudiging van dit proces gebruiken. We kunt de transformatie log in dezelfde functie waar de vermenigvuldiger is toegepast toepassen.
+Voor ons prognose model gebruiken we een multiplicative-model voor trend en seizoen aanpassing van deze gegevens. Met een logboek transformatie kan ons een lineair model gebruiken, waardoor dit proces wordt vereenvoudigd. We kunnen de logboek transformatie Toep assen in dezelfde functie als de vermenigvuldiger wordt toegepast.
 
-In de volgende code, kan ik een nieuwe functie definieert `log.transform()`, en dit toepassen op de rijen die de numerieke waarden bevat. De R `Map()` functie wordt gebruikt om toe te passen de `log.transform()` functie met de geselecteerde kolommen van het gegevensframe. `Map()` komt overeen met `apply()` , maar kunt u meer dan een lijst met argumenten voor de functie. Houd er rekening mee dat een lijst met vermenigvuldigers levert het tweede argument voor de `log.transform()` functie. De `na.omit()` functie als een deel van de opruimen wordt gebruikt om te controleren of er geen waarden ontbreekt of is niet gedefinieerd in het dataframe.
+In de volgende code definieert u een nieuwe functie, `log.transform()`en past u deze toe op de rijen met de numerieke waarden. De functie R `Map()` wordt gebruikt om de functie `log.transform()` toe te passen op de geselecteerde kolommen van de data frame. `Map()` is vergelijkbaar met `apply()`, maar biedt meer dan een lijst met argumenten voor de functie. Houd er rekening mee dat een lijst met vermenigvuldigers het tweede argument levert aan de functie `log.transform()`. De functie `na.omit()` wordt gebruikt als een bit van opschoning om ervoor te zorgen dat er geen ontbrekende of niet-gedefinieerde waarden in de data frame zijn.
 
 ```R
 log.transform <- function(invec, multiplier = 1) {
@@ -600,18 +600,18 @@ cadairydata[, 4:7] <- Map(log.transform, cadairydata[, 4:7], multipliers)
 cadairydata <- na.omit(cadairydata)  
 ```
 
-Er is een behoorlijke bits gebeurt in de `log.transform()` functie. De meeste van deze code controleert op mogelijke problemen met de argumenten of omgaan met uitzonderingen die nog steeds tijdens de berekeningen optreden kunnen. Alleen een paar regels van deze code daadwerkelijk doen de berekeningen kunt.
+Er is een zeer beetje in de `log.transform()`-functie. Met de meeste van deze code wordt gecontroleerd op mogelijke problemen met de argumenten of het verwerken van uitzonde ringen. deze kunnen zich nog steeds voordoen tijdens de berekeningen. Slechts een paar regels van deze code voeren feitelijk de berekeningen uit.
 
-Het doel van de verdediging programmering is om te voorkomen dat het uitvallen van één functie waarmee wordt voorkomen dat de verwerking van u doorgaat. Een plotselinge storing van een langlopende-analyse is erg vervelend. Om te voorkomen dat deze situatie, moeten standaard retourwaarden worden gekozen die schade aan downstream-verwerkingen worden beperkt. Een bericht wordt ook geproduceerd Waarschuw gebruikers dat is iets fout gegaan.
+Het doel van de verdedigings programmering is om te voor komen dat er een storing optreedt in een enkele functie waardoor de verwerking niet kan worden voortgezet. Een plotselinge uitval van een langlopende analyse kan heel frustrerend zijn voor gebruikers. Om deze situatie te voor komen, moeten er standaard retour waarden worden gekozen, waardoor de schade wordt beperkt tot downstream-verwerking. Er wordt ook een bericht gegenereerd om gebruikers te waarschuwen dat er iets verkeerd is gegaan.
 
-Als u worden niet voor verdediging programmeren in R gebruikt, kan alle deze code een beetje verwarrend lijken. Ik begeleidt u stapsgewijs door de belangrijkste stappen:
+Als u niet wordt gebruikt om een verdedigings programma in R te maken, is het mogelijk dat al deze code een beetje overweldigend lijkt. Ik begeleid u door de belangrijkste stappen:
 
-1. Een vector van vier berichten is gedefinieerd. Deze berichten worden gebruikt om informatie over een aantal van de mogelijke fouten en uitzonderingen die met deze code optreden kunnen te communiceren.
-2. Ik retourneren NA de waarde voor elk geval. Er zijn tal van andere mogelijkheden die mogelijk minder neveneffecten. Ik kan een vector nullen of de oorspronkelijke invoer vector, bijvoorbeeld retourneren.
-3. Controles worden uitgevoerd op de argumenten voor de functie. In elk geval, als er een fout wordt gedetecteerd, een standaardwaarde geretourneerd en een bericht wordt geproduceerd door de `warning()` functie. Ik gebruik `warning()` in plaats van `stop()` zoals deze wordt beëindigd uitvoering, precies wat ik probeer om te voorkomen. Houd er rekening mee dat ik hebt geschreven deze code in een procedurele stijl, zoals in dit geval een functionele aanpak is complex en verborgen.
-4. Het logboek-berekeningen zijn verpakt in `tryCatch()` zodat uitzonderingen leiden niet een plotselinge stilstand te verwerken tot. Zonder `tryCatch()` de meeste fouten die worden gegenereerd door een stopsignaal, die precies dat leiden van R-functies.
+1. Er wordt een vector van vier berichten gedefinieerd. Deze berichten worden gebruikt voor het communiceren van informatie over een aantal van de mogelijke fouten en uitzonde ringen die kunnen optreden met deze code.
+2. Ik retour neer de waarde N.V.T. voor elke aanvraag. Er zijn veel andere mogelijkheden die mogelijk minder neven effecten hebben. Ik kan bijvoorbeeld een vector van nullen of de oorspronkelijke invoer vector retour neren.
+3. Controles worden uitgevoerd op de argumenten voor de functie. Als er een fout wordt gedetecteerd, wordt er in elk geval een standaard waarde geretourneerd en wordt er een bericht gegenereerd door de functie `warning()`. Ik gebruik `warning()` in plaats van `stop()` omdat de laatste bewerking wordt beëindigd, precies wat ik probeer te voor komen. Houd er rekening mee dat de code in een procedure stijl is geschreven, zoals in dit geval een functionele benadering gecompliceerd en onzichtbaar is.
+4. De logboek berekeningen worden in `tryCatch()` verpakt, zodat uitzonde ringen geen plotselinge onderbreking van de verwerking veroorzaken. Zonder `tryCatch()` de meeste fouten die zijn opgetreden door R-functies, resulteert dit in een stop signaal. Dit betekent alleen dat.
 
-Deze R-code uitvoeren in uw experiment en bekijk de uitvoer in het bestand uitvoer.log hebben. U ziet nu de getransformeerde waarden van de vier kolommen in het logboek, zoals wordt weergegeven in afbeelding 13.
+Voer deze R-code uit in uw experiment en Bekijk de gedrukte uitvoer in het bestand output. log. U ziet nu de getransformeerde waarden van de vier kolommen in het logboek, zoals wordt weer gegeven in afbeelding 13.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -637,33 +637,33 @@ Deze R-code uitvoeren in uw experiment en bekijk de uitvoer in het bestand uitvo
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*Afbeelding 13. Samenvatting van de getransformeerde waarden in het dataframe.*
+*Afbeelding 13. Samen vatting van de getransformeerde waarden in de data frame.*
 
-Ziet u de waarden zijn getransformeerd. Nu melkproductie is aanzienlijk groter dan alle andere melkkoeien product productie, terughalen dat we nu op zoek op een logaritmische schaal.
+We zien dat de waarden zijn getransformeerd. Zuivel productie overschrijdt nu de productie van zuivel producten, waardoor we nu een logaritmische schaal bekijken.
 
-Op dit moment onze gegevens worden gewist en we gereed zijn voor sommige modellen. Kijken naar de samenvatting voor de resultaat-gegevensset-uitvoer van de visualisatie onze [R-Script uitvoeren] [ execute-r-script] -module, ziet u de kolom 'Maand' is 'Categorisch' met 12 unieke waarden, opnieuw, net zoals we wilden.
+Onze gegevens worden op dit moment opgeruimd en we zijn klaar voor een model lering. Op basis van de visualisatie samenvatting van de uitvoer van de [script module Execute R][execute-r-script] wordt de kolom month ' categorische ' weer gegeven met 12 unieke waarden, net zoals u dat wilt.
 
-## <a id="timeseries"></a>Time series-objecten en correlatieanalyse
+## <a id="timeseries"></a>Tijd reeks objecten en correlatie analyse
 
-In deze sectie wordt we een paar basic R time series-objecten verkennen en analyseren van de correlatie tussen enkele van de variabelen. Ons doel is om uit te voeren een gegevensframe met de pairwise correlatie-informatie op verschillende lag.
+In deze sectie gaan we een paar Basic R Time Series-objecten verkennen en de correlaties tussen sommige variabelen analyseren. Ons doel is om een data frame met de informatie over de Pairwise-correlatie op verschillende lags uit te voeren.
 
-De volledige R-code voor deze sectie is in [MachineLearningSamples-notitieblokken/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+De volledige R-code voor deze sectie bevindt zich in [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="time-series-objects-in-r"></a>Time series-objecten in R
+### <a name="time-series-objects-in-r"></a>Time Series-objecten in R
 
-Als al is vermeld, tijd zijn-reeksen een reeks waarden geïndexeerd door de tijd. R time series-objecten worden gebruikt voor het maken en beheren van de tijdsindex. Er zijn diverse voordelen voor het gebruik van time series-objecten. Time series-objecten is een gratis uit de tal van details van het beheer van de serie index tijdwaarden die worden opgenomen in het object. Bovendien kunnen time series-objecten u veel tijd reeks methoden gebruiken voor het plotten, afdrukken, modellering van kredietrisico, enzovoort.
+Zoals al vermeld, is de tijd reeks een reeks gegevens waarden die op tijd worden geïndexeerd. R-tijd reeks objecten worden gebruikt voor het maken en beheren van de time-index. Er zijn verschillende voor delen voor het gebruik van tijd reeks-objecten. Met tijdreeks objecten kunt u veel meer informatie over het beheren van de time series-index waarden die zijn ingekapseld in het object. Daarnaast kunt u met Time Series-objecten gebruikmaken van de vele tijdreeks methoden voor het uitzetten, afdrukken, model leren, enzovoort.
 
-De POSIXct time series-klasse wordt vaak gebruikt en relatief eenvoudig is. Deze tijdreeks klasse metingen tijd vanaf het begin van de epoche, 1 januari 1970. In dit voorbeeld gebruiken we POSIXct time series-objecten. Andere klassen gebruikte R time series-object zijn zoo en xts, uitbreidbare tijdreeksen.
+De POSIXct-klasse van de tijd reeks wordt meestal gebruikt en is relatief eenvoudig. Deze tijd reeks klasse meet tijd vanaf het begin van de epoche, 1 januari 1970. We gebruiken POSIXct Time Series-objecten in dit voor beeld. Andere veelgebruikte R Time Series-object klassen zijn onder meer Zoo en XTS, uitbreid bare tijd reeksen.
 
-### <a name="time-series-object-example"></a>Voorbeeld van het object time series
+### <a name="time-series-object-example"></a>Voor beeld van een time Series-object
 
-Aan de slag met het voorbeeld. Slepen en neerzetten een **nieuwe** [R-Script uitvoeren] [ execute-r-script] module in uw experiment. Koppel de uitvoerpoort Dataset1 resultaat van de bestaande [R-Script uitvoeren] [ execute-r-script] module aan de Dataset1 poort van de nieuwe invoer [R-Script uitvoeren] [ execute-r-script] module.
+Laten we aan de slag met ons voor beeld. Sleep een **nieuwe** module voor het [uitvoeren van R-scripts][execute-r-script] naar uw experiment. Verbind het resultaat Dataset1 uitvoer poort van de bestaande [Execute r-script][execute-r-script] module naar de Dataset1-invoer poort van de nieuwe module voor het uitvoeren van een [r-script][execute-r-script] .
 
-Zoals ik deed voor de eerste voorbeelden zoals we in het voorbeeld doorneemt, op bepaalde tijdstippen ziet alleen de incrementele extra regels met R-code bij elke stap.  
+Tijdens de eerste voor beelden werd tijdens het uitvoeren van het voor beeld in sommige punten alleen de incrementele extra regels van de R-code weer gegeven bij elke stap.  
 
-#### <a name="reading-the-dataframe"></a>Lezen van het gegevensframe
+#### <a name="reading-the-dataframe"></a>De data frame lezen
 
-Laten we als eerste stap lezen in een dataframe en zorg ervoor dat we de verwachte resultaten ophalen. De volgende code moet de taak te doen.
+Als eerste stap lezen we in een data frame en zorgen we ervoor dat de verwachte resultaten worden opgehaald. Voer de volgende code uit om de taak uit te voeren.
 
 ```R
 # Comment the following if using RStudio
@@ -671,7 +671,7 @@ cadairydata <- maml.mapInputPort(1)
 str(cadairydata) # Check the results
 ```
 
-Voer het experiment nu uit. Het logboek van de nieuwe vorm van R-Script uitvoeren moet eruitzien als afbeelding 14.
+Voer nu het experiment uit. Het logboek van de nieuwe shape voor het uitvoeren R-script moet eruitzien als afbeelding 14.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -693,13 +693,13 @@ Voer het experiment nu uit. Het logboek van de nieuwe vorm van R-Script uitvoere
     [ModuleOutput] 
     [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
 
-*Afbeelding 14. Samenvatting van het gegevensframe in de module R-Script uitvoeren.*
+*Afbeelding 14. Samen vatting van de data frame in de script module Execute R.*
 
-Deze gegevens zijn van de verwachte typen en -indeling. Houd er rekening mee dat de kolom 'Maand' van het type van meerdere factoren is en het verwachte aantal niveaus is.
+Deze gegevens zijn van de verwachte typen en notatie. Houd er rekening mee dat de kolom ' month ' van het type factor is en het verwachte aantal niveaus heeft.
 
-#### <a name="creating-a-time-series-object"></a>Het maken van een time series-object
+#### <a name="creating-a-time-series-object"></a>Een time Series-object maken
 
-Er moet een time series-object toevoegen aan onze dataframe. Vervang de huidige code door het volgende, waarmee een nieuwe kolom van de klasse POSIXct worden toegevoegd.
+We moeten een tijd reeks object toevoegen aan onze data frame. Vervang de huidige code door het volgende, waarmee een nieuwe kolom van klasse POSIXct wordt toegevoegd.
 
 ```R
 # Comment the following if using RStudio
@@ -712,7 +712,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata) # Check the results
 ```
 
-Controleer het logboek. Het moet eruitzien als afbeelding 15.
+Controleer nu het logboek. Deze moet eruitzien als afbeelding 15.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -736,31 +736,31 @@ Controleer het logboek. Het moet eruitzien als afbeelding 15.
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*Figure 15. Samenvatting van het gegevensframe met een time series-object.*
+*Afbeelding 15. Samen vatting van de data frame met een time Series-object.*
 
-We kunt in het overzicht dat de nieuwe kolom in feite van klasse POSIXct is zien.
+In de samen vatting van de nieuwe kolom is de klasse POSIXct te zien.
 
-### <a name="exploring-and-transforming-the-data"></a>Verkennen en de gegevens transformeren
+### <a name="exploring-and-transforming-the-data"></a>De gegevens verkennen en transformeren
 
-Laten we enkele van de variabelen in deze gegevensset verkennen. Een matrix teststappen is een goede manier voor het produceren van een beknopt overzicht. Ik ben vervangen de `str()` functie in de vorige R-code met de volgende regel.
+Laten we een aantal variabelen in deze gegevensset verkennen. Een scatterplot-matrix is een goede manier om een snel uiterlijk te maken. Ik vervang de `str()` functie in de vorige R-code door de volgende regel.
 
 ```R
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata, main = "Pairwise Scatterplots of dairy time series")
 ```
 
-Deze code uitvoeren en kijken wat er gebeurt. De grafiek die worden geproduceerd op de poort-R-apparaat moet eruitzien als afbeelding 16.
+Voer deze code uit en Bekijk wat er gebeurt. Het waarnemings punt dat is geproduceerd op de poort R-apparaat moet eruitzien als afbeelding 16.
 
-![Matrix van de geselecteerde variabelen Teststappen](./media/r-quickstart/fig17.png)
+![Scatterplot matrix met geselecteerde variabelen](./media/r-quickstart/fig17.png)
 
-*Afbeelding 16. Teststappen matrix van de geselecteerde variabelen.*
+*Afbeelding 16. Scatterplot matrix van geselecteerde variabelen.*
 
-Er is een vreemd uitziet structuur in de relaties tussen deze variabelen. Hierdoor ontstaat misschien van trends in de gegevens en van het feit dat we niet de variabelen zijn gestandaardiseerd.
+De relaties tussen deze variabelen hebben een enkele onevene structuur. Misschien is dit het gevolg van trends in de gegevens en van het feit dat we de variabelen niet hebben gestandaardiseerd.
 
-### <a name="correlation-analysis"></a>Correlatieanalyse
+### <a name="correlation-analysis"></a>Correlatie analyse
 
-Om uit te voeren van de correlatieanalyse van de moet zowel trend ongedaan maken en te standaardiseren, de variabelen. We gebruiken gewoon de R `scale()` functie, die zowel datacenters en kan worden geschaald variabelen. Deze functie kan ook sneller worden uitgevoerd. Ik wil echter ziet u een voorbeeld van defensieve programmeren in R.
+Om correlatie-analyses uit te voeren, moeten zowel de trend worden genormaliseerd als de variabelen worden gestandaardiseerd. We kunnen gewoon de functie R `scale()` gebruiken, waarmee variabelen worden gecentreerd en geschaald. Deze functie kan sneller worden uitgevoerd. Ik wil echter een voor beeld zien van een verdedigings programma in R.
 
-De `ts.detrend()` functie onderstaande beide van deze bewerkingen uitvoert. De volgende twee regels code trend ongedaan maken de gegevens en vervolgens de waarden te standaardiseren.
+Met de functie `ts.detrend()` die hieronder wordt weer gegeven, worden beide bewerkingen uitgevoerd. De volgende twee regels code detrenden de gegevens en vervolgens worden de waarden genormaliseerd.
 
 ```R
 ts.detrend <- function(ts, Time, min.length = 3){
@@ -807,23 +807,23 @@ df.detrend <- data.frame(lapply(cadairydata[, 4:7], ts.detrend, cadairydata$Time
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = df.detrend, main = "Pairwise Scatterplots of detrended standardized time series")
 ```
 
-Er is een behoorlijke bits gebeurt in de `ts.detrend()` functie. De meeste van deze code controleert op mogelijke problemen met de argumenten of omgaan met uitzonderingen die nog steeds tijdens de berekeningen optreden kunnen. Alleen een paar regels van deze code daadwerkelijk doen de berekeningen kunt.
+Er is een zeer beetje in de `ts.detrend()`-functie. Met de meeste van deze code wordt gecontroleerd op mogelijke problemen met de argumenten of het verwerken van uitzonde ringen. deze kunnen zich nog steeds voordoen tijdens de berekeningen. Slechts een paar regels van deze code voeren feitelijk de berekeningen uit.
 
-We hebben al een voorbeeld van defensieve programmeren in waarde transformaties besproken. Beide blokken berekening verpakt in `tryCatch()`. Voor bepaalde fouten is het zinvol om terug te keren van de oorspronkelijke invoer vector en in andere gevallen kan ik een vector uit nullen retourneren.  
+We hebben al een voor beeld van een verdedigings programma in waarde-trans formaties besproken. Beide reken blokken worden in `tryCatch()`verpakt. Voor sommige fouten is het zinvol om de oorspronkelijke invoer vector te retour neren, en in andere gevallen wordt er een vector van nullen geretourneerd.  
 
-Houd er rekening mee dat de lineaire regressie gebruikt voor het ongedaan maken populair een time series regressie is. De variabele voorspelde is een time series-object.  
+Houd er rekening mee dat de lineaire regressie die wordt gebruikt voor de trending een tijd reeks regressie is. De Voorspellings variabele is een time Series-object.  
 
-Eenmaal `ts.detrend()` is gedefinieerd wordt toegepast op de variabelen van belang zijn in onze dataframe. We moeten de resulterende lijst die zijn gemaakt door forceren `lapply()` naar dataframe gegevens met behulp van `as.data.frame()`. Vanwege de verdediging aspecten van `ts.detrend()`, niet-proces een van de variabelen wordt niet voorkomen dat de juiste verwerking van de andere.  
+Zodra `ts.detrend()` is gedefinieerd, worden deze toegepast op de variabelen van belang in onze data frame. We moeten de resulterende lijst die is gemaakt door `lapply()` op gegevens data frame, afdwingen met behulp van `as.data.frame()`. Vanwege de verdedigings aspecten van `ts.detrend()`kan het verwerken van een van de variabelen niet de juiste verwerking van de andere waarden verhinderen.  
 
-De laatste regel van de code maakt een pairwise teststappen. Na het uitvoeren van de R-code, worden de resultaten van de teststappen weergegeven in afbeelding 17.
+De laatste regel code maakt een Pairwise-scatterplot. Na het uitvoeren van de R-code worden de resultaten van de scatterplot weer gegeven in afbeelding 17.
 
-![Pairwise teststappen van ongedaan maken trendanalyse en gestandaardiseerde tijdreeks](./media/r-quickstart/fig18.png)
+![Pairwise scatterplot van de getrendde en gestandaardiseerde time series](./media/r-quickstart/fig18.png)
 
-*Afbeelding 17. Pairwise teststappen van ongedaan maken trendanalyse en gestandaardiseerde tijdreeks.*
+*Afbeelding 17. Pairwise scatterplot van de getrendde en gestandaardiseerde tijd reeks.*
 
-U kunt deze resultaten die wordt weergegeven in afbeelding 16 vergelijken. Met de trend verwijderd en de variabelen gestandaardiseerd, zien we veel minder structuur in de relaties tussen deze variabelen.
+U kunt deze resultaten vergelijken met de waarden die worden weer gegeven in afbeelding 16. Als de trend is verwijderd en de variabelen zijn genormaliseerd, zien we een veel minder structuur in de relaties tussen deze variabelen.
 
-De code voor het berekenen van de correlaties als R ccf objecten is als volgt.
+De code voor het berekenen van de correlaties als R CCF-objecten is als volgt.
 
 ```R
 ## A function to compute pairwise correlations from a
@@ -841,7 +841,7 @@ cadairycorrelations <- lapply(corpairs, pair.cor, df.detrend)
 cadairycorrelations
 ```
 
-Deze code wordt uitgevoerd, maakt het logboek wordt weergegeven in afbeelding 18.
+Als deze code wordt uitgevoerd, wordt het logboek gegenereerd dat wordt weer gegeven in afbeelding 18.
 
     [ModuleOutput] Loading objects:
     [ModuleOutput]   port1
@@ -895,14 +895,14 @@ Deze code wordt uitgevoerd, maakt het logboek wordt weergegeven in afbeelding 18
     [ModuleOutput]     -1      0      1 
     [ModuleOutput] -0.002 -0.074 -0.124 
 
-*Afbeelding 18. Lijst met ccf objecten uit de pairwise correlatieanalyse.*
+*Afbeelding 18. Lijst met CCF-objecten uit de Pairwise-correlatie analyse.*
 
-Er is een Correlatiewaarde voor elke vertraging. Geen van deze waarden correlatie is groot genoeg is voor aanzienlijk zijn. We kunnen daarom sluiten we elke variabele onafhankelijk kunt modelleren.
+Er is een correlatie waarde voor elke vertraging. Geen van deze correlatie waarden is groot genoeg om significant te zijn. Daarom kunnen we sluiten dat elke variabele onafhankelijk kan worden model leren.
 
-### <a name="output-a-dataframe"></a>Uitvoer van een dataframe
-We hebben de pairwise correlaties berekend als een lijst met R ccf objecten. Dit geeft een deel van een probleem als de uitvoerpoort resultaat gegevensset echt een dataframe is vereist. Bovendien is het object ccf is zelf een lijst en willen we alleen de waarden in het eerste element van deze lijst, de correlaties op de verschillende lag.
+### <a name="output-a-dataframe"></a>Een data frame uitvoeren
+We hebben de Pairwise-correlaties berekend als een lijst met R CCF-objecten. Dit geeft een deel van een probleem als resultaat van de uitvoer poort van de resulterende gegevensset is een data frame vereist. Verder is het CCF-object een lijst en we willen alleen de waarden in het eerste element van deze lijst, de correlaties op de verschillende lags.
 
-De volgende code haalt de waarden van de vertraging in de lijst van ccf objecten, die zelf lijsten.
+Met de volgende code worden de vertragings waarden geëxtraheerd uit de lijst met CCF-objecten, die zelf worden weer gegeven.
 
 ```R
 df.correlations <- data.frame(do.call(rbind, lapply(cadairycorrelations, '[[', 1)))
@@ -923,45 +923,45 @@ outframe
 
 
 ## WARNING!
-## The following line works only in Azure Machine Learning Studio
+## The following line works only in Azure Machine Learning Studio (classic)
 ## When running in RStudio, this code will result in an error
 #maml.mapOutputPort('outframe')
 ```
 
-De eerste coderegel is enigszins moeilijk en een verklaring kunt u begrijpt. Werken op basis van binnenuit hebben we het volgende:
+De eerste regel code is een beetje truc en enkele uitleg kan u helpen bij het begrijpen. Als u aan de slag gaat, hebt u het volgende nodig:
 
-1. De ' **[[** 'operator met het argument'**1**' de vector van correlaties op de lag uit het eerste element van de lijst met ccf objecten geselecteerd.
-2. De `do.call()` functie is van toepassing de `rbind()` functie via de elementen van de lijst wordt geretourneerd door `lapply()`.
-3. De `data.frame()` functie converteert het resultaat is geproduceerd door `do.call()` naar een dataframe.
+1. De operator ' **[[** ' met het argument '**1**' selecteert de vector van correlaties in de lags van het eerste element van de CCF-object lijst.
+2. De functie `do.call()` past de `rbind()` functie toe op de elementen van de lijst die door `lapply()`worden geretourneerd.
+3. Met de functie `data.frame()` wordt het resultaat dat door `do.call()` naar een data frame is geproduceerd, afgedwongen.
 
-Houd er rekening mee dat de rijnamen van de in een kolom van het gegevensframe zijn. Doet dit het geval is, behoudt de rij namen wanneer ze worden uitgevoerd vanuit de [R-Script uitvoeren][execute-r-script].
+Houd er rekening mee dat de namen van de rijen in een kolom van de data frame staan. Hierbij blijven de rijnaam behouden wanneer deze worden uitgevoerd vanuit het [script Execute R][execute-r-script].
 
-De code wordt uitgevoerd, wordt de uitvoer die wordt weergegeven in afbeelding 19 gegenereerd wanneer ik **Visualize** de uitvoer op de resultaat-gegevensset-poort. De rijnamen van de zijn in de eerste kolom, zoals bedoeld.
+Als de code wordt uitgevoerd, wordt de uitvoer weer gegeven in afbeelding 19 wanneer de uitvoer wordt **gevisualiseerd** op basis van de poort van het resultaat van de gegevensset. De namen van de rijen bevinden zich in de eerste kolom, zoals bedoeld.
 
-![Uitvoer van de resultaten van de correlatieanalyse](./media/r-quickstart/fig20.png)
+![Resultaten uitvoer van de correlatie analyse](./media/r-quickstart/fig20.png)
 
-*Figure 19. Resultaten uitvoer van de correlatieanalyse.*
+*Afbeelding 19. Resultaten uitvoer van de correlatie analyse.*
 
-## <a id="seasonalforecasting"></a>Time series-voorbeeld: seizoensgebonden prognoses
+## <a id="seasonalforecasting"></a>Voor beeld van een tijd reeks: seizoen prognose
 
-Onze gegevens is nu in een formulier die geschikt zijn voor analyse en er zijn geen belangrijke correlaties tussen de variabelen hebt vastgesteld. Laten we gaan en een tijdreeks prognose model maken. Met dit model wordt we Californië melkproductie voor de 12 maanden van 2013 prognose.
+Onze gegevens bevinden zich nu in een formulier dat geschikt is voor analyse en we hebben vastgesteld dat er geen aanzienlijke correlaties tussen de variabelen zijn. We gaan nu een tijd reeks prognose model maken. Met behulp van dit model zullen we de melk productie van Californië voor de 12 maanden van 2013.
 
-Onze prognosemodel heeft twee componenten, een onderdeel van de trend en een seizoensgebonden onderdeel. De volledige prognose is het product van deze twee onderdelen. Dit type model staat bekend als een Multiplicatieve model. Het alternatief is een additieve model. We hebben al een transformatie log toegepast op de variabelen van belang zijn, waardoor deze analyse tractable.
+Het prognose model bevat twee onderdelen, een trend component en een seizoen component. De volledige prognose is het product van deze twee onderdelen. Dit type model wordt een multiplicative-model genoemd. Het alternatief is een additief model. We hebben al een logboek transformatie toegepast op de variabelen van interest, waardoor deze analyse kan worden ondertrekt.
 
-De volledige R-code voor deze sectie is in [MachineLearningSamples-notitieblokken/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+De volledige R-code voor deze sectie bevindt zich in [MachineLearningSamples-notebooks/Studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="creating-the-dataframe-for-analysis"></a>Het maken van het dataframe voor analyse
+### <a name="creating-the-dataframe-for-analysis"></a>De data frame maken voor analyse
 
-Begin met het toevoegen van een **nieuwe** [R-Script uitvoeren] [ execute-r-script] module naar het experimentcanvas. Verbinding maken met de **resultaat gegevensset** uitvoer van de bestaande [R-Script uitvoeren] [ execute-r-script] module aan de **Dataset1** invoer van de nieuwe module. Het resultaat ziet er ongeveer als afbeelding 20.
+Voeg eerst een **nieuwe** module voor het [uitvoeren van R-scripts][execute-r-script] toe aan uw experiment. Koppel de uitvoer **gegevensset** van de bestaande [Execute R-script][execute-r-script] module aan de **Dataset1** -invoer van de nieuwe module. Het resultaat ziet er ongeveer zo uit als in afbeelding 20.
 
-![Het experiment met de nieuwe R-Script uitvoeren-module toegevoegd](./media/r-quickstart/fig21.png)
+![Het experiment waarbij de nieuwe methode voor het uitvoeren van de R-script module is toegevoegd](./media/r-quickstart/fig21.png)
 
-*Afbeelding 20. Het experiment met de nieuwe R-Script uitvoeren-module toegevoegd.*
+*Afbeelding 20. Het experiment waarbij de nieuwe methode voor het uitvoeren van de R-script module is toegevoegd.*
 
-Als met de correlatieanalyse die we zojuist hebt voltooid, moeten we een kolom met een POSIXct time series-object toe te voegen. De volgende code wordt alleen dit doen.
+Net als bij de correlatie analyse die we zojuist hebben voltooid, moeten we een kolom met een POSIXct Time Series-object toevoegen. De volgende code is alleen dit.
 
 ```R
-# If running in Machine Learning Studio, uncomment the first line with maml.mapInputPort()
+# If running in Machine Learning Studio (classic), uncomment the first line with maml.mapInputPort()
 cadairydata <- maml.mapInputPort(1)
 
 ## Create a new column as a POSIXct object
@@ -971,7 +971,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata)
 ```
 
-Voer deze code uit en bekijk het logboek. Het resultaat ziet er als afbeelding 21.
+Voer deze code uit en Bekijk het logboek. Het resultaat moet eruit zien als afbeelding 21.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -995,13 +995,13 @@ Voer deze code uit en bekijk het logboek. Het resultaat ziet er als afbeelding 2
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*Afbeelding 21. Een samenvatting van het gegevensframe.*
+*Afbeelding 21. Een samen vatting van de data frame.*
 
-Met dit resultaat zijn we beginnen met onze analyse.
+Met dit resultaat gaan we onze analyse nu starten.
 
-### <a name="create-a-training-dataset"></a>Maken van een gegevensset training
+### <a name="create-a-training-dataset"></a>Een trainings gegevensset maken
 
-We moeten maken van een gegevensset training met het gegevensframe dat is gebouwd. Deze gegevens omvatten alle van de metingen, behalve de laatste 12 van het jaar 2013, is onze testgegevensset. De volgende code subsets van het gegevensframe en maakt u grafieken van de melkkoeien variabelen voor de productie- en prijs. Ik maak grafieken van de vier productie en variabelen voor de prijs. Een anonieme functie wordt gebruikt voor het definiëren van sommige verbetert voor plot en vervolgens aan de lijst met de andere twee argumenten met herhalen `Map()`. Als u weet ik denk dat een voor lus zou hebben goed zijn uitgevoerd hier, u juist zijn. Maar omdat R is een functionele taal die ik heb waarin u een functionele aanpak.
+Met de data frame die zijn gebouwd, moeten we een trainings gegevensset maken. Deze gegevens omvatten alle waarnemingen, met uitzonde ring van de laatste 12 van het jaar 2013, wat onze test gegevensset is. Met de volgende code worden de data frame en de productie-en prijs variabelen van zuivel gemaakt. Ik maak vervolgens een grafiek van de vier productie-en prijs variabelen. Een anonieme functie wordt gebruikt voor het definiëren van een aantal uitbrei ding voor het waarnemings punt en herhaalt vervolgens de lijst met andere twee argumenten met `Map()`. Als u denkt dat u hier een for-lus zou hebben gewerkt, bent u er goed aan. Maar omdat R een functionele taal is, wordt er een functionele benadering weer gegeven.
 
 ```R
 cadairytrain <- cadairydata[1:216, ]
@@ -1014,25 +1014,25 @@ Ylabs  <- list("Log CA Cotage Cheese Production, 1000s lb",
 Map(function(y, Ylabs){plot(cadairytrain$Time, y, xlab = "Time", ylab = Ylabs, type = "l")}, cadairytrain[, 4:7], Ylabs)
 ```
 
-De code uitvoeren, produceert de reeks tijd reeks die zichtbaar zijn in de uitvoer van de R-apparaat wordt weergegeven in afbeelding 22. Houd er rekening mee dat de tijdas in eenheden van datums, een mooie voordeel van de tijd reeks methode tekenen.
+Als de code wordt uitgevoerd, wordt de reeks time series-grafieken gegenereerd op basis van de uitvoer van het R-apparaat, zoals weer gegeven in afbeelding 22. Houd er rekening mee dat de tijdas de datum eenheden heeft, een goed voor deel van de teken methode van de tijd reeks.
 
-![Eerste dag van time series grafieken van Californië melkkoeien productie- en -gegevens](./media/r-quickstart/unnamed-chunk-161.png)
+![Eerste fase van de tijd reeks van de productie-en prijs gegevens van Californië zuivel](./media/r-quickstart/unnamed-chunk-161.png)
 
-![Tweede van time series grafieken van Californië melkkoeien productie- en -gegevens](./media/r-quickstart/unnamed-chunk-162.png)
+![Seconde van de fase van de tijd reeks van de productie-en prijs gegevens van Californië zuivel](./media/r-quickstart/unnamed-chunk-162.png)
 
-![Derde van time series grafieken van Californië melkkoeien productie- en -gegevens](./media/r-quickstart/unnamed-chunk-163.png)
+![Derde fase van de tijd reeksen van Californië zuivel productie-en prijs gegevens](./media/r-quickstart/unnamed-chunk-163.png)
 
-![Vierde van time series grafieken van Californië melkkoeien productie- en -gegevens](./media/r-quickstart/unnamed-chunk-164.png)
+![Vierde fase van de tijd reeks van Californië zuivel productie-en prijs gegevens](./media/r-quickstart/unnamed-chunk-164.png)
 
-*Afbeelding 22. Time series grafieken van Californië zuivelproductie en gegevens voor de prijs.*
+*Afbeelding 22. Tijd Series van de productie-en prijs gegevens van Californië zuivel.*
 
-### <a name="a-trend-model"></a>Een trend-model
+### <a name="a-trend-model"></a>Een trend model
 
-Een time series-object en een overzicht van de gegevens heeft gehad gemaakt, laten we beginnen om een model trend van de productiegegevens Californië melk samen te stellen. We kunnen dit doen met een reeks tijd regressie. Het is echter duidelijk van de grafiek die we meer dan een helling nodig hebt en voor het modelleren van de geobserveerde trend in de trainingsgegevens nauwkeurig worden onderschept.
+Als u een time Series-object hebt gemaakt en de gegevens hebt bekeken, kunt u beginnen met het maken van een trend model voor de productie gegevens van de California-melk. We kunnen dit doen met een tijd reeks regressie. Het is echter duidelijk uit het waarnemings punt dat we meer dan een helling en snij punt nodig hebben om de waargenomen trend in de trainings gegevens nauw keurig te model leren.
 
-De kleine schaal van de gegevens worden gegeven, wordt ik het model voor de trend in RStudio bouwen en knip en plak vervolgens de resulterende model in Azure Machine Learning Studio. RStudio biedt een interactieve omgeving voor dit type interactieve analyses.
+Op basis van de kleine schaal van de gegevens maakt ik het model voor trend in RStudio en knip en plak je het resulterende model in de klassieke versie van Azure Machine Learning Studio. RStudio biedt een interactieve omgeving voor dit type interactieve analyse.
 
-Als een eerste poging wordt ik probeer een polynomiale regressie met bevoegdheden maximaal 3. Er is een echte gevaar te veel geschikt zijn voor dit soort modellen. Het is daarom raadzaam om te voorkomen dat hoge voorwaarden. De `I()` functie belemmert interpretatie van de inhoud (interpreteert de inhoud, zoals is') en kunt u een letterlijk geïnterpreteerde functie schrijven in een regressievergelijking.
+Als eerste poging probeert ik een polynoom met een polynomiale regressie te maken met Maxi maal drie machtingen. Er is een echt risico dat dit soort modellen wordt overschreden. Daarom is het raadzaam om de voor waarden van een hoge orde te vermijden. Met de functie `I()` wordt de interpretatie van de inhoud geinterpreteerd (interpreteert de inhoud als is) en kunt u een letterlijk geïnterpreteerde functie schrijven in een regressie vergelijking.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3), data = cadairytrain)
@@ -1063,7 +1063,7 @@ Hiermee wordt het volgende gegenereerd.
     ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
     ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 
-Van P-waarden (`Pr(>|t|)`) in deze uitvoer kunt zien we dat de gekwadrateerde term mag niet significant. Ik gebruik de `update()` functie dit model wijzigen door het verwijderen van de kwadraten term.
+Van de P-waarden (`Pr(>|t|)`) in deze uitvoer ziet u dat de gekwadrateerde term mogelijk niet significant is. Ik gebruik de `update()` functie om dit model te wijzigen door de vier Kante term neer te zetten.
 
 ```R
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
@@ -1092,9 +1092,9 @@ Hiermee wordt het volgende gegenereerd.
     ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
     ## F-statistic: 1.69e+03 on 2 and 213 DF,  p-value: <2e-16
 
-Dit ziet er beter uit. Alle voorwaarden zijn van belang. De waarde van de 2e-16 is echter een standaardwaarde, en niet te serieus nemen moet worden genomen.  
+Dit ziet er beter uit. Alle voor waarden zijn belang rijk. De 2e-16-waarde is echter een standaard waarde en mag niet te serieus worden genomen.  
 
-Als een test sanity laten we een diagram van de reeks tijd van de gegevens van de zuivelproductie Californië met de trend-curve wordt weergegeven. Ik heb de volgende code hebt toegevoegd in de Azure Machine Learning Studio [R-Script uitvoeren] [ execute-r-script] -model (niet RStudio) voor het maken van het model en een grafiek. Het resultaat wordt weergegeven in afbeelding 23.
+Als Sanity-test kunt u een tijd reeks tekenen van de productie gegevens van Californië zuivel met de trend lijn die wordt weer gegeven. Ik heb de volgende code in de klassieke versie van Azure Machine Learning Studio script model voor het [uitvoeren van R][execute-r-script] (niet RStudio) toegevoegd om het model te maken en een waarnemings punt uit te voeren. Het resultaat wordt weer gegeven in afbeelding 23.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1103,17 +1103,17 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 ```
 
-![Californië melk productiegegevens met trend model wordt weergegeven](./media/r-quickstart/unnamed-chunk-18.png)
+![Productie gegevens voor Californië melk met trend model weer gegeven](./media/r-quickstart/unnamed-chunk-18.png)
 
-*Afbeelding 23. Californië melk productiegegevens met trend model weergegeven.*
+*Afbeelding 23. Productie gegevens voor Californië melk met trend model weer gegeven.*
 
-Het lijkt erop dat de trend-model past bij de gegevens vrij goed. Bovendien wordt lijkt er niet te duiden dat te veel aanpassing van labels, zoals afwijkende wiggles in de curve model.  
+Het lijkt erop dat het trend model op de juiste wijze in de gegevens past. Verder lijkt het niet alsof er sprake is van meerwaarde, zoals oneven Wiggles in de model curve.  
 
-### <a name="seasonal-model"></a>Seizoensgebonden model
+### <a name="seasonal-model"></a>Seizoen model
 
-Met een model van de trend in voorraad moeten we pushen op en de seizoensgebonden effecten. We gebruiken de maand van het jaar als een dummy-variabele in het lineaire model voor het vastleggen van het effect per maand. Houd er rekening mee dat wanneer u factor variabelen in een model introduceren, de intercept moet niet worden berekend. Als u dit doet, wordt de formule te veel is opgegeven en R wordt verwijdert u een van de gewenste factoren maar houden de intercept term.
+Met een trend model in handen moeten we de seizoensgebonden effecten pushen en toevoegen. We gebruiken de maand van het jaar als een dummy variabele in het lineaire model om het effect van de maand per maand vast te leggen. Houd er rekening mee dat wanneer u factor variabelen in een model introduceert, het snij punt niet moet worden berekend. Als u dit niet doet, wordt de formule boven opgegeven en wordt met R een van de gewenste factoren verwijderd, maar wordt de periode voor interceptie bewaard.
 
-Aangezien we een goede trend-model hebben gebruiken we de `update()` functie naar de nieuwe voorwaarden toevoegen aan het bestaande model. De -1 in de formule van de update wordt de term intercept geweigerd. Als u doorgaat in RStudio voor het moment dat:
+Omdat we een voldoende trend model hebben, kunnen we de functie `update()` gebruiken om de nieuwe voor waarden aan het bestaande model toe te voegen. De-1 in de update formule daalt de interceptie termijn. Gedurende het moment van RStudio voortzetten:
 
 ```R
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1154,9 +1154,9 @@ Hiermee wordt het volgende gegenereerd.
     ## Multiple R-squared:     1,    Adjusted R-squared:     1
     ## F-statistic: 1.42e+06 on 14 and 202 DF,  p-value: <2e-16
 
-We zien dat het model niet meer een term intercept is en 12 maand belangrijke factoren heeft. Dit is precies wat we wilden om te zien.
+We zien dat het model geen interceptie periode meer heeft en 12 significante maand factoren heeft. Dit is precies wat we wilden zien.
 
-Laten we een andere tijd reeks diagram van de gegevens van de zuivelproductie Californië om te zien hoe goed het seizoensgebonden model werkt. Ik heb de volgende code hebt toegevoegd in de Azure Machine Learning Studio [R-Script uitvoeren] [ execute-r-script] maken van het model en een grafiek.
+Laten we nog een tijd reeks tekenen van de California zuivel productie gegevens om te zien hoe goed het seizoen model werkt. Ik heb de volgende code toegevoegd in de klassieke versie van Azure Machine Learning Studio [R-script][execute-r-script] uit te voeren om het model te maken en een uitzetten uit te voeren.
 
 ```R
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1165,15 +1165,15 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-Deze code uitvoeren in Azure Machine Learning Studio maakt het diagram wordt weergegeven in afbeelding 24 uur per dag.
+Als deze code wordt uitgevoerd in de klassieke versie van Azure Machine Learning Studio wordt het diagram gegenereerd dat wordt weer gegeven in afbeelding 24.
 
-![Californië melkproductie met model inclusief seizoensgebonden effecten](./media/r-quickstart/unnamed-chunk-20.png)
+![Productie van Californië met model met inbegrip van seizoen effecten](./media/r-quickstart/unnamed-chunk-20.png)
 
-*Afbeelding 24 uur per dag. Melkproductie Californië met model inclusief seizoensgebonden effecten.*
+*Afbeelding 24. Productie van Californië met model, met inbegrip van seizoen effecten.*
 
-De aanpassen aan de gegevens weergegeven in afbeelding 24 uur per dag wordt in plaats daarvan bevorderen. Zoeken naar redelijke zowel de trend en het seizoensgebonden effect (maandelijkse variatie).
+De aanpassing aan de gegevens die worden weer gegeven in afbeelding 24 is in plaats daarvan aan te moedigen. Zowel de trend als het seizoen effect (maandelijkse variatie) lijkt redelijk.
 
-Als een andere selectievakje op het model hebt u laten we eens naar de dit. De volgende code de voorspelde waarden van onze twee modellen worden berekend, berekent de dit voor het seizoen model en vervolgens deze dit voor het trainen van gegevens die zichtbaar zijn.
+Als u een andere controle op ons model hebt, gaan we kijken naar de verschillen. Met de volgende code worden de voorspelde waarden van onze twee modellen berekend, worden de verschillen voor het seizoen model berekend en worden deze verschillen voor de opleidings gegevens weer gegeven.
 
 ```R
 ## Compute predictions from our models
@@ -1185,42 +1185,42 @@ residuals <- cadairydata$Milk.Prod - predict2
 plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
 ```
 
-De resterende plot wordt weergegeven in afbeelding 25.
+Het residuele waarnemings punt wordt weer gegeven in afbeelding 25.
 
-![Dit van het seizoen model voor het trainen van gegevens](./media/r-quickstart/unnamed-chunk-21.png)
+![Verschillen in het seizoen model voor de opleidings gegevens](./media/r-quickstart/unnamed-chunk-21.png)
 
-*Afbeelding 25. Als u dit van het seizoen model voor het trainen van gegevens.*
+*Afbeelding 25. Resten van het seizoen model voor de trainings gegevens.*
 
-Deze dit bekijken redelijke. Er is geen specifieke structuur, met uitzondering van het effect van de recessie 2008-2009, die ons model geen rekening gehouden met name goed.
+Deze verschillen zien er redelijk uit. Er is geen specifieke structuur, met uitzonde ring van het effect van de 2008-2009-recessie, waardoor ons model niet bijzonder goed werkt.
 
-Het diagram wordt weergegeven in afbeelding 25 is handig voor het detecteren van alle tijdsafhankelijke patronen in de dit. De expliciete aanpak van computing en de ik gebruikt dit uitzetten plaatst de dit in de volgorde van de tijd op de grafiek. Als, aan de andere kant, ik had uitgezet `milk.lm$residuals`, de plot niet zouden zijn in volgorde van tijd.
+Het waarnemings punt dat wordt weer gegeven in afbeelding 25 is handig voor het detecteren van tijd afhankelijke patronen in de verschillen. De expliciete aanpak van het berekenen en uitzetten van de verschillen die ik heb gebruikt, plaatst de resten in de tijd volgorde op het waarnemings punt. Als ik op de andere kant een uitgezette `milk.lm$residuals`, zou het waarnemings punt niet in de juiste volg orde staan.
 
-U kunt ook `plot.lm()` voor het produceren van een reeks diagnostische grafieken.
+U kunt `plot.lm()` ook gebruiken om een reeks diagnostische grafieken te maken.
 
 ```R
 ## Show the diagnostic plots for the model
 plot(milk.lm2, ask = FALSE)
 ```
 
-Deze code maakt een reeks diagnostische grafieken weergegeven in afbeelding 26.
+Deze code produceert een reeks diagnostische waarnemings punten die in afbeelding 26 worden weer gegeven.
 
-![Eerste dag van de diagnostische grafieken voor het seizoen model](./media/r-quickstart/unnamed-chunk-221.png)
+![Eerste van de diagnose punten voor het seizoen model](./media/r-quickstart/unnamed-chunk-221.png)
 
-![Tweede van diagnostische grafieken voor het seizoen model](./media/r-quickstart/unnamed-chunk-222.png)
+![Seconde van de diagnostische waarnemings punten voor het seizoen model](./media/r-quickstart/unnamed-chunk-222.png)
 
-![Derde van diagnostische grafieken voor het seizoen model](./media/r-quickstart/unnamed-chunk-223.png)
+![Derde van de diagnostische waarnemings punten voor het seizoen model](./media/r-quickstart/unnamed-chunk-223.png)
 
-![Vierde van diagnostische grafieken voor het seizoen model](./media/r-quickstart/unnamed-chunk-224.png)
+![Vierde van de diagnostische waarnemings punten voor het seizoen model](./media/r-quickstart/unnamed-chunk-224.png)
 
-*Afbeelding 26. Diagnostische gegevens die zichtbaar zijn voor het seizoen model.*
+*Afbeelding 26. Diagnostische waarnemings punten voor het seizoen model.*
 
-Er zijn enkele zeer invloedrijke punten vermeld in deze grafieken, maar niets geweldige opleveren. Verder, we kunnen zien van de normale Q-Q plot dat de dit zich dicht bij normaal gesproken worden gedistribueerd, een belangrijk hypothese voor lineaire modellen.
+Er zijn een aantal zeer influentiale punten die in deze grafieken worden geïdentificeerd, maar er is niets om grote bezorgdheid te veroorzaken. Verder kunnen we zien uit de normale Q-Q-tekening dat de resten dicht bij normaal gedistribueerd zijn, een belang rijke veronderstelling voor lineaire modellen.
 
-### <a name="forecasting-and-model-evaluation"></a>Prognoses en model evalueren
+### <a name="forecasting-and-model-evaluation"></a>Prognoses en model evaluatie
 
-Er is slechts één ding te doen om te voltooien in ons voorbeeld. We moeten compute prognoses en meten van de fout op basis van de werkelijke gegevens. Onze prognose worden voor de 12 maanden van 2013. We kunnen een meting fout voor deze voorspelling voor de werkelijke gegevens die geen deel uitmaakt van onze gegevensset training compute. Daarnaast kunnen we de prestaties van de trainingsgegevens aan de 12 maanden van testgegevens 18 jaar vergelijken.  
+Er is nog maar één ding voor het volt ooien van ons voor beeld. We moeten prognoses berekenen en de fout op de werkelijke gegevens meten. Onze prognose geldt voor de 12 maanden van 2013. We kunnen een fout meting voor deze prognose berekenen op basis van de werkelijke gegevens die geen deel uitmaken van onze trainings gegevensset. Daarnaast kunnen we de prestaties van de 18 jaar van de trainings gegevens vergelijken met de 12 maanden test gegevens.  
 
-Een aantal metrische gegevens worden gebruikt voor het meten van de prestaties van time series-modellen. In ons geval gebruiken we de root mean vierkant (RMS)-fout. De volgende functie berekent de RMS-fout tussen twee reeksen.  
+Een aantal metrische gegevens wordt gebruikt om de prestaties van Time Series-modellen te meten. In ons geval gebruiken we de fout melding root Square (RMS). Met de volgende functie wordt de RMS-fout tussen twee reeksen berekend.  
 
 ```R
 RMS.error <- function(series1, series2, is.log = TRUE, min.length = 2){
@@ -1268,9 +1268,9 @@ predict2  <- predict(milk.lm2, cadairydata)
 }
 ```
 
-Net als bij de `log.transform()` functie in de sectie "Waarde transformaties besproken" Er is zeer veel fout controleren en uitzondering code voor herstel in deze functie. De principes die werkzaam zijn hetzelfde. Het werk wordt uitgevoerd op twee plaatsen die zijn ingepakt in `tryCatch()`. De eerste, zijn de tijdreeksen exponentiated, aangezien we hebben gewerkt met de logboeken van de waarden. Ten tweede wordt de werkelijke RMS-fout berekend.  
+Net als bij de `log.transform()` functie die we in de sectie ' waarde transformaties ' hebben besproken, is er een groot aantal fout controles en code voor het herstellen van uitzonde ringen in deze functie. De gebruikte principes zijn hetzelfde. Het werk wordt uitgevoerd op twee plaatsen in `tryCatch()`. Ten eerste is de tijd reeks exponentiated, omdat we werken met de logboeken van de waarden. Ten tweede wordt de werkelijke RMS-fout berekend.  
 
-Uitgerust met een functie voor het meten van de RMS-fout, laten we bouwen en uitvoeren van een gegevensframe met de RMS-fouten. Nemen we de voorwaarden voor het alleen trend-model en het volledige model met seizoensgebonden factoren. De volgende code wordt de taak met behulp van de twee lineaire modellen die we hebben gebouwd.
+Met een functie die de RMS-fout meet, gaan we een data frame maken en uitvoeren die de RMS-fouten bevat. We zullen alleen voor waarden voor het trend model en het volledige model met seizoensgebonden factoren meenemen. De volgende code voert de taak uit met behulp van de twee lineaire modellen die we hebben gebouwd.
 
 ```R
 ## Compute the RMS error in a dataframe
@@ -1288,51 +1288,51 @@ rowNames = c("Trend Model", "Seasonal Model"),
 RMS.df
 
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('RMS.df')
 ```
 
-Deze code wordt uitgevoerd, wordt de uitvoer die wordt weergegeven in afbeelding 27 op de uitvoerpoort resultaat gegevensset gegenereerd.
+Als deze code wordt uitgevoerd, wordt de uitvoer weer gegeven in afbeelding 27 van de uitvoer poort van de resultaat gegevensset.
 
 ![Vergelijking van RMS-fouten voor de modellen](./media/r-quickstart/fig26.png)
 
 *Afbeelding 27. Vergelijking van RMS-fouten voor de modellen.*
 
-Met deze resultaten zien we dat de seizoensgebonden factoren toe te voegen aan het model de RMS-fout aanzienlijk vermindert. De RMS-fout voor het trainen van gegevens is niet te verrassend een bit kleiner is dan voor de prognose.
+Vanuit deze resultaten ziet u dat het toevoegen van de seizoensgebonden factoren aan het model de RMS-fout aanzienlijk reduceert. Het is niet te verrassend, de RMS-fout voor de trainings gegevens is een bit kleiner dan voor de prognose.
 
-## <a id="appendixa"></a>Handleiding voor de RStudio-documentatie
+## <a id="appendixa"></a>Gids voor RStudio-documentatie
 
-RStudio wordt goed gedocumenteerd. Hier volgen enkele koppelingen naar de belangrijke onderdelen van de RStudio-documentatie aan de slag te gaan.
+RStudio is behoorlijk goed gedocumenteerd. Hier vindt u enkele koppelingen naar de belangrijkste secties van de RStudio-documentatie om aan de slag te gaan.
 
-* **Het maken van projecten** -u kunt indelen en beheren van uw R-code in projecten met behulp van RStudio. Zie [projecten met behulp van](https://support.rstudio.com/hc/articles/200526207-Using-Projects) voor meer informatie. Ik aangeraden dat u als te werk volgt en maak een project voor de R-codevoorbeelden in dit artikel.  
-* **Bewerken en uitvoeren van R-code** -RStudio biedt een geïntegreerde omgeving voor het bewerken en uitvoeren van R-code. Zie [bewerken en uitvoeren van Code](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) voor meer informatie.
-* **Foutopsporing** -RStudio bevat krachtige mogelijkheden voor foutopsporing. Zie [foutopsporing met RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) voor meer informatie over deze functies. Zie voor meer informatie over probleemoplossing functies onderbrekingspunt [onderbrekingspunt probleemoplossing](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
+* **Projecten maken** : u kunt uw R-code in projecten indelen en beheren met behulp van RStudio. Zie [projecten gebruiken](https://support.rstudio.com/hc/articles/200526207-Using-Projects) voor meer informatie. U wordt aangeraden deze instructies te volgen en een project te maken voor de R-code voorbeelden in dit artikel.  
+* Het **bewerken en uitvoeren van r code** -RStudio biedt een geïntegreerde omgeving voor het bewerken en uitvoeren van r-code. Zie [code bewerken en uitvoeren](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) voor meer informatie.
+* **Fout opsporing** -RStudio bevat krachtige functies voor fout opsporing. Zie [fout opsporing met RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) voor meer informatie over deze functies. Zie [probleem oplossing](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)voor meer informatie over functies voor het oplossen van onderbrekings punten.
 
-## <a id="appendixb"></a>Lees hier meer over
+## <a id="appendixb"></a>Meer lezen
 
-Deze programmeren R-zelfstudie bevat informatie over de basisprincipes van wat u moet de R-taal gebruiken met Azure Machine Learning Studio. Als u niet bekend met R bent, zijn twee inleidingen beschikbaar op CRAN:
+In deze zelf studie voor R-Program meren worden de basis beginselen besproken van wat u nodig hebt om de R-taal te gebruiken met de klassieke versie van Azure Machine Learning Studio. Als u niet bekend bent met R, zijn er twee inleidingen beschikbaar op KRANen:
 
-* [R voor Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis is een goede plaats om te starten.  
-* [Een inleiding tot R](https://cran.r-project.org/doc/manuals/R-intro.html) door W. N. Venables et. al. dieper in krijgt.
+* [R voor beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) door Emmanuel Paradis is een goede plaats om te starten.  
+* [Een inleiding tot R](https://cran.r-project.org/doc/manuals/R-intro.html) door W. N. Venables et. al. meer dieper.
 
-Er zijn veel boeken op R waarmee u aan de slag kunt. Hier volgen enkele die ik handig:
+Er zijn veel boeken op R die u kunnen helpen om aan de slag te gaan. Hier vindt u enkele nuttige informatie:
 
-* De **illustraties van R-programmering: Een ontwerp rondleiding door de statistische Software** Norman Matloff is een uitstekende inleiding in programmeren in R.  
-* **R Cookbook** door Paul Teetor biedt een oplossing en probleem aanpak voor het gebruik van R.  
-* **R in actie** Robert Kabacoff is een ander handig inleidende rapport. De bijbehorende [snelle R website](https://www.statmethods.net/) is een nuttig middel.
-* **R Inferno** door Patrick Burns is een verrassend humoristische boek die met een aantal lastig en moeilijk onderwerpen die kunnen worden aangetroffen bij het programmeren in R. Het rapport is beschikbaar voor gratis op [de R-Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
-* Als u een nauwkeuriger geavanceerde onderwerpen van R wilt, hebt u een overzicht van het boek **geavanceerde R** door Hadley Wickham. De online versie van deze handleiding vindt u gratis op [ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/).
+* De **Art of r-programmering: een rond leiding door het statistische software ontwerp** van Norman Matloff is een uitstekende inleiding tot het Program meren in R.  
+* **R Cookbook** door Paul Teetor biedt een probleem en oplossings benadering voor het gebruik van R.  
+* De **R in actie** van Robert Kabacoff is een ander handig inleidende boek. De [snelle R-website](https://www.statmethods.net/) van de Companion is een nuttige resource.
+* **R Inferno** door Patrick branding is een verrassend humoristische Book dat een aantal trucige en moeilijke onderwerpen behandelt die tijdens het Program meren in R kunnen worden gevonden. Het boek is gratis beschikbaar op [het R-Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
+* Als u een grondige kennis wilt hebben van geavanceerde onderwerpen in R, bekijkt u het boek **Advanced R** by Hadley Wickham. De online versie van dit boek is gratis beschikbaar op [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
 
-Een catalogus van R-pakketten voor time series kunt u vinden in [CRAN taak weergeven: Time Series-analyse](https://cran.r-project.org/web/views/TimeSeries.html). Voor informatie over specifieke tijd reeks object pakketten, moet u verwijzen naar de documentatie voor dit pakket.
+Een catalogus met R time series-pakketten vindt u in de [taak weergave kranen: analyse van de tijd reeks](https://cran.r-project.org/web/views/TimeSeries.html). Raadpleeg de documentatie voor het desbetreffende pakket voor meer informatie over specifieke Series-object pakketten.
 
-Het boek **inleidende Time Series** met R door Paul Cowpertwait en Andrew Metcalfe bevat een inleiding tot het gebruik van R voor tijdseries analyseren. Veel meer theoretische teksten vindt u voorbeelden van R.
+De **inleidende tijd reeks** van het boek met r door Paul Cowpertwait en Andrew Metcalfe biedt een inleiding tot het gebruik van R voor time series-analyses. Veel meer theoretische teksten bieden R-voor beelden.
 
-Hier volgen enkele fantastische resources op internet:
+Hier volgen enkele fantastische Internet bronnen:
 
-* DataCamp leert hoe u R in het gemak van uw browser met video lessen en codering oefeningen. Er zijn interactieve zelfstudies op de meest recente R technieken en pakketten. De gratis nemen [interactieve R zelfstudie](https://www.datacamp.com/courses/introduction-to-r).
-* [Informatie over programmeren R, de definitieve handleiding](https://www.programiz.com/r-programming) van Programiz.
-* Een snelle [R zelfstudie](https://www.cyclismo.org/tutorial/R/) door Kelly Black van Clarkson University.
-* Er zijn gedurende 60 R-resources die worden vermeld op [boven R taalbronnen voor het verbeteren van de vaardigheden van uw gegevens](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
+* DataCamp u in het comfort van uw browser met video lessen en coderings oefeningen. Er zijn interactieve zelf studies voor de nieuwste R-technieken en-pakketten. Maak de gratis [interactieve R-zelf studie](https://www.datacamp.com/courses/introduction-to-r).
+* [Meer informatie over R-Program ma's, de definitieve hand leiding](https://www.programiz.com/r-programming) van Programiz.
+* Een snelle [R-zelf studie](https://www.cyclismo.org/tutorial/R/) van Kelly Black van Clarkson University.
+* Er zijn meer dan 60 R-resources die worden weer gegeven in [de bovenste R-taal bronnen om uw gegevens vaardigheden te verbeteren](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
 
 <!-- Module References -->
 [execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

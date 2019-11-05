@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: gegevens uit Azure-Event Hubs verwerken met Apache Spark in HDInsight'
+title: 'Zelf studie: Azure Event Hubs Data & Apache Spark-HDInsight'
 description: 'Zelf studie: Apache Spark in azure HDInsight verbinden met Azure Event Hubs en de streaminggegevens verwerken.'
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 10/17/2019
-ms.openlocfilehash: 33ec747edaeba60f1c1e5fdb29fd2af1cb29cf8d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 0b24d1b0215564fb9f6063d4a2d091bb7a9a1c3e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800084"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494624"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Zelf studie: tweets verwerken met Azure Event Hubs en Apache Spark in HDInsight
 
@@ -70,7 +70,7 @@ Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. V
 
 U gebruikt deze Event Hub om tweets op te slaan.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Ga in het menu links naar **alle services** > **Internet van dingen** > **Event hubs**.  
 
@@ -83,7 +83,7 @@ U gebruikt deze Event Hub om tweets op te slaan.
     |Eigenschap |Waarde |
     |---|---|
     |Naam|Voer een naam in voor de Event Hub.  De waarde die voor deze zelf studie wordt gebruikt, is **myeventhubns20180403**.|
-    |Prijscategorie|Selecteer **standaard**.|
+    |Prijscategorie|selecteer **Standaard**.|
     |Abonnement|Selecteer het juiste abonnement.|
     |Resourcegroep|Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer **nieuwe maken** om een nieuwe resource groep te maken.|
     |Locatie|Selecteer dezelfde **locatie** als uw Apache Spark-cluster in HDInsight om de latentie en kosten te verminderen.|
@@ -118,7 +118,7 @@ Maak een Event Hub nadat de naam ruimte Event Hubs is geïmplementeerd.  Vanuit 
 
 1. Selecteer onder **instellingen** **beleid voor gedeelde toegang**.
 
-1. Selecteer **RootManageSharedAccessKey**.
+1. selecteer **RootManageSharedAccessKey**.
 
      ![Event hub-beleids regels instellen voor het Spark-streaming-voor beeld](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Event hub-beleids regels instellen voor het Spark-streaming-voor beeld")
 
@@ -137,7 +137,7 @@ Maak een Event Hub nadat de naam ruimte Event Hubs is geïmplementeerd.  Vanuit 
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
-1. Bewerk de onderstaande code door `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>` en `<TOKEN SECRET>` te vervangen door de juiste waarden. Voer de bewerkte code uit om tweets naar uw Event Hub te verzenden:
+1. Bewerk de onderstaande code door `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>`, `<CONSUMER SECRET>`, `<ACCESS TOKEN>`en `<TOKEN SECRET>` te vervangen door de juiste waarden. Voer de bewerkte code uit om tweets naar uw Event Hub te verzenden:
 
     ```scala
     import java.util._
@@ -219,7 +219,7 @@ Maak een andere Jupyter-notebook en noem deze **ReadTweetsFromEventHub**.
     {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
-2. Bewerk de onderstaande code door `<Event hub name>` en `<Event hub namespace connection string>` te vervangen door de juiste waarden. Voer de bewerkte code uit om tweets te lezen uit uw Event Hub:
+2. Bewerk de onderstaande code door `<Event hub name>`te vervangen en `<Event hub namespace connection string>` met de juiste waarden. Voer de bewerkte code uit om tweets te lezen uit uw Event Hub:
 
     ```scala
     import org.apache.spark.eventhubs._

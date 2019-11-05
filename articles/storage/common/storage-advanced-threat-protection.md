@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673257"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495959"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection voor Azure Storage
 
@@ -30,7 +30,7 @@ Geavanceerde bedreigings beveiliging voor Azure Storage opname van Diagnostische
 
 Advanced Threat Protection is standaard ingeschakeld voor uw opslag account. U kunt geavanceerde beveiliging tegen bedreigingen op verschillende manieren configureren, zoals beschreven in de volgende secties.
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Start de [Azure Portal](https://portal.azure.com/).
 1. Navigeer naar uw Azure Storage-account. Selecteer onder **instellingen**de optie **geavanceerde beveiliging**.
@@ -40,7 +40,7 @@ Advanced Threat Protection is standaard ingeschakeld voor uw opslag account. U k
 
     ![Azure Storage Advanced Threat Protection inschakelen](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="using-azure-security-center"></a>Met behulp van Azure Security Center
+### <a name="azure-security-centertabazure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
 Wanneer u zich abonneert op de Standard-laag in Azure Security Center, wordt geavanceerde beveiliging tegen bedreigingen automatisch ingesteld op al uw opslag accounts. U kunt de geavanceerde beveiliging tegen bedreigingen voor uw opslag accounts onder een specifiek abonnement als volgt in-of uitschakelen:
 
@@ -56,11 +56,11 @@ Wanneer u zich abonneert op de Standard-laag in Azure Security Center, wordt gea
     ![ATP in Security Center inschakelen](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Klik op **Opslaan**.
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager sjablonen gebruiken
+### <a name="templatetabtemplate"></a>[Sjabloon](#tab/template)
 
 Gebruik een Azure Resource Manager sjabloon om een Azure Storage account te implementeren waarop Advanced Threat Protection is ingeschakeld. Zie [opslag account met geavanceerde beveiliging tegen bedreigingen](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)voor meer informatie.
 
-### <a name="using-an-azure-policy"></a>Een Azure Policy gebruiken
+### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Gebruik een Azure Policy om geavanceerde bedreigings beveiliging in te scha kelen voor opslag accounts onder een specifiek abonnement of resource groep.
 
@@ -78,20 +78,22 @@ Gebruik een Azure Policy om geavanceerde bedreigings beveiliging in te scha kele
 
     ![Pagina beleids definities](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-the-rest-api"></a>Met behulp van de REST API
+### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
 
 Gebruik rest API-opdrachten om de geavanceerde instelling voor beveiliging tegen bedreigingen te maken, bij te werken of op te halen voor een specifiek opslag account.
 
 * [Advanced Threat Protection-maken](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Advanced Threat Protection-ophalen](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Gebruik de volgende Power shell-cmdlets:
 
 * [Advanced Threat Protection inschakelen](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
 * [Geavanceerde beveiliging tegen bedreigingen verkrijgen](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [Geavanceerde bedreigings beveiliging uitschakelen](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+---
 
 ## <a name="explore-security-anomalies"></a>Beveiligings afwijkingen verkennen
 

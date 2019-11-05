@@ -1,6 +1,6 @@
 ---
-title: Apache Sqoop taken uitvoeren met behulp van PowerShell en Azure HDInsight
-description: Informatie over het gebruik van Azure PowerShell op een werkstation uitvoeren Apache Sqoop importeren en exporteren tussen een Apache Hadoop-cluster en een Azure SQL database.
+title: Apache Sqoop-taken uitvoeren met behulp van Power shell en Azure HDInsight
+description: Informatie over het gebruik van Azure PowerShell van een werk station voor het uitvoeren van Apache Sqoop importeren en exporteren tussen een Apache Hadoop cluster en een Azure SQL database.
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -8,29 +8,31 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: f178d07666eda3552c18f581a926305e76ecb697
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6cb3e91bed4f16cf1e30c535b5ed667fc690dd53
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450131"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499280"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop taken uitvoeren met behulp van Azure PowerShell voor Apache Hadoop in HDInsight
+# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-taken uitvoeren met behulp van Azure PowerShell voor Apache Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Leer hoe u Azure PowerShell gebruiken voor het uitvoeren van Apache Sqoop taken in Azure HDInsight om te importeren en exporteren van gegevens tussen een HDInsight-cluster en een Azure SQL-database of SQL Server-database. In dit voorbeeld exporteert gegevens van `/tutorials/usesqoop/data/sample.log` van het standaardaccount voor opslag en invoer naar een tabel met de naam `log4jlogs` in een SQL Server-database. In dit artikel is een vervolg van [Apache Sqoop gebruiken met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
+Meer informatie over het gebruik van Azure PowerShell voor het uitvoeren van Apache Sqoop-taken in azure HDInsight voor het importeren en exporteren van gegevens tussen een HDInsight-cluster en een Azure SQL database-of SQL Server-Data Base. In dit voor beeld worden gegevens uit `/tutorials/usesqoop/data/sample.log` van het standaard opslag account geëxporteerd en vervolgens geïmporteerd naar een tabel met de naam `log4jlogs` in een SQL Server-Data Base. Dit artikel is een voortzetting van het [gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u dit artikel, hebt u de volgende items:
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* Een werkstation met Azure PowerShell [AZ Module](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
+Voordat u met dit artikel begint, moet u beschikken over de volgende items:
 
-* Voltooiing van [testomgeving instellen](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) van [Apache Sqoop gebruiken met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
+* Een werk station met Azure PowerShell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) geïnstalleerd.
+
+* Volt ooien van de [instelling test omgeving](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) [voor het gebruik van Apache Sqoop met Hadoop in HDInsight](./hdinsight-use-sqoop.md).
 
 
-## <a name="run-apache-sqoop-by-using-powershell"></a>Apache Sqoop uitvoeren met behulp van PowerShell
-De volgende PowerShell-script vooraf verwerkt het bronbestand en exporteert het naar een Azure SQL-database naar tabel `log4jlogs`. Vervang `CLUSTERNAME`, `CLUSTERPASSWORD`, en `SQLPASSWORD` door de waarden die u van de vereiste gebruikt.
+## <a name="run-apache-sqoop-by-using-powershell"></a>Apache Sqoop uitvoeren met behulp van Power shell
+Met het volgende Power shell-script wordt het bron bestand vooraf verwerkt en vervolgens geëxporteerd naar een Azure-SQL database naar tabel `log4jlogs`. Vervang `CLUSTERNAME`, `CLUSTERPASSWORD`en `SQLPASSWORD` door de waarden die u uit de vereiste hebt gebruikt.
 
 ```powershell 
 <#------ BEGIN USER INPUT ------#>
@@ -172,14 +174,14 @@ Get-AzHDInsightJobOutput `
 ## <a name="limitations"></a>Beperkingen
 HDInsight op basis van Linux biedt de volgende beperkingen:
 
-* Bulksgewijs exporteren: De Sqoop-connector die wordt gebruikt voor het exporteren van gegevens naar Microsoft SQL Server of Azure SQL Database biedt momenteel geen ondersteuning voor bulksgewijs invoegen.
+* Bulk export: de Sqoop-connector die wordt gebruikt om gegevens te exporteren naar Microsoft SQL Server of Azure SQL Database biedt momenteel geen ondersteuning voor bulksgewijs invoegen.
 
-* Batching: Met behulp van de `-batch` overschakelen wanneer voegt worden uitgevoerd, Sqoop meerdere invoegingen in plaats van de bewerkingen insert batchverwerking wordt uitgevoerd. 
+* Batching: door met behulp van de `-batch`-switch wanneer het wordt ingevoegd, voert Sqoop meerdere toevoegingen uit in plaats van de invoeg bewerkingen uit batch te voeren. 
 
 ## <a name="next-steps"></a>Volgende stappen
-U hebt nu geleerd hoe u Sqoop gebruiken. Voor meer informatie zie:
+U hebt nu geleerd hoe u Sqoop kunt gebruiken. Voor meer informatie zie:
 
-* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): Sqoop actie gebruiken in een Oozie-workflow.
-* [Gegevens uploaden naar HDInsight](../hdinsight-upload-data.md): Andere methoden voor het uploaden van gegevens naar HDInsight of Azure Blob storage vinden.
+* [Apache Oozie gebruiken met HDInsight](../hdinsight-use-oozie-linux-mac.md): gebruik de actie Sqoop in een Oozie-werk stroom.
+* [Gegevens uploaden naar hdinsight](../hdinsight-upload-data.md): andere methoden voor het uploaden van gegevens naar Hdinsight of Azure Blob Storage zoeken.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

@@ -1,7 +1,7 @@
 ---
 title: 'K-betekent clustering: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module K-betekent clustering in de Azure Machine Learning-service om cluster modellen te trainen.
+titleSuffix: Azure Machine Learning
+description: 'Meer informatie over het gebruik van de module K: Clustering in de Azure Machine Learning voor het trainen van cluster modellen.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693115"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497764"
 ---
 # <a name="module-k-means-clustering"></a>Module: K-betekent clustering
 
-In dit artikel wordt beschreven hoe u de module *K-betekent clustering* in azure machine learning Studio kunt gebruiken om een niet-getraind k-means clustering model te maken. 
+In dit artikel wordt beschreven hoe u de module *K-betekent clustering* in azure machine learning Designer (preview) gebruikt om een niet-getraind k-means clustering model te maken. 
  
 K: is een van de eenvoudigste en *meest bekende* algoritmen voor leren. U kunt het algoritme gebruiken voor een aantal machine learning taken, zoals: 
 
@@ -60,7 +60,7 @@ Wanneer de trainings gegevens worden verwerkt, begint het algoritme van K: met e
   
     -   **Eén para meter**: als u de exacte para meters die u wilt gebruiken in het cluster model weet, kunt u een specifieke set waarden opgeven als argumenten.  
   
-3.  Voor het **aantal Centroids**typt u het aantal clusters waarmee u het algoritme wilt beginnen.  
+3.  Voor het **aantal centroids**typt u het aantal clusters waarmee u het algoritme wilt beginnen.  
   
      Het model is niet gegarandeerd om precies dit aantal clusters te produceren. Het algoritme begint met dit aantal gegevens punten en wordt herhaald om de optimale configuratie te vinden.  
   

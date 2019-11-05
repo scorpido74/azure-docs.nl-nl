@@ -1,24 +1,24 @@
 ---
 title: 'Partitie en voor beeld: module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de partitie-en voorbeeld module in Azure Machine Learning service om steek proeven op een gegevensset uit te voeren of om partities te maken op basis van uw gegevensset.
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de partitie-en voorbeeld module in Azure Machine Learning om steek proeven op een gegevensset uit te voeren of om partities te maken op basis van uw gegevensset.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693760"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497719"
 ---
 # <a name="partition-and-sample-module"></a>Partitie en voorbeeld module
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om steek proeven op een gegevensset uit te voeren of om partities te maken op basis van uw gegevensset.
 
@@ -44,8 +44,8 @@ Steek proeven zijn een belang rijk hulp middel in machine learning omdat u hierm
 
 Deze module ondersteunt meerdere methoden voor het delen van uw gegevens in partities of voor steek proeven. Kies eerst de methode en stel vervolgens aanvullende opties in die vereist zijn voor de methode.
 
-- Kop
-- Sampling
+- Head
+- Steekproeven
 - Aan vouwen toewijzen
 - Vouw kiezen
 
@@ -122,7 +122,7 @@ Gebruik deze optie als u de gegevensset wilt verdelen over subsets van de gegeve
 
     - **Partitie met aangepaste verhoudingen**: gebruik deze optie om de grootte van elke partitie op te geven als een lijst met door komma's gescheiden waarden.
 
-        Als u bijvoorbeeld drie partities wilt maken, met de eerste partitie met 50% van de gegevens en de resterende twee partities elk 25% van de gegevens bevatten, klikt u op de **lijst met verhoudingen gescheiden door komma's** en typt u deze getallen: @no_ _t_1
+        Als u bijvoorbeeld drie partities wilt maken, met de eerste partitie met 50% van de gegevens en de resterende twee partities elk 25% van de gegevens bevatten, klikt u op de **lijst met verhoudingen gescheiden door komma's** en typt u deze getallen: @no_ _t_1_`.5, .25, .25`
 
         De som van alle partitie grootten moet precies 1 zijn.
 
@@ -156,7 +156,7 @@ Deze optie wordt gebruikt wanneer u een gegevensset hebt onderverdeeld in meerde
 
     U kunt bijvoorbeeld eerder gepartitioneerde patiënten in vier vouwen met leeftijd. Als u met elke afzonderlijke vouw wilt werken, hebt u vier kopieën van de **partitie en voorbeeld** module nodig en selecteert u een andere vouw, zoals hieronder wordt weer gegeven. Het is niet juist om de uitvoer van de functie **toewijzen aan vouwen** rechtstreeks te gebruiken.  
 
-    [![Partition en voor beeld](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    [Partitie en voor beeld ![](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
 5. Voer de pijplijn uit.
 
@@ -167,4 +167,4 @@ Deze optie wordt gebruikt wanneer u een gegevensset hebt onderverdeeld in meerde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

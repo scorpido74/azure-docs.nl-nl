@@ -1,24 +1,24 @@
 ---
-title: 'Kolommen selecteren in gegevensset: Module verwijzing'
-titleSuffix: Azure Machine Learning service
-description: Meer informatie over het gebruik van de module select columns in dataset in Azure Machine Learning service om een subset van kolommen te kiezen die moeten worden gebruikt in downstream-bewerkingen.
+title: 'Kolommen selecteren in DataSet: module verwijzing'
+titleSuffix: Azure Machine Learning
+description: Meer informatie over het gebruik van de module select columns in dataset in Azure Machine Learning om een subset van kolommen te kiezen die moeten worden gebruikt in downstream-bewerkingen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 097477fb9fc10d954954815c7f4b0fef8947a526
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.date: 10/22/2019
+ms.openlocfilehash: 3511c448298aa96c95dc970d1d192869c127eb0d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128496"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497660"
 ---
 # <a name="select-columns-in-dataset-module"></a>Kolommen in de module gegevensset selecteren
 
-In dit artikel wordt een module van de Visual Interface (preview) voor de Azure Machine Learning-service beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
 
 Gebruik deze module om een subset van kolommen te kiezen die moeten worden gebruikt in downstream-bewerkingen. De-module verwijdert de kolommen niet fysiek uit de gegevensset van de bron. in plaats daarvan wordt er een subset met kolommen gemaakt, zoals een database *weergave* of *projectie*.
 
@@ -40,7 +40,7 @@ De module bevat meerdere opties voor het kiezen van kolommen op naam:
 
     Als u een gegevensset hebt verbonden die al is gevuld, wordt een lijst met beschik bare kolommen weer gegeven. Als er geen kolommen worden weer gegeven, moet u mogelijk upstream-modules uitvoeren om de kolom lijst weer te geven.
 
-    Als u de lijst wilt filteren, typt u in het zoekvak. Als u bijvoorbeeld de letter `w` in het zoekvak typt, wordt de lijst gefilterd om de kolom namen weer te geven die de letter `w`bevatten.
+    Als u de lijst wilt filteren, typt u in het zoekvak. Als u bijvoorbeeld de `w` letter in het zoekvak typt, wordt de lijst gefilterd om de kolom namen weer te geven die de letter `w`bevatten.
 
     Selecteer kolommen en klik op de pijl naar rechts om de geselecteerde kolommen te verplaatsen naar de lijst in het rechterdeel venster.
 
@@ -77,9 +77,9 @@ MET de optie **begin met** wordt het begin punt bepaald en is het belang rijk om
 
     U kunt bijvoorbeeld beginnen met alle kolommen en vervolgens kolommen op naam of op type verwijderen.
 
-+ Als u de optie **geen kolommen** selecteert, wordt de lijst met kolommen leeg gelaten. Vervolgens geeft u voor waarden op om kolommen toe te voegen aan de lijst. 
++ Als u de optie **geen kolommen** selecteert, wordt de lijst met kolommen leeg gelaten. Vervolgens geeft u voor waarden op om kolommen toe te *voegen* aan de lijst. 
 
-    Als u meerdere regels toepast, is elke voorwaarde additief. Stel bijvoorbeeld dat u begint met geen kolommen en voeg vervolgens een regel toe om alle numerieke kolommen op te halen. In de gegevensset voor auto Mobile-prijzen resulteert dat in 16 kolommen. Vervolgens klikt u op het **+** -teken om een nieuwe voor waarde toe te voegen en selecteert u **alle functies**toevoegen. De resulterende gegevensset bevat alle numerieke kolommen, plus alle functie kolommen, met inbegrip van sommige kolommen met teken reeks functies.
+    Als u meerdere regels toepast, is elke voor waarde **additief**. Stel bijvoorbeeld dat u begint met geen kolommen en voeg vervolgens een regel toe om alle numerieke kolommen op te halen. In de gegevensset voor auto Mobile-prijzen resulteert dat in 16 kolommen. Vervolgens klikt u op het **+** -teken om een nieuwe voor waarde toe te voegen en selecteert u **alle functies**toevoegen. De resulterende gegevensset bevat alle numerieke kolommen, plus alle functie kolommen, met inbegrip van sommige kolommen met teken reeks functies.
 
 ### <a name="choose-by-column-index"></a>Kiezen op kolom index
 
@@ -87,7 +87,7 @@ De kolom index verwijst naar de volg orde van de kolom in de oorspronkelijke geg
 
 + Kolommen worden opeenvolgend genummerd vanaf 1.  
 + Als u een bereik van kolommen wilt ophalen, gebruikt u een koppel teken. 
-+ Open-end specificaties zoals `1-` of `-3` zijn niet toegestaan.
++ Open-end specificaties, zoals `1-` of `-3` zijn niet toegestaan.
 + Dubbele index waarden (of kolom namen) zijn niet toegestaan en kunnen resulteren in een fout.
 
 Als uw gegevensset bijvoorbeeld ten minste acht kolommen bevat, kunt u in een van de volgende voor beelden plakken om meerdere niet-aaneengesloten kolommen te retour neren: 
@@ -96,7 +96,7 @@ Als uw gegevensset bijvoorbeeld ten minste acht kolommen bevat, kunt u in een va
 + `1,3-8`
 + `1,3-6,4` 
 
-het laatste voor beeld resulteert niet in een fout. Er wordt echter slechts één exemplaar van de kolom `4`geretourneerd.
+het laatste voor beeld resulteert niet in een fout. Er wordt echter slechts één exemplaar van kolom `4`geretourneerd.
 
 
 
@@ -112,4 +112,4 @@ In een gegevensset met de kolommen Kol1, col2, Col3 en Col4 kunt u bijvoorbeeld 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set beschik bare modules](module-reference.md) voor Azure machine learning service. 
+Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 

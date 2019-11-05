@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 12d9a1a92c0b008244c7db4ec23d5a28888b042a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: ad4a1d89809ebd1b7ac933ef391965accbfd1a6c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973169"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496729"
 ---
 # <a name="overview-of-azure-notebooks"></a>Overzicht van Azure Notebooks
 
@@ -72,7 +72,7 @@ Voor elke notebook selecteert u de kernel (d.w.z. de runtime-omgeving) waarin de
 
 Azure Notebooks bevat naast de basisdistributies tevens extra pakketten. De Python-kernels bijvoorbeeld, omvatten de numpy-, pandas-, scikit-learn-, matplotlib- en bokeh-bibliotheken.
 
-U kunt een project ook aanpassen om een omgeving te maken voor alle notebooks in dat project. Zie voor meer informatie [Snelstart: Een project met een aangepaste omgeving maken](quickstart-create-jupyter-notebook-project-environment.md).
+U kunt een project ook aanpassen om een omgeving te maken voor alle notebooks in dat project. Zie [Quickstart: Een project met een aangepaste omgeving maken](quickstart-create-jupyter-notebook-project-environment.md) voor meer informatie.
 
 Naast de basisdistributies zijn in Azure Notebooks vele extra pakketten vooraf geïnstalleerd die handig zijn van datawetenschappers. U kunt ook uw eigen pakketten installeren met behulp van het voor elke taal eigen proces.
 
@@ -80,11 +80,11 @@ Naast de basisdistributies zijn in Azure Notebooks vele extra pakketten vooraf g
 
 Azure Notebooks is vooraf geconfigureerd met de volgende Jupyter-uitbreidingen:
 
-- [RISE](https://github.com/damianavila/RISE): Een Jupyter-uitbreiding voor diavoorstellingen (ook wel live_reveal genoemd). Zie [Een diavoorstelling uitvoeren](present-jupyter-notebooks-slideshow.md) voor meer informatie.
-- [Jupyterlab](https://github.com/jupyterlab/jupyterlab): Een volledige rekenomgeving om te werken met Jupyter Notebooks.
-- [Altair](https://github.com/ellisonbg/altair): Een declaratieve, statistische visualisatiebibliotheek voor Python.
-- [BQPlot](https://github.com/bloomberg/bqplot): Een interactief tekenframework voor Jupyter Notebooks.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interactieve HTML-widgets voor Jupyter Notebooks.
+- [RISE](https://github.com/damianavila/RISE): een Jupyter-uitbreiding voor diavoorstellingen (ook wel live_reveal genoemd). Zie [Een diavoorstelling uitvoeren](present-jupyter-notebooks-slideshow.md) voor meer informatie.
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): een volledige rekenomgeving om te werken met Jupyter Notebooks.
+- [Altair](https://github.com/ellisonbg/altair): een declaratieve, statistische visualisatiebibliotheek voor Python.
+- [BQPlot](https://github.com/bloomberg/bqplot): een interactief tekenframework voor Jupyter Notebooks.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): interactieve HTML-widgets voor Jupyter Notebooks.
 
 ## <a name="issues-and-getting-help"></a>Problemen en Help
 
@@ -112,10 +112,10 @@ Voor vragen over Azure Notebooks kunt u een vraag stellen op de [GitHub-opslagpl
 
 - Artikelen met procedures:
   
-  - [Maken en projecten klonen](create-clone-jupyter-notebooks.md)
-  - [Configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
-  - [Installeren van pakketten van binnen een laptop](install-packages-jupyter-notebook.md)
-  - [Een diavoorstelling](present-jupyter-notebooks-slideshow.md)
-  - [Werken met bestanden](work-with-project-data-files.md)
-  - [Toegang tot gegevensresources](access-data-resources-jupyter-notebooks.md)
-  - [Azure Machine Learning-Services gebruiken](use-machine-learning-services-jupyter-notebooks.md)
+  - [Projecten maken en klonen](create-clone-jupyter-notebooks.md)
+  - [Projecten configureren en beheren](configure-manage-azure-notebooks-projects.md)
+  - [Pakketten vanuit een notebook installeren](install-packages-jupyter-notebook.md)
+  - [Een diavoorstelling presenteren](present-jupyter-notebooks-slideshow.md)
+  - [Werken met gegevensbestanden](work-with-project-data-files.md)
+  - [Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
+  - [Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)

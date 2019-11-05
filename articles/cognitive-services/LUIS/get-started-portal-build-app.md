@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een nieuwe app maken in de LUIS-Portal'
+title: 'Snelstartgids: een nieuwe app maken in de LUIS-Portal'
 titleSuffix: Azure Cognitive Services
 description: In deze Quick Start maakt u een nieuwe app in de LUIS-Portal. Maak de basis onderdelen van een app, intenties en entiteiten. Test de app met een voor beeld van een gebruiker utterance in het interactieve test paneel om de voorspelde intentie te verkrijgen. Het bouwen van een app is gratis; hiervoor is geen Azure-abonnement vereist.
 services: cognitive-services
@@ -10,14 +10,17 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
-ms.translationtype: MT
+ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307733"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488810"
 ---
-# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Quickstart: Een nieuwe app maken in de LUIS-Portal
+# <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstartgids: een nieuwe app maken in de LUIS-Portal
+
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 In deze Quick Start maakt u een nieuwe app in de [Luis-Portal](https://www.luis.ai). Eerst maakt u de basis onderdelen van een app, **intenties**en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
 
@@ -27,17 +30,17 @@ Het bouwen van een app is gratis en er is geen Azure-abonnement vereist. Wanneer
 
 ## <a name="create-an-app"></a>Een app maken
 
-1. Selecteer **nieuwe app maken** in de context werkbalk.
+1. Selecteer **+ maken** op de context werkbalk.
 
-   [![Nieuwe app maken in de LUIS-Portal](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![nieuwe app maken in LUIS-Portal](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
 1. Configureer in het pop-upvenster de app met de volgende instellingen en selecteer vervolgens **gereed**.
 
-   |Naam van instelling| Value | Doel|
+   |Naam van instelling| Waarde | Doel|
    |--|--|--|
-   |Name|`myEnglishApp`|Unieke naam van de LUIS-app<br>vereist|
-   |Culture|**Engels**|Taal van uitingen van gebruikers, **en-US**<br>vereist|
-   |Description|`App made with LUIS Portal`|Beschrijving van de app<br>optioneel|
+   |Naam|`myEnglishApp`|Unieke naam van de LUIS-app<br>Vereist|
+   |Culture|**Engels**|Taal van uitingen van gebruikers, **en-US**<br>Vereist|
+   |Beschrijving|`App made with LUIS Portal`|Beschrijving van de app<br>Beschrijving|
    | | | |
 
    ![Nieuwe app-instellingen invoeren](./media/get-started-portal-build-app/create-new-app-settings.png)
@@ -60,21 +63,21 @@ Voer de volgende stappen uit om intenties te maken:
 
 1. Nadat de app is gemaakt, bevindt u zich op de pagina **intenties** van de sectie **bouwen** . Selecteer **Create new intent**.
 
-   [![Knop nieuwe intentie maken selecteren](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![selecteren knop nieuwe intentie maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Voer de naam van de doel `FindForm`groep in en selecteer vervolgens **gereed**.
+1. Voer de naam van de doel groep in, `FindForm`en selecteer vervolgens **gereed**.
 
    ![De naam van de doel groep van FindForm invoeren](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
-## <a name="add-an-example-utterance"></a>Een voorbeeld-utterance toevoegen
+## <a name="add-an-example-utterance"></a>Een voor beeld-utterance toevoegen
 
 U kunt bijvoorbeeld uitingen toevoegen nadat u intenties hebt gemaakt. Voor beelden van uitingen zijn tekst die een gebruiker invoert in een chat-bot of een andere client toepassing. Ze wijzen de bedoeling van de tekst van de gebruiker toe aan een LUIS intentie.
 
-Voor het doel van `FindForm` deze voorbeeld toepassing bevat bijvoorbeeld uitingen het formulier nummer. De client toepassing heeft het formulier nummer nodig om te voldoen aan de aanvraag van de gebruiker. het is dus belang rijk dat u deze opneemt in de utterance.
+Voor dit voor beeld is het `FindForm` opzet van de toepassing, bijvoorbeeld uitingen, zoals het formulier nummer. De client toepassing heeft het formulier nummer nodig om te voldoen aan de aanvraag van de gebruiker. het is dus belang rijk dat u deze opneemt in de utterance.
 
-[![Voer een voor beeld-uitingen in voor de FindForm intentie](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+[![Voer voor beeld uitingen in voor de FindForm intentie](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-Voeg het volgende 15-voor beeld uitingen `FindForm` toe aan de bedoeling.
+Voeg het volgende 15-voor beeld uitingen toe aan de `FindForm` intentie.
 
 |#|Voorbeelden van utterances|
 |--|--|
@@ -85,7 +88,7 @@ Voeg het volgende 15-voor beeld uitingen `FindForm` toe aan de bedoeling.
 |5|Heb ik HRF-234695 nodig om een interne taak uit te voeren?|
 |6|Moet mijn manager weten wat ik toepas voor een taak met HRF-234091|
 |7|Waar kan ik HRF-234918 verzenden? Ontvang ik een e-mail antwoord dat is ontvangen?|
-|8|hrf-234555|
+|8|HRF-234555|
 |9|Wanneer is HRF-234987 bijgewerkt?|
 |10|Gebruik Form HRF-876345 om te worden toegepast op technische posities|
 |11|Was er een nieuwe versie van HRF-765234 ingediend voor mijn open-aanvraag?|
@@ -112,7 +115,7 @@ Het formulier moet worden gemarkeerd als een entiteit om het formulier nummer te
 
 1. Selecteer **nieuwe entiteit maken** op de pagina **entiteiten** .
 
-1. Voer de naam `Human Resources Form Number`in, selecteer het type **regex** -entiteit en voer `hrf-[0-9]{6}`de reguliere expressie in. Deze vermelding komt overeen met de letterlijke tekens, `hrf-`en staat precies zes cijfers toe.
+1. Voer de naam `Human Resources Form Number`, selecteer het type **regex** -entiteit en voer de reguliere expressie in, `hrf-[0-9]{6}`. Deze vermelding komt overeen met de letterlijke tekens, `hrf-`en staat precies zes cijfers toe.
 
    ![Entiteits gegevens invoeren voor de reguliere expressie-entiteit](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
@@ -146,7 +149,7 @@ Selecteer in het menu in de rechter bovenhoek de optie **Train** om het doel van
 
    De entiteit is gemarkeerd waar deze wordt weer gegeven in het voor beeld uitingen. Als u de oorspronkelijke tekst wilt zien in plaats van de naam van de entiteit, schakelt u in de werk balk **weer gave entiteiten** in.
 
-   [![Alle voor beelden uitingen gemarkeerd met entiteiten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [![alle voor beeld-uitingen die zijn gemarkeerd met entiteiten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Uw nieuwe app testen met het interactieve test venster
 
@@ -166,9 +169,9 @@ Gebruik het interactieve **test** venster in de Luis-Portal om te controleren of
 
 Wanneer u klaar bent met deze Snelstartgids en niet naar de volgende Snelstartgids gaat, selecteert u **mijn apps** in het bovenste navigatie menu. Schakel vervolgens het selectie vakje van de app naar links in de lijst in en selecteer **verwijderen** in de context werkbalk boven de lijst.
 
-[![App verwijderen uit de lijst met apps](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[app ![verwijderen uit de lijst met apps](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [2. Een app implementeren](get-started-portal-deploy-app.md)
+> [2. een app implementeren](get-started-portal-deploy-app.md)

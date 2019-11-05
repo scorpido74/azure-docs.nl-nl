@@ -1,0 +1,65 @@
+---
+title: Cheat-werk blad Machine Learning-algoritme
+titleSuffix: Azure Machine Learning
+description: Een afdruk bare Machine Learning-algoritme voor het Cheat-werk blad helpt u bij het kiezen van het juiste algoritme voor uw voorspellende model in Azure Machine Learning Designer.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+author: FrancescaLazzeri
+ms.author: lazzeri
+ms.date: 11/04/2019
+ms.openlocfilehash: 10714e155bebdd7acc5d7febb345c17fa81bab13
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73516290"
+---
+# <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Machine Learnings Cheat-algoritme voor Azure Machine Learning Designer
+
+Het **Cheat-venster van Azure machine learning-algoritme** helpt u bij het kiezen van het juiste algoritme voor een Predictive Analytics model.
+
+Azure Machine Learning heeft een grote bibliotheek met algoritmen van de ***classificatie***, ***Aanbevolen systemen***, ***clustering***, ***afwijkings detectie***, ***regressie*** -en ***tekst analyse*** -families. Elk is ontworpen om een ander type machine learning probleem op te lossen.
+
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Downloaden: Machine Learning-algoritme Cheat-werk blad
+
+**Down load het Cheat-blad hier: [machine learning-algoritme Cheat-blad (279 x.)](https://download.microsoft.com/download/3/5/b/35bb997f-a8c7-485d-8c56-19444dafd757/azure-machine-learning-algorithm-cheat-sheet-nov2019.pdf?WT.mc_id=docs-article-lazzeri)**
+
+![Cheat-werk blad Machine Learning-algoritme: meer informatie over het kiezen van een Machine Learning algoritme.](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet.svg)
+
+Down load en druk het Machine Learning-algoritme blad Cheat in de formaat van tabloid om het handig te houden en hulp te krijgen bij het kiezen van een algoritme.
+
+## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>Het Cheat-venster van Machine Learning Algorithm gebruiken
+
+De suggesties die in dit Cheat-algoritme worden aangeboden, zijn geschatte regels van de miniatuur. Sommige kunnen worden gebogen en andere kunnen worden flagrantly geschonden. Dit is bedoeld om een begin punt te suggereren. Zorg dat u geen hoofd-naar-head-concurrentie kunt uitvoeren tussen de verschillende algoritmen van uw gegevens. Er is eenvoudigweg geen vervanging voor het goed keuren van de principes van elk algoritme en het systeem dat uw gegevens heeft gegenereerd.
+
+Elke machine learning-algoritme heeft een eigen stijl of inductieve afwijking. Voor een specifiek probleem zijn er mogelijk verschillende algoritmen geschikt en is het mogelijk dat een algoritme beter past dan andere. Maar het is niet altijd mogelijk om vooraf te weten wat het beste past. In dergelijke gevallen worden verschillende algoritmen samen in het Cheat-venster weer gegeven. Een geschikte strategie is om één algoritme te proberen, en als de resultaten nog niet bevredigend zijn, probeert u de andere. 
+
+Ga voor meer informatie over de algoritmen in Azure Machine Learning naar de [Naslag informatie over algoritmen en modules](algorithm-module-reference/module-reference.md).
+
+## <a name="kinds-of-machine-learning"></a>Soorten machine learning
+
+Er zijn drie hoofd categorieën van machine learning: *leren*, zonder *toezicht*en leer *leren*.
+
+### <a name="supervised-learning"></a>Leren onder supervisie
+
+In het onderwijs met Super visie is elk gegevens punt gelabeld of gekoppeld aan een categorie of waarde van belang. Een voor beeld van een categorische-label is het toewijzen van een afbeelding als een ' kat ' of ' hond '. Een voor beeld van een waarde label is de verkoop prijs die is gekoppeld aan een gebruikte auto. Het doel van het leren van een super visie is het bestuderen van een groot aantal voor beelden zoals deze en vervolgens om voor spellingen over toekomstige gegevens punten te kunnen maken. U kunt bijvoorbeeld nieuwe Foto's identificeren met het juiste dier of nauw keurige verkoop prijzen toewijzen aan andere gebruikte auto's. Dit is een populair en nuttig type machine learning.
+
+### <a name="unsupervised-learning"></a>Leren zonder supervisie
+
+Er zijn geen labels aan gegevens punten gekoppeld aan het leren zonder toezicht. In plaats daarvan kunt u de gegevens op een bepaalde manier organiseren of de structuur ervan beschrijven. Dit kan betekenen dat het in clusters kan worden gegroepeerd, als K-betekent, of op verschillende manieren om complexe gegevens te bekijken, zodat deze eenvoudiger worden weer gegeven.
+
+### <a name="reinforcement-learning"></a>Bekrachtigend leren
+
+In het versterken van learning wordt de algoritme gekozen om een actie te kiezen als reactie op elk gegevens punt. Het is een algemene benadering in Robotics, waarbij de set Lees bewerkingen op één punt in de tijd een gegevens punt is, en het algoritme de volgende actie van de robot moet kiezen. Het is ook natuurlijk geschikt voor Internet of Things toepassingen. Het leer algoritme heeft ook een korte tijd een belonings signaal ontvangen dat aangeeft hoe goed de beslissing was. Op basis hiervan wordt de strategie van het algoritme aangepast om de hoogste beloning te kunnen halen. 
+
+## <a name="next-steps"></a>Volgende stappen
+
+* [Meer informatie over studio in azure machine learning en de Azure Portal](service/overview-what-is-azure-ml.md).
+
+* Bekijk een lijst met algoritmen en modules in de [referentie algoritme en module](algorithm-module-reference/module-reference.md).
+
+* [Zelf studie: een Voorspellings model bouwen in azure machine learning Designer](service/ui-tutorial-automobile-price-train-score.md).
+
+* [Meer informatie over uitgebreid leren versus machine learning](service/concept-deep-learning-vs-machine-learning.md).

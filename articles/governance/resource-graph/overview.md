@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c113719d304aa4ed9c13df1fe0264d22aacb5002
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755875"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499144"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Overzicht van de service Azure resource Graph
 
@@ -25,7 +25,7 @@ Azure resource Graph is een service in azure die is ontworpen om Azure Resource 
 In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 > [!NOTE]
-> Met de Azure Portal zoek balk van Azure-resource grafiek, de nieuwe Blader functie voor alle resources en de [wijzigings geschiedenis](../policy/how-to/determine-non-compliance.md#change-history-preview) van de Azure Policy 
+> Met de Azure Portal zoek balk van Azure-resource grafiek, de nieuwe Blader functie voor alle resources en de [wijzigings geschiedenis](../policy/how-to/determine-non-compliance.md#change-history-preview) van de Azure Policy
 > _Visual diff_. Het is ontworpen om klanten te helpen grootschalige omgevingen te beheren.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
@@ -92,7 +92,9 @@ Resource grafiek ondersteunt Azure CLI, Azure PowerShell, Azure SDK voor .NET en
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Voer uw eerste query uit in [Azure Portal](first-query-portal.md).
 - Voer uw eerste query uit met [Azure cli](first-query-azurecli.md).
 - Voer uw eerste query uit met [Azure PowerShell](first-query-powershell.md).
+- Meer informatie over de [query taal](./concepts/query-language.md).
 - Begin met Start [query's](./samples/starter.md).
 - Verbeter uw inzichten met [Geavanceerde query's](./samples/advanced.md).

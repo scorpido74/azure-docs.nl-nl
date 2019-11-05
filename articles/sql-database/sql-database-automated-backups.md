@@ -12,22 +12,22 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: a43783110f625dd5faef13c83228a2659155ead0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843305"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492235"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
-SQL Database maakt automatisch de database back-ups die tussen 7 en 35 dagen worden bewaard en maakt gebruik van met Azure [Lees toegang geografisch redundante opslag (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) om ervoor te zorgen dat ze worden bewaard, zelfs als het Data Center niet beschikbaar is. Deze back-ups worden automatisch gemaakt. Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat uw gegevens worden beschermd tegen onbedoelde beschadiging of verwijdering. Als uw back-ups gedurende lange tijd beschikbaar zijn voor uw beveiligings regels, kunt u een [lange termijn](sql-database-long-term-retention.md) retentie configureren op Singleton-data bases en elastische Pools.
+SQL Database maakt automatisch de database back-ups die tussen 7 en 35 dagen worden bewaard en maakt gebruik van met Azure [Lees toegang geografisch redundante opslag (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) om ervoor te zorgen dat ze worden bewaard, zelfs als het Data Center niet beschikbaar is. Deze back-ups worden automatisch gemaakt. Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat uw gegevens worden beschermd tegen onbedoelde beschadiging of verwijdering. Als uw back-ups gedurende lange tijd beschikbaar zijn voor uw beveiligings regels, kunt u een [lange termijn retentie](sql-database-long-term-retention.md) configureren op Singleton-data bases en elastische Pools.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>Wat is een SQL Database back-up?
 
-SQL Database gebruikt SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back-](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) ups elke 12 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de 5-10 minuten. De back-ups worden opgeslagen in [Ra-GRS-opslag](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) -blobs die worden gerepliceerd naar een [gekoppeld Data Center](../best-practices-availability-paired-regions.md) voor beveiliging tegen een storing in een Data Center. Wanneer u een Data Base herstelt, moet u de volledige, differentiële en transactie logboek back-ups herstellen.
+SQL Database gebruikt SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back-](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) ups elke 12 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de 5-10 minuten. De back-ups worden opgeslagen in [Ra-GRS-opslag-blobs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) die worden gerepliceerd naar een [gekoppeld Data Center](../best-practices-availability-paired-regions.md) voor beveiliging tegen een storing in een Data Center. Wanneer u een Data Base herstelt, moet u de volledige, differentiële en transactie logboek back-ups herstellen.
 
 U kunt deze back-ups gebruiken voor het volgende:
 
@@ -82,7 +82,7 @@ Net als PITR zijn de LTR-back-ups geo-redundant en worden beveiligd door [Azure 
 Zie [lange termijn retentie van back-ups](sql-database-long-term-retention.md)voor meer informatie.
 
 ## <a name="storage-costs"></a>Opslagkosten
-Voor afzonderlijke data bases geldt een minimum hoeveelheid voor back-upopslag die gelijk is aan 100% van de database grootte, zonder extra kosten. Voor elastische Pools worden er geen extra kosten in rekening gebracht voor een minimale back-upopslag die gelijk is aan 100% van de toegewezen gegevens opslag voor de pool. Voor aanvullend verbruik van back-upopslag worden GB/maand berekend. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases.
+Voor afzonderlijke data bases en beheerde instanties geldt een minimum hoeveelheid voor back-upopslag die gelijk is aan 100% van de database grootte, zonder extra kosten. Voor elastische Pools worden er geen extra kosten in rekening gebracht voor een minimale back-upopslag die gelijk is aan 100% van de toegewezen gegevens opslag voor de pool. Voor aanvullend verbruik van back-upopslag worden GB/maand berekend. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases.
 
 Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over opslag prijzen. 
 
@@ -94,7 +94,7 @@ Als uw data base is versleuteld met TDE, worden de back-ups automatisch versleut
 
 Het Azure SQL Database engineering team test voortdurend het herstellen van automatische database back-ups van data bases die zijn geplaatst in logische servers en elastische Pools (dit is niet beschikbaar in een beheerd exemplaar). Bij herstel naar een bepaald tijdstip ontvangen data bases ook integriteits controles met DBCC CHECKDB.
 
-Een beheerd exemplaar maakt automatische initiële back `CHECKSUM` -ups van de data bases die zijn hersteld met de systeem eigen `RESTORE` opdracht of gegevens migratie service zodra de migratie is voltooid.
+Een beheerd exemplaar maakt automatische initiële back-up met `CHECKSUM` van de data bases die zijn hersteld met behulp van de systeem eigen `RESTORE` opdracht of gegevens migratie service nadat de migratie is voltooid.
 
 Problemen die tijdens de integriteits controle worden gevonden, zullen leiden tot een waarschuwing voor het technische team. Zie voor meer informatie over gegevens integriteit in Azure SQL Database [gegevens integriteit in Azure SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
@@ -112,7 +112,7 @@ U kunt de standaard retentie periode voor PITR-back-ups wijzigen met behulp van 
 > Als u de huidige Bewaar periode verkort, zijn alle bestaande back-ups die ouder zijn dan de nieuwe Bewaar periode niet meer beschikbaar. Als u de huidige retentie periode verhoogt, worden de bestaande back-ups door SQL Database bewaard totdat de langere Bewaar periode wordt bereikt.
 
 > [!NOTE]
-> Deze Api's zijn alleen van invloed op de PITR-retentie periode. Als u LTR voor uw data base hebt geconfigureerd, wordt dit niet beïnvloed. Zie [lange termijn](sql-database-long-term-retention.md)retentie voor meer informatie over het wijzigen van de v.l.n.r.-retentie periode (n).
+> Deze Api's zijn alleen van invloed op de PITR-retentie periode. Als u LTR voor uw data base hebt geconfigureerd, wordt dit niet beïnvloed. Zie [lange termijn retentie](sql-database-long-term-retention.md)voor meer informatie over het wijzigen van de v.l.n.r.-retentie periode (n).
 
 ### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>De retentie periode voor PITR-back-ups wijzigen met Azure Portal
 
@@ -148,7 +148,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
 ```
 
-#### <a name="request-body"></a>Hoofdtekst van de aanvraag
+#### <a name="request-body"></a>Aanvraagtekst
 
 ```json
 {
@@ -173,7 +173,7 @@ Status code: 200
 }
 ```
 
-Zie retentie van [back-ups rest API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
+Zie [retentie van back-ups rest API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: b219eb50254ecd347f731d332c3236be028834ba
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045023"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499926"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -83,7 +83,7 @@ Als u de eind punt-URL voor een op aanvragen gebaseerde trigger met andere parti
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-Neem in de hoofd tekst de `NotAfter`property op met behulp van een JSON-datum teken reeks. Deze eigenschap retourneert een call back-URL die alleen geldig is voor de `NotAfter` datum en tijd.
+Neem in de hoofd tekst de eigenschap `NotAfter`op met behulp van een JSON-datum teken reeks. Deze eigenschap retourneert een call back-URL die alleen geldig is voor de `NotAfter` datum en tijd.
 
 <a name="primary-secondary-key"></a>
 
@@ -95,7 +95,7 @@ Wanneer u call back-Url's voor een op aanvragen gebaseerde trigger genereert of 
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-Neem in de hoofd tekst de eigenschap `KeyType` op als `Primary` of `Secondary`. Deze eigenschap retourneert een URL die is ondertekend met de opgegeven beveiligde sleutel.
+Neem in de hoofd tekst de `KeyType` eigenschap op als `Primary` of `Secondary`. Deze eigenschap retourneert een URL die is ondertekend met de opgegeven beveiligde sleutel.
 
 <a name="restrict-inbound-ip"></a>
 
@@ -109,7 +109,7 @@ Samen met Shared Access Signature (SAS) kunt u de clients die uw logische app ku
 
 1. Selecteer **werk stroom instellingen**onder **instellingen**in het menu van de logische app.
 
-1. Selecteer **specifieke IP-bereiken**onder **configuratie van toegangs beheer** > **toegestane inkomende IP-adressen**.
+1. Selecteer **specifieke IP-bereiken**onder **configuratie van toegangs beheer** > **toegestane binnenkomende IP-adressen**.
 
 1. Geef onder **IP-bereiken voor triggers**de IP-adresbereiken op die de trigger accepteert.
 
@@ -201,7 +201,7 @@ Als u de toegang tot de invoer en uitvoer in de uitvoerings geschiedenis van de 
 
 ### <a name="restrict-access-by-ip-address-range"></a>Toegang beperken op basis van IP-adres bereik
 
-U kunt de toegang tot de invoer en uitvoer in de uitvoerings geschiedenis van de logische app beperken zodat alleen aanvragen van specifieke IP-adresbereiken die gegevens kunnen weer geven. Als u bijvoorbeeld wilt blok keren dat iedereen toegang heeft tot invoer en uitvoer, geeft u een IP-adres bereik op, bijvoorbeeld `0.0.0.0-0.0.0.0`. Alleen gebruikers met beheerders machtigingen kunnen deze beperking verwijderen. Dit biedt de mogelijkheid om just-in-time toegang te krijgen tot de gegevens van uw logische app. U kunt de IP-bereiken opgeven die u wilt beperken door gebruik te maken van de Azure Portal of in een Azure Resource Manager sjabloon die u gebruikt voor de implementatie van logische apps.
+U kunt de toegang tot de invoer en uitvoer in de uitvoerings geschiedenis van de logische app beperken zodat alleen aanvragen van specifieke IP-adresbereiken die gegevens kunnen weer geven. Als u bijvoorbeeld wilt blok keren dat iedereen toegang heeft tot invoer en uitvoer, geeft u een IP-adres bereik op zoals `0.0.0.0-0.0.0.0`. Alleen gebruikers met beheerders machtigingen kunnen deze beperking verwijderen. Dit biedt de mogelijkheid om just-in-time toegang te krijgen tot de gegevens van uw logische app. U kunt de IP-bereiken opgeven die u wilt beperken door gebruik te maken van de Azure Portal of in een Azure Resource Manager sjabloon die u gebruikt voor de implementatie van logische apps.
 
 #### <a name="restrict-ip-ranges-in-azure-portal"></a>IP-bereiken in Azure Portal beperken
 
@@ -209,7 +209,7 @@ U kunt de toegang tot de invoer en uitvoer in de uitvoerings geschiedenis van de
 
 1. Selecteer **werk stroom instellingen**onder **instellingen**in het menu van de logische app.
 
-1. Selecteer **specifieke IP-bereiken**onder **configuratie van toegangs beheer** > **toegestane inkomende IP-adressen**.
+1. Selecteer **specifieke IP-bereiken**onder **configuratie van toegangs beheer** > **toegestane binnenkomende IP-adressen**.
 
 1. Geef onder **IP-adresbereiken voor inhoud**de IP-adresbereiken op die toegang hebben tot inhoud van invoer en uitvoer. 
 
@@ -298,9 +298,9 @@ Veel triggers en acties hebben instellingen voor het verbergen van invoer, uitvo
 
 #### <a name="secure-inputs-and-outputs-in-code-view"></a>Invoer en uitvoer in de code weergave beveiligen
 
-Voeg in de onderliggende trigger of actie definitie de matrix `runtimeConfiguration.secureData.properties` toe aan een van beide of beide waarden:
+In de onderliggende trigger of actie definitie kunt u de `runtimeConfiguration.secureData.properties`-matrix toevoegen of bijwerken met een van beide of beide van de volgende waarden:
 
-* `"inputs"`: de invoer wordt beveiligd in de uitvoerings geschiedenis.
+* `"inputs"`: beveiligt invoer in uitvoerings geschiedenis.
 * `"outputs"`: Hiermee worden uitvoer in de uitvoerings geschiedenis beveiligd.
 
 Hier volgen enkele [aandachtspunten om te controleren](#obfuscation-considerations) wanneer u deze instellingen gebruikt om deze gegevens te beveiligen.
@@ -361,7 +361,7 @@ Hier volgen enkele [aandachtspunten om te controleren](#obfuscation-consideratio
 
 Als u in verschillende omgevingen implementeert, kunt u de waarden in uw werk stroom definitie parameterizingen die variëren op basis van deze omgevingen. Op die manier kunt u hardcoded gegevens voor komen door een [Azure Resource Manager sjabloon](../azure-resource-manager/template-deployment-overview.md) te gebruiken om uw logische app te implementeren, gevoelige gegevens te beschermen door beveiligde para meters te definiëren en deze gegevens als afzonderlijke invoer door te geven via de [para meters van de sjabloon](../azure-resource-manager/template-parameters.md) met behulp van een [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md).
 
-Als u bijvoorbeeld HTTP-acties verifieert met [Azure Active Directory](#azure-active-directory-oauth-authentication), kunt u de para meters definiëren en beveiligen die de client-id en het client geheim accepteren die worden gebruikt voor verificatie. Als u deze para meters in uw logische app wilt definiëren, gebruikt u de sectie `parameters` in de werk stroom definitie van de logische app en de Resource Manager-sjabloon voor implementatie. Als u parameter waarden wilt verbergen die u niet wilt weer geven bij het bewerken van de logische app of de weer gave van de uitvoerings geschiedenis, definieert u de para meters met behulp van de `securestring` of `secureobject` type en gebruikt u indien nodig code ring. Para meters van dit type worden niet geretourneerd met de resource definitie en zijn niet toegankelijk wanneer de resource wordt weer gegeven na de implementatie. Als u tijdens runtime toegang wilt krijgen tot deze parameter waarden, gebruikt u de `@parameters('<parameter-name>')`-expressie in de definitie van de werk stroom. Deze expressie wordt alleen geëvalueerd tijdens runtime en wordt beschreven door de [taal van de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md).
+Als u bijvoorbeeld HTTP-acties verifieert met [Azure Active Directory](#azure-active-directory-oauth-authentication), kunt u de para meters definiëren en beveiligen die de client-id en het client geheim accepteren die worden gebruikt voor verificatie. Als u deze para meters in uw logische app wilt definiëren, gebruikt u de sectie `parameters` in de werk stroom definitie van de logische app en de Resource Manager-sjabloon voor implementatie. Als u parameter waarden wilt verbergen die u niet wilt weer geven bij het bewerken van de logische app of de weer gave van de uitvoerings geschiedenis, definieert u de para meters met behulp van de `securestring` of `secureobject` type en gebruikt u indien nodig code ring. Para meters van dit type worden niet geretourneerd met de resource definitie en zijn niet toegankelijk wanneer de resource wordt weer gegeven na de implementatie. Als u tijdens runtime toegang wilt krijgen tot deze parameter waarden, gebruikt u de `@parameters('<parameter-name>')` expressie in de definitie van uw werk stroom. Deze expressie wordt alleen geëvalueerd tijdens runtime en wordt beschreven door de [taal van de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md).
 
 > [!NOTE]
 > Als u een para meter gebruikt in een aanvraag header of hoofd tekst, is die para meter mogelijk zichtbaar wanneer u de uitvoerings geschiedenis van de logische app en uitgaande HTTP-aanvraag weergeeft. Zorg ervoor dat u ook uw beleids regels voor inhouds toegang dienovereenkomstig instelt. U kunt ook een afkorting [gebruiken om](#obfuscate) invoer en uitvoer in de uitvoerings geschiedenis te verbergen. Autorisatie headers worden nooit weer gegeven via invoer of uitvoer. Dus als er een geheim wordt gebruikt, kan dat geheim niet worden opgehaald.
@@ -382,7 +382,7 @@ Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjab
 
 ### <a name="secure-parameters-in-workflow-definitions"></a>Veilige para meters in werk stroom definities
 
-Als u gevoelige informatie in de werk stroom definitie van de logische app wilt beveiligen, gebruikt u beveiligde para meters zodat deze informatie niet zichtbaar is nadat u uw logische app hebt opgeslagen. Stel dat u voor een HTTP-actie basis verificatie nodig hebt, waarbij een gebruikers naam en wacht woord worden gebruikt. In de definitie van de werk stroom definieert de sectie `parameters` de para meters `basicAuthPasswordParam` en `basicAuthUsernameParam` door gebruik te maken van het type `securestring`. De actie definitie verwijst vervolgens naar deze para meters in de sectie `authentication`.
+Als u gevoelige informatie in de werk stroom definitie van de logische app wilt beveiligen, gebruikt u beveiligde para meters zodat deze informatie niet zichtbaar is nadat u uw logische app hebt opgeslagen. Stel dat u voor een HTTP-actie basis verificatie nodig hebt, waarbij een gebruikers naam en wacht woord worden gebruikt. In de definitie van de werk stroom definieert de sectie `parameters` de `basicAuthPasswordParam` en `basicAuthUsernameParam` para meters met behulp van het type `securestring`. De actie definitie verwijst vervolgens naar deze para meters in de sectie `authentication`.
 
 ```json
 "definition": {
@@ -428,17 +428,17 @@ Als u gevoelige informatie in de werk stroom definitie van de logische app wilt 
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Veilige para meters in Azure Resource Manager sjablonen
 
-Een [Resource Manager-sjabloon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) voor een logische app heeft meerdere `parameters`-secties. Als u wacht woorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert u beveiligde para meters op sjabloon niveau en op het niveau van de werk stroom definitie met behulp van het `securestring`-of `secureobject`-type. U kunt deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en het [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md) gebruiken om te verwijzen naar de sleutel kluis en het geheim. Uw sjabloon haalt vervolgens die informatie op tijdens de implementatie. Zie voor meer informatie [gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Een [Resource Manager-sjabloon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) voor een logische app heeft meerdere `parameters`-secties. Als u wacht woorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert u de beveiligde para meters op sjabloon niveau en op het niveau van de werk stroom definitie met behulp van het type `securestring` of `secureobject`. U kunt deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en het [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md) gebruiken om te verwijzen naar de sleutel kluis en het geheim. Uw sjabloon haalt vervolgens die informatie op tijdens de implementatie. Zie voor meer informatie [gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
 Hier vindt u meer informatie over deze `parameters`-secties:
 
-* Op het hoogste niveau van de sjabloon definieert een `parameters`-sectie de para meters voor de waarden die de sjabloon gebruikt bij de *implementatie*. Deze waarden kunnen bijvoorbeeld verbindings reeksen bevatten voor een specifieke implementatie omgeving. U kunt deze waarden vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md), waardoor het wijzigen van deze waarden eenvoudiger wordt.
+* Op het hoogste niveau van de sjabloon definieert een `parameters` sectie de para meters voor de waarden die de sjabloon gebruikt bij de *implementatie*. Deze waarden kunnen bijvoorbeeld verbindings reeksen bevatten voor een specifieke implementatie omgeving. U kunt deze waarden vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md), waardoor het wijzigen van deze waarden eenvoudiger wordt.
 
-* In de resource definitie van de logische app, maar buiten uw werk stroom definitie, worden in een sectie `parameters` de waarden voor de para meters van uw werk stroom definitie opgegeven. In deze sectie kunt u deze waarden toewijzen met behulp van sjabloon expressies die verwijzen naar de para meters van uw sjabloon. Deze expressies worden geëvalueerd tijdens de implementatie.
+* In de resource definitie van de logische app, maar buiten uw werk stroom definitie, geeft een `parameters` sectie de waarden op voor de para meters van uw werk stroom definitie. In deze sectie kunt u deze waarden toewijzen met behulp van sjabloon expressies die verwijzen naar de para meters van uw sjabloon. Deze expressies worden geëvalueerd tijdens de implementatie.
 
-* In de definitie van uw werk stroom definieert een `parameters`-sectie de para meters die uw logische app gebruikt tijdens runtime. U kunt vervolgens naar deze para meters in de werk stroom van de logische app verwijzen met behulp van definitie expressies voor werk stromen, die tijdens runtime worden geëvalueerd.
+* In de definitie van de werk stroom definieert een `parameters` sectie de para meters die uw logische app gebruikt tijdens runtime. U kunt vervolgens naar deze para meters in de werk stroom van de logische app verwijzen met behulp van definitie expressies voor werk stromen, die tijdens runtime worden geëvalueerd.
 
-Deze voorbeeld sjabloon met meerdere beveiligde parameter definities die gebruikmaken van het `securestring`-type:
+Deze voorbeeld sjabloon met meerdere beveiligde parameter definities die gebruikmaken van het `securestring` type:
 
 | Parameternaam | Beschrijving |
 |----------------|-------------|
@@ -615,7 +615,7 @@ HTTP-en HTTPS-eind punten ondersteunen verschillende soorten verificatie. Op bas
 
 Als de optie [basis](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | Basic | Het te gebruiken verificatie type |
 | **Gebruikersnaam** | `username` | Ja | <*gebruikers naam*>| De gebruikers naam voor het verifiëren van de toegang tot het eind punt van de doel service |
@@ -646,7 +646,7 @@ Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het 
 
 Als de optie [client certificaat](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | **Client certificaat** <br>of <br>`ClientCertificate` | Het verificatie type dat moet worden gebruikt voor client certificaten voor Secure Sockets Layer (SSL). Zelfondertekende certificaten worden ondersteund, maar zelfondertekende certificaten voor SSL worden niet ondersteund. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
@@ -677,7 +677,7 @@ Zie de volgende onderwerpen voor meer informatie over het beveiligen van service
 * [Beveilig back-end-services met verificatie op basis van client certificaten in azure API Management](../api-management/api-management-howto-mutual-certificates.md)
 * [Uw REST-service beveiligen met behulp van client certificaten](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 * [Certificaat referenties voor toepassings verificatie](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Gebruik een SSL-certificaat in de code van uw toepassing in Azure App Service](../app-service/app-service-web-ssl-cert-load.md)
+* [Gebruik een SSL-certificaat in de code van uw toepassing in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
@@ -685,17 +685,17 @@ Zie de volgende onderwerpen voor meer informatie over het beveiligen van service
 
 Als de optie [OAuth Active Directory](../active-directory/develop/about-microsoft-identity-platform.md) beschikbaar is, geeft u de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatie type dat moet worden gebruikt. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
-| **Bouw** | `tenant` | Ja | *Tenant-id* van < > | De Tenant-ID voor de Azure AD-Tenant |
-| **Gericht** | `audience` | Ja | < > voor de goed keuring van*resources* | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
-| **Client ID** | `clientId` | Ja | <*client-ID* > | De client-ID voor de app die autorisatie aanvraagt |
+| **Bouw** | `tenant` | Ja | *Tenant-id* van <> | De Tenant-ID voor de Azure AD-Tenant |
+| **Gericht** | `audience` | Ja | <> voor de goed keuring van *resources* | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
+| **Client ID** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
 | **Referentie type** | `credentialType` | Ja | Certificaat <br>of <br>Geheim | Het referentie type dat door de client wordt gebruikt voor het aanvragen van autorisatie. Deze eigenschap en waarde worden niet weer gegeven in de onderliggende definitie van de logische app, maar bepaalt de eigenschappen die worden weer gegeven voor het geselecteerde referentie type. |
 | **Geheim** | `secret` | Ja, maar alleen voor het referentie type ' geheim ' | <*client-geheim*> | Het client geheim voor het aanvragen van autorisatie |
 | **Pfx** | `pfx` | Ja, maar alleen voor het referentie type ' certificaat ' | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
 | **Wachtwoord** | `password` | Ja, maar alleen voor het referentie type ' certificaat ' | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
-| **Provider** | `authority` | Nee | <*URL-voor-Authority-token-verlener* > | De URL voor de instantie die het verificatie token levert. Deze waarde is standaard `https://login.windows.net`. <p>**Opmerking**: als u deze eigenschap zichtbaar wilt maken in de ontwerp functie, klikt u op de trigger of actie, opent u de lijst **nieuwe para meter toevoegen** en selecteert u **instantie**. |
+| **Provider** | `authority` | Nee | <*URL-voor-Authority-token-verlener*> | De URL voor de instantie die het verificatie token levert. Deze waarde is standaard `https://login.windows.net`. <p>**Opmerking**: als u deze eigenschap zichtbaar wilt maken in de ontwerp functie, klikt u op de trigger of actie, opent u de lijst **nieuwe para meter toevoegen** en selecteert u **instantie**. |
 |||||
 
 Wanneer u [beveiligde para meters](#secure-action-parameters) gebruikt voor het afhandelen en beveiligen van gevoelige informatie, bijvoorbeeld in een [Azure Resource Manager sjabloon voor het automatiseren van de implementatie](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u expressies gebruiken om toegang te krijgen tot deze parameter waarden tijdens runtime. In dit voor beeld van een HTTP-actie definitie geeft u de verificatie `type` als `ActiveDirectoryOAuth`, het referentie type als `Secret`en gebruikt u de [functie para meters ()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) om de parameter waarden op te halen:
@@ -739,7 +739,7 @@ Authorization: OAuth realm="Photos",
 
 Geef in de trigger of actie die onbewerkte authenticatie ondersteunt de volgende eigenschaps waarden op:
 
-| Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+| Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | uitgang | Het te gebruiken verificatie type |
 | **Waarde** | `value` | Ja | <*autorisatie-header-waarde*> | De waarde van de autorisatie-header die moet worden gebruikt voor verificatie |
@@ -770,11 +770,11 @@ Als de optie [beheerde identiteit](../active-directory/managed-identities-azure-
 
 1. Voordat uw logische app de door het systeem toegewezen identiteit kan gebruiken, volgt u de stappen in [toegang tot Azure-resources verifiëren met behulp van beheerde identiteiten in azure Logic apps](../logic-apps/create-managed-service-identity.md). Met deze stappen wordt de beheerde identiteit voor uw logische app ingeschakeld en wordt de toegang tot de Azure-doel bron ingesteld.
 
-1. Voordat een Azure-functie de door het systeem toegewezen identiteit kan gebruiken, moet u eerst [verificatie voor Azure functions inschakelen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+2. Voordat een Azure-functie de door het systeem toegewezen identiteit kan gebruiken, moet u eerst [verificatie voor Azure functions inschakelen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
 
-1. Geef in de trigger of actie waar u de beheerde identiteit wilt gebruiken, de volgende eigenschaps waarden op:
+3. Geef in de trigger of actie waar u de beheerde identiteit wilt gebruiken, de volgende eigenschaps waarden op:
 
-   | Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
+   | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
    |---------------------|-----------------|----------|-------|-------------|
    | **Verificatie** | `type` | Ja | **Beheerde identiteit** <br>of <br>`ManagedServiceIdentity` | Het te gebruiken verificatie type |
    | **Gericht** | `audience` | Ja | <*doel-Resource-ID*> | De resource-ID voor de doel resource waartoe u toegang wilt krijgen. <p>`https://storage.azure.com/` maakt bijvoorbeeld de toegangs tokens voor verificatie geldig voor alle opslag accounts. U kunt echter ook een URL voor de basis service opgeven, zoals `https://fabrikamstorageaccount.blob.core.windows.net` voor een specifiek opslag account. <p>**Opmerking**: deze eigenschap is mogelijk verborgen in sommige triggers of acties. Als u deze eigenschap zichtbaar wilt maken, opent u de lijst **nieuwe para meter toevoegen** in de trigger of actie en selecteert u **doel groep**. <p><p>**Belang rijk**: Zorg ervoor dat deze doel resource-id precies overeenkomt met de waarde die door Azure AD wordt verwacht, inclusief alle vereiste afsluitende slashes. Daarom vereist de `https://storage.azure.com/` Resource-ID voor alle Azure Blob Storage-accounts een afsluitende slash. De resource-ID voor een specifiek opslag account vereist echter geen afsluitende slash. Zie [Azure-Services die ondersteuning bieden voor Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)om deze resource-id's te vinden. |

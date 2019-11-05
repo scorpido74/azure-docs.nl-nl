@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ef1f420e4c4dbd38ad703eb0573fae36af078edb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899724"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496239"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Bedrijfskritiek laag-Azure SQL Database
 
@@ -25,8 +25,8 @@ ms.locfileid: "70899724"
 
 Azure SQL Database is gebaseerd op SQL Server data base engine-architectuur die is aangepast voor de cloud omgeving om 99,99% Beschik baarheid te garanderen, zelfs in het geval van infrastructuur fouten. Er zijn drie architectuur modellen die worden gebruikt in Azure SQL Database:
 - Algemeen/standaard 
-- Business Critical/Premium
-- Grootschalig
+- Bedrijfskritiek/Premium
+- Hyperscale
 
 Premium/Bedrijfskritiek service tier model is gebaseerd op een cluster met data base-engine processen. Dit architectuur model is afhankelijk van een feit dat er altijd een quorum van de beschik bare data base-engine knooppunten is en een minimale invloed heeft op de prestaties van uw werk belasting, zelfs tijdens onderhouds activiteiten.
 
@@ -49,7 +49,7 @@ Bedrijfskritiek servicelaag is ontworpen voor de toepassingen die antwoorden met
 De belangrijkste redenen waarom u Bedrijfskritiek servicelaag moet kiezen in plaats van Algemeen laag zijn:
 -   Minimale IO-latentie vereisten: werk belasting waarvoor het snelle antwoord van de opslaglaag nodig is (1-2 milliseconden in gemiddeld) moet Bedrijfskritiek-laag gebruiken. 
 -   Veelvuldige communicatie tussen toepassing en data base. Toepassing die geen gebruik kan maken van de caching van de toepassings laag of het [aanvragen van batches](sql-database-use-batching-to-improve-performance.md) en moet veel SQL-query's verzenden die snel moeten worden verwerkt zijn goede kandidaten voor bedrijfskritiek-laag.
--   Groot aantal updates: insert-, update-en delete-bewerkingen wijzigen de gegevens pagina's in het geheugen (Dirty pagina) die moeten worden opgeslagen in gegevens `CHECKPOINT` bestanden met een bewerking. Mogelijk is het proces van een data base-engine vastgelopen of kan een failover van de data base met een groot aantal vuile pagina's de herstel tijd in Algemeen laag verg Roten. Gebruik Bedrijfskritiek laag als u een werk belasting hebt die veel in-Memory wijzigingen veroorzaakt. 
+-   Groot aantal updates: insert-, update-en delete-bewerkingen wijzigen de gegevens pagina's in het geheugen (Dirty pagina) die moeten worden opgeslagen in gegevens bestanden met `CHECKPOINT` bewerking. Mogelijk is het proces van een data base-engine vastgelopen of kan een failover van de data base met een groot aantal vuile pagina's de herstel tijd in Algemeen laag verg Roten. Gebruik Bedrijfskritiek laag als u een werk belasting hebt die veel in-Memory wijzigingen veroorzaakt. 
 -   Langlopende trans acties waarmee gegevens worden gewijzigd. Trans acties die gedurende een langere periode worden geopend, verhinderen het afkappen van het logboek bestand dat de logboek grootte en het aantal [virtuele logboek bestanden (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)kan verg Roten. Een groot aantal VLF kan het herstel van de data base na een failover vertragen.
 -   Workload met rapportage-en analyse query's die kunnen worden omgeleid naar de gratis secundaire alleen-lezen replica.
 - Hogere tolerantie en sneller herstel van de fouten. In het geval van een systeem fout wordt de Data Base op het primaire exemplaar uitgeschakeld en wordt een van de secundaire replica's onmiddellijk een nieuwe lezen-schrijven primaire data base gemaakt die gereed is voor het verwerken van de query's. Data base-engine hoeft geen trans acties uit het logboek bestand te analyseren en opnieuw in te dienen en alle gegevens in de geheugen buffer te laden.
@@ -59,7 +59,7 @@ De belangrijkste redenen waarom u Bedrijfskritiek servicelaag moet kiezen in pla
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zoek bron kenmerken (aantal kernen, i/o, geheugen) van Bedrijfskritiek-laag in [beheerde instantie](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), afzonderlijke data base in [VCore model](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) of [DTU-model](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), of elastische pool in [vCore model](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) en [DTU-model](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Zoek bron kenmerken (aantal kernen, i/o, geheugen) van Bedrijfskritiek-laag in [beheerde instantie](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), afzonderlijke data base in [VCore model](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) of [DTU-model](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), of elastische pool in [vCore model](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) en [DTU-model](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
 - Meer informatie over [Algemeen](sql-database-service-tier-general-purpose.md) -en [grootschalige](sql-database-service-tier-hyperscale.md) -lagen.
 - Meer informatie over [service Fabric](../service-fabric/service-fabric-overview.md).
 - Zie [bedrijfs continuïteit](sql-database-business-continuity.md)voor meer opties voor hoge Beschik baarheid en herstel na nood gevallen.
