@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Documentatie voor Azure Internet Analyzer (preview)
+summary: 'Internet Analyzer is een meetplatform aan de clientzijde waarmee u kunt testen hoe wijzigingen in de netwerkinfrastructuur van invloed zijn op de prestaties van uw klanten. Of u nu een migratie uitvoert van on-premises naar Azure of een nieuwe Azure-service evalueert, u met Internet Analyzer kunt u leren van informatie uit de gegevens van uw gebruikers en uitgebreide analyses van Microsoft om meer inzicht te krijgen in uw netwerkarchitectuur en om deze te optimaliseren met Azure: voordat u de migratie uitvoert.'
+metadata:
+  title: Documentatie voor Azure Internet Analyzer (preview)
+  description: 'Internet Analyzer is een meetplatform aan de clientzijde waarmee u kunt testen hoe wijzigingen in de netwerkinfrastructuur van invloed zijn op de prestaties van uw klanten. Of u nu een migratie uitvoert van on-premises naar Azure of een nieuwe Azure-service evalueert, u met Internet Analyzer kunt u leren van informatie uit de gegevens van uw gebruikers en uitgebreide analyses van Microsoft om meer inzicht te krijgen in uw netwerkarchitectuur en om deze te optimaliseren met Azure: voordat u de migratie uitvoert.'
+  services: internet-analyzer
+  ms.service: internet-analyzer
+  ms.topic: landing-page
+  author: megan-beatty
+  ms.author: mebeatty
+  ms.date: 10/16/2019
+  ms.openlocfilehash: 27ad858137901f7cb803b380115f6b55967caef7
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508836"
+landingContent:
+- title: Info over Azure Internet Analyzer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Internet Analyzer?
+      url: internet-analyzer-overview.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Een Internet Analyzer maken met behulp van Azure Portal
+      url: internet-analyzer-create-test-portal.md
+    - text: Een Internet Analyzer maken met behulp van CLI
+      url: internet-analyzer-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: De Internet Analyzer-client insluiten
+      url: internet-analyzer-embed-client.md
+    - text: Een aangepast eindpunt configureren
+      url: internet-analyzer-custom-endpoint.md
+- title: Resources
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Veelgestelde vragen over Internet Analyzer
+      url: internet-analyzer-faq.md
+    - text: Uw scorecard interpreteren
+      url: internet-analyzer-scorecard.md

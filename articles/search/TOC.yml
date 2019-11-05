@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: Zelfstudies
   items:
-    - name: Uw eerste app maken
+    - name: 'Uw eerste C#-app maken'
       items:
         - name: 1 - Eenvoudige zoekpagina
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: Velden toewijzen
           href: search-indexer-field-mappings.md
-        - name: Incrementele indexering
-          href: search-howto-incremental-index.md
         - name: Verbinding maken met beheerd SQL-exemplaar
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Verbinding maken met SQL Server-VM's
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: Informatie uit installatiekopieën verwerken en extraheren
               href: cognitive-search-concept-image-scenarios.md
+            - name: Incrementele indexering instellen
+              href: search-howto-incremental-index.md
         - name: Aangepaste vaardigheden
           items:
             - name: Aangepaste vaardigheden integreren
               href: cognitive-search-custom-skill-interface.md
             - name: Voorbeeld - Azure Functions
               href: cognitive-search-create-custom-skill-example.md
-            - name: Voorbeelden - Power Skills
-              href: 'https://aka.ms/powerskills'
             - name: Voorbeeld - Containers
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Tips voor probleemoplossing
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: Voorwaardelijk
           href: cognitive-search-skill-conditional.md
+        - name: Documentextractie
+          href: cognitive-search-skill-document-extraction.md
     - name: Aangepaste vaardigheden
       items:
         - name: Aangepaste Web-API

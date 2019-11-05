@@ -76,12 +76,26 @@
               href: connect-fortinet.md
             - name: Verbinden maken met F5
               href: connect-f5.md
+            - name: Verbinding maken met F5 BIG-IP
+              href: connect-f5-big-ip.md
             - name: Verbinding maken met Syslog
               href: connect-syslog.md
             - name: Verbinding maken met Symantec ICDX
               href: connect-symantec.md
             - name: Verbinding maken met Cisco
               href: connect-cisco.md
+            - name: Verbinding maken met Barracuda CloudGen-firewall
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Verbinding maken met Citrix Analytics (Security)
+              href: connect-citrix-analytics.md
+            - name: Verbinding maken met ExtraHop Reveal(x)
+              href: connect-extrahop.md
+            - name: One Identity Safeguard
+              href: connect-one-identity.md
+            - name: Deep Security van Trend Micro
+              href: connect-trend-micro.md
+            - name: Verbinding maken met Zscaler
+              href: connect-zscaler.md
         - name: Verbinding maken met bedreigingsinformatie
           href: connect-threat-intelligence.md
         - name: Verbinding maken met virtuele Azure Stack-machines
@@ -97,6 +111,8 @@
           href: notebooks.md
         - name: Bladwijzers gebruiken om te zoeken
           href: bookmarks.md
+        - name: Livestream gebruiken voor opsporing
+          href: livestream.md
     - name: Azure Sentinel verwijderen
       href: offboard.md
 - name: Resources

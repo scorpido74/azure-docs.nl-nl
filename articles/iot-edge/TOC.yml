@@ -45,7 +45,7 @@
           href: tutorial-deploy-function.md
         - name: Gemiddelden vinden met Azure Stream Analytics
           href: tutorial-deploy-stream-analytics.md
-        - name: Gegevens een score geven met Azure Machine Learning-service
+        - name: Gegevens beoordelen met Azure Machine Learning
           href: tutorial-deploy-machine-learning.md
         - name: Afbeeldingen classificeren met Custom Vision
           href: tutorial-deploy-custom-vision.md

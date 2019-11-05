@@ -1,0 +1,57 @@
+- name: Documentatie voor Azure Firewall Manager
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Wat is Azure Firewall Manager?
+      href: overview.md
+- name: Zelfstudies
+  expanded: true
+  items:
+    - name: Uw cloudnetwerk beveiligen - portal
+      href: secure-cloud-network.md
+- name: Concepten
+  items:
+    - name: Wat is een beveiligde virtuele hub?
+      href: secured-virtual-hub.md
+    - name: Algemeen implementatieproces
+      href: deployment-overview.md
+    - name: Vertrouwde beveiligingspartners
+      href: trusted-security-partners.md
+    - name: Logica voor verwerking van regels
+      href: rule-processing.md
+- name: Handleidingen
+  items:
+    - name: Vertrouwde beveiligingspartners implementeren
+      href: deploy-trusted-security-partner.md
+    - name: Migreren naar firewallbeleid
+      href: migrate-to-policy.md
+- name: Naslaginformatie
+  items:
+    - name: Azure-CLI
+      href: /cli/azure/ext/azure-firewall/network/firewall
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+- name: Resources
+  items:
+    - name: Auteursjablonen
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Communitysjablonen
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: Regionale beschikbaarheid
+      href: 'https://azure.microsoft.com/regions/services/'

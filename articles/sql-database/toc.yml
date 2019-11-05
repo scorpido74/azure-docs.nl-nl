@@ -20,29 +20,34 @@
           items:
             - name: Overzicht
               href: sql-database-purchase-models.md
-            - name: Model op basis van vCore
-              href: sql-database-service-tiers-vcore.md
+            - name: vCore-model
               items:
-                - name: Serverloze compute-laag
+                - name: Overzicht van vCore-modellen
+                  href: sql-database-service-tiers-vcore.md
+                - name: Serverloos
                   href: sql-database-serverless.md
-                - name: Vooruitbetalen voor reservecapaciteit
+                - name: Azure Hybrid Benefit
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: Gereserveerde capaciteit
                   href: sql-database-reserved-capacity.md
-            - name: DTU-servicelagen
+            - name: Overzicht van DTU-modellen
               href: sql-database-service-tiers-dtu.md
+            - name: Migreren van DTU naar vCore
+              href: sql-database-dtu-to-vcore.md
         - name: Compute en opslag
           items:
             - name: Overzicht
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: Algemeen gebruik/Standard-servicelagen
+            - name: Algemeen gebruik/Standard
               href: sql-database-service-tier-general-purpose.md
-            - name: Bedrijfskritiek/Premium-servicelagen
+            - name: Bedrijfskritiek/Premium
               href: sql-database-service-tier-business-critical.md
-            - name: Hyperscale-servicelaag
+            - name: Hyperscale
               href: sql-database-service-tier-hyperscale.md
             - name: Veelgestelde vragen over Hyperscale
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: Migreren vanaf de servicelaag Premium RS
+            - name: Migreren vanuit Premium RS
               href: sql-database-service-tiers-prs.md
 - name: Snelstartgidsen
   expanded: true
@@ -501,17 +506,17 @@
       items:
         - name: Resources voor individuele databases
           items:
-            - name: Op vCore gebaseerde resourcelimieten
+            - name: vCore-resourcelimieten
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: Op DTU gebaseerde resourcelimieten
+            - name: DTU-resourcelimieten
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: Resources omhoog/omlaag schalen
               href: sql-database-single-database-scale.md
         - name: Resources in een elastische pool
           items:
-            - name: Op vCore gebaseerde resourcelimieten
+            - name: vCore-resourcelimieten
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: Op DTU gebaseerde resourcelimieten
+            - name: DTU-resourcelimieten
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: Resources omhoog/omlaag schalen
               href: sql-database-elastic-pool-scale.md

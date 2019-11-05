@@ -80,8 +80,12 @@
           items:
             - name: Hulpprogramma voor het kopiëren van gegevens
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Gegevens transformeren met toewijzingsgegevensstroom
-      href: tutorial-data-flow.md
+    - name: Gegevens transformeren en voorbereiden met gegevensstromen
+      items:
+        - name: Gegevens transformeren met een toewijzingsgegevensstroom
+          href: tutorial-data-flow.md
+        - name: Gegevens voorbereiden met een wrangling-gegevensstroom
+          href: wrangling-data-flow-tutorial.md
     - name: Externe transformaties
       items:
         - name: HDInsight Spark
@@ -143,28 +147,36 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integratie-runtime
       href: concepts-integration-runtime.md
-    - name: Toewijzing gegevensstromen
+    - name: Gegevensstromen
       items:
-        - name: Overzicht van toewijzingsgegevensstromen
-          href: concepts-data-flow-overview.md
-        - name: Foutopsporingsmodus
-          href: concepts-data-flow-debug-mode.md
-        - name: JSON-verwerking
-          href: concepts-data-flow-json.md
-        - name: Schema-afwijking
-          href: concepts-data-flow-schema-drift.md
-        - name: Kolompatronen
-          href: concepts-data-flow-column-pattern.md
-        - name: Bewaking gegevensstroom
-          href: concepts-data-flow-monitoring.md
-        - name: Gegevensstroomprestaties
-          href: concepts-data-flow-performance.md
-        - name: Knooppunten verplaatsen
-          href: concepts-data-flow-move-nodes.md
-        - name: Opbouwfunctie voor expressies
-          href: concepts-data-flow-expression-builder.md
-        - name: Expressietaal
-          href: data-flow-expression-functions.md
+        - name: Gegevens transformeren met toewijzingsgegevensstromen
+          items:
+            - name: Overzicht van toewijzingsgegevensstromen
+              href: concepts-data-flow-overview.md
+            - name: Foutopsporingsmodus
+              href: concepts-data-flow-debug-mode.md
+            - name: JSON-verwerking
+              href: concepts-data-flow-json.md
+            - name: Schema-afwijking
+              href: concepts-data-flow-schema-drift.md
+            - name: Kolompatronen
+              href: concepts-data-flow-column-pattern.md
+            - name: Bewaking gegevensstroom
+              href: concepts-data-flow-monitoring.md
+            - name: Gegevensstroomprestaties
+              href: concepts-data-flow-performance.md
+            - name: Knooppunten verplaatsen
+              href: concepts-data-flow-move-nodes.md
+            - name: Opbouwfunctie voor expressies
+              href: concepts-data-flow-expression-builder.md
+            - name: Expressietaal
+              href: data-flow-expression-functions.md
+        - name: Gegevens voorbereiden met wrangling-gegevensstromen
+          items:
+            - name: Overzicht van Wrangling-gegevensstromen
+              href: wrangling-data-flow-overview.md
+            - name: Ondersteunde functies
+              href: wrangling-data-flow-functions.md
     - name: Rollen en machtigingen
       href: concepts-roles-permissions.md
     - name: Inzicht krijgen in prijzen

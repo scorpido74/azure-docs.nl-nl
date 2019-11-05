@@ -49,6 +49,14 @@
       href: manage-consortium-powershell.md
     - name: Logic Apps gebruiken
       href: ethereum-logic-app.md
+- name: Blockchain Data Manager
+  items:
+    - name: Overzicht van Data Manager
+      href: data-manager.md
+    - name: Data Manager configureren - Portal
+      href: data-manager-portal.md
+    - name: Data Manager configureren - CLI
+      href: data-manager-cli.md
 - name: Resources
   items:
     - name: Blockchain-REST API

@@ -37,6 +37,14 @@
       href: security-center-using-recommendations.md
     - name: Beheer in meerdere tenants
       href: security-center-cross-tenant-management.md
+    - name: Beveiliging van de container
+      items:
+        - name: Overzicht van containerbeveiliging
+          href: container-security.md
+        - name: Integratie met Azure Container Registry
+          href: azure-container-registry-integration.md
+        - name: Integratie met Azure Kubernetes Service
+          href: azure-kubernetes-service-integration.md
     - name: Waarschuwingen voor dreigingsdetectie en incidenten
       items:
         - name: Overzicht van beveiligingswaarschuwingen
@@ -51,7 +59,7 @@
           href: security-center-alerts-compute.md
         - name: Detectie van bedreigingen voor dataservices
           href: security-center-alerts-data-services.md
-        - name: Detectie van bedreigingen voor Azure-servicelaag
+        - name: Detectie van bedreigingen voor Azure-servicelagen
           href: security-center-alerts-service-layer.md
         - name: Integratie met Azure Security-producten
           href: security-center-alerts-integration.md
@@ -67,33 +75,47 @@
       href: security-center-secure-score.md
     - name: Upgraden naar geavanceerde beveiliging
       href: security-center-onboarding.md
-    - name: Serverbescherming met Microsoft Defender ATP
+    - name: Uw servers beschermen met Microsoft Defender ATP
       href: security-center-wdatp.md
-    - name: Geavanceerde gegevensbeveiliging voor SQL in virtuele Azure-machines (openbare preview)
+    - name: Geavanceerde gegevensbeveiliging voor SQL in virtuele Azure-machines gebruiken
       href: security-center-iaas-advanced-data.md
     - name: App Service gebruiken om uw toepassingen te beveiligen
       href: security-center-app-services.md
-    - name: Werken met beveiligingsbeleid
-      href: tutorial-security-policy.md
+    - name: Beveiligingsbeleid gebruiken
+      items:
+        - name: Overzicht van beveiligingsbeleid
+          href: tutorial-security-policy.md
+        - name: Ingebouwd beveiligingsbeleid gebruiken
+          href: security-center-policy-definitions.md
+        - name: Aangepast beveiligingsbeleid maken
+          href: custom-security-policies.md
+        - name: Beleid beheren met de Azure Policy REST API
+          href: configure-security-policy-azure-policy.md
+    - name: Dynamische nalevingspakketten toevoegen
+      href: update-regulatory-compliance-packages.md
     - name: Het informatiebeschermingsbeleid aanpassen
       href: security-center-info-protection-policy.md
     - name: Beveiligingsoplossingen beheren
       href: security-center-partner-integration.md
     - name: Onboarding automatiseren met PowerShell
       href: security-center-powershell-onboarding.md
-    - name: Instellingen van Security Center
-      href: security-center-policies-overview.md
+    - name: Integreren met Windows Admin Center
+      href: windows-admin-center-integration.md
     - name: Basislijnen vergelijken met Bestandsintegriteit controleren
       href: security-center-file-integrity-monitoring-baselines.md
-    - name: Gegevensverzameling
+    - name: Reacties op waarschuwingen en aanbevelingen automatiseren
+      href: workflow-automation.md
+    - name: Meldingen en aanbevelingen exporteren
+      href: continuous-export.md
+    - name: Uw gegevensverzameling configureren
       href: security-center-enable-data-collection.md
-    - name: Ingebouwd beveiligingsbeleid
-      href: security-center-policy-definitions.md
-    - name: E-mailmeldingen
+    - name: Advanced beveiliging tegen bedreigingen instellen voor Azure Key Vault
+      href: advanced-threat-protection-key-vault.md
+    - name: E-mailmeldingen instellen
       href: security-center-provide-security-contact-details.md
     - name: Prijzen
       href: security-center-pricing.md
-    - name: Tenant-brede zichtbaarheid
+    - name: Zichtbaarheid in de hele tenant verkrijgen
       href: security-center-management-groups.md
     - name: Aanbevelingen voor beveiliging implementeren
       items:
@@ -160,7 +182,7 @@
     - name: Gebruikersgegevens beheren
       href: security-center-privacy.md
     - name: Documentatie voor Azure Security Center for IoT
-      href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
+      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
     - name: Veelgestelde vragen
       href: security-center-faq.md
     - name: Documentatie over beveiliging in Azure

@@ -61,6 +61,8 @@
       href: api-management-error-handling-policies.md
     - name: Importbeperkingen voor API's
       href: api-management-api-import-restrictions.md
+    - name: Overzicht van zelf-hostende gateway
+      href: self-hosted-gateway-overview.md
 - name: Handleidingen
   items:
     - name: API's definiëren
@@ -93,6 +95,16 @@
           href: api-management-howto-autoscale.md
         - name: Een aangepast domein configureren
           href: configure-custom-domain.md
+        - name: Implementeren naar meerdere Azure-regio's
+          href: api-management-howto-deploy-multi-region.md
+        - name: Een zelf-hostende gateway inrichten
+          href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Een zelf-hostende gateway implementeren op Kubernetes
+          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+        - name: Een zelf-hostende gateway implementeren op Docker
+          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+        - name: Aangepast domein configureren voor zelf-hostende gateway
+          href: api-management-howto-configure-custom-domain-gateway.md
     - name: Cache
       items:
         - name: Cache toevoegen voor betere prestaties
@@ -195,8 +207,6 @@
       items:
         - name: Groepen beheren
           href: api-management-howto-create-groups.md
-        - name: Implementeren naar meerdere Azure-regio's
-          href: api-management-howto-deploy-multi-region.md
         - name: IP-adressen ophalen
           href: api-management-howto-ip-addresses.md
         - name: Gebeurtenissen registreren bij Azure Event Hubs

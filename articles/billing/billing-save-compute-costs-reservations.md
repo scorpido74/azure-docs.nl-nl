@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390165"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499243"
 ---
 # <a name="what-are-azure-reservations"></a>Wat zijn Azure-reserveringen?
 
@@ -125,7 +125,7 @@ Reserveringskorting is alleen van toepassing op resources die zijn gekoppeld met
 
 ## <a name="when-the-reservation-term-expires"></a>Wanneer de reserveringstermijn verloopt
 
-Aan het einde van de reserveringstermijn vervalt de factureringskorting. Voor de virtuele machine, SQL Database, Azure Cosmos DB of andere resource wordt de prijs voor betalen per gebruik in rekening gebracht. Azure-reserveringen worden niet automatisch verlengd. Als u wilt blijven profiteren van de factureringskorting moet u een nieuwe reservering kopen voor services en software die daarvoor in aanmerking komen.
+Aan het einde van de reserveringtermijn verloopt de factureringskorting en worden kosten voor resources in rekening gebracht op basis van gebruik. De standaardinstelling is dat reserveringen niet automatisch worden verlengd. U kunt ervoor kiezen om een reservering automatisch te verlengen door de optie te selecteren in de verlengingsinstellingen. Met automatische verlenging wordt een vervangingsreservering aangeschaft wanneer de bestaande reservering verloopt. De vervangende reservering heeft standaard dezelfde kenmerken als de verlopende reservering. Het is mogelijk om de factureringsfrequentie, -termijn of -kwantiteit in de verlengingsinstellingen aan te passen. Gebruikers met eigenaarstoegang tot de reservering en het abonnement dat wordt gebruikt voor facturering kunnen verlenging instellen.  
 
 ## <a name="discount-applies-to-different-sizes"></a>De korting is van toepassing op verschillende grootten
 

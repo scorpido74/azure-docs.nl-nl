@@ -30,6 +30,8 @@
   items:
     - name: Privé verbinding maken met een opslagaccount
       href: create-private-endpoint-storage-portal.md
+    - name: Privé verbinding maken met een Cosmos DB-account
+      href: create-private-endpoint-cosmosdb-portal.md
     - name: Netwerkbeleid uitschakelen voor een privé-eindpunt
       href: disable-private-endpoint-network-policy.md
     - name: Netwerkbeleid uitschakelen voor een Private Link-service

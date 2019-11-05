@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "60530866"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488420"
 ---
 # <a name="app-service-documentation"></a>Documentatie over App Service
 Met Azure App Service kunt u webtoepassingen maken en hosten in een programmeertaal naar keuze zonder dat u de infrastructuur, taal of runtime van het webframework hoeft te beheren. Het biedt automatisch schalen en een hoge beschikbaarheid, ondersteuning voor zowel Windows als Linux en maakt automatische implementaties mogelijk vanuit GitHub, Azure DevOps Services of een willekeurige Git-repo. Ontdek met onze snelstarts, zelfstudies en voorbeelden hoe u Azure App Service gebruikt.
@@ -42,7 +42,7 @@ Ontdek hoe u in Azure beveiligde web-apps implementeert, beheert en bewaakt.
   - [Java met MySQL](/app-service/app-service-web-tutorial-java-mysql)
   - [Python met PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [Een bestaand aangepast domein toewijzen aan uw toepassing](/azure/app-service/app-service-web-tutorial-custom-domain)
-- [Een bestaand SSL-certificaat binden aan uw toepassing](/azure/app-service/app-service-web-tutorial-custom-SSL)
+- [Een SSL-certificaat binden aan uw toepassing](/azure/app-service/configure-ssl-bindings)
 
 ## <a name="free-pluralsight-video-training"></a>Gratis Pluralsight-videotraining
 

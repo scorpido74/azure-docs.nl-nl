@@ -6,6 +6,9 @@
     - name: Wat is Azure Machine Learning?
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
+    - name: Azure Machine Learning versus Studio
+      displayName: 'AML, Studio, designer'
+      href: ../compare-azure-ml-to-studio-classic.md
     - name: Architectuur en voorwaarden
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
@@ -32,15 +35,22 @@
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
         - name: Machine Learning-pijplijnen (geavanceerd)
-          href: tutorial-pipeline-batch-scoring-classification.md
-    - name: Visuele interface
+          items:
+            - name: Een classificatiemodel batchgewijs scoren
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: Uw eerste Machine Learning-experiment maken (R)
+          href: tutorial-1st-r-experiment.md
+    - name: Designer
       items:
         - name: 1. Regressiemodel trainen
           displayName: studio
-          href: ui-tutorial-automobile-price-train-score.md
+          href: tutorial-designer-automobile-price-train-score.md
         - name: 2. Regressiemodel implementeren
           displayName: studio
-          href: ui-tutorial-automobile-price-deploy.md
+          href: tutorial-designer-automobile-price-deploy.md
     - name: Automatische ML (interface)
       displayName: 'automl, automated, auto ml, portal, ui'
       href: tutorial-first-experiment-automated-ml.md
@@ -57,42 +67,51 @@
   items:
     - name: Werkruimte
       href: concept-workspace.md
-    - name: Rekendoel
-      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
-      href: concept-compute-target.md
     - name: Modeltraining
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
-    - name: Visuele interface
-      displayName: studio
-      href: ui-concept-visual-interface.md
-    - name: Geautomatiseerde Machine Learning
-      displayName: 'automl, auto ml'
-      href: concept-automated-ml.md
     - name: Modelbeheer (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
+    - name: Interpreteerbaarheid
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 'Designer: Machine Learning zonder codering'
+      displayName: studio
+      href: concept-designer.md
+    - name: Overzichtskaart algoritmen
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: Geautomatiseerde Machine Learning
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: Rekenproces
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: Rekendoel
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
     - name: Machine learning-pijplijnen
       href: concept-ml-pipelines.md
-    - name: Interpreteerbaarheid van modellen
-      displayName: explainability
-      href: machine-learning-interpretability-explainability.md
     - name: ONNX
       href: concept-onnx.md
-    - name: Beveiliging
+    - name: Gereedheid en beveiliging voor bedrijven
       items:
-        - name: Overzicht van Enterprise-beveiliging
-          displayName: authorization authentication encryption aad azure active directory
-          href: concept-enterprise-security.md
-        - name: Gebruikers en rollen beheren
-          href: how-to-assign-roles.md
-        - name: Virtuele netwerken gebruiken
-          displayName: vnet
-          href: how-to-enable-virtual-network.md
-        - name: Webservices beveiligen met SSL
-          href: how-to-secure-web-service.md
-        - name: Opslagtoegangssleutels opnieuw genereren
-          href: how-to-change-storage-access-key.md
+        - name: Beveiliging voor bedrijven
+          items:
+            - name: Overzicht van Enterprise-beveiliging
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: Gebruikers en rollen beheren
+              href: how-to-assign-roles.md
+            - name: Virtuele netwerken gebruiken
+              displayName: vnet
+              href: how-to-enable-virtual-network.md
+            - name: Webservices beveiligen met SSL
+              href: how-to-secure-web-service.md
+            - name: Opslagtoegangssleutels opnieuw genereren
+              href: how-to-change-storage-access-key.md
+        - name: Azure Machine Learning bewaken
+          href: monitor-azure-machine-learning.md
     - name: Deep learning
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
@@ -138,32 +157,38 @@
         - name: Trainen met gegevenssets
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: Drift op gegevenssets detecteren
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
         - name: Versiebeheer van gegevenssets en gegevenssets bijhouden
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
     - name: Modellen trainen
       items:
-        - name: Visuele interface gebruiken
-          displayName: sample visual interface experiments
+        - name: De ontwerper gebruiken
+          displayName: sample designer experiments
           items:
             - name: Prijs voorspellen
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+              href: how-to-designer-sample-regression-automobile-price-basic.md
             - name: Prijs voorspellen (geavanceerd)
               displayName: 'regression, studio'
-              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
-            - name: Kredietrisico voorspellen
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: Inkomen voorspellen
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+              href: how-to-designer-sample-classification-predict-income.md
             - name: Kredietrisico voorspellen (geavanceerd)
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
             - name: Verloop voorspellen
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-churn.md
+              href: how-to-designer-sample-classification-churn.md
             - name: Vluchtvertragingen voorspellen
               displayName: 'classification, studio'
-              href: how-to-ui-sample-classification-predict-flight-delay.md
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: Testclassificatie
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
         - name: Schattingen gebruiken voor ML
           items:
             - name: Schattingen maken tijdens training
@@ -187,6 +212,15 @@
           href: how-to-train-pytorch.md
         - name: Chainer
           href: how-to-train-chainer.md
+    - name: Modellen interpreteren
+      displayName: interpretability
+      items:
+        - name: Lokale en externe modellen interpreteren
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: Geautomatiseerde machine learning-modellen interpreteren
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
     - name: Machine learning automatiseren
       displayName: 'automl, auto ml'
       items:
@@ -236,7 +270,7 @@
         - name: Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Notebook-VM's
+        - name: Rekenprocessen
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Aangepaste Docker-afbeelding gebruiken
           href: how-to-deploy-custom-docker-image.md
@@ -253,6 +287,9 @@
         - name: Batch-voorspellingen uitvoeren
           displayName: score scoring asynchronous consume pipeline
           href: how-to-run-batch-predictions.md
+        - name: De ontwerper gebruiken voor batchvoorspellingen
+          displayName: score scoring asynchronous consume pipeline
+          href: how-to-run-batch-predictions-ui.md
     - name: Modellen bewaken
       items:
         - name: Modelgegevens verzamelen en evalueren
@@ -262,18 +299,18 @@
           href: how-to-monitor-data-drift.md
         - name: Controleren met behulp van Application Insights
           href: how-to-enable-app-insights.md
-    - name: Herbruikbare werkstromen maken
+    - name: Machine Learning-pijplijnen maken en gebruiken
       displayName: pipelines
       items:
-        - name: ML-pijplijnen maken in Python
+        - name: Machine Learning-pijplijnen maken (Python)
           href: how-to-create-your-first-pipeline.md
-        - name: Fouten met ML-pijplijnen opsporen en oplossen
+        - name: Een pijplijn plannen (Python)
+          href: how-to-schedule-pipelines.md
+        - name: Problemen met pijplijnen opsporen en oplossen
           href: how-to-debug-pipelines.md
         - name: Azure-pijplijnen voor CI/CD
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: ML-pijplijnen plannen in Python
-          href: how-to-schedule-pipelines.md
     - name: Resourcequota beheren
       displayName: limits
       href: how-to-manage-quotas.md
@@ -282,15 +319,20 @@
       href: how-to-export-delete-data.md
 - name: Naslaginformatie
   items:
-    - name: Machine learning-SDK
+    - name: ML SDK (Python)
       displayName: 'api, core, package, python, class'
       href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: ML SDK (R)
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
     - name: Machine learning-CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: Gegevens bewaken - referentie
+      href: monitor-resource-reference.md
     - name: YAML-verwijzing voor machine learning-pijplijn
       href: reference-pipeline-yaml.md
-    - name: Visuele-interfacemodules
+    - name: Designer-modules
       displayName: 'module, reference, algorithm, studio'
       items:
         - name: Overzicht moduleverwijzingen
@@ -299,18 +341,14 @@
           items:
             - name: Converteren naar CSV
               href: ../algorithm-module-reference/convert-to-csv.md
+            - name: Converteren naar gegevensset
+              href: ../algorithm-module-reference/convert-to-dataset.md
         - name: Gegevensinvoer & -uitvoer
           items:
             - name: Gegevens importeren
               items:
                 - name: Gegevens importeren
                   href: ../algorithm-module-reference/import-data.md
-                - name: Importeren vanuit een web-URL via HTTP
-                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
-                - name: Importeren vanuit een Azure Blob-opslagmodule
-                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
-                - name: Importeren vanuit een Azure SQL Database
-                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: Gegevens exporteren
               href: ../algorithm-module-reference/export-data.md
             - name: Gegevens handmatig invoeren
@@ -319,12 +357,18 @@
           items:
             - name: Kolommen in gegevensset selecteren
               href: ../algorithm-module-reference/select-columns-in-dataset.md
+            - name: Kolomtransformatie selecteren
+              href: ../algorithm-module-reference/select-columns-transform.md
             - name: Metagegevens bewerken
               href: ../algorithm-module-reference/edit-metadata.md
             - name: Ontbrekende gegevens opschonen
               href: ../algorithm-module-reference/clean-missing-data.md
             - name: Functie-hashing
               href: ../algorithm-module-reference/feature-hashing.md
+            - name: Belang van permutatiefunctie
+              href: ../algorithm-module-reference/permutation-feature-importance.md
+            - name: Functieselectie op basis van filters
+              href: ../algorithm-module-reference/filter-based-feature-selection.md
             - name: N-Gram-functies uit tekst halen
               href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: Kolommen toevoegen
@@ -341,6 +385,8 @@
               href: ../algorithm-module-reference/split-data.md
             - name: Gegevens normaliseren
               href: ../algorithm-module-reference/normalize-data.md
+            - name: SMOTE
+              href: ../algorithm-module-reference/smote.md
             - name: Partitie en voorbeeld
               href: ../algorithm-module-reference/partition-and-sample.md
             - name: Waarden inperken
@@ -351,14 +397,24 @@
           items:
             - name: Score Model
               href: ../algorithm-module-reference/score-model.md
+            - name: Aanbevelingsfunctie voor SVD-score
+              href: ../algorithm-module-reference/score-svd-recommender.md
             - name: Gegevens aan cluster toewijzen
               href: ../algorithm-module-reference/assign-data-to-clusters.md
             - name: Model trainen
               href: ../algorithm-module-reference/train-model.md
             - name: Clustermodel trainen
               href: ../algorithm-module-reference/train-clustering-model.md
+            - name: Aanbevelingsfunctie van SVD-training
+              href: ../algorithm-module-reference/train-svd-recommender.md
+            - name: Model Hyperparameters afstemmen
+              href: ../algorithm-module-reference/tune-model-hyperparameters.md
+            - name: Kruisvalidatie van model valideren
+              href: ../algorithm-module-reference/cross-validate-model.md
             - name: Model evalueren
               href: ../algorithm-module-reference/evaluate-model.md
+            - name: Aanbevelingsfunctie voor evaluatie
+              href: ../algorithm-module-reference/evaluate-recommender.md
             - name: Transformatie toepassen
               href: ../algorithm-module-reference/apply-transformation.md
             - name: Lineaire regressie
@@ -381,6 +437,8 @@
               href: ../algorithm-module-reference/multiclass-decision-forest.md
             - name: Versterkte beslissingsstructuur met meerdere klassen
               href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
+            - name: Eén versus alle multiklassen
+              href: ../algorithm-module-reference/one-vs-all-multiclass.md
             - name: Gemiddeld perceptron met twee klassen
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: Beslissingsforest met twee klassen

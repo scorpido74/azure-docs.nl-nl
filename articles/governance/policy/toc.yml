@@ -28,6 +28,9 @@
     - name: Een aangepaste beleidsdefinitie maken
       displayName: 'disabled, parameters, rule, mode'
       href: ./tutorials/create-custom-policy-definition.md
+    - name: Tag governance beheren
+      displayName: 'modify, append, effects'
+      href: ./tutorials/govern-tags.md
     - name: Praktijklab - Azure-beleid verkennen
       displayName: 'create, policy, training, learn'
       href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
@@ -263,14 +266,25 @@
     - name: De impact van een nieuw beleid evalueren
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Beleid ontwerpen als codewerkstromen
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./concepts/policy-as-code.md
     - name: Azure Policy voor Kubernetes
-      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
-      href: ./concepts/rego-for-aks.md
+      items:
+        - name: Beleid voor AKS
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          href: ./concepts/rego-for-aks.md
+        - name: Beleid voor AKS-engine
+          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
+          href: ./concepts/aks-engine.md
     - name: Virtuele machines met gastconfiguratie controleren
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
 - name: Handleidingen
   items:
+    - name: Azure Policy-extensie voor VSCode
+      displayName: visual studio code
+      href: ./how-to/extension-for-vscode.md
     - name: Programmatisch beleid maken
       displayName: 'assign, definition'
       href: ./how-to/programmatically-create.md

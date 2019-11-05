@@ -147,6 +147,10 @@
       href: limits.md
     - name: Problemen oplossen
       href: troubleshooting.md
+    - name: Bestandsindelingen
+      items:
+        - name: TSV batchgewijs testen
+          href: reference-tsv-format-batch-testing.md
     - name: Naslaginformatie over REST-API
       items:
         - name: API's ontwerpen

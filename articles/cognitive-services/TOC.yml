@@ -3,12 +3,14 @@
 - name: Overzicht
   expanded: true
   items:
-    - name: Wat zijn cognitieve services?
+    - name: Wat is Cognitive Services?
       href: Welcome.md
-    - name: Aangepaste subdomeinen voor Cognitive Services
-      href: cognitive-services-custom-subdomains.md
     - name: Cognitive Services en machine learning
       href: cognitive-services-and-machine-learning.md
+    - name: Virtuele netwerken voor Cognitive Services
+      href: cognitive-services-virtual-networks.md
+    - name: Aangepaste subdomeinen voor Cognitive Services
+      href: cognitive-services-custom-subdomains.md
     - name: Taalondersteuning
       href: language-support.md
 - name: Ondersteuning voor containers

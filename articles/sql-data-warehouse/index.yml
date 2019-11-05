@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure SQL Data Warehouse
-summary: Informatie over hoe u Azure SQL Data Warehouse gebruikt, een service waarin relationele SQL-databases worden gecombineerd met MPP (Massively Parallel Processing). In zelfstudies en andere documentatie leert u hoe u gegevens ontwerpt, laadt, beheert en analyseert met behulp van een datawarehouse.
+title: Azure Synapse Analytics (voorheen Azure SQL Data Warehouse)
+summary: Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources.
 metadata:
-  title: Azure SQL Data Warehouse
-  description: description
+  title: Azure Synapse Analytics
+  description: Azure Synapse is een oneindige analyseservice die bedrijfsgegevensopslag en big data-analyses combineert. Deze geeft u de vrijheid om op schaal gegevens op te vragen over uw voorwaarden, met behulp van serverloze on-demand of ingerichte resources.
   services: sql-data-warehouse
   ms.service: sql-data-warehouse
   ms.subservice: design
@@ -12,38 +12,38 @@ metadata:
   author: julieMSFT
   ms.author: jrasnick
   ms.date: 10/03/2019
-  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
-  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.openlocfilehash: 2ad2e5b4d17c4642b42efd51de2b91308f49a101
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/10/2019
-  ms.locfileid: "72245844"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492220"
 landingContent:
-- title: Over SQL Data Warehouse
+- title: Info over Azure Synapse Analytics
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is SQL Data Warehouse?
+    - text: Wat is Azure Synapse?
       url: sql-data-warehouse-overview-what-is.md
   - linkListType: architecture
     links:
-    - text: 'SQL Data Warehouse: MPP-architectuur'
+    - text: Azure Synapse-architectuur
       url: massively-parallel-processing-mpp-architecture.md
-    - text: Tips en best practices voor uw datawarehouse
+    - text: Tips en best practices
       url: cheat-sheet.md
 - title: Aan de slag
   linkLists:
   - linkListType: deploy
     links:
-    - text: Een SQL Data Warehouse maken
+    - text: Een SQL-pool (datawarehouse) maken
       url: create-data-warehouse-portal.md
 - title: Gegevens laden
   linkLists:
   - linkListType: concept
     links:
-    - text: Een strategie ontwerpen voor laden van gegevens met PolyBase
+    - text: Een strategie ontwerpen voor laden van gegevens
       url: design-elt-data-loading.md
-    - text: Best practices voor laden van gegevens
+    - text: Aanbevolen procedures
       url: guidance-for-loading-data.md
   - linkListType: how-to-guide
     links:
@@ -57,7 +57,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Best practices voor SQL Data Warehouse
+    - text: Aanbevolen procedures
       url: sql-data-warehouse-best-practices.md
     - text: Afstemmen van geordende en geclusterde columnstore-index
       url: performance-tuning-ordered-cci.md
@@ -67,11 +67,11 @@ landingContent:
     links:
     - text: Uw workload analyseren
       url: analyze-your-workload.md
-- title: Uw SQL-datawarehouse beheren en bewaken
+- title: Beheren en bewaken
   linkLists:
   - linkListType: overview
     links:
-    - text: Informatie over het beheren en bewaken van uw SQL-datawarehouse
+    - text: Meer informatie over het beheren en bewaken van uw datawarehouse
       url: sql-data-warehouse-overview-manageability-monitoring.md
   - linkListType: how-to-guide
     links:
@@ -79,11 +79,11 @@ landingContent:
       url: sql-data-warehouse-manage-monitor.md
     - text: Het belang van workload beheren en bewaken
       url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
-- title: Uw SQL Data Warehouse beveiligen
+- title: Uw datawarehouse beveiligen
   linkLists:
   - linkListType: overview
     links:
-    - text: Basisbeginselen van het beveiligen van uw SQL-datawarehouse
+    - text: Basisbeginselen van het beveiligen van uw datawarehouse
       url: sql-data-warehouse-overview-manage-security.md
   - linkListType: how-to-guide
     links:
@@ -93,5 +93,5 @@ landingContent:
   linkLists:
   - linkListType: video
     links:
-    - text: Bekijk de nieuwste video's over Azure SQL Data Warehouse
+    - text: Bekijk de nieuwste video's over datawarehouses
       url: sql-data-warehouse-videos.md

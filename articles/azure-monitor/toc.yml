@@ -781,20 +781,32 @@
                   href: insights/container-insights-enable-new-cluster.md
                 - name: Inschakelen voor bestaand cluster
                   href: insights/container-insights-enable-existing-clusters.md
+                - name: Inschakelen voor een hybride cluster
+                  href: insights/container-insights-hybrid-setup.md
                 - name: Regiotoewijzingen
                   href: insights/container-insights-region-mapping.md
             - name: Analyseren
               href: insights/container-insights-analyze.md
             - name: Bewaking uitschakelen
               href: insights/container-insights-optout.md
-            - name: Live logboeken weergeven
-              href: insights/container-insights-live-logs.md
+            - name: Livegegevens weergeven
+              items:
+                - name: Overzicht van livegegevens (preview)
+                  href: insights/container-insights-livedata-overview.md
+                - name: Instellen
+                  href: insights/container-insights-livedata-setup.md
+                - name: Metrische gegevens van clusters weergeven
+                  href: insights/container-insights-livedata-metrics.md
+                - name: Implementaties weergeven
+                  href: insights/container-insights-livedata-deployments.md
             - name: Gegevens analyseren met logboekquery's
               href: insights/container-insights-log-search.md
             - name: Waarschuwingen
               href: insights/container-insights-alerts.md
             - name: Agents beheren
               href: insights/container-insights-manage-agent.md
+            - name: Scraping van metrische gegevens instellen voor Prometheus
+              href: insights/container-insights-prometheus-integration.md
             - name: Instellingen voor verzamelen door agent configureren
               href: insights/container-insights-agent-config.md
             - name: Een update uitvoeren om metrische gegevens in te schakelen

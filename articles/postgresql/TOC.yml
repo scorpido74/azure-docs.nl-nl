@@ -92,6 +92,8 @@
               href: concepts-data-access-and-security-vnet.md
             - name: Connectiviteitsarchitectuur
               href: concepts-connectivity-architecture.md
+            - name: Azure Active Directory-verificatie
+              href: concepts-aad-authentication.md
         - name: Bedrijfscontinuïteit
           items:
             - name: Inleiding tot bedrijfscontinuïteit
@@ -153,8 +155,14 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: SSL configureren
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Controleren en afstemmen
+          items:
+            - name: Controleren en afstemmen
+              href: concepts-hyperscale-monitoring.md
         - name: PostgreSQL-extensies
           href: concepts-hyperscale-extensions.md
+        - name: Hoge beschikbaarheid
+          href: concepts-hyperscale-high-availability.md
         - name: Resources
           items:
             - name: Configuratie-opties
@@ -163,8 +171,12 @@
   items:
     - name: Enkele server
       items:
-        - name: Gebruikers maken
-          href: howto-create-users.md
+        - name: Verificatie
+          items:
+            - name: Gebruikers maken
+              href: howto-create-users.md
+            - name: Azure AD-integratie configureren
+              href: howto-configure-sign-in-aad-authentication.md
         - name: Optimaliseren
           items:
             - name: Bulksgewijs invoegen
@@ -245,12 +257,20 @@
               href: howto-read-replicas-cli.md
     - name: Hyperscale (Citus)
       items:
+        - name: Gebruikers maken
+          href: howto-hyperscale-create-users.md
         - name: Schalen
           href: howto-hyperscale-scaling.md
         - name: Firewall beheren
           items:
             - name: Azure Portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Hoge beschikbaarheid
+          href: howto-hyperscale-high-availability.md
+        - name: Controleren
+          items:
+            - name: Waarschuwingen maken op basis van metrische gegevens
+              href: howto-hyperscale-alert-on-metric.md
         - name: Problemen oplossen
           items:
             - name: Verbindingsfouten oplossen

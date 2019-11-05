@@ -102,6 +102,8 @@
       href: supported-kubernetes-versions.md
     - name: Beveiligingsverbetering in hostbesturingssysteem
       href: security-hardened-vm-host-image.md
+    - name: Overzicht van de diagnostische gegevens van de Azure Kubernetes Service
+      href: concepts-diagnostics.md
 - name: Handleidingen
   items:
     - name: Clusterbewerkingen
@@ -128,11 +130,11 @@
               href: virtual-nodes-portal.md
         - name: Virtual Kubelet gebruiken
           href: virtual-kubelet.md
-        - name: Cluster Autoscaler (preview) gebruiken
+        - name: Cluster Autoscaler gebruiken
           href: cluster-autoscaler.md
-        - name: Beschikbaarheidszones (preview) gebruiken
+        - name: Beschikbaarheidszones gebruiken
           href: availability-zones.md
-        - name: Meerdere knooppuntpools (preview) gebruiken
+        - name: Meerdere knooppuntgroepen gebruiken
           href: use-multiple-node-pools.md
         - name: AKS met Terraform implementeren
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
@@ -199,7 +201,7 @@
           href: use-network-policies.md
         - name: Pod-beveiligingsbeleid (preview) gebruiken
           href: use-pod-security-policies.md
-        - name: Gemachtigde IP-bereiken voor de API-server definiëren (preview)
+        - name: Gemachtigde IP-bereiken voor de API-server definiëren
           href: api-server-authorized-ip-ranges.md
         - name: Implementaties beheren met Azure Policy (preview)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
@@ -225,8 +227,8 @@
           href: view-master-logs.md
         - name: Kubelet-logboeken weergeven
           href: kubelet-logs.md
-        - name: Containerlogboeken in realtime weergeven (preview)
-          href: ../azure-monitor/insights/container-insights-live-logs.md
+        - name: Container gegevens in realtime weergeven
+          href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
     - name: Windows Server-containers gebruiken (preview)
       items:
