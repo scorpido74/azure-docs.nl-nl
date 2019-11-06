@@ -469,9 +469,6 @@
           href: change-feed-functions.md
     - name: Wereldwijd gedistribueerde analyses en AI
       items:
-        - name: Inleiding
-          displayName: 'Apache Spark, spark'
-          href: spark-api-introduction.md
         - name: Gebruikscases voor analyses
           href: analytics-usecases.md
         - name: Analyse - oplossingsarchitecturen
