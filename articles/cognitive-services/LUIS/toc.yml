@@ -42,7 +42,7 @@
     - name: App maken
       items:
         - name: Gebruikersintenties bepalen
-          href: luis-quickstart-intents-only.md
+          href: tutorial-intents-only.md
         - name: Veel voorkomende gebruikersgegevens identificeren met vooraf gemaakte modellen
           href: luis-tutorial-prebuilt-intents-entities.md
         - name: Sentiment van uitingen van gebruiker ophalen
@@ -116,6 +116,7 @@
           displayName: roles
         - name: Functies
           href: luis-concept-feature.md
+          displayName: 'descriptor, phrase list'
     - name: Voorspellingsscore
       href: luis-concept-prediction-score.md
     - name: Aanbevolen procedures

@@ -59,6 +59,8 @@
       items:
         - name: Een MXChip IoT DevKit voorbereiden en aansluiten
           href: ../iot-central/core/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Een RuuviTag-apparaat voorbereiden en verbinden
+          href: ../iot-central/core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Een Rigado Cascade 500 voorbereiden en verbinden
           href: ../iot-central/core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Blijf verbonden
@@ -69,6 +71,8 @@
           href: ../iot-central/core/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Uw apparaten beheren
           href: ../iot-central/core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Uw apparaatgegevens analyseren
+          href: ../iot-central/core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Tegels toevoegen aan uw dashboard
           href: ../iot-central/core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Persoonlijke Azure IoT Central-dashboards maken
@@ -77,10 +81,6 @@
           href: ../iot-central/core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Versie van de sjabloon van het apparaat
           href: ../iot-central/core/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Bewaking en analytische gegevens
-      items:
-        - name: Uw apparaatgegevens analyseren
-          href: ../iot-central/core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Transformeren
       items:
         - name: Continue gegevensexport configureren
@@ -90,9 +90,9 @@
         - name: Azure Monitor-actiegroepen verbinden met regels
           href: ../iot-central/core/howto-use-action-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Aangepaste regels maken
-          href: ../iot-central/core/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+          href: ../iot-central/core/howto-create-custom-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Aangepaste analyses maken met Databricks
-          href: ../iot-central/core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+          href: ../iot-central/core/howto-create-custom-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Beheer
       items:
         - name: Uw toepassing beheren

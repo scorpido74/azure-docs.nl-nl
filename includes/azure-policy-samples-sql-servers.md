@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: c8453a2ec00a2fca107f85a23a8af1e6313a70b6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: dabadf3a4175947f09ba20b0e644f1d2b485ee38
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176196"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590612"
 ---
 ### <a name="sql-servers"></a>SQL-servers
 
@@ -23,4 +23,3 @@ ms.locfileid: "67176196"
 | [Instelling dreigingsdetectieniveau server controleren](../articles/governance/policy/samples/audit-sql-server-threat-detection-setting.md) | Controleert of het beveiligingsmeldingenbeleid van SQL-databases is ingesteld op de specifieke status. U geeft een waarde op die aangeeft of de detectie van dreigingen is ingeschakeld of uitgeschakeld.  |
 | [Auditinstellingen SQL Server controleren](../articles/governance/policy/samples/sql-server-audit.md) | Controleert SQL Server op basis van of de auditinstellingen zijn ingeschakeld. |
 | [Auditinstellingsniveau SQL Server controleren](../articles/governance/policy/samples/audit-sql-server-audit-setting.md) | Controleert of het auditinstellingsniveau van de SQL Server overeenkomt met een opgegeven waarde. U geeft een waarde op die aangeeft of de auditinstellingen moeten worden ingeschakeld of uitgeschakeld. |
-| [SQL Server-versie 12.0 vereisen](../articles/governance/policy/samples/require-sql-12.md) | Vereist dat SQL Server-versie 12.0 wordt gebruikt.  |

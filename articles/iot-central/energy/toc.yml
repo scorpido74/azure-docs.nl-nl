@@ -16,8 +16,6 @@
       href: concept-iot-central-smart-meter-app.md
     - name: Architectuur voor een app voor zonnepanelen
       href: concept-iot-central-solar-panel-app.md
-    - name: Connectiviteit
-      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Wat zijn toepassingssjablonen?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
 - name: Handleidingen
@@ -49,9 +47,9 @@
         - name: Continue gegevensexport configureren
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Aangepaste regels maken
-          href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
+          href: ../core/howto-create-custom-rules-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
         - name: Aangepaste analyses maken met Databricks
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
+          href: ../core/howto-create-custom-analytics-pnp.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Beheer
       items:
         - name: Toepassingsinstellingen wijzigen

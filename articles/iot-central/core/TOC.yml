@@ -49,8 +49,6 @@
           href: howto-connect-windowsiotcore.md
         - name: Een SensorTile.box-apparaat voorbereiden en verbinden
           href: howto-connect-sensortile.md
-        - name: Een RuuviTag-apparaat voorbereiden en verbinden
-          href: howto-connect-ruuvi-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Apparaatconnectiviteit controleren met opdrachtregels
           href: howto-use-iotc-explorer.md
     - name: Apparaten beheren

@@ -9,7 +9,7 @@
     - name: Een Internet Analyzer-test maken met behulp van Azure Portal
       href: internet-analyzer-create-test-portal.md
     - name: Een Internet Analyzer-test maken met behulp van CLI
-      herf: internet-analyzer-cli.md
+      href: internet-analyzer-cli.md
 - name: Handleidingen
   items:
     - name: Client insluiten
