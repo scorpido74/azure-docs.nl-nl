@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory vergelijken met Data Factory-versie 1 | Microsoft Docs
+title: Azure Data Factory vergelijken met Data Factory-versie 1
 description: In dit artikel wordt Azure Data Factory vergeleken met Azure Data Factory-versie 1.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 4cdb517e644d55504bfdafbd3bacdfd4bfa0b36c
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: cab4f156aa1fb2fa4d3b122377be1b28337f15a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479307"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681594"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory vergelijken met Data Factory-versie 1
 In dit artikel wordt Data Factory vergeleken met Data Factory-versie 1. Zie [Inleiding tot Data Factory](introduction.md) voor een inleiding tot Data Factory. Zie [Inleiding tot Azure Data Factory](v1/data-factory-introduction.md) voor een inleiding tot Data Factory-versie 1. 
@@ -34,7 +34,7 @@ In de volgende tabel worden de functies van Data Factory vergeleken met de funct
 | Parameters | N.v.t. | Parameters zijn sleutel-waardeparen van alleen-lezen-configuratie-instellingen die in pijplijnen worden gedefinieerd. U kunt argumenten voor de parameters doorgeven als u de pijplijn handmatig uitvoert. Als u een scheduler-trigger gebruikt, kan de trigger ook waarden voor de parameters doorgeven. Activiteiten binnen de pijplijn gebruiken de parameterwaarden.  |
 | Expressies | In Data Factory V1 kunt u functies en systeemvariabelen gebruiken in gegevensselectiequery's en activiteits-/gegevensseteigenschappen. | In de huidige versie van Data Factory kunt u overal in een JSON-tekenreekswaarde gebruikmaken van expressies. Zie [Expressies en functies in de huidige versie van Data Factory](control-flow-expression-language-functions.md) voor meer informatie.|
 | Pijplijnuitvoeringen | N.v.t. | Eén instantie van een uitvoeringsbewerking van een pijplijn. Stel dat u een pijplijn hebt die wordt uitgevoerd om 8 uur, 9 uur en 10 uur. In dit geval wordt de pijplijn drie keer afzonderlijk uitgevoerd (pijplijnuitvoeringen). Elke pijplijnuitvoering heeft een unieke id. De id is een unieke GUID die de betreffende specifieke pijplijnuitvoering definieert. Pijplijnuitvoeringen worden doorgaans geïnstantieerd doordat argumenten worden doorgegeven aan parameters die zijn gedefinieerd in de pijplijnen. |
-| Uitvoeringen van activiteit | N.v.t. | Een instantie van een uitvoerbewerking van een activiteit binnen een pijplijn. | 
+| Uitvoering van activiteiten | N.v.t. | Een instantie van een uitvoerbewerking van een activiteit binnen een pijplijn. | 
 | Triggeruitvoeringen | N.v.t. | Een instantie van een uitvoerbewerking van een trigger. Zie [Triggers](concepts-pipeline-execution-triggers.md) voor meer informatie. |
 | Planning | Planning is gebaseerd op de begin-/eindtijd van een pijplijn en de beschikbaarheid van gegevenssets. | Scheduler-trigger of uitvoering via externe planner. Zie [Pijplijnen uitvoeren en triggers](concepts-pipeline-execution-triggers.md) voor meer informatie. |
 
@@ -67,12 +67,12 @@ Pijplijnen kunnen op aanvraag (op basis van een gebeurtenis, ofwel blob-bericht)
 De [activiteit Execute Pipeline](control-flow-execute-pipeline-activity.md) stelt een Data Factory-pijplijn in staat om een andere pijplijn aan te roepen.
 
 ### <a name="delta-flows"></a>Deltastromen
-Een belangrijke use case in ETL-patronen zijn 'deltaladingen', waarin alleen gegevens worden geladen die zijn gewijzigd sinds de laatste iteratie van een pijplijn. Nieuwe mogelijkheden in de huidige versie, zoals de [activiteit lookup](control-flow-lookup-activity.md), flexibele planning en controlestroom maken deze use case op een natuurlijke manier mogelijk. Voor een zelf studie met stapsgewijze instructies raadpleegt [u zelf studie: Incrementele kopie](tutorial-incremental-copy-powershell.md).
+Een belangrijke use case in ETL-patronen zijn 'deltaladingen', waarin alleen gegevens worden geladen die zijn gewijzigd sinds de laatste iteratie van een pijplijn. Nieuwe mogelijkheden in de huidige versie, zoals de [activiteit lookup](control-flow-lookup-activity.md), flexibele planning en controlestroom maken deze use case op een natuurlijke manier mogelijk. Zie [Zelfstudie: stapsgewijs kopiëren](tutorial-incremental-copy-powershell.md) voor een zelfstudie met stapsgewijze instructies.
 
 ### <a name="other-control-flow-activities"></a>Andere controlestroomactiviteiten
 Hier volgen nog enkele controlestroomactiviteiten die worden ondersteund in de huidige versie van Data Factory. 
 
-Controleactiviteit | Description
+Controleactiviteit | Beschrijving
 ---------------- | -----------
 [Activiteit ForEach](control-flow-for-each-activity.md) | Deze activiteit definieert een herhalende controlestroom in de pijplijn. Deze activiteit wordt gebruikt om een verzameling te herhalen en voert opgegeven activiteiten uit in een lus. De lusimplementatie van deze activiteit is vergelijkbaar met Foreach-lusstructuur in computertalen.
 [Activiteit Web](control-flow-web-activity.md) | Deze roept een aangepast REST-eindpunt aan vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit. 
@@ -118,7 +118,7 @@ Zie [Verschil tussen aangepaste activiteiten in Data Factory en versie 1](transf
 
 - **.NET SDK**: de .NET SDK is bijgewerkt in de huidige versie.
 
-- **PowerShell**: de PowerShell-cmdlets zijn bijgewerkt in de huidige versie. In de huidige versie is **DataFactoryV2** opgenomen in de namen van de cmdlets, bijvoorbeeld: Get-AzDataFactoryV2. 
+- **PowerShell**: de PowerShell-cmdlets zijn bijgewerkt in de huidige versie. De cmdlets voor de huidige versie hebben **DataFactoryV2** in de naam, bijvoorbeeld: Get-AzDataFactoryV2. 
 
 - **Python SDK**: deze SDK is nieuw in de huidige versie.
 
@@ -133,7 +133,7 @@ De SDK's die zijn bijgewerkt in de huidige versie, zijn niet compatibel met eerd
 | Azure Portal | [Ja](quickstart-create-data-factory-portal.md) | Nee |
 | Azure PowerShell | [Ja](quickstart-create-data-factory-powershell.md) | [Ja](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [Ja](quickstart-create-data-factory-dot-net.md) | [Ja](data-factory-build-your-first-pipeline-using-vs.md) |
-| REST-API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
+| REST API | [Ja](quickstart-create-data-factory-rest-api.md) | [Ja](data-factory-build-your-first-pipeline-using-rest-api.md) |
 | Python-SDK | [Ja](quickstart-create-data-factory-python.md) | Nee |
 | Resource Manager-sjabloon | [Ja](quickstart-create-data-factory-resource-manager-template.md) | [Ja](data-factory-build-your-first-pipeline-using-arm.md) | 
 
@@ -146,4 +146,4 @@ In de huidige versie kunt u ook gegevensfactory’s controleren met behulp van [
 
 
 ## <a name="next-steps"></a>Volgende stappen
-In de volgende quickstarts vindt u informatie over het maken van een data factory door het volgen van stapsgewijze instructies: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 
+In de volgende QuickStarts vindt u informatie over het maken van een data factory door het volgen van stapsgewijze instructies: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md) en [REST-API](quickstart-create-data-factory-rest-api.md). 

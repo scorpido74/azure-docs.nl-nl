@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Azure SQL Data Warehouse maken en doorzoeken Azure Portal | Microsoft Docs'
+title: 'Snelstartgids: een Data Warehouse maken en er een query op uitvoeren Azure Portal'
 description: Maak en zoek een query op een Data Warehouse met Azure SQL Data Warehouse in het Azure Portal.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,15 +10,15 @@ ms.subservice: development
 ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: sqlfreshmay19
-ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5acd9688f5029c2a62243254f06160b9907797dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375842"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686213"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Quickstart: Een Azure SQL Data Warehouse in het Azure Portal maken en er query's op uitvoeren
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Snelstartgids: een Azure SQL Data Warehouse in het Azure Portal maken en doorzoeken
 
 U kunt snel een Azure SQL Data Warehouse maken en er query's op uitvoeren met behulp van de Azure Portal.
 
@@ -33,11 +33,11 @@ Download en installeer de nieuwste versie van [SSMS](/sql/ssms/download-sql-serv
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Een datawarehouse maken
 
-Een Azure SQL Data Warehouse wordt gemaakt met een gedefinieerde set [reken resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-logical-servers.md). 
+Een Azure SQL Data Warehouse wordt gemaakt met een gedefinieerde set [reken resources](memory-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-logical-servers.md). 
 
 Volg deze stappen om een SQL Data Warehouse te maken die de voorbeeld gegevens van AdventureWorksDW bevat. 
 
@@ -51,9 +51,9 @@ Volg deze stappen om een SQL Data Warehouse te maken die de voorbeeld gegevens v
 
     | Instelling | Voorgestelde waarde | Beschrijving |
     | :------ | :-------------- | :---------- |
-    | **De naam van database** | mySampleDataWarehouse | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. Opmerking: een datawarehouse is een type database.|
+    | **Databasenaam** | mySampleDataWarehouse | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. Opmerking: een datawarehouse is een type database.|
     | **Abonnement** | Uw abonnement | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-    | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
+    | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
     | **Bron selecteren** | Voorbeeld | Geeft aan dat een voorbeelddatabase moet worden geladen. Opmerking: een datawarehouse is een type database. |
     | **Voorbeeld selecteren** | AdventureWorksDW | Geeft aan dat de voorbeelddatabase AdventureWorksDW moet worden geladen. |
     ||||
@@ -126,7 +126,7 @@ U kunt nu via dit IP-adres verbinding maken met de SQL-server en de bijbehorende
 
 Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het verbinding maken met de server.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer **SQL data warehouses** in het menu links en klik op uw data warehouse op de pagina **SQL data warehouses** .
 3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voor beeld is de volledig gekwalificeerde naam mynewserver-20180430.database.windows.net.
 
@@ -144,14 +144,14 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
    | :------ | :-------------- | :---------- |
    | Servertype | Database-engine | Deze waarde is verplicht |
    | Servernaam | De volledig gekwalificeerde servernaam | Hier volgt een voor beeld: **mynewserver-20180430.database.Windows.net**. |
-   | Authentication | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
+   | Verificatie | SQL Server-verificatie | SQL-verificatie is het enige verificatietype dat in deze zelfstudie is geconfigureerd. |
    | Aanmelden | Het beheerdersaccount voor de server | Account dat u hebt opgegeven tijdens het maken van de server. |
    | Wachtwoord | Het wachtwoord voor het beheerdersaccount voor de server | Het wacht woord dat u hebt opgegeven tijdens het maken van de server. |
    ||||
 
     ![verbinding maken met server](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Klik op**Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
+3. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
 
 4. Vouw **Databases** uit in Objectverkenner. Vouw vervolgens **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
 
@@ -168,7 +168,7 @@ SQL Data Warehouse maakt gebruik van T-SQL als querytaal. Gebruik de volgende st
     SELECT * FROM sys.databases
     ```
 
-3. Klik op **Uitvoeren**. De queryresultaten bevatten twee databases: **hoofd** en **mySampleDataWarehouse**.
+3. Klik op **Execute** (Uitvoeren). De queryresultaten bevatten twee databases: **hoofd** en **mySampleDataWarehouse**.
 
     ![Querydatabases](media/create-data-warehouse-portal/query-databases.png)
 

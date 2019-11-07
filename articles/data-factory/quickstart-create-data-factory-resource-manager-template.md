@@ -1,5 +1,5 @@
 ---
-title: Een Azure Data Factory maken op basis van een Resource Manager-sjabloon | Microsoft Docs
+title: Een Azure-data factory maken met Resource Manager-sjabloon
 description: In deze zelfstudie maakt u een Azure Data Factory-voorbeeldpijplijn op basis van een Azure Resource Manager-sjabloon.
 services: data-factory
 documentationcenter: ''
@@ -11,20 +11,20 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 8766ff461227a749a432771dfe7dbe96a291109a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6bba764060c243417711205083bf02f84a68fed1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008724"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684523"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: een Azure Data Factory maken op basis van een Azure Resource Manager-sjabloon
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](v1/data-factory-build-your-first-pipeline-using-arm.md)
+> * [Versie 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Huidige versie](quickstart-create-data-factory-resource-manager-template.md)
 
-In deze QuickStart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Azure Data Factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Meer informatie over het **transformeren** van gegevens met behulp van Azure Data Factory vindt u in [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md).
+In deze QuickStart wordt beschreven hoe u een Azure Resource Manager-sjabloon gebruikt om een Azure Data Factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie **Zelfstudie: Gegevens transformeren met Spark** voor meer informatie over het [transformeren](transform-data-using-spark.md) van gegevens met Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.
@@ -435,10 +435,10 @@ De geïmplementeerde trigger is gestopt. Een van de manieren om de trigger te st
 
 3. Klik op de pagina Data Factory op de tegel **&-monitor** .
 
-4. Op de pagina **aan de slag** selecteert u het **tabblad Monitor**.  ![Pijplijn uitvoering bewaken](media/doc-common-process/get-started-page-monitor-button.png)
+4. Op de pagina **aan de slag** selecteert u het **tabblad Monitor**.  pipeline-](media/doc-common-process/get-started-page-monitor-button.png) ![controleren
 
     > [!IMPORTANT]
-    > Zoals u ziet, wordt de pijplijn alleen uitgevoerd op het hele uur (bijvoorbeeld om 4:00 uur, 5:00 uur, 6:00 uur, enzovoort). Klik op **Vernieuwen** op de werkbalk om de lijst te vernieuwen wanneer het volgende uur wordt bereikt.
+    > Zoals u ziet, wordt de pijplijn alleen uitgevoerd op het hele uur (bijvoorbeeld om 4:00 uur, 5:00 uur, 6:00 uur enz.). Klik op **Vernieuwen** op de werkbalk om de lijst te vernieuwen wanneer het volgende uur wordt bereikt.
 
 5. Klik op de koppeling **uitvoeringen van activiteit weer geven** in de kolom **acties** .
 
@@ -446,7 +446,7 @@ De geïmplementeerde trigger is gestopt. Een van de manieren om de trigger te st
 
 6. U ziet de uitvoering van de activiteiten die zijn gekoppeld aan de pijplijnuitvoering. In deze QuickStart heeft de pijplijn slechts één activiteit en wel van het type Kopiëren. Daarom ziet u een uitvoering voor die activiteit.
 
-    ![Uitvoeringen van activiteit](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
+    ![Uitvoering van activiteiten](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 7. Klik op de koppeling **uitvoer** onder acties kolom. U ziet de uitvoer van de kopieerbewerking in het venster **Uitvoer**. Klik op de knop Maximaliseren om de volledige uitvoer te bekijken. U kunt het gemaximaliseerde uitvoervenster sluiten.
 
 8. Stop de trigger zodra u ziet dat de uitvoering is geslaagd/mislukt. De trigger voert de pijplijn eenmaal per uur uit. Bij elke uitvoering kopieert de pijplijn hetzelfde bestand uit de invoermap naar de uitvoermap. Als u de trigger wilt stoppen, voert u de volgende opdracht uit in het PowerShell-venster.

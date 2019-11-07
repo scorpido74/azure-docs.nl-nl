@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 654ebc6f40e6c365e9abf406ff19cd7269539dd8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861203"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682223"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Quickstart: Een mogelijkheidsprofiel gebruiken om een IoT Plug en Play-apparaat te maken
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Quick Start: een mogelijkheidsprofiel gebruiken om een IoT Plug en Play preview-apparaat te maken (Windows)
 
-Een _mogelijkheidsprofiel_ (DCM) beschrijft de mogelijkheden van een IOT Plug en Play-apparaat. Een DCM is vaak gekoppeld aan een product-SKU. De mogelijkheden die zijn gedefinieerd in DCM, zijn ingedeeld in herbruikbare interfaces. U kunt skelet apparaatcode genereren vanuit een DCM. In deze Quick start ziet u hoe u VS code kunt gebruiken om een IoT Plug en Play-apparaat te maken met een DCM.
+Een _mogelijkheidsprofiel_ (DCM) beschrijft de mogelijkheden van een IOT Plug en Play-apparaat. Een DCM is vaak gekoppeld aan een product-SKU. De mogelijkheden die zijn gedefinieerd in DCM, zijn ingedeeld in herbruikbare interfaces. U kunt skelet apparaatcode genereren vanuit een DCM. In deze Quick start ziet u hoe u VS code kunt gebruiken in Windows om een IoT Plug en Play-apparaat te maken met behulp van een DCM.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Om deze Quick Start te volt ooien, moet u de volgende software installeren op uw lokale computer:
 
-* [Visual Studio (Community, Professional of ENTER prise)](https://visualstudio.microsoft.com/downloads/) : Zorg ervoor dat u het onderdeel **NuGet package manager** en de **Desktop ontwikkeling C++ met** werk belasting opneemt tijdens de installatie van Visual Studio.
+* [Bouw hulpprogram ma's voor Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) met  **C++ build tools** en **NuGet package manager-onderdeel** workloads. Of als u [Visual Studio (Community, Professional of ENTER prise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 of 2015 al hebt geïnstalleerd met dezelfde workloads.
 * [Git](https://git-scm.com/download/).
 * [Cmake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
@@ -77,41 +77,57 @@ Voer de volgende opdrachten uit om de _IOT hub-Connection String_ voor uw hub op
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 ```
 
+Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
+
+```json
+HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}
+```
+
+U gebruikt deze waarde later in de Quick Start.
+
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden
 
 ### <a name="get-azure-iot-device-sdk-for-c"></a>Azure IoT Device SDK ophalen voor C
 
-In deze Quick start gaat u een ontwikkel omgeving voorbereiden die u kunt gebruiken om de Azure IoT C-SDK te klonen en te bouwen.
+In deze Quick start gaat u een ontwikkel omgeving voorbereiden door de Azure IoT C-apparaat-SDK te installeren via [Vcpkg](https://github.com/microsoft/vcpkg).
 
-1. Open een opdrachtprompt. Voer de volgende opdracht uit voor het klonen van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub-opslagplaats:
+1. Open een opdrachtprompt. Voer de volgende opdracht uit om Vcpkg te installeren:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    .\bootstrap-vcpkg.bat
     ```
 
-    Deze bewerking kan enkele minuten in beslag nemen.
-
-1. Maak een `pnp_app` submap in de hoofdmap van de lokale kloon van de opslag plaats. U gebruikt deze map voor de model bestanden van het apparaat en de stub van het apparaat.
+    Voer de volgende handelingen uit om de [integratie](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)van de gebruiker te verbreden (Opmerking: hiervoor moet de beheerder voor het eerst worden gebruikt):
 
     ```cmd/sh
-    cd azure-iot-sdk-c
-    mkdir pnp_app
+    .\vcpkg.exe integrate install
+    ```
+
+1. Installeer de Azure IoT C Device SDK Vcpkg:
+
+    ```cmd/sh
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
 ## <a name="author-your-model"></a>Uw model ontwerpen
 
 In deze Quick Start gebruikt u een bestaand voor beeld-mogelijkheidsprofiel en de bijbehorende interfaces.
 
-1. Down load het [mogelijkheidsprofiel](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) en de [interface voor beeld](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) en sla de `pnp_app` bestanden op in de map.
+1. Maak een `pnp_app` Directory in uw lokale station.
+
+1. Down load het [mogelijkheidsprofiel](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) en de [interface voor beeld](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) en sla de bestanden op in `pnp_app` map.
 
     > [!TIP]
     > Als u een bestand van GitHub wilt downloaden, gaat u naar het bestand, klikt u met de rechter muisknop op **RAW**en selecteert u vervolgens **Koppeling opslaan als**.
 
-1. Open `pnp_app` de map met VS code. U kunt de bestanden weer geven met IntelliSense:
+1. Open `pnp_app` map met VS code. U kunt de bestanden weer geven met IntelliSense:
 
     ![Mogelijkheidsprofiel](media/quickstart-create-pnp-device/dcm.png)
 
-1. Vervang `<YOUR_COMPANY_NAME_HERE>` in de bestanden die u hebt gedownload in `@id` de `schema` velden en een unieke waarde. Gebruik alleen de tekens a-z, A-Z, 0-9 en onderstrepen. Zie [Digital Identifier-indeling](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format)voor meer informatie.
+1. In de bestanden die u hebt gedownload, vervangt u `<YOUR_COMPANY_NAME_HERE>` in de velden `@id` en `schema` met een unieke waarde. Gebruik alleen de tekens a-z, A-Z, 0-9 en onderstrepen. Zie [Digital Identifier-indeling](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format)voor meer informatie.
 
 ## <a name="generate-the-c-code-stub"></a>De C-code-stub genereren
 
@@ -120,7 +136,7 @@ Nu u een DCM en de bijbehorende interfaces hebt, kunt u de apparaatcode generere
 1. Als de map met DCM-bestanden geopend is, gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen, **IOT Plug en Play**in te voeren en de stub van de **apparaatcode genereren**in te scha kelen.
 
     > [!NOTE]
-    > De eerste keer dat u het hulp programma IoT Plug en Play code generator gebruikt, duurt het enkele seconden om te downloaden.
+    > De eerste keer dat u IoT Plug en Play CodeGen CLI gebruikt, duurt het enkele seconden om automatisch te downloaden en te installeren.
 
 1. Kies het DCM-bestand dat u wilt gebruiken voor het genereren van de stub voor het apparaat.
 
@@ -128,38 +144,42 @@ Nu u een DCM en de bijbehorende interfaces hebt, kunt u de apparaatcode generere
 
 1. Kies **ANSI C** als uw taal.
 
-1. Kies **cmake project** als uw project type.
-
 1. Kies **Via IOT hub apparaat Connection String** als verbindings methode.
 
+1. Kies **cmake project in Windows** als project sjabloon.
+
+1. Kies **via Vcpkg** als manier om de SDK voor het apparaat in te voegen.
+
 1. VS code opent een nieuw venster met gegenereerde code stub-bestanden.
-    ![Apparaatcode](media/quickstart-create-pnp-device/device-code.png)
+    ![apparaatcode](media/quickstart-create-pnp-device/device-code.png)
 
 ## <a name="build-the-code"></a>De code bouwen
 
-U gebruikt de SDK van het apparaat om de gegenereerde stub voor de apparaatcode te maken. De toepassing die u bouwt, simuleert een apparaat dat is verbonden met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
+U bouwt de gegenereerde code-stub van het apparaat samen met de SDK van het apparaat. De toepassing die u bouwt, simuleert een apparaat dat is verbonden met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
 
-1. Open `CMakeLists.txt` in VS code de hoofdmap van de apparaat-SDK.
-
-1. Voeg de volgende regel aan de onderkant van het `CMakeLists.txt` bestand toe om de map voor de code van het apparaat op te Neem bij het compileren:
-
-    ```txt
-    add_subdirectory(pnp_app/sample_device)
-    ```
-
-1. Maak een submap cmake in de hoofdmap van de apparaat-SDK en navigeer naar die map:
+1. Maak een `cmake`-submap in de map `sample_device` en navigeer naar die map:
 
     ```cmd\sh
     mkdir cmake
     cd cmake
     ```
 
-1. Voer de volgende opdrachten uit om de SDK van het apparaat en de gegenereerde code-stub te maken:
+1. Voer de volgende opdrachten uit om een gegenereerde code-stub te maken:
 
     ```cmd\sh
-    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
-    cmake --build . -- /m /p:Configuration=Release
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
     ```
+    
+    > [!NOTE]
+    > Als u Visual Studio 2017 of 2015 gebruikt, moet u de CMake-Generator opgeven op basis van de build-hulpprogram ma's die u gebruikt:
+    >```cmd\sh
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
 
     > [!NOTE]
     > Als cmake uw C++ compiler niet kan vinden, krijgt u tijdens het uitvoeren van de vorige opdracht fouten bij het bouwen. Als dat het geval is, kunt u proberen deze opdracht uit te voeren op de [Visual Studio-opdracht prompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
@@ -167,8 +187,7 @@ U gebruikt de SDK van het apparaat om de gegenereerde stub voor de apparaatcode 
 1. Nadat de build is voltooid, voert u uw toepassing uit met het IoT hub-apparaat connection string als para meter.
 
     ```cmd\sh
-    cd azure-iot-sdk-c\cmake\pnp_app\sample_device\Release\
-    sample_device.exe "[IoT Hub device connection string]"
+    .\Debug\sample_device.exe "[IoT Hub device connection string]"
     ```
 
 1. De toepassing wordt gestart met het verzenden van gegevens naar IoT Hub.
@@ -181,9 +200,9 @@ U gebruikt de SDK van het apparaat om de gegenereerde stub voor de apparaatcode 
 
 Als u de apparaatcode met **Azure IOT Explorer**wilt valideren, moet u de bestanden naar de model opslagplaats publiceren.
 
-1. Als de map met DCM-bestanden geopend is, gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen **. Typ en selecteer IOT plug & Play: Bestanden verzenden naar model opslagplaats**.
+1. Als de map met DCM-bestanden geopend is, gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen. Typ en selecteer **IOT plug & Play: bestanden verzenden naar model opslagplaats**.
 
-1. Selecteer `SampleDevice.capabilitymodel.json` en`EnvironmentalSensor.interface.json` bestanden.
+1. Selecteer `SampleDevice.capabilitymodel.json` en `EnvironmentalSensor.interface.json` bestanden.
 
 1. Voer uw bedrijfs model opslagplaats connection string in.
 
@@ -193,7 +212,7 @@ Als u de apparaatcode met **Azure IOT Explorer**wilt valideren, moet u de bestan
 1. In het venster voor het uitvoeren van VS code en meldingen kunt u controleren of de bestanden correct zijn gepubliceerd.
 
     > [!NOTE]
-    > Als u fouten krijgt bij het publiceren van de model bestanden van het apparaat, kunt **u de opdracht IOT Plug en Play gebruiken: Meld u aan bij** de model opslagplaats om u af te melden en de stappen opnieuw door te lopen.
+    > Als er fouten optreden bij het publiceren van de model bestanden van het apparaat, kunt u gebruikmaken van de opdracht **IoT Plug en Play: model opslagplaats afmelden** om u af te melden en de stappen opnieuw door te lopen.
 
 ### <a name="use-the-azure-iot-explorer-to-validate-the-code"></a>De Azure IoT Explorer gebruiken om de code te valideren
 
@@ -217,8 +236,9 @@ Als u de apparaatcode met **Azure IOT Explorer**wilt valideren, moet u de bestan
 
 1. Selecteer de pagina **Eigenschappen (schrijfbaar)** om de Beschrijf bare eigenschappen die u kunt bijwerken weer te geven.
 
-1. Vouw de **naam**van de eigenschap uit, update met een nieuwe naam en selecteer **Beschrijf bare eigenschap bijwerken**. 
-2. Voor een overzicht van de nieuwe naam wordt weer gegeven in de kolom **gemelde eigenschap** , klikt u op de knop **vernieuwen** boven op de pagina.
+1. Vouw de **naam**van de eigenschap uit, update met een nieuwe naam en selecteer **Beschrijf bare eigenschap bijwerken**.
+
+1. Voor een overzicht van de nieuwe naam wordt weer gegeven in de kolom **gemelde eigenschap** , klikt u op de knop **vernieuwen** boven op de pagina.
 
 1. Selecteer de **opdracht** pagina om alle opdrachten weer te geven die het apparaat ondersteunt.
 

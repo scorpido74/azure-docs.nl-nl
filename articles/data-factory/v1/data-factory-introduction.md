@@ -1,6 +1,6 @@
 ---
-title: Inleiding tot Data Factory, een gegevensintegratieservice | Microsoft Docs
-description: 'Meer informatie over Azure Data Factory: een cloudgebaseerde service voor gegevensintegratie waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd.'
+title: Inleiding tot Data Factory, een service voor gegevens integratie
+description: 'Leer wat een Data Factory is: een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd.'
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,16 +12,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139512"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666805"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Inleiding tot Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](data-factory-introduction.md)
+> * [Versie 1](data-factory-introduction.md)
 > * [Versie 2 (huidige versie)](../introduction.md)
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een gro
 Zo kan een pijplijn bijvoorbeeld een groep activiteiten bevatten die gegevens van een Azure-blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster om de gegevens te partitioneren. Het voordeel van een pijplijn is dat u de activiteiten kunt beheren als een groep in plaats van afzonderlijke activiteiten. U kunt de pijplijn bijvoorbeeld in zijn geheel implementeren en plannen, in plaats van onafhankelijke activiteiten te plannen. 
 
 ### <a name="activity"></a>Activiteit
-Een pijplijn kan één of meer activiteiten bevatten. Met activiteiten definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van het ene gegevensarchief naar het andere te kopiëren. U kunt ook een Hive-activiteit gebruiken. Hiermee wordt een Hive-query uitgevoerd voor een Azure HDInsight-cluster om uw gegevens te transformeren of analyseren. Data Factory ondersteunt twee soorten activiteiten: activiteiten voor gegevensverplaatsing en activiteiten voor gegevenstransformatie.
+Een pijplijn kan één of meer activiteiten bevatten. Activiteiten definiëren de acties die voor uw gegevens moeten worden uitgevoerd. U kunt bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van het ene gegevensarchief naar het andere te kopiëren. U kunt ook een Hive-activiteit gebruiken. Hiermee wordt een Hive-query uitgevoerd voor een Azure HDInsight-cluster om uw gegevens te transformeren of analyseren. Data Factory ondersteunt twee soorten activiteiten: activiteiten voor gegevensverplaatsing en activiteiten voor gegevenstransformatie.
 
 ### <a name="data-movement-activities"></a>Activiteiten voor gegevensverplaatsing
 De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchief naar een sinkgegevensarchief. Gegevens vanuit elke willekeurige bron kunnen naar een sink worden geschreven. Selecteer een gegevensarchief voor informatie over het kopiëren van gegevens naar en van dat archief. Data Factory ondersteunt de volgende gegevensarchieven:
@@ -92,7 +92,7 @@ De kopieeractiviteit in Data Factory kopieert gegevens van een brongegevensarchi
 
 Zie [Move data by using Copy Activity](data-factory-data-movement-activities.md) (Gegevens verplaatsen met kopieeractiviteit) voor meer informatie.
 
-### <a name="data-transformation-activities"></a>Activiteiten voor gegevenstransformatie
+### <a name="data-transformation-activities"></a>Gegevenstransformatieactiviteiten
 [!INCLUDE [data-factory-transformation-activities](../../../includes/data-factory-transformation-activities.md)]
 
 Zie [Move data by using Copy Activity](data-factory-data-transformation-activities.md) (Gegevens verplaatsen met kopieeractiviteit) voor meer informatie.
@@ -135,12 +135,12 @@ U kunt een van deze hulpprogramma's of API's gebruiken om gegevenspijplijnen te 
 - Visual Studio
 - PowerShell
 - .NET API
-- REST-API
+- REST API
 - Azure Resource Manager-sjabloon
 
 Volg de stapsgewijze instructies in de onderstaande zelfstudies voor informatie over het bouwen van gegevensfactory’s met gegevenspijplijnen:
 
-| Zelfstudie | Description |
+| Zelfstudie | Beschrijving |
 | --- | --- |
 | [Gegevens verplaatsen tussen twee cloudlocaties voor gegevensopslag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Maak een gegevensfactory met een pijplijn die gegevens verplaatst van blobopslag naar een SQL-database. |
 | [Gegevens transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md) |Bouw uw eerste Azure-gegevensfactory met een gegevenspijplijn die gegevens verwerkt door een Hive-script uit te voeren op een Azure HDInsight-cluster (Hadoop). |

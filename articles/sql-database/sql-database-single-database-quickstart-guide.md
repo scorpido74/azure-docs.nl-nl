@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Individuele databases beveiligen in Azure SQL Database | Microsoft Docs
+title: Quick Start-afzonderlijke data bases in Azure SQL Database
 description: Informatie over hoe u snel aan de slag gaat met individuele databases in Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 45b0b2bc7a2ef5c3cb6ca801668f7b5be7c8ac73
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 279d0a2016bc3323632651db256c43121d388412
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639993"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687151"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Aan de slag met individuele databases in Azure SQL Database
 
 [Een individuele database](sql-database-single-index.yml) is een volledig beheerde PaaS-database-als-een-service (DbaaS) die ideaal is als opslag-engine voor moderne toepassingen in de cloud. In dit gedeelte leert u hoe u snel een individuele SQL Database maakt en configureert.
 
-## <a name="quickstart-overview"></a>Overzicht van quickstarts
+## <a name="quickstart-overview"></a>Quickstart-overzicht
 
 Dit gedeelte bevat een overzicht van beschikbare artikelen waarmee u snel aan de slag kunt met individuele databases. In de volgende quickstarts leert u snel een individuele database te maken, een firewallregel voor databaseservers te configureren en vervolgens een database te importeren in de nieuwe individuele database via een `.bacpac`-bestand:
 

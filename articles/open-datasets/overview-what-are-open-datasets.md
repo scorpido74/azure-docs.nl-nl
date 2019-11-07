@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496589"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606162"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Wat zijn Azure open gegevens sets en hoe kunt u deze gebruiken?
 
@@ -25,7 +25,7 @@ Gegevens sets bevatten informatie over openbaar domein voor weer, telling, feest
 ## <a name="curated-prepared-datasets"></a>Met curator gekweekte gegevens sets
 Met de openstaande open bare gegevens sets in azure kunnen gegevens sets worden geoptimaliseerd voor gebruik in machine learning werk stromen. 
 
-Gegevens wetenschappers best Eden vaak het meren deel van hun tijd over het schoonmaken en voorbereiden van gegevens voor geavanceerde analyses. Open gegevens sets worden gekopieerd naar de Azure-Cloud en worden voor het eerst geverwerkt om tijd te besparen. Met regel matige intervallen worden gegevens uit de bronnen opgehaald, zoals een FTP-verbinding met het National Oceanic and atmosferisch Administration (NOAA), geparseerd in een gestructureerde indeling en vervolgens verrijkt met functies zoals post code of locatie van de dichtstbijgelegen weer station.
+Gegevens wetenschappers best Eden vaak het meren deel van hun tijd over het schoonmaken en voorbereiden van gegevens voor geavanceerde analyses. Open gegevens sets worden gekopieerd naar de Azure-Cloud en worden voor het eerst geverwerkt om tijd te besparen. Met regel matige intervallen worden gegevens uit de bronnen opgehaald, bijvoorbeeld door een FTP-verbinding met het National Oceanic and atmosferisch Administration (NOAA). Vervolgens worden gegevens geparseerd naar een gestructureerde indeling en vervolgens uitgebreid naar wens met functies zoals post code of locatie van het dichtstbijzijnde weer station.
 
 Gegevens sets worden meegehost met Cloud Compute in azure, waardoor u eenvoudiger toegang en manipulaties kunt maken.  
 
@@ -57,5 +57,5 @@ Als u de gewenste gegevens niet kunt vinden, kunt u een e-mail sturen naar een [
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Voorbeeld notitieblok](samples.md)
-* [Zelf studie: regressie modellen met NY-taxi gegevens](tutorial-opendatasets-automl.md)
+* [Zelf studie: regressie modellen met NY-taxi gegevens](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python-SDK voor open gegevens sets](/python/api/azureml-opendatasets/?view=azure-ml-py)

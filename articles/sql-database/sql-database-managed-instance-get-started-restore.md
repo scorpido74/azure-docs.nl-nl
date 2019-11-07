@@ -1,5 +1,5 @@
 ---
-title: Een back-up herstellen voor beheerd exemplaar voor Azure SQL Database | Microsoft Docs
+title: 'Een back-up terugzetten naar Azure SQL Database beheerde instantie '
 description: Herstel een back-up van de database voor een beheerd exemplaar voor Azure SQL Database met behulp van SSMS.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: c07daf4cf9f355e8eccfe618262dd06b4216106e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ce112628c94c235b028331db5c37ba2b56458044
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146392"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688049"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Snelstartgids: een Data Base herstellen naar een beheerd exemplaar
 
@@ -40,7 +40,7 @@ Voor deze snelstartgids geldt het volgende:
   - [Een punt-naar-site-verbinding configureren naar een beheerd exemplaar voor Azure SQL Database van on-premises ](sql-database-managed-instance-configure-p2s.md).
 
 > [!NOTE]
-> Zie [Back-up van SQL Server naar URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) en het herstellen van de back-up.
+> Zie [Back-up van SQL Server naar URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) voor meer informatie over het maken van een back-up van een SQL Server-database met behulp van Azure Blob Storage en een [SAS-sleutel (Shared Access Signature)](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) en het herstellen van de back-up.
 
 ## <a name="restore-the-database-from-a-backup-file"></a>De database herstellen met een back-upbestand
 

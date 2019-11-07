@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart voor Azure Security Center: uw Windows-computers naar Security Center onboarden | Microsoft Docs'
+title: Windows-computers onboarden naar Azure Security Center
 description: In deze snelstart leert u hoe u Microsoft Monitoring Agent op een Windows-computer inricht.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 46fffc40b315109c348247ac09f02f9bb8dbb3b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202796"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686501"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Quickstart: Windows-computers onboarden naar Azure Security Center
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Snelstart: Windows-computers onboarden naar Azure Security Center
 Nadat u de onboarding van uw Azure-abonnementen hebt uitgevoerd, kunt u Security Center inschakelen voor resources die buiten Azure worden uitgevoerd, bijvoorbeeld on-premises of in andere clouds, door Microsoft Monitoring Agent in te richten.
 
 In deze snelstart ziet u hoe u Microsoft Monitoring Agent op een Windows-computer installeert.
@@ -29,14 +29,14 @@ In deze snelstart ziet u hoe u Microsoft Monitoring Agent op een Windows-compute
 ## <a name="prerequisites"></a>Vereisten
 U moet over een abonnement op Microsoft Azure beschikken om met Security Center aan de slag te gaan. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
 
-U moet u zich in de Standard-prijscategorie van Security Center bevinden voordat u aan deze snelstart kunt beginnen. Zie [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) voor upgrade-instructies. U kunt Security Center Standard kosteloos uitproberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
+U moet u zich in de Standard-prijscategorie van Security Center bevinden voordat u aan deze snelstartgids kunt beginnen. Zie [Onboard your Azure subscription to Security Center Standard](security-center-get-started.md) (Uw Azure-abonnement registreren voor Security Center Standard) voor upgrade-instructies. U kunt Security Center Standard kosteloos uitproberen. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/security-center/) voor meer informatie.
 
 ## <a name="add-new-windows-computer"></a>Nieuwe Windows-computer toevoegen
 
 1. Meld u aan bij de [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
 2. Ga naar het **Microsoft Azure**-menu en selecteer **Security Center**. **Security Center - Overzicht** wordt geopend.
 
-   ![Overzicht van Security Center][2]
+   ![Security Center-overzicht][2]
 
 3. Selecteer in het hoofdmenu van Security Center de optie **Aan de slag**.
 4. Selecteer het tabblad **Aan de slag**.
@@ -64,7 +64,7 @@ U dient nu het gedownloade bestand op de doelcomputer te installeren.
 4. Op de pagina **Doelmap** wijzigt u desgewenst de standaardinstallatiemap en selecteert u **Volgende**.
 5. Op de pagina **Installatieopties voor Agent** kiest u ervoor de agent verbinding te laten maken met Azure Log Analytics en selecteert u **Volgende**.
 6. Op de pagina **Azure Log Analytics** plakt u de **werkruimte-id** en **werkruimtesleutel (primaire sleutel)** die u in de vorige stap in Kladblok hebt gekopieerd.
-7. Als u de computer wilt laten rapporteren bij een Log Analytics-werkruimte in de Azure Government-cloud, selecteert u **Azure US Government** in de vervolgkeuzelijst **Azure Cloud**.  Als de computer met de Log Analytics-service moet communiceren via een proxyserver, selecteert u **Geavanceerd** en geeft u de URL en het poortnummer van de proxyserver op.
+7. Als u de computer wilt laten rapporteren bij een Log Analytics-werkruimte in de Azure Government-cloud, selecteert u **Azure US Government** in de vervolgkeuzelijst **Azure Cloud**. Als de computer met de Log Analytics-service moet communiceren via een proxyserver, selecteert u **Geavanceerd** en geeft u de URL en het poortnummer van de proxyserver op.
 8. Selecteer **Volgende** als u de vereiste configuratie-instellingen hebt voltooid.
 
    ![De agent installeren][5]
@@ -99,7 +99,7 @@ De agent verwijderen:
 In deze snelstart richt u Microsoft Monitoring Agent in op een Windows-computer. Voor meer informatie over het gebruik van Security Center gaat u verder met de zelfstudie voor het configureren van een beveiligingsbeleid en het beoordelen van de beveiliging van uw resources.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Beveiligingsbeleid opstellen en beoordelen](tutorial-security-policy.md)
+> [Zelfstudie: Beveiligingsbeleidsregels opstellen en beoordelen](tutorial-security-policy.md)
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png

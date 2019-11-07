@@ -8,12 +8,12 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 16dd63e22182dedb4af97c2ef6238e6628778467
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485163"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607086"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Snelstartgids: een Azure Cognitive Search-kennis archief maken in de Azure Portal
 
@@ -87,7 +87,7 @@ In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijk
 1. Vouw **Cognitive Services toevoegen**uit. **Gratis (beperkte verrijkingen)** is standaard geselecteerd. U kunt deze resource gebruiken omdat het aantal records in HotelReviews-Free. CSV 19 is en deze gratis resource Maxi maal 20 trans acties per dag toestaat.
 1. Vouw **cognitieve vaardig heden toevoegen**uit.
 1. Voer `hotel-reviews-ss`in voor de naam van de **vakkennisset**.
-1. Selecteer voor **Bron gegevens veld****reviews_text*.
+1. Selecteer voor **Bron gegevens veld** **reviews_text**.
 1. Selecteer voor uitgebreid **granulatie niveau**de optie **pagina's (segmenten van 5000 tekens)**
 1. Selecteer deze cognitieve vaardig heden:
     + **Sleuteltermen extraheren**

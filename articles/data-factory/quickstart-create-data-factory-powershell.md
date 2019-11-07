@@ -1,5 +1,5 @@
 ---
-title: Gegevens in Blob Storage kopiëren met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens in Blob Storage kopiëren met behulp van Azure Data Factory
 description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 06171dbedb55b4a80e2b27b9314247331d65ed97
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 564076a0df8ab993796dde3d134a9461ab03e050
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286474"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684500"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Snelstartgids: een Azure-data factory maken met behulp van Power shell
 
@@ -26,7 +26,7 @@ ms.locfileid: "72286474"
 > * [Versie 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-powershell.md)
 
-In deze snelstartgids wordt beschreven hoe u PowerShell kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie [Zelfstudie: Gegevens transformeren met Spark](transform-data-using-spark.md) voor meer informatie over het **transformeren** van gegevens met Azure Data Factory.
+In deze snelstartgids wordt beschreven hoe u PowerShell kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie **Zelfstudie: Gegevens transformeren met Spark** voor meer informatie over het [transformeren](transform-data-using-spark.md) van gegevens met Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.
@@ -61,7 +61,7 @@ Installeer de nieuwste Azure PowerShell-modules met de instructies in [Azure Pow
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Definieer een variabele voor de naam van de resourcegroep die u later gaat gebruiken in PowerShell-opdrachten. Kopieer de tekst van de volgende opdracht naar PowerShell, geef tussen dubbele aanhalingstekens een naam op voor de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en voer de opdracht uit. Bijvoorbeeld: `"ADFQuickStartRG"`.
 
