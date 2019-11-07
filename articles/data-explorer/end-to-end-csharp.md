@@ -1,38 +1,40 @@
 ---
-title: End-to-end-BLOB-opname in azure Data Explorer met behulp vanC#
-description: In dit artikel leert u hoe u blobs kunt opnemen in azure Data Explorer met een end-to-end C#-voor beeld met behulp van.
+title: End-to-end-BLOB-opname in azure Data Explorer viaC#
+description: In dit artikel leert u hoe u blobs kunt opnemen in azure Data Explorer met een end-to-end-voor beeld C#waarin wordt gebruikt.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 7d737319c9ddc8040a7cae6f7a9991c625cc4fcd
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: e22621083a44555cb3eda615c610f673cd841ec1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809603"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581835"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-using-c"></a>End-to-end-BLOB-opname in azure Data Explorer met behulp vanC#
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>End-to-end-BLOB-opname in azure Data Explorer viaC#
 
 > [!div class="op_single_selector"]
 > * [C#](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Azure Data Explorer is een snelle en schaal bare service voor gegevens exploratie voor logboek-en telemetriegegevens. In dit artikel vindt u een end-to-end-voor beeld over het opnemen van gegevens van Blob Storage in azure Data Explorer. U leert hoe u via programma code een resource groep, een opslag account en een container, een event hub en een Azure Data Explorer-cluster en-data base maakt. U leert ook hoe u Azure Data Explorer programmatisch kunt configureren om gegevens op te nemen uit het nieuwe opslag account.
+Azure Data Explorer is een snelle en schaal bare service voor gegevens exploratie voor logboek-en telemetriegegevens. In dit artikel vindt u een end-to-end-voor beeld van het opnemen van gegevens uit Azure Blob Storage in azure Data Explorer. 
+
+U leert hoe u via programma code een resource groep, een opslag account en een container, een Event Hub en een Azure Data Explorer-cluster en-data base maakt. U leert ook hoe u Azure Data Explorer programmatisch kunt configureren om gegevens op te nemen uit het nieuwe opslag account.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-## <a name="install-c-nuget"></a>Nuget C# installeren
+## <a name="install-c-nuget"></a>NuGet C# installeren
 
 * Installeer [micro soft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Installeer [micro soft. Azure. Management. Resource Manager](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
 * Installeer [micro soft. Azure. Management. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/).
-* Installeer de [micro soft. Azure. storage. blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
+* Installeer [micro soft. Azure. storage. blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/).
 * Installeer [micro soft. rest. ClientRuntime. Azure. Authentication](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.Authentication) voor authenticatie.
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
@@ -41,16 +43,18 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](htt
 
 ## <a name="code-example"></a>Voorbeeld van code 
 
-Het volgende code voorbeeld geeft u een stapsgewijze procedure voor het opnemen van gegevens in azure Data Explorer. U maakt eerst een resource groep en Azure-resources, zoals een opslag account en een container, een event hub en een Azure Data Explorer-cluster en-data base. Vervolgens maakt u een Event Grid-abonnement en tabel-en kolom toewijzing in de Azure Data Explorer-data base. Ten slotte maakt u de gegevens verbinding om Azure Data Explorer te configureren voor het opnemen van gegevens van het nieuwe opslag account. 
+Het volgende code voorbeeld geeft u een stapsgewijs proces dat resulteert in de opname van gegevens in azure Data Explorer. 
+
+U maakt eerst een resource groep. U maakt ook Azure-resources, zoals een opslag account en een container, een Event Hub en een Azure Data Explorer-cluster en-data base. Vervolgens maakt u een Azure Event Grid-abonnement, samen met een tabel-en kolom toewijzing, in de Azure Data Explorer-data base. Ten slotte maakt u de gegevens verbinding om Azure Data Explorer te configureren voor het opnemen van gegevens van het nieuwe opslag account. 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 string location = "West Europe";
 string locationSmallCase = "westeurope";
-string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//path to the Azure Resource Manager template json from the previous section
+string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//Path to the Azure Resource Manager template JSON from the previous section
 
 string deploymentName = "e2eexample";
 string resourceGroupName = deploymentName + "resourcegroup";
@@ -147,14 +151,14 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 ```
 | **Instelling** | **Beschrijving van veld** |
 |---|---|---|
-| tenantId | Uw Tenant-ID. Ook bekend als Directory-ID.|
+| tenantId | Uw Tenant-ID. Het wordt ook wel een directory-ID genoemd.|
 | subscriptionId | De abonnements-ID die u gebruikt voor het maken van resources.|
 | clientId | De client-ID van de toepassing die toegang heeft tot bronnen in uw Tenant.|
 | clientSecret | Het client geheim van de toepassing die toegang heeft tot bronnen in uw Tenant. |
 
 ## <a name="test-the-code-example"></a>Het code voorbeeld testen
 
-1. Een bestand uploaden naar het opslag account
+1. Upload een bestand naar het opslag account.
 
     ```csharp
     string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=xxxxxxxxxxxxxx;AccountKey=xxxxxxxxxxxxxx;EndpointSuffix=core.windows.net";
@@ -170,7 +174,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     |---|---|---|
     | storageConnectionString | De connection string van het programmatisch gemaakte opslag account.|
 
-2. Een test query uitvoeren in azure Data Explorer
+2. Voer een test query uit in azure Data Explorer.
 
     ```csharp
     var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
@@ -205,7 +209,7 @@ await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-*  [Maak een Azure Data Explorer-cluster en-data base](create-cluster-database-csharp.md) voor meer informatie over andere manieren om een cluster en Data Base te maken.
-* [Gegevens opname van Azure Data Explorer](ingest-data-overview.md) voor meer informatie over opname methoden.
-* [Quick Start: Query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md) Webgebruikersinterface.
+*  Zie [een Azure Data Explorer-cluster en-data base maken](create-cluster-database-csharp.md)voor meer informatie over andere manieren om een cluster en Data Base te maken.
+* Zie voor meer informatie over opname methoden [Azure Data Explorer gegevens opname](ingest-data-overview.md).
+* Voor meer informatie over de webtoepassing raadpleegt u [Quick Start: Query's uitvoeren in de Web-UI van Azure Data Explorer](web-query-data.md).
 * [Schrijf query's](write-queries.md) met een Kusto-query taal.

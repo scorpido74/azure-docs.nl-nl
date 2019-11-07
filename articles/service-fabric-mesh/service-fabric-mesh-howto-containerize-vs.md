@@ -1,6 +1,6 @@
 ---
 title: Een bestaande .NET-app in een container plaatsen voor Service Fabric Mesh | Microsoft Docs
-description: Mesh-ondersteuning toevoegen aan een bestaande .NET-app
+description: Voeg ondersteuning toe voor de indeling van Service Fabric mesh-container in ASP.NET-en console projecten die gebruikmaken van het volledige .NET Framework.
 services: service-fabric-mesh
 keywords: service fabric mesh in container plaatsen
 author: dkkapur
@@ -9,12 +9,12 @@ ms.date: 11/08/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
-ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419431"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686290"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Een bestaande .NET-app in een container plaatsen voor Service Fabric Mesh
 
@@ -71,4 +71,4 @@ U kunt nu de app publiceren naar Azure Service Fabric Mesh.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie hoe u een app publiceert voor Service Fabric Mesh: [Zelfstudie - Implementeren van een Service Fabric Mesh-toepassing](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Een app publiceren naar Service Fabric Mesh: [Zelfstudie: een Service Fabric Mesh-toepassing implementeren](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

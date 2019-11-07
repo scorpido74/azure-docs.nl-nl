@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703030"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590623"
 ---
 > [!IMPORTANT]
 > Exclusieve Azure-hosts bevindt zich momenteel in de open bare preview.
@@ -21,7 +21,7 @@ ms.locfileid: "68703030"
 >
 > **Bekende preview-beperkingen**
 > - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-> - De eerste release van de preview-versie ondersteunt de volgende VM-serie: DSv3 en ESv3. 
+> - De eerste release van de preview-versie ondersteunt de volgende VM-reeksen: DSv3 en ESv3. 
 
 
 ## <a name="create-a-host-group"></a>Een hostgroep maken
@@ -45,7 +45,7 @@ In dit voor beeld maken we een hostgroep met 1 beschikbaarheids zone en twee fou
 1. Selecteer op de pagina **hostgroepen (preview)** de optie **maken**.
 1. Selecteer het abonnement dat u wilt gebruiken en selecteer vervolgens **Nieuw maken** om een nieuwe resource groep te maken.
 1. Typ *myDedicatedHostsRG* als **naam** en selecteer **OK**.
-1. Typ *myHostGroup*voor de **naam**van de hostgroep.
+1. Typ *myHostGroup*voor de naam van de **hostgroep**.
 1. Selecteer voor **locatie**de optie **VS Oost**.
 1. Selecteer voor de **beschikbaarheids zone**de optie **1**.
 1. Selecteer **2**bij **aantal fout domeinen**.
@@ -72,7 +72,7 @@ Als u het aantal fout domeinen voor uw hostgroep instelt, wordt u gevraagd om he
 1. Selecteer het abonnement dat u wilt gebruiken.
 1. Selecteer *myDedicatedHostsRG* als de **resource groep**.
 1. In **Details**van het exemplaar typt u *MyHost* voor de **naam** en selecteert u *VS-Oost* voor de locatie.
-1. Selecteer in **hardwareprofiel** *standaard Es3 Family-type 1* voor de **grootte familie**, selecteer *myHostGrup* voor de hostgroep en selecteer vervolgens *1* voor het **fout domein**. Laat de standaard waarden voor de rest van de velden ongewijzigd.
+1. Selecteer in **hardwareprofiel** *standaard Es3 Family-type 1* voor de **grootte familie**, selecteer *myHostGrup* voor de **hostgroep** en selecteer vervolgens *1* voor het **fout domein**. Laat de standaard waarden voor de rest van de velden ongewijzigd.
 1. Wanneer u klaar bent, selecteert u **controleren + maken** en wacht u op validatie.
 
     ![Host-instellingen](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)

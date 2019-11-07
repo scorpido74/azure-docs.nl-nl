@@ -1,5 +1,5 @@
 ---
-title: Tabellen indexeren in Azure SQL Data Warehouse | Microsoft Azure
+title: Tabellen indexeren
 description: Aanbevelingen en voor beelden voor het indexeren van tabellen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479844"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685451"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Tabellen indexeren in SQL Data Warehouse
 
@@ -24,7 +24,7 @@ Aanbevelingen en voor beelden voor het indexeren van tabellen in Azure SQL Data 
 
 ## <a name="index-types"></a>Indextypen
 
-SQL Data Warehouse biedt verschillende indexerings opties, waaronder geclusterde [Column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview), geclusterde [indexen en](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)niet-geclusterde indexen, en een niet-index optie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)heet.  
+SQL Data Warehouse biedt verschillende indexerings opties, waaronder [geclusterde column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-overview), [geclusterde indexen en niet-geclusterde indexen](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), en een niet-index optie die ook wel [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)heet.  
 
 Zie de documentatie van [Create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) als u een tabel met een index wilt maken.
 
@@ -216,7 +216,7 @@ Als uw tabellen zijn geladen met enkele gegevens, volgt u de onderstaande stappe
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Indexen opnieuw samen stellen om de segment kwaliteit te verbeteren
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Stap 1: Een gebruiker identificeren of maken die gebruikmaakt van de juiste resource klasse
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Stap 1: een gebruiker identificeren of maken die gebruikmaakt van de juiste resource klasse
 
 Een snelle manier om de segment kwaliteit direct te verbeteren is het opnieuw samen stellen van de index.  De SQL geretourneerd door de bovenstaande weer gave retourneert een instructie ALTER INDEX Rebuild die kan worden gebruikt om uw indexen opnieuw samen te stellen. Wanneer u de indexen opnieuw bouwt, moet u ervoor zorgen dat u voldoende geheugen toewijst aan de sessie die uw index opnieuw bouwt.  Als u dit wilt doen, verhoogt u de resource klasse van een gebruiker die machtigingen heeft om de index op deze tabel opnieuw op te bouwen naar het aanbevolen minimum.
 
@@ -226,7 +226,7 @@ Hieronder ziet u een voor beeld van hoe u meer geheugen aan een gebruiker toewij
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Stap 2: Geclusterde column Store-indexen opnieuw samen stellen met een hogere resource class-gebruiker
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Stap 2: geclusterde column Store-indexen opnieuw samen stellen met een hogere resource class-gebruiker
 
 Meld u aan als de gebruiker uit stap 1 (bijvoorbeeld LoadUser), dat nu gebruikmaakt van een hogere resource klasse en voer de instructies ALTER INDEX uit. Zorg ervoor dat deze gebruiker gewijzigde machtigingen heeft voor de tabellen waarin de index opnieuw wordt opgebouwd. In deze voor beelden ziet u hoe u de volledige column store-index opnieuw bouwt of hoe u een enkele partitie opnieuw bouwt. In grote tabellen is het praktisch om indexen op één keer tegelijk opnieuw op te bouwen.
 
@@ -252,9 +252,9 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Het opnieuw opbouwen van een index in SQL Data Warehouse is een offline bewerking.  Voor meer informatie over het opnieuw opbouwen van indexen raadpleegt u de sectie ALTER INDEX Rebuild in [Column Store-indexen](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)defragmenteren en [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
+Het opnieuw opbouwen van een index in SQL Data Warehouse is een offline bewerking.  Voor meer informatie over het opnieuw opbouwen van indexen raadpleegt u de sectie ALTER INDEX Rebuild in [Column Store-indexen defragmenteren](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)en [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Stap 3: Controleren of de kwaliteit van geclusterde column Store-segmenten is verbeterd
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Stap 3: controleren of de kwaliteit van geclusterde column Store-segmenten is verbeterd
 
 Voer de query opnieuw uit met een slechte segment kwaliteit en controleer of de segment kwaliteit is verbeterd.  Als de segment kwaliteit niet is verbeterd, kan het zijn dat de rijen in de tabel extra breed zijn.  Overweeg het gebruik van een hogere resource klasse of DWU bij het opnieuw opbouwen van uw indexen.
 

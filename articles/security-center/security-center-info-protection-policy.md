@@ -1,5 +1,5 @@
 ---
-title: Het SQL Information Protection-beleid aanpassen in Azure Security Center | Microsoft Docs
+title: SQL Information Protection aanpassen-Azure Security Center
 description: Meer informatie over het aanpassen van het beleid voor gegevens beveiliging in Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664392"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Het SQL Information Protection-beleid in Azure Security Center aanpassen (preview-versie)
  
-U kunt een SQL Information Protection-beleid definiëren en aanpassen voor uw hele Azure-Tenant, in Azure Security Center.
+In Azure Security Center kunt u een SQL Information Protection-beleid definiëren en aanpassen voor uw hele Azure-Tenant.
 
 Information Protection is een geavanceerde beveiligings mogelijkheid voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw Azure-gegevens bronnen. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-, financiële, gezondheids zorg, persoonlijke gegevens, enz.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
 - Helpt voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving
-- Diverse beveiligings scenario's, zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens
+- Beveiligings scenario's zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens
 - Het beheren van de toegang tot en het beveiligen van de beveiliging van gegevens archieven met uiterst gevoelige gegevens
  
-[Sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementeert dit paradigma voor uw SQL-gegevens archieven, die momenteel worden ondersteund voor Azure SQL database. SQL Information Protection detecteert en classificeert mogelijk gevoelige gegevens automatisch, voorziet in een label mechanisme voor het permanent labelen van gevoelige gegevens met classificatie kenmerken en biedt een gedetailleerd dash board met de de classificatie status van de data base. Daarnaast berekent de IT de gevoeligheid van de resultatenset van SQL-query's, zodat query's die gevoelige gegevens ophalen, expliciet kunnen worden gecontroleerd en de gegevens kunnen worden beveiligd. Zie [Azure SQL database gegevens detectie en-classificatie](../sql-database/sql-database-data-discovery-and-classification.md)voor meer informatie over SQL Information Protection.
+[Sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementeert dit paradigma voor uw SQL-gegevens archieven, die momenteel worden ondersteund voor Azure SQL database. SQL Information Protection detecteert en classificeert mogelijk gevoelige gegevens automatisch, voorziet in een label mechanisme voor het permanent labelen van gevoelige gegevens met classificatie kenmerken en biedt een gedetailleerd dash board met de de classificatie status van de data base. Daarnaast berekent de IT de gevoeligheid van de resultatenset van SQL-query's, zodat query's die gevoelige gegevens ophalen, expliciet kunnen worden gecontroleerd en de gegevens kunnen worden beveiligd. Zie [Azure SQL database voor gegevens detectie en-classificatie](../sql-database/sql-database-data-discovery-and-classification.md)voor meer informatie over SQL Information Protection.
  
 Het classificatie mechanisme is gebaseerd op twee primaire constructs **die samen de classificatie-en** **informatie typen**voor het classificeren vormen.
 - **Labels** : de belangrijkste classificatie kenmerken, die worden gebruikt voor het definiëren van het gevoeligheids niveau van de gegevens die zijn opgeslagen in de kolom. 
 - **Informatie typen** : biedt een extra granulatie voor het type gegevens dat in de kolom wordt opgeslagen.
  
-Information Protection wordt geleverd met een ingebouwde set van labels en informatie typen die standaard worden gebruikt. Als u deze wilt aanpassen, kunt u het Information Protection-beleid aanpassen in Azure Security Center.
+Information Protection wordt geleverd met een ingebouwde set van labels en informatie typen die standaard worden gebruikt. Als u deze labels en typen wilt aanpassen, kunt u het Information Protection-beleid aanpassen in Security Center.
  
 ## <a name="customize-the-information-protection-policy"></a>Het informatiebeschermingsbeleid aanpassen
 Als u het Information Protection-beleid voor uw Azure-Tenant wilt aanpassen, moet u [beheerders bevoegdheden hebben voor de hoofd beheer groep van de Tenant](security-center-management-groups.md). 

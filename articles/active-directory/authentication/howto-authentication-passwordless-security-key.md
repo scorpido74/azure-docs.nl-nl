@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66102a92ce279b594d61c8b2d484c89a8532057a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171994"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603435"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aanmelden zonder wacht woord voor beveiligings sleutel inschakelen (preview)
 
@@ -50,7 +50,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2-beveiligings sleutel methode inschakelen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Blader naar **Azure Active Directory** > **beveiligings** > **verificatie methoden** > **beleid voor verificatie methode (preview)** .
 1. Kies onder de **beveiligings sleutel methode FIDO2**de volgende opties:
    1. **Inschakelen** -ja of Nee
@@ -95,7 +95,7 @@ Het inrichten van de beheerder en het ongedaan maken van de inrichting van bevei
 
 ### <a name="upn-changes"></a>UPN-wijzigingen
 
-We werken aan het ondersteunen van een functie waarmee UPN kan worden gewijzigd op hybride Azure AD en aan Azure AD gekoppelde apparaten. Als de UPN van een gebruiker wordt gewijzigd, kunt u FIDO2-beveiligings sleutels niet meer wijzigen om de wijziging aan te brengen. De oplossing is het opnieuw instellen van het apparaat en de gebruiker moet zich opnieuw registreren.
+Als de UPN van een gebruiker wordt gewijzigd, kunt u FIDO2-beveiligings sleutels niet meer wijzigen om de wijziging aan te brengen. De oplossing is het opnieuw instellen van het apparaat en de gebruiker moet hun FIDO2-beveiligings sleutels opnieuw registreren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

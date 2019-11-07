@@ -1,5 +1,5 @@
 ---
-title: T-SQL-verschillen oplossen-migratie-Azure SQL Database | Microsoft Docs
+title: T-SQL-verschillen oplossen-migratie-Azure SQL Database
 description: Transact-SQL-instructies die minder dan volledig worden ondersteund in Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: fbc4628ff3d3d7d90f7ec2c47c87f7afa3e9cd43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: edb978e27621cbc0df66ab32ba7472629c3f8bd1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028834"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686928"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Verschillen in Transact-SQL oplossen tijdens de migratie naar SQL Database
 
@@ -57,7 +57,7 @@ Naast Transact-SQL-instructies die betrekking hebben op de niet-ondersteunde fun
 - Functies: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
 - Hardware: syntaxis met betrekking tot hardware-gerelateerde server instellingen: zoals geheugen, worker-threads, CPU-affiniteit, tracerings vlaggen. Gebruik in plaats daarvan service lagen en reken grootten.
 - `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` en vier deel namen
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`en vier delen van namen
 - .NET Framework: CLR-integratie met SQL Server
 - Semantische zoekopdrachten
 - Server referenties: gebruik in plaats daarvan [Data Base-bereik referenties](https://msdn.microsoft.com/library/mt270260.aspx) .
@@ -78,11 +78,11 @@ Naast Transact-SQL-instructies die betrekking hebben op de niet-ondersteunde fun
 
 ## <a name="full-transact-sql-reference"></a>Volledige naslaginformatie voor Transact-SQL
 
-Zie [Transact-SQL Reference (data base-engine)](https://msdn.microsoft.com/library/bb510741.aspx) In SQL Server Books Online (Engelstalig) voor meer informatie over Transact-SQL-grammatica,-gebruik en-voor beelden.
+Zie [Transact-SQL Reference (data base-engine)](https://msdn.microsoft.com/library/bb510741.aspx) in SQL Server Books Online voor meer informatie over de grammatica, het gebruik en de voor beelden van Transact-SQL.
 
 ### <a name="about-the-applies-to-tags"></a>Over het label 'Van toepassing op'
 
-De Transact-SQL-Naslag informatie bevat artikelen die betrekking hebben op SQL Server versies 2008 van de huidige versie. Onder de titel van het artikel bevindt zich een pictogram balk met de vier SQL Server-platformen en wordt de toepasselijkheid aangegeven. Beschikbaarheidsgroepen zijn bijvoorbeeld geïntroduceerd in SQL Server 2012. De @no__t [groep met beschikbaarheids groepen maken](https://msdn.microsoft.com/library/ff878399.aspx)-1article geeft aan dat de instructie van toepassing is op **SQL Server (te beginnen met 2012)** . De instructie is niet van toepassing op SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse en Parallel Data Warehouse.
+De Transact-SQL-Naslag informatie bevat artikelen die betrekking hebben op SQL Server versies 2008 van de huidige versie. Onder de titel van het artikel bevindt zich een pictogram balk met de vier SQL Server-platformen en wordt de toepasselijkheid aangegeven. Beschikbaarheidsgroepen zijn bijvoorbeeld geïntroduceerd in SQL Server 2012. In het artikel [beschikbaarheids groep maken](https://msdn.microsoft.com/library/ff878399.aspx) wordt aangegeven dat de instructie van toepassing is op **SQL Server (te beginnen met 2012)** . De instructie is niet van toepassing op SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse en Parallel Data Warehouse.
 
 In sommige gevallen kan het algemene onderwerp van een artikel in een product worden gebruikt, maar er zijn kleine verschillen tussen producten. De verschillen worden als toepasselijk aangegeven op middel punt in het artikel. In sommige gevallen kan het algemene onderwerp van een artikel in een product worden gebruikt, maar er zijn kleine verschillen tussen producten. De verschillen worden als toepasselijk aangegeven op middel punt in het artikel. Het artikel CREATE TRIGGER is bijvoorbeeld beschikbaar in SQL Database. Maar de optie **alle server** voor triggers op server niveau geeft aan dat triggers op server niveau niet kunnen worden gebruikt in SQL database. Gebruik in plaats daarvan triggers op database niveau.
 

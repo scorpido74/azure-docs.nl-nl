@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren | Microsoft Docs
+title: Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren
 description: Gebruik Azure Data Factory om gegevens van een on-premises Netezza-server naar Azure te migreren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 9ea8326b10536cb91b9dc67f637664f0fc055e74
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c5b36a04501b417af4e4527968a082da8a061804
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122837"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675808"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory gebruiken om gegevens van een on-premises Netezza-server naar Azure te migreren 
 
@@ -62,7 +62,7 @@ Als u niet wilt dat gegevens worden overgedragen via het open bare Internet, kun
 
 In de volgende sectie wordt beschreven hoe u betere beveiliging kunt krijgen.
 
-## <a name="solution-architecture"></a>Oplossingsarchitectuur
+## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
 In deze sectie worden twee manieren beschreven om uw gegevens te migreren.
 
@@ -120,9 +120,9 @@ Het voor gaande diagram kan als volgt worden geïnterpreteerd:
 
 Voor kleine tabellen (dat wil zeggen: tabellen met een volume kleiner dan 100 GB of die binnen twee uur naar Azure kunnen worden gemigreerd), kunt u elke taak voor het laden van gegevens per tabel maken. Voor een hogere door Voer kunt u meerdere Azure Data Factory Kopieer taken uitvoeren om afzonderlijke tabellen gelijktijdig te laden. 
 
-U kunt binnen elke Kopieer taak parallelle query's uitvoeren en gegevens kopiëren per partitie, maar ook een zekere mate van parallellisme bereiken met behulp van de [ `parallelCopies` instelling](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) van de eigenschap met een van de volgende opties voor de gegevens partitie:
+U kunt binnen elke Kopieer taak parallelle query's uitvoeren en gegevens kopiëren per partitie, maar ook een zekere mate van parallellisme bereiken met behulp van de instelling van de [eigenschap`parallelCopies`](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) met een van de volgende opties voor de gegevens partitie:
 
-- Voor een grotere efficiëntie kunt u het beste beginnen met een gegevens segment.  Zorg ervoor dat de waarde in de `parallelCopies` instelling lager is dan het totale aantal gegevens segment partities in de tabel op de Netezza-server.  
+- Voor een grotere efficiëntie kunt u het beste beginnen met een gegevens segment.  Zorg ervoor dat de waarde in de `parallelCopies` instelling kleiner is dan het totale aantal gegevens segment partities in de tabel op de Netezza-server.  
 
 - Als het volume van elke gegevens segment partitie nog steeds groot is (bijvoorbeeld 10 GB of meer), raden we u aan om over te scha kelen naar een dynamische bereik partitie. Deze optie biedt meer flexibiliteit voor het definiëren van het aantal partities en het volume van elke partitie per partitie kolom, bovengrens en ondergrens.
 
@@ -156,7 +156,7 @@ Als deze niet binnen twee uur in azure kan worden geladen en de capaciteit van h
 
 Bewaak het CPU-en geheugen gebruik op de zelf-hostende IR-computer en bereid u voor om de machine te schalen of uit te breiden naar meerdere machines wanneer u ziet dat de CPU en het geheugen volledig worden gebruikt. 
 
-Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Factory Kopieer activiteit, verlaagt u `parallelCopies` de gelijktijdigheid of instelling in azure Data Factory, of overweegt u de limieten voor de band breedte of I/O-bewerkingen per seconde (IOPS) van het netwerk te verhogen en gegevens archieven. 
+Wanneer u vertragings fouten ondervindt, zoals gerapporteerd door Azure Data Factory Kopieer activiteit, verlaagt u de gelijktijdigheids-of `parallelCopies` instelling in Azure Data Factory of overweegt u de limieten voor de band breedte of I/O-bewerkingen per seconde (IOPS) van het netwerk en de gegevens te verhogen opslaat. 
 
 
 ### <a name="estimate-your-pricing"></a>Uw prijzen ramen 
@@ -173,7 +173,7 @@ We gaan ervan uit dat de volgende instructies waar zijn:
 
 - Het volume van 50 TB is onderverdeeld in 500-partities en elke Kopieer activiteit verplaatst één partitie.
 
-- Elke Kopieer activiteit wordt geconfigureerd met één zelf-hostende IR op vier computers en een door Voer van 20 Mega bytes per seconde (MBps). (In de Kopieer activiteit `parallelCopies` is ingesteld op 4 en elke thread voor het laden van gegevens uit de tabel behaalt een door Voer van 5 Mbps.)
+- Elke Kopieer activiteit wordt geconfigureerd met één zelf-hostende IR op vier computers en een door Voer van 20 Mega bytes per seconde (MBps). (In de Kopieer activiteit is `parallelCopies` ingesteld op 4 en elke thread voor het laden van gegevens uit de tabel behaalt een door Voer van 5 MBps.)
 
 - De gelijktijdigheid van ForEach is ingesteld op 3 en de geaggregeerde door Voer is 60 MBps.
 

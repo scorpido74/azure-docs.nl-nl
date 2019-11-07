@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met query's voor meerdere data bases (verticaal partitioneren) | Microsoft Docs
+title: Aan de slag met query's voor meerdere data bases (verticaal partitioneren)
 description: query's voor Elastic Data Base gebruiken met verticaal gepartitioneerde data bases
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a6a87f90586dc4392dc1304a83349bc386590ee4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b6d9ba0c57850c61626d7b6d99fcb1fffc2d3c25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568598"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690398"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Aan de slag met query's voor meerdere data bases (verticaal partitioneren) (preview)
 
@@ -73,7 +73,7 @@ Voer nu de volgende query uit op de **klanten** database om de tabel **CustomerI
     De gebruikers naam en het wacht woord moeten de gebruikers naam en het wacht woord zijn die worden gebruikt om u aan te melden bij de klanten database.
     Verificatie met behulp van Azure Active Directory met elastische query's wordt momenteel niet ondersteund.
 
-### <a name="external-data-sources"></a>Externe gegevensbronnen
+### <a name="external-data-sources"></a>Externe gegevens bronnen
 
 Als u een externe gegevens bron wilt maken, voert u de volgende opdracht uit in de data base orders:
 
@@ -116,4 +116,4 @@ Zie [SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-datab
 * Zie query's [uitvoeren op verticaal gepartitioneerde gegevens](sql-database-elastic-query-vertical-partitioning.md) voor syntaxis-en voorbeeld query's voor verticaal gepartitioneerde gegevens)
 * Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](sql-database-elastic-query-getting-started.md)voor een zelf studie over horizontale partitionering (sharding).
 * Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](sql-database-elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [extern\_ uitvoeren\_van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.

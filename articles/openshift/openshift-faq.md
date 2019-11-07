@@ -7,27 +7,17 @@ ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/04/2019
+ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249219"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582402"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Veelgestelde vragen over Azure Red Hat open Shift
 
 In dit artikel vindt u veelgestelde vragen over Microsoft Azure Red Hat open SHIFT.
-
-## <a name="how-do-i-get-started"></a>Hoe kan ik beginnen?
-
-Voordat u Azure Red Hat open Shift kunt gebruiken, moet u Mini maal 4 door Azure Red Hat open Shift gereserveerde toepassings knooppunten kopen.
-
-Als u een Azure-klant bent, kunt u voor[Azure Red Hat open Shift gereserveerde instanties aanschaffen](https://aka.ms/openshift/buy) via de Azure Portal. Na de aankoop wordt uw abonnement binnen 24 uur geactiveerd, waarna u clusters kunt inrichten.
-
-Als u geen Azure-klant bent, [neemt u contact op met de verkoop cijfers](https://aka.ms/openshift/contact-sales) en vult u het formulier Verkoop in onder aan de pagina om het proces te starten.
-
-Raadpleeg de [pagina met prijzen voor Azure Red Hat open Shift](https://aka.ms/openshift/pricing) voor meer informatie.
 
 ## <a name="which-azure-regions-are-supported"></a>Welke Azure-regio's worden ondersteund?
 
@@ -39,7 +29,7 @@ Nee. Maar u kunt een Azure Red Hat open Shift-cluster verbinden met een bestaand
 
 ## <a name="what-cluster-operations-are-available"></a>Welke cluster bewerkingen zijn beschikbaar?
 
-U kunt het aantal reken knooppunten alleen omhoog of omlaag schalen. Andere wijzigingen zijn niet toegestaan in de `Microsoft.ContainerService/openShiftManagedClusters`-Resource nadat deze is gemaakt. Het maximum aantal reken knooppunten is beperkt tot 20.
+U kunt het aantal reken knooppunten alleen omhoog of omlaag schalen. Er zijn geen andere wijzigingen toegestaan aan de `Microsoft.ContainerService/openShiftManagedClusters` resource nadat deze is gemaakt. Het maximum aantal reken knooppunten is beperkt tot 20.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Welke groottes voor virtuele machines kan ik gebruiken?
 
@@ -59,11 +49,11 @@ Nee, niet op huidige tijd.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Is het docker-REGI ster extern beschikbaar, zodat ik hulpprogram ma's zoals Jenkins kan gebruiken?
 
-Het docker-REGI ster is beschikbaar via `https://docker-registry.apps.<clustername>.<region>.azmosa.io/`, maar er is geen krachtige garantie voor de duurzaamheid van opslag. U kunt ook [Azure container Registry](https://azure.microsoft.com/services/container-registry/)gebruiken.
+Het docker-REGI ster is beschikbaar via `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` echter, er is geen krachtige garantie voor de duurzaamheid van opslag. U kunt ook [Azure container Registry](https://azure.microsoft.com/services/container-registry/)gebruiken.
 
 ## <a name="is-cross-namespace-networking-supported"></a>Wordt meerdere naam ruimte netwerken ondersteund?
 
-Klanten en afzonderlijke project beheerders kunnen meerdere naam ruimte netwerken (inclusief het weigeren) aanpassen op basis van een per project, met behulp van `NetworkPolicy`-objecten.
+Klanten en afzonderlijke project beheerders kunnen meerdere naam ruimte netwerken (inclusief het weigeren) aanpassen per project met behulp van `NetworkPolicy`-objecten.
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>Kan een beheerder gebruikers en quota's beheren?
 
@@ -85,15 +75,15 @@ Nee. Alle resources, inclusief de cluster Master, worden uitgevoerd in uw klant 
 
 Ja. U kunt OSBA gebruiken met Azure Red Hat open SHIFT. Zie [Service Broker voor Azure openen](https://github.com/Azure/open-service-broker-azure#openshift-project-template) voor meer informatie.
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Ik probeer te koppelen aan een virtueel netwerk in een ander abonnement, maar `Failed to get vnet CIDR`-fout.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Ik probeer te koppelen aan een virtueel netwerk in een ander abonnement, maar `Failed to get vnet CIDR` fout.
 
-Zorg er in het abonnement met het virtuele netwerk voor dat u `Microsoft.ContainerService`-provider wilt registreren met `az provider register -n Microsoft.ContainerService --wait` 
+Zorg er in het abonnement met het virtuele netwerk voor dat u `Microsoft.ContainerService` provider registreert bij `az provider register -n Microsoft.ContainerService --wait` 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Wat is het onderhouds proces van Azure Red Hat open Shift (ARO)?
 
 Er zijn drie soorten onderhoud voor ARO: upgrades, back-ups maken en herstellen van etcd-gegevens en door de Cloud provider geïnitieerd onderhoud.
 
-+ Upgrades zijn onder andere software-upgrades en CVEs. CVE herbemiddeling vindt plaats bij het opstarten door `yum update` uit te voeren en biedt onmiddellijke beperking.  Op parallelle manier wordt een nieuwe installatie kopie gemaakt voor het maken van een nieuw cluster.
++ Upgrades zijn onder andere software-upgrades en CVEs. CVE herstel vindt plaats bij het opstarten door `yum update` uit te voeren en biedt onmiddellijke beperking.  Op parallelle manier wordt een nieuwe installatie kopie gemaakt voor het maken van een nieuw cluster.
 
 + Het maken en beheren van etcd-gegevens is een geautomatiseerd proces waarvoor mogelijk downtime van het cluster nodig is, afhankelijk van de actie. Als de etcd-data base wordt hersteld vanuit een back-up, zal er downtime zijn. Er wordt een back-up van etcd elk uur gemaakt en de laatste 6 uur van de back-ups worden bewaard.
 

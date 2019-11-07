@@ -1,5 +1,5 @@
 ---
-title: Uittreding van Azure SQL Database Premium RS service tier | Microsoft Docs
+title: Uittreding van Azure SQL Database Premium RS service tier
 description: De servicelaag van Premium RS wordt buiten gebruik gesteld en de ondersteuning wordt beëindigd. Zie migratie opties.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
-ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 688fd3fdefb54fc25d5236277c85dd4262df5f34
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566644"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687243"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database Premium RS servicelaag (preview) wordt buiten gebruik gesteld-opties voor migratie
 

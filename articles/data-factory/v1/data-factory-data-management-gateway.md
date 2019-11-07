@@ -1,5 +1,5 @@
 ---
-title: Data Management Gateway voor Data Factory | Microsoft Docs
+title: Data Management Gateway voor Data Factory
 description: Stel een gegevens gateway in om gegevens te verplaatsen tussen on-premises en de Cloud. Gebruik Data Management Gateway in Azure Data Factory om uw gegevens te verplaatsen.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0e4cf8802f9f12774f03199b76b58cb494f1c439
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162732"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682715"
 ---
 # <a name="data-management-gateway"></a>Gegevensbeheergateway
 > [!NOTE]
@@ -71,7 +71,7 @@ Dit is de gegevens stroom op hoog niveau voor en een samen vatting van de stappe
 * Behandel uw gegevens bron als een on-premises gegevens bron (die zich achter een firewall bevindt), zelfs wanneer u **ExpressRoute**gebruikt. Gebruik de gateway om connectiviteit tussen de service en de gegevens bron tot stand te brengen.
 * U moet **de gateway ook gebruiken** als het gegevens archief zich in de Cloud op een **Azure IaaS VM**bevindt.
 
-## <a name="installation"></a>Installatie
+## <a name="installation"></a>Installeren
 ### <a name="prerequisites"></a>Vereisten
 * De ondersteunde **besturingssysteem** versies zijn Windows 7, Windows 8/8.1, Windows 10, windows server 2008 R2, windows server 2012, windows server 2012 R2. De installatie van de Data Management Gateway op een domein controller wordt momenteel niet ondersteund.
 * .NET Framework 4.5.1 of hoger is vereist. Als u de gateway installeert op een Windows 7-computer, installeert u .NET Framework 4,5 of hoger. Zie [.NET Framework systeem vereisten](https://msdn.microsoft.com/library/8z6watww.aspx) voor meer informatie.
@@ -252,7 +252,7 @@ Als u een firewall van derden gebruikt, kunt u de poort 8050 hand matig openen. 
 
 Als u ervoor kiest om poort 8050 op de gateway computer niet te openen, gebruikt u andere mechanismen dan het gebruik van de **instelling Referenties instellen** om referenties voor het gegevens archief te configureren. U kunt bijvoorbeeld de Power shell [-cmdlet New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) gebruiken. Zie de sectie referenties en beveiliging instellen voor informatie over hoe gegevens archiefbestanden kunnen worden ingesteld.
 
-## <a name="update"></a>Bijwerken
+## <a name="update"></a>Update
 Data Management Gateway wordt standaard automatisch bijgewerkt wanneer er een nieuwere versie van de gateway beschikbaar is. De gateway wordt pas bijgewerkt als alle geplande taken zijn uitgevoerd. Er worden geen verdere taken verwerkt door de gateway totdat de update bewerking is voltooid. Als de update mislukt, wordt de gateway teruggezet naar de oude versie.
 
 U ziet de geplande update tijd op de volgende locaties:
@@ -306,7 +306,7 @@ U kunt de functie voor automatisch bijwerken uitschakelen of inschakelen door de
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>Configuration Manager
+## <a name="configuration-manager"></a>Configuratiebeheer
 Nadat u de gateway hebt geïnstalleerd, kunt u Data Management Gateway Configuration Manager op een van de volgende manieren starten:
 
 1. Typ in het venster **zoeken** **Data Management Gateway** voor toegang tot dit hulp programma.
@@ -367,7 +367,7 @@ Bewakings eigenschap | Beschrijving
 :------------------ | :----------
 Naam | De naam van de logische gateway en knoop punten die zijn gekoppeld aan de gateway. Knoop punt is een on-premises Windows-computer waarop de gateway is geïnstalleerd. Zie [Data Management Gateway-hoge Beschik baarheid en schaal baarheid](data-factory-data-management-gateway-high-availability-scalability.md)voor meer informatie over het gebruik van meer dan één knoop punt (Maxi maal vier knoop punten) in één logische gateway.
 Status | Status van de logische gateway en de gateway knooppunten. Voor beeld: online/offline/beperkt/etc. Zie de sectie [Gateway status](#gateway-status) voor meer informatie over deze statussen.
-Version | Hier wordt de versie van de logische gateway en elk gateway knooppunt weer gegeven. De versie van de logische gateway wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de installatie van de logische gateway zijn, hebben alleen de knoop punten met hetzelfde versie nummer als de logische gateway goed functioneren. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt).
+Versie | Hier wordt de versie van de logische gateway en elk gateway knooppunt weer gegeven. De versie van de logische gateway wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de installatie van de logische gateway zijn, hebben alleen de knoop punten met hetzelfde versie nummer als de logische gateway goed functioneren. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt).
 Beschikbaar geheugen | Beschikbaar geheugen op een gateway-knoop punt. Deze waarde is een bijna realtime moment opname.
 CPU-gebruik | CPU-gebruik van een gateway knooppunt. Deze waarde is een bijna realtime moment opname.
 Netwerken (in/uit) | Netwerk gebruik van een gateway-knoop punt. Deze waarde is een bijna realtime moment opname.
@@ -421,7 +421,7 @@ In deze sectie worden de stappen beschreven voor het verplaatsen van de Gateway-
     ![Pagina configureren](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. Zorg dat de **micro soft-Data Management Gateway Configuration Manager** geopend.
 
-    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    ![Configuratiebeheer](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. Klik op de pagina **configureren** in de portal op **sleutel opnieuw maken** op de opdracht balk en klik op **Ja** voor het waarschuwings bericht. Klik op de **knop kopiëren** naast de sleutel tekst die de sleutel naar het klem bord kopieert. De gateway op de oude computer werkt niet meer nadat u de sleutel opnieuw hebt gemaakt.
 
     ![Sleutel opnieuw maken](./media/data-factory-data-management-gateway/RecreateKey.png)

@@ -1,26 +1,26 @@
 ---
-title: Configureren van instellingen voor Azure Media Clipper toetsenbord | Microsoft Docs
-description: Stappen voor het instellen van configureerbare sneltoetsen voor Azure Media Clipper
+title: Instellingen voor Azure media Clipper-toetsen bord configureren | Microsoft Docs
+description: Stappen voor het instellen van Configureer bare sneltoetsen voor Azure media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: clip; subclip; code ring; media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 2eb32b8ec265a4afa2581374c1f07ac06958a576
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013ca640d30baceeb41e9cb38fab69020b3c50dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466103"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685069"
 ---
-# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Sneltoetsen voor Azure Media Clipper configureren 
+# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Sneltoetsen voor Azure media Clipper configureren 
 
-Azure Media Clipper biedt ondersteuning voor de standaardsneltoetsen aanpassen door op te geven een optionele `keymap` JSON-parameter.
+Azure media Clipper ondersteunt het aanpassen van de standaard snel toetsen door een optionele `keymap` JSON-para meter op te geven.
 
-Het volgende voorbeeld-JSON ziet u de standaardsneltoetsen. U kunt deze instellingen aanpassen door het wijzigen van de velden voor sleutels en het doorgeven van de parameter bij het initialiseren van de Clipper.
+De volgende voor beeld-JSON illustreert de standaard snel toetsen. U kunt deze instellingen aanpassen door de sleutel velden te wijzigen en in de para meter door te geven bij het initialiseren van de Clipper.
 
 ```json
 {

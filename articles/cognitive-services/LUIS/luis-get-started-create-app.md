@@ -9,16 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 4acf6e4df978ffee6e0f8320bafbb64994aa0639
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495392"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73613739"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Snelstart: Een vooraf gemaakte app voor huisautomatisering gebruiken
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 In deze snelstart maakt u een LUIS-app die gebruikmaakt van het vooraf gemaakte domein `HomeAutomation` voor het in- en uitschakelen van lichten en apparaten. Dit vooraf gemaakte domein biedt u intenties, entiteiten voorbeelden van utterances. Wanneer u klaar bent, hebt u een LUIS-eindpunt in de cloud.
 
@@ -28,6 +30,8 @@ Voor dit artikel hebt u een gratis LUIS-account nodig, dat u kunt maken in de LU
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
+[!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
+
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 U kunt uw toepassingen maken en beheren in **Mijn apps**. 
 
@@ -35,7 +39,7 @@ U kunt uw toepassingen maken en beheren in **Mijn apps**.
 
     ![Selecteer in de LUIS-Portal in de lijst mijn apps de optie + maken.](./media/create-app-in-portal.png)
 
-1. Geef in het dialoog venster de naam van uw toepassing `Home Automation` Selecteer vervolgens **gereed**. LUIS maakt de app.
+1. Geef in het dialoog venster de naam van uw toepassing `Home Automation` Selecteer vervolgens **gereed**. LUIS maakt de app. De beschrijving is optioneel en wordt niet gebruikt voor ontwerpen of voor spellingen. De Voorspellings bron is ook optioneel bij het maken van een LUIS-app. Wanneer u uw app naar productie publiceert, moet u een Voorspellings resource toewijzen, zodat uw app veel aanvragen kan verwerken.  
 
     ![Geef in het dialoog venster de naam Start Automation van uw toepassing op](./media/create-new-app-details.png)
 
@@ -65,7 +69,7 @@ Selecteer de intentie **HomeAutomation.TurnOff**. U kunt zien dat de intentie ee
 
 ## <a name="train-the-luis-app"></a>LUIS-app inleren
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Uw app testen
 Nadat u uw app hebt getraind, kunt u deze testen. Selecteer **testen**. Typ een test utterance zoals `Turn off the lights` in het deel venster interactieve test en druk op ENTER. 
@@ -114,7 +118,25 @@ Selecteer **Test** nogmaals om het deelvenster samen te vouwen.
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.967174649
+                    "score": 0.984315455
+                },
+                "HomeAutomation.QueryState": {
+                    "score": 0.009912962
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.00626645749
+                },
+                "HomeAutomation.TurnUp": {
+                    "score": 0.00572059769
+                },
+                "HomeAutomation.SetDevice": {
+                    "score": 0.00379381469
+                },
+                "HomeAutomation.TurnOn": {
+                    "score": 0.00366983772
+                },
+                "None": {
+                    "score": 0.000623856
                 }
             },
             "entities": {
@@ -138,7 +160,7 @@ Selecteer **Test** nogmaals om het deelvenster samen te vouwen.
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.9494325,
+                            "score": 0.907323956,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

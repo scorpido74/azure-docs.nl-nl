@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure SQL Data Warehouse | Microsoft Docs
+title: Verbinding maken met Azure SQL Data Warehouse
 description: Maak verbinding met Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 71f5c8ca56bc188c0664604a78c38a05be3c3b01
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5a14b99753c9f06f2e0cf32dd8b5c7776cfdad89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479736"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685872"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Verbinding maken met Azure SQL Data Warehouse
 Maak verbinding met Azure SQL Data Warehouse.
@@ -61,7 +62,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>Verbindingsinstellingen
 SQL Data Warehouse standaardiseert enkele instellingen tijdens het maken van de verbinding en het maken van objecten. Deze instellingen kunnen niet worden overschreven, en omvatten:
 
-| Database-instelling | Value |
+| Database-instelling | Waarde |
 |:--- |:--- |
 | [ANSI_NULLS][ANSI_NULLS] |AAN |
 | [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |AAN |

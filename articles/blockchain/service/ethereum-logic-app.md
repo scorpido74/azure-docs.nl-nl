@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/14/2019
-ms.topic: tutorial
+ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: cff1085d14f2f849134b0b6f602e272fbb5bc561
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: bb23d6b9b42e1c51646765255870a14a1b5d39f7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329278"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579943"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>De Ethereum Block Chain-connector gebruiken met Azure Logic Apps
 
@@ -138,7 +138,7 @@ Met de volgende stappen wordt bijvoorbeeld een op REST gebaseerde micro service 
 
     ![Deel venster Logic Apps Designer met de HTTP POST-URL](./media/ethereum-logic-app/post-url.png)
 
-1. Gebruik krul om een HTTP POST-aanvraag te maken. Vervang de tekst van de tijdelijke aanduiding *\<HTTP post-URL @ no__t-2* door de URL van de vorige stap.
+1. Gebruik krul om een HTTP POST-aanvraag te maken. Vervang de tekst van de tijdelijke aanduiding *\<URL voor HTTP POST\>* door de URL van de vorige stap.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -182,7 +182,7 @@ Het RPC-eindpunt adres van de Azure Block Chain-service is vereist om verbinding
 
 **Als u de Azure Portal wilt gebruiken:**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Ga naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
 
     ![Pagina transactie knooppunten met de (standaard knooppunt) selectie](./media/ethereum-logic-app/transaction-nodes.png)

@@ -1,6 +1,6 @@
 ---
-title: Terabytes aan gegevens laden in SQL Data Warehouse | Microsoft Docs
-description: Laat zien hoe 1 TB aan gegevens kunnen worden geladen in Azure SQL Data Warehouse minder dan 15 minuten met Azure Data Factory
+title: Terabytes aan gegevens in SQL Data Warehouse laden
+description: Laat zien hoe 1 TB aan gegevens binnen 15 minuten in Azure SQL Data Warehouse kan worden geladen met Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,75 +13,75 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 50a653648f3ae4b40e0bfe2c6f168cfb890bcc59
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 05dcff2276a799b1debc76e4f85fbbac6606eb59
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839095"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682552"
 ---
-# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB laden in Azure SQL Data Warehouse minder dan 15 minuten met Data Factory
+# <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB onder 15 minuten aan Azure SQL Data Warehouse laden met Data Factory
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens kopiëren naar of van Azure SQL Data Warehouse met behulp van Data Factory](../connector-azure-sql-data-warehouse.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [gegevens kopiëren naar of van Azure SQL data warehouse met behulp van Data Factory](../connector-azure-sql-data-warehouse.md).
 
 
-[Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een cloud-gebaseerde, scale-out database staat van de verwerking van grote hoeveelheden relationele en niet-relationele gegevens.  Gebouwd op een aanzienlijke parallelle verwerkingsarchitectuur (MPP) en is SQL Data Warehouse geoptimaliseerd voor werkbelastingen van datawarehouses enterprise.  Cloudflexibiliteit biedt de flexibiliteit om te schalen storage en compute-onafhankelijk van elkaar.
+[Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een op de cloud gebaseerde, scale-out data base waarmee grote hoeveel heden gegevens kunnen worden verwerkt, zowel relationele als niet-relationeel.  SQL Data Warehouse is gebouwd op een enorm parallelle verwerkings architectuur (MPP) en is geoptimaliseerd voor bedrijfsdata Warehouse-workloads.  De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
 
-Aan de slag met Azure SQL Data Warehouse is nu eenvoudiger dan ooit met behulp van **Azure Data Factory**.  Azure Data Factory is een volledig beheerde cloud-gebaseerde service voor gegevensintegratie, die kan worden gebruikt voor het vullen van een SQL Data Warehouse met de gegevens van uw bestaande systeem en bespaart u kostbare tijd bij het evalueren van SQL Data Warehouse en het bouwen van uw analyses oplossingen. Hier volgen de belangrijkste voordelen van het laden van gegevens in Azure SQL Data Warehouse met behulp van Azure Data Factory:
+Aan de slag met Azure SQL Data Warehouse is nu eenvoudiger dan ooit gebruik te maken van **Azure Data Factory**.  Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud, die kan worden gebruikt voor het vullen van een SQL Data Warehouse met de gegevens van uw bestaande systeem en het besparen van uw kost bare tijd bij het evalueren van SQL Data Warehouse en het bouwen van uw analyse nodige. Hier volgen de belangrijkste voor delen van het laden van gegevens in Azure SQL Data Warehouse met behulp van Azure Data Factory:
 
-* **Eenvoudig**: 5-stap intuïtieve wizard met geen scripts vereist.
-* **Uitgebreide ondersteuning voor gegevensopslag**: ingebouwde ondersteuning voor een uitgebreide set on-premises en cloud-gebaseerde gegevensarchieven.
-* **Beveiligd en compatibel**: gegevens worden overgedragen via HTTPS of ExpressRoute en global service aanwezigheid zorgt ervoor dat uw gegevens nooit de geografische grens verlaat
-* **Ongeëvenaarde prestaties met behulp van PolyBase** – met behulp van Polybase is de meest efficiënte manier om gegevens te verplaatsen naar Azure SQL Data Warehouse. Met behulp van de staging blob-functie, kunt u hoge belasting snelheden vanuit allerlei typen gegevensarchieven naast Azure Blob-opslag, waarmee de Polybase biedt standaard ondersteuning voor bereiken.
+* **Eenvoudig in te stellen**: 5-stap intuïtieve wizard zonder scripting vereist.
+* **Ondersteuning voor uitgebreide gegevens opslag**: ingebouwde ondersteuning voor een uitgebreide set on-premises en cloud-gebaseerde gegevens archieven.
+* **Beveiligd en compatibel**: gegevens worden overgebracht via https of ExpressRoute, en wereld wijde service-aanwezigheid zorgt ervoor dat uw gegevens nooit de geografische grens verlaten
+* **Ongeëvenaarde prestaties met poly base** – het gebruik van poly Base is de meest efficiënte manier om gegevens naar Azure SQL Data Warehouse te verplaatsen. Met behulp van de functie voor het maken van een staging-BLOB kunt u hoge laad snelheden realiseren van alle typen gegevens opslag, behalve voor Azure Blob Storage, die standaard door poly Base wordt ondersteund.
 
-Dit artikel ziet u hoe u de Kopieerwizard van Data Factory met 1 TB gegevens uit Azure Blob-opslag laden in Azure SQL Data Warehouse in minder dan 15 minuten, met meer dan 1,2 GBps-doorvoer.
+Dit artikel laat u zien hoe u met behulp van Data Factory wizard kopiëren 1 TB gegevens vanaf Azure Blob Storage in Azure SQL Data Warehouse binnen 15 minuten kunt laden, bij een door Voer van meer dan 1,2 GBps.
 
-In dit artikel bevat stapsgewijze instructies voor het verplaatsen van gegevens in Azure SQL Data Warehouse met behulp van de Wizard kopiëren.
+In dit artikel vindt u stapsgewijze instructies voor het verplaatsen van gegevens naar Azure SQL Data Warehouse met behulp van de wizard kopiëren.
 
 > [!NOTE]
->  Raadpleeg voor algemene informatie over de mogelijkheden van Data Factory in om gegevens te verplaatsen naar/van Azure SQL Data Warehouse [verplaatsen van gegevens en naar Azure SQL Data Warehouse met behulp van Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) artikel.
+>  Zie voor algemene informatie over de mogelijkheden van Data Factory bij het verplaatsen van gegevens naar/van Azure SQL Data Warehouse [gegevens verplaatsen naar en van Azure SQL data warehouse met behulp van Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) -artikel.
 >
-> U kunt ook bouwen van pijplijnen met behulp van Visual Studio, PowerShell, enzovoort. Zie [zelfstudie: Gegevens kopiëren van Azure-Blob naar Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor een snel overzicht met stapsgewijze instructies voor het gebruik van de Kopieeractiviteit in Azure Data Factory.  
+> U kunt ook pijp lijnen maken met behulp van Visual Studio, Power shell, enzovoort. Zie [zelf studie: gegevens kopiëren van Azure Blob naar Azure SQL database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor een snelle walkthrough met stapsgewijze instructies voor het gebruik van de Kopieer activiteit in azure Data Factory.  
 >
 >
 
 ## <a name="prerequisites"></a>Vereisten
-* Azure Blob Storage: dit experiment maakt gebruik van Azure Blob-opslag (GRS) voor het opslaan van TPC-H testen gegevensset.  Als u een Azure storage-account hebt, krijgt u informatie [over het maken van een storage-account](../../storage/common/storage-quickstart-create-account.md).
-* [TPC-H](http://www.tpc.org/tpch/) gegevens: we gaan TPC-H gebruiken als de tests gegevensset.  Om dit te doen, moet u gebruiken `dbgen` van TPC-H toolkit, waarmee u de gegevensset te genereren.  U kunt de broncode voor downloaden `dbgen` van [TPC-hulpprogramma's](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) en zelf samenstellen, of downloaden van het gecompileerde binaire bestand van [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools).  Dbgen.exe uitvoeren met de volgende opdrachten voor het genereren van plat bestand 1 TB voor `lineitem` tabel verspreid over 10 bestanden:
+* Azure-Blob Storage: dit experiment maakt gebruik van Azure Blob Storage (GRS) voor het opslaan van de gegevensset van de TPC-H-test.  Als u geen Azure Storage-account hebt, leert u [hoe u een opslag account maakt](../../storage/common/storage-quickstart-create-account.md).
+* [TPC-h-](http://www.tpc.org/tpch/) gegevens: we gaan TPC-h gebruiken als de gegevensset voor testen.  Hiervoor moet u `dbgen` van de TPC-H Toolkit gebruiken, waarmee u de gegevensset kunt genereren.  U kunt de bron code voor `dbgen` van de [TPC-Hulpprogram ma's](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) downloaden en zelf compileren of het gecompileerde binaire bestand downloaden uit [github](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools).  Voer dbgen. exe uit met de volgende opdrachten om een plat bestand van 1 TB te genereren voor `lineitem` tabel verdeeld over 10 bestanden:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
-  * …
+  * ...
   * `Dbgen -s 1000 -S **10** -C 10 -T L -v`
 
-    Nu de gegenereerde bestanden kopiëren naar Azure-Blob.  Raadpleeg [verplaatsen van gegevens en naar een on-premises bestandssysteem met behulp van Azure Data Factory](data-factory-onprem-file-system-connector.md) voor hoe u dat doet met ADF-kopie.    
-* Azure SQL datawarehouse: dit experiment laadt gegevens in Azure SQL Data Warehouse gemaakt met 6000 dwu 's
+    Kopieer nu de gegenereerde bestanden naar Azure Blob.  Raadpleeg voor meer informatie over het [verplaatsen van gegevens naar en van een on-premises bestands systeem met behulp van Azure Data Factory](data-factory-onprem-file-system-connector.md) om dat te doen met behulp van ADF copy.    
+* Azure SQL Data Warehouse: in dit experiment worden gegevens geladen in Azure SQL Data Warehouse gemaakt met 6.000 Dwu's
 
-    Raadpleeg [maken van een Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) voor gedetailleerde instructies voor het maken van een SQL Data Warehouse-database.  Als u de best mogelijke load-prestaties in SQL Data Warehouse met Polybase, kiezen wij maximumaantal Data Warehouse Units (dwu's) zijn toegestaan in de instelling van de prestaties, die 6000 dwu's.
+    Raadpleeg [een Azure SQL Data Warehouse maken](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) voor gedetailleerde instructies voor het maken van een SQL Data Warehouse-data base.  Om de best mogelijke laad prestaties te verkrijgen in SQL Data Warehouse met poly Base, kiezen we het maximum aantal data warehouse-eenheden (Dwu's) dat is toegestaan in de instelling prestaties, namelijk 6.000 Dwu's.
 
   > [!NOTE]
-  > Bij het laden van Azure-Blob, is het laden van prestaties van de gegevens rechtstreeks in verhouding met het aantal dwu's die u op de SQL Data Warehouse configureert:
+  > Bij het laden van Azure Blob, worden de prestaties van het laden van gegevens rechtstreeks in verhouding staan tot het aantal Dwu's dat u configureert op de SQL Data Warehouse:
   >
-  > Het laden van 1 TB in 1000 duurt DWU SQL Data Warehouse 87 minuten (~ 200 MBps doorvoer) het laden van 1 TB in 2000 DWU SQL Data Warehouse wordt 46 minuten (~ 380 MBps doorvoer) het laden van 1 TB in 6000 DWU SQL Data Warehouse duurt 14 minuten (doorvoer ~1.2 GBps)
+  > Het laden van 1 TB in 1.000 DWU SQL Data Warehouse duurt 87 minuten (~ 200 MBps door Voer) bij het laden van 1 TB in 2.000 DWU SQL Data Warehouse langer dan 46 minuten (~ 380 MBps door Voer) het laden van 1 TB in 6.000 DWU SQL Data Warehouse 14 minuten duren (~ 1,2 GBps door Voer)
   >
   >
 
-    Voor het maken van een SQL Data Warehouse met 6000 dwu's, de schuifregelaar prestaties helemaal naar rechts:
+    Als u een SQL Data Warehouse met 6.000 Dwu's wilt maken, moet u de schuif regelaar prestaties helemaal naar rechts verplaatsen:
 
-    ![Schuifregelaar voor prestaties](media/data-factory-load-sql-data-warehouse/performance-slider.png)
+    ![Schuif regelaar prestaties](media/data-factory-load-sql-data-warehouse/performance-slider.png)
 
-    Voor een bestaande database die niet is geconfigureerd met 6000 dwu's, kunt u de schaal met behulp van Azure portal.  Ga naar de database in Azure portal en er is een **schaal** knop in de **overzicht** deelvenster wordt weergegeven in de volgende afbeelding:
+    Voor een bestaande data base die niet is geconfigureerd met 6.000 Dwu's, kunt u deze schalen met behulp van Azure Portal.  Ga naar de data base in Azure Portal en er bevindt zich een knop **schalen** in het deel venster **overzicht** , dat wordt weer gegeven in de volgende afbeelding:
 
-    ![Knop voor schaal](media/data-factory-load-sql-data-warehouse/scale-button.png)    
+    ![Knop schalen](media/data-factory-load-sql-data-warehouse/scale-button.png)    
 
-    Klik op de **schaal** knop opent u het volgende deelvenster en klikt u op de schuifregelaar naar de maximale waarde **opslaan** knop.
+    Klik op de knop **schalen** om het volgende deel venster te openen, verplaats de schuif regelaar naar de maximum waarde en klik op de knop **Opslaan** .
 
-    ![Dialoogvenster schaal](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
+    ![Dialoog venster schalen](media/data-factory-load-sql-data-warehouse/scale-dialog.png)
 
-    Dit experiment gegevens in met behulp van Azure SQL Data Warehouse laadt `xlargerc` resourceklasse.
+    In dit experiment worden gegevens geladen in Azure SQL Data Warehouse met behulp van `xlargerc` resource klasse.
 
-    Voor het bereiken van de best mogelijke doorvoer up moet worden uitgevoerd met behulp van een SQL Data Warehouse-gebruiker die behoort tot `xlargerc` resourceklasse.  Leer hoe u dit doen door het volgende [wijzigen van een voorbeeld van een gebruiker resource klasse](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
-* Doelschema tabel maken in Azure SQL Data Warehouse-database door het uitvoeren van de volgende DDL-instructie:
+    Voor een optimale door voer moet kopiëren worden uitgevoerd met behulp van een SQL Data Warehouse-gebruiker die deel uitmaakt van `xlargerc` resource klasse.  Meer informatie over hoe u dit doet door [een voor beeld van een gebruikers resource klasse te wijzigen](../../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md).  
+* Maak een doel tabel schema in Azure SQL Data Warehouse data base door de volgende DDL-instructie uit te voeren:
 
     ```SQL  
     CREATE TABLE [dbo].[lineitem]
@@ -109,22 +109,22 @@ In dit artikel bevat stapsgewijze instructies voor het verplaatsen van gegevens 
         CLUSTERED COLUMNSTORE INDEX
     )
     ```
-  Met de vereiste stappen voltooid, zijn er nu klaar om te configureren van de kopieeractiviteit in de Wizard kopiëren.
+  Wanneer de vereiste stappen zijn uitgevoerd, kunt u de Kopieer activiteit nu configureren met behulp van de wizard kopiëren.
 
 ## <a name="launch-copy-wizard"></a>De wizard Kopiëren starten
 1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Klik op **een resource maken** Klik in de linkerbovenhoek op **Intelligence en analyse**, en klikt u op **Data Factory**.
-3. In de **nieuwe data factory** deelvenster:
+2. Klik op **een resource maken** in de linkerbovenhoek, klik op **Intelligence en analytische**gegevens en klik op **Data Factory**.
+3. In het deel venster **nieuw Data Factory** :
 
-   1. Voer **LoadIntoSQLDWDataFactory** voor de **naam**.
-       De naam van de Azure-gegevensfactory moet wereldwijd uniek zijn. Als de volgende foutmelding wordt weergegeven: **Naam gegevensfactory 'LoadIntoSQLDWDataFactory' is niet beschikbaar**, wijzigt u de naam van de data factory (bijvoorbeeld yournameLoadIntoSQLDWDataFactory) en probeert u het opnieuw. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](data-factory-naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.  
+   1. Voer **LoadIntoSQLDWDataFactory** in als **naam**.
+       De naam van de Azure-gegevensfactory moet wereldwijd uniek zijn. Als het volgende fout bericht wordt weer gegeven: **naam van Data Factory "LoadIntoSQLDWDataFactory" is niet beschikbaar**, wijzigt u de naam van de Data Factory (bijvoorbeeld yournameLoadIntoSQLDWDataFactory) en probeert u het opnieuw. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](data-factory-naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.  
    2. Selecteer uw Azure-**abonnement**.
    3. Voer een van de volgende stappen uit voor de resourcegroep:
       1. Selecteer **Bestaande gebruiken** om een bestaande resourcegroep te selecteren.
       2. Selecteer **Nieuwe maken** als u een naam voor een resourcegroep wilt typen.
    4. Selecteer een **locatie** voor de gegevensfactory.
    5. Selecteer het selectievakje **Vastmaken aan dashboard** onderaan de blade.  
-   6. Klik op **Create**.
+   6. Klik op **Maken**.
 4. Wanneer het aanmaken is voltooid, ziet u de blade **Gegevensfactory** zoals op de volgende afbeelding wordt weergegeven:
 
    ![Startpagina van de gegevensfactory](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
@@ -135,84 +135,84 @@ In dit artikel bevat stapsgewijze instructies voor het verplaatsen van gegevens 
    >
    >
 
-## <a name="step-1-configure-data-loading-schedule"></a>Stap 1: Schema laden van gegevens configureren
-De eerste stap is het configureren van het schema laden van gegevens.  
+## <a name="step-1-configure-data-loading-schedule"></a>Stap 1: planning voor het laden van gegevens configureren
+De eerste stap is het configureren van de planning voor het laden van gegevens.  
 
 Op de pagina **Eigenschappen**:
 
-1. Voer **CopyFromBlobToAzureSqlDataWarehouse** voor **taaknaam**
-2. Selecteer **nu één keer uitvoeren** optie.   
+1. **CopyFromBlobToAzureSqlDataWarehouse** voor **taak naam** invoeren
+2. Selecteer de optie **nu uitvoeren** .   
 3. Klik op **Volgende**.  
 
-    ![De Wizard kopiëren - pagina eigenschappen](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
+    ![Wizard kopiëren-pagina eigenschappen](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
-## <a name="step-2-configure-source"></a>Stap 2: Bron configureren
-Deze sectie leest u de stappen voor het configureren van de bron: Azure-Blob met de 1 TB TPC-H regelitem bestanden.
+## <a name="step-2-configure-source"></a>Stap 2: bron configureren
+In deze sectie worden de stappen beschreven voor het configureren van de bron: Azure-Blob met de items bestanden van de TPC-H-lijn van 1 TB.
 
-1. Selecteer de **Azure Blob Storage** als de gegevens opslaan en klik op **volgende**.
+1. Selecteer **Azure Blob Storage** als gegevens archief en klik op **volgende**.
 
-    ![De Wizard kopiëren - pagina van de bron selecteren](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
+    ![Wizard kopiëren-bron pagina selecteren](media/data-factory-load-sql-data-warehouse/select-source-connection.png)
 
-2. Vul de verbindingsgegevens voor de Azure Blob storage-account en klik op **volgende**.
+2. Vul de verbindings gegevens voor het Azure Blob-opslag account in en klik op **volgende**.
 
-    ![Wizard - informatie van de gegevensbronverbinding kopiëren](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
+    ![Wizard kopiëren-informatie bron verbinding](media/data-factory-load-sql-data-warehouse/source-connection-info.png)
 
-3. Kies de **map** met de TPC-H item bestanden regel en klikt u op **volgende**.
+3. Selecteer de **map** met de TPC-H-regel item bestanden en klik op **volgende**.
 
-    ![De Wizard kopiëren - invoermap selecteren](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
+    ![Wizard kopiëren-map voor invoer selecteren](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. Wanneer u op klikt **volgende**, de bestandsindelingsinstellingen automatisch worden gedetecteerd.  Controleer of het kolomscheidingsteken voor die is ' | 'in plaats van de standaard-komma','.  Klik op **volgende** nadat u de gegevens hebt bekeken.
+4. Wanneer u op **volgende**klikt, worden de instellingen voor de bestands indeling automatisch gedetecteerd.  Controleer of het kolom scheidings teken | in plaats van de standaard komma ', ' is.  Klik op **volgende** nadat u een voor beeld van de gegevens hebt bekeken.
 
-    ![De Wizard kopiëren - bestandsindelingsinstellingen](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
+    ![Wizard kopiëren: instellingen voor bestands indeling](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
-## <a name="step-3-configure-destination"></a>Stap 3: Doel configureren
-Deze sectie leest u hoe u het configureren van de bestemming: `lineitem` tabel in de Azure SQL Data Warehouse-database.
+## <a name="step-3-configure-destination"></a>Stap 3: bestemming configureren
+In deze sectie wordt beschreven hoe u de bestemming configureert: `lineitem` tabel in de Azure SQL Data Warehouse-data base.
 
-1. Kies **Azure SQL Data Warehouse** als doel opslaan en klik op **volgende**.
+1. Kies **Azure SQL Data Warehouse** als doel archief en klik op **volgende**.
 
-    ![De Wizard kopiëren - gegevensarchief van de doelserver selecteren](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
+    ![Wizard kopiëren-doel gegevens archief selecteren](media/data-factory-load-sql-data-warehouse/select-destination-data-store.png)
 
-2. Vul de verbindingsgegevens voor Azure SQL Data Warehouse.  Zorg ervoor dat u opgeeft dat de gebruiker die lid is van de rol `xlargerc` (Zie de **vereisten** sectie voor gedetailleerde instructies), en klikt u op **volgende**.
+2. Vul de verbindings gegevens voor de Azure SQL Data Warehouse in.  Zorg ervoor dat u de gebruiker opgeeft die lid is van de rol `xlargerc` (Zie de sectie **vereisten** voor gedetailleerde instructies) en klik op **volgende**.
 
-    ![Wizard - doel-verbindingsgegevens kopiëren](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
+    ![Wizard kopiëren: de verbindings gegevens voor de bestemming](media/data-factory-load-sql-data-warehouse/destination-connection-info.png)
 
-3. Kies de doeltabel en klik op **volgende**.
+3. Kies de doel tabel en klik op **volgende**.
 
-    ![Wizard voor kopiëren - pagina tabeltoewijzing](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
+    ![Wizard kopiëren-tabel toewijzings pagina](media/data-factory-load-sql-data-warehouse/table-mapping-page.png)
 
-4. In de pagina schematoewijzing, laat u optie 'Toepassen in de kolomtoewijzing' is niet ingeschakeld en klik op **volgende**.
+4. In de pagina schema toewijzing, schakelt u de optie kolom toewijzing Toep assen uit en klikt u op **volgende**.
 
-## <a name="step-4-performance-settings"></a>Stap 4: Prestatie-instellingen
+## <a name="step-4-performance-settings"></a>Stap 4: prestatie-instellingen
 
-**Toestaan van polybase** is standaard ingeschakeld.  Klik op **Volgende**.
+**Poly base toestaan** is standaard ingeschakeld.  Klik op **Volgende**.
 
-![Wizard voor kopiëren - pagina schematoewijzing](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
+![Wizard kopiëren-schema toewijzing](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
-## <a name="step-5-deploy-and-monitor-load-results"></a>Stap 5: Implementeren en bewaken van de load-resultaten
-1. Klik op **voltooien** knop om te implementeren.
+## <a name="step-5-deploy-and-monitor-load-results"></a>Stap 5: laad resultaten implementeren en bewaken
+1. Klik op de knop **volt ooien** om te implementeren.
 
-    ![De Wizard kopiëren - overzichtspagina](media/data-factory-load-sql-data-warehouse/summary-page.png)
+    ![Wizard kopiëren-overzichts pagina](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-2. Nadat de implementatie voltooid is, klikt u op `Click here to monitor copy pipeline` voor het bewaken van het exemplaar wordt uitgevoerd worden uitgevoerd. Selecteer de kopieerpijplijn die u hebt gemaakt in de **activiteit Windows** lijst.
+2. Nadat de implementatie is voltooid, klikt u op `Click here to monitor copy pipeline` om de voortgang van de Kopieer bewerking te controleren. Selecteer de Kopieer pijplijn die u hebt gemaakt in de lijst **activiteit Windows** .
 
-    ![De Wizard kopiëren - overzichtspagina](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
+    ![Wizard kopiëren-overzichts pagina](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 
-    Vindt u de kopie details van de uitvoering de **Activiteitsvensterverkenner** in het rechter deelvenster, met inbegrip van het gegevensvolume bron gelezen en geschreven naar de bestemming, de duur en de gemiddelde doorvoer voor de uitvoering.
+    U kunt de details van de Kopieer uitvoering bekijken in het **activiteiten venster Verkenner** in het rechterdeel venster, met inbegrip van het gegevens volume gelezen van de bron en geschreven in doel, duur en de gemiddelde door Voer voor de uitvoering.
 
-    Zoals u in de volgende schermafbeelding ziet, duurde 1 TB kopiëren van Azure Blob Storage naar SQL Data Warehouse 14 minuten, effectief bereiken 1,22 GBps doorvoer!
+    Zoals u kunt zien in de volgende scherm afbeelding, is het kopiëren van 1 TB van Azure Blob Storage naar SQL Data Warehouse 14 minuten geduurd, waardoor de door Voer van 1,22 GBps effectief is.
 
-    ![Wizard - geslaagd dialoogvenster kopiëren](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
+    ![Wizard kopiëren-geslaagd dialoog venster](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Hier volgen enkele aanbevolen procedures voor het uitvoeren van uw Azure SQL Data Warehouse-database:
+Hier volgen enkele aanbevolen procedures voor het uitvoeren van uw Azure SQL Data Warehouse-Data Base:
 
-* Een grotere resourceklasse gebruiken bij het laden in een GECLUSTERDE COLUMNSTORE-INDEX.
-* Voor een efficiëntere joins, kunt u overwegen hash-distributie met een kolom selecteren in plaats van standaard round robin-distributie.
-* Voor hogere load snelheden worden bereikt, kunt u overwegen heap voor tijdelijke gegevens.
-* Statistieken maakt nadat u klaar bent met het laden van Azure SQL Data Warehouse.
+* Gebruik een grotere resource klasse wanneer u deze in een geclusterde column Store-INDEX laadt.
+* Voor efficiëntere samen voegingen kunt u het gebruik van hash-distributie door een kolom selecteren in plaats van de standaard round robin distributie.
+* Voor snellere laad snelheden kunt u de opslag ruimte gebruiken voor tijdelijke gegevens.
+* Maak statistieken nadat u de Azure SQL Data Warehouse hebt geladen.
 
-Zie [aanbevolen procedures voor Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-best-practices.md) voor meer informatie.
+Zie [Aanbevolen procedures voor Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-best-practices.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Kopieerwizard van Data Factory](data-factory-copy-wizard.md) -in dit artikel bevat informatie over de Wizard kopiëren.
-* [Kopiëren en afstemmingshandleiding activiteit](data-factory-copy-activity-performance.md) -in dit artikel bevat de metingen van naslaginformatie over de prestaties en afstemmingshandleiding.
+* [Wizard Data Factory kopiëren](data-factory-copy-wizard.md) : in dit artikel vindt u informatie over de wizard kopiëren.
+* [Gids voor het kopiëren van prestaties en het afstemmen](data-factory-copy-activity-performance.md) van de activiteit-dit artikel bevat de referentie prestaties en de richt lijnen voor het afstemmen.

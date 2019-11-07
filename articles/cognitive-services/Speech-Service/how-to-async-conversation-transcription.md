@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
-ms.openlocfilehash: 433ea2778d99de39991565b2529e2f8eab4e13df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a2a00a8c76c7b5c02cde623bf93f536b27cf074
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506976"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621953"
 ---
 # <a name="asynchronous-conversation-transcription-preview"></a>Asynchrone conversatie transcriptie (preview-versie)
 
@@ -23,7 +23,7 @@ In dit artikel wordt asynchroon gesprek transcriptie gedemonstreerd met behulp v
 
 ## <a name="asynchronous-vs-real-time--asynchronous"></a>Asynchroon versus realtime + asynchroon
 
-Met asynchrone transcriptie streamt u de conversatie audio, maar hoeft er in realtime geen transcriptie te worden geretourneerd. Gebruik in plaats daarvan de `conversationId` `ConversationTranscriber` om de status van de asynchrone transcriptie op te vragen. Wanneer de asynchrone transcriptie klaar is, krijgt u een `RemoteConversationTranscriptionResult`.
+Met asynchrone transcriptie streamt u de conversatie audio, maar hoeft er in realtime geen transcriptie te worden geretourneerd. Gebruik in plaats daarvan de `conversationId` `Conversation` om de status van de asynchrone transcriptie op te vragen. Wanneer de asynchrone transcriptie klaar is, krijgt u een `RemoteConversationTranscriptionResult`.
 
 Met realtime plus asynchroon krijgt u de transcriptie in realtime, maar krijgt u ook de transcriptie door een query uit te geven op de `conversationId` (vergelijkbaar met asynchroon scenario).
 
@@ -31,7 +31,7 @@ Er zijn twee stappen vereist voor het uitvoeren van asynchrone transcriptie. De 
 
 ## <a name="upload-the-audio"></a>De audio uploaden
 
-Voordat asynchrone transcriptie kunnen worden uitgevoerd, moet u de audio naar conversatie transcriptie verzenden met behulp van de micro soft cognitieve speech client SDK (versie 1.8.0 of hoger).
+Voordat asynchrone transcriptie kunnen worden uitgevoerd, moet u de audio verzenden naar de conversatie transcriptie-service met behulp van de micro soft cognitieve speech client SDK (versie 1.8.0 of hoger).
 
 Deze voorbeeld code laat zien hoe u een conversatie transcriber kunt maken voor de modus alleen asynchroon. Als u audio naar de transcriber wilt streamen, moet u audio streaming code die is afgeleid van het verzetten van [conversaties in realtime met de spraak-SDK](how-to-use-conversation-transcription-service.md)toevoegen. Raadpleeg de sectie **beperkingen** van het onderwerp voor een overzicht van de ondersteunde platforms en talen api's.
 
@@ -39,7 +39,7 @@ Deze voorbeeld code laat zien hoe u een conversatie transcriber kunt maken voor 
 // Create the speech config object
 // Substitute real information for "YourSubscriptionKey" and "Region"
 SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "Region");
-speech_config.setProperty("ConversationTranscriptionInRoomAndOnline", "true");
+speechConfig.setProperty("ConversationTranscriptionInRoomAndOnline", "true");
 
 // Set the property for asynchronous transcription
 speechConfig.setServiceProperty("transcriptionMode", "Async", ServicePropertyChannel.UriQueryParameter);
@@ -47,18 +47,56 @@ speechConfig.setServiceProperty("transcriptionMode", "Async", ServicePropertyCha
 // Set the property for real-time plus asynchronous transcription
 //speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 
-// Do rest of the things as explained in how to use Conversation Transcription
-
 // pick a conversation Id that is a GUID.
+String conversationId = UUID.randomUUID().toString();
+
+// Create a Conversation
 Conversation conversation = new Conversation(speechConfig, conversationId);
 
+// Create an audio stream from a wav file or from the default microphone if you want to stream live audio from the supported devices
+// Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
+PullAudioInputStreamCallback wavfilePullStreamCallback = Helper.OpenWavFile("16Khz16Bits8channelsOfRecordedPCMAudio.wav");
+// Create an audio stream format assuming the file used above is 16Khz, 16 bits and 8 channel pcm wav file
+AudioStreamFormat audioStreamFormat = AudioStreamFormat.getWaveFormatPCM((long)16000, (short)16,(short)8);
+// Create an input stream
+AudioInputStream audioStream = AudioInputStream.createPullStream(wavfilePullStreamCallback, audioStreamFormat);
+
 // Create a conversation transcriber
-ConversationTranscriber transcriber = new ConversationTranscriber(AudioConfig.fromDefaultMicrophoneInput());
+ConversationTranscriber transcriber = new ConversationTranscriber(AudioConfig.fromStreamInput(audioStream));
 
 // join a conversation
-transcriber.joinConversationAsync(conversation).get();
+transcriber.joinConversationAsync(conversation);
 
-// stream audio as shown in “Transcribe conversations in real time”
+// Add the event listener for the realtime events
+transcriber.transcribed.addEventListener((o, e) -> {
+    System.out.println("Conversation transcriber Recognized:" + e.toString());
+});
+
+transcriber.canceled.addEventListener((o, e) -> {
+    System.out.println("Conversation transcriber canceled:" + e.toString());
+    try {
+        transcriber.stopTranscribingAsync().get();
+    } catch (InterruptedException ex) {
+        ex.printStackTrace();
+    } catch (ExecutionException ex) {
+        ex.printStackTrace();
+    }
+});
+
+transcriber.sessionStopped.addEventListener((o, e) -> {
+    System.out.println("Conversation transcriber stopped:" + e.toString());
+
+    try {
+        transcriber.stopTranscribingAsync().get();
+    } catch (InterruptedException ex) {
+        ex.printStackTrace();
+    } catch (ExecutionException ex) {
+        ex.printStackTrace();
+    }
+});
+
+// start the transcription.
+Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
@@ -76,41 +114,41 @@ speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", Service
 
 Met deze stap worden de asynchrone transcriptie-resultaten opgehaald, maar er wordt uitgegaan van een real-time verwerking die u mogelijk op een andere locatie moet uitvoeren. Zie voor meer informatie [telegespreks gesprekken in realtime met de spraak-SDK](how-to-use-conversation-transcription-service.md).
 
-Voor de code die hier wordt weer gegeven, hebt u **remoteconversation-client-SDK-versie 1.0.0**nodig, alleen ondersteund voor Java (1,8 of hoger) in Windows, Linux en ANDROID (API-niveau 26 of hoger).
+Voor de code die hier wordt weer gegeven, hebt u **versie 1.8.0 van de externe conversatie**nodig, alleen ondersteund voor Java (1.8.0 of hoger) in Windows, Linux en Android (alleen API-niveau 26 of hoger).
 
 ### <a name="obtaining-the-client-sdk"></a>De client-SDK verkrijgen
 
-U kunt **remoteconversation-client-SDK** verkrijgen door uw pom. XML-bestand als volgt te bewerken.
+U kunt **communicatie op afstand** verkrijgen door uw pom. XML-bestand als volgt te bewerken.
 
-- Maak aan het einde van het bestand een `repositories` element met een verwijzing naar de Maven-opslag plaats voor de afsluitende tag `</project>`:
+1. Maak aan het einde van het bestand een `repositories` element met een verwijzing naar de Maven-opslag plaats voor de afsluitende tag `</project>`:
 
-  ```xml
-  <repositories>
-    <repository>
-      <id>maven-cognitiveservices-speech</id>
-      <name>Microsoft Cognitive Services Speech Maven Repository</name>
-      <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
-    </repository>
-  </repositories>
-  ```
+   ```xml
+   <repositories>
+     <repository>
+       <id>maven-cognitiveservices-speech</id>
+       <name>Microsoft Cognitive Services Speech Maven Repository</name>
+       <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+     </repository>
+   </repositories>
+   ```
 
-- Voeg ook een `dependencies`-element toe, met de remoteconversation-client-SDK 1.0.0 als afhankelijkheid:
+2. Voeg ook een `dependencies`-element toe, met de remoteconversation-client-SDK 1.8.0 als afhankelijkheid:
 
-  ```xml
-  <dependencies>
-    <dependency>
-      <groupId>com.microsoft.cognitiveservices.speech.remoteconversation</groupId>
-      <artifactId>remoteconversation-client-sdk</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-  </dependencies>
-  ```
+   ```xml
+   <dependencies>
+     <dependency>
+       <groupId>com.microsoft.cognitiveservices.speech.remoteconversation</groupId>
+       <artifactId>remote-conversation</artifactId>
+       <version>1.8.0</version>
+     </dependency>
+   </dependencies>
+   ```
 
-- Sla de wijzigingen op
+3. Sla de wijzigingen op
 
 ### <a name="sample-transcription-code"></a>Voorbeeld code transcriptie
 
-Nadat u de `conversationId`hebt, maakt u een extern bewerkings object **RemoteConversationTranscriptionOperation** op de client om de status van de asynchrone transcriptie op te vragen. **RemoteConversationTranscriptionOperation** is uitgebreid op basis van de [poller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/Poller.java). Zodra de poller is voltooid, kunt u **RemoteConversationTranscriptionResult** ophalen door u te abonneren op de poller en query's uit te sturen naar het object. In deze code wordt de inhoud van het resultaat gewoon naar de systeem uitvoer afgedrukt.
+Nadat u de `conversationId`hebt, maakt u een externe conversatie transcriptie-client **RemoteConversationTranscriptionClient** op de client toepassing om de status van de asynchrone transcriptie op te vragen. Gebruik de methode **getTranscriptionOperation** in **RemoteConversationTranscriptionClient** om een [PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) -object op te halen. Het PollerFlux-object bevat informatie over de externe bewerkings status **RemoteConversationTranscriptionOperation** en het uiteindelijke resultaat **RemoteConversationTranscriptionResult**. Zodra de bewerking is voltooid, kunt u **RemoteConversationTranscriptionResult** ophalen door **getFinalResult** aan te roepen op een [SyncPoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java). In deze code wordt de inhoud van het resultaat gewoon naar de systeem uitvoer afgedrukt.
 
 ```java
 // Create the speech config object
@@ -119,33 +157,43 @@ SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey",
 // Create a remote Conversation Transcription client
 RemoteConversationTranscriptionClient client = new RemoteConversationTranscriptionClient(speechConfig);
 
-// Create a remote Conversation Transcription operation
-RemoteConversationTranscriptionOperation operation = new RemoteConversationTranscriptionOperation(conversationId, client);
+// Get the PollerFlux for the remote operation
+PollerFlux<RemoteConversationTranscriptionOperation, RemoteConversationTranscriptionResult> remoteTranscriptionOperation = client.getTranscriptionOperation(conversationId);
 
-// Operation identifier now be the value of `conversationId`
-System.out.println("Operation Identifier:" + operation.getId());
+// Subscribe to PollerFlux to get the remote operation status
+remoteTranscriptionOperation.subscribe(
+        pollResponse -> {
+            System.out.println("Poll response status : " + pollResponse.getStatus());
+            System.out.println("Poll response status : " + pollResponse.getValue().getServiceStatus());
+        }
+);
 
-// Get the observer (which is a Flux) and subscribe to it for the response
-operation.getObserver()
-                .subscribe(
-                        pollResponse -> {
-                            System.out.println("Poll response status : " + pollResponse.getStatus());
-                            if(pollResponse.getValue().getConversationTranscriptionResults() != null) {
-                                for (int i = 0; i < pollResponse.getValue().getConversationTranscriptionResults().size(); i++) {
-                                    ConversationTranscriptionResult result = pollResponse.getValue().getConversationTranscriptionResults().get(i);
-                                    System.out.println(result.getOffset());
-                                    System.out.println(result.getDuration());
-                                    System.out.println(result.getUserId());
-                                    System.out.println(result.getReason());
-                                    System.out.println(result.getResultId());
-                                    System.out.println(result.getText());
-                                    System.out.println(result.toString());
-                                }
-                            }
-                        }
-                );
-// Block on the operation till it is finished
-operation.block();
+// Obtain the blocking operation using getSyncPoller
+SyncPoller<RemoteConversationTranscriptionOperation, RemoteConversationTranscriptionResult> blockingOperation =  remoteTranscriptionOperation.getSyncPoller();
+
+// Wait for the operation to finish
+blockingOperation.waitForCompletion();
+
+// Get the final result response
+RemoteConversationTranscriptionResult resultResponse = blockingOperation.getFinalResult();
+
+// Print the result
+if(resultResponse != null) {
+    if(resultResponse.getConversationTranscriptionResults() != null) {
+        for (int i = 0; i < resultResponse.getConversationTranscriptionResults().size(); i++) {
+            ConversationTranscriptionResult result = resultResponse.getConversationTranscriptionResults().get(i);
+            System.out.println(result.getProperties().getProperty(PropertyId.SpeechServiceResponse_JsonResult.name()));
+            System.out.println(result.getProperties().getProperty(PropertyId.SpeechServiceResponse_JsonResult));
+            System.out.println(result.getOffset());
+            System.out.println(result.getDuration());
+            System.out.println(result.getUserId());
+            System.out.println(result.getReason());
+            System.out.println(result.getResultId());
+            System.out.println(result.getText());
+            System.out.println(result.toString());
+        }
+    }
+}
 
 System.out.println("Operation finished");
 ```

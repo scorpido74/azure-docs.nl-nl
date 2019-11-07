@@ -1,5 +1,5 @@
 ---
-title: Een bestaande Azure SQL Data Warehouse herstellen | Microsoft Docs
+title: Een bestaande datawarehouse herstellen
 description: Instructies voor het herstellen van een bestaande Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 7470dd96109823057a174d2ecf097583dcb51898
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575267"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685533"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Een bestaande Azure SQL Data Warehouse herstellen
 
@@ -88,7 +89,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-data-warehouse-through-the-azure-portal"></a>Een bestaand Data Warehouse herstellen via de Azure Portal
 
-1. Meld u aan bij [Azure Portal][Azure portal].
+1. Meld u aan bij de [Azure Portal][Azure portal].
 2. Ga naar de SQL Data Warehouse waarvan u wilt herstellen.
 3. Klik boven aan de Blade overzicht op **herstellen**.
 
@@ -96,7 +97,7 @@ $RestoredDatabase.status
 
 4. Selecteer **automatische herstel punten** of door de **gebruiker gedefinieerde herstel punten**. Als het Data Warehouse geen automatische herstel punten heeft, wacht u enkele uren of maakt u een door de gebruiker gedefinieerd herstel punt voordat u het systeem herstelt. Voor door de gebruiker gedefinieerde herstel punten selecteert u een bestaande en maakt u een nieuwe. Voor- **Server**kunt u een logische server in een andere resource groep en regio kiezen of een nieuwe maken. Nadat u alle para meters hebt opgegeven, klikt u op **bekijken + herstellen**.
 
-    ![Automatische herstelpunten](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
+    ![Automatische herstel punten](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Een verwijderd Data Warehouse herstellen][Restore a deleted data warehouse]

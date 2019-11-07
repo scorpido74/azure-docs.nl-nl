@@ -1,5 +1,5 @@
 ---
-title: Kennisgeving van migratie van Gateway verkeer voor Azure SQL Database | Microsoft Docs
+title: Kennisgeving van migratie van Gateway verkeer voor Azure SQL Database
 description: Artikel geeft gebruikers informatie over de migratie van IP-adressen van Azure SQL Database gateways
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 37c6c8e0f26d0281c3f6e76cb891fe14eb2ef04e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690003"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 
@@ -29,7 +29,7 @@ De eerste afronding van verkeer migratie naar nieuwere gateways is gepland voor 
 - Brazilië - zuid
 - US - west
 - Europa -west
-- East US
+- US - oost
 - US - centraal
 - Azië - zuidoost
 - US - zuid-centraal
@@ -56,7 +56,7 @@ We raden u aan om uitgaand verkeer naar IP-adressen toe te staan voor alle [IP-a
 
 Voor verbindingen die zijn gemaakt via toepassingen met het micro soft JDBC-stuur programma onder versie 4,0, kan het certificaat niet worden gevalideerd. Lagere versies van micro soft JDBC zijn afhankelijk van de algemene naam (CN) in het veld onderwerp van het certificaat. De beperking is om ervoor te zorgen dat de eigenschap hostNameInCertificate is ingesteld op *. database.windows.net. Zie [verbinding maken met SSL-versleuteling](/sql/connect/jdbc/connecting-with-ssl-encryption)voor meer informatie over het instellen van de eigenschap hostNameInCertificate.
 
-Als de bovenstaande oplossing niet werkt, kunt u een ondersteunings aanvraag voor SQL Database indienen met behulp van de volgende URL: https://aka.ms/getazuresupport
+Als de bovenstaande oplossing niet werkt, kunt u een ondersteunings aanvraag voor SQL Database indienen via de volgende URL: https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>Volgende stappen
 

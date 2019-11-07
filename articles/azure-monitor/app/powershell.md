@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 938511069500c551eb526b6c7238546b85d59dce
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818942"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621941"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
@@ -235,7 +235,7 @@ Raadpleeg de [gedetailleerde documentatie](https://docs.microsoft.com/powershell
 
 ## <a name="set-the-data-retention"></a>De Bewaar periode voor gegevens instellen 
 
-Als u de huidige gegevens retentie voor uw Application Insights resource wilt ophalen, kunt u het OSS-hulp programma [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken.  (Meer informatie over ARMClient van artikelen op [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) en de [Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Hier volgt een voor beeld van het gebruik van `ARMClient` om de huidige retentie te verkrijgen:
+Als u de huidige gegevens retentie voor uw Application Insights resource wilt ophalen, kunt u het OSS-hulp programma [ARMClient](https://github.com/projectkudu/ARMClient)gebruiken.  (Meer informatie over ARMClient van artikelen op [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) en de [Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Hier volgt een voor beeld van het gebruik van `ARMClient`om de huidige retentie te verkrijgen:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -250,10 +250,10 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 Voer de volgende handelingen uit om de gegevens retentie tot 365 dagen in te stellen met behulp van de bovenstaande sjabloon:
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
-               -TemplateFile .\template1.json `
-               -retentionInDays 365 `
-               -appName myApp
+New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+       -TemplateFile .\template1.json `
+       -retentionInDays 365 `
+       -appName myApp
 ```
 
 Het volgende script kan ook worden gebruikt voor het wijzigen van de Bewaar periode. Kopieer dit script om op te slaan als `Set-ApplicationInsightsRetention.ps1`.
@@ -541,7 +541,7 @@ Als u de codes voor andere test locaties wilt detecteren, of als u het maken van
 
 Voor het automatiseren van het maken van een andere bron, maakt u hand matig een voor beeld en kopieert en para meters de code vervolgens uit [Azure Resource Manager](https://resources.azure.com/). 
 
-1. Open [Azure Resource Manager](https://resources.azure.com/). Navigeer door `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components` naar de resource van uw toepassing. 
+1. Open [Azure Resource Manager](https://resources.azure.com/). Navigeer door `subscriptions/resourceGroups/<your resource group>/providers/Microsoft.Insights/components`naar de resource van uw toepassing. 
    
     ![Navigatie in Azure Resource Explorer](./media/powershell/01.png)
    

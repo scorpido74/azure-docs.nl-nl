@@ -2,19 +2,19 @@
 title: Meer informatie over een wereld zonder wacht woorden met Azure Active Directory | Microsoft Docs
 description: Deze hand leiding helpt CEOs, Cio's, CISOs, Chief Identity Architects, Enter prise Architects en Security en IT-besluit vormers die verantwoordelijk zijn voor het kiezen van een verificatie methode met een wacht woord voor hun Azure Active Directory-implementatie.
 keywords: geen wacht woord, azuread
-author: martincoetzer
-ms.author: martinco
+author: TerryLanfear
+ms.author: terrylan
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a24195dcf8f384db8d78d39ac7100e487f6c9272
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091956"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621282"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Een wereld zonder wacht woorden met Azure Active Directory
 
@@ -109,7 +109,7 @@ Zie [Windows hello voor bedrijven en verificatie](https://docs.microsoft.com/win
 
 De [micro soft PIN reset Services](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset) is een functie in azure AD waarmee gebruikers hun pincode zo nodig opnieuw kunnen instellen. Met groeps beleid, Microsoft Intune of een compatibel MDM, kan een beheerder Windows 10-apparaten zo configureren dat ze de micro soft PIN reset-service veilig gebruiken waarmee gebruikers hun verg eten pincode opnieuw kunnen instellen via instellingen of boven het vergrendelings scherm, zonder dat ze hoeven te vereisen opnieuw te registreren.
 
-Soms moeten gebruikers terugvallen op het gebruik van wacht woorden. [Self-service voor wacht woord opnieuw instellen](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) is een andere Azure AD-functie waarmee gebruikers hun wacht woord opnieuw kunnen instellen zonder contact op te nemen met IT-mede werkers. Gebruikers moeten zich registreren voor de selfservice voor het opnieuw instellen van het wacht woord voordat ze de service kunnen gebruiken. Tijdens de registratie kiest de gebruiker een of meer authenticatie methoden die worden ingeschakeld door hun organisatie. SSPR stelt gebruikers in staat om snel een gedeblokkeerd te krijgen en te blijven werken, ongeacht waar ze zijn of op het tijdstip van de dag. Door gebruikers toe te staan zichzelf te deblokkeren, kan uw organisatie de niet-productieve tijd en hoge ondersteunings kosten voor de meest voorkomende problemen met betrekking tot het wacht woord beperken.
+Soms moeten gebruikers terugvallen op het gebruik van wacht woorden. [Self-service voor wachtwoord herstel](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR) is een andere Azure AD-functie waarmee gebruikers hun wacht woord opnieuw kunnen instellen zonder contact op te nemen met IT-personeel. Gebruikers moeten zich registreren voor de selfservice voor het opnieuw instellen van het wacht woord voordat ze de service kunnen gebruiken. Tijdens de registratie kiest de gebruiker een of meer authenticatie methoden die worden ingeschakeld door hun organisatie. SSPR stelt gebruikers in staat om snel een gedeblokkeerd te krijgen en te blijven werken, ongeacht waar ze zijn of op het tijdstip van de dag. Door gebruikers toe te staan zichzelf te deblokkeren, kan uw organisatie de niet-productieve tijd en hoge ondersteunings kosten voor de meest voorkomende problemen met betrekking tot het wacht woord beperken.
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>Aanmelding zonder wacht woord met Microsoft Authenticator
 
@@ -123,7 +123,7 @@ Met de Microsoft Authenticator-app kunnen gebruikers hun identiteit verifiëren 
 
 Vereisten voor het gebruik van de Microsoft Authenticator-app voor het uitvoeren van wacht woordloze aanmelding bij Azure AD bevatten het volgende:
 
-* Eind gebruikers zijn ingeschakeld voor Azure multi-factor Authentication
+* Eind gebruikers zijn ingeschakeld voor Azure Multi-Factor Authentication
 
 * Gebruikers worden aanbevolen hun apparaten te registreren met behulp van Microsoft Intune of Mobile Device Management een MDM-oplossing van derden om de implementatie van de app te vereenvoudigen
 
@@ -131,7 +131,7 @@ Ervan uitgaande dat aan deze vereisten wordt voldaan, kunnen beheerders wacht wo
 
 Aangenomen dat aanmelding met een wacht woord is ingeschakeld door een beheerder, moeten eind gebruikers voldoen aan de volgende vereisten:
 
-* Geregistreerd bij Azure multi-factor Authentication
+* Inge schreven in azure Multi-Factor Authentication
 
 * Nieuwste versie van Microsoft Authenticator geïnstalleerd op apparaten met iOS 8,0 of hoger, of Android 6,0 of hoger
 
@@ -150,7 +150,7 @@ Aangezien de meeste gebruikers gewend zijn om alleen wacht woorden te gebruiken 
 
 Voordat de Microsoft Authenticator-app kan worden gebruikt als een wachtwoordloze oplossing om zich aan te melden bij een Azure AD-account, moeten de stappen worden uitgevoerd door zowel een beheerder als de eind gebruikers.
 
-Eerst moet een beheerder [het gebruik van de app als referentie](../../active-directory/authentication/howto-authentication-passwordless-phone.md) in de Tenant inschakelen met behulp van Windows Power shell. De beheerder moet ook eind gebruikers inschakelen voor Azure multi-factor Authentication (Azure MFA) en de Microsoft Authenticator-app configureren als een van de [verificatie methoden](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
+Eerst moet een beheerder [het gebruik van de app als referentie](../../active-directory/authentication/howto-authentication-passwordless-phone.md) in de Tenant inschakelen met behulp van Windows Power shell. De beheerder moet ook eind gebruikers inschakelen voor Azure Multi-Factor Authentication (Azure MFA) en de Microsoft Authenticator-app configureren als een van de [verificatie methoden](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
 
 Eind gebruikers moeten de app Microsoft Authenticator [downloaden en installeren](../../active-directory/user-help/user-help-auth-app-download-install.md) en [hun account instellen](../../active-directory/user-help/security-info-setup-auth-app.md) om de Microsoft Authenticator-app als een van de verificatie methoden te gebruiken.
 
@@ -226,9 +226,9 @@ We raden u ook aan om in elke organisatie een protocol te maken voor gebruikers 
 
 #### <a name="user-sets-up-fido2-security-key"></a>Gebruiker stelt FIDO2-beveiligings sleutel in
 
-Beheerders kunnen [hand matig sleutels inrichten](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) en deze distribueren naar eind gebruikers, het inrichten en inschakelen van de FIDO2-referentie provider op het vergrendelings scherm van Windows 10 [](https://docs.microsoft.com/intune/windows-enrollment-methods)worden ondersteund via intune. Beheerders moeten ook de [Azure Portal](https://portal.azure.com/) gebruiken om hardware-token-apparaten in te scha kelen als een verificatie methode zonder wacht woord.
+Beheerders kunnen [hand matig sleutels inrichten](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) en deze distribueren naar eind gebruikers, het inrichten en inschakelen van de FIDO2-referentie provider op het vergrendelings scherm van Windows 10 worden ondersteund via [intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Beheerders moeten ook de [Azure Portal](https://portal.azure.com/) gebruiken om hardware-token-apparaten in te scha kelen als een verificatie methode zonder wacht woord.
 
-Voor het implementeren van FIDO2-beveiligings sleutels moeten gebruikers hun sleutels ook registreren via [gecombineerde registratie](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Met gecombineerde registratie kunnen gebruikers eenmaal registreren en profiteren van de voor delen van Azure multi-factor Authentication en eenmalige aanmelding (SSPR).
+Voor het implementeren van FIDO2-beveiligings sleutels moeten gebruikers hun sleutels ook registreren via [gecombineerde registratie](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Met gecombineerde registratie kunnen gebruikers eenmaal registreren en profiteren van de voor delen van Azure Multi-Factor Authentication en wacht woord opnieuw instellen voor eenmalige aanmelding (SSPR).
 
 Naast het selecteren van het hardware-token als de standaard methode voor multi-factor Authentication, is het raadzaam om ook een extra verificatie optie te selecteren.
 
@@ -236,7 +236,7 @@ Naast het selecteren van het hardware-token als de standaard methode voor multi-
 
 * Verificator-app of-hardware-token--code
 
-* Telefoonoproep
+* Telefoon oproep
 
 * Sms-bericht
 

@@ -1,5 +1,5 @@
 ---
-title: Diagnostische gegevens voor Azure SQL Database-prestaties in de grootschalige-servicelaag | Microsoft Docs
+title: Diagnostische gegevens voor Azure SQL Database-prestaties in de servicelaag grootschalige
 description: In dit artikel wordt beschreven hoe u grootschalige prestatie problemen in Azure SQL Database kunt oplossen.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: fa8b02cf5ee6f24bcc77aae057f41842da721981
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b8acdbc63098ae99355e8874f7c1585759e5fb7f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521134"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689858"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostische gegevens voor het oplossen van problemen met SQL grootschalige-prestaties
 
@@ -99,7 +99,7 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 - Op de primaire Compute wordt een schrijf bewerking voor het logboek verwerkt in file_id 2 van sys. DM _io_virtual_file_stats. Het schrijven van een logboek op de primaire Compute is een schrijf bewerking naar de registratie zone van het logboek.
 - Logboek records worden niet op de secundaire replica met een door Voer gehard. In grootschalige wordt het logboek door de xlog-service toegepast op de externe replica's. Omdat de schrijf bewerkingen in het logboek niet echt optreden op secundaire replica's, worden accounting van logboek-IO voor de secundaire replica's alleen gebruikt voor tracerings doeleinden.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - Zie [grootschalige vCore service tier VCore limieten](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) voor resource limieten voor een grootschalige-data base.
 - Zie [query prestaties in Azure SQL database](sql-database-performance-guidance.md) voor Azure SQL database afstemming van prestaties.

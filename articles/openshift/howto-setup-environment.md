@@ -1,47 +1,36 @@
 ---
-title: Uw Azure Red Hat OpenShift-ontwikkelomgeving instellen | Microsoft Docs
-description: Hier volgen de vereisten voor het werken met Microsoft Azure Red Hat OpenShift.
+title: Uw Azure Red Hat open Shift-ontwikkel omgeving instellen | Microsoft Docs
+description: Hier volgen de vereisten voor het werken met Microsoft Azure Red Hat open SHIFT.
 services: openshift
-keywords: Red hat openshift installatie instellen
+keywords: Setup van Red Hat open Shift instellen
 author: jimzim
 ms.author: jzim
-ms.date: 05/10/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 manager: jeconnoc
-ms.openlocfilehash: a31655e8c8805505bdcc5e90bf25191590d35c18
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672524"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581599"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen
 
-Als u wilt bouwen en uitvoeren van toepassingen van Microsoft Azure Red Hat OpenShift, moet u het:
+Als u Microsoft Azure Red Hat open Shift-toepassingen wilt bouwen en uitvoeren, moet u het volgende doen:
 
-* Kopen van gereserveerde virtuele Azure-machine-instanties.
-* Versie 2.0.65 installeren (of hoger) van de Azure CLI (of gebruik de Azure Cloud Shell).
-* Meld u aan voor de `AROGA` functie en de gekoppelde resourceproviders.
-* Een Azure Active Directory (Azure AD)-tenant maken.
-* Maak een Azure AD-toepassing-object.
+* Installeer versie 2.0.65 (of hoger) van de Azure CLI (of gebruik de Azure Cloud Shell).
+* Registreer u voor de `AROGA` functie en de bijbehorende resource providers.
+* Maak een Azure Active Directory-Tenant (Azure AD).
+* Maak een Azure AD-toepassings object.
 * Maak een Azure AD-gebruiker.
 
-De volgende instructies begeleidt u bij al deze vereisten.
-
-## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Koop gereserveerde instanties van Azure Red Hat OpenShift toepassing knooppunten
-
-Voordat u Azure Red Hat OpenShift gebruiken kunt, moet u een minimum van 4 Azure Red Hat OpenShift gereserveerde knooppunten van toepassingen, waarna u wordt mogelijk clusters inrichten kopen.
-
-Als u een Azure-klant bent, [Azure Red Hat OpenShift gereserveerde instanties kopen](https://aka.ms/openshift/buy) via Azure portal. Na de aankoop, wordt uw abonnement binnen 24 uur zijn geactiveerd.
-
-Als u niet een Azure-klant, [Neem contact op met verkoop](https://aka.ms/openshift/contact-sales) en vul het formulier de omzet in aan de onderkant van de pagina om het proces te starten.
-
-Raadpleeg de [Azure Red Hat OpenShift pagina met prijzen](https://aka.ms/openshift/pricing) voor meer informatie.
+In de volgende instructies vindt u een overzicht van deze vereisten.
 
 ## <a name="install-the-azure-cli"></a>Azure-CLI installeren
 
-Azure Red Hat OpenShift vereist versie 2.0.65 of hoger van Azure CLI. Als u de Azure CLI al hebt geïnstalleerd, kunt u controleren welke versie u door te voeren hebt:
+Azure Red Hat open Shift vereist versie 2.0.65 of hoger van de Azure CLI. Als u de Azure CLI al hebt geïnstalleerd, kunt u controleren welke versie u hebt door uit te voeren:
 
 ```bash
 az --version
@@ -49,81 +38,81 @@ az --version
 
 De eerste regel van de uitvoer heeft de CLI-versie, bijvoorbeeld `azure-cli (2.0.65)`.
 
-Hier vindt u instructies voor [installeren van de Azure-CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u een nieuwe installatie of een upgrade nodig hebt.
+Hier vindt u instructies voor [het installeren van de Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u een nieuwe installatie of een upgrade nodig hebt.
 
-U kunt ook kunt u de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Wanneer u de Azure Cloud Shell gebruikt, moet u selecteren de **Bash** omgeving als u van plan bent om te volgen we de [maken en beheren van een cluster Azure Red Hat OpenShift](tutorial-create-cluster.md) reeks.
+U kunt ook de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview)gebruiken. Wanneer u de Azure Cloud Shell gebruikt, moet u ervoor zorgen dat u de **bash** -omgeving selecteert als u de reeks zelf studies voor het [maken en beheren van Azure Red Hat open Shift-cluster](tutorial-create-cluster.md) wilt volgen.
 
-## <a name="register-providers-and-features"></a>Registreren van providers en -functies
+## <a name="register-providers-and-features"></a>Providers en functies registreren
 
-De `Microsoft.ContainerService AROGA` functie `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` en `Microsoft.Network` providers moeten worden geregistreerd bij uw abonnement handmatig voordat u uw eerste Azure Red Hat OpenShift-cluster implementeert.
+De `Microsoft.ContainerService AROGA`-functie, `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` en `Microsoft.Network` providers moeten hand matig bij uw abonnement worden geregistreerd voordat u uw eerste Azure Red Hat open Shift-cluster implementeert.
 
-Gebruik voor het handmatig registreren van deze voorzieningen en functies, de volgende instructies zijn van een Bash-shell als u de CLI hebt geïnstalleerd, of van de sessie van de Azure Cloud Shell (Bash) in uw Azure-portal:
+Als u deze providers en onderdelen hand matig wilt registreren, gebruikt u de volgende instructies van een bash-shell als u de CLI hebt geïnstalleerd of van de Azure Cloud Shell-sessie (bash) in uw Azure Portal:
 
-1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-ID:
+1. Als u meerdere Azure-abonnementen hebt, geeft u de relevante abonnements-ID op:
 
     ```bash
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. De functie Microsoft.ContainerService AROGA registreren:
+1. Registreer de functie micro soft. container service AROGA:
 
     ```bash
     az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
-1. Registreer de provider Microsoft.Storage:
+1. Registreer de micro soft. Storage-Provider:
 
     ```bash
     az provider register -n Microsoft.Storage --wait
     ```
     
-1. Registreren van de Microsoft.Compute-provider:
+1. Registreer de micro soft. Compute-provider:
 
     ```bash
     az provider register -n Microsoft.Compute --wait
     ```
 
-1. Registreer de provider Microsoft.Solutions:
+1. De provider van micro soft. Solutions registreren:
 
     ```bash
     az provider register -n Microsoft.Solutions --wait
     ```
 
-1. Registreer de Microsoft.COMPUTE-provider:
+1. Registreer de micro soft. Network-Provider:
 
     ```bash
     az provider register -n Microsoft.Network --wait
     ```
 
-1. De Microsoft.KeyVault-provider hebt geregistreerd:
+1. Registreer de micro soft.-sleutel kluis provider:
 
     ```bash
     az provider register -n Microsoft.KeyVault --wait
     ```
 
-1. De registratie van de resourceprovider Microsoft.ContainerService vernieuwen:
+1. De registratie van de resource provider micro soft. container service vernieuwen:
 
     ```bash
     az provider register -n Microsoft.ContainerService --wait
     ```
 
-## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>Een Azure Active Directory (Azure AD)-tenant maken
+## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>Een Azure Active Directory-Tenant (Azure AD) maken
 
-De service Azure Red Hat OpenShift vereist een gekoppelde Azure Active Directory (Azure AD)-tenant die uw organisatie en de relatie naar Microsoft voorstelt. Uw Azure AD-tenant kunt u registreren, maken, en apps beheren, evenals andere Azure-services gebruiken.
+De Azure Red Hat open Shift-service vereist een gekoppelde Azure Active Directory-Tenant (Azure AD) die uw organisatie en de relatie met micro soft vertegenwoordigt. Met uw Azure AD-Tenant kunt u apps registreren, bouwen en beheren, en andere Azure-Services gebruiken.
 
-Als u een Azure AD hebt gebruiken als de tenant voor uw Azure Red Hat OpenShift-cluster of u een tenant maken wilt voor het testen, volg de instructies in [maken van een Azure AD-tenant voor uw cluster Azure Red Hat OpenShift](howto-create-tenant.md) voordat Met deze handleiding wordt voortgezet.
+Als u geen Azure AD kunt gebruiken als Tenant voor uw Azure Red Hat open Shift-cluster of als u een Tenant wilt maken voor het testen, volgt u de instructies in [een Azure AD-Tenant maken voor uw Azure Red Hat open Shift-cluster](howto-create-tenant.md) voordat u doorgaat met deze hand leiding .
 
-## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Maak een Azure AD-gebruiker, beveiligingsgroep en toepassing object
+## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Een Azure AD-gebruiker, beveiligings groep en toepassings object maken
 
-Azure Red Hat OpenShift vereist machtigingen voor het uitvoeren van taken in uw cluster, zoals het configureren van opslag. Deze machtigingen worden vertegenwoordigd door een [service-principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Moet u een nieuwe Active Directory-gebruiker maken voor het testen van apps die worden uitgevoerd op uw cluster Azure Red Hat OpenShift.
+Azure Red Hat open Shift vereist machtigingen voor het uitvoeren van taken in uw cluster, zoals het configureren van opslag. Deze machtigingen worden weer gegeven via een [Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). U wilt ook een nieuwe Active Directory gebruiker maken voor het testen van apps die worden uitgevoerd op uw Azure Red Hat open Shift-cluster.
 
-Volg de instructies in [maken van een object voor Azure AD-app en gebruiker](howto-aad-app-configuration.md) voor het maken van een service-principal genereren van een client secret en verificatie URL voor terugbellen voor uw app en maak een nieuwe Azure AD-beveiligingsgroep en de gebruiker toegang tot de cluster.
+Volg de instructies in [een Azure AD-App-object en-gebruiker maken](howto-aad-app-configuration.md) om een service-principal te maken, een client geheim en een URL voor verificatie-call back voor uw app te genereren en een nieuwe Azure AD-beveiligings groep en-gebruiker te maken voor toegang tot het cluster.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U bent nu klaar voor gebruik van Azure Red Hat OpenShift!
+U bent nu klaar om Azure Red Hat open SHIFT te gebruiken.
 
-Raadpleeg de zelfstudie:
+Probeer de zelf studie:
 > [!div class="nextstepaction"]
 > [Een Azure Red Hat OpenShift-cluster maken](tutorial-create-cluster.md)
 

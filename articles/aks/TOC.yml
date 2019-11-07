@@ -345,6 +345,8 @@
           maintainContext: true
         - name: Implementatiecenter starten
           href: deployment-center-launcher.md
+        - name: GitHub-acties voor Kubernetes
+          href: ../aks/kubernetes-action.md
     - name: Problemen oplossen
       items:
         - name: Algemene problemen

@@ -1,6 +1,6 @@
 ---
 title: Hoe een model wordt een webservice
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Een overzicht van de mechanismen van hoe het model van Azure Machine Learning Studio (klassiek) van een ontwikkelings experiment naar een webservice wordt uitgevoerd.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: c82e636b06d33140ca6dae606d39855084aac04d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 24a2c31271d123d6378732bd9f85f6341a78d65c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496849"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671235"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hoe een model van Machine Learning Studio (klassiek) van een experiment naar een webservice wordt uitgevoerd
 Azure Machine Learning Studio (klassiek) biedt een interactief canvas waarmee u een ***experiment*** kunt ontwikkelen, uitvoeren, testen en herhalen voor een voorspellend analyse model. Er zijn tal van beschik bare modules die kunnen:
@@ -108,7 +108,7 @@ Als u wijzigingen wilt aanbrengen in uw oorspronkelijke voorspellende experiment
 Raadpleeg de volgende artikelen voor meer informatie over het proces van ontwikkelen en experimenteren:
 
 * het experiment converteren: de [voor bereiding van uw model voor implementatie in azure machine learning Studio (klassiek)](convert-training-experiment-to-scoring-experiment.md)
-* de webservice implementeren- [een Azure machine learning-webservice implementeren](publish-a-machine-learning-web-service.md)
+* de webservice implementeren- [een Azure machine learning-webservice implementeren](deploy-a-machine-learning-web-service.md)
 * het model opnieuw trainen [machine learning modellen via een programma](/azure/machine-learning/studio/retrain-machine-learning-model)
 
 Zie voor voor beelden van het hele proces:

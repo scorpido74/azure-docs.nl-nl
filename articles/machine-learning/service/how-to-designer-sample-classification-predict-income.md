@@ -1,5 +1,5 @@
 ---
-title: 'Voor beeld van Designer #3: classificatie om het krediet risico te voors pellen'
+title: 'Designer: classificeren, inkomen voors pellen'
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het bouwen van een machine learning classificatie zonder het schrijven van één regel code met behulp van de ontwerp functie (preview).
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 2709c2e0da154a8530175144070ad560c8921b85
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515536"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647964"
 ---
 # <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Voor beeld 3: classificatie met functie selectie: inkomen voor spelling
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]

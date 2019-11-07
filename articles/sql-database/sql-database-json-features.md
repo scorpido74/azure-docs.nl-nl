@@ -1,5 +1,5 @@
 ---
-title: Werken met JSON-gegevens in Azure SQL Database | Microsoft Docs
+title: Werken met JSON-gegevens in Azure SQL Database
 description: Met Azure SQL Database kunt u gegevens in de JavaScript Object Notation (JSON)-notatie parseren, opvragen en opmaken.
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 3a09fba3f01eec6c712bad67ef10b8b5c55fb33e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567845"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689655"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Aan de slag met JSON-functies in Azure SQL Database
 Met Azure SQL Database kunt u gegevens parseren en opvragen die worden weer gegeven in de indeling van JavaScript Object Notation [(JSON)](https://www.json.org/) en uw relationele gegevens exporteren als JSON-tekst. De volgende JSON-scenario's zijn beschikbaar in Azure SQL Database:
-- De [opmaak van relationele gegevens in JSON-indeling](#formatting-relational-data-in-json-format) met behulp `FOR JSON` van-component.
+- Het [opmaken van relationele gegevens in JSON-indeling](#formatting-relational-data-in-json-format) met behulp van `FOR JSON`-component.
 - [Werken met JSON-gegevens](#working-with-json-data)
 - [JSON-gegevens opvragen](#querying-json-data) met SCALAIRe JSON-functies.
-- De [JSON wordt omgezet in een tabel indeling](#transforming-json-into-tabular-format) met behulp van `OPENJSON` de functie.
+- De [JSON wordt omgezet in tabel vorm](#transforming-json-into-tabular-format) met `OPENJSON`-functie.
 
 ## <a name="formatting-relational-data-in-json-format"></a>Relationele gegevens in JSON-indeling opmaken
 Als u een webservice hebt die gegevens uit de data base-laag haalt, een reactie in JSON-indeling geeft, of Java script-frameworks of-bibliotheken aan de client zijde die gegevens accepteren die zijn ingedeeld als JSON, kunt u de inhoud van uw data base als JSON rechtstreeks in een SQL-query opmaken. U hoeft niet langer een toepassings code te schrijven die de resultaten van Azure SQL Database als JSON opmaakt, of u kunt een JSON-serialisatie bibliotheek bevatten om tabellaire query resultaten te converteren en vervolgens objecten te serialiseren naar JSON-indeling. In plaats daarvan kunt u de component FOR JSON gebruiken om SQL-query resultaten op te maken als JSON in Azure SQL Database en deze rechtstreeks in uw toepassing te gebruiken.
@@ -71,7 +71,7 @@ De uitvoer van deze query ziet er als volgt uit:
 
 In dit voor beeld hebben we één JSON-object geretourneerd in plaats van een matrix door de [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) -optie op te geven. U kunt deze optie gebruiken als u weet dat u een enkel object retourneert als resultaat van een query.
 
-De belangrijkste waarde van de FOR JSON-component is dat u ingewikkelde hiërarchische gegevens uit uw data base kunt ophalen die zijn opgemaakt als geneste JSON-objecten of-matrices. In het volgende voor beeld ziet u hoe u de rijen `Orders` opneemt uit de `Customer` tabel die horen bij de `Orders`as a geneste matrix van:
+De belangrijkste waarde van de FOR JSON-component is dat u ingewikkelde hiërarchische gegevens uit uw data base kunt ophalen die zijn opgemaakt als geneste JSON-objecten of-matrices. In het volgende voor beeld ziet u hoe u de rijen uit de `Orders` tabel die deel uitmaken van de `Customer` als een geneste matrix van `Orders`worden meegenomen:
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -189,7 +189,7 @@ De verzameling orders die is opgemaakt als een JSON-matrix en die als een para m
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende bronnen voor meer informatie over het integreren van JSON in uw toepassing:
 
-* [TechNet Blog](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)
+* [TechNet-blog](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)
 * [MSDN-documentatie](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Channel 9-video](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 

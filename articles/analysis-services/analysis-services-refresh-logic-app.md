@@ -1,17 +1,17 @@
 ---
 title: Vernieuwen met Logic Apps voor Azure Analysis Services-modellen | Microsoft Docs
-description: Meer informatie over het asynchroon vernieuwen van code met behulp van Azure Logic Apps.
+description: In dit artikel wordt beschreven hoe u asynchroon vernieuwen voor Azure Analysis Services codeert met behulp van Azure Logic Apps.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294615"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572344"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
 
@@ -19,7 +19,7 @@ U kunt met behulp van Logic Apps en REST-aanroepen automatische gegevens vernieu
 
 Zie voor meer informatie over het gebruik van REST-Api's met Azure Analysis Services [asynchroon vernieuwen met de rest API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory (OAuth 2)-token.  In de voor beelden in dit artikel wordt gebruikgemaakt van een service-principal (SPN) voor het verifiëren van Azure Analysis Services. Zie [een service-principal maken met behulp van Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)voor meer informatie.
 
@@ -65,7 +65,7 @@ Configureer de HTTP-activiteit als volgt:
 |Eigenschap  |Waarde  |
 |---------|---------|
 |**Methode**     |Verzenden         |
-|**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https: \//westus. asazure. Windows. net/servers/mijn server/modellen/AdventureWorks/vernieuwingen|
+|**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**Headers**     |   Content-type, Application/JSON <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Hoofdtekst**     |   Zie voor meer informatie over het maken van de aanvraag tekst [asynchroon vernieuwen met de rest API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Verificatie**     |Active Directory OAuth         |

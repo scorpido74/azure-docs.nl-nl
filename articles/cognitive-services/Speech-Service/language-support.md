@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: af8bb24862c05b232b7bb5d831b1eb3b1add3a7f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 26cab7ba3ed864382ae5511755fee09c3826702c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468807"
+ms.locfileid: "73580185"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Taal-en regio ondersteuning voor de spraak Services
 
@@ -26,47 +26,47 @@ Verschillende talen worden ondersteund voor verschillende functies van spraak Se
 
 Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van audio en Transcripten met menselijke labels of gerelateerde tekst: zinnen.  Aanpassing van de uitspraak is momenteel alleen beschikbaar voor en-US en de-DE. Meer informatie over aanpassingen [vindt u hier](how-to-custom-speech.md).
 
-  Landinstelling | Taal | Ondersteund | Aanpas bare
- ------|----------|---------------------|---------------------
- AR-bijvoorbeeld | Arabisch (Egypte), modern Standard | Ja | Ja
- AR-SA | Arabisch (Saudi-Arabië) | Ja | Ja
- AR-AE | Arabisch (VAE) | Ja | Ja
- AR-KW | Arabisch (Koeweit) | Ja | Ja
- AR-QA | Arabisch (Qatar) | Ja | Ja
- CA-ES | Catalaans | Ja | Nee
- da-DK | Deens (Denemarken) | Ja | Nee
- de-DE | Duits (Duitsland) | Ja | Ja
- en-AU | Engels (Australië) | Ja | Ja
- en-CA | Engels (Canada) | Ja | Ja
- en-GB | Engels (Verenigd Konink rijk) | Ja | Ja
- en-IN | English (India) | Ja | Ja
- en-NZ | Engels (Nieuw-Zeeland) | Ja | Ja
- en-US | Engels (Verenigde Staten) | Ja | Ja
- es-ES | Spaans (Spanje) | Ja | Ja
- es-MX | Spaans (Mexico) | Ja | Ja
- fi-FI | Fins (Finland) | Ja | Nee
- FR-CA | Frans (Canada) | Ja | Ja
- fr-FR | Frans (Frank rijk) | Ja | Ja
- Gu-IN | Gujarati (Indiase) | Ja | Ja
- Hi-IN | Hindi (India) | Ja | Ja
- IT-IT | Italiaans (Italië) | Ja | Ja
- ja-JP | Japans (Japan) | Ja | Ja
- ko-KR | Koreaans (Korea) | Ja | Ja
- Mr-IN | Marathi (India) | Ja | Ja
- nb-NO | Noors (Bokmål) (Noor wegen) | Ja | Nee
- nl-NL | Nederlands (Nederland) | Ja | Ja
- pl-PL | Pools (Polen) | Ja | Nee
- pt-BR | Portugees (Brazilië) | Ja | Ja
- pt-PT | Portugees (Portugal) | Ja | Ja
- ru-RU | Russisch (Rusland) | Ja | Ja
- SV-SE | Zweeds (Zweden) | Ja | Nee
- ta | Tamil (India) | Ja | Ja
- te-IN | Telugu (India) | Ja | Ja
- zh-CN | Chinees (Mandarijn, vereenvoudigd) | Ja | Ja
- zh-HK | Chinees (Kantonees, traditioneel) | Ja | Ja
- zh-TW | Chinees (Taiwan Mandarijn) | Ja | Ja
- th | Thais (Thai land) | Ja | Nee
- tr-TR | Turkije | Ja | Ja |
+  Landinstelling | Taal | Ondersteund | Aanpas bare | Ondersteuning voor containers
+ ------|------------|-----------|--------------|--------------
+ AR-bijvoorbeeld | Arabisch (Egypte), modern Standard | ✔️ | ✔️ | ✔️
+ AR-SA | Arabisch (Saudi-Arabië) | ✔️ | ✔️ | ❌
+ AR-AE | Arabisch (VAE) | ✔️ | ✔️ | ❌
+ AR-KW | Arabisch (Koeweit) | ✔️ | ✔️ | ❌
+ AR-QA | Arabisch (Qatar) | ✔️ | ✔️ | ❌
+ CA-ES | Catalaans | ✔️ | ❌ | ✔️
+ da-DK | Deens (Denemarken) | ✔️ | ❌ | ✔️
+ de-DE | Duits (Duitsland) | ✔️ | ✔️ | ✔️
+ en-AU | Engels (Australië) | ✔️ | ✔️ | ✔️
+ en-CA | Engels (Canada) | ✔️ | ✔️ | ✔️
+ en-GB | Engels (Verenigd Konink rijk) | ✔️ | ✔️ | ✔️
+ en-IN | English (India) | ✔️ | ✔️ | ✔️
+ en-NZ | Engels (Nieuw-Zeeland) | ✔️ | ✔️ | ✔️
+ en-US | Engels (Verenigde Staten) | ✔️ | ✔️ | ✔️
+ es-ES | Spaans (Spanje) | ✔️ | ✔️ | ✔️
+ es-MX | Spaans (Mexico) | ✔️ | ✔️ | ✔️
+ fi-FI | Fins (Finland) | ✔️ | ❌ | ✔️
+ FR-CA | Frans (Canada) | ✔️ | ✔️ | ✔️
+ fr-FR | Frans (Frank rijk) | ✔️ | ✔️ | ✔️
+ Gu-IN | Gujarati (Indiase) | ✔️ | ✔️ | ❌
+ Hi-IN | Hindi (India) | ✔️ | ✔️ | ✔️
+ IT-IT | Italiaans (Italië) | ✔️ | ✔️ | ✔️
+ ja-JP | Japans (Japan) | ✔️ | ✔️ | ✔️
+ ko-KR | Koreaans (Korea) | ✔️ | ✔️ | ✔️
+ Mr-IN | Marathi (India) | ✔️ | ✔️ | ❌
+ nb-NO | Noors (Bokmål) (Noor wegen) | ✔️ | ❌ | ✔️
+ nl-NL | Nederlands (Nederland) | ✔️ | ✔️ | ✔️
+ pl-PL | Pools (Polen) | ✔️ | ❌ | ✔️
+ pt-BR | Portugees (Brazilië) | ✔️ | ✔️ | ✔️
+ pt-PT | Portugees (Portugal) | ✔️ | ✔️ | ✔️
+ ru-RU | Russisch (Rusland) | ✔️ | ✔️ | ✔️
+ SV-SE | Zweeds (Zweden) | ✔️ | ❌ | ✔️
+ ta | Tamil (India) | ✔️ | ✔️ | ❌
+ te-IN | Telugu (India) | ✔️ | ✔️ | ❌
+ zh-CN | Chinees (Mandarijn, vereenvoudigd) | ✔️ | ✔️ | ✔️
+ zh-HK | Chinees (Kantonees, traditioneel) | ✔️ | ✔️ | ✔️
+ zh-TW | Chinees (Taiwan Mandarijn) | ✔️ | ✔️ | ✔️
+ th | Thais (Thai land) | ✔️ | ❌ | ✔️
+ tr-TR | Turkije | ✔️ | ✔️ | ❌
 
 
 ## <a name="text-to-speech"></a>Tekst naar spraak
@@ -99,89 +99,89 @@ zh-CN | Chinees (vasteland) | Vrouw | "Micro soft server Speech Text to Speech V
 
 Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land instellingen, waarmee u tekst kunt converteren naar gesynthesizerde spraak. Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over regionale Beschik baarheid.
 
-Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte spraak naam
--------|----------|---------|----------|----------
-AR-bijvoorbeeld\* | Arabisch (Egypte) | Vrouw | "Micro soft server Speech Text to Speech Voice (AR-BIJV. Hoda)" | "ar-EG-Hoda"
-AR-SA | Arabisch (Saudi-Arabië) | Man | "Micro soft server Speech Text to Speech Voice (AR-SA, Naayf)" | "AR-SA-Naayf"
-bg-BG | Bulgaars | Man | "Micro soft server Speech Text to Speech Voice (bg-BG, Ivan)" | "bg-BG-Ivan"
-CA-ES | Catalaans (Spanje) | Vrouw | "Micro soft server Speech Text to Speech Voice (ca-ES, HerenaRUS)" | "ca-ES-HerenaRUS"
-CS-CZ | Tsjechisch | Man | "Micro soft server Speech Text to Speech Voice (CS-CZ, Jakub)" | "CS-CZ-Jakub"
-da-DK | Deens | Vrouw | "Micro soft server Speech Text to Speech Voice (da-DK, HelleRUS)" | "da-DK-HelleRUS"
-de-AT | Duits (Oosten rijk) | Man | "Micro soft server Speech Text to Speech Voice (de-AT, Michael)" | "de-Michael"
-Dech | Duits (Zwitser land) | Man | "Micro soft server Speech Text to Speech Voice (de-CH, Karsten)" | "de-CH-Karsten"
-de-DE | Duits (Duitsland) | Vrouw | "Micro soft server Speech Text to Speech Voice (de-DE, Hedda)" | "de-DE-Hedda"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (de-DE, HeddaRUS)" | "de-DE-HeddaRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (de-DE, Stefan, Apollo)" | "de-DE-Stefan-Apollo"
-El-GR | Grieks | Man | "Micro soft server Speech Text to Speech Voice (El-GR, Stefanos)" | "El-GR-Stefanos"
-en-AU | Engels (Australië) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-AU, Catherine)" | "en-AU-Catherine"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-AU, HayleyRUS)" | "en-AU-HayleyRUS"
-en-CA | Engels (Canada) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-CA, Linda)" | "en-CA-Linda"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-CA, HeatherRUS)" | "en-CA-HeatherRUS"
-en-GB | English (UK) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-GB, Susan, Apollo)" | "en-GB-Susan-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-GB, HazelRUS)" | "en-GB-HazelRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (en-GB, George, Apollo)" | "en-GB-George-Apollo"
-en-IE | Engels (Ierland) | Man | "Micro soft server Speech Text to Speech Voice (en-IE, Johan)" | "en-IE-Johan"
-en-IN | English (India) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-IN, heera, Apollo)" | "en-IN-heera-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-IN, PriyaRUS)" | "en-IN-PriyaRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo"
-en-US | English (US) | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, ZiraRUS)" | "en-US-ZiraRUS"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, JessaRUS)" | "en-US-JessaRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, BenjaminRUS)" | "en-US-BenjaminRUS"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, Jessa24kRUS)" | "en-US-Jessa24kRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, Guy24kRUS)" | "en-US-Guy24kRUS"
-es-ES | Spaans (Spanje) |Vrouw | "Micro soft server Speech Text to Speech Voice (es-ES, Laura, Apollo)" | "es-ES-Laura-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (es-ES, HelenaRUS)" | "es-ES-HelenaRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (es-ES, Pablo, Apollo)" | "es-ES-Pablo-Apollo"
-es-MX | Spaans (Mexico) | Vrouw | "Micro soft server Speech Text to Speech Voice (es-MX, HildaRUS)" | "es-MX-HildaRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (es-MX, Raul, Apollo)" | "es-MX-Raul-Apollo"
-fi-FI | Fins | Vrouw | "Micro soft server Speech Text to Speech Voice (fi-FI, HeidiRUS)" | "fi-FI-HeidiRUS"
-FR-CA | Frans (Canada) |Vrouw | "Micro soft server Speech Text to Speech Voice (FR-CA, Caroline)" | "FR-CA-Caroline"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (FR-CA, HarmonieRUS)" | "FR-CA-HarmonieRUS"
-FR-CH | Frans (Zwitser land)| Man | "Micro soft server Speech Text to Speech Voice (FR-CH, Guillaume)" | "FR-CH-Guillaume"
-fr-FR | Frans (Frank rijk)| Vrouw | "Micro soft server Speech Text to Speech Voice (fr-FR, Julie, Apollo)" | "fr-FR-Pascaline-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (fr-FR, HortenseRUS)" | "fr-FR-HortenseRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (fr-FR, Paul, Apollo)" | "fr-FR-Paul-Apollo"
-he IL| Hebreeuws (Israël) | Man| "Micro soft server Speech Text to Speech Voice (ik-IL, Asaf)" | "he IL-Asaf"
-Hi-IN | Hindi (India) | Vrouw | "Micro soft server Speech Text to Speech Voice (Hi-IN, Kalpana, Apollo)" | "Hi-IN-Kalpana-Apollo"
-| | |Vrouw | "Micro soft server Speech Text to Speech Voice (Hi-IN, Kalpana)" | "Hi-IN-Kalpana"
-| | | Man | "Micro soft server Speech Text to Speech Voice (Hi-IN, Hemant)" | "Hi-IN-Hemant"
-HR-HR | Kroatisch | Man | "Micro soft server Speech Text to Speech Voice (HR-HR, Matej)" | "HR-HR-Matej"
-hu-HU | Hongaars | Man | "Micro soft server Speech Text to Speech Voice (hu-HU, Szabolcs)" | "hu-HU-Szabolcs"
-id-ID | Indonesisch| Man | "Micro soft server Speech Text to Speech Voice (id-ID, andika)" | "id-ID-andika"
-IT-IT | Italiaans | Man | "Micro soft server Speech Text to Speech Voice (IT-IT, Cosimo, Apollo)" | "it-IT-Cosimo-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (IT-IT, LuciaRUS)" | ' it-IT-LuciaRUS '
-ja-JP | Japans | Vrouw | "Micro soft server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo"
-| | | Man | "Micro soft server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (ja-JP, HarukaRUS)" | "ja-JP-HarukaRUS"
-ko-KR | Koreaans | Vrouw | "Micro soft server Speech Text to Speech Voice (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS"
-MS-mijn | Maleis | Man | "Micro soft server Speech Text to Speech Voice (MS-MY, Rizwan)" | ' MS-MY-Rizwan '
-nb-NO | Noors | Vrouw | "Micro soft server Speech Text to Speech Voice (nb-NO, HuldaRUS)" | "nb-NO-HuldaRUS"
-nl-NL | Nederlands | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-NL, HannaRUS)" | "nl-NL-HannaRUS"
-pl-PL | Pools | Vrouw | "Micro soft server Speech Text to Speech Voice (pl-PL, PaulinaRUS)" | "pl-PL-PaulinaRUS"
-pt-BR | Portugees (Brazilië) | Vrouw | "Micro soft server Speech Text to Speech Voice (pt-BR, HeloisaRUS)" | "pt-BR-HeloisaRUS"
-| | | Man |"Micro soft server Speech Text to Speech Voice (pt-BR, Apollo)" | "pt-BR-Apollo"
-pt-PT | Portugees (Portugal) | Vrouw | "Micro soft server Speech Text to Speech Voice (pt-PT, HeliaRUS)" | "pt-PT-HeliaRUS"
-RO-RO | Roemeens | Man | "Micro soft server Speech Text to Speech Voice (RO-RO, Andrei)" | "ro-RO-Andrei"
-ru-RU |Russisch| Vrouw | "Micro soft server Speech Text to Speech Voice (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo"
-| | | Man | "Micro soft server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)" | "ru-RU-Pavel-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (ru-RU, EkaterinaRUS)" | ru-RU-EkaterinaRUS
-sk-SK | Slowaaks | Man | "Micro soft server Speech Text to Speech Voice (sk-SK, Filip)" | "sk-SK-Filip"
-sl-SI | Sloveens | Man | "Micro soft server Speech Text to Speech Voice (sl-SI, lado)" | "sl-SI-lado"
-SV-SE | Zweeds | Vrouw | "Micro soft server Speech Text to Speech Voice (sv-SE, HedvigRUS)" | "sv-SE-HedvigRUS"
-ta | Tamil (India) | Man | "Micro soft server Speech Text to Speech Voice (TA-IN, Valluvar)" | "TA-IN-Valluvar"
-te-IN | Telugu (India) | Vrouw | "Micro soft server Speech Text to Speech Voice (Chitra)" | "te-IN-Chitra"
-th | Thais | Man | "Micro soft server Speech Text to Speech Voice (th-TH, Pattara)" | ' th-do-Pattara '
-tr-TR | Turks | Vrouw | "Micro soft server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS"
-VI-VN | Vietnamees | Man | "Micro soft server Speech Text to Speech Voice (VI-VN, a)" | "VI-VN-a"
-zh-CN | Chinees (vasteland) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"
-| | | Man | "Micro soft server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo"
-zh-HK | Chinees (Hongkong) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | "zh-HK-Tracy-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-HK, TracyRUS)" | "zh-HK-TracyRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (zh-HK, Danny, Apollo)" | "zh-HK-Danny-Apollo"
-zh-TW | Chinees (Taiwan) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-TW-Yating-Apollo"
-| | | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS"
-| | | Man | "Micro soft server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo"
+Landinstelling | Taal | Geslacht | Volledige toewijzing van service naam | Korte naam | Ondersteuning voor containers
+-------|----------|---------|----------|----------|------
+AR-bijvoorbeeld\* | Arabisch (Egypte) | Vrouw | "Micro soft server Speech Text to Speech Voice (AR-BIJV. Hoda)" | "ar-EG-Hoda" | ✔️
+AR-SA | Arabisch (Saudi-Arabië) | Man | "Micro soft server Speech Text to Speech Voice (AR-SA, Naayf)" | "AR-SA-Naayf" | ✔️
+bg-BG | Bulgaars | Man | "Micro soft server Speech Text to Speech Voice (bg-BG, Ivan)" | "bg-BG-Ivan" | ✔️
+CA-ES | Catalaans (Spanje) | Vrouw | "Micro soft server Speech Text to Speech Voice (ca-ES, HerenaRUS)" | "ca-ES-HerenaRUS" | ✔️
+CS-CZ | Tsjechisch | Man | "Micro soft server Speech Text to Speech Voice (CS-CZ, Jakub)" | "CS-CZ-Jakub" | ✔️
+da-DK | Deens | Vrouw | "Micro soft server Speech Text to Speech Voice (da-DK, HelleRUS)" | "da-DK-HelleRUS" | ✔️
+de-AT | Duits (Oosten rijk) | Man | "Micro soft server Speech Text to Speech Voice (de-AT, Michael)" | "de-Michael" | ✔️
+Dech | Duits (Zwitser land) | Man | "Micro soft server Speech Text to Speech Voice (de-CH, Karsten)" | "de-CH-Karsten" | ✔️
+de-DE | Duits (Duitsland) | Vrouw | "Micro soft server Speech Text to Speech Voice (de-DE, Hedda)" | "de-DE-Hedda" | ❌
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (de-DE, HeddaRUS)" | "de-DE-HeddaRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (de-DE, Stefan, Apollo)" | "de-DE-Stefan-Apollo" | ✔️
+El-GR | Grieks | Man | "Micro soft server Speech Text to Speech Voice (El-GR, Stefanos)" | "El-GR-Stefanos" | ✔️
+en-AU | Engels (Australië) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-AU, Catherine)" | "en-AU-Catherine" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-AU, HayleyRUS)" | "en-AU-HayleyRUS" | ✔️
+en-CA | Engels (Canada) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-CA, Linda)" | "en-CA-Linda" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-CA, HeatherRUS)" | "en-CA-HeatherRUS" | ✔️
+en-GB | English (UK) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-GB, Susan, Apollo)" | "en-GB-Susan-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-GB, HazelRUS)" | "en-GB-HazelRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (en-GB, George, Apollo)" | "en-GB-George-Apollo" | ✔️
+en-IE | Engels (Ierland) | Man | "Micro soft server Speech Text to Speech Voice (en-IE, Johan)" | "en-IE-Johan" | ✔️
+en-IN | English (India) | Vrouw | "Micro soft server Speech Text to Speech Voice (en-IN, heera, Apollo)" | "en-IN-heera-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (en-IN, PriyaRUS)" | "en-IN-PriyaRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo" | ✔️
+en-US | English (US) | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, ZiraRUS)" | "en-US-ZiraRUS" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, JessaRUS)" | "en-US-JessaRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, BenjaminRUS)" | "en-US-BenjaminRUS" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-nl, Jessa24kRUS)" | "en-US-Jessa24kRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (nl-nl, Guy24kRUS)" | "en-US-Guy24kRUS" | ✔️
+es-ES | Spaans (Spanje) |Vrouw | "Micro soft server Speech Text to Speech Voice (es-ES, Laura, Apollo)" | "es-ES-Laura-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (es-ES, HelenaRUS)" | "es-ES-HelenaRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (es-ES, Pablo, Apollo)" | "es-ES-Pablo-Apollo" | ✔️
+es-MX | Spaans (Mexico) | Vrouw | "Micro soft server Speech Text to Speech Voice (es-MX, HildaRUS)" | "es-MX-HildaRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (es-MX, Raul, Apollo)" | "es-MX-Raul-Apollo" | ✔️
+fi-FI | Fins | Vrouw | "Micro soft server Speech Text to Speech Voice (fi-FI, HeidiRUS)" | "fi-FI-HeidiRUS" | ✔️
+FR-CA | Frans (Canada) |Vrouw | "Micro soft server Speech Text to Speech Voice (FR-CA, Caroline)" | "FR-CA-Caroline" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (FR-CA, HarmonieRUS)" | "FR-CA-HarmonieRUS" | ✔️
+FR-CH | Frans (Zwitser land)| Man | "Micro soft server Speech Text to Speech Voice (FR-CH, Guillaume)" | "FR-CH-Guillaume" | ✔️
+fr-FR | Frans (Frank rijk)| Vrouw | "Micro soft server Speech Text to Speech Voice (fr-FR, Julie, Apollo)" | "fr-FR-Pascaline-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (fr-FR, HortenseRUS)" | "fr-FR-HortenseRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (fr-FR, Paul, Apollo)" | "fr-FR-Paul-Apollo" | ✔️
+he IL| Hebreeuws (Israël) | Man| "Micro soft server Speech Text to Speech Voice (ik-IL, Asaf)" | "he IL-Asaf" | ✔️
+Hi-IN | Hindi (India) | Vrouw | "Micro soft server Speech Text to Speech Voice (Hi-IN, Kalpana, Apollo)" | "Hi-IN-Kalpana-Apollo" | ✔️
+| | |Vrouw | "Micro soft server Speech Text to Speech Voice (Hi-IN, Kalpana)" | "Hi-IN-Kalpana" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (Hi-IN, Hemant)" | "Hi-IN-Hemant" | ✔️
+HR-HR | Kroatisch | Man | "Micro soft server Speech Text to Speech Voice (HR-HR, Matej)" | "HR-HR-Matej" | ✔️
+hu-HU | Hongaars | Man | "Micro soft server Speech Text to Speech Voice (hu-HU, Szabolcs)" | "hu-HU-Szabolcs" | ✔️
+id-ID | Indonesisch| Man | "Micro soft server Speech Text to Speech Voice (id-ID, andika)" | "id-ID-andika" | ✔️
+IT-IT | Italiaans | Man | "Micro soft server Speech Text to Speech Voice (IT-IT, Cosimo, Apollo)" | "it-IT-Cosimo-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (IT-IT, LuciaRUS)" | ' it-IT-LuciaRUS ' | ✔️
+ja-JP | Japans | Vrouw | "Micro soft server Speech Text to Speech Voice (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (ja-JP, HarukaRUS)" | "ja-JP-HarukaRUS" | ✔️
+ko-KR | Koreaans | Vrouw | "Micro soft server Speech Text to Speech Voice (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS" | ✔️
+MS-mijn | Maleis | Man | "Micro soft server Speech Text to Speech Voice (MS-MY, Rizwan)" | ' MS-MY-Rizwan ' | ✔️
+nb-NO | Noors | Vrouw | "Micro soft server Speech Text to Speech Voice (nb-NO, HuldaRUS)" | "nb-NO-HuldaRUS" | ✔️
+nl-NL | Nederlands | Vrouw | "Micro soft server Speech Text to Speech Voice (nl-NL, HannaRUS)" | "nl-NL-HannaRUS" | ✔️
+pl-PL | Pools | Vrouw | "Micro soft server Speech Text to Speech Voice (pl-PL, PaulinaRUS)" | "pl-PL-PaulinaRUS" | ✔️
+pt-BR | Portugees (Brazilië) | Vrouw | "Micro soft server Speech Text to Speech Voice (pt-BR, HeloisaRUS)" | "pt-BR-HeloisaRUS" | ✔️
+| | | Man |"Micro soft server Speech Text to Speech Voice (pt-BR, Apollo)" | "pt-BR-Apollo" | ✔️
+pt-PT | Portugees (Portugal) | Vrouw | "Micro soft server Speech Text to Speech Voice (pt-PT, HeliaRUS)" | "pt-PT-HeliaRUS" | ✔️
+RO-RO | Roemeens | Man | "Micro soft server Speech Text to Speech Voice (RO-RO, Andrei)" | "ro-RO-Andrei" | ✔️
+ru-RU |Russisch| Vrouw | "Micro soft server Speech Text to Speech Voice (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (ru-RU, Pavel, Apollo)" | "ru-RU-Pavel-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (ru-RU, EkaterinaRUS)" | ru-RU-EkaterinaRUS | ✔️
+sk-SK | Slowaaks | Man | "Micro soft server Speech Text to Speech Voice (sk-SK, Filip)" | "sk-SK-Filip" | ✔️
+sl-SI | Sloveens | Man | "Micro soft server Speech Text to Speech Voice (sl-SI, lado)" | "sl-SI-lado" | ✔️
+SV-SE | Zweeds | Vrouw | "Micro soft server Speech Text to Speech Voice (sv-SE, HedvigRUS)" | "sv-SE-HedvigRUS" | ✔️
+ta | Tamil (India) | Man | "Micro soft server Speech Text to Speech Voice (TA-IN, Valluvar)" | "TA-IN-Valluvar" | ✔️
+te-IN | Telugu (India) | Vrouw | "Micro soft server Speech Text to Speech Voice (Chitra)" | "te-IN-Chitra" | ✔️
+th | Thais | Man | "Micro soft server Speech Text to Speech Voice (th-TH, Pattara)" | ' th-do-Pattara ' | ✔️
+tr-TR | Turks | Vrouw | "Micro soft server Speech Text to Speech Voice (tr-TR, SedaRUS)" | "tr-TR-SedaRUS" | ✔️
+VI-VN | Vietnamees | Man | "Micro soft server Speech Text to Speech Voice (VI-VN, a)" | "VI-VN-a" | ✔️
+zh-CN | Chinees (vasteland) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo" | ✔️
+zh-HK | Chinees (Hongkong) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-HK, Tracy, Apollo)" | "zh-HK-Tracy-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-HK, TracyRUS)" | "zh-HK-TracyRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (zh-HK, Danny, Apollo)" | "zh-HK-Danny-Apollo" | ✔️
+zh-TW | Chinees (Taiwan) | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-TW, Yating, Apollo)" | "zh-TW-Yating-Apollo" | ✔️
+| | | Vrouw | "Micro soft server Speech Text to Speech Voice (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS" | ✔️
+| | | Man | "Micro soft server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo" | ✔️
 
 \* *AR: ondersteunt moderne standaard Arabisch (MSA).*
 

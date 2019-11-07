@@ -1,6 +1,6 @@
 ---
-title: Configureren van aangepaste container - Azure App Service | Microsoft Docs
-description: Informatie over het configureren van Node.js-apps werken in Azure App Service
+title: Aangepaste container-Azure App Service configureren | Microsoft Docs
+description: Meer informatie over het configureren van node. js-apps voor het werken met Azure App Service
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -13,22 +13,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 02231f86d4ceddd6cde53fd242c2c91158d744a9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7290e2b09c316a97bfb88744307e185aef72852a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480755"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668974"
 ---
-# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Een aangepaste Linux-container configureren voor Azure App Service
+# <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Een aangepaste Linux-container voor Azure App Service configureren
 
-Dit artikel leest u hoe het configureren van een aangepaste Linux-container uit te voeren op Azure App Service.
+Dit artikel laat u zien hoe u een aangepaste Linux-container kunt configureren om te worden uitgevoerd op Azure App Service.
 
-Deze handleiding bevat de belangrijkste concepten en instructies voor containeropslag van Linux-apps in App Service. Als u Azure App Service nog nooit hebt gebruikt, volgt u de [aangepaste container snelstartgids](quickstart-docker-go.md) en [zelfstudie](tutorial-custom-docker-image.md) eerste. Er is ook een [Snelstartgids voor apps met meerdere containers](quickstart-multi-container.md) en [zelfstudie](tutorial-multi-container-app.md).
+Deze hand leiding bevat belang rijke concepten en instructies voor container opslag Linux-apps in App Service. Als u Azure App Service nog nooit hebt gebruikt, volgt u eerst de Snelstartgids en [zelf studie](tutorial-custom-docker-image.md) van de [aangepaste container](quickstart-docker-go.md) . Er is ook een Snelstartgids en [zelf studie](tutorial-multi-container-app.md)voor [apps met meerdere containers](quickstart-multi-container.md) .
 
-## <a name="configure-port-number"></a>Poortnummer configureren
+## <a name="configure-port-number"></a>Poort nummer configureren
 
-De webserver in uw aangepaste installatiekopie gebruikt mogelijk een andere poort dan 80. U vertelt Azure over de poort die gebruikmaakt van uw aangepaste container met behulp van de `WEBSITES_PORT` app-instelling. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_. U kunt dit instellen door te voeren [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht in de Cloud Shell. Bijvoorbeeld:
+De webserver in uw aangepaste installatie kopie mag een andere poort dan 80 gebruiken. U vertelt Azure over de poort die uw aangepaste container gebruikt met behulp van de app-instelling `WEBSITES_PORT`. De GitHub-pagina voor het [Python-voorbeeld in deze zelfstudie](https://github.com/Azure-Samples/docker-django-webapp-linux) laat zien dat u `WEBSITES_PORT` in moet stellen op _8000_. U kunt dit instellen door [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht uit te voeren in de Cloud shell. Bijvoorbeeld:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -36,46 +36,46 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>Omgevingsvariabelen configureren
 
-Uw aangepaste container kunt omgevingsvariabelen die moeten extern worden opgegeven. U kunt ze in doorgeven door uit te voeren [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht in de Cloud Shell. Bijvoorbeeld:
+Uw aangepaste container kan gebruikmaken van omgevings variabelen die extern moeten worden opgegeven. U kunt deze door geven in door [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht uit te voeren in de Cloud shell. Bijvoorbeeld:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
 ```
 
-Deze methode werkt zowel voor één container-apps of apps in meerdere containers, waar de omgevingsvariabelen die zijn opgegeven in de *docker-compose.yml* bestand.
+Deze methode werkt zowel voor apps met één container als apps met meerdere containers, waarbij de omgevings variabelen worden opgegeven in het bestand *docker-Compose. yml* .
 
 ## <a name="use-persistent-shared-storage"></a>Permanente gedeelde opslag gebruiken
 
-U kunt de */home* Active directory in het bestandssysteem van uw app te blijven behouden bestanden via opnieuw wordt opgestart en deze delen tussen exemplaren. De `/home` in uw app is opgegeven voor het inschakelen van uw container-app voor toegang tot permanente opslag.
+U kunt de */Home* -map in het bestands systeem van uw app gebruiken om bestanden op te slaan tijdens het opnieuw opstarten en ze te delen met alle instanties. De `/home` in uw app is beschikbaar om uw container-app toegang te geven tot permanente opslag.
 
-Wanneer de permanente opslag is uitgeschakeld en schrijft naar de `/home` directory worden niet opgeslagen in de app opnieuw wordt opgestart of over meerdere instanties. De enige uitzondering hierop is de `/home/LogFiles` directory, dat wordt gebruikt voor het opslaan van de logboeken van Docker en containers. Wanneer de permanente opslag is ingeschakeld, worden alle schrijfbewerkingen naar de `/home` directory worden doorgevoerd en kan worden geopend door alle exemplaren van een scale-out-app.
+Wanneer permanente opslag is uitgeschakeld, wordt de schrijf bewerkingen naar de `/home` Directory niet persistent gemaakt in de app die opnieuw wordt gestart of over meerdere exemplaren. De enige uitzonde ring hierop is de `/home/LogFiles` Directory, die wordt gebruikt voor het opslaan van de docker-en container Logboeken. Wanneer permanente opslag is ingeschakeld, worden alle schrijf bewerkingen naar de `/home` Directory persistent gemaakt en kunnen alle exemplaren van een uitgeschaalde app worden geopend.
 
-Permanente opslag is standaard *ingeschakeld* en de instelling is niet beschikbaar gemaakt in de toepassingsinstellingen. Als u wilt uitschakelen, stelt de `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app-instelling door te voeren [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht in de Cloud Shell. Bijvoorbeeld:
+Permanente opslag is standaard *ingeschakeld* en de instelling wordt niet weer gegeven in de toepassings instellingen. Als u dit wilt uitschakelen, stelt u de app-instelling voor `WEBSITES_ENABLE_APP_SERVICE_STORAGE` in door [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht uit te voeren in de Cloud shell. Bijvoorbeeld:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
 ```
 
 > [!NOTE]
-> U kunt ook [configureren van uw eigen permanente opslag](how-to-serve-content-from-azure-storage.md).
+> U kunt ook [uw eigen permanente opslag configureren](how-to-serve-content-from-azure-storage.md).
 
 ## <a name="enable-ssh"></a>SSH inschakelen
 
-SSH maakt veilige communicatie tussen een container en een client mogelijk. In de order voor een aangepaste container voor de ondersteuning van SSH, moet u deze toevoegen in de docker-bestand zelf.
+SSH maakt veilige communicatie tussen een container en een client mogelijk. Als u een aangepaste container SSH wilt ondersteunen, moet u deze toevoegen aan de Dockerfile zelf.
 
 > [!TIP]
-> Alle ingebouwde Linux-containers hebben de SSH-instructies in de afbeelding opslagplaatsen toegevoegd. U kunt de volgende instructies met doorloopt de [Node.js 10.14 opslagplaats](https://github.com/Azure-App-Service/node/blob/master/10.14) om te zien hoe het er wordt ingeschakeld.
+> Alle ingebouwde Linux-containers hebben de SSH-instructies toegevoegd aan hun afbeeldings opslagplaatsen. U kunt de volgende instructies door lopen met de [node. js 10,14-opslag plaats](https://github.com/Azure-App-Service/node/blob/master/10.14) om te zien hoe deze er wordt ingeschakeld.
 
-- Gebruik de [uitvoeren](https://docs.docker.com/engine/reference/builder/#run) instructies voor het installeren van de SSH-server en stel het wachtwoord voor het hoofdaccount op `"Docker!"`. Bijvoorbeeld: voor een installatiekopie op basis van [Alpine Linux](https://hub.docker.com/_/alpine), moet u de volgende opdrachten:
+- Gebruik de instructie [Run](https://docs.docker.com/engine/reference/builder/#run) om de SSH-server te installeren en stel het wacht woord voor het hoofd account in op `"Docker!"`. Voor een installatie kopie op basis van [Alpine Linux](https://hub.docker.com/_/alpine)hebt u bijvoorbeeld de volgende opdrachten nodig:
 
     ```Dockerfile
     RUN apk add openssh \
          && echo "root:Docker!" | chpasswd 
     ```
 
-    Deze configuratie toestaan niet van externe verbindingen naar de container. SSH is alleen beschikbaar via `https://<app-name>.scm.azurewebsites.net` en geverifieerd met de publicatiereferenties.
+    Deze configuratie staat geen externe verbindingen naar de container toe. SSH is alleen beschikbaar via `https://<app-name>.scm.azurewebsites.net` en is geverifieerd met de publicatie referenties.
 
-- Toevoegen [dit sshd_config-bestand](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) naar de opslagplaats voor installatiekopieën en gebruik de [kopie](https://docs.docker.com/engine/reference/builder/#copy) instructies voor het kopiëren van het bestand naar de */etc/ssh/* directory. Voor meer informatie over *sshd_config* bestanden, Zie [OpenBSD documentatie](https://man.openbsd.org/sshd_config).
+- Voeg [Dit sshd_config-bestand](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) toe aan uw opslag plaats voor installatie kopieën en gebruik de [Kopieer](https://docs.docker.com/engine/reference/builder/#copy) instructie om het bestand te kopiëren naar de map */etc/ssh/* . Zie [OpenBSD-documentatie](https://man.openbsd.org/sshd_config)voor meer informatie over *sshd_config* -bestanden.
 
     ```Dockerfile
     COPY sshd_config /etc/ssh/
@@ -86,41 +86,41 @@ SSH maakt veilige communicatie tussen een container en een client mogelijk. In d
     > - `Ciphers`moet ten minste één item in deze lijst bevatten: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs`moet ten minste één item in deze lijst bevatten: `hmac-sha1,hmac-sha1-96`.
 
-- Gebruik de [BLOOTSTELLEN](https://docs.docker.com/engine/reference/builder/#expose) instructies voor het openen van poort 2222 in de container. Hoewel het hoofdwachtwoord bekend is, is poort 2222 niet toegankelijk is vanaf internet. Het is toegankelijk door containers in het Brugnetwerk van een virtueel privénetwerk.
+- Gebruik de instructie [beschikbaar](https://docs.docker.com/engine/reference/builder/#expose) maken om poort 2222 in de container te openen. Hoewel het Hoofdwacht woord bekend is, is poort 2222 niet toegankelijk via internet. Het is alleen toegankelijk voor containers in het brug netwerk van een particulier virtueel netwerk.
 
     ```Dockerfile
     EXPOSE 80 2222
     ```
 
-- In het script opstarten voor de container, start u de SSH-server.
+- Start de SSH-server in het opstart script voor uw container.
 
     ```bash
     /usr/sbin/sshd
     ```
 
-    Zie voor een voorbeeld hoe de standaard [Node.js 10.14 container](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) de SSH-server wordt gestart.
+    Zie hoe de standaard [node. js 10,14-container](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh) de SSH-server start, voor een voor beeld.
 
 ## <a name="access-diagnostic-logs"></a>Toegang tot diagnostische logboeken
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="configure-multi-container-apps"></a>Meerdere container-apps configureren
+## <a name="configure-multi-container-apps"></a>Apps voor meerdere containers configureren
 
-- [Permanente opslag in Docker Compose gebruiken](#use-persistent-storage-in-docker-compose)
-- [Beperkingen voor Preview](#preview-limitations)
-- [Docker Compose-opties](#docker-compose-options)
+- [Permanente opslag gebruiken in docker opstellen](#use-persistent-storage-in-docker-compose)
+- [Preview-beperkingen](#preview-limitations)
+- [Opties voor docker opstellen](#docker-compose-options)
 
-### <a name="use-persistent-storage-in-docker-compose"></a>Permanente opslag in Docker Compose gebruiken
+### <a name="use-persistent-storage-in-docker-compose"></a>Permanente opslag gebruiken in docker opstellen
 
-Meerdere containers apps zoals WordPress nodig voor permanente opslag te laten functioneren. Als u wilt inschakelen, uw Docker Compose-configuratie moet verwijzen naar een opslaglocatie *buiten* de container. Opslaglocaties in de container niet wijzigingen buiten de app opnieuw moet worden behouden.
+Multi-container-apps zoals WordPress hebben permanente opslag nodig om goed te kunnen functioneren. Als u deze functie wilt inschakelen, moet de configuratie van de docker-samen stellen naar een opslag locatie *buiten* uw container verwijzen. Opslag locaties in uw container behouden geen wijzigingen na het opnieuw opstarten van de app.
 
-Permanente opslag inschakelen door in te stellen de `WEBSITES_ENABLE_APP_SERVICE_STORAGE` app instellen, met behulp van de [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) opdracht in Cloud Shell.
+Schakel permanente opslag in door de instelling van de app voor `WEBSITES_ENABLE_APP_SERVICE_STORAGE` in te stellen met behulp van de opdracht [AZ webapp config appSettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud shell.
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-In uw *docker-compose.yml* bestand, wijs de `volumes` optie naar `${WEBAPP_STORAGE_HOME}`. 
+Wijs in uw *docker-Compose. yml* -bestand de optie `volumes` toe aan `${WEBAPP_STORAGE_HOME}`. 
 
 `WEBAPP_STORAGE_HOME` is een omgevingsvariabele in App Service die is toegewezen aan de permanente opslag voor uw app. Bijvoorbeeld:
 
@@ -135,20 +135,20 @@ wordpress:
 
 ### <a name="preview-limitations"></a>Preview-beperkingen
 
-Meerdere containers is momenteel in preview. De volgende functies van de App Service-platform worden niet ondersteund:
+Meerdere containers zijn momenteel beschikbaar als preview-versie. De volgende App Service platform functies worden niet ondersteund:
 
 - Verificatie / autorisatie
 - Beheerde identiteiten
 
-### <a name="docker-compose-options"></a>Docker Compose-opties
+### <a name="docker-compose-options"></a>Opties voor docker opstellen
 
-De volgende lijsten ziet u ondersteunde en niet-ondersteunde Docker Compose configuratieopties:
+In de volgende lijsten worden ondersteunde en niet-ondersteunde docker-configuratie opties weer gegeven:
 
 #### <a name="supported-options"></a>Ondersteunde opties
 
-- command
+- opdracht
 - entrypoint
-- environment
+- omgeving
 - image
 - ports
 - restart
@@ -164,12 +164,16 @@ De volgende lijsten ziet u ondersteunde en niet-ondersteunde Docker Compose conf
 - andere poorten dan 80 en 8080 (genegeerd)
 
 > [!NOTE]
-> Andere opties niet expliciet worden beschreven worden in de openbare Preview genegeerd.
+> Alle andere opties die niet expliciet worden aangeroepen, worden genegeerd in de open bare preview-versie.
+
+## <a name="configure-vnet-integration"></a>VNet-integratie configureren
+
+Voor het gebruik van een aangepaste container met VNet-integratie is mogelijk extra container configuratie vereist. Zie [uw app integreren met een Azure-Virtual Network](../web-sites-integrate-with-vnet.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Implementeren vanaf de privé-containeropslagplaats](tutorial-custom-docker-image.md)
+> [Zelf studie: implementeren vanuit een persoonlijke container opslagplaats](tutorial-custom-docker-image.md)
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Meerdere containers WordPress-app](tutorial-multi-container-app.md)
+> [Zelf studie: WordPress-app met meerdere containers](tutorial-multi-container-app.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/04/2019
-ms.openlocfilehash: 85346a2334d240eceb0daa4519ce69b4eb4906cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f1b061e92ce0650da4d5b95643eb6e9df917e3b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497459"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671563"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
@@ -119,7 +119,7 @@ Ontwikkel aars die de voor keur geven aan een visueel ontwerp vlak kunnen de Azu
 
 Wanneer u pijp lijnen visueel ontwerpt, worden de invoer en uitvoer van een stap zichtbaar weer gegeven. U kunt gegevens verbindingen slepen en neerzetten om de gegevensstroom van uw pijp lijn snel te begrijpen en te wijzigen.
  
-![Voor beeld van Azure Machine Learning Designer](./media/concept-ml-pipelines/visual-design-surface.gif)
+![Voor beeld van Azure Machine Learning Designer](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Uitleg over de uitvoerings grafiek
 
@@ -183,7 +183,7 @@ Het is eenvoudig om enthousiast te raken over het opnieuw gebruiken van in de ca
 
 * Het gebruik van pijp lijnen als enige manier om problemen te scheiden. De ingebouwde functies, objecten en modules van python bieden een lange manier om Verwar ring programmatisch te voor komen! Een pijplijn stap is veel duurder dan een functie aanroep.
 
-* Zware koppeling tussen de pijplijn stappen. Als u een afhankelijke stap vaak nodig hebt om de uitvoer van een vorige stap te wijzigen, is het waarschijnlijk dat de afzonderlijke stappen momenteel meer kosten in beslag nemen dan een voor deel. Een andere aanwijzing dat de stappen zijn gekoppeld, zijn argumenten voor een stap die geen gegevens bevat, maar vlaggen voor het beheren van de verwerking. 
+* Zware koppeling tussen pijplijn stappen. Als u een afhankelijke stap vaak nodig hebt om de uitvoer van een vorige stap te wijzigen, is het waarschijnlijk dat de afzonderlijke stappen momenteel meer kosten in beslag nemen dan een voor deel. Een andere aanwijzing dat de stappen zijn gekoppeld, zijn argumenten voor een stap die geen gegevens bevat, maar vlaggen voor het beheren van de verwerking. 
 
 * De reken resources voor tijdig optimaliseren. Er zijn bijvoorbeeld vaak verschillende fasen voor het voorbereiden van gegevens en een van de volgende ' Oh '. Dit is een plek waar ik een `MpiStep` kan gebruiken voor parallelle programmering, maar dit is een plek waar ik een `PythonScriptStep` kan gebruiken met een minder krachtig reken doel , enzovoort. En wellicht, in de lange uitvoering, het maken van nauw keurige stappen zoals die mogelijk de moeite waard zijn, met name als er sprake is van het gebruik van in cache opgeslagen resultaten in plaats van altijd opnieuw te hoeven worden berekend. Maar pijp lijnen zijn niet bedoeld als vervanging voor de module `multiprocessing`. 
 

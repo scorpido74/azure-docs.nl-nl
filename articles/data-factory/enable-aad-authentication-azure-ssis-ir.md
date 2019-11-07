@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory authenticatie inschakelen voor Azure-SSIS Integration Runtime | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure Active Directory-verificatie inschakelt met de beheerde identiteit voor Azure Data Factory om Azure-SSIS Integration Runtime te maken.
+title: Azure Active Directory authenticatie inschakelen voor Azure-SSIS Integration Runtime
+description: In dit artikel wordt beschreven hoe u Azure Active Directory verificatie inschakelt met de beheerde identiteit voor Azure Data Factory om Azure-SSIS Integration Runtime te maken.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,16 +12,20 @@ ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
 manager: craigg
-ms.openlocfilehash: 1e55d1878b1a5616d467f2fa27b1b20132d5e77c
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
-ms.translationtype: HT
+ms.openlocfilehash: 5f867126762924906aefada558a65cb68e884f6f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516992"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675670"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure Active Directory authenticatie inschakelen voor Azure-SSIS Integration Runtime
 
-In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-verificatie kunt inschakelen met de beheerde identiteit voor uw Azure Data Factory (ADF) en hoe u deze kunt gebruiken in plaats van SQL-verificatie om een Azure-SSIS-Integration Runtime (IR) te maken die in inschakeling wordt ingericht SSIS-catalogus database (SSISDB) in Azure SQL Database Server/beheerd exemplaar namens u.
+In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-verificatie inschakelt met de beheerde identiteit voor uw Azure Data Factory (ADF) en deze gebruikt in plaats van conventionele verificatie methoden (zoals SQL-verificatie) voor het volgende:
+
+- Maak een Azure-SSIS Integration Runtime (IR) waarmee u de SSIS-catalogus database (SSISDB) in Azure SQL Database Server/beheerd exemplaar namens u kunt inschakelen.
+
+- Verbinding maken met verschillende Azure-resources wanneer SSIS-pakketten op Azure-SSIS IR worden uitgevoerd.
 
 Zie [beheerde Identiy voor Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)voor meer informatie over de beheerde identiteit voor uw ADF.
 
@@ -33,15 +37,15 @@ Zie [beheerde Identiy voor Data Factory](https://docs.microsoft.com/azure/data-f
 
 ## <a name="enable-azure-ad-on-azure-sql-database"></a>Azure AD inschakelen op Azure SQL Database
 
-Azure SQL Database-Server biedt ondersteuning voor het maken van een Data Base met een Azure AD-gebruiker. Eerst moet u een Azure AD-groep met de beheerde identiteit voor uw ADF maken als lid. Vervolgens moet u een Azure AD-gebruiker instellen als de Active Directory-beheerder voor uw Azure SQL Database-Server en vervolgens verbinding maken met die gebruiker via SQL Server Management Studio (SSMS). Ten slotte moet u een Inge sloten gebruiker maken die de Azure AD-groep vertegenwoordigt, zodat de beheerde identiteit voor uw ADF door Azure-SSIS IR kan worden gebruikt om namens u SSISDB te maken.
+Azure SQL Database-Server biedt ondersteuning voor het maken van een Data Base met een Azure AD-gebruiker. Eerst moet u een Azure AD-groep met de beheerde identiteit voor uw ADF maken als lid. Vervolgens moet u een Azure AD-gebruiker instellen als de Active Directory-beheerder voor uw Azure SQL Database-Server en vervolgens verbinding maken met die gebruiker via SQL Server Management Studio (SSMS). Ten slotte moet u een Inge sloten gebruiker maken die de Azure AD-groep vertegenwoordigt, zodat de beheerde identiteit voor uw ADF kan worden gebruikt door Azure-SSIS IR om namens u SSISDB te maken.
 
 ### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>Een Azure AD-groep maken met de beheerde identiteit voor uw ADF als lid
 
 U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken met behulp van Azure AD Power shell.
 
-1.  Installeer de [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) module.
+1.  Installeer de [Azure AD Power shell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) -module.
 
-2.  Meld u aan `Connect-AzureAD`met, voer de volgende cmdlet uit om een groep te maken en op te slaan in een variabele:
+2.  Meld u aan met `Connect-AzureAD`, voer de volgende cmdlet uit om een groep te maken en op te slaan in een variabele:
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -76,7 +80,7 @@ U kunt een bestaande Azure AD-groep gebruiken of een nieuwe maken met behulp van
 
 U kunt met behulp van de volgende stappen [Azure AD-verificatie met SQL configureren en beheren](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) :
 
-1.  Selecteer in azure Portal **alle services** -> **SQL-servers** in de linkernavigatiebalk.
+1.  Selecteer in Azure Portal **alle services** -> **SQL-servers** in de linkernavigatiebalk.
 
 2.  Selecteer uw Azure SQL Database-Server die u wilt configureren met Azure AD-verificatie.
 
@@ -98,7 +102,7 @@ Voor deze volgende stap hebt u [Microsoft SQL Server Management Studio](https:/
 
 3. In het veld **verificatie** selecteert u **Active Directory-Universal met MFA-ondersteuning** (u kunt ook de andere twee Active Directory verificatie typen gebruiken. Zie [Azure AD-verificatie configureren en beheren met SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)(Engelstalig).
 
-4. Voer in het veld **gebruikers naam** de naam in van het Azure ad-account dat u als server beheerder hebt ingesteld, testuser@xxxonline.combijvoorbeeld.
+4. Voer in het veld **gebruikers naam** de naam in van het Azure ad-account dat u als server beheerder hebt ingesteld, bijvoorbeeld testuser@xxxonline.com.
 
 5. Selecteer **verbinding maken** en voltooi het aanmeldings proces.
 
@@ -122,7 +126,7 @@ Voor deze volgende stap hebt u [Microsoft SQL Server Management Studio](https:/
 
    De opdracht moet worden voltooid, waardoor de Inge sloten gebruiker de mogelijkheid heeft om een Data Base (SSISDB) te maken.
 
-10. Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS-IR voor toegang, klikt u met de rechter muisknop op **SSISDB** -data base en selecteert u **nieuwe query**.
+10. Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS IR om het te openen, klikt u met de rechter muisknop op **SSISDB** -data base en selecteert u **nieuwe query**.
 
 11. Voer de volgende T-SQL-opdracht in het query venster in en selecteer **uitvoeren** op de werk balk.
 
@@ -154,7 +158,7 @@ Voor deze volgende stap hebt u [Microsoft SQL Server Management Studio](https:/
 
 1.  Start SSMS.
 
-2.  Maak verbinding met uw beheerde exemplaar met behulp van een SQL Server-account dat een **sysadmin**is. Dit is een tijdelijke beperking die wordt verwijderd zodra Azure AD server-principals (aanmeldingen) voor Azure SQL Database beheerde instantie GA zijn. Als u probeert een Azure AD-beheerders account te gebruiken om de aanmelding te maken, ziet u de volgende fout: Msg 15247, niveau 16, status 1, regel 1 gebruiker is niet gemachtigd om deze actie uit te voeren.
+2.  Maak verbinding met uw beheerde exemplaar met behulp van een SQL Server-account dat een **sysadmin**is. Dit is een tijdelijke beperking die wordt verwijderd zodra Azure AD server-principals (aanmeldingen) voor Azure SQL Database beheerde instantie GA zijn. Als u probeert een Azure AD-beheerders account te gebruiken om de aanmelding te maken, wordt de volgende fout weer geven: msg 15247, niveau 16, status 1, regel 1 gebruiker heeft geen machtiging om deze actie uit te voeren.
 
 3.  Vouw in de **objectverkenner**de map **data bases** -> **System data bases** uit.
 
@@ -170,7 +174,7 @@ Voor deze volgende stap hebt u [Microsoft SQL Server Management Studio](https:/
     
     De opdracht moet worden voltooid, waardoor de beheerde identiteit voor uw ADF de mogelijkheid heeft om een Data Base te maken (SSISDB).
 
-6.  Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS-IR voor toegang, klikt u met de rechter muisknop op **SSISDB** -data base en selecteert u **nieuwe query**.
+6.  Als uw SSISDB is gemaakt met behulp van SQL-verificatie en u wilt overschakelen op het gebruik van Azure AD-verificatie voor uw Azure-SSIS IR om het te openen, klikt u met de rechter muisknop op **SSISDB** -data base en selecteert u **nieuwe query**.
 
 7.  Voer de volgende T-SQL-opdracht in het query venster in en selecteer **uitvoeren** op de werk balk.
 
@@ -181,21 +185,21 @@ Voor deze volgende stap hebt u [Microsoft SQL Server Management Studio](https:/
 
     De opdracht moet worden voltooid, waardoor de beheerde identiteit voor uw ADF de mogelijkheid heeft om toegang te krijgen tot SSISDB.
 
-## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Azure-SSIS IR inrichten in de app Azure Portal/ADF
+## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Azure-SSIS IR inrichten in de Azure Portal/ADF-app
 
-Wanneer u uw Azure-SSIS-IR inricht in de app Azure Portal/ADF, selecteert u op de pagina **SQL-instellingen** de optie **Aad-verificatie gebruiken met de beheerde identiteit voor uw ADF** . De volgende scherm afbeelding toont de instellingen voor IR met Azure SQL Database Server hosting SSISDB. Voor IR met Managed instance hosting SSISDB, de **service tier van de catalogus database** en **toestaan dat Azure-Services toegang hebben tot** instellingen, terwijl andere instellingen hetzelfde zijn.
+Wanneer u uw Azure-SSIS IR inricht in de Azure Portal/ADF-app, selecteert u op de pagina **SQL-instellingen** de optie **Aad-verificatie gebruiken met de beheerde identiteit voor uw ADF** . De volgende scherm afbeelding toont de instellingen voor IR met Azure SQL Database Server hosting SSISDB. Voor IR met Managed instance hosting SSISDB, de **service tier van de catalogus database** en **toestaan dat Azure-Services toegang hebben tot** instellingen, terwijl andere instellingen hetzelfde zijn.
 
-Zie [een Azure SSIS Integration runtime maken in azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie over het maken van een Azure-SSIS-IR.
+Zie [een Azure SSIS Integration runtime in azure Data Factory maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)voor meer informatie over het maken van een Azure-SSIS IR.
 
 ![Instellingen voor de Azure-SSIS-integratie-runtime](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 
-## <a name="provision-azure-ssis-ir-with-powershell"></a>Azure-SSIS-IR inrichten met Power shell
+## <a name="provision-azure-ssis-ir-with-powershell"></a>Azure-SSIS IR inrichten met Power shell
 
 Ga als volgt te werk om uw Azure-SSIS IR in te richten met Power shell:
 
-1.  Installeer de [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) -module.
+1.  Installeer [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) -module.
 
-2.  Stel `CatalogAdminCredential` in uw script geen para meter in. Bijvoorbeeld:
+2.  Stel in uw script niet `CatalogAdminCredential` para meter in. Bijvoorbeeld:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -214,4 +218,14 @@ Ga als volgt te werk om uw Azure-SSIS IR in te richten met Power shell:
     Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                                  -DataFactoryName $DataFactoryName `
                                                  -Name $AzureSSISName
-   ```
+    ```
+
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>SSIS-pakketten uitvoeren met beheerde identiteits verificatie
+
+Wanneer u SSIS-pakketten uitvoert op Azure-SSIS IR, kunt u beheerde identiteits verificatie gebruiken om verbinding te maken met verschillende Azure-resources. Momenteel wordt beheerde identiteits verificatie al ondersteund in de volgende verbindings beheer.
+
+- [Verbindings beheer OLE DB](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [ADO.NET-verbindings beheer](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+
+- [Verbindings beheer Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

@@ -1,6 +1,6 @@
 ---
-title: Beheren en controleren van de werkbelasting van belang zijn in Azure SQL Data Warehouse | Microsoft Docs
-description: Informatie over het beheren en controleren van de aanvraag niveau belang.
+title: Het belang van workload beheren en bewaken
+description: Meer informatie over het beheren en controleren van de urgentie van het aanvraag niveau in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,21 +10,22 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 30afe1805748012b0a137c865c799580f79d31d8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: ee9acb873c5118733de142045457028c3f4d5f61
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588642"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692705"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>Beheren en controleren van de werkbelasting van belang zijn in Azure SQL Data Warehouse
+# <a name="manage-and-monitor-workload-importance-in-azure-sql-data-warehouse"></a>De urgentie van werk belastingen in Azure SQL Data Warehouse beheren en bewaken
 
-Beheren en controleren op belang van de aanvraag in Azure SQL Data Warehouse met behulp van DMV's en catalogusweergaven.
+De urgentie van het aanvraag niveau beheren en bewaken in Azure SQL Data Warehouse met behulp van Dmv's en catalogus weergaven.
 
-## <a name="monitor-importance"></a>Monitor urgentie
+## <a name="monitor-importance"></a>Controle prioriteit
 
-Bewaken met behulp van de nieuwe kolom die belang in belang de [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) dynamische Beheerweergave.
-De onderstaande bewaking van query's tijd verzenden en de begintijd voor query's. Controleer de tijd van verzenden en begintijd samen met belang om te zien hoe het plannen van belang wordt beïnvloed.
+Bewaak de urgentie met behulp van de kolom nieuwe urgentie in de dynamische beheer weergave [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) .
+De onderstaande bewakings query toont de verzend tijd en start tijd voor query's. Controleer de verzend tijd en de begin tijd, samen met het belang om te zien hoe belang rijke planningen worden beïnvloed.
 
 ```sql
 SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
@@ -34,11 +35,11 @@ SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
 ORDER BY r.start_time
 ```
 
-Om verder te zoeken in het schema voor query's worden, de catalogusweergaven te gebruiken.
+Gebruik de catalogus weergaven om verder te kijken hoe query's worden gepland.
 
-## <a name="manage-importance-with-catalog-views"></a>Urgentie met catalogusweergaven beheren
+## <a name="manage-importance-with-catalog-views"></a>Urgentie beheren met catalogus weergaven
 
-De catalogusweergave sys.workload_management_workload_classifiers bevat informatie over classificaties in uw Azure SQL Data Warehouse-exemplaar. Als u wilt uitsluiten voert u het systeem gedefinieerde classificaties die zijn toegewezen aan de resource-klassen uit de volgende code:
+De catalogus weergave sys. workload_management_workload_classifiers bevat informatie over classificaties in uw Azure SQL Data Warehouse-exemplaar. Voer de volgende code uit om de door het systeem gedefinieerde classificaties uit te sluiten die worden toegewezen aan resource klassen:
 
 ```sql
 SELECT *
@@ -46,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-De catalogusweergave [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest), bevat informatie over de parameters die worden gebruikt bij het maken van de classificatie.  De onderstaande query laat zien dat ExecReportsClassifier is gemaakt op de ```membername``` parameter waarden met ExecutiveReports:
+De catalogus weergave, [sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest), bevat informatie over de para meters die worden gebruikt bij het maken van de classificatie.  In de onderstaande query ziet u dat ExecReportsClassifier is gemaakt op de ```membername``` para meter voor waarden met ExecutiveReports:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -56,10 +57,10 @@ SELECT c.name,cd.classifier_type, classifier_value
   WHERE c.name = 'ExecReportsClassifier'
 ```
 
-![Queryresultaten](./media/sql-data-warehouse-how-to-manage-and-monitor-workload-importance/wlm-query-results.png)
+![query resultaten](./media/sql-data-warehouse-how-to-manage-and-monitor-workload-importance/wlm-query-results.png)
 
-Ter vereenvoudiging van het oplossen van problemen misclassification, raden wij dat u resource-klassetoewijzingen rol verwijderen bij het maken van classificaties van de werkbelasting. De onderstaande code retourneert bestaande resource rollidmaatschappen klasse. Voer sp_droprolemember voor elk ```membername``` geretourneerd uit de bijbehorende resourceklasse.
-Hieronder volgt een voorbeeld voor bestaan voordat u verwijdert een classificatie van de werkbelasting te controleren:
+Om het oplossen van problemen met een fout te vereenvoudigen, raden we u aan om resource klasse-roltoewijzingen te verwijderen tijdens het maken van de werk belasting classificaties. De onderstaande code retourneert bestaande lidmaatschappen van resource klassen. Voer sp_droprolemember uit voor elke ```membername``` die wordt geretourneerd door de bijbehorende resource klasse.
+Hieronder ziet u een voor beeld van het controleren op aanwezigheid voordat u de classificatie van een werk belasting verwijdert:
 
 ```sql
 IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name = 'ExecReportsClassifier')
@@ -68,8 +69,8 @@ GO
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie voor meer informatie over classificatie [werkbelasting classificatie](sql-data-warehouse-workload-classification.md).
-- Zie voor meer informatie over belang [werkbelasting urgentie](sql-data-warehouse-workload-importance.md)
+- Zie [workload classificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over classificatie.
+- Zie [urgentie van werk belasting](sql-data-warehouse-workload-importance.md) voor meer informatie over belang rijkheid
 
 > [!div class="nextstepaction"]
-> [Ga naar het belang van de werkbelasting configureren](sql-data-warehouse-how-to-configure-workload-importance.md)
+> [Ga naar urgentie van werk belasting configureren](sql-data-warehouse-how-to-configure-workload-importance.md)

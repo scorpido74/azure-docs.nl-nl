@@ -1,5 +1,5 @@
 ---
-title: T-SQL-instructies-Azure SQL Data Warehouse | Microsoft Docs
+title: Overzichten T-SQL
 description: Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 5704ee4bf84b396dcef5a4f9edd887128ba95fb1
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479397"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685513"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>T-SQL-instructies die worden ondersteund in Azure SQL Data Warehouse
 Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund in Azure SQL Data Warehouse.
@@ -23,7 +24,7 @@ Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund i
 ## <a name="data-definition-language-ddl-statements"></a>DDL-instructies (Data Definition Language)
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [INDEX WIJZIGEN](https://msdn.microsoft.com/library/ms188388.aspx)
-* [gerealiseerde weer gave wijzigen](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) Evaluatie 
+* [Gerealiseerde weer gave wijzigen](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) (preview-versie) 
 * [ALTER-PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
 * [SCHEMA WIJZIGEN](https://msdn.microsoft.com/library/ms173423.aspx)
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
@@ -35,7 +36,7 @@ Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund i
 * [EXTERNE TABEL MAKEN](https://msdn.microsoft.com/library/dn935021.aspx)
 * [FUNCTIE MAKEN](https://msdn.microsoft.com/library/mt203952.aspx)
 * [INDEX MAKEN](https://msdn.microsoft.com/library/ms188783.aspx)
-* [gerealiseerde weer gave maken als selecteren](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) Evaluatie 
+* [Gerealiseerde weer gave maken als selecteren](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (preview-versie) 
 * [PROCEDURE MAKEN](https://msdn.microsoft.com/library/ms187926.aspx)
 * [SCHEMA MAKEN](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
@@ -61,40 +62,40 @@ Koppelingen naar de documentatie voor T-SQL-instructies die worden ondersteund i
 ## <a name="data-manipulation-language-dml-statements"></a>DML-instructies (data manipulatie Language)
 * [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
-* [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)
+* [BIJWERK](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Database console-opdrachten
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
-* [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) Evaluatie
+* [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) (preview-versie)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
 * [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
-* [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) Evaluatie
+* [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) (preview-versie)
 * [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
 * [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Query-instructies
-* [SELECT](https://msdn.microsoft.com/library/ms189499.aspx)
-* [WITH common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
+* [UITGESCHAKELD](https://msdn.microsoft.com/library/ms189499.aspx)
+* [MET common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [BEHALVE en Intersect](https://msdn.microsoft.com/library/ms188055.aspx)
-* [EXPLAIN](https://msdn.microsoft.com/library/mt631615.aspx)
-* [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
+* [BESPREKEN](https://msdn.microsoft.com/library/mt631615.aspx)
+* [Van](https://msdn.microsoft.com/library/ms177634.aspx)
 * [DRAAIEN en depivot gebruiken](https://msdn.microsoft.com/library/ms177410.aspx)
 * [GROEPEREN OP](https://msdn.microsoft.com/library/ms177673.aspx)
 * [DIE](https://msdn.microsoft.com/library/ms180199.aspx)
 * [SORTEREN OP](https://msdn.microsoft.com/library/ms188385.aspx)
 * [OPTION](https://msdn.microsoft.com/library/ms190322.aspx)
-* [UNION](https://msdn.microsoft.com/library/ms180026.aspx)
+* [RÉUNION](https://msdn.microsoft.com/library/ms180026.aspx)
 * [POSITIE](https://msdn.microsoft.com/library/ms188047.aspx)
-* [TOP](https://msdn.microsoft.com/library/ms189463.aspx)
+* [Boven](https://msdn.microsoft.com/library/ms189463.aspx)
 * [Antialiasing](https://msdn.microsoft.com/library/mt631614.aspx)
 * [Zoek voorwaarde](https://msdn.microsoft.com/library/ms173545.aspx)
 * [Subquery's](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Instructies voor beveiliging
-* Machtigingen: [VERLENEN](https://msdn.microsoft.com/library/ms187965.aspx), [WEIGEREN](https://msdn.microsoft.com/library/ms188338.aspx), [INTREKKEN](https://msdn.microsoft.com/library/ms187728.aspx)
+* Machtigingen: [verlenen](https://msdn.microsoft.com/library/ms187965.aspx), [weigeren](https://msdn.microsoft.com/library/ms188338.aspx), [intrekken](https://msdn.microsoft.com/library/ms187728.aspx)
 * [AUTORISATIE WIJZIGEN](https://msdn.microsoft.com/library/ms187359.aspx)
 * [CERTIFICAAT WIJZIGEN](https://msdn.microsoft.com/library/ms189511.aspx)
 * [ALTER DATA BASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)

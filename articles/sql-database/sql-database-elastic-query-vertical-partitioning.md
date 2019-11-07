@@ -1,5 +1,5 @@
 ---
-title: Query's uitvoeren in Cloud databases met een ander schema | Microsoft Docs
+title: Query's uitvoeren voor clouddatabases met verschillende schema’s
 description: query's voor meerdere data bases instellen voor verticale partities
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 5657490474a401d9e3074ed6ab250a34ef0a5d8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998513c942cf1b6ceae861160abfe3dc6dac7792
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568540"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690329"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Query's uitvoeren in Cloud databases met verschillende schema's (preview-versie)
 
@@ -50,7 +50,7 @@ De referentie wordt gebruikt door de elastische query om verbinding te maken met
     [;]
 
 > [!NOTE]
-> Zorg ervoor dat `<username>` het achtervoegsel **'\@server naam '** niet wordt vermeld. 
+> Zorg ervoor dat de `<username>` geen achtervoegsel voor **'\@servername '** bevat. 
 >
 
 ## <a name="create-external-data-sources"></a>Externe gegevens bronnen maken
@@ -126,8 +126,8 @@ In het volgende voor beeld ziet u hoe u de lijst met externe tabellen kunt ophal
 
 Met elastische query's wordt de bestaande syntaxis van de externe tabel uitgebreid met het definiëren van externe tabellen die gebruikmaken van externe gegevens bronnen van het type RDBMS. Een externe tabel definitie voor verticale partitionering heeft betrekking op de volgende aspecten: 
 
-* **Schema**: De externe tabel DDL definieert een schema dat door uw query's kan worden gebruikt. Het schema dat is opgegeven in de definitie van de externe tabel moet overeenkomen met het schema van de tabellen in de externe data base waarin de daad werkelijke gegevens zijn opgeslagen. 
-* **Externe database verwijzing**: De externe tabel DDL verwijst naar een externe gegevens bron. De externe gegevens bron specificeert de SQL Database Server naam en de database naam van de externe data base waar de gegevens van de actuele tabel worden opgeslagen. 
+* **Schema**: de externe tabel DDL definieert een schema dat door uw query's kan worden gebruikt. Het schema dat is opgegeven in de definitie van de externe tabel moet overeenkomen met het schema van de tabellen in de externe data base waarin de daad werkelijke gegevens zijn opgeslagen. 
+* **Externe database referentie**: de externe tabel DDL verwijst naar een externe gegevens bron. De externe gegevens bron specificeert de SQL Database Server naam en de database naam van de externe data base waar de gegevens van de actuele tabel worden opgeslagen. 
 
 Als u een externe gegevens bron gebruikt, zoals beschreven in de vorige sectie, is de syntaxis voor het maken van externe tabellen als volgt: 
 
@@ -139,7 +139,7 @@ De volgende DDL-instructie verwijdert een bestaande definitie van een externe ta
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**Machtigingen voor het maken/verwijderen van een externe tabel**: Het wijzigen van machtigingen voor externe gegevens bronnen is nodig voor de DDL van een externe tabel, die ook nodig is om te verwijzen naar de onderliggende gegevens bron.  
+**Machtigingen voor maken/verwijderen van externe tabel**: machtigingen voor externe gegevens bronnen wijzigen is vereist voor de DDL van externe tabellen die ook nodig is om te verwijzen naar de onderliggende gegevens bron.  
 
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
@@ -165,16 +165,16 @@ Met de volgende query wordt een drie richtings relatie uitgevoerd tussen de twee
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Opgeslagen procedure voor externe T-SQL-uitvoering:\_SP execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Opgeslagen procedure voor externe T-SQL-uitvoering: SP\_execute_remote
 
-Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd die directe toegang biedt tot de externe data base. De opgeslagen procedure heet [\_extern uitvoeren \_](https://msdn.microsoft.com/library/mt703714) en kan worden gebruikt om externe opgeslagen procedures of T-SQL-code uit te voeren op de externe data base. Hierbij worden de volgende para meters gebruikt: 
+Met elastische query's wordt ook een opgeslagen procedure geïntroduceerd die directe toegang biedt tot de externe data base. De opgeslagen procedure heet [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) en kan worden gebruikt om externe opgeslagen procedures of t-SQL-code uit te voeren op de externe data base. Hierbij worden de volgende para meters gebruikt: 
 
-* Naam van de gegevens bron (nvarchar): De naam van de externe gegevens bron van het type RDBMS. 
-* Query (nvarchar): De T-SQL-query die moet worden uitgevoerd op de externe data base. 
-* Parameter declaratie (nvarchar)-optioneel: Teken reeks met definities van gegevens typen voor de para meters die worden gebruikt in de query parameter (zoals sp_executesql). 
-* Lijst met parameter waarden-optioneel: Een door komma's gescheiden lijst met parameter waarden (zoals sp_executesql).
+* Naam van de gegevens bron (nvarchar): de naam van de externe gegevens bron van het type RDBMS. 
+* Query (nvarchar): de T-SQL-query die moet worden uitgevoerd op de externe data base. 
+* Parameter declaratie (nvarchar)-optioneel: string met definities van gegevens typen voor de para meters die worden gebruikt in de query parameter (zoals sp_executesql). 
+* Lijst met parameter waarden-optioneel: door Komma's gescheiden lijst met parameter waarden (zoals sp_executesql).
 
-De extern\_uitvoeren op afstand maakt gebruik van de externe gegevens bron die is opgegeven in de aanroep parameters om de opgegeven T-SQL-instructie uit te voeren op de externe data base.\_ De referentie van de externe gegevens bron wordt gebruikt om verbinding te maken met de externe data base.  
+De SP\_Execute\_Remote gebruikt de externe gegevens bron die in de aanroep parameters is opgegeven om de opgegeven T-SQL-instructie uit te voeren op de externe data base. De referentie van de externe gegevens bron wordt gebruikt om verbinding te maken met de externe data base.  
 
 Voorbeeld: 
 
@@ -199,7 +199,7 @@ U kunt gewone SQL Server verbindings reeksen gebruiken om uw BI-en gegevens inte
 * Zie aan de slag [met query's tussen data bases (verticaal partitioneren)](sql-database-elastic-query-getting-started-vertical.md)voor een verticaal gepartitioneerde zelf studie.
 * Zie aan de slag [met elastische query's voor horizontale partitionering (sharding)](sql-database-elastic-query-getting-started.md)voor een zelf studie over horizontale partitionering (sharding).
 * Zie query's [uitvoeren in horizon taal gepartitioneerde gegevens](sql-database-elastic-query-horizontal-partitioning.md) voor syntaxis-en voorbeeld query's voor Horizon taal gepartitioneerde gegevens)
-* Zie [extern\_ uitvoeren\_van SP](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
+* Zie [sp\_execute \_Remote](https://msdn.microsoft.com/library/mt703714) voor een opgeslagen procedure waarmee een Transact-SQL-instructie wordt uitgevoerd op één externe Azure SQL database of een set met data bases die fungeren als Shards in een horizon taal partitie schema.
 
 
 <!--Image references-->

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 44f31a8c9e5b47fdcc62c87f6181a3812697aa4b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800180"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622614"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 
@@ -87,7 +87,7 @@ Zie de [query volgende pagina](/rest/api/azureresourcegraph/resourcegraph(2018-0
 
 De resultaten van een resource grafiek query worden in twee indelingen, _tabel_ en _ObjectArray_gegeven. De indeling wordt geconfigureerd met de para meter **resultFormat** als onderdeel van de aanvraag opties. De _tabel_ indeling is de standaard waarde voor **resultFormat**.
 
-De resultaten van Azure CLI worden standaard in JSON opgenomen. Resultaten in Azure PowerShell zijn standaard een **PSCustomObject** , maar ze kunnen snel worden GECONVERTEERD naar JSON met de cmdlet `ConvertTo-Json`. Voor andere Sdk's kunnen de query resultaten worden geconfigureerd voor het uitvoeren van de _ObjectArray_ -indeling.
+De resultaten van Azure CLI worden standaard in JSON opgenomen. Resultaten in Azure PowerShell zijn standaard een **PSCustomObject** , maar ze kunnen snel worden GECONVERTEERD naar JSON met behulp van de `ConvertTo-Json`-cmdlet. Voor andere Sdk's kunnen de query resultaten worden geconfigureerd voor het uitvoeren van de _ObjectArray_ -indeling.
 
 ### <a name="format---table"></a>Indeling-tabel
 
@@ -171,4 +171,4 @@ response = client.resources(request)
 
 - Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
 - Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over [bronnen verkennen](explore-resources.md).
+- Meer informatie over hoe u [resources kunt verkennen](explore-resources.md).

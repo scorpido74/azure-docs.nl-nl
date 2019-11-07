@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid-gebeurtenisschema
-description: Beschrijft de eigenschappen die beschikbaar zijn voor gebeurtenissen met Azure Event Grid
+title: Azure Event Grid-gebeurtenis schema
+description: Beschrijft de eigenschappen die worden gegeven voor gebeurtenissen met Azure Event Grid
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,29 +8,29 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785853"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607608"
 ---
-# <a name="azure-event-grid-event-schema"></a>Azure Event Grid-gebeurtenisschema
+# <a name="azure-event-grid-event-schema"></a>Azure Event Grid-gebeurtenis schema
 
-Dit artikel beschrijft de eigenschappen en het schema die aanwezig zijn voor alle gebeurtenissen. Gebeurtenissen bestaan uit een set eigenschappen van vijf vereiste tekenreeks en een vereiste gegevens-object. De eigenschappen zijn algemene aan alle gebeurtenissen van een uitgever. Het gegevensobject heeft eigenschappen die specifiek voor elke uitgever zijn. Deze eigenschappen zijn specifiek voor de resourceprovider, zoals Azure Storage of Azure Event Hubs voor systeemonderwerpen.
+In dit artikel worden de eigenschappen en schema's beschreven die voor alle gebeurtenissen aanwezig zijn. Gebeurtenissen bestaan uit een set van vijf vereiste teken reeks eigenschappen en een vereist gegevens object. De eigenschappen zijn gebruikelijk voor alle gebeurtenissen van elke uitgever. Het gegevens object heeft eigenschappen die specifiek zijn voor elke uitgever. Voor systeem onderwerpen zijn deze eigenschappen specifiek voor de resource provider, zoals Azure Storage of Azure Event Hubs.
 
-Bronnen van gebeurtenissen voor het verzenden van gebeurtenissen naar Azure Event Grid in een matrix, maar dit kan verschillende event-objecten hebben. Als u gebeurtenissen naar een event grid-onderwerp boeken, kan de matrix een totale grootte van maximaal 1 MB hebben. Elke gebeurtenis in de matrix is beperkt tot 64 KB (algemeen beschikbaar) of 1 MB (preview). Als een gebeurtenis of de matrix groter dan de maximale grootte is, ontvangt u het antwoord **413 Payload te groot**.
+Gebeurtenis bronnen verzenden gebeurtenissen naar Azure Event Grid in een matrix, die verschillende gebeurtenis objecten kunnen hebben. Bij het posten van gebeurtenissen naar een event grid-onderwerp kan de matrix een totale grootte hebben van Maxi maal 1 MB. Elke gebeurtenis in de matrix is beperkt tot 64 KB (algemene Beschik baarheid) of 1 MB (preview-versie). Als een gebeurtenis of de matrix groter is dan de maximale grootte, ontvangt u het antwoord **413 Payload te groot**.
 
 > [!NOTE]
-> Een gebeurtenis van de grootte van maximaal 64 KB wordt gedekt door algemene beschikbaarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis van de grootte van maximaal 1 MB is momenteel in preview. Gebeurtenissen meer dan 64 KB in intervallen van 64 KB in rekening worden gebracht. 
+> Een gebeurtenis met een grootte van Maxi maal 64 KB wordt gedekt door de algemene Beschik baarheid (GA) Service Level Agreement (SLA). De ondersteuning voor een gebeurtenis met een grootte van Maxi maal 1 MB is momenteel als preview-versie beschikbaar. Gebeurtenissen van meer dan 64 KB worden in rekening gebracht in stappen van 64-KB. 
 
-Event Grid verzonden de gebeurtenissen naar abonnees in een matrix die één gebeurtenis heeft. Dit gedrag veranderen in de toekomst.
+Event Grid verzendt de gebeurtenissen naar abonnees in een matrix met één gebeurtenis. Dit gedrag kan in de toekomst worden gewijzigd.
 
-U vindt het JSON-schema voor de Event Grid-gebeurtenis en de nettolading van de gegevens van elke Azure-uitgever van de [gebeurtenisschema in het archief](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
+U vindt het JSON-schema voor de Event Grid gebeurtenis en elke nettolading van de gegevens van de Azure-uitgever in de [gebeurtenis schema opslag](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
 
 ## <a name="event-schema"></a>Gebeurtenisschema
 
-Het volgende voorbeeld ziet u de eigenschappen die worden gebruikt door alle gebeurtenisuitgevers:
+In het volgende voor beeld ziet u de eigenschappen die worden gebruikt door alle gebeurtenis uitgevers:
 
 ```json
 [
@@ -49,7 +49,7 @@ Het volgende voorbeeld ziet u de eigenschappen die worden gebruikt door alle geb
 ]
 ```
 
-Het schema is gepubliceerd voor een Azure Blob storage-gebeurtenis is bijvoorbeeld:
+Het schema dat is gepubliceerd voor een Azure Blob-opslag gebeurtenis is bijvoorbeeld:
 
 ```json
 [
@@ -79,40 +79,41 @@ Het schema is gepubliceerd voor een Azure Blob storage-gebeurtenis is bijvoorbee
 ]
 ```
 
-## <a name="event-properties"></a>Eigenschappen van gebeurtenis
+## <a name="event-properties"></a>Gebeurtenis eigenschappen
 
-Alle gebeurtenissen hebben de dezelfde gegevens van de volgende op het hoogste niveau:
+Alle gebeurtenissen hebben dezelfde gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Description |
+| Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| topic | string | Volledige resource-pad naar de bron van de gebeurtenis. Dit veld is niet schrijfbaar. Event Grid biedt deze waarde. |
-| subject | string | Uitgever gedefinieerde pad naar het onderwerp van de gebeurtenis. |
-| eventType | string | Een van de geregistreerde gebeurtenis-typen voor de bron van deze gebeurtenis. |
-| eventTime | string | Het moment waarop dat de gebeurtenis is gegenereerd, is afhankelijk van de UTC-tijd van de provider. |
-| id | string | De unieke id voor de gebeurtenis. |
-| data | object | De gegevens van de gebeurtenis is specifiek voor de resourceprovider. |
-| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
-| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid levert deze waarde. |
+| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
+| Type | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
+| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | tekenreeks | De unieke id voor de gebeurtenis. |
+| gegevens | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
+| dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
+| metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
 
-Zie voor meer informatie over de eigenschappen in het gegevensobject, de bron van gebeurtenis:
+Zie de gebeurtenis bron voor meer informatie over de eigenschappen in het gegevens object:
 
-* [Azure-abonnementen (bewerkingen)](event-schema-subscriptions.md)
+* [Azure-abonnementen (beheer bewerkingen)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-* [Resourcegroepen (bewerkingen)](event-schema-resource-groups.md)
+* [Resource groepen (beheer bewerkingen)](event-schema-resource-groups.md)
 * [Service Bus](event-schema-service-bus.md)
 * [Azure SignalR](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
-Aangepaste onderwerpen bepaalt de gebeurtenisuitgever het gegevensobject. De gegevens op het hoogste niveau moet dezelfde velden als resource gedefinieerd standaardgebeurtenissen hebben.
+Voor aangepaste onderwerpen wordt het gegevens object bepaald door de uitgever van de gebeurtenis. De gegevens op het hoogste niveau moeten dezelfde velden hebben als standaard, door de resource gedefinieerde gebeurtenissen.
 
-Bij het publiceren van gebeurtenissen naar aangepaste onderwerpen, maken van onderwerpen voor de gebeurtenissen die het gemakkelijk voor abonnees om te weten of ze geïnteresseerd zijn in de gebeurtenis. Abonnees op basis van het onderwerp te filteren en route-gebeurtenissen. Houd rekening met voorziet in het pad waar de gebeurtenis zich voordeed, zodat abonnees op segmenten van het opgegeven pad filteren kunnen. Het pad kan abonnees nauwkeurig of ruim om gebeurtenissen te filteren. Bijvoorbeeld, als u een pad op drie segment zoals bieden `/A/B/C` in het onderwerp, abonnees kunnen filteren op het eerste segment `/A` om op te halen van een breed scala aan gebeurtenissen. Abonnees die aan de gebeurtenissen met onderwerpen zoals `/A/B/C` of `/A/D/E`. Andere abonnees kunnen filteren op `/A/B` om op te halen van een smaller reeks gebeurtenissen.
+Bij het publiceren van gebeurtenissen naar aangepaste onderwerpen maakt u onderwerpen voor uw evenementen waarmee abonnees eenvoudig kunnen zien of ze geïnteresseerd zijn in de gebeurtenis. Abonnees gebruiken het onderwerp om gebeurtenissen te filteren en te routeren. Overweeg het pad op te geven waar de gebeurtenis zich voordeed, zodat abonnee servers kunnen filteren op segmenten van dat pad. Met het pad kunnen abonnees de gebeurtenissen op een smalle of brede manier filteren. Als u bijvoorbeeld een drie segment pad als `/A/B/C` in het onderwerp opgeeft, kunnen abonnees filteren op het eerste segment `/A` om een grote set gebeurtenissen te verkrijgen. Deze abonnees ontvangen gebeurtenissen met onderwerpen als `/A/B/C` of `/A/D/E`. Andere abonnees kunnen filteren op `/A/B` om een smalle set gebeurtenissen te verkrijgen.
 
-Soms moet uw onderwerp meer informatie over wat is er gebeurd. Bijvoorbeeld, de **Opslagaccounts** publisher bevat het onderwerp `/blobServices/default/containers/<container-name>/blobs/<file>` wanneer een bestand wordt toegevoegd aan een container. Een abonnee kan filteren op het pad `/blobServices/default/containers/testcontainer` om op te halen van alle gebeurtenissen voor die container, maar geen andere containers in het opslagaccount. Een abonnee kan ook filteren of de route met het achtervoegsel `.txt` om te werken alleen met tekstbestanden.
+Soms moet uw onderwerp meer details over wat er is gebeurd. De uitgever van **opslag accounts** levert bijvoorbeeld het onderwerp `/blobServices/default/containers/<container-name>/blobs/<file>` wanneer een bestand wordt toegevoegd aan een container. Een abonnee kan filteren op het pad `/blobServices/default/containers/testcontainer` om alle gebeurtenissen voor die container op te halen, maar niet andere containers in het opslag account. Een abonnee kan ook filteren op of route ring van het achtervoegsel `.txt` om alleen met tekst bestanden te werken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor een inleiding tot Azure Event Grid, [wat is Event Grid?](overview.md)
-* Zie voor meer informatie over het maken van een Azure Event Grid-abonnement [Event Grid-abonnementsschema](subscription-creation-schema.md).
+* Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
+* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

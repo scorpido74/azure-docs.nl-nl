@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772345"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606443"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Firewall tabellen en-regels voor persoonlijke Clouds instellen
 
@@ -34,7 +34,10 @@ Met de firewall tabellen en de gekoppelde regels kunt u beperkingen opgeven voor
 5. Er wordt een standaard regel voor de tabel weer gegeven. Klik op **nieuwe regel maken** om een extra regel te maken. Raadpleeg de volgende procedure voor meer informatie.
 6. Klik op **gereed** om de firewall tabel op te slaan.
 
-## <a name="firewall-rules"></a>Firewallregels
+> [!IMPORTANT]
+> U kunt Maxi maal twee firewall tabellen per Privécloud maken.
+
+## <a name="firewall-rules"></a>Firewall-regels
 
 Firewall regels bepalen hoe de firewall specifieke typen verkeer behandelt. Het tabblad **regels** voor een geselecteerde firewall tabel bevat een lijst met alle gekoppelde regels.
 
@@ -62,6 +65,9 @@ Firewall regels bepalen hoe de firewall specifieke typen verkeer behandelt. Het 
 
 3. Klik op **gereed** om de regel op te slaan en toe te voegen aan de lijst met regels voor de firewall tabel.
 
+> [!IMPORTANT]
+> Elke firewall tabel kan Maxi maal 10 regels voor binnenkomende verbindingen en 20 regels voor uitgaande verbindingen hebben. Deze limieten kunnen worden verhoogd door [contact op](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)te nemen met de ondersteuning.
+
 ## <a name="attach-vlanssubnets"></a>VLAN'S/subnetten koppelen
 
 Nadat u een firewall tabel hebt gedefinieerd, kunt u de subnetten opgeven waarop de regels in de tabel van toepassing zijn.
@@ -70,4 +76,4 @@ Nadat u een firewall tabel hebt gedefinieerd, kunt u de subnetten opgeven waarop
 2. Open het tabblad **gekoppelde vlan's/subnet** .
 3. Klik op **koppelen aan een VLAN/subnet**.
 4. Selecteer de Privécloud en het VLAN. De bijbehorende subnetnaam en het CIDR-blok worden weer gegeven.
-5. Klik op **Indienen**.
+5. Klik op **Submit**

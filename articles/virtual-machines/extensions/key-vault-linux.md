@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 60d5b8197e142306a51922ce0e042ed2463457d6
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5991d3d2197822b239b946de66f020dd258f835a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301228"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584382"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -29,7 +29,7 @@ De Key Vault VM-extensie ondersteunt deze Linux-distributies:
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als informatie zonder gevolgen voor de beveiliging. De uitbrei ding vereist een lijst met bewaakte geheimen, polling frequentie en het doel certificaat archief. Specifiek:  
+De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als informatie zonder gevolgen voor de beveiliging. De uitbrei ding vereist een lijst met bewaakte geheimen, polling frequentie en het doel certificaat archief. Met name:  
 ```json
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -59,9 +59,9 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 ```
 
 > [!NOTE]
-> De Url's van uw waargenomen certificaten moeten de vorm `https://myVaultName.vault.azure.net/secrets/myCertName` hebben.
+> De Url's van uw waargenomen certificaten moeten van het formulier `https://myVaultName.vault.azure.net/secrets/myCertName`zijn.
 > 
-> Dit komt doordat het pad @no__t 0 het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het pad naar de `/certificates` niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het pad van de `/certificates` niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 
 ### <a name="property-values"></a>Eigenschaps waarden
@@ -69,14 +69,14 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| Uitgever | Micro soft. Azure. de sleutel kluis. EDP | string |
-| type | KeyVaultForLinux | string |
+| Uitgever | Micro soft. Azure. de sleutel kluis. EDP | tekenreeks |
+| type | KeyVaultForLinux | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
-| Naam certificaat archief | MY | string |
+| pollingIntervalInS | 3600 | tekenreeks |
+| Naam certificaat archief | MY | tekenreeks |
 | linkOnRenewal | onwaar | booleaans |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | waar | booleaans |
+| certificateStoreLocation  | LocalMachine | tekenreeks |
+| requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
 
 
@@ -84,7 +84,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager sjablonen. Sjablonen zijn ideaal bij het implementeren van een of meer virtuele machines die na de implementatie van certificaten moeten worden vernieuwd. De uitbrei ding kan worden geïmplementeerd op afzonderlijke Vm's of virtuele-machine schaal sets. Het schema en de configuratie zijn gebruikelijk voor beide sjabloon typen. 
 
-De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest in het resource fragment van de virtuele machine van de sjabloon, met name `"resources": []`-object voor de virtuele-machine sjabloon en in het geval van een schaalset voor virtuele machines onder `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`-object.
+De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest in het resource fragment van de virtuele machine van de sjabloon, met name `"resources": []` object voor de virtuele-machine sjabloon en in het geval van een virtuele-machine schaalset onder `"virtualMachineProfile":"extensionProfile":{"extensions" :[]`-object.
 
 ```json
     {
@@ -201,7 +201,7 @@ Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald 
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```

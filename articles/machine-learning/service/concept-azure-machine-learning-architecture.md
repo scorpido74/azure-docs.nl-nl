@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497518"
+ms.locfileid: "73580621"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -56,7 +56,7 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 
 ## <a name="glossary"></a>Woordenlijst
 + <a href="#activities">Activiteit</a>
-+ <a href="#compute-instance">Reken instantie</a>
++ <a href="#compute-instance">VM van notebook</a>
 + <a href="#compute-targets">Compute-doelen</a>
 + <a href="#datasets-and-datastores">Gegevensset & gegevens opslag</a>
 + <a href="#endpoints">Eind punten</a>
@@ -84,15 +84,11 @@ Een activiteit vertegenwoordigt een langlopende bewerking. De volgende bewerking
 
 Activiteiten kunnen meldingen geven via de SDK of de Web-UI, zodat u de voortgang van deze bewerkingen eenvoudig kunt bewaken.
 
-### <a name="compute-instance"></a>Reken instantie
+### <a name="compute-instance"></a>VM van notebook
 
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken. 
+Een **Azure machine learning-notebook-VM** is een volledig beheerd werk station in de cloud dat meerdere hulpprogram ma's en omgevingen bevat die voor machine learning zijn geïnstalleerd. Virtuele-notebook-Vm's kunnen worden gebruikt als Compute-doel voor kleinere training en het afleiden van taken. Voor grote taken is het [Azure machine learning compute-clusters](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
 
-Een **Azure machine learning Compute-instantie** (voorheen laptop-VM) is een volledig beheerd werk station in de Cloud met meerdere hulpprogram ma's en omgevingen die voor machine learning zijn geïnstalleerd. Reken instanties kunnen worden gebruikt als een reken doel voor trainings-en detraining-taken. Voor grote taken is het [Azure machine learning compute-clusters](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
-
-Meer informatie over [Compute-exemplaren](concept-compute-instance.md).
+Meer informatie over laptop-Vm's.
 
 ### <a name="compute-targets"></a>Compute-doelen
 
@@ -241,5 +237,5 @@ Zie [zelf studie: een classificatie model voor een installatie kopie trainen met
 Om aan de slag te gaan met Azure Machine Learning raadpleegt u:
 
 * [Wat is Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Een Azure Machine Learning-werk ruimte maken](how-to-manage-workspace.md)
+* [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md)
 * [Zelf studie (deel 1): een model trainen](tutorial-train-models-with-aml.md)

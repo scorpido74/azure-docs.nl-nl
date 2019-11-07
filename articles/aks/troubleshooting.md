@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 2c25069ce5231a1f89027dea69579231f0fe4bcd
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517075"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604733"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -23,7 +23,7 @@ Wanneer u Azure Kubernetes service (AKS)-clusters maakt of beheert, kunnen er af
 Probeer de [officiële hand leiding voor het oplossen van problemen met Kubernetes-clusters](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/).
 Er is ook een [hand leiding](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)voor het oplossen van problemen, gepubliceerd door een micro soft-Engineer voor het oplossen van problemen met peulen, knoop punten, clusters en andere functies.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat zal ik doen? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat moet ik doen? 
 
 U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
@@ -32,20 +32,20 @@ U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-supportability/
 De maximale instelling per knoop punt is 30 standaard als u een AKS-cluster implementeert in de Azure Portal.
 De maximale instelling per knoop punt is standaard 110 als u een AKS-cluster implementeert in de Azure CLI. (Zorg ervoor dat u de nieuwste versie van de Azure CLI gebruikt). Deze standaard instelling kan worden gewijzigd met behulp van de vlag `–-max-pods` in de `az aks create` opdracht.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat zal ik doen?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Er wordt een insufficientSubnetSize-fout opgetreden tijdens het implementeren van een AKS-cluster met een geavanceerd netwerk. Wat moet ik doen?
 
-Als Azure CNI (Advanced Networking) wordt gebruikt, wijst AKS vooraf toegewezen IP-adres toe op basis van het ' Max-peul ' per knoop punt dat is geconfigureerd. Het aantal knoop punten in een AKS-cluster kan een wille keurige plaats zijn tussen 1 en 110. Op basis van het geconfigureerde maximum van Peul per knoop punt moet de grootte van het subnet groter zijn dan het ' product van het aantal knoop punten en het maximale pod per knoop punt '. De volgende basis vergelijking bevat een overzicht:
+Als Azure CNI (Advanced Networking) wordt gebruikt, wijst AKS IP-adressen toe op basis van het maximum aantal-peulen per knoop punt dat is geconfigureerd. Op basis van het geconfigureerde maximum van Peul per knoop punt moet de grootte van het subnet groter zijn dan het product van het aantal knoop punten en de maximum waarde voor pod per knoop punt. De volgende vergelijking bevat een overzicht:
 
 De grootte van het subnet > aantal knoop punten in het cluster (waarbij rekening wordt gehouden met de toekomstige schaal vereisten) * Max.
 
 Zie [IP-adres sering voor uw cluster plannen](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)voor meer informatie.
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mijn Pod is vastgelopen in de CrashLoopBackOff-modus. Wat zal ik doen?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mijn Pod is vastgelopen in de CrashLoopBackOff-modus. Wat moet ik doen?
 
 Er kunnen verschillende redenen zijn waarom de pod in die modus vastloopt. U kunt het volgende bekijken:
 
 * De pod zelf, met behulp van `kubectl describe pod <pod-name>`.
-* De logboeken, met behulp van `kubectl log <pod-name>`.
+* De logboeken, door gebruik te maken van `kubectl log <pod-name>`.
 
 Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)voor meer informatie over het oplossen van problemen met Pod.
 
@@ -53,17 +53,17 @@ Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-app
 
 Helaas wordt het inschakelen van op rollen gebaseerd toegangs beheer (RBAC) op bestaande clusters op dit moment niet ondersteund. U moet expliciet nieuwe clusters maken. Als u de CLI gebruikt, is RBAC standaard ingeschakeld. Als u de AKS-Portal gebruikt, is een wissel knop voor het inschakelen van RBAC beschikbaar in de werk stroom maken.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ik heb een cluster gemaakt waarop RBAC is ingeschakeld met behulp van de Azure CLI met de standaard instellingen of de Azure Portal, en nu worden er veel waarschuwingen weer gegeven op het Kubernetes-dash board. Het dash board dat wordt gebruikt om zonder waarschuwingen te werken. Wat zal ik doen?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ik heb een cluster gemaakt waarop RBAC is ingeschakeld met behulp van de Azure CLI met de standaard instellingen of de Azure Portal, en nu worden er veel waarschuwingen weer gegeven op het Kubernetes-dash board. Het dash board dat wordt gebruikt om zonder waarschuwingen te werken. Wat moet ik doen?
 
 De reden voor de waarschuwingen op het dash board is dat het cluster nu is ingeschakeld met RBAC en dat de toegang tot deze server standaard is uitgeschakeld. Over het algemeen is deze aanpak goed, omdat de standaard belichting van het dash board aan alle gebruikers van het cluster kan leiden tot beveiligings Risico's. Als u het dash board nog steeds wilt inschakelen, volgt u de stappen in [dit blog bericht](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat zal ik doen?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Ik kan geen verbinding maken met het dash board. Wat moet ik doen?
 
-De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster is om `kubectl proxy` uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server worden geproxyeerd voor uw service: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+De eenvoudigste manier om toegang te krijgen tot uw service buiten het cluster, is om `kubectl proxy` uit te voeren, welke proxy's aanvragen verzonden naar de lokale poort 8001 van de Kubernetes-API-server. Vanaf daar kan de API-server worden geproxyeerd voor uw service: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Als u het Kubernetes-dash board niet ziet, controleert u of de `kube-proxy` pod wordt uitgevoerd in de naam ruimte `kube-system`. Als de status niet wordt uitgevoerd, verwijdert u de Pod en wordt de computer opnieuw opgestart.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat zal ik doen?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ik kan geen logboeken ophalen met behulp van kubectl-Logboeken of ik kan geen verbinding maken met de API-server. Ik krijg de fout melding van server: fout bij het kiezen van de back-end: Dial TCP.... Wat moet ik doen?
 
 Zorg ervoor dat de standaard netwerk beveiligings groep niet is gewijzigd en dat poort 22 en 9000 zijn geopend voor verbinding met de API-server. Controleer of de `tunnelfront` pod wordt uitgevoerd in de *uitvoeren-systeem* naam ruimte met behulp van de `kubectl get pods --namespace kube-system` opdracht. Als dat niet het geval is, dwingt u het verwijderen van de pod af en wordt de computer opnieuw opgestart.
 
@@ -77,7 +77,7 @@ Mogelijk krijgt u deze fout omdat u de tags in de agent knooppunten in het AKS-c
 
 Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen invoeren. Volg de onderstaande stappen om de status van het cluster fout op te lossen voordat u de eerder mislukte bewerking opnieuw probeert uit te voeren:
 
-1. @No__t_1 en `scale` bewerkingen mislukken totdat het cluster niet meer `failed` status heeft. Veelvoorkomende basis problemen en oplossingen zijn:
+1. De `upgrade`-en `scale`-bewerkingen mislukken totdat het cluster de status `failed` heeft. Veelvoorkomende basis problemen en oplossingen zijn:
     * Schalen met **onvoldoende Compute-quota (CRP)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens de volgende [stappen uit om een toename van het reken quotum aan te vragen](../azure-supportability/resource-manager-core-quotas-request.md) voordat u opnieuw opschaalt na de initiële quotum limieten.
     * Het schalen van een cluster met geavanceerde netwerken en **onvoldoende subnet-bronnen (netwerken)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens [de volgende stappen uit om een verhoging van het resource quotum aan te vragen](../azure-resource-manager/resource-manager-quota-errors.md#solution) voordat u opnieuw opschaalt na de initiële quotum limieten.
 2. Zodra de onderliggende oorzaak van de upgrade fout is opgelost, moet uw cluster de status voltooid hebben. Als de status is gecontroleerd, voert u de oorspronkelijke bewerking opnieuw uit.
@@ -88,7 +88,7 @@ Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen inv
 
 Het bijwerken en schalen van bewerkingen op een cluster met een groep met één knoop punt of een cluster met [meerdere knooppunt Pools](use-multiple-node-pools.md) sluiten elkaar wederzijds uit. U kunt geen cluster-of knooppunt groep tegelijkertijd bijwerken en schalen. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Als gevolg hiervan zijn bewerkingen beperkt wanneer actieve upgrade of schaal bewerkingen worden uitgevoerd of geprobeerd en vervolgens worden mislukt. 
 
-Om het probleem op te lossen `az aks show -g myResourceGroup -n myAKSCluster -o table` uit te voeren om de gedetailleerde status van het cluster op te halen. Op basis van het resultaat:
+Om het probleem op te lossen `az aks show -g myResourceGroup -n myAKSCluster -o table` om de gedetailleerde status van het cluster op te halen. Op basis van het resultaat:
 
 * Als het cluster actief wordt bijgewerkt, wacht u totdat de bewerking wordt beëindigd. Als deze is geslaagd, voert u de bewerking opnieuw uit.
 * Als het upgraden van het cluster is mislukt, volgt u de stappen in de vorige sectie.
@@ -118,14 +118,14 @@ Volg de *voordat u begint* met de stappen in het juiste document om een AKS-clus
 
 Naam beperkingen worden geïmplementeerd door zowel het Azure-platform als de AKS. Als een resource naam of-para meter een van deze beperkingen uitbreekt, wordt er een fout bericht weer gegeven waarin u wordt gevraagd een andere invoer op te geven. De volgende algemene richt lijnen zijn van toepassing:
 
-* De naam van de resource groep AKS *MC_* combineert de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet groter zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam.
+* De naam van de resource groep AKS *MC_* combineert de naam van de resource groep en de resource naam. De automatisch gegenereerde syntaxis van `MC_resourceGroupName_resourceName_AzureRegion` mag niet langer zijn dan 80 tekens. Als dat nodig is, vermindert u de lengte van de naam van de resource groep of de AKS-cluster naam.
 * De *dnsPrefix* moet beginnen en eindigen met alfanumerieke waarden. Geldige tekens zijn alfanumerieke waarden en afbreek streepjes (-). De *dnsPrefix* mag geen speciale tekens bevatten, zoals een punt (.).
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Ik ontvang fouten bij het maken, bijwerken, schalen, verwijderen of upgraden van een cluster. deze bewerking is niet toegestaan omdat er een andere bewerking wordt uitgevoerd.
 
 *Deze hulp bij het oplossen van problemen is gericht op aka.ms/aks-pending-operation*
 
-Cluster bewerkingen zijn beperkt wanneer er nog een eerdere bewerking wordt uitgevoerd. Gebruik de opdracht `az aks show -g myResourceGroup -n myAKSCluster -o table` om een gedetailleerde status van uw cluster op te halen. Gebruik uw eigen resource groep en AKS cluster naam waar nodig.
+Cluster bewerkingen zijn beperkt wanneer er nog een eerdere bewerking wordt uitgevoerd. Gebruik de `az aks show -g myResourceGroup -n myAKSCluster -o table` opdracht om een gedetailleerde status van uw cluster op te halen. Gebruik uw eigen resource groep en AKS cluster naam waar nodig.
 
 Op basis van de uitvoer van de cluster status:
 
@@ -192,7 +192,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.2 of hoger |
 | 1,11 | 1.11.0 of hoger |
-| 1,12 en hoger | N/A |
+| 1,12 en hoger | N.v.t. |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Fout bij het instellen van UID en GID in mountOptions voor Azure-schijf
 
@@ -266,7 +266,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | 1,11 | 1.11.5 of hoger |
 | 1,12 | 1.12.3 of hoger |
 | 1,13 | 1.13.0 of hoger |
-| 1,14 en hoger | N/A |
+| 1,14 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verminderen door enkele minuten te wachten en het opnieuw te proberen.
 
@@ -287,7 +287,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | 1,11 | 1.11.6 of hoger |
 | 1,12 | 1.12.4 of hoger |
 | 1,13 | 1.13.0 of hoger |
-| 1,14 en hoger | N/A |
+| 1,14 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verhelpen door het onderstaande te proberen:
 
@@ -308,7 +308,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | 1,11 | 1.11.9 of hoger |
 | 1,12 | 1.12.7 of hoger |
 | 1,13 | 1.13.4 of hoger |
-| 1,14 en hoger | N/A |
+| 1,14 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft, kunt u het probleem verminderen door de schijf hand matig te ontkoppelen.
 
@@ -323,7 +323,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | 1,12 | 1.12.9 of hoger |
 | 1,13 | 1.13.6 of hoger |
 | 1,14 | 1.14.2 of hoger |
-| 1,15 en hoger | N/A |
+| 1,15 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft en uw VM van het knoop punt heeft een verouderde lijst met schijven, kunt u het probleem verminderen door alle niet-bestaande schijven te ontkoppelen van de virtuele machine als een enkele, bulk bewerking. **Het afzonderlijk ontkoppelen van niet-bestaande schijven kan mislukken.**
 
@@ -343,7 +343,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | 1,12 | 1.12.10 of hoger |
 | 1,13 | 1.13.8 of hoger |
 | 1,14 | 1.14.4 of hoger |
-| 1,15 en hoger | N/A |
+| 1,15 en hoger | N.v.t. |
 
 Als u een versie van Kubernetes gebruikt die niet de oplossing voor dit probleem heeft en de VM van het knoop punt de status Mislukt heeft, kunt u het probleem verminderen door de VM-status hand matig bij te werken met een van de onderstaande opties:
 
@@ -460,7 +460,7 @@ Dit probleem is opgelost in de volgende versies van Kubernetes:
 | -- | :--: |
 | 1,12 | 1.12.6 of hoger |
 | 1,13 | 1.13.4 of hoger |
-| 1,14 en hoger | N/A |
+| 1,14 en hoger | N.v.t. |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Azure Files koppelen mislukt omdat de sleutel van het opslag account is gewijzigd
 
@@ -468,13 +468,13 @@ Als de sleutel van uw opslag account is gewijzigd, ziet u mogelijk Azure Files k
 
 U kunt het probleem oplossen door het veld *azurestorageaccountkey* hand matig bij te werken in azure file Secret met uw sleutel voor het opslag account met base64-code ring.
 
-Als u de sleutel van uw opslag account wilt coderen in base64, kunt u `base64` gebruiken. Bijvoorbeeld:
+Als u de sleutel van uw opslag account wilt coderen in base64, kunt u `base64`gebruiken. Bijvoorbeeld:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Gebruik `kubectl edit secret` om uw Azure-geheim bestand bij te werken. Bijvoorbeeld:
+Gebruik `kubectl edit secret`om uw Azure-geheim bestand bij te werken. Bijvoorbeeld:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

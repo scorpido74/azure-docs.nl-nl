@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van en naar Azure SQL Database beheerde instantie met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren van en naar Azure SQL Database beheerde instantie met behulp van Azure Data Factory
 description: Meer informatie over het verplaatsen van gegevens van en naar Azure SQL Database beheerde instantie met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: af207c460c47c07d11a80ad64dc6c0944ebf6aa4
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6dadb84b5323568ff736d9e39a1297515f33368c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009932"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681170"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure SQL Database beheerde instantie met behulp van Azure Data Factory
 
@@ -57,24 +57,24 @@ Om toegang te krijgen tot het privé-eind punt van het beheerde exemplaar van Az
 
 De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Azure Data Factory entiteiten die specifiek zijn voor de Azure SQL Database Managed instance connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor de door het Azure SQL Database beheerde exemplaar van de gekoppelde service:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type moet worden ingesteld op **AzureSqlMI**. | Ja |
-| connectionString |Met deze eigenschap geeft u de **Connections Tring** -gegevens op die nodig zijn om verbinding te maken met het beheerde exemplaar met behulp van SQL-verificatie. Zie de volgende voor beelden voor meer informatie. <br/>De standaardpoort is 1433. Als u Azure SQL Database beheerde instantie met een openbaar eind punt gebruikt, geeft u expliciet poort 3342 op.<br>Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen. Als de SQL-verificatie wordt uitgevoerd, `password` haalt u de configuratie uit het Connection String. Zie voor meer informatie het JSON-voor beeld dat volgt op de tabel en [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
-| servicePrincipalId | Opgeven van de toepassing client-ID. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
-| servicePrincipalKey | Geef de sleutel van de toepassing. Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
-| tenant | Geef de Tenant gegevens op, zoals de domein naam of Tenant-ID, waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
+| type | De eigenschap type moet worden ingesteld op **AzureSqlMI**. | Ja |
+| connectionString |Met deze eigenschap geeft u de **Connections Tring** -gegevens op die nodig zijn om verbinding te maken met het beheerde exemplaar met behulp van SQL-verificatie. Zie de volgende voor beelden voor meer informatie. <br/>De standaard poort is 1433. Als u Azure SQL Database beheerde instantie met een openbaar eind punt gebruikt, geeft u expliciet poort 3342 op.<br>Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory. U kunt ook een wacht woord in Azure Key Vault plaatsen. Als de SQL-verificatie wordt uitgevoerd, haalt u de `password`-configuratie uit de connection string. Zie voor meer informatie het JSON-voor beeld dat volgt op de tabel en [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| servicePrincipalId | Geef de client-ID van de toepassing op. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
+| servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in azure Data Factory of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
+| bouw | Geef de Tenant gegevens op, zoals de domein naam of Tenant-ID, waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja, wanneer u Azure AD-verificatie gebruikt met een Service-Principal |
 | connectVia | Deze [Integration runtime](concepts-integration-runtime.md) wordt gebruikt om verbinding te maken met het gegevens archief. U kunt een zelf-hostende Integration runtime of een Azure Integration runtime gebruiken als uw beheerde exemplaar een openbaar eind punt heeft en Azure Data Factory toegang heeft. Als dat niet is opgegeven, wordt de standaard Azure Integration runtime gebruikt. |Ja |
 
-Verwijzen respectievelijk naar de volgende secties over de vereisten en JSON-voorbeelden, voor andere verificatietypen:
+Raadpleeg de volgende secties over respectievelijk de vereisten en JSON-voor beelden voor verschillende verificatie typen:
 
 - [SQL-verificatie](#sql-authentication)
 - [Verificatie van Azure AD-toepassings token: Service-Principal](#service-principal-authentication)
-- [Verificatie van Azure AD-toepassings token: Beheerde identiteiten voor Azure-resources](#managed-identity)
+- [Verificatie van Azure AD-toepassings tokens: beheerde identiteiten voor Azure-resources](#managed-identity)
 
 ### <a name="sql-authentication"></a>SQL-verificatie
 
@@ -134,10 +134,10 @@ Voer de volgende stappen uit om een Azure AD-toepassings token verificatie op ba
 
 1. Volg de stappen om [een Azure Active Directory beheerder in te richten voor uw beheerde exemplaar](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-2. [Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) vanuit de Azure Portal. Noteer de naam van de toepassing en de volgende waarden voor het definiëren van de gekoppelde service:
+2. [Maak een Azure Active Directory-toepassing](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) vanuit de Azure Portal. Noteer de naam van de toepassing en de volgende waarden die de gekoppelde service definiëren:
 
     - Toepassings-id
-    - Toepassingssleutel
+    - Toepassings sleutel
     - Tenant-id
 
 3. [Aanmeldingen maken](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) voor de door de Azure Data Factory beheerde identiteit. Maak in SQL Server Management Studio (SSMS) verbinding met uw beheerde exemplaar met behulp van een SQL Server account dat een **sysadmin**is. Voer de volgende T-SQL uit in de **hoofd** database:
@@ -152,7 +152,7 @@ Voer de volgende stappen uit om een Azure AD-toepassings token verificatie op ba
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-5. Verleen de Data Factory beheerde identiteit de benodigde machtigingen zoals u dat normaal doet voor SQL-gebruikers en anderen. Voer de volgende code. Zie [dit document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)voor meer opties.
+5. Verleen de Data Factory beheerde identiteit de benodigde machtigingen zoals u dat normaal doet voor SQL-gebruikers en anderen. Voer de volgende code uit. Zie [dit document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)voor meer opties.
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
@@ -187,7 +187,7 @@ Voer de volgende stappen uit om een Azure AD-toepassings token verificatie op ba
 }
 ```
 
-### <a name="managed-identity"></a> Beheerde identiteiten voor verificatie van de Azure-resources
+### <a name="managed-identity"></a>Beheerde identiteiten voor Azure-bronnen verificatie
 
 Een data factory kan worden gekoppeld aan een [beheerde identiteit voor Azure-resources](data-factory-service-identity.md) die de specifieke Data Factory vertegenwoordigt. U kunt deze beheerde identiteit gebruiken voor de Azure SQL Database Managed instance-verificatie. De aangewezen Factory heeft toegang tot en kopiëren van gegevens van of naar uw data base met behulp van deze identiteit.
 
@@ -207,7 +207,7 @@ Voer de volgende stappen uit om beheerde identiteits verificatie te gebruiken.
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-4. Verleen de Data Factory beheerde identiteit de benodigde machtigingen zoals u dat normaal doet voor SQL-gebruikers en anderen. Voer de volgende code. Zie [dit document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)voor meer opties.
+4. Verleen de Data Factory beheerde identiteit de benodigde machtigingen zoals u dat normaal doet voor SQL-gebruikers en anderen. Voer de volgende code uit. Zie [dit document](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql?view=azuresqldb-mi-current)voor meer opties.
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
@@ -242,12 +242,12 @@ Zie het artikel gegevens sets voor een volledige lijst met secties en eigenschap
 
 Als u gegevens wilt kopiëren naar en van Azure SQL Database beheerde instantie, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de DataSet moet worden ingesteld op **AzureSqlMITable**. | Ja |
-| Schema | De naam van het schema. |Nee voor bron, Ja voor sink  |
-| table | De naam van de tabel/weer gave. |Nee voor bron, Ja voor sink  |
-| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik `schema` en`table`voor nieuwe werk belasting. | Nee voor bron, Ja voor sink |
+| type | De eigenschap type van de DataSet moet worden ingesteld op **AzureSqlMITable**. | Ja |
+| Schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
+| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
+| tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik voor nieuwe werk belasting `schema` en `table`. | Nee voor bron, ja voor Sink |
 
 **Voorbeeld**
 
@@ -278,19 +278,19 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren van Azure SQL Database beheerde instantie, worden de volgende eigenschappen ondersteund in de sectie bron van de Kopieer activiteit:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SqlMISource**. | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SqlMISource**. | Ja |
 | sqlReaderQuery |Deze eigenschap maakt gebruik van de aangepaste SQL-query om gegevens te lezen. Een voorbeeld is `select * from MyTable`. |Nee |
-| sqlReaderStoredProcedureName |Deze eigenschap is de naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. De laatste SQL-instructie moet een SELECT-instructie in de opgeslagen procedure. |Nee |
-| storedProcedureParameters |Deze para meters zijn voor de opgeslagen procedure.<br/>Toegestane waarden zijn de naam of waarde-paren. De namen en de behuizing van de para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. |Nee |
+| sqlReaderStoredProcedureName |Deze eigenschap is de naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. De laatste SQL-instructie moet een instructie SELECT in de opgeslagen procedure zijn. |Nee |
+| storedProcedureParameters |Deze para meters zijn voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-of waardeparen. De namen en de behuizing van de para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. |Nee |
 
 **Houd rekening met de volgende punten:**
 
 - Als **sqlReaderQuery** is opgegeven voor **SqlMISource**, voert de Kopieer activiteit deze query uit op basis van de beheerde exemplaar bron om de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven door **sqlReaderStoredProcedureName** en **storedProcedureParameters** op te geven als voor de opgeslagen procedure para meters worden gebruikt.
-- Als u de eigenschap **sqlReaderQuery** of **sqlReaderStoredProcedureName** niet opgeeft, worden de kolommen die in de sectie ' Structure ' van de JSON van de gegevensset zijn gedefinieerd, gebruikt om een query te maken. De query `select column1, column2 from mytable` wordt uitgevoerd op basis van het beheerde exemplaar. Als de definitie van de gegevensset niet de structuur ' Structure ' bevat, worden alle kolommen geselecteerd in de tabel.
+- Als u de eigenschap **sqlReaderQuery** of **sqlReaderStoredProcedureName** niet opgeeft, worden de kolommen die in de sectie ' Structure ' van de JSON van de gegevensset zijn gedefinieerd, gebruikt om een query te maken. De query `select column1, column2 from mytable` worden uitgevoerd op basis van het beheerde exemplaar. Als de definitie van de gegevensset niet de structuur ' Structure ' bevat, worden alle kolommen geselecteerd in de tabel.
 
-**Voorbeeld: Een SQL-query gebruiken**
+**Voor beeld: een SQL-query gebruiken**
 
 ```json
 "activities":[
@@ -322,7 +322,7 @@ Als u gegevens wilt kopiëren van Azure SQL Database beheerde instantie, worden 
 ]
 ```
 
-**Voorbeeld: Een opgeslagen procedure gebruiken**
+**Voor beeld: een opgeslagen procedure gebruiken**
 
 ```json
 "activities":[
@@ -384,19 +384,19 @@ GO
 
 Als u gegevens wilt kopiëren naar Azure SQL Database beheerde instantie, worden de volgende eigenschappen ondersteund in het gedeelte Sink van Kopieer activiteit:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **SqlMISink**. | Ja |
+| type | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **SqlMISink**. | Ja |
 | writeBatchSize |Het aantal rijen dat *per batch*in de SQL-tabel moet worden ingevoegd.<br/>Toegestane waarden zijn gehele getallen voor het aantal rijen. Standaard bepaalt Azure Data Factory dynamisch de juiste Batch grootte op basis van de Rijgrootte.  |Nee |
 | writeBatchTimeout |Met deze eigenschap geeft u de wacht tijd op waarna de batch INSERT-bewerking moet worden voltooid voordat er een time-out optreedt.<br/>Toegestane waarden zijn voor de time span. Een voor beeld is ' 00:30:00 '. Dit is 30 minuten. |Nee |
 | preCopyScript |Met deze eigenschap geeft u een SQL-query op voor het uitvoeren van de Kopieer activiteit voordat u gegevens naar het beheerde exemplaar schrijft. Het wordt slechts één keer per Kopieer bewerking aangeroepen. U kunt deze eigenschap gebruiken om vooraf geladen gegevens op te schonen. |Nee |
-| sqlWriterStoredProcedureName | De naam van de opgeslagen procedure die definieert hoe bron gegevens in een doel tabel worden toegepast. <br/>Deze opgeslagen procedure wordt *per batch aangeroepen*. Voor bewerkingen die slechts één keer worden uitgevoerd en niets te doen met bron gegevens, bijvoorbeeld verwijderen of afkappen, gebruikt u de `preCopyScript` eigenschap. | Nee |
+| sqlWriterStoredProcedureName | De naam van de opgeslagen procedure die definieert hoe bron gegevens in een doel tabel worden toegepast. <br/>Deze opgeslagen procedure wordt *per batch aangeroepen*. Voor bewerkingen die slechts één keer worden uitgevoerd en niets te doen met bron gegevens, bijvoorbeeld verwijderen of afkappen, gebruikt u de eigenschap `preCopyScript`. | Nee |
 | storedProcedureTableTypeParameterName |De parameter naam van het tabel type dat is opgegeven in de opgeslagen procedure.  |Nee |
 | sqlWriterTableType |De naam van het tabel type dat moet worden gebruikt in de opgeslagen procedure. Met de Kopieer activiteit worden de gegevens in een tijdelijke tabel met dit tabel type beschikbaar gemaakt. Met de opgeslagen procedure code kunt u vervolgens de gegevens samen voegen die worden gekopieerd met bestaande gegevens. |Nee |
-| storedProcedureParameters |Parameters voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-en waardeparen. Namen en hoofdlettergebruik van parameters moeten overeenkomen met de naam en het hoofdlettergebruik van de opgeslagen-procedureparameters. | Nee |
+| storedProcedureParameters |Para meters voor de opgeslagen procedure.<br/>Toegestane waarden zijn naam-en waardeparen. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. | Nee |
 | tableOption | Hiermee wordt aangegeven of de Sink-tabel automatisch moet worden gemaakt als deze niet bestaat op basis van het bron schema. Het automatisch maken van tabellen wordt niet ondersteund wanneer Sink de opgeslagen procedure opgeeft of een gefaseerde kopie is geconfigureerd in de Kopieer activiteit. Toegestane waarden zijn: `none` (standaard), `autoCreate`. |Nee |
 
-**Voor beeld 1: Gegevens toevoegen**
+**Voor beeld 1: gegevens toevoegen**
 
 ```json
 "activities":[
@@ -429,7 +429,7 @@ Als u gegevens wilt kopiëren naar Azure SQL Database beheerde instantie, worden
 ]
 ```
 
-**Voor beeld 2: Een opgeslagen procedure aanroepen tijdens het kopiëren**
+**Voor beeld 2: een opgeslagen procedure aanroepen tijdens het kopiëren**
 
 Meer informatie over [het aanroepen van een opgeslagen procedure vanuit een SQL mi-Sink](#invoke-a-stored-procedure-from-a-sql-sink).
 
@@ -473,9 +473,9 @@ Meer informatie over [het aanroepen van een opgeslagen procedure vanuit een SQL 
 
 Wanneer u gegevens naar Azure SQL Database beheerde instantie kopieert, hebt u mogelijk een ander schrijf gedrag nodig:
 
-- [Toevoegen](#append-data): Mijn bron gegevens hebben alleen nieuwe records.
-- [Upsert](#upsert-data): Mijn bron gegevens hebben zowel toevoegingen als updates.
-- [Overschrijven](#overwrite-the-entire-table): Ik wil elke keer de hele dimensie tabel opnieuw laden.
+- [Toevoegen](#append-data): mijn bron gegevens hebben alleen nieuwe records.
+- [Upsert](#upsert-data): mijn bron gegevens hebben zowel toevoegingen als updates.
+- [Overschrijven](#overwrite-the-entire-table): Ik wil de hele dimensie tabel elke keer opnieuw laden.
 - [Schrijven met aangepaste logica](#write-data-with-custom-logic): Ik heb extra verwerking nodig vóór de laatste invoeging in de doel tabel. 
 
 Zie de betreffende secties voor informatie over het configureren van Azure Data Factory en aanbevolen procedures.
@@ -536,7 +536,7 @@ Wanneer u gegevens naar Azure SQL Database beheerde instantie kopieert, kunt u o
 
 U kunt een opgeslagen procedure gebruiken wanneer ingebouwde Kopieer mechanismen het doel niet behouden. Een voor beeld hiervan is wanneer u een extra verwerking wilt Toep assen vóór het uiteindelijke invoegen van bron gegevens in de doel tabel. Sommige extra verwerkings voorbeelden zijn wanneer u kolommen wilt samen voegen, aanvullende waarden wilt opzoeken en gegevens in meer dan één tabel wilt invoegen.
 
-In het volgende voor beeld ziet u hoe u een opgeslagen procedure gebruikt om een upsert te maken in een tabel in de SQL Server-Data Base. Stel dat de invoer gegevens en de bron voor de Sink- **marketing** elk drie kolommen bevatten: **ProfileID**, **State**en **Category**. Voer de upsert uit op basis van de kolom **ProfileID** en pas deze alleen toe voor een specifieke categorie met de naam ProductA.
+In het volgende voor beeld ziet u hoe u een opgeslagen procedure gebruikt om een upsert te maken in een tabel in de SQL Server-Data Base. Stel dat de invoer gegevens en de provinciale **marketing** tabel drie kolommen hebben: **ProfileID**, **State**en **Category**. Voer de upsert uit op basis van de kolom **ProfileID** en pas deze alleen toe voor een specifieke categorie met de naam ProductA.
 
 1. Definieer in uw data base het tabel type met de naam **sqlWriterTableType**. Het schema van het tabel type is hetzelfde als het schema dat wordt geretourneerd door de invoer gegevens.
 
@@ -588,37 +588,37 @@ Wanneer gegevens worden gekopieerd naar en van Azure SQL Database beheerde insta
 | Gegevens type van beheerde instantie Azure SQL Database | Azure Data Factory tussentijds gegevens type |
 |:--- |:--- |
 | bigint |Int64 |
-| binary |Byte[] |
-| bit |Boolean |
-| char |String, Char[] |
+| waarde |Byte [] |
+| bitmask |Booleaans |
+| char |Teken reeks, char [] |
 | date |DateTime |
 | Datetime |DateTime |
-| datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Double |
-| image |Byte[] |
+| DATETIME2 |DateTime |
+| Date time offset |Date time offset |
+| Komma |Komma |
+| FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
+| Float |Double-waarde |
+| image |Byte [] |
 | int |Int32 |
-| money |Decimal |
-| nchar |String, Char[] |
-| ntext |String, Char[] |
-| numeric |Decimal |
-| nvarchar |String, Char[] |
-| real |Single |
-| rowversion |Byte[] |
+| financieel |Komma |
+| nchar |Teken reeks, char [] |
+| ntext |Teken reeks, char [] |
+| 443 |Komma |
+| nvarchar |Teken reeks, char [] |
+| realistische |Enkelvoudig |
+| rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |Komma |
 | sql_variant |Object |
-| text |String, Char[] |
-| time |TimeSpan |
-| timestamp |Byte[] |
+| tekst |Teken reeks, char [] |
+| tijd |Duur |
+| tijdstempel |Byte [] |
 | tinyint |Int16 |
-| uniqueidentifier |Guid |
-| varbinary |Byte[] |
-| varchar |String, Char[] |
-| xml |Xml |
+| unieke |GUID |
+| varbinary |Byte [] |
+| varchar |Teken reeks, char [] |
+| xml |indeling |
 
 >[!NOTE]
 > Voor gegevens typen die worden toegewezen aan het type van de tijdelijke decimalen, Azure Data Factory op dit moment de precisie Maxi maal 28 ondersteunen. Als u gegevens hebt die een grotere nauw keurigheid dan 28 vereisen, kunt u overwegen om te converteren naar een teken reeks in een SQL-query.

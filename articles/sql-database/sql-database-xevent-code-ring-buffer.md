@@ -1,5 +1,5 @@
 ---
-title: XEvent ring-buffer code voor SQL Database | Microsoft Docs
+title: XEvent ring-buffer code voor SQL Database
 description: Biedt een voor beeld van de Transact-SQL-code die eenvoudig en snel kan worden gemaakt door gebruik te maken van het ring buffer doel, in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566163"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686807"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Doel code ring buffer voor uitgebreide gebeurtenissen in SQL Database
 
@@ -56,8 +56,8 @@ Dit onderwerp bevat een voor beeld van een Transact-SQL-code die:
 
 Met een zeer kleine wijziging kan het volgende voor beeld van een ring buffer worden uitgevoerd op Azure SQL Database of Microsoft SQL Server. Het verschil is de aanwezigheid van het knoop punt ' _database ' in de naam van sommige dynamische beheer weergaven (Dmv's), die worden gebruikt in de component FROM in stap 5. Bijvoorbeeld:
 
-* sys.dm_xe<strong>_database</strong>_session_targets
-* sys.dm_xe_session_targets
+* sys. DM _xe<strong>_database</strong>_session_targets
+* sys. DM _xe_session_targets
 
 &nbsp;
 
@@ -222,7 +222,7 @@ Als u de resultaten wilt weer geven, klikt u op de cel onder de kolomkop **targe
 
 Vervolgens klikt u in het resultaten venster op de cel onder de kolomkop **target_data_XML**. Klik op een ander bestand tabblad gemaakt in SSMS. exe waarin de inhoud van de resultaat cel is weer gegeven als XML.
 
-De uitvoer wordt weer gegeven in het volgende blok. Het lijkt lang, maar dit is slechts twee  **\<gebeurtenis >** elementen.
+De uitvoer wordt weer gegeven in het volgende blok. Het lijkt lang, maar het is slechts twee **\<gebeurtenis >** elementen.
 
 &nbsp;
 
@@ -347,7 +347,7 @@ Het primaire onderwerp voor uitgebreide gebeurtenissen op Azure SQL Database is:
 
 Andere onderwerpen over voorbeeld code voor uitgebreide gebeurtenissen vindt u op de volgende koppelingen. U moet echter regel matig een voor beeld controleren om te zien of de voor beeld-doelen Microsoft SQL Server versus Azure SQL Database. Vervolgens kunt u bepalen of er kleine wijzigingen nodig zijn om het voor beeld uit te voeren.
 
-* Code voorbeeld voor Azure SQL Database: [Doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in SQL Database](sql-database-xevent-code-event-file.md)
+* Code voorbeeld voor Azure SQL Database: [doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in SQL database](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

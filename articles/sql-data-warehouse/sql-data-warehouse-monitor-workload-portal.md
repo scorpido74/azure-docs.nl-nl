@@ -1,5 +1,5 @@
 ---
-title: Werk belasting bewaken-Azure Portal | Microsoft Docs
+title: Workload bewaken-Azure Portal
 description: Azure SQL Data Warehouse bewaken met behulp van de Azure Portal
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 73d837c34dd5a480cae08a41c89939414899052a
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981489"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645637"
 ---
 # <a name="monitor-workload---azure-portal"></a>Workload bewaken-Azure Portal
 
@@ -23,8 +23,8 @@ In dit artikel wordt beschreven hoe u de Azure Portal kunt gebruiken om uw workl
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-- Azure SQL Data Warehouse: Er worden logboeken verzameld voor een SQL Data Warehouse. Als u geen SQL Data Warehouse hebt ingericht, raadpleegt u de instructies in [Create a SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
+- Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+- Azure SQL Data Warehouse: er worden logboeken verzameld voor een SQL Data Warehouse. Als u geen SQL Data Warehouse hebt ingericht, raadpleegt u de instructies in [Create a SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial).
 
 ## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte maken
 
@@ -61,7 +61,7 @@ Navigeer naar uw Log Analytics-werk ruimte waar u het volgende kunt doen:
 
 - Logboeken analyseren met behulp van logboek query's en query's opslaan voor hergebruik
 - Query's opslaan voor hergebruik
-- Logboek waarschuwingen maken
+- Logboekwaarschuwingen maken
 - Query resultaten vastmaken aan een dash board
 
 Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)voor meer informatie over de mogelijkheden van logboek query's.

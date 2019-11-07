@@ -1,74 +1,75 @@
 ---
-title: Application Insights om op te lossen aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: hoe u tot het instellen van Application Insights aan het traceren van de uitvoering van aangepaste beleidsregels.
+title: Problemen oplossen met aangepaste beleids regels met Application Insights-Azure Active Directory B2C
+description: Application Insights instellen om de uitvoering van uw aangepaste beleids regels te traceren.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df5d710792d8c47e491f5b06d88f4050e8eb4a01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508075"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602023"
 ---
-# <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Verzamelen van Logboeken
+# <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C-logboeken met Application Insights verzamelen
 
-Dit artikel bevat stappen voor het verzamelen van Logboeken van Azure AD B2C, zodat u met uw aangepaste beleidsregels problemen kunt.
+In dit artikel worden de stappen beschreven voor het verzamelen van logboeken van Active Directory B2C (Azure AD B2C), zodat u problemen met uw aangepaste beleids regels kunt vaststellen. Application Insights biedt een manier om uitzonde ringen te diagnosticeren en prestatie problemen van toepassingen te visualiseren. Azure AD B2C bevat een functie voor het verzenden van gegevens naar Application Insights.
 
->[!NOTE]
->Op dit moment de gedetailleerde activiteitenlogboeken die hier worden beschreven zijn ontworpen **alleen** om te helpen bij de ontwikkeling van aangepaste beleidsregels. Gebruik geen Ontwikkelingsmodus in productie.  Logboeken verzamelen van alle claims verzonden naar en van de id-providers tijdens de ontwikkeling.  Als in de productieomgeving gebruikt, verantwoordelijkheid de ontwikkelaar van de krijgt voor PII (privé Identifiable Information) die in het logboek voor App Insights waarvan ze eigenaar zijn verzameld.  Deze gedetailleerde logboeken worden alleen verzameld wanneer het beleid wordt geplaatst op **ONTWIKKELINGSMODUS**.
+De gedetailleerde activiteiten logboeken die hier worden beschreven, moeten **alleen** worden ingeschakeld tijdens de ontwikkeling van uw aangepaste beleids regels.
 
+> [!WARNING]
+> Schakel de ontwikkelings modus niet in voor productie. In Logboeken worden alle claims verzameld die worden verzonden naar en van id-providers. U bent als ontwikkelaar verantwoordelijk voor alle persoons gegevens die in uw Application Insights-logboeken worden verzameld. Deze gedetailleerde logboeken worden alleen verzameld wanneer het beleid in de **ontwikkelaars modus**wordt geplaatst.
 
-## <a name="use-application-insights"></a>Application Insights gebruiken
+## <a name="set-up-application-insights"></a>Application Insights instellen
 
-Azure AD B2C ondersteunt een functie voor het verzenden van gegevens naar Application Insights.  Application Insights biedt een manier om de diagnose-uitzonderingen en prestatieproblemen toepassing visualiseren.
+Als u er nog geen hebt, maakt u een instantie van Application Insights in uw abonnement.
 
-### <a name="setup-application-insights"></a>Application Insights instellen
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure-abonnement bevat (niet uw Azure AD B2C Directory).
+1. Selecteer **een resource maken** in het navigatie menu aan de linkerkant.
+1. Zoek en selecteer **Application Insights**en selecteer vervolgens **maken**.
+1. Vul het formulier in, selecteer **controleren + maken**en selecteer vervolgens **maken**.
+1. Zodra de implementatie is voltooid, selecteert **u naar resource**.
+1. Onder **configureren** in Application Insights menu, selecteert u **Eigenschappen**.
+1. Noteer de **instrumentatie sleutel** voor gebruik in een latere stap.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com). Zorg ervoor dat u zich in de tenant met uw Azure-abonnement (niet uw Azure AD B2C-tenant).
-1. Klik op **+ nieuw** in het navigatiemenu aan.
-1. Zoek en selecteer **Application Insights**, klikt u vervolgens op **maken**.
-1. Vul het formulier in en klikt u op **maken**. Selecteer **algemene** voor de **toepassingstype**.
-1. Zodra de resource is gemaakt, opent u de Application Insights-resource.
-1. Zoek **eigenschappen** in de in het menu links en klik erop.
-1. Kopieer de **Instrumentatiesleutel** en bewaar het voor de volgende sectie.
+## <a name="configure-the-custom-policy"></a>Het aangepaste beleid configureren
 
-### <a name="set-up-the-custom-policy"></a>Het aangepaste beleid instellen
-
-1. Open het RP-bestand (bijvoorbeeld SignUpOrSignin.xml).
-1. De volgende kenmerken toevoegen aan de `<TrustFrameworkPolicy>` element:
+1. Open het Relying Party (RP)-bestand, bijvoorbeeld *SignUpOrSignin. XML*.
+1. Voeg de volgende kenmerken toe aan het `<TrustFrameworkPolicy>`-element:
 
    ```XML
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Als deze niet al bestaat, Voeg een onderliggend knooppunt `<UserJourneyBehaviors>` naar de `<RelyingParty>` knooppunt. Deze moeten zich direct na de `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
-2. Het volgende knooppunt toevoegen als een onderliggende site van de `<UserJourneyBehaviors>` element. Vervang `{Your Application Insights Key}` met de **Instrumentatiesleutel** die u hebt verkregen vanuit Application Insights in de vorige sectie.
+1. Als deze nog niet bestaat, voegt u een onder`<UserJourneyBehaviors>` onderliggend knoop punt toe aan het knoop punt `<RelyingParty>`. Deze moet direct na `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`worden geplaatst.
+1. Voeg het volgende knoop punt toe als onderliggend item van het `<UserJourneyBehaviors>`-element. Zorg ervoor dat u `{Your Application Insights Key}` vervangt door de Application Insights **instrumentatie sleutel** die u eerder hebt vastgelegd.
 
-   ```XML
-   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-   ```
+    ```XML
+    <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+    ```
 
-   * `DeveloperMode="true"` Geeft aan Application Insights te bekorten de telemetrie via de verwerkings-pipeline goed voor ontwikkeling, maar beperkte bij hoge volumes.
-   * `ClientEnabled="true"` verzendt het Application Insights-client-side-script voor het bijhouden van pagina-fouten bekijken en aan de clientzijde (niet nodig).
-   * `ServerEnabled="true"` de bestaande UserJourneyRecorder JSON verzonden als een aangepaste gebeurtenis naar Application Insights.
-   Voorbeeld:
+    * `DeveloperMode="true"` vertelt ApplicationInsights de telemetrie te versnellen door de verwerkings pijplijn. Goed voor ontwikkeling, maar beperkt op hoge volumes.
+    * `ClientEnabled="true"` verzendt het ApplicationInsights script aan de client zijde voor het bijhouden van de pagina weergave en fouten aan de client zijde. U kunt deze weer geven in de tabel **browserTimings** in de Application Insights Portal. Door `ClientEnabled= "true"`in te stellen, voegt u Application Insights toe aan het script van uw pagina en krijgt u een tijds duur van het laden van pagina's en AJAX-aanroepen, tellingen, Details van browser uitzonderingen en AJAX-fouten, en het aantal gebruikers en sessies. Dit veld is **optioneel**en wordt standaard ingesteld op `false`.
+    * `ServerEnabled="true"` stuurt de bestaande UserJourneyRecorder-JSON als een aangepaste gebeurtenis naar Application Insights.
 
-   ```XML
-   <TrustFrameworkPolicy
-    ...
-    TenantId="fabrikamb2c.onmicrosoft.com"
-    PolicyId="SignUpOrSignInWithAAD"
-    DeploymentMode="Development"
-    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-   >
+    Bijvoorbeeld:
+
+    ```XML
+    <TrustFrameworkPolicy
+      ...
+      TenantId="fabrikamb2c.onmicrosoft.com"
+      PolicyId="SignUpOrSignInWithAAD"
+      DeploymentMode="Development"
+      UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+    >
     ...
     <RelyingParty>
       <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
@@ -76,42 +77,36 @@ Azure AD B2C ondersteunt een functie voor het verzenden van gegevens naar Applic
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
       ...
-   </TrustFrameworkPolicy>
-   ```
+    </TrustFrameworkPolicy>
+    ```
 
-3. Upload het beleid.
+1. Upload het beleid.
 
-### <a name="see-the-logs-in-application-insights"></a>Zie de logboeken in Application Insights
+## <a name="see-the-logs-in-application-insights"></a>Raadpleeg de logboeken in Application Insights
 
->[!NOTE]
-> Er is een korte vertraging (minder dan vijf minuten) voordat u nieuwe logboeken in Application Insights kunt zien.
+Er is een korte vertraging, meestal minder dan vijf minuten, voordat u nieuwe logboeken in Application Insights kunt zien.
 
-1. Open de Application Insights-resource die u hebt gemaakt in de [Azure-portal](https://portal.azure.com).
-1. In de **overzicht** menu, klikt u op **Analytics**.
+1. Open de Application Insights resource die u hebt gemaakt in de [Azure Portal](https://portal.azure.com).
+1. Selecteer in het menu **overzicht** de optie **analyse**.
 1. Open een nieuw tabblad in Application Insights.
-1. Hier volgt een lijst met query's die kunt u de logboeken
 
-| Query’s uitvoeren | Description |
+Hier volgt een lijst met query's die u kunt gebruiken om de logboeken weer te geven:
+
+| Query’s uitvoeren | Beschrijving |
 |---------------------|--------------------|
-traceringen | Zie alle logboeken die worden gegenereerd door Azure AD B2C |
-traceringen \| waar tijdstempel > ago(1d) | Zie alle logboeken die worden gegenereerd door Azure AD B2C voor de laatste dag
+`traces` | Alle logboeken weer geven die zijn gegenereerd door Azure AD B2C |
+`traces | where timestamp > ago(1d)` | Alle logboeken weer geven die zijn gegenereerd door Azure AD B2C voor de afgelopen dag
 
-De vermeldingen mogelijk lang.  Exporteren naar CSV voor nader bekijken.
+De invoer kan lang zijn. Exporteren naar CSV voor een betere blik.
 
-U kunt meer informatie over het Analytics-hulpprogramma [hier](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
-
->[!NOTE]
->De community heeft ontwikkeld, een gebruiker reis viewer zodat ontwikkelaars die identiteit.  Niet wordt ondersteund door Microsoft en beschikbaar gesteld strikt als-is.  Leest van uw Application Insights-instantie en biedt een gestructureerde weergave van de gebruiker reis gebeurtenissen.  U de broncode downloaden en deze in uw eigen oplossing te implementeren.
-
-De versie van de viewer die gebeurtenissen in Application Insights leest bevindt [hier](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
-
->[!NOTE]
->Op dit moment de gedetailleerde activiteitenlogboeken die hier worden beschreven zijn ontworpen **alleen** om te helpen bij de ontwikkeling van aangepaste beleidsregels. Gebruik geen Ontwikkelingsmodus in productie.  Logboeken verzamelen van alle claims verzonden naar en van de id-providers tijdens de ontwikkeling.  Als in de productieomgeving gebruikt, verantwoordelijkheid de ontwikkelaar van de krijgt voor PII (privé Identifiable Information) die in het logboek voor App Insights waarvan ze eigenaar zijn verzameld.  Deze gedetailleerde logboeken worden alleen verzameld wanneer het beleid wordt geplaatst op **ONTWIKKELINGSMODUS**.
-
-[GitHub-opslagplaats voor niet-ondersteunde aangepast beleid voor voorbeelden en meer hulpprogramma 's](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
-
-
+Zie [overzicht van logboek query's in azure monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over het uitvoeren van query's.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verken de gegevens in Application Insights om te begrijpen hoe optreedt in de Identity-Ervaringsframework onderliggende B2C werkt met het oog op uw eigen identiteit.
+De community heeft een reis viewer voor gebruikers ontwikkeld om identiteits ontwikkelaars te helpen. Het leest van uw Application Insights-exemplaar en biedt een goed gestructureerde weer gave van de reis gebeurtenissen van de gebruiker. U verkrijgt de bron code en implementeert deze in uw eigen oplossing.
+
+De gebruikers reis speler wordt niet ondersteund door micro soft en wordt strikt beschikbaar gesteld.
+
+U kunt de versie van de viewer vinden die gebeurtenissen van Application Insights op GitHub leest:
+
+[Azure-samples/Active-Directory-B2C-Advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)

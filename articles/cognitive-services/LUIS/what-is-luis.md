@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: c24b62ac729a0c52efb78f612c53c8844cf23b12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ee22a2a8a12eb85439e191bc21e6cf391bea3f8
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500019"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612851"
 ---
 # <a name="what-is-language-understanding-luis"></a>Wat is Language Understanding (LUIS)?
 
@@ -34,7 +34,7 @@ Zodra de LUIS-app is gepubliceerd, verzendt een client toepassing uitingen (teks
 
 ![Conceptuele installatie kopie van LUIS met behulp van de chat-bot om gebruikers tekst te voors pellen met natuurlijk language Standing (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptuele afbeelding van LUIS werken met de chat-bot om gebruikers tekst te voors pellen met natuurlijk taal begrip (NLP")
 
-|Stap|Actie|
+|Stap|Bewerking|
 |:--|:--|
 |1|De clienttoepassing verzendt een _uiting_ van de gebruiker (tekst in eigen woorden), zoals "Ik wil mijn contactpersoon van de afdeling HR bellen", naar het eindpunt van LUIS als een HTTP-aanvraag.|
 |2|Met LUIS kunt u uw aangepaste taal modellen maken om intelligentie toe te voegen aan uw toepassing. Door de computer geleerde taal modellen nemen de niet-gestructureerde invoer tekst van de gebruiker en retourneert een in JSON-indelings antwoord met een hoofd intentie `HRContact`. Het minimale JSON-antwoord van het eindpunt bevat de query-uiting en de belangrijkste score-intentie. Het kan ook gegevens extra heren, zoals de entiteit _type contact_ .|
@@ -114,7 +114,7 @@ Hulpprogramma's om LUIS snel en eenvoudig met een bot te gebruiken:
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) LUISGen is een hulpprogramma voor het genereren van sterk getypeerde broncode voor C# en TypeScript op basis van een geëxporteerd LUIS-model.
 * [Dispatcher](https://aka.ms/dispatch-tool) - met behulp van het verdeelprogrammamodel kunnen verschillende LUIS- en QnA Maker-apps worden gebruikt vanuit een bovenliggende app.
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) LUDown is een opdrachtregelprogramma dat helpt om taalmodellen voor uw bot te beheren.
-* [Bot Framework-Composer](https://github.com/microsoft/BotFramework-Composer)
+* [Bot Framework-Composer](https://github.com/microsoft/BotFramework-Composer) : een geïntegreerd hulp programma voor ontwikkel aars en meerdere disciplinaire teams om bots en gespreks ervaringen te bouwen met het micro soft bot Framework
 
 Andere cognitieve services die kunnen worden gebruikt in combinatie met LUIS:
 * Met [QnA Maker][qnamaker] kunt u verschillende typen tekst combi neren in een vraag-en antwoord Knowledge Base.

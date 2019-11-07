@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: MT
+ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876899"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607877"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub hoge Beschik baarheid en herstel na nood geval
 
@@ -62,7 +62,7 @@ Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen 
 > [!CAUTION]
 > - De Event hub-compatibele naam en het eind punt van het eind punt van de IoT Hub ingebouwde gebeurtenissen na een failover wijzigen. Bij het ontvangen van telemetriegegevens van het ingebouwde eind punt met behulp van de Event Hub client of de gebeurtenis processor host, moet u [de Connection String IOT hub gebruiken](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) om de verbinding tot stand te brengen. Zo zorgt u ervoor dat uw back-end-toepassingen blijven werken zonder dat er hand matige interventie post-failover is vereist. Als u de Event hub-compatibele naam en het eind punt in uw back-end-toepassing rechtstreeks gebruikt, moet u de toepassing opnieuw configureren door [de nieuwe event hub-compatibele naam en het eind punt na de](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) failover op te halen om de bewerkingen voort te zetten.
 >
-> - Bij het door sturen naar Blob-opslag wordt aangeraden om de blobs in te schrijven en vervolgens te herhalen, om ervoor te zorgen dat alle containers worden gelezen zonder dat er aannames van de partitie worden gemaakt. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. Zie [route ring naar Blob Storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage)voor meer informatie over het opsommen van de lijst met blobs.
+> - Bij het door sturen naar de opslag wordt aangeraden de opslag container in te schrijven en vervolgens te herhalen, om ervoor te zorgen dat alle containers worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. Zie [route ring naar Azure Storage](iot-hub-devguide-messages-d2c.md#azure-storage)voor meer informatie over het opsommen van de lijst met blobs.
 
 ## <a name="microsoft-initiated-failover"></a>Door micro soft geïnitieerde failover
 
@@ -70,7 +70,7 @@ Door micro soft geïnitieerde failover wordt door micro soft in zeldzame gevalle
 
 De grote RTO is omdat micro soft de failover-bewerking moet uitvoeren namens alle betrokken klanten in die regio. Als u een minder kritieke IoT-oplossing gebruikt die zich ongeveer een dag bevindt, is het raadzaam dat u een afhankelijkheid neemt van deze optie om te voldoen aan de algemene doel stellingen voor herstel na nood gevallen voor uw IoT-oplossing. De totale tijd dat runtime-bewerkingen volledig operationeel worden zodra dit proces wordt geactiveerd, wordt beschreven in de sectie ' te herstellen tijdstip '.
 
-## <a name="manual-failover"></a>Handmatige failover
+## <a name="manual-failover"></a>Hand matige failover
 
 Als de doel stellingen van uw bedrijf niet voldoen aan de RTO die door micro soft is gestart, kunt u een hand matige failover uitvoeren om het failoverproces zelf te activeren. De RTO die deze optie gebruikt, kan een wille keurige periode van tien minuten tot enkele uren zijn. De RTO is momenteel een functie van het aantal apparaten dat is geregistreerd voor de IoT hub-instantie waarvoor failover is uitgevoerd. U kunt verwachten dat de RTO voor een hub die ongeveer 100.000 apparaten host, zich in de indicatieve van 15 minuten bevindt. De totale tijd dat runtime-bewerkingen volledig operationeel worden zodra dit proces wordt geactiveerd, wordt beschreven in de sectie ' te herstellen tijdstip '.
 
@@ -108,14 +108,14 @@ In een regionaal failovercluster wordt de back-end van de oplossing voornamelijk
 
 Op een hoog niveau moet u de volgende stappen uitvoeren om een regionaal failover-model te implementeren met IoT Hub:
 
-* **Een secundaire IOT hub en routerings logica voor apparaten**: Als de service in de primaire regio wordt onderbroken, moeten apparaten verbinding maken met uw secundaire regio. Gezien de status bewuste aard van de meeste betrokken services, is het gebruikelijk dat beheerders van de oplossing het failoverproces tussen regio's kunnen activeren. De beste manier om het nieuwe eind punt te communiceren met apparaten, met behoud van de controle over het proces, is ervoor te zorgen dat ze regel matig een *Concierge* -service controleren op het huidige actieve eind punt. De concierge-service kan een webtoepassing zijn die wordt gerepliceerd en bereikbaar is met behulp van technieken voor het omleiden van DNS (bijvoorbeeld met behulp van [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
+* **Een secundaire IOT hub-en apparaat-routerings logica**: als de service in de primaire regio wordt onderbroken, moeten apparaten verbinding maken met uw secundaire regio. Gezien de status bewuste aard van de meeste betrokken services, is het gebruikelijk dat beheerders van de oplossing het failoverproces tussen regio's kunnen activeren. De beste manier om het nieuwe eind punt te communiceren met apparaten, met behoud van de controle over het proces, is ervoor te zorgen dat ze regel matig een *Concierge* -service controleren op het huidige actieve eind punt. De concierge-service kan een webtoepassing zijn die wordt gerepliceerd en bereikbaar is met behulp van technieken voor het omleiden van DNS (bijvoorbeeld met behulp van [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
 
    > [!NOTE]
    > De IoT hub-service is geen ondersteund eindpunt type in azure Traffic Manager. De aanbeveling is de voorgestelde Concierge-service te integreren met Azure Traffic Manager door deze de Endpoint Health probe-API te implementeren.
 
-* **Replicatie van identiteits register**: De secundaire IoT-hub kan alleen worden gebruikt als deze alle apparaat-id's bevat waarmee verbinding kan worden gemaakt met de oplossing. In de oplossing moeten geo-gerepliceerde back-ups van apparaat-id's worden bewaard en geüpload naar de secundaire IoT-hub voordat het actieve eind punt voor de apparaten wordt overgeschakeld. De functie voor het exporteren van de apparaat-id van IoT Hub is nuttig in deze context. Zie [IOT hub ontwikkelaars handleiding-identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie.
+* **Identiteits register replicatie**: het kan alleen worden gebruikt als de secundaire IOT-hub alle apparaat-id's bevat waarmee verbinding kan worden gemaakt met de oplossing. In de oplossing moeten geo-gerepliceerde back-ups van apparaat-id's worden bewaard en geüpload naar de secundaire IoT-hub voordat het actieve eind punt voor de apparaten wordt overgeschakeld. De functie voor het exporteren van de apparaat-id van IoT Hub is nuttig in deze context. Zie [IOT hub ontwikkelaars handleiding-identiteits register](iot-hub-devguide-identity-registry.md)voor meer informatie.
 
-* **Logica samen voegen**: Wanneer de primaire regio weer beschikbaar is, moeten alle status en gegevens die zijn gemaakt op de secundaire site, opnieuw worden gemigreerd naar de primaire regio. Deze status en gegevens zijn voornamelijk gerelateerd aan de apparaat-id's en meta gegevens van toepassingen, die moeten worden samengevoegd met de primaire IoT-hub en andere toepassingsspecifieke winkels in de primaire regio. 
+* **Samen voegen van logica**: wanneer de primaire regio weer beschikbaar is, moeten alle status en gegevens die zijn gemaakt op de secundaire site terug worden gemigreerd naar de primaire regio. Deze status en gegevens zijn voornamelijk gerelateerd aan de apparaat-id's en meta gegevens van toepassingen, die moeten worden samengevoegd met de primaire IoT-hub en andere toepassingsspecifieke winkels in de primaire regio. 
 
 Als u deze stap wilt vereenvoudigen, moet u idempotent-bewerkingen gebruiken. Met idempotent bewerkingen worden de neven effecten van de uiteindelijke consistente distributie van gebeurtenissen en van duplicaten of aflevering van gebeurtenissen geminimaliseerd. Daarnaast moet de toepassings logica worden ontworpen om mogelijke inconsistenties of een verouderde status te verdragen. Deze situatie kan zich voordoen als gevolg van de extra tijd die het systeem nodig heeft om op te lossen op basis van de herstel punt doelstellingen (RPO).
 
@@ -126,11 +126,11 @@ Hier volgt een samen vatting van de HA/DR-opties die in dit artikel worden gepre
 | HA/DR-optie | RTO | RPO | Is hand matige interventie vereist? | Implementatie complexiteit | Extra kosten impact|
 | --- | --- | --- | --- | --- | --- |
 | Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|Nee|Geen|Geen|
-| Handmatige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
-| Kruis regio HA |< 1 min|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|Nee|Hoog|> 1x de kosten van 1 IoT hub|
+| Hand matige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
+| Kruis regio HA |< 1 minuut|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|Nee|Hoog|> 1x de kosten van 1 IoT hub|
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Wat is Azure IoT Hub?](about-iot-hub.md)
 * [Aan de slag met IoT hubs (Quick Start)](quickstart-send-telemetry-dotnet.md)
-* [Zelfstudie: Hand matige failover uitvoeren voor een IoT-hub](tutorial-manual-failover.md)
+* [Zelf studie: hand matige failover uitvoeren voor een IoT-hub](tutorial-manual-failover.md)

@@ -1,6 +1,6 @@
 ---
-title: Een gedeelde zelf-hostende integratieruntime maken in Azure Data Factory met PowerShell | Microsoft Docs
-description: Informatie over het maken van een gedeelde zelf-hostende integratieruntime in Azure Data Factory, zodat meerdere data factory's toegang heeft tot de integratieruntime.
+title: Een gedeelde zelf-hostende Integration runtime maken in Azure Data Factory
+description: Meer informatie over het maken van een gedeelde zelf-hostende Integration runtime in Azure Data Factory, zodat meerdere gegevens fabrieken toegang hebben tot de Integration runtime.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -11,39 +11,62 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: f038510c20e70c9d6b9dc8e396d9a15beb7270ca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcda60863f78dd338bbfc64c1679561262c554a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155154"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73677056"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Een gedeelde zelf-hostende integratieruntime maken in Azure Data Factory met PowerShell
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Een gedeelde zelf-hostende Integration runtime maken in Azure Data Factory
 
-Deze stapsgewijze handleiding laat zien hoe u een gedeelde zelf-hostende integratieruntime in Azure Data Factory maken met behulp van Azure PowerShell. Vervolgens gebruikt u de gedeelde zelf-hostende integratieruntime in een andere data factory. In deze zelfstudie voert u de volgende stappen uit: 
+In deze hand leiding wordt beschreven hoe u een gedeelde zelf-hostende Integration runtime maakt in Azure Data Factory. Vervolgens kunt u de gedeelde zelf-hostende Integration runtime in een andere data factory gebruiken.
 
-1. Een data factory maken. 
+## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Een gedeelde zelf-hostende IR maken met Azure Data Factory gebruikers interface
+
+Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure Data Factory gebruikers interface, kunt u de volgende stappen uitvoeren:
+
+1. Ken in de zelf-hostende IR te delen machtigingen toe aan de data factory waarin u de gekoppelde IR wilt maken.
+      
+    ![Knop voor het verlenen van machtigingen op het tabblad delen](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
+      
+    ![Selecties voor het toewijzen van machtigingen](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    
+2. Noteer de bron-ID van de zelf-hostende IR die moet worden gedeeld.
+      
+   ![Locatie van de resource-ID](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
+    
+3. Maak in de data factory waarvoor de machtigingen zijn verleend, een nieuwe zelf-hostende IR (gekoppeld) en voer de resource-ID in.
+      
+   ![Knop voor het maken van een gekoppelde zelf-hostende Integration runtime](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
+      
+    ![Vakken voor naam en Resource-ID](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+
+## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Een gedeelde zelf-hostende IR maken met behulp van Azure PowerShell
+
+Als u een gedeelde zelf-hostende IR wilt maken met behulp van Azure PowerShell, kunt u de volgende stappen uitvoeren: 
+1. Maak een gegevensfactory. 
 1. Een zelf-hostende Integration Runtime maken.
-1. De zelf-hostende integratieruntime delen met andere data factory's.
-1. Een gekoppelde integratieruntime maken.
-1. Intrekken van het delen.
+1. Deel de zelf-hostende Integration runtime met andere gegevens fabrieken.
+1. Maak een gekoppelde Integration runtime.
+1. Trek het delen in.
 
-## <a name="prerequisites"></a>Vereisten 
+### <a name="prerequisites"></a>Vereisten 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Azure-abonnement**. Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. 
 
-- **Azure PowerShell**. Volg de instructies in [Azure PowerShell installeren op Windows met PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). U kunt PowerShell gebruiken om uit te voeren een script voor het maken van een zelf-hostende integratieruntime die kan worden gedeeld met andere data factory's. 
+- **Azure PowerShell**. Volg de instructies in [Install Azure PowerShell in Windows met PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps). U kunt Power shell gebruiken om een script uit te voeren om een zelf-hostende Integration runtime te maken die kan worden gedeeld met andere gegevens fabrieken. 
 
 > [!NOTE]  
-> Voor een lijst van Azure-regio's waarin Data Factory momenteel beschikbaar is is, selecteert u de regio's waarin u geïnteresseerd bent in [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> Voor een lijst met Azure-regio's waarin Data Factory op dit moment beschikbaar is, selecteert u de regio's die u interesseren op de [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Start Windows PowerShell ISE (Integrated Scripting Environment).
 
-1. Variabelen maken. Kopieer en plak het volgende script. Vervang de variabelen zoals **SubscriptionName** en **ResourceGroupName**, met de werkelijke waarden: 
+1. Variabelen maken. Kopieer en plak het volgende script. Vervang de variabelen, zoals **subscriptionname** en **ResourceGroupName**, door de werkelijke waarden: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -64,19 +87,19 @@ Deze stapsgewijze handleiding laat zien hoe u een gedeelde zelf-hostende integra
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Meld u aan en selecteer een abonnement. Voeg de volgende code aan het script om te melden en selecteer uw Azure-abonnement:
+1. Meld u aan en selecteer een abonnement. Voeg de volgende code toe aan het script om u aan te melden en uw Azure-abonnement te selecteren:
 
     ```powershell
     Connect-AzAccount
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-1. Maak een resourcegroep en een data factory.
+1. Maak een resource groep en een data factory.
 
     > [!NOTE]  
-    > Deze stap is optioneel. Als u al een data factory hebt, kunt u deze stap overslaan. 
+    > Deze stap is optioneel. Als u al een data factory hebt, kunt u deze stap overs Laan. 
 
-    Maak een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) met behulp van de [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) opdracht. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. Het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` op de locatie Europa West: 
+    Maak een [Azure-resource groep](../azure-resource-manager/resource-group-overview.md) met behulp van de opdracht [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) . Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd. In het volgende voor beeld wordt een resource groep met de naam `myResourceGroup` gemaakt op de locatie Europa West: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -90,12 +113,12 @@ Deze stapsgewijze handleiding laat zien hoe u een gedeelde zelf-hostende integra
                              -Name $SharedDataFactoryName
     ```
 
-## <a name="create-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration Runtime maken
+### <a name="create-a-self-hosted-integration-runtime"></a>Een zelf-hostende Integration Runtime maken
 
 > [!NOTE]  
-> Deze stap is optioneel. Als u al de zelf-hostende integratieruntime die u wilt delen met andere data factory's hebt, kunt u deze stap overslaan.
+> Deze stap is optioneel. Als u de zelf-hostende Integration runtime die u wilt delen met andere gegevens fabrieken al hebt, kunt u deze stap overs Laan.
 
-Voer de volgende opdracht om een zelf-hostende integratieruntime maken:
+Voer de volgende opdracht uit om een zelf-hostende Integration runtime te maken:
 
 ```powershell
 $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
@@ -106,9 +129,9 @@ $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -Description $SharedIntegrationRuntimeDescription
 ```
 
-### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>De verificatiesleutel voor integration runtime halen en te registreren van een knooppunt
+#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>De verificatie sleutel voor Integration runtime ophalen en een knoop punt registreren
 
-Voer de volgende opdracht uit om op te halen van de verificatiesleutel voor de zelf-hostende integratieruntime:
+Voer de volgende opdracht uit om de verificatie sleutel voor de zelf-hostende Integration runtime op te halen:
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeKey `
@@ -117,34 +140,34 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
     -Name $SharedIntegrationRuntimeName
 ```
 
-Het antwoord bevat de verificatiesleutel voor deze zelf-hostende integratieruntime. U gebruikt deze sleutel wanneer u het knooppunt voor integration runtime registreren.
+Het antwoord bevat de verificatie sleutel voor deze zelf-hostende Integration runtime. U gebruikt deze sleutel bij het registreren van het knoop punt voor Integration runtime.
 
-### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Installeren en zelf-hostende integratieruntime registreren
+#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>De zelf-hostende Integration runtime installeren en registreren
 
-1. Download het installatieprogramma van de zelf-hostende integration runtime van [Azure Data Factory Integration Runtime](https://aka.ms/dmg).
+1. Down load het installatie programma voor de zelf-hostende Integration runtime van [Azure Data Factory Integration runtime](https://aka.ms/dmg).
 
-2. Voer het installatieprogramma voor het installeren van de zelf-hostende integration op een lokale computer.
+2. Voer het installatie programma uit om de zelf-hostende integratie op een lokale computer te installeren.
 
-3. De nieuwe zelf-hostende integration registreren met de verificatiesleutel die u in de vorige stap hebt opgehaald.
+3. Registreer de nieuwe zelf-hostende integratie met de verificatie sleutel die u in een vorige stap hebt opgehaald.
 
-## <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>De zelf-hostende integratieruntime delen met een andere data factory
+### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>De zelf-hostende Integration runtime delen met een andere data factory
 
-### <a name="create-another-data-factory"></a>Maak een andere data factory
+#### <a name="create-another-data-factory"></a>Nog een data factory maken
 
 > [!NOTE]  
-> Deze stap is optioneel. Als u de data factory die u delen wilt met al hebt, kunt u deze stap overslaan.
+> Deze stap is optioneel. Als u al de data factory hebt waarmee u wilt delen, slaat u deze stap over.
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
-### <a name="grant-permission"></a>Machtiging verlenen
+#### <a name="grant-permission"></a>Machtiging verlenen
 
-Toekennen aan de gegevensfactory die toegang nodig heeft tot de zelf-hostende integratieruntime u hebt gemaakt en geregistreerd.
+Ken toestemming toe voor de data factory die toegang nodig heeft tot de zelf-hostende Integration runtime die u hebt gemaakt en geregistreerd.
 
 > [!IMPORTANT]  
-> Sla deze stap niet!
+> Sla deze stap niet over.
 
 ```powershell
 New-AzRoleAssignment `
@@ -153,9 +176,9 @@ New-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-## <a name="create-a-linked-self-hosted-integration-runtime"></a>Een gekoppelde zelf-hostende integratieruntime maken
+### <a name="create-a-linked-self-hosted-integration-runtime"></a>Een gekoppelde zelf-hostende Integration runtime maken
 
-Voer de volgende opdracht om een gekoppelde zelf-hostende integratieruntime maken:
+Voer de volgende opdracht uit om een gekoppelde zelf-hostende Integration runtime te maken:
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime `
@@ -167,11 +190,11 @@ Set-AzDataFactoryV2IntegrationRuntime `
     -Description $LinkedIntegrationRuntimeDescription
 ```
 
-U kunt nu deze gekoppelde integratieruntime gebruiken in een gekoppelde service. De gekoppelde integratieruntime maakt gebruik van de gedeelde integratieruntime om uit te voeren activiteiten.
+U kunt deze gekoppelde integratie-runtime nu gebruiken in elke gekoppelde service. De gekoppelde Integration runtime gebruikt de Shared Integration runtime om activiteiten uit te voeren.
 
-## <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Intrekken van integratieruntime delen van een data factory
+### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Het delen van de integratie-runtime intrekken vanuit een data factory
 
-Om in te trekken van de toegang van een data factory uit de gedeelde integratieruntime, voer de volgende opdracht:
+Voer de volgende opdracht uit om de toegang van een data factory van de Shared Integration runtime in te trekken:
 
 ```powershell
 Remove-AzRoleAssignment `
@@ -180,7 +203,7 @@ Remove-AzRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-Als u wilt verwijderen van de bestaande gekoppelde integratieruntime, moet u de volgende opdracht uitvoeren op basis van de gedeelde integratieruntime:
+Als u de bestaande gekoppelde Integration runtime wilt verwijderen, voert u de volgende opdracht uit op de Shared Integration runtime:
 
 ```powershell
 Remove-AzDataFactoryV2IntegrationRuntime `
@@ -191,8 +214,8 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
 
-## <a name="next-steps"></a>Volgende stappen
+### <a name="next-steps"></a>Volgende stappen
 
-- Beoordeling [integration runtime-concepten in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
+- Bekijk de [concepten van de integratie-runtime in azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime).
 
-- Meer informatie over het [een zelf-hostende integratieruntime maken in Azure portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).
+- Meer informatie over [het maken van een zelf-hostende Integration runtime in de Azure Portal](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime).

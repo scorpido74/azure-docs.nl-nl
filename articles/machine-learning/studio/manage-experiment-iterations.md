@@ -1,6 +1,6 @@
 ---
 title: Experimentherhalingen beheren
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Experiment herhalingen beheren in Azure Machine Learning Studio (klassiek). U kunt op elk gewenst moment eerdere uitvoeringen van uw experimenten bekijken om te controleren, opnieuw te bezoeken en uiteindelijk de vorige hypo Thesen te bevestigen of te verfijnen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: d2c1f31db93d2caecc5576de18eb15e01cc94461
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3fedd613d2a9de90f5ee04ca4266d06c6ed725a4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492847"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621601"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Experiment herhalingen beheren in Azure Machine Learning Studio (klassiek)
 Het ontwikkelen van een voorspellend analyse model is een iteratief proces: wanneer u de verschillende functies en para meters van uw experiment wijzigt, worden de resultaten geconvergeerd voordat u tevreden bent over een getraind, effectief model. De sleutel voor dit proces is het bijhouden van de verschillende iteraties van uw experiment-para meters en configuraties.
@@ -44,7 +44,7 @@ Stel dat u een experiment met de [lineaire regressie][linear-regression] module 
 | 0.1 |9/11/2014 4:18:58 uur |
 | 0,2 |9/11/2014 4:24:33 uur |
 | 0,4 |9/11/2014 4:28:36 uur |
-| 0,5 |9/11/2014 4:33:31 uur |
+| 0.5 |9/11/2014 4:33:31 uur |
 
 Als u op **uitvoerings geschiedenis weer geven**klikt, ziet u een lijst met al deze uitvoeringen:
 

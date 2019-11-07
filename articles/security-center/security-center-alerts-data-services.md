@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244560"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621350"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Detectie van bedreigingen voor gegevens Services in Azure Security Center
 
@@ -40,7 +40,7 @@ SQL-bedreigings detectie identificeert afwijkende activiteiten die een ongebruik
 
 Zie [Azure SQL database Threat Detection](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)(Engelstalig) voor meer informatie over waarschuwingen voor detectie van SQL-bedreigingen. Bekijk met name de sectie bedreigingen detectie waarschuwingen. Kijk ook [hoe Azure Security Center een cyberattack kunt onthullen](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) om een voor beeld te zien van hoe Security Center schadelijke SQL-activiteit detectie gebruikt om een aanval te detecteren.
 
-## Opslagpad<a name="azure-storage"></a>
+## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
 > Geavanceerde bedreigings beveiliging voor opslag is momenteel alleen beschikbaar voor Blob-opslag.
@@ -53,7 +53,7 @@ Security Center analyseert Diagnostische logboeken met lees-, schrijf-en verwijd
 
 |Waarschuwing|Beschrijving|
 |---|---|
-|**Afwijking van ongebruikelijke locatie toegang**|Voor beeld van netwerk verkeer analyse heeft afwijkende uitgaande Remote Desktop Protocol (RDP)-communicatie gedetecteerd, afkomstig van een bron in uw implementatie. Deze activiteit wordt als abnormaal beschouwd voor deze omgeving. Dit kan erop duiden dat de bron is aangetast en wordt nu gebruikt om een extern RDP-eind punt aanval te forceren. Houd er rekening mee dat dit type activiteit kan ertoe leiden dat uw IP als schadelijk wordt gemarkeerd door externe entiteiten.|
+|**Afwijking van ongebruikelijke locatie toegang**|Voor beeld van netwerk verkeer analyse heeft afwijkende uitgaande Remote Desktop Protocol (RDP)-communicatie gedetecteerd, afkomstig van een bron in uw implementatie. Deze activiteit wordt als abnormaal beschouwd voor deze omgeving. Dit kan erop duiden dat de bron is aangetast en wordt nu gebruikt om een extern RDP-eind punt aanval te forceren. Dit type activiteit kan ertoe leiden dat uw IP als schadelijk wordt gemarkeerd door externe entiteiten.|
 |**Afwijking van toepassings toegang**|Geeft aan dat een ongebruikelijke toepassing toegang heeft gekregen tot dit opslag account. Een mogelijke oorzaak is dat een aanvaller met een nieuwe toepassing toegang heeft tot uw opslag account.|
 |**Afwijking anonieme toegang**|Geeft aan dat er een wijziging is in het toegangs patroon voor een opslag account. Zo is bijvoorbeeld anoniem toegang gekregen tot het account (zonder enige verificatie). Dit is onverwacht vergeleken met het recente toegangs patroon voor dit account. Een mogelijke oorzaak is dat een aanvaller open bare Lees toegang heeft voor een container die Blob-opslag bevat.|
 |**Tor-afwijkingen**|Geeft aan dat de toegang tot dit account is verkregen vanaf een IP-adres dat een actief eind knooppunt van Tor (een anoniem-proxy) wordt genoemd. Bij de ernst van deze waarschuwing wordt rekening gehouden met het gebruikte verificatie type (indien van toepassing) en of dit het eerste geval van dergelijke toegang is. Mogelijke oorzaken kunnen een aanvaller zijn die toegang heeft gehad tot uw opslag account via Tor of een rechtmatige gebruiker die toegang heeft gehad tot uw opslag account met behulp van Tor.|
@@ -63,6 +63,7 @@ Security Center analyseert Diagnostische logboeken met lees-, schrijf-en verwijd
 |**Afwijkings machtiging voor toegang**|Geeft aan dat de toegangs machtigingen van deze opslag container op een ongebruikelijke manier zijn gewijzigd. Een mogelijke oorzaak is dat een aanvaller container machtigingen heeft gewijzigd om de beveiligings postuur te verzwakken of om persistentie te verkrijgen.|
 |**Afwijkings toegang voor inspectie**|Geeft aan dat de toegangs machtigingen van een opslag account op een ongebruikelijke manier zijn geïnspecteerd, vergeleken met de recente activiteit voor dit account. Een mogelijke oorzaak is dat een aanvaller Reconnaissance heeft uitgevoerd voor een toekomstige aanval.|
 |**Anomalie voor gegevens onderzoek**|Geeft aan dat blobs of containers in een opslag account op een abnormale manier zijn geïnventariseerd, vergeleken met de recente activiteit van dit account. Een mogelijke oorzaak is dat een aanvaller Reconnaissance heeft uitgevoerd voor een toekomstige aanval.|
+|**Mogelijke malware uploaden**|Geeft aan dat een blob met mogelijke schadelijke software is geüpload naar een opslag account. Mogelijke oorzaken zijn het uploaden van opzettelijke schadelijke software door een aanvaller of een onbedoelde upload van een mogelijk schadelijke BLOB door een rechtmatige gebruiker.|
 
 >[!NOTE]
 >Advanced Threat Protection voor opslag is momenteel niet beschikbaar in azure Government-en soevereine Cloud regio's.

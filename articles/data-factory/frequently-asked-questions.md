@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: veelgestelde vragen | Microsoft Docs'
+title: 'Azure Data Factory: veelgestelde vragen '
 description: Krijg antwoorden op veelgestelde vragen over Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481148"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674732"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Data Factory.  
 
 ## <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory? 
-Data Factory is een volledig beheerde, op de cloud gebaseerde service voor gegevens integratie waarmee de verplaatsing en trans formatie van gegevens wordt geautomatiseerd. Net als een fabriek die apparatuur uitvoert om onbewerkte materialen te transformeren in gerede producten, Azure Data Factory de bestaande services die onbewerkte gegevens verzamelen en transformeren naar gebruiks klare informatie. 
+Data Factory is een volledig beheerde ETL-service die is gebaseerd op de Cloud en gegevens integratie waarmee de verplaatsing en trans formatie van gegevens wordt geautomatiseerd. Net als een fabriek die apparatuur uitvoert om onbewerkte materialen te transformeren in gerede producten, Azure Data Factory de bestaande services die onbewerkte gegevens verzamelen en transformeren naar gebruiks klare informatie. 
 
-Met behulp van Azure Data Factory kunt u gegevensgestuurde werk stromen maken om gegevens te verplaatsen tussen on-premises en gegevens opslag in de Cloud. En u kunt gegevens verwerken en transformeren met behulp van reken services zoals Azure HDInsight, Azure Data Lake Analytics en de Integration runtime van SQL Server Integration Services (SSIS). 
+Met behulp van Azure Data Factory kunt u gegevensgestuurde werk stromen maken om gegevens te verplaatsen tussen on-premises en gegevens opslag in de Cloud. En u kunt gegevens verwerken en transformeren met gegevens stromen. ADF biedt ook ondersteuning voor externe Compute-engines voor trans formaties die zijn gecodeerd met behulp van reken services zoals Azure HDInsight, Azure Databricks en de Integration runtime van SQL Server Integration Services (SSIS). 
 
 Met Data Factory kunt u uw gegevens verwerking uitvoeren op een Azure-Cloud service of in uw eigen gehoste Compute-omgeving, zoals SSIS, SQL Server of Oracle. Nadat u een pijp lijn hebt gemaakt die de actie uitvoert die u nodig hebt, kunt u plannen dat deze regel matig wordt uitgevoerd (bijvoorbeeld elk uur, dagelijks of wekelijks), tijd venster planning of de pijp lijn activeren vanuit een gebeurtenis voorval. Zie voor meer informatie [Inleiding tot Azure Data Factory](introduction.md).
 
@@ -108,6 +108,9 @@ Een Azure-abonnement kan een of meer Azure Data Factory-exemplaren (oftewel 'dat
 
 ### <a name="pipelines"></a>Pijplijnen
 Een gegevensfactory kan één of meer pijplijnen hebben. Een pijp lijn is een logische groepering van activiteiten om een werk eenheid uit te voeren. De activiteiten in een pijplijn voeren samen een taak uit. Een pijp lijn kan bijvoorbeeld een groep activiteiten bevatten die gegevens uit een Azure-Blob opnemen en vervolgens een Hive-query uitvoeren op een HDInsight-cluster om de gegevens te partitioneren. Het voor deel is dat u een pijp lijn kunt gebruiken om de activiteiten te beheren als een set, in plaats van elke activiteit afzonderlijk te beheren. U kunt de activiteiten in een pijp lijn koppelen om ze opeenvolgend te laten werken of u kunt ze onafhankelijk van elkaar uitvoeren.
+
+### <a name="data-flows"></a>Gegevens stromen
+Gegevens stromen zijn objecten die u visueel bouwt in Data Factory die gegevens op de juiste schaal op backend Spark-Services transformeren. U hoeft geen inzicht te krijgen in Program meren of Spark-interne. U hoeft alleen maar uw gegevens transformatie intentie te ontwerpen met behulp van grafieken (toewijzing) of spread sheets (Wrangling).
 
 ### <a name="activities"></a>Activiteiten
 Activiteiten vertegenwoordigen een verwerkingsstap in een pijplijn. U kunt bijvoorbeeld een Kopieer activiteit gebruiken om gegevens te kopiëren van het ene gegevens archief naar een ander gegevens archief. Op dezelfde manier kunt u een Hive-activiteit gebruiken, waarmee een Hive-query wordt uitgevoerd op een Azure HDInsight-cluster om uw gegevens te transformeren of te analyseren. Data Factory ondersteunt drie soorten activiteiten: activiteiten voor gegevensverplaatsing, activiteiten voor gegevenstransformatie en controleactiviteiten.
@@ -199,12 +202,12 @@ Zelf-hostende IR is een ADF-pijp lijn constructie die u met de Kopieer activitei
 Wrangling-gegevens stroom wordt momenteel ondersteund in gegevens fabrieken die in de volgende regio's zijn gemaakt:
 
 * Australië - oost
-* Canada - centraal
+* Canada - midden
 * India - centraal
 * US - centraal
 * US - oost
 * US - oost 2
-* Japan - Oost
+* Japan - oost
 * Europa - noord
 * Azië - zuidoost
 * US - zuid-centraal
@@ -256,7 +259,7 @@ Wrangling-gegevens stroom ondersteunt de volgende gegevens typen in SQL. U krijg
 * smallint
 * tinyint
 * bigint
-* omvang
+* long
 * tekst
 * date
 * datum/tijd

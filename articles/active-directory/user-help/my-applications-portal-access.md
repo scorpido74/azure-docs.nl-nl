@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74033200bc365caf13035284108f2cf05eee7bbe
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e7eb3dbe3ce82b794a5ed530107781b634ceb32f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180749"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573859"
 ---
 # <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Apps openen en starten vanuit de portal mijn apps (preview-versie)
 
@@ -53,7 +53,7 @@ Als u toegang hebt tot de Cloud-apps van uw organisatie, kunt u deze bekijken vi
 
 1. Meld u op uw computer aan bij uw werk-of school account.
 
-2. Open een ondersteunde webbrowser en ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals `https://myapps.microsoft.com/contoso.com`.
+2. Open een ondersteunde webbrowser en ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals `https://myapps.microsoft.com/contoso.com`.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -63,7 +63,7 @@ Bekijk en gebruik de apps van uw organisatie in de Intune Managed Browser-app op
 
 1. Down load en installeer de Intune Managed Browser-app op uw mobiele apparaat vanuit de [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) of de [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Open de Intune Managed Browser-app, ga naar https://myapps.microsoft.com of gebruik de koppeling die wordt weer gegeven door uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Open de Intune Managed Browser-app, ga naar https://myapps.microsoft.comof gebruik de koppeling die wordt weer gegeven door uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -73,7 +73,7 @@ De portal voor **mijn apps** bekijken en gebruiken vanaf een iPhone of iPad-appa
 
 1. Start een webbrowser-app, zoals Safari, op uw mobiele apparaat.
 
-2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -83,7 +83,7 @@ De portal **mijn apps** op een Android-apparaat weer geven en gebruiken.
 
 1. Start op uw mobiele apparaat een webbrowser-app, zoals Google Chrome.
 
-2. Ga naar https://myapps.microsoft.com of gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
+2. Ga naar https://myapps.microsoft.comof gebruik de koppeling die is opgenomen in uw organisatie. U kunt bijvoorbeeld worden omgeleid naar een aangepaste pagina voor uw organisatie, zoals https://myapps.microsoft.com/contoso.com.
 
     De pagina **apps** wordt weer gegeven, met alle Cloud-apps die eigendom zijn van uw organisatie en die u kunt gebruiken.
 
@@ -106,10 +106,10 @@ Nadat u toegang hebt tot de portal van **mijn apps** , kunt u het volgende doen:
 >[!Note]
 >Als u geen werk ruimten of beschik bare categorieën ziet, betekent dit dat uw beheerder geen met u heeft ingesteld of gedeeld. Neem contact op met de Help Desk van uw organisatie voor meer hulp of machtigingen voor het weer geven van gedeelde werk ruimten.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
-- [Werk uw profiel en account gegevens](myprofile-portal-overview.md)bij. Instructies voor het bijwerken van uw persoonlijke gegevens die worden weer gegeven op de portal **Mijn profiel** (preview-versie).
+- [Werk uw profiel en account gegevens](my-account-portal-overview.md)bij. Instructies voor het bijwerken van uw persoonlijke gegevens die worden weer gegeven op de portal **Mijn profiel** (preview-versie).
 
-- [Beheer uw organisaties](myprofile-portal-organizations-page.md). Instructies voor het weer geven en beheren van de gegevens van uw organisatie op de pagina **organisaties** van de portal **Mijn profiel** .
+- [Beheer uw organisaties](my-account-portal-organizations-page.md). Instructies voor het weer geven en beheren van de gegevens van uw organisatie op de pagina **organisaties** van de portal **Mijn profiel** .
 
-- [Uw verbonden apparaten beheren](myprofile-portal-devices-page.md). Instructies voor het beheren van de apparaten waarmee u verbinding hebt met behulp van uw werk-of school account op de pagina **apparaten** van de portal **Mijn profiel** .
+- [Uw verbonden apparaten beheren](my-account-portal-devices-page.md). Instructies voor het beheren van de apparaten waarmee u verbinding hebt met behulp van uw werk-of school account op de pagina **apparaten** van de portal **Mijn profiel** .

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b4be715bd910326b3d06837508e7a07ac853189f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322646"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577582"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Een Azure Batch groep maken in een virtueel netwerk
 
@@ -56,9 +56,9 @@ Mogelijk hebt u vereisten in uw organisatie om Internet-gebonden verkeer van het
 
 Om ervoor te zorgen dat de reken knooppunten van uw Azure Batch pool werken in een VNet waarvoor geforceerde tunneling is ingeschakeld, moet u de volgende door de [gebruiker gedefinieerde routes](../virtual-network/virtual-networks-udr-overview.md) toevoegen voor dat subnet:
 
-* De batch-service moet communiceren met pool Compute-knoop punten voor het plannen van taken. Als u deze communicatie wilt inschakelen, voegt u een door de gebruiker gedefinieerde route toe voor elk IP-adres dat wordt gebruikt door de batch-service in de regio waar uw batch-account bestaat. Zie voor meer informatie over het verkrijgen van de lijst met IP-adressen van de batch-service [service tags in on-premises](../virtual-network/security-overview.md#service-tags-in-on-premises)
+* De batch-service moet communiceren met pool Compute-knoop punten voor het plannen van taken. Als u deze communicatie wilt inschakelen, voegt u een door de gebruiker gedefinieerde route toe voor elk IP-adres dat wordt gebruikt door de batch-service in de regio waar uw batch-account bestaat. Zie voor meer informatie over het verkrijgen van de lijst met IP-adressen van de batch-service [service tags in on-premises](../virtual-network/service-tags-overview.md)
 
-* Zorg ervoor dat uitgaand verkeer naar Azure Storage (met name url's `<account>.table.core.windows.net`van `<account>.queue.core.windows.net`het formulier `<account>.blob.core.windows.net`, en) niet wordt geblokkeerd via uw on-premises netwerk apparaat.
+* Zorg ervoor dat uitgaand verkeer naar Azure Storage (met name Url's van het formulier `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`en `<account>.blob.core.windows.net`) niet wordt geblokkeerd via uw on-premises netwerk apparaat.
 
 Wanneer u een door de gebruiker gedefinieerde route toevoegt, definieert u de route voor elk gerelateerde IP-adres voorvoegsel voor batch en stelt u het **type volgende hop** in op **Internet**. Zie het volgende voorbeeld:
 

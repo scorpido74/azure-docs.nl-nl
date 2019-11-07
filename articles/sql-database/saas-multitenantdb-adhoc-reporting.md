@@ -1,5 +1,5 @@
 ---
-title: Ad hoc-rapportage query's uitvoeren in meerdere Azure SQL-data bases | Microsoft Docs
+title: Ad hoc-rapportage query's uitvoeren in meerdere Azure SQL-data bases
 description: Ad hoc-rapportage query's uitvoeren voor meerdere SQL-data bases in een multi tenant-app-voor beeld.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
-ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d345e222dac98a63400dd2661ce92674f2534f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570359"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692081"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ad hoc Analytics-query's uitvoeren voor meerdere Azure SQL-data bases
 
@@ -58,7 +58,7 @@ De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code z
 
 Als u query's wilt uitvoeren op een interessantere gegevensset, maakt u verkoop gegevens van tickets door de ticket Generator uit te voeren.
 
-1. Open in de *Power shell-ISE*de... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReporting. ps1* script en stel de volgende waarden in:
+1. Open in de *Power shell-ISE*de trainings modules...\\\\Operational Analytics\\Adhoc Reporting\\*demo-AdhocReporting. ps1* script en stel de volgende waarden in:
    * **$DemoScenario** = 1, **Koop tickets voor gebeurtenissen op alle locaties**.
 2. Druk op **F5** om het script uit te voeren en de verkoop van tickets te genereren. Wanneer het script wordt uitgevoerd, gaat u door met de stappen in deze zelf studie. De ticket gegevens worden in de sectie *ad hoc gedistribueerde Query's uitvoeren* opgevraagd en wachten op het volt ooien van de ticket generator.
 
@@ -72,7 +72,7 @@ Om dit patroon te krijgen, bevatten alle Tenant tabellen een kolom *VenueId* die
 
 In deze oefening wordt de *adhocreporting* -data base geïmplementeerd. Dit is de hoofd database die het schema bevat dat wordt gebruikt voor het uitvoeren van query's in alle Tenant databases. De data base wordt geïmplementeerd op de bestaande catalogus server. Dit is de server die wordt gebruikt voor alle aan beheer gerelateerde data bases in de voor beeld-app.
 
-1. Openen... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReporting. ps1* in de *Power shell ISE* en stel de volgende waarden in:
+1. Open...\\learning modules\\Operational Analytics\\adhoc Reporting\\*demo-AdhocReporting. ps1* in de *Power shell ISE* en stel de volgende waarden in:
    * **$DemoScenario** = 2, **ad hoc Analytics-Data Base implementeren**.
 
 2. Druk op **F5** om het script uit te voeren en de *adhocreporting* -data base te maken.
@@ -91,7 +91,7 @@ Deze oefening voegt schema (de externe gegevens bron en externe tabel definities
 
     ![referentie maken](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   Door de catalogus database als externe gegevens bron te gebruiken, worden query's gedistribueerd naar alle data bases die in de catalogus zijn geregistreerd wanneer de query wordt uitgevoerd. Omdat Server namen voor elke implementatie verschillend zijn, haalt dit initialisatie script de locatie van de catalogus database op door de huidige server (@@servername) op te halen waar het script wordt uitgevoerd.
+   Door de catalogus database als externe gegevens bron te gebruiken, worden query's gedistribueerd naar alle data bases die in de catalogus zijn geregistreerd wanneer de query wordt uitgevoerd. Omdat Server namen verschillend zijn voor elke implementatie, haalt dit initialisatie script de locatie van de catalogus database op door de huidige server (@@servername) op te halen waarin het script wordt uitgevoerd.
 
     ![externe gegevens bron maken](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
@@ -115,7 +115,7 @@ Nu de *adhocreporting* -data base is ingesteld, gaat u naar een aantal gedistrib
 
 Als u het uitvoerings plan wilt inspecteren, houdt u de muis aanwijzer boven de pictogrammen plannen voor meer informatie. 
 
-1. Open in *SSMS*... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReportingQueries. SQL*.
+1. Open in *SSMS*\\Learning modules\\Operational Analytics\\Adhoc Reporting\\*demo-AdhocReportingQueries. SQL*.
 2. Zorg ervoor dat u bent verbonden met de **adhocreporting** -data base.
 3. Selecteer het **query** menu en klik op **werkelijke uitvoerings plan toevoegen**
 4. Markeer de *locaties die momenteel zijn geregistreerd?* query en druk op **F5**.
@@ -152,7 +152,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 
 Probeer nu de [zelf studie voor Tenant analyse](saas-multitenantdb-tenant-analytics.md) om het extra heren van gegevens te verkennen naar een afzonderlijke Analytics-Data Base voor complexere analyse verwerking.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 <!-- ??
 * Additional [tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/01/2019
-ms.openlocfilehash: 9dbdd683a8545e0f8c573dfba60daa96ef5ff08d
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f9ab1f1ef2b64c07a3b0c8ddf93d6ef4293517db
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677859"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668119"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Aantekeningen op metrische grafieken in Application Insights
 
@@ -53,6 +53,9 @@ Maak een afzonderlijke API-sleutel voor elk van de release sjablonen van Azure p
 1. Selecteer **taak toevoegen**en selecteer vervolgens de taak **aantekening van de Application Insights release** in het menu.
    
    ![Selecteer taak toevoegen en selecteer aantekening van Application Insights versie.](./media/annotations/3-add-task.png)
+
+   > [!NOTE]
+   > De taak release annotatie ondersteunt momenteel alleen op Windows gebaseerde agents. het kan niet worden uitgevoerd op Linux-, macOS-of andere typen agents.
    
 1. Plak onder **toepassings-id**de Application Insights-id die u hebt gekopieerd via het tabblad **API-toegang** .
    
@@ -68,7 +71,7 @@ Maak een afzonderlijke API-sleutel voor elk van de release sjablonen van Azure p
    
 1. Selecteer in het venster release-sjabloon, op het tabblad **variabelen** , de optie **toevoegen** om een definitie van een variabele te maken voor de nieuwe API-sleutel.
 
-1. Voer onder **naam**`ApiKey` in en plak onder **waarde**de API-sleutel die u hebt gekopieerd op het tabblad **API-toegang** .
+1. Voer onder **naam**`ApiKey`in en plak onder **waarde**de API-sleutel die u hebt gekopieerd op het tabblad **API-toegang** .
    
    ![Ga naar het tabblad Azure DevOps-variabelen, selecteer toevoegen, noem de variabele ApiKey en plak de API-sleutel onder waarde.](./media/annotations/7-paste-api-key.png)
    

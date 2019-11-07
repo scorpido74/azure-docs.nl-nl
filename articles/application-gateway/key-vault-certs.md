@@ -7,21 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 725a9d67e6a6412fc48a4278b5a8a163272e5133
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000985"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571980"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>SSL-beëindiging met Key Vault certificaten
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) is een door een platform beheerd geheim archief dat u kunt gebruiken voor het beveiligen van geheimen, sleutels en SSL-certificaten. Azure-toepassing gateway ondersteunt de integratie met Key Vault (in open bare preview) voor server certificaten die zijn gekoppeld aan listeners waarvoor HTTPS is ingeschakeld. Deze ondersteuning is beperkt tot de v2-SKU van Application Gateway.
+[Azure Key Vault](../key-vault/key-vault-overview.md) is een door een platform beheerd geheim archief dat u kunt gebruiken voor het beveiligen van geheimen, sleutels en SSL-certificaten. Azure-toepassing gateway ondersteunt de integratie met Key Vault voor server certificaten die zijn gekoppeld aan listeners met HTTPS-functionaliteit. Deze ondersteuning is beperkt tot de v2-SKU van Application Gateway.
 
-> [!IMPORTANT]
-> Integratie van Application Gateway met Key Vault is momenteel beschikbaar als open bare preview. Deze preview-versie wordt aangeboden zonder een Service Level Agreement (SLA) en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
-
-Deze open bare preview biedt twee modellen voor SSL-beëindiging:
+Key Vault-integratie biedt twee modellen voor SSL-beëindiging:
 
 - U kunt expliciet SSL-certificaten die zijn gekoppeld aan de listener opgeven. Dit model is de traditionele manier om SSL-certificaten door te geven aan Application Gateway voor SSL-beëindiging.
 - U kunt eventueel een verwijzing naar een bestaand Key Vault certificaat of geheim opgeven wanneer u een HTTPS-listener maakt.

@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van en naar Azure SQL Data Warehouse met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren van en naar Azure SQL Data Warehouse met behulp van Azure Data Factory
 description: Informatie over het kopiëren van gegevens uit ondersteunde bron archieven naar Azure SQL Data Warehouse of van SQL Data Warehouse naar ondersteunde Sink-archieven met behulp van Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 5351f7f01bbe99b1e3ebc3c94a0805f0419cc1cf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b64bfd046a42a630e7913c45213053e84377a037
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387914"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681152"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens kopiëren van of naar Azure SQL Data Warehouse met behulp van Azure Data Factory 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -58,10 +58,10 @@ De volgende secties bevatten informatie over eigenschappen die Data Factory enti
 
 De volgende eigenschappen worden ondersteund voor een Azure SQL Data Warehouse gekoppelde service:
 
-| Eigenschap            | Beschrijving                                                  | Verplicht                                                     |
+| Eigenschap            | Beschrijving                                                  | Vereist                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | De eigenschap type moet worden ingesteld op **AzureSqlDW**.             | Ja                                                          |
-| Verbindings    | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Data Warehouse-exemplaar voor de **Connections Tring** -eigenschap. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook een wacht woord of Service-Principal-sleutel in Azure Key Vault plaatsen en als de SQL-verificatie de `password`-configuratie uit de connection string pull-out. Zie het JSON-voor beeld onder de tabel en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja                                                          |
+| connectionString    | Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Data Warehouse-exemplaar voor de **Connections Tring** -eigenschap. <br/>Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory. U kunt ook het wacht woord/de sleutel van de Service-Principal in Azure Key Vault plaatsen, en als de SQL-verificatie de `password` configuratie uit de connection string haalt. Zie het JSON-voor beeld onder de tabel en [Sla referenties op in azure Key Vault](store-credentials-in-key-vault.md) artikel met meer informatie. | Ja                                                          |
 | servicePrincipalId  | Geef de client-ID van de toepassing op.                         | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
 | servicePrincipalKey | Geef de sleutel van de toepassing op. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
 | bouw              | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja, wanneer u Azure AD-verificatie gebruikt met een service-principal. |
@@ -231,11 +231,11 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 De volgende eigenschappen worden ondersteund om gegevens te kopiëren van of naar Azure SQL Data Warehouse:
 
-| Eigenschap  | Beschrijving                                                  | Verplicht                    |
+| Eigenschap  | Beschrijving                                                  | Vereist                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | De eigenschap **type** van de DataSet moet worden ingesteld op **AzureSqlDWTable**. | Ja                         |
 | Schema | De naam van het schema. |Nee voor bron, ja voor Sink  |
-| Tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
+| tabel | De naam van de tabel/weer gave. |Nee voor bron, ja voor Sink  |
 | tableName | De naam van de tabel/weer gave met schema. Deze eigenschap wordt ondersteund voor achterwaartse compatibiliteit. Gebruik voor nieuwe werk belasting `schema` en `table`. | Nee voor bron, ja voor Sink |
 
 #### <a name="dataset-properties-example"></a>Voor beeld van eigenschappen van gegevensset
@@ -267,7 +267,7 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 Als u gegevens wilt kopiëren uit Azure SQL Data Warehouse, stelt u de eigenschap **type** in de bron van de Kopieer activiteit in op **SqlDWSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap                     | Beschrijving                                                  | Verplicht |
+| Eigenschap                     | Beschrijving                                                  | Vereist |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **SqlDWSource**. | Ja      |
 | sqlReaderQuery               | Gebruik de aangepaste SQL-query om gegevens te lezen. Voor beeld: `select * from MyTable`. | Nee       |
@@ -277,7 +277,7 @@ Als u gegevens wilt kopiëren uit Azure SQL Data Warehouse, stelt u de eigenscha
 ### <a name="points-to-note"></a>Punten om te noteren
 
 - Als de **sqlReaderQuery** is opgegeven voor de **SqlSource**, voert de Kopieer activiteit deze query uit op basis van de Azure SQL Data Warehouse bron om de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven. Geef de **sqlReaderStoredProcedureName** en **storedProcedureParameters** op als voor de opgeslagen procedure para meters worden gebruikt.
-- Als u **sqlReaderQuery** of **sqlReaderStoredProcedureName**niet opgeeft, worden de kolommen die in het gedeelte **structuur** van de JSON van de gegevensset zijn gedefinieerd, gebruikt om een query te maken. `select column1, column2 from mytable` wordt uitgevoerd tegen Azure SQL Data Warehouse. Als de definitie van de gegevensset niet de **structuur**heeft, worden alle kolommen geselecteerd in de tabel.
+- Als u **sqlReaderQuery** of **sqlReaderStoredProcedureName**niet opgeeft, worden de kolommen die in het gedeelte **structuur** van de JSON van de gegevensset zijn gedefinieerd, gebruikt om een query te maken. `select column1, column2 from mytable` worden uitgevoerd op Azure SQL Data Warehouse. Als de definitie van de gegevensset niet de **structuur**heeft, worden alle kolommen geselecteerd in de tabel.
 
 #### <a name="sql-query-example"></a>Voor beeld van SQL-query
 
@@ -370,7 +370,7 @@ GO
 
 Als u gegevens wilt kopiëren naar Azure SQL Data Warehouse, stelt u het sink-type in de Kopieer activiteit in op **SqlDWSink**. De volgende eigenschappen worden ondersteund in het gedeelte **sink** van de Kopieer activiteit:
 
-| Eigenschap          | Beschrijving                                                  | Verplicht                                      |
+| Eigenschap          | Beschrijving                                                  | Vereist                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | De eigenschap **type** van de Sink voor kopieer activiteiten moet worden ingesteld op **SqlDWSink**. | Ja                                           |
 | allowPolyBase     | Hiermee wordt aangegeven of poly Base moet worden gebruikt, indien van toepassing, in plaats van het BULKINSERT-mechanisme. <br/><br/> U wordt aangeraden gegevens in SQL Data Warehouse te laden met poly base. Zie de sectie [poly Base gebruiken om gegevens te laden in Azure SQL Data Warehouse](#use-polybase-to-load-data-into-azure-sql-data-warehouse) voor beperkingen en Details.<br/><br/>Toegestane waarden zijn **True** en **False** (standaard). | Nee                                            |
@@ -383,7 +383,7 @@ Als u gegevens wilt kopiëren naar Azure SQL Data Warehouse, stelt u het sink-ty
 | writeBatchTimeout | Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. Is alleen van toepassing als poly Base niet wordt gebruikt.<br/><br/>De toegestane waarde is **time span**. Voor beeld: "00:30:00" (30 minuten). | Nee                                            |
 | preCopyScript     | Geef een SQL-query op die moet worden uitgevoerd voordat er gegevens naar Azure SQL Data Warehouse worden geschreven in elke uitvoering. Gebruik deze eigenschap om de vooraf geladen gegevens op te schonen. | Nee                                            |
 | tableOption | Hiermee wordt aangegeven of de Sink-tabel automatisch moet worden gemaakt als deze niet bestaat op basis van het bron schema. Het automatisch maken van tabellen wordt niet ondersteund wanneer de gefaseerde kopie is geconfigureerd in de Kopieer activiteit. Toegestane waarden zijn: `none` (standaard), `autoCreate`. |Nee |
-| disableMetricsCollection | Data Factory verzamelt metrische gegevens, zoals SQL Data Warehouse Dwu's voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op om het uit te scha kelen. | Nee (de standaard waarde is `false`) |
+| disableMetricsCollection | Data Factory verzamelt metrische gegevens, zoals SQL Data Warehouse Dwu's voor het optimaliseren van Kopieer prestaties en aanbevelingen. Als u zich zorgen maakt over dit gedrag, geeft u `true` op om het uit te scha kelen. | Nee (standaard is `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>Voor beeld van SQL Data Warehouse Sink
 
@@ -436,12 +436,12 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
 2. De **indeling van de bron gegevens** is van **Parquet**, **Orc**of **tekst met scheidings tekens**, met de volgende configuraties:
 
    1. Mappad bevat geen filter voor joker tekens.
-   2. De bestands naam is leeg of verwijst naar één bestand. Als u de naam van het Joker teken opgeeft in de Kopieer activiteit, kan deze alleen `*` of `*.*` zijn.
+   2. De bestands naam is leeg of verwijst naar één bestand. Als u de naam van het Joker teken opgeeft in de Kopieer activiteit, kan deze alleen `*` of `*.*`zijn.
    3. `rowDelimiter` is **standaard**, **\n**, **\r\n**of **\r**.
-   4. `nullValue` blijft standaard of is ingesteld op een **lege teken reeks** (""), en `treatEmptyAsNull` is standaard ingesteld op True.
-   5. `encodingName` blijft standaard of is ingesteld op **UTF-8**.
-   6. `quoteChar`, `escapeChar` en `skipLineCount` zijn niet opgegeven. Poly base-ondersteuning koptekst rij overs Laan, die als `firstRowAsHeader` in ADF kan worden geconfigureerd.
-   7. `compression` kan **geen compressie**, **gzip**of **verkleinen**zijn.
+   4. `nullValue` is standaard ingeschakeld of is ingesteld op een **lege teken reeks** (""), en `treatEmptyAsNull` is standaard ingesteld op True.
+   5. `encodingName` is standaard ingesteld op of **UTF-8**.
+   6. `quoteChar`, `escapeChar`en `skipLineCount` zijn niet opgegeven. Poly base-ondersteuning koptekst rij overs Laan, die als `firstRowAsHeader` in ADF kan worden geconfigureerd.
+   7. `compression` kan **geen compressie**, **gzip**of **Deflate**zijn.
 
 3. Als uw bron een map is, moet `recursive` in de Kopieer activiteit worden ingesteld op True.
 
@@ -486,7 +486,7 @@ Als niet aan de vereisten wordt voldaan, worden de instellingen door Azure Data 
 
 Als uw bron gegevens niet voldoen aan de criteria in de vorige sectie, schakelt u het kopiëren van gegevens in via een tussentijds faserings-Azure Blob Storage-instantie. Het kan geen Azure-Premium Storage zijn. In dit geval voert Azure Data Factory automatisch trans formaties uit op de gegevens om te voldoen aan de vereisten voor gegevens formaat van poly base. Vervolgens wordt poly base gebruikt voor het laden van gegevens in SQL Data Warehouse. Ten slotte ruimt de app de tijdelijke gegevens op uit de Blob-opslag. Zie [gefaseerde kopie](copy-activity-performance.md#staged-copy) voor meer informatie over het kopiëren van gegevens via een staging-exemplaar voor Azure Blob Storage.
 
-Als u deze functie wilt gebruiken, maakt u een [gekoppelde azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) die verwijst naar het Azure Storage-account met de tussenliggende Blob-opslag. Geef vervolgens de eigenschappen `enableStaging` en `stagingSettings` voor de Kopieer activiteit op, zoals wordt weer gegeven in de volgende code.
+Als u deze functie wilt gebruiken, maakt u een [gekoppelde azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) die verwijst naar het Azure Storage-account met de tussenliggende Blob-opslag. Geef vervolgens de `enableStaging` en `stagingSettings` eigenschappen voor de Kopieer activiteit op, zoals wordt weer gegeven in de volgende code.
 
 >[!IMPORTANT]
 >Als uw staging-Azure Storage is geconfigureerd met het VNet-service-eind punt, moet u beheerde identiteits verificatie gebruiken. Zie de [gevolgen van het gebruik van VNet-service-eind punten met Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)voor meerwaarde ring. Meer informatie over de vereiste configuraties in Data Factory van [Azure Blob-beheerde identiteits verificatie](connector-azure-blob-storage.md#managed-identity).
@@ -605,13 +605,13 @@ Wanneer u gegevens van of naar Azure SQL Data Warehouse kopieert, worden de volg
 | waarde                                | Byte []                         |
 | bitmask                                   | Booleaans                        |
 | char                                  | Teken reeks, char []                 |
-| date                                  | Datum/tijd                       |
-| Datetime                              | Datum/tijd                       |
-| DATETIME2                             | Datum/tijd                       |
+| date                                  | DateTime                       |
+| Datetime                              | DateTime                       |
+| DATETIME2                             | DateTime                       |
 | Date time offset                        | Date time offset                 |
 | Komma                               | Komma                        |
 | FILESTREAM-kenmerk (varbinary (max)) | Byte []                         |
-| Float                                 | Dubbelklik                         |
+| Float                                 | Double-waarde                         |
 | image                                 | Byte []                         |
 | int                                   | Int32                          |
 | financieel                                 | Komma                        |
@@ -620,7 +620,7 @@ Wanneer u gegevens van of naar Azure SQL Data Warehouse kopieert, worden de volg
 | nvarchar                              | Teken reeks, char []                 |
 | realistische                                  | Enkelvoudig                         |
 | rowversion                            | Byte []                         |
-| smalldatetime                         | Datum/tijd                       |
+| smalldatetime                         | DateTime                       |
 | smallint                              | Int16                          |
 | smallmoney                            | Komma                        |
 | tijd                                  | Duur                       |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fbe4f34bb27d2de662f11dbdd047356ff3d3941
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497349"
+ms.locfileid: "73580751"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Wat is een Azure Machine Learning-werk ruimte?
 
@@ -32,7 +32,7 @@ Een taxonomie van de werk ruimte wordt geïllustreerd in het volgende diagram:
 
 In het diagram worden de volgende onderdelen van een werk ruimte weer gegeven:
 
-+ Een werk ruimte kan [Azure machine learning reken instanties](concept-compute-instance.md)bevatten, cloud resources die zijn geconfigureerd met de python-omgeving die nodig is om Azure machine learning uit te voeren.
++ Een werk ruimte kan Azure Machine Learning laptop-Vm's bevatten, cloud resources die zijn geconfigureerd met de python-omgeving die nodig is om Azure Machine Learning uit te voeren.
 + [Gebruikers rollen](how-to-assign-roles.md) bieden u de mogelijkheid om uw werk ruimte te delen met andere gebruikers, teams of projecten.
 + [Reken doelen](concept-azure-machine-learning-architecture.md#compute-targets) worden gebruikt om uw experimenten uit te voeren.
 + Wanneer u de werk ruimte maakt, worden er ook [gekoppelde resources](#resources) voor u gemaakt.
@@ -75,11 +75,8 @@ U kunt ook de volgende beheer taken voor werk ruimten uitvoeren:
 | Toegang tot de werk ruimte beheren    | **&check;**   || |  **&check;**    |
 | Bijwerken naar Enter prise Edition    | **&check;** |  | |     |
 | Reken resources maken en beheren    |   | **&check;** | **&check;** |  **&check;**   |
-| Een reken instantie maken | **&check;**  | **&check;** | **&check;** |     |
+| Een VM voor een notebook maken |   | **&check;** | |     |
 
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken.
 
 ## <a name='create-workspace'></a>Een werk ruimte maken
 
@@ -101,7 +98,7 @@ U kunt [uw werk ruimte bijwerken met behulp van de Basic-naar-Enter prise-editie
 Wanneer u een nieuwe werk ruimte maakt, worden er automatisch verschillende Azure-resources gemaakt die worden gebruikt door de werk ruimte:
 
 + [Azure container Registry](https://azure.microsoft.com/services/container-registry/): registreert docker-containers die u tijdens de training gebruikt en wanneer u een model implementeert. Om de kosten te minimaliseren, wordt ACR **Lazy geladen** totdat implementatie installatie kopieën zijn gemaakt.
-+ [Azure Storage account](https://azure.microsoft.com/services/storage/): wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw Azure Machine Learning Compute-exemplaar worden hier ook opgeslagen.
++ [Azure Storage account](https://azure.microsoft.com/services/storage/): wordt gebruikt als de standaard gegevens opslag voor de werk ruimte.  Jupyter-notebooks die worden gebruikt met uw Azure Machine Learning notebook-VM, worden hier ook opgeslagen.
 + [Azure-toepassing Insights](https://azure.microsoft.com/services/application-insights/): slaat bewakings informatie over uw modellen op.
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): slaat geheimen op die worden gebruikt door Compute-doelen en andere gevoelige informatie die nodig is voor de werk ruimte.
 

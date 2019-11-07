@@ -5,7 +5,7 @@
   items:
     - name: Wat houdt beheer van cloud-apps en eenmalige aanmelding in?
       href: what-is-application-management.md
-    - name: Wat is automatische inrichting van gebruikers?
+    - name: Wat is toepassingsinrichting?
       href: user-provisioning.md
     - name: Wat is een toepassingsproxy voor on-premises apps?
       href: what-is-application-proxy.md
@@ -17,7 +17,7 @@
       href: view-applications-portal.md
 - name: Zelfstudies
   items:
-    - name: Zelfstudies voor SaaS-apps
+    - name: 'Geïntegreerde galerie-apps (bijvoorbeeld ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Een on-premises app toevoegen met een toepassingsproxy
       href: application-proxy-add-on-premises-application.md
@@ -66,12 +66,12 @@
               href: howto-saml-token-encryption.md
             - name: Portals voor eindgebruikers
               href: end-user-experiences.md
-    - name: Automatisch gebruikers inrichten
+    - name: Toepassingsinrichting (SCIM)
       items:
-        - name: Implementatie van een automatische gebruikersinrichting plannen
-          href: plan-auto-user-provisioning.md
         - name: Automatisch inrichten voor apps die SCIM ondersteunen
           href: use-scim-to-provision-users-and-groups.md
+        - name: Implementatie van een automatische gebruikersinrichting plannen
+          href: plan-auto-user-provisioning.md
     - name: Toepassingsproxy voor on-premises apps
       items:
         - name: Toepassingsproxy
@@ -223,23 +223,21 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Fout bij selfservice-app-toegang gebruiken
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Automatisch gebruikers inrichten
+    - name: Toepassingsinrichting (SCIM)
       items:
         - name: Gebruikersinrichting configureren
           items:
-            - name: Gebruikersinrichting voor galerie-apps
+            - name: Handmatige en automatische inrichting
               href: application-provisioning-config-how-to.md
-            - name: Automatische gebruikersinrichting inschakelen voor apps met meerdere tenants
-              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: Automatische gebruikersinrichting configureren
               href: configure-automatic-user-provisioning-portal.md
-            - name: Toepassingsattributen aanpassen
+            - name: Kenmerktoewijzingen aanpassen
               href: Customize-application-attributes.md
-            - name: Bereikfilters
+            - name: Bereik van gebruikers of groepen die moeten worden ingericht
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Verwijdering overslaan voor gebruikers buiten het bereik
               href: skip-out-of-scope-deletions.md
-            - name: De inrichtingsstatus controleren
+            - name: Inrichtingsstatus en prestaties bewaken
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Rapporteren over het automatisch inrichten van gebruikers
               href: check-status-user-account-provisioning.md
@@ -249,20 +247,20 @@
           items:
             - name: Problemen met het automatisch inrichten van gebruikers oplossen
               href: application-provisioning-config-problem.md
-            - name: Quarantinestatus
+            - name: Autorisatieprobleem (kan beheerdersreferenties niet opslaan)
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: Gebruikers zijn niet ingericht
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: Verkeerde gebruikers ingericht
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+            - name: Inrichtingstaak in quarantaine
               href: application-provisioning-quarantine-status.md
+            - name: Bronkenmerk ontbreekt
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Inrichtingstaak is traag
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Inrichtingslogboeken
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Een kenmerk synchroniseren voor toewijzing - galerie-app
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Uurregistratie - galerie-app
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Probleem bij het opslaan van administrorreferenties tijdens het configureren van gebruikersinrichting galerie-app
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Gebruikers zijn niet ingericht - galerie-app
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Verkeerde gebruikers ingericht - galerie-app
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
     - name: Toepassingsproxy voor on-premises apps
       items:
         - name: Connectors configureren
@@ -357,10 +355,12 @@
               href: application-proxy-understand-cors-issues.md
 - name: Naslaginformatie
   items:
-    - name: Automatisch gebruikers inrichten
+    - name: Toepassingsinrichting (SCIM)
       items:
         - name: Expressies schrijven voor kenmerktoewijzingen
           href: functions-for-customizing-application-data.md
+        - name: Een inrichtingsmethode kiezen
+          href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Azure AD Connect-inrichtingsagent
       items:
         - name: Versiegeschiedenis van de inrichtingsagent

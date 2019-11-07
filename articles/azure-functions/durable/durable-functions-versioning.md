@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0bac6f9105d505bdfc1492b6966c2352771e73b0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4b4e82acbd3037c70b87731c0661605041090435
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791297"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614514"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Versie beheer in Durable Functions (Azure Functions)
 
@@ -32,7 +32,7 @@ Stel dat we de volgende Orchestrator-functie hebben.
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -43,16 +43,19 @@ Deze vereenvoudigde-functie neemt de resultaten van **Foo** en geeft deze door a
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int result = await context.CallActivityAsync<int>("Foo");
     await context.CallActivityAsync("Bar", result);
 }
 ```
 
-Deze wijziging is van toepassing op alle nieuwe exemplaren van de Orchestrator-functie, maar breekt alle vlucht-exemplaren af. Denk bijvoorbeeld na over het geval waarin een Orchestrator-exemplaar **Foo**aanroept, een Booleaanse waarde terugkrijgt en vervolgens controle punten. Als de handtekening wijziging op dit moment wordt geïmplementeerd, mislukt het exemplaar van het controle punt onmiddellijk wanneer het wordt hervat en wordt de aanroep naar `context.CallActivityAsync<int>("Foo")`opnieuw afgespeeld. Dit komt doordat het resultaat in de geschiedenis tabel `bool`, maar de nieuwe code probeert deze te deserialiseren naar `int`.
+> [!NOTE]
+> Het doel C# van de vorige voor beelden is Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-Dit is slechts een van de vele manieren waarop een handtekening wijziging bestaande instanties kan verstoren. Over het algemeen geldt dat als een Orchestrator het aanroepen van een functie moet wijzigen, de wijziging waarschijnlijk problematisch is.
+Deze wijziging is van toepassing op alle nieuwe exemplaren van de Orchestrator-functie, maar breekt alle vlucht-exemplaren af. Denk bijvoorbeeld na over het geval waarin een Orchestrator-exemplaar een functie aanroept met de naam `Foo`, een Booleaanse waarde terugkrijgt en vervolgens controle punten. Als de handtekening wijziging op dit moment wordt geïmplementeerd, mislukt het exemplaar van het controle punt onmiddellijk wanneer het wordt hervat en wordt de aanroep naar `context.CallActivityAsync<int>("Foo")`opnieuw afgespeeld. Deze fout treedt op omdat het resultaat in de geschiedenis tabel is `bool`, maar de nieuwe code probeert deze te deserialiseren naar `int`.
+
+Dit voor beeld is slechts een van de vele verschillende manieren waarop een handtekening wijziging bestaande instanties kan verstoren. Over het algemeen geldt dat als een Orchestrator het aanroepen van een functie moet wijzigen, de wijziging waarschijnlijk problematisch is.
 
 ### <a name="changing-orchestrator-logic"></a>Orchestrator-logica wijzigen
 
@@ -62,7 +65,7 @@ Houd rekening met de volgende Orchestrator-functie:
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -73,7 +76,7 @@ We gaan ervan uit dat u een schijnbaar onschuldige wijziging wilt aanbrengen om 
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     if (result)
@@ -85,7 +88,10 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Met deze wijziging wordt een nieuwe functie aanroepen naar **SendNotification** tussen **Foo** en **Bar**. Er zijn geen wijzigingen in de hand tekening. Het probleem doet zich voor wanneer een bestaand exemplaar wordt hervat vanaf de aanroep naar de **Bar**. Als tijdens het opnieuw afspelen de oorspronkelijke aanroep van **Foo** wordt geretourneerd `true`, roept de Orchestrator replay aan bij **SendNotification** die zich niet in de uitvoerings geschiedenis bevindt. Als gevolg hiervan mislukt het duurzame taak raamwerk met een `NonDeterministicOrchestrationException` omdat er een aanroep van **SendNotification** is aangetroffen wanneer de aanroep naar de **balk**werd verwacht. Hetzelfde type probleem kan optreden bij het toevoegen van alle aanroepen naar "duurzame" Api's, waaronder `CreateTimer`, `WaitForExternalEvent`, enzovoort.
+> [!NOTE]
+> Het doel C# van de vorige voor beelden is Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+
+Met deze wijziging wordt een nieuwe functie aanroepen naar **SendNotification** tussen **Foo** en **Bar**. Er zijn geen wijzigingen in de hand tekening. Het probleem doet zich voor wanneer een bestaand exemplaar wordt hervat vanaf de aanroep naar de **Bar**. Als tijdens het opnieuw afspelen de oorspronkelijke aanroep van **Foo** wordt geretourneerd `true`, wordt de Orchestrator replay aangeroepen in **SendNotification**, die zich niet in de uitvoerings geschiedenis bevindt. Als gevolg hiervan mislukt het duurzame taak raamwerk met een `NonDeterministicOrchestrationException` omdat er een aanroep van **SendNotification** is aangetroffen wanneer de aanroep naar de **balk**werd verwacht. Hetzelfde type probleem kan optreden bij het toevoegen van alle aanroepen naar "duurzame" Api's, waaronder `CreateTimer`, `WaitForExternalEvent`, enzovoort.
 
 ## <a name="mitigation-strategies"></a>Strategieën voor risico beperking
 
@@ -99,11 +105,11 @@ Hier volgen enkele strategieën voor het oplossen van problemen met versie behee
 
 De eenvoudigste manier om een belang rijke wijziging af te handelen, is te laten mislukken. Nieuwe instanties voeren de gewijzigde code uit.
 
-Of dit een probleem is, is afhankelijk van het belang van uw vlucht instanties. Als u actief bent in de ontwikkeling en u geen zorgen hebt over in-Flight-instanties, is dit mogelijk voldoende. U moet echter wel omgaan met uitzonde ringen en fouten in uw diagnostische pijp lijn. Als u deze dingen wilt voor komen, moet u rekening houden met de andere versie opties.
+Of dit type fout een probleem is, is afhankelijk van het belang van uw vlucht instanties. Als u actief bent in de ontwikkeling en u geen zorgen hebt over in-Flight-instanties, is dit mogelijk voldoende. U moet echter wel omgaan met uitzonde ringen en fouten in uw diagnostische pijp lijn. Als u deze dingen wilt voor komen, moet u rekening houden met de andere versie opties.
 
 ### <a name="stop-all-in-flight-instances"></a>Alle exemplaren in de vlucht stoppen
 
-Een andere optie is om alle exemplaren in de vlucht te stoppen. U kunt dit doen door de inhoud van de wachtrij voor interne **controle-wachtrij** en werk **item-** wacht rijen te wissen. De exemplaren blijven permanent vastzitten waar ze zich bevinden, maar ze zullen uw telemetrie niet in de wirwar houden met fout berichten. Dit is ideaal voor het snel ontwerpen van prototypen.
+Een andere optie is om alle exemplaren in de vlucht te stoppen. Het stoppen van alle exemplaren kan worden uitgevoerd door de inhoud van de wachtrij voor interne **controle-wachtrij** en werk **item-** wacht rijen te wissen. De exemplaren blijven blijven bestaan, waar ze zich ook bevinden, maar ze zullen uw logboeken niet inzien met fout berichten. Deze aanpak is ideaal voor het snel ontwerpen van prototypen.
 
 > [!WARNING]
 > De details van deze wacht rijen kunnen na verloop van tijd veranderen, dus vertrouw niet op deze manier voor productie werkbelastingen.
@@ -114,7 +120,7 @@ De meest recente controle methode om ervoor te zorgen dat belang rijke wijziging
 
 * Implementeer alle updates als volledig nieuwe functies, waardoor de bestaande functies intact blijven. Dit kan lastig zijn omdat de aanroepers van de nieuwe functie versies moeten worden bijgewerkt, evenals dezelfde richt lijnen.
 * Implementeer alle updates als een nieuwe functie-app met een ander opslag account.
-* Implementeer een nieuwe kopie van de functie-app met hetzelfde opslag account, maar met een bijgewerkte `taskHub` naam. Dit is de aanbevolen techniek.
+* Implementeer een nieuwe kopie van de functie-app met hetzelfde opslag account, maar met een bijgewerkte `taskHub` naam. Gelijktijdige implementaties is de aanbevolen techniek.
 
 ### <a name="how-to-change-task-hub-name"></a>De naam van een taak hub wijzigen
 
@@ -130,7 +136,7 @@ De taak hub kan als volgt worden geconfigureerd in het bestand *host. json* :
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Functies 2,0
 
 ```json
 {

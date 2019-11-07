@@ -1,5 +1,5 @@
 ---
-title: Activiteit overschakelen in Azure Data Factory | Microsoft Docs
+title: Activiteit in Azure Data Factory scha kelen
 description: Met de activiteit switch kunt u de verwerkings stroom beheren op basis van een voor waarde.
 services: data-factory
 author: djpmsft
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 3f60965ad54fb94e7f69b69c161b482f0b953c5a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293949"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679403"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory scha kelen
 
@@ -65,9 +65,9 @@ De switch-activiteit biedt dezelfde functionaliteit als een switch-instructie in
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Beschrijving | Toegestane waarden | Verplicht
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de switch activiteit. | Tekenreeks | Ja
+naam | De naam van de switch activiteit. | Tekenreeks | Ja
 type | Moet worden ingesteld op *overschakelen** | Tekenreeks | Ja
 expressie | Expressie die moet worden geëvalueerd als teken reeks waarde | Expressie met teken reeks resultaat type | Ja
 meldingen | Set cases die een waarde en een set activiteiten bevatten die moeten worden uitgevoerd wanneer de waarde overeenkomt met de evaluatie van de expressie. U moet ten minste één geval opgeven. Er is een maximum limiet van 25 gevallen. | Reeks Case-objecten | Ja

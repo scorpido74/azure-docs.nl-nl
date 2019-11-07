@@ -1,5 +1,5 @@
 ---
-title: Power shell gebruiken voor het opheffen van Azure Security Center en het beveiligen van uw netwerk | Microsoft Docs
+title: Onboarding naar Azure Security Center met Power shell
 description: Dit document helpt u bij het voorbereiden van Azure Security Center met Power shell-cmdlets.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 8e2f7b87efe89166175748cec310f24575b7f102
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b20b3c1e4216fe8065fbc8ac24c7d8097903fc5a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201220"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686365"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Het onboarden van Azure Security Center automatiseren met Power shell
 
@@ -31,13 +31,13 @@ Dit artikel bevat een voor beeld van een Power shell-script dat kan worden gewij
 
 In dit voor beeld wordt Security Center ingeschakeld voor een abonnement met ID: d07c0080-170c-4c24-861d-9c817742786c en worden de aanbevolen instellingen toegepast die een hoog niveau van beveiliging bieden door de implementatie van de laag standaard van Security Center. Dit biedt geavanceerde mogelijkheden voor bedreigings beveiliging en detectie:
 
-1. Stel het [standaard beveiligings niveau asc in](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Stel het [Security Center standaard beveiligings niveau in](https://azure.microsoft.com/pricing/details/security-center/). 
  
 2. Stel de Log Analytics-werk ruimte in waarnaar de gegevens die worden verzameld op de Vm's die zijn gekoppeld aan het abonnement worden verzonden met behulp van de micro soft monitoring agent. in dit voor beeld is dit een bestaande door de gebruiker gedefinieerde werk ruimte (myWorkspace).
 
 3. Activeer de automatische agent inrichting van Security Center waarin [de micro soft monitoring agent wordt geïmplementeerd](security-center-enable-data-collection.md#auto-provision-mma).
 
-5. Stel de ciso van de organisatie [in als de beveiligings contact persoon voor asc-waarschuwingen en](security-center-provide-security-contact-details.md)belang rijke gebeurtenissen.
+5. Stel de ciso van de organisatie [in als de beveiligings contact persoon voor Security Center waarschuwingen en](security-center-provide-security-contact-details.md)belang rijke gebeurtenissen.
 
 6. Wijs het [standaard beveiligings beleid](tutorial-security-policy.md)van Security Center toe.
 
@@ -58,7 +58,7 @@ Deze stappen moeten worden uitgevoerd voordat u de Security Center-cmdlets uitvo
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Optioneel: Het dekkings niveau (prijs categorie) van de abonnementen instellen (indien niet gedefinieerd, wordt de prijs categorie ingesteld op gratis):
+2.  Optioneel: het dekkings niveau (prijs categorie) van de abonnementen instellen (indien niet gedefinieerd, wordt de prijs categorie ingesteld op gratis):
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
@@ -78,7 +78,7 @@ Deze stappen moeten worden uitgevoerd voordat u de Security Center-cmdlets uitvo
     > Het wordt aanbevolen automatische inrichting in te scha kelen om ervoor te zorgen dat uw virtuele Azure-machines automatisch worden beveiligd door Azure Security Center.
     >
 
-5.  Optioneel: Het wordt ten zeerste aangeraden om de contact gegevens van de beveiliging te definiëren voor de abonnementen die u wilt voorbereiden. deze worden gebruikt als ontvangers van waarschuwingen en meldingen die worden gegenereerd door Security Center:
+5.  Optioneel: u kunt het beste de contact gegevens van de beveiliging definiëren voor de abonnementen die u wilt voorbereiden. deze worden gebruikt als ontvangers van waarschuwingen en meldingen die worden gegenereerd door Security Center:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
@@ -100,7 +100,7 @@ U kunt deze Power shell-cmdlets nu met automatiserings scripts gebruiken om op e
 ## <a name="see-also"></a>Zie ook
 Zie het volgende artikel voor meer informatie over hoe u Power shell kunt gebruiken om onboarding naar Security Center te automatiseren:
 
-* [Az.Security](https://docs.microsoft.com/powershell/module/az.security).
+* [AZ. Security](https://docs.microsoft.com/powershell/module/az.security).
 
 Zie het volgende artikel voor meer informatie over Security Center:
 

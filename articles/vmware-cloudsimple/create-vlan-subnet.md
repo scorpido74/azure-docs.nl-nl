@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 56e0f720221f8de531087e8b8d0476688feb2547
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772367"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601485"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>VLAN'S/subnetten voor uw privé-clouds maken en beheren
 
@@ -31,9 +31,13 @@ Open het tabblad VLAN'S/subnetten op de pagina netwerk om VLAN'S en subnetten vo
 5. Voer een VLAN-ID in.
 6. Voer de naam van het subnet in.
 7. Als u route ring op het VLAN (subnet) wilt inschakelen, geeft u het CIDR-bereik van het subnet op. Zorg ervoor dat het CIDR-bereik niet overlapt met een van uw on-premises subnetten, Azure-subnetten of gateway-subnet.
-8. Klik op **Indienen**.
+8. Klik op **Submit**
 
     ![VLAN/subnet maken](media/create-new-vlan-subnet-details.png)
+
+
+> [!IMPORTANT]
+> Er is een quotum van 30 VLAN'S per privécloud. Deze limieten kunnen worden verhoogd door [contact op](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)te nemen met de ondersteuning.
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>VLAN-gegevens gebruiken om een gedistribueerde poort groep in te stellen in vSphere
 

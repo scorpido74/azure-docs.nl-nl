@@ -1,5 +1,5 @@
 ---
-title: '& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie | Microsoft Docs'
+title: '& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie'
 description: Classificatie van Azure SQL Database en gegevens detectie &
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 9bcb8ce69a65892109702f0f0a409310945b6781
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009997"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690764"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& Classificatie Azure SQL Database en SQL Data Warehouse voor gegevens detectie
 
-Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL database voor het **detecteren**, **classificeren** & , **labelen**van het**beveiligen** van gevoelige gegevens in uw data bases.
+Gegevens detectie & classificatie biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het **detecteren**, **classificeren**, **labelen** & **beveiligen** van gevoelige gegevens in uw data bases.
 
 Het detecteren en classificeren van uw meest gevoelige gegevens (zakelijke, financiële, gezondheids zorg, persoonlijke Identificeer bare gegevens (PII), enzovoort.) kan een draai functie in uw organisatie voor gegevens beveiliging van stature afspelen. Dit kan dienen als infra structuur voor:
 
@@ -125,7 +125,7 @@ Zodra het beleid voor de hele Tenant is gedefinieerd, kunt u door gaan met de cl
 
 Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om toegang tot gevoelige gegevens te bewaken. [Azure SQL database controle](sql-database-auditing.md) is uitgebreid met een nieuw veld in het audit logboek met de naam *data_sensitivity_information*, waarmee de gevoeligheids classificaties (labels) worden geregistreerd van de werkelijke gegevens die door de query zijn geretourneerd.
 
-![Auditlogboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
+![Audit logboek](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
 ## <a id="subheading-4"></a>Gegevens classificatie beheren met T-SQL
 
@@ -134,8 +134,8 @@ U kunt T-SQL gebruiken om kolom classificaties toe te voegen of te verwijderen, 
 > [!NOTE]
 > Wanneer u T-SQL gebruikt voor het beheren van labels, is er geen validatie waarbij labels die worden toegevoegd aan een kolom, bestaan in het organisatie Information Protection-beleid (de set labels die in de portal aanbevelingen worden weer gegeven). Daarom is het raadzaam om dit te valideren.
 
-- De classificatie van een of meer kolommen toevoegen/bijwerken: [GEVOELIGHEIDS CLASSIFICATIE TOEVOEGEN](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- De classificatie uit een of meer kolommen verwijderen: [GEVOELIGHEIDS CLASSIFICATIE VOOR NEERZETTEN](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- De classificatie van een of meer kolommen toevoegen/bijwerken: [gevoeligheids classificatie toevoegen](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- De classificatie verwijderen uit een of meer kolommen: [gevoeligheids classificatie voor neerzetten](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Alle classificaties weer geven in de Data Base: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="manage-classifications-using-rest-apis"></a>Classificaties beheren met rest-Api's
@@ -144,8 +144,8 @@ U kunt ook REST-Api's gebruiken om classificaties programmatisch te beheren. De 
 
 - [Maken of bijwerken](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) : Hiermee wordt het gevoeligheids label van een bepaalde kolom gemaakt of bijgewerkt
 - [Verwijderen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) : Hiermee verwijdert u het gevoeligheids label van een bepaalde kolom
-- [Aanbeveling uitschakelen](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) : Hiermee worden de gevoeligheids aanbevelingen voor een bepaalde kolom uitgeschakeld
-- [Aanbeveling inschakelen](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) : Hiermee schakelt u gevoeligheids aanbevelingen in voor een bepaalde kolom (aanbevelingen zijn standaard ingeschakeld voor alle kolommen)
+- [Aanbeveling uitschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) : Hiermee worden de gevoeligheids aanbevelingen voor een bepaalde kolom uitgeschakeld
+- [Aanbeveling inschakelen](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) : Hiermee schakelt u gevoeligheids aanbevelingen in voor een bepaalde kolom (aanbevelingen zijn standaard ingeschakeld voor alle kolommen)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -haalt het gevoeligheids label van een bepaalde kolom op
 - [Lijst huidige per data base](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) : Hiermee worden de huidige gevoeligheids labels van een bepaalde data base opgehaald
 
@@ -171,9 +171,9 @@ U kunt Power shell gebruiken om alle aanbevolen kolommen op te halen in een Azur
 
 ## <a name="permissions"></a>Machtigingen
 
-De volgende ingebouwde rollen kunnen de gegevens classificatie van een Azure SQL database: `Owner` `Contributor`, `Reader`, en, `SQL Security Manager` `User Access Administrator`lezen.
+De volgende ingebouwde rollen kunnen de gegevens classificatie van een Azure SQL database: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` en `User Access Administrator`lezen.
 
-De volgende ingebouwde rollen kunnen de gegevens classificatie van een Azure SQL database wijzigen: `Owner`, `Contributor`, `SQL Security Manager`.
+De volgende ingebouwde rollen kunnen de gegevens classificatie wijzigen van een Azure SQL database: `Owner`, `Contributor``SQL Security Manager`.
 
 Meer informatie over [RBAC voor Azure-resources](https://docs.microsoft.com/azure/role-based-access-control/overview)
 

@@ -1,7 +1,7 @@
 ---
 title: Aangepaste subdomeinen
 titleSuffix: Azure Cognitive Services
-description: In azure Cognitive Services worden aangepaste subdomein namen gebruikt voor elke resource die via de Azure Portal, Azure Cloud Shell of de Azure CLI is gemaakt. In tegens telling tot regionale eind punten, die gemeen schappelijk zijn voor alle klanten in een specifieke Azure-regio, zijn aangepaste subdomein namen uniek voor de resource. Aangepaste subdomein namen zijn vereist om functies als Azure Active Directory (Azure AD) voor verificatie in te scha kelen.
+description: Aangepaste subdomein namen voor elke cognitieve service resource worden gemaakt via de Azure Portal, Azure Cloud Shell of Azure CLI.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 7153735052f96bef65bf3daaccde4eab3e61b0f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473049"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647682"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Aangepaste subdomein namen voor Cognitive Services
 
@@ -51,7 +51,7 @@ Ja. Het gebruik van een aangepaste subdomeinnaam heeft geen invloed op de region
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Wat zijn de vereisten voor een aangepaste subdomeinnaam?
 
-De naam van een aangepast subdomein is uniek voor uw resource. De naam mag alleen alfanumerieke tekens en het `-` teken bevatten. deze moet tussen 2 en 64 tekens lang zijn en mag niet eindigen op `-`een.
+De naam van een aangepast subdomein is uniek voor uw resource. De naam mag alleen alfanumerieke tekens en het `-` teken bevatten. de waarde moet tussen 2 en 64 tekens lang zijn en mag niet eindigen met een `-`.
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Kan ik een aangepaste domein naam wijzigen?
 
@@ -68,15 +68,15 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 > [!NOTE]
 > De Translator Text-API en Bing Zoeken-API's globale eind punten gebruiken.
 
-| Eindpunttype | Regio | Eindpunt |
+| Type eind punt | Regio | Eindpunt |
 |---------------|--------|----------|
-| Public | Global (Translator Text & Bing) | `https://api.cognitive.microsoft.com` |
+| Openbaar | Global (Translator Text & Bing) | `https://api.cognitive.microsoft.com` |
 | | Australië - oost | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazilië - zuid | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Canada - midden | `https://canadacentral.api.cognitive.microsoft.com` |
 | | US - centraal | `https://centralus.api.cognitive.microsoft.com` |
 | | Azië - oost | `https://eastasia.api.cognitive.microsoft.com` |
-| | East US | `https://eastus.api.cognitive.microsoft.com` |
+| | US - oost | `https://eastus.api.cognitive.microsoft.com` |
 | | US - oost 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Frankrijk - centraal | `https://francecentral.api.cognitive.microsoft.com` |
 | | India - centraal | `https://centralindia.api.cognitive.microsoft.com` |
@@ -87,12 +87,12 @@ Ja. Dit is een lijst met regionale eind punten die u kunt gebruiken met Azure Co
 | | Zuid-Afrika - noord | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | US - zuid-centraal | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Azië - zuidoost | `https://southeastasia.api.cognitive.microsoft.com` |
-| | Verenigd Koninkrijk Zuid | `https://uksouth.api.cognitive.microsoft.com` |
+| | VK - zuid | `https://uksouth.api.cognitive.microsoft.com` |
 | | US - west-centraal | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Europa -west | `https://westeurope.api.cognitive.microsoft.com` |
 | | US - west | `https://westus.api.cognitive.microsoft.com` |
 | | US - west 2 | `https://westus2.api.cognitive.microsoft.com` |
-| VS (overheid) | VS (overheid) - Virginia | `https://virginia.api.cognitive.microsoft.us` |
+| Amerikaanse overheid | VS (overheid) - Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | China | China - oost 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | China - noord | `https://chinanorth.api.cognitive.azure.cn` |
 

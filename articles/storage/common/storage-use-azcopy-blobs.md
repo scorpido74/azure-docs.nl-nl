@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 78e3f1d4f457e041d386ac7754d089b8b3635b08
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817041"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686649"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Gegevens overdragen met AzCopy en Blob Storage
 
@@ -35,7 +35,7 @@ Zie het artikel aan de [slag met AzCopy](storage-use-azcopy-v10.md) om AzCopy te
 > [!TIP]
 > De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
-U kunt de opdracht [azcopy](storage-ref-azcopy-make.md) maken gebruiken om een container te creëren. In de voor beelden in deze sectie wordt een container met de naam `mycontainer` gemaakt.
+U kunt de opdracht [azcopy](storage-ref-azcopy-make.md) maken gebruiken om een container te creëren. In de voor beelden in deze sectie wordt een container met de naam `mycontainer`gemaakt.
 
 |    |     |
 |--------|-----------|
@@ -70,7 +70,7 @@ Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag document
 | **Voorbeeld** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-U kunt ook een bestand uploaden met behulp van een Joker teken (*) ergens in het bestandspad of de bestands naam. Bijvoorbeeld: `'C:\myDirectory\*.txt'`, of `C:\my*\*.txt`.
+U kunt ook een bestand uploaden met behulp van een Joker teken (*) ergens in het bestandspad of de bestands naam. Bijvoorbeeld: `'C:\myDirectory\*.txt'`of `C:\my*\*.txt`.
 
 > [!NOTE]
 > AzCopy standaard uploadt gegevens in blok-blobs. Als u bestanden wilt uploaden als toevoeg-blobs of pagina-blobs, gebruikt u de vlag `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
@@ -105,7 +105,7 @@ U kunt de inhoud van een map uploaden zonder de bovenliggende map zelf te kopië
 | **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
-> Voeg de vlag `--recursive` toe om bestanden te uploaden in alle submappen.
+> Voeg de vlag `--recursive` toe om bestanden in alle submappen te uploaden.
 
 ### <a name="upload-specific-files"></a>Specifieke bestanden uploaden
 
@@ -121,9 +121,9 @@ Gebruik de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht met de optie `--in
 | **Voorbeeld** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-In dit voor beeld stuurt AzCopy de map `C:\myDirectory\photos` en het bestand `C:\myDirectory\documents\myFile.txt`. U moet de optie `--recursive` toevoegen om alle bestanden in de map `C:\myDirectory\photos` over te dragen.
+In dit voor beeld stuurt AzCopy de `C:\myDirectory\photos` map en het `C:\myDirectory\documents\myFile.txt` bestand. U moet de optie `--recursive` toevoegen om alle bestanden in de `C:\myDirectory\photos` Directory over te dragen.
 
-U kunt ook bestanden uitsluiten met behulp van de optie `--exclude-path`. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+U kunt ook bestanden uitsluiten met behulp van de `--exclude-path` optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
 #### <a name="use-wildcard-characters"></a>Joker tekens gebruiken
 
@@ -135,9 +135,9 @@ Gebruik de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht met de optie `--in
 | **Voorbeeld** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-U kunt ook bestanden uitsluiten met behulp van de optie `--exclude-pattern`. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+U kunt ook bestanden uitsluiten met behulp van de `--exclude-pattern` optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-De opties `--include-pattern` en `--exclude-pattern` zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de optie `–recursive` om de volledige mapstructuur op te halen. vervolgens gebruikt u de `–include-pattern` en geeft u `*.txt` op om alle tekst bestanden op te halen.
+De opties `--include-pattern` en `--exclude-pattern` zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de optie `–recursive` om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft u `*.txt` op om alle tekst bestanden op te halen.
 
 ## <a name="download-files"></a>Bestanden downloaden
 
@@ -152,7 +152,7 @@ Deze sectie bevat de volgende voor beelden:
 > * Specifieke bestanden downloaden
 
 > [!NOTE]
-> Als de waarde van de eigenschap `Content-md5` van een BLOB een hash bevat, wordt in AzCopy een MD5-hash voor gedownloade gegevens berekend en wordt gecontroleerd of de MD5-hash die is opgeslagen in de eigenschap `Content-md5` van de BLOB overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de down load tenzij u dit gedrag overschrijft door `--check-md5=NoCheck` of `--check-md5=LogOnly` toe te voegen aan de Kopieer opdracht.
+> Als de `Content-md5` eigenschaps waarde van een BLOB een hash bevat, berekent AzCopy een MD5-hash voor gedownloade gegevens en wordt gecontroleerd of de MD5-hash die is opgeslagen in de `Content-md5` eigenschap van de BLOB overeenkomt met de berekende hash. Als deze waarden niet overeenkomen, mislukt de down load, tenzij u dit gedrag overschrijft door `--check-md5=NoCheck` of `--check-md5=LogOnly` toe te voegen aan de Kopieer opdracht.
 
 Zie [azcopy Copy](storage-ref-azcopy-copy.md)voor gedetailleerde naslag documentatie.
 
@@ -206,9 +206,9 @@ Gebruik de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht met de optie `--in
 | **Voorbeeld** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-In dit voor beeld stuurt AzCopy de map `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` en het bestand `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt`. U moet de optie `--recursive` toevoegen om alle bestanden in de map `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` over te dragen.
+In dit voor beeld stuurt AzCopy de `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` map en het `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` bestand. U moet de optie `--recursive` toevoegen om alle bestanden in de `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` Directory over te dragen.
 
-U kunt ook bestanden uitsluiten met behulp van de optie `--exclude-path`. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+U kunt ook bestanden uitsluiten met behulp van de `--exclude-path` optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
 #### <a name="use-wildcard-characters"></a>Joker tekens gebruiken
 
@@ -220,9 +220,9 @@ Gebruik de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht met de optie `--in
 | **Voorbeeld** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-U kunt ook bestanden uitsluiten met behulp van de optie `--exclude-pattern`. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
+U kunt ook bestanden uitsluiten met behulp van de `--exclude-pattern` optie. Zie voor meer informatie [azcopy Copy](storage-ref-azcopy-copy.md) Reference docs.
 
-De opties `--include-pattern` en `--exclude-pattern` zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de optie `–recursive` om de volledige mapstructuur op te halen. vervolgens gebruikt u de `–include-pattern` en geeft u `*.txt` op om alle tekst bestanden op te halen.
+De opties `--include-pattern` en `--exclude-pattern` zijn alleen van toepassing op bestands namen en niet op het pad.  Als u alle tekst bestanden in een mapstructuur wilt kopiëren, gebruikt u de optie `–recursive` om de volledige mapstructuur op te halen en gebruikt u vervolgens de `–include-pattern` en geeft u `*.txt` op om alle tekst bestanden op te halen.
 
 ## <a name="copy-blobs-between-storage-accounts"></a>Blobs kopiëren tussen opslag accounts
 
@@ -285,9 +285,9 @@ U kunt de inhoud van een lokaal bestands systeem synchroniseren met een BLOB-con
 > [!NOTE]
 > Dit scenario wordt momenteel alleen ondersteund voor accounts die geen hiërarchische naam ruimte hebben. De huidige release van AzCopy synchroniseert niet tussen andere bronnen en doelen (bijvoorbeeld: File Storage of Amazon Web Services (AWS) S3-buckets).
 
-Met de opdracht [Sync](storage-ref-azcopy-sync.md) worden bestands namen en tijds tempels met de laatste wijziging vergeleken. Stel de vlag `--delete-destination` optioneel in op een waarde van `true` of `prompt` om bestanden in de doelmap te verwijderen als deze bestanden niet meer in de bron directory bestaan.
+Met de opdracht [Sync](storage-ref-azcopy-sync.md) worden bestands namen en tijds tempels met de laatste wijziging vergeleken. Stel de vlag `--delete-destination` optionele in op de waarde `true` of `prompt` om bestanden in de doelmap te verwijderen als deze bestanden niet meer in de bronmap voor komen.
 
-Als u de vlag `--delete-destination` instelt op `true` AzCopy, worden bestanden verwijderd zonder dat u een prompt hoeft te geven. Als u wilt dat er een prompt wordt weer gegeven voordat AzCopy een bestand verwijdert, stelt u de vlag `--delete-destination` in op `prompt`.
+Als u de vlag `--delete-destination` instelt op `true` AzCopy, worden bestanden verwijderd zonder dat een prompt wordt gevraagd. Als u wilt dat er een prompt wordt weer gegeven voordat AzCopy een bestand verwijdert, stelt u de `--delete-destination` vlag in op `prompt`.
 
 > [!NOTE]
 > Als u onbedoeld verwijderen wilt voor komen, moet u ervoor zorgen dat u de functie voor [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) inschakelt voordat u de vlag `--delete-destination=prompt|true` gebruikt.
@@ -332,7 +332,7 @@ De eerste map die wordt weer gegeven in deze opdracht is de bron. De tweede is d
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **Voorbeeld** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+| **Voorbeeld** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Volgende stappen
 

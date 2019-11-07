@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f5d214d58c1d2123acabda797b576e8ad961d3f2
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
-ms.translationtype: HT
+ms.openlocfilehash: 1fcad7d3d0cc45f0cfdc0d6523d5fdbc8f573fe2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990807"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576998"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Mobiliteits dekking Azure Maps
 
@@ -57,7 +57,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Australië      | <p>Adel aide, Alice veren, CROM, Brisbane, Bundaberg QLD, Burnie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, magnetische eiland, Maryborough-Hervey Bay, Melbourne, New South Wales, Perth, RockHampton, Zuid-Oost Queens land, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | China | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Shanghai, Beijing Guangzhou, Shenzhen, Zhengzhou</P>| 
 | Hong Kong SAR | Hong Kong SAR *|
-| Macao SAR | Macau SAR *|
+| Macau SAR | Macau SAR *|
 | India | Ahmedabad, Bengaluru, Delhi, Mumbai, Mysuru|
 | Indonesië | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
 | Japan | Shizuoka prefectuur, Tokio, Wakkanai, Yamanashi prefectuur |
@@ -66,7 +66,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Filipijnen | Manilla |
 | Singapore | Singapore |
 | Zuid-Korea | Busan, Seoul |
-| Taiwan | Changhua graafschap, Taipei | 
+| Taiwan | Changhua County, Taipei | 
 | Thailand | Bangkok, Chiang Mai | 
 | Vietnam | Hanoi, Ho Chi Minh City | 
 

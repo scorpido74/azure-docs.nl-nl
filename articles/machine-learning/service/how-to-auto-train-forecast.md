@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497356"
+ms.locfileid: "73580711"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -181,7 +181,7 @@ Raadpleeg de [Energy demand notebook](https://github.com/Azure/MachineLearningNo
 
 Als u gebruik wilt maken van DNNs voor prognoses, moet u de para meter `enable_dnn` in de AutoMLConfig instellen op True. 
 
-Voor het gebruik van DNNs kunt u het beste een AML Compute-cluster gebruiken met GPU-Sku's en ten minste twee knoop punten als het reken doel. Raadpleeg de [AML Compute-documentatie](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) voor meer informatie. Zie [grootten van GPU geoptimaliseerde virtuele machines](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) voor meer informatie over de VM-grootten die gpu's bevatten.
+Voor het gebruik van DNNs kunt u het beste een AML Compute-cluster gebruiken met GPU-Sku's en ten minste twee knoop punten als het reken doel. Raadpleeg de [AML Compute-documentatie](how-to-set-up-training-targets.md#amlcompute) voor meer informatie. Zie [grootten van GPU geoptimaliseerde virtuele machines](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) voor meer informatie over de VM-grootten die gpu's bevatten.
 
 Om voldoende tijd te bieden aan het volt ooien van de DNN-training, wordt aangeraden de time-out voor het experiment in te stellen op ten minste een aantal uren.
 

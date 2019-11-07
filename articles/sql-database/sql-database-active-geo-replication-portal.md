@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Geo-replicatie SQL Database | Microsoft Docs'
+title: 'Azure Portal: SQL Database geo-replicatie '
 description: Geo-replicatie configureren voor één of gegroepeerde Data base in Azure SQL Database met behulp van de Azure Portal en failover initiëren
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 2a9d627cb2b51d0d7d0b07052f18a8dbe1dc2f19
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103228"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691329"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Actieve geo-replicatie configureren voor Azure SQL Database in de Azure Portal en failover initiëren
 
@@ -28,7 +28,7 @@ Zie [Aanbevolen procedures voor het gebruik van failover-groepen met één en ge
 
 Als u actieve geo-replicatie wilt configureren met behulp van de Azure Portal, hebt u de volgende resource nodig:
 
-* Een Azure-SQL database: De primaire data base die u naar een andere geografische regio wilt repliceren.
+* Een Azure-SQL database: de primaire data base die u naar een andere geografische regio wilt repliceren.
 
 > [!Note]
 > Wanneer u Azure Portal gebruikt, kunt u alleen een secundaire data base maken binnen hetzelfde abonnement als het primaire. Als de secundaire data base verplicht moet zijn in een ander abonnement, gebruikt u [Create data base rest API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) of [ALTER data base Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
@@ -66,10 +66,10 @@ Nadat de secundaire data base is gemaakt en geseedd, begint de gegevens van de h
 De secundaire data base kan worden verwisseld om de primaire te worden.  
 
 1. Blader in het [Azure Portal](https://portal.azure.com)naar de primaire data base in het samenwerkings verband met geo-replicatie.
-2. Selecteer op de Blade SQL database **alle instellingen** > **geo-replicatie**.
+2. Selecteer op de Blade SQL Database **alle instellingen** > **geo-replicatie**.
 3. Selecteer in de lijst met **secundaire** zones de data base die u wilt de nieuwe primaire en klik op **failover**.
 
-    ![failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
+    ![cluster](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Klik op **Ja** om de failover te starten.
 
 De opdracht schakelt de secundaire data base onmiddellijk over naar de primaire rol. Dit proces moet normaal gesp roken binnen 30 seconden worden voltooid.

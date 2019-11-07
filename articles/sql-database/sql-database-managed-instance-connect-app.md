@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Managed instance Connect-toepassing | Microsoft Docs
+title: Azure SQL Database Managed instance Connect-toepassing
 description: In dit artikel wordt beschreven hoe u uw toepassing verbindt met Azure SQL Database beheerde instantie.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 5dc287ab58636b4921c14ae71f9a62ab36d9c596
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060656"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688239"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uw toepassing verbinden met Azure SQL Database beheerde instantie
 
@@ -67,10 +67,10 @@ Een ander scenario dat door klanten wordt geïmplementeerd, is de plek waar VPN-
 
 ![VNet-peering](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
-Zodra u de basis infrastructuur hebt ingesteld, moet u een aantal instellingen wijzigen zodat de VPN Gateway de IP-adressen in het virtuele netwerk die als host voor het beheerde exemplaar worden weer geven. Hiervoor moet u de volgende zeer specifieke wijzigingen aanbrengen in de **instellingen**voor peering.
+Zodra u de basis infrastructuur hebt ingesteld, moet u een aantal instellingen wijzigen zodat de VPN Gateway de IP-adressen in het virtuele netwerk die als host voor het beheerde exemplaar worden weer geven. Hiervoor moet u de volgende zeer specifieke wijzigingen aanbrengen in de **instellingen voor peering**.
 
-1. Ga in het VNet dat als host fungeert voor de VPN-gateway naar peerings, vervolgens naar de beheerde VNet-verbinding van het Managed instance en klik vervolgens op **Gateway doorvoer toestaan**.
-2. Ga in het VNet dat als host fungeert voor het beheerdeexemplaar naar peerings, vervolgens naar de VPN gateway peered VNet-verbinding en klik vervolgens op **externe gateways gebruiken**.
+1. Ga in het VNet dat als host fungeert voor de VPN-gateway naar **peerings**, vervolgens naar de beheerde VNet-verbinding van het Managed instance en klik vervolgens op **Gateway doorvoer toestaan**.
+2. Ga in het VNet dat als host fungeert voor het beheerde exemplaar naar **peerings**, vervolgens naar de VPN gateway peered VNet-verbinding en klik vervolgens op **externe gateways gebruiken**.
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>Een Azure App Service gehoste toepassing verbinden
 
@@ -137,7 +137,7 @@ Raadpleeg het volgende voor meer informatie over het oplossen van verbindings pr
 
 De volgende minimale versies van de hulpprogram ma's en stuur Programma's worden aanbevolen als u verbinding wilt maken met een beheerd exemplaar:
 
-| Stuur programma/hulp programma | Version |
+| Stuur programma/hulp programma | Versie |
 | --- | --- |
 |.NET Framework | 4.6.1 (of .NET core) |
 |ODBC-stuurprogramma| v17 |

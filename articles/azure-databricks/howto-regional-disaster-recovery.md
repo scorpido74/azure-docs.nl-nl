@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596903"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601751"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale nood herstel voor Azure Databricks clusters
 
@@ -47,7 +47,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
    Dit artikel bevat een aantal code voorbeelden die gebruikmaken van de opdracht regel interface voor de meeste automatische stappen, omdat het een gebruiks vriendelijke wrapper is dan Azure Databricks REST API.
 
-   Voordat u een migratie stap uitvoert, installeert u de databricks-CLI op uw desktop computer of een virtuele machine waarop u het werk wilt uitvoeren. Zie [install DATABRICKS cli](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html) (Engelstalig) voor meer informatie.
+   Voordat u een migratie stap uitvoert, installeert u de databricks-CLI op uw desktop computer of een virtuele machine waarop u het werk wilt uitvoeren. Zie [install DATABRICKS cli](/azure/databricks/dev-tools/databricks-cli) (Engelstalig) voor meer informatie.
 
    ```bash
    pip install databricks-cli
@@ -225,7 +225,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
    De taak configuratie vereist instellingen voor een nieuw of een bestaand cluster. Als u een bestaand cluster gebruikt, probeert het script/code hieronder de oude cluster-ID te vervangen door de nieuwe cluster-ID.
 
-   Kopieer het volgende python-script en sla het op in een bestand. Vervang de waarde voor `old_cluster_id` en `new_cluster_id` door de uitvoer van de cluster migratie die in de vorige stap is uitgevoerd. Voer deze uit in de databricks-cli-opdracht regel, bijvoorbeeld `python scriptname.py`.
+   Kopieer het volgende python-script en sla het op in een bestand. Vervang de waarde voor `old_cluster_id` en `new_cluster_id`door de uitvoer van de cluster migratie die in de vorige stap is uitgevoerd. Voer deze uit in de databricks-cli-opdracht regel, bijvoorbeeld `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -286,7 +286,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
 8. **Azure Blob-opslag en Azure Data Lake Storage-koppelingen migreren**
 
-   Koppel alle [Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) -en [Azure data Lake Storage (Gen 2)-](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) koppel punten hand matig opnieuw met een oplossing op basis van een notitie blok. De opslag resources zouden zijn gekoppeld in de primaire werk ruimte en moeten worden herhaald in de secundaire werk ruimte. Er is geen externe API voor koppels.
+   Koppel alle [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html) -en [Azure data Lake Storage (Gen 2)-](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) koppel punten hand matig opnieuw met een oplossing op basis van een notitie blok. De opslag resources zouden zijn gekoppeld in de primaire werk ruimte en moeten worden herhaald in de secundaire werk ruimte. Er is geen externe API voor koppels.
 
 9. **Scripts voor het initialiseren van het cluster migreren**
 
@@ -302,7 +302,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
 10. **Toegangs beheer hand matig opnieuw configureren en Toep assen.**
 
-    Als uw bestaande primaire werk ruimte is geconfigureerd voor het gebruik van de Premium-laag (SKU), is het waarschijnlijk dat u ook de [Access Control functie](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)gebruikt.
+    Als uw bestaande primaire werk ruimte is geconfigureerd voor het gebruik van de Premium-laag (SKU), is het waarschijnlijk dat u ook de [Access Control functie](/azure/databricks/administration-guide/access-control/index)gebruikt.
 
     Als u de functie Access Control wilt gebruiken, moet u het toegangs beheer hand matig opnieuw Toep assen op de resources (notebooks, clusters, Jobs, tabellen).
 
@@ -312,4 +312,4 @@ Als u andere Azure-Services gebruikt, moet u er ook voor zorgen dat u aanbevolen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Databricks-documentatie](https://docs.azuredatabricks.net/user-guide/index.html)voor meer informatie.
+Zie [Azure Databricks-documentatie](index.yml)voor meer informatie.

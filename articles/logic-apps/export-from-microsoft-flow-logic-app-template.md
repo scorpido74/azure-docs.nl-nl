@@ -1,6 +1,6 @@
 ---
-title: Stromen exporteren van Microsoft Flow naar Azure Logic Apps
-description: Migreer stromen van Microsoft Flow naar Azure Logic Apps door te exporteren als Azure Resource Manager-sjablonen
+title: Stromen exporteren van automatische stroom naar Azure Logic Apps
+description: Migreer stromen van automatische stroom naar Azure Logic Apps door te exporteren als Azure Resource Manager sjablonen
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,31 +9,31 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 82c4e55eff36a7da70e0304fc8152491a8030e04
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441021"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583258"
 ---
-# <a name="export-flows-from-microsoft-flow-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Microsoft Flow en implementeren in Azure Logic Apps
+# <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren van automatische stroom en implementeren naar Azure Logic Apps
 
-Om de mogelijkheden van uw stroom uit te breiden en uit te breiden, kunt u die stroom migreren van [Microsoft flow](https://flow.microsoft.com) naar [Azure Logic apps](../logic-apps/logic-apps-overview.md). U kunt uw stroom exporteren als een Azure Resource Manager sjabloon voor een logische app, de sjabloon Logic app implementeren naar een Azure-resource groep en die logische app vervolgens openen in de ontwerp functie voor logische apps.
+Om de mogelijkheden van uw stroom uit te breiden en uit te breiden, kunt u die stroom migreren van [Automatische stroom](https://flow.microsoft.com) naar [Azure Logic apps](../logic-apps/logic-apps-overview.md). U kunt uw stroom exporteren als een Azure Resource Manager sjabloon voor een logische app, de sjabloon Logic app implementeren naar een Azure-resource groep en die logische app vervolgens openen in de ontwerp functie voor logische apps.
 
 > [!NOTE]
-> Niet alle Microsoft Flow-connectors zijn beschikbaar in Azure Logic Apps. U kunt stromen met gelijkwaardige [connectors](../connectors/apis-list.md) importeren in azure Logic apps. De knop trigger, de goedkeurings connector en de notification connector zijn bijvoorbeeld specifiek voor Microsoft Flow.
+> Niet alle stroom verautomatiseerde connectors zijn beschikbaar in Azure Logic Apps. U kunt stromen met [gelijkwaardige connectors](../connectors/apis-list.md) importeren in azure Logic apps. De knop trigger, de goedkeurings connector en de notification connector zijn bijvoorbeeld specifiek voor het automatiseren van het energie verbruik.
 >
-> OpenAPI stromen die zijn geëxporteerd uit Microsoft Flow worden momenteel niet ondersteund voor implementatie als sjablonen voor logische apps. 
+> OpenAPI stromen die zijn geëxporteerd uit het automatiseren van de stroom worden momenteel niet ondersteund voor implementatie als sjablonen voor logische apps. 
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* De stroom die u wilt exporteren uit Microsoft Flow
+* De stroom die u wilt exporteren uit automatische energie
 
 ## <a name="export-a-flow"></a>Een stroom exporteren
 
-1. Meld u aan bij [Microsoft flow](https://flow.microsoft.com)en selecteer **mijn stromen**. Zoek en selecteer uw stroom. Selecteer op de werk balk de knop met weglatings tekens ( **...** ). Selecteer  > **Logic apps sjabloon exporteren (. json)** .
+1. Meld u aan bij [energie automatisering](https://flow.microsoft.com)en selecteer **mijn stromen**. Zoek en selecteer uw stroom. Selecteer op de werk balk de knop met weglatings tekens ( **...** ). Selecteer > **Logic apps sjabloon (. json)** **exporteren** .
 
    ![Stroom exporteren](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -53,7 +53,7 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
 
    ![Selecteer ' uw eigen sjabloon bouwen in de editor '](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. Selecteer in de werk balk **sjabloon bewerken** de optie **bestand laden**. Zoek en selecteer de JSON-sjabloon die u hebt geëxporteerd uit Microsoft Flow en selecteer **openen**.
+1. Selecteer in de werk balk **sjabloon bewerken** de optie **bestand laden**. Zoek en selecteer de JSON-sjabloon die u hebt geëxporteerd uit automatische stroom en selecteer **openen**.
 
    ![Selecteer bestand laden](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
@@ -76,7 +76,7 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
   
    ![Invoer parameters voor sjabloon opgeven](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-   Azure implementeert uw sjabloon als een logische app voor uw opgegeven resource groep. Alle Logic apps die u migreert vanaf Microsoft Flow worden geïmplementeerd met een uitgeschakelde status.
+   Azure implementeert uw sjabloon als een logische app voor uw opgegeven resource groep. Alle Logic apps die u migreert vanuit automatische energie, worden geïmplementeerd met een uitgeschakelde status.
 
 1. Voordat u uw logische app activeert, moet u nieuwe verbindingen toestaan door de volgende stappen uit te voeren:
 
@@ -102,9 +102,9 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
 
 Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) voor het maken van Logic apps, kunt u de geëxporteerde sjabloon vanuit Visual Studio implementeren naar Azure Logic apps.
 
-1. Open in Visual Studio het sjabloon bestand dat u hebt geëxporteerd uit Microsoft Flow.
+1. Open in Visual Studio het sjabloon bestand dat u hebt geëxporteerd uit automatische stroom automatisering.
 
-1. Maak in Visual Studio een Azure-resource groep-project en selecteer de sjabloon voor **logische apps** door de stappen [in Quick Start te volgen: Maak geautomatiseerde taken, processen en werk stromen met Azure Logic apps-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md), bijvoorbeeld:
+1. Maak in Visual Studio een Azure-resource groep-project en selecteer de sjabloon voor **logische apps** door de stappen te volgen in [Quick Start: Maak geautomatiseerde taken, processen en werk stromen met Azure Logic apps-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md), bijvoorbeeld:
 
    ![Een Azure-resourcegroepproject maken](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
@@ -134,7 +134,7 @@ Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-c
 
    1. Sla uw oplossing op voordat u de logische app implementeert.
 
-1. Open in Solution Explorer het snelmenu project en selecteer**nieuwe** **implementeren** > . Meld u aan met uw Azure-account als u daarom wordt gevraagd.
+1. Open in Solution Explorer het snelmenu project en selecteer > **nieuwe** **implementeren** . Meld u aan met uw Azure-account als u daarom wordt gevraagd.
 
 1. Wanneer u hierom wordt gevraagd, bevestigt u het Azure-abonnement, de Azure-resource groep en alle andere instellingen die u wilt gebruiken voor implementatie, zoals een [parameter bestand](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) dat moet worden gebruikt voor het door geven van sjabloon parameter waarden, en selecteer vervolgens **implementeren**.
 
@@ -158,7 +158,7 @@ Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-c
 
 1. Om te voor komen dat dubbele werk stromen worden uitgevoerd, moet u ervoor zorgen dat u de oorspronkelijke stroom deactiveert of verwijdert.
 
-Voor meer informatie over deze implementaties tappen [raadpleegt u Quick Start: Geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
+Voor meer informatie over deze implementaties tappen raadpleegt u [Quick Start: geautomatiseerde taken, processen en werk stromen maken met Azure Logic apps-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
 ## <a name="next-steps"></a>Volgende stappen
 

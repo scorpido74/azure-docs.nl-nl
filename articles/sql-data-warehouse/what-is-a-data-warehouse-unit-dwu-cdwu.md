@@ -1,5 +1,5 @@
 ---
-title: Data warehouse units (Dwu's, cDWUs) in azure Synapse Analytics (voorheen SQL DW) | Microsoft Docs
+title: Data warehouse units (Dwu's, cDWUs) in azure Synapse Analytics (voorheen SQL DW)
 description: Aanbevelingen voor het kiezen van het ideale aantal data warehouse-eenheden (Dwu's, cDWUs) voor het optimaliseren van prijs en prestaties en het wijzigen van het aantal eenheden.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,13 +10,13 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475750"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685342"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data warehouse units (Dwu's) en Compute data warehouse units (cDWUs)
 
@@ -215,4 +215,4 @@ Wanneer u een schaal bewerking start, beëindigt het systeem eerst alle geopende
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [resource klassen voor workload Management](resource-classes-for-workload-management.md) en [geheugen-en gelijktijdigheids limieten](memory-and-concurrency-limits.md)voor meer informatie over het beheren van prestaties.
+Zie voor meer informatie over het beheren van prestaties [resource klassen voor workload Management](resource-classes-for-workload-management.md) en [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.MD).

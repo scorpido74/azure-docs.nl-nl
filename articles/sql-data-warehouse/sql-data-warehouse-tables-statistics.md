@@ -1,5 +1,5 @@
 ---
-title: Statistieken maken, bijwerken-Azure SQL Data Warehouse | Microsoft Docs
+title: Maken, statistieken bijwerken
 description: Aanbevelingen en voor beelden voor het maken en bijwerken van statistieken voor het optimaliseren van query's voor tabellen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c995358fc0135a1f9b504b57b23ecb3f6b41d6da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479169"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692411"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Tabel statistieken in Azure SQL Data Warehouse
 
@@ -46,7 +46,7 @@ SET AUTO_CREATE_STATISTICS ON
 
 Met deze instructies wordt het automatisch maken van statistieken geactiveerd:
 
-- SELECTEREN
+- SELECT
 - INVOEGEN-SELECTEREN
 - CTAS
 - UPDATE
@@ -61,7 +61,7 @@ Het automatisch maken van statistieken wordt synchroon uitgevoerd, zodat u een s
 > [!NOTE]
 > Het maken van statistieken wordt geregistreerd in [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) onder een andere gebruikers context.
 
-Wanneer er automatische statistieken worden gemaakt, wordt het volgende gevormd door het formulier: _WA_Sys_< 8-cijferige kolom-id in hexadecimale > _ < tabel-ID in hexadecimale >. U kunt de statistieken weer geven die al zijn gemaakt door de [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) -opdracht uit te voeren:
+Wanneer er automatische statistieken worden gemaakt, krijgen ze de volgende notatie: _WA_Sys_< 8 cijfers kolom-id in hex > _ tabel-ID < 8 cijfers in hexadecimale >. U kunt de statistieken weer geven die al zijn gemaakt door de [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) -opdracht uit te voeren:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -77,12 +77,12 @@ Hier volgen de aanbevelingen voor het bijwerken van statistieken:
 
 |||
 |-|-|
-| **Frequentie van updates voor statistieken**  | Conservatief Dagelijks </br> Nadat u uw gegevens hebt geladen of getransformeerd |
+| **Frequentie van updates voor statistieken**  | Conservatief: dagelijks </br> Nadat u uw gegevens hebt geladen of getransformeerd |
 | **Steekproeven** |  Minder dan 1.000.000.000 rijen, gebruik standaard steekproef (20 procent). </br> Gebruik meer dan 1.000.000.000 rijen om de steek proef van twee procent te gebruiken. |
 
 Een van de eerste vragen die u kunt stellen wanneer u problemen met een query wilt oplossen, **zijn "zijn de statistieken bijgewerkt?"**
 
-Deze vraag is niet een die kan worden beantwoord door de leeftijd van de gegevens. Een up-to-date statistieken object kan oud zijn als er geen wezenlijke wijzigingen zijn aangebracht in de onderliggende gegevens. Wanneer het aantal rijen ingrijpend is gewijzigd of als er sprake is van een aanmerkelijke wijziging in de verdeling van waarden voor een *kolom, is* het tijd om statistieken bij te werken.
+Deze vraag is niet een die kan worden beantwoord door de leeftijd van de gegevens. Een up-to-date statistieken object kan oud zijn als er geen wezenlijke wijzigingen zijn aangebracht in de onderliggende gegevens. Wanneer het aantal rijen ingrijpend is gewijzigd of als er sprake is van een aanmerkelijke wijziging in de verdeling van waarden voor een kolom, is het tijd om statistieken *bij te werken* .
 
 Er is geen dynamische beheer weergave om te bepalen of de gegevens in de tabel zijn gewijzigd sinds de laatste keer dat de statistieken zijn bijgewerkt. Als u de leeftijd van uw statistieken kent, kunt u deel uitmaken van de afbeelding. U kunt de volgende query gebruiken om de laatste keer te bepalen dat uw statistieken op elke tabel zijn bijgewerkt.
 
@@ -130,11 +130,11 @@ De volgende richt lijnen zijn van toepassing op het bijwerken van uw statistieke
 * Focus op kolommen die deel uitmaken van de componenten samen voegen, groeperen op, ORDER BY en DISTINCT.
 * Overweeg om kolommen met een oplopende sleutel, zoals transactie datums, vaker bij te werken, omdat deze waarden niet in het statistieken histogram worden opgenomen.
 * Overweeg om kolommen met statische distributie minder vaak bij te werken.
-* Houd er rekening mee dat elk statistiek object in volg orde wordt bijgewerkt. Eenvoudig implementeren `UPDATE STATISTICS <TABLE_NAME>` is niet altijd ideaal, met name voor Wide tables met veel statistieken objecten.
+* Houd er rekening mee dat elk statistiek object in volg orde wordt bijgewerkt. Eenvoudig implementeren van `UPDATE STATISTICS <TABLE_NAME>` is niet altijd ideaal, met name voor Wide tables met veel statistieken objecten.
 
-Zie voor meer informatie de [schatting](/sql/relational-databases/performance/cardinality-estimation-sql-server)van kardinaliteit.
+Zie voor meer informatie de [schatting van kardinaliteit](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
-## <a name="examples-create-statistics"></a>Voorbeelden: Statistieken maken
+## <a name="examples-create-statistics"></a>Voor beelden: Statistieken maken
 
 Deze voor beelden laten zien hoe u verschillende opties kunt gebruiken om statistieken te maken. De opties die u voor elke kolom gebruikt, zijn afhankelijk van de kenmerken van uw gegevens en de manier waarop de kolom wordt gebruikt in query's.
 
@@ -210,13 +210,13 @@ Als u een statistieken object met meerdere kolommen wilt maken, gebruikt u gewoo
 > [!NOTE]
 > Het histogram dat wordt gebruikt om het aantal rijen in het query resultaat te schatten, is alleen beschikbaar voor de eerste kolom die wordt vermeld in de definitie van het statistieken-object.
 
-In dit voor beeld is het histogram voor *de\_product categorie*. Kruis kolom statistieken worden berekend voor *product\_categorie* -en *product\_-sub_category*:
+In dit voor beeld bevindt het histogram zich op *product\_categorie*. Statistieken voor meerdere kolommen worden berekend op *product\_categorie* en *product\_sub_category*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Omdat er een correlatie bestaat tussen *product\_categorie* en *product\_\_subcategorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
+Omdat er sprake is van een correlatie tussen *product\_categorie* en *product\_sub\_categorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Statistieken maken voor alle kolommen in een tabel
 
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Voorbeeld statistieken maken voor alle kolommen
 
-## <a name="examples-update-statistics"></a>Voorbeelden: Statistieken bijwerken
+## <a name="examples-update-statistics"></a>Voor beelden: Statistieken bijwerken
 
 Als u statistieken wilt bijwerken, kunt u het volgende doen:
 
@@ -394,7 +394,7 @@ De instructie UPDATE STATISTICs is eenvoudig te gebruiken. Houd er rekening mee 
 > [!NOTE]
 > Bij het bijwerken van alle statistieken voor een tabel, SQL Data Warehouse een voor beeld van de tabel voor elk statistiek object wordt gecontroleerd. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
 
-Zie [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md)voor een `UPDATE STATISTICS` implementatie van een procedure. De implementatie methode wijkt enigszins af van de voor `CREATE STATISTICS` gaande procedure, maar het resultaat is hetzelfde.
+Zie voor een implementatie van een `UPDATE STATISTICS` procedure [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md). De implementatie methode wijkt enigszins af van de voor gaande `CREATE STATISTICS` procedure, maar het resultaat is hetzelfde.
 
 Zie [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql)voor de volledige syntaxis.
 
@@ -406,21 +406,21 @@ Er zijn verschillende systeem weergaven en-functies die u kunt gebruiken om info
 
 Deze systeem weergaven bieden informatie over statistieken:
 
-| Catalogus weergave | Description |
+| Catalogus weergave | Beschrijving |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Eén rij voor elke kolom. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eén rij voor elk object in de data base. |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eén rij voor elk schema in de data base. |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Eén rij voor elke kolom. |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eén rij voor elk object in de data base. |
+| [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eén rij voor elk schema in de data base. |
 | [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Eén rij voor elk statistiek object. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Eén rij voor elke kolom in het statistiek object. Koppelingen terug naar sys. Columns. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Eén rij voor elke tabel (inclusief externe tabellen). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Eén rij voor elk gegevens type. |
+| [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Eén rij voor elke kolom in het statistiek object. Koppelingen terug naar sys. Columns. |
+| [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Eén rij voor elke tabel (inclusief externe tabellen). |
+| [sys. table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Eén rij voor elk gegevens type. |
 
 ### <a name="system-functions-for-statistics"></a>Systeem functies voor statistieken
 
 Deze systeem functies zijn handig voor het werken met statistieken:
 
-| Systeem functie | Description |
+| Systeem functie | Beschrijving |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum waarop het statistieken object voor het laatst is bijgewerkt. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Overzichts niveau en gedetailleerde informatie over de distributie van waarden, zoals begrepen door het statistiek object. |
@@ -465,13 +465,13 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS ()-voor beelden
+## <a name="dbcc-show_statistics-examples"></a>DBCC SHOW_STATISTICS ()-voor beelden
 
 DBCC SHOW_STATISTICS () toont de gegevens binnen een statistiek object. Deze gegevens zijn afkomstig uit drie delen:
 
 - Header
 - Dichtheids vector
-- Histogram
+- Deel
 
 De meta gegevens van de koptekst over de statistieken. In het histogram wordt de verdeling weer gegeven van de waarden in de eerste sleutel kolom van het statistiek object. De dichtheids vector meet de correlatie tussen kolommen. SQL Data Warehouse de kardinaliteit met een van de gegevens in het statistiek object berekent.
 
@@ -489,9 +489,9 @@ Bijvoorbeeld:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>Een of meer delen van DBCC SHOW_STATISTICS () weer geven
+### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>Een of meer delen van DBCC SHOW_STATISTICS () weer geven
 
-Als u alleen specifieke onderdelen wilt weer geven, gebruikt u de `WITH` -component en geeft u op welke onderdelen u wilt zien:
+Als u alleen bepaalde onderdelen wilt weer geven, gebruikt u de component `WITH` en geeft u op welke onderdelen u wilt zien:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
@@ -503,7 +503,7 @@ Bijvoorbeeld:
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS () verschillen
+## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () verschillen
 
 DBCC SHOW_STATISTICS () is strikt geïmplementeerd in SQL Data Warehouse vergeleken met SQL Server:
 

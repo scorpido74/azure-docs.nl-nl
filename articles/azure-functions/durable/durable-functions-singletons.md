@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ba35999d5a7193ba691b14005dc8271120ac2be7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ec7eb1eba2bc029d592560b39cde20e93e5afcd6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933235"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614669"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestrator in Durable Functions (Azure Functions)
 
-Voor achtergrond taken moet u er vaak voor zorgen dat slechts één exemplaar van een bepaalde Orchestrator tegelijk wordt uitgevoerd. Dit kan in [Durable functions](durable-functions-overview.md) worden gedaan door een specifieke exemplaar-id toe te wijzen aan een Orchestrator tijdens het maken.
+Voor achtergrond taken moet u er vaak voor zorgen dat slechts één exemplaar van een bepaalde Orchestrator tegelijk wordt uitgevoerd. U kunt dit soort Singleton gedrag in [Durable functions](durable-functions-overview.md) controleren door een specifieke exemplaar-id toe te wijzen aan een Orchestrator tijdens het maken.
 
 ## <a name="singleton-example"></a>Voor beeld van Singleton
 
-In de C# volgende en Java script-voor beelden ziet u een http-trigger functie waarmee een singleton achtergrond taak indeling wordt gemaakt. De code zorgt ervoor dat er slechts één exemplaar bestaat voor een opgegeven exemplaar-ID.
+In het volgende voor beeld ziet u een HTTP-trigger-functie waarmee een singleton achtergrond taak indeling wordt gemaakt. De code zorgt ervoor dat er slechts één exemplaar bestaat voor een opgegeven exemplaar-ID.
 
 ### <a name="c"></a>C#
 
@@ -30,7 +30,7 @@ In de C# volgende en Java script-voor beelden ziet u een http-trigger functie wa
 [FunctionName("HttpStartSingle")]
 public static async Task<HttpResponseMessage> RunSingle(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}/{instanceId}")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient starter,
+    [DurableClient] IDurableOrchestrationClient starter,
     string functionName,
     string instanceId,
     ILogger log)
@@ -55,9 +55,12 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
+> [!NOTE]
+> De vorige C# code is voor Durable functions 2. x. Voor Durable Functions 1. x moet u `OrchestrationClient` kenmerk gebruiken in plaats van het kenmerk `DurableClient`, en moet u het `DurableOrchestrationClient` parameter type gebruiken in plaats van `IDurableOrchestrationClient`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
 
-Dit is het bestand function.json:
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+
+Hier is het bestand function. json:
 ```json
 {
   "bindings": [
@@ -83,7 +86,7 @@ Dit is het bestand function.json:
 }
 ```
 
-Dit is de JavaScript-code:
+Dit is de Java script-code:
 ```javascript
 const df = require("durable-functions");
 
@@ -111,7 +114,7 @@ module.exports = async function(context, req) {
 };
 ```
 
-Exemplaar-Id's zijn standaard wille keurig gegenereerde GUID'S. Maar in dit geval wordt de exemplaar-ID door gegeven in route gegevens van de URL. Met de code [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) wordt GetStatusAsyncC#() `getStatus` of (Java script) aangeroepen om te controleren of een exemplaar met de opgegeven id al wordt uitgevoerd. Als dat niet het geval is, wordt er een exemplaar gemaakt met die ID.
+Exemplaar-Id's zijn standaard wille keurig gegenereerde GUID'S. In het vorige voor beeld wordt de exemplaar-ID echter door gegeven in route gegevens van de URL. De code roept `GetStatusAsync`(C#) of `getStatus` (Java script) aan om te controleren of een exemplaar met de opgegeven id al wordt uitgevoerd. Als een dergelijk exemplaar niet wordt uitgevoerd, wordt er een nieuw exemplaar gemaakt met die ID.
 
 > [!NOTE]
 > Dit voor beeld bevat een mogelijke race voorwaarde. Als twee instanties van **HttpStartSingle** gelijktijdig worden uitgevoerd, wordt door beide functie aanroepen geslaagd, maar er wordt slechts één Orchestration-exemplaar gestart. Afhankelijk van uw vereisten kan dit ongewenste neven effecten hebben. Daarom is het belang rijk om ervoor te zorgen dat twee aanvragen deze trigger gelijktijdig kunnen uitvoeren.

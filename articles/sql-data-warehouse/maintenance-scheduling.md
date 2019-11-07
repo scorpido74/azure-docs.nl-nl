@@ -1,5 +1,5 @@
 ---
-title: Onderhouds planningen voor Azure (preview) | Microsoft Docs
+title: Onderhouds planningen voor Azure
 description: Met onderhouds planning kunnen klanten de nodige geplande onderhouds gebeurtenissen plannen die de Azure SQL Data Warehouse-service gebruikt om nieuwe functies, upgrades en patches uit te rollen.
 services: sql-data-warehouse
 author: antvgski
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5df583112bbb6db9651004e5deaceb6b5b9d12
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958894"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686065"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Onderhouds planningen gebruiken voor het beheren van service-updates en-onderhoud
 
@@ -56,7 +56,7 @@ De standaardinstelling is dat voor alle nieuwe Azure SQL Data Warehouse-exemplar
 
 Als u de onderhoudsplanning wilt weergeven die op uw datawarehouse is toegepast, voert u de volgende stappen uit:
 
-1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2.  Selecteer het data warehouse dat u wilt weer geven. 
 3.  Het geselecteerde data warehouse wordt geopend op de Blade overzicht. De onderhouds planning die wordt toegepast op het Data Warehouse wordt onder **onderhouds planning**weer gegeven.
 
@@ -72,7 +72,7 @@ Een onderhouds planning kan op elk gewenst moment worden bijgewerkt of gewijzigd
 Het primaire en het secundaire Windows-venster moeten verschillende datumbereiken hebben. Een voor beeld is een primair venster van dinsdag – donderdag en een secundaire periode van zaterdag – zondag.
 
 Als u de onderhouds planning voor uw data warehouse wilt wijzigen, voert u de volgende stappen uit:
-1.  Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2.  Selecteer het data warehouse dat u wilt bijwerken. De pagina wordt geopend op de Blade overzicht. 
 3.  Open de pagina voor onderhouds plannings instellingen door de **overzichts koppeling onderhouds planning (preview)** op de Blade overzicht te selecteren. U kunt ook de optie **onderhouds planning** selecteren in het menu resource aan de linkerkant.  
 
@@ -83,9 +83,9 @@ Als u de onderhouds planning voor uw data warehouse wilt wijzigen, voert u de vo
    ![Blade onderhouds instellingen](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
 5. Kies uw favoriete primaire en secundaire onderhouds Vensters met behulp van de vervolg keuzelijst:
-   - **Dag**: Voorkeurs dag voor het uitvoeren van onderhoud tijdens het geselecteerde venster.
-   - **Begin tijd**: Voorkeurs start tijd voor het onderhouds venster.
-   - **Tijd venster**: Voorkeurs duur van uw tijd venster.
+   - **Dag**: de voorkeurs dag voor het uitvoeren van onderhoud tijdens het geselecteerde venster.
+   - **Begin tijd**: de voorkeurs start tijd voor het onderhouds venster.
+   - **Tijd venster**: voorkeurs duur van uw tijd venster.
 
    Het gebied **samen vatting van planning** onder aan de Blade wordt bijgewerkt op basis van de waarden die u hebt geselecteerd. 
   

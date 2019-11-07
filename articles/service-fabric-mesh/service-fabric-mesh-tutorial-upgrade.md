@@ -1,6 +1,6 @@
 ---
 title: Zelf studie-een Azure Service Fabric-mesh toepassing upgraden | Microsoft Docs
-description: Meer informatie over het bijwerken van een Service Fabric-toepassing met Visual Studio
+description: Deze zelf studie is deel vier van een reeks en laat zien hoe u een Azure Service Fabric-mesh-toepassing rechtstreeks vanuit Visual Studio bijwerkt.
 services: service-fabric-mesh
 documentationcenter: .net
 author: dkkapur
@@ -14,14 +14,14 @@ ms.workload: NA
 ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 20aa65f0a8e47485e71fd03d73ff144f5290bcb7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 81f155d5708a2fca2fc1145feb20af12d2fd151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036092"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686197"
 ---
-# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Zelfstudie: Meer informatie over het bijwerken van een Service Fabric-toepassing met Visual Studio
+# <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Zelf studie: meer informatie over het bijwerken van een Service Fabric-toepassing met Visual Studio
 
 Deze zelf studie is deel vier van een reeks en laat zien hoe u een Azure Service Fabric-mesh-toepassing rechtstreeks vanuit Visual Studio bijwerkt. De upgrade bevat een code-update en een configuratie-update. U ziet dat de stappen voor het uitvoeren van een upgrade en publicatie in Visual Studio hetzelfde zijn.
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 In deze zelfstudiereeks leert u het volgende:
 > [!div class="checklist"]
 > * [Een Service Fabric Mesh-app maken in Visual Studio](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in uw lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Fouten opsporen in een Service Fabric Mesh-app die wordt uitgevoerd in de lokale ontwikkelcluster](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
 > * [Een Service Fabric Mesh-app implementeren](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * Een Service Fabric mesh-app bijwerken
 > * [Service Fabric Mesh-bronnen opschonen](service-fabric-mesh-tutorial-cleanup-resources.md)
@@ -47,33 +47,33 @@ Voor u met deze zelfstudie begint:
 
 ## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Een Service Fabric mesh-service bijwerken met behulp van Visual Studio
 
-In dit artikel wordt beschreven hoe u een micro service binnen een toepassing bijwerkt. In dit voor beeld wijzigen we de `WebFrontEnd` service om een taak categorie weer te geven en de hoeveelheid CPU die deze heeft gegeven, te verg Roten. Vervolgens voert u een upgrade uit van de geïmplementeerde service.
+In dit artikel wordt beschreven hoe u een micro service binnen een toepassing bijwerkt. In dit voor beeld wijzigen we de `WebFrontEnd`-service om een taak categorie weer te geven en de hoeveelheid CPU die deze heeft gegeven, te verg Roten. Vervolgens voert u een upgrade uit van de geïmplementeerde service.
 
 ## <a name="modify-the-config"></a>De configuratie wijzigen
 
 Wanneer u een Service Fabric mesh-app maakt, voegt Visual Studio een yaml-bestand voor **para meters** toe voor elke implementatie omgeving (Cloud en lokaal). In deze bestanden kunt u para meters en hun waarden definiëren waarnaar vervolgens kan worden verwezen vanuit uw net *. YAML-bestanden zoals service. yaml of Network. yaml.  Visual Studio biedt een aantal variabelen voor u, zoals hoeveel CPU de service kan gebruiken.
 
-De `WebFrontEnd_cpu` para meter wordt bijgewerkt om de CPU-Resources bij `1.5` te werken naar in afwachting dat de Webfront- **End** -service intensief wordt gebruikt.
+De `WebFrontEnd_cpu`-para meter wordt bijgewerkt om de CPU-Resources bij te werken naar `1.5` in de toekomst dat de Webfront- **End** -service intensief wordt gebruikt.
 
-1. Open in het project **todolistapp** onder **environments** > **Cloud**het bestand **para meters. yaml** . Wijzig de `WebFrontEnd_cpu`waarde, in `1.5`. De parameter naam wordt voorafgegaan door de service naam `WebFrontEnd_` als een best practice om deze te onderscheiden van para meters met dezelfde naam die van toepassing zijn op verschillende services.
+1. Open in het project **todolistapp** onder **omgevingen** > **Cloud**het bestand **para meters. yaml** . Wijzig de `WebFrontEnd_cpu`, waarde in `1.5`. De parameter naam wordt voorafgegaan door de service naam `WebFrontEnd_` als een best practice om deze te onderscheiden van para meters met dezelfde naam die van toepassing zijn op verschillende services.
 
     ```xml
     WebFrontEnd_cpu: 1.5
     ```
 
-2. Open het bestand **service. yaml** van het webfrontend onder **webfrontend** > - **service resources**.
+2. Open het bestand **service. yaml** van het **webfrontend** onder webfront- **frontend** > **service bronnen**.
 
-    Houd er rekening mee `resources:` dat de `cpu:` in-sectie `"[parameters('WebFrontEnd_cpu')]"`is ingesteld op. Als het project wordt gebouwd voor de Cloud, wordt de waarde voor `'WebFrontEnd_cpu` opgehaald uit > het yaml- `1.5`bestand**Cloud** > **para meters.** Als het project wordt gebouwd om lokaal te worden uitgevoerd, wordt de waarde opgehaald uit het yaml-bestand van de **omgeving** > **Local** > **para meters** en wordt ' 0,5 '.
+    Houd er rekening mee dat de sectie in `resources:` `cpu:` is ingesteld op `"[parameters('WebFrontEnd_cpu')]"`. Als het project wordt gebouwd voor de Cloud, wordt de waarde voor `'WebFrontEnd_cpu` overgenomen uit de **omgevingen** > **Cloud** > **para meters. yaml** -bestand en wordt `1.5`. Als het project wordt gebouwd om lokaal te worden uitgevoerd, wordt de waarde opgehaald uit de **omgevingen** > **lokale** > **para meters. yaml** -bestand en wordt ' 0,5 '.
 
 > [!Tip]
 > Standaard wordt het parameter bestand dat een peer is van het profiel. yaml-bestand gebruikt om de waarden voor dat profiel. yaml-bestand op te geven.
 > Bijvoorbeeld: omgevingen > Cloud > para meters. yaml biedt de parameter waarden voor omgevingen > Cloud > profile. yaml.
 >
-> U kunt dit overschrijven door het volgende toe te voegen aan het profiel. yaml-bestand:`parametersFilePath=”relative or full path to the parameters file”` Bijvoorbeeld, `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` of `parametersFilePath=”..\CommonParameters.yaml”`
+> U kunt dit overschrijven door het volgende toe te voegen aan het profiel. yaml-bestand:`parametersFilePath=”relative or full path to the parameters file”` bijvoorbeeld `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` of `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>Het model wijzigen
 
-Als u een code wijziging wilt introduceren `Category` , voegt u `ToDoItem` een eigenschap toe `ToDoItem.cs` aan de klasse in het bestand.
+Als u een code wijziging wilt introduceren, voegt u een `Category`-eigenschap toe aan de klasse `ToDoItem` in het `ToDoItem.cs`-bestand.
 
 ```csharp
 public class ToDoItem
@@ -83,7 +83,7 @@ public class ToDoItem
 }
 ```
 
-Werk vervolgens de `Load()` -methode in hetzelfde bestand bij om de categorie in te stellen op een standaard teken reeks:
+Werk vervolgens de `Load()`-methode in hetzelfde bestand bij om de categorie in te stellen op een standaard teken reeks:
 
 ```csharp
 public static ToDoItem Load(string description, int index, bool completed)
@@ -101,7 +101,7 @@ public static ToDoItem Load(string description, int index, bool completed)
 
 ## <a name="modify-the-service"></a>De service wijzigen
 
-Het `WebFrontEnd` project is een ASP.net core-toepassing met een webpagina waarop taken lijst items worden weer gegeven. `WebFrontEnd` Open`Index.cshtml` in het project en voeg de volgende twee regels toe, zoals hieronder aangegeven, om de categorie van de taak weer te geven:
+Het `WebFrontEnd` project is een ASP.NET Core toepassing met een webpagina waarop taken lijst items worden weer gegeven. Open `Index.cshtml` in het `WebFrontEnd` project en voeg de volgende twee regels toe, zoals hieronder aangegeven, om de categorie van de taak weer te geven:
 
 ```HTML
 <div>
@@ -135,7 +135,7 @@ Of u nu een code-upgrade of een configuratie-upgrade uitvoert (in dit geval gaan
 
 Vervolgens ziet u het dialoogvenster **Service Fabric-toepassing publiceren**.
 
-Gebruik de vervolg keuzelijst **doel profiel** om het bestand profile. yaml te selecteren dat u voor deze implementatie wilt gebruiken. Er wordt een upgrade uitgevoerd van de app in de Cloud, dus we selecteren de **Cloud. yaml** in de vervolg keuzelijst `WebFrontEnd_cpu` , die de waarde 1,0 gebruikt die in dat bestand is gedefinieerd.
+Gebruik de vervolg keuzelijst **doel profiel** om het bestand profile. yaml te selecteren dat u voor deze implementatie wilt gebruiken. Er wordt een upgrade uitgevoerd van de app in de Cloud, dus we selecteren de **Cloud. yaml** in de vervolg keuzelijst, die gebruikmaakt van de `WebFrontEnd_cpu` waarde 1,0 die in dat bestand is gedefinieerd.
 
 ![Dialoogvenster in Visual Studio over Service Fabric Mesh-publicatie](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 

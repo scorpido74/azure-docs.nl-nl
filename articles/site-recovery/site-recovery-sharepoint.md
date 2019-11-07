@@ -1,5 +1,5 @@
 ---
-title: Herstel na nood geval instellen voor een share point-toepassing met meerdere lagen met Azure Site Recovery | Microsoft Docs
+title: Herstel na nood geval voor een share point-app met meerdere lagen met Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u herstel na nood gevallen instelt voor een share point-toepassing met meerdere lagen met behulp van Azure Site Recovery mogelijkheden.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231485"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622413"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Herstel na nood geval instellen voor een share point-toepassing met meerdere lagen voor herstel na nood geval met behulp van Azure Site Recovery
 
@@ -86,7 +86,7 @@ Volg [deze richt lijnen](site-recovery-vmware-to-azure.md) om te beginnen met he
 
 ## <a name="networking-configuration"></a>Netwerk configuratie
 
-### <a name="network-properties"></a>Netwerkeigenschappen
+### <a name="network-properties"></a>Netwerk eigenschappen
 
 * Configureer voor de virtuele machines van de app en de weblaag netwerk instellingen in Azure Portal zodat de Vm's worden gekoppeld aan het juiste DR-netwerk na een failover.
 
@@ -108,7 +108,7 @@ Voor Internet gerichte sites [maakt u een Traffic Manager profiel van het type P
 | On-premises DNS | sharepointonprem.contoso.com | Openbaar IP-adres op de on-premises Farm |
 
 
-Maak in het Traffic Manager profiel [de primaire en herstel](../traffic-manager/traffic-manager-configure-priority-routing-method.md)eindpunten. Gebruik het externe eind punt voor het on-premises eind punt en het open bare IP-eind punt voor Azure. Zorg ervoor dat de prioriteit hoger is ingesteld op een on-premises eind punt.
+Maak in het Traffic Manager profiel [de primaire en herstel eindpunten](../traffic-manager/traffic-manager-configure-priority-routing-method.md). Gebruik het externe eind punt voor het on-premises eind punt en het open bare IP-eind punt voor Azure. Zorg ervoor dat de prioriteit hoger is ingesteld op een on-premises eind punt.
 
 Host een test pagina op een specifieke poort (bijvoorbeeld 800) in de share point-weblaag, zodat de beschik baarheid na failover automatisch door Traffic Manager wordt gedetecteerd. Dit is een tijdelijke oplossing voor het geval u anonieme verificatie niet kunt inschakelen op uw share point-sites.
 

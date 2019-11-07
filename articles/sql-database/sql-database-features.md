@@ -1,5 +1,5 @@
 ---
-title: Vergelijking van Azure SQL Database-functies | Microsoft Docs
+title: Vergelijking van Azure SQL Database-functies
 description: In dit artikel worden de functies vergeleken van SQL Server die beschikbaar zijn in verschillende soorten Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: bec70c6385c9d7ea09e1d8e41229b224423956ab
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7f0e4237a8400faf95af728665e8ee61daaab3bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330970"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690019"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database functies
 
@@ -42,11 +42,11 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [Opdracht BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nee, alleen door het systeem geïnitieerde automatische back-ups: Zie [automatische back-ups](sql-database-automated-backups.md) | Ja, door de gebruiker gestarte back-ups naar Azure Blob Storage (automatische systeem back-ups kunnen niet worden gestart door de gebruiker). Zie [back-upverschillen](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Ingebouwde functies](https://docs.microsoft.com/sql/t-sql/functions/functions) | De meeste-Zie afzonderlijke functies | Ja, Zie [opgeslagen procedures, functies, triggers-verschillen](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) | 
 | [BULK INSERT-instructie](https://docs.microsoft.com/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | Ja, maar alleen van Azure Blob-opslag als een bron. | Ja, maar alleen van Azure Blob Storage als bron: Zie [verschillen](sql-database-managed-instance-transact-sql-information.md#bulk-insert--openrowset). |
-| [Certificaten en asymmetrische sleutels](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ja, zonder toegang tot bestands systeem voor `BACKUP`-en `CREATE`-bewerkingen. | Ja, zonder toegang tot bestands systeem voor `BACKUP` en `CREATE`-bewerkingen-Zie [certificaat verschillen](sql-database-managed-instance-transact-sql-information.md#certificates). | 
+| [Certificaten en asymmetrische sleutels](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Ja, zonder toegang tot bestands systeem voor `BACKUP` en `CREATE` bewerkingen. | Ja, zonder toegang tot bestands systeem voor `BACKUP` en `CREATE` bewerkingen: Zie [certificaat verschillen](sql-database-managed-instance-transact-sql-information.md#certificates). | 
 | [Change Data Capture-CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Nee | Ja |
 | [Sortering-Server/exemplaar](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Nee, standaard sortering van de logische server `SQL_Latin1_General_CP1_CI_AS` wordt altijd gebruikt. | Ja, kan worden ingesteld wanneer het [exemplaar wordt gemaakt](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) en kan later niet worden bijgewerkt. |
 | [Column Store-indexen](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Yes- [Premium-laag, Standard-laag-S3 en hoger, algemeen laag, bedrijfskritiek en grootschalige-lagen](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Ja |
-| [Common language runtime-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nee | Ja, maar zonder toegang tot bestands systeem in de instructie `CREATE ASSEMBLY`-Zie [CLR-verschillen](sql-database-managed-instance-transact-sql-information.md#clr) |
+| [Common language runtime-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Nee | Ja, maar zonder toegang tot bestands systeem in `CREATE ASSEMBLY`-instructie-Zie [CLR-verschillen](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Referenties](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Ja, maar alleen [Data Base-bereik referenties](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Ja, maar alleen **Azure Key Vault** en `SHARED ACCESS SIGNATURE` worden ondersteund Zie [Details](sql-database-managed-instance-transact-sql-information.md#credential) |
 | [Query's met namen van meerdere data bases/drie delen](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nee-Zie [elastische query's](sql-database-elastic-query-overview.md) | Ja, plus [elastische query's](sql-database-elastic-query-overview.md) |
 | [Transacties tussen databases](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nee | Ja, binnen het exemplaar. Zie [verschillen tussen gekoppelde servers](sql-database-managed-instance-transact-sql-information.md#linked-servers) voor query's die betrekking hebben op meerdere instanties. |
@@ -59,12 +59,12 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [Gedistribueerde partitie weergaven](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Nee | Ja |
 | [Gedistribueerde trans acties-MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nee-Zie [elastische trans acties](sql-database-elastic-transactions-overview.md) |  Nee, Zie [verschillen met gekoppelde servers](sql-database-managed-instance-transact-sql-information.md#linked-servers). Probeer data bases van verschillende gedistribueerde SQL Server exemplaren samen te voegen in één beheerd exemplaar tijdens de migratie. |
 | [DML-triggers](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | De meeste-Zie afzonderlijke instructies |  Ja |
-| [DMV's](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | De meeste-Zie afzonderlijke Dmv's |  Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md) |
+| [DMV’s](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | De meeste-Zie afzonderlijke Dmv's |  Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md) |
 | [Gebeurtenis meldingen](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Geen-Zie [waarschuwingen](sql-database-insights-alerts-portal.md) | Nee |
 | [Expressies](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Ja | Ja |
 | [Uitgebreide gebeurtenissen (XEvent)](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Sommige-Zie [uitgebreide gebeurtenissen in SQL database](sql-database-xevent-db-diff-from-svr.md) | Ja, zie de [verschillen in uitgebreide gebeurtenissen](sql-database-managed-instance-transact-sql-information.md#extended-events) |
 | [Uitgebreide opgeslagen procedures](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | Nee | Nee |
-| [Bestanden en bestands groepen](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Alleen primaire bestands groep | Ja. Bestands paden worden automatisch toegewezen en de bestands locatie kan niet worden opgegeven in de [instructie](sql-database-managed-instance-transact-sql-information.md#alter-database-statement)`ALTER DATABASE ADD FILE`.  |
+| [Bestanden en bestands groepen](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | Alleen primaire bestands groep | Ja. Bestands paden worden automatisch toegewezen en de bestands locatie kan niet worden opgegeven in de `ALTER DATABASE ADD FILE`- [instructie](sql-database-managed-instance-transact-sql-information.md#alter-database-statement).  |
 | [-](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Nee | [Nee](sql-database-managed-instance-transact-sql-information.md#filestream-and-filetable) |
 | [Zoek opdracht in volledige tekst (FT'S)](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Ja, maar woord afbreekers van derden worden niet ondersteund | Ja, maar [woord afbreekers van derden worden niet ondersteund](sql-database-managed-instance-transact-sql-information.md#full-text-semantic-search) |
 | [Functies](https://docs.microsoft.com/sql/t-sql/functions/functions) | De meeste-Zie afzonderlijke functies | Ja, Zie [opgeslagen procedures, functies, triggers-verschillen](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-and-triggers) |
@@ -81,7 +81,7 @@ De volgende tabel bevat de belangrijkste functies van SQL Server en geeft inform
 | [Open query](https://docs.microsoft.com/sql/t-sql/functions/openquery-transact-sql)|Nee|Ja, alleen voor andere Azure SQL-data bases en SQL-servers. Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)|Ja, alleen importeren uit Azure Blob-opslag. |Ja, alleen voor andere Azure SQL-data bases en SQL-servers en voor het importeren vanuit Azure Blob-opslag. Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md)|
 | [Dienen](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | De meeste-Zie afzonderlijke Opera tors |Ja, Zie [T-SQL-verschillen](sql-database-managed-instance-transact-sql-information.md) |
-| [Poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nee. U kunt een query uitvoeren op gegevens in de bestanden die in azure zijn geplaatst Blob Storage met behulp van de functie `OPENROWSET`. | Nee. U kunt een query uitvoeren op gegevens in de bestanden die in azure zijn geplaatst Blob Storage met behulp van de functie `OPENROWSET`. |
+| [Poly base](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nee. U kunt een query uitvoeren op gegevens in de bestanden die in Azure Blob Storage worden geplaatst met behulp van `OPENROWSET` functie. | Nee. U kunt een query uitvoeren op gegevens in de bestanden die in Azure Blob Storage worden geplaatst met behulp van `OPENROWSET` functie. |
 | [Query meldingen](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nee | Ja |
 | [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Ja, in [open bare preview](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nee |
 | [Herstel modellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) | Alleen volledig herstel dat een hoge Beschik baarheid garandeert, wordt ondersteund. Eenvoudige en bulksgewijs geregistreerde herstel modellen zijn niet beschikbaar. | Alleen volledig herstel dat een hoge Beschik baarheid garandeert, wordt ondersteund. Eenvoudige en bulksgewijs geregistreerde herstel modellen zijn niet beschikbaar. | 
@@ -144,15 +144,15 @@ Azure-platform biedt een aantal PaaS-mogelijkheden die als extra waarde worden t
 | VNet-service-eind punt | [Ja](sql-database-vnet-service-endpoint-rule-overview.md) | Nee |
 | Globale VNet-peering | Ja, met behulp van [privé-IP-en service-eind punten](sql-database-vnet-service-endpoint-rule-overview.md) | Nee, [beheerd exemplaar wordt niet ondersteund](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) als gevolg [van een Load Balancer-beperking in VNet Global peering](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
 
-## <a name="tools"></a>Tools
+## <a name="tools"></a>Hulpprogramma's
 Azure SQL database ondersteunt diverse hulp middelen voor gegevens die u kunnen helpen bij het beheren van uw gegevens.
 
 | **Hulpprogramma** | **Afzonderlijke data bases en elastische Pools** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
 | Azure Portal | Ja | Ja |
-| Azure CLI | Ja | Ja|
+| Azure-CLI | Ja | Ja|
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Ja | Ja |
-| Azure PowerShell | Ja | Ja |
+| Azure Powershell | Ja | Ja |
 | [BACPAC-bestand (exporteren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja, Zie [SQL database exporteren](sql-database-export.md) | Ja, Zie [SQL database exporteren](sql-database-export.md) |
 | [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ja, Zie [SQL database importeren](sql-database-import.md) | Ja, Zie [SQL database importeren](sql-database-import.md) |
 | [Data Quality Services (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | Nee | Nee |
@@ -171,8 +171,8 @@ U kunt verschillende migratie methoden gebruiken om uw gegevens te verplaatsen t
 | **Bron** | **Eén data base en elastische pool** | **Beheerde instanties en exemplaar groepen** |
 | --- | --- | --- |
 | SQL Server (on-premises, AzureVM, Amazon RDS) | **Online:** [gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Online:** [gegevens migratie service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Systeem eigen back-up/herstellen, [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
-| Afzonderlijke database | **Offline:** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
-| Managed Instance | **Online:** [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) | **Online:** [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Herstel punt voor meerdere exemplaren ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) of [Azure cli](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [systeem eigen back-up/herstellen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
+| Individuele database | **Offline:** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP | **Offline:** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP |
+| Beheerd exemplaar | **Online:** [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) | **Online:** [transactionele replicatie](sql-database-managed-instance-transactional-replication.md) <br/> **Offline:** Herstel punt voor meerdere exemplaren ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) of [Azure cli](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [systeem eigen back-up/herstellen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [BACPAC-bestand (importeren)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [momentopname replicatie](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

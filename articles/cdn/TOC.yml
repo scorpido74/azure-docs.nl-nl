@@ -26,6 +26,8 @@
       href: cdn-custom-ssl.md
     - name: Regels voor caching instellen
       href: cdn-caching-rules-tutorial.md
+    - name: HTTPS afdwingen met de standaardregelengine
+      href: cdn-standard-rules-engine.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
@@ -134,6 +136,13 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Naslaginformatie
   items:
+    - name: Naslaginformatie over Microsoft-standaardregelengine
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: Overeenkomende voorwaarden van standaardregelengine
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: Acties van standaardregelengine
+          href: cdn-standard-rules-engine-actions.md
     - name: Naslaginformatie over de regelengine van Verizon Premium
       href: cdn-verizon-premium-rules-engine-reference.md
       items:

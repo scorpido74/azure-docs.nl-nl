@@ -1,5 +1,5 @@
 ---
-title: Zelf studie over SaaS-data base-per-Tenant-Azure SQL Database | Microsoft Docs
+title: Zelf studie over SaaS-data base-per-Tenant-Azure SQL Database
 description: Implementeer en verken de SaaS multi tenant-toepassing Wingtip tickets die het data base-per-Tenant patroon en andere SaaS-patronen demonstreert met behulp van Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d5f64f0a9abfa736c1db0e562b6f18ecfc1f6de5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b271c4bbf942bee70c4995ee04ec370591d4f67d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023826"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692184"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Implementeer en verken een multi tenant SaaS-app die gebruikmaakt van het data base-per-Tenant patroon met SQL Database
 
@@ -62,9 +62,9 @@ Kies uw namen nu en noteer deze.
     > [!IMPORTANT]
     > Sommige verificatie-en server firewalls zijn opzettelijk onveilig voor demonstratie doeleinden. We raden u aan een nieuwe resource groep te maken. Gebruik geen bestaande resource groepen,-servers of-groepen. Gebruik deze toepassing, scripts of enige geïmplementeerde resources niet voor productie. Verwijder deze resource groep wanneer u klaar bent met de toepassing om gerelateerde facturering te stoppen.
 
-    - **Resourcegroep**: Selecteer **nieuwe maken**en geef de unieke naam op die u eerder hebt gekozen voor de resource groep.
+    - **Resource groep**: Selecteer **nieuwe maken**en geef de unieke naam op die u eerder hebt gekozen voor de resource groep.
     - **Locatie**: Selecteer een locatie in de vervolg keuzelijst.
-    - **Gebruiker**: Gebruik de waarde voor de gebruikers naam die u eerder hebt gekozen.
+    - **Gebruiker**: gebruik de waarde voor de gebruikers naam die u eerder hebt gekozen.
 
 1. De toepassing implementeren.
 
@@ -87,16 +87,16 @@ Wanneer de toepassing wordt geïmplementeerd, downloadt u de bron code-en beheer
 1. Selecteer **Klonen of downloaden**.
 1. Selecteer **zip downloaden**en sla het bestand op.
 1. Klik met de rechter muisknop op het bestand **WingtipTicketsSaaS-DbPerTenant-Master. zip** en selecteer **Eigenschappen**.
-1. Op het tabblad **Algemeen** selecteert u **deblokkeren** > **Toep assen**.
+1. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen** > **Toep assen**.
 1. Selecteer **OK**en pak de bestanden uit
 
-De scripts bevinden zich in de map... \\WingtipTicketsSaaS-DbPerTenant-Master @ no__t-1Learning modules.
+De scripts bevinden zich in de map...\\WingtipTicketsSaaS-DbPerTenant-Master\\learning modules.
 
 ## <a name="update-the-user-configuration-file-for-this-deployment"></a>Het gebruikers configuratie bestand voor deze implementatie bijwerken
 
 Voordat u scripts uitvoert, moet u de waarden van de resource groep en de gebruiker in het gebruikers configuratie bestand bijwerken. Stel deze variabelen in op de waarden die u tijdens de implementatie hebt gebruikt.
 
-1. Open in de Power shell-ISE de modules... \\Learning @ no__t-1**userconfig. psm1**
+1. Open in de Power shell ISE-learning modules\\**userconfig. psm1** ...\\
 1. **ResourceGroupName** en **naam** bijwerken met de specifieke waarden voor uw implementatie (alleen op regels 10 en 11).
 1. Sla de wijzigingen op.
 
@@ -110,27 +110,27 @@ In de app wordt intern een SQL database geïmplementeerd in een elastische SQL-p
 
 Een centrale **gebeurtenis hub** pagina bevat een lijst met koppelingen naar de tenants in uw implementatie.
 
-1. Gebruik de URL om de evenementen hub in uw webbrowser te openen: http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net. Substitueer &lt;user @ no__t-1 met de gebruikers waarde van uw implementatie.
+1. Gebruik de URL om de evenementen hub in uw webbrowser te openen: http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net. Vervang &lt;gebruiker&gt; door de gebruikers waarde van uw implementatie.
 
     ![Events hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
 2. Selecteer **fabrikam Jazz Club** in de evenementen hub.
 
-    ![Events](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Gebeurtenissen](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 De Wingtip-toepassing maakt gebruik van [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) om de distributie van binnenkomende aanvragen te beheren. De URL voor toegang tot de gebeurtenissen pagina voor een specifieke Tenant gebruikt de volgende indeling:
 
-- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net/fabrikamjazzclub
 
     De delen van de voor gaande notatie worden beschreven in de volgende tabel.
 
-    | URL-onderdeel        | Description       |
+    | URL-onderdeel        | Beschrijving       |
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | De gebeurtenissen delen van de Wingtip-app.<br /><br /> *-dpt* onderscheidt de implementatie van de *Data Base-per-Tenant* van Wingtip-tickets van andere implementaties. Voor beelden zijn de implementaties van *één* app-per-Tenant ( *-sa*) of *multi tenant-data base* ( *-MT*). |
-    | . *&lt;user @ no__t-2* | *AF1* in het voor beeld. |
-    | .trafficmanager.net/ | Traffic Manager, basis-URL. |
+    | . *gebruikers&gt;&lt;* | *AF1* in het voor beeld. |
+    | . trafficmanager.net/ | Traffic Manager, basis-URL. |
     | fabrikamjazzclub | Identificeert de Tenant met de naam fabrikam Jazz Club. |
     | &nbsp; | &nbsp; |
 
@@ -140,7 +140,7 @@ De Wingtip-toepassing maakt gebruik van [*Azure Traffic Manager*](../traffic-ma
   - De catalogus wordt geïmplementeerd met behulp van *Shard-toewijzings beheer*.
 - De Events hub gebruikt uitgebreide meta gegevens in de catalogus om de lijst met Url's voor elke Tenant op te bouwen.
 
-In een productie omgeving maakt u doorgaans een CNAME DNS-record om te verwijzen naar het [*Internet domein van een bedrijf*](../traffic-manager/traffic-manager-point-internet-domain.md) to de Traffic Manager DNS-naam.
+In een productie omgeving maakt u doorgaans een CNAME DNS-record om het [*Internet domein van een bedrijf*](../traffic-manager/traffic-manager-point-internet-domain.md) te laten verwijzen naar de Traffic Manager DNS-naam.
 
 > [!NOTE]
 > Het is mogelijk niet onmiddellijk duidelijk wat het gebruik van Traffic Manager is in deze zelf studie. Het doel van deze reeks zelf studies is het demonstreren van patronen die de schaal van een complexe productie omgeving kunnen afhandelen. In een dergelijk geval hebt u bijvoorbeeld meerdere web-apps verdeeld over de hele wereld, naast elkaar met data bases en hebt u Traffic manager nodig om tussen deze instanties te routeren.
@@ -152,7 +152,7 @@ Nu de app is geïmplementeerd, kunt u deze gebruiken.
 
 Het Power shell *-script demo-LoadGenerator* start een werk belasting die wordt uitgevoerd op alle Tenant databases. De werkelijke belasting van veel SaaS-apps is sporadisch en onvoorspelbaar. Voor het simuleren van dit type belasting, produceert de generator een belasting met wille keurige pieken of bursts van de activiteit op elke Tenant. De bursts treden op in wille keurige intervallen. Het duurt enkele minuten voordat het laad patroon zich voordoet. Laat de generator ten minste drie of vier minuten uitvoeren voordat u de belasting bewaken.
 
-1. Open in de Power shell-ISE het script... \\Learning modules @ no__t-1Utilities @ no__t-2*demo-LoadGenerator. ps1* .
+1. Open in de Power shell-ISE de modules...\\learning modules\\Utilities\\script van *demo-LoadGenerator. ps1* .
 2. Druk op F5 om het script uit te voeren en de load generator te starten. Wijzig de standaard parameter waarden nu.
 3. Meld u aan bij uw Azure-account en selecteer het abonnement dat u wilt gebruiken, indien nodig.
 
@@ -172,7 +172,7 @@ Als u de achtergrond taken wilt beheren en controleren, gebruikt u de volgende c
 
 1. *Demo-LoadGenerator. ps1* start *LoadGenerator. ps1* op de voor grond.
 
-    - Beide. ps1-bestanden worden opgeslagen in de mappen learning modules @ no__t-0Utilities @ no__t-1.
+    - Beide. ps1-bestanden worden opgeslagen in de mappen learning modules\\-Hulpprogram Ma's\\.
 
 2. *LoadGenerator. ps1* loopt door alle Tenant databases in de catalogus.
 
@@ -181,7 +181,7 @@ Als u de achtergrond taken wilt beheren en controleren, gebruikt u de volgende c
     - De achtergrond taken worden standaard gedurende 120 minuten uitgevoerd.
     - Elke taak veroorzaakt een op CPU gebaseerde belasting voor één Tenant database door *sp_CpuLoadGenerator*uit te voeren. De intensiteit en duur van de belasting variëren, afhankelijk van `$DemoScenario`.
     - *sp_CpuLoadGenerator* lussen rond een SQL SELECT-instructie die een hoge CPU-belasting veroorzaakt. Het tijds interval tussen de problemen van de SELECT is afhankelijk van de parameter waarden voor het maken van een instelbaar CPU-belasting. Laad niveaus en intervallen worden wille keurig voor het simuleren van meer realistische belasting.
-    - Dit. SQL-bestand wordt opgeslagen onder *WingtipTenantDB @ no__t-1dbo @ no__t-2StoredProcedures @ no__t-3*.
+    - Dit. SQL-bestand wordt opgeslagen onder *WingtipTenantDB\\dbo\\StoredProcedures\\* .
 
 4. Als `$OneTime = $false`, de load Generator start de achtergrond taken en gaat vervolgens verder met uitvoeren. Elke 10 seconden wordt gecontroleerd op nieuwe tenants die zijn ingericht. Als u `$OneTime = $true` instelt, start de LoadGenerator de achtergrond taken en stopt de uitvoering op de voor grond. Voor deze zelf studie moet u `$OneTime = $false` laten staan.
 
@@ -198,7 +198,7 @@ Voordat u verdergaat met de volgende sectie, moet u de belasting Generator laten
 Bij de eerste implementatie worden drie voor beelden van tenants gemaakt. U maakt nu een andere Tenant om de impact op de geïmplementeerde toepassing te bekijken. In de Wingtip-app wordt de werk stroom voor het inrichten van nieuwe tenants uitgelegd in de [zelf studie voor het inrichten en de catalogus](saas-dbpertenant-provision-and-catalog.md). In deze fase maakt u een nieuwe Tenant die minder dan een minuut in beslag neemt.
 
 1. Open een nieuwe Power shell-ISE.
-2. Open... \\Learning Modules\Provision en Catalog @ no__t-1*demo-ProvisionAndCatalog. ps1*.
+2. Open...\\Learning Modules\Provision en Catalog\\*demo-ProvisionAndCatalog. ps1*.
 3. Druk op F5 om het script uit te voeren. Behoud de standaard waarden voor nu.
 
    > [!NOTE]
@@ -220,14 +220,14 @@ Vernieuw de Events hub om te zorgen dat de nieuwe Tenant wordt weer gegeven in d
 
 Nu u bent begonnen met het uitvoeren van een belasting voor de verzameling tenants, kijken we naar enkele van de resources die zijn geïmplementeerd.
 
-1. Blader in het [Azure Portal](https://portal.azure.com)naar de lijst met SQL-servers. Open vervolgens de **catalogus-dpt-&lt;USER @ no__t-2** -server.
+1. Blader in het [Azure Portal](https://portal.azure.com)naar de lijst met SQL-servers. Open vervolgens de **&gt;** -server voor de&lt;van de catalogus.
     - De catalogus server bevat twee data bases: **tenantcatalog** en **basetenantdb** (een sjabloon database die is gekopieerd om nieuwe tenants te maken).
 
    ![Databases](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Ga terug naar de lijst met SQL-servers.
 
-3. Open de **tenants1-dpt-&lt;USER @ no__t-2** -server die de Tenant databases bevat.
+3. Open de **tenants1-dpt-&lt;gebruiker&gt;-** server die de Tenant-data bases bevat.
 
 4. Bekijk de volgende items:
 
@@ -240,7 +240,7 @@ Nu u bent begonnen met het uitvoeren van een belasting voor de verzameling tenan
 
 Nadat *LoadGenerator. ps1* enkele minuten is uitgevoerd, moeten er voldoende gegevens beschikbaar zijn om te kijken naar sommige bewakings mogelijkheden. Deze mogelijkheden zijn ingebouwd in Pools en data bases.
 
-Blader naar de server **tenants1-dpt-&lt;user @ no__t-2**en selecteer **Pool1** om het resource gebruik voor de groep weer te geven. In de volgende grafieken is de load Generator één uur uitgevoerd.
+Blader naar de server **tenants1-dpt-&lt;gebruikers&gt;** en selecteer **Pool1** om het resource gebruik voor de groep weer te geven. In de volgende grafieken is de load Generator één uur uitgevoerd.
 
    ![Groep bewaken](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
@@ -249,7 +249,7 @@ Blader naar de server **tenants1-dpt-&lt;user @ no__t-2**en selecteer **Pool1** 
 
 De twee grafieken illustreren dat elastische Pools en SQL Database goed zijn afgestemd op onvoorspelbare SaaS-toepassings werkbelastingen. In de grafieken ziet u dat vier data bases elke bursting tot 40 Edtu's hebben en dat alle data bases kunnen worden ondersteund door een 50-eDTU-groep. De 50-eDTU-groep kan zelfs zware werk belastingen ondersteunen. Als de data bases zijn ingericht als afzonderlijke data bases, moet elk een S2 (50 DTU) zijn voor de ondersteuning van de bursts. De kosten van vier enkele S2-data bases zijn bijna drie maal de prijs van de pool. In praktijk situaties SQL Database klanten Maxi maal 500 data bases uitvoeren in 200 eDTU-groepen. Zie voor meer informatie de [zelf studie voor prestatie bewaking](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie voor meer informatie aanvullende [zelf studies over het bouwen van de Wingtip tickets SaaS data base-per-Tenant toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Zie [Wat is een elastische Azure SQL-pool?](sql-database-elastic-pool.md)voor meer informatie over elastische Pools.

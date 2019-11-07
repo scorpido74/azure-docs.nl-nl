@@ -1,5 +1,5 @@
 ---
-title: SQL Data Warehouse-gegevens visualiseren met Power BI | Microsoft Azure
+title: Gegevens visualiseren met Power BI Microsoft Azure
 description: SQL Data Warehouse-gegevens visualiseren met Power BI
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4650e171c180653e94d78451d66bba1bcc71b136
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: eea4e3b0b1f0e4ec3eaf3e0aba8952f6693d2921
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241287"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685791"
 ---
 # <a name="visualize-data-with-power-bi"></a>Gegevens visualiseren met Power BI
 In deze zelfstudie leert u hoe u Power BI gebruikt om verbinding te maken met SQL Data Warehouse en hoe u enkele eenvoudige visualisaties maakt.
@@ -27,12 +28,12 @@ In deze zelfstudie leert u hoe u Power BI gebruikt om verbinding te maken met SQ
 ## <a name="prerequisites"></a>Vereisten
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een SQL Data Warehouse die vooraf is geladen met de AdventureWorksDW-dataware. Zie voor het inrichten van een datawarehouse [maken van een SQL Data Warehouse](create-data-warehouse-portal.md) en kiest u om de voorbeeldgegevens te laden. Als u al een datawarehouse hebt maar nog geen voorbeeldgegevens, kunt u [WideWorldImportersDW laden](load-data-wideworldimportersdw.md).
+* Een SQL Data Warehouse die vooraf is geladen met de AdventureWorksDW-dataware. Zie [Create a SQL Data Warehouse](create-data-warehouse-portal.md) en kies ervoor om de voorbeeld gegevens te laden om een Data Warehouse in te richten. Als u al een Data Warehouse hebt, maar geen voorbeeld gegevens hebt, kunt u [WideWorldImportersDW laden](load-data-wideworldimportersdw.md).
 
-## <a name="1-connect-to-your-database"></a>1. Verbinding maken met uw database
+## <a name="1-connect-to-your-database"></a>1. Maak verbinding met uw data base
 Ga als volgt te werk om Power BI te openen en verbinding te maken met de database AdventureWorksDW:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Klik op **SQL-databases** en kies de SQL Data Warehouse-database AdventureWorks.
    
     ![De database zoeken](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
@@ -42,34 +43,34 @@ Ga als volgt te werk om Power BI te openen en verbinding te maken met de databas
 4. Nu ziet u de verbindingspagina voor SQL Data Warehouse met het webadres van uw database. Klik op volgende.
    
     ![Verbinding met Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-connect-to-azure.png)
-5. Voer uw Azure SQL server-gebruikersnaam en wachtwoord.
+5. Voer de gebruikers naam en het wacht woord voor uw Azure SQL-Server in.
    
-    ![Meld u in Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png)
-6. De database wilt openen, klikt u op de gegevensset AdventureWorksDW op de linkerblade.
+    ![Power BI aanmelden](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-sign-in.png)
+6. Als u de Data Base wilt openen, klikt u op de AdventureWorksDW-gegevensset op de Blade links.
    
     ![AdventureWorksDW wordt geopend in Power BI](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png)
 
-## <a name="2-create-a-report"></a>2. Een rapport maken
+## <a name="2-create-a-report"></a>2. een rapport maken
 Nu kunt u Power BI gebruiken om de voorbeeldgegevens uit AdventureWorksDW te analyseren. Voor de analyse heeft AdventureWorksDW een weergave die AggregateSales wordt genoemd. Deze weergave bevat enkele van de belangrijkste metrische gegevens om de verkoopcijfers van het bedrijf te analyseren.
 
 1. Als u een kaart wilt maken van de totale verkoop op postcode, klikt u in het rechterdeelvenster met velden op de weergave AggregateSales om deze uit te vouwen. Klik op de kolommen PostalCode en SalesAmount om deze te selecteren.
    
-    ![Power BI selecteren AggregateSales](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png)
+    ![Power BI selecteert AggregateSales](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-aggregatesales.png)
    
-    Power BI automatisch herkend geografische gegevens en plaatst deze in een kaart voor u.
+    Power BI automatisch geografische gegevens herkend en in een kaart voor u geplaatst.
    
     ![Power BI-kaart](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-map.png)
 
-2. In deze stap maakt u een staafdiagram waarin de totale verkoop per klantinkomen wordt weergegeven. Als u wilt het staafdiagram maken, gaat u naar de uitgevouwen weergave AggregateSales. Klik in het veld SalesAmount. Sleep het veld Customer Income naar links en zet het neer in As.
+2. In deze stap maakt u een staafdiagram waarin de totale verkoop per klantinkomen wordt weergegeven. Als u de staaf grafiek wilt maken, gaat u naar de uitgevouwen weer gave AggregateSales. Klik in het veld SalesAmount. Sleep het veld Customer Income naar links en zet het neer in As.
    
     ![Power BI selecteert as](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-chooseaxis.png)
    
-    Het staafdiagram over het linkerdiagram geplaatst.
+    Het staaf diagram wordt aan de linkerkant.
    
     ![Power BI-staafdiagram](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-bar.png)
-3. Met deze stap maakt u een lijndiagram waarin de omzet per datum wordt weergegeven. Voor het maken van het lijndiagram, gaat u naar de uitgevouwen weergave AggregateSales. Klik op SalesAmount en OrderDate. Klik in de kolom visualisaties op het pictogram lijndiagram weer te geven, dit het eerste pictogram in de tweede regel onder visualisaties is.
+3. Met deze stap maakt u een lijndiagram waarin de omzet per datum wordt weergegeven. Als u het lijn diagram wilt maken, gaat u naar de uitgevouwen weer gave AggregateSales. Klik op SalesAmount en OrderDate. Klik in de kolom visualisaties op het pictogram lijn diagram, het eerste pictogram in de tweede regel onder visualisaties.
    
-    ![Power BI selecteert lijndiagram weer te geven](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png)
+    ![Power BI lijn diagram selecteren](media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-prepare-line.png)
    
     U hebt nu een rapport met drie verschillende visualisaties van de gegevens.
    
@@ -77,20 +78,20 @@ Nu kunt u Power BI gebruiken om de voorbeeldgegevens uit AdventureWorksDW te ana
 
 U kunt de voortgang op elk moment opslaan door op **Bestand** te klikken en **Opslaan** te selecteren.
 
-## <a name="using-direct-connect"></a>Verbinding maken met behulp van directe
-Als met Azure SQL Database, SQL Data Warehouse Direct Connect ondersteuning biedt voor logische pushdown naast de analytische mogelijkheden van Power BI. Met Direct verbinding kunt maken, 's query verzonden naar uw Azure SQL Data Warehouse in realtime terwijl u de gegevens verkent.  Deze functie, gecombineerd met de schaal van SQL Data Warehouse, kunt u dynamische rapporten maken in minuten op basis van terabytes aan gegevens. Bovendien kan de introductie van het openen in Power BI-knop gebruikers Power BI rechtstreeks verbinden met hun SQL Data Warehouse zonder het verzamelen van gegevens van andere onderdelen van Azure.
+## <a name="using-direct-connect"></a>Direct Connect gebruiken
+Net als bij Azure SQL Database maakt SQL Data Warehouse directe verbinding logische pushdown naast de analytische mogelijkheden van Power BI. Met Direct Connect worden query's in realtime teruggestuurd naar uw Azure SQL Data Warehouse tijdens het verkennen van de gegevens.  Met deze functie, gecombineerd met de schaal van SQL Data Warehouse, kunt u binnen enkele minuten dynamische rapporten maken op basis van terabytes aan gegevens. Daarnaast kunnen gebruikers rechtstreeks verbinding maken met Power BI met hun SQL Data Warehouse Power BI, zonder dat er gegevens uit andere onderdelen van Azure worden verzameld.
 
-Als u Direct verbinding maken:
+Wanneer u direct Connect gebruikt:
 
-* Geef de volledig gekwalificeerde servernaam bij het verbinden.
-* Zorg ervoor dat de firewallregels voor de database zijn geconfigureerd voor toegang tot Azure-services toestaan.
-* Elke actie, zoals het selecteren van een kolom of een filter toe te voegen rechtstreeks een query uitvoert het datawarehouse.
+* Geef de volledig gekwalificeerde server naam op wanneer u verbinding maakt.
+* Zorg ervoor dat de firewall regels voor de data base zo zijn geconfigureerd dat toegang tot Azure-Services is toegestaan.
+* Voor elke actie, zoals het selecteren van een kolom of het toevoegen van een filter, wordt het Data Warehouse rechtstreeks opgevraagd.
 * Tegels worden automatisch en ongeveer elke 15 minuten vernieuwd.
-* Q & A is niet beschikbaar voor gegevenssets die Direct verbinding maken.
-* Wijzigingen in het schema worden automatisch opgenomen.
-* Alle query's Direct Connect wordt time-out na 2 minuten.
+* Q & A is niet beschikbaar voor Direct Connect-gegevens sets.
+* Schema wijzigingen worden automatisch opgenomen.
+* Alle direct connect-query's verloopt na twee minuten een time-out.
 
-Deze beperkingen en opmerkingen verschilt mogelijk als de ervaringen verbeteren.
+Deze beperkingen en opmerkingen kunnen veranderen wanneer de ervaring wordt verbeterd.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu hebt u enige tijd met de voorbeeldgegevens opgewarmd, gaat u hoe u [ontwikkelen](sql-data-warehouse-overview-develop.md) of [laden](design-elt-data-loading.md). Of neem eens een kijkje op de [website van Power BI](https://www.powerbi.com/).
+Nu u hebt opgegeven dat u de voorbeeld gegevens wilt opwarmen, raadpleegt u [ontwikkelen](sql-data-warehouse-overview-develop.md) of [laden](design-elt-data-loading.md). Of neem eens een kijkje op de [website van Power BI](https://www.powerbi.com/).

@@ -1,5 +1,5 @@
 ---
-title: Trans formatie koppelen in Azure Data Factory gegevens stroom voor toewijzing | Microsoft Docs
+title: Trans formatie koppelen in Azure Data Factory gegevens stroom toewijzen
 description: Gegevens uit twee gegevens bronnen combi neren met behulp van de deelname transformatie in Azure Data Factory gegevens stroom toewijzen
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597031"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675917"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
@@ -32,7 +32,7 @@ Links outer join retourneert alle rijen uit de linker stroom en overeenkomende r
 
 ### <a name="right-outer"></a>Rechter outer join
 
-Left outer join retourneert alle rijen uit de juiste stroom en overeenkomende records uit de linker stroom. Als een rij uit de juiste stroom niet overeenkomt, worden de uitvoer kolommen van de juiste stroom ingesteld op NULL. De uitvoer is de rijen die worden geretourneerd door een inner join plus de niet-overeenkomende rijen uit de juiste stroom.
+De rechter outer join retourneert alle rijen uit de juiste stroom en overeenkomende records uit de linker stroom. Als een rij uit de juiste stroom niet overeenkomt, worden de uitvoer kolommen van de linker stroom ingesteld op NULL. De uitvoer is de rijen die worden geretourneerd door een inner join plus de niet-overeenkomende rijen uit de juiste stroom.
 
 ### <a name="full-outer"></a>Volledige outer join
 
@@ -83,7 +83,7 @@ Wanneer u de trans formaties van de koppeling met de preview-versie van gegevens
 
 ### <a name="inner-join-example"></a>Voor beeld van inner join
 
-Het onderstaande voor beeld is een koppelings transformatie met de naam `JoinMatchedData` die links stream `TripData` en Right stream-`TripFare` gebruikt.  De voor waarde voor samen voegen is de expressie `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` die waar retourneert als de kolommen `hack_license`, `medallion`, `vendor_id` en `pickup_datetime` in elke stroom overeenkomen. De `joinType` is `'inner'`. Het inschakelen van de uitzending in alleen de linker stroom is `broadcast` waarde `'left'`.
+Het onderstaande voor beeld is een koppelings transformatie met de naam `JoinMatchedData` die links stream `TripData` en Right stream-`TripFare`gebruikt.  De voor waarde voor samen voegen is de expressie `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` die waar retourneert als de kolommen `hack_license`, `medallion`, `vendor_id`en `pickup_datetime` in elke stroom overeenkomen. De `joinType` is `'inner'`. Het inschakelen van de uitzending in alleen de linker stroom is `broadcast` waarde `'left'`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Voor beeld van cross-koppeling
 
-Het onderstaande voor beeld is een koppelings transformatie met de naam `CartesianProduct` die links stream `TripData` en Right stream-`TripFare` gebruikt. Deze trans formatie heeft twee stromen en retourneert een Cartesisch product van de rijen. De voor waarde voor samen voegen is `true()`, omdat er een volledig Cartesisch product wordt uitgevoerd. De `joinType` in `cross`. Het inschakelen van de uitzending in alleen de linker stroom is `broadcast` waarde `'left'`.
+Het onderstaande voor beeld is een koppelings transformatie met de naam `CartesianProduct` die links stream `TripData` en Right stream-`TripFare`gebruikt. Deze trans formatie heeft twee stromen en retourneert een Cartesisch product van de rijen. De voor waarde voor samen voegen is `true()`, omdat er een volledig Cartesisch product wordt uitgevoerd. De `joinType` in `cross`. Het inschakelen van de uitzending in alleen de linker stroom is `broadcast` waarde `'left'`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

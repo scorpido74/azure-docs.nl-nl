@@ -1,5 +1,5 @@
 ---
-title: Limieten voor Azure SQL Database Server-resources | Microsoft Docs
+title: Azure SQL Database Server-Resource limieten
 description: In dit artikel vindt u een overzicht van de limieten voor de Azure SQL Database-Server bronnen voor afzonderlijke data bases en elastische Pools. Het bevat ook informatie over wat er gebeurt wanneer deze resource limieten worden bereikt of overschreden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566858"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687495"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Resource limieten voor Azure SQL Database Server SQL Database
 
@@ -32,7 +32,7 @@ Dit artikel bevat een overzicht van de SQL Database resource limieten voor een S
 | Data bases per server | 5000 |
 | Standaard aantal servers per abonnement in een wille keurige regio | 20 |
 | Maximum aantal servers per abonnement in een wille keurige regio | 200 |  
-| DTU/eDTU-quotum per server | 54,000 |  
+| DTU/eDTU-quotum per server | 54.000 |  
 | vCore quotum per Server/exemplaar | 540 |
 | Maximum aantal groepen per server | Beperkt door het aantal Dtu's of vCores. Als bijvoorbeeld elke groep 1000 Dtu's is, kan een server 54 groepen ondersteunen.|
 |||
@@ -44,7 +44,7 @@ Dit artikel bevat een overzicht van de SQL Database resource limieten voor een S
 > - De latentie verhogen bij het uitvoeren van query's op de hoofd database.  Dit geldt ook voor weer gaven van gegevens over het resource gebruik, zoals sys. resource_stats.
 > - Het verg Roten van latentie in beheer bewerkingen en het weer geven van portal-gezichts punten waarbij de data bases op de server worden geïnventariseerd.
 
-### <a name="storage-size"></a>Opslaggrootte
+### <a name="storage-size"></a>Opslag grootte
 - Voor afzonderlijke data bases rources raadpleegt u op [DTU gebaseerde resource limieten](sql-database-dtu-resource-limits-single-databases.md) of [op vCore gebaseerde resource limieten](sql-database-vcore-resource-limits-single-databases.md) voor de maximale opslag groottes per prijs categorie.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Wat er gebeurt wanneer de database resource limieten zijn bereikt

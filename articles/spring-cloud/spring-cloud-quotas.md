@@ -4,14 +4,14 @@ description: Meer informatie over service quota's en service plannen voor Azure 
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 89934ee0ab0c901a904a1a5ac2fb620185571a23
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038780"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607674"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Quota's en service plannen voor Azure lente-Cloud
 
@@ -33,8 +33,8 @@ Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 50
 Totaal aantal app-exemplaren per lente toepassing | 20
 Permanente volumes | 10 x 50 GBytes
 
-Wanneer u een quotum bereikt, ontvangt u een 400-fout die het volgende leest: "Quotum overschrijdt de limiet voor *het abonnement op uw abonnement* in regio *regio waar uw Azure lente-Cloud service wordt gemaakt*.
+Wanneer u een quotum bereikt, ontvangt u een 400-fout die lees bewerkingen: ' quotum overschrijdt de limiet voor het abonnement op *uw abonnement* in regio regio *waar uw Azure lente-Cloud service wordt gemaakt*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bepaalde standaardlimieten en -quota kunnen worden verhoogd. Als uw resource een verhoging vereist, stuurt u ons uw aanvraag: azure-spring-cloud@service.microsoft.com.
+Bepaalde standaardlimieten en -quota kunnen worden verhoogd. Als voor uw resource een verhoging is vereist, [maakt u een ondersteunings aanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).

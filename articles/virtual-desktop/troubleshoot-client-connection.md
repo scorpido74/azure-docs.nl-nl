@@ -1,5 +1,5 @@
 ---
-title: Client verbindingen in virtueel bureau blad van Windows Extern bureaublad-Azure
+title: Problemen oplossen met Extern bureaublad virtueel bureau blad van Windows-Azure
 description: Problemen oplossen bij het instellen van client verbindingen in een Windows Virtual Desktop-Tenant omgeving.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 22590a7ecc94efbfad5eefe27f284bdb191e876d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3aae74a4fed499674f015ed0adb59016877583f3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676410"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607378"
 ---
 # <a name="remote-desktop-client-connections"></a>Clientverbindingen met extern bureaublad
 
@@ -34,23 +34,23 @@ nslookup rdweb.wvd.microsoft.com
 
 Probeer verbinding te maken met een andere client, bijvoorbeeld Extern bureaublad-client voor Windows 7 of Windows 10, en controleer of u de webclient kunt openen.
 
-### <a name="error-opening-another-site-fails"></a>Fout: Het openen van een andere site mislukt
+### <a name="error-opening-another-site-fails"></a>Fout: het openen van een andere site is mislukt
 
-**Wordt** Netwerk problemen en/of storingen.
+**Oorzaak:** Netwerk problemen en/of storingen.
 
-**Fix:** Neem contact op met de netwerk ondersteuning.
+**Oplossen:** Neem contact op met de netwerk ondersteuning.
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Fout: Nslookup kan de naam niet omzetten
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Fout: de naam kan niet worden omgezet met nslookup
 
-**Wordt** Netwerk problemen en/of storingen.
+**Oorzaak:** Netwerk problemen en/of storingen.
 
-**Fix:** Contact opnemen met netwerk ondersteuning
+**Oplossen:** Contact opnemen met netwerk ondersteuning
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Fout: U kunt geen verbinding maken, maar andere clients kunnen verbinding maken
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Fout: u kunt geen verbinding maken, maar andere clients kunnen verbinding maken
 
-**Wordt** De browser werkt niet zoals verwacht en werkt niet meer.
+**Oorzaak:** De browser werkt niet zoals verwacht en werkt niet meer.
 
-**Fix:** Volg deze instructies voor het oplossen van problemen met de browser.
+**Oplossen:** Volg deze instructies voor het oplossen van problemen met de browser.
 
 1. Start de browser opnieuw.
 2. Wis browser cookies. Zie [cookie bestanden verwijderen in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
@@ -61,11 +61,11 @@ Probeer verbinding te maken met een andere client, bijvoorbeeld Extern bureaubla
 
 Probeer verbinding te maken met behulp van een andere browser of client.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Fout: Andere browsers en clients kunnen ook niet worden geopend
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Fout: andere browsers en clients werken niet goed of kunnen niet worden geopend
 
-**Wordt** Problemen met netwerk-en/of bewerkings systemen of storingen
+**Oorzaak:** Problemen met netwerk-en/of bewerkings systemen of storingen
 
-**Fix:** Neem contact op met de ondersteunings teams.
+**Oplossen:** Neem contact op met de ondersteunings teams.
 
 ## <a name="web-client-keeps-prompting-for-credentials"></a>Webclient vraagt om referenties
 
@@ -135,28 +135,28 @@ Volg deze algemene instructies voor het oplossen van problemen met fout codes vo
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Fout: O_ADD_USER_TO_GROUP_FAILED/kan gebruiker niet toevoegen = ≤ gebruikers naam ≥ aan groep = Extern bureaublad gebruikers. Gemotiveerd Win32.ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Fout: O_ADD_USER_TO_GROUP_FAILED/kan gebruiker = ≤ username ≥ aan groep = Extern bureaublad gebruikers niet toevoegen. Reden: Win32. ERROR_NO_SUCH_MEMBER
 
-**Wordt** De VM is niet toegevoegd aan het domein waarin het gebruikers object zich bevindt.
+**Oorzaak:** De VM is niet toegevoegd aan het domein waarin het gebruikers object zich bevindt.
 
-**Fix:** Voeg de virtuele machine toe aan het juiste domein. Zie [een virtuele Windows Server-machine toevoegen aan een beheerd domein](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Oplossen:** Voeg de virtuele machine toe aan het juiste domein. Zie [een virtuele Windows Server-machine toevoegen aan een beheerd domein](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Fout: Nslookup kan de naam niet omzetten
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Fout: de naam kan niet worden omgezet met nslookup
 
-**Wordt** Netwerk problemen of-storingen.
+**Oorzaak:** Netwerk problemen of-storingen.
 
-**Fix:** Contact opnemen met netwerk ondersteuning
+**Oplossen:** Contact opnemen met netwerk ondersteuning
 
 ### <a name="error-connectionfailedclientprotocolerror"></a>Fout: ConnectionFailedClientProtocolError
 
-**Wordt** Vm's waarmee de gebruiker probeert verbinding te maken, zijn geen lid van een domein.
+**Oorzaak:** Vm's waarmee de gebruiker probeert verbinding te maken, zijn geen lid van een domein.
 
-**Fix:** Voeg alle virtuele machines die deel uitmaken van een hostgroep toe aan de domein controller.
+**Oplossen:** Voeg alle virtuele machines die deel uitmaken van een hostgroep toe aan de domein controller.
 
 ### <a name="error-connectionfailedusersidinformationmismatch"></a>Fout: ConnectionFailedUserSIDInformationMismatch
-**Wordt** De SID van het Azure Active Directory (AD)-token van de gebruiker komt niet overeen met de SID die door de domein controller wordt geretourneerd bij het inschakelen van de gebruiker voor externe aanmelding. Deze fout treedt doorgaans op wanneer u zich probeert aan te melden bij een Azure Active Directory Domain Services-omgeving (Azure AD DS) met een gebruiker die oorspronkelijk is gebrond van een Windows Server AD.
+**Oorzaak:** De SID van het Azure Active Directory (AD)-token van de gebruiker komt niet overeen met de SID die door de domein controller wordt geretourneerd bij het inschakelen van de gebruiker voor externe aanmelding. Deze fout treedt doorgaans op wanneer u zich probeert aan te melden bij een Azure Active Directory Domain Services-omgeving (Azure AD DS) met een gebruiker die oorspronkelijk is gebrond van een Windows Server AD.
 
-**Fix:** Dit scenario wordt op dit moment niet ondersteund. Alleen gebruikers die zijn afgeleid van Azure Active Directory kunnen zich aanmelden bij virtuele Windows-bureau blad-Vm's die zijn verbonden met Azure AD DS.
+**Oplossen:** Dit scenario wordt op dit moment niet ondersteund. Alleen gebruikers die zijn afgeleid van Azure Active Directory kunnen zich aanmelden bij virtuele Windows-bureau blad-Vm's die zijn verbonden met Azure AD DS.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Gebruiker maakt verbinding, maar er wordt niets weer gegeven (geen feed)
 
@@ -178,4 +178,4 @@ Als de WebClient wordt gebruikt, controleert u of er geen problemen met de refer
 - Zie [Tenant en hostgroep maken](troubleshoot-set-up-issues.md)voor informatie over het oplossen van problemen bij het maken van een Tenant en een hostgroep in een virtueel-bureaublad omgeving van Windows.
 - Zie voor het oplossen van problemen bij het configureren van een virtuele machine (VM) in Windows virtueel bureau blad de [virtuele machine configuratie](troubleshoot-vm-configuration.md)van de host.
 - Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md)(Engelstalig) voor informatie over het oplossen van problemen met het gebruik van Power shell met Windows virtueel bureau blad.
-- Zie [zelf studie voor het oplossen van problemen met de zelf studie: Problemen oplossen met implementaties](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)van Resource Manager-sjablonen.
+- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)om de zelf studie voor problemen oplossen op te lossen.

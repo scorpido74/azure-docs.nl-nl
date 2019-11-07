@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Gegevens laden naar Azure SQL Data Warehouse | Microsoft Docs'
+title: 'Zelf studie: gegevens laden met behulp van Azure Portal & SSMS'
 description: De zelf studie maakt gebruik van Azure Portal en SQL Server Management Studio om het Data Warehouse WideWorldImportersDW te laden vanuit een globale Azure-Blob naar Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,20 +10,21 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c59c5ba4e5447d01bb66b9f0ed2edcb948d34d40
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574932"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693059"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Zelfstudie: Gegevens laden naar Azure SQL Data Warehouse
+# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Zelfstudie: gegevens laden in Azure SQL Data Warehouse
 
 In deze zelfstudie wordt gebruikgemaakt van PolyBase om het WideWorldImportersDW-datawarehouse vanuit Azure Blob Storage naar Azure SQL Data Warehouse te laden. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) voor het volgende:
 
 > [!div class="checklist"]
 > * Een datawarehouse maken in Azure Portal
-> * Een serverfirewallregel instellen in Azure Portal
+> * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding maken met het datawarehouse met SMMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
 > * Externe tabellen maken die gebruikmaken van Azure-blob als de gegevensbron
@@ -40,11 +41,11 @@ Download en installeer voordat u met deze zelfstudie begint de nieuwste versie v
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Een lege SQL Data Warehouse maken
 
-Een Azure SQL Data Warehouse wordt gemaakt met een gedefinieerde set [reken resources](memory-and-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
+Er wordt een Azure SQL Data Warehouse gemaakt met een gedefinieerde set [Compute resources] geheugen-gelijktijdigheids limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) en in een [logische Azure SQL-server](../sql-database/sql-database-features.md). 
 
 Volg deze stappen om een leeg SQL Data Warehouse te maken. 
 
@@ -58,9 +59,9 @@ Volg deze stappen om een leeg SQL Data Warehouse te maken.
 
    | Instelling | Voorgestelde waarde | Beschrijving | 
    | ------- | --------------- | ----------- | 
-   | **De naam van database** | SampleDW | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. | 
+   | **Databasenaam** | SampleDW | Zie [Database-id's](/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. | 
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
-   | **Resourcegroep** | SampleRG | Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
+   | **Resourcegroep** | SampleRG | Zie [Naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Naamgevingsconventies) voor geldige namen van resourcegroepen. |
    | **Bron selecteren** | Lege database | Geeft aan dat er een lege database wordt gemaakt. Opmerking: een datawarehouse is een type database.|
 
     ![datawarehouse maken](media/load-data-wideworldimportersdw/create-data-warehouse.png)
@@ -132,7 +133,7 @@ U kunt nu via dit IP-adres verbinding maken met de SQL-server en de bijbehorende
 
 Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het maken van verbinding met de server.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer **SQL-databases** in het menu links en klik op uw database op de pagina **SQL-databases**. 
 3. In het deelvenster **Essentials** van de Azure Portal-pagina van uw database kopieert u de **servernaam**. In dit voorbeeld is de volledig gekwalificeerde servernaam mynewserver-20171113.database.windows.net. 
 
@@ -156,7 +157,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
 
     ![verbinding maken met server](media/load-data-wideworldimportersdw/connect-to-server.png)
 
-4. Klik op**Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
+4. Klik op **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio. 
 
 5. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **SampleDW** uit om de objecten in uw nieuwe Data Base weer te geven.
 
@@ -181,7 +182,7 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. Klik op **Uitvoeren**.
+3. Klik op **Execute** (Uitvoeren).
 
 4. Klik met de rechtermuisknop op **SampleDW** en kies **Nieuwe query**. Er wordt een nieuw queryvenster geopend.  
 
@@ -195,7 +196,7 @@ Omdat u momenteel bent aangemeld als serverbeheerder, kunt u aanmeldingen en geb
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. Klik op **Uitvoeren**.
+6. Klik op **Execute** (Uitvoeren).
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Verbinding maken met de server als de ladende gebruiker
 
@@ -207,7 +208,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC60
 
 2. Voer de volledig gekwalificeerde servernaam in en voer **LoaderRC60** als de aanmelding in.  Voer uw wachtwoord in voor LoaderRC60.
 
-3. Klik op**Verbinden**.
+3. Klik op **Verbinden**.
 
 4. Wanneer de verbinding gereed is, ziet u twee serververbindingen in Objectverkenner. Eén verbinding als de serverbeheerder en één verbinding als LoaderRC60.
 

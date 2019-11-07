@@ -1,6 +1,6 @@
 ---
 title: On-premises SQL Server
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Gegevens uit een on-premises SQL Server Data Base gebruiken om geavanceerde analyses uit te voeren met de klassieke versie van Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 78b50ac5f0c39a38815b01ab7510d17eda941425
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7f525a2a81d6cda52b363d1fb808327c9d3c1fb1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492538"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622092"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analyses uitvoeren met Azure Machine Learning Studio (klassiek) met behulp van een on-premises SQL Server Data Base
 
@@ -43,7 +43,7 @@ Het Data Factory zelf-Hostende Integration Runtime heeft de volgende vereisten:
 * De Data Factory zelf-Hostende integratie vereist een 64-bits besturings systeem met .NET Framework 4.6.1 of hoger.
 * De ondersteunde versies van het Windows-besturings systeem zijn Windows 10, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016. 
 * De aanbevolen configuratie voor de IR-computer is ten minste 2 GHz, 4-core CPU, 8 GB RAM-geheugen en 80 GB schijf ruimte.
-* Als de hostmachine in de slaap stand wordt gezet, reageert de IR niet op gegevens aanvragen. Configureer daarom een passend energiebeheer schema op de computer voordat u de IR installeert. Als de computer is geconfigureerd voor de slaap stand, wordt een bericht weer gegeven in de IR-installatie.
+* Als de hostcomputer in de slaapstand, wordt de IR wordt niet reageert op aanvragen voor gegevens. Configureer daarom een passend energiebeheer schema op de computer voordat u de IR installeert. Als de computer is geconfigureerd voor de slaap stand, wordt een bericht weer gegeven in de IR-installatie.
 * Omdat de Kopieer activiteit met een specifieke frequentie plaatsvindt, volgt het resource gebruik (CPU, geheugen) op de machine ook hetzelfde patroon met piek-en niet-actieve tijden. Het resource gebruik is ook afhankelijk van de hoeveelheid gegevens die wordt verplaatst. Wanneer er meerdere Kopieer taken worden uitgevoerd, ziet u dat het resource gebruik tijdens piek tijden niet meer werkt. Hoewel de hierboven vermelde minimum configuratie technisch genoeg is, is het raadzaam om een configuratie met meer bronnen dan de minimale configuratie, afhankelijk van uw specifieke belasting voor het verplaatsen van gegevens.
 
 Houd rekening met het volgende bij het instellen en gebruiken van een Data Factory zelf-hostende Integration Runtime:

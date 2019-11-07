@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 766dacb69a3f1857197684f552d05a1376e94509
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514862"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615780"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Schaalbaarheids-en prestatie doelen Azure Files
 
@@ -81,7 +81,7 @@ Om u te helpen bij het plannen van uw implementatie voor elk van de fasen, zijn 
 | Geheugen | 128 GiB |
 | Schijf | SAS-schijven met RAID 10 met cache met batterij back-ups |
 | Netwerk | 1 Gbps-netwerk |
-| Werkbelasting | Algemeen Bestands server|
+| Workload | Algemeen Bestands server|
 
 | Eerste eenmalige inrichting  |  |
 |-|-|
@@ -98,7 +98,7 @@ Om u te helpen bij het plannen van uw implementatie voor elk van de fasen, zijn 
 | Aantal gesynchroniseerde objecten| 125.000-objecten (~ 1% verloop) |
 | Grootte van gegevensset| 50 GiB |
 | Gemiddelde bestands grootte | ~ 500 KiB |
-| Upload doorvoer | 30 objecten per seconde |
+| Upload doorvoer | 20 objecten per seconde |
 | Volledige down load door Voer * | 60 objecten per seconde |
 
 \* Als Cloud lagen zijn ingeschakeld, ziet u waarschijnlijk betere prestaties omdat slechts een deel van de bestands gegevens worden gedownload. Met Azure File Sync worden alleen de gegevens van bestanden in de cache gedownload wanneer deze op een van de eind punten worden gewijzigd. Voor alle gelaagde of zojuist gemaakte bestanden worden de bestands gegevens niet gedownload door de agent en wordt de naam ruimte in plaats daarvan gesynchroniseerd met alle server eindpunten. De agent biedt ook ondersteuning voor gedeeltelijke down loads van gelaagde bestanden, aangezien deze door de gebruiker worden geopend. 

@@ -1,5 +1,5 @@
 ---
-title: Replicatie configureren in een Azure SQL Database beheerde exemplaar database | Microsoft Docs
+title: 'Replicatie configureren in een Azure SQL Database beheerde exemplaar database '
 description: Meer informatie over het configureren van transactionele replicatie in een Azure SQL Database Managed instance data base
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 21275ce7716ffc394c1e7445c3f6836f09b44c87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338740"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692161"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replicatie configureren in een Azure SQL Database beheerde exemplaar database
 
@@ -41,7 +41,7 @@ Als u een beheerd exemplaar wilt configureren voor de functie van een uitgever e
 - Of het beheerde exemplaar van de uitgever zich in hetzelfde virtuele netwerk bevindt als de Distributor en de abonnee, of dat [vNet-peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) tot stand is gebracht tussen de virtuele netwerken van alle drie de entiteiten. 
 - Connectiviteit maakt gebruik van SQL-verificatie tussen replicatiedeelnemers.
 - Een Azure Storage-account share voor de werkmap voor replicatie.
-- Poort 445 (TCP uitgaand) is geopend in de beveiligings regels van NSG voor de beheerde instanties voor toegang tot de Azure-bestands share.  Als u de fout melding ' kan geen verbinding maken met Azure Storage \<storage-account naam > met OS-fout 53 ' verschijnt, moet u een regel voor uitgaande verbindingen toevoegen aan de NSG van het betreffende SQL Managed instance-subnet.
+- Poort 445 (TCP uitgaand) is geopend in de beveiligings regels van NSG voor de beheerde instanties voor toegang tot de Azure-bestands share.  Als u de fout melding ' kan geen verbinding maken met Azure Storage \<naam van het opslag account > met OS-fout 53 ' verschijnt, moet u een regel voor uitgaande verbindingen toevoegen aan de NSG van het juiste SQL Managed instance-subnet.
 
 
  > [!NOTE]
@@ -78,7 +78,7 @@ U moet ook [een Azure VM configureren om verbinding te maken](sql-database-manag
 
 [Maak een Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak een [Bestands share](../storage/files/storage-how-to-create-file-share.md) in het opslag account. 
 
-Kopieer het pad naar de bestands share in de indeling van: `\\storage-account-name.file.core.windows.net\file-share-name`
+Kopieer het pad naar de bestands share met de volgende indeling: `\\storage-account-name.file.core.windows.net\file-share-name`
 
 Kopieer de toegangs sleutels voor opslag in de indeling van: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7: de uitgever configureren voor het gebruik van Distributor 
 
-Wijzig de uitvoering van de query in de [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) -modus van het beheerde exemplaar van de uitgever `sql-mi-pub` en voer de volgende code uit om de nieuwe Distributor bij uw uitgever te registreren. 
+Wijzig de uitvoering van de query in de [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) -modus van de `sql-mi-pub`instantie van het beheerde exemplaar van Publisher en voer de volgende code uit om de nieuwe Distributor bij uw uitgever te registreren. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-U kunt uw Azure-resources opschonen door [de beheerde exemplaar resources van de resource groep te verwijderen](../azure-resource-manager/manage-resources-portal.md#delete-resources) en vervolgens de resource groep `SQLMI-Repl` te verwijderen. 
+U kunt uw Azure-resources opschonen door [de beheerde exemplaar resources van de resource groep te verwijderen](../azure-resource-manager/manage-resources-portal.md#delete-resources) en vervolgens de resource groep te verwijderen `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Zie ook

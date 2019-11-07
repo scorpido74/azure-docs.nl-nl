@@ -1,7 +1,7 @@
 ---
 title: Actieve en inactieve gebeurtenissen-persoonlijker
 titleSuffix: Azure Cognitive Services
-description: ''
+description: In dit artikel wordt het gebruik van actieve en inactieve gebeurtenissen, leer instellingen en het trainings beleid binnen de Personaler service besproken.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,51 +10,50 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 321f12fef44cae43caf53d78b2908e68f9edd0a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043893"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681862"
 ---
 # <a name="active-and-inactive-events"></a>Actieve en inactieve gebeurtenissen
 
-Wanneer uw toepassing de Rank API aanroept, ontvangt u een actie die door de toepassing moet worden weer gegeven in het veld rewardActionId.  Vanaf dat moment zal Personaler een belonings oproep verwachten met dezelfde gebeurtenis-code. De belonings score wordt gebruikt voor het trainen van het model dat wordt gebruikt voor toekomstige positie oproepen. Als er geen belonings oproep wordt ontvangen voor de gebeurtenis-defaul, wordt er een berekenings beloning toegepast. Standaard beloningen worden vastgesteld in azure Portal.
+Wanneer uw toepassing de Rank API aanroept, ontvangt u de actie die de toepassing moet weer geven in het veld **rewardActionId** .  Vanaf dat moment verwacht de Personaler een belonings oproep met dezelfde gebeurtenis code. De belonings score wordt gebruikt om het model te trainen voor toekomstige positie oproepen. Als er geen belonings oproep wordt ontvangen voor de gebeurtenis-aanvraag, wordt een standaard beloning toegepast. Standaard beloningen worden ingesteld in de Azure Portal.
 
-In sommige gevallen moet de toepassing een positie aanroepen voordat deze zelfs weet of het resultaat wordt gebruikt of weer gegeven voor de gebruiker. Dit kan gebeuren in situaties waarin bijvoorbeeld de pagina weergave van gepromoveerde inhoud wordt overschreven met een marketing campagne. Als het resultaat van de rang nummer nooit is gebruikt en de gebruiker deze niet meer zou zien, zou het niet kunnen worden getraind met een vergoeding in alle, nul of anderszins.
-Dit gebeurt meestal wanneer:
+In sommige scenario's moet de toepassing mogelijk worden opgeroepen voordat deze zelfs weet of het resultaat wordt gebruikt of weer gegeven voor de gebruiker. Dit kan gebeuren in situaties waarin bijvoorbeeld de pagina weergave van gepromoveerde inhoud wordt overschreven door een marketing campagne. Als het resultaat van de positie aanroep nooit is gebruikt en de gebruiker deze nooit zag, stuurt u geen bijbehorende belonings oproep.
 
-* U kunt een bepaalde gebruikers interface vooraf renderen die de gebruiker al dan niet kan zien. 
-* Uw toepassing maakt mogelijk gebruik van een voorspellende personalisatie waarbij rang gesprekken worden gedaan met minder realtime-context en de uitvoer ervan kan of mogen niet worden gebruikt door de toepassing. 
+Deze scenario's worden meestal uitgevoerd wanneer:
 
-In dergelijke gevallen is de juiste manier om persoonlijker te gebruiken, het aanroepen van de gebeurtenis om _inactief_te maken. Personaler verwacht geen beloning voor deze gebeurtenis en er wordt geen standaard beloning toegepast. Als de toepassing de informatie van de classificatie oproep gebruikt, moet u de gebeurtenis later in uw bedrijfs logica _activeren_ . Vanaf het moment dat de gebeurtenis actief is, zal Personaler een beloning voor het evenement verwachten of een standaard beloning Toep assen als er geen expliciete oproep wordt gedaan voor de belonings-API.
+* U prerendert de gebruikers interface die de gebruiker mogelijk niet kan zien. 
+* Uw toepassing doet voorspellende personalisatie waarbij rang gesprekken worden gedaan met weinig realtime context en de toepassing kan de uitvoer mogelijk niet gebruiken. 
 
-## <a name="get-inactive-events"></a>Inactieve gebeurtenissen ophalen
+In dergelijke gevallen gebruikt u persoonlijke instellingen om de positie aan te roepen en vraagt u de gebeurtenis _inactief_te zijn. Personaler verwacht geen beloning voor deze gebeurtenis en past geen standaard beloning toe. Als de toepassing de informatie van de classificatie oproep gebruikt, wordt de gebeurtenis later in de bedrijfs logica _geactiveerd_ . Zodra de gebeurtenis actief is, verwacht de Personaler een gebeurtenis beloning. Als er geen expliciete aanroep wordt gedaan naar de belonings-API, past Personaler een standaard beloning toe.
 
-Als u de training voor een gebeurtenis wilt uitschakelen, roept u de positie aan met `learningEnabled = False`.
+## <a name="inactive-events"></a>Inactieve gebeurtenissen
 
-Het leren voor een inactieve gebeurtenis wordt impliciet geactiveerd als u een beloning voor de gebeurtenis-of-event verzendt, of als u de API voor de `activate` aanroept voor die gebeurtenis-activiteit.
+Als u de training voor een gebeurtenis wilt uitschakelen, roept u de positie aan met behulp van `learningEnabled = False`. Voor een inactieve gebeurtenis wordt Learning impliciet geactiveerd als u een beloning voor de gebeurtenis-of aanroepen van de `activate`-API voor die gebeurtenis-activiteit stuurt.
 
 ## <a name="learning-settings"></a>Leer instellingen
 
-De leer instellingen bepalen het specifieke *Hyper parameters* van de model training. Twee modellen van dezelfde gegevens, getraind met verschillende leer instellingen, zullen uiteindelijk afwijkend zijn.
+Leer instellingen bepalen de *Hyper parameters* van de model training. Twee modellen van dezelfde gegevens die worden getraind op verschillende leer instellingen, worden uiteindelijk afwijkend.
 
 ### <a name="import-and-export-learning-policies"></a>Leer beleid importeren en exporteren
 
-U kunt Learning-beleids bestanden importeren en exporteren vanuit het Azure Portal. Zo kunt u bestaande beleids regels opslaan, testen, vervangen en deze in uw broncode beheer archiveren als artefacten voor toekomstige Naslag informatie en controle.
+U kunt leer beleids bestanden importeren en exporteren vanuit het Azure Portal. Gebruik deze methode om bestaande beleids regels op te slaan, te testen, te vervangen en te archiveren in uw broncode beheer als artefacten voor toekomstige Naslag informatie en controle.
 
-### <a name="learning-policy-settings"></a>Instellingen voor het leer beleid
+### <a name="understand-learning-policy-settings"></a>Informatie over de instellingen van het leer beleid
 
-De instellingen in het **trainings beleid** zijn niet bedoeld om te worden gewijzigd. Wijzig de instellingen alleen wanneer u begrijpt hoe deze van invloed zijn op persoonlijkere. Als u instellingen wijzigt zonder deze kennis, zullen er neven effecten ontstaan, waaronder het ongeldig maken van Personaler-modellen.
+De instellingen in het trainings beleid zijn niet bedoeld om te worden gewijzigd. Wijzig de instellingen alleen als u begrijpt hoe deze van invloed zijn op persoonlijkere. U kunt zonder deze kennis problemen veroorzaken, waaronder het ongeldig maken van Personaler-modellen.
 
-### <a name="comparing-effectiveness-of-learning-policies"></a>Effectiviteit van het leer beleid vergelijken
+### <a name="compare-learning-policies"></a>Leer beleid vergelijken
 
-U kunt vergelijken hoe verschillende leer beleid zou worden uitgevoerd op eerdere gegevens in persoonlijke logboeken door [offline-evaluaties](concepts-offline-evaluation.md)uit te voeren.
+U kunt vergelijken hoe verschillende leer beleidsregels worden uitgevoerd op eerdere gegevens in persoonlijke logboeken door [offline-evaluaties](concepts-offline-evaluation.md)uit te voeren.
 
-[Upload uw eigen trainings beleid](how-to-offline-evaluation.md) om te vergelijken met het huidige leer beleid.
+[Upload uw eigen trainings beleid](how-to-offline-evaluation.md) om ze te vergelijken met het huidige leer beleid.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Detectie van geoptimaliseerde leer beleid
+### <a name="optimize-learning-policies"></a>Leer beleid optimaliseren
 
-Personaler kan een meer geoptimaliseerd leer beleid maken wanneer een [offline-evaluatie](how-to-offline-evaluation.md)wordt uitgevoerd. Een meer geoptimaliseerd leer beleid, dat wordt weer gegeven om betere beloningen te hebben in een offline-evaluatie, levert betere resultaten op wanneer u online gebruikt in Personaler.
+Personaler kan een geoptimaliseerd leer beleid maken in een [offline-evaluatie](how-to-offline-evaluation.md). Een geoptimaliseerd leer beleid met betere voor delen in een offline-evaluatie levert betere resultaten op wanneer het online in Personaler wordt gebruikt.
 
-Nadat u een geoptimaliseerd trainings beleid hebt gemaakt, kunt u dit rechtstreeks op persoonlijker Toep assen zodat het huidige beleid direct wordt vervangen, of u kunt het opslaan voor verdere evaluatie en in de toekomst besluiten of u dit later wilt negeren, opslaan of Toep assen.
+Wanneer u een leer beleid optimaliseert, kunt u dit rechtstreeks op persoonlijker Toep assen zodat het huidige beleid wordt vervangen. Of u kunt het geoptimaliseerde beleid voor verdere evaluatie opslaan en later beslissen of u het wilt verwijderen, opslaan of Toep assen.

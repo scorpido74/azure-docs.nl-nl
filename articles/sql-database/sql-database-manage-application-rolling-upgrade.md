@@ -1,5 +1,5 @@
 ---
-title: Upgrades van Rolling toepassingen-Azure SQL Database | Microsoft Docs
+title: Upgrades van Rolling toepassingen-Azure SQL Database
 description: Meer informatie over het gebruik van Azure SQL Database geo-replicatie ter ondersteuning van online-upgrades van uw Cloud toepassing.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 253a10e75832cf6ee8294405e34fa93b801c1b49
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567775"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689499"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Rolling upgrades van Cloud toepassingen beheren door gebruik te maken van SQL Database actieve geo-replicatie
 
@@ -31,10 +31,10 @@ Houd rekening met de volgende factoren bij het evalueren van upgrade opties:
 
 ## <a name="upgrade-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Toepassingen bijwerken die afhankelijk zijn van database back-ups voor herstel na nood gevallen
 
-Als uw toepassing gebruikmaakt van automatische database back-ups en geo-herstel gebruikt voor herstel na nood gevallen, wordt deze geïmplementeerd in één Azure-regio. Als u de gebruikers onderbreking wilt minimaliseren, maakt u een faserings omgeving in die regio met alle toepassings onderdelen die bij de upgrade horen. Het eerste diagram illustreert de operationele omgeving vóór het upgrade proces. Het eind `contoso.azurewebsites.net` punt vertegenwoordigt een productie omgeving van de web-app. Als u de upgrade wilt herstellen, moet u een faserings omgeving met een volledig gesynchroniseerde kopie van de data base maken. Volg deze stappen voor het maken van een faserings omgeving voor de upgrade:
+Als uw toepassing gebruikmaakt van automatische database back-ups en geo-herstel gebruikt voor herstel na nood gevallen, wordt deze geïmplementeerd in één Azure-regio. Als u de gebruikers onderbreking wilt minimaliseren, maakt u een faserings omgeving in die regio met alle toepassings onderdelen die bij de upgrade horen. Het eerste diagram illustreert de operationele omgeving vóór het upgrade proces. De eindpunt `contoso.azurewebsites.net` vertegenwoordigt een productie omgeving van de web-app. Als u de upgrade wilt herstellen, moet u een faserings omgeving met een volledig gesynchroniseerde kopie van de data base maken. Volg deze stappen voor het maken van een faserings omgeving voor de upgrade:
 
 1. Maak een secundaire data base in dezelfde Azure-regio. Controleer de secundaire om te zien of het seeding-proces is voltooid (1).
-2. Maak een nieuwe omgeving voor uw web-app en roep deze ' staging ' aan. Het wordt geregistreerd in azure DNS met de URL `contoso-staging.azurewebsites.net` (2).
+2. Maak een nieuwe omgeving voor uw web-app en roep deze ' staging ' aan. Het wordt geregistreerd in Azure DNS met de URL `contoso-staging.azurewebsites.net` (2).
 
 > [!NOTE]
 > Deze voorbereidings stappen hebben geen invloed op de productie omgeving, die in de volledige toegangs modus kan functioneren.
@@ -51,7 +51,7 @@ Wanneer de voorbereidende stappen zijn voltooid, is de toepassing gereed voor de
 
 Als de upgrade is voltooid, bent u nu klaar om over te scha kelen naar de bijgewerkte versie van de toepassing, die een productie omgeving wordt. Wisseling omvat een aantal stappen, zoals wordt geïllustreerd in het volgende diagram:
 
-1. Activeer een wissel bewerking tussen productie-en faserings omgevingen van de web-app (6). Met deze bewerking worden de Url's van de twee omgevingen omgeschakeld. Wijst `contoso.azurewebsites.net` nu naar versie v2 van de website en de data base (productie omgeving). 
+1. Activeer een wissel bewerking tussen productie-en faserings omgevingen van de web-app (6). Met deze bewerking worden de Url's van de twee omgevingen omgeschakeld. `contoso.azurewebsites.net` wijst nu naar versie v2 van de website en de data base (productie omgeving). 
 2. Als u de V1-versie niet meer nodig hebt, die na het wisselen een staging-kopie werd geworden, kunt u de faserings omgeving (7) buiten gebruik stellen.
 
 ![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
@@ -81,11 +81,11 @@ Als uw toepassing actieve groepen met geo-replicatie of automatische failover ge
 
 Om deze doel stellingen te bereiken, kunt u, naast het gebruik van de Web Apps omgevingen, gebruikmaken van Azure Traffic Manager met behulp van een failover-profiel met één actief eind punt en één back-upeindpunt. In het volgende diagram ziet u de operationele omgeving voorafgaand aan het upgrade proces. De websites `contoso-1.azurewebsites.net` en `contoso-dr.azurewebsites.net` vertegenwoordigen een productie omgeving van de toepassing met volledige geografische redundantie. De productie omgeving omvat de volgende onderdelen:
 
-* De productie omgeving van de web- `contoso-1.azurewebsites.net` app in de primaire regio (1)
+* De productie omgeving van de web-app `contoso-1.azurewebsites.net` in de primaire regio (1)
 * De primaire data base in de primaire regio (2)
 * Een stand-by-exemplaar van de web-app in de back-upregio (3)
 * De geo-gerepliceerde secundaire data base in de back-upregio (4)
-* Een Traffic Manager prestatie profiel met een online eind punt `contoso-1.azurewebsites.net` met de naam en een offline-eind punt met de naam`contoso-dr.azurewebsites.net`
+* Een Traffic Manager prestatie profiel met een online eind punt met de naam `contoso-1.azurewebsites.net` en een offline-eind punt met de naam `contoso-dr.azurewebsites.net`
 
 Om het mogelijk te maken om de upgrade te herstellen, moet u een faserings omgeving maken met een volledig gesynchroniseerde kopie van de toepassing. Omdat u er zeker van wilt zijn dat de toepassing snel kan worden hersteld wanneer er tijdens het upgrade proces een onherstelbare fout optreedt, moet de faserings omgeving ook geografisch redundant zijn. De volgende stappen zijn vereist voor het maken van een faserings omgeving voor de upgrade:
 
@@ -117,7 +117,7 @@ ALTER DATABASE <Prod_DB>
 REMOVE SECONDARY ON SERVER <Partner-Server>
 ```
 
-3. Voer het upgrade script `contoso-1-staging.azurewebsites.net`uit met, `contoso-dr-staging.azurewebsites.net`en de primaire Data Base voor fase ring (12). De wijzigingen in de Data Base worden automatisch gerepliceerd naar de fase ring secundair.
+3. Voer het upgrade script uit op `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`en de primaire Data Base voor fase ring (12). De wijzigingen in de Data Base worden automatisch gerepliceerd naar de fase ring secundair.
 
 ![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
 

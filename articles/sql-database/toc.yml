@@ -502,6 +502,8 @@
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Beveiliging configureren
           href: sql-database-security-tutorial.md
+        - name: Gegevens streamen met Stream Analytics
+          href: sql-database-stream-analytics.md
     - name: Concepten
       items:
         - name: Resources voor individuele databases

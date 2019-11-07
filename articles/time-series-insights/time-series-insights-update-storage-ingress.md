@@ -8,35 +8,57 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b61e194bdea5fd8272ffc0fc9e16a2d80d3cf60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989695"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605882"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Gegevens opslag en inkomend verkeer in Azure Time Series Insights preview
 
-In dit artikel worden updates beschreven voor de gegevens opslag en het binnenkomen van Azure Time Series Insights preview. Hierin worden de onderliggende opslag structuur, bestands indeling en de time series-ID-eigenschap beschreven. Ook worden het onderliggende ingangs proces, de door Voer en de beperkingen beschreven.
+In dit artikel worden updates beschreven voor de gegevens opslag en het binnenkomen van Azure Time Series Insights preview. Hierin worden de onderliggende opslag structuur, bestands indeling en de time series-ID-eigenschap beschreven. Ook worden het onderliggende ingangs proces, de aanbevolen procedures en de actuele preview-beperkingen beschreven.
 
 ## <a name="data-ingress"></a>Gegevens binnenkomend
 
-In Time Series Insights preview bepaalt het beleid voor gegevens inkomend verkeer welke gegevens kunnen worden gebrond en welke indeling de gegevens moeten hebben.
-
-[overzicht van![time series-model](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+Uw Azure Time Series Insights omgeving bevat een opname-engine voor het verzamelen, verwerken en opslaan van gegevens in de tijd reeks. Bij het plannen van uw omgeving moet u rekening houden met een aantal aandachtspunten om ervoor te zorgen dat alle binnenkomende gegevens worden verwerkt, en om een hoge ingangs schaal te bewerkstelligen en de opname latentie te minimaliseren (de tijd die door de TSI wordt gebruikt om gegevens van de gebeurtenis te lezen en te verwerken) Bron). In Time Series Insights preview bepaalt het beleid voor gegevens inkomend verkeer welke gegevens kunnen worden gebrond en welke indeling de gegevens moeten hebben.
 
 ### <a name="ingress-policies"></a>Ingangs beleid
 
-Time Series Insights preview ondersteunt dezelfde gebeurtenis bronnen die momenteel door Time Series Insights worden ondersteund:
+Time Series Insights preview ondersteunt de volgende gebeurtenis bronnen:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
 Time Series Insights preview ondersteunt Maxi maal twee gebeurtenis bronnen per instantie.
   
-Azure Time Series Insights ondersteunt JSON die via Azure IoT Hub of Azure Event Hubs is verzonden. Meer informatie over het optimaliseren van uw IoT JSON-gegevens vindt u in de [vorm van JSON](./time-series-insights-send-events.md#supported-json-shapes).
+Azure Time Series Insights ondersteunt JSON die via Azure IoT Hub of Azure Event Hubs is verzonden.
+
+> [!WARNING] 
+> Wanneer u een nieuwe gebeurtenis bron aan uw Time Series Insights-voorbeeld omgeving koppelt, afhankelijk van het aantal gebeurtenissen dat zich momenteel in uw IoT Hub of event hub bevindt, kan er een hoge initiële opname latentie optreden. Wanneer gegevens worden opgenomen, moet u deze hoge latentie verwachten, maar als uw ervaring anders aangeeft, neemt u contact met ons op door een ondersteunings ticket in te dienen via de Azure Portal.
+
+## <a name="ingress-best-practices"></a>Best practices voor binnenkomend verkeer
+
+U wordt aangeraden de volgende aanbevolen procedures te gebruiken:
+
+* Configureer Time Series Insights en een IoT-hub of Event Hub in dezelfde regio. Hiermee wordt de opname latentie verminderd die is ontstaan vanwege het netwerk.
+* Plan uw schaal behoeften door uw verwachte opname frequentie te berekenen en te controleren of deze binnen de hieronder vermelde ondersteunde tarieven valt
+* Meer informatie over het optimaliseren en vorm geven van uw JSON-gegevens, evenals de huidige beperkingen in de preview-versie, door [te lezen hoe u JSON voor ingress en query's kunt bepalen](./time-series-insights-update-how-to-shape-events.md).
+
+### <a name="ingress-scale-and-limitations-in-preview"></a>Inkomend schalen en beperkingen in Preview
+
+Time Series Insights preview biedt standaard ondersteuning voor een eerste ingangs schaal van Maxi maal 1 MB per seconde (MB/s) per omgeving. Als dat nodig is, kunt u de door Voer van Maxi maal 16 MB/s beschikbaar maken door een ondersteunings ticket in te dienen in het Azure Portal als dit nodig is. Daarnaast is er een limiet van 0,5 MB/s per partitie. Dit heeft gevolgen voor klanten die IoT Hub met name, gezien de affiniteit tussen een IoT Hub apparaat een partitie. In scenario's waarbij één gateway apparaat berichten doorstuurt naar de hub met behulp van de eigen apparaat-ID en connection string, is er een risico dat de limiet van 0,5 MB/s wordt bereikt, omdat berichten in één partitie worden ontvangen, zelfs als de nettolading van de gebeurtenis verschillende TS bevat Id's. In het algemeen wordt ingangs snelheid weer gegeven als een factor van het aantal apparaten in uw organisatie, een gebeurtenis emissie frequentie en de grootte van een gebeurtenis. Bij het berekenen van opname frequentie moeten IoT Hub gebruikers het aantal hub-verbindingen gebruiken dat in gebruik is, in plaats van het totaal aantal apparaten in de organisatie. Verbeterde ondersteuning voor schalen is actief. Deze documentatie wordt bijgewerkt om deze verbeteringen weer te geven. 
+
+> [!WARNING]
+> Voor omgevingen met IoT Hub als gebeurtenis bron, berekent u de opname frequentie met het aantal Hub-apparaten dat in gebruik is.
+
+Raadpleeg de volgende koppelingen voor meer informatie over doorvoer eenheden en partities:
+
+* [IoT Hub schaal](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [Event hub-schaal](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [Event hub-partities](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>Gegevensopslag
 
@@ -53,19 +75,11 @@ Met Time Series Insights preview worden uw koude Store-gegevens opgeslagen in Az
 > Als eigenaar van het Azure Blob Storage-account waar koud opgeslagen gegevens zich bevinden, hebt u volledige toegang tot alle gegevens in het account. Deze toegang omvat machtigingen voor schrijven en verwijderen. Bewerk of verwijder geen gegevens die Time Series Insights preview-schrijf bewerkingen, omdat dat gegevens verlies kan veroorzaken.
 
 ### <a name="data-availability"></a>Beschik baarheid van gegevens
+
 Time Series Insights preview-partities en gegevens indexeren voor optimale query prestaties. Er worden gegevens beschikbaar voor query's na de index. De hoeveelheid gegevens die wordt opgenomen, kan van invloed zijn op deze Beschik baarheid.
 
 > [!IMPORTANT]
-> De release van de algemene Beschik baarheid (GA) van Time Series Insights zorgt ervoor dat gegevens in 60 seconden na het lezen van de gebeurtenis bron beschikbaar zijn. Tijdens de preview-periode kan het langer duren voordat de gegevens beschikbaar zijn. Neem contact met ons op als u na 60 seconden een belang rijke latentie ondervindt.
-
-### <a name="scale"></a>Schaal
-
-Time Series Insights preview biedt standaard ondersteuning voor een eerste ingangs schaal van Maxi maal 1 MB per seconde (MB/s) per omgeving. Een door Voer van Maxi maal 16 MB/s is beschikbaar als u dat nodig hebt. Als u ondersteuning voor uitgebreid schalen nodig hebt, kunt u contact met ons opnemen.
-
-U kunt aanvullende mogelijkheden voor binnenkomend en schalen voor de gebeurtenis bron krijgen:
-
-* [IoT Hub](../iot-hub/iot-hub-scaling.md)
-* [Event Hubs](../event-hubs/event-hubs-scalability.md)
+> De aanstaande release van de algemene Beschik baarheid (GA) van Time Series Insights zorgt ervoor dat gegevens in 60 seconden na het lezen van de gebeurtenis bron beschikbaar zijn. Tijdens de preview-periode kan het langer duren voordat gegevens beschikbaar zijn. Als u na 60 seconden een langere latentie ondervindt, kunt u een ondersteunings ticket indienen via de Azure Portal.
 
 ## <a name="azure-storage"></a>Azure Storage
 

@@ -1,5 +1,5 @@
 ---
-title: Kopieer incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate met het hulp programma Gegevens kopiëren | Microsoft Docs
+title: Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
 description: Maak een Azure-data factory en gebruik vervolgens het hulp programma Gegevens kopiëren om nieuwe bestanden op basis van LastModifiedDate stapsgewijs te laden.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 9f6fd57586603d0d987faa674d40a7e4678530a1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 09a9fa4515913470c86bbafe293add007a3117ea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933841"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683459"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Incrementeel nieuwe en gewijzigde bestanden op basis van LastModifiedDate kopiëren met behulp van het hulp programma Gegevens kopiëren
 
@@ -32,14 +32,14 @@ Als u dit doet, worden alle bestanden in het bron archief gescand, wordt het bes
 In deze zelf studie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslagaccount**: Gebruik Blob Storage als _bron_ -en _sink_ -gegevens archief. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
+* **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Azure-opslag account**: Blob Storage gebruiken als _bron_ -en _sink_ -gegevens archief. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
 
@@ -49,9 +49,9 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Maak een container met de naam **Destination**. 
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**: 
+1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -129,7 +129,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
     
     ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
-    b. Selecteer bij **gedrag bij het laden van bestanden**de optie **incrementeel laden: LastModifiedDate**.
+    b. Selecteer bij **gedrag bij het laden van bestanden**de optie **Incrementeel laden: LastModifiedDate**.
     
     ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     
@@ -163,7 +163,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     ![De pagina Implementatie](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
     
-10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **Acties** bevat onder andere koppelingen om details van de uitvoering van activiteiten te bekijken en de pijplijn opnieuw uit te voeren. Selecteer **vernieuwen** om de lijst te vernieuwen en selecteer de koppeling uitvoeringen van **activiteit weer geven** in de kolom **acties** . 
+10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **Acties** bevat onder andere koppelingen om details van de uitvoering van activiteiten te bekijken en de pijplijn opnieuw uit te voeren. Selecteer **vernieuwen** om de lijst te vernieuwen en selecteer de koppeling **uitvoeringen van activiteit weer geven** in de kolom **acties** . 
 
     ![Lijst vernieuwen en uitvoering van activiteit weer geven selecteren](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 

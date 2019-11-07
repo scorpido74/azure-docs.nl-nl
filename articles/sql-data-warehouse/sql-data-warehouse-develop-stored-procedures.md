@@ -1,5 +1,5 @@
 ---
-title: Opgeslagen procedures gebruiken in Azure SQL Data Warehouse | Microsoft Docs
+title: Opgeslagen procedures gebruiken
 description: Tips voor het implementeren van opgeslagen procedures in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c12a679ed5f0a1574deb34df8c0151e737d2d01
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479595"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692806"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Opgeslagen procedures gebruiken in SQL Data Warehouse
 Tips voor het implementeren van opgeslagen procedures in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
@@ -63,7 +64,7 @@ GO
 EXEC prc_nesting
 ```
 
-Opmerking: SQL Data Warehouse biedt momenteel geen ondersteuning [voor@NESTLEVEL@](/sql/t-sql/functions/nestlevel-transact-sql). U moet het nest niveau bijhouden. Het is niet onwaarschijnlijk dat u de limiet van acht geneste niveaus overschrijdt, maar als u dat wel doet, moet u uw code opnieuw instellen zodat deze overeenkomt met de geneste niveaus binnen deze limiet.
+Opmerking: SQL Data Warehouse biedt momenteel geen ondersteuning voor [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). U moet het nest niveau bijhouden. Het is niet onwaarschijnlijk dat u de limiet van acht geneste niveaus overschrijdt, maar als u dat wel doet, moet u uw code opnieuw instellen zodat deze overeenkomt met de geneste niveaus binnen deze limiet.
 
 ## <a name="insertexecute"></a>INVOEGEN.. AANVALLER
 SQL Data Warehouse staat niet toe dat u de resultatenset van een opgeslagen procedure gebruikt met een instructie INSERT. Er is echter een andere methode die u kunt gebruiken. Zie het artikel over [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md)voor een voor beeld. 

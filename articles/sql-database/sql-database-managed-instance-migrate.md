@@ -1,5 +1,5 @@
 ---
-title: Data base migreren van SQL Server-exemplaar naar een door Azure SQL Database beheerd exemplaar | Microsoft Docs
+title: Data base migreren van SQL Server-exemplaar naar door Azure SQL Database beheerd exemplaar
 description: Meer informatie over het migreren van een Data Base van SQL Server-exemplaar naar een door Azure SQL Database beheerd exemplaar.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 228b22d9d283fe8c23cbf7a82036b7f3782cbf25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937295"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688006"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migratie van SQL Server naar Azure SQL Database beheerde instantie
 
@@ -107,13 +107,13 @@ Managed instance is een beheerde service waarmee u enkele van de reguliere DBA-a
 Het beheerde exemplaar ondersteunt de volgende database migratie opties (momenteel zijn dit de enige migratie methoden die worden ondersteund):
 
 - Azure Database Migration Service-migratie met bijna nul uitval tijd,
-- Systeem `RESTORE DATABASE FROM URL` eigen-maakt gebruik van systeem eigen back-ups van SQL Server en vergt enige downtime.
+- Systeem eigen `RESTORE DATABASE FROM URL`: maakt gebruik van systeem eigen back-ups van SQL Server en vergt enige downtime.
 
-### <a name="azure-database-migration-service"></a>Azure Database Migration-service
+### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 De [Azure database Migration service (DMS)](../dms/dms-overview.md) is een volledig beheerde service die is ontworpen om naadloze migraties van meerdere database bronnen naar Azure-gegevens platforms mogelijk te maken met minimale downtime. Deze service stroomlijnt de taken die nodig zijn om bestaande derden en SQL Server data bases naar Azure te verplaatsen. Implementatie-opties in open bare preview omvatten data bases in Azure SQL Database en SQL Server data bases in een virtuele machine van Azure. DMS is de aanbevolen migratie methode voor uw bedrijfs werkbelastingen.
 
-Als u SQL Server Integration Services (SSIS) op uw SQL Server on-premises gebruikt, wordt er nog geen ondersteuning geboden voor het migreren van SSIS-catalogus (SSISDB) waarin SSIS-pakketten worden opgeslagen, maar u kunt wel Azure-SSIS Integration Runtime (IR) inrichten in Azure Data Factory (ADF) die een nieuwe SSISDB maken in een beheerd exemplaar en vervolgens uw pakketten opnieuw implementeren, raadpleegt u [Azure-SSIS IR maken in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Als u SQL Server Integration Services (SSIS) op uw SQL Server on-premises gebruikt, wordt er nog geen ondersteuning geboden voor het migreren van SSIS-catalogus (SSISDB) waarin SSIS-pakketten worden opgeslagen, maar u kunt wel Azure-SSIS Integration Runtime (IR) inrichten in Azure Data Factory (ADF) die een nieuwe SSISDB maken in een beheerd exemplaar en vervolgens uw pakketten opnieuw implementeren raadpleegt u [Azure-SSIS IR in ADF maken](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Zie [uw on-premises data base migreren naar een beheerd exemplaar met behulp van DMS](../dms/tutorial-sql-server-to-managed-instance.md)voor meer informatie over dit scenario en over de configuratie stappen voor DMS.  
 
@@ -130,7 +130,7 @@ De volgende tabel bevat meer informatie over de methoden die u kunt gebruiken, a
 |Stap|SQL-engine en-versie|Back-up/herstel methode|
 |---|---|---|
 |Back-up naar Azure Storage plaatsen|Eerdere SQL 2012 SP1 CU2|Het bak-bestand rechtstreeks uploaden naar Azure Storage|
-||2012 SP1 CU2 - 2016|Directe back-up met afgeschaft [met referentie](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxis|
+||2012 SP1 CU2-2016|Directe back-up met afgeschaft [met referentie](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxis|
 ||2016 en hoger|Directe back-ups met behulp [van SAS-referenties](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
 |Herstellen vanuit Azure Storage naar een beheerd exemplaar|[HERSTELLEN vanaf URL met SAS-referentie](sql-database-managed-instance-get-started-restore.md)|
 
@@ -181,7 +181,7 @@ Breng de wijziging van de para meters aan of werk de service lagen bij om de opt
 Managed instance biedt veel geavanceerde hulpprogram ma's voor het controleren en oplossen van problemen, en u moet ze gebruiken om de prestaties van uw exemplaar te bewaken. Enkele van de para meters die u moet bewaken, zijn:
 - CPU-gebruik op het exemplaar om te bepalen heeft het aantal vCores dat u hebt ingericht, het juiste resultaat voor uw werk belasting.
 - Pagina-Life verwachting op uw beheerde instantie om te bepalen hebt [u meer geheugen nodig](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- Wacht op de `INSTANCE_LOG_GOVERNOR` statistieken `PAGEIOLATCH` , zoals of die aangeven dat u opslag-i/o-problemen hebt, met name voor het algemeen niveau waar u mogelijk bestanden vooraf moet toewijzen om betere IO-prestaties te krijgen.
+- Wacht op statistieken zoals `INSTANCE_LOG_GOVERNOR` of `PAGEIOLATCH` die u vertelt dat u opslag-i/o-problemen hebt, met name op Algemeen-laag waar u mogelijk bestanden vooraf moet toewijzen om betere IO-prestaties te krijgen.
 
 ## <a name="leverage-advanced-paas-features"></a>Maak gebruik van geavanceerde PaaS-functies
 

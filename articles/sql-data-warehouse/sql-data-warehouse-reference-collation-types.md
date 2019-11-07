@@ -1,5 +1,5 @@
 ---
-title: Sortering-Azure SQL Data Warehouse | Microsoft Docs
+title: Sortering
 description: Sorterings typen die worden ondersteund in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: antvgski
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 598ad4c103035ec2d94015e1f8e12194d1b723fc
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e54a3dd4b69fff2bc7d122391d145b222b295
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935104"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692564"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Ondersteuning voor database sortering voor Azure SQL Data Warehouse
 
@@ -99,5 +100,5 @@ Als u de standaard sortering bijvoorbeeld wilt wijzigen in hoofdletter gevoelig,
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>De huidige sortering controleren
-Als u de huidige sortering voor de Data Base wilt controleren, kunt u het volgende T-SQL-fragment uitvoeren: Selecteer DATABASEPROPERTYEX (DB_NAME (), sortering) als sortering; Als Sortation is door gegeven als eigenschaps parameter, retourneert de functie DatabasePropertyEx de huidige sortering voor de opgegeven Data Base. Meer informatie over de functie DatabasePropertyEx vindt u op MSDN.
+Als u de huidige sortering voor de Data Base wilt controleren, kunt u het volgende T-SQL-fragment uitvoeren: SELECT DATABASEPROPERTYEX (DB_NAME (), ' Collation ') AS Collation; Als Sortation is door gegeven als eigenschaps parameter, retourneert de functie DatabasePropertyEx de huidige sortering voor de opgegeven Data Base. Meer informatie over de functie DatabasePropertyEx vindt u op MSDN.
 

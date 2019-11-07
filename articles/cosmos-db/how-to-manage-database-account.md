@@ -4,14 +4,14 @@ description: Informatie over het beheren van databaseaccounts in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: f67487f6da5c9be028703d7890e16ffab0c858c6
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812527"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582619"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
 
@@ -33,17 +33,17 @@ Zie [een Azure Cosmos DB-account maken met Power shell](manage-with-powershell.m
 
 ### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager sjabloon
 
-Met deze Azure Resource Manager sjabloon wordt een Azure Cosmos-account gemaakt voor elke ondersteunde API die is geconfigureerd met twee regio's en opties om consistentie niveau, automatische failover en multi-master te selecteren. Als u deze sjabloon wilt implementeren, klikt u op implementeren in azure op de pagina README, maakt u een [Azure Cosmos-account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
+Met deze Azure Resource Manager sjabloon wordt een Azure Cosmos-account gemaakt voor de SQL-API die is geconfigureerd met twee regio's en opties om consistentie niveau, automatische failover en multi-master te selecteren. Als u deze sjabloon wilt implementeren, klikt u op implementeren in azure op de pagina README, maakt u een [Azure Cosmos-account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Regio's toevoegen aan of verwijderen uit uw databaseaccount
 
 ### <a id="add-remove-regions-via-portal"></a>Azure-portal
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Ga naar uw Azure Cosmos-account en open het **wereld wijde menu gegevens repliceren** .
 
-1. Als u regio's wilt toevoegen, selecteert u de zeshoeken op de **+** kaart met het label dat overeenkomt met de gewenste regio (s). Als u een regio wilt toevoegen, selecteert u de optie **+ regio toevoegen** en kiest u een regio in de vervolg keuzelijst.
+1. Als u regio's wilt toevoegen, selecteert u de zeshoeken op de kaart met het **+** label dat overeenkomt met de gewenste regio (s). Als u een regio wilt toevoegen, selecteert u de optie **+ regio toevoegen** en kiest u een regio in de vervolg keuzelijst.
 
 1. Als u regio's wilt verwijderen, wist u een of meer regio's van de kaart door de blauwe zeshoeken met vinkjes te selecteren. Of selecteer het prullenbakpictogram (🗑) rechts van de regio.
 
@@ -81,7 +81,7 @@ Zie [meerdere schrijven-regio's inschakelen met Power shell](manage-with-powersh
 
 ### <a id="configure-multiple-write-regions-arm"></a>Resource Manager-sjabloon
 
-Een account kan worden gemigreerd van een Single-Master naar meerdere masters door de Resource Manager-sjabloon te implementeren die wordt gebruikt om `enableMultipleWriteLocations: true`het account en de instelling te maken. De volgende Azure Resource Manager sjabloon is een Maxi maal bare sjabloon waarmee een Azure Cosmos-account voor SQL-API met twee regio's en meerdere schrijf locaties kan worden geïmplementeerd.
+Een account kan worden gemigreerd van een Single-Master naar meerdere masters door de Resource Manager-sjabloon te implementeren die wordt gebruikt om het account te maken en `enableMultipleWriteLocations: true`in te stellen. De volgende Azure Resource Manager sjabloon is een Maxi maal bare sjabloon waarmee een Azure Cosmos-account voor SQL-API met twee regio's en meerdere schrijf locaties kan worden geïmplementeerd.
 
 ```json
 {
@@ -113,7 +113,7 @@ Een account kan worden gemigreerd van een Single-Master naar meerdere masters do
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2015-04-08",
+            "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {
@@ -123,11 +123,13 @@ Een account kan worden gemigreerd van een Single-Master naar meerdere masters do
                 [
                     {
                         "locationName": "[parameters('primaryRegion')]",
-                        "failoverPriority": 0
+                        "failoverPriority": 0,
+                        "isZoneRedundant": false
                     },
                     {
                         "locationName": "[parameters('secondaryRegion')]",
-                        "failoverPriority": 1
+                        "failoverPriority": 1,
+                        "isZoneRedundant": false
                     }
                 ],
                 "enableMultipleWriteLocations": true

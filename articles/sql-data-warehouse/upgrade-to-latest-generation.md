@@ -1,5 +1,5 @@
 ---
-title: Voer een upgrade uit naar de nieuwste generatie Azure SQL Data Warehouse | Microsoft Docs
+title: Upgrade uitvoeren naar de nieuwste generatie
 description: Voer een upgrade uit van Azure SQL Data Warehouse naar de nieuwste generatie van de Azure-hardware-en opslag architectuur.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 02c426cd921f4af19f3b8c271e4b1c08eae2c3c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575298"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692454"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Prestaties optimaliseren door bijwerken van SQL Data Warehouse
 
@@ -67,7 +68,7 @@ Deze upgrade is van toepassing op Compute data warehouses van de gen1-laag in [o
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Als het Data Warehouse voor de geoptimalisatiede gen1-laag die moet worden bijgewerkt, is onderbroken, [hervat u het Data Warehouse](pause-and-resume-compute-portal.md).
 
@@ -111,7 +112,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com/).
 ## <a name="start-the-upgrade"></a>De upgrade starten
 
 1. Ga naar het Data Warehouse van de berekenings geoptimaliseerde gen1-laag in de Azure Portal. Als het Data Warehouse voor de geoptimalisatiede gen1-laag die moet worden bijgewerkt, is onderbroken, [hervat u het Data Warehouse](pause-and-resume-compute-portal.md). 
-2. Selecteer **upgrade naar Gen2** -kaart op het tabblad taken:  ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
+2. Selecteer **upgrade naar Gen2** -kaart op het tabblad taken: ![Upgrade_1](./media/sql-data-warehouse-upgrade-to-latest-generation/Upgrade_to_Gen2_1.png)
     
     > [!NOTE]
     > Als u de kaart **upgrade naar Gen2** niet op het tabblad taken ziet, is uw abonnements type beperkt in de huidige regio.
@@ -183,13 +184,13 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Een door de gebruiker gedefinieerd herstel punt maken met behulp van de Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Ga naar de SQL Data Warehouse waarvoor u een herstel punt wilt maken.
 
 3. Klik boven aan de sectie Overzicht en selecteer **+ Nieuw herstel punt**.
 
-    ![Nieuw herstelpunt](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
+    ![Nieuw herstel punt](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
 
 4. Geef een naam op voor het herstel punt.
 
@@ -197,7 +198,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Een actieve of onderbroken data base herstellen met behulp van de Azure Portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Ga naar de SQL Data Warehouse waarvan u wilt herstellen.
 3. Klik boven aan de sectie Overzicht op **herstellen**.
 
@@ -205,7 +206,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 4. Selecteer **automatische herstel punten** of door de **gebruiker gedefinieerde herstel punten**.
 
-    ![Automatische herstelpunten](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
+    ![Automatische herstel punten](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
 
 5. Selecteer voor door de gebruiker gedefinieerde herstel punten **een herstel punt** of **Maak een nieuw door de gebruiker gedefinieerd herstel punt**. Kies een server in een geografische regio met Gen2-ondersteuning. 
 
@@ -248,7 +249,7 @@ $GeoRestoredDatabase.status
 De herstelde data base wordt TDE ingeschakeld als de bron database TDE is ingeschakeld.
 
 
-Als u problemen ondervindt met uw data warehouse, maakt u een ondersteunings [aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar de mogelijke oorzaak van de Gen2-upgrade.
+Als u problemen ondervindt met uw data warehouse, maakt u een [ondersteunings aanvraag](sql-data-warehouse-get-started-create-support-ticket.md) en verwijst u naar de mogelijke oorzaak van de Gen2-upgrade.
 
 ## <a name="next-steps"></a>Volgende stappen
 

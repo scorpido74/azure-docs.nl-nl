@@ -1,5 +1,5 @@
 ---
-title: De activiteit van de pijp lijn uitvoeren in Azure Data Factory | Microsoft Docs
+title: De activiteit van de pijp lijn uitvoeren in Azure Data Factory
 description: Meer informatie over hoe u de activiteit pijp lijn uitvoeren kunt gebruiken om een Data Factory pijp lijn vanuit een andere Data Factory pijp lijn aan te roepen.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 1611f740f6b55ecf9f15ecd234d63b5e95baeba1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141708"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679924"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>De activiteit van de pijp lijn uitvoeren in Azure Data Factory
 Met de activiteit voor het uitvoeren van de pijp lijn kan een Data Factory pijp lijn een andere pijp lijn aanroepen.
@@ -59,19 +59,19 @@ Met de activiteit voor het uitvoeren van de pijp lijn kan een Data Factory pijp 
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Description | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de activiteit voor het uitvoeren van de pijp lijn. | Tekenreeks | Ja
-Type | Moet worden ingesteld op: **ExecutePipeline**. | Tekenreeks | Ja
-pijplijn | Pijplijn verwijzing naar de afhankelijke pijp lijn die deze pijp lijn aanroept. Een pijplijn referentie object heeft twee eigenschappen: **referentie** naam en **type**. De eigenschap refernaam geeft de naam van de referentie pijplijn aan. De eigenschap type moet worden ingesteld op PipelineReference. | PipelineReference | Ja
+naam | De naam van de activiteit voor het uitvoeren van de pijp lijn. | Tekenreeks | Ja
+type | Moet worden ingesteld op: **ExecutePipeline**. | Tekenreeks | Ja
+Pijp lijn | Pijplijn verwijzing naar de afhankelijke pijp lijn die deze pijp lijn aanroept. Een pijplijn referentie object heeft twee eigenschappen: **referentie** naam en **type**. De eigenschap refernaam geeft de naam van de referentie pijplijn aan. De eigenschap type moet worden ingesteld op PipelineReference. | PipelineReference | Ja
 parameters | De para meters die moeten worden door gegeven aan de aangeroepen pijp lijn | Een JSON-object waarmee parameter namen worden toegewezen aan argument waarden | Nee
-waitOnCompletion | Hiermee definieert u of de uitvoering van de activiteit wacht totdat de afhankelijke uitvoering van de pijp lijn is voltooid. De standaardinstelling is onwaar. | Boolean-waarde | Nee
+waitOnCompletion | Hiermee definieert u of de uitvoering van de activiteit wacht totdat de afhankelijke uitvoering van de pijp lijn is voltooid. De standaardinstelling is onwaar. | Booleaans | Nee
 
 ## <a name="sample"></a>Voorbeeld
 Dit scenario heeft twee pijp lijnen:
 
-- **Hoofd pijplijn** : deze pijp lijn heeft één activiteit voor het uitvoeren van een pijp lijn die de aangeroepen pijp lijn aanroept. Voor de hoofd pijplijn worden twee para meters `masterSinkBlobContainer`gebruikt: `masterSourceBlobContainer`,.
-- **Aangeroepen pijp lijn** : deze pijp lijn heeft één Kopieer activiteit die gegevens kopieert van een Azure Blob-bron naar Azure Blob-sink. De aangeroepen pijp lijn heeft twee para meters `sourceBlobContainer`: `sinkBlobContainer`,.
+- **Hoofd pijplijn** : deze pijp lijn heeft één activiteit voor het uitvoeren van een pijp lijn die de aangeroepen pijp lijn aanroept. De hoofd pijplijn heeft twee para meters: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
+- **Aangeroepen pijp lijn** : deze pijp lijn heeft één Kopieer activiteit die gegevens kopieert van een Azure Blob-bron naar Azure Blob-sink. De aangeroepen pijp lijn heeft twee para meters: `sourceBlobContainer`, `sinkBlobContainer`.
 
 ### <a name="master-pipeline-definition"></a>Model pijplijn definitie
 

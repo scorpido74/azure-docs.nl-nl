@@ -1,5 +1,5 @@
 ---
-title: Client bibliotheek voor Elastic Data Base gebruiken met Entity Framework | Microsoft Docs
+title: Client bibliotheek voor Elastic Data Base gebruiken met Entity Framework
 description: Elastic Database-client bibliotheek en-Entity Framework gebruiken voor het coderen van data bases
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 8ae264f7da84336d5f786d2ff060aa89bbe75837
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a6ed6eb2596663dd276fe580c9f2574163589b1d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568297"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690103"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Client bibliotheek Elastic Database met Entity Framework
 
@@ -44,10 +44,10 @@ Wanneer u deze data bases hebt gemaakt, vult u de locatie houders in **Program.c
 
 Entity Framework ontwikkel aars zijn afhankelijk van een van de volgende vier werk stromen om toepassingen te bouwen en om persistentie te garanderen voor toepassings objecten:
 
-* **Code First (nieuwe data base)** : De EF-ontwikkelaar maakt het model in de toepassings code en vervolgens wordt de data base door EF gegenereerd. 
-* **Code First (bestaande data base)** : De ontwikkelaar laat EF de toepassings code genereren voor het model van een bestaande data base.
-* **Model eerst**: De ontwikkelaar maakt het model in de EF Designer en vervolgens maakt EF de data base van het model.
-* **Data Base**: De ontwikkelaar gebruikt het hulp programma EF om het model van een bestaande data base af te leiden. 
+* **Code First (nieuwe data base)** : de EF-ontwikkelaar maakt het model in de toepassings code en vervolgens wordt de data base door EF gegenereerd. 
+* **Code First (bestaande data base)** : met de ontwikkelaar kan EF de toepassings code voor het model uit een bestaande data base genereren.
+* **Model eerst**: de ontwikkelaar maakt het model in de EF Designer en vervolgens wordt de data base gemaakt op basis van het model.
+* **Data Base**: de ontwikkelaar gebruikt het hulp programma EF om het model van een bestaande data base af te leiden. 
 
 Al deze benaderingen zijn afhankelijk van de DbContext-klasse om database verbindingen en database schema op transparante wijze te beheren voor een toepassing. Verschillende constructors in de DbContext-basis klasse bieden verschillende niveaus van controle over het maken van verbindingen, data base-Boots traps en het maken van schema's. Problemen ontstaan voornamelijk uit het feit dat het database verbindings beheer dat door EF werd geboden door de verbindings beheer mogelijkheden van de gegevens afhankelijke routerings interfaces die worden geboden door de client bibliotheek voor Elastic data base. 
 
@@ -63,10 +63,10 @@ De Shard-toewijzings Manager beveiligt gebruikers van inconsistente weer gaven i
 
 Wanneer u werkt met de client bibliotheek voor Elastic data base en Entity Framework Api's, wilt u de volgende eigenschappen behouden: 
 
-* **Uitschalen**: Om data bases toe te voegen aan of te verwijderen uit de gegevenslaag van de Shard-toepassing, indien nodig voor de capaciteits vereisten van de toepassing. Dit betekent het beheren van het maken en verwijderen van data bases en het gebruik van de elastische data base Shard-toewijzings beheer Api's voor het beheren van data bases en toewijzingen van shardlets. 
-* **Consistentie**: De toepassing maakt gebruik van sharding en gebruikt de gegevens afhankelijke routerings mogelijkheden van de client bibliotheek. Om beschadigingen of verkeerde query resultaten te voor komen, worden verbindingen brokert via het Shard-toewijzings beheer. Hiermee behoudt u ook validatie en consistentie.
-* **Code eerst**: Om het gemak van het eerste paradigma van de code van EF te bewaren. In de eerste code worden klassen in de toepassing transparant toegewezen aan de onderliggende database structuren. De toepassings code communiceert met DbSets waarmee de meeste aspecten van de onderliggende database verwerking worden gemaskeerd.
-* **Schema**: Entity Framework verwerkt het maken van de initiële database schema's en de verdere schema-evolutie via migraties. Door deze mogelijkheden te behouden, is het aanpassen van uw app eenvoudig omdat de gegevens worden gegroeid. 
+* **Uitschalen**: om data bases toe te voegen aan of te verwijderen uit de gegevenslaag van de Shard-toepassing, indien nodig voor de capaciteits vereisten van de toepassing. Dit betekent het beheren van het maken en verwijderen van data bases en het gebruik van de elastische data base Shard-toewijzings beheer Api's voor het beheren van data bases en toewijzingen van shardlets. 
+* **Consistentie**: de toepassing maakt gebruik van sharding en gebruikt de gegevens afhankelijke routerings mogelijkheden van de client bibliotheek. Om beschadigingen of verkeerde query resultaten te voor komen, worden verbindingen brokert via het Shard-toewijzings beheer. Hiermee behoudt u ook validatie en consistentie.
+* **Code eerst**: om het gemak van het eerste paradigma van de code van EF te bewaren. In de eerste code worden klassen in de toepassing transparant toegewezen aan de onderliggende database structuren. De toepassings code communiceert met DbSets waarmee de meeste aspecten van de onderliggende database verwerking worden gemaskeerd.
+* **Schema**: Entity Framework verwerkt initiële database schema's en verdere schema-evolutie via migraties. Door deze mogelijkheden te behouden, is het aanpassen van uw app eenvoudig omdat de gegevens worden gegroeid. 
 
 De volgende richt lijnen geven aan hoe aan deze vereisten wordt voldaan voor het eerste gebruik van code toepassingen met Elastic data base-hulpprogram ma's. 
 
@@ -204,7 +204,7 @@ De code voorbeelden hierboven illustreren de standaard herschrijf bewerkingen va
 
 Automatische schema beheer is een gebruiks gemak van de Entity Framework. In de context van toepassingen die gebruikmaken van elastische database hulpprogramma's, wilt u deze mogelijkheid behouden om het schema automatisch in te richten op nieuw gemaakte Shards wanneer data bases worden toegevoegd aan de Shard-toepassing. De primaire use-case is het verg Roten van de capaciteit van de gegevenslaag voor Shard-toepassingen met EF. Het gebruik van de mogelijkheden van EF voor schema beheer vermindert de inspanning van het database beheer met een Shard-toepassing die is gebouwd op EF. 
 
-Schema-implementatie via EF-migraties werkt het beste bij niet- **opende verbindingen**. Dit is in tegens telling tot het scenario voor gegevens afhankelijke route ring, afhankelijk van de geopende verbinding die is gemaakt door de client-API voor Elastic data base. Een ander verschil is de consistentie vereisten: Hoewel het wenselijk is om consistentie te garanderen voor alle gegevens afhankelijke routerings verbindingen om te beschermen tegen gelijktijdige Shard toewijzings bewerkingen, is het geen probleem met de initiële schema-implementatie naar een nieuwe Data Base die nog niet is geregistreerd in de Shard-kaart en nog niet toegewezen aan de Hold-shardlets. U kunt daarom gebruikmaken van normale database verbindingen voor dit scenario, in tegens telling tot gegevens afhankelijke route ring.  
+Schema-implementatie via EF-migraties werkt het beste bij niet- **opende verbindingen**. Dit is in tegens telling tot het scenario voor gegevens afhankelijke route ring, afhankelijk van de geopende verbinding die is gemaakt door de client-API voor Elastic data base. Een ander verschil is de consistentie vereisten: Hoewel het wenselijk is om consistentie te garanderen voor alle gegevens afhankelijke routerings verbindingen om te beschermen tegen gelijktijdige Shard toewijzings manipulatie, is het geen probleem met de eerste schema-implementatie naar een nieuwe Data Base die is nog niet geregistreerd in de Shard-kaart en is nog niet toegewezen aan de shardlets. U kunt daarom gebruikmaken van normale database verbindingen voor dit scenario, in tegens telling tot gegevens afhankelijke route ring.  
 
 Dit leidt tot een benadering waarbij schema-implementatie via EF-migraties nauw samen worden gekoppeld aan de registratie van de nieuwe Data Base als een Shard in de Shard-toewijzing van de toepassing. Dit is afhankelijk van de volgende vereisten: 
 

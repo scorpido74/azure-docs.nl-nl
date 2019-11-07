@@ -1,6 +1,6 @@
 ---
 title: Meerdere eind punten voor een model maken
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Gebruik Power shell om meerdere Machine Learning modellen en web service-eind punten te maken met dezelfde algoritme, maar met verschillende trainings gegevens sets.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: c600e0facfbe1a2458aed30bb23e7cd7168b0170
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 337b90e68d0c88f6d6c0325431e963a3276dc42e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493225"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619596"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>Power shell gebruiken voor het maken van Studio-modellen en web service-eind punten van een experiment
 

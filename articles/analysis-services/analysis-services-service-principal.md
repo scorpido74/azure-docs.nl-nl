@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services-taken automatiseren met Service-principals | Microsoft Docs
-description: Meer informatie over het maken van service-principals voor het automatiseren van Azure Analysis Services taken.
+description: Meer informatie over het maken van een service-principal voor het automatiseren van Azure Analysis Services beheer taken.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a590590faa422d47306e697a7c90bb635ea8c6e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146355"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572610"
 ---
 # <a name="automation-with-service-principals"></a>Automatisering met service-principals
 
@@ -48,9 +48,9 @@ De Service-Principal-appID en het wacht woord of-certificaat kunnen worden gebru
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />Using AZ. AnalysisServices-module
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />de module AZ. AnalysisServices gebruiken
 
-Gebruik `Connect-AzAccount` cmdlet als u een Service-Principal gebruikt voor resource beheer bewerkingen met de module [AZ. AnalysisServices](/powershell/module/az.analysisservices) . 
+Gebruik `Connect-AzAccount`-cmdlet als u een Service-Principal gebruikt voor resource beheer bewerkingen met de module [AZ. AnalysisServices](/powershell/module/az.analysisservices) . 
 
 In het volgende voor beeld worden appID en een wacht woord gebruikt voor het uitvoeren van beheer bewerkingen voor synchronisatie met alleen-lezen replica's en omhoog/omlaag schalen:
 
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO en ADOMD 
 
-Bij het maken van verbinding met client toepassingen en web apps, [AMO en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in verbindings reeksen met de volgende syntaxis: `app:AppID` en wacht woord of @no__ t-2. 
+Bij het maken van verbinding met client toepassingen en web-apps, [AMO-en ADOMD-client bibliotheken](analysis-services-data-providers.md) versie 15.0.2 en hogere Installeer bare pakketten van NuGet ondersteunings service-principals in verbindings reeksen met de volgende syntaxis: `app:AppID` en wacht woord of @no_ _t_2_ .`cert:thumbprint` 
 
-In het volgende voor beeld worden `appID` en een `password` gebruikt voor het uitvoeren van een vernieuwings bewerking van een model database:
+In het volgende voor beeld worden `appID` en een `password` gebruikt voor het uitvoeren van een vernieuwings bewerking voor een model database:
 
 ```csharp
 string appId = "xxx";

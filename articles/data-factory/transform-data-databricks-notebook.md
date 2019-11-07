@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met Databricks notebook-Azure | Microsoft Docs
+title: Gegevens transformeren met Databricks notebook-Azure
 description: Meer informatie over het verwerken of transformeren van gegevens door een Databricks-notebook uit te voeren.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 685a7863af74bf90c819453b41078b48ab6d2045
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233061"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683926"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Gegevens transformeren door een Databricks-notebook uit te voeren
 
-Met de activiteit Azure Databricks notebook in een [Data Factory pijp lijn](concepts-pipelines-activities.md) wordt een Databricks-notebook in uw Azure Databricks-werk ruimte uitgevoerd. In dit artikel vindt u een overzicht van het artikel over de [activiteiten](transform-data.md) voor gegevens transformatie, dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
+Met de activiteit Azure Databricks notebook in een [Data Factory pijp lijn](concepts-pipelines-activities.md) wordt een Databricks-notebook in uw Azure Databricks-werk ruimte uitgevoerd. In dit artikel vindt u een overzicht van de [activiteiten voor gegevens transformatie](transform-data.md) , waarmee u een algemene weer gave van gegevens transformatie en ondersteunde transformatie activiteiten krijgt. Azure Databricks is een beheerd platform voor het uitvoeren van Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definitie van Databricks-notebook-activiteit
 
@@ -57,15 +57,15 @@ Hier volgt een voor beeld van de JSON-definitie van een Databricks-notebook acti
 
 In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-definitie worden gebruikt:
 
-|Eigenschap|Description|Vereist|
+|Eigenschap|Beschrijving|Vereist|
 |---|---|---|
-|name|De naam van de activiteit in de pijp lijn.|Ja|
+|naam|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
-|Type|Voor Databricks notebook-activiteit is het type activiteit DatabricksNotebook.|Ja|
-|linkedServiceName|De naam van de gekoppelde Databricks-service waarop de Databricks-notebook wordt uitgevoerd. Zie het artikel [Compute linked Services](compute-linked-services.md) (Engelstalig) voor meer informatie over deze gekoppelde service.|Ja|
+|type|Voor Databricks notebook-activiteit is het type activiteit DatabricksNotebook.|Ja|
+|linkedServiceName|De naam van de gekoppelde Databricks-service waarop de Databricks-notebook wordt uitgevoerd. Zie voor meer informatie over deze gekoppelde service artikel [Compute linked Services](compute-linked-services.md) (Engelstalig).|Ja|
 |notebookPath|Het absolute pad van de notebook dat moet worden uitgevoerd in de Databricks-werk ruimte. Dit pad moet beginnen met een slash.|Ja|
-|baseParameters|Een matrix met sleutel-waardeparen. Basis parameters kunnen worden gebruikt voor elke uitvoering van de activiteit. Als het notitie blok een para meter accepteert die niet is opgegeven, wordt de standaard waarde van het notitie blok gebruikt. Meer informatie over para meters in [Databricks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair)-notebooks.|Nee|
-|Library|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix van \<teken reeks, object > zijn.|Nee|
+|baseParameters|Een matrix met sleutel-waardeparen. Basis parameters kunnen worden gebruikt voor elke uitvoering van de activiteit. Als het notitie blok een para meter accepteert die niet is opgegeven, wordt de standaard waarde van het notitie blok gebruikt. Meer informatie over para meters in [Databricks-notebooks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Nee|
+|Library|Een lijst met bibliotheken die op het cluster moeten worden geïnstalleerd waarmee de taak wordt uitgevoerd. Dit kan een matrix zijn met \<teken reeks, object >.|Nee|
 
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Ondersteunde bibliotheken voor Databricks-activiteiten
@@ -120,7 +120,7 @@ In bepaalde gevallen kan het nodig zijn om bepaalde waarden van het notitie blok
 
 1. In uw notitie blok kunt u [dbutils. notebook. Exit ("returnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) aanroepen en de bijbehorende ' returnValue ' wordt geretourneerd aan Data Factory.
 
-2. U kunt de uitvoer in data factory gebruiken door gebruik te maken van `'@activity('databricks notebook activity name').output.runOutput'`een expressie zoals. 
+2. U kunt de uitvoer in data factory gebruiken door gebruik te maken van een expressie zoals `'@activity('databricks notebook activity name').output.runOutput'`. 
 
    > [!IMPORTANT]
    > Als u een JSON-object doorgeeft, kunt u waarden ophalen door de namen van eigenschappen toe te voegen. Voorbeeld: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`

@@ -1,36 +1,36 @@
 ---
-title: Assets laden in Azure Media Clipper | Microsoft Docs
-description: Stappen voor het laden van assets in Azure Media Clipper
+title: Assets in azure media Clipper laden | Microsoft Docs
+description: Stappen voor het laden van assets in azure media Clipper
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: clip; subclip; code ring; media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: ec8cd06be78bbd8df0bca390696e736c3a6ee075
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66b4ca5b2859dd306f6eb1c669a07840189f53d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465878"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685037"
 ---
-# <a name="loading-assets-into-azure-media-clipper"></a>Het laden van assets in Azure Media Clipper  
+# <a name="loading-assets-into-azure-media-clipper"></a>Assets in azure media Clipper laden  
 
-Activa kunnen worden geladen in de Azure Media Clipper door twee methoden:
-1. Statisch doorgeven in een bibliotheek met activa
-2. Een lijst met activa via API dynamisch genereren
+Activa kunnen op twee manieren in de Azure media Clipper worden geladen:
+1. Statisch door geven in een bibliotheek met assets
+2. Dynamisch genereren van een lijst met assets via API
 
-## <a name="statically-load-videos-into-clipper"></a>Statisch video's laden in Clipper
-Laad statisch video's in de Clipper zodat eindgebruikers clips bouwen zonder video's selecteren in het deelvenster asset selecteren.
+## <a name="statically-load-videos-into-clipper"></a>Video's statisch laden in Clipper
+U kunt Video's statisch laden in de Clipper zodat eind gebruikers clips kunnen bouwen zonder dat ze Video's hoeven te selecteren in het deel venster activa selecteren.
 
-In dit geval geeft u in een vaste set voorzieningen aan de Clipper. Elke asset bevat een AMS-asset/filter-ID, naam, gepubliceerde streaming-URL. Indien van toepassing, een verificatietoken voor beveiliging van inhoud of een matrix van de miniatuur van URL's kunnen worden doorgegeven. Als een doorgegeven, worden de miniaturen ingevuld in de interface. In scenario's waarin de bibliotheek asset statische en klein, kunt u doorgeven in het contract asset voor alle activa in de bibliotheek.
+In dit geval geeft u een statische set met assets door aan de Clipper. Elk activum bevat een AMS Asset/filter-ID, naam, gepubliceerde streaming-URL. Indien van toepassing, kan een verificatie token voor inhouds beveiliging of matrix met miniaturen-Url's worden door gegeven. Als dit wordt door gegeven, worden de miniaturen in de interface ingevuld. In scenario's waarin de activa bibliotheek statisch en klein is, kunt u het activa contract voor elk activum in de bibliotheek door geven.
 
 > [!NOTE]
-> Assets worden toegevoegd wanneer het statisch laden van assets in de Clipper, **rechtstreeks naar de tijdlijn** en de **asset deelvenster wordt niet gerenderd**. Het eerste activum wordt toegevoegd aan de tijdlijn en de rest van de activa zijn gestapeld aan de rechterkant van de tijdlijn).
+> Bij het statisch laden van assets in de Clipper worden assets **rechtstreeks aan de tijd lijn** toegevoegd en **wordt het deel venster activa niet weer gegeven**. Het eerste activum wordt toegevoegd aan de tijd lijn en de rest van de activa worden aan de rechter kant van de tijd lijn gestapeld.
 
-Een statische asset om bibliotheek te laden, gebruikt u de **laden** methode om door te geven in een JSON-weergave van elk actief. Het volgende codevoorbeeld ziet u de JSON-weergave voor een asset.
+Als u een statische activa bibliotheek wilt laden, gebruikt u de methode **Load** om door te geven in een JSON-weer gave van elke Asset. In het volgende code voorbeeld ziet u de JSON-weer gave voor één Asset.
 
 ```javascript
 var assets = [
@@ -99,10 +99,10 @@ subclipper.ready(function () {
 ```
 
 > [!NOTE]
-> Het verdient keten de methode load() aanroepen met de methode ready(handler) zoals wordt weergegeven in het voorgaande voorbeeld. Het vorige voorbeeld zorgt ervoor dat de widget gereed is voordat het laden van de activa.
+> U wordt aangeraden de methode load () aan te roepen met de methode Ready (handler), zoals wordt weer gegeven in het vorige voor beeld. In het voor gaande voor beeld wordt gegarandeerd dat de widget gereed is voordat de assets worden geladen.
 
 > [!NOTE]
-> Voor de miniatuur van URL's naar behoren werkt in de tijdlijn van de Clipper ze gelijkmatig moeten worden verdeeld over de video (op basis van de duur) en in chronologische volgorde binnen de matrix. U kunt de volgende vooraf gedefinieerde JSON-fragment gebruiken als een voorbeeld-verwijzing voor het genereren van afbeeldingen met de 'Media Encoder Standard' processor:
+> De miniaturen van de Url's werken zoals verwacht in de tijd lijn van Clipper, dan moeten ze gelijkmatig worden verdeeld over de video (op basis van de duur) en in chronologische volg orde binnen de matrix. U kunt de volgende JSON-standaard fragment gebruiken als voor beeld voor het genereren van installatie kopieën met de ' Media Encoder Standard-processor:
 
 ```json
 {
@@ -120,13 +120,13 @@ subclipper.ready(function () {
 }
 ```
 
-## <a name="dynamically-load-videos-in-clipper"></a>Video's in Clipper dynamisch laden
-Dynamisch video's in de Clipper waarmee eindgebruikers kunnen video's selecteren in het deelvenster asset selectie knippen tegen laden.
+## <a name="dynamically-load-videos-in-clipper"></a>Video's dynamisch laden in Clipper
+Laad Video's dynamisch in de Clipper om eind gebruikers in staat te stellen Video's te selecteren in het deel venster activa selecteren om te knippen.
 
-U kunt ook activa dynamisch via een retouraanroep laden. In scenario's waarbij activa dynamisch worden gegenereerd of de bibliotheek is groot, moet u via de callback laden. Als u wilt laden asset dynamisch, moet u de optionele onLoadAssets retouraanroepfunctie implementeren. Deze functie wordt doorgegeven in de Clipper tijdens de initialisatie. De omgezette assets moeten voldoen aan de dezelfde opdracht als statisch geladen assets. Het volgende codevoorbeeld ziet u de methode, de verwachte invoer en de verwachte uitvoer.
+U kunt assets ook dynamisch laden via een call back. In scenario's waarin activa dynamisch worden gegenereerd of de tape wisselaar groot is, moet u de belasting via de retour aanroep. Als u de Asset dynamisch wilt laden, moet u de optionele functie onLoadAssets call back implementeren. Deze functie wordt tijdens de initialisatie door gegeven aan de Clipper. De opgeloste activa moeten voldoen aan hetzelfde contract als statische geladen activa. In het volgende code voorbeeld ziet u de methode handtekening, verwachte invoer en verwachte uitvoer.
 
 > [!NOTE]
-> Wanneer het dynamisch laden van assets in de Clipper, assets worden weergegeven in de **asset selectie deelvenster**.
+> Bij het dynamisch laden van assets in de Clipper worden assets weer gegeven in het **deel venster activa selecteren**.
 
 ```javascript
 // Video Assets Pane Callback

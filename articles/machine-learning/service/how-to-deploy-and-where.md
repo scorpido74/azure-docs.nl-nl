@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 856f00b17a5ee994f8864c5d46ce4d796d68d367
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497012"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622397"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -254,7 +254,7 @@ Deze typen worden momenteel ondersteund:
 * `pyspark`
 * Standard python-object
 
-Als u schema generatie wilt gebruiken, neemt u het `inference-schema`-pakket op in uw Conda-omgevings bestand.
+Als u schema generatie wilt gebruiken, neemt u het `inference-schema`-pakket op in uw Conda-omgevings bestand. Zie [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)voor meer informatie over dit pakket.
 
 ##### <a name="example-dependencies-file"></a>Voor beeld van afhankelijkheids bestand
 
@@ -608,9 +608,9 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 Zie voor meer informatie de documentatie van [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
-### <a id="notebookvm"></a>Compute instance web service (dev/test)
+### <a id="notebookvm"></a>VM van notebook-webservice (dev/test)
 
-Zie [een model implementeren voor het Azure machine learning Compute-exemplaar](how-to-deploy-local-container-notebook-vm.md).
+Zie [een model implementeren voor Azure machine learning notebook-VM](how-to-deploy-local-container-notebook-vm.md).
 
 ### <a id="aci"></a>Azure Container Instances (dev/test)
 
@@ -999,10 +999,12 @@ Als u een geregistreerd model wilt verwijderen, gebruikt u `model.delete()`.
 Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
 
 ## <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
+
 Implementatie zonder code model is momenteel als preview-versie beschikbaar en ondersteunt de volgende machine learning frameworks:
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensor flow SavedModel-indeling
-```
+
+```python
 from azureml.core import Model
 
 model = Model.register(workspace=ws,
@@ -1017,10 +1019,12 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 ### <a name="onnx-models"></a>ONNX-modellen
+
 Registratie en implementatie van het ONNX-model worden ondersteund voor elk ONNX-Afleidings diagram. De stappen voor preprocess en postprocess worden momenteel niet ondersteund.
 
 Hier volgt een voor beeld van hoe u een MNIST ONNX-model registreert en implementeert:
-```
+
+```python
 from azureml.core import Model
 
 model = Model.register(workspace=ws,
@@ -1033,11 +1037,14 @@ model = Model.register(workspace=ws,
 service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
+
 ### <a name="scikit-learn-models"></a>Scikit-modellen leren
+
 Er wordt geen code model implementatie ondersteund voor alle ingebouwde scikit-informatie over model typen.
 
 Hier volgt een voor beeld van het registreren en implementeren van een sklearn-model zonder extra code:
-```
+
+```python
 from azureml.core import Model
 from azureml.core.resource_configuration import ResourceConfiguration
 
@@ -1055,7 +1062,8 @@ service = Model.deploy(ws, service_name, [model])
 ```
 
 Opmerking: deze afhankelijkheden zijn opgenomen in de vooraf opgebouwde sklearn-deinterferentie-container:
-```
+
+```yaml
     - azureml-defaults
     - inference-schema[numpy-support]
     - scikit-learn
@@ -1063,6 +1071,7 @@ Opmerking: deze afhankelijkheden zijn opgenomen in de vooraf opgebouwde sklearn-
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * [Een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)
 * [Problemen met implementatie oplossen](how-to-troubleshoot-deployment.md)
 * [Azure Machine Learning webservices beveiligen met SSL](how-to-secure-web-service.md)

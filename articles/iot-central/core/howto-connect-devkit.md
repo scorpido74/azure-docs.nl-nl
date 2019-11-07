@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 24ce6de63d06402e24abdeb33996a3853175ce91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72954407"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582992"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing
 
@@ -119,7 +119,7 @@ Schud het apparaat om een gerapporteerde eigenschap te verzenden. Het apparaat v
 
 U kunt de telemetrie-metingen en gerapporteerde eigenschaps waarden weer geven en instellingen configureren in azure IoT Central:
 
-1. Gebruik **device Explorer** om te navigeren naar de pagina **metingen** voor het echte MXChip-apparaat dat u hebt toegevoegd:
+1. Gebruik **apparaten** om naar de pagina **metingen** te navigeren voor het echte MXChip-apparaat dat u hebt toegevoegd:
 
     ![Naar echt apparaat navigeren](media/howto-connect-devkit/realdevicenew.png)
 
@@ -214,7 +214,7 @@ Een toepassing die is gemaakt op basis van de voor beeld-Devkits-toepassings sja
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Apparaatstatus   | Groen  | Orange  | Rood    | 
 
-#### <a name="events"></a>Evenements 
+#### <a name="events"></a>Gebeurtenissen 
 | Naam             | Weergavenaam      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Knop B ingedrukt  | 
@@ -241,7 +241,7 @@ Instellingen in-/uitschakelen
 | --------------- | ------------ | ---------- | --------- |
 | Eigenschap apparaat | Aantal dobbelten   | dieNumber  | getal    |
 | Eigenschap apparaat | Locatie van apparaat   | location  | location    |
-| Tekst            | Gefabriceerd in     | manufacturedIn   | N/A       |
+| Tekst            | Gefabriceerd in     | manufacturedIn   | N.v.t.       |
 
 ### <a name="commands"></a>Opdrachten
 

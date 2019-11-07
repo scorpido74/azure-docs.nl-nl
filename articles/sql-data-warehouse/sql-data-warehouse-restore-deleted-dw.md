@@ -1,5 +1,5 @@
 ---
-title: Een verwijderde Azure SQL Data Warehouse herstellen | Microsoft Docs
+title: Een verwijderde datawarehouse herstellen
 description: Instructies voor het herstellen van een verwijderde Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 376a50a79858aee34aa71d172ca5836646a6651d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cb09b4808bd6d59d2f70e85d204ab8451d501cee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426627"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692608"
 ---
 # <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Een verwijderde Azure SQL Data Warehouse herstellen
 
@@ -70,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Een verwijderde data base herstellen met behulp van de Azure Portal
 
-1. Meld u aan bij [Azure Portal][Azure portal].
+1. Meld u aan bij de [Azure Portal][Azure portal].
 2. Ga naar de SQL-server waarop uw verwijderde data warehouse werd gehost.
 3. Selecteer het pictogram **Verwijderde data bases** in de inhouds opgave.
 

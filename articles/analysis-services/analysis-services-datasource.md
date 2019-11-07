@@ -1,18 +1,18 @@
 ---
 title: Gegevens bronnen die worden ondersteund in Azure Analysis Services | Microsoft Docs
-description: Beschrijft gegevens bronnen die worden ondersteund voor gegevens modellen in Azure Analysis Services.
+description: Hierin worden gegevens bronnen en connectors beschreven die worden ondersteund voor tabellaire 1200 en hogere gegevens modellen in Azure Analysis Services.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146940"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572963"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Gegevens bronnen die worden ondersteund in Azure Analysis Services
 
@@ -38,7 +38,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 <a name="gen2">4</a> -ADLS Gen2 wordt momenteel niet ondersteund.
 
 
-**Provider**   
+  van **provider**  
 In-Memory-en DirectQuery-modellen die verbinding maken met Azure-gegevens bronnen, wordt .NET Framework gegevens provider gebruikt voor SQL Server.
 
 ## <a name="other-data-sources"></a>Andere gegevens bronnen
@@ -99,7 +99,7 @@ Bij het migreren van een on-premises SQL Server Analysis Services tabellaire mod
 
 1. Klik in Visual Studio > **Tabellaire model verkenner** > **gegevens bronnen**met de rechter muisknop op een gegevens bron verbinding en klik vervolgens op **gegevens bron bewerken**.
 2. Klik in **verbinding bewerken**op **Geavanceerd** om het venster Geavanceerde eigenschappen te openen.
-3. Selecteer in **Geavanceerde eigenschappen instellen** > -**providers**de juiste provider.
+3. Selecteer in **Geavanceerde eigenschappen instellen** > **providers**de juiste provider.
 
 ## <a name="impersonation"></a>Imitatie
 In sommige gevallen kan het nodig zijn om een ander imitatie account op te geven. Het imitatie account kan worden opgegeven in Visual Studio of SSMS.

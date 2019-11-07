@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over het herstel na nood gevallen van Azure naar Azure met Azure Site Recovery
+title: Veelgestelde vragen over herstel na nood gevallen voor Azure VM met Azure Site Recovery
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over herstel na nood gevallen van virtuele Azure-machines naar een andere Azure-regio met Azure Site Recovery
 author: asgang
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 5ed501a9f11e790bcc2196d57c6479beb54f1a17
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861390"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621073"
 ---
-# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: Herstel na noodgevallen van Azure naar Azure
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over herstel na nood gevallen van virtuele Azure-machines naar een andere Azure-regio met behulp van [site Recovery](site-recovery-overview.md). 
 
@@ -79,7 +79,7 @@ Replicatie is doorlopend wanneer u virtuele Azure-machines naar een andere Azure
 U kunt geen Azure-naar-Azure-oplossing voor nood herstel gebruiken om Vm's binnen een regio te repliceren.
 
 ### <a name="can-i-replicate-vms-to-any-azure-region"></a>Kan ik Vm's repliceren naar een Azure-regio?
-Met Site Recovery kunt u virtuele machines repliceren en herstellen tussen twee regio's binnen hetzelfde geografische cluster. Geografische clusters worden gedefinieerd met gegevens latentie en soevereiniteit. Zie de ondersteunings matrix voor de Site Recovery [regio](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)voor meer informatie.
+Met Site Recovery kunt u virtuele machines repliceren en herstellen tussen twee regio's binnen hetzelfde geografische cluster. Geografische clusters worden gedefinieerd met gegevens latentie en soevereiniteit. Zie de [ondersteunings matrix](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)voor de site Recovery regio voor meer informatie.
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Is Site Recovery Internet verbinding vereist?
 
@@ -89,7 +89,7 @@ Nee, Site Recovery vereist geen Internet verbinding. Maar hiervoor is toegang to
 Ja, u kunt de toepassing repliceren en de configuratie voor herstel na nood gevallen ook in een afzonderlijke resource groep laten staan.
 Als u bijvoorbeeld een toepassing met elke lagen-app, DB en web in een afzonderlijke resource groep hebt, klikt u op de [wizard replicatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) drie keer per om alle lagen te beveiligen. Site Recovery worden deze drie lagen in drie verschillende resource groepen gerepliceerd.
 
-## <a name="replication-policy"></a>Replicatiebeleid
+## <a name="replication-policy"></a>Beleid voor replicatie
 
 ### <a name="what-is-a-replication-policy"></a>Wat is een replicatie beleid?
 Hiermee worden de instellingen voor de Bewaar geschiedenis van herstel punten en de frequentie van app-consistente moment opnamen gedefinieerd. Azure Site Recovery maakt standaard een nieuw replicatie beleid met de standaard instellingen van:
@@ -137,7 +137,7 @@ Het oudste herstel punt dat u kunt gebruiken, is 72 uur.
 Nee, Site Recovery blijven al uw vorige herstel punten bewaard. Afhankelijk van de Bewaar periode van het herstel punt, 24 uur in dit geval, Site Recovery vervangen alleen oudste punt als er nieuwe punten worden gegenereerd. In dit geval, omdat er geen nieuw herstel punt wordt gegenereerd als gevolg van een probleem, blijven alle oude punten intact zodra we het Bewaar periode bereiken.
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Hoe kan ik het replicatie beleid wijzigen nadat de replicatie is ingeschakeld op een VM?
-Ga naar **site Recovery kluis** > **site Recovery infrastructuur** > **beleid voor replicatie**. Selecteer het beleid dat u wilt bewerken en sla de wijzigingen op. Elke wijziging is ook van toepassing op alle bestaande replicaties.
+Ga naar **site Recovery kluis** > **Site Recovery infra structuur** > **replicatie beleid**. Selecteer het beleid dat u wilt bewerken en sla de wijzigingen op. Elke wijziging is ook van toepassing op alle bestaande replicaties.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Zijn alle herstel punten een volledige kopie van de virtuele machine of een differentieel exemplaar?
 Het eerste herstel punt dat wordt gegenereerd, heeft de volledige kopie. Eventuele opeenvolgende herstel punten bevatten Delta wijzigingen.
@@ -151,7 +151,7 @@ Ja. Als u de retentie periode van 24 uur tot 72 uur verhoogt, worden de herstel 
 Dit betekent dat het herstel punt consistent is op alle gerepliceerde virtuele machines.
 Site Recovery voorziet in een optie met ' multi-VM-consistentie ', die, wanneer u deze selecteert, een replicatie groep maakt om alle computers samen te repliceren die deel uitmaken van de groep.
 Alle virtuele machines hebben gedeelde crash-consistente en toepassings consistente herstel punten wanneer er een failover wordt uitgevoerd.
-Door loop de zelf studie om [multi-VM](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm)-consistentie in te scha kelen.
+Door loop de zelf studie om [multi-VM-consistentie in te scha kelen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm).
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Kan ik een failover voor één virtuele machine in een multi-VM-consistentie replicatie groep?
 Als u de optie ' multi-VM-consistentie ' selecteert, wordt aangegeven dat de toepassing afhankelijk is van alle virtuele machines binnen een groep. Daarom is failover van één virtuele machine niet toegestaan.
@@ -194,8 +194,8 @@ De **nieuwste (laagste RPO)** optie verwerkt eerst alle gegevens die zijn verzon
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>De **meest recente (laagste RPO)** herstel punten hebben invloed op de FAILOVER-RTO?
 Ja. Site Recovery alle in behandeling zijnde gegevens verwerkt voordat de failover wordt uitgevoerd. deze optie heeft daarom een hogere herstel tijd (RTO) in vergelijking met andere opties.
 
-### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Wat betekent de **meest recente** verwerkte optie in herstel punten?
-De **laatst** verwerkte optie mislukt alle virtuele machines in het plan naar het laatste herstel punt dat site Recovery verwerkt. Als u het meest recente herstel punt voor een specifieke virtuele machine wilt zien, controleert u de **meest recente herstel punten** in de VM-instellingen. Deze optie biedt een laag RTO, omdat er geen tijd wordt besteed aan het verwerken van niet-verwerkte gegevens.
+### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Wat betekent de **meest recente verwerkte** optie in herstel punten?
+De **laatst verwerkte** optie mislukt alle virtuele machines in het plan naar het laatste herstel punt dat site Recovery verwerkt. Als u het meest recente herstel punt voor een specifieke virtuele machine wilt zien, controleert u de **meest recente herstel punten** in de VM-instellingen. Deze optie biedt een laag RTO, omdat er geen tijd wordt besteed aan het verwerken van niet-verwerkte gegevens.
 
 ### <a name="what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>Wat gebeurt er als mijn primaire regio een onverwachte onderbreking ondervindt?
 U kunt een failover activeren na de storing. Site Recovery hebt geen verbinding nodig van de primaire regio om de failover uit te voeren.
@@ -203,7 +203,7 @@ U kunt een failover activeren na de storing. Site Recovery hebt geen verbinding 
 ### <a name="what-is-a-rto-of-a-vm-failover-"></a>Wat is een RTO van een VM-failover?
 Site Recovery heeft een [RTO-sla van twee uur](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). De meeste tijd Site Recovery failover van virtuele machines binnen enkele minuten. U kunt de RTO berekenen door te gaan naar de failover-taken die de tijd weer geven die nodig is om de virtuele machine te openen. Raadpleeg de sectie voor het herstel plan RTO.
 
-## <a name="recovery-plans"></a>Herstelplannen
+## <a name="recovery-plans"></a>Herstel plannen
 
 ### <a name="what-is-a-recovery-plan"></a>Wat is een herstel plan?
 Een herstel plan in Site Recovery is het herstel van failover van Vm's. Zo kunt u de herstel bewerking consistent maken, herhaalbaar en geautomatiseerd. Een herstel plan heeft betrekking op de volgende behoeften voor de gebruiker:

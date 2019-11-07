@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: a45548d3698d28a0189be4f46c26e418da8c91ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489639"
+ms.locfileid: "73574300"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Experimentele uitvoeringen en metrische gegevens visualiseren met TensorBoard en Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,13 +28,16 @@ Hoe u TensorBoard start met Azure Machine Learning experimenten is afhankelijk v
 
 + Voor experimenten waarbij geen systeem eigen uitvoer bare TensorBoard-bestanden worden uitgevoerd, zoals Scikit-leer-of Azure Machine Learning experimenten, gebruikt u [de methode `export_to_tensorboard()`](#export) om de run-runs te exporteren als TensorBoard-logboeken en TensorBoard van daaruit te starten. 
 
+> [!TIP]
+> De informatie in dit document is voornamelijk bedoeld voor gegevens wetenschappers en ontwikkel aars die het model trainings proces willen bewaken. Als u een beheerder bent die geïnteresseerd is in het bewaken van het resource gebruik en gebeurtenissen van Azure machine learning, zoals quota's, voltooide trainings uitvoeringen of voltooide model implementaties, raadpleegt u [bewaking Azure machine learning](monitor-azure-machine-learning.md).
+
 ## <a name="prerequisites"></a>Vereisten
 
 * Voor het starten van TensorBoard en het weer geven van de geschiedenis van uw experiment, moeten uw experimenten eerder logboek registratie hebben ingeschakeld om de metrische gegevens en prestaties bij te houden.  
 
-* De code in deze procedure kan worden uitgevoerd in een van de volgende omgevingen: 
+* De code in dit document kan worden uitgevoerd in een van de volgende omgevingen: 
 
-    * Azure Machine Learning Compute-instantie-geen down loads of installatie vereist
+    * Azure Machine Learning-notebook-VM-geen down loads of installatie vereist
 
         * Voltooi de [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken vooraf geladen met de SDK en de voor beeld-opslag plaats.
 
@@ -216,7 +219,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>Experiment-en logboek metrieken uitvoeren
 
-Voor deze code trainen we een lineair regressie model en de metrische gegevens van een logboek sleutel, de Alfa coëfficiënt, `alpha` en het kwadraat van de fout, `mse`, in uitvoerings geschiedenis.
+Voor deze code trainen we een lineair regressie model en de metrische gegevens van de sleutel in de logboeken, de Alfa coëfficiënt, het `alpha`en het gemiddelde van de fout, het `mse`in de uitvoerings geschiedenis.
 
 ```Python
 from tqdm import tqdm

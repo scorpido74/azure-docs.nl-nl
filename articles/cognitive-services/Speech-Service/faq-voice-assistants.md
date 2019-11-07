@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507075"
+ms.locfileid: "73579669"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Spraak assistenten: veelgestelde vragen
 
@@ -29,7 +29,7 @@ Als u geen antwoorden op uw vragen in dit document kunt vinden, Bekijk dan [Ande
 
 **V: moet ik aangepaste opdrachten (preview) of direct line speech gebruiken? Wat is het verschil?**
 
-**A:** [aangepaste opdrachten (preview)](custom-commands.md) is een set hulpprogram ma's waarmee u eenvoudig een assistent kunt maken en hosten die geschikt is voor scenario's voor het volt ooien van taken. [Direct line speech](direct-line-speech.md) biedt geavanceerde, geavanceerdere mogelijkheden waarmee robuuste gespreks scenario's kunnen worden ingeschakeld. Zie de [vergelijking van assistent-oplossingen](voice-assistants.md#comparing-assistant-solutions) voor meer informatie.
+**A:** [aangepaste opdrachten (preview)](custom-commands.md) is een set hulpprogram ma's waarmee u eenvoudig een assistent kunt maken en hosten die geschikt is voor scenario's voor het volt ooien van taken. [Direct line speech](direct-line-speech.md) biedt geavanceerde, geavanceerdere mogelijkheden waarmee robuuste gespreks scenario's kunnen worden ingeschakeld. Zie de [vergelijking van assistent-oplossingen](voice-assistants.md#choosing-an-assistant-solution) voor meer informatie.
 
 **V: Hoe kan ik aan de slag?**
 
@@ -40,6 +40,17 @@ Als u geen antwoorden op uw vragen in dit document kunt vinden, Bekijk dan [Ande
 * [Een bot aansluiten op het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Foutopsporing
+
+**V: waar is mijn kanaal geheim?**
+
+**A:** Als u de preview-versie van direct line speech hebt gebruikt of als u gerelateerde documentatie leest, wordt u mogelijk verwacht een geheime sleutel te vinden op de registratie pagina van het directe lijn spraak kanaal. De v 1.7 `DialogServiceConfig` Factory-methode `FromBotSecret` in de Speech SDK verwacht ook deze waarde.
+
+De nieuwste versie van direct line speech vereenvoudigt het proces van het maken van contact met uw bot vanaf een apparaat. Op de pagina kanaal registratie wordt de vervolg keuzelijst aan de bovenkant gekoppeld aan de registratie van uw directe lijn spraak kanaal met een spraak bron. Na de koppeling bevat de v 1.8 Speech SDK een `BotFrameworkConfig::FromSubscription` Factory-methode waarmee een `DialogServiceConnector` wordt geconfigureerd om contact op te nemen met de bot die aan uw abonnement is gekoppeld.
+
+Als u uw client toepassing nog steeds migreert van v 1.7 naar v 1.8, kan `DialogServiceConfig::FromBotSecret` blijven werken met een niet-lege, niet-null-waarde voor de geheime para meter van het kanaal, bijvoorbeeld het vorige geheime geheim dat u hebt gebruikt. Het wordt gewoon genegeerd wanneer u een spraak abonnement gebruikt dat is gekoppeld aan een nieuwe kanaal registratie. Houd er rekening mee dat de waarde *moet* niet-null en niet-leeg zijn, aangezien deze worden gecontroleerd op het apparaat voordat de koppeling aan de service zijde relevant is.
+
+
+Raadpleeg de [sectie zelf studie](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) voor informatie over kanaal registratie voor een gedetailleerde hand leiding.
 
 **V: er wordt een 401-fout weer geven bij het maken van verbinding en niets werkt. Ik weet dat mijn spraak abonnement sleutel geldig is. Wat gebeurt er?**
 

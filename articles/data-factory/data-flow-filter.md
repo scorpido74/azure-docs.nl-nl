@@ -1,5 +1,5 @@
 ---
-title: Trans formatie filteren in Azure Data Factory stroom voor toewijzing van gegevens | Microsoft Docs
+title: Trans formatie filteren in Azure Data Factory gegevens stroom toewijzen
 description: Rijen filteren met behulp van de filter transformatie in Azure Data Factory gegevens stroom toewijzen
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527398"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676177"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Trans formatie filteren in gegevens stroom toewijzen
 
@@ -37,7 +37,7 @@ Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de f
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een Conditional Split-trans formatie met de naam `FilterBefore1960` die in de binnenkomende stream `CleanData` neemt. De filter voorwaarde is de expressie `year <= 1960`.
+Het onderstaande voor beeld is een Conditional Split-trans formatie met de naam `FilterBefore1960` die in de binnenkomende stream `CleanData`neemt. De filter voorwaarde is de expressie `year <= 1960`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 52e9fd986973c15d30790b981a5c2ccd1e6974d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507691"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681889"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Quick Start: asynchrone synthese voor lange-vorm audio in python (preview-versie)
 
@@ -27,7 +27,7 @@ Voor deze snelstart zijn de volgende zaken vereist:
 
 * Python 2.7. x of 3. x.
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio code](https://code.visualstudio.com/download)of uw favoriete tekst editor.
-* Een Azure-abonnement en een sleutel voor spraak service-abonnement. [Maak een account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+* Een Azure-abonnement en een sleutel voor spraak service-abonnement. [Maak een Azure-account](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) en [Maak een spraak bron](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) om de sleutel op te halen. Wanneer u de spraak bron maakt, moet u ervoor zorgen dat uw prijs categorie is ingesteld op **s0**en dat de locatie is ingesteld op een [ondersteunde regio](../../regions.md#standard-and-neural-voices).
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
 
@@ -47,7 +47,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 ```
 
 > [!NOTE]
-> Als u deze modules nog niet hebt gebruikt, moet u ze installeren voordat u het programma uitvoert. Voer voor het installeren van deze pakketten voert u `pip install requests` uit.
+> Als u deze modules nog niet hebt gebruikt, moet u ze installeren voordat u het programma uitvoert. Voer voor het installeren van deze pakketten voert u `pip install requests urllib3` uit.
 
 Deze modules worden gebruikt voor het parseren van argumenten, het samen stellen van de HTTP-aanvraag en het aanroepen van de tekst-naar-spraak-audio REST API.
 

@@ -1,5 +1,5 @@
 ---
-title: Replicatie naar Azure SQL Database | Microsoft Docs "
+title: Replicatie naar Azure SQL Database "
 description: Meer informatie over het gebruik van SQL Server replicatie met Azure SQL Database afzonderlijke data bases en data bases in elastische Pools
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: eab8f4809742b69e92cb835801493722d28afe49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae564a98b77b1ac564fa9aae152b27c491187d0c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570483"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692216"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replicatie naar SQL Database afzonderlijke en gepoolde data bases
 
@@ -38,7 +38,7 @@ SQL Server replicatie kan worden geconfigureerd voor afzonderlijke en gepoolde d
 - SQL Server 2014 (12. x) SP1 CU3
 - SQL Server 2014 (12. x) RTM CU10
 - SQL Server 2012 (11. x) SP2 CU8 of SP3
-- Het configureren van een replicatie met een oudere versie kan leiden tot fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQL_REPL40532 ( \<kan de server naam niet openen > aangevraagd door de aanmelding. De aanmelding is mislukt.)  
+- Het configureren van een replicatie met een oudere versie kan leiden tot fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQL_REPL40532 (kan de naam van de server niet openen \<> aangevraagd door de aanmelding. De aanmelding is mislukt.)  
 - Als u alle functies van Azure SQL Database wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.  
   
 ## <a name="remarks"></a>Opmerkingen
@@ -51,7 +51,7 @@ SQL Server replicatie kan worden geconfigureerd voor afzonderlijke en gepoolde d
 - Eén publicatie op SQL Server kan zowel Azure SQL Database als SQL Server ondersteunen (on-premises en SQL Server in een Azure virtual machine)-abonnees.  
 - Replicatie beheer, bewaking en probleem oplossing moeten worden uitgevoerd vanaf de on-premises SQL Server.  
 - Alleen push-abonnementen naar Azure SQL Database worden ondersteund.  
-- Wordt `@subscriber_type = 0` alleen ondersteund in **sp_addsubscription** voor SQL database.  
+- Alleen `@subscriber_type = 0` wordt ondersteund in **sp_addsubscription** voor SQL database.  
 - Azure SQL Database biedt geen ondersteuning voor bidirectionele, onmiddellijke, bijwerk bare of peer-to-peer-replicatie.
 
 ## <a name="replication-architecture"></a>Replicatie architectuur  

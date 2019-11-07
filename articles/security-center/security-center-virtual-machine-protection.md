@@ -1,5 +1,5 @@
 ---
-title: Uw computers en toepassingen beveiligen in Azure Security Center | Microsoft Docs
+title: Beveilig uw computers en toepassingen in Azure Security Center
 description: Dit document bevat aanbevelingen in Security Center waarmee u uw virtuele machines en computers en uw web-apps en App Service omgevingen kunt beveiligen.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 803e64c9df1b52a33a1b50714f77b005032bf200
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520679"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686353"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Uw computers en toepassingen in Azure Security Center beveiligen
 Azure Security Center analyseert de beveiligings status van uw Azure-resources, niet-Azure-servers en virtuele machines. Wanneer Security Center mogelijke beveiligings problemen identificeert, worden er aanbevelingen gemaakt die u door het proces van het configureren van de benodigde besturings elementen leiden. Aanbevelingen zijn van toepassing op Azure-resource typen: virtuele machines (Vm's) en computers, toepassingen, netwerken, SQL en identiteit en toegang.
@@ -153,7 +153,7 @@ In deze lijst worden drie typen pictogrammen weer gegeven:
 
 2. Selecteer een aanbeveling voor een beschrijving van de aanbeveling en een lijst met slechte resources, in orde zijnde resources en niet-gescande resources.
 
-   - Onder de kolom **door gegeven beoordelingen** vindt u een lijst met door gegeven evaluaties.  De ernst van deze evaluaties is altijd groen.
+   - Onder de kolom **door gegeven beoordelingen** vindt u een lijst met door gegeven evaluaties. De ernst van deze evaluaties is altijd groen.
 
    - Selecteer een door gegeven evaluatie in de lijst voor een beschrijving van de evaluatie, een lijst met slechte en gezonde resources en een lijst met niet-gescande resources. Er is een tabblad voor beschadigde resources, maar deze lijst is altijd leeg sinds de evaluatie is geslaagd.
 
@@ -198,7 +198,7 @@ Als u alle bestaande schaal sets wilt instellen om micro soft Monitoring Agent t
 |Reken resources (batch)|5|Diagnostische logboeken inschakelen in batch-accounts|Logboeken inschakelen en ze tot een jaar bewaren. Zo kunt u een activiteiten spoor voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. |
 |Reken bronnen (Event Hub)|5|Diagnostische logboeken in Event hub moeten worden ingeschakeld|Logboeken inschakelen en ze tot een jaar bewaren. Zo kunt u een activiteiten spoor voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. |
 |Reken resources (Logic apps)|5|Diagnostische logboeken inschakelen in Logic Apps|Logboeken inschakelen en ze tot een jaar bewaren. Zo kunt u een activiteiten spoor voor onderzoek doeleinden opnieuw maken wanneer er een beveiligings incident optreedt of uw netwerk is aangetast. |
-|Reken resources (Service Fabric)|15|Stel de eigenschap ClusterProtectionLevel in op EncryptAndSign in Service Fabric|Service Fabric biedt drie beveiligings niveaus (geen, ondertekening en EncryptAndSign) voor communicatie tussen knoop punten met behulp van een primair cluster certificaat.  Stel het beveiligings niveau in om ervoor te zorgen dat alle knoop punt-naar-knooppunt berichten zijn versleuteld en digitaal zijn ondertekend. |
+|Reken resources (Service Fabric)|15|Stel de eigenschap ClusterProtectionLevel in op EncryptAndSign in Service Fabric|Service Fabric biedt drie beveiligings niveaus (geen, ondertekening en EncryptAndSign) voor communicatie tussen knoop punten met behulp van een primair cluster certificaat. Stel het beveiligings niveau in om ervoor te zorgen dat alle knoop punt-naar-knooppunt berichten zijn versleuteld en digitaal zijn ondertekend. |
 |Reken resources (Service Bus)|1|Alle autorisatie regels verwijderen behalve RootManageSharedAccessKey uit Service Bus naam ruimte |Service Bus-clients mogen geen toegangs beleid op naam ruimte niveau gebruiken dat toegang biedt tot alle wacht rijen en onderwerpen in een naam ruimte. Als u wilt uitlijnen met het beveiligings model met minimale bevoegdheden, moet u toegangs beleid maken op het niveau van de entiteit voor wacht rijen en onderwerpen om alleen toegang te verlenen aan de specifieke entiteit.|
 |Reken bronnen (Event Hub)|1|Alle autorisatie regels behalve RootManageSharedAccessKey moeten worden verwijderd uit de Event hub-naam ruimte|Event hub-clients mogen geen toegangs beleid op naam ruimte niveau gebruiken dat toegang biedt tot alle wacht rijen en onderwerpen in een naam ruimte. Als u wilt uitlijnen met het beveiligings model met minimale bevoegdheden, moet u toegangs beleid maken op het niveau van de entiteit voor wacht rijen en onderwerpen om alleen toegang te verlenen aan de specifieke entiteit.|
 |Reken bronnen (Event Hub)|5|Autorisatie regels voor de Event hub-entiteit moeten worden gedefinieerd|Verificatie regels controleren op de Event hub-entiteit om beperkte toegang te verlenen.|

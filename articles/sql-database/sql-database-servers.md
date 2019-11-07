@@ -1,5 +1,5 @@
 ---
-title: Servers Azure SQL Database | Microsoft Docs
+title: Azure SQL Database-servers
 description: Meer informatie over Azure SQL Database servers en het beheer ervan.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 02d57c297926ef375eecaa76af55ffed60668cf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8ebe08f37255743578cbc3dd44f7d84d79b9d17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566775"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687407"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL Database servers en hun beheer
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Wat is een Azure SQL Database-Server
 
-Een SQL Database-Server is een logische constructie die fungeert als een centraal beheer punt voor meerdere data [](sql-database-elastic-pool.md) bases of gepoolde [gegevens](sql-database-manage-logins.md)sets, aanmeldingen, [firewall regels](sql-database-firewall-configure.md), [controle regels](sql-database-auditing.md), [beleid voor detectie van dreigingen](sql-database-threat-detection.md)en [ failover-groepen](sql-database-auto-failover-group.md) een SQL database server kan zich in een andere regio bevinden dan de bijbehorende resource groep. De SQL Database-Server moet bestaan voordat u de Azure-SQL database kunt maken. Alle data bases die door een SQL Database-Server worden beheerd, worden in dezelfde regio gemaakt als de SQL Database-Server.
+Een SQL Database-Server is een logische constructie die fungeert als een centraal beheer punt voor meerdere data bases of [gepoolde](sql-database-elastic-pool.md) gegevens sets, [aanmeldingen](sql-database-manage-logins.md), [firewall regels](sql-database-firewall-configure.md), [controle regels](sql-database-auditing.md), [beleid voor detectie van dreigingen](sql-database-threat-detection.md)en [ failover-groepen](sql-database-auto-failover-group.md) een SQL database server kan zich in een andere regio bevinden dan de bijbehorende resource groep. De SQL Database-Server moet bestaan voordat u de Azure-SQL database kunt maken. Alle data bases die door een SQL Database-Server worden beheerd, worden in dezelfde regio gemaakt als de SQL Database-Server.
 
 Een SQL Database Server verschilt van een SQL Server exemplaar dat u mogelijk kent in de on-premises wereld. De SQL Database-Service biedt met name geen garanties met betrekking tot de locatie van de data bases ten opzichte van de SQL Database-Server die deze beheert, en geeft geen toegang tot of functies op instantie niveau. De instance-data bases in een beheerd exemplaar zijn daarentegen allemaal hetzelfde, op dezelfde manier als u bekend bent met SQL Server in de on-premises wereld.
 
@@ -40,12 +40,12 @@ Een SQL Database-Server:
 - Biedt een verbindingseindpunt voor databasetoegang (`<serverName>`.database.windows.net)
 - Biedt toegang tot metagegevens van ingesloten resources via DMV's door verbinding te maken met een hoofddatabase
 - Voorziet in het bereik voor beheer beleid dat van toepassing is op de data bases-aanmeldingen, firewall, controle, detectie van bedreigingen en dergelijke
-- Wordt beperkt door een quotum binnen het bovenliggende abonnement (zes servers per abonnement standaard: Zie de limieten voor [abonnementen hier](../azure-subscription-service-limits.md))
+- Wordt beperkt door een quotum binnen het bovenliggende abonnement (zes servers per abonnement standaard: [Zie de limieten voor abonnementen hier](../azure-subscription-service-limits.md))
 - Voorziet in het bereik voor database quota en DTU-of vCore-quotum voor de resources die het bevat (zoals 45.000 DTU)
 - Is het versie bereik voor mogelijkheden die zijn ingeschakeld in opgenomen resources
 - Hoofdaanmeldingen op serverniveau kunnen alle databases op een server beheren
 - Kunnen aanmeldingen bevatten die vergelijkbaar zijn met die in de exemplaren van SQL Server op uw locaties die toegang hebben tot een of meer databases op de server, en waaraan beperkte beheerrechten kunnen worden verleend. Zie [Aanmeldingen](sql-database-manage-logins.md) voor meer informatie.
-- De standaard sortering voor alle data bases die op een SQL database `SQL_LATIN1_GENERAL_CP1_CI_AS`server zijn `LATIN1_GENERAL` gemaakt, is, waarbij Engels `CP1` (Verenigde Staten), code `CI` pagina 1252, is hoofdletter gevoelig en `AS` is accent gevoelig.
+- De standaard sortering voor alle data bases die op een SQL Database Server zijn gemaakt, is `SQL_LATIN1_GENERAL_CP1_CI_AS`, waarbij `LATIN1_GENERAL` Engels (Verenigde Staten) is, code pagina 1252, `CP1` niet hoofdletter gevoelig is en `CI` accent gevoelig is.`AS`
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Azure SQL-servers, data bases en firewalls beheren met behulp van de Azure Portal
 
@@ -87,7 +87,7 @@ Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bas
 
 Als u Azure SQL Server, data bases en firewalls met Azure PowerShell wilt maken en beheren, gebruikt u de volgende Power shell-cmdlets. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Zie [elastische Pools](sql-database-elastic-pool.md)voor het maken en beheren van elastische Pools.
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Hiermee maakt u een Data Base |
 |[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Hiermee worden een of meer data bases opgehaald|
@@ -112,12 +112,12 @@ Als u Azure SQL Server, data bases en firewalls met Azure PowerShell wilt maken 
 
 Als u Azure SQL Server, data bases en firewalls wilt maken en beheren met de [Azure cli](/cli/azure), gebruikt u de volgende [Azure cli SQL database](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](sql-database-elastic-pool.md)voor het maken en beheren van elastische Pools.
 
-| Cmdlet | Description |
+| Cmdlet | Beschrijving |
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Hiermee maakt u een Data Base|
 |[AZ SQL DB List](/cli/azure/sql/db#az-sql-db-list)|Een lijst met alle data bases en data warehouses in een server, of alle data bases in een elastische pool|
 |[AZ SQL DB List-edities](/cli/azure/sql/db#az-sql-db-list-editions)|Een lijst met beschik bare service doelstellingen en opslag limieten|
-|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Retourneert database gebruik|
+|[AZ SQL DB List-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Retourneert database gebruik|
 |[AZ SQL DB show](/cli/azure/sql/db#az-sql-db-show)|Hiermee wordt een Data Base of Data Warehouse opgehaald|
 |[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Hiermee wordt een Data Base bijgewerkt|
 |[AZ SQL DB Delete](/cli/azure/sql/db#az-sql-db-delete)|Hiermee verwijdert u een Data Base|
@@ -146,16 +146,16 @@ Gebruik de volgende T-SQL-opdrachten om Azure SQL Server, data bases en firewall
 > U kunt geen server maken of verwijderen met behulp van Transact-SQL.
 >
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
-|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Hiermee maakt u een nieuwe data base. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
+|[DATA base maken (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Hiermee maakt u een nieuwe data base. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER data base (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Hiermee wijzigt u een Azure-SQL database. |
 |[ALTER data base (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Hiermee wijzigt u een Azure SQL Data Warehouse.|
-|[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
+|[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Azure-SQL database of een Azure SQL Data Warehouse. Als u bent aangemeld bij de hoofd database in een Azure SQL Database-Server, wordt er informatie over alle data bases geretourneerd. Voor Azure SQL Data Warehouse moet u verbinding hebben met de hoofd database.|
 |[sys. DM _db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een Azure SQL Database-data base. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
 |[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
-|[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |
+|[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database database verbindingen, verbindings fouten en deadlocks geretourneerd. U kunt deze informatie gebruiken om uw database activiteit bij SQL Database bij te houden of problemen op te lossen.|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Hiermee worden de firewall instellingen op server niveau voor uw SQL Database-Server gemaakt of bijgewerkt. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau. Een firewall regel op server niveau kan alleen worden gemaakt met behulp van Transact-SQL nadat de eerste firewall regel op server niveau is gemaakt door een gebruiker met machtigingen op Azure-niveau|
 |[sys. firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op server niveau die zijn gekoppeld aan uw Microsoft Azure SQL Database.|
@@ -165,13 +165,13 @@ Gebruik de volgende T-SQL-opdrachten om Azure SQL Server, data bases en firewall
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Hiermee verwijdert u de firewall-instelling op database niveau van uw Azure SQL Database of SQL Data Warehouse. |
 
 > [!TIP]
-> Zie [Azure SQL database voor een Snelstartgids met SQL Server Management Studio in micro soft Windows: Gebruik SQL Server Management Studio om verbinding te maken en](sql-database-connect-query-ssms.md)gegevens op te vragen. Voor een Snelstartgids met Visual Studio code op macOS, Linux of Windows, Zie [Azure SQL database: Gebruik Visual Studio code om verbinding te maken en](sql-database-connect-query-vscode.md)gegevens op te vragen.
+> Voor een Snelstartgids met SQL Server Management Studio in micro soft Windows raadpleegt u [Azure SQL database: gebruik SQL Server Management Studio om verbinding te maken en gegevens op te vragen](sql-database-connect-query-ssms.md). Zie [Azure SQL database: Visual Studio code gebruiken om verbinding te maken en gegevens op te vragen](sql-database-connect-query-vscode.md)voor een Snelstartgids met Visual Studio code op het MacOS, Linux of Windows.
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Azure SQL-servers, data bases en firewalls beheren met behulp van de REST API
 
 Als u Azure SQL Server, data bases en firewalls wilt maken en beheren, gebruikt u deze REST API aanvragen.
 
-| Opdracht | Description |
+| Opdracht | Beschrijving |
 | --- | --- |
 |[Servers: maken of bijwerken](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Hiermee wordt een nieuwe server gemaakt of bijgewerkt.|
 |[Servers-verwijderen](https://docs.microsoft.com/rest/api/sql/servers/delete)|Hiermee verwijdert u een SQL-Server.|

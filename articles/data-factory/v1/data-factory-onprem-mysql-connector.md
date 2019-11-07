@@ -1,5 +1,5 @@
 ---
-title: Gegevens verplaatsen vanuit MySQL met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens verplaatsen vanuit MySQL met Azure Data Factory
 description: Meer informatie over het verplaatsen van gegevens uit de MySQL-data base met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 675189a5485bb0cfcc833fc21b376a21ddde7cdf
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809358"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666102"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Gegevens verplaatsen vanuit MySQL met Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -66,7 +66,7 @@ De volgende secties bevatten informatie over de JSON-eigenschappen die worden ge
 ## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor de aan MySQL gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesMySql** |Ja |
 | server |De naam van de MySQL-server. |Ja |
@@ -82,7 +82,7 @@ Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een 
 
 De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **RelationalTable** (die mysql-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de MySQL-data base-instantie waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -93,7 +93,7 @@ Terwijl de eigenschappen die beschikbaar zijn in de sectie **typeProperties** va
 
 Wanneer de bron in de Kopieer activiteit van het type **RelationalSource** (inclusief MySQL) is, zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: Select * from MyTable. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -310,8 +310,8 @@ Bij het verplaatsen van gegevens naar MySQL worden de volgende toewijzingen gebr
 | date |Datetime |
 | datum/tijd |Datetime |
 | decimal |Komma |
-| dubbele precisie |Dubbelklik |
-| double |Dubbelklik |
+| dubbele precisie |Double-waarde |
+| double |Double-waarde |
 | vaste |Tekenreeks |
 | float |Enkelvoudig |
 | geheel getal niet ondertekend |Int64 |
@@ -327,7 +327,7 @@ Bij het verplaatsen van gegevens naar MySQL worden de volgende toewijzingen gebr
 | mediumint |Int32 |
 | mediumtext |Tekenreeks |
 | 443 |Komma |
-| realistische |Dubbelklik |
+| realistische |Double-waarde |
 | set |Tekenreeks |
 | niet-ondertekend in smallint |Int32 |
 | smallint |Int16 |

@@ -1,5 +1,5 @@
 ---
-title: Aanbevolen procedures voor Azure SQL Data Sync | Microsoft Docs
+title: 'Aanbevolen procedures voor Azure SQL Data Sync '
 description: Meer informatie over aanbevolen procedures voor het configureren en uitvoeren van Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 728ac8ab42573e1cab30eaf12dd38a6d33b97aac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569380"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691076"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Aanbevolen procedures voor SQL Data Sync 
 
@@ -56,7 +56,7 @@ Azure SQL Database ondersteunt slechts één set met referenties. Als u deze tak
 
 #### <a name="sql-database-instance-size"></a>Grootte van SQL Database-exemplaar
 
-Wanneer u een nieuw exemplaar van SQL Database maakt, stelt u de maximum grootte in zodat deze altijd groter is dan de data base die u implementeert. Als u niet de maximale grootte instelt op een waarde die groter is dan de geïmplementeerde data base, mislukt de synchronisatie. Hoewel SQL Data Sync geen automatische groei biedt, kunt u de `ALTER DATABASE` opdracht uitvoeren om de grootte van de data base te verg Roten nadat deze is gemaakt. Zorg ervoor dat u binnen de limieten voor de SQL Database-instantie grootte blijft.
+Wanneer u een nieuw exemplaar van SQL Database maakt, stelt u de maximum grootte in zodat deze altijd groter is dan de data base die u implementeert. Als u niet de maximale grootte instelt op een waarde die groter is dan de geïmplementeerde data base, mislukt de synchronisatie. Hoewel SQL Data Sync geen automatische groei biedt, kunt u de `ALTER DATABASE`-opdracht uitvoeren om de grootte van de data base te verg Roten nadat deze is gemaakt. Zorg ervoor dat u binnen de limieten voor de SQL Database-instantie grootte blijft.
 
 > [!IMPORTANT]
 > SQL Data Sync worden extra meta gegevens opgeslagen bij elke Data Base. Zorg ervoor dat u rekening houden met deze meta gegevens wanneer u de benodigde schijf ruimte berekent. De hoeveelheid toegevoegde overhead is gerelateerd aan de breedte van de tabellen (er zijn bijvoorbeeld smalle tabellen vereist voor meer overhead) en de hoeveelheid verkeer.
@@ -116,7 +116,7 @@ Als u de latentie wilt minimaliseren, houdt u de hub-data base dicht bij de groo
 
 Pas de voor gaande richt lijnen toe op complexe synchronisatie groepen, zoals de configuraties die bestaan uit een combi natie van ondernemings-naar-Cloud-en Cloud-naar-Cloud-scenario's.
 
-## <a name="sync"></a>Synchroniseren
+## <a name="sync"></a>Sync
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Vermijd langzame en dure initiële synchronisatie
 
@@ -166,15 +166,15 @@ Controleer de synchronisatie groep en de status van de data base regel matig via
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Verouderde data bases en synchronisatie groepen voor komen
 
-Een synchronisatie groep of een data base in een synchronisatie groep kan verouderd raken. Wanneer de status van een synchronisatie groep verouderd is, werkt deze **niet**meer. Wanneer de status van een Database verouderd is, kunnen gegevens verloren gaan. U kunt dit scenario het beste vermijden in plaats van het te herstellen.
+Een synchronisatie groep of een data base in een synchronisatie groep kan verouderd raken. Wanneer de status van een synchronisatie groep **verouderd**is, werkt deze niet meer. Wanneer de status van een Data Base **verouderd**is, kunnen gegevens verloren gaan. U kunt dit scenario het beste vermijden in plaats van het te herstellen.
 
 #### <a name="avoid-out-of-date-databases"></a>Verouderde data bases voor komen
 
-De status van een Data Base is ingesteld op verouderd wanneer deze gedurende 45 dagen offline is geweest. Om een verouderde status van een Data Base te vermijden, moet u ervoor zorgen dat geen van de data bases gedurende 45 dagen offline is.
+De status van een Data Base is ingesteld op **verouderd** wanneer deze gedurende 45 dagen offline is geweest. Om een **verouderde** status van een Data Base te vermijden, moet u ervoor zorgen dat geen van de data bases gedurende 45 dagen offline is.
 
 #### <a name="avoid-out-of-date-sync-groups"></a>Verouderde synchronisatie groepen vermijden
 
-De status van een synchronisatie groep is ingesteld op verouderd wanneer een wijziging in de synchronisatie groep gedurende 45 dagen of meer niet kan worden door gegeven aan de rest van de synchronisatie groep. Als u wilt voor komen dat de status van een synchronisatie groep verouderd is, controleert u het geschiedenis logboek van de synchronisatie groep regel matig. Zorg ervoor dat alle conflicten zijn opgelost en dat wijzigingen worden door gegeven in de data bases van de synchronisatie groep.
+De status van een synchronisatie groep is ingesteld op **verouderd** wanneer een wijziging in de synchronisatie groep gedurende 45 dagen of meer niet kan worden door gegeven aan de rest van de synchronisatie groep. Als u wilt voor komen dat de status van een synchronisatie groep **verouderd** is, controleert u het geschiedenis logboek van de synchronisatie groep regel matig. Zorg ervoor dat alle conflicten zijn opgelost en dat wijzigingen worden door gegeven in de data bases van de synchronisatie groep.
 
 Een wijziging kan een van de volgende oorzaken mogelijk niet worden toegepast op een synchronisatie groep:
 
@@ -198,7 +198,7 @@ In sommige gevallen kan het opheffen van de registratie van een Data Base met ee
 1. Synchronisatie groep A is gemaakt met behulp van een SQL Database-exemplaar en een on-premises SQL Server-Data Base, die is gekoppeld aan lokale agent 1.
 2. Dezelfde on-premises data base is geregistreerd bij lokale agent 2 (deze agent is niet gekoppeld aan een synchronisatie groep).
 3. Bij het ongedaan maken van de registratie van de on-premises data base van lokale agent 2 worden de tracerings-en meta tabellen voor synchronisatie groep A voor de on-premises data base verwijderd.
-4. Het uitvoeren van een bewerking voor de synchronisatie groep mislukt, met de volgende fout: "De huidige bewerking kan niet worden voltooid omdat de data base niet is ingericht voor synchronisatie of omdat u geen machtigingen hebt voor de synchronisatie configuratie tabellen."
+4. Een bewerking van de synchronisatie groep mislukt met de volgende fout: ' de huidige bewerking kan niet worden voltooid omdat de data base niet is ingericht voor synchronisatie of u geen machtigingen hebt voor de synchronisatie configuratie tabellen. '
 
 #### <a name="solution"></a>Oplossing
 
@@ -223,12 +223,12 @@ Voor meer informatie over SQL Data Sync raadpleegt u:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-database-sync-data.md)
 -   Data Sync instellen
-    - In de portal - [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
+    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
     - Met PowerShell
         -  [PowerShell gebruiken om meerdere Azure SQL-databases te synchroniseren](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-database-data-sync-agent.md)
--   SQL Data Sync controleren [met Azure monitor](sql-database-sync-monitor-oms.md) -logboeken
+-   SQL Data Sync controleren [met Azure monitor-logboeken](sql-database-sync-monitor-oms.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](sql-database-troubleshoot-data-sync.md)
 -   Het synchronisatieschema bijwerken
     -   Met Transact-SQL: [De replicatie van schemawijzigingen in Azure SQL Data Sync automatiseren](sql-database-update-sync-schema.md)

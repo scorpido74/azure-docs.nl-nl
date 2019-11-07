@@ -1,5 +1,5 @@
 ---
-title: Data Sync-agent voor Azure SQL Data Sync | Microsoft Docs
+title: Data Sync-agent voor Azure SQL Data Sync
 description: Meer informatie over het installeren en uitvoeren van de Data Sync-agent voor Azure SQL Data Sync om gegevens te synchroniseren met on-premises SQL Server-data bases
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 097c8547093a13f73f1ae5facdc0f7e6c75c071d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177714"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690795"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Data Sync-agent voor Azure SQL Data Sync
 

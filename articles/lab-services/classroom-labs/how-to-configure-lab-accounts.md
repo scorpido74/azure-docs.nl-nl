@@ -1,6 +1,6 @@
 ---
 title: Lab-accounts configureren in Azure Lab Services | Microsoft Docs
-description: Informatie over het configureren van een lab-account nadat deze gemaakt.
+description: Meer informatie over het configureren van een Lab-account nadat het is gemaakt.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,56 +13,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: ba469c038f04a31a57e798b97b5120bec573feae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65414040"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583954"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Lab-accounts configureren in Azure Lab Services 
-Een lab-account is in Azure Lab-Services, een container voor beheerde labtypen zoals leslokaallabs. Een beheerder stelt u een lab-account met Azure Lab-Services en biedt toegang tot een lab-eigenaren die labs in het account maken kunnen. In dit artikel wordt beschreven hoe u een lab-account maken, alle lab-accounts weergeven of verwijderen van een lab-account.
+In Azure Lab Services is een Lab-account een container voor beheerde Lab-typen zoals klassikale Labs. Een beheerder stelt een Lab-account in met Azure Lab Services en biedt toegang tot Lab-eigen aars die in het account Labs kunnen maken. In dit artikel wordt beschreven hoe u een Lab-account maakt, alle Lab-accounts weergeeft of een Lab-account verwijdert.
 
-## <a name="connect-with-a-peer-virtual-network"></a>Verbinding maken met een virtueel netwerk van peer
-Als u wilt verbinding maken met een virtueel netwerk als een peer-netwerk met het virtuele netwerk van de testomgeving, de volgende stappen uit:
+## <a name="connect-with-a-peer-virtual-network"></a>Verbinding maken met een virtueel netwerk op hetzelfde niveau
+Als u een virtueel netwerk als peer netwerk wilt verbinden met het virtuele netwerk van het lab, voert u de volgende stappen uit:
 
-1. Op de **Lab-Account** weergeeft, schakelt **Labs configuratie** in het menu links.
+1. Selecteer op de pagina **Lab-account** de optie **Labs-configuratie** in het menu links.
 
-    ![Configuratiepagina voor Labs](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
-1. Voor **virtuele peernetwerk**, selecteer **ingeschakeld** of **uitgeschakelde**. De standaardwaarde is **uitgeschakelde**. Om in te schakelen op het virtuele peernetwerk, voer de volgende stappen uit: 
+    ![Configuratie pagina voor Labs](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
+1. Selecteer **ingeschakeld** of **uitgeschakeld**voor het **virtuele peer netwerk**. De standaard waarde is **uitgeschakeld**. Voer de volgende stappen uit om het virtuele peer netwerk in te scha kelen: 
     1. Selecteer **ingeschakeld**.
-    2. Selecteer de **VNet** uit de vervolgkeuzelijst. 
+    2. Selecteer het **VNet** in de vervolg keuzelijst. 
 3. Selecteer **Opslaan** op de werkbalk. 
 
-Labs gemaakt in dit account zijn verbonden met het geselecteerde virtuele netwerk. Ze hebben toegang tot de bronnen in de geselecteerde virtuele netwerk. Zie voor meer informatie, [van uw testlab-netwerk verbinden met een virtueel netwerk van de peer in Azure Lab Services](how-to-connect-peer-virtual-network.md).
+Labs die in dit account is gemaakt, is verbonden met het geselecteerde virtuele netwerk. Ze hebben toegang tot de resources in het geselecteerde virtuele netwerk. Zie [verbinding maken met het netwerk van uw Lab met een virtueel netwerk van een peer in Azure Lab Services](how-to-connect-peer-virtual-network.md)voor meer informatie.
 
-Wanneer u een virtueel netwerk voor de **virtuele peernetwerk** veld, de **labmaker toestaan om te kiezen lab locatie** optie is uitgeschakeld. Dit is omdat labs in het lab-account moeten zich in dezelfde regio bevinden als het lab-account waarmee ze verbinding kunnen maken met resources in het virtuele peernetwerk. 
+Wanneer u een virtueel netwerk voor het veld **virtuele peer netwerk** selecteert, is de optie **Lab maken voor het kiezen van Lab-locatie** is uitgeschakeld. De reden hiervoor is dat Labs in het lab-account zich in dezelfde regio bevinden als het lab-account om verbinding te maken met resources in het virtuele peer netwerk. 
 
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Labmaker om op te halen van de locatie voor de testomgeving toestaan
-Labmaker labs maken in een andere locatie dan de locatie van het lab-account door deze stappen te volgen, kunt u toestaan: 
+## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Lab-Maker toestaan de locatie voor het lab te kiezen
+U kunt met behulp van de volgende stappen een Lab-Maker toestaan om Labs te maken op een andere locatie dan de locatie van het lab-account: 
 
-1. Op de **Lab-Account** weergeeft, schakelt **Labs configuratie** in het menu links.
-2. Voor de **labmaker toestaan om te kiezen lab locatie**, selecteer **ingeschakeld** als u wilt dat de labmaker kunnen een locatie voor de testomgeving te selecteren. Als deze uitgeschakeld, worden de labs automatisch gemaakt op dezelfde locatie waarin de lab-account bestaat. 
+1. Selecteer op de pagina **Lab-account** de optie **Labs-configuratie** in het menu links.
+2. Selecteer **ingeschakeld** als u wilt dat de Lab-Maker een locatie voor het Lab kan selecteren, voor de locatie van Lab- **Maker toestaan**. Als deze is uitgeschakeld, worden de Labs automatisch gemaakt op dezelfde locatie als het lab-account. 
     
-    Dit veld wordt uitgeschakeld wanneer u een virtueel netwerk voor de **virtuele peernetwerk** veld. Dit is omdat labs in het lab-account moeten zich in dezelfde regio als het lab-account voor toegang tot bronnen in het virtuele peernetwerk. 
+    Dit veld wordt uitgeschakeld wanneer u een virtueel netwerk selecteert voor het veld **virtuele peer netwerk** . De reden hiervoor is dat Labs in het lab-account zich in dezelfde regio bevinden als het lab-account waarmee ze toegang hebben tot resources in het virtuele netwerk van de peer. 
 1. Selecteer **Opslaan** op de werkbalk. 
 
-    ![Lab-locatie instellen](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
+    ![Instelling voor Lab-locatie configureren](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
 
 
-## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Geef een adresbereik voor virtuele machines in het lab
-De volgende procedure bevat stappen om op te geven van een adresbereik voor virtuele machines in het lab. Als u bijwerkt naar het bereik dat u eerder hebt opgegeven, wordt de gewijzigde adresbereik geldt alleen voor virtuele machines die zijn gemaakt nadat de wijziging is doorgevoerd. 
+## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Geef een adres bereik voor Vm's op in het lab
+De volgende procedure bevat stappen voor het opgeven van een adres bereik voor Vm's in het lab. Als u het bereik bijwerkt dat u eerder hebt opgegeven, is het gewijzigde adres bereik alleen van toepassing op virtuele machines die zijn gemaakt nadat de wijziging is aangebracht. 
 
-Hier zijn enkele beperkingen bij het opgeven van het adresbereik dat u rekening moet houden. 
+Hier volgen enkele beperkingen bij het opgeven van het adres bereik dat u moet onthouden. 
 
-- Het voorvoegsel moet kleiner zijn dan of gelijk zijn aan 23. 
-- Als een virtueel netwerk is gekoppeld aan het lab-account, kan niet het opgegeven adresbereik-adresbereik van gekoppelde virtuele netwerk overlapt.
+- Het voor voegsel moet kleiner zijn dan of gelijk zijn aan 23. 
+- Als een virtueel netwerk is gekoppeld aan het lab-account, kan het gegeven adres bereik niet overlappen met het adres bereik van een gekoppeld virtueel netwerk.
 
-1. Op de **Lab-Account** weergeeft, schakelt **Labs configuratie** in het menu links.
-2. Voor de **adresbereik** veld, geeft u het adresbereik voor virtuele machines die worden gemaakt in het lab. Het adresbereik moet zich in de notatie klasseloze routing tussen domeinen (CIDR) (voorbeeld: 10.20.0.0/23). Virtuele machines in de testomgeving wordt in dit adresbereik worden gemaakt.
+1. Selecteer op de pagina **Lab-account** de optie **Labs-configuratie** in het menu links.
+2. Geef in het veld **adres bereik** het adres bereik op voor virtuele machines die in het lab worden gemaakt. Het adres bereik moet in de CIDR-notatie (Classless Inter-Domain Routing) staan (voor beeld: 10.20.0.0/23). Virtuele machines in het lab worden gemaakt in dit adres bereik.
 3. Selecteer **Opslaan** op de werkbalk. 
 
-    ![Adresbereik configureren](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
+    ![Adres bereik configureren](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Een gebruiker toevoegen aan de rol Labmaker
 Om een leslokaallab in een labaccount in te kunnen stellen, moet de gebruiker lid zijn van de rol **Labmaker** in het labaccount. Het account dat u hebt gebruikt voor het maken van het lab-account wordt automatisch toegevoegd aan deze rol. Als u van plan bent een leslokaallab te maken met hetzelfde gebruikersaccount, kunt u deze stap overslaan. Als u een ander gebruikersaccount wilt gebruiken om een leslokaallab te maken, voert u de volgende stappen uit: 
@@ -75,6 +75,9 @@ Als u machtigingen wilt toekennen aan docenten om labs te maken voor hun lessen,
 1. Selecteer op de pagina **Roltoewijzing toevoegen** de optie **Labmaker** als **Rol**. Selecteer de gebruiker die u wilt toevoegen aan de rol Labmaker en selecteer **Opslaan**. 
 
     ![Labmaker toevoegen](../media/tutorial-setup-lab-account/add-lab-creator.png)
+
+    > [!NOTE]
+    > Als u een niet-Microsoft-account gebruiker toevoegt als een Lab-Maker, raadpleegt u de sectie [een niet-Microsoft-account gebruiker toevoegen als een Lab-Maker](#add-a-non-microsoft-account-user-as-a-lab-creator) . 
 
 ## <a name="specify-marketplace-images-available-to-lab-creators"></a>Microsoft Azure Marketplace-installatiekopieën opgeven die beschikbaar zijn voor labmakers
 Als eigenaar van een labaccount kunt u de Marketplace-installatiekopieën opgeven die labmakers kunnen gebruiken in het labaccount. 
@@ -99,7 +102,36 @@ Als eigenaar van een labaccount kunt u de Marketplace-installatiekopieën opgeve
     1. Selecteer **... (beletselteken)**  in de laatste kolom en selecteer **Installatiekopie inschakelen**. 
     2. Selecteer een of meer installatiekopieën in de lijst door de selectievakjes bij de namen van de installatiekopieën in de lijst te selecteren en **Geselecteerde installatiekopieën inschakelen** te selecteren. 
 
+## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Een niet-Microsoft-account gebruiker toevoegen als een Lab-Maker
+Als u een gebruiker wilt toevoegen als een Lab-Maker, gebruikt u hun e-mail accounts. De volgende typen e-mail accounts kunnen worden gebruikt:
 
+- Een e-mail account dat wordt verschaft door de Office 365-Azure Active Directory (AAD) van uw universiteit. 
+- Een micro soft-e-mail account, zoals `@outlook.com`, `@hotmail.com`, `@msn.com`of `@live.com`.
+- Een niet-micro soft-e-mail account, zoals het abonnement van Yahoo of Google. Deze typen accounts moeten echter worden gekoppeld aan een Microsoft-account.
+- Een GitHub-account. Dit account moet worden gekoppeld aan een Microsoft-account.
+
+### <a name="using-a-non-microsoft-email-account"></a>Een niet-micro soft-e-mail account gebruiken
+Lab-makers/docenten kunnen niet-micro soft-e-mail accounts gebruiken om zich te registreren bij een leslokaal Lab en zich aan te melden.  Voor de aanmelding bij de Lab Services-portal moeten docenten eerst een Microsoft-account maken dat is gekoppeld aan een niet-micro soft-e-mail adres.
+
+Veel docenten hebben mogelijk al een Microsoft-account gekoppeld aan hun e-mail adressen van andere leveranciers dan micro soft. Docenten hebben bijvoorbeeld al een Microsoft-account als ze hun e-mail adres hebben gebruikt met andere producten of services van micro soft, zoals Office, Skype, OneDrive of Windows.  
+
+Wanneer docenten zich aanmelden bij de Lab Services-portal, wordt ze gevraagd hun e-mail adres en wacht woord op te sturen. Als de docent probeert zich aan te melden met een niet-Microsoft-account waaraan geen Microsoft-account is gekoppeld, wordt het volgende fout bericht weer gegeven: 
+
+![Foutbericht](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Docenten moeten naar [http://signup.live.com](http://signup.live.com)gaan om zich aan te melden voor een Microsoft-account.  
+
+
+### <a name="using-a-github-account"></a>Een GitHub-account gebruiken
+Docenten kunnen ook een bestaand GitHub-account gebruiken om zich te registreren bij een leslokaal Lab en zich aan te melden. Als aan de docent al een Microsoft-account is gekoppeld aan hun GitHub-account, kunnen ze zich aanmelden en hun wacht woord opgeven, zoals in de vorige sectie wordt weer gegeven. Als ze hun GitHub-account nog niet aan een Microsoft-account hebben gekoppeld, moeten ze **aanmeldings opties**selecteren:
+
+![Koppeling voor aanmeldings opties](../media/how-to-configure-student-usage/signin-options.png)
+
+Selecteer **Aanmelden met github**op de pagina **aanmeldings opties** .
+
+![Aanmelden met GitHub-koppeling](../media/how-to-configure-student-usage/signin-github.png)
+
+Ten slotte wordt er gevraagd om een Microsoft-account te maken dat is gekoppeld aan het GitHub-account. Dit gebeurt automatisch wanneer de docent **volgende**selecteert.  De docent wordt dan onmiddellijk aangemeld en is verbonden met het leslokaal Lab.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -108,4 +140,4 @@ Zie de volgende artikelen:
 - [Labs maken en beheren als labeigenaar](how-to-manage-classroom-labs.md)
 - [Sjablonen instellen en publiceren als labeigenaar](how-to-create-manage-template.md)
 - [Het gebruik van een lab configureren en beheren als labeigenaar](how-to-configure-student-usage.md)
-- [Als een lab-gebruiker toegang krijgen tot leslokaallabs](how-to-use-classroom-lab.md)
+- [Als test gebruiker toegang krijgen tot klassikale Labs](how-to-use-classroom-lab.md)

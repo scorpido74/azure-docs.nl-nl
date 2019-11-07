@@ -1,7 +1,7 @@
 ---
 title: 'Een Tenant model maken (preview): spraak service'
 titleSuffix: Azure Cognitive Services
-description: Genereer automatisch een aangepast spraak model dat gebruikmaakt van uw Office365-gegevens om optimale spraak herkenning te bieden voor specifieke termen die zowel veilig als compatibel zijn.
+description: Genereer automatisch een Tenant model (Custom Speech met Office 365-gegevens) dat gebruikmaakt van uw Office 365-gegevens om optimale spraak herkenning te bieden voor de specifieke voor waarden van de organisatie die zowel veilig als compatibel zijn.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 85b9291ee24c024ebc8ce81ddba46d04f7744081
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502658"
+ms.locfileid: "73578223"
 ---
 # <a name="create-a-tenant-model-preview"></a>Een Tenant model maken (preview)
 
-Tenant model is een opt-in-service voor Office365 Enter prise-klanten die automatisch een aangepast spraakherkennings model genereren op basis van de Office365-gegevens van uw organisatie. Het model dat wordt gemaakt, is geoptimaliseerd voor technische termen, jargon en namen van personen, allemaal op een veilige en compatibele manier.
+Tenant model (Custom Speech met Office 365-gegevens) is een opt-in-service voor Office 365 Enter prise-klanten die automatisch een aangepast spraakherkennings model genereren op basis van de Office365-gegevens van uw organisatie. Het model dat wordt gemaakt, is geoptimaliseerd voor technische termen, jargon en namen van personen, allemaal op een veilige en compatibele manier.
 
 > [!IMPORTANT]
-> Als uw organisatie zich registreert met een Tenant model, kan de spraak service toegang krijgen tot het taal model van uw organisatie, dat wordt gegenereerd door Office 365-resources, zoals e-mail berichten en documenten. De Office 365-beheerder van uw organisatie kan het gebruik van het organisatiebrede taal model in-of uitschakelen met behulp van de Office 365-beheer Portal.
+> Als uw organisatie zich aanmeldt met een Tenant model, kan de spraak service toegang krijgen tot het taal model van uw organisatie, dat wordt gegenereerd op basis van e-mail berichten en documenten van Office 365 open bare groep die door iedereen in uw organisatie kan worden gezien. De Office 365-beheerder van uw organisatie kan het gebruik van het organisatiebrede taal model in-of uitschakelen met behulp van de Office 365-beheer Portal.
 
 In deze zelfstudie leert u het volgende:
 
@@ -33,8 +33,6 @@ In deze zelfstudie leert u het volgende:
 > * Een Tenant model implementeren
 > * Een Tenant model gebruiken met de Speech SDK
 
-![Diagram van Tenant model](media/tenant-language-model/tenant-language-model-diagram.png)
-
 ## <a name="enroll-using-the-microsoft-365-admin-center"></a>Inschrijven met behulp van het Microsoft 365-beheer centrum
 
 Voordat u uw Tenant model kunt implementeren, moet u eerst inschrijven met behulp van het Microsoft 365-beheer centrum. Deze taak kan alleen worden uitgevoerd door uw Microsoft 365-beheerder.
@@ -42,11 +40,11 @@ Voordat u uw Tenant model kunt implementeren, moet u eerst inschrijven met behul
 1. Meld u aan bij het [Microsoft 365-beheer centrum](https://admin.microsoft.com ).
 2. Selecteer in het linkerdeel venster **instellingen** en vervolgens **apps**.
 
-   ![Diagram van Tenant model](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![Registratie van Tenant model](media/tenant-language-model/tenant-language-model-enrollment.png)
 
 3. Zoek en selecteer **Azure speech Services**.
 
-   ![Diagram van Tenant model](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Inschrijving van Tenant model 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 4. Klik op het selectie vakje en sla het op.
 
@@ -77,9 +75,10 @@ Nadat uw beheerder Tenant model heeft ingeschakeld voor uw organisatie, kunt u e
 
 3. Hier ziet u een bericht met de melding dat u een Tenant model wilt maken.
    > [!NOTE]
-   > Office 365 Enter prise-klanten in Noord-Amerika komen in aanmerking voor het maken van een Tenant model (Engels). Deze functie is niet beschikbaar als u een Klanten-lockbox (CLB) of klant code (klant verzonkt) bent. Volg de volgende instructies om te bepalen of u een klant van Klanten-lockbox of klant bent:
+   > Office 365 Enter prise-klanten in Noord-Amerika komen in aanmerking voor het maken van een Tenant model (Engels). Als u een Klanten-lockbox (CLB), klant sleutel (verzonken) of Office 365 Government-klant bent, is deze functie niet beschikbaar. Volg de volgende instructies om te bepalen of u een klant van Klanten-lockbox of klant bent:
    > * [Klanten-lockbox](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Klant sleutel](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
 4. Selecteer vervolgens **opt in**. U ontvangt een e-mail met instructies wanneer uw Tenant model klaar is.
 

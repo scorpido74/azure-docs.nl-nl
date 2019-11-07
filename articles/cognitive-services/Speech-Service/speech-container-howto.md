@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 647edcab5ec2925016e8a099ae43b6133037f8de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491164"
+ms.locfileid: "73578386"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech Service-containers installeren en uitvoeren
 
@@ -167,19 +167,7 @@ De volgende code is een voor beeld van de indeling:
 2.0.0-amd64-en-us-preview
 ```
 
-De volgende tabel bevat de ondersteunde land instellingen voor **spraak naar tekst** in de 2.0.0-versie van de container:
-
-| Taal instelling | Tags |
-|--|--|
-| Chinees | `zh-CN` |
-| Nederlands | `en-US`<br>`en-GB`<br>`en-AU`<br>`en-IN` |
-| Frans | `fr-CA`<br>`fr-FR` |
-| Duits | `de-DE` |
-| Italiaans | `it-IT` |
-| Japans | `ja-JP` |
-| Koreaans | `ko-KR` |
-| Portugees | `pt-BR` |
-| Spaans | `es-ES`<br>`es-MX` |
+Voor alle ondersteunde land instellingen in de 2.0.0-versie van de **instem-naar-tekst-** container raadpleegt u de kolom **container ondersteuning** van de [ondersteunings tabel voor spraak naar tekst](language-support.md#speech-to-text) .
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
@@ -221,24 +209,7 @@ De volgende code is een voor beeld van de indeling:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-De volgende tabel bevat de ondersteunde land instellingen voor **tekst naar spraak** in de 1.3.0-versie van de container:
-
-| Taal instelling | Tags | Ondersteunde stemmen |
-|--|--|--|
-| Chinees | `zh-CN` | huihuirus<br>kangkang-apollo<br>yaoyao-apollo |
-| Nederlands | `en-AU` | catherine<br>hayleyrus |
-| Nederlands | `en-GB` | George-Apollo<br>hazelrus<br>Susan-Apollo |
-| Nederlands | `en-IN` | heera-apollo<br>priyarus<br>ravi-apollo<br> |
-| Nederlands | `en-US` | jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus |
-| Frans | `fr-CA` | caroline<br>harmonierus |
-| Frans | `fr-FR` | hortenserus<br>Pascaline-Apollo<br>Paul-Apollo |
-| Duits | `de-DE` | hedda<br>heddarus<br>Stefan-Apollo |
-| Italiaans | `it-IT` | cosimo-apollo<br>luciarus |
-| Japans | `ja-JP` | ayumi-apollo<br>harukarus<br>ichiro-apollo |
-| Koreaans | `ko-KR` | heamirus |
-| Portugees | `pt-BR` | Apollo<br>heloisarus |
-| Spaans | `es-ES` | elenarus<br>Laura-Apollo<br>pablo-apollo<br> |
-| Spaans | `es-MX` | hildarus<br>raul-apollo |
+Zie de kolom **container ondersteuning** van de tabel met [standaard stemmen voor talen](language-support.md#standard-voices) voor alle ondersteunde land instellingen en bijbehorende stemmen in de 1.3.0-versie van de **tekst-naar-spraak** -container.
 
 > [!IMPORTANT]
 > Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice`-element met een `name` kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van `en-US-JessaRUS`hebben.

@@ -1,5 +1,5 @@
 ---
-title: Gegevens verplaatsen van de OData-bronnen | Microsoft Docs
+title: Gegevens verplaatsen uit OData-bronnen
 description: Meer informatie over het verplaatsen van gegevens uit OData-bronnen met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,65 +13,65 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 840a839f7d3259de0473937de9c9970fcb95227c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ea751a18f8a5e5423b3199919ccf440c41595091
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839078"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666672"
 ---
-# <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Verplaatsen van gegevens uit een OData-bron met Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
-> * [Versie 1:](data-factory-odata-connector.md)
+# <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Gegevens verplaatsen vanuit een OData-bron met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> * [Versie 1](data-factory-odata-connector.md)
 > * [Versie 2 (huidige versie)](../connector-odata.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [OData-connector in V2](../connector-odata.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [OData-connector in v2](../connector-odata.md).
 
 
-In dit artikel wordt uitgelegd hoe u de Kopieeractiviteit in Azure Data Factory gebruiken om te verplaatsen van gegevens uit een OData-bron. Dit is gebaseerd op de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel een algemeen overzicht van de verplaatsing van gegevens met de kopieeractiviteit geeft.
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een OData-bron te verplaatsen. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
 
-U kunt gegevens uit een OData-bron kopiëren naar een ondersteunde sink-gegevensopslag. Zie voor een lijst met gegevensarchieven die worden ondersteund als sink voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabel. Data factory ondersteunt momenteel alleen gegevens te verplaatsen van een OData-bron naar andere gegevensarchieven, maar niet voor het verplaatsen van gegevens uit andere gegevensarchieven naar een OData-bron.
+U kunt gegevens uit een OData-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als sinks op basis van de Kopieer activiteit. Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een OData-bron naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar een OData-bron.
 
-## <a name="supported-versions-and-authentication-types"></a>Ondersteunde versies en verificatietypen
-Deze OData-connector ondersteuning voor OData-versie 3.0 en 4.0 en u kunt kopiëren van gegevens uit zowel cloud OData- en on-premises OData-bronnen. Voor de laatste moet u de Data Management Gateway installeren. Zie [gegevens verplaatsen tussen on-premises en cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway.
+## <a name="supported-versions-and-authentication-types"></a>Ondersteunde versies en verificatie typen
+Deze OData-connector biedt ondersteuning voor OData-versie 3,0 en 4,0, en u kunt gegevens kopiëren van zowel Cloud-OData-als on-premises OData-bronnen. Voor de laatste moet u de Data Management Gateway installeren. Zie [gegevens verplaatsen tussen on-premises en Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor meer informatie over Data Management Gateway.
 
-Hieronder verificatie worden typen ondersteund:
+Onderstaande verificatie typen worden ondersteund:
 
-* Toegang krijgen tot **cloud** OData-feed, kunt u anoniem, basis (gebruikersnaam en wachtwoord) of Azure Active Directory op basis van OAuth-verificatie.
-* Toegang krijgen tot **on-premises** OData-feed, kunt u anoniem, basisverificatie (gebruikersnaam en wachtwoord) of Windows-verificatie.
+* Voor toegang tot **Cloud** -OData-feed kunt u anonieme, basis (gebruikers naam en wacht woord) of Azure Active Directory op basis van OAuth-verificatie gebruiken.
+* Voor toegang tot **on-premises** OData-feed kunt u anonieme, basis (gebruikers naam en wacht woord) of Windows-verificatie gebruiken.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijplijn maken met een kopieeractiviteit die gegevens van een OData-bron verplaatst met behulp van verschillende hulpprogramma's / API's.
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een OData-bron met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijplijn te maken is met de **Kopieerwizard**. Zie [zelfstudie: Een pijplijn maken met de Wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snel overzicht van het maken van een pijplijn met behulp van de wizard kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sjabloon**, **.NET API**, en **REST-API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
-Of u de hulpprogramma's of API's gebruikt, kunt u de volgende stappen uit voor het maken van een pijplijn die gegevens van een brongegevensarchief naar een sink-gegevensopslag verplaatst uitvoeren:
+Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
-1. Maak **gekoppelde services** opgeslagen om invoer- en gegevens te koppelen aan uw data factory.
-2. Maak **gegevenssets** te vertegenwoordigen invoer- en uitvoergegevens voor de kopieerbewerking.
-3. Maak een **pijplijn** met een kopieeractiviteit waarmee een gegevensset als invoer en een gegevensset als uitvoer.
+1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
+2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven.
+3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt.
 
-Wanneer u de wizard gebruikt, worden de JSON-definities voor deze Data Factory-entiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u hulpprogramma's / API's (met uitzondering van de .NET API), kunt u deze Data Factory-entiteiten definiëren met behulp van de JSON-indeling.  Zie voor een voorbeeld met JSON-definities voor Data Factory-entiteiten die worden gebruikt om gegevens te kopiëren uit een OData-bron, [JSON-voorbeeld: Gegevens kopiëren van de OData-bron naar Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) sectie van dit artikel.
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling.  Zie [JSON-voor beeld: gegevens kopiëren van odata-bron naar Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) in dit artikel voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een odata-bron.
 
-De volgende secties bevatten meer informatie over JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek voor OData-bron:
+De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor de OData-Bron:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde Service
-De volgende tabel bevat een beschrijving op voor JSON-elementen die specifiek zijn voor de gekoppelde OData-service.
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor een gekoppelde OData-service.
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OData** |Ja |
-| url |URL van de OData-service. |Ja |
-| authenticationType |Het type verificatie gebruikt voor verbinding met de OData-bron. <br/><br/> Voor cloud OData zijn mogelijke waarden ingesteld op anoniem, basis en OAuth (Opmerking: momenteel alleen ondersteuning voor Azure Data Factory Azure Active Directory op basis van OAuth). <br/><br/> Voor on-premises OData zijn mogelijke waarden ingesteld op anoniem, basis en Windows. |Ja |
-| username |Geef de gebruikersnaam op als u basisverificatie gebruikt. |Ja (alleen als u basisverificatie gebruikt) |
-| password |Wachtwoord voor het gebruikersaccount dat u hebt opgegeven voor de gebruikersnaam opgeven. |Ja (alleen als u basisverificatie gebruikt) |
-| authorizedCredential |Als u van OAuth gebruikmaakt, klikt u op **autoriseren** knop in de Kopieerwizard van Data Factory of Editor en voer uw referenties, en vervolgens de waarde van deze eigenschap wordt niet automatisch wordt gegenereerd. |Ja (alleen als u met behulp van OAuth-verificatie) |
-| gatewayName |De naam van de gateway die de Data Factory-service gebruiken moet voor verbinding met de on-premises OData-service. Geef alleen als u gegevens uit on-premises OData-bron kopieert. |Nee |
+| url |De URL van de OData-service. |Ja |
+| authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de OData-bron. <br/><br/> Voor Cloud OData zijn mogelijke waarden anoniem, basis en OAuth (Opmerking Azure Data Factory momenteel alleen op Azure Active Directory gebaseerde OAuth). <br/><br/> Voor on-premises OData zijn mogelijke waarden anoniem, basis en Windows. |Ja |
+| gebruikersnaam |Geef de gebruikers naam op als u basis verificatie gebruikt. |Ja (alleen als u basis verificatie gebruikt) |
+| wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Ja (alleen als u basis verificatie gebruikt) |
+| authorizedCredential |Als u OAuth gebruikt, klikt u op de knop **machtigen** in de wizard Data Factory kopiëren of de editor en voert u uw referenties in. vervolgens wordt de waarde van deze eigenschap automatisch gegenereerd. |Ja (alleen als u OAuth-verificatie gebruikt) |
+| gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises OData-service. Geef alleen op als u gegevens kopieert uit on-premises OData-bron. |Nee |
 
-### <a name="using-basic-authentication"></a>Met behulp van basisverificatie
+### <a name="using-basic-authentication"></a>Basis verificatie gebruiken
 ```json
 {
     "name": "inputLinkedService",
@@ -89,7 +89,7 @@ De volgende tabel bevat een beschrijving op voor JSON-elementen die specifiek zi
 }
 ```
 
-### <a name="using-anonymous-authentication"></a>Met behulp van anonieme verificatie
+### <a name="using-anonymous-authentication"></a>Anonieme verificatie gebruiken
 ```json
 {
     "name": "ODataLinkedService",
@@ -105,7 +105,7 @@ De volgende tabel bevat een beschrijving op voor JSON-elementen die specifiek zi
 }
 ```
 
-### <a name="using-windows-authentication-accessing-on-premises-odata-source"></a>Met behulp van Windows-verificatie verkrijgen van toegang tot on-premises OData-bron
+### <a name="using-windows-authentication-accessing-on-premises-odata-source"></a>Windows-verificatie gebruiken voor toegang tot de on-premises OData-bron
 ```json
 {
     "name": "inputLinkedService",
@@ -124,7 +124,7 @@ De volgende tabel bevat een beschrijving op voor JSON-elementen die specifiek zi
 }
 ```
 
-### <a name="using-oauth-authentication-accessing-cloud-odata-source"></a>Met behulp van OAuth-verificatie en toegang tot cloud OData-bron
+### <a name="using-oauth-authentication-accessing-cloud-odata-source"></a>OAuth-verificatie gebruiken voor toegang tot Cloud OData-bron
 ```json
 {
     "name": "inputLinkedService",
@@ -142,66 +142,66 @@ De volgende tabel bevat een beschrijving op voor JSON-elementen die specifiek zi
 ```
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets maken](data-factory-create-datasets.md) artikel. Secties, zoals de structuur, beschikbaarheid en het beleid van een gegevensset JSON zijn vergelijkbaar voor alle typen van gegevensset (Azure SQL, Azure-blob, Azure-tabel, enz.).
+Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
 
-De **typeProperties** sectie verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevensarchief. De typeProperties sectie voor de gegevensset van het type **ODataResource** (waaronder OData-gegevensset) heeft de volgende eigenschappen
+De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie typeProperties voor de gegevensset van het type **ODataResource** (die OData-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| path |Pad naar de OData-resource |Nee |
+| programmapad |Pad naar de OData-resource |Nee |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen maken](data-factory-create-pipelines.md) artikel. Eigenschappen zoals naam, beschrijving, invoer en uitvoer tabellen en -beleid zijn beschikbaar voor alle soorten activiteiten.
+Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
 
-Eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit afhankelijk aan de andere kant van elk activiteitstype. Ze verschillen voor de kopieeractiviteit, afhankelijk van de typen van bronnen en sinks.
+De eigenschappen die beschikbaar zijn in de typeProperties-sectie van de activiteit, verschillen per type activiteit. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
 
-Wanneer de bron is van het type **RelationalSource** (waaronder OData) de volgende eigenschappen zijn beschikbaar in de sectie typeProperties:
+Wanneer bron van het type **RelationalSource** (inclusief OData), zijn de volgende eigenschappen beschikbaar in de sectie typeProperties:
 
-| Eigenschap | Description | Voorbeeld | Verplicht |
+| Eigenschap | Beschrijving | Voorbeeld | Vereist |
 | --- | --- | --- | --- |
-| query |De aangepaste query gebruiken om gegevens te lezen. |"?$select=Name, Description&$top=5" |Nee |
+| query |Gebruik de aangepaste query om gegevens te lezen. |"? $select = naam, beschrijving & $top = 5" |Nee |
 
-## <a name="type-mapping-for-odata"></a>Toewijzing van het type voor OData
-Zoals vermeld in de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel kopieeractiviteit wordt uitgevoerd automatisch typeconversies van typen gegevensbronnen met sink-type met de volgende methode voor verificatie in twee stappen.
+## <a name="type-mapping-for-odata"></a>Type toewijzing voor OData
+Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen.
 
-1. Systeemeigen brontypen converteren naar .NET-type
-2. .NET-type converteren naar systeemeigen sink-type
+1. Converteren van systeem eigen bron typen naar .NET-type
+2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Bij het verplaatsen van gegevens uit OData-, worden de volgende toewijzingen uit OData-typen gebruikt om .NET-type.
+Bij het verplaatsen van gegevens uit OData worden de volgende toewijzingen gebruikt vanuit OData-typen naar .NET-type.
 
-| OData-gegevenstype | .NET-type |
+| OData-gegevens type | .NET-type |
 | --- | --- |
-| Edm.Binary |Byte[] |
-| Edm.Boolean |Bool |
-| Edm.Byte |Byte[] |
-| Edm.DateTime |Datetime |
-| Edm.Decimal |Decimal |
-| Edm.Double |Double |
-| Edm.Single |Single |
-| Edm.Guid |Guid |
-| Edm.Int16 |Int16 |
+| EDM. binary |Byte [] |
+| Edm.Boolean |BOOL |
+| EDM. byte |Byte [] |
+| EDM. DateTime |DateTime |
+| EDM. decimaal |Komma |
+| Edm.Double |Double-waarde |
+| EDM. single |Enkelvoudig |
+| EDM. GUID |GUID |
+| EDM. Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
-| Edm.SByte |Int16 |
-| Edm.String |String |
-| Edm.Time |TimeSpan |
-| Edm.DateTimeOffset |DateTimeOffset |
+| EDM. SByte |Int16 |
+| Edm.String |Tekenreeks |
+| EDM. tijd |Duur |
+| Edm.DateTimeOffset |Date time offset |
 
 > [!Note]
-> OData complexe gegevenstypen zoals Object worden niet ondersteund.
+> Complexe OData-gegevens typen, bijvoorbeeld object, worden niet ondersteund.
 
-## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON-voorbeeld: Gegevens kopiëren van de OData-bron naar Azure Blob
-In dit voorbeeld biedt een voorbeeld van JSON-definities die u gebruiken kunt voor het maken van een pijplijn met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe gegevens kopiëren van een OData-bron naar een Azure Blob-opslag. Echter gegevens kunnen worden gekopieerd naar een van de vermelde sinks [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieeractiviteit in Azure Data Factory. Het voorbeeld heeft de volgende Data Factory-entiteiten:
+## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van OData-bron naar Azure Blob
+Dit voor beeld bevat een voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe gegevens van een OData-bron naar een Azure-Blob Storage kunnen worden gekopieerd. Gegevens kunnen echter worden gekopieerd naar de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory. Het voor beeld heeft de volgende Data Factory entiteiten:
 
 1. Een gekoppelde service van het type [OData](#linked-service-properties).
-2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Invoer [gegevensset](data-factory-create-datasets.md) van het type [ODataResource](#dataset-properties).
-4. Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Een [pijplijn](data-factory-create-pipelines.md) met de Kopieeractiviteit die gebruikmaakt van [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [ODataResource](#dataset-properties).
+4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld worden gegevens gekopieerd van een query op een OData-bron naar een Azure-blob elk uur. De JSON-eigenschappen die in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+Het voor beeld kopieert elk uur gegevens uit een query op een OData-bron naar een Azure-Blob. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**OData gekoppelde service:** In dit voorbeeld maakt gebruik van de anonieme verificatie. Zie [OData gekoppelde service](#linked-service-properties) sectie voor verschillende soorten verificatie die u kunt gebruiken.
+**Gekoppelde OData-service:** In dit voor beeld wordt de anonieme verificatie gebruikt. Zie de sectie [gekoppelde OData-service](#linked-service-properties) voor verschillende typen verificatie die u kunt gebruiken.
 
 ```json
 {
@@ -218,7 +218,7 @@ Het voorbeeld worden gegevens gekopieerd van een query op een OData-bron naar ee
 }
 ```
 
-**Gekoppelde Azure Storage-service:**
+**Azure Storage gekoppelde service:**
 
 ```json
 {
@@ -232,9 +232,9 @@ Het voorbeeld worden gegevens gekopieerd van een query op een OData-bron naar ee
 }
 ```
 
-**OData-invoergegevensset:**
+**OData-invoer gegevensset:**
 
-Instellen van "extern": "true" informeert de Data Factory-service dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+Als u ' Extern ' instelt, informeert de Data Factory-service dat de gegevensset extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
 
 ```json
 {
@@ -262,11 +262,11 @@ Instellen van "extern": "true" informeert de Data Factory-service dat de dataset
 }
 ```
 
-Op te geven **pad** in de gegevensset definitie is optioneel.
+Het opgeven van een **pad** in de definitie van de gegevensset is optioneel.
 
-**Azure Blob-uitvoergegevensset:**
+**Azure Blob-uitvoer gegevensset:**
 
-Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en interval: 1). Het pad naar de map voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map wordt gebruikt voor jaar, maand, dag en uur onderdelen van de begintijd.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
 
 ```json
 {
@@ -324,9 +324,9 @@ Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en inte
 }
 ```
 
-**De kopieeractiviteit in een pijplijn met OData-bron en sink voor Blob:**
+**Kopieer activiteit in een pijp lijn met OData-bron en BLOB-Sink:**
 
-De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **RelationalSource** en **sink** type is ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de **query** eigenschap selecteert u de meest recente (nieuwste) gegevens uit de OData-bron.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **RelationalSource** en het **sink** -type is ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de eigenschap **query** selecteert de nieuwste (nieuwste) gegevens uit de OData-bron.
 
 ```json
 {
@@ -374,21 +374,21 @@ De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik v
 }
 ```
 
-Op te geven **query** in de pijplijn definitie is optioneel. De **URL** is dat de Data Factory-service gebruikt om gegevens te halen: URL die is opgegeven in de gekoppelde service (vereist) en het pad dat is opgegeven in de gegevensset (optioneel) + query in de pijplijn (optioneel).
+Het opgeven van een **query** in de pijplijn definitie is optioneel. De **URL** die de Data Factory-service gebruikt om gegevens op te halen is: de URL die is opgegeven in het gekoppelde service (vereist) + pad dat is opgegeven in de gegevensset (optioneel) + query in de pijp lijn (optioneel).
 
-### <a name="type-mapping-for-odata"></a>Toewijzing van het type voor OData
-Zoals vermeld in de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel kopieeractiviteit voert automatische conversie van de typen gegevensbronnen met sink-type met de volgende stappen 2-benadering:
+### <a name="type-mapping-for-odata"></a>Type toewijzing voor OData
+Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen:
 
-1. Systeemeigen brontypen converteren naar .NET-type
-2. .NET-type converteren naar systeemeigen sink-type
+1. Converteren van systeem eigen bron typen naar .NET-type
+2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Wanneer gegevens te verplaatsen van de OData-gegevens opslaat, worden OData-gegevenstypen worden toegewezen aan .NET-typen.
+Bij het verplaatsen van gegevens uit OData-gegevens archieven worden OData-gegevens typen toegewezen aan .NET-typen.
 
-## <a name="map-source-to-sink-columns"></a>Kaartbron met sink-kolommen
-Zie voor meer informatie over het toewijzen van kolommen in de brongegevensset naar kolommen in de sink-gegevensset, [toewijzing van kolommen in Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
+Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.
 
-## <a name="repeatable-read-from-relational-sources"></a>Herhaalbare lezen van relationele bronnen
-Bij het kopiëren van gegevens van relationele gegevens worden opgeslagen, houd er rekening mee om te voorkomen dat ongewenste resultaten herhaalbaarheid. In Azure Data Factory, kunt u een segment handmatig opnieuw. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment wordt opnieuw uitgevoerd wanneer een fout optreedt. Wanneer een segment wordt opnieuw uitgevoerd in beide gevallen, moet u om ervoor te zorgen dat de dezelfde gegevens worden gelezen ongeacht hoe vaak een segment wordt uitgevoerd. Zie [Repeatable leesrechten voor relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Herhaal bare Lees bewerking van relationele bronnen
+Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie [prestaties kopiëren en Afstemmingshandleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory en de verschillende manieren om te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en afstemming
+Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-verificatie configureren-SQL | Microsoft Docs
+title: Azure Active Directory-verificatie configureren-SQL
 description: Informatie over het maken van verbinding met SQL Database, een beheerd exemplaar en SQL Data Warehouse met behulp van Azure Active Directory-verificatie-na het configureren van Azure AD.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 10/16/2019
-ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/06/2019
+ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177650"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691384"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -57,6 +57,9 @@ Bij het gebruik van Azure Active Directory met geo-replicatie moet de Azure Acti
 
 > [!IMPORTANT]
 > Volg deze stappen alleen als u een beheerd exemplaar inricht. Deze bewerking kan alleen worden uitgevoerd door de beheerder globaal/bedrijf of een bevoegde beheerdersrol in azure AD. In de volgende stappen wordt het proces voor het verlenen van machtigingen voor gebruikers met verschillende bevoegdheden in de directory beschreven.
+
+> [!NOTE]
+> Voor Azure AD-beheerders voor MI die vóór GA zijn gemaakt, maar door gaan met het gebruik van post GA, is er geen functionele wijziging in het bestaande gedrag. Zie voor meer informatie de [nieuwe Azure AD-beheer functionaliteit voor mi](#new-azure-ad-admin-functionality-for-mi) sectie voor meer informatie.
 
 Uw beheerde exemplaar heeft machtigingen nodig voor het lezen van Azure AD om taken zoals de verificatie van gebruikers via lidmaatschap van een beveiligings groep of het maken van nieuwe gebruikers te kunnen uitvoeren. Om dit te laten werken, moet u machtigingen verlenen aan het beheerde exemplaar voor het lezen van Azure AD. Er zijn twee manieren om dit te doen: vanuit de portal en Power shell. In de volgende stappen worden beide methoden beschreven.
 
@@ -146,10 +149,34 @@ Uw beheerde exemplaar heeft machtigingen nodig voor het lezen van Azure AD om ta
 
     Het wijzigen van de beheerder kan enkele minuten duren. Vervolgens wordt de nieuwe beheerder weer gegeven in het vak Active Directory-beheerder.
 
-Nadat u een Azure AD-beheerder hebt ingericht voor uw beheerde exemplaar, kunt u beginnen met het maken van Azure AD-server principals (aanmeldingen) (**open bare preview**) met de syntaxis voor het maken van een <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">aanmelding</a> . Zie [overzicht van beheerde exemplaren](sql-database-managed-instance.md#azure-active-directory-integration)voor meer informatie.
+Nadat u een Azure AD-beheerder hebt ingericht voor uw beheerde exemplaar, kunt u beginnen met het maken van Azure AD-server principals (aanmeldingen) met de syntaxis voor het maken van de <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">aanmelding</a> . Zie [overzicht van beheerde exemplaren](sql-database-managed-instance.md#azure-active-directory-integration)voor meer informatie.
 
 > [!TIP]
 > Als u later een beheerder wilt verwijderen, selecteert u aan de bovenkant van de pagina Active Directory-beheer de optie **beheerder verwijderen**en selecteert u vervolgens **Opslaan**.
+
+### <a name="new-azure-ad-admin-functionality-for-mi"></a>Nieuwe Azure AD-beheer functionaliteit voor MI
+
+De volgende tabel bevat een overzicht van de functionaliteit voor de open bare preview Azure AD-aanmeldings beheerder voor MI, en een nieuwe functionaliteit die wordt geleverd met GA voor Azure AD-aanmeldingen.
+
+| Azure AD-aanmeldings beheer voor MI tijdens de open bare preview | GA-functionaliteit voor Azure AD-beheerder voor MI |
+| --- | ---|
+| Gedraagt zich op een vergelijk bare manier als Azure AD-beheerder voor SQL Database, waarmee Azure AD-verificatie mogelijk is, maar de Azure AD-beheerder kan geen Azure AD-of SQL-aanmeldingen in de hoofd database voor MI maken. | De Azure AD-beheerder heeft sysadmin-machtigingen en kan AAD-en SQL-aanmeldingen maken in de hoofd database voor MI. |
+| Is niet aanwezig in de server_principals-weer gave van sys. | Is aanwezig in de server_principals-weer gave van sys. |
+| Hiermee kunnen individuele Azure AD-gast gebruikers worden ingesteld als Azure AD-beheerder voor MI. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](../active-directory/b2b/add-users-administrator.md)voor meer informatie. | U moet een Azure AD-groep maken met gast gebruikers als leden om deze groep in te stellen als een Azure AD-beheerder voor MI. Zie [Azure AD Business to Business Support](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support)(Engelstalig) voor meer informatie. |
+
+Als best practice voor bestaande Azure AD-beheerders voor MI gemaakt vóór GA en nog steeds met behulp van post GA, stel de Azure AD-beheerder opnieuw in met Azure Portal de optie beheerder verwijderen en beheerder instellen voor dezelfde Azure AD-gebruiker of-groep.
+
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Bekende problemen met de Azure AD-aanmeldings GA voor MI
+
+- Als er zich een Azure AD-aanmelding in de hoofd database voor MI bevindt, gemaakt met de T-SQL-opdracht `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`, kan deze niet worden ingesteld als een Azure AD-beheerder voor STORINGen. U krijgt een fout melding bij het instellen van de aanmelding als een Azure AD-beheerder met behulp van de Azure Portal, Power shell of de CLI-opdrachten om de Azure AD-aanmelding te maken. 
+  - De aanmelding moet worden verwijderd uit de hoofd database met behulp van de opdracht `DROP LOGIN [myaadaccount]`voordat het account kan worden gemaakt als een Azure AD-beheerder.
+  - Het Azure AD-beheerders account instellen in de Azure Portal nadat de `DROP LOGIN` is geslaagd. 
+  - Als u de Azure AD-beheerders account niet kunt instellen, controleert u de hoofd database van het beheerde exemplaar voor de aanmelding. Gebruik de volgende opdracht: `SELECT * FROM sys.server_principals`
+  - Als u een Azure AD-beheerder voor MI instelt, wordt er automatisch een aanmelding in de hoofd database voor dit account gemaakt. Door de Azure AD-beheerder te verwijderen, wordt de aanmelding automatisch verwijderd uit de hoofd database.
+   
+- Individuele Azure AD-gast gebruikers worden niet ondersteund als Azure AD-Administrators voor MI. Gast gebruikers moeten deel uitmaken van een Azure AD-groep om te worden ingesteld als Azure AD-beheerder. Op dit moment worden gast gebruikers voor een ander Azure AD-account niet grijs weer gegeven op de Blade Azure Portal, zodat gebruikers de beheerders installatie kunnen voortzetten. Het opslaan van gast gebruikers als een Azure AD-beheerder leidt ertoe dat de installatie mislukt. 
+  - Als u een gast gebruiker een Azure AD-beheerder voor MI wilt maken, neemt u de gast gebruiker op in een Azure AD-groep en stelt u deze groep in als een Azure AD-beheerder.
+
 
 ### <a name="powershell-for-sql-managed-instance"></a>Power shell voor door SQL beheerd exemplaar
 
@@ -318,8 +345,8 @@ U kunt aan de volgende vereisten voldoen:
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Inge sloten database gebruikers in uw data base maken die zijn toegewezen aan Azure AD-identiteiten
 
->[!IMPORTANT]
->Het beheerde exemplaar ondersteunt nu Azure AD server-principals (aanmeldingen) (**open bare preview**), waarmee u aanmeldingen kunt maken van Azure AD-gebruikers,-groepen of-toepassingen. Met Azure AD-server-principals (aanmeldingen) kunt u zich bij uw beheerde exemplaar verifiëren zonder dat database gebruikers worden gemaakt als Inge sloten database gebruiker. Zie [overzicht van beheerde exemplaren](sql-database-managed-instance.md#azure-active-directory-integration)voor meer informatie. Zie <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">login maken</a>voor de syntaxis voor het maken van Azure ad-server principals (aanmeldingen).
+> [!IMPORTANT]
+> Managed instance biedt nu ondersteuning voor Azure AD-server-principals (aanmeldingen), waarmee u aanmeldingen kunt maken van Azure AD-gebruikers,-groepen of-toepassingen. Met Azure AD-server-principals (aanmeldingen) kunt u zich bij uw beheerde exemplaar verifiëren zonder dat database gebruikers worden gemaakt als Inge sloten database gebruiker. Zie [overzicht van beheerde exemplaren](sql-database-managed-instance.md#azure-active-directory-integration)voor meer informatie. Zie <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">login maken</a>voor de syntaxis voor het maken van Azure ad-server principals (aanmeldingen).
 
 Voor verificatie met Azure Active Directory is vereist dat databasegebruikers als gebruikers van ingesloten databases worden gemaakt. Een gebruiker van een ingesloten database op basis van een Azure AD-identiteit is een databasegebruiker die zich niet kan aanmelden bij de hoofddatabase en die wordt verwezen naar een identiteit in de Azure AD-directory die aan de database is gekoppeld. De Azure AD-identiteit kan een individueel gebruikersaccount of een groep zijn. Zie [Contained Database Users- Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx) (Gebruikers van ingesloten databases: een draagbare database maken) voor meer informatie over gebruikers van ingesloten databases.
 
@@ -405,7 +432,7 @@ Gebruik deze methode wanneer u verbinding maakt met een principal-naam van Azure
 Gebruik deze methode om te verifiëren bij SQL data base/DW met Azure AD voor native of federatieve Azure AD-gebruikers. Een systeem eigen gebruiker wordt afzonderlijk gemaakt in azure AD en wordt geverifieerd met behulp van de gebruikers naam en het wacht woord, terwijl een federatieve gebruiker een Windows-gebruiker is met Azure AD. De laatste methode (met behulp van gebruikers & wacht woord) kan worden gebruikt wanneer een gebruiker hun Windows-referentie wil gebruiken, maar de lokale machine is niet gekoppeld aan het domein (bijvoorbeeld door middel van een externe toegang). In dit geval kan een Windows-gebruiker zijn of haar domein account en wacht woord aanduiden en kan worden geverifieerd bij SQL data base/DW met federatieve referenties.
 
 1. Start Management Studio of Hulpprogram Ma's voor gegevens en selecteer in het dialoog venster **verbinding maken met server** (of **verbinding maken met data base-engine**) in het vak **verificatie** de optie **Active Directory-wacht woord**.
-2. Typ in het vak **gebruikers naam** uw Azure Active Directory gebruikers naam in de notatie **username \@domain. com**. Gebruikers namen moeten een account zijn uit het Azure Active Directory of een account van een domein met de Azure Active Directory.
+2. Typ in het vak **gebruikers naam** uw Azure Active Directory gebruikers naam in de notatie **username\@Domain.com**. Gebruikers namen moeten een account zijn uit het Azure Active Directory of een account van een domein met de Azure Active Directory.
 3. Typ in het vak **wacht woord** het wacht woord van uw gebruiker voor de account van de Azure Active Directory of het federatieve domein.
 
     ![AD-wachtwoord verificatie selecteren][12]

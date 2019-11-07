@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c04f578e73b81000fa605283a4afa4103655bcf4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1f068b624b5a8f580f61e9eb2ed0d197f05aa1b0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826985"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643664"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Aanmelden instellen met een Microsoft-account aangepaste beleids regels gebruiken in Azure Active Directory B2C
 
@@ -26,19 +26,19 @@ In dit artikel wordt beschreven hoe u aanmelden voor gebruikers vanaf een Micros
 ## <a name="prerequisites"></a>Vereisten
 
 - Voer de stappen in aan de [slag met aangepast beleid in azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
-- Als u nog geen Microsoft-account hebt, maakt u er een [https://www.live.com/](https://www.live.com/)op.
+- Als u nog geen Microsoft-account hebt, maakt u er een op [https://www.live.com/](https://www.live.com/).
 
 ## <a name="add-an-application"></a>Een toepassing toevoegen
 
 Als u aanmelden voor gebruikers met een Microsoft-account wilt inschakelen, moet u een toepassing registreren in de Azure AD-Tenant. De Azure AD-Tenant is niet hetzelfde als uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD-Tenant bevat.
 1. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
 1. Selecteer **nieuwe registratie**.
 1. Voer een **naam** in voor uw toepassing. Bijvoorbeeld *MSAapp1*.
 1. Onder **ondersteunde account typen**selecteert u **accounts in een organisatorische map en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox, Outlook.com)** .
-1. Onder **omleidings-URI (optioneel)** selecteert u `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **Web** en voert u in het tekstvak in. Vervang `your-tenant-name` door de naam van uw Azure AD B2C-Tenant.
+1. Onder **omleidings-URI (optioneel)** selecteert u **Web** en voert u `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` in het tekstvak in. Vervang `your-tenant-name` door de naam van uw Azure AD B2C Tenant.
 1. Selecteer **registreren**
 1. Noteer de **id van de toepassing (client)** die wordt weer gegeven op de overzichts pagina van de toepassing. U hebt deze nodig wanneer u de claim provider in een latere sectie configureert.
 1. **Certificaten & geheimen** selecteren
@@ -50,16 +50,16 @@ Als u aanmelden voor gebruikers met een Microsoft-account wilt inschakelen, moet
 
 Nu u de toepassing hebt gemaakt in uw Azure AD-Tenant, moet u het client geheim van die toepassing opslaan in uw Azure AD B2C-Tenant.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Zorg ervoor dat u de map gebruikt die uw Azure AD B2C-Tenant bevat. Selecteer het filter **Directory + abonnement** in het bovenste menu en kies de map die uw Tenant bevat.
 1. Kies **Alle services** linksboven in de Azure Portal, zoek **Azure AD B2C** en selecteer deze.
 1. Selecteer op de pagina overzicht **identiteits ervaring-Framework**.
 1. Selecteer **beleids sleutels** en selecteer vervolgens **toevoegen**.
-1. Kies`Manual`voor **Opties**.
-1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `MSASecret`. Het voor `B2C_1A_` voegsel wordt automatisch toegevoegd aan de naam van uw sleutel.
+1. Kies `Manual`voor **Opties**.
+1. Voer een **naam** in voor de beleids sleutel. Bijvoorbeeld `MSASecret`. De prefix `B2C_1A_` wordt automatisch toegevoegd aan de naam van uw sleutel.
 1. Voer in het **geheim**het client geheim in dat u in de vorige sectie hebt vastgelegd.
-1. Selecteer`Signature`voor **sleutel gebruik**.
-1. Klik op **Create**.
+1. Selecteer `Signature`voor **sleutel gebruik**.
+1. Klik op **Maken**.
 
 ## <a name="add-a-claims-provider"></a>Een claim provider toevoegen
 
@@ -141,7 +141,7 @@ Op dit moment hebt u de ID-provider ingesteld, maar deze is nog niet beschikbaar
 
 Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider knop op een registratie-of aanmeldings scherm. Als u een **ClaimsProviderSelection** -element toevoegt voor een Microsoft-account, wordt er een nieuwe knop weer gegeven wanneer een gebruiker op de pagina terechtkomt.
 
-1. Zoek in het bestand *TrustFrameworkExtensions. XML* het element **OrchestrationStep** op dat is `Order="1"` opgenomen in de gebruikers traject die u hebt gemaakt.
+1. Zoek in het bestand *TrustFrameworkExtensions. XML* het **OrchestrationStep** -element dat `Order="1"` bevat in de gebruikers traject die u hebt gemaakt.
 1. Voeg onder **ClaimsProviderSelects**het volgende element toe. Stel de waarde van **TargetClaimsExchangeId** in op een geschikte waarde, bijvoorbeeld `MicrosoftAccountExchange`:
 
     ```XML
@@ -152,14 +152,14 @@ Het element **ClaimsProviderSelection** is vergelijkbaar met een id-provider kno
 
 Nu er een knop aanwezig is, moet u deze koppelen aan een actie. De actie in dit geval is voor Azure AD B2C om te communiceren met een Microsoft-account om een token te ontvangen.
 
-1. Zoek de **OrchestrationStep** die in `Order="2"` de gebruikers reis zijn opgenomen.
+1. Zoek de **OrchestrationStep** die `Order="2"` bevat in de gebruikers reis.
 1. Voeg het volgende **ClaimsExchange** -element toe om ervoor te zorgen dat u dezelfde waarde gebruikt voor de id die u hebt gebruikt voor **TargetClaimsExchangeId**:
 
     ```xml
     <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
     ```
 
-    Werk de waarde van **TechnicalProfileReferenceId** bij zodat deze overeenkomt `Id` met de waarde in het **TechnicalProfile** -element van de claim provider die u eerder hebt toegevoegd. Bijvoorbeeld `MSA-OIDC`.
+    Werk de waarde van **TechnicalProfileReferenceId** bij zodat deze overeenkomt met die van de `Id` waarde in het **TechnicalProfile** -element van de claim provider die u eerder hebt toegevoegd. Bijvoorbeeld `MSA-OIDC`.
 
 1. Sla het bestand *TrustFrameworkExtensions. XML* op en upload het opnieuw voor verificatie.
 
@@ -175,13 +175,13 @@ Werk het Relying Party (RP)-bestand bij waarmee de door u gemaakte gebruikers tr
 
 1. Maak een kopie van *SignUpOrSignIn. XML* in uw werkmap en wijzig de naam ervan. Wijzig de naam bijvoorbeeld in *SignUpSignInMSA. XML*.
 1. Open het nieuwe bestand en werk de waarde van het kenmerk **PolicyId** voor **TrustFrameworkPolicy** met een unieke waarde bij. Bijvoorbeeld `SignUpSignInMSA`.
-1. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld:`http://contoso.com/B2C_1A_signup_signin_msa`
+1. Werk de waarde van **PublicPolicyUri** bij met de URI voor het beleid. Bijvoorbeeld`http://contoso.com/B2C_1A_signup_signin_msa`
 1. Werk de waarde van het kenmerk **ReferenceId** in **DefaultUserJourney** bij zodat dit overeenkomt met de id van de gebruikers traject die u eerder hebt gemaakt (SignUpSignInMSA).
 1. Sla de wijzigingen op, upload het bestand en selecteer vervolgens het nieuwe beleid in de lijst.
 1. Zorg ervoor dat Azure AD B2C toepassing die u hebt gemaakt in de vorige sectie (of door het volt ooien van de vereisten, bijvoorbeeld *webapp1* of *testapp1*) is geselecteerd in het veld **toepassing selecteren** en test deze door te klikken op **nu uitvoeren** .
 1. Selecteer de knop **micro soft-account** en meld u aan.
 
-    Als de aanmeldings bewerking is geslaagd, wordt u omgeleid zodat `jwt.ms` de gedecodeerde token wordt weer gegeven, vergelijkbaar met:
+    Als de aanmeldings bewerking is geslaagd, wordt u omgeleid naar `jwt.ms` waarin de gedecodeerde token wordt weer gegeven, vergelijkbaar met:
 
     ```json
     {

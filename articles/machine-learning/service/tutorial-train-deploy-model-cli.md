@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493397"
+ms.locfileid: "73581553"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Zelf studie: een model trainen en implementeren vanuit de CLI
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -183,7 +183,7 @@ Met deze opdracht maakt u een `.azureml/config.json` bestand, dat informatie bev
 
 ## <a name="create-the-compute-target-for-training"></a>Het reken doel voor de training maken
 
-In dit voor beeld wordt een Azure Machine Learning Compute-cluster gebruikt om het model te trainen. Als u een nieuw reken cluster wilt maken, gebruikt u de volgende opdracht:
+In dit voor beeld wordt een Azure Machine Learning notebook-VM gebruikt om het model te trainen. Gebruik de volgende opdracht om een nieuwe VM van een notebook te maken:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -239,7 +239,7 @@ Deze tekst wordt vastgelegd in het trainings script (`train-sklearn.py`) en er w
 
 Als u de `train-sklearn.py`inspecteert, ziet u dat ook de waarde alpha wordt gebruikt wanneer de getrainde modellen worden opgeslagen in een bestand. In dit geval wordt een aantal modellen treinen. Het eerste met de hoogste Alfa moet het beste zijn. Op basis van de uitvoer hierboven en de code wordt het model met een alpha van 0,95 opgeslagen als `./outputs/ridge_0.95.pkl`
 
-Het model is opgeslagen in de `./outputs` Directory op het reken doel waar het is getraind. In dit geval wordt het Azure Machine Learning Compute-exemplaar in de Azure-Cloud. Het trainings proces uploadt de inhoud van de `./outputs` Directory automatisch van het berekenings doel waar trainingen plaatsvindt naar uw Azure Machine Learning-werk ruimte. Het wordt opgeslagen als onderdeel van het experiment (`myexperiment` in dit voor beeld).
+Het model is opgeslagen in de `./outputs` Directory op het reken doel waar het is getraind. In dit geval wordt de VM van Azure Machine Learning-notebook in de Azure-Cloud. Het trainings proces uploadt de inhoud van de `./outputs` Directory automatisch van het berekenings doel waar trainingen plaatsvindt naar uw Azure Machine Learning-werk ruimte. Het wordt opgeslagen als onderdeel van het experiment (`myexperiment` in dit voor beeld).
 
 ## <a name="register-the-model"></a>Het model registreren
 

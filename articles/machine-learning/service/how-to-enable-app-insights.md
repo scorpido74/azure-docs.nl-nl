@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490015"
+ms.locfileid: "73576742"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,39 +112,6 @@ Als u Azure-toepassing Insights wilt uitschakelen, gebruikt u de volgende code:
 ## replace <service_name> with the name of the web service
 <service_name>.update(enable_app_insights=False)
 ```
-    
-## <a name="use-studio-to-configure"></a>Studio gebruiken om te configureren
-
-U kunt Application Insights in Azure Machine Learning Studio inschakelen en uitschakelen.
-
-1. Open uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
-
-1. Selecteer op het tabblad **implementaties** de service waarvoor u Application Insights wilt inschakelen.
-
-   [![lijst met Services op het tabblad implementaties](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. Selecteer **Bewerken**.
-
-   [knop bewerken ![](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights diagnostische gegevens inschakelen** in.
-
-   [![ingeschakeld selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
-
-### <a name="disable"></a>Uitschakelen
-1. Open uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
-1. Selecteer **implementaties**, selecteer de service en selecteer **bewerken**.
-
-   [![de knop bewerken gebruiken](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. Schakel in **Geavanceerde instellingen**het selectie vakje **AppInsights Diagnostics inschakelen** uit. 
-
-   [![gewist selectie vakje voor het inschakelen van diagnostische gegevens](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Selecteer **Update** aan de onderkant van het scherm om de wijzigingen toe te passen. 
- 
 
 ## <a name="evaluate-data"></a>Gegevens evalueren
 De gegevens van uw service worden opgeslagen in uw Azure-toepassing Insights-account, in dezelfde resource groep als Azure Machine Learning.

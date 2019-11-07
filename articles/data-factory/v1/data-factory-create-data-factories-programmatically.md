@@ -1,5 +1,5 @@
 ---
-title: Gegevens pijplijnen maken met behulp van de Azure .NET SDK | Microsoft Docs
+title: Gegevens pijplijnen maken met behulp van de Azure .NET SDK
 description: Informatie over het programmatisch maken, bewaken en beheren van Azure-gegevens fabrieken met behulp van Data Factory SDK.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cabeb6314c16aa5bc37f1139954f8829a37af5bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140220"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682768"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-gegevens fabrieken maken, bewaken en beheren met behulp van Azure Data Factory .NET SDK
 > [!NOTE]
@@ -34,7 +34,7 @@ U kunt Azure-gegevens fabrieken programmatisch maken, bewaken en beheren met beh
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Visual Studio 2012 of 2013 of 2015
-* Download en installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* Down load en Installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/).
 * Azure PowerShell. Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/overview) om Azure PowerShell te installeren op uw computer. Azure PowerShell wordt gebruikt om een Azure Active Directory-toepassing te maken.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Een toepassing maken in Azure Active Directory
@@ -104,10 +104,10 @@ U moet na deze stappen beschikken over de volgende vier waarden:
 * Toepassings-id
 * Wachtwoord (opgegeven in de eerste opdracht)
 
-## <a name="walkthrough"></a>Walkthrough
+## <a name="walkthrough"></a>Kennismaking
 In de walkthrough maakt u een data factory met een pijp lijn die een Kopieer activiteit bevat. De Kopieer activiteit kopieert gegevens uit een map in uw Azure Blob-opslag naar een andere map in dezelfde Blob-opslag. 
 
-Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over de kopieeractiviteit.
+Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over de kopieeractiviteit.
 
 1. Maak met behulp van Visual Studio 2012/2013/2015 een C# .NET-consoletoepassing.
    1. Open **Visual Studio** 2012/2013/2015.
@@ -138,7 +138,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
         </appSettings>
     </configuration>
     ```
-5. In het bestand app. config worden de waarden voor  **&lt;de toepassings&gt;-id**,  **&lt;het wacht woord&gt;** ,  **&lt;de abonnements-id&gt;** en **&lt;de Tenant-id bijgewerkt met&gt;** uw eigen waarden.
+5. Update in het bestand app. config waarden voor **&lt;toepassings-id&gt;** , **&lt;wacht woord&gt;** , **&lt;abonnements-ID&gt;** en **&lt;Tenant-id&gt;** met uw eigen waarden.
 6. Voeg de volgende **using** -instructies toe aan het **Program.cs** -bestand in het project.
 
     ```csharp
@@ -301,7 +301,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
     ```
 10. Voeg de volgende code die **een pijplijn maakt en activeert** toe aan de methode **Main**. Deze pijplijn heeft een **CopyActivity** die **BlobSource** als een bron neemt en **BlobSink** als een sink.
 
-    Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over de kopieeractiviteit.
+    Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over de kopieeractiviteit.
 
     ```csharp
     // create a pipeline
@@ -446,7 +446,7 @@ Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uit
     }
     ```
 
-15. Vouw in het Solution Explorer het project uit: **DataFactoryAPITestApp**, klik met de rechter muisknop op **verwijzingen**en klik op **referentie toevoegen**. Schakel het selectie vakje `System.Configuration` voor de assembly in en klik op **OK**.
+15. Vouw in het Solution Explorer het project uit: **DataFactoryAPITestApp**, klik met de rechter muisknop op **verwijzingen**en klik op **referentie toevoegen**. Schakel het selectie vakje voor `System.Configuration`-assembly in en klik op **OK**.
 15. Bouw de consoletoepassing. Klik op **Build** in het menu en klik op **Build Solution**.
 16. Controleer of er ten minste één bestand aanwezig is in de adftutorial-container in uw Azure Blob-opslag. Als dat niet het geval is, maakt u het bestand EMP. txt in Klad blok met de volgende inhoud en uploadt u het naar de adftutorial-container.
 

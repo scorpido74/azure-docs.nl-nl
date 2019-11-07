@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database in-Memory voor beeld | Microsoft Docs
+title: Azure SQL Database in-Memory-voor beeld
 description: Probeer Azure SQL Database in-Memory technologieën met OLTP en column Store-voor beeld.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828210"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689815"
 ---
 # <a name="in-memory-sample"></a>Voor beeld in het geheugen
 
@@ -34,7 +34,7 @@ Zie voor meer informatie:
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. Het OLTP-voor beeld in het geheugen installeren
+## <a name="1-install-the-in-memory-oltp-sample"></a>1. Installeer het voor beeld in het geheugen OLTP
 
 U kunt de AdventureWorksLT-voorbeeld database maken met enkele klikken in de [Azure Portal](https://portal.azure.com/). In de stappen in dit gedeelte wordt uitgelegd hoe u uw AdventureWorksLT-Data Base kunt verrijken met in-Memory OLTP-objecten en de prestatie voordelen demonstreert.
 
@@ -51,7 +51,7 @@ Voor een meer vereenvoudigde, maar visueel aantrekkelijke prestatie demo voor in
 
 3. Kopieer het [Transact-SQL-script van OLTP in het geheugen](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) naar het klem bord. Het T-SQL-script maakt de benodigde in-Memory objecten in de AdventureWorksLT-voorbeeld database die u in stap 1 hebt gemaakt.
 
-4. Plak het T-SQL-script in SSMS en voer het script uit. De instructies van de component `MEMORY_OPTIMIZED = ON` CREATE TABLE zijn van cruciaal belang. Bijvoorbeeld:
+4. Plak het T-SQL-script in SSMS en voer het script uit. De `MEMORY_OPTIMIZED = ON`-component CREATE TABLE-instructies zijn van cruciaal belang. Bijvoorbeeld:
 
 
 ```sql
@@ -78,16 +78,16 @@ Een resultaat van **0** betekent dat het geheugen niet wordt ondersteund en **1*
 
 #### <a name="about-the-created-memory-optimized-items"></a>Over de gemaakte items die zijn geoptimaliseerd voor geheugen
 
-**Tabellen**: Het voor beeld bevat de volgende tabellen die zijn geoptimaliseerd voor geheugen:
+**Tables**: het voor beeld bevat de volgende tabellen die zijn geoptimaliseerd voor geheugen:
 
-- SalesLT.Product_inmem
-- SalesLT.SalesOrderHeader_inmem
-- SalesLT.SalesOrderDetail_inmem
-- Demo.DemoSalesOrderHeaderSeed
-- Demo.DemoSalesOrderDetailSeed
+- Tabel saleslt. Product_inmem
+- Tabel saleslt. SalesOrderHeader_inmem
+- Tabel saleslt. SalesOrderDetail_inmem
+- Demo. DemoSalesOrderHeaderSeed
+- Demo. DemoSalesOrderDetailSeed
 
 
-U kunt tabellen die zijn geoptimaliseerd voor geheugen, inspecteren via de **objectverkenner** in SSMS. Klik met de rechter muisknop op **tabellen** > **filter** > **filter instellingen** > **is geoptimaliseerd voor geheugen**. De waarde is gelijk aan 1.
+U kunt tabellen die zijn geoptimaliseerd voor geheugen, inspecteren via de **objectverkenner** in SSMS. Klik met de rechter muisknop op **tabellen** > **filter** > **instellingen voor filteren** > **geheugen is geoptimaliseerd**. De waarde is gelijk aan 1.
 
 
 U kunt ook een query uitvoeren op de catalogus weergaven, zoals:
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Systeem eigen, gecompileerde, opgeslagen procedure**: U kunt tabel saleslt. USP-_InsertSalesOrder_inmem controleren via een catalogus weergave query:
+**Systeem eigen, gecompileerde, opgeslagen procedure**: u kunt tabel saleslt. USP _insertsalesorder_inmem controleren met een query in de catalogus weergave:
 
 
 ```sql
@@ -140,8 +140,8 @@ In deze sectie wordt het T-SQL-script weer gegeven dat is inge sloten in onze os
 
 Met het volgende script wordt een voor beeld van een verkoop order met vijf regel items ingevoegd in de volgende *tabellen*die zijn geoptimaliseerd voor geheugen:
 
-- SalesLT.SalesOrderHeader_inmem
-- SalesLT.SalesOrderDetail_inmem
+- Tabel saleslt. SalesOrderHeader_inmem
+- Tabel saleslt. SalesOrderDetail_inmem
 
 
 ```sql
@@ -171,7 +171,7 @@ end
 Als u de *_ondisk* -versie van het vorige T-SQL-script voor ostress. exe wilt maken, vervangt u beide exemplaren van de subtekenreeks *_inmem* door *_ondisk*. Deze vervangingen zijn van invloed op de namen van tabellen en opgeslagen procedures.
 
 
-### <a name="install-rml-utilities-and-ostress"></a>RML-hulpprogram ma's en `ostress` installeren
+### <a name="install-rml-utilities-and-ostress"></a>RML-hulpprogram ma's en-`ostress` installeren
 
 
 In het ideale geval wilt u ostress. exe uitvoeren op een virtuele Azure-machine (VM). U maakt een [virtuele Azure-machine](https://azure.microsoft.com/documentation/services/virtual-machines/) in dezelfde Azure-geografische regio waar uw AdventureWorksLT-data base zich bevindt. Maar u kunt in plaats daarvan ostress. exe uitvoeren op uw laptop.
@@ -201,7 +201,7 @@ whereas for SQL 2016+
 ### <a name="run-the-_inmem-stress-workload-first"></a>Voer eerst de *_inmem* stress-workload uit
 
 
-U kunt een *RML cmd prompt* -venster gebruiken om de ostress. exe-opdracht regel uit te voeren. De opdracht regel parameters direct `ostress` tot:
+U kunt een *RML cmd prompt* -venster gebruiken om de ostress. exe-opdracht regel uit te voeren. De opdracht regel parameters direct `ostress` naar:
 
 - 100-verbindingen gelijktijdig uitvoeren (-N100).
 - Laat elke verbinding het T-SQL-script 50 keer (-R50) uitvoeren.
@@ -223,7 +223,7 @@ De voor gaande ostress. exe-opdracht regel uitvoeren:
 
 2. Kopieer de tekst van de voor gaande ostress. exe-opdracht regel naar het klem bord.
 
-3. Vervang de `<placeholders>` door de para meters-S-U-P-d door de juiste echte waarden.
+3. Vervang de `<placeholders>` voor de para meters-S-U-P-d door de juiste echte waarden.
 
 4. Voer de bewerkte opdracht regel uit in een RML CMD-venster.
 
@@ -231,7 +231,7 @@ De voor gaande ostress. exe-opdracht regel uitvoeren:
 #### <a name="result-is-a-duration"></a>Resultaat is een duur
 
 
-Als `ostress.exe` is voltooid, wordt de uitvoerings duur als laatste uitvoer regel in het RML CMD-venster geschreven. Een korte test uitvoering heeft bijvoorbeeld ongeveer 1,5 minuten geduren:
+Als `ostress.exe` is voltooid, wordt de uitvoerings duur als laatste uitvoer regel geschreven in het RML CMD-venster. Een korte test uitvoering heeft bijvoorbeeld ongeveer 1,5 minuten geduren:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
@@ -309,7 +309,7 @@ Er zijn [verschillende typen T-SQL-query's die u kunt uitvoeren](https://raw.git
 - `FROM FactResellerSalesXL_CCI a`
 
 
-Een geclusterde column store-index bevindt zich in de tabel FactResellerSalesXL @ no__t-0CCI.
+Een geclusterde column store-index bevindt zich in de FactResellerSalesXL\_CCI-tabel.
 
 In het volgende T-SQL-script fragment worden de statistieken voor de i/o en het tijdstip voor de query van elke tabel afgedrukt.
 
@@ -382,14 +382,14 @@ In een Data Base met de prijs categorie P2 kunt u ongeveer negen keer de prestat
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Quickstart 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties @ no__t-0
+- [Snelstartgids 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
 
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](sql-database-in-memory-oltp-migration.md)
 
 - [OLTP-opslag in het geheugen bewaken](sql-database-in-memory-oltp-monitoring.md) voor OLTP in het geheugen
 
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 #### <a name="deeper-information"></a>Dieper informatie
 
@@ -413,7 +413,7 @@ In een Data Base met de prijs categorie P2 kunt u ongeveer negen keer de prestat
 
 #### <a name="tools"></a>Hulpprogramma's
 
-- [Azure-portal](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

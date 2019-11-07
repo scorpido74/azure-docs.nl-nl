@@ -6,20 +6,20 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608541"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579925"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Block Chain service-beveiliging
 
-De Azure Block Chain-service maakt gebruik van verschillende mogelijkheden van Azure om uw gegevens veilig en beschikbaar te stellen. Gegevens worden beveiligd met isolatie, versleuteling en verificatie.
+Azure Blockchain Service gebruikt verschillende Azure-functionaliteiten om uw gegevens veilig en beschikbaar te houden. Gegevens worden beveiligd door middel van isolatie, versleuteling en verificatie.
 
 ## <a name="isolation"></a>Isolatie
 
@@ -29,7 +29,7 @@ Azure Block Chain-service bronnen worden geïsoleerd in een particulier virtueel
 
 ## <a name="encryption"></a>Versleuteling
 
-Gebruikers gegevens worden opgeslagen in azure Storage. Gebruikers gegevens zijn versleuteld in beweging en op rest voor beveiliging en vertrouwelijkheid. Zie voor meer informatie: [Azure Storage-beveiligingshandleiding](../../storage/common/storage-security-guide.md).
+Gebruikers gegevens worden opgeslagen in azure Storage. Gebruikers gegevens zijn versleuteld in beweging en op rest voor beveiliging en vertrouwelijkheid. Zie [Azure Storage Security Guide (Engelstalig](../../storage/common/storage-security-guide.md)) voor meer informatie.
 
 ## <a name="authentication"></a>Authentication
 
@@ -43,7 +43,7 @@ Er zijn drie verificatie methoden voor RPC-toegang.
 
 Basis verificatie maakt gebruik van een HTTP-verificatie header met de gebruikers naam en het wacht woord. De gebruikers naam is de naam van het block Chain-knoop punt. Het wacht woord wordt ingesteld tijdens het inrichten van een lid of knoop punt. Het wacht woord kan worden gewijzigd met behulp van de Azure Portal of CLI.
 
-### <a name="access-keys"></a>Toegangstoetsen
+### <a name="access-keys"></a>Toegangssleutels
 
 Toegangs sleutels gebruiken een wille keurig gegenereerde teken reeks die is opgenomen in de URL van het eind punt. Met twee toegangs toetsen kunt u sleutel rotatie inschakelen. Sleutels kunnen opnieuw worden gegenereerd op basis van de Azure Portal en CLI.
 

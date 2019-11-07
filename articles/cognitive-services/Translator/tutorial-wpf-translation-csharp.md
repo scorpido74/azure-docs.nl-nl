@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Een vertaal-app maken met WPF, C# - Translator Text-API'
+title: 'Zelf studie: een omzettings-app maken C# met WPF,-Translator text-API'
 titleSuffix: Azure Cognitive Services
-description: In deze zelfstudie maakt u een Windows Presentation Foundation-app (WPF) die gebruikmaakt van Cognitive Service-API's voor tekstvertaling, taaldetectie en spellingscontrole. Hierbij wordt één abonnementssleutel gebruikt. In deze oefening leert u hoe u de functies van de Translator Text-API en de Bing Spellingcontrole-API gebruikt.
+description: In deze zelf studie maakt u een WPF-app om tekst omzetting, taal detectie en spelling controle met één abonnements sleutel uit te voeren.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858904"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647710"
 ---
-# <a name="tutorial-create-a-translation-app-with-wpf"></a>Zelfstudie: Een vertaal-app maken met WPF
+# <a name="tutorial-create-a-translation-app-with-wpf"></a>Zelf studie: een omzettings-app maken met WPF
 
 In deze zelfstudie bouwt u een [Windows Presentation Foundation-app (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) die gebruikmaakt van Azure Cognitive Service voor tekstvertaling, taaldetectie en spellingscontrole. Hierbij wordt één abonnementssleutel gebruikt. Met de app worden API's aangeroepen vanuit Translator Text en [Bing Spellingcontrole](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
@@ -37,12 +37,12 @@ In deze zelfstudie leert u het volgende:
 
 Deze lijst bevat de Cognitive Services in deze zelfstudie worden gebruikt. Klik op de koppeling om de API-naslaginformatie van elke functie te bekijken.
 
-| Service | Functie | Description |
+| Service | Functie | Beschrijving |
 |---------|---------|-------------|
 | Translator Text | [Talen ophalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Hiermee haalt u een volledige lijst ondersteunde talen op voor het vertalen van tekst. |
 | Translator Text | [Vertalen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Hiermee vertaalt u tekst naar meer dan 60 talen. |
 | Translator Text | [Detecteren](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Hiermee detecteert u de taal van ingevoerde tekst. Biedt ook een betrouwbaarheidsscore voor de detectie. |
-| Bing Spellingcontrole | [Spellingscontrole](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Hiermee corrigeert u spelfouten om de nauwkeurigheid van de vertaling te vergroten. |
+| Bing-spellingcontrole | [Spellingscontrole](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Hiermee corrigeert u spelfouten om de nauwkeurigheid van de vertaling te vergroten. |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -61,11 +61,11 @@ Om te beginnen moet u een project opzetten in Visual Studio.
 
 1. Open Visual Studio. Selecteer **een nieuw project maken**.
 1. Zoek en selecteer **WPF app (.NET Framework)** in **een nieuw project maken**. U kunt kiezen C# uit **taal** om de opties te verfijnen.
-1. Selecteer **volgende**en geef vervolgens een naam op `MSTranslatorTextDemo`voor het project.
+1. Selecteer **volgende**en geef vervolgens de naam van uw project `MSTranslatorTextDemo`op.
 1. Stel de Framework versie in op **.NET Framework 4.7.2** of hoger en selecteer **maken**.
    ![Voer de naam en Framework-versie in Visual Studio in](media/name-wpf-project-visual-studio.png)
 
-Uw project is gemaakt. Er worden twee tabbladen geopend: `MainWindow.xaml` en `MainWindow.xaml.cs`. In deze zelfstudie wordt er code toegevoegd aan deze twee bestanden. De gebruikers interface `MainWindow.xaml` van de app wordt gewijzigd. We gaan de `MainWindow.xaml.cs` aanroepen naar Translator text en Bing spellingcontrole wijzigen.
+Uw project is gemaakt. Er worden twee tabbladen geopend: `MainWindow.xaml` en `MainWindow.xaml.cs`. In deze zelfstudie wordt er code toegevoegd aan deze twee bestanden. `MainWindow.xaml` voor de gebruikers interface van de app worden gewijzigd. We passen `MainWindow.xaml.cs` aan de aanroepen van Translator Text en Bing Spellingcontrole.
    ![Uw omgeving controleren](media/blank-wpf-project.png)
 
 In de volgende sectie gaan we verzamelingen en een NuGet-pakket toevoegen aan ons project voor extra functionaliteit, zoals JSON parseren.
@@ -89,7 +89,7 @@ We gaan assembly's toevoegen aan het project om objecten te serialiseren en dese
 1. Wanneer u deze verwijzingen hebt toegevoegd aan uw project, klikt u op **OK** om **Reference Manager** te sluiten.
 
 > [!NOTE]
-> Als u graag meer wilt weten over assembly-verwijzingen, ziet u [How to: Add or remove reference using the Reference Manager](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019) (Instructies: verwijzingen toevoegen of verwijderen via Reference Manager).
+> Als u meer wilt weten over assembly-verwijzingen, raadpleegt u [How to: verwijzing toevoegen of verwijderen met behulp van referentie beheer](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
 ### <a name="install-newtonsoftjson"></a>NewtonSoft.Json installeren
 
@@ -114,11 +114,11 @@ Laten we eens bekijken wat we bouwen.
 
 De gebruikers interface bevat de volgende onderdelen:
 
-| Name | Type | Description |
+| Naam | Type | Beschrijving |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Hiermee wordt een lijst weergegeven met alle talen die door Microsoft Translator worden ondersteund voor het vertalen van tekst. De gebruiker selecteert de taal waaruit hij vertaalt. |
 | `ToLanguageComboBox` | ComboBox | Hiermee wordt dezelfde lijst met talen weergegeven als met `FromComboBox`, maar dit element wordt gebruikt om de taal te selecteren waarin de gebruiker vertaalt. |
-| `TextToTranslate` | TextBox | Hiermee kan de gebruiker tekst invoeren die moet worden vertaald. |
+| `TextToTranslate` | Tekstvak | Hiermee kan de gebruiker tekst invoeren die moet worden vertaald. |
 | `TranslateButton` | Knop | Gebruik deze knop om tekst te vertalen. |
 | `TranslatedTextLabel` | Label | Hiermee wordt de vertaling weergegeven. |
 | `DetectedLanguageLabel` | Label | Hiermee wordt weergegeven welke taal de tekst heeft die u wilt vertalen (`TextToTranslate`). |
@@ -250,9 +250,9 @@ Het volledige project bevindt zich in de klasse `MainWindow : Window`. We beginn
 
 In dit codeblok hebben we twee variabelen opgegeven die informatie bevatten over de talen die beschikbaar zijn voor vertaling:
 
-| Variabele | type | Description |
+| Variabele | Type | Beschrijving |
 |----------|------|-------------|
-|`languageCodes` | matrix van tekenreeksen |Hiermee worden de taalcodes opgeslagen in de cache. De Translator-service gebruikt korte codes om talen te identificeren, bijvoorbeeld `en` voor Engels. |
+|`languageCodes` | Matrix van tekenreeksen |Hiermee worden de taalcodes opgeslagen in de cache. De Translator-service gebruikt korte codes, zoals `en` voor Engels, om talen te identificeren. |
 |`languageCodesAndTitles` | Gesorteerde woordenlijst | Hiermee worden de beschrijvende namen in de gebruikersinterface terugverwezen naar de korte codes die in de API worden gebruikt. Ze worden op alfabetische volgorde gesorteerd, zonder rekening te houden met het gebruik van hoofdletters. |
 
 In de `MainWindow`-constructor is foutafhandeling met `HandleExceptions` toegevoegd. Deze fout afhandeling zorgt ervoor dat er een waarschuwing wordt gegeven als er geen uitzonde ring wordt afgehandeld. Vervolgens wordt er een controle uitgevoerd om te bevestigen dat de opgegeven abonnementssleutel 32 tekens lang is. Er wordt een fout gemeld als de sleutel korter of langer is dan 32 tekens.
@@ -328,7 +328,7 @@ Het JSON-antwoord wordt geparseerd en omgezet in een woordenlijst. De taalcodes 
 
 ## <a name="populate-language-drop-down-menus"></a>De vervolgkeuzelijsten voor taal vullen
 
-De gebruikersinterface wordt gedefinieerd met XAML, dus voor het instellen hoeft u niet veel te doen, behalve dat u `InitializeComponent()` moet aanroepen. Het enige wat u moet doen, is het toevoegen van de beschrijvende taal namen aan de vervolg keuzelijsten **vertalen vanuit** en **vertalen naar** . De `PopulateLanguageMenus()` -methode voegt de namen toe.
+De gebruikersinterface wordt gedefinieerd met XAML, dus voor het instellen hoeft u niet veel te doen, behalve dat u `InitializeComponent()` moet aanroepen. Het enige wat u moet doen, is het toevoegen van de beschrijvende taal namen aan de vervolg keuzelijsten **vertalen vanuit** en **vertalen naar** . De `PopulateLanguageMenus()` methode voegt de namen toe.
 
 1. Open in Visual Studio het tabblad `MainWindow.xaml.cs`.
 2. Voeg deze code toe aan uw project, onder de methode `GetLanguagesForTranslate()`:

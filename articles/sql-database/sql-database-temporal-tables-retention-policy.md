@@ -1,5 +1,5 @@
 ---
-title: Historische gegevens in tijdelijke tabellen beheren met het Bewaar beleid | Microsoft Docs
+title: Historische gegevens in tijdelijke tabellen beheren met het Bewaar beleid
 description: Meer informatie over het gebruik van een tijdelijk Bewaar beleid om historische gegevens onder uw beheer te houden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 72022510676548fad79031d4334a2c95571fc16d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2568f3be96604856d5353f7f5f94926162880bfd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566386"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686992"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Historische gegevens in tijdelijke tabellen beheren met het Bewaar beleid
 
@@ -73,7 +73,7 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ```
 
-Met Azure SQL Database kunt u de Bewaar periode opgeven met behulp van verschillende tijds eenheden: DAGEN, weken, maanden en jaren. Als HISTORY_RETENTION_PERIOD wordt wegge laten, wordt uitgegaan van een oneindige retentie. U kunt ook oneindig tref woord expliciet gebruiken.
+Met Azure SQL Database kunt u de Bewaar periode opgeven door gebruik te maken van verschillende tijds eenheden: dagen, weken, maanden en jaren. Als HISTORY_RETENTION_PERIOD wordt wegge laten, wordt uitgegaan van een oneindige retentie. U kunt ook oneindig tref woord expliciet gebruiken.
 
 In sommige gevallen wilt u mogelijk Bewaar periode configureren nadat de tabel is gemaakt, of u kunt de eerder geconfigureerde waarde wijzigen. Gebruik in dat geval ALTER TABLE-instructie:
 
@@ -110,17 +110,17 @@ Met de opschoon taak voor de geclusterde column Store worden hele [Rijg roepen](
 
 ![Geclusterde column Store-retentie](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
 
-Met uitstekende gegevens compressie en een efficiënte Bewaar periode is geclusterde column store-index een perfecte keuze voor scenario's wanneer uw werk belasting snel een hoge hoeveelheid historische gegevens genereert. Dit patroon is gebruikelijk voor intensieve werk belastingen voor transactionele [verwerking waarbij tijdelijke tabellen worden gebruikt voor het](https://msdn.microsoft.com/library/mt631669.aspx) bijhouden van wijzigingen en controles, trend analyses of IOT-gegevens opname.
+Met uitstekende gegevens compressie en een efficiënte Bewaar periode is geclusterde column store-index een perfecte keuze voor scenario's wanneer uw werk belasting snel een hoge hoeveelheid historische gegevens genereert. Dit patroon is gebruikelijk voor intensieve werk [belastingen voor transactionele verwerking waarbij tijdelijke tabellen worden gebruikt voor het](https://msdn.microsoft.com/library/mt631669.aspx) bijhouden van wijzigingen en controles, trend analyses of IOT-gegevens opname.
 
 ## <a name="index-considerations"></a>Index overwegingen
 
 Voor de opschoon taak voor tabellen met rowstore geclusterde index moet index worden gestart met de kolom die overeenkomt met het einde van de SYSTEM_TIME-periode. Als een dergelijke index niet bestaat, kunt u een eindige Bewaar periode niet configureren:
 
-*Msg 13765, niveau 16, beperkte Bewaar <br> periode voor het instellen van status 1 </br> is mislukt voor de tijdelijke systeem versie tabel temporalstagetestdb. dbo. WebsiteUserInfo omdat de geschiedenis tabel temporalstagetestdb. dbo. WebsiteUserInfoHistory bevat geen vereiste geclusterde index. U kunt een geclusterde column Store-of B-Tree-index maken die begint met de kolom die overeenkomt met het einde van de SYSTEM_TIME periode, in de geschiedenis tabel.*
+*Msg 13765, niveau 16, status 1 <br></br> instellen van een eindige Bewaar periode voor de systeem versie van de tijdelijke temporalstagetestdb. dbo. WebsiteUserInfo omdat de geschiedenis tabel temporalstagetestdb. dbo. WebsiteUserInfoHistory niet vereiste geclusterde index bevatten. U kunt een geclusterde column Store-of B-Tree-index maken die begint met de kolom die overeenkomt met het einde van de SYSTEM_TIME periode, in de geschiedenis tabel.*
 
 Het is belang rijk te zien dat de standaard geschiedenis tabel die door Azure SQL Database is gemaakt, al een geclusterde index heeft, die compatibel is met het Bewaar beleid. Als u probeert die index te verwijderen voor een tabel met een beperkte Bewaar periode, mislukt de bewerking met de volgende fout:
 
-*Msg 13766, niveau 16, status 1 <br> </br> kan de geclusterde index ' WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory ' niet verwijderen omdat deze wordt gebruikt voor het automatisch opschonen van verouderde gegevens. U kunt HISTORY_RETENTION_PERIOD instellen op oneindig in de bijbehorende tijdelijke systeem versie tabel als u deze index wilt verwijderen.*
+*Msg 13766, niveau 16, status 1 <br></br> kan de geclusterde index ' WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory ' niet verwijderen omdat deze wordt gebruikt voor het automatisch opschonen van verouderde gegevens. U kunt HISTORY_RETENTION_PERIOD instellen op oneindig in de bijbehorende tijdelijke systeem versie tabel als u deze index wilt verwijderen.*
 
 Opschonen van de geclusterde column store-index werkt optimaal als historische rijen worden ingevoegd in oplopende volg orde (gesorteerd op de kolom einde van de periode). Dit is altijd het geval wanneer de geschiedenis tabel uitsluitend wordt gevuld door het SYSTEM_VERSIONIOING-mechanisme. Als de rijen in de geschiedenis tabel niet worden gerangschikt op de kolom einde van de periode (dit kan het geval zijn als u bestaande historische gegevens hebt gemigreerd), moet u een geclusterde column store-index maken boven op de rowstore-index van de B-structuur die op de juiste manier is besteld, om optimaal te kunnen profiteren van nemen.
 
@@ -144,7 +144,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 Een poging om een instructie uit te voeren is mislukt met de volgende fout:
 
-*Msg 13772, niveau 16, status 1 <br> </br> kan geen niet-geclusterde index maken voor een tijdelijke geschiedenis tabel ' WebsiteUserInfoHistory ', omdat er een eindige retentie periode en een geclusterde column store-index zijn gedefinieerd.*
+*Msg 13772, niveau 16, status 1 <br></br> kan geen niet-geclusterde index maken voor een tijdelijke geschiedenis tabel ' WebsiteUserInfoHistory ', omdat er een eindige retentie periode en een geclusterde column store-index zijn gedefinieerd.*
 
 ## <a name="querying-tables-with-retention-policy"></a>Query's uitvoeren op tabellen met Bewaar beleid
 

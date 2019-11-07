@@ -1,5 +1,5 @@
 ---
-title: Herstel na nood geval voor SaaS-apps met Azure SQL Database geo-replicatie | Microsoft Docs
+title: Herstel na nood geval voor SaaS-apps met Azure SQL Database geo-replicatie
 description: Meer informatie over het gebruik van Azure SQL Database geo-replica's om een SaaS-app met meerdere tenants te herstellen in het geval van een storing
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f6f8ed39de36ce38b0bc4b879980a054bf480d0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570533"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692241"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Herstel na nood gevallen voor een SaaS-toepassing met meerdere tenants met behulp van geo-replicatie voor de data base
 
@@ -89,10 +89,10 @@ Later, in een afzonderlijke repatriërings stap, voert u een failover uit voor d
 ## <a name="review-the-healthy-state-of-the-application"></a>Bekijk de status in orde van de toepassing
 
 Voordat u het herstel proces start, controleert u de normale status van de toepassing.
-1. Open in uw webbrowser de Wingtip tickets- http://events.wingtip-dpt.&lt gebeurtenissen hub (; User&gt;. trafficmanager.net-replace &lt; User&gt; door de gebruikers waarde van uw implementatie).
+1. Open in uw webbrowser de Wingtip tickets-gebeurtenissen hub (http://events.wingtip-dpt.&lt; gebruiker&gt;. trafficmanager.net-Vervang &lt;gebruiker&gt; door de gebruikers waarde van uw implementatie.
     * Ga naar de onderkant van de pagina en Let op de naam en locatie van de catalogus server in de voet tekst. De locatie is de regio waarin u de app hebt geïmplementeerd.
-    *TIPS Beweeg de muisaanwijzer over de locatie voor het vergroten van de weergave.* 
-    ![Gebeurtenissen hub in orde in oorspronkelijke regio](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *Tip: Houd de muis aanwijzer boven de locatie om de weer gave te verg Roten.* 
+    ![Events hub in de oorspronkelijke regio in orde zijn](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klik op de contoso concert hal-Tenant en open de bijbehorende gebeurtenis pagina.
     * In de voet tekst ziet u de naam van de Tenant server. De locatie is hetzelfde als de locatie van de catalogus server.
@@ -107,13 +107,13 @@ In deze taak start u een proces dat de configuratie van de servers, elastische P
 > [!IMPORTANT]
 > Ter vereenvoudiging worden het synchronisatie proces en andere langlopende herstel-en repatriërings processen geïmplementeerd in deze zelf studies als lokale Power shell-taken of-sessies die worden uitgevoerd onder de aanmelding van de client gebruiker. De verificatie tokens die worden uitgegeven wanneer u zich aanmeldt, verlopen na enkele uren en de taken mislukken vervolgens. In een productie scenario moeten langlopende processen worden geïmplementeerd als betrouw bare Azure-Services van een van de typen die worden uitgevoerd onder een service-principal. Zie [Azure PowerShell gebruiken om een service-principal met een certificaat te maken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal).
 
-1. Open in de _Power shell-ISE_het bestand. ..\Learning Modules\UserConfig.psm1. Vervang `<resourcegroup>` en`<user>` op regels 10 en 11 door de waarde die wordt gebruikt bij het implementeren van de app.  Sla het bestand op.
+1. Open in de _Power shell-ISE_het bestand. ..\Learning Modules\UserConfig.psm1. Vervang `<resourcegroup>` en `<user>` op regels 10 en 11 door de waarde die wordt gebruikt bij het implementeren van de app.  Sla het bestand op.
 
 2. Open in de *Power shell-ISE*het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 en stel het volgende in:
     * **$DemoScenario = 1**, start een achtergrond taak waarmee de Tenant server wordt gesynchroniseerd en configuratie gegevens van de groep worden omgezet in de catalogus
 
 3. Druk op **F5** om het synchronisatie script uit te voeren. Er wordt een nieuwe Power shell-sessie geopend voor het synchroniseren van de configuratie van Tenant bronnen.
-![Synchronisatie proces](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+![synchronisatie proces](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 Laat het Power shell-venster op de achtergrond draaien en ga verder met de rest van de zelf studie. 
 
@@ -131,7 +131,7 @@ In deze taak start u een proces dat een duplicaat van een app-exemplaar implemen
     * **$DemoScenario = 2**, de herstel omgeving voor spiegel beelden maken en catalogus-en Tenant-data bases repliceren
 
 2. Druk op **F5** om het script uit te voeren. Er wordt een nieuwe Power shell-sessie geopend om de replica's te maken.
-![Synchronisatie proces](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
+![synchronisatie proces](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>De normale toepassings status controleren
 
@@ -141,7 +141,7 @@ De toepassing wordt op dit moment normaal uitgevoerd in de oorspronkelijke regio
 
 2. Verken de resources in de resource groep voor herstel.  
 
-3. Klik op de contoso concert hal-Data Base op de _tenants1-&lt;dpt&gt;-gebruikers herstel_ server.  Klik op geo-replicatie aan de linkerkant. 
+3. Klik op de contoso concert hal-Data Base op de _tenants1-dpt-&lt;gebruiker&gt;-herstel_ server.  Klik op geo-replicatie aan de linkerkant. 
 
     ![Geo-replicatie koppeling voor contoso concert](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -188,7 +188,7 @@ Stel nu dat er een storing optreedt in de regio waarin de toepassing wordt geïm
     * De herstel regio is de gekoppelde _regio_ die is gekoppeld aan de Azure-regio waarin u de toepassing hebt geïmplementeerd. Zie [gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie. 
 
 3. Bewaak de status van het herstel proces in het Power shell-venster.
-    ![failoverproces](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
+    ![failover-proces](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
 
 > [!Note]
 > Als u de code voor de herstel taken wilt verkennen, controleert u de Power shell-scripts in de map. ..\Learning Modules\Business continuïteit en nood Recovery\DR-FailoverToReplica\RecoveryJobs.
@@ -206,7 +206,7 @@ Wanneer het eind punt van de toepassing in Traffic Manager is uitgeschakeld, is 
  
      ![De gebeurtenissen-hub is offline](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-   * Als u rechtstreeks op de pagina gebeurtenissen van een offline Tenant opent, wordt de melding ' Tenant offline ' weer gegeven. Als contoso concert hal bijvoorbeeld offline is, opent http://events.wingtip-dpt.&lt u de pagina gebruikers&gt;. trafficmanager.net/contosoconcerthall ![ contoso offline](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+   * Als u rechtstreeks op de pagina gebeurtenissen van een offline Tenant opent, wordt de melding ' Tenant offline ' weer gegeven. Als contoso concert hal bijvoorbeeld offline is, probeert u http://events.wingtip-dpt.&ltte openen; gebruiker&gt;. trafficmanager.net/contosoconcerthall ![contoso offline pagina](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>Een nieuwe Tenant inrichten in de herstel regio
 Zelfs voordat alle bestaande Tenant databases een failover hebben uitgevoerd, kunt u nieuwe tenants inrichten in de herstel regio.  
@@ -217,7 +217,7 @@ Zelfs voordat alle bestaande Tenant databases een failover hebben uitgevoerd, ku
 2. Druk op **F5** om het script uit te voeren en de nieuwe Tenant in te richten. 
 
 3. De pagina Hawthorn Hall Events wordt geopend in de browser wanneer deze is voltooid. Let op de voet tekst die de Hawthorn Hall-data base in de herstel regio heeft ingericht.
-    ![Pagina Hawthorn Hall Events](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
+    ![pagina met Hawthorn-hal-gebeurtenissen](media/saas-dbpertenant-dr-geo-replication/hawthornhallevents.png) 
 
 4. Vernieuw de pagina Wingtip tickets-evenementen hub in de browser om Hawthorn Hall inbegrepen te bekijken. 
     * Als u Hawthorn-zaal hebt ingericht zonder te wachten tot de andere tenants zijn hersteld, kunnen andere tenants nog steeds offline zijn.
@@ -229,7 +229,7 @@ Wanneer het herstel proces is voltooid, zijn de toepassing en alle tenants volle
 
 1. Zodra de weer gave in het Power shell-console venster aangeeft dat alle tenants worden hersteld, moet u de Events hub vernieuwen.  De tenants worden allemaal online weer gegeven, met inbegrip van de nieuwe Tenant, Hawthorn Hall.
 
-    ![herstelde en nieuwe tenants in de Events hub](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
+    ![Herstelde en nieuwe tenants in de Events hub](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. Open de lijst met resource groepen in het [Azure Portal](https://portal.azure.com).  
     * U ziet de resource groep die u hebt geïmplementeerd, plus de resource groep herstellen met het achtervoegsel _-Recovery_ .  De resource groep voor herstel bevat alle resources die zijn gemaakt tijdens het herstel proces, plus nieuwe resources die zijn gemaakt tijdens de onderbreking.  
@@ -237,14 +237,14 @@ Wanneer het herstel proces is voltooid, zijn de toepassing en alle tenants volle
 3. Open de resource groep herstellen en Let op de volgende items:
    * De herstel versies van de catalogus-en tenants1-servers, met het achtervoegsel _-Recovery_ .  De herstelde catalogus en Tenant databases op deze servers hebben allemaal de namen die in de oorspronkelijke regio worden gebruikt.
 
-   * De _tenants2-dpt-&lt;gebruikers&gt;herstel_ SQL-Server.  Deze server wordt gebruikt voor het inrichten van nieuwe tenants tijdens de onderbreking.
-   * De app service met de naam, _Events-Wingtip-&lt;dpt&gt;-recoveryregion-&lt;gebruiker & gt_;, het herstel exemplaar van de app gebeurtenissen. 
+   * _Tenants2-dpt-&lt;gebruiker&gt;-Recovery_ SQL Server.  Deze server wordt gebruikt voor het inrichten van nieuwe tenants tijdens de onderbreking.
+   * De App Service met de naam, _Events-Wingtip-dpt-&lt;recoveryregion&gt;-&lt;gebruiker & gt_;. Dit is het herstel exemplaar van de app gebeurtenissen. 
 
      ![Azure Recovery-resources](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
-4. Open de _tenants2-dpt-&lt;gebruikers&gt;herstel_ SQL-Server.  U ziet dat het de Data Base _hawthornhall_ en de elastische pool _Pool1_bevat.  De _hawthornhall_ -data base is geconfigureerd als een elastische data base in _Pool1_ elastische pool.
+4. Open _tenants2-dpt-&lt;gebruiker&gt;-Recovery_ SQL Server.  U ziet dat het de Data Base _hawthornhall_ en de elastische pool _Pool1_bevat.  De _hawthornhall_ -data base is geconfigureerd als een elastische data base in _Pool1_ elastische pool.
 
-5. Ga terug naar de resource groep en klik op de contoso concert hal-Data Base op de _tenants1-&lt;dpt&gt;-gebruikers herstel_ server. Klik op geo-replicatie aan de linkerkant.
+5. Ga terug naar de resource groep en klik op de contoso concert hal-Data Base op de _tenants1-dpt-&lt;gebruiker&gt;-herstel_ server. Klik op geo-replicatie aan de linkerkant.
     
     ![Contoso-data base na failover](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication-after-failover.png)
 
@@ -255,7 +255,7 @@ In deze taak werkt u een van de Tenant databases bij.
 2. Stel in het *Power shell-ISE*in het script. ..\Learning Modules\Business continuïteit en nood Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 de volgende waarde in:
     * **$DemoScenario = 5** Een gebeurtenis verwijderen uit een Tenant in de herstel regio
 3. Druk op **F5** om het script uit te voeren
-4. Vernieuw de pagina van de contoso-evenementen http://events.wingtip-dpt.&lt voor concert&gt; (; User. &lt; trafficmanager.net/contosoconcerthall&gt; -substitueer User door de gebruikers waarde van uw implementatie) en u ziet dat de laatste gebeurtenis is verwijderd.
+4. Vernieuw de pagina voor het uitvoeren van een concert hal van Contoso (http://events.wingtip-dpt.&lt; gebruikers&gt;. trafficmanager.net/contosoconcerthall: substitueer &lt;gebruiker&gt; met de gebruikers waarde van uw implementatie) en u ziet dat de laatste gebeurtenis is verwijderd.
 
 ## <a name="repatriate-the-application-to-its-original-production-region"></a>De toepassing in de oorspronkelijke productie regio repatriëren
 
@@ -286,13 +286,13 @@ Stel nu dat de storing is opgelost en voer het repatriërings script uit.
 3.  Ga vervolgens als volgt te werk om het proces te starten:
     * **$DemoScenario = 6**, de app in de oorspronkelijke regio te repatriëren
     * Druk op **F5** om het herstel script uit te voeren in een nieuw Power shell-venster.  De repatriëring duurt enkele minuten en kan worden bewaakt in het Power shell-venster.
-    ![Planningsproces](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
+    ![planningsproces](media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
-4. Wanneer het script wordt uitgevoerd, vernieuwt u de pagina http://events.wingtip-dpt.&lt Events hub&gt; (; User. trafficmanager.net)
+4. Wanneer het script wordt uitgevoerd, vernieuwt u de pagina gebeurtenissen hub (http://events.wingtip-dpt.&lt; gebruiker&gt;. trafficmanager.net)
     * U ziet dat alle tenants online zijn en toegankelijk zijn tijdens dit proces.
 
 5. Nadat de bewerking is voltooid, vernieuwt u de Events hub en opent u de pagina evenementen voor Hawthorn Hall. U ziet dat deze data base is gerepatriërd tot de oorspronkelijke regio.
-    ![De gebeurtenissen hub is gerepatriërd](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)
+    ![-gebeurtenissen hub gerepatriërd](media/saas-dbpertenant-dr-geo-replication/events-hub-repatriated.png)
 
 
 ## <a name="designing-the-application-to-ensure-app-and-database-are-colocated"></a>De toepassing ontwerpen om ervoor te zorgen dat de app en de data base zich zelf bevinden 
@@ -311,8 +311,8 @@ In deze zelfstudie hebt u het volgende geleerd:
 > * Failover van de toepassings-en catalogus-en Tenant-Data Base naar de herstel regio 
 > * Een failback van de toepassing, Catalog en Tenant-data bases naar de oorspronkelijke regio nadat de onderbreking is opgelost
 
-Meer informatie over de technologieën van Azure SQL database biedt u de mogelijkheid om bedrijfs continuïteit in te scha kelen in de overzichts documentatie van [bedrijfs continuïteit](sql-database-business-continuity.md) .
+Meer informatie over de technologieën van Azure SQL database biedt u de mogelijkheid om bedrijfs continuïteit in te scha kelen in de [overzichts documentatie van bedrijfs continuïteit](sql-database-business-continuity.md) .
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Aanvullende zelf studies die voortbouwen op de Wingtip SaaS-toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

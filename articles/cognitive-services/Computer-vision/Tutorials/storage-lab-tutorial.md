@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Meta gegevens voor Azure-installatie kopieën genereren'
+title: 'Zelf studie: meta gegevens voor Azure-installatie kopieën genereren'
 titleSuffix: Azure Cognitive Services
 description: In deze zelfstudie leert u hoe u de Azure Computer Vision-service integreert in een web-app om metagegevens voor afbeeldingen te genereren.
 services: cognitive-services
@@ -10,16 +10,18 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057728"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604658"
 ---
-# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Zelfstudie: Computer Vision gebruiken voor het genereren van afbeeldingsmetagegevens te genereren in Azure Storage
+# <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Zelf studie: Computer Vision gebruiken voor het genereren van meta gegevens voor afbeeldingen in Azure Storage
 
-In deze zelfstudie leert u hoe u de Azure Computer Vision-service in een web-app integreert voor het genereren van metagegevens voor geüploade afbeeldingen. De volledige app-handleiding vindt u in het [Azure Storage- en Cognitive Services-lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) op GitHub. In deze zelfstudie wordt alleen oefening 5 uit het lab behandeld. Wellicht wilt u de end-to-end-toepassing maken door alle stappen te volgen, maar als u alleen wilt zien hoe Computer Vision kan worden ingebouwd in een bestaande web-app, blijft u hier verder lezen.
+In deze zelf studie leert u hoe u de Azure Computer Vision-service integreert in een web-app om meta gegevens te genereren voor geüploade installatie kopieën. Dit is nuttig voor de [dam-scenario's (Digital Asset Management)](../Home.md#computer-vision-for-digital-asset-management) , bijvoorbeeld als een bedrijf snel beschrijvende bijschriften of Doorzoek bare tref woorden wil genereren voor alle installatie kopieën.
+
+De volledige app-handleiding vindt u in het [Azure Storage- en Cognitive Services-lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) op GitHub. In deze zelfstudie wordt alleen oefening 5 uit het lab behandeld. Wellicht wilt u de end-to-end-toepassing maken door alle stappen te volgen, maar als u alleen wilt zien hoe Computer Vision kan worden ingebouwd in een bestaande web-app, blijft u hier verder lezen.
 
 In deze zelfstudie ontdekt u hoe u:
 

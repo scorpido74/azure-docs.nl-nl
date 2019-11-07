@@ -1,5 +1,5 @@
 ---
-title: Uitschalen met Azure SQL Database | Microsoft Docs
+title: Uitbreiden met Azure SQL Database
 description: SaaS-ontwikkel aars (Software as a Service) kunnen eenvoudig elastische, schaal bare data bases in de Cloud maken met behulp van deze hulpprogram ma's
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568396"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690251"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Uitbreiden met Azure SQL Database
 U kunt Azure SQL-data bases eenvoudig uitschalen met behulp van de **Elastic database** -hulpprogram ma's. Met deze hulpprogram ma's en functies kunt u de database resources van **Azure SQL database** gebruiken om oplossingen te maken voor transactionele werk belastingen, en met name SaaS-toepassingen (Software as a Service). Elastic Database-functies bestaan uit het volgende:
 
-* [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md): De client bibliotheek is een functie waarmee u Shard-data bases kunt maken en onderhouden.  Zie [aan de slag met Elastic database-hulpprogram ma's](sql-database-elastic-scale-get-started.md).
+* [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md): de client bibliotheek is een functie waarmee u Shard-data bases kunt maken en onderhouden.  Zie [aan de slag met Elastic database-hulpprogram ma's](sql-database-elastic-scale-get-started.md).
 * [Elastic database hulp programma voor splitsen en samen voegen](sql-database-elastic-scale-overview-split-and-merge.md): verplaatst gegevens tussen Shard-data bases. Dit hulp programma is nuttig voor het verplaatsen van gegevens van een Data Base met meerdere tenants naar een Data Base met één Tenant (of andersom). Zie [zelf studie Elastic Data Base voor splitsen en samen voegen](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Taak voor Elastic database](elastic-jobs-overview.md): Gebruik taken voor het beheren van grote aantallen Azure SQL-data bases. U kunt eenvoudig beheer bewerkingen uitvoeren zoals schema wijzigingen, referentie beheer, referentie gegevens updates, verzameling van prestatie gegevens of Tenant-telemetrie verzameling met behulp van taken.
-* [Elastic database query](sql-database-elastic-query-overview.md) (preview-versie): Hiermee kunt u een Transact-SQL-query uitvoeren die meerdere data bases omvat. Dit maakt het mogelijk om verbinding te maken met rapportage Programma's zoals Excel, Power BI, tableau, enzovoort.
-* [Elastische trans acties](sql-database-elastic-transactions-overview.md): Met deze functie kunt u trans acties uitvoeren die meerdere data bases omvatten in Azure SQL Database. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action-klassen](https://msdn.microsoft.com/library/system.transactions.aspx).
+* [Taak voor Elastic database](elastic-jobs-overview.md): gebruik taken voor het beheren van grote aantallen Azure SQL-data bases. U kunt eenvoudig beheer bewerkingen uitvoeren zoals schema wijzigingen, referentie beheer, referentie gegevens updates, verzameling van prestatie gegevens of Tenant-telemetrie verzameling met behulp van taken.
+* [Elastic database query](sql-database-elastic-query-overview.md) (preview): Hiermee kunt u een Transact-SQL-query uitvoeren die meerdere data bases omspant. Dit maakt het mogelijk om verbinding te maken met rapportage Programma's zoals Excel, Power BI, tableau, enzovoort.
+* [Elastische trans acties](sql-database-elastic-transactions-overview.md): met deze functie kunt u trans acties uitvoeren die meerdere data bases omvatten in Azure SQL database. Elastic data base-trans acties zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action-klassen](https://msdn.microsoft.com/library/system.transactions.aspx).
 
 In de volgende afbeelding ziet u een architectuur die de **Elastic database-functies** bevat ten opzichte van een verzameling data bases.
 
@@ -88,9 +88,9 @@ Bij het maken van een SaaS-toepassing is het gebruikelijk om potentiële klanten
 ## <a name="next-steps"></a>Volgende stappen
 Zie [aan de slag met Elastic database-hulpprogram ma's](sql-database-elastic-scale-get-started.md)voor een voor beeld-app die de client bibliotheek laat zien.
 
-Zie [bestaande data bases migreren om uit](sql-database-elastic-convert-to-use-elastic-tools.md)te breiden voor het converteren van bestaande data bases om de hulpprogram ma's te gebruiken.
+Zie [bestaande data bases migreren om uit te breiden](sql-database-elastic-convert-to-use-elastic-tools.md)voor het converteren van bestaande data bases om de hulpprogram ma's te gebruiken.
 
-Zie [prijs-en prestatie overwegingen voor een elastische pool](sql-database-elastic-pool.md)of een nieuwe groep maken met elastische Pools voor een overzicht van de Details [](sql-database-elastic-pool-manage-portal.md)van de elastische pool.  
+Zie [prijs-en prestatie overwegingen voor een elastische pool](sql-database-elastic-pool.md)of een nieuwe groep maken met [elastische](sql-database-elastic-pool-manage-portal.md)Pools voor een overzicht van de details van de elastische pool.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

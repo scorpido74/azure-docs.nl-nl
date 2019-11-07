@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506954"
+ms.locfileid: "73579631"
 ---
 # <a name="audio-content-creation"></a>Audio-inhoud maken
 
@@ -29,7 +29,7 @@ Dit diagram toont de stappen die nodig zijn voor het afstemmen en exporteren van
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. De eerste stap bestaat [uit het maken van een Azure-account, het registreren van een spraak bron en het ophalen van een abonnements sleutel](#create-a-speech-resource). Zodra u een abonnements sleutel hebt, kunt u deze gebruiken om de spraak service aan te roepen en toegang te krijgen tot het [maken van audio-inhoud](https://aka.ms/audiocontentcreation).
+1. De eerste stap bestaat [uit het maken van een Azure-account, het registreren van een spraak bron en het ophalen van een abonnements sleutel](#create-a-speech-resource). Nadat u een abonnements sleutel hebt, kunt u deze gebruiken om de spraak service aan te roepen en toegang te krijgen tot het [maken van audio-inhoud](https://aka.ms/audiocontentcreation).
 2. [Maak een audio-afstemmings bestand](#create-an-audio-tuning-file) met onbewerkte tekst of SSML.
 3. Kies de stem en de taal die u wilt afstemmen. Voor het maken van audio-inhoud [zijn alle micro soft tekst-naar-spraak-stemmen](language-support.md#text-to-speech)opgenomen. U kunt standaard, Neural of uw eigen aangepaste stem gebruiken.
    >[!NOTE]
@@ -43,7 +43,7 @@ Dit diagram toont de stappen die nodig zijn voor het afstemmen en exporteren van
 
 Volg deze stappen om een spraak bron te maken en deze te verbinden met Speech Studio.
 
-1. Volg deze instructies om u aan te [melden voor een Azure-account en een spraak bron te maken](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Zorg ervoor dat de prijs categorie is ingesteld op **s0**. Als u een van de Neural stemmen gebruikt, moet u ervoor zorgen dat u uw resource in een [ondersteunde regio](regions.md#standard-and-neural-voices)maakt.
+1. Volg deze instructies om u aan te [melden voor een Azure-account](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) en [een spraak bron te maken](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Zorg ervoor dat de prijs categorie is ingesteld op **s0**. Als u een van de Neural stemmen gebruikt, moet u ervoor zorgen dat u uw resource in een [ondersteunde regio](regions.md#standard-and-neural-voices)maakt.
 2. Meld u aan voor het [maken van audio-inhoud](https://aka.ms/audiocontentcreation).
 3. Selecteer een bestaand project of klik op **Nieuw maken**.
 4. U kunt uw abonnement op elk gewenst moment wijzigen met de optie **instellingen** , die zich in de bovenste navigatie bevindt.

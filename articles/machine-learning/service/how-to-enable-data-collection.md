@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 845d271c60762177ea88912f2100f3b47aedde46
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489985"
+ms.locfileid: "73576696"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,7 +124,7 @@ Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw 
 
    ![Service bewerken](media/how-to-enable-data-collection/EditService.PNG)
 
-1. Schakel in **Geavanceerde instellingen**de optie **model gegevens verzamelen inschakelen**uit. 
+1. Selecteer in **Geavanceerde instellingen**de optie **model gegevens verzameling inschakelen**. 
 
     [Gegevens verzameling ![controleren](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 

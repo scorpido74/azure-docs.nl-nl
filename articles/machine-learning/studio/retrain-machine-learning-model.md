@@ -1,6 +1,6 @@
 ---
-title: Een webservice opnieuw trainen en implementeren
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Omscholen voor een webservice
+titleSuffix: ML Studio (classic) Azure
 description: Meer informatie over het bijwerken van een webservice voor het gebruik van een pas getraind machine learning model in Azure Machine Learning Studio (klassiek).
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 55b054ffe55430ea106c72cdd91fdfba3a457cf5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482996"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684768"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Een machine learning model opnieuw trainen en implementeren
 
 Retraining is een manier om ervoor te zorgen dat machine learning modellen nauw keurig blijven en op basis van de meest relevante gegevens die beschikbaar zijn. In dit artikel wordt beschreven hoe u een machine learning model opnieuw traint en implementeert als nieuwe webservice in Studio (klassiek). Als u een klassieke webservice opnieuw wilt trainen, [raadpleegt u dit artikel met instructies.](retrain-classic-web-service.md)
 
-In dit artikel wordt ervan uitgegaan dat u al een voorspellende webservice hebt geïmplementeerd. Als u nog geen voorspellende webservice hebt, leest u [hier hoe u hier een studio-webservice (Classic) implementeert.](publish-a-machine-learning-web-service.md)
+In dit artikel wordt ervan uitgegaan dat u al een voorspellende webservice hebt geïmplementeerd. Als u nog geen voorspellende webservice hebt, leest u [hier hoe u hier een studio-webservice (Classic) implementeert.](deploy-a-machine-learning-web-service.md)
 
 U kunt deze stappen volgen om een machine learning nieuwe webservice opnieuw te trainen en te implementeren:
 

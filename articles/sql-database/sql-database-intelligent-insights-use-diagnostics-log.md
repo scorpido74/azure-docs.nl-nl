@@ -1,5 +1,5 @@
 ---
-title: Logboek voor diagnostische gegevens van Intelligent Insights-Azure SQL Database | Microsoft Docs
+title: Diagnostische logboeken voor Intelligent Insights prestaties-Azure SQL Database
 description: Intelligent Insights biedt een diagnostisch logboek van Azure SQL Database prestatie problemen
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262153"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689693"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Het logboek voor diagnostische gegevens over het Intelligent Insights-Azure SQL Database gebruiken
 
@@ -80,7 +80,7 @@ Afhankelijk van het prestatie probleem dat is gedetecteerd, verschillen de detai
 | Bron limieten bereiken | <li>Betrokken resources</li><li>Query's uitvoeren op hashes</li><li>Resource verbruiks percentage</li> |
 | Toename van de workload | <li>Aantal query's waarvan de uitvoering is verhoogd</li><li>Een query uitvoeren op hashes van query's met de grootste bijdrage aan de toename van de werk belasting</li> |
 | Geheugen druk | <li>Geheugen-Clerk</li> |
-| Vergrendelen | <li>Betroffen query-hashes</li><li>Query-hashes blok keren</li> |
+| Vergren delen | <li>Betroffen query-hashes</li><li>Query-hashes blok keren</li> |
 | Verhoogde MAXDOP | <li>Query's uitvoeren op hashes</li><li>CXP wacht tijden</li><li>Wacht tijden</li> |
 | Pagelatch-conflicten | <li>Query's uitvoeren op hashes van query's die conflicten veroorzaken</li> |
 | Ontbrekende index | <li>Query's uitvoeren op hashes</li> |
@@ -97,11 +97,11 @@ Afhankelijk van het prestatie probleem dat is gedetecteerd, verschillen de detai
 
 De eigenschap impact (effect) beschrijft hoeveel een gedetecteerd gedrag heeft bijgedragen aan het probleem dat een Data Base heeft. Het aantal effecten is van 1 tot 3, met 3 als de hoogste bijdrage, 2 als gemiddeld en 1 als de laagste bijdrage. De impact waarde kan worden gebruikt als invoer voor aangepaste automatisering van waarschuwingen, afhankelijk van uw specifieke behoeften. De beïnvloede eigenschaps query's (QueryHashes) bieden een lijst van de query-hashes die door een bepaalde detectie zijn beïnvloed.
 
-### <a name="impacted-queries"></a>Betrokken query's
+### <a name="impacted-queries"></a>Beïnvloede query's
 
-In de volgende sectie van het Intelligent Insights-logboek vindt u informatie over bepaalde query's die worden beïnvloed door de gedetecteerde prestatie problemen. Deze informatie wordt vermeld als een matrix met objecten die zijn Inge sloten in de eigenschap impact_s. De eigenschap impact bestaat uit entiteiten en metrische gegevens. Entiteiten verwijzen naar een bepaalde query (type: Query). De unieke query-hash wordt vermeld onder de waarde van de eigenschap Value (waarde). Daarnaast worden alle query's die worden vermeld, gevolgd door een metriek en een waarde, die duiden op een gedetecteerd prestatie probleem.
+In de volgende sectie van het Intelligent Insights-logboek vindt u informatie over bepaalde query's die worden beïnvloed door de gedetecteerde prestatie problemen. Deze informatie wordt vermeld als een matrix met objecten die zijn Inge sloten in de eigenschap impact_s. De eigenschap impact bestaat uit entiteiten en metrische gegevens. Entiteiten verwijzen naar een bepaalde query (type: query). De unieke query-hash wordt vermeld onder de waarde van de eigenschap Value (waarde). Daarnaast worden alle query's die worden vermeld, gevolgd door een metriek en een waarde, die duiden op een gedetecteerd prestatie probleem.
 
-In het volgende voor beeld van het logboek is vastgesteld dat de query met de hash-0x9102EXZ4 een verhoogde duur van de uitvoering (metrisch: DurationIncreaseSeconds). De waarde van 110 seconden geeft aan dat deze specifieke query 110 seconden langer duurde om uit te voeren. Omdat er meerdere query's kunnen worden gedetecteerd, kan dit specifieke logboek sectie meerdere query vermeldingen bevatten.
+In het volgende voor beeld van het logboek is vastgesteld dat de query met de hash-0x9102EXZ4 een verhoogde duur van de uitvoering (metrisch: DurationIncreaseSeconds) heeft. De waarde van 110 seconden geeft aan dat deze specifieke query 110 seconden langer duurde om uit te voeren. Omdat er meerdere query's kunnen worden gedetecteerd, kan dit specifieke logboek sectie meerdere query vermeldingen bevatten.
 
 ```json
 "impact" : [{

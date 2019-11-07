@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1f46fe92fd6650daa3ba4b9a930c4d781925d3fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 484322fb0486eeb4ab67366d32350c69a18da743
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518253"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605924"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Block Chain configureren Data Manager met behulp van de Azure Portal
 
@@ -53,7 +53,7 @@ Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. Wa
 
 1. Selecteer **OK**.
 
-    Het duurt minder dan een minuut om een Block Chain Data Manager-exemplaar te maken. Nadat het exemplaar is geïmplementeerd, wordt het automatisch gestart. Een actief Block Chain Data Manager-exemplaar legt Block Chain-gebeurtenissen vast van het trans actie-knoop punt en verzendt gegevens naar de uitgaande verbindingen. Als u ook gedecodeerde gebeurtenis-en eigenschaps gegevens wilt vastleggen vanuit het trans actie-knoop punt, maakt u een Block Chain-toepassing voor het block Chain Data Manager-exemplaar.
+    Het duurt minder dan een minuut om een Block Chain Data Manager-exemplaar te maken. Nadat het exemplaar is geïmplementeerd, wordt het automatisch gestart. Een actief Block Chain Data Manager-exemplaar legt Block Chain-gebeurtenissen vast van het trans actie-knoop punt en verzendt gegevens naar de uitgaande verbindingen.
 
     De nieuwe instantie wordt weer gegeven in de lijst met block Chain-Data Manager instanties voor het lid van de Azure Block Chain-service.
 
@@ -63,7 +63,10 @@ Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. Wa
 
 Als u een Block Chain-toepassing toevoegt, Block Chain Data Manager de status van de gebeurtenis en eigenschap decoderen voor de toepassing. Anders worden alleen onbewerkte en onbewerkte transactie gegevens verzonden. Block Chain Data Manager detecteert ook contract adressen wanneer het contract wordt geïmplementeerd. U kunt meerdere Block Chain-toepassingen toevoegen aan een Block Chain Data Manager-exemplaar.
 
-Block Chain Data Manager vereist een ABI en byte code-bestand van een Smart-contract om de toepassing toe te voegen.
+> [!IMPORTANT]
+> Momenteel worden Block Chain-toepassingen die een type vaste- [matrix](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) of [toewijzings typen](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) declareren, niet volledig ondersteund. Eigenschappen die zijn gedeclareerd als matrix-of toewijzings typen, worden niet gedecodeerd in *ContractPropertiesMsg* -of *DecodedContractEventsMsg* -berichten.
+
+Voor Block Chain Data Manager is een ABI en een geïmplementeerd byte code-bestand vereist om de toepassing toe te voegen.
 
 ### <a name="get-contract-abi-and-bytecode"></a>ABI en byte code van het contract ophalen
 
@@ -79,17 +82,15 @@ In het contract ABI worden de slimme contract interfaces gedefinieerd. Hierin wo
 
 1. Sla de **Abi** -matrix op als een JSON-bestand. Bijvoorbeeld *Abi. json*. U gebruikt het bestand in een latere stap.
 
-De byte code van het contract is het gecompileerde slimme contract dat door de virtuele Ethereum-machine wordt uitgevoerd. U kunt de extensie gebruiken om de byte code van het contract te kopiëren naar het klem bord.
+Voor Block Chain Data Manager is de geïmplementeerde byte code voor het slimme contract vereist. De geïmplementeerde byte code wijkt af van de byte code van het Smart-contract. U kunt de geïmplementeerde byte code ophalen uit het bestand met meta gegevens van het gecompileerde contract.
 
-1. Vouw in het deel venster Visual Studio code Explorer de map **Build/contract** van het volheid-project uit.
-1. Klik met de rechter muisknop op het JSON-bestand met meta gegevens van het contract. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
-1. Selecteer de **byte code van het Kopieer contract**.
+1. Open het meta gegevensbestand van de opdracht in de map **Build/contract** van het volheid-project. De bestands naam is de naam van het slimme contract gevolgd door de extensie **. json** .
+1. Zoek het element **deployedBytecode** in het JSON-bestand.
+1. Kopieer de hexadecimale waarde zonder de aanhalings tekens.
 
-    ![Deel venster Visual Studio met de byte code ring van het Kopieer contract](./media/data-manager-portal/bytecode-devkit.png)
+    ![Venster Visual Studio code met byte code in de meta gegevens](./media/data-manager-portal/bytecode-metadata.png)
 
-    De byte code van het contract wordt gekopieerd naar het klem bord.
-
-1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld: *byte code. json*. Sla alleen de hexadecimale waarde op. U gebruikt het bestand in een latere stap.
+1. Sla de **byte code** -waarde op als een JSON-bestand. Bijvoorbeeld: *byte code. json*. U gebruikt het bestand in een latere stap.
 
 In het volgende voor beeld ziet u de bestanden *Abi. json* en *byte code. json* die zijn geopend in de VS code-editor. Uw bestanden moeten er ongeveer als volgt uitzien.
 
@@ -169,4 +170,7 @@ Stop het block chain manager-exemplaar wanneer u wilt stoppen met het vastleggen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [gebeurtenis-handlers in azure Event grid](../../event-grid/event-handlers.md).
+Maak een Block Chain-transactie bericht Verkenner met block Chain Data Manager en Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Zelf studie: Block Chain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB](data-manager-cosmosdb.md)

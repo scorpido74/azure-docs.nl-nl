@@ -1,18 +1,18 @@
 ---
-title: Een Service-Principal toevoegen aan Azure Analysis Services rol Server beheerder | Microsoft Docs
-description: Meer informatie over het toevoegen van een Automation Service-Principal aan de server beheerdersrol
+title: Service-Principal toevoegen aan Azure Analysis Services beheerdersrol | Microsoft Docs
+description: Meer informatie over het toevoegen van een Automation-Service-Principal aan de rol van Azure Analysis Services-server beheerder
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147397"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573622"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Een Service-Principal toevoegen aan de rol Server beheerder 
 
@@ -30,7 +30,7 @@ Als u deze taak wilt volt ooien, moet u beschikken over [Server beheerders](anal
 ## <a name="add-service-principal-to-server-administrators-role"></a>Service-Principal toevoegen aan de rol Server Administrators
 
 1. Maak in SSMS verbinding met uw Azure als server.
-2. Klik in **Server eigenschappen** > -**beveiliging**op **toevoegen**.
+2. Klik in **Server eigenschappen** > **beveiliging**op **toevoegen**.
 3. In **een gebruiker of groep selecteren**zoekt u de geregistreerde app op naam, selecteert u en klikt u vervolgens op **toevoegen**.
 
     ![Zoeken naar Service-Principal-account](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)

@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren naar of van Oracle met behulp van Data Factory | Microsoft Docs
-description: Informatie over het kopiëren van gegevens naar of van een on-premises Oracle-database met behulp van Azure Data Factory.
+title: Gegevens kopiëren van of naar Oracle met behulp van Data Factory
+description: Meer informatie over het kopiëren van gegevens naar of van een on-premises Oracle-data base met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,104 +13,104 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 822713d67790906c972ad77a748ef8d52b871bc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839938"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682425"
 ---
-# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Naar of van Oracle on-premises gegevens kopiëren met behulp van Azure Data Factory
+# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Gegevens naar of van Oracle on-premises kopiëren met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
-> * [Versie 1:](data-factory-onprem-oracle-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> * [Versie 1](data-factory-onprem-oracle-connector.md)
 > * [Versie 2 (huidige versie)](../connector-oracle.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Azure Data Factory. Als u de huidige versie van de Azure Data Factory-service gebruikt, raadpleegt u [Oracle-connector in V2](../connector-oracle.md).
+> Dit artikel is van toepassing op versie 1 van Azure Data Factory. Als u de huidige versie van de Azure Data Factory-service gebruikt, raadpleegt u [Oracle Connector in v2](../connector-oracle.md).
 
 
-In dit artikel wordt uitgelegd hoe u gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te verplaatsen naar of van een on-premises Oracle-database. Het artikel is gebaseerd op [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md), die een algemeen overzicht van de verplaatsing van gegevens met behulp van de Kopieeractiviteit geeft.
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens naar of van een on-premises Oracle-Data Base te verplaatsen. Het artikel bouwt voort op [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md), waarmee een algemeen overzicht wordt gegeven van de verplaatsing van gegevens met behulp van de Kopieer activiteit.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-U kunt gegevens kopiëren *uit een Oracle-database* opgeslagen in de volgende gegevens:
+U kunt gegevens *uit een Oracle-data base* kopiëren naar de volgende gegevens archieven:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-U kunt gegevens kopiëren van de volgende gegevensarchieven *met een Oracle-database*:
+U kunt gegevens uit de volgende gegevens archieven kopiëren *naar een Oracle-data base*:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-Data Factory ondersteunt een verbinding met on-premises Oracle bronnen met behulp van Data Management Gateway. Zie [Data Management Gateway](data-factory-data-management-gateway.md) voor meer informatie over Data Management Gateway. Zie voor stapsgewijze instructies voor het instellen van de gateway in een pijplijn om gegevens te verplaatsen, [gegevens verplaatsen van on-premises naar de cloud](data-factory-move-data-between-onprem-and-cloud.md).
+Data Factory ondersteunt het maken van verbinding met on-premises Oracle-bronnen met behulp van Data Management Gateway. Zie [Data Management Gateway](data-factory-data-management-gateway.md) voor meer informatie over Data Management Gateway. Zie [gegevens verplaatsen van on-premises naar de Cloud](data-factory-move-data-between-onprem-and-cloud.md)voor stapsgewijze instructies voor het instellen van de gateway in een gegevens pijplijn om gegevens te verplaatsen.
 
-De gateway is vereist, zelfs als de Oracle wordt gehost in een Azure-infrastructuur als een dienst (IaaS) virtuele machine. U kunt de gateway installeren op dezelfde IaaS-VM als het gegevensarchief of op een andere virtuele machine, zolang de gateway verbinding met de database maken kan.
+De gateway is vereist, zelfs als de Oracle wordt gehost in een Azure Infrastructure as a Service (IaaS)-VM. U kunt de gateway op dezelfde IaaS-VM installeren als het gegevens archief of op een andere virtuele machine, zolang de gateway verbinding kan maken met de data base.
 
 > [!NOTE]
-> Zie voor tips over het oplossen van problemen die gerelateerd zijn aan de verbinding en de gateway [oplossen van problemen met gateway](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
+> Zie problemen [met Gateway oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)voor tips over het oplossen van problemen met de verbinding en de gateway.
 
 ## <a name="supported-versions-and-installation"></a>Ondersteunde versies en installatie
 
-Deze connector Oracle bieden ondersteuning voor twee versies van stuurprogramma's:
+Deze Oracle-connector ondersteunt twee versies van Stuur Programma's:
 
-- **Microsoft-stuurprogramma voor Oracle (aanbevolen)** : Een Microsoft-stuurprogramma voor Oracle, dat is vanaf Data Management Gateway versie 2.7, wordt automatisch geïnstalleerd met de gateway. U hoeft niet te installeren of bijwerken van het stuurprogramma voor het maken van verbinding met Oracle. U kunt ook betere kopieerprestaties ervaren door dit stuurprogramma. Deze versies van Oracle-databases worden ondersteund:
-  - Oracle 12c R1 (12.1)
-  - Oracle 11g R1, R2 (11.1, 11.2)
-  - Oracle 10g R1, R2 (10.1, 10.2)
-  - Oracle 9i R1, R2 (9.0.1, 9.2)
+- **Micro soft-stuur programma voor Oracle (aanbevolen)** : vanaf Data Management Gateway versie 2,7 wordt automatisch een micro soft-stuur programma voor Oracle geïnstalleerd met de gateway. U hoeft het stuur programma niet te installeren of bij te werken om verbinding te maken met Oracle. U kunt ook betere Kopieer prestaties krijgen met behulp van dit stuur programma. Deze versies van Oracle-data bases worden ondersteund:
+  - Oracle 12c R1 (12,1)
+  - Oracle 11g R1, R2 (11,1, 11,2)
+  - Oracle 10g R1, R2 (10,1, 10,2)
+  - Oracle 9i R1, R2 (9.0.1, 9,2)
   - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
-    > Proxyserver voor Oracle wordt niet ondersteund.
+    > Oracle-proxy server wordt niet ondersteund.
 
     > [!IMPORTANT]
-    > De Microsoft-stuurprogramma voor Oracle ondersteunt momenteel alleen kopiëren van gegevens van Oracle. Het stuurprogramma biedt geen ondersteuning voor het schrijven naar Oracle. De mogelijkheid van de verbinding testen op de Data Management Gateway **Diagnostics** tabblad biedt geen ondersteuning voor dit stuurprogramma. U kunt ook de wizard kopiëren gebruiken te valideren.
+    > Het micro soft-stuur programma voor Oracle ondersteunt momenteel alleen het kopiëren van gegevens van Oracle. Het stuur programma biedt geen ondersteuning voor het schrijven naar Oracle. De functionaliteit voor het testen van de verbinding op het tabblad Data Management Gateway **Diagnostische gegevens** biedt geen ondersteuning voor dit stuur programma. U kunt ook de wizard kopiëren gebruiken om de connectiviteit te valideren.
     >
 
-- **Oracle-gegevensprovider voor .NET**: U kunt de Oracle-gegevensprovider gebruiken om gegevens te kopiëren van of naar Oracle. Dit onderdeel is opgenomen in [Oracle Data Access-componenten voor Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Installeer de relevante versie (32-bits of 64-bits) op de computer waarop de gateway is geïnstalleerd. [Oracle-gegevensprovider .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) hebben toegang tot Oracle Database 10 g Release 2 en hoger.
+- **Oracle-gegevens provider voor .net**: u kunt Oracle data provider gebruiken om gegevens van of naar Oracle te kopiëren. Dit onderdeel is opgenomen in [Oracle Data Access Components voor Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Installeer de relevante versie (32-bits of 64-bits) op de computer waarop de gateway is geïnstalleerd. [Oracle data provider .net 12,1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) heeft toegang tot Oracle database 10g versie 2 en hoger.
 
-    Als u selecteert **XCopy installatie**, de stappen die worden beschreven in het bestand Leesmij.htm. Het is raadzaam om het installatieprogramma met de gebruikersinterface (niet de XCopy-installatieprogramma) selecteren.
+    Als u **xcopy-installatie**selecteert, voert u de stappen uit die worden beschreven in het bestand README. htm. U kunt het beste het installatie programma selecteren dat de gebruikers interface heeft (niet het installatie programma XCopy).
 
-    Nadat u de provider hebt geïnstalleerd, start u de Data Management Gateway-host-service op uw computer met behulp van de applet Services of Data Management Gateway Configuratiebeheer.
+    Nadat u de provider hebt geïnstalleerd, start u de Data Management Gateway host-service op uw computer opnieuw met behulp van het onderdeel Services of Data Management Gateway Configuration Manager.
 
-Als u de wizard kopiëren om de kopieerpijplijn gebruikt, is het stuurprogrammatype autodetermined. Het stuurprogramma Microsoft wordt standaard gebruikt, tenzij uw gatewayversie ouder dan versie 2.7 is of Oracle als de sink selecteren.
+Als u de Kopieer wizard gebruikt om de Kopieer pijplijn te maken, wordt het type van het stuur programma autobepaald. Het micro soft-stuur programma wordt standaard gebruikt, tenzij uw gateway versie ouder is dan versie 2,7 of als u Oracle selecteert als sink.
 
 ## <a name="get-started"></a>Aan de slag
 
-U kunt een pijplijn met een kopieeractiviteit maken. De pijplijn verplaatst gegevens naar of van een on-premises Oracle-database met behulp van verschillende hulpprogramma's of API's.
+U kunt een pijp lijn met een Kopieer activiteit maken. De pijp lijn verplaatst gegevens naar of van een on-premises Oracle-data base met behulp van verschillende hulpprogram ma's of Api's.
 
-Er is de eenvoudigste manier om een pijplijn te maken met de wizard kopiëren. Zie [zelfstudie: Een pijplijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snel overzicht van het maken van een pijplijn met behulp van de wizard kopiëren van gegevens.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de wizard kopiëren. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook een van de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio**, **Azure PowerShell**, een **Azure Resource Manager-sjabloon**, wordt de **.NET API**, of de **REST-API**. Zie de [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook een van de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, een **Azure Resource Manager sjabloon**, de **.net API**of de **rest API**. Raadpleeg de [zelf studie activiteit kopiëren](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
-Of u de hulpprogramma's of API's gebruikt, voert u de volgende stappen uit voor het maken van een pijplijn die gegevens van een brongegevensarchief naar een sink-gegevensopslag verplaatst:
+Voer de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst, ongeacht of u de hulpprogram ma's of Api's gebruikt.
 
-1. Maak een **gegevensfactory**. Een data factory kan één of meer pijplijnen bevatten.
-2. Maak **gekoppelde services** opgeslagen om invoer- en gegevens te koppelen aan uw data factory. Als u gegevens van een Oracle-database naar Azure Blob-opslag kopieert, bijvoorbeeld twee gekoppelde services om uw Oracle-database en Azure storage-account koppelen aan uw data factory maken. Zie voor de gekoppelde service-eigenschappen die specifiek voor Oracle zijn, [gekoppelde service-eigenschappen](#linked-service-properties).
-3. Maak **gegevenssets** te vertegenwoordigen invoer- en uitvoergegevens voor de kopieerbewerking. In het voorbeeld in de vorige stap maakt u een gegevensset om op te geven van de tabel in uw Oracle-database die de invoergegevens bevat. U maakt een andere gegevensset om op te geven van de blob-container en de map waarin de gegevens van de Oracle-database gekopieerd. Zie voor de gegevensseteigenschappen die specifiek voor Oracle zijn, [gegevensseteigenschappen](#dataset-properties).
-4. Maak een **pijplijn** waarvoor een kopieeractiviteit waarmee een gegevensset als invoer en een gegevensset als uitvoer. In het vorige voorbeeld gebruikt u **OracleSource** als een bron en **BlobSink** als een sink voor de kopieeractiviteit. Op dezelfde manier als u van Azure Blob-opslag met een Oracle-database kopiëren wilt, u **BlobSource** en **OracleSink** in de kopieeractiviteit. Zie voor de Kopieeractiviteit-eigenschappen die specifiek voor een Oracle-database zijn, [Kopieeractiviteit eigenschappen](#copy-activity-properties). Selecteer de koppeling voor de gegevensopslag in de voorgaande sectie voor meer informatie over het gebruik van een gegevensarchief als een bron of de sink.
+1. Maak een **Data Factory**. Een data factory kan een of meer pijp lijnen bevatten.
+2. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory. Als u bijvoorbeeld gegevens uit een Oracle-Data Base naar Azure Blob-opslag kopieert, maakt u twee gekoppelde services om uw Oracle-data base en Azure Storage-account aan uw data factory te koppelen. Zie [Eigenschappen van gekoppelde service](#linked-service-properties)voor gekoppelde service-eigenschappen die specifiek zijn voor Oracle.
+3. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. In het voor beeld in de vorige stap maakt u een gegevensset om de tabel op te geven in de Oracle-data base die de invoer gegevens bevat. U maakt een andere gegevensset om de BLOB-container en de map op te geven die de gegevens bevat die zijn gekopieerd uit de Oracle-data base. Zie [Eigenschappen](#dataset-properties)van gegevensset voor eigenschappen van gegevens sets die specifiek zijn voor Oracle.
+4. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. In het voor gaande voor beeld gebruikt u **OracleSource** als bron en **BlobSink** als Sink voor de Kopieer activiteit. En als u kopieert vanuit Azure Blob-opslag naar een Oracle-data base, gebruikt u **BlobSource** en **OracleSink** in de Kopieer activiteit. Zie [Eigenschappen van Kopieer activiteit](#copy-activity-properties)voor eigenschappen van de Kopieer activiteit die specifiek zijn voor een Oracle-data base. Voor meer informatie over het gebruik van een gegevens archief als een bron of sink selecteert u de koppeling voor uw gegevens opslag in de voor gaande sectie.
 
-Wanneer u de wizard, JSON-definities voor deze Data Factory-entiteiten worden automatisch voor u gemaakt: gekoppelde services, gegevenssets en de pijplijn. Wanneer u hulpprogramma's of API's (met uitzondering van de .NET API), kunt u deze Data Factory-entiteiten definiëren met behulp van de JSON-indeling. Zie voor voorbeelden van JSON-definities voor Data Factory-entiteiten die u gebruikt om gegevens te kopiëren naar of van een on-premises Oracle-database hebt, JSON-voorbeelden.
+Wanneer u de wizard gebruikt, worden de JSON-definities voor deze Data Factory entiteiten automatisch voor u gemaakt: gekoppelde services, gegevens sets en de pijp lijn. Wanneer u hulpprogram ma's of Api's gebruikt (met uitzonde ring van de .NET API), definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie JSON-voor beelden voor voor beelden met JSON-definities voor Data Factory entiteiten die u gebruikt om gegevens naar of van een on-premises Oracle-Data Base te kopiëren.
 
-De volgende secties bevatten meer informatie over JSON-eigenschappen die u gebruikt voor het definiëren van Data Factory-entiteiten.
+De volgende secties bevatten informatie over de JSON-eigenschappen die u gebruikt om Data Factory entiteiten te definiëren.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende tabel beschrijft de JSON-elementen die specifiek voor de Oracle gekoppelde service zijn:
+De volgende tabel beschrijft de JSON-elementen die specifiek zijn voor de aan Oracle gekoppelde service:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| type |De **type** eigenschap moet worden ingesteld op **OnPremisesOracle**. |Ja |
-| driverType | Geef op welke stuurprogramma om te gebruiken om gegevens te kopiëren van of naar een Oracle-database. Toegestane waarden zijn **Microsoft** en **ODP** (standaard). Zie [ondersteunde versie en installatie](#supported-versions-and-installation) voor stuurprogramma voor meer informatie. | Nee |
-| connectionString | Geef de informatie die nodig is om te verbinden met de Oracle-database-instantie voor het **connectionString** eigenschap. | Ja |
-| gatewayName | De naam van de gateway die wordt gebruikt voor verbinding met de on-premises Oracle-server. |Ja |
+| type |De eigenschap **type** moet worden ingesteld op **OnPremisesOracle**. |Ja |
+| driverType | Opgeven welk stuur programma moet worden gebruikt voor het kopiëren van gegevens van of naar een Oracle-data base. Toegestane waarden zijn **micro soft** en **ODP** (standaard). Zie de [ondersteunde versie en de installatie](#supported-versions-and-installation) voor details van Stuur Programma's. | Nee |
+| connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met het Oracle data base-exemplaar voor de **Connections Tring** -eigenschap. | Ja |
+| gatewayName | De naam van de gateway die wordt gebruikt om verbinding te maken met de on-premises Oracle-server. |Ja |
 
-**Voorbeeld: Met behulp van de Microsoft-stuurprogramma**
+**Voor beeld: het micro soft-stuur programma gebruiken**
 
 > [!TIP]
-> Als er een fout met de tekst "ORA 01025: UPI parameter buiten het bereik' en de Oracle-versie 8i is, voegen `WireProtocolMode=1` met de verbindingstekenreeks en probeer het opnieuw:
+> Als u een fout ziet met de tekst "ORA-01025: UPI para meter buiten bereik" en uw Oracle versie 8i, voegt u `WireProtocolMode=1` toe aan uw connection string en probeert u het opnieuw:
 
 ```json
 {
@@ -126,9 +126,9 @@ De volgende tabel beschrijft de JSON-elementen die specifiek voor de Oracle geko
 }
 ```
 
-**Voorbeeld: Met behulp van het stuurprogramma ODP**
+**Voor beeld: het ODP-stuur programma gebruiken**
 
-Zie voor meer informatie over de toegestane indelingen, [Oracle-gegevensprovider voor .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
+Voor meer informatie over toegestane indelingen raadpleegt u [Oracle data provider voor .net ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
 
 ```json
 {
@@ -145,63 +145,63 @@ Zie voor meer informatie over de toegestane indelingen, [Oracle-gegevensprovider
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets en secties, [gegevenssets maken](data-factory-create-datasets.md).
+Zie [gegevens sets maken](data-factory-create-datasets.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets.
 
-De secties van een gegevensset JSON-bestand, zoals de structuur, beschikbaarheid en het beleid, zijn identiek voor alle gegevenssettypen (bijvoorbeeld voor Oracle, Azure-blobopslag en Azure Table storage).
+De secties van een JSON-bestand van een gegevensset, zoals de structuur, Beschik baarheid en het beleid, zijn vergelijkbaar voor alle typen gegevens sets (bijvoorbeeld voor Oracle, Azure Blob Storage en Azure Table Storage).
 
-De **typeProperties** sectie verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevensarchief. De **typeProperties** sectie voor de gegevensset van het type **OracleTable** heeft de volgende eigenschappen:
+De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **OracleTable** heeft de volgende eigenschappen:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |De naam van de tabel in de Oracle-database waarnaar de gekoppelde service verwijst. |Nee (als **oracleReaderQuery** of **OracleSource** is opgegeven) |
+| tableName |De naam van de tabel in de Oracle-data base waarnaar de gekoppelde service verwijst. |Nee (als **oracleReaderQuery** of **OracleSource** is opgegeven) |
 
-## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
+## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van activiteiten en secties, [het maken van pijplijnen](data-factory-create-pipelines.md).
+Zie [pijp lijnen maken](data-factory-create-pipelines.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten.
 
-Eigenschappen zoals naam, beschrijving, invoer en uitvoer tabellen en -beleid zijn beschikbaar voor alle soorten activiteiten.
+Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
 
 > [!NOTE]
-> Kopieeractiviteit slechts één invoer en produceert slechts één uitvoer.
+> Voor de Kopieer activiteit wordt slechts één invoer uitgevoerd en er wordt slechts één uitvoer gegenereerd.
 
-Eigenschappen die beschikbaar zijn in de **typeProperties** sectie van de activiteit variëren met elk activiteitstype. Eigenschappen van de activiteit kopiëren variëren afhankelijk van het type bron- en sinkblobpaden.
+Eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activiteit, variëren per type activiteit. De eigenschappen van de Kopieer activiteit variëren afhankelijk van het type bron en Sink.
 
 ### <a name="oraclesource"></a>OracleSource
 
-In de Kopieeractiviteit, wanneer de bron is de **OracleSource** type, de volgende eigenschappen zijn beschikbaar in de **typeProperties** sectie:
+Als de bron van het type **OracleSource** in Kopieer activiteit is, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| oracleReaderQuery |De aangepaste query gebruiken om gegevens te lezen. |Een SQL-query-tekenreeks. Bijvoorbeeld, "Selecteer \* van **MyTable**'. <br/><br/>Als niet is opgegeven, wordt deze SQL-instructie uitgevoerd: ' Selecteer \* van **MyTable**" |Nee<br />(als **tableName** van **gegevensset** is opgegeven) |
+| oracleReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |Een SQL-query teken reeks. Bijvoorbeeld ' Select \* from **myTable**'. <br/><br/>Als dit niet wordt opgegeven, wordt deze SQL-instructie uitgevoerd: ' Select \* from **myTable**' |Nee<br />(als **TableName** van **gegevensset** is opgegeven) |
 
 ### <a name="oraclesink"></a>OracleSink
 
 **OracleSink** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| writeBatchTimeout |De wachttijd voor de batch invoegen bewerking is voltooid voordat er een optreedt time-out. |**timespan**<br/><br/> Voorbeeld: 00:30:00 uur (30 minuten) |Nee |
-| writeBatchSize |Gegevens invoegen in de SQL-tabel wanneer de waarde van de buffergrootte is bereikt **writeBatchSize**. |Geheel getal (aantal rijen) |Nee (standaard: 100) |
-| sqlWriterCleanupScript |Hiermee geeft u een query voor de Kopieeractiviteit om uit te voeren zodat de gegevens van een bepaald segment wordt opgeschoond. |Een query-instructie. |Nee |
-| sliceIdentifierColumnName |Hiermee geeft u de naam van de kolom voor de Kopieeractiviteit in te vullen met een automatisch gegenereerde segment-id. De waarde voor **sliceIdentifierColumnName** wordt gebruikt voor het opschonen van gegevens van een bepaald segment wanneer opnieuw uitgevoerd. |De naam van de kolom van een kolom met gegevenstype van **binary(32)** . |Nee |
+| writeBatchTimeout |De wacht tijd voor het volt ooien van de batch INSERT-bewerking voordat er een time-out optreedt. |**duur**<br/><br/> Voor beeld: 00:30:00 (30 minuten) |Nee |
+| writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte de waarde van **writeBatchSize**bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 100) |
+| sqlWriterCleanupScript |Hiermee geeft u een query op voor het uitvoeren van de Kopieer activiteit, zodat de gegevens van een specifiek segment worden opgeruimd. |Een query-instructie. |Nee |
+| sliceIdentifierColumnName |Hiermee geeft u de kolom naam voor de Kopieer activiteit moet worden gevuld met een segment-id die automatisch is gegenereerd. De waarde voor **sliceIdentifierColumnName** wordt gebruikt voor het opschonen van gegevens van een specifiek segment wanneer het opnieuw wordt uitgevoerd. |De kolom naam van een kolom met het gegevens type **binary (32)** . |Nee |
 
-## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-voorbeelden voor het kopiëren van gegevens naar en van de Oracle-database
+## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-voor beelden voor het kopiëren van gegevens van en naar de Oracle-data base
 
-De volgende voorbeelden geven een voorbeeld van JSON-definities die u gebruiken kunt voor het maken van een pijplijn met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De voorbeelden laten zien hoe het kopiëren van gegevens van of met een Oracle-database en van of naar Azure Blob-opslag. Gegevens kunnen echter worden gekopieerd naar een van de sinks die worden vermeld in [ondersteunde gegevensarchieven en indelingen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieeractiviteit in Azure Data Factory.
+De volgende voor beelden bieden voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De voor beelden laten zien hoe u gegevens kopieert vanuit of naar een Oracle-data base en naar of van Azure Blob-opslag. Gegevens kunnen echter worden gekopieerd naar een van de sinks in [ondersteunde gegevens archieven en-indelingen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieer activiteit in azure Data Factory.
 
-**Voorbeeld: Gegevens kopiëren van Oracle naar Azure Blob-opslag**
+**Voor beeld: gegevens van Oracle naar Azure Blob-opslag kopiëren**
 
-Het voorbeeld heeft de volgende Data Factory-entiteiten:
+Het voor beeld heeft de volgende Data Factory entiteiten:
 
 * Een gekoppelde service van het type [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
-* Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Invoer [gegevensset](data-factory-create-datasets.md) van het type [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
-* Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Een [pijplijn](data-factory-create-pipelines.md) met een kopieeractiviteit die gebruikmaakt van [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) als bron en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) als sink.
+* Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+* Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
+* Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) als bron en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) als sink.
 
-Het voorbeeld worden gegevens gekopieerd van een tabel in een on-premises Oracle-database naar een blob per uur. Zie de secties die volgen op de voorbeelden voor meer informatie over diverse eigenschappen die worden gebruikt in het voorbeeld.
+In het voor beeld worden gegevens uit een tabel in een on-premises Oracle-Data Base naar een BLOB per uur gekopieerd. Zie de secties die volgen op de voor beelden voor meer informatie over de verschillende eigenschappen die in het voor beeld worden gebruikt.
 
-**Oracle gekoppelde service**
+**Gekoppelde Oracle-Service**
 
 ```json
 {
@@ -217,7 +217,7 @@ Het voorbeeld worden gegevens gekopieerd van een tabel in een on-premises Oracle
 }
 ```
 
-**Azure Blob storage-gekoppelde service**
+**Gekoppelde Azure Blob Storage-service**
 
 ```json
 {
@@ -231,11 +231,11 @@ Het voorbeeld worden gegevens gekopieerd van een tabel in een on-premises Oracle
 }
 ```
 
-**Oracle-invoergegevensset**
+**Oracle-invoer gegevensset**
 
-Het voorbeeld wordt ervan uitgegaan dat u hebt gemaakt aan een tabel met de naam **MyTable** in Oracle. Deze bevat een kolom met de naam **timestampcolumn** voor time series-gegevens.
+In het voor beeld wordt ervan uitgegaan dat u een tabel hebt gemaakt met de naam **myTable** in Oracle. Het bevat een kolom met de naam **timestampcolumn** voor time series-gegevens.
 
-Instellen van **externe**: **waar** informeert de Data Factory-service dat de gegevensset niet tot de data factory is en dat de gegevensset is niet door een activiteit in de data factory gemaakt.
+Als **extern**instellen: **True** informeert de Data Factory-service dat de gegevensset extern is voor de Data Factory en dat de gegevensset niet wordt geproduceerd door een activiteit in de Data Factory.
 
 ```json
 {
@@ -266,7 +266,7 @@ Instellen van **externe**: **waar** informeert de Data Factory-service dat de ge
 
 **Azure Blob-uitvoergegevensset**
 
-Gegevens worden geschreven naar een nieuwe blob elk uur (**frequentie**: **uur**, **interval**: **1**). Pad en naam van de map voor de blob worden dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map maakt gebruik van het jaar, maand, dag en uur deel uit van de begintijd.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (**frequentie**: **uur**, **interval**: **1**). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad maakt gebruik van het jaar, de maand, de dag en het uur gedeelte van de begin tijd.
 
 ```json
 {
@@ -324,9 +324,9 @@ Gegevens worden geschreven naar een nieuwe blob elk uur (**frequentie**: **uur**
 }
 ```
 
-**Pijplijn met een kopieeractiviteit**
+**Pijp lijn met een Kopieer activiteit**
 
-De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en gepland om te worden elk uur wordt uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **OracleSource** en de **sink** type is ingesteld op **BlobSink**. De SQL-query die u met behulp van opgeeft de **oracleReaderQuery** eigenschap selecteert u de gegevens in het afgelopen uur te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die zijn gepland om per uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **OracleSource** en het **sink** -type is ingesteld op **BlobSink**. De SQL-query die u opgeeft met behulp van de eigenschap **oracleReaderQuery** selecteert de gegevens in het afgelopen uur om te kopiëren.
 
 ```json
 {
@@ -375,21 +375,21 @@ De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik v
 }
 ```
 
-**Voorbeeld: Gegevens uit Azure Blob storage kopiëren naar Oracle**
+**Voor beeld: gegevens kopiëren van Azure Blob-opslag naar Oracle**
 
-Dit voorbeeld laat zien hoe u gegevens kopiëren van een Azure Blob storage-account naar een on-premises Oracle-database. U kunt echter gegevens kopiëren *rechtstreeks* uit een van de bronnen die worden vermeld in [ondersteunde gegevensarchieven en indelingen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieeractiviteit in Azure Data Factory.
+In dit voor beeld ziet u hoe u gegevens kopieert van een Azure Blob-opslag account naar een on-premises Oracle-data base. U kunt gegevens echter *rechtstreeks* kopiëren vanuit een van de bronnen die worden vermeld in [ondersteunde gegevens archieven en-indelingen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieer activiteit in azure Data Factory.
 
-Het voorbeeld heeft de volgende Data Factory-entiteiten:
+Het voor beeld heeft de volgende Data Factory entiteiten:
 
 * Een gekoppelde service van het type [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties).
-* Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Invoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
-* Een [pijplijn](data-factory-create-pipelines.md) waarvoor een kopieeractiviteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) als bron [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) als sink.
+* Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+* Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties).
+* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) als bron [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) als sink.
 
-Het voorbeeld worden gegevens gekopieerd van een blob naar een tabel in een on-premises Oracle-database om het uur. Zie de secties die volgen op de voorbeelden voor meer informatie over diverse eigenschappen die worden gebruikt in het voorbeeld.
+In het voor beeld worden elk uur gegevens van een BLOB gekopieerd naar een tabel in een on-premises Oracle-data base. Zie de secties die volgen op de voor beelden voor meer informatie over de verschillende eigenschappen die in het voor beeld worden gebruikt.
 
-**Oracle gekoppelde service**
+**Gekoppelde Oracle-Service**
 
 ```json
 {
@@ -405,7 +405,7 @@ Het voorbeeld worden gegevens gekopieerd van een blob naar een tabel in een on-p
 }
 ```
 
-**Azure Blob storage-gekoppelde service**
+**Gekoppelde Azure Blob Storage-service**
 
 ```json
 {
@@ -421,7 +421,7 @@ Het voorbeeld worden gegevens gekopieerd van een blob naar een tabel in een on-p
 
 **De Azure Blob-invoergegevensset**
 
-Gegevens wordt opgehaald uit een nieuwe blob elk uur (**frequentie**: **uur**, **interval**: **1**). Pad en naam van de map voor de blob worden dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map maakt gebruik van het jaar, maand en dag deel uit van de begintijd. Naam van het bestand maakt gebruik van het uur deel van de begintijd. De instelling **externe**: **waar** de Data Factory-service wordt geïnformeerd dat deze tabel bevindt zich buiten de data factory en niet door een activiteit in de data factory wordt geproduceerd.
+Gegevens worden elk uur uit een nieuwe BLOB opgehaald (**frequentie**: **uur**, **interval**: **1**). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het deel van het jaar, de maand en de dag van de begin tijd. De bestands naam maakt gebruik van het uur gedeelte van de begin tijd. Met de instelling **extern**: **True** wordt de Data Factory-service informeert dat deze tabel extern is voor de Data Factory en niet wordt geproduceerd door een activiteit in de Data Factory.
 
 ```json
 {
@@ -479,9 +479,9 @@ Gegevens wordt opgehaald uit een nieuwe blob elk uur (**frequentie**: **uur**, *
 }
 ```
 
-**Oracle-uitvoergegevensset**
+**Oracle-uitvoer gegevensset**
 
-Het voorbeeld wordt ervan uitgegaan dat u hebt een tabel met de naam gemaakt **MyTable** in Oracle. Maak de tabel in Oracle met hetzelfde aantal kolommen die u verwacht dat de blob CSV-bestand bevatten. Nieuwe rijen zijn toegevoegd aan de tabel om het uur.
+In het voor beeld wordt ervan uitgegaan dat u een tabel hebt gemaakt met de naam **myTable** in Oracle. Maak de tabel in Oracle met hetzelfde aantal kolommen waarvan u verwacht dat het CSV-bestand van de BLOB bevat. Nieuwe rijen worden elk uur aan de tabel toegevoegd.
 
 ```json
 {
@@ -500,9 +500,9 @@ Het voorbeeld wordt ervan uitgegaan dat u hebt een tabel met de naam gemaakt **M
 }
 ```
 
-**Pijplijn met een kopieeractiviteit**
+**Pijp lijn met een Kopieer activiteit**
 
-De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en gepland om te worden elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **BlobSource** en de **sink** type is ingesteld op **OracleSink**.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die zijn gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **BlobSource** en het **sink** -type is ingesteld op **OracleSink**.
 
 ```json
 {
@@ -553,85 +553,85 @@ De pijplijn bevat een kopieeractiviteit die is geconfigureerd voor het gebruik v
 
 ## <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
 
-### <a name="problem-1-net-framework-data-provider"></a>Probleem 1: .NET Framework Data Provider
+### <a name="problem-1-net-framework-data-provider"></a>Probleem 1: .NET Framework gegevens provider
 
-**Foutbericht**
+**Fout bericht**
 
     Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
 
 **Mogelijke oorzaken**
 
-* De .NET Framework Data Provider voor Oracle is niet geïnstalleerd.
-* De .NET Framework Data Provider voor Oracle naar .NET Framework 2.0 is geïnstalleerd en is niet gevonden in de .NET Framework 4.0-mappen.
+* De .NET Framework gegevens provider voor Oracle is niet geïnstalleerd.
+* De .NET Framework-gegevens provider voor Oracle is geïnstalleerd op .NET Framework 2,0 en is niet gevonden in de .NET Framework 4,0-mappen.
 
-**Resolutie**
+**Opgelost**
 
-* Als u de .NET-Provider voor Oracle, nog niet hebt geïnstalleerd [installeren](https://www.oracle.com/technetwork/topics/dotnet/downloads/), en probeer het scenario.
-* Als u het foutbericht ziet, zelfs nadat u de provider hebt geïnstalleerd, kunt u de volgende stappen:
-    1. Open het configuratiebestand van de machine voor .NET 2.0 uit de map < systeemschijf\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-    2. Zoeken naar **Oracle-gegevensprovider voor .NET**. U moet kunnen geen vermelding vinden, zoals wordt weergegeven in het volgende voorbeeld onder **systeem.gegevens** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* Deze vermelding kopiëren naar het bestand machine.config in de volgende .NET 4.0-map: < systeemschijf\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Wijzig de versie in 4.xxx.x.x.
-* Installeer < ODP.NET geïnstalleerd pad\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll in de global assembly-cache (GAC) door te voeren **gacutil /i [providerpad]** .
+* Als u de .NET-Provider voor Oracle nog niet hebt geïnstalleerd, [installeert u deze](https://www.oracle.com/technetwork/topics/dotnet/downloads/)en voert u het scenario opnieuw uit.
+* Als u het fout bericht ziet, zelfs nadat u de provider hebt geïnstalleerd, voert u de volgende stappen uit:
+    1. Open het computer configuratie bestand voor .NET 2,0 van de map < systeem schijf\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Zoek naar de **Oracle-gegevens provider voor .net**. U moet een vermelding kunnen vinden, zoals wordt weer gegeven in het volgende voor beeld onder **System. data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* Kopieer deze vermelding naar het bestand Machine. config in de volgende .NET 4,0-map: < systeem schijf\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Wijzig vervolgens de versie in 4. xxx. x.x.
+* Installeer < ODP. NET installed Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll in de Global Assembly Cache (GAC) door het uitvoeren van **gacutil/i [provider pad]** .
 
-### <a name="problem-2-datetime-formatting"></a>Probleem 2: Datum/tijd opmaken
+### <a name="problem-2-datetime-formatting"></a>Probleem 2: notatie van datum/tijd
 
-**Foutbericht**
+**Fout bericht**
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**Resolutie**
+**Opgelost**
 
-Mogelijk moet u de gebruikte queryreeks in de kopieeractiviteit op basis van hoe datums zijn geconfigureerd in uw Oracle-database aanpassen. Hier volgt een voorbeeld (met behulp van de **to_date** functie):
+Mogelijk moet u de query reeks in uw Kopieer activiteit aanpassen op basis van de manier waarop datums worden geconfigureerd in de Oracle-data base. Hier volgt een voor beeld (met behulp van de functie **to_date** ):
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
-## <a name="type-mapping-for-oracle"></a>Toewijzing van het type voor Oracle
+## <a name="type-mapping-for-oracle"></a>Type toewijzing voor Oracle
 
-Zoals vermeld in [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md), Kopieeractiviteit wordt uitgevoerd automatisch typeconversies van typen gegevensbronnen met sink-typen met behulp van de volgende benadering voor verificatie in twee stappen:
+Zoals vermeld in [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md), voert Kopieer activiteit automatische type conversies uit van bron typen naar Sink-typen met behulp van de volgende twee stappen:
 
-1. Converteren van systeemeigen brontypen naar het .NET-type.
-2. Converteren van het .NET-type naar het systeemeigen sink-type.
+1. Conversie van systeem eigen bron typen naar het .NET-type.
+2. Converteer van het .NET-type naar het systeem eigen Sink-type.
 
-Wanneer u gegevens van Oracle hebt verplaatst, worden de volgende toewijzingen van de Oracle-gegevenstype naar het .NET-type en vice versa gebruikt:
+Wanneer u gegevens van Oracle verplaatst, worden de volgende toewijzingen gebruikt vanuit het Oracle-gegevens type naar het .NET-type en vice versa:
 
-| Oracle-gegevenstype | .NET framework-gegevenstype |
+| Oracle-gegevens type | .NET Framework gegevens type |
 | --- | --- |
-| BFILE |Byte[] |
-| BLOB |Byte[]<br/>(alleen ondersteund op Oracle 10g en latere versies wanneer u een stuurprogramma van Microsoft) |
-| CHAR |Reeks |
+| MENU |Byte [] |
+| BLOB |Byte []<br/>(alleen ondersteund op Oracle 10g en latere versies wanneer u een micro soft-stuur programma gebruikt) |
+| CHAR |Tekenreeks |
 | CLOB |Tekenreeks |
-| DATE |Datetime |
-| FLOAT |Decimal, String (als precisie > 28) |
-| INTEGER |Decimal, String (als precisie > 28) |
-| INTERVAL VOOR JAAR TOT MAAND |Int32 |
-| TWEEDE INTERVAL DAG |TimeSpan |
-| LONG |Tekenreeks |
-| LONG RAW |Byte[] |
-| NCHAR |Reeks |
+| DATE |DateTime |
+| FLOAT |Decimaal, teken reeks (als precisie > 28) |
+| GEHEELTALLIGE |Decimaal, teken reeks (als precisie > 28) |
+| INTERVAL JAAR TOT MAAND |Int32 |
+| INTERVAL VAN DAG TOT SECONDE |Duur |
+| OMVANG |Tekenreeks |
+| LANGE ONBEWERKTE |Byte [] |
+| NCHAR |Tekenreeks |
 | NCLOB |Tekenreeks |
-| NUMBER |Decimal, String (als precisie > 28) |
-| NVARCHAR2 |Reeks |
-| RAW |Byte[] |
+| TELWOORD |Decimaal, teken reeks (als precisie > 28) |
+| NVARCHAR2 |Tekenreeks |
+| UITGANG |Byte [] |
 | ROWID |Tekenreeks |
-| TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
-| TIMESTAMP WITH TIME ZONE |Datetime |
-| UNSIGNED INTEGER |Number |
+| Neem |DateTime |
+| TIJDS TEMPEL MET LOKALE TIJD ZONE |DateTime |
+| TIJDS TEMPEL MET TIJD ZONE |DateTime |
+| NIET-ONDERTEKEND GEHEEL GETAL |Aantal |
 | VARCHAR2 |Tekenreeks |
 | XML |Tekenreeks |
 
 > [!NOTE]
-> Gegevenstypen **INTERVAL jaar aan maand** en **INTERVAL dag aan tweede** worden niet ondersteund wanneer u een stuurprogramma van Microsoft.
+> De gegevens typen **interval jaar tot maand** en **interval dag tot seconde** worden niet ondersteund wanneer u een micro soft-stuur programma gebruikt.
 
-## <a name="map-source-to-sink-columns"></a>Kaartbron met sink-kolommen
+## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
 
-Zie voor meer informatie over het toewijzen van kolommen in de brongegevensset naar kolommen in de sink-gegevensset, [toewijzing van de kolommen van de gegevensset in Data Factory](data-factory-map-columns.md).
+Zie [DataSet-kolommen toewijzen in Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset naar kolommen in de Sink-gegevensset.
 
-## <a name="repeatable-read-from-relational-sources"></a>Herhaalbare lezen van relationele bronnen
+## <a name="repeatable-read-from-relational-sources"></a>Herhaal bare Lees bewerking van relationele bronnen
 
-Wanneer u gegevens van op opgeslagen relationele gegevens kopieert, houd er rekening mee om te voorkomen dat ongewenste resultaten herhaalbaarheid. In Azure Data Factory, kunt u een segment handmatig opnieuw uitvoeren. U kunt ook een beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment wordt opnieuw uitgevoerd wanneer een fout optreedt. Wanneer een segment wordt opnieuw uitgevoerd, ofwel handmatig of door een beleid voor opnieuw proberen, zorg ervoor dat dezelfde gegevens wordt lezen, ongeacht hoe vaak een segment uitgevoerd. Zie voor meer informatie, [Repeatable leesrechten voor relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Wanneer u gegevens van relationele gegevens archieven kopieert, moet u zich herhalen om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u hand matig een segment opnieuw uitvoeren. U kunt ook een beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment opnieuw wordt uitgevoerd, hetzij hand matig of door een beleid voor opnieuw proberen, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment is gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)voor meer informatie.
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
 
-Zie de [Kopieeractiviteit prestatie- en afstemmingshandleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory. U kunt ook meer informatie over de verschillende manieren om te optimaliseren.
+Raadpleeg de [hand leiding Copy activity Performance and Tuning (Engelstalig](data-factory-copy-activity-performance.md) ) voor meer informatie over de belangrijkste factoren die van invloed zijn op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory. U kunt ook meer informatie over de verschillende manieren om deze te optimaliseren.

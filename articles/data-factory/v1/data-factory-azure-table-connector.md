@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen naar/van Azure Table | Microsoft Docs
-description: Informatie over het verplaatsen van gegevens naar/van Azure Table Storage met Azure Data Factory.
+title: Gegevens verplaatsen van/naar Azure-tabel
+description: Meer informatie over het verplaatsen van gegevens naar/van Azure Table Storage met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,86 +13,86 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0c4f961dda273c7f3885159818dabf228abced42
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 83f3a34a9b902b3a0e3b3ded34e36c8cbf50ed89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839470"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683077"
 ---
-# <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Gegevens verplaatsen naar en van Azure-tabel met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
-> * [Versie 1:](data-factory-azure-table-connector.md)
+# <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Gegevens verplaatsen van en naar een Azure-tabel met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> * [Versie 1](data-factory-azure-table-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-table-storage.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Azure Table Storage-connector in V2](../connector-azure-table-storage.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Azure Table Storage-connector in v2](../connector-azure-table-storage.md).
 
-In dit artikel wordt uitgelegd hoe u de Kopieeractiviteit in Azure Data Factory gebruiken om gegevens naar/van Azure Table Storage te verplaatsen. Dit is gebaseerd op de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel een algemeen overzicht van de verplaatsing van gegevens met de kopieeractiviteit geeft. 
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te verplaatsen van/naar Azure Table Storage. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit. 
 
-U kunt gegevens kopiëren van een ondersteunde bron-gegevensopslag met Azure Table Storage of Azure Table Storage met alle ondersteunde sink-gegevensarchief. Zie voor een lijst met gegevensarchieven die worden ondersteund als gegevensbronnen of PUT voor de kopieeractiviteit, de [ondersteunde gegevensarchieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabel. 
+U kunt gegevens van elk ondersteund bron gegevens archief kopiëren naar Azure Table Storage of van Azure Table Storage naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bronnen of sinks op basis van de Kopieer activiteit. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijplijn maken met een kopieeractiviteit die gegevens naar/van een Azure-tabelopslag verplaatst met behulp van verschillende hulpprogramma's / API's.
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van/naar een Azure-Table Storage met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijplijn te maken is met de **Kopieerwizard**. Zie [zelfstudie: Een pijplijn maken met de Wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snel overzicht van het maken van een pijplijn met behulp van de wizard kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sjabloon**, **.NET API**, en **REST-API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. 
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. 
 
-Of u de hulpprogramma's of API's gebruikt, kunt u de volgende stappen uit voor het maken van een pijplijn die gegevens van een brongegevensarchief naar een sink-gegevensopslag verplaatst uitvoeren: 
+Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst: 
 
-1. Maak **gekoppelde services** opgeslagen om invoer- en gegevens te koppelen aan uw data factory.
-2. Maak **gegevenssets** te vertegenwoordigen invoer- en uitvoergegevens voor de kopieerbewerking. 
-3. Maak een **pijplijn** met een kopieeractiviteit waarmee een gegevensset als invoer en een gegevensset als uitvoer. 
+1. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory.
+2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. 
+3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. 
 
-Wanneer u de wizard gebruikt, worden de JSON-definities voor deze Data Factory-entiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u hulpprogramma's / API's (met uitzondering van de .NET API), kunt u deze Data Factory-entiteiten definiëren met behulp van de JSON-indeling. Zie voor voorbeelden met JSON-definities voor Data Factory-entiteiten die worden gebruikt om gegevens te kopiëren naar/van een Azure-tabelopslag [JSON voorbeelden](#json-examples) sectie van dit artikel.
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie de sectie [JSON-voor beelden](#json-examples) in dit artikel voor steek proeven met JSON-definities voor Data Factory entiteiten die worden gebruikt om gegevens te kopiëren van/naar een Azure-Table Storage.
 
-De volgende secties bevatten meer informatie over JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten die specifiek voor Azure Table Storage: 
+De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure Table Storage: 
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-Er zijn twee soorten gekoppelde services, die kunt u een Azure blob-opslag aan een Azure data factory koppelen. Dit zijn: **AzureStorage** gekoppelde service en **AzureStorageSas** gekoppelde service. De gekoppelde Azure Storage-service biedt de data factory met wereldwijde toegang tot Azure Storage. Terwijl de Azure Storage SAS (Shared Access Signature) gekoppelde biedt service de data factory met beperkte/tijdelijke toegang naar Azure Storage. Er zijn geen andere verschillen tussen de twee gekoppelde services. Kies de gekoppelde service die tegemoetkomt aan uw behoeften. De volgende secties vindt u meer informatie over deze twee gekoppelde services.
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+Er zijn twee soorten gekoppelde services die u kunt gebruiken om een Azure Blob-opslag te koppelen aan een Azure-data factory. Dit zijn: **opslag** gekoppelde service en **azurestoragesas zijn** gekoppelde service. De Azure Storage gekoppelde service biedt de data factory globale toegang tot de Azure Storage. Overwegende dat de gekoppelde service van Azure Storage SAS (Shared Access Signature) de data factory met beperkte/gebonden toegang tot de Azure Storage biedt. Er zijn geen andere verschillen tussen deze twee gekoppelde services. Kies de gekoppelde service die aansluit bij uw behoeften. In de volgende secties vindt u meer informatie over deze twee gekoppelde services.
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets maken](data-factory-create-datasets.md) artikel. Secties, zoals de structuur, beschikbaarheid en het beleid van een gegevensset JSON zijn vergelijkbaar voor alle typen van gegevensset (Azure SQL, Azure-blob, Azure-tabel, enz.).
+Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
 
-De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevensarchief. De **typeProperties** sectie voor de gegevensset van het type **AzureTable** heeft de volgende eigenschappen.
+De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **AzureTable** heeft de volgende eigenschappen.
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |De naam van de tabel in de Azure Table-Database-instantie waarnaar de gekoppelde service verwijst. |Ja. Wanneer een tabelnaam wordt opgegeven zonder een azureTableSourceQuery, worden alle records uit de tabel worden gekopieerd naar de bestemming. Als een azureTableSourceQuery ook is opgegeven, worden records uit de tabel die voldoet aan de query worden gekopieerd naar de bestemming. |
+| tableName |De naam van de tabel in de Azure Table-Data Base-instantie waarnaar de gekoppelde service verwijst. |Ja. Wanneer een TableName zonder azureTableSourceQuery is opgegeven, worden alle records uit de tabel naar de bestemming gekopieerd. Als er ook een azureTableSourceQuery is opgegeven, worden records uit de tabel die aan de query voldoen, gekopieerd naar de bestemming. |
 
 ### <a name="schema-by-data-factory"></a>Schema door Data Factory
-Voor de winkels schemavrije gegevens, zoals Azure Table bepaalt de Data Factory-service het schema in een van de volgende manieren:
+Voor gegevens archieven zonder schema, zoals Azure Table, leidt de Data Factory-service het schema op een van de volgende manieren af:
 
-1. Als u de structuur van gegevens met behulp van de **structuur** eigenschap in de definitie van de Data Factory-service zich houdt aan deze structuur als het schema. In dit geval, als een rij geen waarde voor een kolom bevat, wordt een null-waarde opgegeven voor deze.
-2. Als u de structuur van de gegevens niet via opgeeft de **structuur** eigenschap in de definitie van de Data Factory bepaalt welk schema met behulp van de eerste rij in de gegevens. Als de eerste rij niet het volledige schema bevat, worden sommige kolommen in dit geval ontbreekt in het resultaat van de kopieerbewerking.
+1. Als u de structuur van gegevens opgeeft met behulp van de eigenschap **structure** in de definitie van de gegevensset, wordt deze structuur door de Data Factory-service als schema geaccepteerd. Als in dit geval een rij geen waarde voor een kolom bevat, wordt er een null-waarde voor gegeven.
+2. Als u de structuur van gegevens niet opgeeft met behulp van de eigenschap **structure** in de definitie van de gegevensset, wordt het schema door Data Factory afgeleid van de eerste rij in de gegevens. Als in dit geval de eerste rij niet het volledige schema bevat, worden bepaalde kolommen niet in het resultaat van de Kopieer bewerking gemist.
 
-Daarom voor gegevensbronnen zonder schema, de aanbevolen procedure is om op te geven van de structuur van het gebruik van gegevens de **structuur** eigenschap.
+Daarom is het best practice voor gegevens bronnen met een schema om de structuur van de gegevens op te geven met behulp van de eigenschap **structure** .
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen maken](data-factory-create-pipelines.md) artikel. Eigenschappen zoals naam, beschrijving, invoer en uitvoer gegevenssets en beleidsregels zijn beschikbaar voor alle soorten activiteiten.
+Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer gegevens sets en beleids regels zijn beschikbaar voor alle typen activiteiten.
 
-Eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit afhankelijk aan de andere kant van elk activiteitstype. Ze verschillen voor de kopieeractiviteit, afhankelijk van de typen van bronnen en sinks.
+De eigenschappen die beschikbaar zijn in de typeProperties-sectie van de activiteit, verschillen per type activiteit. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
 
 **AzureTableSource** ondersteunt de volgende eigenschappen in de sectie typeProperties:
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |De aangepaste query gebruiken om gegevens te lezen. |Azure-tabel query-tekenreeks. Zie de voorbeelden in de volgende sectie. |Nee. Wanneer een tabelnaam wordt opgegeven zonder een azureTableSourceQuery, worden alle records uit de tabel worden gekopieerd naar de bestemming. Als een azureTableSourceQuery ook is opgegeven, worden records uit de tabel die voldoet aan de query worden gekopieerd naar de bestemming. |
-| azureTableSourceIgnoreTableNotFound |Aangeven of de uitzondering van de tabel slikken niet bestaat. |DE WAARDE TRUE<br/>DE WAARDE FALSE |Nee |
+| azureTableSourceQuery |Gebruik de aangepaste query om gegevens te lezen. |Query reeks voor Azure Table. Zie de voor beelden in de volgende sectie. |Nee. Wanneer een TableName zonder azureTableSourceQuery is opgegeven, worden alle records uit de tabel naar de bestemming gekopieerd. Als er ook een azureTableSourceQuery is opgegeven, worden records uit de tabel die aan de query voldoen, gekopieerd naar de bestemming. |
+| azureTableSourceIgnoreTableNotFound |Geef aan of de uitzonde ring van de tabel niet bestaat. |ECHTE<br/>TERECHT |Nee |
 
-### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-voorbeelden
-Als Azure Table-kolom van het tekenreekstype:
+### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-voor beelden
+Als de kolom van een Azure-tabel van het teken reeks type is:
 
 ```JSON
 azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)"
 ```
 
-Als Azure Table-kolom van het type datum/tijd:
+Als de Azure-tabel kolom van het type datetime is:
 
 ```JSON
 "azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
@@ -100,19 +100,19 @@ Als Azure Table-kolom van het type datum/tijd:
 
 **AzureTableSink** ondersteunt de volgende eigenschappen in de sectie typeProperties:
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |Standaard partitiesleutelwaarde die kan worden gebruikt door de sink. |Een string-waarde. |Nee |
-| azureTablePartitionKeyName |Geef de naam van de kolom waarvan de waarden worden gebruikt als partitiesleutels. Als niet is opgegeven, wordt AzureTableDefaultPartitionKeyValue gebruikt als de partitiesleutel. |De naam van een kolom. |Nee |
-| azureTableRowKeyName |Geef de naam van de kolom waarvan de kolomwaarden worden gebruikt als de rijsleutel. Als niet is opgegeven, gebruikt u een GUID voor elke rij. |De naam van een kolom. |Nee |
-| azureTableInsertType |De modus invoegen van gegevens in Azure-tabel.<br/><br/>Deze eigenschap bepaalt of bestaande rijen in de uitvoertabel met de bijbehorende partitie-en recordsleutels hebben hun waarden vervangen of samenvoegen. <br/><br/>Zie voor meer informatie over de werking van deze instellingen (samenvoegen en vervangen), [invoegen of samenvoegen entiteit](https://msdn.microsoft.com/library/azure/hh452241.aspx) en [invoegen of vervangen entiteit](https://msdn.microsoft.com/library/azure/hh452242.aspx) onderwerpen. <br/><br> Deze instelling is van toepassing op het rijniveau van de, niet in de tabelniveau en geen van beide optie verwijdert rijen in de uitvoertabel die niet zijn opgenomen in de invoer. |samenvoegen (standaard)<br/>replace |Nee |
-| writeBatchSize |Voegt de gegevens in de Azure-tabel wanneer de writeBatchSize of writeBatchTimeout is bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
-| writeBatchTimeout |Voegt de gegevens in de Azure-tabel wanneer de writeBatchSize of writeBatchTimeout is bereikt |timespan<br/><br/>Voorbeeld: "00: 20:00" (20 minuten) |Nee (standaard ingesteld op de standaardtime-out opslag client waarde 90 sec.) |
+| azureTableDefaultPartitionKeyValue |Standaard waarde voor de partitie sleutel die door de Sink kan worden gebruikt. |Een teken reeks waarde. |Nee |
+| azureTablePartitionKeyName |Geef de naam op van de kolom waarvan de waarden worden gebruikt als partitie sleutels. Als u niets opgeeft, wordt AzureTableDefaultPartitionKeyValue gebruikt als partitie sleutel. |Een kolom naam. |Nee |
+| azureTableRowKeyName |Geef de naam van de kolom op waarvan de kolom waarden worden gebruikt als rijdefinitie. Als u deze niet opgeeft, gebruikt u een GUID voor elke rij. |Een kolom naam. |Nee |
+| azureTableInsertType |De modus om gegevens in de Azure-tabel in te voegen.<br/><br/>Met deze eigenschap bepaalt u of bestaande rijen in de uitvoer tabel met overeenkomende partitie-en rijlabels hun waarden vervangen of samengevoegd hebben. <br/><br/>Zie entiteit [invoegen of samen voegen](https://msdn.microsoft.com/library/azure/hh452241.aspx) en onderwerpen over [entiteiten invoegen of vervangen](https://msdn.microsoft.com/library/azure/hh452242.aspx) voor meer informatie over hoe deze instellingen (samen voegen en vervangen) werken. <br/><br> Deze instelling is van toepassing op het niveau van de rij, niet op het tabel niveau, en geen van beide opties verwijdert rijen in de uitvoer tabel die niet voor komen in de invoer. |Samen voegen (standaard)<br/>vervangen |Nee |
+| writeBatchSize |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
+| writeBatchTimeout |Hiermee worden gegevens in de Azure-tabel ingevoegd wanneer de writeBatchSize of writeBatchTimeout wordt bereikt |duur<br/><br/>Voor beeld: "00:20:00" (20 minuten) |Nee (standaard waarde voor standaard time-outwaarde voor Storage-client 90 sec) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
-Een bronkolom worden toegewezen aan een doelkolom met de translator JSON-eigenschap voordat u de doelkolom als de azureTablePartitionKeyName gebruiken kunt.
+Wijs een bron kolom toe aan een doel kolom met behulp van de JSON-eigenschap Translator voordat u de doel kolom kunt gebruiken als de azureTablePartitionKeyName.
 
-In het volgende voorbeeld is de bronkolom DivisionID toegewezen aan de doelkolom: DivisionID.  
+In het volgende voor beeld wordt bron kolom DivisionID toegewezen aan de doel kolom: DivisionID.  
 
 ```JSON
 "translator": {
@@ -120,7 +120,7 @@ In het volgende voorbeeld is de bronkolom DivisionID toegewezen aan de doelkolom
     "columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
 }
 ```
-De DivisionID is opgegeven als de partitiesleutel.
+De DivisionID is opgegeven als de partitie sleutel.
 
 ```JSON
 "sink": {
@@ -130,20 +130,20 @@ De DivisionID is opgegeven als de partitiesleutel.
     "writeBatchTimeout": "01:00:00"
 }
 ```
-## <a name="json-examples"></a>JSON-voorbeelden
-De volgende voorbeelden geven een voorbeeld van JSON-definities die u gebruiken kunt voor het maken van een pijplijn met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe het kopiëren van gegevens naar en vanuit Azure Table Storage en Azure Blob-Database. Echter, de gegevens kunnen worden gekopieerd **rechtstreeks** uit een van de bronnen aan een van de ondersteunde Put. Zie voor meer informatie de sectie 'ondersteunde gegevensarchieven en indelingen' in [gegevens verplaatsen met behulp van Kopieeractiviteit](data-factory-data-movement-activities.md).
+## <a name="json-examples"></a>JSON-voor beelden
+De volgende voor beelden bieden voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens kopieert van en naar Azure Table Storage en Azure Blob data base. Gegevens kunnen echter **rechtstreeks** vanuit een van de bronnen naar een van de ondersteunde sinks worden gekopieerd. Zie de sectie ondersteunde gegevens archieven en-indelingen in [gegevens verplaatsen met behulp van Kopieer activiteit](data-factory-data-movement-activities.md)voor meer informatie.
 
-## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>Voorbeeld: Gegevens kopiëren van Azure Table naar Azure Blob
-Het volgende voorbeeld laat zien:
+## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>Voor beeld: gegevens kopiëren van een Azure-tabel naar een Azure-Blob
+In het volgende voor beeld ziet u:
 
-1. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (gebruikt voor tabel- en blob).
-2. Invoer [gegevensset](data-factory-create-datasets.md) van het type [AzureTable](#dataset-properties).
-3. Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. De [pijplijn](data-factory-create-pipelines.md) met de kopieeractiviteit die gebruikmaakt van AzureTableSource en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties) (gebruikt voor beide tabel & blob).
+2. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureTable](#dataset-properties).
+3. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+4. De [pijp lijn](data-factory-create-pipelines.md) met Kopieer activiteit die gebruikmaakt van AzureTableSource en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld worden gegevens die behoren tot de standaardpartitie in een Azure-tabel naar een blob eenmaal per uur. De JSON-eigenschappen die in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het voor beeld worden elk uur gegevens gekopieerd die deel uitmaken van de standaard partitie in een Azure-tabel naar een blob. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**Gekoppelde Azure storage-service:**
+**Gekoppelde Azure Storage-service:**
 
 ```JSON
 {
@@ -156,13 +156,13 @@ Het voorbeeld worden gegevens die behoren tot de standaardpartitie in een Azure-
   }
 }
 ```
-Azure Data Factory ondersteunt twee typen gekoppelde Azure Storage-services: **AzureStorage** en **AzureStorageSas**. U de verbindingsreeks met de accountsleutel opgeven voor de eerste versie, en voor de latere versie, geeft u de Shared Access Signature (SAS)-Uri. Zie [gekoppelde Services](#linked-service-properties) sectie voor meer informatie.  
+Azure Data Factory ondersteunt twee typen Azure Storage gekoppelde services: **opslag** en **azurestoragesas zijn**. Voor de eerste geeft u de connection string op die de account sleutel bevat en voor de latere versie, geeft u de Shared Access Signature (SAS)-URI op. Zie de sectie [gekoppelde services](#linked-service-properties) voor meer informatie.  
 
-**Azure Table-invoer gegevensset:**
+**Invoer gegevensset voor Azure-tabel:**
 
-Het voorbeeld wordt ervan uitgegaan dat u hebt een tabel 'MyTable' gemaakt in Azure-tabel.
+In het voor beeld wordt ervan uitgegaan dat u in azure Table een tabel ' MyTable ' hebt gemaakt.
 
-Instellen van "extern": "true" informeert de Data Factory-service dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+Als u ' Extern ' instelt, informeert de Data Factory-service dat de gegevensset extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
 
 ```JSON
 {
@@ -189,9 +189,9 @@ Instellen van "extern": "true" informeert de Data Factory-service dat de dataset
 }
 ```
 
-**Azure Blob-uitvoergegevensset:**
+**Azure Blob-uitvoer gegevensset:**
 
-Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en interval: 1). Het pad naar de map voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map wordt gebruikt voor jaar, maand, dag en uur onderdelen van de begintijd.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
 
 ```JSON
 {
@@ -249,9 +249,9 @@ Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en inte
 }
 ```
 
-**De kopieeractiviteit in een pijplijn met AzureTableSource en BlobSink:**
+**Kopieer activiteit in een pijp lijn met AzureTableSource en BlobSink:**
 
-De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **AzureTableSource** en **sink** type is ingesteld op **BlobSink**. De SQL-query die is opgegeven met **AzureTableSourceQuery** eigenschap selecteert u de gegevens uit de standaardpartitie elk uur om te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **AzureTableSource** en het **sink** -type is ingesteld op **BlobSink**. De SQL-query die is opgegeven met de eigenschap **AzureTableSourceQuery** selecteert de gegevens van de standaard partitie elk uur om te kopiëren.
 
 ```JSON
 {
@@ -300,17 +300,17 @@ De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik v
 }
 ```
 
-## <a name="example-copy-data-from-azure-blob-to-azure-table"></a>Voorbeeld: Gegevens kopiëren van Azure-Blob naar Azure-tabel
-Het volgende voorbeeld laat zien:
+## <a name="example-copy-data-from-azure-blob-to-azure-table"></a>Voor beeld: gegevens kopiëren van Azure Blob naar Azure-tabel
+In het volgende voor beeld ziet u:
 
-1. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (gebruikt voor tabel- en blob)
-2. Invoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-3. Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureTable](#dataset-properties).
-4. De [pijplijn](data-factory-create-pipelines.md) met de kopieeractiviteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en [AzureTableSink](#copy-activity-properties).
+1. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties) (gebruikt voor beide tabel & blob)
+2. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+3. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureTable](#dataset-properties).
+4. De [pijp lijn](data-factory-create-pipelines.md) met Kopieer activiteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en [AzureTableSink](#copy-activity-properties).
 
-De voorbeeld-kopieën time series-gegevens van een Azure blob naar een Azure tabel per uur. De JSON-eigenschappen die in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het voor beeld worden gegevens van een tijd reeks gekopieerd van een Azure-Blob naar een Azure-tabel per uur. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**Gekoppelde Azure storage (voor Azure Table en Blob)-service:**
+**Azure-opslag (voor zowel Azure Table & blob) gekoppelde service:**
 
 ```JSON
 {
@@ -324,11 +324,11 @@ De voorbeeld-kopieën time series-gegevens van een Azure blob naar een Azure tab
 }
 ```
 
-Azure Data Factory ondersteunt twee typen gekoppelde Azure Storage-services: **AzureStorage** en **AzureStorageSas**. U de verbindingsreeks met de accountsleutel opgeven voor de eerste versie, en voor de latere versie, geeft u de Shared Access Signature (SAS)-Uri. Zie [gekoppelde Services](#linked-service-properties) sectie voor meer informatie.
+Azure Data Factory ondersteunt twee typen Azure Storage gekoppelde services: **opslag** en **azurestoragesas zijn**. Voor de eerste geeft u de connection string op die de account sleutel bevat en voor de latere versie, geeft u de Shared Access Signature (SAS)-URI op. Zie de sectie [gekoppelde services](#linked-service-properties) voor meer informatie.
 
-**Azure Blob-invoergegevensset:**
+**Invoer gegevensset voor Azure Blob:**
 
-Gegevens wordt opgehaald uit een nieuwe blob elk uur (frequentie: uur en interval: 1). Pad en naam van de map voor de blob worden dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map gebruikt jaar, maand en dag deel uit van de begintijd en de bestandsnaam wordt gebruikt voor het uur deel van de begintijd. "extern": "true" instelling informeert de Data Factory-service dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+Gegevens worden elk uur uit een nieuwe BLOB opgehaald (frequentie: uur, interval: 1). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het gedeelte Year, month en Day van de begin tijd en de bestands naam maakt gebruik van het uur gedeelte van de begin tijd. met de instelling ' Extern ': ' waar ' wordt de Data Factory-service informeert dat de gegevensset extern is voor de data factory en niet wordt geproduceerd door een activiteit in de data factory.
 
 ```JSON
 {
@@ -395,9 +395,9 @@ Gegevens wordt opgehaald uit een nieuwe blob elk uur (frequentie: uur en interva
 }
 ```
 
-**Azure Table-uitvoergegevensset:**
+**Azure-tabel uitvoer gegevensset:**
 
-Het voorbeeld worden gegevens gekopieerd naar een tabel met de naam 'MyTable' in de Azure-tabel. Zoals u verwacht dat de Blob-CSV-bestand bevat, moet u een Azure-tabel maken met hetzelfde aantal kolommen. Nieuwe rijen zijn toegevoegd aan de tabel om het uur.
+In het voor beeld worden gegevens gekopieerd naar een tabel met de naam ' MyTable ' in azure Table. Maak een Azure-tabel met hetzelfde aantal kolommen als u verwacht dat het CSV-bestand van de BLOB bevat. Nieuwe rijen worden elk uur aan de tabel toegevoegd.
 
 ```JSON
 {
@@ -416,9 +416,9 @@ Het voorbeeld worden gegevens gekopieerd naar een tabel met de naam 'MyTable' in
 }
 ```
 
-**De kopieeractiviteit in een pijplijn met BlobSource en AzureTableSink:**
+**Kopieer activiteit in een pijp lijn met BlobSource en AzureTableSink:**
 
-De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **BlobSource** en **sink** type is ingesteld op **AzureTableSink**.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **BlobSource** en het **sink** -type is ingesteld op **AzureTableSink**.
 
 ```JSON
 {
@@ -467,31 +467,31 @@ De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik v
   }
 }
 ```
-## <a name="type-mapping-for-azure-table"></a>Toewijzing van het type voor Azure-tabel
-Zoals vermeld in de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel kopieeractiviteit wordt uitgevoerd automatisch typeconversies van typen gegevensbronnen met sink-type met de volgende methode voor verificatie in twee stappen.
+## <a name="type-mapping-for-azure-table"></a>Type toewijzing voor Azure-tabel
+Zoals vermeld in het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) voert Kopieer activiteit automatisch type conversies uit van bron typen naar Sink-typen met de volgende twee stappen.
 
-1. Systeemeigen brontypen converteren naar .NET-type
-2. .NET-type converteren naar systeemeigen sink-type
+1. Converteren van systeem eigen bron typen naar .NET-type
+2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Wanneer het verplaatsen van gegevens naar en van Azure Table, de volgende [toewijzingen die zijn gedefinieerd door Azure Table-service](https://msdn.microsoft.com/library/azure/dd179338.aspx) worden gebruikt vanaf Azure tabel OData typen .NET-type en vice versa.
+Bij het verplaatsen van gegevens naar & vanuit een Azure-tabel, worden de volgende toewijzingen die zijn [gedefinieerd door azure Table service](https://msdn.microsoft.com/library/azure/dd179338.aspx) vanuit Azure Table OData-typen gebruikt tot .net-type en vice versa.
 
-| OData-gegevenstype | .NET-type | Details |
+| OData-gegevens type | .NET-type | Details |
 | --- | --- | --- |
-| Edm.Binary |byte[] |Een matrix van bytes maximaal 64 KB. |
+| EDM. binary |byte [] |Een byte matrix van Maxi maal 64 KB. |
 | Edm.Boolean |bool |Een Booleaanse waarde. |
-| Edm.DateTime |Datetime |Een 64-bits waarde wordt uitgedrukt als Coordinated Universal Time (UTC). Het ondersteunde bereik voor de datum/tijd van kracht vanaf 12:00 middernacht, 1 januari 1601 A.D. (C.E.), UTC. Het bereik eindigt op 31 December 9999. |
-| Edm.Double |double |Een 64-bits drijvende-kommawaarde. |
-| Edm.Guid |Guid |Een globaal unieke id van 128-bits. |
-| Edm.Int32 |Int32 |Een 32-bits geheel getal zijn. |
-| Edm.Int64 |Int64 |Een 64-bits geheel getal zijn. |
-| Edm.String |Tekenreeks |Een waarde UTF-16-codering. Tekenreekswaarden kunnen maximaal 64 KB zijn. |
+| EDM. DateTime |DateTime |Een waarde van 64 bits, uitgedrukt als Coordinated Universal Time (UTC). Het ondersteunde DateTime-bereik begint van 12:00 middernacht, 1 januari 1601 n. (C.E.), UTC. Het bereik eindigt op 31 december 9999. |
+| Edm.Double |double |Een 64-bits drijvende-komma waarde. |
+| EDM. GUID |GUID |Een 128-bits Globally Unique Identifier. |
+| Edm.Int32 |Int32 |Een 32-bits geheel getal. |
+| Edm.Int64 |Int64 |Een 64-bits geheel getal. |
+| Edm.String |Tekenreeks |Een UTF-16-gecodeerde waarde. Teken reeks waarden kunnen Maxi maal 64 KB zijn. |
 
-### <a name="type-conversion-sample"></a>Type conversie voorbeeld
-Het volgende voorbeeld is voor het kopiëren van gegevens uit een Azure-Blob naar Azure-tabel met typeconversies.
+### <a name="type-conversion-sample"></a>Voor beeld van type conversie
+Het volgende voor beeld is voor het kopiëren van gegevens van een Azure-Blob naar een Azure-tabel met type conversies.
 
-Stel dat u de Blob-gegevensset in CSV-indeling en bevat drie kolommen. Een van beide is een datum/tijd-kolom met een aangepaste datum / tijdindeling met behulp van Franse afkortingen voor de dag van de week.
+Stel dat de BLOB-gegevensset in CSV-indeling is en drie kolommen bevat. Een van de twee is een datum/tijd-kolom met een aangepaste datum/tijd notatie met verkorte Franse namen voor de dag van de week.
 
-Definieer de bron van de Blob-gegevensset als volgt samen met de definities voor de kolommen.
+Definieer de bron-gegevensset van de BLOB als volgt, samen met de type definities voor de kolommen.
 
 ```JSON
 {
@@ -531,17 +531,17 @@ Definieer de bron van de Blob-gegevensset als volgt samen met de definities voor
     }
 }
 ```
-Toewijzing van het type van Azure Table OData-type opgegeven voor .NET-type, zou u de tabel in Azure-tabel definiëren met het volgende schema.
+Op basis van het type toewijzing van het OData-type van de Azure Table aan .NET-type, definieert u de tabel in azure Table met het volgende schema.
 
-**Azure Table schema:**
+**Azure-tabel schema:**
 
-| De naam van kolom | type |
+| Kolom naam | Type |
 | --- | --- |
 | userid |Edm.Int64 |
-| name |Edm.String |
-| lastlogindate |Edm.DateTime |
+| naam |Edm.String |
+| lastlogindate |EDM. DateTime |
 
-Vervolgens definieert u de Azure Table-gegevensset als volgt. U hoeft niet opgeven voor "structuur" sectie met informatie over het omdat informatie over het al is opgegeven in het onderliggende gegevensarchief.
+Definieer vervolgens de Azure Table-gegevensset als volgt. U hoeft geen sectie ' Structure ' op te geven met het type informatie omdat de type-informatie al is opgegeven in het onderliggende gegevens archief.
 
 ```JSON
 {
@@ -560,10 +560,10 @@ Vervolgens definieert u de Azure Table-gegevensset als volgt. U hoeft niet opgev
 }
 ```
 
-In dit geval Data Factory automatisch gegevenstypeconversies met inbegrip van de datum/tijd-veld met de aangepaste datum / tijdindeling met behulp van de cultuur "fr-fr" bij het verplaatsen van gegevens uit Blob naar Azure-tabel.
+In dit geval typt Data Factory automatisch conversies, inclusief het veld datetime met de aangepaste datum/tijd-indeling met de ' fr-fr ' cultuur bij het verplaatsen van gegevens van BLOB naar Azure Table.
 
 > [!NOTE]
-> Zie het toewijzen van kolommen in de brongegevensset op kolommen uit de sink-gegevensset [toewijzing van kolommen in Azure Data Factory](data-factory-map-columns.md).
+> Als u kolommen van de bron-gegevensset wilt toewijzen aan kolommen uit Sink-gegevensset, raadpleegt u [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md).
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie voor meer informatie over de belangrijkste factoren die invloed prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory en de verschillende manieren om te optimaliseren, [prestaties kopiëren en Afstemmingshandleiding](data-factory-copy-activity-performance.md).
+## <a name="performance-and-tuning"></a>Prestaties en afstemming
+Zie voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in Azure Data Factory en verschillende manieren om deze te optimaliseren, de [Kopieer activiteit prestaties & Tuning Guide](data-factory-copy-activity-performance.md).

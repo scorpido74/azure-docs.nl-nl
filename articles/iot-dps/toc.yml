@@ -141,6 +141,8 @@
       href: how-to-legacy-device-symm-key.md
     - name: SDK-hulpprogramma's gebruiken voor ontwikkeling
       href: how-to-use-sdk-tools.md
+    - name: Aanvullende gegevens vanaf apparaten verzenden
+      href: how-to-send-additional-data.md
     - name: Problemen oplossen
       href: how-to-troubleshoot-dps.md
 - name: Naslaginformatie

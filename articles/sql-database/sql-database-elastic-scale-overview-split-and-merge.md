@@ -1,5 +1,5 @@
 ---
-title: Gegevens verplaatsen tussen uitgeschaalde Cloud databases | Microsoft Docs
+title: Gegevens verplaatsen tussen uitgeschaalde clouddatabases
 description: Hierin wordt uitgelegd hoe u Shards kunt manipuleren en gegevens kunt verplaatsen via een zelf-hostende service via Elastic data base-Api's.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b2203b7fb9e168b251eda16a9505ae2004b0460
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568388"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690186"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Gegevens verplaatsen tussen uitgeschaalde clouddatabases
 
@@ -26,9 +26,9 @@ Het hulp programma voor splitsen en samen voegen wordt uitgevoerd als een Azure-
 
 ![Overzicht][1]
 
-## <a name="download"></a>Downloaden
+## <a name="download"></a>Download
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Micro soft. Azure. SqlDatabase. ElasticScale. service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Documentatie
 
@@ -62,7 +62,7 @@ Het hulp programma voor splitsen en samen voegen wordt uitgevoerd als een Azure-
 
 - **Door de klant gehoste services**
 
-  De Split-Merge wordt geleverd als een door de klant gehoste service. U moet de service implementeren en hosten in uw Microsoft Azure-abonnement. Het pakket dat u downloadt van NuGet bevat een configuratie sjabloon die u kunt volt ooien met de informatie voor uw specifieke implementatie. Raadpleeg de [zelf studie voor splitsen en samen voegen](sql-database-elastic-scale-configure-deploy-split-and-merge.md) voor meer informatie. Omdat de service wordt uitgevoerd in uw Azure-abonnement, kunt u de meeste beveiligings aspecten van de service beheren en configureren. De standaard sjabloon bevat de opties voor het configureren van SSL, client authenticatie op basis van certificaten, versleuteling voor opgeslagen referenties, DoS-beveiliging en IP-beperkingen. Meer informatie over de beveiligings aspecten vindt u in de volgende [beveiligings configuratie](sql-database-elastic-scale-split-merge-security-configuration.md)voor het samen voegen van documenten.
+  De Split-Merge wordt geleverd als een door de klant gehoste service. U moet de service implementeren en hosten in uw Microsoft Azure-abonnement. Het pakket dat u downloadt van NuGet bevat een configuratie sjabloon die u kunt volt ooien met de informatie voor uw specifieke implementatie. Raadpleeg de [zelf studie voor splitsen en samen voegen](sql-database-elastic-scale-configure-deploy-split-and-merge.md) voor meer informatie. Omdat de service wordt uitgevoerd in uw Azure-abonnement, kunt u de meeste beveiligings aspecten van de service beheren en configureren. De standaard sjabloon bevat de opties voor het configureren van SSL, client authenticatie op basis van certificaten, versleuteling voor opgeslagen referenties, DoS-beveiliging en IP-beperkingen. Meer informatie over de beveiligings aspecten vindt u in de volgende [beveiligings configuratie voor het samen voegen](sql-database-elastic-scale-split-merge-security-configuration.md)van documenten.
 
   De standaard geïmplementeerde service wordt uitgevoerd met één werk nemer en één webrole. Elk maakt gebruik van de a1 VM-grootte in azure Cloud Services. Hoewel u deze instellingen niet kunt wijzigen wanneer u het pakket implementeert, kunt u deze wijzigen na een geslaagde implementatie in de actieve Cloud service, (via de Azure Portal). Houd er rekening mee dat de rol van werk nemers om technische redenen niet voor meer dan één instantie mag worden geconfigureerd.
 
@@ -98,7 +98,7 @@ Het hulp programma voor splitsen en samen voegen wordt uitgevoerd als een Azure-
 
     Er kunnen andere tabellen aanwezig zijn op de bron of het doel van een split-en samenvoeg bewerking. De Split-Merge-service negeert deze tabellen voor het verplaatsen of kopiëren van gegevens. Houd er echter rekening mee dat ze deze bewerkingen in geval van beperkingen kunnen verstoren.
 
-    De informatie over verwijzing tegenover Shard-tabellen wordt verstrekt door de `SchemaInfo` api's op de Shard-kaart. In het volgende voor beeld ziet u hoe u deze Api's kunt gebruiken op een bepaald Shard Manager-object:
+    De informatie over verwijzing tegenover Shard-tabellen wordt verstrekt door de `SchemaInfo`-Api's op de Shard-kaart. In het volgende voor beeld ziet u hoe u deze Api's kunt gebruiken op een bepaald Shard Manager-object:
 
     ```csharp
     // Create the schema annotations
@@ -115,7 +115,7 @@ Het hulp programma voor splitsen en samen voegen wordt uitgevoerd als een Azure-
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    De tabellen ' regio ' en ' land ' worden gedefinieerd als referentie tabellen en worden gekopieerd met splitsen/samen voegen/verplaatsen. klant en orders worden op zijn beurt gedefinieerd als Shard-tabellen. `C_CUSTKEY`en `O_CUSTKEY` dienen als de sharding-sleutel.
+    De tabellen ' regio ' en ' land ' worden gedefinieerd als referentie tabellen en worden gekopieerd met splitsen/samen voegen/verplaatsen. klant en orders worden op zijn beurt gedefinieerd als Shard-tabellen. `C_CUSTKEY` en `O_CUSTKEY` fungeren als de sharding-sleutel.
 
 - **Referentiële integriteit**
 
@@ -175,7 +175,7 @@ De huidige implementatie van de service Split-Merge is onderhevig aan de volgend
 - Tijdens de verwerking van aanvragen kunnen bepaalde shardlet gegevens aanwezig zijn op de bron-en doel-Shard. Dit is nodig om te beschermen tegen fouten tijdens de shardlet-verplaatsing. De integratie van splitsen en samen voegen met de Shard-kaart zorgt ervoor dat verbindingen via de gegevens afhankelijke routerings-Api's die gebruikmaken van de methode **OpenConnectionForKey** op de Shard-kaart, geen inconsistente tussenliggende statussen zien. Wanneer u echter verbinding maakt met de bron-of doel-Shards zonder de methode **OpenConnectionForKey** te gebruiken, zijn inconsistente tussenliggende statussen mogelijk zichtbaar wanneer er aanvragen voor splitsen/samen voegen of verplaatsen worden verzonden. Deze verbindingen kunnen gedeeltelijke of dubbele resultaten weer geven, afhankelijk van de timing of de Shard onderliggende verbinding. Deze beperking omvat momenteel de verbindingen die zijn gemaakt door elastische schaal multi-Shard-Query's.
 - De meta gegevens database voor de service voor splitsen en samen voegen mag niet worden gedeeld tussen verschillende rollen. Een rol van de service voor splitsen en samen voegen die wordt uitgevoerd in staging moet bijvoorbeeld verwijzen naar een andere meta gegevens database dan de rol van productie.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 De Split-Merge-service wordt uitgevoerd als een Cloud service in uw Microsoft Azure-abonnement. Kosten voor Cloud Services zijn daarom van toepassing op uw exemplaar van de service. Tenzij u regel matig splitsen/samen voegen/verplaatsen uitvoert, raden we u aan de Cloud service voor splitsen en samen voegen te verwijderen. Hiermee bespaart u kosten voor het uitvoeren of implementeren van Cloud service-exemplaren. U kunt de uitvoer bare-configuratie opnieuw implementeren en starten wanneer u een split-of samenvoeg bewerking moet uitvoeren.
 
@@ -237,7 +237,7 @@ U kunt hier meer informatie vinden over het configureren en implementeren van di
 
 ## <a name="retrieve-diagnostics"></a>Diagnostische gegevens ophalen
 
-U kunt eenvoudig toegang krijgen tot uw diagnostische gegevens via de Visual Studio-Server Explorer in het gedeelte Azure van de Server Explorer boom structuur. Open een exemplaar van Visual Studio en klik in de menu balk op weer gave en Server Explorer. Klik op het pictogram van Azure om verbinding te maken met uw Azure-abonnement. Ga vervolgens naar Azure-> Storage-> `<your storage account>` -> tabellen-> WADLogsTable. Zie [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx)voor meer informatie.
+U kunt eenvoudig toegang krijgen tot uw diagnostische gegevens via de Visual Studio-Server Explorer in het gedeelte Azure van de Server Explorer boom structuur. Open een exemplaar van Visual Studio en klik in de menu balk op weer gave en Server Explorer. Klik op het pictogram van Azure om verbinding te maken met uw Azure-abonnement. Ga vervolgens naar Azure-> Storage-> `<your storage account>`-> tabellen-> WADLogsTable. Zie [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx)voor meer informatie.
 
 ![WADLogsTable][2]
 

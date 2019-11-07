@@ -1,5 +1,5 @@
 ---
-title: Problemen met Azure Data Factory connectors oplossen | Microsoft Docs
+title: Problemen met Azure Data Factory connectors oplossen
 description: Meer informatie over het oplossen van connector problemen in Azure Data Factory.
 services: data-factory
 author: linda33wj
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 08/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: bea5191063cf673f6b1395d46a15536e80b0aa30
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8cabc1031f9d0be772ba087109ae1dfc881ce163
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143503"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680088"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problemen met Azure Data Factory connectors oplossen
 
@@ -21,20 +21,20 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Foutbericht: De externe server heeft een fout geretourneerd: (403) verboden
+### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>Fout bericht: de externe server heeft een fout geretourneerd: (403) verboden
 
-- **Symptomen**: De Kopieer activiteit mislukt met de volgende fout: 
+- **Symptomen**: de Kopieer activiteit mislukt met de volgende fout: 
 
     ```
     Message: The remote server returned an error: (403) Forbidden.. 
     Response details: {"RemoteException":{"exception":"AccessControlException""message":"CREATE failed with error 0x83090aa2 (Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.)....
     ```
 
-- **Oorzaak**: Een mogelijke oorzaak is dat de service-principal of beheerde identiteit die u gebruikt, geen toegang heeft tot de bepaalde map of het bestand.
+- **Oorzaak**: een mogelijke oorzaak is dat de service-principal of beheerde identiteit die u gebruikt, geen toegang heeft tot de bepaalde map/het bestand.
 
-- **Resolutie**: Verleen de bijbehorende machtigingen voor alle mappen en submappen die u wilt kopiëren. Raadpleeg [dit document](connector-azure-data-lake-store.md#linked-service-properties).
+- **Oplossing**: verleen de bijbehorende machtigingen voor alle mappen en submappen die u wilt kopiëren. Raadpleeg [dit document](connector-azure-data-lake-store.md#linked-service-properties).
 
-### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Foutbericht: Kan geen toegangs Token ophalen met behulp van de Service-Principal. ADAL-fout: service_unavailable
+### <a name="error-message-failed-to-get-access-token-by-using-service-principal-adal-error-service_unavailable"></a>Fout bericht: kan geen toegangs Token ophalen met behulp van de Service-Principal. ADAL-fout: service_unavailable
 
 - **Symptomen**: de Kopieer activiteit mislukt met de volgende fout:
 
@@ -43,15 +43,15 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
     ADAL Error: service_unavailable, The remote server returned an error: (503) Server Unavailable.
     ```
 
-- **Oorzaak**: Wanneer de STS (Service token server) die eigendom is van Azure Active Directory niet beschikbaar is, dat wil zeggen, te druk om aanvragen te verwerken, wordt een HTTP-fout 503 geretourneerd. 
+- **Oorzaak**: wanneer de STS (Service token server) die eigendom is van Azure Active Directory niet beschikbaar is, dat wil zeggen, een HTTP-fout 503 wordt geretourneerd. 
 
-- **Resolutie**: Voer de Kopieer activiteit na enkele minuten opnieuw uit.
+- **Oplossing**: Voer de Kopieer activiteit na enkele minuten opnieuw uit.
 
 ## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Foutbericht: De conversie is mislukt tijdens het converteren van een teken reeks naar een unieke id
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Fout bericht: de conversie is mislukt tijdens het converteren van een teken reeks naar een unieke id
 
-- **Symptomen**: Wanneer u gegevens uit de gegevens bron in tabel vorm (zoals SQL Server) kopieert naar Azure SQL Data Warehouse met behulp van gefaseerde kopie en poly Base, wordt de volgende fout weer gegeven:
+- **Symptomen**: bij het kopiëren van gegevens uit een gegevens bron in tabel vorm (zoals SQL Server) naar Azure SQL data warehouse met behulp van gefaseerde kopie en poly Base, wordt de volgende fout weer gegeven:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -60,13 +60,13 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
     Message=Conversion failed when converting from a character string to uniqueidentifier...
     ```
 
-- **Oorzaak**: Azure SQL Data Warehouse poly Base kan geen lege teken reeks converteren naar GUID.
+- **Oorzaak**: Azure SQL Data Warehouse poly Base kan een lege teken reeks niet converteren naar GUID.
 
-- **Resolutie**: Stel in Sink voor kopieer activiteit onder poly base-instellingen de optie**type standaard gebruiken**in op ONWAAR.
+- **Oplossing**: Stel in Sink voor kopieer activiteiten onder poly base-instellingen de optie**type standaard gebruiken**in op ONWAAR.
 
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Foutbericht: Verwacht gegevens type: DECIMAAL (x, x), foutieve waarde
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>Fout bericht: verwacht gegevens type: decimaal (x, x), foutieve waarde
 
-- **Symptomen**: Wanneer u gegevens kopieert vanuit tabellaire gegevens bron (zoals SQL Server) naar SQL DW met behulp van gefaseerde kopie en poly Base, wordt de volgende fout weer gegeven:
+- **Symptomen**: wanneer u gegevens uit tabellaire gegevens bron (zoals SQL Server) naar SQL DW kopieert met behulp van gefaseerde kopie en poly Base, bereikt u de volgende fout:
 
     ```
     ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
@@ -78,11 +78,11 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 - **Oorzaak**: Azure SQL Data Warehouse poly Base kan geen lege teken reeks (null-waarde) invoegen in een decimale kolom.
 
-- **Resolutie**: Stel in Sink voor kopieer activiteit onder poly base-instellingen de optie**type standaard gebruiken**in op ONWAAR.
+- **Oplossing**: Stel in Sink voor kopieer activiteiten onder poly base-instellingen de optie**type standaard gebruiken**in op ONWAAR.
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Foutbericht: Java-uitzonderings bericht: HdfsBridge:: CreateRecordReader
+### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>Fout bericht: Java-uitzonderings bericht: HdfsBridge:: CreateRecordReader
 
-- **Symptomen**: U kunt gegevens met poly Base naar Azure SQL Data Warehouse kopiëren en de volgende fout raken:
+- **Symptomen**: u kopieert gegevens naar Azure SQL data warehouse met poly base en de volgende fout wordt weer gegeven:
 
     ```
     Message=110802;An internal DMS error occurred that caused this operation to fail. 
@@ -91,7 +91,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
     Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
     ```
 
-- **Oorzaak**: De mogelijke oorzaak is dat het schema (totale kolom breedte) te groot is (groter dan 1 MB). Controleer het schema van de SQL DW-doel tabel door de grootte van alle kolommen toe te voegen:
+- **Oorzaak**: de mogelijke oorzaak is dat het schema (totale kolom breedte) te groot is (groter dan 1 MB). Controleer het schema van de SQL DW-doel tabel door de grootte van alle kolommen toe te voegen:
 
     - Int-> 4 bytes
     - Bigint-> 8 bytes
@@ -109,64 +109,64 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
     - Tijd-> 12 bytes
     - Tinyint-> 1 byte
 
-- **Resolutie**: Kolom breedte verkleinen tot minder dan 1 MB
+- **Oplossing**: Verklein de kolom breedte kleiner dan 1 MB
 
 - Of gebruik bulksgewijze invoeg aanpak door poly Base uit te scha kelen
 
-### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Foutbericht: Er is niet voldaan aan de voor waarde die is opgegeven met de HTTP-koptekst (en).
+### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Fout bericht: er is niet voldaan aan de voor waarde die is opgegeven met een HTTP-header (n)
 
-- **Symptomen**: U gebruikt SQL-query om gegevens uit Azure SQL Data Warehouse te halen en de volgende fout te vinden:
+- **Symptomen**: u gebruikt SQL-query om gegevens uit Azure SQL Data Warehouse op te halen en de volgende fout te vinden:
 
     ```
     ...StorageException: The condition specified using HTTP conditional header(s) is not met...
     ```
 
-- **Oorzaak**: Azure SQL Data Warehouse treffer probleem bij het uitvoeren van een query op de externe tabel in Azure Storage.
+- **Oorzaak**: Azure SQL Data Warehouse treffer probleem bij het uitvoeren van een query op de externe tabel in azure Storage.
 
-- **Resolutie**: Voer dezelfde query uit in SSMS en controleer of hetzelfde resultaat wordt weer geven. Als dit het geval is, opent u een ondersteunings ticket om Azure SQL Data Warehouse en geeft u uw SQL DW-server en-database naam op om verder te kunnen oplossen.
+- **Oplossing**: Voer dezelfde query uit in SSMS en controleer of hetzelfde resultaat wordt weer geven. Als dit het geval is, opent u een ondersteunings ticket om Azure SQL Data Warehouse en geeft u uw SQL DW-server en-database naam op om verder te kunnen oplossen.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-### <a name="error-message-request-size-is-too-large"></a>Foutbericht: De aanvraag grootte is te groot
+### <a name="error-message-request-size-is-too-large"></a>Fout bericht: de omvang van de aanvraag is te groot
 
-- **Symptomen**: U kunt gegevens naar Azure Cosmos DB kopiëren met de standaard schrijf Batch grootte en de fout melding de grootte van de *'**aanvraag is te groot**'* .
+- **Symptomen**: u kunt gegevens naar Azure Cosmos DB kopiëren met de standaard grootte voor schrijven en de fout melding ' de grootte van de ***aanvraag is te groot**'* .
 
 - **Oorzaak**: Cosmos DB beperkt de grootte van één aanvraag tot 2 MB. De formule is, aanvraag grootte = één document grootte * Batch grootte schrijven. Als de grootte van uw document groot is, wordt het standaard gedrag veroorzaakt door te grote aanvraag grootte. U kunt de grootte van de schrijf batch afstemmen.
 
-- **Resolutie**: In Sink voor kopieer activiteiten vermindert u de waarde ' Batch grootte schrijven ' (de standaard waarde is 10000).
+- **Oplossing**: in Sink voor kopieer activiteiten kunt u de waarde ' Batch grootte schrijven ' verlagen (de standaard waarde is 10000).
 
-### <a name="error-message-unique-index-constraint-violation"></a>Foutbericht: Schending van de unieke index beperking
+### <a name="error-message-unique-index-constraint-violation"></a>Fout bericht: schending van een unieke index beperking
 
-- **Symptomen**: Wanneer u gegevens naar Cosmos DB kopieert, raakt u de volgende fout melding:
+- **Symptomen**: wanneer u gegevens naar Cosmos DB kopieert, raakt u de volgende fout melding:
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
     Exception was Message: {"Errors":["Encountered exception while executing function. Exception &#61; Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
     ```
 
-- **Oorzaak**: Er zijn twee mogelijke oorzaken:
+- **Oorzaak**: er zijn twee mogelijke oorzaken:
 
     - Als u **Invoegen** als schrijf gedrag gebruikt, betekent dit dat de bron gegevens rijen/objecten met dezelfde id hebben.
 
     - Als u **Upsert** als schrijf gedrag gebruikt en u een andere unieke sleutel instelt op de container, betekent dit dat de bron gegevens rijen/objecten hebben met verschillende id's, maar dezelfde waarde hebben voor de gedefinieerde unieke sleutel.
 
-- **Resolutie**: 
+- **Oplossing**: 
 
     - Stel voor Cause1 **Upsert** in als schrijf gedrag.
     - Zorg ervoor dat elk document voor oorzaak 2 een andere waarde heeft voor de gedefinieerde unieke sleutel.
 
-### <a name="error-message-request-rate-is-large"></a>Foutbericht: Aanvraagsnelheid is hoog
+### <a name="error-message-request-rate-is-large"></a>Fout bericht: de aanvraag frequentie is groot
 
-- **Symptomen**: Wanneer u gegevens naar Cosmos DB kopieert, raakt u de volgende fout melding:
+- **Symptomen**: wanneer u gegevens naar Cosmos DB kopieert, raakt u de volgende fout melding:
 
     ```
     Type=Microsoft.Azure.Documents.DocumentClientException,
     Message=Message: {"Errors":["Request rate is large"]}
     ```
 
-- **Oorzaak**: De gebruikte aanvraag eenheden zijn groter dan de beschik bare RU die is geconfigureerd in Cosmos DB. Meer informatie over hoe Cosmos DB RU van [hieruit](../cosmos-db/request-units.md#request-unit-considerations)berekent.
+- **Oorzaak**: de gebruikte aanvraag eenheden is groter dan de beschik bare ru die is geconfigureerd in Cosmos db. Meer informatie over hoe Cosmos DB RU van [hieruit](../cosmos-db/request-units.md#request-unit-considerations)berekent.
 
-- **Resolutie**: Hier volgen twee oplossingen:
+- **Oplossing**: Hier volgen twee oplossingen:
 
     1. **Verhoog de container ru** naar een grotere waarde in Cosmos DB, waardoor de prestaties van de Kopieer activiteit worden verbeterd, hoewel er meer kosten in Cosmos DB ontstaan. 
 
@@ -174,19 +174,19 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 ### <a name="column-missing-in-column-mapping"></a>Kolom ontbreekt in kolom toewijzing
 
-- **Symptomen**: Bij het importeren van het schema voor Cosmos DB voor kolom toewijzing, ontbreken sommige kolommen. 
+- **Symptomen**: bij het importeren van het schema voor Cosmos DB voor kolom toewijzing, ontbreken sommige kolommen. 
 
-- **Oorzaak**: Bij ADF wordt het schema van de eerste tien Cosmos DB documenten afafgeleid. Als sommige kolommen/eigenschappen geen waarde hebben in deze documenten, wordt deze niet gedetecteerd met ADF. dit wordt niet weer gegeven.
+- **Oorzaak**: ADF leidt het schema af van de eerste tien Cosmos DB documenten. Als sommige kolommen/eigenschappen geen waarde hebben in deze documenten, wordt deze niet gedetecteerd met ADF. dit wordt niet weer gegeven.
 
-- **Resolutie**: U kunt de query op de onderstaande manier afstemmen om kolom af te dwingen om weer te geven in de resultatenset met een lege waarde: (ervan uitgaand dat de kolom ' onmogelijk ' ontbreekt in de eerste tien documenten). U kunt ook de kolom voor toewijzing hand matig toevoegen.
+- **Oplossing**: u kunt de query zoals hieronder afstemmen om kolom af te dwingen om weer te geven in de resultatenset met een lege waarde: (Stel dat er geen kolom ' onmogelijk ' is in de eerste tien documenten). U kunt ook de kolom voor toewijzing hand matig toevoegen.
 
     ```sql
     select c.company, c.category, c.comments, (c.impossible??'') as impossible from c
     ```
 
-### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Foutbericht: De GuidRepresentation voor de lezer is CSharpLegacy
+### <a name="error-message-the-guidrepresentation-for-the-reader-is-csharplegacy"></a>Fout bericht: de GuidRepresentation voor de lezer is CSharpLegacy
 
-- **Symptomen**: Bij het kopiëren van gegevens uit Cosmos DB MongoAPI/MongoDB met het veld UUID, raakt u de volgende fout melding:
+- **Symptomen**: bij het kopiëren van gegevens uit Cosmos DB MongoAPI/MongoDb met het veld uuid, raakt u de volgende fout melding:
 
     ```
     Failed to read data via MongoDB client.,
@@ -194,27 +194,27 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
     Message=The GuidRepresentation for the reader is CSharpLegacy which requires the binary sub type to be UuidLegacy not UuidStandard.,Source=MongoDB.Bson,’“,
     ```
 
-- **Oorzaak**: Er zijn twee manieren om UUID te vertegenwoordigen in BSON-UuidStardard en UuidLegacy. UuidLegacy wordt standaard gebruikt om gegevens te lezen. U krijgt een fout als uw UUID-gegevens in MongoDB UuidStandard zijn.
+- **Oorzaak**: er zijn twee manieren om uuid in BSON-UuidStardard en UuidLegacy aan te duiden. UuidLegacy wordt standaard gebruikt om gegevens te lezen. U krijgt een fout als uw UUID-gegevens in MongoDB UuidStandard zijn.
 
-- **Resolutie**: Voeg in MongoDB connection string de optie '**uuidRepresentation = Standard**' toe. Zie [MongoDB Connection String](connector-mongodb.md#linked-service-properties)voor meer informatie.
+- **Oplossing**: Voeg In MongoDb Connection String de optie "**uuidRepresentation = Standard**" toe. Zie [MongoDB Connection String](connector-mongodb.md#linked-service-properties)voor meer informatie.
 
 ## <a name="sftp"></a>SFTP
 
-### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Foutbericht: Er is een ongeldige SFTP-referentie gegeven voor het verificatie type SshPublicKey
+### <a name="error-message-invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>Fout bericht: er is een ongeldige SFTP-referentie gegeven voor het verificatie type SshPublicKey
 
-- **Symptomen**: U gebruikt `SshPublicKey` verificatie en u kunt de volgende fout melding aanraken:
+- **Symptomen**: gebruik `SshPublicKey`-verificatie en klik op de volgende fout:
 
     ```
     Invalid Sftp credential provided for 'SshPublicKey' authentication type
     ```
 
-- **Oorzaak**: Er zijn drie mogelijke oorzaken:
+- **Oorzaak**: er zijn drie mogelijke oorzaken:
 
     1. Als u de gebruikers interface van ADF voor het maken van een gekoppelde SFTP-service gebruikt, betekent dit dat de persoonlijke sleutel die u wilt gebruiken, een onjuiste indeling heeft. U kunt een PKCS # 8-indeling van de persoonlijke SSH-sleutel gebruiken, terwijl de ADF alleen de traditionele SSH-sleutel indeling ondersteunt. Meer in het bijzonder, het verschil tussen PKCS # 8-indeling en traditionele sleutel indeling is PKCS # 8-sleutel inhoud begint met ' *-----beginnen met VERsleutelde persoonlijke sleutel-----* ', terwijl de traditionele sleutel indeling begint met ' *-----Start RSA-sleutel-----* '.
     2. Als u Azure Key Vault gebruikt om de inhoud van de persoonlijke sleutel op te slaan of een programmatische manier te gebruiken voor het maken van de gekoppelde SFTP-service, betekent deze fout dat de inhoud van de persoonlijke sleutel onjuist is, waarschijnlijk niet met base64 gecodeerd.
     3. Ongeldige inhoud voor referentie of persoonlijke sleutel.
 
-- **Resolutie**: 
+- **Oplossing**: 
 
     - Voer voor oorzaak #1 de volgende opdrachten uit om de sleutel te converteren naar een traditionele sleutel notatie en vervolgens te gebruiken in de gebruikers interface van ADF.
 
@@ -229,7 +229,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
         ```
 
     - Voor een oorzaak #2 kan een dergelijke teken reeks worden gegenereerd door de klant onder de volgende twee manieren te gebruiken:
-    - Met het hulp programma base64 Convert van derden: plak de volledige inhoud van de persoonlijke sleutel naar hulpprogram ma's zoals [Base64 coderen en](https://www.base64encode.org/)decoderen, Codeer deze in een base64-indelings teken reeks, plak deze teken reeks in een sleutel kluis of gebruik deze waarde voor het programmatisch maken van een gekoppelde SFTP-service.
+    - Met het hulp programma base64 Convert van derden: plak de volledige inhoud van de persoonlijke sleutel naar hulpprogram ma's zoals [Base64 coderen en decoderen](https://www.base64encode.org/), Codeer deze in een base64-indelings teken reeks, plak deze teken reeks in een sleutel kluis of gebruik deze waarde voor het programmatisch maken van een gekoppelde SFTP-service.
     - Code C# gebruiken:
 
         ```c#
@@ -243,7 +243,7 @@ In dit artikel worden algemene probleemoplossings methoden voor connectors in Az
 
 Probeer deze bronnen voor meer informatie over probleem oplossing:
 
-*  [Data Factory Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-forum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

@@ -1,5 +1,5 @@
 ---
-title: Een door Azure SQL Database beheerd exemplaar configureren | Microsoft Docs
+title: Een door Azure SQL Database beheerd exemplaar configureren
 description: Meer informatie over het configureren en beheren van Azure SQL Database Managed instance.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 22bad381a59a74237a5539cd4294a08797c017b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568062"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689924"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Een beheerd exemplaar gebruiken in Azure SQL Database
 
@@ -41,7 +41,7 @@ In dit artikel vindt u verschillende hand leidingen, scripts en uitleg die u kun
 
 ## <a name="feature-configuration"></a>Configuratie van onderdelen
 
-- Met transactionele [replicatie](replication-with-sql-database-managed-instance.md) kunt u uw gegevens repliceren tussen beheerde instanties, of van on-premises SQL Server naar een beheerd exemplaar, en omgekeerd. Meer informatie over het gebruik en configureren van transactie replicatie in deze hand leiding.
+- Met [transactionele replicatie](replication-with-sql-database-managed-instance.md) kunt u uw gegevens repliceren tussen beheerde instanties, of van on-premises SQL Server naar een beheerd exemplaar, en omgekeerd. Meer informatie over het gebruik en configureren van transactie replicatie in deze hand leiding.
 - [Detectie van bedreigingen configureren](sql-database-managed-instance-threat-detection.md) : [bedreigingen detectie](sql-database-threat-detection-overview.md) is een ingebouwde Azure SQL database functie die verschillende mogelijke aanvallen detecteert zoals SQL-injectie of toegang vanaf verdachte locaties. In deze hand leiding vindt u informatie over het inschakelen en configureren van [detectie van bedreigingen](sql-database-threat-detection-overview.md) voor een beheerd exemplaar.
 
 ## <a name="next-steps"></a>Volgende stappen

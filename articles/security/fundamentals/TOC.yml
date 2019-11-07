@@ -2,7 +2,6 @@
   href: index.yml
 - name: Architectuur en ontwerp
   href: overview.md
-  expanded: false
   items:
     - name: Gedeelde verantwoordelijkheid in de cloud
       href: shared-responsibility.md
@@ -23,6 +22,7 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Technische mogelijkheden voor beveiliging
       href: technical-capabilities.md
+  expanded: false
 - name: Gegevensbeveiliging en -versleuteling
   href: encryption-overview.md
   items:
@@ -128,19 +128,6 @@
         - name: Extern beheer en beveiliging
           href: management.md
         - name: Azure-logboekintegratie
-          items:
-            - name: Inleiding
-              href: azure-log-integration-overview.md
-            - name: Aan de slag
-              href: azure-log-integration-get-started.md
-            - name: Azure AD-auditlogboeken integreren
-              displayName: active directory
-              href: azure-log-integration-ad.md
-            - name: Logboeken van Key Vault integreren
-              displayName: keyvault
-              href: azure-log-integration-keyvault-eventhub.md
-            - name: Veelgestelde vragen
-              href: azure-log-integration-faq.md
     - name: Operationele beveiliging
       href: operational-overview.md
       items:

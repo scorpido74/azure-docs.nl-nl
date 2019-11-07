@@ -1,5 +1,5 @@
 ---
-title: Als conditie activiteit in Azure Data Factory | Microsoft Docs
+title: Als conditie activiteit in Azure Data Factory
 description: Met de activiteit if-voor waarde kunt u de verwerkings stroom beheren op basis van een voor waarde.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142496"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679849"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Als conditie activiteit in Azure Data Factory
 De If Condition Activity biedt dezelfde functionaliteit als een If-instructie in een programmeertaal. Er wordt een reeks activiteiten mee geëvalueerd als de voorwaarde resulteert in `true` en een andere reeks activiteiten als de voorwaarde resulteert in `false`. 
@@ -63,19 +63,19 @@ De If Condition Activity biedt dezelfde functionaliteit als een If-instructie in
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Description | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de activiteit voor de if-voor waarde. | Tekenreeks | Ja
-Type | Moet worden ingesteld op **IfCondition** | Tekenreeks | Ja
-expression | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie met Booleaanse waarde voor resultaat type | Ja
-ifTrueActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd `true`. | Array | Ja
-ifFalseActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd `false`. | Array | Ja
+naam | De naam van de activiteit voor de if-voor waarde. | Tekenreeks | Ja
+type | Moet worden ingesteld op **IfCondition** | Tekenreeks | Ja
+expressie | Expressie die moet worden geëvalueerd als waar of onwaar | Expressie met Booleaanse waarde voor resultaat type | Ja
+ifTrueActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd als `true`. | Matrix | Ja
+ifFalseActivities | Een set activiteiten die worden uitgevoerd wanneer de expressie wordt geëvalueerd als `false`. | Matrix | Ja
 
 ## <a name="example"></a>Voorbeeld
 Met de pijp lijn in dit voor beeld worden gegevens van een uitvoermap naar een uitvoermap gekopieerd. De uitvoermap wordt bepaald door de waarde van de pijplijn parameter: routeSelection. Als de waarde van routeSelection is ingesteld op True, worden de gegevens gekopieerd naar outputPath1. Als de waarde van routeSelection False is, worden de gegevens gekopieerd naar outputPath2. 
 
 > [!NOTE]
-> Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken](quickstart-create-data-factory-powershell.md)met behulp van Azure PowerShell voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
+> Deze sectie bevat JSON-definities en voor beelden van Power shell-opdrachten voor het uitvoeren van de pijp lijn. Zie [zelf studie: een Data Factory maken met behulp van Azure PowerShell](quickstart-create-data-factory-powershell.md)voor een overzicht met stapsgewijze instructies voor het maken van een Data Factory pijp lijn met behulp van Azure PowerShell-en JSON-definities.
 
 ### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Pijp lijn met activiteit als voor waarde (Adfv2QuickStartPipeline. json)
 

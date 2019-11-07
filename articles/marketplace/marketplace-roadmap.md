@@ -1,55 +1,47 @@
 ---
-title: Azure Marketplace en AppSource-Roadmap | Azure
-description: Een overzicht van wat in de Marketplace gebeurt er
+title: Azure Marketplace en AppSource-route kaart | Azure
+description: Een route kaart voor wat er gebeurt in Marketplace
 services: Azure, Marketplace, Compute
 author: qianw211
 manager: MaggiePucciEvans
 ms.service: marketplace
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 11/02/2019
 ms.author: blevens
-ms.openlocfilehash: 83710085c4bdfc76b851e59046cb148f768e3513
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7dda9d38b1620b5559ebee52fa6ba03555a4cec9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621427"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73570072"
 ---
-# <a name="azure-marketplace-and-appsource-roadmap"></a>Roadmap voor Azure Marketplace en AppSource
+# <a name="microsoft-commercial-marketplace-roadmap"></a>Micro soft Commercial Marketplace-schema
 
-Dit document bevat een overzicht van wat er op stapel voor commerciële marketplace voor uitgevers, verkopers en klanten van Microsoft. Deze enkele van de belangrijke functies die we hebben doorgevoerd, een ruwe tijdsbestek voor wanneer u ze kunt verwachten en elke maand vernieuwd worden vastgelegd. Het is niet een uitgebreide lijst van alle nieuwe functies, maar is bedoeld om u te bieden inzicht in onze belangrijkste investeringen. Deze sets en meteen levering zijn huidige en kan worden gewijzigd.
+Dit document bevat een overzicht van de mogelijkheden van de commerciële Marketplace van micro soft voor uitgevers, verkopers en klanten. Er worden enkele van de belangrijkste functies vastgelegd die wij hebben doorgevoerd, een ruwe periode voor wanneer u deze kunt verwachten en maandelijks wordt vernieuwd. Het is geen uitgebreide lijst met alle nieuwe functies, maar is bedoeld om inzicht te krijgen in onze belangrijkste investeringen. Deze functie sets en leverings tijdstippen zijn actueel en zijn onderhevig aan wijzigingen.
 
-We stellen uw suggesties. Neem deel aan het gesprek de [Microsoft-Partner-Community](https://www.microsoftpartnercommunity.com/) om op te halen van de meest recente updates op de nieuwe mogelijkheden, programma's en gebeurtenissen.
-
+We stellen uw suggesties voor. Meld u aan bij de [micro soft partner-community](https://www.microsoftpartnercommunity.com/) om de nieuwste updates te verkrijgen over nieuwe mogelijkheden, Program ma's en gebeurtenissen.
 
 ## <a name="roadmap"></a>Roadmap
-![Marketplace-roadmap voor juni](./media/marketplace-publishers-guide/roadmap-june19.png)
+![Marketplace-route kaart voor november 2019](./media/marketplace-publishers-guide/roadmap-nov19.png)
 
+## <a name="recent-releases"></a>Recente releases
 
-## <a name="recent-releases"></a>Recente Releases
+Zodra een capaciteit actief is, wordt deze verwijderd uit het schema. De functionaliteit die is toegevoegd aan de Marketplace, vindt u in de volgende documentatie.
 
-Zodra een mogelijkheid gepubliceerd is, wordt deze verwijderd uit het schema. Functionaliteit die is toegevoegd aan de Marketplace omvat het volgende.
-
-
-### <a name="for-march-2019"></a>Voor maart 2019
-
-* [Marketplace + CSP-Update-Blog](https://azure.microsoft.com/blog/azure-marketplace-and-cloud-solution-provider-updates-march-2019/)
-* [Publiceren van aanbiedingen in CSP-kanaal (ISV)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)
-* [Wederverkoop van de Marketplace-aanbiedingen (CSP)](https://docs.microsoft.com/partner-center/sell-marketplace-products)
-* [Standaardcontract](https://docs.microsoft.com/azure/marketplace/standard-contract)
-* [Afhandeling van SaaS API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-apis)
-* [Marketplace-geo's en valuta 's](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
-* [Seller Insights](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
-
-### <a name="for-may-2019"></a>Voor mei 2019
-
-* [Microsoft Build Marketplace Blog](https://azure.microsoft.com/blog/announcing-new-marketplace-revenue-opportunities/)
-* [Marketplace-mei Updates Blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* Partner Center: [Account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [-Account beheren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [migratie van CPP](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* Partner Center: [SaaS-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [publicatiestatus](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-) / [bestaande aanbieding bijwerken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [bieden Analytics](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
-* [Profiteer van ondersteuning voor marketplace in Partnercentrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* [Marketplace en update-blog van de CSP](https://aka.ms/marketplacemarchupdateblog)
+* [Aanbiedingen publiceren in CSP-kanaal (ISV)](https://aka.ms/publishtocsp)
+* [Marketplace-aanbiedingen (CSP) verkopen](h https://aka.ms/marketplaceincsp)
+* [Standaardcontract](https://aka.ms/standardcontract)
+* [API voor SaaS-uitvoering](https://aka.ms/saasapiv2)
+* [Geografische gebieden en Valuta's van Marketplace](https://aka.ms/marketplacegeos)
+* [Inzichten van de verkoper](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/si-changes)
+* [Micro soft build Marketplace-Blog](https://aka.ms/marketplacebuildblog)
+* [Marketplace kan de blog bijwerken](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
+* Partner centrum: [account maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [account beheren](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [migratie van cpp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
+* Partner centrum: [SaaS-aanbieding maken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [publicatie status](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
+) / [bestaande aanbieding bijwerken](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [aanbod analyse](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
+* [Ontvang ondersteuning voor Marketplace in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [Azure Marketplace en AppSource Uitgevershandleiding voor](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) pagina.
+Ga naar de pagina [met Publisher-hand leiding voor Azure Marketplace en AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) .

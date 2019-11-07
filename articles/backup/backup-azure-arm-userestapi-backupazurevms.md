@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Back-ups van virtuele Azure-machines maken met REST API'
+title: 'Azure Backup: Maak een back-up van virtuele Azure-machines met REST API'
 description: Back-upbewerkingen van Azure VM-back-ups beheren met REST API
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 701972c32f3e80682e2a20d04b02bcd555532e08
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954980"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671687"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -29,28 +29,28 @@ We gaan ervan uit dat u een VM ' testVM ' wilt beveiligen onder een resource gro
 
 ### <a name="discover-unprotected-azure-vms"></a>Niet-beveiligde Azure-Vm's detecteren
 
-Ten eerste moet de kluis de virtuele machine van Azure kunnen identificeren. Dit wordt geactiveerd met behulp van de vernieuwings [bewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post* -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde virtuele machines in het huidige abonnement en ' caches ' van deze wordt weer gegeven. Zodra de virtuele machine in de cache is opgeslagen, hebben de Recovery Services toegang tot de virtuele machine en kunnen deze worden beveiligd.
+Ten eerste moet de kluis de virtuele machine van Azure kunnen identificeren. Dit wordt geactiveerd met behulp van de [vernieuwings bewerking](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Het is een asynchrone *post* -bewerking die ervoor zorgt dat de kluis de meest recente lijst met alle niet-beveiligde virtuele machines in het huidige abonnement en ' caches ' van deze wordt weer gegeven. Zodra de virtuele machine in de cache is opgeslagen, hebben de Recovery Services toegang tot de virtuele machine en kunnen deze worden beveiligd.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-De post-URI `{subscriptionId}`heeft `{vaultName}`, `{vaultresourceGroupName}`, `{fabricName}` , para meters. De `{fabricName}` is ' Azure '. Volgens ons voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
+De POST-URI heeft `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}``{fabricName}` para meters. De `{fabricName}` is ' Azure '. Volgens ons voor beeld is `{vaultName}` ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Responses
+#### <a name="responses"></a>Antwoorden
 
 De bewerking vernieuwen is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |204 geen inhoud     |         |  OK zonder geretourneerde inhoud      |
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Afgewezen    |
 
 ##### <a name="example-responses"></a>Voorbeeld reacties
 
@@ -110,7 +110,7 @@ De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag t
 
 ##### <a name="responses-1"></a>Rapporten
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -155,11 +155,11 @@ X-Powered-By: ASP.NET
 > [!TIP]
 > Het aantal waarden in een *Get* -antwoord is beperkt tot 200 voor een ' page '. Gebruik het veld ' nextLink ' om de URL voor de volgende set antwoorden op te halen.
 
-Het antwoord bevat de lijst met alle niet-beveiligde virtuele machines van Azure `{value}` en bevat alle informatie die nodig is voor de Azure Recovery-service voor het configureren van de back-up. Als u een back-up `{name}` wilt configureren, `{virtualMachineId}` noteert `{properties}` u het veld en het veld in het gedeelte. Maak twee variabelen van deze veld waarden zoals hieronder wordt vermeld.
+Het antwoord bevat de lijst met alle niet-beveiligde virtuele machines van Azure en elke `{value}` bevat alle informatie die nodig is voor de Azure Recovery-service voor het configureren van de back-up. Als u een back-up wilt configureren, noteert u het `{name}` veld en het veld `{virtualMachineId}` in `{properties}` sectie. Maak twee variabelen van deze veld waarden zoals hieronder wordt vermeld.
 
 - containerName = "iaasvmcontainer;" +`{name}`
-- protectedItemName = "VM;" +`{name}`
-- `{virtualMachineId}`wordt later in [de hoofd tekst van de aanvraag](#example-request-body) gebruikt
+- protectedItemName = "VM;" + `{name}`
+- `{virtualMachineId}` wordt later in [de hoofd tekst van de aanvraag](#example-request-body) gebruikt
 
 In het voor beeld worden de bovenstaande waarden vertaald naar:
 
@@ -176,17 +176,17 @@ Het inschakelen van beveiliging is een asynchrone *put* -bewerking die een ' bev
 https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
 ```
 
-De `{containerName}` en`{protectedItemName}` zijn eerder gemaakt. De `{fabricName}` is ' Azure '. In ons voor beeld is dit van toepassing op:
+De `{containerName}` en `{protectedItemName}` zijn net zo gemaakt als hierboven. De `{fabricName}` is ' Azure '. In ons voor beeld is dit van toepassing op:
 
 ```http
-PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
 #### <a name="create-the-request-body"></a>De aanvraag tekst maken
 
 Als u een beveiligd item wilt maken, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem-resource-eigenschappen         |
 
@@ -206,18 +206,18 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor h
 }
 ```
 
-De `{sourceResourceId}` hierboven `{virtualMachineId}` vermelde is van het antwoord op het [aanbieden van Beveilig bare items](#example-responses-1).
+De `{sourceResourceId}` is de `{virtualMachineId}` die hierboven wordt vermeld, van het antwoord op de [lijst met Beveilig bare items](#example-responses-1).
 
-#### <a name="responses"></a>Responses
+#### <a name="responses"></a>Antwoorden
 
 Het maken van een beveiligd item is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Afgewezen    |
 
 ##### <a name="example-responses"></a>Voorbeeld reacties
 
@@ -227,7 +227,7 @@ Zodra u de *put* -aanvraag voor het maken of bijwerken van beveiligde items verz
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-client-request-id: e1f94eef-9b2d-45c4-85b8-151e12b07d03; e1f94eef-9b2d-45c4-85b8-151e12b07d03
@@ -237,7 +237,7 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
@@ -290,17 +290,17 @@ Het activeren van een back-up op aanvraag is een *post* -bewerking.
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-De `{containerName}` en`{protectedItemName}` zijn [eerder](#responses-1)gemaakt. De `{fabricName}` is ' Azure '. In ons voor beeld is dit van toepassing op:
+De `{containerName}` en `{protectedItemName}` zijn net zo gemaakt als [hierboven](#responses-1). De `{fabricName}` is ' Azure '. In ons voor beeld is dit van toepassing op:
 
 ```http
-POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
+POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2019-05-13
 ```
 
 ### <a name="create-the-request-body"></a>De aanvraag tekst maken
 
 Als u een back-up op aanvraag wilt activeren, volgt u de onderdelen van de hoofd tekst van de aanvraag.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-eigenschappen         |
 
@@ -319,15 +319,15 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor h
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Antwoorden
 
 Het activeren van een back-up op aanvraag is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
 Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 200 (OK) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|202 geaccepteerd     |         |     Afgewezen    |
 
 ##### <a name="example-responses-3"></a>Voorbeeld reacties
 
@@ -337,7 +337,7 @@ Zodra u de *post* -aanvraag voor een back-up op aanvraag hebt verzonden, is het 
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 7885ca75-c7c6-43fb-a38c-c0cc437d8810
 x-ms-client-request-id: 7df8e874-1d66-4f81-8e91-da2fe054811d; 7df8e874-1d66-4f81-8e91-da2fe054811d
@@ -354,7 +354,7 @@ X-Powered-By: ASP.NET
 Volg vervolgens de resulterende bewerking met behulp van de locatie header of de Azure-AsyncOperation-header met een eenvoudige *Get* -opdracht.
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 ```
 
 Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de ID van de resulterende back-uptaak in de hoofd tekst van het antwoord.
@@ -393,7 +393,7 @@ Omdat de back-uptaak een langlopende bewerking is, moet deze worden gevolgd zoal
 
 ### <a name="changing-the-policy-of-protection"></a>Het beveiligings beleid wijzigen
 
-Als u het beleid wilt wijzigen waarmee de virtuele machine wordt beveiligd, kunt u dezelfde indeling gebruiken als voor het inschakelen van de [beveiliging](#enabling-protection-for-the-azure-vm). Geef de nieuwe beleids-ID op in [de hoofd tekst van de aanvraag](#example-request-body) en verzend de aanvraag. Bijvoorbeeld: Als u het beleid van testVM van Defaultpolicy bij wilt wijzigen in ProdPolicy, geeft u de ProdPolicy-ID op in de aanvraag tekst.
+Als u het beleid wilt wijzigen waarmee de virtuele machine wordt beveiligd, kunt u dezelfde indeling gebruiken als voor het inschakelen van de [beveiliging](#enabling-protection-for-the-azure-vm). Geef de nieuwe beleids-ID op in [de hoofd tekst van de aanvraag](#example-request-body) en verzend de aanvraag. Bijvoorbeeld: als u het beleid van testVM van Defaultpolicy bij wilt wijzigen in ProdPolicy, geeft u de ID ' ProdPolicy ' op in de aanvraag tekst.
 
 ```http
 {
@@ -430,25 +430,25 @@ Als u de beveiliging op een beveiligde virtuele machine wilt verwijderen en ook 
 Het stoppen van de beveiliging en het verwijderen van gegevens is een *Verwijder* bewerking.
 
 ```http
-DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
+DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-De `{containerName}` en`{protectedItemName}` zijn [eerder](#responses-1)gemaakt. `{fabricName}`is ' Azure '. In ons voor beeld is dit van toepassing op:
+De `{containerName}` en `{protectedItemName}` zijn net zo gemaakt als [hierboven](#responses-1). `{fabricName}` is ' Azure '. In ons voor beeld is dit van toepassing op:
 
 ```http
-DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2016-12-01
+DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
 ### <a name="responses-2"></a>Rapporten
 
 Beveiliging *verwijderen* is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
-Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 204 (inhoud) wanneer deze bewerking is voltooid.
+Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere bewerking wordt gemaakt en vervolgens 204 (geen inhoud) wanneer deze bewerking is voltooid.
 
-|Name  |Type  |Description  |
+|Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|204-tekst     |         |  NoContent       |
-|202 geaccepteerd     |         |     Geaccepteerd    |
+|204-tekst     |         |  Geen inhoud       |
+|202 geaccepteerd     |         |     Afgewezen    |
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -457,4 +457,4 @@ Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere b
 Raadpleeg de volgende documenten voor meer informatie over de Azure Backup REST-Api's:
 
 - [REST API Azure Recovery Services provider](/rest/api/recoveryservices/)
-- [Aan de slag met Azure REST API](/rest/api/azure/)
+- [Aan de slag gaan met Azure REST API](/rest/api/azure/)

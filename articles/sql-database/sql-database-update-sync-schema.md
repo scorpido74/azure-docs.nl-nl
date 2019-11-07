@@ -1,5 +1,5 @@
 ---
-title: De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren | Microsoft Docs
+title: De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
 description: Meer informatie over het automatiseren van de replicatie van schema wijzigingen in Azure SQL Data Sync.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566266"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686879"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
 
@@ -88,7 +88,7 @@ U kunt ook meer triggers toevoegen om andere typen schema wijzigingen te replice
 
 ### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Een trigger maken op andere eind punten om schema wijzigingen tijdens het invoegen toe te passen
 
-Deze trigger voert de schema wijzigings opdracht uit wanneer deze wordt gesynchroniseerd met andere eind punten. U moet deze trigger maken op alle eind punten, met uitzonde ring van het schema waarin wijzigingen worden aangebracht (dat wil zeggen, in de Data Base waarin `AlterTableDDLTrigger` de DDL-trigger in de vorige stap is gemaakt).
+Deze trigger voert de schema wijzigings opdracht uit wanneer deze wordt gesynchroniseerd met andere eind punten. U moet deze trigger maken op alle eind punten, met uitzonde ring van het schema waarin wijzigingen worden aangebracht (in de Data Base waarin de DDL-trigger `AlterTableDDLTrigger` is gemaakt in de vorige stap).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -161,7 +161,7 @@ Nadat de schema wijzigingen zijn gerepliceerd naar alle eind punten, moet u ook 
 
 1.  Het database schema vernieuwen.
 
-1.  Als de nieuwe en oude gegevens typen niet volledig compatibel zijn: als u bijvoorbeeld wijzigt van naar `int` `bigint` -Sync, kan dit mislukken voordat de stappen voor het maken van de triggers zijn voltooid. Synchronisatie slaagt na een nieuwe poging.
+1.  Als de nieuwe en oude gegevens typen niet volledig compatibel zijn: als u bijvoorbeeld overschakelt van `int` naar `bigint`-Sync kan mislukken voordat de stappen voor het maken van de triggers zijn voltooid. Synchronisatie slaagt na een nieuwe poging.
 
 #### <a name="rename-columns-or-tables"></a>De naam van kolommen of tabellen wijzigen
 
@@ -223,13 +223,13 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-database-sync-data.md)
 -   Data Sync instellen
-    - In de portal - [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
+    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-database-get-started-sql-data-sync.md)
     - Met PowerShell
         -  [PowerShell gebruiken om meerdere Azure SQL-databases te synchroniseren](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell gebruiken om te synchroniseren tussen een Azure SQL-database en een on-premises database](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync-agent: [Data Sync-agent voor Azure SQL Data Sync](sql-database-data-sync-agent.md)
 -   Best practices: [Best practices voor Azure SQL Data Sync](sql-database-best-practices-data-sync.md)
--   SQL Data Sync controleren [met Azure monitor](sql-database-sync-monitor-oms.md) -logboeken
+-   SQL Data Sync controleren [met Azure monitor-logboeken](sql-database-sync-monitor-oms.md)
 -   Problemen oplossen: [Problemen met Azure SQL Data Sync oplossen](sql-database-troubleshoot-data-sync.md)
 -   Het synchronisatieschema bijwerken
     -   Met PowerShell: [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/sql-database-sync-update-schema.md)

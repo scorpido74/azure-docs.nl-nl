@@ -1,5 +1,5 @@
 ---
-title: Detectie van bedreigingen voor Azure Service Layer in Azure Security Center | Microsoft Docs
+title: Detectie van Azure Service Layer Threat-Azure Security Center
 description: In dit onderwerp vindt u de waarschuwingen van de Azure-service laag die beschikbaar zijn in Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b82eab9d20966ddd0678c9213bf25a14b5313f58
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202440"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686451"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Detectie van dreigingen voor de service laag van Azure in Azure Security Center
 
@@ -33,7 +33,7 @@ Security Center Network-laag analyse zijn gebaseerd op voorbeeld [gegevens van I
 
 > [!div class="mx-tableFixed"]
 
-|Waarschuwing|Description|
+|Waarschuwing|Beschrijving|
 |---|---|
 |**Verdachte uitgaande RDP-netwerk activiteit**|Voor beeld van netwerk verkeer analyse heeft afwijkende uitgaande Remote Desktop Protocol (RDP)-communicatie gedetecteerd, afkomstig van een bron in uw implementatie. Deze activiteit wordt als abnormaal beschouwd voor deze omgeving. Dit kan erop wijzen dat uw resource is aangetast en nu wordt gebruikt om een extern RDP-eind punt aanval op te treden. Houd er rekening mee dat dit type activiteit kan ertoe leiden dat uw IP als schadelijk wordt gemarkeerd door externe entiteiten.|
 |**Verdachte uitgaande RDP-netwerk activiteit naar meerdere bestemmingen**|Voor beeld van netwerk verkeer analyse heeft afwijkende uitgaande RDP-communicatie gedetecteerd, afkomstig van een bron in uw implementatie naar meerdere bestemmingen. Deze activiteit wordt als abnormaal beschouwd voor deze omgeving. Dit kan erop wijzen dat uw resource is aangetast en nu wordt gebruikt om externe RDP-eind punten voor beveiligings aanvallen af te dwingen. Houd er rekening mee dat dit type activiteit kan ertoe leiden dat uw IP als schadelijk wordt gemarkeerd door externe entiteiten.|
@@ -59,15 +59,15 @@ Security Center biedt een extra beveiligingslaag door gebruik te maken van Azure
 
 > [!div class="mx-tableFixed"]
 
-|Waarschuwing|Description|
+|Waarschuwing|Beschrijving|
 |---|---|
 |**Uitvoering van microburst Toolkit**|Er is een bekend Reconnaissance-Toolkit voor Cloud omgevingen gedetecteerd in uw omgeving. Het hulp [programma dat](https://github.com/NetSPI/MicroBurst) door een aanvaller (of indringings tester) kan worden gebruikt voor het toewijzen van de resources van uw abonnementen, het identificeren van onveilige configuraties en het lekken van vertrouwelijke informatie.|
 |**Azurite Toolkit uitvoeren**|Er is een bekend Reconnaissance-Toolkit voor Cloud omgevingen gedetecteerd in uw omgeving. Het hulp programma [Azurite](https://github.com/mwrlabs/Azurite) kan door een aanvaller (of indringings tester) worden gebruikt om de resources van uw abonnementen toe te wijzen en onveilige configuraties te identificeren.|
 |**Verdachte beheer sessie met een inactief account**|Logboeken voor abonnements activiteiten er is een verdacht gedrag gedetecteerd. Een principal die gedurende een lange periode niet wordt gebruikt, is nu bezig met het uitvoeren van acties waarmee persistentie voor een aanvaller kan worden beveiligd.|
 |**Verdachte beheer sessie met behulp van Power shell**|Logboeken voor abonnements activiteiten er is een verdacht gedrag gedetecteerd. Een principal die Power shell niet regel matig gebruikt voor het beheren van de abonnements omgeving is nu het gebruik van Power shell en het uitvoeren van acties waarmee persistentie kan worden beveiligd voor een aanvaller.|
 |**Gebruik van geavanceerde Azure-persistentie technieken**|Logboeken voor abonnements activiteiten er is een verdacht gedrag gedetecteerd. Aangepaste rollen hebben legitimized-identiteits entiteiten gekregen. Dit kan ertoe leiden dat de aanvaller opereren in een Azure-klant omgeving krijgt.|
-|**Activiteit vanuit niet-gangbaar land**|Activiteit van een locatie die niet recent of ooit door een gebruiker in de organisatie is bezocht.<br/>Deze detectie rekening gehouden met het verleden activiteit locaties om te bepalen van de nieuwe en onregelmatige locaties. De anomaliedetectie-engine bevat informatie over de voorgaande locaties die worden gebruikt door gebruikers in de organisatie. 
-|**Activiteit vanaf anonieme IP-adressen**|Gebruikers activiteit van een IP-adres dat is geïdentificeerd als een anonieme proxy-IP-adres is gedetecteerd. <br/>Deze proxy's worden gebruikt door mensen die het IP-adres van hun apparaat willen verbergen en kunnen worden gebruikt voor kwaad aardige doel einden. Deze detectie maakt gebruik van een algoritme voor machine learning dat onjuiste positieven, zoals verkeerd gelabelde IP-adressen die veel worden gebruikt door gebruikers in de organisatie, vermindert.|
+|**Activiteit van het niet-frequente land**|Activiteit van een locatie die niet recent of ooit door een gebruiker in de organisatie is bezocht.<br/>Deze detectie houdt rekening met vroegere activiteiten locaties om nieuwe en niet-frequente locaties te bepalen. De anomalie detectie-Engine slaat informatie over eerdere locaties die worden gebruikt door gebruikers in de organisatie. 
+|**Activiteit van anonieme IP-adressen**|Gebruikers activiteit van een IP-adres dat is geïdentificeerd als een anonieme proxy-IP-adres is gedetecteerd. <br/>Deze proxy's worden gebruikt door mensen die het IP-adres van hun apparaat willen verbergen en kunnen worden gebruikt voor kwaad aardige doel einden. Deze detectie maakt gebruik van een algoritme voor machine learning dat onjuiste positieven, zoals verkeerd gelabelde IP-adressen die veel worden gebruikt door gebruikers in de organisatie, vermindert.|
 |**Onmogelijk traject gedetecteerd**|Er zijn twee gebruikers activiteiten (in één of meerdere sessies) opgetreden, afkomstig van geografische locaties. Dit gebeurt binnen een periode die korter is dan de tijd die de gebruiker zou hebben nodig om vanaf de eerste locatie naar de tweede te gaan. Dit geeft aan dat een andere gebruiker dezelfde referenties gebruikt. <br/>Deze detectie maakt gebruik van een machine learning algoritme dat duidelijke fout-positieven negeert die bijdragen aan de niet-bestaans omstandigheden, zoals Vpn's en locaties die regel matig door andere gebruikers in de organisatie worden gebruikt. De detectie heeft een initiële leer periode van zeven dagen, waarbij het activiteiten patroon van een nieuwe gebruiker wordt geleerd.|
 
 >[!NOTE]

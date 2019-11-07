@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 11/04/2019
 ms.author: szark
-ms.openlocfilehash: 4b254b508e5fac5721e579620e207c2a8612352d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9537ec39e58d5703ed3bc1774520a12b25147b0
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083408"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615581"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Officiële Linux-distributies op Azure
 Partners bieden Linux-installatie kopieën in de Azure Marketplace. We werken samen met verschillende Linux-community's om nog meer versies toe te voegen aan de goedgekeurde distributie lijst. In de tussen tijd kunt u uw eigen Linux altijd gebruiken door de richt lijnen te volgen bij het [maken en uploaden van een virtuele harde schijf met het Linux-besturings systeem](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
@@ -32,22 +32,22 @@ De LIS-Stuur programma's (Linux Integration Services) voor Hyper-V en Azure zijn
 De Azure Linux-agent is al vooraf geïnstalleerd op de installatie kopieën van Azure Marketplace en is doorgaans beschikbaar vanuit de opslag plaats van het distributie pakket. U vindt de bron code op [github](https://github.com/azure/walinuxagent).
 
 
-| Distributie | Version | Stuurprogramma's | Agent |
+| Distributie | Versie | Stuurprogramma's | Agent |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3+, 7.0+ |CentOS 6.3: [LIS downloaden](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4+: In kernel |Pakket: In [opslag plaats](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) onder ' WALinuxAgent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |In kernel |Bron code: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7,9 +, 8.2 + |In kernel |Pakket: In opslag plaats onder ' waagent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |In kernel |Pakket: In opslag plaats onder ' WALinuxAgent ' <br/>Bron code: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6,7 +, 7.1 +, 8.0 + |In kernel |Pakket: In opslag plaats onder ' WALinuxAgent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES voor SAP<br>11 SP4<br>12 SP1+<br>15|In kernel |Pakket:<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE Schrikkel 42.2 + |In kernel |Pakket: In [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats onder ' python-Azure-agent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |In kernel |Pakket: In opslag plaats onder ' walinuxagent ' <br/>Bron code: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3 +, 7.0 +, 8.0 + |CentOS 6,3: [Lis downloaden](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: in kernel |Pakket: in [opslag plaats](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
+| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0 + |In kernel |Bron code: [github](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
+| Debian |Debian 7,9 +, 8.2 +, 9, 10 |In kernel |Pakket: in opslag plaats onder waagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
+| Oracle Linux |6.4 +, 7.0 + |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6,7 +, 7.1 +, 8.0 + |In kernel |Pakket: in opslag plaats onder WALinuxAgent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES voor SAP<br>11 SP4<br>12 SP1 +<br>15|In kernel |Pakket:<p> voor 11 in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats<br>voor 12 opgenomen in de module ' Public Cloud ' onder ' python-Azure-agent '<br/>Bron code: [github](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE Schrikkel 42.2 + |In kernel |Pakket: in [Cloud: tools](https://build.opensuse.org/project/show/Cloud:Tools) opslag plaats onder ' python-Azure-agent ' <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |In kernel |Pakket: in opslag plaats onder walinuxagent <br/>Bron code: [github](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>** informatie over uitgebreide ondersteuning voor Ubuntu 12,04 en 14,04 vindt u hier: [Ubuntu Extended Security-onderhoud](https://www.ubuntu.com/esm).
+  - **<sup>1</sup>** informatie over uitgebreide ondersteuning voor Ubuntu 12,04 en 14,04 vindt u hier: [Ubuntu uitgebreid beveiligings onderhoud](https://www.ubuntu.com/esm).
 
 
 ## <a name="image-update-cadence"></a>Uitgebracht installatie kopie-update
-Azure vereist dat de uitgevers van de getekende Linux-distributies hun installatie kopieën regel matig bijwerken in de Azure Marketplace met de nieuwste patches en beveiligings oplossingen, op een driemaandelijkse of snellere uitgebracht. Bijgewerkte installatie kopieën in azure Marketplace zijn automatisch beschikbaar voor klanten als nieuwe versies van een image SKU. Meer informatie over het zoeken naar Linux-installatie kopieën: [Zoek naar Linux VM-installatie kopieën in azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+Azure vereist dat de uitgevers van de getekende Linux-distributies hun installatie kopieën regel matig bijwerken in de Azure Marketplace met de nieuwste patches en beveiligings oplossingen, op een driemaandelijkse of snellere uitgebracht. Bijgewerkte installatie kopieën in azure Marketplace zijn automatisch beschikbaar voor klanten als nieuwe versies van een image SKU. Meer informatie over het zoeken naar Linux-installatie kopieën: [Linux VM-installatie kopieën zoeken in azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
 
 ### <a name="additional-links"></a>Aanvullende koppelingen
  - [Levenscyclus van de open bare Cloud installatie kopie van SUSE](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
@@ -73,7 +73,7 @@ Op de CoreOS-website:
 
 *CoreOS is ontworpen voor beveiliging, consistentie en betrouw baarheid. In plaats van pakketten te installeren via yum of apt, gebruikt CoreOS Linux-containers om uw services te beheren op een hoger niveau van abstractie. De code van een enkele service en alle afhankelijkheden zijn verpakt in een container die kan worden uitgevoerd op een of meer CoreOS machines.*
 
-### <a name="credativ"></a>credativ
+### <a name="credativ"></a>Credativ
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credativ is een onafhankelijke Consulting-en service maatschappij die is gespecialiseerd in de ontwikkeling en implementatie van professionele oplossingen door gebruik te maken van gratis software. Als toonaangevende open-source specialisten heeft Credativ internationale herkenning met veel IT-afdelingen die hun ondersteuning gebruiken. In combi natie met micro soft wordt Credativ momenteel de bijbehorende Debian-installatie kopieën voor Debian 8 (Jessie) en Debian voor 7 (Wheezy) voor bereid. Beide installatie kopieën zijn speciaal ontworpen om te worden uitgevoerd op Azure en kunnen eenvoudig worden beheerd via het platform. Credativ biedt ook ondersteuning voor de lange termijn onderhoud en het bijwerken van de Debian-installatie kopieën voor Azure via de open source-ondersteunings centra.

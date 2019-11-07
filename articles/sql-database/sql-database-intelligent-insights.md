@@ -1,5 +1,5 @@
 ---
-title: Prestaties van de data base bewaken met Intelligent Insights-Azure SQL Database | Microsoft Docs
+title: Prestaties van de data base bewaken met Intelligent Insights-Azure SQL Database
 description: Azure SQL Database Intelligent Insights maakt gebruik van ingebouwde intelligentie om continu database gebruik te bewaken door middel van kunst matige intelligentie en detecteert storende gebeurtenissen die de prestaties nadelig beïnvloeden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c073b535271ba8f9f11e17ba5203b13e257e211b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262161"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689680"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights met behulp van AI om database prestaties te bewaken en op te lossen
 
@@ -50,13 +50,13 @@ Geïdentificeerd SQL Database prestatie verminderingen worden vastgelegd in het 
 
 | Eigenschap             | Details              |
 | :------------------- | ------------------- |
-| database gegevens | Meta gegevens over een Data Base waarop een inzicht is gedetecteerd, zoals een resource-URI. |
+| Database gegevens | Meta gegevens over een Data Base waarop een inzicht is gedetecteerd, zoals een resource-URI. |
 | Waargenomen tijds bereik | Begin-en eind tijd voor de periode van het gedetecteerde inzicht. |
 | Beïnvloede metrische gegevens | Metrische gegevens waardoor een inzicht werd gegenereerd: <ul><li>De duur van de query wordt verhoogd [seconden].</li><li>Overmatig wacht tijd [seconden].</li><li>Time-outaanvragen [percentage].</li><li>Gefoutde aanvragen [percentage].</li></ul>|
 | Impact waarde | Waarde van een gemeten meting. |
 | Beïnvloede query's en fout codes | Hash-of fout code opvragen. Deze kunnen worden gebruikt om de betrokken query's eenvoudig te correleren. Metrische gegevens die bestaan uit een toename van de query duur, de wacht tijd, het aantal time-outs of de fout codes worden weer gegeven. |
 | Detecties | De detectie die tijdens de uitvoering van een gebeurtenis is geïdentificeerd bij de data base. Er zijn 15 detectie patronen. Zie [problemen met database prestaties oplossen met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)voor meer informatie. |
-| Hoofdoorzaakanalyses | Analyse van de hoofd oorzaak van het probleem dat in een lees bare indeling is geïdentificeerd. Sommige inzichten bevatten waar mogelijk een aanbeveling voor de verbetering van de prestaties. |
+| Hoofdoorzaakanalyse | Analyse van de hoofd oorzaak van het probleem dat in een lees bare indeling is geïdentificeerd. Sommige inzichten bevatten waar mogelijk een aanbeveling voor de verbetering van de prestaties. |
 |||
 
 Voor een praktische beschrijving over het gebruik van Intelligent Insights met Azure SQL-analyse en voor typische gebruiks scenario's raadpleegt u de Inge sloten video:
@@ -83,7 +83,7 @@ Zie [Azure SQL database metrische gegevens en logboek registratie van diagnostis
 Azure SQL-analyse oplossing biedt Graphical User Interface-, rapportage-en waarschuwings functies voor database prestaties, samen met de Intelligent Insights diagnostische logboek gegevens.
 
 > [!TIP]
-> Snel aan de slag: De eenvoudigste manier om aan de slag te gaan met behulp van Intelligent Insights is het gebruik ervan samen met Azure SQL-analyse, waarmee u een Graphical User Interface krijgt voor problemen met de prestaties van de data base. Azure SQL-analyse oplossing toevoegen vanuit Marketplace, een werk ruimte in deze oplossing maken en vervolgens voor elke Data Base waarvoor u Intelligent Insights wilt inschakelen, streaming van het logboek "SQLInsights" configureren op de Blade Diagnostische instellingen van een Data Base naar de werk ruimte van Azure SQL-analyse.
+> Snel aan de slag: de eenvoudigste manier om aan de slag te gaan met behulp van Intelligent Insights is het gebruik ervan samen met Azure SQL-analyse waarmee u een Graphical User Interface krijgt voor problemen met de prestaties van de data base. Azure SQL-analyse oplossing toevoegen vanuit Marketplace, een werk ruimte in deze oplossing maken en vervolgens voor elke Data Base waarvoor u Intelligent Insights wilt inschakelen, streaming van het logboek "SQLInsights" configureren op de Blade Diagnostische instellingen van een Data Base naar de werk ruimte van Azure SQL-analyse.
 >
 
 Een vereiste is om Azure SQL-analyse toe te voegen aan uw Azure Portal dash board van de Marketplace en om een werk ruimte te maken, raadpleegt u [Azure SQL-analyse configureren](../azure-monitor/insights/azure-sql.md#configuration)
@@ -92,7 +92,7 @@ Als u Intelligent Insights met Azure SQL-analyse wilt gebruiken, configureert u 
 
 In het volgende voor beeld ziet u een Intelligent Insights die wordt weer gegeven via Azure SQL-analyse:
 
-![Intelligent Insights-rapport](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
+![Intelligent Insights rapport](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
 ### <a name="set-up-with-event-hubs"></a>Instellen met Event Hubs
 
@@ -112,7 +112,7 @@ Zie [het logboek voor diagnostische gegevens over de Intelligent Insights-data b
 
 De metrische gegevens die worden gebruikt voor detectie modellen die Intelligent Insights genereren, zijn gebaseerd op bewaking:
 
-- Queryduur
+- Query duur
 - Time-outaanvragen
 - Buitensporige wacht tijd
 - Aanvragen met fouten
@@ -127,7 +127,7 @@ Alle metrische gegevens worden beschouwd als samen in verschillende relaties via
 - Er is een analyse van de hoofd oorzaak van het probleem gedetecteerd.
 - Aanbevelingen voor het verbeteren van de prestaties van de bewaakte SQL database, waar mogelijk.
 
-## <a name="query-duration"></a>Queryduur
+## <a name="query-duration"></a>Query duur
 
 Het model voor het degraderen van de duur van de query analyseert afzonderlijke query's en detecteert de toename in de tijd die nodig is voor het compileren en uitvoeren van een query vergeleken met de basis lijn van de prestaties.
 

@@ -9,12 +9,12 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste traefik ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 50908bde65b69cb475391cd30bca758dd571f114
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036941"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582311"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Een aangepaste traefik ingangs controller gebruiken en HTTPS configureren
 
@@ -31,7 +31,7 @@ In dit artikel leest u hoe u Azure dev Spaces configureert voor het gebruik van 
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Een aangepaste traefik ingress-controller configureren
 
-Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Maak verbinding met uw cluster met behulp van [kubectl][kubectl], de Kubernetes-opdracht regel-client. Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -45,7 +45,7 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-Maak een Kubernetes-naam ruimte voor de traefik ingangs controller en Installeer `helm`deze met behulp van.
+Maak een Kubernetes-naam ruimte voor de traefik ingangs controller en installeer deze met behulp van `helm`.
 
 ```console
 kubectl create ns traefik
@@ -87,7 +87,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Open [Values. yaml][values-yaml] en vervang alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* met *traefik. MY_CUSTOM_DOMAIN* met uw domein voor *MY_CUSTOM_DOMAIN*. Vervang ook *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste*inkomend verkeer. Hieronder ziet u een voor beeld van `values.yaml` een bijgewerkt bestand:
+Open [Values. yaml][values-yaml] en vervang alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* met *traefik. MY_CUSTOM_DOMAIN* met uw domein voor *MY_CUSTOM_DOMAIN*. Vervang ook *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste*inkomend verkeer. Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml`-bestand:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -110,7 +110,7 @@ gateway:
 
 Sla de wijzigingen op en sluit het bestand.
 
-Implementeer de voorbeeld toepassing met `helm install`behulp van.
+Implementeer de voorbeeld toepassing met behulp van `helm install`.
 
 ```console
 helm install -n bikesharing . --dep-up --namespace dev --atomic
@@ -118,14 +118,14 @@ helm install -n bikesharing . --dep-up --namespace dev --atomic
 
 In het bovenstaande voor beeld wordt de voorbeeld toepassing geïmplementeerd in de naam ruimte voor *ontwikkel aars* .
 
-Selecteer de ruimte voor *ontwikkel aars* met uw voorbeeld `azds space select` toepassing en geef de url's weer voor toegang tot de `azds list-uris`voorbeeld toepassing met behulp van.
+Selecteer de ruimte voor de *ontwikkeling* van uw voorbeeld toepassing met behulp van `azds space select` en geef de url's weer voor toegang tot de voorbeeld toepassing met behulp van `azds list-uris`.
 
 ```console
 azds space select -n dev
 azds list-uris
 ```
 
-In de onderstaande uitvoer ziet u de voor `azds list-uris`beeld-url's van.
+De onderstaande uitvoer toont de voor beeld-Url's van `azds list-uris`.
 
 ```console
 Uri                                                  Status
@@ -134,16 +134,16 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Ga naar de *bikesharingweb* -service door de open bare URL te `azds list-uris` openen via de opdracht. In het bovenstaande voor beeld is `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`de open bare URL voor de *bikesharingweb* -service.
+Ga naar de *bikesharingweb* -service door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
 
-Gebruik de `azds space select` opdracht om een onderliggende ruimte onder *dev* te maken en geef de url's weer om toegang te krijgen tot de onderliggende dev-ruimte.
+Gebruik de `azds space select` opdracht om een onderliggende ruimte onder *dev* te maken en geef de url's weer voor toegang tot de onderliggende ontwikkel ruimte.
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-De onderstaande uitvoer toont de voor beeld- `azds list-uris` url's van om toegang te krijgen tot de voorbeeld toepassing in de *azureuser1* onderliggende ontwikkel ruimte.
+De onderstaande uitvoer toont de voor beeld-Url's van `azds list-uris` om toegang te krijgen tot de voorbeeld toepassing in de *azureuser1* onderliggende ontwikkel ruimte.
 
 ```console
 Uri                                                  Status
@@ -152,11 +152,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Ga naar de *bikesharingweb* -service in de *azureuser1* -onderliggende ontwikkel ruimte door de open bare URL `azds list-uris` te openen via de opdracht. In het bovenstaande voor beeld is `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`de open bare URL voor de *bikesharingweb* -service in de *azureuser1* -ruimte voor de onderliggende ontwikkel aars.
+Ga naar de *bikesharingweb* -service in de *azureuser1* -onderliggende ontwikkel ruimte door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service in de *azureuser1* -onderliggende ontwikkel ruimte `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/`.
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>De traefik ingress-controller configureren voor het gebruik van HTTPS
 
-Maak een `dev-spaces/samples/BikeSharingApp/traefik-values.yaml` bestand dat lijkt op het onderstaande voor beeld. Werk de *e-mail* waarde bij met uw eigen e-mail adres, die wordt gebruikt om het certificaat te genereren met de code ring.
+Maak een `dev-spaces/samples/BikeSharingApp/traefik-values.yaml`-bestand dat vergelijkbaar is met het onderstaande voor beeld. Werk de *e-mail* waarde bij met uw eigen e-mail adres, die wordt gebruikt om het certificaat te genereren met de code ring.
 
 ```yaml
 fullnameOverride: traefik
@@ -201,7 +201,7 @@ ssl:
     - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 ```
 
-Werk uw *traefik* -service `helm repo update` bij met en met inbegrip van het *traefik-waarden. yaml-* bestand dat u hebt gemaakt.
+Werk uw *traefik* -service bij met `helm repo update` en met inbegrip van het *traefik-waarden. yaml-* bestand dat u hebt gemaakt.
 
 ```console
 cd ..
@@ -211,7 +211,7 @@ helm upgrade traefik stable/traefik --namespace traefik --values traefik-values.
 Met de bovenstaande opdracht wordt een nieuwe versie van de traefik-service uitgevoerd met de waarden van *traefik. yaml* en wordt de vorige service verwijderd. De traefik-service maakt ook een TLS-certificaat met behulp van de code ring en het omleiden van webverkeer voor gebruik van HTTPS.
 
 > [!NOTE]
-> Het kan enkele minuten duren voordat de nieuwe versie van de traefik-service wordt gestart. U kunt de voortgang controleren met `kubectl get pods --namespace traefik --watch`.
+> Het kan enkele minuten duren voordat de nieuwe versie van de traefik-service wordt gestart. U kunt de voortgang controleren met behulp van `kubectl get pods --namespace traefik --watch`.
 
 Ga naar de voorbeeld toepassing in de *azureuser1 voor ontwikkel aars/* onderliggende ruimte en Let op dat u wordt omgeleid om HTTPS te gebruiken. U ziet ook dat de pagina wordt geladen, maar de browser bevat een aantal fouten. Wanneer u de browser console opent, wordt de fout weer gegeven in verband met een HTTPS-pagina voor het laden van HTTP-resources. Bijvoorbeeld:
 
@@ -261,7 +261,7 @@ Werk de methode *getApiHostAsync* in [BikeSharingWeb/pages/helpers. js][helpers-
 ...
 ```
 
-Ga naar de `BikeSharingWeb` map en gebruik `azds up` om uw bijgewerkte BikeSharingWeb-service uit te voeren.
+Ga naar de map `BikeSharingWeb` en gebruik `azds up` om uw bijgewerkte BikeSharingWeb-service uit te voeren.
 
 ```console
 cd BikeSharingWeb/
@@ -288,7 +288,7 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://github.com/helm/helm/blob/master/docs/install.md
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

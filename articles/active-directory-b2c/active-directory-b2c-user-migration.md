@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c8e4027bd8892ff3bf5c598573b7736aea42953f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802100"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602580"
 ---
-# <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Gebruikers migratie
+# <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: gebruikers migratie
 
 Wanneer u uw ID-provider migreert naar Azure Active Directory B2C (Azure AD B2C), moet u mogelijk ook de gebruikers accounts migreren. In dit artikel wordt uitgelegd hoe u bestaande gebruikers accounts van een id-provider migreert naar Azure AD B2C. Het artikel is niet bedoeld om te worden gescripteerd, maar in plaats daarvan worden enkele scenario's beschreven. De ontwikkelaar is verantwoordelijk voor de geschiktheid van elke benadering.
 
@@ -25,15 +25,15 @@ Wanneer u uw ID-provider migreert naar Azure Active Directory B2C (Azure AD B2C)
 
 Met Azure AD B2C kunt u gebruikers migreren via de [Azure AD-Graph API][B2C-GraphQuickStart]. Het proces voor gebruikers migratie valt in twee stromen:
 
-- **Pre-migratie**: Deze stroom is van toepassing wanneer u een duidelijke toegang hebt tot de referenties van een gebruiker (gebruikers naam en wacht woord) of de referenties zijn versleuteld, maar u kunt ze ontsleutelen. Het proces vóór de migratie omvat het lezen van de gebruikers van de oude ID-provider en het maken van nieuwe accounts in de Azure AD B2C Directory.
+- **Pre-migratie**: deze stroom is van toepassing wanneer u een duidelijke toegang hebt tot de referenties van een gebruiker (gebruikers naam en wacht woord) of de referenties zijn versleuteld, maar u kunt ze ontsleutelen. Het proces vóór de migratie omvat het lezen van de gebruikers van de oude ID-provider en het maken van nieuwe accounts in de Azure AD B2C Directory.
 
-- **Vóór de migratie en het opnieuw instellen van het wacht woord**: Deze stroom is van toepassing wanneer het wacht woord van een gebruiker niet toegankelijk is. Bijvoorbeeld:
+- **Vóór de migratie en het opnieuw instellen van het wacht woord**: deze stroom is van toepassing wanneer het wacht woord van een gebruiker niet toegankelijk is. Bijvoorbeeld:
   - Het wacht woord wordt opgeslagen in HASH-indeling.
   - Het wacht woord wordt opgeslagen in een id-provider waartoe u geen toegang hebt. Uw oude ID-provider valideert de gebruikers referenties door een webservice aan te roepen.
 
 In beide stromen voert u eerst het proces voorafgaand aan de migratie uit, leest u de gebruikers van uw oude ID-provider en maakt u nieuwe accounts in de Azure AD B2C Directory. Als u het wacht woord niet hebt, maakt u het account met behulp van een wacht woord dat wille keurig wordt gegenereerd. Vervolgens vraagt u de gebruiker om het wacht woord te wijzigen of wanneer de gebruiker zich voor de eerste keer aanmeldt, Azure AD B2C de gebruiker wordt gevraagd om deze opnieuw in te stellen.
 
-## <a name="password-policy"></a>Wachtwoordbeleid
+## <a name="password-policy"></a>Wachtwoord beleid
 
 Het Azure AD B2C wachtwoord beleid (voor lokale accounts) is gebaseerd op het Azure AD-beleid. In de beleids regels voor aanmelden of aanmelden en het beleid voor Azure AD B2C het opnieuw instellen van het wacht woord wordt gebruikgemaakt van de sterke wachtwoord sterkte en verlopen wacht woorden niet. Zie voor meer informatie [Azure AD-wachtwoord beleid][AD-PasswordPolicies].
 
@@ -47,7 +47,7 @@ Als de accounts die u wilt migreren een zwakkere wachtwoord sterkte hebben dan d
 
 U maakt het Azure AD B2C gebruikers account via Graph API (met het wacht woord of met een wille keurig wacht woord). In deze sectie wordt het proces voor het maken van gebruikers accounts in de Azure AD B2C Directory beschreven met behulp van Graph API.
 
-### <a name="step-11-register-your-application-in-your-tenant"></a>Stap 1,1: Uw toepassing registreren in uw Tenant
+### <a name="step-11-register-your-application-in-your-tenant"></a>Stap 1,1: uw toepassing registreren in uw Tenant
 
 Als u met de Graph API wilt communiceren, moet u eerst een service account met beheerders bevoegdheden hebben. In azure AD registreert u een toepassing en schakelt u schrijf toegang in voor de map. De referenties van de toepassing zijn de **toepassings-id** en het **toepassings geheim**. De toepassing fungeert als een gebruiker om de Graph API aan te roepen.
 
@@ -55,13 +55,13 @@ Registreer eerst een toepassing die u kunt gebruiken voor beheer taken zoals geb
 
 [!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
-### <a name="step-12-grant-administrative-permission-to-your-application"></a>Stap 1,2: Beheer machtigingen verlenen aan uw toepassing
+### <a name="step-12-grant-administrative-permission-to-your-application"></a>Stap 1,2: beheer machtigingen verlenen aan uw toepassing
 
 Vervolgens verleent u de toepassing de Azure AD-Graph API machtigingen die zijn vereist voor het schrijven naar de map.
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="step-13-create-the-application-secret"></a>Stap 1,3: Het toepassings geheim maken
+### <a name="step-13-create-the-application-secret"></a>Stap 1,3: het toepassings geheim maken
 
 Maak een client geheim (sleutel) voor gebruik door de gebruikers migratie toepassing die u in een latere stap hebt geconfigureerd.
 
@@ -69,7 +69,7 @@ Maak een client geheim (sleutel) voor gebruik door de gebruikers migratie toepas
 
 U hebt nu een toepassing met machtigingen om gebruikers in uw Azure AD B2C-Tenant te maken, te lezen en bij te werken.
 
-### <a name="step-14-optional-environment-cleanup"></a>Stap 1,4: Beschrijving Omgeving opschonen
+### <a name="step-14-optional-environment-cleanup"></a>Stap 1,4: (optioneel) omgeving opschonen
 
 De machtiging voor het *lezen en schrijven van Directory gegevens* bevat *niet* het recht om gebruikers te verwijderen. Als u uw toepassing de mogelijkheid wilt geven om gebruikers te verwijderen (om uw omgeving op te schonen), moet u een extra stap uitvoeren, waarbij Power shell wordt uitgevoerd om beheerders machtigingen voor gebruikers accounts in te stellen. Als dat niet het geval is, kunt u door gaan naar de volgende sectie.
 
@@ -113,36 +113,36 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ```
 
-Wijzig de waarde voor @no__t 0 met de ID van uw Azure AD **-toepassing**.
+Wijzig de `$AppId` waarde met de ID van uw Azure AD **-toepassing**.
 
-## <a name="step-2-pre-migration-application-sample"></a>Stap 2: Voor beeld van toepassingen vóór de migratie
+## <a name="step-2-pre-migration-application-sample"></a>Stap 2: voor beeld van een toepassing vóór de migratie
 
-U vindt het voor beeld van de vooraf-migratie code in de door de Community bijgehouden `azure-ad-b2c/user-migration` GitHub-opslag plaats:
+U vindt het voor beeld van de voor bereiding van code in de door de Community gehouden `azure-ad-b2c/user-migration` GitHub-opslag plaats:
 
 [Azure-AD-B2C/User-Migration/premigratie][UserMigrationSample-code] (github)
 
-### <a name="step-21-edit-the-migration-data-file"></a>Stap 2.1: Het bestand met migratie gegevens bewerken
+### <a name="step-21-edit-the-migration-data-file"></a>Stap 2,1: het bestand met migratie gegevens bewerken
 
 De voor beeld-app maakt gebruik van een JSON-bestand dat dummy gebruikers gegevens bevat. Nadat u het voor beeld hebt uitgevoerd, kunt u de code wijzigen om de gegevens uit uw eigen data base te gebruiken. Of u kunt het gebruikers profiel exporteren naar een JSON-bestand en vervolgens de app instellen op het gebruik van dat bestand.
 
-Als u het JSON-bestand wilt bewerken, opent u de `AADB2C.UserMigration.sln` Visual Studio-oplossing. Open in het project `AADB2C.UserMigration` het bestand `UsersData.json`.
+Als u het JSON-bestand wilt bewerken, opent u de `AADB2C.UserMigration.sln` Visual Studio-oplossing. Open in het `AADB2C.UserMigration` project het `UsersData.json` bestand.
 
 ![Onderdeel van UsersData. JSON-bestand met JSON-blokken van twee gebruikers](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Zoals u kunt zien, bevat het bestand een lijst met gebruikers entiteiten. Elke gebruikers entiteit heeft de volgende eigenschappen:
 
-- email
+- e-mail
 - displayName
-- firstName
-- lastName
+- voornaam
+- achternaam
 - wacht woord (kan leeg zijn)
 
 > [!NOTE]
 > Tijdens de compilatie kopieert Visual Studio het bestand naar de map `bin`.
 
-### <a name="step-22-configure-the-application-settings"></a>Stap 2.2: De toepassings instellingen configureren
+### <a name="step-22-configure-the-application-settings"></a>Stap 2,2: de toepassings instellingen configureren
 
-Open het bestand *app. config* onder het project `AADB2C.UserMigration`. Vervang de volgende app-instellingen door uw eigen waarden:
+Open het bestand *app. config* onder het `AADB2C.UserMigration`-project. Vervang de volgende app-instellingen door uw eigen waarden:
 
 ```XML
 <appSettings>
@@ -158,9 +158,9 @@ Open het bestand *app. config* onder het project `AADB2C.UserMigration`. Vervang
 > - Het gebruik van een Azure-tabel connection string wordt beschreven in de volgende secties.
 > - De naam van uw B2C-Tenant is het domein dat u hebt opgegeven tijdens het maken van de Tenant en wordt weer gegeven in de Azure Portal. De naam van de Tenant eindigt meestal met het achtervoegsel *. onmicrosoft.com* (bijvoorbeeld *contosob2c.onmicrosoft.com*).
 
-### <a name="step-23-run-the-pre-migration-process"></a>Stap 2,3: Het proces voorafgaand aan migratie uitvoeren
+### <a name="step-23-run-the-pre-migration-process"></a>Stap 2,3: het proces voorafgaand aan de migratie uitvoeren
 
-Klik met de rechter muisknop op de oplossing @no__t 0 en bouw het voor beeld opnieuw. Als dat lukt, hebt u nu een `UserMigration.exe` uitvoerbaar bestand in. `AADB2C.UserMigration\bin\Debug\net461` Als u het migratie proces wilt uitvoeren, gebruikt u een van de volgende opdracht regel parameters:
+Klik met de rechter muisknop op de `AADB2C.UserMigration` oplossing en bouw het voor beeld opnieuw. Als dat lukt, hebt u nu een `UserMigration.exe` uitvoer bare bestand in `AADB2C.UserMigration\bin\Debug\net461`. Als u het migratie proces wilt uitvoeren, gebruikt u een van de volgende opdracht regel parameters:
 
 - Als u **gebruikers met een wacht woord wilt migreren**, gebruikt u de opdracht `UserMigration.exe 1`.
 
@@ -168,7 +168,7 @@ Klik met de rechter muisknop op de oplossing @no__t 0 en bouw het voor beeld opn
 
 ![Opdracht prompt venster met de uitvoer van de opdracht UserMigration. exe](media/active-directory-b2c-user-migration/pre-migration-demo.png)
 
-### <a name="step-24-check-the-pre-migration-process"></a>Stap 2,4: Het proces voorafgaand aan migratie controleren
+### <a name="step-24-check-the-pre-migration-process"></a>Stap 2,4: het proces voorafgaand aan de migratie controleren
 
 Als u de migratie wilt valideren, gebruikt u een van de volgende twee methoden:
 
@@ -177,34 +177,34 @@ Als u de migratie wilt valideren, gebruikt u een van de volgende twee methoden:
    1. Open **Azure AD B2C**en selecteer vervolgens **gebruikers**.
    1. Typ in het zoekvak de weergave naam van de gebruiker en Bekijk het profiel van de gebruiker.
 
-- Als u een gebruiker wilt ophalen op basis van het e-mail adres voor aanmelden, gebruikt u deze voorbeeld toepassing:
+- Als u een gebruiker wilt ophalen op basis van het e-mail adres voor aanmelden, gebruikt u de voorbeeld toepassing:
 
    1. Voer de volgende opdracht uit:
 
       ```Console
-          UserMigration.exe 3 {email address}
+          UserMigration.exe 3 {email address} > UserProfile.json
       ```
 
       > [!TIP]
-      > U kunt ook een gebruiker ophalen op basis van de weergave naam met behulp van de volgende opdracht: `UserMigration.exe 4 "<Display name>"`.
+      > U kunt een gebruiker ook op weergave naam ophalen met behulp van de volgende opdracht: `UserMigration.exe 4 "<Display name>"`.
 
    1. Open het bestand UserProfile. json in een JSON-editor om de informatie van de gebruiker weer te geven.
 
       ![UserProfile. JSON-bestand geopend in Visual Studio code-editor](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
 
-### <a name="step-25-optional-environment-cleanup"></a>Stap 2,5: Beschrijving Omgeving opschonen
+### <a name="step-25-optional-environment-cleanup"></a>Stap 2,5: (optioneel) omgeving opschonen
 
-Als u uw Azure AD-Tenant wilt opschonen en gebruikers uit de Azure AD-adres lijst wilt verwijderen, voert u de `UserMigration.exe 5`-opdracht uit.
+Als u uw Azure AD-Tenant wilt opschonen en gebruikers uit de Azure AD-adres lijst wilt verwijderen, voert u de `UserMigration.exe 5` opdracht uit.
 
 > [!NOTE]
 > * Configureer de beheerders machtigingen voor gebruikers accounts voor uw toepassing om uw Tenant op te schonen.
 > * Met de voor beeld-app voor migratie worden alle gebruikers opgeschoond die worden vermeld in het JSON-bestand.
 
-### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Stap 2,6: Aanmelden met gemigreerde gebruikers (met een wacht woord)
+### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Stap 2,6: Meld u aan met gemigreerde gebruikers (met een wacht woord)
 
 Nadat u het proces vóór migratie hebt uitgevoerd met gebruikers wachtwoorden, zijn de accounts klaar voor gebruik en kunnen gebruikers zich aanmelden bij uw toepassing met behulp van Azure AD B2C. Als u geen toegang hebt tot wacht woorden van gebruikers, gaat u verder met de volgende sectie.
 
-## <a name="step-3-help-users-reset-their-password"></a>Stap 3: Gebruikers helpen hun wacht woord opnieuw in te stellen
+## <a name="step-3-help-users-reset-their-password"></a>Stap 3: Help gebruikers hun wacht woord opnieuw in te stellen
 
 Als u gebruikers met een wille keurig wacht woord migreert, moeten ze hun wacht woord opnieuw instellen. Om hen te helpen het wacht woord opnieuw in te stellen, stuurt u een welkomst bericht met een koppeling om het wacht woord opnieuw in te stellen.
 
@@ -217,20 +217,20 @@ Voer de volgende stappen uit om de koppeling naar het beleid voor het opnieuw in
 1. Selecteer uw toepassing in de vervolg keuzelijst **toepassing selecteren** .
 
     > [!NOTE]
-    > Voor **nu uitvoeren** moet ten minste één toepassing worden geregistreerd in uw Tenant. Zie [Tutorial voor meer informatie over het registreren van toepassingen: Een toepassing registreren in Azure Active Directory B2C @ no__t-0.
+    > Voor **nu uitvoeren** moet ten minste één toepassing worden geregistreerd in uw Tenant. Zie [zelf studie: een toepassing registreren in azure Active Directory B2C][B2C-AppRegister]voor meer informatie over het registreren van toepassingen.
 
 1. Kopieer de URL die wordt weer gegeven in het tekstvak **nu uitvoeren eind punt** en verzend deze naar uw gebruikers.
 
     ![De pagina beleid voor het opnieuw instellen van wacht woorden met eind punt nu uitvoeren gemarkeerd](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
 
-## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>Stap 4: Beschrijving Wijzig uw beleid om de status van de gebruikers migratie te controleren en in te stellen
+## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>Stap 4: (optioneel) Wijzig het beleid om de status van de gebruikers migratie te controleren en in te stellen
 
 > [!NOTE]
 > Als u de gebruikers migratie status wilt controleren en wijzigen, moet u een aangepast beleid gebruiken. De instructies voor het instellen van [aan de slag met aangepast beleid][B2C-GetStartedCustom] moeten zijn voltooid.
 
 Wanneer gebruikers zich proberen aan te melden zonder het wacht woord eerst opnieuw in te stellen, moet uw beleid een vriendelijk fout bericht retour neren. Bijvoorbeeld:
 
-> *Your-wacht woord is verlopen. Als u het opnieuw wilt instellen, selecteert u de koppeling wacht woord opnieuw instellen.*
+> *Uw wacht woord is verlopen. Als u het opnieuw wilt instellen, selecteert u de koppeling wacht woord opnieuw instellen.*
 
 Deze optionele stap vereist het gebruik van Azure AD B2C aangepast beleid, zoals beschreven in het artikel aan de slag [met aangepaste beleids regels][B2C-GetStartedCustom] .
 
@@ -238,17 +238,17 @@ In deze sectie wijzigt u het beleid om de gebruikers migratie status bij het aan
 
 U kunt een Azure-tabel gebruiken om de wijziging van het wacht woord bij te houden. Wanneer u het proces voorafgaand aan de migratie uitvoert met de opdracht regel parameter `2`, maakt u een gebruikers entiteit in een Azure-tabel. Uw service doet het volgende:
 
-- Bij het aanmelden wordt de REST van de migratie service door het Azure AD B2C-beleid aangeroepen, waarbij een e-mail bericht wordt verzonden als invoer claim. De service zoekt naar het e-mail adres in de Azure-tabel. Als het adres bestaat, genereert de service een fout bericht: *U moet het wacht woord wijzigen*.
+- Bij het aanmelden wordt de REST van de migratie service door het Azure AD B2C-beleid aangeroepen, waarbij een e-mail bericht wordt verzonden als invoer claim. De service zoekt naar het e-mail adres in de Azure-tabel. Als het adres bestaat, wordt er een fout bericht weer gegeven door de service: *u moet het wacht woord wijzigen*.
 
 - Nadat de gebruiker het wacht woord heeft gewijzigd, verwijdert u de entiteit uit de Azure-tabel.
 
 > [!NOTE]
 > We gebruiken een Azure-tabel om het voor beeld te vereenvoudigen. U kunt de migratie status opslaan in een Data Base of als aangepaste eigenschap in het Azure AD B2C-account.
 
-### <a name="41-update-your-application-setting"></a>4,1: Uw toepassings instelling bijwerken
+### <a name="41-update-your-application-setting"></a>4,1: uw toepassings instelling bijwerken
 
 1. Als u de REST-API-demo wilt testen, opent u `AADB2C.UserMigration.sln` in Visual Studio.
-1. Open het bestand *Web. config* in het project `AADB2C.UserMigration.API`. Vervang de instelling door het account dat is geconfigureerd in [stap 2,2](#step-22-configure-the-application-settings):
+1. Open in het `AADB2C.UserMigration.API` project het bestand *Web. config* . Vervang de instelling door het account dat is geconfigureerd in [stap 2,2](#step-22-configure-the-application-settings):
 
     ```json
     {
@@ -257,15 +257,15 @@ U kunt een Azure-tabel gebruiken om de wijziging van het wacht woord bij te houd
     }
     ```
 
-### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Stap 4,2: Uw webtoepassing implementeren naar Azure App Service
+### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Stap 4,2: Implementeer uw webtoepassing naar Azure App Service
 
-Klik in Solution Explorer met de rechter muisknop op de `AADB2C.UserMigration.API` en selecteer publiceren.... Volg de instructies om naar Azure App Service te publiceren. Zie [uw app implementeren voor Azure app service][AppService-Deploy]voor meer informatie.
+Klik in Solution Explorer met de rechter muisknop op de `AADB2C.UserMigration.API`en selecteer publiceren.... Volg de instructies om naar Azure App Service te publiceren. Zie [uw app implementeren voor Azure app service][AppService-Deploy]voor meer informatie.
 
-### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Stap 4,3: Een technische profiel en technische profiel validatie aan uw beleid toevoegen
+### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Stap 4,3: een technische profiel en technische profiel validatie aan uw beleid toevoegen
 
 1. Vouw in Solution Explorer ' Solution items ' uit en open het beleids bestand *TrustFrameworkExtensions. XML* .
-1. Wijzig `TenantId`, `PublicPolicyUri`-en `<TenantId>`-velden van `yourtenant.onmicrosoft.com` naar de naam van uw Tenant.
-1. Vervang onder het element `<TechnicalProfile Id="login-NonInteractive">` alle exemplaren van `ProxyIdentityExperienceFrameworkAppId` en `IdentityExperienceFrameworkAppId` door de toepassings-Id's die zijn geconfigureerd in [aan de slag met aangepaste beleids regels][B2C-GetStartedCustom].
+1. Wijzig `TenantId`, `PublicPolicyUri` en `<TenantId>` velden van `yourtenant.onmicrosoft.com` in de naam van uw Tenant.
+1. Vervang onder het element `<TechnicalProfile Id="login-NonInteractive">` alle exemplaren van `ProxyIdentityExperienceFrameworkAppId` en `IdentityExperienceFrameworkAppId` met de toepassings-Id's die zijn geconfigureerd in [aan de slag met aangepaste beleids regels][B2C-GetStartedCustom].
 1. Zoek het volgende XML-fragment onder het knoop punt `<ClaimsProviders>`. Wijzig de waarde van `ServiceUrl` zodat deze verwijst naar de Azure App Service URL.
 
     ```XML
@@ -304,11 +304,11 @@ Klik in Solution Explorer met de rechter muisknop op de `AADB2C.UserMigration.AP
     </ClaimsProvider>
     ```
 
-In het voor gaande technische profiel wordt één invoer claim gedefinieerd: `signInName` (verzenden als e-mail bericht). Bij het aanmelden wordt de claim naar uw REST-eind punt verzonden.
+In het bovenstaande technische profiel wordt één invoer claim gedefinieerd: `signInName` (verzenden als e-mail bericht). Bij het aanmelden wordt de claim naar uw REST-eind punt verzonden.
 
-Nadat u het technische profiel voor uw REST API hebt gedefinieerd, geeft u uw Azure AD B2C-beleid door om het technische profiel aan te roepen. Het XML-fragment overschrijft `SelfAsserted-LocalAccountSignin-Email`, dat in het basis beleid is gedefinieerd. Het XML-fragment voegt ook `ValidationTechnicalProfile` toe, met ReferenceId die verwijst naar uw technische profiel `LocalAccountUserMigration`.
+Nadat u het technische profiel voor uw REST API hebt gedefinieerd, geeft u uw Azure AD B2C-beleid door om het technische profiel aan te roepen. Het XML-fragment overschrijft `SelfAsserted-LocalAccountSignin-Email`, dat in het basis beleid is gedefinieerd. Het XML-fragment voegt ook `ValidationTechnicalProfile`toe, waarbij ReferenceId naar uw technische profiel verwijst `LocalAccountUserMigration`.
 
-### <a name="step-44-upload-the-policy-to-your-tenant"></a>Stap 4,4: Het beleid uploaden naar uw Tenant
+### <a name="step-44-upload-the-policy-to-your-tenant"></a>Stap 4,4: het beleid uploaden naar uw Tenant
 
 1. In de [Azure Portal][Portal]gaat u naar de [context van uw Azure AD B2C-Tenant][B2C-NavContext]en selecteert u **Azure AD B2C**.
 1. Selecteer een **Framework voor identiteits ervaring**.
@@ -317,7 +317,7 @@ Nadat u het technische profiel voor uw REST API hebt gedefinieerd, geeft u uw Az
 1. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
 1. Upload het bestand *TrustFrameworkExtensions. XML* en zorg ervoor dat het validatie wordt door gegeven.
 
-### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>Stap 4,5: Het aangepaste beleid testen met behulp van nu uitvoeren
+### <a name="step-45-test-the-custom-policy-by-using-run-now"></a>Stap 4,5: het aangepaste beleid testen met behulp van nu uitvoeren
 
 1. Selecteer **Azure AD B2C**en selecteer vervolgens **Framework voor identiteits ervaring**.
 1. Open *B2C_1A_signup_signin*, het aangepaste beleid RELYING Party (RP) dat u hebt geüpload en selecteer **nu uitvoeren**.
@@ -325,14 +325,14 @@ Nadat u het technische profiel voor uw REST API hebt gedefinieerd, geeft u uw Az
 
     ![Aanmeldings pagina voor aanmelding met het fout bericht voor het wijzigen van het wacht woord](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
 
-### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Stap 4,6: Beschrijving Problemen met uw REST API oplossen
+### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Stap 4,6: (optioneel) problemen met uw REST API oplossen
 
 U kunt logboek gegevens in vrijwel real time bekijken en bewaken.
 
 1. Klik in het menu instellingen van de REST-toepassing onder **bewaking**op **Diagnostische logboeken**.
 1. Stel **toepassings Logboeken (bestands systeem)** in **op aan**.
 1. Stel het **niveau** in op **uitgebreid**.
-1. Selecteer **opslaan**
+1. Selecteer **Opslaan**
 
     ![Configuratie pagina diagnose Logboeken in Azure Portal](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
 

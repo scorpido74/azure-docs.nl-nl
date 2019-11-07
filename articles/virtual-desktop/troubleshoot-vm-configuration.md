@@ -1,5 +1,5 @@
 ---
-title: Virtuele-machine configuratie van sessie-host-Azure
+title: Problemen met Windows Virtual Desktop Session Host oplossen-Azure
 description: Problemen oplossen bij het configureren van virtuele machines voor virtuele bureau blad-sessies van Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330825"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607402"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Configuratie van sessiehost-VM's
 
@@ -80,7 +80,7 @@ De aanbevolen manier om Vm's in te richten, is met behulp van de Azure Resource 
 
 Volg deze instructies om te bevestigen dat de onderdelen zijn geïnstalleerd en om te controleren op fout berichten.
 
-1. Controleer of de twee onderdelen zijn geïnstalleerd door in **het configuratie scherm**op  > **Program ma's** > **Program ma's en onderdelen**te controleren. Als **Windows Virtual Desktop agent** en de **opstart lader van de Windows Virtual Desktop agent** niet zichtbaar zijn, zijn ze niet geïnstalleerd op de virtuele machine.
+1. Controleer of de twee onderdelen zijn geïnstalleerd door in **het configuratie scherm** te controleren > **Program Ma's** > **Program ma's en onderdelen**. Als **Windows Virtual Desktop agent** en de **opstart lader van de Windows Virtual Desktop agent** niet zichtbaar zijn, zijn ze niet geïnstalleerd op de virtuele machine.
 2. Open **bestanden Verkenner** en ga naar **C:\Windows\Temp\scriptlogs.log**. Als het bestand ontbreekt, geeft dit aan dat de Power shell DSC waarmee de twee onderdelen zijn geïnstalleerd, niet kan worden uitgevoerd in de beschik bare beveiligings context.
 3. Als het bestand **C:\Windows\Temp\scriptlogs.log** aanwezig is, opent u het en controleert u op fout berichten.
 
@@ -309,7 +309,7 @@ Als u een van deze berichten ziet, betekent dit dat de installatie kopie niet de
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>De groeps beleids instelling Extern bureaublad licentie modus uitschakelen
 
-Controleer de groeps beleids instelling door de groepsbeleid editor te openen in de virtuele machine en te navigeren naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad sessiehost**@no __t-7**licensing** > **Stel de Extern bureaublad licentie modus**in. Als de groeps beleids instelling is **ingeschakeld**, wijzigt u deze in **uitgeschakeld**. Als de functie al is uitgeschakeld, kunt u deze vervolgens ongewijzigd laten.
+Controleer de groeps beleids instelling door de groepsbeleid editor te openen in de virtuele machine en te navigeren naar **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad sessiehost** > **licentie verlening** > **de licentie modus Extern bureaublad instellen**. Als de groeps beleids instelling is **ingeschakeld**, wijzigt u deze in **uitgeschakeld**. Als de functie al is uitgeschakeld, kunt u deze vervolgens ongewijzigd laten.
 
 >[!NOTE]
 >Als u groeps beleid via uw domein instelt, schakelt u deze instelling uit voor beleids regels die zijn gericht op deze Windows 10 Enter prise-Vm's met meerdere sessies.

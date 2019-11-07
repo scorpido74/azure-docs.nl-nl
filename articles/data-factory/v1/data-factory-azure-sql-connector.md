@@ -1,6 +1,6 @@
 ---
-title: Gegevens kopiëren naar/van Azure SQL Database | Microsoft Docs
-description: Informatie over het kopiëren van gegevens naar/van Azure SQL Database met behulp van Azure Data Factory.
+title: Gegevens kopiëren van/naar Azure SQL Database
+description: Meer informatie over het kopiëren van gegevens naar/van Azure SQL Database met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,104 +13,104 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: efc7e255a8b3644d8b95bf461e49cd67b2219676
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 8d53d61991f191d2cd0636dba918e9499c4f5d2b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839528"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683095"
 ---
-# <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Gegevens kopiëren naar en van Azure SQL Database met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
-> * [Versie 1:](data-factory-azure-sql-connector.md)
+# <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Gegevens kopiëren van en naar Azure SQL Database met behulp van Azure Data Factory
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> * [Versie 1](data-factory-azure-sql-connector.md)
 > * [Versie 2 (huidige versie)](../connector-azure-sql-database.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Azure SQL Database-connector in V2](../connector-azure-sql-database.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [Azure SQL database-connector in v2](../connector-azure-sql-database.md).
 
-In dit artikel wordt uitgelegd hoe u de Kopieeractiviteit in Azure Data Factory gebruiken om gegevens te verplaatsen naar en van Azure SQL Database. Dit is gebaseerd op de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel een algemeen overzicht van de verplaatsing van gegevens met de kopieeractiviteit geeft.
+In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van en naar Azure SQL Database te verplaatsen. Het is gebaseerd op het artikel [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat een algemeen overzicht geeft van de verplaatsing van gegevens met de Kopieer activiteit.
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
-U kunt gegevens kopiëren **uit een Azure SQL Database** opgeslagen in de volgende gegevens:
+U kunt gegevens **van Azure SQL database** kopiëren naar de volgende gegevens archieven:
 
 [!INCLUDE [data-factory-supported-sinks](../../../includes/data-factory-supported-sinks.md)]
 
-U kunt gegevens kopiëren van de volgende gegevensarchieven **naar Azure SQL Database**:
+U kunt gegevens uit de volgende gegevens archieven kopiëren **naar Azure SQL database**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
-## <a name="supported-authentication-type"></a>Ondersteunde verificatietype
-Azure SQL Database-connector biedt ondersteuning voor basisverificatie.
+## <a name="supported-authentication-type"></a>Ondersteund verificatie type
+Azure SQL Database-connector ondersteunt basis verificatie.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijplijn maken met een kopieeractiviteit die gegevens naar/van een Azure SQL-Database verplaatst met behulp van verschillende hulpprogramma's / API's.
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van/naar een Azure SQL Database met behulp van verschillende hulpprogram ma's/Api's.
 
-De eenvoudigste manier om een pijplijn te maken is met de **Kopieerwizard**. Zie [zelfstudie: Een pijplijn maken met de Wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snel overzicht van het maken van een pijplijn met behulp van de wizard kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-U kunt ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sjabloon**, **.NET API**, en **REST-API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit.
+U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
-Of u de hulpprogramma's of API's gebruikt, kunt u de volgende stappen uit voor het maken van een pijplijn die gegevens van een brongegevensarchief naar een sink-gegevensopslag verplaatst uitvoeren:
+Ongeacht of u de hulpprogram ma's of Api's gebruikt, voert u de volgende stappen uit om een pijp lijn te maken waarmee gegevens uit een brongegevens archief naar een Sink-gegevens archief worden verplaatst:
 
-1. Maak een **gegevensfactory**. Een data factory kan één of meer pijplijnen bevatten.
-2. Maak **gekoppelde services** opgeslagen om invoer- en gegevens te koppelen aan uw data factory. Bijvoorbeeld, als u gegevens van een Azure blob-opslag met een Azure SQL-database kopieert, u twee gekoppelde services om uw Azure storage-account en Azure SQL-database koppelen aan uw data factory. Zie voor de gekoppelde service-eigenschappen die specifiek voor Azure SQL Database zijn, [gekoppelde service-eigenschappen](#linked-service-properties) sectie.
-3. Maak **gegevenssets** te vertegenwoordigen invoer- en uitvoergegevens voor de kopieerbewerking. In het voorbeeld dat wordt vermeld in de vorige stap, maakt u een gegevensset om op te geven van de blob-container en map die de invoergegevens bevat. En u maakt een andere gegevensset om op te geven van de SQL-tabel in de Azure SQL-database waarin de gegevens die zijn gekopieerd uit de blob-opslag. Zie voor de gegevensseteigenschappen die specifiek voor Azure Data Lake Store zijn, [gegevensseteigenschappen](#dataset-properties) sectie.
-4. Maak een **pijplijn** met een kopieeractiviteit waarmee een gegevensset als invoer en een gegevensset als uitvoer. In het voorbeeld eerder vermeld, gebruikt u BlobSource als een bron en SqlSink als sink voor de kopieeractiviteit. Op dezelfde manier als u uit een Azure SQL Database naar Azure Blob Storage kopiëren wilt, gebruikt u SqlSource en BlobSink in de kopieeractiviteit. Zie voor kopiëren-activiteitseigenschappen die specifiek voor Azure SQL Database zijn, [eigenschappen van de kopieeractiviteit](#copy-activity-properties) sectie. Klik op de koppeling in de vorige sectie voor de gegevensopslag voor meer informatie over het gebruik van een gegevensarchief als een bron of een sink.
+1. Maak een **Data Factory**. Een data factory kan een of meer pijp lijnen bevatten.
+2. Maak **gekoppelde services** om invoer-en uitvoer gegevens archieven te koppelen aan uw Data Factory. Als u bijvoorbeeld gegevens kopieert van een Azure Blob-opslag naar een Azure SQL database, maakt u twee gekoppelde services om uw Azure-opslag account en Azure-SQL database te koppelen aan uw data factory. Zie de sectie [Eigenschappen van gekoppelde service](#linked-service-properties) voor gekoppelde service-eigenschappen die specifiek zijn voor Azure SQL database.
+3. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven. In het voor beeld in de laatste stap maakt u een gegevensset om de BLOB-container en de map op te geven die de invoer gegevens bevat. En u maakt een andere gegevensset om de SQL-tabel op te geven in de Azure-SQL database die de gegevens bevat die zijn gekopieerd uit de Blob-opslag. Zie de sectie [Eigenschappen](#dataset-properties) van gegevensset voor informatie over eigenschappen die specifiek zijn voor Azure data Lake Store.
+4. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt. In het eerder genoemde voor beeld gebruikt u BlobSource als bron en SqlSink als Sink voor de Kopieer activiteit. En als u kopieert van Azure SQL Database naar Azure Blob Storage, gebruikt u SqlSource en BlobSink in de Kopieer activiteit. Zie de sectie [Eigenschappen van Kopieer](#copy-activity-properties) activiteit voor de eigenschappen van de Kopieer activiteit die specifiek zijn voor Azure SQL database. Voor meer informatie over het gebruik van een gegevens archief als een bron of sink klikt u op de koppeling in de vorige sectie voor uw gegevens archief.
 
-Wanneer u de wizard gebruikt, worden de JSON-definities voor deze Data Factory-entiteiten (gekoppelde services, gegevenssets en de pijplijn) automatisch voor u gemaakt. Wanneer u hulpprogramma's / API's (met uitzondering van de .NET API), kunt u deze Data Factory-entiteiten definiëren met behulp van de JSON-indeling. Zie voor voorbeelden met JSON-definities voor Data Factory-entiteiten die worden gebruikt om gegevens te kopiëren naar/van een Azure SQL Database, [JSON voorbeelden](#json-examples-for-copying-data-to-and-from-sql-database) sectie van dit artikel.
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's/Api's (met uitzonde ring van .NET API) gebruikt, definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie de sectie [JSON-voor beelden](#json-examples-for-copying-data-to-and-from-sql-database) in dit artikel voor steek proeven met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens van/naar een Azure SQL database.
 
-De volgende secties bevatten meer informatie over JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory-entiteiten specifieke naar Azure SQL Database:
+De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Azure SQL Database:
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-Een Azure SQL gekoppelde service koppelt een Azure SQL database aan uw data factory. De volgende tabel bevat een beschrijving op voor JSON-elementen die specifiek zijn voor gekoppelde Azure SQL-service.
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+Een gekoppelde Azure SQL-service koppelt een Azure-SQL database aan uw data factory. De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor de gekoppelde Azure SQL-service.
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **AzureSqlDatabase** |Ja |
-| connectionString |Geef informatie op die nodig zijn voor het verbinding maken met de Azure SQL Database-exemplaar voor de connectionString-eigenschap. Alleen basisverificatie wordt ondersteund. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Database-exemplaar voor de Connections Tring-eigenschap. Alleen basis verificatie wordt ondersteund. |Ja |
 
 > [!IMPORTANT]
-> Configureer [Azure SQL Database-Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) welke databaseserver moet worden [Azure-Services toegang tot de server toestaan](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Als u gegevens naar Azure SQL Database kopieert van buiten Azure met inbegrip van on-premises gegevensbronnen met data factory-gateway, Daarnaast juiste IP-adresbereik voor de machine die gegevens te naar Azure SQL Database verzenden is configureren.
+> Configureer [Azure SQL database firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) de database server zodanig dat [Azure-Services toegang krijgen tot de server](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Als u gegevens kopieert naar Azure SQL Database van buiten Azure, met inbegrip van on-premises gegevens bronnen met data factory gateway, moet u ook het juiste IP-adres bereik configureren voor de computer die gegevens naar Azure SQL Database verzendt.
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Als een gegevensset die de invoer- of -gegevens in een Azure SQL-database opgeven, stelt u de eigenschap type van de gegevensset in: **AzureSqlTable**. Stel de **linkedServiceName** eigenschap van de gegevensset in de naam van de Azure SQL gekoppelde service.
+Als u een gegevensset wilt opgeven die de invoer-of uitvoer gegevens in een Azure-SQL database vertegenwoordigt, stelt u de eigenschap type van de gegevensset in op: **AzureSqlTable**. Stel de eigenschap **linkedServiceName** van de gegevensset in op de naam van de gekoppelde Azure SQL-service.
 
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets maken](data-factory-create-datasets.md) artikel. Secties, zoals de structuur, beschikbaarheid en het beleid van een gegevensset JSON zijn vergelijkbaar voor alle typen van gegevensset (Azure SQL, Azure-blob, Azure-tabel, enz.).
+Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON zijn vergelijkbaar voor alle typen gegevens sets (Azure SQL, Azure Blob, Azure Table, enzovoort).
 
-De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevensarchief. De **typeProperties** sectie voor de gegevensset van het type **AzureSqlTable** heeft de volgende eigenschappen:
+De sectie typeProperties verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor de gegevensset van het type **AzureSqlTable** heeft de volgende eigenschappen:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| tableName |De naam van de tabel of weergave in de Azure SQL Database-instantie waarnaar de gekoppelde service verwijst. |Ja |
+| tableName |De naam van de tabel of weer gave in het Azure SQL Database exemplaar waarnaar de gekoppelde service verwijst. |Ja |
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen maken](data-factory-create-pipelines.md) artikel. Eigenschappen zoals naam, beschrijving, invoer en uitvoer tabellen en -beleid zijn beschikbaar voor alle soorten activiteiten.
+Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleid zijn beschikbaar voor alle typen activiteiten.
 
 > [!NOTE]
-> De Kopieeractiviteit slechts één invoer en produceert slechts één uitvoer.
+> De Kopieer activiteit heeft slechts één invoer en produceert slechts één uitvoer.
 
-Dat eigenschappen die beschikbaar zijn in de **typeProperties** sectie van de activiteit variëren met elk activiteitstype. Ze verschillen voor de kopieeractiviteit, afhankelijk van de typen van bronnen en sinks.
+Terwijl de eigenschappen die beschikbaar zijn in de sectie **typeProperties** van de activiteit, verschillen per activiteitstype. Voor kopieer activiteiten zijn ze afhankelijk van de typen bronnen en Sinks.
 
-Als u gegevens uit een Azure SQL-database verplaatst, u het brontype instellen in de kopieeractiviteit naar **SqlSource**. Als u gegevens naar een Azure SQL database verplaatst, u stelt het sink-type in de kopieeractiviteit naar **SqlSink**. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door SqlSource en SqlSink.
+Als u gegevens verplaatst van een Azure-SQL database, stelt u het bron type in de Kopieer activiteit in op **SqlSource**. En als u gegevens naar een Azure-SQL database verplaatst, stelt u het sink-type in de Kopieer activiteit in op **SqlSink**. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door SqlSource en SqlSink.
 
 ### <a name="sqlsource"></a>SqlSource
-In de kopieeractiviteit, wanneer de bron van het type **SqlSource**, de volgende eigenschappen zijn beschikbaar in **typeProperties** sectie:
+Als de bron van het type **SqlSource**is in Kopieer activiteit, zijn de volgende eigenschappen beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| sqlReaderQuery |De aangepaste query gebruiken om gegevens te lezen. |SQL-query-tekenreeks. Voorbeeld: `select * from MyTable`. |Nee |
-| sqlReaderStoredProcedureName |De naam van de opgeslagen procedure die gegevens uit de brontabel leest. |De naam van de opgeslagen procedure. De laatste SQL-instructie moet een SELECT-instructie in de opgeslagen procedure. |Nee |
-| storedProcedureParameters |Parameters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdlettergebruik van parameters moeten overeenkomen met de naam en het hoofdlettergebruik van de opgeslagen-procedureparameters. |Nee |
+| sqlReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Voor beeld: `select * from MyTable`. |Nee |
+| sqlReaderStoredProcedureName |De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. |De naam van de opgeslagen procedure. De laatste SQL-instructie moet een instructie SELECT in de opgeslagen procedure zijn. |Nee |
+| storedProcedureParameters |Para meters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. |Nee |
 
-Als de **sqlReaderQuery** is opgegeven voor de SqlSource de Kopieeractiviteit deze query wordt uitgevoerd op basis van de bron van de Azure SQL Database de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven door op te geven de **sqlReaderStoredProcedureName** en **storedProcedureParameters** (als de opgeslagen procedure parameters zijn vereist).
+Als de **sqlReaderQuery** is opgegeven voor de SqlSource, voert de Kopieer activiteit deze query uit op basis van de Azure SQL database bron om de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven door de **sqlReaderStoredProcedureName** en **storedProcedureParameters** op te geven (als voor de opgeslagen procedure para meters worden gebruikt).
 
-Als u sqlReaderQuery of sqlReaderStoredProcedureName niet opgeeft, de kolommen die zijn gedefinieerd in de structuur van de gegevensset JSON worden gebruikt om een query te maken (`select column1, column2 from mytable`) op de Azure SQL Database uit te voeren. Als de definitie van de gegevensset niet de structuur heeft, worden alle kolommen uit de tabel geselecteerd.
+Als u sqlReaderQuery of sqlReaderStoredProcedureName niet opgeeft, worden de kolommen die in het gedeelte structuur van de JSON van de gegevensset zijn gedefinieerd, gebruikt om een query (`select column1, column2 from mytable`) te maken die wordt uitgevoerd op de Azure SQL Database. Als de definitie van de gegevensset niet de structuur heeft, worden alle kolommen geselecteerd in de tabel.
 
 > [!NOTE]
-> Bij het gebruik **sqlReaderStoredProcedureName**, u moet nog steeds een waarde opgeven voor de **tableName** eigenschap in de gegevensset JSON. Er zijn geen verdere controles uitgevoerd op deze tabel al.
+> Wanneer u **sqlReaderStoredProcedureName**gebruikt, moet u nog steeds een waarde opgeven voor de eigenschap **TABLENAME** in de JSON van de gegevensset. Er zijn geen validaties die worden uitgevoerd voor deze tabel.
 >
 >
 
-### <a name="sqlsource-example"></a>Voorbeeld van de SqlSource
+### <a name="sqlsource-example"></a>SqlSource-voor beeld
 
 ```JSON
 "source": {
@@ -145,17 +145,17 @@ GO
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Description | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Wachttijd voor de batch insert bewerking is voltooid voordat er een optreedt time-out. |timespan<br/><br/> Voorbeeld: "00: 30:00 ' (30 minuten). |Nee |
-| writeBatchSize |Voegt de gegevens in de SQL-tabel wanneer de buffergrootte writeBatchSize bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
-| sqlWriterCleanupScript |Geef een query voor de Kopieeractiviteit om uit te voeren waarbij de gegevens van een bepaald segment wordt opgeschoond. Zie voor meer informatie, [herhaalbare kopie](#repeatable-copy). |Een query-instructie. |Nee |
-| sliceIdentifierColumnName |Geef de naam van een kolom voor de Kopieeractiviteit in te vullen met automatisch gegenereerde segment-id, die wordt gebruikt voor het opschonen van gegevens van een bepaald segment wanneer opnieuw uitgevoerd. Zie voor meer informatie, [herhaalbare kopie](#repeatable-copy). |De naam van de kolom van een kolom met het gegevenstype van binary(32). |Nee |
-| sqlWriterStoredProcedureName |De naam van de opgeslagen procedure waarmee wordt gedefinieerd hoe gegevens in doeltabel, bijvoorbeeld toepast op upsert-bewerking of transformeren met behulp van uw eigen bedrijfslogica. <br/><br/>Houd er rekening mee worden deze opgeslagen procedure **per batch aangeroepen**. Als u uitvoeren die alleen wordt eenmaal uitgevoerd en heeft niets wilt te doen met de brongegevens bijvoorbeeld verwijderen/afkappen, gebruikt u `sqlWriterCleanupScript` eigenschap. |De naam van de opgeslagen procedure. |Nee |
-| storedProcedureParameters |Parameters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdlettergebruik van parameters moeten overeenkomen met de naam en het hoofdlettergebruik van de opgeslagen-procedureparameters. |Nee |
-| sqlWriterTableType |Geef een naam van het type tabel moet worden gebruikt in de opgeslagen procedure. Kopieeractiviteit maakt de gegevens worden verplaatst beschikbaar zijn in een tijdelijke tabel met dit tabeltype. Opgeslagen procedurecode kunt vervolgens de gegevens worden gekopieerd met bestaande gegevens samenvoegen. |Een typenaam van de tabel. |Nee |
+| writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. |duur<br/><br/> Voor beeld: "00:30:00" (30 minuten). |Nee |
+| writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
+| sqlWriterCleanupScript |Geef een query op voor de Kopieer activiteit die moet worden uitgevoerd, zodat de gegevens van een specifiek segment worden opgeruimd. Zie [Herhaal bare kopieën](#repeatable-copy)voor meer informatie. |Een query-instructie. |Nee |
+| sliceIdentifierColumnName |Geef een kolom naam op voor de Kopieer activiteit die moet worden gevuld met een automatisch gegenereerde segment-id, die wordt gebruikt om gegevens van een specifiek segment op te schonen wanneer het opnieuw wordt uitgevoerd. Zie [Herhaal bare kopieën](#repeatable-copy)voor meer informatie. |Kolom naam van een kolom met het gegevens type binary (32). |Nee |
+| sqlWriterStoredProcedureName |De naam van de opgeslagen procedure die definieert hoe bron gegevens worden toegepast in de doel tabel, bijvoorbeeld om upsert of trans formatie te gebruiken met uw eigen bedrijfs logica. <br/><br/>Houd er rekening mee dat deze opgeslagen procedure **per batch wordt geactiveerd**. Als u een bewerking wilt uitvoeren die slechts één keer wordt uitgevoerd en niets hoeft te doen met bron gegevens, bijvoorbeeld verwijderen/truncate, gebruikt u `sqlWriterCleanupScript` eigenschap. |De naam van de opgeslagen procedure. |Nee |
+| storedProcedureParameters |Para meters voor de opgeslagen procedure. |Naam/waarde-paren. Namen en hoofdletter gebruik van para meters moeten overeenkomen met de namen en de behuizing van de opgeslagen procedure parameters. |Nee |
+| sqlWriterTableType |Geef een naam op voor het tabel type dat moet worden gebruikt in de opgeslagen procedure. Als u de Kopieer activiteit uitvoert, worden de gegevens die in een tijdelijke tabel worden verplaatst, met dit tabel type beschikbaar. De opgeslagen procedure code kan vervolgens de gegevens samen voegen die worden gekopieerd met bestaande gegevens. |De naam van een tabel type. |Nee |
 
-#### <a name="sqlsink-example"></a>Voorbeeld van de SqlSink
+#### <a name="sqlsink-example"></a>SqlSink-voor beeld
 
 ```JSON
 "sink": {
@@ -172,21 +172,21 @@ GO
 }
 ```
 
-## <a name="json-examples-for-copying-data-to-and-from-sql-database"></a>JSON-voorbeelden voor het kopiëren van gegevens naar en van de SQL-Database
-De volgende voorbeelden geven een voorbeeld van JSON-definities die u gebruiken kunt voor het maken van een pijplijn met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe het kopiëren van gegevens naar en van Azure SQL Database en Azure Blob Storage. Echter, de gegevens kunnen worden gekopieerd **rechtstreeks** uit een van de bronnen aan een van de vermelde sinks [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieeractiviteit in Azure Data Factory.
+## <a name="json-examples-for-copying-data-to-and-from-sql-database"></a>JSON-voor beelden voor het kopiëren van gegevens van en naar SQL Database
+De volgende voor beelden bieden voor beeld van JSON-definities die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens kunt kopiëren van en naar Azure SQL Database en Azure Blob Storage. Gegevens kunnen echter **rechtstreeks** vanuit een wille keurige bron worden gekopieerd naar een van de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.
 
-### <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>Voorbeeld: Gegevens kopiëren van Azure SQL Database naar Azure Blob
-Dezelfde definieert de volgende Data Factory-entiteiten:
+### <a name="example-copy-data-from-azure-sql-database-to-azure-blob"></a>Voor beeld: gegevens kopiëren van Azure SQL Database naar Azure Blob
+Hetzelfde definieert de volgende Data Factory entiteiten:
 
 1. Een gekoppelde service van het type [AzureSqlDatabase](#linked-service-properties).
-2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Invoer [gegevensset](data-factory-create-datasets.md) van het type [AzureSqlTable](#dataset-properties).
-4. Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
-5. Een [pijplijn](data-factory-create-pipelines.md) met een kopieeractiviteit die gebruikmaakt van [SqlSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureSqlTable](#dataset-properties).
+4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [Azure Blob](data-factory-azure-blob-connector.md#dataset-properties).
+5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [SqlSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld time series worden gegevens gekopieerd (elk uur, dagelijks, enzovoort) uit een tabel in Azure SQL-database naar een blob eenmaal per uur. De JSON-eigenschappen die in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het voor beeld worden gegevens van de tijd reeks (elk uur, dagelijks, enzovoort) gekopieerd van een tabel in Azure SQL database elk uur naar een blob. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**Gekoppelde service Azure SQL Database:**
+**Azure SQL Database gekoppelde service:**
 
 ```JSON
 {
@@ -199,9 +199,9 @@ Het voorbeeld time series worden gegevens gekopieerd (elk uur, dagelijks, enzovo
   }
 }
 ```
-Zie de sectie gekoppelde Azure SQL-Service voor de lijst van eigenschappen die worden ondersteund door deze gekoppelde service.
+Zie de sectie gekoppelde Azure SQL-service voor de lijst met eigenschappen die door deze gekoppelde service worden ondersteund.
 
-**Gekoppelde Azure Blob storage-service:**
+**Gekoppelde Azure Blob Storage-service:**
 
 ```JSON
 {
@@ -214,14 +214,14 @@ Zie de sectie gekoppelde Azure SQL-Service voor de lijst van eigenschappen die w
   }
 }
 ```
-Zie de [Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service) artikel voor de lijst met eigenschappen die worden ondersteund door deze gekoppelde service.
+Zie het artikel over [Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service) voor de lijst met eigenschappen die door deze gekoppelde service worden ondersteund.
 
 
 **Azure SQL-invoer gegevensset:**
 
-Het voorbeeld wordt ervan uitgegaan dat u hebt een tabel 'MyTable' gemaakt in Azure SQL en bevat een kolom met de naam 'timestampcolumn' voor time series-gegevens.
+In het voor beeld wordt ervan uitgegaan dat u in Azure SQL een tabel ' MyTable ' hebt gemaakt en een kolom bevat met de naam ' timestampcolumn ' voor tijdreeks gegevens.
 
-Instellen van "extern": "true" informeert de Azure Data Factory-service dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+Als u ' Extern ' instelt, informeert de Azure Data Factory-service dat de gegevensset extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
 
 ```JSON
 {
@@ -248,11 +248,11 @@ Instellen van "extern": "true" informeert de Azure Data Factory-service dat de d
 }
 ```
 
-Zie de Azure SQL-gegevensset type sectie eigenschappen voor de lijst van eigenschappen die worden ondersteund door dit gegevenssettype.
+Zie de sectie eigenschappen van Azure SQL dataset type voor de lijst met eigenschappen die worden ondersteund door dit type gegevensset.
 
-**Azure Blob-uitvoergegevensset:**
+**Azure Blob-uitvoer gegevensset:**
 
-Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en interval: 1). Het pad naar de map voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map wordt gebruikt voor jaar, maand, dag en uur onderdelen van de begintijd.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
 
 ```JSON
 {
@@ -309,11 +309,11 @@ Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en inte
   }
 }
 ```
-Zie de [typeproperties voor Azure Blob-gegevensset](data-factory-azure-blob-connector.md#dataset-properties) sectie voor een lijst van eigenschappen die worden ondersteund door dit gegevenssettype.
+Zie de sectie eigenschappen van het [type Azure Blob-gegevensset](data-factory-azure-blob-connector.md#dataset-properties) voor de lijst met eigenschappen die worden ondersteund door dit type gegevensset.
 
-**Een kopieeractiviteit in een pijplijn met de SQL-bron en sink voor Blob:**
+**Een Kopieer activiteit in een pijp lijn met de SQL-bron en BLOB-Sink:**
 
-De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **SqlSource** en **sink** type is ingesteld op **BlobSink**. De SQL-query die is opgegeven voor de **SqlReaderQuery** eigenschap selecteert u de gegevens in het afgelopen uur te kopiëren.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **SqlSource** en het **sink** -type is ingesteld op **BlobSink**. Met de SQL-query die is opgegeven voor de eigenschap **SqlReaderQuery** selecteert u de gegevens in het afgelopen uur om te kopiëren.
 
 ```JSON
 {
@@ -361,24 +361,24 @@ De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik v
   }
 }
 ```
-In het voorbeeld **sqlReaderQuery** is opgegeven voor de SqlSource. De Kopieeractiviteit wordt deze query uitgevoerd op basis van de bron van de Azure SQL Database de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven door op te geven de **sqlReaderStoredProcedureName** en **storedProcedureParameters** (als de opgeslagen procedure parameters zijn vereist).
+In het voor beeld is **sqlReaderQuery** opgegeven voor de SqlSource. De Kopieer activiteit voert deze query uit op basis van de Azure SQL Database bron om de gegevens op te halen. U kunt ook een opgeslagen procedure opgeven door de **sqlReaderStoredProcedureName** en **storedProcedureParameters** op te geven (als voor de opgeslagen procedure para meters worden gebruikt).
 
-Als u sqlReaderQuery of sqlReaderStoredProcedureName niet opgeeft, worden de kolommen die zijn gedefinieerd in de structuur van de gegevensset JSON gebruikt voor het bouwen van een query op de Azure SQL Database uit te voeren. Bijvoorbeeld: `select column1, column2 from mytable`. Als de definitie van de gegevensset niet de structuur heeft, worden alle kolommen uit de tabel geselecteerd.
+Als u sqlReaderQuery of sqlReaderStoredProcedureName niet opgeeft, worden de kolommen die in het gedeelte structuur van de JSON van de gegevensset zijn gedefinieerd, gebruikt om een query te maken die wordt uitgevoerd op basis van de Azure SQL Database. Bijvoorbeeld: `select column1, column2 from mytable`. Als de definitie van de gegevensset niet de structuur heeft, worden alle kolommen geselecteerd in de tabel.
 
-Zie de [Sql-bron](#sqlsource) sectie en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) voor de lijst met eigenschappen die worden ondersteund door SqlSource en BlobSink.
+Zie de sectie [SQL-bron](#sqlsource) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) voor de lijst met eigenschappen die worden ondersteund door SqlSource en BlobSink.
 
-### <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>Voorbeeld: Gegevens kopiëren van Azure-Blob naar Azure SQL Database
-Het voorbeeld definieert de volgende Data Factory-entiteiten:
+### <a name="example-copy-data-from-azure-blob-to-azure-sql-database"></a>Voor beeld: gegevens kopiëren van een Azure-Blob naar Azure SQL Database
+Het voor beeld definieert de volgende Data Factory entiteiten:
 
 1. Een gekoppelde service van het type [AzureSqlDatabase](#linked-service-properties).
-2. Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Invoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureSqlTable](#dataset-properties).
-5. Een [pijplijn](data-factory-create-pipelines.md) met de kopieeractiviteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en [SqlSink](#copy-activity-properties).
+2. Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+4. Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureSqlTable](#dataset-properties).
+5. Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) en [SqlSink](#copy-activity-properties).
 
-De voorbeeld-kopieën time series-gegevens (elk uur, dagelijks, enzovoort) van Azure blob naar een tabel in Azure SQL database-uur. De JSON-eigenschappen die in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het voor beeld worden alle gegevens van de tijd reeks (elk uur, dagelijks, enzovoort) gekopieerd van Azure Blob naar een tabel in Azure SQL database elk uur. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**Azure SQL gekoppelde service:**
+**Gekoppelde Azure SQL-service:**
 
 ```JSON
 {
@@ -391,9 +391,9 @@ De voorbeeld-kopieën time series-gegevens (elk uur, dagelijks, enzovoort) van A
   }
 }
 ```
-Zie de sectie gekoppelde Azure SQL-Service voor de lijst van eigenschappen die worden ondersteund door deze gekoppelde service.
+Zie de sectie gekoppelde Azure SQL-service voor de lijst met eigenschappen die door deze gekoppelde service worden ondersteund.
 
-**Gekoppelde Azure Blob storage-service:**
+**Gekoppelde Azure Blob Storage-service:**
 
 ```JSON
 {
@@ -406,12 +406,12 @@ Zie de sectie gekoppelde Azure SQL-Service voor de lijst van eigenschappen die w
   }
 }
 ```
-Zie de [Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service) artikel voor de lijst met eigenschappen die worden ondersteund door deze gekoppelde service.
+Zie het artikel over [Azure Blob](data-factory-azure-blob-connector.md#azure-storage-linked-service) voor de lijst met eigenschappen die door deze gekoppelde service worden ondersteund.
 
 
-**Azure Blob-invoergegevensset:**
+**Invoer gegevensset voor Azure Blob:**
 
-Gegevens wordt opgehaald uit een nieuwe blob elk uur (frequentie: uur en interval: 1). Pad en naam van de map voor de blob worden dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map gebruikt jaar, maand en dag deel uit van de begintijd en de bestandsnaam wordt gebruikt voor het uur deel van de begintijd. "extern": "true" instelling de Data Factory-service wordt geïnformeerd dat deze tabel bevindt zich buiten de data factory en niet door een activiteit in de data factory wordt geproduceerd.
+Gegevens worden elk uur uit een nieuwe BLOB opgehaald (frequentie: uur, interval: 1). Het mappad en de bestands naam voor de BLOB worden dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt het gedeelte Year, month en Day van de begin tijd en de bestands naam maakt gebruik van het uur gedeelte van de begin tijd. met de instelling ' Extern ': ' waar ' wordt de Data Factory-service informeert dat deze tabel extern is voor de data factory en niet wordt geproduceerd door een activiteit in de data factory.
 
 ```JSON
 {
@@ -477,11 +477,11 @@ Gegevens wordt opgehaald uit een nieuwe blob elk uur (frequentie: uur en interva
   }
 }
 ```
-Zie de [typeproperties voor Azure Blob-gegevensset](data-factory-azure-blob-connector.md#dataset-properties) sectie voor een lijst van eigenschappen die worden ondersteund door dit gegevenssettype.
+Zie de sectie eigenschappen van het [type Azure Blob-gegevensset](data-factory-azure-blob-connector.md#dataset-properties) voor de lijst met eigenschappen die worden ondersteund door dit type gegevensset.
 
-**Azure SQL Database-uitvoergegevensset:**
+**Uitvoer gegevensset Azure SQL Database:**
 
-Het voorbeeld worden gegevens gekopieerd naar een tabel met de naam 'MyTable' in Azure SQL. Als u verwacht de Blob-CSV-bestand dat bevat, moet u de tabel maken in Azure SQL met hetzelfde aantal kolommen. Nieuwe rijen zijn toegevoegd aan de tabel om het uur.
+In het voor beeld worden gegevens gekopieerd naar een tabel met de naam ' MyTable ' in Azure SQL. Maak de tabel in Azure SQL met hetzelfde aantal kolommen als u verwacht dat het CSV-bestand van de BLOB bevat. Nieuwe rijen worden elk uur aan de tabel toegevoegd.
 
 ```JSON
 {
@@ -499,11 +499,11 @@ Het voorbeeld worden gegevens gekopieerd naar een tabel met de naam 'MyTable' in
   }
 }
 ```
-Zie de Azure SQL-gegevensset type sectie eigenschappen voor de lijst van eigenschappen die worden ondersteund door dit gegevenssettype.
+Zie de sectie eigenschappen van Azure SQL dataset type voor de lijst met eigenschappen die worden ondersteund door dit type gegevensset.
 
-**Een kopieeractiviteit in een pijplijn met Blob-bron en sink voor SQL:**
+**Een Kopieer activiteit in een pijp lijn met Blob-bron en SQL-Sink:**
 
-De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **BlobSource** en **sink** type is ingesteld op **SqlSink**.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **BlobSource** en het **sink** -type is ingesteld op **SqlSink**.
 
 ```JSON
 {
@@ -551,12 +551,12 @@ De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik v
   }
 }
 ```
-Zie de [Sql-Sink](#sqlsink) sectie en [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) voor de lijst met eigenschappen die worden ondersteund door SqlSink en BlobSource.
+Zie de sectie [SQL-Sink](#sqlsink) en [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) voor de lijst met eigenschappen die worden ondersteund door SqlSink en BlobSource.
 
-## <a name="identity-columns-in-the-target-database"></a>Id-kolommen in de doeldatabase
-Deze sectie bevat een voorbeeld voor het kopiëren van gegevens uit een brontabel zonder een id-kolom in een doeltabel met een id-kolom.
+## <a name="identity-columns-in-the-target-database"></a>Identiteits kolommen in de doel database
+In deze sectie vindt u een voor beeld van het kopiëren van gegevens uit een bron tabel zonder een identiteits kolom naar een doel tabel met een identiteits kolom.
 
-**Brontabel:**
+**Bron tabel:**
 
 ```SQL
 create table dbo.SourceTbl
@@ -565,7 +565,7 @@ create table dbo.SourceTbl
     age int
 )
 ```
-**Doeltabel:**
+**Doel tabel:**
 
 ```SQL
 create table dbo.TargetTbl
@@ -575,9 +575,9 @@ create table dbo.TargetTbl
     age int
 )
 ```
-U ziet dat de doeltabel een identiteitskolom.
+U ziet dat de doel tabel een identiteits kolom heeft.
 
-**Source dataset-JSON-definitie**
+**JSON-definitie van bron gegevensset**
 
 ```JSON
 {
@@ -597,7 +597,7 @@ U ziet dat de doeltabel een identiteitskolom.
     }
 }
 ```
-**Bestemming gegevensset JSON-definitie**
+**JSON-definitie van doel gegevensset**
 
 ```JSON
 {
@@ -622,61 +622,61 @@ U ziet dat de doeltabel een identiteitskolom.
 }
 ```
 
-U ziet dat als de bron en doel-tabel hebben verschillende schema (doel heeft een extra kolom met de identiteit). In dit scenario, moet u opgeven **structuur** eigenschap in de definitie van doel, waaronder de identiteitskolom niet.
+U ziet dat de bron-en doel tabel een ander schema hebben (doel heeft een aanvullende kolom met een identiteit). In dit scenario moet u de eigenschap **structure** opgeven in de definitie van de doel gegevensset, die de kolom Identity niet bevat.
 
-## <a name="invoke-stored-procedure-from-sql-sink"></a>Aanroepen van de opgeslagen procedure van SQL-sink
-Zie voor een voorbeeld van een opgeslagen procedure van SQL-sink in een kopieeractiviteit van een pijplijn aanroepen [opgeslagen procedure voor SQL-sink aanroepen in de kopieeractiviteit](data-factory-invoke-stored-procedure-from-copy-activity.md) artikel.
+## <a name="invoke-stored-procedure-from-sql-sink"></a>Opgeslagen procedure vanuit SQL-Sink aanroepen
+Zie voor een voor beeld van het aanroepen van een opgeslagen procedure van SQL sink in een Kopieer activiteit van een pijp lijn een [opgeslagen procedure aanroepen voor SQL sink in het artikel Kopieer activiteit](data-factory-invoke-stored-procedure-from-copy-activity.md) .
 
-## <a name="type-mapping-for-azure-sql-database"></a>Toewijzing van het type voor Azure SQL Database
-Zoals vermeld in de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel kopieeractiviteit wordt uitgevoerd automatisch typeconversies van typen gegevensbronnen met sink-type met de volgende stappen 2-benadering:
+## <a name="type-mapping-for-azure-sql-database"></a>Type toewijzing voor Azure SQL Database
+Zoals vermeld in het artikel Kopieer activiteit van [gegevens verplaatsing](data-factory-data-movement-activities.md) voert automatische type conversies uit van bron typen naar Sink-typen met de volgende twee stappen:
 
-1. Systeemeigen brontypen converteren naar .NET-type
-2. .NET-type converteren naar systeemeigen sink-type
+1. Converteren van systeem eigen bron typen naar .NET-type
+2. Converteren van .NET-type naar systeem eigen Sink-type
 
-Bij het verplaatsen van gegevens naar en van Azure SQL Database, worden de volgende toewijzingen gebruikt van SQL-type naar .NET-type en vice versa. De toewijzing is hetzelfde als de SQL Server gegevenstypetoewijzing voor ADO.NET.
+Bij het verplaatsen van gegevens naar en van Azure SQL Database, worden de volgende toewijzingen gebruikt van SQL-type naar .NET-type en vice versa. De toewijzing is hetzelfde als de SQL Server gegevens type toewijzing voor ADO.NET.
 
-| SQL Server Database Engine-type | .NET framework-type |
+| Type SQL Server data base-engine | .NET Framework type |
 | --- | --- |
 | bigint |Int64 |
-| binary |Byte[] |
-| bit |Boolean |
-| char |String, Char[] |
+| waarde |Byte [] |
+| bitmask |Booleaans |
+| char |Teken reeks, char [] |
 | date |DateTime |
 | Datetime |DateTime |
-| datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
-| Float |Double |
-| image |Byte[] |
+| DATETIME2 |DateTime |
+| Date time offset |Date time offset |
+| Komma |Komma |
+| FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
+| Float |Double-waarde |
+| image |Byte [] |
 | int |Int32 |
-| money |Decimal |
-| nchar |String, Char[] |
-| ntext |String, Char[] |
-| numeric |Decimal |
-| nvarchar |String, Char[] |
-| real |Single |
-| rowversion |Byte[] |
+| financieel |Komma |
+| nchar |Teken reeks, char [] |
+| ntext |Teken reeks, char [] |
+| 443 |Komma |
+| nvarchar |Teken reeks, char [] |
+| realistische |Enkelvoudig |
+| rowversion |Byte [] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
-| sql_variant |Object * |
-| text |String, Char[] |
-| time |TimeSpan |
-| timestamp |Byte[] |
-| tinyint |Byte |
-| uniqueidentifier |Guid |
-| varbinary |Byte[] |
-| varchar |String, Char[] |
-| xml |Xml |
+| smallmoney |Komma |
+| sql_variant |Object |
+| tekst |Teken reeks, char [] |
+| tijd |Duur |
+| tijdstempel |Byte [] |
+| tinyint |DBCS |
+| unieke |GUID |
+| varbinary |Byte [] |
+| varchar |Teken reeks, char [] |
+| xml |indeling |
 
-## <a name="map-source-to-sink-columns"></a>Kaartbron met sink-kolommen
-Zie voor meer informatie over het toewijzen van kolommen in de brongegevensset naar kolommen in de sink-gegevensset, [toewijzing van kolommen in Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Bron toewijzen aan Sink-kolommen
+Zie [DataSet-kolommen toewijzen in azure Data Factory](data-factory-map-columns.md)voor meer informatie over het toewijzen van kolommen in de bron-gegevensset aan kolommen in Sink-gegevensset.
 
-## <a name="repeatable-copy"></a>Herhaalbare kopiëren
-Het kopiëren van gegevens naar SQL Server-Database, de kopieeractiviteit worden gegevens toegevoegd aan de sink-tabel standaard. Om uit te voeren in plaats daarvan een UPSERT, Zie [Repeatable schrijven naar SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) artikel.
+## <a name="repeatable-copy"></a>Herhaal bare kopie
+Bij het kopiëren van gegevens naar SQL Server Data Base, voegt de Kopieer activiteit standaard gegevens toe aan de Sink-tabel. Als u in plaats daarvan een UPSERT wilt uitvoeren, raadpleegt u het artikel [Herhaal bare write-to-SqlSink](data-factory-repeatable-copy.md#repeatable-write-to-sqlsink) .
 
-Bij het kopiëren van gegevens van relationele gegevens worden opgeslagen, houd er rekening mee om te voorkomen dat ongewenste resultaten herhaalbaarheid. In Azure Data Factory, kunt u een segment handmatig opnieuw. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment wordt opnieuw uitgevoerd wanneer een fout optreedt. Wanneer een segment wordt opnieuw uitgevoerd in beide gevallen, moet u om ervoor te zorgen dat de dezelfde gegevens worden gelezen ongeacht hoe vaak een segment wordt uitgevoerd. Zie [Repeatable leesrechten voor relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+Houd bij het kopiëren van gegevens uit relationele gegevens archieven de Herhaal baarheid in de hand om onbedoelde resultaten te voor komen. In Azure Data Factory kunt u een segment hand matig opnieuw uitvoeren. U kunt ook beleid voor opnieuw proberen voor een gegevensset configureren zodat een segment opnieuw wordt uitgevoerd wanneer er een fout optreedt. Wanneer een segment op een van beide manieren opnieuw wordt uitgevoerd, moet u ervoor zorgen dat dezelfde gegevens worden gelezen, ongeacht het aantal keren dat een segment wordt gestart. Zie [Herhaal bare Lees bewerking van relationele bronnen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie [prestaties kopiëren en Afstemmingshandleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory en de verschillende manieren om te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en afstemming
+Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.

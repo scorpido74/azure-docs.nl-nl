@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5758b1fbb9d311219e3dc4dd483691f6c9d80c1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172168"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603473"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten (preview-versie)
 
@@ -29,19 +29,13 @@ Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wa
 
 ## <a name="requirements"></a>Vereisten
 
-| Apparaattype | Toegevoegd aan Azure AD | Hybride Azure AD-join |
-| --- | --- | --- |
-| [Azure Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md) | X | X |
-| Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| Webauthn vereist Windows 10 versie 1809 of hoger | X | X |
-| Voor apparaten die lid zijn van [Azure AD](../devices/concept-azure-ad-join.md) is Windows 10 versie 1809 of hoger vereist | X |   |
-| Voor [hybride Azure AD gekoppelde apparaten](../devices/concept-azure-ad-join-hybrid.md) is Windows 10 Insider build 18945 of hoger vereist |   | X |
-| Volledige patches voor Windows Server 2016/2019-domein controllers. |   | X |
-| Upgrade uitvoeren naar de nieuwste versie van [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) |   | X |
-| [Microsoft intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (optioneel) | X | X |
-| Inrichtings pakket (optioneel) | X | X |
-| Groepsbeleid (optioneel) |   | X |
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md)
+- Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
+- Webauthn vereist Windows 10 versie 1809 of hoger
+- Voor apparaten die lid zijn van [Azure AD](../devices/concept-azure-ad-join.md) is Windows 10 versie 1809 of hoger vereist
+- [Microsoft intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (optioneel)
+- Inrichtings pakket (optioneel)
 
 ### <a name="unsupported-scenarios"></a>Niet-ondersteunde scenario's
 
@@ -56,8 +50,6 @@ Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wa
 
 In azure AD gekoppelde apparaten waarop u wilt testen, moet Windows 10 versie 1809 of hoger worden uitgevoerd. De beste ervaring is met Windows 10 versie 1903 of hoger.
 
-Aan hybride Azure AD gekoppelde apparaten waarop u wilt testen, moet Windows 10 Insider build 18945 of hoger worden uitgevoerd.
-
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Beveiligings sleutels voor Windows-aanmelding inschakelen
 
 Organisaties kunnen ervoor kiezen om een of meer van de volgende methoden te gebruiken om het gebruik van beveiligings sleutels voor Windows-aanmelding in te scha kelen op basis van de vereisten van de organisatie.
@@ -65,16 +57,10 @@ Organisaties kunnen ervoor kiezen om een of meer van de volgende methoden te geb
 - [Inschakelen met intune](#enable-with-intune)
    - [Doel gerichte intune-implementatie](#targeted-intune-deployment)
 - [Inschakelen met een inrichtings pakket](#enable-with-a-provisioning-package)
-- [Inschakelen met groepsbeleid (alleen voor hybride Azure AD gekoppelde apparaten)](#enable-with-group-policy)
-
-> [!IMPORTANT]
-> Organisaties met **hybride Azure AD gekoppelde apparaten** moeten **ook** de stappen in het artikel uitvoeren, [FIDO2-verificatie inschakelen voor on-premises resources](howto-authentication-passwordless-security-key-on-premises.md) voordat de verificatie van de beveiligings sleutel voor Windows 10 FIDO2 wordt uitgevoerd.
->
-> Organisaties met **apparaten die lid zijn van Azure AD** moeten dit doen voordat hun apparaten zich kunnen aanmelden bij on-premises resources met FIDO2-beveiligings sleutels.
 
 ### <a name="enable-with-intune"></a>Inschakelen met intune
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Blader naar **Microsoft Intune** > **apparaatregistratie** > **Windows-inschrijving** > **Windows hello voor bedrijven** > - **Eigenschappen**.
 1. Onder **instellingen** instellen **beveiligings sleutels gebruiken voor aanmelden** bij **ingeschakeld**.
 
@@ -84,7 +70,7 @@ Configuratie van beveiligings sleutels voor aanmelden is niet afhankelijk van he
 
 Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te scha kelen, gebruikt u de volgende aangepaste instellingen via intune.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Blader naar **Microsoft Intune** > **apparaatconfiguratie** > **profielen** > **profiel maken**.
 1. Configureer het nieuwe profiel met de volgende instellingen
    1. Naam: beveiligings sleutels voor Windows-aanmelding
@@ -93,7 +79,7 @@ Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te 
    1. Profiel type: aangepast
    1. Aangepaste OMA-URI-instellingen:
       1. Naam: Schakel FIDO-beveiligings sleutels voor Windows-aanmelding in
-      1. OMA-URI:./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
+      1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       1. Gegevens type: geheel getal
       1. Waarde: 1
 1. Dit beleid kan worden toegewezen aan specifieke gebruikers, apparaten of groepen. Meer informatie vindt u in het artikel [gebruikers-en apparaatprofielen toewijzen in Microsoft intune](https://docs.microsoft.com/intune/device-profile-assign).
@@ -107,7 +93,7 @@ Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket w
 1. Start de ontwerp functie voor Windows-configuratie.
 1. Selecteer **bestand** > **Nieuw project**.
 1. Geef uw project een naam en noteer het pad waar het project is gemaakt.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Verlaat het **inrichtings pakket** dat is geselecteerd als de **geselecteerde project werk stroom** en selecteer **volgende**.
 1. Selecteer **alle Windows Desktop-edities** onder **Kies welke instellingen u wilt weer geven en configureren** en selecteer **volgende**.
 1. Selecteer **Finish**.
@@ -124,18 +110,7 @@ Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket w
 > [!NOTE]
 > Op apparaten met Windows 10 versie 1809 moet ook de modus gedeelde PC (EnableSharedPCMode) worden ingeschakeld. Informatie over het inschakelen van deze functionaliteit vindt u in het artikel, [een gedeelde of gast pc instellen met Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
 
-### <a name="enable-with-group-policy"></a>Inschakelen met groepsbeleid
-
-Voor **Hybrid Azure AD aangesloten apparaten** kunnen organisaties de volgende Groepsbeleid instellen om aanmelden met Fido-beveiligings sleutel in te scha kelen.
-
-U kunt de instelling vinden onder **computer configuratie** > **Beheersjablonen** > **systeem** > **Aanmelden** > aanmelden met **beveiligings sleutel inschakelen**.
-
-- Als u dit beleid instelt op **ingeschakeld** , kunnen gebruikers zich aanmelden met beveiligings sleutels.
-- Als u dit beleid instelt op **uitgeschakeld** of **niet geconfigureerd** , kunnen gebruikers zich niet aanmelden met beveiligings sleutels.
-
-Voor deze groepsbeleid instelling is een bijgewerkte versie van de `credentialprovider.admx` groepsbeleid sjabloon vereist. Deze nieuwe sjabloon is beschikbaar in de volgende versie van Windows Server en met Windows 10 20H1. Deze instelling kan worden beheerd met een apparaat waarop een van deze nieuwere versies van Windows of een andere versie wordt uitgevoerd door de richt lijnen in het ondersteunings onderwerp te volgen, [het centrale archief voor Groepsbeleid-Beheersjablonen in Windows te maken en te beheren](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
-
-## <a name="sign-in-with-fido2-security-key"></a>Aanmelden met FIDO2-beveiligings sleutel
+## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>Meld u aan bij Windows met een FIDO2-beveiligings sleutel
 
 In het voor beeld onder een gebruiker Bala Sandhu is al hun FIDO2-beveiligings sleutel ingericht met behulp van de stappen in het vorige artikel, [wacht woordloze beveiligings sleutel aanmelden inschakelen](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). Bala kan de referentie provider voor de beveiligings sleutel kiezen in het vergrendelings scherm van Windows 10 en de beveiligings sleutel voor aanmelding bij Windows invoegen.
 
@@ -157,9 +132,29 @@ Als u feedback wilt delen of problemen ondervindt tijdens het vooraf bekijken va
    1. Subcategorie: FIDO
 1. Als u logboeken wilt vastleggen, gebruikt u de optie: **mijn probleem opnieuw maken**
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-[Toegang tot on-premises resources inschakelen voor Azure AD en hybride Azure AD gekoppelde apparaten](howto-authentication-passwordless-security-key-on-premises.md)
+### <a name="does-this-work-in-my-on-premises-environment"></a>Werkt dit in mijn on-premises omgeving?
+
+Deze functie werkt niet voor een pure on-premises Active Directory Domain Services-omgeving (AD DS).
+
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>Mijn organisatie vereist twee ledige verificatie voor toegang tot resources, wat kan ik doen om deze vereiste te ondersteunen?
+
+Beveiligings sleutels zijn verkrijgbaar in verschillende vorm factoren. Neem contact op met de fabrikant van het apparaat van belang om te bespreken hoe hun apparaten kunnen worden ingeschakeld met een pincode of biometrische als een tweede factor.
+
+### <a name="can-admins-set-up-security-keys"></a>Kunnen beheerders beveiligings sleutels instellen?
+
+We werken aan deze mogelijkheid voor algemene Beschik baarheid (GA) van deze functie.
+
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Waar kan ik zoeken naar compatibele beveiligings sleutels?
+
+[FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
+
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Wat moet ik doen als ik mijn beveiligings sleutel kwijt ben?
+
+U kunt sleutels uit de Azure Portal verwijderen door te navigeren naar de pagina beveiligings gegevens en de beveiligings sleutel te verwijderen.
+
+## <a name="next-steps"></a>Volgende stappen
 
 [Meer informatie over apparaatregistratie](../devices/overview.md)
 

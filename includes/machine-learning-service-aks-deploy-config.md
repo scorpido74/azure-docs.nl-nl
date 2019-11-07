@@ -2,33 +2,33 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0463dbd67f27f6664ab246ad56af9c6fb95c52ee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729331"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682102"
 ---
-De vermeldingen in de `deploymentconfig.json` document structuur met de para meters voor [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). De volgende tabel beschrijft de toewijzing tussen de entiteiten in het JSON-document en de para meters voor de-methode:
+De vermeldingen in het `deploymentconfig.json` document worden toegewezen aan de para meters voor [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py). De volgende tabel beschrijft de toewijzing tussen de entiteiten in het JSON-document en de para meters voor de-methode:
 
-| JSON-entiteit | Methode parameter | Description |
+| JSON-entiteit | Methode parameter | Beschrijving |
 | ----- | ----- | ----- |
-| `computeType` | N.v.t. | Het rekendoel. Voor AKS moet de waarde zijn `aks`. |
+| `computeType` | N.v.t. | Het rekendoel. Voor AKS moet de waarde `aks`zijn. |
 | `autoScaler` | N.v.t. | Bevat configuratie-elementen voor automatisch schalen. Zie de tabel met automatische schalen. |
-| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Hiermee wordt aangegeven of automatisch schalen moet worden ingeschakeld voor de webservice. If `numReplicas`  =  ,anders`False`. `0` `True` |
+| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Hiermee wordt aangegeven of automatisch schalen moet worden ingeschakeld voor de webservice. Als `numReplicas` = `0`, `True`; anders `False`. |
 | &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Het minimum aantal containers dat moet worden gebruikt bij het automatisch schalen van deze webservice. Standaard, `1`. |
 | &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Het maximum aantal containers dat moet worden gebruikt bij het automatisch schalen van deze webservice. Standaard, `10`. |
 | &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Hoe vaak de automatische schaalr probeert deze webservice te schalen. Standaard, `1`. |
 | &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Het doel gebruik (in procenten 100) dat de automatische schaalr moet proberen te onderhouden voor deze webservice. Standaard, `70`. |
 | `dataCollection` | N.v.t. | Bevat configuratie-elementen voor het verzamelen van gegevens. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Hiermee wordt aangegeven of het verzamelen van model gegevens moet worden ingeschakeld voor de webservice. Standaard, `False`. |
-| `authEnabled` | `auth_enabled` | Hiermee wordt aangegeven of sleutel verificatie moet worden ingeschakeld voor de webservice. Beide `tokenAuthEnabled` en `authEnabled` kunnen niet `True`. Standaard, `True`. |
-| `tokenAuthEnabled` | `token_auth_enabled` | Hiermee wordt aangegeven of Token verificatie moet worden ingeschakeld voor de webservice. Beide `tokenAuthEnabled` en `authEnabled` kunnen niet `True`. Standaard, `False`. |
+| `authEnabled` | `auth_enabled` | Hiermee wordt aangegeven of sleutel verificatie moet worden ingeschakeld voor de webservice. Zowel `tokenAuthEnabled` als `authEnabled` kunnen niet worden `True`. Standaard, `True`. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Hiermee wordt aangegeven of Token verificatie moet worden ingeschakeld voor de webservice. Zowel `tokenAuthEnabled` als `authEnabled` kunnen niet worden `True`. Standaard, `False`. |
 | `containerResourceRequirements` | N.v.t. | Container voor de CPU-en geheugen entiteiten. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Het aantal CPU-kernen dat moet worden toegewezen voor deze webservice. Standaard`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | De hoeveelheid geheugen (in GB) die voor deze webservice moet worden toegewezen. Prijs`0.5` |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Het aantal CPU-kernen dat moet worden toegewezen voor deze webservice. Standaard waarden, `0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | De hoeveelheid geheugen (in GB) die voor deze webservice moet worden toegewezen. Standaard, `0.5` |
 | `appInsightsEnabled` | `enable_app_insights` | Hiermee wordt aangegeven of Application Insights logboek registratie moet worden ingeschakeld voor de webservice. Standaard, `False`. |
 | `scoringTimeoutMs` | `scoring_timeout_ms` | Een time-out voor het afdwingen van het bepalen van aanroepen naar de webservice. Standaard, `60000`. |
 | `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Het maximum aantal gelijktijdige aanvragen per knoop punt voor deze webservice. Standaard, `1`. |

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 4215dc85da6d507b08f23cf248044ea807fe5319
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935139"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664301"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Beheerde identiteit gebruiken om uw Azure Stream Analytics-taak te verifiëren bij Azure Blob Storage-uitvoer (preview-versie)
 
@@ -23,7 +23,7 @@ Dit artikel laat u zien hoe u beheerde identiteit voor de BLOB-uitvoer (en) van 
 
 1. Maak een nieuwe Stream Analytics-taak of open een bestaande taak in de Azure Portal. Selecteer in de menu balk aan de linkerkant van het scherm **beheerde identiteit** onder **configureren**. Zorg ervoor dat de door het systeem toegewezen beheerde identiteit gebruiken is geselecteerd en klik vervolgens op de knop **Opslaan** aan de onderkant van het scherm.
 
-   ![Stream Analytics beheerde identiteit configureren](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-enable-managed-identity.png)
+   ![Stream Analytics beheerde identiteit configureren](./media/common/stream-analytics-enable-managed-identity.png)
 
 2. Selecteer in het venster uitvoer eigenschappen van de Azure Blob Storage-uitvoer Sink de vervolg keuzelijst authenticatie modus en kies **beheerde identiteit**. Zie voor meer informatie over de andere uitvoer eigenschappen [inzicht in de uitvoer van Azure stream Analytics](./stream-analytics-define-outputs.md). Wanneer u klaar bent, klikt u op **Opslaan**.
 

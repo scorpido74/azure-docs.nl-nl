@@ -1,5 +1,5 @@
 ---
-title: T-SQL-lussen gebruiken in Azure SQL Data Warehouse | Microsoft Docs
+title: T-SQL-lussen gebruiken
 description: Tips voor het gebruik van T-SQL-lussen en het vervangen van cursors in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b57358e32bda83ef51fe67aa1057411d51773fa6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479627"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685823"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>T-SQL-lussen gebruiken in SQL Data Warehouse
 Tips voor het gebruik van T-SQL-lussen en het vervangen van cursors in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
@@ -25,7 +26,7 @@ Tips voor het gebruik van T-SQL-lussen en het vervangen van cursors in Azure SQL
 SQL Data Warehouse ondersteunt de [while](/sql/t-sql/language-elements/while-transact-sql) -lus voor het herhaaldelijk uitvoeren van instructie blokken. Deze lus wordt voortgezet zolang de opgegeven voor waarden waar zijn of totdat de code de lus met behulp van het sleutel woord desplit verbreekt. Lussen zijn handig voor het vervangen van cursors die zijn gedefinieerd in SQL-code. Gelukkig zijn bijna alle cursors die in SQL-code zijn geschreven van het besnelde, alleen-lezen RAS. Daarom zijn [WHILE] lussen een geweldig alternatief voor het vervangen van cursors.
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>Cursors in SQL Data Warehouse vervangen
-Voordat u eerst aan de slag gaat, moet u echter de volgende vraag stellen: "Kan deze cursor worden herschreven om op sets gebaseerde bewerkingen te gebruiken?." In veel gevallen is het antwoord ja en is het vaak de beste aanpak. Een op sets gebaseerde bewerking voert vaak sneller uit dan een iteratieve, rij-by-rij-benadering.
+Voordat u eerst aan de slag gaat, moet u echter de volgende vraag stellen: ' kan deze cursor herschrijven om op sets gebaseerde bewerkingen te gebruiken? ' In veel gevallen is het antwoord ja en is het vaak de beste aanpak. Een op sets gebaseerde bewerking voert vaak sneller uit dan een iteratieve, rij-by-rij-benadering.
 
 Fast Forward-alleen-lezen cursors kunnen eenvoudig worden vervangen door een recursieve constructie. Hier volgt een eenvoudig voor beeld. In dit code voorbeeld worden de statistieken voor elke tabel in de data base bijgewerkt. Door de tabellen in de lus te herhalen, wordt elke opdracht in volg orde uitgevoerd.
 

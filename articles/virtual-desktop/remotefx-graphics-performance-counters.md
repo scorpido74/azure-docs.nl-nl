@@ -1,5 +1,5 @@
 ---
-title: Problemen met grafische prestaties in extern bureau blad oplossen-Azure
+title: Problemen met grafische prestaties diagnosticeren Extern bureaublad-Azure
 description: In dit artikel wordt beschreven hoe u grafische items van RemoteFX in extern bureau blad-protocol sessies gebruikt voor het vaststellen van prestatie problemen met afbeeldingen in Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676535"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607464"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Problemen met grafische prestaties in Extern bureaublad diagnosticeren
 
@@ -24,8 +24,8 @@ U hebt uw externe sessie naam nodig om de grafische prestatie meter items te ide
 
 1. Open de Windows-opdracht prompt vanuit uw externe sessie.
 2. Voer de opdracht **qwinsta** uit en zoek de naam van uw sessie.
-    - Als uw sessie wordt gehost op een virtuele machine met meerdere sessies (VM): Uw exemplaar van elk prestatie meter item is een achtervoegsel van hetzelfde nummer dat achtervoegselt van uw sessie naam, zoals ' RDP-TCP 37 '.
-    - Als uw sessie wordt gehost in een virtuele machine die virtuele grafische verwerkings eenheden (vGPU) ondersteunt: Uw exemplaar van elk item wordt opgeslagen op de server in plaats van in uw VM. De item instanties bevatten de naam van de virtuele machine in plaats van het nummer in de sessie naam, zoals ' Win8 Enter prise VM '.
+    - Als uw sessie wordt gehost op een virtuele machine met meerdere sessies (VM): uw exemplaar van elk prestatie meter item is een achtervoegsel dat overeenkomt met de naam van uw sessie, zoals ' RDP-TCP 37 '.
+    - Als uw sessie wordt gehost in een VM die virtuele grafische verwerkings eenheden (vGPU) ondersteunt: uw exemplaar van elk item wordt opgeslagen op de server in plaats van in uw VM. De item instanties bevatten de naam van de virtuele machine in plaats van het nummer in de sessie naam, zoals ' Win8 Enter prise VM '.
 
 >[!NOTE]
 > Hoewel tellers RemoteFX in hun namen hebben, bevatten ze ook extern bureau blad-afbeeldingen in vGPU-scenario's.
@@ -36,7 +36,7 @@ Nadat u de naam van uw externe sessie hebt bepaald, volgt u deze instructies voo
 
 1. Selecteer **Start** > **systeem beheer** > **prestatie meter**.
 2. Vouw in het dialoog venster **prestatie meter** het onderdeel **controle hulpprogramma's**uit, selecteer **prestatie meter**en selecteer vervolgens **toevoegen**.
-3. Vouw in het dialoog venster **items toevoegen** vanuit de lijst beschik **bare items** de sectie uit voor RemoteFX-afbeeldingen.
+3. Vouw in het dialoog venster **items toevoegen** vanuit de lijst **beschik bare items** de sectie uit voor RemoteFX-afbeeldingen.
 4. Selecteer de prestatie meter items die moeten worden bewaakt.
 5. Selecteer in de lijst **instanties van geselecteerd object** de specifieke exemplaren die moeten worden bewaakt voor de geselecteerde items en selecteer vervolgens **toevoegen**. Selecteer **alle exemplaren**om alle beschik bare item instanties te selecteren.
 6. Nadat u de items hebt toegevoegd, selecteert u **OK**.

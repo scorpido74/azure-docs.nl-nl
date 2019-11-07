@@ -1,5 +1,5 @@
 ---
-title: Richt lijnen voor het afstemmen van Azure SQL Database prestaties | Microsoft Docs
+title: Richt lijnen voor het afstemmen van Azure SQL Database prestaties
 description: Meer informatie over het gebruik van aanbevelingen om uw Azure SQL Database query prestaties hand matig af te stemmen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567112"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687672"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>De prestaties van de query in Azure SQL Database hand matig afstemmen
 
@@ -25,7 +25,7 @@ Wanneer u een prestatie probleem hebt geïdentificeerd dat u hebt gezien SQL Dat
 - Stel uw toepassing af en pas aanbevolen procedures toe waarmee de prestaties kunnen worden verbeterd.
 - Stem de data base af door indexen en query's te wijzigen om efficiënter met gegevens te werken.
 
-In dit artikel wordt ervan uitgegaan dat u de aanbevelingen van Azure SQL Database [Data Base Advisor](sql-database-advisor.md) en de [aanbevelingen](sql-database-automatic-tuning.md)voor het Azure SQL database automatisch afstemmen hebt bewerkt. Ook wordt ervan uitgegaan dat u [een overzicht van het controleren en afstemmen](sql-database-monitor-tune-overview.md) en de bijbehorende artikelen hebt bekeken met betrekking tot het oplossen van prestatie problemen. Daarnaast wordt er in dit artikel van uitgegaan dat u geen CPU-resources hebt, een probleem met betrekking tot prestaties dat kan worden opgelost door de berekenings grootte of de servicelaag te verhogen om meer resources aan uw data base toe te voegen.
+In dit artikel wordt ervan uitgegaan dat u de aanbevelingen van Azure SQL Database [Data Base Advisor](sql-database-advisor.md) en de aanbevelingen voor het Azure SQL database [automatisch afstemmen](sql-database-automatic-tuning.md)hebt bewerkt. Ook wordt ervan uitgegaan dat u [een overzicht van het controleren en afstemmen](sql-database-monitor-tune-overview.md) en de bijbehorende artikelen hebt bekeken met betrekking tot het oplossen van prestatie problemen. Daarnaast wordt er in dit artikel van uitgegaan dat u geen CPU-resources hebt, een probleem met betrekking tot prestaties dat kan worden opgelost door de berekenings grootte of de servicelaag te verhogen om meer resources aan uw data base toe te voegen.
 
 ## <a name="tune-your-application"></a>Uw toepassing afstemmen
 
@@ -210,7 +210,7 @@ Als u de test uitvoert met `SET STATISTICS IO` ingesteld op `ON`, wordt de logis
 
 ![Afstemmen van query's met behulp van een logische scan](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-In het tweede gedeelte van het voor beeld wordt een query Hint gebruikt om te geven dat de Optimizer een specifieke waarde tijdens het compilatie proces gebruikt. In dit geval wordt de query processor geforceerd de waarde die wordt door gegeven als de para meter, genegeerd en wordt er in `UNKNOWN`plaats daarvan aangenomen. Dit verwijst naar een waarde die de gemiddelde frequentie in de tabel bevat (scheef trekken wordt genegeerd). Het resulterende plan is een op een zoek gebaseerd plan dat sneller is en gebruikmaakt van minder resources, gemiddeld dan het plan in deel 1 van dit voor beeld:
+In het tweede gedeelte van het voor beeld wordt een query Hint gebruikt om te geven dat de Optimizer een specifieke waarde tijdens het compilatie proces gebruikt. In dit geval wordt de query processor geforceerd de waarde die wordt door gegeven als de para meter, genegeerd en wordt er in plaats daarvan `UNKNOWN`aangenomen. Dit verwijst naar een waarde die de gemiddelde frequentie in de tabel bevat (scheef trekken wordt genegeerd). Het resulterende plan is een op een zoek gebaseerd plan dat sneller is en gebruikmaakt van minder resources, gemiddeld dan het plan in deel 1 van dit voor beeld:
 
 ![Afstemmen van query's met behulp van een query Hint](./media/sql-database-performance-guidance/query_tuning_3.png)
 

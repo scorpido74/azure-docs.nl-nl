@@ -1,20 +1,17 @@
 ---
 title: Informatie over metrische gegevens voor Azure lente-Cloud
 description: Meer informatie over het controleren van metrische gegevens in de Azure lente-Cloud
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d9c6f14b7ecfc2929dc48c11e0df1fe80303c8b1
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 952dfc1c707df3b7fa61443ea6ea18630352f0dc
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039124"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607811"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Metrische gegevens voor Azure lente-Cloud
 
@@ -26,11 +23,11 @@ De **overzichts** pagina van elke toepassing bevat een grafiek met metrische geg
 
 We bieden 5 grafieken met metrische gegevens die elke minuut worden bijgewerkt voor het volgende:
 
-* **Http-server fouten**: Aantal fouten voor HTTP-aanvragen voor uw app.
-* **Gegevens in**: Bytes ontvangen door uw app.
-* **Gegevens uit**: Verzonden bytes naar uw app.
-* **Aanvragen**: Aanvragen die door uw app zijn ontvangen.
-* **Gemiddelde reactie tijd**: De gemiddelde reactie tijd van uw app.
+* **Http-server fouten**: aantal fouten voor HTTP-aanvragen aan uw app.
+* **Gegevens in**: bytes ontvangen door uw app.
+* **Gegevens uit**: verzonden bytes naar uw app.
+* **Aanvragen**: aanvragen ontvangen door uw app.
+* **Gemiddelde reactie tijd**: gemiddelde reactie tijd van uw app.
 
 U kunt een tijds bereik voor de grafiek selecteren tussen 1 uur en Maxi maal 7 dagen.
 
@@ -44,9 +41,9 @@ Als u metrische gegevens wilt bekijken, selecteert u uw metriek, uw **aggregatie
 
 De metrische gegevens van Azure worden elke minuut gepeild en bijgewerkt. Azure biedt drie manieren om gegevens te verzamelen voor een gekozen tijds periode:
 
-* **Totaal**: Som van alle metrische gegevens als doel uitvoer.
-* **Gemiddelde**: Gebruik de gemiddelde waarde in de periode als doel uitvoer.
-* **Maximum/min**: Gebruik de waarde max/min in de periode als doel uitvoer.
+* **Totaal**: som alle metrische gegevens als doel uitvoer.
+* **Gemiddelde**: gebruik de gemiddelde waarde in de periode als doel uitvoer.
+* **Maximum/min**: gebruik de waarde max/min in de periode als doel uitvoer.
 
 ### <a name="time-range"></a>Tijdsbereik
 

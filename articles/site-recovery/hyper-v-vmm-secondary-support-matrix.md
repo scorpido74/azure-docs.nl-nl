@@ -1,18 +1,18 @@
 ---
-title: Ondersteunings matrix voor herstel na nood gevallen van virtuele Hyper-V-machines in VMM-Clouds naar een secundaire site met Azure Site Recovery
+title: Ondersteunings matrix-herstel na nood geval voor Hyper-V naar een secundaire VMM-site met Azure Site Recovery
 description: Hiermee wordt een overzicht gegeven van de ondersteuning voor Hyper-V-VM-replicatie in VMM-Clouds naar een secundaire site met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933813"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686162"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Ondersteunings matrix voor herstel na nood gevallen van virtuele Hyper-V-machines naar een secundaire site
 
@@ -73,7 +73,7 @@ Gast-VM-multi-NIC | Ja
 
 **Opslag (host)** | **Ondersteund**
 --- | --- 
-NFS | N/A
+NFS | N.v.t.
 SMB 3.0 |  Ja
 SAN (ISCSI) | Ja
 Meerdere paden (MPIO) | Ja
@@ -82,15 +82,15 @@ Meerdere paden (MPIO) | Ja
 
 **Configuratie** | **Ondersteund**
 --- | --- | 
-VMDK |  N/A
+VMDK |  N.v.t.
 VHD/VHDX | Ja (Maxi maal 16 schijven)
 VM van generatie 2 | Ja
 Gedeelde cluster schijf | Nee
 Versleutelde schijf | Nee
-UEFI| N/A
+UEFI| N.v.t.
 NFS | Nee
 SMB 3.0 | Nee
-RDM | N/A
+RDM | N.v.t.
 Schijf > 1 TB | Ja
 Volume met gestripte schijf > 1 TB<br/><br/> LVM | Ja
 Opslag ruimten | Ja

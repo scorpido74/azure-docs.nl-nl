@@ -1,5 +1,5 @@
 ---
-title: Machine Learning modellen bijwerken met behulp van Azure Data Factory | Microsoft Docs
+title: Machine Learning modellen bijwerken met behulp van Azure Data Factory
 description: Hierin wordt beschreven hoe u voorspellende pijp lijnen maakt met behulp van Azure Data Factory en Azure Machine Learning
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140459"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683122"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellen bijwerken met resource activiteit bijwerken
 
@@ -42,7 +42,7 @@ Dit artikel vormt een aanvulling op het belangrijkste Azure Data Factory-Azure M
 Na verloop van tijd moeten de voorspellende modellen in de Score experimenten van Azure ML opnieuw worden getraind met behulp van nieuwe invoer gegevens sets. Wanneer u klaar bent met opnieuw trainen, wilt u de Score-webservice bijwerken met het opnieuw getrainde ML-model. De gebruikelijke stappen voor het inschakelen van het opnieuw trainen en bijwerken van Azure ML-modellen via webservices zijn:
 
 1. Maak een experiment in [Azure ml Studio](https://studio.azureml.net).
-2. Wanneer u tevreden bent met het model, kunt u Azure ML Studio gebruiken om webservices te publiceren voor zowel het **trainings experiment** als het scoren/voorspellende**experiment**.
+2. Wanneer u tevreden bent met het model, kunt u Azure ML Studio gebruiken om webservices te publiceren voor zowel het **trainings experiment** als het scoren/**voorspellende experiment**.
 
 In de volgende tabel worden de webservices beschreven die in dit voor beeld worden gebruikt.  Zie [machine learning-modellen programmatisch opnieuw trainen](../../machine-learning/machine-learning-retrain-models-programmatically.md) voor meer informatie.
 
@@ -210,8 +210,8 @@ Het volgende JSON-code fragment definieert een Azure Machine Learning gekoppelde
 
 In **Azure ml Studio**gaat u als volgt te werk om waarden op te halen voor **mlEndpoint** en **apiKey**:
 
-1. Klik op webservices in het menu links.
-2. Klik op de **training-webservice** in de lijst met webservices.
+1. Klik op **WEBservices** in het menu links.
+2. Klik op de training-webservice in de lijst met **webservices** .
 3. Klik op Kopiëren naast tekstvak **API-sleutel** . Plak de sleutel in het klem bord in de Data Factory JSON-editor.
 4. Klik in **Azure ml Studio**op **batch-uitvoerings** koppeling.
 5. Kopieer de **aanvraag-URI** uit de sectie **Request** en plak deze in de Data Factory JSON-editor.   

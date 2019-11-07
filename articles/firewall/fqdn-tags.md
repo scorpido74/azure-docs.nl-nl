@@ -1,45 +1,45 @@
 ---
-title: Overzicht van de FQDN-naam tags voor de Firewall van Azure
-description: Meer informatie over de FQDN-codes in de Firewall van Azure
+title: Overzicht van FQDN-labels voor Azure Firewall
+description: Meer informatie over de FQDN-Tags in Azure Firewall
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 4/23/2019
 ms.author: victorh
-ms.openlocfilehash: 7a412589f4e86f2a49d07f2d01ca34bf30fd528b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78f67b96776fa3fb1d13fbf7b385e41ca3aa59a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721177"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665548"
 ---
-# <a name="fqdn-tags-overview"></a>Overzicht van de FQDN-naam-tags
+# <a name="fqdn-tags-overview"></a>Overzicht van FQDN-labels
 
-Een FQDN-tag vertegenwoordigt een groep van de volledig gekwalificeerde domeinnamen (FQDN's) die zijn gekoppeld aan bekende services van Microsoft. U kunt een FQDN-tag in regels voor application gebruiken om toe te staan de vereiste uitgaande netwerkverkeer via de firewall.
+Een FQDN-label vertegenwoordigt een groep FQDN-namen (FULLy Qualified Domain names) die zijn gekoppeld aan bekende micro soft-Services. U kunt een FQDN-tag in toepassings regels gebruiken om het vereiste uitgaande netwerk verkeer via uw firewall toe te staan.
 
-Als u wilt toestaan handmatig Windows Update-netwerkverkeer via de firewall, moet u bijvoorbeeld meerdere regels per de Microsoft-documentatie voor application maken. Gebruik van tags van de FQDN-naam, kunt u een toepassing-regel maken, zijn de **Windows Updates** markeren en nu netwerkverkeer naar eindpunten door uw firewall kunnen stromen van Microsoft Windows Update.
+Als u bijvoorbeeld hand matig Windows Update netwerk verkeer via uw firewall wilt toestaan, moet u meerdere toepassings regels maken per micro soft-documentatie. Met FQDN-Tags kunt u een toepassings regel maken, de tag **Windows-updates** toevoegen en nu netwerk verkeer naar micro soft Windows Update-eind punten door lopen van uw firewall.
 
-U kunt uw eigen labels FQDN-naam niet maken of kunt u opgeven welk FQDN's zijn opgenomen in een tag. Microsoft beheert de FQDN-namen die zijn opgenomen door de FQDN-tag en updates van het label als FQDN's wijzigen. 
+U kunt geen eigen FQDN-Tags maken en u hoeft niet op te geven welke FQDN-namen zijn opgenomen in een tag. Micro soft beheert de FQDN-code die is opgenoemd door de FQDN-tag en werkt de tag bij als FQDN-wijzigingen. 
 
 <!--- screenshot of application rule with a FQDN tag.-->
 
-De volgende tabel ziet u de huidige FQDN-tags die u kunt gebruiken. Microsoft houdt deze tags en u kunt verwachten dat andere labels worden regelmatig toegevoegd.
+In de volgende tabel ziet u de huidige FQDN-Tags die u kunt gebruiken. Micro soft onderhoudt deze tags en u kunt verwachten dat er periodiek extra tags worden toegevoegd.
 
-## <a name="current-fqdn-tags"></a>Huidige FQDN-tags
+## <a name="current-fqdn-tags"></a>Huidige FQDN-Tags
 
-|Label van de FQDN-naam  |Description  |
+|FQDN-label  |Beschrijving  |
 |---------|---------|
-|Windows Update     |Toestaan van uitgaande toegang tot Microsoft Update, zoals beschreven in [over het configureren van een Firewall voor Software-Updates](https://technet.microsoft.com/library/bb693717.aspx).|
-|Windows Diagnostische gegevens|Uitgaande toegang toestaat aan alle [Windows diagnostische gegevens over eindpunten](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
-|MAPS (Microsoft Active Protection Service)|Uitgaande toegang toestaat aan [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
-|App Service-omgeving (ASE)|Biedt uitgaande toegang tot verkeer met ASE-platform. Deze tag dekt niet klantspecifieke Storage en SQL eindpunten die zijn gemaakt door as-omgeving. Deze moeten worden ingeschakeld [Service-eindpunten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of handmatig worden toegevoegd.<br><br>Zie voor meer informatie over de integratie van Azure-Firewall met ASE [vergrendelen van een App Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
-|Azure Backup|Biedt uitgaande toegang tot de back-up van Azure-services.|
-|Azure HDInsight<br>(Preview)|Uitgaande toegang voor HDInsight-platform verkeer toestaat. Deze tag dekt niet klantspecifieke Storage of SQL-verkeer van HDInsight. Schakel deze met [Service-eindpunten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of deze handmatig toevoegen.|
+|Windows Update     |Uitgaande toegang tot Microsoft Update toestaan, zoals beschreven in [een firewall configureren voor software-updates](https://technet.microsoft.com/library/bb693717.aspx).|
+|Windows Diagnostische gegevens|Uitgaande toegang tot alle [Windows diagnostische eind punten](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)toestaan.|
+|MAPS (Microsoft Active Protection Service)|Uitgaande toegang tot [kaarten](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)toestaan.|
+|App Service Environment (ASE)|Hiermee staat u uitgaande toegang tot ASE-platform verkeer toe. Dit label geldt niet voor klantspecifieke opslag-en SQL-eind punten die zijn gemaakt door ASE. Deze moeten worden ingeschakeld via [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of hand matig worden toegevoegd.<br><br>Zie [een app service Environment vergren delen](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)voor meer informatie over het integreren van Azure Firewall met ASE.|
+|Azure Backup|Hiermee wordt uitgaande toegang tot de Azure Backup Services toegestaan.|
+|Azure HDInsight|Hiermee staat u uitgaande toegang toe voor verkeer van HDInsight-platform. Dit label geldt niet voor klantspecifieke opslag of SQL-verkeer van HDInsight. Schakel deze optie in met [service-eind punten](../virtual-network/tutorial-restrict-network-access-to-resources.md) of voeg ze hand matig toe.|
 
 > [!NOTE]
-> Bij het selecteren van FQDN code in een toepassing-regel, het veld protocol: poort moet worden ingesteld op **https**.
+> Wanneer u de FQDN-tag in een toepassings regel selecteert, moet het veld Protocol: poort worden ingesteld op **https**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het implementeren van een Azure-Firewall, [zelfstudie: Implementeren en configureren van de Firewall van Azure met behulp van de Azure-portal](tutorial-firewall-deploy-portal.md).
+Zie [zelf studie: Azure firewall implementeren en configureren met behulp van de Azure Portal](tutorial-firewall-deploy-portal.md)voor meer informatie over het implementeren van een Azure firewall.

@@ -1,5 +1,5 @@
 ---
-title: Referenties beheren in de client bibliotheek voor Elastic data base | Microsoft Docs
+title: Referenties beheren in de client bibliotheek voor Elastic data base
 description: Het juiste niveau van Referenties instellen, beheerder op alleen-lezen, voor Elastic data base-apps
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: d89e83092775828016c2c47a96164319f5474c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8856b827ad2c6719cdc6e8c387be1b63b3f44b22
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568413"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690210"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Referenties die worden gebruikt voor toegang tot de Elastic Database-client bibliotheek
 
@@ -43,9 +43,9 @@ De variabele **smmAdminConnectionString** is een Connection String die de beheer
 "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;”
 ```
 
-Gebruik in plaats daarvan geen waarden in de vormusername@server' ', maar gebruik hiervoor alleen de waarde ' username '.  Dit komt doordat referenties moeten samen werken aan zowel de Shard-map Manager-Data Base als de individuele Shards, die zich op verschillende servers kan bevinden.
+Gebruik in plaats daarvan geen waarden in de vorm van 'username@server', maar gebruik hiervoor alleen de waarde ' username '.  Dit komt doordat referenties moeten samen werken aan zowel de Shard-map Manager-Data Base als de individuele Shards, die zich op verschillende servers kan bevinden.
 
-## <a name="access-credentials"></a>Toegangsreferenties
+## <a name="access-credentials"></a>Toegangs referenties
 
 Bij het maken van een Shard-toewijzings beheer in een toepassing die geen Shard-kaarten beheert, gebruikt u referenties met alleen-lezen machtigingen voor de globale Shard-toewijzing. De gegevens die zijn opgehaald uit de globale Shard-toewijzing onder deze referenties, worden gebruikt voor [gegevens afhankelijke route ring](sql-database-elastic-scale-data-dependent-routing.md) en om de Shard-toewijzings cache op de client in te vullen. De referenties worden verzorgd via hetzelfde aanroep patroon voor **GetSqlShardMapManager**:
 
@@ -70,7 +70,7 @@ In dit voor beeld bevat **smmUserConnectionString** de Connection String voor de
 "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 ```
 
-Net als bij de beheerders referenties gebruikt u geen waarden in de vorm vanusername@server. Gebruik in plaats daarvan "username".  Houd er ook rekening mee dat de connection string geen server naam en database naam bevat. Dat komt doordat de **OpenConnectionForKey** -aanroep automatisch de verbinding naar de juiste Shard doorstuurt op basis van de sleutel. Daarom zijn de naam van de data base en de server naam niet gegeven.
+Net als bij de beheerders referenties gebruikt u geen waarden in de vorm "username@server". Gebruik in plaats daarvan "username".  Houd er ook rekening mee dat de connection string geen server naam en database naam bevat. Dat komt doordat de **OpenConnectionForKey** -aanroep automatisch de verbinding naar de juiste Shard doorstuurt op basis van de sleutel. Daarom zijn de naam van de data base en de server naam niet gegeven.
 
 ## <a name="see-also"></a>Zie ook
 

@@ -1,5 +1,5 @@
 ---
-title: Werken met tijdelijke fouten-Azure SQL Database | Microsoft Docs
+title: Werken met tijdelijke fouten-Azure SQL Database
 description: Informatie over het oplossen van problemen met een SQL-verbindings fout of een tijdelijke fout in Azure SQL Database.
 keywords: SQL-verbinding, connection string, verbindings problemen, tijdelijke fout, verbindings fout
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: aba404842658aaa946a14a3cde03853c2fb3062d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792575"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690819"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Werken met SQL Database verbindings problemen en tijdelijke fouten
 
@@ -215,7 +215,7 @@ Als u ADO.NET 4,0 of eerder gebruikt, raden we u aan om een upgrade uit te voere
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 
-## <a name="diagnostics"></a>Diagnostics
+## <a name="diagnostics"></a>Diagnostiek
 
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 

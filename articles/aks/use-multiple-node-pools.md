@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472448"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662583"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
@@ -33,19 +33,20 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 
 * U kunt de standaard-knooppunt groep (First) niet verwijderen.
 * De invoeg toepassing voor het routeren van HTTP-toepassingen kan niet worden gebruikt.
+* Het AKS-cluster moet het standaard SKU-load balancer gebruiken om meerdere knooppunt groepen te kunnen gebruiken. de functie wordt niet ondersteund met Basic SKU load balancers.
+* Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 * U kunt geen knooppunt groepen toevoegen of verwijderen met behulp van een bestaande resource manager-sjabloon, net als bij de meeste bewerkingen. In plaats daarvan [kunt u een afzonderlijke resource manager-sjabloon gebruiken](#manage-node-pools-using-a-resource-manager-template) om wijzigingen aan te brengen in knooppunt groepen in een AKS-cluster.
 * De naam van een knooppunt groep moet beginnen met een kleine letter en mag alleen alfanumerieke tekens bevatten. Voor Linux-knooppunt Pools moet de lengte tussen 1 en 12 tekens lang zijn voor Windows-knooppunt groepen. de lengte moet tussen 1 en 6 tekens lang zijn.
 * Het AKS-cluster kan Maxi maal acht knooppunt groepen bevatten.
 * Het AKS-cluster kan Maxi maal 400 knoop punten in deze acht knooppunt groepen hebben.
 * Alle knooppunt groepen moeten zich in hetzelfde subnet bevinden.
-* Het AKS-cluster moet virtuele-machine schaal sets gebruiken voor de knoop punten.
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
 Om aan de slag te gaan, maakt u een AKS-cluster met één knooppunt groep. In het volgende voor beeld wordt de opdracht [AZ Group Create][az-group-create] gebruikt voor het maken van een resource groep met de naam *myResourceGroup* in de regio *eastus* . Er wordt een AKS-cluster met de naam *myAKSCluster* gemaakt met behulp van de opdracht [AZ AKS Create][az-aks-create] . Een *--kubernetes-versie* van *1.13.10* wordt gebruikt om te laten zien hoe u een knooppunt groep in een volgende stap bijwerkt. U kunt elke [ondersteunde versie van Kubernetes][supported-versions]opgeven.
 
 > [!NOTE]
-> De *Basic* load BALANACER-SKU wordt niet ondersteund wanneer meerdere knooppunt groepen worden gebruikt. Standaard worden AKS-clusters gemaakt met de *standaard* LOADBALACER-SKU.
+> De *Basic* load BALANACER-SKU wordt niet ondersteund wanneer meerdere knooppunt groepen worden gebruikt. Standaard worden AKS-clusters gemaakt met de *Standard* Load Balancer SKU van Azure CLI en Azure Portal.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -547,20 +548,7 @@ AKS-knoop punten vereisen geen eigen open bare IP-adressen voor communicatie. He
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Na een geslaagde registratie implementeert u een Azure Resource Manager-sjabloon volgens dezelfde instructies als [hierboven](#manage-node-pools-using-a-resource-manager-template) en voegt u de volgende Boole-waarde-eigenschap ' enableNodePublicIP ' toe aan de agentPoolProfiles. Stel dit in op `true`, zoals standaard ingesteld als `false` als dit niet is opgegeven. Dit is een alleen-maken eigenschap en vereist een minimale API-versie van 2019-06-01. Dit kan worden toegepast op zowel Linux-als Windows-knooppunt groepen.
-
-```
-"agentPoolProfiles":[  
-    {  
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]",
-      "enableNodePublicIP":true
-    }
-```
+Nadat de registratie is voltooid, implementeert u een Azure Resource Manager-sjabloon na dezelfde instructies als [hierboven](#manage-node-pools-using-a-resource-manager-template) en voegt u de eigenschap booleaanse waarde `enableNodePublicIP` toe aan agentPoolProfiles. Stel de waarde in op `true` zoals deze standaard is ingesteld als `false` indien niet opgegeven. Dit is een alleen-maken eigenschap en vereist een minimale API-versie van 2019-06-01. Dit kan worden toegepast op zowel Linux-als Windows-knooppunt groepen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

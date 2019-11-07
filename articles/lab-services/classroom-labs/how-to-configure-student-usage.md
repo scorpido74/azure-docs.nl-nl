@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 691907d1c221283f99ba59f0937cfbaf673f427a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324421"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584216"
 ---
-# <a name="add-and-manage-lab-users"></a>Lab-gebruikers toevoegen en beheren
+# <a name="add-and-manage-lab-users"></a>Labgebruikers toevoegen en beheren
 In dit artikel wordt beschreven hoe u gebruikers toevoegt aan het lab, ze aan het lab kunt toevoegen, het aantal uren bepaalt dat ze de virtuele machine kunnen gebruiken, en nog veel meer. 
 
 
@@ -36,6 +36,9 @@ In dit artikel wordt beschreven hoe u gebruikers toevoegt aan het lab, ze aan he
 4. Selecteer **Opslaan**. U ziet de e-mailadressen van gebruikers en hun status (al dan niet geregistreerd) in de lijst. 
 
     ![Lijst met gebruikers](../media/how-to-configure-student-usage/users-list-new.png)
+
+    > [!NOTE]
+    > U ziet de namen van de gebruikers in de lijst nadat deze zijn geregistreerd bij het lab. De naam die in de lijst wordt weer gegeven, wordt samengesteld op basis van de voor-en achternaam van de gebruiker in de Azure Active Directory. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Gebruikers toevoegen door een CSV-bestand te uploaden
 U kunt ook gebruikers toevoegen door een CSV-bestand te uploaden met e-mail adressen van gebruikers.
@@ -60,15 +63,16 @@ Als u de registratie koppeling naar studenten wilt verzenden, gebruikt u een van
 Als de **toegang beperken** voor het lab is ingeschakeld, kunnen alleen gebruikers in de lijst met gebruikers de registratie koppeling gebruiken om zich bij het lab te registreren. Deze optie is standaard ingeschakeld. 
 
 ### <a name="invite-all-users"></a>Alle gebruikers uitnodigen
+1. Schakel over naar de weer gave **gebruikers** als u zich nog niet op de pagina bevindt en selecteer **Alles uitnodigen** op de werk balk. 
 
-1. Ga naar de pagina **gebruikers** van het lab. 
-2. Selecteer **Alles uitnodigen** in de werk balk. 
-3. Voer een **bericht** in voor de gebruikers. Dit is een optionele stap.
-4. Selecteer vervolgens **verzenden**.
+    ![Studenten selecteren](../media/tutorial-setup-classroom-lab/invite-all-button.png)
 
-    ![Alle gebruikers uitnodigen](../media/how-to-configure-student-usage/invite-all.png)
+1. Voer op de pagina **uitnodiging per E-mail verzenden** een optioneel bericht in en selecteer vervolgens **verzenden**. Het e-mail bericht bevat automatisch de registratie koppeling. U kunt deze registratie koppeling ophalen door te selecteren **... (weglatings tekens)** op de werk balk en **registratie koppeling**. 
 
-    U ziet de status van deze bewerking in de kolom **uitnodigingen** van de lijst **gebruikers** . De uitnodigings-e-mail bevat de registratie koppeling die gebruikers kunnen gebruiken om zich bij het lab te registreren. 
+    ![Registratie koppeling via e-mail verzenden](../media/tutorial-setup-classroom-lab/send-email.png)
+4. U ziet de status van de **uitnodiging** in de lijst met **gebruikers** . De status wordt gewijzigd in **verzenden** en vervolgens **verzonden op \<datum >** . 
+
+    Zie [How to configure student Usage](how-to-configure-student-usage.md)(Engelstalig) voor meer informatie over het toevoegen van studenten aan een klasse en het beheren van hun gebruik van het lab.
 
 ### <a name="invite-selected-users"></a>Geselecteerde gebruikers uitnodigen
 
@@ -82,7 +86,7 @@ Als de **toegang beperken** voor het lab is ingeschakeld, kunnen alleen gebruike
 
     U ziet de status van deze bewerking in de kolom **uitnodigingen** van de lijst **gebruikers** . De uitnodigings-e-mail bevat de registratie koppeling die gebruikers kunnen gebruiken om zich bij het lab te registreren.
 
-1. Schakel over naar de weergave **Gebruikers** als u nog niet op die pagina bent. 
+1. Schakel over naar de weer gave **gebruikers** als de pagina al niet aanwezig is. 
 
 ## <a name="get-registration-link"></a>Registratie koppeling ophalen
 U kunt ook de registratie koppeling vanuit de portal ophalen en deze verzenden met uw eigen e-mailclient toepassing. 
@@ -107,19 +111,21 @@ Selecteer **gebruikers** in het linkermenu om de lijst met gebruikers weer te ge
 U kunt quota per gebruiker instellen met behulp van de volgende stappen: 
 
 1. Selecteer **gebruikers** in het menu links als de pagina nog niet actief is. 
-2. Selecteer **quotum per gebruiker: &lt;number @ no__t-2 uur** op de werk balk. 
+2. Selecteer **quotum per gebruiker: \<nummer > uur** op de werk balk. 
 3. Geef op de pagina **quotum per gebruiker** het aantal uren op dat u wilt toewijzen aan elke gebruiker (student) buiten de geplande klasse tijd en selecteer vervolgens **Opslaan**.
 
     ![Quotum per gebruiker](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. U ziet nu de gewijzigde waarden op de werk balk: **quotum per gebruiker: @no__t 1number uur @ no__t-2**. 
+5. U ziet nu de gewijzigde waarden op de werk balk: **quotum per gebruiker: \<aantal uur >** . 
 
-    ![Quotum per gebruiker-na](../media/how-to-configure-student-usage/quot-per-user-after.png)
+    ![Quotum per gebruiker: na](../media/how-to-configure-student-usage/quot-per-user-after.png)
 
     > [!IMPORTANT]
     > De [geplande uitvoerings tijd van vm's](how-to-create-schedules.md) telt niet op het quotum dat aan een gebruiker is toegewezen. Het quotum geldt voor de tijd buiten de plannings uren die een student op Vm's doorbrengt. 
 
 ## <a name="set-additional-quota-for-a-specific-user"></a>Extra quota instellen voor een specifieke gebruiker
-U kunt een afzonderlijke quota voor een gebruiker instellen. Voer hiertoe de volgende stappen uit:
+U kunt een extra quotum opgeven voor een gebruiker. Dit quotum is een aanvulling op de gemeen schappelijke quotaset voor alle gebruikers in de vorige sectie. Als u bijvoorbeeld (als een docent) het quotum voor alle gebruikers instelt op 10 uur en een extra quotum van 5 uur instelt voor een specifieke gebruiker, wordt het quotum van 15 (10 + 5) uur overschreden. Als u het algemene quotum later wijzigt naar, zegt 15, dan krijgt de gebruiker 20 (15 + 5) uur aan quota. Houd er rekening mee dat dit totale quotum zich buiten het geplande tijdstip bevindt. De tijd die student op een Lab-VM besteedt tijdens de plannings tijd, telt niet op dit quotum. 
+
+Voer hiertoe de volgende stappen uit:
 
 1. Selecteer een gebruiker (student) in de lijst met gebruikers op de pagina **gebruikers** .
 2. Selecteer vervolgens **quota aanpassen** op de werk balk. 
@@ -128,10 +134,42 @@ U kunt een afzonderlijke quota voor een gebruiker instellen. Voer hiertoe de vol
 3. Voer het aantal **extra uren** in voor de geselecteerde gebruiker of gebruikers en selecteer vervolgens **Toep assen**. 
 
     ![Aanvullend quotum voor een gebruiker](../media/how-to-configure-student-usage/additional-quota.png)
-4. Het bijgewerkte gebruik van de gebruiker wordt weer geven in de kolom **gebruik** . 
+4. U ziet het bijgewerkte gebruik van de gebruiker in de kolom **gebruik** . 
 
     ![Nieuw gebruik voor de gebruiker](../media/how-to-configure-student-usage/new-usage-hours.png)
 
+## <a name="student-accounts"></a>Studenten accounts
+Als u studenten wilt toevoegen aan een leslokaal Lab, gebruikt u hun e-mail accounts. De volgende typen e-mail accounts kunnen worden gebruikt:
+
+- Een student-e-mail account dat wordt verschaft door de Office 365-Azure Active Directory (AAD) van uw universiteit. 
+- Een micro soft-e-mail account, zoals `@outlook.com`, `@hotmail.com`, `@msn.com`of `@live.com`.
+- Een niet-micro soft-e-mail account, zoals het abonnement van Yahoo of Google. Deze typen accounts moeten echter worden gekoppeld aan een Microsoft-account.
+- Een GitHub-account. Dit account moet worden gekoppeld aan een Microsoft-account.
+
+### <a name="using-a-non-microsoft-email-account"></a>Een niet-micro soft-e-mail account gebruiken
+Studenten kunnen niet-micro soft-e-mail accounts gebruiken om zich te registreren bij een leslokaal Lab en zich aan te melden.  De registratie vereist echter dat studenten eerst een Microsoft-account maken dat is gekoppeld aan een niet-micro soft-e-mail adres.
+
+Veel studenten hebben mogelijk al een Microsoft-account gekoppeld aan hun e-mail adressen die niet van micro soft zijn. Studenten hebben bijvoorbeeld al een Microsoft-account als ze hun e-mail adres hebben gebruikt met andere producten of services van micro soft, zoals Office, Skype, OneDrive of Windows.  
+
+Wanneer een student op de registratie-URL klikt om zich aan te melden bij een leslokaal, wordt de gebruiker gevraagd om hun e-mail adres en wacht woord. Als de student probeert zich aan te melden met een niet-Microsoft-account waaraan geen Microsoft-account is gekoppeld, wordt het volgende fout bericht weer gegeven: 
+
+![Foutbericht](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Studenten moeten naar [http://signup.live.com](http://signup.live.com)gaan om zich aan te melden voor een Microsoft-account.  
+
+> [!IMPORTANT]
+> Wanneer studenten zich aanmelden bij een leslokaal Lab, krijgen ze niet de optie om een Microsoft-account te maken. Daarom wordt u aangeraden deze aanmeldings koppeling op te nemen in de inschrijvings-e-mail van het leslokaal die u verzendt naar studenten die niet-micro soft-accounts gebruiken.
+
+### <a name="using-a-github-account"></a>Een GitHub-account gebruiken
+Studenten kunnen ook een bestaand GitHub-account gebruiken om zich te registreren bij een leslokaal Lab en zich aan te melden. Als aan de student al een Microsoft-account is gekoppeld aan hun GitHub-account, kunnen ze zich aanmelden en hun wacht woord opgeven, zoals in de vorige sectie wordt weer gegeven. Als ze hun GitHub-account nog niet aan een Microsoft-account hebben gekoppeld, moeten ze **aanmeldings opties**selecteren:
+
+![Koppeling voor aanmeldings opties](../media/how-to-configure-student-usage/signin-options.png)
+
+Selecteer **Aanmelden met github**op de pagina **aanmeldings opties** .
+
+![Aanmelden met GitHub-koppeling](../media/how-to-configure-student-usage/signin-github.png)
+
+Ten slotte wordt er gevraagd om een Microsoft-account te maken dat is gekoppeld aan het GitHub-account. Dit gebeurt automatisch wanneer de student **volgende**selecteert.  De student wordt vervolgens onmiddellijk aangemeld en is verbonden met het leslokaal Lab.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

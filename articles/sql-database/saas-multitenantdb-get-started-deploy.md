@@ -1,5 +1,5 @@
 ---
-title: Implementeer een Shard multi tenant-data base SaaS-app die gebruikmaakt van Azure SQL Database | Microsoft Docs
+title: 'Implementeer een Shard multi tenant-data base SaaS-app die gebruikmaakt van Azure SQL Database '
 description: Implementeer en verken de Shard Wingtip tickets SaaS multi tenant-database toepassing, die SaaS-patronen demonstreert met behulp van Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
-ms.openlocfilehash: 2ddb1fe40507da5caa218f73284a1095035df951
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: aa61c9af2e8fbfbe1caeaffb6231afe5b8be6f3c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570377"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692044"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Een Shard multi tenant-toepassing implementeren en verkennen
 
@@ -57,8 +57,8 @@ U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt vold
 ### <a name="plan-the-names"></a>De namen plannen
 
 In de stappen van deze sectie geeft u een *gebruikers* waarde op die wordt gebruikt om ervoor te zorgen dat resource namen wereld wijd uniek zijn, en een naam voor de *resource groep* die alle resources bevat die zijn gemaakt door een implementatie van de app. Voor een persoon met de naam *Anne Finley*raden we het volgende aan:
-- *Gebruiker:* **AF1** *(Hun initialen, plus een cijfer.   Gebruik een andere waarde (bijvoorbeeld AF2) als u de app een tweede keer implementeert.)*
-- *Resource groep:* **Wingtip-MT-AF1** *(Wingtip-MT geeft aan dat dit de multi tenant-app Shard is. Het toevoegen van de gebruikers naam AF1 correleert de naam van de resource groep met de namen van de resources die deze bevat.)*
+- *Gebruiker:* **AF1**  *(hun initialen, plus een cijfer. Gebruik een andere waarde (bijvoorbeeld AF2) als u de app een tweede keer implementeert.)*
+- *Resource groep:* **Wingtip-MT-AF1** *(Wingtip-MT geeft aan dat dit de Shard-app voor meerdere tenants is. het toevoegen van de gebruikers naam AF1 correleert de naam van de resource groep met de namen van de resources die deze bevat.)*
 
 Kies uw namen nu en noteer deze. 
 
@@ -103,13 +103,13 @@ Wanneer de toepassing wordt geïmplementeerd, downloadt u de bron code-en beheer
 6. Klik op **OK**.
 7. Pak de bestanden uit.
 
-De scripts bevinden zich in de *.. WingtipTicketsSaaS-MultiTenantDb-master\\learning modules\\ -map. \\*
+De scripts bevinden zich in de map *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\* .
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>Het configuratie bestand voor deze implementatie bijwerken
 
 Voordat u scripts uitvoert, stelt u de *resource groep* en *gebruikers* waarden in **userconfig. psm1**in. Stel deze variabelen in op dezelfde waarden die u tijdens de implementatie hebt ingesteld.
 
-1. Openen... Learning modules\\*userconfig. psm1* in de *Power shell ISE.* \\
+1. Open...\\learning modules\\*userconfig. psm1* in de *Power shell ISE*.
 2. *ResourceGroupName* en *naam* bijwerken met de specifieke waarden voor uw implementatie (alleen op regels 10 en 11).
 3. Sla de wijzigingen op.
 
@@ -124,19 +124,19 @@ Elke locatie haalt een gepersonaliseerde web-app op om hun evenementen weer te g
 Op de webpagina centrale **gebeurtenissen hub** vindt u een lijst met koppelingen naar de tenants in uw specifieke implementatie. Gebruik de volgende stappen om de webpagina van de **evenementen hub** en een afzonderlijke web-app te ervaren:
 
 1. Open de **evenementen hub** in uw webbrowser:
-   - http://events.wingtip-mt.&lt ; User&gt;. trafficmanager.net &nbsp; (Vervang *&lt; degebruikerdoordegebruikerswaardevanuwimplementatie.)&gt;*
+   - http://events.wingtip-mt.&lt; gebruiker&gt;. trafficmanager.net &nbsp; *(vervang &lt;gebruikers&gt; door de gebruikers waarde van uw implementatie.)*
 
      ![events hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Klik in de **Events Hub** op **Fabrikam Jazz Club**.
 
-   ![Events](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Gebeurtenissen](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 De Wingtip-app maakt gebruik van [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)om de distributie van binnenkomende aanvragen te beheren. De pagina gebeurtenissen voor elke Tenant bevat de Tenant naam in de URL. Elke URL bevat ook uw specifieke gebruikers waarde. Elke URL voldoet aan de weer gegeven indeling met behulp van de volgende stappen:
 
-- http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; gebruiker&gt;. trafficmanager.net/*fabrikamjazzclub*
 
 1. De app Events parseert de Tenant naam van de URL. De naam van de Tenant is *fabrikamjazzclub* in de voor gaande voorbeeld-URL.
 2. De app hasht vervolgens de Tenant naam om een sleutel te maken voor toegang tot een catalogus met behulp van [Shard-toewijzings beheer](sql-database-elastic-scale-shard-map-management.md).
@@ -154,7 +154,7 @@ In een productie omgeving maakt u doorgaans een CNAME DNS-record om het [Interne
 
 Nu de app is geïmplementeerd, kunt u het beste aan de slag. Het Power shell *-script demo-LoadGenerator* start een werk belasting die wordt uitgevoerd voor elke Tenant. De werkelijke belasting van veel SaaS-apps is doorgaans sporadisch en onvoorspelbaar. Voor het simuleren van dit type belasting, produceert de generator een taak die wordt gedistribueerd over alle tenants. De belasting bevat wille keurige bursts op elke Tenant die wordt uitgevoerd met wille keurige intervallen. Het duurt enkele minuten voordat het laad patroon wordt weer geven. u kunt de generator het beste gedurende ten minste drie of vier minuten uitvoeren voordat u de belasting bewaken.
 
-1. Open in de *Power shell-ISE*de... Het script\\hulpprogramma's\\voor learning modules*demo-LoadGenerator. ps1.* \\
+1. Open in de *Power shell-ISE*de modules...\\learning modules\\Utilities\\script van *demo-LoadGenerator. ps1* .
 2. Druk op **F5** om het script uit te voeren en de load-generator te starten (gebruik voorlopig de standaardwaarden van het script).
 
 Het script *demo-LoadGenerator. ps1* opent een Power shell-sessie waarin de load generator wordt uitgevoerd. De load generator wordt in deze sessie uitgevoerd als een voorgrond taak waarmee taken voor het genereren van de achtergrond worden gestart, één voor elke Tenant.
@@ -169,7 +169,7 @@ Mogelijk wilt u de load Generator-sessie opnieuw starten om andere parameter waa
 
 De eerste implementatie omvat drie voor beelden van tenants in de *Tenants1* -data base. We gaan een andere Tenant maken en de gevolgen ervan voor de geïmplementeerde toepassing naleven. In deze stap drukt u op één toets om een nieuwe Tenant te maken:
 
-1. Openen... \\Learningmodules Provisioning and Catalog demo-ProvisionTenants. ps1 in de *Power shell ISE.* \\\\
+1. Open...\\learning modules\\inrichten en Catalog\\*demo-ProvisionTenants. ps1* in de *Power shell ISE*.
 2. Druk op **F5** (niet **F8**) om het script uit te voeren (behoud de standaard waarden voor nu).
 
    > [!NOTE]
@@ -192,7 +192,7 @@ U kunt ervoor kiezen om klanten met een gratis proef versie of economie te plaat
 
 Daarna inrichten we een andere Tenant, deze tijd in een eigen Data Base:
 
-1. In... \\LearningmodulesProvisioning and Catalog demo-ProvisionTenants. ps1, Modify $TenantName to Salix salsa, $VenueType to dans en $scenario to\\ \\ **2**.
+1. In...\\learning modules\\inrichten en Catalog\\*demo-ProvisionTenants. ps1*, Wijzig *$TenantName* in **Salix Salsa**, *$VenueType* naar **dans** en *$scenario* naar **2**.
 
 2. Druk op **F5** om het script opnieuw uit te voeren.
     - Op **F5** drukken wordt de nieuwe Tenant in een afzonderlijke data base ingericht. De data base en de Tenant zijn geregistreerd in de catalogus. Vervolgens wordt de browser geopend op de pagina gebeurtenissen van de Tenant.
@@ -211,7 +211,7 @@ We kijken nu naar een aantal van de resources die zijn geïmplementeerd:
 
    ![resourcegroep](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Klik op **catalogus-&lt;MT&gt; -gebruikers** server. De catalogus server bevat twee data bases met de naam *tenantcatalog* en *basetenantdb*. De *basetenantdb* -data base is een lege sjabloon database. Het wordt gekopieerd om een nieuwe Tenant database te maken, ongeacht of deze wordt gebruikt voor veel tenants of slechts één Tenant.
+2. Klik op **Catalog-mt&lt;gebruiker&gt;** server. De catalogus server bevat twee data bases met de naam *tenantcatalog* en *basetenantdb*. De *basetenantdb* -data base is een lege sjabloon database. Het wordt gekopieerd om een nieuwe Tenant database te maken, ongeacht of deze wordt gebruikt voor veel tenants of slechts één Tenant.
 
    ![catalogusserver](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -225,13 +225,13 @@ We kijken nu naar een aantal van de resources die zijn geïmplementeerd:
 
 Als de load-Generator enkele minuten actief is, is er voldoende telemetrie beschikbaar om te kijken naar de database bewakings functies die zijn ingebouwd in de Azure Portal.
 
-1. Blader naar de **tenants1-MT&lt;-&gt; gebruikers** server en klik op **tenants1** om het resource gebruik weer te geven voor de data base die vier tenants bevat. Elke Tenant is onderhevig aan een zware belasting van de load Generator:
+1. Blader naar de **tenants1-mt&lt;gebruiker&gt;-** server en klik op **tenants1** om het resource gebruik weer te geven voor de data base die vier tenants bevat. Elke Tenant is onderhevig aan een zware belasting van de load Generator:
 
    ![tenants1 bewaken](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
    Het DTU-gebruiks diagram illustreert hoe een Data Base met meerdere tenants een onvoorspelbare werk belasting kan ondersteunen in veel tenants. In dit geval wordt de load-generator een sporadische belasting van ongeveer 30 Dtu's toegepast op elke Tenant. Deze belasting is gelijk aan 60% gebruik van een 50 DTU-data base. Pieken die 60% overschrijden, zijn het resultaat van de belasting die op hetzelfde moment wordt toegepast op meer dan één Tenant.
 
-2. Blader naar de **tenants1-MT&lt;-&gt; gebruikers** server en klik op de **salixsalsa** -data base. U kunt het resource gebruik in deze data base zien die slechts één Tenant bevat.
+2. Blader naar de **tenants1-mt&lt;gebruiker&gt;-** server en klik op de **salixsalsa** -data base. U kunt het resource gebruik in deze data base zien die slechts één Tenant bevat.
 
    ![salixsalsa-data base](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 
@@ -243,7 +243,7 @@ Soms vereist een multi tenant-data base meer bronnen voor goede prestaties dan e
 
 De werk belastingen die door het load Generator-script worden gegenereerd, zijn alleen bedoeld ter illustratie.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie [ontwerp patronen voor SaaS-toepassingen met meerdere](saas-tenancy-app-design-patterns.md)tenants voor meer informatie over SaaS-toepassingen met meerdere tenants.
 

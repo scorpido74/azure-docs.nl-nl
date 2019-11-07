@@ -1,19 +1,19 @@
 ---
-title: Een HPC-cache van Azure koppelen (preview-versie)
+title: Een HPC-cache van Azure koppelen
 description: Clients verbinden met een Azure HPC cache-service
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254565"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582216"
 ---
-# <a name="mount-the-azure-hpc-cache-preview"></a>De Azure HPC-cache koppelen (preview)
+# <a name="mount-the-azure-hpc-cache"></a>De Azure HPC-cache koppelen
 
 Nadat de cache is gemaakt, hebben NFS-clients toegang tot de server met een eenvoudige koppelings opdracht.
 
@@ -61,7 +61,7 @@ Voor een robuuste client koppeling geeft u deze instellingen en argumenten door 
 ``hard`` | Zachte koppelingen naar de Azure HPC-cache zijn gekoppeld aan toepassings fouten en mogelijke gegevens verlies. 
 ``proto=netid`` | Met deze optie wordt de juiste verwerking van NFS-netwerk fouten ondersteund.
 ``mountproto=netid`` | Deze optie biedt ondersteuning voor de juiste verwerking van netwerk fouten voor koppelings bewerkingen.
-``retry=n`` | Stel ``retry=30`` in om fouten bij tijdelijke koppeling te voor komen. (Een andere waarde wordt aanbevolen in voorgrond koppelingen.)
+``retry=n`` | Stel ``retry=30`` in om storingen van de tijdelijke koppeling te voor komen. (Een andere waarde wordt aanbevolen in voorgrond koppelingen.)
 
 ## <a name="next-steps"></a>Volgende stappen
 

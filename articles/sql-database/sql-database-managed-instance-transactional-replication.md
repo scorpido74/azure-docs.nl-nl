@@ -1,5 +1,5 @@
 ---
-title: Transactionele replicatie met Azure SQL Database | Microsoft Docs "
+title: Transactionele replicatie met Azure SQL Database "
 description: Meer informatie over het gebruik van SQL Server transactionele replicatie met enkelvoudige, gepoolde en instantie-data bases in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 016b4f2ee191443cf608af18d1be6a94b6d53a39
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879062"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687826"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transactionele replicatie met enkelvoudige, gepoolde en instantie-data bases in Azure SQL Database
 
@@ -49,7 +49,7 @@ De **Distributor** is een instantie of server die wijzigingen in de artikelen ve
 
 De **abonnee** is een exemplaar of server die de wijzigingen ontvangt die zijn aangebracht op de Publisher. Abonnees kunnen bestaan uit één, gegroepeerde en instantie-data base in Azure SQL Database-of SQL Server-data bases. Een abonnee op een enkele of gegroepeerde Data Base moet als push-abonnee worden geconfigureerd. 
 
-| Role | Enkele en gepoolde data bases | Exemplaar databases |
+| Rol | Enkele en gepoolde data bases | Exemplaar databases |
 | :----| :------------- | :--------------- |
 | **Publisher** | Nee | Ja | 
 | **Verdeler** | Nee | Ja|
@@ -74,7 +74,7 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Het configureren van een replicatie met een oudere versie kan leiden tot fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQ_REPL40532 ( \<kan de server naam niet openen > aangevraagd door de aanmelding. De aanmelding is mislukt.)
+  > - Het configureren van een replicatie met een oudere versie kan leiden tot fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQ_REPL40532 (kan de naam van de server niet openen \<> aangevraagd door de aanmelding. De aanmelding is mislukt.)
   > - Als u alle functies van Azure SQL Database wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.
   
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Ondersteunings matrix voor instantie databases en on-premises systemen
@@ -103,7 +103,7 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Gegevens synchronisatie met transactionele replicatie vergelijken
 
-| | Gegevenssynchronisatie | Transactionele replicatie |
+| | Gegevens synchroniseren | Transactionele replicatie |
 |---|---|---|
 | Voordelen | -Actief-actief ondersteuning<br/>-Bi-richting tussen on-premises en Azure SQL Database | -Laagste latentie<br/>-Transactionele consistentie<br/>-Bestaande topologie na migratie opnieuw gebruiken |
 | Nadelen | -5 minuten of meer latentie<br/>-Geen transactionele consistentie<br/>-Hogere gevolgen voor de prestaties | -Kan niet publiceren vanuit Azure SQL Database afzonderlijke data base of gegroepeerde Data Base<br/>-Hoge onderhouds kosten |
@@ -142,7 +142,7 @@ In deze configuratie is een Azure SQL Database (één, gegroepeerde en exemplaar
 
 1. [Replicatie tussen twee beheerde instanties configureren](replication-with-sql-database-managed-instance.md). 
 1. [Maak een publicatie](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-1. [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) met behulp van de naam van de Azure SQL database-server `N'azuresqldbdns.database.windows.net` als abonnee (bijvoorbeeld en de Azure SQL database naam als de doel database (bijvoorbeeld **AdventureWorks**). )
+1. [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) met behulp van de naam van de Azure SQL database-server als abonnee (bijvoorbeeld `N'azuresqldbdns.database.windows.net` en de Azure SQL database naam als de doel database (bijvoorbeeld **AdventureWorks**). )
 1. Meer informatie over de [beperkingen van transactionele replicatie voor een beheerd exemplaar](sql-database-managed-instance-transact-sql-information.md#replication)
 
 

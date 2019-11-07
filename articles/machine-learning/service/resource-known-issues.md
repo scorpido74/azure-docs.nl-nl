@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476073"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619771"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -88,9 +88,19 @@ Binaire classificatie grafieken (Precision-intrekken, ROC, winst curve enz.) die
 
 ## <a name="datasets-and-data-preparation"></a>Data sets en gegevens voorbereiding
 
+Dit zijn bekende problemen voor Azure Machine Learning gegevens sets.
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Kan het Parquet-bestand niet lezen uit HTTP of ADLS gen 2
 
-Er is een bekend probleem in de DataPrep SDK-versie 1.1.25 die een fout veroorzaakt bij het maken van een gegevensset door Parquet-bestanden te lezen uit HTTP of ADLS gen 2. Als u dit probleem wilt verhelpen, voert u een upgrade uit naar een versie die hoger is dan 1.1.26 of downgradet u naar een lagere versie dan 1.1.24.
+Er is een bekend probleem in de DataPrep SDK-versie 1.1.25 die een fout veroorzaakt bij het maken van een gegevensset door Parquet-bestanden te lezen uit HTTP of ADLS gen 2. Het zal mislukken met `Cannot seek once reading started.`. Als u dit probleem wilt oplossen, moet u `azureml-dataprep` bijwerken naar een versie die hoger is dan 1.1.26 of een lagere versie dan 1.1.24.
+
+```python
+pip install --upgrade azureml-dataprep
+```
+
+### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>TypeError: Mount () heeft een onverwacht trefwoord argument invocation_id geretourneerd
+
+Deze fout treedt op als er een incompatibele versie is tussen `azureml-core` en `azureml-dataprep`. Als u deze fout ziet, moet u `azureml-dataprep`-pakket upgraden naar een nieuwere versie (groter dan of gelijk aan 1.1.29).
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -146,15 +156,8 @@ Als u met deze stappen het probleem niet kunt oplossen, probeert u het cluster o
 Als er een `FailToSendFeather` fout optreedt bij het lezen van gegevens op Azure Databricks cluster, raadpleegt u de volgende oplossingen:
 
 * Upgrade `azureml-sdk[automl]` pakket naar de nieuwste versie.
-* Voeg `azure-dataprep` versie 1.1.8 of hoger toe.
+* Voeg `azureml-dataprep` versie 1.1.8 of hoger toe.
 * Voeg `pyarrow` versie 0,11 of hoger toe.
-
-
-## <a name="datasets"></a>Gegevenssets
-
-Dit zijn bekende problemen voor Azure Machine Learning gegevens sets.
-
-+ **Kan geen Parquet-bestanden lezen op Azure data Lake Storage Gen2** Het lezen van Parquet-bestanden vanuit Azure Data Lake Storage Gen2 gegevens opslag is niet mogelijk als u `azureml-dataprep==1.1.25` hebt geïnstalleerd. Het zal mislukken met `Cannot seek once reading started.`. Als u deze fout ziet, kunt u `azureml-dataprep<=1.1.24` installeren of `azureml-dataprep>=1.1.26`installeren.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -175,7 +178,7 @@ Sommige van deze acties worden weer gegeven in het gebied __activiteiten__ van u
 
 ## <a name="resource-quotas"></a>Resourcequota
 
-Meer informatie over de [resource quota](how-to-manage-quotas.md) die u kunt tegen komen bij het werken met Azure machine learning.
+Meer informatie over de [resourcequota](how-to-manage-quotas.md) optreden tijdens het werken met Azure Machine Learning.
 
 ## <a name="authentication-errors"></a>Verificatiefouten
 
@@ -262,3 +265,23 @@ Deze uitzonde ring moet afkomstig zijn uit uw trainings scripts. U kunt de logbo
 
 ### <a name="horovod-is-shutdown"></a>Horovod is afgesloten
 In de meeste gevallen betekent deze uitzonde ring dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor horovod is afgesloten. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben de naam `70_driver_logs`. In het geval van gedistribueerde trainingen worden de namen van de logboeken in het achtervoegsel opgenomen met `_rank` zodat de Logboeken eenvoudig kunnen worden onderscheiden. Als u de exacte fout wilt vinden die horovod afsluiten heeft veroorzaakt, gaat u naar alle logboek bestanden en zoekt u naar `Traceback` aan het einde van de driver_log-bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 
+
+## <a name="labeling-projects-issues"></a>Problemen met projecten labelen
+
+Bekende problemen met het labelen van projecten.
+
+### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>Alleen gegevens sets die zijn gemaakt op BLOB-gegevens opslag kunnen worden gebruikt
+
+Dit is een bekende beperking van de huidige release. 
+
+### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>Nadat het project is gemaakt, wordt het ' initialiseren ' gedurende een lange periode weer gegeven
+
+Vernieuw de pagina hand matig. De initialisatie moet ongeveer 20 data Points per seconde door lopen. Het ontbreken van automatisch vernieuwen is een bekend probleem. 
+
+### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>Het begrenzingsvak kan niet naar de rechter rand van de afbeelding worden getekend 
+
+Wijzig de grootte van het browser venster. Er wordt onderzocht om de oorzaak van dit gedrag te bepalen. 
+
+### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>Bij het controleren van afbeeldingen worden nieuwe gelabelde afbeeldingen niet weer gegeven
+
+Als u alle gelabelde afbeeldingen wilt laden, kiest u de **eerste** knop. Met de **eerste** knop gaat u terug naar de voor kant van de lijst, maar worden alle gelabelde gegevens geladen.

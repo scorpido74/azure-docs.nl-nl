@@ -1,5 +1,5 @@
 ---
-title: Power shell voor DNS-alias Azure SQL | Microsoft Docs
+title: Power shell voor DNS-alias Azure SQL
 description: Met Power shell-cmdlets zoals New-AzSqlServerDNSAlias kunt u nieuwe client verbindingen omleiden naar een andere Azure SQL Database Server, zonder dat u een client configuratie hoeft aan te gaan.
 keywords: DNS SQL-data base
 services: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: 47afd905b1fa28ce65163203b9d43781f434233d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ebbca309b7f6acd071c7075e63e670a8efa49f4e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058550"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685323"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Power shell voor het Azure SQL Database van DNS-alias
 
@@ -26,25 +26,25 @@ Dit artikel bevat een Power shell-script dat laat zien hoe u een DNS-alias voor 
 
 De cmdlets die in het code voorbeeld worden gebruikt, zijn de volgende:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Hiermee maakt u een nieuwe DNS-alias in het Azure SQL Database-service systeem. De alias verwijst naar Azure SQL Database Server 1.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Alle DNS-aliassen ophalen en weer geven die zijn toegewezen aan SQL DB server 1.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Hiermee wijzigt u de naam van de server waarop de alias is geconfigureerd om te verwijzen naar, van Server 1 naar SQL DB Server 2.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de DNS-alias van SQL DB-Server 2, met behulp van de naam van de alias.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): maakt een nieuwe DNS-alias in het Azure SQL database-service systeem. De alias verwijst naar Azure SQL Database Server 1.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): alle DNS-aliassen ophalen en weer geven die zijn toegewezen aan SQL DB-server 1.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): wijzigt de server naam waarmee de alias is geconfigureerd, van Server 1 naar SQL DB Server 2.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Verwijder de DNS-alias uit SQL DB-Server 2, met behulp van de naam van de alias.
 
 ## <a name="dns-alias-in-connection-string"></a>DNS-alias in connection string
 
 Een client zoals SQL Server Management Studio (SSMS) kan de DNS-alias naam opgeven in plaats van de werkelijke server naam om verbinding te maken met een bepaalde Azure SQL Database Server. In het volgende voor beeld van een server teken reeks vervangt de alias *elke-unieke alias naam* het knoop punt met de eerste punt als scheidings teken in de reeks van de vier knooppunt server:
 
-- Voor beeld van server `any-unique-alias-name.database.windows.net`teken reeks:.
+- Voor beeld van een server teken reeks: `any-unique-alias-name.database.windows.net`.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u het Power shell-script wilt uitvoeren dat in dit artikel wordt vermeld, gelden de volgende vereisten:
 
-- Een Azure-abonnement en-account. Klik voor een gratis proef versie [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/]op.
+- Een Azure-abonnement en-account. Klik op [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/]voor een gratis proef versie.
 - Azure PowerShell-module met de cmdlet **New-AzSqlServerDNSAlias**.
   - Zie [Azure PowerShell-module installeren][install-Az-ps-84p] om de module te installeren of te upgraden.
-  - Voer `Get-Module -ListAvailable Az;` in Power\_shell ISE. exe uit om de versie te vinden.
+  - Voer `Get-Module -ListAvailable Az;` in Power shell\_ISE. exe uit om de versie te vinden.
 - Twee Azure SQL Database-servers.
 
 ## <a name="code-example"></a>Voorbeeld van code

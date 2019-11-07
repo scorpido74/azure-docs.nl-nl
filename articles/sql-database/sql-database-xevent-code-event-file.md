@@ -1,5 +1,5 @@
 ---
-title: XEvent-gebeurtenis bestands code voor SQL Database | Microsoft Docs
+title: XEvent-gebeurtenis bestands code voor SQL Database
 description: Biedt Power shell en Transact-SQL voor een code voorbeeld van twee fasen die het gebeurtenis bestand doel in een uitgebreide gebeurtenis op Azure SQL Database demonstreren. Azure Storage is een vereist onderdeel van dit scenario.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
-ms.openlocfilehash: f0994f92444da338b18447eb1b248c74df9aa2d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ea5c90433a4d2928e5fb88df149631c80df9dacf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566117"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686834"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in SQL Database
 
@@ -461,11 +461,11 @@ GO
 ```
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Uitvoer
 
-Wanneer het Transact-SQL-script is voltooid, klikt u op een cel onder de kolomkop **event_data_XML** . Er wordt één  **\<gebeurtenis >** element weer gegeven met daarin één update-instructie.
+Wanneer het Transact-SQL-script is voltooid, klikt u op een cel onder de kolomkop **event_data_XML** . Er wordt een **\<gebeurtenis >** element weer gegeven met daarin één update-instructie.
 
-Hier volgt één  **\<gebeurtenis >** element dat tijdens het testen is gegenereerd:
+Hier volgt een **\<gebeurtenis >** element dat tijdens het testen is gegenereerd:
 
 
 ```xml
@@ -510,7 +510,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 Het voorafgaande Transact-SQL-script gebruikt de volgende systeem functie om de event_file te lezen:
 
-* [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+* [sys. fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
 
 Een uitleg van geavanceerde opties voor het weer geven van gegevens uit uitgebreide gebeurtenissen vindt u op:
 
@@ -534,8 +534,8 @@ Zie voor meer informatie over accounts en containers in de Azure Storage-service
 * [Blob-opslag gebruiken met .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [Naamgeving van en verwijzen naar containers, blobs en metagegevens](https://msdn.microsoft.com/library/azure/dd135715.aspx)
 * [Werken met de basis container](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-* [Les 1: Een opgeslagen toegangs beleid en een gedeelde toegangs handtekening maken voor een Azure-container](https://msdn.microsoft.com/library/dn466430.aspx)
-  * [Les 2: Een SQL Server referentie maken met behulp van een hand tekening voor gedeelde toegang](https://msdn.microsoft.com/library/dn466435.aspx)
+* [Les 1: een opgeslagen toegangs beleid en een gedeelde toegangs handtekening maken voor een Azure-container](https://msdn.microsoft.com/library/dn466430.aspx)
+  * [Les 2: een SQL Server referentie maken met behulp van een hand tekening voor gedeelde toegang](https://msdn.microsoft.com/library/dn466435.aspx)
 * [Uitgebreide gebeurtenissen voor Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
 
 <!--

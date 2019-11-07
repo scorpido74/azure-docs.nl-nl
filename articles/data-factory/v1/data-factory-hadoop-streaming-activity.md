@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met behulp van Hadoop streaming-activiteit-Azure | Microsoft Docs
+title: Gegevens transformeren met behulp van Hadoop streaming-activiteit-Azure
 description: Meer informatie over hoe u de activiteit Hadoop streaming kunt gebruiken in een Azure data factory om gegevens te transformeren door Hadoop-streaming-Program ma's uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139551"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667509"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hadoop streaming-activiteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -41,7 +41,7 @@ U kunt de activiteit HDInsightStreamingActivity gebruiken om een Hadoop-streamin
 Met de activiteit HDInsight streaming in een Data Factory [pijp lijn](data-factory-create-pipelines.md) worden Hadoop-streaming-Program ma's uitgevoerd op [uw eigen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) of [op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) gebaseerd HDInsight-cluster op basis van Windows/Linux. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) , dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.
 
 > [!NOTE] 
-> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de volgende zelf studie uit: [Bouw uw eerste gegevens pijplijn voordat u](data-factory-build-your-first-pipeline.md) dit artikel leest. 
+> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
 
 ## <a name="json-sample"></a>JSON-voor beeld
 Het HDInsight-cluster wordt automatisch gevuld met voorbeeld programma's (WC. exe en Cat. exe) en gegevens (DaVinci. txt). De naam van de container die wordt gebruikt door het HDInsight-cluster, is standaard de naam van het cluster zelf. Als uw cluster naam bijvoorbeeld myhdicluster is, zou de naam van de gekoppelde BLOB-container myhdicluster zijn. 
@@ -96,17 +96,17 @@ Houd rekening met de volgende punten:
 
 1. Stel de **linkedServiceName** in op de naam van de gekoppelde service die verwijst naar uw HDInsight-cluster waarop de streaming MapReduce-taak wordt uitgevoerd.
 2. Stel het type van de activiteit in op **HDInsightStreaming**.
-3. Geef voor de toewijzings eigenschap de naam van het uitvoer bare toewijzings programma op. In het voor beeld is Cat. exe het uitvoer bare toewijzings programma.
-4. Voor de eigenschap reducer geeft u de naam van het uitvoer bare bestand voor verkleining op. In het voor beeld is wc. exe het uitvoer bare bestand van de reducer.
-5. Geef voor de eigenschap **invoer** type het invoer bestand (inclusief de locatie) voor de Mapper op. In het voor beeld `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`:: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt is de blob.
+3. Geef voor de **toewijzings** eigenschap de naam van het uitvoer bare toewijzings programma op. In het voor beeld is Cat. exe het uitvoer bare toewijzings programma.
+4. Voor de eigenschap **reducer** geeft u de naam van het uitvoer bare bestand voor verkleining op. In het voor beeld is wc. exe het uitvoer bare bestand van de reducer.
+5. Geef voor de eigenschap **invoer** type het invoer bestand (inclusief de locatie) voor de Mapper op. In het voor beeld: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample is de BLOB-container, example/data/Gutenberg is de map en DaVinci. txt de blob.
 6. Geef voor de eigenschap **uitvoer** type het uitvoer bestand op (met inbegrip van de locatie) voor de verkorter. De uitvoer van de Hadoop streaming-taak wordt geschreven naar de locatie die is opgegeven voor deze eigenschap.
 7. Geef in de sectie **filepath** de paden op voor de uitvoer bare bestanden van de Mapper en de uitvoerder. In het voor beeld: ' adfsample/example/apps/WC. exe ', adfsample is de BLOB-container, voor beeld/apps is de map en WC. exe is het uitvoer bare bestand.
 8. Geef voor de eigenschap **fileLinkedService** de Azure Storage gekoppelde service op die staat voor de Azure-opslag met de bestanden die zijn opgegeven in de sectie filepath.
-9. Geef voor de eigenschap arguments de argumenten voor de streaming-taak op.
+9. Geef voor de eigenschap **Arguments** de argumenten voor de streaming-taak op.
 10. De eigenschap **getDebugInfo** is een optioneel element. Als deze is ingesteld op fout, worden de Logboeken alleen gedownload bij fout. Als deze eigenschap is ingesteld op always, worden logboeken altijd gedownload, ongeacht de uitvoerings status.
 
 > [!NOTE]
-> Zoals in het voor beeld wordt weer gegeven, geeft u een uitvoer gegevensset op voor de activiteit Hadoop streaming voor de eigenschap outputs. Deze gegevensset is slechts een dummy-gegevensset die is vereist om de pijplijn planning te verzorgen. U hoeft geen invoer gegevensset op te geven voor de activiteit voor de eigenschap **inputs** .  
+> Zoals in het voor beeld wordt weer gegeven, geeft u een uitvoer gegevensset op voor de activiteit Hadoop streaming voor de eigenschap **outputs** . Deze gegevensset is slechts een dummy-gegevensset die is vereist om de pijplijn planning te verzorgen. U hoeft geen invoer gegevensset op te geven voor de activiteit voor de eigenschap **inputs** .  
 > 
 > 
 

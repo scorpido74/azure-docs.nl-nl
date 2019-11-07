@@ -1,21 +1,21 @@
 ---
-title: Een HPC-cache van Azure maken (preview)
+title: Een HPC-cache van Azure maken
 description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255266"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582183"
 ---
 # <a name="plan-the-aggregated-namespace"></a>De geaggregeerde naamruimte plannen
 
-Met de Azure HPC-cache (preview) kunnen clients toegang krijgen tot diverse opslag systemen via een virtuele naam ruimte die de details van het back-end-opslag systeem verbergt.
+Met de HPC-cache van Azure kunnen clients toegang krijgen tot diverse opslag systemen via een virtuele naam ruimte die de details van het back-end-opslag systeem verbergt.
 
 Wanneer u een opslag doel toevoegt, stelt u het op de client gerichte bestandspad in. Client computers koppelen dit bestandspad en kunnen aanvragen voor het lezen van bestanden naar de cache maken in plaats van het opslag systeem rechtstreeks te koppelen.
 
@@ -57,7 +57,7 @@ Omdat de NFS-bron paden submappen van dezelfde export zijn, moet u meerdere naam
 | *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-adres of hostnaam* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde naam ruimte bestands paden ``/source``, ``/templates/sku798`` en ``/templates/sku980``.
+Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde naam ruimte bestands paden ``/source``, ``/templates/sku798``en ``/templates/sku980``.
 
 ## <a name="next-steps"></a>Volgende stappen
 

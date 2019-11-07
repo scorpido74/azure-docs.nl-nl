@@ -1,5 +1,5 @@
 ---
-title: Afzonderlijke en gepoolde data bases beheren na de migratie-Azure SQL Database | Microsoft Docs
+title: Afzonderlijke en gepoolde data bases beheren na migratie-Azure SQL Database
 description: Meer informatie over het beheren van uw data base na migratie naar Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028251"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689538"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nieuwe DBA in de Cloud: het beheren van uw afzonderlijke en gegroepeerde Data bases in Azure SQL Database
 
@@ -30,7 +30,7 @@ In dit artikel worden enkele van de belangrijkste kenmerken van Azure SQL Databa
 
 - Data base bewaken met behulp van de Azure Portal
 - Bedrijfscontinuïteit en herstel na noodgeval (BCDR)
-- Beveiliging en compliance
+- Veiligheid en naleving
 - Intelligente database bewaking en onderhoud
 - Gegevensverplaatsing
 
@@ -85,9 +85,9 @@ Als een groep met automatische failover niet is geconfigureerd, moet uw toepassi
 
 In samen vatting is de traditionele on-premises SQL Server-installatie vereist dat u uw Beschik baarheid actief beheert door gebruik te maken van functies zoals Failoverclustering, database spiegeling, transactie replicatie of het registreren van back-ups en het onderhouden en beheren van reserve kopieën om ervoor te zorgen Bedrijfs continuïteit. Met SQL Database beheert het platform deze voor u, zodat u zich kunt concentreren op het ontwikkelen en optimaliseren van uw database toepassing en niet zo veel moeite hoeft te doen met nood beheer. U kunt plannen voor back-ups en herstel na nood gevallen configureren en met slechts enkele klikken op de Azure Portal (of enkele opdrachten die gebruikmaken van de Power shell-Api's).
 
-Zie voor meer informatie over herstel na nood gevallen: [Herstel na nood gevallen voor Azure SQL data base 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
+Zie voor meer informatie over herstel na nood gevallen: [Azure SQL DB nood herstel 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
-## <a name="security-and-compliance"></a>Beveiliging en compliance
+## <a name="security-and-compliance"></a>Veiligheid en naleving
 
 SQL Database is zeer serieus beveiligd en privacy. Beveiliging binnen SQL Database is beschikbaar op het niveau van de data base en op platform niveau en is het meest geschikt wanneer het in meerdere lagen wordt ingedeeld. Op elke laag krijgt u de controle en optimale beveiliging voor uw toepassing. De lagen zijn:
 
@@ -130,7 +130,7 @@ Er zijn meerdere technieken ter beschikking die u kunt gebruiken om de optimale 
 
 Een firewall voor komt dat toegang tot uw server vanaf een externe entiteit wordt toegestaan door alleen specifieke entiteiten toegang te geven tot uw SQL Database-Server. Standaard zijn alle verbindingen en data bases in de SQL Database-Server niet toegestaan, met uitzonde ring van verbindingen die afkomstig zijn van andere Azure-Services. Met een firewall regel kunt u toegang tot uw server alleen tot entiteiten (bijvoorbeeld een ontwikkelaars computer) die u goedkeurt, openen door het IP-adres van die computer via de firewall toe te staan. U kunt hiermee ook een bereik van IP-adressen opgeven die u toegang wilt verlenen tot de SQL Database-Server. U kunt bijvoorbeeld de IP-adressen van ontwikkel aars in uw organisatie tegelijk toevoegen door een bereik op te geven op de pagina Firewall instellingen.
 
-U kunt Firewall regels maken op server niveau of op database niveau. IP-firewall regels op server niveau kunnen worden gemaakt met behulp van de Azure Portal of met SSMS. Zie voor meer informatie over het instellen van een firewall regel op server niveau en database niveau: [IP-firewall regels maken in SQL database](sql-database-security-tutorial.md#create-firewall-rules).
+U kunt Firewall regels maken op server niveau of op database niveau. IP-firewall regels op server niveau kunnen worden gemaakt met behulp van de Azure Portal of met SSMS. Zie voor meer informatie over het instellen van een firewall regel op server-en database niveau: IP- [firewall regels maken in SQL database](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Service-eindpunten
 
@@ -138,7 +138,7 @@ Standaard is uw SQL database geconfigureerd om Azure-Services toegang tot de ser
 
 Met Service-eind punten (SE) kunt u uw kritieke Azure-resources alleen beschikbaar maken voor uw eigen particuliere virtuele netwerk in Azure. Door dit te doen, kunt u de open bare toegang tot uw resources in wezen elimineren. Het verkeer tussen uw virtuele netwerk en Azure blijft in het Azure-backbone-netwerk. Zonder SE krijgt u pakket routering met geforceerde tunneling. Met uw virtuele netwerk wordt het Internet verkeer naar uw organisatie en het verkeer van de Azure-service afgedwongen om over dezelfde route te gaan. Met Service-eind punten kunt u dit optimaliseren omdat de pakketten direct van het virtuele netwerk naar de service in het backbone-netwerk van Azure worden getransporteerd.
 
-![VNet-service-eindpunten](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
+![VNet-service-eind punten](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Gereserveerde IP-adressen
 
@@ -152,11 +152,11 @@ Poort 1433. SQL Database communiceert via deze poort. Als u verbinding wilt make
 
 #### <a name="sql-database-auditing"></a>SQL Database controle
 
-Met SQL Database kunt u controle inschakelen om database gebeurtenissen bij te houden. [SQL database controle](sql-database-auditing.md) records database gebeurtenissen en schrijft deze naar een audit logboek bestand in uw Azure Storage-account. Controle is vooral nuttig als u van plan bent om inzicht te krijgen in mogelijke beveiligings-en beleids schendingen, behoud van de naleving van de regelgeving, enzovoort. Hiermee kunt u bepaalde gebeurtenis Categorieën definiëren en configureren die u wilt controleren en op basis van dat u vooraf geconfigureerde rapporten en een dash board kunt ophalen om een overzicht te krijgen van de gebeurtenissen die in uw data base optreden. U kunt dit controle beleid Toep assen op het niveau van de data base of op het server niveau. Zie voor een hand leiding voor het inschakelen van controle voor uw server of Data Base: [Schakel SQL database controle in](sql-database-security-tutorial.md#enable-security-features).
+Met SQL Database kunt u controle inschakelen om database gebeurtenissen bij te houden. [SQL database controle](sql-database-auditing.md) records database gebeurtenissen en schrijft deze naar een audit logboek bestand in uw Azure Storage-account. Controle is vooral nuttig als u van plan bent om inzicht te krijgen in mogelijke beveiligings-en beleids schendingen, behoud van de naleving van de regelgeving, enzovoort. Hiermee kunt u bepaalde gebeurtenis Categorieën definiëren en configureren die u wilt controleren en op basis van dat u vooraf geconfigureerde rapporten en een dash board kunt ophalen om een overzicht te krijgen van de gebeurtenissen die in uw data base optreden. U kunt dit controle beleid Toep assen op het niveau van de data base of op het server niveau. Zie [SQL database controle inschakelen](sql-database-security-tutorial.md#enable-security-features)voor meer informatie over het inschakelen van controle voor uw server of Data Base.
 
 #### <a name="threat-detection"></a>Detectie van bedreigingen
 
-Met [detectie van bedreigingen](sql-database-threat-detection.md)krijgt u de mogelijkheid om te reageren op beveiligings-of beleids schendingen die worden gedetecteerd door zeer eenvoudig te controleren. U hoeft geen beveiligings expert te zijn om mogelijke dreigingen of schendingen in uw systeem op te lossen. Detectie van bedreigingen heeft ook een aantal ingebouwde mogelijkheden zoals SQL-injectie detectie. SQL-injectie is een poging om de gegevens te wijzigen of in te brengen, en een zeer veelvoorkomende manier om een database toepassing in het algemeen aan te vallen. Met detectie van bedreigingen worden meerdere sets algoritmen uitgevoerd waarmee mogelijke beveiligings problemen en SQL-injectie aanvallen worden gedetecteerd, evenals afwijkende database toegangs patronen (zoals toegang vanaf een ongebruikelijke locatie of door een onbekende principal). Beveiligings ambtenaren of andere aangewezen beheerders ontvangen een e-mail melding als er een bedreiging wordt gedetecteerd op de data base. Elke melding bevat details over de verdachte activiteit en aanbevelingen voor het verder onderzoeken en oplossen van de dreiging. Zie voor meer informatie over het inschakelen van detectie van bedreigingen: [Detectie van bedreigingen inschakelen](sql-database-security-tutorial.md#enable-security-features).
+Met [detectie van bedreigingen](sql-database-threat-detection.md)krijgt u de mogelijkheid om te reageren op beveiligings-of beleids schendingen die worden gedetecteerd door zeer eenvoudig te controleren. U hoeft geen beveiligings expert te zijn om mogelijke dreigingen of schendingen in uw systeem op te lossen. Detectie van bedreigingen heeft ook een aantal ingebouwde mogelijkheden zoals SQL-injectie detectie. SQL-injectie is een poging om de gegevens te wijzigen of in te brengen, en een zeer veelvoorkomende manier om een database toepassing in het algemeen aan te vallen. Met detectie van bedreigingen worden meerdere sets algoritmen uitgevoerd waarmee mogelijke beveiligings problemen en SQL-injectie aanvallen worden gedetecteerd, evenals afwijkende database toegangs patronen (zoals toegang vanaf een ongebruikelijke locatie of door een onbekende principal). Beveiligings ambtenaren of andere aangewezen beheerders ontvangen een e-mail melding als er een bedreiging wordt gedetecteerd op de data base. Elke melding bevat details over de verdachte activiteit en aanbevelingen voor het verder onderzoeken en oplossen van de dreiging. Zie voor meer informatie over het inschakelen van detectie van bedreigingen: [detectie van bedreigingen inschakelen](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Hoe kan ik mijn gegevens in het algemeen op SQL Database beveiligen
 
@@ -173,7 +173,7 @@ Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database
 |**Versleutelings bereik**|End-to-end|At-rest-gegevens|
 |**Database server heeft toegang tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de Data-at-rest is|
 |**Toegestane T-SQL-bewerkingen**|Gelijkheids vergelijking|Alle T-SQL-surface area is beschikbaar|
-|**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Zeer mini maal|
+|**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimale|Zeer mini maal|
 |**Granulatie van versleuteling**|Kolom niveau|Database niveau|
 ||||
 
@@ -181,7 +181,7 @@ Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database
 
 Elke toepassing heeft een bepaalde bit van gevoelige gegevens in de data base die moet worden beveiligd om voor iedereen zichtbaar te zijn. Bepaalde mede werkers in de organisatie moeten deze gegevens weer geven, maar anderen mogen deze gegevens niet weer geven. Een voor beeld is werknemers lonen. Een manager heeft toegang nodig tot de salaris informatie voor hun directe rapporten, maar de afzonderlijke team leden mogen geen toegang hebben tot de salaris gegevens van hun collega's. Een ander scenario is het maken van gegevens ontwikkelaars die interactief met gevoelige gegevens kunnen werken tijdens ontwikkelings stadia of tests kunnen doen, bijvoorbeeld burger servicenummers klanten. Deze informatie hoeft niet meer te worden blootgesteld aan de ontwikkelaar. In dergelijke gevallen moeten uw gevoelige gegevens worden gemaskeerd of helemaal niet worden weer gegeven. SQL Database biedt twee dergelijke benaderingen om te voor komen dat onbevoegde gebruikers gevoelige gegevens kunnen bekijken:
 
-[Dynamische gegevens maskering](sql-database-dynamic-data-masking-get-started.md) is een functie voor gegevens maskering waarmee u de bloot stelling van gevoelige gegevens kunt beperken door deze te maskeren voor niet-gemachtigde gebruikers op de toepassingslaag. U definieert een maskerings regel die een maskerings patroon kan maken (bijvoorbeeld om alleen de laatste vier cijfers van een nationaal ID-SSN weer te geven: XXX-XX-0000 en markeert het meren deel van de waarde als XS) en identificeert welke gebruikers moeten worden uitgesloten van de maskerings regel. De maskering gebeurt aan de vliegen en er zijn verschillende maskerings functies beschikbaar voor verschillende gegevens categorieën. Met dynamische gegevens maskering kunt u automatisch gevoelige gegevens in uw data base detecteren en er maskering op Toep assen.
+[Dynamische gegevens maskering](sql-database-dynamic-data-masking-get-started.md) is een functie voor gegevens maskering waarmee u de bloot stelling van gevoelige gegevens kunt beperken door deze te maskeren voor niet-gemachtigde gebruikers op de toepassingslaag. U definieert een maskerings regel die een maskerings patroon kan maken (bijvoorbeeld om alleen de laatste vier cijfers van een National ID SSN: XXX-XX-0000 te laten zien en het grootste deel van het te markeren) en te bepalen welke gebruikers moeten worden uitgesloten van de maskerings regel. De maskering gebeurt aan de vliegen en er zijn verschillende maskerings functies beschikbaar voor verschillende gegevens categorieën. Met dynamische gegevens maskering kunt u automatisch gevoelige gegevens in uw data base detecteren en er maskering op Toep assen.
 
 Met [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) kunt u de toegang op rijniveau beheren. Dat betekent dat bepaalde rijen in een database tabel op basis van de gebruiker die de query uitvoert (groepslid maatschap of uitvoerings context), worden verborgen. De toegangs beperking wordt uitgevoerd op de data base-laag in plaats van in een toepassingslaag om uw app-logica te vereenvoudigen. U begint met het maken van een filter predicaat, het filteren van rijen die niet worden weer gegeven en het beveiligings beleid volgende definieert wie toegang heeft tot deze rijen. Ten slotte voert de eind gebruiker hun query uit en, afhankelijk van de bevoegdheid van de gebruiker, worden deze beperkte rijen weer gegeven of kunnen ze helemaal geen toegang krijgen.
 
@@ -216,9 +216,9 @@ Het netwerk verkeer tussen uw organisatie en SQL Database wordt doorgaans gerout
 
 - [Co-locatie van Cloud Exchange](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Punt-naar-punt](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Met Express route kunt u ook Maxi maal twee keer zoveel bandbreedte limieten aanschaffen als u wilt. Het is ook mogelijk om connectiviteit tussen regio's te configureren met behulp van Express route. Zie voor een overzicht van de connectiviteits providers: [Express route-partners en peering locaties](../expressroute/expressroute-locations.md). In de volgende artikelen wordt een gedetailleerde beschrijving gegeven van Express route:
+Met Express route kunt u ook Maxi maal twee keer zoveel bandbreedte limieten aanschaffen als u wilt. Het is ook mogelijk om connectiviteit tussen regio's te configureren met behulp van Express route. Zie voor een overzicht van de connectiviteits providers van het bedrijf: [Express route-partners en peering-locaties](../expressroute/expressroute-locations.md). In de volgende artikelen wordt een gedetailleerde beschrijving gegeven van Express route:
 
 - [Inleiding op Express route](../expressroute/expressroute-introduction.md)
 - [Vereisten](../expressroute/expressroute-prerequisites.md)
@@ -294,7 +294,7 @@ Bij het oplossen van problemen is het belang rijk om te bepalen of het nu alleen
 
 Daarnaast kunt u de dynamische beheer weergaven [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) controleren om inzicht te krijgen in het CPU-, i/o-en geheugen gebruik, als u een degradatie van de algehele prestaties van uw data base ziet. Uw prestaties zijn mogelijk van invloed op uw data base geen resources. Het kan zijn dat u de berekenings grootte en/of de servicelaag moet wijzigen op basis van de groeiende en verkleinde belasting vereisten.
 
-Zie voor een uitgebreide set aanbevelingen voor het afstemmen van prestatie problemen: [Uw data base af te stemmen](sql-database-performance-guidance.md#tune-your-database).
+Zie voor een uitgebreide set aanbevelingen voor het afstemmen van prestatie problemen: [uw data base afstemmen](sql-database-performance-guidance.md#tune-your-database).
 
 ### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Hoe kan ik ervoor te zorgen dat ik de juiste servicelaag en reken grootte gebruik
 
@@ -309,7 +309,7 @@ SQL Database biedt diverse service lagen Basic, Standard en Premium. Elke servic
 
 Om ervoor te zorgen dat u zich op de juiste reken grootte bevindt, kunt u uw query-en database Resource verbruik bewaken via een van de hierboven genoemde manieren in Hoe kan ik de prestaties en het resource gebruik in SQL Database bewaken. Als u merkt dat uw query's/data bases op consistente wijze worden uitgevoerd op CPU/geheugen, enzovoort, kunt u overwegen om omhoog te schalen naar een hogere reken grootte. Op dezelfde manier kunt u, als u weet dat zelfs tijdens uw piek uren, de resources niet zo veel gebruiken. u kunt overwegen om van de huidige reken grootte omlaag te schalen.
 
-Als u een SaaS-app-patroon of een scenario voor database consolidatie hebt, kunt u overwegen een elastische pool te gebruiken voor de kosten optimalisatie. Elastische pool is een uitstekende manier om de samen voeging van data bases en kosten te optimaliseren. Zie voor meer informatie over het beheren van meerdere data bases met elastische pool: [Groepen en data bases beheren](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
+Als u een SaaS-app-patroon of een scenario voor database consolidatie hebt, kunt u overwegen een elastische pool te gebruiken voor de kosten optimalisatie. Elastische pool is een uitstekende manier om de samen voeging van data bases en kosten te optimaliseren. Zie voor meer informatie over het beheren van meerdere data bases met elastische pool: [groepen en data bases beheren](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Hoe vaak moet ik controles van de data base-integriteit uitvoeren voor mijn data base
 
@@ -319,11 +319,11 @@ SQL Database maakt gebruik van een aantal slimme technieken waarmee de IT-server
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Hoe kan ik gegevens exporteren en importeren als BACPAC-bestanden vanuit SQL Database
 
-- **Exporteren**: U kunt uw Azure-SQL database exporteren als een BACPAC-bestand van de Azure Portal
+- **Exporteren**: u kunt uw Azure-SQL database exporteren als een BACPAC-bestand van de Azure Portal
 
    ![data base exporteren](./media/sql-database-export/database-export1.png)
 
-- **Importeren**: U kunt ook gegevens importeren als een BACPAC-bestand in de-data base met behulp van de Azure Portal.
+- **Importeren**: u kunt gegevens ook importeren als een BACPAC-bestand in de-data base met behulp van de Azure Portal.
 
    ![data base importeren](./media/sql-database-import/import1.png)
 
@@ -332,7 +332,7 @@ SQL Database maakt gebruik van een aantal slimme technieken waarmee de IT-server
 U kunt dit op verschillende manieren doen:
 
 - **[Gegevens synchronisatie](sql-database-sync-data.md)** : met deze functie kunt u gegevens bi-directioneel synchroniseren tussen meerdere on-premises SQL server data bases en SQL database. Als u wilt synchroniseren met on-premises SQL Server-data bases, moet u de synchronisatie agent installeren en configureren op een lokale computer en de uitgaande TCP-poort 1433 openen.
-- **[Transactie replicatie](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** : met transactie replicatie kunt u uw gegevens van on-premises synchroniseren met Azure SQL DB, zodat de on-premises de uitgever en de Azure SQL DB-abonnee zijn. Momenteel wordt alleen deze configuratie ondersteund. Zie voor meer informatie over het migreren van uw gegevens van on-premises naar Azure SQL met minimale downtime: [Transactie replicatie gebruiken](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
+- **[Transactie replicatie](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** : met transactie replicatie kunt u uw gegevens van on-premises synchroniseren met Azure SQL DB, zodat de on-premises de uitgever en de Azure SQL DB-abonnee zijn. Momenteel wordt alleen deze configuratie ondersteund. Zie voor meer informatie over het migreren van uw gegevens van on-premises naar Azure SQL met minimale downtime: [transactie replicatie gebruiken](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Volgende stappen
 

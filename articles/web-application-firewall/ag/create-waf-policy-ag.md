@@ -7,16 +7,19 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/26/2019
 ms.author: victorh
-ms.openlocfilehash: a7622489008a8fabef8aee3ffb2ffc4f33b48296
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516667"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606490"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Een firewall beleid voor webtoepassingen voor Application Gateway maken
 
 Als u een WAF-beleid aan listeners koppelt, kunnen meerdere sites achter één WAF worden beveiligd door verschillende beleids regels. Als er bijvoorbeeld vijf sites achter uw WAF zijn, kunt u vijf afzonderlijke WAF-beleids regels (één voor elke listener) hebben om de uitsluitingen, aangepaste regels en beheerde Rules voor één site aan te passen zonder dat dit van invloed is op de andere. Als u een beleid wilt Toep assen op alle sites, kunt u het beleid alleen koppelen aan de Application Gateway, in plaats van de afzonderlijke listeners, om het globaal van toepassing te laten zijn. Beleids regels kunnen ook worden toegepast op een op een pad gebaseerde routerings regel. 
+
+   > [!NOTE]
+   > WAF-beleid per site is beschikbaar in Zuid-Centraal VS en Europa-noord. Als u toegang wilt krijgen tot de portals, gebruikt u [deze koppeling](https://aka.ms/AppgwwafWithAllFeatureFlags) totdat deze Live voor iedereen actief is.  
 
 U kunt zoveel beleids regels maken als u wilt. Als u een beleid hebt gemaakt, moet dit zijn gekoppeld aan een Application Gateway om van kracht te worden, maar dit kan worden gekoppeld aan een combi natie van toepassings gateways en listeners. 
 

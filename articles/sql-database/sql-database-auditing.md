@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Azure SQL database auditing | Microsoft Docs
+title: Aan de slag met Azure SQL database auditing
 description: Azure SQL database-controle gebruiken om database gebeurtenissen in een audit logboek bij te houden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 1171a3b6d38fe04a4213513e934be258d79a1aa0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 9a154e677a7308553bbef16837efae39006d3dae
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045193"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691191"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 

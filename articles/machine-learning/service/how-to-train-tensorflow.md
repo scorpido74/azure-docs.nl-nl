@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1ab8f881aaee9e29519e99a5cd2a0e6fdbc9846
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489421"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603963"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Bouw een tensor flow-Learning model op schaal met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Meer informatie over [uitgebreide kennis en machine learning](concept-deep-learn
 
 Voer deze code uit in een van de volgende omgevingen:
 
- - Azure Machine Learning Compute-instantie-geen down loads of installatie vereist
+ - Azure Machine Learning-notebook-VM-geen down loads of installatie vereist
 
      - Voltooi de [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken vooraf geladen met de SDK en de voor beeld-opslag plaats.
     - Zoek in de map voor beelden diepe Learning op de notebook server een volledig en uitgebreid notitie blok door naar deze map te navigeren: **How-to-use-azureml > ml-frameworks > tensor flow > deployment > Train-afstemming-Tune-Deploy-with-tensor flow** -map. 
@@ -158,6 +158,9 @@ est = TensorFlow(source_directory=script_folder,
                  compute_target=compute_target,
                  use_gpu=True)
 ```
+
+> [!TIP]
+> Ondersteuning voor **tensor flow 2,0** is toegevoegd aan de tensor flow Estimator-klasse. Zie het [blog bericht](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/) voor meer informatie.
 
 ## <a name="submit-a-run"></a>Een run verzenden
 
@@ -296,6 +299,6 @@ In dit artikel hebt u een tensor flow-model getraind en geregistreerd. Voor meer
 > [!div class="nextstepaction"]
 > [Hoe en waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md)
 * [Metrische uitvoerings gegevens tijdens de training volgen](how-to-track-experiments.md)
-* [Hyper parameters afstemmen](how-to-tune-hyperparameters.md)
+* [Afstemmen van hyperparameters](how-to-tune-hyperparameters.md)
 * [Een getraind model implementeren](how-to-deploy-and-where.md)
 * [Referentie architectuur voor gedistribueerde training van diep gaande lessen in azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

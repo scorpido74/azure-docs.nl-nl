@@ -1,5 +1,5 @@
 ---
-title: Naslag informatie voor JSON-script Azure Data Factory | Microsoft Docs
+title: Naslag informatie voor JSON-script Azure Data Factory
 description: Voorziet in JSON-schema's voor Data Factory entiteiten.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 520bce39841f1008a0e47af1089db7fdce5ccae8
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: bade2e7ac53277b2e23e8cf6847cc30940cd4819
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255318"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666818"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Naslag informatie voor JSON-script Azure Data Factory
 > [!NOTE]
@@ -45,9 +45,9 @@ De structuur op hoog niveau voor een pijplijn definitie is als volgt:
 
 In de volgende tabel worden de eigenschappen in de JSON-definitie van de pijp lijn beschreven:
 
-| Eigenschap | Beschrijving | Verplicht
+| Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-| name | Naam van de pijplijn. Geef een naam op die de actie vertegenwoordigt die de activiteit of pijp lijn heeft geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken (\_)</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', ' \\ '</li></ul> |Ja |
+| naam | Naam van de pijplijn. Geef een naam op die de actie vertegenwoordigt die de activiteit of pijp lijn heeft geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken (\_)</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\\'</li></ul> |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit of pijp lijn wordt gebruikt | Nee |
 | activities | Bevat een lijst met activiteiten. | Ja |
 | start |De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: 2014-10-14T16:32:41. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00**-05:00`, dat is 6 AM EST.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |Nee<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
@@ -83,9 +83,9 @@ De structuur op hoog niveau voor een activiteit binnen een pijplijn definitie (e
 
 De volgende tabel beschrijft de eigenschappen in de JSON-definitie van de activiteit:
 
-| Tag | Beschrijving | Verplicht |
+| Label | Beschrijving | Vereist |
 | --- | --- | --- |
-| name |De naam van de activiteit. Geef een naam op die staat voor de actie die door de activiteit wordt geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken (\_)</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', ' \\ '</li></ul> |Ja |
+| naam |De naam van de activiteit. Geef een naam op die staat voor de actie die door de activiteit wordt geconfigureerd<br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken (\_)</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\\'</li></ul> |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt. |Nee |
 | type |Hiermee geeft u het type activiteit op. Zie de secties [data stores](#data-stores) en [Data Transformation activities](#data-transformation-activities) voor verschillende typen activiteiten. |Ja |
 | invoer |Invoer tabellen die worden gebruikt door de activiteit<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Geen voor HDInsightStreaming-en SqlServerStoredProcedure-activiteiten <br/> <br/> Ja voor alle anderen |
@@ -95,7 +95,7 @@ De volgende tabel beschrijft de eigenschappen in de JSON-definitie van de activi
 | policy |Beleidsregels die van invloed zijn op het runtimegedrag van de activiteit. Als deze niet is opgegeven, wordt standaard beleid gebruikt. |Nee |
 | Scheduler |de eigenschap scheduler wordt gebruikt voor het definiëren van de gewenste planning voor de activiteit. De subeigenschappen zijn hetzelfde als die in de [eigenschap Beschik baarheid in een gegevensset](data-factory-create-datasets.md#dataset-availability). |Nee |
 
-### <a name="policies"></a>Beleid
+### <a name="policies"></a>Beleidsregels
 Beleids regels zijn van invloed op het runtime gedrag van een activiteit, in het bijzonder wanneer het segment van een tabel wordt verwerkt. De volgende tabel bevat de details.
 
 | Eigenschap | Toegestane waarden | Standaard waarde | Beschrijving |
@@ -243,9 +243,9 @@ De structuur op hoog niveau voor een gekoppelde service definitie is als volgt:
 
 De volgende tabel beschrijft de eigenschappen in de JSON-definitie van de activiteit:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| name | De naam van de gekoppelde service. | Ja |
+| naam | De naam van de gekoppelde service. | Ja |
 | eigenschappen: type | Het type van de gekoppelde service. Bijvoorbeeld: Azure Storage, Azure SQL Database. |
 | typeProperties | De sectie typeProperties bevat elementen die verschillend zijn voor elke gegevens opslag of COMPUTE-omgeving. Zie de sectie gegevens archieven voor alle gekoppelde Data Store-Services en [reken omgevingen](#compute-environments) voor alle gekoppelde reken Services |
 
@@ -282,26 +282,26 @@ Een gegevensset in Azure Data Factory wordt als volgt gedefinieerd:
 
 In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 
-| Eigenschap | Beschrijving | Verplicht | Standaard |
+| Eigenschap | Beschrijving | Vereist | Standaard |
 | --- | --- | --- | --- |
-| name | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](data-factory-naming-rules.md) voor naamgevings regels. |Ja |N.V.T. |
+| naam | De naam van de gegevensset. Zie [Azure Data Factory naamgevings regels](data-factory-naming-rules.md) voor naamgevings regels. |Ja |N.v.t. |
 | type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Azure Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). Zie de sectie [gegevens archieven](#data-stores) voor alle gegevens archieven en gegevensset typen die door Data Factory worden ondersteund. |
-| structuur | Schema van de gegevensset. Het bevat kolommen, hun typen, enzovoort. | Nee |N.V.T. |
-| typeProperties | Eigenschappen die overeenkomen met het geselecteerde type. Zie de sectie [gegevens archieven](#data-stores) voor ondersteunde typen en de bijbehorende eigenschappen. |Ja |N.V.T. |
+| structuur | Schema van de gegevensset. Het bevat kolommen, hun typen, enzovoort. | Nee |N.v.t. |
+| typeProperties | Eigenschappen die overeenkomen met het geselecteerde type. Zie de sectie [gegevens archieven](#data-stores) voor ondersteunde typen en de bijbehorende eigenschappen. |Ja |N.v.t. |
 | external | Een Booleaanse vlag die aangeeft of een gegevensset expliciet wordt geproduceerd door een data factory pijp lijn of niet. |Nee |onwaar |
-| availability | Hiermee wordt het verwerkings venster of het segment model gedefinieerd voor de productie van de gegevensset. Zie voor meer informatie over het segmenteren van gegevensset het [plannen en uitvoeren](data-factory-scheduling-and-execution.md) van het artikel. |Ja |N.V.T. |
-| policy |Hiermee worden de criteria gedefinieerd of de voor waarde waaraan de segmenten van de gegevensset moeten voldoen. <br/><br/>Zie het gedeelte gegevensset Policy voor meer informatie. |Nee |N.V.T. |
+| availability | Hiermee wordt het verwerkings venster of het segment model gedefinieerd voor de productie van de gegevensset. Zie voor meer informatie over het segmenteren van gegevensset het [plannen en uitvoeren](data-factory-scheduling-and-execution.md) van het artikel. |Ja |N.v.t. |
+| policy |Hiermee worden de criteria gedefinieerd of de voor waarde waaraan de segmenten van de gegevensset moeten voldoen. <br/><br/>Zie het gedeelte gegevensset Policy voor meer informatie. |Nee |N.v.t. |
 
 Elke kolom in de sectie **structure** bevat de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| name |De naam van de kolom. |Ja |
+| naam |De naam van de kolom. |Ja |
 | type |Het gegevens type van de kolom.  |Nee |
 | culturele |Op .NET gebaseerde cultuur die moet worden gebruikt wanneer type is opgegeven en is .NET-type `Datetime` of `Datetimeoffset`. De standaardwaarde is `en-us`. |Nee |
 | Formatteer |Indelings teken reeks die moet worden gebruikt wanneer type is opgegeven en is .NET-type `Datetime` of `Datetimeoffset`. |Nee |
 
-In het volgende voor beeld heeft de gegevensset drie kolommen `slicetimestamp`, `projectname` en `pageviews` en ze zijn van het type: teken reeks, teken reeks en decimaal.
+In het volgende voor beeld heeft de gegevensset drie kolommen `slicetimestamp`, `projectname`en `pageviews` en zijn van het type: teken reeks, teken reeks en decimaal.
 
 ```json
 structure:
@@ -314,13 +314,13 @@ structure:
 
 In de volgende tabel worden de eigenschappen beschreven die u kunt gebruiken in het gedeelte **Beschik baarheid** :
 
-| Eigenschap | Beschrijving | Verplicht | Standaard |
+| Eigenschap | Beschrijving | Vereist | Standaard |
 | --- | --- | --- | --- |
-| frequency |Hiermee geeft u de tijds eenheid voor de segment productie van gegevensset op.<br/><br/><b>Ondersteunde frequentie</b>: minuut, uur, dag, week, maand |Ja |N.V.T. |
-| interval |Hiermee geeft u een vermenigvuldigings factor voor frequentie<br/><br/>"Frequentie x-interval" bepaalt hoe vaak het segment wordt geproduceerd.<br/><br/>Als u wilt dat de gegevensset op elk uur wordt gesegmenteerd, stelt u de <b>frequentie</b> in op <b>uur</b>en het <b>interval</b> in op <b>1</b>.<br/><br/><b>Opmerking</b>: als u een frequentie opgeeft als minuut, raden we u aan het interval in te stellen op niet minder dan 15 |Ja |N.V.T. |
+| frequency |Hiermee geeft u de tijds eenheid voor de segment productie van gegevensset op.<br/><br/><b>Ondersteunde frequentie</b>: minuut, uur, dag, week, maand |Ja |N.v.t. |
+| interval |Hiermee geeft u een vermenigvuldigings factor voor frequentie<br/><br/>"Frequentie x-interval" bepaalt hoe vaak het segment wordt geproduceerd.<br/><br/>Als u wilt dat de gegevensset op elk uur wordt gesegmenteerd, stelt u de <b>frequentie</b> in op <b>uur</b>en het <b>interval</b> in op <b>1</b>.<br/><br/><b>Opmerking</b>: als u een frequentie opgeeft als minuut, raden we u aan het interval in te stellen op niet minder dan 15 |Ja |N.v.t. |
 | stijlen |Hiermee geeft u op of het segment moet worden geproduceerd aan het begin/einde van het interval.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Als de frequentie is ingesteld op month en style is ingesteld op EndOfInterval, wordt het segment gemaakt op de laatste dag van de maand. Als de stijl is ingesteld op StartOfInterval, wordt het segment gegenereerd op de eerste dag van de maand.<br/><br/>Als de frequentie is ingesteld op dag en stijl is ingesteld op EndOfInterval, wordt het segment gemaakt in het afgelopen uur van de dag.<br/><br/>Als de frequentie is ingesteld op uur en de stijl is ingesteld op EndOfInterval, wordt het segment aan het einde van het uur geproduceerd. Bijvoorbeeld, voor een segment voor 1 uur – 2 uur, het segment wordt geproduceerd op 2 uur. |Nee |EndOfInterval |
 | anchorDateTime |Definieert de absolute positie in de tijd die door scheduler wordt gebruikt om segment grenzen van het gegevensset te berekenen. <br/><br/><b>Opmerking</b>: als de AnchorDateTime datum delen heeft die nauw keuriger zijn dan de frequentie, worden de gedetailleerde onderdelen genegeerd. <br/><br/>Als het <b>interval</b> bijvoorbeeld <b>elk uur</b> is (frequentie: uur en interval: 1) en de <b>AnchorDateTime</b> <b>minuten en seconden</b> bevat, worden de <b>minuten en seconden</b> delen van de AnchorDateTime genegeerd. |Nee |01/01/0001 |
-| offset |Tijds duur waarmee het begin en einde van alle segmenten van de gegevensset worden verschoven. <br/><br/><b>Opmerking</b>: als zowel anchorDateTime als offset zijn opgegeven, is het resultaat de gecombineerde werk tijd. |Nee |N.V.T. |
+| offset |Tijds duur waarmee het begin en einde van alle segmenten van de gegevensset worden verschoven. <br/><br/><b>Opmerking</b>: als zowel anchorDateTime als offset zijn opgegeven, is het resultaat de gecombineerde werk tijd. |Nee |N.v.t. |
 
 In de volgende sectie Beschik baarheid wordt aangegeven dat de uitvoer gegevensset per uur wordt geproduceerd (of) de ingevoerde gegevensset is elk uur beschikbaar:
 
@@ -334,10 +334,10 @@ In de volgende sectie Beschik baarheid wordt aangegeven dat de uitvoer gegevenss
 
 De **beleids** sectie in de definitie van de gegevensset definieert de criteria of de voor waarde waaraan de segmenten van de gegevensset moeten voldoen.
 
-| Policy Name | Beschrijving | Toegepast op | Verplicht | Standaard |
+| Policy Name | Beschrijving | Toegepast op | Vereist | Standaard |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB |Valideert dat de gegevens in een **Azure-Blob** voldoen aan de minimale grootte vereisten (in mega bytes). |Azure Blob |Nee |N.V.T. |
-| minimumRows |Valideert dat de gegevens in een **Azure-SQL database** of een **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |Nee |N.V.T. |
+| minimumSizeMB |Valideert dat de gegevens in een **Azure-Blob** voldoen aan de minimale grootte vereisten (in mega bytes). |Azure Blob |Nee |N.v.t. |
+| minimumRows |Valideert dat de gegevens in een **Azure-SQL database** of een **Azure-tabel** het minimum aantal rijen bevatten. |<ul><li>Azure SQL Database</li><li>Azure Table</li></ul> |Nee |N.v.t. |
 
 **Voorbeeld:**
 
@@ -354,7 +354,7 @@ De **beleids** sectie in de definitie van de gegevensset definieert de criteria 
 
 Tenzij er een gegevensset wordt geproduceerd door Azure Data Factory, moet deze worden gemarkeerd als **extern**. Deze instelling is in het algemeen van toepassing op de invoer van de eerste activiteit in een pijp lijn tenzij activiteit of pijplijn keten wordt gebruikt.
 
-| Naam | Beschrijving | Verplicht | Standaard waarde |
+| Naam | Beschrijving | Vereist | Standaard waarde |
 | --- | --- | --- | --- |
 | dataDelay |Tijd om de controle over de beschik baarheid van de externe gegevens voor het opgegeven segment te vertragen. Als de gegevens bijvoorbeeld elk uur beschikbaar zijn, is de controle om te zien of de externe gegevens beschikbaar zijn en kan het bijbehorende segment worden uitgesteld met behulp van dataDelay.<br/><br/>Is alleen van toepassing op de huidige tijd.  Als het bijvoorbeeld 1:00 PM nu is en deze waarde 10 minuten is, begint de validatie om 1:10 PM.<br/><br/>Deze instelling heeft geen invloed op segmenten in het verleden (segmenten met eind tijd segment + dataDelay < nu) worden zonder vertraging verwerkt.<br/><br/>Er moet een tijd van meer dan 23:59 uur worden opgegeven met de `day.hours:minutes:seconds`-indeling. Als u bijvoorbeeld 24 uur wilt opgeven, gebruikt u 24:00:00 niet. gebruik in plaats daarvan 1,00:00:00. Als u 24:00:00 gebruikt, wordt dit beschouwd als 24 dagen (24.00:00:00). Geef voor 1 dag en 4 uur 1:04:00:00 op. |Nee |0 |
 | retryInterval |De wacht tijd tussen een storing en de volgende nieuwe poging. Als een poging mislukt, wordt de volgende poging na retryInterval. <br/><br/>Als deze 1:00 PM nu is, beginnen we met de eerste try. Als de duur voor het volt ooien van de eerste validatie controle 1 minuut is en de bewerking is mislukt, is de volgende nieuwe poging om 1:00 + 1 min (duur) + 1 min (interval voor opnieuw proberen) = 1:02 PM. <br/><br/>Voor segmenten in het verleden is er geen vertraging. De nieuwe poging vindt direct plaats. |Nee |00:01:00 (1 minuut) |
@@ -411,9 +411,9 @@ Er zijn twee soorten gekoppelde services: Azure Storage gekoppelde service en Az
 #### <a name="azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service
 Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van de **account sleutel**, maakt u een Azure Storage gekoppelde service. Als u een Azure Storage gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **opslag**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Ja |
 
 ##### <a name="example"></a>Voorbeeld
 
@@ -432,7 +432,7 @@ Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van
 #### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS-gekoppelde service
 Met de gekoppelde Azure Storage SAS-service kunt u een Azure Storage account koppelen aan een Azure-data factory met behulp van een Shared Access Signature (SAS). Het biedt de data factory met beperkte/gebonden toegang tot alle/specifieke resources (BLOB/container) in de opslag. Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van Shared Access Signature, maakt u een gekoppelde Azure Storage SAS-service. Als u een gekoppelde Azure Storage SAS-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **azurestoragesas zijn**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | sasUri |Geef Shared Access Signature-URI op voor de Azure Storage resources, zoals blob, container of table. |Ja |
 
@@ -455,10 +455,10 @@ Zie het artikel over [Azure Blob Storage-connector](data-factory-azure-blob-conn
 ### <a name="dataset"></a>Gegevensset
 Als u een Azure Blob-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureBlob**. Geef vervolgens de volgende specifieke Azure Blob-eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Pad naar de container en de map in de Blob-opslag. Voor beeld: myblobcontainer\myblobfolder\ |Ja |
-| fileName |De naam van de blob. Bestands naam is optioneel en hoofdletter gevoelig.<br/><br/>Als u een bestands naam opgeeft, werkt de activiteit (inclusief kopie) voor de specifieke blob.<br/><br/>Als er geen bestands naam is opgegeven, wordt met Copy alle blobs in de folderPath voor invoer gegevensset opgenomen.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: `Data.<Guid>.txt` (bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
+| fileName |De naam van de blob. Bestands naam is optioneel en hoofdletter gevoelig.<br/><br/>Als u een bestands naam opgeeft, werkt de activiteit (inclusief kopie) voor de specifieke blob.<br/><br/>Als er geen bestands naam is opgegeven, wordt met Copy alle blobs in de folderPath voor invoer gegevensset opgenomen.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: `Data.<Guid>.txt` (bijvoorbeeld:: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
 | partitionedBy |partitionedBy is een optionele eigenschap. U kunt deze gebruiken om een dynamische folderPath en een bestands naam op te geven voor time series-gegevens. Zo kan folderPath voor elk uur aan gegevens worden para meters. |Nee |
 | Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
 | compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
@@ -495,7 +495,7 @@ Zie het artikel over [Azure Blob-connector](data-factory-azure-blob-connector.md
 ### <a name="blobsource-in-copy-activity"></a>BlobSource in Kopieer activiteit
 Als u gegevens uit een Azure-Blob Storage kopieert, stelt u het **bron type** van de Kopieer activiteit in op **BlobSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True (standaard waarde), False |Nee |
 
@@ -538,7 +538,7 @@ Als u gegevens uit een Azure-Blob Storage kopieert, stelt u het **bron type** va
 ### <a name="blobsink-in-copy-activity"></a>BlobSink in Kopieer activiteit
 Als u gegevens kopieert naar een Azure-Blob Storage, stelt u het **sink-type** van de Kopieer activiteit in op **BlobSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | copyBehavior |Hiermee wordt het Kopieer gedrag gedefinieerd wanneer de bron BlobSource of File System is. |<b>PreserveHierarchy</b>: behoudt de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><br/><b>FlattenHierarchy</b>: alle bestanden in de bronmap bevinden zich in het eerste niveau van de doelmap. De doel bestanden hebben een automatisch gegenereerde naam. <br/><br/><b>MergeFiles (standaard):</b> alle bestanden van de bronmap worden samengevoegd met één bestand. Als de naam van het bestand of de blob is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. anders wordt de bestands naam automatisch gegenereerd. |Nee |
 
@@ -588,7 +588,7 @@ Zie het artikel over [Azure Blob-connector](data-factory-azure-blob-connector.md
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een Azure Data Lake Store gekoppelde service wilt definiëren, stelt u het type van de gekoppelde service in op **AzureDataLakeStore**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **AzureDataLakeStore** | Ja |
 | dataLakeStoreUri | Geef informatie op over het Azure Data Lake Store-account. Deze heeft de volgende indeling: `https://[accountname].azuredatalakestore.net/webhdfs/v1` of `adl://[accountname].azuredatalakestore.net/`. | Ja |
@@ -638,10 +638,10 @@ Zie [Azure data Lake Store connector](data-factory-azure-datalake-connector.md#l
 ### <a name="dataset"></a>Gegevensset
 Als u een Azure Data Lake Store gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureDataLakeStore**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | folderPath |Het pad naar de container en de map in het Azure Data Lake-archief. |Ja |
-| fileName |De naam van het bestand in het Azure Data Lake-archief. Bestands naam is optioneel en hoofdletter gevoelig. <br/><br/>Als u een bestands naam opgeeft, werkt de activiteit (inclusief kopie) voor het specifieke bestand.<br/><br/>Als er geen bestands naam is opgegeven, kopiëren bevat alle bestanden in de folderPath voor invoer gegevensset.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: `Data.<Guid>.txt` (bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
+| fileName |De naam van het bestand in het Azure Data Lake-archief. Bestands naam is optioneel en hoofdletter gevoelig. <br/><br/>Als u een bestands naam opgeeft, werkt de activiteit (inclusief kopie) voor het specifieke bestand.<br/><br/>Als er geen bestands naam is opgegeven, kopiëren bevat alle bestanden in de folderPath voor invoer gegevensset.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: `Data.<Guid>.txt` (bijvoorbeeld:: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
 | partitionedBy |partitionedBy is een optionele eigenschap. U kunt deze gebruiken om een dynamische folderPath en een bestands naam op te geven voor time series-gegevens. Zo kan folderPath voor elk uur aan gegevens worden para meters. |Nee |
 | Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
 | compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
@@ -685,7 +685,7 @@ Als u gegevens uit een Azure Data Lake Store kopieert, stelt u het **bron type**
 
 **AzureDataLakeStoreSource** ondersteunt de volgende eigenschappen **typeProperties** sectie:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True (standaard waarde), False |Nee |
 
@@ -732,7 +732,7 @@ Zie [Azure data Lake Store connector](data-factory-azure-datalake-connector.md#c
 ### <a name="azure-data-lake-store-sink-in-copy-activity"></a>Sink Azure Data Lake Store in Kopieer activiteit
 Als u gegevens naar een Azure Data Lake Store kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **AzureDataLakeStoreSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | copyBehavior |Hiermee geeft u het Kopieer gedrag op. |<b>PreserveHierarchy</b>: behoudt de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><br/><b>FlattenHierarchy</b>: alle bestanden in de bronmap worden gemaakt in het eerste niveau van de doelmap. De doel bestanden worden gemaakt met een automatisch gegenereerde naam.<br/><br/><b>MergeFiles</b>: alle bestanden van de bronmap worden samengevoegd met één bestand. Als de naam van het bestand of de blob is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. anders wordt de bestands naam automatisch gegenereerd. |Nee |
 
@@ -786,7 +786,7 @@ Als u een Azure Cosmos DB gekoppelde service wilt definiëren, stelt u het **typ
 
 | **Eigenschap** | **Beschrijving** | **Vereist** |
 | --- | --- | --- |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Cosmos DB Data Base. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Cosmos DB Data Base. |Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -934,9 +934,9 @@ Zie [Azure Cosmos DB connector](data-factory-azure-documentdb-connector.md#copy-
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een Azure SQL Database gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSqlDatabase**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Database-exemplaar voor de Connections Tring-eigenschap. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Database-exemplaar voor de Connections Tring-eigenschap. |Ja |
 
 #### <a name="example"></a>Voorbeeld
 ```json
@@ -956,7 +956,7 @@ Zie het artikel over [Azure SQL-connector](data-factory-azure-sql-connector.md#l
 ### <a name="dataset"></a>Gegevensset
 Als u een Azure SQL Database gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureSqlTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel of weer gave in het Azure SQL Database exemplaar waarnaar de gekoppelde service verwijst. |Ja |
 
@@ -992,7 +992,7 @@ Zie het artikel over [Azure SQL-connector](data-factory-azure-sql-connector.md#d
 Als u gegevens uit een Azure SQL Database kopieert, stelt u het **bron type** van de Kopieer activiteit in op **SqlSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Voor beeld: `select * from MyTable`. |Nee |
 | sqlReaderStoredProcedureName |De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. |De naam van de opgeslagen procedure. |Nee |
@@ -1045,7 +1045,7 @@ Zie het artikel over [Azure SQL-connector](data-factory-azure-sql-connector.md#c
 ### <a name="sql-sink-in-copy-activity"></a>SQL-sink in Kopieer activiteit
 Als u gegevens naar Azure SQL Database kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **SqlSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. |duur<br/><br/> Voor beeld: "00:30:00" (30 minuten). |Nee |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
@@ -1105,9 +1105,9 @@ Zie het artikel over [Azure SQL-connector](data-factory-azure-sql-connector.md#c
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een Azure SQL Data Warehouse gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSqlDW**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Data Warehouse-exemplaar voor de Connections Tring-eigenschap. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met het Azure SQL Data Warehouse-exemplaar voor de Connections Tring-eigenschap. |Ja |
 
 
 
@@ -1130,7 +1130,7 @@ Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-c
 ### <a name="dataset"></a>Gegevensset
 Als u een Azure SQL Data Warehouse gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureSqlDWTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel of weer gave in de Azure SQL Data Warehouse data base waarnaar de gekoppelde service verwijst. |Ja |
 
@@ -1167,7 +1167,7 @@ Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-c
 Als u gegevens uit Azure SQL Data Warehouse kopieert, stelt u het **bron type** van de Kopieer activiteit in op **SqlDWSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Nee |
 | sqlReaderStoredProcedureName |De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. |De naam van de opgeslagen procedure. |Nee |
@@ -1221,7 +1221,7 @@ Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-c
 ### <a name="sql-dw-sink-in-copy-activity"></a>SQL DW-sink in Kopieer activiteit
 Als u gegevens naar Azure SQL Data Warehouse kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **SqlDWSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Geef een query op voor de Kopieer activiteit die moet worden uitgevoerd, zodat de gegevens van een specifiek segment worden opgeruimd. |Een query-instructie. |Nee |
 | allowPolyBase |Hiermee wordt aangegeven of poly base (indien van toepassing) moet worden gebruikt in plaats van BULKINSERT-mechanisme. <br/><br/> **Het gebruik van poly Base is de aanbevolen manier om gegevens te laden in SQL Data Warehouse.** |True <br/>False (standaard) |Nee |
@@ -1284,7 +1284,7 @@ Zie [Azure SQL Data Warehouse connector](data-factory-azure-sql-data-warehouse-c
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een Azure Search gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AzureSearch**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
 | url | De URL voor de Azure Search-service. | Ja |
 | sleutel | De beheerders sleutel voor de Azure Search-service. | Ja |
@@ -1309,7 +1309,7 @@ Zie [Azure Search connector](data-factory-azure-search-connector.md#linked-servi
 ### <a name="dataset"></a>Gegevensset
 Als u een Azure Search gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AzureSearchIndex**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
 | type | De eigenschap type moet worden ingesteld op **AzureSearchIndex**.| Ja |
 | indexName | De naam van de Azure Search index. Data Factory maakt de index niet. De index moet bestaan in Azure Search. | Ja |
@@ -1338,7 +1338,7 @@ Zie [Azure Search connector](data-factory-azure-search-connector.md#dataset-prop
 ### <a name="azure-search-index-sink-in-copy-activity"></a>Index Sink Azure Search in Kopieer activiteit
 Als u gegevens naar een Azure Search index kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **AzureSearchIndexSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. | Samen voegen (standaard)<br/>Uploaden| Nee |
 | writeBatchSize | Hiermee worden gegevens geüpload naar de Azure Search-index wanneer de buffer grootte writeBatchSize bereikt. | 1 tot en met 1.000. De standaard waarde is 1000. | Nee |
@@ -1396,10 +1396,10 @@ Er zijn twee soorten gekoppelde services: Azure Storage gekoppelde service en Az
 #### <a name="azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service
 Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van de **account sleutel**, maakt u een Azure Storage gekoppelde service. Als u een Azure Storage gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **opslag**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type |De eigenschap type moet worden ingesteld op: **opslag** |Ja |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Ja |
+| connectionString |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Ja |
 
 **Voorbeeld:**
 
@@ -1418,7 +1418,7 @@ Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van
 #### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS-gekoppelde service
 Met de gekoppelde Azure Storage SAS-service kunt u een Azure Storage account koppelen aan een Azure-data factory met behulp van een Shared Access Signature (SAS). Het biedt de data factory met beperkte/gebonden toegang tot alle/specifieke resources (BLOB/container) in de opslag. Als u uw Azure Storage-account wilt koppelen aan een data factory met behulp van Shared Access Signature, maakt u een gekoppelde Azure Storage SAS-service. Als u een gekoppelde Azure Storage SAS-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **azurestoragesas zijn**. Vervolgens kunt u de volgende eigenschappen opgeven in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type |De eigenschap type moet worden ingesteld op: **azurestoragesas zijn** |Ja |
 | sasUri |Geef Shared Access Signature-URI op voor de Azure Storage resources, zoals blob, container of table. |Ja |
@@ -1442,7 +1442,7 @@ Zie het artikel over [Azure Table Storage-connector](data-factory-azure-table-co
 ### <a name="dataset"></a>Gegevensset
 Als u een gegevensset van een Azure-tabel wilt definiëren, stelt u het **type** van de gegevensset in op **AzureTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de Azure Table-Data Base-instantie waarnaar de gekoppelde service verwijst. |Ja. Wanneer een TableName zonder azureTableSourceQuery is opgegeven, worden alle records uit de tabel naar de bestemming gekopieerd. Als er ook een azureTableSourceQuery is opgegeven, worden records uit de tabel die aan de query voldoen, gekopieerd naar de bestemming. |
 
@@ -1478,7 +1478,7 @@ Zie het artikel over [Azure Table Storage-connector](data-factory-azure-table-co
 ### <a name="azure-table-source-in-copy-activity"></a>Azure-tabel bron in Kopieer activiteit
 Als u gegevens uit Azure Table Storage kopieert, stelt u het **bron type** van de Kopieer activiteit in op **AzureTableSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Gebruik de aangepaste query om gegevens te lezen. |Query reeks voor Azure Table. Zie de voor beelden in de volgende sectie. |Nee. Wanneer een TableName zonder azureTableSourceQuery is opgegeven, worden alle records uit de tabel naar de bestemming gekopieerd. Als er ook een azureTableSourceQuery is opgegeven, worden records uit de tabel die aan de query voldoen, gekopieerd naar de bestemming. |
 | azureTableSourceIgnoreTableNotFound |Geef aan of de uitzonde ring van de tabel niet bestaat. |ECHTE<br/>TERECHT |Nee |
@@ -1531,7 +1531,7 @@ Zie het artikel over [Azure Table Storage-connector](data-factory-azure-table-co
 ### <a name="azure-table-sink-in-copy-activity"></a>Azure Table sink in Kopieer activiteit
 Als u gegevens naar Azure Table Storage kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **AzureTableSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | azureTableDefaultPartitionKeyValue |Standaard waarde voor de partitie sleutel die door de Sink kan worden gebruikt. |Een teken reeks waarde. |Nee |
 | azureTablePartitionKeyName |Geef de naam op van de kolom waarvan de waarden worden gebruikt als partitie sleutels. Als u niets opgeeft, wordt AzureTableDefaultPartitionKeyValue gebruikt als partitie sleutel. |Een kolom naam. |Nee |
@@ -1590,7 +1590,7 @@ Zie het artikel over [Azure Table Storage-connector](data-factory-azure-table-co
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde Amazon Redshift-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **AmazonRedshift**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | server |Het IP-adres of de hostnaam van de Amazon Redshift-server. |Ja |
 | poort |Het nummer van de TCP-poort die de Amazon Redshift-server gebruikt om te Luis teren naar client verbindingen. |Nee, standaard waarde: 5439 |
@@ -1621,7 +1621,7 @@ Zie het artikel over de Amazon Redshift-connector voor meer informatie.
 ### <a name="dataset"></a>Gegevensset
 Als u een Amazon Redshift-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **RelationalTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de Amazon Redshift-data base waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -1650,7 +1650,7 @@ Zie het artikel over de Amazon Redshift-connector voor meer informatie.
 ### <a name="relational-source-in-copy-activity"></a>Relationele bron in Kopieer activiteit
 Als u gegevens uit Amazon Redshift kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -1702,7 +1702,7 @@ Zie het artikel over de Amazon Redshift-connector voor meer informatie.
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde IBM DB2-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesDB2**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | server |Naam van de DB2-Server. |Ja |
 | database |Naam van de DB2-Data Base. |Ja |
@@ -1735,7 +1735,7 @@ Zie het artikel over IBM DB2-connector voor meer informatie.
 ### <a name="dataset"></a>Gegevensset
 Als u een DB2-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **RelationalTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de DB2-Data Base-instantie waarnaar de gekoppelde service verwijst. De tabel naam is hoofdletter gevoelig. |Nee (als de **query** van **RelationalSource** is opgegeven)
 
@@ -1769,7 +1769,7 @@ Zie het artikel over IBM DB2-connector voor meer informatie.
 Als u gegevens uit IBM DB2 kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `"query": "select * from "MySchema"."MyTable""`. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -1818,7 +1818,7 @@ Zie het artikel over IBM DB2-connector voor meer informatie.
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde MySQL-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesMySql**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | server |De naam van de MySQL-server. |Ja |
 | database |De naam van de MySQL-data base. |Ja |
@@ -1853,7 +1853,7 @@ Zie [mysql connector](data-factory-onprem-mysql-connector.md#linked-service-prop
 ### <a name="dataset"></a>Gegevensset
 Als u een MySQL-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **RelationalTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de MySQL-data base-instantie waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -1887,7 +1887,7 @@ Zie [mysql connector](data-factory-onprem-mysql-connector.md#dataset-properties)
 Als u gegevens uit een MySQL-data base kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -1940,10 +1940,10 @@ Zie [mysql connector](data-factory-onprem-mysql-connector.md#copy-activity-prope
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde Oracle-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesOracle**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | driverType | Opgeven welk stuur programma moet worden gebruikt voor het kopiëren van gegevens van/naar Oracle Database. Toegestane waarden zijn **micro soft** of **ODP** (standaard). Zie de sectie ondersteunde versie en installatie voor details van Stuur Programma's. | Nee |
-| Verbindings | Geef de gegevens op die nodig zijn om verbinding te maken met het Oracle Database-exemplaar voor de Connections Tring-eigenschap. | Ja |
+| connectionString | Geef de gegevens op die nodig zijn om verbinding te maken met het Oracle Database-exemplaar voor de Connections Tring-eigenschap. | Ja |
 | gatewayName | De naam van de gateway die wordt gebruikt om verbinding te maken met de on-premises Oracle-Server |Ja |
 
 #### <a name="example"></a>Voorbeeld
@@ -1966,7 +1966,7 @@ Zie het artikel [Oracle Connector](data-factory-onprem-oracle-connector.md#linke
 ### <a name="dataset"></a>Gegevensset
 Als u een Oracle-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **OracleTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in het Oracle Database waarnaar de gekoppelde service verwijst. |Nee (als **oracleReaderQuery** van **OracleSource** is opgegeven) |
 
@@ -2003,7 +2003,7 @@ Zie het artikel [Oracle Connector](data-factory-onprem-oracle-connector.md#datas
 ### <a name="oracle-source-in-copy-activity"></a>Oracle-bron in Kopieer activiteit
 Als u gegevens uit een Oracle-data base kopieert, stelt u het **bron type** van de Kopieer activiteit in op **OracleSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | oracleReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable` <br/><br/>Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd: `select * from MyTable` |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -2055,7 +2055,7 @@ Zie het artikel [Oracle Connector](data-factory-onprem-oracle-connector.md#copy-
 ### <a name="oracle-sink-in-copy-activity"></a>Oracle-sink in Kopieer activiteit
 Als u gegevens kopieert naar een Data Base van het type Oracle, stelt u het **sink-soort** van de Kopieer activiteit in op **OracleSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. |duur<br/><br/> Voor beeld: 00:30:00 (30 minuten). |Nee |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 100) |
@@ -2109,7 +2109,7 @@ Zie het artikel [Oracle Connector](data-factory-onprem-oracle-connector.md#copy-
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde PostgreSQL-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesPostgreSql**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | server |De naam van de PostgreSQL-server. |Ja |
 | database |De naam van de PostgreSQL-data base. |Ja |
@@ -2143,7 +2143,7 @@ Zie [postgresql-connector](data-factory-onprem-postgresql-connector.md#linked-se
 ### <a name="dataset"></a>Gegevensset
 Als u een PostgreSQL-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **RelationalTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in de PostgreSQL-data base-instantie waarnaar de gekoppelde service verwijst. De tabel naam is hoofdletter gevoelig. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -2176,9 +2176,9 @@ Zie [postgresql-connector](data-factory-onprem-postgresql-connector.md#dataset-p
 Als u gegevens uit een PostgreSQL-data base kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: ' query ': ' Select * from \"MySchema @ no__t-1. \"MyTable @ no__t-3 '. |Nee (als **TableName** van **gegevensset** is opgegeven) |
+| query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: "query": "Select * from \"MySchema\".\"MyTable\". |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -2228,15 +2228,15 @@ Zie [postgresql-connector](data-factory-onprem-postgresql-connector.md#copy-acti
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde service van SAP Business Warehouse (BW) wilt definiëren, stelt u het **type** van de gekoppelde service in op **SapBw**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-Eigenschap | Beschrijving | Toegestane waarden | Verplicht
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | string | Ja
+server | De naam van de server waarop het SAP BW-exemplaar zich bevindt. | tekenreeks | Ja
 systemNumber | Systeem nummer van het SAP BW systeem. | Decimaal getal van twee cijfers dat wordt weer gegeven als een teken reeks. | Ja
 clientId | Client-ID van de client in het SAP W-systeem. | Decimaal getal met drie cijfers dat wordt weer gegeven als een teken reeks. | Ja
-gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | string | Ja
-wachtwoord | Het wachtwoord voor de gebruiker. | string | Ja
-gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP BW exemplaar. | string | Ja
-encryptedCredential | De versleutelde referentie teken reeks. | string | Nee
+gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Ja
+wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Ja
+gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP BW exemplaar. | tekenreeks | Ja
+encryptedCredential | De versleutelde referentie teken reeks. | tekenreeks | Nee
 
 #### <a name="example"></a>Voorbeeld
 
@@ -2285,7 +2285,7 @@ Zie het artikel [SAP Business Warehouse connector](data-factory-sap-business-war
 Als u gegevens van SAP Business Warehouse kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query | Hiermee geeft u de MDX-query op die gegevens uit het SAP BW exemplaar moet lezen. | MDX-query. | Ja |
 
@@ -2338,14 +2338,14 @@ Zie het artikel [SAP Business Warehouse connector](data-factory-sap-business-war
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een SAP HANA gekoppelde service wilt definiëren, stelt u het **type** van de gekoppelde service in op **SapHana**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-Eigenschap | Beschrijving | Toegestane waarden | Verplicht
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als uw server gebruikmaakt van een aangepaste poort, geeft u `server:port` op. | string | Ja
+server | De naam van de server waarop het SAP HANA-exemplaar zich bevindt. Als uw server gebruikmaakt van een aangepaste poort, geeft u `server:port` op. | tekenreeks | Ja
 authenticationType | Type verificatie. | tekenreeksexpressie. "Basic" of "Windows" | Ja
-gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | string | Ja
-wachtwoord | Het wachtwoord voor de gebruiker. | string | Ja
-gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP HANA exemplaar. | string | Ja
-encryptedCredential | De versleutelde referentie teken reeks. | string | Nee
+gebruikersnaam | Naam van de gebruiker die toegang heeft tot de SAP-server | tekenreeks | Ja
+wachtwoord | Het wachtwoord voor de gebruiker. | tekenreeks | Ja
+gatewayName | De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met het on-premises SAP HANA exemplaar. | tekenreeks | Ja
+encryptedCredential | De versleutelde referentie teken reeks. | tekenreeks | Nee
 
 #### <a name="example"></a>Voorbeeld
 
@@ -2392,7 +2392,7 @@ Zie [SAP Hana connector](data-factory-sap-hana-connector.md#dataset-properties) 
 ### <a name="relational-source-in-copy-activity"></a>Relationele bron in Kopieer activiteit
 Als u gegevens uit een SAP HANA gegevens archief kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query | Hiermee geeft u de SQL-query voor het lezen van gegevens uit het SAP HANA-exemplaar. | SQL-query. | Ja |
 
@@ -2450,12 +2450,12 @@ U maakt een gekoppelde service van het type **OnPremisesSqlServer** om een on-pr
 
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor SQL Server gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesSqlServer**. |Ja |
-| Verbindings |Geef de Connections Tring-gegevens op die nodig zijn om verbinding te maken met de on-premises SQL Server Data Base via SQL-verificatie of Windows-verificatie. |Ja |
+| connectionString |Geef de Connections Tring-gegevens op die nodig zijn om verbinding te maken met de on-premises SQL Server Data Base via SQL-verificatie of Windows-verificatie. |Ja |
 | gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises SQL Server-Data Base. |Ja |
-| gebruikersnaam |Geef de gebruikers naam op als u Windows-verificatie gebruikt. Voor beeld: **domainname @ no__t-1username**. |Nee |
+| gebruikersnaam |Geef de gebruikers naam op als u Windows-verificatie gebruikt. Voorbeeld: **domainname\\username**. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
 
 U kunt referenties versleutelen met de cmdlet **New-AzDataFactoryEncryptValue** en deze gebruiken in de Connection String, zoals wordt weer gegeven in het volgende voor beeld (eigenschap**EncryptedCredential** ):
@@ -2503,7 +2503,7 @@ Zie [SQL Server connector](data-factory-sqlserver-connector.md#linked-service-pr
 ### <a name="dataset"></a>Gegevensset
 Als u een SQL Server gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **SqlServerTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel of weer gave in de SQL Server Data Base-instantie waarnaar de gekoppelde service verwijst. |Ja |
 
@@ -2539,7 +2539,7 @@ Zie [SQL Server connector](data-factory-sqlserver-connector.md#dataset-propertie
 Als u gegevens uit een SQL Server-Data Base kopieert, stelt u het **bron type** van de Kopieer activiteit in op **SqlSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | sqlReaderQuery |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable`. Kan verwijzen naar meerdere tabellen vanuit de data base waarnaar wordt verwezen door de invoer gegevensset. Indien niet opgegeven, de SQL-instructie die wordt uitgevoerd: Selecteer een van de MyTable. |Nee |
 | sqlReaderStoredProcedureName |De naam van de opgeslagen procedure waarmee gegevens uit de bron tabel worden gelezen. |De naam van de opgeslagen procedure. |Nee |
@@ -2606,7 +2606,7 @@ Zie [SQL Server connector](data-factory-sqlserver-connector.md#copy-activity-pro
 ### <a name="sql-sink-in-copy-activity"></a>SQL-sink in Kopieer activiteit
 Als u gegevens naar een SQL Server-Data Base kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **SqlSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | writeBatchTimeout |Wacht tijd voordat de batch INSERT-bewerking is voltooid voordat er een time-out optreedt. |duur<br/><br/> Voor beeld: "00:30:00" (30 minuten). |Nee |
 | writeBatchSize |Hiermee worden gegevens in de SQL-tabel ingevoegd wanneer de buffer grootte writeBatchSize bereikt. |Geheel getal (aantal rijen) |Nee (standaard: 10000) |
@@ -2667,7 +2667,7 @@ Zie [SQL Server connector](data-factory-sqlserver-connector.md#copy-activity-pro
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde Sybase-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesSybase**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | server |De naam van de Sybase-server. |Ja |
 | database |De naam van de Sybase-data base. |Ja |
@@ -2701,7 +2701,7 @@ Zie voor meer informatie het artikel [Sybase connector](data-factory-onprem-syba
 ### <a name="dataset"></a>Gegevensset
 Als u een Sybase-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **RelationalTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in het data base-exemplaar van Sybase waarnaar de gekoppelde service verwijst. |Nee (als de **query** van **RelationalSource** is opgegeven) |
 
@@ -2736,7 +2736,7 @@ Zie voor meer informatie het artikel [Sybase connector](data-factory-onprem-syba
 Als u gegevens uit een Sybase-data base kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Nee (als **TableName** van **gegevensset** is opgegeven) |
 
@@ -2787,7 +2787,7 @@ Zie voor meer informatie het artikel [Sybase connector](data-factory-onprem-syba
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde Teradata-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesTeradata**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | server |Naam van de server van de Teradata. |Ja |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de Teradata-data base. Mogelijke waarden zijn: anoniem, basis en Windows. |Ja |
@@ -2846,7 +2846,7 @@ Zie voor meer informatie het artikel [Teradata-connector](data-factory-onprem-te
 ### <a name="relational-source-in-copy-activity"></a>Relationele bron in Kopieer activiteit
 Als u gegevens uit een Teradata-data base kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Ja |
 
@@ -2901,7 +2901,7 @@ Zie voor meer informatie het artikel [Teradata-connector](data-factory-onprem-te
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde Cassandra-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesCassandra**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | hostsite |Een of meer IP-adressen of hostnamen van Cassandra-servers.<br/><br/>Geef een door komma's gescheiden lijst met IP-adressen of hostnamen op om gelijktijdig verbinding te maken met alle servers. |Ja |
 | poort |De TCP-poort die de Cassandra-server gebruikt om te Luis teren naar client verbindingen. |Nee, standaard waarde: 9042 |
@@ -2935,7 +2935,7 @@ Zie [Cassandra-connector](data-factory-onprem-cassandra-connector.md#linked-serv
 ### <a name="dataset"></a>Gegevensset
 Als u een Cassandra-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **CassandraTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | Keys Pace |De naam van de spatie of het schema in de Cassandra-data base. |Ja (als de **query** voor **CassandraSource** niet is gedefinieerd). |
 | tableName |De naam van de tabel in de Cassandra-data base. |Ja (als de **query** voor **CassandraSource** niet is gedefinieerd). |
@@ -2973,7 +2973,7 @@ Zie [Cassandra-connector](data-factory-onprem-cassandra-connector.md#dataset-pro
 ### <a name="cassandra-source-in-copy-activity"></a>Cassandra bron in Kopieer activiteit
 Als u gegevens uit Cassandra kopieert, stelt u het **bron type** van de Kopieer activiteit in op **CassandraSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-92-query of CQL-query. Zie [CQL Reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)(Engelstalig). <br/><br/>Wanneer u SQL query gebruikt, geeft u de naam van de **spatie op. tabel naam** voor de tabel die u wilt doorzoeken. |Nee (als TableName en Keys op gegevensset zijn gedefinieerd). |
 | consistencyLevel |Het consistentie niveau geeft aan hoeveel replica's moeten reageren op een lees aanvraag voordat gegevens worden geretourneerd naar de client toepassing. Cassandra controleert het opgegeven aantal replica's voor gegevens om te voldoen aan de Lees aanvraag. |EEN, TWEE, DRIE, QUORUM, ALLE, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE. Zie [gegevens consistentie configureren](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) voor meer informatie. |Nee. De standaard waarde is één. |
@@ -3028,7 +3028,7 @@ Zie [Cassandra-connector](data-factory-onprem-cassandra-connector.md#copy-activi
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde MongoDB-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesMongoDB**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | server |Het IP-adres of de hostnaam van de MongoDB-server. |Ja |
 | poort |TCP-poort die de MongoDB-server gebruikt om te Luis teren naar client verbindingen. |Optioneel, standaard waarde: 27017 |
@@ -3066,7 +3066,7 @@ Zie [MongoDb connector-artikel](data-factory-on-premises-mongodb-connector.md#li
 ### <a name="dataset"></a>Gegevensset
 Als u een MongoDB-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **MongoDbCollection**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
 
@@ -3095,7 +3095,7 @@ Zie [MongoDb connector-artikel](data-factory-on-premises-mongodb-connector.md#da
 #### <a name="mongodb-source-in-copy-activity"></a>MongoDB bron in Kopieer activiteit
 Als u gegevens uit MongoDB kopieert, stelt u het **bron type** van de Kopieer activiteit in op **MongoDbSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-92-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Nee (als de **verzamelings** - **DataSet** is opgegeven) |
 
@@ -3149,9 +3149,9 @@ Zie [MongoDb connector-artikel](data-factory-on-premises-mongodb-connector.md#co
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde Amazon S3-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **awsaccesskey worden**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| accessKeyID |ID van de geheime toegangs sleutel. |string |Ja |
+| accessKeyID |ID van de geheime toegangs sleutel. |tekenreeks |Ja |
 | secretAccessKey |De geheime toegangs sleutel zelf. |Versleutelde geheime teken reeks |Ja |
 
 #### <a name="example"></a>Voorbeeld
@@ -3173,7 +3173,7 @@ Zie het artikel over de [Amazon S3-connector](data-factory-amazon-simple-storage
 ### <a name="dataset"></a>Gegevensset
 Als u een Amazon S3-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **AmazonS3**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | Bucket |De naam van de S3-Bucket. |Tekenreeks |Ja |
 | sleutel |De object sleutel S3. |Tekenreeks |Nee |
@@ -3257,7 +3257,7 @@ Zie het artikel over de [Amazon S3-connector](data-factory-amazon-simple-storage
 Als u gegevens uit Amazon S3 kopieert, stelt u het **bron type** van de Kopieer activiteit in op **FileSystemSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursieve |Hiermee geeft u op of S3-objecten in de directory recursief moeten worden weer geven. |waar/onwaar |Nee |
 
@@ -3313,7 +3313,7 @@ Zie het artikel over de [Amazon S3-connector](data-factory-amazon-simple-storage
 ### <a name="linked-service"></a>Gekoppelde service
 U kunt een on-premises bestands systeem koppelen aan een Azure-data factory met de gekoppelde **on-premises Bestands server** . De volgende tabel bevat beschrijvingen van de JSON-elementen die specifiek zijn voor de on-premises gekoppelde service van de bestands server.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |Zorg ervoor dat de eigenschap type is ingesteld op **OnPremisesFileServer**. |Ja |
 | hostsite |Hiermee geeft u het pad naar de hoofdmap van de map die u wilt kopiëren. Gebruik het escape teken ' \ ' voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld. |Ja |
@@ -3326,8 +3326,8 @@ U kunt een on-premises bestands systeem koppelen aan een Azure-data factory met 
 
 | Scenario | Host in de definitie van de gekoppelde service | folderPath in de definitie van de gegevensset |
 | --- | --- | --- |
-| Lokale map op Data Management Gateway computer: <br/><br/>Voor beelden: D: \\ @ no__t-1 of D:\folder\subfolder @ no__t-2 @ no__t-3 |D: \\ @ no__t-1 (voor Data Management Gateway 2,0 en latere versies) <br/><br/> localhost (voor eerdere versies dan Data Management Gateway 2,0) |. \\ @ no__t-1 of map @ no__t-2 @ no__t-3subfolder (voor Data Management Gateway 2,0 en hoger) <br/><br/>D: \\ @ no__t-1 of D: \\ @ no__t-3folder @ no__t-4 @ no__t-5subfolder (voor de gateway versie onder 2,0) |
-| Externe gedeelde map: <br/><br/>Voor beelden: \\ @ no__t-1myserver @ no__t-2Share @ no__t-3 @ no__t-4 of \\ @ no__t-6myserver @ no__t-7share @ no__t-8folder @ no__t-9subfolder @ no__t-10 @ no__t-11 |\\ @ no__t-1 @ no__t-2 @ no__t-3myserver @ no__t-4 @ no__t-5share |. \\ @ no__t-1 of map @ no__t-2 @ no__t-3subfolder |
+| Lokale map op Data Management Gateway computer: <br/><br/>Voor beelden: D:\\\* of D:\folder\subfolder\\* |D:\\\\ (voor Data Management Gateway 2,0 en hoger) <br/><br/> localhost (voor eerdere versies dan Data Management Gateway 2,0) |.\\\\ of map\\\\submap (voor Data Management Gateway 2,0 en hoger) <br/><br/>D:\\\\ of D:\\\\map\\\\submap (voor de gateway versie onder 2,0) |
+| Externe gedeelde map: <br/><br/>Voor beelden: \\\\mijn server\\share\\\* of \\\\mijn server\\share\\map\\submap\\* |\\\\\\\\mijn server\\\\share |.\\\\ of map\\\\submap |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>Voor beeld: gebruikers naam en wacht woord gebruiken als tekst zonder opmaak
@@ -3368,10 +3368,10 @@ Zie het [artikel over bestandssysteem connector](data-factory-onprem-file-system
 ### <a name="dataset"></a>Gegevensset
 Als u een bestands systeem-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **share file**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Hiermee geeft u het pad naar de map. Gebruik het escape teken ' \ ' voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, de naam van het gegenereerde bestand heeft de volgende indeling: <br/><br/>`Data.<Guid>.txt` (voor beeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, de naam van het gegenereerde bestand heeft de volgende indeling: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
 | File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren. <br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beeld 1: "file filter": "*. log"<br/>Voor beeld 2: "file filter": 2016-1-?. txt<br/><br/>File filter is van toepassing op een invoer-file share-gegevensset. |Nee |
 | partitionedBy |U kunt partitionedBy gebruiken om een dynamische folderPath/fileName op te geven voor gegevens van een tijd reeks. Een voor beeld is folderPath para meters voor elk uur aan gegevens. |Nee |
 | Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
@@ -3442,7 +3442,7 @@ Zie het [artikel over bestandssysteem connector](data-factory-onprem-file-system
 ### <a name="file-system-source-in-copy-activity"></a>Bestandssysteem bron in Kopieer activiteit
 Als u gegevens uit bestands systeem kopieert, stelt u het **bron type** van de Kopieer activiteit in op **FileSystemSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
 
@@ -3492,7 +3492,7 @@ Zie het [artikel over bestandssysteem connector](data-factory-onprem-file-system
 ### <a name="file-system-sink-in-copy-activity"></a>Sink van het bestands systeem in de Kopieer activiteit
 Als u gegevens naar het bestands systeem kopieert, stelt u het **sink-type** van de Kopieer activiteit in op **FileSystemSink**en geeft u de volgende eigenschappen op in de sectie **sink** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | copyBehavior |Hiermee wordt het Kopieer gedrag gedefinieerd wanneer de bron BlobSource of File System is. |**PreserveHierarchy:** Hiermee behoudt u de bestands hiërarchie in de doelmap. Dat wil zeggen, het relatieve pad van het bron bestand naar de bronmap is hetzelfde als het relatieve pad van het doel bestand naar de doelmap.<br/><br/>**FlattenHierarchy:** Alle bestanden in de bronmap worden gemaakt in het eerste niveau van de doelmap. De doel bestanden worden gemaakt met een automatisch gegenereerde naam.<br/><br/>**MergeFiles:** Alle bestanden van de bronmap worden samengevoegd met één bestand. Als de bestands naam/BLOB-naam is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. Anders is het een automatisch gegenereerde bestands naam. |Nee |
 
@@ -3548,7 +3548,7 @@ Zie het [artikel over bestandssysteem connector](data-factory-onprem-file-system
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde FTP-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **FtpServer**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht | Standaard |
+| Eigenschap | Beschrijving | Vereist | Standaard |
 | --- | --- | --- | --- |
 | hostsite |Naam of IP-adres van de FTP-server |Ja |&nbsp; |
 | authenticationType |Verificatietype opgeven |Ja |Basic, anoniem |
@@ -3557,8 +3557,8 @@ Als u een gekoppelde FTP-service wilt definiëren, stelt u het **type** van de g
 | encryptedCredential |Versleutelde referentie voor toegang tot de FTP-server |Nee |&nbsp; |
 | gatewayName |De naam van de Data Management Gateway om verbinding te maken met een on-premises FTP-server |Nee |&nbsp; |
 | poort |Poort waarop de FTP-server luistert |Nee |21 |
-| enableSsl |Opgeven of FTP via SSL/TLS-kanaal moet worden gebruikt |Nee |waar |
-| enableServerCertificateValidation |Opgeven of de SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u FTP via SSL/TLS-kanaal gebruikt |Nee |waar |
+| enableSsl |Opgeven of FTP via SSL/TLS-kanaal moet worden gebruikt |Nee |true |
+| enableServerCertificateValidation |Opgeven of de SSL-certificaat validatie van de server moet worden ingeschakeld wanneer u FTP via SSL/TLS-kanaal gebruikt |Nee |true |
 
 #### <a name="example-using-anonymous-authentication"></a>Voor beeld: anonieme verificatie gebruiken
 
@@ -3634,10 +3634,10 @@ Zie het artikel over de [FTP-connector](data-factory-ftp-connector.md#linked-ser
 ### <a name="dataset"></a>Gegevensset
 Als u een FTP-gegevensset wilt definiëren, stelt u het **type** gegevensset in op bestands **share**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (voor beeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
 | File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1: `"fileFilter": "*.log"`<br/>Voor beeld 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |Nee |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |Nee |
 | Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
@@ -3674,7 +3674,7 @@ Zie het artikel over de [FTP-connector](data-factory-ftp-connector.md#dataset-pr
 ### <a name="file-system-source-in-copy-activity"></a>Bestandssysteem bron in Kopieer activiteit
 Als u gegevens van een FTP-server kopieert, stelt u het **bron type** van de Kopieer activiteit in op **FileSystemSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
 
@@ -3726,7 +3726,7 @@ Zie het artikel over de [FTP-connector](data-factory-ftp-connector.md#copy-activ
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde koppelings service van HDFS wilt definiëren, stelt u het **type** van de gekoppelde service in op **HDFS**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **Hdfs** |Ja |
 | URL |URL naar HDFS |Ja |
@@ -3776,9 +3776,9 @@ Zie voor meer informatie het artikel HDFS connector.
 ### <a name="dataset"></a>Gegevensset
 Als u een HDFS-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op bestands **share**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| folderPath |Pad naar de map. Voorbeeld: `myfolder`<br/><br/>Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Bijvoorbeeld: voor folder\subfolder geeft u map op @ no__t-0 @ no__t-1subfolder en voor d:\samplefolder, geeft u d: \\ @ no__t-3samplefolder op.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
+| folderPath |Pad naar de map. Voorbeeld: `myfolder`<br/><br/>Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Bijvoorbeeld: voor folder\subfolder geeft u map\\\\submap en voor d:\samplefolder geeft u d:\\\\SampleFolder.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
 | fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld:: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Voor beeld: folderPath para meters voor elk uur aan gegevens. |Nee |
 | Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
@@ -3814,7 +3814,7 @@ Als u gegevens kopieert van HDFS, stelt u het **bron type** van de Kopieer activ
 
 **FileSystemSource** ondersteunt de volgende eigenschappen:
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
 
@@ -3862,7 +3862,7 @@ Zie voor meer informatie het artikel HDFS connector.
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde SFTP-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **SFTP**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | hostsite | Naam of IP-adres van de SFTP-server. |Ja |
 | poort |Poort waarop de SFTP-server luistert. De standaard waarde is: 21 |Nee |
@@ -3876,7 +3876,7 @@ Als u een gekoppelde SFTP-service wilt definiëren, stelt u het **type** van de 
 
 Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `Basic` en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die zijn geïntroduceerd in de laatste sectie:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | gebruikersnaam | Gebruiker die toegang heeft tot de SFTP-server. |Ja |
 | wachtwoord | Wacht woord voor de gebruiker (gebruikers naam). | Ja |
@@ -3925,12 +3925,12 @@ Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `Bas
 
 Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `SshPublicKey` en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die zijn geïntroduceerd in de laatste sectie:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | gebruikersnaam |Gebruiker die toegang heeft tot de SFTP-server |Ja |
 | privateKeyPath | Geef een absoluut pad naar het bestand met de persoonlijke sleutel op waartoe de gateway toegang kan hebben. | Geef het `privateKeyPath` of `privateKeyContent` op. <br><br> Alleen Toep assen bij het kopiëren van gegevens van een on-premises SFTP-server. |
 | privateKeyContent | Een geserialiseerde teken reeks met de inhoud van de persoonlijke sleutel. De wizard kopiëren kan het persoonlijke sleutel bestand lezen en de inhoud van de persoonlijke sleutel automatisch extra heren. Als u een andere tool/SDK gebruikt, gebruikt u in plaats daarvan de eigenschap privateKeyPath. | Geef het `privateKeyPath` of `privateKeyContent` op. |
-| Wachtzin | Geef de wachtwoordzin/het wacht woord op voor het ontsleutelen van de persoonlijke sleutel als het sleutel bestand wordt beveiligd door een wachtwoordzin. | Ja als het persoonlijke-sleutel bestand is beveiligd door een wachtwoordzin. |
+| passPhrase | Geef de wachtwoordzin/het wacht woord op voor het ontsleutelen van de persoonlijke sleutel als het sleutel bestand wordt beveiligd door een wachtwoordzin. | Ja als het persoonlijke-sleutel bestand is beveiligd door een wachtwoordzin. |
 
 ```json
 {
@@ -3976,10 +3976,10 @@ Zie voor meer informatie het artikel [SFTP connector](data-factory-sftp-connecto
 ### <a name="dataset"></a>Gegevensset
 Als u een SFTP-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op bestands **share**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
-| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (voor beeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt) |Nee |
 | File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1: `"fileFilter": "*.log"`<br/>Voor beeld 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |Nee |
 | partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |Nee |
 | Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
@@ -4015,7 +4015,7 @@ Zie voor meer informatie het artikel [SFTP connector](data-factory-sftp-connecto
 ### <a name="file-system-source-in-copy-activity"></a>Bestandssysteem bron in Kopieer activiteit
 Als u gegevens van een SFTP-bron kopieert, stelt u het **bron type** van de Kopieer activiteit in op **FileSystemSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | recursieve |Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. |True, False (standaard) |Nee |
 
@@ -4069,7 +4069,7 @@ Zie voor meer informatie het artikel [SFTP connector](data-factory-sftp-connecto
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde HTTP-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **http**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | url | Basis-URL naar de webserver | Ja |
 | authenticationType | Hiermee geeft u het verificatie type op. Toegestane waarden zijn: **Anonymous**, **Basic**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Raadpleeg de secties onder deze tabel voor meer eigenschappen en JSON-voor beelden voor deze verificatie typen. | Ja |
@@ -4080,7 +4080,7 @@ Als u een gekoppelde HTTP-service wilt definiëren, stelt u het **type** van de 
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>Voor beeld: Basic, Digest of Windows-verificatie gebruiken
 Stel `authenticationType` in als `Basic`, `Digest` of `Windows` en geef de volgende eigenschappen op, naast de algemene HTTP-connectors die hierboven zijn geïntroduceerd:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | gebruikersnaam | Gebruikers naam voor toegang tot het HTTP-eind punt. | Ja |
 | wachtwoord | Wacht woord voor de gebruiker (gebruikers naam). | Ja |
@@ -4104,7 +4104,7 @@ Stel `authenticationType` in als `Basic`, `Digest` of `Windows` en geef de volge
 
 Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `ClientCertificate` en geeft u de volgende eigenschappen op, naast de algemene HTTP-connectors die hierboven zijn geïntroduceerd:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | embeddedCertData | De met base64 gecodeerde inhoud van binaire gegevens van het PFX-bestand (Personal Information Exchange). | Geef het `embeddedCertData` of `certThumbprint` op. |
 | certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Alleen Toep assen bij het kopiëren van gegevens uit een on-premises HTTP-bron. | Geef het `embeddedCertData` of `certThumbprint` op. |
@@ -4114,7 +4114,7 @@ Als u `certThumbprint` gebruikt voor verificatie en het certificaat is geïnstal
 
 1. Start micro soft Management Console (MMC). Voeg de module **certificaten** toe die gericht is op de **lokale computer**.
 2. Vouw **certificaten**uit, **persoonlijk**en klik op **certificaten**.
-3. Klik met de rechter muisknop op het certificaat in het persoonlijke archief en selecteer **alle taken**->**persoonlijke sleutels beheren...**
+3. Klik met de rechter muisknop op het certificaat in het persoonlijke archief en selecteer **alle taken**->**persoonlijke sleutels te beheren...**
 3. Voeg op het tabblad **beveiliging** het gebruikers account toe waaronder Data Management gateway host-service wordt uitgevoerd met de lees toegang tot het certificaat.
 
 **Voor beeld: client certificaat gebruiken:** Deze gekoppelde service koppelt uw data factory aan een on-premises HTTP-webserver. Er wordt een client certificaat gebruikt dat is geïnstalleerd op de computer waarop Data Management Gateway is geïnstalleerd.
@@ -4157,9 +4157,9 @@ Zie het artikel [http-connector](data-factory-http-connector.md#linked-service-p
 ### <a name="dataset"></a>Gegevensset
 Als u een HTTP-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **http**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. <br><br> Als u een dynamische URL wilt maken, kunt u [Data Factory-functies en systeem variabelen](data-factory-functions-variables.md)gebruiken, bijvoorbeeld: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`. | Nee |
+| relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. <br><br> Als u een dynamische URL wilt maken, kunt u [Data Factory functies en systeem variabelen](data-factory-functions-variables.md)gebruiken, bijvoorbeeld: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`. | Nee |
 | requestMethod | Http-methode. Toegestane waarden zijn **Get** of **post**. | Nee. De standaardwaarde is `GET`. |
 | additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
 | requestBody | Hoofd tekst voor HTTP-aanvraag. | Nee |
@@ -4213,7 +4213,7 @@ Zie het artikel [http-connector](data-factory-http-connector.md#dataset-properti
 ### <a name="http-source-in-copy-activity"></a>HTTP-bron in Kopieer activiteit
 Als u gegevens uit een HTTP-bron kopieert, stelt u het **bron type** van de Kopieer activiteit in op **http**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | De time-out (time span) voor de HTTP-aanvraag om een antwoord te krijgen. Het is de time-out om een antwoord te krijgen, niet de time-out voor het lezen van antwoord gegevens. | Nee. Standaard waarde: 00:01:40 |
 
@@ -4267,7 +4267,7 @@ Zie het artikel [http-connector](data-factory-http-connector.md#copy-activity-pr
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde OData-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **odata**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | url |De URL van de OData-service. |Ja |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de OData-bron. <br/><br/> Voor Cloud OData zijn mogelijke waarden anoniem, basis en OAuth (Opmerking Azure Data Factory momenteel alleen op Azure Active Directory gebaseerde OAuth). <br/><br/> Voor on-premises OData zijn mogelijke waarden anoniem, basis en Windows. |Ja |
@@ -4347,7 +4347,7 @@ Zie [OData-connector](data-factory-odata-connector.md#linked-service-properties)
 ### <a name="dataset"></a>Gegevensset
 Als u een OData-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **ODataResource**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | programmapad |Pad naar de OData-resource |Nee |
 
@@ -4382,7 +4382,7 @@ Zie [OData-connector](data-factory-odata-connector.md#dataset-properties) artike
 ### <a name="relational-source-in-copy-activity"></a>Relationele bron in Kopieer activiteit
 Als u gegevens uit een OData-bron kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Voorbeeld | Verplicht |
+| Eigenschap | Beschrijving | Voorbeeld | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |"? $select = naam, beschrijving & $top = 5" |Nee |
 
@@ -4437,9 +4437,9 @@ Zie [OData-connector](data-factory-odata-connector.md#copy-activity-properties) 
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde ODBC-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **OnPremisesOdbc**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| Verbindings |Het referentie deel voor niet-toegang van de connection string en een optionele versleutelde referentie. Zie de voor beelden in de volgende secties. |Ja |
+| connectionString |Het referentie deel voor niet-toegang van de connection string en een optionele versleutelde referentie. Zie de voor beelden in de volgende secties. |Ja |
 | referenties |Het deel van de toegangs referentie van de connection string dat is opgegeven in de eigenschaps waarde-indeling van het stuur programma. Voorbeeld: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Nee |
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met het ODBC-gegevens archief. Mogelijke waarden zijn: anoniem en basis. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op als u basis verificatie gebruikt. |Nee |
@@ -4502,7 +4502,7 @@ Zie voor meer informatie het artikel over [ODBC-connectors](data-factory-odbc-co
 ### <a name="dataset"></a>Gegevensset
 Als u een ODBC-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **RelationalTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in het ODBC-gegevens archief. |Ja |
 
@@ -4537,7 +4537,7 @@ Zie voor meer informatie het artikel over [ODBC-connectors](data-factory-odbc-co
 ### <a name="relational-source-in-copy-activity"></a>Relationele bron in Kopieer activiteit
 Als u gegevens uit een ODBC-gegevens archief kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |SQL-query teken reeks. Bijvoorbeeld: `select * from MyTable`. |Ja |
 
@@ -4585,15 +4585,15 @@ Als u gegevens uit een ODBC-gegevens archief kopieert, stelt u het **bron type**
 
 Zie voor meer informatie het artikel over [ODBC-connectors](data-factory-odbc-connector.md#copy-activity-properties) .
 
-## <a name="salesforce"></a>Salesforce
+## <a name="salesforce"></a>SalesForce
 
 
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde service voor Sales Force wilt definiëren, stelt u het **type** van de gekoppelde service in op **Sales Force**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br><br> -Standaard is https: \//login. Sales Force. com. <br> -Geef https://test.salesforce.com op om gegevens uit de sandbox te kopiëren. <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld ' https://[domain]. mijn. Sales Force. com ' op. |Nee |
+| environmentUrl | Geef de URL van het Sales Force-exemplaar op. <br><br> -Standaard is ' https:\//login.salesforce.com '. <br> -Geef "https://test.salesforce.com" op om gegevens uit de sandbox te kopiëren. <br> -Als u gegevens wilt kopiëren uit een aangepast domein, geeft u bijvoorbeeld ' https://[domain]. mijn. Sales Force. com ' op. |Nee |
 | gebruikersnaam |Geef een gebruikers naam op voor het gebruikers account. |Ja |
 | wachtwoord |Geef een wacht woord op voor het gebruikers account. |Ja |
 | Security |Geef een beveiligings token op voor het gebruikers account. Zie [beveiligings Token ophalen](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) voor instructies over het opnieuw instellen/ophalen van een beveiligings token. Zie [beveiliging en de API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)voor meer informatie over beveiligings tokens in het algemeen. |Ja |
@@ -4619,7 +4619,7 @@ Zie het artikel [Sales Force-connector](data-factory-salesforce-connector.md#lin
 ### <a name="dataset"></a>Gegevensset
 Als u een Sales Force-gegevensset wilt definiëren, stelt u het **type** van de gegevensset in op **RelationalTable**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | tableName |De naam van de tabel in Sales Force. |Nee (als er een **query** van **RelationalSource** is opgegeven) |
 
@@ -4655,7 +4655,7 @@ Zie het artikel [Sales Force-connector](data-factory-salesforce-connector.md#dat
 ### <a name="relational-source-in-copy-activity"></a>Relationele bron in Kopieer activiteit
 Als u gegevens uit Sales Force kopieert, stelt u het **bron type** van de Kopieer activiteit in op **RelationalSource**en geeft u de volgende eigenschappen op in de sectie **bron** :
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | query |Gebruik de aangepaste query om gegevens te lezen. |Een SQL-92 query of [Sales Force object query language-query (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Bijvoorbeeld `select * from MyTable__c`. |Nee (als de **tabel naam** van de **gegevensset** is opgegeven) |
 
@@ -4714,7 +4714,7 @@ Zie het artikel [Sales Force-connector](data-factory-salesforce-connector.md#cop
 ### <a name="linked-service"></a>Gekoppelde service
 Als u een gekoppelde web-service wilt definiëren, stelt u het **type** van de gekoppelde service in op **Web**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | URL |URL naar de webbron |Ja |
 | authenticationType |Toegang. |Ja |
@@ -4741,11 +4741,11 @@ Zie het artikel [Web Table connector](data-factory-web-table-connector.md#linked
 ### <a name="dataset"></a>Gegevensset
 Als u een web-gegevensset wilt definiëren, stelt u het **type** gegevensset in op **Webtabel**en geeft u de volgende eigenschappen op in de sectie **typeProperties** :
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type |Het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
 | programmapad |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
-| TabIndex |De index van de tabel in de resource. Zie index ophalen van een tabel in een sectie met een HTML-pagina voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
+| index |De index van de tabel in de resource. Zie index ophalen van een tabel in een sectie met een HTML-pagina voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
 #### <a name="example"></a>Voorbeeld
 
@@ -4834,10 +4834,10 @@ De Azure Data Factory-service kan automatisch een HDInsight-cluster op basis van
 ### <a name="linked-service"></a>Gekoppelde service
 De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt in de Azure JSON-definitie van een gekoppelde HDInsight-service op aanvraag.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op **HDInsightOnDemand**. |Ja |
-| clusterSize |Aantal werk-en gegevens knooppunten in het cluster. Het HDInsight-cluster wordt gemaakt met 2 hoofd knooppunten, samen met het aantal worker-knoop punten dat u voor deze eigenschap opgeeft. De knoop punten hebben een grootte van Standard_D3 met vier kernen, dus een cluster knooppunt van 4 heeft 24 kernen (4 @ no__t-04 = 16 kernen voor worker-knoop punten, plus 2 @ no__t-14 = 8 kernen voor hoofd knooppunten). Zie op [Linux gebaseerde Hadoop-clusters maken in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over de Standard_D3-laag. |Ja |
+| clusterSize |Aantal werk-en gegevens knooppunten in het cluster. Het HDInsight-cluster wordt gemaakt met 2 hoofd knooppunten, samen met het aantal worker-knoop punten dat u voor deze eigenschap opgeeft. De knoop punten hebben een grootte van Standard_D3 met vier kernen, dus een cluster knooppunt van 4 heeft 24 kernen (4\*4 = 16 kernen voor worker-knoop punten, plus 2\*4 = 8 kernen voor hoofd knooppunten). Zie op [Linux gebaseerde Hadoop-clusters maken in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie over de Standard_D3-laag. |Ja |
 | timetolive |De toegestane tijd niet-actief voor het HDInsight-cluster op aanvraag. Hiermee geeft u op hoe lang het HDInsight-cluster op aanvraag actief blijft na voltooiing van een uitvoering van een activiteit als er geen andere actieve taken in het cluster zijn.<br/><br/>Als bijvoorbeeld het uitvoeren van een activiteit zes minuten duurt en timetolive is ingesteld op 5 minuten, blijft het cluster 5 minuten na de 6 minuten van verwerking van de uitvoering van de activiteit actief. Als er een andere uitvoering van de activiteit wordt uitgevoerd met het venster van 6 minuten, wordt deze verwerkt door hetzelfde cluster.<br/><br/>Het maken van een HDInsight-cluster op aanvraag is een dure bewerking (kan enige tijd duren). Gebruik deze instelling daarom zo nodig om de prestaties van een data factory te verbeteren door opnieuw gebruik te maken van een on-demand HDInsight-cluster.<br/><br/>Als u timetolive waarde instelt op 0, wordt het cluster verwijderd zodra de activiteit wordt uitgevoerd. Als u daarentegen een hoge waarde instelt, kan het cluster onnodig onbeschikbaar blijven als gevolg van hoge kosten. Daarom is het belang rijk dat u de juiste waarde instelt op basis van uw behoeften.<br/><br/>Meerdere pijp lijnen kunnen hetzelfde exemplaar van het HDInsight-cluster op aanvraag delen als de waarde van de eigenschap timetolive op de juiste wijze is ingesteld |Ja |
 | versie |De versie van het HDInsight-cluster. Zie [ondersteunde HDInsight-versies in azure Data Factory](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory)voor meer informatie. |Nee |
 | linkedServiceName |Azure Storage gekoppelde service die moet worden gebruikt door het cluster op aanvraag om gegevens op te slaan en te verwerken. <p>Op dit moment kunt u geen HDInsight-cluster op aanvraag maken dat gebruikmaakt van een Azure Data Lake Store als opslag. Als u de resultaat gegevens van HDInsight-verwerking in een Azure Data Lake Store wilt opslaan, gebruikt u een Kopieer activiteit om de gegevens van de Azure-Blob Storage naar de Azure Data Lake Store te kopiëren.</p>  | Ja |
@@ -4872,7 +4872,7 @@ U kunt een gekoppelde Azure HDInsight-service maken om uw eigen HDInsight-cluste
 ### <a name="linked-service"></a>Gekoppelde service
 De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt in de Azure JSON-definitie van een gekoppelde Azure HDInsight-service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op **HDInsight**. |Ja |
 | clusterUri |De URI van het HDInsight-cluster. |Ja |
@@ -4905,7 +4905,7 @@ U kunt een Azure Batch gekoppelde service maken om een batch-pool van virtuele m
 ### <a name="linked-service"></a>Gekoppelde service
 De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt in de Azure JSON-definitie van een Azure Batch gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op **AzureBatch**. |Ja |
 | accountName |De naam van het Azure Batch-account. |Ja |
@@ -4937,7 +4937,7 @@ U maakt een Azure Machine Learning gekoppelde service om een Machine Learning ba
 ### <a name="linked-service"></a>Gekoppelde service
 De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt in de Azure JSON-definitie van een Azure Machine Learning gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | Type |De eigenschap type moet worden ingesteld op: **AzureML**. |Ja |
 | mlEndpoint |De batch Score-URL. |Ja |
@@ -4965,7 +4965,7 @@ U maakt een **Azure data Lake Analytics** gekoppelde service om een Azure data L
 
 De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt in de JSON-definitie van een Azure Data Lake Analytics gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | Type |De eigenschap type moet worden ingesteld op: **AzureDataLakeAnalytics**. |Ja |
 | accountName |Azure Data Lake Analytics account naam. |Ja |
@@ -5005,12 +5005,12 @@ U maakt een gekoppelde service van het type **OnPremisesSqlServer** om een on-pr
 
 In de volgende tabel vindt u een beschrijving van de JSON-elementen die specifiek zijn voor SQL Server gekoppelde service.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op: **OnPremisesSqlServer**. |Ja |
-| Verbindings |Geef de Connections Tring-gegevens op die nodig zijn om verbinding te maken met de on-premises SQL Server Data Base via SQL-verificatie of Windows-verificatie. |Ja |
+| connectionString |Geef de Connections Tring-gegevens op die nodig zijn om verbinding te maken met de on-premises SQL Server Data Base via SQL-verificatie of Windows-verificatie. |Ja |
 | gatewayName |De naam van de gateway die de Data Factory-service moet gebruiken om verbinding te maken met de on-premises SQL Server-Data Base. |Ja |
-| gebruikersnaam |Geef de gebruikers naam op als u Windows-verificatie gebruikt. Voor beeld: **domainname @ no__t-1username**. |Nee |
+| gebruikersnaam |Geef de gebruikers naam op als u Windows-verificatie gebruikt. Voorbeeld: **domainname\\username**. |Nee |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. |Nee |
 
 U kunt referenties versleutelen met de cmdlet **New-AzDataFactoryEncryptValue** en deze gebruiken in de Connection String, zoals wordt weer gegeven in het volgende voor beeld (eigenschap**EncryptedCredential** ):
@@ -5074,7 +5074,7 @@ Activiteit | Beschrijving
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive-activiteit
 U kunt de volgende eigenschappen opgeven in een JSON-definitie van Hive-activiteit. De eigenschap type voor de activiteit moet: **HDInsightHive**. U moet eerst een gekoppelde HDInsight-service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op HDInsightHive:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | uit |Het Hive-script inline opgeven |Nee |
 | scriptpad |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
@@ -5120,7 +5120,7 @@ Zie het artikel Hive- [activiteit](data-factory-hive-activity.md) voor meer info
 ## <a name="hdinsight-pig-activity"></a>HDInsight Pig-activiteit
 U kunt de volgende eigenschappen opgeven in de JSON-definitie van een Pig-activiteit. De eigenschap type voor de activiteit moet: **HDInsightPig**. U moet eerst een gekoppelde HDInsight-service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op HDInsightPig:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | uit |Inline van het Pig-script opgeven |Nee |
 | scriptpad |Sla het Pig-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
@@ -5172,7 +5172,7 @@ Zie het artikel Pig-activiteit voor meer informatie.
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce-activiteit
 U kunt de volgende eigenschappen opgeven in een JSON-definitie van de MapReduce-activiteit. De eigenschap type voor de activiteit moet: **HDInsightMapReduce**. U moet eerst een gekoppelde HDInsight-service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op HDInsightMapReduce:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | jarLinkedService | De naam van de gekoppelde service voor de Azure Storage die het JAR-bestand bevat. | Ja |
 | jarFilePath | Pad naar het JAR-bestand in de Azure Storage. | Ja |
@@ -5294,7 +5294,7 @@ Zie het artikel [Hadoop streaming-activiteit](data-factory-hadoop-streaming-acti
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark-activiteit
 U kunt de volgende eigenschappen opgeven in een JSON-definitie van een Spark-activiteit. De eigenschap type voor de activiteit moet: **HDInsightSpark**. U moet eerst een gekoppelde HDInsight-service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op HDInsightSpark:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
 | rootPath | De Azure Blob-container en de map waarin het Spark-bestand zich bevindt. De bestands naam is hoofdletter gevoelig. | Ja |
 | entryFilePath | Relatief pad naar de hoofdmap van de Spark-code/-pakket. | Ja |
@@ -5336,7 +5336,7 @@ U kunt de volgende eigenschappen opgeven in een JSON-definitie van een Spark-act
 Houd rekening met de volgende punten:
 
 - De eigenschap **type** wordt ingesteld op **HDInsightSpark**.
-- De **rootPath** is ingesteld op **adfspark @ no__t-2pyFiles** waarbij adfspark de Azure Blob-container is en pyFiles in die container een fijne map is. In dit voor beeld is de Azure-Blob Storage de versie die is gekoppeld aan het Spark-cluster. U kunt het bestand uploaden naar een andere Azure Storage. Als u dit doet, maakt u een Azure Storage gekoppelde service om het opslag account te koppelen aan de data factory. Geef vervolgens de naam van de gekoppelde service op als waarde voor de eigenschap **sparkJobLinkedService** . Zie Eigenschappen van Spark-activiteit voor meer informatie over deze eigenschap en andere eigenschappen die door de Spark-activiteit worden ondersteund.
+- De **rootPath** is ingesteld op **adfspark\\pyFiles** , waarbij adfspark de Azure Blob-container is en pyFiles een fijnere map in die container. In dit voor beeld is de Azure-Blob Storage de versie die is gekoppeld aan het Spark-cluster. U kunt het bestand uploaden naar een andere Azure Storage. Als u dit doet, maakt u een Azure Storage gekoppelde service om het opslag account te koppelen aan de data factory. Geef vervolgens de naam van de gekoppelde service op als waarde voor de eigenschap **sparkJobLinkedService** . Zie Eigenschappen van Spark-activiteit voor meer informatie over deze eigenschap en andere eigenschappen die door de Spark-activiteit worden ondersteund.
 - De **entryFilePath** is ingesteld op de **test.py**. Dit is het python-bestand.
 - De eigenschap **getDebugInfo** is ingesteld op **Always**, wat betekent dat de logboek bestanden altijd worden gegenereerd (geslaagd of mislukt).
 
@@ -5349,7 +5349,7 @@ Zie artikel [Spark-activiteit](data-factory-spark.md) voor meer informatie over 
 ## <a name="machine-learning-batch-execution-activity"></a>Machine Learning-batchuitvoeringsactiviteit
 U kunt de volgende eigenschappen opgeven in een JSON-definitie van een Azure Machine Learning Studio-activiteit. De eigenschap type voor de activiteit moet: **AzureMLBatchExecution**. U moet eerst een Azure Machine Learning gekoppelde service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op AzureMLBatchExecution:
 
-Eigenschap | Beschrijving | Verplicht
+Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
 Webserviceinputactivity | De gegevensset die moet worden door gegeven als invoer voor de web-service van Azure Machine Learning Studio. Deze gegevensset moet ook worden opgenomen in de invoer voor de activiteit. |Gebruik ofwel Webserviceinputactivity of webServiceInputs. |
 webServiceInputs | Geef gegevens sets op die moeten worden door gegeven als invoer voor de web-service van Azure Machine Learning Studio. Als de webservice meerdere invoer heeft, gebruikt u de eigenschap webServiceInputs in plaats van de eigenschap Webserviceinputactivity te gebruiken. Gegevens sets waarnaar wordt verwezen door de **webServiceInputs** moeten ook worden opgenomen in de activiteiten **invoer**. | Gebruik ofwel Webserviceinputactivity of webServiceInputs. |
@@ -5405,7 +5405,7 @@ In het JSON-voor beeld gebruikt de geïmplementeerde Azure Machine Learning-webs
 ## <a name="machine-learning-update-resource-activity"></a>Machine Learning-activiteit resources bijwerken
 U kunt de volgende eigenschappen opgeven in een Azure Machine Learning Studio update resource activity JSON definition. De eigenschap type voor de activiteit moet: **AzureMLUpdateResource**. U moet eerst een Azure Machine Learning gekoppelde service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op AzureMLUpdateResource:
 
-Eigenschap | Beschrijving | Verplicht
+Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
 trainedModelName | De naam van het opnieuw getrainde model. | Ja |
 trainedModelDatasetName | DataSet die verwijst naar het iLearner-bestand dat wordt geretourneerd door de bewerking voor opnieuw trainen. | Ja |
@@ -5472,7 +5472,7 @@ De pijp lijn heeft twee activiteiten: **AzureMLBatchExecution** en **AzureMLUpda
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
 U kunt de volgende eigenschappen opgeven in de JSON-definitie van een U-SQL-activiteit. De eigenschap type voor de activiteit moet: **DataLakeAnalyticsU-SQL**zijn. U moet een Azure Data Lake Analytics gekoppelde service maken en de naam ervan opgeven als een waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op DATALAKEANALYTICSU-SQL:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | scriptPath |Pad naar de map die het U-SQL-script bevat. De naam van het bestand is hoofdletter gevoelig. |Nee (als u script gebruikt) |
 | scriptLinkedService |Gekoppelde service die de opslag met het script koppelt aan de data factory |Nee (als u script gebruikt) |
@@ -5545,7 +5545,7 @@ U kunt de volgende eigenschappen opgeven in de JSON-definitie van een opgeslagen
 
 De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op SqlServerStoredProcedure:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | storedProcedureName |Geef de naam op van de opgeslagen procedure in de Azure-SQL database of Azure SQL Data Warehouse die wordt vertegenwoordigd door de gekoppelde service die door de uitvoer tabel wordt gebruikt. |Ja |
 | storedProcedureParameters |Geef waarden op voor opgeslagen procedure parameters. Als u null moet door geven voor een para meter, gebruikt u de syntaxis: "param1": Null (alle kleine letters). Raadpleeg het volgende voor beeld voor meer informatie over het gebruik van deze eigenschap. |Nee |
@@ -5585,7 +5585,7 @@ Zie het artikel [opgeslagen procedure-activiteit](data-factory-stored-proc-activ
 ## <a name="net-custom-activity"></a>Aangepaste .NET-activiteit
 U kunt de volgende eigenschappen opgeven in een JSON-definitie van een aangepaste .NET-activiteit. De eigenschap type voor de activiteit moet: **DotNetActivity**. U moet een gekoppelde Azure HDInsight-service of een Azure Batch gekoppelde service maken en de naam van de gekoppelde service opgeven als waarde voor de eigenschap **linkedServiceName** . De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wanneer u het type activiteit instelt op DotNetActivity:
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | AssemblyName | De naam van de assembly. In het voor beeld is dit: **MyDotnetActivity. dll**. | Ja |
 | Toegangs |De naam van de klasse die de IDotNetActivity-interface implementeert. In het voor beeld is dit: **MyDotNetActivityNS. MyDotNetActivity** waarbij MyDotNetActivityNS de naam ruimte is en MyDotNetActivity de klasse is.  | Ja |

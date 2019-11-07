@@ -1,5 +1,5 @@
 ---
-title: Azure-gegevens fabrieken visueel bewaken | Microsoft Docs
+title: Azure-gegevensfabrieken visueel bewaken
 description: Meer informatie over het visueel bewaken van Azure-gegevens fabrieken
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029141"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684636"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure-gegevensfabrieken visueel bewaken
 Azure Data Factory is een service voor gegevens integratie in de Cloud. U kunt het gebruiken om gegevensgestuurde werk stromen te maken in de Cloud voor het organiseren en automatiseren van gegevens verplaatsing en gegevens transformatie. Met behulp van Azure Data Factory kunt u het volgende doen:
@@ -40,14 +40,14 @@ Bewaak pijp lijn-en activiteit uitvoeringen met een eenvoudige lijst weergave in
 ## <a name="monitor-pipeline-runs"></a>Pijplijnuitvoeringen controleren
 In de lijst weergave wordt elke pijplijn uitvoering voor uw Data Factory pijp lijnen weer gegeven. Deze kolom bevat de volgende kolommen:
 
-| **De naam van kolom** | **Beschrijving** |
+| **Kolom naam** | **Beschrijving** |
 | --- | --- |
 | Naam van pijp lijn | Naam van de pijp lijn |
 | Acties | Er is één actie beschikbaar om de uitvoering van de activiteit weer te geven |
 | Start uitvoeren | Begin datum en-tijd voor de pijplijn uitvoering (MM/DD/JJJJ, uu: MM: SS AM/PM) |
-| Duration | Uitvoerings duur (UU: MM: SS) |
+| Duur | Uitvoerings duur (UU: MM: SS) |
 | Geactiveerd door | Hand matige trigger of geplande trigger |
-| State | **Mislukt**, **geslaagd**of **in behandeling** |
+| Status | **Mislukt**, **geslaagd**of **in behandeling** |
 | Parameters | Para meters voor de pijp lijn run (naam/waarde-paren) |
 | Fout | Fout bij uitvoering van pijp lijn (indien van toepassing) |
 | Run-ID | ID van de pijplijn uitvoering |
@@ -57,15 +57,15 @@ In de lijst weergave wordt elke pijplijn uitvoering voor uw Data Factory pijp li
 ## <a name="monitor-activity-runs"></a>Uitvoering van activiteiten controleren
 In de lijst weergave worden de uitvoeringen van activiteiten weer gegeven die overeenkomen met elke pijplijn uitvoering. Als u de uitvoering van de activiteit voor elke pijplijn uitvoering wilt weer geven, selecteert u het pictogram **activiteit wordt uitgevoerd** onder de kolom **acties** . De lijst weergave bevat de volgende kolommen:
 
-| **De naam van kolom** | **Beschrijving** |
+| **Kolom naam** | **Beschrijving** |
 | --- | --- |
 | Naam van activiteit | De naam van de activiteit in de pijp lijn |
 | Type activiteit | Type activiteit, zoals **copy**, **HDInsightSpark**of **HDInsightHive** |
 | Start uitvoeren | Begin datum en-tijd voor de uitvoering van de activiteit (MM/DD/JJJJ, uu: MM: SS AM/PM) |
-| Duration | Uitvoerings duur (UU: MM: SS) |
-| State | **Mislukt**, **geslaagd**of **in behandeling** |
+| Duur | Uitvoerings duur (UU: MM: SS) |
+| Status | **Mislukt**, **geslaagd**of **in behandeling** |
 | Invoer | JSON-matrix waarmee de activiteiten invoer wordt beschreven |
-| Output | JSON-matrix waarmee de uitvoer van de activiteit wordt beschreven |
+| Uitvoer | JSON-matrix waarmee de uitvoer van de activiteit wordt beschreven |
 | Fout | Fout bij uitvoeren van activiteit (indien van toepassing) |
 
 ![Lijst weergave voor uitvoeringen van bewakings activiteiten](media/monitor-visually/activity-runs.png)
@@ -86,11 +86,11 @@ Beweeg de muis aanwijzer over het pictogram **Data Factory** linksboven. Selecte
 
 Order pijplijn wordt in DESC/ASC uitgevoerd op basis van de start tijd van de uitvoering. Filter pijplijn wordt uitgevoerd met behulp van de volgende kolommen:
 
-| **De naam van kolom** | **Beschrijving** |
+| **Kolom naam** | **Beschrijving** |
 | --- | --- |
 | Naam van pijp lijn | Naam van de pijplijn. Opties bevatten snelle filters voor de **afgelopen 24 uur**, de **afgelopen week**en de **afgelopen 30 dagen**. Of selecteer een aangepaste datum en tijd. |
 | Start uitvoeren | Begin datum en-tijd voor de pijplijn uitvoering. |
-| Uitvoerings status | Filter uitvoeringen op status: **Geslaagd**, **mislukt**of wordt **uitgevoerd**. |
+| Uitvoerings status | Filter wordt uitgevoerd op status: **geslaagd**, **mislukt**of wordt **uitgevoerd.** |
 
 ![Opties voor filteren](media/monitor-visually/filter.png)
 
@@ -161,7 +161,7 @@ Selecteer het pictogram **feedback** om ons feedback te geven over de verschille
 
 ## <a name="alerts"></a>Waarschuwingen
 
-U kunt waarschuwingen activeren over ondersteunde metrische gegevens in Data Factory. Selecteer  > -waarschuwingen **bewaken** **& metrische gegevens** op de pagina Data Factory bewaking om aan de slag te gaan.
+U kunt waarschuwingen activeren over ondersteunde metrische gegevens in Data Factory. Selecteer > waarschuwingen **bewaken** **& metrische gegevens** op de pagina Data Factory bewaking om aan de slag te gaan.
 
 ![Pagina Data Factory-monitor](media/monitor-visually/alerts01.png)
 

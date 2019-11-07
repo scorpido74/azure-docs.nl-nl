@@ -1,5 +1,5 @@
 ---
-title: Een openbaar eind punt-Azure SQL Database beheerd exemplaar configureren | Microsoft Docs
+title: Een openbaar eind punt-Azure SQL Database beheerd exemplaar configureren
 description: Meer informatie over het configureren van een openbaar eind punt voor een beheerd exemplaar
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567405"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687960"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Open bare eind punt in Azure SQL Database beheerde instantie configureren
 
@@ -33,12 +33,12 @@ In dit artikel leert u het volgende:
 
 Als gevolg van de gevoeligheid van gegevens die zich in een beheerd exemplaar bevindt, vereist de configuratie voor het inschakelen van het open bare eind punt van het beheerde exemplaar een proces dat uit twee stappen bestaat. Deze veiligheids maatregel voldoet aan de schei ding van taken (SoD):
 
-- Het inschakelen van een openbaar eind punt op een beheerd exemplaar moet worden uitgevoerd door de beheerder van het beheerde exemplaar. De beheerder van het beheerde exemplaar kan worden gevonden op de overzichts pagina van uw SQL Managed instance-resource.
+- Het inschakelen van een openbaar eind punt op een beheerd exemplaar moet worden uitgevoerd door de beheerder van het beheerde exemplaar. De beheerder van het beheerde exemplaar kan worden gevonden op de **overzichts** pagina van uw SQL Managed instance-resource.
 - Verkeer toestaan met behulp van een netwerk beveiligings groep die moet worden uitgevoerd door een netwerk beheerder. Zie [machtigingen voor netwerk beveiligings groepen](../virtual-network/manage-network-security-group.md#permissions)voor meer informatie.
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Openbaar eind punt inschakelen voor een beheerd exemplaar in het Azure Portal
 
-1. Start de Azure Portal op<https://portal.azure.com/.>
+1. Start de Azure Portal op <https://portal.azure.com/.>
 1. Open de resource groep met het beheerde exemplaar en selecteer het **SQL Managed instance** waarvoor u het open bare eind punt wilt configureren.
 1. Selecteer op de pagina **beveiligings** instellingen het tabblad **virtueel netwerk** .
 1. Selecteer op de pagina configuratie van virtueel netwerk de optie **inschakelen** en klik vervolgens op het pictogram **Opslaan** om de configuratie bij te werken.
@@ -80,29 +80,29 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Openbaar eindpunt verkeer toestaan voor de netwerk beveiligings groep
 
-1. Als u de configuratie pagina van het beheerde exemplaar nog steeds geopend hebt, gaat u naar het tabblad **overzicht** . Als dat niet het geval is, gaat u terug naar uw **SQL Managed instance** -resource. Selecteer de koppeling **virtueel netwerk/subnet** , waarmee u naar de configuratie pagina van het virtuele netwerk gaat.
+1. Als u de configuratie pagina van het beheerde exemplaar nog steeds geopend hebt, gaat u naar het tabblad **overzicht** . anders gaat u terug naar de resource van het **SQL Managed instance** . Selecteer de koppeling **virtueel netwerk/subnet** , waarmee u naar de configuratie pagina van het virtuele netwerk gaat.
 
     ![Mi-overview. png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
-1. Selecteer het tabblad subnetten in het linkerdeel venster configuratie van het virtuele netwerk en noteer de **beveiligings groep** voor uw beheerde exemplaar.
+1. Selecteer het tabblad **subnetten** in het linkerdeel venster configuratie van het virtuele netwerk en noteer de **beveiligings groep** voor uw beheerde exemplaar.
 
-    ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
+    ![Mi-vnet-subnet. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Ga terug naar de resource groep die uw beheerde exemplaar bevat. De naam van de **netwerk beveiligings groep** die hierboven wordt vermeld, wordt weer gegeven. Selecteer de naam om naar de configuratie pagina voor de netwerk beveiligings groep te gaan.
 
 1. Selecteer het tabblad **binnenkomende beveiligings regels** en voeg een regel **toe** met een hogere prioriteit dan de **deny_all_inbound** -regel met de volgende instellingen: </br> </br>
 
-    |Instelling  |Voorgestelde waarde  |Description  |
+    |Instelling  |Voorgestelde waarde  |Beschrijving  |
     |---------|---------|---------|
     |**Bron**     |Een IP-adres of service label         |<ul><li>Voor Azure-Services, zoals Power BI, selecteert u de Azure Cloud service-tag</li> <li>Gebruik NAT IP-adres voor uw computer of Azure-VM</li></ul> |
     |**Poort bereik van bron**     |*         |Dit op * (alle) laten staan als bron poorten worden meestal dynamisch toegewezen en als zodanig, onvoorspelbaar |
-    |**Destination**     |Any         |Bestemming weglaten om verkeer naar het subnet van het beheerde exemplaar toe te staan |
+    |**Beoogde**     |Alle         |Bestemming weglaten om verkeer naar het subnet van het beheerde exemplaar toe te staan |
     |**Poortbereiken van doel**     |3342         |Doel poort van bereik tot 3342, wat het open bare TDS-eind punt van het beheerde exemplaar is |
     |**Protocol**     |TCP         |Beheerd exemplaar gebruikt TCP-protocol voor TDS |
-    |**Actie**     |Allow         |Binnenkomend verkeer naar een beheerd exemplaar via het open bare eind punt toestaan |
-    |**prioriteit**     |1300         |Zorg ervoor dat deze regel een hogere prioriteit heeft dan de **deny_all_inbound** -regel |
+    |**Actie**     |Toestaan         |Binnenkomend verkeer naar een beheerd exemplaar via het open bare eind punt toestaan |
+    |**Prioriteit**     |1300         |Zorg ervoor dat deze regel een hogere prioriteit heeft dan de **deny_all_inbound** -regel |
 
-    ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
+    ![Mi-NSG-rules. png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Poort 3342 wordt gebruikt voor open bare eindpunt verbindingen met een beheerd exemplaar en kan op dit moment niet worden gewijzigd.

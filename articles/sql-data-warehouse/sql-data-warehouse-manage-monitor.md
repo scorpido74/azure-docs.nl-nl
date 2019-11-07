@@ -1,5 +1,5 @@
 ---
-title: Uw workload bewaken met Dmv's | Microsoft Docs
+title: Monitor your workload using DMVs
 description: Meer informatie over het bewaken van uw werk belasting met behulp van Dmv's.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d1af13eb54daf060f0172a0506370ca459f2ece
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018950"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645659"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 In dit artikel wordt beschreven hoe u dynamische beheer weergaven (Dmv's) gebruikt om uw workload te bewaken. Dit omvat het onderzoeken van het uitvoeren van query's in Azure SQL Data Warehouse.
@@ -45,7 +45,7 @@ Alle query's die worden uitgevoerd op SQL Data Warehouse, worden geregistreerd i
 
 Dit zijn de stappen die u moet volgen om de uitvoering van query's en tijden voor een bepaalde query te onderzoeken.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>STAP 1: Zoek de query die u wilt onderzoeken
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>STAP 1: de query die u wilt onderzoeken identificeren
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -81,7 +81,7 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>STAP 2: Het query plan onderzoeken
+### <a name="step-2-investigate-the-query-plan"></a>STAP 2: het query plan onderzoeken
 Gebruik de aanvraag-ID om het gedistribueerde SQL-abonnement (DSQL) van [sys. DM _pdw_request_steps][sys.dm_pdw_request_steps]op te halen.
 
 ```sql
@@ -98,7 +98,7 @@ Wanneer een DSQL-plan langer duurt dan verwacht, kan de oorzaak een complex plan
 Als u meer informatie wilt over één stap, de kolom *operation_type* van de langlopende query stap en noteer de **stap index**:
 
 * Ga door met stap 3a voor **SQL-bewerkingen**: OnOperation, RemoteOperation, ReturnOperation.
-* Ga door met stap 3b voor het **uitvoeren van gegevens verplaatsing**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Ga door met stap 3b voor **gegevens verplaatsings bewerkingen**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>STAP 3a: SQL onderzoeken op gedistribueerde data bases
 Gebruik de aanvraag-ID en de stap index om gegevens op te halen uit [sys. DM _pdw_sql_requests][sys.dm_pdw_sql_requests], die uitvoerings informatie bevat van de query stap op alle gedistribueerde data bases.
@@ -120,7 +120,7 @@ Wanneer de query stap wordt uitgevoerd, kan [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PD
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>STAP 3b: Gegevens verplaatsing in de gedistribueerde data bases onderzoeken
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>STAP 3b: de verplaatsing van gegevens op de gedistribueerde data bases onderzoeken
 Gebruik de aanvraag-ID en de stap index om informatie op te halen over een stap voor het verplaatsen van gegevens die wordt uitgevoerd op elke distributie vanuit [sys. DM _pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql

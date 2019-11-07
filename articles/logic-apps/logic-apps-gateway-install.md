@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 6467937e2aca08e234cb136c5f610503627921fb
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: d515982dc2937b660de75ee723cebe39b33bec7d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042234"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580876"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
 
-Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de [on-premises gegevens gateway](https://aka.ms/on-premises-data-gateway-installer) op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen on-premises en uw Logic apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, Microsoft Flow, PowerApps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
+Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de [on-premises gegevens gateway](https://aka.ms/on-premises-data-gateway-installer) op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen on-premises en uw Logic apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, energie automatisering, Power apps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
 
 * [On-premises gegevens gateway van micro soft Power BI](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft PowerApps on-premises gegevens gateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Microsoft Flow on-premises gegevens gateway](https://flow.microsoft.com/documentation/gateway-manage/)
+* [On-premises gegevens gateway van micro soft power apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Power on-premises gegevens gateway automatiseren](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
 
 In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt. Zie [Wat is een on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? voor meer informatie over de gateway.
@@ -105,7 +105,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
    De gateway-installatie kan slechts aan één Azure-account worden gekoppeld.
 
-1. Selecteer **een nieuwe gateway op deze computer registreren** > **volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
+1. Selecteer **een nieuwe gateway registreren op deze computer** > **volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
 
    ![Gateway op lokale computer registreren](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -140,7 +140,7 @@ In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downl
 
       ![Selecteer een andere regio voor de Gateway Service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. Bekijk de informatie in het laatste bevestigings venster. In dit voor beeld wordt hetzelfde account gebruikt voor Logic Apps, Power BI, PowerApps en Microsoft Flow, zodat de gateway beschikbaar is voor al deze services. Wanneer u klaar bent, selecteert u **sluiten**.
+1. Bekijk de informatie in het laatste bevestigings venster. In dit voor beeld wordt hetzelfde account gebruikt voor Logic Apps, Power BI, Power apps en Power Automatiseer, zodat de gateway beschikbaar is voor al deze services. Wanneer u klaar bent, selecteert u **sluiten**.
 
    ![Gegevens gateway gegevens bevestigen](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
@@ -179,7 +179,7 @@ Als u de locatie van de gateway moet wijzigen, de installatie van de gateway naa
 
 1. Nadat het installatie programma is geopend, meldt u zich aan met hetzelfde Azure-account dat is gebruikt om de gateway te installeren.
 
-1. Selecteer **een bestaande gateway migreren, herstellen of overnemen**  > **volgende**, bijvoorbeeld:
+1. Selecteer **een bestaande gateway migreren, herstellen of overnemen** > **volgende**, bijvoorbeeld:
 
    ![Selecteer een bestaande gateway migreren, herstellen of overnemen](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 

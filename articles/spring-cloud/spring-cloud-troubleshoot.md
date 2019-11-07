@@ -1,20 +1,17 @@
 ---
 title: Gids voor probleem oplossing voor Azure lente-Cloud | Microsoft Docs
 description: Gids voor probleem oplossing voor Azure lente-Cloud
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.topic: troubleshooting
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929153"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607614"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Gids voor probleem oplossing voor veelvoorkomende problemen
 
@@ -37,7 +34,7 @@ Service bindingen kunnen ook start fouten van toepassingen veroorzaken. Gebruik 
 
 `java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
 
-Als u deze fout wilt oplossen, gaat u naar de `server parameters` van uw MySql-exemplaar en wijzigt u `time_zone` van `SYSTEM` naar `+0:00`.
+Als u deze fout wilt oplossen, gaat u naar de `server parameters` van uw MySql-exemplaar en wijzigt u `time_zone` van `SYSTEM` in `+0:00`.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Mijn toepassing is vastgelopen of heeft een onverwachte fout gegenereerd
@@ -194,7 +191,7 @@ Zoek het onderliggende knoop punt met de naam `systemEnvironment`.  Dit knoop pu
 
 Ga naar _app-beheer_ om te _controleren of de_toepassing wordt _uitgevoerd_ .
 
-Als u metrische gegevens kunt zien van _JVM_ maar geen metrische gegevens van _Tomcat_, controleert u of de `spring-boot-actuator` afhankelijkheid is ingeschakeld in uw toepassings pakket en wordt opgestart.
+Als u metrische gegevens kunt zien van _JVM_ maar geen metrische gegevens van _Tomcat_, controleert u of de`spring-boot-actuator` afhankelijkheid is ingeschakeld in uw toepassings pakket en wordt opgestart.
 
 ```xml
 <dependency>

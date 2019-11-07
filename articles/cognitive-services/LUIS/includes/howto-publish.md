@@ -8,14 +8,14 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: f833ded4467da1f129b1ea7f858ae8bdd9c2048e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495298"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647459"
 ---
 Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoepassing, moet u de app publiceren naar het eindpunt. 
 
@@ -31,4 +31,4 @@ Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoe
 
     ![Publiceren naar eindpunt vanuit LUIS](../media/howto-publish/publish-endpoint-success.png)
 
-4. Selecteer de koppeling **endpoints** op de groene statusbalk om naar de pagina **Keys and endpoints** te gaan. De eindpunt-URL's worden onderaan vermeld.
+4. Selecteer de koppeling **uw eind punt-Url's openen** in de melding om naar de pagina **Azure-resources** te gaan. De eind punt-Url's worden weer gegeven als de **voorbeeld query**.

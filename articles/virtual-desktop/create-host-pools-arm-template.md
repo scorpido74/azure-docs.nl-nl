@@ -1,5 +1,5 @@
 ---
-title: Een Windows-hostgroep voor virtueel bureau blad maken met een Azure Resource Manager sjabloon-Azure
+title: Windows-hostgroep voor virtuele Bureau bladen Azure Resource Manager-Azure
 description: Het maken van een hostgroep in virtueel bureau blad van Windows met een Azure Resource Manager sjabloon.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 23d032a2496e975c7e6ceafb61691c2cb1216218
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679615"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605753"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Een hostpool maken met een Azure Resource Manager-sjabloon
 
@@ -42,7 +42,7 @@ Als u in een Cloud Solution Provider-abonnement implementeert, voert u de volgen
 
 1. Schuif omlaag en klik met de rechter muisknop op **implementeren naar Azure**, en selecteer vervolgens **koppelings locatie kopiëren**.
 2. Open een tekst editor zoals Klad blok en plak de koppeling daar.
-3. Direct na ' https://portal.azure.com/ ' en vóór de hashtag (#) voert u een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de indeling die u moet gebruiken: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+3. Direct na 'https://portal.azure.com/' en vóór de hashtag (#) voert u een apen staartje (@) in, gevolgd door de domein naam van de Tenant. Hier volgt een voor beeld van de indeling die u moet gebruiken: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
 4. Meld u aan bij de Azure Portal als gebruiker met beheerders-en Inzender machtigingen voor het Cloud Solution Provider-abonnement.
 5. Plak de koppeling die u naar de tekst editor hebt gekopieerd naar de adres balk.
 

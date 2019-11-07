@@ -8,8 +8,8 @@
       href: durable-functions-overview.md
     - name: Serverloze vergelijking
       href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Preview-functies
-      href: durable-functions-preview.md
+    - name: Versies van Durable Functions
+      href: durable-functions-versions.md
 - name: Snelstartgidsen
   expanded: true
   items:

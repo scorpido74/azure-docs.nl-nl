@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2dea1c160b07ac08075dad3a1ca1f6fc753e3481
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387633"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622655"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
 
@@ -33,10 +33,10 @@ In elke query-antwoord voegt Azure-resource grafiek twee beperkings koppen toe:
 - `x-ms-user-quota-remaining` (int): het resterende resource quotum voor de gebruiker. Deze waarde wordt toegewezen aan het aantal query's.
 - `x-ms-user-quota-resets-after` (UU: mm: SS): de tijds duur tot het quotum verbruik van een gebruiker opnieuw wordt ingesteld.
 
-Voor een demonstratie van de manier waarop de headers werken, kijken we naar een query-antwoord met de kop en waarden van `x-ms-user-quota-remaining: 10` en `x-ms-user-quota-resets-after: 00:00:03`.
+Voor een demonstratie van de manier waarop de headers werken, bekijken we een antwoord op de query met de koptekst en de waarden van `x-ms-user-quota-remaining: 10` en `x-ms-user-quota-resets-after: 00:00:03`.
 
 - Binnen de komende 3 seconden kunnen Maxi maal 10 query's worden verzonden zonder te zijn beperkt.
-- In 3 seconden worden de waarden van `x-ms-user-quota-remaining` en `x-ms-user-quota-resets-after` opnieuw ingesteld op respectievelijk `15` en `00:00:05`.
+- In 3 seconden worden de waarden van `x-ms-user-quota-remaining` en `x-ms-user-quota-resets-after` teruggezet naar respectievelijk `15` en `00:00:05`.
 
 Als u een voor beeld wilt van het gebruik van de kopteksten voor _uitstel_ op query aanvragen, raadpleegt u het voor beeld in [query parallel](#query-in-parallel).
 
@@ -227,7 +227,7 @@ Omdat Azure resource Graph Maxi maal 1000 vermeldingen in één query antwoord r
 
 ## <a name="still-get-throttled"></a>Nog steeds beperkt?
 
-Neem contact op met het team op [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)als u na het uitvoeren van de bovenstaande aanbevelingen een beperking krijgt.
+Neem contact op met het team op [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)als u een beperking krijgt na de bovenstaande aanbevelingen.
 
 Geef de volgende gegevens op:
 
@@ -240,4 +240,4 @@ Geef de volgende gegevens op:
 
 - Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
 - Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over [bronnen verkennen](explore-resources.md).
+- Meer informatie over hoe u [resources kunt verkennen](explore-resources.md).

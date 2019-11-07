@@ -1,5 +1,5 @@
 ---
-title: 'Azure Active Directory auth: Azure SQL | Microsoft Docs'
+title: 'Azure Active Directory auth: Azure SQL'
 description: Meer informatie over het gebruik van Azure Active Directory voor verificatie met SQL Database, een beheerd exemplaar en SQL Data Warehouse
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4516f75d80345312a6ca3b6dac3e5156d7e239e8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897004"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691363"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory authenticatie gebruiken voor verificatie met SQL
 
@@ -44,7 +44,7 @@ Met Azure AD-verificatie kunt u de identiteit van databasegebruikers en andere M
 De configuratie stappen omvatten de volgende procedures voor het configureren en gebruiken van Azure Active Directory-verificatie.
 
 1. Azure AD maken en vullen.
-2. Optioneel: Koppel of wijzig de Active Directory die momenteel aan uw Azure-abonnement is gekoppeld.
+2. Optioneel: koppel of wijzig de Active Directory die momenteel aan uw Azure-abonnement is gekoppeld.
 3. Maak een Azure Active Directory beheerder voor de Azure SQL Database-Server, het beheerde exemplaar of de [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 4. Configureer uw client computers.
 5. Maak Inge sloten database gebruikers in uw data base die zijn toegewezen aan Azure AD-identiteiten.
@@ -71,7 +71,7 @@ Wanneer u Azure AD-verificatie gebruikt, zijn er twee beheerders accounts voor d
 
 ## <a name="permissions"></a>Machtigingen
 
-Als u nieuwe gebruikers wilt maken, moet u `ALTER ANY USER` de machtiging hebben in de-data base. De `ALTER ANY USER` machtiging kan worden verleend aan elke database gebruiker. De `ALTER ANY USER` machtigingen worden ook opgeslagen door de beheerders accounts van de server en database gebruikers met `CONTROL ON DATABASE` de `ALTER ON DATABASE` machtiging of de machtigingen voor die data base, en `db_owner` door leden van de databaserol.
+Als u nieuwe gebruikers wilt maken, moet u de machtiging `ALTER ANY USER` hebben in de-data base. De `ALTER ANY USER` machtiging kan worden verleend aan elke database gebruiker. De `ALTER ANY USER` machtigingen worden ook bewaard door de beheerders accounts van de server en database gebruikers met de `CONTROL ON DATABASE`-of `ALTER ON DATABASE`-machtiging voor die data base, en door leden van de `db_owner`-databaserol.
 
 Als u een Inge sloten database gebruiker wilt maken in Azure SQL Database, een beheerd exemplaar of SQL Data Warehouse, moet u verbinding maken met de data base of het exemplaar met behulp van een Azure AD-identiteit. Als u de eerste Inge sloten database gebruiker wilt maken, moet u verbinding maken met de data base met behulp van een Azure AD-beheerder (die de eigenaar van de data base is). Dit wordt gedemonstreerd bij het [configureren en beheren van Azure Active Directory verificatie met SQL database of SQL Data Warehouse](sql-database-aad-authentication-configure.md). Een Azure AD-verificatie is alleen mogelijk als de Azure AD-beheerder is gemaakt voor Azure SQL Database-of SQL Data Warehouse-server. Als de Azure Active Directory-beheerder van de server is verwijderd, kunnen bestaande Azure Active Directory gebruikers die eerder in SQL Server zijn gemaakt, geen verbinding meer maken met de data base met behulp van hun Azure Active Directory referenties.
 
@@ -79,16 +79,16 @@ Als u een Inge sloten database gebruiker wilt maken in Azure SQL Database, een b
 
 - De volgende leden van Azure AD kunnen worden ingericht in Azure SQL Server of SQL Data Warehouse:
 
-  - Systeem eigen leden: Een lid dat is gemaakt in azure AD in het beheerde domein of in een klant domein. Zie [uw eigen domein naam toevoegen aan Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)voor meer informatie.
-  - Federatieve domein leden: Een lid dat is gemaakt in azure AD met een federatief domein. Zie [Microsoft Azure nu ondersteuning biedt voor Federatie met Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)voor meer informatie.
+  - Systeem eigen leden: een lid dat is gemaakt in azure AD in het beheerde domein of in een klant domein. Zie [uw eigen domein naam toevoegen aan Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)voor meer informatie.
+  - Federatieve domein leden: een lid dat is gemaakt in azure AD met een federatief domein. Zie [Microsoft Azure nu ondersteuning biedt voor Federatie met Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)voor meer informatie.
   - Geïmporteerde leden van andere Azure AD-personen die systeem eigen of federatieve domein leden zijn.
   - Active Directory groepen die zijn gemaakt als beveiligings groepen.
 
-- Azure AD-gebruikers die deel uitmaken van een groep `db_owner` met serverrol, kunnen de syntaxis **[Create Data Base scoped credentials](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** niet gebruiken voor Azure SQL database en Azure SQL Data Warehouse. U ziet de volgende fout:
+- Azure AD-gebruikers die deel uitmaken van een groep met `db_owner` serverrol, kunnen de syntaxis **[Create Data Base scoped CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)** niet gebruiken voor Azure SQL Database en Azure SQL Data Warehouse. U ziet de volgende fout:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    Verleen `db_owner` de rol rechtstreeks aan de individuele Azure AD-gebruiker om het probleem met de **referentie Create Data Base scoped** te beperken.
+    Verleen de `db_owner` rol rechtstreeks aan de individuele Azure AD-gebruiker om het probleem met de referentie voor het maken van de **Data Base** te beperken.
 
 - Deze systeem functies retour neren NULL-waarden wanneer ze worden uitgevoerd onder Azure AD-principals:
 
@@ -102,7 +102,7 @@ Als u een Inge sloten database gebruiker wilt maken in Azure SQL Database, een b
 
 - Azure AD-server-principals (aanmeldingen) en gebruikers worden ondersteund als een preview-functie voor [beheerde exemplaren](sql-database-managed-instance.md).
 - Het instellen van Azure AD-server principals (aanmeldingen) die zijn toegewezen aan een Azure AD-groep als de data base-eigenaar, wordt niet ondersteund in [beheerde exemplaren](sql-database-managed-instance.md).
-    - Een uitbrei ding hiervan is dat wanneer een groep wordt toegevoegd als onderdeel van `dbcreator` de server functie, gebruikers van deze groep kunnen verbinden met het beheerde exemplaar en nieuwe data bases kunnen maken, maar geen toegang tot de data base hebben. Dit is omdat de nieuwe data base-eigenaar SA is en niet de Azure AD-gebruiker. Dit probleem treedt niet op als de afzonderlijke gebruiker wordt toegevoegd aan de `dbcreator` server functie.
+    - Een uitbrei ding hiervan is dat wanneer een groep wordt toegevoegd als onderdeel van de `dbcreator` serverrol, gebruikers uit deze groep verbinding kunnen maken met het beheerde exemplaar en nieuwe data bases kunnen worden gemaakt, maar geen toegang tot de data base hebben. Dit is omdat de nieuwe data base-eigenaar SA is en niet de Azure AD-gebruiker. Dit probleem treedt niet op als de afzonderlijke gebruiker wordt toegevoegd aan de server functie `dbcreator`.
 - De uitvoering van SQL Agent-beheer en-taken wordt ondersteund voor Azure AD-server-principals (aanmeldingen).
 - Database-back-up en herstelbewerkingen kunnen worden uitgevoerd door Azure AD-server-principals (aanmeldingen).
 - Controle van alle-instructies met betrekking tot Azure AD-server-principals (aanmeldingen) en verificatie gebeurtenissen wordt ondersteund.
@@ -132,7 +132,7 @@ De volgende verificatie methoden worden ondersteund voor Azure AD server-princip
 
 - Voor een betere beheer baarheid raden wij u aan een exclusieve Azure AD-groep in te richten als beheerder.   
 - Er kan slechts één Azure AD-beheerder (een gebruiker of groep) worden geconfigureerd voor een Azure SQL Database Server of Azure SQL Data Warehouse op elk gewenst moment.
-  - Het toevoegen van Azure ad-server-principals (aanmeldingen) voor beheerde instanties (**open bare preview**) biedt de mogelijkheid om meerdere Azure ad server-principals (aanmeldingen) te `sysadmin` maken die kunnen worden toegevoegd aan de rol.
+  - Het toevoegen van Azure AD-server-principals (aanmeldingen) voor beheerde instanties (**open bare preview**) biedt de mogelijkheid om meerdere Azure ad server-principals (aanmeldingen) te maken die kunnen worden toegevoegd aan de `sysadmin` rol.
 - Alleen een Azure AD-beheerder voor SQL Server kan eerst verbinding maken met de Azure SQL Database-Server, het beheerde exemplaar of Azure SQL Data Warehouse met behulp van een Azure Active Directory-account. De beheerder van de Active Directory kan nieuwe Azure AD-database gebruikers configureren.   
 - Het is raadzaam om de time-out voor de verbinding in te stellen op 30 seconden.   
 - SQL Server 2016 Management Studio en SQL Server Data Tools voor Visual Studio 2015 (versie 14.0.60311.1 2016 april of hoger) ondersteunen Azure Active Directory-verificatie. (Azure AD-verificatie wordt ondersteund door de **.NET Framework gegevens provider voor sqlserver**; ten minste versie .NET Framework 4,6). Daarom zijn de nieuwste versies van deze hulpprogram ma's en gegevenslaag toepassingen (DAC en. BACPAC) kan gebruikmaken van Azure AD-verificatie.   

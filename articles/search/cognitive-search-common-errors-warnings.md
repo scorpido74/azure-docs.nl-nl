@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ed04c875140f3ecd14eff31829e931efbe84ea2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466777"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606651"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen van de AI-verrijkings pijplijn in azure Cognitive Search
 
@@ -32,7 +32,7 @@ De volgende secties kunnen u helpen bij het oplossen van fouten, waardoor het in
 ### <a name="could-not-read-document"></a>Kan document niet lezen
 De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan gebeuren vanwege:
 
-| Reden | Voorbeeld | Actie |
+| Reden | Voorbeeld | Bewerking |
 | --- | --- | --- |
 | inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. Kan `'{47.6,-122.1}'` niet opslaan in de kolom AUTHORS.  Verwacht type is JArray. | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als bijvoorbeeld het eerste document `'startTime'` veld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
 | fouten van de onderliggende service van de gegevens bron | (van Cosmos DB) `{"Errors":["Request rate is large"]}` | Controleer uw opslag instantie om te controleren of deze in orde is. Mogelijk moet u de schaal/partitionering aanpassen. |
@@ -41,7 +41,7 @@ De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan ge
 ### <a name="could-not-extract-document-content"></a>Kan document inhoud niet extra heren
 Indexeer functie met een BLOB-gegevens bron kan de inhoud niet ophalen uit het document (bijvoorbeeld een PDF-bestand). Dit kan gebeuren vanwege:
 
-| Reden | Voorbeeld | Actie |
+| Reden | Voorbeeld | Bewerking |
 | --- | --- | --- |
 | de BLOB overschrijdt de maximale grootte | Document is `'150441598'` bytes, wat groter is dan de maximale grootte `'134217728'` bytes voor de document extractie voor uw huidige servicelaag. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | de BLOB heeft een niet-ondersteund inhouds type | Het document bevat een niet-ondersteund inhouds type `'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -51,7 +51,7 @@ Indexeer functie met een BLOB-gegevens bron kan de inhoud niet ophalen uit het d
 ### <a name="could-not-parse-document"></a>Kan het document niet parseren
 De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is een probleem opgetreden bij het converteren van de document inhoud naar het opgegeven veld toewijzings schema. Dit kan gebeuren vanwege:
 
-| Reden | Voorbeeld | Actie |
+| Reden | Voorbeeld | Bewerking |
 | --- | --- | --- |
 | De document sleutel ontbreekt | De document sleutel mag niet ontbreken of zijn leeg | Zorg ervoor dat alle documenten geldige document sleutels hebben |
 | De document sleutel is ongeldig | De document sleutel mag niet langer zijn dan 1024 tekens | Wijzig de document sleutel zodat deze voldoet aan de validatie vereisten. |
@@ -61,7 +61,7 @@ De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is 
 ### <a name="could-not-execute-skill"></a>Kan de kwalificatie niet uitvoeren
 De Indexeer functie kan geen vaardigheid uitvoeren in de vaardig heden.
 
-| Reden | Voorbeeld | Actie |
+| Reden | Voorbeeld | Bewerking |
 | --- | --- | --- |
 | Problemen met de tijdelijke verbinding | Er is een tijdelijke fout opgetreden. Probeer het later opnieuw. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 | Mogelijke product bug | Er is een onverwachte fout opgetreden. | Dit duidt op een onbekende klasse fout. Dit kan betekenen dat er een product fout is opgetreden. Neem een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) op om hulp te krijgen. |
@@ -110,7 +110,7 @@ De maximum waarde die u voor de para meter `timeout` kunt instellen, is 230 seco
 
 Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevoegen aan de zoek index. Dit kan gebeuren vanwege:
 
-| Reden | Voorbeeld | Actie |
+| Reden | Voorbeeld | Bewerking |
 | --- | --- | --- |
 | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Een veld bevat een term die te groot is | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
 | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | Het document is te groot om te worden geïndexeerd | [Grote gegevens sets indexeren](search-howto-large-index.md)
@@ -161,7 +161,7 @@ Als u een standaard waarde wilt opgeven in het geval van een ontbrekende invoer,
 }
 ```
 
-| Reden | Voorbeeld | Actie |
+| Reden | Voorbeeld | Bewerking |
 | --- | --- | --- |
 | De vaardigheids invoer is van het verkeerde type | De vereiste `X` voor vaardigheids invoer is niet van het verwachte type `String`. De vereiste indeling voor het `X` van de kwalificatie invoer is niet in de verwachte vorm. | Bepaalde vaardig heden verwachten invoer van bepaalde typen, bijvoorbeeld [sentiment-vaardigheid](cognitive-search-skill-sentiment.md) verwacht `text` een teken reeks te zijn. Als met de invoer een niet-teken reeks waarde wordt opgegeven, wordt de kwalificatie niet uitgevoerd en worden er geen uitvoer gegenereerd. Zorg ervoor dat uw gegevensset uniforme invoer waarden bevat, of gebruik een [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) om de invoer voor te verwerken. Als u de vaardigheid over een matrix wilt door lopen, controleert u of de context van de vaardigheid en de invoer `*` op de juiste posities hebben. Normaal gesp roken moet zowel de context als de invoer bron eindigen op `*` voor matrices. |
 | Vaardigheids invoer ontbreekt | De vereiste `X` voor vaardigheids invoer ontbreekt. | Als in al uw documenten deze waarschuwing wordt weer gegeven, is er waarschijnlijk een type fout in de invoer paden en moet u de naam van de eigenschap name, extra of ontbrekende `*` in het pad controleren en documenten uit de gegevens bron de vereiste invoer definiëren. |
@@ -224,7 +224,12 @@ De mogelijkheid om een onvoltooide indexerings taak te hervatten, wordt gepredik
 
 Het is mogelijk om dit gedrag te negeren, waardoor er incrementele voortgang wordt gemaakt en deze waarschuwing wordt onderdrukt met behulp van de configuratie-eigenschap `assumeOrderByHighWatermarkColumn`.
 
-[Meer informatie over Cosmos DB incrementele voortgang en aangepaste query's.](https://go.microsoft.com/fwlink/?linkid=2099593)
+Zie [incrementele voortgang en aangepaste query's](search-howto-index-cosmosdb.md#IncrementalProgress)voor meer informatie.
+
+### <a name="truncated-extracted-text-to-x-characters"></a>Geëxtraheerde tekst afgekapt tot X tekens
+Indexeer functies beperken hoeveel tekst uit één document kan worden opgehaald. Deze limiet is afhankelijk van de prijs categorie: 32.000 tekens voor de gratis laag, 64.000 voor Basic en 4.000.000 voor Standard, standaard S2 en standaard S3-lagen. De tekst die is afgekapt, wordt niet geïndexeerd. U kunt deze waarschuwing vermijden door documenten met grote hoeveel heden tekst te splitsen in meerdere, kleinere documenten. 
+
+Zie voor meer informatie [indexerings limieten](search-limits-quotas-capacity.md#indexer-limits).
 
 ### <a name="could-not-map-output-field-x-to-search-index"></a>Kan het uitvoer veld ' X ' niet toewijzen aan de zoek index
 Uitvoer veld toewijzingen die naar niet-bestaande/null-gegevens verwijzen, genereren waarschuwingen voor elk document en resulteren in een leeg index veld. U kunt dit probleem omzeilen door de bron paden voor de toewijzing van het uitvoer veld te controleren op mogelijke type fouten of door een standaard waarde in te stellen met behulp van de [voorwaardelijke vaardigheid](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist).

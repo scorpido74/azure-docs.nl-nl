@@ -1,5 +1,5 @@
 ---
-title: Een Azure SQL Database-schema beheren in een app met meerdere tenants | Microsoft Docs
+title: Azure SQL Database schema beheren in een app met meerdere tenants
 description: Het schema voor meerdere tenants beheren in een toepassing met meerdere tenants die gebruikmaakt van Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: db6f471438324e984434704a2cab01d57c800ba5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a4838e571c6dc678fba470ef7f1026388f55d444
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570258"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691978"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Schema beheren in een SaaS-toepassing die gebruikmaakt van Shard multi tenant SQL-data bases
 
@@ -52,7 +52,7 @@ In deze zelfstudie leert u het volgende:
 - Azure PowerShell moet zijn geïnstalleerd. Zie [aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)voor meer informatie.
 
 > [!NOTE]
-> In deze zelf studie worden functies van de Azure SQL Database-service met een beperkte preview ([taak voor Elastic database](sql-database-elastic-database-client-library.md)) gebruikt. Als u deze zelf studie wilt uitvoeren, geeft u uw abonnement-id op *SaaSFeedback\@Microsoft.com* met de preview-versie van elastische taken. Wanneer u de bevestiging hebt ontvangen dat uw abonnement is ingeschakeld, [downloadt en installeert u de taak-cmdlets van de voorlopige versie](https://github.com/jaredmoo/azure-powershell/releases). Deze preview is beperkt, dus neem contact op met *SaaSFeedback\@Microsoft.com* voor verwante vragen of ondersteuning.
+> In deze zelf studie worden functies van de Azure SQL Database-service met een beperkte preview ([taak voor Elastic database](sql-database-elastic-database-client-library.md)) gebruikt. Als u deze zelf studie wilt uitvoeren, geeft u uw abonnements-ID op *SaaSFeedback\@Microsoft.com* met de preview-versie van elastische taken. Wanneer u de bevestiging hebt ontvangen dat uw abonnement is ingeschakeld, [downloadt en installeert u de taak-cmdlets van de voorlopige versie](https://github.com/jaredmoo/azure-powershell/releases). Dit voor beeld is beperkt, dus neem contact op met *SaaSFeedback\@Microsoft.com* voor gerelateerde vragen of ondersteuning.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Inleiding tot SaaS-schema beheer patronen
 
@@ -64,7 +64,7 @@ Met het Shard multi tenant-database model dat in dit voor beeld wordt gebruikt, 
 
 Er is een nieuwe versie van elastische taken die nu een geïntegreerde functie van Azure SQL Database zijn. Van deze nieuwe versie van Elastische taken is momenteel een beperkte preview beschikbaar. De beperkte preview-versie ondersteunt momenteel het gebruik van Power shell voor het maken van een taak agent en T-SQL voor het maken en beheren van taken.
 > [!NOTE]
-> In deze zelf studie worden functies van de SQL Database-service met een beperkte preview (taak voor Elastic Database) gebruikt. Als u deze zelf studie wilt uitvoeren, geeft u uw abonnements- SaaSFeedback@microsoft.com id op met de preview-versie van het onderwerp = elastische taken. Nadat u een bevestiging hebt ontvangen dat uw abonnement is ingeschakeld, downloadt en installeert u de nieuwste cmdlets voor de voorlopige versie van de taken. Dit voor beeld is beperkt, dus SaaSFeedback@microsoft.com Neem contact op met de bijbehorende vragen of ondersteuning.
+> In deze zelf studie worden functies van de SQL Database-service met een beperkte preview (taak voor Elastic Database) gebruikt. Als u deze zelf studie wilt uitvoeren, geeft u uw abonnements-ID op SaaSFeedback@microsoft.com met onderwerp = elastische taken preview. Nadat u een bevestiging hebt ontvangen dat uw abonnement is ingeschakeld, downloadt en installeert u de nieuwste cmdlets voor de voorlopige versie van de taken. Deze preview is beperkt, dus neem contact op met SaaSFeedback@microsoft.com voor gerelateerde vragen of ondersteuning.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>De Wingtip tickets SaaS multi-tenant database toepassings bron code en scripts ophalen
 
@@ -74,7 +74,7 @@ De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code z
 
 Voor deze zelf studie moet u Power shell gebruiken om de data base van de taak agent en de taak agent te maken. Net als de MSDB-data base die wordt gebruikt door SQL-Agent, gebruikt een taak agent een Azure-SQL database om taak definities, taak status en geschiedenis op te slaan. Nadat de taak agent is gemaakt, kunt u taken direct maken en bewaken.
 
-1. Open in **Power shell ISE** *... Learningmodules\\schemabeheer\\demo-SchemaManagement.ps1. \\*
+1. Open in **Power shell ISE** *Learning modules\\\\schema beheer\\demo-SchemaManagement. ps1*.
 2. Druk op **F5** om het script uit te voeren.
 
 Het script *demo-SchemaManagement. ps1* roept het script *Deploy-SchemaManagement. ps1* aan om een Data Base met de naam _jobagent_ te maken op de catalogus server. Het script maakt vervolgens de taak agent, waarbij de _jobagent_ -Data Base als para meter wordt door gegeven.
@@ -83,12 +83,12 @@ Het script *demo-SchemaManagement. ps1* roept het script *Deploy-SchemaManagemen
 
 #### <a name="prepare"></a>Voorbereiden
 
-De data base van elke Tenant bevat een set locatie typen in de tabel **VenueTypes** . Elk type locatie definieert het soort gebeurtenissen dat kan worden gehost op locatie. Deze typen locaties komen overeen met de achtergrond afbeeldingen die u ziet in de app voor Tenant gebeurtenissen.  In deze oefening implementeert u een update voor alle data bases om twee extra typen locaties toe te voegen: *Race van motor rijwiel* en *zwem Club*.
+De data base van elke Tenant bevat een set locatie typen in de tabel **VenueTypes** . Elk type locatie definieert het soort gebeurtenissen dat kan worden gehost op locatie. Deze typen locaties komen overeen met de achtergrond afbeeldingen die u ziet in de app voor Tenant gebeurtenissen.  In deze oefening implementeert u een update voor alle data bases om twee extra typen locaties toe te voegen: *motor race* en *zwem Club*.
 
 Controleer eerst de locatie typen die zijn opgenomen in elke Tenant database. Verbinding maken met een van de Tenant-data bases in SQL Server Management Studio (SSMS) en de VenueTypes-tabel controleren.  U kunt ook een query uitvoeren op deze tabel in de query-editor in het Azure Portal, toegankelijk via de pagina Data Base.
 
-1. Open SSMS en maak verbinding met de Tenant server: *tenants1-dpt&lt;-&gt;User. database.Windows.net*
-1. Als u wilt controleren of de *motor race* en de *zwem Club* momenteel **niet zijn** opgenomen, bladert u naar de *contosoconcerthall* -Data Base op de *tenants1-dpt&lt;-gebruikers&gt;*  server en zoekt u de  *VenueTypes* -tabel.
+1. Open SSMS en maak verbinding met de Tenant server: *tenants1-dpt-&lt;gebruiker&gt;. database.Windows.net*
+1. Als u wilt controleren of de *motor* met de race en de *zwem Club* op dit moment **niet is** opgenomen, bladert u naar de *contosoconcerthall* -data base op de *tenants1-dpt-&lt;gebruiker&gt;-* server en zoekt u de *VenueTypes* tabel.
 
 
 
@@ -98,64 +98,64 @@ U maakt nu een taak om de tabel **VenueTypes** in elke Tenant-data base bij te w
 
 Als u een nieuwe taak wilt maken, gebruikt u de opgeslagen procedures voor het systeem van taken die zijn gemaakt in de _jobagent_ -data base. De opgeslagen procedures zijn gemaakt toen de taak agent werd gemaakt.
 
-1. Maak in SSMS verbinding met de Tenant server: tenants1-MT-&lt;User&gt;. database.Windows.net
+1. Maak in SSMS verbinding met de Tenant server: tenants1-MT-&lt;gebruiker&gt;. database.windows.net
 
 2. Blader naar de *tenants1* -data base.
 
-3. Query's uitvoeren op de tabel *VenueTypes* om te bevestigen dat de *motor* van rijwielen en *zwem Club* nog niet voor komen in de lijst met resultaten.
+3. Query's uitvoeren op de tabel *VenueTypes* om te bevestigen dat de *motor van rijwielen* en *zwem Club* nog niet voor komen in de lijst met resultaten.
 
-4. Maak verbinding met de catalogus server. Dit is *Catalog-MT&lt;-&gt;User. database.Windows.net*.
+4. Maak verbinding met de catalogus server. Dit is *Catalog-MT-&lt;user&gt;. database.Windows.net*.
 
 5. Maak verbinding met de _jobagent_ -data base in de catalogus server.
 
-6. Open het bestand in SSMS *... Learningmodules\\schemabeheer\\DeployReferenceData.SQL. \\*
+6. Open in SSMS het bestand *...\\Learning Modules\\schema beheer\\DeployReferenceData. SQL*.
 
-7. Wijzig de instructie: set @User = &lt;User&gt; en substitueer de gebruikers waarde die wordt gebruikt bij het implementeren van de toepassing Wingtip tickets SaaS multi tenant data base.
+7. Wijzig de instructie: set @User = &lt;gebruiker&gt; en vervang de gebruikers waarde die wordt gebruikt bij het implementeren van de toepassing Wingtip tickets SaaS multi tenant data base.
 
 8. Druk op **F5** om het script uit te voeren.
 
-#### <a name="observe"></a>Observeren
+#### <a name="observe"></a>Nageleefd
 
 Bekijk de volgende items in het script *DeployReferenceData. SQL* :
 
-- **met\_SPadd\_-doel\_groep** maakt u de naam van de doel groep *DemoServerGroup*en voegt u de doel leden toe aan de groep.
+- **sp\_toevoegen\_doel\_groep** maakt de naam van de doel groep *DemoServerGroup*en voegt de doel leden toe aan de groep.
 
-- aan het lid van de **SP\_-doel\_groep\_toevoegen\_** worden de volgende items toegevoegd:
+- **sp\_toevoegen\_doel\_groep\_lid** voegt de volgende items toe:
     - Een type lid van een *Server* doel.
-        - Dit is de *tenants1-MT-&lt;gebruikers&gt;*  server die de tenants-data bases bevat.
+        - Dit is de *tenants1-MT-&lt;gebruiker&gt;-* server die de tenants-data bases bevat.
         - Met inbegrip van de server bevat de Tenant databases die bestaan op het moment dat de taak wordt uitgevoerd.
-    - Een type lid van een *database* doel voor de sjabloon database (*basetenantdb*) die zich bevindt op de *catalogus-&lt;MT-gebruikers server&gt;*
+    - Een type lid van een *database* doel voor de sjabloon database (*basetenantdb*) die zich bevindt in *catalogus-MT-&lt;gebruiker&gt;-* server.
     - Een type lid van een *database* doel om de *adhocreporting* -Data Base op te nemen die in een latere zelf studie wordt gebruikt.
 
-- **met\_de\_SP add-taak** wordt een taak met de naam *referentie gegevens implementatie*gemaakt.
+- met **sp\_toevoegen\_taak** wordt een taak met de naam *referentie gegevens implementatie*gemaakt.
 
-- **SP\_add\_jobstep** maakt de taak stap die de T-SQL-opdracht tekst bevat voor het bijwerken van de referentie tabel, VenueTypes.
+- met **sp\_toevoegen\_jobstep** wordt de taak stap gemaakt met de t-SQL-opdracht tekst voor het bijwerken van de referentie tabel, VenueTypes.
 
 - De resterende weergaven in het script tonen het bestaan van de objecten en controleren de taakuitvoering. Gebruik deze query's om de status waarde in de kolom **levens cyclus** te controleren om te bepalen wanneer de taak is voltooid. Met de taak wordt de tenants-data base bijgewerkt en worden de twee aanvullende data bases bijgewerkt die de referentie tabel bevatten.
 
-Blader in SSMS naar de Tenant database op de *tenants1-MT&lt;-gebruikers&gt;*  server. Query's uitvoeren op de *VenueTypes* -tabel om te bevestigen dat de race van de *motor* en de *zwem Club* nu aan de tabel worden toegevoegd. Het totale aantal locatie typen moet met twee worden verhoogd.
+In SSMS bladert u naar de Tenant database op de *tenants1-MT-&lt;gebruiker&gt;-* server. Query's uitvoeren op de *VenueTypes* -tabel om te bevestigen dat de race van de *motor* en de *zwem Club* nu aan de tabel worden toegevoegd. Het totale aantal locatie typen moet met twee worden verhoogd.
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Een taak maken voor het beheren van de referentietabelindex
 
 In deze oefening maakt u een taak voor het opnieuw samen stellen van de index op de primaire sleutel van de referentie tabel op alle Tenant databases. Het opnieuw opbouwen van een index is een typische bewerking voor database beheer die een beheerder kan uitvoeren na het laden van een grote hoeveelheid gegevens belasting om de prestaties te verbeteren.
 
-1. In SSMS maakt u verbinding met de _jobagent_ -data base in *Catalog&gt;-MT-User&lt;. database.Windows.net-* server.
+1. In SSMS maakt u verbinding met de _jobagent_ -data base in *Catalog-MT-&lt;gebruiker&gt;. database.Windows.net-* server.
 
-2. Open in SSMS *... Learningmodules\\schemabeheer\\OnlineReindex.SQL. \\*
+2. Open in SSMS *\\Learning Modules\\schema beheer\\OnlineReindex. SQL*.
 
 3. Druk op **F5** om het script uit te voeren.
 
-#### <a name="observe"></a>Observeren
+#### <a name="observe"></a>Nageleefd
 
 Bekijk de volgende items in het script *OnlineReindex. SQL* :
 
-* **met\_SPadd\_job** maakt u een nieuwe taak met de naam *online\_REINDEX PK\_\_\_VenueTyp 265E44FD7FD4C885*.
+* met **sp\_add\_-taak** wordt een nieuwe taak gemaakt met de naam *online reindex PK\_\_VENUETYP\_\_265E44FD7FD4C885*.
 
-* **SP\_add\_jobstep** maakt de taak stap die de T-SQL-opdracht tekst bevat om de index bij te werken.
+* **sp\_toevoegen\_jobstep** maakt de taak stap die de t-SQL-opdracht tekst bevat om de index bij te werken.
 
 * De resterende weer gaven van de script controle taak worden uitgevoerd. Gebruik deze query's om de status waarde in de kolom **levens cyclus** te controleren om te bepalen wanneer de taak is voltooid voor alle leden van de doel groep.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 <!-- TODO: Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment (*Tutorial link to come*)
 (saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

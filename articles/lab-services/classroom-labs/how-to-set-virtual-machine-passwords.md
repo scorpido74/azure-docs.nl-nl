@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 40cdd0adf7bf100e1dbca64dbba68db3bc59a4fe
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331470"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583493"
 ---
-# <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuele-machine groep instellen en beheren 
+# <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
 
 - Het aantal virtuele machines (Vm's) in het lab verhogen
@@ -30,12 +30,12 @@ In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
 ## <a name="update-the-lab-capacity"></a>De lab-capaciteit bijwerken
 Voer de volgende stappen uit om de lab-capaciteit (het aantal virtuele machines in een Lab) te verhogen of te verlagen:
 
-1. Selecteer op de pagina **groep van virtuele machines** de optie **lab-capaciteit: &lt;number @ no__t-3-machines**.
+1. Selecteer op de pagina **groep van virtuele machines** de optie **lab-capaciteit: &lt;aantal&gt; machines**.
 2. Voer het nieuwe **aantal vm's** in dat u wilt in het lab. Dit getal moet groter zijn dan of gelijk zijn aan het aantal gebruikers dat is geregistreerd in het lab. 
 3. Selecteer vervolgens **Opslaan**. 
 
     ![Knop Start alles](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
-4. Als u de capaciteit hebt verhoogd, kunt u zien welke virtuele machine of Vm's er worden gemaakt. 
+4. Als u de capaciteit hebt verhoogd, kunt u zien welke virtuele machine of Vm's er worden gemaakt. Als u de nieuwe virtuele machine in de lijst niet ziet, vernieuwt u de pagina. 
 
     ![Virtuele machine die wordt gemaakt](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
 
@@ -51,11 +51,13 @@ Voer de volgende stappen uit om de lab-capaciteit (het aantal virtuele machines 
     ![Knop stoppen](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
 
 ### <a name="start-selected-vms"></a>Geselecteerde Vm's starten
-Er zijn twee manieren om geselecteerde Vm's te starten (een of meer). De eerste manier is om de virtuele machine of Vm's te selecteren in de lijst en vervolgens **Start** te selecteren op de werk balk. De tweede manier is door de virtuele machine of Vm's in de lijst te selecteren, vervolg keuzelijst in de kolom **status** in een van de rijen te selecteren en vervolgens **Start te**selecteren. 
+Er zijn twee manieren om geselecteerde Vm's te starten (een of meer). De eerste manier is om de virtuele machine of Vm's te selecteren in de lijst en vervolgens **Start** te selecteren op de werk balk. 
+
+De tweede manier is om een of meer virtuele machines te selecteren in de lijst en te scha kelen tussen de knop in de kolom **status** . 
 
 ![Geselecteerde Vm's starten](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
-Op dezelfde manier kunt u een of meer Vm's stoppen met behulp van de vervolg keuzelijst in de kolom **status** of **Stop** op de werk balk. 
+Op dezelfde manier kunt u een of meer Vm's stoppen door te klikken op de knop in de kolom **status** of **Stop** te selecteren op de werk balk. 
 
 ## <a name="reset-vms"></a>Vm's opnieuw instellen
 Als u een of meer Vm's opnieuw wilt instellen, selecteert u deze in de lijst en selecteert u vervolgens **opnieuw instellen** op de werk balk. 
@@ -81,11 +83,19 @@ Door het **gebruik van hetzelfde wacht woord voor alle virtuele machines** op de
 ### <a name="reset-password-later"></a>Wacht woord later opnieuw instellen
 
 1. Selecteer op de pagina **sjabloon** van het lab de optie **wacht woord opnieuw instellen** op de werk balk. 
-
-    ![Het menu wacht woord opnieuw instellen op de start pagina](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
 1. Voer in het dialoog venster **wacht woord opnieuw instellen** een wacht woord in en selecteer **wacht woord opnieuw instellen**.
     
     ![Het dialoog venster wacht woord instellen](../media/how-to-set-virtual-machine-passwords/set-password.png)
+
+## <a name="connect-to-student-vms"></a>Verbinding maken met Vm's van studenten
+De Lab Creator (docent/docent) kan verbinding maken met een student-VM als aan de volgende voor waarden wordt voldaan: 
+
+- De optie **hetzelfde wacht woord voor alle virtuele machines gebruiken** is geselecteerd tijdens het maken van het lab
+- De virtuele machine wordt uitgevoerd 
+
+ Als u verbinding wilt maken met de student-VM, houdt u de muis aanwijzer op de virtuele machine in de lijst en selecteert u de knop computer.  
+
+![Knop verbinding maken met de VM van student](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het volgende artikel: het [gebruik van studenten configureren](how-to-configure-student-usage.md)voor meer informatie over andere gebruiks opties voor studenten die u (als een Lab-eigenaar) kunt configureren.

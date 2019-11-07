@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren uit een REST-bron met behulp van Azure Data Factory | Microsoft Docs
+title: Gegevens kopiëren uit een REST-bron met behulp van Azure Data Factory
 description: Meer informatie over het kopiëren van gegevens uit een Cloud of een on-premises REST-bron naar ondersteunde Sink-gegevens opslag met behulp van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6bb597ab49050c2bb365379cfac44f4b4d176af1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276625"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680410"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een REST-eind punt met behulp van Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een REST-eind punt te kopiëren. Het artikel is gebaseerd op [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md), die een algemeen overzicht van Kopieeractiviteit geeft.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een REST-eind punt te kopiëren. Het artikel bouwt voort op de [Kopieer activiteit in azure Data Factory](copy-activity-overview.md), waarin een algemeen overzicht van de Kopieer activiteit wordt weer gegeven.
 
 Het verschil tussen deze REST-connector, de [http-connector](connector-http.md) en de [Web Table-connector](connector-web-table.md) zijn:
 
@@ -31,12 +31,12 @@ Het verschil tussen deze REST-connector, de [http-connector](connector-http.md) 
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-U kunt gegevens uit een REST-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie voor een lijst met gegevens opslaat of Kopieeractiviteit als bronnen en sinks ondersteunt, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+U kunt gegevens uit een REST-bron kopiëren naar elk ondersteund Sink-gegevens archief. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en Sinks.
 
 Deze algemene REST-connector ondersteunt met name:
 
 - Gegevens ophalen van een REST-eind punt met behulp van de **Get** -of **post** -methoden.
-- Het ophalen van gegevens met behulp van een van de volgende authenticaties: **Anoniem**, **basis**, **Aad-Service-Principal**en **beheerde identiteiten voor Azure-resources**.
+- Gegevens ophalen met behulp van een van de volgende authenticaties: **anoniem**, **basis**, **Aad-Service-Principal**en **beheerde identiteiten voor Azure-resources**.
 - **[Paginering](#pagination-support)** in de rest api's.
 - De REST JSON-respons kopiëren [als-is](#export-json-response-as-is) of parseren met behulp van [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping). Alleen de nettolading van een reactie in **JSON** wordt ondersteund.
 
@@ -53,26 +53,26 @@ Deze algemene REST-connector ondersteunt met name:
 
 De volgende secties bevatten informatie over eigenschappen die u kunt gebruiken voor het definiëren van Data Factory entiteiten die specifiek zijn voor de REST-connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
 De volgende eigenschappen worden ondersteund voor de REST-gekoppelde service:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
+| type | De eigenschap **type** moet worden ingesteld op **RestService**. | Ja |
 | url | De basis-URL van de REST-service. | Ja |
 | enableServerCertificateValidation | Hiermee wordt aangegeven of het SSL-certificaat aan de server zijde moet worden gevalideerd wanneer verbinding wordt gemaakt met het eind punt. | Nee<br /> (de standaard waarde is **True**) |
 | authenticationType | Type verificatie dat wordt gebruikt om verbinding te maken met de REST-service. Toegestane waarden zijn **anoniem**, **Basic**, **AadServicePrincipal** en **ManagedServiceIdentity**. Raadpleeg de bijbehorende secties hieronder voor meer eigenschappen en voor beelden. | Ja |
-| connectVia | De [Integration Runtime](concepts-integration-runtime.md) gebruiken om te verbinden met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als deze eigenschap niet is opgegeven, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
 ### <a name="use-basic-authentication"></a>Basis verificatie gebruiken
 
 Stel de eigenschap **authenticationType** in op **Basic**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| userName | De gebruikers naam die moet worden gebruikt voor toegang tot het REST-eind punt. | Ja |
-| password | Het wachtwoord voor de gebruiker (de **userName** waarde). Dit veld als markeert een **SecureString** type voor het veilig opslaan in Data Factory. U kunt ook [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| Gebruikers | De gebruikers naam die moet worden gebruikt voor toegang tot het REST-eind punt. | Ja |
+| wachtwoord | Het wacht woord voor de gebruiker (de waarde van de **gebruikers naam** ). Markeer dit veld als **SecureString** -type om het veilig op te slaan in Data Factory. U kunt ook [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 
 **Voorbeeld**
 
@@ -102,12 +102,12 @@ Stel de eigenschap **authenticationType** in op **Basic**. Naast de algemene eig
 
 Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Ja |
-| servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Dit veld als markeert een **SecureString** voor het veilig opslaan in de Data Factory of [verwijzen naar een geheim opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| tenant | De tenantgegevens (domain name of tenant-ID) opgeven in uw toepassing zich bevindt. Deze ophalen door de muis in de rechterbovenhoek van de Azure-portal. | Ja |
-| aadResourceId | Geef de AAD-resource op die u aanvraagt voor `https://management.core.windows.net`autorisatie, bijvoorbeeld.| Ja |
+| servicePrincipalKey | Geef de sleutel van de Azure Active Directory toepassing op. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| bouw | Geef de Tenant gegevens op (domein naam of Tenant-ID) waaronder uw toepassing zich bevindt. U kunt deze ophalen door de muis in de rechter bovenhoek van de Azure Portal aan te wijzen. | Ja |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net`.| Ja |
 
 **Voorbeeld**
 
@@ -139,9 +139,9 @@ Stel de eigenschap **authenticationType** in op **AadServicePrincipal**. Naast d
 
 Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Naast de algemene eigenschappen die in de voor gaande sectie worden beschreven, geeft u de volgende eigenschappen op:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| aadResourceId | Geef de AAD-resource op die u aanvraagt voor `https://management.core.windows.net`autorisatie, bijvoorbeeld.| Ja |
+| aadResourceId | Geef de AAD-resource op die u aanvraagt voor autorisatie, bijvoorbeeld `https://management.core.windows.net`.| Ja |
 
 **Voorbeeld**
 
@@ -167,16 +167,16 @@ Stel de eigenschap **authenticationType** in op **ManagedServiceIdentity**. Naas
 
 In deze sectie vindt u een lijst met eigenschappen die de REST-gegevensset ondersteunt. 
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets en secties, [gegevenssets en gekoppelde services](concepts-datasets-linked-services.md). 
+Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. 
 
 Als u gegevens wilt kopiëren uit REST, worden de volgende eigenschappen ondersteund:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **RestResource**. | Ja |
 | relativeUrl | Een relatieve URL naar de resource die de gegevens bevat. Als deze eigenschap niet is opgegeven, wordt alleen de URL gebruikt die in de definitie van de gekoppelde service is opgegeven. | Nee |
 
-Als u instelt `requestMethod`, `additionalHeaders`, `requestBody` en `paginationRules` in DataSet, wordt deze nog steeds ondersteund als-is, terwijl u het nieuwe model in activiteit bron gaat gebruiken.
+Als u `requestMethod`, `additionalHeaders`, `requestBody` en `paginationRules` in de gegevensset hebt ingesteld, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd het nieuwe model in de activiteit bron te gebruiken.
 
 **Voorbeeld:**
 
@@ -197,19 +197,19 @@ Als u instelt `requestMethod`, `additionalHeaders`, `requestBody` en `pagination
 }
 ```
 
-## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
+## <a name="copy-activity-properties"></a>Eigenschappen van Kopieer activiteit
 
 In deze sectie vindt u een lijst met eigenschappen die door de REST-bron worden ondersteund.
 
-Zie voor een volledige lijst van eigenschappen die beschikbaar zijn voor het definiëren van activiteiten en secties, [pijplijnen](concepts-pipelines-activities.md). 
+Zie [pijp lijnen](concepts-pipelines-activities.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. 
 
 ### <a name="rest-as-source"></a>REST als bron
 
-De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** sectie:
+De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| Type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Ja |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **RestSource**. | Ja |
 | requestMethod | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | Nee |
 | additionalHeaders | Aanvullende HTTP-aanvraag headers. | Nee |
 | requestBody | De hoofd tekst van de HTTP-aanvraag. | Nee |
@@ -217,7 +217,7 @@ De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** 
 | httpRequestTimeout | De time-out (de time **span** -waarde) voor de HTTP-aanvraag om een antwoord te krijgen. Deze waarde is de time-out voor het verkrijgen van een reactie, niet de time-out voor het lezen van antwoord gegevens. De standaard waarde is **00:01:40**.  | Nee |
 | requestInterval | De tijd die moet worden gewacht voordat de aanvraag wordt verzonden naar de volgende pagina. De standaard waarde is **00:00:01** |  Nee |
 
-**Voor beeld 1: De methode Get gebruiken met paginering**
+**Voor beeld 1: de methode Get gebruiken met paginering**
 
 ```json
 "activities":[
@@ -255,7 +255,7 @@ De volgende eigenschappen worden ondersteund in de kopieeractiviteit **source** 
 ]
 ```
 
-**Voor beeld 2: De post-methode gebruiken**
+**Voor beeld 2: de post-methode gebruiken**
 
 ```json
 "activities":[
@@ -306,7 +306,7 @@ Deze algemene REST-connector ondersteunt de volgende paginerings patronen:
 
 **Ondersteunde sleutels** in de paginerings regels:
 
-| Sleutel | Description |
+| Sleutel | Beschrijving |
 |:--- |:--- |
 | AbsoluteUrl | Hiermee wordt de URL aangegeven voor het uitgeven van de volgende aanvraag. Dit kan **absolute URL of een relatieve URL**zijn. |
 | QueryParameters. *request_query_parameter* OF QueryParameters [' request_query_parameter '] | ' request_query_parameter ' is door de gebruiker gedefinieerd en verwijst naar één query parameter naam in de volgende HTTP-aanvraag-URL. |
@@ -314,7 +314,7 @@ Deze algemene REST-connector ondersteunt de volgende paginerings patronen:
 
 **Ondersteunde waarden** in de paginerings regels:
 
-| Value | Description |
+| Waarde | Beschrijving |
 |:--- |:--- |
 | Koppen. *response_header* OF headers [' response_header '] | ' response_header ' is door de gebruiker gedefinieerd en verwijst naar één header naam in het huidige HTTP-antwoord, waarvan de waarde wordt gebruikt voor het uitgeven van de volgende aanvraag. |
 | Een JSONPath-expressie die begint met ' $ ' (die de hoofdmap van de antwoord tekst vertegenwoordigt) | De antwoord tekst mag slechts één JSON-object bevatten. De JSONPath-expressie moet één primitieve waarde Retour neren, die wordt gebruikt voor het uitgeven van de volgende aanvraag. |
@@ -353,7 +353,7 @@ Facebook Graph API retourneert een antwoord in de volgende structuur, in dat gev
 }
 ```
 
-De bijbehorende bron configuratie van de rest Copy- `paginationRules` activiteit met name de is als volgt:
+De bijbehorende bron configuratie van de REST Copy-activiteit met name de `paginationRules` is als volgt:
 
 ```json
 "typeProperties": {
@@ -380,4 +380,4 @@ Zie [schema toewijzing](copy-activity-schema-and-type-mapping.md#schema-mapping)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een lijst met gegevensarchieven die Kopieeractiviteit ondersteunt als bronnen en sinks in Azure Data Factory, [ondersteunde gegevensarchieven en indelingen](copy-activity-overview.md#supported-data-stores-and-formats).
+Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die door de Kopieer activiteit worden ondersteund als bronnen en sinks in azure Data Factory.

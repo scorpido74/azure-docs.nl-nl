@@ -88,10 +88,6 @@
           href: ingest-data-logstash.md
         - name: Gegevens kopiëren met Azure Data Factory
           href: data-factory-load-data.md
-    - name: Implementeren
-      items:
-        - name: DevOps-taak
-          href: devops.md
     - name: Querygegevens
       items:
         - name: Query's schrijven
@@ -136,6 +132,8 @@
           href: tableau.md
         - name: Sisense
           href: sisense.md
+        - name: Redash
+          href: redash.md
     - name: Beheren
       items:
         - name: Cluster
@@ -166,6 +164,10 @@
               href: delete-data.md
             - name: Dubbele gegevens aanpakken
               href: dealing-with-duplicates.md
+    - name: Implementeren
+      items:
+        - name: Uw cluster in uw VNet implementeren
+          href: vnet-deployment.md
     - name: Controleren
       items:
         - name: Diagnostische logboeken gebruiken om opname te bewaken
@@ -186,6 +188,8 @@
           href: connect-from-databricks.md
         - name: Gegevens analyseren met Jupyter Notebooks en Kqlmagic
           href: kqlmagic.md
+        - name: Azure-pijplijnen
+          href: devops.md
     - name: Problemen oplossen
       items:
         - name: Een cluster maken
@@ -220,9 +224,13 @@
           href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: Productfeedback
       href: 'https://aka.ms/adefeedback'
-    - name: Prijzen
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Kostenraming
-      href: 'https://aka.ms/adecostestimator'
+    - name: Prijzen en facturering
+      items:
+        - name: Pagina met prijzen
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: Kostenraming
+          href: 'https://aka.ms/adecostestimator'
+        - name: Gereserveerde capaciteit
+          href: pricing-reserved-capacity.md
     - name: Service-updates
       href: 'https://azure.microsoft.com/updates/?product=data-explorer'

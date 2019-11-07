@@ -121,11 +121,17 @@
     - name: Inzicht in Apache Spark voor U-SQL-ontwikkelaars
       items:
         - name: Inzicht in Apache Spark voor U-SQL-ontwikkelaars
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: Inzicht in gegevensindelingen van Apache Spark
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: Inzicht in codeconcepten van Apache Spark
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: Problemen met U-SQL-taken oplossen
+      items:
+        - name: Runtime-fouten met U-SQL oplossen
+          href: runtime-troubleshoot.md
+        - name: Problemen met een .NET-upgrade oplossen
+          href: dotnet-upgrade-troubleshoot.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

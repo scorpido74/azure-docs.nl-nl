@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: f0fc1e143ce7d271d5faaa8dda0eb40cdfc9e006
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332761"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584788"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Een leslokaal sjabloon maken en beheren in Azure Lab Services
 Een sjabloon in een lab is een basiskopie van de virtuele machine waarvan de virtuele machines van alle gebruikers worden gemaakt. Stel de sjabloon voor de virtuele machine zo in dat deze is geconfigureerd met precies wat u de labgebruikers wilt bieden. U kunt een naam en een beschrijving opgeven voor de sjabloon die de gebruikers van het lab kunnen zien. Vervolgens publiceert u de sjabloon om exemplaren van de sjabloon-VM beschikbaar te maken voor uw test gebruikers. Wanneer u een sjabloon publiceert, maakt Azure Lab Services virtuele machines in het lab met behulp van de sjabloon. Het aantal virtuele machines dat in dit proces wordt gemaakt, is hetzelfde als het maximum aantal gebruikers dat in het lab is toegestaan. Dit kunt u instellen in het gebruiksbeleid van het lab. Alle virtuele machines hebben dezelfde configuratie als de sjabloon.
@@ -40,12 +40,10 @@ Gebruik de volgende stappen om de titel en beschrijving voor de eerste keer in t
 Gebruik de volgende stappen om een sjabloon-VM bij te werken.  
 
 1. Selecteer op de pagina **sjabloon** de optie **sjabloon aanpassen** op de werk balk. 
-
-    ![Knop sjabloon aanpassen](../media/how-to-create-manage-template/customize-template-button.png)
 2. Selecteer **door gaan**in het dialoog venster **sjabloon aanpassen** . Zodra u de sjabloon hebt gestart en wijzigingen hebt aangebracht, heeft deze niet langer dezelfde instellingen als de virtuele machines die voor het laatst zijn gepubliceerd naar uw gebruikers. Sjabloon wijzigingen worden pas weer gegeven op de bestaande virtuele machines van uw gebruikers nadat u de publicatie opnieuw hebt gepubliceerd.
 
     ![Het dialoog venster aanpassen](../media/how-to-create-manage-template/customize-template-dialog.png)
-1. Selecteer de knop **verbinding maken met sjabloon** op de werk balk om verbinding te maken met de sjabloon-VM en volg de instructies. Als het een Windows-computer is, ziet u een optie voor het downloaden van het RDP-bestand. 
+1. Wacht totdat de sjabloon-VM is gestart en selecteer vervolgens **verbinding maken met sjabloon** op de werk balk om verbinding te maken met de sjabloon-VM en volg de instructies. Als het een Windows-computer is, ziet u een optie voor het downloaden van het RDP-bestand. 
 
     ![Verbinding maken met de sjabloon-VM](../media/how-to-create-manage-template/connect-template-vm.png)
 1. Installeer alle software die de studenten nodig hebben om het lab te doorlopen (bijvoorbeeld Visual Studio, Azure Storage Explorer, enzovoort). 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0879cb33a0796e19724bd143e57780d6ce27bfcf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590585"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Informatie over het opnieuw opstarten van VM's - onderhoud versus downtime
 Er zijn drie scenario's die van invloed kunnen zijn op de virtuele machine in Azure: ongepland onderhoud van hardware, onverwachte downtime en gepland onderhoud.
@@ -39,7 +39,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Beschikbaarheids zones gebruiken om te beschermen tegen fouten op datacenter niveau
 
-[Beschikbaarheids zones](../articles/availability-zones/az-overview.md) breiden het beheer niveau uit dat u nodig hebt om de beschik baarheid van de toepassingen en gegevens op uw vm's te behouden. Beschikbaarheidszones zijn unieke fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn uitgerust met onafhankelijke voeding, koeling en netwerken. Om tolerantie te garanderen, zijn er mini maal drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante Services repliceren uw toepassingen en gegevens op Beschikbaarheidszones om te beschermen tegen enkele punten van een storing.
+[Beschikbaarheids zones](../articles/availability-zones/az-overview.md) breiden het beheer niveau uit dat u nodig hebt om de beschik baarheid van de toepassingen en gegevens op uw vm's te behouden. Beschikbaarheidszones zijn unieke, fysieke locaties binnen een Azure-regio. Elke zone bestaat uit een of meer datacenters die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerken. Om tolerantie te garanderen, zijn er mini maal drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen op zoneniveau. Zone-redundante Services repliceren uw toepassingen en gegevens op Beschikbaarheidszones om te beschermen tegen enkele punten van een storing.
 
 Een beschikbaarheids zone in een Azure-regio is een combi natie van een **fout domein** en een **update domein**. Als u bijvoorbeeld drie of meer virtuele machines in drie zones in een Azure-regio maakt, worden uw virtuele machines effectief over drie foutdomeinen en drie updatedomeinen verdeeld. Het Azure-platform herkent deze verdeling over updatedomeinen om ervoor te zorgen dat virtuele machines in verschillende zones niet op hetzelfde moment worden bijgewerkt.
 
@@ -60,24 +60,31 @@ Elke virtuele machine in uw beschikbaarheidsset krijgt een **updatedomein** en e
 Foutdomeinen duiden de groep virtuele machines aan die een gemeenschappelijke voeding en switch delen. Standaard worden bij Resource Manager-implementaties de virtuele machines die zijn geconfigureerd in uw beschikbaarheidsset verdeeld over maximaal drie foutdomeinen (twee foutdomeinen bij klassieke implementaties). Hoewel het in een beschikbaarheidsset plaatsen van uw virtuele machines uw toepassing niet beschermt tegen problemen met het besturingssysteem of de toepassing zelf, worden zo wel de gevolgen van mogelijke problemen met de fysieke hardware, netwerkstoringen of stroomonderbrekingen beperkt.
 
 <!--Image reference-->
-   ![Conceptuele tekening van de configuratie voor het update domein en het fout domein](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+   ![conceptuele tekening van de configuratie van het domein en het fout domein van de update](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Beheerde schijven voor VM's in een beschikbaarheidsset gebruiken
 Als u momenteel VM's met niet-beheerde schijven gebruikt, raden wij u ten zeerste aan [VM's in een beschikbaarheidsset te converteren voor het gebruik van beheerde schijven](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
 
 [Beheerde schijven](../articles/virtual-machines/windows/managed-disks-overview.md) bieden een betere betrouwbaarheid voor beschikbaarheidssets door ervoor te zorgen dat de schijven van VM's in een beschikbaarheidsset voldoende van elkaar zijn verwijderd, waardoor een SPOF (Single Point Of Failure) wordt voorkomen. Dit doet u door automatisch de schijven in verschillende opslag fout domeinen (opslag clusters) te plaatsen en ze te uitlijnen met het domein van de VM-fout. Als een opslag fout domein niet kan worden veroorzaakt door hardware-of software storing, mislukt alleen het VM-exemplaar met schijven op het opslag fout domein.
-![Fd's beheerde schijven](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+![Managed disks Fd's](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
 > Het aantal foutdomeinen voor beheerde beschikbaarheidssets varieert per regio: twee of drie per regio. In de volgende tabel wordt het aantal per regio weergegeven
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
-Als u Vm's met niet-beheerde schijven wilt gebruiken, volgt u de aanbevolen procedures voor opslag accounts waarin virtuele harde schijven (Vhd's) van Vm's worden opgeslagen als [pagina](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)-blobs.
+> Opmerking: in bepaalde omstandigheden kan het gebeuren dat twee Vm's in dezelfde Beschikbaarheidsset dezelfde FaultDomain delen. U kunt dit bevestigen door naar uw Beschikbaarheidsset te gaan en de kolom fout domein te controleren.
+> Dit gedrag kan worden waargenomen wanneer de volgende reeks is opgetreden tijdens het implementeren van de virtuele machines:
+> - De eerste VM implementeren
+> - De eerste VM stoppen/de toewijzing ervan ongedaan maken
+> - De tweede VM onder deze omstandigheden implementeren, kan de besturingssysteem schijf van de tweede virtuele machine worden gemaakt in hetzelfde fout domein als de eerste VM, waardoor de tweede VM ook op dezelfde FaultDomain wordt gegrond. 
+> Om dit probleem te voor komen, is het raadzaam om de virtuele machine niet te stoppen of te detoewijzen tussen hun implementaties.
+
+Als u Vm's met niet-beheerde schijven wilt gebruiken, volgt u de aanbevolen procedures voor opslag accounts waarin virtuele harde schijven (Vhd's) van Vm's worden opgeslagen als [pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 
 1. **Zorg dat alle schijven (gegevens en besturingssysteem) worden gekoppeld aan een virtuele machine op hetzelfde opslagaccount**
 2. **Controleer de [limieten](../articles/storage/common/storage-scalability-targets.md) voor het aantal niet-beheerde schijven in een opslagaccount** voordat u meer VHD's aan een opslagaccount toevoegt
-3. **Gebruik een afzonderlijk opslagaccount voor elke virtuele machine in een beschikbaarheidsset.** Deel opslagaccounts met meerdere VM's niet in dezelfde beschikbaarheidsset. Het is geschikt voor vm's in verschillende beschikbaarheids sets om opslag accounts te delen als de aanbevolen procedures ![niet-beheerde schijven fd's](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Gebruik een afzonderlijk opslagaccount voor elke virtuele machine in een beschikbaarheidsset.** Deel opslagaccounts met meerdere VM's niet in dezelfde beschikbaarheidsset. Het is acceptabel voor Vm's in verschillende beschikbaarheids sets om opslag accounts te delen als hierboven aanbevolen procedures worden gevolgd ![onbeheerde schijven Fd's](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM'S
 
@@ -89,14 +96,14 @@ Als uw virtuele machines bijna identiek zijn en hetzelfde doel hebben als uw toe
 U kunt bijvoorbeeld alle virtuele machines in de front-end van uw toepassing waarop IIS, Apache en nginx worden uitgevoerd, in één beschikbaarheids zone of set zetten. Zorg ervoor dat alleen front-end virtuele machines in dezelfde beschikbaarheids zone of set worden geplaatst. Zorg er ook voor dat alleen virtuele machines met de gegevenslaag in hun eigen beschikbaarheids zone of set worden geplaatst, zoals uw gerepliceerde SQL Server virtuele machines, of uw virtuele machines met MySQL.
 
 <!--Image reference-->
-   ![Toepassings lagen](./media/virtual-machines-common-manage-availability/application-tiers.png)
+   ![toepassings lagen](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Een load balancer met beschikbaarheids zones of sets combi neren
 Combi neer de [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) met een beschikbaarheids zone of stel in om de meeste toepassings tolerantie te verkrijgen. De Azure Load Balancer verdeelt het verkeer tussen meerdere virtuele machines. De Azure Load Balancer is voor virtuele machines uit de prijscategorie Standard bij de prijs inbegrepen. De Azure Load Balancer is niet bij alle prijscategorieën voor virtuele machines inbegrepen. Zie voor meer informatie over het gebruik van load balancers voor uw virtuele machines [Taakverdeling voor virtuele machines](../articles/virtual-machines/virtual-machines-linux-load-balance.md).
 
 Als de load balancer niet is geconfigureerd om het verkeer te verdelen over meerdere virtuele machines, heeft iedere geplande onderhoudsgebeurtenis invloed op de enkele virtuele machine die uw verkeer afhandelt, waardoor uw applicatielaag onbeschikbaar wordt. Door meerdere virtuele machines van dezelfde laag onder te brengen bij dezelfde load balancer en beschikbaarheidsset, zorgt u ervoor dat verkeer altijd door ten minste één instantie kan worden afgehandeld.
 
-Zie Load Balancing Vm's voor alle beschikbaarheids zones met behulp van [de Azure cli](../articles/load-balancer/load-balancer-standard-public-zone-redundant-cli.md)voor een zelf studie over het verdelen van de taak verdeling over de beschik bare zones.
+Zie [Load Balancing vm's voor alle beschikbaarheids zones met behulp van de Azure cli](../articles/load-balancer/load-balancer-standard-public-zone-redundant-cli.md)voor een zelf studie over het verdelen van de taak verdeling over de beschik bare zones.
 
 
 <!-- Link references -->

@@ -1,18 +1,18 @@
 ---
 title: Metrische gegevens van Azure Analysis Services server bewaken | Microsoft Docs
-description: Meer informatie over het bewaken van Analysis Services server-metrische gegevens in Azure Portal.
+description: Meer informatie over hoe Analysis Services Azure Metrics Explorer gebruikt, een gratis hulp programma in de portal, waarmee u de prestaties en de status van uw servers kunt bewaken.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146795"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572736"
 ---
 # <a name="monitor-server-metrics"></a>Metrische servergegevens bewaken
 
@@ -39,14 +39,14 @@ Gebruik deze tabel om te bepalen welke metrische gegevens het meest geschikt zij
 
 |Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatie type|Beschrijving|
 |---|---|---|---|---|
-|CommandPoolJobQueueLength|Wachtrij lengte van de opdracht pool taak|Aantal|Average|Aantal taken in de wachtrij van de opdracht thread pool.|
-|CurrentConnections|Verbinding: huidige verbindingen|Aantal|Average|Het huidige aantal client verbindingen dat tot stand is gebracht.|
-|CurrentUserSessions|Huidige gebruikers sessies|Aantal|Average|Het huidige aantal gebruikers sessies dat tot stand is gebracht.|
+|CommandPoolJobQueueLength|Wachtrij lengte van de opdracht pool taak|Count|Average|Aantal taken in de wachtrij van de opdracht thread pool.|
+|CurrentConnections|Verbinding: huidige verbindingen|Count|Average|Het huidige aantal client verbindingen dat tot stand is gebracht.|
+|CurrentUserSessions|Huidige gebruikers sessies|Count|Average|Het huidige aantal gebruikers sessies dat tot stand is gebracht.|
 |mashup_engine_memory_metric|M-engine geheugen|Bytes|Average|Geheugen gebruik door mashup-engine processen|
-|mashup_engine_qpu_metric|M-engine QPU|Aantal|Average|QPU-gebruik door mashup-engine processen|
+|mashup_engine_qpu_metric|M-engine QPU|Count|Average|QPU-gebruik door mashup-engine processen|
 |memory_metric|Geheugen|Bytes|Average|Geheugenmetabase. Bereik 0-25 GB voor S1, 0-50 GB voor S2 en 0-100 GB voor S4|
 |memory_thrashing_metric|Geheugen overbelasting|Procent|Average|Gemiddeld geheugen overbelasting.|
-|CleanerCurrentPrice|Geheugen: huidige prijs opschonen|Aantal|Average|Huidige prijs van geheugen, $/byte/tijd), genormaliseerd naar 1000.|
+|CleanerCurrentPrice|Geheugen: huidige prijs opschonen|Count|Average|Huidige prijs van geheugen, $/byte/tijd), genormaliseerd naar 1000.|
 |CleanerMemoryNonshrinkable|Geheugen: Removal-geheugen kan niet worden verkleind|Bytes|Average|Hoeveelheid geheugen (in bytes) die niet wordt verwijderd door de achtergrond opschoning.|
 |CleanerMemoryShrinkable|Geheugen: verkleinbaar geheugen|Bytes|Average|De hoeveelheid geheugen (in bytes) die wordt verwijderd door de achtergrond opschoning.|
 |MemoryLimitHard|Geheugen: vaste geheugen limiet|Bytes|Average|Vaste geheugen limiet, van configuratie bestand.|
@@ -59,33 +59,33 @@ Gebruik deze tabel om te bepalen welke metrische gegevens het meest geschikt zij
 |mashup_engine_private_bytes_metric|M-engine-eigen bytes |Bytes|Average|De totale hoeveelheid geheugen-mashup-container processen zijn toegewezen, exclusief geheugen gedeeld met andere processen.|
 |mashup_engine_virtual_bytes_metric|M-engine virtuele bytes |Bytes|Average|De huidige grootte van de mashup-container processen van de virtuele adres ruimte wordt gebruikt.|
 |Quota|Geheugen: quotum|Bytes|Average|Huidig geheugen quotum, in bytes. Geheugen quota wordt ook wel een geheugen toekenning of geheugen reservering genoemd.|
-|QuotaBlocked|Geheugen: quotum geblokkeerd|Aantal|Average|Het huidige aantal quotum aanvragen dat is geblokkeerd totdat andere geheugen quota zijn vrijgemaakt.|
+|QuotaBlocked|Geheugen: quotum geblokkeerd|Count|Average|Het huidige aantal quotum aanvragen dat is geblokkeerd totdat andere geheugen quota zijn vrijgemaakt.|
 |VertiPaqNonpaged|Geheugen: VertiPaq niet-wisselbaar|Bytes|Average|Geheugen bytes vergrendeld in de werkset voor gebruik door de in-Memory engine.|
 |VertiPaqPaged|Geheugen: VertiPaq-pagina|Bytes|Average|Bytes van wisselbaar geheugen die in gebruik zijn voor in-Memory gegevens.|
-|ProcessingPoolJobQueueLength|Wachtrij lengte van de pool taak wordt verwerkt|Aantal|Average|Het aantal niet-I/O-taken in de wachtrij van de verwer kende thread pool.|
+|ProcessingPoolJobQueueLength|Wachtrij lengte van de pool taak wordt verwerkt|Count|Average|Het aantal niet-I/O-taken in de wachtrij van de verwer kende thread pool.|
 |RowsConvertedPerSec|Verwerken: geconverteerde rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geconverteerd.|
 |RowsReadPerSec|Verwerken: gelezen rijen per seconde|CountPerSecond|Average|Het aantal rijen dat van alle relationele data bases is gelezen.|
 |RowsWrittenPerSec|Verwerken: geschreven rijen per seconde|CountPerSecond|Average|Het aantal rijen dat tijdens de verwerking is geschreven.|
-|qpu_metric|QPU|Aantal|Average|QPU. Bereik 0-100 voor S1, 0-200 voor S2 en 0-400 voor S4|
-|QueryPoolBusyThreads|Query's pool bezette threads|Aantal|Average|Het aantal actieve threads in de query thread pool.|
+|qpu_metric|QPU|Count|Average|QPU. Bereik 0-100 voor S1, 0-200 voor S2 en 0-400 voor S4|
+|QueryPoolBusyThreads|Query's pool bezette threads|Count|Average|Het aantal actieve threads in de query thread pool.|
 |SuccessfullConnectionsPerSec|Geslaagde verbindingen per seconde|CountPerSecond|Average|Snelheid van geslaagde verbindings voltooiingen.|
-|CommandPoolBusyThreads|Threads: actieve threads van opdracht pool|Aantal|Average|Het aantal actieve threads in de opdracht thread pool.|
-|CommandPoolIdleThreads|Threads: niet-actieve threads van opdracht pool|Aantal|Average|Het aantal niet-actieve threads in de opdracht thread pool.|
-|LongParsingBusyThreads|Threads: bezette threads voor lang parseren|Aantal|Average|Het aantal actieve threads in de thread pool voor lang parseren.|
-|LongParsingIdleThreads|Threads: niet-actieve threads voor lang parseren|Aantal|Average|Het aantal niet-actieve threads in de thread pool voor lang parseren.|
-|LongParsingJobQueueLength|Threads: lengte van taak wachtrij voor lang parseren|Aantal|Average|Aantal taken in de wachtrij van de thread pool voor lang parseren.|
-|ProcessingPoolIOJobQueueLength|Threads: lengte van I/O-taak wachtrij voor verwerking van groep|Aantal|Average|Het aantal I/O-taken in de wachtrij van de verwer kende thread pool.|
-|ProcessingPoolBusyIOJobThreads|Threads: bezig met verwerken van I/O-taak threads van pool|Aantal|Average|Het aantal threads waarmee I/O-taken worden uitgevoerd in de verwer kende thread pool.|
-|ProcessingPoolBusyNonIOThreads|Threads: bezig met het verwerken van niet-I/O-threads van de groep|Aantal|Average|Het aantal threads met niet-I/O-taken in de verwer kende thread pool.|
-|ProcessingPoolIdleIOJobThreads|Threads: niet-actieve I/O-taak threads van de groep verwerken|Aantal|Average|Het aantal niet-actieve threads voor I/O-taken in de verwer kende thread pool.|
-|ProcessingPoolIdleNonIOThreads|Threads: niet-I/O-threads van de groep worden verwerkt|Aantal|Average|Het aantal niet-actieve threads in de verwer kende thread pool dat is gereserveerd voor niet-I/O-taken.|
-|QueryPoolIdleThreads|Threads: niet-actieve threads van query pool|Aantal|Average|Het aantal niet-actieve threads voor I/O-taken in de verwer kende thread pool.|
-|QueryPoolJobQueueLength|Threads: lengte van taak wachtrij voor query pool|Aantal|Average|Aantal taken in de wachtrij van de query thread pool.|
-|ShortParsingBusyThreads|Threads: bezette threads voor kort parseren|Aantal|Average|Het aantal actieve threads in de thread pool voor kort parseren.|
-|ShortParsingIdleThreads|Threads: niet-actieve threads voor kort parseren|Aantal|Average|Het aantal niet-actieve threads in de thread pool voor kort parseren.|
-|ShortParsingJobQueueLength|Threads: lengte van taak wachtrij voor kort parseren|Aantal|Average|Aantal taken in de wachtrij van de thread pool voor kort parseren.|
-|TotalConnectionFailures|Totaal aantal verbindings fouten|Aantal|Average|Totaal aantal mislukte Verbindings pogingen.|
-|TotalConnectionRequests|Totaal aantal verbindings aanvragen|Aantal|Average|Totaal aantal verbindings aanvragen. |
+|CommandPoolBusyThreads|Threads: actieve threads van opdracht pool|Count|Average|Het aantal actieve threads in de opdracht thread pool.|
+|CommandPoolIdleThreads|Threads: niet-actieve threads van opdracht pool|Count|Average|Het aantal niet-actieve threads in de opdracht thread pool.|
+|LongParsingBusyThreads|Threads: bezette threads voor lang parseren|Count|Average|Het aantal actieve threads in de thread pool voor lang parseren.|
+|LongParsingIdleThreads|Threads: niet-actieve threads voor lang parseren|Count|Average|Het aantal niet-actieve threads in de thread pool voor lang parseren.|
+|LongParsingJobQueueLength|Threads: lengte van taak wachtrij voor lang parseren|Count|Average|Aantal taken in de wachtrij van de thread pool voor lang parseren.|
+|ProcessingPoolIOJobQueueLength|Threads: lengte van I/O-taak wachtrij voor verwerking van groep|Count|Average|Het aantal I/O-taken in de wachtrij van de verwer kende thread pool.|
+|ProcessingPoolBusyIOJobThreads|Threads: bezig met verwerken van I/O-taak threads van pool|Count|Average|Het aantal threads waarmee I/O-taken worden uitgevoerd in de verwer kende thread pool.|
+|ProcessingPoolBusyNonIOThreads|Threads: bezig met het verwerken van niet-I/O-threads van de groep|Count|Average|Het aantal threads met niet-I/O-taken in de verwer kende thread pool.|
+|ProcessingPoolIdleIOJobThreads|Threads: niet-actieve I/O-taak threads van de groep verwerken|Count|Average|Het aantal niet-actieve threads voor I/O-taken in de verwer kende thread pool.|
+|ProcessingPoolIdleNonIOThreads|Threads: niet-I/O-threads van de groep worden verwerkt|Count|Average|Het aantal niet-actieve threads in de verwer kende thread pool dat is gereserveerd voor niet-I/O-taken.|
+|QueryPoolIdleThreads|Threads: niet-actieve threads van query pool|Count|Average|Het aantal niet-actieve threads voor I/O-taken in de verwer kende thread pool.|
+|QueryPoolJobQueueLength|Threads: lengte van taak wachtrij voor query pool|Count|Average|Aantal taken in de wachtrij van de query thread pool.|
+|ShortParsingBusyThreads|Threads: bezette threads voor kort parseren|Count|Average|Het aantal actieve threads in de thread pool voor kort parseren.|
+|ShortParsingIdleThreads|Threads: niet-actieve threads voor kort parseren|Count|Average|Het aantal niet-actieve threads in de thread pool voor kort parseren.|
+|ShortParsingJobQueueLength|Threads: lengte van taak wachtrij voor kort parseren|Count|Average|Aantal taken in de wachtrij van de thread pool voor kort parseren.|
+|TotalConnectionFailures|Totaal aantal verbindings fouten|Count|Average|Totaal aantal mislukte Verbindings pogingen.|
+|TotalConnectionRequests|Totaal aantal verbindings aanvragen|Count|Average|Totaal aantal verbindings aanvragen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 [Overzicht van Azure Monitor](../azure-monitor/overview.md)      

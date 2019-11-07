@@ -1,5 +1,5 @@
 ---
-title: IDENTITEIT gebruiken om surrogaat sleutels te maken-Azure SQL Data Warehouse | Microsoft Docs
+title: IDENTITEIT gebruiken om surrogaat sleutels te maken
 description: Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c65bf7cc8edfa246508bb22001aed40c34414f3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515593"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692464"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>IDENTITEIT gebruiken om surrogaat sleutels te maken in Azure SQL Data Warehouse
 
@@ -43,7 +44,7 @@ WITH
 ;
 ```
 
-U kunt vervolgens gebruiken `INSERT..SELECT` om de tabel in te vullen.
+U kunt vervolgens `INSERT..SELECT` gebruiken om de tabel in te vullen.
 
 In dit rest gedeelte van deze sectie worden de nuances van de implementatie gemarkeerd, zodat u ze beter kunt begrijpen.  
 
@@ -76,11 +77,11 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-In het voor gaande voor beeld zijn er twee rijen gespreid over distributie 1. De eerste rij heeft de vervangende waarde 1 in kolom `C1`en de tweede rij heeft de vervangende waarde van 61. Beide waarden zijn gegenereerd door de IDENTITEITs eigenschap. De toewijzing van de waarden is echter niet aaneengesloten. Dit gedrag is standaard.
+In het voor gaande voor beeld zijn er twee rijen gespreid over distributie 1. De eerste rij heeft de vervangende waarde 1 in kolom `C1`en de tweede rij heeft de surrogaat waarde 61. Beide waarden zijn gegenereerd door de IDENTITEITs eigenschap. De toewijzing van de waarden is echter niet aaneengesloten. Dit gedrag is standaard.
 
 ### <a name="skewed-data"></a>Scheefe gegevens
 
-Het waarden bereik voor het gegevens type worden gelijkmatig verdeeld over de distributies. Als een gedistribueerde tabel ten koste gaat van scheefe gegevens, kan het bereik van de waarden die beschikbaar zijn voor het gegevens type, voor tijdig worden uitgeput. Als bijvoorbeeld alle gegevens in één distributie worden beëindigd, heeft de tabel in feite toegang tot slechts één Sixtieth van de waarden van het gegevens type. Daarom is de identiteits eigenschap beperkt tot `INT` en `BIGINT` alleen gegevens typen.
+Het waarden bereik voor het gegevens type worden gelijkmatig verdeeld over de distributies. Als een gedistribueerde tabel ten koste gaat van scheefe gegevens, kan het bereik van de waarden die beschikbaar zijn voor het gegevens type, voor tijdig worden uitgeput. Als bijvoorbeeld alle gegevens in één distributie worden beëindigd, heeft de tabel in feite toegang tot slechts één Sixtieth van de waarden van het gegevens type. Daarom is de IDENTITEITs eigenschap beperkt tot `INT` en `BIGINT` alleen gegevens typen.
 
 ### <a name="selectinto"></a>SELECTEREN... SAMEN
 
@@ -93,13 +94,13 @@ Wanneer een bestaande IDENTITEITs kolom is geselecteerd in een nieuwe tabel, nee
 
 Als aan een van deze voor waarden wordt voldaan, wordt de kolom niet NULL gemaakt in plaats van de IDENTITEITs eigenschap over te nemen.
 
-### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
+### <a name="create-table-as-select"></a>CREATE TABLE ALS SELECTEREN
 
-CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server gedrag dat is gedocumenteerd voor SELECT.. Samen. U kunt echter geen identiteits eigenschap opgeven in de kolom definitie van het `CREATE TABLE` onderdeel van de-instructie. U kunt de functie Identity ook niet gebruiken in `SELECT` het deel van de CTAS. Als u een tabel wilt vullen, moet u `CREATE TABLE` gebruiken om de tabel te definiëren `INSERT..SELECT` , gevolgd door om deze te vullen.
+CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server gedrag dat is gedocumenteerd voor SELECT.. Samen. U kunt echter geen IDENTITEITs eigenschap opgeven in de kolom definitie van het onderdeel `CREATE TABLE` van de instructie. U kunt de functie IDENTITY ook niet gebruiken in het `SELECT` onderdeel van de CTAS. Als u een tabel wilt vullen, moet u `CREATE TABLE` gebruiken om de tabel te definiëren, gevolgd door `INSERT..SELECT` om deze te vullen.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Expliciet waarden invoegen in een IDENTITEITs kolom
 
-SQL Data Warehouse ondersteunt `SET IDENTITY_INSERT <your table> ON|OFF` syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
+SQL Data Warehouse ondersteunt `SET IDENTITY_INSERT <your table> ON|OFF`-syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
 
 Veel gegevens modelers, zoals het gebruik van vooraf gedefinieerde negatieve waarden voor bepaalde rijen in hun dimensies. Een voor beeld is de rij-1 of het onbekende lid.
 
@@ -157,7 +158,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Het is niet mogelijk om momenteel `CREATE TABLE AS SELECT` te gebruiken bij het laden van gegevens in een tabel met een identiteits kolom.
+> Het is niet mogelijk om `CREATE TABLE AS SELECT` momenteel te gebruiken bij het laden van gegevens in een tabel met een IDENTITEITs kolom.
 >
 
 Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor het Azure SQL Data Warehouse](design-elt-data-loading.md) en [het laden van best practices](guidance-for-loading-data.md).
@@ -196,7 +197,7 @@ De IDENTITEITs eigenschap kan niet worden gebruikt:
 
 De volgende gerelateerde functies worden niet ondersteund in SQL Data Warehouse:
 
-- [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
+- [IDENTITEIT ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql)
@@ -211,7 +212,7 @@ Kolom C1 is de identiteit in de volgende taken.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>De hoogste toegewezen waarde voor een tabel zoeken
 
-Gebruik de `MAX()` functie om de hoogste toegewezen waarde voor een gedistribueerde tabel te bepalen:
+Gebruik de functie `MAX()` om de hoogste toegewezen waarde voor een gedistribueerde tabel te bepalen:
 
 ```sql
 SELECT MAX(C1)

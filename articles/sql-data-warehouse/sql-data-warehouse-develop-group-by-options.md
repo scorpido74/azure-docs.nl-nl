@@ -1,5 +1,5 @@
 ---
-title: Opties voor groeperen op gebruiken in Azure SQL Data Warehouse | Microsoft Docs
+title: Groeperen op opties gebruiken
 description: Tips voor het implementeren van groeps opties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f6614f32c31338c9cf4f00307c475db4e02f553
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8d5d0f28fa210a56460ced25323b96a68f245895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479641"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685848"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Groeperen op Opties in SQL Data Warehouse
 Tips voor het implementeren van groeps opties in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
@@ -50,8 +51,8 @@ GROUP BY ROLLUP (
 Als u ROLLUP gebruikt, vraagt het vorige voor beeld de volgende aggregaties aan:
 
 * Land en regio
-* Country
-* Eind totaal
+* Land
+* Eindtotaal
 
 Als u het pakket wilt vervangen en dezelfde resultaten wilt retour neren, kunt u alle gebruiken en expliciet de vereiste aggregaties opgeven:
 

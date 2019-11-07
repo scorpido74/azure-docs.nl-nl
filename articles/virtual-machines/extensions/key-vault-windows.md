@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 43c4b363f223c61bac3d3f7dbd272519a0cd014d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7c730ad3f14cc26cd1251b497ef2d146fe99e448
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899045"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584355"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Key Vault voor Windows
 
@@ -28,7 +28,7 @@ De Key Vault VM-extensie ondersteunt de volgende versies van Windows:
 
 ## <a name="extension-schema"></a>Extensieschema
 
-De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als open bare informatie. De uitbrei ding vereist een lijst met bewaakte certificaten, polling frequentie en het doel certificaat archief. Specifiek:  
+De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de extensie zijn geen beveiligde instellingen vereist: alle instellingen ervan worden beschouwd als open bare informatie. De uitbrei ding vereist een lijst met bewaakte certificaten, polling frequentie en het doel certificaat archief. Met name:  
 
 ```json
     {
@@ -59,7 +59,7 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 ```
 
 > [!NOTE]
-> De Url's van uw waargenomen certificaten moeten de vorm `https://myVaultName.vault.azure.net/secrets/myCertName` hebben.
+> De Url's van uw waargenomen certificaten moeten van het formulier `https://myVaultName.vault.azure.net/secrets/myCertName`zijn.
 > 
 > Dit komt doordat het `/secrets` pad het volledige certificaat retourneert, inclusief de persoonlijke sleutel, terwijl het pad van de `/certificates` niet. Meer informatie over certificaten vindt u hier: [Key Vault certificaten](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
@@ -68,14 +68,14 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| Uitgever | Micro soft. Azure. de sleutel kluis. EDP | string |
-| type | KeyVaultForWindows | string |
+| Uitgever | Micro soft. Azure. de sleutel kluis. EDP | tekenreeks |
+| type | KeyVaultForWindows | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
-| Naam certificaat archief | MY | string |
+| pollingIntervalInS | 3600 | tekenreeks |
+| Naam certificaat archief | MY | tekenreeks |
 | linkOnRenewal | onwaar | booleaans |
-| certificateStoreLocation  | LocalMachine | string |
-| requiredInitialSync | waar | booleaans |
+| certificateStoreLocation  | LocalMachine | tekenreeks |
+| requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
 
 
@@ -200,7 +200,7 @@ Gegevens over de status van uitbreidings implementaties kunnen worden opgehaald 
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```

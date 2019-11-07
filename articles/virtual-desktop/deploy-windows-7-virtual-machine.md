@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine met Windows 7 implementeren op virtueel bureau blad van Windows-Azure
+title: Windows 7 virtuele machine implementeren Windows virtueel bureau blad-Azure
 description: Een virtuele machine met Windows 7 configureren en implementeren op het virtuele bureau blad van Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947573"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606876"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
 
@@ -35,7 +35,7 @@ Een Windows 7-VM instellen op het virtuele bureau blad van Windows:
 5. Ga naar Windows Update op uw VM.
 6. Installeer alle Windows-updates in de belang rijke categorie.
 7. Installeer alle Windows-updates in de optionele categorie (exclusief taal pakketten). Hiermee installeert u de Remote Desktop Protocol 8,0-update ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) die u nodig hebt om deze instructies te volt ooien.
-8. Open de Lokale groepsbeleidsobjecteditor en navigeer naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > **extern bureaublad sessiehost** **externe sessie omgeving**van  > .
+8. Open de Lokale groepsbeleidsobjecteditor en navigeer naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > extern bureaublad **sessiehost**  > **externe sessie omgeving**.
 9. Schakel het beleid voor Remote Desktop Protocol 8,0 in.
 10. Start de virtuele machine opnieuw op door de volgende opdracht uit te voeren:
     

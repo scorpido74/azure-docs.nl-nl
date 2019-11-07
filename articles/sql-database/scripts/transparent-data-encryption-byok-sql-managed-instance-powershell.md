@@ -1,5 +1,5 @@
 ---
-title: 'Power shell: BYOK TDE-Azure SQL Database beheerd exemplaar inschakelen | Microsoft Docs'
+title: 'Power shell: BYOK TDE-Azure SQL Database beheerd exemplaar inschakelen '
 description: Meer informatie over het configureren van een Azure SQL Managed instance om te beginnen met het gebruik van BYOK Transparent Data Encryption (TDE) voor versleuteling-at-rest met behulp van Power shell.
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/05/2019
+ms.openlocfilehash: ddffda5229c9c0d33c563e3ae7b4a884f0f92dff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500064"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691406"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transparent Data Encryption beheren in een beheerd exemplaar met uw eigen sleutel vanuit Azure Key Vault
 
-Met dit Power shell-voorbeeld script wordt Transparent Data Encryption (TDE) in Bring Your Own Key (preview)-scenario geconfigureerd voor een Azure SQL Managed instance, met behulp van een sleutel van Azure Key Vault. Zie [TDE Bring your own Key naar Azure SQL](../transparent-data-encryption-byok-azure-sql.md)voor meer informatie over de ondersteuning van TDE met Bring your own Key (BYOK).
+In dit voor beeld van een Power shell-script wordt Transparent Data Encryption (TDE) met door de klant beheerde sleutel geconfigureerd voor Azure SQL Managed instance, met behulp van een sleutel van Azure Key Vault. Dit wordt vaak een Bring Your Own Key scenario genoemd voor TDE. Zie [TDE Bring your own Key naar Azure SQL](../transparent-data-encryption-byok-azure-sql.md)voor meer informatie over de TDe met door de klant beheerde sleutels.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,9 +30,9 @@ Met dit Power shell-voorbeeld script wordt Transparent Data Encryption (TDE) in 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u Power shell lokaal of Azure Cloud Shell gebruikt, is AZ Power shell 1.1.1-Preview of een latere preview-versie vereist. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps)of voert u het onderstaande voorbeeld script uit om de module te installeren.
+Als u Power shell lokaal gebruikt of Azure Cloud Shell gebruikt, is AZ Power Shell 2.3.2 of een nieuwere versie vereist. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps)of voert u het onderstaande voorbeeld script uit om de module voor de huidige gebruiker te installeren:
 
-`Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
+`Install-Module -Name Az -AllowClobber -Scope CurrentUser`
 
 Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 

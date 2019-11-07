@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: 89bf4a3a6b8ea0cb04f3a1a663cc2365fa4fefc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 839bb24996ab782a386d7d28bcc1c06c686e6cd5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468684"
+ms.locfileid: "73578027"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -28,18 +28,18 @@ Deze zelf studie is ontworpen voor ontwikkel aars die gewoon hun reis starten me
 Aan het einde van deze oefening hebt u een systeem ingesteld dat er als volgt uitziet:
 
 1. De voor beeld-client toepassing is geconfigureerd om verbinding te maken met direct line speech Channel en de echo bot
-2. Audio wordt opgenomen van de standaard microfoon op de knop ingedrukt (of wordt continu vastgelegd als aangepast tref woord wordt geactiveerd)
-3. Aangepaste detectie van tref woorden gebeurt optioneel, beperking audio streaming naar de Cloud
-4. Met behulp van Speech SDK maakt de app verbinding met het directe lijn spraak kanaal en streams-audio
-5. U kunt desgewenst een hogere nauw keurigheid van het tref woord controleren op de service
-6. De audio wordt door gegeven aan de service voor spraak herkenning en naar tekst getranscribeerd
-7. De herkende tekst wordt door gegeven aan de echo-bot als een bot Framework-activiteit 
-8. De antwoord tekst wordt in audio omgezet door de TTS-Service (tekst-naar-spraak) en weer gestreamd naar de client toepassing voor afspelen
+1. Audio wordt opgenomen van de standaard microfoon op de knop ingedrukt (of wordt continu vastgelegd als aangepast tref woord wordt geactiveerd)
+1. Aangepaste detectie van tref woorden gebeurt optioneel, beperking audio streaming naar de Cloud
+1. Met behulp van Speech SDK maakt de app verbinding met het directe lijn spraak kanaal en streams-audio
+1. U kunt desgewenst een hogere nauw keurigheid van het tref woord controleren op de service
+1. De audio wordt door gegeven aan de service voor spraak herkenning en naar tekst getranscribeerd
+1. De herkende tekst wordt door gegeven aan de echo-bot als een bot Framework-activiteit 
+1. De antwoord tekst wordt in audio omgezet door de TTS-Service (tekst-naar-spraak) en weer gestreamd naar de client toepassing voor afspelen
 
 ![diagram-tag](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "De stroom van het spraak kanaal")
 
 > [!NOTE]
-> Voor de stappen in deze zelf studie is geen betaalde service vereist. Als nieuwe Azure-gebruiker kunt u tegoed gebruiken van uw gratis Azure Trail-abonnement en de gratis laag van spraak Services om deze zelf studie te volt ooien.
+> Voor de stappen in deze zelf studie is geen betaalde service vereist. Als nieuwe Azure-gebruiker kunt u tegoed gebruiken van uw gratis Azure-proef abonnement en de gratis laag van spraak Services om deze zelf studie te volt ooien.
 
 Deze zelf studie bevat de volgende onderwerpen:
 > [!div class="checklist"]
@@ -66,21 +66,21 @@ Dit is wat u moet doen om deze zelf studie te volt ooien:
 De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azure-Services. Als u de retour tijd voor reacties van uw bot wilt beperken, moet u ervoor zorgen dat deze services zich in dezelfde Azure-regio bevinden. In deze sectie maakt u een resource groep in de regio **VS-West** . Deze resource groep wordt gebruikt bij het maken van afzonderlijke resources voor het bot-Framework, het direct lijn spraak kanaal en spraak Services.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-2. Selecteer **resource groepen**in de linkernavigatiebalk. Klik vervolgens op **toevoegen** om een nieuwe resource groep toe te voegen.
-3. U wordt gevraagd om de volgende informatie op te geven:
+1. Selecteer **resource groepen**in de linkernavigatiebalk. Klik vervolgens op **toevoegen** om een nieuwe resource groep toe te voegen.
+1. U wordt gevraagd om de volgende informatie op te geven:
    * Stel **abonnement** in op **gratis proef versie** (u kunt ook een bestaand abonnement gebruiken).
    * Voer een naam in voor de **resource groep**. We raden **SpeechEchoBotTutorial-ResourceGroup**aan.
    * Selecteer in de vervolg keuzelijst **regio** **VS West**.
-4. Klik op **controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-5. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
-6. Net als bij de resources die u later in deze zelf studie maakt, is het een goed idee om deze resource groep vast te maken aan uw dash board voor eenvoudige toegang. Als u deze resource groep wilt vastmaken, klikt u op het speld pictogram in de rechter bovenhoek van het dash board.
+1. Klik op **controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
+1. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
+1. Net als bij de resources die u later in deze zelf studie maakt, is het een goed idee om deze resource groep vast te maken aan uw dash board voor eenvoudige toegang. Als u deze resource groep wilt vastmaken, klikt u op het speld pictogram in de rechter bovenhoek van het dash board.
 
 ### <a name="choosing-an-azure-region"></a>Een Azure-regio kiezen
 
 Als u voor deze zelf studie een andere regio wilt gebruiken, kunnen de volgende factoren uw keuzes beperken:
 
-* Zorg ervoor dat u een [ondersteunde Azure-regio](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#voice-assistants)gebruikt.
-* Het directe lijn spraak kanaal maakt gebruik van de tekst-naar-spraak-service, die standaard en Neural stemmen heeft. Neural stemmen zijn [beperkt tot specifieke Azure-regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).
+* Zorg ervoor dat u een [ondersteunde Azure-regio](regions.md#voice-assistants)gebruikt.
+* Het directe lijn spraak kanaal maakt gebruik van de tekst-naar-spraak-service, die standaard en Neural stemmen heeft. Neural stemmen zijn [beperkt tot specifieke Azure-regio's](regions.md#standard-and-neural-voices).
 * Sleutels voor een gratis proef versie kunnen worden beperkt tot een specifieke regio.
 
 Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor meer informatie over regio's.
@@ -145,14 +145,18 @@ Nu u enkele resources hebt gemaakt, gaan we een bot bouwen. We beginnen met het 
 ### <a name="download-and-run-the-sample"></a>Het voorbeeld downloaden en uitvoeren
 
 1. De opslag plaats voor beelden klonen:
+
    ```bash
    git clone https://github.com/Microsoft/botbuilder-samples.git
    ```
+
 2. Start Visual Studio.
 3. Selecteer in de werk balk **File** > **Open** > **Project/Solution**en open het project bestand van de echo-bot die is geconfigureerd voor gebruik met een direct lijn spraak kanaal:
+
    ```
    experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
    ```
+
 4. Nadat het project is geladen, drukt u op `F5` om het project uit te voeren.
 
 ### <a name="test-with-the-bot-framework-emulator"></a>Testen met de bot Framework emulator
@@ -163,11 +167,12 @@ De [bot Framework-emulator](https://github.com/microsoft/botframework-emulator) 
 2. Start de bot Framework emulator en open uw bot:
    * Open de **bot**van het **bestand** -> .
 3. Voer de URL in voor uw bot. Bijvoorbeeld:
+
    ```
    http://localhost:3978/api/messages
    ```
-4. Gebruik de gebruikers interface om met uw bot te communiceren met getypte tekst. Bevestig dat u een reactie krijgt.
 
+4. Gebruik de gebruikers interface om met uw bot te communiceren met getypte tekst. Bevestig dat u een reactie krijgt.
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Uw bot implementeren op een Azure App Service
 
@@ -177,26 +182,30 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 > U kunt ook een bot implementeren met behulp van de [Azure cli](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) -en [implementatie sjablonen](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/DeploymentTemplates).
 
 1. Open in Visual Studio de echo-bot die is geconfigureerd voor gebruik met een direct-lijn spraak kanaal:
+
    ```
    experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
    ```
-2. Klik in de **Solution Explorer**met de rechter muisknop op de oplossing **EchoBot** en selecteer **publiceren...**
-3. Er wordt een nieuw venster met **de titel Kies een publicatie doel** geopend.
-3. Selecteer **app service** in de linkernavigatiebalk, selecteer **nieuwe maken**en klik vervolgens op **publiceren**.
-5. Wanneer het venster **app service maken** wordt weer gegeven:
+
+1. Klik in de **Solution Explorer**met de rechter muisknop op de oplossing **EchoBot** en selecteer **publiceren...**
+1. Er wordt een nieuw venster met **de titel Kies een publicatie doel** geopend.
+1. Selecteer **app service** in de linkernavigatiebalk, selecteer **nieuwe maken**en klik vervolgens op **publiceren**.
+1. Wanneer het venster **app service maken** wordt weer gegeven:
    * Klik op **een account toevoegen**en meld u aan met de referenties van uw Azure-account. Als u al bent aangemeld, selecteert u het gewenste account in de vervolg keuzelijst.
    * Voor de **naam**van de app moet u een wereld wijd unieke naam invoeren voor uw bot. Deze naam wordt gebruikt om een unieke bot-URL te maken. Er wordt een standaard waarde ingevuld, inclusief de datum en tijd (bijvoorbeeld: "EchoBot20190805125647"). U kunt de standaard naam voor deze zelf studie gebruiken.
    * Voor het **abonnement**stelt u deze in op **gratis proef versie**
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**
    * Voor **hosting plan**selecteert u **SpeechEchoBotTutorial-AppServicePlan**
-6. Klik op **Maken**.
-7. Er wordt een bericht weer gegeven in Visual Studio dat er als volgt uitziet:
+1. Klik op **Maken**.
+1. Er wordt een bericht weer gegeven in Visual Studio dat er als volgt uitziet:
+
    ```
    Publish Succeeded.
    Web App was published successfully https://EchoBot20190805125647.azurewebsites.net/
    ```
-8. De standaard browser moet een pagina openen en weer geven met de volgende tekst: ' uw bot is klaar! '.
-9. Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal en bevestig dat er drie resources zijn:
+
+1. De standaard browser moet een pagina openen en weer geven met de volgende tekst: ' uw bot is klaar! '.
+1. Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal en bevestig dat er drie resources zijn:
 
 | NAAM | TYPE  | LOCATIE |
 |------|-------|----------|
@@ -255,12 +264,12 @@ Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup**
 Nu is het tijd om uw bot te registreren met het directe-lijn spraak kanaal. Dit kanaal is wat wordt gebruikt om een verbinding tot stand te brengen tussen uw ECHO bot en een client-app die is gecompileerd met de spraak-SDK.
 
 1. Zoek en open uw **SpeechEchoBotTutorial-BotRegistration-** resource in de [Azure Portal](https://portal.azure.com).
-2. Selecteer in het navigatie venster aan de linkerkant de optie **kanalen**.
+1. Selecteer in het navigatie venster aan de linkerkant de optie **kanalen**.
    * Zoek naar **meer kanalen**, zoek en klik op **direct line speech**.
-   * Bekijk de tekst op de pagina met de titel **directe lijn spraak configureren**en klik vervolgens op **Opslaan**.
-   * Als onderdeel van maken zijn er twee **geheime sleutels** gegenereerd. Deze sleutels zijn uniek voor uw bot. Wanneer u een client-app schrijft met behulp van de [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/), geeft u een van deze sleutels op om een verbinding tot stand te brengen tussen de client-app, het directe lijn spraak kanaal en uw bot-service. In deze zelf studie gebruikt u de direct line speech-client (WPF C#).
-   * Klik op **weer geven** en kopieer een van de sleutels op een plek waar u deze eenvoudig kunt openen. Maakt u zich geen zorgen, u kunt altijd toegang krijgen tot de sleutels van de Azure Portal.
-3. Klik op **instellingen**in het navigatie venster aan de linkerkant.
+   * Bekijk de tekst op de pagina met de titel **directe lijn spraak configureren**en vouw vervolgens de vervolg keuzelijst ' cognitieve service-account ' uit.
+   * Selecteer de spraak resource die u eerder hebt gemaakt (bijvoorbeeld **SpeechEchoBotTutorial-speech**) in het menu om uw bot te koppelen aan de sleutel van uw spraak abonnement.
+
+1. Klik op **instellingen**in het navigatie venster aan de linkerkant.
    * Schakel het selectie vakje **streaming-eind punt inschakelen**in het vak in. Dit is nodig voor het inschakelen van een communicatie protocol dat is gebaseerd op Web-sockets tussen uw bot en het directe lijn spraak kanaal.
    * Klik op **Opslaan**.
 

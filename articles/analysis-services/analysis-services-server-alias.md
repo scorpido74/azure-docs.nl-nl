@@ -1,18 +1,18 @@
 ---
 title: Alias server namen Azure Analysis Services | Microsoft Docs
-description: Hierin wordt beschreven hoe u Server naam aliassen maakt en gebruikt.
+description: Meer informatie over het maken van aliassen voor Azure Analysis Services server naam. Gebruikers kunnen vervolgens verbinding maken met uw server met een kortere alias naam in plaats van de server naam.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ea618ecb29451650cbb01e9c95d263f42d406555
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146351"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572282"
 ---
 # <a name="alias-server-names"></a>Alias server namen
 
@@ -54,5 +54,5 @@ protected void Page_Load(object sender, EventArgs e)
 
 ## <a name="see-also"></a>Zie ook
 
-[Client bibliotheken](analysis-services-data-providers.md)   
+  van [client bibliotheken](analysis-services-data-providers.md)  
 [Verbinding maken vanaf Power BI Desktop](analysis-services-connect-pbi.md)

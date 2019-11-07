@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: adc23cad4ad7c55ce81096b1550520c496f744c1
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933429"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614878"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Het afhandelen van fouten in Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Duurzame functie-indelingen worden in code geïmplementeerd en kunnen de ingebou
 
 ## <a name="errors-in-activity-functions"></a>Fouten in de activiteit functies
 
-Uitzonde ringen die worden gegenereerd in een activiteit functie, worden teruggestuurd naar de Orchestrator-functie en gegenereerd als `FunctionFailedException`een. U kunt fout afhandeling en compensatie code schrijven die aan uw behoeften voldoen in de Orchestrator-functie.
+Uitzonde ringen die worden gegenereerd in een activiteit functie, worden teruggestuurd naar de Orchestrator-functie en gegenereerd als een `FunctionFailedException`. U kunt fout afhandeling en compensatie code schrijven die aan uw behoeften voldoen in de Orchestrator-functie.
 
 Denk bijvoorbeeld aan de volgende Orchestrator-functie waarmee u fondsen van het ene naar het andere account overbrengt:
 
@@ -30,7 +30,7 @@ Denk bijvoorbeeld aan de volgende Orchestrator-functie waarmee u fondsen van het
 
 ```csharp
 [FunctionName("TransferFunds")]
-public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var transferDetails = ctx.GetInput<TransferOperation>();
 
@@ -64,12 +64,12 @@ public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext 
 }
 ```
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Schriften
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
 
-public static async Task Run(DurableOrchestrationContext context)
+public static async Task Run(IDurableOrchestrationContext context)
 {
     var transferDetails = ctx.GetInput<TransferOperation>();
 
@@ -103,7 +103,10 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
+> [!NOTE]
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -149,7 +152,7 @@ Wanneer u activiteit functies of suborchestration-functies aanroept, kunt u een 
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
-public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var retryOptions = new RetryOptions(
         firstRetryInterval: TimeSpan.FromSeconds(5),
@@ -161,10 +164,10 @@ public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext 
 }
 ```
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Schriften
 
 ```csharp
-public static async Task Run(DurableOrchestrationContext context)
+public static async Task Run(IDurableOrchestrationContext context)
 {
     var retryOptions = new RetryOptions(
         firstRetryInterval: TimeSpan.FromSeconds(5),
@@ -176,7 +179,10 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
+> [!NOTE]
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -190,26 +196,26 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-De `CallActivityWithRetryAsync` API (.net) `callActivityWithRetry` of (Java script) gebruikt `RetryOptions` een para meter. Suborchestrator-aanroepen met `CallSubOrchestratorWithRetryAsync` behulp van de `callSubOrchestratorWithRetry` API (.net) of (Java script) kunnen gebruikmaken van dezelfde beleids regels voor opnieuw proberen.
+De `CallActivityWithRetryAsync` (.NET) of `callActivityWithRetry` (Java script)-API neemt een `RetryOptions`-para meter. Bij subindelings aanroepen met behulp van de API van `CallSubOrchestratorWithRetryAsync` (.NET) of `callSubOrchestratorWithRetry` (Java script) kunt u gebruikmaken van dezelfde beleids regels voor opnieuw proberen.
 
 Er zijn verschillende opties voor het aanpassen van het beleid voor automatische opnieuw proberen:
 
-* **Maximum aantal pogingen**: Het maximum aantal nieuwe pogingen.
-* **Interval voor eerste poging**: De hoeveelheid tijd die moet worden gewacht voordat de eerste nieuwe poging wordt gedaan.
-* **Uitstel coëfficiënt**: De coëfficiënt die wordt gebruikt om de frequentie van de toename van uitstel te bepalen. De standaard waarde is 1.
-* **Maximum interval voor opnieuw proberen**: De maximale wacht tijd tussen nieuwe pogingen.
-* **Time-out voor opnieuw proberen**: De maximale hoeveelheid tijd die nodig is om nieuwe pogingen uit te voeren. Het standaard gedrag is om voor onbepaalde tijd opnieuw te proberen.
-* **Greep**: Een door de gebruiker gedefinieerde call back kan worden opgegeven om te bepalen of een functie opnieuw moet worden uitgevoerd.
+* **Maximum aantal pogingen**: het maximum aantal nieuwe pogingen.
+* **Interval voor eerste poging**: de hoeveelheid tijd die moet worden gewacht voordat de eerste nieuwe poging wordt gedaan.
+* **Uitstel coëfficiënt**: de coëfficiënt die wordt gebruikt voor het bepalen van de mate van toename van uitstel. De standaard waarde is 1.
+* Maximum **interval voor nieuwe pogingen**: de maximale tijds duur tussen nieuwe pogingen.
+* **Time-out voor opnieuw proberen**: de maximale hoeveelheid tijd die nodig is voor het uitvoeren van nieuwe pogingen. Het standaard gedrag is om voor onbepaalde tijd opnieuw te proberen.
+* **Ingang**: een door de gebruiker gedefinieerde retour aanroep kan worden opgegeven om te bepalen of een functie opnieuw moet worden uitgevoerd.
 
 ## <a name="function-timeouts"></a>Time-outs van functies
 
-Het kan zijn dat u een functie aanroep binnen een Orchestrator-functie wilt verlaten als het te lang duurt om te volt ooien. De juiste manier om dit te doen is door een [duurzame timer](durable-functions-timers.md) te maken `context.CreateTimer` met (.net) `context.df.createTimer` of (Java script) in `Task.WhenAny` combi natie met ( `context.df.Task.any` .net) of (Java script), zoals in het volgende voor beeld:
+Het kan zijn dat u een functie aanroep binnen een Orchestrator-functie wilt verlaten als het te lang duurt om te volt ooien. De juiste manier om dit te doen is door een [duurzame timer](durable-functions-timers.md) te maken met behulp van `context.CreateTimer` (.net) of `context.df.createTimer` (Java script) in combi natie met `Task.WhenAny` (.net) of `context.df.Task.any` (Java script), zoals in het volgende voor beeld:
 
 ### <a name="precompiled-c"></a>Vooraf gecompileerdeC#
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
-public static async Task<bool> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     TimeSpan timeout = TimeSpan.FromSeconds(30);
     DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
@@ -235,10 +241,10 @@ public static async Task<bool> Run([OrchestrationTrigger] DurableOrchestrationCo
 }
 ```
 
-### <a name="c-script"></a>C# Script
+### <a name="c-script"></a>C#Schriften
 
 ```csharp
-public static async Task<bool> Run(DurableOrchestrationContext context)
+public static async Task<bool> Run(IDurableOrchestrationContext context)
 {
     TimeSpan timeout = TimeSpan.FromSeconds(30);
     DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
@@ -264,7 +270,10 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
+> [!NOTE]
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -293,7 +302,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="unhandled-exceptions"></a>Onverwerkte uitzonderingen
 
-Als een Orchestrator-functie mislukt met een niet-verwerkte uitzonde ring, worden de details van de uitzonde ring vastgelegd en `Failed` wordt het exemplaar voltooid met een status.
+Als een Orchestrator-functie mislukt met een niet-verwerkte uitzonde ring, worden de details van de uitzonde ring vastgelegd en wordt het exemplaar voltooid met een `Failed` status.
 
 ## <a name="next-steps"></a>Volgende stappen
 

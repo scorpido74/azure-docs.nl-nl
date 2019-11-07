@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Elastic Database-taken (preview) | Microsoft Docs
+title: Azure SQL Elastic Database-taken (preview-versie)
 description: Elastic Database taken (preview) configureren om Transact-SQL (T-SQL)-scripts uit te voeren in een set van een of meer Azure SQL-data bases
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2afe7d5c9667002c97d354cd1e94f292c6302558
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935079"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685306"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Elastische taken maken, configureren en beheren
 
@@ -48,7 +48,7 @@ Taken gebruiken [databasereferenties](/sql/t-sql/statements/create-database-scop
 Het instellen van de juiste referenties voor het uitvoeren van een taak kan enigszins verwarrend zijn. Houd daarom de volgende punten in gedachten:
 
 - De databasereferenties moeten worden gemaakt in de *taakdatabase*.
-- **Alle doel databases moeten een aanmelding hebben met [voldoende machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) voor het volt ooien van de taak** (`jobuser` in het onderstaande diagram).
+- **Alle doel databases moeten een aanmelding met [voldoende machtigingen](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) hebben om de taak te volt ooien** (`jobuser` in het onderstaande diagram).
 - Referenties kunnen opnieuw worden gebruikt voor verschillende taken en de referentie wachtwoorden worden versleuteld en beveiligd door gebruikers met alleen-lezen toegang tot taak objecten.
 
 De volgende afbeelding is gemaakt als hulp bij het begrijpen en instellen van de juiste taakreferenties. **Denk eraan dat de gebruiker moet worden gemaakt in elke database (alle *doelgebruikersdatabases*) waarin de taak moet worden uitgevoerd**.
@@ -75,7 +75,7 @@ Op dit moment is de preview beperkt tot 100 gelijktijdige taken.
 
 Om ervoor te zorgen dat resources niet worden overbelast tijdens het uitvoeren van taken voor databases in een elastische SQL-pool, kunnen taken zo worden geconfigureerd dat het aantal databases waarvoor een taak tegelijkertijd wordt uitgevoerd, wordt beperkt.
 
-Stel het aantal gelijktijdige data bases in waarop een taak wordt uitgevoerd `sp_add_jobstep` door de para `@max_parallelism` meter van de opgeslagen procedure in T `Add-AzSqlElasticJobStep -MaxParallelism` -SQL of in Power shell in te stellen.
+Stel het aantal gelijktijdige data bases in waarop een taak wordt uitgevoerd door de para meter `@max_parallelism` van de `sp_add_jobstep` opgeslagen procedure in T-SQL of `Add-AzSqlElasticJobStep -MaxParallelism` in Power shell in te stellen.
 
 ## <a name="best-practices-for-creating-jobs"></a>Best practices voor het maken van taken
 

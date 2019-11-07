@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse aanbevelingen - concepten | Microsoft Docs
-description: Meer informatie over aanbevelingen voor SQL Data Warehouse en hoe ze worden gegenereerd
+title: Aanbevelingen voor SQL Data Warehouse
+description: Meer informatie over SQL Data Warehouse aanbevelingen en hoe deze worden gegenereerd
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
@@ -10,56 +10,57 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09dff2c8ddf5b9038aa715cef02e099ccbc68f8a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61421219"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685917"
 ---
-# <a name="sql-data-warehouse-recommendations"></a>Aanbevelingen voor SQL datawarehouse
+# <a name="sql-data-warehouse-recommendations"></a>Aanbevelingen voor SQL Data Warehouse
 
-Dit artikel beschrijft de aanbevelingen die is geleverd door SQL Data Warehouse via Azure Advisor.  
+In dit artikel worden de aanbevelingen beschreven die worden geleverd door SQL Data Warehouse via Azure Advisor.  
 
-SQL Data Warehouse biedt aanbevelingen om te controleren of uw datawarehouse wordt voortdurend geoptimaliseerd voor prestaties. Datawarehouse aanbevelingen zijn nauw geïntegreerd met [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) zodat u kunt met best practices rechtstreeks binnen de [Azure-portal](https://aka.ms/Azureadvisor). SQL Data Warehouse de huidige status van uw datawarehouse analyseert, Telemetrie en bevat aanbevelingen voor de werkbelasting van uw actieve dagelijks worden verzameld. De aanbeveling scenario's met ondersteunde datawarehouse worden hieronder beschreven, samen met het toepassen van de aanbevolen acties.
+SQL Data Warehouse biedt aanbevelingen om ervoor te zorgen dat uw data warehouse consistent wordt geoptimaliseerd voor prestaties. Aanbevelingen voor data warehouses zijn nauw geïntegreerd met [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) om u de best practices direct binnen de [Azure Portal](https://aka.ms/Azureadvisor)te bieden. SQL Data Warehouse analyseert de huidige status van uw data warehouse, verzamelt telemetrie en oppervlak aanbevelingen voor uw actieve workload op een dagelijks uitgebracht. De ondersteunde aanbevelingen voor data warehouses worden hieronder beschreven, samen met het Toep assen van aanbevolen acties.
 
-Als u feedback over de SQL Data Warehouse Advisor hebt of ondervindt problemen, contact op met [ sqldwadvisor@service.microsoft.com ](mailto:sqldwadvisor@service.microsoft.com).   
+Als u feedback hebt over de SQL Data Warehouse Advisor of als u problemen ondervindt, kunt u contact met [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com)opdoen.   
 
-Klik op [hier](https://aka.ms/Azureadvisor) om te controleren op uw aanbevelingen vandaag nog! Deze functie is momenteel van toepassing op datawarehouses alleen Gen2. 
+Klik [hier](https://aka.ms/Azureadvisor) om uw aanbevelingen vandaag nog te controleren. Deze functie is momenteel alleen van toepassing op Gen2-data warehouses. 
 
-## <a name="data-skew"></a>Gegevensverschil
+## <a name="data-skew"></a>Gegevens scheef trekken
 
-Gegevensverschil kan leiden tot van knelpunten in verkeer of de resource aanvullende gegevens wanneer uw workload wordt uitgevoerd. De volgende documentatie beschreven show gegevensverschil identificeren en te voorkomen dat dit gebeurt door het selecteren van een optimale distributiesleutel.
+Gegevens scheefheid kan leiden tot extra gegevens bewegingen of bron knelpunten wanneer uw werk belasting wordt uitgevoerd. In de volgende documentatie wordt beschreven hoe u het scheef trekken van gegevens identificeert en voor komt dat dit gebeurt door een optimale distributie sleutel te selecteren.
 
-- [Identificeren en scheeftrekken verwijderen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
+- [Scheefheid identificeren en verwijderen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
 
-## <a name="no-or-outdated-statistics"></a>Geen verouderde statistieken of
+## <a name="no-or-outdated-statistics"></a>Geen of verouderde statistieken
 
-Uit suboptimale statistieken kan grote invloed is op prestaties van query's, dit leiden de SQL Data Warehouse-queryoptimalisatieprogramma voor het genereren van suboptimale queryplannen tot kan. De volgende documentatie worden de aanbevolen procedures behandeld voor het maken en bijwerken van statistieken beschreven:
+Het hebben van een suboptimale statistieken kan een grote invloed hebben op de query prestaties, omdat hierdoor de SQL Data Warehouse query optimalisatie kan zorgen voor het genereren van suboptimale query plannen. De volgende documentatie bevat informatie over de aanbevolen procedures voor het maken en bijwerken van statistieken:
 
-- [Het maken en bijwerken van tabelstatistieken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
+- [Tabel statistieken maken en bijwerken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-Als u wilt de lijst met betrokken tabellen zien door deze aanbevelingen, voer de volgende [T-SQL-script](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor wordt continu uitgevoerd voor de dezelfde T-SQL-script voor het genereren van deze aanbevelingen.
+Voer het volgende [T-SQL-script](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)uit om de lijst met betrokken tabellen te bekijken met deze aanbevelingen. Advisor voert continu hetzelfde T-SQL-script uit om deze aanbevelingen te genereren.
 
 ## <a name="replicate-tables"></a>Tabellen repliceren
 
-Voor gerepliceerde tabel aanbevelingen detecteert Advisor tabel kandidaten op basis van de volgende fysieke kenmerken:
+Voor de aanbevelingen van een gerepliceerde tabel, adviseur detecteert de kandidaten van een tabel op basis van de volgende fysieke kenmerken:
 
-- Tabelgrootte gerepliceerd
+- Grootte van gerepliceerde tabel
 - Aantal kolommen
-- Tabel Distributietype
+- Type tabel distributie
 - Aantal partities
 
-Advisor continu maakt gebruik van heuristiek zoals tabel toegang frequentie, op basis van een werkbelasting rijen geretourneerd, gemiddeld en drempelwaarden rond gegevens datawarehouse-grootte en de activiteit om ervoor te zorgen goede aanbevelingen worden gegenereerd. 
+Advisor maakt continu gebruik van heuristiek op basis van werk belastingen, zoals de frequentie van tabel toegang, rijen die gemiddeld worden geretourneerd en drempel waarden rond Data Warehouse-grootte en-activiteit, om ervoor te zorgen dat aanbevelingen van hoge kwaliteit worden gegenereerd. 
 
-Hierna wordt beschreven op basis van een werkbelasting methodiek voor die u in de Azure-portal voor elke aanbeveling gerepliceerde tabel vinden kan:
+Hieronder vindt u een beschrijving van de heuristische op basis van werk belastingen die u kunt vinden in de Azure Portal voor elke gerepliceerde tabel aanbeveling:
 
-- Scan Gem.-het gemiddelde percentage van de rijen die zijn geretourneerd uit de tabel voor elke tabeltoegang gedurende de afgelopen zeven dagen
-- Frequente lees-, geen update - geeft aan dat de tabel niet in de afgelopen zeven dagen bijgewerkt is tijdens de weergave van de activiteit voor het openen
-- Verhouding tussen lezen/bijwerken - de verhouding van hoe vaak de tabel is geopend ten opzichte van wanneer deze gedurende de afgelopen zeven dagen wordt bijgewerkt
-- Activiteit - Hiermee wordt het gebruik op basis van de activiteit voor het openen. Dit vergelijkt de activiteit voor het openen van tabel ten opzichte van de activiteit voor het openen van gemiddelde tabel in het datawarehouse gedurende de afgelopen zeven dagen. 
+- Controle Gem: het gemiddelde aantal rijen dat is geretourneerd uit de tabel voor elke toegang tot de tabel gedurende de afgelopen zeven dagen
+- Veelvuldig gelezen: geen update: geeft aan dat de tabel in de afgelopen zeven dagen niet is bijgewerkt terwijl de toegangs activiteit wordt weer gegeven
+- Verhouding van lezen/bijwerken: de verhouding van hoe vaak de tabel is geopend ten opzichte van wanneer deze in de afgelopen zeven dagen wordt bijgewerkt
+- Activiteit: Hiermee wordt het gebruik gemeten op basis van de toegangs activiteit. Hiermee wordt de activiteit voor de tabel toegang vergeleken met de gemiddelde activiteit van de tabel toegang in het data warehouse in de afgelopen zeven dagen. 
 
-Op dit moment wordt Advisor alleen weergegeven maximaal vier gerepliceerde tabel kandidaten in één keer met geclusterde columnstore-indexen meer prioriteit toekennen aan de hoogste activiteit.
+Momenteel worden in Advisor alleen Maxi maal vier gerepliceerde tabel kandidaten tegelijk met geclusterde column Store-indexen met de prioriteit van de hoogste activiteit weer gegeven.
 
 > [!IMPORTANT]
-> De aanbeveling gerepliceerde tabel is niet volledig bewijs en hierbij wordt geen rekening gegevensverplaatsingsbewerkingen account. Er wordt gewerkt aan toe te voegen als een heuristiek, maar in de tussentijd kunt u altijd uw workload moet valideren nadat de aanbeveling is toegepast. Neem contact op met sqldwadvisor@service.microsoft.com als u gerepliceerde tabel aanbevelingen die ervoor zorgt dat uw workload ontdekt aan gaat. Voor meer informatie over gerepliceerde tabellen, gaat u naar de volgende [documentatie](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
+> De aanbeveling van de gerepliceerde tabel is geen volledige controle en houdt geen rekening met het verplaatsen van gegevens. We werken eraan om dit als een heuristisch toe te voegen, maar ondertussen moet u uw workload altijd valideren nadat u de aanbeveling hebt toegepast. Neem contact op met sqldwadvisor@service.microsoft.com als u de aanbevelingen van gerepliceerde tabellen detecteert die ervoor zorgen dat uw werk belasting Regress. Raadpleeg de volgende [documentatie](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table)voor meer informatie over gerepliceerde tabellen.

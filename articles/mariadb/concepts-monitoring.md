@@ -1,62 +1,62 @@
 ---
-title: Bewaking in Azure Database voor MariaDB
-description: Dit artikel beschrijft de metrische gegevens voor bewaking en waarschuwingen voor Azure Database voor MariaDB, met inbegrip van CPU, opslag en verbinding statistieken.
+title: Bewaking in Azure Database for MariaDB
+description: In dit artikel worden de metrische gegevens beschreven voor bewaking en waarschuwingen voor Azure Database for MariaDB, inclusief CPU-, opslag-en verbindings statistieken.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: fb998edffed290bb7bc59945163f0fd48c55cbf5
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 11/04/2019
+ms.openlocfilehash: 2f4346dfdb095e849adc65baf0fd31d25d03c4a7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612529"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604073"
 ---
-# <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database voor MariaDB
-Gegevens over uw servers te controleren, kunt u problemen op te optimaliseren voor uw workload. Azure Database voor MariaDB biedt verschillende metrische gegevens inzicht in het gedrag van uw server geven.
+# <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database for MariaDB
+Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MariaDB biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
 
 ## <a name="metrics"></a>Metrische gegevens
-Alle metrische gegevens van Azure hebben een frequentie van één minuut en elke metrische waarde biedt 30 dagen van de geschiedenis. U kunt waarschuwingen configureren op de metrische gegevens. Andere taken omvatten het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van geschiedenis. Zie voor meer informatie de [overzicht van metrische gegevens van Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek biedt een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
 
-Zie voor stapsgewijze instructies [over het instellen van waarschuwingen](howto-alert-metric.md).
+Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-alert-metric.md).
 
-### <a name="list-of-metrics"></a>Overzicht van metrische gegevens
-Deze metrische gegevens zijn beschikbaar voor Azure Database voor MariaDB:
+### <a name="list-of-metrics"></a>Lijst met metrische gegevens
+Deze metrische gegevens zijn beschikbaar voor Azure Database for MariaDB:
 
-|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Description|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
 |---|---|---|---|
-|cpu_percent|CPU-percentage|Percent|Het percentage van CPU gebruikt.|
-|memory_percent|Percentage geheugen|Percent|Het percentage gebruikt geheugen.|
-|io_consumption_percent|I/o-percentage|Percent|Het percentage i/o in gebruik.|
-|storage_percent|Opslagpercentage|Percent|Het percentage van de opslag die buiten de server wordt gebruikt's maximaal.|
-|storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslagruimte wordt gebruikt. De opslag die wordt gebruikt door de service omvat bestanden van de database, transactielogboeken en de serverlogboeken.|
-|serverlog_storage_percent|Server Log opslag procent|Percent|Het percentage van de server logboekopslag gebruikt buiten maximale serveropslag logboek van de server.|
-|serverlog_storage_usage|Server logboekopslag gebruikt|Bytes|De hoeveelheid opslag van de server-logboek in gebruik.|
-|serverlog_storage_limit|Limiet voor opslag van server-logboek|Bytes|De maximale server logboekopslag voor deze server.|
-|storage_limit|Limiet voor opslag|Bytes|De maximale opslag voor deze server.|
+|cpu_percent|CPU-percentage|Procent|Het percentage CPU-gebruik.|
+|memory_percent|Geheugen percentage|Procent|Het percentage geheugen dat in gebruik is.|
+|io_consumption_percent|IO-percentage|Procent|Het percentage i/o dat in gebruik is.|
+|storage_percent|Opslag percentage|Procent|Het percentage van de opslag ruimte dat uit het maximum van de server wordt gebruikt.|
+|storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslag ruimte die wordt gebruikt. De opslag die door de service wordt gebruikt, kan de database bestanden, transactie logboeken en de server logboeken bevatten.|
+|serverlog_storage_percent|Percentage server logboek opslag|Procent|Het percentage server logboek opslag dat is gebruikt voor de maximale server logboek opslag van de server.|
+|serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
+|serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
+|storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
 |active_connections|Actieve verbindingen|Count|Het aantal actieve verbindingen met de server.|
 |connections_failed|Mislukte verbindingen|Count|Het aantal mislukte verbindingen met de server.|
-|network_bytes_egress|Netwerk uit|Bytes|Uitgaand netwerkverkeer voor actieve verbindingen.|
-|network_bytes_ingress|Netwerk in|Bytes|Netwerk In voor de actieve verbindingen.|
+|network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
+|network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
 
 ## <a name="server-logs"></a>Serverlogboeken
 
-U kunt langzame query's op uw server logboekregistratie inschakelen. Deze logboeken zijn ook beschikbaar via Azure diagnostische logboeken in Logboeken, Event Hubs en Storage-Account van Azure Monitor. Voor meer informatie over logboekregistratie, gaat u naar de [serverlogboeken](concepts-server-logs.md) pagina.
+U kunt logboek registratie van langzame query's inschakelen op uw server. Deze logboeken zijn ook beschikbaar via Diagnostische logboeken van Azure in Azure Monitor-logboeken, Event Hubs en opslag account. Ga naar de pagina [Server logboeken](concepts-server-logs.md) voor meer informatie over logboek registratie.
 
 ## <a name="query-store"></a>Query Store
 
-[Query Store](concepts-query-store.md) is een openbare preview-functie die boekrecords bijhoudt query prestaties gedurende een bepaalde tijd met inbegrip van runtime-statistieken opvragen en wacht gebeurtenissen. De functie zich blijft voordoen querygegevens over de runtimeprestaties in de **mysql** schema. U kunt de verzameling en opslag van gegevens via verschillende configuratie-knoppen beheren.
+In het [query archief](concepts-query-store.md) worden de query prestaties in de loop van de tijd bijgehouden, inclusief de statistieken voor query runtime en wacht gebeurtenissen. De functie bewaart query runtime-prestatie gegevens in het **MySQL** -schema. U kunt het verzamelen en opslaan van gegevens beheren via verschillende configuratie knoppen.
 
 ## <a name="query-performance-insight"></a>Inzicht in queryprestaties
 
-[Query Performance Insight](concepts-query-performance-insight.md) werkt in combinatie met Query Store te bieden van visualisaties die toegankelijk is vanaf de Azure-portal. Deze diagrammen kunnen u belangrijke query's identificeren die prestaties. Query Performance Insight is in openbare preview en is toegankelijk in de **intelligente prestaties** sectie van uw Azure Database voor MariaDB-server portal-pagina.
+[Query Performance Insight](concepts-query-performance-insight.md) werkt in combi natie met query Store om visualisaties toegankelijk te maken vanuit de Azure Portal. Met deze grafieken kunt u belang rijke query's identificeren die van invloed zijn op de prestaties. Query Performance Insight is toegankelijk in het gedeelte **intelligente prestaties** van de portal pagina van de Azure database for MariaDB-server.
 
 ## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
 
-De [aanbevelingen voor prestaties](concepts-performance-recommendations.md) functie identificeert mogelijkheden voor verbetering van de prestaties van de werkbelastingen. De openbare preview-versie van de aanbevelingen voor prestaties beschikt u over aanbevelingen voor het maken van nieuwe indexen die u de mogelijkheid hebt voor het verbeteren van de prestaties van uw workloads. Om te produceren indexaanbevelingen, wordt de functie rekening gehouden met verschillende kenmerken van de database, met inbegrip van het schema en de werkbelasting, zoals gerapporteerd door de Query Store. Na de implementatie van elke aanbeveling prestaties, moeten klanten prestaties voor het evalueren van de impact van deze wijzigingen testen.
+De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.md) identificeert mogelijkheden voor het verbeteren van de prestaties van de werk belasting. Prestatie aanbevelingen bieden u aanbevelingen voor het maken van nieuwe indexen die de prestaties van uw workloads kunnen verbeteren. Voor het produceren van index aanbevelingen, neemt de functie rekening met diverse database kenmerken, waaronder het schema en de werk belasting zoals gerapporteerd door de query Store. Na de implementatie van de aanbevolen prestaties, moeten klanten de prestaties testen om de impact van deze wijzigingen te evalueren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure portal, de REST-API of de CLI de [overzicht van metrische gegevens van Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
-  - Zie [over het instellen van waarschuwingen](howto-alert-metric.md) voor hulp bij het maken van een waarschuwing voor metrische gegevens.
+- Zie het [overzicht van Azure-metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie over het openen en exporteren van metrische gegevens met behulp van de Azure Portal, rest API of cli.
+  - Zie [waarschuwingen instellen](howto-alert-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.

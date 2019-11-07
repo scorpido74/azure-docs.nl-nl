@@ -1,5 +1,5 @@
 ---
-title: SaaS-zelf studie met één Tenant-Azure SQL Database | Microsoft Docs
+title: SaaS-zelf studie met één Tenant-Azure SQL Database
 description: Implementeer en verken een zelfstandige SaaS-toepassing met één Tenant die gebruikmaakt van Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 11/07/2018
-ms.openlocfilehash: 2e6b18e53358cad1bfe89e8c0ae7fbacec24d179
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df9c3913851055f1bb477264cf5a7486f79b56b0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570207"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691954"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Een zelfstandige toepassing met één Tenant implementeren en verkennen die gebruikmaakt van Azure SQL Database
 
@@ -43,11 +43,11 @@ Aanvullende zelf studies worden uitgebracht. Ze bieden u de mogelijkheid om een 
 Implementeer de app voor de drie beschik bare tenants:
 
 1. Klik op elke blauwe knop **implementeren naar Azure** om de implementatie sjabloon te openen in de [Azure Portal](https://portal.azure.com). Voor elke sjabloon zijn twee parameter waarden vereist. een naam voor een nieuwe resource groep en een gebruikers naam die deze implementatie onderscheidt van andere implementaties van de app. De volgende stap bevat details over het instellen van deze waarden.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Concert zaal contoso** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **concert hal van Contoso**
 <br><br>
     <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **fabrikam Jazz Club**
 
 2. Voer de vereiste parameter waarden in voor elke implementatie.
 
@@ -55,7 +55,7 @@ Implementeer de app voor de drie beschik bare tenants:
     > Sommige verificatie-en server firewalls zijn opzettelijk onveilig voor demonstratie doeleinden. **Maak een nieuwe resource groep** voor elke toepassings implementatie.  Gebruik geen bestaande resource groep. Gebruik deze toepassing of resources die worden gemaakt, niet voor productie. Verwijder alle resource groepen wanneer u klaar bent met de toepassingen om gerelateerde facturering te stoppen.
 
     Het is raadzaam alleen kleine letters, cijfers en afbreek streepjes in de resource namen te gebruiken.
-    * Voor **resource groep**selecteert u nieuwe maken en geeft u een kleine naam op voor de resource groep. **Wingtip-sa-\<\>locatiegebruikerishetAanbevolenpatroon\>. -\<**  Vervang de naam van de locatie voor \<de locatie van de locatie zonder spaties.\> Voor \<de\>gebruiker vervangt u de onderstaande gebruikers waarde.  Met dit patroon kunnen namen van resource groepen *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*zijn.
+    * Voor **resource groep**selecteert u nieuwe maken en geeft u een kleine naam op voor de resource groep. **Wingtip-sa-\<platformnaam\>-\<gebruikers\>** het aanbevolen patroon is.  Voor \<locatie\>vervangt u de naam van de locatie zonder spaties. Vervang de onderstaande gebruikers waarde voor \<gebruikers\>.  Met dit patroon kunnen namen van resource groepen *Wingtip-sa-contosoconcerthall-AF1*, *Wingtip-sa-dogwooddojo-AF1*, *Wingtip-sa-fabrikamjazzclub-AF1*zijn.
     * Selecteer een **locatie** in de vervolg keuzelijst.
 
     * Voor de **gebruiker** : we raden een korte gebruikers waarde aan, zoals uw initialen plus een cijfer: bijvoorbeeld *AF1*.
@@ -75,16 +75,16 @@ De app geeft een overzicht van locaties die gebeurtenissen hosten.  De locaties 
 
 1. Open de pagina gebeurtenissen voor elk van de drie tenants in afzonderlijke browser tabbladen:
 
-   - http://events.contosoconcerthall.&lt ;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt ;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt ;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt; gebruiker&gt;. trafficmanager.net
+   - http://events.dogwooddojo.&lt; gebruiker&gt;. trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt; gebruiker&gt;. trafficmanager.net
 
-     (Vervang &lt;&gt; de gebruiker in elke URL door de gebruikers waarde van uw implementatie.)
+     (Vervang in elke URL &lt;gebruikers&gt; door de gebruikers waarde van uw implementatie.)
 
-   ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Gebeurtenissen](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 De app maakt gebruik van [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md)om de distributie van binnenkomende aanvragen te beheren. Elk Tenant-specifiek app-exemplaar bevat de Tenant naam als onderdeel van de domein naam in de URL. Alle Tenant-Url's bevatten uw specifieke **gebruikers** waarde. De Url's volgen de volgende indeling:
-- http://events.&lt ;venuename&gt;.&lt; user&gt;.trafficmanager.net
+- http://events.&lt; locatie&gt;.&lt;gebruiker&gt;. trafficmanager.net
 
 De **locatie** van de data base van elke Tenant is opgenomen in de app-instellingen van de bijbehorende geïmplementeerde app.
 
@@ -97,11 +97,11 @@ Laten we eens kijken naar enkele van de resources die zijn geïmplementeerd:
 
 1. Blader in het [Azure Portal](https://portal.azure.com)naar de lijst met resource groepen.
 2. U ziet nu de drie Tenant resource groepen.
-3. Open de resource groep **Wingtip-sa-&lt;fabrikam&gt; -User** . Deze bevat de resources voor de implementatie van Fabrikam Jazz Club.  De **fabrikamjazzclub-&lt;gebruikers&gt;**  server bevat de **fabrikamjazzclub** -data base.
+3. Open de resource groep **Wingtip-sa-fabrikam-&lt;gebruiker&gt;** , die de resources bevat voor de implementatie van de fabrikam Jazz-Club.  De **fabrikamjazzclub-&lt;gebruiker&gt;-** server bevat de **fabrikamjazzclub** -data base.
 
 Elke Tenant database is een een *zelfstandige* 50 DTU-data base.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 <!--
 * Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

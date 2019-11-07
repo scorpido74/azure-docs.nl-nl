@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296380"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585209"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Uitzonde ringen voor Service Bus Resource Manager
 
@@ -36,7 +36,7 @@ Hieronder vindt u de verschillende uitzonde ringen/fouten die worden weer gegeve
 
 | Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Topics </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Onderwerpen </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. De waarde voor de eigenschap requiresDuplicateDetection van een bestaande wachtrij (of onderwerp) kan niet worden gewijzigd. | Duplicaten detectie moet zijn ingeschakeld/uitgeschakeld op het moment dat de entiteit wordt gemaakt. De configuratie parameter duplicaten detectie kan niet worden gewijzigd nadat deze is gemaakt. | Als u duplicaten detectie wilt inschakelen voor een eerder gemaakte wachtrij/onderwerp, kunt u een nieuwe wachtrij/onderwerp maken met duplicaten detectie en vervolgens door sturen van de oorspronkelijke wachtrij naar de nieuwe wachtrij/onderwerp. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. De opgegeven waarde 16384 is ongeldig. De eigenschap MaxSizeInMegabytes moet een van de volgende waarden hebben: 1024; 2048; 3072; 4096; 5120. | De MaxSizeInMegabytes-waarde is ongeldig. | Zorg ervoor dat de MaxSizeInMegabytes een van de volgende is: 1024, 2048, 3072, 4096, 5120. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. Partitioneren kan niet worden gewijzigd voor wachtrij/onderwerp. | Partitioneren kan niet worden gewijzigd voor entiteit. | Maak een nieuwe entiteit (wachtrij of onderwerp) en schakel partities in. | 
@@ -72,3 +72,20 @@ Deze klasse van fouten geeft aan dat de bron niet is gevonden.
 | Niet gevonden | geen | Niet gevonden. De bewerking bestaat niet. | De bewerking die u probeert uit te voeren, bestaat niet. | Controleer de bewerking en probeer het opnieuw. |
 | Niet gevonden | geen | De binnenkomende aanvraag wordt niet herkend als een naam ruimte beleid voor het opslaan van een aanvraag. | De hoofd tekst van de binnenkomende aanvraag is null en kan daarom niet worden uitgevoerd als een put-aanvraag. | Controleer de hoofd tekst van de aanvraag om er zeker van te zijn dat deze niet null is. | 
 | Niet gevonden | geen | De bericht entiteit *' entiteits naam '* is niet gevonden. | De entiteit waarvoor u de bewerking probeert uit te voeren, is niet gevonden. | Controleer of de entiteit bestaat en probeer het opnieuw. |
+
+## <a name="error-code-internal-server-error"></a>Fout code: interne server fout
+
+Deze klasse van fouten geeft aan dat er een interne server fout is opgetreden
+
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Interne server fout | 50000 | Subcode = 50.000. Interne server fout| Kan om verschillende redenen plaatsvinden. Enkele symptomen zijn: <ul> <li> De client aanvraag/de hoofd tekst is beschadigd en resulteert in een fout. </li> <li> Er is een time-out opgetreden voor de client aanvraag vanwege het verwerken van problemen met de service. </li> </ul> | Om dit probleem op te lossen <ul> <li> Zorg ervoor dat de aanvragen para meters niet null of misvormd zijn. </li> <li> Voer de aanvraag opnieuw uit. </li> </ul> |
+
+## <a name="error-code-unauthorized"></a>Fout code: niet geautoriseerd
+
+Deze klasse van fouten geeft aan dat er geen autorisatie is om de opdracht uit te voeren.
+
+| Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Niet geautoriseerd | geen | Ongeldige bewerking op de secundaire naam ruimte. Secundaire naam ruimte heeft het kenmerk alleen-lezen. | De bewerking is uitgevoerd op basis van de secundaire naam ruimte, die is ingesteld als een alleen-lezen naam ruimte. | Voer de opdracht opnieuw uit op de primaire naam ruimte. Meer informatie over [secundaire naam ruimte](service-bus-geo-dr.md) |
+| Niet geautoriseerd | geen | MissingToken: de autorisatie-header is niet gevonden. | Deze fout treedt op wanneer de autorisatie null of onjuiste waarden heeft. | Zorg ervoor dat de token waarde die wordt vermeld in de autorisatie-header juist is en niet null is. |

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: e41a037e657a8d2b484a3fcb62eb3bc03f53682d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507086"
+ms.locfileid: "73579705"
 ---
 # <a name="custom-commands-preview"></a>Aangepaste opdrachten (preview-versie)
 
 [Spraak assistenten](voice-assistants.md) worden naar gebruikers geluisterd en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md). Apparaten maken verbinding met assistenten met het `DialogServiceConnector`-object van de Speech SDK.
 
-**Aangepaste opdrachten (preview)** is een gestroomlijnde oplossing voor het maken van een spraak assistent. Het biedt een uniforme ontwerp-ervaring, een automatisch hosting model en relatief lagere complexiteit versus andere opties voor het maken van een assistent, zoals [direct line speech](direct-line-speech.md). Deze vereenvoudiging wordt echter geleverd met een lagere flexibiliteit. Aangepaste opdrachten (preview) zijn dus het meest geschikt voor het volt ooien van taken of voor scenario's met opdrachten en besturings elementen.
+**Aangepaste opdrachten (preview)** is een gestroomlijnde oplossing voor het maken van een spraak assistent. Het biedt een uniforme ontwerp-ervaring, een automatisch hosting model en relatief lagere complexiteit versus andere opties voor het maken van een assistent, zoals [direct line speech](direct-line-speech.md). Deze vereenvoudiging wordt echter geleverd met een lagere flexibiliteit. Aangepaste opdrachten (preview) zijn dus het meest geschikt voor het volt ooien van taken of voor scenario's met opdrachten en besturings elementen. Het is met name goed afgestemd op Internet of Things (IoT) en headless apparaten.
 
 Voor complexe conversatie-interacties en integratie met andere oplossingen, zoals de [Virtual assistent-oplossing en de ondernemings sjabloon,](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) wordt u geadviseerd om direct line speech te gebruiken.
 

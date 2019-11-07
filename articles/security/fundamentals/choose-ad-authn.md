@@ -2,25 +2,25 @@
 title: Kies de juiste verificatie methode voor uw Azure AD hybride identiteits oplossing | Microsoft Docs
 description: Deze hand leiding helpt CEOs, Cio's, CISOs, Chief Identity Architects, Enter prise Architects en Security en IT-besluit vormers die verantwoordelijk zijn voor het kiezen van een verificatie methode voor hun Azure AD hybride identiteits oplossing in gemiddeld tot grote organisaties.
 keywords: ''
-author: martincoetzer
-ms.author: martinco
+author: TerryLanfear
+ms.author: terrylan
 ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 524e923f005e2631e42f1d6b89b13cafdd646c2a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 564175141a8076d2ac4324b0dccf02cc250a613c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159708"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621184"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing 
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Kies de juiste verificatie methode voor uw Azure Active Directory hybride identiteits oplossing
 
 Het kiezen van de juiste verificatie methode is de eerste reden voor organisaties die hun apps willen verplaatsen naar de Cloud. Doe deze beslissing niet lichter, om de volgende redenen:
 
-1. Het is de eerste beslissing voor een organisatie die naar de Cloud wil verplaatsen. 
+1. Het is de eerste beslissing voor een organisatie die naar de Cloud wil verplaatsen.
 
 2. De verificatie methode is een essentieel onderdeel van de aanwezigheid van een organisatie in de Cloud. Het beheert de toegang tot alle Cloud gegevens en-resources.
 
@@ -33,24 +33,24 @@ Identiteit is het nieuwe beheer vlak van IT-beveiliging. Verificatie is dus de t
 ### <a name="out-of-scope"></a>Buiten bereik
 Organisaties die geen bestaande on-premises Directory-footprint hebben, zijn niet de focus van dit artikel. Normaal gesp roken maken deze bedrijven alleen identiteiten in de Cloud, waarvoor geen hybride identiteits oplossing nodig is. Alleen Cloud-identiteiten bestaan uitsluitend in de Cloud en zijn niet gekoppeld aan de bijbehorende on-premises identiteiten.
 
-## <a name="authentication-methods"></a>Authenticatiemethoden
+## <a name="authentication-methods"></a>Verificatiemethoden
 Wanneer de hybride identiteits oplossing van Azure AD uw nieuwe besturings vlak is, is verificatie de basis van Cloud toegang. Het kiezen van de juiste verificatie methode is een cruciaal eerste beslissing bij het instellen van een Azure AD hybride identiteits oplossing. Implementeer de verificatie methode die is geconfigureerd met behulp van Azure AD Connect, waarmee ook gebruikers in de cloud worden ingericht.
 
-Als u een verificatie methode wilt kiezen, moet u rekening houden met de tijd, de bestaande infra structuur, de complexiteit en de kosten van de implementatie van uw keuze. Deze factoren zijn voor elke organisatie verschillend en kunnen in de loop van de tijd veranderen. 
+Als u een verificatie methode wilt kiezen, moet u rekening houden met de tijd, de bestaande infra structuur, de complexiteit en de kosten van de implementatie van uw keuze. Deze factoren zijn voor elke organisatie verschillend en kunnen in de loop van de tijd veranderen.
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Azure AD biedt ondersteuning voor de volgende verificatie methoden voor hybride identiteits oplossingen.
 
 ### <a name="cloud-authentication"></a>Cloud authenticatie
-Wanneer u deze verificatie methode kiest, wordt het aanmeldings proces van gebruikers door Azure AD afgehandeld. Met naadloze eenmalige aanmelding (SSO) kunnen gebruikers zich aanmelden bij Cloud-apps zonder hun referenties opnieuw in te voeren. Met Cloud authenticatie kunt u kiezen uit twee opties: 
+Wanneer u deze verificatie methode kiest, wordt het aanmeldings proces van gebruikers door Azure AD afgehandeld. Met naadloze eenmalige aanmelding (SSO) kunnen gebruikers zich aanmelden bij Cloud-apps zonder hun referenties opnieuw in te voeren. Met Cloud authenticatie kunt u kiezen uit twee opties:
 
 **Synchronisatie van wacht woord-hash van Azure AD**. De eenvoudigste manier om verificatie in te scha kelen voor on-premises Directory-objecten in azure AD. Gebruikers kunnen dezelfde gebruikers naam en hetzelfde wacht woord gebruiken als ze on-premises gebruiken zonder dat ze een extra infra structuur hoeven te implementeren. Voor sommige Premium-functies van Azure AD, zoals identiteits beveiliging en [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), is wachtwoord hash-synchronisatie vereist, ongeacht welke verificatie methode u kiest.
 
-> [!NOTE] 
-> Wacht woorden worden nooit in ongecodeerde tekst opgeslagen of versleuteld met een omkeer bare algoritme in azure AD. Zie [wachtwoord hash synchronisatie implementeren met Azure AD Connect Sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)voor meer informatie over het feitelijke proces van wachtwoord hash-synchronisatie. 
+> [!NOTE]
+> Wacht woorden worden nooit in ongecodeerde tekst opgeslagen of versleuteld met een omkeer bare algoritme in azure AD. Zie [wachtwoord hash synchronisatie implementeren met Azure AD Connect Sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)voor meer informatie over het feitelijke proces van wachtwoord hash-synchronisatie.
 
-**Pass-Through-verificatie van Azure AD**. Biedt een eenvoudige wachtwoord validatie voor Azure AD-verificatie services door gebruik te maken van een software-agent die wordt uitgevoerd op een of meer on-premises servers. De servers valideren de gebruikers rechtstreeks met uw on-premises Active Directory, wat ervoor zorgt dat de wachtwoord validatie niet plaatsvindt in de Cloud. 
+**Pass-Through-verificatie van Azure AD**. Biedt een eenvoudige wachtwoord validatie voor Azure AD-verificatie services door gebruik te maken van een software-agent die wordt uitgevoerd op een of meer on-premises servers. De servers valideren de gebruikers rechtstreeks met uw on-premises Active Directory, wat ervoor zorgt dat de wachtwoord validatie niet plaatsvindt in de Cloud.
 
 Bedrijven met een beveiligings vereiste voor het direct afdwingen van on-premises gebruikers accounts, wachtwoord beleid en aanmeldings tijden kunnen deze verificatie methode gebruiken. Zie [aanmelding van gebruikers met Azure AD Pass-Through-verificatie](../../active-directory/hybrid/how-to-connect-pta.md)voor meer informatie over het feitelijke Pass-Through-verificatie proces.
 
@@ -106,21 +106,21 @@ Raadpleeg de implementatie van [wacht woord-hash synchronisatie](../../active-di
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>Cloud authenticatie: Pass Through-verificatie  
 
-* **Moeite**. Voor Pass-Through-verificatie hebt u een of meer nodig (drie) lichte agents die zijn geïnstalleerd op bestaande servers. Deze agents moeten toegang hebben tot uw on-premises Active Directory Domain Services, met inbegrip van uw on-premises AD-domein controllers. Ze hebben uitgaande toegang tot internet nodig en toegang tot uw domein controllers. Daarom wordt het niet ondersteund voor het implementeren van de agents in een perimeter netwerk. 
+* **Moeite**. Voor Pass-Through-verificatie hebt u een of meer nodig (drie) lichte agents die zijn geïnstalleerd op bestaande servers. Deze agents moeten toegang hebben tot uw on-premises Active Directory Domain Services, met inbegrip van uw on-premises AD-domein controllers. Ze hebben uitgaande toegang tot internet nodig en toegang tot uw domein controllers. Daarom wordt het niet ondersteund voor het implementeren van de agents in een perimeter netwerk.
 
     Pass-Through-verificatie vereist onbeperkte netwerk toegang tot domein controllers. Al het netwerk verkeer wordt versleuteld en beperkt tot verificatie aanvragen. Zie voor meer informatie over dit proces de [beveiligings grondige](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md) gang bij Pass-Through-verificatie.
 
 * **Gebruikers ervaring**. Als u de aanmeld procedure van gebruikers wilt verbeteren, implementeert u naadloze SSO met Pass-Through-verificatie. Naadloze SSO elimineert overbodige vragen nadat gebruikers zich hebben aangemeld.
 
-* **Geavanceerde scenario's**. Pass-Through-verificatie dwingt het on-premises account beleid af op het moment dat u zich aanmeldt. Bijvoorbeeld: de toegang wordt geweigerd wanneer de account status van een on-premises gebruiker is uitgeschakeld, vergrendeld of het [wacht woord is verlopen](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) of buiten het uur valt waarop de gebruiker zich mag aanmelden. 
+* **Geavanceerde scenario's**. Pass-Through-verificatie dwingt het on-premises account beleid af op het moment dat u zich aanmeldt. Bijvoorbeeld: de toegang wordt geweigerd wanneer de account status van een on-premises gebruiker is uitgeschakeld, vergrendeld of het [wacht woord is verlopen](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) of buiten het uur valt waarop de gebruiker zich mag aanmelden.
 
     Organisaties waarvoor multi-factor Authentication met Pass Through-verificatie is vereist, moeten gebruikmaken van Azure Multi-Factor Authentication (MFA) of [aangepaste besturings elementen voor voorwaardelijke toegang](../../active-directory/conditional-access/controls.md#custom-controls-preview). Deze organisaties kunnen een multi-factor-verificatie methode van derden of een lokale meervoudige authenticatie gebruiken die afhankelijk is van Federatie. Geavanceerde functies vereisen dat wachtwoord-hash-synchronisatie wordt geïmplementeerd, ongeacht of u Pass-Through-verificatie kiest. Een voor beeld is het rapport met gelekte referenties van identiteits beveiliging.
 
-* **Bedrijfs continuïteit**. We raden u aan om twee extra Pass-Through-verificatie agenten te implementeren. Deze extra's bevinden zich in aanvulling op de eerste agent op de Azure AD Connect-server. Deze extra implementatie zorgt voor een hoge Beschik baarheid van verificatie aanvragen. Wanneer er drie agents zijn geïmplementeerd, kan een agent nog steeds mislukken wanneer een andere agent niet beschikbaar is voor onderhoud. 
+* **Bedrijfs continuïteit**. We raden u aan om twee extra Pass-Through-verificatie agenten te implementeren. Deze extra's bevinden zich in aanvulling op de eerste agent op de Azure AD Connect-server. Deze extra implementatie zorgt voor een hoge Beschik baarheid van verificatie aanvragen. Wanneer er drie agents zijn geïmplementeerd, kan een agent nog steeds mislukken wanneer een andere agent niet beschikbaar is voor onderhoud.
 
     Er is nog een voor deel voor het implementeren van wachtwoord hash-synchronisatie naast Pass-Through-verificatie. Het fungeert als een methode voor het maken van een back-upverificatie wanneer de primaire authenticatie methode niet meer beschikbaar is.
 
-* **Overwegingen**. U kunt wachtwoord hash-synchronisatie gebruiken als een back-upauthenticatie methode voor Pass-Through-verificatie, wanneer de agents de referenties van een gebruiker niet kunnen valideren als gevolg van een belang rijke on-premises fout. Failover naar wachtwoord-hash-synchronisatie vindt niet automatisch plaats en u moet Azure AD Connect gebruiken om de aanmeldings methode hand matig te wijzigen. 
+* **Overwegingen**. U kunt wachtwoord hash-synchronisatie gebruiken als een back-upauthenticatie methode voor Pass-Through-verificatie, wanneer de agents de referenties van een gebruiker niet kunnen valideren als gevolg van een belang rijke on-premises fout. Failover naar wachtwoord-hash-synchronisatie vindt niet automatisch plaats en u moet Azure AD Connect gebruiken om de aanmeldings methode hand matig te wijzigen.
 
     Zie [Veelgestelde vragen](../../active-directory/hybrid/how-to-connect-pta-faq.md)voor andere overwegingen met betrekking tot Pass-Through-verificatie, met inbegrip van alternatieve ID-ondersteuning.
 
@@ -128,7 +128,7 @@ Raadpleeg [implement-through-verificatie implementeren](../../active-directory/h
 
 ### <a name="federated-authentication"></a>Federatieve verificatie
 
-* **Moeite**. Een Federated Authentication systeem is afhankelijk van een extern vertrouwd systeem om gebruikers te verifiëren. Sommige bedrijven willen hun bestaande federatieve systeem investeringen opnieuw gebruiken met hun Azure AD hybride identiteits oplossing. Het onderhoud en beheer van het federatieve systeem valt buiten het beheer van Azure AD. Het is aan de organisatie door gebruik te maken van het federatieve systeem om ervoor te zorgen dat het veilig wordt geïmplementeerd en de verificatie belasting kan afhandelen. 
+* **Moeite**. Een Federated Authentication systeem is afhankelijk van een extern vertrouwd systeem om gebruikers te verifiëren. Sommige bedrijven willen hun bestaande federatieve systeem investeringen opnieuw gebruiken met hun Azure AD hybride identiteits oplossing. Het onderhoud en beheer van het federatieve systeem valt buiten het beheer van Azure AD. Het is aan de organisatie door gebruik te maken van het federatieve systeem om ervoor te zorgen dat het veilig wordt geïmplementeerd en de verificatie belasting kan afhandelen.
 
 * **Gebruikers ervaring**. De gebruikers ervaring van Federated Authentication is afhankelijk van de implementatie van de functies, topologie en configuratie van de Federatie farm. Sommige organisaties hebben deze flexibiliteit nodig om de toegang tot de Federatie Farm aan te passen en te configureren op basis van hun beveiligings vereisten. Het is bijvoorbeeld mogelijk om intern verbonden gebruikers en apparaten te configureren voor het automatisch aanmelden van gebruikers, zonder dat ze om referenties wordt gevraagd. Deze configuratie werkt omdat ze al zijn aangemeld op hun apparaten. Als dat nodig is, maken sommige geavanceerde beveiligings functies het aanmeldings proces van gebruikers moeilijker.
 
@@ -149,7 +149,7 @@ Voor een nonroutable-domein dat niet kan worden geverifieerd in azure AD, hebt u
 
 Raadpleeg [Federatie servers implementeren](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) voor implementaties tappen.
 
-> [!NOTE] 
+> [!NOTE]
 > Wanneer u uw Azure AD hybride identiteits oplossing implementeert, moet u een van de ondersteunde topologieën van Azure AD Connect implementeren. Meer informatie over ondersteunde en niet-ondersteunde configuraties in [topologieën voor Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
 
 ## <a name="architecture-diagrams"></a>Architectuur diagrammen
@@ -187,7 +187,7 @@ In de volgende diagrammen vindt u een overzicht van de architectuur onderdelen o
 |Kunt u het logo, de afbeelding en de beschrijving aanpassen op de aanmeldings pagina's?|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja, met Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |Welke geavanceerde scenario's worden ondersteund?|[Slim wacht woord vergren delen](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[Rapporten met gelekte referenties, met Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Slim wacht woord vergren delen](../../active-directory/authentication/howto-password-smart-lockout.md)|Verificatie systeem met lage latentie voor meerdere locaties<br><br>[Vergren deling AD FS extranet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integratie met identiteits systemen van derden](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
-> [!NOTE] 
+> [!NOTE]
 > Aangepaste besturings elementen in azure AD voorwaardelijke toegang biedt momenteel geen ondersteuning voor apparaatregistratie.
 
 ## <a name="recommendations"></a>Aanbevelingen
@@ -195,7 +195,7 @@ Uw identiteits systeem zorgt ervoor dat gebruikers toegang hebben tot Cloud-apps
 
 Het gebruik of inschakelen van hash-synchronisatie van wacht woord voor de verificatie methode die u kiest, om de volgende redenen:
 
-1. **Hoge Beschik baarheid en herstel na nood gevallen**. Pass-Through-verificatie en Federatie zijn afhankelijk van on-premises infra structuur. Voor Pass-Through-verificatie omvat de on-premises footprint de serverhardware en netwerken die de Pass-Through-verificatie agenten vereisen. De on-premises footprint voor Federatie is zelfs groter. Hiervoor zijn servers in uw perimeter netwerk vereist voor het proxy verificatie aanvragen en de interne Federatie servers. 
+1. **Hoge Beschik baarheid en herstel na nood gevallen**. Pass-Through-verificatie en Federatie zijn afhankelijk van on-premises infra structuur. Voor Pass-Through-verificatie omvat de on-premises footprint de serverhardware en netwerken die de Pass-Through-verificatie agenten vereisen. De on-premises footprint voor Federatie is zelfs groter. Hiervoor zijn servers in uw perimeter netwerk vereist voor het proxy verificatie aanvragen en de interne Federatie servers.
 
     Implementeer redundante servers om afzonderlijke punten van storingen te voor komen. Verificatie aanvragen worden dan altijd verwerkt als een onderdeel mislukt. Zowel Pass-Through-verificatie als Federatie is ook afhankelijk van domein controllers om te reageren op verificatie aanvragen. Dit kan ook mislukken. Veel van deze onderdelen hebben onderhoud nodig om in de juiste staat te blijven. Storingen zijn waarschijnlijker wanneer onderhoud niet wordt gepland en correct wordt geïmplementeerd. Vermijd storingen door wachtwoord hash-synchronisatie te gebruiken, omdat de Microsoft Azure AD Cloud Authentication Service wereld wijd wordt geschaald en altijd beschikbaar is.
 
@@ -209,7 +209,7 @@ Het gebruik of inschakelen van hash-synchronisatie van wacht woord voor de verif
 
 ## <a name="conclusion"></a>Conclusie
 
-In dit artikel vindt u een overzicht van verschillende verificatie opties die organisaties kunnen configureren en implementeren voor de ondersteuning van toegang tot Cloud-apps. Om te voldoen aan verschillende bedrijfs-, beveiligings-en technische vereisten, kunnen organisaties kiezen tussen wacht woord-hash synchronisatie, Pass Through-verificatie en Federatie. 
+In dit artikel vindt u een overzicht van verschillende verificatie opties die organisaties kunnen configureren en implementeren voor de ondersteuning van toegang tot Cloud-apps. Om te voldoen aan verschillende bedrijfs-, beveiligings-en technische vereisten, kunnen organisaties kiezen tussen wacht woord-hash synchronisatie, Pass Through-verificatie en Federatie.
 
 Overweeg elke verificatie methode. Is het de moeite om de oplossing te implementeren en de gebruikers ervaring van het aanmeldings proces op te lossen, uw bedrijfs vereisten aan te pakken? Evalueer of uw organisatie de geavanceerde scenario's en de functies van de bedrijfs continuïteit van elke verificatie methode nodig heeft. Evalueer ten slotte de overwegingen van elke verificatie methode. Kunt u een van deze opties gebruiken om uw keuze te implementeren?
 

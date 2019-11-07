@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over Azure SQL Elastic Scale | Microsoft Docs
+title: Veelgestelde vragen over Azure SQL Elastic Scale
 description: Veelgestelde vragen over Azure SQL Database Elastic scale.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2b101aebd048b94ac95e1dba0f6504446d6d6803
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8ef99d6d752f1e9474fccea6c00b51b61ae1304b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568434"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690259"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Veelgestelde vragen over hulpprogram ma's voor Elastic data base
 
@@ -34,7 +34,7 @@ Het gebruik van de client bibliotheek voor Elastic data base maakt geen kosten i
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Waarom werken mijn referenties niet wanneer ik een Shard van een andere server toevoeg
 
-Gebruik geen referenties in de vorm ' gebruikers-id =username@servername', in plaats daarvan alleen ' gebruikers-ID = gebruikers naam ' te gebruiken.  Zorg er ook voor dat de aanmelding ' gebruikers naam ' machtigingen heeft voor de Shard.
+Gebruik geen referenties in de vorm ' gebruikers-ID =username@servername', in plaats daarvan alleen ' gebruikers-ID = gebruikers naam ' te gebruiken.  Zorg er ook voor dat de aanmelding ' gebruikers naam ' machtigingen heeft voor de Shard.
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Moet ik een Shard-toewijzings beheer maken en Shards elke keer invullen wanneer ik mijn toepassingen start
 

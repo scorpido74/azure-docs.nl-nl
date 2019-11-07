@@ -1,6 +1,6 @@
 ---
-title: Aangepaste connector onderwerp koppelingen - Azure Logic Apps | Microsoft Docs
-description: Koppelingen naar onderwerpen over het maken, gebruiken, delen en Certificeer aangepaste connectors
+title: Koppelingen naar aangepaste connector onderwerpen-Azure Logic Apps | Microsoft Docs
+description: Koppelingen naar onderwerpen over het maken, gebruiken, delen en certificeren van aangepaste connectors
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 1/30/2018
-ms.openlocfilehash: 6b02954f9f89074c5eff7e3b7fad2bc6afb29540
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4cc0201b8ac61c54aadcc59b549877238b95e54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689781"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574463"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>Aangepaste connectors in Logic Apps
 
-U kunt zonder zelf enige code te schrijven werkstromen en apps maken met [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Microsoft Flow](https://flow.microsoft.com) en [PowerApps](https://powerapps.microsoft.com). Voor hulp bij het integreren van apps, gegevens en bedrijfsprocessen, bieden deze services [~ 200 connectoren](https://docs.microsoft.com/connectors/) : voor het Microsoft-services en producten, evenals andere services, zoals GitHub, Salesforce, Twitter en meer.
+Als u geen code hoeft te schrijven, kunt u werk stromen en apps bouwen met [Azure Logic apps](https://azure.microsoft.com/services/logic-apps), [automatische energie](https://flow.microsoft.com)en [Power apps](https://powerapps.microsoft.com). Om u te helpen bij de integratie van apps, gegevens en bedrijfs processen, bieden deze services [~ 200-connectors](https://docs.microsoft.com/connectors/) -voor micro soft-Services en-producten, evenals andere services, zoals github, Sales Force, Twitter en meer.
 
-Soms zult u echter API's, services en systemen willen aanroepen die niet beschikbaar zijn als vooraf gedefinieerde connectors. Ter ondersteuning van meer op maat gemaakte scenario's, kunt u *aangepaste connectors* maken met hun eigen triggers en acties. De documentatiesite Connectors heeft volledige basiseigenschappen en geavanceerde zelfstudies over aangepaste connectors. U kunt beginnen met de [overzicht van aangepaste connectors](https://docs.microsoft.com/connectors/custom-connectors/), maar u kunt ook rechtstreeks naar deze onderwerpen voor meer informatie over een bepaald gebied gaan:
+Soms zult u echter API's, services en systemen willen aanroepen die niet beschikbaar zijn als vooraf gedefinieerde connectors. Ter ondersteuning van meer op maat gemaakte scenario's, kunt u *aangepaste connectors* maken met hun eigen triggers en acties. De documentatie site connectors heeft volledige basis-en geavanceerde zelf studies over aangepaste connectors. U kunt beginnen met het [overzicht van de aangepaste connector](https://docs.microsoft.com/connectors/custom-connectors/), maar u kunt ook rechtstreeks naar deze onderwerpen gaan voor meer informatie over een specifiek gebied:
 
-* [Een Logic Apps-connector maken](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
+* [Een Logic Apps-Connector maken](https://docs.microsoft.com/connectors/custom-connectors/create-logic-apps-connector)
 
 * [Een aangepaste connector maken op basis van een OpenAPI-definitie](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition)
 
@@ -32,6 +32,6 @@ Soms zult u echter API's, services en systemen willen aanroepen die niet beschik
 
 * [Aangepaste connectors delen in uw organisatie](https://docs.microsoft.com/connectors/custom-connectors/share)
 
-* [Uw connectors indienen voor certificering door Microsoft](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)
+* [Uw connectors voor micro soft-certificering verzenden](https://docs.microsoft.com/connectors/custom-connectors/submit-certification)
 
 * [Veelgestelde vragen over aangepaste connectors voor Azure Logic Apps, Microsoft Flow en PowerApps](https://docs.microsoft.com/connectors/custom-connectors/faq)

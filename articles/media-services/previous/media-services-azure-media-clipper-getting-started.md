@@ -1,25 +1,25 @@
 ---
-title: Aan de slag met Azure Media Clipper | Microsoft Docs
-description: Aan de slag met Azure Media Clipper, een hulpprogramma voor het bouwen van videoclips van AMS-middelen
+title: Aan de slag met Azure media Clipper | Microsoft Docs
+description: Aan de slag met Azure media Clipper, een hulp programma voor het maken van video clips uit AMS-assets
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: clip; subclip; code ring; media
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ecc81967d6a95f817b10bce7f8396d9379bc94
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466269"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685073"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Maak korte clips met Azure Media Clipper
-Deze sectie leest u de eenvoudige stappen aan de slag met Azure Media Clipper. De volgende gedeelten vindt de details over het configureren van Azure Media Clipper.
+# <a name="create-clips-with-azure-media-clipper"></a>Clips maken met Azure media Clipper
+In deze sectie wordt beschreven hoe u aan de slag gaat met Azure media Clipper. In de volgende secties vindt u de specifieke informatie over het configureren van Azure media Clipper.
 
-- De volgende koppelingen voor Azure Media Player en Azure Media Clipper eerst toevoegen aan de kop van het document. Het is raadzaam om een versie van de Clipper en Azure Media Player expliciet opgeven in de URL's. Gebruik de nieuwste versie van deze resources niet in de productieomgeving, zoals ze onderhevig aan wijzigingen op aanvraag zijn.
+- Voeg eerst de volgende koppelingen voor Azure Media Player en Azure media Clipper toe aan de kop van uw document. We raden u aan om een versie van de Clipper en Azure Media Player in de Url's expliciet op te geven. Gebruik niet de meest recente versie van deze resources in productie, aangezien ze op aanvraag kunnen worden gewijzigd.
 
 ```javascript
 <!--Azure Media Player 2.1.4 or later is a prerequisite-->
@@ -30,19 +30,19 @@ Deze sectie leest u de eenvoudige stappen aan de slag met Azure Media Clipper. D
 <script src="//amp.azure.net/libs/amc/0.1.0/azuremediaclipper.min.js"></script>
 ```
 
-- Voeg vervolgens de volgende klassen toe aan het div-element waarin u wilt de Clipper instantiëren.
+- Voeg vervolgens de volgende klassen toe aan het div-element waar u de Clipper wilt instantiëren.
 
 ```javascript
 <div id="root" class="azure-subclipper" />
 ```
 
-Als u wilt de donkere thema inschakelen, voegt u desgewenst de klasse donker-weergave:
+Als u het donkere thema wilt inschakelen, voegt u de klasse Dark-Skin toe:
 
 ```javascript
 <div id="root" class="azure-subclipper dark-skin" />
 ```
 
-- Vervolgens maken de Clipper met de volgende API-aanroep:
+- Vervolgens maakt u een exemplaar van de Clipper met de volgende API-aanroep:
 
 ```javascript
 var subclipper = new subclipper({
@@ -87,41 +87,41 @@ var subclipper = new subclipper({
 });
 ```
 
-De parameters voor het aanroepen van de initialisatie-methode zijn:
-- `selector` {VEREIST, tekenreeks}: CSS-selector van de overeenkomende HTML-element waarin het object moet worden gerenderd.
-- `restVersion` {VEREIST, tekenreeks}: De Azure Media Services REST API-versie naar doel. De versie van de REST definieert de indeling van de uitvoer gegenereerd met de widget. Op dit moment wordt alleen 2.0 ondersteund.
-- `submitSubclipCallback` {VEREIST, belofte} De callback-functie die wordt aangeroepen wanneer de knop "verzenden" van de widget wordt geklikt. De callback-functie goed is, de uitvoer gegenereerd met de widget (een taak render configuratie of de filterdefinitie van een). Zie voor meer informatie verzenden subclip retouraanroep.
-- `logLevel` {OPTIONAL, {'info', 'warn', 'error'}}: Het niveau van logboekregistratie moet worden weergegeven in de console van de browser. Standaardwaarde: fout
-- `minimumMarkerGap` {OPTIONEEL, int}: De minimale grootte van een subclip (in seconden). Opmerking: de waarde moet groter of gelijk zijn aan 6, dit is de standaardinstelling.
-- `singleBitrateMp4Profile` {OPTIONEEL, JSON-object} Het single-bitrate mp4-profiel moet worden gebruikt voor de configuratie van de render gegenereerd met de widget. Als niet is opgegeven, wordt de [single-bitrate MP4-profiel standaard](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p).
-- `multiBitrateMp4Profile` {OPTIONEEL, JSON-object} Het multi-bitrate mp4-profiel moet worden gebruikt voor de configuratie van gegenereerd met de widget weergegeven. Als niet is opgegeven, wordt de [standaard multi-bitrate MP4-profiel](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p).
-- `keymap` {OPTIONEEL, json-object} Hierbij kan de sneltoetsen van de widget. Zie voor meer informatie, [aanpasbare sneltoetsen](media-services-azure-media-clipper-keyboard-shortcuts.md).
-- `assetsPanelLoaderCallback` {OPTIONEEL, belofte} De callback-functie aangeroepen voor het laden van (asynchroon) een nieuwe pagina van de activa in het deelvenster activa telkens wanneer de gebruiker gaat naar de onderkant van het deelvenster scrollen. Zie voor meer informatie, Asset deelvenster loader terugbellen.
-- `height` {OPTIONEEL, number} De totale hoogte van de widget (minimumhoogte is 600 px zonder activa deelvenster en 850 px met het deelvenster activa).
-- `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'}): De sub-clipping modus/modi toegestaan. De standaardwaarde is alles.
-- `filterAssetsTypes` (Optioneel, bool): filterAssetsTypes kunt u de vervolgkeuzelijst filters in het deelvenster activa weergeven/verbergen. De standaardwaarde is true.
-- `speedLevels` (Optioneel, matrix): speedLevels kunnen andere snelheidsniveaus voor de video speler instellen, Zie [documentatie voor Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) voor meer informatie.
-- `resetOnJobDone` (Optioneel, bool): resetOnJobDone kunt Clipper opnieuw in te stellen de subclipper naar de oorspronkelijke status wanneer een taak is verzonden.
-- `autoplayVideo` (Optioneel, bool): autoplayVideo kunt Clipper automatisch afspelen de video bij het laden. De standaardwaarde is true.
-- `language` {String, optioneel,}: taal de taal van de widget wordt ingesteld. Indien niet opgegeven, probeert de widget voor lokalisatie van de berichten op basis van de browsertaal. Als er geen taal is gedetecteerd in de browser, wordt de widget standaard in het Engels. Zie voor meer informatie de [lokalisatie configureren](media-services-azure-media-clipper-localization.md) sectie.
-- `languages` {OPTIONEEL, JSON}: de parameter talen wordt vervangen door de standaard-woordenlijst van talen met een aangepaste woordenlijst die is gedefinieerd door de gebruiker. Zie voor meer informatie de [lokalisatie configureren](media-services-azure-media-clipper-localization.md) sectie.
-- `extraLanguages` (Optioneel, JSON): de parameter extraLanguages nieuwe talen toevoegen aan de standaardwoordenlijst. Zie voor meer informatie de [lokalisatie configureren](media-services-azure-media-clipper-localization.md) sectie.
+De para meters voor de aanroep van de initialisatie methode zijn:
+- `selector` {REQUIRed, String}: CSS-selector van het overeenkomende HTML-element waarin de widget moet worden gerenderd.
+- `restVersion` {REQUIRed, String}: de Azure Media Services REST API versie op doel. De REST-versie definieert de indeling van de uitvoer die door de widget wordt gegenereerd. Momenteel wordt slechts 2,0 ondersteund.
+- `submitSubclipCallback` {REQUIRed, Promise} de call back functie die is aangeroepen wanneer op de knop verzenden van de widget wordt geklikt. De call back functie verwacht de uitvoer die door de widget wordt gegenereerd (een render-taak configuratie of een filter definitie). Zie retour aanroep van subclip verzenden voor meer informatie.
+- `logLevel` {optioneel, {' info ', ' warn ', ' fout '}}: het logboek registratie niveau dat moet worden weer gegeven in de console van de browser. Standaard waarde: fout
+- `minimumMarkerGap` {optioneel, int}: de minimale grootte van een subclip (in seconden). Opmerking: de waarde moet groter zijn dan of gelijk zijn aan 6, wat ook de standaard instelling is.
+- `singleBitrateMp4Profile` {optioneel, JSON-object} het MP4-profiel met enkele bitsnelheid dat moet worden gebruikt voor de gegenereerde taak configuratie door de widget. Als u dit niet opgeeft, wordt het [standaard MP4-profiel met één bitsnelheid](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p)gebruikt.
+- `multiBitrateMp4Profile` {optioneel, JSON-object} het MP4-profiel met meerdere bitsnelheden dat moet worden gebruikt voor het genereren van de taak configuratie die door de widget wordt gegenereerd. Als u dit niet opgeeft, wordt het [standaard-multi-bitrate MP4-profiel](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p)gebruikt.
+- met `keymap` {optioneel, JSON-object} kunt u de sneltoetsen van de widget aanpassen. Zie [aanpas bare](media-services-azure-media-clipper-keyboard-shortcuts.md)sneltoetsen voor meer informatie.
+- `assetsPanelLoaderCallback` {optioneel, Promise} de call back functie die is aangeroepen om (asynchroon) een nieuwe pagina met assets te laden in het deel venster activa telkens wanneer de gebruiker naar beneden schuift naar de onderkant van het deel venster. Zie voor meer informatie het deel venster loader terugbellen.
+- `height` {optioneel, Number} de totale hoogte van de widget (minimum hoogte is 600 PX zonder activa deel venster en 850 px met het deel venster assets).
+- `subclippingMode` (optioneel, {' all ', ' render ', ' filter '}): de subknip modus (en) zijn toegestaan. De standaard waarde is alle.
+- `filterAssetsTypes` (optioneel, BOOL): met filterAssetsTypes kunt u de vervolg keuzelijst filters weer geven/verbergen in het deel venster assets. De standaard waarde is True.
+- `speedLevels` (optioneel, matrix): met speedLevels kunt u verschillende snelheids niveaus voor de video speler instellen, Zie [Azure Media Player documentatie](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) voor meer informatie.
+- `resetOnJobDone` (optioneel, BOOL): met resetOnJobDone kan Clipper de subclipper opnieuw instellen op een begin status wanneer een taak wordt verzonden.
+- `autoplayVideo` (optioneel, BOOL): met autoplayVideo kan Clipper de video in de laad functie AutoPlay. De standaard waarde is True.
+- `language` {optioneel, String}: taal stelt de taal van de widget in. Als dat niet is opgegeven, probeert de widget de berichten te lokaliseren op basis van de taal van de browser. Als er geen taal wordt gedetecteerd in de browser, wordt de widget standaard ingesteld op Engels. Zie de sectie [lokalisatie configureren](media-services-azure-media-clipper-localization.md) voor meer informatie.
+- `languages` {optioneel, JSON}: de para meter talen vervangt de standaard woordenlijst van talen met een aangepaste woorden lijst die door de gebruiker is gedefinieerd. Zie de sectie [lokalisatie configureren](media-services-azure-media-clipper-localization.md) voor meer informatie.
+- `extraLanguages` (optioneel, JSON): de para meter extraLanguages voegt nieuwe talen aan de standaard woordenlijst toe. Zie de sectie [lokalisatie configureren](media-services-azure-media-clipper-localization.md) voor meer informatie.
 
-## <a name="typescript-definition"></a>TypeScript-definitie
-Een [TypeScript](https://www.typescriptlang.org/) definitiebestand voor de Clipper vindt [hier](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
+## <a name="typescript-definition"></a>Type script definitie
+[Hier](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts)vindt u een [type script](https://www.typescriptlang.org/) definitie bestand voor de Clipper.
 
-## <a name="azure-media-clipper-api"></a>Azure Media Clipper API
-In deze sectie worden de API-gebied geleverd door de Clipper.
+## <a name="azure-media-clipper-api"></a>Azure media Clipper-API
+In deze sectie wordt het API-gedeelte van de Clipper gedocumenteerd.
 
-- `ready(handler)`: biedt een manier om JavaScript uitgevoerd zodra de Clipper is volledig geladen en klaar om te worden gebruikt.
-- `load(assets)`: een lijst van assets in de tijdlijn van de widget (mag niet worden gebruikt samen met assetsPanelLoaderCallback) laadt. Raadpleeg deze [artikel](media-services-azure-media-clipper-load-assets.md) voor meer informatie over het laden van assets in de Clipper.
-- `setLogLevel(level)`: Hiermee stelt u het niveau van logboekregistratie moet worden weergegeven in de console van de browser. Mogelijke waarden zijn: `info`, `warn`, `error`.
-- `setHeight(height)`: Hiermee stelt u de totale hoogte van de widget in pixels (minimumhoogte is 600 px zonder activa deelvenster en 850 px met het deelvenster activa).
+- `ready(handler)`: biedt een manier om Java script uit te voeren zodra de Clipper volledig is geladen en klaar is om te worden gebruikt.
+- `load(assets)`: er wordt een lijst met assets geladen in de tijdlijn van de widget (moet niet worden gebruikt in combi natie met assetsPanelLoaderCallback). Raadpleeg dit [artikel](media-services-azure-media-clipper-load-assets.md) voor meer informatie over het laden van assets in de Clipper.
+- `setLogLevel(level)`: Hiermee stelt u het registratie niveau in dat moet worden weer gegeven in de console van de browser. Mogelijke waarden zijn: `info`, `warn``error`.
+- `setHeight(height)`: stelt de totale hoogte van de widget in pixels in (minimale hoogte is 600 PX zonder assets deel venster en 850 px met het deel venster assets).
 - `version`: Hiermee wordt de versie van de widget opgehaald.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende stappen voor het configureren van Azure Media Clipper:
-- [Het laden van assets in Azure Media Clipper](media-services-azure-media-clipper-load-assets.md)
-- [Aangepaste toetscombinaties configureren](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Kniptaken uit de Clipper verzenden](media-services-azure-media-clipper-submit-job.md)
+Zie de volgende stappen voor het configureren van Azure media Clipper:
+- [Assets in azure media Clipper laden](media-services-azure-media-clipper-load-assets.md)
+- [Aangepaste sneltoetsen configureren](media-services-azure-media-clipper-keyboard-shortcuts.md)
+- [Knip taken verzenden vanuit de Clipper](media-services-azure-media-clipper-submit-job.md)
 - [Lokalisatie configureren](media-services-azure-media-clipper-localization.md)

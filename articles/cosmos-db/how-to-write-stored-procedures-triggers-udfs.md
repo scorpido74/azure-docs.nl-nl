@@ -4,14 +4,14 @@ description: Meer informatie over het definiëren van opgeslagen procedures, tri
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092826"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606261"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
 
@@ -21,6 +21,9 @@ Als u een opgeslagen procedure, trigger en een door de gebruiker gedefinieerde f
 
 > [!NOTE]
 > Bij het uitvoeren van een opgeslagen procedure voor gepartitioneerde containers moet een waarde voor de partitiesleutel worden opgegeven in de aanvraagopties. Opgeslagen procedures zijn altijd gerelateerd aan een partitiesleutel. Items met een andere partitiesleutelwaarde zijn niet zichtbaar voor de opgeslagen procedure. Dit geldt ook voor triggers.
+
+> [!Tip]
+> Cosmos biedt ondersteuning voor het implementeren van containers met opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies. Zie [een Azure Cosmos DB-container maken met functionaliteit aan server zijde](manage-sql-with-resource-manager.md#create-sproc) voor meer informatie.
 
 ## <a id="stored-procedures"></a>Opgeslagen procedures uitvoeren schrijven
 
@@ -48,11 +51,11 @@ Na te zijn geschreven moet de opgeslagen procedure worden geregistreerd bij een 
 
 ### <a id="create-an-item"></a>Een item maken met behulp van opgeslagen procedure
 
-Wanneer u een item maakt met behulp van een opgeslagen procedure, wordt het item ingevoegd in de Azure Cosmos-container en wordt er een id voor het nieuwe item geretourneerd. Het maken van een item is een asynchrone bewerking en is afhankelijk van de callback-functies van JavaScript. De callback-functie heeft twee parameters: een voor het foutobject in geval dat de bewerking mislukt en een voor een retourwaarde; in dit geval het gemaakte object. Binnen de callback kunt u de uitzondering verwerken of een fout genereren. Indien er geen callback is opgegeven en er een fout is opgetreden, genereert de Azure Cosmos DB-runtime een fout. 
+Wanneer u een item maakt met behulp van een opgeslagen procedure, wordt het item ingevoegd in de Azure Cosmos-container en wordt er een ID voor het nieuwe item geretourneerd. Het maken van een item is een asynchrone bewerking en is afhankelijk van de callback-functies van JavaScript. De callback-functie heeft twee parameters: een voor het foutobject in geval dat de bewerking mislukt en een voor een retourwaarde; in dit geval het gemaakte object. Binnen de callback kunt u de uitzondering verwerken of een fout genereren. Indien er geen callback is opgegeven en er een fout is opgetreden, genereert de Azure Cosmos DB-runtime een fout. 
 
 De opgeslagen procedure bevat ook een parameter voor het instellen van de beschrijving, het is een Booleaanse waarde. Als de parameter is ingesteld op true en de beschrijving ontbreekt, genereert de opgeslagen procedure een uitzondering. Anders gaat de uitvoering van de rest van de opgeslagen procedure verder.
 
-In het volgende voor beeld wordt een nieuw Azure Cosmos-item als invoer gebruikt, ingevoegd in de Azure Cosmos-container en wordt de id voor het zojuist gemaakte item geretourneerd. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstart .NET SQL-API](create-sql-api-dotnet.md)
+In het volgende voor beeld wordt een nieuw Azure Cosmos-item als invoer gebruikt, ingevoegd in de Azure Cosmos-container en wordt de ID voor het zojuist gemaakte item geretourneerd. In dit voorbeeld maken we gebruik van het ToDoList-voorbeeld van de [snelstart .NET SQL-API](create-sql-api-dotnet.md)
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -281,7 +284,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 
 Eén ding dat belangrijk is om te weten is de transactionele uitvoering van triggers in Azure Cosmos DB. De post-trigger wordt uitgevoerd als onderdeel van dezelfde trans actie voor het onderliggende item zelf. Als er een uitzonde ring optreedt tijdens de uitvoering na trigger, mislukt de hele trans actie. Alle doorgevoerde items worden teruggedraaid en er wordt een uitzonde ring geretourneerd.
 
-Zie de artikelen [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) en [Post-triggers](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) voor voorbeelden van het registreren en aanroepen van een pre-trigger. 
+Zie artikelen [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) en [Post-triggers](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) voor voorbeelden van het registreren en aanroepen van een pre-trigger. 
 
 ## <a id="udfs"></a>Door de gebruiker gedefinieerde functies schrijven
 

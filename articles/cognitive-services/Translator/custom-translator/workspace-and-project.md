@@ -1,7 +1,7 @@
 ---
-title: Wat is een werk ruimte en project? -Aangepaste Translator
+title: Wat is een werk ruimte en project? -Aangepaste vertaler
 titleSuffix: Azure Cognitive Services
-description: Een werk ruimte is een werk ruimte voor het opstellen en bouwen van uw aangepaste Vertaal systeem. Een werk ruimte kan meerdere projecten, modellen en documenten bevatten. Een project is een wrapper voor een model, documenten en tests. Elk project bevat automatisch alle documenten die naar die werk ruimte worden geüpload die het juiste taal paar hebben.
+description: In dit artikel worden de verschillen tussen een werk ruimte en een project beschreven, evenals project categorieën en labels voor de Custom Translator-service.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595341"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647319"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Wat is een aangepaste Translator-werk ruimte?
 

@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: Een beheerde toepassing met aangepaste provider maken
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: Onboarding van resources met aangepaste providers
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: Voorbeelden
   items:
     - name: De Azure CLI
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: Definitie-artefact weergeven
       href: concepts-view-definition.md
+    - name: Roldefinitie-artefact
+      href: concepts-custom-role-definition.md
+    - name: Onboarding van resources
+      href: concepts-custom-providers-resourceonboarding.md
 - name: Handleidingen
   items:
     - name: Aangepaste providers

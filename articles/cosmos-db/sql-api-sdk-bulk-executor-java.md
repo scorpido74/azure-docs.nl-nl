@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Java-API voor bulk-uitvoerder, SDK-& resources'
+title: 'Azure Cosmos DB: bulk-upload Java API, SDK & resources'
 description: Meer informatie over de bulk-lanceren Java API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB bulk-uitvoerder Java SDK.
 author: tknandu
 ms.service: cosmos-db
@@ -8,18 +8,18 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 018c8f7895669d437b129d92a840a393e2453a79
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3dc2a2d7c0e9fae425340ab1aa91790070708cd1
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624653"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606193"
 ---
-# <a name="java-bulk-executor-library-download-information"></a>Java-bibliotheek voor bulk-uitvoerder: Informatie downloaden
+# <a name="java-bulk-executor-library-download-information"></a>Java-bibliotheek voor bulksgewijs laden: Download informatie
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-Wijzigingenfeed](sql-api-sdk-dotnet-changefeed.md)
+> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Async Java](sql-api-sdk-async-java.md)
@@ -36,7 +36,7 @@ ms.locfileid: "69624653"
 |**Beschrijving**|Met de bibliotheek bulk-uitvoerder kunnen client toepassingen bulk bewerkingen uitvoeren in Azure Cosmos DB accounts. de bibliotheek voor bulk-uitvoerder biedt BulkImport-en BulkUpdate-naam ruimten. De BulkImport-module kan documenten bulksgewijs opnemen in een geoptimaliseerde manier, zodat de door Voer ingericht voor een verzameling voor het maximale aantal wordt verbruikt. De BulkUpdate-module kan bestaande gegevens in azure Cosmos-containers bulksgewijs bijwerken als patches.|
 |**SDK downloaden**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**Bibliotheek voor bulk-uitvoerder in GitHub**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
-| **API-documentatie**| [.NET API-referentiedocumentatie](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
+| **API-documentatie**| [Naslag documentatie voor Java API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**Aan de slag**|[Aan de slag met de bibliotheek met Java-SDK voor bulksgewijs laden](bulk-executor-java.md)|
-|**Minimaal ondersteunde runtime**|[Java Development Kit (JDK 7 +)](https://aka.ms/azure-jdks)|
+|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 

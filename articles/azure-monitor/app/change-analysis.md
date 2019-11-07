@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678257"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606000"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -37,7 +37,7 @@ De huidige wijzigings analyse is geïntegreerd in de ervaring voor het **vastste
 
 Met behulp van de [resource grafiek van Azure](https://docs.microsoft.com/azure/governance/resource-graph/overview)kunt u een historisch overzicht krijgen van de manier waarop de Azure-resources die als host voor uw toepassing fungeren, na verloop van tijd worden gewijzigd. Met wijzigings analyse kunnen bijvoorbeeld wijzigingen in IP-configuratie regels, beheerde identiteiten en SSL-instellingen worden gedetecteerd. Dus als een tag wordt toegevoegd aan een web-app, wordt de wijziging in de analyse van wijzigingen weer gegeven. Deze informatie is beschikbaar zolang de `Microsoft.ChangeAnalysis` resource provider is ingeschakeld in het Azure-abonnement.
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Wijzigingen in de implementatie en configuratie van de web-app
+### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Wijzigingen in de implementatie en configuratie van de web-app (in-gast wijzigingen)
 
 Met de wijzigings analyse worden de implementatie-en configuratie status van een toepassing elke 4 uur vastgelegd. Het kan bijvoorbeeld wijzigingen in de omgevings variabelen van de toepassing detecteren. Het hulp programma berekent de verschillen en geeft aan wat er is gewijzigd. In tegens telling tot Resource Manager-wijzigingen is de wijzigings informatie voor code-implementatie mogelijk niet onmiddellijk beschikbaar in het hulp programma. Als u de meest recente wijzigingen in de analyse van wijzigingen wilt weer geven, selecteert u **wijzigingen nu scannen**.
 
@@ -51,10 +51,32 @@ Momenteel worden de volgende afhankelijkheden ondersteund:
 - Azure Storage
 - Azure SQL
 
+## <a name="viewing-changes-for-all-resources-in-azure"></a>Wijzigingen voor alle resources in azure weer geven
+In Azure Monitor is er een zelfstandige Blade voor het wijzigen van de analyse om alle wijzigingen met inzichten en toepassings afhankelijkheden weer te geven.
+
+Zoek naar veranderingen analyse in de zoek balk op Azure Portal om de Blade te starten.
+
+![Scherm opname van het zoeken van wijzigingen in Azure Portal](./media/change-analysis/search-change-analysis.png)
+
+Selecteer de resource groep en de resources om de wijzigingen weer te geven.
+
+![Scherm opname van de Blade voor het wijzigen van de analyse in Azure Portal](./media/change-analysis/change-analysis-standalone-blade.png)
+
+U kunt inzichten en gerelateerde afhankelijkheids resources zien die uw toepassing hosten. Deze weer gave is ontworpen om toepassingen gericht te zijn voor ontwikkel aars om problemen op te lossen.
+
+De resources die momenteel worden ondersteund zijn:
+- Virtuele machines
+- Schaalset voor virtuele machines
+- Azure-netwerk bronnen
+- Een web-app met wijzigingen in de gast bestands tracering en omgevings variabelen
+
+Gebruik voor elke feedback de knop feedback verzenden in de Blade of het e-mail changeanalysisteam@microsoft.com. 
+
+![Scherm afbeelding van de knop feedback op de Blade wijzigings analyse](./media/change-analysis/change-analysis-feedback.png)
 
 ## <a name="change-analysis-for-the-web-apps-feature"></a>De analyse van de functie Web Apps wijzigen
 
-In Azure Monitor is de analyse van wijzigingen op dit moment ingebouwd in de ervaring van de self-service om **problemen op te lossen** . Toegang tot deze ervaring via de pagina **overzicht** van uw app service-toepassing.
+In Azure Monitor is wijzigings analyse ook ingebouwd in de ervaring van de self-service om **problemen op te lossen** . Toegang tot deze ervaring via de pagina **overzicht** van uw app service-toepassing.
 
 ![Scherm afbeelding van de knop overzicht en de knop problemen vaststellen en oplossen](./media/change-analysis/change-analysis.png)
 
@@ -77,7 +99,7 @@ In Azure Monitor is de analyse van wijzigingen op dit moment ingebouwd in de erv
     ![Scherm opname van de gebruikers interface voor het inschakelen van een analyse](./media/change-analysis/change-analysis-on.png)
 
 
-1. Als u de wijzigings analyse wilt openen, selecteert u **problemen vaststellen en oplossen**  > **Beschik baarheid en prestaties**  > **toepassing Crashes**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen:
+1. Als u de wijzigings analyse wilt openen, selecteert u **problemen vaststellen en oplossen** > **Beschik baarheid en prestaties** > **toepassing Crashes**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen:
 
      ![Scherm opname van de weer gave diff wijzigen](./media/change-analysis/change-view.png)
 

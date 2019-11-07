@@ -7,16 +7,16 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274197"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622561"
 ---
 # <a name="get-resource-changes"></a>Resourcewijzigingen ophalen
 
-Resources worden gewijzigd in de loop van dagelijks gebruik, herconfiguratie en zelfs opnieuw implementeren.
+Resources veranderen tijdens dagelijks gebruik, als ze opnieuw worden geconfigureerd en zelfs bij een nieuwe implementatie.
 Wijzigingen kunnen afkomstig zijn van een individu of een geautomatiseerd proces. De meeste wijziging is standaard, maar soms niet. Met de laatste 14 dagen van de wijzigings geschiedenis kunt u met Azure resource Graph het volgende doen:
 
 - Zoeken wanneer er wijzigingen zijn gedetecteerd voor een Azure Resource Manager eigenschap
@@ -44,8 +44,8 @@ De eerste stap in het weer geven van wat er is gewijzigd in een resource is het 
 
 Het **resourceChanges** -eind punt accepteert de volgende para meters in de hoofd tekst van de aanvraag:
 
-- **resourceId** \[required @ no__t-2: de Azure-resource om te controleren of er wijzigingen zijn.
-- **interval** \[required @ no__t-2: een eigenschap met _begin_ -en _eind_ datums voor wanneer moet worden gecontroleerd op een wijzigings gebeurtenis met behulp van de **Zulu-tijd zone (Z)** .
+- **resourceId** \[vereiste\]: de Azure-resource om te controleren of er wijzigingen zijn.
+- **interval** \[vereist\]: een eigenschap met _begin_ -en _eind_ datums voor wanneer moet worden gecontroleerd op een wijzigings gebeurtenis met behulp van de **Zulu-tijd zone (Z)** .
 - **fetchPropertyChanges** (optioneel): een Booleaanse eigenschap die instelt of het antwoord object eigenschaps wijzigingen bevat.
 
 Voor beeld van aanvraag tekst:
@@ -292,4 +292,4 @@ Als u de resultaten wilt vergelijken, gebruikt u de eigenschap **Changes** in **
 
 - Zie de taal die wordt gebruikt in [Start query's](../samples/starter.md).
 - Zie Geavanceerd gebruik in [Geavanceerde query's](../samples/advanced.md).
-- Meer informatie over [bronnen verkennen](../concepts/explore-resources.md).
+- Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).

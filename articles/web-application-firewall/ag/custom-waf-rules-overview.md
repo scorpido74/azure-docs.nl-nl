@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 844e24466e9a9b46be3212690767a408e75f234d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516615"
+ms.locfileid: "73585399"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 op Azure-toepassing gateway
 
@@ -162,6 +162,11 @@ Lijst met waarden die moeten worden vergeleken, wat kan worden beschouwd als *or
 - Log: Hiermee kan de regel naar het logboek schrijven, maar kan de rest van de regels worden uitgevoerd voor evaluatie. Volgende aangepaste regels worden geëvalueerd in volg orde van prioriteit, gevolgd door de beheerde regels.
 
 ## <a name="geomatch-custom-rules-preview"></a>Aangepaste regels voor geomatching (preview-versie)
+
+Aangepaste regels maken het mogelijk om op maat gemaakte regels aan te passen aan de exacte behoeften van uw toepassingen en uw beveiligings beleid. U kunt de toegang tot uw webtoepassingen nu beperken op land/regio, die beschikbaar is in open bare preview. Net als bij alle aangepaste regels kan deze logica worden samengesteld met andere regels om te voldoen aan de behoeften van uw toepassing. 
+
+   > [!NOTE]
+   > Geomatch aangepaste regels zijn beschikbaar in Zuid-Centraal VS en Europa-noord. Als u toegang wilt krijgen tot de portals, gebruikt u [deze koppeling](https://aka.ms/AppGWWAFGeoMatch) totdat deze Live voor iedereen actief is. 
 
 Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende landen codes van twee cijfers zijn. 
 

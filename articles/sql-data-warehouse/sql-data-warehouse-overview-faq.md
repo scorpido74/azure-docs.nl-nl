@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW) | Microsoft Docs
+title: Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW) van klanten en ontwikkel aars
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4db84ed69979713d613679e94d50cdb73475e2be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520859"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645590"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 
@@ -47,7 +47,7 @@ A. Ga naar de [Naleving van micro soft] pagina voor diverse nalevings aanbieding
 
 V. Kan ik Power BI verbinding maken?
 
-A. Ja. Hoewel Power BI directe query met Azure Synapse ondersteunt, is het niet bedoeld voor grote hoeveel heden gebruikers of realtime-gegevens. Voor productie gebruik van Power BI raden wij u aan Power BI te gebruiken boven op de Azure Analysis Services-of Analysis Service-IaaS. 
+A. Ja. Hoewel Power BI directe query met Azure Synapse ondersteunt, is het niet bedoeld voor een groot aantal gebruikers of realtime-gegevens. Als u de prestaties van Power BI verder wilt optimaliseren, kunt u Power BI gebruiken boven op Azure Analysis Services of Analysis Service IaaS.
 
 V. Wat zijn de capaciteits limieten van SQL Analytics?
 

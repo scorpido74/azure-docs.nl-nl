@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 0c33c0832590fdfd4fe78a1645ef1b0e3e391163
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: bf4b79dbb3da15605dc4362b5f0578a457886316
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200581"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581360"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Overzicht van blauwdrukvoorbeeld voor CIS Microsoft Azure Foundations Benchmark
 
@@ -19,16 +19,16 @@ Het blauwdrukvoorbeeld voor CIS Microsoft Azure Foundations Benchmark biedt behe
 
 ## <a name="recommendation-mapping"></a>Toewijzing van aanbevelingen
 
-De sectie over toewijzing van aanbevelingen bevat details over de beleidsregels die in deze blauwdruk zijn opgenomen en hoe dit beleid van invloed is op diverse aanbevelingen van CIS Microsoft Azure Foundations Benchmark.
-Wanneer resources worden toegewezen aan een architectuur, worden deze op niet-naleving van toegewezen beleidsregels geëvalueerd door Azure Policy. Zie [Azure Policy](../../../policy/overview.md) voor meer informatie.
+De sectie over toewijzing van aanbevelingen bevat details over de beleidsregels die in deze blauwdruk zijn opgenomen en hoe dit beleid van invloed is op diverse aanbevelingen van CIS Microsoft Azure Foundations Benchmark v1.1.0. Wanneer resources worden toegewezen aan een architectuur, worden deze op niet-naleving van toegewezen beleidsregels geëvalueerd door Azure Policy. Zie [Azure Policy](../../../policy/overview.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 U hebt het overzicht van het blauwdrukvoorbeeld voor CIS Microsoft Azure Foundations Benchmark bestudeerd.
-Ga verder met het volgende artikel voor meer informatie over de toewijzing van aanbevelingen:
+Ga verder met de volgende artikelen voor meer informatie over de toewijzing van aanbevelingen:
 
 > [!div class="nextstepaction"]
-> [Blauwdruk voor CIS Microsoft Azure Foundations Benchmark - toewijzing van aanbevelingen](./control-mapping.md)
+> [Blauwdruk voor CIS Microsoft Azure Foundations Benchmark: toewijzing van aanbevelingen](./control-mapping.md)
+> [Blauwdruk voor CIS Microsoft Azure Foundations Benchmark: stappen implementeren](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

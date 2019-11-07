@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: abf222b7a6d6e8fd053fa83c066d2b7850f575ab
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 22bb36e3b22f65bbf9922bd31e4b2e041cdb8979
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756911"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601237"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Wereld wijd gedistribueerde transactionele en analytische opslag voor Azure Cosmos-containers
 
@@ -34,10 +34,10 @@ De transactionele opslag engine wordt ondersteund door de lokale Ssd's, terwijl 
 |Opslag codering  |   Rij-georiënteerde, met een interne indeling.   |   Kolom-georiënteerd met Apache Parquet-indeling. |
 |Opslag locatie |   Gerepliceerde opslag die wordt ondersteund door de lokale/intra cluster-Ssd's. |  Gerepliceerde opslag wordt ondersteund door goedkope externe/off-Ssd's.       |
 |Duurzaamheid  |    99,99999 (7-9 s)     |  99,99999 (7-9 s)       |
-|Api's die toegang hebben tot de gegevens  |   SQL, MongoDB, Cassandra, Gremlin, Tables en Etcd.       | Apache Spark         |
+|Api's die toegang hebben tot de gegevens  |   SQL, MongoDB, Cassandra, Gremlin, Tables en etcd.       | Apache Spark         |
 |Bewaren (time-to-Live of TTL)   |  Op beleid gebaseerd, geconfigureerd in de Azure Cosmos-container met behulp van de eigenschap `DefaultTimeToLive`.       |   Op beleid gebaseerd, geconfigureerd in de Azure Cosmos-container met behulp van de eigenschap `ColumnStoreTimeToLive`.      |
-|Prijs per GB    |   $0,25/GB      |  $0,02/GB       |
-|Prijs voor opslag transacties    | De ingerichte door Voer wordt in rekening gebracht op $0,008 per 100 RU/s met facturering per uur.        |  Door Voer op basis van verbruik wordt in rekening gebracht op $0,05 voor 10.000 schrijf transacties en $0,004 voor 10.000 Lees trans acties.       |
+|Prijs per GB    |   De [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) bekijken     |   De [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) bekijken        |
+|Prijs voor opslag transacties    |  De [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) bekijken         |   De [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) bekijken        |
 
 ## <a name="benefits-of-transactional-and-analytical-storage"></a>Voor delen van transactionele en analytische opslag
 
@@ -66,53 +66,6 @@ Voor zowel een Azure Cosmos-account voor één of meerdere regio's, ongeacht of 
 In een bepaalde regio werkt de transactionele workloads voor de transactionele/Row-opslag van uw container. Anderzijds worden de analytische werk belastingen toegepast op de analytische/kolom opslag van uw container. De twee opslag engines functioneren onafhankelijk van elkaar en bieden strikte isolatie van de prestaties tussen de werk belastingen.
 
 De transactionele workloads gebruiken de ingerichte door Voer (RUs). In tegens telling tot de transactionele werk belastingen is de door Voer van de analytische workloads gebaseerd op het werkelijke verbruik. De analytische werk belastingen verbruiken resources op aanvraag.
-
-### <a name="on-demand-snapshots-and-time-travel-analytics"></a>Moment opnamen op aanvraag en Time-Travel Analytics
-
-U kunt moment opnamen maken van uw gegevens die zijn opgeslagen in de analytische opslag van uw Azure Cosmos-containers, op elk gewenst moment door de `CreateSnapshot (name, timestamp)` opdracht in de container aan te roepen. Moment opnamen hebben de naam blad wijzers in de geschiedenis van de updates die ooit in uw container zijn uitgevoerd.
-
-![Moment opnamen op aanvraag en Time-Travel Analytics](./media/globally-distributed-transactional-analytical-storage/ondemand-analytical-data-snapshots.png)
-
-Op het moment dat u de moment opname maakt, kunt u naast de naam de tijds tempel opgeven waarmee de status van uw container wordt gedefinieerd in de geschiedenis van updates. U kunt vervolgens de gegevens van de moment opname laden in Spark en de query's uitvoeren.
-
-Op dit moment kunt u op elk gewenst moment alleen moment opnamen op aanvraag maken op de container. de mogelijkheid om automatisch moment opnamen te maken op basis van een planning of aangepast beleid wordt nog niet ondersteund.
-
-### <a name="configure-and-tier-data-between-transactional-and-analytical-storage-independently"></a>Gegevens tussen transactionele en analytische opslag onafhankelijk van elkaar configureren en trapsgewijs instellen
-
-Afhankelijk van uw scenario kunt u elk van de twee opslag engines onafhankelijk in-of uitschakelen. Hier volgen de configuraties voor elk scenario:
-
-|Scenario |Transactionele opslag instelling  |Instelling voor analytische opslag |
-|---------|---------|---------|
-|Analytische werk belastingen uitvoeren, exclusief (met oneindige retentie) |  DefaultTimeToLive = 0       |  ColumnStoreTimeToLive =-1       |
-|Transactionele workloads alleen uitvoeren (met een oneindige retentie)  |   DefaultTimeToLive =-1      |  ColumnStoreTimeToLive = 0       |
-|Transactionele en analytische werk belastingen uitvoeren (met oneindige retentie)   |   DefaultTimeToLive =-1      | ColumnStoreTimeToLive =-1        |
-|Transactionele en analytische werk belastingen uitvoeren (met verschillende Bewaar intervallen, ook wel bekend als opslag lagen)  |  DefaultTimeToLive = <Value1>       |     ColumnStoreTimeToLive = <Value2>    |
-
-1. **De container alleen configureren voor analytische werk belastingen (met een oneindige retentie)**
-
-   U kunt uw Azure Cosmos-container alleen configureren voor analytische werk belastingen. Deze configuratie heeft als voor deel dat u niet hoeft te betalen voor de transactionele opslag. Als uw doel is de container alleen voor analytische werk belastingen te gebruiken, kunt u de transactionele opslag uitschakelen door `DefaultTimeToLive` in te stellen op 0 in de Cosmos-container. u kunt ook analytische opslag met oneindige retentie inschakelen door `ColumnStoreTimeToLive` op-1 in te stellen.
-
-   ![Analytische werk belastingen met een oneindige retentie](./media/globally-distributed-transactional-analytical-storage/analytical-workload-configuration.png)
-
-1. **De container alleen configureren voor transactionele workloads (met een oneindige retentie)**
-
-   U kunt uw Azure Cosmos-container alleen configureren voor transactionele werk belastingen. U kunt de analytische opslag uitschakelen door `ColumnStoreTimeToLive` in te stellen op 0 in de container. u kunt ook analytische opslag met oneindige retentie inschakelen door `DefaultTimeToLive` op-1 in te stellen.
-
-   ![Transactionele workloads met een oneindige retentie](./media/globally-distributed-transactional-analytical-storage/transactional-workload-configuration.png)
-
-1. **De container voor transactionele en analytische workloads configureren (met een oneindige retentie)**
-
-   U kunt uw Azure Cosmos-container configureren voor transactionele en analytische workloads met volledige prestatie isolatie ertussen. U kunt de analytische opslag inschakelen door `ColumnStoreTimeToLive` op-1 in te stellen en transactionele opslag met oneindige retentie in te stellen met behulp van `DefaultTimeToLive ` op-1.
-
-   ![Transactionele en analytische workloads met een oneindige retentie](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-infinite-retention.png)
-
-1. **De container configureren voor transactionele en analytische workloads met opslag lagen**
-
-   U kunt uw Azure Cosmos-container configureren voor transactionele en analytische workloads met volledige prestatie isolatie ertussen met verschillende Bewaar intervallen. Azure Cosmos DB afdwingt dat uw analytische opslag altijd gedurende een langere duur wordt bewaard dan de transactionele opslag.
-
-   U kunt transactionele opslag met oneindige retentie inschakelen door `DefaultTimeToLive` in te stellen op < waarde 1 > en analytische opslag in te scha kelen door `ColumnStoreTimeToLive` in te stellen op < waarde 2 >. Azure Cosmos DB wordt afgedwongen dat < waarde 2 > altijd groter is dan < waarde 1 >.
-
-   ![Transactionele en analytische werk belastingen met opslag lagen](./media/globally-distributed-transactional-analytical-storage/analytical-transactional-configuration-specified-retention.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

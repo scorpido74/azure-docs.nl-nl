@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee1d282506b537ed29592ca9008c88a53220d7d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554829"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569852"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Verificatie in twee stappen vereisen voor een gebruiker
 
@@ -56,20 +56,20 @@ Alle gebruikers worden *uitgeschakeld*. Wanneer u gebruikers inschrijft in azure
 Gebruik de volgende stappen om toegang te krijgen tot de pagina waar u de gebruikers status kunt weer geven en beheren:
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Ga naar **Azure Active Directory**  > **gebruikers en groepen**  > **alle gebruikers**.
+2. Ga naar **Azure Active Directory** > **gebruikers en groepen** > **alle gebruikers**.
 3. Selecteer **multi-factor Authentication**.
-   ![Select Multi-Factor Authentication ](./media/howto-mfa-userstates/selectmfa.png)
+   ![Multi-Factor Authentication selecteren](./media/howto-mfa-userstates/selectmfa.png)
 4. Er wordt een nieuwe pagina geopend waarin de gebruikers statussen worden weer gegeven.
-   gebruikers status van ![multi-Factor Authentication-scherm afbeelding ](./media/howto-mfa-userstates/userstate1.png)
+   ![gebruikers status van multi-factor Authentication-scherm afbeelding](./media/howto-mfa-userstates/userstate1.png)
 
 ### <a name="change-the-status-for-a-user"></a>De status voor een gebruiker wijzigen
 
 1. Gebruik de voor gaande stappen om naar de pagina Azure Multi-Factor Authentication- **gebruikers** te gaan.
 2. Zoek de gebruiker die u wilt inschakelen voor Azure MFA. Mogelijk moet u de weer gave bovenaan wijzigen.
-   ![Select de gebruiker om de status te wijzigen van op het tabblad gebruikers ](./media/howto-mfa-userstates/enable1.png)
+   ![Selecteer de gebruiker waarvan u de status wilt wijzigen van het tabblad gebruikers](./media/howto-mfa-userstates/enable1.png)
 3. Schakel het selectie vakje in naast de naam.
 4. Klik aan de rechter kant onder **snelle stappen**op **inschakelen** of **uitschakelen**.
-   ![Enable geselecteerde gebruiker door op inschakelen te klikken in het menu snelle stappen ](./media/howto-mfa-userstates/user1.png)
+   ![geselecteerde gebruiker inschakelen door op inschakelen te klikken in het menu snelle stappen](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > *Ingeschakelde* gebruikers worden automatisch overgeschakeld naar *afgedwongen* wanneer ze zich registreren voor Azure MFA. Wijzig de gebruikers status niet hand matig in *afdwinging*.
@@ -173,6 +173,9 @@ function Set-MfaState {
 # Disable MFA for all users
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
+
+> [!NOTE]
+> Het gedrag en het Power shell-script hierboven zijn onlangs gewijzigd. Voorheen werd het script bespaard op de MFA-methoden, uitgeschakeld MFA en de methoden hersteld. Dit is nu niet langer nodig om de methoden niet te wissen met het standaard gedrag voor uitschakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

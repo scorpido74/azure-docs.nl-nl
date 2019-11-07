@@ -1,18 +1,18 @@
 ---
-title: Client bibliotheken die nodig zijn om verbinding te maken met Azure Analysis Services | Microsoft Docs
+title: Azure Analysis Services-client bibliotheken | Microsoft Docs
 description: Beschrijft de vereiste client bibliotheken voor client toepassingen en hulpprogram ma's om verbinding te maken Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147089"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573059"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Azure Analysis Services
 
@@ -20,7 +20,7 @@ Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's o
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Down load de nieuwste client bibliotheken (Windows Installer)  
 
-|Downloaden  |Product versie  | 
+|Download  |Product versie  | 
 |---------|---------|
 |[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
 |[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
@@ -54,7 +54,7 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
   
  De Analysis Services OLE DB-provider wordt automatisch geïnstalleerd door de meeste hulpprogram ma's en client toepassingen die worden gebruikt voor toegang tot Analysis Services-data bases. Het moet worden geïnstalleerd op computers die worden gebruikt om toegang te krijgen tot Analysis Services gegevens.  
   
- OLE DB providers worden vaak opgegeven in verbindings reeksen. Een Analysis Services connection string een andere nomenclatuur gebruikt om te verwijzen naar de OLE DB provider: MSOLAP. \<version >. dll.
+ OLE DB providers worden vaak opgegeven in verbindings reeksen. Een Analysis Services connection string een andere nomenclatuur gebruikt om te verwijzen naar de OLE DB provider: MSOLAP.\<versie >. dll.
 
 ### <a name="amo"></a>AMO  
 
@@ -74,7 +74,7 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
   
 1.  Ga naar `C:\Program Files\Microsoft Analysis Services\AS OLEDB\`. Als u meer dan één map hebt, kiest u het hogere nummer.
   
-2.  Klik met de rechter muisknop op **Msolap. dll** > **Eigenschappen** > -**gegevens**. Als de bestands naam msolap140. dll is, is deze ouder dan de meest recente versie en moet een upgrade worden uitgevoerd.
+2.  Klik met de rechter muisknop op **Msolap. dll** > **Eigenschappen** > **Details**. Als de bestands naam msolap140. dll is, is deze ouder dan de meest recente versie en moet een upgrade worden uitgevoerd.
     
     ![Details van de client bibliotheek](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -91,5 +91,5 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Verbinding maken met Excel](analysis-services-connect-excel.md)-    
+[Verbinding maken met Excel](analysis-services-connect-excel.md)    
 [Verbinden met Power BI](analysis-services-connect-pbi.md)

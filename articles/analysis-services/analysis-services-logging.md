@@ -1,18 +1,18 @@
 ---
 title: Diagnostische logboek registratie voor Azure Analysis Services | Microsoft Docs
-description: Meer informatie over het instellen van diagnostische logboek registratie voor Azure Analysis Services.
+description: Hierin wordt beschreven hoe u Azure resource Diagnostic-logboek registratie instelt om uw Azure Analysis Services-server te bewaken.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a9684042a76c9c906a75334c319b4ca8ee0b727b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298619"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572776"
 ---
 # <a name="setup-diagnostic-logging"></a>Registratie in diagnoselogboek instellen
 
@@ -43,7 +43,7 @@ Selecteren **engine** Logboeken alle [xEvents](https://docs.microsoft.com/analys
 |Opdrachten     |  Begin opdracht       |
 |Opdrachten     |  Einde van opdracht       |
 |Waarschuwingen voor fouten &     |   Fout      |
-|Ontdek     |   End ontdekken      |
+|Ontdekken     |   End ontdekken      |
 |Melding     |    Melding     |
 |Sessie     |  Sessie initialiseren       |
 |Vergrendelingen    |  Constateer       |
@@ -78,7 +78,7 @@ De categorie metrische gegevens registreert dezelfde [Server metrieken](analysis
 
 2. Geef in **Diagnostische instellingen**de volgende opties op: 
 
-    * **Naam**. Voer een naam in voor de logboeken die u wilt maken.
+    * **Naam**. Voer een naam voor de logboeken om te maken.
 
     * **Archiveren naar een opslag account**. Als u deze optie wilt gebruiken, hebt u een bestaand opslag account nodig om verbinding mee te maken. Zie [een opslag account maken](../storage/common/storage-create-storage-account.md). Volg de instructies voor het maken van een Resource Manager-account voor algemeen gebruik en selecteer vervolgens uw opslag account door terug te gaan naar deze pagina in de portal. Het kan enkele minuten duren voordat zojuist gemaakte opslag accounts worden weer gegeven in de vervolg keuzelijst.
     * **Streamen naar een event hub**. Als u deze optie wilt gebruiken, hebt u een bestaande Event hub-naam ruimte en Event Hub nodig om verbinding te maken. Zie [een event hubs naam ruimte maken en een event hub met behulp van de Azure Portal](../event-hubs/event-hubs-create.md)voor meer informatie. Ga vervolgens terug naar deze pagina in de portal om de Event hub-naam ruimte en de naam van het beleid te selecteren.
@@ -90,7 +90,7 @@ De categorie metrische gegevens registreert dezelfde [Server metrieken](analysis
 
 3. Klik op **Opslaan**.
 
-    Als er een fout bericht wordt weer gegeven dat het bijwerken van de diagnostische gegevens voor de \<workspace-naam > is mislukt. Het abonnement \<subscription-id > is niet geregistreerd voor het gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) om het account te registreren en voer deze procedure opnieuw uit.
+    Als er een fout bericht wordt weer gegeven met de melding dat de diagnostische gegevens voor \<werkruimte naam niet kunnen worden bijgewerkt >. De abonnements-id van het abonnement \<> niet is geregistreerd voor gebruik van micro soft. Insights. Volg de instructies voor het [oplossen van problemen Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) om het account te registreren en voer deze procedure opnieuw uit.
 
     Als u wilt wijzigen hoe uw Diagnostische logboeken op elk gewenst moment in de toekomst worden opgeslagen, kunt u teruggaan naar deze pagina om de instellingen te wijzigen.
 
@@ -158,7 +158,7 @@ Als u uw diagnostische gegevens wilt weer geven, opent u in Log Analytics werk r
 
 ![Opties voor logboek zoeken in het Azure Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-Vouw in de opbouw functie voor query's **LogManagement** > **AzureDiagnostics**uit. AzureDiagnostics bevat engine-en service gebeurtenissen. U ziet dat er aan de vlucht een query wordt gemaakt. Het veld EventClass @ no__t-0s bevat xEvent-namen. Dit kan er als volgt uitzien als u xEvents hebt gebruikt voor on-premises logboek registratie. Klik op **EventClass @ no__t-1S** of een van de gebeurtenis namen en log Analytics werk ruimte gaat verder met het maken van een query. Zorg ervoor dat u uw query's opslaat zodat u ze later opnieuw kunt gebruiken.
+Vouw in de opbouw functie voor query's **LogManagement** > **AzureDiagnostics**uit. AzureDiagnostics bevat engine-en service gebeurtenissen. U ziet dat er aan de vlucht een query wordt gemaakt. Het veld EventClass\_s bevat xEvent-namen. Dit kan er als volgt uitzien als u xEvents hebt gebruikt voor on-premises logboek registratie. Klik op **EventClass\_s** of een van de gebeurtenis namen en log Analytics werk ruimte blijft een query maken. Zorg ervoor dat u uw query's opslaat zodat u ze later opnieuw kunt gebruiken.
 
 ### <a name="example-queries"></a>Voorbeelden van query's
 
@@ -220,7 +220,7 @@ Voor het volt ooien van deze zelf studie hebt u de volgende resources nodig:
 
 * Een bestaande Azure Analysis Services-server. Zie [een server maken in azure Portal](analysis-services-create-server.md)of [een Azure Analysis Services-server maken met behulp van Power shell](analysis-services-create-powershell.md)voor instructies voor het maken van een server bron.
 
-### <a name="aconnect-to-your-subscriptions"></a></a>Connect naar uw abonnementen
+### <a name="aconnect-to-your-subscriptions"></a></a>verbinding maken met uw abonnementen
 
 Start een Azure PowerShell-sessie en gebruik de volgende opdracht om u aan te melden bij uw Azure-account:  
 
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 U kunt een bestaand opslag account voor uw Logboeken gebruiken, op voor waarde dat het zich in hetzelfde abonnement als uw server bevindt. Voor deze zelf studie maakt u een nieuw opslag account dat is toegewezen aan Analysis Services Logboeken. Om het eenvoudig te maken, slaat u de details van het opslag account op in een variabele met de naam **sa**.
 
-U kunt ook dezelfde resource groep gebruiken als die waarin uw Analysis Services-server is opgenomen. Vervang waarden voor `awsales_resgroup`, `awsaleslogs` en `West Central US` door uw eigen waarden:
+U kunt ook dezelfde resource groep gebruiken als die waarin uw Analysis Services-server is opgenomen. Vervang waarden voor `awsales_resgroup`, `awsaleslogs`en `West Central US` met uw eigen waarden:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `

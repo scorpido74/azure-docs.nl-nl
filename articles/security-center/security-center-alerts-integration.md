@@ -1,5 +1,5 @@
 ---
-title: Integratie van Azure-beveiligings producten in Azure Security Center | Microsoft Docs
+title: Integratie van Azure-beveiligings producten met Azure Security Center
 description: Dit onderwerp bevat Azure-beveiligings producten die zijn geïntegreerd met Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 6560db7e2f1cb363e0b8ca7af3a08f6babd9b36b
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: dc1cb5cde06314e52ac886c1be1bb46b5f4bbd73
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202411"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686476"
 ---
 # <a name="integration-of-azure-security-products-in-azure-security-center"></a>Integratie van Azure-beveiligings producten in Azure Security Center
 
@@ -42,7 +42,7 @@ DDoS Protection Standard kan de volgende typen aanvallen beperken:
 
 > [!div class="mx-tableFixed"]
 
-|Waarschuwing|Description|
+|Waarschuwing|Beschrijving|
 |---|---|
 |**Volumetrische aanval gedetecteerd**|Het doel van deze aanval is om de netwerklaag te laten overstappen op een aanzienlijke hoeveelheid getrouwd verkeer. Dit omvat UDP-flooden, versterking van stromen en andere vervalste pakket stromen. DDoS Protection Standard verkleint deze potentiële multi-Gigabyte-aanvallen door ze te absorberen en te reinigen, waarbij de wereld wijde schaal van het netwerk automatisch wordt aangepast.|
 |**Protocol aanval gedetecteerd**|Deze aanvallen genereren een doel dat niet toegankelijk is door een zwakte te misbruiken in de laag 3-en laag 4-Protocol stacks. Dit omvat SYN-flood-aanvallen, reflectie-aanvallen en andere protocol aanvallen. DDoS Protection Standard verkleint deze aanvallen, onderscheidt zich van schadelijk en betrouwbaar verkeer door interactie met de client en het blok keren van schadelijk verkeer.|

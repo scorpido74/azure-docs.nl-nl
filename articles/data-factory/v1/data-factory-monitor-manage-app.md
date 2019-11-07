@@ -1,5 +1,5 @@
 ---
-title: Gegevens pijplijnen bewaken en beheren-Azure | Microsoft Docs
+title: Gegevens pijplijnen bewaken en beheren-Azure
 description: Meer informatie over het gebruik van de app voor bewaking en beheer voor het bewaken en beheren van Azure-gegevens fabrieken en-pijp lijnen.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139576"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666930"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer
 > [!div class="op_single_selector"]
@@ -58,9 +58,9 @@ In de lijst activiteit Windows in het middelste deel venster ziet u een activite
 Als u geen Data Factory toepassing hebt om deze stappen te testen met, gaat u naar de zelf studie: [gegevens kopiëren van Blob Storage naar SQL database met Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="understand-the-monitoring-and-management-app"></a>Meer informatie over de app voor bewaking en beheer
-Er zijn drie tabbladen aan de linkerkant: **Resource Explorer**, **bewakings weergaven**en **waarschuwingen**. Het eerste tabblad (**resource Explorer**) is standaard geselecteerd.
+Er zijn drie tabbladen aan de linkerkant: **resource Explorer**, **bewakings weergaven**en **waarschuwingen**. Het eerste tabblad (**resource Explorer**) is standaard geselecteerd.
 
-### <a name="resource-explorer"></a>Resourceverkenner
+### <a name="resource-explorer"></a>Resource Verkenner
 U ziet het volgende:
 
 * De resource Explorer- **structuur weergave** in het linkerdeel venster.
@@ -75,7 +75,7 @@ In resource Explorer ziet u alle resources (pijp lijnen, gegevens sets, gekoppel
 * De eigenschappen van het geselecteerde object worden weer gegeven in de venster Eigenschappen in het rechterdeel venster.
 * De JSON-definitie van het geselecteerde object wordt weer gegeven, indien van toepassing. Bijvoorbeeld: een gekoppelde service, een gegevensset of een pijp lijn.
 
-![Resourceverkenner](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
+![Resource Verkenner](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
 Zie het artikel [planning en uitvoering](data-factory-scheduling-and-execution.md) voor gedetailleerde conceptuele informatie over activiteit Vensters.
 
@@ -108,7 +108,7 @@ Klik op de optie **pijp lijn openen** om alle activiteiten in de pijp lijn te be
 
 ![Menu Pijplijn openen](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-In de weer gave geopend pijp lijn ziet u alle activiteiten in de pijp lijn. In dit voor beeld is er slechts één activiteit: kopieeractiviteit. 
+In de weer gave geopend pijp lijn ziet u alle activiteiten in de pijp lijn. In dit voor beeld is er slechts één activiteit: Kopieer activiteit. 
 
 ![Geopende pijp lijn](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -144,7 +144,7 @@ In de activiteit Windows pop-up en activiteiten venster Explorer kunt u naar de 
 
 ![Pijl naar links/rechts in Verkenner-venster](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-Aan de onderkant van de diagram weergave ziet u deze knoppen: Inzoomen, uitzoomen, passend maken, zoomen 100%, vergren delen. Met de knop **indeling vergren delen** voor komt u dat u per ongeluk tabellen en pijp lijnen verplaatst in de diagram weergave. Het is standaard ingeschakeld. U kunt deze functie uitschakelen en entiteiten verplaatsen in het diagram. Wanneer u deze functie uitschakelt, kunt u de laatste knop gebruiken om automatisch tabellen en pijp lijnen te positioneren. U kunt ook in-of uitzoomen met behulp van het muis wiel.
+Aan de onderkant van de diagram weergave ziet u de volgende knoppen: inzoomen, uitzoomen, passend maken, zoomen 100%, vergren delen. Met de knop **indeling vergren delen** voor komt u dat u per ongeluk tabellen en pijp lijnen verplaatst in de diagram weergave. Het is standaard ingeschakeld. U kunt deze functie uitschakelen en entiteiten verplaatsen in het diagram. Wanneer u deze functie uitschakelt, kunt u de laatste knop gebruiken om automatisch tabellen en pijp lijnen te positioneren. U kunt ook in-of uitzoomen met behulp van het muis wiel.
 
 ![Zoom opdrachten voor diagram weergave](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -159,10 +159,10 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Description</th>
+    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Beschrijving</th>
 </tr>
 <tr>
-    <td rowspan="8">Wachten op</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het activiteiten venster kan niet worden uitgevoerd.</td>
+    <td rowspan="8">Wachten</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het activiteiten venster kan niet worden uitgevoerd.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>De upstream-afhankelijkheden zijn niet gereed.</td>
@@ -187,13 +187,13 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het activiteiten venster wordt verwerkt.</td>
 </tr>
 <tr>
-<td rowspan="4">Mislukt</td><td>TimedOut</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
+<td rowspan="4">Mislukt</td><td>Out</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
 </tr>
 <tr>
 <td>Geannuleerd</td><td>Het activiteiten venster is geannuleerd door de gebruiker.</td>
@@ -207,7 +207,7 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 <td>Gereed</td><td>-</td><td>Het activiteiten venster is klaar voor gebruik.</td>
 </tr>
 <tr>
-<td>Overgeslagen</td><td>-</td><td>Het activiteiten venster is niet verwerkt.</td>
+<td>Genegeerd</td><td>-</td><td>Het activiteiten venster is niet verwerkt.</td>
 </tr>
 <tr>
 <td>Geen</td><td>-</td><td>Er is een activiteiten venster gebruikt dat bestaat uit een andere status, maar dit is opnieuw ingesteld.</td>
@@ -266,7 +266,7 @@ Wijzig de instellingen voor de **Start tijd** en de **eind tijd** op de opdracht
 >
 >
 
-Klik in de **lijst activiteit Windows**op de naam van een kolom (bijvoorbeeld: Status).
+Klik in de **lijst activiteit Windows**op de naam van een kolom (bijvoorbeeld: status).
 
 ![Menu voor de lijst met activiteiten van Windows](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
@@ -286,10 +286,10 @@ U kunt hetzelfde pop-upvenster gebruiken om filters te wissen. Als u alle filter
 
 ## <a name="perform-batch-actions"></a>Batch acties uitvoeren
 ### <a name="rerun-selected-activity-windows"></a>Geselecteerde activiteit Vensters opnieuw uitvoeren
-Selecteer een activiteiten venster, klik op de pijl-omlaag voor de eerste opdracht balk knop en / Selecteer opnieuw**uitvoeren met upstream in pijp lijn**. Wanneer u de optie **opnieuw uitvoeren met upstream in pijplijn** selecteert, worden alle Windows-activiteiten voor upstream ook opnieuw uitgevoerd.
-    ![Een activiteiten venster opnieuw uitvoeren](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+Selecteer een activiteiten venster, klik op de pijl-omlaag voor de eerste opdracht balk knop en selecteer **opnieuw uitvoeren** / **met upstream in pijp lijn**. Wanneer u de optie **opnieuw uitvoeren met upstream in pijplijn** selecteert, worden alle Windows-activiteiten voor upstream ook opnieuw uitgevoerd.
+    ![een activiteiten venster opnieuw uit](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-U kunt ook meerdere activiteit Vensters in de lijst selecteren en deze op hetzelfde moment opnieuw uitvoeren. U kunt de activiteiten Vensters filteren op basis van de status (bijvoorbeeld: **Mislukt**) --en voer de Vensters met mislukte activiteiten vervolgens opnieuw uit nadat het probleem is verholpen dat ertoe leidt dat de activiteit Windows mislukt. Zie de volgende sectie voor meer informatie over het filteren van activiteit Vensters in de lijst.  
+U kunt ook meerdere activiteit Vensters in de lijst selecteren en deze op hetzelfde moment opnieuw uitvoeren. U kunt de activiteiten Vensters filteren op basis van de status (bijvoorbeeld: **mislukt**), en vervolgens de Windows mislukt-activiteit opnieuw uitvoeren nadat het probleem is verholpen dat ervoor zorgt dat de activiteit Windows mislukt. Zie de volgende sectie voor meer informatie over het filteren van activiteit Vensters in de lijst.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Meerdere pijp lijnen onderbreken/hervatten
 U kunt meerdere pijp lijnen meerdere selecteren met behulp van de CTRL-toets. U kunt de opdracht balk knoppen (die zijn gemarkeerd in de rode rechthoek in de volgende afbeelding) gebruiken om ze te onderbreken/hervatten.

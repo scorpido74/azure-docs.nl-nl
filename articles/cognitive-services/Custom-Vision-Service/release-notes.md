@@ -1,6 +1,7 @@
 ---
 title: Release opmerkingen-Custom Vision Service
 titleSuffix: Azure Cognitive Services
+description: Ontvang de meest recente informatie over nieuwe releases van het Custom Vision-team.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564094"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647562"
 ---
 # <a name="custom-vision-service-release-notes"></a>Opmerkingen bij de release Custom Vision Service
 
@@ -107,7 +108,7 @@ Oplossingen voor fouten, waaronder ONNX-export met speciale tekens.
 
 ## <a name="december-19-2017"></a>19 december 2017
 
-- Export naar Android (TensorFlow) is toegevoegd, naast de eerder uitgebrachte export naar iOS (CoreML). Hierdoor kan het exporteren van een getraind compact-model offline worden uitgevoerd in een toepassing.
+- Exporteren naar Android (tensor flow), naast eerder uitgebrachte export naar iOS (CoreML.) Zo kunt u een getraind compact model exporteren dat offline moet worden uitgevoerd in een toepassing.
 - Domeinen Detailhandel en Oriëntatiepunt (compact) zijn toegevoegd om modelexports voor deze domeinen in te schakelen.
 - Uitgebrachte versie [1.2 Training API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) en [1.1 Prediction API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164). Bijgewerkte API’s bieden ondersteuning voor modelexports, nieuwe voorspellingsbewerking waarmee afbeeldingen niet worden opgeslagen in Voorspellingen, en introductie van batchbewerkingen in de Training API.
 - UX-aanpassingen, waaronder de mogelijkheid om te zien welk domein is gebruikt om een iteratie te trainen.

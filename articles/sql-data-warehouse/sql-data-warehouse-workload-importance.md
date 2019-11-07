@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse workload belang | Microsoft Docs
-description: Richtlijnen voor het instellen van belang is voor query's in Azure SQL Data Warehouse.
+title: Workloadurgentie
+description: Richt lijnen voor het instellen van de urgentie van query's in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,59 +10,60 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a78f342d7e4b14700224bb63598f41ca95322a5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: fea35325f11878373db8dd52b9b2bf08a25b81d1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595417"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692364"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL Data Warehouse workload urgentie
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Urgentie van Azure SQL Data Warehouse werk belasting
 
-In dit artikel wordt uitgelegd hoe belang van de werkbelasting van invloed zijn op de volgorde van de uitvoering voor SQL Data Warehouse aanvragen.
+In dit artikel wordt uitgelegd hoe de urgentie van het werk belasting de volg orde van de uitvoering van SQL Data Warehouse aanvragen kan beïnvloeden.
 
-## <a name="importance"></a>Urgentie
+## <a name="importance"></a>Relevantie
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-Behoeften van uw bedrijf kunnen vereisen datawarehousing-workloads te belangrijker dan andere.  U hebt een scenario waarbij essentiële verkoop gegevens wordt geladen voordat de fiscale sluiten periode.  Gegevens zijn geladen voor andere bronnen, zoals weergegevens geen strikte Sla's.   Hoge urgentie van een aanvraag voor het laden van gegevens van internetverkopen en lage urgentie instelt op een aanvraag voor het laden of gegevens zorgt ervoor de belasting verkoopgegevens dat eerste toegang tot resources opgehaald en sneller voltooid.
+Bedrijfs behoeften kunnen vereisen dat werk belastingen voor gegevens opslag belang rijker zijn dan andere.  Denk na over een scenario waarin essentiële verkoop gegevens worden geladen voordat de fiscale periode wordt gesloten.  Gegevens die worden geladen voor andere bronnen, zoals weer gegevens, hebben geen strikte Sla's.   Het instellen van een hoge urgentie voor een aanvraag voor het laden van verkoop gegevens en een lage urgentie voor een aanvraag om te laden of gegevens ervoor zorgen dat de belasting van de omzet eerst toegang krijgt tot bronnen en sneller kan worden uitgevoerd.
 
-## <a name="importance-levels"></a>Urgentieniveaus
+## <a name="importance-levels"></a>Urgentie niveaus
 
-Er zijn vijf niveaus van belangrijkheid: laag, below_normal, normaal, above_normal en hoog.  Aanvragen die niet urgentie zijn het standaardniveau van normaal worden toegewezen.  Aanvragen met hetzelfde urgentieniveau hebben hetzelfde schema gedrag die vandaag de dag.
+Er zijn vijf prioriteits niveaus: laag, below_normal, normaal, above_normal en hoog.  Aanvragen waarvoor geen urgentie is ingesteld, krijgen het standaard niveau normaal.  Aanvragen met hetzelfde urgentie niveau hebben hetzelfde plannings gedrag als vandaag.
 
-## <a name="importance-scenarios"></a>Urgentie scenario 's
+## <a name="importance-scenarios"></a>Urgentie scenario's
 
-Naast de hierboven beschreven met verkoop- en weergegevens basic belang-scenario, moet u er andere scenario's waarbij werkbelasting belang helpt bij het voldoen aan de gegevensverwerking en het uitvoeren van query's behoeften zijn.
+Naast het scenario met de basis prioriteit die hierboven wordt beschreven met verkoop-en weer gegevens, zijn er andere scenario's waarin de werk belasting van de workload aan gegevens verwerking en query behoeften voldoet.
 
-### <a name="locking"></a>Vergrendelen
+### <a name="locking"></a>Vergren delen
 
-Toegang tot de vergrendelingen voor lezen en schrijven van de activiteit is een gebied van natuurlijk conflicten.  Activiteiten zoals [partitie overschakelen](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) of [naam OBJECT](/sql/t-sql/statements/rename-transact-sql) vereist verhoogde wordt vergrendeld.  SQL Data Warehouse wordt zonder de werkbelasting van belang geoptimaliseerd voor doorvoer.  Optimaliseren voor doorvoer houdt in dat bij het uitvoeren van aanvragen in de wachtrij dezelfde vergrendelen behoeften hebben en bronnen beschikbaar zijn, kunnen de aanvragen in de wachtrij aanvragen met hogere vergrendelen vereisten die eerder in de wachtrij voor aanvragen ontvangen omzeilen.  Nadat het belang van de werkbelasting wordt toegepast op aanvragen met hogere vergrendeling vereist. Aanvraag met hogere prioriteit worden uitgevoerd voordat de aanvraag met lagere prioriteit.
+Toegang tot de vergren delingen voor lees-en schrijf activiteiten is één gebied met natuurlijke conflicten.  Voor activiteiten zoals het overschakelen van een [partitie](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) of het [wijzigen van de naam van het object](/sql/t-sql/statements/rename-transact-sql) is verhoogde vergren deling vereist  Zonder urgentie van de werk belasting, SQL Data Warehouse optimaliseert voor door voer.  Optimalisatie voor door Voer betekent dat wanneer in-en in de wachtrij geplaatste aanvragen dezelfde vergrendelings behoeften hebben en resources beschikbaar zijn, de aanvragen in de wachtrij kunnen verzoeken met een hogere vergrendelings behoefte die eerder in de wachtrij voor aanvragen is aangekomen, worden overgeslagen.  Zodra de urgentie van de werk belasting wordt toegepast op aanvragen met hogere vergrendelings behoeften. Een aanvraag met een hogere urgentie wordt uitgevoerd vóór de aanvraag met een lagere urgentie.
 
 Kijk een naar het volgende voorbeeld:
 
-Q1 wordt actief wordt uitgevoerd en gegevens van SalesFact selecteren.
-Q2 is in de wachtrij in afwachting van Q1 om te voltooien.  Deze om 9 uur is ingediend en wordt geprobeerd nieuwe gegevenspartities switch in SalesFact.
-Q3 wordt verzonden om 9:01 uur en wil gegevens selecteren uit SalesFact.
+Q1 wordt actief uitgevoerd en er worden gegevens uit SalesFact geselecteerd.
+Q2 is in de wachtrij gezet voordat Q1 is voltooid.  Het is verzonden op 9:00 en probeert de switch van nieuwe gegevens te partitioneren in SalesFact.
+Q3 wordt verzonden op 9:01am en wil gegevens selecteren uit SalesFact.
 
-Als Q2 en Q3 even belangrijk zijn en Q1 nog wordt uitgevoerd, begint Q3 wordt uitgevoerd. Wachten op een exclusieve vergrendeling op SalesFact blijven Q2.  Als Q2 heeft een hogere prioriteit dan K3, wacht K3 totdat Q2 is voltooid voordat deze kan worden uitgevoerd.
+Als Q2 en Q3 hetzelfde urgentie hebben en Q1 nog steeds wordt uitgevoerd, wordt Q3 uitgevoerd. Q2 blijft wachten op een exclusieve vergren deling op SalesFact.  Als Q2 hoger is dan Q3, moet Q3 wachten tot Q2 is voltooid voordat de uitvoering kan worden gestart.
 
 ### <a name="non-uniform-requests"></a>Niet-uniforme aanvragen
 
-Een ander scenario waar belang kunt voldoen aan een query uitvoeren op vereisten is wanneer aanvragen met verschillende resourceklassen worden verzonden.  Zoals eerder is vermeld, onder even belangrijk zijn, is SQL Data Warehouse wordt geoptimaliseerd voor doorvoer.  Wanneer gemengde grootte aanvragen (zoals smallrc of mediumrc) in de wachtrij geplaatst zijn, wordt de vroegste binnenkomende aanvraag die met de beschikbare resources overeenkomt kiezen in SQL Data Warehouse.  Als u werkbelasting prioriteit wordt toegepast, wordt de hoogste prioriteit-aanvraag vervolgens gepland.
+Een ander scenario waarbij het belang rijk kan zijn om te voldoen aan query vereisten is wanneer aanvragen met verschillende resource klassen worden verzonden.  Zoals eerder vermeld, onder hetzelfde belang, SQL Data Warehouse optimaliseert voor door voer.  Wanneer aanvragen voor gemengde grootte (zoals smallrc of mediumrc) in de wachtrij worden geplaatst, kiest SQL Data Warehouse de eerste aankomende aanvraag die binnen de beschik bare resources past.  Als de urgentie van de werk belasting wordt toegepast, wordt de aanvraag voor de hoogste urgentie gepland op de volgende regel.
   
-Houd rekening met het volgende voorbeeld op DW500c:
+Bekijk het volgende voor beeld op DW500c:
 
-K1, k2, K3 en K4 worden smallrc query's uitgevoerd.
-Vraag 5 wordt verzonden met de resourceklasse mediumrc om 9 uur.
-Q6 wordt verzonden met de resourceklasse smallrc om 9:01 uur.
+Q1, Q2, Q3 en Q4 voert smallrc-query's uit.
+Q5 wordt verzonden met de resource klasse mediumrc op 9:00.
+Q6 wordt verzonden met smallrc-resource klasse op 9:01am.
 
-Omdat vraag 5 mediumrc is, worden hiervoor twee gelijktijdigheidssleuven in beslag.  Vraag 5 moet wachten tot twee van het uitvoeren van query's om te voltooien.  Echter, wanneer een van de actieve query's (Q1-K4) is voltooid, Q6 is gepland onmiddellijk omdat de resources voor het uitvoeren van de query bestaat.  Als de vraag 5 heeft een hogere prioriteit dan Q6, wacht Q6 totdat vraag 5 wordt uitgevoerd voordat deze kan uitvoeren.
+Omdat Q5 mediumrc is, zijn er twee gelijktijdigheids sleuven nodig.  Q5 moet wachten tot twee van de actieve query's zijn voltooid.  Wanneer een van de query's (Q1-Q4) wordt voltooid, wordt Q6 echter onmiddellijk gepland, omdat de resources bestaan om de query uit te voeren.  Als Q5 een hoger belang heeft dan Q6, wacht Q6 totdat Q5 wordt uitgevoerd voordat het kan worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het maken van een classificatie van de [WERKBELASTING classificatie maken (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
-- Zie voor meer informatie over SQL Data Warehouse workload classificatie [werkbelasting classificatie](sql-data-warehouse-workload-classification.md).  
-- Zie de Quick Start [werkbelasting classificatie maken](quickstart-create-a-workload-classifier-tsql.md) voor het maken van een classificatie van de werkbelasting.
-- Zie de artikelen met procedures voor [configureren werkbelasting belang](sql-data-warehouse-how-to-configure-workload-importance.md) en hoe u [beheren en bewaken beheer van de werkbelasting](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Zie [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) om query's en het belang toegewezen weer te geven.
+- Zie de [classificatie werk belasting maken (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)voor meer informatie over het maken van een classificatie.  
+- Zie [workload classificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over de classificatie van SQL Data Warehouse werk belasting.  
+- Zie de Snelstartgids [werk belasting maken classificatie](quickstart-create-a-workload-classifier-tsql.md) voor het maken van een classificatie van werk belastingen.
+- Zie de artikelen met procedures voor het [configureren van de urgentie van werk belastingen](sql-data-warehouse-how-to-configure-workload-importance.md) en het [beheren en bewaken van workload Management](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Zie [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) voor het weer geven van query's en de prioriteit die is toegewezen.

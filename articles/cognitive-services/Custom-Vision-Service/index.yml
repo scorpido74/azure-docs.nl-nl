@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie voor Custom Vision
-summary: Custom Vision is een cognitieve service waarmee u uw eigen afbeeldingsclassificaties kunt compileren, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
+summary: Met Custom Vision kunt u uw eigen afbeeldingsclassificaties compileren, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
 metadata:
   title: Documentatie voor Custom Vision - Quickstarts, zelfstudies, API-naslag - Azure Cognitive Services | Microsoft Docs
-  description: Custom Vision is een cognitieve service waarmee u uw eigen afbeeldingsclassificaties kunt compileren, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
+  description: Met Custom Vision kunt u uw eigen afbeeldingsclassificaties compileren, implementeren en verbeteren. Een afbeeldingsclassificatie is een AI-service die op basis van de visuele kenmerken van een afbeelding labels (die klassen vertegenwoordigen) op afbeeldingen toepast.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 2ef22176b64638dc43a4a45096cf072a7c79931e
+  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931643"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73647581"
 landingContent:
 - title: Over Custom Vision
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
       url: test-your-model.md
     - text: Uw model verbeteren
       url: getting-started-improving-your-classifier.md
-    - text: Voorgestelde tags gebruiken
+    - text: Smart Labeler gebruiken
       url: suggested-tags.md
 - title: Exportmodellen
   linkLists:

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database serverloze | Microsoft Docs
+title: Azure SQL Database - Serverloos
 description: In dit artikel wordt de nieuwe serverloze Compute-laag beschreven en vergelijkt deze met de bestaande ingerichte Compute-laag
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496252"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687384"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database - Serverloos
 
@@ -174,8 +174,6 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
    |Min vCores|Is afhankelijk van het maximum aantal geconfigureerde vCores-Zie [resource limieten](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 vCores|
    |Vertraging van autopause|Minimum: 60 minuten (1 uur)<br>Maximum: 10080 minuten (7 dagen)<br>Aantal stappen: 60 minuten<br>Autopause uitschakelen:-1|60 minuten|
 
-> [!NOTE]
-> T-SQL gebruiken om een bestaande Data Base naar een server te verplaatsen of de berekenings grootte te wijzigen wordt momenteel niet ondersteund, maar kan worden uitgevoerd via de Azure Portal of Power shell.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Nieuwe data base maken in serverloze Compute-laag 
 
@@ -200,6 +198,17 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) gebruiken
+
+In het volgende voor beeld wordt een nieuwe data base gemaakt in de compute-laag zonder server.
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+Zie [Create Data Base](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)(Engelstalig) voor meer informatie.  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Data base verplaatsen van ingerichte Compute-laag naar serverloze Compute-laag
 
 #### <a name="use-powershell"></a>PowerShell gebruiken
@@ -218,6 +227,17 @@ Set-AzSqlDatabase `
   -MaxVcore 4 `
   -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) gebruiken
+
+In het volgende voor beeld wordt een Data Base van de ingerichte Compute-laag verplaatst naar de serverloze Compute-laag. 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+Zie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)(Engelstalig) voor meer informatie.
 
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Data base verplaatsen van serverloze Compute-laag naar ingerichte Compute-laag
 
@@ -323,6 +343,10 @@ Nauw keuriger wordt de reken factuur in dit voor beeld als volgt berekend:
 |Totaal aantal vCore seconden gefactureerd over 24 uur||||50400 vCore seconden|
 
 Stel dat de reken eenheids prijs $0.000073/vCore/seconde is.  De reken tijd die voor deze periode van 24 uur wordt gefactureerd, is het product van de reken eenheids prijs en vCore seconden in rekening gebracht: $0.000073/vCore/Second * 50400 vCore seconden = $3,68
+
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure Hybrid Benefit en gereserveerde capaciteit
+
+Azure Hybrid Benefit (AHB) en gereserveerde capaciteits kortingen zijn niet van toepassing op de serverloze Compute-laag.
 
 ## <a name="available-regions"></a>Beschikbare regio's
 

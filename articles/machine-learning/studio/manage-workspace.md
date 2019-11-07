@@ -1,6 +1,6 @@
 ---
-title: Een Machine Learning Studio-werk ruimte (klassieke) beheren
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Werkruimten beheren
+titleSuffix: ML Studio (classic) Azure
 description: Toegang tot Azure Machine Learning Studio (klassieke) werk ruimten beheren en Machine Learning API-webservices implementeren en beheren
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f514079379143e001d72c0e6618c88e2fbb283b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0ec619e765dde39f6d4c24cdadaab8bff4729f79
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489229"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684758"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>Een Azure Machine Learning Studio-werk ruimte (klassieke) beheren
 

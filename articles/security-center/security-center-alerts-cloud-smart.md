@@ -1,5 +1,5 @@
 ---
-title: Cloud Smart alert correlatie in Azure Security Center (incidenten) | Microsoft Docs
+title: 'Azure Security Center incidenten: slimme correlaties van waarschuwingen'
 description: In dit onderwerp wordt uitgelegd hoe fusie gebruikmaakt van Smart alert-correlatie voor het genereren van beveiligings incidenten in Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 4c2f084fe03271b29a12aa6906f5e36612d50674
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b26f0bab073ce248ca23bb8a815fa3e293ddba51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202700"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686489"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Security Center voor de correlatie van de cloud in een andere (incidenten)
 
@@ -30,7 +30,7 @@ Fusion Analytics is de technologie en analytische back-end die Security Center i
 
 Fusion Analytics combineert de kennis van het beveiligings domein met AI om waarschuwingen te analyseren, waarbij nieuwe aanvals patronen worden gedetecteerd zodra deze optreden. 
 
-Security Center maakt gebruik van MITRE-aanvals matrix om waarschuwingen te koppelen aan hun waargenomen intentie, waardoor de kennis van de beveiliging van het domein wordt formaliseren. Daarnaast kunt u met behulp van de informatie die is verzameld voor elke stap van een aanval, Security Center activiteiten uitvoeren die de stappen van een aanval weer gegeven, maar eigenlijk niet.  
+Security Center maakt gebruik van MITRE-aanvals matrix om waarschuwingen te koppelen aan hun waargenomen intentie, waardoor de kennis van de beveiliging van het domein wordt formaliseren. Daarnaast kunt u met behulp van de informatie die is verzameld voor elke stap van een aanval, Security Center activiteiten uitvoeren die de stappen van een aanval weer gegeven, maar eigenlijk niet.
 
 Omdat aanvallen vaak voor verschillende tenants optreden, kan Security Center AI-algoritmen combi neren voor het analyseren van aanvals reeksen die op elk abonnement worden gerapporteerd. Deze techniek identificeert de aanvals reeksen als bekende waarschuwings patronen, in plaats van alleen incidenteel te koppelen aan elkaar.
 

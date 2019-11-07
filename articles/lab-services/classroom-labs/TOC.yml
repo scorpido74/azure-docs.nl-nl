@@ -52,6 +52,8 @@
       items:
         - name: Leslokaallabs maken en beheren
           href: how-to-manage-classroom-labs.md
+        - name: Dashboard gebruiken
+          href: use-dashboard.md
         - name: 'Sjablonen instellen, aanpassen en publiceren'
           href: how-to-create-manage-template.md
         - name: VM-pool instellen en beheren
@@ -80,6 +82,8 @@
   items:
     - name: REST-API
       href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: Az.LabServices PowerShell-module (preview)
+      href: reference-powershell-module.md
 - name: Resources
   items:
     - name: Azure-updates

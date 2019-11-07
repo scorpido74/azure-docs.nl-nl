@@ -1,5 +1,5 @@
 ---
-title: Uitgebreide gebeurtenissen in SQL Database | Microsoft Docs
+title: Uitgebreide gebeurtenissen in SQL Database
 description: Hierin worden uitgebreide gebeurtenissen (XEvents) in Azure SQL Database beschreven en wordt uitgelegd hoe gebeurtenis sessies enigszins afwijken van gebeurtenis sessies in Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566070"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686780"
 ---
 # <a name="extended-events-in-sql-database"></a>Uitgebreide gebeurtenissen in SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -31,7 +31,7 @@ In dit onderwerp wordt uitgelegd hoe de implementatie van uitgebreide gebeurteni
 
 Meer informatie over Extended Events, voor Azure SQL Database en Microsoft SQL Server, is beschikbaar op:
 
-- [Quick Start: Uitgebreide gebeurtenissen in SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Quick Start: uitgebreide gebeurtenissen in SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Uitgebreide gebeurtenissen](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Vereisten
@@ -58,7 +58,7 @@ Verwante onderwerpen bieden twee voor beelden van code:
 
 - [Doel code ring buffer voor uitgebreide gebeurtenissen in SQL Database](sql-database-xevent-code-ring-buffer.md)
     - Kort eenvoudig Transact-SQL-script.
-    - We benadrukken in het onderwerp code voorbeeld. Als u klaar bent met een ring buffer doel, moet u de resources vrijgeven door een instructie ALTER-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` uit te voeren. Later kunt u een andere instantie van ring buffer toevoegen `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`door.
+    - We benadrukken in het onderwerp code voorbeeld. Als u klaar bent met een ring buffer doel, moet u de resources vrijgeven door een alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;`-instructie uit te voeren. Later kunt u een andere instantie van ring buffer toevoegen door `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
 
 
 - [Doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in SQL Database](sql-database-xevent-code-event-file.md)
@@ -81,39 +81,39 @@ Verwante onderwerpen bieden twee voor beelden van code:
 
 De functie Extended Events wordt ondersteund door verschillende [catalogus weergaven](https://msdn.microsoft.com/library/ms174365.aspx). Catalogus weergaven geven informatie over *meta gegevens of definities* van door gebruikers gemaakte gebeurtenis sessies in de huidige data base. De weer gaven retour neren geen informatie over exemplaren van actieve gebeurtenis sessies.
 
-| Naam van<br/>Catalogus weergave | Description |
+| Naam van<br/>Catalogus weergave | Beschrijving |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Retourneert een rij voor elke actie op elke gebeurtenis van een gebeurtenis sessie. |
-| **sys.database_event_session_events** |Retourneert een rij voor elke gebeurtenis in een gebeurtenis sessie. |
-| **sys.database_event_session_fields** |Retourneert een rij voor elke kolom die kan worden aangepast en die expliciet is ingesteld op gebeurtenissen en doelen. |
-| **sys.database_event_session_targets** |Retourneert een rij voor elk gebeurtenis doel voor een gebeurtenis sessie. |
-| **sys.database_event_sessions** |Retourneert een rij voor elke gebeurtenis sessie in de SQL Database-data base. |
+| **sys. database_event_session_actions** |Retourneert een rij voor elke actie op elke gebeurtenis van een gebeurtenis sessie. |
+| **sys. database_event_session_events** |Retourneert een rij voor elke gebeurtenis in een gebeurtenis sessie. |
+| **sys. database_event_session_fields** |Retourneert een rij voor elke kolom die kan worden aangepast en die expliciet is ingesteld op gebeurtenissen en doelen. |
+| **sys. database_event_session_targets** |Retourneert een rij voor elk gebeurtenis doel voor een gebeurtenis sessie. |
+| **sys. database_event_sessions** |Retourneert een rij voor elke gebeurtenis sessie in de SQL Database-data base. |
 
-In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die *. server\_*  bevatten in plaats van *.\_data base*. Het naam patroon is als **sys. server_event_%** .
+In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die de *Server\_* bevatten in plaats van *. data base\_* . Het naam patroon is als **sys. server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Nieuwe dynamische beheer weergaven [(dmv's)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](https://msdn.microsoft.com/library/bb677293.aspx) die ondersteuning bieden voor uitgebreide gebeurtenissen. Dmv's vertelt u over *actieve* gebeurtenis sessies.
 
-| Naam van DMV | Description |
+| Naam van DMV | Beschrijving |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |Hiermee wordt informatie over gebeurtenis sessie acties geretourneerd. |
-| **sys.dm_xe_database_session_events** |Retourneert informatie over sessie gebeurtenissen. |
-| **sys.dm_xe_database_session_object_columns** |Toont de configuratie waarden voor objecten die aan een sessie zijn gebonden. |
-| **sys.dm_xe_database_session_targets** |Retourneert informatie over sessie doelen. |
-| **sys.dm_xe_database_sessions** |Retourneert een rij voor elke gebeurtenis sessie die binnen het bereik van de huidige data base valt. |
+| **sys. DM _xe_database_session_event_actions** |Hiermee wordt informatie over gebeurtenis sessie acties geretourneerd. |
+| **sys. DM _xe_database_session_events** |Retourneert informatie over sessie gebeurtenissen. |
+| **sys. DM _xe_database_session_object_columns** |Toont de configuratie waarden voor objecten die aan een sessie zijn gebonden. |
+| **sys. DM _xe_database_session_targets** |Retourneert informatie over sessie doelen. |
+| **sys. DM _xe_database_sessions** |Retourneert een rij voor elke gebeurtenis sessie die binnen het bereik van de huidige data base valt. |
 
-In Microsoft SQL Server worden vergelijk bare catalogus weergaven benoemd zonder het  *\_data base* -gedeelte van de naam, zoals:
+In Microsoft SQL Server worden vergelijk bare catalogus weergaven benoemd zonder het *\_database* gedeelte van de naam, zoals:
 
-- **sys. DM _xe_sessions**, in plaats van naam<br/>**sys.dm_xe_database_sessions**.
+- **sys. DM _xe_sessions**, in plaats van naam<br/>**sys. DM _xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Gemeen schappelijk Dmv's voor beide
 Voor uitgebreide gebeurtenissen zijn er extra Dmv's die gemeen schappelijk zijn voor zowel Azure SQL Database als Microsoft SQL Server:
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- **sys. DM _xe_map_values**
+- **sys. DM _xe_object_columns**
+- **sys. DM _xe_objects**
+- **sys. DM _xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -171,7 +171,7 @@ Het SAS-token dat u voor de Azure Storage-container hebt gegenereerd, moet **RWL
 
 - Lezen
 - Schrijven
-- List
+- Lijst
 
 ## <a name="performance-considerations"></a>Prestatieoverwegingen
 
@@ -195,7 +195,7 @@ Het **gebeurtenis bestand** doel kan netwerk latentie of storingen ondervinden t
 - Het [gebruik van Azure PowerShell met Azure Storage](../storage/common/storage-powershell-guide-full.md) -bevat uitgebreide informatie over Power shell en de Azure Storage service.
 - [Blob-opslag gebruiken met .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [GEBEURTENIS sessie maken (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Blog berichten van Jonathan Kehayias over Extended Events in Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 

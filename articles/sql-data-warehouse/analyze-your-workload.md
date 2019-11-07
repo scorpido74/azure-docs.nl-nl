@@ -1,6 +1,6 @@
 ---
-title: Analyseren van uw workload in Azure SQL Data Warehouse | Microsoft Docs
-description: Technieken voor het analyseren van de prioriteit van de query voor uw workload in Azure SQL Data Warehouse.
+title: Uw workload analyseren
+description: Technieken voor het analyseren van de query prioriteit voor uw werk belasting in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,24 +10,25 @@ ms.subservice: workload-management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54652ba573fb2ec2d064b7a85ad5728b73e71db3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588756"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693114"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analyseren van uw workload in Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analyseer uw werk belasting in Azure SQL Data Warehouse
 
-Technieken voor het analyseren van uw workload in Azure SQL Data Warehouse.
+Technieken voor het analyseren van uw werk belasting in Azure SQL Data Warehouse.
 
 ## <a name="resource-classes"></a>Resourceklassen
 
-SQL Data Warehouse biedt resourceklassen om toe te wijzen van systeembronnen op query's.  Zie voor meer informatie over resourceklassen [resourceklassen en werklastbeheer resourcebeheer](resource-classes-for-workload-management.md).  Query's wordt gewacht tot als de resourceklasse toegewezen aan een query meer bronnen moet dan die momenteel beschikbaar zijn.
+SQL Data Warehouse biedt resource klassen om systeem bronnen aan query's toe te wijzen.  Zie [resource klassen & workload Management](resource-classes-for-workload-management.md)voor meer informatie over resource klassen.  Query's wachten of de resource klasse die aan een query is toegewezen, meer resources nodig heeft dan momenteel beschikbaar zijn.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>In de wachtrij query detectie- en andere DMV 's
+## <a name="queued-query-detection-and-other-dmvs"></a>Detectie van query's in de wachtrij en andere Dmv's
 
-U kunt de `sys.dm_pdw_exec_requests` DMV voor het identificeren van query's die te in een wachtrij gelijktijdigheid vinden zijn. Query's die wachten op een gelijktijdigheid van taken sleuf hebben een status van **onderbroken**.
+U kunt de `sys.dm_pdw_exec_requests` DMV gebruiken om query's te identificeren die in een gelijktijdigheids wachtrij wachten. Query's die wachten op een gelijktijdigheids sleuf hebben de status **opgeschort**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -40,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Werklast-beheerrollen kunnen worden bekeken met `sys.database_principals`.
+Werkbelasting beheer rollen kunnen worden weer gegeven met `sys.database_principals`.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -50,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-De volgende query laat zien welke rol van elke gebruiker is toegewezen aan.
+De volgende query geeft aan aan welke rol elke gebruiker is toegewezen.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -62,14 +63,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse heeft de volgende typen wacht:
+SQL Data Warehouse heeft de volgende wacht typen:
 
-* **LocalQueriesConcurrencyResourceType**: Query's die zich buiten het kader van gelijktijdigheid van taken sleuf. DMV-query's en systeem functies, zoals `SELECT @@VERSION` zijn voorbeelden van lokale query's.
-* **UserConcurrencyResourceType**: Query's die zich in het kader van gelijktijdigheid van taken sleuf bevinden. Query's op tabellen van de eindgebruiker vertegenwoordigen voorbeelden die dit brontype zou gebruiken.
-* **DmsConcurrencyResourceType**: Wachten op het resultaat zijn van bewerkingen voor gegevensverplaatsing.
-* **BackupConcurrencyResourceType**: Deze wacht geeft aan dat een database back-up. De maximale waarde voor dit resourcetype is 1. Als meerdere back-ups hebt aangevraagd op hetzelfde moment, de andere wachtrij. In het algemeen wordt aangeraden een minimale tijd tussen opeenvolgende momentopnamen van 10 minuten. 
+* **LocalQueriesConcurrencyResourceType**: query's die buiten het Framework voor gelijktijdigheids sleuven vallen. DMV-query's en systeem functies, zoals `SELECT @@VERSION`, zijn voor beelden van lokale query's.
+* **UserConcurrencyResourceType**: query's die binnen het Framework voor gelijktijdigheids sleuven zitten. Query's voor de tabellen van de eind gebruiker zijn voor beelden die gebruikmaken van dit resource type.
+* **DmsConcurrencyResourceType**: er wordt gewacht op het verplaatsen van gegevens.
+* **BackupConcurrencyResourceType**: deze wacht tijd geeft aan dat er een back-up van een Data Base wordt gemaakt. De maximum waarde voor dit resource type is 1. Als er tegelijkertijd meerdere back-ups zijn aangevraagd, de andere wachtrij. Over het algemeen raden we een minimum tijd aan tussen opeenvolgende moment opnamen van 10 minuten. 
 
-De `sys.dm_pdw_waits` DMV kan worden gebruikt om te zien welke bronnen op een aanvraag wacht.
+De `sys.dm_pdw_waits` DMV kan worden gebruikt om te zien op welke bronnen een aanvraag wordt gewacht.
 
 ```sql
 SELECT  w.[wait_id]
@@ -106,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-De `sys.dm_pdw_resource_waits` DMV toont de informatie van de wachttijd voor een bepaalde query. Resource wachttijd tijdmetingen het wachten op resources worden opgegeven. Signaal wachttijd is de tijd die nodig zijn voor de onderliggende SQL servers voor het plannen van de query naar de CPU.
+De `sys.dm_pdw_resource_waits` DMV toont de wacht gegevens voor een bepaalde query. De tijds duur van de resource meet de tijd die wacht totdat de resources zijn opgenomen. De wacht tijd voor het signaal is de tijd die nodig is voor de onderliggende SQL-servers voor het plannen van de query op de CPU.
 
 ```sql
 SELECT  [session_id]
@@ -125,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-U kunt ook de `sys.dm_pdw_resource_waits` DMV berekenen hoe veel gelijktijdigheidssleuven in beslag hebben gekregen.
+U kunt ook de `sys.dm_pdw_resource_waits` DMV gebruiken om te berekenen hoeveel gelijktijdigheids sleuven zijn toegekend.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -136,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-De `sys.dm_pdw_wait_stats` DMV kan worden gebruikt voor trendanalyse van historische van wacht.
+De `sys.dm_pdw_wait_stats` DMV kan worden gebruikt voor historische trend analyse van wacht tijden.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -152,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het beheren van databasegebruikers en beveiliging [beveiligen van een database in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Zie voor meer informatie over hoe grotere resourceklassen geclusterde columnstore-index kwaliteit verbeteren kan, [opnieuw opbouwen van indexen voor het verbeteren van segmentkwaliteit](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Zie [een Data Base beveiligen in SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md)voor meer informatie over het beheren van database gebruikers en beveiliging. Zie [indexen opnieuw samen stellen om de segment kwaliteit te verbeteren](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)voor meer informatie over hoe grotere resource klassen de geclusterde column store-index kwaliteit kunnen verbeteren.

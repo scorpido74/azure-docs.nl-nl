@@ -97,6 +97,8 @@
           href: stream-analytics-power-bi-dashboard.md
         - name: Een taak beëindigen of verwijderen
           href: stream-analytics-clean-up-your-job.md
+        - name: Een taak kopiëren of er een back-up van maken
+          href: copy-job.md
         - name: Taken koppelen voor betrouwbaarheid
           href: stream-analytics-job-reliability.md
         - name: Verifiëren met beheerde identiteit - ADLS Gen 1-uitvoer

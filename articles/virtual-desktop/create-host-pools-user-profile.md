@@ -1,5 +1,5 @@
 ---
-title: Een FSLogix-profiel container maken voor een hostgroep met behulp van een bestands share op basis van een virtuele machine-Azure
+title: Container share voor het FSLogix-Profiel van Windows-virtueel bureau blad-Azure
 description: Een FSLogix-profiel container instellen voor een Windows Virtual Desktop-hostgroep met behulp van een bestands share op basis van een virtuele machine.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311588"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606995"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
 
@@ -59,9 +59,9 @@ Als u de virtuele machines met de FSLogix-software wilt configureren, gaat u als
 
 1. [Maak verbinding met de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) met de referenties die u hebt ingevoerd tijdens het maken van de virtuele machine.
 2. Start een Internet browser en navigeer naar [deze koppeling](https://go.microsoft.com/fwlink/?linkid=2084562) om de FSLogix-agent te downloaden.
-3. Navigeer naar \\ @ no__t-1Win32 @ no__t-2Release of \\ @ no__t-4X64 @ no__t-5Release in het zip-bestand en voer **FSLogixAppsSetup** uit om de FSLogix-agent te installeren.  Zie [FSLogix downloaden en installeren](https://docs.microsoft.com/fslogix/install-ht)voor meer informatie over het installeren van FSLogix.
-4. Navigeer naar **programma bestanden** > **FSLogix** > **apps** om te bevestigen dat de agent is geïnstalleerd.
-5. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **computer @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2Software @ no__t-3FSLogix**.
+3. Navigeer naar \\\\Win32\\release of \\\\x64\\release in het zip-bestand en voer **FSLogixAppsSetup** uit om de FSLogix-agent te installeren.  Zie [FSLogix downloaden en installeren](https://docs.microsoft.com/fslogix/install-ht)voor meer informatie over het installeren van FSLogix.
+4. Ga naar **programma bestanden** > **FSLogix** > **apps** om te bevestigen dat de agent is geïnstalleerd.
+5. Voer in het menu Start **regedit** uit als Administrator. Navigeer naar **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
 6. Maak een sleutel met de naam **profielen**.
 7. Maak de volgende waarden voor de sleutel profielen:
 

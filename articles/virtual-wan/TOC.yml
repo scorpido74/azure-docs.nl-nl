@@ -34,6 +34,8 @@
       href: vpn-over-expressroute.md
     - name: Een virtuele netwerkgateway verbinden met een virtual WAN
       href: connect-virtual-network-gateway-vwan.md
+    - name: Globale VNet-peering configureren
+      href: global-peering-vnet.md
     - name: Aangepast IPsec-beleid configureren
       href: virtual-wan-custom-ipsec-portal.md
     - name: Certificaten configureren voor gebruikers-VPN

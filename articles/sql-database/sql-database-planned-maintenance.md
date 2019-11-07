@@ -1,5 +1,5 @@
 ---
-title: Planning voor Azure-onderhouds gebeurtenissen-Azure SQL Database | Microsoft Docs
+title: Planning voor Azure-onderhouds gebeurtenissen-Azure SQL Database
 description: Meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen op uw Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5598d5a465645ce20d9244011de6d9cef47ac3c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567039"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687628"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Planning voor Azure-onderhouds gebeurtenissen in Azure SQL Database
 
@@ -28,17 +28,17 @@ Voor elke Data Base houdt Azure SQL DB een quorum bij van database replica's waa
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Wat u kunt verwachten tijdens een geplande onderhouds gebeurtenis
 
-Opnieuw configureren/failovers worden over het algemeen binnen 30 seconden voltooid – het gemiddelde is 8 seconden. Als er al een verbinding is gemaakt, moet uw toepassing opnieuw verbinding maken met de goede kopie van de nieuwe primaire replica van uw data base. Als er een nieuwe verbinding tot stand wordt gebracht terwijl de Data Base een herconfiguratie ondergaat voordat de nieuwe primaire replica online is, krijgt u de fout 40613 (Data Base niet beschikbaar): Data base {DATABASENAME} op server {servername} is momenteel niet beschikbaar. Probeer de verbinding later opnieuw. Als uw data base een langlopende query heeft, wordt deze query onderbroken tijdens een herconfiguratie en moet deze opnieuw worden gestart.
+Opnieuw configureren/failovers worden over het algemeen binnen 30 seconden voltooid – het gemiddelde is 8 seconden. Als er al een verbinding is gemaakt, moet uw toepassing opnieuw verbinding maken met de goede kopie van de nieuwe primaire replica van uw data base. Als er een nieuwe verbinding tot stand wordt gebracht terwijl de Data Base een herconfiguratie ondergaat voordat de nieuwe primaire replica online is, krijgt u de fout 40613 (Data Base niet beschikbaar): ' data base {DATABASENAME} ' op server ' {servername} ' is momenteel niet beschikbaar. Probeer de verbinding later opnieuw. Als uw data base een langlopende query heeft, wordt deze query onderbroken tijdens een herconfiguratie en moet deze opnieuw worden gestart.
 
 ## <a name="retry-logic"></a>Logica voor opnieuw proberen
 
 Bij elke client productie toepassing die verbinding maakt met een Cloud database service, moet een robuuste logica voor verbinding [opnieuw](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)worden geïmplementeerd. Dit helpt u deze situaties te verhelpen en de fouten doorgaans transparant te maken voor de eind gebruiker.
 
-## <a name="frequency"></a>Frequentie
+## <a name="frequency"></a>Frequency
 
 Gemiddeld worden de 1,7 geplande onderhouds gebeurtenissen elke maand uitgevoerd.
 
-## <a name="resource-health"></a>Resourcestatus
+## <a name="resource-health"></a>Status van resources
 
 Als uw SQL database aanmeldings fouten ondervindt, controleert u het [resource Health](../service-health/resource-health-overview.md#get-started) venster in de [Azure Portal](https://portal.azure.com) voor de huidige status. De sectie status geschiedenis bevat de downtime-reden voor elke gebeurtenis (indien beschikbaar).
 

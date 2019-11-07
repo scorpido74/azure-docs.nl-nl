@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522656"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612051"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS-VM-schijven en beheerde en onbeheerde Premium-schijven
 
@@ -170,15 +170,6 @@ Azure Disk-reserve ringen worden aangeschaft voor een specifieke regio en SKU (z
 U ontvangt een e-mail melding van 30 dagen vóór de verval datum en opnieuw op het verloop van de gegevens. Zodra de reserve ring verloopt, blijven geïmplementeerde schijven actief en wordt de laatste betalen naar gebruik- [tarieven](https://azure.microsoft.com/pricing/details/managed-disks/)in rekening gebracht.
 
 ## <a name="ultra-disks"></a>Ultra schijven
-
-**Welke regio's ondersteunen momenteel Ultra schijven?**
-- US - oost 2
-- Zuidoost-Azië
-- Europa - noord
-
-**Welke VM-serie ondersteunt momenteel Ultra schijven?**
-- ESv3
-- DSv3
 
 **Hoe stel ik mijn Ultra Disk-door Voer in op?**
 Als u niet zeker weet wat uw schijf doorvoer moet instellen, raden we u aan om te beginnen met een i/o-grootte van 16 KiB en de prestaties van daar aan te passen terwijl u uw toepassing bewaakt. De formule is: door Voer in MBps = aantal IOPS * 16/1000.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: b41241d3f0223e7c96dce4a9e98262b403cb0660
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495071"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670471"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Overzichtskaart voor een geautomatiseerde pijplijn voor voorspellingen van Azure Machine Learning
 Het **Microsoft Azure machine learning Cheat van de automatische gegevens pijplijn** helpt u bij het navigeren door de technologie die u kunt gebruiken om uw gegevens naar uw machine learning-webservice te halen waar deze door uw Predictive Analytics model kunnen worden beoordeeld.
@@ -36,6 +36,6 @@ Down load het Cheat-blad hier:  **[Microsoft Azure machine learning model voor a
 
 ## <a name="more-help-with-machine-learning-studio"></a>Meer hulp bij Machine Learning Studio
 * Zie [Inleiding tot machine learning op Microsoft Azure](../studio/what-is-machine-learning.md)voor een overzicht van Microsoft Azure machine learning.
-* Zie [Deploy a Azure machine learning web service](../studio/publish-a-machine-learning-web-service.md)(Engelstalig) voor een uitleg over het implementeren van een score-webservice.
+* Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor een uitleg over het implementeren van een score-webservice.
 * Zie [How to verbruik an Azure machine learning web service](../studio/consume-web-services.md)(Engelstalig) voor een bespreking van het gebruik van een score-webservice.
 

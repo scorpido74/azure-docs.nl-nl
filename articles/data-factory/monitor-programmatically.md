@@ -1,5 +1,5 @@
 ---
-title: Een Azure-data factory op een programmatische manier bewaken | Microsoft Docs
+title: Een Azure-data factory programmatisch bewaken
 description: Meer informatie over het bewaken van een pijp lijn in een data factory met behulp van verschillende Sdk's (Software Development Kits).
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141043"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684599"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Een Azure-data factory programmatisch bewaken
 In dit artikel wordt beschreven hoe u een pijp lijn in een data factory bewaakt met behulp van verschillende Sdk's (Software Development Kits). 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u een pijp lijn in een data factory bewaakt 
 
 ## <a name="data-range"></a>Gegevens bereik
 
-Data Factory slaat alleen pijplijn run data op voor 45 dagen. Wanneer u een query uitvoert op programmeer niveau voor gegevens over Data Factory pijplijn uitvoeringen, bijvoorbeeld met de Power `Get-AzDataFactoryV2PipelineRun` shell-opdracht, zijn er geen maximum datums `LastUpdatedAfter` voor `LastUpdatedBefore` de optionele para meters. Als u bijvoorbeeld een query uitvoert voor gegevens in het afgelopen jaar, retourneert de query geen fout, maar retourneert alleen pijplijn gegevens uit de afgelopen 45 dagen.
+Data Factory slaat alleen pijplijn run data op voor 45 dagen. Wanneer u een query uitvoert op programmeer niveau voor gegevens over Data Factory pijplijn uitvoeringen, bijvoorbeeld met de Power shell-opdracht `Get-AzDataFactoryV2PipelineRun`, zijn er geen maximum datums voor de optionele `LastUpdatedAfter` en `LastUpdatedBefore` para meters. Als u bijvoorbeeld een query uitvoert voor gegevens in het afgelopen jaar, retourneert de query geen fout, maar retourneert alleen pijplijn gegevens uit de afgelopen 45 dagen.
 
 Als u de gegevens van de pijplijn periode langer dan 45 dagen wilt behouden, stelt u uw eigen diagnostische logboek registratie in met [Azure monitor](monitor-using-azure-monitor.md).
 

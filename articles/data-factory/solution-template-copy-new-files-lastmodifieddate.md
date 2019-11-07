@@ -1,5 +1,5 @@
 ---
-title: Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory | Microsoft Docs
+title: Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory
 description: Meer informatie over het gebruik van een oplossings sjabloon om nieuwe en gewijzigde bestanden te kopiëren door LastModifiedDate met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: a2a8f0478d1ae4fb19cb911b02572145ff59839b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aaa7114113d5f0330d2dc7d656b0d91963931512
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030069"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684228"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory
 
@@ -60,8 +60,8 @@ De sjabloon definieert vier para meters:
     ![De pijp lijn weer geven](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
 6. Selecteer **debug**, schrijf de waarde voor de **para meters** en selecteer **volt ooien**.  In de onderstaande afbeelding worden de para meters als volgt ingesteld.
-   - **FolderPath_Source** =  **/source/**
-   - **FolderPath_Destination** =  **/destination/**
+   - **FolderPath_Source** =  **/Source/**
+   - **FolderPath_Destination** =  **/Destination/**
    - **LastModified_From** =  **2019-02-01T00:00:00Z**
    - **LastModified_To** = **2019-03-01T00:00:00Z**
     
@@ -86,8 +86,8 @@ De sjabloon definieert vier para meters:
     ![Trigger maken](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
 11. Schrijf de waarde voor de **trigger run-para meters** als volgt en selecteer **volt ooien**.
-    - **FolderPath_Source** =  **/source/** .  U kunt vervangen door de map in de gegevens opslag van de bron.
-    - **FolderPath_Destination** =  **/destination/** .  U kunt vervangen door de map in het doel gegevens archief.
+    - **FolderPath_Source** =  **/Source/** .  U kunt vervangen door de map in de gegevens opslag van de bron.
+    - **FolderPath_Destination** =  **/Destination/** .  U kunt vervangen door de map in het doel gegevens archief.
     - **LastModified_From** =   **\@trigger (). outputs. windowStartTime**.  Het is een systeem variabele van de trigger voor het bepalen van de tijd waarop de pijp lijn de laatste keer is geactiveerd.
     - **LastModified_To** =  **\@trigger (). outputs. windowEndTime**.  Het is een systeem variabele van de trigger die de tijd bepaalt wanneer de pijp lijn deze keer wordt geactiveerd.
     

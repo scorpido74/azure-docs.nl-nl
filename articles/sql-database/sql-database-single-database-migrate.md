@@ -1,5 +1,5 @@
 ---
-title: SQL Server database migratie naar één/gegroepeerde Data base in Azure SQL Database | Microsoft Docs
+title: SQL Server database migratie naar een enkele/gegroepeerde Data base in Azure SQL Database
 description: Meer informatie over SQL Server database migratie naar een enkele data base of een elastische groep in Azure SQL Database.
 keywords: databasemigratie, sql server-databasemigratie, hulpprogramma's voor databasemigratie, database migreren, sql-database migreren
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: a156d73c7eedcbdf7c703b946a26d46ca9129632
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67030d14670ccc51c89a04863f8b39ab6a9bb183
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566603"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687179"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server database migratie naar Azure SQL Database
 
@@ -32,7 +32,7 @@ In beide gevallen moet u ervoor zorgen dat de bron database compatibel is met Az
 > [!NOTE]
 > Voor het migreren van een SQL Server-database, met inbegrip van Microsoft Access, Sybase, MySQL Oracle en DB2, naar Azure SQL Database raadpleegt u [SQL Server Migration Assistant](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/) (Migratieassistent voor SQL Server).
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>Methode 1: Migratie met downtime tijdens de migratie
+## <a name="method-1-migration-with-downtime-during-the-migration"></a>Methode 1: Migratie die gepaard gaat met uitvaltijd
 
  Gebruik deze methode om naar een enkele of een gegroepeerde Data Base te migreren als u enige downtime kunt of een test migratie van een productie database uitvoert voor latere migratie. Zie [een SQL Server-Data Base migreren](../dms/tutorial-sql-server-to-azure-sql.md)voor een zelf studie.
 

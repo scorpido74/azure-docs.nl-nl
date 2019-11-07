@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Sync instellen | Microsoft Docs
+title: Azure SQL Data Sync instellen
 description: In deze zelf studie wordt uitgelegd hoe u Azure SQL Data Sync instelt
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568170"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689987"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Zelfstudie: SQL Data Sync instellen tussen Azure SQL Database en on-premises SQL Server
+# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Zelf studie: SQL Data Sync instellen tussen Azure SQL Database en SQL Server on-premises
 
 In deze zelf studie leert u hoe u Azure SQL Data Sync kunt instellen door een synchronisatie groep te maken die zowel Azure SQL Database als SQL Server exemplaren bevat. De synchronisatie groep is aangepast geconfigureerd en gesynchroniseerd op het schema dat u hebt ingesteld.
 
@@ -31,9 +31,9 @@ Zie voor voor beelden van Power shell voor informatie over het configureren van 
 > [!IMPORTANT]
 > Azure SQL Data Sync biedt op dit moment **geen** ondersteuning voor beheerde exemplaren voor Azure SQL Database.
 
-## <a name="create-sync-group"></a>Synchronisatiegroep maken
+## <a name="create-sync-group"></a>Synchronisatie groep maken
 
-1. Ga in de browser naar de Azure Portal. Zoek uw SQL database op het dash board of selecteer het pictogram **SQL-data bases** op de werk balk en selecteer op de pagina SQL- **data bases** de data base die u wilt gebruiken als de hub-Data Base voor de gegevens synchronisatie.
+1. Ga in de browser naar de Azure Portal. Zoek uw SQL database op het dash board of selecteer het pictogram **SQL-data bases** op de werk balk en selecteer op de pagina **SQL-data bases** de data base die u wilt gebruiken als de hub-Data Base voor de gegevens synchronisatie.
 
     > [!NOTE]
     > De hub-data base is het centrale eind punt van een synchronisatie topologie waarin een synchronisatie groep meerdere database eindpunten heeft. Alle andere leden databases met eind punten in de synchronisatie groep, synchroniseren met de hub-data base.
@@ -48,7 +48,7 @@ Zie voor voor beelden van Power shell voor informatie over het configureren van 
 
    Wijzig op de pagina **gegevens synchronisatie groep maken** de volgende instellingen:
 
-   | Instelling                        | Description |
+   | Instelling                        | Beschrijving |
    | ------------------------------ | ------------------------------------------------- |
    | **Naam van synchronisatie groep** | Voer een naam in voor de nieuwe synchronisatie groep. Deze naam is verschillend van de naam van de data base zelf. |
    | **Meta gegevens database synchroniseren** | Kies ervoor om een Data Base te maken (aanbevolen) of om een bestaande Data Base te gebruiken.<br/><br/>Als u **nieuwe data base**kiest, selecteert u **nieuwe data base maken.** Geef op de pagina **SQL database** de naam en configureer de nieuwe data base en selecteer **OK**.<br/><br/>Als u **bestaande Data Base gebruiken**kiest, selecteert u de data base in de lijst. |
@@ -60,7 +60,7 @@ Zie voor voor beelden van Power shell voor informatie over het configureren van 
 
    Selecteer **OK** en wacht totdat de synchronisatie groep is gemaakt en geïmplementeerd.
 
-## <a name="add-sync-members"></a>Synchronisatieleden toevoegen
+## <a name="add-sync-members"></a>Synchronisatie leden toevoegen
 
 Nadat de nieuwe synchronisatie groep is gemaakt en geïmplementeerd, kunt u **synchronisatie leden toevoegen (stap 2)** op de pagina **nieuwe synchronisatie groep** gemarkeerd.
 
@@ -76,7 +76,7 @@ Voeg in de sectie **lid data base** optioneel een Azure SQL database toe aan de 
 
   Wijzig op de pagina **Azure SQL database configureren** de volgende instellingen:
 
-  | Instelling                       | Description |
+  | Instelling                       | Beschrijving |
   | ----------------------------- | ------------------------------------------------- |
   | **Lidnaam synchroniseren** | Geef een naam op voor het nieuwe lid Sync. Deze naam is niet hetzelfde als de naam van de data base zelf. |
   | **Abonnement** | Selecteer het bijbehorende Azure-abonnement voor facturerings doeleinden. |
@@ -147,7 +147,7 @@ Voeg in de sectie **lid data base** optioneel een on-premises SQL Server toe aan
 > [!NOTE]
 > Als u verbinding wilt maken met SQL Data Sync en de lokale agent, voegt u uw gebruikers naam toe aan de rol *DataSync_Executor*. De gegevens synchronisatie maakt deze rol op het SQL Server-exemplaar.
 
-## <a name="configure-sync-group"></a>Synchronisatiegroep configureren
+## <a name="configure-sync-group"></a>Synchronisatie groep configureren
 
 Nadat de leden van de nieuwe synchronisatie groep zijn gemaakt en geïmplementeerd, **configureert u de synchronisatie groep (stap 3)** is gemarkeerd op de pagina **nieuwe synchronisatie groep** .
 

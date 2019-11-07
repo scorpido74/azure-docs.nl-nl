@@ -1,5 +1,5 @@
 ---
-title: SQL Database oefeningen voor herstel na nood gevallen | Microsoft Docs
+title: SQL Database oefeningen voor herstel na nood gevallen
 description: Meer informatie over de richt lijnen en aanbevolen procedures voor het gebruik van Azure SQL Database voor het uitvoeren van herstel na nood gevallen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 2923ae8b9b25932ae214cfa45780dffb8780dd39
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf337b1312abc59048649aabe3e4f895d07a8d51
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568848"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690618"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Nood herstel analyse uitvoeren
 
@@ -25,7 +25,7 @@ U kunt het beste de validatie van de gereedheid van de toepassing voor de herste
 Het uitvoeren van een nood herstel analyse bestaat uit:
 
 * De stroom onderbreking van de gegevenslaag simuleren
-* Herstellen
+* Hersteld
 * Controleren op toepassings integriteit na herstel
 
 Afhankelijk van hoe u [uw toepassing voor bedrijfs continuïteit hebt ontworpen](sql-database-business-continuity.md), kan de werk stroom voor het uitvoeren van de analyse variëren. In dit artikel worden de aanbevolen procedures beschreven voor het uitvoeren van een nood herstel analyse in de context van Azure SQL Database.
@@ -47,7 +47,7 @@ Als u de storing wilt simuleren, kunt u de naam van de bron database wijzigen. D
 
 Voer de analyse uit door de controle van de toepassings integriteit te controleren (inclusief verbindings reeksen, aanmeldingen, testen van basis functies of andere validaties van signoffs procedures voor de standaard toepassing).
 
-## <a name="failover-groups"></a>Failovergroepen
+## <a name="failover-groups"></a>Failover-groepen
 
 Voor een Data Base die wordt beveiligd met behulp van failover-groepen, omvat de analyse oefening een geplande failover naar de secundaire server. De geplande failover zorgt ervoor dat de primaire en secundaire data bases in de failover-groep synchroon blijven wanneer de rollen worden overgeschakeld. In tegens telling tot de niet-geplande failover resulteert deze bewerking niet in gegevens verlies, waardoor de analyse kan worden uitgevoerd in de productie omgeving.
 

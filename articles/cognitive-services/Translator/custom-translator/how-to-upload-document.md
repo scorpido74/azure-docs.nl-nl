@@ -1,7 +1,7 @@
 ---
 title: Een document-aangepaste vertaler uploaden
 titleSuffix: Azure Cognitive Services
-description: Met de functie voor het uploaden van documenten kunt u een parallel document uploaden voor uw training. Parallelle documenten zijn paren van documenten waarbij de ene vertaling van de andere is. Een document in het paar bevat zinnen in de bron taal en het andere document bevat de volgende zinnen die in de doel taal worden vertaald.
+description: De functie voor het uploaden van documenten uploadt parallelle documenten (twee documenten waarbij een van de oorsprong en de andere de vertaling is) naar de service.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595647"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647388"
 ---
 # <a name="upload-a-document"></a>Een document uploaden
 
@@ -37,11 +37,11 @@ Klik in de [aangepaste Vertaal](https://portal.customtranslator.azure.ai) Portal
 
     a.  Document type:
 
-    -  Training: Deze documenten worden gebruikt voor trainingen.
-    -  Optimalisatie Deze documenten worden gebruikt voor afstemmings sets.
-    -  Testen Deze documenten worden gebruikt voor het testen van de set.
-    -  Woorden lijst voor woordgroepen: Deze documenten worden gebruikt voor woordgroepen woordenlijst.
-    -  Woorden lijst voor zinnen: Deze documenten worden gebruikt voor woordenboek woorden lijst
+    -  Training: deze documenten worden gebruikt voor trainingen.
+    -  Afstemming: deze documenten worden gebruikt voor het afstemmen van de set.
+    -  Testen: deze documenten worden gebruikt voor het testen van de set.
+    -  Woordgroepen lijst: deze documenten worden gebruikt voor de woorden lijst voor woord groepen.
+    -  Woorden lijst voor zinnen: deze documenten worden gebruikt voor de woorden lijst
 
     b.  Taal paar
 
@@ -50,9 +50,9 @@ Klik in de [aangepaste Vertaal](https://portal.customtranslator.azure.ai) Portal
     d.  Vul de relevante sectie in voor parallelle gegevens of de combinatie gegevens.
 
     -  Parallelle gegevens:
-        -  Bron bestand: Selecteer bron taal bestand op de lokale computer.
+        -  Bron bestand: Selecteer een bron taal bestand op de lokale computer.
         -  Doel bestand: Selecteer een doel taal bestand op de lokale computer.
-        -  Document naam: Wordt alleen gebruikt als u parallelle bestanden uploadt.
+        -  Document naam: wordt alleen gebruikt als u parallelle bestanden uploadt.
 
     - Combinatie gegevens:
         -  Combinatie bestand: Selecteer het keuze lijst bestand op de lokale computer. Uw keuze lijst met invoervak bevat de zinnen van de bron-en doel taal. [Naamgevings regels](document-formats-naming-convention.md) zijn belang rijk voor de combi natie van bestanden.

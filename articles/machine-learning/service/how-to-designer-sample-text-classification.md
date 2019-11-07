@@ -1,7 +1,7 @@
 ---
-title: 'Voor beeld van Designer #7: rapport beoordelingen classificeren'
+title: Ontwerp&#58; beoordelingen van classificatie boek
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het bouwen van een machine learning model beoordelingen over boek classificaties in verschillende categorieën.
+description: Bouw een machine learning model classificatie boek beoordelingen in verschillende categorieën.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 6f9a2327953177f29ba7a1f5948d24c7df428c09
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515445"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647132"
 ---
 # <a name="sample-7---text-classification-predict-company-category"></a>Voor beeld 7-tekst classificatie: bedrijfs categorie voors pellen 
 

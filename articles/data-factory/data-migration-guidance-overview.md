@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory gebruiken om gegevens van uw data Lake en Data Warehouse te migreren naar Azure | Microsoft Docs
+title: Azure Data Factory gebruiken om gegevens van uw data Lake en Data Warehouse te migreren naar Azure
 description: Gebruik Azure Data Factory om gegevens van uw data Lake en Data Warehouse te migreren naar Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 0be9cbc9c5af2e0778654ef70c5350b48f10c35d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931137"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675765"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure
 
@@ -36,7 +36,7 @@ Azure Data Factory kunt PETA bytes (PB) met gegevens voor data Lake Migration ve
   - Azure Data Factory maakt gebruik van een betalen per gebruik-methode, zodat u alleen betaalt voor de tijd die u daad werkelijk gebruikt voor het uitvoeren van de gegevens migratie naar Azure.  
 - Azure Data Factory kunt een eenmalige historische belasting en geplande incrementele belastingen uitvoeren.
 - Azure Data Factory gebruikt Azure Integration runtime (IR) om gegevens te verplaatsen tussen openbaar toegankelijke data Lake-en Warehouse-eind punten. Het kan ook zelf-hostende IR gebruiken voor het verplaatsen van gegevens voor data Lake-en Warehouse-eind punten in azure Virtual Network (VNet) of achter een firewall.
-- Azure Data Factory heeft beveiliging op bedrijfs niveau: U kunt Windows Installer (MSI) of service-identiteit gebruiken voor beveiligde service-to-Service-integratie, of gebruik Azure Key Vault voor referentie beheer.
+- Azure Data Factory heeft beveiliging op bedrijfs niveau: u kunt Windows Installer (MSI) of service-identiteit gebruiken voor beveiligde service-to-Service-integratie, of gebruik Azure Key Vault voor referentie beheer.
 - Azure Data Factory biedt een gratis ontwerp functie voor code en een uitgebreid, ingebouwd bewakings dashboard.  
 
 ## <a name="online-vs-offline-data-migration"></a>Online versus offline gegevens migratie
@@ -51,7 +51,7 @@ Er zijn drie belang rijke aandachtspunten wanneer u kiest tussen een online-en o
 
 Stel dat u van plan bent om Azure Data Factory te gebruiken voor het volt ooien van de gegevens migratie binnen twee weken (uw *migratie venster*). Let op de regel roze/blauw knippen in de volgende tabel. In de laagste roze cel voor een bepaalde kolom ziet u de gegevens grootte/netwerk bandbreedte koppeling waarvan het migratie venster zich het dichtst bij maar minder dan twee weken bevindt. (Elke grootte/band breedte-koppeling in een blauwe cel heeft een venster voor online migratie van meer dan twee weken.) 
 
-![Online versus offline](media/data-migration-guidance-overview/online-offline.png) deze tabel helpt u te bepalen of u kunt voldoen aan uw beoogde migratie venster via online migratie (Azure Data Factory) op basis van de grootte van uw gegevens en de beschik bare netwerk bandbreedte. Als het venster voor online migratie meer dan twee weken duurt, moet u offline migratie gebruiken.
+![online versus offline](media/data-migration-guidance-overview/online-offline.png) deze tabel helpt u te bepalen of u kunt voldoen aan uw beoogde migratie venster via online migratie (Azure Data Factory) op basis van de grootte van uw gegevens en de beschik bare netwerk bandbreedte. Als het venster voor online migratie meer dan twee weken duurt, moet u offline migratie gebruiken.
 
 > [!NOTE]
 > Door online migratie te gebruiken, kunt u zowel historische gegevens belasting als incrementele feeds end-to-end uitvoeren met één hulp programma.  Met deze aanpak kunnen uw gegevens worden gesynchroniseerd tussen de bestaande Store en de nieuwe Store tijdens het hele migratie venster. Dit betekent dat u uw ETL-logica opnieuw kunt samen stellen in de nieuwe opslag met vernieuwde gegevens.

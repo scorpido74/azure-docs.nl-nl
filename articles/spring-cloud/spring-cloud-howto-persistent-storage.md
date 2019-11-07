@@ -1,20 +1,17 @@
 ---
 title: Permanente opslag gebruiken in azure lente-Cloud | Microsoft Docs
 description: Permanente opslag gebruiken in azure lente-Cloud
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: f14da7d8e64c58a54a9da4d851ac22fd710ea8ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163742"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607776"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Permanente opslag gebruiken in azure lente-Cloud
 
@@ -53,6 +50,12 @@ Permanente opslag is een bestands share container die wordt beheerd door Azure, 
 Wanneer permanente opslag is ingeschakeld, worden beide op deze pagina weer gegeven.
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>De Azure CLI gebruiken om permanente opslag te wijzigen
+
+Installeer, indien nodig, de lente-Cloud extensie voor Azure CLI:
+
+```azurecli
+az extension add --name spring-cloud
+```
 
 Een app maken waarvoor permanente schijf is ingeschakeld:
  

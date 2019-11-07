@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d06c84e6afcabb19c985d242679d6db8616a62e2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: be8129de8b1c12965810bd5d9b5dfd1093e18d1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679761"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667892"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Migratie handleiding voor ADAL naar MSAL voor Android
 
@@ -29,45 +29,42 @@ Dit artikel bevat een overzicht van wijzigingen die u moet aanbrengen voor het m
 
 ## <a name="difference-highlights"></a>Verschil hooglichten
 
-ADAL werkt met het eind punt van Azure Active Directory v 1.0. De micro soft Authentication Library (MSAL) werkt met het micro soft-identiteits platform, voorheen bekend als het Azure Active Directory v 2.0-eind punt.
+ADAL werkt met het eind punt van Azure Active Directory v 1.0. De micro soft Authentication Library (MSAL) werkt met het micro soft Identity-platform, voorheen bekend als het Azure Active Directory v 2.0-eind punt. Het micro soft-identiteits platform wijkt af van Azure Active Directory v 1.0 in dat geval:
 
-Het micro soft-identiteits platform wijkt af van Azure Active Directory v 1.0 in dat geval:
-
-- Ondersteunt beide:
+Steun
   - Organisatie-identiteit (Azure Active Directory)
-  - Niet-organisatie-identiteiten, zoals Outlook.com, Xbox Live, enzovoort.
-  - (Alleen B2C) Federatieve aanmelding met Google, Facebook, Twitter en Amazon.
+  - Niet-organisatie-identiteiten, zoals Outlook.com, Xbox Live, enzovoort
+  - (Alleen B2C) Federatieve aanmelding met Google, Facebook, Twitter en Amazon
 
 - Is standaarden compatibel met:
   - OAuth v 2.0
   - OpenID Connect Connect (OIDC)
 
-De MSAL open bare API weerspiegelt belang rijke bruikbaarheids wijzigingen, waaronder:
+De open bare API MSAL introduceert belang rijke wijzigingen, waaronder:
 
-- Nieuw model voor het verkrijgen van toegang tot tokens:
-  - ADAL biedt toegang tot tokens via de `AuthenticationContext`, die de-server vertegenwoordigt. MSAL biedt toegang tot tokens via de `PublicClientApplication`, waarmee de client wordt aangeduid. Client ontwikkelaars hoeven geen nieuw `PublicClientApplication`-exemplaar te maken voor elke instantie die ze nodig hebben om te communiceren. Er is slechts één `PublicClientApplication`-configuratie vereist.
+- Een nieuw model voor het verkrijgen van toegang tot tokens:
+  - ADAL biedt toegang tot tokens via de `AuthenticationContext`, die de-server vertegenwoordigt. MSAL biedt toegang tot tokens via de `PublicClientApplication`, die de-client vertegenwoordigt. Client ontwikkelaars hoeven geen nieuw `PublicClientApplication`-exemplaar te maken voor elke instantie die ze nodig hebben om te communiceren. Er is slechts één `PublicClientApplication` configuratie vereist.
   - Ondersteuning voor het aanvragen van toegangs tokens met behulp van scopes naast resource-id's.
-  - Ondersteuning voor incrementele toestemming. Ontwikkel aars kunnen bereiken aanvragen, met inbegrip van apparaten die niet zijn opgenomen tijdens de registratie van de app.
-  - Validatie van de certificerings instantie-> bekende instanties
-      * Instanties worden niet meer gevalideerd tijdens runtime. in plaats daarvan declareert de ontwikkelaar tijdens de ontwikkeling een lijst met bekende instanties.
+  - Ondersteuning voor incrementele toestemming. Ontwikkel aars kunnen bereiken aanvragen wanneer de gebruiker meer en meer functionaliteit in de app opent, inclusief de functies die niet zijn opgenomen tijdens de registratie van de app.
+  - Instanties worden niet meer gevalideerd tijdens runtime. In plaats daarvan declareert de ontwikkelaar tijdens de ontwikkeling een lijst met bekende instanties.
 - Wijzigingen in token-API:
-  - In ADAL, `AcquireToken` eerst probeert een Silent-aanvraag te maken en dat mislukt, doet een interactieve aanvraag. Dit gedrag heeft tot gevolg dat sommige ontwikkel aars alleen gebruikmaken van `AcquireToken`, wat soms bedoeld is om een gebruikers interactie op een onverwacht moment te doen. MSAL vereist dat ontwikkel aars opzettelijk zijn wanneer de gebruiker een prompt van de gebruikers interface ontvangt.
+  - In ADAL maakt `AcquireToken()` eerst een Silent-aanvraag. Als dat niet het geval is, wordt er een interactieve aanvraag gemaakt. Dit gedrag heeft tot gevolg dat sommige ontwikkel aars alleen gebruikmaken van `AcquireToken`, waardoor de gebruiker onverwacht om referenties wordt gevraagd op tijdstippen. MSAL vereist dat ontwikkel aars opzettelijk zijn wanneer de gebruiker een prompt van de gebruikers interface ontvangt.
     - `AcquireTokenSilent` resulteert altijd in een Silent-aanvraag die slaagt of mislukt.
-    - `AcquireToken` resulteert altijd in een interactieve aanvraag (door de gebruiker gevraagd door de gebruikers interface).
-- MSAL ondersteunt aanmelden UI-interactie vanuit een standaard browser of een Inge sloten webweergave:
+    - `AcquireToken` resulteert altijd in een aanvraag waarmee de gebruiker via de gebruikers interface wordt gevraagd.
+- MSAL ondersteunt aanmelden vanuit een standaard browser of een Inge sloten webweergave:
   - Standaard wordt de standaard browser op het apparaat gebruikt. Hiermee kan MSAL verificatie status (cookies) gebruiken die mogelijk al aanwezig is voor een of meer accounts die zijn aangemeld. Als er geen authenticatie status aanwezig is, wordt verificatie tijdens autorisatie via MSAL tot gevolg dat er voor het voor deel van andere webtoepassingen die in dezelfde browser zullen worden gebruikt, authenticatie status (cookies) wordt gemaakt.
 - Nieuw uitzonderings model:
-  - Uitzonde ringen zijn duidelijker over het type uitzonde ring dat is opgetreden en wat de ontwikkelaar nodig heeft om het probleem op te lossen
+  - Uitzonde ringen definiëren duidelijk het type fout dat is opgetreden en wat de ontwikkelaar nodig heeft om het probleem op te lossen.
 - MSAL ondersteunt parameter objecten voor `AcquireToken`-en `AcquireTokenSilent`-aanroepen.
 - MSAL ondersteunt declaratieve configuratie voor:
-  - Client-ID, omleidings-URI
+  - Client-ID, omleidings-URI.
   - Inge sloten versus standaard browser
   - ca's
   - HTTP-instellingen, zoals lees-en verbindingstime-out
 
 ## <a name="your-app-registration-and-migration-to-msal"></a>Uw app-registratie en-migratie naar MSAL
 
-U hoeft geen wijzigingen aan te brengen in uw bestaande app-registratie om MSAL te gebruiken. Als u wilt profiteren van incrementele/progressieve toestemming, moet u mogelijk de registratie controleren om de specifieke bereiken te identificeren die u incrementeel wilt aanvragen. Meer informatie over bereiken en stapsgewijze toestemming volgt.
+U hoeft uw bestaande app-registratie niet te wijzigen om MSAL te gebruiken. Als u wilt profiteren van incrementele/progressieve toestemming, moet u mogelijk de registratie controleren om de specifieke bereiken te identificeren die u incrementeel wilt aanvragen. Meer informatie over bereiken en stapsgewijze toestemming volgt.
 
 In de registratie van uw app in de portal ziet u een tabblad **API-machtigingen** . Dit geeft een lijst van de Api's en machtigingen (bereiken) die uw app momenteel heeft geconfigureerd om toegang aan te vragen. Er wordt ook een lijst met de bereik namen weer gegeven die zijn gekoppeld aan elke API-machtiging.
 
@@ -78,7 +75,7 @@ Met ADAL en het AAD v1-eind punt, werd gebruikers toestemming verleend voor het 
 > [!TIP]
 > We raden u aan om incrementele toestemming te gebruiken in scenario's waarin u aanvullende context moet opgeven voor uw gebruiker over waarom uw app toestemming nodig heeft.
 
-### <a name="admin-consent"></a>Toestemming van de beheerder
+### <a name="admin-consent"></a>toestemming van de beheerder
 
 Beheerders van organisaties kunnen toestemming geven aan machtigingen die uw toepassing vereist namens alle leden van hun organisatie. Sommige organisaties kunnen beheerders alleen toestemming geven voor toepassingen. Toestemming van de beheerder vereist dat u alle API-machtigingen en scopes die door uw toepassing worden gebruikt, opneemt in de registratie van uw app.
 
@@ -89,7 +86,7 @@ Beheerders van organisaties kunnen toestemming geven aan machtigingen die uw toe
 
 ### <a name="authenticate-and-request-authorization-for-all-permissions-on-first-use"></a>Verificatie en autorisatie aanvragen voor alle machtigingen bij het eerste gebruik
 
-Als u momenteel ADAL gebruikt en niet incrementele toestemming hoeft te gebruiken, is de eenvoudigste manier om MSAL te gaan gebruiken om een `acquireToken`-aanvraag te maken met behulp van het nieuwe `AcquireTokenParameter`-object en de waarde voor de resource-ID in te stellen.
+Als u momenteel ADAL gebruikt en niet incrementele toestemming hoeft te gebruiken, is de eenvoudigste manier om MSAL te gaan gebruiken om een `acquireToken` aanvraag te maken met behulp van het nieuwe `AcquireTokenParameter`-object en de waarde voor de resource-ID in te stellen.
 
 > [!CAUTION]
 > Het is niet mogelijk om beide bereiken en een resource-id in te stellen. Als u beide probeert in te stellen, resulteert dit in een `IllegalArgumentException`.
@@ -98,23 +95,23 @@ Als u momenteel ADAL gebruikt en niet incrementele toestemming hoeft te gebruike
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Machtigingen alleen verifiëren en aanvragen indien nodig
 
-Als u de incrementele toestemming wilt benutten, moet u een lijst met machtigingen (bereiken) maken die door uw app worden gebruikt vanuit de registratie van uw app en deze vervolgens indelen in twee lijsten op basis van:
+Als u de incrementele toestemming wilt benutten, maakt u een lijst met machtigingen (bereiken) die door uw app worden gebruikt vanuit de registratie van uw app en organiseert u deze in twee lijsten op basis van:
 
 - De bereiken die u wilt aanvragen tijdens de eerste interactie van de gebruiker met uw app tijdens het aanmelden.
 - De machtigingen die zijn gekoppeld aan een belang rijke functie van uw app, die u ook moet uitleggen aan de gebruiker.
 
-Zodra u de bereiken hebt georganiseerd, moet u elke lijst ordenen op basis waarvan de resource (API) u een token wilt aanvragen. Evenals andere bereiken die de gebruiker op hetzelfde moment moet autoriseren.
+Wanneer u de bereiken hebt georganiseerd, organiseert u elke lijst op basis waarvan de resource (API) waarvoor u een token wilt aanvragen. Evenals andere bereiken die de gebruiker op hetzelfde moment moet autoriseren.
 
 Het object para meters waarmee uw aanvraag voor MSAL wordt ondersteund:
 
-- `Scope`: De lijst met bereiken waarvoor u een autorisatie wilt aanvragen en een toegangs token wilt ontvangen.
-- `ExtraScopesToConsent`: Een extra lijst met bereiken waarvoor u een autorisatie wilt aanvragen terwijl u een toegangs token voor een andere bron aanvraagt. Met deze lijst met bereiken kunt u het aantal keren dat u de gebruikers autorisatie wilt aanvragen, minimaliseren. Dit betekent dat er minder gebruikers autorisatie of toestemming wordt gevraagd.
+- `Scope`: de lijst met bereiken waarvoor u een autorisatie wilt aanvragen en een toegangs token wilt ontvangen.
+- `ExtraScopesToConsent`: een extra lijst met bereiken waarvoor u een autorisatie wilt aanvragen terwijl u een toegangs token voor een andere bron aanvraagt. Met deze lijst met bereiken kunt u het aantal keren dat u de gebruikers autorisatie wilt aanvragen, minimaliseren. Dit betekent dat er minder gebruikers autorisatie of toestemming wordt gevraagd.
 
 ## <a name="migrate-from-authenticationcontext-to-publicclientapplications"></a>Migreren van AuthenticationContext naar PublicClientApplications
 
 ### <a name="constructing-publicclientapplication"></a>PublicClientApplication maken
 
-Wanneer u MSAL gebruikt, moet u een `PublicClientApplication` instantiëren. Dit object modelleert uw app-identiteit en wordt gebruikt om aanvragen te doen voor een of meer instanties. Met dit object configureert u uw client identiteit, omleidings-URI, standaard instantie, of u de browser van de apparaten versus de Inge sloten webweergave, het logboek niveau en meer wilt gebruiken.
+Wanneer u MSAL gebruikt, maakt u een exemplaar van een `PublicClientApplication`. Dit object modelleert uw app-identiteit en wordt gebruikt om aanvragen te doen voor een of meer instanties. Met dit object configureert u uw client identiteit, omleidings-URI, standaard instantie, of u de browser van de apparaten versus de Inge sloten webweergave, het logboek niveau en meer wilt gebruiken.
 
 U kunt dit object declaratief configureren met JSON, dat u opgeeft als een bestand of een archief als resource in uw APK.
 
@@ -122,7 +119,7 @@ Hoewel dit object geen Singleton is, gebruikt intern het gedeelde `Executors` vo
 
 ### <a name="business-to-business"></a>Bedrijf naar bedrijf
 
-In ADAL moet elke organisatie waarvoor u toegangs tokens vraagt, een afzonderlijk exemplaar van de `AuthenticationContext` hebben. In MSAL is dit geen vereiste. U kunt de instantie opgeven van waaruit u een token wilt aanvragen als onderdeel van uw Silent of interactieve aanvraag.
+In ADAL is voor elke organisatie waarvoor u toegangs tokens vraagt, een afzonderlijk exemplaar van de `AuthenticationContext`vereist. In MSAL is dit geen vereiste. U kunt de instantie opgeven van waaruit u een token wilt aanvragen als onderdeel van uw Silent of interactieve aanvraag.
 
 ### <a name="migrate-from-authority-validation-to-known-authorities"></a>Migreren van certificerings instanties naar bekende instanties
 
@@ -134,8 +131,8 @@ MSAL heeft geen vlag waarmee de validatie van de certificerings instantie wordt 
 Als u een instantie probeert te gebruiken die niet bekend is bij micro soft en niet is opgenomen in uw configuratie, krijgt u een `UnknownAuthorityException`.
 
 ### <a name="logging"></a>Logboekregistratie
-U kunt logboek registratie nu als onderdeel van uw configuratie declaratief configureren, zoals hieronder
- 
+U kunt logboek registratie nu als onderdeel van uw configuratie declaratief configureren, zoals:
+
  ```
  "logging": {
     "pii_enabled": false,
@@ -158,11 +155,11 @@ Sam werkt voor Contoso.com maar beheert virtuele Azure-machines die deel uitmake
 
 Het toevoegen van het Contoso.com-account van Sam als lid van Fabrikam.com zou leiden tot het maken van een nieuwe record in fabrikam. com-Azure Active Directory voor Sam. De record van Sam in Azure Active Directory wordt een gebruikers object genoemd. In dit geval wijst dat gebruikers object terug naar het gebruikers object van Sam in Contoso.com. Het fabrikam-gebruikers object van Sam is de lokale weer gave van Sam, en wordt gebruikt voor het opslaan van informatie over het account dat is gekoppeld aan Sam in de context van Fabrikam.com. In Contoso.com is de titel van Sam Senior DevOps consultant. In Fabrikam is de titel van de SAM contractant-Virtual Machines. In Contoso.com is Sam niet verantwoordelijk voor het beheer van virtuele machines. In Fabrikam.com is dat zijn enige taak functie. Sam heeft nog steeds slechts één set referenties om bij te houden. Dit zijn de referenties die zijn uitgegeven door Contoso.com.
 
-Zodra een geslaagde `acquireToken`-aanroep wordt gedaan, wordt er een verwijzing naar een `IAccount`-object weer gegeven dat kan worden gebruikt in latere `acquireTokenSilent`-aanvragen.
+Zodra een geslaagde `acquireToken` aanroep is gedaan, ziet u een verwijzing naar een `IAccount`-object dat in latere `acquireTokenSilent` aanvragen kan worden gebruikt.
 
 ### <a name="imultitenantaccount"></a>IMultiTenantAccount
 
-Als u een app hebt die toegang heeft tot claims over een account van elk van de tenants waarin het account wordt weer gegeven, kunt u `IAccount`-objecten casten naar `IMultiTenantAccount`. Deze interface biedt een toewijzing van `ITenantProfiles`, die wordt uitgevoerd op Tenant-ID, waarmee u toegang krijgt tot de claims die bij het account horen in elk van de tenants waarvan u een token hebt aangevraagd ten opzichte van het huidige account.
+Als u een app hebt die toegang heeft tot claims over een account van elk van de tenants waarin het account wordt weer gegeven, kunt u `IAccount` objecten casten naar `IMultiTenantAccount`. Deze interface biedt een toewijzing van `ITenantProfiles`, op basis van de Tenant-ID, waarmee u toegang krijgt tot de claims die deel uitmaken van het account in elk van de tenants waarvan u een token hebt aangevraagd ten opzichte van het huidige account.
 
 De claims in de hoofdmap van de `IAccount` en `IMultiTenantAccount` bevatten altijd de claims van de thuis Tenant. Als u nog geen aanvraag voor een token in de thuis Tenant hebt gemaakt, is deze verzameling leeg.
 
@@ -241,12 +238,12 @@ public interface SilentAuthenticationCallback {
 
 ## <a name="migrate-to-the-new-exceptions"></a>Migreren naar de nieuwe uitzonde ringen
 
-In ADAL is er één uitzonderings type, `AuthenticationException`, dat een methode bevat voor het ophalen van de `ADALError` Enum-waarde.
+In ADAL is er één type uitzonde ring, `AuthenticationException`, dat een methode bevat voor het ophalen van de `ADALError` Enum-waarde.
 In MSAL is er een hiërarchie met uitzonde ringen en elke groep heeft een eigen set gerelateerde specifieke fout codes.
 
 Lijst met MSAL-uitzonde ringen
 
-|Uitzondering  | Description  |
+|Uitzondering  | Beschrijving  |
 |---------|---------|
 | `MsalException`     | Standaard ingeschakelde uitzonde ring veroorzaakt door MSAL.  |
 | `MsalClientException`     | Wordt gegenereerd als de fout aan de kant van de client is. |

@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: 3bc4bf920f4c780f0b73cdd75e62d8aff77b3c94
-  ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+  ms.openlocfilehash: f3e1abc46b79953d5a6d44abe4e7a5cecfa256be
+  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/10/2019
-  ms.locfileid: "70875568"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73646827"
 landingContent:
 - title: Over Blob Storage
   linkLists:
@@ -29,9 +29,9 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure Portal gebruiken
+    - text: 'Blobs downloaden, uploaden en vermelden: portal'
       url: storage-quickstart-blobs-portal.md
-    - text: Storage Explorer gebruiken
+    - text: Storage Explorer gebruiken om blobs te beheren
       url: storage-quickstart-blobs-storage-explorer.md
   - linkListType: concept
     links:
@@ -47,6 +47,14 @@ landingContent:
       url: storage-blob-create-account-block-blob.md
     - text: Een aangepast domein configureren
       url: storage-custom-domain-name.md
+- title: Blobgegevens zoeken en begrijpen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: AI gebruiken om blobgegevens te begrijpen
+      url: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Uw blob-inhoud doorzoeken
+      url: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - title: Analyse en inzichten
   linkLists:
   - linkListType: overview

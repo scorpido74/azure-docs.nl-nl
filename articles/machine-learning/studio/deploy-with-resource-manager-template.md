@@ -1,6 +1,6 @@
 ---
 title: Studio-werk ruimte (klassiek) implementeren met Azure Resource Manager
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Een werk ruimte voor Azure Machine Learning Studio (klassiek) implementeren met behulp van Azure Resource Manager sjabloon
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: e157ef3944e6c7e231c78e5bce826ccddb1a59f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d4679eb056aaad1c404d0e0f8b7723d7c57ef1d4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493058"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621703"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio-werk ruimte (klassieke) implementeren met behulp van Azure Resource Manager
 
-Met een Azure Resource Manager-implementatie sjabloon bespaart u tijd door u een schaal bare manier te bieden voor het implementeren van onderling verbonden onderdelen met een validatie en een mechanisme voor opnieuw proberen. Als u bijvoorbeeld Azure Machine Learning Studio (klassieke) werk ruimten wilt instellen, moet u eerst een Azure-opslag account configureren en vervolgens uw werk ruimte implementeren. Stel dit hand matig in voor honderden werk ruimten. Een eenvoudiger alternatief is het gebruik van een Azure Resource Manager sjabloon voor het implementeren van een studio-werk ruimte (klassiek) en alle bijbehorende afhankelijkheden. Dit artikel begeleidt u stapsgewijs door de stapsgewijze procedure. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)voor een geweldig overzicht van Azure Resource Manager.
+Met een Azure Resource Manager-implementatie sjabloon bespaart u tijd door u een schaal bare manier te bieden voor het implementeren van onderling verbonden onderdelen met een validatie en een mechanisme voor opnieuw proberen. Als u bijvoorbeeld Azure Machine Learning Studio (klassieke) werk ruimten wilt instellen, moet u eerst een Azure-opslag account configureren en vervolgens uw werk ruimte implementeren. Stel dit handmatig doen voor honderden werkruimten. Een eenvoudiger alternatief is het gebruik van een Azure Resource Manager sjabloon voor het implementeren van een studio-werk ruimte (klassiek) en alle bijbehorende afhankelijkheden. Dit artikel begeleidt u stapsgewijs door de stapsgewijze procedure. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)voor een geweldig overzicht van Azure Resource Manager.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

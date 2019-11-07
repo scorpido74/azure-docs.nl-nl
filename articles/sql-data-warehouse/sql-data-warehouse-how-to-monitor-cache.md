@@ -1,6 +1,6 @@
 ---
-title: Uw cache Gen2 optimaliseren | Microsoft Docs
-description: Informatie over het bewaken van uw Gen2-cache met behulp van de Azure portal.
+title: Optimaliseer uw Gen2-cache
+description: Meer informatie over het bewaken van uw Gen2-cache met behulp van de Azure Portal.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,47 +10,47 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33f7cedca4ef130eefa28c1dbaaedd82d11a9e4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474392"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645772"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>De cache Gen2 bewaken
-De opslagarchitectuur Gen2 wordt automatisch de meest aangevraagde columnstore-segmenten in een cache op basis van SSD's die zijn ontworpen voor datawarehouses Gen2 NVMe lagen. Betere prestaties wordt gerealiseerd wanneer uw query's halen segmenten die die zich in de cache bevinden zijn. Dit artikel wordt beschreven hoe u controleert en prestaties van trage query's op te lossen door te bepalen of uw werkbelasting is optimaal gebruik te maken van de cache Gen2.  
-## <a name="troubleshoot-using-the-azure-portal"></a>Problemen oplossen met behulp van de Azure-portal
-U kunt Azure Monitor gebruiken om Gen2 cache metrische gegevens voor het oplossen van prestaties van query's weer te geven. Eerst Ga naar de Azure portal en klik op de Monitor:
+# <a name="how-to-monitor-the-gen2-cache"></a>De Gen2-cache bewaken
+De Gen2-opslag architectuur bevat automatisch uw meest query's in de opgeslagen column Store-segmenten in een cache op NVMe gebaseerd Ssd's ontworpen voor Gen2 data warehouses. Betere prestaties worden gerealiseerd wanneer uw query's segmenten ophalen die zich in de cache bevinden. In dit artikel wordt beschreven hoe u langzame query prestaties bewaakt en oplost door te bepalen of uw werk belasting optimaal gebruikmaakt van de Gen2-cache.  
+## <a name="troubleshoot-using-the-azure-portal"></a>Problemen oplossen met behulp van de Azure Portal
+U kunt Azure Monitor gebruiken om de Gen2-cache gegevens weer te geven om de prestaties van query's op te lossen. Ga eerst naar de Azure Portal en klik op monitor:
 
 ![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
 
-Selecteer de knop metrische gegevens en vul de **abonnement**, **Resource** **groep**, **resourcetype**, en **Resource naam** van uw datawarehouse.
+Selecteer de knop metrische gegevens en vul het **abonnement**, de **resource** **groep**, het **resource type**en de **resource naam** van uw data warehouse in.
 
-Zijn de belangrijkste metrische gegevens voor het oplossen van de cache Gen2 **percentage treffers in de Cache** en **Cache gebruikt percentage**. Configureer de Azure grafiek met metrische gegevens om deze twee metrische gegevens weer te geven.
+De belangrijkste metrische gegevens voor het oplossen van problemen met de Gen2-cache zijn het **percentage cache treffers** en het **percentage cache gebruik**. Configureer de Azure metrische grafiek om deze twee metrische gegevens weer te geven.
 
-![Metrische cachegegevens](./media/sql-data-warehouse-cache-portal/cache_1.png)
+![Metrische cache gegevens](./media/sql-data-warehouse-cache-portal/cache_1.png)
 
 
-## <a name="cache-hit-and-used-percentage"></a>Cache treffers en percentage gebruikt
-De matrix die hieronder worden beschreven scenario's op basis van de waarden van de cache metrische gegevens:
+## <a name="cache-hit-and-used-percentage"></a>Aantal cache treffers en gebruikte percentages
+In de volgende matrix worden scenario's beschreven op basis van de waarden van de cache-metrische gegevens:
 
-|                                | **Percentage treffers in de hoge Cache** | **Percentage treffers in de Cache van de laag** |
+|                                | **Percentage treffers in hoge cache** | **Percentage treffers voor lage cache** |
 | :----------------------------: | :---------------------------: | :--------------------------: |
-| **Hoog percentage van de Cache die wordt gebruikt** |          Scenario 1           |          Scenario 2          |
-| **Percentage van de laag Cache die wordt gebruikt**  |          Scenario 3           |          Scenario 4          |
+| **Percentage gebruikt hoog cache geheugen** |          Scenario 1           |          Scenario 2          |
+| **Percentage beperkt cache gebruik**  |          Scenario 3           |          Scenario 4          |
 
-**Scenario 1:** U gebruik optimaal van uw cache. [Problemen oplossen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) andere gebieden die mogelijk uw query's vertragen.
+**Scenario 1:** U kunt uw cache optimaal gebruiken. [Los](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) andere gebieden op die uw query's mogelijk vertragen.
 
-**Scenario 2:** Uw huidige werkset van de gegevens niet passen in de cache die zorgt ervoor een klein aantal dat cachetreffers percentage vanwege fysieke leesbewerkingen. Houd rekening met omhoog schalen van het prestatieniveau en uw workload om in te vullen van de cache opnieuw.
+**Scenario 2:** De huidige werkset voor werk gegevens past niet in de cache, waardoor er een percentage van lage cache treffers wordt veroorzaakt door fysieke Lees bewerkingen. U kunt het prestatie niveau omhoog schalen en de werk belasting opnieuw uitvoeren om de cache te vullen.
 
-**Scenario 3:** Is het waarschijnlijk dat uw query traag wordt uitgevoerd vanwege redenen die niet gerelateerd aan de cache. [Problemen oplossen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) andere gebieden die mogelijk uw query's vertragen. U kunt ook overwegen [verkleint uw exemplaar](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) uw cache verkleinen om kosten te besparen. 
+**Scenario 3:** Waarschijnlijk wordt uw query traag als gevolg van redenen die niet aan de cache zijn gerelateerd. [Los](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) andere gebieden op die uw query's mogelijk vertragen. U kunt ook overwegen [uw exemplaar omlaag te schalen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) om uw cache grootte te beperken om kosten te besparen. 
 
-**Scenario 4:** Moest u een cold cache die mogelijk de reden waarom uw query traag is. Houd rekening met uw query opnieuw uitvoeren als uw gegevensset werken moet nu in in de cache. 
+**Scenario 4:** U had een koude cache. Dit kan de reden zijn waarom uw query traag is. Overweeg de query opnieuw uit te voeren, omdat uw werk gegevensset nu in de cache moet worden opgeslagen. 
 
-**Belangrijk: Als percentage treffers in de cache of als percentage van de cache die wordt gebruikt niet wordt bijgewerkt na het opnieuw uit te voeren in uw werkbelasting, kan al uw werkset zich in het geheugen. Houd er rekening mee alleen geclusterde columnstore tabellen in de cache zijn opgeslagen.**
+**Belang rijk: als het percentage voor de cache treffer of het cache gebruik niet wordt bijgewerkt na het opnieuw uitvoeren van de workload, kan de werkset al in het geheugen worden geplaatst. Opmerking alleen geclusterde column Store-tabellen worden in de cache opgeslagen.**
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over algemene query-prestaties afstemmen, [bewaak de queryuitvoering](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution).
+Zie de [uitvoering van query's bewaken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor#monitor-query-execution)voor meer informatie over het afstemmen van algemene query prestaties.
 
 
 <!--Image references-->

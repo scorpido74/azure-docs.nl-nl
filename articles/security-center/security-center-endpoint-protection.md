@@ -1,5 +1,5 @@
 ---
-title: Detectie van Endpoint Protection-oplossingen en status beoordeling in Azure Security Center | Microsoft Docs
+title: Aanbevelingen voor Endpoint Protection in azure Security Centers
 description: Hoe de Endpoint Protection-oplossingen worden gedetecteerd en in orde worden geïdentificeerd.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202252"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686412"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-evaluatie en aanbevelingen in Azure Security Center
 
@@ -29,29 +29,29 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](https://docs
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) wordt uitgevoerd **en het resultaat AMServiceEnabled is: Terecht**
+* Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren op de virtuele machine** wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) wordt uitgevoerd en het resultaat **AMServiceEnabled is: False**
 
 * Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) wordt uitgevoerd en een van de volgende situaties zich voordoet:
 
   * Een van de volgende eigenschappen is onwaar:
 
-     **AMServiceEnabled**
+    **AMServiceEnabled**
 
-     **AntispywareEnabled**
+    **AntispywareEnabled**
 
-     **RealTimeProtectionEnabled**
+    **RealTimeProtectionEnabled**
 
-     **BehaviorMonitorEnabled**
+    **BehaviorMonitorEnabled**
 
-     **IoavProtectionEnabled**
+    **IoavProtectionEnabled**
 
-     **OnAccessProtectionEnabled**
+    **OnAccessProtectionEnabled**
 
   * Als een of beide van de volgende eigenschappen 7 of meer zijn.
 
-     **AntispywareSignatureAge**
+    **AntispywareSignatureAge**
 
-     **AntivirusSignatureAge**
+    **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Micro soft System Center Endpoint Protection
 
@@ -61,23 +61,23 @@ Azure Security Center biedt status beoordelingen van [ondersteunde](https://docs
 
     * Ten minste één van de volgende eigenschappen is onwaar:
 
-       **AMServiceEnabled**
+            **AMServiceEnabled**
+
+            **AntispywareEnabled**
     
-       **AntispywareEnabled**
+            **RealTimeProtectionEnabled**
     
-       **RealTimeProtectionEnabled**
+            **BehaviorMonitorEnabled**
     
-       **BehaviorMonitorEnabled**
+            **IoavProtectionEnabled**
     
-       **IoavProtectionEnabled**
-    
-       **OnAccessProtectionEnabled**
+            **OnAccessProtectionEnabled**
           
     * Als een of beide van de volgende handtekening updates groter of gelijk zijn aan 7. 
 
-       **AntispywareSignatureAge**
+            **AntispywareSignatureAge**
     
-       **AntivirusSignatureAge**
+            **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 
@@ -92,27 +92,27 @@ Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren 
 
 * **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 of
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
 
-* Raadpleeg Symantec Version > = 12:  Register locatie: **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion "-waarde" PRODUCTVERSION "**
+* Raadpleeg Symantec Version > = 12: register locatie: **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion "-waarde" PRODUCTVERSION "**
 
-* Controleer de status van de realtime-beveiliging: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
+* Controleer de status van de realtime-beveiliging: **HKLM: \ Software\Wow6432Node\Symantec\Symantec endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
 
-* Status van handtekening update controleren: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 days**
+* Controleer de status van de handtekening update: **HKLM\Software\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 dagen**
 
-* Volledige scan status controleren: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 days**
+* Volledige scan status controleren: **HKLM: \ Software\Symantec\Symantec endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 dagen**
 
-* Pad naar handtekening versie nummer zoeken naar versie van hand tekening voor Symantec 12: **Register paden + "CurrentVersion\SharedDefs"-waarde "SRTSP"** 
+* Zoek handtekening versie nummer pad naar versie van de hand tekening voor Symantec 12: **register paden + "CurrentVersion\SharedDefs"-waarde "SRTSP"** 
 
-* Pad naar versie van de hand tekening voor Symantec 14: **Register paden + "CurrentVersion\SharedDefs\SDSDefs"-waarde "SRTSP"**
+* Pad naar versie van de hand tekening voor Symantec 14: **register paden + "CurrentVersion\SharedDefs\SDSDefs"-waarde "SRTSP"**
 
 Register paden:
 
@@ -125,7 +125,7 @@ Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren 
 
 * **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion** bestaat
 
-* **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
+* **HKLM: \ SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
 Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
 
@@ -133,9 +133,9 @@ Security Center raadt u **aan om problemen met de Endpoint Protection-status op 
 
 * Handtekening versie zoeken: **HKLM: \ Software\McAfee\AVSolution\DS\DS-waarde "dwContentMajorVersion"**
 
-* Handtekening datum zoeken: **HKLM: \ Software\McAfee\AVSolution\DS\DS-waarde "szContentCreationDate" > = 7 dagen**
+* Handtekening datum zoeken: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "szContentCreationDate" > = 7 dagen**
 
-* Zoek scan datum: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-waarde "LastFullScanOdsRunTime" > = 7 dagen**
+* Zoek scan datum: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-value "LastFullScanOdsRunTime" > = 7 dagen**
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>McAfee Endpoint Security voor Linux Threat Prevention 
 
@@ -143,7 +143,7 @@ Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren 
 
 - Bestands **/opt/ISEC/ens/threatprevention/bin/isecav** afsluiten 
 
-- de uitvoer van **/opt/ISEC/ens/threatprevention/bin/isecav--version** is: **McAfee name = McAfee Endpoint Security voor Linux Threat Prevention en McAfee-versie > = 10**
+- de uitvoer van de **/opt/ISEC/ens/threatprevention/bin/isecav-versie** is: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention en McAfee Version > = 10**
 
 Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
 
@@ -163,23 +163,22 @@ Security Center raadt u **aan om Endpoint Protection-oplossingen te installeren 
 
 Security Center raadt u **aan om problemen met de Endpoint Protection-status op uw computers op te lossen** wanneer niet aan een van de volgende controles wordt voldaan:
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep-i "geplande scan. "\* | staart 1" is voltooid**, retourneert een waarde   
+- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep-i "geplande scan.\* voltooid | ' staart 1 '** , retourneert een waarde
 
-- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep "scannen voltooid"** | ' staart 1 ', retourneert een waarde   
+- **"/opt/Sophos-AV/bin/savlog--maxAge = 7 | grep "scannen voltooid"** | ' staart 1 ', retourneert een waarde
 
 - **"/opt/Sophos-AV/bin/savdstatus--Last update"** retourneert Last update, die < = 7 dagen moet zijn 
 
 - **'/opt/Sophos-AV/bin/savdstatus-v '** is gelijk aan **' on-Access scanning ' wordt uitgevoerd '** 
 
-- **'/opt/Sophos-AV/bin/savconfig Get LiveProtection '** retourneert ingeschakeld  
+- **'/opt/Sophos-AV/bin/savconfig Get LiveProtection '** retourneert ingeschakeld
 
 ## <a name="troubleshoot-and-support"></a>Problemen oplossen en ondersteuning
 
 ### <a name="troubleshoot"></a>Problemen oplossen
 
-Micro soft antimalware-extensie logboeken zijn beschikbaar op:  
-**%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Or PaaSAntimalware)\1.5.5.x(version#)\CommandExecution.log**
+Micro soft antimalware extension-logboeken zijn beschikbaar op: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (of PaaSAntimalware) \1.5.5.x (versie nummer) \CommandExecution.log**
 
 ### <a name="support"></a>Ondersteuning
 
-Neem contact op met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/)voor meer informatie. Of het bestand een ondersteunings incident van Azure. Ga naar de [ondersteuning van Azure site](https://azure.microsoft.com/support/options/) en selecteer Get-ondersteuning. Voor meer informatie over het gebruik van ondersteuning voor Azure, de [Veelgestelde vragen over Microsoft Azure-ondersteuning](https://azure.microsoft.com/support/faq/).
+Neem contact op met de Azure-experts op [MSDN Azure en stack overflow forums](https://azure.microsoft.com/support/forums/)voor meer informatie. Of het bestand een ondersteunings incident van Azure. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer ondersteuning verkrijgen. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.

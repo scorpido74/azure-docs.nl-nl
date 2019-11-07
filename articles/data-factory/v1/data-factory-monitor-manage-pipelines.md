@@ -1,5 +1,5 @@
 ---
-title: Pijp lijnen bewaken en beheren met behulp van de Azure Portal en Power shell | Microsoft Docs
+title: Pijp lijnen bewaken en beheren met behulp van de Azure Portal en Power shell
 description: Meer informatie over het gebruik van de Azure Portal en Azure PowerShell voor het bewaken en beheren van de Azure-gegevens fabrieken en-pijp lijnen die u hebt gemaakt.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 8e8215d9737087cf1a5632dc8514c12988ff999f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139662"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666970"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de Azure Portal en Power shell
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Met behulp van de Azure Portal kunt u het volgende doen:
 In deze sectie wordt ook beschreven hoe een segment overgang van een status naar een andere status.   
 
 ### <a name="navigate-to-your-data-factory"></a>Ga naar uw data factory
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Klik op **gegevens fabrieken** in het menu aan de linkerkant. Als u dit niet ziet, klikt u op **meer services >** en klikt u vervolgens op **gegevens fabrieken** onder de categorie **Intelligence en analyse** .
 
    ![Door alle >-gegevens fabrieken bladeren](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -87,10 +87,10 @@ De segmenten van de gegevensset in de data factory kunnen een van de volgende st
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Substatus</th><th align="left">Description</th>
+    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Beschrijving</th>
 </tr>
 <tr>
-    <td rowspan="8">Wachten op</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het segment is niet beschikbaar.</td>
+    <td rowspan="8">Wachten</td><td>ScheduleTime</td><td>De tijd voor het uitvoeren van het segment is niet beschikbaar.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>De upstream-afhankelijkheden zijn niet gereed.</td>
@@ -115,13 +115,13 @@ De segmenten van de gegevensset in de data factory kunnen een van de volgende st
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het segment wordt verwerkt.</td>
 </tr>
 <tr>
-<td rowspan="4">Mislukt</td><td>TimedOut</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
+<td rowspan="4">Mislukt</td><td>Out</td><td>De uitvoering van de activiteit duurde langer dan is toegestaan door de activiteit.</td>
 </tr>
 <tr>
 <td>Geannuleerd</td><td>Het segment is geannuleerd door de gebruiker.</td>
@@ -135,7 +135,7 @@ De segmenten van de gegevensset in de data factory kunnen een van de volgende st
 <td>Gereed</td><td>-</td><td>Het segment is gereed voor gebruik.</td>
 </tr>
 <tr>
-<td>Overgeslagen</td><td>Geen</td><td>Het segment wordt niet verwerkt.</td>
+<td>Genegeerd</td><td>Geen</td><td>Het segment wordt niet verwerkt.</td>
 </tr>
 <tr>
 <td>Geen</td><td>-</td><td>Er wordt een segment gebruikt dat bestaat uit een andere status, maar dit is opnieuw ingesteld.</td>
@@ -152,7 +152,7 @@ Als het segment meerdere keren is uitgevoerd, ziet u meerdere rijen in de lijst 
 
 ![Details uitvoering van activiteit](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-Als het segment niet de status **gereed** heeft, kunt u de upstream-segmenten zien die niet gereed zijn en het huidige segment blok keren voor uitvoering in de lijst upstream- **segmenten die niet gereed zijn** . Deze functie is handig als uw segment zich in de **wacht** stand bevindt en u inzicht wilt krijgen in de upstream-afhankelijkheden waar het segment op wacht.
+Als het segment niet de status **gereed** heeft, kunt u de upstream-segmenten zien die niet gereed zijn en het huidige segment blok keren voor uitvoering in de lijst **upstream-segmenten die niet gereed zijn** . Deze functie is handig als uw segment zich in de **wacht** stand bevindt en u inzicht wilt krijgen in de upstream-afhankelijkheden waar het segment op wacht.
 
 ![Constream-segmenten die niet gereed zijn](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -161,7 +161,7 @@ Nadat u een data factory hebt geïmplementeerd en de pijp lijnen een geldige act
 
 ![Status diagram](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-De status overgangs stroom van de gegevensset in data factory is als volgt: Wachtende > in uitvoering/in uitvoering (valideren)-> Ready/failed.
+De status overgangs stroom van de gegevensset in data factory is het volgende: wachtende > in uitvoering/in uitvoering (valideren)-> Ready/failed.
 
 Het segment begint met een **wacht** status. er wordt gewacht tot aan de voor waarden wordt voldaan voordat deze wordt uitgevoerd. Vervolgens wordt de activiteit uitgevoerd en wordt het segment de status **in uitvoering** heeft. De uitvoering van de activiteit kan slagen of mislukken. Het segment is gemarkeerd als **gereed** of **mislukt**, op basis van het resultaat van de uitvoering.
 
@@ -278,12 +278,12 @@ Als de uitvoering van de activiteit in een pijp lijn mislukt, heeft de gegevenss
 > [!IMPORTANT]
 > Het is eenvoudiger om fouten op te lossen en mislukte segmenten opnieuw uit te voeren met behulp van de bewaking & management-app. Zie [Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer](data-factory-monitor-manage-app.md)voor meer informatie over het gebruik van de toepassing. 
 
-### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+### <a name="use-the-azure-portal"></a>De Azure-portal gebruiken
 Na het oplossen van fouten in een pijp lijn, kunt u storingen opnieuw uitvoeren door te navigeren naar het fout segment en te klikken op de knop **uitvoeren** op de opdracht balk.
 
 ![Een mislukt segment opnieuw uitvoeren](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
-Als de validatie van het segment is mislukt vanwege een beleids fout (bijvoorbeeld als er gegevens niet beschikbaar zijn), kunt u de fout oplossen en opnieuw valideren door te klikken op de knop validate op de opdracht balk.
+Als de validatie van het segment is mislukt vanwege een beleids fout (bijvoorbeeld als er gegevens niet beschikbaar zijn), kunt u de fout oplossen en opnieuw valideren door te klikken op de knop **Validate** op de opdracht balk.
 
 ![Fouten corrigeren en valideren](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 

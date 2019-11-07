@@ -1,5 +1,5 @@
 ---
-title: Waarden ophalen voor app-verificatie-Azure SQL Database | Microsoft Docs
+title: Waarden ophalen voor app-verificatie-Azure SQL Database
 description: Een service-principal maken voor toegang tot SQL Database vanuit code.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: d7c8c6788a8699c5b57c39731c148454ad8dcfcf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a8f5263e2f79f130814aa520712f679430440fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569317"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691010"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>De vereiste waarden ophalen voor het verifiëren van een toepassing voor toegang tot SQL Database vanuit code
 

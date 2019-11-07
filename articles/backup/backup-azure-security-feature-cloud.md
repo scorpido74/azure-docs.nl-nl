@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129341"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622008"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
@@ -70,25 +70,48 @@ In dit stroom diagram worden de verschillende stappen en statussen van een back-
 
 Zie het gedeelte Veelgestelde [vragen](backup-azure-security-feature-cloud.md#frequently-asked-questions) hieronder voor meer informatie.
 
+## <a name="disabling-soft-delete"></a>Tijdelijke verwijdering uitschakelen
+
+Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen. Als de functie voor het voorlopig verwijderen van de beveiliging is uitgeschakeld, worden de back-upgegevens niet per ongeluk of kwaad aardig verwijderd beschermd. Zonder de functie voor voorlopig verwijderen worden alle verwijderde beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Omdat back-upgegevens in de status ' voorlopig verwijderen ' geen kosten in rekening worden gebracht aan de klant, wordt het uitschakelen van deze functie niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van de gegevens (zoals in een test omgeving), niet kunnen worden gewacht.
+
+### <a name="prerequisites-for-disabling-soft-delete"></a>Vereisten voor het uitschakelen van de functie voor voorlopig verwijderen
+
+- Het in-of uitschakelen van voorlopig verwijderen voor kluizen (zonder beveiligde items) kan alleen worden uitgevoerd door de Azure Portal. Dit is van toepassing op:
+  - Nieuw gemaakte kluizen die geen beveiligde items bevatten
+  - Bestaande kluizen waarvan de beveiligde items zijn verwijderd en verlopen (na de vaste Bewaar periode van 14 dagen)
+- Als de functie voor voorlopig verwijderen is uitgeschakeld voor de kluis, kunt u deze opnieuw inschakelen, maar u kunt deze keuze niet terugdraaien en weer uitschakelen als de kluis beveiligde items bevat.
+- U kunt geen tijdelijke verwijdering uitschakelen voor kluizen die beveiligde items of items bevatten met de status zacht verwijderd. Als u dit wilt doen, voert u de volgende stappen uit:
+  - Stop de beveiliging van verwijderde gegevens voor alle beveiligde items.
+  - Wacht tot de 14 dagen na het bewaren van de veiligheid verloopt.
+  - Tijdelijke verwijdering uitschakelen.
+
+Als u zacht verwijderen wilt uitschakelen, controleert u of aan de vereisten wordt voldaan en volgt u deze stappen:
+
+1. Ga in het Azure Portal naar uw kluis en ga naar **instellingen** -> **Eigenschappen**.
+2. Selecteer in het deel venster Eigenschappen de optie **beveiligings instellingen** -> **Update**.
+3. Selecteer in het deel venster beveiligings instellingen onder voorlopig verwijderen de optie **uitschakelen**.
+
+![Tijdelijke verwijdering uitschakelen](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
 ## <a name="other-security-features"></a>Andere beveiligings functies
 
-### <a name="storage-side-encryption"></a>Versleuteling van opslag aan de serverzijde
+### <a name="storage-side-encryption"></a>Versleuteling van opslag side
 
 Azure Storage worden uw gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Gegevens in Azure Storage worden transparant versleuteld en ontsleuteld met 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Azure Storage versleuteling lijkt op BitLocker-versleuteling in Windows. Azure Backup versleutelt gegevens automatisch voordat ze worden opgeslagen. Azure Storage worden gegevens ontsleuteld voordat ze worden opgehaald.  
 
 Binnen Azure worden gegevens in transit tussen Azure Storage en de kluis beveiligd door HTTPS. Deze gegevens blijven op het Azure-backbone-netwerk.
 
-Zie [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/en-in/azure/storage/common/storage-service-encryption)voor meer informatie.
+Zie [Azure Storage versleuteling voor Data-at-rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)voor meer informatie.
 
 ### <a name="vm-encryption"></a>VM-versleuteling
 
-U kunt met behulp van de Azure Backup-Service back-ups maken van virtuele Windows-of Linux Azure-machines (Vm's) met versleutelde schijven. Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)voor instructies.
+U kunt met behulp van de Azure Backup-Service back-ups maken van virtuele Windows-of Linux Azure-machines (Vm's) met versleutelde schijven. Zie [back-up en herstel van versleutelde virtuele machines met Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)voor instructies.
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Beveiliging van Azure Backup herstel punten
 
 Opslag accounts die worden gebruikt door Recovery Services-kluizen, zijn geïsoleerd en kunnen niet worden geopend door gebruikers voor schadelijke doel einden. De toegang is alleen toegestaan via Azure Backup beheer bewerkingen, zoals herstellen. Deze beheer bewerkingen worden beheerd via op rollen gebaseerde Access Control (RBAC).
 
-Zie voor meer informatie Access Control op [basis van rollen gebruiken om Azure backup herstel punten te beheren](https://docs.microsoft.com/en-us/azure/backup/backup-rbac-rs-vault).
+Zie voor meer informatie Access Control op [basis van rollen gebruiken om Azure backup herstel punten te beheren](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -101,23 +124,23 @@ Nee, het is standaard gebouwd en ingeschakeld voor alle Recovery Services-kluize
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Kan ik het aantal dagen configureren dat mijn gegevens behouden blijven in de modus voor zacht verwijderen nadat de bewerking is voltooid?
 
 Nee, het is vast tot 14 dagen na het verwijderen van de bewerking.
- 
+
 #### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Moet ik de kosten voor deze extra retentie van 14 dagen betalen?
 
 Nee, deze extra Bewaar periode van 14 dagen is gratis als onderdeel van de functie voor zacht verwijderen.
- 
+
 #### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Kan ik een herstel bewerking uitvoeren wanneer mijn gegevens de status zacht verwijderen hebben?
 
 Nee, u moet de tijdelijke verwijderde resource verwijderen om te herstellen. Met de bewerking voor het ongedaan maken van de verwijdering wordt de resource weer **gestopt met de status beveiliging stoppen met gegevens behouden** , waarin u naar een wille keurig moment kunt herstellen. De garbage collector blijft onderbroken in deze status.
- 
+
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Volgen mijn moment opnamen dezelfde levens cyclus als mijn herstel punten in de kluis?
 
 Ja.
- 
+
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Hoe kan ik de geplande back-ups opnieuw activeren voor een tijdelijke verwijderde resource?
 
 Als u de verwijdering opheffen, gevolgd door de bewerking hervatten wordt de resource opnieuw beveiligd. Met de bewerking hervatten wordt een back-upbeleid gekoppeld om de geplande back-ups te activeren met de geselecteerde Bewaar periode. Daarnaast wordt de garbage collector uitgevoerd zodra de bewerking hervatten is voltooid. Als u een herstel bewerking wilt uitvoeren vanaf een herstel punt dat voorbij de verloop datum ligt, wordt u geadviseerd om het te doen voordat u de hervatting hervat.
- 
+
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kan ik mijn kluis verwijderen als er sprake is van tijdelijke verwijderde items in de kluis?
 
 Recovery Services kluis kan niet worden verwijderd als er back-upitems in de kluis worden verwijderd. De voorlopig verwijderde items worden permanent verwijderd na 14 dagen na de Verwijder bewerking. U kunt de kluis pas verwijderen nadat alle tijdelijke verwijderde items zijn opgeschoond.  
@@ -136,4 +159,4 @@ Nee. Momenteel wordt een tijdelijke verwijdering alleen ondersteund voor virtuel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [beveiligings controles voor Azure backup](backup-security-controls.md).
+- Meer informatie over [beveiligings controles voor Azure backup](backup-security-controls.md).

@@ -518,6 +518,8 @@
           href: data-movement-security-considerations.md
         - name: Referenties opslaan in Azure Key Vault
           href: store-credentials-in-key-vault.md
+        - name: Azure Key Vault-geheimen gebruiken in pijplijnactiviteiten
+          href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: Referenties voor de zelf-hostende integratie-runtime versleutelen
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Beheerde identiteit voor Data Factory

@@ -1,5 +1,5 @@
 ---
-title: Gegevens verplaatsen van de Amazon Simple Storage-service met behulp van Data Factory | Microsoft Docs
+title: Gegevens verplaatsen van de Amazon Simple Storage-service met behulp van Data Factory
 description: Meer informatie over het verplaatsen van gegevens uit de Amazon Simple Storage-service (S3) met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec44ae7956669ee4e16d2c6ca00794c566272037
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 970e8d2b960c3a4be1c5208d7fa3a21bc05d9e9a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892014"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683205"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Gegevens verplaatsen van de Amazon Simple Storage-service met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1:](data-factory-amazon-simple-storage-service-connector.md)
+> * [Versie 1](data-factory-amazon-simple-storage-service-connector.md)
 > * [Versie 2 (huidige versie)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
@@ -33,17 +33,17 @@ In dit artikel wordt uitgelegd hoe u de Kopieer activiteit in Azure Data Factory
 U kunt gegevens van Amazon S3 kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](data-factory-data-movement-activities.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als sinks op basis van de Kopieer activiteit. Data Factory biedt momenteel alleen ondersteuning voor het verplaatsen van gegevens van Amazon S3 naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar Amazon S3.
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
-Als u wilt kopiëren van gegevens vanaf Amazon S3, zorg ervoor dat u de volgende machtigingen zijn verleend:
+Als u gegevens wilt kopiëren uit Amazon S3, moet u ervoor zorgen dat u de volgende machtigingen hebt gekregen:
 
-* `s3:GetObject`en `s3:GetObjectVersion` voor de bewerkingen van het Amazon S3-object.
-* `s3:ListBucket`voor Amazon S3-Bucket bewerkingen. Als u de wizard kopiëren Data Factory gebruikt, `s3:ListAllMyBuckets` is ook vereist.
+* `s3:GetObject` en `s3:GetObjectVersion` voor Amazon S3-object bewerkingen.
+* `s3:ListBucket` voor Amazon S3-Bucket bewerkingen. Als u de wizard voor het kopiëren van Data Factory gebruikt, is `s3:ListAllMyBuckets` ook vereist.
 
-Zie voor meer informatie over de volledige lijst met machtigingen voor Amazon S3 [machtigingen op te geven in een beleid](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Zie [machtigingen opgeven in een beleid](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)voor meer informatie over de volledige lijst met Amazon S3-machtigingen.
 
 ## <a name="getting-started"></a>Aan de slag
 U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een Amazon S3-bron met behulp van verschillende hulpprogram ma's of Api's.
 
-De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie voor een snelle Walkthrough: Een pijp lijn maken met behulp](data-factory-copy-data-wizard-tutorial.md)van de wizard kopiëren.
+De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md)voor een snelle walkthrough.
 
 U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie de [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.
 
@@ -53,23 +53,23 @@ Ongeacht of u hulpprogram ma's of Api's gebruikt, voert u de volgende stappen ui
 2. Gegevens **sets** maken om invoer-en uitvoer gegevens voor de Kopieer bewerking weer te geven.
 3. Maak een **pijp lijn** met een Kopieer activiteit die een gegevensset als invoer en een gegevensset als uitvoer gebruikt.
 
-Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's of Api's gebruikt (met uitzonde ring van .NET API), definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie het [JSON-voor beeld voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een Amazon S3-gegevens archief: Gegevens kopiëren van het gedeelte Amazon S3 naar](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) Azure Blob van dit artikel.
+Wanneer u de wizard gebruikt, worden automatisch JSON-definities voor deze Data Factory entiteiten (gekoppelde services, gegevens sets en de pijp lijn) gemaakt. Wanneer u hulpprogram ma's of Api's gebruikt (met uitzonde ring van .NET API), definieert u deze Data Factory entiteiten met behulp van de JSON-indeling. Zie voor een voor beeld met JSON-definities voor Data Factory entiteiten die worden gebruikt voor het kopiëren van gegevens uit een Amazon S3-gegevens archief het gedeelte [JSON-voor beeld: gegevens kopiëren van Amazon S3 naar Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) in dit artikel.
 
 > [!NOTE]
 > Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md)voor meer informatie over ondersteunde bestands-en compressie-indelingen voor een Kopieer activiteit.
 
 De volgende secties bevatten informatie over de JSON-eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor Amazon S3.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 Een gekoppelde service koppelt een gegevens archief aan een data factory. U maakt een gekoppelde service van het type **awsaccesskey worden** om uw Amazon S3-gegevens archief te koppelen aan uw Data Factory. De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor de gekoppelde service van Amazon S3 (Awsaccesskey worden).
 
-| Eigenschap | Description | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| accessKeyID |ID van de geheime toegangssleutel. |string |Ja |
-| secretAccessKey |De geheime toegangssleutel zelf. |Versleutelde geheime teken reeks |Ja |
+| accessKeyID |ID van de geheime toegangs sleutel. |tekenreeks |Ja |
+| secretAccessKey |De geheime toegangs sleutel zelf. |Versleutelde geheime teken reeks |Ja |
 
 >[!NOTE]
->Toegangssleutels voor het kopiëren van gegevens vanaf Amazon S3 IAM-account voor deze connector vereist. [Tijdelijke beveiligingsreferentie](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) wordt niet ondersteund.
+>Deze connector vereist toegangs sleutels voor IAM-account om gegevens te kopiëren van Amazon S3. [Tijdelijke beveiligings referenties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) worden niet ondersteund.
 >
 
 Hier volgt een voorbeeld:
@@ -92,14 +92,14 @@ Als u een gegevensset wilt opgeven om invoer gegevens in Azure Blob-opslag weer 
 
 Secties zoals structuur, Beschik baarheid en beleid zijn vergelijkbaar voor alle typen gegevens sets (zoals SQL database, Azure Blob en Azure Table). De sectie **typeProperties** verschilt voor elk type gegevensset en bevat informatie over de locatie van de gegevens in het gegevens archief. De sectie **typeProperties** voor een gegevensset van het type **AmazonS3** (die de Amazon S3-gegevensset bevat) heeft de volgende eigenschappen:
 
-| Eigenschap | Description | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| bucketName |De naam van de S3-bucket. |String |Ja |
-| key |De object sleutel S3. |String |Nee |
-| prefix |Voorvoegsel voor de sleutel S3-object. Objecten waarvan sleutels met dit voorvoegsel beginnen worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |String |Nee |
-| version |De versie van de S3-object, als S3 versiebeheer is ingeschakeld. |String |Nee |
-| format | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie de [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling ](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u bestanden wilt kopiëren als-zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. | |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. De ondersteunde typen zijn: **Gzip**,Deflate, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **Optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. | |Nee |
+| Bucket |De naam van de S3-Bucket. |Tekenreeks |Ja |
+| sleutel |De object sleutel S3. |Tekenreeks |Nee |
+| beleids |Voor voegsel voor de object sleutel S3. Objecten waarvan de sleutels beginnen met dit voor voegsel worden geselecteerd. Is alleen van toepassing als de sleutel leeg is. |Tekenreeks |Nee |
+| versie |De versie van het S3-object, als S3-versie beheer is ingeschakeld. |Tekenreeks |Nee |
+| Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie de secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) voor meer informatie. <br><br> Als u bestanden wilt kopiëren als-zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. | |Nee |
+| compressie | Geef het type en compressie niveau voor de gegevens op. De ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. De ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. | |Nee |
 
 
 > [!NOTE]
@@ -173,11 +173,11 @@ U kunt hetzelfde doen voor de eigenschap **prefix** van een Amazon S3-gegevensse
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 Zie [pijp lijnen maken](data-factory-create-pipelines.md)voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels zijn beschikbaar voor alle typen activiteiten. De eigenschappen die beschikbaar zijn in de **typeProperties** -sectie van de activiteit, verschillen per type activiteit. Voor de Kopieer activiteit kunnen eigenschappen variëren, afhankelijk van de typen bronnen en Sinks. Wanneer een bron in de Kopieer activiteit van het type **FileSystemSource** (inclusief Amazon S3) is, is de volgende eigenschap beschikbaar in de sectie **typeProperties** :
 
-| Eigenschap | Description | Toegestane waarden | Vereist |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
-| recursive |Hiermee geeft u op of S3-objecten in de directory recursief moeten worden weer geven. |waar/onwaar |Nee |
+| recursieve |Hiermee geeft u op of S3-objecten in de directory recursief moeten worden weer geven. |waar/onwaar |Nee |
 
-## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-voor beeld: Gegevens kopiëren van Amazon S3 naar Azure Blob-opslag
+## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-voor beeld: gegevens kopiëren van Amazon S3 naar Azure Blob-opslag
 In dit voor beeld ziet u hoe u gegevens van Amazon S3 kopieert naar een Azure Blob-opslag. Gegevens kunnen echter rechtstreeks naar [een van de sinks worden gekopieerd die worden ondersteund](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieer activiteit in Data Factory.
 
 Het voor beeld bevat JSON-definities voor de volgende Data Factory entiteiten. U kunt deze definities gebruiken om een pijp lijn te maken voor het kopiëren van gegevens van Amazon S3 naar Blob Storage, met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Power shell](data-factory-copy-activity-tutorial-using-powershell.md).   

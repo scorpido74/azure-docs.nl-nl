@@ -1,22 +1,22 @@
 ---
 title: Ontwikkel platform instellen
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: In deze Quick Start leert u hoe u de Speech SDK kunt installeren voor de combi natie van uw voorkeurs platform en programmeer taal.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 3c6a89f107052641aeef313541237f7562e30a3e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c1d8a9b6dd7bf7ccf29997f26a1c8cafb01a536e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504205"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682057"
 ---
 # <a name="quickstart-setup-development-environment"></a>Snelstartgids: ontwikkel omgeving instellen.
 
@@ -59,4 +59,3 @@ ms.locfileid: "73504205"
 ::: zone pivot="programming-language-python"
 [!INCLUDE [python](../includes/quickstarts/platform/python.md)]
 ::: zone-end
-

@@ -1,6 +1,6 @@
 ---
-title: Gegevens verplaatsen van de SFTP-server met behulp van Azure Data Factory | Microsoft Docs
-description: Meer informatie over het verplaatsen van gegevens van een on-premises of een SFTP-server van cloud met Azure Data Factory.
+title: Gegevens verplaatsen van de SFTP-server met behulp van Azure Data Factory
+description: Meer informatie over het verplaatsen van gegevens van een on-premises of een Cloud-SFTP-server met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d35c4f410c29bba7848dde53d206cdd2ccd980ca
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 1a75b3af46d79cc7a028fa5d36ef1653b1619e8d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836155"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682346"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Gegevens verplaatsen van een SFTP-server met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory-service die u gebruikt:"]
-> * [Versie 1:](data-factory-sftp-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
+> * [Versie 1](data-factory-sftp-connector.md)
 > * [Versie 2 (huidige versie)](../connector-sftp.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [SFTPconnector in V2](../connector-sftp.md).
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [SFTPconnector in v2](../connector-sftp.md).
 
-In dit artikel bevat een overzicht over het gebruik van de Kopieeractiviteit in Azure Data Factory om gegevens te verplaatsen van een on-premises/cloudtoepassing SFTP-server naar een ondersteunde sink-gegevensarchief. In dit artikel is gebaseerd op de [activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) artikel met daarin een algemeen overzicht van de verplaatsing van gegevens met de kopieeractiviteit en de lijst met gegevensarchieven die worden ondersteund als bronnen/Put.
+In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens van een on-premises/Cloud SFTP-server te verplaatsen naar een ondersteunde Sink-gegevens opslag. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens verplaatsing](data-factory-data-movement-activities.md) , dat algemene informatie bevat over het verplaatsen van gegevens met de Kopieer activiteit en de lijst met gegevens archieven die worden ondersteund als bronnen/Sinks.
 
-Data factory ondersteunt momenteel alleen gegevens te verplaatsen van een SFTP-server naar andere gegevensarchieven, maar niet voor het verplaatsen van gegevens uit andere gegevensarchieven naar een SFTP-server. Deze biedt ondersteuning voor zowel on-premises servers en cloudservers SFTP.
+Data Factory ondersteunt momenteel alleen het verplaatsen van gegevens van een SFTP-server naar andere gegevens archieven, maar niet voor het verplaatsen van gegevens van andere gegevens archieven naar een SFTP-server. Het ondersteunt on-premises en Cloud-SFTP-servers.
 
 > [!NOTE]
-> Kopieeractiviteit worden het bronbestand niet worden verwijderd nadat deze is gekopieerd naar de bestemming. Als u verwijderen van het bronbestand na een geslaagde kopieerbewerking wilt, maakt u een aangepaste activiteit wilt verwijderen van het bestand en het gebruik van de activiteit in de pijplijn.
+> Met de Kopieer activiteit wordt het bron bestand niet verwijderd nadat het is gekopieerd naar de bestemming. Als u het bron bestand na een geslaagde kopie moet verwijderen, maakt u een aangepaste activiteit om het bestand te verwijderen en de activiteit in de pijp lijn te gebruiken.
 
-## <a name="supported-scenarios-and-authentication-types"></a>Ondersteunde scenario's en verificatietypen
-U kunt deze SFTP-connector gebruiken om te kopiëren van gegevens uit **zowel cloud SFTP en on-premises SFTP servers**. **Basic** en **SshPublicKey** verificatietypen worden ondersteund bij het verbinden met de SFTP-server.
+## <a name="supported-scenarios-and-authentication-types"></a>Ondersteunde scenario's en verificatie typen
+U kunt deze SFTP-connector gebruiken om gegevens te kopiëren van **zowel Cloud-SFTP-servers en on-premises SFTP-servers**. De verificatie typen **Basic** en **SshPublicKey** worden ondersteund bij het maken van verbinding met de sftp-server.
 
-Het kopiëren van gegevens uit een on-premises SFTP-server, moet u een Data Management Gateway installeren in de on-premises omgeving/Azure-VM. Zie [Data Management Gateway](data-factory-data-management-gateway.md) voor meer informatie over de gateway. Zie [om gegevens te verplaatsen tussen on-premises locaties en cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor stapsgewijze instructies voor het instellen van de gateway en het gebruik van deze.
+Bij het kopiëren van gegevens van een on-premises SFTP-server moet u een Data Management Gateway installeren in de on-premises omgeving/Azure VM. Zie [Data Management Gateway](data-factory-data-management-gateway.md) voor meer informatie over de gateway. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor stapsgewijze instructies voor het instellen van de gateway en het gebruik ervan.
 
 ## <a name="getting-started"></a>Aan de slag
-U kunt een pijplijn maken met een kopieeractiviteit die gegevens van een SFTP-bron verplaatst met behulp van verschillende hulpprogramma's / API's.
+U kunt een pijp lijn maken met een Kopieer activiteit die gegevens verplaatst van een SFTP-bron met behulp van verschillende hulpprogram ma's/Api's.
 
-- De eenvoudigste manier om een pijplijn te maken is met de **Kopieerwizard**. Zie [zelfstudie: Een pijplijn maken met de Wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snel overzicht van het maken van een pijplijn met behulp van de wizard kopiëren.
+- De eenvoudigste manier om een pijp lijn te maken, is met behulp van de **wizard kopiëren**. Zie [zelf studie: een pijp lijn maken met behulp van de wizard kopiëren](data-factory-copy-data-wizard-tutorial.md) voor een snelle walkthrough over het maken van een pijp lijn met behulp van de wizard gegevens kopiëren.
 
-- U kunt ook de volgende hulpprogramma's gebruiken om een pijplijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sjabloon**, **.NET API**, en **REST-API**. Zie [zelfstudie Kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een kopieeractiviteit. Zie voor JSON-voorbeelden om gegevens te kopiëren van de SFTP-server naar Azure Blob Storage, [JSON-voorbeeld: Gegevens kopiëren van de SFTP-server naar Azure blob](#json-example-copy-data-from-sftp-server-to-azure-blob) sectie van dit artikel.
+- U kunt ook de volgende hulpprogram ma's gebruiken om een pijp lijn te maken: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager sjabloon**, **.net API**en **rest API**. Zie [zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit. Zie [JSON-voor beeld: gegevens kopiëren van SFTP-server naar Azure Blob](#json-example-copy-data-from-sftp-server-to-azure-blob) in dit artikel voor json-voor beelden voor het kopiëren van gegevens van SFTP-server naar Azure Blob Storage.
 
-## <a name="linked-service-properties"></a>Eigenschappen van de gekoppelde service
-De volgende tabel bevat een beschrijving op voor JSON-elementen die specifiek zijn voor de FTP-gekoppelde service.
+## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+De volgende tabel bevat een beschrijving van de JSON-elementen die specifiek zijn voor de gekoppelde FTP-service.
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | type | De eigenschap type moet worden ingesteld op `Sftp`. |Ja |
-| host | Naam of IP-adres van de SFTP-server. |Ja |
-| port |De poort waarop de SFTP-server luistert. De standaardwaarde is: 21 |Nee |
-| authenticationType |Geef het verificatietype. Toegestane waarden: **Basic**, **SshPublicKey**. <br><br> Raadpleeg [met basisverificatie](#using-basic-authentication) en [met behulp van SSH openbare sleutelverificatie](#using-ssh-public-key-authentication) respectievelijk de secties over meer eigenschappen en voorbeelden voor JSON. |Ja |
-| skipHostKeyValidation | Geef op of moet worden overgeslagen sleutelvalidatie voor de host. | Nee. De standaardwaarde: false |
-| hostKeyFingerprint | Geef de vingerafdruk van de hostsleutel. | Ja als de `skipHostKeyValidation` is ingesteld op false.  |
-| gatewayName |De naam van de Data Management Gateway verbinding maken met een on-premises SFTP-server. | Ja als het kopiëren van gegevens uit een on-premises SFTP-server. |
-| encryptedCredential | Versleutelde referenties voor toegang tot de SFTP-server. Automatisch gegenereerde wanneer u basisverificatie (gebruikersnaam en wachtwoord) of SshPublicKey verificatie (gebruikersnaam + pad naar de persoonlijke sleutel of inhoud) in de wizard kopiëren of de ClickOnce-pop-dialoogvenster opgeeft. | Nee. Gelden alleen wanneer het kopiëren van gegevens uit een on-premises SFTP-server. |
+| hostsite | Naam of IP-adres van de SFTP-server. |Ja |
+| poort |Poort waarop de SFTP-server luistert. De standaard waarde is: 21 |Nee |
+| authenticationType |Geef het verificatie type op. Toegestane waarden: **Basic**, **SshPublicKey**. <br><br> Raadpleeg de sectie [basis verificatie](#using-basic-authentication) en [verificatie van open bare SSH-sleutel](#using-ssh-public-key-authentication) voor meer informatie over de eigenschappen en JSON-voor beelden. |Ja |
+| skipHostKeyValidation | Geef op of de validatie van de host-sleutel moet worden overgeslagen. | Nee. De standaard waarde: False |
+| hostKeyFingerprint | Geef de vinger afdruk van de host-sleutel op. | Ja als de `skipHostKeyValidation` is ingesteld op ONWAAR.  |
+| gatewayName |De naam van de Data Management Gateway om verbinding te maken met een on-premises SFTP-server. | Ja bij het kopiëren van gegevens van een on-premises SFTP-server. |
+| encryptedCredential | Versleutelde referentie voor toegang tot de SFTP-server. Automatisch gegenereerd wanneer u basis verificatie (gebruikers naam en wacht woord) of SshPublicKey-verificatie (gebruikers naam + persoonlijke sleutel of inhoud) in de wizard kopiëren of het pop-updialoogvenster van de ClickOnce opgeeft. | Nee. Alleen Toep assen bij het kopiëren van gegevens van een on-premises SFTP-server. |
 
-### <a name="using-basic-authentication"></a>Met behulp van basisverificatie
+### <a name="using-basic-authentication"></a>Basis verificatie gebruiken
 
-Als u wilt gebruikmaken van basisverificatie instellen `authenticationType` als `Basic`, en geeft u de volgende eigenschappen naast de algemene die zijn geïntroduceerd in de laatste sectie van de SFTP-connector:
+Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `Basic` en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die zijn geïntroduceerd in de laatste sectie:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| username | De gebruiker die toegang tot de SFTP-server heeft. |Ja |
-| password | Wachtwoord voor de gebruiker (gebruikersnaam). | Ja |
+| gebruikersnaam | Gebruiker die toegang heeft tot de SFTP-server. |Ja |
+| wachtwoord | Wacht woord voor de gebruiker (gebruikers naam). | Ja |
 
-#### <a name="example-basic-authentication"></a>Voorbeeld: Basisverificatie
+#### <a name="example-basic-authentication"></a>Voor beeld: basis verificatie
 ```json
 {
     "name": "SftpLinkedService",
@@ -89,7 +89,7 @@ Als u wilt gebruikmaken van basisverificatie instellen `authenticationType` als 
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>Voorbeeld: Basisverificatie wordt gebruikt met de versleutelde referentie
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>Voor beeld: basis verificatie met versleutelde referentie
 
 ```JSON
 {
@@ -110,21 +110,21 @@ Als u wilt gebruikmaken van basisverificatie instellen `authenticationType` als 
 }
 ```
 
-### <a name="using-ssh-public-key-authentication"></a>Met behulp van SSH-verificatie voor openbare sleutel
+### <a name="using-ssh-public-key-authentication"></a>Verificatie met open bare SSH-sleutel gebruiken
 
-Voor het gebruik van SSH-verificatie voor openbare sleutel instellen `authenticationType` als `SshPublicKey`, en geeft u de volgende eigenschappen naast de algemene die zijn geïntroduceerd in de laatste sectie van de SFTP-connector:
+Als u verificatie via een open bare SSH-sleutel wilt gebruiken, stelt u `authenticationType` in als `SshPublicKey`en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die zijn geïntroduceerd in de laatste sectie:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| username |Gebruikers die toegang tot de SFTP-server heeft |Ja |
-| privateKeyPath | Geef het absolute pad naar het persoonlijke sleutelbestand dat de gateway toegankelijk. | Opgeven of de `privateKeyPath` of `privateKeyContent`. <br><br> Gelden alleen wanneer het kopiëren van gegevens uit een on-premises SFTP-server. |
-| privateKeyContent | Een geserialiseerde tekenreeks van de inhoud van de persoonlijke sleutel. De Wizard kopiëren kunt lezen van het bestand met persoonlijke sleutel en de persoonlijke sleutel inhoud automatisch uit te pakken. Als u van andere hulpprogramma/SDK gebruikmaakt, in plaats daarvan de eigenschap privateKeyPath gebruiken. | Opgeven of de `privateKeyPath` of `privateKeyContent`. |
-| passPhrase | Geef de pass-woordgroep en wachtwoord in voor het ontsleutelen van de persoonlijke sleutel als bestand met de sleutel is beveiligd met een wachtwoordzin. | Ja als het bestand met persoonlijke sleutel wordt beveiligd door een wachtwoordzin. |
+| gebruikersnaam |Gebruiker die toegang heeft tot de SFTP-server |Ja |
+| privateKeyPath | Geef een absoluut pad naar het bestand met de persoonlijke sleutel op waartoe de gateway toegang kan hebben. | Geef het `privateKeyPath` of `privateKeyContent` op. <br><br> Alleen Toep assen bij het kopiëren van gegevens van een on-premises SFTP-server. |
+| privateKeyContent | Een geserialiseerde teken reeks met de inhoud van de persoonlijke sleutel. De wizard kopiëren kan het persoonlijke sleutel bestand lezen en de inhoud van de persoonlijke sleutel automatisch extra heren. Als u een andere tool/SDK gebruikt, gebruikt u in plaats daarvan de eigenschap privateKeyPath. | Geef het `privateKeyPath` of `privateKeyContent` op. |
+| passPhrase | Geef de wachtwoordzin/het wacht woord op voor het ontsleutelen van de persoonlijke sleutel als het sleutel bestand wordt beveiligd door een wachtwoordzin. | Ja als het persoonlijke-sleutel bestand is beveiligd door een wachtwoordzin. |
 
 > [!NOTE]
-> SFTP-connector ondersteunt RSA/DSA OpenSSH-sleutel. Zorg ervoor dat uw inhoud sleutelbestand begint met '---BEGIN [RSA/DSA] PRIVATE KEY---'. Als het bestand met persoonlijke sleutel een bestand ppk-indeling is, gebruikt u de Putty hulpprogramma converteren naar ppk OpenSSH-indeling.
+> SFTP-connector ondersteunt RSA/DSA OpenSSH-sleutel. Zorg ervoor dat de inhoud van het sleutel bestand begint met de persoonlijke sleutel-----BEGIN [RSA/DSA]-----. Als het persoonlijke-sleutel bestand een PPK is, gebruikt u het hulp programma Putty om te converteren van. ppk naar OpenSSH-indeling.
 
-#### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>Voorbeeld: SshPublicKey verificatie met behulp van de persoonlijke sleutel filePath
+#### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>Voor beeld: SshPublicKey-verificatie met behulp van een privé sleutel bestandspad
 
 ```json
 {
@@ -145,7 +145,7 @@ Voor het gebruik van SSH-verificatie voor openbare sleutel instellen `authentica
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Voorbeeld: SshPublicKey verificatie met behulp van de persoonlijke sleutel inhoud
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Voor beeld: SshPublicKey-verificatie met de inhoud van een persoonlijke sleutel
 
 ```json
 {
@@ -166,29 +166,29 @@ Voor het gebruik van SSH-verificatie voor openbare sleutel instellen `authentica
 ```
 
 ## <a name="dataset-properties"></a>Eigenschappen van gegevensset
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevenssets, de [gegevenssets maken](data-factory-create-datasets.md) artikel. Secties, zoals de structuur, beschikbaarheid en het beleid van een gegevensset JSON zijn vergelijkbaar voor alle typen van de gegevensset.
+Zie het artikel [gegevens sets maken](data-factory-create-datasets.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. Secties, zoals structuur, Beschik baarheid en beleid van een gegevensset-JSON, zijn vergelijkbaar voor alle typen gegevensset.
 
-De **typeProperties** sectie verschilt voor elk type gegevensset. Het bevat informatie die specifiek is voor het gegevenssettype. De typeProperties voor een gegevensset van het type sectie **bestandsshare** gegevensset heeft de volgende eigenschappen:
+De sectie **typeProperties** verschilt voor elk type gegevensset. Het bevat informatie die specifiek is voor het type gegevensset. De sectie typeProperties voor een gegevensset van het type **file share** gegevensset heeft de volgende eigenschappen:
 
-| Eigenschap | Description | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| folderPath |Subpad naar de map. Gebruik van escape-teken ' \ ' voor speciale tekens in de tekenreeks. Zie voorbeeld gekoppelde service en de gegevensset definities voor voorbeelden.<br/><br/>U kunt deze eigenschap combineren met **partitionBy** naar de map paden op basis van het segment de status begin/einde en tijden. |Ja |
-| fileName |Geef de naam van het bestand in de **folderPath** als u wilt dat de tabel om te verwijzen naar een specifiek bestand in de map. Als u een waarde voor deze eigenschap niet opgeeft, wordt de tabel verwijst naar alle bestanden in de map.<br/><br/>Als geen bestandsnaam is opgegeven voor een uitvoergegevensset, de naam van het gegenereerde bestand zou worden in de volgende notatie: <br/><br/>`Data.<Guid>.txt` (Voorbeeld: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nee |
-| fileFilter |Geef een filter op dat moet worden gebruikt voor het selecteren van een subset van de bestanden in het mappad in plaats van alle bestanden.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (Eén teken).<br/><br/>Voorbeeld 1: `"fileFilter": "*.log"`<br/>Voorbeeld 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter is van toepassing voor een invoergegevensset van de bestandsshare. Deze eigenschap wordt niet ondersteund met HDFS. |Nee |
-| partitionedBy |partitionedBy kan worden gebruikt om op te geven van een dynamische folderPath, filename voor time series-gegevens. Bijvoorbeeld, folderPath geparametriseerde voor elk uur gegevens. |Nee |
-| format | De volgende bestandsindelingen worden ondersteund: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Stel de **type** eigenschap onder indeling op een van deze waarden. Zie voor meer informatie, [tekstindeling](data-factory-supported-file-and-compression-formats.md#text-format), [Json-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-indeling](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format), en [Parquet-indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) secties. <br><br> Als u wilt **bestanden als kopiëren-is** overslaan tussen op basis van bestanden (binaire kopie), het gedeelte indeling in beide definities van de gegevensset voor invoer en uitvoer. |Nee |
-| compression | Geef het type en het niveau van compressie voor de gegevens. Ondersteunde typen zijn: **GZip**, **Deflate**, **BZip2**, en **ZipDeflate**. Ondersteunde niveaus zijn: **Optimale** en **snelste**. Zie voor meer informatie, [bestands- en compressie indelingen in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nee |
-| useBinaryTransfer |Opgeven of binaire overdrachtsmodus gebruiken. De waarde True voor binaire modus en de waarde false ASCII. Standaardwaarde: De waarde True. Deze eigenschap kan alleen worden gebruikt wanneer de bijbehorende gekoppelde servicetype is van het type: FtpServer. |Nee |
+| folderPath |Subpad van de map. Escape teken ' \ ' gebruiken voor speciale tekens in de teken reeks. Zie voor beelden van gekoppelde service en gegevensset-definities voor voor beeld.<br/><br/>U kunt deze eigenschap combi neren met **partitionBy** om mappaden te laten baseren op de begin-en eind datum van het segment. |Ja |
+| fileName |Geef de naam van het bestand op in de **FolderPath** als u wilt dat de tabel verwijst naar een specifiek bestand in de map. Als u geen waarde voor deze eigenschap opgeeft, wijst de tabel naar alle bestanden in de map.<br/><br/>Als er geen bestands naam is opgegeven voor een uitvoer gegevensset, zou de naam van het gegenereerde bestand de volgende indeling hebben: <br/><br/>`Data.<Guid>.txt` (bijvoorbeeld: data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a. txt |Nee |
+| File filter |Geef een filter op dat moet worden gebruikt om een subset van bestanden in de folderPath in plaats van alle bestanden te selecteren.<br/><br/>Toegestane waarden zijn: `*` (meerdere tekens) en `?` (één teken).<br/><br/>Voor beelden 1: `"fileFilter": "*.log"`<br/>Voor beeld 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> File filter is van toepassing op een invoer-file share-gegevensset. Deze eigenschap wordt niet ondersteund met HDFS. |Nee |
+| partitionedBy |partitionedBy kan worden gebruikt om een dynamische folderPath op te geven, filename voor time series-gegevens. Bijvoorbeeld folderPath para meters voor elk uur aan gegevens. |Nee |
+| Formatteer | De volgende indelings typen worden ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-indeling](data-factory-supported-file-and-compression-formats.md#json-format), [Avro](data-factory-supported-file-and-compression-formats.md#avro-format)-indeling, [Orc-indeling](data-factory-supported-file-and-compression-formats.md#orc-format)en Parquet- [indeling](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over. |Nee |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**. Ondersteunde niveaus zijn: **optimaal** en **snelst**. Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support)voor meer informatie. |Nee |
+| useBinaryTransfer |Opgeven of binaire overdrachts modus moet worden gebruikt. True voor binaire modus en ONWAAR ASCII. Standaard waarde: True. Deze eigenschap kan alleen worden gebruikt wanneer het gekoppelde type gekoppelde service van het type: FtpServer. |Nee |
 
 > [!NOTE]
-> bestandsnaam en fileFilter kunnen niet tegelijkertijd worden gebruikt.
+> bestands naam en file filter kunnen niet tegelijkertijd worden gebruikt.
 
-### <a name="using-partionedby-property"></a>Met behulp van de eigenschap partionedBy
-Zoals vermeld in de vorige sectie, kunt u een dynamische folderPath, filename voor time series-gegevens met partitionedBy opgeven. U kunt dit doen met de Data Factory-macro's en de systeemvariabele slicestart-waarde, SliceEnd die wijzen op de logische periode voor een bepaalde gegevenssegment.
+### <a name="using-partionedby-property"></a>De eigenschap partionedBy gebruiken
+Zoals vermeld in de vorige sectie, kunt u een dynamische folderPath opgeven, met de bestands naam voor de tijd reeks gegevens met partitionedBy. U kunt dit doen met de Data Factory-macro's en de systeem variabele slice start, SliceEnd die de logische tijds periode voor een gegeven gegevens segment aangeeft.
 
-Zie voor meer informatie over time series-gegevenssets, planning en segmenten, [gegevenssets maken](data-factory-create-datasets.md), [planning en uitvoering](data-factory-scheduling-and-execution.md), en [pijplijnen maken](data-factory-create-pipelines.md) artikelen.
+Zie [gegevens sets maken](data-factory-create-datasets.md), [& uitvoering plannen](data-factory-scheduling-and-execution.md)en [pijplijn artikelen maken](data-factory-create-pipelines.md) voor meer informatie over time series-gegevens sets, planningen en segmenten.
 
-#### <a name="sample-1"></a>Voorbeeld 1:
+#### <a name="sample-1"></a>Voor beeld 1:
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Slice}",
@@ -197,9 +197,9 @@ Zie voor meer informatie over time series-gegevenssets, planning en segmenten, [
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-In dit voorbeeld {segment} wordt vervangen door de opgegeven waarde van de Data Factory systeemvariabele slicestart-waarde in de notatie (YYYYMMDDHH). De slicestart-waarde verwijst naar de begintijd van het segment. FolderPath verschilt voor elk segment. Voorbeeld: wikidatagateway/wikisampledataout/2014100103 of wikidatagateway/wikisampledataout/2014100104.
+In dit voor beeld wordt {segment} vervangen door de waarde van Data Factory systeem variabele slice start in de opgegeven notatie (YYYYMMDDHH). De slice start verwijst naar de begin tijd van het segment. De folderPath verschilt voor elk segment. Voor beeld: wikidatagateway/wikisampledataout/2014100103 of wikidatagateway/wikisampledataout/2014100104.
 
-#### <a name="sample-2"></a>Voorbeeld 2:
+#### <a name="sample-2"></a>Voor beeld 2:
 
 ```json
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
@@ -212,42 +212,42 @@ In dit voorbeeld {segment} wordt vervangen door de opgegeven waarde van de Data 
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-Jaar, maand, dag en tijd van de slicestart-waarde in dit voorbeeld zijn uitgepakt naar afzonderlijke variabelen die worden gebruikt door de eigenschappen voor folderPath en de bestandsnaam.
+In dit voor beeld worden jaar, maand, dag en tijd van slice start geëxtraheerd in afzonderlijke variabelen die worden gebruikt door folderPath en fileName-eigenschappen.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
-Zie voor een volledige lijst van de secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten, de [pijplijnen maken](data-factory-create-pipelines.md) artikel. Eigenschappen zoals naam, beschrijving, invoer en uitvoer tabellen en beleidsregels zijn beschikbaar voor alle soorten activiteiten.
+Zie het artikel [pijp lijnen maken](data-factory-create-pipelines.md) voor een volledige lijst met secties & eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Eigenschappen zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels zijn beschikbaar voor alle typen activiteiten.
 
-Terwijl de eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit is afhankelijk van elk activiteitstype. Voor de kopieeractiviteit, wordt de type-eigenschappen variëren afhankelijk van de typen van bronnen en sinks.
+Dat zijn de eigenschappen die beschikbaar zijn in de sectie typeProperties van de activiteit, afhankelijk van elk type activiteit. Voor kopieer activiteiten variëren de type-eigenschappen, afhankelijk van de typen bronnen en Sinks.
 
 [!INCLUDE [data-factory-file-system-source](../../../includes/data-factory-file-system-source.md)]
 
-## <a name="supported-file-and-compression-formats"></a>Ondersteunde indelingen voor bestanden en compressie
-Zie [bestands- en compressie indelingen in Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie.
+## <a name="supported-file-and-compression-formats"></a>Ondersteunde bestands-en compressie-indelingen
+Zie [Bestands-en compressie-indelingen in azure Data Factory](data-factory-supported-file-and-compression-formats.md) artikel voor meer informatie.
 
-## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON-voorbeeld: Gegevens kopiëren van de SFTP-server naar Azure blob
-Het volgende voorbeeld biedt een voorbeeld van JSON-definities die u gebruiken kunt voor het maken van een pijplijn met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe gegevens kopiëren van de SFTP-gegevensbron naar Azure Blob Storage. Echter, de gegevens kunnen worden gekopieerd **rechtstreeks** uit een van de bronnen aan een van de vermelde sinks [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) met behulp van de Kopieeractiviteit in Azure Data Factory.
+## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>JSON-voor beeld: gegevens kopiëren van SFTP-server naar Azure Blob
+In het volgende voor beeld worden voor beeld-JSON-definities weer gegeven die u kunt gebruiken om een pijp lijn te maken met behulp van [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) of [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ze laten zien hoe u gegevens van een SFTP-bron naar Azure Blob Storage kopieert. Gegevens kunnen echter **rechtstreeks** vanuit een wille keurige bron worden gekopieerd naar een van de [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) opgegeven sinks met behulp van de Kopieer activiteit in azure Data Factory.
 
 > [!IMPORTANT]
-> In dit voorbeeld bevat JSON-fragmenten. Deze omvatten geen stapsgewijze instructies voor het maken van de data factory. Zie [om gegevens te verplaatsen tussen on-premises locaties en cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor stapsgewijze instructies.
+> Dit voor beeld bevat JSON-fragmenten. Het bevat geen stapsgewijze instructies voor het maken van de data factory. Zie [gegevens verplaatsen tussen on-premises locaties en een Cloud](data-factory-move-data-between-onprem-and-cloud.md) artikel voor stapsgewijze instructies.
 
-Het voorbeeld heeft de volgende data factory-entiteiten:
+Het voor beeld heeft de volgende data factory entiteiten:
 
-* Een gekoppelde service van het type [sftp](#linked-service-properties).
-* Een gekoppelde service van het type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Invoer [gegevensset](data-factory-create-datasets.md) van het type [bestandsshare](#dataset-properties).
-* Uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* Een [pijplijn](data-factory-create-pipelines.md) met de Kopieeractiviteit die gebruikmaakt van [FileSystemSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+* Een gekoppelde service van het type [SFTP](#linked-service-properties).
+* Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
+* Een invoer- [gegevensset](data-factory-create-datasets.md) van het type bestands [share](#dataset-properties).
+* Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van [FileSystemSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Het voorbeeld worden gegevens gekopieerd van een SFTP-server naar een Azure-blob elk uur. De JSON-eigenschappen die in deze voorbeelden worden beschreven in de secties na de voorbeelden.
+In het voor beeld worden elk uur gegevens van een SFTP-server naar een Azure-Blob gekopieerd. De JSON-eigenschappen die in deze steek proeven worden gebruikt, worden beschreven in secties die volgen op de voor beelden.
 
-**SFTP gekoppelde service**
+**Gekoppelde SFTP-service**
 
-Dit voorbeeld wordt de basisverificatie met gebruikersnaam en wachtwoord in tekst zonder opmaak. U kunt ook een van de volgende manieren gebruiken:
+In dit voor beeld wordt de basis verificatie met gebruikers naam en wacht woord als tekst zonder opmaak gebruikt. U kunt ook een van de volgende manieren gebruiken:
 
-* Basisverificatie wordt gebruikt met de versleutelde referenties
-* SSH-verificatie voor openbare sleutel
+* Basis verificatie met versleutelde referenties
+* Verificatie met open bare SSH-sleutel
 
-Zie [FTP gekoppelde service](#linked-service-properties) sectie voor verschillende soorten verificatie die u kunt gebruiken.
+Zie de sectie met [gekoppelde FTP-services](#linked-service-properties) voor verschillende typen verificatie die u kunt gebruiken.
 
 ```JSON
 
@@ -281,11 +281,11 @@ Zie [FTP gekoppelde service](#linked-service-properties) sectie voor verschillen
   }
 }
 ```
-**SFTP-invoergegevensset**
+**SFTP-invoer-gegevensset**
 
-Deze gegevensset verwijst naar de SFTP-map `mysharedfolder` en de bestandsnaam `test.csv`. De pijplijn wordt het bestand gekopieerd naar de bestemming.
+Deze gegevensset verwijst naar de SFTP-map `mysharedfolder` en de bestands `test.csv`. Met de pijp lijn wordt het bestand naar het doel gekopieerd.
 
-Instellen van "extern": "true" informeert de Data Factory-service dat de dataset bevindt zich buiten de data factory en niet door een activiteit in de data factory gemaakt wordt.
+Als u ' Extern ' instelt, informeert de Data Factory-service dat de gegevensset extern is voor de data factory en wordt deze niet geproduceerd door een activiteit in de data factory.
 
 ```JSON
 {
@@ -308,7 +308,7 @@ Instellen van "extern": "true" informeert de Data Factory-service dat de dataset
 
 **Azure Blob-uitvoergegevensset**
 
-Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en interval: 1). Het pad naar de map voor de blob wordt dynamisch geëvalueerd op basis van de begintijd van het segment dat wordt verwerkt. Pad naar de map wordt gebruikt voor jaar, maand, dag en uur onderdelen van de begintijd.
+Gegevens worden elk uur naar een nieuwe BLOB geschreven (frequentie: uur, interval: 1). Het mappad voor de BLOB wordt dynamisch geëvalueerd op basis van de begin tijd van het segment dat wordt verwerkt. Het mappad gebruikt delen van het jaar, de maand, de dag en het uur van de begin tijd.
 
 ```JSON
 {
@@ -366,9 +366,9 @@ Gegevens worden geschreven naar een nieuwe blob elk uur (frequentie: uur en inte
 }
 ```
 
-**Pijplijn met kopieeractiviteit**
+**Pijp lijn met Kopieer activiteit**
 
-De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik van de invoer- en uitvoergegevenssets en is gepland voor elk uur uitgevoerd. In de pijplijn-JSON-definitie heeft de **bron** type is ingesteld op **FileSystemSource** en **sink** type is ingesteld op **BlobSink**.
+De pijp lijn bevat een Kopieer activiteit die is geconfigureerd voor het gebruik van de invoer-en uitvoer gegevens sets en die is gepland om elk uur te worden uitgevoerd. In de JSON-definitie van de pijp lijn is het **bron** type ingesteld op **FileSystemSource** en het **sink** -type is ingesteld op **BlobSink**.
 
 ```JSON
 {
@@ -408,10 +408,10 @@ De pijplijn bevat een Kopieeractiviteit die is geconfigureerd voor het gebruik v
 }
 ```
 
-## <a name="performance-and-tuning"></a>Prestaties en afstemmen
-Zie [prestaties kopiëren en Afstemmingshandleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed prestaties van de verplaatsing van gegevens (Kopieeractiviteit) in Azure Data Factory en de verschillende manieren om te optimaliseren.
+## <a name="performance-and-tuning"></a>Prestaties en afstemming
+Zie [Kopieer activiteit prestaties & afstemmings handleiding](data-factory-copy-activity-performance.md) voor meer informatie over de belangrijkste factoren die invloed hebben op de prestaties van het verplaatsen van gegevens (Kopieer activiteit) in azure Data Factory en verschillende manieren om deze te optimaliseren.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:
 
-* [Zelfstudie kopieeractiviteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijplijn met een Kopieeractiviteit.
+* [Zelf studie Kopieer activiteit](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stapsgewijze instructies voor het maken van een pijp lijn met een Kopieer activiteit.

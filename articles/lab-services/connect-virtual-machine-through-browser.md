@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
-ms.openlocfilehash: 22d7afa889994068c3f906d0b9adbc1a74bc4839
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642589"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581234"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Verbinding maken met uw virtuele machines via een browser 
 
@@ -26,8 +26,6 @@ DevTest Labs kan worden geïntegreerd met [Azure Bastion](https://docs.microsoft
 
 Zodra de *browser verbinding maken* is ingeschakeld, hebben Lab-gebruikers via een browser toegang tot virtuele machines.  
 
-> [!NOTE]
-> Het inschakelen van een browser verbinding op virtuele lab-machines is in preview.
 
 ## <a name="create-a-lab-virtual-machine"></a>Een virtuele machine voor het lab maken
 

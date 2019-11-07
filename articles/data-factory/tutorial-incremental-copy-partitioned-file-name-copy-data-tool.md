@@ -1,5 +1,5 @@
 ---
-title: Met Azure Data Factory incrementeel alleen nieuwe bestanden kopiëren op basis van een gepartitioneerde bestands naam | Microsoft Docs
+title: Met Azure Data Factory incrementeel alleen nieuwe bestanden kopiëren op basis van een gepartitioneerde bestands naam
 description: Maak een Azure-data factory en gebruik vervolgens het hulp programma Gegevens kopiëren om nieuwe bestanden op basis van een gepartitioneerde bestands naam stapsgewijs te laden.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 273aaaa2ac51f75edfad6da03d6720f58b7c3c47
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933906"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683441"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Kopieer incrementeel nieuwe bestanden op basis van een gepartitioneerde bestands naam met behulp van het Gegevens kopiëren-hulp programma
 
@@ -30,14 +30,14 @@ In deze zelfstudie gebruikt u Azure Portal om een gegevensfactory te maken. Verv
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een data factory maken.
+> * Maak een gegevensfactory.
 > * Het hulpprogramma Copy Data gebruiken om een pijplijn te maken.
 > * De uitvoering van de pijplijn en van de activiteit controleren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslagaccount**: Gebruik Blob Storage als _bron_ -en _sink_ -gegevens archief. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
+* **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
+* **Azure-opslag account**: Blob Storage gebruiken als _bron_ -en _sink_ -gegevens archief. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
 
@@ -52,9 +52,9 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 2. Maak een container met de naam **Destination**. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
-## <a name="create-a-data-factory"></a>Data factory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**: 
+1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**: 
    
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -165,16 +165,16 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
     ![Overzichtspagina](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/summary-page.png)
     
 9. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak te controleren.
-    ![Implementatie pagina](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
+    ![implementatie pagina](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/deployment-page.png)
     
-10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd.  U moet wachten op de uitvoering van de pijp lijn wanneer deze automatisch wordt geactiveerd (ongeveer na één uur).  Wanneer de kolom **acties** wordt uitgevoerd, bevat koppelingen om de details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren. Selecteer **vernieuwen** om de lijst te vernieuwen en selecteer de koppeling uitvoeringen van **activiteit weer geven** in de kolom **acties** . 
+10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd.  U moet wachten op de uitvoering van de pijp lijn wanneer deze automatisch wordt geactiveerd (ongeveer na één uur).  Wanneer de kolom **acties** wordt uitgevoerd, bevat koppelingen om de details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren. Selecteer **vernieuwen** om de lijst te vernieuwen en selecteer de koppeling **uitvoeringen van activiteit weer geven** in de kolom **acties** . 
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs1.png)
 11. Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. U kunt zien dat het bron bestand (bestand1. txt) is gekopieerd van **bron-2019/02/26/14/** naar **doel/2019/02/26/14** /met dezelfde bestands naam.  
 
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer https://storageexplorer.com/) (om de bestanden te scannen.
+    U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer (https://storageexplorer.com/) om de bestanden te scannen.
     
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 12. Maak nog een leeg tekst bestand met de nieuwe naam als **bestand2. txt**. Upload het bestand bestand2. txt naar het mappad **Source/2019/02/26/15** in uw opslag account.   U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).   
@@ -196,7 +196,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
     
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer https://storageexplorer.com/) (de bestanden in de **doel** container scannen
+    U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer (https://storageexplorer.com/) de bestanden in de **doel** container scannen
     
     ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

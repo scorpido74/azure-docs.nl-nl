@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550635"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576064"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
 
@@ -45,10 +45,10 @@ Functie ondersteuning valt in de volgende twee categorieën:
 
 In de volgende tabel wordt het huidige ondersteunings niveau voor de drie hosting plannen aangegeven, wanneer dit wordt uitgevoerd op Windows of Linux:
 
-| | Verbruiksabonnement | Premium-plan | Toegewezen plan |
+| | Verbruiksabonnement | Premium-abonnement | Toegewezen plan |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | Algemene beschikbaarheid | preview | Algemene beschikbaarheid |
-| Linux | Algemene beschikbaarheid | preview | Algemene beschikbaarheid |
+| Windows | Algemene beschikbaarheid | Algemene beschikbaarheid | Algemene beschikbaarheid |
+| Linux | Algemene beschikbaarheid | Algemene beschikbaarheid | Algemene beschikbaarheid |
 
 ## <a name="consumption-plan"></a>Verbruiksabonnement
 
@@ -65,7 +65,7 @@ Functie-apps in dezelfde regio kunnen worden toegewezen aan hetzelfde verbruiks 
 
 Zie voor meer informatie over het schatten van kosten bij het uitvoeren van een verbruiks abonnement de [kosten van verbruiks plan](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Premium-abonnement (preview-versie)
+## <a name="premium-plan"></a>Premium-abonnement
 
 Wanneer u het Premium-abonnement gebruikt, worden exemplaren van de Azure Functions-host toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen, net als het verbruiks abonnement.  Premium-abonnement biedt ondersteuning voor de volgende functies:
 
@@ -181,7 +181,7 @@ Nuttige query's en informatie over het begrijpen van uw verbruiks factuur vindt 
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
-## <a name="service-limits"></a>Servicebeperkingen
+## <a name="service-limits"></a>Servicelimieten
 
 In de volgende tabel worden de limieten aangegeven die van toepassing zijn op app-functies wanneer ze worden uitgevoerd in de verschillende hosting plannen:
 

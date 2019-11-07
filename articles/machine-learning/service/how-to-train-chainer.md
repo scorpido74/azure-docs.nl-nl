@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91278bdc1748615c91675e3894ebae4cf5fce1e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 8427bd8532895e95de82a6ed577052971f15a25d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489491"
+ms.locfileid: "73584513"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Keten modellen trainen en registreren op schaal met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begin
 
 Voer deze code uit in een van de volgende omgevingen:
 
-- Azure Machine Learning Compute-instantie-geen down loads of installatie vereist
+- Azure Machine Learning-notebook-VM-geen down loads of installatie vereist
 
     - Voltooi de [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken vooraf geladen met de SDK en de voor beeld-opslag plaats.
     - Zoek in de map met de voor beelden diepe Learning op de notebook server een volledig gevoltooide notebook en bestanden in de **procedure voor het gebruik van azureml > ml > chainer > implementatie >-map Train-afstemming-Tune-Deploy-with-Chainer** .  Het notitie blok bevat uitgebreide secties die betrekking hebben op intelligent afstemming tuning, model implementatie en notebook widgets.
@@ -212,7 +212,7 @@ for f in run.get_file_names():
 
 In dit artikel hebt u een diep gaande training getraind en geregistreerd, Neural Network met Chainer op Azure Machine Learning. Ga verder met ons [model implementatie](how-to-deploy-and-where.md) artikel voor meer informatie over het implementeren van een model.
 
-* [Hyper parameters afstemmen](how-to-tune-hyperparameters.md)
+* [Afstemmen van hyperparameters](how-to-tune-hyperparameters.md)
 
 * [Metrische uitvoerings gegevens tijdens de training volgen](how-to-track-experiments.md)
 

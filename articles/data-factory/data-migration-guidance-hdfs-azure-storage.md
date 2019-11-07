@@ -1,5 +1,5 @@
 ---
-title: Gebruik Azure Data Factory voor het migreren van gegevens van een on-premises Hadoop-cluster naar Azure Storage | Microsoft Docs
+title: Azure Data Factory gebruiken om gegevens van een on-premises Hadoop-cluster te migreren naar Azure Storage
 description: Meer informatie over het gebruik van Azure Data Factory voor het migreren van gegevens van een on-premises Hadoop-cluster naar Azure Storage.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/30/2019
-ms.openlocfilehash: a2e98e46b168ff2e1270c6512aa515278190350f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677942"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675815"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens van een on-premises Hadoop-cluster te migreren naar Azure Storage 
 
@@ -25,8 +25,8 @@ Azure Data Factory biedt een krachtige, robuuste en kosteneffectieve methode voo
 
 Data Factory biedt twee basis benaderingen voor het migreren van gegevens van on-premises HDFS naar Azure. U kunt de aanpak selecteren op basis van uw scenario. 
 
-- **Data Factory modus DistCp** (aanbevolen): In Data Factory kunt u [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (gedistribueerde kopie) gebruiken om bestanden te kopiëren naar Azure Blob Storage (inclusief [gefaseerde kopie](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)) of Azure data Lake Store Gen2. Gebruik Data Factory geïntegreerd met DistCp om te profiteren van een bestaand krachtig cluster om de beste Kopieer doorvoer te halen. U profiteert ook van het voor deel van flexibele planning en een uniforme bewakings ervaring van Data Factory. Afhankelijk van de configuratie van uw Data Factory maakt Kopieer activiteit automatisch een DistCp-opdracht, worden de gegevens naar uw Hadoop-cluster verzonden en wordt de Kopieer status gecontroleerd. We raden u aan Data Factory DistCp-modus voor het migreren van gegevens van een on-premises Hadoop-cluster naar Azure.
-- **Data Factory native Integration runtime-modus**: DistCp is geen optie in alle scenario's. In een omgeving met virtuele netwerken van Azure biedt het DistCp-hulp programma bijvoorbeeld geen ondersteuning voor Azure ExpressRoute private-peering met een Azure Storage eind punt van een virtueel netwerk. In sommige gevallen wilt u uw bestaande Hadoop-cluster niet gebruiken als een engine voor het migreren van gegevens, zodat u geen zware belasting op het cluster plaatst. Dit kan van invloed zijn op de prestaties van bestaande ETL-taken. In plaats daarvan kunt u de systeem eigen mogelijkheid van de Data Factory Integration runtime gebruiken als de engine waarmee gegevens worden gekopieerd van on-premises HDFS naar Azure.
+- **Data Factory DistCp-modus** (aanbevolen): in Data Factory kunt u [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (gedistribueerde kopie) gebruiken om bestanden te kopiëren naar Azure Blob Storage (inclusief [gefaseerde kopie](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)) of Azure data Lake Store Gen2. Gebruik Data Factory geïntegreerd met DistCp om te profiteren van een bestaand krachtig cluster om de beste Kopieer doorvoer te halen. U profiteert ook van het voor deel van flexibele planning en een uniforme bewakings ervaring van Data Factory. Afhankelijk van de configuratie van uw Data Factory maakt Kopieer activiteit automatisch een DistCp-opdracht, worden de gegevens naar uw Hadoop-cluster verzonden en wordt de Kopieer status gecontroleerd. We raden u aan Data Factory DistCp-modus voor het migreren van gegevens van een on-premises Hadoop-cluster naar Azure.
+- **Data Factory systeem eigen integratie runtime modus**: DistCp is geen optie in alle scenario's. In een omgeving met virtuele netwerken van Azure biedt het DistCp-hulp programma bijvoorbeeld geen ondersteuning voor Azure ExpressRoute private-peering met een Azure Storage eind punt van een virtueel netwerk. In sommige gevallen wilt u uw bestaande Hadoop-cluster niet gebruiken als een engine voor het migreren van gegevens, zodat u geen zware belasting op het cluster plaatst. Dit kan van invloed zijn op de prestaties van bestaande ETL-taken. In plaats daarvan kunt u de systeem eigen mogelijkheid van de Data Factory Integration runtime gebruiken als de engine waarmee gegevens worden gekopieerd van on-premises HDFS naar Azure.
 
 In dit artikel vindt u de volgende informatie over beide benaderingen:
 > [!div class="checklist"]
@@ -52,7 +52,7 @@ Zie de [prestatie handleiding Kopieer activiteit](https://docs.microsoft.com/azu
 
 ## <a name="resilience"></a>Flexibiliteit
 
-In Data Factory DistCp-modus kunt u verschillende DistCp-opdracht regel parameters gebruiken (bijvoorbeeld `-i`, storingen negeren of `-update`, gegevens schrijven wanneer het bron bestand en het doel bestand verschillen qua grootte) voor verschillende tolerantie niveaus.
+In Data Factory DistCp-modus kunt u verschillende DistCp-opdracht regel parameters gebruiken (bijvoorbeeld `-i`, fouten negeren of `-update`, gegevens schrijven wanneer het bron bestand en het doel bestand verschillen qua grootte) voor verschillende tolerantie niveaus.
 
 In de Data Factory native Integration runtime-modus, in één exemplaar van een Kopieer activiteit, heeft Data Factory een ingebouwd mechanisme voor opnieuw proberen. Het kan een bepaald niveau van tijdelijke fouten in de gegevens archieven of in het onderliggende netwerk verwerken. 
 
@@ -64,7 +64,7 @@ Standaard brengt Data Factory gegevens over van on-premises HDFS naar Blob-opsla
 
 Als u niet wilt dat gegevens worden overgedragen via het open bare Internet, kunt u voor betere beveiliging gegevens over een persoonlijke peering-koppeling overbrengen via ExpressRoute. 
 
-## <a name="solution-architecture"></a>Oplossingsarchitectuur
+## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
 In deze afbeelding ziet u hoe u gegevens migreert via het open bare Internet:
 
@@ -107,7 +107,7 @@ Als een van de Kopieer taken mislukt als gevolg van tijdelijke problemen met het
 
 ### <a name="delta-data-migration"></a>Delta gegevens migratie 
 
-In Data Factory DistCp-modus kunt u de DistCp-opdracht regel parameter gebruiken `-update`, gegevens schrijven wanneer het bron bestand en het doel bestand verschillen qua grootte, voor Delta gegevens migratie.
+In Data Factory DistCp-modus kunt u de opdracht regel `-update`parameter DistCp gebruiken om gegevens te schrijven wanneer het bron bestand en het doel bestand verschillen qua grootte, voor Delta gegevens migratie.
 
 In Data Factory systeem eigen integratie modus is de meest krachtige manier om nieuwe of gewijzigde bestanden van HDFS te identificeren met behulp van een tijdgebonden naamgevings Conventie. Als uw gegevens in HDFS zijn gepartitioneerd met tijds segmenten in de naam van het bestand of de map (bijvoorbeeld */yyyy/mm/dd/file.CSV*), kunt u met de pijp lijn eenvoudig bepalen welke bestanden en mappen incrementeel moeten worden gekopieerd.
 

@@ -1,19 +1,19 @@
 ---
-title: Overzicht van Microsoft Azure Data Box Disk | Microsoft Docs in gegevens
-description: Beschrijft Azure Data Box Disk, een cloudoplossing waarmee u grote hoeveelheden gegevens naar Azure kunt overdragen.
+title: Beveiligings functies van Microsoft Azure Data Box Disk | Microsoft Docs in gegevens
+description: Hierin worden de beveiligings functies beschreven die zijn geïmplementeerd voor Azure Data Box Disk, een Cloud oplossing waarmee u grote hoeveel heden gegevens kunt overdragen naar Azure
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327917"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606563"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk-beveiliging en -gegevensbescherming
 
@@ -92,6 +92,6 @@ Bekijk het Microsoft-privacybeleid in het [Vertrouwenscentrum](https://www.micro
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- De [Vereisten voor Data Box Disk](data-box-disk-system-requirements.md) bekijken.
+- Raadpleeg de [Vereisten voor Data Box](data-box-disk-system-requirements.md).
 - De [Limieten voor Data Box Disk](data-box-disk-limits.md) begrijpen.
 - Snel [Azure Data Box Disk](data-box-disk-quickstart-portal.md) in Azure Portal implementeren.

@@ -1,5 +1,5 @@
 ---
-title: Gegevens transformeren met hive-activiteit-Azure | Microsoft Docs
+title: Gegevens transformeren met hive-activiteit-Azure
 description: Meer informatie over hoe u de Hive-activiteit in een Azure-data factory kunt gebruiken om Hive-query's uit te voeren op een op aanvraag/uw eigen HDInsight-cluster.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8a7e6748f450ae398a05097ac6b192d074f5f1f7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139532"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666997"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Gegevens transformeren met behulp van Hive-activiteit in Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformatie activiteiten"]
@@ -38,7 +38,7 @@ ms.locfileid: "70139532"
 De HDInsight Hive-activiteit in een Data Factory [pijp lijn](data-factory-create-pipelines.md) voert Hive-query's uit op [uw eigen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) of [op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) gebaseerd HDInsight-cluster op basis van Windows/Linux. In dit artikel vindt u een overzicht van het artikel over de [activiteiten voor gegevens transformatie](data-factory-data-transformation-activities.md) , dat een algemene informatie bevat over de gegevens transformatie en de ondersteunde transformatie activiteiten.
 
 > [!NOTE] 
-> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de volgende zelf studie uit: [Bouw uw eerste gegevens pijplijn voordat u](data-factory-build-your-first-pipeline.md) dit artikel leest. 
+> Als u geen ervaring hebt met Azure Data Factory, lees dan [Inleiding tot Azure Data Factory](data-factory-introduction.md) en voer de zelf studie uit: [bouw uw eerste gegevens pijplijn](data-factory-build-your-first-pipeline.md) voordat u dit artikel leest. 
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -71,23 +71,23 @@ De HDInsight Hive-activiteit in een Data Factory [pijp lijn](data-factory-create
     }
 }
 ```
-## <a name="syntax-details"></a>Syntaxis van de details
-| Eigenschap | Description | Vereist |
+## <a name="syntax-details"></a>Syntaxis Details
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| name |Naam van de activiteit |Ja |
+| naam |Naam van de activiteit |Ja |
 | description |Tekst waarin wordt beschreven waarvoor de activiteit wordt gebruikt |Nee |
-| Type |HDinsightHive |Ja |
-| inputs |Invoer die wordt gebruikt door de Hive-activiteit |Nee |
-| outputs |Uitvoer geproduceerd door de Hive-activiteit |Ja |
+| type |HDinsightHive |Ja |
+| invoer |Invoer die wordt gebruikt door de Hive-activiteit |Nee |
+| uitvoer |Uitvoer geproduceerd door de Hive-activiteit |Ja |
 | linkedServiceName |Verwijzing naar het HDInsight-cluster dat is geregistreerd als een gekoppelde service in Data Factory |Ja |
-| script |Het Hive-script inline opgeven |Nee |
+| uit |Het Hive-script inline opgeven |Nee |
 | scriptPath |Sla het Hive-script op in een Azure Blob-opslag en geef het pad naar het bestand op. Gebruik de eigenschap script of scriptPath. Beide kunnen niet tegelijk worden gebruikt. De bestands naam is hoofdletter gevoelig. |Nee |
-| defines |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |Nee |
+| compliant |Geef para meters op als sleutel/waarde-paren voor het verwijzen in het Hive-script met behulp van ' hiveconf ' |Nee |
 
 ## <a name="example"></a>Voorbeeld
 Laten we eens kijken naar een voor beeld van een spel logboek analyse waarin u de tijd wilt identificeren die gebruikers spelen die door uw bedrijf worden gestart. 
 
-Het volgende logboek is een voor beeld van een spel logboek, een`,`komma () van elkaar gescheiden en bevat de volgende velden: ProfileID, SessionStart, duration, SrcIPAddress en GameType.
+Het volgende logboek is een voor beeld van een spel logboek, dat een komma (`,`) gescheiden is en de volgende velden bevat: ProfileID, SessionStart, duration, SrcIPAddress en GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag

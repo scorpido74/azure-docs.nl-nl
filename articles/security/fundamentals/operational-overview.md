@@ -4,7 +4,7 @@ description: Dit artikel biedt een overzicht van de operationele beveiliging van
 services: security
 documentationcenter: na
 author: unifycloud
-manager: barbkess
+manager: rkarlin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899827"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643771"
 ---
 # <a name="azure-operational-security-overview"></a>Overzicht van Azure Operational Security
 
@@ -34,7 +34,7 @@ Een IT-team is verantwoordelijk voor het beheer van de infra structuur, toepassi
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure monitor](/azure/azure-monitor/overview) verzamelt gegevens van beheerde bronnen in centrale gegevens archieven. Deze gegevens kunnen gebeurtenissen, prestatie gegevens of aangepaste gegevens bevatten die via de API worden geleverd. Nadat de gegevens zijn verzameld, is deze beschikbaar voor waarschuwingen, analyses en export. 
+[Azure monitor](/azure/azure-monitor/overview) verzamelt gegevens van beheerde bronnen in centrale gegevens archieven. Deze gegevens kunnen gebeurtenissen, prestatie gegevens of aangepaste gegevens bevatten die via de API worden geleverd. Nadat de gegevens zijn verzameld, is deze beschikbaar voor waarschuwingen, analyses en export.
 
 U kunt gegevens uit verschillende bronnen consolideren en gegevens uit uw Azure-Services combi neren met uw bestaande on-premises omgeving. Azure Monitor logboeken maakt ook de verzameling van de gegevens duidelijk gescheiden van de actie die op die gegevens is uitgevoerd, zodat alle acties beschikbaar zijn voor alle soorten gegevens.
 
@@ -42,11 +42,11 @@ U kunt gegevens uit verschillende bronnen consolideren en gegevens uit uw Azure-
 
 [Azure Automation](/azure/automation/automation-intro) biedt u een manier om de hand matige, langlopende, fout gevoelige en regel matig herhaalde taken te automatiseren die vaak worden uitgevoerd in een Cloud en bedrijfs omgeving. Het bespaart tijd en verhoogt de betrouw baarheid van beheer taken. Deze taken worden zelfs zo gepland dat deze automatisch met regel matige tussen pozen worden uitgevoerd. U kunt processen automatiseren door gebruik te maken van runbooks of configuratie beheer automatiseren door gebruik te maken van de desired state Configuration.
 
-### <a name="backup"></a>Back-up
+### <a name="backup"></a>Back-up maken
 
-[Azure backup](/azure/backup/backup-introduction-to-azure-backup) is de Azure-service die u kunt gebruiken om een back-up te maken van (of te beveiligen) en om uw gegevens in de Microsoft Cloud te herstellen. Azure Backup vervangt uw bestaande on-premises of off-site back-upoplossing met een Cloud oplossing die betrouwbaar, veilig en voordelig is. 
+[Azure backup](/azure/backup/backup-introduction-to-azure-backup) is de Azure-service die u kunt gebruiken om een back-up te maken van (of te beveiligen) en om uw gegevens in de Microsoft Cloud te herstellen. Azure Backup vervangt uw bestaande on-premises of off-site back-upoplossing met een Cloud oplossing die betrouwbaar, veilig en voordelig is.
 
-Azure Backup biedt onderdelen die u downloadt en implementeert op de juiste computer of server of in de Cloud. Welk onderdeel, of welke agent, u implementeert, is afhankelijk van wat u wilt beveiligen. Alle Azure Backup onderdelen (of u nu gegevens op locatie of in de Cloud beveiligt) kunnen worden gebruikt om een back-up te maken van gegevens in een Azure Recovery Services-kluis in Azure. 
+Azure Backup biedt onderdelen die u downloadt en implementeert op de juiste computer of server of in de Cloud. Welk onderdeel, of welke agent, u implementeert, is afhankelijk van wat u wilt beveiligen. Alle Azure Backup onderdelen (of u nu gegevens op locatie of in de Cloud beveiligt) kunnen worden gebruikt om een back-up te maken van gegevens in een Azure Recovery Services-kluis in Azure.
 
 Zie de [tabel met Azure backup onderdelen](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)voor meer informatie.
 
@@ -89,7 +89,7 @@ Met Azure Active Directory hebben alle toepassingen die u publiceert voor uw par
 
 Security Center maakt gebruik [van op rollen gebaseerde Access Control (RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC biedt [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Security Center beoordeelt de configuratie van uw resources om beveiligingsproblemen met zich mee en beveiligingsproblemen te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
+Security Center evalueert de configuratie van uw resources om beveiligings problemen en beveiligings lekken te identificeren. In Security Center ziet u alleen informatie met betrekking tot een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
 
 >[!Note]
 >Zie voor meer informatie over rollen en toegestane acties in Security Center [machtigingen in azure Security Center](/azure/security-center/security-center-permissions).
@@ -102,7 +102,7 @@ Prestatie problemen in uw Cloud-app kunnen van invloed zijn op uw bedrijf. Met m
 
 [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) is een basis programma voor het controleren van services die worden uitgevoerd op Azure. Het biedt u gegevens op infrastructuur niveau over de door Voer van een service en de omgeving die erop van toepassing is. Als u uw apps in azure beheert en u beslist of u resources omhoog of omlaag wilt schalen, Azure Monitor de plaats van start.
 
-U kunt ook bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn. 
+U kunt ook bewakings gegevens gebruiken om grondige inzichten over uw toepassing te krijgen. Deze kennis kan u helpen bij het verbeteren van de prestaties of het onderhoud van toepassingen, of het automatiseren van acties waarvoor anders hand matige interventie nodig zou zijn.
 
 Azure Monitor bevat de volgende onderdelen.
 
@@ -112,7 +112,7 @@ Het [Azure-activiteiten logboek](/azure/monitoring-and-diagnostics/monitoring-ov
 
 ### <a name="azure-diagnostic-logs"></a>Diagnostische logboeken in Azure
 
-[Diagnostische logboeken van Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) worden verzonden door een resource en bieden uitgebreide, frequente gegevens over de werking van die resource. Resourcetype is afhankelijk van de inhoud van deze logboeken.
+[Diagnostische logboeken van Azure](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) worden verzonden door een resource en bieden uitgebreide, frequente gegevens over de werking van die resource. De inhoud van deze logboeken is afhankelijk van het bron type.
 
 Windows-gebeurtenis systeem logboeken zijn een categorie van Diagnostische logboeken voor Vm's. BLOB-, tabel-en wachtrij logboeken zijn categorieën van Diagnostische logboeken voor opslag accounts.
 
@@ -140,27 +140,29 @@ Network Watcher vereenvoudigt het bewaken en onderzoeken van uw Azure-netwerk. U
 
 Network Watcher heeft momenteel de volgende mogelijkheden:
 
-- [Topologie](/azure/network-watcher/network-watcher-topology-overview): Biedt een overzicht van de verschillende interconnects en koppelingen tussen netwerk bronnen in een resource groep.
-- [Vastleggen van variabele pakketten](/azure/network-watcher/network-watcher-packet-capture-overview): Hiermee worden pakket gegevens in en uit een virtuele machine vastgelegd. Geavanceerde filteropties en verfijnde besturingselementen, zoals de mogelijkheid om tijd- en groottebeperkingen in te stellen, bieden flexibiliteit. De pakket gegevens kunnen worden opgeslagen in een BLOB-archief of op de lokale schijf met de indeling. Cap.
-- [IP-stroom controleren](/azure/network-watcher/network-watcher-ip-flow-verify-overview): Hiermee wordt gecontroleerd of een pakket wordt toegestaan of geweigerd op basis van 5-tuple Packet-para meters voor stroom gegevens (doel-IP, bron-IP, doel poort, bron poort en Protocol). Als een beveiligings groep het pakket weigert, worden de regel en de groep die het pakket heeft geweigerd, geretourneerd.
-- [Volgende hop](/azure/network-watcher/network-watcher-next-hop-overview): Bepaalt de volgende hop voor pakketten die worden gerouteerd in de Azure-netwerk infrastructuur, zodat u een onjuist geconfigureerde, door de gebruiker gedefinieerde routes kunt vaststellen.
-- [Weer gave van beveiligings groep](/azure/network-watcher/network-watcher-security-group-view-overview): Hiermee worden de effectief en toegepaste beveiligings regels opgehaald die worden toegepast op een virtuele machine.
+- [Topologie](/azure/network-watcher/network-watcher-topology-overview): biedt een overzicht van de verschillende interconnects en koppelingen tussen netwerk bronnen in een resource groep.
+- [Variabele pakket opname](/azure/network-watcher/network-watcher-packet-capture-overview): Hiermee worden pakket gegevens in en uit een virtuele machine vastgelegd. Geavanceerde filteropties en verfijnde besturingselementen, zoals de mogelijkheid om tijd- en groottebeperkingen in te stellen, bieden flexibiliteit. De pakket gegevens kunnen worden opgeslagen in een BLOB-archief of op de lokale schijf met de indeling. Cap.
+- [IP-stroom controleren](/azure/network-watcher/network-watcher-ip-flow-verify-overview): controleert of een pakket wordt toegestaan of geweigerd op basis van 5-tuple Packet-para meters voor stroom informatie (doel-IP, bron-IP, doel poort, bron poort en Protocol). Als een beveiligings groep het pakket weigert, worden de regel en de groep die het pakket heeft geweigerd, geretourneerd.
+- [Volgende hop](/azure/network-watcher/network-watcher-next-hop-overview): bepaalt de volgende hop voor pakketten die worden gerouteerd in de Azure-netwerk infrastructuur, zodat u eventuele onjuist geconfigureerde door de gebruiker gedefinieerde routes kunt vaststellen.
+- [Weer gave van beveiligings groep](/azure/network-watcher/network-watcher-security-group-view-overview): Hiermee worden de effectief en toegepaste beveiligings regels opgehaald die op een virtuele machine worden toegepast.
 - [NSG-stroom logboeken voor netwerk beveiligings groepen](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Hiermee kunt u Logboeken vastleggen die betrekking hebben op verkeer dat is toegestaan of geweigerd door de beveiligings regels in de groep. De stroom is gedefinieerd met 5-tuple-informatie: bron-IP, doel-IP, bron poort, doel poort en protocol.
-- [Probleem oplossing voor virtuele netwerk gateway en verbinding](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Biedt de mogelijkheid om problemen met virtuele netwerk gateways en verbindingen op te lossen.
+- [Probleem oplossing voor virtuele netwerk gateway en verbinding](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): biedt de mogelijkheid om problemen met virtuele netwerk gateways en verbindingen op te lossen.
 - [Limieten voor netwerk abonnementen](/azure/network-watcher/network-watcher-monitoring-overview): Hiermee kunt u het gebruik van netwerk bronnen weer geven op basis van limieten.
-- [Diagnostische logboeken](/azure/network-watcher/network-watcher-monitoring-overview): Biedt één deel venster voor het in-of uitschakelen van Diagnostische logboeken voor netwerk bronnen in een resource groep.
+- [Diagnostische logboeken](/azure/network-watcher/network-watcher-monitoring-overview): biedt één deel venster om Diagnostische logboeken in of uit te scha kelen voor netwerk bronnen in een resource groep.
 
 Zie [configure Network Watcher](/azure/network-watcher/network-watcher-create)(Engelstalig) voor meer informatie.
 
 ## <a name="cloud-service-provider-access-transparency"></a>Transparantie van toegang tot Cloud service provider
 
-[Klanten-lockbox voor Microsoft Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/) is een service die is geïntegreerd in azure portal die u een expliciete controle geeft in de zeldzame instantie wanneer een Microsoft ondersteuning-Engineer toegang nodig heeft tot uw gegevens om een probleem op te lossen. Er zijn zeer weinig instanties, zoals een fout bij het oplossen van problemen met externe toegang, waarbij een Microsoft Ondersteuning Engineer verhoogde machtigingen nodig heeft om dit probleem op te lossen. In dergelijke gevallen gebruiken micro soft-technici just-in-time Access-service die beperkte, tijdgebonden autorisatie biedt met beperkte toegang tot de service.  
+[Klanten-lockbox voor Microsoft Azure](customer-lockbox-overview.md) is een service die is geïntegreerd in azure portal die u een expliciete controle geeft in de zeldzame instantie wanneer een Microsoft ondersteuning-Engineer toegang nodig heeft tot uw gegevens om een probleem op te lossen.
+Er zijn zeer weinig instanties, zoals een fout bij het oplossen van problemen met externe toegang, waarbij een Microsoft Ondersteuning Engineer verhoogde machtigingen nodig heeft om dit probleem op te lossen. In dergelijke gevallen gebruiken micro soft-technici just-in-time Access-service die beperkte, tijdgebonden autorisatie biedt met beperkte toegang tot de service.  
 Terwijl micro soft de klant altijd toestemming heeft gegeven voor toegang, biedt Klanten-lockbox u nu de mogelijkheid om dergelijke aanvragen in azure portal te controleren en goed te keuren of te weigeren. Ondersteunings medewerkers van micro soft krijgen geen toegang tot u de aanvraag goed keuren.
 
 ## <a name="standardized-and-compliant-deployments"></a>Gestandaardiseerde en compatibele implementaties
 
 Met [Azure-blauw drukken](/azure/governance/blueprints/overview) kunnen Cloud architecten en centrale informatie technologie groepen een Herhaal bare set Azure-resources definiëren die worden geïmplementeerd en voldoen aan de normen, patronen en vereisten van een organisatie.  
-Dit maakt het mogelijk voor DevOps teams om snel nieuwe omgevingen te bouwen en te maken en te vertrouwen dat ze ze bouwen met een infra structuur die de naleving van de organisatie onderhoudt. Blauw drukken biedt een declaratieve manier om de implementatie van verschillende bron sjablonen en andere artefacten te organiseren, zoals: 
+Dit maakt het mogelijk voor DevOps teams om snel nieuwe omgevingen te bouwen en te maken en te vertrouwen dat ze ze bouwen met een infra structuur die de naleving van de organisatie onderhoudt.
+Blauw drukken biedt een declaratieve manier om de implementatie van verschillende bron sjablonen en andere artefacten te organiseren, zoals:
 
 - Roltoewijzingen
 - Beleidstoewijzingen
@@ -189,6 +191,6 @@ Volwassen DevOps-artsen nemen een aantal van de volgende procedures. Deze proced
 
 Raadpleeg de volgende artikelen voor meer informatie over de Beveiliging en audit oplossing:
 
-- [Beveiliging en naleving](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Beveiliging en naleving](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure Security Center](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

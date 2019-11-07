@@ -4,14 +4,14 @@ description: Meer informatie over het configureren van beleid voor IP-toegangs b
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: d4fab572f31d3187135ea3ac406431ced98828b1
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8522a537301c1d35da2a2eb46b4374fa4daf6a27
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815932"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580686"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>IP-firewall in Azure Cosmos DB configureren
 
@@ -40,7 +40,7 @@ Wanneer u een beleid voor IP-toegangs beheer programmatisch inschakelt, moet u h
 |------|----------|
 |Duitsland|51.4.229.218|
 |China|139.217.8.252|
-|VS (overheid)|52.244.48.71|
+|Amerikaanse overheid|52.244.48.71|
 |Alle andere regio's|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 U kunt toegang tot de Azure Portal inschakelen door de optie **toegang toestaan vanaf Azure Portal** in te scha kelen, zoals wordt weer gegeven in de volgende scherm afbeelding:
@@ -94,13 +94,13 @@ Wanneer u uw Azure Cosmos DB-account opent vanaf een computer op internet, moet 
 
 ## <a id="configure-ip-firewall-arm"></a>Een IP-Firewall configureren met behulp van een resource manager-sjabloon
 
-Als u toegangs beheer wilt configureren voor uw Azure Cosmos DB-account, zorgt u ervoor dat in de Resource Manager-sjabloon het kenmerk **ipRangeFilter** wordt opgegeven met een lijst met toegestane IP-bereiken. Als u IP-firewall configureert voor een al geïmplementeerd Cosmos-account, moet u ervoor zorgen dat de matrix `locations` overeenkomt met wat er op dat moment is geïmplementeerd. U kunt de matrix met @no__t 0 en andere eigenschappen niet tegelijkertijd wijzigen. Voor meer informatie en voor beelden van Azure Resource Manager sjablonen voor Azure Cosmos DB Zie, [Azure Resource Manager sjablonen voor Azure Cosmos DB](resource-manager-samples.md)
+Als u toegangs beheer wilt configureren voor uw Azure Cosmos DB-account, zorgt u ervoor dat in de Resource Manager-sjabloon het kenmerk **ipRangeFilter** wordt opgegeven met een lijst met toegestane IP-bereiken. Als u IP-firewall configureert voor een al geïmplementeerd Cosmos-account, moet u ervoor zorgen dat de `locations`-matrix overeenkomt met wat er momenteel is geïmplementeerd. U kunt de `locations` matrix en andere eigenschappen niet tegelijkertijd wijzigen. Voor meer informatie en voor beelden van Azure Resource Manager sjablonen voor Azure Cosmos DB Zie, [Azure Resource Manager sjablonen voor Azure Cosmos DB](resource-manager-samples.md)
 
 ```json
 {
   "type": "Microsoft.DocumentDB/databaseAccounts",
   "name": "[variables('accountName')]",
-  "apiVersion": "2016-03-31",
+  "apiVersion": "2019-08-01",
   "location": "[parameters('location')]",
   "kind": "GlobalDocumentDB",
   "properties": {
@@ -108,8 +108,7 @@ Als u toegangs beheer wilt configureren voor uw Azure Cosmos DB-account, zorgt u
     "locations": "[variables('locations')]",
     "databaseAccountOfferType": "Standard",
     "enableAutomaticFailover": "[parameters('automaticFailover')]",
-    "enableMultipleWriteLocations": "[parameters('multipleWriteLocations')]",
-    "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
+    "ipRangeFilter":"40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
   }
 }
 ```

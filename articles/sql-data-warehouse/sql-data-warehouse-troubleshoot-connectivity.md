@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen Azure SQL Data Warehouse | Microsoft Docs
-description: Problemen met Azure SQL Data Warehouse oplossen.
+title: Verbindings problemen oplossen
+description: Probleem oplossing voor connectiviteit in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859229"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692422"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Verbindings problemen oplossen
 
 In dit artikel vindt u algemene technieken voor het oplossen van problemen om verbinding te maken met uw SQL Data Warehouse.
 - [Beschik baarheid van service controleren](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Controleren op onderbroken of schaal bewerking](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Controleer de firewall instellingen](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Controleer de instellingen van uw VNet/service-eind punt](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [Controleren op de meest recente Stuur Programma's](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Controleer uw connection string](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Onregelmatige verbindings problemen](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
+- [Controleren op onderbroken of schaalbewerking](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
+- [Uw firewallinstellingen controleren](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [De instellingen van uw VNet/service-eindpunt controleren](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [Controleren op de meest recente stuurprogramma's](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [Uw verbindingsreeks controleren](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
+- [Onregelmatige verbindingsproblemen](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Veelvoorkomende foutberichten](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Beschik baarheid van service controleren
@@ -41,7 +42,7 @@ Hier wordt de status van uw SQL Data Warehouse weer gegeven. Als de service niet
 
 Als uw resource status laat zien dat uw data warehouse is gepauzeerd of geschaald, volgt u de richt lijnen om uw data warehouse te hervatten.
 
-![Service heeft](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) aanvullende informatie over resource Health gepauzeerd.
+![-service is onderbroken](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) meer informatie over Resource Health vindt u hier.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Controleren op onderbroken of schaal bewerking
 
@@ -57,7 +58,7 @@ Neem anders contact op met uw IT-beheerder om te controleren of dit onderhoud ge
 
 ## <a name="check-your-firewall-settings"></a>Controleer de firewall instellingen
 
-SQL Database Warehouse communiceert via poort 1433.   Als u verbinding probeert te maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database Server, tenzij uw IT-afdeling poort 1433 opent. Meer informatie over Firewall configuraties vindt u [hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+SQL Database Warehouse communiceert via poort 1433.   Als u verbinding probeert te maken vanuit een bedrijfs netwerk, wordt uitgaand verkeer via poort 1433 mogelijk niet toegestaan door de firewall van uw netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt. Meer informatie over Firewall configuraties vindt u [hier](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Controleer de instellingen van uw VNet/service-eind punt
 
@@ -84,7 +85,7 @@ Controleer of u de meest recente versies van het stuur programma gebruikt.  He
 
 ## <a name="check-your-connection-string"></a>Controleer uw connection string
 
-Controleer of de verbindings reeksen juist zijn ingesteld.  Hieronder ziet u enkele voor beelden.  U kunt hier aanvullende informatie vinden over [verbindings reeksen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Controleer of de verbindingsreeksen juist zijn ingesteld.  Hieronder ziet u enkele voor beelden.  Meer informatie over verbindingstekenreeksen vindt u [hier](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
 
 ADO.NET-verbindingsreeks
 
@@ -112,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Onregelmatige verbindings problemen
 
-Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u uw data warehouse schalen voor aanvullende bronnen.
+Controleer of er sprake is van een zware belasting op de server met een groot aantal aanvragen in de wachtrij. Mogelijk moet u uw datawarehouse opschalen voor aanvullende resources.
 
 ## <a name="common-error-messages"></a>Veelvoorkomende foutberichten
 

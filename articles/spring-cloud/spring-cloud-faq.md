@@ -1,20 +1,17 @@
 ---
 title: Veelgestelde vragen over Azure lente Cloud | Microsoft Docs
 description: Raadpleeg de veelgestelde vragen over Azure lente Cloud
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: jeconnoc
+ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163769"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607232"
 ---
 # <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -32,14 +29,14 @@ Azure lente Cloud verbetert de diagnostische ervaring van toepassingen voor ontw
 
 Azure lente-Cloud biedt een service abonnement tijdens de preview-periode.  Een lente-Cloud implementatie bevat 16 vCPU-kernen en 32 GB geheugen.  De bovengrens voor elk micro service-exemplaar binnen een implementatie is 4 vCPU-kernen met 8 GB geheugen.
 
-Bron | Bedrag
+Resource | Aantal
 ------- | -------
 App-exemplaren per lente toepassing | 20
 Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 50 *
 Azure veer Cloud service-instanties per regio per abonnement | twee
 Permanente volumes | 10 x 50 GBytes
 
-*_Open een [ondersteunings ticket](https://azure.microsoft.com/support/faq/) om de limiet te verhogen._
+*_een [ondersteunings ticket](https://azure.microsoft.com/support/faq/) te openen om de limiet te verhogen._
 
 Raadpleeg [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq/)voor meer informatie.
 

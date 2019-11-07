@@ -4,16 +4,16 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: lugoldbe
-ms.openlocfilehash: 9aca01b24bc3351460c462c08689fdaa41e3a755
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: d0cef9f8ec4d7afde4f83e4f83bccdb44d5615ca
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73057281"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581797"
 ---
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
-In dit artikel wordt een Azure Resource Manager sjabloon gebruikt voor het maken van een resource groep, een opslag account en een container, een event hub en een Azure Data Explorer-cluster en-data base. Sla de volgende inhoud op in een bestand met de naam `template.json`, dat wordt gebruikt om het code voorbeeld uit te voeren.
+In dit artikel gebruikt u een Azure Resource Manager sjabloon voor het maken van een resource groep, een opslag account en een container, een Event Hub en een Azure Data Explorer-cluster en-data base. Sla de volgende inhoud op in een bestand met de naam `template.json`. U gebruikt dit bestand om het code voorbeeld uit te voeren.
 
 ```json
 {

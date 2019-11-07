@@ -1,18 +1,18 @@
 ---
-title: Maak een. ODC-bestand om verbinding te maken met een Azure Analysis Services-server | Microsoft Docs
+title: Verbinding maken met Azure Analysis Services met een. ODC-bestand | Microsoft Docs
 description: Meer informatie over hoe u een Office-gegevens verbindings bestand maakt om verbinding te maken met en gegevens op te halen van een Analysis Services-server in Azure.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146678"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572675"
 ---
 # <a name="create-an-office-data-connection-file"></a>Een Office-gegevens verbindings bestand maken
 
@@ -23,11 +23,11 @@ In dit artikel wordt beschreven hoe u een Office-gegevens verbindings bestand ma
 
 2. Wijzig de volgende eigenschappen in `odc:ConnectionString`:
 
-    *   In `Data Source=asazure://<region>.asazure.windows.net/<servername>;` wijzigt u `<region>` in de regio van uw Analysis Services-server en `<servername>` tot de naam van uw server.
+    *   In `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` wijzigen in de regio van uw Analysis Services-server en `<servername>` aan de naam van uw server.
 
-    *   In `Initial Catalog=<database>;` wijzigt u `<database>` in de naam van uw data base.
+    *   In `Initial Catalog=<database>;` `<database>` wijzigen in de naam van uw data base.
 
-3. In `<odc:CommandText>Model</odc:CommandText>` wijzigt u `Model` in de naam van uw model of perspectief. 
+3. In `<odc:CommandText>Model</odc:CommandText>` `Model` wijzigen in de naam van uw model of perspectief. 
 
 4. Sla het bestand met een `.odc`-extensie op in de map C:\Users\\*username*\Documents\My data sources.
 

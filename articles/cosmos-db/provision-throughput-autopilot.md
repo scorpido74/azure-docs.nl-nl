@@ -1,19 +1,19 @@
 ---
-title: Maak Azure Cosmos-containers en-data bases met de door Voer in de automatische test modus.
+title: Azure Cosmos-containers en-data bases maken in de automatische test modus.
 description: Meer informatie over de voor delen, use cases en het inrichten van Azure Cosmos-data bases en-containers in de automatische test modus.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 598dc6394e8be8b3372f4ed61a522454830a22d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512273"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606435"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-with-provisioned-throughput-in-autopilot-mode-preview"></a>Azure Cosmos-containers en-data bases met ingerichte door Voer in de automatische test modus maken (preview)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-containers en-data bases maken in de automatische test modus (preview)
 
 Met Azure Cosmos DB kunt u de door Voer voor uw containers inrichten in hand matig of in de modus Auto Pilot. In dit artikel worden de voor delen en het gebruik van de automatische test modus beschreven.
 
@@ -24,7 +24,9 @@ Naast het hand matig inrichten van de door Voer kunt u nu Azure Cosmos-container
 
 U hoeft de ingerichte door Voer niet meer hand matig te beheren of om problemen met de snelheids beperking te verhelpen. Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype, kunnen direct worden geschaald als reactie op de werk belasting zonder dat dit van invloed is op de beschik baarheid, latentie, door Voer of de prestaties van de werk belasting wereld wijd. Onder hoog gebruik kunnen Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype omhoog of omlaag worden geschaald zonder dat dit van invloed is op de actieve bewerkingen.
 
-Bij het configureren van containers en data bases in de modus voor automatische prototypen, moet u de maximale door Voer opgeven `Tmax` niet worden overschreden. Containers kunnen vervolgens direct worden geschaald op basis van de behoeften van de werk belasting binnen het `0.1*Tmax < T < Tmax` bereik. Met andere woorden, containers en data bases worden onmiddellijk geschaald op basis van de behoeften van de werk belasting, van slechts 10% van de geconfigureerde doorvoer waarde tot de opgegeven maximale geconfigureerde waarde. U kunt de instelling voor de maximale door Voer (tmax) op de auto pilot-data base of container op elk gewenst moment wijzigen.
+Bij het configureren van containers en data bases in de modus voor automatische prototypen, moet u de maximale door Voer opgeven `Tmax` niet worden overschreden. Containers kunnen vervolgens direct worden geschaald op basis van de behoeften van de werk belasting binnen het `0.1*Tmax < T < Tmax` bereik. Met andere woorden, containers en data bases worden direct geschaald op basis van de behoeften van de werk belasting, van slechts 10% van de maximale doorvoer waarde die u hebt geconfigureerd en tot de geconfigureerde maximale doorvoer waarde. U kunt de instelling voor de maximale door Voer (tmax) op de auto pilot-data base of container op elk gewenst moment wijzigen.
+
+Tijdens de preview-versie van auto pilot, voor de opgegeven maximale door Voer voor de container of de data base, kan het systeem binnen de berekende opslag limiet werken. Als de opslag limiet wordt overschreden, wordt de maximale door Voer automatisch aangepast naar een hogere waarde. Wanneer u door Voer op database niveau gebruikt met de modus Automatische test, wordt het aantal containers dat in een Data Base is toegestaan berekend als: (0,001 * maximale door Voer). Als u bijvoorbeeld 20.000 auto pilot RU/s inricht, kan de data base 20 containers bevatten.
 
 ## <a name="benefits-of-autopilot-mode"></a>Voor delen van automatische pilot modus
 
@@ -60,11 +62,21 @@ Oplossingen voor de vorige problemen vereisen niet alleen een enorme hoeveelheid
 
 |  | Containers geconfigureerd in hand matige modus  | Containers die zijn geconfigureerd in de modus voor automatische prototype |
 |---------|---------|---------|
-| **Ingerichte door Voer** | Hand matig ingericht | Proactief en automatisch geschaald op basis van de gebruiks patronen van de werk belasting. |
-| **Frequentie waarmee aanvragen/bewerkingen worden beperkt (429)**  | Dit kan gebeuren als het verbruik de ingerichte capaciteit overschrijdt. | Treedt niet op.  |
+| **Ingerichte door Voer** | Hand matig ingericht | Automatisch en onmiddellijk geschaald op basis van de gebruiks patronen van de werk belasting. |
+| **Frequentie waarmee aanvragen/bewerkingen worden beperkt (429)**  | Dit kan gebeuren als het verbruik de ingerichte capaciteit overschrijdt. | Treedt niet op als de verbruikte door Voer is binnen de maximale door Voer die u hebt gekozen met de automatische test modus.   |
 | **Capaciteitsplanning** |  U moet een eerste capaciteits planning maken en de door Voer die u nodig hebt, inrichten. |    U hoeft zich geen zorgen te maken over capaciteits planning. Het systeem zorgt automatisch voor capaciteits planning en capaciteits beheer. |
 | **Prijzen** | Hand matig ingerichte RU/s per uur. | Voor afzonderlijke accounts voor schrijf regio's betaalt u de door Voer die op elk uur wordt gebruikt, door gebruik te maken van het tarief van de auto pilot RU per uur. <br/><br/>Voor accounts met meerdere schrijf regio's worden er geen extra kosten in rekening gebracht voor auto pilot. U betaalt voor de door Voer die op elk uur wordt gebruikt met hetzelfde tarief van één of meerdere masters per uur. |
 | **Geschikt voor typen werk belastingen** |  Voorspel bare en stabiele workloads|   Onvoorspelbare en variabele workloads  |
+
+## <a name="enable-autopilot-from-azure-portal"></a>Automatische pilot van Azure Portal inschakelen
+
+U kunt automatische pilot in uw Azure Cosmos-accounts uitproberen door in te scha kelen in van Azure Portal. Gebruik de volgende stappen om de auto pilot-optie in te scha kelen:
+
+1. Meld u aan bij de [Azure Portal.](https://portal.azure.com)
+
+2. Ga naar uw Azure Cosmos-account en open het tabblad **nieuwe functies** . Selecteer **automatische pilot** en **Schrijf** u in zoals weer gegeven in de volgende scherm afbeelding:
+
+![Een container maken in de automatische test modus](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Een Data Base of container maken met de automatische test modus
 
@@ -74,13 +86,13 @@ U kunt automatische pilot configureren voor data bases of containers tijdens het
 
 1. Ga naar uw Azure Cosmos-account en open het tabblad **Data Explorer** .
 
-1. Selecteer **nieuwe data base**, voer een naam in voor uw data base. Voor de optie auto **pilot** kiest u **ingeschakeld** en geeft u de maximale door Voer op die de data base niet mag overschrijden bij het gebruik van de auto pilot-optie.
+1. Selecteer **nieuwe container**, voer een naam in voor de container, een partitie sleutel. Selecteer de optie auto **pilot** en kies de maximale door Voer die de container niet mag overschrijden bij het gebruik van de optie Auto Pilot.
 
-   ![Een Data Base maken in de automatische test modus](./media/provision-throughput-autopilot/create-database-autopilot-mode.png)
+   ![Een container maken in de automatische test modus](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Selecteer **OK**
 
-Met vergelijk bare stappen kunt u ook een container maken met een ingerichte door Voer in de automatische test modus.
+Met vergelijk bare stappen kunt u ook een Data Base maken met een ingerichte door Voer in de automatische test modus.
 
 ## <a name="next-steps"></a>Volgende stappen
 

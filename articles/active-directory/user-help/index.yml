@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 96fd0f6612b6c91ce4021b50ffe121b571a5032b
-  ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+  ms.openlocfilehash: c60b536c43b8a82a46ef9176eb077b212da529c0
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/30/2019
-  ms.locfileid: "73160992"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73574215"
 landingContent:
 - title: De Microsoft Authenticator-app instellen en gebruiken
   linkLists:
@@ -73,18 +73,20 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: Prompt voor gegevens toevoegen tijdens aanmelden
       url: security-info-setup-signin.md
-- title: Uw gegevens beheren in de portal Mijn profiel (preview)
+- title: Uw gegevens beheren in de portal Mijn account
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is de portal Mijn profiel (preview)?
-      url: myprofile-portal-overview.md
+    - text: Wat is de portal Mijn account?
+      url: my-account-portal-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Uw organisaties beheren
-      url: myprofile-portal-organizations-page.md
     - text: Uw verbonden apparaten beheren
-      url: myprofile-portal-devices-page.md
+      url: my-account-portal-devices-page.md
+    - text: Uw organisaties beheren
+      url: my-account-portal-organizations-page.md
+    - text: Uw recente aanmeldingsactiviteiten bekijken
+      url: my-account-portal-sign-ins-page.md
 - title: Uw eigen wachtwoord opnieuw instellen
   linkLists:
   - linkListType: overview

@@ -1,18 +1,18 @@
 ---
-title: Verificatie en gebruikers machtigingen in Azure Analysis Services | Microsoft Docs
-description: Meer informatie over verificatie en gebruikers machtigingen in Azure Analysis Services.
+title: Verificatie en gebruikers machtigingen Azure Analysis Services | Microsoft Docs
+description: In dit artikel wordt beschreven hoe Azure Analysis Services Azure Active Directory (Azure AD) gebruikt voor identiteits-en gebruikers verificatie.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a48292b7600d8b9e400bf1e2d61aec313ce29f4b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146868"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572755"
 ---
 # <a name="authentication-and-user-permissions"></a>Verificatie en gebruikersmachtigingen
 
@@ -22,7 +22,7 @@ Azure Analysis Services ondersteunt [Azure AD B2B-samen werking](../active-direc
 
 ![Architectuur van Azure Analysis Services-verificatie](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 Alle client toepassingen en hulpprogram ma's gebruiken een of meer van de Analysis Services- [client bibliotheken](analysis-services-data-providers.md) (AMO, MSOLAP, ADOMD) om verbinding te maken met een server. 
 

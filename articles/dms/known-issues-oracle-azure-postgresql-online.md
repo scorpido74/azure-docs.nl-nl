@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/05/2019
+ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053655"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606761"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Bekende problemen/migratie beperkingen met online migraties van Oracle naar Azure DB voor PostgreSQL-één server
 
@@ -26,7 +26,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van Ora
 
 Azure Database Migration Service ondersteunt het maken van verbinding met:
 
-- Oracle versie 10g, 11c en 12c.
+- Oracle versie 10g, 11g en 12c.
 - Oracle Enter prise, Standard, Express en Personal Edition.
 
 Azure Database Migration Service biedt geen ondersteuning voor het maken van verbinding met de container databases met meerdere tenants (CDBs).

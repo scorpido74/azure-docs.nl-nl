@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met Elastic Database-Hulpprogram Ma's-Azure | Microsoft Docs
+title: Aan de slag met Elastic Database-Hulpprogram Ma's-Azure
 description: Basis uitleg van het onderdeel Elastic Database Hulpprogram Ma's van Azure SQL Database, met inbegrip van een eenvoudige voor beeld-app.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: aa0827bdf6deb388123ed701013ee95f5493eee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8f5d5bbf6509dd908f94f1500e585913cbb34e41
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568469"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690220"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Aan de slag met Elastic Database-Hulpprogram Ma's
 
@@ -54,9 +54,9 @@ Ga als volgt te werk om de JAR-bestanden te maken en aan de slag te gaan met het
     
 5. Voor meer informatie over de mogelijkheden van de client bibliotheek kunt u experimenteren met de verschillende opties. U kunt de code verkennen voor meer informatie over de implementatie van de voor beeld-app.
 
-    ![Progress-java][5]
+    ![Voortgang-java][5]
     
-Gefeliciteerd! U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op Azure SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt. 
+Gefeliciteerd. U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op Azure SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt. 
 
 Voeg de volgende afhankelijkheden toe aan uw POM-bestand om de client bibliotheek toe te voegen aan uw eigen Maven-project:
 
@@ -91,28 +91,28 @@ Voer de volgende stappen uit om het voor beeld te downloaden en uit te voeren:
 
 5. Voor meer informatie over de mogelijkheden van de client bibliotheek kunt u experimenteren met de verschillende opties. Let op de stappen die de toepassing uitvoert in de-console-uitvoer en u kunt de code op de achtergrond verkennen.
    
-    ![Wordt uitgevoerd][4]
+    ![gang][4]
 
-Gefeliciteerd! U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt.
+Gefeliciteerd. U hebt uw eerste Shard-toepassing gemaakt en uitgevoerd met behulp van Elastic Database-Hulpprogram Ma's op SQL Database. Gebruik Visual Studio of SQL Server Management Studio om verbinding te maken met uw SQL database en Bekijk een kort overzicht van de Shards waarin het voor beeld is gemaakt. U ziet nieuwe voor beelden van Shard-data bases en een Shard map Manager-Data Base die het voor beeld heeft gemaakt.
 
 > [!IMPORTANT]
 > U wordt aangeraden altijd de nieuwste versie van Management Studio te gebruiken, zodat u gesynchroniseerd blijft met updates voor Azure en SQL Database. [SQL Server Management Studio bijwerken](https://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="key-pieces-of-the-code-sample"></a>Belangrijkste onderdelen van het code voorbeeld
 
-* **Shards-en Shard-kaarten beheren**: De code laat zien hoe u met Shards, bereiken en toewijzingen in het *ShardManagementUtils.cs* -bestand kunt werken. Zie [data bases schalen met Shard-toewijzings beheer](https://go.microsoft.com/?linkid=9862595)voor meer informatie.  
+* **Shards-en Shard-kaarten beheren**: de code illustreert hoe u kunt werken met Shards, bereiken en toewijzingen in het *ShardManagementUtils.cs* -bestand. Zie [data bases schalen met Shard-toewijzings beheer](https://go.microsoft.com/?linkid=9862595)voor meer informatie.  
 
-* **Gegevens afhankelijke route ring**: Route ring van trans acties naar de juiste Shard wordt weer gegeven in het *DataDependentRoutingSample.cs* -bestand. Zie [gegevens afhankelijke route ring](https://go.microsoft.com/?linkid=9862596)voor meer informatie. 
+* **Gegevens afhankelijke route ring**: route ring van trans acties naar de juiste Shard wordt weer gegeven in het *DataDependentRoutingSample.cs* -bestand. Zie [gegevens afhankelijke route ring](https://go.microsoft.com/?linkid=9862596)voor meer informatie. 
 
-* **Query's uitvoeren op meerdere Shards**: Het uitvoeren van query's via Shards wordt geïllustreerd in het *MultiShardQuerySample.cs* -bestand. Zie [multi-Shard query's](https://go.microsoft.com/?linkid=9862597)voor meer informatie.
+* **Query's uitvoeren via meerdere Shards**: het uitvoeren van query's op Shards wordt geïllustreerd in het *MultiShardQuerySample.cs* -bestand. Zie [multi-Shard query's](https://go.microsoft.com/?linkid=9862597)voor meer informatie.
 
-* **Lege Shards toevoegen**: Het iteratieve toevoegen van nieuwe lege Shards wordt uitgevoerd door de code in het *CreateShardSample.cs* -bestand. Zie [data bases schalen met Shard-toewijzings beheer](https://go.microsoft.com/?linkid=9862595)voor meer informatie.
+* **Lege Shards toevoegen**: het iteratieve toevoegen van nieuwe lege Shards wordt uitgevoerd door de code in het *CreateShardSample.cs* -bestand. Zie [data bases schalen met Shard-toewijzings beheer](https://go.microsoft.com/?linkid=9862595)voor meer informatie.
 
 ## <a name="other-elastic-scale-operations"></a>Andere Elastic Scale-bewerkingen
 
-* **Een bestaande Shard splitsen**: De mogelijkheid om Shards te splitsen, wordt bepaald door het hulp programma voor splitsen en samen voegen. Zie [gegevens verplaatsen tussen uitgeschaalde Cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.
+* **Een bestaande Shard splitsen**: de mogelijkheid om Shards te splitsen, wordt bepaald door het hulp programma voor splitsen en samen voegen. Zie [gegevens verplaatsen tussen uitgeschaalde Cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.
 
-* **Bestaande Shards samen voegen**: Shard-samen voegingen worden ook uitgevoerd met het hulp programma voor splitsen en samen voegen. Zie [gegevens verplaatsen tussen uitgeschaalde Cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.   
+* Het samen voegen van **bestaande Shards**: Shard-samen voegingen worden ook uitgevoerd met behulp van de functie voor splitsen en samen voegen. Zie [gegevens verplaatsen tussen uitgeschaalde Cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)voor meer informatie.   
 
 ## <a name="cost"></a>Kosten
 
@@ -130,10 +130,10 @@ Raadpleeg de volgende artikelen voor meer informatie over Elastic Database-Hulpp
   * Elastic Database-Hulpprogram Ma's ([.net](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Elastic Database-Hulpprogram Ma's voor integratie met Azure SQL-Entity Framework](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Shard-elasticiteit op Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* Blog: [Aankondiging voor Elastic Scale](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
-* Channel 9: [Overzicht van de video over Elastic Scale](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* Discussie forum: [Azure SQL Database forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
-* Prestaties meten: [Prestatiemeteritems voor shard-toewijzingsbeheer](sql-database-elastic-database-client-library.md)
+* Blog: [aankondiging voor Elastic Scale](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
+* Channel 9: [overzicht van video over Elastic Scale](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Discussie forum: [Azure SQL database Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* Prestaties meten: [prestatie meter items voor Shard-toewijzings beheer](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->
 [The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application

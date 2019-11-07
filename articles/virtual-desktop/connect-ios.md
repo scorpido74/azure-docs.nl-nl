@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338693"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605833"
 ---
 # <a name="connect-with-the-ios-client"></a>Verbinding maken met de iOS-client
 
@@ -28,7 +28,7 @@ De iOS bèta-client installeren:
 
 1. Installeer de [Apple TestFlight](https://apps.apple.com/us/app/testflight/id899247664) -app op uw IOS-apparaat.
 2. Open een browser op uw iOS-apparaat en ga naar [aka.MS/rdiosbeta](https://aka.ms/rdiosbeta).
-3. Klik onder het **label stap 2: Meld u aan**bij de bèta versie en selecteer **testen starten**.
+3. Onder het label **stap 2: deel nemen aan de bèta versie**, selecteer **testen starten**.
 4. Wanneer u bent omgeleid naar de TestFlight-app, selecteert u **accepteren**en selecteert u **installeren**.
 
 ## <a name="subscribe-to-a-feed"></a>Abonneren op een feed
@@ -37,9 +37,9 @@ Abonneer u op de feed van uw beheerder om de lijst met beheerde resources te ver
 
 Abonneren op een feed:
 
-1. Tik **+** in het verbindings centrum en tik vervolgens op **werk ruimte toevoegen**.
+1. Tik in het verbindings centrum op **+** en tik vervolgens op **werk ruimte toevoegen**.
 2. Voer de URL van de feed in het veld URL van de **feed** in. De feed-URL kan een URL of een e-mail adres zijn.
-   - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is <https://rdweb.wvd.microsoft.com>de URL.
+   - Als u een URL gebruikt, gebruikt u de beheerder die u hebt ontvangen. Normaal gesp roken is de URL <https://rdweb.wvd.microsoft.com>.
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
 3. Tik op **volgende**.
 4. Geef uw referenties op wanneer u hierom wordt gevraagd.

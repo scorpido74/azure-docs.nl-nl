@@ -1,8 +1,6 @@
 ---
 title: Implementatie sleuven Azure Functions
 description: Meer informatie over het maken en gebruiken van implementatie sleuven met Azure Functions
-services: functions
-documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, functions
@@ -10,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70085669"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576323"
 ---
 # <a name="azure-functions-deployment-slots"></a>Implementatie sleuven Azure Functions
 
@@ -27,7 +25,7 @@ Hieronder ziet u hoe de functies worden beïnvloed door de wisselende sleuven:
 - Als tijdens een swap een functie wordt uitgevoerd, worden de uitvoeringen voortgezet en worden de volgende triggers doorgestuurd naar het verwisselde app-exemplaar.
 
 > [!NOTE]
-> Er zijn geen sleuven beschikbaar voor het verbruiks abonnement voor Linux.
+> Er zijn momenteel geen sleuven beschikbaar voor het verbruiks abonnement voor Linux.
 
 ## <a name="why-use-slots"></a>Waarom sleuven gebruiken?
 
@@ -111,8 +109,8 @@ U kunt sleuven wisselen via de [cli](https://docs.microsoft.com/cli/azure/functi
 
 1. Ga naar de functie-app
 1. Klik op de naam van de bron sleuf die u wilt wisselen
-1. Klik op het tabblad *overzicht* op de knop **wisselen** ![Swap Azure functions implementatie sleuf ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Controleer de configuratie-instellingen voor uw swap en klik op **wisselen** ![Swap Azure functions implementatie sleuf ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Klik op het tabblad *overzicht* op de knop **wissel** ![Azure functions implementatie sleuf te wisselen](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Controleer de configuratie-instellingen voor uw swap en klik op **swap** ![swap Azure functions implementatie site](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 De bewerking kan even duren wanneer de wissel bewerking wordt uitgevoerd.
 
@@ -169,7 +167,7 @@ Gebruik de volgende stappen om het app service-plan van een sleuf te wijzigen:
 Azure Functions implementatie sleuven hebben de volgende beperkingen:
 
 - Het aantal beschik bare sleuven voor een app is afhankelijk van het plan. Het verbruiks abonnement is slechts één implementatie sleuf toegestaan. Er zijn extra sleuven beschikbaar voor apps die worden uitgevoerd onder het App Service-abonnement.
-- Als u een sleuf verwisselt, worden sleutels voor apps waarvoor een `AzureWebJobsSecretStorageType` app-instelling gelijk is aan `files` opnieuw ingesteld.
+- Als u een sleuf verwisselt, worden sleutels voor apps waarvoor een `AzureWebJobsSecretStorageType` app-instelling gelijk is aan `files`opnieuw ingesteld.
 - Er zijn geen sleuven beschikbaar voor het verbruiks abonnement voor Linux.
 
 ## <a name="support-levels"></a>Ondersteuningsniveaus
@@ -182,10 +180,10 @@ Er zijn twee ondersteunings niveaus voor implementatie sites:
 | Besturings systeem/hosting abonnement           | Ondersteunings niveau     |
 | ------------------------- | -------------------- |
 | Windows-verbruik       | Algemene beschikbaarheid |
-| Windows Premium (preview-versie) | Preview              |
+| Windows Premium           | Algemene beschikbaarheid  |
 | Windows toegewezen         | Algemene beschikbaarheid |
 | Linux-verbruik         | Niet ondersteund          |
-| Linux Premium (preview-versie)   | Preview              |
+| Linux Premium             | Algemene beschikbaarheid  |
 | Speciaal voor Linux           | Algemene beschikbaarheid |
 
 ## <a name="next-steps"></a>Volgende stappen

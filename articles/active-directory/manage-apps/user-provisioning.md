@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330028"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641453"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory automatiseren
 
-Met Azure Active Directory (Azure AD) kunt u het maken, onderhouden en verwijderen van gebruikers identiteiten in Cloud toepassingen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) automatiseren, zoals Dropbox, Sales Force, ServiceNow en meer. Dit wordt ook wel geautomatiseerde gebruikers inrichting voor SaaS-apps genoemd.
+Met Azure Active Directory (Azure AD) kunt u het maken, onderhouden en verwijderen van gebruikers identiteiten automatiseren in Cloud-SaaS-toepassingen, zoals [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Sales Force](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)en meer. Dit wordt ook wel geautomatiseerde gebruikers inrichting voor SaaS-apps genoemd.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -56,11 +56,14 @@ Enkele veelvoorkomende motivaties voor het gebruik van deze functie zijn:
 
 De **Azure AD-inrichtings service** voorziet gebruikers van SaaS-apps en andere systemen door verbinding te maken met gebruikers beheer-API-eind punten die door elke leverancier van de toepassing worden geleverd. Met deze gebruikers beheer-API-eind punten kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen.
 
-![Azure AD Provisioning Service @ no__t-1*afbeelding 1: de Azure AD-inrichtings service*
+![Azure AD Provisioning Service](./media/user-provisioning/provisioning0.PNG)
+*afbeelding 1: de Azure AD-inrichtings service*
 
-![Outbound gebruikers inrichten werk stroom @ no__t-1*afbeelding 2: ' uitgaande ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
+![werk stroom voor uitgaand gebruikers inrichten](./media/user-provisioning/provisioning1.PNG)
+*afbeelding 2: ' uitgaande ' werk stroom voor gebruikers inrichting van Azure AD naar populaire SaaS-toepassingen*
 
-![Inbound gebruikers inrichten werk stroom @ no__t-1*afbeelding 3: ' inbound ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
+![werk stroom voor het inrichten van inkomend gebruikers](./media/user-provisioning/provisioning2.PNG)
+*afbeelding 3: ' Inkomend ' werk stroom voor gebruikers inrichting van populaire HCM-toepassingen (Human Capital Management) tot Azure Active Directory en Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Welke toepassingen en systemen kan ik gebruiken met automatische gebruikers inrichting van Azure AD?
 
@@ -87,11 +90,7 @@ Gebruik de Azure Active Directory Portal om de Azure AD-inrichtings service voor
 
 1. Open de **[Azure Active Directory Portal](https://aad.portal.azure.com)** .
 1. Selecteer **bedrijfs toepassingen** in het linkerdeel venster. Er wordt een lijst weer gegeven met alle geconfigureerde apps.
-1. Kies **+ nieuwe toepassing** om een toepassing toe te voegen. Voeg een van de volgende opties toe, afhankelijk van uw scenario:
-
-   - De optie **uw eigen app toevoegen** ondersteunt aangepaste, ontwikkelde scim-integraties.
-   - Alle toepassingen in het gedeelte **toevoegen van de galerie** > **Aanbevolen toepassingen** ondersteunen automatische inrichting. Zie de [lijst met zelf studies voor toepassingen voor het inrichten van gebruikers](../saas-apps/tutorial-list.md) voor extra.
-
+1. Kies **+ nieuwe toepassing** om een toepassing toe te voegen. 
 1. Geef de details op en selecteer **toevoegen**. De nieuwe app wordt toegevoegd aan de lijst met bedrijfs toepassingen en wordt geopend op het scherm toepassings beheer.
 1. Selecteer **inrichting** om de instellingen voor het inrichten van gebruikers accounts voor de app te beheren.
 
@@ -193,7 +192,7 @@ Zie problemen met het [configureren en inrichten van gebruikers voor een toepass
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Voor een voor beeld van een stapsgewijze implementatie plan voor het inrichten van een uitgaande gebruiker naar een toepassing raadpleegt u de [hand leiding voor identiteits implementatie voor gebruikers inrichting](https://aka.ms/userprovisioningdeploymentplan).
+Voor een voor beeld van een stapsgewijze implementatie plan voor het inrichten van een uitgaande gebruiker naar een toepassing raadpleegt u de [hand leiding voor identiteits implementatie voor gebruikers inrichting](https://aka.ms/deploymentplans/userprovisioning).
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
@@ -225,7 +224,7 @@ Als tijdelijke oplossing moet u de groepen met de gebruikers die moeten worden i
 
 Ja. We gebruiken HTTPS SSL-versleuteling voor het server doel.
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 - [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
 - [Kenmerk toewijzingen aanpassen voor het inrichten van gebruikers](customize-application-attributes.md)

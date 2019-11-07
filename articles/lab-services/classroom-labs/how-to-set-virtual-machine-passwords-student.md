@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 26b0f710590496875521e0dd8577a35841fbd3dd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c757ef8508f9364a46116e6ddf19207f23a4b6f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657006"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583659"
 ---
 # <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-students"></a>Wacht woord instellen of opnieuw instellen voor virtuele machines in klassikale Labs (studenten)
 In dit artikel wordt beschreven hoe studenten het wacht woord voor hun Vm's kunnen instellen of opnieuw instellen. 
@@ -40,4 +40,4 @@ Student kunt u het wacht woord ook instellen door te klikken op het overloop men
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor meer informatie over andere gebruiks opties voor studenten die een Lab-eigenaar kan configureren: Het gebruik van de [student configureren](how-to-configure-student-usage.md).
+Zie het volgende artikel: het [gebruik van studenten configureren](how-to-configure-student-usage.md)voor meer informatie over andere gebruiks opties voor studenten die een Lab-eigenaar kan configureren.

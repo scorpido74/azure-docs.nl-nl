@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 930a0c6e854823189bc3bf561bd42027e56f5600
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 06f2019dbaff390e88c73d1aae7a635a34a64721
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086931"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614613"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions uitvoeren als webjobs
 
@@ -22,9 +22,9 @@ Durable Functions maakt standaard gebruik van de Azure Functions runtime voor he
 
 [Azure functions](../functions-overview.md) en de uitbrei ding [Durable functions](durable-functions-overview.md) zijn gebaseerd op de [webjobs SDK](../../app-service/webjobs-sdk-how-to.md). De beveiligingshost in de webjobs SDK is de runtime in Azure Functions. Als u het gedrag wilt beheren op manieren die niet mogelijk zijn in Azure Functions, kunt u Durable Functions ontwikkelen en uitvoeren met behulp van de webjobs SDK zelf.
 
-In versie 3. x van de webjobs SDK is de host een implementatie van `IHost`en in versie 2. x gebruikt u het `JobHost` -object.
+In versie 3. x van de webjobs SDK is de host een implementatie van `IHost`en in versie 2. x gebruikt u het `JobHost`-object.
 
-Het voor beeld van koppelen Durable functions is beschikbaar in een webjobs SDK 2. x-versie: down load of kloon de [Durable functions-opslag plaats](https://github.com/azure/azure-functions-durable-extension/)en ga naar de map met voor *beelden\\van webjobssdk\\* -koppeling.
+Het voor beeld van koppelen Durable Functions is beschikbaar in een webjobs SDK 2. x versie: down load of kloon de [Durable functions opslagplaats](https://github.com/azure/azure-functions-durable-extension/)en ga naar de voor *beelden\\webjobssdk\\Chaining* -map.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,7 +38,7 @@ Als u de stappen in dit artikel wilt uitvoeren:
 
 * [Installeer Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) met de werk belasting van **Azure Development** .
 
-  Als u Visual Studio al hebt, maar deze werk belasting niet hebt, voegt u de werk belasting toe door **extra** > hulp**middelen en functies**te selecteren.
+  Als u Visual Studio al hebt, maar deze werk belasting niet hebt, voegt u de werk belasting toe door **extra** > **Hulpprogram Ma's en functies ophalen**te selecteren.
 
   (In plaats daarvan kunt u [Visual Studio code](https://code.visualstudio.com/) gebruiken, maar sommige instructies zijn specifiek voor Visual Studio.)
 
@@ -52,9 +52,9 @@ In dit artikel wordt uitgelegd hoe u een webjobs SDK 2. x-project ontwikkelt (ge
 
 Als u Durable Functions als webjobs wilt uitvoeren, moet u eerst een console-app maken. Een webjobs SDK-project is slechts een console-app-project waarop de juiste NuGet-pakketten zijn geïnstalleerd.
 
-Selecteer in het dialoog venster Visual Studio **New Project** de optie **Windows Classic Desktop** > **console app (.NET Framework)** . In het project bestand `TargetFrameworkVersion` moet zijn. `v4.6.1`
+Selecteer in het dialoog venster Visual Studio **Nieuw project** de optie **Windows Classic Desktop** > **console-app (.NET Framework)** . In het project bestand moet de `TargetFrameworkVersion` worden `v4.6.1`.
 
-Visual Studio heeft ook een project sjabloon voor webtaaksen, die u kunt gebruiken door **Cloud** > **Azure Webtaak (.NET Framework)** te selecteren. Met deze sjabloon worden veel pakketten geïnstalleerd, wat u mogelijk niet nodig hebt.
+Visual Studio heeft ook een project sjabloon voor webtaaksen, die u kunt gebruiken door **Cloud** > **Azure-webtaak (.NET Framework)** te selecteren. Met deze sjabloon worden veel pakketten geïnstalleerd, wat u mogelijk niet nodig hebt.
 
 ## <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
@@ -63,10 +63,10 @@ U hebt NuGet-pakketten nodig voor de webjobs SDK, kern bindingen, het registrati
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions -version 2.2.0
 Install-Package Microsoft.Extensions.Logging -version 2.0.1
-Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.4.0
+Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
-U hebt ook registratie providers nodig. Met de volgende opdrachten installeert u de Azure-toepassing Insights- `ConfigurationManager`provider en de. `ConfigurationManager` Hiermee kunt u de Application Insights instrumentatie sleutel ophalen uit de app-instellingen.
+U hebt ook registratie providers nodig. Met de volgende opdrachten wordt de Azure-toepassing Insights-provider en de `ConfigurationManager`geïnstalleerd. Met de `ConfigurationManager` kunt u de Application Insights instrumentatie sleutel van de app-instellingen ophalen.
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -83,7 +83,7 @@ Install-Package Microsoft.Extensions.Logging.Console -version 2.0.1
 
 Nadat u de console-app hebt gemaakt en de NuGet-pakketten hebt geïnstalleerd die u nodig hebt, kunt u Durable Functions gaan gebruiken. U kunt dit doen met behulp van JobHost-code.
 
-Als u de extensie Durable functions wilt gebruiken `UseDurableTask` , roept `JobHostConfiguration` u het object `Main` op in uw methode:
+Als u de extensie Durable Functions wilt gebruiken, roept u `UseDurableTask` aan op het `JobHostConfiguration`-object in uw `Main` methode:
 
 ```cs
 var config = new JobHostConfiguration();
@@ -93,9 +93,9 @@ config.UseDurableTask(new DurableTaskExtension
 };
 ```
 
-Zie [host. json](../functions-host-json.md#durabletask)voor een lijst met eigenschappen die u `DurableTaskExtension` in het object kunt instellen.
+Zie [host. json](../functions-host-json.md#durabletask)voor een lijst met eigenschappen die u kunt instellen in het `DurableTaskExtension`-object.
 
-De `Main` methode is ook de locatie voor het instellen van logboek registratie providers. In het volgende voor beeld worden de-console en de Application Insights providers geconfigureerd.
+De `Main` methode is ook de plaats voor het instellen van logboek registratie providers. In het volgende voor beeld worden de-console en de Application Insights providers geconfigureerd.
 
 ```cs
 static void Main(string[] args)
@@ -124,7 +124,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 Durable Functions in de context van webjobs verschilt enigszins van Durable Functions in de context van Azure Functions. Het is belang rijk om rekening te houden met de verschillen tijdens het schrijven van code.
 
@@ -136,7 +136,7 @@ De webjobs SDK biedt geen ondersteuning voor de volgende Azure Functions-functie
 
 ### <a name="functionname-attribute"></a>Functie naam kenmerk
 
-In een webjobs SDK-project is de naam van de methode van een functie de naam van de functie. Het `FunctionName` kenmerk wordt alleen gebruikt in azure functions.
+In een webjobs SDK-project is de naam van de methode van een functie de naam van de functie. Het `FunctionName` kenmerk wordt alleen gebruikt in Azure Functions.
 
 ### <a name="http-trigger"></a>HTTP-trigger
 
@@ -162,7 +162,7 @@ In een webjobs SDK-project kunt u methoden aanroepen op het object van de Orches
 * `RaiseEventAsync`
 * `TerminateAsync`
 
-De functie Orchestration client in het voorbeeld project start de Orchestrator-functie en gaat vervolgens naar een lus die elke 2 seconden `GetStatusAsync` aanroept:
+De functie Orchestration client in het voorbeeld project start de Orchestrator-functie en gaat vervolgens naar een lus die `GetStatusAsync` elke 2 seconden aanroept:
 
 ```cs
 string instanceId = await client.StartNewAsync(nameof(HelloSequence), input: null);
@@ -189,7 +189,7 @@ while (true)
 
 U hebt Durable Functions ingesteld om te worden uitgevoerd als Webtaak en u hebt nu een uitleg over hoe dit verschilt van het uitvoeren van Durable Functions als zelfstandige Azure Functions. Op dit moment kan het nuttig zijn om de IT-afdeling te bekijken in een voor beeld.
 
-Deze sectie bevat een overzicht van hoe u het [voorbeeld project](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)uitvoert. Zie [aan de slag met de SDK](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)voor webjobs voor gedetailleerde instructies voor het lokaal uitvoeren van een webjobs SDK-project en het implementeren ervan in een Azure-Webtaak.
+Deze sectie bevat een overzicht van hoe u het [voorbeeld project](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)uitvoert. Zie [aan de slag met de SDK voor Webjobs](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)voor gedetailleerde instructies voor het lokaal uitvoeren van een webjobs SDK-project en het implementeren ervan in een Azure-Webtaak.
 
 ### <a name="run-locally"></a>Lokaal uitvoeren
 
@@ -207,21 +207,21 @@ Deze sectie bevat een overzicht van hoe u het [voorbeeld project](https://github
 
 1. Maak een web-app en een opslag account.
 
-1. Sla in de Web-App de opslag connection string op in een app- `AzureWebJobsStorage`instelling met de naam.
+1. Sla in de Web-App de opslag connection string op in een app-instelling met de naam `AzureWebJobsStorage`.
 
 1. Maak een Application Insights resource en gebruik het **algemene** app-type hiervoor.
 
-1. Sla de instrumentatie sleutel op in een app- `APPINSIGHTS_INSTRUMENTATIONKEY`instelling met de naam.
+1. Sla de instrumentatie sleutel op in een app-instelling met de naam `APPINSIGHTS_INSTRUMENTATIONKEY`.
 
 1. Implementeren als Webtaak.
 
 ## <a name="webjobs-sdk-3x"></a>Webjobs SDK 3. x
 
-In dit artikel wordt uitgelegd hoe u een webjobs SDK 2. x-project ontwikkelt. Als u een webjobs [SDK 3. x](../../app-service/webjobs-sdk-get-started.md) -project ontwikkelt, helpt deze sectie u bij het begrijpen van de verschillen.
+In dit artikel wordt uitgelegd hoe u een webjobs SDK 2. x-project ontwikkelt. Als u een [Webjobs SDK 3. x](../../app-service/webjobs-sdk-get-started.md) -project ontwikkelt, helpt deze sectie u bij het begrijpen van de verschillen.
 
 De belangrijkste wijziging die wordt geïntroduceerd, is het gebruik van .NET core in plaats van .NET Framework. Als u een webjobs SDK 3. x-project wilt maken, zijn de instructies hetzelfde, met de volgende uitzonde ringen:
 
-1. Een .NET Core-Console-app maken. Selecteer in het dialoog venster Visual Studio **Nieuw project** de optie **.net core** >  **-console-app (.net core)** . In het project bestand wordt `TargetFramework` opgegeven `netcoreapp2.x`dat.
+1. Een .NET Core-Console-app maken. Selecteer in het dialoog venster Visual Studio **New Project** de optie **.net core** > **console-app (.net core)** . Het project bestand geeft aan dat `TargetFramework` is `netcoreapp2.x`.
 
 1. Kies de release versie webjobs SDK 3. x van de volgende pakketten:
 
@@ -238,7 +238,7 @@ De belangrijkste wijziging die wordt geïntroduceerd, is het gebruik van .NET co
         }
     ```
 
-1. Wijzig de `Main` methode code om dit te doen. Hier volgt een voorbeeld:
+1. Wijzig de code van de `Main` methode. Hier volgt een voorbeeld:
 
    ```cs
    static void Main(string[] args)

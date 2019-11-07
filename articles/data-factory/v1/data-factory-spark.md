@@ -1,5 +1,5 @@
 ---
-title: Spark-Program ma's aanroepen vanuit Azure Data Factory | Microsoft Docs
+title: Spark-Program ma's aanroepen vanuit Azure Data Factory
 description: Meer informatie over het aanroepen van Spark-Program ma's vanuit een Azure-data factory met behulp van de MapReduce-activiteit.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 08aa1303aeaa0a80f0825f45e037109b98e9771e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135342"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666180"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Spark-Program ma's aanroepen vanuit Azure Data Factory pijp lijnen
 
@@ -42,10 +42,10 @@ De Spark-activiteit is een van de [activiteiten voor gegevens transformatie](dat
 > - De Spark-activiteit biedt geen ondersteuning voor HDInsight Spark-clusters die gebruikmaken van Azure Data Lake Store als primaire opslag.
 > - De Spark-activiteit ondersteunt alleen bestaande (uw eigen) HDInsight Spark-clusters. Er wordt geen ondersteuning geboden voor een gekoppelde HDInsight-service op aanvraag.
 
-## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Walkthrough: Een pijplijn maken met Spark-activiteit
+## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Walkthrough: een pijp lijn maken met een Spark-activiteit
 Hier volgen de typische stappen voor het maken van een data factory pijp lijn met een Spark-activiteit: 
 
-* Een data factory maken.
+* Maak een gegevensfactory.
 * Maak een Azure Storage gekoppelde service om uw opslag die aan uw HDInsight Spark-cluster is gekoppeld, te koppelen aan de data factory.
 * Maak een gekoppelde HDInsight-service om uw Spark-cluster in HDInsight te koppelen aan de data factory.
 * Een gegevensset maken die verwijst naar de opslag-gekoppelde service. Op dit moment moet u een uitvoer gegevensset opgeven voor een activiteit, zelfs als er geen uitvoer wordt geproduceerd. 
@@ -56,14 +56,14 @@ Hier volgen de typische stappen voor het maken van een data factory pijp lijn me
 
 1. Maak een Spark-cluster in HDInsight door de instructies in de zelf studie [een Spark-cluster maken in hdinsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)te volgen. Koppel het opslag account dat u in stap 1 hebt gemaakt met dit cluster.
 
-1. Down load en controleer het python- script bestand test.py [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)dat zich bevindt in.
+1. Down load en controleer het python-script bestand **test.py** dat zich op [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py)bevindt.
 
 1. Upload **test.py** naar de map **pyFiles** in de container **adfspark** in uw Blob-opslag. Maak de container en de map als deze nog niet bestaan.
 
-### <a name="create-a-data-factory"></a>Data factory maken
+### <a name="create-a-data-factory"></a>Een data factory maken
 Volg deze stappen om een data factory te maken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer **Nieuw** > **Gegevens en analyses** > **Data Factory**.
 
@@ -99,7 +99,7 @@ In deze stap koppelt u uw opslagaccount aan uw data factory. Een gegevensset die
 
 1. Selecteer **Nieuwe gegevensopslag** en kies **Azure Storage**.
 
-   ![Nieuwe gegevensopslag](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
+   ![Nieuwe gegevens opslag](./media/data-factory-spark/new-data-store-azure-storage-menu.png)
 
 1. Het JSON-script dat u gebruikt voor het maken van een gekoppelde opslag service wordt weer gegeven in de editor.
 
@@ -112,7 +112,7 @@ In deze stap koppelt u uw opslagaccount aan uw data factory. Een gegevensset die
 #### <a name="create-an-hdinsight-linked-service"></a>Een gekoppelde HDInsight-service maken
 In deze stap maakt u een gekoppelde HDInsight-service om uw HDInsight Spark-cluster te koppelen aan de data factory. Het HDInsight-cluster wordt gebruikt voor het uitvoeren van het Spark-programma dat is opgegeven in de Spark-activiteit van de pijp lijn in dit voor beeld. 
 
-1. Selecteer in de Data Factory editor **meer** > **nieuwe Compute** > **HDInsight-cluster**.
+1. Selecteer in de Data Factory editor **meer** > **nieuw Compute** > **HDInsight-cluster**.
 
     ![Gekoppelde HDInsight-service maken](media/data-factory-spark/new-hdinsight-linked-service.png)
 
@@ -224,9 +224,9 @@ In deze stap maakt u een pijp lijn met een HDInsightSpark-activiteit. Op dit mom
     d. De eigenschap **getDebugInfo** is ingesteld op **Always**, wat betekent dat de logboek bestanden altijd worden gegenereerd (geslaagd of mislukt).
 
     > [!IMPORTANT]
-    > U wordt aangeraden deze eigenschap niet in te `Always` stellen in een productie omgeving, tenzij u een probleem wilt oplossen.
+    > U wordt aangeraden deze eigenschap niet in te stellen op `Always` in een productie omgeving, tenzij u een probleem wilt oplossen.
 
-    e. De sectie outputs heeft één uitvoer gegevensset. U moet een uitvoer gegevensset opgeven, zelfs als het Spark-programma geen uitvoer produceert. De uitvoer gegevensset stuurt de planning voor de pijp lijn (per uur, dagelijks). 
+    e. De sectie **outputs** heeft één uitvoer gegevensset. U moet een uitvoer gegevensset opgeven, zelfs als het Spark-programma geen uitvoer produceert. De uitvoer gegevensset stuurt de planning voor de pijp lijn (per uur, dagelijks). 
 
     Zie de sectie [Eigenschappen van Spark-activiteit](#spark-activity-properties)voor meer informatie over de eigenschappen die door de Spark-activiteit worden ondersteund.
 
@@ -249,7 +249,7 @@ In deze stap maakt u een pijp lijn met een HDInsightSpark-activiteit. Op dit mom
 
 1. Start de Jupyter Notebook voor uw HDInsight Spark-cluster door naar [deze website](https://CLUSTERNAME.azurehdinsight.net/jupyter)te gaan. U kunt ook een cluster dashboard voor uw HDInsight Spark-cluster openen en vervolgens de Jupyter Notebook starten.
 
-1. Selecteer **nieuwe** > **PySpark** om een nieuw notitie blok te starten.
+1. Selecteer **nieuw** > **PySpark** om een nieuw notitie blok te starten.
 
     ![Jupyter nieuwe notebook](media/data-factory-spark/jupyter-new-book.png)
 
@@ -324,18 +324,18 @@ Hier volgt een voor beeld van de JSON-definitie van een pijp lijn met een Spark-
 
 In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-definitie worden gebruikt.
 
-| Eigenschap | Description | Vereist |
+| Eigenschap | Beschrijving | Vereist |
 | -------- | ----------- | -------- |
-| name | De naam van de activiteit in de pijp lijn. | Ja |
+| naam | De naam van de activiteit in de pijp lijn. | Ja |
 | description | Tekst die beschrijft wat de activiteit doet. | Nee |
-| Type | Deze eigenschap moet worden ingesteld op HDInsightSpark. | Ja |
+| type | Deze eigenschap moet worden ingesteld op HDInsightSpark. | Ja |
 | linkedServiceName | De naam van de gekoppelde HDInsight-service waarop het Spark-programma wordt uitgevoerd. | Ja |
 | rootPath | De BLOB-container en de map waarin het Spark-bestand zich bevindt. De bestands naam is hoofdletter gevoelig. | Ja |
 | entryFilePath | Relatief pad naar de hoofdmap van de Spark-code/-pakket. | Ja |
 | className | De hoofd klasse java/Spark van de toepassing. | Nee |
-| arguments | Een lijst met opdracht regel argumenten voor het Spark-programma. | Nee |
+| opmerkingen | Een lijst met opdracht regel argumenten voor het Spark-programma. | Nee |
 | proxyUser | Het gebruikers account dat moet worden geïmiteerd voor het uitvoeren van het Spark-programma. | Nee |
-| sparkConfig | Geef waarden op voor de Spark-configuratie- [eigenschappen die worden vermeld in Spark-configuratie: Eigenschappen](https://spark.apache.org/docs/latest/configuration.html#available-properties)van toepassing. | Nee |
+| sparkConfig | Geef waarden op voor de Spark-configuratie-eigenschappen die worden vermeld in [Spark-configuratie: toepassings eigenschappen](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Nee |
 | getDebugInfo | Hiermee geeft u op wanneer de Spark-logboek bestanden worden gekopieerd naar de opslag die wordt gebruikt door het HDInsight-cluster (of) dat is opgegeven door sparkJobLinkedService. Toegestane waarden zijn geen, altijd of mislukt. De standaard waarde is geen. | Nee |
 | sparkJobLinkedService | De gekoppelde opslag service die het Spark-taak bestand, de afhankelijkheden en de logboeken bevat. Als u geen waarde voor deze eigenschap opgeeft, wordt de opslag gebruikt die aan het HDInsight-cluster is gekoppeld. | Nee |
 
@@ -344,10 +344,10 @@ De Spark-activiteit biedt geen ondersteuning voor een inline-script als Pig en H
 
 Maak de volgende mapstructuur in de Blob-opslag waarnaar wordt verwezen door de gekoppelde HDInsight-service. Upload vervolgens afhankelijke bestanden naar de juiste submappen in de hoofdmap die wordt vertegenwoordigd door **entryFilePath**. Upload bijvoorbeeld python-bestanden naar de pyFiles-submap en JAR-bestanden naar de submap potten van de hoofdmap. Tijdens runtime verwacht de Data Factory-service de volgende mapstructuur in de Blob-opslag: 
 
-| Path | Description | Vereist | type |
+| Pad | Beschrijving | Vereist | Type |
 | ---- | ----------- | -------- | ---- |
 | . | Het pad naar de hoofdmap van de Spark-taak in de gekoppelde Storage-service. | Ja | Map |
-| &lt;door de gebruiker gedefinieerd&gt; | Het pad dat naar het invoer bestand van de Spark-taak verwijst. | Ja | File |
+| door de gebruiker gedefinieerde &gt; &lt; | Het pad dat naar het invoer bestand van de Spark-taak verwijst. | Ja | File |
 | ./jars | Alle bestanden in deze map worden geüpload en geplaatst op het Java-klassenpad van het cluster. | Nee | Map |
 | ./pyFiles | Alle bestanden in deze map worden geüpload en geplaatst op de PYTHONPATH van het cluster. | Nee | Map |
 | ./files | Alle bestanden in deze map worden geüpload en geplaatst op de werk directory van de uitvoerder. | Nee | Map |

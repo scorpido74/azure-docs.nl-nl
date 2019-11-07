@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database instantie groepen (preview) | Microsoft Docs
+title: Azure SQL Database instantie groepen (preview-versie)
 description: In dit artikel worden Azure SQL Database-instantie groepen (preview-versie) beschreven.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 34e779f04f59b23733c6fbfa3450931fccb442b1
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 7d8c316d5c78cfe09bcf134b5a5c513e1c007d74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294254"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689765"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Wat zijn SQL Database exemplaar groepen (preview)?
 
 Exemplaar groepen zijn een nieuwe resource in Azure SQL Database die een handige en rendabele manier biedt om kleinere SQL-instanties op schaal te migreren naar de Cloud.
 
-Met instantie groepen kunt u de reken resources vooraf inrichten op basis van uw totale migratie vereisten. U kunt vervolgens verschillende afzonderlijke beheerde exemplaren implementeren tot uw vooraf ingerichte reken niveau. Als u bijvoorbeeld 8 vCores vooraf inricht, kunt u twee vCore-en 4 vCore-instanties implementeren en vervolgens data bases migreren naar deze instanties. Voordat instantie groepen beschikbaar zijn, moeten kleinere en minder Compute-workloads vaak worden geconsolideerd in een groter beheerd exemplaar wanneer deze naar de cloud worden gemigreerd. De nood zaak om groepen data bases te migreren naar een grote instantie vereist meestal een zorgvuldige capaciteits planning en resource governance, extra veiligheids overwegingen en sommige extra gegevens consolidatie op het niveau van de instantie.
+Met exemplaarpools kunt u rekenresources vooraf inrichten overeenkomstig uw totale migratievereisten. Vervolgens kunt u verschillende afzonderlijke beheerd exemplaren implementeren, tot uw vooraf ingerichte rekenniveau. Als u bijvoorbeeld 8 vCores vooraf inricht, kunt u twee vCore-en 4 vCore-instanties implementeren en vervolgens data bases migreren naar deze instanties. Voordat instantie groepen beschikbaar zijn, moeten kleinere en minder Compute-workloads vaak worden geconsolideerd in een groter beheerd exemplaar wanneer deze naar de cloud worden gemigreerd. De nood zaak om groepen data bases te migreren naar een grote instantie vereist meestal een zorgvuldige capaciteits planning en resource governance, extra veiligheids overwegingen en sommige extra gegevens consolidatie op het niveau van de instantie.
 
 Daarnaast ondersteunen instantie groepen systeem eigen VNet-integratie zodat u meerdere exemplaar groepen en meerdere afzonderlijke instanties in hetzelfde subnet kunt implementeren.
 
@@ -31,7 +31,7 @@ Daarnaast ondersteunen instantie groepen systeem eigen VNet-integratie zodat u m
 
 Exemplaar groepen bieden de volgende voor delen:
 
-1. De mogelijkheid om 2 vCore-instanties te hosten. *Alleen voor instanties in exemplaar groepen. \**
+1. De mogelijkheid om 2 vCore-instanties te hosten. *\*alleen voor instanties in exemplaar groepen*.
 2. Voorspel bare en snelle exemplaar implementatie tijd (Maxi maal 5 minuten).
 3. Minimale toewijzing van IP-adressen.
 
@@ -59,7 +59,7 @@ De volgende lijst bevat de belangrijkste gebruiks situaties waarbij exemplaar gr
 
 ## <a name="architecture-of-instance-pools"></a>Architectuur van instantie groepen
 
-Exemplaar groepen hebben een vergelijk bare architectuur voor reguliere beheerde instanties (*afzonderlijke instanties*). Voor de ondersteuning van [implementaties in azure Virtual Networks (VNets)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) en voor het afschermen en beveiligen van klanten kunnen exemplaar groepen ook worden gebaseerd op [virtuele clusters](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuele clusters vertegenwoordigen een specifieke set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant.
+Exemplaar groepen hebben een vergelijk bare architectuur voor reguliere beheerde instanties (*afzonderlijke instanties*). Voor de ondersteuning van [implementaties in azure Virtual Networks (VNets)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) en voor het afschermen en beveiligen van klanten, zijn exemplaar groepen ook gebaseerd op [virtuele clusters](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuele clusters vertegenwoordigen een specifieke set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant.
 
 Het belangrijkste verschil tussen de twee implementatie modellen is dat instantie groepen meerdere implementaties van SQL Server processen toestaan op hetzelfde knoop punt van de virtuele machine, die resources best rijken met behulp van [Windows-taak objecten](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects), terwijl afzonderlijke instanties altijd op een knoop punt van een virtuele machine.
 
@@ -71,7 +71,7 @@ Elke instantie groep maakt onder andere een afzonderlijk virtueel cluster. Insta
 
 ## <a name="instance-pools-resource-limitations"></a>Resource beperkingen van instantie groepen
 
-Er zijn verschillende bron beperkingen met betrekking tot exemplaar groepen en instanties in Pools:
+Er bestaan verschillende resourcebeperkingen met betrekking tot exemplaarpools en exemplaren binnen pools:
 
 - Exemplaar groepen zijn alleen beschikbaar op GEN5-hardware.
 - Instanties in een groep hebben toegewezen CPU en RAM, dus het geaggregeerde aantal vCores voor alle exemplaren moet kleiner zijn dan of gelijk zijn aan het aantal vCores dat aan de pool is toegewezen.
@@ -136,8 +136,8 @@ de vCore prijs voor een pool wordt in rekening gebracht, ongeacht het aantal exe
 
 Voor de berekenings prijs (gemeten in vCores) zijn twee prijs opties beschikbaar:
 
-  1. *Inbegrepen licentie*: Pas bestaande SQL Server licenties met Software Assurance toe.
-  2. *Azure Hybrid Benefit*: Een gereduceerde prijs met Azure Hybrid Benefit voor SQL Server. Klanten kunnen zich op deze prijs aanmelden door gebruik te maken van hun bestaande SQL Server licenties met Software Assurance. Zie [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)voor Beschik baarheid en andere informatie.
+  1. *Inbegrepen licentie*: pas bestaande SQL Server licenties met Software Assurance toe.
+  2. *Azure Hybrid Benefit*: een gereduceerde prijs met inbegrip van Azure Hybrid Benefit voor SQL Server. Klanten kunnen zich op deze prijs aanmelden door gebruik te maken van hun bestaande SQL Server licenties met Software Assurance. Zie [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)voor Beschik baarheid en andere informatie.
 
 Het is niet mogelijk om verschillende prijs opties in te stellen voor afzonderlijke exemplaren in een pool. Alle exemplaren in de bovenliggende groep moeten de prijs van de licentie of de Azure Hybrid Benefit prijs zijn. Het licentie model voor de groep kan worden gewijzigd nadat de groep is gemaakt.
 

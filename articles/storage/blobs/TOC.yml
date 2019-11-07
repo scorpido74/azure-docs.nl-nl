@@ -26,15 +26,31 @@
         - name: Ontwikkelen met blobs
           items:
             - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
+              items:
+                - name: .NET (v12 SDK)
+                  href: storage-quickstart-blobs-dotnet.md
+                - name: .NET (v11 SDK)
+                  href: storage-quickstart-blobs-dotnet-legacy.md
             - name: Java
-              href: storage-quickstart-blobs-java.md
+              items:
+                - name: Java (v12 SDK)
+                  href: storage-quickstart-blobs-java.md
+                - name: Java (v8 SDK)
+                  href: storage-quickstart-blobs-java-legacy.md
             - name: Python
-              href: storage-quickstart-blobs-python.md
-            - name: JavaScript (Node.js)
-              href: storage-quickstart-blobs-nodejs-v10.md
-            - name: JavaScript (browser)
-              href: storage-quickstart-blobs-javascript-client-libraries-v10.md
+              items:
+                - name: Python (v12 SDK)
+                  href: storage-quickstart-blobs-python.md
+                - name: Python (v2.1 SDK)
+                  href: storage-quickstart-blobs-python-legacy.md
+            - name: Javascript
+              items:
+                - name: JavaScript (v12 SDK voor Node.js)
+                  href: storage-quickstart-blobs-nodejs.md
+                - name: JavaScript (v10 SDK voor Node.js)
+                  href: storage-quickstart-blobs-nodejs-v10.md
+                - name: JavaScript (v10 SDK voor browser)
+                  href: storage-quickstart-blobs-javascript-client-libraries-v10.md
             - name: Aan de slag
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -147,7 +163,7 @@
               href: storage-blob-performance-tiers.md
             - name: De levenscyclus van Azure Blob-opslag beheren
               href: storage-lifecycle-management-concepts.md
-        - name: Prestaties en schalen
+        - name: 'Prestaties, schaalbaarheid en kostenoptimalisatie'
           items:
             - name: Schaalbaarheids- en prestatiedoelen
               href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -155,8 +171,16 @@
               href: storage-performance-checklist.md
             - name: Latentie in Blob-opslag
               href: storage-blobs-latency.md
+            - name: Gereserveerde capaciteit voor Azure Storage
+              href: storage-blob-reserved-capacity.md
         - name: Gelijktijdigheid
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Blobgegevens zoeken en begrijpen
+          items:
+            - name: AI gebruiken om blobgegevens te begrijpen
+              href: ../../search/search-blob-ai-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Volledige tekst doorzoeken op blobgegevens
+              href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Gegevensmigratie
           items:
             - name: Oplossingen voor gegevensoverdracht vergelijken
@@ -385,7 +409,7 @@
             - name: Eerdere SDK-versies
               items:
                 - name: JavaScript (Node.js) (Storage SDK v2)
-                  href: storage-quickstart-blobs-nodejs.md
+                  href: storage-quickstart-blobs-nodejs-legacy.md
                 - name: JavaScript (browser) (Storage SDK v2)
                   href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: Blobs beheren
@@ -600,7 +624,7 @@
         - name: Verwerken van big data
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Integreren met Azure-services
-          href: ../blobs/data-lake-store-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Stuurprogramma van het Azure Blob-bestandssysteem voor Hadoop
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: URI van het Azure Blob-bestandssysteem

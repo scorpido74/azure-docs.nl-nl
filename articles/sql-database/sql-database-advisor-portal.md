@@ -1,5 +1,5 @@
 ---
-title: Aanbevelingen voor prestaties Toep assen-Azure SQL Database | Microsoft Docs
+title: Aanbevelingen voor prestaties Toep assen-Azure SQL Database
 description: Gebruik de Azure Portal om prestatie aanbevelingen te vinden waarmee de prestaties van uw Azure SQL Database kunnen worden geoptimaliseerd.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b6bcb2650cd11ed97b6e81fda6aaafe7fca61202
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569593"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691288"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
 
@@ -24,11 +24,11 @@ U kunt de Azure Portal gebruiken om prestatie aanbevelingen te vinden die de pre
 
 ## <a name="viewing-recommendations"></a>Aanbevelingen weer geven
 
-Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de juiste machtigingen [op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md) in azure nodig. Voor het weer geven van de aanbevelingen en de **eigenaar**van de **SQL DB** - Inzender zijn machtigingen vereist voor het uitvoeren van acties. indexen maken of verwijderen en het maken van de index annuleren.
+Als u aanbevelingen voor prestaties wilt weer geven en Toep assen, hebt u de juiste machtigingen [op rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md) in azure nodig. Voor het weer geven van de aanbevelingen en de **eigenaar**van de **SQL DB-Inzender** **zijn machtigingen vereist** voor het uitvoeren van acties. indexen maken of verwijderen en het maken van de index annuleren.
 
 Gebruik de volgende stappen om aanbevelingen voor prestaties te vinden op Azure Portal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Ga naar **alle services** > **SQL-data bases**en selecteer uw data base.
 3. Navigeer naar **Aanbevolen prestaties** om de beschik bare aanbevelingen voor de geselecteerde Data Base weer te geven.
 
@@ -38,10 +38,10 @@ Aanbevelingen voor prestaties worden weer gegeven in de tabel zoals die wordt we
 
 Aanbevelingen worden gesorteerd op de mogelijke invloed op de prestaties van de volgende categorieën:
 
-| Impact | Description |
+| Impact | Beschrijving |
 |:--- |:--- |
 | Hoog |Aanbevelingen met hoge impact moeten de belangrijkste prestatie-impact bieden. |
-| Gemiddeld |Aanbevelingen voor normale impact moeten de prestaties verbeteren, maar niet aanzienlijk. |
+| Middelgroot |Aanbevelingen voor normale impact moeten de prestaties verbeteren, maar niet aanzienlijk. |
 | Laag |De aanbevelingen met weinig effect moeten betere prestaties leveren dan zonder, maar de verbeteringen zijn mogelijk niet aanzienlijk. |
 
 
@@ -120,22 +120,22 @@ Selecteer een aanbeveling en klik vervolgens op **script weer geven**. Voer dit 
 
 Aanbevelingen met de status in **behandeling**, **valideren**of **geslaagd** kunnen worden geannuleerd. Aanbevelingen met de status **bezig met uitvoeren** kunnen niet worden geannuleerd.
 
-1. Selecteer een aanbeveling in het gebied afstemmings **geschiedenis** om de pagina met **Details over aanbevelingen** te openen.
+1. Selecteer een aanbeveling in het gebied **afstemmings geschiedenis** om de pagina met **Details over aanbevelingen** te openen.
 2. Klik op **Annuleren** om het proces van het Toep assen van de aanbeveling af te breken.
 
 ## <a name="monitoring-operations"></a>Controlebewerkingen
 
 Het Toep assen van een aanbeveling wordt mogelijk niet onmiddellijk uitgevoerd. De portal biedt Details over de status van aanbeveling. Hieronder ziet u mogelijke statussen die een index kan hebben:
 
-| Status | Description |
+| Status | Beschrijving |
 |:--- |:--- |
 | In behandeling |De opdracht aanbeveling Toep assen is ontvangen en is gepland voor uitvoering. |
-| In uitvoering |De aanbeveling wordt toegepast. |
+| Uitvoeren |De aanbeveling wordt toegepast. |
 | Valideren |Aanbeveling is toegepast en de service meet de voor delen. |
 | Geslaagd |De aanbeveling is toegepast en de voor delen zijn gemeten. |
-| Fout |Er is een fout opgetreden tijdens het toepassen van de aanbeveling. Dit kan een tijdelijk probleem zijn, of mogelijk een schema wijziging aan de tabel en het script is niet meer geldig. |
-| Terugdraaien |De aanbeveling is toegepast, maar is niet-uitgevoerd en wordt automatisch teruggezet. |
-| Teruggedraaid |De aanbeveling is hersteld. |
+| Fout |Er is een fout opgetreden tijdens het Toep assen van de aanbeveling. Dit kan een tijdelijk probleem zijn, of mogelijk een schema wijziging aan de tabel en het script is niet meer geldig. |
+| Herstellen |De aanbeveling is toegepast, maar is niet-uitgevoerd en wordt automatisch teruggezet. |
+| Hersteld |De aanbeveling is hersteld. |
 
 Klik in de lijst op een aanbeveling in het proces om meer informatie weer te geven:
 
@@ -144,7 +144,7 @@ Klik in de lijst op een aanbeveling in het proces om meer informatie weer te gev
 ### <a name="reverting-a-recommendation"></a>Een aanbeveling herstellen
 Als u de aanbevelingen voor prestaties hebt gebruikt om de aanbeveling toe te passen (wat betekent dat u het T-SQL-script niet hand matig hebt uitgevoerd), wordt de wijziging automatisch teruggezet als de prestaties negatief zijn. Als u alleen een aanbeveling wilt herstellen, kunt u het volgende doen:
 
-1. Selecteer een geslaagde aanbeveling in het gebied afstemmings **geschiedenis** .
+1. Selecteer een geslaagde aanbeveling in het gebied **afstemmings geschiedenis** .
 2. Klik op de pagina **aanbeveling Details** op **herstellen** .
 
 ![Aanbevolen indexen](./media/sql-database-advisor-portal/details.png)
@@ -164,7 +164,7 @@ Controleer uw aanbevelingen en pas deze toe om de prestaties te verfijnen. Data 
 * Bekijk de [aanbevelingen voor prestaties](sql-database-advisor.md) voor een overzicht van Azure SQL database prestatie aanbevelingen.
 * Zie [query performance Insights](sql-database-query-performance.md) voor meer informatie over het weer geven van de prestatie-impact van uw meest voorkomende query's.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 * [INDEX MAKEN](https://msdn.microsoft.com/library/ms188783.aspx)
 * [Op rollen gebaseerd toegangsbeheer](../role-based-access-control/overview.md)

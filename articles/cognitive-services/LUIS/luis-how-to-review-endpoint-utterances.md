@@ -1,7 +1,7 @@
 ---
 title: Gebruikers uitingen bekijken-LUIS
 titleSuffix: Azure Cognitive Services
-description: Met het actieve leer proces worden eindpunt query's vastgelegd en wordt het uitingen van de gebruiker geselecteerd. U kunt deze uitingen bekijken om de intentie te selecteren en entiteiten te markeren voor deze uitingen met lees-of-wereld. Ga akkoord met deze wijzigingen in uw voor beeld uitingen en klik vervolgens op publiceren. LUIS identificeert uitingen nauw keuriger.
+description: Bekijk de uitingen die door actief leren zijn vastgelegd om intentie te selecteren en entiteiten te markeren voor Read-World uitingen; wijzigingen accepteren, trainen en publiceren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: d5652857f2f35e392d3f512001044fd06bc0a0c9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4a77ac26076fc1b1e4e94ee24dafb28a0e88c858
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499078"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669363"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Endpoint uitingen in LUIS-Portal controleren voor actief leren
 
@@ -73,7 +73,7 @@ Elke utterance heeft een voorgestelde intentie die wordt weer gegeven in de kolo
 
 Als u verschillende uitingen wilt uitlijnen, schakelt u het selectie vakje links van de uitingen in en selecteert u op de knop **selectie toevoegen** . 
 
-![Meerdere uitlijnen](./media/label-suggested-utterances/add-selected.png)
+![Verschillende uitlijnen](./media/label-suggested-utterances/add-selected.png)
 
 ## <a name="verify-aligned-intent"></a>Uitgelijnde intentie controleren
 

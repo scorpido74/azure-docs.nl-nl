@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database lange termijn retentie van back-ups beheren | Microsoft Docs
+title: 'Azure SQL Database lange termijn retentie van back-ups beheren '
 description: Meer informatie over het opslaan van automatische back-ups in de SQL Azure opslag en deze vervolgens herstellen
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 08/21/2019
-ms.openlocfilehash: b90e364442e46269fc949ef4aecd9a756cff5595
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 32eb021ecd584e0b1b734abb236f383a32b79131
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904626"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689547"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database lange termijn retentie van back-ups beheren
 
@@ -45,7 +45,7 @@ U kunt SQL Database configureren om [automatische back-ups te bewaren](sql-datab
 3. Wanneer u klaar bent, klikt u op **Toep assen**.
 
 > [!IMPORTANT]
-> Wanneer u een lange termijn beleid voor het bewaren van back-ups inschakelt, kan het tot zeven dagen duren voordat de eerste back-up zichtbaar is en beschikbaar is voor herstel. Zie [lange termijn](sql-database-long-term-retention.md)retentie van back-ups voor meer informatie over de CADANCE voor LTR-back-ups.
+> Wanneer u een lange termijn beleid voor het bewaren van back-ups inschakelt, kan het tot zeven dagen duren voordat de eerste back-up zichtbaar is en beschikbaar is voor herstel. Zie [lange termijn retentie van back-ups](sql-database-long-term-retention.md)voor meer informatie over de CADANCE voor LTR-back-ups.
 
 ### <a name="view-backups-and-restore-from-a-backup-using-azure-portal"></a>Back-ups weer geven en terugzetten vanuit een back-up met behulp van Azure Portal
 
@@ -99,7 +99,7 @@ Voor **Remove-AzSqlDatabaseLongTermRetentionBackup**moet u een van de volgende r
 - Rol van abonnements eigenaar of
 - Aangepaste rol met de volgende machtiging:
 
-   Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+   Micro soft. SQL/locaties/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/verwijderen
 
 
 > [!NOTE]

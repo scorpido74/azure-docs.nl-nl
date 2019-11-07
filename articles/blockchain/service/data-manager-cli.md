@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1e92ae36aee5e62cd05b40bbaa38a226943f0adb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518019"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605904"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Block Chain Data Manager configureren met behulp van Azure CLI
 
@@ -259,6 +259,10 @@ az resource create \
 
 Als u een Block Chain-toepassing toevoegt, Block Chain Data Manager de status van de gebeurtenis en eigenschap decoderen voor de toepassing. Anders worden alleen onbewerkte en onbewerkte transactie gegevens verzonden. Block Chain Data Manager detecteert ook contract adressen wanneer het contract wordt geïmplementeerd. U kunt meerdere Block Chain-toepassingen toevoegen aan een Block Chain Data Manager-exemplaar.
 
+
+> [!IMPORTANT]
+> Momenteel worden Block Chain-toepassingen die een type vaste- [matrix](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) of [toewijzings typen](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) declareren, niet volledig ondersteund. Eigenschappen die zijn gedeclareerd als matrix-of toewijzings typen, worden niet gedecodeerd in *ContractPropertiesMsg* -of *DecodedContractEventsMsg* -berichten.
+
 ``` azurecli
 az resource create \
                    --resource-group <Resource group> \
@@ -306,7 +310,7 @@ Configuratie-JSON-voor beeld om een toepassings bron te maken in de regio *VS-Oo
 | location | De regio waar de toepassings resource moet worden gemaakt. |
 | artifactType | Type toepassing. Momenteel wordt **EthereumSmartContract** ondersteund. |
 | abiFileUrl | URL voor het JSON-bestand van het ABI voor Smart contract. Voor meer informatie over het verkrijgen van contract ABI en het maken van een URL raadpleegt u [contract Abi en byte code ophalen](data-manager-portal.md#get-contract-abi-and-bytecode) en [contract-Abi en byte code-URL maken](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | URL voor het JSON-bestand van de Smart contract-byte code. Zie [Get contract Abi en byte code](data-manager-portal.md#get-contract-abi-and-bytecode) en [Create contract Abi en byte code-URL](data-manager-portal.md#create-contract-abi-and-bytecode-url)voor meer informatie over het verkrijgen van de Smart contract-byte code en het maken van een URL. |
+| bytecodeFileUrl | URL voor het JSON-bestand van de geïmplementeerde byte code van het slimme contract. Zie voor meer informatie over het verkrijgen van de gedistribueerde gegevensbyte code voor het slimme contract en het maken van een URL [Get contract Abi en byte code](data-manager-portal.md#get-contract-abi-and-bytecode) en [Create contract Abi en byte code-URL](data-manager-portal.md#create-contract-abi-and-bytecode-url). Opmerking: voor Block Chain Data Manager is de **geïmplementeerde byte code**vereist. |
 | queryTargetTypes | Gepubliceerde bericht typen. Opgeven van **ContractProperties** publiceert *ContractPropertiesMsg* -bericht type. Opgeven van **ContractEvents** publiceert *DecodedContractEventsMsg* -bericht type. Opmerking: *RawBlockAndTransactionMsg* -en *RawTransactionContractCreationMsg* -bericht typen worden altijd gepubliceerd. |
 
 Maak een toepassing met de naam *mijn toepassing* voor *mywatcher* die een slim contract bewaakt dat is gedefinieerd door een JSON-teken reeks.
@@ -415,4 +419,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [gebeurtenis-handlers in azure Event grid](../../event-grid/event-handlers.md).
+Maak een Block Chain-transactie bericht Verkenner met block Chain Data Manager en Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Zelf studie: Block Chain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB](data-manager-cosmosdb.md)

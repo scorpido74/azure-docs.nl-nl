@@ -1,5 +1,5 @@
 ---
-title: Zelf studie laden van Azure Data Lake Storage naar Azure SQL Data Warehouse | Microsoft Docs
+title: Zelf studie gegevens laden van Azure Data Lake Storage
 description: Gebruik poly base externe tabellen om gegevens van Azure Data Lake Storage naar Azure SQL Data Warehouse te laden.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3db355cf5782620bda3a9e04afbee073c8929856
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935124"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685691"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Gegevens laden van Azure Data Lake Storage naar SQL Data Warehouse
 Gebruik poly base externe tabellen om gegevens van Azure Data Lake Storage naar Azure SQL Data Warehouse te laden. Hoewel u ad hoc query's kunt uitvoeren op gegevens die zijn opgeslagen in Data Lake Storage, is het raadzaam om de gegevens te importeren in de SQL Data Warehouse voor de beste prestaties.
@@ -203,7 +204,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="optimize-statistics"></a>Statistieken optimaliseren
 Het is aan te raden om statistieken voor één kolom direct na een belasting te maken. Er zijn enkele keuzes voor statistieken. Als u bijvoorbeeld statistieken voor één kolom maakt voor elke kolom, kan het lang duren om alle statistieken opnieuw samen te stellen. Als u weet dat bepaalde kolommen zich niet in query predikaten bevinden, kunt u het maken van statistieken voor die kolommen overs Laan.
 
-Als u besluit om met één kolom statistieken te maken voor elke kolom van elke tabel, kunt u het voor beeld `prc_sqldw_create_stats` van de opgeslagen procedure code in het [statistiek](sql-data-warehouse-tables-statistics.md) artikel gebruiken.
+Als u besluit om met één kolom statistieken te maken voor elke kolom van elke tabel, kunt u de voor beeld-`prc_sqldw_create_stats` code van de opgeslagen procedure in het [statistiek](sql-data-warehouse-tables-statistics.md) artikel gebruiken.
 
 Het volgende voor beeld is een goed uitgangs punt voor het maken van statistieken. Er worden statistieken voor één kolom gemaakt voor elke kolom in de dimensie tabel en voor elke join-kolom in de feiten tabellen. U kunt later altijd statistieken met één of meerdere kolommen toevoegen aan andere feiten tabel kolommen.
 

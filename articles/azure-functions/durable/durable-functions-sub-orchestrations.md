@@ -7,35 +7,31 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/07/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b5e811daecbb7687abe7a37b75e2730d7830c2c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: cf160b767ee82701bad4c88d3b83951a3b875296
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983619"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614651"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Sub-indelingen in Durable Functions (Azure Functions)
 
-Naast het aanroepen van activiteit functies kunnen Orchestrator-functies andere Orchestrator-functies aanroepen. U kunt bijvoorbeeld een grotere indeling van een bibliotheek van Orchestrator-functies bouwen. U kunt ook meerdere exemplaren van een Orchestrator-functie parallel uitvoeren.
+Naast het aanroepen van activiteit functies kunnen Orchestrator-functies andere Orchestrator-functies aanroepen. U kunt bijvoorbeeld een grotere indeling van een bibliotheek met kleinere Orchestrator-functies bouwen. U kunt ook meerdere exemplaren van een Orchestrator-functie parallel uitvoeren.
 
-Een Orchestrator-functie kan een andere Orchestrator-functie aanroepen door de [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) of de [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) -methoden in .net of `callSubOrchestrator` de `callSubOrchestratorWithRetry` methoden of in Java script aan te roepen. De [fout afhandeling & compensatie](durable-functions-error-handling.md#automatic-retry-on-failure) artikel bevat meer informatie over automatische opnieuw proberen.
+Een Orchestrator-functie kan een andere Orchestrator-functie aanroepen met behulp van de `CallSubOrchestratorAsync` of de `CallSubOrchestratorWithRetryAsync`-methoden in .NET of de methoden `callSubOrchestrator` of `callSubOrchestratorWithRetry` in Java script. De [fout afhandeling & compensatie](durable-functions-error-handling.md#automatic-retry-on-failure) artikel bevat meer informatie over automatische opnieuw proberen.
 
 Suborchestrator-functies gedragen zich op dezelfde manier als de activiteit functies van het perspectief van de aanroeper. Ze kunnen een waarde Retour neren, een uitzonde ring genereren en kunnen wachten door de bovenliggende Orchestrator-functie. 
-
-> [!NOTE]
-> Op dit moment is het nodig om een `instanceId` argument waarde op te geven voor de suborchestrator API in Java script.
-
 ## <a name="example"></a>Voorbeeld
 
-In het volgende voor beeld ziet u een IoT-scenario (' Internet of Things ') waarin meerdere apparaten moeten worden ingericht. Er is een specifieke indeling die moet worden uitgevoerd voor elk van de apparaten. Dit kan er ongeveer als volgt uitzien:
+In het volgende voor beeld ziet u een IoT-scenario (' Internet of Things ') waarin meerdere apparaten moeten worden ingericht. De volgende functie vertegenwoordigt de inrichtings werk stroom die moet worden uitgevoerd voor elk apparaat:
 
 ### <a name="c"></a>C#
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string deviceId = context.GetInput<string>();
 
@@ -52,7 +48,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -73,7 +69,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Deze Orchestrator-functie kan worden gebruikt als-is voor eenmalige inrichting van apparaten of kan deel uitmaken van een grotere indeling. In het laatste geval kan de bovenliggende Orchestrator-functie instanties plannen van het `DeviceProvisioningOrchestration` gebruik van `CallSubOrchestratorAsync` deC#API ( `callSubOrchestrator` ) of (Java script).
+Deze Orchestrator-functie kan worden gebruikt als-is voor eenmalige inrichting van apparaten of kan deel uitmaken van een grotere indeling. In het laatste geval kan de functie van de bovenliggende Orchestrator instanties van `DeviceProvisioningOrchestration` plannen met de API van `CallSubOrchestratorAsync` (.NET) of `callSubOrchestrator` (Java script).
 
 Hier volgt een voor beeld waarin wordt getoond hoe u meerdere Orchestrator-functies parallel kunt uitvoeren.
 
@@ -82,7 +78,7 @@ Hier volgt een voor beeld waarin wordt getoond hoe u meerdere Orchestrator-funct
 ```csharp
 [FunctionName("ProvisionNewDevices")]
 public static async Task ProvisionNewDevices(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string[] deviceIds = await context.CallActivityAsync<string[]>("GetNewDeviceIds");
 
@@ -100,7 +96,10 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>Java script (alleen functies 2. x)
+> [!NOTE]
+> De vorige C# voor beelden zijn voor Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+
+### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
 
 ```javascript
 const df = require("durable-functions");

@@ -1,6 +1,7 @@
 ---
-title: Trans formaties en taken in Azure Media Services | Microsoft Docs
-description: Wanneer u Media Services gebruikt, moet u een trans formatie maken om de regels of specificaties voor het verwerken van uw Video's te beschrijven. In dit artikel vindt u een overzicht van de trans formatie en hoe u deze kunt gebruiken.
+title: Trans formaties en taken in Media Services
+titleSuffix: Azure Media Services
+description: Meer informatie over het maken van een trans formaties voor het beschrijven van de regels voor het verwerken van uw Video's in Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,40 +12,40 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 466ab0737aa5af40bd1bc137b98ab57a48feafde
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637360"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571241"
 ---
-# <a name="transforms-and-jobs"></a>Transformaties en taken
+# <a name="transforms-and-jobs-in-media-services"></a>Trans formaties en taken in Media Services
 
-Dit onderwerp bevat gedetailleerde informatie over [trans formaties](https://docs.microsoft.com/rest/api/media/transforms) en [taken](https://docs.microsoft.com/rest/api/media/jobs) en een uitleg van de relatie tussen deze entiteiten. 
+Dit onderwerp bevat gedetailleerde informatie over [trans formaties](https://docs.microsoft.com/rest/api/media/transforms) en [taken](https://docs.microsoft.com/rest/api/media/jobs) en een uitleg van de relatie tussen deze entiteiten.
 
-## <a name="overview"></a>Overzicht 
+## <a name="overview"></a>Overzicht
 
 ### <a name="transformsjobs-workflow"></a>Trans formatie/taken werk stroom
 
-In het volgende diagram worden de werk stroom trans formaties/taken weer gegeven.
+In het volgende diagram worden de werk stroom trans formaties/taken weer gegeven:
 
-![Transformaties](./media/encoding/transforms-jobs.png)
+![Trans formaties en taken werk stroom in Azure Media Services](./media/encoding/transforms-jobs.png)
 
 #### <a name="typical-workflow"></a>Standaardwerkstroom
 
-1. Een transformatie maken 
-2. Taken onder die trans formatie verzenden 
-3. Trans formaties weer geven 
-4. Verwijder een trans formatie als u deze niet in de toekomst wilt gebruiken. 
+1. Maak een trans formatie.
+2. Verzend taken onder die trans formatie.
+3. Trans formaties weer geven.
+4. Verwijder een trans formatie als u deze niet in de toekomst wilt gebruiken.
 
 #### <a name="example"></a>Voorbeeld
 
-Stel dat u het eerste frame van al uw Video's als een miniatuur afbeelding wilt extra heren. u kunt de volgende stappen uitvoeren: 
+Stel dat u het eerste frame van al uw Video's als een miniatuur afbeelding wilt extra heren. u kunt de volgende stappen uitvoeren:
 
-1. Definieer het recept of de regel voor het verwerken van uw Video's: "gebruik het eerste frame van de video als miniatuur". 
-2. Voor elke video geeft u de volgende informatie: 
-    1. Waar u deze video vindt,  
-    2. Waar de afbeelding van de uitvoer miniatuur moet worden geschreven. 
+1. Definieer het recept of de regel voor het verwerken van uw Video's: "het eerste frame van de video als miniatuur gebruiken.
+2. Voor elke video geeft u de service de volgende informatie:
+    1. Waar u deze video kunt vinden.
+    2. Waar de afbeelding van de uitvoer miniatuur moet worden geschreven.
 
 Met een **trans formatie** kunt u het recept eenmaal maken (stap 1) en taken verzenden met behulp van dat recept (stap 2).
 
@@ -57,25 +58,27 @@ Met een **trans formatie** kunt u het recept eenmaal maken (stap 1) en taken ver
 
 ### <a name="viewing-schema"></a>Schema weer geven
 
-In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de API zelf. U kunt de definitie ' schema ' voor deze objecten vinden in de [open API-specificatie (of Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). U kunt de vooraf ingestelde definities (zoals **StandardEncoderPreset**) ook weer geven in de [rest API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (of een andere Media Services v3 SDK-referentie documentatie).
+In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de API zelf. U kunt de definitie ' schema ' voor deze objecten vinden in de [open API-specificatie (of Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01). U kunt ook de vooraf gedefinieerde definities (zoals **StandardEncoderPreset**) bekijken in de [rest API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)of andere Media Services v3 SDK-referentie documentatie.
 
 ### <a name="creating-transforms"></a>Trans formaties maken
 
-U kunt trans formaties maken met behulp van REST, CLI of een van de gepubliceerde Sdk's gebruiken. De Media Services v3 API wordt door Azure Resource Manager aangestuurd, zodat u ook Resource Manager-sjablonen kunt gebruiken om trans formaties te maken en te implementeren in uw Media Services-account. Toegangs beheer op basis van rollen kan worden gebruikt om de toegang tot trans formaties te vergren delen.
+U kunt trans formaties maken met behulp van REST, CLI of een van de gepubliceerde Sdk's. De Media Services v3 API wordt door Azure Resource Manager aangestuurd, zodat u ook Resource Manager-sjablonen kunt gebruiken om trans formaties te maken en te implementeren in uw Media Services-account. Toegangs beheer op basis van rollen kan worden gebruikt om de toegang tot trans formaties te vergren delen.
 
 ### <a name="updating-transforms"></a>Trans formaties bijwerken
 
-Als u uw [trans formatie](https://docs.microsoft.com/rest/api/media/transforms)wilt bijwerken, gebruikt u de bewerking **bijwerken** . Het is bedoeld voor het aanbrengen van wijzigingen in de beschrijving of de prioriteiten van de onderliggende TransformOutputs. Het wordt aanbevolen dat dergelijke updates worden uitgevoerd wanneer alle taken in uitvoering zijn voltooid. Als u van plan bent het recept opnieuw te schrijven, moet u een nieuwe trans formatie maken.
+Als u uw [trans formatie](https://docs.microsoft.com/rest/api/media/transforms)wilt bijwerken, gebruikt u de bewerking **bijwerken** . Het is bedoeld voor het aanbrengen van wijzigingen in de beschrijving of de prioriteiten van de onderliggende TransformOutputs. Het is raadzaam dat dergelijke updates worden uitgevoerd wanneer alle taken in uitvoering zijn voltooid. Als u van plan bent het recept opnieuw te schrijven, moet u een nieuwe trans formatie maken.
 
 ### <a name="transform-object-diagram"></a>Object diagram transformeren
 
-Het volgende diagram toont het object **transform** en de objecten waarnaar wordt verwezen, inclusief de Afleidings relaties. De grijze pijlen geven een type weer waarnaar de taak verwijst en de groene pijlen geven een klasse-Afleidings relatie weer.<br/>Klik op de afbeelding om deze in volledig formaat weer te geven.  
+Het volgende diagram toont het object **transform** en de objecten waarnaar het verwijst, met inbegrip van de Afleidings relaties. De grijze pijlen geven een type weer waarnaar de taak verwijst en de groene pijlen geven een klasse-Afleidings relatie weer.
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a> 
+Selecteer de afbeelding om de volledige grootte weer te geven.  
+
+<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
 
 ## <a name="jobs"></a>Taken
 
-Een **taak** is de daad werkelijke aanvraag om Azure Media Services om de **trans formatie** toe te passen op een gegeven video-of audio-inhoud. Zodra de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. De **taak** geeft informatie op, zoals de locatie van de invoer video en de locatie voor de uitvoer. U kunt de locatie van de invoer video opgeven met: HTTPS-Url's, SAS-Url's of [activa](https://docs.microsoft.com/rest/api/media/assets).  
+Een **taak** is de daad werkelijke aanvraag om Media Services om de **trans formatie** toe te passen op een gegeven video-of audio-inhoud. Zodra de trans formatie is gemaakt, kunt u taken verzenden met behulp van Media Services Api's of een van de gepubliceerde Sdk's. De **taak** geeft informatie op zoals de locatie van de invoer video en de locatie voor de uitvoer. U kunt de locatie van uw invoer video opgeven met behulp van: HTTPS-Url's, SAS-Url's of [activa](https://docs.microsoft.com/rest/api/media/assets).  
 
 ### <a name="job-input-from-https"></a>Taak invoer van HTTPS
 
@@ -91,17 +94,19 @@ De voortgang en de status van taken kunnen worden verkregen door gebeurtenissen 
 
 ### <a name="updating-jobs"></a>Taken bijwerken
 
-De update bewerking voor de [taak](https://docs.microsoft.com/rest/api/media/jobs) entiteit kan worden gebruikt om de *Beschrijving*te wijzigen en de *prioriteits* eigenschappen na het verzenden van de taak. Een wijziging in de *prioriteits* eigenschap is alleen effectief als de taak in de wachtrij staat. Als de verwerking van de taak is begonnen of is voltooid, heeft het wijzigen van de prioriteit geen effect.
+De update bewerking voor de [taak](https://docs.microsoft.com/rest/api/media/jobs) entiteit kan worden gebruikt om de *Beschrijving* en de *prioriteits* eigenschappen te wijzigen nadat de taak is verzonden. Een wijziging in de *prioriteits* eigenschap is alleen effectief als de taak in de wachtrij staat. Als de verwerking van de taak is begonnen of is voltooid, heeft het wijzigen van de prioriteit geen effect.
 
 ### <a name="job-object-diagram"></a>Taak object diagram
 
-Het volgende diagram toont het **taak** object en de objecten waarnaar wordt verwezen, inclusief de Afleidings relaties.<br/>Klik op de afbeelding om deze in volledig formaat weer te geven.  
+Het volgende diagram toont het **taak** object en de objecten waarnaar wordt verwezen, inclusief de Afleidings relaties.
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a> 
+Klik op de afbeelding om deze in volledig formaat weer te geven.  
+
+<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
 
 ## <a name="configure-media-reserved-units"></a>Gereserveerde media-eenheden configureren
 
-Voor de taken voor audio analyse en video analyse die worden geactiveerd door Media Services v3 of Video Indexer, wordt u ten zeerste aangeraden om uw account in te richten met 10 S3-media gereserveerde eenheden (MRUs). Als u meer dan 10 S3 groepsbeleidsinstelling nodig hebt, opent u een ondersteuning ticket met de [Azure-portal](https://portal.azure.com/).
+Voor de taken voor audio analyse en video analyse die worden geactiveerd door Media Services v3 of Video Indexer, wordt u ten zeerste aangeraden om uw account in te richten met 10 S3-media gereserveerde eenheden (MRUs). Als u meer dan 10 S3 MRUs nodig hebt, kunt u een ondersteunings ticket openen met behulp van de [Azure Portal](https://portal.azure.com/).
 
 Zie [Media verwerking schalen met CLI](media-reserved-units-cli-how-to.md)voor meer informatie.
 
@@ -119,6 +124,6 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 - Controleer voordat u begint met het ontwikkelen [met behulp van Media Services v3 api's](media-services-apis-overview.md) (bevat informatie over het openen van api's, naam conventies, enzovoort).
 - Bekijk deze zelf studies:
 
-    - [Zelfstudie: Een extern bestand coderen op basis van URL en de video streamen](stream-files-tutorial-with-rest.md)
-    - [Zelfstudie: Video's uploaden, coderen en streamen](stream-files-tutorial-with-api.md)
-    - [Zelfstudie: Video's analyseren met Media Services v3](analyze-videos-tutorial-with-api.md)
+    - [Zelf studie: een extern bestand coderen op basis van URL en de video streamen](stream-files-tutorial-with-rest.md)
+    - [Zelf studie: Video's uploaden, coderen en streamen](stream-files-tutorial-with-api.md)
+    - [Zelf studie: Video's analyseren met Media Services v3](analyze-videos-tutorial-with-api.md)

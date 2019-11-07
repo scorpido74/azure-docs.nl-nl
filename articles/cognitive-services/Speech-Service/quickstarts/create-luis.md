@@ -1,21 +1,21 @@
 ---
 title: 'Quick Start: een LUIS-sleutel maken'
 titleSuffix: Azure Cognitive Services
-description: In deze zelf studie leert u hoe u snel een LUIS-toepassing kunt maken.
+description: In deze Quick Start leert u hoe u een LUIS-toepassing maakt en een sleutel krijgt.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 95becb2574a45536610aef87f8045b3dad5a5003
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504079"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682076"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Quick Start: een LUIS-eindpunt sleutel ophalen
 
@@ -54,7 +54,7 @@ Op de pagina **sleutels en eindpunt instellingen** :
    * Kies onder **abonnements naam**het Azure-abonnement met de Luis-resource die u wilt gebruiken.
    * Kies onder **sleutel**de Luis-resource die u wilt gebruiken met de app.
 
-   Na korte tijd wordt het nieuwe abonnement weergegeven in de tabel onderaan de pagina. 
+   Na korte tijd wordt het nieuwe abonnement weergegeven in de tabel onderaan de pagina.
 
 1. Selecteer het pictogram naast een sleutel om het naar het klem bord te kopiëren. (U kunt beide sleutels gebruiken.)
 

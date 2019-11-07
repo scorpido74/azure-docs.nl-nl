@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: c97f6414876441290cade68b8f9a054970586402
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507735"
+ms.locfileid: "73577991"
 ---
 # <a name="about-voice-assistants"></a>Over spraak assistenten
 
@@ -27,7 +27,23 @@ Toepassingen maken verbinding met de Voice Assistant-service met de speech Softw
 
    ![Conceptueel diagram van de service stroom van de Orchestrator-indeling voor spraak assistenten](media/voice-assistants/overview.png "De stroom van de Voice Assistant")
 
+## <a name="choosing-an-assistant-solution"></a>Een assistent-oplossing kiezen
+
+De eerste stap bij het maken van een spraak assistent is bepalen wat het moet doen. Azure speech Services biedt meerdere, complementaire oplossingen voor het maken van uw assistent-interacties. Of u de flexibiliteit en veelzijdigheid wilt hebben dat het directe- [lijn spraak](direct-line-speech.md) kanaal van het bot-Framework of de eenvoud van [aangepaste opdrachten (preview)](custom-commands.md) voor duidelijke scenario's is, en u kunt de juiste hulpprogram ma's downloaden om aan de slag te gaan.
+
+| Als u wilt... | Bekijk vervolgens... | Bijvoorbeeld... |
+|-------------------|------------------|----------------|
+|Open-end-conversatie met robuuste integratie van vaardig heden en volledige implementatie beheer | Het [directe-lijn spraak](direct-line-speech.md) kanaal van het bot-Framework | <ul><li>"Ik moet naar Seattle gaan"</li><li>"Welk soort pizza kan ik best Ellen?"</li></ul>
+|Discussies over opdrachten en besturings elementen of taak gerichte uitwisseling met vereenvoudigd ontwerpen en hosten | [Aangepaste opdrachten (preview-versie)](custom-commands.md) | <ul><li>"Het overhead licht inschakelen"</li><li>"Maak IT 5 graden warmer"</ul>
+
+U wordt aangeraden [regel spraak direct](direct-line-speech.md) als de beste standaard keuze te gebruiken als u nog niet zeker weet wat uw assistent moet verwerken. Het biedt integratie met een uitgebreide set hulpprogram ma's en ontwerp hulpmiddelen, zoals de [Virtual assistent-oplossing en ondernemings sjabloon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) en de [QnA Maker-service](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) voor het bouwen van algemene patronen en het gebruik van uw bestaande kennis bronnen.
+
+[Aangepaste opdrachten (preview-versie)](custom-commands.md) bieden een gestroomlijnde ontwerp-en hosting-ervaring die specifiek is afgestemd op de opdracht-en controle scenario's in natuurlijke taal.
+   ![Vergelijking van assistent-oplossingen](media/voice-assistants/assistant-solution-comparison.png "Comparison van Assistant-oplossingen ")
+
 ## <a name="core-features"></a>Kern functies
+
+Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrachten (preview)](custom-commands.md) kiest om uw assistent-interacties te maken, kunt u een uitgebreide set aanpassings functies gebruiken om uw assistent aan uw merk, product en persoonlijkheid aan te passen.
 
 | Category | Functies |
 |----------|----------|
@@ -35,24 +51,11 @@ Toepassingen maken verbinding met de Voice Assistant-service met de speech Softw
 |[Spraak naar tekst](speech-to-text.md) | Via spraak [-naar-tekst](speech-to-text.md) van Azure speech Services kunt u in spraak assistenten realtime audio omzetten in herkende tekst. Deze tekst is beschikbaar, omdat deze is getranscribeerd, naar de implementatie van uw assistent en uw client toepassing.
 |[Tekst-naar-spraak](text-to-speech.md) | Tekstuele reacties van uw assistent worden gesynthesizerd met behulp van [tekst naar spraak](text-to-speech.md) vanuit Azure speech Services. Deze synthese wordt vervolgens beschikbaar gesteld voor uw client toepassing als een audio stroom. Micro soft biedt de mogelijkheid om uw eigen aangepaste Neural TTS-stem van hoge kwaliteit op te bouwen die een stem op uw merk levert. [Neem contact met ons](mailto:mstts@microsoft.com)op voor meer informatie.
 
-## <a name="comparing-assistant-solutions"></a>Assistent-oplossingen vergelijken
-
-De Voice Assistant-service verbindt uw toepassing op het apparaat met uw unieke assistent-implementatie. Ontwikkel aars schrijven spraak assistenten met behulp van (1) het [directe-lijn spraak](direct-line-speech.md) kanaal van de bot-Framework of (2) de oplossing [voor aangepaste opdrachten (preview)](custom-commands.md) .
-
-   ![Vergelijking van assistent-oplossingen](media/voice-assistants/assistant-solution-comparison.png "Vergelijking van assistent-oplossingen")
-
-| Oplossing | Functies |
-|----------|----------|
-|[Aangepaste opdrachten (preview-versie)](custom-commands.md) | Aangepaste opdrachten (preview) biedt een gestroomlijnde ontwerp-en hosting oplossing voor spraak assistenten. Het is afgestemd op de behoeften van het volt ooien van taken en de opdracht-en controle scenario's.
-|[Directe lijn spraak](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Direct line speech maakt een soepele en naadloze verbinding mogelijk tussen (1) uw client toepassing, (2) een compatibele bot en (3) de mogelijkheden van Azure speech Services. Zie de [pagina van de bot Framework-documentatie](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)voor meer informatie over het configureren van uw bot voor het gebruik van het directe lijn spraak kanaal.
-
-Wanneer u met een van deze oplossingen een spraak assistent hebt gemaakt, kunt u uw toepassing op het apparaat aansluiten met behulp van de `DialogServiceConnector` in de Speech SDK. Raadpleeg voor meer informatie de Quick starts en voor beelden voor elke oplossing.
-
 ## <a name="getting-started-with-voice-assistants"></a>Aan de slag met spraak assistenten
 
 We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal.
 
-| Snelstart | Platform | API-verwijzing |
+| Snelstartgids | Platform | API-verwijzing |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Door](https://aka.ms/csspeech/javaref) |

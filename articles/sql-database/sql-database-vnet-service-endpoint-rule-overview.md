@@ -1,5 +1,5 @@
 ---
-title: VNet-eind punten en-regels voor één en gegroepeerde Data bases in Azure SQL | Microsoft Docs
+title: 'VNet-eind punten en-regels voor één en gegroepeerde Data bases in Azure SQL '
 description: Een subnet markeren als Virtual Network Service-eind punt. Vervolgens wordt het eind punt als een virtuele-netwerk regel voor de toegangs beheer lijst van uw Azure SQL Database. U SQL Database vervolgens communicatie accepteren van alle virtuele machines en andere knoop punten in het subnet.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: e1f8ab6725c58d9e1f15f88e6d2465ab88df79e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828812"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686912"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Service-eind punten en-regels voor virtuele netwerken gebruiken voor database servers
 
@@ -53,8 +53,8 @@ Elke regel voor het virtuele netwerk is van toepassing op uw hele Azure SQL Data
 
 Er is een schei ding van beveiligings rollen in het beheer van Virtual Network Service-eind punten. Actie is vereist voor elk van de volgende rollen:
 
-- **Netwerk beheerder:** &nbsp;Schakel het eind punt in.
-- **Database beheerder:** &nbsp;Werk de toegangs beheer lijst (ACL) bij om het opgegeven subnet toe te voegen aan de SQL Database-Server.
+- **Netwerk beheerder:** &nbsp; het eind punt in te scha kelen.
+- **Database beheerder:** &nbsp; de toegangs beheer lijst (ACL) bij te werken om het opgegeven subnet toe te voegen aan de SQL database-server.
 
 *Alternatief voor RBAC:*
 
@@ -89,7 +89,7 @@ Voor Azure SQL Database heeft de functie regels voor virtuele netwerken de volge
 
 Wanneer u service-eind punten voor Azure SQL Database gebruikt, raadpleegt u de volgende overwegingen:
 
-- **Uitgaand naar Azure SQL database open bare ip's is vereist**: Netwerk beveiligings groepen (Nsg's) moeten worden geopend om IP-adressen te Azure SQL Database om connectiviteit mogelijk te maken. U kunt dit doen met behulp van NSG- [service Tags](../virtual-network/security-overview.md#service-tags) voor Azure SQL database.
+- **Uitgaand naar Azure SQL database open bare ip's is vereist**: netwerk beveiligings groepen (nsg's) moeten zijn geopend voor het Azure SQL database van IP-adressen om verbinding te kunnen maken. U kunt dit doen met behulp van NSG- [service Tags](../virtual-network/security-overview.md#service-tags) voor Azure SQL database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -108,7 +108,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 Azure Storage heeft dezelfde functie geïmplementeerd waarmee u de connectiviteit met uw Azure Storage-account kunt beperken. Als u ervoor kiest om deze functie te gebruiken met een Azure Storage account dat door Azure SQL Server wordt gebruikt, kunt u problemen ondervinden. Hierna volgt een lijst en bespreking van Azure SQL Database-en Azure SQL Data Warehouse-functies die van invloed zijn op dit onderwerp.
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse PolyBase
+### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse poly base
 
 Poly Base wordt vaak gebruikt voor het laden van gegevens in Azure SQL Data Warehouse van Azure Storage-accounts. Als het Azure Storage account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten, wordt de connectiviteit van poly Base naar het account verbroken. Volg de onderstaande stappen voor het inschakelen van zowel poly base import-als export scenario's met Azure SQL Data Warehouse verbinding maken met Azure Storage die zijn beveiligd met VNet:
 
@@ -191,19 +191,19 @@ Verbindings fout 40914 is gekoppeld aan *regels voor virtuele netwerken*, zoals 
 
 *Bericht tekst:* Kan de server *[Server naam]* die door de aanmelding is aangevraagd, niet openen. De client is niet gemachtigd om toegang te krijgen tot de server.
 
-*Fout beschrijving:* De-client bevindt zich in een subnet met virtuele netwerk server-eind punten. De Azure SQL Database-Server heeft echter geen regel voor het virtuele netwerk waarmee het subnet het recht geeft om te communiceren met de SQL Database.
+*Fout beschrijving:* De-client bevindt zich in een subnet met virtuele netwerk server-eind punten. De Azure SQL Database-server heeft echter geen regel voor het virtuele netwerk die het subnet het recht geeft om te communiceren met SQL Database.
 
 *Fout oplossing:* Gebruik in het deel venster Firewall van de Azure Portal het besturings element regels voor virtuele netwerken om [een regel voor het virtuele netwerk](#anchor-how-to-by-using-firewall-portal-59j) voor het subnet toe te voegen.
 
 ### <a name="error-40615"></a>Fout 40615
 
-*Bericht tekst:* Kan de server{0}niet openen, die door de aanmelding is aangevraagd. De client met het IP{1}-adres is niet gemachtigd om toegang te krijgen tot de server.
+*Bericht tekst:* Kan de server{0}die door de aanmelding is aangevraagd, niet openen. De client met het IP-adres {1} is niet gemachtigd om toegang te krijgen tot de server.
 
 *Fout beschrijving:* De client probeert verbinding te maken vanaf een IP-adres dat niet is gemachtigd om verbinding te maken met de Azure SQL Database Server. Op de firewall van de server is geen regel voor IP-adressen ingesteld die een client toestemming geeft om vanaf het opgegeven IP-adres te communiceren met de SQL-database.
 
-*Fout oplossing:* Voer het IP-adres van de client in als een IP-regel. Doe dit met behulp van het deel venster Firewall in de Azure Portal.
+*Fout oplossing:* Voer het IP-adres van de client in als een IP-regel. Doe dit met behulp van het deelvenster Firewall in de Azure Portal.
 
-[Hier][sql-database-develop-error-messages-419g]wordt een lijst met verschillende SQL database fout berichten beschreven.
+[Hier][sql-database-develop-error-messages-419g] wordt een lijst met verschillende SQL Database-foutberichten gedocumenteerd.
 
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
@@ -224,7 +224,7 @@ Een Power shell-script kan ook regels voor het virtuele netwerk maken. De essent
 
 Intern, de Power shell-cmdlets voor SQL VNet-acties roepen REST-Api's. U kunt de REST-Api's rechtstreeks aanroepen.
 
-- [Virtual Network regels: Werk][rest-api-virtual-network-rules-operations-862r]
+- [Virtual Network regels: bewerkingen][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -237,9 +237,9 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 ## <a name="azure-portal-steps"></a>Azure Portal stappen
 
-1. Meld u aan bij [Azure Portal][http-azure-portal-link-ref-477t].
+1. Meld u aan bij de [Azure Portal][http-azure-portal-link-ref-477t].
 
-2. Navigeer vervolgens door de portal naar **SQL servers** &gt; **firewall/Virtual Networks**.
+2. Navigeer vervolgens door de portal naar **SQL-servers** &gt; **firewall/virtuele netwerken**.
 
 3. Stel het besturings element **toegang tot Azure-Services toestaan** in op uit.
 
@@ -254,7 +254,7 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
     > [!TIP]
     > U moet het juiste **adres voorvoegsel** voor uw subnet toevoegen. U kunt de waarde vinden in de portal.
-    > Ga naar alle **resources** &gt; **alle typen** &gt; **virtuele netwerken**. Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgens op **subnetten**. De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
+    > Ga naar **alle resources** &gt; **alle typen** &gt; **virtuele netwerken**. Met het filter worden uw virtuele netwerken weer gegeven. Klik op uw virtuele netwerk en klik vervolgens op **subnetten**. De kolom **adres bereik** bevat het adres voorvoegsel dat u nodig hebt.
 
     ![Vul velden in voor nieuwe regel.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -266,14 +266,14 @@ U moet al een subnet hebben dat is gelabeld met de specifieke naam van het Virtu
 
 > [!NOTE]
 > De volgende statussen of provincies zijn van toepassing op de regels:
-> - **Voortzetten** Geeft aan dat de bewerking die u hebt gestart, is geslaagd.
-> - **Is mislukt** Geeft aan dat de bewerking die u hebt gestart, is mislukt.
-> - **Vervallen** Is alleen van toepassing op de Verwijder bewerking en geeft aan dat de regel is verwijderd en niet langer van toepassing is.
-> - **InProgress** Geeft aan dat de bewerking wordt uitgevoerd. De oude regel is van toepassing terwijl de bewerking zich in deze status bevindt.
+> - **Gereed:** Geeft aan dat de bewerking die u hebt gestart, is geslaagd.
+> - **Mislukt:** Geeft aan dat de bewerking die u hebt gestart, is mislukt.
+> - **Verwijderd:** Is alleen van toepassing op de Verwijder bewerking en geeft aan dat de regel is verwijderd en niet langer van toepassing is.
+> - **InProgress:** Geeft aan dat de bewerking wordt uitgevoerd. De oude regel is van toepassing terwijl de bewerking zich in deze status bevindt.
 
 <a name="anchor-how-to-links-60h" />
 
-## <a name="related-articles"></a>Verwante artikelen:
+## <a name="related-articles"></a>Verwante artikelen
 
 - [Azure Virtual Network-Service-eind punten][vm-virtual-network-service-endpoints-overview-649d]
 - [Firewall regels op server-en database niveau Azure SQL Database][sql-db-firewall-rules-config-715d]
@@ -283,7 +283,7 @@ De regel functie voor virtuele netwerken voor Azure SQL Database is eind septemb
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Gebruik Power shell om een service-eind punt voor een virtueel netwerk te maken en vervolgens een regel voor het virtuele netwerk voor Azure SQL Database.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [Virtual Network regels: Bewerkingen][rest-api-virtual-network-rules-operations-862r] met rest-api's
+- [Virtual Network regels: bewerkingen][rest-api-virtual-network-rules-operations-862r] met rest-api's
 
 <!-- Link references, to images. -->
 

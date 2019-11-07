@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: 87942ae8132c89c502bd6e0f4c8d5b5c81a0a14c
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 11/04/2019
+ms.openlocfilehash: 1371b286f5e9bd82345e17c11e910c68fac9fed2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950374"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603149"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Aanbevelingen voor prestaties in Azure Database for MySQL
 
 **Van toepassing op:** Azure Database for MySQL 5,7
-
-> [!IMPORTANT]
-> Aanbevelingen voor prestaties zijn een preview-versie.
 
 Met de functie voor prestatie verbeteringen worden uw data bases geanalyseerd om aangepaste suggesties te maken voor betere prestaties. Voor het produceren van de aanbevelingen kijken de analyse naar verschillende database kenmerken, waaronder schema. Schakel het [query archief](concepts-query-store.md) op de server in om de functie aanbevelingen voor prestaties volledig te benutten. Als het prestatie schema is uitgeschakeld, kunnen performance_schema en een subset van de prestatie schema-instrumenten die vereist zijn voor de functie, worden ingeschakeld in query Store. Nadat u een aanbevolen prestatie aanbeveling hebt geïmplementeerd, moet u de prestaties testen om de impact van deze wijzigingen te evalueren.
 
@@ -26,7 +23,7 @@ Met de functie voor prestatie verbeteringen worden uw data bases geanalyseerd om
 
 De machtigingen van **Eigenaar** of **Inzender** zijn vereist voor het uitvoeren van analyses met de functie Prestatieaanbevelingen.
 
-## <a name="performance-recommendations"></a>Prestatieaanbevelingen
+## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
 
 De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) analyseert workloads op de server om indexen te analyseren met de mogelijkheid om prestaties te verbeteren.
 

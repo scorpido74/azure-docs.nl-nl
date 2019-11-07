@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
-ms.openlocfilehash: b327403b29f26f6c1f43f9dfe7aabd5c3c7e0a68
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: efb0d3222bfd98b15502163979425d47fa459e07
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299904"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605725"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Databricks CLI van Azure Cloud Shell gebruiken
 
@@ -24,7 +24,7 @@ Meer informatie over het gebruik van de Databricks CLI van Azure Cloud Shell voo
 
 * Een Azure Databricks-werk ruimte en-cluster. Zie [aan de slag met Azure Databricks](quickstart-create-databricks-workspace-portal.md)voor instructies. 
 
-* Stel een persoonlijk toegangs token in op Databricks. Zie [token beheer](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management)voor instructies.
+* Stel een persoonlijk toegangs token in op Databricks. Zie [token beheer](/azure/databricks/dev-tools/api/latest/authentication)voor instructies.
 
 ## <a name="use-the-azure-cloud-shell"></a>De Azure Cloud Shell gebruiken
 
@@ -32,11 +32,11 @@ Meer informatie over het gebruik van de Databricks CLI van Azure Cloud Shell voo
  
 2. Klik in de rechter bovenhoek op het pictogram **Cloud shell** .
 
-   Starten ![Cloud shell](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "starten Azure Cloud shell")
+   ![Cloud Shell starten](./media/databricks-cli-from-azure-cloud-shell/launch-azure-cloud-shell.png "Azure Cloud Shell starten")
 
 3. Zorg ervoor dat u **bash** selecteert voor de Cloud shell omgeving. U kunt een keuze uit de vervolg keuzelijst selecteren, zoals in de volgende scherm afbeelding wordt weer gegeven.
 
-   ![Selecteer bash voor de Cloud shell omgeving](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Selecteer bash") 
+   ![Selecteer bash voor de Cloud Shell omgeving](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Bash selecteren") 
 
 4. Maak een virtuele omgeving waarin u de Databricks CLI kunt installeren. In het onderstaande code fragment maakt u een virtuele omgeving met de naam `databrickscli`.
 
@@ -56,7 +56,7 @@ Meer informatie over het gebruik van de Databricks CLI van Azure Cloud Shell voo
 
     De volgende prompts worden weer gegeven:
 
-    * Eerst wordt u gevraagd om de Databricks-host in te voeren. Voer de waarde in de notatie `https://eastus2.azuredatabricks.net` in. **VS Oost 2** is hier de Azure-regio waar u uw Azure Databricks-werk ruimte hebt gemaakt.
+    * Eerst wordt u gevraagd om de Databricks-host in te voeren. Voer de waarde in de notatie `https://eastus2.azuredatabricks.net`in. **VS Oost 2** is hier de Azure-regio waar u uw Azure Databricks-werk ruimte hebt gemaakt.
 
     * Vervolgens wordt u gevraagd een token in te voeren. Voer het token in dat u eerder hebt gemaakt.
 
@@ -73,13 +73,13 @@ U kunt ook de volgende opdracht gebruiken om toegang te krijgen tot het Databric
     databricks fs ls
 
 
-Zie [DATABRICKS cli](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)voor een volledige naslag informatie over opdrachten.
+Zie [DATABRICKS cli](/azure/databricks/dev-tools/databricks-cli)voor een volledige naslag informatie over opdrachten.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [overzicht van Azure cli](../cloud-shell/overview.md) voor meer informatie over Azure cli
 * Zie [Naslag informatie voor Azure cli](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest) voor een lijst met opdrachten voor Azure cli
-* Zie [DATABRICKS cli](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html) (Engelstalig) voor een lijst met opdrachten voor Databricks cli
+* Zie [DATABRICKS cli](/azure/databricks/dev-tools/databricks-cli) (Engelstalig) voor een lijst met opdrachten voor Databricks cli
 
 

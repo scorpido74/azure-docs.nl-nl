@@ -1,6 +1,6 @@
 ---
-title: Bestanden kopiëren van meerdere containers met behulp van Azure Data Factory | Microsoft Docs
-description: Informatie over het gebruik van een oplossingssjabloon om bestanden te kopiëren uit meerdere containers met behulp van Azure Data Factory.
+title: Bestanden van meerdere containers kopiëren met behulp van Azure Data Factory
+description: Meer informatie over het gebruik van een oplossings sjabloon voor het kopiëren van bestanden uit meerdere containers met behulp van Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,52 +12,52 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
-ms.openlocfilehash: a52729adf8d6df3f4e44e561b45b854db433628c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 004a623f0dfe251da9d452b53c2541e53339d965
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635134"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684257"
 ---
-# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Bestanden kopiëren van meerdere containers met Azure Data Factory
+# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Bestanden van meerdere containers met Azure Data Factory kopiëren
 
-Dit artikel beschrijft een oplossingssjabloon die u gebruiken kunt om bestanden te kopiëren uit meerdere containers tussen bestand. Bijvoorbeeld, kunt u het migreren van uw data lake van AWS S3 naar Azure Data Lake Store. Of u kunt de sjabloon gebruiken voor het repliceren van alles vanuit een Azure Blob storage-account naar een andere.
+In dit artikel wordt een oplossings sjabloon beschreven die u kunt gebruiken om bestanden te kopiëren uit meerdere containers tussen bestands archieven. U kunt dit bijvoorbeeld gebruiken om uw data Lake te migreren van AWS S3 naar Azure Data Lake Store. Of u kunt de sjabloon gebruiken om alles te repliceren van een Azure Blob-opslag account naar een ander.
 
 > [!NOTE]
-> Als u kopiëren van bestanden uit een enkele container wilt, is het efficiënter gebruik van de [hulpprogramma voor kopiëren-gegevens](copy-data-tool.md) voor het maken van een pijplijn met een één kopieeractiviteit. De sjabloon in dit artikel is meer dan u nodig hebt voor het betreffende eenvoudige scenario.
+> Als u bestanden wilt kopiëren uit één container, is het efficiënter om met het [hulp programma gegevens kopiëren](copy-data-tool.md) een pijp lijn te maken met één Kopieer activiteit. De sjabloon in dit artikel is meer dan u nodig hebt voor dat eenvoudige scenario.
 
-## <a name="about-this-solution-template"></a>Over deze oplossingssjabloon
+## <a name="about-this-solution-template"></a>Over deze oplossings sjabloon
 
-Deze sjabloon worden de containers in uw bron opslag store opgesomd. Vervolgens worden deze containers gekopieerd naar de doel-store.
+Met deze sjabloon worden de containers uit uw bron opslag archief opgesomd. Vervolgens worden deze containers naar het doel archief gekopieerd.
 
 De sjabloon bevat drie activiteiten:
-- **GetMetadata** scant uw gegevensbronopslag voor opslag en haalt de lijst met de container.
-- **ForEach** haalt de lijst met de container van de **GetMetadata** activiteit en de lijst te herhalen en wordt elke container doorgegeven aan de Copy-activiteit.
-- **Kopie** elke container uit het archief van de opslag bron naar het doelarchief gekopieerd.
+- **GetMetadata** scant uw opslag opslag en haalt de lijst met containers op.
+- **Foreach** haalt de container lijst op uit de **GetMetadata** -activiteit en herhaalt vervolgens de lijst en geeft elke container door aan de Kopieer activiteit.
+- **Copy** kopieert elke container uit het opslag archief van de bron naar het doel archief.
 
-De sjabloon definieert twee parameters:
-- *SourceFilePath* is het pad van de brongegevensopslag, waar u kunt een lijst van de containers ophalen. In de meeste gevallen is het pad naar de hoofdmap waarin meerdere mappen van de container. De standaardwaarde van deze parameter is `/`.
-- *DestinationFilePath* is het pad waar de bestanden worden gekopieerd naar in uw doelarchief. De standaardwaarde van deze parameter is `/`.
+De sjabloon definieert twee para meters:
+- *SourceFilePath* is het pad naar de gegevens bron opslag, waar u een lijst van de containers kunt ophalen. In de meeste gevallen is het pad de hoofdmap, die meerdere container mappen bevat. De standaard waarde van deze para meter is `/`.
+- *DestinationFilePath* is het pad waarnaar de bestanden worden gekopieerd in uw doel archief. De standaard waarde van deze para meter is `/`.
 
-## <a name="how-to-use-this-solution-template"></a>Het gebruik van deze oplossingssjabloon
+## <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
 
-1. Ga naar de **meerdere bestanden containers tussen bestand kopiëren** sjabloon. Maak een **nieuw** verbinding met uw bron-opslag-archief. De bron-opslag-store is waarnaar u wilt kopiëren van bestanden uit meerdere containers uit.
+1. Ga naar het **bestand containers met meerdere bestanden kopiëren tussen** de sjabloon voor het opslaan van bestanden. Een **nieuwe** verbinding maken met uw bron opslag archief. In het bron opslag archief kunt u bestanden uit meerdere containers kopiëren.
 
-    ![Maak een nieuwe verbinding met de bron](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
+    ![Een nieuwe verbinding maken met de bron](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
 
-2. Maak een **nieuw** verbinding met uw doelarchief voor opslag.
+2. Maak een **nieuwe** verbinding naar uw doel opslag archief.
 
-    ![Maak een nieuwe verbinding met het doel](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
+    ![Een nieuwe verbinding maken met de bestemming](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Selecteer **Gebruik deze sjabloon**.
+3. Selecteer **deze sjabloon gebruiken**.
 
     ![Deze sjabloon gebruiken](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
-4. U ziet de pijplijn, zoals in het volgende voorbeeld:
+4. U ziet de pijp lijn, zoals in het volgende voor beeld:
 
-    ![De pijplijn weergeven](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
+    ![De pijp lijn weer geven](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Selecteer **Debug**, voer de **Parameters**, en selecteer vervolgens **voltooien**.
+5. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
 
     ![De pijplijn uitvoeren](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 
@@ -67,6 +67,6 @@ De sjabloon definieert twee parameters:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Bulksgewijs kopiëren uit een database met behulp van een besturingselement-tabel met Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
+- [Bulksgewijs kopiëren van een Data Base met behulp van een controle tabel met Azure Data Factory](solution-template-bulk-copy-with-control-table.md)
 
-- [Bestanden kopiëren van meerdere containers met Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Bestanden van meerdere containers met Azure Data Factory kopiëren](solution-template-copy-files-multiple-containers.md)

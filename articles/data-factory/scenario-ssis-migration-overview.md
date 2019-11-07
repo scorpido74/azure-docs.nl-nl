@@ -1,5 +1,5 @@
 ---
-title: On-premises SSIS-workloads migreren naar SSIS in Azure Data Factory | Microsoft Docs
+title: On-premises SSIS-workloads migreren naar SSIS in Azure Data Factory
 description: Migratie van on-premises SSIS-workloads naar SSIS in ADF.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 3bf5ddebd59c95d00d0d3270f0e8e1a2d29b379a
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968469"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684421"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>On-premises SSIS-workloads migreren naar SSIS in ADF
 
@@ -27,15 +27,15 @@ Wanneer u de werk belasting van uw data base migreert van SQL Server on-premises
 
 Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) ondersteunt actieve SSIS-pakketten. Als Azure-SSIS IR is ingericht, kunt u vervolgens vertrouwde hulpprogram ma's gebruiken, zoals SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) en opdracht regel Programma's, zoals dtinstall/dtutil/dtexec, om uw pakketten te implementeren en uit te voeren in Azure. Zie [Azure SSIS Lift-and-Shift Overview (](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)Engelstalig) voor meer informatie.
 
-In dit artikel wordt het migratie proces van de ETL-workloads van on-premises SSIS naar SSIS in ADF uitgelegd. Het migratie proces bestaat uit twee fasen: **Beoordeling** en **migratie**.
+In dit artikel wordt het migratie proces van de ETL-workloads van on-premises SSIS naar SSIS in ADF uitgelegd. Het migratie proces bestaat uit twee fasen: **evaluatie** en **migratie**.
 
-## <a name="assessment"></a>Evaluatie
+## <a name="assessment"></a>Beoordeling
 
 Een grondige evaluatie helpt bij het vaststellen van een volledig migratie plan voor het identificeren van problemen met de bron-SSIS-pakketten die een geslaagde migratie belemmeren.
 
 Data Migration Assistant (DMA) is een vrij downloadbaar hulp programma voor dit doel dat lokaal kan worden geïnstalleerd en uitgevoerd. Een DMA-beoordelings project van het type **integratie Services** kan worden gemaakt om SSIS-pakketten in batches te beoordelen en compatibiliteits problemen te identificeren die worden weer gegeven in de volgende categorieën:
 
-- Migratie blokkeringen: Dit zijn compatibiliteits problemen die verhinderen dat de migratie bron pakketten op Azure-SSIS IR worden uitgevoerd. DMA biedt hulp bij het oplossen van deze problemen.
+- Migratie blokkeringen: Dit zijn compatibiliteits problemen waarbij de migratie bron pakketten worden geblokkeerd om te worden uitgevoerd op Azure-SSIS IR. DMA biedt hulp bij het oplossen van deze problemen.
 
 - Informatieve problemen: Dit zijn gedeeltelijk ondersteunde of afgeschafte functies die worden gebruikt in bron pakketten. DMA biedt een uitgebreide set aanbevelingen, alternatieve benaderingen die beschikbaar zijn in Azure en het beperken van de stappen voor het oplossen van problemen.
 
@@ -77,7 +77,7 @@ Afhankelijk van de [opslag typen](#four-storage-types-for-ssis-packages) van de 
 |SQL Server (MSDB)|Exporteren naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil. Zie [SSIS-pakketten exporteren](https://docs.microsoft.com/sql/integration-services/import-and-export-packages-ssis-service)voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
 |Pakket archief|Exporteer deze naar bestands systemen/bestands shares/Azure Files via SSMS/dtutil of implementeer ze opnieuw op bestands shares/Azure Files via dtinstall/dtutil/hand matig kopiëren of bewaar ze in bestands systemen voor toegang via een VNet/zelf-Hostende IR. Zie dtutil Utility (Engelstalig) voor meer informatie. Zie [dtutil Utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)(Engelstalig) voor meer informatie.|Zet ze om in ADF-pijp lijnen/activiteiten/triggers via scripts/SSMS/ADF Portal. Zie [SSMS planning feature](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)(Engelstalig) voor meer informatie.|
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
 - [Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview)

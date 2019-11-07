@@ -1,20 +1,20 @@
 ---
-title: Problemen met de Windows-functie diagnostische gegevens van virtueel bureau blad identificeren-Azure
-description: Hierin wordt de Windows-functie diagnostische gegevens voor virtuele Bureau bladen beschreven en wordt uitgelegd hoe u deze kunt gebruiken.
+title: Problemen met Windows Virtual Desktop vaststellen-Azure
+description: De Windows-functie diagnostische gegevens over virtueel bureau blad gebruiken om problemen te diagnosticeren.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 0e04b075259ed1d003df4a03686d46b1adf694d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840135"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606862"
 ---
-# <a name="identify-and-diagnose-issues"></a>Problemen identificeren en vaststellen
+# <a name="identify-and-diagnose-issues"></a>Problemen identificeren en diagnosticeren
 
 Virtueel bureau blad van Windows biedt een functie voor diagnostische gegevens waarmee de beheerder problemen kan identificeren via één interface. De Windows-functies voor virtuele Bureau bladen registreren een diagnostische activiteit wanneer een gebruiker met het systeem communiceert. Elk logboek bevat relevante informatie zoals de Windows-functies voor virtueel bureau blad die betrokken zijn bij de trans actie, fout berichten, Tenant gegevens en gebruikers informatie. Diagnostische activiteiten worden gemaakt door eind gebruikers en administratieve acties en kunnen worden gecategoriseerd in drie hoofd verzamelingen:
 
@@ -32,7 +32,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>Problemen vaststellen met Power shell
 
-De diagnostische gegevens van Windows virtueel bureau blad maakt gebruik van slechts één Power shell-cmdlet, maar bevat veel optionele para meters om problemen te beperken en te isoleren. De volgende secties bevatten een lijst met de cmdlets die u kunt uitvoeren om problemen vast te stellen. De meeste filters kunnen samen worden toegepast. Waarden die worden weer gegeven tussen vier Kante haken, zoals `<tenantName>`, moeten worden vervangen door de waarden die van toepassing zijn op uw situatie.
+De diagnostische gegevens van Windows virtueel bureau blad maakt gebruik van slechts één Power shell-cmdlet, maar bevat veel optionele para meters om problemen te beperken en te isoleren. De volgende secties bevatten een lijst met de cmdlets die u kunt uitvoeren om problemen vast te stellen. De meeste filters kunnen samen worden toegepast. Waarden die worden weer gegeven tussen vier Kante haakjes, zoals `<tenantName>`, moeten worden vervangen door de waarden die van toepassing zijn op uw situatie.
 
 ### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Diagnostische activiteiten ophalen in uw Tenant
 

@@ -1,5 +1,5 @@
 ---
-title: Capaciteits limieten-Azure Synapse Analytics (voorheen SQL DW) | Microsoft Docs
+title: Capaciteits limieten-Azure Synapse Analytics (voorheen SQL DW)
 description: De maximum waarden die zijn toegestaan voor verschillende onderdelen van SQL Analytics in azure Synapse.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,25 +10,26 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 702f78f5bae12b2eba6669a344af14f6d1236856
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4ab9d9cc8007281e0e5729fe883e654107be6fe
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475807"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645294"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Capaciteits limieten voor Azure Synapse Analytics (voorheen SQL DW)
 
 De maximum waarden die zijn toegestaan voor verschillende onderdelen van Azure Synapse.
 
 ## <a name="workload-management"></a>Werklastbeheer
+
 | Category | Beschrijving | Maximum |
 |:--- |:--- |:--- |
 | [Data Warehouse-eenheden (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maxi maal aantal DWU voor één SQL-pool-eenheid (Data Warehouse) | Gen1: DW6000<br></br>Gen2: DW30000c |
 | [Data Warehouse-eenheden (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Standaard-DTU per server |54.000<br></br>Elke SQL-Server (bijvoorbeeld myserver.database.windows.net) heeft standaard een DTU-quotum van 54.000, waardoor Maxi maal 9 DW6000c is toegestaan. Dit quotum is gewoon een veiligheidsbeperking. U kunt het quotum verhogen door [een ondersteunings ticket te maken](sql-data-warehouse-get-started-create-support-ticket.md) en *quotum* als aanvraag type te selecteren.  U kunt uw DTU-behoeften berekenen door de 7,5 te vermenigvuldigen met het totale DWU dat nodig is, of door 9,0 te vermenigvuldigen met het totale aantal cDWU dat nodig is. Bijvoorbeeld:<br></br>DW6000 x 7,5 = 45.000 Dtu's<br></br>DW6000c x 9,0 = 54.000 Dtu's.<br></br>U kunt uw huidige DTU-verbruik weer geven met de optie SQL Server in de portal. Zowel onderbroken als niet-onderbroken databases tellen mee voor het DTU-quotum. |
 | Database verbinding |Maximum aantal gelijktijdige open sessies |1024<br/><br/>Het aantal gelijktijdige open sessies varieert op basis van de geselecteerde DWU. DWU600c en hoger ondersteunen Maxi maal 1024 geopende sessies. DWU500c en lager ondersteunen een maximum aantal gelijktijdige open sessies van 512. Opmerking: er gelden limieten voor het aantal query's dat gelijktijdig kan worden uitgevoerd. Wanneer de limiet voor gelijktijdigheid wordt overschreden, wordt de aanvraag in een interne wachtrij geplaatst, waarin wordt gewacht om te worden verwerkt. |
 | Database verbinding |Maxi maal geheugen voor voor bereide instructies |20 MB |
-| [Werklastbeheer](resource-classes-for-workload-management.md) |Maximum aantal gelijktijdige query's |128<br/><br/>  Er worden Maxi maal 128 gelijktijdige query's uitgevoerd en er worden resterende query's in de wachtrij geplaatst.<br/><br/>Het aantal gelijktijdige query's kan afnemen wanneer gebruikers worden toegewezen aan hogere bron klassen of wanneer de instelling van de [Data Warehouse-eenheid](memory-and-concurrency-limits.md) wordt verlaagd. Sommige query's, zoals DMV-query's, mogen altijd worden uitgevoerd en hebben geen invloed op de limiet voor gelijktijdige query's. Zie het artikel [gelijktijdigheids limieten](memory-and-concurrency-limits.md#concurrency-maximums) voor meer informatie over het gelijktijdig uitvoeren van query's. |
+| [Werklastbeheer](resource-classes-for-workload-management.md) |Maximum aantal gelijktijdige query's |128<br/><br/>  Er worden Maxi maal 128 gelijktijdige query's uitgevoerd en er worden resterende query's in de wachtrij geplaatst.<br/><br/>Het aantal gelijktijdige query's kan afnemen wanneer gebruikers worden toegewezen aan hogere bron klassen of wanneer de instelling [Data Warehouse-eenheid] geheugen-gelijktijdigheids limits.md) wordt verlaagd. Sommige query's, zoals DMV-query's, mogen altijd worden uitgevoerd en hebben geen invloed op de limiet voor gelijktijdige query's. Zie het artikel [gelijktijdigheids maximums] geheugen-gelijktijdigheids limits.md) voor meer informatie over het gelijktijdig uitvoeren van query's. |
 | [tempdb](sql-data-warehouse-tables-temporary.md) |Maximum GB |399 GB per DW100. Daarom heeft TempDB het formaat 3,99 TB. |
 
 ## <a name="database-objects"></a>Database objecten

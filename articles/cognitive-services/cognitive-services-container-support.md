@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 926c2c0bbe4fdd24a6a8271b2e01ababcacf77d5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 958acd042acba2a8c6c38ad1e6bac614db509da8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499189"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604450"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Ondersteuning voor containers in azure Cognitive Services
 
-Met container ondersteuning in azure Cognitive Services kunnen ontwikkel aars gebruikmaken van dezelfde uitgebreide Api's die beschikbaar zijn in Azure en kunnen ze de services die worden geleverd met [docker-containers](https://www.docker.com/what-container)implementeren en hosten. Container ondersteuning is momenteel beschikbaar als preview-versie voor een subset van Azure Cognitive Services, inclusief delen van:
+Met container ondersteuning in azure Cognitive Services kunnen ontwikkel aars gebruikmaken van dezelfde uitgebreide Api's die beschikbaar zijn in Azure en kunnen ze de services die worden geleverd met [docker-containers](https://www.docker.com/what-container)implementeren en hosten. Container ondersteuning is momenteel beschikbaar voor een subset van Azure Cognitive Services, met inbegrip van delen van:
 
 > [!div class="checklist"]
 > * [Anomalie detectie][ad-containers]
@@ -33,7 +33,7 @@ Met container ondersteuning in azure Cognitive Services kunnen ontwikkel aars ge
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
-Container opslag is een benadering van software distributie waarbij een toepassing of service, inclusief de bijbehorende afhankelijkheden & configuratie, als container installatie kopie wordt verpakt. Met weinig of geen wijzigingen kan een container installatie kopie worden geïmplementeerd op een container host. Containers zijn geïsoleerd van elkaar en het onderliggende besturings systeem, met een kleinere footprint dan een virtuele machine. Containers kunnen worden geïnstantieerd vanuit container installatie kopieën voor taken op korte termijn en worden verwijderd wanneer deze niet meer nodig zijn.
+Container opslag is een benadering van software distributie waarbij een toepassing of service, inclusief de bijbehorende afhankelijkheden & configuratie, als container installatie kopie wordt verpakt. Met weinig of geen wijzigingen kan een container installatie kopie worden geïmplementeerd op een container host. Containers zijn geïsoleerd van elkaar worden verbonden en het onderliggende besturingssysteem, met een kleinere footprint dan een virtuele machine. Containers kunnen worden geïnstantieerd vanuit container installatie kopieën voor taken op korte termijn en worden verwijderd wanneer deze niet meer nodig zijn.
 
 Cognitive Services resources zijn beschikbaar op [Microsoft Azure](https://azure.microsoft.com). Meld u aan bij de [Azure Portal](https://portal.azure.com/) om Azure-resources te maken en te verkennen voor deze services.
 
@@ -132,13 +132,9 @@ Installeer en verken de functionaliteit van containers in azure Cognitive Servic
 [fr-containers]: form-recognizer/form-recognizer-container-howto.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
-<<<<<<< HEAD
 [sp-containers-stt]: speech-service/speech-container-howto.md?tabs=stt
 [sp-containers-cstt]: speech-service/speech-container-howto.md?tabs=cstt
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
 [sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
-=======
-[ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
 [tt-containers]: translator/how-to-install-containers.md
->>>>>>> refs/afstands bediening/MicrosoftDocs/Master

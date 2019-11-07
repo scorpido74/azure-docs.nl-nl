@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 0122f952e586d0535fc2e482c7b78266f8809272
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 11/04/2019
+ms.openlocfilehash: 920d632dfa15c25905dc4077465e6f8654b5f57d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67062436"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603173"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Bewaking in Azure Database for MySQL
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MySQL biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
@@ -22,14 +22,14 @@ Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elk
 ### <a name="list-of-metrics"></a>Lijst met metrische gegevens
 Deze metrische gegevens zijn beschikbaar voor Azure Database for MySQL:
 
-|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Description|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
 |---|---|---|---|
-|cpu_percent|CPU-percentage|Percent|Het percentage CPU-gebruik.|
-|memory_percent|Geheugen percentage|Percent|Het percentage geheugen dat in gebruik is.|
-|io_consumption_percent|IO-percentage|Percent|Het percentage i/o dat in gebruik is.|
-|storage_percent|Opslag percentage|Percent|Het percentage van de opslag ruimte dat uit het maximum van de server wordt gebruikt.|
-|storage_used|Opslag gebruikt|Bytes|De hoeveelheid opslag ruimte die wordt gebruikt. De opslag die door de service wordt gebruikt, kan de database bestanden, transactie logboeken en de server logboeken bevatten.|
-|serverlog_storage_percent|Percentage server logboek opslag|Percent|Het percentage server logboek opslag dat is gebruikt voor de maximale server logboek opslag van de server.|
+|cpu_percent|CPU-percentage|Procent|Het percentage CPU-gebruik.|
+|memory_percent|Geheugen percentage|Procent|Het percentage geheugen dat in gebruik is.|
+|io_consumption_percent|IO-percentage|Procent|Het percentage i/o dat in gebruik is.|
+|storage_percent|Opslag percentage|Procent|Het percentage van de opslag ruimte dat uit het maximum van de server wordt gebruikt.|
+|storage_used|Gebruikte opslag|Bytes|De hoeveelheid opslag ruimte die wordt gebruikt. De opslag die door de service wordt gebruikt, kan de database bestanden, transactie logboeken en de server logboeken bevatten.|
+|serverlog_storage_percent|Percentage server logboek opslag|Procent|Het percentage server logboek opslag dat is gebruikt voor de maximale server logboek opslag van de server.|
 |serverlog_storage_usage|Gebruikte server logboek opslag|Bytes|De hoeveelheid server logboek opslag die in gebruik is.|
 |serverlog_storage_limit|Opslag limiet voor server logboek|Bytes|De maximale server logboek opslag voor deze server.|
 |storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
@@ -44,13 +44,13 @@ Deze metrische gegevens zijn beschikbaar voor Azure Database for MySQL:
 U kunt langzame query-en controle logboek registratie inschakelen op uw server. Deze logboeken zijn ook beschikbaar via Diagnostische logboeken van Azure in Azure Monitor-logboeken, Event Hubs en opslag account. Ga voor meer informatie over logboek registratie naar de artikelen [audit logs](concepts-audit-logs.md) en [Slow query logs](concepts-server-logs.md) .
 
 ## <a name="query-store"></a>Query Store
-[Query Store](concepts-query-store.md) is een open bare preview-functie waarmee de query prestaties in de loop van de tijd worden bijgehouden, inclusief de statistieken voor query runtime en wacht gebeurtenissen. De functie bewaart query runtime-prestatie gegevens in het **MySQL** -schema. U kunt het verzamelen en opslaan van gegevens beheren via verschillende configuratie knoppen.
+[Query Store](concepts-query-store.md) is een functie waarmee de query prestaties in de loop van de tijd worden bijgehouden, inclusief query's in runtime-statistieken en wacht gebeurtenissen. De functie bewaart query runtime-prestatie gegevens in het **MySQL** -schema. U kunt het verzamelen en opslaan van gegevens beheren via verschillende configuratie knoppen.
 
-## <a name="query-performance-insight"></a>Query Performance Insight
-[Query Performance Insight](concepts-query-performance-insight.md) werkt in combi natie met query Store om visualisaties toegankelijk te maken vanuit de Azure Portal. Met deze grafieken kunt u belang rijke query's identificeren die van invloed zijn op de prestaties. Query Performance Insight bevindt zich in de open bare preview en is toegankelijk via de sectie **intelligente prestaties** van de portal pagina van uw Azure database for mysql-server.
+## <a name="query-performance-insight"></a>Inzicht in queryprestaties
+[Query Performance Insight](concepts-query-performance-insight.md) werkt in combi natie met query Store om visualisaties toegankelijk te maken vanuit de Azure Portal. Met deze grafieken kunt u belang rijke query's identificeren die van invloed zijn op de prestaties. Query Performance Insight is toegankelijk in het gedeelte **intelligente prestaties** van de portal pagina van de Azure database for mysql-server.
 
-## <a name="performance-recommendations"></a>Prestatieaanbevelingen
-De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.md) identificeert mogelijkheden voor het verbeteren van de prestaties van de werk belasting. De open bare preview-versie van prestatie aanbevelingen biedt u aanbevelingen voor het maken van nieuwe indexen die de prestaties van uw workloads kunnen verbeteren. Voor het produceren van index aanbevelingen, neemt de functie rekening met diverse database kenmerken, waaronder het schema en de werk belasting zoals gerapporteerd door de query Store. Na de implementatie van de aanbevolen prestaties, moeten klanten de prestaties testen om de impact van deze wijzigingen te evalueren.
+## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
+De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.md) identificeert mogelijkheden voor het verbeteren van de prestaties van de werk belasting. Prestatie aanbevelingen bieden u aanbevelingen voor het maken van nieuwe indexen die de prestaties van uw workloads kunnen verbeteren. Voor het produceren van index aanbevelingen, neemt de functie rekening met diverse database kenmerken, waaronder het schema en de werk belasting zoals gerapporteerd door de query Store. Na de implementatie van de aanbevolen prestaties, moeten klanten de prestaties testen om de impact van deze wijzigingen te evalueren.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Zie [waarschuwingen instellen](howto-alert-on-metric.md) voor hulp bij het maken van een waarschuwing op metrische gegevens.

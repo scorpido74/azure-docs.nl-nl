@@ -1,32 +1,33 @@
 ---
-title: Azure SQL Data Warehouse op kolomniveau-beveiliging | Microsoft Docs
-description: Beveiliging op kolomniveau (CLS) kunnen klanten voor het beheren van toegang tot database tabelkolommen op basis van de uitvoeringscontext van de gebruiker of hun groepslidmaatschap. CLS vereenvoudigt het ontwerp en de code van de beveiliging in uw toepassing. CLS kunt u beperkingen op kolom toegang implementeert.
+title: Beveiliging op kolomniveau
+description: Met beveiliging op kolom niveau (CLS) kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker. CLS vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met CLS kunt u beperkingen voor kolom toegang implementeren.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: aa91bd586e064239d0e05c754427947963c9ee3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082797"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693081"
 ---
-# <a name="column-level-security"></a>Beveiliging op kolomniveau
-Beveiliging op kolomniveau (CLS) kunnen klanten voor het beheren van toegang tot database tabelkolommen op basis van de uitvoeringscontext van de gebruiker of hun groepslidmaatschap.
+# <a name="column-level-security"></a>Beveiliging op kolom niveau
+Met beveiliging op kolom niveau (CLS) kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
-CLS vereenvoudigt het ontwerp en de code van de beveiliging in uw toepassing. CLS kunt u voor het implementeren van beperkingen op de kolom toegang tot gevoelige gegevens te beschermen. Bijvoorbeeld, ervoor te zorgen dat bepaalde gebruikers kunnen alleen bepaalde kolommen van een tabel die relevant zijn voor hun afdeling. De logica van de beperking van toegang is gevonden in de databaselaag in plaats van opslag van de gegevens in een andere toepassingslaag. De database is van toepassing de toegangsbeperkingen telkens wanneer die toegang tot gegevens van elke laag wordt uitgevoerd. Deze beperking maakt het beveiligingssysteem betrouwbaarder en robuuste door te verminderen van het gebied van de algehele beveiligingssysteem. Bovendien hoeft CLS ook u voor de invoering van weergaven uit de kolommen voor de toepassing van toegangsbeperkingen voor de gebruikers te filteren.
+CLS vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met CLS kunt u beperkingen voor kolom toegang implementeren om gevoelige gegevens te beveiligen. Bijvoorbeeld, om ervoor te zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant is voor hun afdeling. De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. De-data base past de toegangs beperkingen toe telkens wanneer de toegang tot de gegevens vanuit een wille keurige laag wordt gestart. Deze beperking zorgt ervoor dat uw beveiligings systeem betrouwbaarder en robuuster is door de surface area van uw algehele beveiligings systeem te verminderen. Daarnaast elimineert CLS de nood zaak van de introductie van weer gaven om kolommen uit te filteren voor het opleggen van toegangs beperkingen voor de gebruikers.
 
-Kan u CLS met implementeert de [verlenen](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL-instructie. Met dit mechanisme verificatie zowel SQL en Azure Active Directory (AAD) worden ondersteund.
+U kunt CLS implementeren met de instructie [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Met dit mechanisme worden de authenticatie van SQL en Azure Active Directory (AAD) ondersteund.
 
-![CLS](./media/column-level-security/cls.png)
+![compatibiliteit](./media/column-level-security/cls.png)
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -47,9 +48,9 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Voorbeeld
-Het volgende voorbeeld laat zien hoe om te voorkomen dat 'TestUser' toegang tot de kolom 'SSN' van 'Lidmaatschap' tabel:
+In het volgende voor beeld ziet u hoe u ' test User ' beperkt tot de kolom ' SSN ' in de tabel ' Membership ':
 
-'Lidmaatschap'-tabel maken met SSN-kolom die wordt gebruikt voor het opslaan van sociale-fiscale nummers bevatten:
+De tabel ' Membership ' maken met de kolom SSN die wordt gebruikt voor het opslaan van sociale-beveiligings nummers:
 
 ```sql
 CREATE TABLE Membership
@@ -61,13 +62,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-'TestUser' toestaan voor toegang tot alle kolommen behalve SSN kolom dat gevoelige gegevens bevat:
+' Test User ' toestaan om toegang te krijgen tot alle kolommen, met uitzonde ring van de kolom SSN die gevoelige gegevens bevat:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Query's uitgevoerd, zoals 'TestUser' mislukken als ze de SSN-kolom is opgenomen:
+Query's die worden uitgevoerd als ' test User ' mislukken als ze de kolom SSN bevatten:
 
 ```sql
 SELECT * FROM Membership;
@@ -77,6 +78,6 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
-Enkele voorbeelden van hoe CLS vandaag nog wordt gebruikt:
-- Een bedrijf voor financiële dienstverlening kunt enige account managers toegang hebben tot de klant BSN-nummers (SSN), telefoonnummers en andere persoonlijk identificeerbare informatie (PII).
-- Een provider van de gezondheidszorg kan alleen artsen en verpleegkundigen hebben toegang tot gevoelige medische records bij leden van de facturering afdeling is niet toegestaan om deze gegevens weer te geven.
+Hier volgen enkele voor beelden van de manier waarop CLS vandaag wordt gebruikt:
+- Met een onderneming met financiële services kunnen alleen account beheerders toegang hebben tot sofi-nummers (Social Security Number) van klanten, telefoon nummers en andere persoons gegevens (PII).
+- Een Health Care-provider staat toe dat alleen artsen en verpleegt toegang hebben tot gevoelige medische records zonder dat leden van de facturerings afdeling deze gegevens kunnen bekijken.

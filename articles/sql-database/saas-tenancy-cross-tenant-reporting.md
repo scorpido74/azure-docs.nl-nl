@@ -1,5 +1,5 @@
 ---
-title: Rapportage query's uitvoeren in meerdere Azure SQL-data bases | Microsoft Docs
+title: Rapportage query's uitvoeren in meerdere Azure SQL-data bases
 description: Meerdere Tenant rapporten met behulp van gedistribueerde query's.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
-ms.openlocfilehash: fa8dbbbb09fbdc14049e168afe6eb4810ccc8254
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f9af2af7893bd908988ee45476ce14a56f9768a9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570238"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691899"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Rapportage over meerdere tenants met behulp van gedistribueerde query's
 
@@ -58,7 +58,7 @@ De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code z
 
 Als u query's wilt uitvoeren op een interessantere gegevensset, maakt u verkoop gegevens van tickets door de ticket Generator uit te voeren.
 
-1. Open in de *Power shell-ISE*de... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReporting. ps1* script en stel de volgende waarde in:
+1. Open in de *Power shell-ISE*de trainings modules...\\\\Operational Analytics\\Adhoc Reporting\\*demo-AdhocReporting. ps1* script en stel de volgende waarde in:
    * **$DemoScenario** = 1, **Koop tickets voor gebeurtenissen op alle locaties**.
 2. Druk op **F5** om het script uit te voeren en de verkoop van tickets te genereren. Wanneer het script wordt uitgevoerd, gaat u door met de stappen in deze zelf studie. De ticket gegevens worden in de sectie *ad hoc gedistribueerde Query's uitvoeren* opgevraagd en wachten op het volt ooien van de ticket generator.
 
@@ -68,7 +68,7 @@ In de Wingtip tickets SaaS-data base per Tenant toepassing krijgt elke Tenant ee
 
 Als u dit patroon wilt simuleren, wordt er een set globale weer gaven toegevoegd aan de Tenant database waarmee een Tenant-ID wordt gedefinieerd in elk van de tabellen die wereld wijd worden opgevraagd. In de weer gave *VenueEvents* wordt bijvoorbeeld een berekende *VenueId* toegevoegd aan de kolommen die in de tabel *gebeurtenissen* zijn geprojecteerd. Op dezelfde manier voegt de weer gaven *VenueTicketPurchases* en *VenueTickets* een berekende *VenueId* -kolom toe die is geprojecteerd uit de bijbehorende tabellen. Deze weer gaven worden door elastische query's gebruikt voor het parallelliseren van query's en worden naar de juiste externe Tenant database gepusht als er een *VenueId* -kolom aanwezig is. Dit reduceert de hoeveelheid gegevens die wordt geretourneerd aanzienlijk en resulteert in een aanzienlijke toename van de prestaties voor veel query's. Deze globale weer gaven zijn vooraf gemaakt in alle Tenant databases.
 
-1. Open SSMS en [Maak verbinding met de tenants1&lt;-&gt; gebruikers server](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. Open SSMS en [Maak verbinding met de tenants1-&lt;gebruiker&gt;-server](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 1. Vouw **data bases**uit, klik met de rechter muisknop op _Contosoconcerthall_en selecteer **nieuwe query**.
 1. Voer de volgende query's uit om het verschil tussen de tabellen met één Tenant en de globale weer gaven te verkennen:
 
@@ -90,12 +90,12 @@ In deze weer gaven wordt de *VenueId* berekend als een hash van de naam van de l
 
 De definitie van de weer gave *evenementen* bekijken:
 
-1. Vouw in **objectverkenner** **contosoconcerthall** > **weer gaven**uit:
+1. Vouw in **Objectverkenner** > **weer gaven** **contosoconcerthall** uit:
 
-   ![weergaven](media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![Weergaven](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Klik met de rechter muisknop op **dbo. Locaties**.
-3. Selecteer de **script weergave als** > **maken voor het** > **nieuwe query editor-venster**
+3. Selecteer de **script weergave als** > **maken om** een **Nieuw Query Editor-venster** te > 
 
 Scripteer een van de andere *locaties* weergaven om te zien hoe ze de *VenueId*toevoegen.
 
@@ -103,7 +103,7 @@ Scripteer een van de andere *locaties* weergaven om te zien hoe ze de *VenueId*t
 
 In deze oefening wordt de _adhocreporting_ -data base geïmplementeerd. Dit is de hoofd database die het schema bevat dat wordt gebruikt voor het uitvoeren van query's in alle Tenant databases. De data base wordt geïmplementeerd op de bestaande catalogus server. Dit is de server die wordt gebruikt voor alle aan beheer gerelateerde data bases in de voor beeld-app.
 
-1. Open in *Power shell ISE*... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReporting. ps1*. 
+1. \\open in *Power shell ISE*Learning modules\\Operational Analytics\\ad hoc Reporting\\*demo-AdhocReporting. ps1*. 
 
 1. Stel **$DemoScenario = 2**in, _Implementeer een ad-hoc rapportage database_.
 
@@ -123,7 +123,7 @@ Deze oefening voegt schema (de externe gegevens bron en externe tabel definities
 
     ![referentie maken](media/saas-tenancy-cross-tenant-reporting/create-credential.png)
 
-   Met de catalogus database als externe gegevens bron worden query's gedistribueerd naar alle data bases die in de catalogus zijn geregistreerd op het moment dat de query wordt uitgevoerd. Als server namen verschillend zijn voor elke implementatie, wordt met dit script de locatie van de catalogus database opgehaald van de huidige server@servername(@) waar het script wordt uitgevoerd.
+   Met de catalogus database als externe gegevens bron worden query's gedistribueerd naar alle data bases die in de catalogus zijn geregistreerd op het moment dat de query wordt uitgevoerd. Als server namen verschillend zijn voor elke implementatie, haalt dit script de locatie van de catalogus database op van de huidige server (@@servername) waarin het script wordt uitgevoerd.
 
     ![externe gegevens bron maken](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
@@ -149,7 +149,7 @@ Als u het uitvoerings plan wilt inspecteren, houdt u de muis aanwijzer boven de 
 
 Belang rijk om te weten dat het instellen van **distributie = Shard (VenueId)** wanneer de externe gegevens bron is gedefinieerd, verbetert de prestaties voor veel scenario's. Wanneer elke *VenueId* wordt toegewezen aan een afzonderlijke Data Base, kan het filteren eenvoudig op afstand worden uitgevoerd, waarbij alleen de benodigde gegevens worden geretourneerd.
 
-1. Openen... \\Trainings modules\\Operational\\Reporting\\AD*demo-AdhocReportingQueries. SQL* in SSMS.
+1. Open...\\learning modules\\Operational Analytics\\adhoc Reporting\\*demo-AdhocReportingQueries. SQL* in SSMS.
 2. Zorg ervoor dat u bent verbonden met de **adhocreporting** -data base.
 3. Selecteer het **query** menu en klik op **werkelijke uitvoerings plan toevoegen**
 4. Markeer de *locaties die momenteel zijn geregistreerd?* query en druk op **F5**.
@@ -187,7 +187,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 
 Probeer nu de [zelf studie voor Tenant analyse](saas-tenancy-tenant-analytics.md) om het extra heren van gegevens te verkennen naar een afzonderlijke Analytics-Data Base voor complexere analyse verwerking.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * Aanvullende [zelf studies die voortbouwen op de SaaS-data base van Wingtip tickets per Tenant toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastische query](sql-database-elastic-query-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Prestatie Azure SQL Database bewaken met Dmv's | Microsoft Docs
+title: Prestatie Azure SQL Database bewaken met Dmv's
 description: Meer informatie over het detecteren en onderzoeken van veelvoorkomende prestatie problemen met dynamische beheer weergaven om Microsoft Azure SQL Database te bewaken.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: a630ceb1748f38dc169a4ebabcbb4e021de4273c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7eed3fc8e9d0328a3e793e1ff4b3652ab86e2bc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881561"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687753"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Prestaties bewaken Azure SQL Database het gebruik van dynamische beheer weergaven
 
@@ -108,7 +108,7 @@ Bij het identificeren van i/o-prestatie problemen zijn de meest voorkomende wach
 
 - `PAGEIOLATCH_*`
 
-  Voor IO-problemen met gegevens bestanden `PAGEIOLATCH_SH`( `PAGEIOLATCH_EX`inclusief `PAGEIOLATCH_UP`,,).  Als de wait-type naam **io** bevat, verwijst deze naar een io-probleem. Als er geen **io** is in de wacht naam voor de vergren deling van de pagina, wijst deze naar een ander type probleem (bijvoorbeeld TempDB-conflicten).
+  Voor IO-problemen met gegevens bestanden (inclusief `PAGEIOLATCH_SH`, `PAGEIOLATCH_EX``PAGEIOLATCH_UP`).  Als de wait-type naam **io** bevat, verwijst deze naar een io-probleem. Als er geen **io** is in de wacht naam voor de vergren deling van de pagina, wijst deze naar een ander type probleem (bijvoorbeeld TempDB-conflicten).
 
 - `WRITE_LOG`
 
@@ -130,8 +130,8 @@ ORDER BY end_time DESC;
 
 Als de i/o-limiet is bereikt, hebt u twee opties:
 
-- Optie 1: De berekenings grootte of servicelaag upgraden
-- Optie 2: Identificeer en stem de query's af die de meeste IO gebruiken.
+- Optie 1: de reken grootte of de servicelaag upgraden
+- Optie 2: de query's identificeren en afstemmen die de meeste IO gebruiken.
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>Aan de buffer gerelateerde IO weer geven met behulp van de query Store
 
@@ -158,7 +158,7 @@ GO
 
 #### <a name="view-total-log-io-for-writelog-waits"></a>Totale logboek-IO voor WRITELOG-wacht tijden weer geven
 
-Als het wacht type is `WRITELOG`, gebruikt u de volgende query om het totale aantal logboek-io per-instructie weer te geven:
+Als het wacht type `WRITELOG`is, gebruikt u de volgende query om het totale aantal logboek-IO per-instructie weer te geven:
 
 ```sql
 -- Top transaction log consumers
@@ -235,15 +235,15 @@ ORDER BY total_log_bytes_used DESC;
 GO
 ```
 
-## <a name="identify-tempdb-performance-issues"></a>Prestatie `tempdb` problemen identificeren
+## <a name="identify-tempdb-performance-issues"></a>Prestatie problemen met `tempdb` identificeren
 
-Bij het identificeren van i/o-prestatie problemen, zijn `tempdb` `PAGELATCH_*` de meest voorkomende wacht `PAGEIOLATCH_*`typen die zijn gekoppeld aan problemen (niet). Wacht tijden zijn echter niet altijd de bedoeling dat u `tempdb` conflicten hebt. `PAGELATCH_*`  Dit kan ook betekenen dat u een gegevens pagina-inhoud voor gebruikers objecten hebt vanwege gelijktijdige aanvragen die zijn gericht op dezelfde gegevens pagina. `2:x:y` `tempdb` `x` `y` [](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) Gebruik sys. DM _exec_requests om te bevestigen dat de wait_resource-waarde begint met 2 is de data base-id, de bestands-id en de pagina-id. `tempdb`  
+Bij het identificeren van i/o-prestatie problemen wordt de hoogste wacht typen die zijn gekoppeld aan `tempdb` problemen `PAGELATCH_*` (niet `PAGEIOLATCH_*`). `PAGELATCH_*` wacht tijden zijn echter niet altijd `tempdb` conflicten.  Dit kan ook betekenen dat u een gegevens pagina-inhoud voor gebruikers objecten hebt vanwege gelijktijdige aanvragen die zijn gericht op dezelfde gegevens pagina. Gebruik [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) om `tempdb` te bevestigen dat de wait_resource-waarde begint met `2:x:y`, waarbij 2 `tempdb` de data base-id is, `x` de bestands-id is en `y` de pagina-id is.  
 
-Voor TempDB-conflicten is een gemeen schappelijke methode het verminderen of herschrijven van toepassings code die afhankelijk `tempdb`is van.  Algemene `tempdb` gebruiks gebieden zijn:
+Voor TempDB-conflicten is een gemeen schappelijke methode het verminderen of herschrijven van toepassings code die afhankelijk is van `tempdb`.  Algemene `tempdb` gebruiks gebieden zijn:
 
 - Tijdelijke tabellen
 - Tabel variabelen
-- Tabelwaardeparameter
+- tabelwaardeparameter
 - Gebruik van versie opslag (specifiek gekoppeld aan langlopende trans acties)
 - Query's met query plannen die gebruikmaken van sorteringen, hash-samen voegingen en spools
 
@@ -332,11 +332,11 @@ ORDER BY start_time ASC;
 
 ## <a name="identify-memory-grant-wait-performance-issues"></a>Prestatie problemen met geheugen toekenning identificeren
 
-Als uw hoogste wacht type is `RESOURCE_SEMAHPORE` en u geen hoog CPU-gebruik hebt, is het mogelijk dat er een wacht probleem is met geheugen toekenning.
+Als uw hoogste wacht type `RESOURCE_SEMAHPORE` is en u geen hoog CPU-gebruik hebt, is het mogelijk dat er een wacht probleem is met geheugen toekenning.
 
-### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Bepalen of een `RESOURCE_SEMAHPORE` wachten een ogen blik geduld
+### <a name="determine-if-a-resource_semahpore-wait-is-a-top-wait"></a>Bepalen of een `RESOURCE_SEMAHPORE` wacht een ogen blik geduld
 
-Gebruik de volgende query om te bepalen of `RESOURCE_SEMAHPORE` een wachten een ogen blik geduld
+Gebruik de volgende query om te bepalen of een `RESOURCE_SEMAHPORE` wacht een ogen blik geduld
 
 ```sql
 SELECT wait_type,
@@ -509,10 +509,10 @@ U kunt het resource gebruik bewaken met behulp van [SQL Database query Performan
 
 U kunt het gebruik ook controleren met behulp van deze twee weer gaven:
 
-- [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
-- [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
+- [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)
+- [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys. DM _db_resource_stats
 
 U kunt de weer gave [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) in elke SQL database gebruiken. De weer gave **sys. DM _db_resource_stats** toont recent gebruikte resource gegevens ten opzichte van de servicelaag. Gemiddeld percentages voor CPU, gegevens-IO, logboek schrijf bewerkingen en geheugen worden elke 15 seconden geregistreerd en worden gedurende één uur bewaard.
 
@@ -533,7 +533,7 @@ FROM sys.dm_db_resource_stats;
 
 Zie de voor beelden in [sys. DM _db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)voor andere query's.
 
-### <a name="sysresource_stats"></a>sys.resource_stats
+### <a name="sysresource_stats"></a>sys. resource_stats
 
 De [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) -weer gave in de **hoofd** database bevat aanvullende informatie die u kan helpen bij het bewaken van de prestaties van uw SQL database in de desbetreffende servicelaag en de bijbehorende reken grootte. De gegevens worden elke vijf minuten verzameld en worden ongeveer 14 dagen bewaard. Deze weer gave is handig voor een historisch historische analyse van de manier waarop uw SQL database resources gebruikt.
 
@@ -612,7 +612,7 @@ In het volgende voor beeld ziet u verschillende manieren waarop u de catalogus w
 
    | Gemiddeld CPU-percentage | Maximum CPU-percentage |
    | --- | --- |
-   | 24.5 |100.00 |
+   | 24,5 |100,00 |
 
     De gemiddelde CPU is ongeveer een kwar taal van de limiet van de berekenings grootte, die goed overeenkomt met de reken grootte van de data base. Maar de maximum waarde laat zien dat de data base de limiet van de reken grootte bereikt. Moet u overstappen naar de volgende hogere reken grootte? Bekijk hoe vaak uw werk belasting 100 procent bereikt en vergelijkt deze met het doel van uw data base-workload.
 

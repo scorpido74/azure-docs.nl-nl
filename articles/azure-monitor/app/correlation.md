@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063959"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576862"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -47,7 +47,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofd `operation_Id`delen. Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID (`qJSXU`) toegewezen aan de telemetrie van de afhankelijkheid en wordt de ID van de pagina weergave gebruikt als `operation_ParentId`. De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId`.
 
-| Item type   | name                      | Id           | operation_ParentId | operation_Id |
+| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
@@ -90,8 +90,8 @@ Als u een oudere versie van de SDK uitvoert, raden we u aan om deze bij te werke
 Deze functie is beschikbaar in `Microsoft.ApplicationInsights.Web` en `Microsoft.ApplicationInsights.DependencyCollector` pakketten die beginnen met versie 2.8.0-beta1.
 Het is standaard uitgeschakeld. Als u deze wilt inschakelen, wijzigt u `ApplicationInsights.config`:
 
-- Voeg onder `RequestTrackingTelemetryModule` het element `EnableW3CHeadersExtraction` toe met de waarde ingesteld op `true`.
-- Voeg onder `DependencyTrackingTelemetryModule` het element `EnableW3CHeadersInjection` toe met de waarde ingesteld op `true`.
+- Voeg onder `RequestTrackingTelemetryModule`het element `EnableW3CHeadersExtraction` toe met de waarde ingesteld op `true`.
+- Voeg onder `DependencyTrackingTelemetryModule`het element `EnableW3CHeadersInjection` toe met de waarde ingesteld op `true`.
 - `W3COperationCorrelationTelemetryInitializer` toevoegen onder de `TelemetryInitializers` vergelijkbaar met 
 
 ```xml
@@ -248,10 +248,10 @@ Hiermee wordt een voorbeeld toepassing `flask` op de lokale computer uitgevoerd 
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-Als u de indeling van de koptekst van de [tracerings context](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bekijkt, wordt de volgende informatie afgeleid: `version`: `00` 
- `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
- `parent-id/span-id`: `00f067aa0ba902b7` 
- 0: 1
+Als u de indeling van de koptekst van de [tracerings context](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)bekijkt, wordt de volgende informatie afgeleid: `version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
 
 Als we kijken naar de aanvraag vermelding die naar Azure Monitor is verzonden, kunnen we de velden zien die zijn ingevuld met de traceer header-informatie. U kunt deze gegevens vinden onder Logboeken (Analytics) in Azure Monitor Application Insights resource.
 
@@ -334,25 +334,22 @@ Volg dit uitgebreide artikel als u [de](https://github.com/Microsoft/Application
 
 Soms wilt u de manier waarop onderdeel namen worden weer gegeven in de [toepassings toewijzing](../../azure-monitor/app/app-map.md)aanpassen. Hiervoor kunt u de `cloud_RoleName` hand matig instellen door een van de volgende handelingen uit te voeren:
 
+- Vanaf Application Insights Java SDK 2.5.0 kunt u de naam van de Cloud functie opgeven door `<RoleName>` toe te voegen aan uw `ApplicationInsights.xml`-bestand, bijvoorbeeld
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - Als u achtereen met de Application Insights Spring boot Starter gebruikt, hoeft u alleen de aangepaste naam voor de toepassing in het bestand Application. Properties in te stellen.
 
   `spring.application.name=<name-of-app>`
 
   De Spring boot starter wijst automatisch `cloudRoleName` toe aan de waarde die u invoert voor de eigenschap `spring.application.name`.
-
-- Als u de `WebRequestTrackingFilter` gebruikt, wordt de naam van de toepassing automatisch ingesteld door de `WebAppNameContextInitializer`. Voeg het volgende toe aan het configuratie bestand (ApplicationInsights. XML):
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- Als u de context klasse Cloud gebruikt:
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

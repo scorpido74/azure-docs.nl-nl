@@ -1,5 +1,5 @@
 ---
-title: Micro soft Defender Advanced Threat Protection met Azure Security Center
+title: Micro soft Defender Advanced Threat Protection-Azure Security Center
 description: In dit document wordt de integratie van Azure Security Center en micro soft Defender Advanced Threat Protection geïntroduceerd.
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819883"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663598"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
@@ -95,7 +95,7 @@ Als u een proxy of firewall hebt die anonieme verkeer blokkeert, wordt een micro
 
 Een goed aardige micro soft Defender ATP-test waarschuwing genereren:
 
-1. Gebruik Extern bureaublad om toegang te krijgen tot een virtuele machine met Windows Server 2012 R2 of een virtuele machine met Windows Server 2016.  Open een opdrachtpromptvenster.
+1. Gebruik Extern bureaublad om toegang te krijgen tot een virtuele machine met Windows Server 2012 R2 of een virtuele machine met Windows Server 2016. Open een opdrachtpromptvenster.
 
 2. Kopieer de volgende opdracht bij de prompt en voer deze uit. Het opdracht prompt venster wordt automatisch gesloten.
 
@@ -107,7 +107,7 @@ Een goed aardige micro soft Defender ATP-test waarschuwing genereren:
 
 3. Als de opdracht is geslaagd, ziet u een nieuwe waarschuwing in het dash board van Azure Security Center en de micro soft Defender ATP-Portal. Het kan enkele minuten duren voordat deze waarschuwing wordt weer gegeven.
 
-4. Als u de waarschuwing in Security Center wilt bekijken, gaat u naar **beveiligings waarschuwingen** >  **verdachte Power shell**-opdracht regel.
+4. Als u de waarschuwing in Security Center wilt bekijken, gaat u naar **beveiligings waarschuwingen** > **verdachte Power shell**-opdracht regel.
 
 5. Selecteer in het venster onderzoek de koppeling om naar de micro soft Defender ATP-portal te gaan.
 

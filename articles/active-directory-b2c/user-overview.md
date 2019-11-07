@@ -1,35 +1,38 @@
 ---
-title: Overzicht van gebruikers accounts in Azure Active Directory B2C | Microsoft Docs
-description: Meer informatie over gebruikers accounts in Azure Active Directory B2C.
+title: Overzicht van gebruikers accounts in Azure Active Directory B2C
+description: Meer informatie over de typen gebruikers accounts die kunnen worden gebruikt in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063141"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620457"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Overzicht van gebruikers accounts in Azure Active Directory B2C
 
-In Azure Active Directory B2C (Azure AD B2C) kunt u verschillende typen accounts gebruiken. Azure Active Directory, Azure Active Directory B2B en Azure Active Directory B2C share in de typen gebruikers accounts die kunnen worden gebruikt.
+In Azure Active Directory B2C (Azure AD B2C) zijn er verschillende typen accounts die kunnen worden gemaakt. Azure Active Directory, Active Directory B2B en Active Directory B2C share in de typen gebruikers accounts die kunnen worden gebruikt.
 
 De volgende typen accounts zijn beschikbaar:
 
 - **Werk account** : een werk account kan toegang krijgen tot bronnen in een Tenant en met een beheerdersrol, en kan tenants beheren.
 - **Gast account** : een gast account kan alleen een Microsoft-account of een Azure Active Directory gebruiker zijn die kan worden gebruikt voor toegang tot toepassingen of tenants beheren.
-- **Consument account** : een consument account wordt gemaakt door een gebruikers stroom voor het registreren van een gebruiker in een Azure AD B2C toepassing te gebruiken of door gebruik te maken van Azure AD Graph API, en wordt gebruikt door gebruikers van de toepassingen die zijn geregistreerd bij Azure AD B2C.
+- **Consument account** : een consument account wordt gebruikt door een gebruiker van de toepassingen die u hebt geregistreerd bij Azure AD B2C. Consumenten accounts kunnen worden gemaakt door:
+  - De gebruiker doorloopt een aanmeldings stroom van een gebruiker in een Azure AD B2C-toepassing
+  - Azure AD Graph API gebruiken
+  - Azure Portal gebruiken
 
-## <a name="work-account"></a>werk account
+## <a name="work-account"></a>Werk account
 
-Een werk account is op dezelfde manier gemaakt voor alle tenants op basis van Azure AD. Als u een werk account wilt maken, kunt u de informatie [gebruiken in Quick Start: Nieuwe gebruikers toevoegen aan Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) als een testgebruiker zonder beheerdersbevoegdheden een wachtwoord heeft dat u kent, en u een gebruiker moet maken. Er wordt een werk account gemaakt met de optie **nieuwe gebruiker** in de Azure Portal.
+Een werk account is op dezelfde manier gemaakt voor alle tenants op basis van Azure AD. Als u een werk account wilt maken, kunt u de informatie gebruiken in [Quick Start: nieuwe gebruikers toevoegen aan Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Er wordt een werk account gemaakt met de optie **nieuwe gebruiker** in de Azure Portal.
 
 Wanneer u een nieuw werk account toevoegt, moet u rekening houden met de volgende configuratie-instellingen:
 
@@ -46,24 +49,24 @@ Wanneer u een nieuw werk account toevoegt, moet u rekening houden met de volgend
 
 U kunt de volgende informatie gebruiken om een nieuw werk account te maken:
 
-- [Azure-portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Een gebruikers profiel bijwerken
 
 U kunt de volgende informatie gebruiken om het profiel van een gebruiker bij te werken:
 
-- [Azure-portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Een wacht woord voor een gebruiker opnieuw instellen
 
 U kunt de volgende informatie gebruiken om het wacht woord van een gebruiker opnieuw in te stellen:
 
-- [Azure-portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-## <a name="guest-user"></a>Gastgebruiker
+## <a name="guest-user"></a>Gast gebruiker
 
 U kunt externe gebruikers als gast gebruiker uitnodigen voor uw Tenant. Een typisch scenario voor het uitnodigen van een gast gebruiker aan uw Azure AD B2C-Tenant is het delen van beheer verantwoordelijkheden. Zie [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](../active-directory/b2b/user-properties.md)voor een voor beeld van het gebruik van een gast account.
 
@@ -73,7 +76,7 @@ U kunt ook de [Microsoft Graph-API](https://docs.microsoft.com/graph/api/invitat
 
 ## <a name="consumer-user"></a>Consumenten gebruiker
 
-De consumenten gebruiker kan zich aanmelden bij toepassingen die zijn beveiligd door Azure AD B2C, maar kunnen geen toegang krijgen tot Azure-resources zoals de Azure Portal.  De gebruiker van de consument kan een lokaal account of federatieve accounts gebruiken, zoals Facebook of Twitter. Een Consumer account wordt gemaakt met behulp van een [registratie-of aanmeldings gebruikers stroom](../active-directory-b2c/active-directory-b2c-reference-policies.md).
+De consumenten gebruiker kan zich aanmelden bij toepassingen die zijn beveiligd door Azure AD B2C, maar kunnen geen toegang krijgen tot Azure-resources zoals de Azure Portal. De gebruiker van de consument kan een lokaal account of federatieve accounts gebruiken, zoals Facebook of Twitter. Een Consumer-account wordt gemaakt met behulp van een [registratie-of aanmeldings gebruikers stroom](../active-directory-b2c/active-directory-b2c-reference-policies.md)met behulp van de Azure AD-Graph API, of met behulp van de Azure Portal.
 
 U kunt de gegevens opgeven die worden verzameld wanneer een gebruikers account van een consument wordt gemaakt met behulp van aangepaste gebruikers kenmerken. Zie [aangepaste kenmerken definiëren in azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md)voor meer informatie.
 

@@ -1,5 +1,5 @@
 ---
-title: Een service voor splitsen en samen voegen implementeren | Microsoft Docs
+title: Een service voor splitsen en samenvoegen implementeren
 description: Gebruik de Split-Merge-functie om gegevens te verplaatsen tussen Shard-data bases.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 009fb4be61aad5c700c7520764e9414ed9422721
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568512"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690314"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Een service voor splitsen en samen voegen implementeren om gegevens te verplaatsen tussen Shard-data bases
 
@@ -45,7 +45,7 @@ De bestanden worden geplaatst in een map met de naam **micro soft. Azure. SqlDat
 3. Maak een nieuwe data base of kies een bestaande Data Base als de status database voor splitsen en samen voegen en haal de connection string van die data base op. 
    
    > [!IMPORTANT]
-   > Op dit moment moet de status database de Latijnse\_sortering (SQL Latin1\_General\_CP1\_CI\_as) gebruiken. Zie [Windows Collation name (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)voor meer informatie.
+   > Op dit moment moet de status database de Latijnse sortering (SQL\_Latin1\_General\_CP1\_CI\_als) gebruiken. Zie [Windows Collation name (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)voor meer informatie.
    >
 
    Met Azure SQL DB is de connection string doorgaans de volgende vorm:
@@ -142,7 +142,7 @@ Als uw werknemersrol niet online kan worden gebracht, maar uw webrole slaagt, is
    ```
 
 * Zorg ervoor dat de server naam niet begint met **https://** .
-* Zorg ervoor dat de Azure SQL DB-server verbinding kan maken met Azure-Services. Om dit te doen, opent u uw database in de portal en zorg ervoor dat de **toegang tot Azure-Services toestaan** is ingesteld op **op** **.
+* Zorg ervoor dat de Azure SQL DB-server verbinding kan maken met Azure-Services. U doet dit door uw data base te openen in de portal en ervoor te zorgen dat de instelling **toegang tot Azure-Services toestaan** is ingesteld op * * op * * * *.
 
 ## <a name="test-the-service-deployment"></a>De service-implementatie testen
 ### <a name="connect-with-a-web-browser"></a>Verbinding maken met een webbrowser
@@ -187,7 +187,7 @@ De volgende script bestanden zijn opgenomen:
        <th>Stappen</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
        <td>1.    Hiermee verzendt u een splits aanvraag naar de web-frontend van de Split-Merge-service, die de helft van de gegevens van de eerste Shard opsplitst in de tweede Shard.</td>
      </tr>
      <tr>

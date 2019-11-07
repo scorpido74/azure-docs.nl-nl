@@ -1,9 +1,9 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Bing Automatische suggesties
+summary: Met de API voor Bing Automatische suggesties kunt u gedeeltelijke zoekquery's naar Bing verzenden en een lijst met suggesties ophalen op basis van gebruikersintentie en eerdere zoekopdrachten. Roep de API aan om zoekvakken en vervolgkeuzelijsten in uw app met suggesties te vullen, bijvoorbeeld uw gebruikerstype.
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Documentatie voor Bing Automatische suggesties - zelfstudies, quickstarts, API-verwijzingen'
+  title: Documentatie voor Bing Automatische suggesties - zelfstudies, quickstarts, API-verwijzingen
   titleSuffix: Azure Cognitive Services
   description: Meer informatie over het gebruik van Bing Automatische suggesties voor voorgestelde query’s op basis van een gedeeltelijke query. Zelfstudies laten zien hoe u apps maakt die gebruikmaken van de service.
   services: cognitive-services
@@ -12,80 +12,58 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.topic: landing-page
-  ms.date: 07/25/2019
+  ms.date: 10/28/2019
   ms.author: aahi
-abstract:
-  description: 'Met Bing Automatische suggesties kunt u een gedeeltelijke query-zoekterm naar Bing verzenden en een lijst ontvangen met voorgestelde query’s van andere gebruikers.  Terwijl gebruikers bijvoorbeeld elk teken van hun zoekterm invoeren, kunt u deze API aanroepen om de vervolgkeuzelijst van het zoekvak te vullen met suggesties. Ontdek met onze snelstartgidsen, zelfstudies en voorbeelden hoe u de Automatische suggesties-API gebruikt.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
-            html: <p>Meer informatie over de Bing Automatische suggesties-API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Wat is de Bing Automatische suggesties-API?
-          - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
-            html: <p>Leer hoe u in realtime zoeksuggesties ontvangt</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Suggesties krijgen van de Bing Automatische suggesties-API
-          - href: /azure/cognitive-services/bing-autosuggest/language-support
-            html: <p>Ontdek welke talen worden ondersteund door de API.</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Ondersteunde talen
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: 'Ga aan de slag met de Bing Automatische suggesties-API door een query te maken en het JSON-antwoord te bekijken:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            href: quickstarts/csharp
-            text: 'C&#35;'
-          - image:
-              src: media/index/logo_java.svg
-            href: quickstarts/java
-            text: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            href: quickstarts/nodejs
-            text: Node.js
-          - image:
-              src: media/index/logo_php.svg
-            href: quickstarts/php
-            text: PHP
-          - image:
-              src: media/index/logo_python.svg
-            href: quickstarts/python
-            text: Python
-          - image:
-              src: media/index/logo_ruby.svg
-            href: quickstarts/ruby
-            text: Ruby
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: 'Leer apps te ontwikkelen die gebruikmaken van de Bing Automatische suggesties-API:'
-      - type: paragraph
-        text: <a href="tutorials/autosuggest.md">Web-app van één pagina</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API's
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference">Bing Automatische suggesties-API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Bing Automatische suggesties-API v5</p>'
-          - title: SDK's
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable">Java</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-CLI</a></p>'
+  ms.openlocfilehash: b0618f5bd0ed9deb1241dd3ff752a49686ca9073
+  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73746134"
+landingContent:
+- title: Info over de Bing Automatische suggesties-API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is de Bing Automatische suggesties-API?
+      url: get-suggested-search-terms.md
+    - text: De Bing Zoeken-API's vergelijken
+      url: ../bing-web-search/bing-api-comparison.md
+- title: Voorgestelde zoektermen ophalen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# gebruiken
+      url: quickstarts/csharp.md
+    - text: Python gebruiken
+      url: quickstarts/python.md
+    - text: Java gebruiken
+      url: quickstarts/java.md
+    - text: Node.js gebruiken
+      url: quickstarts/nodejs.md
+  - linkListType: tutorial
+    links:
+    - text: Een web-app van één pagina maken
+      url: tutorials/autosuggest.md
+  - linkListType: how-to-guide
+    links:
+    - text: Voorgestelde voorwaarden gebruiken
+      url: concepts/get-suggestions.md
+    - text: API-aanvragen verzenden
+      url: concepts/sending-requests.md
+- title: Naslaginformatie
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Automatische suggesties-REST API v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference
+    - text: Automatische suggesties-REST API v5
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
+    - text: Java-SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
+    - text: Go-SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest

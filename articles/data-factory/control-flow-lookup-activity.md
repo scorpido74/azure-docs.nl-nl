@@ -1,5 +1,5 @@
 ---
-title: Opzoek activiteit in Azure Data Factory | Microsoft Docs
+title: Opzoek activiteit in Azure Data Factory
 description: Leer hoe u de opzoek activiteit kunt gebruiken om een waarde te zoeken vanuit een externe bron. Naar deze uitvoer kan worden verwezen door geslaagde activiteiten.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 9658987092027b38ab0cab1feb3df4be0a91e350
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 04285de6fa7ef678e36767b7336f732ed9b45329
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141651"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679707"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Opzoek activiteit in Azure Data Factory
 
@@ -53,23 +53,23 @@ De volgende gegevens bronnen worden ondersteund voor opzoek activiteiten. Het gr
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Name | Description | type | Vereist?
+Naam | Beschrijving | Type | Vereist?
 ---- | ----------- | ---- | --------
-sets | Bevat de referentie voor de gegevensset voor de zoek actie. Details ophalen uit de sectie **Eigenschappen van gegevensset** in elk bijbehorend connector artikel. | Sleutel/waarde-paar | Ja
+Sets | Bevat de referentie voor de gegevensset voor de zoek actie. Details ophalen uit de sectie **Eigenschappen van gegevensset** in elk bijbehorend connector artikel. | Sleutel/waarde-paar | Ja
 source | Bevat eigenschappen van een gegevensset, hetzelfde als de bron van de Kopieer activiteit. Details ophalen uit de sectie **Eigenschappen van Kopieer activiteit** in elk bijbehorende connector-artikel. | Sleutel/waarde-paar | Ja
-firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Boolean-waarde | Nee. De standaardwaarde is `true`.
+firstRowOnly | Geeft aan of alleen de eerste rij of alle rijen worden geretourneerd. | Booleaans | Nee. De standaardwaarde is `true`.
 
 > [!NOTE]
 > 
-> * Bron kolommen met het type byteas worden niet ondersteund.
+> * Bron kolommen met het type **byteas** worden niet ondersteund.
 > * De **structuur** wordt niet ondersteund in de definitie van de gegevensset. Gebruik voor tekstindelings bestanden de rij met koppen om de kolom naam op te geven.
-> * Als uw lookup-bron een JSON-bestand is `jsonPathDefinition` , wordt de instelling voor het vorm geven van het JSON-object niet ondersteund. De volledige objecten worden opgehaald.
+> * Als uw lookup-bron een JSON-bestand is, wordt de instelling `jsonPathDefinition` voor het vorm geven van het JSON-object niet ondersteund. De volledige objecten worden opgehaald.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Het resultaat van de opzoek activiteit gebruiken in een volgende activiteit
 
-Het Zoek resultaat wordt geretourneerd in de `output` sectie van het resultaat van de uitvoering van de activiteit.
+Het Zoek resultaat wordt geretourneerd in het gedeelte `output` van het resultaat van de uitvoering van de activiteit.
 
-* **Wanneer`firstRowOnly` is ingesteld op `true` (standaard)** , is de uitvoer indeling zoals wordt weer gegeven in de volgende code. Het Zoek resultaat bevindt zich `firstRow` onder een vaste sleutel. Gebruik het patroon van `@{activity('MyLookupActivity').output.firstRow.TableName}`om het resultaat in de volgende activiteit te gebruiken.
+* **Als `firstRowOnly` is ingesteld op `true` (standaard)** , is de uitvoer indeling zoals in de volgende code wordt weer gegeven. Het Zoek resultaat bevindt zich onder een vaste `firstRow` sleutel. Gebruik het patroon van `@{activity('MyLookupActivity').output.firstRow.TableName}`om het resultaat in de volgende activiteit te gebruiken.
 
     ```json
     {
@@ -81,7 +81,7 @@ Het Zoek resultaat wordt geretourneerd in de `output` sectie van het resultaat v
     }
     ```
 
-* **Wanneer`firstRowOnly` is ingesteld op `false`** , is de uitvoer indeling zoals in de volgende code wordt weer gegeven. Een `count` veld geeft aan hoeveel records er worden geretourneerd. Gedetailleerde waarden worden weer gegeven onder een `value` vaste matrix. In een dergelijk geval wordt de opzoek activiteit gevolgd door een [foreach-activiteit](control-flow-for-each-activity.md). U geeft de `value` matrix door aan het veld `items` foreach-activiteit met behulp `@activity('MyLookupActivity').output.value`van het patroon van. Als u elementen in de `value` matrix wilt openen, gebruikt u de `@{activity('lookupActivity').output.value[zero based index].propertyname}`volgende syntaxis:. Een voorbeeld is `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Als `firstRowOnly` is ingesteld op `false`** , is de uitvoer indeling zoals in de volgende code wordt weer gegeven. Een `count` veld geeft aan hoeveel records er worden geretourneerd. Gedetailleerde waarden worden weer gegeven onder een vaste `value` matrix. In een dergelijk geval wordt de opzoek activiteit gevolgd door een [foreach-activiteit](control-flow-for-each-activity.md). U geeft de `value` matrix door aan het veld ForEach-activiteit `items` door gebruik te maken van het patroon van `@activity('MyLookupActivity').output.value`. Als u elementen in de matrix `value` wilt openen, gebruikt u de volgende syntaxis: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Een voorbeeld is `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -102,10 +102,10 @@ Het Zoek resultaat wordt geretourneerd in de `output` sectie van het resultaat v
 ### <a name="copy-activity-example"></a>Voor beeld van Kopieer activiteit
 In dit voor beeld kopieert u met de Kopieer activiteit gegevens uit een SQL-tabel in uw Azure SQL Database-exemplaar naar Azure Blob-opslag. De naam van de SQL-tabel wordt opgeslagen in een JSON-bestand in Blob Storage. De opzoek activiteit zoekt de tabel naam tijdens runtime. JSON wordt dynamisch gewijzigd met behulp van deze methode. U hoeft geen pijp lijnen of gegevens sets opnieuw te implementeren. 
 
-In dit voor beeld wordt alleen de zoek functie voor de eerste rij gedemonstreerd. Zie de voor beelden in [meerdere tabellen tegelijk kopiëren](tutorial-bulk-copy.md)met behulp van Azure Data Factory voor het opzoeken van alle rijen en het koppelen van de resultaten met de foreach-activiteit.
+In dit voor beeld wordt alleen de zoek functie voor de eerste rij gedemonstreerd. Zie de voor beelden in [meerdere tabellen tegelijk kopiëren met behulp van Azure Data Factory](tutorial-bulk-copy.md)voor het opzoeken van alle rijen en het koppelen van de resultaten met de foreach-activiteit.
 
 ### <a name="pipeline"></a>Pijplijn
-Deze pijp lijn bevat twee activiteiten: Opzoeken en kopiëren. 
+Deze pijp lijn bevat twee activiteiten: zoeken en kopiëren. 
 
 - De opzoek activiteit is geconfigureerd voor het gebruik van **LookupDataset**, die verwijst naar een locatie in Azure Blob Storage. De opzoek activiteit leest de naam van de SQL-tabel vanuit een JSON-bestand op deze locatie. 
 - De Kopieer activiteit maakt gebruik van de uitvoer van de opzoek activiteit. Dit is de naam van de SQL-tabel. De eigenschap **TableName** in de **Source dataset** is geconfigureerd voor het gebruik van de uitvoer van de opzoek activiteit. Met de Kopieer activiteit worden gegevens uit de SQL-tabel gekopieerd naar een locatie in Azure Blob Storage. De locatie wordt opgegeven door de eigenschap **SinkDataset** . 
@@ -267,7 +267,7 @@ Dit Azure SQL Database-exemplaar bevat de gegevens die moeten worden gekopieerd 
 }
 ```
 
-### <a name="sourcetablejson"></a>sourcetable.json
+### <a name="sourcetablejson"></a>SourceTable. json
 
 #### <a name="set-of-objects"></a>Set met objecten
 

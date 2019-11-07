@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e2328bcd2b2d9fe957df82c46730091ffdf9366
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 695bd461ae7e979c0a803cd2d6cb450003a6bcee
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474290"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602999"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wachtwoordbeveiliging in Azure AD implementeren
 
@@ -135,7 +135,7 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
 
      Voor deze cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist. U hebt ook on-premises Active Directory domein Administrator bevoegdheden nodig in het forest-hoofd domein. Wanneer deze opdracht eenmaal is geslaagd voor een proxy service, worden er aanvullende aanroepen van het object uitgevoerd, maar dit is niet nodig.
 
-      De cmdlet `Register-AzureADPasswordProtectionProxy` ondersteunt de volgende drie verificatie modi.
+      De cmdlet `Register-AzureADPasswordProtectionProxy` ondersteunt de volgende drie verificatie modi. De eerste twee modi ondersteunen Azure Multi-Factor Authentication, maar de derde modus niet. Raadpleeg de opmerkingen hieronder voor meer informatie.
 
      * Interactieve verificatie modus:
 
@@ -179,7 +179,7 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
 1. Registreer het forest.
    * U moet de on-premises Active Directory-forest initialiseren met de benodigde referenties om te communiceren met Azure met behulp van de `Register-AzureADPasswordProtectionForest` Power shell-cmdlet. Voor de cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist. Er zijn ook on-premises Active Directory Enter prise-beheerders bevoegdheden vereist. Deze stap wordt eenmaal per forest uitgevoerd.
 
-      De cmdlet `Register-AzureADPasswordProtectionForest` ondersteunt de volgende drie verificatie modi.
+      De cmdlet `Register-AzureADPasswordProtectionForest` ondersteunt de volgende drie verificatie modi. De eerste twee modi ondersteunen Azure Multi-Factor Authentication, maar de derde modus niet. Raadpleeg de opmerkingen hieronder voor meer informatie.
 
      * Interactieve verificatie modus:
 

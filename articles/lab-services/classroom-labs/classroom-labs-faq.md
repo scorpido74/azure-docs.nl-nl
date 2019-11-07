@@ -1,5 +1,5 @@
 ---
-title: 'Klassikale Labs in Azure Lab Services: veelgestelde vragen | Microsoft Docs'
+title: Klassikale Labs in Azure Lab Services — Veelgestelde vragen | Microsoft Docs
 description: Vind antwoorden op veelgestelde vragen over klassikale Labs in Azure Lab Services.
 services: lab-services
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 411037dd97350d877aff4e2d094c3408f168f9fd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648580"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646856"
 ---
-# <a name="classroom-labs-in-azure-lab-services---frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services-Veelgestelde vragen (FAQ)
+# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Klassikale Labs in Azure Lab Services: veelgestelde vragen (FAQ)
 Krijg antwoorden op enkele van de meest voorkomende vragen over klassikale Labs in Azure Lab Services. 
 
 ## <a name="quotas"></a>Quota
@@ -33,14 +33,21 @@ Het quotum dat u voor een Lab hebt ingesteld, is voor elke student voor een voll
 ### <a name="do-all-vms-in-the-lab-start-automatically-when-a-schedule-is-set"></a>Worden alle Vm's in het lab automatisch gestart wanneer een planning wordt ingesteld? 
 Nee. Niet alle virtuele machines. Alleen de Vm's die aan gebruikers zijn toegewezen volgens een schema. De Vm's die niet aan een gebruiker zijn toegewezen, worden niet automatisch gestart. Het ontwerp is standaard. 
 
-## <a name="lab-accounts"></a>Lab-accounts
+## <a name="lab-accounts"></a>Labaccounts
 
 ### <a name="why-am-i-not-able-to-create-a-lab-because-of-unavailability-of-the-address-range"></a>Waarom kan ik geen Lab maken vanwege niet-beschik baarheid van het adres bereik? 
 Klassikale Labs kan virtuele lab-Vm's maken binnen een IP-adres bereik dat u opgeeft bij het maken van uw Lab-account in de Azure Portal. Wanneer een adres bereik wordt verstrekt, wordt elk lab dat is gemaakt na de 512 IP-adressen voor Lab-Vm's toegewezen. Het adres bereik voor het lab-account moet groot genoeg zijn voor alle Labs die u wilt maken onder het lab-account. 
 
 Als u bijvoorbeeld een blok van/19-10.0.0.0/19 hebt, is dit adres bereik geschikt voor 8192 IP-adressen en 16 Labs (8192/512 = 16 Labs). In dit geval mislukt het maken van het Lab bij het maken van een 17-Lab.
 
-## <a name="blog-post"></a>Blogpost
+### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welke poortbereiken moet ik openen in de firewall instelling van mijn organisatie om verbinding te maken met virtuele lab-machines via RDP/SSH?
+
+De poorten zijn: 49152 – 65535. Klassikale Labs bevindt zich achter een load balancer, zodat alle virtuele machines in een Lab één IP-adres hebben en elke virtuele machine in het lab een unieke poort heeft. De poort nummers en het open bare IP-adres kunnen worden gewijzigd telkens wanneer het lab opnieuw wordt gepubliceerd.
+
+### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welk openbaar IP-adres bereik moet ik openen in de firewall instellingen van mijn organisatie om verbinding te maken met virtuele lab-machines via RDP/SSH?
+Zie [Azure IP-adresbereiken en service tags (open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519)), die het open bare IP-adres bereik voor data centers in Azure biedt. U kunt de IP-adressen openen voor de regio's waar uw Lab-accounts zich bevinden.
+
+## <a name="blog-post"></a>Blog bericht
 Abonneer u op de [Azure Lab Services blog](https://azure.microsoft.com/blog/tag/azure-lab-services/).
 
 ## <a name="update-notifications"></a>Meldingen bijwerken
@@ -52,5 +59,5 @@ Als uw vraag hier niet wordt vermeld, laat het ons dan weten, zodat we u kunnen 
 
 - Plaats een vraag aan het einde van deze veelgestelde vragen. 
 - Als u een breder publiek wilt bereiken, plaatst u een vraag op het [Azure Lab Services-stack overflow-forum](https://stackoverflow.com/questions/tagged/azure-lab-services). 
-- Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure Lab Services-gebruikers stem](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
+- Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure Lab Services: gebruikers stem](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

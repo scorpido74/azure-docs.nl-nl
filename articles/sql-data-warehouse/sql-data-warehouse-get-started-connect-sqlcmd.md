@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met Azure SQL Data Warehouse sqlcmd | Microsoft Docs
+title: Verbinding maken met Sqlcmd
 description: Gebruik het opdracht regel hulpprogramma Sqlcmd om verbinding te maken met en een query uit te zoeken op een Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e4b432e0be0cdded5089965b9d272aa82e31bd36
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479511"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685748"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Verbinding maken met SQL Data Warehouse met sqlcmd
 > [!div class="op_single_selector"]
@@ -29,17 +30,17 @@ ms.locfileid: "68479511"
 
 Gebruik het opdracht regel hulpprogramma [Sqlcmd][sqlcmd] om verbinding te maken met en een query uit te zoeken op een Azure SQL Data Warehouse.  
 
-## <a name="1-connect"></a>1. Verbinden
+## <a name="1-connect"></a>1. verbinding maken
 U gaat als volgt aan de slag met [sqlcmd][sqlcmd]: open de opdrachtprompt en voer **sqlcmd** in, gevolgd door de verbindingstekenreeks voor uw SQL Data Warehouse-database. De verbindingstekenreeks moet de volgende parameters bevatten:
 
-* **Server (-S):** Server in de naam `<``>`van de formulier server. database.Windows.net
-* **Data Base (-d):** Database naam.
-* **Id's van aanhalings tekens inschakelen (-I):** Id's tussen aanhalings tekens moeten zijn ingeschakeld om verbinding te maken met een SQL Data Warehouse-exemplaar.
+* **Server (-S):** server in de notatie `<`servernaam`>`.database.windows.net
+* **Database (-d):** databasenaam.
+* **Id's tussen aanhalingstekens inschakelen (-I):** id's tussen aanhalingstekens moeten zijn ingeschakeld om verbinding te kunnen maken met een exemplaar van SQL Data Warehouse.
 
 Als u gebruik wilt maken van SQL Server-verificatie, moet u de gebruikersnaam- en wachtwoordparameters toevoegen:
 
-* **Gebruiker (-U):** Server gebruiker in de formulier `<`gebruiker`>`
-* **Wacht woord (-P):** Het wacht woord dat is gekoppeld aan de gebruiker.
+* **Gebruiker (-U):** servergebruiker in de notatie `<`gebruiker`>`
+* **Wachtwoord (-P):** wachtwoord dat is gekoppeld aan de gebruiker.
 
 Een voorbeeld: uw verbindingstekenreeks kan er als volgt uitzien:
 
@@ -62,7 +63,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2. Query’s uitvoeren
+## <a name="2-query"></a>2. query
 Wanneer verbinding is gemaakt, kunt u elke ondersteunde Transact-SQL-instructie voor het exemplaar uitvoeren.  In dit voorbeeld worden query's in de interactieve modus verzonden.
 
 ```sql

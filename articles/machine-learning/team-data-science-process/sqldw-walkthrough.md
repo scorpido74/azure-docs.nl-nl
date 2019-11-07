@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480348"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669410"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Het proces van de team data Science in actie: met behulp van SQL Data Warehouse
 In deze zelf studie leert u hoe u een machine learning model bouwt en implementeert met behulp van SQL Data Warehouse (SQL DW) voor een openbaar beschik bare gegevensset, de NYC-gegevensset van de [taxi](https://www.andresmh.com/nyctaxitrips/) . Het binaire classificatie model heeft voor speld, ongeacht of er een tip voor een reis wordt betaald, en modellen voor de classificatie van multi klassen en regressies worden ook besproken die de verdeling van de betaalde fooien voors pellen.
@@ -130,7 +130,7 @@ Wanneer het Power shell-script voor de eerste keer wordt uitgevoerd, wordt u gev
 >
 >
 
-Dit **Power shell-script** bestand voert de volgende taken uit:
+Dit **PowerShell-script** bestand bestaat uit de volgende taken:
 
 * **Down loads en installeert AzCopy**als AzCopy nog niet is geïnstalleerd
 
@@ -413,7 +413,7 @@ In dit voor beeld wordt gezocht naar het aantal trips dat is gekanteld versus. h
 **Uitvoer:** De query moet de volgende tip-frequenties retour neren voor het jaar 2013:90.447.622 gekanteld en 82.264.709 niet gekanteld.
 
 ### <a name="exploration-tip-classrange-distribution"></a>Exploratie: punt/bereik distributie van fooien
-In dit voor beeld wordt de verdeling van penpuntstijl-bereiken in een bepaalde periode (of in de volledige gegevensset voor het hele jaar) berekend. Dit is de distributie van de label klassen die later worden gebruikt voor het model leren van een classificatie met multi klassen.
+In dit voorbeeld berekent de verdeling van de tip bereiken in een bepaalde periode (of in de volledige gegevensset als die betrekking hebben op het gehele jaar). Dit is de distributie van de label klassen die later worden gebruikt voor het model leren van een classificatie met multi klassen.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -851,7 +851,7 @@ Een voor beeld van een experiment met binaire classificatie voor het lezen van g
 >
 
 ## <a name="mldeploy"></a>Modellen implementeren in Azure Machine Learning
-Als uw model klaar is, kunt u het eenvoudig implementeren als een webservice rechtstreeks vanuit het experiment. Zie [een Azure machine learning-webservice implementeren](../studio/publish-a-machine-learning-web-service.md)voor meer informatie over het implementeren van Azure ml-webservices.
+Als uw model klaar is, kunt u het eenvoudig implementeren als een webservice rechtstreeks vanuit het experiment. Zie [een Azure machine learning-webservice implementeren](../studio/deploy-a-machine-learning-web-service.md)voor meer informatie over het implementeren van Azure ml-webservices.
 
 Als u een nieuwe webservice wilt implementeren, moet u het volgende doen:
 

@@ -3,28 +3,26 @@ title: Implementeer uw container vanuit een CI/CD-pijp lijn met GitHub-acties-Az
 description: Meer informatie over het gebruik van GitHub-acties voor het implementeren van uw container in App Service
 services: app-service
 documentationcenter: ''
-author: jasonfreeberg
-writer: ''
-manager: ''
-editor: ''
-ms.assetid: ''
+author: cephalin
+manager: gwallace
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 10/25/2019
 ms.author: jafreebe
-ms.openlocfilehash: 2341eba2c24c06d654c9d2eeda96788d168fe27c
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.reviewer: ushan
+ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809810"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620233"
 ---
-# <a name="github-actions-for-deploying-to-web-app-for-containers"></a>GitHub acties voor de implementatie van Web App for Containers
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Een aangepaste container implementeren op App Service met behulp van GitHub-acties
 
-[Github-acties](https://help.github.com/en/articles/about-github-actions) bieden u de flexibiliteit om een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling te bouwen. Met de Azure App Service acties voor GitHub kunt u uw werk stroom automatiseren voor het implementeren [van Azure web apps voor containers](https://azure.microsoft.com/services/app-service/containers/) met github-acties.
+[Github-acties](https://help.github.com/en/articles/about-github-actions) bieden u de flexibiliteit om een geautomatiseerde werk stroom voor de levens cyclus van software ontwikkeling te bouwen. Met de [Azure app service actie voor containers](https://github.com/Azure/webapps-container-deploy)kunt u uw werk stroom automatiseren om apps als [aangepaste containers te implementeren om te app service](https://azure.microsoft.com/services/app-service/containers/) met behulp van github-acties.
 
 > [!IMPORTANT]
 > GitHub-acties zijn momenteel in een bèta versie. U moet [zich eerst aanmelden om lid te worden van het voor beeld](https://github.com/features/actions) met behulp van uw github-account.
@@ -32,29 +30,40 @@ ms.locfileid: "72809810"
 
 Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het pad `/.github/workflows/` in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
-Voor een Azure web app-container werk stroom heeft het bestand drie secties:
+Voor een Azure App Service container werk stroom heeft het bestand drie secties:
 
 |Sectie  |Taken  |
 |---------|---------|
-|**Verificatie** | 1. een Service-Principal definiëren <br /> 2. een GitHub-geheim maken |
-|**PE** | 1. de omgeving instellen <br /> 2. bouw de container installatie kopie |
-|**Implementeren** | 1. de container installatie kopie implementeren |
+|**Verificatie** | 1. Definieer een service-principal. <br /> 2. Maak een GitHub-geheim. |
+|**PE** | 1. Stel de omgeving in. <br /> 2. bouw de container installatie kopie. |
+|**Implementeren** | 1. Implementeer de container installatie kopie. |
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
 U kunt een [Service-Principal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) maken met behulp van de opdracht [AZ AD SP create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in de [Azure cli](https://docs.microsoft.com/cli/azure/). U kunt deze opdracht uitvoeren met behulp van [Azure Cloud shell](https://shell.azure.com/) in het Azure portal of door de knop **try it** te selecteren.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
+                            --sdk-auth
+                            
+  # Replace {subscription-id}, {resource-group} with the subscription, resource group details of the WebApp
 ```
 
-In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw abonnements-ID, resource groep en de naam van de web-app. De uitvoer is de roltoewijzings referenties waarmee u toegang hebt tot uw web-app. Kopieer dit JSON-object, dat u kunt gebruiken om te verifiëren vanuit GitHub.
+De uitvoer is een JSON-object met de roltoewijzings referenties die toegang bieden tot uw App Service-app, vergelijkbaar met hieronder. Kopieer dit JSON-object om te verifiëren vanuit GitHub.
 
-> [!NOTE]
-> U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
+ ```azurecli 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> Het is altijd een goed idee om minimale toegang te verlenen. Daarom is de scope in het vorige voor beeld beperkt tot de specifieke Web-app en niet de hele resource groep.
+> Het is altijd een goed idee om minimale toegang te verlenen. U kunt de scope in de bovenstaande AZ CLI-opdracht beperken tot de specifieke App Service-app en de Azure Container Registry waarnaar de container installatie kopieën worden gepusht.
 
 ## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
 
@@ -102,7 +111,7 @@ jobs:
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
-      uses: azure/actions/login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
@@ -117,19 +126,19 @@ jobs:
         docker push contoso.azurecr.io/nodejssampleapp:${{ github.sha }}
 ```
 
-## <a name="deploy-to-web-app-container"></a>Implementeren naar web-app-container
+## <a name="deploy-to-an-app-service-container"></a>Implementeren in een App Service-container
 
-Als u uw installatie kopie wilt implementeren in een web-app-container, moet u de actie `Azure/appservice-actions/webapp@master` gebruiken. Deze actie heeft 5 para meters:
+Als u uw installatie kopie wilt implementeren in een aangepaste container in App Service, gebruikt u de `azure/webapps-container-deploy@v1` actie. Deze actie heeft vijf para meters:
 
 | **Bepaalde**  | **Uitleg**  |
 |---------|---------|
-| **app-naam** | Lang De naam van de Azure-web-app | 
+| **app-naam** | Lang De naam van de App Service-app | 
 | **sleuf naam** | Beschrijving Voer een bestaande sleuf in, behalve de productie sleuf |
-| **installatie kopieën** | Lang Geef de volledig gekwalificeerde naam van de container installatie kopie (n) op. Bijvoorbeeld ' myregistry.azurecr.io/nginx:latest ' of ' python: 3.7.2-Alpine/'. Voor scenario met meerdere containers kunnen namen van verschillende container installatie kopieën worden gegeven (meerdere regels gescheiden) |
-| **configuratie-bestand** | Beschrijving Pad van het docker-bestand. Moet een volledig gekwalificeerd pad of relatief ten opzichte van de standaard werkmap zijn. Vereist voor het scenario met meerdere containers |
+| **installatie kopieën** | Lang Geef de volledig gekwalificeerde naam van de container installatie kopie (n) op. Bijvoorbeeld ' myregistry.azurecr.io/nginx:latest ' of ' python: 3.7.2-Alpine/'. Voor een app met meerdere containers kunnen namen van meerdere container installatie kopieën worden gegeven (gescheiden door meerdere regels) |
+| **configuratie-bestand** | Beschrijving Pad van het docker-bestand. Moet een volledig gekwalificeerd pad of relatief ten opzichte van de standaard werkmap zijn. Vereist voor apps met meerdere containers. |
 | **container-opdracht** | Beschrijving Voer de opstart opdracht in. Voor ex. DotNet run of DotNet filename. dll |
 
-Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een node. js-web-app in een Azure web app-container.
+Hieronder ziet u de voorbeeld werk stroom voor het maken en implementeren van een node. js-app naar een aangepaste container in App Service.
 
 ```yaml
 on: [push]
@@ -145,7 +154,7 @@ jobs:
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
-      uses: azure/actions/login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
@@ -173,7 +182,7 @@ jobs:
 
 U vindt onze set acties die zijn gegroepeerd in verschillende opslag plaatsen op GitHub, elk met documentatie en voor beelden die u kunnen helpen bij het gebruik van GitHub voor CI/CD en uw apps te implementeren in Azure.
 
-- [Azure-aanmelding](https://github.com/Azure/actions)
+- [Azure-aanmelding](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 
@@ -185,4 +194,6 @@ U vindt onze set acties die zijn gegroepeerd in verschillende opslag plaatsen op
 
 - [K8s implementeren](https://github.com/Azure/k8s-deploy)
 
-- [Starter-werk stromen](https://github.com/actions/starter-workflows)
+- [Starter CI-werk stromen](https://github.com/actions/starter-workflows)
+
+- [Starter-werk stromen om te implementeren in azure](https://github.com/Azure/actions-workflow-samples)

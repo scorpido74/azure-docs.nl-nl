@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988727"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580855"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Verbinding maken met on-premises gegevens bronnen vanuit Azure Logic Apps
 
@@ -28,8 +28,8 @@ In dit artikel wordt beschreven hoe u een Azure gateway-resource maakt voor een 
 Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met andere services:
 
 * [On-premises gegevens gateway van micro soft Power BI](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft Flow on-premises gegevens gateway](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Microsoft PowerApps on-premises gegevens gateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Power on-premises gegevens gateway automatiseren](https://flow.microsoft.com/documentation/gateway-manage/)
+* [On-premises gegevens gateway van micro soft power apps](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>
@@ -140,7 +140,7 @@ Als u de instellingen voor een gateway verbinding wilt bijwerken, kunt u de verb
 
 Om te zoeken naar alle API-verbindingen die zijn gekoppeld aan uw Azure-abonnement:
 
-* Ga in het hoofd menu van Azure naar **alle services**  > **Web**  > **API-verbindingen**.
+* Ga in het hoofd menu van Azure naar **alle services** > **Web** > **API-verbindingen**.
 * Of Ga vanuit het hoofd menu van Azure naar **alle resources**. Stel het **type** filter in op **API-verbinding**.
 
 <a name="change-delete-gateway-resource"></a>

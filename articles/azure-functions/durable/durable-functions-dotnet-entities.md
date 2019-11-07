@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72801858"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614894"
 ---
-# <a name="developers-guide-to-durable-entities-in-net-preview"></a>Ontwikkelaars handleiding voor duurzame entiteiten in .NET (preview-versie)
+# <a name="developers-guide-to-durable-entities-in-net"></a>Ontwikkelaars handleiding voor duurzame entiteiten in .NET
 
 In dit artikel beschrijven we de beschik bare interfaces voor het ontwikkelen van duurzame entiteiten met .NET in detail, inclusief voor beelden en algemeen advies. 
 
@@ -35,7 +35,7 @@ Dit artikel richt zich voornamelijk op de op klassen gebaseerde syntaxis, aangez
  
 ## <a name="defining-entity-classes"></a>Entiteits klassen definiëren
 
-Het volgende voor beeld is een implementatie van een `Counter`-entiteit die één waarde van het type integer opslaat en vier bewerkingen `Add`, `Reset`, `Get` en `Delete` bevat.
+Het volgende voor beeld is een implementatie van een `Counter`-entiteit die één waarde van het type integer opslaat en vier bewerkingen `Add`, `Reset`, `Get`en `Delete`biedt.
 
 ```csharp
 [JsonObject(MemberSerialization.OptIn)]
@@ -71,10 +71,10 @@ public class Counter
 }
 ```
 
-De functie `Run` bevat de standaard die is vereist voor het gebruik van de op klassen gebaseerde syntaxis. Dit moet een *statische* Azure-functie zijn. Deze wordt eenmaal uitgevoerd voor elk bewerkings bericht dat door de entiteit wordt verwerkt. Als `DispatchAsync<T>` wordt aangeroepen en de entiteit nog niet in het geheugen is, wordt een object van het type `T` gemaakt en worden de bijbehorende velden gevuld van de laatste permanente JSON die in de opslag is gevonden (indien van toepassing). Vervolgens wordt de-methode aangeroepen met de overeenkomende naam.
+De functie `Run` bevat de standaard die is vereist voor het gebruik van de op klassen gebaseerde syntaxis. Dit moet een *statische* Azure-functie zijn. Deze wordt eenmaal uitgevoerd voor elk bewerkings bericht dat door de entiteit wordt verwerkt. Als `DispatchAsync<T>` wordt aangeroepen en de entiteit nog niet in het geheugen is, wordt een object van het type `T` gemaakt en worden de bijbehorende velden gevuld van de laatste persistente JSON die in de opslag is gevonden (indien van toepassing). Vervolgens wordt de-methode aangeroepen met de overeenkomende naam.
 
 > [!NOTE]
-> De status van een entiteit op basis van een klasse wordt **impliciet gemaakt** voordat de entiteit een bewerking verwerkt en kan expliciet in een bewerking worden **verwijderd** door het aanroepen van `Entity.Current.DeleteState()`.
+> De status van een entiteit op basis van een klasse wordt **impliciet gemaakt** voordat de entiteit een bewerking verwerkt en kan expliciet in een bewerking worden **verwijderd** door `Entity.Current.DeleteState()`aan te roepen.
 
 ### <a name="class-requirements"></a>Klasse-vereisten
  
@@ -86,21 +86,21 @@ Entiteits klassen zijn POCOs (gewone, verouderde CLR-objecten) waarvoor geen spe
 Daarnaast moet de methode die is bedoeld om te worden aangeroepen als een bewerking, voldoen aan aanvullende vereisten:
 
 - Een bewerking mag Maxi maal één argument hebben en mag geen Overloads of algemene type argumenten hebben.
-- Een bewerking die zou moeten worden aangeroepen vanuit een indeling met behulp van een interface, moet `Task` of `Task<T>` retour neren.
+- Een bewerking die moet worden aangeroepen vanuit een indeling met behulp van een interface, moet `Task` of `Task<T>`retour neren.
 - Argumenten en retour waarden moeten serialiseerbare waarden of objecten zijn.
 
 ### <a name="what-can-operations-do"></a>Wat kunnen bewerkingen doen?
 
 Alle entiteits bewerkingen kunnen de status van de entiteit lezen en bijwerken, en wijzigingen in de status worden automatisch opgeslagen in de opslag. Bovendien kunnen bewerkingen externe I/O-of andere berekeningen uitvoeren, binnen de algemene limieten die gelden voor alle Azure Functions.
 
-Bewerkingen hebben ook toegang tot de functionaliteit van de `Entity.Current`-context:
+Bewerkingen hebben ook toegang tot de functionaliteit van de `Entity.Current` context:
 
 * `EntityName`: de naam van de entiteit die momenteel wordt uitgevoerd.
 * `EntityKey`: de sleutel van de entiteit die momenteel wordt uitgevoerd.
 * `EntityId`: de ID van de entiteit die momenteel wordt uitgevoerd (inclusief naam en sleutel).
-* `SignalEntity`: er wordt een eenrichtings bericht naar een entiteit verzonden.
+* `SignalEntity`: verzendt een eenrichtings bericht naar een entiteit.
 * `CreateNewOrchestration`: er wordt een nieuwe indeling gestart.
-* `DeleteState`: verwijdert de status van deze entiteit.
+* `DeleteState`: de status van deze entiteit wordt verwijderd.
 
 We kunnen de entiteit teller bijvoorbeeld zodanig wijzigen dat een indeling wordt gestart wanneer de teller 100 bereikt en de entiteit-ID als invoer argument wordt door gegeven:
 
@@ -130,7 +130,7 @@ De volgende Azure http-functie implementeert een Verwijder bewerking met behulp 
 [FunctionName("DeleteCounter")]
 public static async Task<HttpResponseMessage> DeleteCounter(
     [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -147,7 +147,7 @@ De volgende Azure http-functie implementeert een GET-bewerking met behulp van RE
 [FunctionName("GetCounter")]
 public static async Task<HttpResponseMessage> GetCounter(
     [HttpTrigger(AuthorizationLevel.Function, "get", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -157,7 +157,7 @@ public static async Task<HttpResponseMessage> GetCounter(
 ```
 
 > [!NOTE]
-> Het object dat wordt geretourneerd door `ReadEntityStateAsync` is alleen een lokale kopie, dat wil zeggen, een moment opname van de entiteits status van een eerder tijdstip. Dit kan met name verlopen en het wijzigen van dit object heeft geen invloed op de werkelijke entiteit. 
+> Het object dat door `ReadEntityStateAsync` wordt geretourneerd, is slechts een lokale kopie, dat wil zeggen, een moment opname van de entiteits status van een eerder tijdstip. Dit kan met name verlopen en het wijzigen van dit object heeft geen invloed op de werkelijke entiteit. 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity"></a>Voor beeld: Orchestration-eerste signalen en vervolgens entiteit aanroepen
 
@@ -194,6 +194,7 @@ public interface ICounter
     Task<int> Get();
     void Delete();
 }
+
 public class Counter : ICounter
 {
     ...
@@ -206,13 +207,13 @@ Naast het leveren van type controle zijn interfaces handig voor een betere schei
 
 ### <a name="example-client-signals-entity-through-interface"></a>Voor beeld: client signaleert entiteit via interface
 
-Client code kan `SignalEntityAsync<TEntityInterface>` gebruiken om signalen te verzenden naar entiteiten die `TEntityInterface` implementeren. Bijvoorbeeld:
+Client code kan `SignalEntityAsync<TEntityInterface>` gebruiken om signalen te verzenden naar entiteiten die `TEntityInterface`implementeren. Bijvoorbeeld:
 
 ```csharp
 [FunctionName("DeleteCounter")]
 public static async Task<HttpResponseMessage> DeleteCounter(
     [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -221,15 +222,15 @@ public static async Task<HttpResponseMessage> DeleteCounter(
 }
 ```
 
-In dit voor beeld is de para meter `proxy` een dynamisch gegenereerd exemplaar van `ICounter`, waarmee de aanroep van `Delete` in een signaal intern wordt vertaald.
+In dit voor beeld is de para meter `proxy` een dynamisch gegenereerd exemplaar van `ICounter`, dat intern de aanroep naar `Delete` in een signaal zet.
 
 > [!NOTE]
-> De `SignalEntityAsync`-Api's kunnen alleen worden gebruikt voor eenrichtings bewerkingen. Zelfs als een bewerking `Task<T>` retourneert, is de waarde van de para meter `T` altijd Null of `default`, niet het werkelijke resultaat.
-Het is bijvoorbeeld niet zinvol om de `Get`-bewerking aan te geven, omdat er geen waarde wordt geretourneerd. Clients kunnen in plaats daarvan `ReadStateAsync` gebruiken om rechtstreeks toegang te krijgen tot de status van het prestatie meter item, of kunnen een Orchestrator-functie starten die de `Get`-bewerking aanroept. 
+> De `SignalEntityAsync`-Api's kunnen alleen worden gebruikt voor eenrichtings bewerkingen. Zelfs als een bewerking `Task<T>`retourneert, is de waarde van de para meter `T` altijd Null of `default`, niet het werkelijke resultaat.
+Het is bijvoorbeeld niet zinvol om de `Get` bewerking te Signa leren, omdat er geen waarde wordt geretourneerd. In plaats daarvan kunnen clients `ReadStateAsync` gebruiken om rechtstreeks toegang te krijgen tot de status van het item, of kan een Orchestrator-functie worden gestart die de `Get`-bewerking aanroept. 
 
 ### <a name="example-orchestration-first-signals-then-calls-entity-through-proxy"></a>Voor beeld: Orchestration-eerste signalen en vervolgens entiteit aanroepen via proxy
 
-Als u een entiteit wilt aanroepen of een signaal wilt geven vanuit een indeling, kan `CreateEntityProxy` worden gebruikt, samen met het interface type, om een proxy voor de entiteit te genereren. Deze proxy kan vervolgens worden gebruikt om bewerkingen uit te voeren of te Signa leren:
+Als u een entiteit vanuit een indeling wilt aanroepen of als u een signaal wilt ontvangen, kunt u `CreateEntityProxy` gebruiken, samen met het interface type, om een proxy voor de entiteit te genereren. Deze proxy kan vervolgens worden gebruikt om bewerkingen uit te voeren of te Signa leren:
 
 ```csharp
 [FunctionName("IncrementThenGet")]
@@ -249,7 +250,7 @@ public static async Task<int> Run(
 }
 ```
 
-Impliciet worden alle bewerkingen die worden geretourneerd `void` gesignaleerd en alle bewerkingen die worden geretourneerd `Task` of `Task<T>` worden genoemd. Eén kan dit standaard gedrag wijzigen en signaal bewerkingen, zelfs als ze een taak retour neren met behulp van de methode `SignalEntity<IInterfaceType>` expliciet.
+Alle bewerkingen die `void` retour neren, worden impliciet gesignaleerd en alle bewerkingen die `Task` of `Task<T>` retour neren worden genoemd. Eén kan dit standaard gedrag wijzigen en signaal bewerkingen, zelfs als ze een taak retour neren met behulp van de methode `SignalEntity<IInterfaceType>` expliciet.
 
 ### <a name="shorter-option-for-specifying-the-target"></a>Kortere optie voor het opgeven van het doel
 
@@ -260,7 +261,7 @@ context.SignalEntity<ICounter>(new EntityId(nameof(Counter), "myCounter"), ...);
 context.SignalEntity<ICounter>("myCounter", ...);
 ```
 
-Als alleen de entiteits sleutel is opgegeven en er tijdens runtime geen unieke implementatie wordt gevonden, wordt `InvalidOperationException` gegenereerd. 
+Als alleen de entiteits sleutel is opgegeven en tijdens runtime geen unieke implementatie wordt gevonden, wordt `InvalidOperationException` gegenereerd. 
 
 ### <a name="restrictions-on-entity-interfaces"></a>Beperkingen voor entiteits interfaces
 
@@ -270,7 +271,7 @@ Daarnaast worden enkele extra regels afgedwongen:
 * Entiteits interfaces moeten alleen methoden definiëren.
 * Entiteits interfaces mogen geen generieke para meters bevatten.
 * De methoden van de entity-interface mogen niet meer dan één para meter hebben.
-* De methoden van de entity-interface moeten `void`, `Task` of `Task<T>` retour neren 
+* De methoden van de entity-interface moeten `void`, `Task`of `Task<T>` retour neren 
 
 Als een van deze regels wordt geschonden, wordt tijdens runtime een `InvalidOperationException` gegenereerd wanneer de interface wordt gebruikt als een type argument voor `SignalEntity` of `CreateProxy`. In het uitzonderings bericht wordt uitgelegd welke regel is verbroken.
 
@@ -338,7 +339,7 @@ De naam van de klasse wordt standaard *niet* opgeslagen als onderdeel van de JSO
 
 ### <a name="making-changes-to-class-definitions"></a>Wijzigingen aanbrengen in klassen definities
 
-Let op wanneer u wijzigingen aanbrengt in een klassen definitie nadat een toepassing is uitgevoerd, omdat het opgeslagen JSON-object mogelijk niet meer overeenkomt met de nieuwe klassedefinitie. Het is echter vaak mogelijk om goed te kunnen omgaan met veranderende gegevens indelingen, zolang het deserialisatie proces dat wordt gebruikt door `JsonConvert.PopulateObject`, wordt begrepen.
+Let op wanneer u wijzigingen aanbrengt in een klassen definitie nadat een toepassing is uitgevoerd, omdat het opgeslagen JSON-object mogelijk niet meer overeenkomt met de nieuwe klassedefinitie. Het is echter vaak mogelijk om goed te kunnen omgaan met veranderende gegevens indelingen, zolang het deserialisatie proces dat wordt gebruikt door `JsonConvert.PopulateObject`wordt begrepen.
 
 Hier volgen enkele voor beelden van wijzigingen en hun effect:
 
@@ -348,7 +349,7 @@ Hier volgen enkele voor beelden van wijzigingen en hun effect:
 1. Als het type van een eigenschap wordt gewijzigd zodat deze niet meer kan worden gedeserialiseerd van de opgeslagen JSON, wordt een uitzonde ring gegenereerd.
 1. Als het type van een eigenschap wordt gewijzigd, maar het kan nog steeds worden gedeserialiseerd van de opgeslagen JSON, wordt dit gedaan.
 
-Er zijn veel opties beschikbaar voor het aanpassen van het gedrag van Json.NET. Als u bijvoorbeeld een uitzonde ring wilt afdwingen als de opgeslagen JSON een veld bevat dat niet aanwezig is in de-klasse, geeft u het kenmerk `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)` op. Het is ook mogelijk om aangepaste code te schrijven voor deserialisatie, waardoor JSON kan worden gelezen die in wille keurige indelingen is opgeslagen.
+Er zijn veel opties beschikbaar voor het aanpassen van het gedrag van Json.NET. Als u bijvoorbeeld een uitzonde ring wilt afdwingen als de opgeslagen JSON een veld bevat dat niet aanwezig is in de-klasse, geeft u het kenmerk `JsonObject(MissingMemberHandling = MissingMemberHandling.Error)`op. Het is ook mogelijk om aangepaste code te schrijven voor deserialisatie, waardoor JSON kan worden gelezen die in wille keurige indelingen is opgeslagen.
 
 ## <a name="entity-construction"></a>Entiteits constructie
 
@@ -372,9 +373,9 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 ### <a name="bindings-in-entity-classes"></a>Bindingen in entiteits klassen
 
-In tegens telling tot reguliere functies hebben entity class-methoden geen directe toegang tot invoer-en uitvoer bindingen. In plaats daarvan moeten bindings gegevens worden vastgelegd in de declaratie van de invoer punt functie en vervolgens worden door gegeven aan de methode `DispatchAsync<T>`. Objecten die worden door gegeven aan `DispatchAsync<T>` worden automatisch door gegeven aan de constructor van de entiteits klasse als een argument.
+In tegens telling tot reguliere functies hebben entity class-methoden geen directe toegang tot invoer-en uitvoer bindingen. In plaats daarvan moeten bindings gegevens worden vastgelegd in de declaratie van de invoer punt functie en vervolgens worden door gegeven aan de `DispatchAsync<T>` methode. Objecten die aan `DispatchAsync<T>` worden door gegeven, worden automatisch door gegeven aan de constructor van de entiteits klasse als een argument.
 
-In het volgende voor beeld ziet u hoe een `CloudBlobContainer`-verwijzing van de [BLOB-invoer binding](../functions-bindings-storage-blob.md#input) beschikbaar kan worden gemaakt voor een entiteit op basis van een klasse.
+In het volgende voor beeld ziet u hoe een `CloudBlobContainer` referentie van de [BLOB-invoer binding](../functions-bindings-storage-blob.md#input) beschikbaar kan worden gemaakt voor een entiteit op basis van een klasse.
 
 ```csharp
 public class BlobBackedEntity
@@ -405,7 +406,7 @@ Zie de documentatie voor [Azure functions triggers en bindingen](../functions-tr
 
 ### <a name="dependency-injection-in-entity-classes"></a>Afhankelijkheids injectie in entiteits klassen
 
-Entiteits klassen ondersteunen [Azure functions afhankelijkheids injectie](../functions-dotnet-dependency-injection.md). In het volgende voor beeld ziet u hoe u een `IHttpClientFactory`-service registreert in een entiteit op basis van een klasse.
+Entiteits klassen ondersteunen [Azure functions afhankelijkheids injectie](../functions-dotnet-dependency-injection.md). In het volgende voor beeld ziet u hoe u een `IHttpClientFactory`-service registreert bij een entiteit op basis van een klasse.
 
 ```csharp
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
@@ -452,6 +453,9 @@ public class HttpEntity
 > [!NOTE]
 > Als u problemen met serialisatie wilt voor komen, moet u ervoor zorgen dat velden die bedoeld zijn voor het opslaan van geïnjecteerde waarden uit de serialisatie uitsluiten.
 
+> [!NOTE]
+> In tegens telling tot het gebruik van constructor-injectie in reguliere .NET Azure Functions, *moeten* de toegangs punt methode functions worden gedeclareerd `static`. Het declareren van een niet-statisch functie-ingangs punt kan conflicten veroorzaken tussen de normale Azure Functions voor object initialisatie en de initialisatie functie voor het object van duurzame entiteiten.
+
 ## <a name="function-based-syntax"></a>Syntaxis op basis van functies
 
 Tot nu toe hebben we gefocust op de op klassen gebaseerde syntaxis, aangezien we verwachten dat deze beter geschikt zijn voor de meeste toepassingen. De syntaxis op basis van functies kan echter geschikt zijn voor toepassingen die hun eigen abstracties voor entiteits status en-bewerkingen willen definiëren of beheren. Het kan ook geschikt zijn bij het implementeren van bibliotheken die op dit moment niet worden ondersteund door de op klassen gebaseerde syntaxis. 
@@ -491,7 +495,7 @@ De volgende leden bieden informatie over de huidige bewerking en kunnen we een r
 * `EntityId`: de ID van de entiteit die momenteel wordt uitgevoerd (inclusief naam en sleutel).
 * `OperationName`: de naam van de huidige bewerking.
 * `GetInput<TInput>()`: Hiermee wordt de invoer voor de huidige bewerking opgehaald.
-* `Return(arg)`: retourneert een waarde voor de indeling die de bewerking wordt genoemd.
+* `Return(arg)`: retourneert een waarde voor de indeling die de bewerking aanroept.
 
 De volgende leden beheren de status van de entiteit (maken, lezen, bijwerken, verwijderen). 
 
@@ -500,11 +504,11 @@ De volgende leden beheren de status van de entiteit (maken, lezen, bijwerken, ve
 * `SetState(arg)`: Hiermee wordt de status van de entiteit gemaakt of bijgewerkt.
 * `DeleteState()`: de status van de entiteit wordt verwijderd als deze bestaat. 
 
-Als de status die is geretourneerd door `GetState` een object is, kan het rechtstreeks worden gewijzigd door de toepassings code. Het is niet nodig om `SetState` aan het einde aan te roepen (maar ook geen schade). Als `GetState<TState>` meerdere keren wordt genoemd, moet hetzelfde type worden gebruikt.
+Als de status die is geretourneerd door `GetState` een object is, kan het rechtstreeks worden gewijzigd door de toepassings code. Het is niet nodig om `SetState` aan het einde aan te roepen (maar ook geen schade). Als `GetState<TState>` meerdere keren wordt aangeroepen, moet hetzelfde type worden gebruikt.
 
 Ten slotte worden de volgende leden gebruikt om andere entiteiten te Signa leren, of om nieuwe integraties te starten:
 
-* `SignalEntity(EntityId, operation, input)`: er wordt een eenrichtings bericht naar een entiteit verzonden.
+* `SignalEntity(EntityId, operation, input)`: verzendt een eenrichtings bericht naar een entiteit.
 * `CreateNewOrchestration(orchestratorFunctionName, input)`: er wordt een nieuwe indeling gestart.
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -9,11 +9,11 @@ ms.date: 07/11/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: d72915cc8a96dd2593f640045da71d4569efa60c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69011960"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590580"
 ---
 ## <a name="resources-for-development-with-net"></a>Resources voor ontwikkeling met .NET
 
@@ -25,7 +25,7 @@ De onderstaande koppelingen bieden nuttige bronnen voor ontwikkel aars die gebru
 - [Bron code van bibliotheek](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
-### <a name="blob-storage-apis"></a>BLOB storage-API 's
+### <a name="blob-storage-apis"></a>Api's voor Blob-opslag
 
 - [API-referentie documentatie](/dotnet/api/overview/azure/storage/client)
 - [Bron code van bibliotheek](https://github.com/Azure/azure-storage-net/tree/master/Blob)

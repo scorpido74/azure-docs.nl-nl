@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432656"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605669"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Azure Databricks implementeren in uw virtuele netwerk
 
@@ -119,9 +119,9 @@ Als u deze sjabloon gebruikt zonder ook de netwerk beveiligings groepen sjabloon
 
 ## <a name="whitelisting-subnet-traffic"></a>White list-subnet verkeer
 
-Als u de [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) -of [Azure Resource Manager sjablonen](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) niet gebruikt om uw netwerk beveiligings groepen te maken, moet u het volgende verkeer hand matig White List op uw subnetten.
+Als u de [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) -of [Azure Resource Manager sjablonen](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) niet gebruikt om uw netwerk beveiligings groepen te maken, moet u het volgende verkeer hand matig White List op uw subnetten.
 
-|Richting|Protocol|Bron|Bronpoort|Bestemming|Doelpoort|
+|Richting|Protocol|Bron|Bronpoort|Doel|Doelpoort|
 |---------|--------|------|-----------|-----------|----------------|
 |Inkomend|\*|VirtualNetwork|\*|\*|\*|
 |Inkomend|\*|Beheer vlak NAT IP|\*|\*|22|
@@ -135,30 +135,30 @@ White list-subnet verkeer met de volgende IP-adressen. Voor SQL (meta Store) en 
 
 |Azure Databricks regio|Service|Openbare IP|
 |-----------------------|-------|---------|
-|VS - oost|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
-|VS - oost 2|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
-|VS - noord-centraal|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
-|VS - centraal|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
-|VS - zuid-centraal|Control-vlak NAT </br></br>Ding|40.83.178.242/32 </br></br>40.118.174.12/32|
-|VS - west|Control-vlak NAT </br></br>Ding|40.83.178.242/32 </br></br>40.118.174.12/32|
-|VS - west 2|Control-vlak NAT </br></br>Ding|40.83.178.242/32 </br></br>40.118.174.12/32|
-|Canada-Midden|Control-vlak NAT </br></br>Ding|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Canada-Oost|Control-vlak NAT </br></br>Ding|40.85.223.25/32 </br></br>13.71.184.74/32|
-|VK - west|Control-vlak NAT </br></br>Ding|51.140.203.27/32 </br></br>51.140.204.4/32|
+|US - oost|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
+|US - oost 2|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
+|US - noord-centraal|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
+|US - centraal|Control-vlak NAT </br></br>Ding|23.101.152.95/32 </br></br>40.70.58.221/32|
+|US - zuid-centraal|Control-vlak NAT </br></br>Ding|40.83.178.242/32 </br></br>40.118.174.12/32|
+|US - west|Control-vlak NAT </br></br>Ding|40.83.178.242/32 </br></br>40.118.174.12/32|
+|US - west 2|Control-vlak NAT </br></br>Ding|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Canada - midden|Control-vlak NAT </br></br>Ding|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Canada - oost|Control-vlak NAT </br></br>Ding|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Verenigd Koninkrijk West|Control-vlak NAT </br></br>Ding|51.140.203.27/32 </br></br>51.140.204.4/32|
 |VK - zuid|Control-vlak NAT </br></br>Ding|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Europa - west|Control-vlak NAT </br></br>Ding|23.100.0.135/32 </br></br>52.232.19.246/32|
+|Europa -west|Control-vlak NAT </br></br>Ding|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Europa - noord|Control-vlak NAT </br></br>Ding|23.100.0.135/32 </br></br>52.232.19.246/32|
 |India - centraal|Control-vlak NAT </br></br>Ding|104.211.89.81/32 </br></br>104.211.101.14/32|
 |India - zuid|Control-vlak NAT </br></br>Ding|104.211.89.81/32 </br></br>104.211.101.14/32|
 |India - west|Control-vlak NAT </br></br>Ding|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Azië - zuidoost|Control-vlak NAT </br></br>Ding|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Azië - oost|Control-vlak NAT </br></br>Ding|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Australië Oost|Control-vlak NAT </br></br>Ding|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Australië Zuidoost|Control-vlak NAT </br></br>Ding|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Australië - oost|Control-vlak NAT </br></br>Ding|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Australië - zuidoost|Control-vlak NAT </br></br>Ding|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Australië - centraal|Control-vlak NAT </br></br>Ding|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Australië - centraal 2|Control-vlak NAT </br></br>Ding|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Japan - Oost|Control-vlak NAT </br></br>Ding|13.78.19.235/32 </br></br>52.246.160.72/32|
-|Japan - West|Control-vlak NAT </br></br>Ding|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Japan - oost|Control-vlak NAT </br></br>Ding|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Japan - west|Control-vlak NAT </br></br>Ding|13.78.19.235/32 </br></br>52.246.160.72/32|
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

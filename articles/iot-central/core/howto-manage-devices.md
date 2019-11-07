@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c3d07c95592c1c43a070afbbf5091693ce0a6611
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: adcaa29ed894f2d61871f467369bcdd05f8cc593
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950351"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601594"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Apparaten beheren in uw Azure IoT Central-toepassing
 
@@ -21,7 +21,7 @@ ms.locfileid: "72950351"
 
 In dit artikel wordt beschreven hoe u als een operator apparaten beheert in uw Azure IoT Central-toepassing. Als operator kunt u het volgende doen:
 
-- Gebruik de pagina **device Explorer** om apparaten weer te geven, toe te voegen en te verwijderen die zijn verbonden met uw Azure IOT Central-toepassing.
+- Gebruik de pagina **apparaten** om apparaten weer te geven, toe te voegen en te verwijderen die zijn verbonden met uw Azure IOT Central-toepassing.
 - Onderhoud van een actuele inventaris van uw apparaten.
 - De meta gegevens van uw apparaat up-to-date houden door de waarden te wijzigen die zijn opgeslagen in de apparaateigenschappen.
 - U bepaalt het gedrag van uw apparaten door een instelling op een specifiek apparaat op de pagina **instellingen** bij te werken.
@@ -30,11 +30,11 @@ In dit artikel wordt beschreven hoe u als een operator apparaten beheert in uw A
 
 Een afzonderlijk apparaat weer geven:
 
-1. Kies **device Explorer** in het linkerdeel venster. Hier ziet u een lijst met de [sjablonen](howto-set-up-template.md)van uw apparaten.
+1. Kies **apparaten** in het linkerdeel venster. Hier ziet u een lijst met de [sjablonen](howto-set-up-template.md)van uw apparaten.
 
 1. Kies een sjabloon in de lijst **sjablonen** .
 
-1. In het rechterdeel venster van de pagina **device Explorer** ziet u een lijst met apparaten die zijn gemaakt op basis van die apparaataccount. Kies een afzonderlijk apparaat om de pagina met details van het apparaat voor dat apparaat weer te geven:
+1. In het rechterdeel venster van de pagina **apparaten** ziet u een lijst met apparaten die zijn gemaakt op basis van die apparaataccount. Kies een afzonderlijk apparaat om de pagina met details van het apparaat voor dat apparaat weer te geven:
 
     ![Pagina Details van apparaat](./media/howto-manage-devices/devicelist.png)
 
@@ -42,7 +42,7 @@ Een afzonderlijk apparaat weer geven:
 
 Een apparaat toevoegen aan uw Azure IoT Central-toepassing:
 
-1. Kies **device Explorer** in het linkerdeel venster.
+1. Kies **apparaten** in het linkerdeel venster.
 
 1. Kies de sjabloon van het apparaat waaruit u een apparaat wilt maken.
 
@@ -59,7 +59,7 @@ Als u een groot aantal apparaten wilt verbinden met uw toepassing, kunt u appara
 
 Apparaten in uw toepassing bulksgewijs registreren:
 
-1. Kies **device Explorer** in het linkerdeel venster.
+1. Kies **apparaten** in het linkerdeel venster.
 
 1. Kies in het linkerdeel venster de sjabloon voor het apparaat waarvoor u de apparaten bulksgewijs wilt maken.
 
@@ -84,7 +84,7 @@ Als de Importeer bewerking van het apparaat mislukt, ziet u een fout bericht op 
 
 Als u apparaten registreert door het importeren te starten onder niet- **gekoppelde apparaten**, worden de apparaten gemaakt zonder een sjabloon koppeling van het apparaat. Apparaten moeten worden gekoppeld aan een sjabloon om de gegevens en andere details over het apparaat te kunnen verkennen. Volg deze stappen om apparaten te koppelen aan een sjabloon:
 
-1. Kies **device Explorer** in het linkerdeel venster.
+1. Kies **apparaten** in het linkerdeel venster.
 
 1. Kies in het linkerdeel venster niet- **gekoppelde apparaten**:
 
@@ -109,7 +109,7 @@ Als u een echt apparaat wilt verbinden met IoT Central, hebt u het connection st
 
 Apparaten bulksgewijs exporteren vanuit uw toepassing:
 
-1. Kies **device Explorer** in het linkerdeel venster.
+1. Kies **apparaten** in het linkerdeel venster.
 
 1. Kies in het linkerdeel venster de sjabloon van waaruit u de apparaten wilt exporteren.
 
@@ -140,7 +140,7 @@ Zie [connectiviteit van apparaten in Azure IOT Central](concepts-connectivity.md
 
 Een echt of gesimuleerd apparaat verwijderen uit uw Azure IoT Central-toepassing:
 
-1. Kies **device Explorer** in het linkerdeel venster.
+1. Kies **apparaten** in het linkerdeel venster.
 
 1. Kies de sjabloon van het apparaat dat u wilt verwijderen.
 
@@ -152,7 +152,7 @@ Een echt of gesimuleerd apparaat verwijderen uit uw Azure IoT Central-toepassing
 
 Instellingen bepalen het gedrag van een apparaat. Met andere woorden, ze stellen u in staat om invoer te bieden aan uw apparaat. U kunt de Apparaatinstellingen weer geven en bijwerken op de pagina met details van het **apparaat** .
 
-1. Kies **device Explorer** in het linkerdeel venster.
+1. Kies **apparaten** in het linkerdeel venster.
 
 1. Kies de Device-sjabloon van het apparaat waarvan u de instellingen wilt wijzigen.
 
@@ -166,7 +166,7 @@ Instellingen bepalen het gedrag van een apparaat. Met andere woorden, ze stellen
 
 Eigenschappen zijn de meta gegevens van het apparaat die zijn gekoppeld aan het apparaat, zoals City en serie nummer. U kunt eigenschappen weer geven en bijwerken op de pagina met details van het **apparaat** .
 
-1. Kies **device Explorer** in het linkerdeel venster.
+1. Kies **apparaten** in het linkerdeel venster.
 
 1. Kies de Device-sjabloon van het apparaat waarvan u de eigenschappen wilt wijzigen.
 

@@ -1,7 +1,7 @@
 ---
-title: Modellen implementeren voor reken instanties
+title: Modellen implementeren op laptop-Vm's
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het implementeren van uw Azure Machine Learning modellen als een webservice met behulp van reken instanties.
+description: Meer informatie over het implementeren van uw Azure Machine Learning-modellen als een webservice met behulp van een notebook-Vm's.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,34 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bb187826250b3edc9ac3d9e36a243d75819a45b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d4e37b02b3d7a21546a04c8948fbbfb7262bfa6a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496879"
+ms.locfileid: "73584774"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Een model implementeren om reken instanties te Azure Machine Learning
+# <a name="deploy-a-model-to-azure-machine-learning-notebook-vms"></a>Een model implementeren voor het Azure Machine Learning van virtuele machines in een notebook
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-> [!NOTE]
-> Reken instanties zijn alleen beschikbaar voor werk ruimten met een regio **Noord-Centraal VS** of **UK-Zuid**.
->Als uw werk ruimte zich in een andere regio bevindt, kunt u in plaats daarvan een VM van een [notebook](concept-compute-instance.md#notebookvm) blijven maken en gebruiken.  U kunt met behulp van de stappen in dit artikel een model implementeren op een reken instantie of een notebook-VM.
-
-Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op uw Azure Machine Learning Reken exemplaar. Reken instanties gebruiken als aan een van de volgende voor waarden wordt voldaan:
+Meer informatie over het gebruik van Azure Machine Learning voor het implementeren van een model als een webservice op uw Azure Machine Learning-notebook-VM. Gebruik laptop-Vm's als aan een van de volgende voor waarden wordt voldaan:
 
 - U moet uw model snel implementeren en valideren.
 - U test een model dat wordt ontwikkeld.
 
 > [!TIP]
-> Het implementeren van een model van een Jupyter Notebook op een compute-exemplaar, is een _lokale implementatie_op een webservice op dezelfde VM. In dit geval is de ' lokale ' computer het reken exemplaar. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over implementaties.
+> Het implementeren van een model van een Jupyter Notebook op een notebook-VM is een _lokale implementatie_op een webservice op dezelfde VM. In dit geval is de ' lokale ' computer de VM van de notebook. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over implementaties.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure Machine Learning-werk ruimte waarbij een reken instantie wordt uitgevoerd. Zie [Setup Environment and Workspace](tutorial-1st-experiment-sdk-setup.md)(Engelstalig) voor meer informatie.
+- Een Azure Machine Learning-werk ruimte met een notebook-VM die wordt uitgevoerd. Zie [Setup Environment and Workspace](tutorial-1st-experiment-sdk-setup.md)(Engelstalig) voor meer informatie.
 
-## <a name="deploy-to-the-compute-instances"></a>Implementeren in de reken instanties
+## <a name="deploy-to-the-notebook-vms"></a>Implementeren op de laptop-Vm's
 
-Een voor beeld van een notebook dat lokale implementaties bevat, is opgenomen in uw reken exemplaar. Gebruik de volgende stappen om het notitie blok te laden en het model te implementeren als een webservice op de VM:
+Een voor beeld van een notebook dat lokale implementaties bevat, is opgenomen op de VM van uw notebook. Gebruik de volgende stappen om het notitie blok te laden en het model te implementeren als een webservice op de VM:
 
-1. Selecteer uw Azure Machine Learning Reken instanties in [Azure machine learning Studio](https://ml.azure.com).
+1. Selecteer uw Azure Machine Learning-laptop-Vm's in [Azure machine learning Studio](https://ml.azure.com).
 
 1. Open de `samples-*`-submap en open vervolgens `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Als het notitie blok eenmaal is geopend, voert u het uit.
 
@@ -51,13 +47,7 @@ Een voor beeld van een notebook dat lokale implementaties bevat, is opgenomen in
 
     ![Scherm afbeelding van de actieve lokale service poort](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. Als u de service van een reken instantie wilt testen, gebruikt u de `https://localhost:<local_service.port>` URL. Als u wilt testen vanaf een externe client, haalt u de open bare URL op van de service die wordt uitgevoerd op het reken exemplaar. De open bare URL kan worden bepaald met behulp van de volgende formule. 
-    * VM van notebook: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
-    * Reken instantie: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
-    
-    Bijvoorbeeld: 
-    * VM van notebook: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * Reken instantie: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
+1. Als u de service wilt testen vanaf de VM van de notebook, gebruikt u de `https://localhost:<local_service.port>` URL. Als u wilt testen vanaf een externe client, haalt u de open bare URL op van de service die wordt uitgevoerd op de VM van het notebook. De open bare URL kan worden bepaald met behulp van de volgende formule. `https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. Bijvoorbeeld `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score`.
 
 ## <a name="test-the-service"></a>Test de service
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274116"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571123"
 ---
 # <a name="load-balancer-health-probes"></a>Status van Load Balancer testen
 
@@ -48,6 +48,9 @@ De status test configuratie bestaat uit de volgende elementen:
 - Protocol van de test
 - Poort van de test
 - Het HTTP-pad dat moet worden gebruikt voor HTTP ophalen wanneer HTTP (S)-tests worden gebruikt
+
+> [!NOTE]
+> Een test definitie is niet verplicht of wordt gecontroleerd op het gebruik van Azure PowerShell, Azure CLI, sjablonen of API. Test validatie tests worden alleen uitgevoerd wanneer de Azure-portal wordt gebruikt.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Informatie over het toepassings signaal, de detectie van het signaal en de reactie van het platform
 
@@ -237,7 +240,7 @@ Als u meerdere interfaces op uw VM hebt, moet u ervoor zorgen dat u reageert op 
 
 Schakel TCP- [tijds tempels](https://tools.ietf.org/html/rfc1323)niet in.  Het inschakelen van TCP-tijds tempels kan ertoe leiden dat status controles mislukken omdat TCP-pakketten worden verwijderd door de TCP-stack van het gast besturingssysteem van de virtuele machine, wat leidt tot Load Balancer het respectievelijke eind punt wordt gemarkeerd.  TCP-tijds tempels worden standaard ingeschakeld voor beveiligde VM-installatie kopieën en moeten worden uitgeschakeld.
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 Zowel open bare als interne [Standard Load Balancer](load-balancer-standard-overview.md) geven per eind punt en back-end-eindpunt status de waarde met meerdere dimensies via Azure monitor. Deze metrische gegevens kunnen worden gebruikt door andere Azure-Services of partner toepassingen. 
 

@@ -1,26 +1,25 @@
 ---
 title: 'Snelstartgids: een nieuwe app maken in de LUIS-Portal'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start maakt u een nieuwe app in de LUIS-Portal. Maak de basis onderdelen van een app, intenties en entiteiten. Test de app met een voor beeld van een gebruiker utterance in het interactieve test paneel om de voorspelde intentie te verkrijgen. Het bouwen van een app is gratis; hiervoor is geen Azure-abonnement vereist.
+description: In deze Quick Start maakt u de basis onderdelen van een app, intenties en entiteiten, evenals de test met voorbeeld utterance in de LUIS-Portal.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 6888c53122e649d6a0e91f8ece30101f051c08e8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669682"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstartgids: een nieuwe app maken in de LUIS-Portal
 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 In deze Quick Start maakt u een nieuwe app in de [Luis-Portal](https://www.luis.ai). Eerst maakt u de basis onderdelen van een app, **intenties**en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
 
@@ -32,7 +31,7 @@ Het bouwen van een app is gratis en er is geen Azure-abonnement vereist. Wanneer
 
 1. Selecteer **+ maken** op de context werkbalk.
 
-   [![nieuwe app maken in LUIS-Portal](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![nieuwe app maken in LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. Configureer in het pop-upvenster de app met de volgende instellingen en selecteer vervolgens **gereed**.
 
@@ -40,8 +39,8 @@ Het bouwen van een app is gratis en er is geen Azure-abonnement vereist. Wanneer
    |--|--|--|
    |Naam|`myEnglishApp`|Unieke naam van de LUIS-app<br>Vereist|
    |Culture|**Engels**|Taal van uitingen van gebruikers, **en-US**<br>Vereist|
-   |Beschrijving|`App made with LUIS Portal`|Beschrijving van de app<br>Beschrijving|
-   | | | |
+   |Beschrijving (optioneel)|`App made with LUIS Portal`|Beschrijving van de app<br>Beschrijving|
+   |Voorspellings bron (optioneel) |-  |Niet selecteren. LUIS biedt u een begin sleutel die gratis kan worden gebruikt voor het maken van bewerkings eindpunt aanvragen voor ontwerpen en 1.000. |
 
    ![Nieuwe app-instellingen invoeren](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -61,13 +60,11 @@ De twee verschillende _bedoelingen_ van de app worden uitgelijnd op de volgende 
 
 Voer de volgende stappen uit om intenties te maken:
 
-1. Nadat de app is gemaakt, bevindt u zich op de pagina **intenties** van de sectie **bouwen** . Selecteer **Create new intent**.
+1. Nadat de app is gemaakt, bevindt u zich op de pagina **intenties** van de sectie **bouwen** . Selecteer **Maken**.
 
-   [![selecteren knop nieuwe intentie maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Selecteer maken om nieuwe intentie te maken](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. Voer de naam van de doel groep in, `FindForm`en selecteer vervolgens **gereed**.
-
-   ![De naam van de doel groep van FindForm invoeren](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>Een voor beeld-utterance toevoegen
 
@@ -113,13 +110,16 @@ Het formulier moet worden gemarkeerd als een entiteit om het formulier nummer te
 
 1. Selecteer **entiteiten** in het menu aan de linkerkant.
 
-1. Selecteer **nieuwe entiteit maken** op de pagina **entiteiten** .
+1. Selecteer **maken** op de pagina **entiteiten** .
 
-1. Voer de naam `Human Resources Form Number`, selecteer het type **regex** -entiteit en voer de reguliere expressie in, `hrf-[0-9]{6}`. Deze vermelding komt overeen met de letterlijke tekens, `hrf-`en staat precies zes cijfers toe.
+1. Voer de naam `Human Resources Form Number`, selecteer het type **regex** -entiteit en selecteer vervolgens **volgende**.
 
-   ![Entiteits gegevens invoeren voor de reguliere expressie-entiteit](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Entiteit reguliere expressie maken](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-1. Selecteer **Done**.
+1. Voer de expressie voor reguliere expressies (**regex**) in `hrf-[0-9]{6}`. Deze vermelding komt overeen met de letterlijke tekens, `hrf-`, en staat precies zes cijfers toe, en selecteer vervolgens **maken**.
+
+   ![Reguliere expressie voor entiteit invoeren](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
+
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Voorbeelduitingen toevoegen aan de intentie None
 
@@ -137,11 +137,11 @@ De voor beeld-uitingen van **geen** intentie moet zich buiten uw client toepassi
    |Bestel een pizza voor me|
    |Pinguïns in de oceaan|
 
-   Voor deze human resources-app bevinden dit voor beeld uitingen zich buiten het domein. Als uw Human Resources-domein dieren, levens middelen of de oceaan bevat, moet u verschillende voor beeld-uitingen gebruiken voor de **geen** intentie.
+   Voor deze app zijn dit voor beeld-uitingen buiten het domein. Als uw domein dieren, levens middelen of de oceaan bevat, moet u een ander voor beeld uitingen gebruiken voor de **geen** intentie.
 
 ## <a name="train-the-app"></a>De app trainen
 
-Selecteer in het menu in de rechter bovenhoek de optie **Train** om het doel van de intentie en het entiteits model toe te passen op de huidige versie van de app.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Bekijk de entiteit reguliere expressie in het voor beeld uitingen
 
@@ -168,8 +168,6 @@ Gebruik het interactieve **test** venster in de Luis-Portal om te controleren of
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u klaar bent met deze Snelstartgids en niet naar de volgende Snelstartgids gaat, selecteert u **mijn apps** in het bovenste navigatie menu. Schakel vervolgens het selectie vakje van de app naar links in de lijst in en selecteer **verwijderen** in de context werkbalk boven de lijst.
-
-[app ![verwijderen uit de lijst met apps](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 

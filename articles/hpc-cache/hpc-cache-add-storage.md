@@ -1,17 +1,17 @@
 ---
-title: Opslag toevoegen aan een Azure HPC-cache (preview-versie)
+title: Opslag toevoegen aan een Azure HPC-cache
 description: Hoe u opslag doelen definieert zodat uw Azure HPC-cache uw on-premises NFS-systeem of Azure Blob-containers voor lange termijn bestands opslag kan gebruiken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024557"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621454"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -65,7 +65,7 @@ Stappen voor het toevoegen van de RBAC-rollen:
 
 1. Open de pagina **toegangs beheer (IAM)** voor het opslag account. (De koppeling op de pagina **opslag doel toevoegen** opent deze pagina automatisch voor het geselecteerde account.)
 
-1. Klik boven aan de pagina op de **+** en kies **een roltoewijzing toevoegen**.
+1. Klik op de **+** boven aan de pagina en kies **een roltoewijzing toevoegen**.
 
 1. Selecteer de rol ' Inzender voor opslag accounts ' in de lijst.
 
@@ -74,7 +74,7 @@ Stappen voor het toevoegen van de RBAC-rollen:
 1. In het veld **selecteren zoekt u** naar ' HPC '.  Deze teken reeks moet overeenkomen met een service-principal met de naam ' HPC-cache resource provider '. Klik op die principal om deze te selecteren.
 
    > [!NOTE]
-   > Als een zoek opdracht voor "HPC" niet werkt, kunt u de teken reeks "storagecache" gebruiken. Gebruikers die vroegtijdig lid zijn van de preview, moeten mogelijk de oudere naam voor de Service-Principal gebruiken.
+   > Als een zoek opdracht voor "HPC" niet werkt, kunt u de teken reeks "storagecache" gebruiken. Gebruikers die zijn toegevoegd aan de voor beelden (vóór GA), moeten mogelijk de oudere naam voor de Service-Principal gebruiken.
 
 1. Klik op de knop **Opslaan** om de roltoewijzing toe te voegen aan het opslag account.
 
@@ -134,3 +134,5 @@ Nadat u opslag doelen hebt gemaakt, kunt u een van de volgende taken uitvoeren:
 
 * [De Azure HPC-cache koppelen](hpc-cache-mount.md)
 * [Gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md)
+
+Als u een opslag doel moet wijzigen, lees dan [opslag doelen bewerken](hpc-cache-edit-storage.md) voor meer informatie.

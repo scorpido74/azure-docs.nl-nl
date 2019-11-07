@@ -1,5 +1,5 @@
 ---
-title: Hand leiding voor automatische afstemming e-mail meldingen-Azure SQL Database | Microsoft Docs
+title: Hand leiding voor automatische afstemming e-mail meldingen-Azure SQL Database
 description: Schakel e-mail meldingen in voor Azure SQL Database automatisch afstemmen van query's.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e1478ab6abc9705a67f2d47bc076d3c2fe54ccd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569439"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691140"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mail meldingen voor automatisch afstemmen
 
@@ -81,7 +81,7 @@ Volg deze stappen om een Power shell-script te laden in het runbook dat is gemaa
 - In het deel venster**Power shell-Runbook bewerken**selecteert u**RUNBOOKS**in de menu structuur en vouwt u de weer gave uit totdat u de naam van uw Runbook ziet (in dit voor beeld "**AutomaticTuningEmailAutomation**"). Selecteer dit runbook.
 - Kopieer de volgende Power shell-script code op de eerste regel van het Power shell-Runbook bewerken (te beginnen met het nummer 1). Dit Power shell-script wordt meegeleverd als-is om aan de slag te gaan. Wijzig het script in uw behoeften.
 
-In de koptekst van het Power shell-script moet u vervangen `<SUBSCRIPTION_ID_WITH_DATABASES>` door de id van uw Azure-abonnement. Zie [de GUID van uw Azure-abonnement ophalen](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)voor meer informatie over het ophalen van uw Azure-abonnements-id.
+In de koptekst van het Power shell-script moet u `<SUBSCRIPTION_ID_WITH_DATABASES>` vervangen door de ID van uw Azure-abonnement. Zie [de GUID van uw Azure-abonnement ophalen](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/)voor meer informatie over het ophalen van uw Azure-abonnements-id.
 
 In het geval van verschillende abonnementen kunt u ze als door komma's gescheiden toevoegen aan de eigenschap $subscriptions in de header van het script.
 
@@ -203,7 +203,7 @@ De volgende stap bestaat uit het toevoegen van drie taken (maken, ophalen en ver
 1. Maak een actie om het Power shell-script uit te voeren voor het ophalen van de aanbevelingen
 
    - Selecteer **+ nieuwe stap**, gevolgd door**een actie toevoegen**in het deel venster terugkeer patroon
-   - Typ ' Automation ' inhet zoek veld en selecteer in de zoek resultaten**Azure Automation-taak maken**
+   - Typ '**Automation**' in het zoek veld en selecteer in de zoek resultaten**Azure Automation-taak maken**
    - Configureer de taak eigenschappen in het deel venster taak maken. Voor deze configuratie hebt u details nodig van uw Azure-abonnements-ID, resource groep en Automation-account dat **eerder is vastgelegd** in het **deel venster Automation-account**. Zie voor meer informatie over de beschik bare opties in deze sectie [Azure Automation-taak maken](https://docs.microsoft.com/connectors/azureautomation/#create-job).
    - U voltooit deze actie door te klikken op**stroom opslaan**
 

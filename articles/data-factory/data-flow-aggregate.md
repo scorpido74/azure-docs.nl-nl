@@ -1,5 +1,5 @@
 ---
-title: Statistische trans formatie in Azure Data Factory gegevens stroom voor toewijzing | Microsoft Docs
+title: Statistische trans formatie in Azure Data Factory gegevens stroom toewijzen
 description: Meer informatie over het samen stellen van gegevens op schaal in Azure Data Factory met de statistische trans formatie toewijzings gegevens stroom.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3f21367c36ae31aa2115c109933a581bef464baf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514827"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676916"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Statistische trans formatie in toewijzing van gegevens stroom 
 
@@ -42,7 +42,7 @@ Elke aggregatie-expressie moet ten minste één statistische functie bevatten.
 
 Samengestelde trans formaties zijn vergelijkbaar met SQL-query's voor aggregatie selectie. Kolommen die niet zijn opgenomen in de component Group by of statistische functies, stromen niet naar de uitvoer van uw geaggregeerde trans formatie. Als u andere kolommen in de cumulatieve uitvoer wilt opnemen, voert u een van de volgende methoden uit:
 
-* Gebruik een statistische functie zoals `last()` of `first()` om die extra kolom op te nemen.
+* Gebruik een statistische functie zoals `last()` of `first()` om de extra kolom op te nemen.
 * De kolommen opnieuw samen voegen met de uitvoer stroom met het [Self-deelname patroon](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/).
 
 ## <a name="data-flow-script"></a>Gegevens stroom script
@@ -68,7 +68,7 @@ Samengestelde trans formaties zijn vergelijkbaar met SQL-query's voor aggregatie
 
 ### <a name="example"></a>Voorbeeld
 
-In het onderstaande voor beeld wordt een inkomende stream `MoviesYear` gebruikt en worden rijen gegroepeerd op kolom `year`. De trans formatie maakt een statistische kolom `avgrating` die het gemiddelde van kolom `Rating` evalueert. Deze cumulatieve trans formatie heet `AvgComedyRatingsByYear`.
+In het onderstaande voor beeld wordt een inkomende stroom `MoviesYear` en worden rijen gegroepeerd op kolom `year`. De trans formatie maakt een statistische kolom `avgrating` die het gemiddelde van kolom `Rating`evalueert. Deze cumulatieve trans formatie heet `AvgComedyRatingsByYear`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

@@ -1,5 +1,5 @@
 ---
-title: Een Azure SQL Data Warehouse van een geo-back-up herstellen | Microsoft Docs
+title: Een Data Warehouse terugzetten vanuit een geo-back-up
 description: Instructies voor het geo-herstellen van een Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 69eb1221686da61868df8b06ed80664ae76d1627
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68426653"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685496"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Geo-herstel Azure SQL Data Warehouse
 
@@ -29,7 +30,7 @@ In dit artikel leert u hoe u uw data warehouse kunt herstellen met behulp van ee
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Herstellen vanuit een geografische regio van Azure via Power shell
 
-Gebruik de cmdlet [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] en Restore [-AzSqlDatabase][Restore-AzSqlDatabase] om een geo-back-up te herstellen.
+Gebruik de cmdlet [Get-AzSqlDatabaseGeoBackup][Get-AzSqlDatabaseGeoBackup] en [Restore-AzSqlDatabase][Restore-AzSqlDatabase] om een geo-back-up te herstellen.
 
 > [!NOTE]
 > U kunt een geo-herstel bewerking uitvoeren op Gen2. Als u dit wilt doen, geeft u een Gen2 ServiceObjectiveName op (bijvoorbeeld DW1000**c**) als een optionele para meter.
@@ -79,12 +80,12 @@ Volg de onderstaande stappen om een Azure SQL Data Warehouse van een geo-back-up
 1. Klik op **+ een resource maken** en zoek naar SQL Data Warehouse en klik op **maken**.
 
     ![Nieuwe DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Vul de gevraagde gegevens in op het tabblad **basis beginselen** en **Klik op volgende: Aanvullende instellingen**.
+1. Vul de gevraagde gegevens in op het tabblad **basis beginselen** en klik op **volgende: aanvullende instellingen**.
 
-    ![Basics](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+    ![Basisbeginselen](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 1. Selecteer voor het gebruik van de para meter **bestaande gegevens** **back-up** en selecteer de juiste back-up in de opties omlaag schuiven. Klik op **beoordeling + maken**.
  
-   ![back-up](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+   ![Back-up](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 2. Nadat het Data Warehouse is hersteld, controleert u of de **status** online is.
 
 ## <a name="next-steps"></a>Volgende stappen

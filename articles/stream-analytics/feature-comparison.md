@@ -1,77 +1,77 @@
 ---
-title: Vergelijking van Azure Stream Analytics
-description: In dit artikel vergelijkt de functies die worden ondersteund voor de cloud van Azure Stream Analytics en IoT Edge-taken in de Azure portal, Visual Studio en Visual Studio Code.
+title: Vergelijking van Azure Stream Analytics-functies
+description: In dit artikel worden de functies vergeleken die worden ondersteund voor Azure Stream Analytics Cloud-en IoT Edge-taken in de Azure Portal, Visual Studio en Visual Studio code.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 22d7ef90ee0cf4d09467516b7bb0664327b7dabe
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 4eb19a5b344cc5bda5ecad724daaddf9b0000d7e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509779"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580911"
 ---
-# <a name="azure-stream-analytics-feature-comparison"></a>Vergelijking van Azure Stream Analytics
+# <a name="azure-stream-analytics-feature-comparison"></a>Vergelijking van Azure Stream Analytics-functies
 
-Met Azure Stream Analytics kunt u streamingoplossingen kunt maken in de cloud en op de IoT Edge met behulp van [Azure-portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md), en [Visual Studio Code](quick-create-vs-code.md). De tabellen in dit artikel ziet welke functies worden ondersteund door elk platform voor beide taaktypen.
+Met Azure Stream Analytics kunt u streaming-oplossingen maken in de Cloud en op het IoT Edge met behulp van [Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)en [Visual Studio code](quick-create-vs-code.md). In de tabellen in dit artikel ziet u welke functies door elk platform worden ondersteund voor beide taak typen.
 
-## <a name="cloud-job-features"></a>Functies van cloud-taak
+## <a name="cloud-job-features"></a>Cloud taak functies
 
 
 |Functie  |Portal  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
-|Platformoverschrijdend     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
-|Script ontwerpen     |Ja         |Ja         |Ja         |
-|Script Intellisense     |Syntaxismarkering         |Syntaxismarkering</br>Code uitvoeren</br>Fout-markering         |Syntaxismarkering</br>Code uitvoeren</br>Fout-markering         |
+|Kruis platform     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
+|Ontwerpen van scripts     |Ja         |Ja         |Ja         |
+|Script IntelliSense     |Syntaxis markering         |Syntaxis markering</br>Code volt ooien</br>Fout markering         |Syntaxis markering</br>Code volt ooien</br>Fout markering         |
 |Invoer, uitvoer en taak configuraties definiëren     |Ja         |Ja         |Ja         |
-|Partitioneren van de BLOB-uitvoer     |Ja         |Ja         |Ja         |
+|BLOB-uitvoer partitioneren     |Ja         |Ja         |Ja         |
 |Power BI als uitvoer     |Ja         |Ja         |Nee         |
-|Referentiegegevens voor SQL database     |Ja         |Ja         |Ja         |
-|Eigenschappen van aangepaste berichten     |Ja         |Nee         |Nee         |
-|Invoer en uitvoer delen tussen meerdere query 's     |Nee         |Ja         |Ja         |
-|JavaScript UDF en UDA     |Ja         |Ja         |Alleen Windows         |
-|Machine Learning bijschriften     |Ja, maar de query kan niet worden getest        |Ja, maar kan niet lokaal worden getest         |Nee         |
+|Referentie gegevens SQL database     |Ja         |Ja         |Ja         |
+|Aangepaste bericht eigenschappen     |Ja         |Nee         |Nee         |
+|Invoer en uitvoer over meerdere query's delen     |Nee         |Ja         |Ja         |
+|Java script UDF en UDA     |Ja         |Ja         |Alleen Windows         |
+|Machine Learning toelichtingen     |Ja, maar de query kan niet worden getest        |Ja, maar kan niet lokaal worden getest         |Nee         |
 |Compatibiliteitsniveau     |1.0</br>1.1</br>1.2         |1.0</br>1.1</br>1.2          |1.0</br>1.1</br>1.2          |
-|Ingebouwde detectie van afwijkingen op basis van een ML-functies     |Ja         |Ja         |Ja         |
+|Ingebouwde op ML gebaseerde anomalie detectie functies     |Ja         |Ja         |Ja         |
 |Ingebouwde georuimtelijke functies     |Ja         |Ja         |Ja         |
-|Query's testen met een voorbeeldbestand     |Ja         |Ja         |Ja         |
-|Live gegevens lokaal testen     |Nee         |Ja         |Nee         |
-|Lijst met taken en weergeven van de taak entiteiten     |Ja         |Ja         |Ja         |
-|Een taak exporteren naar een lokale project     |Nee         |Ja         |Ja         |
-|Indienen, starten en stoppen van taken     |Ja         |Ja         |Ja         |
+|Query's testen met een voorbeeld bestand     |Ja         |Ja         |Ja         |
+|Lokale tests voor dynamische gegevens     |Nee         |Ja         |Nee         |
+|Taken weer geven en taak entiteiten bekijken     |Ja         |Ja         |Ja         |
+|Een taak exporteren naar een lokaal project     |Nee         |Ja         |Ja         |
+|Taken verzenden, starten en stoppen     |Ja         |Ja         |Ja         |
 |Broncodebeheer     |Nee         |Ja         |Ja         |
-|CI/CD-ondersteuning     |Gedeeltelijke         |Ja         |Ja         |
-|Metrische gegevens weergeven-taak en diagram     |Ja         |Ja         |Openen in portal         |
-|Taak-runtime-fouten weergeven     |Ja         |Ja         |Nee         |
+|Ondersteuning voor CI/CD     |Gedeeltelijk         |Ja         |Ja         |
+|Metrische gegevens van de taak en het diagram weer geven     |Ja         |Ja         |Openen in portal         |
+|Runtime fouten van taken weer geven     |Ja         |Ja         |Nee         |
 |Diagnostische logboeken     |Ja         |Nee         |Nee         |
 
 
-## <a name="iot-edge-job-features"></a>Functies van IoT Edge-taak
+## <a name="iot-edge-job-features"></a>IoT Edge taak functies
 
 |Functie  |Portal  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
-|Taak schrijven     |Ja         |Ja         |Nee         |
+|Ontwerpen van taken     |Ja         |Ja         |Nee         |
 |Broncodebeheer     |Nee         |Ja         |Nee         |
-|Een taak exporteren naar een lokale project     |Nee         |Ja         |Nee         |
-|Query's testen met een voorbeeldbestand     |Ja         |Ja         |Nee         |
-|Invoer en uitvoer delen tussen meerdere query 's     |Nee         |Ja         |Nee         |
-|C# UDF     |Nee         |Ja         |Nee         |
-|Indienen, starten en stoppen van taken     |Ja         |Ja         |Nee         |
-|Lijst met taken en weergeven van de taak entiteiten     |Ja         |Ja         |Nee         |
-|Metrische gegevens weergeven-taak en diagram     |Ja         |Gedeeltelijke         |Nee         |
-|Taak-runtime-fouten weergeven     |Ja         |Gedeeltelijke         |Nee         |
-|CI/CD-ondersteuning     |Nee         |Nee         |Nee         |
+|Een taak exporteren naar een lokaal project     |Nee         |Ja         |Nee         |
+|Query's testen met een voorbeeld bestand     |Ja         |Ja         |Nee         |
+|Invoer en uitvoer over meerdere query's delen     |Nee         |Ja         |Nee         |
+|C#UDF     |Nee         |Ja         |Nee         |
+|Taken verzenden     |Ja         |Ja         |Nee         |
+|Taken weer geven en taak entiteiten bekijken     |Ja         |Ja         |Nee         |
+|Metrische gegevens van de taak en het diagram weer geven     |Ja         |Gedeeltelijk         |Nee         |
+|Runtime fouten van taken weer geven     |Ja         |Gedeeltelijk         |Nee         |
+|Ondersteuning voor CI/CD     |Nee         |Nee         |Nee         |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Azure Stream Analytics op IoT Edge](stream-analytics-edge.md)
-* [Zelfstudie: Schrijf een C# door de gebruiker gedefinieerde functie voor Azure Stream Analytics IoT Edge-taak (Preview)](stream-analytics-edge-csharp-udf.md)
-* [Stream Analytics IoT Edge-taken met behulp van Visual Studio-hulpprogramma's ontwikkelen](stream-analytics-tools-for-visual-studio-edge-jobs.md)
+* [Zelf studie: een C# door de gebruiker gedefinieerde functie schrijven voor Azure stream Analytics IOT Edge taak (preview-versie)](stream-analytics-edge-csharp-udf.md)
+* [Stream Analytics IoT Edge taken ontwikkelen met behulp van Visual Studio-hulpprogram ma's](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [Visual Studio gebruiken om Azure Stream Analytics-taken weer te geven](stream-analytics-vs-tools.md)
-* [Verken Azure Stream Analytics met Visual Studio Code (Preview)](vscode-explore-jobs.md)
+* [Azure Stream Analytics verkennen met Visual Studio code (preview)](vscode-explore-jobs.md)
 
 

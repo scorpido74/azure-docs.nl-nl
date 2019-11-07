@@ -1,5 +1,5 @@
 ---
-title: In-Memory OLTP verbetert SQL trans actie-prestaties | Microsoft Docs
+title: In-Memory OLTP verbetert SQL trans actie-prestaties
 description: U kunt in-Memory OLTP gebruiken om de transactionele prestaties in een bestaande SQL database te verbeteren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567938"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689835"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>In-Memory OLTP gebruiken om de prestaties van uw toepassing in SQL Database te verbeteren
 
@@ -40,17 +40,17 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Stap 2: Bepalen welke objecten moeten worden gemigreerd naar in-Memory OLTP
-SSMS bevat een overzichts rapport voor **analyse van transactie prestaties** dat u kunt uitvoeren op een Data Base met een actieve werk belasting. Het rapport bevat tabellen en opgeslagen procedures die kandidaten zijn voor migratie naar in-Memory OLTP.
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Stap 2: objecten identificeren die moeten worden gemigreerd naar in-Memory OLTP
+SSMS bevat een **overzichts rapport voor analyse van transactie prestaties** dat u kunt uitvoeren op een Data Base met een actieve werk belasting. Het rapport bevat tabellen en opgeslagen procedures die kandidaten zijn voor migratie naar in-Memory OLTP.
 
 In SSMS, om het rapport te genereren:
 
 * Klik in de **objectverkenner**met de rechter muisknop op uw database knooppunt.
-* Klik op **rapporten** > **standaard rapporten** > **transactie prestatie analyse overzicht**.
+* Klik op **rapporten** > **standaard rapporten** > overzicht van de **analyse van transactie prestaties**.
 
 Zie [bepalen of een tabel of opgeslagen procedure moet worden getransporteerd naar in-Memory OLTP](https://msdn.microsoft.com/library/dn205133.aspx)voor meer informatie.
 
-## <a name="step-3-create-a-comparable-test-database"></a>Stap 3: Een vergelijk bare test database maken
+## <a name="step-3-create-a-comparable-test-database"></a>Stap 3: een vergelijk bare test database maken
 Stel dat het rapport aangeeft dat uw data base een tabel heeft die kan worden geconverteerd naar een tabel die is geoptimaliseerd voor geheugen. We raden u aan eerst te testen om de vermelding te bevestigen door te testen.
 
 U hebt een test kopie van uw productie database nodig. De test database moet zich op hetzelfde niveau van de servicelaag bezien als uw productie database.
@@ -66,7 +66,7 @@ U kunt als volgt de test database verfijnen:
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>Stap 4: Tabellen migreren
+## <a name="step-4-migrate-tables"></a>Stap 4: tabellen migreren
 U moet een door het geheugen geoptimaliseerde kopie maken en vullen van de tabel die u wilt testen. U kunt deze maken met behulp van:
 
 * De handige wizard voor het optimaliseren van geheugen in SSMS.
@@ -93,7 +93,7 @@ Deze migratie optie gebruiken:
 2. Verkrijg het volledige T-SQL-script voor uw tabel en de bijbehorende indexen.
    
    * Klik in SSMS met de rechter muisknop op het knoop punt van de tabel.
-   * Klik op **script tabel als** > **maken voor** > **Nieuw query venster**.
+   * Klik op **script tabel als** > **maken om te** > **Nieuw query venster**.
 3. Voeg met (MEMORY_OPTIMIZED = aan) in het Script-venster toe aan de CREATE TABLE-instructie.
 4. Als er een geclusterde index is, wijzigt u deze in niet-geclusterde.
 5. Wijzig de naam van de bestaande tabel met behulp van SP_RENAME.
@@ -106,7 +106,7 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>Stap 5 (optioneel): Opgeslagen procedures migreren
+## <a name="step-5-optional-migrate-stored-procedures"></a>Stap 5 (optioneel): opgeslagen procedures migreren
 De functie in het geheugen kan ook een opgeslagen procedure wijzigen voor betere prestaties.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Overwegingen met systeem eigen, gecompileerde, opgeslagen procedures
@@ -150,7 +150,7 @@ De migratie stappen zijn:
 4. Wijzig de naam van de oude opgeslagen procedure met behulp van SP_RENAME. U kunt deze gewoon verwijderen.
 5. Voer uw bewerkte PROCEDURE T-SQL-script maken uit.
 
-## <a name="step-6-run-your-workload-in-test"></a>Stap 6: Uw werk belasting uitvoeren in de test
+## <a name="step-6-run-your-workload-in-test"></a>Stap 6: Voer de werk belasting uit in de test
 Voer een workload in uw test database uit die vergelijkbaar is met de werk belasting die wordt uitgevoerd in uw productie database. Hiermee wordt de prestatie verbetering onthuld die wordt behaald door het gebruik van de functie in het geheugen voor tabellen en opgeslagen procedures.
 
 De belangrijkste kenmerken van de werk belasting zijn:
@@ -162,7 +162,7 @@ Als u de test-workload wilt aanpassen en uitvoeren, kunt u het handige ostress. 
 
 Als u de netwerk latentie wilt minimaliseren, voert u uw test uit in dezelfde Azure-geografische regio waar de data base zich bevindt.
 
-## <a name="step-7-post-implementation-monitoring"></a>Stap 7: Bewaking na de implementatie
+## <a name="step-7-post-implementation-monitoring"></a>Stap 7: bewaking na de implementatie
 Overweeg de prestatie-effecten van uw in-Memory implementaties in productie te controleren:
 
 * [Controleer de opslag in het geheugen](sql-database-in-memory-oltp-monitoring.md).

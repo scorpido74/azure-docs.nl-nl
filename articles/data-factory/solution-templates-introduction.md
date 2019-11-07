@@ -1,5 +1,5 @@
 ---
-title: Overzicht van sjablonen voor Azure Data Factory | Microsoft Docs
+title: Overzicht van sjablonen voor Azure Data Factory
 description: Meer informatie over het gebruik van een vooraf gedefinieerde sjabloon om snel aan de slag te gaan met Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7895fedd0f68ae1c8ea4808c54a18a4e73b57b2c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091981"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684059"
 ---
 # <a name="templates"></a>Sjablonen
 
@@ -30,11 +30,11 @@ U kunt op de volgende twee manieren aan de slag gaan met het maken van een Data 
 
     ![Open de sjabloon galerie op de pagina overzicht](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Selecteer op het tabblad auteur in resource Explorer de **+** optie en vervolgens **pijp lijn van sjabloon** om de sjabloon galerie te openen.
+1.  Selecteer **+** op het tabblad auteur in resource Explorer en klik vervolgens op **pijp lijn van sjabloon** om de sjabloon galerie te openen.
 
     ![Open de sjabloon galerie op het tabblad Auteur](media/solution-templates-introduction/templates-intro-image2.png)
 
-## <a name="template-gallery"></a>Galerie met sjablonen
+## <a name="template-gallery"></a>Sjabloon galerie
 
 ![De sjabloon galerie](media/solution-templates-introduction/templates-intro-image3.png)
 
@@ -72,7 +72,7 @@ Data Factory gebruikt Azure Resource Manager sjablonen voor het opslaan van data
 
 -   SSIS-sjablonen
 
-    -   Azure-SSIS-Integration Runtime plannen voor het uitvoeren van SSIS-pakketten
+    -   Azure-SSIS Integration Runtime plannen voor het uitvoeren van SSIS-pakketten
 
 -   Sjablonen transformeren
 

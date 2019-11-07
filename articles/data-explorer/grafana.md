@@ -1,195 +1,94 @@
 ---
-title: Visualiseer gegevens uit Azure Data Explorer met behulp van Grafana
-description: In deze instructies leert u hoe u Azure Data Explorer instellen als een gegevensbron voor Grafana en visualiseren van gegevens uit een voorbeeld-cluster.
+title: Gegevens visualiseren vanuit Azure Data Explorer met behulp van Grafana
+description: In deze procedure leert u hoe u Azure Data Explorer kunt instellen als een gegevens bron voor Grafana en vervolgens gegevens kunt visualiseren vanuit een voor beeld van een cluster.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 6/30/2019
-ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537787"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582011"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Visualiseer gegevens uit Azure Data Explorer in Grafana
+# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Gegevens visualiseren vanuit Azure Data Explorer in Grafana
 
-Grafana is een platform voor streaminganalyse waarmee u query's uitvoeren en gegevens visualiseren, klikt u vervolgens maken en delen van dashboards op basis van uw visualisaties. Grafana geeft een Azure Data Explorer *invoegtoepassing*, waarmee u kunt verbinding maken met en Visualiseer gegevens uit Azure Data Explorer. In dit artikel leert u hoe u Azure Data Explorer instellen als een gegevensbron voor Grafana en visualiseren van gegevens uit een voorbeeld-cluster.
+Grafana is een analyse platform dat u in staat stelt om gegevens op te vragen en te visualiseren en vervolgens Dash boards te maken en te delen op basis van uw visualisaties. Grafana biedt een Azure Data Explorer- *invoeg toepassing*waarmee u verbinding kunt maken met en visualiseren van gegevens van Azure Data Explorer. In dit artikel leert u hoe u Azure Data Explorer kunt instellen als gegevens bron voor Grafana en vervolgens gegevens kunt visualiseren vanuit een voor beeld van een cluster.
 
-Met behulp van de volgende video, kunt u meer gebruik van Grafana-invoegtoepassing voor Azure Data Explorer, Azure Data Explorer instellen als een gegevensbron voor Grafana en visualiseren van deze gegevens. 
+Met behulp van de volgende video kunt u leren hoe u de Azure Data Explorer-invoeg toepassing van Grafana gebruikt, hoe u Azure Data Explorer instelt als gegevens bron voor Grafana en vervolgens gegevens visualiseren. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
-U kunt ook [de gegevensbron configureren](#configure-the-data-source) en [visualiseren](#visualize-data) zoals beschreven in het onderstaande artikel.
+U kunt [de gegevens bron ook configureren](#configure-the-data-source) en [gegevens visualiseren](#visualize-data) zoals beschreven in het onderstaande artikel.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet deze het voltooien van de volgende:
+U hebt het volgende nodig om deze procedure uit te voeren:
 
-* [Grafana versie 5.3.0 of later](https://docs.grafana.org/installation/) voor uw besturingssysteem
+* [Grafana-versie 5.3.0 of hoger](https://docs.grafana.org/installation/) voor uw besturings systeem
 
-* De [Azure Data Explorer-invoegtoepassing](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) voor Grafana
+* De [Azure Data Explorer-invoeg toepassing](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) voor Grafana
 
-* Een cluster met de voorbeeldgegevens StormEvents. Zie voor meer informatie, [Quick Start: Maak een Azure Data Explorer-cluster en de database](create-cluster-database-portal.md) en [voorbeeldgegevens worden opgenomen in Azure Data Explorer](ingest-sample-data.md).
+* Een cluster dat de StormEvents-voorbeeld gegevens bevat. Zie [Quick Start: een azure Data Explorer-cluster en data base maken](create-cluster-database-portal.md) en [voorbeeld gegevens opnemen in azure Data Explorer](ingest-sample-data.md)voor meer informatie.
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="configure-the-data-source"></a>De gegevensbron configureren
+[!INCLUDE [data-explorer-configure-data-source](../../includes/data-explorer-configure-data-source.md)]
 
-U de volgende stappen uitvoeren om Azure Data Explorer configureren als een gegevensbron voor Grafana. We deze stappen in deze sectie nader aan bod:
+### <a name="specify-properties-and-test-the-connection"></a>Eigenschappen opgeven en de verbinding testen
 
-1. Een Azure Active Directory (Azure AD) service-principal maken. De service-principal wordt gebruikt door het Grafana voor toegang tot de service Azure Data Explorer.
+Wanneer de Service-Principal is toegewezen aan de rol *viewers* , geeft u nu eigenschappen op in uw exemplaar van Grafana en test u de verbinding met Azure Data Explorer.
 
-1. Toevoegen van de Azure AD-service-principal naar het *viewers* rol in de database van Azure Data Explorer.
-
-1. Geef de verbindingseigenschappen Grafana op basis van gegevens uit de Azure AD service-principal en test de verbinding.
-
-### <a name="create-a-service-principal"></a>Een service-principal maken
-
-U kunt de service-principal maken in de [Azure-portal](#azure-portal) of met behulp van de [Azure CLI](#azure-cli) opdrachtregelervaring. Ongeacht welke methode u, nadat u waarden ophalen voor vier eigenschappen van de verbinding die u in latere stappen gebruiken gaat is gemaakt.
-
-#### <a name="azure-portal"></a>Azure Portal
-
-1. Voor het maken van de service-principal, volg de instructies in de [documentatie voor Azure portal](/azure/active-directory/develop/howto-create-service-principal-portal).
-
-    1. In de [de toepassing toewijzen aan een rol](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) sectie, een Roltype toewijzen **lezer** met uw Azure Data Explorer-cluster.
-
-    1. In de [waarden ophalen voor het aanmelden](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) sectie, Kopieer de waarden van de drie eigenschappen in de stappen besproken: **Map-ID** (tenant-ID), **toepassings-ID**, en **wachtwoord**.
-
-1. Selecteer in de Azure portal, **abonnementen** Kopieer vervolgens de ID voor het abonnement waarin u de service-principal gemaakt.
-
-    ![Abonnements-ID - portal](media/grafana/subscription-id-portal.png)
-
-#### <a name="azure-cli"></a>Azure-CLI
-
-1. Een service-principal maken. Stel een omvang die geschikt is en een type van de rol van `reader`.
-
-    ```azurecli
-    az ad sp create-for-rbac --name "https://{UrlToYourGrafana}:{PortNumber}" --role "reader" \
-                             --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
-    ```
-
-    Zie voor meer informatie, [een Azure service-principal maken met Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
-
-1. De opdracht retourneert een resultatenset als volgt uit. Kopieer de waarden van de drie eigenschappen: **appID**, **wachtwoord**, en **tenant**.
-
-    ```json
-    {
-      "appId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-      "displayName": "{UrlToYourGrafana}:{PortNumber}",
-      "name": "https://{UrlToYourGrafana}:{PortNumber}",
-      "password": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-      "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-    }
-    ```
-
-1. Haal een lijst van uw abonnementen.
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    Kopieer de juiste abonnements-ID.
-
-    ![Abonnements-ID - CLI](media/grafana/subscription-id-cli.png)
-
-### <a name="add-the-service-principal-to-the-viewers-role"></a>De service-principal toevoegen aan de rol viewers
-
-Nu dat u een service-principal hebt, u toevoegen aan de *viewers* rol in de database van Azure Data Explorer. U kunt deze taak onder uitvoeren **machtigingen** in Azure portal of onder **Query** met behulp van een management-opdracht.
-
-#### <a name="azure-portal---permissions"></a>Azure portal - machtigingen
-
-1. In de Azure-portal, gaat u naar uw Azure Data Explorer-cluster.
-
-1. In de **overzicht** sectie, selecteer de database met de voorbeeldgegevens StormEvents.
-
-    ![database selecteren](media/grafana/select-database.png)
-
-1. Selecteer **machtigingen** vervolgens **toevoegen**.
-
-    ![Machtigingen voor database](media/grafana/database-permissions.png)
-
-1. Onder **databasemachtigingen toevoegen**, selecteer de **Viewer** rol vervolgens **Selecteer principals**.
-
-    ![Databasemachtigingen toevoegen](media/grafana/add-permission.png)
-
-1. Zoek naar de service-principal die u hebt gemaakt (in het voorbeeld wordt de principal **mb grafana**). Selecteer vervolgens de principal **Selecteer**.
-
-    ![Machtigingen in de Azure-portal beheren](media/grafana/new-principals.png)
-
-1. Selecteer **Opslaan**.
-
-    ![Machtigingen in de Azure-portal beheren](media/grafana/save-permission.png)
-
-#### <a name="management-command---query"></a>Management command - Query
-
-1. In de Azure-portal, gaat u naar uw Azure Data Explorer-cluster en selecteer **Query**.
-
-    ![Query’s uitvoeren](media/grafana/query.png)
-
-1. Voer de volgende opdracht in het queryvenster. Gebruik de toepassings-ID en tenant-ID van de Azure portal of de CLI.
-
-    ```kusto
-    .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
-    ```
-
-    De opdracht retourneert een resultatenset als volgt uit. In dit voorbeeld wordt de eerste rij is voor een bestaande gebruiker in de database en de tweede rij is voor de service-principal die zojuist is toegevoegd.
-
-    ![Resultatenset](media/grafana/result-set.png)
-
-### <a name="specify-properties-and-test-the-connection"></a>Geef eigenschappen op en test de verbinding
-
-Met de service-principal die is toegewezen aan de *viewers* rol, nu u eigenschappen opgeven in uw exemplaar van Grafana, en test de verbinding met Azure Data Explorer.
-
-1. Grafana, in het menu links, selecteer in het tandwielpictogram vervolgens **gegevensbronnen**.
+1. Selecteer in Grafana in het menu links het tandwiel pictogram en vervolgens op **gegevens bronnen**.
 
     ![Gegevensbronnen](media/grafana/data-sources.png)
 
-1. Selecteer **gegevensbron toevoegen**.
+1. Selecteer **gegevens bron toevoegen**.
 
-1. Op de **gegevensbronnen / nieuwe** pagina, voer een naam voor de gegevensbron en selecteer het type **Azure Data Explorer Datasource**.
+1. Voer op de pagina **gegevens bronnen/nieuw** een naam in voor de gegevens bron en selecteer vervolgens het type **Azure Data Explorer data source**.
 
-    ![De naam van verbinding en het type](media/grafana/connection-name-type.png)
+    ![Verbindings naam en-type](media/grafana/connection-name-type.png)
 
-1. Voer de naam van het cluster in het formulier https://{ClusterName}. {Region}. kusto.windows.net. Voer de overige waarden uit de Azure portal of de CLI. Zie de tabel onder de volgende afbeelding voor een-toewijzing.
+1. Voer de naam van uw cluster in met de notatie https://{clustername}. {Region}. kusto. Windows. net. Voer de andere waarden van de Azure Portal of CLI in. Zie de tabel onder de volgende afbeelding voor een toewijzing.
 
     ![Verbindingseigenschappen](media/grafana/connection-properties.png)
 
-    | Grafana UI | Azure Portal | Azure-CLI |
+    | Grafana-gebruikers interface | Azure Portal | Azure-CLI |
     | --- | --- | --- |
     | Abonnements-id | ABONNEMENTS-ID | SubscriptionId |
-    | Tenant-Id | Map-ID | tenant |
-    | Client-Id | Toepassings-id | appId |
-    | Clientgeheim | Wachtwoord | password |
+    | Tenant-id | Map-ID | bouw |
+    | Client-id | Toepassings-id | appId |
+    | Clientgeheim | Wachtwoord | wachtwoord |
     | | | |
 
-1. Selecteer **opslaan en testen**.
+1. Selecteer **& test opslaan**.
 
-    Als de test geslaagd is, gaat u naar de volgende sectie. Als u problemen tegenkomt, controleert u de waarden die u hebt opgegeven in de Grafana en Controleer vorige stappen.
+    Als de test is geslaagd, gaat u naar de volgende sectie. Als u problemen ondervindt, controleert u de waarden die u hebt opgegeven in Grafana en bekijkt u de vorige stappen.
 
 ## <a name="visualize-data"></a>Gegevens visualiseren
 
-Nu u klaar bent met het Azure Data Explorer configureren als een gegevensbron voor Grafana, is het tijd om gegevens te visualiseren. Laten we hier een eenvoudige voorbeeld zien, maar er is nog veel meer die kunt u doen. We raden [schrijven van query's voor Azure Data Explorer](write-queries.md) voor voorbeelden van andere query's op de voorbeeldgegevensset uit te voeren.
+Nu u klaar bent met het configureren van Azure Data Explorer als gegevens bron voor Grafana, is het tijd om gegevens te visualiseren. Hier wordt een eenvoudig voor beeld weer gegeven, maar u kunt nog veel meer doen. We raden u aan [Schrijf query's voor Azure Data Explorer](write-queries.md) te bekijken om voor beelden van andere query's uit te voeren op basis van de set met voorbeeld gegevens.
 
-1. Grafana, in het menu links, selecteer in het plus-pictogram vervolgens **Dashboard**.
+1. Selecteer in Grafana in het menu links het plus pictogram en vervolgens het **dash board**.
 
-    ![dashboard maken](media/grafana/create-dashboard.png)
+    ![Dash board maken](media/grafana/create-dashboard.png)
 
-1. Onder de **toevoegen** tabblad **Graph**.
+1. Selecteer op het tabblad **toevoegen** de optie **grafiek**.
 
     ![Grafiek toevoegen](media/grafana/add-graph.png)
 
-1. Selecteer in het deelvenster graph **titel** vervolgens **bewerken**.
+1. Selecteer in het deel venster grafiek **paneel titel** en vervolgens **bewerken**.
 
-    ![Deelvenster bewerken](media/grafana/edit-panel.png)
+    ![Paneel bewerken](media/grafana/edit-panel.png)
 
-1. Selecteer aan de onderkant van het paneel **gegevensbron** selecteert u de gegevensbron die u hebt geconfigureerd.
+1. Selecteer onder aan het deel venster **gegevens bron** en selecteer vervolgens de gegevens bron die u hebt geconfigureerd.
 
     ![Gegevensbron selecteren](media/grafana/select-data-source.png)
 
-1. Kopieer in het Querydeelvenster in de volgende query uit en selecteer vervolgens **uitvoeren**. De query duurbuckets het aantal gebeurtenissen per dag voor de voorbeeldgegevensset.
+1. Kopieer in het query deel venster in de volgende query en selecteer vervolgens **uitvoeren**. De query Bucket het aantal gebeurtenissen per dag voor de ingestelde voorbeeld gegevens.
 
     ```kusto
     StormEvents
@@ -198,22 +97,22 @@ Nu u klaar bent met het Azure Data Explorer configureren als een gegevensbron vo
 
     ![Query uitvoeren](media/grafana/run-query.png)
 
-1. De grafiek niet geen resultaten worden weergegeven omdat deze standaard afgestemd op de gegevens van de afgelopen zes uur. Selecteer op het bovenste menu **afgelopen 6 uur**.
+1. In de grafiek worden geen resultaten weer gegeven omdat deze standaard in de gegevens van de afgelopen zes uur valt. Selecteer in het bovenste menu de optie **laatste 6 uur**.
 
     ![Afgelopen zes uur](media/grafana/last-six-hours.png)
 
-1. Een aangepaste bereik die betrekking heeft op 2007, het jaar dat is opgenomen in onze verzameling voorbeeldgegevens StormEvents opgeven. Selecteer **Toepassen**.
+1. Geef een aangepast bereik op dat 2007, het jaar dat is opgenomen in de set met StormEvents-voorbeeld gegevens. Selecteer **Toepassen**.
 
-    ![Aangepast datumbereik](media/grafana/custom-date-range.png)
+    ![Aangepast datum bereik](media/grafana/custom-date-range.png)
 
-    De grafiek toont nu de gegevens van 2007, gerangschikte per dag.
+    Nu toont de grafiek de gegevens van 2007, geintervald per dag.
 
     ![Voltooide grafiek](media/grafana/finished-graph.png)
 
-1. Selecteer in het bovenste menu de opslaan pictogram: ![Het pictogram Save](media/grafana/save-icon.png).
+1. Selecteer in het bovenste menu het pictogram opslaan: ![Het pictogram Save](media/grafana/save-icon.png).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Query's schrijven voor Azure Data Explorer](write-queries.md)
 
-* [Zelfstudie: Visualiseer gegevens uit Azure Data Explorer in Power BI](visualize-power-bi.md)
+* [Zelf studie: gegevens visualiseren vanuit Azure Data Explorer in Power BI](visualize-power-bi.md)

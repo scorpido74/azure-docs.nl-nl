@@ -1,24 +1,25 @@
 ---
-title: Advanced Threat Protection-Azure SQL Database | Microsoft Docs
+title: Geavanceerde beveiliging tegen bedreigingen configureren-Azure SQL Database
 description: Geavanceerde bedreigings beveiliging detecteert afwijkende database activiteiten die potentiële beveiligings dreigingen voor de data base in één data base of elastische pool aangeven.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-dt-2019
 ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 755a3b391cb7b4909169b034cc8d89892ec2ed05
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816537"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686955"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Geavanceerde beveiliging tegen bedreigingen Azure SQL Database voor één of gegroepeerde Data bases
 
-[Geavanceerde bedreigings beveiliging](sql-database-threat-detection-overview.md) voor afzonderlijke en gegroepeerde Data bases detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot data bases of deze te gebruiken Geavanceerde bedreigings beveiliging kan leiden tot **mogelijke SQL**-injecties, **toegang vanaf ongebruikelijke locatie of Data Center**, **toegang tot een onbekende principal of mogelijk schadelijke toepassing**en **SQL-referenties** voor de beveiligings aanval-Zie meer informatie over de [Geavanceerde beveiligings waarschuwingen voor bedreigingen](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+[Geavanceerde bedreigings beveiliging](sql-database-threat-detection-overview.md) voor afzonderlijke en gegroepeerde Data bases detecteert afwijkende activiteiten die een ongebruikelijke en potentieel schadelijke pogingen om toegang te krijgen tot data bases of deze te gebruiken Geavanceerde bedreigings beveiliging kan leiden tot **mogelijke SQL-injecties**, **toegang vanaf ongebruikelijke locatie of Data Center**, **toegang tot een onbekende principal of mogelijk schadelijke toepassing**en **SQL-referenties** voor de beveiligings aanval-Zie meer informatie over de [Geavanceerde beveiligings waarschuwingen voor bedreigingen](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
 U kunt meldingen over de gedetecteerde bedreigingen ontvangen via [e-mail meldingen](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) of [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)
 

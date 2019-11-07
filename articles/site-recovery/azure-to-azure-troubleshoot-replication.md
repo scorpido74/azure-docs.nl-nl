@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery probleem oplossing voor voortdurende problemen met Azure-naar-Azure-replicatie | Microsoft Docs
+title: Problemen met doorlopende replicatie van Azrue-Vm's met Azure Site Recovery oplossen
 description: Problemen en problemen oplossen bij het repliceren van virtuele machines van Azure voor herstel na nood gevallen
 services: site-recovery
 author: asgang
@@ -8,26 +8,26 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
 ms.author: asgang
-ms.openlocfilehash: 02f3dff4c9649beeadade942f4b32595f8543c2d
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7b9da202704b20e5770343f857c044ea19ae696a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742555"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620886"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Lopende problemen in azure-naar-Azure-VM-replicatie oplossen
 
-In dit artikel worden veelvoorkomende problemen in Azure Site Recovery beschreven wanneer u virtuele machines van Azure repliceert en herstelt vanuit de ene regio naar een andere regio. Ook wordt uitgelegd hoe u problemen kunt oplossen. Zie voor meer informatie over ondersteunde configuraties, de [ondersteuningsmatrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md).
+In dit artikel worden veelvoorkomende problemen in Azure Site Recovery beschreven wanneer u virtuele machines van Azure repliceert en herstelt vanuit de ene regio naar een andere regio. Ook wordt uitgelegd hoe u problemen kunt oplossen. Zie de [ondersteunings matrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md)voor meer informatie over ondersteunde configuraties.
 
 Azure Site Recovery repliceert gegevens van de bron regio consistent naar de herstel regio voor nood gevallen en maakt elke vijf minuten een crash-consistent herstel punt. Als Site Recovery geen herstel punten voor 60 minuten kunt maken, wordt u hiervan op de hoogte door deze informatie:
 
-Foutbericht: Er is in de afgelopen 60 minuten geen crash consistent herstel punt beschikbaar voor de virtuele machine.</br>
+Fout bericht: er is in de afgelopen 60 minuten geen crash consistent herstel punt beschikbaar voor de VM.</br>
 Fout-ID: 153007 </br>
 
 In de volgende secties worden oorzaken en oplossingen beschreven.
 
 ## <a name="high-data-change-rate-on-the-source-virtal-machine"></a>Hoge wijzigings frequentie voor gegevens op de virtuele bron machine
-Azure Site Recovery een gebeurtenis wordt geactiveerd als de wijzigings frequentie van de gegevens op de virtuele bron machine hoger is dan de ondersteunde limieten. Als u wilt controleren of het probleem wordt veroorzaakt door een hoog verloop, gaat u naar **gerepliceerde items** > **VM** >  **-gebeurtenissen-afgelopen 72 uur**.
+Azure Site Recovery een gebeurtenis wordt geactiveerd als de wijzigings frequentie van de gegevens op de virtuele bron machine hoger is dan de ondersteunde limieten. Als u wilt controleren of het probleem wordt veroorzaakt door een hoog verloop, gaat u naar **gerepliceerde items** > **VM** > **Events-afgelopen 72 uur**.
 U moet de gebeurtenis ' gegevens wijzigings frequentie boven ondersteunde limieten ' zien:
 
 ![data_change_rate_high](./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png)
@@ -52,7 +52,7 @@ Premium P20 of P30 of P40 of P50 schijf | 8 kB    | 5 MB/s | 421 GB per schijf
 Premium P20 of P30 of P40 of P50 schijf | 16 kB of meer |10 MB/s | 842 GB per schijf
 
 ### <a name="solution"></a>Oplossing
-Azure Site Recovery heeft limieten voor het wijzigings tempo van gegevens, gebaseerd op het type schijf. Als u wilt weten of het probleem zich voordoet, kunt u de gegevens wijzigings frequentie van de betreffende virtuele machine vinden. Ga naar de virtuele bron machine, zoek de metrische gegevens onder **bewaking**en voeg de metrische gegevens toe zoals in deze scherm opname wordt weer gegeven:
+Azure Site Recovery heeft limieten voor de snelheid van schijfgegegevenswijzigingen, gebaseerd op het type schijf. Als u wilt weten of het probleem zich voordoet, kunt u de gegevens wijzigings frequentie van de betreffende virtuele machine vinden. Ga naar de virtuele bron machine, zoek de metrische gegevens onder **bewaking**en voeg de metrische gegevens toe zoals in deze scherm opname wordt weer gegeven:
 
 ![Proces met drie stappen voor het zoeken van de gegevens wijzigings frequentie](./media/site-recovery-azure-to-azure-troubleshoot/churn.png)
 
@@ -62,8 +62,8 @@ Azure Site Recovery heeft limieten voor het wijzigings tempo van gegevens, gebas
 
 Als een piek van een incidenteel gegevens burst is en de wijzigings frequentie van gegevens groter is dan 10 MB/s (voor Premium) en 2 MB/s (voor Standard) gedurende een bepaalde periode en niet beschikbaar is, wordt de replicatie weer gegeven. Maar als het verloop duidelijker is dan de Maxi maal ondersteunde limiet, overweeg dan een van de volgende opties, indien mogelijk:
 
-* **Sluit de schijf uit die een hoge mate van gegevens wijziging veroorzaakt**: U kunt de schijf uitsluiten met behulp van [Power shell](./azure-to-azure-exclude-disks.md). Als u de schijf wilt uitsluiten, moet u eerst de replicatie uitschakelen. 
-* **Wijzig de laag van de opslag schijf voor nood herstel**: Deze optie is alleen mogelijk als de gegevens verloop van de schijf kleiner is dan 20 MB/s. Stel dat een VM met een P10-schijf een gegevens verloop heeft dat groter is dan 8 MB/s, maar kleiner is dan 10 MB/s. Als de klant een P30-schijf kan gebruiken voor doel opslag tijdens de beveiliging, kan het probleem worden opgelost. Houd er rekening mee dat deze oplossing alleen mogelijk is voor machines die Premium-Managed Disks gebruiken. Volg de onderstaande stappen:
+* **Sluit de schijf uit die een hoge mate van gegevens wijziging veroorzaakt**: u kunt de schijf uitsluiten met behulp van [Power shell](./azure-to-azure-exclude-disks.md). Als u de schijf wilt uitsluiten, moet u eerst de replicatie uitschakelen. 
+* **De laag van de opslag schijf voor nood herstel wijzigen**: deze optie kan alleen worden uitgevoerd als het verloop van de schijf gegevens lager is dan 20 MB/s. Stel dat een VM met een P10-schijf een gegevens verloop heeft dat groter is dan 8 MB/s, maar kleiner is dan 10 MB/s. Als de klant een P30-schijf kan gebruiken voor doel opslag tijdens de beveiliging, kan het probleem worden opgelost. Houd er rekening mee dat deze oplossing alleen mogelijk is voor machines die Premium-Managed Disks gebruiken. Volg de onderstaande stappen:
     - Navigeer naar de Blade schijven van de betrokken gerepliceerde machine en kopieer de naam van de replica schijf
     - Ga naar deze door de replica beheerde schijf
     - Mogelijk ziet u een banner op de Blade overzicht met de melding dat er een SAS-URL is gegenereerd. Klik op deze banner en Annuleer de export. Negeer deze stap als u de banner niet ziet.
@@ -79,24 +79,24 @@ Als u wilt controleren of er een probleem is met de latentie, gebruikt u [azcopy
 U kunt het beste een netwerk service-eind punt in uw virtuele netwerk maken voor ' opslag ', zodat het replicatie verkeer niet naar de NVA gaat. Zie [configuratie van virtueel netwerk apparaat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)voor meer informatie.
 
 ### <a name="network-connectivity"></a>Netwerk verbinding
-Voor Site Recovery-replicatie met werk, uitgaande connectiviteit voor bepaalde URL's of IP-bereiken zijn van de virtuele machine. Als uw virtuele machine zich achter een firewall bevindt of gebruikmaakt van regels voor netwerk beveiligings groepen (NSG) om de uitgaande connectiviteit te beheren, kunt u een van deze problemen tegen komen. Zie [uitgaande connectiviteit voor site Recovery url's](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)om ervoor te zorgen dat alle url's zijn verbonden. 
+Voor een goede werking van Site Recovery replicatie is uitgaande verbinding met specifieke Url's of IP-adresbereiken vereist van de virtuele machine. Als uw virtuele machine zich achter een firewall bevindt of gebruikmaakt van regels voor netwerk beveiligings groepen (NSG) om de uitgaande connectiviteit te beheren, kunt u een van deze problemen tegen komen. Zie [uitgaande connectiviteit voor site Recovery url's](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)om ervoor te zorgen dat alle url's zijn verbonden. 
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Fout-ID 153006-geen app-consistent herstel punt beschikbaar voor de virtuele machine in de afgelopen ' XXX ' minuten
 
 Hieronder vindt u enkele van de meest voorkomende problemen
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Oorzaak 1: Bekend probleem in SQL Server 2008/2008 R2 
-**Oplossen** : Er is een bekend probleem met SQL Server 2008/2008 R2. Raadpleeg dit KB-artikel [Azure site Recovery agent of andere VSS-back-ups van niet-onderdeel zijn mislukt voor een server die als host fungeert voor SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Oorzaak 1: bekend probleem in SQL Server 2008/2008 R2 
+**Oplossen** : er is een bekend probleem met SQL Server 2008/2008 R2. Raadpleeg dit KB-artikel [Azure site Recovery agent of andere VSS-back-ups van niet-onderdeel zijn mislukt voor een server die als host fungeert voor SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Oorzaak 2: Azure Site Recovery-taken mislukken op servers die fungeren als host voor elke versie van SQL Server instanties met AUTO_SLUITEN Db's 
-**Oplossen** : Raadpleeg het KB- [artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Oorzaak 2: Azure Site Recovery taken mislukken op servers die fungeren als host voor elke versie van SQL Server instanties met AUTO_SLUITEN Db's 
+**Oplossen** : verwijzen naar KB- [artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Oorzaak 3: Bekend probleem in SQL Server 2016 en 2017
-**Oplossen** : Raadpleeg het KB- [artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Oorzaak 3: bekend probleem in SQL Server 2016 en 2017
+**Oplossen** : verwijzen naar KB- [artikel](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
 
-#### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>Oorzaak 4: U maakt gebruik van opslag ruimten direct-configuratie
-**Oplossen** : Azure Site Recovery kan geen toepassings consistent herstel punt maken voor de configuratie van opslag ruimten direct. Raadpleeg het artikel om [het replicatie beleid](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication-s2d-vms) correct te configureren
+#### <a name="cause-4-you-are-using-storage-spaces-direct-configuration"></a>Oorzaak 4: u maakt gebruik van opslag ruimten direct-configuratie
+**Oplossen** : Azure site Recovery kan geen toepassings consistent herstel punt maken voor de configuratie van opslag ruimten direct. Raadpleeg het artikel om [het replicatie beleid](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication-s2d-vms) correct te configureren
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Meer oorzaken vanwege VSS-problemen:
 
@@ -113,12 +113,12 @@ In bovenstaand voor beeld **2147754994** is de fout code die u vertelt over de f
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS Writer is niet geïnstalleerd-fout 2147221164 
 
-*Oplossen*: Azure Site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS) om een toepassings consistentie code te genereren. Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service niet is geïnstalleerd, mislukt het maken van de toepassings consistentie van de moment opname met de fout-id 0x80040154 ' klasse is niet geregistreerd '. </br>
+*Oplossen*: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service niet is geïnstalleerd, mislukt het maken van de toepassings consistentie van de moment opname met de fout-id 0x80040154 ' klasse is niet geregistreerd '. </br>
 Raadpleeg het [artikel over het oplossen van problemen met de VSS Writer-installatie](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS Writer is uitgeschakeld-fout 2147943458
 
-**Oplossen**: Azure Site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS) om een toepassings consistentie code te genereren. Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service is uitgeschakeld, mislukt het maken van de moment opname van de toepassings consistentie met de fout-id. de opgegeven service is uitgeschakeld en kan niet worden gestart (0x80070422). </br>
+**Oplossen**: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service is uitgeschakeld, mislukt het maken van de moment opname van de toepassings consistentie met de fout-id. de opgegeven service is uitgeschakeld en kan niet worden gestart (0x80070422). </br>
 
 - Als VSS is uitgeschakeld,
     - Controleer of het opstart type van de VSS-Provider service is ingesteld op **automatisch**.
@@ -129,11 +129,11 @@ Raadpleeg het [artikel over het oplossen van problemen met de VSS Writer-install
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS-PROVIDER NOT_REGISTERED-fout 2147754756
 
-**Oplossen**: Azure Site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS) om een toepassings consistentie code te genereren. Controleer of de Azure Site Recovery VSS-Provider service is geïnstalleerd of niet. </br>
+**Oplossen**: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Controleer of de Azure Site Recovery VSS-Provider service is geïnstalleerd of niet. </br>
 
 - Voer de installatie van de provider opnieuw uit met de volgende opdrachten:
 - Bestaande provider verwijderen: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- Vervolgens C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Install.cmd
+- Opnieuw installeren: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Install.cmd
  
 Controleer of het opstart type van de VSS-Provider service is ingesteld op **automatisch**.
     - Start de volgende services opnieuw:

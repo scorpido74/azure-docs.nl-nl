@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: b363a994024b4a53703b6107ef4190129e900547
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 11/04/2019
+ms.openlocfilehash: 1c903dcd9015de47c5364c5abd65569d17e7e21f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950651"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604143"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Aanbevelingen voor prestaties in Azure Database for MariaDB
 
 **Van toepassing op:** Azure Database for MariaDB 10,2
-
-> [!IMPORTANT]
-> Aanbevelingen voor prestaties zijn een preview-versie.
 
 Met de functie voor prestatie verbeteringen worden uw data bases geanalyseerd om aangepaste suggesties te maken voor betere prestaties. Voor het produceren van de aanbevelingen kijken de analyse naar verschillende database kenmerken, waaronder schema. Schakel het [query archief](concepts-query-store.md) op de server in om de functie aanbevelingen voor prestaties volledig te benutten. Als het prestatie schema is uitgeschakeld, kunnen performance_schema en een subset van de prestatie schema-instrumenten die vereist zijn voor de functie, worden ingeschakeld in query Store. Nadat u een aanbevolen prestatie aanbeveling hebt geïmplementeerd, moet u de prestaties testen om de impact van deze wijzigingen te evalueren.
 
@@ -26,7 +23,7 @@ Met de functie voor prestatie verbeteringen worden uw data bases geanalyseerd om
 
 De machtigingen van **Eigenaar** of **Inzender** zijn vereist voor het uitvoeren van analyses met de functie Prestatieaanbevelingen.
 
-## <a name="performance-recommendations"></a>Prestatieaanbevelingen
+## <a name="performance-recommendations"></a>Aanbevelingen voor prestaties
 
 De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) analyseert workloads op de server om indexen te analyseren met de mogelijkheid om prestaties te verbeteren.
 

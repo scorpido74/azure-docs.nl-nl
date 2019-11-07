@@ -1,6 +1,6 @@
 ---
-title: Schaalbaarheid van Azure Service Fabric NET apps | Microsoft Docs
-description: Meer informatie over het schalen van services in Azure Service Fabric NET.
+title: Schaal baarheid van Azure Service Fabric mesh-apps | Microsoft Docs
+description: Een van de voor delen van het implementeren van toepassingen naar Service Fabric net is de mogelijkheid om uw services eenvoudig te schalen, hetzij hand matig of met beleid voor automatisch schalen.
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,34 +9,34 @@ ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 1688cac35ea9de43bac529a4994bd4ea55eb0ab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811100"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662999"
 ---
-# <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric-NET-toepassingen schalen
+# <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric-mesh-toepassingen schalen
 
-Een van de belangrijkste voordelen van het implementeren van toepassingen naar Service Fabric Mesh is de mogelijkheid voor u om services eenvoudig in of uit te schalen. Dit is handig voor het afhandelen van wisselende belastingen van uw services of het verbeteren van de beschikbaarheid. U kunt handmatig schalen uw in- of -services of setup automatisch schalen beleid.
+Een van de belangrijkste voor delen van het implementeren van toepassingen naar Service Fabric net is de mogelijkheid om uw services eenvoudig in of uit te schalen. Dit moet worden gebruikt voor het verwerken van verschillende belasting hoeveelheden van uw services of het verbeteren van de beschik baarheid. U kunt uw services hand matig in-of uitschalen of het beleid voor automatisch schalen instellen.
 
-## <a name="manual-scaling-instances"></a>Handmatige vergroten/verkleinen exemplaren
+## <a name="manual-scaling-instances"></a>Instanties voor hand matig schalen
 
 In de implementatiesjabloon voor de toepassingsresource heeft elke service een eigenschap *replicaCount* die kan worden gebruikt om in te stellen hoe vaak die service wordt geïmplementeerd. Een toepassing kan bestaan uit meerdere services, waarbij elke service een unieke waarde voor *replicaCount* heeft, die samen worden geïmplementeerd en beheerd. Om het aantal service-replica's te schalen, wijzigt u de waarde *replicaCount* voor elke service die u wilt schalen in de implementatiesjabloon of het parametersbestand. Vervolgens voert u een upgrade van de toepassing uit.
 
-Zie voor voorbeelden van de services-exemplaren handmatig te schalen, [handmatig schalen van uw services in- of uitgeschaald](service-fabric-mesh-tutorial-template-scale-services.md).
+Zie [uw services hand matig schalen in of uit](service-fabric-mesh-tutorial-template-scale-services.md)voor voor beelden van het hand matig schalen van services-exemplaren.
 
 ## <a name="autoscaling-service-instances"></a>Service-exemplaren automatisch schalen
-Automatisch schalen is een extra functie van Service Fabric dynamisch te schalen het nummer van uw service-instanties (horizontaal schalen). Automatisch schalen biedt grote flexibiliteit en kunt inrichten of verwijdering van service-exemplaren op basis van gebruik van CPU of geheugen.  Automatisch schalen, kunt u het juiste aantal exemplaren van de service voor uw workload uitgevoerd en kosten te optimaliseren.
+Automatisch schalen is een extra mogelijkheid van Service Fabric om het aantal service-exemplaren dynamisch te schalen (horizon taal schalen). Automatisch schalen biedt een fantastische elasticiteit en maakt het inrichten of verwijderen van service-exemplaren mogelijk op basis van CPU-of geheugen gebruik.  Automatisch schalen biedt u de mogelijkheid om het juiste aantal service-exemplaren uit te voeren voor uw werk belasting en de kosten te optimaliseren.
 
-Een functie voor automatisch schalen van beleid is gedefinieerd per service in het bestand van de resource. Elk beleid voor vergroten/verkleinen bestaat uit twee onderdelen:
+Er wordt een beleid voor automatisch schalen gedefinieerd per service in het bron bestand van de service. Elk schaal beleid bestaat uit twee delen:
 
-- Een trigger vergroten/verkleinen, waarin wordt beschreven bij het schalen van de service wordt uitgevoerd. Er zijn drie factoren die bepalen wanneer de service wordt geschaald. *Drempelwaarde voor het laden van lagere* is een waarde die bepaalt wanneer de service worden ingeschaald. Als de gemiddelde belasting van alle exemplaren van de partities lager is dan deze waarde is, wordt de service worden geschaald. *Hoogste belastingsdrempelwaarde* is een waarde die bepaalt wanneer de service worden uitgebreid. Als de gemiddelde belasting van alle exemplaren van de partitie hoger dan deze waarde is, zal klikt u vervolgens de service worden uitgebreid. *Interval voor vergroten/verkleinen* bepaalt hoe vaak (in seconden), de trigger wordt gecontroleerd. Zodra de trigger is gecontroleerd, indien nodig schalen is het mechanisme wordt toegepast. Als schalen niet vereist is, klikt u vervolgens geen actie ondernomen. In beide gevallen wordt trigger niet gecontroleerd opnieuw voordat het interval voor vergroten/verkleinen is verstreken.
+- Een trigger voor schalen, die beschrijft wanneer het schalen van de service wordt uitgevoerd. Er zijn drie factoren die bepalen wanneer de service wordt geschaald. *Onderste belasting drempel* is een waarde die bepaalt wanneer de service wordt geschaald. Als de gemiddelde belasting van alle exemplaren van de partities lager is dan deze waarde, wordt de service geschaald in. *Drempel* waarde voor laden van boven is een getal dat bepaalt wanneer de service wordt uitgeschaald. Als de gemiddelde belasting van alle exemplaren van de partitie hoger is dan deze waarde, wordt de service uitgeschaald. Het *interval voor schalen* bepaalt hoe vaak (in seconden) de trigger wordt gecontroleerd. Als de trigger is ingeschakeld, wordt het mechanisme toegepast als er wordt geschaald. Als schalen niet nodig is, wordt er geen actie ondernomen. In beide gevallen wordt de trigger niet opnieuw gecontroleerd voordat het schaal interval verloopt.
 
-- Een vergroten/verkleinen mechanisme, waarin wordt beschreven hoe schalen wordt uitgevoerd wanneer deze wordt geactiveerd. *Verhoging schalen* bepaalt hoeveel exemplaren worden toegevoegd of verwijderd wanneer het mechanisme wordt geactiveerd. *Maximum aantal exemplaren* bepaalt de bovenste limiet voor het schalen. Als het aantal exemplaren van deze limiet bereikt, wordt klikt u vervolgens de service niet worden uitgebreid, ongeacht de belasting. *Minimum aantal exemplaren* bepaalt de lagere limiet voor het schalen. Als het aantal exemplaren van de partitie die deze limiet bereikt, zal klikt u vervolgens service niet worden geschaald, ongeacht de belasting.
+- Een schaal mechanisme dat beschrijft hoe schalen wordt uitgevoerd wanneer deze wordt geactiveerd. *Schaal verhoging* bepaalt hoeveel instanties worden toegevoegd of verwijderd wanneer het mechanisme wordt geactiveerd. *Maximum aantal exemplaren* definieert de bovengrens voor schalen. Als het aantal exemplaren deze limiet bereikt, wordt de service niet uitgeschaald, ongeacht de belasting. *Minimum aantal exemplaren* definieert de ondergrens voor schalen. Als het aantal exemplaren van de partitie deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting.
 
-Lees voor meer informatie over het instellen van een beleid voor automatisch schalen voor uw service, [voor automatisch schalen services](service-fabric-mesh-howto-auto-scale-services.md).
+Lees [Services automatisch schalen](service-fabric-mesh-howto-auto-scale-services.md)voor meer informatie over het instellen van een beleid voor automatisch schalen voor uw service.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het toepassingsmodel [Service Fabric-resources](service-fabric-mesh-service-fabric-resources.md)
+Zie [service Fabric resources](service-fabric-mesh-service-fabric-resources.md) voor meer informatie over het toepassings model.

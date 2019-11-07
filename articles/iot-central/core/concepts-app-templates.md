@@ -7,14 +7,14 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ee1168c32cf4d8797b3957340e0acee5605ccc0f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eb7319d665f228c552423a60a3b1529dc9b1143f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951885"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583216"
 ---
-# <a name="what-are-application-templates"></a>Wat zijn toepassings sjablonen?
+# <a name="what-are-application-templates"></a>Wat zijn toepassingssjablonen?
 
 Toepassings sjablonen in azure IoT Central zijn een hulp programma waarmee oplossingen bouwers kickstart hun IoT-oplossings ontwikkeling kunnen ontwikkelen. U kunt app-sjablonen voor alles gebruiken om een idee te krijgen van wat mogelijk is, om uw toepassing volledig aan te passen en wit te voorzien van een nieuwe verkoop voor uw klanten.
 
@@ -32,20 +32,19 @@ Azure IoT Central is een branche neutraal-toepassings platform. Toepassings sjab
 
 - [Detailhandelcatalogi](../retail/overview-iot-central-retail-pnp.md)
   - Verbonden logistiek
-  - Digitaal distributie centrum
+  - Digitaal distributiecentrum
   - Bewaking in de Store-voor waarden
   - In-Store-analyses-uitchecken
   - Intelligent inventaris beheer
 - [Sector](../energy/overview-iot-central-energy.md)
-  - Verbonden logistiek
   - Slimme meter controle
   - Monitor voor zonne deel venster
 - [Government](../government/overview-iot-central-government.md)
-  - Beheer van verbonden afval
-  - Bewaking van water verbruik
-  - Bewaking van water kwaliteit
+  - Verbonden afvalverwerking
+  - Bewaking van waterverbruik
+  - Bewaking van waterkwaliteit
 - [Gezondheids zorg](../healthcare/overview-iot-central-healthcare.md).
-  - Voortdurende controle van patiënten
+  - Continue patiëntbewaking
 
 ## <a name="next-steps"></a>Volgende stappen
 

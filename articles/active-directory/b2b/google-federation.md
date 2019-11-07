@@ -5,31 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 11/1/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430438"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603597"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Google als een id-provider voor B2B-gast gebruikers toevoegen (preview)
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
 
-|     |
-| --- |
-| Google Federation is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
-|     |
+Door Federatie met Google in te stellen, kunt u ervoor zorgen dat uitgenodigde gebruikers zich aanmelden bij uw gedeelde apps en resources met hun eigen Gmail-accounts, zonder dat u micro soft-accounts (Msa's) hoeft te maken. 
 
-Door Federatie met Google in te stellen, kunt u ervoor zorgen dat uitgenodigde gebruikers zich aanmelden bij uw gedeelde apps en resources met hun eigen Gmail-accounts, zonder dat ze micro soft-accounts (Msa's) of Azure AD-accounts hoeven te maken. Google Federation is speciaal ontworpen voor Gmail-gebruikers. Als u wilt communiceren met G suite-domeinen, gebruikt u in plaats daarvan de [functie directe Federatie](direct-federation.md) .
 > [!NOTE]
-> Uw Google gast gebruikers moeten zich aanmelden met behulp van een koppeling die de Tenant context bevat (bijvoorbeeld `https://myapps.microsoft.com/?tenantid=<tenant id>` of `https://portal.azure.com/<tenant id>`, of in het geval van een geverifieerd domein, `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Gast gebruikers kunnen zich momenteel niet aanmelden met eind punten die geen Tenant context hebben. Als u bijvoorbeeld `https://myapps.microsoft.com`, `https://portal.azure.com` of het gemeen schappelijke eind punt van de teams gebruikt, resulteert dit in een fout.
- 
+> Google Federation is speciaal ontworpen voor Gmail-gebruikers. Als u wilt communiceren met G suite-domeinen, gebruikt u de [functie directe Federatie](direct-federation.md).
+
 ## <a name="what-is-the-experience-for-the-google-user"></a>Wat is de ervaring van de Google-gebruiker?
 Wanneer u een uitnodiging naar een Google Gmail-gebruiker verzendt, moet de gast gebruiker toegang krijgen tot uw gedeelde apps of bronnen met behulp van een koppeling die de context van de Tenant bevat. Hun ervaring varieert afhankelijk van of ze al zijn aangemeld bij Google:
   - Als de gast gebruiker niet is aangemeld bij Google, wordt u gevraagd zich aan te melden bij Google.
@@ -39,9 +35,22 @@ Als de gast gebruiker de fout bericht ' header is te lang ' ziet, kan hij of zij
 
 ![Scherm opname van de Google-aanmeldings pagina](media/google-federation/google-sign-in.png)
 
+## <a name="limitations"></a>Beperkingen
+
+Teams bieden volledige ondersteuning voor Google gast-gebruikers op alle apparaten. Google-gebruikers kunnen zich aanmelden bij teams vanaf een gemeen schappelijk eind punt zoals `https://teams.microsoft.com`.
+
+De algemene eind punten van andere toepassingen bieden mogelijk geen ondersteuning voor Google-gebruikers. Google gast gebruikers moeten zich aanmelden met een koppeling die uw Tenant gegevens bevat. Hier volgen enkele voor beelden:
+  * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
+  * `https://portal.azure.com/<your tenant id>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+
+   Als gebruikers van Google gast een koppeling proberen te gebruiken, zoals `https://myapps.microsoft.com` of `https://portal.azure.com`, wordt er een fout bericht weer geven.
+
+U kunt Google gast gebruikers ook een rechtstreekse koppeling geven naar een toepassing of resource, mits deze koppeling uw Tenant gegevens bevat, bijvoorbeeld `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
+
 ## <a name="step-1-configure-a-google-developer-project"></a>Stap 1: een Google-ontwikkelaars project configureren
 Maak eerst een nieuw project in de Google developers-console om een client-ID en een client geheim op te halen dat u later kunt toevoegen aan Azure AD. 
-1. Ga naar de Google-Api's op https://console.developers.google.com en meld u aan met uw Google-account. We raden u aan een Google-account voor een gedeeld team te gebruiken.
+1. Ga naar de Google-Api's op https://console.developers.google.comen meld u aan met uw Google-account. We raden u aan een Google-account voor een gedeeld team te gebruiken.
 2. Een nieuw project maken: Selecteer in het dash board **project maken**en selecteer vervolgens **maken**. Voer op de pagina nieuw project een **project naam**in en selecteer **maken**.
    
    ![Scherm opname met een nieuwe project pagina voor Google](media/google-federation/google-new-project.png)
@@ -69,7 +78,7 @@ Maak eerst een nieuw project in de Google developers-console om een client-ID en
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(waarbij `<directory id>` uw directory-ID is)
    
      > [!NOTE]
-     > Als u uw directory-ID wilt vinden, gaat u naar https://portal.azure.com en kiest u onder **Azure Active Directory**de optie **Eigenschappen** en kopieert u de **map-id**.
+     > Om uw directory-ID te vinden, gaat u naar https://portal.azure.comen kiest u onder **Azure Active Directory**de optie **Eigenschappen** en kopieert u de **map-id**.
 
    ![Scherm afbeelding van de sectie geautoriseerde omleidings-Uri's](media/google-federation/google-create-oauth-client-id.png)
 

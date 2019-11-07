@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240997"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641492"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -77,6 +77,16 @@ Naast deze eigenschap ondersteunen kenmerk toewijzingen ook de volgende kenmerke
   - **Altijd** : deze toewijzing Toep assen op acties voor zowel het maken van de gebruiker als bij het bijwerken.
   - **Alleen tijdens het maken** : pas deze toewijzing alleen toe op acties voor het maken van een gebruiker.
 
+## <a name="matching-users-in-the-source-and-target--systems"></a>Overeenkomende gebruikers in de bron-en doel systemen
+De Azure AD-inrichtings service kan worden geïmplementeerd in beide ontwikkel (gebruikers worden niet afgesloten in het doel systeem) en Brownfield (gebruikers bestaan al in de doel systemen). Ter ondersteuning van beide scenario's gebruikt de inrichtings service het concept van overeenkomende attributen (en). Met een overeenkomende kenmerk (en) kunt u bepalen hoe een gebruiker in de bron uniek moet worden geïdentificeerd en wat de gebruiker in het doel is. Als onderdeel van het plannen van uw implementatie, identificeert u het kenmerk dat kan worden gebruikt om een gebruiker op de bron-en doel systemen uniek te identificeren. Denk aan het volgende:
+
+- **Overeenkomende kenmerken moeten uniek zijn:** Klanten gebruiken vaak kenmerken als userPrincipalName, mail of object-ID als het overeenkomstige kenmerk.
+- **Meerdere kenmerken kunnen worden gebruikt als overeenkomende kenmerken:** U kunt meerdere kenmerken definiëren die moeten worden geëvalueerd wanneer overeenkomende gebruikers en de volg orde waarin ze worden geëvalueerd (gedefinieerd als overeenkomende prioriteit in de gebruikers interface). Als u bijvoorbeeld drie kenmerken definieert als overeenkomende kenmerken en een gebruiker een unieke overeenkomst heeft die overeenkomt met de eerste twee kenmerken, wordt door de service niet het derde kenmerk geëvalueerd. De service evalueert overeenkomende kenmerken in de opgegeven volg orde en stopt met de evaluatie wanneer er een overeenkomst wordt gevonden.  
+- **De waarde in de bron en het doel hoeven niet exact overeen te komen:** De waarde in het doel kan een eenvoudige functie van de waarde in de bron zijn. Een voor waarde kan dus een kenmerk emailAddress hebben in de bron en de userPrincipalName in het doel en overeenkomen met een functie van het kenmerk emailAddress, waarmee een aantal tekens wordt vervangen door een constantewaarde.  
+- **Het vergelijken op basis van een combi natie van kenmerken wordt niet ondersteund:** De meeste toepassingen bieden geen ondersteuning voor het uitvoeren van query's op basis van twee eigenschappen en therfore het is niet mogelijk om te vergelijken op basis van een combi natie van kenmerken. Het is mogelijk om afzonderlijke eigenschappen te evalueren op na een andere.
+- **Alle gebruikers moeten een waarde hebben voor ten minste één overeenkomend kenmerk:** Als u één overeenkomend kenmerk definieert, moeten alle gebruikers een waarde voor dat kenmerk in het bron systeem hebben. Als u bijvoorbeeld userPrincipalName definieert als het overeenkomende kenmerk, moeten alle gebruikers een userPrincipalName hebben. Als u meerdere overeenkomende kenmerken definieert (bijvoorbeeld extensionAttribute1 en e-mail), moeten niet alle gebruikers hetzelfde overeenkomende kenmerk hebben. Een gebruiker kan een extensionAttribute1 maar geen e-mail hebben terwijl een andere gebruiker e-mail berichten heeft maar geen extensionAttribute1 heeft. 
+- **De doel toepassing moet filteren op het overeenkomende kenmerk ondersteunen:** Toepassings ontwikkelaars kunnen filteren op een subset van kenmerken voor hun gebruikers-of groeps-API. Voor toepassingen in de galerie zorgen we ervoor dat de standaard kenmerk toewijzing een kenmerk is dat de API van de doel toepassing filtering ondersteunt. Wanneer u het standaard overeenkomende kenmerk voor de doel toepassing wijzigt, raadpleegt u de documentatie van de API van derden om te controleren of het kenmerk kan worden gefilterd.  
+
 ## <a name="editing-group-attribute-mappings"></a>Groeps kenmerk-toewijzingen bewerken
 
 Een geselecteerd aantal toepassingen, zoals ServiceNow, box en G suite, ondersteunt de mogelijkheid om groeps objecten en gebruikers objecten in te richten. Groeps objecten kunnen groeps eigenschappen bevatten, zoals weergave namen en e-mail aliassen, samen met groeps leden.
@@ -98,7 +108,7 @@ Sommige toepassingen ondersteunen echter aangepaste kenmerken en de Azure AD-inr
 
 Toepassingen en systemen die ondersteuning bieden voor aanpassing van de lijst met kenmerken zijn onder andere:
 
-- Salesforce
+- SalesForce
 - ServiceNow
 - Workday
 - Azure Active Directory ([standaard kenmerken van Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) en aangepaste Directory-extensies worden ondersteund)
@@ -125,6 +135,113 @@ Bij het bewerken van de lijst met ondersteunde kenmerken, worden de volgende eig
 - **Object kenmerk waarnaar wordt verwezen** : als het een verwijzings type kenmerk is, kunt u in dit menu de tabel en het kenmerk selecteren in de doel toepassing die de waarde bevat die aan het kenmerk is gekoppeld. Als u bijvoorbeeld een kenmerk met de naam ' Department ' hebt waarvan de opgeslagen waarde verwijst naar een object in een afzonderlijke tabel ' departments ', selecteert u ' Departments.Name '. De referentie tabellen en de primaire ID-velden die worden ondersteund voor een bepaalde toepassing, zijn vooraf geconfigureerd en kunnen momenteel niet worden bewerkt met de Azure Portal, maar u kunt deze bewerken met behulp van de [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
 Als u een nieuw kenmerk wilt toevoegen, bladert u naar het einde van de lijst met ondersteunde kenmerken, vult u de bovenstaande velden in met behulp van de beschik bare invoer en selecteert u **kenmerk toevoegen**. Selecteer **Opslaan** wanneer u klaar bent met het toevoegen van kenmerken. Vervolgens moet u het tabblad **inrichten** opnieuw laden om de nieuwe kenmerken beschikbaar te maken in de editor voor kenmerk toewijzing.
+## <a name="provisioning-a-role-to-a-scim-app"></a>Een rol inrichten voor een SCIM-app
+Volg de onderstaande stappen om rollen voor een gebruiker in te richten voor uw toepassing. Houd er rekening mee dat de onderstaande beschrijving specifiek is voor aangepaste SCIM-toepassingen. Gebruik voor galerie toepassingen zoals Sales Force en ServiceNow de vooraf gedefinieerde roltoewijzingen. In de onderstaande opsommings tekens wordt beschreven hoe u het kenmerk AppRoleAssignments transformeert naar de indeling die uw toepassing verwacht.
+
+- Als u een appRoleAssignment in azure AD wilt toewijzen aan een rol in uw toepassing, moet u het kenmerk transformeren met behulp van een [expressie](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data). Het kenmerk appRoleAssignment **mag niet rechtstreeks worden toegewezen** aan een Role-kenmerk zonder een expressie te gebruiken om de functie details te parseren. 
+
+- **SingleAppRoleAssignment** 
+  - **Wanneer gebruiken:** Gebruik de SingleAppRoleAssignment-expressie om één rol voor een gebruiker in te richten en de primaire functie op te geven. 
+  - **Configureren:** Volg de stappen die hierboven worden beschreven om naar de pagina kenmerk toewijzingen te gaan en gebruik de SingleAppRoleAssignment-expressie om toe te wijzen aan het kenmerk roles. Er zijn drie kenmerken waaruit u kunt kiezen: (rollen [Primary EQ "True"]. weer gave, rollen [Primary EQ "True]. type en roles [Primary EQ" True "]. Value). U kunt ervoor kiezen om een of alle functie kenmerken in uw toewijzingen op te neemt. Als u meer dan één wilt gebruiken, voegt u gewoon een nieuwe toewijzing toe en neemt u deze op als doel kenmerk.  
+  
+  ![SingleAppRoleAssignment toevoegen](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **Aandachtspunten**
+    - Zorg ervoor dat er geen meerdere rollen aan een gebruiker zijn toegewezen. We kunnen niet garanderen welke rol zal worden ingericht.
+    
+  - **Voorbeeld uitvoer** 
+
+   ```json
+    {
+      "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": true,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "value": "Admin"
+         }
+      ]
+   }
+   ```
+  
+- **AppRoleAssignmentsComplex** 
+  - **Wanneer gebruiken:** Gebruik de AppRoleAssignmentsComplex-expressie om meerdere rollen voor een gebruiker in te richten. 
+  - **Configureren:** Bewerk de lijst met ondersteunde kenmerken, zoals hierboven wordt beschreven, om een nieuw kenmerk op te geven voor rollen: 
+  
+    ![Rollen toevoegen](./media/customize-application-attributes/add-roles.png)<br>
+
+    Gebruik vervolgens de AppRoleAssignmentsComplex-expressie om toe te wijzen aan het aangepaste Role-kenmerk, zoals wordt weer gegeven in de onderstaande afbeelding:
+
+    ![AppRoleAssignmentsComplex toevoegen](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **Aandachtspunten**
+    - Alle rollen worden ingericht als primair = onwaar.
+    - Het bericht bevat het type rol. De PATCH-aanvraag bevat geen type. Er wordt gewerkt aan het verzenden van het type in POST-en PATCH-aanvragen.
+    
+  - **Voorbeeld uitvoer** 
+  
+   ```json
+   {
+       "schemas": [
+           "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "Admin",
+               "value": "Admin"
+         },
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "User",
+             "value": "User"
+         }
+      ]
+   }
+   ```
+
+  
+
+
+## <a name="provisioning-a-multi-value-attribute"></a>Een kenmerk met meerdere waarden inrichten
+Bepaalde kenmerken, zoals phoneNumbers en e-mail berichten, zijn kenmerken met meerdere waarden, waarbij u mogelijk verschillende typen telefoon nummers of e-mail berichten moet opgeven. Gebruik de onderstaande expressie voor kenmerken met meerdere waarden. Hiermee kunt u het kenmerk type opgeven en toewijzen aan het bijbehorende Azure AD-gebruikers kenmerk voor de waarde. 
+
+* phoneNumbers [type EQ "werk]. waarde
+* phoneNumbers [type EQ "Mobile"]. waarde
+* phoneNumbers [type EQ "fax"]. waarde
+
+   ```json
+   "phoneNumbers": [
+       {
+         "value": "555-555-5555",
+         "type": "work"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "mobile"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "fax"
+      }
+   ]
+   ```
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>De standaard kenmerken en kenmerk toewijzingen herstellen
 

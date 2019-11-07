@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472819"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605093"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Een AKS-cluster (Azure Kubernetes service) maken dat gebruikmaakt van Beschikbaarheidszones
 
@@ -34,7 +34,7 @@ AKS-clusters kunnen momenteel worden gemaakt met beschikbaarheids zones in de vo
 * US - oost 2
 * US - oost
 * Frankrijk - centraal
-* Japan - Oost
+* Japan - oost
 * Europa - noord
 * Azië - zuidoost
 * VK - zuid
@@ -72,9 +72,9 @@ In een zone storing kunnen de knoop punten hand matig worden gebalanceerd of geb
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>Een AKS-cluster maken in verschillende beschikbaarheids zones
 
-Wanneer u een cluster maakt met behulp van de opdracht [AZ AKS Create][az-aks-create] , wordt in de para meter `--zones` gedefinieerd welke zone-agent knooppunten worden geïmplementeerd. De onderdelen van het AKS-besturings element voor uw cluster worden ook verspreid over zones in de hoogste beschik bare configuratie wanneer u een cluster maakt waarin de para meter `--zones` is opgegeven.
+Wanneer u een cluster maakt met behulp van de opdracht [AZ AKS Create][az-aks-create] , wordt in de para meter `--zones` gedefinieerd welke zone-agent knooppunten worden geïmplementeerd. De AKS-besturings vlak onderdelen voor uw cluster worden ook verspreid over zones in de hoogste beschik bare configuratie wanneer u de para meter `--zones` definieert tijdens het maken van het cluster.
 
-Als u geen zones voor de standaard agent groep definieert wanneer u een AKS-cluster maakt, zullen de onderdelen van de AKS-besturings elementen voor uw cluster geen beschikbaarheids zones gebruiken. U kunt extra knooppunt Pools toevoegen met behulp van de opdracht [AZ AKS nodepool add][az-aks-nodepool-add] en `--zones` op te geven voor die nieuwe agent knooppunten. de onderdelen van het besturings element blijven echter behouden zonder bewustzijn van de beschikbaarheids zone. U kunt de zone bewustzijn voor een knooppunt groep of de onderdelen van het AKS-besturings element niet wijzigen zodra deze zijn geïmplementeerd.
+Als u geen zones voor de standaard agent groep definieert wanneer u een AKS-cluster maakt, zullen de onderdelen van de AKS-besturings elementen voor uw cluster geen beschikbaarheids zones gebruiken. U kunt extra knooppunt Pools toevoegen met behulp van de opdracht [AZ AKS nodepool add][az-aks-nodepool-add] en `--zones` op te geven voor die nieuwe knoop punten. de onderdelen van het besturings element blijven echter behouden zonder de beschik baarheid van de zone. U kunt de zone bewustzijn voor een knooppunt groep of de onderdelen van het AKS-besturings element niet wijzigen zodra deze zijn geïmplementeerd.
 
 In het volgende voor beeld wordt een AKS-cluster gemaakt met de naam *myAKSCluster* in de resource groep met de naam *myResourceGroup*. Er zijn in totaal *drie* knoop punten gemaakt: één agent in zone *1*, één in *2*, en vervolgens een in *3*. De onderdelen van het AKS-besturings element worden ook gedistribueerd over zones in de hoogste beschik bare configuratie, omdat deze zijn gedefinieerd als onderdeel van het proces voor het maken van het cluster.
 

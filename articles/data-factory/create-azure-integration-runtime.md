@@ -1,6 +1,6 @@
 ---
-title: Azure integratieruntime maken in Azure Data Factory | Microsoft Docs
-description: Leer hoe u Azure integratieruntime maken in Azure Data Factory, dat wordt gebruikt om te kopiëren van gegevens en transformatieactiviteiten verzending.
+title: Azure Integration runtime in Azure Data Factory maken
+description: Meer informatie over het maken van Azure Integration runtime in Azure Data Factory, die wordt gebruikt voor het kopiëren van gegevens en trans formatie-activiteiten.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,38 +11,38 @@ ms.date: 01/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 4b166ded3dcef4a89951eb81f7f1b321f89a0e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 898290f70777ca442bb8885d83064231c5486a7c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153401"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73677266"
 ---
-# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Over het maken en configureren van Azure Integration Runtime
-De Integration Runtime (IR) is de rekeninfrastructuur die door Azure Data Factory gebruikt om u te bieden mogelijkheden voor gegevensintegratie in verschillende netwerkomgevingen. Zie voor meer informatie over IR [integratieruntime](concepts-integration-runtime.md).
+# <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime maken en configureren
+De Integration Runtime (IR) is de reken infrastructuur die door Azure Data Factory wordt gebruikt om mogelijkheden voor gegevens integratie in verschillende netwerk omgevingen te bieden. Zie [Integration runtime](concepts-integration-runtime.md)(Engelstalig) voor meer informatie over IR.
 
-Azure-IR biedt een volledig beheerde rekenkracht om uit te voeren systeemeigen gegevens verkeer en de verzending van de activiteiten voor gegevenstransformatie voor compute-services zoals HDInsight. Het wordt gehost in Azure-omgeving en ondersteunt een verbinding met resources in openbare netwerkomgeving met openbaar toegankelijke eindpunten.
+Azure IR biedt een volledig beheerde Compute voor systeem eigen gegevens verplaatsing en activiteiten voor gegevens transformatie voor het berekenen van services zoals HDInsight. Deze wordt gehost in de Azure-omgeving en ondersteunt het verbinden met bronnen in open bare netwerk omgeving met open bare eind punten.
 
-Dit document beschrijft hoe u kunt maken en configureren van Azure Integration Runtime. 
+In dit document wordt uitgelegd hoe u Azure Integration Runtime kunt maken en configureren. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-azure-ir"></a>Standaard Azure IR
-Elke data factory heeft standaard een Azure IR in de back-end die ondersteuning biedt voor bewerkingen op cloud gegevensarchieven en compute-services in openbare netwerken. De locatie van deze Azure-IR is automatisch oplossen. Als **connectVia** eigenschap niet is opgegeven in de definitie van de gekoppelde service, de standaard Azure IR wordt gebruikt. U moet alleen een Azure IR expliciet maken als u wilt de locatie van de IR expliciet worden gedefinieerd, of als u graag zou willen vrijwel groep de uitvoeringen van activiteit op verschillende IRs voor beheer van doel. 
+Standaard bevat elke data factory een Azure IR in de back-end die bewerkingen ondersteunt in de Cloud gegevensopslag en Compute-Services in het open bare netwerk. De locatie van de Azure IR automatisch oplossen. Als de eigenschap **connectVia** niet is opgegeven in de definitie van de gekoppelde service, wordt de standaard Azure IR gebruikt. U hoeft alleen expliciet een Azure IR te maken wanneer u de locatie van de IR expliciet wilt definiëren, of als u de uitvoering van de activiteit op verschillende IRs wilt groeperen voor beheer doeleinden. 
 
 ## <a name="create-azure-ir"></a>Azure IR maken
-Integratieruntime kan worden gemaakt met behulp van de **Set AzDataFactoryV2IntegrationRuntime** PowerShell-cmdlet. Voor het maken van een Azure IR, geeft u de naam, locatie en geef de opdracht. Hier volgt een voorbeeldopdracht in een Azure IR maken met de locatie ingesteld op 'West-Europa':
+Integration Runtime kunnen worden gemaakt met de Power shell **-cmdlet Set-AzDataFactoryV2IntegrationRuntime** . Als u een Azure IR wilt maken, geeft u de naam, de locatie en het type van de opdracht op. Hier volgt een voor beeld van een opdracht voor het maken van een Azure IR waarbij de locatie is ingesteld op Europa-west:
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-Voor Azure IR gebruiken, het type moet worden ingesteld op **beheerde**. U hoeft geen compute-details opgeven, omdat het is volledig flexibel beheerd in de cloud. Geef compute details, zoals de grootte van knooppunt- en knooppunt tellen als u wilt maken van Azure-SSIS IR. Zie voor meer informatie, [maken en configureren van Azure-SSIS IR](create-azure-ssis-integration-runtime.md).
+Voor Azure IR moet het type worden ingesteld op **beheerd**. U hoeft geen reken gegevens op te geven omdat deze elastisch volledig worden beheerd in de Cloud. Geef reken gegevens, zoals de knooppunt grootte en het aantal knoop punten, op wanneer u Azure-SSIS IR wilt maken. Zie [Azure-SSIS IR maken en configureren](create-azure-ssis-integration-runtime.md)voor meer informatie.
 
-U kunt een bestaande Azure-IR als u wilt wijzigen van de locatie met de cmdlet Set-AzDataFactoryV2IntegrationRuntime PowerShell configureren. Zie voor meer informatie over de locatie van een Azure IR [Inleiding tot integratieruntime](concepts-integration-runtime.md).
+U kunt een bestaande Azure IR configureren om de locatie ervan te wijzigen met behulp van de set-AzDataFactoryV2IntegrationRuntime Power shell-cmdlet. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure IR.
 
-## <a name="use-azure-ir"></a>Gebruik Azure IR
+## <a name="use-azure-ir"></a>Azure IR gebruiken
 
-Nadat een Azure IR is gemaakt, kunt u ernaar kunt verwijzen in de definitie van de gekoppelde Service. Hieronder wordt een voorbeeld van hoe u kunt verwijzen naar de Azure Integration Runtime hierboven hebt gemaakt van een gekoppelde Azure Storage-Service:  
+Zodra een Azure IR is gemaakt, kunt u ernaar verwijzen in de definitie van de gekoppelde service. Hieronder ziet u een voor beeld van hoe u kunt verwijzen naar het Azure Integration Runtime dat hierboven is gemaakt op basis van een Azure Storage gekoppelde service:  
 
 ```json
 {
@@ -65,8 +65,8 @@ Nadat een Azure IR is gemaakt, kunt u ernaar kunt verwijzen in de definitie van 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor het maken van andere typen integration runtime:
+Raadpleeg de volgende artikelen voor meer informatie over het maken van andere typen Integration Runtimes:
 
 - [Zelf-hostende integratie-runtime maken](create-self-hosted-integration-runtime.md)
-- [Azure-SSIS integratieruntime maken](create-azure-ssis-integration-runtime.md)
+- [Azure-SSIS-integratie-runtime maken](create-azure-ssis-integration-runtime.md)
  

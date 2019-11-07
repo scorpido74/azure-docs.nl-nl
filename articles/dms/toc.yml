@@ -8,6 +8,8 @@
   items:
     - name: Service maken - Portal
       href: quickstart-create-data-migration-service-portal.md
+    - name: Service in hybride modus maken - Portal
+      href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Zelfstudies
   items:
     - name: SQL Server offline migreren naar een individuele Azure SQL-database

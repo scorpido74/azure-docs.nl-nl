@@ -1,5 +1,5 @@
 ---
-title: Wat is de service Azure SQL Database? | Microsoft Docs
+title: Wat is de service Azure SQL Database?
 description: 'Krijg kennis met SQL Database: technische details en mogelijkheden van de micro soft relationele Database Management System (RDBMS) in de Cloud.'
 keywords: inleiding in sql,intro in sql,wat is sql-database
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e5782ba016cf58335de17cdacabbcca95914f59a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d22408904ae21bc7512d4ebe8792666227893337
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066283"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687019"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Wat is de service Azure SQL Database?
 
@@ -99,9 +99,9 @@ Azure SQL Database biedt geavanceerde functies voor controle en probleem oplossi
 
 Azure biedt ingebouwde hulpprogram ma's voor [prestatie bewaking](sql-database-performance.md) en [waarschuwingen](sql-database-insights-alerts-portal.md) , gecombineerd met prestatie classificaties waarmee u de status van duizenden data bases kunt bewaken. Met deze hulpprogram ma's kunt u snel de gevolgen van het omhoog of omlaag schalen van de schaal bepalen op basis van uw huidige of verwachte prestatie behoeften. Daarnaast kan SQL Database [metrische gegevens en diagnostische logboeken verzenden](sql-database-metrics-diag-logging.md) die de bewaking vergemakkelijken. U kunt SQL Database configureren voor het opslaan van resourcegebruik, werkrollen en sessies, en connectiviteit in een van deze Azure-resources:
 
-- **Azure Storage**: Voor het archiveren van grote hoeveel heden telemetrie voor een kleine prijs.
-- **Azure Event hubs**: Voor het integreren van SQL Database telemetrie met uw aangepaste bewakings oplossing of dynamische pijp lijnen.
-- **Azure monitor logboeken**: Voor een ingebouwde bewakings oplossing met rapportage-, waarschuwings-en beperkende mogelijkheden.
+- **Azure Storage**: voor het archiveren van grote hoeveelheden telemetriegegevens voor een lage prijs.
+- **Azure Event hubs**: voor het integreren van SQL database telemetrie met uw aangepaste bewakings oplossing of dynamische pijp lijnen.
+- **Azure monitor-logboeken**: voor een ingebouwde bewakings oplossing met rapportage-, waarschuwings-en beperkende mogelijkheden.
 
 ![Diagram van Azure-bewakings architectuur](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -152,8 +152,8 @@ Veel van onze partners waarop [SaaS multi-tenant-apps](sql-database-design-patte
 
 Er zijn twee automatisch afstemmings aspecten [beschikbaar in SQL database](sql-database-automatic-tuning.md):
 
-- **Automatisch index beheer**: Identificeert indexen die moeten worden toegevoegd in uw data base en indexen die moeten worden verwijderd.
-- **Automatische correctie plannen**: Identificeert problematische abonnementen en lost problemen met de prestaties van het SQL-plan op.
+- **Automatisch indexbeheer**: hiermee worden indexen geïdentificeerd die moeten worden toegevoegd aan of verwijderd uit uw database.
+- **Automatische plan correctie**: identificeert problematische abonnementen en lost problemen met de prestaties van het SQL-plan op.
 
 ### <a name="adaptive-query-processing"></a>Verwerking van adaptieve query’s
 
@@ -182,7 +182,7 @@ Geavanceerde gegevens beveiliging is een uniform pakket voor geavanceerde SQL-be
 
 ### <a name="auditing-for-compliance-and-security"></a>Controles voor naleving en beveiliging
 
-[](sql-database-auditing.md) Met auditing worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Controle kan u helpen de naleving van de regelgeving te hand haven, database activiteiten te begrijpen en inzicht te krijgen in verschillen en afwijkingen die kunnen wijzen op problemen met het bedrijf of vermoedelijke beveiligings schendingen.
+Met [auditing](sql-database-auditing.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven. Controle kan u helpen de naleving van de regelgeving te hand haven, database activiteiten te begrijpen en inzicht te krijgen in verschillen en afwijkingen die kunnen wijzen op problemen met het bedrijf of vermoedelijke beveiligings schendingen.
 
 ### <a name="data-encryption"></a>Gegevensversleuteling
 
@@ -250,11 +250,11 @@ SQL Database-klanten beschikken over de volgende rechten die zijn gekoppeld aan 
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Contact met het technische team van SQL Server
 
-- [DBA stack-uitwisseling](https://dba.stackexchange.com/questions/tagged/sql-server): Vragen over het beheer van data bases.
-- [Stack overflow](https://stackoverflow.com/questions/tagged/sql-server): Stel ontwikkel vragen.
+- [DBA stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): vragen over het beheer van data bases.
+- [Stack overflow](https://stackoverflow.com/questions/tagged/sql-server): Stel ontwikkel vragen in.
 - [MSDN-Forums](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Stel technische vragen.
-- [Feedback](https://aka.ms/sqlfeedback): Rapporten van fouten en aanvragen.
-- [Reddit](https://www.reddit.com/r/SQLServer/): Bespreek SQL Server.
+- [Feedback](https://aka.ms/sqlfeedback): rapporten van fouten en aanvragen.
+- [Reddit](https://www.reddit.com/r/SQLServer/): bespreek SQL Server.
 
 ## <a name="next-steps"></a>Volgende stappen
 

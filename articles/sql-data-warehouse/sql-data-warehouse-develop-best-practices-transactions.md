@@ -1,5 +1,5 @@
 ---
-title: Trans acties optimaliseren voor Azure SQL Data Warehouse | Microsoft Docs
+title: Trans acties optimaliseren
 description: Meer informatie over het optimaliseren van de prestaties van uw transactionele code in Azure SQL Data Warehouse en het minimaliseren van het risico op lange terugdraai acties.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479676"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692858"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Trans acties in Azure SQL Data Warehouse optimaliseren
 Meer informatie over het optimaliseren van de prestaties van uw transactionele code in Azure SQL Data Warehouse en het minimaliseren van het risico op lange terugdraai acties.
@@ -42,8 +43,8 @@ De limieten voor de transactie beveiliging zijn alleen van toepassing op volledi
 ## <a name="minimally-logged-operations"></a>Mini maal geregistreerde bewerkingen
 De volgende bewerkingen kunnen mini maal worden geregistreerd:
 
-* CREATE TABLE ALS SELECTEREN ([CTAS](sql-data-warehouse-develop-ctas.md))
-* INSERT..SELECT
+* CREATE TABLE als selecteren ([CTAS](sql-data-warehouse-develop-ctas.md))
+* INVOEGEN.. UITGESCHAKELD
 * CREATE INDEX
 * ALTER INDEX REBUILD
 * DROP INDEX
@@ -67,11 +68,11 @@ CTAS en invoegen... Selecteer beide bewerkingen voor bulksgewijs laden. Beide wo
 
 | Primaire index | Scenario voor laden | Modus logboek registratie |
 | --- | --- | --- |
-| Heap |Any |**Minimal** |
-| Geclusterde index |Lege doel tabel |**Minimal** |
-| Geclusterde index |Geladen rijen overlappen niet met bestaande pagina's in het doel |**Minimal** |
+| Heap |Alle |**Minimale** |
+| Geclusterde index |Lege doel tabel |**Minimale** |
+| Geclusterde index |Geladen rijen overlappen niet met bestaande pagina's in het doel |**Minimale** |
 | Geclusterde index |Geladen rijen overlappen met bestaande pagina's in het doel |Volledig |
-| Geclusterde column store-index |Batch grootte > = 102.400 per partitie, uitgelijnde distributie |**Minimal** |
+| Geclusterde column store-index |Batch grootte > = 102.400 per partitie, uitgelijnde distributie |**Minimale** |
 | Geclusterde column store-index |Batch grootte < 102.400 per partitie, uitgelijnde distributie |Volledig |
 
 Het is een goed idee dat elke schrijf bewerking voor het bijwerken van secundaire of niet-geclusterde indexen altijd volledige geregistreerde bewerkingen is.
@@ -84,7 +85,7 @@ Het is een goed idee dat elke schrijf bewerking voor het bijwerken van secundair
 Het laden van gegevens in een niet-lege tabel met een geclusterde index kan vaak een combi natie van volledig vastgelegde en mini maal geregistreerde rijen bevatten. Een geclusterde index is een evenwichtige boom structuur (b-structuur) van pagina's. Als de pagina die wordt geschreven, al rijen van een andere trans actie bevat, worden deze schrijf bewerkingen volledig vastgelegd. Als de pagina echter leeg is, wordt de schrijf bewerking naar die pagina mini maal vastgelegd.
 
 ## <a name="optimizing-deletes"></a>Verwijderingen optimaliseren
-VERWIJDEREN is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet verwijderen, is het vaak beter voor `SELECT` de gegevens die u wilt blijven gebruiken, die kunnen worden uitgevoerd als een mini maal vastgelegde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](sql-data-warehouse-develop-ctas.md).  Nadat deze is gemaakt, gebruikt u de [naam wijzigen](/sql/t-sql/statements/rename-transact-sql) om de oude tabel om te wisselen met de zojuist gemaakte tabel.
+VERWIJDEREN is een volledig geregistreerde bewerking.  Als u een grote hoeveelheid gegevens in een tabel of partitie moet verwijderen, is het vaak beter om `SELECT` de gegevens die u wilt blijven gebruiken, die kunnen worden uitgevoerd als een mini maal vastgelegde bewerking.  Als u de gegevens wilt selecteren, maakt u een nieuwe tabel met [CTAS](sql-data-warehouse-develop-ctas.md).  Nadat deze is gemaakt, gebruikt u de [naam wijzigen](/sql/t-sql/statements/rename-transact-sql) om de oude tabel om te wisselen met de zojuist gemaakte tabel.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -407,7 +408,7 @@ END
 Met Azure SQL Data Warehouse kunt u uw data warehouse op aanvraag [onderbreken, hervatten en schalen](sql-data-warehouse-manage-compute-overview.md) . Wanneer u uw SQL Data Warehouse pauzeert of schaalt, is het belang rijk om te begrijpen dat alle trans acties in de vlucht onmiddellijk worden beëindigd. zorgt ervoor dat alle openstaande trans acties worden teruggedraaid. Als uw werk belasting een langlopende en onvolledige gegevens wijziging heeft ondergaan voordat de onderbreking of schaal bewerking wordt uitgevoerd, moet dit werk ongedaan worden gemaakt. Dit kan van invloed zijn op de tijd die nodig is om uw Azure SQL Data Warehouse-data base te onderbreken of te schalen. 
 
 > [!IMPORTANT]
-> Beide `UPDATE` en`DELETE` zijn volledig geregistreerde bewerkingen, waardoor deze bewerkingen voor ongedaan maken/opnieuw uitvoeren aanzienlijk langer duren dan de gelijkwaardige minimale geregistreerde bewerkingen. 
+> Zowel `UPDATE` als `DELETE` zijn volledige geregistreerde bewerkingen, waardoor deze bewerkingen voor het ongedaan maken/opnieuw uitvoeren aanzienlijk langer duren dan de overeenkomstige minimale geregistreerde bewerkingen. 
 > 
 > 
 

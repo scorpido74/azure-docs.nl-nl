@@ -1,5 +1,5 @@
 ---
-title: Woorden lijst voor Elastic Database hulpprogram ma's | Microsoft Docs
+title: Woorden lijst voor Elastic Database-hulpprogram ma's
 description: Uitleg van de termen die worden gebruikt voor Elastic data base-hulpprogram ma's
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ed0cc9dce312cb9736b3e32ba46d2cb1cca3ef8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3a06bb65c4f836d2c0fb049946ab62c395ec81e1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568457"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690290"
 ---
 # <a name="elastic-database-tools-glossary"></a>Woorden lijst voor Elastic Database-hulpprogram ma's
 
@@ -26,19 +26,19 @@ Deze voor waarden worden gebruikt in het [toevoegen van een Shard met Elastic da
 
 ![Termen voor Elastic Scale][1]
 
-**Data Base**: Een Azure SQL-database. 
+**Data Base**: een Azure-SQL database. 
 
-**Gegevens afhankelijke route ring**: De functionaliteit waarmee een toepassing verbinding kan maken met een Shard op basis van een specifieke sharding-sleutel. Zie [gegevens afhankelijke route ring](sql-database-elastic-scale-data-dependent-routing.md). Vergelijk met een **[multi-Shard-query](sql-database-elastic-scale-multishard-querying.md)** .
+**Gegevens afhankelijke route ring**: de functionaliteit waarmee een toepassing verbinding kan maken met een Shard op basis van een specifieke sharding-sleutel. Zie [gegevens afhankelijke route ring](sql-database-elastic-scale-data-dependent-routing.md). Vergelijk met een **[multi-Shard-query](sql-database-elastic-scale-multishard-querying.md)** .
 
-**Globale Shard toewijzing**: De kaart tussen sharding sleutels en hun respectieve Shards binnen een **Shard-set**. De globale Shard-toewijzing wordt opgeslagen in **Shard-toewijzings beheer**. Vergelijken met de **lokale Shard-toewijzing**.
+**Overzicht van globale Shard**: de kaart tussen sharding sleutels en hun respectieve Shards binnen een **Shard-set**. De globale Shard-toewijzing wordt opgeslagen in **Shard-toewijzings beheer**. Vergelijken met de **lokale Shard-toewijzing**.
 
-**Lijst met Shard-toewijzing**: Een Shard-toewijzing waarin sharding sleutels afzonderlijk worden toegewezen. Vergelijkt met de **Shard-kaart**.   
+**Lijst met Shard-toewijzing**: een Shard-toewijzing waarbij sharding sleutels afzonderlijk worden toegewezen. Vergelijkt met de **Shard-kaart**.   
 
-**Lokale Shard-toewijzing**: De lokale Shard-toewijzing die is opgeslagen op een Shard, bevat toewijzingen voor de shardlets die zich op de Shard bevinden.
+**Lokale Shard-toewijzing**: opgeslagen op een Shard, de lokale Shard-toewijzing bevat toewijzingen voor de shardlets die zich op de Shard bevinden.
 
-**Multi-Shard query**: De mogelijkheid om een query uit te geven op meerdere Shards; resultaten sets worden geretourneerd met behulp van UNION alle semantiek (ook wel ' ventilator-out-query ' genoemd). Vergelijkt met **gegevens afhankelijke route ring**.
+**Multi-Shard query**: de mogelijkheid om een query uit te geven op meerdere Shards; resultaten sets worden geretourneerd met behulp van UNION alle semantiek (ook wel ' ventilator-out-query ' genoemd). Vergelijkt met **gegevens afhankelijke route ring**.
 
-**Multi tenant** en **single-tenant**: Hier ziet u een Data Base met één Tenant en een Data Base met meerdere tenants:
+**Multi tenant** en **single-tenant**: hier ziet u een Data Base met één Tenant en een multi tenant-Data Base:
 
 ![Single-en multi tenant-data bases](./media/sql-database-elastic-scale-glossary/multi-single-simple.png)
 
@@ -46,42 +46,42 @@ Hier volgt een representatie van **Shard** single-en multi tenant-data bases.
 
 ![Single-en multi tenant-data bases](./media/sql-database-elastic-scale-glossary/shards-single-multi.png)
 
-**Toewijzing van bereik Shard**: Een Shard-kaart waarin de Shard-distributie strategie is gebaseerd op meerdere bereiken aaneengesloten waarden. 
+**Toewijzing van bereik Shard**: een Shard-toewijzing waarbij de Shard-distributie strategie is gebaseerd op meerdere bereiken aaneengesloten waarden. 
 
-**Referentie tabellen**: Tabellen die niet worden Shard, maar worden gerepliceerd tussen Shards. Post codes kunnen bijvoorbeeld worden opgeslagen in een verwijzings tabel. 
+**Naslag tabellen**: tabellen die niet worden Shard, maar die worden gerepliceerd tussen Shards. Post codes kunnen bijvoorbeeld worden opgeslagen in een verwijzings tabel. 
 
-**Shard**: Een Azure-SQL database die gegevens uit een Shard-gegevensset opslaat. 
+**Shard**: een Azure-SQL database die gegevens uit een Shard gegevensset opslaat. 
 
-**Shard-elasticiteit**: De mogelijkheid om **horizon taal schalen** en **verticaal schalen**uit te voeren.
+**Shard elasticiteit**: de mogelijkheid om **horizon taal schalen** en **verticaal schalen**uit te voeren.
 
-**Shard-tabellen**: Tabellen die Shard zijn, dat wil zeggen, waarbij gegevens worden verdeeld over Shards op basis van hun sharding-sleutel waarden. 
+**Shard-tabellen**: tabellen die Shard zijn, dat wil zeggen, waarvan de gegevens worden verdeeld over Shards op basis van hun sharding sleutel waarden. 
 
-**Sharding-sleutel**: Een kolom waarde die bepaalt hoe gegevens worden gedistribueerd over Shards. Het waardetype kan een van de volgende waarden hebben: **int**, **bigint**, **varbinary**of **uniqueidentifier**. 
+**Sharding-sleutel**: een kolom waarde die bepaalt hoe gegevens worden gedistribueerd over Shards. Het waardetype kan een van de volgende waarden hebben: **int**, **bigint**, **varbinary**of **uniqueidentifier**. 
 
-**Shard ingesteld**: De verzameling van Shards die worden toegeschreven aan dezelfde Shard-toewijzing in het Shard-toewijzings beheer.  
+**Shard ingesteld**: de verzameling van Shards die worden toegeschreven aan dezelfde Shard-toewijzing in de Shard-kaart Manager.  
 
-**Shardlet**: Alle gegevens die zijn gekoppeld aan één waarde van een sharding-sleutel in een Shard. Een shardlet is de kleinste eenheid van gegevens verplaatsing tijdens het opnieuw distribueren van Shard-tabellen. 
+**Shardlet**: alle gegevens die zijn gekoppeld aan één waarde van een sharding-sleutel op een Shard. Een shardlet is de kleinste eenheid van gegevens verplaatsing tijdens het opnieuw distribueren van Shard-tabellen. 
 
-**Shard-kaart**: De set met toewijzingen tussen sharding-sleutels en hun respectievelijke Shards.
+**Shard-toewijzing**: de set toewijzingen tussen sharding-sleutels en hun respectieve Shards.
 
-**Shard-toewijzings beheer**: Een beheer object en gegevens opslag dat de Shard-kaart (en), Shard locaties en toewijzingen bevat voor een of meer Shard sets.
+**Shard-toewijzings beheer**: een beheer object en gegevens opslag dat de Shard-kaart (en), Shard locaties en toewijzingen bevat voor een of meer Shard sets.
 
 ![Toewijzingen][2]
 
 ## <a name="verbs"></a>Termen
-**Horizon taal schalen**: De handeling van het uitschalen (of in) een verzameling Shards door Shards toe te voegen aan of te verwijderen uit een Shard-kaart, zoals hieronder wordt weer gegeven.
+**Horizon taal schalen**: de handeling van het uitschalen (of in) een verzameling Shards door Shards toe te voegen aan of te verwijderen uit een Shard-kaart, zoals hieronder wordt weer gegeven.
 
 ![Horizon taal en verticaal schalen][3]
 
-**Samen voegen**: De handeling van het verplaatsen van shardlets van twee Shards naar een Shard en het bijwerken van de Shard-kaart dienovereenkomstig.
+**Samen voegen**: de handeling van het verplaatsen van shardlets van twee Shards naar een Shard en het bijwerken van de Shard-kaart dienovereenkomstig.
 
-**Shardlet verplaatsen**: De handeling waarbij één shardlet naar een andere Shard wordt verplaatst. 
+**Shardlet verplaatsen**: de handeling waarbij één Shardlet naar een andere Shard wordt verplaatst. 
 
-**Shard**: Het Horizon taal partitioneren van identieke gestructureerde gegevens over meerdere data bases op basis van een sharding-sleutel.
+**Shard**: de handel van het Horizon taal partitioneren van identieke gestructureerde gegevens over meerdere data bases op basis van een sharding-sleutel.
 
-**Splitsen**: Het verplaatsen van verschillende shardlets van een Shard naar een andere (doorgaans nieuwe) Shard. Een sharding-sleutel wordt door de gebruiker als het Splits punt verschaft.
+**Splitsen**: de handeling van het verplaatsen van verschillende shardlets van een Shard naar een andere (doorgaans nieuwe) Shard. Een sharding-sleutel wordt door de gebruiker als het Splits punt verschaft.
 
-**Verticaal schalen**: De reken grootte van een afzonderlijke Shard omhoog (of omlaag) schalen. U kunt bijvoorbeeld een Shard wijzigen van Standard in Premium (wat resulteert in meer computer bronnen). 
+**Verticaal schalen**: de kracht van het schalen van de reken grootte van een afzonderlijke Shard. U kunt bijvoorbeeld een Shard wijzigen van Standard in Premium (wat resulteert in meer computer bronnen). 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

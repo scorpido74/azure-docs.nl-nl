@@ -1,5 +1,5 @@
 ---
-title: Variabelen toewijzen in Azure SQL Data Warehouse | Microsoft Docs
+title: Variabelen toewijzen
 description: Tips voor het toewijzen van T-SQL-variabelen in Azure SQL Data Warehouse voor het ontwikkelen van oplossingen.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1ae5285a8d1cf6fa391c082d0196b213e6b6a9c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479550"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692754"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Variabelen toewijzen in Azure SQL Data Warehouse
 
@@ -23,7 +24,7 @@ Tips voor het toewijzen van T-SQL-variabelen in Azure SQL Data Warehouse voor he
 
 ## <a name="setting-variables-with-declare"></a>Variabelen instellen met DECLAReren
 
-Variabelen in SQL Data Warehouse worden ingesteld met behulp van `DECLARE` de `SET` instructie of de instructie. Initialisatie van variabelen met DECLAReren is een van de meest flexibele manieren om een variabele waarde in SQL Data Warehouse in te stellen.
+Variabelen in SQL Data Warehouse worden ingesteld met behulp van de instructie `DECLARE` of de `SET`-instructie. Initialisatie van variabelen met DECLAReren is een van de meest flexibele manieren om een variabele waarde in SQL Data Warehouse in te stellen.
 
 ```sql
 DECLARE @v  int = 0
@@ -38,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-U kunt een variabele niet initialiseren en gebruiken in dezelfde DECLARe-instructie. Om het punt te illustreren, is het volgende voor beeld **niet** toegestaan @p1 omdat het is geïnitialiseerd en wordt gebruikt in dezelfde Declare-instructie. In het volgende voor beeld wordt een fout weer geven.
+U kunt een variabele niet initialiseren en gebruiken in dezelfde DECLARe-instructie. Om het punt te illustreren, is het volgende voor beeld **niet** toegestaan omdat @p1 is geïnitialiseerd en wordt gebruikt in dezelfde Declare-instructie. In het volgende voor beeld wordt een fout weer geven.
 
 ```sql
 DECLARE @p1 int = 0

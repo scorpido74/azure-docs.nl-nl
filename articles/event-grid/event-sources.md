@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 5e8dc6629cfbbc3e42aeeb4dc94f33d13867ca9f
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024801"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603825"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Gebeurtenis bronnen in Azure Event Grid
 
@@ -171,7 +171,14 @@ Abonneer u op gebeurtenissen van de Azure signalerings service om te reageren op
 | [Service gebeurtenissen van Azure signalering verzenden naar Event Grid](../azure-signalr/signalr-howto-event-grid-integration.md) | Laat zien hoe u Azure signalerings service-gebeurtenissen verzendt naar een toepassing via Event Grid. |
 | [Gebeurtenis schema](event-schema-azure-signalr.md) | Geeft velden weer in gebeurtenissen van de Azure signalerings service. |
 
+## <a name="azure-machine-learning"></a>Azure Machine Learning
 
+Abonneer u op Azure Machine Learning werkruimte gebeurtenissen om te reageren op model registratie.
+
+| Titel | Beschrijving |
+| ----- | ----- |
+| [Azure Machine Learning gebeurtenissen gebruiken](../machine-learning/service/concept-event-grid-integration.md) | Overzicht van het integreren van Azure Machine Learning met Event Grid. |
+| [Azure Event Grid-gebeurtenis schema voor Azure Machine Learning](event-schema-machine-learning.md) | Hiermee worden velden in de Azure Machine Learning gebeurtenissen weer gegeven. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

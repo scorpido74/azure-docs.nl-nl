@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 85a3a9f7afac8250b225d42462f6b29042e34a2a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330318"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606351"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
 In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 
@@ -28,7 +28,7 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
 
 ## <a name="create-a-classroom-lab"></a>Een leslokaallab maken
 
-1. Navigeer naar de [Azure Lab Services-website](https://labs.azure.com). Houd er rekening mee dat Internet Explorer 11 nog niet wordt ondersteund. 
+1. Navigeer naar de [Azure Lab Services-website](https://labs.azure.com). Internet Explorer 11 wordt nog niet ondersteund. 
 2. Selecteer **Aanmelden** en voer uw referenties in. Selecteer of typ een **gebruikers-id** die lid is van de rol **Lab Creator** in het lab-account en voer het wacht woord in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
 3. Selecteer **Nieuw Lab**. 
     
@@ -90,7 +90,7 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
     2. Als u alle Vm's tegelijk wilt starten, selecteert u **Alles starten** op de werk balk. 
     3. Als u een specifieke virtuele machine wilt starten, selecteert u de pijl-omlaag in de **status**en selecteert u vervolgens **starten**. U kunt ook een virtuele machine starten door een virtuele machine in de eerste kolom te selecteren en vervolgens te klikken op **Start** op de werk balk.                
 
-### <a name="vm-sizes"></a>VM-grootten  
+### <a name="vm-sizes"></a>Formaten van virtuele machines  
 
 | Grootte | Cores | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
@@ -123,6 +123,10 @@ Als u wilt overschakelen naar een ander leslokaal Lab vanuit de huidige, selecte
 
 U kunt ook een nieuw lab maken met behulp van het **nieuwe lab** in deze vervolg keuzelijst. 
 
+> [!NOTE]
+> U kunt ook de Power shell-module AZ. LabServices (preview) gebruiken voor het beheren van Labs. Zie de [Introductie pagina AZ. LabServices op github](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library)voor meer informatie.
+
+Als u wilt overschakelen naar een ander lab-account, selecteert u de vervolg keuzelijst naast het lab-account en selecteert u het andere Lab-account. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

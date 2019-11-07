@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1985c596b9f4b9b78b0055bfe1eab9888c30e201
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489764"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615178"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,13 +30,13 @@ Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog g
 
 1. Selecteer in de linkerbovenhoek van Azure Portal **+ een resource maken**.
 
-      ![Een nieuwe resource maken](../../../includes/media/aml-create-in-portal/portal-create-resource.png)
+      ![Een nieuwe resource maken](../../../includes/media/aml-create-in-portal/create-workspace.gif)
 
-1. Gebruik de zoek balk om **machine learning service-werk ruimte**te vinden.
+1. Gebruik de zoek balk om **machine learning**te vinden.
 
-1. Selecteer **machine learning service-werk ruimte**.
+1. Selecteer **machine learning**.
 
-1. Selecteer in het deel venster **machine learning service werkruimte** de optie **maken** om te beginnen.
+1. Selecteer in het deel venster **machine learning** de optie **maken** om te beginnen.
 
 1. Geef de volgende informatie op om uw nieuwe werk ruimte te configureren:
 
@@ -89,18 +89,15 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 ## <a name="view"></a>Een werk ruimte zoeken
 
-1. Selecteer in de linkerbovenhoek van de portal **alle services**.
+1. Typ **machine learning**in het bovenste zoek veld.  
 
-1. Typ **machine learning**in het veld **alle services** filter.  
+1. Selecteer **machine learning**.
 
-1. Selecteer **Azure machine learning**.
-
-   ![Zoeken naar Azure Machine Learning-werk ruimte](media/how-to-manage-workspace/all-services.png)
+   ![Zoeken naar Azure Machine Learning-werk ruimte](media/how-to-manage-workspace/find-workspaces.png)
 
 1. Bekijk de lijst met werk ruimten die zijn gevonden. U kunt filteren op basis van abonnement, resource groepen en locaties.  
 
 1. Selecteer een werk ruimte om de eigenschappen ervan weer te geven.
-   eigenschappen van ![werk ruimte](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 

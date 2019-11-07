@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database beveiliging configureren voor nood herstel | Microsoft Docs
+title: Azure SQL Database beveiliging configureren voor nood herstel
 description: Meer informatie over de beveiligings overwegingen voor het configureren en beheren van beveiliging na het herstellen van een Data Base of een failover naar een secundaire server.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 4d4939b7a0179216d11f594ce12f384276d15e05
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568129"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689967"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database beveiliging configureren en beheren voor geo-herstel of failover
 
@@ -33,7 +33,7 @@ De belangrijkste afweging is dat het beheer van herstel na nood gevallen een las
 Als u aanmeldingen en gebruikers (in plaats van opgenomen gebruikers) gebruikt, moet u extra stappen uitvoeren om ervoor te zorgen dat dezelfde aanmeldingen aanwezig zijn in de data base Master. In de volgende secties vindt u een overzicht van de stappen en aanvullende overwegingen.
 
   >[!NOTE]
-  > Het is ook mogelijk om de aanmeldingen van Azure Active Directory (AAD) te gebruiken voor het beheren van uw data bases. Zie [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)-aanmeldingen en-gebruikers voor meer informatie.
+  > Het is ook mogelijk om de aanmeldingen van Azure Active Directory (AAD) te gebruiken voor het beheren van uw data bases. Zie [Azure SQL-aanmeldingen en-gebruikers](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)voor meer informatie.
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Gebruikers toegang instellen voor een secundaire of herstelde data base
 
@@ -48,7 +48,7 @@ Het voorbereiden van de gebruikers toegang tot een secundaire geo-replicatie moe
 
 Het instellen van aanmeldingen op de doel server omvat drie stappen die hieronder worden beschreven:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Aanmeldingen met toegang tot de primaire data base bepalen
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. aanmeldingen met toegang tot de primaire data base bepalen
 
 De eerste stap van het proces is om te bepalen welke aanmeldingen moeten worden gedupliceerd op de doel server. Dit wordt bereikt met een paar SELECT-instructies, een in de logische hoofd database op de bron server en een van de primaire data base zelf.
 
@@ -64,7 +64,7 @@ Alleen een lid van de databaserol db_owner, de dbo-gebruiker of de server beheer
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Zoek de SID voor de aanmeldingen die u in stap 1 hebt geïdentificeerd
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Zoek de SID voor de aanmeldingen die in stap 1 zijn geïdentificeerd
 
 Door de uitvoer van de query's uit de vorige sectie te vergelijken en te voldoen aan de Sid's, kunt u de aanmelding van de server toewijzen aan de database gebruiker. Aanmeldingen met een database gebruiker met een overeenkomende SID hebben gebruikers toegang tot die data base als de gebruikers-principal van de data base.
 
@@ -77,7 +77,7 @@ De volgende query kan worden gebruikt om alle gebruikers-principals en hun Sid's
 > [!NOTE]
 > De **INFORMATION_SCHEMA** -en **sys** -gebruikers hebben *Null* -sid's en de **gast** -sid is **0x00**. De **dbo** -sid kan beginnen met *0x01060000000001648000000000048454*, als de maker van de data base de server beheerder is in plaats van een lid van **DbManager**.
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. De aanmeldingen maken op de doel server
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. de aanmeldingen maken op de doel server
 
 De laatste stap is om naar de doel server of servers te gaan en de aanmeldingen te genereren met de juiste Sid's. De basis syntaxis is als volgt.
 
@@ -96,7 +96,7 @@ De laatste stap is om naar de doel server of servers te gaan en de aanmeldingen 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [SQL database Security: voor meer informatie over het beheren van toegang tot data bases en aanmeldingen. Toegang tot data bases en](sql-database-manage-logins.md)aanmeldings beveiliging beheren.
+* Voor meer informatie over het beheren van database toegang en-aanmeldingen raadpleegt u [SQL database beveiliging: toegang tot data base beheren en beveiliging voor aanmelden](sql-database-manage-logins.md).
 * Zie [Inge sloten database gebruikers-uw data base draagbaar maken](https://msdn.microsoft.com/library/ff929188.aspx)voor meer informatie over Inge sloten database gebruikers.
 * Zie [actieve geo-replicatie](sql-database-active-geo-replication.md)voor meer informatie over actieve geo-replicatie.
 * Zie [groepen met automatische failover](sql-database-auto-failover-group.md)voor meer informatie over groepen met automatische failover.

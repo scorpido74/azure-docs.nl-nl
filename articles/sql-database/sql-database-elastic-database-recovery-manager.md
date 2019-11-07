@@ -1,5 +1,5 @@
 ---
-title: Recovery Manager voor het oplossen van problemen met Shard-kaarten | Microsoft Docs
+title: Recovery Manager gebruiken om problemen met Shard-kaarten op te lossen
 description: De klasse toewijzingen oplossen gebruiken om problemen met Shard-kaarten op te lossen
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cbc4985f032c228db7a9ddf719390bbf2d0166b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5920f0a3f08d83b1300956ca830b3b9b827fa5e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568699"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690484"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Problemen met shard-toewijzingen oplossen met de RecoveryManager-klasse
 
@@ -42,7 +42,7 @@ De GSM-en LSM kunnen om de volgende redenen niet meer worden gesynchroniseerd:
 
 Zie het volgende voor meer informatie over Azure SQL Database Elastic Database-hulpprogram ma's, geo-replicatie en herstel:
 
-* [Krijgt Bedrijfs continuïteit in de Cloud en herstel na een Data Base met SQL Database](sql-database-business-continuity.md)
+* [Overzicht: bedrijfs continuïteit in de Cloud en herstel na een Data Base met SQL Database](sql-database-business-continuity.md)
 * [Aan de slag met hulpprogram ma's voor Elastic data base](sql-database-elastic-scale-get-started.md)  
 * [ShardMap-beheer](sql-database-elastic-scale-shard-map-management.md)
 

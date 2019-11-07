@@ -1,6 +1,6 @@
 ---
 title: Beheer van toepassingslevenscyclus
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Best practices voor toepassings levenscyclus beheer Toep assen in de klassieke versie van Azure Machine Learning Studio
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ce1a398939a65bb47c74f00159b667c3659f5a93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5e2ee72c30933305356cd2a7792d1972fa938da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467000"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684721"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Beheer van toepassings levenscyclus in Azure Machine Learning Studio (klassiek)
 Azure Machine Learning Studio (klassiek) is een hulp programma voor het ontwikkelen van machine learning experimenten die operationeel zijn in het Azure-Cloud platform. Het is vergelijkbaar met de Visual Studio IDE en de schaal bare Cloud service die is samengevoegd met één platform. U kunt standaard ALM-procedures (Application Lifecycle Management) opnemen van het versie beheer van verschillende assets tot geautomatiseerde uitvoering en implementatie, in de klassieke versie van Azure Machine Learning Studio. In dit artikel worden enkele van de opties en benaderingen besproken.
@@ -96,4 +96,4 @@ Een belang rijk aspect van ALM is om het uitvoerings-en implementatie proces van
 ## <a name="next-steps"></a>Volgende stappen
 * Down load de [Azure machine learning Studio (klassieke) Power shell](https://aka.ms/amlps) -module en start uw ALM-taken.
 * Meer informatie over hoe u [een groot aantal ml modellen maakt en beheert met behulp van een enkel experiment](create-models-and-endpoints-with-powershell.md) via Power shell en retraining-API.
-* Meer informatie over het [implementeren van Azure machine learning-webservices](publish-a-machine-learning-web-service.md).
+* Meer informatie over het [implementeren van Azure machine learning-webservices](deploy-a-machine-learning-web-service.md).

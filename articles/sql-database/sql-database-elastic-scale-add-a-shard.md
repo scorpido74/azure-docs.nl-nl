@@ -1,5 +1,5 @@
 ---
-title: Een Shard toevoegen met behulp van hulpprogram ma's voor Elastic data base | Microsoft Docs
+title: Een Shard toevoegen met Elastic data base-hulpprogram ma's
 description: Hoe u Elastic Scale-Api's kunt gebruiken om nieuwe Shards toe te voegen aan een Shard-set.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 679c1bea640644cd46c436ec04278558f610ceda
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568517"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690350"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Een Shard toevoegen met behulp van Elastic Database-hulpprogram ma's
 
@@ -78,6 +78,6 @@ upd.Shard = shard2;
 sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd));
 ```
 
-**Belang rijk**:  Gebruik deze techniek alleen als u zeker weet dat het bereik voor de bijgewerkte toewijzing leeg is.  Met de voor gaande methoden worden geen gegevens gecontroleerd voor het bereik dat wordt verplaatst, zodat het het beste is om cheques in uw code op te neemt.  Als er rijen bestaan in het bereik dat wordt verplaatst, komt de werkelijke gegevens distributie niet overeen met de bijgewerkte Shard-toewijzing. Gebruik het [hulp programma voor splitsen en samen voegen](sql-database-elastic-scale-overview-split-and-merge.md) om in plaats daarvan de bewerking uit te voeren.  
+**Belang rijk**: gebruik deze techniek alleen als u zeker weet dat het bereik voor de bijgewerkte toewijzing leeg is.  Met de voor gaande methoden worden geen gegevens gecontroleerd voor het bereik dat wordt verplaatst, zodat het het beste is om cheques in uw code op te neemt.  Als er rijen bestaan in het bereik dat wordt verplaatst, komt de werkelijke gegevens distributie niet overeen met de bijgewerkte Shard-toewijzing. Gebruik het [hulp programma voor splitsen en samen voegen](sql-database-elastic-scale-overview-split-and-merge.md) om in plaats daarvan de bewerking uit te voeren.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

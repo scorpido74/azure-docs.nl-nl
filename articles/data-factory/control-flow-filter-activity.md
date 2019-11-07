@@ -1,5 +1,5 @@
 ---
-title: Activiteit filteren in Azure Data Factory | Microsoft Docs
+title: Activiteit in Azure Data Factory filteren
 description: Met de filter activiteit worden de invoer filters gefilterd.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915514"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679859"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Activiteit in Azure Data Factory filteren
 U kunt een filter activiteit in een pijp lijn gebruiken om een filter expressie toe te passen op een invoer matrix. 
@@ -36,16 +36,16 @@ U kunt een filter activiteit in een pijp lijn gebruiken om een filter expressie 
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Description | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van `Filter` de activiteit. | Tekenreeks | Ja
-Type | Moet worden ingesteld op **filter**. | Tekenreeks | Ja
-condition | De voor waarde die moet worden gebruikt voor het filteren van de invoer. | Expressie | Ja
-items | Invoer matrix waarop het filter moet worden toegepast. | Expressie | Ja
+naam | De naam van de `Filter` activiteit. | Tekenreeks | Ja
+type | Moet worden ingesteld op **filter**. | Tekenreeks | Ja
+regeling | De voor waarde die moet worden gebruikt voor het filteren van de invoer. | Expressie | Ja
+vermeldingen | Invoer matrix waarop het filter moet worden toegepast. | Expressie | Ja
 
 ## <a name="example"></a>Voorbeeld
 
-In dit voor beeld heeft de pijp lijn twee activiteiten: **Filter** en **foreach**. De filter activiteit is zo geconfigureerd dat de invoer matrix wordt gefilterd op items met een waarde die groter is dan 3. De ForEach-activiteit doorloopt vervolgens de gefilterde waarden en stelt de variabele **test** in op de huidige waarde.
+In dit voor beeld heeft de pijp lijn twee activiteiten: **filter** en **foreach**. De filter activiteit is zo geconfigureerd dat de invoer matrix wordt gefilterd op items met een waarde die groter is dan 3. De ForEach-activiteit doorloopt vervolgens de gefilterde waarden en stelt de variabele **test** in op de huidige waarde.
 
 ```json
 {

@@ -1,22 +1,19 @@
 ---
 title: Een faserings omgeving instellen in azure lente-Cloud | Microsoft Docs
 description: Meer informatie over het gebruik van een Blue-groene implementatie met Azure veer Cloud
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 454eeaa2568891ec35fe698cdb20c5448e10887e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: conceptual
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 24ce4dee04e4daf3eaee4144f8dc56de5867bbca
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038984"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607214"
 ---
-# <a name="how-to-set-up-a-staging-environment"></a>Een faserings omgeving instellen
+# <a name="how-to-set-up-a-staging-environment"></a>Een faseringsomgeving instellen
 
 In dit artikel wordt uitgelegd hoe u een faserings implementatie kunt gebruiken met behulp van het Blue-groen implementatie patroon in azure lente-Cloud. Ook wordt uitgelegd hoe u de faserings implementatie in productie brengt zonder de productie-implementatie rechtstreeks te wijzigen.
 
@@ -26,26 +23,18 @@ In dit artikel wordt ervan uitgegaan dat u de PiggyMetrics-toepassing al hebt ge
 
 Als u een andere toepassing hebt die u voor dit voor beeld wilt gebruiken, moet u een eenvoudige wijziging aanbrengen in een openbaar gericht deel van de toepassing.  Deze wijziging is van invloed op uw staging-implementatie van productie.
 
->[!NOTE]
-> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service wordt u gevraagd om contact met ons op te nemen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  Als u de mogelijkheden van Azure lente Cloud wilt verkennen, kunt u contact met ons opnemen via e-mail: azure-spring-cloud@service.microsoft.com.
-
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren.  Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, JDK, maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u uw [Azure Cloud shell](https://shell.azure.com) vanuit shell.Azure.com.  [Lees onze documentatie](../cloud-shell/overview.md) voor meer informatie over Azure Cloud shell.
 
 Om dit artikel te volt ooien:
 
-1. [Git installeren](https://git-scm.com/)
-1. [JDK 8 installeren](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-1. [Maven 3,0 of hoger installeren](https://maven.apache.org/download.cgi)
-1. [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-1. [Registreren voor een Azure-abonnement](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>De Azure CLI-extensie installeren
 
 Installeer de Azure veer Cloud-extensie voor de Azure CLI met behulp van de volgende opdracht
 
 ```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
     
 ## <a name="view-all-deployments"></a>Alle implementaties weer geven
@@ -79,10 +68,10 @@ Ga naar uw service-exemplaar in het Azure Portal en selecteer **implementatie be
 
 >[!TIP]
 > * Controleer of het eind punt van de test eindigt op '/' om ervoor te zorgen dat de CSS correct wordt geladen.  
-> * Als uw browser vereist dat u aanmeldings referenties opgeeft om de pagina weer te geven, gebruikt u de [URL decoderen](https://www.urldecoder.org/) om uw test eindpunt te decoderen. URL decoderen retourneert een URL in de vorm "https://\<username >: \<password > @ \<cluster-name >. test. azureapps. io/gateway/Green".  Gebruik dit om toegang te krijgen tot uw eind punt.
+> * Als uw browser vereist dat u aanmeldings referenties opgeeft om de pagina weer te geven, gebruikt u de [URL decoderen](https://www.urldecoder.org/) om uw test eindpunt te decoderen. Het decoderen van de URL retourneert een URL in de vorm "https://\<gebruikers naam >:\<wacht woord > @\<cluster naam >. test. azureapps. io/gateway/Green".  Gebruik dit om toegang te krijgen tot uw eind punt.
 
 >[!NOTE]    
-> De instellingen van de configuratie server zijn van toepassing op uw faserings omgeving en productie. Als u bijvoorbeeld het context pad (`server.servlet.context-path`) voor uw app-gateway in de configuratie server instelt als *somepath*, wordt het pad naar uw groene implementatie gewijzigd: "https://\<username >: \<password > @ \<cluster-name >. test. azureapps. io/ Gateway/groen/somepath/... "
+> De instellingen van de configuratie server zijn van toepassing op uw faserings omgeving en productie. Als u bijvoorbeeld het context pad (`server.servlet.context-path`) voor uw app-gateway in de configuratie server instelt als *somepath*, wordt het pad naar uw groene implementatie gewijzigd: ' https://\<gebruikers naam >:\<wacht woord > @\<cluster naam >. test.azureapps.io/gateway/green/somepath/... '
  
  Als u op dit moment naar uw open bare gateway voor apps gaat, ziet u de oude pagina zonder uw nieuwe wijziging.
     

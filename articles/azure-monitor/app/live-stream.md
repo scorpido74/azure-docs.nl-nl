@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d85688d297eb0df00e71f388b2a3350eabe5f6d5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 69aaa61bb0be9a5f07de85ff4ef81b28a86aefaa
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817196"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575620"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
@@ -29,7 +29,7 @@ Met Live Metrics Stream kunt u het volgende doen:
 * Bewaak elk Windows-prestatie meter item Live.
 * U kunt eenvoudig een server identificeren die problemen ondervindt en alle KPI/live-feed filteren op alleen die server.
 
-[video van![Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[video van ![Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
 Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Functions-, Java-en node. js-apps.
 
@@ -45,13 +45,9 @@ Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Fu
 
 4. [Beveilig het besturings kanaal](#secure-the-control-channel) als u gevoelige gegevens zoals klant namen in uw filters kunt gebruiken.
 
-### <a name="nodejs"></a>Node.js
+### <a name="no-data-check-your-server-firewall"></a>Zijn er geen gegevens? Controleer de firewall van uw server
 
-Als u live metrieken met node. js wilt gebruiken, moet u bijwerken naar versie 1,30 of hoger van de SDK. Dynamische metrische gegevens worden standaard uitgeschakeld in de node. js-SDK. Als u live metrics wilt inschakelen, voegt u `setSendLiveMetrics(true)` toe aan uw [configuratie methoden](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) tijdens het initialiseren van de SDK.
-
-### <a name="no-data-check-your-server-firewall"></a>Geen gegevens? Controleer de firewall van uw server
-
-Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers. 
+Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) zijn geopend in de firewall van uw servers.
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Hoe verschilt Live Metrics Stream van Metrics Explorer en Analytics?
 
@@ -61,14 +57,14 @@ Controleer of de [uitgaande poorten voor Live Metrics stream](../../azure-monito
 |Geen Bewaar periode|De gegevens blijven behouden in de grafiek en vervolgens verwijderd|[Gegevens die gedurende 90 dagen worden bewaard](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |Op aanvraag|Gegevens worden gestreamd tijdens het openen van Live metrieken|Er worden gegevens verzonden wanneer de SDK is geïnstalleerd en ingeschakeld|
 |Gratis|Er worden geen kosten in rekening gebracht voor Live Stream gegevens|Onderworpen aan [prijzen](../../azure-monitor/app/pricing.md)
-|Sampling|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
-|Besturings kanaal|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie in één richting, naar de portal|
+|Steekproeven|Alle geselecteerde metrische gegevens en tellers worden verzonden. Voor beelden van fouten en stack traceringen zijn. TelemetryProcessors worden niet toegepast.|Gebeurtenissen kunnen worden [bemonsterd](../../azure-monitor/app/api-filtering-sampling.md)|
+|Besturings kanaal|Filter besturings signalen worden naar de SDK verzonden. U wordt aangeraden dit kanaal te beveiligen.|Communicatie is een manier, naar de portal|
 
 ## <a name="select-and-filter-your-metrics"></a>Uw metrische gegevens selecteren en filteren
 
 (Beschikbaar met ASP.NET, ASP.NET Core en Azure Functions (v2).)
 
-U kunt een aangepaste KPI Live bewaken door wille keurige filters toe te passen op Application Insights telemetrie vanuit de portal. Klik op het filter besturings element dat laat zien wanneer u met de muis aanwijzer op een van de grafieken klikt. In het volgende diagram wordt een KPI van een aangepast aanvraag aantal getekend met filters voor de kenmerken URL en duration. Valideer uw filters met behulp van de sectie voor beeld van de stream, waarin een live-feed van de telemetrie wordt weer gegeven die overeenkomt met de criteria die u op een bepaald moment hebt opgegeven. 
+U kunt een aangepaste KPI Live bewaken door wille keurige filters toe te passen op Application Insights telemetrie vanuit de portal. Klik op het filter besturings element dat laat zien wanneer u met de muis aanwijzer op een van de grafieken klikt. In het volgende diagram wordt een KPI van een aangepast aanvraag aantal getekend met filters voor de kenmerken URL en duration. Valideer uw filters met behulp van de sectie voor beeld van de stream, waarin een live-feed van de telemetrie wordt weer gegeven die overeenkomt met de criteria die u op een bepaald moment hebt opgegeven.
 
 ![KPI aangepaste aanvraag](./media/live-stream/live-stream-filteredMetric.png)
 
@@ -100,14 +96,6 @@ Bekijk de details van een item in de live feed door erop te klikken. U kunt de f
 Als u een bepaalde serverrol wilt bewaken, kunt u filteren op server.
 
 ![Voorbeeld Live-fouten](./media/live-stream/live-stream-filter.png)
-
-## <a name="sdk-requirements"></a>SDK-vereisten
-
-### <a name="net"></a>.NET
-Aangepaste Live Metrics Stream is beschikbaar met versie 2.4.0-beta2 of hoger van [Application INSIGHTS SDK voor Internet](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/). Vergeet niet om de optie ' include Prerelease ' te selecteren in NuGet Package Manager.
-
-### <a name="nodejs"></a>Node.js
-Live Metrics Stream is beschikbaar met versie 1.3.0 of hoger van de [Application INSIGHTS SDK voor node. js](https://npmjs.com/package/applicationinsights). Vergeet niet om `setSendLiveMetrics(true)` te gebruiken tijdens het configureren van de SDK in uw code.
 
 ## <a name="secure-the-control-channel"></a>Het besturings kanaal beveiligen
 De criteria voor aangepaste filters die u opgeeft, worden teruggestuurd naar het onderdeel Live Metrics in de SDK van Application Insights. De filters kunnen mogelijk gevoelige informatie bevatten, zoals customerIDs. U kunt het kanaal veilig maken met een geheime API-sleutel naast de instrumentatie sleutel.
@@ -165,7 +153,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ### <a name="azure-function-apps"></a>Azure function-apps
 
-Voor Azure function-apps (v2) die het kanaal beveiligen met een API-sleutel kan worden uitgevoerd met een omgevings variabele. 
+Voor Azure function-apps (v2) kunt u het kanaal beveiligen met een API-sleutel door een omgevings variabele te gebruiken.
 
 Maak een API-sleutel vanuit uw Application Insights-resource en ga naar **Toepassings instellingen** voor uw functie-app. Selecteer **nieuwe instelling toevoegen** en voer een naam in voor `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` en een waarde die overeenkomt met uw API-sleutel.
 
@@ -193,11 +181,30 @@ Als u echter alle verbonden servers herkent en vertrouwt, kunt u de aangepaste f
 >We raden u ten zeerste aan het geverifieerde kanaal in te stellen voordat u mogelijk gevoelige informatie, zoals KlantId, in de filter criteria invoert.
 >
 
+## <a name="supported-features-table"></a>Tabel met ondersteunde functies
+
+| Taal                         | Basis gegevens       | Metrische gegevens voor prestaties | Aangepast filteren    | Voor beeld-telemetrie    | CPU-splitsing per proces |
+|----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
+| .NET                             | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +) | Ondersteund (V 2.7.2 +)  |
+| .NET core (target =. NET Framework)| Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +)  |
+| .NET core (target =. NET core)     | Ondersteund (V 2.4.1 +) | Ondersteund*          | Ondersteund (V 2.4.1 +) | Ondersteund (V 2.4.1 +) | **Niet ondersteund**    |
+| Azure Functions v2               | Ondersteund           | Ondersteund           | Ondersteund           | Ondersteund           | **Niet ondersteund**    |
+| Java                             | Ondersteund (V 2.0.0 +) | Ondersteund (V 2.0.0 +) | **Niet ondersteund**   | **Niet ondersteund**   | **Niet ondersteund**    |
+| Node.js                          | Ondersteund (V 1.3.0 +) | Ondersteund (V 1.3.0 +) | **Niet ondersteund**   | Ondersteund (V 1.3.0 +) | **Niet ondersteund**    |
+
+Basis metrieken zijn onder andere aanvraag, afhankelijkheid en uitzonderings frequentie. Prestatie gegevens (prestatie meter items) zijn onder andere geheugen en CPU. Voor beeld-telemetrie toont een stroom van gedetailleerde informatie over mislukte aanvragen en afhankelijkheden, uitzonde ringen, gebeurtenissen en traceringen.
+
+ \* PerfCounters-ondersteuning verschilt enigszins per versie van .NET core die niet gericht is op de .NET Framework:
+
+- PerfCounters-metrische gegevens worden ondersteund wanneer in Azure App Service voor Windows wordt uitgevoerd. (AspNetCore SDK-versie 2.4.1 of hoger)
+- PerfCounters worden ondersteund wanneer de app wordt uitgevoerd op een Windows-machine (VM of Cloud service of on-premises, enz.) (AspNetCore SDK-versie 2.7.1 of hoger), maar voor apps die zijn gericht op .NET Core 2,0 of hoger.
+- PerfCounters worden ondersteund wanneer de app overal (Linux, Windows, app service voor Linux, containers, enzovoort) wordt uitgevoerd in de nieuwste bèta versie (dat wil zeggen AspNetCore SDK-versie 2.8.0-beta1 of hoger), maar voor apps die zijn gericht op .NET Core 2,0 of hoger.
+
+Dynamische metrische gegevens worden standaard uitgeschakeld in de node. js-SDK. Als u live metrics wilt inschakelen, voegt u `setSendLiveMetrics(true)` toe aan uw [configuratie methoden](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) wanneer u de SDK initialiseert.
+
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt een andere IP-adres dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](../../azure-monitor/app/ip-addresses.md) zijn geopend in uw firewall.
-
-
+Zijn er geen gegevens? Als uw toepassing zich in een beveiligd netwerk bevindt: Live Metrics Stream gebruikt andere IP-adressen dan andere Application Insights telemetrie. Zorg ervoor dat [deze IP-adressen](../../azure-monitor/app/ip-addresses.md) zijn geopend in uw firewall.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Gebruik controleren met Application Insights](../../azure-monitor/app/usage-overview.md)

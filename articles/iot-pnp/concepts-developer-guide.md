@@ -7,12 +7,12 @@ ms.date: 07/05/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d5247454fe65e5539a2401330192f1db9a65114
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880564"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581628"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Ontwikkelaars handleiding voor IoT Plug en Play preview-modellen
 
@@ -58,14 +58,14 @@ Een mogelijkheidsprofiel heeft enkele vereiste velden:
 
 Elk item in de lijst met interfaces in de sectie implements heeft een:
 
-- `name`: de programmeer naam van de interface.
+- `name`: de naam van de programmering van de interface.
 - `schema`: de interface die het functionaliteits model implementeert.
 
 Er zijn aanvullende optionele velden die u kunt gebruiken om meer informatie toe te voegen aan het mogelijkheidsprofiel, zoals weergave naam en beschrijving. Interfaces die zijn gedeclareerd in een mogelijkheidsprofiel, kunnen worden beschouwd als onderdelen van het apparaat. Voor de open bare preview mag de interface lijst slechts één item per schema bevatten.
 
 ## <a name="interface"></a>Interface
 
-Met DTDL beschrijft u de mogelijkheden van uw apparaat met behulp van interfaces. Interfaces beschrijven de _Eigenschappen_,telemetrie en _opdrachten_ die een deel van uw apparaat implementeert:
+Met DTDL beschrijft u de mogelijkheden van uw apparaat met behulp van interfaces. Interfaces beschrijven de _Eigenschappen_, _telemetrie_en _opdrachten_ die een deel van uw apparaat implementeert:
 
 - `Properties`. Eigenschappen zijn gegevens velden die de status van uw apparaat vertegenwoordigen. Gebruik eigenschappen om de duurzame status van het apparaat aan te geven, zoals de status aan van een pomp van een koel vloeistof. Eigenschappen kunnen ook basis eigenschappen van apparaten vertegenwoordigen, zoals de firmware versie van het apparaat. U kunt eigenschappen declareren als alleen-lezen of beschrijfbaar.
 - `Telemetry`. Telemetrie-velden vertegenwoordigen metingen van Sens oren. Wanneer uw apparaat een sensor meting afneemt, moet er een telemetrie-gebeurtenis worden verzonden die de sensor gegevens bevat.
@@ -84,7 +84,7 @@ In het volgende voor beeld wordt de interface voor een thermo staat weer gegeven
       "schema": "double"
     }
   ],
-  "@context": "http://azureiot.com/v1/contexts/Interface.json"
+  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
 }
 ```
 
@@ -93,17 +93,17 @@ Een interface bevat enkele vereiste velden:
 - `@id`: een unieke ID in de vorm van een eenvoudige, uniforme resource naam.
 - `@type`: declareert dat dit object een interface is.
 - `@context`: Hiermee geeft u de DTDL-versie op die voor de interface wordt gebruikt.
-- `contents`: hier worden de eigenschappen, telemetrie en opdrachten vermeld die het apparaat vormen.
+- `contents`: Hier vindt u een lijst met de eigenschappen, telemetrie en opdrachten waaruit uw apparaat is opgebouwd.
 
 In dit eenvoudige voor beeld is er slechts één telemetrie-veld. Een minimale veld Beschrijving heeft een:
 
-- `@type`: Hiermee geeft u het type mogelijkheid `Telemetry`: `Property`, of `Command`.
-- `name`: Hiermee geeft u de naam van de telemetrie-waarde op.
+- `@type`: Hiermee geeft u het type mogelijkheid op: `Telemetry`, `Property`of `Command`.
+- `name`: geeft de naam van de telemetrie-waarde.
 - `schema`: Hiermee geeft u het gegevens type voor de telemetrie op. Deze waarde kan een primitief type zijn, zoals double, integer, Boolean of string. Complexe object typen, matrices en Maps worden ook ondersteund.
 
 Met andere optionele velden, zoals weergave naam en-beschrijving, kunt u meer details toevoegen aan de interface en de mogelijkheden.
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Eigenschappen
 
 Eigenschappen zijn standaard alleen-lezen. Alleen-lezen eigenschappen betekenen dat het apparaat de waarde-instellingen van de eigenschapwaarde rapporteert aan uw IoT-hub. Uw IoT-hub kan de waarde van een alleen-lezen eigenschap niet instellen.
 
@@ -111,7 +111,7 @@ U kunt een eigenschap ook markeren als beschrijfbaar op een interface. Een appar
 
 Apparaten hoeven geen verbinding te zijn om eigenschaps waarden in te stellen. De bijgewerkte waarden worden overgebracht wanneer het apparaat de volgende keer verbinding maakt met de hub. Dit gedrag is van toepassing op zowel alleen-lezen als schrijf bare eigenschappen.
 
-Gebruik eigenschappen niet voor het verzenden van telemetrie van uw apparaat. Een ReadOnly-eigenschap zoals `temperatureSetting=80` bijvoorbeeld moet betekenen dat de temperatuur van het apparaat is ingesteld op 80 en dat het apparaat probeert te krijgen, of op deze Tempe ratuur blijft.
+Gebruik eigenschappen niet voor het verzenden van telemetrie van uw apparaat. Zo moet bijvoorbeeld een alleen-lezen eigenschap zoals `temperatureSetting=80` betekenen dat de temperatuur van het apparaat is ingesteld op 80 en dat het apparaat probeert te krijgen, of dat het op deze Tempe ratuur blijft.
 
 Voor Beschrijf bare eigenschappen retourneert de apparaatnaam een gewenste status code, versie en beschrijving om aan te geven of de toepassing de eigenschaps waarde heeft ontvangen en toegepast.
 
@@ -127,11 +127,11 @@ Opdrachten zijn ofwel synchroon of asynchroon. Een synchrone opdracht moet stand
 
 Gebruik asynchrone opdrachten voor langlopende bewerkingen. Het apparaat verzendt voortgangs informatie met behulp van telemetrie-berichten. Deze voortgangs berichten hebben de volgende header-eigenschappen:
 
-- `iothub-command-name`: de naam van de opdracht, `UpdateFirmware`bijvoorbeeld.
-- `iothub-command-request-id`: de aanvraag-ID die is gegenereerd aan de server zijde en die tijdens de eerste aanroep naar het apparaat wordt verzonden.
-- `iothub-interface-id`:  De ID van de interface waarop deze opdracht is gedefinieerd, bijvoorbeeld `urn:example:AssetTracker:1`.
- `iothub-interface-name`: de naam van de instantie van deze interface, `myAssetTracker`bijvoorbeeld.
-- `iothub-command-statuscode`: de status code die is geretourneerd van het apparaat, `202`bijvoorbeeld.
+- `iothub-command-name`: de naam van de opdracht, bijvoorbeeld `UpdateFirmware`.
+- `iothub-command-request-id`: de aanvraag-ID die aan de server zijde is gegenereerd en die tijdens de eerste aanroep naar het apparaat wordt verzonden.
+- `iothub-interface-id`: de ID van de interface waarop deze opdracht is gedefinieerd, bijvoorbeeld `urn:example:AssetTracker:1`.
+ `iothub-interface-name`: de naam van de instantie van deze interface, bijvoorbeeld `myAssetTracker`.
+- `iothub-command-statuscode`: de status code die van het apparaat is geretourneerd, bijvoorbeeld `202`.
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
@@ -184,15 +184,15 @@ Met IoT Plug en Play kunt u apparaten gebruiken die hun mogelijkheden hebben ger
 
 Als u een IoT-Plug en Play apparaat wilt gebruiken dat is verbonden met uw IoT-hub, gebruikt u de IoT Hub REST API of een van de IoT-taal-Sdk's. De volgende voor beelden gebruiken de IoT Hub REST API.
 
-Als u de waarde van een eigenschap apparaat wilt ophalen, zoals de firmware versie`fwVersion`() in `DeviceInformation` de interface van de Thermo staat, gebruikt u de digitale apparaatdubbels rest API.
+Als u de waarde van een eigenschap apparaat wilt ophalen, zoals de firmware versie (`fwVersion`) in de `DeviceInformation`-interface in de Thermo staat, gebruikt u de REST API van de digitale apparaatdubbels.
 
-Als uw Thermo staat-apparaat `t-123`wordt aangeroepen, krijgt u alle eigenschappen die door uw apparaat worden geïmplementeerd met een rest API Get-aanroep:
+Als uw Thermo staat-apparaat `t-123`heet, krijgt u de alle eigenschappen die door uw apparaat worden geïmplementeerd met een REST API GET-aanroep:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Meer in het algemeen zijn alle eigenschappen toegankelijk met deze rest API sjabloon `{device-id}` , waarbij de id voor het apparaat is:
+Meer in het algemeen zijn alle eigenschappen toegankelijk met deze REST API sjabloon waarbij `{device-id}` de id voor het apparaat is:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
@@ -204,13 +204,13 @@ Als u de naam van de interface kent en de eigenschappen voor die specifieke inte
 GET /digitalTwins/t-123/interfaces/info
 ```
 
-Meer in het algemeen zijn eigenschappen van een specifieke interface toegankelijk via deze rest API sjabloon, `device-id` waarbij de id voor het apparaat is `{interface-name}` en de naam van de interface is:
+Meer in het algemeen zijn de eigenschappen voor een specifieke interface toegankelijk via deze REST API sjabloon, waarbij `device-id` de id voor het apparaat is en `{interface-name}` de naam van de interface is:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-U kunt IoT Plug en Play-opdrachten rechtstreeks aanroepen. Als de `Thermostat` interface in het `t-123` apparaat een `restart` opdracht heeft, kunt u deze aanroepen met een rest API post-aanroep:
+U kunt IoT Plug en Play-opdrachten rechtstreeks aanroepen. Als de `Thermostat` interface in het `t-123`-apparaat een `restart`-opdracht heeft, kunt u deze aanroepen met een aanroep REST API POST:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
@@ -218,8 +218,8 @@ POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 
 Meer in het algemeen kunnen opdrachten worden aangeroepen via deze REST API sjabloon:
 
-- `device-id`: de id voor het apparaat.
-- `interface-name`: de naam van de interface in de sectie implements in het model van het apparaat.
+- `device-id`: de id van het apparaat.
+- `interface-name`: de naam van de interface uit de sectie implements in het functionaliteits model van het apparaat.
 - `command-name`: de naam van de opdracht.
 
 ```REST

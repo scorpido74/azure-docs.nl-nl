@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met tijdelijke tabellen in Azure SQL Database | Microsoft Docs
+title: Aan de slag met tijdelijke tabellen in Azure SQL Database
 description: Meer informatie over hoe u met tijdelijke tabellen in Azure SQL Database aan de slag kunt gaan.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 39c19661a71a8b466aa6ff25be9e895189dfbfb3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566368"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686979"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Aan de slag met tijdelijke tabellen in Azure SQL Database
 
@@ -32,7 +32,7 @@ Het database model voor dit scenario is zeer eenvoudig: de metrische gegevens va
 
 Gelukkig hoeft u geen inspanning in uw app te zetten om deze activiteiten gegevens te behouden. Met tijdelijke tabellen wordt dit proces geautomatiseerd, zodat u volledig flexibel bent tijdens het ontwerpen van websites en meer tijd kunt best Eden aan de gegevens analyse zelf. Het enige wat u moet doen, is om ervoor te zorgen dat de **WebSiteInfo** -tabel is geconfigureerd als [tijdelijke systeem versie](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0). De exacte stappen voor het gebruik van tijdelijke tabellen in dit scenario worden hieronder beschreven.
 
-## <a name="step-1-configure-tables-as-temporal"></a>Stap 1: Tabellen als tijdelijk configureren
+## <a name="step-1-configure-tables-as-temporal"></a>Stap 1: tabellen configureren als tijdelijke
 Afhankelijk van of u nu een nieuwe ontwikkeling start of een bestaande toepassing bijwerkt, maakt u tijdelijke tabellen of wijzigt u bestaande door tijdelijke kenmerken toe te voegen. In het algemeen geldt dat uw scenario een combi natie van deze twee opties kan zijn. Voer deze actie uit met behulp van [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) of een ander hulp programma voor het ontwikkelen van Transact-SQL.
 
 > [!IMPORTANT]
@@ -82,7 +82,7 @@ WITH (DROP_EXISTING = ON);
 
 Tijdelijke tabellen worden weer gegeven in de Objectverkenner met het specifieke pictogram voor een eenvoudigere identificatie, terwijl de geschiedenis tabel wordt weer geven als een onderliggend knoop punt.
 
-![AlterTable](./media/sql-database-temporal-tables/AzureTemporal4.png)
+![Die kan worden uitgetert](./media/sql-database-temporal-tables/AzureTemporal4.png)
 
 ### <a name="alter-existing-table-to-temporal"></a>Bestaande tabel wijzigen in tijdelijke
 We gaan naar het alternatieve scenario waarin de WebsiteUserInfo-tabel al bestaat, maar is niet ontworpen om een geschiedenis van wijzigingen te bijhouden. In dit geval kunt u de bestaande tabel gewoon uitbreiden om tijdelijk te worden, zoals wordt weer gegeven in het volgende voor beeld:
@@ -105,7 +105,7 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>Stap 2: Uw workload regel matig uitvoeren
+## <a name="step-2-run-your-workload-regularly"></a>Stap 2: uw workload regel matig uitvoeren
 Het belangrijkste voor deel van tijdelijke tabellen is dat u uw website niet hoeft te wijzigen of aanpassen op een manier om wijzigingen op te sporen. Nadat de tijdelijke tabellen zijn gemaakt, blijven de eerdere rijkoppen telkens wanneer u wijzigingen op uw gegevens uitvoert transparant persistent. 
 
 Als u wilt gebruikmaken van automatische wijzigingen bijhouden voor dit specifieke scenario, kunt u de kolom **PagesVisited** altijd bijwerken telkens wanneer een gebruiker de sessie op de website beëindigt:
@@ -119,7 +119,7 @@ Het is belang rijk te weten dat de update query niet de exacte tijd hoeft te ken
 
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
-## <a name="step-3-perform-historical-data-analysis"></a>Stap 3: Historische gegevens analyse uitvoeren
+## <a name="step-3-perform-historical-data-analysis"></a>Stap 3: historische gegevens analyse uitvoeren
 Als tijdelijke systeem versie beheer nu is ingeschakeld, is historische gegevens analyse slechts één query van u. In dit artikel worden enkele voor beelden gegeven van veelvoorkomende analyse scenario's: voor meer informatie kunt u verschillende opties verkennen, die zijn geïntroduceerd in de [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) -component.
 
 Voer de volgende query uit om de Top 10-gebruikers weer te geven die op het aantal bezochte webpagina's per uur geleden worden besteld:

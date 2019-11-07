@@ -1,6 +1,6 @@
 ---
-title: 'Verbinding maken met Azure Databricks vanuit Excel-, Python of R '
-description: Informatie over het gebruik van het stuurprogramma Simba verbinding maken met Azure Databricks Excel-, Python of R.
+title: 'Verbinding maken met Azure Databricks vanuit Excel, python of R '
+description: Meer informatie over het gebruik van het Simba-stuur programma om Azure Databricks te verbinden met Excel, python of R.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,109 +9,109 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340857"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601949"
 ---
-# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Verbinding maken met Azure Databricks vanuit Excel-, Python of R
+# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Verbinding maken met Azure Databricks vanuit Excel, python of R
 
-In dit artikel leert u hoe u het Databricks ODBC-stuurprogramma voor het verbinding maken met Azure Databricks met Microsoft Excel, Python of R-taal. Nadat u de verbinding tot stand brengen, kunt u de toegang tot de gegevens in Azure Databricks uit de Excel-, Python of R-clients. U kunt ook de clients gebruiken de gegevens verder te analyseren. 
+In dit artikel leert u hoe u het ODBC-stuur programma Databricks kunt gebruiken om verbinding te maken Azure Databricks met micro soft Excel, python of R. Zodra u de verbinding tot stand hebt gebracht, kunt u de gegevens in Azure Databricks openen vanuit de Excel-, python-of R-clients. U kunt ook de-clients gebruiken om de gegevens verder te analyseren. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U moet een Azure Databricks-werkruimte, een Spark-cluster en de voorbeeldgegevens die zijn gekoppeld aan het cluster hebben. Als u nog geen deze vereisten, voert u de Quick Start op [een Spark-taak uitvoeren op Azure Databricks met behulp van de Azure-portal](quickstart-create-databricks-workspace-portal.md).
+* U moet beschikken over een Azure Databricks-werk ruimte, een Spark-cluster en voorbeeld gegevens die zijn gekoppeld aan uw cluster. Als u deze vereisten nog niet hebt, voltooit u de Snelstartgids bij het [uitvoeren van een Spark-taak op Azure Databricks met behulp van de Azure Portal](quickstart-create-databricks-workspace-portal.md).
 
-* Download het Databricks ODBC-stuurprogramma van [Databricks stuurprogramma-downloadpagina](https://databricks.com/spark/odbc-driver-download). Installeer de 32-bits of 64-bits versie, afhankelijk van de toepassing vanaf waar u verbinding maken met Azure Databricks. Bijvoorbeeld als u wilt verbinding maken vanuit Excel, installeert u de 32-bits versie van het stuurprogramma. Als u wilt verbinding maken vanuit R en Python, installeert u de 64-bits versie van het stuurprogramma.
+* Down load het Databricks ODBC-stuur programma van de [Download pagina voor het Databricks-stuur programma](https://databricks.com/spark/odbc-driver-download). Installeer de 32-bits of 64-bits versie, afhankelijk van de toepassing van waaruit u verbinding wilt maken met Azure Databricks. Als u bijvoorbeeld verbinding wilt maken vanuit Excel, installeert u de 32-bits versie van het stuur programma. Als u verbinding wilt maken vanaf R en Python, installeert u de 64-bits versie van het stuur programma.
 
-* Instellen van een persoonlijk toegangstoken in Databricks. Zie voor instructies [management Token](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Stel een persoonlijk toegangs token in op Databricks. Zie [token beheer](/azure/databricks/dev-tools/api/latest/authentication)voor instructies.
 
-## <a name="set-up-a-dsn"></a>Instellen van een DSN-naam
+## <a name="set-up-a-dsn"></a>Een DSN instellen
 
-De naam van een gegevensbron (DSN) bevat informatie over een specifieke gegevensbron. Een ODBC-stuurprogramma moet deze DSN verbinding maken met een gegevensbron. In deze sectie stelt u een DSN-naam die kan worden gebruikt met het Databricks ODBC-stuurprogramma om verbinding maken met Azure Databricks van clients, zoals Microsoft Excel, Python of R.
+Een naam van een gegevens bron (DSN) bevat informatie over een specifieke gegevens bron. Een ODBC-stuur programma heeft deze DSN nodig om verbinding te maken met een gegevens bron. In deze sectie kunt u een DSN instellen die kan worden gebruikt met het ODBC-stuur programma Databricks om verbinding te maken met Azure Databricks van clients zoals micro soft Excel, python of R.
 
-1. Navigeer naar de Databricks-cluster van de Azure Databricks-werkruimte.
+1. Ga in de werk ruimte Azure Databricks naar het Databricks-cluster.
 
-    ![Open Databricks-cluster](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Open Databricks-cluster")
+    ![Databricks-cluster openen](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Databricks-cluster openen")
 
-2. Onder de **configuratie** en klik op de **JDBC/ODBC** tabblad en kopieer de waarden voor **hostnaam Server** en **HTTP-pad**. U moet deze waarden om de stappen in dit artikel te voltooien.
+2. Klik onder het tabblad **configuratie** op het tabblad **JDBC/ODBC** en kopieer de waarden voor de **server hostnaam** en het **http-pad**. U hebt deze waarden nodig om de stappen in dit artikel te volt ooien.
 
-    ![Databricks-configuratie](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks ophalen-configuratie")
+    ![Databricks-configuratie ophalen](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks-configuratie ophalen")
 
-3. Start op uw computer **ODBC-gegevensbronnen** toepassing (32-bits of 64-bits), afhankelijk van de toepassing. Voor verbinding vanuit Excel, gebruikt u de 32-bits versie. Als u wilt verbinding maken vanuit R en Python, gebruikt u de 64-bits versie.
+3. Start op uw computer de **ODBC-gegevens bron** toepassing (32-bits of 64-bits), afhankelijk van de toepassing. Als u verbinding wilt maken vanuit Excel, gebruikt u de 32-bits versie. Gebruik de 64-bits versie om verbinding te maken vanaf R en python.
 
-    ![Starten van ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC-app starten")
+    ![ODBC starten](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC-app starten")
 
-4. Onder de **gebruiker DSN** tabblad **toevoegen**. In de **nieuwe gegevensbron maken** in het dialoogvenster, selecteer de **Simba Spark ODBC-stuurprogramma**, en klik vervolgens op **voltooien**.
+4. Klik op het tabblad **gebruikers-DSN** op **toevoegen**. Selecteer in het dialoog venster **nieuwe gegevens bron maken** het **Simba Spark ODBC-stuur programma**en klik vervolgens op **volt ooien**.
 
-    ![Starten van ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC-app starten")
+    ![ODBC starten](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC-app starten")
 
-5. In de **Simba Spark ODBC-stuurprogramma** dialoogvenster Geef de volgende waarden:
+5. Geef in het dialoog venster **Simba Spark ODBC-stuur programma** de volgende waarden op:
 
-    ![Configureren van DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "-DSN configureren")
+    ![DSN configureren](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "DSN configureren")
 
-    De volgende tabel bevat informatie over de waarden die u moet opgeven in het dialoogvenster.
+    De volgende tabel bevat informatie over de waarden die u kunt opgeven in het dialoog venster.
     
-    |Veld  | Value  |
+    |Veld  | Waarde  |
     |---------|---------|
-    |**Naam van de gegevensbron**     | Geef een naam voor de gegevensbron.        |
-    |**Host(s)**     | Geef de waarde die u hebt gekopieerd uit de Databricks-werkruimte voor *Server hostnaam*.        |
-    |**Poort**     | Voer *443*.        |
-    |**Verificatie** > **mechanisme**     | Selecteer *gebruikersnaam en wachtwoord*.        |
-    |**Gebruikersnaam**     | Voer *token*.        |
-    |**Wachtwoord**     | Voer een waarde voor de token die u hebt gekopieerd uit de Databricks-werkruimte. |
+    |**Naam van gegevens bron**     | Geef een naam op voor de gegevens bron.        |
+    |**Host (s)**     | Geef de waarde op die u hebt gekopieerd uit de Databricks-werk ruimte voor de hostnaam van de *Server*.        |
+    |**Poort**     | Voer *443*in.        |
+    |**Verificatie** > **mechanisme**     | Selecteer de *gebruikers naam en het wacht woord*.        |
+    |**Gebruikersnaam**     | Voer een *token*in.        |
+    |**Wachtwoord**     | Voer de token waarde in die u hebt gekopieerd uit de Databricks-werk ruimte. |
     
-    De volgende aanvullende stappen uitvoeren in het dialoogvenster van de DSN-instelling.
+    Voer de volgende aanvullende stappen uit in het dialoog venster DSN-instellingen.
     
-    * Klik op **opties voor HTTP-** . Plak in het dialoogvenster dat wordt geopend, de waarde voor *HTTP-pad* die u hebt gekopieerd uit de Databricks-werkruimte. Klik op **OK**.
-    * Klik op **SSL-opties**. Selecteer in het dialoogvenster dat wordt geopend, de **SSL inschakelen** selectievakje. Klik op **OK**.
-    * Klik op **testen** voor het testen van de verbinding met Azure Databricks. Klik op **OK** om de configuratie op te slaan.
-    * In de **ODBC-gegevensbronbeheer** in het dialoogvenster, klikt u op **OK**.
+    * Klik op **http-opties**. Plak in het dialoog venster dat wordt geopend de waarde voor het *http-pad* dat u hebt gekopieerd uit de Databricks-werk ruimte. Klik op **OK**.
+    * Klik op **SSL-opties**. Schakel in het dialoog venster dat wordt geopend het selectie vakje **SSL inschakelen** in. Klik op **OK**.
+    * Klik op **testen** om de verbinding met Azure Databricks te testen. Klik op **OK** om de configuratie op te slaan.
+    * Klik in het dialoog venster **ODBC-gegevens bron beheer** op **OK**.
 
-U hebt nu uw DSN instellen. In de volgende secties gebruikt u deze DSN verbinding maken met Azure Databricks vanuit Excel-, Python of R.
+U hebt uw DSN nu ingesteld. In de volgende secties gebruikt u deze DSN om verbinding te maken met Azure Databricks vanuit Excel, python of R.
 
-## <a name="connect-from-microsoft-excel"></a>Verbinding maken via Microsoft Excel
+## <a name="connect-from-microsoft-excel"></a>Verbinding maken vanuit micro soft Excel
 
-In deze sectie maakt ophalen u gegevens uit Azure Databricks in Microsoft Excel met behulp van de DSN die u eerder hebt gemaakt. Voordat u begint, zorg ervoor dat u Microsoft Excel is geïnstalleerd op uw computer hebt. U kunt een evaluatieversie van Excel van [Microsoft Excel-proefversie koppeling](https://products.office.com/excel).
+In deze sectie haalt u gegevens op uit Azure Databricks in micro soft Excel met behulp van de DSN die u eerder hebt gemaakt. Voordat u begint, moet u ervoor zorgen dat micro soft Excel op uw computer is geïnstalleerd. U kunt een proef versie van Excel gebruiken vanuit de [proef koppeling van micro soft Excel](https://products.office.com/excel).
 
-1. Een lege werkmap openen in Microsoft Excel. Uit de **gegevens** lint, klikt u op **gegevens ophalen**. Klik op **van andere bronnen** en klik vervolgens op **uit ODBC**.
+1. Open een lege werkmap in micro soft Excel. Klik in het **gegevens** lint op **gegevens ophalen**. Klik op **van andere bronnen** en klik vervolgens op **van ODBC**.
 
-    ![ODBC vanuit Excel starten](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "ODBC vanuit Excel starten")
+    ![ODBC starten vanuit Excel](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "ODBC starten vanuit Excel")
 
-2. In de **uit ODBC** in het dialoogvenster, selecteer de DSN-naam die u eerder hebt gemaakt en klik vervolgens op **OK**.
+2. Selecteer in het dialoog venster **van ODBC** de DSN die u eerder hebt gemaakt en klik vervolgens op **OK**.
 
-    ![Selecteer DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "DSN selecteren")
+    ![DSN selecteren](./media/connect-databricks-excel-python-r/excel-select-dsn.png "DSN selecteren")
 
-3. Als u wordt gevraagd om referenties, voor de gebruikersnaam van de voert **token**. Voor wachtwoord, geeft u de token waarde die u hebt opgehaald via de Databricks-werkruimte.
+3. Als u wordt gevraagd om referenties, typt u bij gebruikers naam **token**. Geef bij wacht woord de token waarde op die u hebt opgehaald uit de Databricks-werk ruimte.
 
-    ![Geef referenties op voor Databricks](./media/connect-databricks-excel-python-r/excel-databricks-token.png "DSN selecteren")
+    ![Referenties opgeven voor Databricks](./media/connect-databricks-excel-python-r/excel-databricks-token.png "DSN selecteren")
 
-4. Selecteer in het venster navigator, de tabel in Databricks die u wilt laden naar Excel en klik vervolgens op **laden**. 
+4. In het venster navigator selecteert u de tabel in Databricks die u naar Excel wilt laden en klikt u vervolgens op **Load**. 
 
-    ![Dta laden in Excel](./media/connect-databricks-excel-python-r/excel-load-data.png "dta laden in Excel")
+    ![DTA laden in Excel](./media/connect-databricks-excel-python-r/excel-load-data.png "DTA laden in Excel")
 
-Zodra u de gegevens in uw Excel-werkmap hebt, kunt u analytische bewerkingen op kunt uitvoeren.
+Zodra u de gegevens in uw Excel-werkmap hebt, kunt u er analytische bewerkingen op uitvoeren.
 
-## <a name="connect-from-r"></a>Verbinding maken vanuit R
+## <a name="connect-from-r"></a>Verbinding maken vanaf R
 
 > [!NOTE]
-> In deze sectie bevat informatie over het integreren van een R Studio-client die wordt uitgevoerd op het bureaublad met Azure Databricks. Zie voor instructies over het gebruik van R Studio op de Azure Databricks-cluster zelf [R Studio op Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
+> Deze sectie bevat informatie over het integreren van een R Studio-client die op uw bureau blad wordt uitgevoerd met Azure Databricks. Zie [r studio op Azure Databricks](/azure/databricks/spark/latest/sparkr/rstudio)voor instructies over het gebruik van r studio op het Azure Databricks cluster zelf.
 
-In deze sectie maakt u een taal R IDE verwijzen naar gegevens die beschikbaar zijn in Azure Databricks. Voordat u begint, moet u het volgende zijn geïnstalleerd op de computer hebben.
+In deze sectie gebruikt u een R-taal-IDE om te verwijzen naar gegevens die beschikbaar zijn in Azure Databricks. Voordat u begint, moet u het volgende hebben geïnstalleerd op de computer.
 
-* Een IDE voor R-taal. Dit artikel wordt gebruikgemaakt van RStudio Desktop. U kunt installeren vanuit [R Studio downloaden](https://www.rstudio.com/products/rstudio/download/).
-* Als u RStudio Desktop als uw IDE, ook installatie van Microsoft R Client [ https://aka.ms/rclient/ ](https://aka.ms/rclient/). 
+* Een IDE voor R-taal. In dit artikel wordt RStudio gebruikt voor desktop. U kunt dit installeren via [R Studio downloaden](https://www.rstudio.com/products/rstudio/download/).
+* Als u RStudio voor het bureau blad gebruikt als uw IDE, installeert u ook micro soft R client van [https://aka.ms/rclient/](https://aka.ms/rclient/). 
 
-RStudio openen en voer de volgende stappen uit:
+Open RStudio en voer de volgende stappen uit:
 
-- Naslaginformatie over de `RODBC` pakket. Hiermee kunt u verbinding maken met Azure Databricks met behulp van de DSN die u eerder hebt gemaakt.
-- Stel een verbinding met behulp van de DSN-naam.
-- Een SQL-query uitvoeren op de gegevens in Azure Databricks. In het volgende codefragment *radio_sample_data* is een tabel die al in Azure Databricks bestaat.
-- Sommige bewerkingen uitvoeren op de query om te controleren of de uitvoer. 
+- Raadpleeg het `RODBC`-pakket. Hierdoor kunt u verbinding maken met Azure Databricks met behulp van de DSN die u eerder hebt gemaakt.
+- Een verbinding tot stand brengen met behulp van de DSN.
+- Een SQL-query uitvoeren op de gegevens in Azure Databricks. In het volgende code fragment is *radio_sample_data* een tabel die al bestaat in azure Databricks.
+- Voer enkele bewerkingen uit op de query om de uitvoer te controleren. 
 
-Deze taken worden uitgevoerd door het volgende codefragment:
+Met het volgende code fragment worden de volgende taken uitgevoerd:
 
     # reference the 'RODBC' package
     require(RODBC)
@@ -128,24 +128,24 @@ Deze taken worden uitgevoerd door het volgende codefragment:
     # print out the number of rows in the query output
     nrow (res)
 
-## <a name="connect-from-python"></a>Verbinding maken met Python
+## <a name="connect-from-python"></a>Verbinding maken vanuit python
 
-In deze sectie maakt u een Python IDE (zoals niet-actief) verwijzen naar gegevens die beschikbaar zijn in Azure Databricks. Voordat u begint, moet u de volgende vereisten voldoen:
+In deze sectie gebruikt u een python IDE (zoals inactief) om te verwijzen naar gegevens die beschikbaar zijn in Azure Databricks. Voordat u begint, moet u de volgende vereisten volt ooien:
 
-* Installeer Python van [hier](https://www.python.org/downloads/). Python installeren via deze koppeling, installeert ook niet-actief.
+* Installeer python vanaf deze [locatie](https://www.python.org/downloads/). Als u python vanaf deze koppeling installeert, wordt ook inactief geïnstalleerd.
 
-* Installeren vanaf een opdrachtprompt op de computer, de `pyodbc` pakket. Voer de volgende opdracht uit:
+* Installeer het `pyodbc`-pakket vanaf een opdracht prompt op de computer. Voer de volgende opdracht uit:
 
       pip install pyodbc
 
-Niet-actief te openen en voer de volgende stappen uit:
+Open inactief en voer de volgende stappen uit:
 
-- Importeren van de `pyodbc` pakket. Hiermee kunt u verbinding maken met Azure Databricks met behulp van de DSN die u eerder hebt gemaakt.
-- Stel een verbinding met behulp van de DSN die u eerder hebt gemaakt.
--  Een SQL-query uitvoeren met de verbinding dat u hebt gemaakt. In het volgende codefragment *radio_sample_data* is een tabel die al in Azure Databricks bestaat.
-- Bewerkingen uitvoeren op de query om te controleren of de uitvoer.
+- Importeer het `pyodbc`-pakket. Hierdoor kunt u verbinding maken met Azure Databricks met behulp van de DSN die u eerder hebt gemaakt.
+- Een verbinding tot stand brengen met behulp van de DSN die u eerder hebt gemaakt.
+-  Voer een SQL-query uit met behulp van de verbinding die u hebt gemaakt. In het volgende code fragment is *radio_sample_data* een tabel die al bestaat in azure Databricks.
+- Voer bewerkingen uit op de query om de uitvoer te controleren.
 
-Deze taken worden uitgevoerd door het volgende codefragment:
+Met het volgende code fragment worden de volgende taken uitgevoerd:
 
 ```python
 # import the `pyodbc` package:
@@ -165,6 +165,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over bronnen van waar u gegevens in Azure Databricks importeren kunt, [gegevensbronnen voor Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)
+* Zie [gegevens bronnen voor Azure Databricks voor](/azure/databricks/data/data-sources/index) meer informatie over de bronnen waaruit u gegevens kunt importeren in azure Databricks.
 
 

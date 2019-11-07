@@ -1,5 +1,5 @@
 ---
-title: Webactiviteit in Azure Data Factory | Microsoft Docs
+title: Webactiviteit in Azure Data Factory
 description: Meer informatie over het gebruik van webactiviteit, een van de controle stroom activiteiten die door Data Factory worden ondersteund om een REST-eind punt vanuit een pijp lijn aan te roepen.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 73770e559af8a999c17fff5ea1aa6ee53ac17e83
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5929d4edac53b2be87e168b527034c5a473f154f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141586"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678170"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webactiviteit in Azure Data Factory
 De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit.
@@ -63,17 +63,17 @@ De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen 
 
 ## <a name="type-properties"></a>Type-eigenschappen
 
-Eigenschap | Description | Toegestane waarden | Vereist
+Eigenschap | Beschrijving | Toegestane waarden | Vereist
 -------- | ----------- | -------------- | --------
-name | De naam van de Web-activiteit | Tekenreeks | Ja
-Type | Moet worden ingesteld op **webactiviteit**. | Tekenreeks | Ja
-methode | Rest API-methode voor het doel eindpunt. | Tekenreeksexpressie. <br/><br/>Ondersteunde typen: ' GET ', ' POST ', ' PUT ' | Ja
+naam | De naam van de Web-activiteit | Tekenreeks | Ja
+type | Moet worden ingesteld op **webactiviteit**. | Tekenreeks | Ja
+method | Rest API-methode voor het doel eindpunt. | tekenreeksexpressie. <br/><br/>Ondersteunde typen: ' GET ', ' POST ', ' PUT ' | Ja
 url | Doel eindpunt en-pad | Teken reeks (of expressie met het resultType van de teken reeks). Voor de activiteit wordt een time-out van 1 minuut met een fout weer gegeven als er geen reactie van het eind punt wordt ontvangen. | Ja
 koppen | Kopteksten die naar de aanvraag worden verzonden. U kunt bijvoorbeeld de taal en het type van een aanvraag instellen: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Teken reeks (of expressie met het resultType van de teken reeks) | Ja, content-type-header is vereist. `"headers":{ "Content-Type":"application/json"}`
-hoofdtekst | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden.  | Teken reeks (of expressie met het resultType van de teken reeks). <br/><br/>Zie het schema van de sectie aanvraag lading in schema voor de lading van de [aanvraag](#request-payload-schema) . | Vereist voor POST/PUT-methoden.
+organen | Vertegenwoordigt de nettolading die naar het eind punt wordt verzonden.  | Teken reeks (of expressie met het resultType van de teken reeks). <br/><br/>Zie het schema van de sectie aanvraag lading in schema voor de lading van de [aanvraag](#request-payload-schema) . | Vereist voor POST/PUT-methoden.
 verificatie | De verificatie methode die wordt gebruikt voor het aanroepen van het eind punt. De ondersteunde typen zijn Basic of ClientCertificate. Zie de sectie [verificatie](#authentication) voor meer informatie. Als verificatie niet is vereist, sluit u deze eigenschap. | Teken reeks (of expressie met het resultType van de teken reeks) | Nee
-datasets | Lijst met gegevens sets die zijn door gegeven aan het eind punt. | Matrix van gegevensset-verwijzingen. Dit kan een lege matrix zijn. | Ja
-linkedServices | Lijst met gekoppelde services die zijn door gegeven aan het eind punt. | Matrix van gekoppelde service verwijzingen. Dit kan een lege matrix zijn. | Ja
+Sets | Lijst met gegevens sets die zijn door gegeven aan het eind punt. | Matrix van gegevensset-verwijzingen. Dit kan een lege matrix zijn. | Ja
+LinkedServices | Lijst met gekoppelde services die zijn door gegeven aan het eind punt. | Matrix van gekoppelde service verwijzingen. Dit kan een lege matrix zijn. | Ja
 
 > [!NOTE]
 > REST-eind punten die de webactiviteit aanroept, moeten een reactie van het type JSON retour neren. Voor de activiteit wordt een time-out van 1 minuut met een fout weer gegeven als er geen reactie van het eind punt wordt ontvangen.
@@ -83,9 +83,9 @@ De volgende tabel bevat de vereisten voor JSON-inhoud:
 | Waardetype | Aanvraagbody | Antwoord tekst |
 |---|---|---|
 |JSON-object | Ondersteund | Ondersteund |
-|JSON-matrix | Ondersteund <br/>(Momenteel werken JSON-matrices niet als gevolg van een fout. Er wordt een correctie uitgevoerd.) | Niet-ondersteund |
-| JSON-waarde | Ondersteund | Niet-ondersteund |
-| Niet-JSON-type | Niet-ondersteund | Niet-ondersteund |
+|JSON-matrix | Ondersteund <br/>(Momenteel werken JSON-matrices niet als gevolg van een fout. Er wordt een correctie uitgevoerd.) | Niet ondersteund |
+| JSON-waarde | Ondersteund | Niet ondersteund |
+| Niet-JSON-type | Niet ondersteund | Niet ondersteund |
 ||||
 
 ## <a name="authentication"></a>Authentication
@@ -104,7 +104,7 @@ Geef de gebruikers naam en het wacht woord op die moeten worden gebruikt met de 
 }
 ```
 
-### <a name="client-certificate"></a>Clientcertificaat
+### <a name="client-certificate"></a>Client certificaat
 Met base64 gecodeerde inhoud van een PFX-bestand en het wacht woord opgeven.
 
 ```json

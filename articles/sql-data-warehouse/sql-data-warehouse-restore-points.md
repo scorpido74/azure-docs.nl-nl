@@ -1,5 +1,5 @@
 ---
-title: Door de gebruiker gedefinieerde herstel punten | Microsoft Docs
+title: Door de gebruiker gedefinieerde herstel punten
 description: Een herstel punt maken Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 9dcb8b2e9c1b75aac3c195f89777ac9c6eb030d7
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 61ceb2f1271d085321215aff1c6d138feb95d743
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575261"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692508"
 ---
 # <a name="user-defined-restore-points"></a>Door de gebruiker gedefinieerde herstel punten
 
@@ -65,7 +66,7 @@ Door de gebruiker gedefinieerde herstel punten kunnen ook worden gemaakt via Azu
 
 3. Selecteer **overzicht** in het linkerdeel venster en selecteer **+ Nieuw herstel punt**. Als de knop Nieuw herstel punt niet is ingeschakeld, moet u ervoor zorgen dat het Data Warehouse niet wordt onderbroken.
 
-    ![Nieuw herstelpunt](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
+    ![Nieuw herstel punt](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
 4. Geef een naam op voor het herstel punt dat door de gebruiker is gedefinieerd en klik op **Toep assen**. Door de gebruiker gedefinieerde herstel punten hebben een standaard Bewaar periode van zeven dagen.
 

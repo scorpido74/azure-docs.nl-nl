@@ -1,5 +1,5 @@
 ---
-title: 'Gegevens transformatie: Gegevens verwerken & transformeren | Microsoft Docs'
+title: 'Gegevens transformatie: gegevens verwerken & transformeren '
 description: Meer informatie over het transformeren van gegevens of het verwerken van gegevens in Azure Data Factory met Hadoop, Machine Learning of Azure Data Lake Analytics.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9e70877a51c23be2d626492f84a69ae49fb27fac
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3af01ef76421e95f74a65fe597cafff5fa9ef39e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139776"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682614"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Gegevens in Azure Data Factory transformeren
 > [!div class="op_single_selector"]
@@ -64,8 +64,8 @@ De voorspellende modellen in de Machine Learning Score experimenten moeten na ve
 
 Zie [machine learning activiteiten gebruiken](data-factory-azure-ml-batch-execution-activity.md) voor meer informatie over deze machine learning activiteiten. 
 
-## <a name="stored-procedure-activity"></a>Opgeslagen procedureactiviteit
-U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken om een opgeslagen procedure in een van de volgende gegevens archieven aan te roepen: Azure SQL Database, Azure SQL Data Warehouse SQL Server-data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](data-factory-stored-proc-activity.md) voor meer informatie.  
+## <a name="stored-procedure-activity"></a>Opgeslagen procedure activiteit
+U kunt de SQL Server opgeslagen procedure-activiteit in een Data Factory-pijp lijn gebruiken voor het aanroepen van een opgeslagen procedure in een van de volgende gegevens archieven: Azure SQL Database, Azure SQL Data Warehouse, SQL Server data base in uw onderneming of een Azure-VM. Zie het artikel [opgeslagen procedure-activiteit](data-factory-stored-proc-activity.md) voor meer informatie.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-activiteit
 Met Data Lake Analytics U-SQL-activiteit wordt een U-SQL-script op een Azure Data Lake Analytics cluster uitgevoerd. Zie [het artikel Data Analytics U-SQL-activiteit](data-factory-usql-activity.md) voor meer informatie. 
@@ -78,8 +78,8 @@ U kunt een aangepaste activiteit maken om R-scripts uit te voeren op uw HDInsigh
 ## <a name="compute-environments"></a>Reken omgevingen
 U maakt een gekoppelde service voor de compute-omgeving en gebruikt vervolgens de gekoppelde service wanneer u een trans formatie-activiteit definieert. Er zijn twee soorten reken omgevingen die door Data Factory worden ondersteund. 
 
-1. **Op aanvraag**:  In dit geval wordt de computer omgeving volledig beheerd door Data Factory. Het wordt automatisch gemaakt door de Data Factory-service voordat een taak wordt verzonden om gegevens te verwerken en te worden verwijderd wanneer de taak is voltooid. U kunt gedetailleerde instellingen van de compute-omgeving op aanvraag voor taak uitvoering, Cluster beheer en acties voor Boots traping configureren en beheren. 
-2. **Neem uw eigen**: In dit geval kunt u uw eigen computer omgeving (bijvoorbeeld HDInsight-cluster) registreren als een gekoppelde service in Data Factory. De computer omgeving wordt beheerd door u en de Data Factory-service gebruikt deze om de activiteiten uit te voeren. 
+1. **Op aanvraag**: in dit geval wordt de computer omgeving volledig beheerd door Data Factory. Het wordt automatisch gemaakt door de Data Factory-service voordat een taak wordt verzonden om gegevens te verwerken en te worden verwijderd wanneer de taak is voltooid. U kunt gedetailleerde instellingen van de compute-omgeving op aanvraag voor taak uitvoering, Cluster beheer en acties voor Boots traping configureren en beheren. 
+2. **Neem uw eigen**werk: in dit geval kunt u uw eigen computer omgeving (bijvoorbeeld HDInsight-cluster) registreren als een gekoppelde service in Data Factory. De computer omgeving wordt beheerd door u en de Data Factory-service gebruikt deze om de activiteiten uit te voeren. 
 
 Zie het artikel [Compute linked Services](data-factory-compute-linked-services.md) voor meer informatie over Compute-services die door Data Factory worden ondersteund. 
 
@@ -92,7 +92,7 @@ Azure Data Factory ondersteunt de volgende activiteiten voor gegevens transforma
 | [Pig](data-factory-pig-activity.md) |HDInsight [Hadoop] |
 | [MapReduce](data-factory-map-reduce.md) |HDInsight [Hadoop] |
 | [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
-| [Machine Learning activiteiten: Batch uitvoering en update resource](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
+| [Machine Learning-activiteiten: batchuitvoering en resources bijwerken](data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
 | [Opgeslagen procedure](data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse of SQL Server |
 | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](data-factory-use-custom-activities.md) |HDInsight [Hadoop] of Azure Batch |

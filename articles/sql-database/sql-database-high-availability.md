@@ -1,5 +1,5 @@
 ---
-title: Hoge Beschik baarheid-Azure SQL Database-Service | Microsoft Docs
+title: Hoge Beschik baarheid-Azure SQL Database Service
 description: Meer informatie over de mogelijkheden en functies van de Azure SQL Database-Service voor hoge Beschik baarheid
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: ab3971b4fb6065701d693debf55242be7b15295e
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b34590ca275b6e7254af7820fdc1a03655351cea
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965978"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689950"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hoge Beschik baarheid en Azure SQL Database
 
@@ -39,7 +39,7 @@ Deze service lagen maken gebruik van de standaard beschikbaarheids architectuur.
 
 Het standaard beschikbaarheids model bevat twee lagen:
 
-- Een stateless Compute-laag die het `sqlservr.exe`-proces uitvoert en alleen tijdelijke en in de cache opgeslagen gegevens bevat, zoals TempDB, model databases op de gekoppelde SSD en de plannings cache, de buffer groep en de column Store-groep in het geheugen. Dit stateless knoop punt wordt gebruikt door Azure Service Fabric dat `sqlservr.exe` initialiseert, de status van het knoop punt beheert en een failover naar een ander knoop punt uitvoert, indien nodig.
+- Een stateless Compute-laag die het `sqlservr.exe` proces uitvoert en bevat alleen tijdelijke en in de cache opgeslagen gegevens, zoals TempDB, model databases op de gekoppelde SSD en de plannings cache, de buffer groep en de column Store-groep in het geheugen. Dit stateless knoop punt wordt gebruikt door Azure Service Fabric dat `sqlservr.exe`initialiseert, de status van het knoop punt beheert en een failover naar een ander knoop punt uitvoert, indien nodig.
 - Een stateful gegevenslaag met de database bestanden (. MDF/. ldf) die zijn opgeslagen in Azure Blob Storage. Azure Blob-opslag heeft ingebouwde functie voor gegevens beschikbaarheid en redundantie. Hiermee wordt gegarandeerd dat elke record in het logboek bestand of de pagina in het gegevens bestand blijft behouden, zelfs als SQL Server proces vastloopt.
 
 Wanneer de data base-engine of het besturings systeem wordt bijgewerkt, of als er een fout wordt gedetecteerd, wordt het stateless SQL Server proces door Azure Service Fabric verplaatst naar een ander stateless reken knooppunt met voldoende vrije capaciteit. Gegevens in Azure Blob-opslag worden niet beïnvloed door de verplaatsing en de gegevens/logboek bestanden zijn gekoppeld aan het zojuist geïnitialiseerde SQL Server proces. Dit proces garandeert een Beschik baarheid van 99,99%, maar een zware werk belasting kan tijdens de overgang enige prestatie vermindering veroorzaken, omdat de nieuwe SQL Server-instantie begint met koude cache.
@@ -62,8 +62,8 @@ De grootschalige is een beschrijving van de architectuur van [gedistribueerde fu
 
 Het beschikbaarheids model in grootschalige bevat vier lagen:
 
-- Een stateless Compute-laag die de `sqlservr.exe`-processen uitvoert en alleen tijdelijke en in de cache opgeslagen gegevens bevat, zoals niet-bedekkende RBPEX-cache, TempDB, model database, enzovoort, op de gekoppelde SSD en de plannings cache, buffer groep en de column Store-groep in het geheugen. Deze stateless laag bevat de primaire Compute-replica en optioneel een aantal secundaire Compute-replica's die als failover-doelen kunnen fungeren.
-- Een stateless opslagbus gevormd door pagina servers. Deze laag is de gedistribueerde opslag engine voor de `sqlservr.exe`-processen die worden uitgevoerd op de reken replica's. Elke pagina Server bevat alleen tijdelijke en in de cache opgeslagen gegevens, zoals het bedekken van RBPEX cache op de gekoppelde SSD en gegevens pagina's in het cache geheugen. Elke pagina Server heeft een gekoppelde pagina server in een actief/actief-configuratie om taak verdeling, redundantie en hoge Beschik baarheid te bieden.
+- Een stateless Compute-laag die de `sqlservr.exe` processen uitvoert en alleen tijdelijke en in de cache opgeslagen gegevens bevat, zoals niet-bedekkende RBPEX-cache, TempDB, model database, enzovoort, op de gekoppelde SSD en de plannings cache, buffer groep en de column Store-groep in het geheugen. Deze stateless laag bevat de primaire Compute-replica en optioneel een aantal secundaire Compute-replica's die als failover-doelen kunnen fungeren.
+- Een stateless opslagbus gevormd door pagina servers. Deze laag is de gedistribueerde opslag engine voor de `sqlservr.exe` processen die worden uitgevoerd op de reken replica's. Elke pagina Server bevat alleen tijdelijke en in de cache opgeslagen gegevens, zoals het bedekken van RBPEX cache op de gekoppelde SSD en gegevens pagina's in het cache geheugen. Elke pagina Server heeft een gekoppelde pagina server in een actief/actief-configuratie om taak verdeling, redundantie en hoge Beschik baarheid te bieden.
 - Een stateful opslag laag voor transactie logboeken, gevormd door het reken knooppunt waarop het logboek service proces wordt uitgevoerd, de overloop zone voor het transactie logboek en de lange termijn opslag van transactie Logboeken. Voor de opslag zone en de lange termijn wordt Azure Storage gebruikt. Dit biedt Beschik baarheid en [Redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) voor het transactie logboek en zorgt voor de duurzaamheid van gegevens voor doorgevoerde trans acties.
 - Een stateful gegevensopslag laag met de database bestanden (. MDF/. ndf) die zijn opgeslagen in Azure Storage en worden bijgewerkt door pagina servers. Deze laag maakt gebruik van de functies voor Beschik baarheid en [Redundantie](https://docs.microsoft.com/azure/storage/common/storage-redundancy) van gegevens van Azure Storage. Hiermee wordt gegarandeerd dat elke pagina in een gegevens bestand blijft behouden, zelfs als processen in andere lagen van de grootschalige-architectuur vastlopen of als reken knooppunten mislukken.
 

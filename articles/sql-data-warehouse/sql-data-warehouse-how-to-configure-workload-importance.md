@@ -1,6 +1,6 @@
 ---
-title: Urgentie van de werkbelasting configureren in Azure SQL Data Warehouse | Microsoft Docs
-description: Informatie over het instellen van de aanvraag niveau belang.
+title: Het belang van workload configureren
+description: Meer informatie over het instellen van de urgentie van het aanvraag niveau.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,26 +10,27 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e4d410f32068b4d3035dcab0c61b7b9205103690
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 59ba4b936f6098b0d0b3f5e571f107af088206e0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588685"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692688"
 ---
-# <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Urgentie van de werkbelasting configureren in Azure SQL Data Warehouse
+# <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Urgentie van werk belasting configureren in Azure SQL Data Warehouse
 
-Urgentie instellen in de SQL Data Warehouse, kunt u van invloed zijn op de planning van query's. Query's met hogere prioriteit wordt gepland om uit te voeren voordat u query's met lagere prioriteit. Als u wilt toewijzen belang op query's, die u wilt maken van een classificatie van de werkbelasting.
+Als u de urgentie instelt in de SQL Data Warehouse, kunt u de planning van query's beïnvloeden. Query's met een hogere urgentie worden gepland om te worden uitgevoerd vóór query's met een lagere urgentie. Als u belang rijk aan query's wilt toewijzen, moet u een classificatie voor de werk belasting maken.
 
-## <a name="create-a-workload-classifier-with-importance"></a>Maken van een classificatie van de werkbelasting met urgentie
+## <a name="create-a-workload-classifier-with-importance"></a>Een classificatie van een werk belasting met urgentie maken
 
-In een datawarehouse-scenario hebt u vaak gebruikers hoeven hun query's snel worden uitgevoerd.  De gebruiker kan zijn managers van het bedrijf die willen uitvoeren van rapporten of de gebruiker mogelijk een analist een ad-hoc-query uit te voeren. U maakt een classificatie van de werkbelasting om toe te wijzen belang aan een query.  De volgende voorbeelden gebruiken de nieuwe [werkbelasting classificatie maken](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) syntaxis voor het maken van twee classificaties.  Membername kan zijn voor één gebruiker of groep. Afzonderlijke gebruiker classificaties hebben voorrang op de rol van classificaties. Bestaande datawarehouse om gebruikers te zoeken, voert u de volgende uit:
+Vaak bevat een scenario voor een Data Warehouse gebruikers die hun query's nodig hebben om snel uit te voeren.  De gebruiker kan leidinggevenden zijn van het bedrijf waarvoor rapporten moeten worden uitgevoerd of de gebruiker kan worden uitgevoerd als een adhoc-query. U maakt een classificatie van de werk belasting om belang rijk aan een query toe te wijzen.  De volgende voor beelden gebruiken de nieuwe [classificatie syntaxis CREATE workload](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) om twee classificaties te maken.  Lidnaam kan één gebruiker of een groep zijn. Afzonderlijke gebruikers classificaties hebben voor rang op classificaties van rollen. Voer de volgende opdracht uit om bestaande Data Warehouse-gebruikers te zoeken:
 
 ```sql
 Select name from sys.sysusers
 ```
 
-Voer voor het maken een classificatie van de werkbelasting voor een gebruiker met hogere prioriteit:
+Voor het maken van een classificatie van een werk belasting voor een gebruiker met een hogere urgentie:
 
 ```sql
 CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
@@ -39,7 +40,7 @@ CREATE WORKLOAD CLASSIFIER ExecReportsClassifier 
 
 ```
 
-Maken van een classificatie van de werkbelasting voor een gebruiker die ad-hoc-query's uitvoeren met lagere prioriteit worden uitgevoerd:  
+Voor het maken van een classificatie van werk belasting voor een gebruiker die adhoc-query's uitvoert met een lagere urgentie:  
 
 ```sql
 CREATE WORKLOAD CLASSIFIER AdhocClassifier  
@@ -49,8 +50,8 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier 
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie voor meer informatie over het beheer van de werkbelasting [werkbelasting classificatie](sql-data-warehouse-workload-classification.md)
-- Zie voor meer informatie over belang [werkbelasting urgentie](sql-data-warehouse-workload-importance.md)
+- Zie [workload-classificatie](sql-data-warehouse-workload-classification.md) voor meer informatie over workload Management
+- Zie [urgentie van werk belasting](sql-data-warehouse-workload-importance.md) voor meer informatie over belang rijkheid
 
 > [!div class="nextstepaction"]
-> [Ga naar beheren en bewaken van de werkbelasting belang](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
+> [Ga naar de urgentie van het workload beheren en bewaken](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d848027d6c754df371b4d87cf01c5b2fdbc8c02
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820734"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575575"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -24,11 +24,9 @@ Azure Monitor ondersteunt gedistribueerde tracering, metrische verzameling en lo
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 - Installatie van python. In dit artikel wordt [python 3.7.0](https://www.python.org/downloads/)gebruikt, hoewel eerdere versies waarschijnlijk met kleine wijzigingen werken.
 
-
-
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Een Application Insights resource in Azure Monitor maken
 
@@ -44,7 +42,7 @@ Eerst moet u een Application Insights-resource in Azure Monitor maken, waarmee e
    | ------------- |:-------------|:-----|
    | **Naam**      | Wereld wijd unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken |
    | **Resourcegroep**     | myResourceGroup      | Naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens |
-   | **Locatie** | VS - oost | Een locatie bij u in de buurt of in de buurt van waar de app wordt gehost |
+   | **Locatie** | US - oost | Een locatie bij u in de buurt of in de buurt van waar de app wordt gehost |
 
 1. Selecteer **Maken**.
 
@@ -55,6 +53,8 @@ Installeer de Azure Monitor Exporters van opentellingen:
 ```console
 python -m pip install opencensus-ext-azure
 ```
+
+Zie [pakket met Opentellingen](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus)voor een volledige lijst met pakketten en integraties.
 
 > [!NOTE]
 > De `python -m pip install opencensus-ext-azure`-opdracht gaat ervan uit dat u een omgevings variabele `PATH` hebt ingesteld voor uw python-installatie. Als u deze variabele niet hebt geconfigureerd, moet u het volledige mappad opgeven waar uw python-uitvoerbaar bestand zich bevindt. Het resultaat is een opdracht die er als volgt uitziet: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
@@ -84,7 +84,7 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
         main()
     ```
 
-2. Als u de code uitvoert, wordt u herhaaldelijk gevraagd om een waarde in te voeren. Bij elke vermelding wordt de waarde afgedrukt op de shell, en in de module opentellingen python wordt een bijbehorend deel van `SpanData` gegenereerd. Het project opentelling definieert een [tracering als een boom structuur van reeksen](https://opencensus.io/core-concepts/tracing/).
+2. Als u de code uitvoert, wordt u herhaaldelijk gevraagd om een waarde in te voeren. Bij elke vermelding wordt de waarde afgedrukt op de shell, en in de module opentellingen python wordt een bijbehorend deel van `SpanData`gegenereerd. Het project opentelling definieert een [tracering als een boom structuur van reeksen](https://opencensus.io/core-concepts/tracing/).
     
     ```
     Enter a value: 4
@@ -127,6 +127,10 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
     ```
 
 4. Wanneer u nu het python-script uitvoert, moet u nog steeds worden gevraagd om waarden in te voeren, maar alleen de waarde wordt afgedrukt in de shell. De gemaakte `SpanData` worden naar Azure Monitor verzonden. U kunt de verzonden gegevens over het bereik vinden onder `dependencies`.
+
+5. Voor informatie over de bemonstering van opentellingen bekijkt u de [bemonstering in Opentellingen](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python).
+
+6. Voor meer informatie over de correlatie van de telemetrie in uw traceer gegevens bekijkt u de correlatie van opentellingen [telemetrie](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python).
 
 ### <a name="metrics"></a>Metrische gegevens
 
@@ -229,7 +233,7 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
         main()
     ```
 
-4. De export functie verzendt metrische gegevens naar Azure Monitor met een vast interval. De standaard waarde is elke 15 seconden. Er wordt één metrische waarde bijgehouden, dus deze metrische gegevens, met een wille keurige vermeldings-en tijds tempel, worden elk interval verzonden. U vindt de gegevens onder `customMetrics`.
+4. De export functie verzendt metrische gegevens naar Azure Monitor met een vast interval. De standaard waarde is elke 15 seconden. Er wordt één metrische waarde bijgehouden, dus deze metrische gegevens, met een wille keurige vermeldings-en tijds tempel, worden elk interval verzonden. U kunt de gegevens onder `customMetrics`vinden.
 
 ### <a name="logs"></a>Logboeken
 
@@ -290,7 +294,9 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
         main()
     ```
 
-4. De export functie stuurt logboek gegevens naar Azure Monitor. U vindt de gegevens onder `traces`.
+4. De export functie stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens onder `traces`vinden.
+
+5. Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Beginnen met controleren in Azure Portal
 
@@ -324,7 +330,7 @@ U kunt de telemetriegegevens weer geven die vanuit uw toepassing zijn verzonden 
 
 In de lijst onder **actief**:
 
-- Inkomende aanvragen worden weer gegeven onder `requests` voor telemetrie die met de Azure Monitor Trace-export functie worden verzonden. Uitgaande of in-process-aanvragen worden weer gegeven onder `dependencies`.
+- Inkomende aanvragen worden weer gegeven onder `requests`voor telemetrie die met de Azure Monitor Trace-export functie worden verzonden. Uitgaande of in-process-aanvragen worden weer gegeven onder `dependencies`.
 - Voor telemetrie die met de export functie voor metrische gegevens van Azure Monitor worden verzonden, worden verzonden metrische gegevens weer gegeven onder `customMetrics`.
 - Voor telemetrie die wordt verzonden met de export functie van de Azure Monitor logboeken, worden logboeken weer gegeven onder `traces`. Uitzonde ringen worden weer gegeven onder `exceptions`.
 

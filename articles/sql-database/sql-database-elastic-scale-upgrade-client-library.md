@@ -1,5 +1,5 @@
 ---
-title: Upgrade uitvoeren naar de meest recente client bibliotheek voor Elastic data base | Microsoft Docs
+title: Upgrade uitvoeren naar de nieuwste client bibliotheek voor Elastic data base
 description: Gebruik Nuget om de client bibliotheek voor Elastic data base bij te werken.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 286fa60fef8de5240fb2ccd0f14ced0c4e38ff73
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: acf722268ae7ea5c8b444467f0b5c658d919096c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981359"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690125"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Een app bijwerken voor het gebruik van de meest recente Elastic data base-client bibliotheek
 
@@ -30,9 +30,9 @@ Door deze stappen uit te voeren, zorgt u ervoor dat oude versies van de client b
 
 ## <a name="upgrade-steps"></a>Upgrade stappen
 
-**1. Upgrade uw toepassingen.** In Visual Studio downloadt en verwijst u naar de meest recente versie van de client bibliotheek in al uw ontwikkelings projecten die gebruikmaken van de bibliotheek. bouw en implementeer vervolgens opnieuw.
+**1. Voer een upgrade uit voor uw toepassingen.** In Visual Studio downloadt en verwijst u naar de meest recente versie van de client bibliotheek in al uw ontwikkelings projecten die gebruikmaken van de bibliotheek. bouw en implementeer vervolgens opnieuw.
 
-* Selecteer in uw Visual Studio-oplossing **extra** --> **NuGet package manager** -->  **NuGet-pakketten beheren voor oplossing**.
+* Selecteer in uw Visual Studio-oplossing **Hulpprogram ma's** --> **NuGet package manager** -->  **NuGet-pakketten voor oplossing te beheren**.
 * (Visual Studio 2013) Selecteer **updates**in het linkerdeel venster en selecteer vervolgens de knop **bijwerken** op het pakket **Azure SQL database Elastic Scale-client bibliotheek** die wordt weer gegeven in het venster.
 * (Visual Studio 2015) Stel het filter in op **upgrade beschikbaar**. Selecteer het pakket dat u wilt bijwerken en klik op de knop **bijwerken** .
 * (Visual Studio 2017) Selecteer boven in het dialoog venster **updates**. Selecteer het pakket dat u wilt bijwerken en klik op de knop **bijwerken** .
@@ -40,19 +40,19 @@ Door deze stappen uit te voeren, zorgt u ervoor dat oude versies van de client b
 
 **2. Voer een upgrade uit voor uw scripts.** Als u **Power shell** -scripts gebruikt om Shards te beheren, [downloadt u de nieuwe bibliotheek versie](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) en kopieert u deze naar de map van waaruit u scripts uitvoert.
 
-**3. Upgrade uw service voor splitsen en samen voegen.** Als u het Elastic data base-hulp programma voor splitsen en samen voegen gebruikt om Shard-gegevens opnieuw in te delen, [downloadt en implementeert u de meest recente versie van het hulp programma](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Gedetailleerde upgrade stappen voor de service vindt u [hier](sql-database-elastic-scale-overview-split-and-merge.md).
+**3. werk uw service voor splitsen en samen voegen bij.** Als u het Elastic data base-hulp programma voor splitsen en samen voegen gebruikt om Shard-gegevens opnieuw in te delen, [downloadt en implementeert u de meest recente versie van het hulp programma](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Gedetailleerde upgrade stappen voor de service vindt u [hier](sql-database-elastic-scale-overview-split-and-merge.md).
 
-**4. Voer een upgrade uit voor uw**data bases van Shard map Manager. Voer een upgrade uit voor de meta gegevens die uw Shard-kaarten ondersteunen in Azure SQL Database.  U kunt dit op twee manieren doen met behulp van Power C#shell of. Beide opties worden hieronder weer gegeven.
+**4. werk de data bases van uw Shard-map beheer**bij. Voer een upgrade uit voor de meta gegevens die uw Shard-kaarten ondersteunen in Azure SQL Database.  U kunt dit op twee manieren doen met behulp van Power C#shell of. Beide opties worden hieronder weer gegeven.
 
-***Optie 1: Meta gegevens bijwerken met Power shell***
+***Optie 1: meta gegevens bijwerken met Power shell***
 
 1. Down load [hier](https://nuget.org/nuget.exe) het meest recente opdracht regel programma voor NuGet en sla het op in een map.
-2. Open een opdracht prompt, navigeer naar dezelfde map en geef de volgende opdracht:`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Ga naar de submap met de nieuwe client-DLL-versie die u zojuist hebt gedownload, bijvoorbeeld:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+2. Open een opdracht prompt, navigeer naar dezelfde map en geef de volgende opdracht: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
+3. Ga naar de submap met de nieuwe client-DLL-versie die u zojuist hebt gedownload, bijvoorbeeld: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. Down load het client upgrade script voor Elastic data base uit het [script centrum](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)en sla het op in dezelfde map die de dll bevat.
 5. Vanuit die map voert u Power shell .\upgrade.ps1 uit vanaf de opdracht prompt en volgt u de aanwijzingen.
 
-***Optie 2: Meta gegevens bijwerken metC#***
+***Optie 2: meta gegevens bijwerken metC#***
 
 U kunt ook een Visual Studio-toepassing maken waarmee uw ShardMapManager wordt geopend, alle Shards worden herhaald en de upgrade van de meta gegevens wordt uitgevoerd door de methoden [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) en [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) aan te roepen, zoals in dit voor beeld:
 

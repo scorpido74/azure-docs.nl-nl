@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598397"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604001"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Azure Database for MariaDB prestaties bewaken met query Store
 
 **Van toepassing op:** Azure Database for MariaDB 10,2
-
-> [!IMPORTANT]
-> Query Store is beschikbaar als preview-versie.
 
 De functie query Store in azure data base for Mariadb biedt een manier om query prestaties gedurende een periode bij te houden. Query Store vereenvoudigt het oplossen van prestaties, omdat u snel de langste en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in de **MySQL** -schema database in het Azure database for MariaDB-exemplaar.
 
@@ -164,7 +161,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 | `count_star` | bigint (20) | NO| Aantal wacht gebeurtenissen dat wordt voor bereid tijdens het interval voor de query |
 | `sum_timer_wait_ms` | double | NO| Totale wacht tijd (in milliseconden) van deze query tijdens het interval |
 
-### <a name="functions"></a>Functies
+### <a name="functions"></a>Functions
 
 | **Naam**| **Beschrijving** |
 |---|---|
@@ -174,7 +171,7 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
 
-- Als een MariaDB-server de para meter `default_transaction_read_only` heeft, kan de query Store geen gegevens vastleggen.
+- Als op een MariaDB-server de para meter `default_transaction_read_only` is ingeschakeld, kan de query Store geen gegevens vastleggen.
 - De functionaliteit voor het opslaan van query's kan worden onderbroken als er lange Unicode-query's worden aangetroffen (\> = 6000 bytes).
 - De Bewaar periode voor wacht statistieken is 24 uur.
 - Wacht statistieken maken gebruik van voor beeld Ti een fractie van gebeurtenissen vastleggen. De frequentie kan worden gewijzigd met behulp van de para meter `query_store_wait_sampling_frequency`.

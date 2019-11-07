@@ -1,7 +1,7 @@
 ---
-title: Wat is een BLEU-Score? -Aangepaste Translator
+title: Wat is een BLEU-Score? -Aangepaste vertaler
 titleSuffix: Azure Cognitive Services
-description: BLEU is een meting van de verschillen tussen een automatische vertaling en een of meer door de mens gemaakte referentie vertalingen van dezelfde bron zin. Het BLEU-algoritme vergelijkt opeenvolgende zinnen van de automatische vertaling met de opeenvolgende woord groepen die worden gevonden in de referentie conversie en telt het aantal overeenkomsten op een gewogen manier.
+description: BLEU is een meting van de verschillen tussen machine vertalingen en door de mens gemaakte referentie vertalingen van dezelfde bron zin.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
-ms.openlocfilehash: 1993819ad227d7e9aa5ef899045e00447a6740b8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595413"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647361"
 ---
 # <a name="what-is-a-bleu-score"></a>Wat is een BLEU-Score?
 

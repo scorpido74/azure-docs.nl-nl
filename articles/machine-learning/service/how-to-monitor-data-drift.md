@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 536f3ab506dcbe2b8997f2c1870f25244b6c070f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eddfddc994482bcb6e60604703e7f306fee9c32b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489652"
+ms.locfileid: "73574321"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -161,14 +161,13 @@ datadrift.disable_schedule()
 
 De configuratie van de gegevens drift-detectie kan worden weer gegeven onder **modellen** op het tabblad **Details** in uw werk ruimte in de [Azure machine learning Studio](https://ml.azure.com).
 
-![Data drift Azure Machine Learning Studio](media/how-to-monitor-data-drift/drift-config.png)
+[![Azure Machine Learning Studio-gegevens drift](media/how-to-monitor-data-drift/drift-config.png)](media/how-to-monitor-data-drift/drift-config-expanded.png)
 
 ## <a name="view-results-in-your-azure-machine-learning-studio"></a>Resultaten weer geven in uw Azure Machine Learning Studio
 
 Als u de resultaten in uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com)wilt weer geven, gaat u naar de model pagina. Op het tabblad Details van het model wordt de data-drift configuratie weer gegeven. Er is nu een tabblad **gegevens drift** beschikbaar voor het visualiseren van de metrische gegevens over de data waarde. 
 
 [![Azure Machine Learning Studio-gegevens drift](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
-
 
 ## <a name="receiving-drift-alerts"></a>Ontvangst van drijf signalen
 

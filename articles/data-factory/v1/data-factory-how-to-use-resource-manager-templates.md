@@ -1,5 +1,5 @@
 ---
-title: Resource Manager-sjablonen gebruiken in Data Factory | Microsoft Docs
+title: Resource Manager-sjablonen gebruiken in Data Factory
 description: Meer informatie over het maken en gebruiken van Azure Resource Manager sjablonen voor het maken van Data Factory entiteiten.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d9ee060b7d1f7a443357c7116c01e8aaf972e666
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164680"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682523"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sjablonen gebruiken om Azure Data Factory entiteiten te maken
 > [!NOTE]
@@ -29,7 +29,7 @@ Denk na over de situatie waarin een organisatie tien productie bedrijven wereld 
 
 In dit geval moet een taak in dezelfde omgeving worden herhaald, maar met verschillende waarden voor de 10 gegevens fabrieken voor elke fabriek. In feite is **herhaling** aanwezig. Sjabloon staat de abstractie van deze algemene stroom (dat wil zeggen, pijp lijnen met dezelfde activiteiten in elke data factory) toe, maar gebruikt een apart parameter bestand voor elke productie-fabriek.
 
-Bovendien kunnen sjablonen, aangezien de organisatie deze 10 gegevens fabrieken meermaals wil implementeren in verschillende omgevingen, gebruikmaken van deze herbruikbaarheid door gebruik te maken van afzonderlijke parameter bestanden voor ontwikkelings-, test-en productie omgevingen.
+Bovendien kunnen sjablonen, aangezien de organisatie deze 10 gegevens fabrieken meermaals wil implementeren in verschillende omgevingen, gebruikmaken van deze **herbruikbaarheid** door gebruik te maken van afzonderlijke parameter bestanden voor ontwikkelings-, test-en productie omgevingen.
 
 ## <a name="templating-with-azure-resource-manager"></a>Sjabloon met Azure Resource Manager
 [Azure Resource Manager sjablonen](../../azure-resource-manager/template-deployment-overview.md) zijn een uitstekende manier om sjabloon in azure Data Factory te krijgen. Resource Manager-sjablonen definiëren de infra structuur en configuratie van uw Azure-oplossing via een JSON-bestand. Omdat Azure Resource Manager sjablonen met alle/de meeste Azure-Services werken, kan deze veel worden gebruikt om eenvoudig alle resources van uw Azure-assets te beheren. Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/resource-group-authoring-templates.md) voor meer informatie over de Resource Manager-sjablonen in het algemeen.
@@ -37,8 +37,8 @@ Bovendien kunnen sjablonen, aangezien de organisatie deze 10 gegevens fabrieken 
 ## <a name="tutorials"></a>Zelfstudies
 Raadpleeg de volgende zelf studies voor stapsgewijze instructies voor het maken van Data Factory entiteiten met behulp van Resource Manager-sjablonen:
 
-* [Zelfstudie: Een pijp lijn maken om gegevens te kopiëren met behulp van Azure Resource Manager sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [Zelfstudie: Een pijp lijn maken voor het verwerken van gegevens met behulp van Azure Resource Manager sjabloon](data-factory-build-your-first-pipeline.md)
+* [Zelf studie: een pijp lijn maken om gegevens te kopiëren met behulp van Azure Resource Manager sjabloon](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Zelf studie: een pijp lijn maken voor het verwerken van gegevens met behulp van Azure Resource Manager sjabloon](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Data Factory sjablonen op GitHub
 Bekijk de volgende Azure Quick Start-sjablonen op GitHub:

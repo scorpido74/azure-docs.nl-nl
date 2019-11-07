@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Elastic Database-taken maken en beheren met Transact-SQL (T-SQL) | Microsoft Docs
+title: 'Azure SQL Elastic Database-taken maken en beheren met Transact-SQL (T-SQL) '
 description: Voer scripts uit in veel data bases met Elastic Database-taak agent met behulp van Transact-SQL (T-SQL).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d1123affa79f401b5142af604adbd757bdfb7d73
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 374346faacf99148cc20a5e9f11325af1e436108
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641042"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685278"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Transact-SQL (T-SQL) gebruiken om Elastic Database taken te maken en te beheren
 
@@ -168,14 +168,14 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 In veel scenario's voor het verzamelen van gegevens kan het nuttig zijn om een aantal van deze script variabelen op te geven om de resultaten van de taak te kunnen volgen.
 
-- $(job_name)
-- $(job_id)
+- $ (job_name)
+- $ (job_id)
 - $ (job_version)
-- $(step_id)
+- $ (step_id)
 - $ (step_name)
-- $(job_execution_id)
-- $(job_execution_create_time)
-- $(target_group_name)
+- $ (job_execution_id)
+- $ (job_execution_create_time)
+- $ (target_group_name)
 
 Als u bijvoorbeeld alle resultaten van dezelfde taak uitvoering samen wilt groeperen, gebruikt u *$ (job_execution_id)* , zoals wordt weer gegeven in de volgende opdracht:
 
@@ -192,7 +192,7 @@ In het volgende voor beeld wordt een nieuwe taak gemaakt voor het verzamelen van
 De taak agent zoekt standaard de tabel voor het opslaan van de geretourneerde resultaten in. Als gevolg hiervan moet de aanmelding die is gekoppeld aan de referentie die wordt gebruikt voor de uitvoer referentie, voldoende machtigingen hebben om dit uit te voeren. Als u de tabel vooraf hand matig wilt maken, moet deze de volgende eigenschappen hebben:
 1. Kolommen met de juiste naam en gegevens typen voor de resultatenset.
 2. Aanvullende kolom voor internal_execution_id met het gegevens type UniqueIdentifier.
-3. Een niet-geclusterde `IX_<TableName>_Internal_Execution_ID` index met de naam in de kolom internal_execution_id.
+3. Een niet-geclusterde index met de naam `IX_<TableName>_Internal_Execution_ID` op de kolom internal_execution_id.
 
 Maak verbinding met de [*taak database*](sql-database-job-automation-overview.md#job-database) en voer de volgende opdrachten uit:
 
@@ -405,7 +405,7 @@ De volgende opgeslagen procedures bevinden zich in de [Jobs-data base](sql-datab
 
 
 
-|Opgeslagen procedure  |Description  |
+|Opgeslagen procedure  |Beschrijving  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Hiermee wordt een nieuwe taak toegevoegd.    |
 |[sp_update_job](#sp_update_job)    |      Hiermee wordt een bestaande taak bijgewerkt.   |
@@ -446,16 +446,16 @@ Hiermee wordt een nieuwe taak toegevoegd.
   
 #### <a name="arguments"></a>Argumenten  
 
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak. De naam moet uniek zijn en mag niet het percentage (%) bevatten ring. job_name is nvarchar (128), zonder standaard waarde.
 
-**[\@Description =** ] ' Beschrijving '  
+[ **\@beschrijving =** ] beschrijvingen  
 De beschrijving van de taak. de beschrijving is nvarchar (512), met een standaard waarde van NULL. Als de beschrijving wordt wegge laten, wordt een lege teken reeks gebruikt.
 
-**[\@enabled =** ] ingeschakeld  
+[ **\@ingeschakeld =** ] ingeschakeld  
 Hiermee wordt aangegeven of de planning van de taak is ingeschakeld. Ingeschakeld is bit, met een standaard waarde van 0 (uitgeschakeld). Als de waarde 0 is, is de taak niet ingeschakeld en wordt deze niet volgens het schema uitgevoerd. het kan echter ook hand matig worden uitgevoerd. Als dit het geval is, wordt de taak uitgevoerd volgens de planning en kan deze ook hand matig worden uitgevoerd.
 
-**[\@schedule_interval_type =** ] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 De waarde geeft aan wanneer de taak moet worden uitgevoerd. schedule_interval_type is nvarchar (50), met een standaard waarde van één, en kan een van de volgende waarden hebben:
 - Eenmaal,
 - ' Minuten ',
@@ -464,16 +464,16 @@ De waarde geeft aan wanneer de taak moet worden uitgevoerd. schedule_interval_ty
 - Weken,
 - Vastgesteld
 
-**[\@schedule_interval_count =** ] schedule_interval_count  
+[ **\@schedule_interval_count =** ] schedule_interval_count  
 Aantal schedule_interval_count-Peri Oden dat moet plaatsvinden tussen elke uitvoering van de taak. schedule_interval_count is int, met een standaard waarde van 1. De waarde moet groter zijn dan of gelijk zijn aan 1.
 
-**[\@schedule_start_time =** ] schedule_start_time  
+[ **\@schedule_start_time =** ] schedule_start_time  
 De datum waarop de uitvoering van de taak kan beginnen. schedule_start_time is DATETIME2, met de standaard waarde van 0001-01-01 00:00:00.0000000.
 
-**[\@schedule_end_time =** ] schedule_end_time  
+[ **\@schedule_end_time =** ] schedule_end_time  
 De datum waarop de uitvoering van de taak kan worden gestopt. schedule_end_time is DATETIME2, met de standaard waarde van 9999-12-31 11:59:59.0000000. 
 
-**[\@job_id =** ] job_id-uitvoer  
+[ **\@job_id =** ] JOB_ID-uitvoer  
 Het taak-id-nummer dat is toegewezen aan de taak als deze is gemaakt. job_id is een uitvoer variabele van het type UniqueIdentifier.
 
 #### <a name="return-code-values"></a>Retour code waarden
@@ -509,19 +509,19 @@ Hiermee wordt een bestaande taak bijgewerkt.
 ```
 
 #### <a name="arguments"></a>Argumenten
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak die moet worden bijgewerkt. job_name is nvarchar (128).
 
-**[\@new_name =** ] ' new_name '  
+[ **\@new_name =** ] 'new_name'  
 De nieuwe naam van de taak. new_name is nvarchar (128).
 
-**[\@Description =** ] ' Beschrijving '  
+[ **\@beschrijving =** ] beschrijvingen  
 De beschrijving van de taak. de beschrijving is nvarchar (512).
 
-**[\@enabled =** ] ingeschakeld  
+[ **\@ingeschakeld =** ] ingeschakeld  
 Hiermee geeft u op of de planning van de taak is ingeschakeld (1) of niet is ingeschakeld (0). Ingeschakeld is bit.
 
-[ **\@schedule_interval_type=** ] schedule_interval_type  
+[ **\@schedule_interval_type =** ] schedule_interval_type  
 De waarde geeft aan wanneer de taak moet worden uitgevoerd. schedule_interval_type is nvarchar (50) en kan een van de volgende waarden hebben:
 
 - Eenmaal,
@@ -531,13 +531,13 @@ De waarde geeft aan wanneer de taak moet worden uitgevoerd. schedule_interval_ty
 - Weken,
 - Vastgesteld
 
-**[\@schedule_interval_count =** ] schedule_interval_count  
+[ **\@schedule_interval_count =** ] schedule_interval_count  
 Aantal schedule_interval_count-Peri Oden dat moet plaatsvinden tussen elke uitvoering van de taak. schedule_interval_count is int, met een standaard waarde van 1. De waarde moet groter zijn dan of gelijk zijn aan 1.
 
-**[\@schedule_start_time =** ] schedule_start_time  
+[ **\@schedule_start_time =** ] schedule_start_time  
 De datum waarop de uitvoering van de taak kan beginnen. schedule_start_time is DATETIME2, met de standaard waarde van 0001-01-01 00:00:00.0000000.
 
-**[\@schedule_end_time =** ] schedule_end_time  
+[ **\@schedule_end_time =** ] schedule_end_time  
 De datum waarop de uitvoering van de taak kan worden gestopt. schedule_end_time is DATETIME2, met de standaard waarde van 9999-12-31 11:59:59.0000000. 
 
 #### <a name="return-code-values"></a>Retour code waarden
@@ -566,10 +566,10 @@ Hiermee verwijdert u een bestaande taak.
 ```
 
 #### <a name="arguments"></a>Argumenten
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak die moet worden verwijderd. job_name is nvarchar (128).
 
-**[\@Force =** ] forceren  
+[ **\@Force =** ] forceren  
 Hiermee wordt aangegeven of wordt verwijderd als de uitvoering van de taak wordt uitgevoerd en alle uitgevoerde uitvoeringen worden geannuleerd (1) of als er een fout optreedt als er taak uitvoeringen worden uitgevoerd (0). Force is bit.
 
 #### <a name="return-code-values"></a>Retour code waarden
@@ -621,32 +621,32 @@ Voegt een stap toe aan een taak.
 
 #### <a name="arguments"></a>Argumenten
 
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak waaraan de stap moet worden toegevoegd. job_name is nvarchar (128).
 
-**[\@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 Het id-nummer van de reeks voor de taak stap. De identificatie nummers van de stappen beginnen bij 1 en worden verhoogd zonder onderbrekingen. Als een bestaande stap al deze id heeft, wordt voor die stap en alle volgende stappen de id verhoogd, zodat deze nieuwe stap in de reeks kan worden ingevoegd. Als u niets opgeeft, wordt de step_id automatisch toegewezen aan de laatste in de volg orde van de stappen. step_id is een int.
 
-**[\@step_name =** ] step_name  
+[ **\@step_name =** ] step_name  
 De naam van de stap. Moet worden opgegeven, met uitzonde ring van de eerste stap van een taak die (voor het gemak) de standaard naam ' JobStep ' heeft. step_name is nvarchar (128).
 
-**[\@command_type =** ] ' command_type '  
-Het type opdracht dat wordt uitgevoerd door deze jobstep. command_type is nvarchar (50), met een standaard waarde van TSql, wat inhoudt dat de waarde @command_type van de para meter een T-SQL-script is.
+[ **\@command_type =** ] 'command_type'  
+Het type opdracht dat wordt uitgevoerd door deze jobstep. command_type is nvarchar (50), met een standaard waarde van TSql, wat inhoudt dat de waarde van de para meter @command_type een T-SQL-script is.
 
 Indien opgegeven, moet de waarde TSql zijn.
 
-**[\@command_source =** ] ' command_source '  
-Het type locatie waar de opdracht wordt opgeslagen. command_source is nvarchar (50), met een standaard waarde van inline, wat inhoudt dat de waarde @command_source van de para meter de letterlijke tekst van de opdracht is.
+[ **\@command_source =** ] 'command_source'  
+Het type locatie waar de opdracht wordt opgeslagen. command_source is nvarchar (50), met een standaard waarde van inline, wat inhoudt dat de waarde van de para meter @command_source de letterlijke tekst van de opdracht is.
 
 Indien opgegeven, moet de waarde inline zijn.
 
-**[\@Command =** ] ' opdracht '  
+[ **\@opdracht =** ] cmd  
 De opdracht moet een geldig T-SQL-script zijn en vervolgens worden uitgevoerd door deze taak stap. de opdracht is nvarchar (max), met een standaard waarde van NULL.
 
-**[\@credential_name =** ] ' credential_name '  
+[ **\@credential_name =** ] 'credential_name'  
 De naam van de data base-scoped referentie opgeslagen in deze taak beheer database die wordt gebruikt om verbinding te maken met elk van de doel databases in de doel groep wanneer deze stap wordt uitgevoerd. credential_name is nvarchar (128).
 
-**[\@target_group_name =** ] ' target-group_name '  
+[ **\@target_group_name =** ] ' target-group_name '  
 De naam van de doel groep die de doel databases bevat waarop de taak stap wordt uitgevoerd. target_group_name is nvarchar (128).
 
 [ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -658,7 +658,7 @@ De maximale vertraging tussen nieuwe pogingen. Als de vertraging tussen nieuwe p
 [ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 De vermenigvuldiger die moet worden toegepast op de vertraging voor nieuwe pogingen als de uitvoering van meerdere taak stappen mislukt. Als bijvoorbeeld de eerste nieuwe poging een vertraging van 5 seconde had en de uitstel-vermenigvuldiger 2,0 is, heeft de tweede nieuwe poging een vertraging van 10 seconden en de derde nieuwe poging heeft een vertraging van 20 seconden. retry_interval_backoff_multiplier is echt, met de standaard waarde van 2,0.
 
-**[\@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 Het aantal keren dat de uitvoering opnieuw moet worden uitgevoerd als de eerste poging mislukt. Als de waarde van retry_attempts bijvoorbeeld 10 is, dan is er 1 eerste poging en tien nieuwe pogingen, met een totaal van 11 pogingen. Als de laatste poging tot opnieuw proberen mislukt, wordt de uitvoering van de taak beëindigd met een levens cyclus van mislukt. retry_attempts is int, met de standaard waarde van 10.
 
 [ **\@step_timeout_seconds =** ] step_timeout_seconds  
@@ -669,31 +669,31 @@ Als dit niet het geval is, is dit het type bestemming waarnaar de eerste resulta
 
 Indien opgegeven, moet de waarde SqlDatabase zijn.
 
-**[\@output_credential_name =** ] ' output_credential_name '  
+[ **\@output_credential_name =** ] 'output_credential_name'  
 Als dit niet het geval is, wordt de naam van de data base-scoped referentie die wordt gebruikt om verbinding te maken met de uitvoer doel database. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. output_credential_name is nvarchar (128), met een standaard waarde van NULL.
 
-**[\@output_subscription_id =** ] ' output_subscription_id '  
+[ **\@output_subscription_id =** ] 'output_subscription_id'  
 Beschrijving vereist.
 
-**[\@output_resource_group_name =** ] ' output_resource_group_name '  
+[ **\@output_resource_group_name =** ] 'output_resource_group_name'  
 Beschrijving vereist.
 
-**[\@output_server_name =** ] ' output_server_name '  
+[ **\@output_server_name =** ] 'output_server_name'  
 Als dit niet het geval is, wordt de volledig gekwalificeerde DNS-naam van de server die de uitvoer doel database bevat. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. output_server_name is nvarchar (256), met een standaard waarde van NULL.
 
-**[\@output_database_name =** ] ' output_database_name '  
+[ **\@output_database_name =** ] 'output_database_name'  
 Als dit niet het geval is, is dit de naam van de data base die de uitvoer doel tabel bevat. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. output_database_name is nvarchar (128), met een standaard waarde van NULL.
 
-**[\@output_schema_name =** ] ' output_schema_name '  
+[ **\@output_schema_name =** ] 'output_schema_name'  
 Als dit niet het geval is, is dit de naam van het SQL-schema dat de uitvoer doel tabel bevat. Als output_type gelijk is aan SqlDatabase, is de standaard waarde dbo. output_schema_name is nvarchar (128).
 
-**[\@output_table_name =** ] ' output_table_name '  
+[ **\@output_table_name =** ] 'output_table_name'  
 Als dit niet het geval is, is dit de naam van de tabel waarnaar de eerste resultatenset van de opdracht wordt geschreven. Als de tabel nog niet bestaat, wordt deze gemaakt op basis van het schema van de geretourneerde resultatenset. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. output_table_name is nvarchar (128), met een standaard waarde van NULL.
 
-**[\@job_version =** ] job_version-uitvoer  
+[ **\@job_version =** ] JOB_VERSION-uitvoer  
 Uitvoer parameter waaraan het nieuwe taak versie nummer wordt toegewezen. job_version is int.
 
-**[\@max_parallelism =** ] max_parallelism-uitvoer  
+[ **\@max_parallelism =** ] MAX_PARALLELISM-uitvoer  
 Het maximale parallelle niveau per elastische pool. Als deze is ingesteld, wordt de taak stap beperkt tot een maximum van zoveel data bases per elastische pool. Dit geldt voor elke elastische pool die rechtstreeks is opgenomen in de doel groep of die zich binnen een server bevindt die deel uitmaakt van de doel groep. max_parallelism is int.
 
 
@@ -745,38 +745,38 @@ Hiermee wordt een taak stap bijgewerkt.
 ```
 
 #### <a name="arguments"></a>Argumenten
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak waartoe de stap behoort. job_name is nvarchar (128).
 
-**[\@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 Het id-nummer van de taak stap die moet worden gewijzigd. Step_id of step_name moet worden opgegeven. step_id is een int.
 
-**[\@step_name =** ] ' step_name '  
+[ **\@step_name =** ] 'step_name'  
 De naam van de stap die moet worden gewijzigd. Step_id of step_name moet worden opgegeven. step_name is nvarchar (128).
 
 [ **\@new_id =** ] new_id  
 Het nieuwe Volg nummer van de reeks-id voor de taak stap. De identificatie nummers van de stappen beginnen bij 1 en worden verhoogd zonder onderbrekingen. Als een stap wordt gewijzigd, worden andere stappen automatisch opnieuw genummerd.
 
-**[\@new_name =** ] ' new_name '  
+[ **\@new_name =** ] 'new_name'  
 De nieuwe naam van de stap. new_name is nvarchar (128).
 
-**[\@command_type =** ] ' command_type '  
-Het type opdracht dat wordt uitgevoerd door deze jobstep. command_type is nvarchar (50), met een standaard waarde van TSql, wat inhoudt dat de waarde @command_type van de para meter een T-SQL-script is.
+[ **\@command_type =** ] 'command_type'  
+Het type opdracht dat wordt uitgevoerd door deze jobstep. command_type is nvarchar (50), met een standaard waarde van TSql, wat inhoudt dat de waarde van de para meter @command_type een T-SQL-script is.
 
 Indien opgegeven, moet de waarde TSql zijn.
 
-**[\@command_source =** ] ' command_source '  
-Het type locatie waar de opdracht wordt opgeslagen. command_source is nvarchar (50), met een standaard waarde van inline, wat inhoudt dat de waarde @command_source van de para meter de letterlijke tekst van de opdracht is.
+[ **\@command_source =** ] 'command_source'  
+Het type locatie waar de opdracht wordt opgeslagen. command_source is nvarchar (50), met een standaard waarde van inline, wat inhoudt dat de waarde van de para meter @command_source de letterlijke tekst van de opdracht is.
 
 Indien opgegeven, moet de waarde inline zijn.
 
-**[\@Command =** ] ' opdracht '  
+[ **\@opdracht =** ] cmd  
 De opdracht/opdrachten moeten een geldig T-SQL-script zijn en worden vervolgens uitgevoerd door deze taak stap. de opdracht is nvarchar (max), met een standaard waarde van NULL.
 
-**[\@credential_name =** ] ' credential_name '  
+[ **\@credential_name =** ] 'credential_name'  
 De naam van de data base-scoped referentie opgeslagen in deze taak beheer database die wordt gebruikt om verbinding te maken met elk van de doel databases in de doel groep wanneer deze stap wordt uitgevoerd. credential_name is nvarchar (128).
 
-**[\@target_group_name =** ] ' target-group_name '  
+[ **\@target_group_name =** ] ' target-group_name '  
 De naam van de doel groep die de doel databases bevat waarop de taak stap wordt uitgevoerd. target_group_name is nvarchar (128).
 
 [ **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
@@ -788,7 +788,7 @@ De maximale vertraging tussen nieuwe pogingen. Als de vertraging tussen nieuwe p
 [ **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 De vermenigvuldiger die moet worden toegepast op de vertraging voor nieuwe pogingen als de uitvoering van meerdere taak stappen mislukt. Als bijvoorbeeld de eerste nieuwe poging een vertraging van 5 seconde had en de uitstel-vermenigvuldiger 2,0 is, heeft de tweede nieuwe poging een vertraging van 10 seconden en de derde nieuwe poging heeft een vertraging van 20 seconden. retry_interval_backoff_multiplier is echt, met de standaard waarde van 2,0.
 
-**[\@retry_attempts =** ] retry_attempts  
+[ **\@retry_attempts =** ] retry_attempts  
 Het aantal keren dat de uitvoering opnieuw moet worden uitgevoerd als de eerste poging mislukt. Als de waarde van retry_attempts bijvoorbeeld 10 is, dan is er 1 eerste poging en tien nieuwe pogingen, met een totaal van 11 pogingen. Als de laatste poging tot opnieuw proberen mislukt, wordt de uitvoering van de taak beëindigd met een levens cyclus van mislukt. retry_attempts is int, met de standaard waarde van 10.
 
 [ **\@step_timeout_seconds =** ] step_timeout_seconds  
@@ -799,25 +799,25 @@ Als dit niet het geval is, is dit het type bestemming waarnaar de eerste resulta
 
 Indien opgegeven, moet de waarde SqlDatabase zijn.
 
-**[\@output_credential_name =** ] ' output_credential_name '  
+[ **\@output_credential_name =** ] 'output_credential_name'  
 Als dit niet het geval is, wordt de naam van de data base-scoped referentie die wordt gebruikt om verbinding te maken met de uitvoer doel database. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. Als u de waarde van output_credential_name opnieuw wilt instellen op NULL, stelt u de waarde van deze para meter in op (lege teken reeks). output_credential_name is nvarchar (128), met een standaard waarde van NULL.
 
-**[\@output_server_name =** ] ' output_server_name '  
+[ **\@output_server_name =** ] 'output_server_name'  
 Als dit niet het geval is, wordt de volledig gekwalificeerde DNS-naam van de server die de uitvoer doel database bevat. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. Als u de waarde van output_server_name opnieuw wilt instellen op NULL, stelt u de waarde van deze para meter in op (lege teken reeks). output_server_name is nvarchar (256), met een standaard waarde van NULL.
 
-**[\@output_database_name =** ] ' output_database_name '  
+[ **\@output_database_name =** ] 'output_database_name'  
 Als dit niet het geval is, is dit de naam van de data base die de uitvoer doel tabel bevat. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. Als u de waarde van output_database_name opnieuw wilt instellen op NULL, stelt u de waarde van deze para meter in op (lege teken reeks). output_database_name is nvarchar (128), met een standaard waarde van NULL.
 
-**[\@output_schema_name =** ] ' output_schema_name '  
+[ **\@output_schema_name =** ] 'output_schema_name'  
 Als dit niet het geval is, is dit de naam van het SQL-schema dat de uitvoer doel tabel bevat. Als output_type gelijk is aan SqlDatabase, is de standaard waarde dbo. Als u de waarde van output_schema_name opnieuw wilt instellen op NULL, stelt u de waarde van deze para meter in op (lege teken reeks). output_schema_name is nvarchar (128).
 
-**[\@output_table_name =** ] ' output_table_name '  
+[ **\@output_table_name =** ] 'output_table_name'  
 Als dit niet het geval is, is dit de naam van de tabel waarnaar de eerste resultatenset van de opdracht wordt geschreven. Als de tabel nog niet bestaat, wordt deze gemaakt op basis van het schema van de geretourneerde resultatenset. Moet worden opgegeven als output_type gelijk is aan SqlDatabase. Als u de waarde van output_server_name opnieuw wilt instellen op NULL, stelt u de waarde van deze para meter in op (lege teken reeks). output_table_name is nvarchar (128), met een standaard waarde van NULL.
 
-**[\@job_version =** ] job_version-uitvoer  
+[ **\@job_version =** ] JOB_VERSION-uitvoer  
 Uitvoer parameter waaraan het nieuwe taak versie nummer wordt toegewezen. job_version is int.
 
-**[\@max_parallelism =** ] max_parallelism-uitvoer  
+[ **\@max_parallelism =** ] MAX_PARALLELISM-uitvoer  
 Het maximale parallelle niveau per elastische pool. Als deze is ingesteld, wordt de taak stap beperkt tot een maximum van zoveel data bases per elastische pool. Dit geldt voor elke elastische pool die rechtstreeks is opgenomen in de doel groep of die zich binnen een server bevindt die deel uitmaakt van de doel groep. Als u de waarde van max_parallelism opnieuw wilt instellen op NULL, stelt u de waarde van deze para meter in op-1. max_parallelism is int.
 
 
@@ -852,16 +852,16 @@ Hiermee verwijdert u een taak stap van een taak.
 ```
 
 #### <a name="arguments"></a>Argumenten
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak waaruit de stap wordt verwijderd. job_name is nvarchar (128), zonder standaard waarde.
 
-**[\@step_id =** ] step_id  
+[ **\@step_id =** ] step_id  
 Het id-nummer van de taak stap die moet worden verwijderd. Step_id of step_name moet worden opgegeven. step_id is een int.
 
-**[\@step_name =** ] ' step_name '  
+[ **\@step_name =** ] 'step_name'  
 De naam van de stap die moet worden verwijderd. Step_id of step_name moet worden opgegeven. step_name is nvarchar (128).
 
-**[\@job_version =** ] job_version-uitvoer  
+[ **\@job_version =** ] JOB_VERSION-uitvoer  
 Uitvoer parameter waaraan het nieuwe taak versie nummer wordt toegewezen. job_version is int.
 
 #### <a name="return-code-values"></a>Retour code waarden
@@ -896,10 +896,10 @@ De uitvoering van een taak wordt gestart.
 ```
 
 #### <a name="arguments"></a>Argumenten
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak waaruit de stap wordt verwijderd. job_name is nvarchar (128), zonder standaard waarde.
 
-**[\@job_execution_id =** ] job_execution_id-uitvoer  
+[ **\@job_execution_id =** ] JOB_EXECUTION_ID-uitvoer  
 Uitvoer parameter waaraan de taak uitvoering-id wordt toegewezen. job_version is uniqueidentifier.
 
 #### <a name="return-code-values"></a>Retour code waarden
@@ -957,10 +957,10 @@ Hiermee voegt u een doel groep toe.
 
 
 #### <a name="arguments"></a>Argumenten
-**[\@target_group_name =** ] ' target_group_name '  
+[ **\@target_group_name =** ] 'target_group_name'  
 De naam van de doel groep die u wilt maken. target_group_name is nvarchar (128), zonder standaard waarde.
 
-**[\@target_group_id =** ] target_group_id uitvoer het id-nummer van de doel groep die is toegewezen aan de taak als deze is gemaakt. target_group_id is een uitvoer variabele van het type UniqueIdentifier, met de standaard waarde NULL.
+[ **\@target_group_id =** ] TARGET_GROUP_ID-uitvoer het id-nummer van de doel groep die is toegewezen aan de taak als deze is gemaakt. target_group_id is een uitvoer variabele van het type UniqueIdentifier, met de standaard waarde NULL.
 
 #### <a name="return-code-values"></a>Retour code waarden
 0 (geslaagd) of 1 (fout)
@@ -987,7 +987,7 @@ Hiermee verwijdert u een doel groep.
 
 
 #### <a name="arguments"></a>Argumenten
-**[\@target_group_name =** ] ' target_group_name '  
+[ **\@target_group_name =** ] 'target_group_name'  
 De naam van de doel groep die u wilt verwijderen. target_group_name is nvarchar (128), zonder standaard waarde.
 
 #### <a name="return-code-values"></a>Retour code waarden
@@ -1021,31 +1021,31 @@ Hiermee voegt u een Data Base of een groep data bases toe aan een doel groep.
 ```
 
 #### <a name="arguments"></a>Argumenten
-**[\@target_group_name =** ] ' target_group_name '  
+[ **\@target_group_name =** ] 'target_group_name'  
 De naam van de doel groep waaraan het lid wordt toegevoegd. target_group_name is nvarchar (128), zonder standaard waarde.
 
-**[\@membership_type =** ] ' membership_type '  
+[ **\@membership_type =** ] 'membership_type'  
 Hiermee geeft u op of het lid van de doel groep wordt opgenomen of uitgesloten. target_group_name is nvarchar (128), waarbij de standaard waarde ' include ' is. Geldige waarden voor target_group_name zijn ' include ' of ' exclude '.
 
 [ **\@target_type =** ] 'target_type'  
 Het type doel database of verzameling data bases, inclusief alle data bases op een server, alle data bases in een elastische pool, alle data bases in een Shard-kaart of een afzonderlijke data base. target_type is nvarchar (128), zonder standaard waarde. Geldige waarden voor target_type zijn ' SqlServer ', ' SqlElasticPool ', ' SqlDatabase ' of ' SqlShardMap '. 
 
-**[\@refresh_credential_name =** ] ' refresh_credential_name '  
+[ **\@refresh_credential_name =** ] 'refresh_credential_name'  
 De naam van de SQL Database-Server. refresh_credential_name is nvarchar (128), zonder standaard waarde.
 
-**[\@server naam =** ] ' server naam '  
+[ **\@server naam =** ] Server  
 De naam van de SQL Database-Server die moet worden toegevoegd aan de opgegeven doel groep. Server naam moet worden opgegeven wanneer target_type is ingesteld op SqlServer. Server naam is nvarchar (128), zonder standaard waarde.
 
-[databasenaam =] ' databasenaam '  **\@**  
+[ **\@databasenaam =** ] database  
 De naam van de data base die moet worden toegevoegd aan de opgegeven doel groep. de databasenaam moet worden opgegeven als target_type ' SqlDatabase ' is. databasenaam is nvarchar (128), zonder standaard waarde.
 
-**[\@elastic_pool_name =** ] ' elastic_pool_name '  
+[ **\@elastic_pool_name =** ] 'elastic_pool_name'  
 De naam van de elastische pool die moet worden toegevoegd aan de opgegeven doel groep. elastic_pool_name moet worden opgegeven als target_type is ingesteld op SqlElasticPool. elastic_pool_name is nvarchar (128), zonder standaard waarde.
 
-**[\@shard_map_name =** ] ' shard_map_name '  
+[ **\@shard_map_name =** ] 'shard_map_name'  
 De naam van de Shard-toewijzings groep die moet worden toegevoegd aan de opgegeven doel groep. elastic_pool_name moet worden opgegeven als target_type is ingesteld op SqlSqlShardMap. shard_map_name is nvarchar (128), zonder standaard waarde.
 
-**[\@target_id =** ] target_group_id-uitvoer  
+[ **\@target_id =** ] TARGET_GROUP_ID-uitvoer  
 Het doel-id-nummer dat is toegewezen aan het lid van de doel groep als dit is gemaakt, wordt toegevoegd aan de doel groep. target_id is een uitvoer variabele van het type UniqueIdentifier, met de standaard waarde NULL.
 Retour code waarden 0 (geslaagd) of 1 (mislukt)
 
@@ -1105,10 +1105,10 @@ Hiermee verwijdert u een lid van een doel groep uit een doel groep.
 
 
 
-Arguments [ @target_group_name = ] 'target_group_name'  
+Argumenten [@target_group_name =] ' target_group_name '  
 De naam van de doel groep waaruit het lid van de doel groep moet worden verwijderd. target_group_name is nvarchar (128), zonder standaard waarde.
 
-[ @target_id =] target_id  
+[@target_id =] target_id  
  Het doel-id-nummer dat is toegewezen aan het lid van de doel groep dat moet worden verwijderd. target_id is een uniqueidentifier met een standaard waarde van NULL.
 
 #### <a name="return-code-values"></a>Retour code waarden
@@ -1156,7 +1156,7 @@ Hiermee verwijdert u de geschiedenis records voor een taak.
 ```
 
 #### <a name="arguments"></a>Argumenten
-**[\@job_name =** ] ' job_name '  
+[ **\@job_name =** ] 'job_name'  
 De naam van de taak waarvoor de geschiedenis records moeten worden verwijderd. job_name is nvarchar (128), met een standaard waarde van NULL. Job_id of job_name moet worden opgegeven, maar de waarde kan niet worden opgegeven.
 
 [ **\@job_id =** ] job_id  
@@ -1192,10 +1192,10 @@ GO
 De volgende weer gaven zijn beschikbaar in de [Jobs-data base](sql-database-job-automation-overview.md#job-database).
 
 
-|Weergave  |Description  |
+|Weergave  |Beschrijving  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Taak uitvoerings geschiedenis weer geven.      |
-|[jobs](#jobs-view)     |   Hiermee worden alle taken weer gegeven.      |
+|[functies](#jobs-view)     |   Hiermee worden alle taken weer gegeven.      |
 |[job_versions](#job_versions-view)     |   Alle taak versies worden weer gegeven.      |
 |[jobsteps](#jobsteps-view)     |     Hiermee worden alle stappen in de huidige versie van elke taak weer gegeven.    |
 |[jobstep_versions](#jobstep_versions-view)     |     Toont alle stappen in alle versies van elke taak.    |
@@ -1210,25 +1210,25 @@ De volgende weer gaven zijn beschikbaar in de [Jobs-data base](sql-database-job-
 Taak uitvoerings geschiedenis weer geven.
 
 
-|Kolomnaam|   Gegevenstype   |Description|
+|Kolom naam|   Gegevenstype   |Beschrijving|
 |---------|---------|---------|
-|**job_execution_id**   |uniqueidentifier|  Unieke ID van een exemplaar van de uitvoering van een taak.
+|**job_execution_id**   |unieke|  Unieke ID van een exemplaar van de uitvoering van een taak.
 |**job_name**   |nvarchar (128)  |De naam van de taak.
-|**job_id** |uniqueidentifier|  De unieke ID van de taak.
+|**job_id** |unieke|  De unieke ID van de taak.
 |**job_version**    |int    |De versie van de taak (automatisch bijgewerkt telkens wanneer de taak wordt gewijzigd).
 |**step_id**    |int|   Unieke id (voor deze taak) voor de stap. NULL geeft aan dat de uitvoering van de bovenliggende taak is.
-|**is_active**| bit |Geeft aan of de gegevens actief of inactief zijn. 1 geeft actieve taken aan, en 0 geeft aan dat deze niet actief is.
+|**is_active**| bitmask |Geeft aan of de gegevens actief of inactief zijn. 1 geeft actieve taken aan, en 0 geeft aan dat deze niet actief is.
 |**duur**| nvarchar (50)|Waarde die de status van de taak aangeeft: ' gemaakt ', ' wordt uitgevoerd ', ' mislukt ', ' geslaagd ', ' overgeslagen ', ' SucceededWithSkipped '|
 |**create_time**|   DATETIME2 (7)|   De datum en tijd waarop de taak is gemaakt.
 |**start_time** |DATETIME2 (7)|  De datum en tijd waarop de taak is gestart. NULL als de taak nog niet is uitgevoerd.
 |**end_time**|  DATETIME2 (7)    |De datum en tijd waarop de taak is uitgevoerd. NULL als de taak nog niet is uitgevoerd of de uitvoering nog niet is voltooid.
 |**current_attempts**   |int    |Aantal keren dat de stap opnieuw is uitgevoerd. De bovenliggende taak is 0, de uitvoering van onderliggende taken is 1 of meer op basis van het uitvoerings beleid.
 |**current_attempt_start_time** |DATETIME2 (7)|  De datum en tijd waarop de taak is gestart. NULL geeft aan dat de uitvoering van de bovenliggende taak is.
-|**last_message**   |nvarchar(max)| Taak-of stap geschiedenis bericht. 
+|**last_message**   |nvarchar (max)| Taak-of stap geschiedenis bericht. 
 |**target_type**|   nvarchar (128)   |Type doel database of verzameling data bases, inclusief alle data bases in een server, alle data bases in een elastische pool of een Data Base. Geldige waarden voor target_type zijn ' SqlServer ', ' SqlElasticPool ' of ' SqlDatabase '. NULL geeft aan dat de uitvoering van de bovenliggende taak is.
-|**target_id**  |uniqueidentifier|  De unieke ID van het lid van de doel groep.  NULL geeft aan dat de uitvoering van de bovenliggende taak is.
+|**target_id**  |unieke|  De unieke ID van het lid van de doel groep.  NULL geeft aan dat de uitvoering van de bovenliggende taak is.
 |**target_group_name**  |nvarchar (128)  |De naam van de doel groep. NULL geeft aan dat de uitvoering van de bovenliggende taak is.
-|**target_server_name**|    nvarchar(256)|  De naam van de SQL Database Server die deel uitmaakt van de doel groep. Alleen opgegeven als target_type ' SqlServer ' is. NULL geeft aan dat de uitvoering van de bovenliggende taak is.
+|**target_server_name**|    nvarchar (256)|  De naam van de SQL Database Server die deel uitmaakt van de doel groep. Alleen opgegeven als target_type ' SqlServer ' is. NULL geeft aan dat de uitvoering van de bovenliggende taak is.
 |**target_database_name**   |nvarchar (128)| De naam van de data base die is opgenomen in de doel groep. Wordt alleen opgegeven als target_type is ingesteld op ' SqlDatabase '. NULL geeft aan dat de uitvoering van de bovenliggende taak is.
 
 
@@ -1238,12 +1238,12 @@ Taak uitvoerings geschiedenis weer geven.
 
 Hiermee worden alle taken weer gegeven.
 
-|Kolomnaam|   Gegevenstype|  Description|
+|Kolom naam|   Gegevenstype|  Beschrijving|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |De naam van de taak.|
-|**job_id**|    uniqueidentifier    |De unieke ID van de taak.|
+|**job_id**|    unieke    |De unieke ID van de taak.|
 |**job_version**    |int    |De versie van de taak (automatisch bijgewerkt telkens wanneer de taak wordt gewijzigd).|
-|**description**    |nvarchar(512)| Beschrijving voor de taak. ingeschakelde bit geeft aan of de taak is ingeschakeld of uitgeschakeld. 1 geeft ingeschakelde taken aan en 0 duidt op uitgeschakelde taken.|
+|**beschrijvingen**    |nvarchar (512)| Beschrijving voor de taak. ingeschakelde bit geeft aan of de taak is ingeschakeld of uitgeschakeld. 1 geeft ingeschakelde taken aan en 0 duidt op uitgeschakelde taken.|
 |**schedule_interval_type** |nvarchar (50)   |Waarde die aangeeft wanneer de taak moet worden uitgevoerd: ' Once ', ' minutes ', ' hours ', ' Days ', ' weken ', ' months '
 |**schedule_interval_count**|   int|    Aantal schedule_interval_type-Peri Oden dat moet plaatsvinden tussen elke uitvoering van de taak.|
 |**schedule_start_time**    |DATETIME2 (7)|  De datum en tijd waarop de taak voor het laatst is gestart.|
@@ -1252,14 +1252,14 @@ Hiermee worden alle taken weer gegeven.
 
 ### <a name="job_versions-view"></a>job_versions weer geven
 
-[jobs].[job_versions]
+[Jobs]. [job_versions]
 
 Alle taak versies worden weer gegeven.
 
-|Kolomnaam|   Gegevenstype|  Description|
+|Kolom naam|   Gegevenstype|  Beschrijving|
 |------|------|-------|
 |**job_name**|  nvarchar (128)   |De naam van de taak.|
-|**job_id**|    uniqueidentifier    |De unieke ID van de taak.|
+|**job_id**|    unieke    |De unieke ID van de taak.|
 |**job_version**    |int    |De versie van de taak (automatisch bijgewerkt telkens wanneer de taak wordt gewijzigd).|
 
 
@@ -1269,77 +1269,77 @@ Alle taak versies worden weer gegeven.
 
 Hiermee worden alle stappen in de huidige versie van elke taak weer gegeven.
 
-|Kolomnaam    |Gegevenstype| Description|
+|Kolom naam    |Gegevenstype| Beschrijving|
 |------|------|-------|
 |**job_name**   |nvarchar (128)| De naam van de taak.|
-|**job_id** |uniqueidentifier   |De unieke ID van de taak.|
+|**job_id** |unieke   |De unieke ID van de taak.|
 |**job_version**|   int|    De versie van de taak (automatisch bijgewerkt telkens wanneer de taak wordt gewijzigd).|
 |**step_id**    |int    |Unieke id (voor deze taak) voor de stap.|
 |**step_name**  |nvarchar (128)  |Unieke naam (voor deze taak) voor de stap.|
 |**command_type**   |nvarchar (50)   |Type opdracht dat moet worden uitgevoerd in de taak stap. Voor v1 moet waarde gelijk aan en standaard ingesteld op TSql.|
 |**command_source** |nvarchar (50)|  Locatie van de opdracht. Voor v1 is ' inline ' de standaard waarde en alleen geaccepteerde waarden.|
-|**cmd**|   nvarchar(max)|  De opdrachten die door elastische taken moeten worden uitgevoerd via command_type.|
+|**cmd**|   nvarchar (max)|  De opdrachten die door elastische taken moeten worden uitgevoerd via command_type.|
 |**credential_name**|   nvarchar (128)   |De naam van de data base-bereik referentie die wordt gebruikt om de taak uit te voeren.|
 |**target_group_name**| nvarchar (128)   |De naam van de doel groep.|
-|**target_group_id**|   uniqueidentifier|   De unieke ID van de doel groep.|
+|**target_group_id**|   unieke|   De unieke ID van de doel groep.|
 |**initial_retry_interval_seconds**|    int |De vertraging voor de eerste nieuwe poging. De standaard waarde is 1.|
 |**maximum_retry_interval_seconds** |int|   De maximale vertraging tussen nieuwe pogingen. Als de vertraging tussen nieuwe pogingen groter is dan deze waarde, wordt deze waarde in plaats daarvan beperkt. De standaard waarde is 120.|
-|**retry_interval_backoff_multiplier**  |real|  De vermenigvuldiger die moet worden toegepast op de vertraging voor nieuwe pogingen als de uitvoering van meerdere taak stappen mislukt. De standaard waarde is 2,0.|
+|**retry_interval_backoff_multiplier**  |realistische|  De vermenigvuldiger die moet worden toegepast op de vertraging voor nieuwe pogingen als de uitvoering van meerdere taak stappen mislukt. De standaard waarde is 2,0.|
 |**retry_attempts** |int|   Het aantal nieuwe pogingen om te gebruiken als deze stap mislukt. De standaard waarde is 10, waarmee wordt aangegeven dat er geen nieuwe pogingen moeten worden gedaan.|
 |**step_timeout_seconds**   |int|   De hoeveelheid tijd in minuten tussen nieuwe pogingen. De standaard waarde is 0, wat een interval van 0 minuten aangeeft.|
-|**output_type**    |nvarchar(11)|  Locatie van de opdracht. In de huidige preview is ' inline ' de standaard waarde en alleen geaccepteerde waarden.|
+|**output_type**    |nvarchar (11)|  Locatie van de opdracht. In de huidige preview is ' inline ' de standaard waarde en alleen geaccepteerde waarden.|
 |**output_credential_name**|    nvarchar (128)   |De naam van de referenties die moeten worden gebruikt om verbinding te maken met de doel server voor het opslaan van de resultatenset.|
-|**output_subscription_id**|    uniqueidentifier|   De unieke ID van het abonnement van de doel-server\database voor de resultaten die zijn ingesteld voor de uitvoering van de query.|
+|**output_subscription_id**|    unieke|   De unieke ID van het abonnement van de doel-server\database voor de resultaten die zijn ingesteld voor de uitvoering van de query.|
 |**output_resource_group_name** |nvarchar (128)| De naam van de resource groep waarin de doel server zich bevindt.|
-|**output_server_name**|    nvarchar(256)   |De naam van de doel server voor de resultatenset.|
+|**output_server_name**|    nvarchar (256)   |De naam van de doel server voor de resultatenset.|
 |**output_database_name**   |nvarchar (128)| De naam van de doel database voor de resultatenset.|
-|**output_schema_name** |nvarchar(max)| De naam van het doel schema. De standaard waarde is dbo, indien niet opgegeven.|
-|**output_table_name**| nvarchar(max)|  De naam van de tabel voor het opslaan van de resultaten die zijn ingesteld op basis van de query resultaten. De tabel wordt automatisch gemaakt op basis van het schema van de resultatenset als deze nog niet bestaat. Het schema moet overeenkomen met het schema van de resultatenset.|
+|**output_schema_name** |nvarchar (max)| De naam van het doel schema. De standaard waarde is dbo, indien niet opgegeven.|
+|**output_table_name**| nvarchar (max)|  De naam van de tabel voor het opslaan van de resultaten die zijn ingesteld op basis van de query resultaten. De tabel wordt automatisch gemaakt op basis van het schema van de resultatenset als deze nog niet bestaat. Het schema moet overeenkomen met het schema van de resultatenset.|
 |**max_parallelism**|   int|    Het maximum aantal data bases per elastische pool waarin de taak stap op een bepaald moment wordt uitgevoerd. De standaard waarde is NULL, wat betekent dat er geen limiet is. |
 
 
 ### <a name="jobstep_versions-view"></a>jobstep_versions weer geven
 
-[jobs].[jobstep_versions]
+[Jobs]. [jobstep_versions]
 
 Toont alle stappen in alle versies van elke taak. Het schema is identiek aan [jobsteps](#jobsteps-view).
 
 ### <a name="target_groups-view"></a>target_groups weer geven
 
-[jobs].[target_groups]
+[Jobs]. [target_groups]
 
 Een lijst met alle doel groepen.
 
-|Kolomnaam|Gegevenstype| Description|
+|Kolom naam|Gegevenstype| Beschrijving|
 |-----|-----|-----|
 |**target_group_name**| nvarchar (128)   |De naam van de doel groep, een verzameling data bases. 
-|**target_group_id**    |uniqueidentifier   |De unieke ID van de doel groep.
+|**target_group_id**    |unieke   |De unieke ID van de doel groep.
 
 ### <a name="target_groups_members-view"></a>target_groups_members weer geven
 
-[jobs].[target_groups_members]
+[Jobs]. [target_groups_members]
 
 Toont alle leden van alle doel groepen.
 
-|Kolomnaam|Gegevenstype| Description|
+|Kolom naam|Gegevenstype| Beschrijving|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar (128|De naam van de doel groep, een verzameling data bases. |
-|**target_group_id**    |uniqueidentifier   |De unieke ID van de doel groep.|
+|**target_group_id**    |unieke   |De unieke ID van de doel groep.|
 |**membership_type**    |int|   Hiermee geeft u op of het lid van de doel groep wordt opgenomen of uitgesloten in de doel groep. Geldige waarden voor target_group_name zijn ' include ' of ' exclude '.|
 |**target_type**    |nvarchar (128)| Type doel database of verzameling data bases, inclusief alle data bases in een server, alle data bases in een elastische pool of een Data Base. Geldige waarden voor target_type zijn ' SqlServer ', ' SqlElasticPool ', ' SqlDatabase ' of ' SqlShardMap '.|
-|**target_id**  |uniqueidentifier|  De unieke ID van het lid van de doel groep.|
+|**target_id**  |unieke|  De unieke ID van het lid van de doel groep.|
 |**refresh_credential_name**    |nvarchar (128)  |De naam van de data base-scoped referentie die wordt gebruikt om verbinding te maken met het doel groepslid.|
-|**subscription_id**    |uniqueidentifier|  De unieke ID van het abonnement.|
+|**subscription_id**    |unieke|  De unieke ID van het abonnement.|
 |**resource_group_name**    |nvarchar (128)| De naam van de resource groep waarin het lid van de doel groep zich bevindt.|
-|**server_name**    |nvarchar (128)  |De naam van de SQL Database Server die deel uitmaakt van de doel groep. Alleen opgegeven als target_type ' SqlServer ' is. |
+|**Server**    |nvarchar (128)  |De naam van de SQL Database Server die deel uitmaakt van de doel groep. Alleen opgegeven als target_type ' SqlServer ' is. |
 |**database**  |nvarchar (128)  |De naam van de data base die is opgenomen in de doel groep. Wordt alleen opgegeven als target_type is ingesteld op ' SqlDatabase '.|
 |**elastic_pool_name**  |nvarchar (128)| De naam van de elastische pool die deel uitmaakt van de doel groep. Wordt alleen opgegeven als target_type is ingesteld op ' SqlElasticPool '.|
 |**shard_map_name** |nvarchar (128)| De naam van de Shard-kaart die deel uitmaakt van de doel groep. Wordt alleen opgegeven als target_type is ingesteld op ' SqlShardMap '.|
 
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
- - ![Pictogram koppeling onderwerp](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Pictogram koppeling onderwerp") [Transact-SQL-syntaxis conventies](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![Onderwerp koppeling pictogram](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Pictogram koppeling onderwerp") [Transact-SQL-syntaxis conventies](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>Volgende stappen

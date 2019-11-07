@@ -1,5 +1,5 @@
 ---
-title: Ondersteunde bestands indelingen in Azure Data Factory | Microsoft Docs
+title: Ondersteunde bestands indelingen in Azure Data Factory
 description: In dit onderwerp worden de bestands indelingen en compressie codes beschreven die worden ondersteund door connectors op basis van bestanden in Azure Data Factory.
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 00d8fb69abb6ce74a36ff017f3f356cb86114d99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0183e991a3cbc0481aff44b5b0f03eaa9d43103
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930919"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683974"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Ondersteunde bestands indelingen en compressie-codecs in Azure Data Factory
 
@@ -39,7 +39,7 @@ Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis va
 
 Als u wilt lezen uit een tekst bestand of naar een tekst bestand wilt schrijven, stelt u de eigenschap `type` in de sectie `format` van de gegevensset in op **TextFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Raadpleeg het gedeelte [TextFormat-voorbeeld](#textformat-example) voor configuratie-instructies.
 
-| Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
+| Eigenschap | Beschrijving | Toegestane waarden | Vereist |
 | --- | --- | --- | --- |
 | columnDelimiter |Het teken dat wordt gebruikt voor het scheiden van kolommen in een bestand. U kunt overwegen om een zeldzaam niet-afdrukbaar teken te gebruiken dat mogelijk niet voor komt in uw gegevens. Geef bijvoorbeeld ' \u0001 ' op, die het begin van de kop (SOH) vertegenwoordigt. |Er is slechts één teken toegestaan. De **standaardwaarde** is een **komma (',')** . <br/><br/>Als u een Unicode-teken wilt gebruiken, raadpleegt u [Unicode-tekens](https://en.wikipedia.org/wiki/List_of_Unicode_characters) om de bijbehorende code te verkrijgen. |Nee |
 | rowDelimiter |Het teken dat wordt gebruikt voor het scheiden van rijen in een bestand. |Er is slechts één teken toegestaan. De **standaardwaarde** is een van de volgende leeswaarden **['\r\n', '\r', '\n']** en de schrijfwaarde **'\r\n'** . |Nee |
@@ -47,9 +47,9 @@ Als u wilt lezen uit een tekst bestand of naar een tekst bestand wilt schrijven,
 | quoteChar |Het teken dat wordt gebruikt om een tekenreekswaarde te citeren. De scheidingstekens voor kolommen en rijen binnen de aanhalingstekens worden beschouwd als onderdeel van de tekenreekswaarde. Deze eigenschap is van toepassing op gegevenssets voor invoer en uitvoer.<br/><br/>Het is niet mogelijk om zowel escapeChar als quoteChar voor een tabel op te geven. |Er is slechts één teken toegestaan. Er is geen standaardwaarde. <br/><br/>Voorbeeld: als u kolommen scheidt met komma's (', '), maar u het kommateken in een tekst wilt gebruiken (voorbeeld: <Hallo, wereld>), kunt u " (dubbel aanhalingsteken) als het aanhalingsteken opgeven en de tekenreeks "Hallo, wereld" in de bron gebruiken. |Nee |
 | nullValue |Een of meer tekens die worden gebruikt om een null-waarde te vertegenwoordigen. |Een of meer tekens. De **standaardwaarden** zijn **'\N' en 'NULL'** voor lezen en **'\N'** voor schrijven. |Nee |
 | encodingName |Geef de coderingsnaam op. |Een geldige coderingsnaam. Zie [De eigenschap Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx). Voorbeeld: windows 1250 of shift_jis. De **standaardwaarde** is **UTF-8**. |Nee |
-| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount` ](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Waar<br/><b>False (standaard)</b> |Nee |
+| firstRowAsHeader |Hiermee geeft u op of de eerste rij als een header moet worden gezien. Bij een gegevensset voor invoer leest Data Factory de eerste rij als een header. Bij een gegevensset voor uitvoer schrijft Data Factory de eerste rij als een header. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount` ](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |True<br/><b>False (standaard)</b> |Nee |
 | skipLineCount |Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. <br/><br/>Zie [Gebruiksscenario's`firstRowAsHeader` en `skipLineCount` ](#scenarios-for-using-firstrowasheader-and-skiplinecount) voor voorbeeldscenario's. |Geheel getal |Nee |
-| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>Onwaar |Nee |
+| treatEmptyAsNull |Hiermee geeft u aan of null of lege tekenreeks moeten worden behandeld als een null-waarde bij het lezen van gegevens uit een invoerbestand. |**True (standaard)**<br/>False |Nee |
 
 ### <a name="textformat-example"></a>Voorbeeld van TextFormat
 
@@ -95,7 +95,7 @@ Als u **een JSON-bestand wilt importeren/exporteren naar/van Azure Cosmos DB**, 
 
 Als u de JSON-bestanden wilt parseren of de gegevens in JSON-indeling wilt schrijven, stelt u de eigenschap `type` in de sectie `format` in op **JsonFormat**. U kunt ook de volgende **optionele** eigenschappen opgeven in het gedeelte `format`. Zie het gedeelte [JsonFormat-voorbeeld](#jsonformat-example) voor configuratie-instructies.
 
-| Eigenschap | Beschrijving | Verplicht |
+| Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
 | filePattern |Hiermee geeft u het patroon aan van gegevens die zijn opgeslagen in elk JSON-bestand. Toegestane waarden zijn **setOfObjects** en **arrayOfObjects**. De **standaardwaarde** is **setOfObjects**. Zie het gedeelte [JSON-bestandpatronen](#json-file-patterns) voor meer informatie over deze patronen. |Nee |
 | jsonNodeReference | Als u wilt bladeren en gegevens wilt ophalen uit de objecten in een matrixveld met hetzelfde patroon, geeft u het JSON-pad van die matrix op. Deze eigenschap wordt alleen ondersteund bij het kopiëren **van gegevens uit** json-bestanden. | Nee |
@@ -235,7 +235,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling door ge
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | Pc | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 13/1/2017 11:24:37 uur |
 
-De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer details:
+De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie [kolommen van bron gegevensset toewijzen aan kolommen voor doel gegevensset](copy-activity-schema-and-type-mapping.md)voor meer informatie.
 - Met `jsonPathDefinition` geeft u het JSON-pad op voor elke kolom die aangeeft waar de gegevens moeten worden opgehaald. Als u gegevens wilt kopiëren uit een matrix, kunt u `array[x].property` gebruiken om de waarde van de gegeven eigenschap uit het `xth`-object op te halen. u kunt ook `array[*].property` gebruiken om de waarde te vinden van een wille keurig object dat dergelijke eigenschap bevat.
@@ -310,7 +310,7 @@ en u wilt het kopiëren naar een Azure SQL-tabel in de volgende indeling, door d
 | 01 | 20170122 | P3 | 231 | `[{"sanmateo":"No 1"}]` |
 
 
-De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Meer details:
+De invoergegevensset met het type **JsonFormat** wordt als volgt gedefinieerd: (gedeeltelijke definitie met alleen belangrijke onderdelen). Met name:
 
 - Het gedeelte `structure` definieert de aangepaste kolomnamen en het bijbehorende gegevenstype tijdens het converteren van gegevens in tabelvorm. Dit gedeelte is **optioneel**, tenzij u kolommen moet toewijzen. Zie [kolommen van bron gegevensset toewijzen aan kolommen voor doel gegevensset](copy-activity-schema-and-type-mapping.md)voor meer informatie.
 - `jsonNodeReference` geeft aan dat gegevens worden herhaald en opgehaald uit de objecten met hetzelfde patroon onder **matrix** `orderlines`.
@@ -446,13 +446,13 @@ Voor kopieën die worden uitgevoerd op zelf-hostende IR met Parquet-serialisatie
 
 ![JVM-Heap-grootte instellen op zelf-hostende IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Voor beeld: Stel variabele `_JAVA_OPTIONS` in met de waarde `-Xms256m -Xmx16g`. De vlag `Xms` geeft de eerste geheugen toewijzings groep voor een Java Virtual Machine (JVM) aan, terwijl `Xmx` de maximale geheugen toewijzings groep specificeert. Dit betekent dat JVM wordt gestart met `Xms` hoeveelheid geheugen en kan Maxi maal `Xmx` hoeveelheid geheugen gebruiken. ADF gebruikt standaard min 64 MB en Max 1G.
+Voor beeld: Stel variabele `_JAVA_OPTIONS` in met de waarde `-Xms256m -Xmx16g`. Met de vlag `Xms` wordt de eerste geheugen toewijzings groep opgegeven voor een Java Virtual Machine (JVM), terwijl `Xmx` de maximale geheugen toewijzings groep opgeeft. Dit betekent dat JVM wordt gestart met `Xms` hoeveelheid geheugen en dat er Maxi maal `Xmx` hoeveelheid geheugen kan worden gebruikt. ADF gebruikt standaard min 64 MB en Max 1G.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Toewijzing van gegevens type voor Parquet-bestanden
 
 | Data Factory-gegevens type interim | Parquet primitief type | Parquet oorspronkelijke type (deserialiseren) | Oorspronkelijk type Parquet (serialisatie) |
 |:--- |:--- |:--- |:--- |
-| Booleaans | Booleaans | N/A | N/A |
+| Booleaans | Booleaans | N.v.t. | N.v.t. |
 | SByte | Int32 | Int8 | Int8 |
 | DBCS | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -461,17 +461,17 @@ Voor beeld: Stel variabele `_JAVA_OPTIONS` in met de waarde `-Xms256m -Xmx16g`. 
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/binair | UInt64 | Komma |
-| Enkelvoudig | Float | N/A | N/A |
-| Dubbelklik | Dubbelklik | N/A | N/A |
-| Komma | waarde | Komma | Komma |
-| Tekenreeks | waarde | utf8 | utf8 |
-| Datum/tijd | Int96 | N/A | N/A |
-| Duur | Int96 | N/A | N/A |
-| Date time offset | Int96 | N/A | N/A |
-| Array | waarde | N/A | N/A |
-| GUID | waarde | utf8 | utf8 |
-| char | waarde | utf8 | utf8 |
-| CharArray | Niet ondersteund | N/A | N/A |
+| Enkelvoudig | Float | N.v.t. | N.v.t. |
+| Double-waarde | Double-waarde | N.v.t. | N.v.t. |
+| Komma | Binair bestand | Komma | Komma |
+| Tekenreeks | Binair bestand | utf8 | utf8 |
+| DateTime | Int96 | N.v.t. | N.v.t. |
+| Duur | Int96 | N.v.t. | N.v.t. |
+| Date time offset | Int96 | N.v.t. | N.v.t. |
+| Array | Binair bestand | N.v.t. | N.v.t. |
+| GUID | Binair bestand | utf8 | utf8 |
+| char | Binair bestand | utf8 | utf8 |
+| CharArray | Niet ondersteund | N.v.t. | N.v.t. |
 
 ## <a name="orc-format"></a>ORC-indeling
 
@@ -515,15 +515,15 @@ Voor kopieën die worden uitgevoerd op zelf-hostende IR met ORC-serialisatie/des
 | Int64 | Lang |
 | UInt64 | Tekenreeks |
 | Enkelvoudig | Float |
-| Dubbelklik | Dubbelklik |
+| Double-waarde | Double-waarde |
 | Komma | Komma |
 | Tekenreeks | Tekenreeks |
-| Datum/tijd | Tijdstempel |
+| DateTime | Tijdstempel |
 | Date time offset | Tijdstempel |
 | Duur | Tijdstempel |
-| Array | waarde |
+| Array | Binair bestand |
 | GUID | Tekenreeks |
-| char | Char (1) |
+| char | CHAR(1) |
 
 ## <a name="avro-format"></a>AVRO-indeling
 

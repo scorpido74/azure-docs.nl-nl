@@ -1,6 +1,6 @@
 ---
-title: Gegevens transformeren met behulp van Databricks in Azure Data Factory | Microsoft Docs
-description: Informatie over het gebruik van een oplossingssjabloon om gegevens te transformeren met behulp van een Databricks-notebook in Azure Data Factory.
+title: Gegevens transformeren met behulp van Databricks in Azure Data Factory
+description: Meer informatie over het gebruik van een oplossings sjabloon voor het transformeren van gegevens met behulp van een Databricks-notebook in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,40 +12,40 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 471c1d9610fa346b0eac44c73fe02f4510bd2889
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395230"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684252"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Gegevens transformeren met behulp van Databricks in Azure Data Factory
 
-In deze zelfstudie maakt u een end-to-end-pijplijn met **Lookup**, **kopie**, en **Databricks notebook** activiteiten in Data Factory.
+In deze zelf studie maakt u een end-to-end-pijp lijn met **Zoek**-, **Kopieer**-en **Databricks notebook** -activiteiten in Data Factory.
 
--   **Lookup** of de activiteit GetMetadata wordt gebruikt om te controleren of de brongegevensset is gereed voor downstream gebruik, voordat de kopiëren en analytics-taak wordt geactiveerd.
+-   De activiteit **lookup** of GetMetadata wordt gebruikt om ervoor te zorgen dat de bron-gegevensset gereed is voor downstream-gebruik voordat de kopieer-en analyse taak wordt geactiveerd.
 
--   **Kopieeractiviteit** kopieert het bronbestand / gegevensset naar de sink-opslag. De sink-opslag is gekoppeld als DBFS in de Databricks notebook zodat de gegevensset kan rechtstreeks worden gebruikt door Spark.
+-   Met **copy activity** kopieert u het bron bestand/de gegevensset naar de Sink-opslag. De Sink-opslag wordt gekoppeld als DBFS in de Databricks-notebook, zodat de gegevensset rechtstreeks kan worden gebruikt door Spark.
 
--   **Databricks notebook-activiteit** activeert de Databricks-notebook die de gegevensset worden getransformeerd en voegt deze toe aan een verwerkte map / SQL DW.
+-   Met de **Databricks-notebook activiteit** wordt de Databricks-notebook geactiveerd waarmee de gegevensset wordt getransformeerd en toegevoegd aan een verwerkte map/SQL DW.
 
-Deze sjabloon om eenvoudig te houden, maakt de sjabloon niet een geplande trigger. U kunt die indien nodig toevoegen.
+De sjabloon maakt geen geplande trigger om deze sjabloon eenvoudig te kunnen gebruiken. U kunt deze indien nodig toevoegen.
 
 ![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-1.  Maak een **blob storage-account** en een container met de naam `sinkdata` moet worden gebruikt als **sink**. Maak een notitie van de **opslagaccountnaam**, **containernaam**, en **toegangssleutel**, omdat ze later in de sjabloon wordt verwezen.
+1.  Maak een **Blob Storage-account** en een container met de naam `sinkdata` die als **sink**moet worden gebruikt. Noteer de naam van het **opslag account**, de **container naam**en de **toegangs sleutel**, omdat hiernaar later in de sjabloon wordt verwezen.
 
-2.  Zorg ervoor dat u hebt een **Azure Databricks-werkruimte** of maak een nieuwe.
+2.  Zorg ervoor dat u een **Azure Databricks-werk ruimte** hebt of een nieuwe hebt gemaakt.
 
-1.  **Het importeren van de notebook voor ETL**. Importeren van de onderstaande transformatie-notebook geïnstrueerd om de Databricks-werkruimte. (Deze hoeft niet te worden op dezelfde locatie als hieronder, maar vergeet niet dat het pad dat u voor later kiest.) De notebook uit de volgende URL importeren door te voeren van deze URL in het URL-veld: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Selecteer **importeren**.
+1.  **Importeer het notitie blok voor etl**. Importeer de onderstaande notitie blok voor trans formatie naar de Databricks-werk ruimte. (Dit hoeft zich niet op dezelfde locatie te bevinden als hieronder, maar onthoud het pad dat u later hebt gekozen.) Importeer het notitie blok van de volgende URL door deze URL in te voeren in het URL-veld: `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`. Selecteer **importeren**.
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 
     ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)  
 
-1.  Nu gaan we werken de **transformatie** laptop met uw **opslag verbindingsgegevens** (de naam en toegangssleutel). Ga naar **opdracht 5** in de geïmporteerde laptop die hierboven, vervang deze door het onderstaande codefragment nadat de gemarkeerde waarden vervangen. Zorg ervoor dat dit account is hetzelfde opslagaccount eerder hebt gemaakt en bevat de `sinkdata` container.
+1.  Nu gaan we de **transformatie** notitieblok bijwerken met de **verbindings gegevens** van uw opslag (naam en toegangs sleutel). Ga naar **opdracht 5** in het geïmporteerde notitie blok, vervang deze door het onderstaande code fragment nadat u de gemarkeerde waarden hebt vervangen. Zorg ervoor dat dit account hetzelfde opslag account is dat eerder is gemaakt en dat de `sinkdata` container bevat.
 
     ```python
     # Supply storageName and accessKey values  
@@ -69,85 +69,85 @@ Deze sjabloon om eenvoudig te houden, maakt de sjabloon niet een geplande trigge
       print e \# Otherwise print the whole stack trace.  
     ```
 
-1.  Genereren van een **Databricks-toegangstoken** voor Data Factory voor toegang tot Databricks. **Opslaan van het toegangstoken** voor later gebruik bij het maken van een Databricks gekoppelde service, die er ongeveer als volgt 'dapi32db32cbb4w6eee18b7d87e45exxxxxx'
+1.  Genereer een **Databricks-toegangs token** voor Data Factory om toegang te krijgen tot Databricks. **Sla het toegangs token** op voor later gebruik bij het maken van een Databricks-gekoppelde service, die er ongeveer als volgt uitziet: ' dapi32db32cbb4w6eee18b7d87e45exxxxxx '
 
     ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
 
     ![5](media/solution-template-Databricks-notebook/Databricks-tutorial-image05.png)
 
-## <a name="create-linked-services-and-datasets"></a>Gekoppelde services en gegevenssets maken
+## <a name="create-linked-services-and-datasets"></a>Gekoppelde services en gegevens sets maken
 
-1.  Maak een nieuwe **gekoppelde services** in de gebruikersinterface van Data Factory door te gaan naar *verbindingen gekoppelde services + nieuwe*
+1.  Nieuwe **gekoppelde services** in Data Factory gebruikers interface maken door naar *verbindingen gekoppelde services + nieuw* te gaan
 
-    1.  **Bron** – voor toegang tot de brongegevens. U kunt de openbare blob-opslag met de bronbestanden voor dit voorbeeld gebruiken.
+    1.  **Bron** : voor toegang tot bron gegevens. U kunt de open bare Blob-opslag met de bron bestanden voor dit voor beeld gebruiken.
 
-        Selecteer **Blob-opslag**, gebruik de onderstaande **SAS-URI** verbinding maken met bronopslag (alleen-lezen-toegang).
+        Selecteer **Blob Storage**, gebruik de onderstaande **SAS-URI** om verbinding te maken met de bron opslag (alleen-lezen toegang).
 
         `https://storagewithdata.blob.core.windows.net/?sv=2017-11-09&ss=b&srt=sco&sp=rl&se=2019-12-31T21:40:53Z&st=2018-10-24T13:40:53Z&spr=https&sig=K8nRio7c4xMLnUV0wWVAmqr5H4P3JDwBaG9HCevI7kU%3D`
 
         ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
 
-    1.  **Sink-** – voor het kopiëren van gegevens in.
+    1.  **Sink** : voor het kopiëren van gegevens naar.
 
-        Selecteer een opslag die in de vereiste 1, in de sink gekoppelde service gemaakt.
+        Selecteer een opslag die in de voor waarde 1 is gemaakt in de Sink-gekoppelde service.
 
         ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
 
-    1.  **Databricks** – voor het verbinding maken met Databricks-cluster
+    1.  **Databricks** – voor het maken van een verbinding met een Databricks-cluster
 
-        Maak een aan Databricks gekoppelde service met behulp van de toegangssleutel in de vereiste 2.c gegenereerd. Als u hebt een *interactieve cluster*, kunt u die selecteren. (In dit voorbeeld wordt de *nieuwe taakcluster* optie.)
+        Maak een Databricks-gekoppelde service met behulp van de toegangs sleutel die is gegenereerd in vereiste 2. c. Als u een *interactief cluster*hebt, kunt u dat selecteren. (In dit voor beeld wordt de optie *nieuw taak cluster* gebruikt.)
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 
-2.  Maak **gegevenssets**
+2.  **Gegevens sets** maken
 
-    1.  Maak **'sourceAvailability_Dataset'** om te controleren of de brongegevens beschikbaar is
+    1.  **SourceAvailability_Dataset** maken om te controleren of de bron gegevens beschikbaar zijn
 
     ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
 
-    1.  **Brongegevensset-** voor het kopiëren van de brongegevens (met behulp van de binaire kopie)
+    1.  **Bron gegevensset –** voor het kopiëren van de bron gegevens (met behulp van binaire kopie)
 
     ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
 
-    1.  **Sink-gegevensset** – voor het kopiëren naar het sink / doellocatie
+    1.  **Sink-gegevensset** – voor het kopiëren naar de Sink/doel locatie
 
-        1.  Linked service - select 'sinkBlob_LS' created in 1.b
+        1.  Gekoppelde service: Selecteer ' sinkBlob_LS ' die in 1 is gemaakt. b
 
-        2.  Bestandspad - sinkdata/staged_sink
+        2.  Bestandspad-' sinkdata/staged_sink '
 
         ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
 
 ## <a name="create-activities"></a>Activiteiten maken
 
-1.  Maak een Lookup-activiteit '**beschikbaarheid vlag**' voor het uitvoeren van een controle op beschikbaarheid van de bron (Lookup- of GetMetadata kan worden gebruikt). Selecteer sourceAvailability_Dataset in 2.a gemaakt.
+1.  Een**beschikbaarheids markering**voor een opzoek activiteit maken voor het uitvoeren van een controle op de beschik baarheid van de bron (lookup of GetMetadata kan worden gebruikt). Selecteer ' sourceAvailability_Dataset ' die is gemaakt in 2. a.
 
     ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
 
-1.  Maak een kopieeractiviteit ' **-bestand naar blob**' voor het kopiëren van de gegevensset van bron naar een sink. De gegevens zijn in dit geval binaire bestand. Naslaginformatie over de onderstaande schermafbeeldingen voor bron en sink-configuraties in de kopieeractiviteit.
+1.  Een Kopieer activiteit van het**bestand naar de BLOB**maken voor het kopiëren van de gegevensset van de bron naar de sink. In dit geval is het binaire bestand. Raadpleeg de onderstaande scherm afbeeldingen voor bron-en Sink-configuraties in de Kopieer activiteit.
 
     ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
 
     ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
 
-1.  Definieer **pipeline-parameters**
+1.  **Pijplijn parameters** definiëren
 
     ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
 
-1.  Maak een **Databricks-activiteit**
+1.  Een **Databricks-activiteit** maken
 
-    Selecteer de gekoppelde service in een vorige stap hebt gemaakt.
+    Selecteer de gekoppelde service die u in een vorige stap hebt gemaakt.
 
     ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
 
-    Configureer de **instellingen**. Maak **Base Parameters** zoals wordt weergegeven in de schermafbeelding en parameters worden doorgegeven aan de Databricks-notebook van Data Factory te maken. Bladeren en **Selecteer** de **pad van het juiste notitieblok** geüpload **vereiste 2**.
+    Configureer de **instellingen**. Maak **Base-para meters** zoals weer gegeven in de scherm opname en maak para meters die moeten worden door gegeven aan de Databricks notebook van Data Factory. Blader en **Selecteer** het **juiste notitieblok pad** dat is geüpload in **vereiste 2**.
 
     ![17](media/solution-template-Databricks-notebook/Databricks-tutorial-image17.png)
 
-1.  **Voer de pijplijn**. U vindt de koppeling naar de Databricks-logboeken voor meer gedetailleerde Spark-Logboeken.
+1.  **Voer de pijp lijn uit**. U vindt een koppeling naar Databricks-logboeken voor meer gedetailleerde Spark-Logboeken.
 
     ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
 
-    U kunt ook het bestand met behulp van Opslagverkenner controleren. (Voor het correleren met Data Factory-pijplijn wordt uitgevoerd, in dit voorbeeld voegt uitvoering van de ID van data factory naar de map voor uitvoer van de pijplijn. Op deze manier kunt u weer de bestanden bijhouden die is gegenereerd via elke uitvoering.)
+    U kunt ook het gegevens bestand controleren met behulp van Storage Explorer. (Als u wilt correleren met Data Factory pijplijn uitvoeringen, wordt in dit voor beeld de ID van de pijplijn uitvoering van data factory toegevoegd aan de uitvoermap. Op deze manier kunt u de bestanden die zijn gegenereerd via elke uitvoering, traceren.)
 
 ![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
 
