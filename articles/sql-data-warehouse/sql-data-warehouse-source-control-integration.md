@@ -1,5 +1,5 @@
 ---
-title: Integratie van broncode beheer | Microsoft Docs
+title: Integratie van bronbeheer
 description: Data base DevOps-ervaring op ondernemings niveau voor SQL Data Warehouse met systeem eigen integratie van broncode beheer met behulp van Azure opslag plaatsen (Git en GitHub).
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 82d366b3f807e21e3531da00da78520fed90bc66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70098747"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645263"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integratie van broncode beheer voor Azure SQL Data Warehouse
 
@@ -37,7 +37,7 @@ In deze zelf studie wordt beschreven hoe u het SSDT-database project (SQL Server
 
    ![Verbindingen beheren](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verbindingen beheren")
 
-   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Connect")
+   ![Verbinding maken](media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinding maken")
 
 3. Uw Azure opslag plaats-opslag plaats vanuit uw project naar uw lokale machine klonen
 

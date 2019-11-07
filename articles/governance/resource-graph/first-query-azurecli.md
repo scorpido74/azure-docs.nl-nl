@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0136b101de870ce669e89e67679719e233343330
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389740"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622586"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure CLI
 
@@ -60,7 +60,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een eenv
    > [!NOTE]
    > Omdat deze voorbeeldquery geen sorteermodificator geeft, bijvoorbeeld `order by`, zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd.
 
-1. Werk de query als volgt bij om de eigenschap **naam** te `order by`:
+1. Werk de query als volgt bij om de eigenschap `order by`naam**te**:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -90,9 +90,10 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [querytaal](./concepts/query-language.md)
-- [Resources verkennen](./concepts/explore-resources.md)
-- Uw eerste query uitvoeren met [Azure PowerShell](first-query-powershell.md)
-- Voorbeelden uit [Starter query's](./samples/starter.md) bekijken
-- Voorbeelden uit [Geavanceerde query's](./samples/advanced.md) bekijken
-- Feedback geven op [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Meer informatie over de [query taal](./concepts/query-language.md).
+- Meer informatie over hoe u [resources kunt verkennen](./concepts/explore-resources.md).
+- Voer uw eerste query uit met behulp van de [Azure Portal](first-query-portal.md).
+- Voer uw eerste query uit met [Azure PowerShell](first-query-powershell.md).
+- Bekijk voor beelden van [Start query's](./samples/starter.md).
+- Bekijk voor beelden van [Geavanceerde query's](./samples/advanced.md).
+- Feedback geven over [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 9701aa5d924e82d26ad373f8c94d0391a4dc6ba2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6310e13508c1c789c410f1954a2ac0dbf480a2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800159"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622511"
 ---
 # <a name="advanced-resource-graph-queries"></a>Geavanceerde query's van Resource Graph
 
@@ -104,7 +104,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ## <a name="a-nameremove-column-remove-columns-from-results"></a>kolommen uit resultaten <a name="remove-column" />verwijderen
 
-De volgende query maakt gebruik van `summarize` om resources te tellen per abonnement, `join` om deze te combi neren met abonnements details uit de tabel _ResourceContainers_ , en vervolgens `project-away` om een aantal van de kolommen te verwijderen.
+De volgende query maakt gebruik van `summarize` om resources te tellen per abonnement, `join` deze combi neren met abonnements details uit de tabel _ResourceContainers_ en vervolgens `project-away` om een aantal van de kolommen te verwijderen.
 
 ```kusto
 Resources
@@ -208,7 +208,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />lijst Cosmos DB met specifieke schrijf locaties
 
-De volgende query is beperkt tot Cosmos DB resources, gebruikt `mv-expand` om de eigenschappen verzameling voor **Eigenschappen. writeLocations**uit te breiden, vervolgens project specifieke velden te gebruiken en de resultaten verder te beperken tot de waarden van **Eigenschappen. writeLocations. locatie** naam overeenkomende VS-Oost of VS-West.
+De volgende query is beperkt tot Cosmos DB resources, gebruikt `mv-expand` om de eigenschappen verzameling voor **Eigenschappen. writeLocations**uit te vouwen, vervolgens projecteren specifieke velden en de resultaten verder te beperken tot de waarden van **Eigenschappen. writeLocations. locatie** naam overeenkomende VS-Oost of VS-West.
 
 ```kusto
 Resources
@@ -242,7 +242,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="a-namejoin-key-vault-with-subscription-name"></a>Sleutel kluis <a name="join" />met de naam van het abonnement
 
-Met de volgende query wordt een complex gebruik van `join` weer gegeven. Met de query wordt de gekoppelde tabel beperkt tot resources voor inschrijving en met `project` alleen het oorspronkelijke veld _subscriptionId_ en de _naam veld naam wijzigen_ in _subnaam_. De naam van het veld Vermijd `join` het toevoegen als _NAME1_ omdat het veld al in _resources_bestaat. De oorspronkelijke tabel wordt gefilterd met `where` en de volgende `project` bevat kolommen uit beide tabellen. Het query resultaat is een enkele sleutel kluis met het type, de naam van de sleutel kluis en de naam van het abonnement dat in wordt weer gegeven.
+Met de volgende query wordt een complex gebruik van `join`weer gegeven. Met de query wordt de gekoppelde tabel beperkt tot resources voor inschrijving en met `project` alleen het oorspronkelijke veld _subscriptionId_ en de _naam veld naam gewijzigd_ in _subnaam_. De naam van het veld wordt voor komen `join` als _NAME1_ toe te voegen, omdat het veld al in _resources_bestaat. De oorspronkelijke tabel wordt gefilterd met `where` en de volgende `project` bevat kolommen uit beide tabellen. Het query resultaat is een enkele sleutel kluis met het type, de naam van de sleutel kluis en de naam van het abonnement dat in wordt weer gegeven.
 
 ```kusto
 Resources
@@ -340,7 +340,7 @@ on publicIpId
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-azure graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
+az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -395,7 +395,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccou
 
 ## <a name="a-nameunionresults-combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults" />resultaten van twee query's combi neren tot één resultaat
 
-De volgende query maakt gebruik van `union` om resultaten uit de tabel _ResourceContainers_ te halen en toe te voegen aan de resultaten van de tabel _resources_ .
+De volgende query gebruikt `union` om resultaten uit de tabel _ResourceContainers_ te halen en toe te voegen aan de resultaten van de tabel _resources_ .
 
 ```kusto
 ResourceContainers
@@ -441,6 +441,6 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voorbeelden uit [Starter query's](starter.md) bekijken
-- Meer informatie over de [querytaal](../concepts/query-language.md)
-- [Resources verkennen](../concepts/explore-resources.md)
+- Bekijk voor beelden van [Start query's](starter.md).
+- Meer informatie over de [query taal](../concepts/query-language.md).
+- Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een classificatie voor de werk belasting maken-T-SQL | Microsoft Docs'
+title: 'Snelstartgids: een classificatie werk belasting maken-T-SQL '
 description: T-SQL gebruiken om een werk belasting classificatie te maken met hoge urgentie.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574862"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646290"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Quickstart: Een classificatie van een werk belasting maken met T-SQL
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Snelstartgids: een classificatie van een werk belasting maken met T-SQL
 
 In deze Quick Start maakt u snel een classificatie van werk belastingen met hoge prioriteit voor de CEO van uw organisatie. Met deze classificatie van werk belasting kunnen CEO query's voor rang krijgen op andere query's met een lagere urgentie in de wachtrij.
 
@@ -34,11 +34,11 @@ In deze Quick Start wordt ervan uitgegaan dat u al een SQL Data Warehouse hebt e
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>Aanmelding maken voor TheCEO
 
-Maak een SQL Server-verificatie aanmelding in `master` de-data base met behulp van de [aanmeldings gegevens](/sql/t-sql/statements/create-login-transact-sql) voor ' TheCEO '.
+Maak een SQL Server-verificatie aanmelding in de `master`-data base met behulp van de [aanmeldings gegevens](/sql/t-sql/statements/create-login-transact-sql) voor ' TheCEO '.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -97,7 +97,7 @@ Volg deze stappen om resources op te schonen.
 
     ![Resources opschonen](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Selecteer de knop PAUSE om de berekening te onderbreken. Als het datawarehouse is onderbroken, ziet u een knop **Start**.  Selecteer **Start**om de compute te hervatten.
+2. Selecteer de knop **pause** om de berekening te onderbreken. Als het datawarehouse is onderbroken, ziet u een knop **Start**.  Selecteer **Start**om de compute te hervatten.
 
 3. Als u het Data Warehouse wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, selecteert u **verwijderen**.
 

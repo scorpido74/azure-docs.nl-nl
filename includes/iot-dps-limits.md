@@ -4,23 +4,23 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68360276"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612043"
 ---
 De volgende tabel bevat de limieten die van toepassing zijn op Azure IoT Hub Device Provisioning Service-resources.
 
-| Resource | Limiet |
+| Bron | Limiet |
 | --- | --- |
 | Maximum aantal services voor het inrichten van apparaten per Azure-abonnement | 10 |
 | Maximum aantal inschrijvingen | 1\.000.000 |
 | Maximum aantal registraties | 1\.000.000 |
 | Maximum aantal registratie groepen | 100 |
 | Maximum aantal Ca's | 25 |
-| Maximum aantal gekoppelde IoT-hubs | 10 |
+| Maximum aantal gekoppelde IoT-hubs | 50 |
 | Maximale bericht grootte | 96 KB|
 
 

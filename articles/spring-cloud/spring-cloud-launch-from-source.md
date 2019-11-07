@@ -3,15 +3,15 @@ title: 'Snelstartgids: uw lente-Cloud toepassing vanuit de bron code starten'
 description: Meer informatie over hoe u uw Azure lente-Cloud toepassing rechtstreeks vanuit uw bron code kunt starten
 author: jpconnock
 ms.service: spring-cloud
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 573baa242c06868326568a82bc358e136f1ece2c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
-ms.translationtype: MT
+ms.openlocfilehash: 524fa18dfd4c47e699ba6b9d5d7a98bbbaaf5c72
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177969"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646778"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Start uw lente-Cloud toepassing vanuit de bron code
 
@@ -31,7 +31,7 @@ In deze Quick Start leert u het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 >[!Note]
-> Zorg ervoor dat uw Azure-abonnement toegang heeft tot de Azure lente-Cloud voordat u begint met deze Snelstartgids.  Als preview-service wordt u gevraagd om contact met ons op te nemen zodat we uw abonnement kunnen toevoegen aan onze acceptatie lijst.  [Vul dit formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u)in als u de mogelijkheden van Azure lente-Cloud wilt verkennen.  Hoewel Azure lente-Cloud in preview is, biedt micro soft beperkte ondersteuning zonder een SLA.  Raadpleeg deze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/)over ondersteuning voor meer informatie over ondersteuning tijdens previews.
+> Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Voor meer informatie over ondersteuning tijdens previews, kunt u een [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bestand.
 
 Voordat u begint, moet u ervoor zorgen dat uw Azure-abonnement de vereiste afhankelijkheden heeft:
 
@@ -49,7 +49,7 @@ Voordat u begint, moet u ervoor zorgen dat uw Azure-abonnement de vereiste afhan
 De Azure veer Cloud-extensie voor de Azure CLI installeren met de volgende opdracht
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>Een service-exemplaar inrichten met de Azure CLI
@@ -140,13 +140,13 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Een openbaar eind punt toewijzen aan de gateway
 
 1. Open de pagina **toepassings dashboard** .
-2. Selecteer de `gateway`-toepassing om de pagina met **toepassings Details** weer te geven.
+2. Selecteer de `gateway` toepassing om de pagina met **toepassings Details** weer te geven.
 3. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan een paar minuten duren. 
 4. Voer het toegewezen open bare IP-adres in uw browser in om de actieve toepassing weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u de volgende zaken geleerd:
+In deze snelstartgids hebt u de volgende zaken geleerd:
 
 > [!div class="checklist"]
 > * Een service-exemplaar inrichten

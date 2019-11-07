@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 53c71afc38e7b122a0ae1d066460b8df91132963
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.openlocfilehash: 0e1a8e47534073f64075540d74d6195abc304fa2
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152263"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621482"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Door Azure Cosmos DB Cassandra API ondersteunde Apache Cassandra-functies 
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt communiceren met de Azure Cosmos DB Cassandra-API via open-source Cassandra client[stuurprogramma's](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) die compatibel zijn met Cassandra Query Language (CQL) v4 [wire-protocol](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec). 
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt communiceren met de Azure Cosmos DB Cassandra-API via open-source Cassandra client[stuurprogramma's](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec) die compatibel zijn met Cassandra Query Language (CQL) v4 [wire-protocol](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver). 
 
 Door de Azure Cosmos DB Cassandra API te gebruiken, kunt u profiteren van de voordelen van de Apache Cassandra API’s en van de enterprise-mogelijkheden die Azure Cosmos DB biedt. De enterprise-mogelijkheden zijn onder andere [wereldwijde distributie](distribute-data-globally.md), [automatische scale-out partitionering](partition-data.md), beschikbaarheid- en latentiegaranties, versleuteling van gegevens in rust, back-ups en nog veel meer.
 
@@ -96,13 +96,13 @@ Azure Cosmos DB Cassandra-API ondersteunt de volgende CQL-functies:
 
 ## <a name="cassandra-api-limits"></a>Cassandra-API limieten
 
-Azure Cosmos DB Cassandra-API heeft geen limiet wat betreft de grootte van gegevens die in een tabel worden opgeslagen. Er kunnen honderden terabytes of petabytes aan gegevens worden opgeslagen terwijl de partitiesleutellimieten worden gerespecteerd. Evenzo geldt dat elke entiteit of gelijkwaardige rij geen limieten heeft voor het aantal kolommen, maar dat de totale grootte van de entiteit niet groter mag zijn dan 2 MB. De gegevens per partitie sleutel mogen niet groter zijn dan 10 GB, zoals in alle andere Api's.
+Azure Cosmos DB Cassandra-API heeft geen limiet wat betreft de grootte van gegevens die in een tabel worden opgeslagen. Er kunnen honderden terabytes of petabytes aan gegevens worden opgeslagen terwijl de partitiesleutellimieten worden gerespecteerd. Op dezelfde manier heeft elke entiteit of een gelijkwaardige rij geen limieten voor het aantal kolommen. De totale grootte van de entiteit mag echter niet meer zijn dan 2 MB. De gegevens per partitie sleutel mogen niet groter zijn dan 10 GB, zoals in alle andere Api's.
 
-## <a name="tools"></a>Tools 
+## <a name="tools"></a>Hulpprogramma's 
 
 Azure Cosmos DB Cassandra-API is een beheerd serviceplatform. Het vereist geen beheeroverhead of hulpprogramma's zoals Garbage Collector, Java Virtual Machine (JVM) en nodetool om het cluster te beheren. Het ondersteunt hulpprogramma’s zoals cqlsh, dat binaire CQLv4-compatibiliteit gebruikt. 
 
-* Andere ondersteunde mechanismen voor het beheren van het account zijn Azure Portal’s Data Explorer, metrische gegevens, logboekdiagnose, PowerShell en CLI.
+* Azure Portal Data Explorer, metrische gegevens, logboek diagnostiek, Power shell en CLI zijn andere ondersteunde mechanismen om het account te beheren.
 
 ## <a name="cql-shell"></a>CQL Shell  
 
@@ -140,7 +140,8 @@ Azure Cosmos DB ondersteunt de volgende databaseopdrachten op Cassandra-API-acco
 * BATCH - alleen niet-geregistreerde opdrachten worden ondersteund 
 * DELETE
 
-Alle ruwe bewerkingen die worden uitgevoerd via een met CQLV4 compatibele SDK, retour neren extra informatie over de fout, verbruikte aanvraag eenheden. Verwijder-en update-opdrachten moeten worden afgehandeld met resource governance, om ervoor te zorgen dat het juiste gebruik van ingerichte door Voer wordt gewaarborgd. 
+Alle ruwe bewerkingen die worden uitgevoerd via een met CQL v4 compatibele SDK, retour neren extra informatie over de verbruikte fout-en aanvraag eenheden. De opdrachten DELETE en UPDATE moeten worden afgehandeld met resource governance, om ervoor te zorgen dat de ingerichte door Voer optimaal wordt gebruikt.
+
 * Let wel: de waarde gc_grace_seconds moet nul zijn als deze is opgegeven.
 
 ```csharp
@@ -167,7 +168,7 @@ Azure Cosmos DB ondersteunt op rollen gebaseerd toegangs beheer (RBAC) voor het 
 
 De opties voor regio naam, klasse, replication_factor en Data Center in de opdracht ' spatie maken ' worden momenteel genegeerd. Het systeem maakt gebruik van de [globale distributie](global-dist-under-the-hood.md) replicatie methode van de onderliggende Azure Cosmos DB om de regio's toe te voegen. Als u de aanwezigheid van gegevens over meerdere regio's nodig hebt, kunt u deze op account niveau inschakelen met Power shell, CLI of portal, zie het artikel [regio's toevoegen](how-to-manage-database-account.md#addremove-regions-from-your-database-account) voor meer informatie. Durable_writes kan niet worden uitgeschakeld omdat Azure Cosmos DB ervoor zorgt dat elke schrijf bewerking duurzaam is. Azure Cosmos DB repliceert in elke regio de gegevens over de replicaset die bestaat uit vier replica's en deze replicaset- [configuratie](global-dist-under-the-hood.md) kan niet worden gewijzigd.
  
-Alle opties worden genegeerd bij het maken van de tabel, met uitzonde ring van gc_grace_seconds die moeten worden ingesteld op nul.
+Alle opties worden genegeerd bij het maken van de tabel, met uitzonde ring van gc_grace_seconds, die moeten worden ingesteld op nul.
 De spatie en tabel hebben een extra optie met de naam ' cosmosdb_provisioned_throughput ' met een minimum waarde van 400 RU/s. De door Voer van de schijf ruimte maakt het delen van de door voer over meerdere tabellen mogelijk en is handig voor scenario's waarbij de ingerichte door Voer niet wordt gebruikt voor alle tabellen. Met de opdracht ALTER TABLE kunt u de ingerichte door Voer in de regio's wijzigen. 
 
 ```

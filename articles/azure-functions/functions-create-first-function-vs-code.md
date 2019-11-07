@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 52f682f7c7f06056be122b33d27592a55a01be94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70744079"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622062"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Uw eerste functie maken met Visual Studio Code
 
@@ -26,13 +26,13 @@ In dit artikel leert u hoe u de [Azure Functions extension for Visual Studio Cod
 
 ![Azure-functiecode in een Visual Studio-project](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-De uitbrei ding C#biedt momenteel ondersteuning voor Java script-, Java-en python-functies. De stappen in dit artikel en het artikel die volgen alleen Java script en C# functions ondersteunen. Zie [python implementeren in azure functions](https://code.visualstudio.com/docs/python/tutorial-azure-functions)voor meer informatie over het gebruik van Visual Studio code voor het maken en publiceren van python-functies. Zie [uw eerste Power shell-functie maken in azure](functions-create-first-function-powershell.md)voor meer informatie over het gebruik van Visual Studio code voor het maken en publiceren van Power shell-functies. 
+De uitbrei ding C#biedt momenteel ondersteuning voor Java script-, Java-en python-functies. De stappen in dit artikel en het artikel die volgen alleen Java script en C# functions ondersteunen. Zie voor meer informatie over het gebruik van Visual Studio code voor het maken en publiceren van python-functies [serverloze Azure functions in python maken en implementeren met Visual Studio code](/azure/python/tutorial-vs-code-serverless-python-01). Zie [uw eerste Power shell-functie maken in azure](functions-create-first-function-powershell.md)voor meer informatie over het gebruik van Visual Studio code voor het maken en publiceren van Power shell-functies. 
 
 De extensie is momenteel beschikbaar als preview-product. Zie de uitbreidingspagina [Azure Functions extension for Visual Studio Code] (Azure Functions-extensie voor Visual Studio Code) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 * Installeer [Visual Studio Code](https://code.visualstudio.com/) op een van de [ondersteunde platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
@@ -43,9 +43,9 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
     | Taal | Vereiste |
     | -------- | --------- |
     | **C#** | [C#switch](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+    | **JavaScript** | [Node. js](https://nodejs.org/) -<sup>*</sup> | 
  
-    <sup>*</sup>Actieve LTS en onderhoud LTS-versies (8.11.1 en 10.14.1 aanbevolen).
+    <sup>*</sup> Actieve LTS en onderhoud LTS-versies (8.11.1 en 10.14.1 aanbevolen).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,7 +63,7 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
 
 ## <a name="run-the-function-in-azure"></a>De functie uitvoeren in azure
 
-1. Kopieer de URL van de HTTP-trigger vanuit het deelvenster **Output** (Uitvoer). Deze URL bevat de functie sleutel, die wordt door gegeven aan `code` de query parameter. Zorg ervoor dat u net als eerder de queryreeks `?name=<yourname>` toevoegt aan het eind van deze URL en de aanvraag uitvoert.
+1. Kopieer de URL van de HTTP-trigger vanuit het deelvenster **Output** (Uitvoer). Deze URL bevat de functie sleutel, die wordt door gegeven aan de `code` query parameter. Zorg ervoor dat u net als eerder de queryreeks `?name=<yourname>` toevoegt aan het eind van deze URL en de aanvraag uitvoert.
 
     De URL die uw HTTP-geactiveerde functie aanroept, moet de volgende indeling hebben:
 

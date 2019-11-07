@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9e41ca2e7c6d789b3d18fa98c4845118fa6538ef
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389709"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622558"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure PowerShell
 
@@ -67,7 +67,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
    > [!NOTE]
    > Omdat deze voorbeeldquery geen sorteermodificator geeft, bijvoorbeeld `order by`, zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd.
 
-1. Werk de query als volgt bij om de eigenschap **naam** te `order by`:
+1. Werk de query als volgt bij om de eigenschap `order by`naam**te**:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -87,7 +87,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
 Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en zoals verwacht. Ze zijn gesorteerd op de eigenschap **naam**, maar nog steeds beperkt tot de top 5-resultaten.
 
 > [!NOTE]
-> Als de query geen resultaten oplevert van een abonnement waartoe u al toegang hebt, moet u er rekening mee houden dat `Search-AzGraph`-cmdlet standaard wordt ingesteld op abonnementen in de standaard context. Als u de lijst met abonnements-Id's wilt zien die deel uitmaken van de standaard context Voer deze `(Get-AzContext).Account.ExtendedProperties.Subscriptions` uit als u wilt zoeken naar alle abonnementen waartoe u toegang hebt, kunt u de PSDefaultParameterValues instellen voor `Search-AzGraph`-cmdlet door `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` uit te voeren
+> Als de query geen resultaten oplevert van een abonnement waartoe u al toegang hebt, moet u er rekening mee houden dat `Search-AzGraph` cmdlet standaard wordt ingesteld op abonnementen in de standaard context. Als u de lijst met abonnements-Id's wilt zien die deel uitmaken van de standaard context, voert u deze `(Get-AzContext).Account.ExtendedProperties.Subscriptions` als u wilt zoeken in alle abonnementen waartoe u toegang hebt, kunt u de PSDefaultParameterValues instellen voor `Search-AzGraph`-cmdlet door `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` uit te voeren
    
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -106,9 +106,10 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [querytaal](./concepts/query-language.md)
-- [Resources verkennen](./concepts/explore-resources.md)
-- Uw eerste query uitvoeren met [Azure CLI](first-query-azurecli.md)
-- Voorbeelden uit [Starter query's](./samples/starter.md) bekijken
-- Voorbeelden uit [Geavanceerde query's](./samples/advanced.md) bekijken
-- Feedback geven op [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Meer informatie over de [query taal](./concepts/query-language.md).
+- Meer informatie over hoe u [resources kunt verkennen](./concepts/explore-resources.md).
+- Voer uw eerste query uit met behulp van de [Azure Portal](first-query-portal.md).
+- Voer uw eerste query uit met [Azure cli](first-query-azurecli.md).
+- Bekijk voor beelden van [Start query's](./samples/starter.md).
+- Bekijk voor beelden van [Geavanceerde query's](./samples/advanced.md).
+- Feedback geven over [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 14615d596c1b673a234ccef541fecfbfce9d5f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752150"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622607"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer
 
@@ -30,16 +30,16 @@ Open de [Azure Portal](https://portal.azure.com) om de resource Graph Explorer t
 1. Voer in het gedeelte **query 1** van het venster de query `Resources | project name, type | limit 5` in en selecteer **query uitvoeren**.
 
    > [!NOTE]
-   > Zoals in dit voor beeld van een query geen sorteer volgorde biedt, zoals `order by`, is het uitvoeren van deze query waarschijnlijk meerdere malen dat een andere set resources per aanvraag kan worden verkregen.
+   > Zoals in dit voor beeld van een query geen sorteer volgorde wordt geboden, zoals `order by`, kan het uitvoeren van deze query meermaals leiden tot een andere set resources per aanvraag.
 
 1. Controleer het antwoord op de query op het tabblad **resultaten** . Selecteer het tabblad **berichten** om de details van de query te bekijken, inclusief het aantal resultaten en de duur van de query. Eventuele fouten worden weer gegeven op dit tabblad.
 
-1. Werk de query bij naar `order by` de **naam** eigenschap: `Resources | project name, type | limit 5 | order by name asc`. Selecteer vervolgens **query uitvoeren**.
+1. Werk de query bij om de eigenschap **name** te `order by`: `Resources | project name, type | limit 5 | order by name asc`. Selecteer vervolgens **query uitvoeren**.
 
    > [!NOTE]
    > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Hiermee worden de queryresultaten eerst beperkt en daarna geordend.
 
-1. Werk de query bij naar eerste `order by` de eigenschap **name** en vervolgens `limit` op de vijf belangrijkste resultaten: `Resources | project name, type | order by name asc | limit 5`. Selecteer vervolgens **query uitvoeren**.
+1. Werk de query bij om eerst de eigenschap **Name** `order by` en vervolgens `limit` naar de vijf beste resultaten: `Resources | project name, type | order by name asc | limit 5`. Selecteer vervolgens **query uitvoeren**.
 
 Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat er niets in uw omgeving wordt gewijzigd, worden de geretourneerde resultaten consistent en zoals verwacht: besteld op basis van de eigenschap **name** , maar is nog steeds beperkt tot de vijf belangrijkste resultaten.
 
@@ -47,8 +47,8 @@ Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat er
 
 De schema browser bevindt zich in het linkerdeel venster van de resource Graph Explorer. Deze lijst met resources bevat alle _resource typen_ van Azure-resources die beide worden ondersteund door Azure resource Graph en die zich bevinden in een Tenant waartoe u toegang hebt. Als u een resource type of subeigenschappen uitbreidt, worden onderliggende eigenschappen weer gegeven die kunnen worden gebruikt om een resource grafiek query te maken.
 
-Als u het resource type selecteert, wordt `where type =="<resource type>"` geplaatst in het query venster. Als u een van de onderliggende eigenschappen selecteert, wordt `where <propertyName> == "INSERT_VALUE_HERE"` toegevoegd aan het query-vak.
-De schema browser is een uitstekende manier om eigenschappen te ontdekken voor gebruik in query's. Vervang _\_VALUE invoegen \_HERE_ met uw eigen waarde, pas de query aan met voor waarden, Opera tors en functies om uw beoogde resultaten te behalen.
+Als u het resource type selecteert, worden `where type =="<resource type>"` geplaatst in het query venster. Als u een van de onderliggende eigenschappen selecteert, wordt `where <propertyName> == "INSERT_VALUE_HERE"` toegevoegd aan het query-vak.
+De schema browser is een uitstekende manier om eigenschappen te ontdekken voor gebruik in query's. Vervang _\_waarde\_hier_ met uw eigen waarde door de query aan te passen met voor waarden, Opera tors en functies om uw beoogde resultaten te behalen.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Een grafiek maken op basis van de resource grafiek query
 
@@ -91,11 +91,11 @@ Als u voor beelden van resource Graph-query's en hoe resource Graph Explorer kan
 
 - [Resource grafiek Verkenner-voorbeeld dashboard #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [afbeelding ![Example voor voorbeeld dashboard #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [![voorbeeld afbeelding voor voorbeeld dashboard #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Resource grafiek Verkenner-voorbeeld Dashboard #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [afbeelding ![Example voor voorbeeld Dashboard #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [![voorbeeld afbeelding voor voorbeeld Dashboard #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > Het aantal en de grafieken in het bovenstaande voor beeld van Dashboard afbeeldingen zijn afhankelijk van uw Azure-omgeving.
@@ -120,9 +120,9 @@ Als u de voorbeeld resource grafiek dashboards uit uw Azure Portal omgeving wilt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [querytaal](./concepts/query-language.md)
-- [Resources verkennen](./concepts/explore-resources.md)
-- Uw eerste query uitvoeren met [Azure CLI](first-query-azurecli.md)
-- Voorbeelden uit [Starter query's](./samples/starter.md) bekijken
-- Voorbeelden uit [Geavanceerde query's](./samples/advanced.md) bekijken
-- Feedback geven op [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Meer informatie over de [query taal](./concepts/query-language.md).
+- Meer informatie over hoe u [resources kunt verkennen](./concepts/explore-resources.md).
+- Voer uw eerste query uit met [Azure cli](first-query-azurecli.md).
+- Bekijk voor beelden van [Start query's](./samples/starter.md).
+- Bekijk voor beelden van [Geavanceerde query's](./samples/advanced.md).
+- Feedback geven over [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
