@@ -1,6 +1,7 @@
 ---
-title: Overzicht van dynamische verpakking van Azure Media Services | Microsoft Docs
-description: In het artikel wordt een overzicht gegeven van dynamische verpakkingen in Azure Media Services.
+title: Dynamische verpakking in Media Services
+titleSuffix: Azure Media Services
+description: Een overzicht van dynamische verpakking in Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -13,22 +14,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595517"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574897"
 ---
-# <a name="dynamic-packaging"></a>Dynamische verpakking
+# <a name="dynamic-packaging-in-media-services"></a>Dynamische verpakking in Media Services
 
-Microsoft Azure Media Services kan worden gebruikt voor het coderen van veel media bron bestands indelingen en om ze te leveren via verschillende streaming protocollen, met of zonder inhouds beveiliging, om alle grote apparaten te bereiken (bijvoorbeeld iOS-en Android-apparaten). Deze clients begrijpen verschillende protocollen, bijvoorbeeld iOS vereist dat stromen worden geleverd in HTTP Live Streaming-indeling (HLS) en Android-apparaten ondersteunen HLS en MPEG DASH. 
+Microsoft Azure Media Services kunnen worden gebruikt voor het coderen van veel media bron bestands indelingen. Deze service wordt geleverd via verschillende streaming protocollen, met of zonder inhouds beveiliging, om alle grote apparaten te bereiken (zoals iOS-en Android-apparaten). Deze clients begrijpen verschillende protocollen. IOS vereist bijvoorbeeld dat stromen worden geleverd in HTTP Live Streaming-indeling (HLS) en Android-apparaten ondersteuning bieden voor HLS en MPEG DASH.
 
-In Media Services vertegenwoordigt een [streaming-eind punt](streaming-endpoint-concept.md) een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren, met behulp van een van de algemene protocollen voor streaming media vermeld in de volgende sectie. Dynamische pakketten is een functie die standaard wordt geleverd op alle streaming-eindpunten (Standard of Premium). 
+In Media Services vertegenwoordigt een [streaming-eind punt](streaming-endpoint-concept.md) een dynamische (just-in-time) verpakkings-en bron service die uw Live-en on-demand-inhoud rechtstreeks aan een client speler kan leveren. Er wordt gebruikgemaakt van een van de algemene protocollen voor streaming media die worden vermeld in de volgende sectie. Dynamische pakketten is een functie die standaard wordt geleverd op alle streaming-eindpunten (Standard of Premium).
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>To voor bereiding van de bron bestanden voor levering
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>om uw bron bestanden voor te bereiden voor levering
 
-Als u gebruik wilt maken van dynamische pakketten, moet u uw mezzanine-bestand (bron) [coderen](encoding-concept.md) in een set van meerdere bitrate MP4-bestanden (ISO Base media 14496-12). U moet een [Asset](assets-concept.md) hebben met de gecodeerde MP4-bestanden en de streaming-configuratie bestanden die nodig zijn voor Media Services dynamische verpakking. Vanuit deze set MP4-bestanden kunt u dynamische pakketten gebruiken voor het leveren van video via de volgende protocollen voor streaming media:
+Als u gebruik wilt maken van dynamische pakketten, moet u uw mezzanine-bestand (bron) [coderen](encoding-concept.md) in een set van meerdere bitrate MP4-bestanden (ISO Base media 14496-12). U moet een [Asset](assets-concept.md) hebben met de gecodeerde MP4-en streaming-configuratie bestanden die nodig zijn voor Media Services dynamische verpakking. Vanuit deze set MP4-bestanden kunt u dynamische pakketten gebruiken voor het leveren van video via de volgende protocollen voor streaming media:
 
 |Protocol|Voorbeeld|
 |---|---|
@@ -46,14 +47,14 @@ Als u van plan bent om uw inhoud te beschermen met Media Services dynamische ver
 
 Als u Video's in het gecodeerde activum beschikbaar wilt maken voor het afspelen van clients, moet u een [streaming-Locator](streaming-locators-concept.md) maken en streaming-url's bouwen. Op basis van de opgegeven indeling in het streaming-client manifest (HLS, MPEG DASH of Smooth Streaming) ontvangt u de stroom in het protocol dat u hebt gekozen.
 
-Hierdoor hoeft u voor slechts één opslagindeling de bestanden op te slaan en hiervoor te betalen. De Media Services-service bouwt en levert de juiste reactie op basis van aanvragen van een client. 
+Hierdoor hoeft u voor slechts één opslagindeling de bestanden op te slaan en hiervoor te betalen. De Media Services-service bouwt en levert de juiste reactie op basis van aanvragen van een client.
 
 ## <a name="on-demand-streaming-workflow"></a>Werk stroom voor streaming op aanvraag
 
-Hier volgt een algemene Media Services streaming-werk stroom waarbij dynamische pakketten worden gebruikt samen met de standaard encoder in Azure Media Services.
+In de volgende stappen ziet u een gemeen schappelijke werk stroom voor Media Services stromen waarbij dynamische pakketten worden gebruikt in combi natie met de standaard encoder in Azure Media Services.
 
-1. Upload een invoer bestand zoals een QuickTime/MOV-of MXF-bestand (Zie indelingen die worden [ondersteund door de Media Encoder Standard](media-encoder-standard-formats.md)voor de lijst met ondersteunde indelingen. Dit wordt ook wel het mezzanine-of bron bestand genoemd.
-1. [Codeer](#encode-to-adaptive-bitrate-mp4s) uw mezzanine-bestand in een adaptieve bitsnelheid-set van H. 264/AAC MP4. 
+1. Upload een invoer bestand zoals een QuickTime/MOV-of MXF-bestand. Dit bestand wordt ook wel het mezzanine-of bron bestand genoemd. Zie [indelingen die worden ondersteund door de Media Encoder Standard](media-encoder-standard-formats.md)voor een lijst met ondersteunde indelingen.
+1. [Codeer](#encode-to-adaptive-bitrate-mp4s) uw mezzanine-bestand in een adaptieve bitsnelheid-set van H. 264/AAC MP4.
 1. Publiceer het uitvoer activum dat de Adaptive bitrate MP4-set bevat. U publiceert door een streaming-Locator te maken.
 1. Bouw Url's die zijn gericht op verschillende indelingen (HLS, MPEG-DASH en Smooth Streaming). Het **streaming-eind punt** zorgt ervoor dat het juiste manifest en aanvragen voor al deze verschillende indelingen worden bewaard.
 
@@ -65,9 +66,9 @@ In het volgende diagram ziet u de on-demand streaming met dynamische verpakkings
 
 In de volgende artikelen ziet u voor beelden van het [coderen van een video met Media Services](encoding-concept.md):
 
-* [Coderen van een HTTPS-URL met behulp van ingebouwde voor instellingen](job-input-from-http-how-to.md)
-* [Een lokaal bestand coderen met behulp van ingebouwde voor instellingen](job-input-from-local-file-how-to.md)
-* [Een aangepaste voor instelling maken om uw specifieke scenario-of apparaat vereisten te bereiken](customize-encoder-presets-how-to.md)
+* [Code ring van een HTTPS-URL met behulp van ingebouwde voor instellingen](job-input-from-http-how-to.md).
+* [Een lokaal bestand coderen met behulp van ingebouwde voor instellingen](job-input-from-local-file-how-to.md).
+* [Bouw een aangepaste voor instelling om te voldoen aan uw specifieke scenario-of apparaat vereisten](customize-encoder-presets-how-to.md).
 
 Bekijk de lijst met Media Encoder Standard [indelingen en codecs](media-encoder-standard-formats.md).
 
@@ -98,9 +99,9 @@ Zie [overzicht van live streaming](live-streaming-overview.md)voor meer informat
 Dynamische verpakking ondersteunt MP4-bestanden die video bevatten die is gecodeerd met [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC of AVC1) of [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 of hvc1).
 
 > [!NOTE]
-> Resoluties van Maxi maal 4.000 en de frame snelheid van Maxi maal 60 frames per seconde zijn getest met dynamische verpakking. De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt de code ring van H. 265 via de oudere v2-api's.
+> Resoluties van Maxi maal 4.000 en frame snelheden van Maxi maal 60 frames per seconde zijn getest met dynamische verpakking. De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt het coderen van H. 265 via de oudere v2-api's.
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Audio-codecs die worden ondersteund door dynamische pakketten
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>audio-codecs die worden ondersteund door dynamische pakketten
 
 Dynamische verpakking ondersteunt audio die is gecodeerd met de volgende protocollen:
 
@@ -124,10 +125,10 @@ Dynamische verpakkingen ondersteunt meerdere audio sporen met een streepje of HL
 Dynamische pakketten bieden geen ondersteuning voor bestanden die [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) audio bevatten (een verouderde codec).
 
 > [!NOTE]
-> De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt code ring voor Dolby Digital Plus, via de oudere v2-api's. 
+> De [Premium encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) ondersteunt code ring voor Dolby Digital Plus via de oudere v2-api's.
 
-## <a name="manifests"></a>Manifesten 
- 
+## <a name="manifests"></a>Manifesten
+
 In Media Services dynamische verpakking worden de streaming-client manifesten voor HLS, MPEG-DASH en Smooth Streaming dynamisch gegenereerd op basis van de indelings kiezer in de URL.  
 
 Een manifest bestand bevat streaming-meta gegevens zoals het type spoor (audio, video of tekst), de naam van het spoor, de begin-en eind tijd, de bitsnelheid (kwaliteiten), de bijgehouden talen, het presentatie venster (sliding window van de vaste duur) en de videocodec (FourCC). Het geeft ook de speler de opdracht het volgende fragment op te halen door informatie over de volgende Speel bare video fragmenten te verstrekken die beschikbaar zijn en hun locatie. Fragmenten (of segmenten) zijn de werkelijke ' chunks ' van video-inhoud.
@@ -232,7 +233,7 @@ Als er een audio track naam is opgegeven in het ISM-bestand, Media Services een 
 </AdaptationSet>
 ```
 
-De speler kan het element `Label` gebruiken om weer te geven in de gebruikers interface.
+De speler kan het `Label`-element gebruiken om weer te geven in de gebruikers interface.
 
 ### <a name="signaling-audio-description-tracks"></a>Signa lering audio beschrijvings sporen
 
@@ -242,7 +243,7 @@ Zie voor meer informatie het voor beeld [een beschrijvende audio track](signal-d
 
 #### <a name="smooth-streaming-manifest"></a>Smooth Streaming-manifest
 
-Als u een Smooth Streaming stroom speelt, zou het manifest waarden in `Accessibility` en `Role` kenmerken voor dat audio spoor moeten bevatten. @No__t_2 zou bijvoorbeeld worden toegevoegd in het `StreamIndex`-element om aan te geven dat het een audio beschrijving is.
+Als u een Smooth Streaming stroom speelt, zou het manifest waarden in `Accessibility` en `Role` kenmerken voor dat audio spoor moeten bevatten. `Role="alternate" Accessibility="description"` zou bijvoorbeeld worden toegevoegd in het `StreamIndex`-element om aan te geven dat het een audio beschrijving is.
 
 #### <a name="dash-manifest"></a>DASH-manifest
 
@@ -255,7 +256,7 @@ Voor een streepje-manifest worden de volgende twee elementen toegevoegd om de au
 
 #### <a name="hls-playlist"></a>HLS-afspeel lijst
 
-Voor HLS V7 en hoger `(format=m3u8-cmaf)`, zou de afspeel lijst `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` moeten bevatten wanneer het audio Description track wordt gesignaleerd.
+Voor HLS V7 en bovenstaande `(format=m3u8-cmaf)`, zou de afspeel lijst `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` worden meegenomen wanneer het audio Description track wordt gesignaleerd.
 
 #### <a name="example"></a>Voorbeeld
 
@@ -275,7 +276,7 @@ Raadpleeg [Azure Media Services Community](media-services-community.md) voor ver
 
 ## <a name="need-help"></a>Hulp nodig?
 
-U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+U kunt een ondersteunings ticket openen door te navigeren naar een [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -283,4 +284,3 @@ U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe onders
 > U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
 
 Meer informatie over het [uploaden, coderen en streamen van Video's](stream-files-tutorial-with-api.md).
-

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: bd9b9edde0f4c5e3bea6e31342298f2df5a2b5fe
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 782c860ca50c1ef12eda1ec33f29c5103b396349
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241865"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665290"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Wat is ML van services in azure HDInsight
 
@@ -23,7 +23,7 @@ ML Services op HDInsight biedt de nieuwste mogelijkheden voor R-analyses op gege
 
 Het Edge-knoop punt van een cluster biedt een handige plaats om verbinding te maken met het cluster en om uw R-scripts uit te voeren. Met een Edge-knoop punt hebt u de mogelijkheid om de geparallelleerde gedistribueerde functies van Scaleer uit te voeren op de kernen van de Edge-knooppunt server. U kunt ze ook uitvoeren op de knoop punten van het cluster met behulp van de Hadoop-toewijzing van de Schaalr of Apache Spark reken contexten.
 
-De modellen of voor spellingen die het resultaat zijn van analyses, kunnen worden gedownload voor on-premises gebruik. Ze kunnen ook elders in Azure worden operationeel, met name door de [webservice](../../machine-learning/studio/publish-a-machine-learning-web-service.md)van [Azure machine learning Studio (klassiek)](https://studio.azureml.net) .
+De modellen of voor spellingen die het resultaat zijn van analyses, kunnen worden gedownload voor on-premises gebruik. Ze kunnen ook elders in Azure worden operationeel, met name door de [webservice](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)van [Azure machine learning Studio (klassiek)](https://studio.azureml.net) .
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Aan de slag met ML Services in HDInsight
 

@@ -4,15 +4,15 @@ description: Dit artikel bevat een overzicht van Web Application Firewall (WAF) 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/16/2019
+ms.date: 11/05/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 3cc0af122143d2ee702f1f16ee26c010befa1155
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502343"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607321"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application firewall op Azure-toepassing gateway
 
@@ -20,10 +20,10 @@ Azure Web Application firewall (WAF) op Azure-toepassing gateway biedt gecentral
 
 WAF op Application Gateway is gebaseerd op de [Basisrule set (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 of 2.2.9 van het open Web Application Security-project (OWASP). De WAF wordt automatisch bijgewerkt zodat deze bescherming biedt tegen nieuwe beveiligings lekken, zonder dat er aanvullende configuratie nodig is. 
 
-Alle WAF-functies die hieronder worden weer gegeven, bevinden zich in een WAF-beleid. U kunt zoveel beleids regels maken als u wilt en ze kunnen worden gekoppeld aan een Application Gateway, aan individuele listeners of aan op pad gebaseerde routerings regels op een Application Gateway. Op deze manier kunt u, indien nodig, afzonderlijke beleids regels instellen voor elke site achter uw Application Gateway. Zie [een WAF-beleid maken](create-waf-policy-ag.md)voor meer informatie over WAF-beleid.
+Alle WAF-functies die hieronder worden weer gegeven, bevinden zich in een WAF-beleid. U kunt meerdere beleids regels maken en deze kunnen worden gekoppeld aan een Application Gateway, aan individuele listeners of aan op pad gebaseerde routerings regels op een Application Gateway. Op deze manier kunt u, indien nodig, afzonderlijke beleids regels instellen voor elke site achter uw Application Gateway. Zie [een WAF-beleid maken](create-waf-policy-ag.md)voor meer informatie over WAF-beleid.
 
    > [!NOTE]
-   > WAF-beleid per site en per URI zijn beschikbaar als open bare preview. Dit betekent dat deze functie is onderhevig aan de aanvullende gebruiks voorwaarden van micro soft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/) voor meer informatie.
+   > WAF-beleid per site en per URI zijn beschikbaar als open bare preview. Dit betekent dat deze functie is onderhevig aan de aanvullende gebruiks voorwaarden van micro soft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ![WAF diagram van Application Gateway](../media/ag-overview/waf1.png)
 
@@ -39,11 +39,13 @@ In deze sectie worden de belangrijkste voor delen beschreven die WAF in Applicat
 
 * Bescherm uw webtoepassingen tegen beveiligings lekken en aanvallen zonder wijzigingen aan back-end-code.
 
-* Meerdere webtoepassingen tegelijk beveiligen. Een instantie van Application Gateway kan een host hebben van Maxi maal 100 websites die worden beveiligd door een Web Application Firewall.
+* Meerdere webtoepassingen tegelijk beveiligen. Een instantie van Application Gateway kan een host hebben van Maxi maal 40 websites die worden beveiligd door een Web Application Firewall.
 
-* Beveilig uw webtoepassingen tegen een schadelijk bots met de IP-reputatie van de ruleSet
+* Aangepaste WAF-beleids regels maken voor verschillende sites achter dezelfde WAF 
 
-### <a name="monitoring"></a>Bewaking
+* Uw webtoepassingen beveiligen tegen kwaad aardige bots met de IP-reputatie-ruleset (preview)
+
+### <a name="monitoring"></a>Controleren
 
 * Bewaak aanvallen op uw webtoepassingen met behulp van een real-time WAF-logboek. Het logboek is geïntegreerd met [Azure monitor](../../azure-monitor/overview.md) om WAF-waarschuwingen bij te houden en trends eenvoudig te bewaken.
 
@@ -51,9 +53,11 @@ In deze sectie worden de belangrijkste voor delen beschreven die WAF in Applicat
 
 ### <a name="customization"></a>Aanpassing
 
-* U kunt WAF regels en regel groepen aanpassen aan de vereisten van uw toepassing en valse positieven elimineren.
+* WAF regels en regel groepen aanpassen aan de vereisten van uw toepassing en valse positieven elimineren.
 
-* U kunt een WAF-beleid voor elke site achter uw WAF koppelen om site-specifieke configuratie te bieden
+* Een WAF-beleid koppelen voor elke site achter uw WAF om site-specifieke configuratie te bieden
+
+* Aangepaste regels maken die voldoen aan de behoeften van uw toepassing
 
 ## <a name="features"></a>Functies
 
@@ -62,10 +66,13 @@ In deze sectie worden de belangrijkste voor delen beschreven die WAF in Applicat
 - Bescherming tegen andere veelvoorkomende webaanvalen, zoals het injecteren van opdrachten, HTTP-aanvragen smuggling, het splitsen van HTTP-antwoorden en het insluiting van externe bestanden.
 - Beveiliging tegen schendingen van het HTTP-protocol.
 - Bescherming tegen afwijkingen van het HTTP-protocol, zoals de ontbrekende host user-agent en Accept-headers.
-- Bescherming tegen bots, crawlers en scanners.
+- Bescherming tegen crawlers en scanners.
 - Detectie van veelvoorkomende onjuiste configuraties van toepassingen (bijvoorbeeld Apache en IIS).
 - Configureer bare limieten voor aanvraag grootte met boven-en ondergrenzen.
 - Met uitsluitings lijsten kunt u bepaalde kenmerken van aanvragen weglaten uit een WAF-evaluatie. Een voor beeld hiervan is Active Directory ingevoegde tokens die worden gebruikt voor verificatie-of wachtwoord velden.
+- Aangepaste regels maken voor de specifieke behoeften van uw toepassingen.
+- Geo-filtert verkeer om te voor komen of blok keren dat bepaalde landen toegang krijgen tot uw toepassingen. (preview)
+- Bescherm uw toepassingen tegen bots met de Rules-regelset voor beperking van bot. (preview)
 
 ## <a name="waf-policy"></a>WAF-beleid
 
@@ -79,7 +86,7 @@ Zie voor meer informatie, [CRS-regel groepen en-regels voor Web Application fire
 
 ### <a name="custom-rules"></a>Aangepaste regels
 
-Application Gateway bieden ook ondersteuning voor aangepaste regels. Met aangepaste regels kunt u uw eigen regels maken, die worden geëvalueerd voor elke aanvraag die via WAF wordt door gegeven. Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regel sets. Als aan een set voor waarden wordt voldaan, wordt er een actie uitgevoerd om toe te staan of te blok keren. 
+Application Gateway biedt ook ondersteuning voor aangepaste regels. Met aangepaste regels kunt u uw eigen regels maken, die worden geëvalueerd voor elke aanvraag die via WAF wordt door gegeven. Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regel sets. Als aan een set voor waarden wordt voldaan, wordt er een actie uitgevoerd om toe te staan of te blok keren. 
 
 Zie [aangepaste regels voor Application Gateway](custom-waf-rules-overview.md) voor meer informatie.
 
@@ -138,6 +145,15 @@ Application Gateway-logboeken zijn geïntegreerd met [Azure monitor](../../azure
 
 ![Venster Overzicht van Security Center](../media/ag-overview/figure1.png)
 
+#### <a name="azure-sentinel"></a>Azure Sentinel
+
+Microsoft Azure Sentinel is een schaal bare, Cloud-native, SIEM-oplossing (Security Information Event Management) en via (Security Orchestration Automated Response). Azure Sentinel levert intelligente beveiligings analyses en bedreigings informatie over de hele onderneming, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen.
+
+Met de ingebouwde werkmap van de Azure WAF firewall-gebeurtenis kunt u een overzicht krijgen van de beveiligings gebeurtenissen op uw WAF. Dit omvat gebeurtenissen, overeenkomende en geblokkeerde regels, en alles wat u kunt vastleggen in de logboeken van de firewall. Zie hieronder voor meer informatie over logboek registratie. 
+
+
+![Verklikker](../media/ag-overview/sentinel.png)
+
 #### <a name="logging"></a>Logboekregistratie
 
 Application Gateway WAF biedt gedetailleerde rapportage over elke bedreiging die wordt gedetecteerd. Logboek registratie is geïntegreerd met Azure Diagnostics-Logboeken. Waarschuwingen worden vastgelegd in de JSON-indeling. Deze logboeken kunnen worden geïntegreerd met [Azure monitor-logboeken](../../azure-monitor/insights/azure-networking-analytics.md).
@@ -186,4 +202,8 @@ De prijs modellen zijn verschillend voor de WAF_v1-en WAF_v2-Sku's. Ga naar de p
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Aan de slag met het [maken van een WAF-beleid](create-waf-policy-ag.md)
+- Meer informatie over door [WAF beheerde regels](application-gateway-crs-rulegroups-rules.md)
+- Meer informatie over [aangepaste regels](custom-waf-rules-overview.md)
 - Meer informatie over [Web Application firewall op de voor deur van Azure](../afds/afds-overview.md)
+

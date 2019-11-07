@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: c4faa29e092c7cbb550bca1daa87ce369bf03a14
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 1a3d917775f6ba5b0b7f62d19de2b970a8b36838
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099531"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571221"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Snelstartgids: functie vlaggen toevoegen aan een ASP.NET Core-app
 
@@ -38,7 +38,7 @@ De .NET Core-functie beheer bibliotheken breiden het Framework uit met uitgebrei
 
 6. Selecteer **functie beheer** >  **+ toevoegen** om de volgende functie vlaggen toe te voegen:
 
-    | Sleutel | Staat |
+    | Sleutel | Status |
     |---|---|
     | Bèta | Uit |
 
@@ -81,7 +81,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Voer de volgende opdrachten uit om een verwijzing naar de `Microsoft.Azure.AppConfiguration.AspNetCore` en de `Microsoft.FeatureManagement.AspNetCore` NuGet-pakketten toe te voegen:
+1. Voeg een verwijzing naar het `Microsoft.Azure.AppConfiguration.AspNetCore` en de `Microsoft.FeatureManagement.AspNetCore` NuGet-pakketten toe door de volgende opdrachten uit te voeren:
 
     ```
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
@@ -96,7 +96,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
 1. Voeg een geheim met de naam **ConnectionStrings:AppConfig** toe aan Secret Manager.
 
-    Dit geheim bevat de connection string voor toegang tot uw app-configuratie opslag. Vervang de `<your_connection_string>` waarde in de volgende opdracht door de connection string voor uw app-configuratie archief.
+    Dit geheim bevat de connection string voor toegang tot uw app-configuratie opslag. Vervang de `<your_connection_string>`-waarde in de volgende opdracht door de connection string voor uw app-configuratie archief.
 
     Deze opdracht moet worden uitgevoerd in de map met het bestand *.csproj*.
 
@@ -127,7 +127,10 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+                config.AddAzureAppConfiguration(options => {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .UseFeatureFlags();
+                });
             })
             .UseStartup<Startup>();
     ```
@@ -141,7 +144,8 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
         webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
         {
             var settings = config.Build();
-            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"])
+                .UseFeatureFlags();
         })
         .UseStartup<Startup>());
     ```
@@ -162,7 +166,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     }
     ```
 
-1. Werk de `Configure` methode bij om een middleware toe te voegen, zodat de waarden van de functie vlag kunnen worden vernieuwd met een terugkerend interval terwijl de ASP.NET Core web-app aanvragen blijft ontvangen.
+1. Werk de methode `Configure` bij om een middleware toe te voegen, zodat de waarden van de functie vlag kunnen worden vernieuwd met een terugkerend interval terwijl de ASP.NET Core web-app aanvragen blijft ontvangen.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -258,7 +262,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     </h1>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 
@@ -276,11 +280,11 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **functie beheer**en wijzig de status van de **bèta** sleutel **in op**:
 
-    | Sleutel | Staat |
+    | Sleutel | Status |
     |---|---|
     | Bèta | Aan |
 
