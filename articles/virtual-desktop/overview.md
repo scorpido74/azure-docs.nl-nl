@@ -1,5 +1,5 @@
 ---
-title: Wat is Windows Virtual Desktop?  - Azure
+title: Wat is Windows Virtual Desktop? - Azure
 description: Een overzicht van Windows virtueel bureau blad.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597904"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607489"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ Er zijn enkele dingen die u nodig hebt om virtuele Windows-Bureau bladen in te s
 
 We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg ervoor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor uw gebruikers beschikt op basis van het bureau blad en de apps die u wilt implementeren:
 
-|Besturingssysteem|Vereiste licentie|
+|OS|Vereiste licentie|
 |---|---|
 |Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, a3, A5, F1, zakelijk<br>Windows E3, E5, a3, A5|
 |Windows 7 Enter prise |Microsoft 365 E3, E5, a3, A5, F1, zakelijk<br>Windows E3, E5, a3, A5|
