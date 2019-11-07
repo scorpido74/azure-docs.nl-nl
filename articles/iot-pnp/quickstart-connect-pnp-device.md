@@ -1,6 +1,6 @@
 ---
-title: Voor beeld van een IoT Plug en Play preview-apparaat code verbinden met IoT Hub | Microsoft Docs
-description: Maak een preview-versie van IoT Plug en Play voor beeld van een programma dat verbinding maakt met een IoT-hub en voer deze uit. Gebruik het hulp programma Azure IoT Explorer om de informatie weer te geven die door het apparaat wordt verzonden naar de hub.
+title: Voor beeld van een IoT Plug en Play preview-apparaat code koppelen aan IoT Hub (Windows) | Microsoft Docs
+description: Maak IoT Plug en Play preview-voorbeeld code op Windows die verbinding maakt met een IoT-hub en voer deze uit. Gebruik het hulp programma Azure IoT Explorer om de informatie weer te geven die door het apparaat wordt verzonden naar de hub.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 08/02/2019
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4802c120f4722796fcad4ea99f25adad368451fd
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 2dd5d197851b0090ac1af7bbde5a1ad1b951c785
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806536"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569902"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub"></a>Quickstart: Een voor beeld van een IoT Plug en Play preview-apparaat toepassing verbinden met IoT Hub
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-windows-to-iot-hub"></a>Quick Start: een voor beeld van een IoT Plug en Play preview-Device toepassing die wordt uitgevoerd in Windows verbinden met IoT Hub
 
 In deze Quick start ziet u hoe u een voor beeld van een IoT-voorbeeld Plug en Play kunt maken, hoe u het kunt verbinden met uw IoT-hub en hoe u het hulp programma Azure IoT Explorer kunt gebruiken om de informatie weer te geven die wordt verzonden naar de hub. De voorbeeld toepassing is geschreven in C en is opgenomen in de Azure IoT Device SDK voor C. Een oplossings ontwikkelaar kan het hulp programma Azure IoT Explorer gebruiken om inzicht te krijgen in de mogelijkheden van een IoT-Plug en Play apparaat zonder dat er toestel code hoeft te worden weer gegeven.
 
@@ -23,7 +23,7 @@ In deze Quick start ziet u hoe u een voor beeld van een IoT-voorbeeld Plug en Pl
 
 Om deze Quick Start te volt ooien, moet u de volgende software installeren op uw lokale computer:
 
-* [Visual Studio (Community, Professional of ENTER prise)](https://visualstudio.microsoft.com/downloads/) : Zorg ervoor dat u het onderdeel **NuGet package manager** en de **Desktop ontwikkeling C++ met** werk belasting opneemt tijdens de installatie van Visual Studio.
+* [Bouw hulpprogram ma's voor Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) met  **C++ build tools** en **NuGet package manager-onderdeel** workloads. Of als u [Visual Studio (Community, Professional of ENTER prise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 of 2015 al hebt geïnstalleerd met dezelfde workloads.
 * [Git](https://git-scm.com/download/).
 * [Cmake](https://cmake.org/download/).
 
@@ -82,7 +82,7 @@ Deze bewerking kan enkele minuten in beslag nemen.
 
 De toepassing die u bouwt, simuleert een apparaat dat is verbonden met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
 
-1. Maak een `cmake` submap in de hoofdmap van de apparaat-SDK en navigeer naar die map:
+1. Maak een `cmake`-submap in de hoofdmap van de apparaat-SDK en navigeer naar die map:
 
     ```cmd\sh
     cd <root folder>\azure-iot-sdk-c
@@ -147,4 +147,4 @@ De toepassing wordt gestart met het verzenden van gegevens naar IoT Hub.
 In deze Quick Start hebt u geleerd hoe u een IoT-Plug en Play apparaat verbindt met een IoT-hub. Zie voor meer informatie over het bouwen van een oplossing die samenwerkt met uw IoT Plug en Play-apparaten:
 
 > [!div class="nextstepaction"]
-> [Uitleg: Verbinding maken met en interactie met een IoT Plug en Play preview-apparaat](howto-develop-solution.md)
+> [Instructies: verbinding maken met en werken met een IoT Plug en Play preview-apparaat](howto-develop-solution.md)

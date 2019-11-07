@@ -10,18 +10,18 @@ ms.topic: overview
 ms.date: 05/08/2019
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 149b83b9aacf23cde06a2b35aed06c164afe9647
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1e86658422e444cb7104c3e3428a74d31d453a72
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243328"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605976"
 ---
 # <a name="what-is-azure-databricks"></a>Wat is Azure Databricks?
 
 Azure Databricks is een op Apache Spark gebaseerd analyseplatform, geoptimaliseerd voor het Microsoft Azure-platform voor cloudservices. Databricks is ontwikkeld in samenwerking met de grondleggers van Apache Spark en met Azure geïntegreerd. Hierdoor biedt het installatie met één klik, gestroomlijnde werkstromen en een interactieve werkruimte waarmee gegevenswetenschappers, gegevenstechnici en bedrijfsanalisten samen kunnen werken.
 
-![Wat is Azure Databricks? ](./media/what-is-azure-databricks/azure-databricks-overview.png "Wat is Azure Databricks?")
+![Wat is Azure Databricks?](./media/what-is-azure-databricks/azure-databricks-overview.png "Wat is Azure Databricks?")
 
 Azure Databricks is een snel, eenvoudig en op Apache Spark gebaseerd analyseservice voor samenwerking. Voor een Big Data-pijplijn worden de gegevens (onbewerkt of gestructureerd) in batches opgenomen in Azure via Azure Data Factory, of bijna realtime gestreamd met behulp van Kafka, Event Hub of IoT Hub. Deze gegevens komen terecht in een data lake voor langdurige permanente opslag, in Azure Blob Storage of Azure Data Lake Storage. Gebruik Azure Databricks als onderdeel van uw analysewerkstroom gebruik om gegevens te lezen uit meerdere gegevensbronnen zoals [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [Azure Cosmos DB](../cosmos-db/index.yml) of [Azure SQL Data Warehouse](../sql-data-warehouse/index.yml) en deze om te zetten in baanbrekende inzichten met behulp van Apache Spark.
 
@@ -96,9 +96,9 @@ Dankzij de uitgebreide integratie met Power BI stelt Azure Databricks u in staat
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Quickstart: Een Spark-taak uitvoeren op Azure Databricks](quickstart-create-databricks-workspace-portal.md)
-* [Werken met Spark-clusters](https://docs.azuredatabricks.net/user-guide/clusters/index.html)
-* [Werken met notitieblokken](https://docs.azuredatabricks.net/user-guide/notebooks/index.html)
-* [Spark taken maken](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Werken met Spark-clusters](/azure/databricks/clusters/index)
+* [Werken met notitieblokken](/azure/databricks/notebooks/index)
+* [Spark taken maken](/azure/databricks/jobs)
 
  
 

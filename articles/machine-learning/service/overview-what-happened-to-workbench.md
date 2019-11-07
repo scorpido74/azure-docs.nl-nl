@@ -1,7 +1,7 @@
 ---
-title: Wat is er gebeurd met Machine Learning Workbench?
+title: Wat is er gebeurd met Workbench?
 titleSuffix: Azure Machine Learning
-description: Meer informatie over wat er is gebeurd met de toepassing Machine Learning Workbench, wat is gewijzigd in Azure Machine Learning en wat de ondersteunings tijdlijn is.
+description: Meer informatie over wat er mogelijk is zonder de toepassing Workbench en wat de ondersteunings tijdlijn is.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c98da50d0c50a7fdb94f579444f3c09c1096d18
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476407"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647107"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Wat is er gebeurd met Azure Machine Learning Workbench?
 
@@ -64,12 +64,6 @@ Het werkruimtedashboard van de portal wordt alleen ondersteund in Microsoft Edge
 
 Gebruik de nieuwe CLI en SDK om uw modellen te trainen en de uitvoeringsgeschiedenis bij te houden. U kunt lezen hoe u met de [zelf studie modellen traint met Azure machine learning](tutorial-train-models-with-aml.md).
 
-## <a name="can-i-still-prep-data"></a>Kan ik nog steeds gegevens voorbereiden?
-
-Uw bestaande gegevensvoorbereidingsbestanden zijn niet overdraagbaar naar de nieuwste versie omdat Machine Learning Workbench niet meer bestaat. U kunt echter nog steeds u een gegevensset van elke grootte voorbereiden voor modellering.
-
-Met gegevens sets van elke grootte kunt u het [gegevens prep-pakket voor Azure machine learning](https://aka.ms/data-prep-sdk) gebruiken om snel uw gegevens voor te bereiden voordat deze worden gemodelleerd door python-code te schrijven.
-
 ## <a name="will-projects-persist"></a>Blijven projecten behouden?
 
 U verliest geen code of werk. Projecten zijn in de oudere versie cloudentiteiten met een lokale map. In de nieuwste versie koppelt u lokale mappen aan de Azure Machine Learning-werk ruimte met behulp van een lokaal configuratie bestand. Bekijk een [diagram van de meest recente architectuur](concept-azure-machine-learning-architecture.md).
@@ -97,22 +91,6 @@ In de nieuwste versie worden modellen als webservices geïmplementeerd in ACI-cl
 Ga voor meer informatie naar deze artikelen:
 + [Modellen implementeren met Azure Machine Learning Service](how-to-deploy-and-where.md)
 + [Zelf studie: modellen implementeren met Azure Machine Learning](tutorial-deploy-models-with-aml.md)
-
-## <a name="what-about-the-old-sdk-and-cli"></a>Hoe zit het met de oude SDK en CLI?
-
-Zie de voorgaande [tijdlijn](#timeline). Het is raadzaam om uw nieuwe experimenten en modellen met de meest recente SDK of CLI te maken.
-
-U kunt met behulp van de nieuwe python-SDK in de meest recente release communiceren met Azure Machine Learning in elke python-omgeving. Informatie over het installeren van de meest recente <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>. U kunt ook de bijgewerkte [Azure Machine Learning CLI-extensie](reference-azure-machine-learning-cli.md) gebruiken met de uitgebreide set `az ml`-opdrachten om in elke opdrachtregelomgeving met de service te communiceren, waaronder Azure Cloud Shell.
-
-## <a name="what-about-visual-studio-code-tools-for-ai"></a>Hoe zit het met Visual Studio Code-hulpprogramma's voor AI?
-
-In deze nieuwste release is de naam van de extensie gewijzigd in Azure Machine Learning voor Visual Studio Code. De extensie is uitgebreid en verbeterd voor gebruik met de eerdergenoemde nieuwe functies.
-
-[![Azure Machine Learning voor Visual Studio code](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
-
-## <a name="what-about-domain-packages"></a>Hoe zit het met domeinpakketten?
-
-De domeinpakketten voor Computer Vision, tekstanalyse en prognose kunnen niet worden gebruikt met de nieuwste versie van Azure Machine Learning. U kunt echter nog steeds Computer Vision-, tekst- en prognosemodellen bouwen en trainen met de meest recente Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a> voor Python.
 
 ## <a name="next-steps"></a>Volgende stappen
 

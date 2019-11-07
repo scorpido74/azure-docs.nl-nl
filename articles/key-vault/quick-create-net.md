@@ -1,23 +1,23 @@
 ---
-title: Quick Start-Azure Key Vault-client bibliotheek voor .NET
-description: Biedt indelings-en inhouds criteria voor het schrijven van Quick starts voor Azure SDK-client bibliotheken.
+title: Quick Start-Azure Key Vault-client bibliotheek voor .NET (v4)
+description: Meer informatie over het maken, ophalen en verwijderen van geheimen van een Azure-sleutel kluis met behulp van de .NET-client bibliotheek (v4)
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 4faf889755b6f3e5f8fc6ef08cb69b4265fec355
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755797"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646928"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-net"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET
+# <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET (SDK v4)
 
 Ga aan de slag met de Azure Key Vault-client bibliotheek voor .NET. Volg de onderstaande stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen.
 
-Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
+Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor .NET voor het volgende:
 
 - Verbeter de beveiliging en controle over sleutels en wacht woorden.
 - Versleutelings sleutels maken en importeren in een paar minuten.
@@ -25,7 +25,7 @@ Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen
 - Vereenvoudig en Automatiseer taken voor SSL/TLS-certificaten.
 - Gebruik FIPS 140-2 level 2 Validated Hsm's.
 
-[API-referentie documentatie](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)  | -[bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  | [pakket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
+[API-referentie documentatie](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [pakket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,7 +45,7 @@ Gebruik in een console venster de opdracht `dotnet new` om een nieuwe console-ap
 
 
 ```console
-dotnet new console -n akvdotnet
+dotnet new console -n key-vault-console-app
 ```
 
 Wijzig uw directory in de zojuist gemaakte app-map. U kunt de toepassing samen stellen met:
@@ -67,15 +67,13 @@ Build succeeded.
 Installeer in het console venster de Azure Key Vault-client bibliotheek voor .NET:
 
 ```console
-dotnet add package Microsoft.Azure.KeyVault
+dotnet add package Azure.Security.KeyVault.Secrets --version 4.0.0
 ```
 
 Voor deze Quick start moet u ook de volgende pakketten installeren:
 
 ```console
-dotnet add package System.Threading.Tasks
-dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory
-dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
+dotnet add package Azure.Identity --version 1.0.0
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Een resource groep en sleutel kluis maken
@@ -118,7 +116,7 @@ Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd.
 }
 ```
 
-Noteer de clientId-en clientSecret, aangezien we deze gebruiken in de verificatie van [uw sleutel kluis](#authenticate-to-your-key-vault) hieronder.
+Let op de clientId, clientSecret en tenantId, aangezien we deze in de volgende stappen gaan gebruiken.
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>De Service-Principal toegang verlenen tot uw sleutel kluis
 
@@ -128,11 +126,29 @@ Maak een toegangs beleid voor de sleutel kluis die machtigingen verleent aan uw 
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
+#### <a name="set-environmental-variables"></a>Omgevings variabelen instellen
+
+De methode DefaultAzureCredential in onze toepassing is afhankelijk van drie omgevings variabelen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`en `AZURE_TENANT_ID`. Gebruik deze variabelen instellen op de clientId-, clientSecret-en tenantId-waarden die u hebt genoteerd in de stap [een service-principal maken](#create-a-service-principal) hierboven.
+
+U moet de naam van de sleutel kluis ook opslaan als een omgevings variabele met de naam `KEY_VAULT_NAME`;
+
+```console
+setx AZURE_CLIENT_ID <your-clientID>
+
+setx AZURE_CLIENT_SECRET <your-clientSecret>
+
+setx AZURE_TENANT_ID <your-tenantId>
+
+setx KEY_VAULT_NAME <your-key-vault-name>
+````
+
+Telkens wanneer u `setx`aanroept, ontvangt u een antwoord op ' geslaagd: de opgegeven waarde is opgeslagen. '
+
 ## <a name="object-model"></a>Object model
 
-Met de Azure Key Vault-client bibliotheek voor .NET kunt u sleutels en gerelateerde assets beheren, zoals certificaten en geheimen. In de onderstaande code voorbeelden wordt uitgelegd hoe u een geheim instelt en een geheim ophaalt.
+Met de Azure Key Vault-client bibliotheek voor .NET kunt u sleutels en gerelateerde assets beheren, zoals certificaten en geheimen. In de onderstaande code voorbeelden ziet u hoe u een-client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
 
-De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet.
+De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
 ## <a name="code-examples"></a>Code voorbeelden
 
@@ -140,31 +156,19 @@ De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-
 
 Voeg de volgende instructies toe aan het begin van de code:
 
-[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=directives)]
+[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
-### <a name="authenticate-to-your-key-vault"></a>Verifiëren bij uw sleutel kluis
+### <a name="authenticate-and-create-a-client"></a>Een client verifiëren en maken
 
-Deze .NET-Snelstartgids is afhankelijk van omgevings variabelen om referenties op te slaan die niet in code mogen worden geplaatst. 
+Het verifiëren van uw sleutel kluis en het maken van een sleutel kluis-client is afhankelijk van de omgevings variabelen in de bovenstaande stap [omgevings variabelen instellen](#set-environmental-variables) . De naam van de sleutel kluis wordt uitgebreid naar de sleutel kluis-URI, in de indeling https://< uw-sleutel-kluis naam >. kluis. Azure. net.
 
-Voordat u uw app bouwt en uitvoert, gebruikt u de `setx` opdracht om de omgevings variabelen `akvClientId`, `akvClientSecret`, `akvTenantId` en `akvSubscriptionId` in te stellen op de waarden die u hierboven hebt genoteerd.
-
-```console
-setx akvClientId <your-clientID>
-
-setx akvClientSecret <your-clientSecret>
-````
-
-Telkens wanneer u `setx` aanroept, ontvangt u een antwoord op ' geslaagd: de opgegeven waarde is opgeslagen. '
-
-Wijs deze omgevings variabelen toe aan teken reeksen in uw code en verifieer uw toepassing door deze door te geven aan de [klasse KeyVaultClient](/dotnet/api/microsoft.azure.keyvault.keyvaultclient):
-
-[!code-csharp[Authentication](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=authentication)]
+[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 
 ### <a name="save-a-secret"></a>Een geheim opslaan
 
-Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de [SetSecretAsync-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) hiervoor moet u de URL van de Key kluis in de vorm `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Er is ook een naam voor het geheim vereist: we gebruiken ' mySecret '.  Mogelijk wilt u deze teken reeksen toewijzen aan een variabele voor hergebruik.
+Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de [client. SetSecret-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) hiervoor is een naam vereist voor het geheim. in dit voor beeld gebruiken we ' mySecret '.  
 
-[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
+[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=setsecret)]
 
 U kunt controleren of het geheim is ingesteld met de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
 
@@ -174,11 +178,23 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>Een geheim ophalen
 
-U kunt nu de eerder ingestelde waarde ophalen met de [methode GetSecretAsync](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)
+U kunt nu de eerder ingestelde waarde met de [client ophalen. Methode GetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
-[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=getsecret)]
+[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=getsecret)]
 
-Uw geheim wordt nu opgeslagen als `keyvaultSecret.Value;`.
+Uw geheim wordt nu opgeslagen als `secret.Value`.
+
+### <a name="delete-a-secret"></a>Een geheim verwijderen
+
+Ten slotte gaan we het geheim verwijderen uit de sleutel kluis met de- [client. Methode DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+
+[!code-csharp[Delete secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=deletesecret)]
+
+U kunt controleren of het geheim is verdwenen met de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
+
+```azurecli
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -192,9 +208,61 @@ az group delete -g "myResourceGroup" -l "EastUS"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
+## <a name="sample-code"></a>Voorbeeldcode
+
+```csharp
+using System;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace key_vault_console_app
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string secretName = "mySecret";
+
+            string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
+
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+
+            Console.Write("Input the value of your secret > ");
+            string secretValue = Console.ReadLine();
+
+            Console.Write("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+
+            client.SetSecret(secretName, secretValue);
+
+            Console.WriteLine(" done.");
+
+            Console.WriteLine("Forgetting your secret.");
+            secretValue = "";
+            Console.WriteLine("Your secret is '" + secretValue + "'.");
+
+            Console.WriteLine("Retrieving your secret from " + keyVaultName + ".");
+
+            KeyVaultSecret secret = client.GetSecret(secretName);
+
+            Console.WriteLine("Your secret is '" + secret.Value + "'.");
+
+            Console.Write("Deleting your secret from " + keyVaultName + " ...");
+
+            client.StartDeleteSecret(secretName);
+
+            System.Threading.Thread.Sleep(5000);
+            Console.WriteLine(" done.");
+
+        }
+    }
+}
+```
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een sleutel kluis gemaakt, een geheim opgeslagen en dat geheim opgehaald. Bekijk de [volledige console-app in github](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet).
+In deze Snelstartgids hebt u een sleutel kluis gemaakt, een geheim opgeslagen en dat geheim opgehaald. Bekijk de [volledige console-app in github](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 
 Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
 
