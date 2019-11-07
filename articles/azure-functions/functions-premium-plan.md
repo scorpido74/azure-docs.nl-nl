@@ -1,22 +1,20 @@
 ---
-title: Azure Functions Premium-abonnement (preview) | Microsoft Docs
+title: Premium-abonnement voor Azure Functions
 description: Details en configuratie opties (VNet, geen koude start, onbeperkte uitvoerings duur) voor het Azure Functions Premium-abonnement.
-services: functions
 author: jeffhollan
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 4/11/2019
+ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: ce83d521d5bc986be7bb24ef874f1f0e1051e3ae
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755399"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719031"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Azure Functions Premium-abonnement (preview-versie)
+# <a name="azure-functions-premium-plan"></a>Premium-abonnement voor Azure Functions
 
 Het Premium-abonnement van Azure Functions is een hosting optie voor functie-apps. Het Premium-abonnement biedt functies als VNet-connectiviteit, geen koud start en Premium-hardware.  Meerdere functie-apps kunnen worden geïmplementeerd in hetzelfde Premium-abonnement en met het plan kunt u de grootte van het reken exemplaar, de grootte van het basis plan en de maximale plan grootte configureren.  Zie [functie schaal en hosting opties](functions-scale.md)voor een vergelijking van het Premium-abonnement en andere typen plannen en hosting.
 
@@ -59,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Azure Functions geïmplementeerd in een Premium-abonnement maakt gebruik van de [nieuwe VNet-integratie voor web-apps](../app-service/web-sites-integrate-with-vnet.md).  Als uw app is geconfigureerd, kan deze communiceren met resources binnen uw VNet of worden beveiligd via service-eind punten.  Er zijn ook IP-beperkingen beschikbaar op de app om inkomend verkeer te beperken.
 
-Wanneer u een subnet aan uw functie-app toewijst in een Premium-abonnement, hebt u een subnet met voldoende IP-adressen nodig voor elk mogelijk exemplaar. Hoewel het maximum aantal exemplaren kan variëren tijdens de preview-periode, is een IP-blok vereist met ten minste 100 beschik bare adressen.
+Wanneer u een subnet aan uw functie-app toewijst in een Premium-abonnement, hebt u een subnet met voldoende IP-adressen nodig voor elk mogelijk exemplaar. Er is een IP-blok met ten minste 100 beschik bare adressen vereist.
 
 Zie [uw functie-app integreren met een VNet voor](functions-create-vnet.md)meer informatie.
 
@@ -71,11 +69,9 @@ Er worden automatisch extra reken instanties toegevoegd voor uw app met dezelfde
 
 Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor één uitvoering.  In het Premium-abonnement wordt de uitvoerings duur standaard ingesteld op 30 minuten om overmatige uitvoeringen te voor komen. U kunt echter [de host. json-configuratie wijzigen](./functions-host-json.md#functiontimeout) om deze niet-gebonden te maken voor apps uit het Premium-abonnement.
 
-In de preview-periode is uw duur niet meer dan 12 minuten gegarandeerd en krijgt de beste kans om meer dan 30 minuten uit te voeren als uw app niet meer wordt geschaald dan het minimale aantal werk nemers.
-
 ## <a name="plan-and-sku-settings"></a>Plannings-en SKU-instellingen
 
-Wanneer u het plan maakt, configureert u twee instellingen: het minimum aantal exemplaren (of de plan grootte) en de maximale burst-limiet.  De minimum instanties voor een Premium-abonnement zijn 1 en de maximale burst tijdens de preview is 20.  Minimum exemplaren worden gereserveerd en worden altijd uitgevoerd.
+Wanneer u het plan maakt, configureert u twee instellingen: het minimum aantal exemplaren (of de plan grootte) en de maximale burst-limiet.  Minimum exemplaren worden gereserveerd en worden altijd uitgevoerd.
 
 > [!IMPORTANT]
 > Er worden kosten in rekening gebracht voor elke instantie die wordt toegewezen in het minimum aantal exemplaren, ongeacht of de functies worden uitgevoerd.
@@ -102,42 +98,39 @@ Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten. 
 
 ## <a name="regions"></a>Regio's
 
-Hieronder ziet u de regio's die momenteel worden ondersteund voor de open bare preview van elk besturings systeem.
+Hieronder ziet u de regio's die momenteel worden ondersteund voor elk besturings systeem.
 
 |Regio| Windows | Linux |
 |--| -- | -- |
-|Australië - centraal| ✔ * | |
-|Australië - centraal 2| ✔ * | |
-|Australië Oost| ✔ | |
-|Australië Zuidoost | ✔ | ✔ |
-|Brazilië - Zuid| ✔ * * |  |
-|Canada-Midden| ✔ |  |
-|VS - centraal| ✔ |  |
+|Australië - centraal| ✔<sup>1</sup> | |
+|Australië - centraal 2| ✔<sup>1</sup> | |
+|Australië - oost| ✔ | |
+|Australië - zuidoost | ✔ | ✔ |
+|Brazilië - zuid| ✔<sup>2</sup> |  |
+|Canada - midden| ✔ |  |
+|US - centraal| ✔ |  |
 |Azië - oost| ✔ |  |
-|VS - oost | ✔ | ✔ |
-|VS - oost 2| ✔ |  |
+|US - oost | ✔ | ✔ |
+|US - oost 2| ✔ |  |
 |Frankrijk - centraal| ✔ |  |
-|Japan - Oost| ✔ | ✔ |
-|Japan - West| ✔ | |
+|Japan - oost| ✔ | ✔ |
+|Japan - west| ✔ | |
 |Korea - centraal| ✔ |  |
-|VS - noord-centraal| ✔ |  |
+|US - noord-centraal| ✔ |  |
 |Europa - noord| ✔ | ✔ |
-|VS - zuid-centraal| ✔ |  |
+|US - zuid-centraal| ✔ |  |
 |India - zuid | ✔ | |
 |Azië - zuidoost| ✔ | ✔ |
 |VK - zuid| ✔ | |
-|VK - west| ✔ |  |
-|Europa - west| ✔ | ✔ |
+|Verenigd Koninkrijk West| ✔ |  |
+|Europa -west| ✔ | ✔ |
 |India - west| ✔ |  |
 |VS - west| ✔ | ✔ |
+|US - west 2| ✔ |  |
 
-\* Maxi maal uitschalen Maxi maal 20 exemplaren
+<sup>1</sup> Maxi maal aantal uitschalen is beperkt tot 20 exemplaren.  
+<sup>2</sup> Maxi maal aantal uitschalen beperkt tot 60 exemplaren.
 
-\* * Maxi maal uitschalen beperkt tot 60 exemplaren
-
-## <a name="known-issues"></a>Bekende problemen
-
-U kunt de status van bekende problemen van de [open bare preview-versie op github](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues)bijhouden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

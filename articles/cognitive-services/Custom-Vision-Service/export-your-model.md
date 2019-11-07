@@ -1,7 +1,7 @@
 ---
 title: Uw model exporteren naar Mobile-Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het exporteren van uw model voor gebruik bij het maken van mobiele apps.
+description: In dit artikel wordt uitgelegd hoe u uw model exporteert voor gebruik bij het maken van mobiele toepassingen of het lokaal uitvoeren voor realtime-classificatie.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,23 +10,26 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 554a392a7f815a6e646927f137b1e6c2856099bd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f734f4f1a11f57b759615e7a9ce2cd2f7f8028fb
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561084"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718950"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Uw model exporteren voor gebruik met mobiele apparaten
 
 Custom Vision Service kunnen classificaties worden geëxporteerd om offline uit te voeren. U kunt uw geëxporteerde classificatie insluiten in een toepassing en deze lokaal uitvoeren op een apparaat voor realtime-classificatie.
+
+## <a name="export-options"></a>Export opties
 
 Custom Vision Service ondersteunt de volgende export bewerkingen:
 
 * __Tensor flow__ voor __Android__.
 * __CoreML__ voor __iOS11__.
 * __ONNX__ voor __Windows ml__.
-* Een Windows-of Linux- __container__. De container bevat een tensor flow-model en een service code voor het gebruik van de Custom Vision Service-API. 
+* __[Vision AI Developer Kit](https://azure.github.io/Vision-AI-DevKit-Pages/)__ .
+* Een __docker-container__ voor Windows-, Linux-of arm-architectuur. De container bevat een tensor flow-model en een service code voor het gebruik van de Custom Vision-API.
 
 > [!IMPORTANT]
 > Custom Vision Service exporteert alleen __compacte__ domeinen. De modellen die door compacte domeinen worden gegenereerd, zijn geoptimaliseerd voor de beperkingen van real-time classificatie op mobiele apparaten. Classificaties die zijn gebouwd met een compact domein, zijn mogelijk iets minder nauw keuriger dan een standaard domein met dezelfde hoeveelheid trainings gegevens.
@@ -36,23 +39,26 @@ Custom Vision Service ondersteunt de volgende export bewerkingen:
 ## <a name="convert-to-a-compact-domain"></a>Converteren naar een compact domein
 
 > [!NOTE]
-> De stappen in deze sectie zijn alleen van toepassing als u een bestaande classificatie hebt die niet is ingesteld op een compact domein.
+> De stappen in deze sectie zijn alleen van toepassing als u een bestaand model hebt dat niet is ingesteld op een compact domein.
 
-Gebruik de volgende stappen om het domein van een bestaande classificatie te converteren:
+Voer de volgende stappen uit om het domein van een bestaand model te converteren:
 
-1. Selecteer op de [pagina aangepaste visie](https://customvision.ai)het pictogram __Start__ om een lijst met uw projecten weer te geven. U kunt ook de [https://customvision.ai/projects](https://customvision.ai/projects) gebruiken om uw projecten te bekijken.
+1. Selecteer op de [website voor aangepaste Vision](https://customvision.ai)het pictogram __Start__ om een lijst met uw projecten weer te geven.
 
     ![Afbeelding van de lijst Start pictogram en projecten](./media/export-your-model/projects-list.png)
 
-2. Selecteer een project en selecteer vervolgens het __tandwiel__ pictogram in de rechter bovenhoek van de pagina.
+1. Selecteer een project en selecteer vervolgens het __tandwiel__ pictogram in de rechter bovenhoek van de pagina.
 
     ![Afbeelding van het tandwiel pictogram](./media/export-your-model/gear-icon.png)
 
-3. Selecteer in de sectie __domeinen__ een __compact__ domein. Selecteer __wijzigingen opslaan__ om de wijzigingen op te slaan.
+1. Selecteer in de sectie __domeinen__ een van de __compacte__ domeinen. Selecteer __wijzigingen opslaan__ om de wijzigingen op te slaan. 
+
+    > [!NOTE]
+    > Voor de Vision AI dev kit moet het project worden gemaakt met het __algemene domein (compact)__ en moet u de optie **Vision AI dev kit** opgeven onder het gedeelte **export mogelijkheden** .
 
     ![Afbeelding van de selectie van domeinen](./media/export-your-model/domains.png)
 
-4. Selecteer aan de bovenkant van de pagina __trainen__ om opnieuw te trainen met het nieuwe domein.
+1. Selecteer aan de bovenkant van de pagina __trainen__ om opnieuw te trainen met het nieuwe domein.
 
 ## <a name="export-your-model"></a>Uw model exporteren
 
@@ -63,9 +69,9 @@ Gebruik de volgende stappen om het model na het opnieuw trainen te exporteren:
     ![Afbeelding van het pictogram voor exporteren](./media/export-your-model/export.png)
 
     > [!TIP]
-    > Als de __export__ vermelding niet beschikbaar is, gebruikt de geselecteerde iteratie geen compact domein. Gebruik de  sectie iteraties van deze pagina om een herhaling te selecteren die gebruikmaakt van een compact domein, en selecteer vervolgens __exporteren__.
+    > Als de __export__ vermelding niet beschikbaar is, gebruikt de geselecteerde iteratie geen compact domein. Gebruik de sectie __iteraties__ van deze pagina om een herhaling te selecteren die gebruikmaakt van een compact domein, en selecteer vervolgens __exporteren__.
 
-2. Selecteer de export indeling en selecteer vervolgens __exporteren__ om het model te downloaden.
+1. Selecteer de gewenste export indeling en selecteer vervolgens __exporteren__ om het model te downloaden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

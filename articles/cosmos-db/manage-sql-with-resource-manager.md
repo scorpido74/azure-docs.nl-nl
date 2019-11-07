@@ -4,27 +4,35 @@ description: Azure Resource Manager sjablonen gebruiken om Azure Cosmos DB te ma
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 378deb2138acf2a2c33860ab4e4ebcc44a57d8cd
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 5babcadee02da0ba3e112f75e8b4d1aed5f3339f
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053328"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721084"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB SQL-API-bronnen (kern geheugen) beheren met Azure Resource Manager sjablonen
 
+In dit artikel wordt beschreven hoe u verschillende bewerkingen uitvoert om het beheer van uw Azure Cosmos DB-accounts, data bases en containers te automatiseren met behulp van Azure Resource Manager sjablonen. In dit artikel vindt u voor beelden voor SQL-API-accounts, om voor beelden te vinden voor andere typen API-accounts Raadpleeg: Resource Manager-sjablonen gebruiken met de API van Azure Cosmos DB voor [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDb](manage-mongodb-with-resource-manager.md), [tabel](manage-table-with-resource-manager.md) artikelen.
+
+Cosmos DB accounts, data bases en containers maken en beheren voor MongoDB, Gremlin, Cassandra en Table-API.
+
 ## Een Azure Cosmos-account,-data base en-container maken<a id="create-resource"></a>
 
-Azure Cosmos DB resources maken met behulp van een Azure Resource Manager sjabloon. Met deze sjabloon wordt een Azure Cosmos-account gemaakt met twee containers die een door Voer van 400 RU/s op database niveau delen. Kopieer de sjabloon en implementeer deze zoals hieronder wordt weer gegeven of ga naar de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) start en implementeer deze vanuit de Azure Portal. U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
+Azure Cosmos DB resources maken met behulp van een Azure Resource Manager sjabloon. Met deze sjabloon wordt een Azure Cosmos-account gemaakt met twee containers die de door Voer van 400 RU/s op database niveau delen en één container met speciale 400 RU/s-door voer. Kopieer de sjabloon en implementeer deze zoals hieronder wordt weer gegeven of ga naar de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/) start en implementeer deze vanuit de Azure Portal. U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
 
 > [!NOTE]
 >
 > - U kunt geen locaties tegelijkertijd toevoegen aan of verwijderen uit een Azure Cosmos-account en andere eigenschappen wijzigen. Deze moeten als afzonderlijke bewerkingen worden uitgevoerd.
-> - Account namen moeten kleine letters en < 31 tekens zijn.
+> - Account namen moeten kleine letters en < 44 tekens lang zijn.
+> - Als u RU/s wilt bijwerken, moet u de sjabloon opnieuw verzenden met bijgewerkte waarden voor doorvoer eigenschappen.
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+
+> [!NOTE]
+> Als u een container met een grote partitie sleutel wilt maken, neemt u de eigenschap `"version":2` op in het `partitionKey`-object in de vorige sjabloon.
 
 ### <a name="deploy-via-powershell"></a>Implementeren via Power shell
 
@@ -38,8 +46,11 @@ $location = Read-Host -Prompt "Enter the location (i.e. westus2)"
 $primaryRegion = Read-Host -Prompt "Enter the primary region (i.e. westus2)"
 $secondaryRegion = Read-Host -Prompt "Enter the secondary region (i.e. eastus2)"
 $databaseName = Read-Host -Prompt "Enter the database name"
-$container1Name = Read-Host -Prompt "Enter the first container name"
-$container2Name = Read-Host -Prompt "Enter the second container name"
+$sharedThroughput = Read-Host -Prompt "Enter the shared database throughput (i.e. 400)"
+$sharedContainer1Name = Read-Host -Prompt "Enter the first shared container name"
+$sharedContainer2Name = Read-Host -Prompt "Enter the second shared container name"
+$dedicatedContainer1Name = Read-Host -Prompt "Enter the dedicated container name"
+$dedicatedThroughput = Read-Host -Prompt "Enter the dedicated container throughput (i.e. 400)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -50,10 +61,13 @@ New-AzResourceGroupDeployment `
     -primaryRegion $primaryRegion `
     -secondaryRegion $secondaryRegion `
     -databaseName $databaseName `
-    -container1Name $container1Name `
-    -container2Name $container2Name
+    -sharedThroughput $ $sharedThroughput `
+    -sharedContainer1Name $sharedContainer1Name `
+    -sharedContainer2Name $sharedContainer2Name `
+    -dedicatedContainer1Name $dedicatedContainer1Name `
+    -dedicatedThroughput $dedicatedThroughput
 
- (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2015-04-08" --ResourceGroupName $resourceGroupName).name
+ (Get-AzResource --ResourceType "Microsoft.DocumentDb/databaseAccounts" --ApiVersion "2019-08-01" --ResourceGroupName $resourceGroupName).name
 ```
 
 Als u ervoor kiest om een lokaal geïnstalleerde versie van Power shell te gebruiken in plaats van vanuit de Azure Cloud shell, moet u de Azure PowerShell-module [installeren](/powershell/azure/install-az-ps) . Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken.
@@ -69,14 +83,24 @@ read -p 'Enter the account name: ' accountName
 read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
 read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
 read -p 'Enter the database name: ' databaseName
-read -p 'Enter the first container name: ' container1Name
-read -p 'Enter the second container name: ' container2Name
+read -p 'Enter the shared database throughput: sharedThroughput
+read -p 'Enter the first shared container name: ' sharedContainer1Name
+read -p 'Enter the second shared container name: ' sharedContainer2Name
+read -p 'Enter the dedicated container name: ' dedicatedContainer1Name
+read -p 'Enter the dedicated container throughput: dedicatedThroughput
 
 az group create --name $resourceGroupName --location $location
 az group deployment create --resource-group $resourceGroupName \
    --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion databaseName=$databaseName \
-   container1Name=$container1Name container2Name=$container2Name
+   --parameters accountName=$accountName \
+   primaryRegion=$primaryRegion \
+   secondaryRegion=$secondaryRegion \
+   databaseName=$databaseName \
+   sharedThroughput=$sharedThroughput \
+   sharedContainer1Name=$sharedContainer1Name \
+   sharedContainer2Name=$sharedContainer2Name \
+   dedicatedContainer1Name=$dedicatedContainer1Name \
+   dedicatedThroughput=$dedicatedThroughput
 
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
@@ -139,87 +163,6 @@ az group deployment create --resource-group $resourceGroupName \
    containerName=$containerName
 
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
-
-## De door Voer (RU/s) bijwerken voor een Data Base<a id="database-ru-update"></a>
-
-Met de volgende sjabloon wordt de door Voer van een Data Base bijgewerkt. Kopieer de sjabloon en implementeer deze zoals hieronder wordt weer gegeven of ga naar de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-database-ru-update/) start en implementeer deze vanuit de Azure Portal. U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
-
-[!code-json[cosmosdb-sql-database-ru-update](~/quickstart-templates/101-cosmosdb-sql-database-ru-update/azuredeploy.json)]
-
-### <a name="deploy-database-template-via-powershell"></a>Database sjabloon implementeren via Power shell
-
-Als u de Resource Manager-sjabloon wilt implementeren met behulp van Power shell, **kopieert** u het script en selecteert u **proberen** de Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
-
-```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$databaseName = Read-Host -Prompt "Enter the database name"
-$throughput = Read-Host -Prompt "Enter new throughput for database"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-database-ru-update/azuredeploy.json" `
-    -accountName $accountName `
-    -databaseName $databaseName `
-    -throughput $throughput
-```
-
-### <a name="deploy-database-template-via-azure-cli"></a>Database sjabloon implementeren via Azure CLI
-
-Als u de Resource Manager-sjabloon wilt implementeren met behulp van Azure CLI, selecteert u **proberen** de Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the new throughput: ' throughput
-
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-database-ru-update/azuredeploy.json \
-   --parameters accountName=$accountName databaseName=$databaseName throughput=$throughput
-```
-
-## De door Voer (RU/s) bijwerken voor een container<a id="container-ru-update"></a>
-
-Met de volgende sjabloon wordt de door Voer van een container bijgewerkt. Kopieer de sjabloon en implementeer deze zoals hieronder wordt weer gegeven of ga naar de [Galerie van Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-ru-update/) start en implementeer deze vanuit de Azure Portal. U kunt de sjabloon ook downloaden naar uw lokale computer of een nieuwe sjabloon maken en het lokale pad opgeven met de para meter `--template-file`.
-
-[!code-json[cosmosdb-sql-container-ru-update](~/quickstart-templates/101-cosmosdb-sql-container-ru-update/azuredeploy.json)]
-
-### <a name="deploy-container-template-via-powershell"></a>Container sjabloon implementeren via Power shell
-
-Als u de Resource Manager-sjabloon wilt implementeren met behulp van Power shell, **kopieert** u het script en selecteert u **proberen** de Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
-
-```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$accountName = Read-Host -Prompt "Enter the account name"
-$databaseName = Read-Host -Prompt "Enter the database name"
-$containerName = Read-Host -Prompt "Enter the container name"
-$throughput = Read-Host -Prompt "Enter new throughput for container"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-ru-update/azuredeploy.json" `
-    -accountName $accountName `
-    -databaseName $databaseName `
-    -containerName $containerName `
-    -throughput $throughput
-```
-
-### <a name="deploy-container-template-via-azure-cli"></a>Container sjabloon implementeren via Azure CLI
-
-Als u de Resource Manager-sjabloon wilt implementeren met behulp van Azure CLI, selecteert u **proberen** de Azure Cloud shell te openen. Als u het script wilt plakken, klikt u met de rechter muisknop op de shell en selecteert u vervolgens **Plakken**:
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the database name: ' databaseName
-read -p 'Enter the container name: ' containerName
-read -p 'Enter the new throughput: ' throughput
-
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-sql-container-ru-update/azuredeploy.json \
-   --parameters accountName=$accountName databaseName=$databaseName containerName=$containerName throughput=$throughput
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

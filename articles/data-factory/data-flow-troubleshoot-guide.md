@@ -1,5 +1,5 @@
 ---
-title: Problemen met Azure Data Factory gegevens stromen oplossen | Microsoft Docs
+title: Problemen met Azure Data Factory gegevens stromen oplossen
 description: Meer informatie over het oplossen van problemen met gegevens stromen in Azure Data Factory.
 services: data-factory
 author: kromerm
@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486176"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721347"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Problemen met Azure Data Factory gegevens stromen oplossen
 
@@ -75,6 +75,15 @@ In dit artikel worden algemene probleemoplossings methoden voor gegevens stromen
 - **Oorzaak**: een veld van uw gegevens stroom wordt toegewezen aan een kolom in uw SQL database niet breed genoeg is om de waarde op te slaan, waardoor het SQL-stuur programma deze fout kan genereren
 
 - **Oplossing**: u kunt de lengte van de gegevens voor teken reeks kolommen met ```left()``` in een afgeleide kolom beperken of het [patroon "fout rijen" implementeren.](how-to-data-flow-error-rows.md)
+
+### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>Fout bericht: sinds Spark 2,3 worden de query's van onbewerkte JSON/CSV-bestanden niet toegestaan wanneer de kolommen waarnaar wordt verwezen alleen de kolom interne beschadigde record bevatten. 
+
+- **Symptomen**: het lezen van een JSON-bron mislukt
+
+- **Oorzaak**: wanneer het lezen van een JSON-bron met één document op veel geneste regels, ADF, via Spark, niet kan bepalen waar een nieuw document begint en het vorige document eindigt.
+
+- **Oplossing**: voor de bron transformatie die gebruikmaakt van een JSON-gegevensset, vouwt u JSON-instellingen uit en schakelt u ' Eén document ' in.
+
 
 ## <a name="general-troubleshooting-guidance"></a>Algemene richt lijnen voor probleem oplossing
 

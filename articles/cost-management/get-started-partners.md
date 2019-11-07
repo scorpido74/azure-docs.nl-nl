@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/22/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6d59964013a2631430ecd7e46d1ce0f6be60a05f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802042"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720753"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -86,9 +86,9 @@ Partners kunnen het bereik gebruiken voor het afstemmen op facturen. En ze gebru
 - Klant
 - Abonnement
 - Resourcegroep
-- Bron
+- Resource
 - Azure-service
-- Naar gebruik
+- Meter
 - ResellerMPNID
 
 ### <a name="customer-scope"></a>Bereik van klant
@@ -139,7 +139,7 @@ Klik onder **facturering**op **Azure-abonnementen**en klik vervolgens op een kla
 ![Een klant van een Azure-abonnement selecteren](./media/get-started-partners/subscriptions-select-customer.png)
 
 Klik op **kosten analyse** en Bekijk de kosten.
-Kosten analyse, budgetten en waarschuwingen zijn nu beschikbaar voor het abonnement en de RBAC-scopes van de resource groep tegen kosten op basis van betalen per gebruik-tarief.
+Kosten analyse, budgetten en waarschuwingen zijn beschikbaar voor het abonnement en de RBAC-scopes van de resource groep tegen kosten op basis van betalen per gebruik-tarief.
 
 ![Kosten analyse als een klant weer geven ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
 
@@ -147,21 +147,22 @@ Bij afgeschreven weer gaven en werkelijke kosten voor gereserveerde instanties i
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Kosten analyseren in kosten analyse
 
-Partners kunnen kosten ontdekken en analyseren voor de kosten analyse van klanten voor een specifieke klant of voor een factuur. Met de functies filter en groeperen op kunt u kosten analyseren op basis van meerdere velden, waaronder:
+Partners kunnen kosten ontdekken en analyseren voor de kosten analyse van klanten voor een specifieke klant of voor een factuur.
 
-| **Veld** | **Beschrijving** |
+De volgende velden zijn te vinden in detail bestanden voor gebruik en Cost Management-Api's. U kunt filteren en groeperen op functies in Cost Analysis gebruiken om kosten te analyseren op basis van meerdere velden. Zie [Cost Management gegevens velden](understand-cost-mgt-data.md#cost-management-data-fields)om een volledige lijst met velden weer te geven.
+
+| Veldnaam | Beschrijving |
 | --- | --- |
-| PartnerTenantID | Id voor de Azure Active Directory Tenant van de partner |
-| PartnerName | De naam van de partner Azure Active Directory Tenant |
-| CustomerTenantID | Id van de Azure Active Directory Tenant van het abonnement van de klant |
-| CustomerName | De naam van de Azure Active Directory Tenant die het abonnement van de klant bevat |
-| ResellerMPNID | MPNID voor de wederverkoper die aan het abonnement is gekoppeld |
-| subscription ID | Unieke door micro soft gegenereerde id voor het Azure-abonnement |
-| subscriptionName | De naam van het Azure-abonnement |
-| billingProfileID | De id voor het facturerings profiel. Er worden kosten in rekening voor facturen gegroepeerd in één facturerings valuta voor klanten.
-| invoiceID | Factuur-ID voor de factuur waarin de specifieke trans actie wordt weer gegeven |
-| resourceGroup | De naam van de Azure-resource groep. Wordt gebruikt voor het beheer van resource levenscyclus. |
-| partnerEarnedCreditRate | De korting wordt toegepast als er een partner (PEC) wordt gebruikt op basis van de toegang tot de partner beheerder. |
+| CustomerTenantID | De id van de Azure Active Directory Tenant van het&#39;abonnement van de klant. |
+| CustomerName | De naam van de Azure Active Directory Tenant voor het&#39;abonnement van de klant s. |
+| CustomerTenantDomainName | De domein naam voor de Azure Active Directory-Tenant van&#39;het abonnement van de klant s. |
+| PartnerTenantID | De id voor de&#39;partner-Azure Active Directory Tenant. |
+| PartnerName | De naam van de partner Azure Active Directory Tenant. |
+| ResellerMPNID | MPNID voor de wederverkoper die aan het abonnement is gekoppeld. |
+| costinUSD | Geschatte ExtendedCost of overvloei kosten vóór belasting in USD. |
+| paygCostInBillingCurrency | Hiermee worden de kosten weer gegeven als de prijzen een verkoop prijs zijn. Hiermee worden de prijzen voor betalen naar gebruik in de facturerings valuta weer gegeven. Alleen beschikbaar voor RBAC-bereiken. |
+| paygCostInUSD | Hiermee worden de kosten weer gegeven als de prijzen een verkoop prijs zijn. Toont de prijzen voor betalen naar gebruik in USD. Alleen beschikbaar voor RBAC-bereiken. |
+| partnerEarnedCreditRate | Het tarief van de korting wordt toegepast als er een door de partner aangehaalde credit (PEC) is op basis van de toegang tot de partner beheerder. |
 | partnerEarnedCreditApplied | Geeft aan of het tegoed van de partner is toegepast. |
 
 In de weer gave [kosten analyse](quick-acm-cost-analysis.md) kunt u ook [weer gaven opslaan](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) en gegevens exporteren naar [CSV-en PNG-bestanden](quick-acm-cost-analysis.md#automation-and-offline-analysis).
@@ -203,36 +204,67 @@ Api's in het abonnements bereik kunnen worden aangeroepen door een partner, onge
 #### <a name="to-get-a-list-of-billing-accounts"></a>Een lijst met facturerings accounts ophalen
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-a-list-of-customers"></a>Een lijst met klanten ophalen
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers?api-version=2019-10-01-preview
 ```
+
 #### <a name="to-get-a-list-of-subscriptions"></a>Een lijst met abonnementen ophalen
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/billingSubscriptions?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptions?api-version=2019-10-01-preview
 ```
+
+#### <a name="to-get-a-list-of-invoices-for-a-period-of-time"></a>Een lijst met facturen voor een bepaalde tijd ophalen
+
+```
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices?api-version=2019-10-01-preview&periodStartDate={periodStartDate}&periodEndDate={periodEndDate}
+```
+
+De API-aanroep retourneert een matrix van facturen met elementen die vergelijkbaar zijn met de volgende JSON-code.
+
+```
+    {
+      "id": "/providers/Microsoft.Billing/billingAccounts/{billingAccountID}/billingProfiles/{BillingProfileID}/invoices/{InvoiceID}",
+      "name": "{InvoiceID}",
+      "properties": {
+        "amountDue": {
+          "currency": "USD",
+          "value": x.xx
+        },
+        ...
+    }
+```
+
+Gebruik de waarde van het voor gaande geretourneerde ID-veld en vervang deze in het volgende voor beeld als het bereik dat u wilt doorzoeken op gebruiks gegevens.
+
+```
+GET https://management.azure.com/{id}/providers/Microsoft.Consumption/UsageDetails?api-version=2019-10-01
+```
+
+In het voor beeld worden de gebruiks records geretourneerd die zijn gekoppeld aan de specifieke factuur.
+
 
 #### <a name="to-get-the-policy-for-customers-to-view-costs"></a>Om het beleid te verkrijgen voor klanten om de kosten te bekijken
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-set-the-policy-for-customers-to-view-costs"></a>Het beleid voor klanten instellen om kosten te bekijken
 
 ```
-armclient put "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview" @policy.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/policies/default?api-version=2019-10-01-preview
 ```
 
 #### <a name="to-get-azure-service-usage-for-a-billing-account"></a>Azure-service gebruik voor een facturerings account ophalen
 
 ```
-armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
+GET https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
 #### <a name="to-download-a-customers-azure-service-usage"></a>Het Azure-service gebruik van een klant downloaden
@@ -240,7 +272,7 @@ armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XX
 De volgende aanroep Get is een asynchrone bewerking.
 
 ```
-armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
+GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
 Roep de `Location` URI aan die in het antwoord is geretourneerd om de bewerkings status te controleren. Wanneer de status *voltooid*is, bevat de eigenschap `downloadUrl` een koppeling die u kunt gebruiken om het gegenereerde rapport te downloaden.
@@ -251,50 +283,40 @@ Roep de `Location` URI aan die in het antwoord is geretourneerd om de bewerkings
 Gebruik eerst het volgende bericht.
 
 ```
-armclient post "/providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
+POST https://management.azure.com/providers/Microsoft.Billing/BillingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
 Roep vervolgens de eigenschaps waarde van de asynchrone bewerking aan. Bijvoorbeeld:
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheetDownloadOperations/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX?sessiontoken=0:11186&api-version=2019-10-01-preview"
+GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileID}/pricesheetDownloadOperations/{operation}?sessiontoken=0:11186&api-version=2019-10-01-preview
 ```
 De voor gaande aanroep Get retourneert de download koppeling met het prijzen overzicht.
 
-#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>De klant kosten voor de afgelopen twee maanden ophalen, gesorteerd op maand
+
+#### <a name="to-get-aggregated-costs"></a>Om geaggregeerde kosten te verkrijgen
 
 ```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
-```
-
-#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>Kosten voor Azure-abonnementen voor de afgelopen twee maanden ophalen, gesorteerd op maand
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
-```
-
-#### <a name="to-get-daily-costs-for-the-current-month"></a>Dagelijkse kosten voor de huidige maand ophalen
-
-```
-armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+POST https://management.azure.com/providers/microsoft.billing/billingAccounts/{billingAccountName}/providers/microsoft.costmanagement/query?api-version=2019-10-01
 ```
 
 #### <a name="create-a-budget-for-a-partner"></a>Een budget voor een partner maken
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
 ```
-
 
 #### <a name="create-a-budget-for-a-customer"></a>Een budget voor een klant maken
 
 ```
-armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/providers/Microsoft.Consumption/budgets/test-partner-demo?api-version=2019-10-01 @budgetCreate.json
+PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2019-10-01
 ```
+
 #### <a name="delete-a-budget"></a>Een budget verwijderen
 
 ```
-armclient delete providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
+PUT
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/budgets/{budgetName}?api-version=2019-10-01
 ```
 
 

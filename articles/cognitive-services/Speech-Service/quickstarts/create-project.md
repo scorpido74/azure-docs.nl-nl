@@ -1,26 +1,26 @@
 ---
 title: 'Quick Start: een project maken'
 titleSuffix: Azure Cognitive Services
-description: NOG TE BEPALEN
+description: In deze Quick Start maakt u een leeg project voor uw programmeer taal die u gaat gebruiken om een Snelstartgids te volt ooien of een toepassing te maken.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 25d6e8f7642db05663082414f013b2b11bff46da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276dbcdfe3f40122b6a7a14e78aeee4d6ab2fbe9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504044"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721011"
 ---
-# <a name="quickstart-create-an-empty-project"></a>Snelstartgids: een leeg project maken.
+# <a name="quickstart-create-a-project"></a>Quick Start: een project maken
 
-In deze hand leiding wordt uitgelegd hoe u een leeg project maakt voor gebruik in andere Quick starts.
+In deze Quick Start maakt u een leeg project voor uw programmeer taal die u gaat gebruiken om een Snelstartgids te volt ooien of een toepassing te maken.
 
 ::: zone pivot="programming-language-csharp"
 **Kies uw doel omgeving**
@@ -54,6 +54,9 @@ Voor dit voor beeld wordt het compileren met g + +, zodat u alleen een leeg proj
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
+
+Voor de op python gebaseerde Snelstartgids hoeft u alleen maar een bestand met de naam `helloworld.py` te maken met uw favoriete tekst editor of IDE.
+
 ::: zone-end
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -63,4 +66,3 @@ Voor dit voor beeld wordt het compileren met g + +, zodat u alleen een leeg proj
 - [Snelstartgids: vertalen van spraak naar tekst](translate-speech-to-text.md)
 - [Quick Start: spraak op tekst bekunsten](text-to-speech.md)
 - [Quick Start: intenties herkennen](intent-recognition.md)
-
