@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een Azure SQL Data Warehouse maken-Azure Power shell | Microsoft Docs'
+title: 'Snelstartgids: een magazijn maken-Azure Power shell'
 description: Maak snel een SQL Database logische server, een firewall regel op server niveau en een Data Warehouse met Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,14 +10,15 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574902"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693095"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Quickstart: Een Azure SQL Data Warehouse met Azure PowerShell maken en er een query op uitvoeren
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Snelstartgids: een Azure SQL Data Warehouse met Azure PowerShell maken en doorzoeken
 
 Maak snel een Azure SQL Data Warehouse met behulp van Azure PowerShell.
 
@@ -79,7 +80,7 @@ New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Een logische server maken
 
-Maak een [logische Azure SQL-Server](../sql-database/sql-database-logical-servers.md) met de opdracht [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) . Een logische server bevat een groep met databases die worden beheerd als groep. In het volgende voor beeld wordt een wille keurig benoemde server in de resource groep gemaakt met `ServerAdmin` een beheerder met de `ChangeYourAdminPassword1`naam en een wacht woord van. U kunt deze vooraf gedefinieerde waarden vervangen.
+Maak een [logische Azure SQL-Server](../sql-database/sql-database-logical-servers.md) met de opdracht [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) . Een logische server bevat een groep met databases die worden beheerd als groep. In het volgende voor beeld wordt een wille keurig benoemde server in de resource groep gemaakt met een beheerder met de naam `ServerAdmin` en een wacht woord van `ChangeYourAdminPassword1`. U kunt deze vooraf gedefinieerde waarden vervangen.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -119,16 +120,16 @@ New-AzSqlDatabase `
 
 De vereiste parameters zijn:
 
-* **RequestedServiceObjectiveName**: De hoeveelheid [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) die u aanvraagt. Het verhogen van deze waarde verhoogt de reken kosten. Zie [geheugen-en gelijktijdigheids limieten](memory-and-concurrency-limits.md)voor een lijst met ondersteunde waarden.
-* **DatabaseName**: De naam van de SQL Data Warehouse die u maakt.
-* **ServerName**: De naam van de server die u gebruikt voor het maken van.
-* **ResourceGroupName**: De resource groep die u gebruikt. Gebruik Get-AzureResource om beschikbare resourcegroepen in uw abonnement te zoeken.
-* **Editie**: Moet data warehouse zijn om een SQL Data Warehouse te maken.
+* **RequestedServiceObjectiveName**: de hoeveelheid [Data Warehouse-eenheden](what-is-a-data-warehouse-unit-dwu-cdwu.md) die u aanvraagt. Het verhogen van deze waarde verhoogt de reken kosten. Zie [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.md) voor een lijst met ondersteunde waarden.
+* **DATABASENAME**: de naam van de SQL Data Warehouse die u maakt.
+* **Servername**: de naam van de server die u gebruikt voor het maken van.
+* **ResourceGroupName**: de resource groep die u gebruikt. Gebruik Get-AzureResource om beschikbare resourcegroepen in uw abonnement te zoeken.
+* **Edition**: moet DataWarehouse zijn, als u een SQL Data Warehouse wilt maken.
 
 De optionele parameters zijn:
 
-- **CollationName**: De standaard sortering als niet is opgegeven, is SQL_Latin1_General_CP1_CI_AS. Sortering kan niet worden gewijzigd voor een Data Base.
-- **MaxSizeBytes**: De standaard maximale grootte van een Data Base is 240TB. De maximale grootte beperkt de rowstore-gegevens. Er is een onbeperkte opslag voor kolom gegevens.
+- **CollationName**: de standaardsortering, indien niet opgegeven, is COLLATE SQL_Latin1_General_CP1_CI_AS. Sortering kan niet worden gewijzigd voor een Data Base.
+- **MaxSizeBytes**: de maximale grootte van een Data Base is 240TB. De maximale grootte beperkt de rowstore-gegevens. Er is een onbeperkte opslag voor kolom gegevens.
 
 Zie [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)voor meer informatie over de parameter opties.
 
